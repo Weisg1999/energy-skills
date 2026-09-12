@@ -1,5 +1,7 @@
 # ⚡ Energy Skills · 电力/能源领域 AI 技能库
 
+[English](README_EN.md) | 中文
+
 > 把电力交易领域的专业书籍与最新政策调研，蒸馏成 AI 可直接加载使用的领域技能（Skill）。
 > A collection of distilled domain skills for AI assistants, focused on electricity markets, virtual power plants and carbon markets in China.
 
