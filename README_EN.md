@@ -1,51 +1,44 @@
-# ⚡ Energy Skills · AI Skills for Power & Energy
+# ⚡ Energy Skills · Electricity Trading & VPP Skill Library
 
-> English | [中文](README.md)
+English | [中文](README.md)
 
-> Distills professional books and up-to-date policy research in electricity trading into ready-to-load AI skills.
-> A collection of distilled domain skills for AI assistants, focused on electricity markets, virtual power plants and carbon markets in China.
+A collection of domain skills (Skill) for AI assistants, focused on electricity markets in China. Each skill is a self-contained Markdown handbook that can be injected into an LLM as context: once loaded, the model answers as a senior practitioner of the field and follows built-in answering discipline — figures cited with policy document numbers and dates, province confirmed before giving local rules, policy items returned with official lookup pointers, and unverified data flagged as "to be verified".
 
-## 📦 Current Skills
+## Skills
 
 ### [Electricity Trading Expert (electricity-trading-expert)](skills/electricity-trading-expert/SKILL_EN.md)
 
-A full-chain expert skill covering **spot markets / medium & long-term trading / ancillary services / capacity mechanisms / virtual power plants / demand response / carbon markets**. Once loaded, the AI answers as a senior China power-market expert under strict answering discipline (every number cited with policy document number and time point; province-specific questions confirmed first; policy items returned with official lookup pointers).
-
-**Capability Overview**
+Covers spot markets, medium & long-term trading, ancillary services and capacity mechanisms, settlement and metering, provincial market practice, renewables market entry (Document No. 136), carbon markets, and trading strategy and risk management. Chinese original: [SKILL.md](skills/electricity-trading-expert/SKILL.md).
 
 | Domain | Coverage |
 |---|---|
-| Spot market | SCUC/SCED clearing, LMP/SMP/ZMP pricing, 3-bus worked examples, negative prices, congestion management & FTR, domestic vs. international price caps, market circuit breakers |
+| Spot market | SCUC/SCED clearing, LMP/SMP/ZMP pricing, 3-bus worked examples, negative prices, congestion management & FTR, price caps (China vs. international), market circuit breakers |
 | Medium & long-term + finance | Contracts for differences (government-authorized / market-based), the "six signing" requirements, power futures & options, day-ahead + real-time two-settlement |
-| Ancillary services & capacity | Product taxonomy and the "Two Rules" (两个细则)， China-specific peak-regulation product and its absorption into spot, joint clearing & opportunity-cost pricing, four capacity-adequacy pathways, coal capacity price (Doc. 1501) |
-| Settlement & metering | Nine settlement categories, daily accounting & monthly settlement, three-part settlement formula, imbalance funds, 15-minute metering and gap-filling rules |
-| Policy & provincial practice | Document-number timeline from Document No. 9 to Ministerial Order No. 20, the seven provinces with officially running spot markets, first-batch pilot distinctive designs (Shanxi circuit breaker / Shandong capacity payment / Sichuan wet-dry season split, etc.) |
-| New-energy market entry | Document No. 136 mechanism prices, existing/new project cutoff (2025-06-01), provincial implementation plans and auction results |
-| Virtual power plants | Doc. 357 (2027/2030 targets), three development stages, Shenzhen/Shanghai/Shanxi rule comparison, five revenue models, CBL baseline calculation, FERC Order 2222 benchmark |
-| Carbon markets | National ETS expansion (steel/cement/aluminum), CEA price history, CCER restart & methodologies, MRV and verification practice, pilot carbon prices, CBAM and green-certificate linkage |
-| Trading strategy & risk | Generator/retailer/consumer strategies, market-power metrics (HHI/KSI/RSI/TTS), five risk classes, market-entry capability checklist |
+| Ancillary services & capacity | Product taxonomy and the "Two Rules", China-specific peak regulation and its absorption into spot markets, joint clearing & opportunity-cost pricing, four capacity-adequacy pathways, coal capacity price (Doc. 1501) |
+| Settlement & metering | Nine settlement categories, daily accounting / monthly settlement, three-part settlement formula, imbalance funds, 15-minute metering and gap-filling rules |
+| Policy & provincial practice | Document-number timeline from Doc. No. 9 to Ministerial Order No. 20, seven provinces with officially running spot markets, first-batch pilot designs (Shanxi circuit breaker, Shandong capacity payment, Sichuan wet/dry-season split, etc.) |
+| Renewables market entry | Doc. 136 mechanism prices, existing/new project cutoff (2025-06-01), provincial implementation plans and auction results |
+| Carbon markets | National ETS expansion (steel/cement/aluminum), CEA price history, CCER restart and methodologies, MRV and verification, pilot prices, CBAM and green-certificate linkage |
+| Strategy & risk | Generator/retailer/consumer strategies, market-power metrics (HHI/KSI/RSI/TTS), five risk classes, market-entry capability checklist |
 
-### [Virtual Power Plant Expert (virtual-power-plant-expert)](skills/virtual-power-plant/SKILL.md) — Chinese, English version in progress
+### [Virtual Power Plant Expert (virtual-power-plant-expert)](skills/virtual-power-plant/SKILL.md) — Chinese
 
-A full-chain VPP expert skill covering **concept distinctions / resource aggregation / three development stages / market participation mechanisms / business models / control & optimization technology / China policy and international benchmarks**. Complementary to the Electricity Trading Expert: market-mechanism details (clearing, settlement, price caps) live in the former; VPP implementation and operations live in this one.
-
-**Capability Overview**
+Covers VPP concept distinctions, resource aggregation and assessment, the three development stages (solicitation-based / market-based / self-dispatch), market participation mechanisms, business models and profitability, control & optimization technology, Chinese policy (Doc. 357 and provincial rules), and international benchmarks. Companion to the Electricity Trading Expert: clearing, settlement and price-cap mechanics live there; VPP implementation and operations live here.
 
 | Domain | Coverage |
 |---|---|
-| Concepts & distinctions | Formal definition and "positive/negative plant" dual role, distinctions vs. DR/microgrid/energy-efficiency plant (reverse power flow, physical vs. logical aggregation), the market-stability criterion |
-| Resource side | Three resource classes (flexible loads / distributed generation / storage), A–D quadrant classification and development strategy, five flexibility factors, industry-level adjustable ratios, resource-base estimates |
+| Concepts & distinctions | VPP definition and "positive/negative plant" dual role, distinctions vs. DR/microgrid/energy-efficiency plant (reverse power flow, physical vs. logical aggregation), the market-stability criterion |
+| Resource side | Flexible loads / distributed generation / storage, A–D quadrant classification, five flexibility factors, industry adjustable ratios and resource-base estimates |
 | Three-stage framework | Solicitation-based (subsidy-driven) → market-based (price signals) → self-dispatch (cross-space scheduling): criteria, transition conditions, coexistence |
-| Solicitation practice | Jiangsu model (peak-price fund pool + valley-filling auction, 4.02 GW record) and Shanghai model (four-party operation, precision response, auction trading) |
-| Market-based mechanisms | Participation flows in energy/ancillary/green-certificate-carbon markets, CVPP/TVPP duality, US entity taxonomy (SC/LSE/CSP/MSP), Finnish aggregator regulatory insights |
-| Control & optimization | Four forecast types (load/output/price/flexibility), three-layer control mechanisms (clustering, differentiated contracts, storage alliance), Jibei FUN-power platform architecture |
-| Emerging tech | Communication selection (NB-IoT/LoRa/5G uRLLC), blockchain selection (consortium chain + PBFT/Raft + off-chain scaling + BSN) and five application areas |
-| Business models | Five revenue streams, e2m 25% commission model, peak-load economics (coal ~¥40bn vs VPP ¥40-57bn), five-step estimation framework |
-| Policy & practice | Doc. 357 (2027/2030 targets), Shenzhen/Shanghai/Shanxi rules comparison, DR subsidy landscape, V2G nine-city pilots, Jibei operating data |
-| International benchmarks | Germany Next Kraftwerke (9,516 units/8,179 MW) & e2m, Australia Tesla SA VPP (hierarchical aggregation + FCAS 83% lesson), three US institutional paths, Finnish aggregators |
-| Risk & operations | Six-difficulty checklist, CBL baseline settlement, aggregation ≠ reliability (daily configuration audits), single-market dependency warning, capability checklist |
+| Solicitation practice | Jiangsu model (peak-price fund pool + valley-filling auction, 4.02 GW record), Shanghai model (four-party operation, precision response, auction trading) |
+| Market-based mechanisms | Participation flows in energy/ancillary/green-certificate/carbon markets, CVPP vs. TVPP, US entity taxonomy (SC/LSE/CSP/MSP), Finnish aggregator regulatory insights |
+| Control & optimization | Four forecast types (load/output/price/flexibility), three-layer control mechanisms, Jibei FUN-power platform architecture |
+| Emerging tech | Communication selection (NB-IoT/LoRa/5G), blockchain selection (consortium chain + distributed-consensus algorithms + off-chain scaling) and application areas |
+| Business models | Five revenue streams, e2m commission model, peak-load economics, estimation framework and the "scale first, profit later" industry reality |
+| Policy & practice | Doc. 357 (2027/2030 targets), Doc. 93, the national standard series, ~20 provinces with dedicated policies and 15 provinces with market rules, the official national tally (470 projects / 16.85 GW tested capability), four capacity-metric distinctions, DR subsidy landscape, V2G Doc. 241 |
+| International benchmarks | Germany's Next Kraftwerke and aFRR price signals, the South Australia VPP handover to AGL, US Order 2222 compliance timetable and DOE 80–160 GW goal, UK DFS, Finnish aggregators |
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 energy-skills/
@@ -54,79 +47,50 @@ energy-skills/
 ├── skills/
 │   ├── electricity-trading-expert/
 │   │   ├── SKILL.md                           ← skill file (Chinese, with frontmatter, directly registerable)
-│   │   └── SKILL_EN.md                        ← skill file (English translation)
+│   │   └── SKILL_EN.md                        ← English translation
 │   └── virtual-power-plant/
 │       └── SKILL.md                           ← VPP skill file (Chinese, frontmatter, directly registerable)
-└── knowledge/                                 ← distilled knowledge base behind the skills
-    ├── 电力现货市场101问-A-基础与价格机制.md        (Spot Market 101 Qs, Part A: fundamentals & price mechanisms)
-    ├── 电力现货市场101问-B-出清结算与省域实践.md    (Part B: clearing, settlement & provincial practice)
-    ├── 电力现货市场101问-C-结算TTS与政策演进.md     (Part C: settlement, TTS & policy evolution)
-    ├── 电力系统经济学原理-主题笔记.md               (Principles of Power System Economics — thematic notes)
-    ├── 电力现货市场实务-精读笔记.md                 (Spot Market Practice — close-reading notes)
-    ├── 中国碳排放权交易实务-主题笔记.md             (China Carbon Emission Trading Practice — thematic notes)
-    ├── 碳管理-从零通往碳中和-主题笔记.md            (Carbon Management — thematic notes)
-    ├── 走近虚拟电厂-主题笔记.md                    (Approaching Virtual Power Plants — thematic notes)
-    ├── 调研-电力市场政策与开源资源-2026-09.md       (Research: market policy & open-source tools, Sep 2026)
-    ├── 调研-虚拟电厂与碳市场-2026-09.md            (Research: VPP & carbon markets, Sep 2026)
-    └── 调研-速查合并-2026-09.md                    (Research: merged quick-reference, Sep 2026)
+└── knowledge/                                 ← thematic notes and research records behind the skills
+    ├── 电力现货市场101问-A/B/C-*.md                (Spot Market 101 Questions — three thematic notes)
+    ├── 电力系统经济学原理-主题笔记.md               (Principles of Power System Economics)
+    ├── 电力现货市场实务-精读笔记.md                 (Spot Market Practice)
+    ├── 中国碳排放权交易实务-主题笔记.md             (China Carbon Emission Trading Practice)
+    ├── 碳管理-从零通往碳中和-主题笔记.md            (Carbon Management)
+    ├── 走近虚拟电厂-主题笔记.md                    (Approaching Virtual Power Plants)
+    └── 调研-*.md                                  (policy & market research records, dated 2026-09)
 ```
 
-> Note: the `knowledge/` notes are kept in Chinese — they are dense original-language distillations aimed at Chinese-market practice. The English SKILL.md is self-contained and does not require reading them.
+## Usage
 
-## 🚀 Usage
+- **Inject into any AI assistant**: paste the full text of a SKILL file as system prompt or context (the Chinese versions are denser; the English translation of the electricity-trading skill is provided for international models).
+- **Register as a skill**: place a skill directory into the skills directory of AI coding tools that support custom skills (e.g. Claude Code).
+- **Read directly**: the notes under knowledge/ are standalone quick-reference handbooks with document numbers, figures and comparison tables.
 
-**Option 1 — as a ZCode / Claude Code skill**
-Drop the `skills/electricity-trading-expert/` directory into your user skills directory (e.g. `~/.zcode/skills/`) and restart; the skill triggers automatically, or invoke it via `/skill`.
-
-**Option 2 — inject into any AI assistant**
-Paste the full text of `SKILL_EN.md` (or `SKILL.md` for Chinese) as system prompt / context into any LLM (ChatGPT, Gemini, DeepSeek, etc.).
-
-**Option 3 — human reading**
-The 10 thematic notes under `knowledge/` are standalone quick-reference handbooks packed with document numbers, figures, worked examples and comparison tables.
-
-## 🔬 How the Knowledge Was Built
-
-A **three-level distillation pipeline** produced this repository:
-
-```
-7 professional books (PDF; 4 of them image-only scans)
-   │  PyMuPDF rendering + Windows OCR (1,127 pages)
-   ▼
-L1 part distillation —— 22 parallel agents, section-by-section structured notes (~2.85M chars → 27 notes)
-   ▼
-L2 book-level merge —— 8 agents, thematic dedup & compression (→ 10 book notes + 1 research digest)
-   ▼
-L3 final synthesis —— read all book notes + web research, write SKILL.md
-   ▲
-   └── Web research layer: 2 research agents (2026-09-12), latest policies/prices/open-source tools,
-       every fact tagged with source URL and date; unverifiable items flagged 待核实 (to be verified)
-```
-
-**Knowledge Sources**
+## Sources
 
 | Type | Content |
 |---|---|
-| Spot markets | Electricity Spot Market: 101 Questions (State Grid Dispatching Control Center, 2021), Electricity Spot Market Practice (State Grid Dispatching Control Center, 2023) |
-| Market economics | Principles of Power System Economics (Kirschen & Strbac, Chinese ed.), Principles of Economics, Micro & Macro (Mankiw) |
-| Virtual power plants | Approaching Virtual Power Plants (Wang Peng, Wang Dongrong et al., China Machine Press 2020) |
-| Carbon | China Carbon Emission Trading Practice (Meng Zaoming et al.), Carbon Management: From Zero to Carbon Neutrality (Wang Jun) |
-| Web research | NDRC/NEA policies 2023-2026, provincial trading-center data, Fudan Carbon Price Index, ICAP, GitHub open-source ecosystem (PyPSA, pandapower, Grid2Op, gridstatus, etc.) |
+| Spot markets | Electricity Spot Market: 101 Questions (State Grid Dispatching Control Center, China Electric Power Press, 2021); Electricity Spot Market Practice (State Grid Dispatching Control Center, China Electric Power Press, 2023) |
+| Market economics | Principles of Power System Economics (Kirschen & Strbac, Chinese edition); Principles of Economics, Micro & Macro (Mankiw) |
+| Virtual power plants | Approaching Virtual Power Plants (Wang Peng, Wang Dongrong et al., China Machine Press, 2020) |
+| Carbon | China Carbon Emission Trading Practice (Meng Zaoming, Ge Xing'an et al.); Carbon Management: From Zero to Carbon Neutrality (Wang Jun) |
+| Policy & market research | Documents from NDRC and NEA websites, provincial trading centers and energy bureaus, corporate announcements and annual reports; research cutoff 2026-09, each item annotated with source and date |
 
-## ⚠️ Important Notes
+## Notes
 
-1. **Timeliness**: policy figures (officially-running market list, mechanism prices, subsidy standards, etc.) reflect the research cutoff of **2026-09-12**; always defer to the latest official documents. Book-knowledge time points are annotated per book (carbon-trading books date to ~2016 — mechanisms still valid, figures superseded by the web-research layer).
-2. **Originality**: the `knowledge/` notes are original thematic summaries and distillations (not reproductions); copyrights of the source books remain with their authors. This repository contains no full-text book content.
-3. **Not investment advice**: all price judgments and estimation frameworks are for learning and research only.
-4. **Discipline**: the skill ships with a "to-be-verified" flagging convention and a common-mistakes checklist (e.g., using OM baseline emission factors for consumption accounting, mis-citing Document 813 as the spot-market basic rules) — see SKILL.md Chapters 0 and 14.
+1. **Timeliness**: policy figures (officially running markets, mechanism prices, subsidy standards) were compiled as of 2026-09; book vintages are annotated per note (the carbon-trading books date to ~2016 — mechanisms still apply, figures superseded by the research layer). Always defer to the latest official documents.
+2. **Originality**: the notes under knowledge/ are original thematic summaries, not reproductions; copyrights of the source books remain with their authors.
+3. **Not investment advice**: price judgments and estimation frameworks are for learning and research only.
+4. **Discipline**: the skills ship with a "to be verified" flagging convention and common-mistakes checklists (e.g., using OM baseline emission factors for consumption accounting, mis-citing Document 813 as the spot-market basic rules, conflating capacity metrics) — see Chapter 0 and the reasoning handbook in each SKILL.md.
 
-## 🗺️ Roadmap
+## Roadmap
 
-- [x] Electricity Trading Expert skill (released, Chinese + English)
-- [x] Virtual Power Plant Expert skill (released, Chinese)
-- [ ] Carbon asset management skill (compliance calendar, CCER development economics, carbon finance instruments)
-- [ ] Quantitative spot-bidding skill (load forecasting, price forecasting, bid simulation with open-source toolchain)
-- [ ] English versions of remaining skills (VPP expert in progress)
+- [x] Electricity Trading Expert (Chinese, English)
+- [x] Virtual Power Plant Expert (Chinese)
+- [ ] Carbon asset management skill (compliance calendar, CCER development economics, carbon finance)
+- [ ] Quantitative spot-bidding skill (load forecasting, price forecasting, bid simulation)
+- [ ] English version of the VPP skill
 
 ---
 
-*Built 2026-09-12 ｜ Generated by a ZCode multi-agent distillation pipeline*
+*Compiled 2026-09*

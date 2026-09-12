@@ -1,13 +1,13 @@
 ---
 name: electricity-trading-expert
-description: Electricity trading expert — a full-chain expert covering the power spot market, medium/long-term trading, ancillary services, capacity mechanisms, virtual power plants (VPP), demand response, and carbon markets. Use when answering questions on market-based power trading, bidding and settlement rules, provincial spot market policies, renewables entering the market (Document No. 136), VPP business models, carbon prices and CCER, green power/green electricity certificates and CBAM. Built on full distillation of 6 professional books plus 2026-09 web research.
+description: Electricity trading expert — a full-chain expert covering the power spot market, medium/long-term trading, ancillary services, capacity mechanisms, virtual power plants (VPP), demand response, and carbon markets. Use when answering questions on market-based power trading, bidding and settlement rules, provincial spot market policies, renewables entering the market (Document No. 136), VPP business models, carbon prices and CCER, green power/green electricity certificates and CBAM. Compiled from six professional books and public policy research through 2026-09.
 ---
 
 # Electricity Trading Expert SKILL
 
 > 🌐 Chinese version: [SKILL.md](SKILL.md)
 
-> **Version**: v1.0 (built 2026-09-12) | **Knowledge sources**: full distillation of 6 professional books + 2026-09 web research (source list in Chapter 15)
+> **Version**: v1.0 (compiled 2026-09) | **Knowledge sources**: six professional books plus policy and market research through 2026-09 (list in Chapter 15)
 > **Positioning**: This file is a domain skill (Skill) injectable into an AI assistant. Once loaded, the AI should answer questions on power trading, spot markets, virtual power plants, and carbon markets as a "senior China electricity market expert".
 
 ---
@@ -507,7 +507,7 @@ The 8 pilots averaged CNY 44.1/tonne in 2024 (~54% below the national market): B
 
 ## 15. Knowledge Sources and Maintenance
 
-### 15.1 Book Sources (full PDF distillation in the workspace)
+### 15.1 Book Sources
 1. 101 Questions on the Electricity Spot Market (《电力现货市场101问》), compiled by the National Power Dispatching and Control Center, China Electric Power Press, 2021 — the backbone of spot concepts, mechanisms, and domestic/foreign models
 2. Electricity Spot Market in Practice (《电力现货市场实务》), compiled by the National Power Dispatching and Control Center, China Electric Power Press, 2023 — architecture, clearing, settlement, technical support systems, provincial practice
 3. Principles of Power System Economics (《电力系统经济学原理》, Kirschen & Strbac), trans. Zhu Zhizhong — market economics theory, LMP/congestion/investment theory, classic worked examples
@@ -515,10 +515,10 @@ The 8 pilots averaged CNY 44.1/tonne in 2024 (~54% below the national market): B
 5. Carbon Management: From Zero to Carbon Neutrality (《碳管理：从零通往碳中和》, Wang Jun) — carbon accounting systems, carbon asset development, corporate carbon management
 6. Principles of Economics, micro/macro volumes (《经济学原理》微观/宏观分册, Mankiw) — the basic economics framework (supply-demand, elasticity, market structure, externalities)
 
-### 15.2 Web Research Sources (2026-09-12; see _extract/distilled/web_market.md and web_vpp_carbon.md for details)
+### 15.2 Policy and Market Research (2025-2026)
 - Policies: NDRC Order No. 20, No. 1217, No. 1501, No. 136, No. 357, No. 394, No. 1656, the Basic Rules for the Electricity Ancillary Services Market (2025-04), the Interim Regulations on the Administration of Carbon Emission Trading (Decree No. 775), the CBAM regulation, etc.;
 - Data: NEA "2025 China Electricity Market Development Report", annual reports of provincial power exchanges, Fudan Carbon Price Index, ICAP;
-- The special research includes 40+ source URLs (annotated item by item in the source notes).
+- All items are annotated with source URLs and dates; the full research records are in the research notes under knowledge/.
 
 ### 15.3 Open-Source Toolbox (modeling and data)
 | Purpose | Tool | Address |
@@ -532,11 +532,7 @@ The 8 pilots averaged CNY 44.1/tonne in 2024 (~54% below the national market): B
 | Electricity carbon intensity data | Electricity Maps / WattTime | electricitymaps.com / watttime.org |
 | China carbon data | National carbon trading platform / China Carbon Emissions Registration (中碳登) / CEADs | cets.com.cn / cnemission.com / ceads.net |
 
-### 15.4 Intermediate Artifact Index (under _extract/ in this directory)
-- `distilled_src/`: OCR originals and split segments of each book; `distilled/`: L1 component notes (14) + L2 book-level notes (9);
-- `note_电力现货市场实务.md`: close-reading notes for the practice book; `现货市场101问_full.txt`: full text of the 101 Questions book.
-
-### 15.5 Known Limitations
+### 15.4 Known Limitations
 - Some scanned files carry OCR noise; occasional typos may remain (corrected by context where possible, formulas described in words);
 - The carbon practice book's data are from around 2016; for post-2021 national carbon market rules, Sections 10.1~10.5 (web research) prevail;
 - Items marked "(to be verified)" (about 8) should prompt the user to verify when cited;
