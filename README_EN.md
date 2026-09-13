@@ -21,15 +21,15 @@ Covers spot markets, medium & long-term trading, ancillary services and capacity
 | Carbon markets | National ETS expansion (steel/cement/aluminum), CEA price history, CCER restart and methodologies, MRV and verification, pilot prices, CBAM and green-certificate linkage |
 | Strategy & risk | Generator/retailer/consumer strategies, market-power metrics (HHI/KSI/RSI/TTS), five risk classes, market-entry capability checklist |
 
-### [Virtual Power Plant Expert (virtual-power-plant-expert)](skills/virtual-power-plant/SKILL.md) — Chinese
+### [Virtual Power Plant Expert (virtual-power-plant-expert)](skills/virtual-power-plant/SKILL_EN.md)
 
-Covers VPP concept distinctions, resource aggregation and assessment, the three development stages (solicitation-based / market-based / self-dispatch), market participation mechanisms, business models and profitability, control & optimization technology, Chinese policy (Doc. 357 and provincial rules), and international benchmarks. Companion to the Electricity Trading Expert: clearing, settlement and price-cap mechanics live there; VPP implementation and operations live here.
+Covers VPP concept distinctions, resource aggregation and assessment, the three development stages (solicitation-based / market-based / autonomous-dispatch), market participation mechanisms, business models and profitability, control & optimization technology, Chinese policy (Doc. 357 and provincial rules), and international benchmarks. Chinese original: [SKILL.md](skills/virtual-power-plant/SKILL.md). Companion to the Electricity Trading Expert: clearing, settlement and price-cap mechanics live there; VPP implementation and operations live here.
 
 | Domain | Coverage |
 |---|---|
 | Concepts & distinctions | VPP definition and "positive/negative plant" dual role, distinctions vs. DR/microgrid/energy-efficiency plant (reverse power flow, physical vs. logical aggregation), the market-stability criterion |
 | Resource side | Flexible loads / distributed generation / storage, A–D quadrant classification, five flexibility factors, industry adjustable ratios and resource-base estimates |
-| Three-stage framework | Solicitation-based (subsidy-driven) → market-based (price signals) → self-dispatch (cross-space scheduling): criteria, transition conditions, coexistence |
+| Three-stage framework | Solicitation-based (subsidy-driven) → market-based (price signals) → autonomous dispatch (cross-space scheduling): criteria, transition conditions, coexistence |
 | Solicitation practice | Jiangsu model (peak-price fund pool + valley-filling auction, 4.02 GW record), Shanghai model (four-party operation, precision response, auction trading) |
 | Market-based mechanisms | Participation flows in energy/ancillary/green-certificate/carbon markets, CVPP vs. TVPP, US entity taxonomy (SC/LSE/CSP/MSP), Finnish aggregator regulatory insights |
 | Control & optimization | Four forecast types (load/output/price/flexibility), three-layer control mechanisms, Jibei FUN-power platform architecture |
@@ -49,7 +49,8 @@ energy-skills/
 │   │   ├── SKILL.md                           ← skill file (Chinese, with frontmatter, directly registerable)
 │   │   └── SKILL_EN.md                        ← English translation
 │   └── virtual-power-plant/
-│       └── SKILL.md                           ← VPP skill file (Chinese, frontmatter, directly registerable)
+│       ├── SKILL.md                           ← VPP skill file (Chinese, frontmatter, directly registerable)
+│       └── SKILL_EN.md                        ← English translation
 └── knowledge/                                 ← thematic notes and research records behind the skills
     ├── 电力现货市场101问-A/B/C-*.md                (Spot Market 101 Questions — three thematic notes)
     ├── 电力系统经济学原理-主题笔记.md               (Principles of Power System Economics)
@@ -62,7 +63,7 @@ energy-skills/
 
 ## Usage
 
-- **Inject into any AI assistant**: paste the full text of a SKILL file as system prompt or context (the Chinese versions are denser; the English translation of the electricity-trading skill is provided for international models).
+- **Inject into any AI assistant**: paste the full text of a SKILL file as system prompt or context (the Chinese versions are denser; both skills ship with English translations for international models).
 - **Register as a skill**: place a skill directory into the skills directory of AI coding tools that support custom skills (e.g. Claude Code).
 - **Read directly**: the notes under knowledge/ are standalone quick-reference handbooks with document numbers, figures and comparison tables.
 
@@ -86,10 +87,9 @@ energy-skills/
 ## Roadmap
 
 - [x] Electricity Trading Expert (Chinese, English)
-- [x] Virtual Power Plant Expert (Chinese)
+- [x] Virtual Power Plant Expert (Chinese, English)
 - [ ] Carbon asset management skill (compliance calendar, CCER development economics, carbon finance)
 - [ ] Quantitative spot-bidding skill (load forecasting, price forecasting, bid simulation)
-- [ ] English version of the VPP skill
 
 ---
 

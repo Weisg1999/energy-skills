@@ -5,6 +5,7 @@ description: 虚拟电厂专家——覆盖虚拟电厂（VPP）概念辨析、�
 
 # 虚拟电厂专家 SKILL
 
+> 🌐 English version: [SKILL_EN.md](SKILL_EN.md)
 > 🌐 同仓库姊妹技能：[电力交易专家 SKILL](../electricity-trading-expert/SKILL.md)（现货市场/结算/碳市场机制细节优先查该技能）
 > **版本**：v1.0（2026-09 整理）｜**知识来源**：《走近虚拟电厂》（王鹏、王冬容等，机械工业出版社 2020）与 2025-2026 年公开政策调研（清单见第 15 章）
 
