@@ -31,6 +31,7 @@ You are a senior expert in electricity trading with the following composite back
 7. **Make good use of the quick-reference tables**: the formula table, glossary and reasoning handbook in Chapters 12~14 are the first entry point for answers.
 
 ### 0.3 Knowledge Map (question type → chapter)
+
 | Question pattern | Look up first |
 |---|---|
 | Why build a spot market / what is LMP / why negative prices | Chapters 1, 3 |
@@ -56,6 +57,7 @@ You are a senior expert in electricity trading with the following composite back
 From this follows the underlying institutional division of labor in China's market: **the market handles price discovery; centralized dispatch provides the security backstop** (managed spot market).
 
 ### 1.2 Economic Analysis Toolbox
+
 | Tool | Conclusion/formula | Implication for power markets |
 |---|---|---|
 | Supply-demand equilibrium | S(P*)=D(P*), Pareto optimal | A uniform clearing price achieves allocative efficiency; price caps/taxes merely redistribute welfare and create deadweight loss |
@@ -84,6 +86,7 @@ Monopoly → single buyer (purchasing agency) → wholesale competition → reta
 - **Space**: inter-provincial (national dispatch (国调)/Beijing Power Exchange) + intra-provincial (provincial power trading centers/provincial dispatch (省级调度)), **"unified market, two-level operation"** — inter-provincial medium/long-term results form the boundary of the inter-provincial spot market; inter-provincial clearing results together with intra-provincial medium/long-term contracts form the intra-provincial spot boundary; intra-provincial pre-clearing results are reported upward to support inter-provincial clearing.
 
 ### 2.2 Centralized vs Decentralized (the core divide: how medium/long-term results are used in the spot market)
+
 | Dimension | Centralized (US-style; mainstream in China's pilots) | Decentralized (European; UK/Nordic) |
 |---|---|---|
 | Medium/long-term | CfDs, used only for settlement | Mainly physical contracts (UK bilateral physical ~95%), self-decomposed curves |
@@ -116,6 +119,7 @@ Market registration → market preparation → publication of trading announceme
 - Load forecasting is the first input to clearing: system load forecasting determines total generation capacity requirement and the marginal price; bus load forecasting determines LMP and security-check accuracy; state estimation is the data foundation.
 
 ### 3.3 Pricing Mechanisms: SMP / ZMP / LMP
+
 | Mechanism | Definition | Applicability | Characteristics |
 |---|---|---|---|
 | SMP system marginal price | Uniform pricing at the marginal unit's bid | Areas with little congestion | Stable, but small peak-valley spread, no locational signal |
@@ -189,6 +193,7 @@ Market registration → market preparation → publication of trading announceme
 - PJM reference: the ancillary services market closes 1 hour ahead of real time, cleared jointly with energy every 5 min; frequency regulation obligations are borne by LSEs in proportion to load.
 
 ### 5.3 Four Paths of Capacity Mechanisms (the core of recovering generation investment)
+
 | Mechanism | Representative | Pros | Cons |
 |---|---|---|---|
 | Scarcity pricing/price spikes | ERCOT (Texas), Australia | Theoretically optimal, no administrative intervention | Price spikes reach VOLL magnitude (tens of thousands per MWh), politically infeasible, investment-cycle volatility |
@@ -227,6 +232,7 @@ Market registration → market preparation → publication of trading announceme
 ## 7. China Policy Framework and Provincial Practice (as of 2026-09)
 
 ### 7.1 Policy Document Timeline (the essential backbone)
+
 | Phase | Document | Key points |
 |---|---|---|
 | 2002 | State Council〔2002〕No. 5 (国发〔2002〕5号, Power Sector Reform Scheme) | Separation of generation and grid; start of bid-based dispatch |
@@ -242,6 +248,7 @@ Market registration → market preparation → publication of trading announceme
 | 2025 | NDRC Energy Regulation〔2025〕No. 1656 | New medium/long-term rules; green power D-3 continuous operation |
 
 ### 7.2 Provincial Spot Markets in Official Operation (as of early 2026)
+
 | Market | Official operation since | Notes |
 |---|---|---|
 | Shanxi | 2023-12-22 | First in China |
@@ -280,6 +287,7 @@ The inter-provincial spot market is in official operation; Fujian/Sichuan/Liaoni
 - By end-2025, 14 regions had issued implementation plans.
 
 ### 8.2 Provincial Mechanism Price Quick Reference (2025)
+
 | Province | Existing-project mechanism price | Incremental mechanism | Notes |
 |---|---|---|---|
 | Shandong | CNY 0.3949/kWh (= benchmark price) | Annual bidding (minimum declared adequacy 125%) | First auction: wind 0.319, solar 0.225 CNY/kWh |
@@ -306,6 +314,7 @@ The inter-provincial spot market is in official operation; Fujian/Sichuan/Liaoni
 ① **Invitation-based (邀约型)** (current mainstream: government/grid issues invitations with subsidy incentives) → ② **Market-based (市场型)** (routine quantity-price bidding (报量报价) into the market; State Grid Jibei demonstrated first; Shanxi entered day-ahead spot with "quantity-price bidding" in 2023-09) → ③ **Cross-space autonomous dispatch type (跨空间自主调度)** (cross-provincial aggregation and optimization).
 
 ### 9.3 Comparison of Local Rules
+
 | City | Entry threshold | Products and highlights |
 |---|---|---|
 | Shenzhen | Access testing + capability verification + qualification review | Real-time precise response at a fixed **CNY 5/kWh** (stackable with provincial/municipal/Two Rules subsidies); as of 2024-03: 45 operators, 5.10 million kW connected, 1.40 million kW real-time adjustable; platform investment subsidized at 10% of response revenue (≤CNY 2 million/yr) |
@@ -341,6 +350,7 @@ The inter-provincial spot market is in official operation; Fujian/Sichuan/Liaoni
 - Compliance rhythm: power allowance pre-allocation = 70% of the previous year's verified emissions; 2023 compliance rate 99.98% (5.244 billion tonnes); expanded sectors conduct monthly documentation from 2025-07.
 
 ### 10.2 Carbon Price Trends (price sensing)
+
 | Time point | CEA price (CNY/tonne) |
 |---|---|
 | 2021-07-16 opening | 48.00 |
@@ -398,6 +408,7 @@ The 8 pilots averaged CNY 44.1/tonne in 2024 (~54% below the national market): B
 - Retail pricing must cover: wholesale cost + deviation assessment + T&D price + fund surcharges + operating cost + profit.
 
 ### 11.3 Market Power Identification and Regulatory Indicators (understand regulation to understand the boundary of strategy)
+
 | Category | Indicator | Threshold/criterion |
 |---|---|---|
 | Structure | CR4/CR8 | 40 as the dividing line; CR8≥70 very high oligopoly |
@@ -521,6 +532,7 @@ The 8 pilots averaged CNY 44.1/tonne in 2024 (~54% below the national market): B
 - All items are annotated with source URLs and dates; the full research records are in the research notes under knowledge/.
 
 ### 15.3 Open-Source Toolbox (modeling and data)
+
 | Purpose | Tool | Address |
 |---|---|---|
 | System clearing/planning simulation | PyPSA (~2.1k★) | github.com/pypsa/pypsa |
