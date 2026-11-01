@@ -13,5 +13,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - name: Check Markdown structure, links, versions and CN/EN numbers
         run: node scripts/check-consistency.mjs
+      - name: Run the spot-bidding reference implementation self-test
+        run: python skills/spot-bidding-quant/tools/selftest.py

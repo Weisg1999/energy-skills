@@ -40,6 +40,25 @@ Covers VPP concept distinctions, resource aggregation and assessment, the three 
 | Policy & practice | Doc. 357 (2027/2030 targets), Doc. 93, the national standard series (GB/T 47241-2026 now in force), at least 20 provinces with dedicated policies and 15 provinces with market rules (Liaoning, Fujian and Anhui are new in 2026; Yunnan's framework dates from 2025), the official national tally (470 projects / 16.85 GW tested capability) versus the 2026 media figure of 120 GW of connected capacity, four capacity-metric distinctions, green direct connection (100 projects / 34.10 GW), DR subsidy landscape, V2G Doc. 241 |
 | International benchmarks | Germany's Next Kraftwerke and aFRR price signals, the South Australia VPP handover to AGL, US Order 2222 per-ISO compliance timetable (CAISO / ISO-NE 2026-11-01) and DOE 80–160 GW goal, UK DFS, Finnish aggregators |
 
+### [Spot Bidding Quant (spot-bidding-quant)](skills/spot-bidding-quant/SKILL_EN.md)
+
+Covers a reproducible chain from raw data to a submitted bid: load, price and output forecasting, forecast-bias correction, quantity-price curves and declared-quantity decisions, retail procurement portfolios, bid simulation and market-structure identification, rolling backtests and T+1 PnL attribution. Chinese original: [SKILL.md](skills/spot-bidding-quant/SKILL.md). Ships with a **zero-dependency Python reference implementation** (`tools/`) and **synthetic sample data** (`data/sample/`); `python tools/selftest.py` runs and asserts the figures quoted in the text. Complementary to the other two skills: rules and settlement live in Electricity Trading Expert, aggregation and operations in Virtual Power Plant Expert, and this skill answers only "how to compute, how to bid, how to verify".
+
+| Domain | Coverage |
+|---|---|
+| Bidding space | The ten rule parameters to confirm before bidding (segment count, price caps, secondary cap, offer adequacy, minimum load, contract decomposition, etc.), three bidding identities, and rule text versus system implementation |
+| Data & leakage | Minimum data set, availability and disclosure channels, cleaning rules, feature-availability timing table (to prevent look-ahead leakage) |
+| Load forecasting | Seasonal naive baseline → similar-day (±25% abnormal-day filter) → AR/ARIMAX; temperature correction; translating forecast error into economic value |
+| Price forecasting | Residual load and marginal-cost mechanics, end-to-end learning routes, separate modelling of spikes and negative prices, direction accuracy / spike recall / pinball loss |
+| Bidding theory | Optimal bid for a price taker = marginal cost (falsifiable), pivotal-unit residual-demand pricing, compliance red lines, contract coverage and risk appetite |
+| Thermal bidding | Cost structure to multi-segment curves, start-up decisions, separate accounting for must-run units |
+| Renewables & storage | Declared quantity under asymmetric penalties, storage arbitrage threshold, co-located solar-plus-storage bidding, input contract for revenue estimates |
+| Retail & consumers | Forecast → procurement portfolio → tariff design, the 2026 wholesale-retail inversion constraint, scenario and CVaR exposure simulation |
+| Bid simulation | Marginal clearing, bid sweep (pivotal range and the dispatch cliff), HHI concentration, and the limits of simulation |
+| Backtest & attribution | Rolling origin, out-of-sample residual correction, metric set, four-way T+1 attribution (forecast / bid / execution / rules) |
+| Engineering & submission | D-1 timeline, submission checklist, amendment audit trail, monitoring and fallback, build-versus-buy |
+| Production engines | What a production clearing engine contains (SCUC, SCED, RUC, joint clearing, inter-regional ATC, capacity) and why a teaching sandbox differs structurally, not just in accuracy |
+
 ## Repository Structure
 
 ```
@@ -48,14 +67,19 @@ energy-skills/
 ├── README_EN.md                               ← this file
 ├── LICENSE                                    ← CC BY-NC 4.0
 ├── scripts/check-consistency.mjs              ← checker (Node 24, no third-party deps)
-├── .github/workflows/consistency.yml          ← CI: tables / links / versions / CN-EN numbers
+├── .github/workflows/consistency.yml          ← CI: tables / links / versions / CN-EN numbers + Python self-test
 ├── skills/
 │   ├── electricity-trading-expert/
 │   │   ├── SKILL.md                           ← skill file (Chinese, with frontmatter, directly registerable)
 │   │   └── SKILL_EN.md                        ← English translation
-│   └── virtual-power-plant/
-│       ├── SKILL.md                           ← VPP skill file (Chinese, frontmatter, directly registerable)
-│       └── SKILL_EN.md                        ← English translation
+│   ├── virtual-power-plant/
+│   │   ├── SKILL.md                           ← VPP skill file (Chinese, frontmatter, directly registerable)
+│   │   └── SKILL_EN.md                        ← English translation
+│   └── spot-bidding-quant/
+│       ├── SKILL.md                           ← spot-bidding skill (Chinese, frontmatter, directly registerable)
+│       ├── SKILL_EN.md                        ← English translation
+│       ├── tools/                             ← zero-dependency reference implementation (forecast / bid / simulate / backtest / selftest)
+│       └── data/sample/                       ← synthetic sample data (60 days × 96 slots)
 └── knowledge/                                 ← thematic notes and research records behind the skills
     ├── 电力现货市场101问-A/B/C-*.md                (Spot Market 101 Questions — three thematic notes)
     ├── 电力系统经济学原理-主题笔记.md               (Principles of Power System Economics)
@@ -70,12 +94,13 @@ energy-skills/
     ├── 省级市场状态表-2026-11.md                   (provincial market status table: 33 markets + southern region)
     ├── 索引与口径-2026-11.md                       (policy index / caliber dictionary / source grading / watchlist)
     ├── INDEX_EN-2026-11.md                        (English index, key figures and condensed provincial table)
+    ├── 调研-量化报价与厂商实践-2026-11.md           (vendor practice: Lumin AI participant side, Tsintergy operations side)
     └── 黄金问答集-2026-11.md                       (28 golden Q&As, also the regression checklist)
 ```
 
 ## Usage
 
-- **Inject into any AI assistant**: paste the full text of a SKILL file as system prompt or context (the Chinese versions are denser; both skills ship with English translations for international models).
+- **Inject into any AI assistant**: paste the full text of a SKILL file as system prompt or context (the Chinese versions are denser; every skill ships with an English translation for international models).
 - **Register as a skill**: place a skill directory into the skills directory of AI coding tools that support custom skills (e.g. Claude Code).
 - **Read directly**: the notes under knowledge/ are standalone quick-reference handbooks with document numbers, figures and comparison tables.
 - **Verify and maintain**: check document numbers and status in [knowledge/索引与口径-2026-11.md](knowledge/索引与口径-2026-11.md); look up province-specific answers in [knowledge/省级市场状态表-2026-11.md](knowledge/省级市场状态表-2026-11.md); test whether an answer has drifted using [knowledge/黄金问答集-2026-11.md](knowledge/黄金问答集-2026-11.md). English-only readers should start from [knowledge/INDEX_EN-2026-11.md](knowledge/INDEX_EN-2026-11.md).
@@ -100,6 +125,13 @@ energy-skills/
 
 ## Update Log
 
+### 2026-11-01 (v1.3)
+- **Third skill: Spot Bidding Quant (Chinese and English)**. Covers the data layer and leakage prevention, load/price/output forecasting, bias correction, quantity-price curves and declared-quantity decisions, retail procurement portfolios, bid simulation, rolling backtests and four-way T+1 attribution. Scope is "how to compute, how to bid, how to verify"; market rules and settlement stay in the Electricity Trading Expert, aggregation and operations in the Virtual Power Plant Expert.
+- **Zero-dependency reference implementation plus synthetic data**: `skills/spot-bidding-quant/tools/` (`forecast` / `bid` / `simulate` / `backtest` / `selftest`, standard library only) and `data/sample/synthetic_spot_60d.csv` (60 days × 96 slots, generated with a fixed seed, not real market data). `python tools/selftest.py` asserts the figures quoted in the text, so prose and code cannot drift apart silently.
+- **Falsifiable conclusions**: the optimal bid of a price taker equals marginal cost (no markup is computed for price takers); pivotal units price on residual demand; the storage arbitrage threshold is cycle cost divided by efficiency (68.2 CNY/MWh in the sample); on the synthetic sample the corrected load forecast improves MAE by 10.8% over seasonal naive, and price direction accuracy is 61.4%.
+- **Vendor material split by side and graded**: participant side (Shanghai Lumin AI — all performance figures grade C, never benchmarks) and operations/rules side (Beijing Tsintergy — awarded the CNY 4.62 million "clearing-algorithm upgrades" package of the Southern Regional spot technical-support system in 2026-05, grade B tender notice). On this basis Chapter 10.4, "production clearing engine vs teaching simulation", explains how dropping any of SCUC/SCED/RUC/joint clearing/inter-regional ATC/capacity changes what a conclusion can claim.
+- **Compliance boundaries**: no regulatory-evasion bidding practices, no economic or capacity withholding playbooks, no collusion strategies; market-power content is for identification and self-checks only; simulation results must be labelled "mechanism demonstration, not a revenue forecast".
+
 ### 2026-11-01 (v1.2)
 - **Six new maintenance files**: three 2026-10 incremental research notes (electricity market / carbon market & CBAM / VPP policy), a provincial market status table, an index-and-caliber handbook, and a golden Q&A set.
 - **Skill structure**: Section 15.2 of both skills (Chinese and English) now links the new files; each opening adds a "maintenance entry points + 2026-2027 open items" block; §0.2 adds A/B/C/D source grading and a province-lookup pointer; Chapters 2–11 (5, 6, 8, 9, 10 for the VPP skill) carry a "chapter data cutoff" line; §7.1 adds a document-status convention; both openings point to the sister skill, making the split explicit ("market rules here, aggregation there") with pointers rather than duplicated figures.
@@ -118,8 +150,8 @@ energy-skills/
 
 - [x] Electricity Trading Expert (Chinese, English)
 - [x] Virtual Power Plant Expert (Chinese, English)
+- [x] Quantitative spot-bidding skill (load forecasting, price forecasting, bid simulation)
 - [ ] Carbon asset management skill (compliance calendar, CCER development economics, carbon finance)
-- [ ] Quantitative spot-bidding skill (load forecasting, price forecasting, bid simulation)
 - [ ] 2026-12 incremental review (spot rules finalized, national VPP management measure, 2027 No. 136 auctions)
 
 ---

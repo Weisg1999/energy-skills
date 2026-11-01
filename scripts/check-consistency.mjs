@@ -84,7 +84,7 @@ const versioned = [
 ];
 for (const file of versioned) {
   const text = read(file);
-  if (!/v1\.2/.test(text)) fail(file, 1, 'missing current version marker v1.2');
+  if (!/v1\.3/.test(text)) fail(file, 1, 'missing current version marker v1.3');
   if (/v1\.1\s*[（(]\s*(updated|更新)/i.test(text)) {
     fail(file, 1, 'stale version header v1.1');
   }
@@ -112,6 +112,7 @@ const parity = [
 const skillPairs = [
   ['skills/virtual-power-plant/SKILL.md', 'skills/virtual-power-plant/SKILL_EN.md'],
   ['skills/electricity-trading-expert/SKILL.md', 'skills/electricity-trading-expert/SKILL_EN.md'],
+  ['skills/spot-bidding-quant/SKILL.md', 'skills/spot-bidding-quant/SKILL_EN.md'],
 ];
 for (const [cnRel, enRel] of skillPairs) {
   const cnFile = join(root, cnRel);
