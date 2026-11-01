@@ -59,6 +59,8 @@ Covers a reproducible chain from raw data to a submitted bid: load, price and ou
 | Engineering & submission | D-1 timeline, submission checklist, amendment audit trail, monitoring and fallback, build-versus-buy |
 | Production engines | What a production clearing engine contains (SCUC, SCED, RUC, joint clearing, inter-regional ATC, capacity) and why a teaching sandbox differs structurally, not just in accuracy |
 
+Readers without a power-sector background should start with the four **Power System 101** notes under `knowledge/`: [landscape](knowledge/电力系统通识-A-格局与主体.md) (who generates, who transmits, who writes the rules), [fundamentals](knowledge/电力系统通识-B-发输配变用.md) (voltage, frequency, reserve, stability), [reform history](knowledge/电力系统通识-C-改革史.md) (the 2002 and 2015 restructurings), and [new actors](knowledge/电力系统通识-D-新角色与现货市场.md) (renewables, storage, VPPs and system costs). These are knowledge notes, not skills; every term and institution used by the three skills is defined there.
+
 ## Repository Structure
 
 ```
@@ -87,6 +89,10 @@ energy-skills/
     ├── 中国碳排放权交易实务-主题笔记.md             (China Carbon Emission Trading Practice)
     ├── 碳管理-从零通往碳中和-主题笔记.md            (Carbon Management)
     ├── 走近虚拟电厂-主题笔记.md                    (Approaching Virtual Power Plants)
+    ├── 电力系统通识-A-格局与主体.md                 (Power System 101 A: landscape — grids, generators, institutions)
+    ├── 电力系统通识-B-发输配变用.md                 (Power System 101 B: fundamentals — generation to consumption)
+    ├── 电力系统通识-C-改革史.md                     (Power System 101 C: reform history, 1985 to 2025)
+    ├── 电力系统通识-D-新角色与现货市场.md           (Power System 101 D: spot markets, renewables, storage, VPPs)
     ├── 调研-*-2026-09(.增量).md                    (policy & market research records dated 2026-09)
     ├── 调研-电力市场2026-10增量.md                 (electricity-market update, 2026-11)
     ├── 调研-碳市场与CBAM-2026-10增量.md            (carbon market & CBAM update, 2026-11)
@@ -125,6 +131,11 @@ energy-skills/
 
 ## Update Log
 
+### 2026-11-01 (v1.3 addendum: Power System 101)
+- **Four new knowledge notes**: [landscape](knowledge/电力系统通识-A-格局与主体.md), [fundamentals](knowledge/电力系统通识-B-发输配变用.md), [reform history](knowledge/电力系统通识-C-改革史.md), [new actors](knowledge/电力系统通识-D-新角色与现货市场.md). They form a general-education layer — institutions, terminology and history for readers without a power-sector background — and deliberately carry no provincial rule parameters or bidding methods.
+- **Three caliber warnings built into the text**: no current installed-capacity share for the five majors (pointing to CLPIA instead); "four smalls" is a historical label and Guohua has merged into CHN Energy; any change in system operation fees must state province and month.
+- **Index wiring**: entry points in the skills section and structure trees of both READMEs, the file map in `knowledge/INDEX_EN-2026-11.md`, and one ownership rule in `knowledge/索引与口径-2026-11.md`, so general-education content is not duplicated inside the skills.
+
 ### 2026-11-01 (v1.3)
 - **Third skill: Spot Bidding Quant (Chinese and English)**. Covers the data layer and leakage prevention, load/price/output forecasting, bias correction, quantity-price curves and declared-quantity decisions, retail procurement portfolios, bid simulation, rolling backtests and four-way T+1 attribution. Scope is "how to compute, how to bid, how to verify"; market rules and settlement stay in the Electricity Trading Expert, aggregation and operations in the Virtual Power Plant Expert.
 - **Zero-dependency reference implementation plus synthetic data**: `skills/spot-bidding-quant/tools/` (`forecast` / `bid` / `simulate` / `backtest` / `selftest`, standard library only) and `data/sample/synthetic_spot_60d.csv` (60 days × 96 slots, generated with a fixed seed, not real market data). `python tools/selftest.py` asserts the figures quoted in the text, so prose and code cannot drift apart silently.
@@ -152,6 +163,11 @@ energy-skills/
 - [x] Virtual Power Plant Expert (Chinese, English)
 - [x] Quantitative spot-bidding skill (load forecasting, price forecasting, bid simulation)
 - [ ] Carbon asset management skill (compliance calendar, CCER development economics, carbon finance)
+- [x] **Power System 101** — knowledge base first, skill second
+  - **Purpose**: for readers with no power-sector background. It answers three questions — who the industry is made of, how electricity gets from coal, wind and sun to the socket, and why the sector has been restructured repeatedly. It does **not** carry provincial rule parameters or bidding methods (those belong to the three skills); it gives the terms, institutions and figures used in those skills somewhere to land.
+  - **First version complete**: [A landscape](knowledge/电力系统通识-A-格局与主体.md), [B fundamentals](knowledge/电力系统通识-B-发输配变用.md), [C reform history](knowledge/电力系统通识-C-改革史.md), [D new actors](knowledge/电力系统通识-D-新角色与现货市场.md). Written to be textbook-accurate yet readable for non-specialists: every term defined at first use, one quick-reference table and one common-misconceptions list per note, every figure carrying a source and a date.
+  - **Covered in this version**: State Grid / China Southern Power Grid / Inner Mongolia West supply boundaries; the five majors and the "four smalls" (a historical label — Guohua has merged into CHN Energy); provincial energy groups; equipment and secondary-system vendors; research and standards bodies; trading, dispatch and regulatory institutions; power vs. energy, voltage levels, frequency and reserve, the three stability classes, protection, and the flexibility of seven generation types; the reform path from funded power construction to Document No. 136; spot markets, high renewables share, storage and grid-forming, VPPs, green direct connection and system costs.
+  - **Next**: extract a lightweight `SKILL.md` Q&A layer from the four notes (term definitions, institution lookup, reform timeline first), with the skill citing the notes rather than duplicating them.
 - [ ] 2026-12 incremental review (spot rules finalized, national VPP management measure, 2027 No. 136 auctions)
 
 ---

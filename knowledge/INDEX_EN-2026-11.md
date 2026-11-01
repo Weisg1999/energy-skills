@@ -18,6 +18,10 @@
 | `中国碳排放权交易实务-主题笔记.md` | Book note | China ETS mechanics (written ~2016; mechanisms valid, figures need updating) |
 | `碳管理-从零通往碳中和-主题笔记.md` | Book note | Corporate carbon management, Scope 1/2/3, abatement cost |
 | `走近虚拟电厂-主题笔记.md` | Book note | VPP concepts, control, business models (book published 2020; data 2018-2020) |
+| `电力系统通识-A-格局与主体.md` | Primer | Industry landscape: State Grid / CSG / Inner Mongolia West, five majors and the "four smalls", equipment vendors, research bodies, trading-dispatch-regulation split, five common misconceptions |
+| `电力系统通识-B-发输配变用.md` | Primer | Fundamentals for non-specialists: power vs. energy, voltage levels, frequency and reserve, three stability classes, protection and dispatch automation, losses, flexibility of seven generation types, unit conversions |
+| `电力系统通识-C-改革史.md` | Primer | Reform history 1985-2026 in eight stages, each with problem / measure / impact / legacy; three threads (price, actors, institutions) and five misconceptions |
+| `电力系统通识-D-新角色与现货市场.md` | Primer | Spot markets and system operation, high-renewables technical issues, storage (grid-following vs. grid-forming), VPPs, V2G, green direct connection, system costs and who bears them |
 | `调研-电力市场政策与开源资源-2026-09.md` | Research note | 2026-09 policy and open-source tooling |
 | `调研-虚拟电厂与碳市场-2026-09.md` | Research note | 2026-09 VPP and carbon-market findings |
 | `调研-速查合并-2026-09.md` | Research note | 2026-09 merged quick-reference |
