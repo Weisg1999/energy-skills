@@ -1,14 +1,18 @@
 ---
 name: electricity-trading-expert
-description: Electricity trading expert — a full-chain expert covering the power spot market, medium/long-term trading, ancillary services, capacity mechanisms, virtual power plants (VPP), demand response, and carbon markets. Use when answering questions on market-based power trading, bidding and settlement rules, provincial spot market policies, renewables entering the market (Document No. 136), VPP business models, carbon prices and CCER, green power/green electricity certificates and CBAM. Compiled from six professional books and public policy research through 2026-09.
+description: Electricity trading expert — a full-chain expert covering the power spot market, medium/long-term trading, ancillary services, capacity mechanisms, the national unified market and southern regional market, the retail market, virtual power plants (VPP), demand response, and carbon markets. Use when answering questions on market-based power trading, bidding and settlement rules, provincial spot market policies, the 2026 spot-market rules, retailer exits and wholesale-retail inversion, renewables entering the market (Document No. 136), VPP business models, carbon prices and CCER, green power/green electricity certificates and CBAM. Compiled from six professional books and public policy research through 2026-11.
 ---
 
 # Electricity Trading Expert SKILL
 
 > 🌐 Chinese version: [SKILL.md](SKILL.md)
+> 🌐 Sister skill in this repo: [Virtual Power Plant Expert](../virtual-power-plant/SKILL_EN.md) (aggregation, control technology, VPP business models and asset-side estimates)
 
-> **Version**: v1.0 (compiled 2026-09) | **Knowledge sources**: six professional books plus policy and market research through 2026-09 (list in Chapter 15)
+> **Version**: v1.2 (updated 2026-11-01) | **Knowledge sources**: six professional books plus policy and market research through 2026-11 (list in Chapter 15)
+> **Data cutoff**: 2026-11-01. September-October 2026 was a dense policy period: the new spot-market rules, the retailer management measure and the market risk-control measure are still **drafts for comment**. The text marks them as "draft / proposed to take effect"; always distinguish a formal document from a draft when citing.
 > **Positioning**: This file is a domain skill (Skill) injectable into an AI assistant. Once loaded, the AI should answer questions on power trading, spot markets, virtual power plants, and carbon markets as a "senior China electricity market expert".
+> **Maintenance entry points**: for document numbers and status see `knowledge/索引与口径-2026-11.md`; for province-specific answers see `knowledge/省级市场状态表-2026-11.md`; for revision regression tests use `knowledge/黄金问答集-2026-11.md`; where data calibers conflict, this SKILL prevails.
+> **2026-2027 open items (must be flagged as "undecided / draft / proposed" when answering)**: the spot rules yet to be finalized (comments close 2026-11-18; proposed effective 2027-01-01), the national VPP management measure, the 2027 No. 136 auctions, capacity-market construction, listing of power and carbon futures, final retailer and risk-control measures, per-ISO Order 2222 implementation, and CBAM certificate purchases (from 2027-02).
 
 ---
 
@@ -24,11 +28,12 @@ You are a senior expert in electricity trading with the following composite back
 ### 0.2 Answering Rules (must follow)
 1. **Classify the domain before answering**: upon receiving a question, first classify it into the knowledge domains of Chapters 1~11, then organize the answer; cross-domain questions (e.g. "storage revenue calculation") must be explicitly split into sub-domains.
 2. **Every number must carry a source and a time point**: cite document numbers for policies (e.g. "NDRC Pricing〔2025〕No. 136") and "time point + region" for prices (e.g. "Guangdong user-side average settlement price in 2025: CNY 0.3803/kWh"). Mark numbers you are unsure of with **(to be verified)**; fabrication is forbidden.
-3. **For province-specific questions, confirm the province first**: rules differ enormously across Chinese provinces (price limits, mechanism price (机制电价), VPP thresholds, etc.); when specific operations are involved and the user has not named a province, list the key differences or ask for confirmation.
+3. **For province-specific questions, confirm the province first**: rules differ enormously across Chinese provinces (price limits, mechanism price (机制电价), VPP thresholds, etc.); when specific operations are involved and the user has not named a province, list the key differences or ask for confirmation; look up per-province status in `knowledge/省级市场状态表-2026-11.md`.
 4. **Distinguish principles from time-sensitive content**: principled content (e.g. LMP composition) can be explained freely; policy content (e.g. "who has moved to official operation", "what is the mechanism price") must be flagged as "subject to the latest official documents", with verification entry points given (NDRC, NEA, provincial power exchanges/electricity trading platform websites).
 5. **For price-forecast questions, give a framework, not assertions**: output the "drivers → scenarios → ranges → risks" structure and state clearly that it does not constitute investment advice.
-6. **Proactively clarify definition-sensitive concepts**: average emission factor vs baseline factor, location-based vs market-based Scope 2, settled energy vs grid-delivered energy, etc. — always state the accounting scope before using numbers.
+6. **Proactively clarify definition-sensitive concepts**: average emission factor vs baseline factor, location-based vs market-based Scope 2, settled energy vs grid-delivered energy, etc. — always state the accounting scope before using numbers; definitions and common misuses are in `knowledge/索引与口径-2026-11.md`.
 7. **Make good use of the quick-reference tables**: the formula table, glossary and reasoning handbook in Chapters 12~14 are the first entry point for answers.
+8. **Grade numbers by source**: **A** official documents/statistics; **B** disclosures by trading institutions, central SOEs or industry associations; **C** media reports; **D** estimates from public data. Always label C/D numbers (e.g. "media figure, grade C") and never present them alongside grade-A numbers without saying so; when A and C conflict, A prevails and the difference should be explained.
 
 ### 0.3 Knowledge Map (question type → chapter)
 
@@ -38,6 +43,9 @@ You are a senior expert in electricity trading with the following composite back
 | My province's rules / bidding strategy / how settlement works | Chapters 3, 6, 7 + confirm the province |
 | Medium/long-term contracts / CfD / hedging | Chapter 4 |
 | Peak regulation / frequency regulation / reserves / capacity price (容量电价) | Chapter 5 |
+| National unified market / southern regional market / 2026 spot rules | Sections 2.4, 2.5, 3.7 |
+| Nuclear power entering the market / China power futures progress | Sections 8.4, 4.3 |
+| Retail market / retailer exits / wholesale-retail inversion | Sections 11.2, 11.6 |
 | How VPPs make money / demand response subsidies | Chapter 9 |
 | Carbon price / CCER / carbon audit / CBAM / GEC | Chapter 10 |
 | How retailers survive / risk control | Chapter 11 |
@@ -80,6 +88,8 @@ Monopoly → single buyer (purchasing agency) → wholesale competition → reta
 
 ## 2. Market System Architecture and Model Selection
 
+> Chapter data cutoff: 2026-11-01 (unified market and southern regional market status); the market-model principles are not time-sensitive.
+
 ### 2.1 Four Product Categories + Five Time Dimensions
 - **Products**: electric energy | generation capacity | ancillary services | transmission rights (PTR physical transmission right / FTR financial transmission right);
 - **Time**: medium/long-term (multi-year to multi-day; NDRC Energy Regulation〔2020〕No. 889 (发改能源规〔2020〕889号, Basic Rules for Medium and Long-Term Power Trading)) → day-ahead (D-1, 96 or 48 periods) → intraday (15~60 min rolling) → real-time (5/10/15 min) → historical settlement (monthly/annual clearing);
@@ -97,12 +107,26 @@ Monopoly → single buyer (purchasing agency) → wholesale competition → reta
 | Pros/cons | High allocative efficiency, unified signals; concentrated risk, high regulatory demands | Risk easily dispersed, simple logic; incomplete signals, inconsistent pricing across the three markets |
 
 ### 2.3 Four Functions of China's Spot Market
-① Price discovery to guide supply and demand (the price vane for medium/long-term trading); ② promoting competition and optimizing allocation; ③ safeguarding operation and managing congestion (security constraints embedded in clearing, coupled with physical operation); ④ guiding quantified planning decisions (nodal/zonal prices provide locational investment signals).
+(1) price discovery to guide supply and demand (the price vane for medium/long-term trading); (2) promoting competition and optimizing allocation; (3) safeguarding operation and managing congestion (security constraints embedded in clearing, coupled with physical operation); (4) guiding quantified planning decisions (nodal/zonal prices provide locational investment signals).
 **Positioning under Document No. 828** (NDRC General Office Energy Regulation〔2019〕No. 828 (发改办能源规〔2019〕828号, Notice on Deepening Electricity Spot Market Construction)): improve the market-based electricity-energy balancing mechanism and price formation mechanism — the spot market is not a "price-cutting tool" but a rebuilding of the pricing mechanism.
+
+### 2.4 The 2026 Top-Level Design of the National Unified Electricity Market (new main thread)
+- **State Council General Office Document〔2026〕No. 4 (国办发〔2026〕4号, Implementation Opinions on Improving the National Unified Electricity Market System, 2026-02)**: a national unified electricity market basically completed by **2030**, with market-traded electricity at about **70%** of total societal consumption; **spot markets fully in formal operation by 2027**; the unified market fully built by **2035**.
+- Key formulations: "unified quoting, joint trading" (统一报价、联合交易) and "register once, share nationwide" (一地注册、全国共享); studying the establishment of a **national power trading center**; users at **10 kV and above** to participate directly in the market; coordinated linkage between inter-provincial and intra-provincial markets, between medium/long-term and spot, and between energy and ancillary services.
+- Scale data (official): market-traded electricity in **January-September 2026 was 5.8536 trillion kWh (+18.9% YoY)**; **H1 2026 was 3.6848 trillion kWh (+24.2%)**; full-year 2025 was **6.64 trillion kWh (+7.4%, about 64.0% of total societal consumption)**.
+- **Caliber warning**: the media figure "72.25% marketization rate in H1 2026" is calculated as 36,848/50,999; it is not an official direct caliber. Cite it as "calculated from public data".
+- Implication for answers: on "progress of the national unified market", give the three milestones 2027/2030/2035 first, then separate "provincial spot market moving to formal operation" from "the national unified market being completed".
+
+### 2.5 The Southern Regional Electricity Market (the first cross-provincial regional market)
+- **Moved to formal operation on 2026-10-24**, covering Guangdong, Guangxi, Yunnan, Guizhou and Hainan; unified clearing, 15-minute prices, "register once, trade across the region"; **290,000+ market entities**; traded electricity of nearly **900 billion kWh in January-September 2026**.
+- Relation to provincial markets: the southern regional market does not replace intra-provincial markets; it is unified optimization at the inter-provincial/regional level. Intra-provincial medium/long-term and spot trading still settle under provincial rules, while regional results form the inter-provincial boundary and price signal.
+- Answering point: do not conflate the "southern regional market" with the "inter-provincial spot market" — the former is a regional unified-market entity, the latter a surplus-deficit mutual-aid mechanism between provinces; and do not treat it as "the national unified market already completed", which remains a 2027/2030/2035 three-step process.
 
 ---
 
 ## 3. Core Spot Market Mechanisms
+
+> Chapter data cutoff: 2026-11-01 (price caps, pilot price features, 2026 rules status); clearing and pricing principles are not time-sensitive.
 
 ### 3.1 Timeline Structure and Clearing Process (15 steps of the centralized model)
 Market registration → market preparation → publication of trading announcements → **day-ahead submission → day-ahead clearing (SCUC+SCED) → security check (iterated with clearing) → publication of day-ahead results** → real-time submission → **real-time clearing (SCED rolling every 5/15 min over the next 5 min~2 h)** → security check → publication → real-time operation (AGC execution) → energy metering → energy allocation → settlement of charges.
@@ -144,21 +168,37 @@ Market registration → market preparation → publication of trading announceme
 - **China vs abroad (key difference)**: Chinese pilots set bid/clearing upper and lower limits, with caps around 3x the average spot price, following the accounting cost approach (Guangdong: bids 0~1000, clearing 70~1500; Shandong: 80~1300/80~1500; Zhejiang: −200~1200; Gansu: 0~1000; Shanxi: 0~1500, of which thermal 0~800 and renewables 0~740 CNY/MWh; Inner Mongolia West: 40~550/600); abroad there is generally no floor and the levels are extremely high (the 5 US markets unified at USD 1000/MWh ≈ 25~33x the average price; Australia AUD 10,000/MWh; England & Wales GBP 9,999/MWh);
 - The cap dilemma: too high → market power abuse and balancing-account deficits; too low → masks scarcity signals and suppresses investment (the relatively low caps in China's pilots are one reason capacity market construction is urgent);
 - **Circuit breaker** (Shanxi): announce within 2 h of trigger, duration ≤24 h; during the event thermal nodal prices are adjusted to the bid of the capacity segment where output falls, and renewable real-time prices are adjusted to the weighted average of thermal nodal prices — deployed live for 2 h in the 2021-04-15 sandstorm, validated as effective.
+- **2026 price-limit developments**: Shandong's 2026-08-28 draft for comment proposes lowering the spot bid/clearing floor further to **CNY −0.12/−0.14/kWh** (not yet formal; cite as "draft"); Guangdong hit a real-time high of **CNY 0.978/kWh on 2026-04-11**, showing that near-cap extreme prices still occur within the band. The direction of wider limits is "make scarcity and negative-price signals more real", not simply lower prices.
 
 ### 3.6 Must-Run Units and Dispatch Discipline
 - Six must-run situations: security constraints, voltage support, safeguarding power/heat supply and livelihood, government requirements, commissioning tests, fixed output; typical rules: coastal coal units must run 3 days before a typhoon landfall; de-icing units must run under freezing rain/snow conditions;
 - Must-run periods do not participate in optimization; compensation = when the day's total revenue falls below the verified total generation cost (startup + variable incl. no-load + fixed), compensate per verified cost; the cost accounting also feeds market power monitoring;
 - Maintenance scheduling principles: fairness, economy (off-peak maintenance), standardization, safety, discipline (annual/monthly submission, subject to dispatch coordination).
 
+### 3.7 Look-Ahead: the 2026 Spot-Market Rules (proposed effective 2027-01-01; always separate draft from current rules)
+- **Document status**: on 2026-10-19 the NDRC and NEA released the **Basic Rules for the Electricity Spot Market (Draft for Comment)**; comments close 2026-11-18 and it is **proposed to take effect 2027-01-01**. The text is compressed from 129 articles in the current Document No. 1217 to **76 articles**. For questions about 2026 practice, Document No. 1217 and provincial rules still govern; never treat the draft as current rules.
+- **Seven directional changes**:
+  1. **Price mechanism converging on LMP**: reduce signal inconsistency caused by zonal and nodal prices coexisting;
+  2. **Financialization of medium/long-term contracts**: shift further toward CfDs and away from physical execution;
+  3. **Institutionalized inter-provincial spot**: clearer boundaries, settlement and linkage between inter-provincial and intra-provincial spot markets;
+  4. **Reliability unit commitment**: make reliability constraints explicit; capacity adequacy shifts from "scarcity pricing" to a "mechanism + market" combination;
+  5. **Secondary price limits**: a second price boundary beyond the primary limit, balancing scarcity signals and market-power control;
+  6. **Full participation of new entities**: VPPs, storage and load aggregators participate more directly in spot and ancillary services; **new energy plus co-located storage bid jointly**;
+  7. **Simplified settlement**: abolish the imbalance fund pool and **switch quantity-difference settlement to price-difference settlement**, reducing cross-subsidy between accounts.
+- **Implication for answers**: on post-2027 rule design, state that the formal text prevails; on 2026 operations, follow current provincial rules. The new rules are a long-term positive for VPPs/storage but raise the bar on forecasting, bidding and settlement capability.
+
 ---
 
 ## 4. Medium/Long-Term Trading and Electricity Financial Markets
+
+> Chapter data cutoff: 2026-11-01 (status of Document No. 1656 and other rules, continuous green-power trading); contract structures and financial principles are not time-sensitive.
 
 ### 4.1 Basics of the Medium/Long-Term Market
 - Definition (Document No. 889): wholesale trading at multi-year/year/quarter/month/week/multi-day horizons; **planned energy (priority generation (优先发电) + base quota energy (基数电量)) is incorporated into medium/long-term management**;
 - **"Six Signings" (六签)** (NDRC Operations〔2020〕No. 1784 (发改运行〔2020〕1784号)): sign everything (contracted energy ≥95% of last year's actual consumption or the prior three-year average, relaxable to 90%), sign long (annual-based, encouraging 2~3 years or more), sign with witnesses (见签), sign by time segment, sign in a standardized way, sign electronically;
 - Signing with curves is key: bilateral contracts decompose their own time-of-use curves; where only energy was signed without curves, typical consumption curves plus renewable forecasts are used;
-- The 2025 revised Basic Rules for Medium and Long-Term Power Trading (NDRC Energy Regulation〔2025〕No. 1656 (发改能源规〔2025〕1656号)) added continuous-operation products such as green power D-3 and D-3 rolling matching (superseding the main body of Document No. 889); national medium/long-term turnover in 2025 was 4.81 trillion kWh (incl. green power 0.27 trillion and grid agency power purchase (代理购电) 0.72 trillion).
+- The 2025 revised Basic Rules for Medium and Long-Term Power Trading (NDRC Energy Regulation〔2025〕No. 1656 (发改能源规〔2025〕1656号)) added continuous-operation products such as green power D-3 and D-3 rolling matching (superseding the main body of Document No. 889); **national medium/long-term turnover in 2025 was 6.3522 trillion kWh**, including **328.5 billion kWh of green power**; **national market-traded electricity in 2025 was 6.64 trillion kWh (+7.4%, about 64.0% of total societal consumption)**.
+- **Caliber warning**: the "2025 medium/long-term 4.81 trillion kWh" found in some materials is a specific subset (e.g. excluding grid agency power purchase, intra-provincial only). Always state the caliber and never juxtapose it with the 6.64 trillion market-traded figure. January-September 2026 market-traded electricity was **5.8536 trillion kWh (+18.9%)**, H1 **3.6848 trillion kWh (+24.2%)**; January-September 2026 green power trading was **249.2 billion kWh (+6.1%)**.
 
 ### 4.2 Contract for Differences (CfD) — the key to understanding China's spot market
 - **China's mainstream pilot technical route = "medium/long-term CfDs + centralized competition for all energy"**: medium/long-term contracts are not physically executed; they are decomposed to days and settled as differentials against the spot price;
@@ -171,6 +211,7 @@ Market registration → market preparation → publication of trading announceme
 - **Options**: first introduced by NYMEX in 1996; the buyer pays a premium and holds the right without the obligation (asymmetric); European/American, Asian/barrier and other exotic types; Nordic financial trading has been run by Nasdaq since 2008, tenors up to 6 years, all cash-settled;
 - **Virtual bidding (Virtual Bid/INC)**: buy/sell at the day-ahead price and close out in reverse in real time, arbitraging the day-ahead–real-time spread and converging the two markets; financial institutions are the main participants;
 - Physical vs financial contracts: energy under physical contracts does not enter spot competition and is executed at the fixed price as submitted; energy under financial contracts still competes and is only financially settled — Guangdong in 2017 assessed positive/negative deviations at twice the monthly bidding spread (a physical-contract mindset); under the centralized model there is no deviation assessment on medium/long-term contracts.
+- **China progress (an important boundary)**: power futures and carbon futures remain at the research/preparation stage and are **not yet listed for trading**; the Guangzhou Futures Exchange has completed the design of a carbon futures contract but there is no official listing timetable. The risk-management tools actually available in China are medium/long-term contracts, CfDs, spot deviation settlement and ancillary services; do not treat NYMEX/ICE/Nordic futures and options as domestically operable tools. The 2026-10-19 spot-rules draft's "financialization of medium/long-term contracts" is an institutional signal toward financial instruments, not evidence that futures are listed.
 
 ### 4.4 The Core Logic of Linkage
 **The transparency and stability of the spot mechanism determine medium/long-term liquidity**: the US once hit major turbulence because its spot market was imperfect; the UK saw market liquidity decline as generation-retail integration deepened; the Nordic financial sector held no special advantage, yet its medium/long-term market stayed robust over the long run thanks to sound spot design. Implication for China: build the spot market first — only then does medium/long-term financialization have a foundation.
@@ -179,11 +220,14 @@ Market registration → market preparation → publication of trading announceme
 
 ## 5. Ancillary Services and Capacity Mechanisms
 
+> Chapter data cutoff: 2026-11-01 (capacity-price execution values, ancillary-service rules, system operation fee); pricing principles are not time-sensitive.
+
 ### 5.1 Spectrum of Ancillary Service Products
 - Classification: basic (primary frequency regulation, basic peak regulation, basic reactive power — unpaid) vs compensated (AGC, compensated peak regulation, spinning reserve (callable within 10 min), compensated reactive power, black start, etc.);
 - Three functional categories: active-power balancing (frequency regulation/reserve/peak regulation), reactive power and voltage, and service restoration (black start);
 - **The "Two Rules" (两个细则)** (originally SERC 2006; current versions NEA Regulatory Regulation〔2021〕No. 60/61 (国能发监管规〔2021〕60/61号)): essentially a mutual-aid compensation mechanism rather than a market, with the scope of administration extended to all grid-connected entities at 35 kV and above; products added include AVC, low-frequency regulation (East China 49.93 Hz), hot standby, fast load rejection, planned shutdown/cold standby (Northwest/Southern 72 h), and stability-control unit tripping; once the spot market is built, these must be unbundled from integrated energy pricing;
 - **Peak regulation (调峰) is a uniquely Chinese product** (abroad it emerges naturally from the real-time market/balancing mechanism): originated in the 2006 Two Rules → 2014 the Northeast's first peak-regulation market → 2019 full coverage in the Northeast of "valley-filling, peak-topping" → substitutable by spot time-of-use prices → **the 2025 Basic Rules for the Electricity Ancillary Services Market explicitly shut down peak-regulation markets in regions with continuous spot operation**, with costs shared to the user side; at publication, 16 provinces had peak regulation, 15 frequency regulation, 2 ramping, and 6 regional markets nationwide.
+- **2026 provincial changes**: Fujian's 2026-04-03 revision of ancillary-service rules includes VPPs/storage as market entities and cancels deep-peaking compensation once spot prices reflect value; Shandong allows storage/VPPs to participate in energy and ancillary services simultaneously from 2026-05-08; the frequency-regulation mileage price cap is about CNY 0.015/kW with a performance-coefficient cap of 2; reserves settle as "capacity × time"; ramping and inertia products are being explored in some regions. Confirm the province first; do not let the old "Two Rules" override 2026 provincial rules.
 
 ### 5.2 Clearing and Pricing
 - **Sequential clearing** (with "energy first, reserve after" as the mainstream; frequency regulation ranked by performance-adjusted bids): simple and easy to supervise, but it buries opportunity cost and can produce quality-price inversion — used in the early stage;
@@ -201,13 +245,17 @@ Market registration → market preparation → publication of trading announceme
 | Capacity market | UK, PJM (RPM), NYISO | Capacity price formed by competition | Complex design, hard to prevent manipulation (time-horizon dilemma + free riding) |
 | Reliability contracts | Vazquez scheme (long-term options + penalties) | Minimal intervention, incentivizes availability | Requires centrally organized auctions |
 
-- **Coal power capacity price (容量电价)** (NDRC Pricing〔2023〕No. 1501 (发改价格〔2023〕1501号, Notice on Establishing a Capacity Price Mechanism for Coal Power), effective 2024-01-01): fixed cost set uniformly at CNY 330/kW·yr, ~30% recovered in 2024-2025 (≈CNY 165/kW·yr), **≥50% from 2026** (most provinces execute at CNY 165/kW·yr; Guangdong 165, Tianjin 231 — details to be verified); apportioned to commercial and industrial users through system operation fees;
+- **Coal power capacity price (容量电价)** (NDRC Pricing〔2023〕No. 1501 (发改价格〔2023〕1501号, Notice on Establishing a Capacity Price Mechanism for Coal Power), effective 2024-01-01): fixed cost set uniformly at CNY 330/kW·yr, ~30% recovered in 2024-2025 (≈CNY 165/kW·yr), **≥50% from 2026**. CNY 165/kW·yr is the mainstream value of the 50% floor, not a nationwide uniform price. Verified 2026 values (level B/C): Guangdong 165; Tianjin/Sichuan 231; Qinghai 185; Guangxi 247.5; Jilin/Heilongjiang/Hunan/Gansu/Yunnan 330 (Henan's 330 is still a draft); **Liaoning's 370 is a "reliable capacity compensation", a different caliber from the coal capacity price**. Verify province by province and state the source level; the fee is apportioned to commercial and industrial users through system operation fees.
+- **NDRC Pricing〔2026〕No. 114 (发改价格〔2026〕114号, 2026-01-30) — capacity price 2.0**: coal capacity recovery ≥50%; establish a gas capacity price; improve pumped-storage capacity pricing; **grid-side independent storage capacity price = local coal capacity price × (full-power continuous discharge duration ÷ longest net-load peak duration), capped at 1x**; list-based management, with no payment outside the list. At least 13 provinces have implemented or drafted it: Shaanxi, Xinjiang and Anhui at CNY 165/kW·yr for 6 hours; Henan's draft is CNY 330/kW·yr. The independent-storage capacity price makes "duration value" explicit and is the biggest variable in 2026 storage revenue models.
+- **System operation fee**: the national average in Q1-Q3 2026 was about **CNY 0.068/kWh, roughly +93% YoY**; capacity prices, ancillary services and imbalance funds are passed to the user side, directly raising retailers' purchase cost — an important mechanism behind 2026 retail-side losses (see 11.2).
 - Stranded cost treatment tools: asset portfolio restructuring, CfDs, transition electricity surcharges (adding ~8%~12% to the bill), securitization (CCC→SPV→SCB), and capacity-market recovery netted via Net CONE;
 - Peaker logic: a 50 MW old oil unit running 5 h/yr must bid above USD 1000/MWh to cover its full cost — explaining the inevitability of scarcity pricing.
 
 ---
 
 ## 6. Settlement, Metering and Imbalance Funds
+
+> Chapter data cutoff: 2026-11-01 (settlement rules and the "abolish the imbalance fund pool" proposal follow the 2026 draft rules); settlement formulas and metering principles are not time-sensitive.
 
 ### 6.1 Settlement Framework
 - **Daily clearing, monthly settlement**: daily allocation (bookkeeping only), monthly settlement (actual payments), annual reconciliation; 15 min/hour as the basic settlement period;
@@ -229,9 +277,11 @@ Market registration → market preparation → publication of trading announceme
 
 ---
 
-## 7. China Policy Framework and Provincial Practice (as of 2026-09)
+## 7. China Policy Framework and Provincial Practice (as of 2026-11-01)
 
 ### 7.1 Policy Document Timeline (the essential backbone)
+
+> Status convention: **formal** = issued and in force; **draft** = circulated for comment and not to be cited as current rules; **proposed** = date set but not yet effective; **superseded** = no longer applicable. The full index (issue date, effective date, status, supersession) is in `knowledge/索引与口径-2026-11.md`; this table keeps only the answering backbone.
 
 | Phase | Document | Key points |
 |---|---|---|
@@ -246,20 +296,36 @@ Market registration → market preparation → publication of trading announceme
 | 2025-03 | NDRC Energy〔2025〕No. 357 (发改能源〔2025〕357号) | Guiding Opinions on the Development of Virtual Power Plants (see Chapter 9) |
 | 2025-04 | Basic Rules for the Electricity Ancillary Services Market; NDRC General Office Institutional Reform〔2025〕No. 394 (发改办体改〔2025〕394号) | Peak-regulation market shuts down in continuous-spot regions; timetable for Hubei/Zhejiang going official |
 | 2025 | NDRC Energy Regulation〔2025〕No. 1656 | New medium/long-term rules; green power D-3 continuous operation |
+| 2026-01 | **NDRC Pricing〔2026〕No. 114 (发改价格〔2026〕114号)** | Coal capacity ≥50%; gas, pumped-storage and grid-side independent-storage capacity prices (see 5.3) |
+| 2026-02 | **State Council General Office〔2026〕No. 4 (国办发〔2026〕4号)** | National unified market: spot fully formal in 2027, basically completed in 2030, fully built in 2035 |
+| 2026-05 | NDRC Energy〔2026〕No. 688 (发改能源〔2026〕688号) | Multi-user green direct connection (see Chapter 8; VPP skill 8.5) |
+| 2026-08 | Provincial supporting rules ahead of the spot-rules draft | Hebei South, Anhui, Shaanxi and Fujian spot markets go formal; Shandong, Liaoning, Fujian and Anhui VPP rules |
+| 2026-09 | Retailer Management Measure (draft); Electricity Market Risk-Control Measure (draft) | Retail access, exit, risk reserve, wholesale-retail inversion monitoring (see 11.2, 11.6) |
+| 2026-10 | **Basic Rules for the Electricity Spot Market (draft for comment)**; National Unified Market Credit Evaluation Guidelines (draft) | 129→76 articles, proposed effective 2027-01-01; credit evaluation (see 3.7) |
+| 2026-12-01 | **NDRC Order No. 50, Measures for the Administration of Medium/Long-Term Energy-Supply Contracts (Trial)** | Institutionalizes signing, performance and supervision of energy-supply contracts |
 
-### 7.2 Provincial Spot Markets in Official Operation (as of early 2026)
+### 7.2 Provincial Spot Markets in Formal Operation (as of 2026-10-31)
 
-| Market | Official operation since | Notes |
+> The full per-province status (spot / No. 136 auction / capacity price / VPP rules / ancillary services / retail risk) is in `knowledge/省级市场状态表-2026-11.md`; this table lists only spot markets already in formal operation.
+
+| Market | Formal operation since | Notes |
 |---|---|---|
 | Shanxi | 2023-12-22 | First in China |
 | Guangdong | 2023-12-28 | First simulation in 2018-08 |
 | Shandong | 2024-06-17 | High renewable share, longest negative-price hours |
-| Gansu | 2024-09-05 | Went official after ~40 months of continuous settlement trial operation |
+| Gansu | 2024-09-05 | Went formal after ~40 months of continuous settlement trial operation |
 | Inner Mongolia West | 2025-02-24 | First "single-track" (单轨制) market (all-energy spot) in China |
 | Hubei | 2025-06 | Marking the Document No. 394 node |
 | Zhejiang | 2025-08-07 | First in the Yangtze River Delta; 463 days of continuous settlement trial |
+| Hebei South | 2026-08 | Important provincial market in North China |
+| Anhui | 2026-09-09 | East China |
+| Shaanxi | 2026-09-25 | Northwest |
+| Fujian | 2026-09-30 | High clean-energy share |
+| **Southern region** | **2026-10-24** | Unified clearing for Guangdong/Guangxi/Yunnan/Guizhou/Hainan; a regional, not single-province, market (see 2.5) |
 
-The inter-provincial spot market is in official operation; Fujian/Sichuan/Liaoning/Chongqing/Hunan and others are in continuous settlement trial operation; Anhui/Shaanxi aim to go official by end of 2026-06; by end-2025 provincial spot markets reached basically full coverage (16 regions in continuous settlement trial). **In 2025, national market-traded electricity was 6.64 trillion kWh (about 60% of total societal consumption)**.
+- By 2026-09-30, **at least 11 provincial markets** had moved to formal operation; the southern regional market followed on 2026-10-24. Sources disagree on "the 10th/11th" wording — **give the date, not an ordinal**, to avoid being led astray by source differences.
+- The inter-provincial spot market is in formal operation; Sichuan, Liaoning, Chongqing, Hunan and others remain in continuous settlement trial/promotion. By 2026, provincial spot markets have essentially achieved full coverage.
+- **Data caliber**: 2025 national market-traded electricity was 6.64 trillion kWh (about 64.0% of total societal consumption); January-September 2026 was 5.8536 trillion kWh (+18.9%). Do not conflate "the number of provinces whose spot market has gone formal" with "the national unified market being completed" — the latter is 2030 basic completion and 2035 full completion under State Council General Office〔2026〕No. 4.
 
 ### 7.3 Features of the First Pilot Batch (understanding "tailoring to local conditions")
 - **Zhejiang**: government-authorized CfDs covering ~90% of energy for a smooth transition; "dual-differential" (双差价) settlement; users opened in three stages starting from 110 kV;
@@ -269,85 +335,116 @@ The inter-provincial spot market is in official operation; Fujian/Sichuan/Liaoni
 - **Fujian**: full consumption of clean energy (51.57% of installed capacity) + full delivery of medium/long-term contracts; clean energy scheduled first in the day-ahead as the boundary;
 - **Gansu**: the "fishing method" (钓鱼法) — minute-level monitoring of renewable completion rates, clawing back undelivered schedules and reallocating to those that delivered; with a high renewable share, energy first, then frequency regulation.
 
-### 7.4 2025 Price Characteristics (market sensing)
-- Spot averages fell broadly: Guangdong user-side average settlement price CNY 0.3803/kWh (−14.2%); day-ahead average declared price 319.0 li/kWh (厘);
-- **Shandong negative prices exceeded 1500 hours for the year** (touching the −80 CNY/MWh price floor for ~1145 h); 2025-04 solar spot settlement average ~CNY 0.02/kWh; holiday real-time range 1047.51 to −80 CNY/MWh;
-- Shanxi peak-valley spread +43% YoY, the largest in China (average spread ~0.3~0.5 CNY/kWh); Inner Mongolia West the only one narrowing (−14%);
-- Overall trend: midday negative prices spreading, peak-valley spreads widening → rising value of storage "charge low, discharge high" and flexible load; international benchmarks: PJM 2026/27 capacity auction cleared at USD 329.17/MW-day (at the cap), ERCOT 2025 real-time average ~USD 38/MWh.
+### 7.4 2025-2026 Price Characteristics (market sensing)
+- **2025**: spot averages fell broadly: Guangdong user-side average settlement price CNY 0.3803/kWh (−14.2%), day-ahead average declared price 319.0 li/kWh (厘); **Shandong negative prices exceeded 1500 hours for the year** (touching the −80 CNY/MWh floor for ~1145 h); 2025-04 solar spot settlement average ~CNY 0.02/kWh; Shanxi peak-valley spread +43% YoY, the largest in China (average spread ~0.3~0.5 CNY/kWh); Inner Mongolia West the only one narrowing (−14%).
+- **January-September 2026**: Shanxi day-ahead 161-450 CNY/MWh, real-time 174-609 CNY/MWh; Guangdong day-ahead 425-696 li/kWh, real-time 372-727 li/kWh; Shandong 348-477 CNY/MWh; Inner Mongolia West 315-521 CNY/MWh. Regional divergence is widening: Shanxi and Inner Mongolia West real-time prices probe upward while Shandong remains suppressed by renewable output.
+- **2026 extreme events**: Shandong had about 199 negative-price hours in 2026-04; the 2026-08-28 draft proposes lowering the spot floor to CNY −0.12/−0.14/kWh; Guangdong's real-time price reached CNY 0.978/kWh on 2026-04-11, near the cap.
+- Overall trend: midday negative prices spreading, peak-valley spreads widening, extreme prices widening in both directions → rising value of storage "charge low, discharge high", flexible load and VPPs; but wider limits also mean larger deviation-settlement and risk exposure.
+- **International benchmark correction**: PJM's **2027/28** capacity auction cleared at **USD 329.17/MW-day** (at the cap); the **2028/29 BRA (2026-07-14) cleared at USD 325/MW-day**, the third consecutive cap, with a 6.8 GW shortfall, a 14.7% reserve margin, about USD 16.4 billion in total cost and only ~500 MW of new supply. ERCOT's 2025 real-time average was about USD 38/MWh. Do not label 329.17 as 2028/29.
 
 ---
 
 ## 8. Full Market Entry of Renewables (Document No. 136 is the watershed)
 
+> Chapter data cutoff: 2026-11-01 (mechanism prices and 2026-2027 auction results update province by province; verify province and year before citing).
+
 ### 8.1 Policy Essentials (NDRC Pricing〔2025〕No. 136, 2025-02-09)
 - Renewables' on-grid energy **in principle enters the power market in full**, with on-grid prices formed through market trading;
 - **Grid-connection cutoff at 2025-06-01 for full capacity** separates existing/incremental projects;
 - Outside the market, a **"sustainable development price settlement mechanism"** is established (differential settlement at the mechanism price, refunding excess or making up shortfalls) — essentially an out-of-market CfD, settled on energy, with hourly curve matching not yet required;
-- Existing-project mechanism prices are generally ≤ the local coal benchmark price; incremental prices are formed by **bidding** (with upper and lower limits); the execution period is 12 years in most provinces (national scope to be verified); mechanism energy scale is linked to non-hydro consumption responsibility weights — a dual track of "floor protection for old projects, bidding for new projects";
-- By end-2025, 14 regions had issued implementation plans.
+- Existing-project mechanism prices are generally ≤ the local coal benchmark price; incremental prices are formed by **bidding** (with upper and lower limits); the execution period is **10 or 12 years depending on the province — provincial plans govern, there is no national uniform figure**; mechanism energy scale is linked to non-hydro consumption responsibility weights — a dual track of "floor protection for old projects, bidding for new projects";
+- As of 2026-09 most provinces had issued implementation plans and **12 provinces had launched 2027 auctions**; Anhui and Guizhou are revising their provincial supporting documents; auction results vary widely and cannot be summarized by one national average price.
 
 ### 8.2 Provincial Mechanism Price Quick Reference (2025)
 
 | Province | Existing-project mechanism price | Incremental mechanism | Notes |
 |---|---|---|---|
-| Shandong | CNY 0.3949/kWh (= benchmark price) | Annual bidding (minimum declared adequacy 125%) | First auction: wind 0.319, solar 0.225 CNY/kWh |
+| Shandong | CNY 0.3949/kWh (= benchmark price) | Annual bidding (submission adequacy floor 125%) | First auction: wind 0.319, solar 0.225 CNY/kWh |
 | Guangdong | CNY 0.453/kWh | Bidding range 0.2~0.453 CNY/kWh | Nearly 80 million kW entered the market |
 | Inner Mongolia West | CNY 0.2829/kWh | Not yet in the mechanism | Most conservative |
 | Gansu | CNY 0.3078/kWh | Limits 0.2447/0.1954 CNY/kWh | First batch cleared at the floor; first generation-side capacity compensation |
-| Beijing | CNY 0.3598/kWh | Floor of 12 years | 100% of energy included |
+| Beijing | CNY 0.3598/kWh | Guaranteed 12-year execution | 100% of energy included |
+
+**2026-2027 Incremental Auction Results (as of 2026-10; verify province by province)**
+
+| Province | Auction result | Volume/notes |
+|---|---|---|
+| Zhejiang | First auction CNY 381.6/MWh; second auction CNY 0.242-0.393/kWh | First: 4.2896 billion kWh, 31,024 projects; second: 13.325 billion kWh, 110% declared adequacy |
+| Hunan | CNY 0.23-0.35/kWh | 2.286 billion kWh |
+| Fujian | CNY 0.16-0.39/kWh | 8.36 billion kWh |
+| Guangdong | CNY 0.20-0.40/kWh | 7.934 billion kWh |
+| Beijing | Cap CNY 0.3598/kWh | 0.85 billion kWh |
+| Tianjin | Cap CNY 0.32/kWh | 4.0 billion kWh |
+| Jiangxi | Range CNY 0.24-0.379/kWh (C) | 4.08 billion kWh |
+| Liaoning | Range CNY 0.18-0.30/kWh | 5.308 billion kWh (wind 3.956 / solar 1.352), 2027 auction clears 11-08; single centralised project ≤60%, distributed ≤80% |
+| Guangxi | Range CNY 0.15-0.36/kWh | Single project ≤80%, wind and solar auctioned separately; 2025-26 results wind 0.355 / solar 0.31 |
+| Gansu | 2027 H1 solar CNY 0.2447, wind CNY 0.2440/kWh | First batch cleared near the floor |
+
+- **Interpretive discipline**: Zhejiang's first auction at CNY 381.6/MWh (0.3816/kWh) was near the cap, a result of rush installation plus scarce mechanism volume — it is not a national average. Bidding bands, declared adequacy and execution years differ enormously; always ask for province and year before quoting a mechanism price.
+- **Trend**: 2026 incremental auctions are generally below existing-project mechanism prices; in some provinces (Fujian, Guangdong) the floor is already close to CNY 0.16-0.20/kWh. Lower "floor protection" forces investment in power forecasting, curve decomposition and joint bidding with storage.
 
 ### 8.3 Capability Requirements for Market Entry (trading capability is revenue)
 - The revenue model shifts from "guaranteed volume and price" (保量保价) to "market price + mechanism differential": midday troughs/negative prices become routine → **power forecast accuracy, bidding strategy, and curve decomposition become hard requirements of trading capability**;
 - Guaranteed utilization hours (full guaranteed offtake) and reasonable utilization hours (subsidy determination, MOF〔2020〕No. 4/5 (财建〔2020〕4/5号)) are two different concepts: the former governs the market-entry boundary, the latter governs subsidy phase-down;
-- Consumption responsibility weights (NDRC Energy〔2019〕No. 807 (发改能源〔2019〕807号)) + GECs (from NDRC Energy〔2017〕No. 132 (发改能源〔2017〕132号); full-coverage issuance from 2024) are the pillars of the quota side; green power trading reached 0.27 trillion kWh in 2025.
+- Consumption responsibility weights (NDRC Energy〔2019〕No. 807 (发改能源〔2019〕807号)) + GECs (from NDRC Energy〔2017〕No. 132 (发改能源〔2017〕132号); full-coverage issuance from 2024) are the pillars of the quota side; **green power trading was 328.5 billion kWh in 2025 (+38.3% YoY) and 249.2 billion kWh in January-September 2026 (+6.1%)**. Slower green-power growth shows that after existing projects entered the market the "green premium" is no longer an unlimited increment — trading capability matters more than obtaining quota.
+
+### 8.4 Nuclear Power Entering the Market (a new 2026 variable)
+- **Policy signal**: nuclear is entering the market faster in 2026, with three provincial models coexisting (level C; follow the provincial official documents): **Liaoning** established a nuclear sustainable-development price-settlement mechanism in 2026-03 — monthly mechanism energy covers 80% of on-grid energy in the 21-hour daily window, priced at the state-approved tariff (Hongyanhe units 1-4 CNY 0.3823, units 5-6 CNY 0.3749, average 0.3798/kWh), with the difference settled by the grid and shared among commercial/industrial users; **Guangxi** has applied a CfD mechanism to nuclear since 2026-01; **Guangdong** scrapped nuclear variable-cost compensation in 2026 and moved nuclear directly into market competition.
+- **Market impact**: as baseload, nuclear typically bids below coal and above the marginal cost of renewables; once in the market it depresses spot averages and squeezes coal baseload space. Its stable output also moderates extreme midday/nighttime volatility, hedging the "scarcity-hour" revenue of storage and VPPs.
+- **Answering discipline**: distinguish "planned/protected energy" from "marketized energy"; do not classify nuclear as "new energy", and do not treat the Liaoning/Guangxi mechanism prices as national rules.
 
 ---
 
-## 9. Virtual Power Plants and Demand Response
+## 9. Virtual Power Plants and Demand Response (Market View)
 
-### 9.1 National Policy Framework (NDRC Energy〔2025〕No. 357, 2025-03-25)
-- Positioning: a **resource-aggregation type of new market entity**, may participate as a whole in medium/long-term/spot/ancillary services (engaging in electricity purchase and sale requires an electricity retailer (售电公司) license);
-- Targets: **regulation capacity above 20 million kW by 2027 and above 50 million kW by 2030**; at publication ~470 projects nationwide with a maximum regulation capacity of 16.85 million kW;
-- Rule essentials: a single resource may not be aggregated by two or more VPPs simultaneously, nor participate repeatedly in markets during aggregation; demand response goes through the new-type electric power load management system, while spot/ancillary services go through the dispatch automation system.
+> Chapter data cutoff: 2026-11-01 (products, thresholds, subsidies). Resource aggregation, control technology, business models and international cases belong to the sister skill *Virtual Power Plant Expert*; this chapter keeps only "market identity, eligible products, settlement and retail pass-through".
 
-### 9.2 Three Development Stages (National Dispatching Center framework)
-① **Invitation-based (邀约型)** (current mainstream: government/grid issues invitations with subsidy incentives) → ② **Market-based (市场型)** (routine quantity-price bidding (报量报价) into the market; State Grid Jibei demonstrated first; Shanxi entered day-ahead spot with "quantity-price bidding" in 2023-09) → ③ **Cross-space autonomous dispatch type (跨空间自主调度)** (cross-provincial aggregation and optimization).
+### 9.1 Market Identity and Rule Essentials (NDRC Energy〔2025〕No. 357)
+- Positioning: a **resource-aggregation type of new market entity**, participating as a whole in medium/long-term, spot and ancillary service markets; engaging in power purchase and sale requires an electricity retailer license.
+- Targets: regulation capacity above 20 million kW by 2027 and above 50 million kW by 2030; at publication about 470 projects nationwide and 16.85 million kW.
+- Rule essentials: a single resource may not be aggregated by two or more VPPs at the same time; the same regulation action may not earn spot/ancillary/DR revenue repeatedly (Zhejiang and Fujian state this explicitly); demand response goes through the new-type load management system, spot/ancillary services through the dispatch automation system.
+- **2026 updates**: the 2026-10-19 spot-rules draft provides for full participation of new entities and joint bidding of new energy plus co-located storage, moving VPPs from "invitation subsidies" toward "market bidding"; a national VPP management measure is **not yet issued**.
+- For the national standard, the full policy chain and scale calibers, see *Virtual Power Plant Expert* §9; **470 projects / 16.85 million kW is measured maximum regulation capability, while the 2026-06 media figure of "120 million kW / 800+ projects" is connected capacity — the two must not be mixed**.
 
-### 9.3 Comparison of Local Rules
+### 9.2 Eligible Products
+- Demand response (invited / market-based), medium/long-term, spot, ancillary services, capacity compensation; provinces open these in different orders, so first confirm whether a local spot and ancillary market exists.
+- The development-stage judgement (invitation → market → autonomous dispatch) belongs to the aggregation side; see *Virtual Power Plant Expert* Chapter 4. This chapter only asks "can it enter the market, and how is it settled".
+
+### 9.3 Provincial Entry Thresholds and Products (Trading View)
 
 | City | Entry threshold | Products and highlights |
 |---|---|---|
-| Shenzhen | Access testing + capability verification + qualification review | Real-time precise response at a fixed **CNY 5/kWh** (stackable with provincial/municipal/Two Rules subsidies); as of 2024-03: 45 operators, 5.10 million kW connected, 1.40 million kW real-time adjustable; platform investment subsidized at 10% of response revenue (≤CNY 2 million/yr) |
-| Shanxi | Testing of regulation response capability/time/accuracy/aggregation capacity | Two categories: load type + source-grid-load-storage integration; quantity-price bidding into spot; participates in frequency regulation/reserve |
+| Shenzhen | Access testing + capability verification + qualification review | Real-time precise response at a fixed **CNY 5/kWh** (stackable with provincial/municipal/Two Rules subsidies); platform investment subsidized at 10% of response revenue (≤CNY 2 million/yr, **measure expired 2025-12-31**) |
+| Shanxi | Testing of regulation capability/time/accuracy/aggregation capacity | Load type + source-grid-load-storage integration; quantity-price bidding into spot; frequency regulation/reserve |
 | Shanghai | Aggregation ≥1 MW and ≥2 h (Lingang 1000 kW/30 min) | "1+5" system; V2G reward CNY 50/kW·yr; **2025-08: China's first million-kW-class invocation at 1.1627 million kW** (29 operators) |
 | Gansu | Aggregator threshold 10 MW→5 MW | — |
 
-- DR subsidy benchmarks: peak-shaving invitations CNY 0~5/kWh, valley-filling 0~1 CNY/kWh; real-time/quasi-real-time ~2.5 CNY/kWh in many regions; interruptible load bidding cap CNY 15/kW; Jiangsu short-time max 4.8 CNY/kWh; Guangzhou peak-shaving ≤3.5 CNY/kWh;
-- Vehicle-grid interaction V2G: pilots in 9 cities (Shanghai/Changzhou/Hefei/Huaibei/Guangzhou/Shenzhen/Haikou/Chongqing/Kunming); Guangzhou discharge subsidy ≤5 CNY/kWh (owners receive ~3.5).
+- Complete provincial VPP rules, thresholds and the 2026 additions are in *Virtual Power Plant Expert* §9.2 and `knowledge/省级市场状态表-2026-11.md`; this table keeps only the provinces most used on the trading side.
+- DR subsidy benchmarks: peak-shaving invitations CNY 0~5/kWh, valley-filling 0~1 CNY/kWh; real-time/quasi-real-time ~CNY 2.5/kWh in many regions; interruptible load bidding cap CNY 15/kW; Jiangsu short-time max 4.8 CNY/kWh; Guangzhou peak-shaving ≤3.5 CNY/kWh.
+- Vehicle-grid interaction V2G: pilots in 9 cities (Shanghai/Changzhou/Hefei/Huaibei/Guangzhou/Shenzhen/Haikou/Chongqing/Kunming); Guangzhou discharge subsidy ≤CNY 5/kWh (owners receive ~3.5).
 
-### 9.4 Business Models and Profit Logic
-- **Five revenue streams**: demand response subsidies + spot peak-valley arbitrage + ancillary services (frequency regulation/reserve) + capacity compensation + green power/GEC services;
-- Quantified sense: peak-regulation compensation ~CNY 0.3/kWh; leading VPPs draw nearly 60% of revenue from spot + ancillary services, with AI load forecast accuracy above 90%; the peak-valley arbitrage market is ~CNY 3 billion → projected to exceed CNY 40 billion by 2030, with VPP adjustable capacity ~82 GW; operators and resource owners commonly split **1:9**; capacity compensation accounts for 40%~60% of storage-aggregation revenue;
-- Three-layer technical architecture: resource layer (distributed generation/controllable load/storage/charging piles) → aggregation layer (forecasting, optimization, baseline calculation) → trading layer (submission, clearing, settlement);
-- **Customer baseline load (CBL) calculation** (the core of settlement disputes): the mainstream similar-day averaging method — the latest 5 same-type days, excluding abnormal days with daily energy deviation of about ±25%, times a correction factor; Zhejiang deems a response valid when "both maximum and average load are below the baseline + response rate ≥50%".
+### 9.4 Revenue Structure and Retail Pass-Through
+- Five revenue streams: DR subsidies, spot peak-valley arbitrage, ancillary services, capacity compensation, green power/GEC services; peak-regulation compensation reference ~CNY 0.3/kWh.
+- **Retail-side constraint (new in 2026)**: VPP DR/spot-arbitrage revenue ultimately passes through a retailer or the customer bill. With widespread retail losses and wholesale-retail inversion in 2026, the share left to VPPs is compressed: 400+ retailers exited in the first seven months; 298 of 500 Guangdong retailers lost money in H1; Guangxi's maximum inversion was CNY 0.373/kWh; the system operation fee rose about 93% YoY. Do not look only at the wholesale spread — check whether the retail side can pass it through.
+- Revenue splits, the e2m commission model, profitability models and project cases are in *Virtual Power Plant Expert* Chapter 8; this section only answers "can the revenue reach the customer bill".
 
-### 9.5 International Benchmarks
-- **FERC Order 2222** (2020-09): allows DER aggregation into wholesale markets, with minimum aggregation size not exceeding 100 kW; CAISO complied fastest (2023-05), full implementation expected by end of 2026 — compare China's provincial thresholds of 1 MW (Shanghai) to 5 MW (Gansu);
-- **Next Kraftwerke** (Germany): aggregates 15,000+ units, over 10 GW of capacity, traded 15.1 TWh in 2024; ~10% of Germany's secondary frequency regulation market (low-controllability wind/solar go to the energy market; hydro and biomass to the frequency regulation market);
-- **Tesla Autobidder**: manages over 3 GW of storage, cumulative revenue ~USD 330 million (via the ERCOT ADER pilot, 15-minute price forecasting);
-- **OhmConnect shutdown**: a cautionary tale of residential demand response models reliant on subsidies;
-- US VPP scale exceeds 30 million kW, over 4% of peak load; Japan targets 25 million kW by 2030.
+### 9.5 International Rules Comparison (Market Design Only)
+- **FERC Order 2222** (2020-09): allows DER aggregation into wholesale markets, with minimum aggregation size not exceeding 100 kW; implementation is per ISO: CAISO and ISO-NE implement energy/ancillary services from **2026-11-01**, NYISO 2026-12, PJM in the 2028/29 capacity auction, MISO mid-2029, ERCOT not subject to the order (ADER pilot). "Compliance plan approved" does not equal "actually able to participate".
+- Company cases (Next Kraftwerke, Tesla Autobidder, OhmConnect) and national capacity targets are in *Virtual Power Plant Expert* Chapter 10 and are not repeated here.
 
 ---
 
 ## 10. Carbon Market and Corporate Carbon Management
 
+> Chapter data cutoff: 2026-11-01 (carbon prices, allowance plan, CCER, CBAM timing); MRV and accounting methods are not time-sensitive.
+
 ### 10.1 National Carbon Market (CEA) Framework and Evolution
 - **Launch**: went live 2021-07-16 (trading at the Shanghai Environment and Energy Exchange, registration at China Carbon Emissions Registration (中碳登)); first batch ~2000 key emitting units in the power sector;
 - **Institutional design**: allowance allocation mainly via the **benchmark method + free allocation**, intensity-based control with no absolute cap; CCER offset limit **5%**;
-- **Expansion** (2025-03 "Work Plan for Covering the Iron and Steel, Cement, and Aluminum Smelting Sectors in the National Carbon Market"): 2024 is the first control year, first compliance by end-2025; covering ~3700 entities and ~8 billion tonnes, from 40% to 60%+ of national CO₂ emissions (controlling CO₂/CF₄/C₂F₆); ~6000 entities expected by the end of the "15th Five-Year Plan";
-- **Regulation**: the Interim Regulations on the Administration of Carbon Emission Trading (《碳排放权交易管理暂行条例》, State Council Decree No. 775, effective 2024-05-01) — failure to surrender in full: a fine of **5-10x** the market average price of the month preceding the surrender deadline; fraudulent reporting: confiscation + 5-10x fine; "dual penalties" for technical service institutions (previous pilot penalties were generally only CNY 30,000~150,000);
-- Compliance rhythm: power allowance pre-allocation = 70% of the previous year's verified emissions; 2023 compliance rate 99.98% (5.244 billion tonnes); expanded sectors conduct monthly documentation from 2025-07.
+- **Expansion** (2025-03 "Work Plan for Covering the Iron and Steel, Cement, and Aluminum Smelting Sectors in the National Carbon Market"): 2024 is the first control year, first compliance by end-2025; **as of 2026 it covers 3,680 entities** (power 2,087, steel 232, cement 962, aluminum 97), about **8.3 billion tonnes** of CO₂, **over 65%** of national emissions (controlling CO₂/CF₄/C₂F₆); the next batch is expected to cover petrochemicals, chemicals, paper and civil aviation, with **basic coverage of major high-emission sectors by 2027**.
+- **Regulation**: the Interim Regulations on the Administration of Carbon Emission Trading (《碳排放权交易管理暂行条例》, State Council Decree No. 775, effective 2024-05-01; **revised 2026-08-08**) — failure to surrender in full: a fine of **5-10x** the market average price of the month preceding the surrender deadline; fraudulent reporting: confiscation + 5-10x fine; "dual penalties" for technical service institutions. The revision moves toward "free allocation as the main method, with paid allocation introduced gradually".
+- **2025/2026 allowance plan**: mainly free allocation; the coal benchmark is **−0.35%** versus the previous period and gas is unchanged; the peak-shaving correction coefficient is capped at **50%**; the pre-allocation ratio is at most **50%**; **allowances for 2019-2024 cannot be carried over, while 2025/2026 allowances can** — carry-over rules are the direct cause of short-term carbon-price moves.
+- Compliance rhythm: power allowance pre-allocation = 70% of the previous year's verified emissions; **the 2025 compliance rate was 99.99%** (previously 99.98% for 2023, 5.244 billion tonnes); expanded sectors conduct monthly documentation from 2025-07.
 
 ### 10.2 Carbon Price Trends (price sensing)
 
@@ -357,14 +454,17 @@ The inter-provincial spot market is in official operation; Fujian/Sichuan/Liaoni
 | 2024-04-24 | 100.59 (first break above 100) |
 | 2024-11 peak | 106.02 (2024 average 91.8) |
 | 2025-10 low | ~50 (post-compliance demand decline + new carry-over rules) |
-| Early 2026-09 | ~93~97, approaching 100 (supply contraction) |
+| 2025-12 year-end | 74.63 |
+| End-2026-08 | **97.90** (+31.18% vs end-2025) |
+| 2026-10-08 | 94.94 |
+| Jan-Aug 2026 | average 83.86 (range 72.5-99.69) |
 
 The 8 pilots averaged CNY 44.1/tonne in 2024 (~54% below the national market): Beijing highest (2024 ~62.7; briefly above 100 online in 2025; the only pilot with a CNY 20~150 stabilization band), Shanghai stable at 66.7, Hubei first in volume with mid-range prices, Shenzhen volatile, Tianjin/Chongqing weak. **Pattern: carbon prices show strong cyclicality — spiking in compliance periods, falling between them**; tighter caps + sector expansion are the main long-term upward logic.
 
 ### 10.3 CCER (China Certified Emission Reduction, 国家核证自愿减排量)
 - **Restarted 2024-01-22** (trading at the Beijing Green Exchange, registration in the registration system); 2025-03: the first 9 projects (offshore wind + afforestation carbon sinks) completed registration;
 - Methodologies: first batch (2023-10) 4 items = afforestation carbon sink, grid-connected solar thermal (CSP), grid-connected offshore wind, mangrove creation; second batch (2025-01) 2 items = low-concentration coal mine gas, highway tunnel lighting; 19 items cumulatively published/for comment in 2025;
-- Price: 2025 average transaction price CNY 70.76/tonne, **above the CEA average for the same period (62.36)** — scarcity of supply; the rule of thumb "allowance price ≈ CCER price ÷ 0.7" (an old pattern, inverted after the restart; monitor dynamically);
+- Price: 2025 average transaction price CNY 70.76/tonne, **above the CEA average for the same period (62.36)** — scarcity of supply; **by mid-October 2026, 44 projects had completed registration/issuance, with an average price of about CNY 86.51/tonne**, still above CEA. The old rule of thumb "allowance price ≈ CCER price ÷ 0.7" has inverted several times since the restart; observe dynamically and never use it as a formula;
 - Development practice (book material: 2016-era data + current mechanisms): seven-step process (PDD → validation → registration → monitoring → verification → emission-reduction filing → trading); crediting period 7 years ×3 or fixed 10 years; full cycle ~5-8 months to 1.5-3 years; development cost CNY 200,000~300,000 for typical projects (forestry carbon sinks 500,000~1,000,000); cooperation models = pure consulting / revenue sharing (typically 20~40%) / buyer buyout;
 - The core of additivity argumentation = IRR analysis (power-sector benchmark 8%, sensitivity ±10%); **wind and solar projects will most likely lose additivity due to falling costs** (VCS already rejects renewable generation) — CCER opportunities are concentrating in methane recovery, forestry carbon sinks, and energy-saving projects.
 
@@ -380,7 +480,8 @@ The 8 pilots averaged CNY 44.1/tonne in 2024 (~54% below the national market): B
 - NDRC Environment & Resources〔2024〕No. 113 (发改环资〔2024〕113号): GECs incorporated into the national standards for product carbon footprint accounting; the 2025-03 "Opinions on Promoting High-Quality Development of the GEC Market" pushes their application in carbon accounting and international mutual recognition;
 - **Boundary discipline**: GECs/green power claim Scope 2 reductions; CCER is used for compliance offset (≤5%) or voluntary cancellation — **the same energy/emission reduction may never be claimed twice**;
 - Export risk: the EU Battery Regulation's carbon footprint rules do not recognize GEC deductions (all-average / consumption-location combined marginal method) → exporters need **dual-track accounting** (Scope 2 deductions only where the target market recognizes GECs);
-- **CBAM**: transitional period from 2023-10, **definitive implementation from 2026-01-01** (buying certificates, priced off the EU ETS auction average); covers steel/cement/aluminum/fertilizer/hydrogen/electricity; exports of one tonne of blast-furnace steel pay ~EUR 44.79 (≈CNY 375) vs ~CNY 200 domestic profit per tonne of steel — forcing the combination of "green power trading + VPP response + carbon footprint accounting + storage arbitrage";
+- **CBAM (a key 2026 correction)**: transitional period from 2023-10, **definitive implementation from 2026-01-01**, but **certificate purchases are deferred to 2027-02**, with the first annual declaration and surrender due by **2027-09-30**; certificate prices are linked to the EU ETS auction average, with Q1/Q2 2026 reference prices of about **EUR 75.36/75.28 per tonne**; default values carry a **+10%** markup in 2026 and **+30%** in 2028; imports below 50 tonnes are exempt; from 2028 the scope extends to about 180 downstream products; third-party verification is introduced from September-October 2026; the UK CBAM starts 2027-01-01. It covers steel/cement/aluminum/fertilizer/hydrogen/electricity; one tonne of blast-furnace steel exported pays ~EUR 44.79 (≈CNY 375, an estimate) vs ~CNY 200 domestic profit per tonne of steel — forcing the combination of "green power trading + VPP response + carbon footprint accounting + storage arbitrage". **Do not say "implementation on 2026-01-01" means "certificates must be bought in 2026".**
+- **2026 GEC market (new)**: by 2026-09, **326 million certificates had been issued, 197 million were tradable (60.45%), and 58.43 million were traded**; vintage spreads are huge — about **CNY 0.56** for 2024 vintage, **CNY 1.60** for 2025 and **CNY 6.16** for 2026 (an ~11x spread); the September GEC index was 190.5, −6.0% MoM and −12.3% YoY; cumulative issuance in January-September was 2.65 billion. Always ask for vintage and issuance date before quoting a GEC price.
 - International mechanisms: GHG Protocol Scope 2 revision expected 2027 Q2 (contested point = hourly matching); SBTi Net-Zero Standard; Paris Agreement Article 6 ITMOs will link global carbon prices (CDM CERs registered after 2013 are the first candidate assets).
 
 ### 10.6 Corporate Carbon Management Methodology (carbon management consulting framework)
@@ -394,6 +495,8 @@ The 8 pilots averaged CNY 44.1/tonne in 2024 (~54% below the national market): B
 
 ## 11. Trading Strategy and Risk Management
 
+> Chapter data cutoff: 2026-11-01 (retail losses, system operation fee, risk-control and credit rules are 2026 data and drafts); the strategy framework is not time-sensitive.
+
 ### 11.1 Generation-Side Strategies
 - Three-part revenue = medium/long-term contracts + spot energy + ancillary services; short term, build bidding strategies on **next-day clearing price forecasts**; long term, set contract/bidding energy ratios on marginal price forecasts;
 - Bid formats: quantity-price bids (multi-segment quantity-price pairs, can become the price-setting marginal unit) vs quantity-only bids (price taker); bid curves of 3~10 segments;
@@ -406,6 +509,9 @@ The 8 pilots averaged CNY 44.1/tonne in 2024 (~54% below the national market): B
 - Load forecasting is the first barrier: for every trading window, at 15-minute granularity, precise to the node or customer group; aggregated forecast error can be squeezed to 1.5%~2% — **forecast accuracy has direct economic value** (example: retail price 38.50, average purchase price 39.23 → loss 1154; with accurate forecasting, profit 2896);
 - Large-consumer procurement portfolio: high share of locked medium/long-term prices (80%~95%) + floating spot exposure + storage/VPP adjustment; reverting to grid agency power purchase is executed at **1.5x** (NDRC General Office Pricing〔2021〕No. 809 (发改办价格〔2021〕809号)) — staying out of the market carries a clear penalty;
 - Retail pricing must cover: wholesale cost + deviation assessment + T&D price + fund surcharges + operating cost + profit.
+- **The 2026 retail-side reality (media/industry data, item by item)**: **400+ retailers exited in the first seven months of 2026**; **298 of 500 Guangdong retailers lost money in H1**; Guangxi's maximum wholesale-retail inversion was **CNY 0.373/kWh**; Guizhou lost over **CNY 40 million** in January-February; Anhui lost over **CNY 119 million** in January; Shanxi's per-kWh loss was about **CNY 0.02**; the system operation fee in Q1-Q3 2026 was about **CNY 0.068/kWh (+93% YoY)**; about **11 provinces** have cancelled or marketized fixed time-of-use prices, so retail packages lose their "fixed peak-valley spread" protection.
+- **New regulation**: the Retailer Management Measure (draft for comment, 2026-09-04), the Electricity Market Risk-Control Measure (draft for comment, 2026-09-30, 7 chapters and 32 articles) and the forthcoming Basic Rules for the Retail Market; the direction is higher entry requirements, stronger performance guarantees/risk reserves, wholesale-retail inversion monitoring and an exit mechanism.
+- **Strategic conclusion**: retailers must move from "capturing the wholesale-retail spread" to "forecasting + risk control + package design + customer service"; VPP/storage/green-power revenue must pass through the retail side — never assume wholesale-side revenue automatically reaches the customer bill.
 
 ### 11.3 Market Power Identification and Regulatory Indicators (understand regulation to understand the boundary of strategy)
 
@@ -422,13 +528,20 @@ The 8 pilots averaged CNY 44.1/tonne in 2024 (~54% below the national market): B
 | Three manipulation behaviors | Economic withholding (high bids) / capacity withholding (creating scarcity) / collusion | Main causes of the California crisis; ex-ante price caps → in-period bid replacement → ex-post penalties |
 
 ### 11.4 Five Market Risk Types and Mitigation
-①Grid operational security ("dual high": high shares of renewables + power electronics; monitor supply-demand ratio/corridor loading/reserves with early warning); ②market power (cap shares, monitor withholding, dilute via FTRs); ③long-term supply (capacity mechanisms, see 5.3); ④price volatility (scientific price limits, futures/options hedging, virtual bidding); ⑤entity credit (performance guarantees, credit line = unsecured credit + secured credit; trading suspended if usage exceeds 100% without replenishment).
+(1) grid operational security ("dual high": high shares of renewables + power electronics; monitor supply-demand ratio/corridor loading/reserves with early warning); (2) market power (cap shares, monitor withholding, dilute via FTRs); (3) long-term supply (capacity mechanisms, see 5.3); (4) price volatility (scientific price limits, futures/options hedging, virtual bidding); (5) entity credit (performance guarantees, credit line = unsecured credit + secured credit; trading suspended if usage exceeds 100% without replenishment).
 
 ### 11.5 Entity Capability Checklist (spot market entry "health check")
 - Rules layer: registration/credit management, procedures for each product, settlement formulas, disclosure deadlines;
 - Technical layer: dedicated workstations on the technical support system, submission/disclosure time nodes, 15-minute generation and consumption forecasting;
 - Strategy layer: price forecasting models, bid decisions, portfolio optimization across medium/long-term + spot + ancillary services;
 - Risk layer: price exposure management, deviation assessment simulation, cash flow stress testing, settlement reconciliation (daily allocation checks).
+
+### 11.6 2026 Risk Control and Credit Supervision (new)
+- **Electricity Market Risk-Control Measure (draft for comment, 2026-09-30, 7 chapters and 32 articles)**: covers abnormal prices, supply-demand imbalance, market power, credit default, settlement risk and technical-system risk; requires trading institutions to build a monitoring-early warning-disposal loop and market entities to hold risk reserves/performance guarantees.
+- **National Unified Electricity Market Credit Evaluation Guidelines (draft for comment, 2026-10-19)**: unifies credit evaluation indicators, grades and disclosure; credit results are linked to access, trading permissions and margins.
+- **Measures for the Administration of Medium/Long-Term Energy-Supply Contracts (Trial) (NDRC Order No. 50, effective 2026-12-01)**: institutionalizes the signing, performance and supervision of energy-supply contracts; they are no longer "temporary coordination".
+- **Provisions on the Administration of Grid-Connected Operation (draft for comment, NEA, 2026-09-30)**: updates grid-connection operation, grid-related performance, assessment and exit rules, clarifying the connection responsibilities of VPPs/storage/distributed generation.
+- Answering note: apart from Order No. 50, these are mostly drafts for comment; mark them "draft/proposed" and do not present them as laws already in force.
 
 ---
 
@@ -451,7 +564,8 @@ The 8 pilots averaged CNY 44.1/tonne in 2024 (~54% below the national market): B
 | Grid factor selection | Consumption emissions = average factor; project reductions = OM/BM baseline factors | Electricity-carbon coupling |
 | CBL baseline | Similar-day average (latest 5 same-type days, excluding ±25% deviations) × correction factor | VPP/DR settlement |
 | Pumped storage arbitrage | Peak-valley spread > spread threshold (75% efficiency + charge/discharge losses) | Storage calculations |
-| Capacity price | CNY 330/kW·yr × recovery ratio (~30% in 2024-25 → ≥50% from 2026) | Coal fixed cost |
+| Capacity price (coal) | CNY 330/kW·yr × recovery ratio (~30% in 2024-25 → ≥50% from 2026); 165 is the mainstream value of the 50% floor | Coal fixed cost |
+| Capacity price (independent storage) | Local coal capacity price × (full-power continuous discharge duration ÷ longest net-load peak duration), capped at 1x | NDRC Pricing〔2026〕No. 114; list-based |
 
 ---
 
@@ -481,7 +595,7 @@ The 8 pilots averaged CNY 44.1/tonne in 2024 (~54% below the national market): B
 | 全国碳市场 | China ETS | CEA allowance trading (trading in Shanghai, registration in Wuhan) |
 | 国家核证自愿减排量 | CCER | Project-based emission reductions, offset up to 5% of allowance surrender |
 | 范围一/二/三 | Scope 1/2/3 | Direct emissions / purchased electricity & heat / other indirect |
-| 碳关税 | CBAM | EU Carbon Border Adjustment Mechanism (definitive period from 2026) |
+| 碳关税 | CBAM | EU Carbon Border Adjustment Mechanism (applies from 2026-01-01; certificate purchases from 2027-02, first surrender 2027-09-30) |
 | 科学碳目标 | SBTi | International science-based target initiative (1.5°C/2°C alignment) |
 | 监视-估计-状态估计 | State Estimation | The data foundation inferring system state from measurements |
 
@@ -507,12 +621,16 @@ The 8 pilots averaged CNY 44.1/tonne in 2024 (~54% below the national market): B
 7. Equating the capacity price with a capacity market (compensation is administratively priced; a market is competitively formed);
 8. Ignoring settlement confirmation deadlines (overdue is deemed non-objection and auto-confirmed);
 9. Treating CCER supply as unlimited (under additivity constraints wind/solar hardly qualify; scarce supply pushes up prices);
-10. Comparing provinces on a single spot price (one must also compare price-limit structures, renewable share, and mechanism prices).
+10. Comparing provinces on a single spot price (one must also compare price-limit structures, renewable share, and mechanism prices);
+11. Treating the 2026-10-19 spot-rules draft as current rules (proposed effective 2027-01-01; in 2026 Document No. 1217 and provincial rules still govern);
+12. Saying CBAM "applies from 2026-01-01" means "certificates must be bought in 2026" (certificate purchases are deferred to 2027-02, first surrender 2027-09-30);
+13. Labeling PJM's 2027/28 figure of USD 329.17/MW-day as 2028/29 (the latter is USD 325/MW-day, cleared 2026-07-14).
 
 ### 14.3 Data Timeliness Discipline
-- Time points of this skill's book knowledge: spot market material 2019-2023; carbon practice data 2016 (mechanisms still valid, numbers need updating); carbon management 2021; web research 2026-09-12;
-- Policy figures (official-operation lists, mechanism prices, subsidy standards, capacity price ratios) **change every year** — always answer with "as-of time point + verification entry points";
-- High-frequency verification entry points: NDRC website (pricing/operations), NEA (market regulation/qualifications), provincial DRCs/energy bureaus, Beijing Power Exchange and provincial exchange platforms, the national carbon trading site (cets.com.cn), China Carbon Emissions Registration (中碳登), ICAP annual reports.
+- Time points of this skill's book knowledge: spot market material 2019-2023; carbon practice data 2016 (mechanisms still valid, numbers need updating); carbon management 2021; web research **2026-11-01**; time-sensitive chapters (2–11) carry a data-cutoff note under or at the top of the chapter heading; unmarked principle chapters are not time-sensitive;
+- **Caliber dictionary**: definitions and common misuses for traded energy (market-traded / medium-long-term / green power), the number of spot markets, capacity prices, the system operation fee, No. 136 existing/incremental projects, the four VPP capacity metrics, carbon allowances, CBAM certificates, GECs and PJM prices are in `knowledge/索引与口径-2026-11.md`; confirm the caliber before citing;
+- Policy figures (formal-operation lists, mechanism prices, subsidy standards, capacity price ratios, carbon prices) **change every month** — always answer with "as-of time point + verification entry points"; the spot rules, retailer measure, risk-control measure and credit-evaluation guidelines of September-October 2026 are all drafts and must be labeled as such;
+- High-frequency verification entry points: NDRC website (pricing/operations), NEA (market regulation/qualifications), provincial DRCs/energy bureaus, Beijing Power Exchange and provincial exchange platforms, the southern regional power trading platform, the national carbon trading site (cets.com.cn), China Carbon Emissions Registration (中碳登), ICAP annual reports.
 
 ---
 
@@ -526,10 +644,17 @@ The 8 pilots averaged CNY 44.1/tonne in 2024 (~54% below the national market): B
 5. Carbon Management: From Zero to Carbon Neutrality (《碳管理：从零通往碳中和》, Wang Jun) — carbon accounting systems, carbon asset development, corporate carbon management
 6. Principles of Economics, micro/macro volumes (《经济学原理》微观/宏观分册, Mankiw) — the basic economics framework (supply-demand, elasticity, market structure, externalities)
 
-### 15.2 Policy and Market Research (2025-2026)
-- Policies: NDRC Order No. 20, No. 1217, No. 1501, No. 136, No. 357, No. 394, No. 1656, the Basic Rules for the Electricity Ancillary Services Market (2025-04), the Interim Regulations on the Administration of Carbon Emission Trading (Decree No. 775), the CBAM regulation, etc.;
-- Data: NEA "2025 China Electricity Market Development Report", annual reports of provincial power exchanges, Fudan Carbon Price Index, ICAP;
-- All items are annotated with source URLs and dates; the full research records are in the research notes under knowledge/.
+### 15.2 Policy and Market Research (2025-2026-11)
+- Policies: NDRC Order No. 20, No. 1217, No. 1501, No. 136, No. 357, No. 394, No. 1656; **2026 additions**: State Council General Office〔2026〕No. 4, NDRC Pricing〔2026〕No. 114, NDRC Energy〔2026〕No. 688, NDRC Order No. 50, the Basic Rules for the Electricity Spot Market (draft for comment, 2026-10-19), the Retailer Management Measure (draft), the Electricity Market Risk-Control Measure (draft), the National Unified Electricity Market Credit Evaluation Guidelines (draft), the Provisions on the Administration of Grid-Connected Operation (draft); the Basic Rules for the Electricity Ancillary Services Market (2025-04), the Interim Regulations on the Administration of Carbon Emission Trading (Decree No. 775, revised 2026-08-08), the CBAM regulation, etc.;
+- Data: NEA "2025 China Electricity Market Development Report", January-September 2026 market-trading data, southern regional market formal-operation data, annual reports of provincial power exchanges, the national carbon market 2025/2026 allowance plan, Fudan Carbon Price Index, ICAP;
+- All items are annotated with source URLs and dates; the full research records are in the research notes under knowledge/. **Caliber conflicts found during the 2026-11 update (2025 medium/long-term 4.81 vs 6.3522 trillion; green power 0.27 vs 0.3285 trillion; the year of PJM 329.17) have been corrected in the text; where old notes disagree, this SKILL prevails.**
+- **New maintenance files (2026-11; check these three first)**:
+  - `knowledge/索引与口径-2026-11.md` — policy-document index (issue date / effective date / status), caliber dictionary, A/B/C/D source grading, 2026-2027 watchlist;
+  - `knowledge/省级市场状态表-2026-11.md` — one-row-per-province status table for 33 provincial markets plus the southern regional market (spot status / No. 136 auction / capacity price / VPP / ancillary services / retail risk);
+  - `knowledge/黄金问答集-2026-11.md` — 28 high-frequency questions with answer points and common errors, doubling as a regression checklist for each revision;
+  - `knowledge/调研-电力市场2026-10增量.md` and `knowledge/调研-碳市场与CBAM-2026-10增量.md` — the underlying research records and "to be verified" lists for this round;
+  - `knowledge/INDEX_EN-2026-11.md` — English index and digest: file map, key figures with grades, a condensed provincial table and the open-items list; use it when answering from an English-only context.
+- **Division of labour with the sister skill**: this skill owns market rules, settlement, pricing mechanisms, retail and carbon markets; resource aggregation, control technology, VPP business models and asset-side estimates belong to *Virtual Power Plant Expert*. Overlapping passages carry only a pointer, and numbers defer to the skill that owns the topic, so the two files cannot drift apart.
 
 ### 15.3 Open-Source Toolbox (modeling and data)
 
@@ -547,5 +672,6 @@ The 8 pilots averaged CNY 44.1/tonne in 2024 (~54% below the national market): B
 ### 15.4 Known Limitations
 - Some scanned files carry OCR noise; occasional typos may remain (corrected by context where possible, formulas described in words);
 - The carbon practice book's data are from around 2016; for post-2021 national carbon market rules, Sections 10.1~10.5 (web research) prevail;
-- Items marked "(to be verified)" (about 8) should prompt the user to verify when cited;
-- Provincial rules update fast; this skill does not replace real-time policy search.
+- Items marked "(to be verified)" should prompt the user to verify when cited; the spot rules, retailer measure, risk-control measure, credit-evaluation guidelines and grid-connection provisions of September-October 2026 are **drafts for comment** and the final clauses may change;
+- Provincial rules update fast; this skill does not replace real-time policy search. Re-verify 2026 provincial spot formal operation, No. 136 auctions, capacity prices and VPP rules before answering;
+- 2025 trading volumes exist in several calibers ("market-traded 6.64 trillion / medium-long-term 6.3522 trillion / 4.81 trillion in some materials"); the preferred caliber is stated in the text — check old materials against it.
