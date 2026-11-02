@@ -29,6 +29,8 @@
 | `调研-VPP商业模式与国际-2026-09增量.md` | Research note | VPP revenue models, company data, international cases |
 | `调研-电力市场2026-10增量.md` | Research note | October 2026 electricity-market updates and correction list |
 | `调研-碳市场与CBAM-2026-10增量.md` | Research note | October 2026 carbon market and CBAM updates |
+| `碳资产实务-2026-11.md` | Practice note | Compliance parameters, CCER, carbon-finance instrument status, CBAM dates, PCF / neutrality / DPP facts and open items; maintenance entry for the carbon asset skill |
+| `调研-碳管理与碳足迹厂商-2026-11.md` | Research note | Carbon Newture service matrix, dated public cases, borrowable methods, claims that must not be used as benchmarks |
 | `调研-VPP政策2026-10增量.md` | Research note | October 2026 VPP policy, scale calibers and business models |
 | `省级市场状态表-2026-11.md` | Status table | One row per province: spot / No. 136 auction / capacity price / VPP / ancillary / retail risk |
 | `索引与口径-2026-11.md` | Handbook | Document-number index, caliber dictionary, source grading, watchlist |
@@ -97,6 +99,23 @@
 | CBAM certificate reference price | ~**EUR 75.36/t** (2026 Q1), **75.28/t** (2026 Q2) | A |
 | CBAM timeline | Definitively applies from 2026-01-01; **certificate purchases start 2027-02**, first surrender 2027-09-30 | A; "applies in 2026" is not "buy certificates in 2026" |
 | GEC price by vintage | 2024 / 2025 / 2026: **CNY 0.56 / 1.60 / 6.16 per certificate** | B/C; ~11x vintage spread |
+| CCER offset cap | **5%** of the surrender obligation | A |
+| CCER registered projects | **44 projects** by mid-October 2026; average price ~**CNY 86.51/t** | B; above CEA at the time |
+| 2025 compliance rate | **99.99%** | B; 2023 was 99.98% |
+| Under-surrender penalty | **5-10x** the market average in the month before the deadline | A (Order 775, amended 2026-08-08) |
+
+### Product footprint, claims and trade data
+
+| Metric | Value | Grade / note |
+|---|---|---|
+| PCF standards | **ISO 14067:2018**; **GB/T 24067-2024** (effective 2024-10-01) | A |
+| Carbon-label pilot | Launched 2024-08; 2025-01 list covers 25 provinces / 57 regions / 10 product categories; first 6 certificates in 2026 | A/B |
+| Shanghai allowance uplift | **0.5 pp** for certified covered entities (cumulative cap 1 pp reported) | B (0.5 pp); C (cumulative cap) |
+| Carbon-neutrality standard | **ISO 14068:2026**, published 2026-09-11, replacing ISO 14068-1:2023; PAS 2060 withdrawn end-2025 | A/B |
+| Battery passport | Mandatory from **2027-02-18** for EV, LMT and >2 kWh industrial batteries | A ((EU) 2023/1542) |
+| DPP registry | Live **2026-07-20**; about 71 battery data items in 2026-08 guidance | B/C |
+| Cross-border carbon data | Pil/DSL/CSL + March 2024 provisions; Lingang pilot: 330 consultations / 32 companies / 34 scenarios by 2026-04 | A (law); B/C (pilot) |
+| Carbon-data loans | CCB Shanghai "carbon-data loan" 2024-04-25; Postal Savings Bank Beijing 236 firms / CNY 1.11 bn by 2026-06 | B/C |
 
 ---
 
@@ -147,6 +166,10 @@
 6. **2027 No. 136 auctions**: Liaoning clears 2026-11-08; results and other provinces still arriving.
 7. **Order 2222**: CAISO/ISO-NE 2026-11-01, NYISO 2026-12, PJM 2028/29 — implementation, not just approval.
 8. **CBAM**: certificates purchasable from 2027-02, first surrender 2027-09-30.
+9. **ISO 14068:2026**: certificate transition from 14068-1:2023 still to be confirmed by certification bodies.
+10. **DPP**: registry operating rules and the final battery data-item list are not yet public in full; delegated-act dates for steel, construction, textiles, aluminium, tyres and furniture are indicative.
+11. **PCF label**: later certification batches, product-specific rules and the formal Shanghai incentive document.
+12. **Cross-border carbon data**: official Lingang statistics and sectoral important-data catalogues.
 
 ---
 
@@ -156,4 +179,4 @@
 - For province-specific questions, confirm the province first and check the Chinese status table; rules differ on thresholds, price caps and products.
 - Separate book-era data (2018-2020) from 2026 policy data; do not mix the 470/16.85 GW official figure with the 120 GW connected figure.
 - VPP revenue depends on the local market: ask whether spot/ancillary markets exist, what resources are aggregated, and whether an aggregator relationship already exists before discussing business models.
-- Verification entry points: NDRC, NEA, provincial DRCs/energy bureaus, Beijing and provincial power exchanges, the southern regional trading platform, cets.com.cn, China Carbon Registration, ICAP.
+- Verification entry points: NDRC, NEA, provincial DRCs/energy bureaus, Beijing and provincial power exchanges, the southern regional trading platform, cets.com.cn, China Carbon Registration, ICAP. For product footprints add SAMR, MEE and the national product-footprint factor database; for trade data add the Commission CBAM/ESPR pages.

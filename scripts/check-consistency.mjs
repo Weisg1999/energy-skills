@@ -84,7 +84,7 @@ const versioned = [
 ];
 for (const file of versioned) {
   const text = read(file);
-  if (!/v1\.3/.test(text)) fail(file, 1, 'missing current version marker v1.3');
+  if (!/v1\.4/.test(text)) fail(file, 1, 'missing current version marker v1.4');
   if (/v1\.1\s*[（(]\s*(updated|更新)/i.test(text)) {
     fail(file, 1, 'stale version header v1.1');
   }
@@ -109,10 +109,40 @@ const parity = [
   { name: 'Shenzhen connected capacity', cn: /475 万 kW/, en: /4\.75 GW/ },
 ];
 
+const pairParity = {
+  'skills/carbon-asset-expert/SKILL.md': [
+    { name: 'ETS coverage entities', cn: /3,680 家/, en: /3,680 entities/ },
+    { name: 'ETS coverage emissions', cn: /83 亿吨/, en: /8\.3 billion tonnes/ },
+    { name: 'CCER registered projects', cn: /44 个项目/, en: /44 projects/ },
+    { name: 'CCER average price', cn: /86\.51/, en: /86\.51/ },
+    { name: 'CCER break-even price', cn: /89\.61/, en: /89\.61/ },
+    { name: 'pledge margin-call price', cn: /71\.25/, en: /71\.25/ },
+    { name: '2025 compliance rate', cn: /99\.99%/, en: /99\.99%/ },
+    { name: 'CEA August 2026 close', cn: /97\.90/, en: /97\.90/ },
+    { name: 'CBAM first surrender', cn: /2027-09-30/, en: /2027-09-30/ },
+    { name: 'under-surrender multiple', cn: /5-10 倍/, en: /5-10x/ },
+    { name: 'compliance purchase cost', cn: /5,445\.3 万元/, en: /54\.453 million/ },
+    { name: 'five-fold penalty', cn: /1\.35 亿元/, en: /135 million/ },
+    { name: 'CCER project NPV', cn: /−309\.5 万元/, en: /3\.095 million/ },
+    { name: 'CCER project IRR', cn: /6\.25%/, en: /6\.25%/ },
+    { name: 'PCF cradle-to-grave total', cn: /12,400 kg/, en: /12,400 kg/ },
+    { name: 'PCF intensity', cn: /12\.4 kg\/kg/, en: /12\.4 kg\/kg/ },
+    { name: 'PCF cradle-to-gate', cn: /10\.78/, en: /10\.78/ },
+    { name: 'PCF raw-material share', cn: /66\.1%/, en: /66\.1%/ },
+    { name: 'PCF residual after 20% cut', cn: /9,920/, en: /9,920/ },
+    { name: 'PCF offset cost', cn: /892\.8/, en: /892\.8/ },
+    { name: 'ISO 14068 edition', cn: /14068:2026/, en: /14068:2026/ },
+    { name: 'battery passport date', cn: /2027-02-18/, en: /2027-02-18/ },
+    { name: 'Shanghai certification uplift', cn: /0\.5 个百分点/, en: /0\.5 percentage-point/ },
+    { name: 'uplift in tonnes', cn: /4 万吨/, en: /40,000 t/ },
+  ],
+};
+
 const skillPairs = [
   ['skills/virtual-power-plant/SKILL.md', 'skills/virtual-power-plant/SKILL_EN.md'],
   ['skills/electricity-trading-expert/SKILL.md', 'skills/electricity-trading-expert/SKILL_EN.md'],
   ['skills/spot-bidding-quant/SKILL.md', 'skills/spot-bidding-quant/SKILL_EN.md'],
+  ['skills/carbon-asset-expert/SKILL.md', 'skills/carbon-asset-expert/SKILL_EN.md'],
 ];
 for (const [cnRel, enRel] of skillPairs) {
   const cnFile = join(root, cnRel);
@@ -123,7 +153,8 @@ for (const [cnRel, enRel] of skillPairs) {
   }
   const cn = read(cnFile);
   const en = read(enFile);
-  for (const item of parity) {
+  const pairItems = [...parity, ...(pairParity[cnRel] ?? [])];
+  for (const item of pairItems) {
     const cnHas = item.cn.test(cn);
     const enHas = item.en.test(en);
     if (cnHas && !enHas) fail(enFile, 1, `missing counterpart for ${item.name}`);

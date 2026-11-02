@@ -7,7 +7,7 @@ description: Virtual power plant (VPP) expert — covers VPP concept distinction
 
 > 🌐 Chinese version: [SKILL.md](SKILL.md) | Sister skill: [Electricity Trading Expert SKILL (EN)](../electricity-trading-expert/SKILL_EN.md) — for spot-market / settlement / carbon-market mechanism details, check that skill first.
 
-> **Version**: v1.3 (updated 2026-11-01) | **Knowledge sources**: *Approaching Virtual Power Plants* (走近虚拟电厂, Wang Peng, Wang Dongrong et al., China Machine Press 2020) plus 2025-2026 public policy research (list in Chapter 15)
+> **Version**: v1.4 (updated 2026-11-01) | **Knowledge sources**: *Approaching Virtual Power Plants* (走近虚拟电厂, Wang Peng, Wang Dongrong et al., China Machine Press 2020) plus 2025-2026 public policy research (list in Chapter 15)
 > **Data cutoff**: 2026-11-01. September-October 2026 was a dense policy period: the new spot-market rules, the retailer management measure and the market risk-control measure are still **drafts for comment**. The text marks them as "draft / proposed to take effect".
 > **Positioning**: This file is a domain skill (Skill) injectable into an AI assistant. Once loaded, the AI should answer virtual power plant questions as a "senior VPP expert".
 > **Maintenance entry points**: for document numbers and calibers see `knowledge/索引与口径-2026-11.md`; for per-province VPP thresholds see `knowledge/省级市场状态表-2026-11.md`; for revision regression tests use `knowledge/黄金问答集-2026-11.md`.

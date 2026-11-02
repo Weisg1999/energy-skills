@@ -8,7 +8,7 @@ description: Electricity trading expert — a full-chain expert covering the pow
 > 🌐 Chinese version: [SKILL.md](SKILL.md)
 > 🌐 Sister skill in this repo: [Virtual Power Plant Expert](../virtual-power-plant/SKILL_EN.md) (aggregation, control technology, VPP business models and asset-side estimates)
 
-> **Version**: v1.3 (updated 2026-11-01) | **Knowledge sources**: six professional books plus policy and market research through 2026-11 (list in Chapter 15)
+> **Version**: v1.4 (updated 2026-11-01) | **Knowledge sources**: six professional books plus policy and market research through 2026-11 (list in Chapter 15)
 > **Data cutoff**: 2026-11-01. September-October 2026 was a dense policy period: the new spot-market rules, the retailer management measure and the market risk-control measure are still **drafts for comment**. The text marks them as "draft / proposed to take effect"; always distinguish a formal document from a draft when citing.
 > **Positioning**: This file is a domain skill (Skill) injectable into an AI assistant. Once loaded, the AI should answer questions on power trading, spot markets, virtual power plants, and carbon markets as a "senior China electricity market expert".
 > **Maintenance entry points**: for document numbers and status see `knowledge/索引与口径-2026-11.md`; for province-specific answers see `knowledge/省级市场状态表-2026-11.md`; for revision regression tests use `knowledge/黄金问答集-2026-11.md`; where data calibers conflict, this SKILL prevails.
@@ -437,6 +437,7 @@ Market registration → market preparation → publication of trading announceme
 ## 10. Carbon Market and Corporate Carbon Management
 
 > Chapter data cutoff: 2026-11-01 (carbon prices, allowance plan, CCER, CBAM timing); MRV and accounting methods are not time-sensitive.
+> This chapter keeps market rules and a carbon-price overview only; compliance calendars, allowance gaps, CCER development economics and carbon finance belong to *Carbon Asset Management Expert* (`skills/carbon-asset-expert/SKILL_EN.md`), which owns the numbers and operating detail.
 
 ### 10.1 National Carbon Market (CEA) Framework and Evolution
 - **Launch**: went live 2021-07-16 (trading at the Shanghai Environment and Energy Exchange, registration at China Carbon Emissions Registration (中碳登)); first batch ~2000 key emitting units in the power sector;
@@ -654,7 +655,7 @@ The 8 pilots averaged CNY 44.1/tonne in 2024 (~54% below the national market): B
   - `knowledge/黄金问答集-2026-11.md` — 28 high-frequency questions with answer points and common errors, doubling as a regression checklist for each revision;
   - `knowledge/调研-电力市场2026-10增量.md` and `knowledge/调研-碳市场与CBAM-2026-10增量.md` — the underlying research records and "to be verified" lists for this round;
   - `knowledge/INDEX_EN-2026-11.md` — English index and digest: file map, key figures with grades, a condensed provincial table and the open-items list; use it when answering from an English-only context.
-- **Division of labour with the sister skill**: this skill owns market rules, settlement, pricing mechanisms, retail and carbon markets; resource aggregation, control technology, VPP business models and asset-side estimates belong to *Virtual Power Plant Expert*. Overlapping passages carry only a pointer, and numbers defer to the skill that owns the topic, so the two files cannot drift apart.
+- **Division of labour with the sister skills**: this skill owns market rules, settlement, pricing mechanisms, retail and a carbon-market overview; resource aggregation, control technology, VPP business models and asset-side estimates belong to *Virtual Power Plant Expert*; compliance calendars, allowance gaps, CCER development economics, carbon finance and CBAM operations belong to *Carbon Asset Management Expert*. Overlapping passages carry only a pointer, and numbers defer to the skill that owns the topic, so the files cannot drift apart.
 
 ### 15.3 Open-Source Toolbox (modeling and data)
 

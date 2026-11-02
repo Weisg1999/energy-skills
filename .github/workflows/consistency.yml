@@ -20,3 +20,5 @@ jobs:
         run: node scripts/check-consistency.mjs
       - name: Run the spot-bidding reference implementation self-test
         run: python skills/spot-bidding-quant/tools/selftest.py
+      - name: Run the carbon-asset reference implementation self-test
+        run: python skills/carbon-asset-expert/tools/selftest.py

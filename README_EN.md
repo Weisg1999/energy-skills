@@ -42,7 +42,7 @@ Covers VPP concept distinctions, resource aggregation and assessment, the three 
 
 ### [Spot Bidding Quant (spot-bidding-quant)](skills/spot-bidding-quant/SKILL_EN.md)
 
-Covers a reproducible chain from raw data to a submitted bid: load, price and output forecasting, forecast-bias correction, quantity-price curves and declared-quantity decisions, retail procurement portfolios, bid simulation and market-structure identification, rolling backtests and T+1 PnL attribution. Chinese original: [SKILL.md](skills/spot-bidding-quant/SKILL.md). Ships with a **zero-dependency Python reference implementation** (`tools/`) and **synthetic sample data** (`data/sample/`); `python tools/selftest.py` runs and asserts the figures quoted in the text. Complementary to the other two skills: rules and settlement live in Electricity Trading Expert, aggregation and operations in Virtual Power Plant Expert, and this skill answers only "how to compute, how to bid, how to verify".
+Covers a reproducible chain from raw data to a submitted bid: load, price and output forecasting, forecast-bias correction, quantity-price curves and declared-quantity decisions, retail procurement portfolios, bid simulation and market-structure identification, rolling backtests and T+1 PnL attribution. Chinese original: [SKILL.md](skills/spot-bidding-quant/SKILL.md). Ships with a **zero-dependency Python reference implementation** (`tools/`) and **synthetic sample data** (`data/sample/`); `python tools/selftest.py` runs and asserts the figures quoted in the text. Complementary to the other three skills: rules and settlement live in Electricity Trading Expert, aggregation and operations in Virtual Power Plant Expert, carbon compliance and carbon finance in Carbon Asset Management Expert, and this skill answers only "how to compute, how to bid, how to verify".
 
 | Domain | Coverage |
 |---|---|
@@ -59,7 +59,32 @@ Covers a reproducible chain from raw data to a submitted bid: load, price and ou
 | Engineering & submission | D-1 timeline, submission checklist, amendment audit trail, monitoring and fallback, build-versus-buy |
 | Production engines | What a production clearing engine contains (SCUC, SCED, RUC, joint clearing, inter-regional ATC, capacity) and why a teaching sandbox differs structurally, not just in accuracy |
 
-Readers without a power-sector background should start with the four **Power System 101** notes under `knowledge/`: [landscape](knowledge/电力系统通识-A-格局与主体.md) (who generates, who transmits, who writes the rules), [fundamentals](knowledge/电力系统通识-B-发输配变用.md) (voltage, frequency, reserve, stability), [reform history](knowledge/电力系统通识-C-改革史.md) (the 2002 and 2015 restructurings), and [new actors](knowledge/电力系统通识-D-新角色与现货市场.md) (renewables, storage, VPPs and system costs). These are knowledge notes, not skills; every term and institution used by the three skills is defined there.
+### [Carbon Asset Management Expert (carbon-asset-expert)](skills/carbon-asset-expert/SKILL_EN.md)
+
+Covers the chain from emissions data to compliance, financing and export response: compliance calendars, allowance-gap modelling, CEA/CCER procurement, CCER project development with NPV/IRR, allowance pledge and forwards, carbon price scenarios, electricity-carbon accounting, CBAM, and product carbon footprints, carbon-neutrality claims, supply-chain carbon data, DPP and cross-border carbon data. Chinese original: [SKILL.md](skills/carbon-asset-expert/SKILL.md). Ships with a **zero-dependency Python reference implementation** (`tools/`); `python tools/selftest.py` runs and asserts the worked examples in the text. Complementary to the other three skills: power-market rules in Electricity Trading Expert, aggregation and operations in Virtual Power Plant Expert, power-price forecasting in Spot Bidding Quant; this skill answers only "how to comply, how to model, how to finance, and how to calculate and defend a product footprint".
+
+| Domain | Coverage |
+|---|---|
+| Boundaries | Four instruments (CEA / CCER / GEC / international credit), three markets (national / pilot / voluntary), three years (emission / compliance / first control), operational-control boundary |
+| Framework & parameters | 3,680 entities and about 8.3 billion tonnes covered, Order 775 and its 2026-08-08 amendment, the 2025/2026 allocation plan, eight pilot markets |
+| Accounting & MRV | Three accounting layers, coal combustion formula, data chain (meter-ledger-evidence-archive), verification sampling and non-conformities, two calibers, eight frequent errors |
+| Compliance calendar | Seven milestones (15 Jan data freeze → 31 Mar report → 30 Jun verification → 30 Sep gap → 31 Dec surrender → 31 Jan review), backward planning, RACI, risk register, ICS export |
+| Allowance gap | Free allocation, gap, 5% CCER cap, CEA purchase, three-factor sensitivity, penalty versus purchase cost (example: CNY 54.453 million purchase versus CNY 135 million fine) |
+| Procurement & execution | CEA / CCER / forward instruments, batch building, four tests for CCER versus CEA, execution checklist, compliance red lines |
+| CCER development | Five eligibility questions, seven-step process, cost structure, three cooperation models, screening scorecard with veto items |
+| CCER economics | Reductions, NPV, IRR, break-even price, sensitivity, decision rules (example: NPV −CNY 3.095 million, IRR 6.25%, break-even CNY 89.61/t) |
+| Carbon finance | Pledge / repo / forward-swap / fund-bond / insurance matrix, margin-call price (example CNY 71.25/t), accounting basis, the "futures not listed" boundary |
+| Carbon price scenarios | Eight drivers, CEA price points, three-scenario template, common errors (missing date/market, treating CCER as an allowance) |
+| Electricity-carbon & CBAM | Scope 2 dual methods, GEC vintage spreads, CBAM timeline (effective 2026-01-01, certificates from 2027-02, first surrender 2027-09-30), eight exporter preparations |
+| Product carbon footprint | ISO 14067 / GB/T 24067, five stages and two boundaries, declared unit / cut-off / allocation, factor hierarchy, label-certification pilot (example: 12.4 kg/kg, CNY 892.8 offset) |
+| Carbon-neutrality claims | ISO 14068:2026 (published 2026-09-11, replacing the 2023 edition), quantify → reduce → offset → report → claim → verify, CNMP, offset-instrument limits, greenwashing red lines |
+| Supply chain & DPP | Minimum data fields, TfS 3.0 / PACT / Catena-X, supplier segmentation, ESPR, battery passport 2027-02-18, DPP ≠ CBAM |
+| Cross-border carbon data | Three laws, four routes, Lingang pilot, seven-step process, common errors |
+| Carbon-data credit | Carbon account / carbon-linked loan / allowance pledge, public carbon-data-loan cases, annual interest-savings formula |
+| Data governance | Six-stage controls, visible / traceable / acceptable test, PCF coverage and other data KPIs |
+| Organisation & controls | Seven components, tiered authority, stress tests, third-party management, six KPIs |
+
+Readers without a power-sector background should start with the four **Power System 101** notes under `knowledge/`: [landscape](knowledge/电力系统通识-A-格局与主体.md) (who generates, who transmits, who writes the rules), [fundamentals](knowledge/电力系统通识-B-发输配变用.md) (voltage, frequency, reserve, stability), [reform history](knowledge/电力系统通识-C-改革史.md) (the 2002 and 2015 restructurings), and [new actors](knowledge/电力系统通识-D-新角色与现货市场.md) (renewables, storage, VPPs and system costs). These are knowledge notes, not skills; every term and institution used by the four skills is defined there.
 
 ## Repository Structure
 
@@ -77,11 +102,15 @@ energy-skills/
 │   ├── virtual-power-plant/
 │   │   ├── SKILL.md                           ← VPP skill file (Chinese, frontmatter, directly registerable)
 │   │   └── SKILL_EN.md                        ← English translation
-│   └── spot-bidding-quant/
-│       ├── SKILL.md                           ← spot-bidding skill (Chinese, frontmatter, directly registerable)
+│   ├── spot-bidding-quant/
+│   │   ├── SKILL.md                           ← spot-bidding skill (Chinese, frontmatter, directly registerable)
+│   │   ├── SKILL_EN.md                        ← English translation
+│   │   ├── tools/                             ← zero-dependency reference implementation (forecast / bid / simulate / backtest / selftest)
+│   │   └── data/sample/                       ← synthetic sample data (60 days × 96 slots)
+│   └── carbon-asset-expert/
+│       ├── SKILL.md                           ← carbon asset skill (Chinese, frontmatter, directly registerable)
 │       ├── SKILL_EN.md                        ← English translation
-│       ├── tools/                             ← zero-dependency reference implementation (forecast / bid / simulate / backtest / selftest)
-│       └── data/sample/                       ← synthetic sample data (60 days × 96 slots)
+│       └── tools/                             ← zero-dependency reference implementation (compliance / CCER / finance / footprint / calendar / selftest)
 └── knowledge/                                 ← thematic notes and research records behind the skills
     ├── 电力现货市场101问-A/B/C-*.md                (Spot Market 101 Questions — three thematic notes)
     ├── 电力系统经济学原理-主题笔记.md               (Principles of Power System Economics)
@@ -101,6 +130,8 @@ energy-skills/
     ├── 索引与口径-2026-11.md                       (policy index / caliber dictionary / source grading / watchlist)
     ├── INDEX_EN-2026-11.md                        (English index, key figures and condensed provincial table)
     ├── 调研-量化报价与厂商实践-2026-11.md           (vendor practice: Lumin AI participant side, Tsintergy operations side)
+    ├── 调研-碳管理与碳足迹厂商-2026-11.md           (vendor practice: Carbon Newture services, dated cases, borrowable methods)
+    ├── 碳资产实务-2026-11.md                       (compliance parameters, CCER, carbon-finance status, CBAM dates, PCF / neutrality / DPP)
     └── 黄金问答集-2026-11.md                       (28 golden Q&As, also the regression checklist)
 ```
 
@@ -130,6 +161,14 @@ energy-skills/
 4. **Discipline**: the skills ship with a "to be verified" flagging convention and common-mistakes checklists (e.g., using OM baseline emission factors for consumption accounting, mis-citing Document 813 as the spot-market basic rules, conflating capacity metrics) — see Chapter 0 and the reasoning handbook in each SKILL.md.
 
 ## Update Log
+
+### 2026-11-02 (v1.4)
+- **Fourth skill: Carbon Asset Management Expert (Chinese and English)**. Covers compliance calendars, allowance gaps, CEA/CCER procurement, CCER development economics, carbon-finance instruments, carbon price scenarios, electricity-carbon accounting and CBAM. Scope is "how to comply, how to model, how to finance"; power-market rules stay in Electricity Trading Expert.
+- **Zero-dependency reference implementation**: `skills/carbon-asset-expert/tools/` (`compliance` / `ccer` / `finance` / `calendar_tool` / `selftest`, standard library only). `python tools/selftest.py` asserts the worked examples: 8 Mt allocation, 0.6 Mt gap, CNY 54.453 million purchase cost, CNY 135 million five-fold penalty; CCER project NPV −CNY 3.095 million, IRR 6.25%, break-even CNY 89.61/t; pledge margin-call price CNY 71.25/t; seven compliance milestones exported as ICS.
+- **2026-11 facts and corrections**: 3,680 entities and about 8.3 billion tonnes covered; CCER offset cap 5%, 44 projects and an average CNY 86.51/t by mid-October 2026; CBAM effective 2026-01-01 but certificates purchased from 2027-02 and first surrender 2027-09-30; carbon futures not listed as of 2026-11; GEC prices by vintage 0.56/1.60/6.16 CNY.
+- **Carbon skill extension (product and trade side)**: Ch. 11 is now "Product Carbon Footprint, CBAM and Green Trade", adding PCF boundary/allocation/factors (worked example 12.4 kg/kg, CNY 892.8 offset), ISO 14068:2026 neutrality claims, supply-chain carbon data, DPP / battery passport (2027-02-18) and cross-border carbon data; new §9.6 on carbon-data credit and §12.6 on data governance; the CCER cap is stated uniformly as "5% × verified emissions / surrender obligation".
+- **Reference implementation updated**: new `pcf.py` (life-cycle total, intensity, stage shares, co-product allocation, residual after reduction, offset cost), plus `allocation_with_certification_bonus` and `carbon_linked_loan_savings`; `selftest.py` asserts every new worked example.
+- **Maintenance and division**: added [碳资产实务-2026-11](knowledge/碳资产实务-2026-11.md) and the [carbon-management vendor research note](knowledge/调研-碳管理与碳足迹厂商-2026-11.md); Electricity Trading Expert Ch. 10 keeps market rules and a carbon-price overview with a pointer to the new skill; version markers raised to v1.4, the checker now covers the fourth skill pair and carbon CN/EN numbers, and CI runs the carbon self-test.
 
 ### 2026-11-01 (v1.3 addendum: Power System 101)
 - **Four new knowledge notes**: [landscape](knowledge/电力系统通识-A-格局与主体.md), [fundamentals](knowledge/电力系统通识-B-发输配变用.md), [reform history](knowledge/电力系统通识-C-改革史.md), [new actors](knowledge/电力系统通识-D-新角色与现货市场.md). They form a general-education layer — institutions, terminology and history for readers without a power-sector background — and deliberately carry no provincial rule parameters or bidding methods.
@@ -162,9 +201,10 @@ energy-skills/
 - [x] Electricity Trading Expert (Chinese, English)
 - [x] Virtual Power Plant Expert (Chinese, English)
 - [x] Quantitative spot-bidding skill (load forecasting, price forecasting, bid simulation)
-- [ ] Carbon asset management skill (compliance calendar, CCER development economics, carbon finance)
+- [x] Carbon asset management skill (compliance calendar, CCER development economics, carbon finance)
+  - First version complete: bilingual handbook, zero-dependency modelling tools and a [carbon practice note](knowledge/碳资产实务-2026-11.md)
 - [x] **Power System 101** — knowledge base first, skill second
-  - **Purpose**: for readers with no power-sector background. It answers three questions — who the industry is made of, how electricity gets from coal, wind and sun to the socket, and why the sector has been restructured repeatedly. It does **not** carry provincial rule parameters or bidding methods (those belong to the three skills); it gives the terms, institutions and figures used in those skills somewhere to land.
+  - **Purpose**: for readers with no power-sector background. It answers three questions — who the industry is made of, how electricity gets from coal, wind and sun to the socket, and why the sector has been restructured repeatedly. It does **not** carry provincial rule parameters or bidding methods (those belong to the four skills); it gives the terms, institutions and figures used in those skills somewhere to land.
   - **First version complete**: [A landscape](knowledge/电力系统通识-A-格局与主体.md), [B fundamentals](knowledge/电力系统通识-B-发输配变用.md), [C reform history](knowledge/电力系统通识-C-改革史.md), [D new actors](knowledge/电力系统通识-D-新角色与现货市场.md). Written to be textbook-accurate yet readable for non-specialists: every term defined at first use, one quick-reference table and one common-misconceptions list per note, every figure carrying a source and a date.
   - **Covered in this version**: State Grid / China Southern Power Grid / Inner Mongolia West supply boundaries; the five majors and the "four smalls" (a historical label — Guohua has merged into CHN Energy); provincial energy groups; equipment and secondary-system vendors; research and standards bodies; trading, dispatch and regulatory institutions; power vs. energy, voltage levels, frequency and reserve, the three stability classes, protection, and the flexibility of seven generation types; the reform path from funded power construction to Document No. 136; spot markets, high renewables share, storage and grid-forming, VPPs, green direct connection and system costs.
   - **Next**: extract a lightweight `SKILL.md` Q&A layer from the four notes (term definitions, institution lookup, reform timeline first), with the skill citing the notes rather than duplicating them.
@@ -176,4 +216,4 @@ energy-skills/
 
 All content in this repository (Markdown skill files, knowledge notes, research records and supporting scripts) is licensed under [CC BY-NC 4.0](LICENSE): free to copy, redistribute and adapt with attribution, **not for commercial use**. When quoting or republishing, use the attribution format suggested in `LICENSE` and keep the source link.
 
-*Last updated 2026-11-01*
+*Last updated 2026-11-02*
