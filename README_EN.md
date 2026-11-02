@@ -208,6 +208,10 @@ energy-skills/
   - **First version complete**: [A landscape](knowledge/电力系统通识-A-格局与主体.md), [B fundamentals](knowledge/电力系统通识-B-发输配变用.md), [C reform history](knowledge/电力系统通识-C-改革史.md), [D new actors](knowledge/电力系统通识-D-新角色与现货市场.md). Written to be textbook-accurate yet readable for non-specialists: every term defined at first use, one quick-reference table and one common-misconceptions list per note, every figure carrying a source and a date.
   - **Covered in this version**: State Grid / China Southern Power Grid / Inner Mongolia West supply boundaries; the five majors and the "four smalls" (a historical label — Guohua has merged into CHN Energy); provincial energy groups; equipment and secondary-system vendors; research and standards bodies; trading, dispatch and regulatory institutions; power vs. energy, voltage levels, frequency and reserve, the three stability classes, protection, and the flexibility of seven generation types; the reform path from funded power construction to Document No. 136; spot markets, high renewables share, storage and grid-forming, VPPs, green direct connection and system costs.
   - **Next**: extract a lightweight `SKILL.md` Q&A layer from the four notes (term definitions, institution lookup, reform timeline first), with the skill citing the notes rather than duplicating them.
+- [ ] **EMS optimisation and dispatch** (planned; not started)
+  - **Module 1: microgrid EMS** — grid-connected/islanded switching, coordinated PV/wind/storage/load, economic dispatch, reserve and islanding constraints.
+  - **Module 2: storage EMS** — charge/discharge strategy, SOC and degradation limits, peak-valley arbitrage, demand management, ancillary-service bidding and safety boundaries.
+  - **Delivery form TBD**: a standalone skill or merged into the VPP skill; build the calculation tools and worked examples first, then decide whether to extract a `SKILL.md`. Added to the roadmap on 2026-11-02.
 - [ ] 2026-12 incremental review (spot rules finalized, national VPP management measure, 2027 No. 136 auctions)
 
 ---
