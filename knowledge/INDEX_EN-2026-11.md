@@ -34,6 +34,7 @@
 | `调研-VPP政策2026-10增量.md` | Research note | October 2026 VPP policy, scale calibers and business models |
 | `省级市场状态表-2026-11.md` | Status table | One row per province: spot / No. 136 auction / capacity price / VPP / ancillary / retail risk |
 | `索引与口径-2026-11.md` | Handbook | Document-number index, caliber dictionary, source grading, watchlist |
+| `微网EMS优化调度-算法与工程-2026-11.md` | Algorithm note | Microgrid EMS day-ahead MILP: objective terms, constraints, SOC efficiency, SOS1 vs Big-M, demand-charge linearization, solver parameters and fallbacks, dual-timescale rolling, uncertainty roadmap, assessment loop, review checklist; source material for the planned EMS module |
 | `黄金问答集-2026-11.md` | Q&A | 28 high-frequency questions with answer points and common errors; regression checklist |
 
 ---
