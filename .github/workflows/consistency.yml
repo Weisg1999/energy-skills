@@ -22,3 +22,5 @@ jobs:
         run: python skills/spot-bidding-quant/tools/selftest.py
       - name: Run the carbon-asset reference implementation self-test
         run: python skills/carbon-asset-expert/tools/selftest.py
+      - name: Run the storage investment reference implementation self-test
+        run: python skills/storage-investment-operations/tools/selftest.py

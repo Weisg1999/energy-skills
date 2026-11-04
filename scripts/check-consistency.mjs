@@ -84,7 +84,7 @@ const versioned = [
 ];
 for (const file of versioned) {
   const text = read(file);
-  if (!/v1\.4/.test(text)) fail(file, 1, 'missing current version marker v1.4');
+  if (!/v1\.5/.test(text)) fail(file, 1, 'missing current version marker v1.5');
   if (/v1\.1\s*[（(]\s*(updated|更新)/i.test(text)) {
     fail(file, 1, 'stale version header v1.1');
   }
@@ -136,6 +136,43 @@ const pairParity = {
     { name: 'Shanghai certification uplift', cn: /0\.5 个百分点/, en: /0\.5 percentage-point/ },
     { name: 'uplift in tonnes', cn: /4 万吨/, en: /40,000 t/ },
   ],
+  'skills/storage-investment-operations/SKILL.md': [
+    { name: 'Anhui capacity price', cn: /165 元\/kW·年/, en: /CNY 165\/kW-yr/ },
+    { name: 'Gansu capacity price', cn: /330 元\/kW·年/, en: /CNY 330\/kW-yr/ },
+    { name: '2 h capacity charge', cn: /550 万元/, en: /CNY 5\.5 million/ },
+    { name: 'discharge per cycle', cn: /187\.62 MWh/, en: /187\.62 MWh/ },
+    { name: 'charge per cycle', cn: /213\.20 MWh/, en: /213\.20 MWh/ },
+    { name: 'annual net arbitrage', cn: /3,106\.9 万元/, en: /CNY 31\.069 million/ },
+    { name: 'annual revenue example A', cn: /3,656\.9 万元/, en: /CNY 36\.569 million/ },
+    { name: 'NPV example A', cn: /3,119\.4 万元/, en: /CNY 31\.194 million/ },
+    { name: 'IRR example A', cn: /10\.47%/, en: /10\.47%/ },
+    { name: 'payback example A', cn: /7\.40 年/, en: /7\.40 years/ },
+    { name: 'LCOS incl charging', cn: /742\.24/, en: /742\.24/ },
+    { name: 'LCOS excl charging', cn: /458\.15/, en: /458\.15/ },
+    { name: 'DSCR example A', cn: /1\.53/, en: /1\.53/ },
+    { name: 'no capacity price NPV', cn: /−411 万元/, en: /-CNY 4\.11 million/ },
+    { name: 'Doc 1656 effective date', cn: /2026-03-01 施行/, en: /effective 2026-03-01/ },
+    { name: 'Zhejiang spread cut', cn: /−28\.5%/, en: /-28\.5%/ },
+    { name: 'Jiangsu spread change', cn: /0\.85→0\.65/, en: /0\.85 to 0\.65/ },
+    { name: 'demand charge with overrun', cn: /520,000/, en: /520,000/ },
+    { name: 'demand charge after shaving', cn: /400,000/, en: /400,000/ },
+    { name: 'annual demand saving', cn: /144 万元/, en: /CNY 1\.44 million/ },
+    { name: 'NPV example B', cn: /259\.5 万元/, en: /CNY 2\.595 million/ },
+    { name: 'IRR example B', cn: /12\.59%/, en: /12\.59%/ },
+    { name: 'payback example B', cn: /5\.52 年/, en: /5\.52 years/ },
+    { name: 'co-located IRR zero cost', cn: /4\.98%/, en: /4\.98%/ },
+    { name: 'co-located IRR with cost', cn: /0\.26%/, en: /0\.26%/ },
+    { name: 'co-located revenue zero cost', cn: /471\.7 万元/, en: /CNY 4\.717 million/ },
+    { name: 'co-located revenue with cost', cn: /336\.7 万元/, en: /CNY 3\.367 million/ },
+    { name: 'frequency-regulation daily', cn: /15,900 元/, en: /CNY 15,900/ },
+    { name: 'frequency-regulation annual', cn: /524\.7 万元/, en: /CNY 5\.247 million/ },
+    { name: 'degradation sensitivity IRR', cn: /8\.47%/, en: /8\.47%/ },
+    { name: 'augmentation energy', cn: /50 MWh/, en: /50 MWh/ },
+    { name: 'equivalent cycles', cn: /325\.9/, en: /325\.9/ },
+    { name: 'years to 80% SOH', cn: /13\.33 年/, en: /13\.33 years/ },
+    { name: '2 h system tender range', cn: /0\.53–0\.86/, en: /0\.53-0\.86/ },
+    { name: 'recent project tender range', cn: /0\.678–1\.199/, en: /0\.678-1\.199/ },
+  ],
 };
 
 const skillPairs = [
@@ -143,6 +180,7 @@ const skillPairs = [
   ['skills/electricity-trading-expert/SKILL.md', 'skills/electricity-trading-expert/SKILL_EN.md'],
   ['skills/spot-bidding-quant/SKILL.md', 'skills/spot-bidding-quant/SKILL_EN.md'],
   ['skills/carbon-asset-expert/SKILL.md', 'skills/carbon-asset-expert/SKILL_EN.md'],
+  ['skills/storage-investment-operations/SKILL.md', 'skills/storage-investment-operations/SKILL_EN.md'],
 ];
 for (const [cnRel, enRel] of skillPairs) {
   const cnFile = join(root, cnRel);

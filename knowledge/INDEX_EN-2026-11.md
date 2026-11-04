@@ -30,6 +30,7 @@
 | `调研-电力市场2026-10增量.md` | Research note | October 2026 electricity-market updates and correction list |
 | `调研-碳市场与CBAM-2026-10增量.md` | Research note | October 2026 carbon market and CBAM updates |
 | `碳资产实务-2026-11.md` | Practice note | Compliance parameters, CCER, carbon-finance instrument status, CBAM dates, PCF / neutrality / DPP facts and open items; maintenance entry for the carbon asset skill |
+| `储能投资与运营-2026-11.md` | Practice note | Doc. 114 capacity price and provincial samples, Doc. 1656 TOU reconstruction, Doc. 411 ancillary products, Docs 1583/500 demand rules, 2026 tender cost ranges, GB/T 36549 KPIs and 2026 H1 operating data; maintenance entry for the storage investment skill |
 | `调研-碳管理与碳足迹厂商-2026-11.md` | Research note | Carbon Newture service matrix, dated public cases, borrowable methods, claims that must not be used as benchmarks |
 | `调研-VPP政策2026-10增量.md` | Research note | October 2026 VPP policy, scale calibers and business models |
 | `省级市场状态表-2026-11.md` | Status table | One row per province: spot / No. 136 auction / capacity price / VPP / ancillary / retail risk |

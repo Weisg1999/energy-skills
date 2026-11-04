@@ -84,7 +84,24 @@ Covers the chain from emissions data to compliance, financing and export respons
 | Data governance | Six-stage controls, visible / traceable / acceptable test, PCF coverage and other data KPIs |
 | Organisation & controls | Seven components, tiered authority, stress tests, third-party management, six KPIs |
 
-Readers without a power-sector background should start with the four **Power System 101** notes under `knowledge/`: [landscape](knowledge/电力系统通识-A-格局与主体.md) (who generates, who transmits, who writes the rules), [fundamentals](knowledge/电力系统通识-B-发输配变用.md) (voltage, frequency, reserve, stability), [reform history](knowledge/电力系统通识-C-改革史.md) (the 2002 and 2015 restructurings), and [new actors](knowledge/电力系统通识-D-新角色与现货市场.md) (renewables, storage, VPPs and system costs). These are knowledge notes, not skills; every term and institution used by the four skills is defined there.
+### [Storage Investment & Operations Expert (storage-investment-operations)](skills/storage-investment-operations/SKILL_EN.md)
+
+Covers the full chain from investment decision to operations: six project forms (independent/shared, renewable co-located, C&I behind-the-meter, thermal-plus-storage, microgrid, VPP-aggregated); stacking and exclusivity across arbitrage, capacity price, capacity leasing, ancillary services and demand-charge management; LCOS/IRR/NPV/DSCR with sensitivities; degradation, augmentation, assessment deductions and contract structures. Chinese original: [SKILL.md](skills/storage-investment-operations/SKILL.md). Ships with a **zero-dependency Python reference implementation** (`tools/`); `python tools/selftest.py` asserts all three worked examples in the text. Division of labour: market rules and settlement in Electricity Trading Expert, price forecasting in Spot Bidding Quant, aggregation operations in Virtual Power Plant Expert, dispatch algorithms in the EMS notes under `knowledge/`; this skill answers only "is it worth investing in, how does revenue stack, how do assessments deduct".
+
+| Domain | Coverage |
+|---|---|
+| Boundary & forms | Revenue logic, key constraints and common mistakes of six forms; spread / capacity / cost-saving logics; the same power and energy may not be sold twice |
+| Policy framework | Doc. 114 capacity price and duration conversion (Anhui CNY 165/kW-yr, 6 h denominator; 2/4/6 h → CNY 5.5/11/16.5 million), Doc. 1656 TOU reconstruction (Zhejiang −28.5%, Jiangsu −25%), Doc. 411 ancillary services, Doc. 136 co-location boundary, Doc. 1583/500 two-part 105% rule |
+| Input contract | Six boundary elements, technical and revenue parameters, cost and financial parameters, data-contract template; AC/DC, CNY/Wh, tax, rated/usable calibres |
+| Revenue stacking | AC/DC conversion and arbitrage (100 MW/200 MWh: annual net CNY 31.069 million), capacity charge (CNY 5.5 million/yr), frequency-regulation capacity + mileage (CNY 5.247 million/yr), demand management (CNY 120,000/month saved), co-located incremental revenue, stacking order and three-dimensional occupancy check, physical ceiling |
+| Cost & degradation | CAPEX tender ranges (2 h systems CNY 0.53-0.86/Wh), OPEX and auxiliary power, three degradation calibres (cycle/throughput/rainflow), augmentation (200 MWh topped up by 50 MWh), cost-error checklist |
+| Financial appraisal | Cash-flow structure, NPV/IRR/payback/DSCR/LCOS, three examples (independent IRR 10.47%, C&I 12.59%, co-located 4.98%/0.26%), ten sensitivity cases, financing and decision rules |
+| Operations & assessment | Eight KPIs under GB/T 36549-2018, bidding and dispatch, five assessment classes (capacity price / lease / frequency regulation / reserve / spot deviation), maintenance and safety, data ledgers, operational anti-patterns |
+| Business models | Self-investment / EPC / EMC / leasing / shared / entrusted operations, lease-contract points, revenue sharing and floors, insurance, exit and residual value |
+| Risk & stress tests | Six risk classes (price/policy/technical/operational/financing/contract) with a risk matrix, four stress scenarios; DSCR below 1.0 requires credit enhancement |
+| Decision checklist | Twenty pre-investment questions; financial, technical, contract and operational red flags |
+
+Readers without a power-sector background should start with the four **Power System 101** notes under `knowledge/`: [landscape](knowledge/电力系统通识-A-格局与主体.md) (who generates, who transmits, who writes the rules), [fundamentals](knowledge/电力系统通识-B-发输配变用.md) (voltage, frequency, reserve, stability), [reform history](knowledge/电力系统通识-C-改革史.md) (the 2002 and 2015 restructurings), and [new actors](knowledge/电力系统通识-D-新角色与现货市场.md) (renewables, storage, VPPs and system costs). These are knowledge notes, not skills; every term and institution used by the five skills is defined there.
 
 ## Repository Structure
 
@@ -107,10 +124,14 @@ energy-skills/
 │   │   ├── SKILL_EN.md                        ← English translation
 │   │   ├── tools/                             ← zero-dependency reference implementation (forecast / bid / simulate / backtest / selftest)
 │   │   └── data/sample/                       ← synthetic sample data (60 days × 96 slots)
-│   └── carbon-asset-expert/
-│       ├── SKILL.md                           ← carbon asset skill (Chinese, frontmatter, directly registerable)
+│   ├── carbon-asset-expert/
+│   │   ├── SKILL.md                           ← carbon asset skill (Chinese, frontmatter, directly registerable)
+│   │   ├── SKILL_EN.md                        ← English translation
+│   │   └── tools/                             ← zero-dependency reference implementation (compliance / CCER / finance / footprint / calendar / selftest)
+│   └── storage-investment-operations/
+│       ├── SKILL.md                           ← storage investment & operations skill (Chinese, frontmatter, directly registerable)
 │       ├── SKILL_EN.md                        ← English translation
-│       └── tools/                             ← zero-dependency reference implementation (compliance / CCER / finance / footprint / calendar / selftest)
+│       └── tools/                             ← zero-dependency reference implementation (revenue stacking / finance / degradation / selftest)
 └── knowledge/                                 ← thematic notes and research records behind the skills
     ├── 电力现货市场101问-A/B/C-*.md                (Spot Market 101 Questions — three thematic notes)
     ├── 电力系统经济学原理-主题笔记.md               (Principles of Power System Economics)
@@ -134,6 +155,7 @@ energy-skills/
     ├── 碳资产实务-2026-11.md                       (compliance parameters, CCER, carbon-finance status, CBAM dates, PCF / neutrality / DPP)
     ├── 微网EMS优化调度-算法与工程-2026-11.md        (algorithm note: MILP, PCC import/export limits, reserve/islanding/degradation, MPC, data contract, standards and acceptance tests)
     ├── 储能EMS优化调度-算法与工程-2026-11.md        (algorithm note: multi-market stacking, SOC/degradation, two-part tariff and demand, capacity payment, frequency reserve, MPC, safety interlocks)
+    ├── 储能投资与运营-2026-11.md                    (storage investment note: Docs 114/1656/411/1583, duration conversion, cost ranges, GB/T 36549 KPIs, investment checklist)
     └── 黄金问答集-2026-11.md                       (28 golden Q&As, also the regression checklist)
 ```
 
@@ -163,6 +185,13 @@ energy-skills/
 4. **Discipline**: the skills ship with a "to be verified" flagging convention and common-mistakes checklists (e.g., using OM baseline emission factors for consumption accounting, mis-citing Document 813 as the spot-market basic rules, conflating capacity metrics) — see Chapter 0 and the reasoning handbook in each SKILL.md.
 
 ## Update Log
+
+### 2026-11-04 (v1.5)
+- **Fifth skill: Storage Investment & Operations Expert (Chinese and English)**. Covers independent/shared storage, renewable co-located storage, C&I behind-the-meter, thermal-plus-storage, microgrids and VPP aggregation; answers "is it worth investing in, how does revenue stack, how do assessments deduct". Market rules and settlement stay in Electricity Trading Expert; dispatch algorithms point to the two EMS notes under `knowledge/`.
+- **Zero-dependency reference implementation**: `skills/storage-investment-operations/tools/` (`stacking` / `finance` / `degradation` / `selftest`, standard library only). `python tools/selftest.py` asserts the worked examples: independent storage annual net arbitrage CNY 31.069 million, capacity charge CNY 5.5 million, NPV CNY 31.194 million, IRR 10.47%, LCOS 742.24/458.15 CNY/MWh, DSCR 1.53; C&I IRR 12.59%, payback 5.52 years; co-located IRR 4.98%/0.26%.
+- **2026-11 policy and cost facts**: Doc. 114 capacity-price formula and Anhui CNY 165/kW-yr with a 6 h denominator (2/4/6 h → 1/3, 2/3, 1); Doc. 1656 removes government-set TOU, Zhejiang spread 0.83→0.50 CNY/kWh (−28.5%), Jiangsu 0.85→0.65 (−25%, grade C); Doc. 411 ancillary products; Doc. 136 excludes co-located storage from the capacity price; Docs 1583/500 set the 105% doubled-demand rule; 2026-09/10 tender ranges and GB/T 36549-2018 KPI calibres.
+- **Falsifiable conclusions**: the independent base case "passes but not by much" — with the capacity price at zero, NPV is −CNY 4.11 million; C&I demand savings are 51% of revenue, and without them payback extends to about 8.8 years; co-located storage is extremely sensitive to whether curtailment is free. Sensitivities show spread and cycle count matter most, while CAPEX and the capacity price decide whether the project clears the hurdle.
+- **Maintenance and indexes**: added [储能投资与运营-2026-11](knowledge/储能投资与运营-2026-11.md); wired into both READMEs, the bilingual index and the caliber handbook; version markers raised to v1.5, the checker now covers the fifth skill pair and storage CN/EN numbers, and CI runs the storage self-test.
 
 ### 2026-11-02 (v1.4)
 - **Fourth skill: Carbon Asset Management Expert (Chinese and English)**. Covers compliance calendars, allowance gaps, CEA/CCER procurement, CCER development economics, carbon-finance instruments, carbon price scenarios, electricity-carbon accounting and CBAM. Scope is "how to comply, how to model, how to finance"; power-market rules stay in Electricity Trading Expert.
@@ -205,8 +234,12 @@ energy-skills/
 - [x] Quantitative spot-bidding skill (load forecasting, price forecasting, bid simulation)
 - [x] Carbon asset management skill (compliance calendar, CCER development economics, carbon finance)
   - First version complete: bilingual handbook, zero-dependency modelling tools and a [carbon practice note](knowledge/碳资产实务-2026-11.md)
+- [x] **Storage Investment & Operations Expert (Chinese, English)**
+  - First version complete: bilingual handbook, zero-dependency tools (revenue stacking / finance / degradation) and a [storage investment note](knowledge/储能投资与运营-2026-11.md)
+  - **Scope**: project-side "is it worth investing in, how does revenue stack, how do assessments deduct"; market rules and settlement point to Electricity Trading Expert, dispatch algorithms to the EMS notes.
+  - **Next (2026-12)**: recheck provincial capacity-price rules and 2026 tender prices, and add a 4 h/6 h long-duration example.
 - [x] **Power System 101** — knowledge base first, skill second
-  - **Purpose**: for readers with no power-sector background. It answers three questions — who the industry is made of, how electricity gets from coal, wind and sun to the socket, and why the sector has been restructured repeatedly. It does **not** carry provincial rule parameters or bidding methods (those belong to the four skills); it gives the terms, institutions and figures used in those skills somewhere to land.
+  - **Purpose**: for readers with no power-sector background. It answers three questions — who the industry is made of, how electricity gets from coal, wind and sun to the socket, and why the sector has been restructured repeatedly. It does **not** carry provincial rule parameters or bidding methods (those belong to the five skills); it gives the terms, institutions and figures used in those skills somewhere to land.
   - **First version complete**: [A landscape](knowledge/电力系统通识-A-格局与主体.md), [B fundamentals](knowledge/电力系统通识-B-发输配变用.md), [C reform history](knowledge/电力系统通识-C-改革史.md), [D new actors](knowledge/电力系统通识-D-新角色与现货市场.md). Written to be textbook-accurate yet readable for non-specialists: every term defined at first use, one quick-reference table and one common-misconceptions list per note, every figure carrying a source and a date.
   - **Covered in this version**: State Grid / China Southern Power Grid / Inner Mongolia West supply boundaries; the five majors and the "four smalls" (a historical label — Guohua has merged into CHN Energy); provincial energy groups; equipment and secondary-system vendors; research and standards bodies; trading, dispatch and regulatory institutions; power vs. energy, voltage levels, frequency and reserve, the three stability classes, protection, and the flexibility of seven generation types; the reform path from funded power construction to Document No. 136; spot markets, high renewables share, storage and grid-forming, VPPs, green direct connection and system costs.
   - **Next**: extract a lightweight `SKILL.md` Q&A layer from the four notes (term definitions, institution lookup, reform timeline first), with the skill citing the notes rather than duplicating them.
@@ -226,4 +259,4 @@ energy-skills/
 
 All content in this repository (Markdown skill files, knowledge notes, research records and supporting scripts) is licensed under [CC BY-NC 4.0](LICENSE): free to copy, redistribute and adapt with attribution, **not for commercial use**. When quoting or republishing, use the attribution format suggested in `LICENSE` and keep the source link.
 
-*Last updated 2026-11-02*
+*Last updated 2026-11-04*
