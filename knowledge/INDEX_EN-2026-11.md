@@ -34,7 +34,8 @@
 | `调研-VPP政策2026-10增量.md` | Research note | October 2026 VPP policy, scale calibers and business models |
 | `省级市场状态表-2026-11.md` | Status table | One row per province: spot / No. 136 auction / capacity price / VPP / ancillary / retail risk |
 | `索引与口径-2026-11.md` | Handbook | Document-number index, caliber dictionary, source grading, watchlist |
-| `微网EMS优化调度-算法与工程-2026-11.md` | Algorithm note | Microgrid EMS day-ahead MILP: objective terms, constraints, SOC efficiency, SOS1 vs Big-M, demand-charge linearization, solver parameters and fallbacks, dual-timescale rolling, uncertainty roadmap, assessment loop, review checklist; source material for the planned EMS module |
+| `微网EMS优化调度-算法与工程-2026-11.md` | Algorithm note | Microgrid EMS day-ahead MILP: objective terms, constraints, SOC efficiency, SOS1 vs Big-M, demand-charge linearization, solver parameters and fallbacks, dual-timescale rolling, input data contract, interface boundary with storage EMS, quantified demand/degradation add-on, uncertainty roadmap, assessment loop, review checklist; source material for the planned EMS module |
+| `储能EMS优化调度-算法与工程-2026-11.md` | Algorithm note | Storage EMS MILP: multi-market stacking (energy, frequency regulation, reserve, ramping, capacity), SOC/efficiency recursion, four reserve dimensions, frequency-regulation energy neutrality and SOC recovery, two-part tariff and the 105% demand threshold, capacity-payment eligibility and duration scaling, three degradation tiers, cluster-level dispatch and SOC balancing, KPI calibers per GB/T 36549-2018, AGC/AVC, safety interlocks, input data contract, solver fallbacks, three worked examples and acceptance tests; source material for the planned EMS module |
 | `黄金问答集-2026-11.md` | Q&A | 28 high-frequency questions with answer points and common errors; regression checklist |
 
 ---

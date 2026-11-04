@@ -132,7 +132,8 @@ energy-skills/
     ├── 调研-量化报价与厂商实践-2026-11.md           (vendor practice: Lumin AI participant side, Tsintergy operations side)
     ├── 调研-碳管理与碳足迹厂商-2026-11.md           (vendor practice: Carbon Newture services, dated cases, borrowable methods)
     ├── 碳资产实务-2026-11.md                       (compliance parameters, CCER, carbon-finance status, CBAM dates, PCF / neutrality / DPP)
-    ├── 微网EMS优化调度-算法与工程-2026-11.md        (algorithm note: MILP, PCC import/export limits, reserve/islanding/degradation, MPC, standards and acceptance tests)
+    ├── 微网EMS优化调度-算法与工程-2026-11.md        (algorithm note: MILP, PCC import/export limits, reserve/islanding/degradation, MPC, data contract, standards and acceptance tests)
+    ├── 储能EMS优化调度-算法与工程-2026-11.md        (algorithm note: multi-market stacking, SOC/degradation, two-part tariff and demand, capacity payment, frequency reserve, MPC, safety interlocks)
     └── 黄金问答集-2026-11.md                       (28 golden Q&As, also the regression checklist)
 ```
 
@@ -212,7 +213,8 @@ energy-skills/
 - [ ] **EMS optimisation and dispatch** (planned; not started)
   - **Module 1: microgrid EMS** — grid-connected/islanded switching, coordinated PV/wind/storage/load, economic dispatch, reserve and islanding constraints.
   - **Module 2: storage EMS** — charge/discharge strategy, SOC and degradation limits, peak-valley arbitrage, demand management, ancillary-service bidding and safety boundaries.
-  - **Source material**: [Microgrid EMS optimisation: algorithms, models and engineering](knowledge/微网EMS优化调度-算法与工程-2026-11.md), covering the unified MILP model, SOS1 vs Big-M, solver parameters and fallbacks, dual-timescale rolling, the uncertainty roadmap and a review checklist.
+  - **Source material (module 1)**: [Microgrid EMS optimisation: algorithms, models and engineering](knowledge/微网EMS优化调度-算法与工程-2026-11.md), covering the unified MILP model, SOS1 vs Big-M, solver parameters and fallbacks, dual-timescale rolling, the input data contract, the interface boundary with storage EMS, quantified demand-charge and degradation add-ons, the uncertainty roadmap and a review checklist.
+  - **Source material (module 2)**: [Storage EMS optimisation: algorithms, models and engineering](knowledge/储能EMS优化调度-算法与工程-2026-11.md), covering multi-market stacking, SOC and efficiency recursion, the four reserve dimensions, frequency-regulation energy neutrality, the two-part tariff and the 105% demand threshold, capacity-payment eligibility and duration scaling, three degradation tiers, cluster-level dispatch, KPI calibers, AGC/AVC and safety interlocks, three worked examples and acceptance tests.
   - **Delivery form TBD**: a standalone skill or merged into the VPP skill; build the calculation tools and worked examples first, then decide whether to extract a `SKILL.md`. Added to the roadmap on 2026-11-02.
 - [ ] 2026-12 incremental review (spot rules finalized, national VPP management measure, 2027 No. 136 auctions)
 
