@@ -156,6 +156,10 @@ energy-skills/
     ├── 微网EMS优化调度-算法与工程-2026-11.md        (algorithm note: MILP, PCC import/export limits, reserve/islanding/degradation, MPC, data contract, standards and acceptance tests)
     ├── 储能EMS优化调度-算法与工程-2026-11.md        (algorithm note: multi-market stacking, SOC/degradation, two-part tariff and demand, capacity payment, frequency reserve, MPC, safety interlocks)
     ├── 储能投资与运营-2026-11.md                    (storage investment note: Docs 114/1656/411/1583, duration conversion, cost ranges, GB/T 36549 KPIs, investment checklist)
+    ├── 中国电价史-2026-11.md                        (electricity price history: five stages — who sets prices, price form, cost recovery, legacy problems)
+    ├── 中国电价制度谱系-2026-11.md                  (price taxonomy: generation / network / retail, nine price types, two-part tariff, bill decomposition)
+    ├── 中国电价现行政策与查证-2026-11.md            (14-document policy table, four 2026 threads, four-step user-side lookup, provincial samples)
+    ├── 国际电价比较-方法与模板-2026-11.md           (international comparison method: five-step harmonisation, five-line decomposition, country card, nominal vs PPP flip)
     └── 黄金问答集-2026-11.md                       (28 golden Q&As, also the regression checklist)
 ```
 
@@ -164,7 +168,7 @@ energy-skills/
 - **Inject into any AI assistant**: paste the full text of a SKILL file as system prompt or context (the Chinese versions are denser; every skill ships with an English translation for international models).
 - **Register as a skill**: place a skill directory into the skills directory of AI coding tools that support custom skills (e.g. Claude Code).
 - **Read directly**: the notes under knowledge/ are standalone quick-reference handbooks with document numbers, figures and comparison tables.
-- **Verify and maintain**: check document numbers and status in [knowledge/索引与口径-2026-11.md](knowledge/索引与口径-2026-11.md); look up province-specific answers in [knowledge/省级市场状态表-2026-11.md](knowledge/省级市场状态表-2026-11.md); test whether an answer has drifted using [knowledge/黄金问答集-2026-11.md](knowledge/黄金问答集-2026-11.md). English-only readers should start from [knowledge/INDEX_EN-2026-11.md](knowledge/INDEX_EN-2026-11.md).
+- **Verify and maintain**: check document numbers and status in [knowledge/索引与口径-2026-11.md](knowledge/索引与口径-2026-11.md); look up province-specific answers in [knowledge/省级市场状态表-2026-11.md](knowledge/省级市场状态表-2026-11.md); for what an electricity price is made of, which documents govern it and how to look up a user bill, use the [taxonomy](knowledge/中国电价制度谱系-2026-11.md), [current policy and lookup](knowledge/中国电价现行政策与查证-2026-11.md) and [price history](knowledge/中国电价史-2026-11.md); harmonise cross-country figures with the [comparison method](knowledge/国际电价比较-方法与模板-2026-11.md) first; test whether an answer has drifted using [knowledge/黄金问答集-2026-11.md](knowledge/黄金问答集-2026-11.md). English-only readers should start from [knowledge/INDEX_EN-2026-11.md](knowledge/INDEX_EN-2026-11.md).
 - **Check before committing**: run `node scripts/check-consistency.mjs` (GitHub Actions runs it too) to verify blank lines around tables, relative links, version markers and CN/EN number parity.
 
 ## Sources
@@ -185,6 +189,14 @@ energy-skills/
 4. **Discipline**: the skills ship with a "to be verified" flagging convention and common-mistakes checklists (e.g., using OM baseline emission factors for consumption accounting, mis-citing Document 813 as the spot-market basic rules, conflating capacity metrics) — see Chapter 0 and the reasoning handbook in each SKILL.md.
 
 ## Update Log
+
+### 2026-11-04 (v1.5 addendum: China electricity-price knowledge module)
+- **Four new pricing notes**: [price history](knowledge/中国电价史-2026-11.md), [price taxonomy](knowledge/中国电价制度谱系-2026-11.md), [current policy and lookup](knowledge/中国电价现行政策与查证-2026-11.md) and [international comparison method](knowledge/国际电价比较-方法与模板-2026-11.md). They form a knowledge layer — how prices got here, what a price is made of, which documents govern it today, and how to compare across countries — without repeating the market rules or bidding methods already in the skills.
+- **History in five stages**: 1949-1985 unified catalog prices and funded power construction; 1985-2002 operating-period pricing and rural grid reform; 2002-2015 benchmark prices, coal-electricity linkage, renewable benchmarks and residential tiers; 2015-2021 transmission-distribution pricing, spot pilots and Doc. 1439; 2021-2026 capacity pricing and Docs 136/411/1656/114. Each stage records who sets prices, in what form, how costs are recovered and what problems remain.
+- **Taxonomy in three segments**: generation, network (permitted revenue = permitted cost + reasonable return + taxes) and retail; capacity, ancillary and environmental prices; line losses, system operation fee, government funds, the two-part tariff and the 105% demand rule, with a synthetic bill (200 MWh at CNY 0.858/kWh), ten calibres and nine common errors.
+- **Current policy by document number**: a 14-document table (742/1583/500/1093/1439/809/1047/1217/1501/136/411/1656/114 and State Council Doc. 4 of 2026), the four 2026 threads (TOU reconstruction, capacity-price expansion, renewable mechanism prices, system costs), a four-step user-side lookup and a provincial sample table.
+- **International comparison is method only**: five harmonisation steps, a six-row component decomposition (energy / transmission / distribution / system services / taxes and levies / VAT) and a country-card YAML template; a synthetic A/B example shows a nominal ranking flipping under purchasing-power parity. Country data will be filled in later versions — no unverified ranking is published first.
+- **Index wiring**: entries added to both READMEs, `knowledge/INDEX_EN-2026-11.md` and `knowledge/索引与口径-2026-11.md`; pricing institutions and history belong to this module, market rules and settlement stay with Electricity Trading Expert, and project economics with the storage skill.
 
 ### 2026-11-04 (v1.5)
 - **Fifth skill: Storage Investment & Operations Expert (Chinese and English)**. Covers independent/shared storage, renewable co-located storage, C&I behind-the-meter, thermal-plus-storage, microgrids and VPP aggregation; answers "is it worth investing in, how does revenue stack, how do assessments deduct". Market rules and settlement stay in Electricity Trading Expert; dispatch algorithms point to the two EMS notes under `knowledge/`.
@@ -238,6 +250,10 @@ energy-skills/
   - First version complete: bilingual handbook, zero-dependency tools (revenue stacking / finance / degradation) and a [storage investment note](knowledge/储能投资与运营-2026-11.md)
   - **Scope**: project-side "is it worth investing in, how does revenue stack, how do assessments deduct"; market rules and settlement point to Electricity Trading Expert, dispatch algorithms to the EMS notes.
   - **Next (2026-12)**: recheck provincial capacity-price rules and 2026 tender prices, and add a 4 h/6 h long-duration example.
+- [x] **China electricity-price knowledge module (knowledge base)**
+  - **Scope**: answer "how prices got here, what a price is made of, which documents govern it today, how to compare across countries" without repeating the market rules, settlement formulas or bidding methods in the skills.
+  - **First version complete**: [price history](knowledge/中国电价史-2026-11.md), [taxonomy](knowledge/中国电价制度谱系-2026-11.md), [current policy and lookup](knowledge/中国电价现行政策与查证-2026-11.md) and [international comparison method](knowledge/国际电价比较-方法与模板-2026-11.md); includes the five-stage history, three-segment/nine-type taxonomy, a 14-document table and a user-side lookup procedure.
+  - **Next**: fill country cards for Japan, Germany, the US, the UK and Australia, and define a quarterly update cadence; no standalone skill for now.
 - [x] **Power System 101** — knowledge base first, skill second
   - **Purpose**: for readers with no power-sector background. It answers three questions — who the industry is made of, how electricity gets from coal, wind and sun to the socket, and why the sector has been restructured repeatedly. It does **not** carry provincial rule parameters or bidding methods (those belong to the five skills); it gives the terms, institutions and figures used in those skills somewhere to land.
   - **First version complete**: [A landscape](knowledge/电力系统通识-A-格局与主体.md), [B fundamentals](knowledge/电力系统通识-B-发输配变用.md), [C reform history](knowledge/电力系统通识-C-改革史.md), [D new actors](knowledge/电力系统通识-D-新角色与现货市场.md). Written to be textbook-accurate yet readable for non-specialists: every term defined at first use, one quick-reference table and one common-misconceptions list per note, every figure carrying a source and a date.

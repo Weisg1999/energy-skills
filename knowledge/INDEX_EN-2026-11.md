@@ -31,6 +31,10 @@
 | `调研-碳市场与CBAM-2026-10增量.md` | Research note | October 2026 carbon market and CBAM updates |
 | `碳资产实务-2026-11.md` | Practice note | Compliance parameters, CCER, carbon-finance instrument status, CBAM dates, PCF / neutrality / DPP facts and open items; maintenance entry for the carbon asset skill |
 | `储能投资与运营-2026-11.md` | Practice note | Doc. 114 capacity price and provincial samples, Doc. 1656 TOU reconstruction, Doc. 411 ancillary products, Docs 1583/500 demand rules, 2026 tender cost ranges, GB/T 36549 KPIs and 2026 H1 operating data; maintenance entry for the storage investment skill |
+| `中国电价史-2026-11.md` | History note | China's electricity prices in five stages (1949-1985, 1985-2002, 2002-2015, 2015-2021, 2021-2026), each with who sets prices, price form, cost recovery and legacy; three main threads plus cross-subsidy; six misconceptions |
+| `中国电价制度谱系-2026-11.md` | Handbook | Three segments (generation / network / retail) and nine price types; permitted-revenue formula; capacity, ancillary and environmental prices; line loss, system operation fee and government funds; two-part tariff and the 105% demand rule; synthetic bill, ten calibres and nine common errors |
+| `中国电价现行政策与查证-2026-11.md` | Status table | 14-document table (742/1583/500/1093/1439/809/1047/1217/1501/136/411/1656/114, State Council Doc. 4); four 2026 threads; four-step user lookup; provincial samples; 2026-2027 open items |
+| `国际电价比较-方法与模板-2026-11.md` | Method note | Why direct comparison fails; five harmonisation steps; six-row component decomposition mapped to China / EU / US; country-card YAML template; synthetic A/B example where nominal ranking flips under PPP; data sources and expansion roadmap |
 | `调研-碳管理与碳足迹厂商-2026-11.md` | Research note | Carbon Newture service matrix, dated public cases, borrowable methods, claims that must not be used as benchmarks |
 | `调研-VPP政策2026-10增量.md` | Research note | October 2026 VPP policy, scale calibers and business models |
 | `省级市场状态表-2026-11.md` | Status table | One row per province: spot / No. 136 auction / capacity price / VPP / ancillary / retail risk |
@@ -55,6 +59,16 @@
 | Coal capacity price | Fixed cost **CNY 330/kW·yr**; recovery **≥50% from 2026** (floor 165). 2026 values: Guangdong 165; Tianjin/Sichuan 231; Qinghai 185; Guangxi 247.5; Jilin/Heilongjiang/Hunan/Gansu/Yunnan 330; Henan 330 draft; **Liaoning 370 is reliable-capacity compensation, a different caliber** | B/C for provincial values |
 | System operation fee, Q1-Q3 2026 | About **CNY 0.068/kWh**, roughly +93% YoY | B/D |
 | PJM capacity price | **USD 329.17/MW-day for 2027/28**; USD 325/MW-day for 2028/29 (cleared 2026-07-14) | A (PJM) |
+
+### Electricity prices (2026-11)
+
+| Metric | Value | Grade / note |
+|---|---|---|
+| Retail price components | Energy + transmission/distribution + system operation fee + government funds and surcharges + taxes; basic charge added for two-part-tariff users | A; components vary by province and user category |
+| Network permitted revenue | Permitted cost + reasonable return + taxes; reasonable return = effective assets × permitted return rate | A (Doc. 742 framework) |
+| Contract maximum demand | Actual demand up to 105% of the agreed value is billed at the agreed value; the excess is charged at double; agreed value floor is 40% of transformer plus high-voltage motor capacity | A (Docs 1583/500) |
+| TOU reconstruction, 2026 | Doc. 1656 removes administratively fixed TOU levels and periods for direct market participants; Zhejiang spread 0.83→0.50 CNY/kWh (−28.5%), Jiangsu 0.85→0.65 (−25%) | B for Zhejiang; C for Jiangsu |
+| Synthetic bill | 200 MWh at 10 kV: energy 0.42 + network 0.15 + system 0.068 + funds 0.02, basic charge CNY 40,000 → **CNY 171,600, 0.858 CNY/kWh** | D; synthetic example, not a provincial tariff |
 
 ### No. 136 mechanism prices (2026-2027 incremental auctions)
 
