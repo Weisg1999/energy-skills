@@ -32,6 +32,8 @@
 | `碳资产实务-2026-11.md` | Practice note | Compliance parameters, CCER, carbon-finance instrument status, CBAM dates, PCF / neutrality / DPP facts and open items; maintenance entry for the carbon asset skill |
 | `储能投资与运营-2026-11.md` | Practice note | Doc. 114 capacity price and provincial samples, Doc. 1656 TOU reconstruction, Doc. 411 ancillary products, Docs 1583/500 demand rules, 2026 tender cost ranges, GB/T 36549 KPIs and 2026 H1 operating data; maintenance entry for the storage investment skill |
 | `新能源项目开发与并网-2026-11.md` | Practice note | Four project types and eight development stages, Doc. 136 settlement and 2026-2027 provincial auctions, resource/P50-P90/capture-rate calibres, LCOE and after-tax break-even examples, grid standards (GB/T 19963.1, GB/T 19964, GB 38755, GB/T 40595, GB/T 36547), regional risk profiles and open items; maintenance entry for the renewable development skill |
+| `综合能源与零碳园区-2026-11.md` | Practice note | Docs 910 / 1082 / State Council 22 (zero-carbon parks, 52 first-batch, ~100/~500 targets), Docs 650 / 688 (single- and multi-user green direct connection, 60%/30%/35%/20%), Doc. 1192 and the Guangdong 730-hour capacity-charge formula, Doc. 280 source-grid-load-storage, unit-energy carbon-intensity example, synthetic direct-connection economics with break-even LCOE and sensitivities, six business models and contract items, provincial samples, twelve common errors and open items |
+| `并网运行考核与两个细则-2026-11.md` | Practice note | Grid-connection assessment and the "two detailed rules": national Docs 60/61 (35 kV and above), the 2026-09-30 draft revision, regional samples (southern, central, Shandong, Shanxi, north, east), 14 grid-performance items, AGC (K1/K2/K3, Kp≤2, 60/20 s) and AVC formulas, primary-frequency standards (GB/T 40595-2021, GB/T 30370-2013), assessment caps, a 20-row penalty table, six exemption categories, a synthetic 300 MW example, a compliance checklist, twelve common errors and open items |
 | `中国电价史-2026-11.md` | History note | China's electricity prices in five stages (1949-1985, 1985-2002, 2002-2015, 2015-2021, 2021-2026), each with who sets prices, price form, cost recovery and legacy; three main threads plus cross-subsidy; six misconceptions |
 | `中国电价制度谱系-2026-11.md` | Handbook | Three segments (generation / network / retail) and nine price types; permitted-revenue formula; capacity, ancillary and environmental prices; line loss, system operation fee and government funds; two-part tariff and the 105% demand rule; synthetic bill, ten calibres and nine common errors |
 | `中国电价现行政策与查证-2026-11.md` | Status table | 14-document table (742/1583/500/1093/1439/809/1047/1217/1501/136/411/1656/114, State Council Doc. 4); four 2026 threads; four-step user lookup; provincial samples; 2026-2027 open items |
@@ -102,6 +104,37 @@
 | Investment metrics, Example A | NPV **CNY 5.963 million**, IRR **8.18%**, payback **9.55 years**, DSCR **1.76** | D; 25% tax, 20-year depreciation |
 | Downside cases | Mechanism 0.244 → NPV **−CNY 58.931 million**, IRR **6.15%**; combined P90 + CAPEX +10% + capture 90% → NPV **−CNY 94.0485 million**, IRR **5.28%** | D |
 | Grid standards | GB/T 19963.1-2021, GB/T 19964-2024, GB 38755-2019, GB/T 40595-2021, GB/T 36547-2024 | A; editions per current standard text |
+
+### Integrated energy and zero-carbon parks (2026-11)
+
+| Metric | Value | Grade / note |
+|---|---|---|
+| First national zero-carbon park list | **52 parks** (Doc. 1082, 2025-12-23) | A; 56 circulating online is wrong; 910 is the creation notice, not the list |
+| "15th Five-Year Plan" targets | ~**100** national zero-carbon parks and ~**500** zero-carbon factories (State Council Doc. 22, 2026-07-05) | A; a five-year target, not current stock — do not add 52 + 100 |
+| Green direct-connection thresholds | Self-use ≥**60%** of available generation; ≥**30%** of total consumption (≥**35%** before 2030); export ≤**20%** | A (Docs 650/688); Doc. 1192 words the 35% for a different cohort |
+| Green direct-connection fleet | **100 projects / 34.10 GW** (2026-07); an earlier **99 / 34.05 GW** caliber also appears | B/C; quote with the date |
+| Doc. 1192 network charge | Capacity/demand-based transmission-distribution charge; grid imports no longer pay the system backup fee or volumetric network charge; fair share of system operation fees; off-grid projects exempt | A; effective 2025-10-01 |
+| Guangdong conversion formula | Monthly capacity charge = existing charge + voltage-level average volumetric price × **average load factor** × **730 h** × public-grid access capacity | B (Guangdong Doc. 1848); the load factor is a provincial parameter, not the park's own |
+| Direct-connection economics, synthetic | Base **0.6130** vs. **0.6756** CNY/kWh; saving **CNY 18.7692 million/yr**; break-even LCOE **CNY 0.267/kWh** | D; 50 MW load, 63 MVA access, 100 MW wind + 100 MW PV, 28% curtailment |
+| Sensitivities, synthetic | Low LCOE 0.20 → −CNY 26.7692m; high LCOE 0.30 → +CNY 13.2308m; curtailment 10% → −CNY 35.2492m; access 50 MVA → −CNY 30.2820m vs. the original mode (−CNY 11.5128m vs. the direct-connection base) | D |
+| Unit-energy carbon intensity, synthetic | **2.25 → 1.64 tCO2/tce** (−27.3%) when energy falls 12.0→11.0 万tce and emissions 27.0→18.0 万tCO2 | D; intensity = park emissions ÷ energy consumption |
+
+### Grid-connection assessment and the "two detailed rules" (2026-11)
+
+| Metric | Value | Grade / note |
+|---|---|---|
+| National framework | Docs [2021] No. 60 (grid-connection operation) and No. 61 (ancillary services), 2021-12-21 | A; scope extended to 35 kV and above |
+| 2026 draft | NEA draft of 2026-09-30: "assessment" → "management"; force majeure and first-of-a-kind relief; no dispatch agreement, no connection | A (draft); not current law |
+| AGC parameters | K1 = actual/standard ramp, K2 = 2 − ΔP/allowance, K3 = 2 − t/standard response; components commonly 0.1-2; Kp ≤2 | A/B; Doc. 196 caps Kp at 2 |
+| AGC response time | 60 s thermal, 20 s hydro | B; regional common values |
+| AGC assessment (southern) | daily on-grid energy × (1 − qualified rate) × 0.1% | B; monthly cap 10% |
+| AVC thresholds | availability / adjustment / reactive-call commonly 98%/96%/90%; Anhui 99%/99%, 0.03% per percentage point, 0.5% per-item cap; southern bus voltage 99.9%, 0.1% per 0.1 pp | B/C |
+| Primary-frequency standards | GB/T 40595-2021: dead zones by source type, ±0.02-0.06 Hz (wind ±0.03-0.06, PV ±0.02-0.05, storage ±0.03-0.05); droop 2%-6%, recommended 5%; lag ≤1 s, rise ≤3 s, settling ≤4 s; GB/T 30370-2013 thermal: ±0.033 Hz, droop 3%-6%, 75% in 15 s, 90% in 30 s | A/B |
+| Primary-frequency assessment (southern) | 100% baseline; below 90%, 0.1% per pp; 90-100%, 0.05%-0.1% per 0.1 pp (version-dependent); monthly input rate ≥90%, 0.1% per pp; action threshold 70% of theoretical contribution (35% for CFB / coal slurry / coal gangue); cap 0.5% | B |
+| Assessment caps | primary frequency 0.5%-1%, AVC 2%, AGC 10%, monthly total 10% | B; Shandong 2026 parameters |
+| Synthetic example | 300 MW coal, 150,000 MWh/month, CNY 0.40/kWh: 2,437.5 MWh / CNY 975,000, 1.63% of monthly revenue; primary frequency + dispatch discipline + forced outage = 92.3%, per-point AGC = 0.3% | D |
+| Cap effect | under the stricter southern 0.1%/0.1 pp version, uncapped primary frequency CNY 6m vs capped CNY 300k (20×); 90%→99.9% saves CNY 240k/month, while 90%→99% remains capped and saves nothing | D |
+| Shandong 2026 | Doc. 鲁监能市场规〔2026〕52号, issued 2026-09-30, effective 2026-10-01; storage AGC availability 96%, α_KA 0.1, α_K1/K2/K3 0.5, performance benchmarks K1/K2/K3 = 1.3/1.7/1.4; 5-min plan curve ±1%; late AGC 1%/event; parameter change not rectified 0.5%/month | A/B |
 
 ### Nuclear market entry (2026, level C)
 
@@ -204,6 +237,9 @@
 11. **PCF label**: later certification batches, product-specific rules and the formal Shanghai incentive document.
 12. **Cross-border carbon data**: official Lingang statistics and sectoral important-data catalogues.
 13. **Renewable development**: provincial Document 136 implementation plans, mechanism-energy ratios and contract terms, 2027 incremental auction results, whether green-certificate revenue overlaps with mechanism energy, and the effect of the 2027 spot rules on capture prices.
+14. **Zero-carbon parks and green direct connection**: the second national park list, the park construction/evaluation guideline annex (core vs. guiding indicators), provincial direct-connection rules (Guangdong/Zhejiang/Inner Mongolia/Jilin/Shandong/Liaoning draft), the provincial average-load-factor parameter, green-certificate ownership and transfer for self-used direct-connection energy, and the exact adoption dates of Docs 650 (2025-05-21 vs. 05-30) and 688 (2026-05-14 vs. 05-20).
+15. **Doc. 1192 provincial implementation**: the conversion formula in each province, treatment of multi-circuit supply that keeps the two-part tariff, and whether export energy keeps any mechanism-price eligibility.
+16. **Grid-connection assessment ("two detailed rules")**: the final text and effective date of the 2026-09-30 national draft; the 2026 North/East China and southern-region revisions; the Shanxi 2025 document number; Northeast/Northwest 2024-2026 rules; the clause numbers behind Shandong's late-AGC, parameter-change and plan-curve penalties; whether provincial assessment prices and caps converge; renewable- and storage-specific primary-frequency and AGC clauses.
 
 ---
 
