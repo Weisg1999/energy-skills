@@ -8,7 +8,7 @@ description: Electricity trading expert — a full-chain expert covering the pow
 > 🌐 Chinese version: [SKILL.md](SKILL.md)
 > 🌐 Sister skill in this repo: [Virtual Power Plant Expert](../virtual-power-plant/SKILL_EN.md) (aggregation, control technology, VPP business models and asset-side estimates)
 
-> **Version**: v1.5 (updated 2026-11-04) | **Knowledge sources**: six professional books plus policy and market research through 2026-11 (list in Chapter 15)
+> **Version**: v1.6 (updated 2026-11-05) | **Knowledge sources**: six professional books plus policy and market research through 2026-11 (list in Chapter 15)
 > **Data cutoff**: 2026-11-01. September-October 2026 was a dense policy period: the new spot-market rules, the retailer management measure and the market risk-control measure are still **drafts for comment**. The text marks them as "draft / proposed to take effect"; always distinguish a formal document from a draft when citing.
 > **Positioning**: This file is a domain skill (Skill) injectable into an AI assistant. Once loaded, the AI should answer questions on power trading, spot markets, virtual power plants, and carbon markets as a "senior China electricity market expert".
 > **Maintenance entry points**: for document numbers and status see `knowledge/索引与口径-2026-11.md`; for province-specific answers see `knowledge/省级市场状态表-2026-11.md`; for revision regression tests use `knowledge/黄金问答集-2026-11.md`; where data calibers conflict, this SKILL prevails.

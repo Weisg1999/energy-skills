@@ -31,6 +31,7 @@
 | `调研-碳市场与CBAM-2026-10增量.md` | Research note | October 2026 carbon market and CBAM updates |
 | `碳资产实务-2026-11.md` | Practice note | Compliance parameters, CCER, carbon-finance instrument status, CBAM dates, PCF / neutrality / DPP facts and open items; maintenance entry for the carbon asset skill |
 | `储能投资与运营-2026-11.md` | Practice note | Doc. 114 capacity price and provincial samples, Doc. 1656 TOU reconstruction, Doc. 411 ancillary products, Docs 1583/500 demand rules, 2026 tender cost ranges, GB/T 36549 KPIs and 2026 H1 operating data; maintenance entry for the storage investment skill |
+| `新能源项目开发与并网-2026-11.md` | Practice note | Four project types and eight development stages, Doc. 136 settlement and 2026-2027 provincial auctions, resource/P50-P90/capture-rate calibres, LCOE and after-tax break-even examples, grid standards (GB/T 19963.1, GB/T 19964, GB 38755, GB/T 40595, GB/T 36547), regional risk profiles and open items; maintenance entry for the renewable development skill |
 | `中国电价史-2026-11.md` | History note | China's electricity prices in five stages (1949-1985, 1985-2002, 2002-2015, 2015-2021, 2021-2026), each with who sets prices, price form, cost recovery and legacy; three main threads plus cross-subsidy; six misconceptions |
 | `中国电价制度谱系-2026-11.md` | Handbook | Three segments (generation / network / retail) and nine price types; permitted-revenue formula; capacity, ancillary and environmental prices; line loss, system operation fee and government funds; two-part tariff and the 105% demand rule; synthetic bill, ten calibres and nine common errors |
 | `中国电价现行政策与查证-2026-11.md` | Status table | 14-document table (742/1583/500/1093/1439/809/1047/1217/1501/136/411/1656/114, State Council Doc. 4); four 2026 threads; four-step user lookup; provincial samples; 2026-2027 open items |
@@ -86,6 +87,21 @@
 | Gansu | 2027 H1 solar 0.2447 / wind 0.2440/kWh | Cleared near the floor |
 
 - **Discipline**: always ask province + year + batch (existing/incremental, first/second auction). Zhejiang's 381.6/MWh is not a national average.
+
+### Renewable project development (2026-11)
+
+| Metric | Value | Grade / note |
+|---|---|---|
+| Resource calibres | P50 as base, P90 for financing; `P90 = P50 × (1 − 1.2816 × CV)`; example P50 2,400 h, CV 8% → **P90 2,153.93 h** | D; normal approximation |
+| Capacity factors | Wind 2,400 h → **27.40%**; PV 1,400 h → **15.98%**; Weibull screening (7.0 m/s, k=2, 97% availability) → **27.92%** | D; screening model |
+| PV specific yield | 1,650 kWh/m² plane-of-array, PR 0.82, 4% bifacial gain → **1,407.12 kWh/kWp** | D |
+| LCOE, three examples | Onshore wind **252.80**, utility PV **283.94**, offshore wind **446.43** CNY/MWh | D; pre-tax, 8% discount |
+| Mechanism settlement, Example A | 232,800 MWh, 70% coverage, mechanism 0.30, market 0.25, certificate CNY 6 → total **CNY 67.7448 million**; effective price **0.285**, all-in **0.291** CNY/kWh | D |
+| Capture prices | Wind 92% capture → **0.279**; PV 85% → **0.274** CNY/kWh effective (70% mechanism + 30% market) | D |
+| Break-even mechanism price | Pre-tax **245.43** CNY/MWh (LCOE-based); after-tax **294.85** at an 8% hurdle, 266.95 at 7%, 239.94 at 6% | D; LCOE is not the bid floor |
+| Investment metrics, Example A | NPV **CNY 5.963 million**, IRR **8.18%**, payback **9.55 years**, DSCR **1.76** | D; 25% tax, 20-year depreciation |
+| Downside cases | Mechanism 0.244 → NPV **−CNY 58.931 million**, IRR **6.15%**; combined P90 + CAPEX +10% + capture 90% → NPV **−CNY 94.0485 million**, IRR **5.28%** | D |
+| Grid standards | GB/T 19963.1-2021, GB/T 19964-2024, GB 38755-2019, GB/T 40595-2021, GB/T 36547-2024 | A; editions per current standard text |
 
 ### Nuclear market entry (2026, level C)
 
@@ -187,6 +203,7 @@
 10. **DPP**: registry operating rules and the final battery data-item list are not yet public in full; delegated-act dates for steel, construction, textiles, aluminium, tyres and furniture are indicative.
 11. **PCF label**: later certification batches, product-specific rules and the formal Shanghai incentive document.
 12. **Cross-border carbon data**: official Lingang statistics and sectoral important-data catalogues.
+13. **Renewable development**: provincial Document 136 implementation plans, mechanism-energy ratios and contract terms, 2027 incremental auction results, whether green-certificate revenue overlaps with mechanism energy, and the effect of the 2027 spot rules on capture prices.
 
 ---
 

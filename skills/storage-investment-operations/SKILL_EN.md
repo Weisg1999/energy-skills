@@ -7,7 +7,7 @@ description: Storage investment and operations expert — investment appraisal a
 
 > 🌐 Chinese version: [SKILL.md](SKILL.md) ｜ Sister skills: [Electricity Trading Expert](../electricity-trading-expert/SKILL_EN.md) (market rules / settlement / capacity-price source text), [Virtual Power Plant Expert](../virtual-power-plant/SKILL_EN.md) (aggregation / demand-response operations), [Spot-Bidding Quant Expert](../spot-bidding-quant/SKILL_EN.md) (price forecasting / bidding / backtests), [Carbon Asset Management Expert](../carbon-asset-expert/SKILL_EN.md) (carbon compliance / CCER / CBAM). This skill answers only "is the storage project worth investing in, how is revenue calculated, how are operations assessed".
 
-> Version v1.5 · data cutoff 2026-11-01
+> Version v1.6 · data cutoff 2026-11-01
 
 > **Maintenance entry points**: `tools/selftest.py` (green means the worked examples still hold), [storage investment and operations note](../../knowledge/储能投资与运营-2026-11.md) (policy milestones, cost ranges, indicator calibres), [storage EMS optimization](../../knowledge/储能EMS优化调度-算法与工程-2026-11.md) (dispatch algorithms), [microgrid EMS optimization](../../knowledge/微网EMS优化调度-算法与工程-2026-11.md) (microgrid operation).
 > **Open items 2026-2027**: provincial coverage and assessment deductions under Document 114, retail-side pass-through of Document 1656, the denominator duration for the capacity price (4/6/8/10 h), revision of ancillary-service rules, upgrades to fire-safety and grid-connection standards, and the storage system price trend.

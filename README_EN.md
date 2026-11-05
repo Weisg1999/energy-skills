@@ -101,7 +101,25 @@ Covers the full chain from investment decision to operations: six project forms 
 | Risk & stress tests | Six risk classes (price/policy/technical/operational/financing/contract) with a risk matrix, four stress scenarios; DSCR below 1.0 requires credit enhancement |
 | Decision checklist | Twenty pre-investment questions; financial, technical, contract and operational red flags |
 
-Readers without a power-sector background should start with the four **Power System 101** notes under `knowledge/`: [landscape](knowledge/电力系统通识-A-格局与主体.md) (who generates, who transmits, who writes the rules), [fundamentals](knowledge/电力系统通识-B-发输配变用.md) (voltage, frequency, reserve, stability), [reform history](knowledge/电力系统通识-C-改革史.md) (the 2002 and 2015 restructurings), and [new actors](knowledge/电力系统通识-D-新角色与现货市场.md) (renewables, storage, VPPs and system costs). These are knowledge notes, not skills; every term and institution used by the five skills is defined there.
+### [Renewable Project Development & Grid Connection Expert (renewable-project-development)](skills/renewable-project-development/SKILL_EN.md)
+
+Covers the full chain from development to investment decision for centralized wind, utility-scale PV, offshore wind and distributed PV: resource assessment (P50/P90, Weibull, PR, capture rate), Document 136 mechanism pricing and difference settlement, LCOE and after-tax cash flow, grid approvals and grid-code standards, curtailment and absorption, provincial auctions and regional risk. Chinese original: [SKILL.md](skills/renewable-project-development/SKILL.md). Ships with a **zero-dependency Python reference implementation** (`tools/`); `python tools/selftest.py` asserts the worked examples in the text. Division of labour: market rules and settlement in Electricity Trading Expert, price forecasting and bidding in Spot Bidding Quant, co-located storage economics in Storage Investment & Operations; this skill answers only "can the project be developed, can it connect, can it pass investment committee".
+
+| Domain | Coverage |
+|---|---|
+| Development process | Four project types, eight stages (early development → approval → permits → interconnection → construction → commissioning → commercial operation → repowering), six investment questions, division with sister skills |
+| Policy framework | Doc. 136 mechanism price and the 2025-06-01 cut-off, 2026-2027 provincial auction results (Zhejiang 0.3816, Gansu 0.2440, etc.), Docs 1656/114/411/650 and State Council Office Doc. [2026] No. 4 |
+| Resource assessment | Wind/irradiance measurement and long-term correction, P50/P75/P90, CV, Weibull screening (27.92%), PV specific yield (1,407.12 kWh/kWp), data contract and six common mistakes |
+| Revenue | Four revenue lines, mechanism difference formula (example CNY 67.7448 million, effective price 0.285, all-in 0.291), capture prices (wind 0.279 / PV 0.274), certificates, refund scenario |
+| Cost & LCOE | CAPEX/OPEX ranges, LCOE formula and three examples (252.80 / 283.94 / 446.43 CNY/MWh), six sensitivities, six cost mistakes |
+| Finance & decision | After-tax cash flow, NPV CNY 5.963 million, IRR 8.18%, payback 9.55 years, DSCR 1.76; at a mechanism price of 0.244, NPV −CNY 58.931 million; combined stress NPV −CNY 94.0485 million |
+| Break-even | LCOE is not the bid floor; pre-tax break-even 245.43 CNY/MWh, after-tax break-even 294.85 at an 8% hurdle, 239.94/266.95 at 6%/7% |
+| Grid & compliance | Interconnection scheme/approval/absorption assessment/transmission works/compliance tests/COD, LVRT/HVRT, primary frequency response, AGC/AVC, model registration, five current standards |
+| Absorption & curtailment | Five absorption drivers, curtailment's double impact on energy and capture price, distributed reverse power flow and feeder capacity, connection-cost boundary, six connection red flags |
+| Provinces & storage | Provincial auction table, qualitative risk profiles for five regions, provincial due-diligence checklist, two revenue logics for independent vs co-located storage |
+| Risk & checklist | Ten risk classes, risk matrix, single-variable and combined stress, twenty pre-investment questions, financial/technical/grid red flags, Go/No-Go rules |
+
+Readers without a power-sector background should start with the four **Power System 101** notes under `knowledge/`: [landscape](knowledge/电力系统通识-A-格局与主体.md) (who generates, who transmits, who writes the rules), [fundamentals](knowledge/电力系统通识-B-发输配变用.md) (voltage, frequency, reserve, stability), [reform history](knowledge/电力系统通识-C-改革史.md) (the 2002 and 2015 restructurings), and [new actors](knowledge/电力系统通识-D-新角色与现货市场.md) (renewables, storage, VPPs and system costs). These are knowledge notes, not skills; every term and institution used by the six skills is defined there.
 
 ## Repository Structure
 
@@ -128,10 +146,14 @@ energy-skills/
 │   │   ├── SKILL.md                           ← carbon asset skill (Chinese, frontmatter, directly registerable)
 │   │   ├── SKILL_EN.md                        ← English translation
 │   │   └── tools/                             ← zero-dependency reference implementation (compliance / CCER / finance / footprint / calendar / selftest)
-│   └── storage-investment-operations/
-│       ├── SKILL.md                           ← storage investment & operations skill (Chinese, frontmatter, directly registerable)
+│   ├── storage-investment-operations/
+│   │   ├── SKILL.md                           ← storage investment & operations skill (Chinese, frontmatter, directly registerable)
+│   │   ├── SKILL_EN.md                        ← English translation
+│   │   └── tools/                             ← zero-dependency reference implementation (revenue stacking / finance / degradation / selftest)
+│   └── renewable-project-development/
+│       ├── SKILL.md                           ← renewable project development skill (Chinese, frontmatter, directly registerable)
 │       ├── SKILL_EN.md                        ← English translation
-│       └── tools/                             ← zero-dependency reference implementation (revenue stacking / finance / degradation / selftest)
+│       └── tools/                             ← zero-dependency reference implementation (resource / LCOE / mechanism / finance / selftest)
 └── knowledge/                                 ← thematic notes and research records behind the skills
     ├── 电力现货市场101问-A/B/C-*.md                (Spot Market 101 Questions — three thematic notes)
     ├── 电力系统经济学原理-主题笔记.md               (Principles of Power System Economics)
@@ -156,10 +178,11 @@ energy-skills/
     ├── 微网EMS优化调度-算法与工程-2026-11.md        (algorithm note: MILP, PCC import/export limits, reserve/islanding/degradation, MPC, data contract, standards and acceptance tests)
     ├── 储能EMS优化调度-算法与工程-2026-11.md        (algorithm note: multi-market stacking, SOC/degradation, two-part tariff and demand, capacity payment, frequency reserve, MPC, safety interlocks)
     ├── 储能投资与运营-2026-11.md                    (storage investment note: Docs 114/1656/411/1583, duration conversion, cost ranges, GB/T 36549 KPIs, investment checklist)
+    ├── 新能源项目开发与并网-2026-11.md              (renewable development note: 136 auction results, resource/LCOE/break-even calibres, grid standards, regional profiles, open items)
     ├── 中国电价史-2026-11.md                        (electricity price history: five stages — who sets prices, price form, cost recovery, legacy problems)
     ├── 中国电价制度谱系-2026-11.md                  (price taxonomy: generation / network / retail, nine price types, two-part tariff, bill decomposition)
     ├── 中国电价现行政策与查证-2026-11.md            (14-document policy table, four 2026 threads, four-step user-side lookup, provincial samples)
-    ├── 国际电价比较-方法与模板-2026-11.md           (international comparison method: five-step harmonisation, five-line decomposition, country card, nominal vs PPP flip)
+    ├── 国际电价比较-方法与模板-2026-11.md           (international comparison method: five-step harmonisation, six-row decomposition, country card, nominal vs PPP flip)
     └── 黄金问答集-2026-11.md                       (28 golden Q&As, also the regression checklist)
 ```
 
@@ -168,7 +191,7 @@ energy-skills/
 - **Inject into any AI assistant**: paste the full text of a SKILL file as system prompt or context (the Chinese versions are denser; every skill ships with an English translation for international models).
 - **Register as a skill**: place a skill directory into the skills directory of AI coding tools that support custom skills (e.g. Claude Code).
 - **Read directly**: the notes under knowledge/ are standalone quick-reference handbooks with document numbers, figures and comparison tables.
-- **Verify and maintain**: check document numbers and status in [knowledge/索引与口径-2026-11.md](knowledge/索引与口径-2026-11.md); look up province-specific answers in [knowledge/省级市场状态表-2026-11.md](knowledge/省级市场状态表-2026-11.md); for what an electricity price is made of, which documents govern it and how to look up a user bill, use the [taxonomy](knowledge/中国电价制度谱系-2026-11.md), [current policy and lookup](knowledge/中国电价现行政策与查证-2026-11.md) and [price history](knowledge/中国电价史-2026-11.md); harmonise cross-country figures with the [comparison method](knowledge/国际电价比较-方法与模板-2026-11.md) first; test whether an answer has drifted using [knowledge/黄金问答集-2026-11.md](knowledge/黄金问答集-2026-11.md). English-only readers should start from [knowledge/INDEX_EN-2026-11.md](knowledge/INDEX_EN-2026-11.md).
+- **Verify and maintain**: check document numbers and status in [knowledge/索引与口径-2026-11.md](knowledge/索引与口径-2026-11.md); look up province-specific answers in [knowledge/省级市场状态表-2026-11.md](knowledge/省级市场状态表-2026-11.md); for renewable project resources, LCOE, mechanism prices and grid connection, use [renewable project development 2026-11](knowledge/新能源项目开发与并网-2026-11.md); for what an electricity price is made of, which documents govern it and how to look up a user bill, use the [taxonomy](knowledge/中国电价制度谱系-2026-11.md), [current policy and lookup](knowledge/中国电价现行政策与查证-2026-11.md) and [price history](knowledge/中国电价史-2026-11.md); harmonise cross-country figures with the [comparison method](knowledge/国际电价比较-方法与模板-2026-11.md) first; test whether an answer has drifted using [knowledge/黄金问答集-2026-11.md](knowledge/黄金问答集-2026-11.md). English-only readers should start from [knowledge/INDEX_EN-2026-11.md](knowledge/INDEX_EN-2026-11.md).
 - **Check before committing**: run `node scripts/check-consistency.mjs` (GitHub Actions runs it too) to verify blank lines around tables, relative links, version markers and CN/EN number parity.
 
 ## Sources
@@ -189,6 +212,13 @@ energy-skills/
 4. **Discipline**: the skills ship with a "to be verified" flagging convention and common-mistakes checklists (e.g., using OM baseline emission factors for consumption accounting, mis-citing Document 813 as the spot-market basic rules, conflating capacity metrics) — see Chapter 0 and the reasoning handbook in each SKILL.md.
 
 ## Update Log
+
+### 2026-11-05 (v1.6: Renewable Project Development & Grid Connection Expert)
+- **Sixth skill: Renewable Project Development & Grid Connection Expert (Chinese and English)**. Covers the eight development stages of centralized wind, utility-scale PV, offshore wind and distributed PV, answering "can the project be developed, can it connect, can it pass investment committee"; market rules and settlement stay in Electricity Trading Expert, price forecasting and bidding in Spot Bidding Quant, co-located storage economics in Storage Investment & Operations.
+- **Zero-dependency reference implementation**: `skills/renewable-project-development/tools/` (`resource` / `lcoe` / `mechanism` / `finance` / `selftest`, standard library only). `python tools/selftest.py` asserts the worked examples: P90 2,153.93 h, wind capacity factor 27.40%, Weibull screening 27.92%, PV specific yield 1,407.12 kWh/kWp; LCOE 252.80/283.94/446.43 CNY/MWh; mechanism settlement CNY 67.7448 million; NPV CNY 5.963 million, IRR 8.18%, payback 9.55 years, DSCR 1.76; combined stress NPV −CNY 94.0485 million, IRR 5.28%.
+- **2026-2027 facts and calibres**: Doc. 136's 2025-06-01 existing/incremental cut-off and provincial auction results (Zhejiang 0.3816, Hunan 0.23-0.35, Fujian 0.16-0.39, Guangdong 0.20-0.40, Liaoning 0.18-0.30, Gansu 0.2440, grades B/C); Docs 1656/114/411/650 and State Council Office Doc. [2026] No. 4; GB/T 19963.1-2021, GB/T 19964-2024, GB 38755-2019, GB/T 40595-2021, GB/T 36547-2024.
+- **Falsifiable conclusions**: LCOE is not the bid floor — Example A has a pre-tax LCOE of 252.80 CNY/MWh, but the after-tax break-even mechanism price at an 8% hurdle is 294.85 CNY/MWh, about 42 CNY/MWh higher; moving the mechanism price from 0.30 to 0.244 CNY/kWh turns "just passing 8%" into NPV −CNY 58.931 million and IRR 6.15%; when resource, cost and capture price all turn unfavourable, IRR falls to 5.28%.
+- **Maintenance and indexes**: added [新能源项目开发与并网-2026-11](knowledge/新能源项目开发与并网-2026-11.md); wired into both READMEs, `knowledge/INDEX_EN-2026-11.md` and `knowledge/索引与口径-2026-11.md`; version markers raised to v1.6, the checker now covers the sixth skill pair and renewable CN/EN numbers, and CI runs the renewable self-test.
 
 ### 2026-11-04 (v1.5 addendum: China electricity-price knowledge module)
 - **Four new pricing notes**: [price history](knowledge/中国电价史-2026-11.md), [price taxonomy](knowledge/中国电价制度谱系-2026-11.md), [current policy and lookup](knowledge/中国电价现行政策与查证-2026-11.md) and [international comparison method](knowledge/国际电价比较-方法与模板-2026-11.md). They form a knowledge layer — how prices got here, what a price is made of, which documents govern it today, and how to compare across countries — without repeating the market rules or bidding methods already in the skills.
@@ -255,7 +285,7 @@ energy-skills/
   - **First version complete**: [price history](knowledge/中国电价史-2026-11.md), [taxonomy](knowledge/中国电价制度谱系-2026-11.md), [current policy and lookup](knowledge/中国电价现行政策与查证-2026-11.md) and [international comparison method](knowledge/国际电价比较-方法与模板-2026-11.md); includes the five-stage history, three-segment/nine-type taxonomy, a 14-document table and a user-side lookup procedure.
   - **Next**: fill country cards for Japan, Germany, the US, the UK and Australia, and define a quarterly update cadence; no standalone skill for now.
 - [x] **Power System 101** — knowledge base first, skill second
-  - **Purpose**: for readers with no power-sector background. It answers three questions — who the industry is made of, how electricity gets from coal, wind and sun to the socket, and why the sector has been restructured repeatedly. It does **not** carry provincial rule parameters or bidding methods (those belong to the five skills); it gives the terms, institutions and figures used in those skills somewhere to land.
+  - **Purpose**: for readers with no power-sector background. It answers three questions — who the industry is made of, how electricity gets from coal, wind and sun to the socket, and why the sector has been restructured repeatedly. It does **not** carry provincial rule parameters or bidding methods (those belong to the six skills); it gives the terms, institutions and figures used in those skills somewhere to land.
   - **First version complete**: [A landscape](knowledge/电力系统通识-A-格局与主体.md), [B fundamentals](knowledge/电力系统通识-B-发输配变用.md), [C reform history](knowledge/电力系统通识-C-改革史.md), [D new actors](knowledge/电力系统通识-D-新角色与现货市场.md). Written to be textbook-accurate yet readable for non-specialists: every term defined at first use, one quick-reference table and one common-misconceptions list per note, every figure carrying a source and a date.
   - **Covered in this version**: State Grid / China Southern Power Grid / Inner Mongolia West supply boundaries; the five majors and the "four smalls" (a historical label — Guohua has merged into CHN Energy); provincial energy groups; equipment and secondary-system vendors; research and standards bodies; trading, dispatch and regulatory institutions; power vs. energy, voltage levels, frequency and reserve, the three stability classes, protection, and the flexibility of seven generation types; the reform path from funded power construction to Document No. 136; spot markets, high renewables share, storage and grid-forming, VPPs, green direct connection and system costs.
   - **Next**: extract a lightweight `SKILL.md` Q&A layer from the four notes (term definitions, institution lookup, reform timeline first), with the skill citing the notes rather than duplicating them.
@@ -267,6 +297,10 @@ energy-skills/
   - **Complete (2026-11-04)**: both algorithm notes are in the repository and indexed, with input data contracts, module interface boundaries, worked examples and acceptance checklists.
   - **Next**: build zero-dependency calculators (SOC recursion, two-part demand charge, capacity payment, degradation) validated against the worked examples, then decide the delivery form.
   - **Delivery form TBD**: a standalone skill or merged into the VPP skill; validate the tools and worked examples before extracting a `SKILL.md`. Added to the roadmap on 2026-11-02.
+- [x] **Renewable Project Development & Grid Connection Expert (Chinese, English)**
+  - **Scope**: project-side "can it be developed, can it connect, can it pass investment committee"; market rules and settlement point to Electricity Trading Expert, price forecasting and bidding to Spot Bidding Quant, co-located storage economics to Storage Investment & Operations.
+  - **First version complete**: bilingual handbook, zero-dependency tools (resource / LCOE / mechanism / finance) and a [renewable development note](knowledge/新能源项目开发与并网-2026-11.md).
+  - **Next (2026-12)**: add 2027 incremental auction results and provincial curtailment / capture-price data, plus dedicated offshore-wind and distributed-PV examples.
 - [ ] 2026-12 incremental review (spot rules finalized, national VPP management measure, 2027 No. 136 auctions)
 
 ---
@@ -275,4 +309,4 @@ energy-skills/
 
 All content in this repository (Markdown skill files, knowledge notes, research records and supporting scripts) is licensed under [CC BY-NC 4.0](LICENSE): free to copy, redistribute and adapt with attribution, **not for commercial use**. When quoting or republishing, use the attribution format suggested in `LICENSE` and keep the source link.
 
-*Last updated 2026-11-04*
+*Last updated 2026-11-05*

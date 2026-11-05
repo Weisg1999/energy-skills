@@ -24,3 +24,5 @@ jobs:
         run: python skills/carbon-asset-expert/tools/selftest.py
       - name: Run the storage investment reference implementation self-test
         run: python skills/storage-investment-operations/tools/selftest.py
+      - name: Run the renewable project development self-test
+        run: python skills/renewable-project-development/tools/selftest.py

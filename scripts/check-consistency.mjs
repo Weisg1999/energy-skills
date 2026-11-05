@@ -84,7 +84,7 @@ const versioned = [
 ];
 for (const file of versioned) {
   const text = read(file);
-  if (!/v1\.5/.test(text)) fail(file, 1, 'missing current version marker v1.5');
+  if (!/v1\.6/.test(text)) fail(file, 1, 'missing current version marker v1.6');
   if (/v1\.1\s*[（(]\s*(updated|更新)/i.test(text)) {
     fail(file, 1, 'stale version header v1.1');
   }
@@ -173,6 +173,32 @@ const pairParity = {
     { name: '2 h system tender range', cn: /0\.53–0\.86/, en: /0\.53-0\.86/ },
     { name: 'recent project tender range', cn: /0\.678–1\.199/, en: /0\.678-1\.199/ },
   ],
+  'skills/renewable-project-development/SKILL.md': [
+    { name: 'P90 example', cn: /2,153\.93/, en: /2,153\.93/ },
+    { name: 'wind capacity factor', cn: /27\.40%/, en: /27\.40%/ },
+    { name: 'Weibull screening', cn: /27\.92%/, en: /27\.92%/ },
+    { name: 'PV specific yield', cn: /1,407\.12/, en: /1,407\.12/ },
+    { name: 'LCOE onshore wind', cn: /252\.80/, en: /252\.80/ },
+    { name: 'LCOE utility PV', cn: /283\.94/, en: /283\.94/ },
+    { name: 'LCOE offshore wind', cn: /446\.43/, en: /446\.43/ },
+    { name: 'Example A total revenue', cn: /6,774\.48 万元/, en: /CNY 67\.7448 million/ },
+    { name: 'effective price', cn: /0\.285/, en: /0\.285/ },
+    { name: 'Example A NPV', cn: /596\.3 万元/, en: /CNY 5\.963 million/ },
+    { name: 'Example A IRR', cn: /8\.18%/, en: /8\.18%/ },
+    { name: 'Example A payback', cn: /9\.55 年/, en: /9\.55 years/ },
+    { name: 'Example A DSCR', cn: /1\.76/, en: /1\.76/ },
+    { name: 'low-price NPV', cn: /−5,893\.1 万元/, en: /−CNY 58\.931 million/ },
+    { name: 'low-price IRR', cn: /6\.15%/, en: /6\.15%/ },
+    { name: 'combined stress NPV', cn: /−9,404\.85 万元/, en: /−CNY 94\.0485 million/ },
+    { name: 'combined stress IRR', cn: /5\.28%/, en: /5\.28%/ },
+    { name: 'pre-tax break-even', cn: /245\.43/, en: /245\.43/ },
+    { name: 'after-tax 8% break-even', cn: /294\.85/, en: /294\.85/ },
+    { name: 'capture price wind', cn: /0\.279/, en: /0\.279/ },
+    { name: 'Zhejiang first auction', cn: /0\.3816/, en: /0\.3816/ },
+    { name: 'Gansu wind auction', cn: /0\.2440/, en: /0\.2440/ },
+    { name: 'existing/incremental cutoff', cn: /2025-06-01/, en: /2025-06-01/ },
+    { name: 'capacity price exclusion', cn: /新能源配储不执行容量电价/, en: /co-located storage does not receive a capacity price/ },
+  ],
 };
 
 const skillPairs = [
@@ -181,6 +207,7 @@ const skillPairs = [
   ['skills/spot-bidding-quant/SKILL.md', 'skills/spot-bidding-quant/SKILL_EN.md'],
   ['skills/carbon-asset-expert/SKILL.md', 'skills/carbon-asset-expert/SKILL_EN.md'],
   ['skills/storage-investment-operations/SKILL.md', 'skills/storage-investment-operations/SKILL_EN.md'],
+  ['skills/renewable-project-development/SKILL.md', 'skills/renewable-project-development/SKILL_EN.md'],
 ];
 for (const [cnRel, enRel] of skillPairs) {
   const cnFile = join(root, cnRel);
