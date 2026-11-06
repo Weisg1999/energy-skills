@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>国际电价比较：方法与模板 | energy-skills 知识库</title>
+<meta name="description" content="先统一用户、构成、税费、汇率与时间口径，再做名义价与 PPP 排名。">
+<link rel="stylesheet" href="../assets/knowledge.css">
+</head>
+<body data-cat="price" id="top">
+<div class="progress" id="progress"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html">← 知识库</a>
+  <div class="crumb">
+    <span class="crumb-cat">05 / PRICE</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">国际电价比较：方法与模板</span>
+  </div>
+  <div class="topbar-act">
+    <a class="src" href="../国际电价比较-方法与模板-2026-11.md">.md 源文件</a>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">05 / PRICE</div>
+    <h2 class="nav-cat"><a href="../index.html#price">电价</a></h2>
+    <ul class="nav-list">
+              <li><a href="中国电价制度谱系-2026-11.html">中国电价制度谱系</a></li>
+              <li><a href="中国电价史-2026-11.html">中国电价史</a></li>
+              <li><a href="中国电价现行政策与查证-2026-11.html">中国电价现行政策与查证</a></li>
+              <li class="on"><a href="国际电价比较-方法与模板-2026-11.html">国际电价比较：方法与模板</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#foundation"><b>03</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>04</b>电力现货市场</a></li>
+              <li><a href="../index.html#renewable"><b>06</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>07</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>08</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>09</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>10</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>11</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>12</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">05 / PRICE<i>知识模块</i></div>
+      <h1 class="doc-title">国际电价比较：方法与模板（2026-11）</h1>
+      <p class="lede">先统一用户、构成、税费、汇率与时间口径，再做名义价与 PPP 排名。</p>
+      <p class="hook">没有统一口径，就没有国际排名</p>
+      <div class="tags"><span class="tag">五步口径</span><span class="tag">名义 vs PPP</span><span class="tag">国别卡片</span></div>
+      <div class="doc-meta"><span>246 行</span><span>约 4.8k 字</span><span>阅读约 8 分钟</span><span>10 节</span><span>数据截止 2026-11-01</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（21）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">1. 为什么不能直接比</a></li>
+            <li class="lv2"><a href="#s2">2. 统一口径五步</a></li>
+            <li class="lv3"><a href="#s3">第一步：定义用户</a></li>
+            <li class="lv3"><a href="#s4">第二步：定义价格构成</a></li>
+            <li class="lv3"><a href="#s5">第三步：定义时间与币种</a></li>
+            <li class="lv3"><a href="#s6">第四步：定义补贴处理</a></li>
+            <li class="lv3"><a href="#s7">第五步：定义比较指标</a></li>
+            <li class="lv2"><a href="#s8">3. 电价构成拆解模板</a></li>
+            <li class="lv2"><a href="#s9">4. 国别卡片模板</a></li>
+            <li class="lv3"><a href="#s10">4.1 国别卡片的最低要求</a></li>
+            <li class="lv2"><a href="#s11">5. 合成算例：名义排名与 PPP 排名可能翻转（D 级）</a></li>
+            <li class="lv2"><a href="#s12">6. 中国在国际比较中的三个特殊点</a></li>
+            <li class="lv3"><a href="#s13">6.1 省级定价，不是全国一个价</a></li>
+            <li class="lv3"><a href="#s14">6.2 交叉补贴与政府性基金</a></li>
+            <li class="lv3"><a href="#s15">6.3 系统运行费与容量电价是新科目</a></li>
+            <li class="lv2"><a href="#s16">7. 常见错误</a></li>
+            <li class="lv2"><a href="#s17">8. 后续扩展路线</a></li>
+            <li class="lv3"><a href="#s18">8.1 国别选择原则</a></li>
+            <li class="lv3"><a href="#s19">8.2 数据源</a></li>
+            <li class="lv2"><a href="#s20">9. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s21">10. 维护记录</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>数据截止：2026-11-01（方法与数据源）｜定位：知识库笔记，不是技能。中国电价的制度与现行政策见<a href="中国电价制度谱系-2026-11.html">中国电价制度谱系</a>与<a href="中国电价现行政策与查证-2026-11.html">中国电价现行政策与查证</a>。</p></aside>
+<aside class="note"><p>用途：先把&quot;怎么比&quot;定下来，再逐个填国家。国际电价比较最常见的错误不是数字抄错，而是<strong>口径不同还硬排名</strong>：居民比工业、含税比不含税、名义汇率比购买力、一个国家比一个城市。本笔记给出统一口径、拆解模板、指标集与国别卡片格式；国家数据在后续版本逐国填入。</p></aside>
+<hr>
+<h2 id="s1">1. 为什么不能直接比</h2>
+<p>同一个&quot;电价 0.20 美元/kWh&quot;，在不同口径下可能完全不同：</p>
+<div class="table-wrap"><table><thead><tr><th>差异</th><th>表现</th><th>影响</th></tr></thead><tbody><tr><td>用户类别</td><td>居民 vs 工业 vs 商业 vs 农业</td><td>居民通常更高，工业通常更低</td></tr><tr><td>电压等级</td><td>低压 vs 高压</td><td>高压用户少承担配电网成本</td></tr><tr><td>年用电量</td><td>家庭 2,000 kWh vs 工业 1 GWh</td><td>阶梯、需量、容量电费摊薄不同</td></tr><tr><td>含税/不含税</td><td>是否含增值税、消费税、附加</td><td>欧盟 VAT 可达 20% 以上</td></tr><tr><td>汇率/购买力</td><td>市场汇率 vs PPP</td><td>排名可能翻转</td></tr><tr><td>补贴</td><td>明补、暗补、交叉补贴</td><td>名义价格低不等于用户负担低</td></tr><tr><td>时间</td><td>2024 年均价 vs 2026 年某月</td><td>燃料、碳价、汇率都会变</td></tr><tr><td>地理</td><td>全国平均 vs 某城市/某州</td><td>美国、德国、澳大利亚州际差异大</td></tr></tbody></table></div>
+<aside class="note"><p>结论：<strong>没有统一口径，就没有国际排名</strong>。比较的第一页应该写口径，而不是结论。</p></aside>
+<hr>
+<h2 id="s2">2. 统一口径五步</h2>
+<h3 id="s3">第一步：定义用户</h3>
+<p>选同一类用户，至少固定四项：</p>
+<ul><li>居民 / 工业 / 商业 / 农业；</li><li>电压等级（如 1 kV 以下、1-10 kV、35 kV、110 kV 及以上）；</li><li>年用电量（居民可用 2,000/4,000 kWh 两档；工业可用 1 GWh、10 GWh 两档）；</li><li>是否两部制、是否参与市场、是否执行分时。</li></ul>
+<h3 id="s4">第二步：定义价格构成</h3>
+<p>把价格拆成同一组科目：</p>
+<pre><code>终端电价 = 电能量 + 输配电网 + 系统服务 + 税费/附加 + 增值税</code></pre>
+<ul><li>电能量：批发市场价、长期合约价或政府定价；</li><li>输配电网：输电、配电、线损；</li><li>系统服务：容量、辅助服务、不平衡、可靠性；</li><li>税费/附加：能源税、环境税、可再生能源附加、碳成本；</li><li>增值税/销售税：单独列，不混入前三项。</li></ul>
+<h3 id="s5">第三步：定义时间与币种</h3>
+<ul><li>时间：同一季度或同一年度均价；燃料与汇率波动大时，加注月度区间；</li><li>币种：本币、市场汇率美元、PPP 美元三列并列；</li><li>汇率：市场汇率用 IMF/央行中间价；PPP 用 World Bank/IMF 转换因子，不能混用。</li></ul>
+<h3 id="s6">第四步：定义补贴处理</h3>
+<ul><li>明补：政府直接补贴、税收减免，计入&quot;净电价&quot;；</li><li>暗补：交叉补贴、低于成本的政府定价，标注&quot;未反映成本&quot;；</li><li>碳成本：EU ETS、CBAM 等间接成本，单列或注明&quot;未计入&quot;。</li></ul>
+<h3 id="s7">第五步：定义比较指标</h3>
+<p>不要只比一个数。至少四个指标：</p>
+<div class="table-wrap"><table><thead><tr><th>指标</th><th>用途</th><th>注意</th></tr></thead><tbody><tr><td>名义本币电价</td><td>本地用户实际支付</td><td>不能跨国直接比</td></tr><tr><td>市场汇率美元电价</td><td>贸易竞争力</td><td>受汇率波动影响</td></tr><tr><td>PPP 美元电价</td><td>实际购买力负担</td><td>适合居民与家庭支出比较</td></tr><tr><td>电价/成本或电价/收入</td><td>负担与扭曲</td><td>需要成本或收入数据</td></tr></tbody></table></div>
+<hr>
+<h2 id="s8">3. 电价构成拆解模板</h2>
+<div class="table-wrap"><table><thead><tr><th>科目</th><th>说明</th><th>中国对应</th><th>欧盟对应</th><th>美国对应</th></tr></thead><tbody><tr><td>电能量</td><td>批发/合约/政府定价</td><td>中长期 + 现货 + 机制电价</td><td>wholesale + forward</td><td>wholesale + bilateral</td></tr><tr><td>输电网</td><td>高压输电</td><td>输配电价（高压）</td><td>TSO charges</td><td>transmission</td></tr><tr><td>配电网</td><td>低压配电</td><td>输配电价（低压）</td><td>DSO charges</td><td>distribution</td></tr><tr><td>系统服务</td><td>容量、辅助服务、不平衡</td><td>容量电价、辅助服务、系统运行费</td><td>capacity, balancing, RES support</td><td>capacity markets (some ISOs), ancillary</td></tr><tr><td>税费/附加</td><td>能源税、环境税、可再生附加</td><td>政府性基金及附加</td><td>taxes, levies, ETS</td><td>taxes, RPS costs</td></tr><tr><td>增值税/销售税</td><td>最终消费环节</td><td>增值税</td><td>VAT</td><td>sales tax</td></tr></tbody></table></div>
+<aside class="note"><p>这张表是&quot;翻译表&quot;：不同国家的科目名称不同，先映射到同一行，再比数字。</p></aside>
+<hr>
+<h2 id="s9">4. 国别卡片模板</h2>
+<p>每个国家一张卡片，固定字段，固定顺序：</p>
+<pre><code>country:
+  name: &quot;&quot;
+  year: 2026
+  currency: &quot;&quot;
+  consumer: household | industrial | commercial | agriculture
+  voltage: &quot;1 kV below | 1-10 kV | 35 kV | 110 kV+&quot;
+  annual_kwh: 2000 | 4000 | 1000000 | 10000000
+  market_structure: &quot;regulated | wholesale | hybrid&quot;
+  price_components:
+    energy: 0.000
+    transmission: 0.000
+    distribution: 0.000
+    system_services: 0.000
+    taxes_levies: 0.000
+    vat: 0.000
+    total_local: 0.000
+  fx_market: 0.000
+  ppp_factor: 0.000
+  total_usd_market: 0.000
+  total_usd_ppp: 0.000
+  subsidies: &quot;none | explicit | implicit | cross-subsidy&quot;
+  carbon_cost: &quot;included | excluded | partial&quot;
+  source: &quot;&quot;
+  grade: A | B | C
+  notes: &quot;&quot;</code></pre>
+<h3 id="s10">4.1 国别卡片的最低要求</h3>
+<ul><li>价格必须能拆到&quot;电能量/输配/系统服务/税费/增值税&quot;五行；拆不出的国家，标注&quot;不可比&quot;；</li><li>必须写明年用电量与电压等级；居民与工业不能共用一张卡；</li><li>必须写明补贴与碳成本处理；</li><li>必须给来源、日期与级别；媒体二手数据标 C 级。</li></ul>
+<hr>
+<h2 id="s11">5. 合成算例：名义排名与 PPP 排名可能翻转（D 级）</h2>
+<p>假设 A、B 两国工业用户，10 kV，年用电 1 GWh，价格均为美元口径。PPP 因子定义为&quot;本国价格水平 ÷ 美国价格水平&quot;（美国 = 1），PPP 调整后价格 = 名义美元价 ÷ PPP 因子：</p>
+<div class="table-wrap"><table><thead><tr><th>科目</th><th>A 国</th><th>B 国</th></tr></thead><tbody><tr><td>电能量</td><td>60</td><td>45</td></tr><tr><td>输电</td><td>12</td><td>15</td></tr><tr><td>配电</td><td>18</td><td>25</td></tr><tr><td>系统服务</td><td>5</td><td>8</td></tr><tr><td>税费/附加</td><td>9.5</td><td>4.65</td></tr><tr><td>增值税</td><td>20.9</td><td>9.77</td></tr><tr><td>合计（USD/MWh）</td><td>125.4</td><td>107.4</td></tr><tr><td>折合 USD/kWh</td><td>0.1254</td><td>0.1074</td></tr><tr><td>PPP 因子</td><td>1.2</td><td>0.6</td></tr><tr><td>PPP 调整后 USD/kWh</td><td>0.1045</td><td>0.1790</td></tr></tbody></table></div>
+<p>读法：</p>
+<ul><li>按名义美元，A 国更贵（0.1254 vs 0.1074）；</li><li>按 PPP，B 国反而更贵（0.1790 vs 0.1045），因为 B 国单位购买力对应的价格更高；</li><li>如果只报名义排名，会得出相反结论。</li></ul>
+<aside class="note"><p>这是合成算例，只演示方法，不代表任何国家。正式国别卡片必须用官方数据替换每一个数字。</p></aside>
+<hr>
+<h2 id="s12">6. 中国在国际比较中的三个特殊点</h2>
+<h3 id="s13">6.1 省级定价，不是全国一个价</h3>
+<ul><li>中国电价由省级价格主管部门核定，省间输配电价、基金附加、分时时段、代理购电价格都不同。</li><li>国际比较应选&quot;同一省份、同一用户类别、同一电压等级&quot;，或明确使用&quot;全国平均&quot;并注明样本。</li><li>不能用北京居民电价代表全国，也不能用某省工业电价代表中国。</li></ul>
+<h3 id="s14">6.2 交叉补贴与政府性基金</h3>
+<ul><li>居民、农业电价长期低于供电成本，工商业承担交叉补贴；名义电价低不代表成本低。</li><li>政府性基金及附加（水利、移民、可再生能源等）计入到户价，国际比较时要归入&quot;税费/附加&quot;行。</li><li>改革方向是&quot;明补替代暗补&quot;，但截至 2026 年仍在过渡。</li></ul>
+<h3 id="s15">6.3 系统运行费与容量电价是新科目</h3>
+<ul><li>中国 2024 年起煤电容量电价、2026 年起独立储能容量电价，系统运行费在用户账单中单列。</li><li>欧盟、美国也有容量机制与辅助服务，但科目名称、分摊方式不同；比较时要映射到&quot;系统服务&quot;行，而不是当作&quot;输配电价&quot;。</li><li>中国电能量价格在现货下行时可能很低，但系统运行费上升，到户价未必下降；这正是国际比较最容易误读的地方。</li></ul>
+<hr>
+<h2 id="s16">7. 常见错误</h2>
+<div class="table-wrap"><table><thead><tr><th>错误</th><th>后果</th><th>纠正</th></tr></thead><tbody><tr><td>拿居民电价和工业电价直接比</td><td>结论相反</td><td>固定用户类别</td></tr><tr><td>含税比不含税</td><td>高估或低估 10%-25%</td><td>单列增值税/销售税</td></tr><tr><td>用市场汇率替代 PPP</td><td>低估发展中国家负担</td><td>两列并列</td></tr><tr><td>用全国平均替代省份</td><td>忽略中国省间差异</td><td>固定省份或注明平均</td></tr><tr><td>用某城市替代全国</td><td>忽略州际/省际差异</td><td>注明样本</td></tr><tr><td>忽略补贴与交叉补贴</td><td>名义低价被误读为高效率</td><td>标注补贴类型</td></tr><tr><td>忽略碳成本与能源税</td><td>欧盟电价被低估</td><td>单列税费/附加</td></tr><tr><td>时间窗口不一致</td><td>燃料与汇率错配</td><td>同季度/同年度</td></tr><tr><td>只看电能量价格</td><td>忽略输配与系统服务</td><td>五行拆解</td></tr></tbody></table></div>
+<hr>
+<h2 id="s17">8. 后续扩展路线</h2>
+<div class="table-wrap"><table><thead><tr><th>阶段</th><th>内容</th><th>交付</th></tr></thead><tbody><tr><td>第一阶段</td><td>中国电价史、制度谱系、现行政策</td><td>已完成（2026-11）</td></tr><tr><td>第二阶段</td><td>国际比较方法与模板</td><td>本笔记</td></tr><tr><td>第三阶段</td><td>国别卡片：日本、德国、美国、英国、澳大利亚、印度、越南、巴西</td><td>每国 1-2 页，统一模板</td></tr><tr><td>第四阶段</td><td>跨国看板：名义、PPP、居民负担、工业成本占比</td><td>一张总表 + 口径说明</td></tr><tr><td>第五阶段</td><td>季度更新：汇率、燃料、碳价、政策</td><td>维护记录</td></tr></tbody></table></div>
+<h3 id="s18">8.1 国别选择原则</h3>
+<ul><li>与中国有直接贸易/产业链关系的国家优先（日本、德国、美国、越南、印度）；</li><li>电力市场改革有代表性的国家（英国、澳大利亚、北欧）；</li><li>数据可得性高、监管机构定期公布电价的国家；</li><li>每个国家都要能拆出&quot;电能量/输配/系统服务/税费/增值税&quot;五行，拆不出就暂缓。</li></ul>
+<h3 id="s19">8.2 数据源</h3>
+<div class="table-wrap"><table><thead><tr><th>来源</th><th>内容</th><th>级别</th></tr></thead><tbody><tr><td>IEA Energy Prices and Taxes</td><td>各国居民/工业电价、季度更新</td><td>B</td></tr><tr><td>Eurostat</td><td>欧盟居民与非居民电价、税负拆分</td><td>B</td></tr><tr><td>US EIA Electric Power Monthly</td><td>美国各州/全国平均电价</td><td>B</td></tr><tr><td>ACER Market Monitoring Report</td><td>欧盟批发、网络、税费</td><td>B</td></tr><tr><td>各国监管机构（Ofgem、AER、CER 等）</td><td>本国电价与网络费用</td><td>A/B</td></tr><tr><td>World Bank / IMF</td><td>PPP 转换因子、汇率</td><td>B</td></tr><tr><td>媒体与研究机构</td><td>解读与预测</td><td>C</td></tr></tbody></table></div>
+<hr>
+<h2 id="s20">9. 与技能和其他笔记的分工</h2>
+<div class="table-wrap"><table><thead><tr><th>问题</th><th>去哪里</th></tr></thead><tbody><tr><td>中国电价历史</td><td><a href="中国电价史-2026-11.html">中国电价史</a></td></tr><tr><td>中国电价制度与终端构成</td><td><a href="中国电价制度谱系-2026-11.html">中国电价制度谱系</a></td></tr><tr><td>中国现行政策与查证</td><td><a href="中国电价现行政策与查证-2026-11.html">中国电价现行政策与查证</a></td></tr><tr><td>市场规则、结算、容量电价原文</td><td><a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a></td></tr><tr><td>储能项目测算</td><td><a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a></td></tr><tr><td>VPP 聚合与需求响应</td><td><a href="../../skills/virtual-power-plant/SKILL.md">虚拟电厂专家</a></td></tr></tbody></table></div>
+<hr>
+<h2 id="s21">10. 维护记录</h2>
+<ul><li>2026-11-04：首版。建立五步统一口径、五行价格拆解、国别卡片模板与合成算例；暂不填充任何国家数据，避免用未核实数字做排名。</li><li>下一次更新：2026-12，先填日本、德国、美国三张卡片，验证模板是否可用；再扩展到英国、澳大利亚、印度、越南、巴西。</li></ul>
+    </article>
+
+    <nav class="pager" aria-label="上下篇">
+          <span class="spacer"></span>
+          <a class="next" href="电力系统通识-A-格局与主体.html"><span class="dir">下一篇 →</span><span class="ttl">电力系统通识 A · 格局与主体</span></a>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../国际电价比较-方法与模板-2026-11.md">knowledge/国际电价比较-方法与模板-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div><a href="../index.html">返回知识库总览 →</a></div>
+    </footer>
+  </main>
+
+  <aside class="toc">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">1. 为什么不能直接比</a></li>
+            <li class="lv2"><a href="#s2">2. 统一口径五步</a></li>
+            <li class="lv3"><a href="#s3">第一步：定义用户</a></li>
+            <li class="lv3"><a href="#s4">第二步：定义价格构成</a></li>
+            <li class="lv3"><a href="#s5">第三步：定义时间与币种</a></li>
+            <li class="lv3"><a href="#s6">第四步：定义补贴处理</a></li>
+            <li class="lv3"><a href="#s7">第五步：定义比较指标</a></li>
+            <li class="lv2"><a href="#s8">3. 电价构成拆解模板</a></li>
+            <li class="lv2"><a href="#s9">4. 国别卡片模板</a></li>
+            <li class="lv3"><a href="#s10">4.1 国别卡片的最低要求</a></li>
+            <li class="lv2"><a href="#s11">5. 合成算例：名义排名与 PPP 排名可能翻转（D 级）</a></li>
+            <li class="lv2"><a href="#s12">6. 中国在国际比较中的三个特殊点</a></li>
+            <li class="lv3"><a href="#s13">6.1 省级定价，不是全国一个价</a></li>
+            <li class="lv3"><a href="#s14">6.2 交叉补贴与政府性基金</a></li>
+            <li class="lv3"><a href="#s15">6.3 系统运行费与容量电价是新科目</a></li>
+            <li class="lv2"><a href="#s16">7. 常见错误</a></li>
+            <li class="lv2"><a href="#s17">8. 后续扩展路线</a></li>
+            <li class="lv3"><a href="#s18">8.1 国别选择原则</a></li>
+            <li class="lv3"><a href="#s19">8.2 数据源</a></li>
+            <li class="lv2"><a href="#s20">9. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s21">10. 维护记录</a></li>
+    </ol>
+  </aside>
+</div>
+
+<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<script src="../assets/doc.js"></script>
+</body>
+</html>

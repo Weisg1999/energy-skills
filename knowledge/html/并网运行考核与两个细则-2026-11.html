@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>并网运行考核与两个细则 | energy-skills 知识库</title>
+<meta name="description" content="60/61 号、AGC/AVC/一次调频公式、20 项罚则、六类免考与合成算例。">
+<link rel="stylesheet" href="../assets/knowledge.css">
+</head>
+<body data-cat="renewable" id="top">
+<div class="progress" id="progress"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html">← 知识库</a>
+  <div class="crumb">
+    <span class="crumb-cat">06 / RENEWABLE</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">并网运行考核与两个细则</span>
+  </div>
+  <div class="topbar-act">
+    <a class="src" href="../并网运行考核与两个细则-2026-11.md">.md 源文件</a>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">06 / RENEWABLE</div>
+    <h2 class="nav-cat"><a href="../index.html#renewable">新能源与并网</a></h2>
+    <ul class="nav-list">
+              <li><a href="新能源项目开发与并网-2026-11.html">新能源项目开发与并网</a></li>
+              <li class="on"><a href="并网运行考核与两个细则-2026-11.html">并网运行考核与两个细则</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#foundation"><b>03</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>04</b>电力现货市场</a></li>
+              <li><a href="../index.html#price"><b>05</b>电价</a></li>
+              <li><a href="../index.html#storage"><b>07</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>08</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>09</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>10</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>11</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>12</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">06 / RENEWABLE<i>知识模块</i></div>
+      <h1 class="doc-title">并网运行考核与&quot;两个细则&quot;：涉网性能、AGC/AVC/一次调频与免考核（2026-11）</h1>
+      <p class="lede">60/61 号、AGC/AVC/一次调频公式、20 项罚则、六类免考与合成算例。</p>
+      <p class="hook">涉网性能、考核与免考</p>
+      <div class="tags"><span class="tag">60 / 61 号</span><span class="tag">Kp ≤ 2</span><span class="tag">20 项罚则</span></div>
+      <div class="doc-meta"><span>671 行</span><span>约 19.7k 字</span><span>阅读约 36 分钟</span><span>15 节</span><span>数据截止 2026-11-01</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（15）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv2"><a href="#s5">1. 文件体系与效力</a></li>
+            <li class="lv2"><a href="#s10">2. 考核对象与责任边界</a></li>
+            <li class="lv2"><a href="#s15">3. 涉网性能总表</a></li>
+            <li class="lv2"><a href="#s16">4. AGC 考核</a></li>
+            <li class="lv2"><a href="#s23">5. AVC 考核</a></li>
+            <li class="lv2"><a href="#s28">6. 一次调频考核</a></li>
+            <li class="lv2"><a href="#s35">7. 罚则表（区域常见口径）</a></li>
+            <li class="lv2"><a href="#s36">8. 免考核条款</a></li>
+            <li class="lv2"><a href="#s41">9. 合成算例（D 级）</a></li>
+            <li class="lv2"><a href="#s46">10. 新能源与储能专项</a></li>
+            <li class="lv2"><a href="#s50">11. 合规与运维清单</a></li>
+            <li class="lv2"><a href="#s55">12. 常见错误（12 条）</a></li>
+            <li class="lv2"><a href="#s56">13. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s57">14. 与技能和其他笔记的分工</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>数据截止：2026-11-01｜定位：知识库模块（暂不单独拆技能）</p><p>相关技能：<a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a>（辅助服务市场与结算）、<a href="../../skills/renewable-project-development/SKILL.md">新能源项目开发与并网专家</a>（并网标准与涉网试验）、<a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a>（考核扣减）、<a href="../../skills/virtual-power-plant/SKILL.md">虚拟电厂专家</a>（聚合主体考核）</p><p>用途：回答&quot;两个细则怎么考核、AGC/AVC/一次调频怎么算、哪些能免考、罚多少钱&quot;四类问题。本文只做文件、公式与口径整理；具体项目以所在区域现行细则、并网调度协议和技术支持系统为准。</p></aside>
+<hr>
+<h2 id="s1">0. 一页看懂</h2>
+<h3 id="s2">0.1 &quot;两个细则&quot;是什么</h3>
+<ul><li><strong>两本规则</strong>：《电力并网运行管理实施细则》（考核侧，管&quot;罚&quot;）与《电力辅助服务管理实施细则》（补偿与分摊侧，管&quot;补&quot;）。合称&quot;两个细则&quot;，是区域/省级监管机构依据国家规定制定的操作性文件，<strong>不是全国统一法规</strong>。</li><li><strong>三个层次</strong>：国家规定与办法 → 区域/省级细则 → 并网调度协议、技术支持系统与月度考核结算单。同一台机组在不同区域，公式、门槛、封顶都可能不同。</li><li><strong>2021 年改名扩围</strong>：国家层面把《发电厂并网运行管理规定》修订为《电力并网运行管理规定》，管理范围扩至 <strong>35 kV 及以上全部并网主体</strong>，新型储能、虚拟电厂、负荷聚合商、可调节负荷进入考核与补偿视野。</li><li><strong>2026 年又在改</strong>：国家能源局综合司 <strong>2026-09-30</strong> 发布《电力并网运行管理规定（征求意见稿）》，拟把&quot;考核&quot;改为&quot;管理&quot;，新增不可抗力与首台（套）豁免，黑启动改为日常管理。<strong>草案不是现行法</strong>，答题时必须标状态。</li><li><strong>不是&quot;罚款创收&quot;</strong>：考核费用与辅助服务补偿、分摊、返还联动，原则收支平衡、专款专用。净收益 = 电能量收益 + 辅助服务补偿 − 考核费用 − 分摊费用 + 返还费用。</li></ul>
+<h3 id="s3">0.2 关键数字</h3>
+<div class="table-wrap"><table><thead><tr><th>数字</th><th>含义</th><th>来源与级别</th></tr></thead><tbody><tr><td>60/61 号</td><td>国家现行两个基础文件</td><td>国能发监管规〔2021〕60/61号，2021-12-21，A</td></tr><tr><td>35 kV</td><td>2021 年起管理范围扩至 35 kV 及以上并网主体</td><td>60/61 号，A</td></tr><tr><td>60 s / 20 s</td><td>火电/水电 AGC 标准响应时间</td><td>区域细则常见值，B</td></tr><tr><td>Kp ≤ 2</td><td>调频性能系数原则上限值</td><td>发改价格〔2024〕196号，A</td></tr><tr><td>2 / 0.1</td><td>K1、K2、K3 常见上限 2、下限 0.1</td><td>区域细则，B</td></tr><tr><td>98% / 96%</td><td>AVC 投运率/调节合格率常见门槛</td><td>山东 2026、华北 2026 征求意见稿，B</td></tr><tr><td>0.5% / 1% / 2% / 10%</td><td>一次调频/AVC/AGC/总考核常见月度封顶</td><td>区域细则，B</td></tr><tr><td>0.1%/0.1pp</td><td>南方一次调频 90%-100% 档的较严版本；较宽版本为 0.05%/0.1pp</td><td>区域细则，B</td></tr><tr><td>70% / 35%</td><td>南方一次调频动作合格的电量贡献门槛；循环流化床、水煤浆、煤矸石机组为 35%</td><td>区域细则，B</td></tr><tr><td>2026-09-30</td><td>国家并网运行管理规定征求意见稿发布</td><td>国家能源局综合司，A（草案）</td></tr><tr><td>2026-10-01</td><td>山东新版两个细则施行</td><td>鲁监能市场规〔2026〕52号，A</td></tr></tbody></table></div>
+<h3 id="s4">0.3 六个判断</h3>
+<ol><li><strong>先确认区域和版本</strong>：南方、华中、华北、山东、山西、新疆的公式与门槛不同；2026 年多地在换版。</li><li><strong>先看&quot;率&quot;再看&quot;电量&quot;</strong>：多数条款是&quot;合格率每低 X 个百分点，按当月/当日上网电量的 Y% 计考核电量&quot;。</li><li><strong>封顶决定上限</strong>：一次调频常见 0.5%-1%，AVC 2%，AGC 10%，总考核 10%；没有封顶的条款最危险。</li><li><strong>免考要申请</strong>：不是系统自动豁免；逾期、无证据、原因不符，均视为自身责任。</li><li><strong>考核电价决定金额</strong>：考核电量 × 当地燃煤基准价或结算电价；只算电量不算钱，会低估影响。</li><li><strong>2026 是变盘年</strong>：国家征求意见稿 + 山东 52 号 + 华北/华东/南方新规，旧版细则不能直接套。</li></ol>
+<hr>
+<h2 id="s5">1. 文件体系与效力</h2>
+<h3 id="s6">1.1 三级体系</h3>
+<pre><code>国家层面：电力并网运行管理规定（60 号）+ 电力辅助服务管理办法（61 号）
+区域/省级：××区域/××省电力并网运行管理实施细则 + 辅助服务管理实施细则（&quot;两个细则&quot;）
+项目层面：并网调度协议 + 涉网参数实测与试验报告 + 技术支持系统 + 月度考核结算单</code></pre>
+<ul><li><strong>国家文件定原则</strong>：主体范围、并网条件、调度关系、奖惩原则、信息披露。</li><li><strong>区域/省级细则定参数</strong>：考核项目、门槛、公式、系数、封顶、免考、结算电价。</li><li><strong>项目文件定边界</strong>：并网点、产权分界、调度管辖、AGC/AVC 控制方式、通信通道、试验要求。</li></ul>
+<h3 id="s7">1.2 文件表（截至 2026-11）</h3>
+<div class="table-wrap"><table><thead><tr><th>文件</th><th>文号/时间</th><th>状态</th><th>与本模块的关系</th><th>级别</th></tr></thead><tbody><tr><td>发电厂并网运行管理规定</td><td>电监市场〔2006〕42号</td><td>已被 60 号修订</td><td>&quot;两个细则&quot;的起点</td><td>A</td></tr><tr><td>并网发电厂辅助服务管理暂行办法</td><td>电监市场〔2006〕43号</td><td>已被 61 号修订</td><td>辅助服务补偿与分摊起点</td><td>A</td></tr><tr><td>电力并网运行管理规定</td><td>国能发监管规〔2021〕60号，2021-12-21</td><td>现行</td><td>并网运行管理的国家依据</td><td>A</td></tr><tr><td>电力辅助服务管理办法</td><td>国能发监管规〔2021〕61号，2021-12-21</td><td>现行</td><td>辅助服务品种、补偿、分摊</td><td>A</td></tr><tr><td>关于建立健全电力辅助服务市场价格机制的通知</td><td>发改价格〔2024〕196号，2024-02</td><td>现行</td><td>调频性能系数 ≤2、里程价 ≤0.015 元/kW</td><td>A</td></tr><tr><td>电力并网运行管理规定（征求意见稿）</td><td>国家能源局综合司，2026-09-30</td><td><strong>草案</strong>，征求意见 30 日</td><td>考核改管理、不可抗力与首台套豁免</td><td>A（草案）</td></tr><tr><td>南方区域两个细则</td><td>2022-06-13 发布；2023-01-01 运行；2024-12-18 修订，2025-01-01 实施</td><td>现行；2026-08-24 部分条款修订征求意见</td><td>区域细则样本；储能参与分摊、AGC 容量公式</td><td>A/B</td></tr><tr><td>华中区域两个细则</td><td>华中监能市场〔2023〕129号</td><td>现行</td><td>区域细则样本</td><td>A/B</td></tr><tr><td>山东省两个细则（2026 年修订版）</td><td>鲁监能市场规〔2026〕52号，2026-09-30 印发，2026-10-01 施行</td><td>现行</td><td>新能源、储能、VPP 考核新样本</td><td>A</td></tr><tr><td>山西两个细则（2025 年修订版）</td><td>山西能源监管办，2025-01</td><td>现行（文号待核实）</td><td>有偿一次调频、免考条款样本</td><td>B</td></tr><tr><td>华北区域两个细则</td><td>2026-05-12 征求意见稿</td><td><strong>草案</strong>；2019 版仍现行</td><td>新型储能、风光、AVC/一次调频新门槛</td><td>B（草案）</td></tr><tr><td>华东区域两个细则</td><td>2026 年征求意见稿</td><td><strong>草案</strong></td><td>新能源/储能 AGC 容量补偿公式</td><td>B（草案）</td></tr><tr><td>新疆区域两个细则免考核规则</td><td>2019 征求意见稿，后续版本待核实</td><td>参考</td><td>免考申请、证据链、AGC 临修额度</td><td>C</td></tr></tbody></table></div>
+<ul><li><strong>读法</strong>：先看国家 60/61 号定原则，再看项目所在区域现行细则定参数；2026 年的征求意见稿只能当&quot;方向&quot;，不能当&quot;现行规则&quot;引用。</li><li><strong>纪律</strong>：不要用&quot;两个细则&quot;四个字代替文号；回答时至少给出&quot;区域 + 年份 + 版本&quot;。</li></ul>
+<h3 id="s8">1.3 四个金额概念</h3>
+<div class="table-wrap"><table><thead><tr><th>概念</th><th>定义</th><th>常见单位</th><th>易错点</th></tr></thead><tbody><tr><td>考核电量</td><td>按细则公式折算的&quot;电量罚单&quot;</td><td>MWh</td><td>不是实际少发/多发的电量</td></tr><tr><td>考核费用</td><td>考核电量 × 考核电价</td><td>万元/元</td><td>考核电价常取燃煤基准价或结算电价</td></tr><tr><td>辅助服务补偿</td><td>调频、备用、无功、黑启动等服务的补偿</td><td>万元/元</td><td>与考核是两本账</td></tr><tr><td>分摊/返还</td><td>按上网电量或电费比例分摊/返还</td><td>万元/元</td><td>独立储能是否参与分摊，区域差异大</td></tr></tbody></table></div>
+<ul><li><strong>净收益</strong>：电能量收益 + 辅助服务补偿 − 考核费用 − 分摊费用 + 返还费用。</li><li><strong>不要混用</strong>：&quot;考核电量 1,000 MWh&quot;与&quot;考核费用 40 万元&quot;是两件事；前者要乘考核电价。</li></ul>
+<h3 id="s9">1.4 数据来源与争议处理</h3>
+<ul><li><strong>数据源</strong>：调度主站 EMS/OMS、AGC/AVC 主站、电量计量系统、功率预测系统、故障录波、检修票与调度指令记录。</li><li><strong>流程</strong>：月度考核结果公示 → 场站核对 → 规定期限内提出异议 → 调度复核 → 仍有争议向能源监管派出机构申诉。</li><li><strong>免考</strong>：在规定时限内通过&quot;两个细则&quot;技术支持系统提交申请与佐证；逾期、漏项、原因不符、证据不足，通常不予免除。</li><li><strong>证据链</strong>：调度指令记录、告警与日志、故障录波、检修/试验批准文件、电网故障通知、气象证明、通信通道中断记录。</li></ul>
+<hr>
+<h2 id="s10">2. 考核对象与责任边界</h2>
+<h3 id="s11">2.1 谁被考核</h3>
+<div class="table-wrap"><table><thead><tr><th>主体</th><th>2021 版范围</th><th>2026 征求意见稿变化</th><th>常见考核重点</th></tr></thead><tbody><tr><td>火电、水电、核电</td><td>是</td><td>延续</td><td>一次调频、AGC、AVC、非计划停运、调度纪律</td></tr><tr><td>风电、光伏</td><td>是</td><td>延续</td><td>功率预测、AGC/AVC、一次调频、故障穿越</td></tr><tr><td>光热</td><td>未单列</td><td><strong>明确加入</strong></td><td>与火电/新能源类似的涉网性能</td></tr><tr><td>抽水蓄能</td><td>是</td><td>延续</td><td>AGC、一次调频、黑启动、可用率</td></tr><tr><td>新型储能</td><td>是</td><td>明确为&quot;能响应调度指令的新型储能&quot;</td><td>AGC/AVC、一次调频、能量可用率、SOC</td></tr><tr><td>自备电厂</td><td>是</td><td>延续</td><td>并网运行、调度纪律、涉网性能</td></tr><tr><td>可调节负荷</td><td>是（含聚合商、VPP）</td><td>加入电动汽车充电网络等</td><td>响应精度、基线、通信、履约</td></tr><tr><td>绿电直连、源网荷储</td><td>参照执行</td><td>明确&quot;视影响参照&quot;</td><td>并网点、反送电、涉网性能</td></tr></tbody></table></div>
+<ul><li><strong>35 kV 是常见门槛，但不是唯一门槛</strong>：山东 2026 版把 10 kV 及以上并网分布式光伏纳入；具体看省级细则。</li><li><strong>聚合主体</strong>：VPP/负荷聚合商的考核落在&quot;聚合边界&quot;和&quot;基线&quot;上，不能直接套发电机组的 AGC 公式（→ 虚拟电厂专家）。</li></ul>
+<h3 id="s12">2.2 并网点、产权分界与调度管辖</h3>
+<ul><li><strong>并网点</strong>是考核的物理边界；场内设备故障与电网资产故障要分开。</li><li><strong>产权分界点</strong>决定谁承担设备责任；计量点决定考核电量与结算电量。</li><li><strong>调度管辖</strong>决定指令来源：省调、地调、县调；不同调度机构的考核系统与时限可能不同。</li><li><strong>反送电</strong>：绿电直连、分布式光伏、储能都有反送电限制；违反反送电约束可能单独考核。</li></ul>
+<h3 id="s13">2.3 考核电价</h3>
+<ul><li><strong>常见口径</strong>：当地燃煤发电基准价（华北 2026 征求意见稿明确）、当月结算电价、标杆电价。</li><li><strong>不是上网电价</strong>：考核电价通常低于项目全口径电价，但乘以考核电量后仍可能很大。</li><li><strong>区域差异</strong>：蒙西、新疆等地按与电网结算的标杆电价考核；具体以细则为准。</li><li><strong>算例纪律</strong>：本文合成算例统一取 0.40 元/kWh，仅用于演示，不代表任何省份。</li></ul>
+<h3 id="s14">2.4 封顶与总控</h3>
+<ul><li><strong>单项封顶</strong>：一次调频 0.5%-1%，AVC 2%，AGC 10%，功率预测另有封顶。</li><li><strong>总封顶</strong>：山东 2026 版月度总考核电量不超过当月上网电量的 10%。</li><li><strong>单次 vs 月度</strong>：调度纪律、非计划停运常按&quot;每次&quot;计；一次调频、AVC 常按&quot;月度累计&quot;计。</li><li><strong>封顶不是免责</strong>：达到封顶后不再增加考核电量，但可能触发监管约谈、整改或并网受限。</li></ul>
+<hr>
+<h2 id="s15">3. 涉网性能总表</h2>
+<div class="table-wrap"><table><thead><tr><th>考核大类</th><th>关键指标</th><th>常见标准/门槛</th><th>常见考核口径</th><th>免考要点</th></tr></thead><tbody><tr><td>一次调频</td><td>死区、调差率、响应滞后、上升时间、调节时间、出力响应指数、电量贡献指数</td><td>GB/T 40595-2021；火电另见 GB/T 30370-2013</td><td>合格率每低 0.1-1 个百分点，按当月发电量的 0.05%-0.1% 计；cap 0.5%-1%</td><td>频率异常、调度指令、机组已到调节限幅</td></tr><tr><td>AGC/APC</td><td>可用率、调节速率、调节精度、响应时间、调节范围</td><td>可用率常见 96%-98%；火电 60 s、水电 20 s；精度 1% Pn</td><td>日上网电量 ×（1−合格率）× 0.1%；或分项系数；cap 10%</td><td>主站/通道故障、调度指定模式、机组启停</td></tr><tr><td>AVC/无功/电压</td><td>投运率、调节合格率、无功调用合格率、母线电压合格率</td><td>98%/96%/90%；或 99%/99%；电压 99.5%-99.9%</td><td>每低 1 或 0.1 个百分点，按月发电量的 0.03%-0.1% 计；cap 0.5%-2%</td><td>电网原因、主站原因、不可抗力、已到无功极限</td></tr><tr><td>功率预测</td><td>短期/超短期准确率、上报及时率、偏曲线</td><td>风电/光伏分别设限；山东 2026 细化 8 档</td><td>按准确率或偏差电量乘系数；有月度封顶</td><td>电网检修/通道中断、调度限电、预测系统更换（报备）</td></tr><tr><td>故障穿越</td><td>低电压穿越、高电压穿越、连续故障穿越</td><td>GB/T 19963.1-2021、GB/T 19964-2024</td><td>脱网容量 × 时间/次数；专项考核</td><td>电网故障、保护正确动作、调度指令脱网</td></tr><tr><td>宽频振荡</td><td>阻抗扫描、振荡监测与抑制</td><td>区域细则/标准</td><td>事件考核、整改考核</td><td>电网侧原因、非场站责任</td></tr><tr><td>惯量/快速调压</td><td>惯量响应、快速无功支撑</td><td>2026 年新规探索</td><td>容量 × 时间/次</td><td>未投运或能力不足按细则</td></tr><tr><td>黑启动</td><td>年度试验、实际黑启动</td><td>年度试验要求</td><td>未完成/失败按次或容量</td><td>电网原因、设备不可用已报备</td></tr><tr><td>继保/安自</td><td>定值正确率、投运率、正确动作率</td><td>100%</td><td>每项/每次 0.1%-0.5%</td><td>电网原因、正确动作</td></tr><tr><td>通信/自动化</td><td>通道可用率、数据质量、遥测遥信准确率</td><td>98%-99%</td><td>每项 0.1% 起</td><td>电网侧设备、通道中断</td></tr><tr><td>网络安全</td><td>等保、告警、整改、接入规范</td><td>合规</td><td>0.1%-1%/项</td><td>非自身原因、已按期整改</td></tr><tr><td>调度纪律</td><td>擅自改变状态/参数、不执行指令、瞒报</td><td>—</td><td>0.5%/次（华北常见）</td><td>危及人身/主设备安全并及时报告</td></tr><tr><td>非计划停运/脱网</td><td>停运容量、时长、次数</td><td>—</td><td>0.5%-1%/次；或容量 × 0.1 h/1%</td><td>电网故障、稳控切机、备用机组启动失败</td></tr><tr><td>检修/试验</td><td>计划申报、涉网试验、工作票</td><td>提前报批</td><td>0.1%/项/天；cap 1%</td><td>已批准、紧急抢修后补报</td></tr></tbody></table></div>
+<ul><li><strong>读法</strong>：这张表是&quot;考核地图&quot;，不是&quot;公式表&quot;；具体数值必须回到项目所在区域现行细则。</li><li><strong>优先级</strong>：从金额影响看，一次调频封顶、调度纪律、非计划停运、AVC 封顶通常大于 AGC 单点考核；从合规看，涉网参数擅自变更可能导致并网受限。</li></ul>
+<hr>
+<h2 id="s16">4. AGC 考核</h2>
+<h3 id="s17">4.1 四个基本指标</h3>
+<ul><li><strong>可用率</strong>：可投入 AGC 的时间 ÷ 月有效时间；月有效时间扣除非电厂原因造成的不可用时间。</li><li><strong>调节速率</strong>：机组在指令方向上，从跨出响应死区到进入调节死区的速率；计算时通常要消除启停磨影响。</li><li><strong>调节精度</strong>：响应稳定后，实际出力与设点指令偏差的绝对值对时间积分，再除以积分时间。</li><li><strong>响应时间</strong>：从主站发出指令，到机组出力可靠跨出与指令方向一致的响应死区所用时间。</li><li><strong>调节范围/调节量</strong>：机组可调出力区间与单次调节深度；部分区域单独考核。</li></ul>
+<h3 id="s18">4.2 K1、K2、K3 与 Kp</h3>
+<pre><code>K1 = v / v_N                      # 调节速率指标
+K2 = 2 − ΔP / ΔP_allow            # 调节精度指标
+K3 = 2 − t / t_N                  # 响应时间指标
+Kp = K1 × K2 × K3                 # 综合调节性能</code></pre>
+<ul><li><strong>下限</strong>：K1、K2、K3 计算值小于 0.1 时取 0.1（多数区域）。</li><li><strong>上限</strong>：分项常见上限 2；综合 Kp 原则上限 2（发改价格〔2024〕196号），区域可更严。</li><li><strong>含义</strong>：三项都等于标准值时，K1=K2=K3=1，Kp=1；响应越快、越准、越稳，Kp 越高。</li></ul>
+<h3 id="s19">4.3 标准参数（区域细则常见值）</h3>
+<div class="table-wrap"><table><thead><tr><th>机组类型</th><th>标准调节速率 v_N</th><th>标准响应时间 t_N</th><th>允许偏差 ΔP_allow</th></tr></thead><tbody><tr><td>直吹式制粉系统汽包炉</td><td>1.5% Pn/min</td><td>60 s</td><td>1% Pn</td></tr><tr><td>中间储仓式制粉系统</td><td>2.0% Pn/min</td><td>60 s</td><td>1% Pn</td></tr><tr><td>循环流化床/劣质煤</td><td>1.0% Pn/min</td><td>60 s</td><td>1% Pn</td></tr><tr><td>超临界定压运行直流炉</td><td>1.0% Pn/min</td><td>60 s</td><td>1% Pn</td></tr><tr><td>其他类型直流炉</td><td>1.5% Pn/min</td><td>60 s</td><td>1% Pn</td></tr><tr><td>燃气机组</td><td>4.0% Pn/min（部分区域 20%）</td><td>60 s</td><td>1% Pn</td></tr><tr><td>水电机组</td><td>10% Pn/min</td><td>20 s</td><td>1% Pn</td></tr></tbody></table></div>
+<ul><li><strong>区域差异</strong>：燃气机组标准速率在不同区域可差 5 倍；水电响应时间有 20 s 与 30 s 两种写法。必须查当地细则。</li><li><strong>新能源与储能</strong>：不按火电的 Pn/min 直接套；山东 2026 对独立储能设响应时间 ≤15 s、调节时间 ≤20 s、精度 ≤0.5 MW 或 1% 容量（取大值）。</li></ul>
+<h3 id="s20">4.4 考核电量</h3>
+<p><strong>通用骨架</strong></p>
+<pre><code>AGC 考核电量 = 考核时段上网电量 ×（1 − AGC 合格率）× 系数
+系数常见 0.1%；合格率按调节范围、速率、精度、响应时间等分项加权</code></pre>
+<p><strong>区域样本</strong></p>
+<div class="table-wrap"><table><thead><tr><th>区域/文件</th><th>考核口径</th><th>封顶</th><th>级别</th></tr></thead><tbody><tr><td>南方区域</td><td>单机考核电量 = 当日上网电量 ×（1−AGC合格率）× 0.1%</td><td>按细则</td><td>B</td></tr><tr><td>山东 2026（独立储能）</td><td>AGC 月可用率合格线 96%；可用率考核系数 α_KA=0.1；性能分项系数 α_K1/K2/K3=0.5；性能基准线 K1=1.3、K2=1.7、K3=1.4</td><td>月度 AGC 总考核电量 ≤ 当月上网电量 10%</td><td>A/B</td></tr><tr><td>华北 2026 征求意见稿</td><td>按可用率、调节速率、精度、响应时间分项考核</td><td>按细则</td><td>草案</td></tr><tr><td>新疆</td><td>AGC 临修每月不超过 12 h；同一原因每月仅一次</td><td>按细则</td><td>C</td></tr></tbody></table></div>
+<ul><li><strong>可用率考核</strong>常见形式：<code>(1 − 可用率) × Pn × α_KA × 时间</code>；α_KA 区域差异大，山东 2026 储能取 0.1。</li><li><strong>性能考核</strong>常见形式：按 K1/K2/K3 分项，每项低于基准的部分乘以系数和考核电量；山东 2026 储能分项系数 0.5，基准线 K1=1.3、K2=1.7、K3=1.4，不是&quot;到 1 就合格&quot;。</li><li><strong>不要直接套</strong>：南方按&quot;日上网电量&quot;，山东储能按&quot;月可用率 + 分项系数&quot;，两者不能互换。</li></ul>
+<h3 id="s21">4.5 补偿侧</h3>
+<ul><li><strong>调频费用</strong> = 出清价格 × 调频里程 × 性能系数（发改价格〔2024〕196号）。</li><li><strong>性能系数</strong>：由调节速率、调节精度、响应时间三项乘积或加权平均确定，原则最大不超过 2。</li><li><strong>调频里程价格上限</strong>：不超过 0.015 元/kW（15 元/MW）。</li><li><strong>华北/山西样本</strong>：日补偿 = D × [ln(Kp)+1] × Y_AGC；D 为日调节深度，Y_AGC 火电常见 10 元/MW、水电 5 元/MW；Kp &lt; e⁻¹ 时补偿为 0。</li><li><strong>2026 新口径</strong>：南方 2026-08 征求意见稿、华东 2026 征求意见稿把 AGC 调节容量写成 <code>min(标准调节速率 × 5 分钟, 容量 × 20%)</code>；这是<strong>草案</strong>，不是现行结算规则。</li><li><strong>补偿算例（D 级）</strong>：日调频里程 10,000 MW、里程价 10 元/MW、Kp=1.2，日补偿 = 10 × 10,000 × 1.2 = 12.0 万元。里程价是补偿的单价上限（196 号文 0.015 元/kW = 15 元/MW），不是报价；Kp 由调节速率、精度、响应时间决定，性能差的项目补偿会被直接压低。</li></ul>
+<h3 id="s22">4.6 常见失分点</h3>
+<ol><li>AGC 可用率不足：通信中断、控制回路故障、后台死机，未及时报备。</li><li>调节速率不达标：锅炉蓄热不足、辅机出力受限、协调控制参数保守。</li><li>调节精度差：调节死区过大、指令刷新慢、执行机构回差。</li><li>响应时间慢：PLC 扫描周期、通信延时、阀门/桨距执行滞后。</li><li>参数未实测或擅自变更：涉网参数变更未经调度批准，可能直接按违反调度纪律处理。</li><li>把&quot;投运&quot;当&quot;合格&quot;：AGC 投运率 98% 不等于调节性能合格。</li></ol>
+<hr>
+<h2 id="s23">5. AVC 考核</h2>
+<h3 id="s24">5.1 三个&quot;率&quot;与一个&quot;合格率&quot;</h3>
+<pre><code>AVC 投运率 = AVC 投运时间 ÷ 应投运时间 × 100%
+AVC 调节合格率 = 执行合格点数 ÷ 调度发令次数 × 100%
+AVC 无功调用合格率 = 合格调用次数 ÷ 调用次数 × 100%
+母线电压合格率 = 合格考核点 ÷ 总考核点 × 100%</code></pre>
+<ul><li><strong>投运率</strong>看&quot;装置在不在线&quot;；<strong>调节合格率</strong>看&quot;指令跟不跟得上&quot;；<strong>无功调用合格率</strong>看&quot;需要无功时出不出力&quot;。</li><li><strong>电压合格率</strong>看&quot;并网点电压是否在调度下发的电压曲线内&quot;；三者不能互相替代。</li></ul>
+<h3 id="s25">5.2 门槛样本</h3>
+<div class="table-wrap"><table><thead><tr><th>区域/文件</th><th>投运率</th><th>调节合格率</th><th>无功调用合格率</th><th>电压合格率</th><th>级别</th></tr></thead><tbody><tr><td>山东 2026（独立储能）</td><td>98%</td><td>96%</td><td>90%</td><td>按曲线</td><td>A/B</td></tr><tr><td>华北 2026 征求意见稿</td><td>98%</td><td>96%</td><td>—</td><td>按曲线</td><td>草案</td></tr><tr><td>蒙西</td><td>98%</td><td>96%</td><td>—</td><td>—</td><td>B/C</td></tr><tr><td>安徽</td><td>99%</td><td>99%</td><td>—</td><td>99.5%</td><td>B/C</td></tr><tr><td>南方区域</td><td>—</td><td>—</td><td>—</td><td>99.9%</td><td>B</td></tr><tr><td>山东 AVC 补偿</td><td>98%</td><td>98%</td><td>—</td><td>—</td><td>A</td></tr></tbody></table></div>
+<ul><li><strong>补偿门槛不等于考核门槛</strong>：山东 AVC 补偿要求投运率、调节合格率均 ≥98%，但考核合格线是 98%/96%/90%；达不到补偿门槛不一定被考核，但拿不到补偿。</li><li><strong>动态无功装置</strong>：华北 2026 征求意见稿要求 SVG/SVC/调相机等动态无功装置自动可用率 ≥95%，AVC 投运率 ≥98%，调节合格率 ≥96%。</li></ul>
+<h3 id="s26">5.3 考核电量</h3>
+<p><strong>安徽样本</strong></p>
+<pre><code>投运率以 99% 为基准，每降低 1 个百分点，按当月机组发电量的 0.03% 考核
+调节合格率以 99% 为基准，每降低 1 个百分点，按当月机组发电量的 0.03% 考核
+两项各自最大不超过当月机组发电量的 0.5%
+不具备 AVC 功能的机组，按当月发电量的 0.5% 考核</code></pre>
+<p><strong>南方样本</strong></p>
+<pre><code>母线电压合格率以 99.9% 为基准，每降低 0.1 个百分点，
+按当月机组发电量的 0.1% 统计电压曲线考核电量
+励磁/进相能力不达标期间，电压考核电量按 2 倍计算
+已到最大无功调节能力、母线电压仍不合格的时段免考</code></pre>
+<p><strong>山东 2026 样本</strong></p>
+<pre><code>AVC 月度累计考核电量不超过当月上网电量的 2%
+免考：电网原因、调度主站原因、不可抗力、经批准的计划检修
+场站内部原因导致的 AVC 退出，不予免考</code></pre>
+<ul><li><strong>封顶</strong>：AVC 常见 0.5%-2%；安徽按项 0.5%，山东按总 2%。</li><li><strong>无 AVC</strong>：安徽直接按 0.5% 考核；蒙西未装动态无功补偿装置按月上网电量 2% 考核。</li></ul>
+<h3 id="s27">5.4 常见失分点</h3>
+<ol><li>SVG/SVC 容量不足或可用率低，电压曲线跟踪不上。</li><li>AVC 子站与主站通信中断，投运率掉点。</li><li>无功调用合格率低：指令到了但调节方向/幅度不对。</li><li>电压曲线未按调度下发值执行，或曲线变更未确认。</li><li>检修未提前报备，投运率被扣。</li><li>把&quot;AVC 投运&quot;当&quot;电压合格&quot;，忽略母线电压合格率。</li></ol>
+<hr>
+<h2 id="s28">6. 一次调频考核</h2>
+<h3 id="s29">6.1 指标与公式</h3>
+<pre><code>理论功率调整量：ΔP = −(1/δ) × (Δf / f_N) × P_N
+出力响应指数 = 实际最大调整幅度 ÷ 理论最大调整幅度 × 100%
+电量贡献指数 q = 实际贡献电量 ÷ 理论贡献电量 × 100%</code></pre>
+<ul><li><strong>死区</strong>：频率偏差小于死区时不动作；死区越大，越不容易被考核，但调频贡献越小。</li><li><strong>调差率 δ</strong>：频率偏差与功率调整的比例系数；δ 越小，同样频差下调整量越大。</li><li><strong>响应滞后时间</strong>：从频率越过死区到出力开始变化的时间。</li><li><strong>上升时间/调节时间</strong>：达到目标调整量 90%/稳定所需时间。</li><li><strong>贡献电量</strong>：从频率越死区到恢复死区（或规定时限）的功率积分；高频少发、低频多发为正。</li></ul>
+<h3 id="s30">6.2 标准与区域门槛</h3>
+<div class="table-wrap"><table><thead><tr><th>标准/文件</th><th>适用对象</th><th>死区</th><th>调差率</th><th>响应滞后</th><th>上升/调节时间</th><th>其他</th></tr></thead><tbody><tr><td>GB/T 40595-2021（风电）</td><td>风电场</td><td>±0.03~0.06 Hz</td><td>2%~6%（推荐 5%）</td><td>≤1 s</td><td>上升 ≤3 s、调节 ≤4 s</td><td>35 kV 及以上；B</td></tr><tr><td>GB/T 40595-2021（光伏）</td><td>光伏电站</td><td>±0.02~0.05 Hz</td><td>2%~6%（推荐 5%）</td><td>≤1 s</td><td>上升 ≤3 s、调节 ≤4 s</td><td>35 kV 及以上；B</td></tr><tr><td>GB/T 40595-2021（储能）</td><td>电化学储能</td><td>±0.03~0.05 Hz</td><td>按并网调度协议（山东取 2%）</td><td>≤1 s</td><td>上升 ≤3 s、调节 ≤4 s</td><td>标准按电源类型给范围；B</td></tr><tr><td>GB/T 40595-2021（常规电源）</td><td>火电、水电、核电</td><td>火电 ±0.033；水电 ±0.05；核电 ±0.067 Hz</td><td>火电 3%~6%，水电/核电按机组</td><td>≤1 s</td><td>上升 ≤3 s、调节 ≤4 s</td><td>与 GB/T 30370 并行；B</td></tr><tr><td>GB/T 30370-2013</td><td>火电机组</td><td>±0.033 Hz</td><td>3%~6%</td><td>&lt;3 s</td><td>15 s 达 75%、30 s 达 90%</td><td>稳定 &lt;1 min；负荷变化 6%-10% P0</td></tr><tr><td>山东 2026（独立储能）</td><td>独立储能</td><td>±0.05 Hz</td><td>2%</td><td>≤1 s</td><td>上升 ≤3 s、调节 ≤4 s</td><td>月度考核 cap 1%</td></tr><tr><td>华北 2026 征求意见稿</td><td>发电机组</td><td>—</td><td>—</td><td>—</td><td>15 s 达 75%</td><td>60 s 电量贡献 ≥65%；大扰动 &gt;0.06 Hz</td></tr><tr><td>南方区域</td><td>并网机组</td><td>—</td><td>—</td><td>—</td><td>—</td><td>合格率 100% 基准；cap 0.5%</td></tr></tbody></table></div>
+<ul><li><strong>标准不是细则</strong>：GB/T 40595 是技术底线，区域细则可以更严；考核以细则和并网调度协议为准。</li><li><strong>火电与新能源不同</strong>：火电按 GB/T 30370 的 15 s/30 s 判定；新能源与储能按 GB/T 40595 的 1 s/3 s/4 s 判定，不能混用。</li><li><strong>调差率不是越小越好</strong>：新能源常用 2%~6%、推荐 5%；低于下限容易超调/反调，高于上限贡献不足。0.5%~3% 只是部分储能/厂商口径，不是新能源的通用范围。</li><li><strong>死区按电源类型分</strong>：风电、光伏、储能的死区区间不同，不能互相套用；最终以并网调度协议和实测报告为准。</li></ul>
+<h3 id="s31">6.3 合格判定</h3>
+<ul><li><strong>小扰动</strong>：频率越死区后，规定时限内实际贡献电量达到理论贡献电量的 65%-90%（区域不同）；同时看出力响应指数、滞后、超调、反调。</li><li><strong>大扰动</strong>：频率偏差超过 0.06 Hz（华北 2026 征求意见稿口径），动作合格且电量贡献指数 &gt;100% 才进入有偿补偿。</li><li><strong>不合格情形</strong>：不动作、反调、滞后超限、贡献电量不足、调节后未回到死区、限幅过早。</li><li><strong>限功率/限出力</strong>：机组已到出力上限或下限，按细则免考或按可用能力折算，不能简单判不合格。</li></ul>
+<h3 id="s32">6.4 考核电量</h3>
+<p><strong>南方样本</strong></p>
+<pre><code>一次调频合格率以 100% 为基准：
+合格率低于 90% 时，每低 1 个百分点（含不足 1 个百分点），
+按当月机组发电量的 0.1% 计考核电量；
+合格率在 90%-100% 时，每低 0.1 个百分点，
+按当月机组发电量的 0.05%-0.1% 计考核电量（版本不同）；
+月度一次调频投入率不低于 90%：
+每低 1 个百分点，按当月机组发电量的 0.1% 计考核电量；
+月度一次调频考核电量不超过当月机组发电量的 0.5%</code></pre>
+<ul><li><strong>动作合格判定</strong>：实际贡献电量达到理论贡献电量的 70% 及以上；循环流化床、水煤浆、煤矸石机组为 35% 及以上。</li><li><strong>两个系数版本</strong>：0.1%/0.1pp 与 0.05%/0.1pp 都出现过，差 2 倍；算账前先确认本地现行版本，不要用旧版公式套新版结算单。</li><li><strong>投入率与合格率分开扣</strong>：装置不投（投入率低）和投了但不合格（合格率低）是两条条款，可能叠加。</li></ul>
+<p><strong>山东 2026 样本</strong></p>
+<pre><code>一次调频月度累计考核电量不超过当月上网电量的 1%
+死区、调差率、响应滞后、上升时间、调节时间不满足要求，按细则分项考核</code></pre>
+<p><strong>华北样本</strong></p>
+<pre><code>15 s 内出力响应达不到理论最大调整幅度的 75%，判不合格
+60 s 内电量贡献达不到理论贡献电量的 65%，判不合格
+不合格按次/按考核电量计，具体以现行细则为准</code></pre>
+<ul><li><strong>封顶是核心</strong>：一次调频按&quot;每 0.1 个百分点&quot;累计时，合格率 90% 很容易触顶；封顶 0.5%-1% 决定了最大损失。</li><li><strong>考核电价</strong>：一次调频考核电量通常按当月上网电量比例计，再乘考核电价；不是按调频里程计价。</li></ul>
+<h3 id="s33">6.5 补偿侧</h3>
+<ul><li><strong>山西 2025 修订版</strong>：新增有偿一次调频补偿，按月确定所需有偿一次调频容量。</li><li><strong>华北 2026 征求意见稿</strong>：大扰动下动作合格且电量贡献指数 &gt;100%，才给有偿一次调频补偿。</li><li><strong>山东</strong>：一次调频按容量/贡献补偿，标准与储能、机组类型相关；具体以现行辅助服务细则为准。</li><li><strong>不要把考核与补偿对冲</strong>：考核按&quot;不合格&quot;扣，补偿按&quot;超额贡献&quot;给；两者计算口径不同，不能简单相抵。</li></ul>
+<h3 id="s34">6.6 常见失分点</h3>
+<ol><li>死区设置与调度要求不一致，频率采样不同源。</li><li>调差率过大，频差下调整量不足；调差率过小，容易超调/反调。</li><li>阀门、桨距、PCS 响应慢，1 s/3 s/4 s 指标不达标。</li><li>储能 SOC 不足或功率受限，一次调频中途退出。</li><li>一次调频与 AGC 指令冲突，未做优先级与闭锁。</li><li>限功率期间未按可用能力折算，被全额考核。</li><li>参数未实测、未备案，试验报告与现场不一致。</li></ol>
+<hr>
+<h2 id="s35">7. 罚则表（区域常见口径）</h2>
+<div class="table-wrap"><table><thead><tr><th>考核项</th><th>典型触发</th><th>常见考核电量口径</th><th>常见上限</th><th>级别</th></tr></thead><tbody><tr><td>违反调度纪律</td><td>擅自改变一二次设备状态/参数、不执行指令、瞒报</td><td>全厂当月上网电量 0.5%/次</td><td>按细则</td><td>B</td></tr><tr><td>安全整改</td><td>未按计划完成整改</td><td>0.1%/项</td><td>1%</td><td>B</td></tr><tr><td>事故预案</td><td>未制定事故处理预案</td><td>0.2%</td><td>—</td><td>B</td></tr><tr><td>反事故演习</td><td>无故不参加电网联合演习</td><td>0.4%</td><td>—</td><td>B</td></tr><tr><td>非计划停运</td><td>自身原因停运/跳闸</td><td>0.5%-1%/次；或按容量 × 时间折算</td><td>按细则</td><td>B</td></tr><tr><td>故障脱网</td><td>场站原因大规模脱网</td><td>按脱网容量/时间/次数</td><td>按细则</td><td>B</td></tr><tr><td>AGC 可用率/性能</td><td>可用率低、速率/精度/响应不达标</td><td>日上网电量 ×（1−合格率）× 0.1%；或分项系数</td><td>10%</td><td>B</td></tr><tr><td>AVC 投运率/调节合格率</td><td>投运率低、跟踪不到位</td><td>每低 1 或 0.1 个百分点 × 0.03%-0.1% 月电量</td><td>0.5%-2%</td><td>B</td></tr><tr><td>一次调频</td><td>合格率低、贡献电量不足</td><td>每低 0.1-1 个百分点 × 0.05%-0.1% 月电量</td><td>0.5%-1%</td><td>B</td></tr><tr><td>电压合格率</td><td>并网点电压越曲线</td><td>每低 0.1 个百分点 × 0.1% 月电量</td><td>1%</td><td>B</td></tr><tr><td>功率预测</td><td>准确率低、上报不及时、偏曲线</td><td>按准确率/偏差电量 × 系数</td><td>按细则</td><td>B</td></tr><tr><td>日计划曲线偏差</td><td>每 5 min 计划曲线偏差超 ±1%（最小 ±1 MW）</td><td>山东 2026：按偏差电量/细则</td><td>按细则</td><td>A</td></tr><tr><td>无动态无功装置</td><td>未装 SVG/SVC 等</td><td>按月上网电量 2%</td><td>—</td><td>C</td></tr><tr><td>无 AVC</td><td>不具备 AVC 功能</td><td>按月发电量 0.5%</td><td>—</td><td>C</td></tr><tr><td>储能非计划停运</td><td>停运单元容量超阈值</td><td>华北草案：每停运 1% 按装机容量 × 0.1 h；山东按能量可用率（&lt;80% 按偏差比例、&lt;60% 加倍）</td><td>按细则</td><td>A/草案</td></tr><tr><td>储能未按期投运 AGC</td><td>未按调度要求期限投入 AGC</td><td>山东 2026：当月上网电量 1%/次</td><td>按细则</td><td>A</td></tr><tr><td>储能参数变更未整改</td><td>涉网性能参数变更后 3 个月内未整改</td><td>山东 2026：当月上网电量 0.5%/月</td><td>按细则</td><td>A</td></tr><tr><td>检修/试验未报批</td><td>未按计划申报、工作票错误</td><td>0.1%/项/天；或容量 × 0.8 × 0.1 h/次</td><td>1%</td><td>B</td></tr><tr><td>网络安全</td><td>等保不合规、告警未处置</td><td>0.1%-1%/项</td><td>按细则</td><td>B</td></tr><tr><td>黑启动</td><td>未完成年度试验/实际黑启动失败</td><td>按次/容量</td><td>按细则</td><td>B</td></tr></tbody></table></div>
+<ul><li><strong>读法</strong>：这张表用于&quot;快速定位哪类条款最贵&quot;，不能代替现行细则；同一项目在不同区域可能落在不同行。</li><li><strong>金额排序</strong>（经验判断，D 级）：调度纪律/非计划停运/一次调频封顶 &gt; AVC 封顶 &gt; AGC 单点考核 &gt; 通信/自动化单项。</li><li><strong>不要只看罚</strong>：辅助服务补偿、考核返还、分摊比例会改变净收益；某些项目&quot;罚款不多但补偿更少&quot;。</li></ul>
+<hr>
+<h2 id="s36">8. 免考核条款</h2>
+<h3 id="s37">8.1 六类常见免考</h3>
+<div class="table-wrap"><table><thead><tr><th>类别</th><th>典型情形</th><th>关键证据</th><th>备注</th></tr></thead><tbody><tr><td>电网原因</td><td>电网一二次设备故障/检修/停运；调度主站、EMS/OMS 故障；电网侧通道中断</td><td>电网故障通知、主站告警、通道中断记录</td><td>仅限电网公司资产，不含场站资产</td></tr><tr><td>不可抗力</td><td>地震、台风、洪水、覆冰、雷击、山火等</td><td>气象证明、现场照片、政府公告</td><td>2026 征求意见稿明确可减轻或豁免</td></tr><tr><td>调度指令/方式</td><td>执行调度指令、应急调用、曲线变化率超出调节能力、频率/电压超出装置范围</td><td>调度指令记录、曲线、告警</td><td>要证明&quot;按指令执行&quot;</td></tr><tr><td>计划检修/试验</td><td>经批准的计划检修、涉网试验、消缺</td><td>检修票、试验方案、批准文件</td><td>提前申请；2026 草案把涉网试验纳入检修计划</td></tr><tr><td>机组状态</td><td>启动/停机、试运、非计划停运已纳入非停考核、AGC/AVC 指定模式、满无功/满出力</td><td>运行日志、状态信号、调度记录</td><td>不能重复考核</td></tr><tr><td>政策试点</td><td>首台（套）重大技术装备示范项目，投运 3 年内非人为责任非计划停运</td><td>首台套认定、事故认定</td><td>2026 征求意见稿新增，地方可降低管理标准</td></tr></tbody></table></div>
+<h3 id="s38">8.2 申请与证据链</h3>
+<ul><li><strong>时限</strong>：按区域细则在月度考核公示期内或规定工作日内提交；逾期通常不予受理。</li><li><strong>渠道</strong>：&quot;两个细则&quot;技术支持系统；部分区域要求同时提交书面材料。</li><li><strong>内容</strong>：免考原因、时段、设备、考核项、佐证材料；原因要与实际一致，不能漏项。</li><li><strong>证据</strong>：调度指令、告警日志、故障录波、检修/试验批准文件、电网故障通知、气象证明、通信中断记录。</li><li><strong>复核</strong>：调度机构审核 → 公示 → 监管机构备案/申诉；对结果有异议在规定期限内提出。</li></ul>
+<h3 id="s39">8.3 不予免考的常见情形</h3>
+<ol><li>场站内部设备故障、参数错误、控制逻辑缺陷。</li><li>未按调度指令执行，或擅自改变涉网状态/参数。</li><li>未提前报备的检修、试验、消缺。</li><li>免考申请逾期、漏项、原因与实际不符。</li><li>无佐证材料，或材料不能覆盖考核时段。</li><li>瞒报、虚假上报预测数据或运行参数（山东 2026 明确不设考核比例系数和上限）。</li><li>自身原因导致 AVC/AGC 退出，却按&quot;电网原因&quot;申请。</li></ol>
+<h3 id="s40">8.4 2026 征求意见稿的变化</h3>
+<ul><li><strong>考核改管理</strong>：对非计划停运/脱网、调度指令偏差、功率预测偏差等，表述从&quot;考核&quot;改为&quot;管理&quot;。</li><li><strong>首台套</strong>：承担能源领域首台（套）重大技术装备示范任务的项目，投运 3 年内非人为责任非计划停运，各地可降低管理标准。</li><li><strong>不可抗力</strong>：因自然灾害等不可抗力引起的非计划停运、脱网，各地可减轻或豁免。</li><li><strong>黑启动</strong>：从&quot;考核&quot;改为&quot;日常管理&quot;，强调日常维护、定期试验、不能提供服务时及时汇报。</li><li><strong>检修</strong>：一次设备检修计划（含涉网试验计划）一并管理。</li><li><strong>并网前置</strong>：未签并网调度协议不得并网；改变涉网状态/参数须经调度批准。</li><li><strong>废止与有效期</strong>：新规施行后，2021 年版 60 号同时废止；新规有效期 5 年。</li><li><strong>奖惩资金</strong>：通过调整电费惩罚，惩罚资金向相关主体分享，收支平衡、专款专用、不得形成资金池。</li><li><strong>状态</strong>：2026-09-30 征求意见稿，<strong>尚未生效</strong>；引用时必须标&quot;草案&quot;。</li></ul>
+<hr>
+<h2 id="s41">9. 合成算例（D 级）</h2>
+<h3 id="s42">9.1 假设</h3>
+<div class="table-wrap"><table><thead><tr><th>参数</th><th>取值</th><th>说明</th></tr></thead><tbody><tr><td>机组容量</td><td>300 MW</td><td>燃煤机组</td></tr><tr><td>月上网电量</td><td>150,000 MWh</td><td>约 500 h 利用小时</td></tr><tr><td>考核电价</td><td>0.40 元/kWh</td><td>示例值，不代表任何省份</td></tr><tr><td>月电能量收入</td><td>6,000 万元</td><td>150,000 MWh × 0.40 元/kWh</td></tr><tr><td>AGC 合格率</td><td>95%</td><td>假设按南方&quot;日上网电量&quot;口径</td></tr><tr><td>AVC 投运率/调节合格率</td><td>95% / 95%</td><td>假设按安徽 99% 基准、0.03%/pp</td></tr><tr><td>一次调频合格率</td><td>90%</td><td>按南方 100% 基准、0.1%/0.1pp 较严版本；0.05%/0.1pp 版本见 9.3</td></tr><tr><td>调度纪律事件</td><td>1 次</td><td>按 0.5%/次</td></tr><tr><td>非计划停运</td><td>1 次</td><td>按 0.5%/次</td></tr></tbody></table></div>
+<h3 id="s43">9.2 考核电量与费用</h3>
+<div class="table-wrap"><table><thead><tr><th>项目</th><th>计算</th><th>考核电量（MWh）</th><th>费用（万元）</th></tr></thead><tbody><tr><td>AGC</td><td>5,000 MWh/日 ×（1−95%）× 0.1% × 30 日</td><td>7.5</td><td>0.30</td></tr><tr><td>AVC</td><td>4 个百分点（99%−95%）× 0.03%/百分点 × 150,000 MWh</td><td>180.0</td><td>7.20</td></tr><tr><td>一次调频</td><td>10 个百分点（100%−90%）× 1.0%/百分点 × 150,000 MWh = 15,000，封顶 0.5%</td><td>750.0</td><td>30.00</td></tr><tr><td>调度纪律</td><td>0.5% × 150,000 MWh</td><td>750.0</td><td>30.00</td></tr><tr><td>非计划停运</td><td>0.5% × 150,000 MWh</td><td>750.0</td><td>30.00</td></tr><tr><td><strong>合计</strong></td><td>—</td><td><strong>2,437.5</strong></td><td><strong>97.50</strong></td></tr></tbody></table></div>
+<ul><li><strong>占月收入</strong>：97.50 ÷ 6,000 = <strong>1.63%</strong>。</li><li><strong>结构</strong>：一次调频、调度纪律、非计划停运三项占 92.3%；AGC 单点考核只占 0.3%。</li><li><strong>封顶的作用</strong>：按 0.1%/0.1pp 较严版本，一次调频不封顶为 15,000 MWh × 0.40 = 600 万元；封顶 0.5% 把损失压到 30 万元，差 20 倍。若按 0.05%/0.1pp 版本，未封顶为 7,500 MWh = 300 万元，封顶后 30 万元，差 10 倍。</li></ul>
+<h3 id="s44">9.3 敏感性</h3>
+<div class="table-wrap"><table><thead><tr><th>情景</th><th>变化</th><th>考核电量（MWh）</th><th>费用（万元）</th><th>相对基准（万元）</th></tr></thead><tbody><tr><td>基准</td><td>—</td><td>2,437.5</td><td>97.50</td><td>0</td></tr><tr><td>一次调频提升到 99.9%</td><td>750 → 150 MWh</td><td>1,837.5</td><td>73.50</td><td>−24.00</td></tr><tr><td>一次调频提升到 99.75%</td><td>750 → 375 MWh</td><td>2,062.5</td><td>82.50</td><td>−15.00</td></tr><tr><td>无调度纪律事件</td><td>750 → 0</td><td>1,687.5</td><td>67.50</td><td>−30.00</td></tr><tr><td>无非计划停运</td><td>750 → 0</td><td>1,687.5</td><td>67.50</td><td>−30.00</td></tr><tr><td>考核电价降到 0.30</td><td>单价变化</td><td>2,437.5</td><td>73.13</td><td>−24.38</td></tr><tr><td>一次调频无封顶</td><td>750 → 15,000</td><td>16,687.5</td><td>667.50</td><td>+570.00</td></tr></tbody></table></div>
+<ul><li><strong>结论</strong>：一次调频从 90% 提到 99.9%，月省 24 万元、年化约 288 万元；但 90%→99% 仍在封顶内（未封顶损失 1,500 MWh &gt; 750 MWh），月省为 0。<strong>封顶决定改造的边际收益，目标要定在&quot;刚好不触顶&quot;之上</strong>：本口径需 ≥99.75%，0.05%/0.1pp 版本需 ≥99%。</li></ul>
+<p><strong>版本差异</strong></p>
+<div class="table-wrap"><table><thead><tr><th>口径</th><th>90% 未封顶</th><th>封顶后</th><th>封顶倍数</th><th>99.9% 时</th><th>月省</th></tr></thead><tbody><tr><td>0.1%/0.1pp（较严）</td><td>15,000 MWh / 600 万元</td><td>750 MWh / 30 万元</td><td>20×</td><td>150 MWh / 6 万元</td><td>24 万元</td></tr><tr><td>0.05%/0.1pp（较宽）</td><td>7,500 MWh / 300 万元</td><td>750 MWh / 30 万元</td><td>10×</td><td>75 MWh / 3 万元</td><td>27 万元</td></tr></tbody></table></div>
+<ul><li><strong>纪律</strong>：算例未计辅助服务补偿、分摊、返还、税；实际项目要用当月结算单和本地细则复算。</li></ul>
+<h3 id="s45">9.4 储能变体（只给口径，不给总数）</h3>
+<div class="table-wrap"><table><thead><tr><th>考核项</th><th>山东 2026 口径</th><th>备注</th></tr></thead><tbody><tr><td>AGC 可用率</td><td>合格线 96%；α_KA=0.1</td><td>低于合格线按可用率考核</td></tr><tr><td>AGC 性能</td><td>α_K1/K2/K3=0.5</td><td>分项考核，月度 cap 10%</td></tr><tr><td>AGC 性能基准</td><td>K1=1.3、K2=1.7、K3=1.4</td><td>低于基准才扣，不是低于 1 才扣</td></tr><tr><td>计划曲线</td><td>每 5 min 一条，偏差 ±1%（最小 ±1 MW）</td><td>日计划曲线偏差考核</td></tr><tr><td>未按期投运 AGC</td><td>当月上网电量 1%/次</td><td>与可用率考核并行</td></tr><tr><td>参数变更未整改</td><td>3 个月内未整改，当月上网电量 0.5%/月</td><td>涉网性能参数变更</td></tr><tr><td>AVC</td><td>投运率 98%、调节合格率 96%、无功调用合格率 90%</td><td>月度 cap 2%</td></tr><tr><td>一次调频</td><td>死区 ±0.05 Hz、调差率 2%、滞后 ≤1 s、上升 ≤3 s、调节 ≤4 s</td><td>月度 cap 1%</td></tr><tr><td>能量可用率</td><td>低于 80% 按偏差比例，低于 60% 加倍</td><td>新增考核项</td></tr><tr><td>SOC 准确率</td><td>偏差 &lt;10% 合格，日合格率 90%</td><td>SOC &lt;10% 或 &gt;90% 时段免考</td></tr><tr><td>总考核</td><td>月度总考核电量 ≤ 当月上网电量 10%</td><td>总封顶</td></tr></tbody></table></div>
+<ul><li><strong>不要套火电公式</strong>：储能的 AGC 响应时间、调节时间、精度、可用率、SOC 口径都与火电不同；山东 2026 的系数也不能直接搬到其他省。</li></ul>
+<hr>
+<h2 id="s46">10. 新能源与储能专项</h2>
+<h3 id="s47">10.1 新能源场站</h3>
+<ul><li><strong>考核重点</strong>：功率预测（短期/超短期/偏曲线）、AGC/AVC、一次调频、故障穿越、动态无功、宽频振荡、通信/自动化、网络安全。</li><li><strong>功率预测</strong>：短期预测用于日前计划，超短期用于日内滚动；准确率、上报及时率、偏曲线都可能考核。</li><li><strong>功率预测公式骨架（C 级，口径因省而异）</strong>：<code>短期准确率 =（1 − RMSE ÷ 装机容量）× 100%</code>；考核电量 = 考核时段上网电量 × 档位系数。准确率定义、统计时段、是否按开机容量归一，各省不同，不能跨省套用。</li><li><strong>山东 2026</strong>：功率预测考核系数由 3 档细化为 8 档；风电场、光伏电站发电计划曲线与预测偏差条款设 3 个月过渡期，过渡期考核比例系数暂按 0.8；10 kV 及以上分布式光伏设模拟运行期，2027 年 Q1 系数 0.5，2027-04-01 起按规则执行。</li><li><strong>南方 2026-08 征求意见稿</strong>：独立储能改为按上网电量参与并网运行考核费用返还与辅助服务补偿分摊；AGC 调节容量公式改为 <code>min(标准调节速率 × 5 分钟, 容量 × 20%)</code>。<strong>草案</strong>。</li><li><strong>华北 2026 征求意见稿</strong>：动态无功装置自动可用率 ≥95%，AVC 投运率 ≥98%，调节合格率 ≥96%；储能非计划停运按容量 × 0.1 h/1% 考核；考核计算电价为当地燃煤发电基准价。<strong>草案</strong>。</li></ul>
+<h3 id="s48">10.2 储能电站</h3>
+<ul><li><strong>考核维度</strong>：AGC/AVC、一次调频、能量可用率、SOC 准确率、非计划停运、调度指令执行、日计划曲线偏差、功率可用率、高低电压穿越、通信/网络安全。</li><li><strong>双刃剑</strong>：储能既是被考核主体，也是辅助服务补偿主体；算收益时必须先扣考核与分摊，不能只算补偿。</li><li><strong>山东 2026</strong>：AGC 月可用率 96%、α_KA=0.1、α_K1/K2/K3=0.5、性能基准 K1=1.3/K2=1.7/K3=1.4、cap 10%；计划曲线每 5 min 一条、偏差 ±1%（最小 ±1 MW）；未按期投运 AGC 按当月上网电量 1%/次；参数变更 3 个月未整改按 0.5%/月；AVC 98/96/90、cap 2%；一次调频 cap 1%；能量可用率 &lt;80% 按偏差比例、&lt;60% 加倍；SOC 偏差 &lt;10% 合格、日合格率 90%、SOC &lt;10% 或 &gt;90% 免考；总 cap 10%。</li><li><strong>华北 2026 征求意见稿</strong>：储能单元非计划停运，一次停运容量超过装机 10% 且大于 1 MW 纳入考核；每停运 1%，按并网主体装机容量 × 0.1 h 考核。</li><li><strong>投资含义</strong>：考核条款会改变储能收益堆叠的净额；做投决时把考核费用作为独立成本项，不要并入&quot;运维费&quot;一笔带过（→ 储能投资与运营专家）。</li></ul>
+<h3 id="s49">10.3 VPP 与负荷侧</h3>
+<ul><li><strong>2021 版 60 号</strong>已把可调节负荷（含聚合商、VPP 聚合）纳入；2026 征求意见稿进一步加入电动汽车充电网络等。</li><li><strong>考核边界</strong>：聚合边界、基线、响应精度、通信可靠性、履约率；不能直接套发电机组的 AGC/AVC 公式。</li><li><strong>省级差异</strong>：VPP 参与辅助服务、需求响应、现货的考核规则在省级 VPP 细则中；本笔记只讲并网运行考核的通用边界（→ 虚拟电厂专家）。</li></ul>
+<hr>
+<h2 id="s50">11. 合规与运维清单</h2>
+<h3 id="s51">11.1 并网前</h3>
+<ol><li>签订并网调度协议，明确并网点、产权分界、调度管辖、通信方式。</li><li>完成涉网参数实测与涉网试验（一次调频、AGC、AVC、故障穿越、无功/电压）。</li><li>完成定值单、保护/安自装置、通信/自动化、网络安全接入。</li><li>完成 AGC/AVC/一次调频联调，参数与试验报告报调度备案。</li><li>确认考核口径：区域、版本、考核电价、封顶、免考流程。</li></ol>
+<h3 id="s52">11.2 运行中</h3>
+<ol><li><strong>每日</strong>：看 AGC/AVC 告警、通信状态、一次调频投退信号。</li><li><strong>每周</strong>：统计 AGC 可用率、AVC 投运率/调节合格率、一次调频动作次数与合格率。</li><li><strong>每月</strong>：核对考核结算单，逐项对照细则；确认考核电量、电价、封顶、分摊/返还。</li><li><strong>每季</strong>：复盘失分项，排改造优先级；更新免考证据模板。</li><li><strong>事件当天</strong>：记录时间、设备、工况、调度指令、告警、录波；在规定时限内提交免考申请。</li></ol>
+<h3 id="s53">11.3 改造优先级（经验判断，D 级）</h3>
+<ol><li><strong>一次调频</strong>：封顶 0.5%-1%，且直接关系频率安全；优先查死区、调差率、执行机构、频率源。</li><li><strong>AVC/无功</strong>：封顶 2%，电压不合格影响并网；优先查 SVG/SVC 容量、AVC 子站、通信。</li><li><strong>AGC</strong>：单点考核金额通常较小，但可用率/性能影响补偿；优先查通信、控制回路、协调控制。</li><li><strong>功率预测</strong>：新能源场站影响大；优先查气象源、预测模型、上报通道。</li><li><strong>通信/网络安全</strong>：单项金额小，但可能导致 AGC/AVC 整体退出；按合规要求补齐。</li></ol>
+<h3 id="s54">11.4 争议处理</h3>
+<ul><li><strong>公示期</strong>：先核对原始数据（主站记录、计量电量、调度指令），不要只看结算单。</li><li><strong>异议</strong>：按规定期限提交，附证据；避免口头沟通无留痕。</li><li><strong>申诉</strong>：向能源监管派出机构申诉，准备好完整证据链和时间线。</li><li><strong>不要</strong>：以拒签结算单、拖延整改等方式对抗；可能触发调度纪律或并网受限。</li></ul>
+<hr>
+<h2 id="s55">12. 常见错误（12 条）</h2>
+<ol><li>把&quot;两个细则&quot;当全国统一文件，忽略区域/省级差异。</li><li>用 2021 年国家文件直接算省级考核，不看地方细则的参数与封顶。</li><li>把考核电量当考核费用，忘记乘考核电价。</li><li>只算 AGC，不算一次调频、AVC、调度纪律、非计划停运。</li><li>忽略封顶，把&quot;每 0.1 个百分点&quot;线性外推到天量。</li><li>用理论发电量/理论出力算一次调频贡献，不用实际贡献电量。</li><li>把 AVC 投运率当调节合格率，或把电压合格率当 AVC 合格率。</li><li>认为免考自动生效，逾期不申请、不留证据。</li><li>用外省参数套本省，尤其是燃气机组标准速率、水电响应时间、储能系数。</li><li>把 2026 年征求意见稿当现行规则引用。</li><li>把储能当火电套 AGC/一次调频公式，忽略 SOC、能量可用率、响应时间差异。</li><li>只算辅助服务补偿，不扣考核与分摊，导致储能/VPP 收益高估。</li></ol>
+<hr>
+<h2 id="s56">13. 待核实与未定事项</h2>
+<ol><li>2026 年《电力并网运行管理规定》定稿时间、文号与最终条款。</li><li>各省 2026-2027 年&quot;两个细则&quot;版本、文号与生效日期。</li><li>华北区域 2026 年征求意见稿的定稿时间与最终门槛。</li><li>华东区域 2026 年征求意见稿的 AGC 容量补偿公式是否定稿。</li><li>南方区域 2026-08-24 部分条款修订的定稿与执行时间。</li><li>一次调频&quot;65%/75%/90%&quot;判定阈值在不同区域的完整对照。</li><li>AGC 分项系数上限、Kp 上限与考核系数的省级差异。</li><li>各省考核电价口径（燃煤基准价/结算电价/标杆电价）与调整机制。</li><li>储能能量可用率、SOC 准确率的完整公式与免考边界。</li><li>VPP、负荷聚合商、绿电直连项目的考核边界与基线规则。</li><li>东北、西北区域 2024-2026 年&quot;两个细则&quot;版本与关键参数（本笔记尚未逐条收录）。</li><li>山东 52 号中&quot;未按期投运 AGC 1%/次&quot;&quot;参数变更 0.5%/月&quot;&quot;计划曲线 5 min/±1%&quot;的原文条款号与免考衔接。</li></ol>
+<hr>
+<h2 id="s57">14. 与技能和其他笔记的分工</h2>
+<div class="table-wrap"><table><thead><tr><th>主题</th><th>归属</th></tr></thead><tbody><tr><td>辅助服务市场品种、价格机制、结算与分摊</td><td><a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a></td></tr><tr><td>并网标准、涉网试验、调试与并网流程</td><td><a href="../../skills/renewable-project-development/SKILL.md">新能源项目开发与并网专家</a> 及<a href="新能源项目开发与并网-2026-11.html">维护笔记</a></td></tr><tr><td>储能投决、收益堆叠、考核扣减与租赁合同</td><td><a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a> 及<a href="储能投资与运营-2026-11.html">维护笔记</a></td></tr><tr><td>VPP 聚合、基线、控制与商业模式</td><td><a href="../../skills/virtual-power-plant/SKILL.md">虚拟电厂专家</a></td></tr><tr><td>EMS 调度算法与 AGC/AVC 控制</td><td><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 底稿</a>、<a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 底稿</a></td></tr><tr><td>两个细则的考核条款、AGC/AVC/一次调频公式、罚则与免考</td><td>本笔记</td></tr></tbody></table></div>
+<ul><li>同一数字在多处出现时：辅助服务价格与结算以电力交易技能为准；并网标准与试验以新能源技能为准；储能考核扣减以储能技能为准；VPP 聚合边界以 VPP 技能为准；本笔记只保留考核条款与公式的&quot;原文口径&quot;。</li><li>本笔记不重复市场出清、报价方法、储能财务模型与碳核算，只写并网运行考核特有的规则与算法。</li></ul>
+    </article>
+
+    <nav class="pager" aria-label="上下篇">
+          <span class="spacer"></span>
+          <a class="next" href="电力系统通识-A-格局与主体.html"><span class="dir">下一篇 →</span><span class="ttl">电力系统通识 A · 格局与主体</span></a>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../并网运行考核与两个细则-2026-11.md">knowledge/并网运行考核与两个细则-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div><a href="../index.html">返回知识库总览 →</a></div>
+    </footer>
+  </main>
+
+  <aside class="toc">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv2"><a href="#s5">1. 文件体系与效力</a></li>
+            <li class="lv2"><a href="#s10">2. 考核对象与责任边界</a></li>
+            <li class="lv2"><a href="#s15">3. 涉网性能总表</a></li>
+            <li class="lv2"><a href="#s16">4. AGC 考核</a></li>
+            <li class="lv2"><a href="#s23">5. AVC 考核</a></li>
+            <li class="lv2"><a href="#s28">6. 一次调频考核</a></li>
+            <li class="lv2"><a href="#s35">7. 罚则表（区域常见口径）</a></li>
+            <li class="lv2"><a href="#s36">8. 免考核条款</a></li>
+            <li class="lv2"><a href="#s41">9. 合成算例（D 级）</a></li>
+            <li class="lv2"><a href="#s46">10. 新能源与储能专项</a></li>
+            <li class="lv2"><a href="#s50">11. 合规与运维清单</a></li>
+            <li class="lv2"><a href="#s55">12. 常见错误（12 条）</a></li>
+            <li class="lv2"><a href="#s56">13. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s57">14. 与技能和其他笔记的分工</a></li>
+    </ol>
+  </aside>
+</div>
+
+<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<script src="../assets/doc.js"></script>
+</body>
+</html>
