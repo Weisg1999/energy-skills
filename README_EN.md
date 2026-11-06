@@ -158,6 +158,7 @@ energy-skills/
     ├── 电力现货市场101问-A/B/C-*.md                (Spot Market 101 Questions — three thematic notes)
     ├── 电力系统经济学原理-主题笔记.md               (Principles of Power System Economics)
     ├── 电力现货市场实务-精读笔记.md                 (Spot Market Practice)
+    ├── 省间与跨区交易-2026-11.md                     (inter-provincial and cross-regional trading: markets, transmission prices, rights)
     ├── 中国碳排放权交易实务-主题笔记.md             (China Carbon Emission Trading Practice)
     ├── 碳管理-从零通往碳中和-主题笔记.md            (Carbon Management)
     ├── 走近虚拟电厂-主题笔记.md                    (Approaching Virtual Power Plants)
@@ -214,6 +215,13 @@ energy-skills/
 4. **Discipline**: the skills ship with a "to be verified" flagging convention and common-mistakes checklists (e.g., using OM baseline emission factors for consumption accounting, mis-citing Document 813 as the spot-market basic rules, conflating capacity metrics) — see Chapter 0 and the reasoning handbook in each SKILL.md.
 
 ## Update Log
+
+### 2026-11-06 (v1.6 addendum: inter-provincial and cross-regional trading module + HTML reading page)
+- **New knowledge note**: [inter-provincial and cross-regional trading 2026-11](knowledge/省间与跨区交易-2026-11.md). It answers "how is power sold from sending to receiving provinces, how are inter-provincial medium/long-term and spot markets organised, how do regional markets fit, how are transmission charges and losses computed, and how are transmission rights bought"; it is a knowledge module, not a standalone skill. Provincial bidding and settlement stay with Electricity Trading Expert, delivery corridors and mechanism prices with Renewable Project Development, cross-province arbitrage with Storage Investment & Operations, and aggregator participation with VPP Expert.
+- **Market layers and scale**: inter-provincial, regional, provincial and cross-operator markets are not four isolated markets. Jan-Sep 2026 inter-provincial trading was **1,303.7 TWh** (+9.1%), of which medium/long-term **1,240.3 TWh (95.1%)**, spot **57.8 TWh (4.4%)**, green **57.5 TWh**, and cross-operator **7.0 TWh**; Beijing / Guangzhou trading centres handled 1,089.7 (+11.2%) / 214.1 (−0.6%) TWh.
+- **2026 rule changes**: Doc. 1656 took effect on 2026-03-01 and repealed Doc. 889 and the green-power chapter; Doc. 275 (2026-04) makes inter-provincial spot a **physical** market, requires coupling with provincial spot and bans hidden administrative barriers; State Council Doc. [2026] No. 4 sets 2030/2035 milestones and "unified quoting, joint trading"; Doc. 915 creates the cross-operator mechanism; Doc. 715 approves the southern regional market, formal on **2026-10-24**; Doc. 734 starts the Yunxiao HVDC transmission-right pilot on 2026-06-01.
+- **Prices and examples (grade D)**: 2027 special-project transmission charges are **0.81–8.36 fen/kWh**, with sending-province charges capped at **3 fen/kWh** in principle. Synthetic cases: at a 0.45 CNY/kWh receiving price, the Qinghai–Henan corridor leaves 0.323 at the sending end (premium 0.073), falling to 0.273 with a 50 CNY/MWh transmission right; the Hami–Zhengzhou corridor leaves only 0.302, or 0.252 with the right — barely viable. A right of 100 MW × 300 h × 50 CNY/MWh costs CNY 1.5 million and breaks even at a **0.05 CNY/kWh** spread; a 100 GWh user with a 0.07 CNY/kWh spread saves CNY 6.5 million a year after a 5% deviation charge.
+- **Indexes and HTML**: wired into both READMEs, `knowledge/INDEX_EN-2026-11.md` and `knowledge/索引与口径-2026-11.md` (837/275/915/715/734, the special-project pricing method and the 2027 transmission-price table); the knowledge hub gains its 38th module card and `knowledge/html/省间与跨区交易-2026-11.html`, with counts updated to 38 modules / 10,136 lines and category 04 renamed "Spot and inter-provincial trading".
 
 ### 2026-11-05 (v1.6 addendum: Grid-connection assessment and the "two detailed rules" knowledge module)
 - **New knowledge note**: [grid-connection assessment and the two detailed rules 2026-11](knowledge/并网运行考核与两个细则-2026-11.md). It answers "how does the two-rules assessment work, how are AGC/AVC/primary-frequency calculated, what can be exempted, and how much does it cost"; it is a knowledge module, not a standalone skill. Ancillary-service markets and settlement stay with Electricity Trading Expert, grid standards and tests with Renewable Project Development, and assessment deductions with Storage Investment & Operations.
@@ -334,4 +342,4 @@ energy-skills/
 
 All content in this repository (Markdown skill files, knowledge notes, research records and supporting scripts) is licensed under [CC BY-NC 4.0](LICENSE): free to copy, redistribute and adapt with attribution, **not for commercial use**. When quoting or republishing, use the attribution format suggested in `LICENSE` and keep the source link.
 
-*Last updated 2026-11-05*
+*Last updated 2026-11-06*

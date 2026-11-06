@@ -13,6 +13,7 @@
 | `电力现货市场101问-A-基础与价格机制.md` | Book note | Spot-market basics: pricing, LMP, supply-demand and market power |
 | `电力现货市场101问-B-出清结算与省域实践.md` | Book note | Clearing, settlement, provincial practice |
 | `电力现货市场101问-C-结算TTS与政策演进.md` | Book note | Settlement mechanisms, TTS, policy evolution |
+| `省间与跨区交易-2026-11.md` | Practice note | Four-layer market (inter-provincial, regional, provincial, cross-operator); inter-provincial medium/long-term and spot (2024 formal, 2026 physical delivery); southern regional market (formal 2026-10-24), Yangtze Delta; cross-operator trading under Doc. 915 and the Yunxiao HVDC transmission-right pilot; 2027 transmission prices and landed-cost arithmetic; two-level coupling, synthetic examples, twelve misconceptions and open items |
 | `电力系统经济学原理-主题笔记.md` | Book note | Power-system economics: marginal cost, congestion, investment |
 | `电力现货市场实务-精读笔记.md` | Book note | Operational practice of China's spot markets |
 | `中国碳排放权交易实务-主题笔记.md` | Book note | China ETS mechanics (written ~2016; mechanisms valid, figures need updating) |
@@ -62,6 +63,20 @@
 | Coal capacity price | Fixed cost **CNY 330/kW·yr**; recovery **≥50% from 2026** (floor 165). 2026 values: Guangdong 165; Tianjin/Sichuan 231; Qinghai 185; Guangxi 247.5; Jilin/Heilongjiang/Hunan/Gansu/Yunnan 330; Henan 330 draft; **Liaoning 370 is reliable-capacity compensation, a different caliber** | B/C for provincial values |
 | System operation fee, Q1-Q3 2026 | About **CNY 0.068/kWh**, roughly +93% YoY | B/D |
 | PJM capacity price | **USD 329.17/MW-day for 2027/28**; USD 325/MW-day for 2028/29 (cleared 2026-07-14) | A (PJM) |
+
+### Inter-provincial and cross-regional trading (2026-11)
+
+| Metric | Value | Grade / note |
+|---|---|---|
+| Inter-provincial traded electricity, Jan-Sep 2026 | **1,303.7 TWh** (+9.1%) | A |
+| Of which medium/long-term / spot / green | **1,240.3 TWh (95.1%) / 57.8 TWh (4.4%) / 57.5 TWh** | A; spot share is small, so contracts and curves dominate |
+| Cross-operator trading (State Grid / CSG / Inner Mongolia West) | **7.0 TWh** in Jan-Sep 2026 (3.4 TWh in 2025) | A |
+| Beijing / Guangzhou trading centres | **1,089.7 TWh (+11.2%) / 214.1 TWh (−0.6%)** | A |
+| Inter-provincial spot, formal operation | **2024-10-15**; 2026-04 revision makes it a **physical** market | A/B |
+| Southern regional market | **Formal 2026-10-24**; ~290,000 registered entities; daily turnover 2.862→4.422 TWh | A/B |
+| Yunxiao HVDC transmission rights | **2 GW**, capacity fee **CNY 230 million/yr**, bid band **CNY 25.6–100/MWh**, from 2026-06-01 | B |
+| 2027 transmission prices | Special projects **0.81–8.36 fen/kWh**; sending-province charge **≤3 fen/kWh** | B; annual table, not a long-run constant |
+| Landed cost | Energy price + sending-province + regional + project transmission charges + loss + receiving-province distribution | D; always state the settlement reference point |
 
 ### Electricity prices (2026-11)
 
