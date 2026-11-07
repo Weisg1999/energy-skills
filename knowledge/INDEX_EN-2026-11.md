@@ -32,6 +32,7 @@
 | `调研-碳市场与CBAM-2026-10增量.md` | Research note | October 2026 carbon market and CBAM updates |
 | `碳资产实务-2026-11.md` | Practice note | Compliance parameters, CCER, carbon-finance instrument status, CBAM dates, PCF / neutrality / DPP facts and open items; maintenance entry for the carbon asset skill |
 | `储能投资与运营-2026-11.md` | Practice note | Doc. 114 capacity price and provincial samples, Doc. 1656 TOU reconstruction, Doc. 411 ancillary products, Docs 1583/500 demand rules, 2026 tender cost ranges, GB/T 36549 KPIs and 2026 H1 operating data; maintenance entry for the storage investment skill |
+| `储能技术路线安全与构网型并网-2026-11.md` | Practice note | Storage technology routes (lithium, sodium, vanadium flow, compressed air, flywheel/supercapacitor, thermal, gravity, hydrogen, pumped hydro) with duration/efficiency/cycle/cost comparison; thermal-runaway mechanism and five lines of defence; GB 44240-2024, GB/T 51048-2025, GB/T 42288-2022, GB/T 46261-2025, GB/T 46957-2025; grid-forming vs grid-following, droop/VSG/VOC, inertia/RoCoF/SCR, 3x current for 10 s, black start, GB/T 47968-2026 and GB/T 47655-2026, 2025-2026 deployment, economics, testing and 15 misconceptions |
 | `新能源项目开发与并网-2026-11.md` | Practice note | Four project types and eight development stages, Doc. 136 settlement and 2026-2027 provincial auctions, resource/P50-P90/capture-rate calibres, LCOE and after-tax break-even examples, grid standards (GB/T 19963.1, GB/T 19964, GB 38755, GB/T 40595, GB/T 36547), regional risk profiles and open items; maintenance entry for the renewable development skill |
 | `综合能源与零碳园区-2026-11.md` | Practice note | Docs 910 / 1082 / State Council 22 (zero-carbon parks, 52 first-batch, ~100/~500 targets), Docs 650 / 688 (single- and multi-user green direct connection, 60%/30%/35%/20%), Doc. 1192 and the Guangdong 730-hour capacity-charge formula, Doc. 280 source-grid-load-storage, unit-energy carbon-intensity example, synthetic direct-connection economics with break-even LCOE and sensitivities, six business models and contract items, provincial samples, twelve common errors and open items |
 | `并网运行考核与两个细则-2026-11.md` | Practice note | Grid-connection assessment and the "two detailed rules": national Docs 60/61 (35 kV and above), the 2026-09-30 draft revision, regional samples (southern, central, Shandong, Shanxi, north, east), 14 grid-performance items, AGC (K1/K2/K3, Kp≤2, 60/20 s) and AVC formulas, primary-frequency standards (GB/T 40595-2021, GB/T 30370-2013), assessment caps, a 20-row penalty table, six exemption categories, a synthetic 300 MW example, a compliance checklist, twelve common errors and open items |
@@ -151,6 +152,24 @@
 | Cap effect | under the stricter southern 0.1%/0.1 pp version, uncapped primary frequency CNY 6m vs capped CNY 300k (20×); 90%→99.9% saves CNY 240k/month, while 90%→99% remains capped and saves nothing | D |
 | Shandong 2026 | Doc. 鲁监能市场规〔2026〕52号, issued 2026-09-30, effective 2026-10-01; storage AGC availability 96%, α_KA 0.1, α_K1/K2/K3 0.5, performance benchmarks K1/K2/K3 = 1.3/1.7/1.4; 5-min plan curve ±1%; late AGC 1%/event; parameter change not rectified 0.5%/month | A/B |
 
+### Storage technology, safety and grid-forming (2026-11)
+
+| Metric | Value | Grade / note |
+|---|---|---|
+| New-type storage, end-Sep 2026 | **167 GW / 435 GWh** (+63%); average **2.61 h**; Jan-Sep equivalent utilisation **915 h** | A; NEA 2026-10-30 |
+| 2027 target | **180 GW**; about **CNY 250 billion** direct investment | A; Doc. 1144 (2025-08-27) |
+| 2030 target | **300 GW**; grid-side independent storage **140 GW**; 4 h equivalent peak duration | B |
+| Route mix | Lithium-ion **>96%** of new-type storage; independent/shared storage ~51.2% of cumulative capacity | B |
+| 2026 system price | 2-4 h systems commonly **0.45-0.60 CNY/Wh**; EPC not comparable | B; AC/DC and duration calibres differ |
+| 4 h lowest bid | **0.391 CNY/Wh** in 2025; **0.497 CNY/Wh** in 2026-07 | B/C; lowest bid, not benchmark |
+| Safety standards | **GB 44240-2024** mandatory from 2025-08-01; **GB/T 51048-2025** design standard from 2026-04-01; GB/T 42288-2022; **GB/T 46261-2025** from 2026-09; **GB/T 46957-2025** from 2026-07-01 | A |
+| Grid-forming standards | **GB/T 47968-2026** effective 2026-11-01 (19 indicators, **3x current for 10 s**); **GB/T 47655-2026** effective 2027-02-01 (first national definition of "grid-forming") | A/B |
+| Grid-forming deployment | 2025 additions about **7.3 GW/25.2 GWh**, penetration **12.8%**; 2026 Q1 **2.48 GW/6.89 GWh**, **19.2%** of capacity | B; 2025 annual vs. Sep-2025 cumulative figures conflict |
+| Route parameters | LFP AC-AC 85%-90%, 6,000-10,000 cycles, 10-15 years; vanadium flow 65%-75%, 15,000-25,000 cycles, 20-25 years; CAES 60%-72%, 30-40 years | C; project-specific |
+| LCOS illustration | 100 MW/400 MWh: lithium ~**0.25-0.32**, flow ~**0.55-0.65**, CAES ~**0.30-0.38** CNY/kWh | D; excludes charging cost, capacity payment and ancillary revenue |
+| Unverified claims | "nationwide mandatory grid-forming from 2026-04-01"; "30% grid-forming penetration target" | C; no public national document found |
+| 2026 H1 incidents | at least **15** reported storage fire/explosion incidents globally; **>160** cumulative 2011-2025, about 80% during normal operation | B; media/industry statistics |
+
 ### Nuclear market entry (2026, level C)
 
 | Province | Arrangement |
@@ -255,6 +274,7 @@
 14. **Zero-carbon parks and green direct connection**: the second national park list, the park construction/evaluation guideline annex (core vs. guiding indicators), provincial direct-connection rules (Guangdong/Zhejiang/Inner Mongolia/Jilin/Shandong/Liaoning draft), the provincial average-load-factor parameter, green-certificate ownership and transfer for self-used direct-connection energy, and the exact adoption dates of Docs 650 (2025-05-21 vs. 05-30) and 688 (2026-05-14 vs. 05-20).
 15. **Doc. 1192 provincial implementation**: the conversion formula in each province, treatment of multi-circuit supply that keeps the two-part tariff, and whether export energy keeps any mechanism-price eligibility.
 16. **Grid-connection assessment ("two detailed rules")**: the final text and effective date of the 2026-09-30 national draft; the 2026 North/East China and southern-region revisions; the Shanxi 2025 document number; Northeast/Northwest 2024-2026 rules; the clause numbers behind Shandong's late-AGC, parameter-change and plan-curve penalties; whether provincial assessment prices and caps converge; renewable- and storage-specific primary-frequency and AGC clauses.
+17. **Storage technology, safety and grid-forming**: final 2026 storage statistics; the 136 GW vs. 144.7 GW end-2025 calibre gap; conflicting 2025 grid-forming annual vs. cumulative figures; the full texts of GB/T 47968-2026 and GB/T 47655-2026; whether any national document mandates grid-forming (the circulated 2026-04-01 claim and 30% target are unverified); provincial grid-forming ratios and compensation rules; exact GB/T 51048-2025 separation/compartment clauses; the project boundary behind "flow battery below 2 CNY/Wh"; 300 MW CAES actual efficiency and cost; sodium-ion utility-scale cycle-life and safety data; the 15 incidents of 2026 H1; the 2% lithium-battery consumption tax pass-through; whether Doc. 114 capacity pricing differentiates grid-forming or long-duration storage; inertia/voltage-support/black-start ancillary-service payment rules.
 
 ---
 

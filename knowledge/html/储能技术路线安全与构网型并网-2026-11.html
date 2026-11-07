@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>储能技术路线、安全与构网型并网 | energy-skills 知识库</title>
+<meta name="description" content="锂电/钠电/液流/压缩空气/飞轮对比，五层安全设防与标准，构网型控制、指标与验收。">
+<link rel="stylesheet" href="../assets/knowledge.css">
+</head>
+<body data-cat="storage" id="top">
+<div class="progress" id="progress"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html">← 知识库</a>
+  <div class="crumb">
+    <span class="crumb-cat">07 / STORAGE</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">储能技术路线、安全与构网型并网</span>
+  </div>
+  <div class="topbar-act">
+    <a class="src" href="../储能技术路线安全与构网型并网-2026-11.md">.md 源文件</a>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">07 / STORAGE</div>
+    <h2 class="nav-cat"><a href="../index.html#storage">储能与 EMS</a></h2>
+    <ul class="nav-list">
+              <li class="on"><a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线、安全与构网型并网</a></li>
+              <li><a href="储能投资与运营-2026-11.html">储能投资与运营</a></li>
+              <li><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a></li>
+              <li><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#foundation"><b>03</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>04</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#price"><b>05</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>06</b>新能源与并网</a></li>
+              <li><a href="../index.html#park"><b>08</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>09</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>10</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>11</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>12</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">07 / STORAGE<i>知识模块</i></div>
+      <h1 class="doc-title">储能技术路线、安全与构网型并网：从电芯到电网支撑（2026-11）</h1>
+      <p class="lede">锂电/钠电/液流/压缩空气/飞轮对比，五层安全设防与标准，构网型控制、指标与验收。</p>
+      <p class="hook">2026-11 · 路线、安全与构网</p>
+      <div class="tags"><span class="tag">技术路线</span><span class="tag">GB 44240</span><span class="tag">3× 过流</span></div>
+      <div class="doc-meta"><span>701 行</span><span>约 23.5k 字</span><span>阅读约 42 分钟</span><span>11 节</span><span>数据截止 2026-11-01</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（11）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv2"><a href="#s5">1. 储能分类与选型坐标</a></li>
+            <li class="lv2"><a href="#s10">2. 技术路线逐条</a></li>
+            <li class="lv2"><a href="#s19">3. 技术路线对比与选型算例</a></li>
+            <li class="lv2"><a href="#s24">4. 安全：从电芯到站级</a></li>
+            <li class="lv2"><a href="#s34">5. 构网型并网</a></li>
+            <li class="lv2"><a href="#s45">6. 三条主线的交叉决策</a></li>
+            <li class="lv2"><a href="#s49">7. 常见误解（15 条）</a></li>
+            <li class="lv2"><a href="#s50">8. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s51">9. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s52">速查：标准、参数与口径</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>数据截止：2026-11-01｜定位：知识库模块（暂不单独拆技能）</p><p>相关技能：<a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营</a>（成本、收益与投决）、<a href="../../skills/renewable-project-development/SKILL.md">新能源项目开发与并网</a>（并网流程与涉网试验）、<a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a>（辅助服务与容量电价）、<a href="../../skills/virtual-power-plant/SKILL.md">虚拟电厂专家</a>（聚合主体）</p><p>用途：回答&quot;选哪条技术路线、安全怎么设防、构网型到底能提供什么、怎么验收和算账&quot;四类问题。本文只做技术路线、安全与并网性能的知识整理；项目财务测算归储能投资技能，并网流程归新能源技能，市场结算归电力交易技能。</p></aside>
+<hr>
+<h2 id="s1">0. 一页看懂</h2>
+<h3 id="s2">0.1 三条主线</h3>
+<pre><code>                    ┌──────────── 电力系统要什么 ────────────┐
+                    │ 削峰填谷 / 调频 / 惯量 / 电压 / 黑启动 │
+                    └───────────────┬───────────────────────┘
+        ┌───────────────────────────┼───────────────────────────┐
+        ▼                           ▼                           ▼
+   技术路线选型                  安全设防                    并网控制
+   锂电 / 钠电 / 液流            电芯→模组→舱→站→应急        跟网 GFL / 构网 GFM
+   压缩空气 / 飞轮 / 热           标准+探测+灭火+泄压          惯量/一次调频/短路电流
+        └───────────────────────────┴───────────────────────────┘
+                                    ▼
+                    全生命周期：选型 → 设计 → 验收 → 运维 → 退役</code></pre>
+<ul><li><strong>技术路线回答&quot;用什么装能量&quot;</strong>：锂电、钠电、液流、压缩空气、飞轮、热储能、氢储能，各有自己的时长、效率、寿命与成本边界。</li><li><strong>安全回答&quot;怎么不出事、出了事怎么收住&quot;</strong>：不是只买消防设备，而是电芯、模组、舱、站、应急五层设防，加上标准、探测、断电、灭火、泄压、防复燃的闭环。</li><li><strong>构网回答&quot;储能能不能像同步机一样支撑电网&quot;</strong>：电压源、惯量、短路电流、黑启动，是四个硬指标；软件里写一个下垂系数不等于构网。</li></ul>
+<h3 id="s3">0.2 关键数字</h3>
+<div class="table-wrap"><table><thead><tr><th>数字</th><th>含义</th><th>来源与级别</th></tr></thead><tbody><tr><td>1.67 亿kW / 4.35 亿kWh</td><td>截至 2026-09 全国已投运新型储能；同比 +63%</td><td>国家能源局 2026-10-30 发布会，A</td></tr><tr><td>2.61 h</td><td>2026-09 新型储能平均时长；同比 +0.27 h</td><td>同上，A</td></tr><tr><td>915 h</td><td>2026 年 1-9 月全国新型储能等效利用小时数；同比 +10 h</td><td>同上，A</td></tr><tr><td>1.8 亿kW</td><td>2027 年全国新型储能装机目标；带动直接投资约 2,500 亿元</td><td>发改能源〔2025〕1144 号，A</td></tr><tr><td>3 亿kW / 1.4 亿kW</td><td>2030 年新型储能 / 电网侧独立储能目标</td><td>《新型电力系统建设&quot;十五五&quot;规划》及解读，B</td></tr><tr><td>96% 以上</td><td>锂离子电池在新型储能装机中的占比</td><td>国家能源局《中国新型储能发展报告（2026）》口径，B</td></tr><tr><td>0.45–0.60 元/Wh</td><td>2026 年 2–4 h 储能系统（设备）价格常见区间</td><td>招中标公开信息，B</td></tr><tr><td>0.391 / 0.497 元/Wh</td><td>4 h 储能系统最低中标价：2025 年 / 2026-07</td><td>行业媒体统计，B/C</td></tr><tr><td>7.3 GW / 25.2 GWh</td><td>2025 年国内构网型储能新增投运；渗透率约 12.8%</td><td>行业统计，B（与累计口径有冲突）</td></tr><tr><td>2.48 GW / 6.89 GWh</td><td>2026 年一季度构网型储能新增并网；容量占比约 19.2%</td><td>行业统计，B</td></tr><tr><td>2025-08-01</td><td>GB 44240-2024 储能电池强制性国标实施</td><td>A</td></tr><tr><td>2026-04-01</td><td>GB/T 51048-2025《电化学储能电站设计标准》实施</td><td>A</td></tr><tr><td>2026-11-01</td><td>GB/T 47968-2026《构网型变流器通用技术规范》实施</td><td>A/B</td></tr><tr><td>3 倍 / 10 s</td><td>构网型变流器短时过流能力要求（不降额）</td><td>GB/T 47968-2026 及行业解读，B</td></tr><tr><td>15 起 / 160 起</td><td>2026 年上半年全球公开报道储能事故 / 2011–2025 年累计</td><td>行业媒体统计，B</td></tr></tbody></table></div>
+<h3 id="s4">0.3 七个判断</h3>
+<ol><li><strong>路线没有绝对优劣</strong>：先定时长、场景、并网条件与安全边界，再谈锂电、液流还是压缩空气。</li><li><strong>锂电仍是主力，但&quot;便宜&quot;不再是唯一变量</strong>：安全标准、循环寿命、可用率、构网能力正在改变全生命周期账本。</li><li><strong>长时储能看 LCOS，不看元/Wh</strong>：液流、压缩空气的初装价高，但寿命长、循环多，度电成本可能反超锂电。</li><li><strong>安全是设计出来的</strong>：消防设备只是最后一道；电芯选型、热管理、探测、断电、泄压、运维任何一环缺失，都会把&quot;最后一道&quot;变成唯一一道。</li><li><strong>构网是系统工程</strong>：电压源控制 + 3 倍过流硬件 + 足够能量 + 保护配合 + 现场实测，缺一不可。</li><li><strong>真构网看三件事</strong>：空载/带载建立电压、故障时 3 倍过流维持 10 s、弱网或孤网下能黑启动并稳定带负荷。</li><li><strong>2026 是标准落地年</strong>：GB 44240、GB/T 51048、GB/T 46261、GB/T 46957、GB/T 47968 陆续实施，招标文件要写标准号与验收指标，不能只写&quot;满足国标&quot;。</li></ol>
+<hr>
+<h2 id="s5">1. 储能分类与选型坐标</h2>
+<h3 id="s6">1.1 按能量形式分类</h3>
+<div class="table-wrap"><table><thead><tr><th>大类</th><th>代表路线</th><th>能量转换</th><th>典型时长</th><th>主要特点</th></tr></thead><tbody><tr><td>机械储能</td><td>抽水蓄能、压缩空气、飞轮、重力</td><td>势能/动能 ↔ 电能</td><td>秒级–10 h</td><td>寿命长、功率大；受地理或机械条件约束</td></tr><tr><td>电化学储能</td><td>锂离子、钠离子、液流、铅酸、固态</td><td>化学能 ↔ 电能</td><td>0.5–12 h</td><td>模块化、响应快；安全与寿命是核心</td></tr><tr><td>电磁储能</td><td>超级电容、超导磁储能</td><td>电场/磁场 ↔ 电能</td><td>秒级–分钟级</td><td>功率密度高、能量密度低；成本高</td></tr><tr><td>热储能</td><td>熔盐、热水/蒸汽、冰蓄冷</td><td>热能 ↔ 电能/热</td><td>4–12 h</td><td>适合光热、工业蒸汽、清洁供热</td></tr><tr><td>化学储能</td><td>氢、氨、合成燃料</td><td>化学键 ↔ 电能</td><td>小时–季节</td><td>跨日/跨季；往返效率低、基础设施重</td></tr></tbody></table></div>
+<ul><li><strong>&quot;新型储能&quot;通常不含抽水蓄能</strong>：统计口径里的新型储能指除抽水蓄能以外的储能技术。</li><li><strong>同一路线可以跨类</strong>：锂电既可做 1 h 功率型，也可做 4 h 能量型；液流既可做 4 h，也可做 10 h 以上。</li><li><strong>不要用&quot;电化学&quot;三个字代替路线</strong>：锂电、钠电、液流的安全机理、寿命、成本差别很大。</li></ul>
+<h3 id="s7">1.2 按功率/时长定位</h3>
+<div class="table-wrap"><table><thead><tr><th>类型</th><th>典型时长</th><th>代表路线</th><th>主要用途</th><th>成本观察指标</th></tr></thead><tbody><tr><td>功率型</td><td>秒级–15 min</td><td>飞轮、超级电容、部分锂电</td><td>调频、惯量、电压支撑、电能质量</td><td>元/kW</td></tr><tr><td>能量型</td><td>1–4 h</td><td>锂电、钠电</td><td>削峰填谷、现货套利、容量支撑</td><td>元/Wh、元/kWh</td></tr><tr><td>长时型</td><td>4–12 h</td><td>液流、压缩空气、热储能</td><td>日内长时调节、新能源消纳、容量保供</td><td>元/Wh、LCOS</td></tr><tr><td>超长时</td><td>跨日–季节</td><td>氢、氨、部分热储能</td><td>季节性平衡、跨周调节</td><td>元/kg、LCOS</td></tr></tbody></table></div>
+<ul><li><strong>功率型看&quot;元/kW&quot;，能量型看&quot;元/Wh&quot;</strong>：拿飞轮的元/Wh 去和锂电比，结论一定失真。</li><li><strong>时长不是越长约好</strong>：超过系统需要的时长，多出来的能量只增加成本，不增加收益。</li><li><strong>&quot;4 h&quot;是政策与市场的分水岭</strong>：容量电价折算、长时储能认定、部分招标门槛都以 4 h 为界。</li></ul>
+<h3 id="s8">1.3 选型五问</h3>
+<ol><li><strong>要解决什么问题</strong>：能量转移、功率支撑、备用、黑启动、电压支撑，还是多目标叠加？</li><li><strong>需要多长时长</strong>：1–2 h、4 h、6–10 h，还是跨日/跨季？按净负荷高峰持续时长定，不按口号定。</li><li><strong>循环有多频繁</strong>：每天 1 次、2 次，还是高频调频（每天数十次）？循环次数直接决定寿命与更换成本。</li><li><strong>并网条件如何</strong>：短路比（SCR）、短路容量、弱网/孤网、是否要求构网、是否要求黑启动？</li><li><strong>安全与场地是否允许</strong>：人口密度、地下/半地下、消防水源、运输通道、防洪抗震、退役回收。</li></ol>
+<p>补充三问（D 级经验）：</p>
+<ol><li><strong>全生命周期谁维护</strong>：本地运维能力、备件、远程监控、质保与性能保证。</li><li><strong>供应链是否稳定</strong>：电芯、PCS、电解液、隔膜、压缩机的产能与价格波动。</li><li><strong>退出机制是否清楚</strong>：容量衰减到 80% 后，是增容、更换、梯次利用还是回收？</li></ol>
+<h3 id="s9">1.4 2026 年的路线格局</h3>
+<ul><li><strong>总量</strong>：截至 2026-09，新型储能 1.67 亿kW/4.35 亿kWh，平均 2.61 h；2025 年底为约 1.36 亿kW/3.51 亿kWh（同比 +84.3%，另一公开口径为 144.7 GW，统计差异需注明）。</li><li><strong>结构</strong>：锂离子电池占新型储能装机 96% 以上；2025 年储能锂电池产量约 0.57 TWh，较 2024 年翻番，占锂电池总产量约 30.6%。</li><li><strong>形态</strong>：独立/共享储能成为装机主体，2025 年累计占比约 51.2%；新能源配储、工商业用户侧、微网、VPP 聚合并行。</li><li><strong>技术迭代</strong>：电芯从 314 Ah 向 500 Ah 以上演进，587 Ah 已规模商用；20 尺集装箱从 5 MWh 向 6.25/6.9 MWh 升级；液冷、PACK 级探测、模块级抑制成为标配。</li><li><strong>长时化</strong>：4 h 及以上项目增多；全钒液流系统成本 2026 年首次跌破 2 元/Wh（行业口径，B）；300 MW 级压缩空气进入工程化。</li><li><strong>钠电</strong>：2026 年被行业称为规模化应用&quot;关键年&quot;，但成本、循环与供应链仍未完全跑通，先切入低温、用户侧、备电等场景。</li><li><strong>构网型</strong>：从&quot;加分项&quot;变成大储招标的重要指标；2026 年一季度新增构网型容量占比约 19.2%（行业口径，B）。</li><li><strong>需求侧新变量</strong>：算电协同、绿电直连、零碳园区、数据中心备电，正在把储能从&quot;新能源配套&quot;变成&quot;负荷侧基础设施&quot;。</li></ul>
+<hr>
+<h2 id="s10">2. 技术路线逐条</h2>
+<h3 id="s11">2.1 锂离子电池：仍是主力</h3>
+<ul><li><strong>主流体系</strong>：磷酸铁锂（LFP）占电力储能绝对多数；三元（NMC/NCA）因安全与成本，在电力储能中占比很低；钛酸锂（LTO）用于高功率、长寿命、宽温域的特殊场景。</li><li><strong>电芯与系统</strong>：314 Ah 是 2025–2026 年主流；500 Ah 以上大电芯放量，587 Ah 已规模商用；20 尺舱从 5 MWh 走向 6.25/6.9 MWh。大电芯减少零部件与连接点，但热管理、热蔓延与一致性难度上升。</li><li><strong>关键参数（行业常见区间，C 级）</strong>：</li></ul>
+<div class="table-wrap"><table><thead><tr><th>参数</th><th>典型值</th><th>说明</th></tr></thead><tbody><tr><td>AC-AC 效率</td><td>85%–90%</td><td>含 PCS、变压器、辅助用电；直流侧效率更高</td></tr><tr><td>循环寿命</td><td>6,000–10,000 次（0.5P，25°C，80% SOH）</td><td>高温、深放、快充会显著缩短</td></tr><tr><td>日历寿命</td><td>10–15 年</td><td>与温度、SOC 窗口、工况相关</td></tr><tr><td>响应时间</td><td>毫秒级</td><td>适合调频、惯量、快速备用</td></tr><tr><td>自放电</td><td>约 2%–3%/月</td><td>长期静置需补电</td></tr><tr><td>系统价格</td><td>0.45–0.60 元/Wh（2026）</td><td>2–4 h 设备口径；EPC 另计</td></tr></tbody></table></div>
+<ul><li><strong>优点</strong>：能量密度高、产业链成熟、成本低、响应快、选址灵活、模块化扩容。</li><li><strong>缺点</strong>：热失控风险、时长增加时成本线性上升、循环衰减、低温降额、消防与保险成本上升。</li><li><strong>安全要点</strong>：LFP 的热稳定性优于三元，但仍会发生热失控；产气、复燃、模组间蔓延是站级设计必须处理的问题。</li><li><strong>2026 年成本扰动</strong>：锂电池 2% 消费税自 2026-09 起落地，按电芯 0.35–0.40 元/Wh 测算，每 GWh 增加成本约 700–800 万元（B）；铜、铝、碳酸锂价格波动也会传导到系统价。</li></ul>
+<h3 id="s12">2.2 钠离子电池：资源替代与低温场景</h3>
+<ul><li><strong>原理</strong>：与锂电类似的&quot;摇椅式&quot;嵌脱，正极常用层状氧化物、普鲁士白/蓝、聚阴离子化合物，负极用硬碳，电解液仍为有机体系。</li><li><strong>优势</strong>：钠资源丰富、成本潜力大；低温性能好（-40°C 仍可工作）；部分体系安全性优于三元；与锂电产线兼容度高。</li><li><strong>短板</strong>：能量密度低于 LFP（常见 100–160 Wh/kg）；循环寿命 3,000–6,000 次，仍低于 LFP；产业链规模小，实际成本尚未全面低于 LFP；有机电解液仍有可燃性。</li><li><strong>2026 年状态</strong>：行业称&quot;规模化关键年&quot;，多条产线投产/签约；先在低温、用户侧、备电、低速交通等场景落地，源网侧大储仍以示范为主。</li><li><strong>选型建议</strong>：极寒地区、对锂资源供应敏感、对能量密度要求不高的场景可优先评估；不要假设&quot;钠电一定更便宜&quot;，要按当前报价与循环寿命算 LCOS。</li></ul>
+<h3 id="s13">2.3 液流电池：长时与高循环</h3>
+<ul><li><strong>全钒液流（VRFB）</strong>：正负极分别为 V⁴⁺/V⁵⁺ 与 V²⁺/V³⁺ 的硫酸溶液，电解液储存在外部储罐，电堆与储罐解耦，功率与能量独立扩容。</li><li><strong>其他体系</strong>：铁铬、锌铁、锌溴、有机液流；铁铬成本低但存在析氢与效率问题；锌基存在枝晶与寿命问题；有机液流仍在示范。</li><li><strong>关键参数（C 级）</strong>：</li></ul>
+<div class="table-wrap"><table><thead><tr><th>参数</th><th>全钒液流典型值</th><th>说明</th></tr></thead><tbody><tr><td>时长</td><td>4–12 h</td><td>时长越长，单位能量成本越低</td></tr><tr><td>AC-AC 效率</td><td>65%–75%</td><td>泵功、电堆内阻、交叉渗透损失</td></tr><tr><td>循环寿命</td><td>15,000–25,000 次</td><td>电解液可长期使用，容量衰减可恢复</td></tr><tr><td>日历寿命</td><td>20–25 年</td><td>电堆膜、泵、密封件需更换</td></tr><tr><td>系统价格</td><td>1.8–2.5 元/Wh（2026，部分项目低于 2）</td><td>4 h 以上口径；时长增加会摊薄</td></tr><tr><td>安全性</td><td>水基电解液，不易燃</td><td>仍有强酸、泵、氢气与泄漏风险</td></tr></tbody></table></div>
+<ul><li><strong>优点</strong>：本征安全（水基）、寿命长、循环次数高、容量与功率解耦、电解液可回收、适合长时和高频循环。</li><li><strong>缺点</strong>：初装成本高、能量密度低、泵功与辅助系统损耗、温度管理（一般 5–40°C）、电解液泄漏与腐蚀、占地大。</li><li><strong>适用</strong>：4 h 以上长时储能、频繁循环、安全敏感区、电网侧独立储能、风光大基地。</li><li><strong>2026 年进展</strong>：全钒液流系统成本首次跌破 2 元/Wh（行业口径，B）；百兆瓦级项目增多；四川乐山投运电网侧构网型全钒液流电站（B）。</li></ul>
+<h3 id="s14">2.4 压缩空气储能：百兆瓦级长时</h3>
+<ul><li><strong>原理</strong>：低谷电驱动压缩机把空气压入盐穴、人工硐室或储气罐；放电时释放高压空气，经膨胀机发电。</li><li><strong>技术路线</strong>：补燃式（需要天然气，效率较低）、非补燃式（压缩热储存，效率较高）、液态空气（Liquid Air，常压低温储存）。</li><li><strong>关键参数（C/D 级）</strong>：</li></ul>
+<div class="table-wrap"><table><thead><tr><th>参数</th><th>典型值</th><th>说明</th></tr></thead><tbody><tr><td>单机规模</td><td>100–300 MW</td><td>300 MW 级已进入工程化</td></tr><tr><td>时长</td><td>4–10 h</td><td>取决于储气库容量</td></tr><tr><td>AC-AC 效率</td><td>60%–72%（非补燃）</td><td>补燃式约 45%–55%</td></tr><tr><td>寿命</td><td>30–40 年</td><td>机械部件寿命长</td></tr><tr><td>响应</td><td>分钟级</td><td>不如电化学快，适合长时调节</td></tr><tr><td>单位投资</td><td>5,000–8,000 元/kW（D）</td><td>强烈依赖地质与储气条件</td></tr></tbody></table></div>
+<ul><li><strong>优点</strong>：规模大、寿命长、单位能量成本低、不依赖锂资源、适合长时调节与容量支撑。</li><li><strong>缺点</strong>：选址受盐穴/硐室限制、建设周期长、效率中等、部分路线依赖天然气、压缩机/膨胀机运维复杂。</li><li><strong>适用</strong>：有盐穴或人工硐室条件的地区、长时调峰、新能源基地、容量保供。</li><li><strong>风险</strong>：储气库密封与稳定性、储热系统、快速启停、并网与调压；不能因为&quot;不烧电池&quot;就忽略高压与机械安全。</li></ul>
+<h3 id="s15">2.5 飞轮与超级电容：功率型</h3>
+<ul><li><strong>飞轮</strong>：真空磁悬浮转子高速旋转，充放电时转子加速/减速；功率密度高、响应毫秒级、循环次数超过 10 万次、寿命 20 年；能量密度低、自放电较高（约 3%–20%/h）、单位能量成本高。</li><li><strong>超级电容</strong>：双电层或赝电容储能，效率 90%–95%、循环 50 万–100 万次、秒级响应；能量密度低、单位能量成本高、电压均衡与模组管理要求高。</li><li><strong>适用</strong>：电网调频、一次调频、惯量支撑、电压暂降治理、UPS、轨道交通能量回收、混合储能的功率层。</li><li><strong>选型提醒</strong>：按&quot;元/kW&quot;和循环次数算，不按&quot;元/Wh&quot;；飞轮的真空泵、磁轴承、转子强度是运维重点；超级电容的模组均压与热管理是寿命关键。</li></ul>
+<h3 id="s16">2.6 热储能、重力储能与氢储能：长时/超长时</h3>
+<ul><li><strong>熔盐/热储能</strong>：把电能转为热能，再用汽轮机/换热器发电或直接供热；光热电站常见 290–565°C 熔盐；纯电加热+熔盐的效率约 40%–60%（发电口径），但单位能量成本低、寿命长；适合光热、工业蒸汽、清洁供热。</li><li><strong>重力储能</strong>：用重物升降储存势能，效率约 70%–85%，时长 2–8 h，寿命长；受地形、建筑、重物运输限制，仍以示范为主。</li><li><strong>氢储能</strong>：电解水制氢、储氢、燃料电池/燃氢机组发电；往返效率约 30%–45%，时长可跨日/跨季；适合季节性平衡、工业耦合、长距离能源运输；成本、基础设施、安全（高压/液氢/氢脆）是主要约束。</li><li><strong>共同点</strong>：&quot;长时&quot;不等于&quot;便宜&quot;；要按 LCOS、可用率、寿命、辅助能耗一起算。</li></ul>
+<h3 id="s17">2.7 抽水蓄能：长时储能的基准</h3>
+<ul><li><strong>参数</strong>：效率 70%–80%，时长 4–12 h，寿命 50 年，单位投资约 5–7 元/W（D），适合大规模、长时、调峰调频。</li><li><strong>地位</strong>：仍是电力系统最成熟的大规模长时储能；2025 年底新型储能装机已超过抽水蓄能，成为第一大调节性资源（B）。</li><li><strong>约束</strong>：选址、建设周期、生态与移民、输配电配套；不是&quot;想建就能建&quot;。</li><li><strong>比较意义</strong>：评估液流、压缩空气时，抽水蓄能是长时储能的成本与性能基准。</li></ul>
+<h3 id="s18">2.8 混合储能：把不同短板互补</h3>
+<div class="table-wrap"><table><thead><tr><th>组合</th><th>互补逻辑</th><th>典型场景</th><th>关键设计</th></tr></thead><tbody><tr><td>锂电 + 超级电容</td><td>能量 + 功率</td><td>调频、电压支撑、冲击负荷</td><td>功率分配、SOC 协同、并联环流</td></tr><tr><td>锂电 + 飞轮</td><td>长时能量 + 高频功率</td><td>电网调频、数据中心</td><td>飞轮自放电、切换逻辑、保护配合</td></tr><tr><td>锂电 + 钠电</td><td>成本 + 低温/资源</td><td>宽温域、用户侧</td><td>直流侧耦合、统一 BMS/EMS</td></tr><tr><td>锂电 + 液流</td><td>短时功率 + 长时能量</td><td>长时+调频复合场景</td><td>交流侧/直流侧耦合、容量分配</td></tr><tr><td>压缩空气 + 锂电</td><td>长时 + 快速</td><td>基地调峰+调频</td><td>协调控制、黑启动顺序</td></tr></tbody></table></div>
+<ul><li><strong>混合不是简单并联</strong>：需要统一 EMS、统一 SOC/功率分配、统一保护定值与并网控制。</li><li><strong>构网型混合</strong>：由构网型 PCS 作为主电压源，其他单元跟随；主从切换与多机并联稳定性是难点。</li></ul>
+<hr>
+<h2 id="s19">3. 技术路线对比与选型算例</h2>
+<h3 id="s20">3.1 一张对比表</h3>
+<div class="table-wrap"><table><thead><tr><th>路线</th><th>典型时长</th><th>AC-AC 效率</th><th>循环寿命</th><th>响应</th><th>寿命</th><th>2026 成本量级</th><th>安全特征</th><th>成熟度</th><th>主场景</th></tr></thead><tbody><tr><td>磷酸铁锂</td><td>1–4 h</td><td>85%–90%</td><td>6,000–10,000</td><td>毫秒</td><td>10–15 年</td><td>0.45–0.60 元/Wh</td><td>有热失控风险</td><td>成熟</td><td>短中时、调频、配储</td></tr><tr><td>钠离子</td><td>1–4 h</td><td>80%–88%</td><td>3,000–6,000</td><td>毫秒</td><td>8–12 年</td><td>0.50–0.70 元/Wh</td><td>仍可燃，风险低于三元</td><td>早期规模化</td><td>低温、用户侧、备电</td></tr><tr><td>全钒液流</td><td>4–12 h</td><td>65%–75%</td><td>15,000–25,000</td><td>百毫秒–秒</td><td>20–25 年</td><td>1.8–2.5 元/Wh</td><td>水基不易燃，有酸/氢风险</td><td>商业化早期</td><td>长时、高循环、安全敏感</td></tr><tr><td>压缩空气</td><td>4–10 h</td><td>60%–72%</td><td>30–40 年</td><td>分钟</td><td>30–40 年</td><td>5,000–8,000 元/kW</td><td>高压、机械、储气库</td><td>工程化</td><td>长时、基地、容量</td></tr><tr><td>飞轮</td><td>15 s–15 min</td><td>85%–95%</td><td>&gt;100,000</td><td>毫秒</td><td>20 年</td><td>3,000–6,000 元/kW</td><td>机械、真空、转子</td><td>成熟（细分）</td><td>调频、惯量、UPS</td></tr><tr><td>超级电容</td><td>秒–分钟</td><td>90%–95%</td><td>50 万–100 万</td><td>毫秒</td><td>10–15 年</td><td>单位能量成本高</td><td>电气、热</td><td>成熟（细分）</td><td>功率支撑、混合</td></tr><tr><td>熔盐热储能</td><td>4–12 h</td><td>40%–60%（发电）</td><td>30 年</td><td>分钟</td><td>30 年</td><td>单位能量成本低</td><td>高温、烫伤</td><td>商业化（光热）</td><td>光热、工业热</td></tr><tr><td>重力储能</td><td>2–8 h</td><td>70%–85%</td><td>30–50 年</td><td>秒</td><td>30–50 年</td><td>示范</td><td>机械、重物</td><td>示范</td><td>长时、山地</td></tr><tr><td>氢储能</td><td>跨日–季节</td><td>30%–45%</td><td>20–30 年</td><td>分钟</td><td>20–30 年</td><td>高</td><td>高压/氢脆/爆炸</td><td>示范</td><td>季节性、工业</td></tr><tr><td>抽水蓄能</td><td>4–12 h</td><td>70%–80%</td><td>50 年</td><td>分钟</td><td>50 年</td><td>5–7 元/W</td><td>水工、机械</td><td>成熟</td><td>大规模长时</td></tr></tbody></table></div>
+<aside class="note"><p>表中效率、寿命、成本均为公开资料的常见区间，项目差异很大；成本为 2026 年量级，不能直接作为报价依据（C/D 级）。</p></aside>
+<h3 id="s21">3.2 选型评分（示例，D 级）</h3>
+<div class="table-wrap"><table><thead><tr><th>维度</th><th>权重</th><th>评分要点</th></tr></thead><tbody><tr><td>时长匹配</td><td>25%</td><td>能否覆盖净负荷高峰；过长/过短都扣分</td></tr><tr><td>全生命周期成本</td><td>25%</td><td>LCOS、初装、运维、更换、残值</td></tr><tr><td>安全与合规</td><td>20%</td><td>标准符合性、消防、选址、保险</td></tr><tr><td>并网/构网</td><td>15%</td><td>SCR、故障穿越、构网、黑启动</td></tr><tr><td>供应链与运维</td><td>15%</td><td>产能、备件、质保、远程监控</td></tr></tbody></table></div>
+<ul><li><strong>4 h 弱网独立储能示例</strong>：锂电+构网 4.0 分，全钒液流+构网 3.6 分，压缩空气 3.3 分。液流胜在寿命与安全，锂电胜在成本与响应，压缩空气受选址约束。</li><li><strong>评分不是结论</strong>：权重随项目变化；安全敏感区应提高安全权重，弱网应提高构网权重。</li></ul>
+<h3 id="s22">3.3 LCOS 粗算（D 级）</h3>
+<pre><code>LCOS = (CAPEX + Σ OPEX_t/(1+r)^t + Σ 更换_t/(1+r)^t − 残值/(1+r)^N)
+       ÷ Σ (E_rated × DoD × η × 年循环次数)/(1+r)^t</code></pre>
+<div class="table-wrap"><table><thead><tr><th>路线</th><th>规模</th><th>单位投资</th><th>年循环</th><th>年限</th><th>RTE</th><th>年运维</th><th>粗算 LCOS</th></tr></thead><tbody><tr><td>锂电</td><td>100 MW/400 MWh</td><td>0.55 元/Wh</td><td>300</td><td>10 年</td><td>88%</td><td>2% CAPEX</td><td>约 0.25–0.32 元/kWh</td></tr><tr><td>全钒液流</td><td>100 MW/400 MWh</td><td>2.0 元/Wh</td><td>300</td><td>20 年</td><td>70%</td><td>1.5% CAPEX</td><td>约 0.55–0.65 元/kWh</td></tr><tr><td>压缩空气</td><td>100 MW/400 MWh</td><td>1.2 元/Wh</td><td>250</td><td>30 年</td><td>65%</td><td>1% CAPEX</td><td>约 0.30–0.38 元/kWh</td></tr></tbody></table></div>
+<ul><li><strong>锂电</strong>：CAPEX 2.2 亿元，年放电 10.56 万 MWh；不计折现的度电成本约 0.25 元/kWh，折现后约 0.30 元/kWh。</li><li><strong>液流</strong>：CAPEX 8 亿元，年放电 8.4 万 MWh；初装高，但 20 年寿命摊薄，LCOS 仍高于锂电；若项目需要 6 h 以上或高频循环，差距会缩小。</li><li><strong>压缩空气</strong>：CAPEX 4.8 亿元，年放电 6.5 万 MWh；寿命 30 年、运维低，LCOS 有竞争力，但选址与建设周期是硬约束。</li><li><strong>纪律</strong>：以上不含充电电费、容量补偿、辅助服务收益、土地与并网成本；不能直接当投资结论。</li></ul>
+<h3 id="s23">3.4 常见误判</h3>
+<ol><li>只比元/Wh，不比 RTE、循环寿命、年限与运维。</li><li>用 2 h 系统价格去套 4 h 项目，忽略直流侧/交流侧与时长口径。</li><li>把&quot;系统价&quot;当&quot;EPC 价&quot;，漏掉土建、升压、并网、消防、设计。</li><li>忽略容量衰减与增容成本，按首年容量算全周期收益。</li><li>忽略低温降额、高温降额与辅助用电。</li><li>把构网型溢价当成&quot;品牌溢价&quot;，不看 3 倍过流、能量与实测。</li><li>用示范项目价格当商业项目基准。</li><li>忽略退役、回收与环保成本。</li></ol>
+<hr>
+<h2 id="s24">4. 安全：从电芯到站级</h2>
+<h3 id="s25">4.1 热失控机理</h3>
+<ul><li><strong>诱因</strong>：机械滥用（针刺、挤压、跌落）、电滥用（过充、过放、外短路）、热滥用（高温、局部过热、冷却失效）、制造缺陷（金属异物、毛刺、焊接不良）、老化（SEI 增厚、析锂、内阻上升）。</li><li><strong>链式反应</strong>：温度升高 → SEI 分解（约 80–120°C）→ 隔膜收缩/熔断（约 130–150°C）→ 正极分解/释氧（约 200°C 以上）→ 电解液燃烧 → 产气/喷阀 → 起火或缺氧爆炸。</li><li><strong>LFP 的特点</strong>：橄榄石结构稳定、释氧少，热失控触发温度更高；但电解液仍可燃，产气（CO、H₂、HF、电解液蒸气）与复燃风险仍在。</li><li><strong>传播路径</strong>：电芯 → 模组 → 簇 → 舱 → 站；热蔓延靠传导、辐射、热气流与喷阀火焰。</li><li><strong>关键认知</strong>：约八成事故发生在正常运行状态下，不是施工或极端天气；这意味着<strong>监测、运维与早期预警</strong>比&quot;事后灭火&quot;更重要（B）。</li></ul>
+<h3 id="s26">4.2 五道防线</h3>
+<div class="table-wrap"><table><thead><tr><th>层级</th><th>目标</th><th>关键措施</th><th>常见失效</th></tr></thead><tbody><tr><td>电芯本体</td><td>不触发热失控</td><td>材料体系、结构设计、制造一致性、GB 44240 认证</td><td>杂质、析锂、一致性差</td></tr><tr><td>模组/簇</td><td>不蔓延</td><td>隔热、间距、熔断、模块级探测与抑制、热蔓延试验</td><td>隔热失效、连接松动</td></tr><tr><td>舱/室</td><td>不扩大</td><td>防火分隔、泄压、可燃气体探测、排风、灭火、电缆封堵</td><td>舱门开启、通风联锁错误</td></tr><tr><td>站级</td><td>不影响电网与人员</td><td>选址、防火间距、消防水、疏散、监测、并网保护</td><td>消防通道堵塞、水源不足</td></tr><tr><td>应急</td><td>不伤人、不复燃</td><td>预案、断电、疏散、消防联动、复燃监视、PPE</td><td>盲目开舱、复燃、二次爆炸</td></tr></tbody></table></div>
+<h3 id="s27">4.3 BMS、EMS、PCS 与消防的联动</h3>
+<ul><li><strong>BMS</strong>：监测单体电压、温度、电流、绝缘、SOC/SOH；执行过压、欠压、过流、过温、绝缘告警与保护；三级架构（BMU/BCU/BAMS）。</li><li><strong>EMS</strong>：负责功率分配、SOC 平衡、告警分级、降额/停机、与消防/空调/门禁联动。</li><li><strong>PCS</strong>：接收停机命令，封锁脉冲、分断交直流开关、隔离故障簇；确认直流侧失电后才允许人员接近。</li><li><strong>消防系统</strong>：探测（烟感、温感、可燃气体、VOC、声学/气压）、报警、联动（停 PCS、断直流、停空调/关风阀、启动排风、释放灭火介质、开启泄压）。</li><li><strong>处置顺序（原则）</strong>：探测 → 告警 → 停机 → 断电/隔离 → 确认人员撤离 → 启动灭火/冷却 → 排风/泄压 → 持续监测复燃 → 专业消防处置。<strong>不要在未断电、未确认气体浓度时开舱门</strong>。</li></ul>
+<h3 id="s28">4.4 灭火介质与系统选型</h3>
+<div class="table-wrap"><table><thead><tr><th>介质</th><th>原理</th><th>优点</th><th>局限</th><th>适用</th></tr></thead><tbody><tr><td>全氟己酮</td><td>化学抑制 + 降温</td><td>绝缘、洁净、毒性低、适合电气</td><td>分解产生 HF；降温有限；可能复燃</td><td>模组/簇/舱级</td></tr><tr><td>七氟丙烷</td><td>化学抑制</td><td>洁净、速度快</td><td>大空间用量大；HF；降温弱</td><td>房间级</td></tr><tr><td>细水雾/水</td><td>冷却、润湿</td><td>降温强、防复燃</td><td>电气风险、水损、需排水</td><td>舱/站级，断电后</td></tr><tr><td>气溶胶</td><td>化学抑制</td><td>成本低、体积小</td><td>残留、腐蚀、复燃</td><td>小柜/小空间</td></tr><tr><td>惰性气体</td><td>氧置换</td><td>洁净、无残留</td><td>窒息风险、泄漏、大空间成本高</td><td>房间级</td></tr><tr><td>干粉</td><td>化学抑制</td><td>便宜、快速</td><td>残留、绝缘差、清理难</td><td>小型/辅助</td></tr></tbody></table></div>
+<ul><li><strong>没有一种介质包打天下</strong>：主流方案是&quot;早期探测 + 模块级抑制 + 舱级灭火 + 水冷却/防复燃 + 泄压排风&quot;的组合。</li><li><strong>探测比灭火更重要</strong>：热失控早期是气体与温升，烟感往往偏晚；可燃气体、VOC、气压/声学探测可争取 minutes 级时间。</li><li><strong>复燃是常态</strong>：灭火后必须持续监测温度与气体，防止复燃与二次爆炸。</li></ul>
+<h3 id="s29">4.5 标准体系（截至 2026-11）</h3>
+<div class="table-wrap"><table><thead><tr><th>标准</th><th>名称</th><th>时点</th><th>作用</th><th>级别</th></tr></thead><tbody><tr><td>GB 44240-2024</td><td>电能存储系统用锂蓄电池和电池组 安全要求</td><td>2025-08-01 实施</td><td>强制性产品安全；热失控、振动、冲击、浅刺、强制放电</td><td>A</td></tr><tr><td>GB/T 36276-2023</td><td>电力储能用锂离子电池</td><td>2023</td><td>电池性能、安全与试验</td><td>A</td></tr><tr><td>GB/T 51048-2025</td><td>电化学储能电站设计标准</td><td>2026-04-01 实施</td><td>站级设计、布置、防火、预制舱</td><td>A</td></tr><tr><td>GB/T 42288-2022</td><td>电化学储能电站安全规程</td><td>2022</td><td>全生命周期安全、运维、应急</td><td>A</td></tr><tr><td>GB/T 46261-2025</td><td>电化学储能电站火灾监测预警系统通用技术要求</td><td>2026-09 实施</td><td>早期监测与预警</td><td>A</td></tr><tr><td>GB/T 46957-2025</td><td>并网储能系统安全通用规范</td><td>2026-07-01 实施</td><td>并网安全</td><td>A</td></tr><tr><td>GB/T 44026-2024</td><td>预制舱式锂离子电池储能系统技术规范</td><td>2024</td><td>预制舱集成</td><td>A</td></tr><tr><td>GB/T 40090-2021</td><td>储能电站运行维护规程</td><td>2021-11-01 实施</td><td>运维、检修</td><td>A</td></tr><tr><td>GB/T 36558-2023</td><td>电力系统电化学储能系统通用技术条件</td><td>2023</td><td>系统通用要求</td><td>A</td></tr><tr><td>GB/T 34131</td><td>电力储能用电池管理系统</td><td>现行版本待核</td><td>BMS 要求</td><td>B</td></tr><tr><td>GB/T 44112-2024</td><td>电化学储能电站接入电网运行控制规范</td><td>2024</td><td>运行控制</td><td>A</td></tr><tr><td>GB/T 44113-2024</td><td>用户侧电化学储能系统并网管理规范</td><td>2024</td><td>用户侧并网、防逆流</td><td>A</td></tr><tr><td>GB/T 43868-2024</td><td>电化学储能电站启动验收规程</td><td>2024</td><td>启动验收</td><td>A</td></tr><tr><td>GB/T 42737-2023</td><td>电化学储能电站调试规程</td><td>2023</td><td>调试与并网前试验</td><td>A</td></tr><tr><td>DL/T 2917-2025</td><td>电化学储能电站并网验收技术规范</td><td>2025-12-30</td><td>并网验收</td><td>A</td></tr><tr><td>T/CFPA 055-2026</td><td>电化学储能电站防火设计导则</td><td>2026-07 实施</td><td>防火分区、间距、灭火、泄压</td><td>B</td></tr><tr><td>NFPA 855</td><td>储能系统安装标准</td><td>现行</td><td>布置、间距、消防（国际）</td><td>B</td></tr><tr><td>UL 9540A</td><td>热失控扩散测试</td><td>现行</td><td>系统级热蔓延（国际）</td><td>B</td></tr><tr><td>IEC 62619</td><td>锂电池模块/电池组安全</td><td>现行</td><td>产品安全（国际）</td><td>B</td></tr><tr><td>IEC 62933-5-2</td><td>并网储能系统安全</td><td>现行</td><td>系统安全（国际）</td><td>B</td></tr><tr><td>IEC 62443</td><td>工业控制系统网络安全</td><td>现行</td><td>EMS/云平台安全</td><td>B</td></tr></tbody></table></div>
+<ul><li><strong>GB 与 GB/T 的区别</strong>：GB 是强制性，GB/T 是推荐性；GB 44240-2024 是储能电池首部强制性国标，不能用&quot;推荐性标准&quot;来理解。</li><li><strong>新旧标准切换</strong>：GB/T 51048-2025 替代 GB 51048-2014，新建项目按新标准；存量项目改造要看地方消防与并网要求。</li><li><strong>标准只是底线</strong>：招标可以把标准号写进技术规范书，但验收要看试验报告、现场测试与运行数据。</li></ul>
+<h3 id="s30">4.6 设计与布置要点</h3>
+<ul><li><strong>选址</strong>：避开人员密集场所、办公区、居住区；锂/钠电池舱不应设在地下或半地下；考虑防洪、抗震、防雷、排水、消防车通道。</li><li><strong>防火分区与间距</strong>：按 GB/T 51048-2025、T/CFPA 055-2026 与地方消防要求；预制舱之间、舱与站房之间留足间距；防火墙、防火封堵、防火门。</li><li><strong>火灾危险性分类</strong>：锂电舱常见按乙类管理，部分核心区域参照甲类；具体以设计标准与消防审查为准（B）。</li><li><strong>泄压与排风</strong>：爆炸泄压面朝向安全方向；可燃气体探测联动排风；避免可燃气体积聚。</li><li><strong>消防水</strong>：室外消火栓、消防水池、排水与收集；水消防与电气安全要协调，断电后使用。</li><li><strong>电气安全</strong>：直流电弧检测、绝缘监测、接地、防雷、浪涌保护、断路器与隔离开关、弧闪防护。</li><li><strong>预制舱</strong>：舱体防火、隔热、通风、空调、照明、应急照明、门禁、逃生门；舱内设备布置要留检修与散热通道。</li><li><strong>网络安全</strong>：EMS/云平台分区、访问控制、加密、日志、补丁；按 IEC 62443 与电力监控系统安全防护要求。</li></ul>
+<h3 id="s31">4.7 运维与应急</h3>
+<ul><li><strong>日常</strong>：舱内温差、单体电压极差、SOC、绝缘、可燃气体、空调/风机、消防系统状态、电缆与连接点温度。</li><li><strong>月度</strong>：容量抽检、内阻测试、螺栓紧固、清洁、软件与定值核对。</li><li><strong>年度</strong>：容量标定、保护定值校验、消防联动试验、应急演练、绝缘耐压。</li><li><strong>关键指标</strong>：可用系数、综合效率、容量保持率、非计划停运次数与时长、电池相关故障占比。</li><li><strong>2026 年上半年行业数据（中电联，B）</strong>：电化学储能电站平均利用率指数 42%，整体可用系数 0.98；非计划停运 901 次，单次平均 31.55 h，电池问题导致的非计划停运次数占比 44.28%。</li><li><strong>应急</strong>：预案覆盖热失控、火灾、触电、电解液泄漏、洪水、地震；与属地消防联合演练；明确断电、隔离、疏散、复燃监视流程。</li><li><strong>退役</strong>：容量低于 80% 或安全不达标时评估增容/更换/梯次利用/回收；电解液、含氟废物、重金属按危废管理。</li></ul>
+<h3 id="s32">4.8 安全经济性</h3>
+<ul><li><strong>安全投入</strong>：探测、灭火、泄压、防爆、防火墙、消防水、保险，常见占系统投资的 3%–8%（D 级经验值，项目差异大）。</li><li><strong>收益</strong>：减少停运损失、降低保险费用、满足并网与消防验收、提升可用率与容量电价考核表现。</li><li><strong>不要过度设计</strong>：防火间距、消防水量、灭火介质用量要按标准与风险评估，过度设计会降低能量密度、增加占地与成本。</li><li><strong>存量改造</strong>：早期项目常见缺口是可燃气体探测、泄压、模块级抑制、消防水与远程监控；改造优先级按风险排序。</li><li><strong>保险</strong>：储能保险要看技术路线、消防设计、运维记录、事故历史；安全设计直接影响费率与可保性。</li></ul>
+<h3 id="s33">4.9 并网安全</h3>
+<ul><li><strong>故障穿越</strong>：低电压/高电压穿越、频率穿越；构网型还要在故障期间维持电压源特性与过流支撑。</li><li><strong>防孤岛</strong>：计划孤岛与非计划孤岛；构网型可计划孤岛运行，但必须与保护、调度、负荷匹配。</li><li><strong>保护配合</strong>：短路电流、过流、零序、距离、差动、直流侧保护；构网型 3 倍过流会改变保护定值。</li><li><strong>电能质量</strong>：谐波、间谐波、电压波动、闪变、三相不平衡；宽频振荡监测。</li><li><strong>通信与调度</strong>：AGC/AVC、遥测遥信、功率控制、涉网保护信息、网络安全。</li><li><strong>标准</strong>：GB/T 36547、GB/T 36558、GB/T 44112、GB/T 44113、DL/T 2246/2247、DL/T 2917。</li></ul>
+<hr>
+<h2 id="s34">5. 构网型并网</h2>
+<h3 id="s35">5.1 跟网型与构网型</h3>
+<div class="table-wrap"><table><thead><tr><th>维度</th><th>跟网型 GFL</th><th>构网型 GFM</th></tr></thead><tbody><tr><td>控制本质</td><td>电流源，跟随电网电压/频率</td><td>电压源，建立电压/频率参考</td></tr><tr><td>同步方式</td><td>锁相环（PLL）</td><td>功率同步/自同步/虚拟同步</td></tr><tr><td>频率/电压</td><td>跟随</td><td>主动支撑</td></tr><tr><td>惯量</td><td>无或很弱</td><td>可配置虚拟惯量</td></tr><tr><td>短路电流</td><td>约 1.1–1.5 倍额定</td><td>可达 2–3 倍额定，短时维持</td></tr><tr><td>弱网适应</td><td>差，PLL 易失稳</td><td>好，适合低 SCR</td></tr><tr><td>孤岛/黑启动</td><td>需要外部支撑</td><td>可独立建压、黑启动</td></tr><tr><td>成本</td><td>较低</td><td>PCS 与控制成本更高</td></tr><tr><td>适用</td><td>强网、常规并网</td><td>弱网、高比例新能源、孤网、微网</td></tr><tr><td>主要风险</td><td>宽频振荡、弱网失稳</td><td>过流硬件、多机振荡、保护配合</td></tr></tbody></table></div>
+<ul><li><strong>构网不是&quot;比跟网高级&quot;</strong>：强网场景下跟网型更便宜、效率更高；构网的价值在弱网、孤网、高比例电力电子场景。</li><li><strong>构网不是&quot;无源&quot;</strong>：它需要能量（电池、飞轮、直流母线）和过流能力（硬件超配），不是只改控制算法。</li></ul>
+<h3 id="s36">5.2 控制路线</h3>
+<div class="table-wrap"><table><thead><tr><th>路线</th><th>核心</th><th>优点</th><th>局限</th></tr></thead><tbody><tr><td>下垂控制（Droop）</td><td>P-f、Q-V 线性关系</td><td>简单、易并联、稳态分配好</td><td>无惯量，动态响应有限</td></tr><tr><td>虚拟同步机（VSG）</td><td>模拟同步机摇摆方程，虚拟惯量 J、阻尼 D</td><td>惯量/阻尼可调，兼容同步机直觉</td><td>参数整定、过流与饱和复杂</td></tr><tr><td>虚拟同步电机（VSM）</td><td>与 VSG 类似，强调电压源与磁链</td><td>动态性能好</td><td>实现差异大，标准待统一</td></tr><tr><td>匹配控制</td><td>直流侧功率与电网功率匹配</td><td>响应快、结构简单</td><td>弱网/故障下需额外控制</td></tr><tr><td>虚拟振荡器（VOC）</td><td>时域振荡器同步</td><td>弱网稳定性好</td><td>参数与谐波治理复杂</td></tr><tr><td>直流侧构网</td><td>控制直流母线电压</td><td>适合直流微网/混合储能</td><td>交流侧仍需协调</td></tr></tbody></table></div>
+<ul><li><strong>分层控制</strong>：一次控制（droop/VSG，快速响应）→ 二次控制（频率/电压恢复）→ 三次控制（EMS 经济调度）。</li><li><strong>单机 vs 场站</strong>：单机可以构网，但场站级要解决多机并联、环流、功率分配、主从切换、保护配合。</li><li><strong>电流限幅</strong>：故障时构网型需要限流，限流期间电压源特性会退化；故障切除后要快速恢复，避免失稳。</li></ul>
+<h3 id="s37">5.3 构网型能提供什么</h3>
+<ol><li><strong>惯量支撑</strong>：等效惯量常数 H 可配置，减缓频率变化率（RoCoF）。</li><li><strong>一次调频</strong>：P-f 下垂/VSG 响应，死区、调差率、响应时间可设。</li><li><strong>电压/无功支撑</strong>：Q-V 控制、AVR、无功电流注入，支撑并网点电压。</li><li><strong>短路电流</strong>：3 倍额定、10 s 短时过流，帮助保护识别故障、维持电压。</li><li><strong>黑启动</strong>：无外部电源时建立电压，启动变压器、辅助负荷、逐步带载。</li><li><strong>阻尼与振荡抑制</strong>：提供正阻尼，抑制功率振荡与宽频振荡（但多机也可能引发新振荡）。</li><li><strong>孤岛运行</strong>：计划孤岛下维持电压/频率，支撑微网与重要负荷。</li></ol>
+<h3 id="s38">5.4 关键指标与公式</h3>
+<pre><code>H = E_k / S_N = J ω² / (2 S_N)
+df/dt ≈ ΔP / (2 H_eq S_N)
+SCR = S_sc / S_N</code></pre>
+<div class="table-wrap"><table><thead><tr><th>指标</th><th>含义</th><th>构网型关注点</th></tr></thead><tbody><tr><td>惯量常数 H</td><td>等效惯性时间常数（s）</td><td>可配置，但受能量与过流限制</td></tr><tr><td>RoCoF</td><td>频率变化率（Hz/s）</td><td>越小越好；与 H、故障功率缺额有关</td></tr><tr><td>频率最低点</td><td>扰动后最低频率</td><td>与惯量、一次调频、能量有关</td></tr><tr><td>短路比 SCR</td><td>电网短路容量/设备容量</td><td>SCR&lt;3 为弱网，&lt;1.5–2 为极弱网（C/D）</td></tr><tr><td>过流能力</td><td>额定电流倍数/持续时间</td><td>3 倍/10 s 是 GB/T 47968 的重要门槛</td></tr><tr><td>故障穿越</td><td>低/高电压、频率穿越</td><td>故障期间不脱网，故障后快速恢复</td></tr><tr><td>阻尼比</td><td>功率振荡衰减</td><td>避免负阻尼与宽频振荡</td></tr><tr><td>黑启动时间</td><td>从零到带负荷</td><td>含辅助负荷、变压器励磁、负荷爬坡</td></tr></tbody></table></div>
+<ul><li><strong>惯量能量很小</strong>：100 MW、H=5 s 的等效动能约 500 MJ，折合 0.139 MWh；相比 400 MWh 电池很小。构网型的价值在<strong>快速功率响应</strong>，不是&quot;存了很多惯量&quot;。</li><li><strong>算例（D）</strong>：100 GW 系统、H=4 s，突然失去 1 GW 电源，RoCoF 约 0.0625 Hz/s；增加 2 GW、H=5 s 的构网型储能后，等效 H 约 4.02 s，RoCoF 仅降到约 0.061 Hz/s。要显著改善频率最低点，还要靠一次调频、快速备用与足够能量。</li><li><strong>SCR 算例（D）</strong>：新能源场站 200 MW，并网点短路容量 400 MVA，SCR=2，属于弱网；构网型可改善电压/频率支撑，但仍需核对过流、保护与振荡。</li></ul>
+<h3 id="s39">5.5 标准与政策</h3>
+<div class="table-wrap"><table><thead><tr><th>文件/标准</th><th>时点</th><th>内容</th><th>级别</th></tr></thead><tbody><tr><td>GB/T 47968-2026</td><td>2026-07-30 发布，2026-11-01 实施</td><td>构网型变流器通用技术规范；19 项关键指标；3 倍额定电流短时过流</td><td>A/B</td></tr><tr><td>GB/T 47655-2026</td><td>2026-07-02 发布，2027-02-01 实施</td><td>电力电子装备和系统的构网性能要求及试验方法；首次国标定义&quot;构网&quot;</td><td>A/B</td></tr><tr><td>T/CPSS 1015-2025</td><td>2025-08-22 发布</td><td>电化学储能系统构网型储能变流器并网性能测试技术规范</td><td>B</td></tr><tr><td>中国电工技术学会团体标准</td><td>2023-12-28 实施</td><td>构网型储能系统并网技术规范、并网测试规范</td><td>B</td></tr><tr><td>GB/T 40595-2021</td><td>2021</td><td>并网电源一次调频技术规定及试验导则</td><td>A</td></tr><tr><td>GB 38755-2019</td><td>2019</td><td>电力系统安全稳定导则</td><td>A</td></tr><tr><td>GB/T 33599-2026</td><td>2026-08-01 实施</td><td>光伏发电站并网运行控制规范（仅光伏）</td><td>A</td></tr><tr><td>IEEE 2800-2022</td><td>2022</td><td>逆变型电源并网（国际）</td><td>B</td></tr><tr><td>新型电力系统建设第一批试点</td><td>2025-06</td><td>构网型技术列为七个试点方向之一</td><td>A</td></tr><tr><td>新型储能规模化建设专项行动方案</td><td>2025-08-27</td><td>推进构网型在高比例新能源、弱电网、孤岛电网示范</td><td>A</td></tr><tr><td>2026 年能源行业标准计划立项指南</td><td>2026-03-24</td><td>构网型技术列为电力系统安全稳定重点方向</td><td>A</td></tr><tr><td>《新型电力系统建设&quot;十五五&quot;规划》</td><td>2026-08</td><td>加大构网型技术应用</td><td>A</td></tr><tr><td>云南新建共享储能要求</td><td>2026-02</td><td>新建共享储能原则上采用构网型技术（全国首个省级强制要求）</td><td>B</td></tr><tr><td>新疆/西藏构网比例要求</td><td>2023 起</td><td>新疆独立储能构网比例不低于年度规模 20%；西藏保障性并网光伏配储加装构网装置</td><td>B</td></tr></tbody></table></div>
+<ul><li><strong>&quot;2026-04-01 起全国新建独立/共享储能全额强制构网、纯跟网型不予并网&quot;</strong>：未检索到国家层面公开文件，按 <strong>C 级/未证实</strong> 处理；可核实的是云南、新疆、西藏等地方要求。</li><li><strong>&quot;构网型渗透率突破 30%&quot;</strong>：行业报道常见，但未见公开文号与统计口径，按 <strong>C 级</strong> 处理。</li><li><strong>标准实施节奏</strong>：GB/T 47968-2026 自 2026-11-01 实施，是新项目招标与验收的关键依据；GB/T 47655-2026 2027-02-01 实施，定义与试验方法更完整。</li></ul>
+<h3 id="s40">5.6 应用场景</h3>
+<ul><li><strong>弱电网/高比例新能源基地</strong>：新疆、西藏、甘肃、青海、内蒙古等 SCR 低、短路容量不足的地区。</li><li><strong>独立/共享储能</strong>：电网侧调峰、调频、容量支撑，构网型可提升弱网稳定性。</li><li><strong>新能源配储</strong>：风光基地、离网/微网、绿电直连、零碳园区。</li><li><strong>微网/孤岛</strong>：海岛、矿区、边远地区、重要负荷保供。</li><li><strong>数据中心/算电协同</strong>：高可靠供电、快速切载、电压支撑；2026 年新建智算中心常见 15%–20% 储能配套、2–4 h 时长要求（B/C）。</li><li><strong>黑启动/应急</strong>：电网事故后恢复、重要用户保电。</li><li><strong>海外弱网</strong>：中东、澳大利亚、智利、南非、东南亚等弱电网/高新能源占比市场。</li></ul>
+<h3 id="s41">5.7 规模与项目</h3>
+<ul><li><strong>2025 年</strong>：国内构网型储能新增投运约 7.3 GW/25.2 GWh，渗透率约 12.8%，项目数约 66 个；截至 2025-09 累计约 6 GW/19.1 GWh（与年度新增口径冲突，引用需注明）。</li><li><strong>2026 年一季度</strong>：新增并网约 2.48 GW/6.89 GWh，容量占比约 19.2%。</li><li><strong>2026 年上半年</strong>：约 31 个项目采用构网型，新增并网近 9 GWh；应用从独立储能向新能源配储、微网、用户侧渗透。</li><li><strong>典型项目（公开信息，B）</strong>：云南永德 150 MW/300 MWh 全构网型储能；新疆喀什 200 MW/1,200 MWh、6 h 构网型独立储能；四川乐山电网侧构网型全钒液流；南方电网宝池锂钠混合储能；宁东&quot;锂电+超级电容&quot;混合构网；华电喀什百万千瓦级储能。</li><li><strong>趋势</strong>：从&quot;单机构网&quot;走向&quot;场站级构网&quot;，从锂电扩展到液流、钠电、飞轮、混合储能；从西北弱网扩展到数据中心、微网、海外。</li></ul>
+<h3 id="s42">5.8 经济性</h3>
+<ul><li><strong>设备溢价</strong>：构网型 PCS 比跟网型贵约 15%–30%；系统整体造价高约 10%–20%，部分项目报价高 25%–40%（口径差异大，D 级）。</li><li><strong>算例（D）</strong>：100 MW/400 MWh，系统价 0.55 元/Wh，总价 2.2 亿元；构网型增量 15% 约 3,300 万元，按 10 年摊销约 330 万元/年。</li><li><strong>收益来源</strong>：<ul><li>容量电价：114 号文按可用容量与时长折算，4 h 项目在 6 h 分母下约拿 2/3；安徽 2027 年 6 h 标准 165 元/kW·年，4 h 约 110 元/kW·年（A/B）。</li><li>辅助服务：调频、备用、惯量（试点）、黑启动；山东 2026 年征求意见稿提出转动惯量响应补偿小扰动 72 元/MW、大扰动 100 元/MW（B/C），距离覆盖增量成本仍有差距。</li><li>现货/中长期：能量套利、峰谷价差；构网型本身不直接增加能量收益。</li><li>弱网/孤网项目的&quot;并网准入价值&quot;：没有构网能力可能无法并网或无法满足电网要求。</li></ul></li><li><strong>结论</strong>：构网型的经济性取决于&quot;容量电价 + 辅助服务 + 并网准入&quot;的组合；只靠能量套利，增量成本很难回收。</li></ul>
+<h3 id="s43">5.9 风险与争议</h3>
+<ol><li><strong>&quot;真假构网&quot;</strong>：只写 droop 曲线、没有电压源建立、没有 3 倍过流、没有黑启动实测，不能算真构网。</li><li><strong>过流硬件成本</strong>：3 倍/10 s 需要功率器件、滤波、散热、保护超配，尺寸、效率、成本都受影响。</li><li><strong>多机振荡</strong>：多台构网型并联可能产生环流、次/超同步振荡、宽频振荡；需要阻抗扫描、阻尼控制、参数协调。</li><li><strong>故障限流与恢复</strong>：限流期间电压源特性退化，故障切除后恢复慢会引发二次失稳。</li><li><strong>能量不足</strong>：惯量、一次调频、黑启动都需要能量；SOC 低时构网能力会打折。</li><li><strong>保护配合</strong>：3 倍过流改变短路电流水平，原有保护定值可能不适用。</li><li><strong>标准落地</strong>：GB/T 47968-2026 刚实施，场站级验收、模型验证、第三方测试仍在完善。</li><li><strong>商业模式缺失</strong>：惯量、电压支撑尚未普遍纳入辅助服务补偿；容量电价不区分构网/跟网。</li><li><strong>不能替代同步机</strong>：构网型储能可提供部分同步机功能，但不能完全替代同步机的转动惯量、短路容量与无功支撑；高比例电力电子系统仍需同步调相机、抽蓄、火电等。</li><li><strong>强制配建传言</strong>：以国家/省级正式文件为准，不用行业文章当政策依据。</li></ol>
+<h3 id="s44">5.10 并网测试与验收</h3>
+<div class="table-wrap"><table><thead><tr><th>阶段</th><th>测试内容</th><th>关注点</th></tr></thead><tbody><tr><td>型式试验</td><td>过流、惯量阶跃、频率/电压阶跃、故障穿越、孤岛、黑启动、谐波、效率</td><td>第三方报告；3 倍/10 s；模型参数</td></tr><tr><td>出厂试验</td><td>控制、保护、通信、绝缘、耐压、温升</td><td>与型式试验一致性</td></tr><tr><td>现场调试</td><td>并网点电压/频率、有功/无功、AGC/AVC、保护定值</td><td>与电网调度联调</td></tr><tr><td>并网验收</td><td>一次调频、惯量响应、故障穿越、电能质量、防孤岛</td><td>电网公司/第三方</td></tr><tr><td>黑启动试验</td><td>辅助负荷、变压器励磁、负荷爬坡、孤岛稳定</td><td>能量、过流、保护</td></tr><tr><td>多机并联</td><td>环流、功率分配、主从切换、振荡</td><td>场站级控制</td></tr><tr><td>模型验证</td><td>机电暂态/电磁暂态模型、参数辨识</td><td>仿真与实测一致</td></tr></tbody></table></div>
+<ul><li><strong>验收清单</strong>：标准号、测试项目、测试条件（SCR、SOC、温度）、判据、第三方机构、报告版本、模型参数、保护定值、整改闭环。</li><li><strong>AEMO 经验</strong>：场站级并网验收、模型先行、分阶段调试、弱网实测；不能只做单机型式试验。</li><li><strong>不要&quot;一刀切&quot;</strong>：不同 SCR、不同场景、不同路线，构网指标应差异化；强网项目不必为用不上的能力付费。</li></ul>
+<hr>
+<h2 id="s45">6. 三条主线的交叉决策</h2>
+<h3 id="s46">6.1 一张决策树</h3>
+<pre><code>项目要解决什么？
+├─ 2–4 h 削峰/套利
+│   ├─ 强网、成本优先 → 锂电 + 跟网型
+│   └─ 弱网/孤网/要求构网 → 锂电 + 构网型（3×过流、黑启动）
+├─ 4–10 h 长时
+│   ├─ 有盐穴/硐室、追求低 LCOS → 压缩空气
+│   ├─ 安全敏感、高循环、占地可接受 → 全钒液流
+│   └─ 需要快速响应 + 长时 → 锂电/液流混合
+├─ 秒级–分钟级调频/惯量
+│   ├─ 高频、长寿命 → 飞轮/超级电容
+│   └─ 兼顾能量 → 锂电 + 超级电容/飞轮
+├─ 孤网/黑启动/重要负荷
+│   └─ 构网型 + 足够能量 + 黑启动试验 + 保护配合
+└─ 城市/人口密集/地下受限
+    └─ 安全优先：液流/钠电/严格消防设计的锂电；锂/钠舱不设地下</code></pre>
+<h3 id="s47">6.2 场景组合</h3>
+<div class="table-wrap"><table><thead><tr><th>场景</th><th>推荐路线</th><th>并网</th><th>安全重点</th><th>备注</th></tr></thead><tbody><tr><td>弱网独立储能 4 h</td><td>锂电 + 构网</td><td>3×过流、黑启动、SCR 校核</td><td>舱级消防、泄压、气体探测</td><td>容量电价 + 辅助服务</td></tr><tr><td>新能源基地配储</td><td>锂电/钠电/液流</td><td>构网或跟网按电网要求</td><td>热蔓延、消防水、运维</td><td>15%–20% 配储常见</td></tr><tr><td>工商业用户侧</td><td>锂电/钠电</td><td>跟网、防逆流</td><td>靠近人员，消防与疏散</td><td>需量管理、峰谷套利</td></tr><tr><td>微网/孤岛</td><td>锂电 + 超级电容/飞轮</td><td>构网、黑启动</td><td>独立消防、远程监控</td><td>主从控制、负荷匹配</td></tr><tr><td>调频</td><td>飞轮/超级电容/锂电</td><td>构网/跟网</td><td>机械/电气安全</td><td>按元/kW 与循环算</td></tr><tr><td>长时</td><td>液流/压缩空气</td><td>按电网要求</td><td>酸/高压/机械</td><td>选址与 LCOS 是关键</td></tr><tr><td>数据中心</td><td>锂电</td><td>构网、快速切载</td><td>高可靠消防、气体探测</td><td>15%–20%、2–4 h（B/C）</td></tr></tbody></table></div>
+<h3 id="s48">6.3 招标技术规范书清单</h3>
+<ol><li><strong>路线与规模</strong>：技术路线、额定功率/能量、时长、DC/AC 侧口径、效率、循环寿命、衰减曲线。</li><li><strong>安全标准</strong>：GB 44240-2024、GB/T 51048-2025、GB/T 42288-2022、GB/T 46261-2025、GB/T 46957-2025、T/CFPA 055-2026。</li><li><strong>消防配置</strong>：探测类型与点位、灭火介质与用量、泄压面积、排风联动、消防水、防爆、复燃监测。</li><li><strong>构网指标</strong>：GB/T 47968-2026、3 倍/10 s、H、RoCoF、SCR、故障穿越、黑启动、多机并联、模型验证。</li><li><strong>并网标准</strong>：GB/T 36547、GB/T 44112、GB/T 44113、DL/T 2917、DL/T 2246/2247。</li><li><strong>试验与验收</strong>：型式试验、出厂试验、现场调试、并网验收、黑启动、第三方报告。</li><li><strong>运维与质保</strong>：可用率、RTE、容量保持率、非计划停运、备件、远程监控、响应时间。</li><li><strong>文档与网络安全</strong>：BMS/EMS/PCS 说明书、保护定值、模型参数、消防联动图、IEC 62443 合规。</li></ol>
+<hr>
+<h2 id="s49">7. 常见误解（15 条）</h2>
+<ol><li><strong>&quot;磷酸铁锂不会起火&quot;</strong>：LFP 热稳定性更好，但仍会热失控、产气、复燃。</li><li><strong>&quot;装了消防系统就安全&quot;</strong>：没有早期探测、断电、泄压、运维，消防只是最后一道。</li><li><strong>&quot;元/Wh 最低就是最便宜&quot;</strong>：不看 RTE、循环、寿命、运维、增容，结论会反。</li><li><strong>&quot;长时储能一定便宜&quot;</strong>：液流、压缩空气初装高；要看 LCOS 与选址。</li><li><strong>&quot;构网型就是改控制算法&quot;</strong>：还需要 3 倍过流硬件、能量、保护配合与现场实测。</li><li><strong>&quot;构网型能让电网 100% 新能源&quot;</strong>：不能替代同步机的全部功能；仍需同步电源/调相机/抽蓄。</li><li><strong>&quot;3 倍过流所有故障都能扛&quot;</strong>：有限流与时间限制，故障期间电压源特性会退化。</li><li><strong>&quot;构网型可以替代调相机&quot;</strong>：部分场景可以，但不能一概而论；高比例电力电子系统仍需无功/短路容量支撑。</li><li><strong>&quot;所有项目都必须构网&quot;</strong>：强网、跟网型更经济；构网价值在弱网、孤网、高比例新能源。</li><li><strong>&quot;2026-04 起全国强制构网&quot;</strong>：未检索到国家公开文件，按未证实处理。</li><li><strong>&quot;GB/T 47968 实施后存量项目都要改造&quot;</strong>：主要约束新项目/新设备；存量按并网要求与地方政策。</li><li><strong>&quot;钠电一定比锂电便宜&quot;</strong>：当前产业链规模小，实际报价与循环寿命要看项目。</li><li><strong>&quot;液流没有火灾风险&quot;</strong>：水基电解液不易燃，但有强酸、泵、氢气、泄漏与腐蚀风险。</li><li><strong>&quot;压缩空气没有化学风险就安全&quot;</strong>：高压、储气库、机械、储热系统都是风险源。</li><li><strong>&quot;储能安全只是电池安全&quot;</strong>：直流电弧、电气火灾、绝缘、保护、网络安全同样重要。</li></ol>
+<hr>
+<h2 id="s50">8. 待核实与未定事项</h2>
+<ol><li>2026 年全年新型储能装机、时长、利用小时数的最终统计（本文用 2026-09 累计与 1-9 月数据）。</li><li>2025 年新型储能年底装机&quot;1.36 亿kW / 144.7 GW&quot;两个口径的差异来源。</li><li>构网型 2025 年&quot;新增 7.3 GW/25.2 GWh&quot;与&quot;截至 2025-09 累计 6 GW/19.1 GWh&quot;的口径冲突。</li><li>GB/T 47968-2026 与 GB/T 47655-2026 的正式文本、19 项指标全文与实施差异。</li><li>&quot;2026-04-01 全国强制构网&quot;与&quot;构网渗透率 30% 目标&quot;的官方文件依据。</li><li>各省构网型配建比例、并网要求、容量补偿与辅助服务补偿的完整清单。</li><li>GB/T 51048-2025 的防火间距、防火分区、预制舱布置等具体条文与地方执行差异。</li><li>GB/T 46261-2025、T/CFPA 055-2026 的实施细则与验收口径。</li><li>全钒液流&quot;系统成本跌破 2 元/Wh&quot;的项目边界（时长、规模、含不含电解液/土建）。</li><li>压缩空气 300 MW 级项目的实际效率、单位投资与可用率。</li><li>钠离子电池在源网侧大储的循环寿命、成本与安全实测数据。</li><li>2026 年上半年全球 15 起储能事故的完整清单、技术路线与原因分类。</li><li>锂电池 2% 消费税对储能系统价格的完整传导。</li><li>114 号容量电价是否对构网型、长时储能给予差异化系数。</li><li>惯量、电压支撑、黑启动的辅助服务补偿规则与试点价格。</li><li>2026-10-20 首批 136 个标志性场景中&quot;新型储能安全高效可靠应用场景&quot;（6,000 万–1 亿kW 巨系统）的实施细则。</li></ol>
+<hr>
+<h2 id="s51">9. 与技能和其他笔记的分工</h2>
+<div class="table-wrap"><table><thead><tr><th>主题</th><th>归属</th></tr></thead><tbody><tr><td>技术路线参数、安全标准与设防、构网型控制/标准/验收</td><td><strong>本笔记</strong></td></tr><tr><td>储能投决、收益堆叠、LCOS/IRR、容量电价测算、合同结构</td><td><a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a> 及<a href="储能投资与运营-2026-11.html">维护笔记</a></td></tr><tr><td>新能源项目开发、并网流程、涉网试验、机制电价</td><td><a href="../../skills/renewable-project-development/SKILL.md">新能源项目开发与并网专家</a> 及<a href="新能源项目开发与并网-2026-11.html">维护笔记</a></td></tr><tr><td>辅助服务市场、现货/中长期结算、容量电价政策原文</td><td><a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a></td></tr><tr><td>并网运行考核、AGC/AVC/一次调频罚则与免考</td><td><a href="并网运行考核与两个细则-2026-11.html">并网运行考核与两个细则</a></td></tr><tr><td>储能 EMS 优化调度、SOC/退化/多市场堆叠</td><td><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a></td></tr><tr><td>微网 EMS、PCC 购售、孤岛/备用/MPC</td><td><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a></td></tr><tr><td>VPP 聚合、基线、控制与商业模式</td><td><a href="../../skills/virtual-power-plant/SKILL.md">虚拟电厂专家</a></td></tr><tr><td>零碳园区、绿电直连、源网荷储配置</td><td><a href="综合能源与零碳园区-2026-11.html">综合能源与零碳园区</a></td></tr><tr><td>碳核算、CCER、CBAM</td><td><a href="碳资产实务-2026-11.html">碳资产实务</a></td></tr></tbody></table></div>
+<ul><li>同一数字在多处出现时：项目财务与容量电价测算以储能投资技能为准；并网流程与涉网试验以新能源技能为准；辅助服务结算以电力交易技能为准；本笔记只保留技术路线、安全与构网性能的&quot;原文口径&quot;。</li><li>本笔记不重复 EMS 的 MILP 模型、现货报价方法、碳核算与项目财务模型。</li></ul>
+<hr>
+<h2 id="s52">速查：标准、参数与口径</h2>
+<div class="table-wrap"><table><thead><tr><th>项目</th><th>内容</th><th>级别</th></tr></thead><tbody><tr><td>2026-09 新型储能</td><td>1.67 亿kW/4.35 亿kWh；+63%；平均 2.61 h；1-9 月等效利用 915 h</td><td>A</td></tr><tr><td>2027 目标</td><td>1.8 亿kW 以上；带动直接投资约 2,500 亿元（发改能源〔2025〕1144 号）</td><td>A</td></tr><tr><td>2030 目标</td><td>3 亿kW；电网侧独立 1.4 亿kW；等效顶峰时长力争 4 h</td><td>B</td></tr><tr><td>路线结构</td><td>锂离子电池占新型储能装机 96% 以上；独立/共享储能占比约 51.2%</td><td>B</td></tr><tr><td>系统价格</td><td>2–4 h 系统 0.45–0.60 元/Wh；EPC 另计，不可直接比较</td><td>B</td></tr><tr><td>4 h 最低中标</td><td>2025 年 0.391 元/Wh；2026-07 0.497 元/Wh</td><td>B/C</td></tr><tr><td>锂电参数</td><td>AC-AC 85%–90%；6,000–10,000 次；10–15 年；毫秒响应</td><td>C</td></tr><tr><td>全钒液流</td><td>4–12 h；65%–75%；15,000–25,000 次；20–25 年；1.8–2.5 元/Wh</td><td>C</td></tr><tr><td>压缩空气</td><td>4–10 h；60%–72%；30–40 年；5,000–8,000 元/kW</td><td>C/D</td></tr><tr><td>飞轮</td><td>15 s–15 min；85%–95%；&gt;10 万次；3,000–6,000 元/kW</td><td>C/D</td></tr><tr><td>安全强制标准</td><td>GB 44240-2024，2025-08-01 实施</td><td>A</td></tr><tr><td>设计标准</td><td>GB/T 51048-2025，2026-04-01 实施，替代 GB 51048-2014</td><td>A</td></tr><tr><td>安全规程</td><td>GB/T 42288-2022</td><td>A</td></tr><tr><td>火灾监测</td><td>GB/T 46261-2025，2026-09 实施</td><td>A</td></tr><tr><td>并网安全</td><td>GB/T 46957-2025，2026-07-01 实施</td><td>A</td></tr><tr><td>构网变流器</td><td>GB/T 47968-2026，2026-11-01 实施；19 项指标；3 倍/10 s</td><td>A/B</td></tr><tr><td>构网定义</td><td>GB/T 47655-2026，2027-02-01 实施</td><td>A/B</td></tr><tr><td>构网测试团标</td><td>T/CPSS 1015-2025，2025-08-22</td><td>B</td></tr><tr><td>2025 构网规模</td><td>7.3 GW/25.2 GWh；渗透率约 12.8%；约 66 个项目</td><td>B</td></tr><tr><td>2026Q1 构网</td><td>2.48 GW/6.89 GWh；容量占比约 19.2%</td><td>B</td></tr><tr><td>构网溢价</td><td>PCS +15%–30%；系统 +10%–20%（部分报价 +25%–40%）</td><td>D</td></tr><tr><td>惯量公式</td><td>H = E_k/S_N = Jω²/(2S_N)；df/dt ≈ ΔP/(2H_eq S_N)</td><td>D</td></tr><tr><td>短路比</td><td>SCR = S_sc/S_N；&lt;3 弱网，&lt;1.5–2 极弱网</td><td>C/D</td></tr><tr><td>安全投入</td><td>探测/灭火/泄压/防爆等约占系统投资 3%–8%</td><td>D</td></tr><tr><td>2026H1 行业运维</td><td>平均利用率指数 42%；可用系数 0.98；非计划停运 901 次，单次 31.55 h，电池相关 44.28%</td><td>B</td></tr></tbody></table></div>
+<h3 id="s53">数据口径提醒</h3>
+<ul><li><strong>kW 与 kWh 不能混</strong>：1.67 亿kW 是功率，4.35 亿kWh 是能量；平均时长 = 能量 ÷ 功率 = 2.61 h。</li><li><strong>&quot;新型储能&quot;不含抽水蓄能</strong>：与&quot;储能总装机&quot;、&quot;调节性电源&quot;不是同一口径。</li><li><strong>915 h 是 2026 年 1-9 月等效利用小时数</strong>，不是全年；2025 年全年为 1,195 h，两者不可直接比。</li><li><strong>系统价与 EPC 价不可比</strong>：系统价含电池、BMS、PCS、EMS 等设备；EPC 含设计、土建、升压、并网、消防。</li><li><strong>元/Wh 要注明 DC 侧/AC 侧、额定/可用、2 h/4 h</strong>；否则价格没有意义。</li><li><strong>构网渗透率要注明&quot;新增/累计&quot;与&quot;功率/能量&quot;口径</strong>：2025 年新增与截至 2025-09 累计的数据存在冲突。</li><li><strong>GB 与 GB/T 不同</strong>：GB 44240-2024 是强制性国标；GB/T 是推荐性国标。</li><li><strong>&quot;2026-04 全国强制构网&quot;未证实</strong>：引用政策必须给出文号；没有文号的行业说法只能标 C 级。</li><li><strong>构网不是&quot;软件功能&quot;</strong>：3 倍过流、能量、保护配合、现场实测缺一不可；采购时要写测试条件与判据。</li><li><strong>LCOS 算例是 D 级</strong>：不含充电电费、容量补偿、辅助服务、土地与并网成本，不能直接当投资结论。</li></ul>
+    </article>
+
+    <nav class="pager" aria-label="上下篇">
+          <span class="spacer"></span>
+          <a class="next" href="电力系统通识-A-格局与主体.html"><span class="dir">下一篇 →</span><span class="ttl">电力系统通识 A · 格局与主体</span></a>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../储能技术路线安全与构网型并网-2026-11.md">knowledge/储能技术路线安全与构网型并网-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div><a href="../index.html">返回知识库总览 →</a></div>
+    </footer>
+  </main>
+
+  <aside class="toc">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv2"><a href="#s5">1. 储能分类与选型坐标</a></li>
+            <li class="lv2"><a href="#s10">2. 技术路线逐条</a></li>
+            <li class="lv2"><a href="#s19">3. 技术路线对比与选型算例</a></li>
+            <li class="lv2"><a href="#s24">4. 安全：从电芯到站级</a></li>
+            <li class="lv2"><a href="#s34">5. 构网型并网</a></li>
+            <li class="lv2"><a href="#s45">6. 三条主线的交叉决策</a></li>
+            <li class="lv2"><a href="#s49">7. 常见误解（15 条）</a></li>
+            <li class="lv2"><a href="#s50">8. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s51">9. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s52">速查：标准、参数与口径</a></li>
+    </ol>
+  </aside>
+</div>
+
+<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<script src="../assets/doc.js"></script>
+</body>
+</html>
