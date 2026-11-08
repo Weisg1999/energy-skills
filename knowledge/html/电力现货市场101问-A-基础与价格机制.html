@@ -9,13 +9,14 @@
 <link rel="stylesheet" href="../assets/knowledge.css">
 </head>
 <body data-cat="spot" id="top">
+<a class="skip" href="#main">跳到正文</a>
 <div class="progress" id="progress"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
   <a class="back" href="../index.html">← 知识库</a>
   <div class="crumb">
-    <span class="crumb-cat">04 / SPOT</span>
+    <span class="crumb-cat">05 / SPOT</span>
     <span class="crumb-sep">/</span>
     <span class="crumb-doc">101 问 A · 基础与价格机制</span>
   </div>
@@ -28,11 +29,13 @@
 <div class="shell">
   <aside class="sidebar" id="nav">
     <div class="nav-kicker">当前分类</div>
-    <div class="nav-num">04 / SPOT</div>
+    <div class="nav-num">05 / SPOT</div>
     <h2 class="nav-cat"><a href="../index.html#spot">电力现货与省间交易</a></h2>
     <ul class="nav-list">
               <li><a href="省间与跨区交易-2026-11.html">省间与跨区交易（2026 版）</a></li>
-              <li class="on"><a href="电力现货市场101问-A-基础与价格机制.html">101 问 A · 基础与价格机制</a></li>
+              <li><a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a></li>
+              <li><a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算（2026 版）</a></li>
+              <li class="on" aria-current="page"><a href="电力现货市场101问-A-基础与价格机制.html">101 问 A · 基础与价格机制</a></li>
               <li><a href="电力现货市场101问-B-出清结算与省域实践.html">101 问 B · 出清结算与省域实践</a></li>
               <li><a href="电力现货市场101问-C-结算TTS与政策演进.html">101 问 C · 结算、TTS 与政策演进</a></li>
               <li><a href="电力现货市场实务-精读笔记.html">电力现货市场实务</a></li>
@@ -40,22 +43,22 @@
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
       <ul>
-              <li><a href="../index.html#foundation"><b>03</b>通识与经济学</a></li>
-              <li><a href="../index.html#price"><b>05</b>电价</a></li>
-              <li><a href="../index.html#renewable"><b>06</b>新能源与并网</a></li>
-              <li><a href="../index.html#storage"><b>07</b>储能与 EMS</a></li>
-              <li><a href="../index.html#park"><b>08</b>综合能源与零碳园区</a></li>
-              <li><a href="../index.html#carbon"><b>09</b>碳市场与碳管理</a></li>
-              <li><a href="../index.html#vpp"><b>10</b>虚拟电厂</a></li>
-              <li><a href="../index.html#index"><b>11</b>索引、查证与工具</a></li>
-              <li><a href="../index.html#research"><b>12</b>调研底稿</a></li>
+              <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
+              <li><a href="../index.html#price"><b>06</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>07</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>08</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>11</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
       </ul>
     </div>
   </aside>
 
   <main class="main" id="main">
     <header class="doc-head">
-      <div class="kicker">04 / SPOT<i>教材笔记</i></div>
+      <div class="kicker">05 / SPOT<i>教材笔记</i></div>
       <h1 class="doc-title">《电力现货市场101问》主题笔记A · 基础与价格机制（第1~26问）</h1>
       <p class="lede">第 1–26 问：电力市场定义、现货体系、集中式与分散式、SMP / ZMP / LMP。</p>
       <p class="hook">现货为什么是市场体系的重点</p>
@@ -64,20 +67,8 @@
     </header>
 
     <details class="toc-mobile">
-      <summary>本页目录（13）</summary>
+      <summary>本页目录（1）</summary>
       <ol>
-            <li class="lv3"><a href="#s1">市场定义、体系与划分维度（第1~3问）</a></li>
-            <li class="lv3"><a href="#s2">现货市场：定义、特征与建设必要性（第4、15问）</a></li>
-            <li class="lv3"><a href="#s3">现货子市场时序与出清流程（第13、14、26问）</a></li>
-            <li class="lv3"><a href="#s4">集中式与分散式模式（第12问）</a></li>
-            <li class="lv3"><a href="#s5">价格机制与结算（第17、18问）</a></li>
-            <li class="lv3"><a href="#s6">阻塞管理、输电权与网损（第9、16、21、22问）</a></li>
-            <li class="lv3"><a href="#s7">输配电价与不平衡费用（第19、20问）</a></li>
-            <li class="lv3"><a href="#s8">价格帽（第25问）</a></li>
-            <li class="lv3"><a href="#s9">中长期市场与现货衔接（第5问）</a></li>
-            <li class="lv3"><a href="#s10">电力金融市场：期货、期权与差价合约（第10、11问）</a></li>
-            <li class="lv3"><a href="#s11">辅助服务市场（第6、7、23问）</a></li>
-            <li class="lv3"><a href="#s12">容量机制与搁浅成本（第8、24问）</a></li>
             <li class="lv2"><a href="#s13">速查：关键数字与文号</a></li>
       </ol>
     </details>
@@ -112,9 +103,18 @@
 <div class="table-wrap"><table><thead><tr><th>项目</th><th>数值/文号</th></tr></thead><tbody><tr><td>纲领文件</td><td>中发〔2015〕9号（2015-03-15电改）；中发〔2015〕28号（价格机制）；&quot;四个革命、一个合作&quot;（2014-06）</td></tr><tr><td>市场与现货文号</td><td>828号文（发改办能源规〔2019〕828号现货深化意见）；889号文（发改能源规〔2020〕889号中长期规则）；1453号文（2017现货试点）；六签：发改运行〔2020〕1784号（2020-11）</td></tr><tr><td>输配电价与网损</td><td>发改价格〔2016〕2711号（省级）；发改价格规〔2017〕2269号（区域）；网损约占总发电量5%~10%；线损率数据每年5月底前报送</td></tr><tr><td>结算与机制文号</td><td>现货结算功能指南（2018-12试行）；电力市场建设工作指引（2020-10-16，取消平衡资金池）</td></tr><tr><td>中长期签约</td><td>≥上年用电量95%或前三年平均，放宽至90%；鼓励2~3年以上</td></tr><tr><td>试点报价/出清上下限（元/MWh）</td><td>广东0~1000（出清70~1500）；山东80~1300（出清80~1500）；浙江-200~1200；甘肃0~1000；山西0~1500（火电0~800、新能源0~740）；四川水电75~253.72、火电341.02~441.32；蒙西40~550/600</td></tr><tr><td>国内外价格帽</td><td>我国上限≈现货均价3倍且设下限；美国5市场统一1000美元/MWh≈均价30~40美元的25~33倍、无下限；加州5000→125→250→750→500→250；澳10000澳元、英格兰威尔士9999英镑、安大略2000加元/MWh</td></tr><tr><td>时间颗粒</td><td>日前15min×96时段（或48）；日内15~60min；实时5/10/15min；英国连续竞价至运行前15min；北欧申报D-1 12:00、日内至交付前1h、平衡报价至实时前45min；美国D-1 12:00报价、16:00发布</td></tr><tr><td>加州危机</td><td>电价30（1998-99）→385.6（2000-12）→370（2001-04）美元/MWh；天然气涨3倍（管道故障涨10倍以上）</td></tr><tr><td>英国容量市场</td><td>2013年EMR；首拍19.4→2018年8.4英镑/(kW·年)停摆；新建仅5%、DSR 0.35%、存量64%</td></tr><tr><td>PJM容量</td><td>1999年CCM（出清&lt;需求10%）→2007年RPM（1 BRA+3追加拍卖+1双边）</td></tr><tr><td>英国市场结构</td><td>双边实物合同95%、OTC约90%电量、交易所&lt;10%、平衡机制2%~5%；现货用电比例约30%</td></tr><tr><td>电力金融年份</td><td>期权1996年NYMEX、1999年北欧；北欧金融2008年转纳斯达克、期限最长6年</td></tr><tr><td>算例数字</td><td>阻塞盈余=300万−132万=168万元；三节点报价80/160/400元/MWh、限额8000MW、抬价400→800元/MWh</td></tr><tr><td>搁浅成本</td><td>电价过渡费附加≈电费8%~12%；证券化CCC→SPV→SCB；容量回收按Net CONE</td></tr><tr><td>辅助服务参数</td><td>旋转备用10min内可调用；华东低频调节49.93Hz；西北调停备用/南方冷备用72h；美国调频60Hz、5min内；挪威最佳运行点≈最大出力85%；竞标合同2~5年</td></tr><tr><td>经济调度公式</td><td>微增煤耗率=dS/dP；1980年Schweppe实时电价源自最优潮流；CfD收益=Σ[(合约价−基准价)×合约量]</td></tr><tr><td>输配电价公式</td><td>准许收入=准许成本+合理收益+税金；准许收益率=权益资本收益率×(1−资产负债率)+债务资本收益率×资产负债率；315kVA及以上工商业两部制</td></tr></tbody></table></div>
     </article>
 
+    <section class="related" aria-label="相关模块">
+      <h2>相关模块</h2>
+      <ul>
+        <li><a href="电力现货市场101问-B-出清结算与省域实践.html">101 问 B · 出清结算与省域实践</a></li>
+        <li><a href="电力现货市场101问-C-结算TTS与政策演进.html">101 问 C · 结算、TTS 与政策演进</a></li>
+        <li><a href="电力系统经济学原理-主题笔记.html">电力系统经济学原理</a></li>
+      </ul>
+    </section>
+
     <nav class="pager" aria-label="上下篇">
-          <span class="spacer"></span>
-          <a class="next" href="电力系统通识-A-格局与主体.html"><span class="dir">下一篇 →</span><span class="ttl">电力系统通识 A · 格局与主体</span></a>
+          <a class="prev" href="电力市场风险、信用与结算-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">电力市场风险、信用与结算（2026 版）</span></a>
+          <a class="next" href="电力现货市场101问-B-出清结算与省域实践.html"><span class="dir">下一篇 →</span><span class="ttl">101 问 B · 出清结算与省域实践</span></a>
     </nav>
 
     <footer class="doc-foot">
@@ -123,7 +123,7 @@
     </footer>
   </main>
 
-  <aside class="toc">
+  <aside class="toc" aria-label="本页目录">
     <div class="toc-title">本页目录</div>
     <ol>
             <li class="lv3"><a href="#s1">市场定义、体系与划分维度（第1~3问）</a></li>
@@ -139,7 +139,7 @@
             <li class="lv3"><a href="#s11">辅助服务市场（第6、7、23问）</a></li>
             <li class="lv3"><a href="#s12">容量机制与搁浅成本（第8、24问）</a></li>
             <li class="lv2"><a href="#s13">速查：关键数字与文号</a></li>
-    </ol>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="12">展开 12 个小节</button>
   </aside>
 </div>
 

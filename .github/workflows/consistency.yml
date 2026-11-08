@@ -18,6 +18,8 @@ jobs:
           python-version: '3.12'
       - name: Check Markdown structure, links, versions and CN/EN numbers
         run: node scripts/check-consistency.mjs
+      - name: Verify the knowledge hub is up to date
+        run: node scripts/build-knowledge-html.mjs --check
       - name: Run the spot-bidding reference implementation self-test
         run: python skills/spot-bidding-quant/tools/selftest.py
       - name: Run the carbon-asset reference implementation self-test

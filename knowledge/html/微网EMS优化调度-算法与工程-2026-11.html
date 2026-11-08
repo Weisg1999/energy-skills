@@ -9,13 +9,14 @@
 <link rel="stylesheet" href="../assets/knowledge.css">
 </head>
 <body data-cat="storage" id="top">
+<a class="skip" href="#main">跳到正文</a>
 <div class="progress" id="progress"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
   <a class="back" href="../index.html">← 知识库</a>
   <div class="crumb">
-    <span class="crumb-cat">07 / STORAGE</span>
+    <span class="crumb-cat">08 / STORAGE</span>
     <span class="crumb-sep">/</span>
     <span class="crumb-doc">微网 EMS 优化调度</span>
   </div>
@@ -28,38 +29,38 @@
 <div class="shell">
   <aside class="sidebar" id="nav">
     <div class="nav-kicker">当前分类</div>
-    <div class="nav-num">07 / STORAGE</div>
+    <div class="nav-num">08 / STORAGE</div>
     <h2 class="nav-cat"><a href="../index.html#storage">储能与 EMS</a></h2>
     <ul class="nav-list">
               <li><a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线、安全与构网型并网</a></li>
               <li><a href="储能投资与运营-2026-11.html">储能投资与运营</a></li>
               <li><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a></li>
-              <li class="on"><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a></li>
+              <li class="on" aria-current="page"><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a></li>
     </ul>
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
       <ul>
-              <li><a href="../index.html#foundation"><b>03</b>通识与经济学</a></li>
-              <li><a href="../index.html#spot"><b>04</b>电力现货与省间交易</a></li>
-              <li><a href="../index.html#price"><b>05</b>电价</a></li>
-              <li><a href="../index.html#renewable"><b>06</b>新能源与并网</a></li>
-              <li><a href="../index.html#park"><b>08</b>综合能源与零碳园区</a></li>
-              <li><a href="../index.html#carbon"><b>09</b>碳市场与碳管理</a></li>
-              <li><a href="../index.html#vpp"><b>10</b>虚拟电厂</a></li>
-              <li><a href="../index.html#index"><b>11</b>索引、查证与工具</a></li>
-              <li><a href="../index.html#research"><b>12</b>调研底稿</a></li>
+              <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>05</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#price"><b>06</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>07</b>新能源与并网</a></li>
+              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>11</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
       </ul>
     </div>
   </aside>
 
   <main class="main" id="main">
     <header class="doc-head">
-      <div class="kicker">07 / STORAGE<i>算法底稿</i></div>
+      <div class="kicker">08 / STORAGE<i>算法底稿</i></div>
       <h1 class="doc-title">微网 EMS 优化调度：算法、模型与工程实践</h1>
       <p class="lede">PCC 购售双变量、备用/孤岛/退化约束、MPC 滚动与验收测试，区分保护与优化。</p>
       <p class="hook">算法、模型与工程实践</p>
       <div class="tags"><span class="tag">PCC 双变量</span><span class="tag">孤岛</span><span class="tag">MPC</span></div>
-      <div class="doc-meta"><span>1,131 行</span><span>约 24.9k 字</span><span>阅读约 45 分钟</span><span>15 节</span></div>
+      <div class="doc-meta"><span>1,131 行</span><span>约 24.9k 字</span><span>阅读约 45 分钟</span><span>15 节</span><span>数据截止 2026-11-04</span></div>
     </header>
 
     <details class="toc-mobile">
@@ -464,9 +465,18 @@ s.t. 第一阶段：日前计划 x（购售、启停、备用）
 <p><em>本笔记为工程方法整理；所有算例均为合成数据。</em></p>
     </article>
 
+    <section class="related" aria-label="相关模块">
+      <h2>相关模块</h2>
+      <ul>
+        <li><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a></li>
+        <li><a href="综合能源与零碳园区-2026-11.html">综合能源与零碳园区</a></li>
+        <li><a href="需求响应、车网互动与灵活性资源-2026-11.html">需求响应、车网互动与灵活性资源</a></li>
+      </ul>
+    </section>
+
     <nav class="pager" aria-label="上下篇">
-          <span class="spacer"></span>
-          <a class="next" href="电力系统通识-A-格局与主体.html"><span class="dir">下一篇 →</span><span class="ttl">电力系统通识 A · 格局与主体</span></a>
+          <a class="prev" href="储能EMS优化调度-算法与工程-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">储能 EMS 优化调度</span></a>
+          <a class="next" href="综合能源与零碳园区-2026-11.html"><span class="dir">下一篇 →</span><span class="ttl">综合能源与零碳园区</span></a>
     </nav>
 
     <footer class="doc-foot">
@@ -475,25 +485,103 @@ s.t. 第一阶段：日前计划 x（购售、启停、备用）
     </footer>
   </main>
 
-  <aside class="toc">
+  <aside class="toc" aria-label="本页目录">
     <div class="toc-title">本页目录</div>
     <ol>
             <li class="lv2"><a href="#s1">0. 一页速查</a></li>
+            <li class="lv3"><a href="#s2">0.1 微网控制链分层</a></li>
+            <li class="lv3"><a href="#s3">0.2 三句话</a></li>
+            <li class="lv3"><a href="#s4">0.3 适用与不适用</a></li>
             <li class="lv2"><a href="#s5">1. 问题定位：微网 EMS 是什么运筹问题</a></li>
+            <li class="lv3"><a href="#s6">1.1 六维度识别</a></li>
+            <li class="lv3"><a href="#s7">1.2 为什么是 MILP，而不是 LP 或 NLP</a></li>
+            <li class="lv3"><a href="#s8">1.3 与经典运筹问题的同构关系</a></li>
+            <li class="lv3"><a href="#s9">1.4 标准坐标（中国）</a></li>
+            <li class="lv3"><a href="#s10">1.5 标准坐标（国际）</a></li>
+            <li class="lv3"><a href="#s11">1.6 三条硬约束（模型必须显式表达）</a></li>
+            <li class="lv3"><a href="#s12">1.7 常见口径误区</a></li>
             <li class="lv2"><a href="#s13">2. 参考架构：原型—求解—编排三层</a></li>
+            <li class="lv3"><a href="#s14">2.1 数据流（抽象）</a></li>
+            <li class="lv3"><a href="#s15">2.2 MMCS 与 MEMS 的分工</a></li>
+            <li class="lv3"><a href="#s16">2.3 五条架构经验</a></li>
+            <li class="lv3"><a href="#s17">2.4 评估—优化闭环</a></li>
+            <li class="lv3"><a href="#s18">2.5 输入数据契约（字段清单）</a></li>
             <li class="lv2"><a href="#s19">3. 统一数学模型</a></li>
+            <li class="lv3"><a href="#s20">3.1 集合与参数</a></li>
+            <li class="lv3"><a href="#s21">3.2 决策变量</a></li>
+            <li class="lv3"><a href="#s22">3.3 目标函数（最小化）</a></li>
+            <li class="lv3"><a href="#s23">3.4 约束条件</a></li>
+            <li class="lv3"><a href="#s24">3.5 模型边界：不建模什么</a></li>
+            <li class="lv3"><a href="#s25">3.6 规模量级</a></li>
             <li class="lv2"><a href="#s26">4. 关键建模技巧</a></li>
+            <li class="lv3"><a href="#s27">4.1 SOC 递推必须含效率与自放电</a></li>
+            <li class="lv3"><a href="#s28">4.2 充放互斥：Big-M、SOS1 与指示约束</a></li>
+            <li class="lv3"><a href="#s29">4.3 需量电费：对购电功率取最大</a></li>
+            <li class="lv3"><a href="#s30">4.4 绝对值：u-v 拆解</a></li>
+            <li class="lv3"><a href="#s31">4.5 SOC 日循环与跨日套利</a></li>
+            <li class="lv3"><a href="#s32">4.6 用变量界代替逻辑约束</a></li>
+            <li class="lv3"><a href="#s33">4.7 EV/V2G 建模</a></li>
+            <li class="lv3"><a href="#s34">4.8 多储能聚合</a></li>
+            <li class="lv3"><a href="#s35">4.9 退化建模的三档精度</a></li>
+            <li class="lv3"><a href="#s36">4.10 备用的四个维度</a></li>
+            <li class="lv3"><a href="#s37">4.11 孤岛、GFM 与黑启动</a></li>
+            <li class="lv3"><a href="#s38">4.12 与储能 EMS 的接口边界</a></li>
+            <li class="lv3"><a href="#s39">4.13 常见建模错误</a></li>
             <li class="lv2"><a href="#s40">5. 求解与工程化</a></li>
+            <li class="lv3"><a href="#s41">5.1 分支定界在做什么</a></li>
+            <li class="lv3"><a href="#s42">5.2 生产求解器必须设的参数</a></li>
+            <li class="lv3"><a href="#s43">5.3 降级阶梯</a></li>
+            <li class="lv3"><a href="#s44">5.4 分解与加速</a></li>
+            <li class="lv3"><a href="#s45">5.5 数值与实现陷阱</a></li>
+            <li class="lv3"><a href="#s46">5.6 基准与回归</a></li>
             <li class="lv2"><a href="#s47">6. 双时间尺度与 MPC</a></li>
+            <li class="lv3"><a href="#s48">6.1 日前 + 日内双环</a></li>
+            <li class="lv3"><a href="#s49">6.2 MPC 形式</a></li>
+            <li class="lv3"><a href="#s50">6.3 与教科书 MPC 的差距</a></li>
+            <li class="lv3"><a href="#s51">6.4 分层设定值链</a></li>
+            <li class="lv3"><a href="#s52">6.5 事件驱动调度</a></li>
+            <li class="lv3"><a href="#s53">6.6 状态机（IEEE 2030.7 口径）</a></li>
+            <li class="lv3"><a href="#s54">6.7 备用部署与跟踪</a></li>
+            <li class="lv3"><a href="#s55">6.8 反模式</a></li>
             <li class="lv2"><a href="#s56">7. 不确定性优化</a></li>
+            <li class="lv3"><a href="#s57">7.1 不确定性来源</a></li>
+            <li class="lv3"><a href="#s58">7.2 确定性 + 备用</a></li>
+            <li class="lv3"><a href="#s59">7.3 两阶段随机规划与 CVaR</a></li>
+            <li class="lv3"><a href="#s60">7.4 鲁棒优化</a></li>
+            <li class="lv3"><a href="#s61">7.5 分布鲁棒与机会约束</a></li>
+            <li class="lv3"><a href="#s62">7.6 多目标</a></li>
+            <li class="lv3"><a href="#s63">7.7 成熟度分级</a></li>
+            <li class="lv3"><a href="#s64">7.8 评估方法</a></li>
+            <li class="lv3"><a href="#s65">7.9 建议顺序</a></li>
             <li class="lv2"><a href="#s66">8. 可调能力评估：可行域边界</a></li>
+            <li class="lv3"><a href="#s67">8.1 典型计算</a></li>
+            <li class="lv3"><a href="#s68">8.2 闭环</a></li>
+            <li class="lv3"><a href="#s69">8.3 与并网标准对齐</a></li>
+            <li class="lv3"><a href="#s70">8.4 常见错误</a></li>
             <li class="lv2"><a href="#s71">9. 算例（合成数据）</a></li>
+            <li class="lv3"><a href="#s72">9.1 设定</a></li>
+            <li class="lv3"><a href="#s73">9.2 结果</a></li>
+            <li class="lv3"><a href="#s74">9.3 典型解形态</a></li>
+            <li class="lv3"><a href="#s75">9.4 敏感性（定性）</a></li>
+            <li class="lv3"><a href="#s76">9.5 读法</a></li>
+            <li class="lv3"><a href="#s77">9.6 需量与退化的量化补充</a></li>
             <li class="lv2"><a href="#s78">10. 工程复核清单</a></li>
+            <li class="lv3"><a href="#s79">10.1 P0：影响正确性或可用性</a></li>
+            <li class="lv3"><a href="#s80">10.2 P1：影响性能或可维护性</a></li>
+            <li class="lv3"><a href="#s81">10.3 P2：工程化与可观测性</a></li>
+            <li class="lv3"><a href="#s82">10.4 标准合规映射</a></li>
+            <li class="lv3"><a href="#s83">10.5 测试与验收</a></li>
+            <li class="lv3"><a href="#s84">10.6 红线</a></li>
             <li class="lv2"><a href="#s85">11. 对微网 EMS 模块的写法建议</a></li>
+            <li class="lv3"><a href="#s86">11.1 模块边界</a></li>
+            <li class="lv3"><a href="#s87">11.2 需要补充的材料</a></li>
+            <li class="lv3"><a href="#s88">11.3 与现有技能的分工</a></li>
+            <li class="lv3"><a href="#s89">11.4 待核实</a></li>
+            <li class="lv3"><a href="#s90">11.5 后续 SKILL 章节草案</a></li>
             <li class="lv2"><a href="#s91">12. 公开工具与数据</a></li>
             <li class="lv2"><a href="#s92">13. 内容说明</a></li>
             <li class="lv2"><a href="#s93">14. 来源分级</a></li>
-    </ol>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="78">展开 78 个小节</button>
   </aside>
 </div>
 

@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>量化报价与交易风控 | energy-skills 知识库</title>
+<meta name="description" content="预测→报价→申报→结算→归因的工程闭环，含风控限额、对账与 2026 规则版本管理。">
+<link rel="stylesheet" href="../assets/knowledge.css">
+</head>
+<body data-cat="spot" id="top">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html">← 知识库</a>
+  <div class="crumb">
+    <span class="crumb-cat">05 / SPOT</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">量化报价与交易风控</span>
+  </div>
+  <div class="topbar-act">
+    <a class="src" href="../量化报价与交易风控-工程化-2026-11.md">.md 源文件</a>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">05 / SPOT</div>
+    <h2 class="nav-cat"><a href="../index.html#spot">电力现货与省间交易</a></h2>
+    <ul class="nav-list">
+              <li><a href="省间与跨区交易-2026-11.html">省间与跨区交易（2026 版）</a></li>
+              <li class="on" aria-current="page"><a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a></li>
+              <li><a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算（2026 版）</a></li>
+              <li><a href="电力现货市场101问-A-基础与价格机制.html">101 问 A · 基础与价格机制</a></li>
+              <li><a href="电力现货市场101问-B-出清结算与省域实践.html">101 问 B · 出清结算与省域实践</a></li>
+              <li><a href="电力现货市场101问-C-结算TTS与政策演进.html">101 问 C · 结算、TTS 与政策演进</a></li>
+              <li><a href="电力现货市场实务-精读笔记.html">电力现货市场实务</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
+              <li><a href="../index.html#price"><b>06</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>07</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>08</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>11</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">05 / SPOT<i>知识模块</i></div>
+      <h1 class="doc-title">量化报价与交易风控：从预测到结算的工程闭环（2026-11）</h1>
+      <p class="lede">预测→报价→申报→结算→归因的工程闭环，含风控限额、对账与 2026 规则版本管理。</p>
+      <p class="hook">2026-11 · 工程与风控</p>
+      <div class="tags"><span class="tag">工程闭环</span><span class="tag">CVaR</span><span class="tag">结算对账</span></div>
+      <div class="doc-meta"><span>1,036 行</span><span>约 25.1k 字</span><span>阅读约 43 分钟</span><span>15 节</span><span>数据截止 2026-11-01</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（15）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv2"><a href="#s5">1. 边界与角色</a></li>
+            <li class="lv2"><a href="#s10">2. 规则参数层（2026-11）</a></li>
+            <li class="lv2"><a href="#s18">3. 数据层：数据契约与防泄露</a></li>
+            <li class="lv2"><a href="#s25">4. 预测：从点预测到决策分布</a></li>
+            <li class="lv2"><a href="#s32">5. 报价与组合决策</a></li>
+            <li class="lv2"><a href="#s43">6. 回测与仿真</a></li>
+            <li class="lv2"><a href="#s50">7. 交易风控体系</a></li>
+            <li class="lv2"><a href="#s60">8. 结算对账与收益归因</a></li>
+            <li class="lv2"><a href="#s67">9. 工程架构</a></li>
+            <li class="lv2"><a href="#s75">10. 算例（合成，D 级）</a></li>
+            <li class="lv2"><a href="#s80">11. 常见误解（15 条）</a></li>
+            <li class="lv2"><a href="#s81">12. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s82">13. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s83">速查：公式、指标与参数</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>数据截止：2026-11-01｜定位：知识库模块（配套《现货报价量化专家》技能）</p><p>相关技能：<a href="../../skills/spot-bidding-quant/SKILL.md">现货报价量化专家</a>（预测/报价方法与代码）、<a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a>（市场规则/结算）、<a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a>（收益/投决）、<a href="../../skills/virtual-power-plant/SKILL.md">虚拟电厂专家</a>（聚合/基线）、<a href="../../skills/renewable-project-development/SKILL.md">新能源项目开发与并网专家</a>（功率预测/并网）</p><p>用途：回答&quot;报价系统怎么搭、风控限额怎么设、结算怎么对、规则变了怎么跟&quot;四类问题。预测算法、报价公式与代码实现以技能为准；本文只做<strong>工程架构、风控治理、结算对账与规则版本管理</strong>，不重复推导方法。</p></aside>
+<hr>
+<h2 id="s1">0. 一页看懂</h2>
+<h3 id="s2">0.1 一条闭环</h3>
+<pre><code> 市场规则/合同/调度/气象/计量/信用
+              │
+              ▼
+      数据接入与质量校验
+              │
+              ▼
+   预测（价格/负荷/新能源）──► 场景与概率分布
+              │                         │
+              └────────┬────────────────┘
+                       ▼
+            报价与组合优化（量价曲线）
+                       │
+                       ▼
+        规则校验 → 限额校验 → 双人审批
+                       │
+                       ▼
+              申报网关（回执/改单/留痕）
+                       │
+                       ▼
+        出清结果 → 结算单 → 对账 → 归因
+                       │                    │
+                       └──── 风控与绩效 ◄───┘
+                                  │
+                                  ▼
+                        规则/模型/限额迭代</code></pre>
+<ul><li><strong>闭环的重点不是&quot;预测更准&quot;，而是每一环都能被追溯、复现和拦截</strong>：错了要知道错在哪一环，改了什么、谁批准的、影响多少钱。</li><li><strong>风控不是最后一道止损</strong>：限额、授权、校验、对账要嵌进流程；事后止损只能减少损失，不能防止错误发生。</li></ul>
+<h3 id="s3">0.2 关键数字</h3>
+<div class="table-wrap"><table><thead><tr><th>数字</th><th>含义</th><th>来源与级别</th></tr></thead><tbody><tr><td>至少 11 个</td><td>截至 2026-09-30 省级现货市场正式运行数量</td><td>各省公告汇总，B</td></tr><tr><td>2026-10-24</td><td>南方区域电力市场转入正式运行；统一出清、15 分钟价格</td><td>交易机构公告，A/B</td></tr><tr><td>2027-01-01</td><td>《电力现货市场基本规则（公开征求意见稿）》拟施行；有效期 5 年</td><td>国家发改委 2026-10-19，A（草案）</td></tr><tr><td>2026-11-18</td><td>现货新规征求意见截止</td><td>国家发改委，A</td></tr><tr><td>2026-03-01</td><td>1656 号《电力中长期市场基本规则》施行；入市主体不再执行政府固定分时</td><td>发改能源规〔2025〕1656号，A</td></tr><tr><td>1000–1500 / −100–0</td><td>申报或出清价格上下限的常见量级（元/MWh）</td><td>省级规则汇总，B/C</td></tr><tr><td>96 / 288</td><td>日前 15 分钟结算点 / 实时 5 分钟点（部分省）</td><td>省级规则，B</td></tr><tr><td>200 万元</td><td>售电公司履约保障额度最低值（征求意见稿）</td><td>2026-09-04 草案及媒体解读，A（草案）/B</td></tr><tr><td>A/B/C/D</td><td>全国统一电力市场信用评价四级</td><td>2026-10-13 征求意见稿，A（草案）</td></tr><tr><td>400+</td><td>2026 年前 7 月退出市场的售电公司数量</td><td>媒体报道，C</td></tr><tr><td>298/500</td><td>广东上半年亏损售电公司数/总数</td><td>媒体报道，C</td></tr><tr><td>0.068 元/kWh</td><td>2026 年 Q1-Q3 全国平均系统运行费</td><td>行业口径，B/C</td></tr></tbody></table></div>
+<h3 id="s4">0.3 七个判断</h3>
+<ol><li><strong>报价是约束优化，不是价格预测比赛</strong>：预测再准，合约覆盖、爬坡、最小出力、考核和限额任一不满足，收益都归零甚至为负。</li><li><strong>风控先于收益</strong>：先定义&quot;最多能亏多少、谁能批、什么情况必须停&quot;，再谈策略；没有限额的策略只是赌方向。</li><li><strong>规则版本是一等公民</strong>：2026-2027 是换版年，草案与正式稿、省级与区域、旧版与新版必须分库存放，报价系统要能按生效日切换。</li><li><strong>结算对账是最后一道风控</strong>：申报、出清、计量、结算四处任一错位，都会表现为&quot;模型很准但钱对不上&quot;。</li><li><strong>回测必须能复现申报时点</strong>：任何特征都要回答&quot;D-1 申报截止前是否已存在&quot;；用未来数据做回测，等于用答案倒推过程。</li><li><strong>工程化的核心是数据契约与审计链</strong>：字段、单位、时点、版本、来源、质量标记缺一不可；没有留痕的改单等于放弃复盘。</li><li><strong>2026 的草案不能当现行规则</strong>：现货新规、风险防控、售电管理、信用评价均在征求意见阶段，2027 年起才可能切换；答题与系统配置都要标注状态。</li></ol>
+<hr>
+<h2 id="s5">1. 边界与角色</h2>
+<h3 id="s6">1.1 报价、交易、风控不是一件事</h3>
+<div class="table-wrap"><table><thead><tr><th>职能</th><th>目标</th><th>关键产出</th><th>典型失败</th></tr></thead><tbody><tr><td>量化研究</td><td>找到可复现的预测/策略增益</td><td>特征、模型、回测报告</td><td>过拟合、样本外失效</td></tr><tr><td>报价/交易</td><td>在规则与限额内最大化风险调整后收益</td><td>量价曲线、申报文件、改单记录</td><td>规则误读、申报越限、追涨杀跌</td></tr><tr><td>风控</td><td>把损失控制在可承受范围</td><td>限额、授权、压力测试、预警</td><td>限额虚设、事后才看见</td></tr><tr><td>结算/财务</td><td>把市场结果准确变成钱</td><td>结算单、对账单、差异说明</td><td>科目漏项、计量错位、跨期错配</td></tr><tr><td>运营/IT</td><td>让上述流程稳定、可审计</td><td>数据管道、申报网关、监控</td><td>数据断供、重复申报、无回滚</td></tr></tbody></table></div>
+<ul><li><strong>四眼原则</strong>：报价、风控、结算不能由同一人兼任；模型上线、限额调整、人工改单都要有第二人复核。</li><li><strong>职责分离不是形式</strong>：前台负责收益，中台负责独立计量与限额，后台负责对账与资金；三者的考核指标不能完全相同。</li></ul>
+<h3 id="s7">1.2 三类主体的报价身份与主要风险</h3>
+<div class="table-wrap"><table><thead><tr><th>主体</th><th>常见报价身份</th><th>主要收益来源</th><th>主要风险</th><th>关键约束</th></tr></thead><tbody><tr><td>煤电/气电</td><td>报量报价</td><td>电能量 + 辅助服务 + 容量</td><td>燃料价格、启停成本、考核、市场力监管</td><td>最小出力、爬坡、启停时间、供热</td></tr><tr><td>新能源</td><td>报量报价或报量不报价</td><td>电能量 + 机制电价差价 + 绿证</td><td>出力预测偏差、捕获价下降、偏差考核</td><td>预测精度、并网考核、场站可用率</td></tr><tr><td>储能</td><td>报量报价（部分省）</td><td>现货套利 + 辅助服务 + 容量补偿 + 租赁</td><td>价差收窄、退化、SOC 越限、考核</td><td>充放电效率、循环寿命、并网性能</td></tr><tr><td>售电公司</td><td>价格接受者/组合买方</td><td>批零价差 + 服务费</td><td>现货敞口、用户违约、保函不足</td><td>履约保障、零售套餐、偏差考核</td></tr><tr><td>VPP/负荷聚合商</td><td>报量报价/响应</td><td>现货 + 辅助服务 + 需求响应</td><td>基线偏差、聚合资源失约、通信中断</td><td>基线认定、响应精度、聚合边界</td></tr></tbody></table></div>
+<h3 id="s8">1.3 与技能的分工</h3>
+<div class="table-wrap"><table><thead><tr><th>主题</th><th>主责</th><th>本模块的处理</th></tr></thead><tbody><tr><td>负荷/电价/新能源预测算法、残差校正、报价公式、代码</td><td>《现货报价量化专家》</td><td>只引用接口与指标，不重复推导</td></tr><tr><td>现货/中长期/辅助服务/容量市场规则与结算科目</td><td>《电力交易专家》</td><td>引用文号与规则状态，讲对系统的影响</td></tr><tr><td>储能投决、收益堆叠、LCOS/IRR/DSCR</td><td>《储能投资与运营专家》</td><td>引用收益口径，讲交易侧实现与风控</td></tr><tr><td>VPP 聚合、基线、响应考核</td><td>《虚拟电厂专家》</td><td>引用聚合边界，讲组合报价与结算</td></tr><tr><td>新能源功率预测、并网与考核</td><td>《新能源项目开发与并网专家》</td><td>引用预测/考核要求，讲报价接口</td></tr><tr><td><strong>工程架构、风控治理、结算对账、规则版本管理</strong></td><td><strong>本模块</strong></td><td>给出可落地的流程、表格与检查清单</td></tr></tbody></table></div>
+<h3 id="s9">1.4 一条硬边界</h3>
+<p>本模块只讨论合规的报价、风控与审计，不提供以下方法：操纵市场价格、持留容量、串通报价、虚假申报、内幕交易、规避监管、伪造计量或结算数据。发现此类需求，应直接拒绝并提示合规风险。</p>
+<hr>
+<h2 id="s10">2. 规则参数层（2026-11）</h2>
+<h3 id="s11">2.1 市场状态：先问省份，再谈策略</h3>
+<div class="table-wrap"><table><thead><tr><th>市场</th><th>状态</th><th>关键时点</th><th>对报价系统的含义</th></tr></thead><tbody><tr><td>河北南网</td><td>正式</td><td>2026-08</td><td>按省级细则配置段数、限价、结算</td></tr><tr><td>山西</td><td>正式</td><td>2023-12-22</td><td>现货与调峰融合，关注熔断机制</td></tr><tr><td>蒙西</td><td>正式</td><td>2025-02-24</td><td>单轨制全电量现货，报价空间不同</td></tr><tr><td>浙江</td><td>正式</td><td>2025-08-07</td><td>零售侧市场化程度高，套餐与现货联动</td></tr><tr><td>安徽</td><td>正式</td><td>2026-09-09</td><td>独立储能容量电价按 114 号文落地</td></tr><tr><td>福建</td><td>正式</td><td>2026-09-30</td><td>辅助服务细则已纳入 VPP/储能</td></tr><tr><td>山东</td><td>正式</td><td>2024-06-17</td><td>负电价、深调、储能考核样本多</td></tr><tr><td>湖北</td><td>正式</td><td>2025-06</td><td>现货转正较早，规则相对稳定</td></tr><tr><td>广东</td><td>正式</td><td>2023-12-28</td><td>南方区域市场核心省，15 分钟价格</td></tr><tr><td>陕西</td><td>正式</td><td>2026-09-25</td><td>独立储能容量电价按 114 号文落地</td></tr><tr><td>甘肃</td><td>正式</td><td>2024-09-05</td><td>新能源高占比，先电能量后调频</td></tr><tr><td>南方区域</td><td>正式</td><td>2026-10-24</td><td>统一出清、15 分钟价格、跨省边界</td></tr></tbody></table></div>
+<ul><li>上表为已核实样本，不是全国完整清单；空白省份不代表没有市场。</li><li><strong>&quot;省级正式&quot;与&quot;区域正式&quot;不是一回事</strong>：南方区域市场正式运行，不等于各省内现货规则完全统一；省内中长期、结算与考核仍按省级规则。</li><li>截至 2026-09-30 至少 11 个省级市场正式运行；来源对&quot;第几个&quot;有冲突，<strong>只写日期与状态，不写序号</strong>。</li></ul>
+<h3 id="s12">2.2 2026-10 现货新规草案：七个方向性变化</h3>
+<div class="table-wrap"><table><thead><tr><th>变化</th><th>草案表述（要点）</th><th>对报价系统的影响</th><th>级别</th></tr></thead><tbody><tr><td>市场范围</td><td>日前、日内、实时电能量交易</td><td>系统要支持日内调整与实时偏差</td><td>A（草案）</td></tr><tr><td>主体扩围</td><td>新型储能、VPP、负荷聚合商、智能微电网、绿电直连项目</td><td>聚合主体与联合报价需要独立建模</td><td>A（草案）</td></tr><tr><td>价格机制</td><td>以节点边际电价（LMP）为主，减少分区价与节点价并存</td><td>报价与结算要落到节点/分区，不能只用系统均价</td><td>A（草案）</td></tr><tr><td>中长期金融化</td><td>合同进一步向差价合约靠拢</td><td>合约覆盖与现货敞口要分账核算</td><td>B</td></tr><tr><td>省间衔接</td><td>省间现货制度化，明确与省内的边界</td><td>跨省组合要区分省间/省内两套价格</td><td>B</td></tr><tr><td>可靠性机组组合</td><td>容量充裕性从&quot;稀缺定价&quot;转向&quot;机制+市场&quot;</td><td>未中标机组的开机与补偿逻辑要单独建模</td><td>B</td></tr><tr><td>二次限价</td><td>在一次限价外设二级价格边界</td><td>报价扫描要覆盖二次限价触发场景</td><td>A（草案）</td></tr><tr><td>成本补偿</td><td>对安全启停等未被电能量价格覆盖的成本予以补偿</td><td>成本数据要可审计，不能只用于报价</td><td>A（草案）</td></tr></tbody></table></div>
+<ul><li><strong>条文数量</strong>：现行 1217 号文 129 条，草案压缩至约 76 条（B/C）；以正式文本为准。</li><li><strong>生效时间</strong>：草案拟 2027-01-01 施行，有效期 5 年；2026 年内仍以 1217 号文及各省细则为准。</li><li><strong>答题纪律</strong>：引用时必须写&quot;公开征求意见稿&quot;；不能把&quot;拟施行&quot;写成&quot;已施行&quot;。</li></ul>
+<h3 id="s13">2.3 中长期与合约：覆盖比例决定报价动机</h3>
+<ul><li><strong>1656 号文</strong>（2025-12-17 印发，2026-03-01 施行）：对直接参与市场交易的经营主体，不再人为规定分时电价水平和时段；电网代理购电用户仍按政府优化后的峰谷执行。</li><li><strong>合约是报价的起点</strong>：中长期合约在现货中按差价结算，不物理执行；合约覆盖率越高，机组越希望被调度，报价越贴近成本；纯现货敞口越大，越有动机赌高价时段。</li><li><strong>分解曲线</strong>：合约电量要落到 96 点或 288 点；分解曲线与申报曲线冲突，是申报校验的常见拦截项。</li><li><strong>金融化趋势</strong>：草案提出中长期进一步向差价合约靠拢；系统要把&quot;物理执行&quot;与&quot;财务结算&quot;分开建模，不能混在一个 PnL 里。</li></ul>
+<h3 id="s14">2.4 辅助服务、容量与绿电：多市场叠加不是简单相加</h3>
+<div class="table-wrap"><table><thead><tr><th>市场</th><th>主要文件</th><th>收益/成本口径</th><th>与现货的关系</th></tr></thead><tbody><tr><td>辅助服务</td><td>发改能源规〔2025〕411号；发改价格〔2024〕196号</td><td>调频、备用、爬坡、无功等；调频性能系数原则 ≤2，里程价 ≤0.015 元/kW</td><td>同一容量可能被能量与辅助服务重复调用，需做机会成本</td></tr><tr><td>容量</td><td>发改价格〔2023〕1501号；发改价格〔2026〕114号</td><td>煤电 330 元/kW·年固定成本，2026 年起回收 ≥50%；独立储能按折算比例</td><td>容量电费不是电能量收入，不能按度电叠加</td></tr><tr><td>绿电/绿证</td><td>1044 号、136 号及省级细则</td><td>绿电溢价、绿证价格、机制电价差价</td><td>绿证与电能量分开结算，避免重复计算</td></tr><tr><td>机制电价</td><td>发改价格〔2025〕136号</td><td>存量/增量、各省竞价，10/12 年执行期</td><td>机制差价与现货收入分开归因</td></tr></tbody></table></div>
+<ul><li><strong>叠加原则</strong>：同一物理容量在同一时段只能提供一种主服务；辅助服务、容量、现货收益要按可用容量与调用时长分摊，不能把三者都按满容量计算。</li><li><strong>考核扣减</strong>：并网考核、偏差考核、辅助服务考核会直接扣减收益；报价系统要把考核作为成本项，而不是事后才知道的&quot;意外&quot;。</li></ul>
+<h3 id="s15">2.5 零售、信用与履约：2026 年监管密集期</h3>
+<div class="table-wrap"><table><thead><tr><th>文件</th><th>时间/状态</th><th>关键内容</th><th>对交易系统的含义</th></tr></thead><tbody><tr><td>《关于加强电力零售市场管理有关事项的通知》</td><td>2026-06-08 印发（B/C，原文待核）</td><td>零售市场规范、套餐与信息披露</td><td>零售套餐要留痕、可解释</td></tr><tr><td>《售电公司管理办法（公开征求意见稿）》</td><td>2026-09-04，反馈至 10-04；拟 2027-01-01 施行</td><td>履约保函/保险/现金保证金；最低 200 万元；按日监测剩余额度与风险敞口；动态调整下一交易日交易限额</td><td>系统要接保函额度、日敞口与交易限额</td></tr><tr><td>《电力市场风险防控管理办法（公开征求意见稿）》</td><td>2026-09-30，反馈至 10-30；7 章 32 条（B/C）</td><td>市场内部/外部风险分类；重大/一般、紧急/非紧急；监测—预警—处置—报告闭环</td><td>风控要分市场、分主体、分紧急程度</td></tr><tr><td>《全国统一电力市场信用评价指引（公开征求意见稿）》</td><td>2026-10-13 发布（10-19 公开），反馈 30 日</td><td>A/B/C/D 四级；季度评价；全国通用；C/D 级约束</td><td>信用等级进入准入、保证金与交易权限</td></tr></tbody></table></div>
+<ul><li><strong>履约保障不是&quot;交了保函就没事&quot;</strong>：草案要求按日监测剩余额度与风险敞口，动态调整下一交易日交易限额；保函不足会直接限制交易。</li><li><strong>信用评价不是道德标签</strong>：A/B/C/D 与准入、交易权限、保证金挂钩；C/D 级主体可能被提高核验频次、限制交易或强制退出。</li><li><strong>零售侧的现实</strong>：2026 年前 7 月 400+ 售电公司退出（C）；广东上半年 298/500 亏损（C）；广西批零倒挂最大 0.373 元/kWh（C）；系统运行费 Q1-Q3 平均 0.068 元/kWh（B/C）。这些数字说明&quot;吃固定价差&quot;的模式已经失效。</li></ul>
+<h3 id="s16">2.6 报价前必须锁定的 12 项参数</h3>
+<div class="table-wrap"><table><thead><tr><th>参数</th><th>要确认什么</th><th>常见量级/口径</th></tr></thead><tbody><tr><td>规则版本</td><td>省/区域、文件号、生效日、是否草案</td><td>逐省逐年不同</td></tr><tr><td>交易窗口</td><td>日前申报开放/截止、日内调整窗口</td><td>通常 D-1 上午截止</td></tr><tr><td>报价段数</td><td>量价对最大段数、是否允许空段</td><td>常见 3–10 段</td></tr><tr><td>单调性</td><td>价格是否必须随段递增</td><td>多数省要求单调不减</td></tr><tr><td>价格上下限</td><td>申报限价、出清限价、二次限价</td><td>上限常见 1000–1500 元/MWh；下限 −100–0 元/MWh</td></tr><tr><td>申报充足率</td><td>监管关注的供给申报比例</td><td>常见 125% 量级</td></tr><tr><td>最小技术出力</td><td>机组可调下限、必开必停</td><td>煤电常见 30%–50% 额定</td></tr><tr><td>启停约束</td><td>启动时间、最小运行/停机时间</td><td>按机组类型</td></tr><tr><td>合约分解</td><td>中长期电量如何落到 96/288 点</td><td>分月分解、分日执行</td></tr><tr><td>结算方式</td><td>日前+实时双结算、偏差处理、TTS</td><td>逐省不同</td></tr><tr><td>考核条款</td><td>偏差、并网、辅助服务、功率预测</td><td>罚款可能超过报价收益</td></tr><tr><td>信用/保函</td><td>保证金、保函、交易限额</td><td>售电公司最低 200 万元（草案）</td></tr></tbody></table></div>
+<h3 id="s17">2.7 规则版本管理：把&quot;规则&quot;当代码管</h3>
+<ul><li><strong>规则登记表</strong>：每条规则记录 <code>市场 / 品种 / 条款 / 参数 / 生效日 / 失效日 / 来源 / 级别 / 影响模块 / 负责人</code>。</li><li><strong>差异比对</strong>：新版本上线前，逐条比对旧版；重点看限价、段数、结算、考核、申报时限。</li><li><strong>影响评估</strong>：每条差异标注影响的策略、模型、报表、合同；不能只改前端提示。</li><li><strong>双版本并行</strong>：跨生效日时，回测与结算要能按&quot;业务日期&quot;选择规则版本，不能用当前版本重算历史。</li><li><strong>回滚预案</strong>：规则切换失败时，能退回旧版申报模板与校验规则，并保留已提交记录。</li></ul>
+<hr>
+<h2 id="s18">3. 数据层：数据契约与防泄露</h2>
+<h3 id="s19">3.1 七个数据域</h3>
+<div class="table-wrap"><table><thead><tr><th>数据域</th><th>典型字段</th><th>主要来源</th><th>更新频率</th></tr></thead><tbody><tr><td>市场</td><td>日前/实时价格、出清量、阻塞、限价、规则版本</td><td>交易中心、调度</td><td>日/15 分钟/5 分钟</td></tr><tr><td>物理</td><td>机组容量、最小出力、爬坡、启停、供热、检修</td><td>生产系统、调度公告</td><td>日/月</td></tr><tr><td>成本</td><td>燃料价格、热耗、厂用电、启停成本、退化</td><td>ERP、燃料、财务</td><td>日/月</td></tr><tr><td>气象</td><td>温度、辐照、风速、降水、台风</td><td>气象服务、公开 API</td><td>小时/日</td></tr><tr><td>合约</td><td>中长期、零售、绿电、辅助服务、容量</td><td>交易系统、合同系统</td><td>日/月</td></tr><tr><td>结算</td><td>计量电量、结算单、考核、分摊、返还</td><td>计量、交易中心、财务</td><td>日/月</td></tr><tr><td>信用</td><td>保函、保证金、信用等级、敞口</td><td>交易中心、财务、信用平台</td><td>日/季</td></tr></tbody></table></div>
+<h3 id="s20">3.2 数据契约模板</h3>
+<div class="table-wrap"><table><thead><tr><th>字段</th><th>说明</th><th>示例</th></tr></thead><tbody><tr><td><code>name</code></td><td>字段名，统一英文 snake_case</td><td><code>da_price</code></td></tr><tr><td><code>type</code></td><td>数据类型与精度</td><td><code>decimal(10,4)</code></td></tr><tr><td><code>unit</code></td><td>单位</td><td><code>CNY/MWh</code></td></tr><tr><td><code>timestamp</code></td><td>业务时点与发布时点分开</td><td><code>delivery_start</code>, <code>published_at</code></td></tr><tr><td><code>market</code></td><td>市场与品种</td><td><code>province=SD</code>, <code>product=DA</code></td></tr><tr><td><code>rule_version</code></td><td>规则版本</td><td><code>SD-2026-05</code></td></tr><tr><td><code>source</code></td><td>来源系统与接口</td><td><code>exchange_api_v3</code></td></tr><tr><td><code>quality</code></td><td>质量标记</td><td><code>ok/missing/outlier/estimated</code></td></tr><tr><td><code>vintage</code></td><td>数据版本/修订号</td><td><code>2026-11-01T08:00Z#2</code></td></tr></tbody></table></div>
+<ul><li><strong>单位必须显式</strong>：元/MWh 与元/kWh、MW 与 MWh、AC 与 DC 混用，是结算差异的常见根因。</li><li><strong>时点必须成对</strong>：业务时点（交付/结算）与知识时点（发布/修订）分开；回测只能用知识时点之前的数据。</li></ul>
+<h3 id="s21">3.3 时间对齐与版本</h3>
+<ul><li><strong>粒度统一</strong>：日前统一到 96 点（15 分钟）；实时 5 分钟数据先聚合成 15 分钟再加权，不要与 96 点混用。</li><li><strong>时区</strong>：中国无夏令时，跨系统对接确认 UTC+8 标注，避免&quot;少一小时&quot;。</li><li><strong>缺失处理</strong>：连续缺失 ≤2 点可线性插值；超过则整日剔除并标注，不能静默填零。</li><li><strong>异常处理</strong>：价格超出限价区间、负荷单点跳变超过 30%、新能源出力为负，标记待查；<strong>负电价必须保留</strong>，它是市场信号，不是脏数据。</li><li><strong>修订版本</strong>：交易中心可能修正历史数据；回测要保留原始版本与修订版本，不能直接用最新版覆盖历史。</li></ul>
+<h3 id="s22">3.4 数据质量 SLO（示例）</h3>
+<div class="table-wrap"><table><thead><tr><th>指标</th><th>定义</th><th>示例目标</th><th>告警动作</th></tr></thead><tbody><tr><td>完整性</td><td>应有记录数/实际记录数</td><td>≥99.5%</td><td>缺测 &gt;0.5% 暂停自动申报</td></tr><tr><td>及时性</td><td>数据到达到规定时点的比例</td><td>≥99%</td><td>关键数据迟到 15 分钟升级</td></tr><tr><td>准确性</td><td>通过校验规则的比例</td><td>≥99.9%</td><td>越限/跳变进入人工复核</td></tr><tr><td>一致性</td><td>跨系统同一指标差异</td><td>≤0.1%</td><td>超差冻结结算</td></tr><tr><td>可追溯</td><td>有来源、版本、质量标记的比例</td><td>100%</td><td>无来源数据不得入模</td></tr></tbody></table></div>
+<ul><li>上述阈值是示例（D），不是监管标准；按主体规模与市场要求设定。</li><li><strong>关键数据&quot;双源&quot;</strong>：价格、负荷、计量至少两个来源交叉校验；单源故障时能切换。</li></ul>
+<h3 id="s23">3.5 防泄露与常见偏差</h3>
+<div class="table-wrap"><table><thead><tr><th>偏差</th><th>表现</th><th>防法</th></tr></thead><tbody><tr><td>前视偏差</td><td>用 D 日实时价、D 日实际负荷做 D-1 预测</td><td>建立&quot;知识时点&quot;字段，回测按 as-of 取数</td></tr><tr><td>幸存者偏差</td><td>只回测赚钱的时段/机组/用户</td><td>全样本回测，报告最差样本</td></tr><tr><td>选择偏差</td><td>只选规则有利的省份/月份</td><td>按市场、季节、规则版本分层报告</td></tr><tr><td>过拟合</td><td>参数在样本外漂移、特征只在特定月份有效</td><td>滚动窗口、参数稳定性、多重比较校正</td></tr><tr><td>标签泄露</td><td>特征中隐含未来信息（如结算后的考核结果）</td><td>特征清单逐项标注最早可得时点</td></tr><tr><td>规则泄露</td><td>用新版规则回测旧版市场</td><td>规则版本与业务日期绑定</td></tr></tbody></table></div>
+<ul><li><strong>一条硬规则</strong>：任何进入特征的数据，必须能回答&quot;这个数在 D-1 申报截止前是否已经存在&quot;。答不上来的，就不能进模型。</li><li><strong>回测与实盘同源</strong>：回测用的价格、负荷、规则版本，要与实盘申报时一致；不能用&quot;事后清洗过的完美数据&quot;。</li></ul>
+<h3 id="s24">3.6 数据血缘与审计</h3>
+<ul><li>每个报表数字能下钻到：源系统 → 接口 → 原始记录 → 清洗规则 → 聚合口径 → 模型版本。</li><li>关键表保留 <code>created_at / updated_at / version / hash</code>；申报文件与结算单保留原始文件与解析结果。</li><li>审计日志至少保留一个完整结算周期；涉及争议、考核、信用评价的记录延长保留。</li></ul>
+<hr>
+<h2 id="s25">4. 预测：从点预测到决策分布</h2>
+<h3 id="s26">4.1 三个预测对象</h3>
+<div class="table-wrap"><table><thead><tr><th>对象</th><th>预测期</th><th>主要用途</th><th>关键难点</th></tr></thead><tbody><tr><td>电价</td><td>日前 96 点、日内、实时</td><td>报价、套利、合约估值</td><td>尖峰、负价、拐点、规则变化</td></tr><tr><td>负荷</td><td>日前 96 点、超短期</td><td>售电采购、偏差管理、VPP 基线</td><td>气温、节假日、用户行为</td></tr><tr><td>新能源出力</td><td>日前 96 点、超短期</td><td>申报量、偏差考核、净负荷</td><td>天气突变、云遮挡、弃风弃光</td></tr><tr><td>净负荷</td><td>日前 96 点</td><td>价格形状、稀缺时段</td><td>新能源与负荷的相关性</td></tr></tbody></table></div>
+<h3 id="s27">4.2 点预测不够，报价要分布</h3>
+<ul><li><strong>点预测</strong>回答&quot;最可能多少&quot;；<strong>概率预测</strong>回答&quot;有多少概率超过某个阈值&quot;。</li><li>报价决策通常需要分位数：P10/P50/P90，或场景集；只用均值会把尾部风险抹平。</li><li><strong>不对称损失</strong>：少报和多报的罚则不同，最优申报量不是均值，而是使期望损失最小的分位数。</li><li><strong>场景生成</strong>：历史场景、参数分布、蒙特卡洛、对抗场景；场景要保留相关性（负荷-新能源-价格），不能独立抽样。</li></ul>
+<h3 id="s28">4.3 评价指标</h3>
+<div class="table-wrap"><table><thead><tr><th>目标</th><th>指标</th><th>说明</th></tr></thead><tbody><tr><td>点预测</td><td>MAE、RMSE、sMAPE</td><td>sMAPE 要设分母下限，避免低价时段爆炸</td></tr><tr><td>偏差</td><td>bias、分时段 bias</td><td>系统性偏高/偏低比随机误差更危险</td></tr><tr><td>概率</td><td>pinball loss、CRPS</td><td>评价分位数/分布是否校准</td></tr><tr><td>方向</td><td>方向正确率（带死区）</td><td>必须说明步长、死区、样本区间</td></tr><tr><td>尖峰</td><td>尖峰召回、负价召回</td><td>少数极端点决定尾部收益</td></tr><tr><td>决策</td><td>元/MWh、元/日、命中率、CVaR</td><td>最终看钱，不只看误差</td></tr></tbody></table></div>
+<ul><li><strong>只报平均值是回测造假最常见的形式</strong>：必须给逐日分布、最差 5 天、分时段误差。</li><li><strong>误差要换算成钱</strong>：<code>误差经济价值 ≈ |误差| × 电量 × 价格 × 罚则系数</code>；不同时段的误差价值不同。</li></ul>
+<h3 id="s29">4.4 残差校正与分层</h3>
+<ul><li><strong>残差校正</strong>是性价比最高的一层：按&quot;时段 × 星期&quot;与外生变量（温度、辐照、负荷、节假日）分解系统偏差，再做收缩估计。</li><li><strong>分层建模</strong>：正常时段、尖峰时段、负价时段、极端天气分别建模；用一个模型包打天下，通常在拐点失效。</li><li><strong>规则特征</strong>：检修、阻塞、必开必停、外送计划、机组报价行为，都是价格形状的驱动因素；纯时序外推不够。</li><li><strong>方法细节</strong>见《现货报价量化专家》第 3–5 章；本文只保留接口与评价。</li></ul>
+<h3 id="s30">4.5 预测到报价的接口</h3>
+<pre><code>预测分布 ──► 场景/分位数 ──► 风险偏好 λ ──► 报价优化
+   │              │                │
+   └─ 校准/回测 ──┴─ 限额/合约 ────┘</code></pre>
+<ul><li><strong>输入契约</strong>：预测服务输出 <code>timestamp, quantile, value, model_version, trained_until</code>；报价服务不得直接读原始模型。</li><li><strong>风险偏好</strong>：<code>λ</code> 越大越保守；λ 应由风险委员会设定，不能由报价员临时调。</li><li><strong>回退</strong>：预测服务故障时，回退到&quot;季节朴素 + 成本报价 + 保守申报量&quot;，并记录降级原因。</li></ul>
+<h3 id="s31">4.6 漂移监控</h3>
+<ul><li><strong>数据漂移</strong>：PSI、KS、分布均值/方差；特征漂移超过阈值触发复核。</li><li><strong>模型漂移</strong>：分时段误差、方向正确率、尖峰召回；连续 N 天恶化触发重训。</li><li><strong>规则漂移</strong>：限价、段数、结算方式变化；规则变更必须重新校准，不能沿用旧参数。</li><li><strong>监控看板</strong>：按市场、品种、时段、模型版本四个维度展示；异常自动告警到责任人。</li></ul>
+<hr>
+<h2 id="s32">5. 报价与组合决策</h2>
+<h3 id="s33">5.1 目标函数：收益减去风险</h3>
+<pre><code>max  E[π] − λ · CVaR_α(L)
+s.t. 申报量 ≤ 可用容量 − 检修容量
+     最小技术出力 ≤ 申报量
+     爬坡约束、启停约束、合约分解约束
+     价格/段数/单调性符合市场规则
+     敞口/限额/保函满足风控要求</code></pre>
+<ul><li><code>π</code> 是组合利润，<code>L = −π</code> 是损失；<code>CVaR_α</code> 是尾部条件期望。</li><li><strong>λ=0</strong> 是风险中性，追求期望收益；<strong>λ 越大</strong>越保守，尾部损失权重越高。</li><li>约束不是&quot;附带条件&quot;，而是报价可行域；不可行的&quot;最优解&quot;没有意义。</li></ul>
+<h3 id="s34">5.2 发电侧：边际成本 + 机会成本</h3>
+<ul><li><strong>价格接受者</strong>：最优报价接近边际成本；加价只会降低中标概率，不改变价格。</li><li><strong>枢机机组</strong>：加价空间来自剩余需求，不是主观愿望；要评估对手报价与阻塞。</li><li><strong>多段曲线</strong>：按成本分段，确保单调；低段保出清，高段捕捉稀缺。</li><li><strong>启停决策</strong>：启动成本、最小运行时间、未来机会成本要一起算；不能只看当日现货价。</li><li><strong>合约覆盖</strong>：合约比例高时，报价更贴近成本以保调度；纯现货敞口大时，才考虑赌高价。</li></ul>
+<h3 id="s35">5.3 新能源：先解决量与偏差</h3>
+<ul><li><strong>申报量</strong>：在预测分布上按不对称罚则选分位数；少报的罚则与多报的罚则不同。</li><li><strong>配储联合报价</strong>：新能源与场站内配套储能可作为联合报价主体参与申报、出清、调用、结算、考核（2026-10 草案方向，A（草案））。</li><li><strong>捕获价</strong>：高比例风光省份，午间低价/负价会拉低捕获价；报价要结合储能/负荷灵活性。</li><li><strong>考核</strong>：功率预测准确率、并网考核、偏差考核都要计入成本；不能只算电能量收益。</li></ul>
+<h3 id="s36">5.4 储能：价差要覆盖循环成本</h3>
+<pre><code>单次套利净收益 ≈ Q_dis × (p_dis − p_ch / η_rt) − Q_dis × (c_deg + c_om)
+可行条件：p_dis − p_ch / η_rt ≥ c_deg + c_om</code></pre>
+<ul><li><code>Q_dis</code> 是可放电量（受 DoD、RTE、SOC 约束）；<code>η_rt</code> 是往返效率；<code>c_deg</code> 是退化成本；<code>c_om</code> 是运维成本。</li><li><strong>机会成本</strong>：SOC 是稀缺资源；低价充电会占用高价放电机会，要用边际价值曲线，而不是简单阈值。</li><li><strong>辅助服务</strong>：调频、备用会占用 SOC 与容量，收益要与现货套利比较，不能重复计算。</li><li><strong>容量补偿</strong>：114 号文的容量电价按可用容量与时长折算，不是按放电量；与套利收益分账。</li><li><strong>退化</strong>：循环次数、深度、温度影响寿命；报价模型要把退化成本内生化，不能只算电费。</li></ul>
+<h3 id="s37">5.5 售电：组合、对冲与传导</h3>
+<pre><code>零售毛利 = 零售收入 − [w_h × 合约价 + (1 − w_h) × 现货价] × 用电量 − 服务成本</code></pre>
+<ul><li><code>w_h</code> 是对冲比例；对冲不足，现货上涨会侵蚀毛利；对冲过度，现货下跌会失去竞争力。</li><li><strong>用户结构</strong>：居民、商业、工业的负荷曲线不同；组合的偏差风险不等于单用户风险相加。</li><li><strong>套餐设计</strong>：固定价、浮动价、峰谷价、现货联动；1656 号后，固定分时套餐失去政府定价保护，套餐要与现货风险匹配。</li><li><strong>履约保障</strong>：保函/保险/保证金要覆盖风险敞口；按日监测，动态调整交易限额（2026-09 草案方向）。</li><li><strong>批零倒挂</strong>：零售价低于采购成本时，越卖越亏；系统要能实时测算&quot;每卖一单亏多少&quot;。</li></ul>
+<h3 id="s38">5.6 多市场协同：同一容量不能重复卖</h3>
+<div class="table-wrap"><table><thead><tr><th>市场</th><th>占用资源</th><th>收益口径</th><th>冲突点</th></tr></thead><tbody><tr><td>电能量</td><td>发电/放电能力、SOC</td><td>元/MWh</td><td>与辅助服务争夺容量</td></tr><tr><td>调频</td><td>调节容量、响应速度</td><td>元/MW·里程/容量</td><td>频繁调用影响 SOC 与退化</td></tr><tr><td>备用</td><td>可用容量</td><td>元/MW·小时</td><td>与电能量申报互斥</td></tr><tr><td>容量</td><td>可用容量</td><td>元/kW·年</td><td>与现货/辅助服务叠加规则不同</td></tr><tr><td>绿电/绿证</td><td>电量属性</td><td>元/MWh、元/张</td><td>与电能量重复计算风险</td></tr><tr><td>需求响应</td><td>可削减负荷</td><td>元/kW、元/kWh</td><td>与基线、现货偏差交互</td></tr></tbody></table></div>
+<ul><li><strong>统一资源模型</strong>：把发电能力、SOC、可削减负荷统一成&quot;可用容量 × 时段&quot;，再做多市场分配。</li><li><strong>机会成本</strong>：每个市场占用资源都有机会成本；优化目标是组合收益，不是单市场收益最大化。</li><li><strong>结算分账</strong>：不同市场分开结算、分开考核；合并报表可以，合并计算会出错。</li></ul>
+<h3 id="s39">5.7 场景优化与 CVaR</h3>
+<ul><li><strong>均值-CVaR</strong>：在期望收益与尾部损失之间取舍；适合报价、储能、售电组合。</li><li><strong>随机规划</strong>：两阶段/多阶段，第一阶段报价，第二阶段出清/实时调整；场景树不能太大，否则不可解。</li><li><strong>鲁棒优化</strong>：对价格/负荷/出力不确定性设不确定集；保守但稳定，适合规则切换期。</li><li><strong>样本外检验</strong>：优化用的场景与回测场景要分开；用同一批场景优化和评估，会高估效果。</li></ul>
+<h3 id="s40">5.8 市场力与合规红线</h3>
+<ul><li><strong>市场力</strong>：份额高、剩余需求缺乏弹性、阻塞时，报价可能影响价格；监管会用成本数据、报价行为、集中度指标识别。</li><li><strong>红线</strong>：操纵价格、持留容量、串通报价、哄抬/压低价格、虚假申报、利用内幕信息，均属违规。</li><li><strong>成本数据</strong>：草案提出成本数据用于市场力监管与成本补偿；成本要真实、可审计，不能为报价随意调整。</li><li><strong>合规审查</strong>：报价策略上线前做合规评审；涉及市场力的策略要有书面论证。</li></ul>
+<h3 id="s41">5.9 报价校验清单</h3>
+<div class="table-wrap"><table><thead><tr><th>检查项</th><th>规则</th><th>失败动作</th></tr></thead><tbody><tr><td>段数与单调性</td><td>符合省级规则</td><td>拦截，提示修改</td></tr><tr><td>价格区间</td><td>含申报限价、出清限价、二次限价</td><td>拦截</td></tr><tr><td>申报量</td><td>≤ 可用容量 − 检修；≥ 最小出力</td><td>拦截</td></tr><tr><td>爬坡/启停</td><td>满足物理约束</td><td>警告/拦截</td></tr><tr><td>合约分解</td><td>与中长期曲线不冲突</td><td>警告</td></tr><tr><td>必开必停</td><td>标记正确</td><td>拦截</td></tr><tr><td>文件格式</td><td>编码、字段顺序、模板版本</td><td>拦截</td></tr><tr><td>限额</td><td>敞口、VaR、单日亏损、保函</td><td>拦截/升级</td></tr><tr><td>审批</td><td>双人复核、授权范围</td><td>未审批不得提交</td></tr><tr><td>版本</td><td>规则版本、模型版本、文件版本</td><td>缺失不得提交</td></tr></tbody></table></div>
+<h3 id="s42">5.10 人工 override</h3>
+<ul><li><strong>允许场景</strong>：模型故障、极端天气、规则临时变更、系统异常；必须有原因代码。</li><li><strong>控制</strong>：双人复核、限额内、留痕（时间、人员、改前/改后值、原因）；事后 T+1 复盘。</li><li><strong>禁止</strong>：无记录改单、绕过限额、一人完成报价与审批、用个人账号代操作。</li></ul>
+<hr>
+<h2 id="s43">6. 回测与仿真</h2>
+<h3 id="s44">6.1 回测协议（必须写进报告）</h3>
+<ul><li><strong>滚动起点</strong>：第 t 天只用 t 之前的数据训练，预测第 t 天，然后向前滚动。</li><li><strong>样本外</strong>：残差校正只能用历史样本外误差拟合，不能用训练集残差。</li><li><strong>窗口</strong>：训练窗口长度固定并披露（如 14/21/30 天）；窗口变化单独报告。</li><li><strong>成本</strong>：手续费、偏差考核、辅助服务考核、资金占用都要计入；只算毛收益会高估。</li><li><strong>结算复现</strong>：回测要按当时规则、当时价格、当时计量口径复现结算，不能只用日前价。</li><li><strong>基准</strong>：季节朴素、成本报价、历史中位数、买入持有；没有基准的&quot;提升&quot;无法判断。</li></ul>
+<h3 id="s45">6.2 三种回测，回答不同问题</h3>
+<div class="table-wrap"><table><thead><tr><th>类型</th><th>假设</th><th>能回答</th><th>不能回答</th></tr></thead><tbody><tr><td>价格接受者回测</td><td>报价不影响价格</td><td>预测/策略在给定价格下的收益</td><td>中标概率、对手反应</td></tr><tr><td>报价接受度回测</td><td>用历史出清结果判断是否中标</td><td>报价曲线的大致可行性</td><td>改变报价后的价格变化</td></tr><tr><td>全仿真回测</td><td>模拟出清/对手/网络</td><td>策略对价格的影响、市场力</td><td>真实对手行为、规则细节</td></tr></tbody></table></div>
+<ul><li><strong>不要用全仿真代替实盘</strong>：仿真能验证逻辑，不能证明收益；参数、对手、规则任一失真，结论就不可靠。</li><li><strong>报价扫描</strong>：固定对手，扫描自身报价，画出收益-价格曲线；这是最有用的一张图，但要注意&quot;固定对手&quot;的假设。</li></ul>
+<h3 id="s46">6.3 指标集</h3>
+<div class="table-wrap"><table><thead><tr><th>类别</th><th>指标</th><th>用途</th></tr></thead><tbody><tr><td>收益</td><td>总 PnL、元/MWh、元/日、元/年</td><td>绝对收益</td></tr><tr><td>风险调整</td><td>Sharpe、Sortino、Calmar</td><td>单位风险收益</td></tr><tr><td>尾部</td><td>最大回撤、CVaR、最差 5 天</td><td>生存能力</td></tr><tr><td>命中</td><td>方向正确率、尖峰召回、中标率</td><td>策略有效性</td></tr><tr><td>成本</td><td>偏差成本、考核费用、交易费用</td><td>隐性损失</td></tr><tr><td>稳定性</td><td>逐日分布、参数敏感性、分省/分季表现</td><td>可复现性</td></tr></tbody></table></div>
+<h3 id="s47">6.4 过拟合与多重比较</h3>
+<ul><li><strong>参数稳定性</strong>：同一参数在多个滚动窗口的最优值是否漂移；漂移大说明过拟合。</li><li><strong>多重比较</strong>：试了很多策略再选最好的，会高估效果；用 deflated Sharpe、白噪声检验或独立样本验证。</li><li><strong>PBO</strong>：回测过拟合概率；策略数量多、样本短时尤其重要。</li><li><strong>最差样本</strong>：必须报告最差 5 天/最差月份；只看平均值会掩盖尾部风险。</li><li><strong>经济逻辑</strong>：策略要有可解释的经济逻辑；纯数据挖掘的&quot;规律&quot;在规则变化后容易失效。</li></ul>
+<h3 id="s48">6.5 回测与实盘的差异</h3>
+<div class="table-wrap"><table><thead><tr><th>差异</th><th>影响</th><th>处理</th></tr></thead><tbody><tr><td>规则变化</td><td>限价、段数、结算方式变了</td><td>按规则版本回测；切换期单独评估</td></tr><tr><td>对手行为</td><td>报价改变会影响出清价</td><td>用报价扫描/仿真做敏感性</td></tr><tr><td>执行偏差</td><td>爬坡、故障、限电</td><td>回测中加入可用率与执行误差</td></tr><tr><td>流动性</td><td>无法按理想价格成交</td><td>加入滑点/成交概率</td></tr><tr><td>数据修订</td><td>历史数据被修正</td><td>保留 vintage，按当时可见数据回测</td></tr></tbody></table></div>
+<h3 id="s49">6.6 T+1 复盘模板</h3>
+<div class="table-wrap"><table><thead><tr><th>归因项</th><th>计算</th><th>说明</th></tr></thead><tbody><tr><td>预测误差</td><td>按预测完美执行的收益 − 按实际价格的收益</td><td>价格/负荷/出力误差</td></tr><tr><td>报价偏离</td><td>实际报价收益 − 按预测最优报价的收益</td><td>策略/人工改单</td></tr><tr><td>执行偏差</td><td>实际出力收益 − 按申报量执行的收益</td><td>爬坡、故障、限电</td></tr><tr><td>规则/市场</td><td>规则变化、限价、检修、对手行为</td><td>外部因素</td></tr><tr><td>残差</td><td>总差异 − 上述四项</td><td>残差大说明模型遗漏变量</td></tr></tbody></table></div>
+<hr>
+<h2 id="s50">7. 交易风控体系</h2>
+<h3 id="s51">7.1 治理架构</h3>
+<pre><code>董事会/风险管理委员会
+        │  批准风险偏好、年度限额
+        ▼
+  风险管理部门（中台，独立报告）
+        │  限额、计量、压力测试、预警
+        ├──────────────┐
+        ▼              ▼
+  前台（报价/交易）   后台（结算/财务）
+  收益与执行          对账、资金、审计</code></pre>
+<ul><li><strong>三道防线</strong>：业务部门（第一道）、风险/合规（第二道）、审计（第三道）。</li><li><strong>独立性</strong>：中台不能由前台负责人兼任；限额调整要经风险委员会，不能由交易员自己改。</li><li><strong>授权体系</strong>：按品种、市场、金额、期限设授权；超授权必须升级，不能&quot;先做后补&quot;。</li></ul>
+<h3 id="s52">7.2 风险分类</h3>
+<div class="table-wrap"><table><thead><tr><th>风险</th><th>触发信号</th><th>主要缓释</th></tr></thead><tbody><tr><td>价格风险</td><td>现货价格波动、尖峰、负价</td><td>限额、对冲、场景分析、止损</td></tr><tr><td>电量/偏差风险</td><td>负荷/出力预测偏差、考核</td><td>分位数申报、备用、偏差准备</td></tr><tr><td>基差/形状风险</td><td>合约价与现货价、峰谷形状不一致</td><td>分时段对冲、差价合约</td></tr><tr><td>流动性风险</td><td>保证金不足、无法平仓</td><td>现金流预测、授信、保函</td></tr><tr><td>信用风险</td><td>用户/对手违约、保函不足</td><td>信用评估、保证金、限额</td></tr><tr><td>操作风险</td><td>数据错误、重复申报、改单</td><td>校验、双人复核、审计</td></tr><tr><td>模型风险</td><td>过拟合、漂移、参数失效</td><td>验证、监控、冠军 challenger</td></tr><tr><td>合规风险</td><td>市场力、串谋、虚假申报</td><td>合规审查、红线清单、培训</td></tr><tr><td>政策风险</td><td>规则切换、限价调整</td><td>规则版本管理、情景分析</td></tr><tr><td>结算风险</td><td>计量争议、结算差异、跨期</td><td>对账、差异管理、证据链</td></tr></tbody></table></div>
+<h3 id="s53">7.3 限额体系</h3>
+<div class="table-wrap"><table><thead><tr><th>层级</th><th>示例</th><th>批准</th><th>复核</th></tr></thead><tbody><tr><td>战略限额</td><td>年度最大亏损、最大敞口、市场集中度</td><td>董事会/风险委员会</td><td>年度</td></tr><tr><td>战术限额</td><td>分市场/品种/期限的 VaR、Notional</td><td>风险委员会</td><td>季度</td></tr><tr><td>操作限额</td><td>单日亏损、单笔申报量、单机组敞口、保函使用率</td><td>风险负责人</td><td>日/周</td></tr><tr><td>对手限额</td><td>单一用户/对手的应收、预付、保函</td><td>信用/风险</td><td>月/季</td></tr></tbody></table></div>
+<ul><li><strong>限额要可计算</strong>：每个限额都要有明确公式、数据源、更新频率、责任人；不能只写&quot;控制风险&quot;。</li><li><strong>限额要可执行</strong>：事前拦截优于事后报告；系统里没有限额校验，等于没有限额。</li><li><strong>限额要可调整</strong>：市场/规则变化时能复核调整，但不能由前台随意改。</li></ul>
+<h3 id="s54">7.4 风险度量</h3>
+<pre><code>VaR_α = inf{ l : P(L ≤ l) ≥ α }
+CVaR_α = E[L | L ≥ VaR_α]
+限额使用率 U = 当前敞口 / 限额</code></pre>
+<ul><li><strong>VaR 不是最大损失</strong>：它只说明&quot;以 α 概率不超过&quot;，尾部可能更大；必须配合 CVaR 与压力测试。</li><li><strong>历史模拟</strong>：用历史价格/负荷场景重估组合；简单，但依赖历史代表性。</li><li><strong>参数法</strong>：假设正态/厚尾分布；计算快，但极端行情会低估。</li><li><strong>蒙特卡洛</strong>：模拟价格、负荷、出力、违约；灵活，但模型风险高。</li><li><strong>压力测试</strong>：价格翻倍、负价持续、来水偏枯、台风、规则突变；不依赖概率，直接看生存能力。</li></ul>
+<h3 id="s55">7.5 事前、事中、事后</h3>
+<div class="table-wrap"><table><thead><tr><th>阶段</th><th>控制</th><th>工具</th></tr></thead><tbody><tr><td>事前</td><td>限额、授权、合规、报价校验</td><td>预交易检查、规则引擎</td></tr><tr><td>事中</td><td>实时敞口、价格预警、异常申报</td><td>监控看板、告警、熔断</td></tr><tr><td>事后</td><td>对账、归因、压力测试、复盘</td><td>结算系统、归因报告、风险报告</td></tr></tbody></table></div>
+<ul><li><strong>事前</strong>：价格/电量/敞口/保函/授权五项检查，任一不通过不得提交。</li><li><strong>事中</strong>：价格突破阈值、申报量异常、重复提交、系统延迟，自动告警；紧急情况可熔断。</li><li><strong>事后</strong>：T+1 归因、T+3 对账、月度风险报告；差异要闭环，不能只记录不处理。</li></ul>
+<h3 id="s56">7.6 极端行情</h3>
+<ul><li><strong>价格上限/下限</strong>：限价会改变报价与结算；报价扫描要覆盖限价触发场景。</li><li><strong>负电价</strong>：新能源高发、最小出力、供热机组可能导致负价；储能充电可能获利，但要注意充电成本与 SOC。</li><li><strong>稀缺定价</strong>：高峰缺电时价格飙升；容量补偿/可靠性机组组合会改变稀缺时段收益。</li><li><strong>价格跳跃</strong>：天气突变、机组故障、阻塞；历史 VaR 可能低估，必须做跳跃/压力测试。</li><li><strong>相关性上升</strong>：极端行情下，价格、负荷、新能源出力、信用风险同时恶化；分散化失效。</li></ul>
+<h3 id="s57">7.7 信用与履约保障</h3>
+<ul><li><strong>履约保障</strong>：保函、保险、现金保证金；草案要求最低 200 万元，保函/现金额度应超过保险额度。</li><li><strong>按日监测</strong>：交易机构按日监测剩余额度与风险敞口，动态调整下一交易日交易限额（2026-09 草案方向）。</li><li><strong>对手管理</strong>：用户/售电公司/聚合商的信用等级、欠费、违约记录；C/D 级提高保证金或限制交易。</li><li><strong>保函成本</strong>：银行保函费用可能高于保险；选择工具时要算成本与流动性，不能只看费率。</li><li><strong>省级样本</strong>：贵州 2027 年规则要求履约保险额度占比不超过 40%，最低 200 万元（C，媒体口径）；具体以省级原文为准。</li></ul>
+<h3 id="s58">7.8 模型风险</h3>
+<ul><li><strong>模型清单</strong>：每个模型记录用途、输入、输出、版本、负责人、验证报告。</li><li><strong>独立验证</strong>：模型上线前由非开发团队复核；重点看假设、边界、样本外表现。</li><li><strong>持续监控</strong>：漂移、误差、命中率、收益归因；连续恶化触发重训或下线。</li><li><strong>冠军/挑战者</strong>：新模型与旧模型并行，按同一口径比较；不能只看宣传效果。</li><li><strong>人工兜底</strong>：模型故障时回退到规则/成本报价；降级要记录，事后评估影响。</li></ul>
+<h3 id="s59">7.9 风控红线清单</h3>
+<ol><li>不得无授权报价、超限额交易、绕过审批。</li><li>不得一人完成报价、复核、申报、结算。</li><li>不得使用未来数据、伪造数据、篡改计量。</li><li>不得操纵价格、持留容量、串通报价、虚假申报。</li><li>不得无记录改单、删除申报/结算记录。</li><li>不得把草案当现行规则配置系统。</li><li>不得用单一历史场景代替压力测试。</li><li>不得把容量/辅助服务收益重复计入现货收益。</li><li>不得忽视考核、偏差、保函成本。</li><li>不得在模型失效时继续自动申报而不降级。</li></ol>
+<hr>
+<h2 id="s60">8. 结算对账与收益归因</h2>
+<h3 id="s61">8.1 结算科目</h3>
+<div class="table-wrap"><table><thead><tr><th>科目</th><th>内容</th><th>常见差异来源</th></tr></thead><tbody><tr><td>电能量</td><td>日前/实时电量 × 价格</td><td>计量、价格版本、分时点</td></tr><tr><td>偏差</td><td>实际与申报/合约的偏差</td><td>考核规则、罚则、阈值</td></tr><tr><td>辅助服务</td><td>调频、备用、爬坡、无功</td><td>性能系数、调用时长、考核</td></tr><tr><td>容量</td><td>煤电/储能/抽蓄容量电费</td><td>清单、可用率、折算比例</td></tr><tr><td>绿电/绿证</td><td>绿电溢价、绿证交易</td><td>核发、交易、注销</td></tr><tr><td>零售</td><td>用户电费、套餐、服务费</td><td>用户数、电量、套餐版本</td></tr><tr><td>考核/罚款</td><td>并网、预测、偏差、违约</td><td>规则版本、免考、证据</td></tr><tr><td>分摊/返还</td><td>不平衡资金、辅助服务分摊</td><td>分摊比例、返还规则</td></tr></tbody></table></div>
+<h3 id="s62">8.2 结算流程</h3>
+<pre><code>计量数据 → 结算初算 → 结算单 → 对账 → 差异处理 → 确认 → 开票/收付
+   │           │          │        │          │
+   └─ 校验 ────┴─ 规则版本 ┴─ 科目 ┴─ 证据链 ─┘</code></pre>
+<ul><li><strong>计量是起点</strong>：计量点、倍率、时点、正反向、失压失流，任何一项错位都会传导到结算。</li><li><strong>规则版本</strong>：结算要按业务日期对应的规则版本，不能用当前规则重算历史。</li><li><strong>结算单</strong>：保留原始文件、解析结果、版本号；不能只存汇总数。</li><li><strong>争议</strong>：规定期限内提出，附证据（计量、调度指令、规则条款、计算过程）；逾期可能不被受理。</li></ul>
+<h3 id="s63">8.3 对账五步法</h3>
+<div class="table-wrap"><table><thead><tr><th>步骤</th><th>检查</th><th>工具</th></tr></thead><tbody><tr><td>完整性</td><td>科目、时段、主体是否齐全</td><td>科目清单、结算单结构</td></tr><tr><td>算术</td><td>电量 × 价格 = 金额；汇总 = 明细</td><td>重算、交叉表</td></tr><tr><td>价格</td><td>规则版本、限价、分时、节点/分区</td><td>价格表、规则库</td></tr><tr><td>电量</td><td>计量、申报、出清、考核</td><td>计量系统、调度记录</td></tr><tr><td>跨期</td><td>月末/年末、结算周期、追溯调整</td><td>时间轴、版本对比</td></tr></tbody></table></div>
+<h3 id="s64">8.4 差异处理</h3>
+<ul><li><strong>分级</strong>：金额/比例阈值（示例：差异 &gt;0.5% 或 &gt;10 万元升级，D）；不同主体可按规模设定。</li><li><strong>分类</strong>：计量、价格、规则、电量、考核、跨期、人工录入；每类有责任人与处理时限。</li><li><strong>证据链</strong>：原始数据、计算过程、规则条款、沟通记录；不能只有一句&quot;系统差异&quot;。</li><li><strong>闭环</strong>：差异确认后调整/冲销，更新对账台账；重复出现的差异要改流程，不能每次手工修。</li></ul>
+<h3 id="s65">8.5 PnL 归因</h3>
+<pre><code>ΔPnL = 预测误差 + 报价偏离 + 执行偏差 + 规则/市场 + 残差</code></pre>
+<ul><li><strong>预测误差</strong>：价格/负荷/出力预测与实际差异导致的收益差。</li><li><strong>报价偏离</strong>：实际报价曲线与&quot;按预测最优&quot;曲线的差异；含人工改单。</li><li><strong>执行偏差</strong>：实际出力/用电与申报量的差异；含爬坡、故障、限电。</li><li><strong>规则/市场</strong>：限价、结算、考核、检修、对手行为。</li><li><strong>残差</strong>：四项解释不了的部分；残差过大说明模型遗漏变量或数据错误。</li></ul>
+<h3 id="s66">8.6 审计留痕</h3>
+<ul><li>申报文件、回执、改单记录、审批记录、模型版本、规则版本、结算单、对账底稿，全部归档。</li><li>关键操作日志不可篡改；保留期限覆盖结算周期、考核申诉期、信用评价周期。</li><li>对外报送（监管、交易中心、审计）的数据要与内部报表同源；不能两套口径。</li></ul>
+<hr>
+<h2 id="s67">9. 工程架构</h2>
+<h3 id="s68">9.1 参考架构</h3>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│ 源系统：交易中心 / 调度 / 气象 / 计量 / ERP / 信用平台   │
+└───────────────┬─────────────────────────────────────────┘
+                │ API / 文件 / 消息
+                ▼
+┌─────────────────────────────────────────────────────────┐
+│ 接入层：采集、解析、校验、去重、补采、血缘               │
+└───────────────┬─────────────────────────────────────────┘
+                ▼
+┌─────────────────────────────────────────────────────────┐
+│ 数据层：数据湖 / 时序库 / 特征库 / 规则库 / 合约库       │
+└───────────────┬─────────────────────────────────────────┘
+                ▼
+┌───────────────┬───────────────┬─────────────────────────┐
+│ 预测服务      │ 策略/优化服务 │ 校验/审批服务            │
+│ 价格/负荷/出力 │ 报价/组合/储能 │ 规则/限额/双人复核       │
+└───────┬───────┴───────┬───────┴──────────┬──────────────┘
+        │               │                  │
+        └───────────────┼──────────────────┘
+                        ▼
+              ┌──────────────────┐
+              │ 申报网关         │
+              │ 回执/改单/留痕   │
+              └────────┬─────────┘
+                       ▼
+        出清结果 / 结算单 / 计量数据
+                       │
+                       ▼
+        ┌──────────────────────────────┐
+        │ 对账 / 归因 / 风控 / 绩效     │
+        └──────────────┬───────────────┘
+                       │
+                       └──── 反馈到规则、模型、限额</code></pre>
+<h3 id="s69">9.2 时效分层</h3>
+<div class="table-wrap"><table><thead><tr><th>层</th><th>典型任务</th><th>时效</th><th>失败模式</th><th>兜底</th></tr></thead><tbody><tr><td>D-1 批处理</td><td>数据清洗、预测、报价、审批、申报</td><td>小时级</td><td>数据迟到、模型故障</td><td>回退成本报价、人工复核</td></tr><tr><td>日内</td><td>滚动预测、改单、限额监控</td><td>分钟级</td><td>价格突变、系统延迟</td><td>保守申报、熔断</td></tr><tr><td>实时</td><td>出力/用电监控、偏差预警</td><td>秒/分钟级</td><td>通信中断、计量异常</td><td>本地控制、人工介入</td></tr><tr><td>结算</td><td>对账、归因、报表</td><td>日/月级</td><td>数据修订、规则切换</td><td>版本对比、差异台账</td></tr></tbody></table></div>
+<h3 id="s70">9.3 核心服务</h3>
+<div class="table-wrap"><table><thead><tr><th>服务</th><th>职责</th><th>关键接口</th></tr></thead><tbody><tr><td>数据服务</td><td>采集、清洗、版本、血缘</td><td><code>get_series(market, field, as_of)</code></td></tr><tr><td>预测服务</td><td>价格/负荷/出力预测与分位数</td><td><code>forecast(object, horizon, quantiles)</code></td></tr><tr><td>优化服务</td><td>报价曲线、组合、储能调度</td><td><code>optimize(inputs, constraints, risk)</code></td></tr><tr><td>校验服务</td><td>规则、限额、合约、格式</td><td><code>validate(bid, rule_version)</code></td></tr><tr><td>申报网关</td><td>提交、回执、改单、重试</td><td><code>submit(bid)</code>, <code>amend(id, patch)</code></td></tr><tr><td>风控服务</td><td>限额、VaR、预警、压力测试</td><td><code>check(exposure)</code>, <code>stress(scenario)</code></td></tr><tr><td>结算服务</td><td>结算单解析、对账、差异</td><td><code>reconcile(statement)</code></td></tr><tr><td>归因服务</td><td>PnL 分解、T+1 报告</td><td><code>attribute(day)</code></td></tr></tbody></table></div>
+<h3 id="s71">9.4 模型生命周期</h3>
+<ul><li><strong>注册</strong>：模型名称、版本、训练区间、特征集、参数、指标、负责人。</li><li><strong>验证</strong>：样本外、滚动回测、压力测试、合规审查；通过后才能上线。</li><li><strong>部署</strong>：灰度/冠军挑战者；记录上线时间与回滚版本。</li><li><strong>监控</strong>：误差、漂移、收益、限额；异常自动告警。</li><li><strong>退役</strong>：保留版本与报告；历史回测可复现。</li></ul>
+<h3 id="s72">9.5 非功能要求</h3>
+<div class="table-wrap"><table><thead><tr><th>要求</th><th>说明</th></tr></thead><tbody><tr><td>幂等</td><td>同一申报重复提交不产生重复订单；用业务键去重</td></tr><tr><td>可重放</td><td>给定日期、数据版本、规则版本，能重算报价与结算</td></tr><tr><td>可回滚</td><td>模型、规则、申报模板都能回退</td></tr><tr><td>可审计</td><td>所有写操作有日志、有责任人、有时间戳</td></tr><tr><td>权限</td><td>最小权限、职责分离、双人复核</td></tr><tr><td>时间同步</td><td>全链路 NTP；申报截止以交易中心时钟为准</td></tr><tr><td>容灾</td><td>关键服务多活/备份；断网时能本地暂存</td></tr><tr><td>安全</td><td>传输加密、密钥管理、访问审计、防篡改</td></tr></tbody></table></div>
+<h3 id="s73">9.6 自建 vs 采购</h3>
+<div class="table-wrap"><table><thead><tr><th>维度</th><th>自建</th><th>采购</th></tr></thead><tbody><tr><td>数据独占性</td><td>强，能深度定制</td><td>依赖供应商接口</td></tr><tr><td>规则适配</td><td>快，但要养团队</td><td>供应商适配，可能滞后</td></tr><tr><td>最后一公里</td><td>校验/改单/归因可控</td><td>往往仍需自建</td></tr><tr><td>成本</td><td>前期高、长期可控</td><td>前期低、按量/按年付费</td></tr><tr><td>风险</td><td>人才、交付、运维</td><td>供应商锁定、规则变更责任</td></tr></tbody></table></div>
+<ul><li><strong>建议</strong>：预测/优化可采购或混合；<strong>申报校验、改单留痕、结算对账、归因</strong>必须自建或深度定制，因为这是主体自己的责任与数据。</li><li><strong>合同</strong>：写明规则变更后的适配责任、响应时限、数据归属、退出迁移；不能只买&quot;收益提升&quot;的承诺。</li></ul>
+<h3 id="s74">9.7 最小可行系统</h3>
+<div class="table-wrap"><table><thead><tr><th>阶段</th><th>目标</th><th>最小交付</th></tr></thead><tbody><tr><td>0</td><td>规则与数据</td><td>规则登记表、数据契约、历史数据</td></tr><tr><td>1</td><td>预测与回测</td><td>基线预测、滚动回测、指标报告</td></tr><tr><td>2</td><td>报价与申报</td><td>报价曲线、规则校验、申报文件、回执</td></tr><tr><td>3</td><td>风控与结算</td><td>限额、预交易检查、对账、归因</td></tr><tr><td>4</td><td>自动化</td><td>模型监控、自动申报、异常熔断、审计</td></tr></tbody></table></div>
+<ul><li>不要一开始追求&quot;全自动&quot;；先把<strong>可复现、可审计、可回退</strong>做出来，再谈自动化。</li><li>每个阶段都要有验收标准：数据完整率、回测样本外表现、申报成功率、对账差异率。</li></ul>
+<hr>
+<h2 id="s75">10. 算例（合成，D 级）</h2>
+<aside class="note"><p>以下算例只用于演示方法，参数为合成值，不代表任何省份、任何项目。</p></aside>
+<h3 id="s76">10.1 储能 100 MW / 400 MWh 日前套利与 CVaR</h3>
+<p><strong>假设</strong></p>
+<div class="table-wrap"><table><thead><tr><th>参数</th><th>取值</th></tr></thead><tbody><tr><td>额定功率/能量</td><td>100 MW / 400 MWh</td></tr><tr><td>可用深度 DoD</td><td>90%</td></tr><tr><td>往返效率 RTE</td><td>85%</td></tr><tr><td>退化成本</td><td>0.05 元/kWh（按放电量）</td></tr><tr><td>运维成本</td><td>0.02 元/kWh（按放电量）</td></tr><tr><td>谷段充电价</td><td>0.20 元/kWh</td></tr><tr><td>峰段放电价</td><td>0.65 元/kWh</td></tr><tr><td>年运行天数</td><td>330 天</td></tr><tr><td>单日循环</td><td>1 次</td></tr></tbody></table></div>
+<p><strong>计算</strong></p>
+<pre><code>可放电量 = 400 × 90% × 85% = 306 MWh
+充电成本 = 306 / 0.85 × 0.20 = 72,000 元
+放电收入 = 306 × 0.65 = 198,900 元
+退化+运维 = 306 × (0.05 + 0.02) = 21,420 元
+单日净收益 = 198,900 − 72,000 − 21,420 = 105,480 元
+年净收益 ≈ 105,480 × 330 = 3,481 万元
+单位放电净收益 ≈ 105,480 / 306 = 344.7 元/MWh</code></pre>
+<p><strong>价差情景与 CVaR</strong></p>
+<div class="table-wrap"><table><thead><tr><th>峰谷价差（元/kWh）</th><th>概率</th><th>单日净收益（万元）</th></tr></thead><tbody><tr><td>0.25</td><td>10%</td><td>−1.69</td></tr><tr><td>0.35</td><td>20%</td><td>1.37</td></tr><tr><td>0.45</td><td>40%</td><td>4.43</td></tr><tr><td>0.55</td><td>20%</td><td>7.49</td></tr><tr><td>0.65</td><td>10%</td><td>10.55</td></tr></tbody></table></div>
+<pre><code>期望收益 = 4.43 万元/日
+最差 10% 条件均值（CVaR90）≈ −1.69 万元/日</code></pre>
+<ul><li><strong>读法</strong>：价差 0.25 元/kWh 时，扣掉充电、退化、运维后为负；套利不是&quot;有价差就赚钱&quot;。</li><li><strong>风控</strong>：若单日亏损限额 2 万元，最差情景 −1.69 万元在限额内，但已接近；若价差进一步收窄到 0.20 元/kWh，亏损会超过限额，应降低申报量或不出手。</li><li><strong>策略</strong>：设置最低价差门槛（例：0.30 元/kWh，D），低于门槛不套利；门槛要用当前效率、退化、运维参数重算，不能固定不变。</li></ul>
+<h3 id="s77">10.2 售电公司 10 亿 kWh 组合压力测试</h3>
+<p><strong>假设</strong></p>
+<div class="table-wrap"><table><thead><tr><th>参数</th><th>取值</th></tr></thead><tbody><tr><td>年售电量</td><td>10 亿 kWh</td></tr><tr><td>日均售电量</td><td>约 2.74 GWh</td></tr><tr><td>零售价</td><td>0.42 元/kWh（固定价）</td></tr><tr><td>中长期对冲比例</td><td>70%，对冲价 0.36 元/kWh</td></tr><tr><td>现货敞口</td><td>30%</td></tr><tr><td>基准现货价</td><td>0.35 元/kWh</td></tr></tbody></table></div>
+<p><strong>基准毛利</strong></p>
+<pre><code>综合采购价 = 70% × 0.36 + 30% × 0.35 = 0.357 元/kWh
+单位毛利 = 0.42 − 0.357 = 0.063 元/kWh
+日毛利 ≈ 2.74 GWh × 0.063 = 17.26 万元/日</code></pre>
+<p><strong>压力情景：现货价 +0.30 元/kWh</strong></p>
+<pre><code>综合采购价 = 70% × 0.36 + 30% × 0.65 = 0.447 元/kWh
+单位毛利 = 0.42 − 0.447 = −0.027 元/kWh
+日亏损 ≈ 2.74 GWh × 0.027 = 7.40 万元/日
+连续 10 日 ≈ 74.0 万元</code></pre>
+<ul><li><strong>读法</strong>：70% 对冲下，现货 +0.30 元/kWh 仍会出现日亏；若对冲比例只有 30%，日亏损会放大到约 39 万元，10 日约 392 万元，超过 200 万元最低保函额度。</li><li><strong>保函</strong>：草案最低 200 万元；上述 10 日压力已消耗 37%，若叠加用户违约、偏差考核，保函可能不足。</li><li><strong>风控</strong>：设置现货敞口上限、单日亏损限额、压力测试触发线；零售套餐要能传导部分现货风险，不能全部固定价。</li></ul>
+<h3 id="s78">10.3 结算对账差异</h3>
+<p><strong>假设</strong>：某月电能量结算，预期 4,000 万元，结算单 3,920 万元，差异 −80 万元。</p>
+<div class="table-wrap"><table><thead><tr><th>差异项</th><th>计算</th><th>金额（万元）</th></tr></thead><tbody><tr><td>计量差异</td><td>500 MWh × 0.40 元/kWh</td><td>−20</td></tr><tr><td>价格版本差异</td><td>100,000 MWh × 0.002 元/kWh</td><td>−20</td></tr><tr><td>辅助服务漏项</td><td>结算单未列</td><td>−15</td></tr><tr><td>考核罚款</td><td>偏差/并网考核</td><td>−25</td></tr><tr><td>合计</td><td>—</td><td>−80</td></tr></tbody></table></div>
+<ul><li><strong>处理</strong>：计量差异查表计/倍率；价格差异查规则版本与节点/分区；漏项补列；考核查免考证据。</li><li><strong>纪律</strong>：差异要分解到科目与原因，不能只写&quot;系统差异 80 万元&quot;；重复出现的差异要改流程。</li></ul>
+<h3 id="s79">10.4 T+1 归因示例</h3>
+<div class="table-wrap"><table><thead><tr><th>归因项</th><th>金额（万元）</th><th>说明</th></tr></thead><tbody><tr><td>预测误差</td><td>−12</td><td>峰段价格预测偏低，少放 20 MWh</td></tr><tr><td>报价偏离</td><td>−5</td><td>人工改单提高首段价格，中标量下降</td></tr><tr><td>执行偏差</td><td>−3</td><td>一次设备故障，少放 10 MWh</td></tr><tr><td>规则/市场</td><td>+2</td><td>限价调整，实际结算价高于预期</td></tr><tr><td>残差</td><td>−1</td><td>未解释</td></tr><tr><td>合计</td><td>−19</td><td>与实际 PnL 差异一致</td></tr></tbody></table></div>
+<ul><li><strong>读法</strong>：预测误差是主因，但不能忽略报价偏离与执行；只盯模型会漏掉流程问题。</li><li><strong>行动</strong>：预测误差 → 检查峰段特征；报价偏离 → 复核改单授权；执行偏差 → 检修/可用率。</li></ul>
+<hr>
+<h2 id="s80">11. 常见误解（15 条）</h2>
+<ol><li><strong>&quot;预测准就能赚钱&quot;</strong>：报价还受合约、约束、考核、限额影响；预测只是输入之一。</li><li><strong>&quot;报价 = 成本加成&quot;</strong>：价格接受者接近边际成本，枢机机组有机会成本，合约覆盖改变动机。</li><li><strong>&quot;回测收益 = 实盘收益&quot;</strong>：滑点、规则变化、对手反应、执行偏差都会侵蚀收益。</li><li><strong>&quot;用历史数据越多越好&quot;</strong>：用未来数据、修订后数据、旧规则数据，都会造成前视/规则泄露。</li><li><strong>&quot;只看均价&quot;</strong>：尾部风险、尖峰、负价才决定生存；必须看分布与最差样本。</li><li><strong>&quot;VaR 就是最大损失&quot;</strong>：VaR 是分位数，尾部可能更大；要配 CVaR 与压力测试。</li><li><strong>&quot;风控就是止损&quot;</strong>：风控是限额、授权、校验、对账、归因的整套体系。</li><li><strong>&quot;设了限额就没事&quot;</strong>：没有系统拦截、监控、问责，限额只是纸面数字。</li><li><strong>&quot;结算对账是财务的事&quot;</strong>：结算差异往往源于报价、计量、规则版本，交易团队必须参与。</li><li><strong>&quot;偏差电量只按现货价结算&quot;</strong>：还有考核、罚则、分摊、返还；只算现货会低估成本。</li><li><strong>&quot;储能只看峰谷价差&quot;</strong>：效率、退化、SOC、辅助服务机会成本都要算。</li><li><strong>&quot;售电靠价差&quot;</strong>：现货敞口、用户违约、保函、系统运行费都会吃掉价差。</li><li><strong>&quot;负电价是异常数据&quot;</strong>：负价是供需信号，必须保留并建模。</li><li><strong>&quot;全国规则一样&quot;</strong>：省级/区域规则差异大，报价前必须确认省份与版本。</li><li><strong>&quot;2026 草案可以直接用&quot;</strong>：草案不是现行规则；2027 年起才可能切换，系统要按生效日管理。</li></ol>
+<hr>
+<h2 id="s81">12. 待核实与未定事项</h2>
+<ol><li>《电力现货市场基本规则（公开征求意见稿）》正式稿、最终条文数、LMP 统一程度、二次限价参数、取消不平衡资金池后的结算影响。</li><li>《电力市场风险防控管理办法》定稿、风险分类阈值、紧急处置授权与报告时限。</li><li>《售电公司管理办法》定稿、履约保函/保险/现金比例、200 万元最低额是否保留、按日监测的系统接口。</li><li>《全国统一电力市场信用评价指引》定稿、指标权重、C/D 级约束、评价结果与交易权限的挂钩方式。</li><li>南方区域市场正式运行规则、结算细则、15 分钟价格与省内现货/中长期衔接。</li><li>各省报价段数、限价、二次限价、申报截止、日内调整窗口的最新版本。</li><li>2027 年 136 机制电价竞价结果与现货报价的衔接；新能源+配储联合报价的结算与考核细则。</li><li>江苏等省零售套餐取消固定价格电量比例、现货联动比例后的实际传导效果。</li><li>系统运行费 0.068 元/kWh 的分省构成与零售侧传导。</li><li>电力期货、碳期货仍未上市；中长期金融化与差价合约的会计/税务处理。</li><li>各交易中心披露的数据范围、历史修订规则、API 稳定性。</li><li>量化策略的公开基准与可复现实验很少；任何&quot;提升 X%&quot;的宣称都要看基线、样本、成本与考核。</li></ol>
+<hr>
+<h2 id="s82">13. 与技能和其他笔记的分工</h2>
+<div class="table-wrap"><table><thead><tr><th>内容</th><th>归属</th><th>说明</th></tr></thead><tbody><tr><td>负荷/电价/新能源预测算法、残差校正、报价公式、代码</td><td>《现货报价量化专家》</td><td>本模块只引用接口、指标与回测协议</td></tr><tr><td>现货/中长期/辅助服务/容量规则、结算科目</td><td>《电力交易专家》</td><td>本模块引用文号与状态，讲系统影响</td></tr><tr><td>储能投决、收益堆叠、LCOS/IRR/DSCR</td><td>《储能投资与运营专家》</td><td>本模块讲交易实现、风控与对账</td></tr><tr><td>VPP 聚合、基线、响应考核</td><td>《虚拟电厂专家》</td><td>本模块讲组合报价与结算接口</td></tr><tr><td>新能源功率预测、并网考核</td><td>《新能源项目开发与并网专家》</td><td>本模块讲预测→报价→考核的衔接</td></tr><tr><td>省级市场状态、136 竞价、容量电价</td><td><a href="省级市场状态表-2026-11.html">省级市场状态表</a>、<a href="储能投资与运营-2026-11.html">储能投资与运营</a></td><td>引用，不重复列全表</td></tr><tr><td>并网考核、AGC/AVC/一次调频</td><td><a href="并网运行考核与两个细则-2026-11.html">并网运行考核与两个细则</a></td><td>考核扣减进入报价成本</td></tr><tr><td>现货机制、出清、结算基础</td><td><a href="电力现货市场101问-A-基础与价格机制.html">电力现货市场101问</a>、<a href="电力现货市场实务-精读笔记.html">实务精读</a></td><td>只引用机制，不重复教科书内容</td></tr><tr><td>储能技术路线、安全、构网</td><td><a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线、安全与构网型并网</a></td><td>设备能力约束进入报价可行域</td></tr></tbody></table></div>
+<ul><li><strong>本模块的独特价值</strong>：把&quot;预测—报价—申报—出清—结算—归因—风控&quot;当成一条工程链，而不是分散的方法点；重点在<strong>可复现、可审计、可拦截</strong>。</li><li><strong>不重复写一套预测/报价教材</strong>：方法细节以技能为准；本模块只保留工程接口、风控阈值、对账流程与算例。</li><li><strong>与调研底稿的关系</strong>：厂商效果、产品对比等公开信息保留在调研底稿；公开模块不写商业项目溯源，只留方法与合成算例。</li></ul>
+<hr>
+<h2 id="s83">速查：公式、指标与参数</h2>
+<h3 id="s84">核心公式</h3>
+<div class="table-wrap"><table><thead><tr><th>内容</th><th>公式</th></tr></thead><tbody><tr><td>期望利润</td><td><code>E[π] = Σ_s p_s Σ_t [q_{s,t}(p_{s,t} − c_t) − C_fixed]</code></td></tr><tr><td>均值-CVaR</td><td><code>max E[π] − λ · CVaR_α(L)</code>，<code>L = −π</code></td></tr><tr><td>VaR</td><td><code>VaR_α = inf{l : P(L ≤ l) ≥ α}</code></td></tr><tr><td>CVaR</td><td><code>CVaR_α = E[L where L ≥ VaR_α]</code></td></tr><tr><td>限额使用率</td><td><code>U = 敞口 / 限额</code></td></tr><tr><td>储能套利门槛</td><td><code>p_dis − p_ch / η_rt ≥ c_deg + c_om</code></td></tr><tr><td>储能可放电量</td><td><code>Q_dis = E_rated × DoD × η_rt</code></td></tr><tr><td>售电毛利</td><td><code>m = p_retail − [w_h p_hedge + (1−w_h) p_spot]</code></td></tr><tr><td>预测误差经济价值</td><td><code>≈ abs(e) × 电量 × 价格 × 罚则系数</code></td></tr><tr><td>结算差异</td><td><code>Δ = ΔQ × P + Q × ΔP + ΔQ × ΔP + 其他</code></td></tr><tr><td>PnL 归因</td><td><code>ΔPnL = 预测 + 报价 + 执行 + 规则 + 残差</code></td></tr></tbody></table></div>
+<h3 id="s85">指标卡</h3>
+<div class="table-wrap"><table><thead><tr><th>类别</th><th>指标</th><th>用途</th></tr></thead><tbody><tr><td>预测</td><td>MAE、RMSE、sMAPE、bias、pinball、CRPS</td><td>精度与校准</td></tr><tr><td>决策</td><td>元/MWh、元/日、命中率、CVaR</td><td>是否赚钱</td></tr><tr><td>风险</td><td>VaR、CVaR、最大回撤、压力损失</td><td>生存能力</td></tr><tr><td>执行</td><td>中标率、改单次数、申报成功率、偏差率</td><td>流程质量</td></tr><tr><td>结算</td><td>差异率、差异金额、闭环天数</td><td>对账质量</td></tr><tr><td>信用</td><td>保函使用率、敞口/限额、信用等级</td><td>履约能力</td></tr></tbody></table></div>
+<h3 id="s86">2026 关键文件</h3>
+<div class="table-wrap"><table><thead><tr><th>文件</th><th>时间/状态</th><th>用途</th></tr></thead><tbody><tr><td>发改能源规〔2023〕1217号</td><td>现行</td><td>现货市场基本规则（试行）</td></tr><tr><td>《电力现货市场基本规则（公开征求意见稿）》</td><td>2026-10-19；拟 2027-01-01</td><td>现货新规方向</td></tr><tr><td>发改能源规〔2025〕1656号</td><td>2026-03-01 施行</td><td>中长期市场；取消政府固定分时</td></tr><tr><td>发改价格〔2025〕136号</td><td>2025-02-09</td><td>新能源上网电价市场化；机制电价</td></tr><tr><td>发改价格〔2026〕114号</td><td>2026-01-30</td><td>容量电价 2.0；独立储能折算</td></tr><tr><td>发改能源规〔2025〕411号</td><td>2025-04-03</td><td>辅助服务市场基本规则</td></tr><tr><td>发改价格〔2024〕196号</td><td>2024-02</td><td>辅助服务价格机制；Kp ≤2</td></tr><tr><td>《售电公司管理办法（公开征求意见稿）》</td><td>2026-09-04</td><td>履约保障、退出机制</td></tr><tr><td>《电力市场风险防控管理办法（公开征求意见稿）》</td><td>2026-09-30</td><td>风险分类、监测预警处置</td></tr><tr><td>《全国统一电力市场信用评价指引（公开征求意见稿）》</td><td>2026-10-13 发布</td><td>A/B/C/D 信用评价</td></tr></tbody></table></div>
+<h3 id="s87">数据口径提醒</h3>
+<ul><li><strong>MW 与 MWh 不能混</strong>：功率是瞬时能力，能量是累计电量；储能收益按放电量算，容量补偿按可用容量算。</li><li><strong>元/MWh 与元/kWh 差 1000 倍</strong>：报价表、结算单、合同可能用不同单位，必须显式标注。</li><li><strong>日前与实时是两套价格</strong>：日前申报、实时偏差，结算可能双结算；不能只用日前价算收益。</li><li><strong>96 点与 288 点不能混</strong>：15 分钟与 5 分钟粒度不同，聚合要加权，不能简单平均。</li><li><strong>毛收益与净收益</strong>：净收益要扣退化、运维、考核、分摊、资金占用；只算价差会高估。</li><li><strong>容量与电量</strong>：容量电价、辅助服务容量、现货电量是不同口径，不能重复计算。</li><li><strong>草案与正式稿</strong>：2026 年多份文件仍是征求意见稿；引用必须写&quot;草案/拟施行&quot;。</li><li><strong>省级与区域</strong>：南方区域市场正式运行，不等于省内规则统一；报价前确认市场层级。</li><li><strong>信用等级与保函</strong>：信用评价 A/B/C/D 与履约保函额度是两件事，但会共同影响交易权限。</li></ul>
+    </article>
+
+    <section class="related" aria-label="相关模块">
+      <h2>相关模块</h2>
+      <ul>
+        <li><a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算（2026 版）</a></li>
+        <li><a href="电力现货市场101问-A-基础与价格机制.html">101 问 A · 基础与价格机制</a></li>
+        <li><a href="调研-量化报价与厂商实践-2026-11.html">量化报价与厂商实践</a></li>
+      </ul>
+    </section>
+
+    <nav class="pager" aria-label="上下篇">
+          <a class="prev" href="省间与跨区交易-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">省间与跨区交易（2026 版）</span></a>
+          <a class="next" href="电力市场风险、信用与结算-2026-11.html"><span class="dir">下一篇 →</span><span class="ttl">电力市场风险、信用与结算（2026 版）</span></a>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../量化报价与交易风控-工程化-2026-11.md">knowledge/量化报价与交易风控-工程化-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div><a href="../index.html">返回知识库总览 →</a></div>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="本页目录">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv3"><a href="#s2">0.1 一条闭环</a></li>
+            <li class="lv3"><a href="#s3">0.2 关键数字</a></li>
+            <li class="lv3"><a href="#s4">0.3 七个判断</a></li>
+            <li class="lv2"><a href="#s5">1. 边界与角色</a></li>
+            <li class="lv3"><a href="#s6">1.1 报价、交易、风控不是一件事</a></li>
+            <li class="lv3"><a href="#s7">1.2 三类主体的报价身份与主要风险</a></li>
+            <li class="lv3"><a href="#s8">1.3 与技能的分工</a></li>
+            <li class="lv3"><a href="#s9">1.4 一条硬边界</a></li>
+            <li class="lv2"><a href="#s10">2. 规则参数层（2026-11）</a></li>
+            <li class="lv3"><a href="#s11">2.1 市场状态：先问省份，再谈策略</a></li>
+            <li class="lv3"><a href="#s12">2.2 2026-10 现货新规草案：七个方向性变化</a></li>
+            <li class="lv3"><a href="#s13">2.3 中长期与合约：覆盖比例决定报价动机</a></li>
+            <li class="lv3"><a href="#s14">2.4 辅助服务、容量与绿电：多市场叠加不是简单相加</a></li>
+            <li class="lv3"><a href="#s15">2.5 零售、信用与履约：2026 年监管密集期</a></li>
+            <li class="lv3"><a href="#s16">2.6 报价前必须锁定的 12 项参数</a></li>
+            <li class="lv3"><a href="#s17">2.7 规则版本管理：把"规则"当代码管</a></li>
+            <li class="lv2"><a href="#s18">3. 数据层：数据契约与防泄露</a></li>
+            <li class="lv3"><a href="#s19">3.1 七个数据域</a></li>
+            <li class="lv3"><a href="#s20">3.2 数据契约模板</a></li>
+            <li class="lv3"><a href="#s21">3.3 时间对齐与版本</a></li>
+            <li class="lv3"><a href="#s22">3.4 数据质量 SLO（示例）</a></li>
+            <li class="lv3"><a href="#s23">3.5 防泄露与常见偏差</a></li>
+            <li class="lv3"><a href="#s24">3.6 数据血缘与审计</a></li>
+            <li class="lv2"><a href="#s25">4. 预测：从点预测到决策分布</a></li>
+            <li class="lv3"><a href="#s26">4.1 三个预测对象</a></li>
+            <li class="lv3"><a href="#s27">4.2 点预测不够，报价要分布</a></li>
+            <li class="lv3"><a href="#s28">4.3 评价指标</a></li>
+            <li class="lv3"><a href="#s29">4.4 残差校正与分层</a></li>
+            <li class="lv3"><a href="#s30">4.5 预测到报价的接口</a></li>
+            <li class="lv3"><a href="#s31">4.6 漂移监控</a></li>
+            <li class="lv2"><a href="#s32">5. 报价与组合决策</a></li>
+            <li class="lv3"><a href="#s33">5.1 目标函数：收益减去风险</a></li>
+            <li class="lv3"><a href="#s34">5.2 发电侧：边际成本 + 机会成本</a></li>
+            <li class="lv3"><a href="#s35">5.3 新能源：先解决量与偏差</a></li>
+            <li class="lv3"><a href="#s36">5.4 储能：价差要覆盖循环成本</a></li>
+            <li class="lv3"><a href="#s37">5.5 售电：组合、对冲与传导</a></li>
+            <li class="lv3"><a href="#s38">5.6 多市场协同：同一容量不能重复卖</a></li>
+            <li class="lv3"><a href="#s39">5.7 场景优化与 CVaR</a></li>
+            <li class="lv3"><a href="#s40">5.8 市场力与合规红线</a></li>
+            <li class="lv3"><a href="#s41">5.9 报价校验清单</a></li>
+            <li class="lv3"><a href="#s42">5.10 人工 override</a></li>
+            <li class="lv2"><a href="#s43">6. 回测与仿真</a></li>
+            <li class="lv3"><a href="#s44">6.1 回测协议（必须写进报告）</a></li>
+            <li class="lv3"><a href="#s45">6.2 三种回测，回答不同问题</a></li>
+            <li class="lv3"><a href="#s46">6.3 指标集</a></li>
+            <li class="lv3"><a href="#s47">6.4 过拟合与多重比较</a></li>
+            <li class="lv3"><a href="#s48">6.5 回测与实盘的差异</a></li>
+            <li class="lv3"><a href="#s49">6.6 T+1 复盘模板</a></li>
+            <li class="lv2"><a href="#s50">7. 交易风控体系</a></li>
+            <li class="lv3"><a href="#s51">7.1 治理架构</a></li>
+            <li class="lv3"><a href="#s52">7.2 风险分类</a></li>
+            <li class="lv3"><a href="#s53">7.3 限额体系</a></li>
+            <li class="lv3"><a href="#s54">7.4 风险度量</a></li>
+            <li class="lv3"><a href="#s55">7.5 事前、事中、事后</a></li>
+            <li class="lv3"><a href="#s56">7.6 极端行情</a></li>
+            <li class="lv3"><a href="#s57">7.7 信用与履约保障</a></li>
+            <li class="lv3"><a href="#s58">7.8 模型风险</a></li>
+            <li class="lv3"><a href="#s59">7.9 风控红线清单</a></li>
+            <li class="lv2"><a href="#s60">8. 结算对账与收益归因</a></li>
+            <li class="lv3"><a href="#s61">8.1 结算科目</a></li>
+            <li class="lv3"><a href="#s62">8.2 结算流程</a></li>
+            <li class="lv3"><a href="#s63">8.3 对账五步法</a></li>
+            <li class="lv3"><a href="#s64">8.4 差异处理</a></li>
+            <li class="lv3"><a href="#s65">8.5 PnL 归因</a></li>
+            <li class="lv3"><a href="#s66">8.6 审计留痕</a></li>
+            <li class="lv2"><a href="#s67">9. 工程架构</a></li>
+            <li class="lv3"><a href="#s68">9.1 参考架构</a></li>
+            <li class="lv3"><a href="#s69">9.2 时效分层</a></li>
+            <li class="lv3"><a href="#s70">9.3 核心服务</a></li>
+            <li class="lv3"><a href="#s71">9.4 模型生命周期</a></li>
+            <li class="lv3"><a href="#s72">9.5 非功能要求</a></li>
+            <li class="lv3"><a href="#s73">9.6 自建 vs 采购</a></li>
+            <li class="lv3"><a href="#s74">9.7 最小可行系统</a></li>
+            <li class="lv2"><a href="#s75">10. 算例（合成，D 级）</a></li>
+            <li class="lv3"><a href="#s76">10.1 储能 100 MW / 400 MWh 日前套利与 CVaR</a></li>
+            <li class="lv3"><a href="#s77">10.2 售电公司 10 亿 kWh 组合压力测试</a></li>
+            <li class="lv3"><a href="#s78">10.3 结算对账差异</a></li>
+            <li class="lv3"><a href="#s79">10.4 T+1 归因示例</a></li>
+            <li class="lv2"><a href="#s80">11. 常见误解（15 条）</a></li>
+            <li class="lv2"><a href="#s81">12. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s82">13. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s83">速查：公式、指标与参数</a></li>
+            <li class="lv3"><a href="#s84">核心公式</a></li>
+            <li class="lv3"><a href="#s85">指标卡</a></li>
+            <li class="lv3"><a href="#s86">2026 关键文件</a></li>
+            <li class="lv3"><a href="#s87">数据口径提醒</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="72">展开 72 个小节</button>
+  </aside>
+</div>
+
+<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<script src="../assets/doc.js"></script>
+</body>
+</html>

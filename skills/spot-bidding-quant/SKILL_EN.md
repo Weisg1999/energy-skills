@@ -9,7 +9,7 @@ description: Spot-bidding quant expert — bid-curve construction for day-ahead 
 
 > Version v1.6 · data cutoff 2026-11-01
 
-> **Maintenance entry points**: `tools/selftest.py` (green means the figures quoted below still hold), `knowledge/调研-量化报价与厂商实践-2026-11.md` (vendor and patent material), `knowledge/省级市场状态表-2026-11.md` (confirm the province first).
+> **Maintenance entry points**: `tools/selftest.py` (green means the figures quoted below still hold), `knowledge/调研-量化报价与厂商实践-2026-11.md` (vendor and patent material), `knowledge/省级市场状态表-2026-11.md` (confirm the province first), `knowledge/量化报价与交易风控-工程化-2026-11.md` (engineering loop, rule-version registry, risk limits, settlement reconciliation and attribution).
 > **Open items 2026-2027**: the Spot Market Basic Rules (draft, comments close 2026-11-18, proposed effect 2027-01-01), annual adjustments to bid-segment counts and price caps, secondary price-cap pilots, and the scope of quantity-only bidding for renewables.
 
 ---
@@ -502,6 +502,7 @@ Public information has two sides and is incomplete with only one: **participant-
 - Market rules, settlement formulas, price caps and policy history → Electricity Trading Expert;
 - Aggregation, VPP business models, control technology → Virtual Power Plant Expert;
 - This skill covers: **forecasting, bid calculation, submission decisions, backtesting and attribution**. Overlaps carry pointers only; figures defer to the skill that owns the topic.
+- Engineering delivery (rule-version registry, data contracts, risk limits, settlement reconciliation and PnL attribution) → knowledge base [quantitative bidding and trading risk](../../knowledge/量化报价与交易风控-工程化-2026-11.md); this skill gives methods and examples, that module gives architecture and governance.
 
 ### 15.5 Maintenance cadence and open items
 - Quarterly: verify bid-segment counts, price caps (including secondary caps) and submission deadlines per province;

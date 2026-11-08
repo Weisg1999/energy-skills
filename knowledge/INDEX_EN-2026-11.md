@@ -1,7 +1,21 @@
-# English Knowledge Index and Digest (2026-11-01)
+---
+id: m-index-en
+section: index
+order: 3
+level: tool
+kind: "索引"
+title: "English Knowledge Index"
+summary: "英文入口：文件地图、关键数字、省级简表、未定事项与答题纪律。"
+tags: ["English","文件地图","Open items"]
+cutoff: 2026-11-08
+related: ["m-index","m-qa","m-province"]
+search: "INDEX EN English knowledge index digest knowledge map key figures provincial quick table open items answering discipline"
+foot: "给国际模型与英文读者"
+---
+# English Knowledge Index and Digest (2026-11-08)
 
 > **Purpose**: an English entry point to this repository's knowledge layer. The full notes are written in Chinese; this file gives (1) a map of what each note contains, (2) the key figures most likely to be asked, (3) a condensed provincial table, and (4) the open items that must be flagged when answering.
-> **Data cutoff**: 2026-11-01. Policy figures change monthly; re-check before quoting. Source grades: **A** official documents/statistics, **B** exchanges, central SOEs and industry associations, **C** media/research reports, **D** calculations from public data.
+> **Data cutoff**: 2026-11-08. Policy figures change monthly; re-check before quoting. Source grades: **A** official documents/statistics, **B** exchanges, central SOEs and industry associations, **C** media/research reports, **D** calculations from public data.
 > **Rule of thumb**: a number needs grade + time point + caliber. If any of the three is missing, mark it "to be verified".
 
 ---
@@ -43,6 +57,9 @@
 | `调研-碳管理与碳足迹厂商-2026-11.md` | Research note | Carbon Newture service matrix, dated public cases, borrowable methods, claims that must not be used as benchmarks |
 | `调研-VPP政策2026-10增量.md` | Research note | October 2026 VPP policy, scale calibers and business models |
 | `省级市场状态表-2026-11.md` | Status table | One row per province: spot / No. 136 auction / capacity price / VPP / ancillary / retail risk |
+| `量化报价与交易风控-工程化-2026-11.md` | Practice note | Engineering loop from forecast to bidding, submission, clearing, settlement, attribution and risk control: rule-version registry, data contracts, probabilistic forecasts, mean-CVaR bidding, backtest and gatekeeping, risk taxonomy and limits (VaR/CVaR, exposure/limit, guarantee occupancy, margin calls), settlement reconciliation and PnL attribution, reference architecture, synthetic storage/retailer/settlement examples, 15 misconceptions and open items |
+| `需求响应、车网互动与灵活性资源-2026-11.md` | Practice note | Demand response, V2G and flexible resources: DR vs. orderly use vs. VPP vs. V2G; resource inventory and flexibility formulas; product matrix (peak shaving, valley filling, interruptible, shift, reserve, ramping); baseline and M&V (DL/T 2162-2020, GB/T 32127, GB/T 37016, 5+3 method, 15-min samples, 25%-200% trimming, 3-h correction); dispatch, settlement, assessment and cost allocation; 2026 provincial rules (Guangdong 233, Jiangsu fast response 15/10 CNY/kWh, Zhejiang, and 11 more); V2G pilots (Doc. 241), metering, battery degradation and economics; 2026 summer load picture; project checklists; 15 misconceptions and open items |
+| `电力市场风险、信用与结算-2026-11.md` | Practice note | Institutional chain from risk to credit, guarantee, deviation, settlement and exit: internal/external risk taxonomy and major/general × emergency/non-emergency grading; A (85,100] / B (70,85] / C (40,70] / D [0,40] or serious dishonesty, quarterly and dynamic; performance guarantee formula (expected annual energy × 1 fen/kWh × coefficient 1-10, minimum CNY 2 million), daily mark-to-market and 1/3/1 working-day cure; deviation settlement with no national uniform threshold; 5th/8th/10th working-day settlement timeline, 15/5 working-day objection and next-cycle retro-adjustment; default, deregistration and universal-service handover; retail negative-spread and 2026 distress data; role checklists and 17 misconceptions |
 | `索引与口径-2026-11.md` | Handbook | Document-number index, caliber dictionary, source grading, watchlist |
 | `微网EMS优化调度-算法与工程-2026-11.md` | Algorithm note | Microgrid EMS day-ahead MILP: objective terms, constraints, SOC efficiency, SOS1 vs Big-M, demand-charge linearization, solver parameters and fallbacks, dual-timescale rolling, input data contract, interface boundary with storage EMS, quantified demand/degradation add-on, uncertainty roadmap, assessment loop, review checklist; source material for the planned EMS module |
 | `储能EMS优化调度-算法与工程-2026-11.md` | Algorithm note | Storage EMS MILP: multi-market stacking (energy, frequency regulation, reserve, ramping, capacity), SOC/efficiency recursion, four reserve dimensions, frequency-regulation energy neutrality and SOC recovery, two-part tariff and the 105% demand threshold, capacity-payment eligibility and duration scaling, three degradation tiers, cluster-level dispatch and SOC balancing, KPI calibers per GB/T 36549-2018, AGC/AVC, safety interlocks, input data contract, solver fallbacks, three worked examples and acceptance tests; source material for the planned EMS module |
@@ -64,6 +81,42 @@
 | Coal capacity price | Fixed cost **CNY 330/kW·yr**; recovery **≥50% from 2026** (floor 165). 2026 values: Guangdong 165; Tianjin/Sichuan 231; Qinghai 185; Guangxi 247.5; Jilin/Heilongjiang/Hunan/Gansu/Yunnan 330; Henan 330 draft; **Liaoning 370 is reliable-capacity compensation, a different caliber** | B/C for provincial values |
 | System operation fee, Q1-Q3 2026 | About **CNY 0.068/kWh**, roughly +93% YoY | B/D |
 | PJM capacity price | **USD 329.17/MW-day for 2027/28**; USD 325/MW-day for 2028/29 (cleared 2026-07-14) | A (PJM) |
+
+### Quantitative bidding and trading risk (2026-11)
+
+| Metric | Value | Grade / note |
+|---|---|---|
+| Spot-market reach | **At least 11 provincial markets formal by 2026-09-30**, plus the southern regional market **2026-10-24** (15-min prices, ~290,000 entities) | A/B |
+| 2026 spot basic rules | Draft **2026-10-19**, comments due **2026-11-18**, proposed effective **2027-01-01**, 5-year term; 129→~76 articles; day-ahead/intraday/real-time, LMP, secondary price cap, cost compensation, renewable+storage joint bidding | A（draft）/B for interpretation |
+| Risk-control measure | Draft **2026-09-30**, comments to 10-30; **7 chapters / 32 articles**; four risk categories, monitoring-warning-disposal-report loop | A（draft）/B |
+| Retailer measure | Draft **2026-09-04**, comments to 10-04, proposed **2027-01-01**; guarantee/insurance/cash, **minimum CNY 2 million**; daily exposure monitoring; next-day trading limit | A（draft）/B |
+| Credit evaluation | Draft published **2026-10-19** (issued 10-13); **A/B/C/D**, quarterly, nationally recognised; C/D constrain access, trading rights and margin | A（draft）/B |
+| Clearing granularity | Day-ahead **24 h / 96 points**; real-time **15 min / 96 points**; some provinces use 288 five-minute points for settlement | B; confirm the provincial rule |
+| Risk metrics | `VaR_α = inf{l : P(L ≤ l) ≥ α}`; `CVaR_α = E[L where L ≥ VaR_α]`; `U = exposure / limit`; `E[π] − λ·CVaR` | D; state confidence level, horizon and sample |
+| Synthetic storage case | 100 MW/400 MWh, DoD 90%, RTE 85%, 330 days: **306 MWh** discharge per cycle, **CNY 105,480/day**, ~**CNY 34.81 million/yr**, ~**CNY 344.7/MWh**; CVaR90 ≈ **−CNY 16,900/day** | D |
+| Synthetic retailer case | 1 TWh/yr, 2.74 GWh/day, retail 0.42, 70% hedged at 0.36, spot 0.35: base margin **0.063 CNY/kWh, CNY 172,600/day**; spot +0.30 → **−0.027 CNY/kWh**, 10-day loss **CNY 740,000** | D |
+| Settlement reconciliation | Expected CNY 40.00m vs. statement 39.20m: **−0.80m** = meter −0.20m + price −0.20m + ancillary omission −0.15m + penalty −0.25m | D |
+| T+1 PnL attribution | −CNY 190,000 = forecast −120,000 + bid −50,000 + execution −30,000 + rule +20,000 + residual −10,000 | D |
+
+### Risk, credit and settlement (2026-11)
+
+| Metric | Value | Grade / note |
+|---|---|---|
+| Credit grades | A **(85,100]**, B **(70,85]**, C **(40,70]**, D **[0,40] or serious dishonesty**; public-credit D cannot be A | A (draft) |
+| Credit cycle | Quarterly, plus dynamic adjustment; results publicised for **5 working days** | A (draft) |
+| Credit consequences | A: lower guarantee, more instruments, facilitation, priority universal service; C/D: higher guarantee, **incremental guarantee cannot use insurance**, more verification, risk warning, closer supervision | A (draft) |
+| Guarantee formula (2026 draft) | Expected annual retail energy × **1 fen/kWh** × coefficient **1-10**, minimum **CNY 2 million** | A (draft) |
+| Guarantee formula (current) | max(12-month wholesale purchase × **0.8 fen/kWh**, 2-month maximum purchase × **5 fen/kWh**) | A (Doc. 1595) |
+| 3 TWh retailer guarantee | Old rule ~**CNY 25 million**; new rule coefficient 1/5/10 → **CNY 30m / 150m / 300m** | D; assumptions stated |
+| Guarantee cure | Notice within **1 working day**, top-up within **3 working days**, restore within **1 working day** | A (draft) |
+| Settlement timeline | Draft basis by **5th working day**, formal basis by **8th**, bill by **10th** | A (Doc. 976) |
+| Settlement objection | Raise within **15 working days**; confirm/evaluate within **5 working days**; retro-adjust in the **next settlement cycle** | A (Doc. 976, Art. 51) |
+| Settlement dispute | Market management committee mediation, price/regulatory mediation, then arbitration/litigation | A (Doc. 976, Art. 52) |
+| Deviation settlement | Doc. 1656 Art. 74 allows price-difference or quantity-difference settlement; a registered entity without a medium/long-term contract has actual energy settled as deviation | A |
+| Deviation assessment | **No national uniform threshold**; exemption band, penalty price and responsibility sharing are provincial; excess portion often 0.8-2x spot/medium-term price | A/B/C |
+| Universal-service price | Current/local practice often **1.5x/2x** agency-purchase price; 2026 draft proposes **spot real-time price in the failure month** | A (draft) / B/C |
+| Retail distress 2026 | **400+ retailers exited in Jan-Jul 2026**; Guangdong **298 of 500** loss-making; average margin **0.0039 CNY/kWh** in H1 2026 | C; media/exchange calibres |
+| Retail fixed TOU withdrawal | About **11 provinces** removed or marketised fixed TOU packages | C; province list to verify |
 
 ### Inter-provincial and cross-regional trading (2026-11)
 
@@ -190,6 +243,26 @@
 | Shenzhen platform, 2026-07 | 61 operators, 4.75 GW connected, 1.3 GW maximum adjustable (~5.4% of peak load) | C |
 | Shenzhen funding measure | Valid to **2025-12-31**, expired; no 2026 replacement found | A (expiry) |
 
+### Demand response, V2G and flexible resources (2026-11)
+
+| Metric | Value | Grade / note |
+|---|---|---|
+| National DR framework | Docs 1283 (demand-side management) and 1261 (load management), both effective **2023-10-01** for 5 years | A; DR is economic, orderly use is administrative |
+| DR capability target | **3%-5%** of maximum load by 2025; **≥5%** where the peak-valley gap exceeds 40% | A (Doc. 1283); a target, not measured response |
+| Orderly-use plan scale | **≥30%** of historical maximum load; six levels (I-VI), 5% each; "shift first, then avoid, then curtail" | A (Doc. 1261) |
+| Demand-side capability, 2026 | **>90 GW**, **6.0%+** of maximum load | B (CEC); measured capability, not dispatched volume |
+| 2026 summer peak | National maximum load **1,557 GW**, four records; 6 regional and 20 provincial grids at records; **31 provincial grids did not start DR or orderly use** | B (CEC, 2026-11-05); "not started" is not "no capability" |
+| VPP fleet | 2025: **470 projects / 16.85 GW** measured; 2026 industry figure **>530 / >18 GW** | A / C; declare connected vs. measured |
+| National VPP targets | **20 GW by 2027**, **50 GW by 2030** | A (Doc. 357) |
+| V2G pilot (Doc. 241) | **9 cities** (Shanghai, Changzhou, Hefei, Huaibei, Guangzhou, Shenzhen, Haikou, Chongqing, Kunming) + **30 projects**, 2025-2027 | A; some reports say 32 projects — use the original text |
+| V2G targets | 2030 aggregated adjustable charging **50 GW** (2025 base 10 GW); 2027 **5,000** bidirectional facilities and **20 GWh** reverse discharge | A/B; 1721's "tens of GW bidirectional flexibility" is a different caliber |
+| Baseline methods | DL/T 2162-2020, GB/T 32127, GB/T 37016; "5+3" average, 15-min samples, 25%-200% trimming, 3-h real-time correction | A/B; methods are provincial, not universal |
+| Guangdong 2026 DR | Doc. 233 replaces Doc. 356; annual peak trade **0-2,700 CNY/MWh**; minimum **0.02 MW**; VPP **≥5 MW / ≥1 h**; coefficients **1.0/1.4/1.6** | A; one VPP per user per month |
+| Jiangsu 2026 fast response | Direct control **15 CNY/kWh**, self-control **10 CNY/kWh**; first batch 27 direct (6-15, avg 13.17) and 314 self (5-10, avg 9.94); over-response caps 150%/120% | A/B; funded from peak-price surplus |
+| Zhejiang 2026 | Capacity **1 CNY/kW-month** plus energy **2-3 CNY/kWh**; A+ **3.9 CNY/kWh** | C |
+| V2G economics, synthetic | Private car net **CNY 2,870/yr**, break-even spread **0.381 CNY/kWh**; 50 buses net **CNY 597,500/yr** | D; excludes subsidy and battery-warranty cost |
+| V2G battery life | Traction cells 2,000-3,000 cycles (LFP 3,000-5,000); private cars ~400-600 full cycles over life; SOC 20%-80%/95% | C; lab cycles are not real-car cycles |
+
 ### Carbon and CBAM
 
 | Metric | Value | Grade / note |
@@ -275,6 +348,9 @@
 15. **Doc. 1192 provincial implementation**: the conversion formula in each province, treatment of multi-circuit supply that keeps the two-part tariff, and whether export energy keeps any mechanism-price eligibility.
 16. **Grid-connection assessment ("two detailed rules")**: the final text and effective date of the 2026-09-30 national draft; the 2026 North/East China and southern-region revisions; the Shanxi 2025 document number; Northeast/Northwest 2024-2026 rules; the clause numbers behind Shandong's late-AGC, parameter-change and plan-curve penalties; whether provincial assessment prices and caps converge; renewable- and storage-specific primary-frequency and AGC clauses.
 17. **Storage technology, safety and grid-forming**: final 2026 storage statistics; the 136 GW vs. 144.7 GW end-2025 calibre gap; conflicting 2025 grid-forming annual vs. cumulative figures; the full texts of GB/T 47968-2026 and GB/T 47655-2026; whether any national document mandates grid-forming (the circulated 2026-04-01 claim and 30% target are unverified); provincial grid-forming ratios and compensation rules; exact GB/T 51048-2025 separation/compartment clauses; the project boundary behind "flow battery below 2 CNY/Wh"; 300 MW CAES actual efficiency and cost; sodium-ion utility-scale cycle-life and safety data; the 15 incidents of 2026 H1; the 2% lithium-battery consumption tax pass-through; whether Doc. 114 capacity pricing differentiates grid-forming or long-duration storage; inertia/voltage-support/black-start ancillary-service payment rules.
+18. **Quantitative bidding and trading risk**: the final 2026 spot rules (whether the 76-article draft survives), the secondary price-cap and LMP clauses, whether renewable+storage joint bidding is adopted; final retailer/risk-control/credit rules and the actual guarantee ratio and dynamic-limit method; provincial clearing granularity (96 vs. 288 points) and settlement formulas; whether the new rules change backtest baselines or model benchmarks; public reconciliation cases and loss-sharing arrangements between aggregators, retailers and resources.
+19. **Demand response, V2G and flexible resources**: actual 2026 provincial DR dispatch and settlement data (most provinces publish calls but not settlement); Guangdong Doc. 233 and Jiangsu 2026 fast-response implementation details; whether Doc. 241 covers 30 or 32 projects; the post-2026-11-01 wording of DR baselines; V2G pilot mid-term evaluation; bidirectional-charger standards and battery-warranty coverage; how transmission/distribution charges apply to reverse discharge; the 2030 V2G 50 GW and VPP 50 GW targets' provincial allocation; whether DR and VPP double-count the same resources in national statistics.
+20. **Risk, credit and settlement**: whether the final retailer measure keeps the 1 fen/kWh × 1-10 formula, the CNY 2 million floor, the insurance restriction and the spot-real-time universal-service price; whether the risk-control measure creates a risk reserve or fund; final credit indicator weights, coefficient mapping and repair deadlines; how the 15/5 working-day objection and next-cycle retro-adjustment interact with stricter provincial rules; provincial deviation bands, penalty prices and responsibility sharing; whether the 2026-10 spot draft keeps the six risk types, three-level intervention, daily clearing/monthly settlement and price-difference direction; the timing and content of the Retail Market Basic Rules; the formal document number and penalties of the 2026-06-08 retail notice; universal-service provider selection, cost allocation and user choice window; the treatment of unresolved contracts on retailer exit; related-party volume caps; credit treatment of storage/VPP; green-power and mechanism-energy treatment in deviation and settlement; cross-provincial settlement risk and guarantees; negative-price deviation and retail package design; insurance exclusions, deductibles and claim order; 2027 contract negative-spread risk and regulatory tolerance.
 
 ---
 
@@ -284,4 +360,6 @@
 - For province-specific questions, confirm the province first and check the Chinese status table; rules differ on thresholds, price caps and products.
 - Separate book-era data (2018-2020) from 2026 policy data; do not mix the 470/16.85 GW official figure with the 120 GW connected figure.
 - VPP revenue depends on the local market: ask whether spot/ancillary markets exist, what resources are aggregated, and whether an aggregator relationship already exists before discussing business models.
+- For DR, always ask **baseline method + product + assessment + funding source**; for V2G, ask **who owns the battery, who pays for degradation, and which market the reverse energy is settled in**. Do not quote a DR price cap as a settlement price or a pilot target as current capability.
+- For risk, credit and settlement, always ask **which document and whether it is a draft**, **national or provincial**, **which settlement cycle and working-day clock**, and **whether the guarantee is a bank guarantee, insurance or cash**. Do not treat the 2026 drafts' coefficients, thresholds or universal-service price as current law; do not use the current 0.8/5 fen guarantee formula and the draft 1 fen × coefficient formula interchangeably.
 - Verification entry points: NDRC, NEA, provincial DRCs/energy bureaus, Beijing and provincial power exchanges, the southern regional trading platform, cets.com.cn, China Carbon Registration, ICAP. For product footprints add SAMR, MEE and the national product-footprint factor database; for trade data add the Commission CBAM/ESPR pages.

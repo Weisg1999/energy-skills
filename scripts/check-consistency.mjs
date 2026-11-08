@@ -81,6 +81,7 @@ for (const file of files) {
 const versioned = [
   ...files.filter((f) => /[\\/]skills[\\/].*SKILL(_EN)?\.md$/.test(f)),
   ...files.filter((f) => /[\\/]README(_EN)?\.md$/.test(f) && dirname(f) === root),
+  ...files.filter((f) => /[\\/]CHANGELOG(_EN)?\.md$/.test(f) && dirname(f) === root),
 ];
 for (const file of versioned) {
   const text = read(file);

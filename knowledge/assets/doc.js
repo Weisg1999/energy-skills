@@ -25,15 +25,36 @@
   window.addEventListener('resize', onScroll);
   onScroll();
 
-  function closeNav() { body.classList.remove('nav-open'); if (toggle) toggle.setAttribute('aria-expanded', 'false'); }
+  var nav = document.getElementById('nav');
+  var firstNavLink = nav ? nav.querySelector('a') : null;
+  function closeNav() {
+    body.classList.remove('nav-open');
+    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    if (nav && nav.contains(document.activeElement) && toggle) toggle.focus();
+  }
+  function openNav() {
+    body.classList.add('nav-open');
+    if (toggle) toggle.setAttribute('aria-expanded', 'true');
+    if (firstNavLink) firstNavLink.focus();
+  }
   if (toggle) {
     toggle.addEventListener('click', function () {
-      var open = body.classList.toggle('nav-open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (body.classList.contains('nav-open')) closeNav();
+      else openNav();
     });
   }
   if (scrim) scrim.addEventListener('click', closeNav);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeNav(); });
+
+  var tocBox = document.querySelector('.toc');
+  var tocMore = document.querySelector('.toc-more');
+  if (tocBox && tocMore) {
+    tocMore.addEventListener('click', function () {
+      var open = tocBox.classList.toggle('expanded');
+      tocMore.setAttribute('aria-expanded', open ? 'true' : 'false');
+      tocMore.textContent = open ? '收起小节' : '展开 ' + tocMore.getAttribute('data-count') + ' 个小节';
+    });
+  }
 
   // 目录高亮：取当前视口上方最近的标题
   var links = Array.prototype.slice.call(document.querySelectorAll('.toc a[href^="#"]'));
@@ -53,9 +74,15 @@
         if (r.top <= 120) current = targets[i];
       }
       links.forEach(function (a) { a.parentNode.classList.remove('on'); });
-      if (current && map[current.id]) {
-        map[current.id].classList.add('on');
-        var item = map[current.id].querySelector('a');
+      var currentLi = current && map[current.id];
+      if (currentLi && currentLi.classList.contains('lv3') && tocBox && !tocBox.classList.contains('expanded')) {
+        var prev = currentLi.previousElementSibling;
+        while (prev && !prev.classList.contains('lv2')) prev = prev.previousElementSibling;
+        if (prev) currentLi = prev;
+      }
+      if (currentLi) {
+        currentLi.classList.add('on');
+        var item = currentLi.querySelector('a');
         if (item) {
           var box = item.closest('.toc');
           if (box) {
