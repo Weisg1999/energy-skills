@@ -3,8 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
 <title>电力系统 · 电力市场 · 碳市场知识库 | energy-skills</title>
 <meta name="description" content="{{metaDescription}}">
+<script>
+(function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
 <style>
 :root{
   --paper:#f6f2e9;
@@ -32,6 +36,7 @@
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
   --serif:"Noto Serif SC","Source Han Serif SC","Songti SC",SimSun,Georgia,serif;
   --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  color-scheme:light;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:24px}
@@ -50,7 +55,7 @@ body{
 a{color:var(--teal);text-decoration:none}
 a:hover{text-decoration:underline;text-underline-offset:3px}
 :focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:3px}
-.skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:#fff;padding:10px 14px;z-index:100}
+.skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--paper);padding:10px 14px;z-index:100}
 .skip:focus{left:14px;top:14px}
 
 .shell{display:grid;grid-template-columns:248px minmax(0,1fr);max-width:1500px;margin:0 auto}
@@ -71,7 +76,7 @@ a:hover{text-decoration:underline;text-underline-offset:3px}
   text-decoration:none;border:1px solid transparent;transition:background .15s,color .15s;
 }
 .nav a:hover{background:rgba(255,253,248,.75);text-decoration:none}
-.nav a.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.nav a.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .nav .n{font:10px/1 var(--mono);color:var(--line-strong);letter-spacing:.04em}
 .nav a.active .n{color:#9fc9c5}
 .nav .count{font:10px/1 var(--mono);color:var(--muted);background:var(--paper-2);padding:3px 5px;border-radius:5px}
@@ -95,10 +100,15 @@ a:hover{text-decoration:underline;text-underline-offset:3px}
 .hero-actions{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px}
 .btn{display:inline-flex;align-items:center;gap:7px;padding:9px 14px;border-radius:8px;font-size:12.5px;font-weight:600;text-decoration:none;border:1px solid transparent;transition:transform .15s,background .15s}
 .btn:hover{text-decoration:none;transform:translateY(-1px)}
-.btn-solid{background:var(--ink);color:#fff}
-.btn-solid:hover{background:#243746}
+.btn-solid{background:var(--ink);color:var(--paper)}
+.btn-solid:hover{background:color-mix(in srgb,var(--ink) 88%,var(--paper))}
 .btn-ghost{background:rgba(255,253,248,.6);color:var(--ink);border-color:var(--line-strong)}
 .btn-ghost:hover{background:var(--card)}
+.theme-btn{width:auto;height:auto;padding:9px 14px;gap:7px;font-size:12.5px;font-weight:600;border-radius:8px;cursor:pointer}
+.theme-btn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.theme-btn .ico-sun{display:none}
+:root[data-theme="dark"] .theme-btn .ico-moon{display:none}
+:root[data-theme="dark"] .theme-btn .ico-sun{display:block}
 .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;border-top:1px solid var(--line);padding-top:15px;max-width:520px}
 .stat b{display:block;font-family:var(--serif);font-size:22px;line-height:1.1;font-weight:600;letter-spacing:-.02em}
 .stat span{display:block;font-size:11px;color:var(--muted);margin-top:3px;letter-spacing:.02em}
@@ -132,7 +142,7 @@ a:hover{text-decoration:underline;text-underline-offset:3px}
 .layer:last-child::before{display:none}
 .layer-num{
   width:30px;height:30px;border-radius:50%;display:grid;place-items:center;
-  font:600 10px/1 var(--mono);color:#fff;background:var(--teal);position:relative;z-index:1;
+  font:600 10px/1 var(--mono);color:var(--paper);background:var(--teal);position:relative;z-index:1;
 }
 .layer[data-a="2"] .layer-num{background:var(--blue)}
 .layer[data-a="3"] .layer-num{background:var(--amber)}
@@ -165,7 +175,7 @@ a.chip:hover{background:var(--teal-soft);border-color:#bcdad6;color:var(--teal);
 #search::placeholder{color:#6b7680}
 .filter-btn{font:12.5px var(--sans);padding:9px 12px;border-radius:8px;border:1px solid var(--line-strong);background:var(--card);color:var(--ink-2);cursor:pointer;transition:background .15s,color .15s,border-color .15s}
 .filter-btn:hover{border-color:var(--teal)}
-.filter-btn.active{background:var(--ink);border-color:var(--ink);color:#fff}
+.filter-btn.active{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 .result{font:11.5px/1.4 var(--mono);color:var(--muted);min-width:108px;text-align:right}
 .empty{display:none;margin:26px 0;padding:30px;border:1px dashed var(--line-strong);border-radius:12px;text-align:center;color:var(--muted);font-size:13px}
 .empty.show{display:block}
@@ -219,7 +229,7 @@ a.chip:hover{background:var(--teal-soft);border-color:#bcdad6;color:var(--teal);
 .panel figcaption{font-size:10.5px;line-height:1.65;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px;margin-top:14px}
 .panel strong{font-weight:600}
 .mono{font-family:var(--mono);font-size:.94em}
-.formula{margin:13px 0;padding:12px 14px;border-radius:9px;background:var(--ink);color:#f2eee5;font:12px/1.75 var(--mono);overflow-x:auto}
+.formula{margin:13px 0;padding:12px 14px;border-radius:9px;background:#16232f;border:1px solid #22303d;color:#f2eee5;font:12px/1.75 var(--mono);overflow-x:auto}
 .formula b{color:#8fd3cb;font-weight:600}
 .fact-row{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px}
 .fact{font-size:10.5px;line-height:1.4;padding:4px 7px;border-radius:5px;background:var(--paper);border:1px solid var(--line);color:var(--ink-2)}
@@ -304,7 +314,7 @@ a.chip:hover{background:var(--teal-soft);border-color:#bcdad6;color:var(--teal);
 .steps b{color:var(--ink)}
 .grades{display:grid;gap:6px;margin-top:4px}
 .grade-row{display:grid;grid-template-columns:30px 1fr;gap:9px;align-items:start;padding:7px 9px;border:1px solid var(--line);border-radius:7px;background:var(--paper);font-size:11px;line-height:1.55;color:var(--muted)}
-.grade-badge{display:grid;place-items:center;width:24px;height:24px;border-radius:5px;font:700 11px/1 var(--mono);color:#fff;background:var(--teal)}
+.grade-badge{display:grid;place-items:center;width:24px;height:24px;border-radius:5px;font:700 11px/1 var(--mono);color:var(--paper);background:var(--teal)}
 .grade-row:nth-child(2) .grade-badge{background:var(--blue)}
 .grade-row:nth-child(3) .grade-badge{background:var(--amber)}
 .grade-row:nth-child(4) .grade-badge{background:var(--red)}
@@ -404,7 +414,51 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   html{scroll-behavior:auto}
   *{transition:none!important;animation:none!important}
 }
+/* 深色主题 */
+:root[data-theme="dark"]{
+  --paper:#0f1418;
+  --paper-2:#161d23;
+  --card:#1a2229;
+  --ink:#e7e2d6;
+  --ink-2:#c2c9cf;
+  --muted:#94a1ac;
+  --line:#2a333b;
+  --line-strong:#3b4751;
+  --teal:#6cc8ba;
+  --teal-2:#83d6ca;
+  --teal-soft:#12322e;
+  --amber:#e2a75f;
+  --amber-soft:#352711;
+  --blue:#8ab8e2;
+  --blue-soft:#162c3f;
+  --red:#e59286;
+  --red-soft:#3a211d;
+  --plum:#c6a0cb;
+  --plum-soft:#2d2131;
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 10px 26px -20px rgba(0,0,0,.85);
+  color-scheme:dark;
+}
+:root[data-theme="dark"] .module-section[data-cat="park"]{--cat:#7fc08c;--cat-soft:#18301d}
+:root[data-theme="dark"] .module-section[data-cat="vpp"]{--cat:#e0b06a;--cat-soft:#352711}
+:root[data-theme="dark"] .module-section[data-cat="index"]{--cat:#aab6c1;--cat-soft:#232c34}
+:root[data-theme="dark"] .module-section[data-cat="research"]{--cat:#9aa6b2;--cat-soft:#222a32}
+:root[data-theme="dark"] .nav a:hover{background:rgba(255,255,255,.06)}
+:root[data-theme="dark"] .nav a.active .count{background:rgba(0,0,0,.12);color:var(--paper)}
+:root[data-theme="dark"] .btn-ghost{background:rgba(255,255,255,.04)}
+:root[data-theme="dark"] .map-skill{background:rgba(255,255,255,.03)}
+:root[data-theme="dark"] .filterbar{background:rgba(15,20,24,.96)}
+:root[data-theme="dark"] .nav-scroll::before{background:linear-gradient(to right,var(--paper),transparent)}
+:root[data-theme="dark"] .nav-scroll::after{background:linear-gradient(to left,var(--paper),transparent)}
+@media (max-width:960px){
+  :root[data-theme="dark"] .sidebar{background:rgba(15,20,24,.95)}
+}
+
 @media print{
+  :root,:root[data-theme="dark"]{
+    --paper:#fff;--paper-2:#f6f2e9;--card:#fff;--ink:#16232f;--ink-2:#344250;
+    --muted:#5b6772;--line:#ddd5c6;--line-strong:#c8bda9;color-scheme:light;
+  }
+  :root[data-theme="dark"] .module-section[data-cat]{--cat:#16232f;--cat-soft:#f0ece3}
   body{background:#fff}
   .sidebar,.hero-panel,.filterbar,.to-top,.skip,.hero-actions,.atlas-fold>summary,.nav-scroll{display:none!important}
   .shell{display:block;max-width:none}
@@ -448,6 +502,11 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
             <a class="btn btn-solid" href="#all" data-focus-search>检索知识模块 <span aria-hidden="true">↓</span></a>
             <a class="btn btn-ghost" href="html/政策列表-2026-11.html">政策原文直达 <span aria-hidden="true">↗</span></a>
             <a class="btn btn-ghost" href="#map">知识地图</a>
+            <button class="btn btn-ghost theme-btn" type="button" data-theme-toggle aria-label="切换到深色模式">
+              <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+              <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+              <span data-theme-label>深色</span>
+            </button>
           </div>
           <div class="hero-stats">{{heroStats}}</div>
           <p class="hero-note">全部内容以 <span class="mono">knowledge/*.md</span> 原文为准；阅读页由 <span class="mono">scripts/build-knowledge-html.mjs</span> 自动生成。本页摘要不替代原文，也不构成投资建议。</p>
@@ -1073,5 +1132,6 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   }
 })();
 </script>
+<script src="assets/theme.js"></script>
 </body>
 </html>
