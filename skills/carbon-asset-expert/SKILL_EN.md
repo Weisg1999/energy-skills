@@ -7,7 +7,7 @@ description: Carbon asset management expert — national ETS compliance calendar
 
 > 🌐 Chinese version: [SKILL.md](SKILL.md) ｜ Sister skills: [Electricity Trading Expert](../electricity-trading-expert/SKILL_EN.md) (market rules / settlement / carbon overview), [Virtual Power Plant Expert](../virtual-power-plant/SKILL_EN.md) (aggregation / operations), [Spot-Bidding Quant Expert](../spot-bidding-quant/SKILL_EN.md) (price forecasting / bidding). This skill answers only "how to comply, how to model, how to finance and hedge".
 
-> Version v1.6 · data cutoff 2026-11-01
+> Version v1.7 · data cutoff 2026-11-01
 
 > **Maintenance entry points**: `tools/selftest.py` (green means the worked examples still hold), `knowledge/碳资产实务-2026-11.md` (compliance parameters and instrument status), `knowledge/调研-碳管理与碳足迹厂商-2026-11.md` (public information on Carbon Newture and peers, grades B/C), `knowledge/调研-碳市场与CBAM-2026-10增量.md` (2026 fact-update working note).
 > **Open items 2026-2027**: formal inclusion dates for the 2027 expansion, the paid-allocation ratio and timetable, CBAM certificate purchase details, carbon futures listing (still **not listed as of 2026-11**), and the final benchmarks in the annual allocation plan.

@@ -85,7 +85,7 @@ const versioned = [
 ];
 for (const file of versioned) {
   const text = read(file);
-  if (!/v1\.6/.test(text)) fail(file, 1, 'missing current version marker v1.6');
+  if (!/v1\.7/.test(text)) fail(file, 1, 'missing current version marker v1.7');
   if (/v1\.1\s*[（(]\s*(updated|更新)/i.test(text)) {
     fail(file, 1, 'stale version header v1.1');
   }
@@ -200,6 +200,44 @@ const pairParity = {
     { name: 'existing/incremental cutoff', cn: /2025-06-01/, en: /2025-06-01/ },
     { name: 'capacity price exclusion', cn: /新能源配储不执行容量电价/, en: /co-located storage does not receive a capacity price/ },
   ],
+  'skills/ems-dispatch/SKILL.md': [
+    { name: 'storage net energy', cn: /91,352\.24/, en: /91,352\.24/ },
+    { name: 'storage capacity payment', cn: /15,068\.49/, en: /15,068\.49/ },
+    { name: 'storage total', cn: /106,420\.74/, en: /106,420\.74/ },
+    { name: 'storage with auxiliary', cn: /103,540\.74/, en: /103,540\.74/ },
+    { name: 'storage RTE 85%', cn: /88,420\.85/, en: /88,420\.85/ },
+    { name: '4h capacity payment', cn: /30,136\.99/, en: /30,136\.99/ },
+    { name: '95% availability payment', cn: /14,315\.07/, en: /14,315\.07/ },
+    { name: 'frequency regulation total', cn: /15,900/, en: /15,900/ },
+    { name: 'B user-side total', cn: /8,414\.11/, en: /8,414\.11/ },
+    { name: 'co-located net zero-cost', cn: /14,148/, en: /14,148/ },
+    { name: 'co-located net paid charge', cn: /9,648/, en: /9,648/ },
+    { name: 'capability power', cn: /418\.95/, en: /418\.95/ },
+    { name: 'capability energy', cn: /735\.00/, en: /735\.00/ },
+    { name: 'capability duration', cn: /1\.7544/, en: /1\.7544/ },
+    { name: 'microgrid baseline', cn: /7,408\.72/, en: /7,408\.72/ },
+    { name: 'microgrid optimized', cn: /6,525\.12/, en: /6,525\.12/ },
+    { name: 'microgrid peak', cn: /838\.50/, en: /838\.50/ },
+    { name: 'microgrid throughput', cn: /3,086\.56/, en: /3,086\.56/ },
+    { name: 'microgrid cycles', cn: /1\.5433/, en: /1\.5433/ },
+    { name: 'microgrid saving', cn: /883\.59/, en: /883\.59/ },
+    { name: 'microgrid saving percent', cn: /11\.93%/, en: /11\.93%/ },
+    { name: 'microgrid degradation', cn: /92\.60/, en: /92\.60/ },
+    { name: 'microgrid with degradation', cn: /6,617\.72/, en: /6,617\.72/ },
+    { name: 'storage +20%', cn: /6,350\.61/, en: /6,350\.61/ },
+    { name: '900 kW cap', cn: /6,519\.97/, en: /6,519\.97/ },
+    { name: 'PV +20% baseline', cn: /6,853\.38/, en: /6,853\.38/ },
+    { name: 'PV +20% optimized', cn: /5,996\.19/, en: /5,996\.19/ },
+    { name: 'reserve-energy cost', cn: /6,663\.52/, en: /6,663\.52/ },
+    { name: 'reserve-energy throughput', cn: /2,625\.45/, en: /2,625\.45/ },
+    { name: 'reserve energy shortfall', cn: /−52\.63/, en: /−52\.63/ },
+    { name: 'demand bill before', cn: /35,082\.99/, en: /35,082\.99/ },
+    { name: 'demand bill after', cn: /32,000/, en: /32,000/ },
+    { name: 'demand saving', cn: /3,082\.99/, en: /3,082\.99/ },
+    { name: 'full valley charge bill', cn: /36,800/, en: /36,800/ },
+    { name: 'overrun penalty', cn: /1,717\.01/, en: /1,717\.01/ },
+    { name: 'charging cap', cn: /440 kW/, en: /440 kW/ },
+  ],
 };
 
 const skillPairs = [
@@ -209,6 +247,7 @@ const skillPairs = [
   ['skills/carbon-asset-expert/SKILL.md', 'skills/carbon-asset-expert/SKILL_EN.md'],
   ['skills/storage-investment-operations/SKILL.md', 'skills/storage-investment-operations/SKILL_EN.md'],
   ['skills/renewable-project-development/SKILL.md', 'skills/renewable-project-development/SKILL_EN.md'],
+  ['skills/ems-dispatch/SKILL.md', 'skills/ems-dispatch/SKILL_EN.md'],
 ];
 for (const [cnRel, enRel] of skillPairs) {
   const cnFile = join(root, cnRel);
@@ -219,7 +258,8 @@ for (const [cnRel, enRel] of skillPairs) {
   }
   const cn = read(cnFile);
   const en = read(enFile);
-  const pairItems = [...parity, ...(pairParity[cnRel] ?? [])];
+  const globalParity = cnRel === 'skills/ems-dispatch/SKILL.md' ? [] : parity;
+  const pairItems = [...globalParity, ...(pairParity[cnRel] ?? [])];
   for (const item of pairItems) {
     const cnHas = item.cn.test(cn);
     const enHas = item.en.test(en);

@@ -28,3 +28,5 @@ jobs:
         run: python skills/storage-investment-operations/tools/selftest.py
       - name: Run the renewable project development self-test
         run: python skills/renewable-project-development/tools/selftest.py
+      - name: Run the EMS dispatch reference implementation self-test
+        run: python skills/ems-dispatch/tools/selftest.py

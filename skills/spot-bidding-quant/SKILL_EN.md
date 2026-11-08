@@ -7,7 +7,7 @@ description: Spot-bidding quant expert — bid-curve construction for day-ahead 
 
 > 🌐 Chinese version: [SKILL.md](SKILL.md) ｜ Sister skills: [Electricity Trading Expert](../electricity-trading-expert/SKILL_EN.md) (market rules / settlement / carbon), [Virtual Power Plant Expert](../virtual-power-plant/SKILL_EN.md) (aggregation / operations). This skill answers only "how to compute, how to bid, how to validate".
 
-> Version v1.6 · data cutoff 2026-11-01
+> Version v1.7 · data cutoff 2026-11-01
 
 > **Maintenance entry points**: `tools/selftest.py` (green means the figures quoted below still hold), `knowledge/调研-量化报价与厂商实践-2026-11.md` (vendor and patent material), `knowledge/省级市场状态表-2026-11.md` (confirm the province first), `knowledge/量化报价与交易风控-工程化-2026-11.md` (engineering loop, rule-version registry, risk limits, settlement reconciliation and attribution).
 > **Open items 2026-2027**: the Spot Market Basic Rules (draft, comments close 2026-11-18, proposed effect 2027-01-01), annual adjustments to bid-segment counts and price caps, secondary price-cap pilots, and the scope of quantity-only bidding for renewables.
