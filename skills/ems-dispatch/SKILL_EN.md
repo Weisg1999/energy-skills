@@ -7,7 +7,7 @@ description: Microgrid and storage EMS dispatch expert — turns "how should the
 
 > 🌐 Chinese version: [SKILL.md](SKILL.md) ｜ Sister skills: [Storage Investment & Operations](../storage-investment-operations/SKILL_EN.md) (appraisal / revenue stacking / LCOS), [Virtual Power Plant Expert](../virtual-power-plant/SKILL_EN.md) (aggregation / demand response), [Spot-Bidding Quant Expert](../spot-bidding-quant/SKILL_EN.md) (price forecasting / bidding), [Electricity Trading Expert](../electricity-trading-expert/SKILL_EN.md) (rules / settlement). This skill answers only "given prices, load, equipment and rules, how should tomorrow's power and SOC plan be arranged, and can it be delivered".
 
-> Version v1.7 · data cutoff 2026-11-01
+> Version v1.9 · data cutoff 2026-11-01
 
 > **Maintenance entry points**: `tools/selftest.py` (green means the worked examples still hold), [storage EMS note](../../knowledge/储能EMS优化调度-算法与工程-2026-11.md) (model, constraints, capacity price and frequency-regulation details), [microgrid EMS note](../../knowledge/微网EMS优化调度-算法与工程-2026-11.md) (PCC, islanding, MPC and capability assessment).
 > **Open items 2026-2027**: provincial rules and assessment deductions under Document 114, the denominator duration for the capacity price (4/6/8/10 h), the shape of time-of-use prices under continuous spot operation, revision of ancillary-service products and compensation, and upgrades to grid-forming and grid-connection standards.

@@ -85,7 +85,7 @@ const versioned = [
 ];
 for (const file of versioned) {
   const text = read(file);
-  if (!/v1\.7/.test(text)) fail(file, 1, 'missing current version marker v1.7');
+  if (!/v1\.9/.test(text)) fail(file, 1, 'missing current version marker v1.9');
   if (/v1\.1\s*[（(]\s*(updated|更新)/i.test(text)) {
     fail(file, 1, 'stale version header v1.1');
   }
@@ -238,6 +238,91 @@ const pairParity = {
     { name: 'overrun penalty', cn: /1,717\.01/, en: /1,717\.01/ },
     { name: 'charging cap', cn: /440 kW/, en: /440 kW/ },
   ],
+  'skills/tariff-bill-optimization/SKILL.md': [
+    { name: 'bill total', cn: /171,600\.00/, en: /171,600\.00/ },
+    { name: 'all-in price', cn: /0\.858/, en: /0\.858/ },
+    { name: 'energy share', cn: /48\.95%/, en: /48\.95%/ },
+    { name: 'capacity charge', cn: /51,200\.00/, en: /51,200\.00/ },
+    { name: 'contract demand charge', cn: /43,809\.52/, en: /43,809\.52/ },
+    { name: 'actual demand charge', cn: /46,000\.00/, en: /46,000\.00/ },
+    { name: 'contract saving', cn: /7,390\.48/, en: /7,390\.48/ },
+    { name: 'declared value', cn: /1,095\.24/, en: /1,095\.24/ },
+    { name: 'under-declared charge', cn: /48,000/, en: /48,000/ },
+    { name: 'annual capacity charge', cn: /614,400\.00/, en: /614,400\.00/ },
+    { name: 'annual contract charge', cn: /500,304\.76/, en: /500,304\.76/ },
+    { name: 'annual actual charge', cn: /525,320\.00/, en: /525,320\.00/ },
+    { name: 'annual naive declaration', cn: /629,280\.00/, en: /629,280\.00/ },
+    { name: 'annual saving', cn: /128,975\.24/, en: /128,975\.24/ },
+    { name: 'peak month demand', cn: /1,311/, en: /1,311/ },
+    { name: 'power-factor base', cn: /131,600/, en: /131,600/ },
+    { name: 'power-factor surcharge', cn: /3,290\.00/, en: /3,290\.00/ },
+    { name: 'power-factor discount', cn: /394\.80/, en: /394\.80/ },
+    { name: 'power-factor difference', cn: /3,684\.80/, en: /3,684\.80/ },
+    { name: 'annual consumption', cn: /6,702,688\.50/, en: /6,702,688\.50/ },
+    { name: 'fixed annual cost', cn: /4,021,613\.10/, en: /4,021,613\.10/ },
+    { name: 'TOU annual cost', cn: /4,509,570\.56/, en: /4,509,570\.56/ },
+    { name: 'market annual cost', cn: /3,681,791\.55/, en: /3,681,791\.55/ },
+    { name: 'market saving', cn: /339,821\.55/, en: /339,821\.55/ },
+    { name: 'market +20%', cn: /4,351,122\.98/, en: /4,351,122\.98/ },
+    { name: 'market +20% penalty', cn: /329,509\.88/, en: /329,509\.88/ },
+    { name: 'market −20%', cn: /3,012,460\.13/, en: /3,012,460\.13/ },
+    { name: 'break-even rise', cn: /10\.15%/, en: /10\.15%/ },
+    { name: 'daily load', cn: /19,275/, en: /19,275/ },
+    { name: 'daily cost before', cn: /12,968\.225/, en: /12,968\.225/ },
+    { name: 'daily cost after', cn: /11,768\.225/, en: /11,768\.225/ },
+    { name: 'daily saving', cn: /1,200\.00/, en: /1,200\.00/ },
+    { name: 'annual shift saving', cn: /438,000\.00/, en: /438,000\.00/ },
+    { name: 'unit shift revenue', cn: /0\.75/, en: /0\.75/ },
+  ],
+  'skills/retail-electricity-risk/SKILL.md': [
+    { name: 'Guangdong per-kWh margin', cn: /0\.0039/, en: /0\.0039/ },
+    { name: '2025 Guangdong margin', cn: /0\.0196/, en: /0\.0196/ },
+    { name: 'Guangdong retail average', cn: /0\.4074/, en: /0\.4074/ },
+    { name: 'system operation fee', cn: /0\.068/, en: /0\.068/ },
+    { name: 'procurement price', cn: /0\.41725/, en: /0\.41725/ },
+    { name: 'target quotation', cn: /0\.46025/, en: /0\.46025/ },
+    { name: 'example A annual net', cn: /292,500\.00/, en: /292,500\.00/ },
+    { name: 'portfolio revenue', cn: /28,900,000\.00/, en: /28,900,000\.00/ },
+    { name: 'portfolio wholesale cost', cn: /25,035,000\.00/, en: /25,035,000\.00/ },
+    { name: 'portfolio deviation cost', cn: /480,000\.00/, en: /480,000\.00/ },
+    { name: 'portfolio opex', cn: /1,500,000\.00/, en: /1,500,000\.00/ },
+    { name: 'portfolio net', cn: /1,885,000\.00/, en: /1,885,000\.00/ },
+    { name: 'portfolio per-kWh net', cn: /0\.0314167/, en: /0\.0314167/ },
+    { name: 'portfolio gross spread', cn: /0\.0644167/, en: /0\.0644167/ },
+    { name: 'spot +20% net', cn: /238,000\.00/, en: /238,000\.00/ },
+    { name: 'spot +30% net', cn: /−585,500\.00/, en: /−585,500\.00/ },
+    { name: 'portfolio break-even rise', cn: /22\.89%/, en: /22\.89%/ },
+    { name: 'single-contract break-even', cn: /0\.49/, en: /0\.49/ },
+    { name: 'single-contract margin', cn: /7\.10%/, en: /7\.10%/ },
+    { name: 'candidate D contribution', cn: /−101,250\.00/, en: /−101,250\.00/ },
+    { name: 'portfolio with D', cn: /1,783,750\.00/, en: /1,783,750\.00/ },
+    { name: 'candidate D unit cost', cn: /0\.45025/, en: /0\.45025/ },
+    { name: 'sigma 2% expected volume', cn: /701\.13/, en: /701\.13/ },
+    { name: 'sigma 2% expected cost', cn: /105\.17/, en: /105\.17/ },
+    { name: 'sigma 4% expected volume', cn: /14,611\.93/, en: /14,611\.93/ },
+    { name: 'sigma 4% expected cost', cn: /2,191\.79/, en: /2,191\.79/ },
+    { name: 'sigma 4% q95 volume', cn: /28,398\.56/, en: /28,398\.56/ },
+    { name: 'sigma 4% q95 cost', cn: /4,259\.78/, en: /4,259\.78/ },
+    { name: 'sigma 6% expected volume', cn: /33,829\.43/, en: /33,829\.43/ },
+    { name: 'sigma 6% expected cost', cn: /5,074\.41/, en: /5,074\.41/ },
+    { name: 'sigma 6% q95 volume', cn: /67,597\.84/, en: /67,597\.84/ },
+    { name: 'sigma 6% q95 cost', cn: /10,139\.68/, en: /10,139\.68/ },
+    { name: 'single-period assessment', cn: /4,500\.00/, en: /4,500\.00/ },
+    { name: 'current guarantee', cn: /2,500 万元/, en: /25 million CNY/ },
+    { name: 'current guarantee first leg', cn: /2,400 万元/, en: /24 million CNY/ },
+    { name: 'draft coefficient 1', cn: /3,000 万元/, en: /30 million CNY/ },
+    { name: 'draft coefficient 5', cn: /1\.5 亿元/, en: /150 million CNY/ },
+    { name: 'draft coefficient 10', cn: /3 亿元/, en: /300 million CNY/ },
+    { name: 'guarantee funding current', cn: /25 万元/, en: /250,000 CNY/ },
+    { name: 'guarantee funding coefficient 10', cn: /300 万元/, en: /3,000,000 CNY/ },
+    { name: 'draft-to-current multiple', cn: /1\.2 倍到 12 倍/, en: /1\.2× to 12×/ },
+    { name: 'guarantee gap', cn: /1,000 万元/, en: /10 million CNY/ },
+    { name: 'guarantee gap funding', cn: /100,000\.00/, en: /100,000\.00/ },
+    { name: 'linked base price', cn: /0\.4675/, en: /0\.4675/ },
+    { name: 'linked base margin', cn: /0\.01725/, en: /0\.01725/ },
+    { name: 'linked low-price margin', cn: /−0\.02300/, en: /−0\.02300/ },
+    { name: 'cost-based floor', cn: /0\.433/, en: /0\.433/ },
+  ],
 };
 
 const skillPairs = [
@@ -248,6 +333,8 @@ const skillPairs = [
   ['skills/storage-investment-operations/SKILL.md', 'skills/storage-investment-operations/SKILL_EN.md'],
   ['skills/renewable-project-development/SKILL.md', 'skills/renewable-project-development/SKILL_EN.md'],
   ['skills/ems-dispatch/SKILL.md', 'skills/ems-dispatch/SKILL_EN.md'],
+  ['skills/tariff-bill-optimization/SKILL.md', 'skills/tariff-bill-optimization/SKILL_EN.md'],
+  ['skills/retail-electricity-risk/SKILL.md', 'skills/retail-electricity-risk/SKILL_EN.md'],
 ];
 for (const [cnRel, enRel] of skillPairs) {
   const cnFile = join(root, cnRel);
@@ -258,7 +345,7 @@ for (const [cnRel, enRel] of skillPairs) {
   }
   const cn = read(cnFile);
   const en = read(enFile);
-  const globalParity = cnRel === 'skills/ems-dispatch/SKILL.md' ? [] : parity;
+  const globalParity = ['skills/ems-dispatch/SKILL.md', 'skills/tariff-bill-optimization/SKILL.md', 'skills/retail-electricity-risk/SKILL.md'].includes(cnRel) ? [] : parity;
   const pairItems = [...globalParity, ...(pairParity[cnRel] ?? [])];
   for (const item of pairItems) {
     const cnHas = item.cn.test(cn);

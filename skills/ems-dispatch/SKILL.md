@@ -7,7 +7,7 @@ description: 微网与储能 EMS 优化调度专家——把"明天怎么充放"
 
 > 🌐 English version: [SKILL_EN.md](SKILL_EN.md) ｜ 姊妹技能：[储能投资与运营](../storage-investment-operations/SKILL.md)（投决/收益堆叠/LCOS）、[虚拟电厂专家](../virtual-power-plant/SKILL.md)（聚合/需求响应）、[现货报价量化专家](../spot-bidding-quant/SKILL.md)（电价预测/报价）、[电力交易专家](../electricity-trading-expert/SKILL.md)（规则/结算）。本技能只回答"给定价格、负荷、设备与规则，明天的功率与 SOC 计划怎么排、能不能交付"。
 
-> 版本 v1.7 · 数据截止 2026-11-01
+> 版本 v1.9 · 数据截止 2026-11-01
 
 > **维护入口**：`tools/selftest.py`（跑通即代表正文算例未过期）、[储能 EMS 底稿](../../knowledge/储能EMS优化调度-算法与工程-2026-11.md)（模型、约束、容量补偿与调频细节）、[微网 EMS 底稿](../../knowledge/微网EMS优化调度-算法与工程-2026-11.md)（PCC、孤岛、MPC 与可调能力）。
 > **2026-2027 未定事项**：114 号文省级细则与考核扣减、容量电价分母时长（4/6/8/10 h）、现货连续运行后的分时价格形态、辅助服务品种与补偿标准修订、构网型与并网标准升级。

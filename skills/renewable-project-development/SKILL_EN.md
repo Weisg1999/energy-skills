@@ -7,7 +7,7 @@ description: Renewable project development and grid-connection expert — develo
 
 > 🌐 Chinese version: [SKILL.md](SKILL.md) ｜ Sister skills: [Electricity Trading Expert](../electricity-trading-expert/SKILL_EN.md) (market rules / settlement / mechanism-price source text), [Spot-Bidding Quant Expert](../spot-bidding-quant/SKILL_EN.md) (price forecasting / bidding / backtests), [Storage Investment & Operations Expert](../storage-investment-operations/SKILL_EN.md) (co-located storage economics), [Virtual Power Plant Expert](../virtual-power-plant/SKILL_EN.md) (aggregation / demand response), [Carbon Asset Management Expert](../carbon-asset-expert/SKILL_EN.md) (carbon compliance / CCER / CBAM). This skill answers only "can the project be developed, can it connect, can it pass investment committee".
 
-> Version v1.7 · data cutoff 2026-11-01
+> Version v1.9 · data cutoff 2026-11-01
 
 > **Maintenance entry points**: `tools/selftest.py` (green means the worked examples still hold), [renewable project development note](../../knowledge/新能源项目开发与并网-2026-11.md) (136 auctions, LCOE calibres, grid standards, open items), [China electricity-price policy](../../knowledge/中国电价现行政策与查证-2026-11.md) (document numbers and retail-side checks), [provincial market status](../../knowledge/省级市场状态表-2026-11.md) (provincial rules).
 > **Open items 2026-2027**: provincial implementation plans and mechanism-energy ratios under Document 136; auction floors, caps and contract terms for incremental projects; whether green-certificate revenue overlaps with mechanism energy; the effect of the 2027 spot-market rules on capture prices; provincial absorption headroom and grid-standard revisions; offshore-wind and distributed-PV provincial rules.
