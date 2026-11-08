@@ -16,6 +16,7 @@ foot: "给国际模型与英文读者"
 
 > **Purpose**: an English entry point to this repository's knowledge layer. The full notes are written in Chinese; this file gives (1) a map of what each note contains, (2) the key figures most likely to be asked, (3) a condensed provincial table, and (4) the open items that must be flagged when answering.
 > **Data cutoff**: 2026-11-08. Policy figures change monthly; re-check before quoting. Source grades: **A** official documents/statistics, **B** exchanges, central SOEs and industry associations, **C** media/research reports, **D** calculations from public data.
+> **Policy full texts**: the [national policy index](政策列表-2026-11.md) links 55 national documents and the [provincial policy index](省级政策列表-2026-11.md) links 13 provincial documents to verified official pages (Chinese).
 > **Rule of thumb**: a number needs grade + time point + caliber. If any of the three is missing, mark it "to be verified".
 
 ---

@@ -282,7 +282,7 @@ abs(dP) = u + v</code></pre>
     P_lo = P_hi = current_power</code></pre>
 <p>这比&quot;加一个开关变量&quot;更轻，也避免求解器在无意义的分支上浪费时间。</p>
 <h3 id="s33">4.7 EV/V2G 建模</h3>
-<ul><li><code>T_start/T_end</code> 表示在网窗口；非在网时段把功率包络置 0，比在模型里写复杂时间窗更稳。</li><li><code>SOC_end</code> 是离网目标；硬跟随可用大系数惩罚，软跟随则允许偏差并计入违约成本。</li><li><code>P_dis_max &gt; 0</code> 天然支持 V2G，有序充电（V1G）与 V2G 可共用一套模型；V1G 时把放电上限置 0。</li><li>充电惩罚用于抑制&quot;价差不足却充了再放&quot;的无效循环；惩罚单价应按退化成本标定，而不是拍一个数。</li><li>通信与协议：有序充电可参照 GB/T 47503-2026；V2G 涉及 OCPP 2.0.1、ISO 15118、GB/T 27930 等，<strong>协议版本与互操作性要在项目层面核实</strong>。</li><li>降级策略要前置：全程满功率仍达不到目标 SOC → 直接快充；初始 SOC 越界 → 先充/放回可行域；正常情况才进求解器。</li></ul>
+<ul><li><code>T_start/T_end</code> 表示在网窗口；非在网时段把功率包络置 0，比在模型里写复杂时间窗更稳。</li><li><code>SOC_end</code> 是离网目标；硬跟随可用大系数惩罚，软跟随则允许偏差并计入违约成本。</li><li><code>P_dis_max &gt; 0</code> 天然支持 V2G，有序充电（V1G）与 V2G 可共用一套模型；V1G 时把放电上限置 0。</li><li>充电惩罚用于抑制&quot;价差不足却充了再放&quot;的无效循环；惩罚单价应按退化成本标定，而不是拍一个数。</li><li>通信与协议：有序充电可参照 GB/T 47503-2026；V2G 涉及 OCPP 2.0.1、ISO 15118、GB/T 27930 等，<strong>协议版本与互操作性要在项目层面核实</strong>。</li><li><strong>降级策略要前置</strong>：全程满功率仍达不到目标 SOC → 直接快充；初始 SOC 越界 → 先充/放回可行域；正常情况才进求解器。</li></ul>
 <h3 id="s34">4.8 多储能聚合</h3>
 <div class="table-wrap"><table><thead><tr><th>口径</th><th>做法</th><th>风险</th></tr></thead><tbody><tr><td>逐设备建模</td><td>每台储能独立变量与 SOC</td><td>规模大，但物理准确</td></tr><tr><td>聚合成虚拟储能</td><td>功率直接求和，SOC 按容量加权</td><td>简化，可能掩盖设备间效率、循环次数与环流差异</td></tr></tbody></table></div>
 <p>聚合 SOC 的常见写法：</p>

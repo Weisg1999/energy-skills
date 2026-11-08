@@ -94,4 +94,70 @@
     }, { rootMargin: '-80px 0px -70% 0px', threshold: [0, 1] });
     targets.forEach(function (el) { io.observe(el); });
   }
+
+  // 政策列表：关键词检索 + 状态筛选 + 分组计数
+  var policyList = document.querySelector('.policy-list');
+  if (policyList) {
+    var policies = Array.prototype.slice.call(document.querySelectorAll('.policy-list a.policy'));
+    var groups = Array.prototype.slice.call(document.querySelectorAll('.policy-group'));
+    var pInput = document.getElementById('policySearch');
+    var pClear = document.getElementById('policyClear');
+    var pCount = document.getElementById('policyCount');
+    var pEmpty = document.getElementById('policyEmpty');
+    var pChips = Array.prototype.slice.call(document.querySelectorAll('.policy-chips .pchip'));
+    var pStatus = 'all';
+    var norm = function (s) { return String(s).replace(/\s+/g, '').toLowerCase(); };
+
+    function applyPolicy() {
+      var q = norm(pInput ? pInput.value : '');
+      var shown = 0;
+      policies.forEach(function (a) {
+        var okStatus = pStatus === 'all' || a.getAttribute('data-status') === pStatus;
+        var okQuery = !q || norm(a.getAttribute('data-search') || '').indexOf(q) !== -1;
+        var on = okStatus && okQuery;
+        a.classList.toggle('is-hidden', !on);
+        if (on) shown += 1;
+      });
+      groups.forEach(function (g) {
+        var visible = g.querySelectorAll('a.policy:not(.is-hidden)').length;
+        g.classList.toggle('is-hidden', visible === 0);
+        var badge = g.querySelector('.policy-group-count');
+        if (badge) badge.textContent = visible;
+      });
+      var filtered = Boolean(q) || pStatus !== 'all';
+      if (pCount) pCount.textContent = filtered
+        ? '匹配 ' + shown + ' / ' + policies.length + ' 条'
+        : '共 ' + policies.length + ' 条 · 点击卡片查看官方原文';
+      if (pEmpty) pEmpty.hidden = shown !== 0;
+      if (pClear) pClear.hidden = !(pInput && pInput.value);
+    }
+
+    if (pInput) {
+      pInput.addEventListener('input', applyPolicy);
+      pInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') { pInput.value = ''; applyPolicy(); pInput.blur(); }
+      });
+    }
+    if (pClear) {
+      pClear.addEventListener('click', function () {
+        if (pInput) { pInput.value = ''; pInput.focus(); }
+        applyPolicy();
+      });
+    }
+    pChips.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        pStatus = btn.getAttribute('data-status') || 'all';
+        pChips.forEach(function (b) { b.classList.toggle('on', b === btn); });
+        applyPolicy();
+      });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== '/' || e.metaKey || e.ctrlKey || e.altKey) return;
+      var tag = (document.activeElement && document.activeElement.tagName) || '';
+      if (/^(INPUT|TEXTAREA|SELECT)$/.test(tag)) return;
+      e.preventDefault();
+      if (pInput) pInput.focus();
+    });
+    applyPolicy();
+  }
 })();

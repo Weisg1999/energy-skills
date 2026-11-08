@@ -2,6 +2,28 @@
 
 This file records energy-skills releases in reverse chronological order. Current version **v1.6**, data cutoff **2026-11-08**. Repository entry point: [README_EN.md](README_EN.md); Chinese version: [CHANGELOG.md](CHANGELOG.md).
 
+### 2026-11-08 (v1.6 maintenance: reading-page typography, second pass)
+- **Measure and leading**: body measure narrowed from 45rem to 43rem (~44 CJK characters per line), 15.5px type at 1.85 line height; paragraph gap 1.05em, list item gap 0.6em (0.8em at top level), tables 13.8px at 1.7, callouts 14px.
+- **Heading hierarchy**: h2 raised to 24px with 52px space above; h3 raised to 18px with an accent left rule, so section headings in book notes no longer read at body level. h2 rules now stop at the text measure; policy group headings stay full width.
+- **Long lists**: book-note pages contain list items of several hundred characters. At build time, items of 60+ characters with a short lead-in (`label:`, ≤22 characters) get that lead-in bolded — about 538 occurrences. Presentation only; the Markdown source, numbers and wording are untouched.
+- **Contents rail**: flat-structure pages (VPP book note, 101 Q&A A/B/C, where h2 ≤2 and h3 ≤16) now expand third-level sections by default, including the mobile contents; longer documents stay collapsed.
+- **Verification**: all 44 pages show no horizontal overflow at 390 / 768 / 1024; `build-knowledge-html.mjs --check` and `check-consistency.mjs` pass; module and line counts are unchanged (44 modules / 14,244 lines).
+
+### 2026-11-08 (v1.6 addition: provincial policy index with official full-text links)
+- **New module**: [Provincial policy index 2026-11](knowledge/省级政策列表-2026-11.md) lists **13 provincial policies** grouped into VPP-specific rules (7), capacity and time-of-use pricing (2), renewable near-site consumption pricing (2), grid operation and ancillary services (1), and zero-carbon parks (1). Each entry carries the document number, title, key point, issuing body, date, status and an official full-text link.
+- **Scope**: only documents already cited in the knowledge base and traceable to a provincial government or regulator detail page; a separate "not included" list explains why Guangdong 152, Kunming 71, Central China 129, Fujian 56, Sichuan 171, Guangdong 267, Inner Mongolia 534, Shaanxi 65 and Shandong 220 are omitted.
+- **Reachability**: all 13 links verified for HTTP 200, an official host and a page containing the matching document number or title; Liaoning 528 is an official PDF. No unverified or media links.
+- **Checker**: `scripts/check-policy-links.mjs` now scans every `layout: policy` page, adds title matching for detail pages that omit the document number, handles PDF links and reports totals; 55 national + 13 provincial = 68 links, 0 failures.
+- **Entry points and docs**: hub popular entries split into 05 "national policy full texts" and 06 "provincial policy full texts"; index module, English index and READMEs updated; totals now **44 modules / 14,244 lines**, 44 reading pages.
+- **Verification**: `build-knowledge-html.mjs`, `build-knowledge-html.mjs --check` and `check-consistency.mjs` all pass.
+
+### 2026-11-08 (v1.6 addition: national policy index with official full-text links)
+- **New module**: [Policy index 2026-11](knowledge/政策列表-2026-11.md) lists **55 national-level policies** grouped into power markets and trading (25), prices, renewables and storage (14), VPPs, V2G and zero-carbon parks (8), carbon markets, supply security and planning (5), and consultation drafts (3). Each entry carries the document number, title, key point, issuing body, date, status and an official full-text link.
+- **Reachability**: every link is verified by `scripts/check-policy-links.mjs` for HTTP 200, an official host (gov.cn / ndrc.gov.cn / nea.gov.cn / mee.gov.cn) and a page containing the matching document number or title; NDRC consultation pages are checked through their article API. The module documents how to re-find a document by number if a link changes.
+- **Reading experience**: policy tables render as cards with keyword search, status filters (in force / upcoming / draft / superseded / reference), per-group counts and an empty state; the filter bar sticks while scrolling, cards stack on mobile, and `/` focuses search.
+- **Entry points**: the hub hero gains a direct "policy full text" action and a fifth popular entry; the index module points to the list; README and the Chinese edition now report **43 modules / 14,183 lines**.
+- **Verification**: adds `scripts/check-policy-links.mjs` plus a manual/scheduled GitHub Actions workflow; `build-knowledge-html.mjs --check` and `check-consistency.mjs` pass.
+
 ### 2026-11-08 (v1.6 maintenance: search-first hub and mobile readability)
 - **Information architecture**: the hub now runs "overview → module browser → knowledge map → topic atlas → usage notes". All 42 cards, grouped into 10 themes, move above the map and atlas, with search, type filters and group headings within the first scroll; the filter bar sticks while browsing. Section numbers realign to 01 FIND / 02 MAP / 03 ATLAS / 04-13 categories / 14 METHOD, matching the sidebar and anchors.
 - **Compressed entry page**: the hero illustration is replaced by a "popular entries" list; on mobile the hero drops from 872px to 445px and the topic atlas collapses by default (6,518px to 256px). Total page height falls to about 10,900px on desktop and 15,400px on mobile.

@@ -194,6 +194,17 @@ function inline(text) {
   return s;
 }
 
+/* 长列表项的领起词加粗：只改善呈现，不改原文 */
+function emphasizeLead(text) {
+  if (text.length < 60 || text.includes('**')) return text;
+  const idx = text.indexOf('：');
+  if (idx < 2 || idx > 22) return text;
+  const lead = text.slice(0, idx);
+  if (/[。；，、？！%]/.test(lead) || /[\[\]*_`]/.test(lead)) return text;
+  if (/^[\d\s./\-年月日]+$/.test(lead)) return text;
+  return `**${lead}**${text.slice(idx)}`;
+}
+
 /* ------------------------------------------------------------- 块级解析 */
 
 function splitCells(line) {
@@ -254,7 +265,7 @@ function renderList(items) {
   let k = 0;
   while (k < items.length) {
     if (items[k].indent > base) { k += 1; continue; }
-    const text = inline(items[k].text.join(' '));
+    const text = inline(emphasizeLead(items[k].text.join(' ')));
     k += 1;
     const kids = [];
     while (k < items.length && items[k].indent > base) { kids.push(items[k]); k += 1; }
@@ -263,8 +274,71 @@ function renderList(items) {
   return `${out}</${tag}>`;
 }
 
-function convert(md) {
+/* ------------------------------------------------------------ 政策列表 */
+
+function policyGroupCounts(lines) {
+  const counts = [];
+  let cur = -1;
+  for (const line of lines) {
+    if (/^##\s+/.test(line)) { counts.push(0); cur += 1; continue; }
+    if (cur >= 0 && /^\s*\|/.test(line) && !isDelimRow(line) && !/^\s*\|\s*文号\s*\|/.test(line)) counts[cur] += 1;
+  }
+  return counts;
+}
+
+const STATUS_BADGE = { 现行: 'ok', 即将施行: 'soon', 已被取代: 'old', 草案: 'draft', 参考: 'ref' };
+
+function renderPolicyCard(row, cols) {
+  const link = (row[cols.link] || '').match(/\[([^\]]+)\]\((https?:[^)]+)\)/);
+  if (!link) throw new Error(`政策表行缺少官方原文链接：${row[cols.title] || row[0]}`);
+  const status = (row[cols.status] || '').trim();
+  const statusKey = status.replace(/[（(].*$/, '').trim() || '其他';
+  const badge = STATUS_BADGE[statusKey] || 'ref';
+  const no = (row[cols.no] || '').trim();
+  const title = (row[cols.title] || '').trim();
+  const note = (row[cols.note] || '').trim();
+  const org = (row[cols.org] || '').trim();
+  const date = (row[cols.date] || '').trim();
+  const search = plainText([no, title, note, org, date, status].join(' ')).toLowerCase();
+  const html = `<a class="policy" href="${esc(link[2])}" target="_blank" rel="noopener" data-status="${esc(statusKey)}" data-search="${esc(search)}">
+  <span class="policy-body">
+    <span class="policy-head"><span class="policy-no">${esc(no)}</span><span class="badge badge-${badge}">${esc(status)}</span></span>
+    <span class="policy-title">${inline(title)}</span>
+    ${note ? `<span class="policy-note">${inline(note)}</span>` : ''}
+    <span class="policy-meta">${esc(org)}${org && date ? ' · ' : ''}${esc(date)}</span>
+  </span>
+  <span class="policy-go" aria-hidden="true">↗</span>
+</a>`;
+  return { html, status: statusKey };
+}
+
+function renderPolicyBar(policy) {
+  const order = ['现行', '即将施行', '草案', '已被取代', '参考'];
+  const chips = order.filter((k) => policy.stats[k])
+    .map((k) => `<button class="pchip" type="button" data-status="${k}">${k}<b>${policy.stats[k]}</b></button>`)
+    .join('');
+  return `<div class="policy-bar" data-policy-bar>
+      <div class="policy-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+        <input id="policySearch" type="search" placeholder="检索文号、标题、机关或关键词，例如：136 / 储能 / 发改委" autocomplete="off" aria-label="检索政策">
+        <button type="button" class="policy-clear" id="policyClear" aria-label="清空检索" hidden>×</button>
+      </div>
+      <div class="policy-chips" role="group" aria-label="按状态筛选">
+        <button class="pchip on" type="button" data-status="all">全部<b>${policy.count}</b></button>
+        ${chips}
+      </div>
+      <p class="policy-count" id="policyCount" aria-live="polite">共 ${policy.count} 条 · 点击卡片查看官方原文</p>
+    </div>`;
+}
+
+function convert(md, options = {}) {
   const lines = md.replace(/\r\n?/g, '\n').split('\n');
+  const policy = options.layout === 'policy';
+  const policyCounts = policy ? policyGroupCounts(lines) : [];
+  let policyGroupIdx = 0;
+  let policyGroupOpen = false;
+  let policyTotal = 0;
+  const policyStats = new Map();
   const out = [];
   const headings = [];
   let h1 = '';
@@ -307,6 +381,24 @@ function convert(md) {
       const text = h[2].replace(/\s+#+\s*$/, '').trim();
       if (level === 1 && !h1) { h1 = text; i += 1; continue; }
       if (level === 1) { out.push(`<h2>${inline(text)}</h2>`); i += 1; seenBlock = true; lastBlock = 'heading'; continue; }
+      if (policy && level === 2) {
+        if (policyGroupOpen) out.push('</section>');
+        policyGroupOpen = false;
+        const groupCount = policyCounts[policyGroupIdx] ?? 0;
+        policyGroupIdx += 1;
+        const id = `s${(seq += 1)}`;
+        headings.push({ level: 2, id, text: plainText(text) });
+        if (groupCount > 0) {
+          out.push(`<section class="policy-group"><h2 id="${id}">${inline(text)}<span class="policy-group-count">${groupCount}</span></h2>`);
+          policyGroupOpen = true;
+        } else {
+          out.push(`<h2 id="${id}">${inline(text)}</h2>`);
+        }
+        i += 1;
+        seenBlock = true;
+        lastBlock = 'heading';
+        continue;
+      }
       const id = `s${(seq += 1)}`;
       headings.push({ level: Math.min(level, 4), id, text: plainText(text) });
       out.push(`<h${Math.min(level, 4)} id="${id}">${inline(text)}</h${Math.min(level, 4)}>`);
@@ -343,6 +435,22 @@ function convert(md) {
       const rows = [];
       let j = i + 2;
       while (j < lines.length && /^\s*\|/.test(lines[j]) && lines[j].trim() !== '') { rows.push(splitCells(lines[j])); j += 1; }
+      if (policy && header.some((c) => c.includes('文号'))) {
+        const col = (name) => header.findIndex((c) => c.includes(name));
+        const cols = { no: col('文号'), title: col('文件'), note: col('要点'), org: col('机关'), date: col('日期'), status: col('状态'), link: col('原文') };
+        if (Object.values(cols).some((k) => k === -1)) throw new Error('政策表缺少必需列（文号/文件/要点/机关/日期/状态/原文）');
+        const cards = rows.map((r) => {
+          const card = renderPolicyCard(r, cols);
+          policyTotal += 1;
+          policyStats.set(card.status, (policyStats.get(card.status) || 0) + 1);
+          return card.html;
+        });
+        out.push(`<div class="policy-list">\n${cards.join('\n')}\n</div>`);
+        i = j;
+        seenBlock = true;
+        lastBlock = 'table';
+        continue;
+      }
       const cell = (tag, val, k) => {
         const a = align[k];
         const style = a && a !== 'left' ? ` style="text-align:${a}"` : '';
@@ -380,7 +488,16 @@ function convert(md) {
     lastBlock = 'p';
   }
 
-  return { h1, body: out.join('\n'), headings, tableCount, codeCount };
+  if (policyGroupOpen) out.push('</section>');
+
+  return {
+    h1,
+    body: out.join('\n'),
+    headings,
+    tableCount,
+    codeCount,
+    policy: policy ? { count: policyTotal, stats: Object.fromEntries(policyStats) } : undefined,
+  };
 }
 
 /* ----------------------------------------------------------- 首页渲染 */
@@ -473,19 +590,22 @@ function readingTime(md) {
 
 function buildPage(doc) {
   const sec = sectionById.get(doc.section);
+  const policyBar = doc.layout === 'policy' && doc.policy?.count ? renderPolicyBar(doc.policy) : '';
   const lang = /^INDEX_EN/i.test(doc.md) ? 'en' : 'zh-CN';
   const h2s = doc.headings.filter((h) => h.level === 2);
   const h3s = doc.headings.filter((h) => h.level === 3);
   const toc = h2s.length ? h2s : doc.headings.filter((h) => h.level <= 3).slice(0, 12);
   const tocAll = h2s.length ? doc.headings.filter((h) => h.level === 2 || h.level === 3) : toc;
+  const tocOpen = h2s.length > 0 && h2s.length <= 2 && h3s.length > 0 && h3s.length <= 16;
+  const tocMobileItems = tocOpen ? tocAll : toc;
   const pageCutoff = cutoffOf(doc.raw) || doc.cutoff || '';
   const minutes = readingTime(doc.raw);
   const chars = (doc.raw.replace(/\s/g, '').length / 1000).toFixed(1);
 
   const tocItems = tocAll.map((h) => `<li class="lv${h.level}"><a href="#${h.id}">${h.text}</a></li>`).join('\n            ');
-  const tocMobile = toc.map((h) => `<li class="lv${h.level}"><a href="#${h.id}">${h.text}</a></li>`).join('\n            ');
+  const tocMobile = tocMobileItems.map((h) => `<li class="lv${h.level}"><a href="#${h.id}">${h.text}</a></li>`).join('\n            ');
   const tocMore = h3s.length
-    ? `<button class="toc-more" type="button" aria-expanded="false" data-count="${h3s.length}">展开 ${h3s.length} 个小节</button>`
+    ? `<button class="toc-more" type="button" aria-expanded="${tocOpen}" data-count="${h3s.length}">${tocOpen ? '收起小节' : `展开 ${h3s.length} 个小节`}</button>`
     : '';
 
   const sideList = manifest.filter((m) => m.section === sec.id)
@@ -571,18 +691,18 @@ function buildPage(doc) {
       <div class="doc-meta">${meta}</div>
     </header>
 
-    ${toc.length ? `<details class="toc-mobile">
-      <summary>本页目录（${toc.length}）</summary>
+    ${tocMobileItems.length ? `<details class="toc-mobile">
+      <summary>本页目录（${tocMobileItems.length}）</summary>
       <ol>
             ${tocMobile}
       </ol>
     </details>` : ''}
 
-    <article class="prose">
+${policyBar ? `    ${policyBar}\n\n` : ''}    <article class="prose">
 ${doc.body}
     </article>
 
-    ${relatedBlock}
+${doc.layout === 'policy' ? '    <div class="policy-empty" id="policyEmpty" hidden>没有匹配的政策。试试文号、标题关键词，或切回「全部」。</div>\n\n' : ''}    ${relatedBlock}
 
     <nav class="pager" aria-label="上下篇">
           ${pager}
@@ -594,7 +714,7 @@ ${doc.body}
     </footer>
   </main>
 
-  <aside class="toc" aria-label="本页目录">
+  <aside class="toc${tocOpen ? ' expanded' : ''}" aria-label="本页目录">
     <div class="toc-title">本页目录</div>
     ${tocAll.length ? `<ol>
             ${tocItems}
@@ -616,14 +736,14 @@ if (!existsSync(templatePath)) throw new Error('缺少 knowledge/index.template.
 mkdirSync(htmlDir, { recursive: true });
 
 const pages = manifest.map((doc) => {
-  const converted = convert(doc.body);
+  const converted = convert(doc.body, { layout: doc.layout });
   const merged = { ...doc, ...converted };
   return { doc: merged, html: buildPage(merged) };
 });
 
 const indexHtml = renderIndex();
 
-function verifyLinks(baseDir, html, label) {
+function verifyLinks(baseDir, html, label, pending = new Set()) {
   const missing = [];
   for (const m of html.matchAll(/href="([^"]+)"/g)) {
     const href = unesc(m[1]);
@@ -631,13 +751,14 @@ function verifyLinks(baseDir, html, label) {
     const path = href.split('#')[0].split('?')[0];
     if (!path) continue;
     const target = resolve(baseDir, decodeURIComponent(path));
-    if (!existsSync(target)) missing.push(href);
+    if (!existsSync(target) && !pending.has(target)) missing.push(href);
   }
   if (missing.length) throw new Error(`${label} 存在断链：${[...new Set(missing)].join('、')}`);
 }
 
-verifyLinks(knowledgeDir, indexHtml, 'knowledge/index.html');
-for (const { doc, html } of pages) verifyLinks(htmlDir, html, `knowledge/html/${doc.html}`);
+const pendingPages = new Set(pages.map((p) => join(htmlDir, p.doc.html)));
+verifyLinks(knowledgeDir, indexHtml, 'knowledge/index.html', pendingPages);
+for (const { doc, html } of pages) verifyLinks(htmlDir, html, `knowledge/html/${doc.html}`, pendingPages);
 
 if (checkMode) {
   const diffs = [];
