@@ -5,7 +5,7 @@
 
 export const site = {
   skills: 9,
-  coverage: '电力系统通识、电力现货与省间交易、电价、新能源与并网、储能与 EMS、零碳园区、碳市场、虚拟电厂、需求响应与市场风险信用结算',
+  coverage: '电力系统通识、电力现货与省间交易、电价、新能源与并网、储能、EMS 与 SCADA 数据链路、零碳园区、碳市场、虚拟电厂、需求响应与市场风险信用结算',
 };
 
 export const sections = [
@@ -52,7 +52,7 @@ export const sections = [
     title: '储能与 EMS',
     navLabel: '储能与 EMS',
     comment: '07 Storage',
-    desc: '技术侧看路线、安全与构网；投资侧看政策、成本、时长折算与考核；调度侧看 MILP、多市场堆叠、SOC/退化与 MPC。两份 EMS 笔记分别覆盖独立储能与微网。',
+    desc: '技术侧看路线、安全与构网；投资侧看政策、成本、时长折算与考核；调度侧看 MILP、多市场堆叠、SOC/退化与 MPC；数据侧看 SCADA 点表、通信、时延、时钟同步与安全防护。两份 EMS 笔记分别覆盖独立储能与微网。',
   },
   {
     id: 'park',

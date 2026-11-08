@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>SCADA 与电力监控数据链路 | energy-skills 知识库</title>
+<meta name="description" content="从 VPP/EMS 的数据底座出发，拆解点表与四遥、104/61850/Modbus/MQTT、采集频率与时延、时钟同步、历史库、告警、冗余和电力监控安全防护。">
+<script>
+(function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="../assets/knowledge.css">
+</head>
+<body data-cat="storage" id="top">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html">← 知识库</a>
+  <div class="crumb">
+    <span class="crumb-cat">08 / STORAGE</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">SCADA 与电力监控数据链路</span>
+  </div>
+  <div class="topbar-act">
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换到深色模式" title="切换到深色模式">
+      <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+      <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+    <a class="src" href="../SCADA与电力监控数据链路-2026-11.md">.md 源文件</a>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">08 / STORAGE</div>
+    <h2 class="nav-cat"><a href="../index.html#storage">储能与 EMS</a></h2>
+    <ul class="nav-list">
+              <li><a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线、安全与构网型并网</a></li>
+              <li><a href="储能投资与运营-2026-11.html">储能投资与运营</a></li>
+              <li><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a></li>
+              <li><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a></li>
+              <li class="on" aria-current="page"><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>05</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#price"><b>06</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>07</b>新能源与并网</a></li>
+              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>11</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">08 / STORAGE<i>知识模块</i></div>
+      <h1 class="doc-title">SCADA 与电力监控数据链路：VPP/EMS 的数据底座（2026-11）</h1>
+      <p class="lede">从 VPP/EMS 的数据底座出发，拆解点表与四遥、104/61850/Modbus/MQTT、采集频率与时延、时钟同步、历史库、告警、冗余和电力监控安全防护。</p>
+      <p class="hook">VPP/EMS 的数据底座</p>
+      <div class="tags"><span class="tag">SCADA</span><span class="tag">点表</span><span class="tag">IEC 104</span><span class="tag">IEC 61850</span><span class="tag">MQTT</span><span class="tag">数据链路</span></div>
+      <div class="doc-meta"><span>981 行</span><span>约 20.9k 字</span><span>阅读约 35 分钟</span><span>16 节</span><span>数据截止 2026-11-09</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（16）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv2"><a href="#s7">1. 数据链路全景</a></li>
+            <li class="lv2"><a href="#s12">2. 点表：SCADA 的合同</a></li>
+            <li class="lv2"><a href="#s21">3. 协议选型</a></li>
+            <li class="lv2"><a href="#s29">4. 采集频率、时延与时间同步</a></li>
+            <li class="lv2"><a href="#s36">5. 实时库、历史库与数据治理</a></li>
+            <li class="lv2"><a href="#s43">6. 告警与运行监视</a></li>
+            <li class="lv2"><a href="#s49">7. 冗余与可靠性</a></li>
+            <li class="lv2"><a href="#s55">8. 电力监控安全防护与等保</a></li>
+            <li class="lv2"><a href="#s62">9. 与 EMS、VPP 和结算的接口</a></li>
+            <li class="lv2"><a href="#s68">10. 工程验收与运维</a></li>
+            <li class="lv2"><a href="#s73">11. 常见故障与误区</a></li>
+            <li class="lv2"><a href="#s74">12. 标准与文件</a></li>
+            <li class="lv2"><a href="#s76">13. 术语表</a></li>
+            <li class="lv2"><a href="#s77">14. 维护规则</a></li>
+            <li class="lv2"><a href="#s78">附：一页速查</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>数据截止：2026-11-09｜定位：知识库笔记，不是技能。调度优化查<a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS</a>与<a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS</a>；市场规则查<a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a>；项目测算查<a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a>。</p><p>用途：SCADA 是 VPP/EMS 的&quot;眼睛和手&quot;——把现场设备状态采上来，把控制指令送下去，并留下可追溯的时标、质量码与审计记录。本文只写数据链路与监控安全，不写调度算法；参数为工程示例，落地以本省规则、设备手册与合同为准。</p><p>引用纪律：政策与标准标注文号、版本与时点；未核实项写&quot;待核实&quot;；涉及具体站点时，点表、IP、端口、参数一律以现场文件为准。本文不含任何真实站点数据。</p></aside>
+<hr>
+<h2 id="s1">0. 一页看懂</h2>
+<h3 id="s2">0.1 三句话</h3>
+<ol><li><strong>SCADA 是数据平面，EMS 是决策平面</strong>：SCADA 负责&quot;采得准、传得稳、控得住、查得到&quot;，EMS 负责&quot;算得优&quot;；两者用点表与数据契约解耦，不能把优化器直接接到设备寄存器上。</li><li><strong>四遥不是四个按钮</strong>：遥测、遥信、遥控、遥调各有自己的点表字段、质量码、时标与确认语义；把遥控当普通写入，等于把安全联锁交给网络。</li><li><strong>安全分区先于技术选型</strong>：27号令下，储能电站监控、虚拟电厂监控、分布式电源监控都在电力监控系统范围内；公网到生产控制区没有&quot;直连&quot;选项。</li></ol>
+<h3 id="s3">0.2 SCADA 在 VPP/EMS 中的分层架构</h3>
+<pre><code>┌─ 管理信息区（安全 III / IV）────────────────────────────────
+│  VPP 云平台 · 交易申报 · 结算对账 · 经营看板 · 运维工单
+└───────────────▲───────────────────────────┬────────────────
+                │ 受控上行（隔离装置）        │ 云边下行（TLS/APN，
+                │                           │ 经安全接入区）
+┌───────────────┴───────────────────────────▼────────────────
+│  安全接入区：代理转发 · 端到端认证 · 不直连生产控制区
+└───────────────┬────────────────────────────────────────────
+                │ 纵向加密 / 受控通道
+┌───────────────▼────────────────────────────────────────────
+│  生产控制区（安全 I / II）
+│
+│   SCADA 前置（FEP 双机）──▶ 实时库 ──▶ 历史/时序库 ──▶ 告警/HMI
+│          │                     │
+│          │ 104 / 61850 / Modbus│  时钟同步（北斗 / NTP / PTP）
+│   ┌──────▼─────────────────────▼──────────────────────────
+│   │  站控层 / 边缘网关：点表映射 · 协议转换 · 本地联锁 · 断点续传
+│   └──────┬────────────────────────────────────────────────
+└──────────┼─────────────────────────────────────────────────
+           │ 现场总线 / 工业以太网 / 串口
+┌──────────▼─────────────────────────────────────────────────
+│  现场设备层
+│   测控 · 保护 · 关口表 · BMS · PCS · 逆变器 · 充电桩 · PLC
+└────────────────────────────────────────────────────────────
+图例：──▶ 数据/控制流   ▲▼ 分区边界   FEP 前置处理器</code></pre>
+<p>这张图只回答&quot;谁在哪里、走哪条路&quot;，不回答&quot;优化怎么算&quot;。VPP 的预测、报价、调度模型在管理信息区或安全接入区运行；真正碰一次设备的控制指令，必须穿过安全边界进入生产控制区，或在安全接入区完成代理与认证后受控转发。</p>
+<h3 id="s4">0.3 架构图读法</h3>
+<div class="table-wrap"><table><thead><tr><th>层级</th><th>典型设备或软件</th><th>主要职责</th><th>不该放什么</th></tr></thead><tbody><tr><td>现场设备层</td><td>测控、保护、关口表、BMS、PCS、逆变器、充电桩、PLC</td><td>采样、执行、保护、就地联锁</td><td>跨站调度逻辑、市场报价</td></tr><tr><td>站控/边缘层</td><td>站控机、通信管理机、边缘网关、协议转换器</td><td>点表映射、协议转换、断点续传、本地联锁</td><td>全局优化、结算主数据</td></tr><tr><td>生产控制区</td><td>SCADA 前置、实时库、历史库、告警、HMI、AGC/AVC</td><td>实时监视、控制下发、SOE、审计</td><td>公网服务、办公应用、邮件</td></tr><tr><td>安全接入区</td><td>接入网关、代理、认证、加密</td><td>外部资源接入、代理转发、端到端认证</td><td>直接控制、通用网络服务</td></tr><tr><td>管理信息区</td><td>VPP 云平台、EMS 优化、交易、结算、看板</td><td>预测、优化、申报、对账、经营分析</td><td>实时控制、保护定值</td></tr><tr><td>外部主体</td><td>调度主站、交易中心、计量主站、第三方聚合商</td><td>计划、结算、考核、计量</td><td>绕过边界直连现场</td></tr></tbody></table></div>
+<h3 id="s5">0.4 与相邻系统的边界</h3>
+<div class="table-wrap"><table><thead><tr><th>系统</th><th>主要回答</th><th>与 SCADA 的接口</th><th>本文是否展开</th></tr></thead><tbody><tr><td>SCADA</td><td>现在是什么状态、能不能控</td><td>点表、实时库、历史库、告警</td><td>是</td></tr><tr><td>EMS 优化调度</td><td>下一时段怎么发、怎么充放</td><td>读 SCADA 数据，写功率/SOC 计划</td><td>只写接口，不写算法</td></tr><tr><td>DCS</td><td>厂内过程闭环控制</td><td>网关或硬接线，通常不跨广域</td><td>否</td></tr><tr><td>PLC</td><td>设备/产线逻辑控制</td><td>Modbus、OPC UA、硬接线</td><td>只写协议</td></tr><tr><td>RTU</td><td>站端采集与转发</td><td>104、Modbus、DL/T 476</td><td>是</td></tr><tr><td>计量主站</td><td>结算电量与费率</td><td>专用计量通道，不经 SCADA</td><td>只写边界</td></tr><tr><td>调度主站</td><td>电网运行与考核</td><td>104、DL/T 476、纵向加密</td><td>是</td></tr><tr><td>交易平台</td><td>申报、出清、结算</td><td>API/文件，不直接控制设备</td><td>只写边界</td></tr><tr><td>碳/能耗平台</td><td>碳排放与能耗核算</td><td>读历史数据或报表</td><td>否</td></tr></tbody></table></div>
+<h3 id="s6">0.5 适用与不适用</h3>
+<div class="table-wrap"><table><thead><tr><th>适用</th><th>不适用</th></tr></thead><tbody><tr><td>VPP/EMS 的点表设计与数据契约</td><td>通用 SCADA 教材式的全领域铺陈</td></tr><tr><td>储能站、微网、分布式电源的监控链路</td><td>保护定值整定与电磁暂态仿真</td></tr><tr><td>104/61850/Modbus/MQTT 选型与联调</td><td>芯片、操作系统与数据库内核实现</td></tr><tr><td>采集频率、时延、对时与历史库设计</td><td>电力市场出清算法与报价策略</td></tr><tr><td>电力监控安全分区、接入与等保</td><td>渗透测试操作步骤与攻击手法</td></tr><tr><td>监控系统验收、运维与故障排查</td><td>具体厂商产品的采购与比价</td></tr></tbody></table></div>
+<hr>
+<h2 id="s7">1. 数据链路全景</h2>
+<h3 id="s8">1.1 一条遥测的旅程</h3>
+<p>一条遥测从现场到看板，通常要过七道关：</p>
+<ol><li><strong>传感/变送</strong>：CT/PT、温度、SOC、开关位置等转成电信号或数字量；</li><li><strong>采集装置</strong>：测控、RTU、BMS、PCS 按扫描周期采样，形成原始值；</li><li><strong>边缘处理</strong>：滤波、标度变换、死区判断、打时标、加质量码；</li><li><strong>通信</strong>：104/61850/Modbus/MQTT 把数据送到前置或云平台；</li><li><strong>前置处理</strong>：解帧、点表映射、合法性检查、双通道去重；</li><li><strong>实时库</strong>：写当前值、时标、质量码，触发告警与计算点；</li><li><strong>历史库与应用</strong>：压缩入库、报表、优化模型、结算对账。</li></ol>
+<p>每一道关都可能改变数值的含义。<strong>点表错一个变比，后面所有优化和考核都错</strong>；时标错一个时区，SOE 顺序就会反过来。数据链路的第一原则不是&quot;快&quot;，而是&quot;每个数都能追到来源&quot;。</p>
+<h3 id="s9">1.2 一条控制指令的闭环</h3>
+<pre><code>EMS/VPP 决策
+   │ ① 生成指令：目标值、时限、指令ID、权限
+   ▼
+指令网关 / 边缘代理
+   │ ② 鉴权、限幅、互锁、有效期校验
+   ▼
+站控 / 设备控制器
+   │ ③ 选择-执行（SBO）或直接执行
+   ▼
+PCS / BMS / 逆变器 / 充电桩
+   │ ④ 执行，回读实际值
+   ▼
+SCADA 实时库 ◀── ⑤ 遥测/遥信确认 ── 现场
+   │
+   ▼
+历史库 + 审计日志 + 考核/对账</code></pre>
+<p>控制链路的每一环都要有<strong>明确回执</strong>：谁发的、发给谁、发的是什么、什么时候失效、设备有没有执行、执行后的实际值是多少。没有回执的&quot;成功&quot;等于没有执行；只有下发没有回读，等于把控制变成了广播。</p>
+<h3 id="s10">1.3 五条链路</h3>
+<div class="table-wrap"><table><thead><tr><th>链路</th><th>关键问题</th><th>关键指标</th><th>常见断点</th></tr></thead><tbody><tr><td>采集链路</td><td>采得到、采得准</td><td>完整率、正确率、时延</td><td>点表错、变比错、网关单点</td></tr><tr><td>控制链路</td><td>控得动、控得对</td><td>下发成功率、回读一致率、时延</td><td>权限、互锁、超时、无回执</td></tr><tr><td>对时链路</td><td>所有时标同一把尺</td><td>对时误差、守时能力</td><td>无 GPS、NTP 漂移、时区错</td></tr><tr><td>历史链路</td><td>查得到、查得全</td><td>入库完整率、保留期、可追溯</td><td>压缩过度、磁盘满、补数丢失</td></tr><tr><td>安全链路</td><td>进不来、出不丢</td><td>边界合规、审计完整、告警闭环</td><td>直连、弱口令、无监测</td></tr></tbody></table></div>
+<h3 id="s11">1.4 时间尺度</h3>
+<div class="table-wrap"><table><thead><tr><th>环节</th><th>典型时间尺度</th><th>关注点</th></tr></thead><tbody><tr><td>保护/就地联锁</td><td>毫秒级</td><td>不依赖 SCADA，SCADA 只记录</td></tr><tr><td>GOOSE/快速报文</td><td>毫秒级</td><td>网络优先级、订阅关系、测试模式</td></tr><tr><td>SOE</td><td>1 ms 分辨率</td><td>对时精度、时标来源、事件顺序</td></tr><tr><td>遥测刷新</td><td>1–15 s</td><td>扫描周期、死区、通信带宽</td></tr><tr><td>AGC/AVC</td><td>秒级</td><td>指令周期、调节速率、闭锁</td></tr><tr><td>EMS 经济调度</td><td>5–15 min</td><td>预测、SOC、市场计划</td></tr><tr><td>市场申报</td><td>15 min 或更粗</td><td>交易规则、计量口径</td></tr><tr><td>结算</td><td>月/周期</td><td>关口表、对账、考核</td></tr></tbody></table></div>
+<hr>
+<h2 id="s12">2. 点表：SCADA 的合同</h2>
+<h3 id="s13">2.1 对象模型</h3>
+<p>点表不是一张 Excel，而是&quot;站—间隔—设备—测点&quot;的对象模型。推荐至少四层：</p>
+<pre><code>区域/聚合商
+  └─ 场站（储能站、微网、充电站、分布式光伏）
+       └─ 间隔/设备（1# 储能单元、PCS、BMS、关口表）
+            └─ 测点（遥测、遥信、遥控、遥调、遥脉）</code></pre>
+<p>对象模型的价值在于：当设备增容、改名或更换通信地址时，只改一层映射，不用修改上层优化模型和报表公式。</p>
+<h3 id="s14">2.2 四遥与遥脉</h3>
+<div class="table-wrap"><table><thead><tr><th>类型</th><th>方向</th><th>典型量</th><th>关键字段</th><th>常见错误</th></tr></thead><tbody><tr><td>遥测</td><td>上行</td><td>功率、电压、电流、SOC、温度、频率</td><td>量纲、变比、死区、时标、质量码</td><td>把 kW 当 W、把百分比当小数</td></tr><tr><td>遥信</td><td>上行</td><td>开关位置、保护动作、告警、运行状态</td><td>单点/双点、取反、抖动抑制</td><td>双点遥信压成布尔，丢失中间态</td></tr><tr><td>遥控</td><td>下行</td><td>分合闸、启停、复位</td><td>选择-执行、超时、回执、互锁</td><td>直接执行、无回读、无权限校验</td></tr><tr><td>遥调</td><td>下行</td><td>功率目标、电压目标、SOC 上限</td><td>目标值、爬坡率、有效期、回执</td><td>把遥调当遥测写、无变化率限制</td></tr><tr><td>遥脉</td><td>上行</td><td>电度脉冲、累计电量</td><td>脉冲常数、累计清零、时标</td><td>把脉冲当瞬时功率、清零未记录</td></tr></tbody></table></div>
+<h3 id="s15">2.3 点表最小字段集</h3>
+<div class="table-wrap"><table><thead><tr><th>字段</th><th>说明</th><th>示例</th></tr></thead><tbody><tr><td>点 ID</td><td>全局唯一、永不复用</td><td><code>ESS01.PCS01.P_AC</code></td></tr><tr><td>点名</td><td>人中英文可读名称</td><td><code>1#PCS 交流侧有功</code></td></tr><tr><td>对象路径</td><td>站/间隔/设备</td><td><code>ESS01/BAY01/PCS01</code></td></tr><tr><td>类型</td><td>AI/DI/AO/DO/Pulse</td><td><code>AI</code></td></tr><tr><td>协议地址</td><td>104 IOA、61850 引用、Modbus 寄存器</td><td><code>IOA=1001</code></td></tr><tr><td>量纲</td><td>kW、kVar、V、A、℃、%</td><td><code>kW</code></td></tr><tr><td>变比/偏移</td><td>工程值 = 原始值 × 变比 + 偏移</td><td><code>0.1 / 0</code></td></tr><tr><td>死区</td><td>归档死区与告警死区分开</td><td><code>1 kW / 5 kW</code></td></tr><tr><td>扫描周期</td><td>采集与上报周期</td><td><code>5 s</code></td></tr><tr><td>时标来源</td><td>设备时标/网关时标/前置时标</td><td><code>设备</code></td></tr><tr><td>质量码映射</td><td>协议位到统一质量枚举</td><td><code>IV→Invalid</code></td></tr><tr><td>告警阈值</td><td>高/低/高高/低低、延时</td><td><code>&gt; 1.1 MW 持续 10 s</code></td></tr><tr><td>归档标志</td><td>是否入历史库、压缩方式</td><td><code>是/旋转门</code></td></tr><tr><td>控制权限</td><td>谁可写、是否需双人复核</td><td><code>调度/运维</code></td></tr><tr><td>关联计算点</td><td>派生点公式与版本</td><td><code>SOC_avg = ...</code></td></tr></tbody></table></div>
+<h3 id="s16">2.4 命名与点号</h3>
+<ul><li><strong>稳定</strong>：点 ID 一旦投运不改；设备改名只改显示名；</li><li><strong>唯一</strong>：跨站、跨协议不重复；不把 IP 或寄存器地址当点 ID；</li><li><strong>可读</strong>：人能看懂对象路径，机器能解析；</li><li><strong>不复用</strong>：退役点保留并标记 <code>retired</code>，不复用给新设备；</li><li><strong>可版本化</strong>：点表有版本号、生效时间、变更记录与回滚方案。</li></ul>
+<h3 id="s17">2.5 变比、量纲与死区</h3>
+<p>工程值换算：</p>
+<pre><code>工程值 = 原始值 × 变比 + 偏移</code></pre>
+<p>三个常见坑：</p>
+<ol><li><strong>CT/PT 变比重复</strong>：设备已经按一次值输出，网关又乘了一次变比；</li><li><strong>单位混用</strong>：kW 与 W、kWh 与 MWh、百分比与小数混在一张表里；</li><li><strong>死区过大</strong>：为了省带宽把死区设成量程的 5%，小功率变化全被吃掉，考核时&quot;没有数据&quot;。</li></ol>
+<p>死区至少分三种：<strong>采集死区</strong>（设备上报）、<strong>归档死区</strong>（历史库存储）、<strong>告警死区</strong>（阈值判断）。三者目的不同，不能共用一个值。</p>
+<h3 id="s18">2.6 质量码</h3>
+<div class="table-wrap"><table><thead><tr><th>统一质量</th><th>含义</th><th>常见来源位</th><th>处理建议</th></tr></thead><tbody><tr><td>Good</td><td>有效</td><td>无异常</td><td>正常使用</td></tr><tr><td>Invalid</td><td>无效</td><td>IV、故障、超量程</td><td>不参与优化与考核</td></tr><tr><td>Questionable</td><td>可疑</td><td>抖动、通信质量差、替代值</td><td>标记并人工复核</td></tr><tr><td>Substituted</td><td>人工替代</td><td>手动置数、调试</td><td>记录操作人、原因、时限</td></tr><tr><td>Test</td><td>测试</td><td>调试/检修</td><td>不进入结算与考核</td></tr><tr><td>Blocked</td><td>闭锁</td><td>联锁、检修</td><td>保留原值并说明</td></tr><tr><td>Overflow</td><td>溢出</td><td>量程溢出、计数器翻转</td><td>检查变比与量程</td></tr></tbody></table></div>
+<p>质量码必须<strong>端到端保留</strong>。很多系统在网关处把质量码丢掉，到了 EMS 只剩一个数；优化器无法区分&quot;0 MW&quot;和&quot;通信中断&quot;，会把断线当成真实零功率。</p>
+<h3 id="s19">2.7 双点遥信与中间态</h3>
+<p>双点遥信有四种状态：<code>00</code> 中间态、<code>01</code> 分、<code>10</code> 合、<code>11</code> 故障。把双点压成布尔，会同时丢掉&quot;中间态&quot;和&quot;故障态&quot;：</p>
+<ul><li>开关操作过程中的中间态是正常的，不应立即告警；</li><li><code>11</code> 通常表示辅助触点故障或接线错误，应告警；</li><li>双点取反要在点表里配置，不要在显示层临时取反。</li></ul>
+<h3 id="s20">2.8 点表核对清单</h3>
+<ul><li>[ ] 每个点有唯一 ID、对象路径、协议地址和量纲；</li><li>[ ] 变比、偏移、CT/PT 只乘一次，抽点与现场表计核对；</li><li>[ ] 双点遥信、取反、抖动抑制已配置；</li><li>[ ] 质量码从设备到实时库全链路保留；</li><li>[ ] 遥测死区、归档死区、告警死区分别设置；</li><li>[ ] 遥控/遥调有权限、互锁、超时、回执与回读；</li><li>[ ] 点表版本、生效时间、变更人、回滚方案齐全；</li><li>[ ] 退役点标记 <code>retired</code>，未复用；</li><li>[ ] 计算点有公式、输入点、版本与责任人。</li></ul>
+<hr>
+<h2 id="s21">3. 协议选型</h2>
+<h3 id="s22">3.1 一张选型表</h3>
+<div class="table-wrap"><table><thead><tr><th>协议</th><th>典型场景</th><th>传输</th><th>时标</th><th>质量码</th><th>控制语义</th><th>安全</th><th>不该用在哪</th></tr></thead><tbody><tr><td>IEC 60870-5-104</td><td>调度/站端远动</td><td>TCP/IP，常用 2404</td><td>CP56Time2a</td><td>有</td><td>遥控/遥调、选择-执行</td><td>本身不加密，靠 TLS/VPN/62351</td><td>设备内部寄存器级</td></tr><tr><td>IEC 61850</td><td>变电站、DER、微网</td><td>MMS/TCP、GOOSE、SV</td><td>有</td><td>有</td><td>控制模型、SBO</td><td>靠网络隔离与 62351</td><td>跨公网直连</td></tr><tr><td>Modbus RTU/TCP</td><td>设备级、仪表、PLC</td><td>串口/ TCP 502</td><td>通常无</td><td>通常无</td><td>寄存器写</td><td>无内建认证/加密</td><td>广域调度、公网</td></tr><tr><td>MQTT</td><td>云边遥测、聚合商平台</td><td>TCP/TLS，常用 1883/8883</td><td>载荷自定义</td><td>载荷自定义</td><td>应用层确认</td><td>TLS、用户名/证书、ACL</td><td>毫秒级闭锁、保护</td></tr><tr><td>OPC UA</td><td>工业互联网、楼宇、工厂</td><td>TCP/HTTPS</td><td>有</td><td>有</td><td>方法调用/写</td><td>证书、签名、加密</td><td>简单电表轮询</td></tr><tr><td>DL/T 476</td><td>调度主站间</td><td>专用通道</td><td>有</td><td>有</td><td>调度数据</td><td>专用网络</td><td>设备级</td></tr><tr><td>CIM (61970/61968)</td><td>模型交换</td><td>文件/服务</td><td>不适用</td><td>不适用</td><td>不适用</td><td>按传输通道</td><td>实时控制</td></tr></tbody></table></div>
+<h3 id="s23">3.2 IEC 60870-5-104</h3>
+<p><strong>定位</strong>：IEC 60870-5-101 的 TCP/IP 传输映射，国内调度与站端远动最常用的协议之一。默认 TCP 端口 2404。</p>
+<p><strong>报文结构</strong>：APCI（启动/停止/测试/确认）+ ASDU。ASDU 里最关键的四件事：</p>
+<ul><li><strong>类型标识</strong>：遥测、遥信、遥控、遥调、总召、对时等；</li><li><strong>传送原因</strong>：周期、突发、总召、命令确认、激活终止等；</li><li><strong>公共地址</strong>：站地址；</li><li><strong>信息对象地址（IOA）</strong>：点号，3 字节。</li></ul>
+<p>常用类型标识（只列最常见）：</p>
+<div class="table-wrap"><table><thead><tr><th>类型</th><th>含义</th></tr></thead><tbody><tr><td>M_SP_NA_1 / M_SP_TB_1</td><td>单点遥信 / 带时标单点遥信</td></tr><tr><td>M_DP_NA_1 / M_DP_TB_1</td><td>双点遥信 / 带时标双点遥信</td></tr><tr><td>M_ME_NA_1 / M_ME_NB_1 / M_ME_NC_1</td><td>归一化/标度化/浮点遥测</td></tr><tr><td>M_ME_TD_1 / M_ME_TE_1 / M_ME_TF_1</td><td>带时标遥测</td></tr><tr><td>C_SC_NA_1 / C_DC_NA_1</td><td>单点/双点遥控</td></tr><tr><td>C_SE_NA_1 / C_SE_NB_1 / C_SE_NC_1</td><td>归一化/标度化/浮点遥调</td></tr><tr><td>M_EI_NA_1</td><td>初始化结束</td></tr></tbody></table></div>
+<p><strong>链路参数</strong>：标准给出 k/w 与 t0–t3 的缺省值（k=12、w=8、t0=30 s、t1=15 s、t2=10 s、t3=20 s），工程上按通道质量与设备能力调整，但必须两侧一致。k 是未确认 I 帧上限，w 是收到多少帧后必须确认；t1 是发送/测试超时，t2 是无数据时的确认超时，t3 是空闲测试周期。</p>
+<p><strong>工程要点</strong>：</p>
+<ul><li>启动后先总召，再按组召/周期上送；总召期间的数据要防止重复入库；</li><li>遥控优先用<strong>选择-执行</strong>，直接执行只用于明确允许的场景；</li><li>命令要有超时、回执、激活终止与回读确认；</li><li>CP56Time2a 是<strong>本地时间</strong>且带夏令时标志位，跨时区/跨系统要统一换算；</li><li>104 本身不提供加密与强身份认证，公网或跨区必须叠加 TLS/VPN/IEC 62351 或安全接入区；</li><li>双通道运行时，前置要去重、判活、防止双通道同时下发。</li></ul>
+<h3 id="s24">3.3 IEC 61850</h3>
+<p><strong>定位</strong>：变电站自动化与 DER 通信的对象模型标准，国内等同采用为 DL/T 860 系列。它不是&quot;寄存器表&quot;，而是&quot;有语义的模型&quot;。</p>
+<p><strong>三套通信映射</strong>：</p>
+<ul><li><strong>MMS</strong>：客户端/服务器，用于监视、控制、报告、定值；</li><li><strong>GOOSE</strong>：发布/订阅，快速报文，用于跳闸、联锁、状态互锁；</li><li><strong>SV</strong>：采样值，用于电流/电压采样。</li></ul>
+<p><strong>模型层次</strong>：IED/Server → Logical Device → Logical Node → Data Object → Data Attribute。工程上通过 SCL 文件（ICD/CID/SCD）交换模型，再绑定通信参数。</p>
+<p><strong>控制模型</strong>：直接控制、选择-执行（SBO）、增强型选择-执行等；控制对象有 <code>Oper</code>、<code>SBOw</code>、<code>Cancel</code> 等结构，必须按模型而不是按寄存器地址操作。</p>
+<p><strong>工程要点</strong>：</p>
+<ul><li>ICD/CID/SCD 版本必须与现场装置一致，改模型要重新联调；</li><li>GOOSE 依赖 VLAN 优先级与订阅关系，交换机配置错误会导致&quot;信号发了但没人收&quot;；</li><li>GOOSE/SV 的测试模式要显式标记，检修测试不能误动；</li><li>61850 的时间戳通常是 UTC，显示层再转本地时区；</li><li>DER 场景可参考 IEC 61850-90-7 的对象模型，但别把&quot;模型支持&quot;当成&quot;设备已实现&quot;。</li></ul>
+<h3 id="s25">3.4 Modbus</h3>
+<p><strong>定位</strong>：设备级寄存器通信，简单、便宜、生态广。RTU 走串口，TCP 常用 502 端口。</p>
+<p><strong>常用功能码</strong>：</p>
+<div class="table-wrap"><table><thead><tr><th>功能码</th><th>用途</th></tr></thead><tbody><tr><td>01 / 02</td><td>读线圈 / 读离散输入</td></tr><tr><td>03 / 04</td><td>读保持寄存器 / 读输入寄存器</td></tr><tr><td>05 / 06</td><td>写单线圈 / 写单寄存器</td></tr><tr><td>15 / 16</td><td>写多线圈 / 写多寄存器</td></tr></tbody></table></div>
+<p><strong>局限</strong>：</p>
+<ul><li>没有标准时标、质量码、事件顺序；</li><li>没有内建身份认证与加密；</li><li>寄存器语义靠厂商手册，字节序/字序可能不同；</li><li>轮询模式，点数多时延线性上升；</li><li>写寄存器没有&quot;选择-执行&quot;语义，安全联锁要在网关/控制器做。</li></ul>
+<p><strong>结论</strong>：Modbus 适合&quot;设备 → 网关&quot;的最后一段，不适合&quot;站 → 调度&quot;的广域链路，更不应把 502 端口暴露到公网。</p>
+<h3 id="s26">3.5 MQTT</h3>
+<p><strong>定位</strong>：发布/订阅消息协议，适合云边遥测、聚合商平台、海量分布式资源接入。常用 1883（明文）/8883（TLS）。</p>
+<p><strong>关键机制</strong>：</p>
+<ul><li><strong>Broker</strong>：消息中转，主题（topic）分层；</li><li><strong>QoS 0/1/2</strong>：最多一次/至少一次/恰好一次（ broker 与客户端之间，不是端到端业务确认）；</li><li><strong>Retained</strong>：保留最后一条消息，适合状态量；</li><li><strong>LWT</strong>：遗嘱消息，客户端掉线时由 broker 发布；</li><li><strong>Session</strong>：持久会话与离线消息。</li></ul>
+<p><strong>工程要点</strong>：</p>
+<ul><li>QoS 2 不等于&quot;控制可靠&quot;：端到端要有指令 ID、应用层 ACK、幂等与回读；</li><li>主题设计要能按站/设备/点分层，ACL 要限制到最小范围；</li><li>载荷要带 schema 版本、时标、质量码、设备 ID；</li><li>离线队列要有上限与过期策略，避免恢复后&quot;补发一堆过期指令&quot;；</li><li>Broker 要做认证、TLS、审计与限流；匿名 Broker 等于公开的控制面板。</li></ul>
+<h3 id="s27">3.6 OPC UA、DL/T 476 与 CIM</h3>
+<ul><li><strong>OPC UA（IEC 62541）</strong>：带信息模型、订阅、证书与加密的工业互联协议，适合工厂、楼宇、园区设备集成；比 Modbus 重，但语义和安全更完整。</li><li><strong>DL/T 476</strong>：国内电力系统实时数据通信应用层协议，主要用于调度主站之间；具体版本与互操作细则以现行标准和两侧系统为准。</li><li><strong>CIM（IEC 61970/61968）</strong>：电网模型交换标准，用于模型拼接、图模维护，不是实时遥测协议。</li><li><strong>IEC 62351</strong>：电力系统通信安全系列标准，给 104、61850 等协议提供 TLS、端到端安全与证书体系；&quot;加个密码&quot;不等于满足 62351。</li></ul>
+<h3 id="s28">3.7 协议网关的五个坑</h3>
+<ol><li><strong>点表漂移</strong>：网关配置改了，SCADA 点表没改，数据错位；</li><li><strong>时标翻译</strong>：源协议无时标，网关用&quot;收到时间&quot;代替&quot;事件时间&quot;；</li><li><strong>质量丢失</strong>：源协议有质量位，网关映射时丢掉；</li><li><strong>控制语义错位</strong>：源协议是&quot;写寄存器&quot;，目标协议是&quot;选择-执行&quot;，直接映射会绕过互锁；</li><li><strong>网关单点</strong>：所有协议、所有站共用一个网关，网关一挂全盲。</li></ol>
+<hr>
+<h2 id="s29">4. 采集频率、时延与时间同步</h2>
+<h3 id="s30">4.1 采样、上报与存储</h3>
+<p>三个周期要分开：</p>
+<ul><li><strong>采样周期</strong>：设备内部采样，毫秒到秒；</li><li><strong>上报周期</strong>：通信上送，秒到分钟；</li><li><strong>存储周期</strong>：历史库落盘，秒到分钟，或按死区压缩。</li></ul>
+<p>&quot;采集频率 1 s&quot;不等于&quot;历史库 1 s 一个点&quot;，也不等于&quot;EMS 1 s 更新一次&quot;。合同里必须写清是哪一个周期。</p>
+<h3 id="s31">4.2 时延预算</h3>
+<p>下表是工程示例（D 级），用于说明分解方法，不是标准限值：</p>
+<div class="table-wrap"><table><thead><tr><th>环节</th><th>示例目标</th><th>说明</th></tr></thead><tbody><tr><td>设备采样到出口</td><td>≤ 200 ms</td><td>采样、滤波、打包</td></tr><tr><td>网关处理</td><td>≤ 200 ms</td><td>协议转换、点表映射</td></tr><tr><td>通信传输</td><td>≤ 200 ms</td><td>专网/专线；公网另计</td></tr><tr><td>前置处理</td><td>≤ 100 ms</td><td>解帧、去重、入库</td></tr><tr><td>实时库到应用</td><td>≤ 1 s</td><td>计算点、告警、推送</td></tr><tr><td>控制下发到回读</td><td>≤ 5 s</td><td>含鉴权、互锁、执行、回读</td></tr></tbody></table></div>
+<p>端到端时延要按<strong>测量点</strong>定义：从设备采样时刻到实时库可读，还是从指令发出到收到执行回执。两者不能混为一个&quot;系统时延&quot;。</p>
+<h3 id="s32">4.3 时延指标怎么写进合同</h3>
+<ul><li>写 <strong>P50 / P95 / P99</strong>，不写&quot;平均时延&quot;；</li><li>写测量点、测量方法、负载条件、统计窗口；</li><li>写超时判定与补数/重传规则；</li><li>写控制链路的<strong>回执时限</strong>与失败处理；</li><li>写验收时的最大并发点数和背景流量。</li></ul>
+<p>只写&quot;平均小于 1 秒&quot;的合同，在告警风暴或大批量总召时会失效。</p>
+<h3 id="s33">4.4 时钟同步</h3>
+<div class="table-wrap"><table><thead><tr><th>方式</th><th>典型精度</th><th>适用</th><th>注意</th></tr></thead><tbody><tr><td>北斗/GPS + 1PPS</td><td>微秒级</td><td>站端主时钟、SOE</td><td>天线、馈线、防雷、守时</td></tr><tr><td>PTP (IEEE 1588)</td><td>亚微秒到微秒</td><td>61850、采样值、站控</td><td>交换机需支持透明时钟</td></tr><tr><td>IRIG-B</td><td>微秒级</td><td>电力系统传统对时</td><td>编码/解码、通道延时</td></tr><tr><td>NTP</td><td>毫秒级</td><td>服务器、通用设备</td><td>无 GPS 时漂移大，难保 1 ms SOE</td></tr><tr><td>手动对时</td><td>不可控</td><td>仅调试</td><td>不能用于生产</td></tr></tbody></table></div>
+<p><strong>四条纪律</strong>：</p>
+<ol><li><strong>存储统一 UTC，显示转本地</strong>；跨时区系统不要存本地时间；</li><li><strong>CP56Time2a 是本地时间</strong>，61850 时间戳通常是 UTC，转换要显式；</li><li><strong>时钟跳变要检测</strong>：发现大步长回跳，标记数据质量并记录，不用错误时标回填；</li><li><strong>对时质量要入点表</strong>：主时钟失锁、偏差超限、天线故障都要告警。</li></ol>
+<h3 id="s34">4.5 数据质量指标</h3>
+<pre><code>完整率 = 有效采样点数 / 应采样点数 × 100%
+正确率 = 与参考源一致的点数 / 抽检点数 × 100%
+及时率 = 在时限内到达的点数 / 应到达点数 × 100%
+可用率 = MTBF / (MTBF + MTTR) × 100%</code></pre>
+<div class="table-wrap"><table><thead><tr><th>可用率</th><th>年停机时间（约）</th></tr></thead><tbody><tr><td>99.9%</td><td>8.76 小时</td></tr><tr><td>99.99%</td><td>52.6 分钟</td></tr><tr><td>99.999%</td><td>5.26 分钟</td></tr></tbody></table></div>
+<p>&quot;数据可用率 99.9%&quot;听起来很高，但一年仍有近 9 小时；对按 15 分钟结算的考核，足以丢掉几十个时段。指标要和业务后果一起看。</p>
+<h3 id="s35">4.6 常见时标错误</h3>
+<ul><li>用服务器收到时间代替设备事件时间，SOE 顺序失真；</li><li>服务器本地时间与设备时间不一致，跨时区/夏令时错一小时；</li><li>NTP 只对服务器不对设备，设备时标漂移；</li><li>时钟回跳后继续写入，历史曲线出现&quot;负时间&quot;；</li><li>总召数据不带原时标，全部盖成入库时间；</li><li>测试环境与生产环境共用时钟源，测试数据污染生产。</li></ul>
+<hr>
+<h2 id="s36">5. 实时库、历史库与数据治理</h2>
+<h3 id="s37">5.1 实时库</h3>
+<p>实时库保存&quot;当前值 + 时标 + 质量码 + 人工置数标志 + 闭锁标志&quot;。它服务的是秒级监视、告警、控制联锁和计算点，不是长期存储。</p>
+<p>设计要点：</p>
+<ul><li>按扫描类组织点表，避免所有点同一周期；</li><li>计算点要有依赖关系与计算顺序，避免循环依赖；</li><li>人工置数、强制、闭锁要显式标记并审计；</li><li>实时库重启后能从历史库/设备快速恢复，不把&quot;0&quot;当初始值。</li></ul>
+<h3 id="s38">5.2 历史库</h3>
+<p>历史库保存时间序列，服务于报表、优化、考核、结算对账和审计。选型关注：</p>
+<div class="table-wrap"><table><thead><tr><th>维度</th><th>要问的问题</th></tr></thead><tbody><tr><td>写入吞吐</td><td>峰值多少点/秒，总召/补数时会不会丢</td></tr><tr><td>压缩方式</td><td>死区、旋转门、差值压缩，是否可还原</td></tr><tr><td>保留期</td><td>原始/分钟/小时/日报各留多久</td></tr><tr><td>查询性能</td><td>单站一年曲线、跨站聚合的响应</td></tr><tr><td>补数能力</td><td>断网恢复后能否按原时标补入</td></tr><tr><td>审计</td><td>谁改了点表、谁置了数、谁导出了数据</td></tr><tr><td>容灾</td><td>双机/副本/备份，RPO/RTO 是多少</td></tr></tbody></table></div>
+<h3 id="s39">5.3 压缩与死区</h3>
+<p>历史库常用死区/旋转门压缩。压缩会丢细节，因此：</p>
+<ul><li><strong>结算、考核、事故分析</strong>用的点，保留原始采样或可审计的压缩参数；</li><li><strong>趋势监视</strong>用的点，可以用较大死区；</li><li>压缩参数变更要版本化，否则同一份报表前后不可比；</li><li>不要拿压缩后的曲线反推电量，再拿去和关口表对账。</li></ul>
+<h3 id="s40">5.4 补数与断点续传</h3>
+<p>边缘网关/RTU 应具备本地缓存与断点续传：</p>
+<pre><code>缓存容量 ≈ 点数 × 每秒采样次数 × 单条字节数 × 断网时长</code></pre>
+<p>示例（D 级）：5,000 点、5 s 扫描、单条 32 B、断网 15 min：</p>
+<pre><code>5,000 × 0.2 × 32 × 900 ≈ 28.8 MB</code></pre>
+<p>补数规则要写清：</p>
+<ul><li>补数数据的时标用<strong>原采样时标</strong>，不用补传时间；</li><li>重复数据按&quot;设备+点+时标&quot;去重；</li><li>迟到数据有水位线（watermark），超过窗口不再入实时库，只入历史；</li><li>补数不能覆盖人工置数/检修标记，冲突要告警。</li></ul>
+<h3 id="s41">5.5 数据血缘</h3>
+<p>每个进入报表/结算/考核的数字，应能回答：</p>
+<ol><li>来自哪个点、哪台设备、哪个协议地址；</li><li>经过哪些计算点、公式版本是什么；</li><li>时标是设备时标还是入库时标；</li><li>有没有人工置数、补数、压缩；</li><li>谁在什么时候改过点表或参数。</li></ol>
+<p>没有数据血缘，出现争议时只能&quot;信系统&quot;，无法自证。</p>
+<h3 id="s42">5.6 数据治理清单</h3>
+<ul><li>[ ] 点表、计算点、报表公式均有版本与责任人；</li><li>[ ] 实时库与历史库的时标、质量码语义一致；</li><li>[ ] 压缩参数变更留痕，结算点保留原始数据；</li><li>[ ] 补数、去重、迟到数据处理规则已文档化；</li><li>[ ] 数据导出有审批与审计；</li><li>[ ] 历史库容量与保留期按业务后果测算，不按磁盘剩余空间拍脑袋。</li></ul>
+<hr>
+<h2 id="s43">6. 告警与运行监视</h2>
+<h3 id="s44">6.1 告警分级</h3>
+<div class="table-wrap"><table><thead><tr><th>级别</th><th>示例</th><th>响应目标（示例）</th><th>通知方式</th></tr></thead><tbody><tr><td>P1 紧急</td><td>保护动作、火灾、母线失压、通信全断</td><td>立即</td><td>声光 + 短信/电话</td></tr><tr><td>P2 重要</td><td>单体过压、PCS 故障、SOC 越限</td><td>5–15 min</td><td>声光 + 消息</td></tr><tr><td>P3 一般</td><td>风扇故障、通信抖动、温差偏大</td><td>1 h</td><td>消息/工单</td></tr><tr><td>P4 提示</td><td>维护提醒、证书到期、磁盘将满</td><td>当日</td><td>看板/日报</td></tr></tbody></table></div>
+<p>分级不是按&quot;严重&quot;两个字拍脑袋，而是按<strong>后果 × 概率 × 可探测性</strong>定，并与运维SLA、备件、值班安排对齐。</p>
+<h3 id="s45">6.2 告警风暴与抑制</h3>
+<p>ISA 18.2 给了一个常用设计参考：一名操作员在 10 分钟内处理约 10 条告警。超过这个量级，告警就从&quot;提醒&quot;变成&quot;噪声&quot;。</p>
+<p>常用抑制手段：</p>
+<ul><li><strong>抖动抑制</strong>：短时反复动作合并为一条；</li><li><strong>因果抑制</strong>：上级故障时抑制下属派生告警；</li><li><strong>首出（first-out）</strong>：保留第一个原因，后续标为衍生；</li><li><strong>检修模式</strong>：设备检修期间屏蔽已知告警，但要有到期时间；</li><li><strong>搁置（shelving）</strong>：人工临时搁置，必须记录原因与到期时间；</li><li><strong>分层聚合</strong>：站级/设备级/点级分级展示，默认只看站级。</li></ul>
+<h3 id="s46">6.3 告警生命周期</h3>
+<pre><code>检测 → 播报 → 确认 → 派单 → 处理 → 恢复 → 关闭 → 复盘</code></pre>
+<p>每一环要有时间戳、责任人、处理记录。只&quot;报&quot;不&quot;闭环&quot;的告警系统，最后一定被静音。</p>
+<h3 id="s47">6.4 事件与告警的区别</h3>
+<ul><li><strong>事件（Event/SOE）</strong>：发生了什么，按时间顺序记录，不一定需要人处理；</li><li><strong>告警（Alarm）</strong>：需要人关注或处理的事件，有级别、确认、闭环。</li></ul>
+<p>把 SOE 全部当告警，会淹没操作员；把告警只当事件记录，会漏掉处理。</p>
+<h3 id="s48">6.5 HMI 降噪</h3>
+<ul><li>默认首页只放&quot;当前最需要处理的 5 件事&quot;，不是所有点的瀑布流；</li><li>按站/设备/告警级别分组，支持一键钻取；</li><li>曲线默认叠加参考线（额定、阈值、计划值），不要只画一条裸线；</li><li>移动端只保留告警、关键曲线和确认操作，不做全量组态；</li><li>深色/浅色主题下都要保证告警颜色可辨，不能只靠红绿区分。</li></ul>
+<hr>
+<h2 id="s49">7. 冗余与可靠性</h2>
+<h3 id="s50">7.1 冗余层级</h3>
+<div class="table-wrap"><table><thead><tr><th>层级</th><th>冗余方式</th><th>切换目标（示例）</th><th>常见缺口</th></tr></thead><tbody><tr><td>设备</td><td>双机、双电源、双网口</td><td>秒级</td><td>共用一个电源/交换机</td></tr><tr><td>网络</td><td>双交换机、双上行、环网</td><td>秒级</td><td>双网走同一管沟</td></tr><tr><td>前置 FEP</td><td>主备/双活</td><td>秒级</td><td>共享同一采集端口</td></tr><tr><td>服务器</td><td>主备/集群</td><td>分钟级</td><td>共享存储单点</td></tr><tr><td>历史库</td><td>副本/备份</td><td>分钟级</td><td>备份未演练</td></tr><tr><td>时钟</td><td>双主钟、北斗+GPS</td><td>微秒级</td><td>双钟同源</td></tr><tr><td>广域通道</td><td>双通道、不同运营商</td><td>秒到分钟</td><td>双通道同路径</td></tr></tbody></table></div>
+<h3 id="s51">7.2 主备、双活与仲裁</h3>
+<ul><li><strong>主备</strong>：备机平时不写，切换时接管；逻辑简单，但备机可能&quot;冷&quot;；</li><li><strong>双活</strong>：两台都工作，需要仲裁/一致性协议；搞不好会脑裂；</li><li><strong>仲裁</strong>：双活必须有第三方仲裁或共享锁，否则网络分区时两边都以为自己是主。</li></ul>
+<p>没有仲裁的双活，比单机更危险。</p>
+<h3 id="s52">7.3 冗余不等于可靠</h3>
+<p>冗余只能对付<strong>独立故障</strong>，对付不了共因故障：</p>
+<ul><li>双机接同一台交换机；</li><li>双通道走同一根光缆；</li><li>双时钟共用同一根天线；</li><li>双系统跑同一版本、同一配置错误；</li><li>双人复核用同一个账号；</li><li>备份盘和主机放在同一个机柜。</li></ul>
+<p>做冗余设计时，先列共因，再谈切换。</p>
+<h3 id="s53">7.4 切换演练</h3>
+<p>至少覆盖：</p>
+<ul><li>杀掉主 FEP 进程/主服务器；</li><li>断开主用网络，观察切换与恢复；</li><li>拔掉主时钟天线，观察守时与告警；</li><li>填满历史库磁盘，观察写入降级与告警；</li><li>停掉 MQTT Broker，观察边缘缓存与补数；</li><li>模拟数据库主备切换，核对数据不丢不重；</li><li>双通道同时中断 15 min，核对补数与对账。</li></ul>
+<p>演练要有记录、有结论、有整改项，不能只看&quot;切换成功&quot;一个灯。</p>
+<h3 id="s54">7.5 可用性指标</h3>
+<p>可用率、MTBF、MTTR 的定义要与业务对齐：</p>
+<ul><li>计划检修算不算停机；</li><li>单点失效但未影响业务算不算；</li><li>数据丢失但系统仍在线算不算；</li><li>切换时间从&quot;故障发生&quot;还是&quot;发现故障&quot;开始算。</li></ul>
+<p>指标口径不写清，99.99% 可以有很多种解释。</p>
+<hr>
+<h2 id="s55">8. 电力监控安全防护与等保</h2>
+<h3 id="s56">8.1 现行规章</h3>
+<p><strong>《电力监控系统安全防护规定》（国家发展改革委2024年第27号令）</strong>，2024年11月25日公布，<strong>2025年1月1日施行</strong>，同时废止2014年第14号令。这是当前电力监控安全防护的顶层规章，不是&quot;草案&quot;，也不是&quot;即将施行&quot;。</p>
+<p>要点：</p>
+<ul><li><strong>适用范围</strong>：电力监控系统运营者，以及相关的规划设计、研究开发、产品制造、施工建设、安装调试单位；</li><li><strong>系统范围</strong>：明确包括新能源发电监控、分布式电源监控、储能电站监控、虚拟电厂监控、配电自动化、电力现货市场交易等功能的系统，以及支撑它们的通信设施、数据网络与网管系统；</li><li><strong>结构原则</strong>：坚持&quot;安全分区、网络专用、横向隔离、纵向认证&quot;；</li><li><strong>分区</strong>：生产控制区（安全 I / II）、管理信息区（安全 III / IV），并设置安全接入区；</li><li><strong>边界</strong>：禁止任何穿越生产控制区与管理信息区、安全接入区之间边界的通用网络服务；</li><li><strong>全生命周期</strong>：投运前安全加固，运行中漏洞整改，供应链不得选用存在已知缺陷且未补救的产品和服务；</li><li><strong>监测</strong>：建设基于内置探针等的网络安全监测手段，与调度数据网相连的系统要将告警同步送至相应调度机构。</li></ul>
+<h3 id="s57">8.2 分区与边界</h3>
+<div class="table-wrap"><table><thead><tr><th>区域</th><th>典型系统</th><th>允许</th><th>不允许</th></tr></thead><tbody><tr><td>生产控制区 I/II</td><td>SCADA、AGC/AVC、保护、站控</td><td>实时监控、控制、保护</td><td>公网服务、办公、邮件、通用远程桌面</td></tr><tr><td>安全接入区</td><td>外部资源接入网关、代理、认证</td><td>代理转发、端到端认证、受控数据交换</td><td>直接控制、通用网络服务、绕过隔离</td></tr><tr><td>管理信息区 III/IV</td><td>VPP 云平台、交易、结算、看板</td><td>预测、优化、申报、分析</td><td>实时控制、保护定值、直接写生产库</td></tr></tbody></table></div>
+<p><strong>安全接入区不是&quot;隔离区&quot;的替代品</strong>。它解决的是外部资源（分布式光伏、储能、充电桩、第三方聚合商）如何受控接入，不是让公网流量直接进生产控制区。</p>
+<h3 id="s58">8.3 VPP 云边安全架构</h3>
+<div class="table-wrap"><table><thead><tr><th>场景</th><th>部署位置</th><th>允许的数据流</th><th>控制路径</th><th>注意</th></tr></thead><tbody><tr><td>VPP 只做监测/预测/交易</td><td>管理信息区</td><td>生产数据经隔离上行；交易数据经 API</td><td>不控制设备</td><td>不能回写生产实时库</td></tr><tr><td>VPP 需要下发功率指令</td><td>生产控制区或安全接入区</td><td>计划/指令经受控通道</td><td>指令网关 → 站控 → 设备</td><td>需鉴权、限幅、互锁、回执</td></tr><tr><td>第三方聚合商接入</td><td>安全接入区</td><td>代理转发、端到端认证</td><td>仅限授权资源与指令类型</td><td>最小权限、审计、可熔断</td></tr><tr><td>户用光伏/储能</td><td>安全接入区/边缘</td><td>遥测、状态、计量</td><td>受控的启停/功率限制</td><td>不能直连公网 Broker 控制</td></tr><tr><td>充电桩 V2G</td><td>安全接入区/边缘</td><td>状态、功率、计量</td><td>受控的充放电指令</td><td>车端/桩端双重校验</td></tr></tbody></table></div>
+<p>一句话：<strong>公网可以&quot;看&quot;，生产控制必须&quot;过边界&quot;</strong>。任何&quot;手机 App 直接控制储能&quot;的方案，都要先回答它走的是哪条安全链路。</p>
+<h3 id="s59">8.4 等保与关基</h3>
+<ul><li><strong>网络安全等级保护 2.0</strong>：GB/T 22239-2019 等系列标准，电力监控系统同样要落实等级保护制度；</li><li><strong>关键信息基础设施安全保护</strong>：《关键信息基础设施安全保护条例》（国务院令第745号）与相关要求；</li><li><strong>GB/T 36572-2018《电力监控系统网络安全防护导则》</strong>：现行国家标准，给出技术防护框架；</li><li><strong>国能安全〔2015〕36号《电力监控系统安全防护总体方案》等</strong>：现行技术支撑文件；后续版本状态以国家能源局正式发布为准，不能把&quot;正在修订&quot;写成&quot;已发布&quot;；</li><li><strong>IEC 62351 系列</strong>：电力系统通信安全标准，用于 104/61850 等协议的加密与身份认证。</li></ul>
+<p>等保测评不是&quot;买设备&quot;，而是&quot;制度 + 技术 + 运维 + 审计&quot;一起过。只做管理信息区、不做生产控制区的测评，等于没做。</p>
+<h3 id="s60">8.5 常见违规</h3>
+<ul><li>Modbus 502、104 端口直接暴露公网；</li><li>MQTT Broker 匿名可写，主题用 <code>#</code> 通配；</li><li>SCADA 服务器开远程桌面，运维从办公网直连；</li><li>生产控制区与管理信息区共用一台交换机/VLAN；</li><li>测试系统、厂商远程维护通道直接接入生产；</li><li>默认口令、共享账号、长期不换证书；</li><li>只做边界防火墙，不做纵向认证与入侵监测；</li><li>日志只留 7 天，出事查不到；</li><li>备份文件放在同一台主机；</li><li>把&quot;安全接入区&quot;当成&quot;公网直连缓冲区&quot;。</li></ul>
+<h3 id="s61">8.6 上线前安全清单</h3>
+<ul><li>[ ] 系统定级、备案、测评范围覆盖生产控制区与安全接入区；</li><li>[ ] 分区边界、隔离装置、纵向加密均已部署并策略核对；</li><li>[ ] 无通用网络服务穿越边界（RDP、SMB、HTTP 代理等）；</li><li>[ ] 安全接入区完成代理转发、端到端认证、最小权限；</li><li>[ ] 默认口令、共享账号、测试账号已清理；</li><li>[ ] 证书、密钥、VPN/APN 配置有归属人与到期提醒；</li><li>[ ] 网络安全监测探针/日志接入，告警能送到调度机构；</li><li>[ ] 供应链安全要求写入合同（漏洞响应、补丁、后门声明）；</li><li>[ ] 备份、恢复、切换演练完成并有记录；</li><li>[ ] 运维远程接入有审批、双人复核、全程审计。</li></ul>
+<hr>
+<h2 id="s62">9. 与 EMS、VPP 和结算的接口</h2>
+<h3 id="s63">9.1 数据契约</h3>
+<p>SCADA 与 EMS/VPP 之间至少要约定：</p>
+<div class="table-wrap"><table><thead><tr><th>字段</th><th>要求</th><th>示例</th></tr></thead><tbody><tr><td>点表版本</td><td>双方一致，变更有通知</td><td><code>v2026.11.1</code></td></tr><tr><td>采样/上报周期</td><td>分点配置，不搞全局一刀切</td><td><code>5 s / 15 s</code></td></tr><tr><td>时标</td><td>设备时标优先，统一 UTC</td><td><code>2026-11-09T02:00:00Z</code></td></tr><tr><td>质量码</td><td>统一枚举，端到端保留</td><td><code>Good/Invalid/...</code></td></tr><tr><td>量纲与变比</td><td>工程值，注明单位</td><td><code>kW，一次侧</code></td></tr><tr><td>死区</td><td>归档/告警分开</td><td><code>1 kW / 5 kW</code></td></tr><tr><td>补数规则</td><td>原时标、去重、水位线</td><td><code>15 min 窗口</code></td></tr><tr><td>保留期</td><td>原始/分钟/日报</td><td><code>90 d / 5 y / 10 y</code></td></tr><tr><td>责任人</td><td>点表、数据、接口各有人</td><td><code>数据Owner</code></td></tr></tbody></table></div>
+<h3 id="s64">9.2 控制契约</h3>
+<div class="table-wrap"><table><thead><tr><th>字段</th><th>要求</th></tr></thead><tbody><tr><td>指令 ID</td><td>全局唯一，可追溯</td></tr><tr><td>目标对象</td><td>站/设备/点，不能只写&quot;储能&quot;</td></tr><tr><td>目标值/爬坡率</td><td>单位、范围、变化率</td></tr><tr><td>生效/失效时间</td><td>过期指令不得执行</td></tr><tr><td>权限</td><td>谁可发、是否双人复核</td></tr><tr><td>互锁</td><td>SOC、温度、并网点、检修状态</td></tr><tr><td>回执</td><td>接收、拒绝、执行、完成、失败原因</td></tr><tr><td>回读</td><td>执行后实际值与时标</td></tr><tr><td>幂等</td><td>重发不重复执行</td></tr><tr><td>审计</td><td>指令、操作人、审批、结果全留痕</td></tr></tbody></table></div>
+<h3 id="s65">9.3 SCADA 不是结算表</h3>
+<div class="table-wrap"><table><thead><tr><th>维度</th><th>SCADA 遥测</th><th>结算计量</th></tr></thead><tbody><tr><td>目的</td><td>监视、控制、优化</td><td>贸易结算、考核</td></tr><tr><td>精度</td><td>满足监视/控制</td><td>按计量装置准确度等级</td></tr><tr><td>时标</td><td>设备/网关时标</td><td>计量装置时标</td></tr><tr><td>校验</td><td>一般不做贸易校验</td><td>检定、封印、比对</td></tr><tr><td>数据完整性</td><td>允许补数/压缩</td><td>需可审计、可追溯</td></tr><tr><td>用途</td><td>不能直接作为结算依据</td><td>结算依据</td></tr></tbody></table></div>
+<p><strong>结论</strong>：SCADA 的电度/功率数据可以用来做运行分析、偏差预警和对账参考，但不能替代关口表。结算必须用专用计量装置与计量主站数据；两者出现差异时，按计量口径为准，并查明 CT/PT、时标、线损、未注册负荷等原因。</p>
+<h3 id="s66">9.4 对账</h3>
+<ol><li><strong>对齐时标</strong>：统一 UTC/本地时区，确认计量周期（15 min/1 h）；</li><li><strong>对齐单位与变比</strong>：kW/kWh、一次/二次值、CT/PT；</li><li><strong>对齐边界</strong>：关口表位置、并网点、内部负荷；</li><li><strong>对齐口径</strong>：是否含线损、厂用电、辅助服务；</li><li><strong>设差异阈值</strong>：按电量比例/绝对量设告警；</li><li><strong>留差异说明</strong>：通信中断、补数、人工置数、计量故障都要有记录。</li></ol>
+<h3 id="s67">9.5 联调</h3>
+<div class="table-wrap"><table><thead><tr><th>用例</th><th>方法</th><th>通过标准</th></tr></thead><tbody><tr><td>点对点遥测</td><td>逐点加信号/比对源</td><td>数值、单位、变比、时标一致</td></tr><tr><td>遥信变位</td><td>实际动作/短接</td><td>状态、时标、SOE 顺序正确</td></tr><tr><td>遥控</td><td>选择-执行/直接执行</td><td>回执、执行、回读一致</td></tr><tr><td>遥调</td><td>给定值/爬坡</td><td>目标、速率、回读一致</td></tr><tr><td>总召</td><td>重启/手动总召</td><td>不丢点、不重复、时标正确</td></tr><tr><td>对时</td><td>主钟失锁/恢复</td><td>告警、守时、恢复后时标正确</td></tr><tr><td>双机切换</td><td>杀主/断网</td><td>切换时间、数据不丢不重</td></tr><tr><td>断网补数</td><td>断开 15 min</td><td>原时标补入、去重正确</td></tr><tr><td>告警风暴</td><td>批量变位</td><td>不丢告警、抑制生效</td></tr><tr><td>安全边界</td><td>端口扫描/策略核对</td><td>无违规穿越、审计完整</td></tr></tbody></table></div>
+<hr>
+<h2 id="s68">10. 工程验收与运维</h2>
+<h3 id="s69">10.1 P0 清单</h3>
+<div class="table-wrap"><table><thead><tr><th>检查项</th><th>通过标准</th></tr></thead><tbody><tr><td>点表一致性</td><td>现场、网关、SCADA、EMS 四方一致，版本可查</td></tr><tr><td>变比与量纲</td><td>抽点与源表/标准源核对，无重复变比</td></tr><tr><td>质量码</td><td>断线、超量程、人工置数能正确显示</td></tr><tr><td>时标</td><td>设备事件时标保留，UTC/本地转换正确</td></tr><tr><td>遥控/遥调</td><td>权限、互锁、超时、回执、回读齐全</td></tr><tr><td>双点遥信</td><td>中间态、故障态不丢失</td></tr><tr><td>总召/补数</td><td>不丢不重，原时标入库</td></tr><tr><td>冗余</td><td>主备/双通道切换演练通过</td></tr><tr><td>对时</td><td>主钟失锁告警，守时满足 SOE 要求</td></tr><tr><td>安全分区</td><td>无通用网络服务穿越边界</td></tr><tr><td>安全接入</td><td>代理、认证、最小权限、审计</td></tr><tr><td>监测</td><td>探针/日志接入，告警可送达</td></tr><tr><td>备份</td><td>备份可恢复，RPO/RTO 达标</td></tr><tr><td>文档</td><td>点表、网络图、IP 表、端口表、运维手册齐全</td></tr></tbody></table></div>
+<h3 id="s70">10.2 P1 清单</h3>
+<div class="table-wrap"><table><thead><tr><th>检查项</th><th>通过标准</th></tr></thead><tbody><tr><td>命名规范</td><td>点 ID、设备名、告警名统一</td></tr><tr><td>容量</td><td>点数、带宽、存储按 3–5 年增长预留</td></tr><tr><td>性能</td><td>总召/告警风暴下时延仍达标</td></tr><tr><td>可维护性</td><td>点表变更、版本回滚有流程</td></tr><tr><td>可观测性</td><td>通道状态、进程、队列、磁盘有监控</td></tr><tr><td>审计</td><td>操作、配置、导出有日志</td></tr><tr><td>培训</td><td>运维会看告警、会切机、会补数</td></tr><tr><td>演练</td><td>每季度至少一次切换/断网演练</td></tr></tbody></table></div>
+<h3 id="s71">10.3 上线验收用例</h3>
+<ul><li>逐点遥测核对（至少覆盖所有关口、PCS、BMS 关键点）；</li><li>遥信实际变位与 SOE 顺序；</li><li>遥控选择-执行、拒绝、超时、回读；</li><li>遥调目标值、爬坡率、失效时间；</li><li>总召期间数据不重复、不丢点；</li><li>双机/双网/双通道切换；</li><li>主时钟失锁与恢复；</li><li>断网 15 min 补数；</li><li>告警风暴与抑制；</li><li>安全边界端口/策略核对；</li><li>备份恢复；</li><li>与 EMS/VPP/计量主站联调。</li></ul>
+<h3 id="s72">10.4 日常运维</h3>
+<ul><li><strong>每日</strong>：通道状态、关键告警、磁盘、时钟偏差；</li><li><strong>每周</strong>：点表变更核对、备份检查、异常点复核；</li><li><strong>每月</strong>：证书/账号/权限、补数记录、性能趋势；</li><li><strong>每季度</strong>：切换演练、断网演练、告警复盘；</li><li><strong>每年</strong>：等保测评/自查、容量评估、点表全量核对；</li><li><strong>变更</strong>：点表、网络、证书、版本变更都要有审批、回滚与通知。</li></ul>
+<hr>
+<h2 id="s73">11. 常见故障与误区</h2>
+<div class="table-wrap"><table><thead><tr><th>误区/故障</th><th>为什么错</th><th>正确做法</th></tr></thead><tbody><tr><td>Modbus 502 暴露公网</td><td>无认证、无加密、可写寄存器</td><td>网关隔离 + VPN/专线 + 白名单</td></tr><tr><td>MQTT QoS 2 当控制可靠</td><td>QoS 只保证 broker 链路，不保证设备执行</td><td>指令 ID + 应用层 ACK + 回读</td></tr><tr><td>双点遥信压成布尔</td><td>丢失中间态与故障态</td><td>保留四态，分别处理</td></tr><tr><td>用收到时间当事件时间</td><td>SOE 顺序失真</td><td>设备时标优先，记录时标来源</td></tr><tr><td>死区设成量程 5%</td><td>小变化被吃掉，考核无数据</td><td>采集/归档/告警死区分设</td></tr><tr><td>历史库只存压缩值</td><td>无法还原、无法对账</td><td>结算/考核点保留原始或可审计参数</td></tr><tr><td>遥控无选择-执行</td><td>误动风险高</td><td>SBO + 互锁 + 超时 + 回读</td></tr><tr><td>前置双机共用一台交换机</td><td>共因故障</td><td>独立网络路径与电源</td></tr><tr><td>只做管理信息区等保</td><td>生产控制区才是重点</td><td>全分区定级、测评、整改</td></tr><tr><td>安全接入区当隔离区</td><td>外部流量仍可能穿透</td><td>代理转发 + 端到端认证 + 最小权限</td></tr><tr><td>SCADA 电度直接结算</td><td>精度、时标、校验不满足</td><td>专用关口表 + 计量主站</td></tr><tr><td>NTP 不带 GPS 保 SOE</td><td>毫秒级漂移</td><td>北斗/GPS + PTP/IRIG-B</td></tr><tr><td>网关单点</td><td>一挂全盲</td><td>双网关/双通道 + 本地缓存</td></tr><tr><td>告警只报不闭环</td><td>操作员静音</td><td>分级 + 确认 + 派单 + 复盘</td></tr><tr><td>备份从未恢复演练</td><td>备份可能不可用</td><td>定期恢复演练，记录 RPO/RTO</td></tr></tbody></table></div>
+<hr>
+<h2 id="s74">12. 标准与文件</h2>
+<div class="table-wrap"><table><thead><tr><th>文件</th><th>文号/版本</th><th>状态</th><th>用途</th><th>链接</th></tr></thead><tbody><tr><td>电力监控系统安全防护规定</td><td>国家发展改革委2024年第27号令</td><td>现行，2025-01-01施行</td><td>分区、隔离、接入、监测</td><td><a href="https://www.ndrc.gov.cn/xxgk/zcfb/fzggwl/202412/t20241211_1394960.html" target="_blank" rel="noopener">国家发改委</a></td></tr><tr><td>《电力监控系统安全防护规定》答记者问</td><td>国家能源局，2024-12-12</td><td>官方解读</td><td>修订背景与主要变化</td><td><a href="http://www.nea.gov.cn/2024-12/12/c_1212408443.htm" target="_blank" rel="noopener">国家能源局</a></td></tr><tr><td>电力监控系统安全防护总体方案等</td><td>国能安全〔2015〕36号</td><td>现行技术支撑文件</td><td>分区与防护实施</td><td>—</td></tr><tr><td>电力监控系统网络安全防护导则</td><td>GB/T 36572-2018</td><td>现行</td><td>技术防护框架</td><td><a href="https://std.samr.gov.cn/gb/search/gbDetailed?id=7643B2F25078267CE05397BE0A0AAF6A" target="_blank" rel="noopener">国家标准全文公开系统</a></td></tr><tr><td>网络安全等级保护基本要求</td><td>GB/T 22239-2019</td><td>现行</td><td>等保 2.0</td><td>—</td></tr><tr><td>IEC 60870-5-104</td><td>IEC 60870-5-104:2006+AMD1:2016 CSV，Ed.2.1</td><td>现行</td><td>远动通信</td><td><a href="https://webstore.iec.ch/en/publication/25035" target="_blank" rel="noopener">IEC Webstore</a></td></tr><tr><td>IEC 61850-8-1</td><td>IEC 61850-8-1:2011+AMD1:2020 CSV，Ed.2.1</td><td>现行</td><td>变电站/DER 通信映射</td><td><a href="https://webstore.iec.ch/en/publication/66585" target="_blank" rel="noopener">IEC Webstore</a></td></tr><tr><td>Modbus 协议规范</td><td>Modbus Protocol Specification V1.1b3 等</td><td>现行</td><td>设备级寄存器通信</td><td><a href="https://modbus.org/modbus-specifications" target="_blank" rel="noopener">Modbus Organization</a></td></tr><tr><td>MQTT 规范</td><td>MQTT 5.0 / 3.1.1 / 3.1</td><td>现行</td><td>云边消息</td><td><a href="https://mqtt.org/mqtt-specification/" target="_blank" rel="noopener">mqtt.org</a></td></tr><tr><td>OPC UA</td><td>IEC 62541 系列</td><td>现行</td><td>工业信息模型与安全</td><td><a href="https://opcfoundation.org/about/opc-technologies/opc-ua/" target="_blank" rel="noopener">OPC Foundation</a></td></tr><tr><td>OT 安全指南</td><td>NIST SP 800-82 Rev.3</td><td>2023-09</td><td>OT 安全参考</td><td><a href="https://csrc.nist.gov/pubs/sp/800/82/r3/final" target="_blank" rel="noopener">NIST</a></td></tr><tr><td>电力系统通信安全</td><td>IEC 62351 系列</td><td>现行</td><td>通信加密与身份认证</td><td>—</td></tr><tr><td>电力系统实时数据通信应用层协议</td><td>DL/T 476</td><td>现行版本以最新发布为准</td><td>调度主站间通信</td><td>—</td></tr><tr><td>变电站通信网络与系统</td><td>DL/T 860 系列</td><td>现行</td><td>IEC 61850 等同采用</td><td>—</td></tr></tbody></table></div>
+<aside class="note"><p>链接核验：上表官方链接于 2026-11-09 逐一访问确认；政策与标准页面可能改版，若打不开，用文号/标准号在官网检索。未附链接的文件，引用时以正式文本为准，不凭二手解读下结论。</p></aside>
+<h3 id="s75">12.1 版本与状态说明</h3>
+<ul><li>27号令是<strong>现行规章</strong>，不是草案；2014年第14号令已废止；</li><li>国能安全〔2015〕36号仍是技术支撑文件，但后续修订状态以国家能源局正式文件为准；</li><li>GB/T 36572-2018 为现行国标；GB/T 22239-2019 为等保 2.0 的基础标准；</li><li>IEC 60870-5-104 与 IEC 61850-8-1 的版本号、 amendment 状态以 IEC Webstore 为准；</li><li>省级电力监控实施细则、并网调度协议、考核细则可能更严，落地前查本省现行文件。</li></ul>
+<hr>
+<h2 id="s76">13. 术语表</h2>
+<div class="table-wrap"><table><thead><tr><th>术语</th><th>含义</th></tr></thead><tbody><tr><td>SCADA</td><td>数据采集与监视控制，本文指 VPP/EMS 的数据底座</td></tr><tr><td>RTU</td><td>远程终端单元，站端采集与转发设备</td></tr><tr><td>FEP</td><td>前置处理器，负责多通道接入、解帧、点表映射</td></tr><tr><td>四遥</td><td>遥测、遥信、遥控、遥调</td></tr><tr><td>遥脉</td><td>电度脉冲/累计电量，常用于电量采集</td></tr><tr><td>SOE</td><td>事件顺序记录，要求毫秒级时标</td></tr><tr><td>点表</td><td>设备对象、测点、协议地址、量纲、死区等字段的集合</td></tr><tr><td>质量码</td><td>标识数据有效性的枚举，如 Good/Invalid/Questioned</td></tr><tr><td>死区</td><td>变化超过阈值才上报/归档的过滤参数</td></tr><tr><td>总召</td><td>主站请求站端全量/分组数据的交互</td></tr><tr><td>SBO</td><td>选择-执行，先选择目标再执行命令的控制方式</td></tr><tr><td>GOOSE</td><td>IEC 61850 的快速发布/订阅报文</td></tr><tr><td>SV</td><td>IEC 61850 的采样值报文</td></tr><tr><td>MMS</td><td>IEC 61850 的客户端/服务器通信映射</td></tr><tr><td>SCL</td><td>变电站配置语言，ICD/CID/SCD 的统称</td></tr><tr><td>CIM</td><td>公共信息模型，IEC 61970/61968 的模型交换标准</td></tr><tr><td>安全接入区</td><td>外部资源受控接入的区域，代理转发与端到端认证</td></tr><tr><td>横向隔离</td><td>生产控制区与管理信息区之间的隔离措施</td></tr><tr><td>纵向认证</td><td>上下级/远程接入之间的身份认证与加密</td></tr><tr><td>等保 2.0</td><td>网络安全等级保护 2.0 系列标准</td></tr><tr><td>关基</td><td>关键信息基础设施</td></tr><tr><td>RPO/RTO</td><td>恢复点目标/恢复时间目标</td></tr><tr><td>MTBF/MTTR</td><td>平均无故障时间/平均修复时间</td></tr></tbody></table></div>
+<hr>
+<h2 id="s77">14. 维护规则</h2>
+<ul><li>数据截止随每次复核更新；政策/标准状态变化时，先改本文再改技能；</li><li>27号令、36号文、GB/T 36572 的状态变动，必须在 §8 与 §12 同步；</li><li>省级细则、并网调度协议、考核细则更新时，补&quot;省份 + 文号 + 生效日&quot;；</li><li>点表字段与算例只写方法，不写真实站点 IP、端口、点号、参数；</li><li>新增协议或设备类型时，先补选型表与安全边界，再补工程细节；</li><li>所有外部链接每季度复核一次，失效链接换成同文号官方页面或移除；</li><li>与 EMS 技能的分工不变：本文写&quot;数据怎么来、怎么控、怎么守&quot;，EMS 写&quot;怎么算&quot;。</li></ul>
+<hr>
+<h2 id="s78">附：一页速查</h2>
+<div class="table-wrap"><table><thead><tr><th>问题</th><th>一句话答案</th></tr></thead><tbody><tr><td>SCADA 和 EMS 什么关系</td><td>SCADA 采数/控设备，EMS 用数做优化</td></tr><tr><td>四遥是什么</td><td>遥测、遥信、遥控、遥调；电量常单列遥脉</td></tr><tr><td>104 用什么端口</td><td>TCP 2404</td></tr><tr><td>61850 的三套通信</td><td>MMS、GOOSE、SV</td></tr><tr><td>Modbus 能用公网吗</td><td>不能，无认证无加密</td></tr><tr><td>MQTT QoS 2 能保证控制吗</td><td>不能，端到端要应用层确认</td></tr><tr><td>SOE 要什么精度</td><td>1 ms 分辨率，需 GPS/北斗 + PTP/IRIG-B</td></tr><tr><td>历史库能直接结算吗</td><td>不能，结算用专用关口表</td></tr><tr><td>VPP 云平台能直接控制设备吗</td><td>不能直连，必须走安全接入区/生产控制区</td></tr><tr><td>现行电力监控安全规章</td><td>2024年第27号令，2025-01-01施行</td></tr><tr><td>安全分区怎么分</td><td>生产控制 I/II、管理信息 III/IV、安全接入区</td></tr><tr><td>上线前最该查什么</td><td>点表、时标、质量码、控制回执、边界</td></tr></tbody></table></div>
+    </article>
+
+    <section class="related" aria-label="相关模块">
+      <h2>相关模块</h2>
+      <ul>
+        <li><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a></li>
+        <li><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a></li>
+        <li><a href="需求响应、车网互动与灵活性资源-2026-11.html">需求响应、车网互动与灵活性资源</a></li>
+        <li><a href="走近虚拟电厂-主题笔记.html">走近虚拟电厂</a></li>
+      </ul>
+    </section>
+
+    <nav class="pager" aria-label="上下篇">
+          <a class="prev" href="微网EMS优化调度-算法与工程-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">微网 EMS 优化调度</span></a>
+          <a class="next" href="综合能源与零碳园区-2026-11.html"><span class="dir">下一篇 →</span><span class="ttl">综合能源与零碳园区</span></a>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../SCADA与电力监控数据链路-2026-11.md">knowledge/SCADA与电力监控数据链路-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div><a href="../index.html">返回知识库总览 →</a></div>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="本页目录">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv3"><a href="#s2">0.1 三句话</a></li>
+            <li class="lv3"><a href="#s3">0.2 SCADA 在 VPP/EMS 中的分层架构</a></li>
+            <li class="lv3"><a href="#s4">0.3 架构图读法</a></li>
+            <li class="lv3"><a href="#s5">0.4 与相邻系统的边界</a></li>
+            <li class="lv3"><a href="#s6">0.5 适用与不适用</a></li>
+            <li class="lv2"><a href="#s7">1. 数据链路全景</a></li>
+            <li class="lv3"><a href="#s8">1.1 一条遥测的旅程</a></li>
+            <li class="lv3"><a href="#s9">1.2 一条控制指令的闭环</a></li>
+            <li class="lv3"><a href="#s10">1.3 五条链路</a></li>
+            <li class="lv3"><a href="#s11">1.4 时间尺度</a></li>
+            <li class="lv2"><a href="#s12">2. 点表：SCADA 的合同</a></li>
+            <li class="lv3"><a href="#s13">2.1 对象模型</a></li>
+            <li class="lv3"><a href="#s14">2.2 四遥与遥脉</a></li>
+            <li class="lv3"><a href="#s15">2.3 点表最小字段集</a></li>
+            <li class="lv3"><a href="#s16">2.4 命名与点号</a></li>
+            <li class="lv3"><a href="#s17">2.5 变比、量纲与死区</a></li>
+            <li class="lv3"><a href="#s18">2.6 质量码</a></li>
+            <li class="lv3"><a href="#s19">2.7 双点遥信与中间态</a></li>
+            <li class="lv3"><a href="#s20">2.8 点表核对清单</a></li>
+            <li class="lv2"><a href="#s21">3. 协议选型</a></li>
+            <li class="lv3"><a href="#s22">3.1 一张选型表</a></li>
+            <li class="lv3"><a href="#s23">3.2 IEC 60870-5-104</a></li>
+            <li class="lv3"><a href="#s24">3.3 IEC 61850</a></li>
+            <li class="lv3"><a href="#s25">3.4 Modbus</a></li>
+            <li class="lv3"><a href="#s26">3.5 MQTT</a></li>
+            <li class="lv3"><a href="#s27">3.6 OPC UA、DL/T 476 与 CIM</a></li>
+            <li class="lv3"><a href="#s28">3.7 协议网关的五个坑</a></li>
+            <li class="lv2"><a href="#s29">4. 采集频率、时延与时间同步</a></li>
+            <li class="lv3"><a href="#s30">4.1 采样、上报与存储</a></li>
+            <li class="lv3"><a href="#s31">4.2 时延预算</a></li>
+            <li class="lv3"><a href="#s32">4.3 时延指标怎么写进合同</a></li>
+            <li class="lv3"><a href="#s33">4.4 时钟同步</a></li>
+            <li class="lv3"><a href="#s34">4.5 数据质量指标</a></li>
+            <li class="lv3"><a href="#s35">4.6 常见时标错误</a></li>
+            <li class="lv2"><a href="#s36">5. 实时库、历史库与数据治理</a></li>
+            <li class="lv3"><a href="#s37">5.1 实时库</a></li>
+            <li class="lv3"><a href="#s38">5.2 历史库</a></li>
+            <li class="lv3"><a href="#s39">5.3 压缩与死区</a></li>
+            <li class="lv3"><a href="#s40">5.4 补数与断点续传</a></li>
+            <li class="lv3"><a href="#s41">5.5 数据血缘</a></li>
+            <li class="lv3"><a href="#s42">5.6 数据治理清单</a></li>
+            <li class="lv2"><a href="#s43">6. 告警与运行监视</a></li>
+            <li class="lv3"><a href="#s44">6.1 告警分级</a></li>
+            <li class="lv3"><a href="#s45">6.2 告警风暴与抑制</a></li>
+            <li class="lv3"><a href="#s46">6.3 告警生命周期</a></li>
+            <li class="lv3"><a href="#s47">6.4 事件与告警的区别</a></li>
+            <li class="lv3"><a href="#s48">6.5 HMI 降噪</a></li>
+            <li class="lv2"><a href="#s49">7. 冗余与可靠性</a></li>
+            <li class="lv3"><a href="#s50">7.1 冗余层级</a></li>
+            <li class="lv3"><a href="#s51">7.2 主备、双活与仲裁</a></li>
+            <li class="lv3"><a href="#s52">7.3 冗余不等于可靠</a></li>
+            <li class="lv3"><a href="#s53">7.4 切换演练</a></li>
+            <li class="lv3"><a href="#s54">7.5 可用性指标</a></li>
+            <li class="lv2"><a href="#s55">8. 电力监控安全防护与等保</a></li>
+            <li class="lv3"><a href="#s56">8.1 现行规章</a></li>
+            <li class="lv3"><a href="#s57">8.2 分区与边界</a></li>
+            <li class="lv3"><a href="#s58">8.3 VPP 云边安全架构</a></li>
+            <li class="lv3"><a href="#s59">8.4 等保与关基</a></li>
+            <li class="lv3"><a href="#s60">8.5 常见违规</a></li>
+            <li class="lv3"><a href="#s61">8.6 上线前安全清单</a></li>
+            <li class="lv2"><a href="#s62">9. 与 EMS、VPP 和结算的接口</a></li>
+            <li class="lv3"><a href="#s63">9.1 数据契约</a></li>
+            <li class="lv3"><a href="#s64">9.2 控制契约</a></li>
+            <li class="lv3"><a href="#s65">9.3 SCADA 不是结算表</a></li>
+            <li class="lv3"><a href="#s66">9.4 对账</a></li>
+            <li class="lv3"><a href="#s67">9.5 联调</a></li>
+            <li class="lv2"><a href="#s68">10. 工程验收与运维</a></li>
+            <li class="lv3"><a href="#s69">10.1 P0 清单</a></li>
+            <li class="lv3"><a href="#s70">10.2 P1 清单</a></li>
+            <li class="lv3"><a href="#s71">10.3 上线验收用例</a></li>
+            <li class="lv3"><a href="#s72">10.4 日常运维</a></li>
+            <li class="lv2"><a href="#s73">11. 常见故障与误区</a></li>
+            <li class="lv2"><a href="#s74">12. 标准与文件</a></li>
+            <li class="lv3"><a href="#s75">12.1 版本与状态说明</a></li>
+            <li class="lv2"><a href="#s76">13. 术语表</a></li>
+            <li class="lv2"><a href="#s77">14. 维护规则</a></li>
+            <li class="lv2"><a href="#s78">附：一页速查</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="62">展开 62 个小节</button>
+  </aside>
+</div>
+
+<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<script src="../assets/doc.js"></script>
+<script src="../assets/theme.js"></script>
+</body>
+</html>

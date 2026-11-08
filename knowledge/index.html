@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>电力系统 · 电力市场 · 碳市场知识库 | energy-skills</title>
-<meta name="description" content="energy-skills 知识库总览：44 个模块，覆盖电力系统通识、电力现货与省间交易、电价、新能源与并网、储能与 EMS、零碳园区、碳市场、虚拟电厂、需求响应与市场风险信用结算。数据截止 2026-11-08。">
+<meta name="description" content="energy-skills 知识库总览：45 个模块，覆盖电力系统通识、电力现货与省间交易、电价、新能源与并网、储能、EMS 与 SCADA 数据链路、零碳园区、碳市场、虚拟电厂、需求响应与市场风险信用结算。数据截止 2026-11-09。">
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
@@ -477,19 +477,19 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
     <a class="brand" href="#top">
       <div class="brand-mark">Energy Skills</div>
       <h2>知识库总览</h2>
-      <p>44 个模块 · 14,326 行<br>数据截止 2026-11-08</p>
+      <p>45 个模块 · 15,310 行<br>数据截止 2026-11-09</p>
     </a>
     <div class="nav-scroll">
       <nav class="nav" aria-label="章节导航">
-      <a href="#top" class="active"><span class="n">00</span><span>总览</span><span class="count">44</span></a>
-      <a href="#all"><span class="n">01</span><span>模块检索</span><span class="count">44</span></a>
+      <a href="#top" class="active"><span class="n">00</span><span>总览</span><span class="count">45</span></a>
+      <a href="#all"><span class="n">01</span><span>模块检索</span><span class="count">45</span></a>
       <a href="#map"><span class="n">02</span><span>知识地图</span><span class="count">5</span></a>
       <a href="#atlas"><span class="n">03</span><span>专题图谱</span><span class="count">7</span></a>
       <a href="#foundation"><span class="n">04</span><span>通识与经济学</span><span class="count">5</span></a>
       <a href="#spot"><span class="n">05</span><span>现货与省间交易</span><span class="count">7</span></a>
       <a href="#price"><span class="n">06</span><span>电价</span><span class="count">4</span></a>
       <a href="#renewable"><span class="n">07</span><span>新能源与并网</span><span class="count">2</span></a>
-      <a href="#storage"><span class="n">08</span><span>储能与 EMS</span><span class="count">4</span></a>
+      <a href="#storage"><span class="n">08</span><span>储能与 EMS</span><span class="count">5</span></a>
       <a href="#park"><span class="n">09</span><span>零碳园区</span><span class="count">1</span></a>
       <a href="#carbon"><span class="n">10</span><span>碳市场与碳管理</span><span class="count">3</span></a>
       <a href="#vpp"><span class="n">11</span><span>虚拟电厂</span><span class="count">2</span></a>
@@ -509,9 +509,9 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
     <div class="wrap">
       <header class="hero" id="top">
         <div>
-          <div class="eyebrow">Knowledge Hub · 2026-11-08 · 44 模块 / 14,326 行</div>
+          <div class="eyebrow">Knowledge Hub · 2026-11-09 · 45 模块 / 15,310 行</div>
           <h1>电力系统、电力市场<br>与碳市场 <em>知识库</em></h1>
-          <p class="lede">把 44 份主题笔记、政策索引与调研底稿，收进一张可检索、可跳转的知识地图。每个模块都有对应的 HTML 阅读页，文字与数字取自 Markdown 原文。</p>
+          <p class="lede">把 45 份主题笔记、政策索引与调研底稿，收进一张可检索、可跳转的知识地图。每个模块都有对应的 HTML 阅读页，文字与数字取自 Markdown 原文。</p>
           <div class="hero-actions">
             <a class="btn btn-solid" href="#all" data-focus-search>检索知识模块 <span aria-hidden="true">↓</span></a>
             <a class="btn btn-ghost" href="html/政策列表-2026-11.html">政策原文直达 <span aria-hidden="true">↗</span></a>
@@ -523,8 +523,8 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
             </button>
           </div>
           <div class="hero-stats">
-              <div class="stat"><b>44</b><span>知识模块</span></div>
-              <div class="stat"><b>28</b><span>核心模块</span></div>
+              <div class="stat"><b>45</b><span>知识模块</span></div>
+              <div class="stat"><b>29</b><span>核心模块</span></div>
               <div class="stat"><b>10</b><span>调研底稿</span></div>
               <div class="stat"><b>9</b><span>配套技能</span></div>
             </div>
@@ -561,7 +561,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
           <button class="filter-btn" type="button" data-filter="core">核心模块</button>
           <button class="filter-btn" type="button" data-filter="tool">索引工具</button>
           <button class="filter-btn" type="button" data-filter="research">调研底稿</button>
-          <span class="result" id="result" aria-live="polite">44 / 44 个模块</span>
+          <span class="result" id="result" aria-live="polite">45 / 45 个模块</span>
         </div>
         <div class="empty" id="empty">没有匹配的模块。试试“储能”“136”“电价”或“CBAM”。</div>
 
@@ -749,7 +749,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
           <div class="sec-num">08 / STORAGE</div>
           <div>
             <h2>储能与 EMS</h2>
-            <p>技术侧看路线、安全与构网；投资侧看政策、成本、时长折算与考核；调度侧看 MILP、多市场堆叠、SOC/退化与 MPC。两份 EMS 笔记分别覆盖独立储能与微网。</p>
+            <p>技术侧看路线、安全与构网；投资侧看政策、成本、时长折算与考核；调度侧看 MILP、多市场堆叠、SOC/退化与 MPC；数据侧看 SCADA 点表、通信、时延、时钟同步与安全防护。两份 EMS 笔记分别覆盖独立储能与微网。</p>
           </div>
         </div>
         <div class="cards">
@@ -768,18 +768,25 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
             <div class="card-foot"><span>政策、成本与口径底稿</span><a href="html/储能投资与运营-2026-11.html">进入模块 →</a></div>
           </article>
           <article class="card" id="m-storage-ems" data-type="core" data-search="储能 EMS 优化调度 MILP 96 点 多市场 堆叠 SOC 退化 两部制 需量 容量补偿 调频 备用 MPC 安全 联锁 并网点 四条硬边界">
-            <div class="card-top"><span class="kind">算法底稿</span><span class="lines">1,353 行</span></div>
+            <div class="card-top"><span class="kind">算法底稿</span><span class="lines">1,354 行</span></div>
             <h3><a href="html/储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a></h3>
             <p>把储能调度建成 MILP：96 点经济调度、多市场堆叠、SOC/退化、MPC 与安全联锁。</p>
             <div class="tags"><span class="tag">MILP</span><span class="tag">96 点</span><span class="tag">四条硬边界</span></div>
             <div class="card-foot"><span>算法、模型与工程实践</span><a href="html/储能EMS优化调度-算法与工程-2026-11.html">进入模块 →</a></div>
           </article>
           <article class="card" id="m-micro-ems" data-type="core" data-search="微网 EMS 优化调度 MILP PCC 购售 双变量 备用 孤岛 退化 MPC 滚动 验收 保护 控制 黑启动 PCC 双变量">
-            <div class="card-top"><span class="kind">算法底稿</span><span class="lines">1,150 行</span></div>
+            <div class="card-top"><span class="kind">算法底稿</span><span class="lines">1,151 行</span></div>
             <h3><a href="html/微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a></h3>
             <p>PCC 购售双变量、备用/孤岛/退化约束、MPC 滚动与验收测试，区分保护与优化。</p>
             <div class="tags"><span class="tag">PCC 双变量</span><span class="tag">孤岛</span><span class="tag">MPC</span></div>
             <div class="card-foot"><span>算法、模型与工程实践</span><a href="html/微网EMS优化调度-算法与工程-2026-11.html">进入模块 →</a></div>
+          </article>
+          <article class="card" id="m-scada" data-type="core" data-search="SCADA 数据采集 监视控制 点表 遥测 遥信 遥控 遥调 IEC 60870-5-104 IEC 61850 Modbus MQTT 时延 时钟同步 历史库 告警 冗余 安全分区 等保 VPP EMS IEC 104 数据链路">
+            <div class="card-top"><span class="kind">知识模块</span><span class="lines">981 行</span></div>
+            <h3><a href="html/SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a></h3>
+            <p>从 VPP/EMS 的数据底座出发，拆解点表与四遥、104/61850/Modbus/MQTT、采集频率与时延、时钟同步、历史库、告警、冗余和电力监控安全防护。</p>
+            <div class="tags"><span class="tag">SCADA</span><span class="tag">点表</span><span class="tag">IEC 104</span><span class="tag">IEC 61850</span><span class="tag">MQTT</span><span class="tag">数据链路</span></div>
+            <div class="card-foot"><span>VPP/EMS 的数据底座</span><a href="html/SCADA与电力监控数据链路-2026-11.html">进入模块 →</a></div>
           </article>
         </div>
       </section>
@@ -904,7 +911,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
             <div class="card-foot"><span>这个文号是什么状态、这个数字能不能信</span><a href="html/索引与口径-2026-11.html">进入模块 →</a></div>
           </article>
           <article class="card" id="m-index-en" data-type="tool" data-search="INDEX EN English knowledge index digest knowledge map key figures provincial quick table open items answering discipline 文件地图 Open items">
-            <div class="card-top"><span class="kind">索引</span><span class="lines">352 行</span></div>
+            <div class="card-top"><span class="kind">索引</span><span class="lines">353 行</span></div>
             <h3><a href="html/INDEX_EN-2026-11.html">English Knowledge Index</a></h3>
             <p>英文入口：文件地图、关键数字、省级简表、未定事项与答题纪律。</p>
             <div class="tags"><span class="tag">English</span><span class="tag">文件地图</span><span class="tag">Open items</span></div>
@@ -1424,7 +1431,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         </div>
 
         <footer>
-          <div>数据截止 2026-11-08 · 44 个模块 / 14,326 行 · 九项技能<br>内容以 <span class="mono">knowledge/*.md</span> 原文为准；本页摘要与图示不构成投资建议。</div>
+          <div>数据截止 2026-11-09 · 45 个模块 / 15,310 行 · 九项技能<br>内容以 <span class="mono">knowledge/*.md</span> 原文为准；本页摘要与图示不构成投资建议。</div>
           <div><a href="../README.md">仓库 README</a> · <a href="../README_EN.md">README_EN</a> · <a href="#top">回到顶部 ↑</a></div>
         </footer>
       </section>

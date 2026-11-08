@@ -43,6 +43,7 @@
               <li><a href="储能投资与运营-2026-11.html">储能投资与运营</a></li>
               <li><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a></li>
               <li class="on" aria-current="page"><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a></li>
+              <li><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a></li>
     </ul>
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
@@ -67,7 +68,7 @@
       <p class="lede">PCC 购售双变量、备用/孤岛/退化约束、MPC 滚动与验收测试，区分保护与优化。</p>
       <p class="hook">算法、模型与工程实践</p>
       <div class="tags"><span class="tag">PCC 双变量</span><span class="tag">孤岛</span><span class="tag">MPC</span></div>
-      <div class="doc-meta"><span>1,150 行</span><span>约 27.0k 字</span><span>阅读约 48 分钟</span><span>15 节</span><span>数据截止 2026-11-04</span></div>
+      <div class="doc-meta"><span>1,151 行</span><span>约 27.1k 字</span><span>阅读约 48 分钟</span><span>15 节</span><span>数据截止 2026-11-04</span></div>
     </header>
 
     <details class="toc-mobile">
@@ -92,7 +93,7 @@
     </details>
 
     <article class="prose">
-<aside class="note note-head"><p>用途：作为微网/储能 EMS 模块的算法与工程参考，后续可拆为技能章节与测算工具。</p><p>说明：本文为公开标准、行业实践与通用运筹建模方法的整理，参数为示例量级，不对应任何具体企业、项目或站点。</p><p>本版（2026-11-04）：补充公开标准坐标、并网点（PCC）硬约束、备用/孤岛/退化约束、验收测试与来源分级；模型由&quot;并网点净功率单变量&quot;改为&quot;购/售双变量&quot;，需量电费改为对购电功率取最大。</p><p>数据说明：文中系数为示例量级，算例为合成数据（D 级），不代表任何具体项目参数，也不构成对任何厂商产品的评价。</p><p>引用纪律：标准条款以正式文本为准；本笔记只讨论方法与工程取舍，涉及具体项目时须重新标定参数并做现场校验。</p></aside>
+<aside class="note note-head"><p>用途：作为微网/储能 EMS 模块的算法与工程参考，后续可拆为技能章节与测算工具。</p><p>说明：本文为公开标准、行业实践与通用运筹建模方法的整理，参数为示例量级，不对应任何具体企业、项目或站点。</p><p>本版（2026-11-04）：补充公开标准坐标、并网点（PCC）硬约束、备用/孤岛/退化约束、验收测试与来源分级；模型由&quot;并网点净功率单变量&quot;改为&quot;购/售双变量&quot;，需量电费改为对购电功率取最大。</p><p>数据说明：文中系数为示例量级，算例为合成数据（D 级），不代表任何具体项目参数，也不构成对任何厂商产品的评价。</p><p>引用纪律：标准条款以正式文本为准；本笔记只讨论方法与工程取舍，涉及具体项目时须重新标定参数并做现场校验。</p><p>数据链路：点表、四遥、104/61850/Modbus/MQTT、时延与对时、安全边界见<a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a>。</p></aside>
 <hr>
 <h2 id="s1">0. 一页速查</h2>
 <h3 id="s2">0.1 微网控制链分层</h3>
@@ -483,12 +484,13 @@ s.t. 第一阶段：日前计划 x（购售、启停、备用）
         <li><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a></li>
         <li><a href="综合能源与零碳园区-2026-11.html">综合能源与零碳园区</a></li>
         <li><a href="需求响应、车网互动与灵活性资源-2026-11.html">需求响应、车网互动与灵活性资源</a></li>
+        <li><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a></li>
       </ul>
     </section>
 
     <nav class="pager" aria-label="上下篇">
           <a class="prev" href="储能EMS优化调度-算法与工程-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">储能 EMS 优化调度</span></a>
-          <a class="next" href="综合能源与零碳园区-2026-11.html"><span class="dir">下一篇 →</span><span class="ttl">综合能源与零碳园区</span></a>
+          <a class="next" href="SCADA与电力监控数据链路-2026-11.html"><span class="dir">下一篇 →</span><span class="ttl">SCADA 与电力监控数据链路</span></a>
     </nav>
 
     <footer class="doc-foot">
