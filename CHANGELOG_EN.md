@@ -7,6 +7,7 @@ This file records energy-skills releases in reverse chronological order. Current
 - **Compressed entry page**: the hero illustration is replaced by a "popular entries" list; on mobile the hero drops from 872px to 445px and the topic atlas collapses by default (6,518px to 256px). Total page height falls to about 10,900px on desktop and 15,400px on mobile.
 - **Mobile navigation**: the nav becomes a horizontally scrollable chip row with edge fades; a measured `--hub-header` variable pins the filter bar without overlapping the nav. Added a skip link, a shorter search placeholder, focus hand-off for the nav toggle, and `/` to focus search.
 - **Reading page noise reduction**: consecutive lead blockquotes merge into one notice, the table of contents lists level-2 headings by default with level-3 subsections behind an expand button, the `§` prefix is gone, and small monospace labels are larger. Reading pages have no horizontal overflow at 390px.
+- **Body typography**: running text, lists and notices cap at 45rem (about 48 characters per line), with 1.8 line height, 16px paragraph gaps and 6px list gaps; bold moves to 700, h4 grows to 15.5px, table headers are bolder with 10px cell padding; mobile body text is 15px and tables 12.6px with a non-wrapping first column.
 - **Verification**: `node scripts/build-knowledge-html.mjs --check` and `node scripts/check-consistency.mjs` both pass; search moves from 4,367px to 609px on desktop and from 9,137px to 747px on mobile.
 
 ### 2026-11-08 (v1.6 maintenance: the knowledge hub becomes a generated artifact)
