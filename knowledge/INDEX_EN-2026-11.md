@@ -7,15 +7,15 @@ kind: "索引"
 title: "English Knowledge Index"
 summary: "英文入口：文件地图、关键数字、省级简表、未定事项与答题纪律。"
 tags: ["English","文件地图","Open items"]
-cutoff: 2026-11-08
+cutoff: 2026-11-09
 related: ["m-index","m-qa","m-province"]
-search: "INDEX EN English knowledge index digest knowledge map key figures provincial quick table open items answering discipline"
+search: "INDEX EN English knowledge index digest knowledge map key figures provincial quick table open items answering discipline 2026 installed capacity carbon compliance"
 foot: "给国际模型与英文读者"
 ---
-# English Knowledge Index and Digest (2026-11-08)
+# English Knowledge Index and Digest (2026-11-09)
 
 > **Purpose**: an English entry point to this repository's knowledge layer. The full notes are written in Chinese; this file gives (1) a map of what each note contains, (2) the key figures most likely to be asked, (3) a condensed provincial table, and (4) the open items that must be flagged when answering.
-> **Data cutoff**: 2026-11-08. Policy figures change monthly; re-check before quoting. Source grades: **A** official documents/statistics, **B** exchanges, central SOEs and industry associations, **C** media/research reports, **D** calculations from public data.
+> **Data cutoff**: 2026-11-09. Policy figures change monthly; re-check before quoting. Source grades: **A** official documents/statistics, **B** exchanges, central SOEs and industry associations, **C** media/research reports, **D** calculations from public data.
 > **Policy full texts**: the [national policy index](政策列表-2026-11.md) links 55 national documents and the [provincial policy index](省级政策列表-2026-11.md) links 13 provincial documents to verified official pages (Chinese).
 > **Rule of thumb**: a number needs grade + time point + caliber. If any of the three is missing, mark it "to be verified".
 
@@ -34,10 +34,11 @@ foot: "给国际模型与英文读者"
 | `中国碳排放权交易实务-主题笔记.md` | Book note | China ETS mechanics (written ~2016; mechanisms valid, figures need updating) |
 | `碳管理-从零通往碳中和-主题笔记.md` | Book note | Corporate carbon management, Scope 1/2/3, abatement cost |
 | `走近虚拟电厂-主题笔记.md` | Book note | VPP concepts, control, business models (book published 2020; data 2018-2020) |
-| `电力系统通识-A-格局与主体.md` | Primer | Industry landscape: State Grid / CSG / Inner Mongolia West, five majors and the "four smalls", equipment vendors, research bodies, trading-dispatch-regulation split, five common misconceptions |
+| `虚拟电厂聚合调度与商业模式-2026-11.md` | Practice note | 2026 VPP core: resource inventory and A-D classification, capability arithmetic (a 12.25 MW theoretical pool derates to 9.31 MW at 0.8 simultaneity and 0.95 availability), seven-step access and 12-province thresholds, cloud-edge control and data links, market products and revenue stacking, a 10 MW/20 MWh dispatch example, CBL/settlement/sharing, six business models and a park VPP case (NPV CNY 6.899m, IRR ~18.0%), provincial map, 10 failure modes, 15 misconceptions and open items |
+| `电力系统通识-A-格局与主体.md` | Primer | Industry landscape: State Grid / CSG / Inner Mongolia West, five majors and the "four smalls", equipment vendors, research bodies, trading-dispatch-regulation split, a 2026 snapshot (4.13 TW installed, 2.01 TW wind+solar, solar overtaking coal in July, 1.09m market entities), five common misconceptions |
 | `电力系统通识-B-发输配变用.md` | Primer | Fundamentals for non-specialists: power vs. energy, voltage levels, frequency and reserve, three stability classes, protection and dispatch automation, losses, flexibility of seven generation types, unit conversions |
 | `电力系统通识-C-改革史.md` | Primer | Reform history 1985-2026 in eight stages, each with problem / measure / impact / legacy; three threads (price, actors, institutions) and five misconceptions |
-| `电力系统通识-D-新角色与现货市场.md` | Primer | Spot markets and system operation, high-renewables technical issues, storage (grid-following vs. grid-forming), VPPs, V2G, green direct connection, system costs and who bears them |
+| `电力系统通识-D-新角色与现货市场.md` | Primer | Spot markets and system operation, high-renewables technical issues, storage (grid-following vs. grid-forming), VPPs, V2G, green direct connection, system costs and who bears them; 2026 data (4.13 TW installed, coal generation 49.1%, 915 storage utilisation hours, CNY 0.068/kWh system fee) |
 | `调研-电力市场政策与开源资源-2026-09.md` | Research note | 2026-09 policy and open-source tooling |
 | `调研-虚拟电厂与碳市场-2026-09.md` | Research note | 2026-09 VPP and carbon-market findings |
 | `调研-速查合并-2026-09.md` | Research note | 2026-09 merged quick-reference |
@@ -45,7 +46,7 @@ foot: "给国际模型与英文读者"
 | `调研-VPP商业模式与国际-2026-09增量.md` | Research note | VPP revenue models, company data, international cases |
 | `调研-电力市场2026-10增量.md` | Research note | October 2026 electricity-market updates and correction list |
 | `调研-碳市场与CBAM-2026-10增量.md` | Research note | October 2026 carbon market and CBAM updates |
-| `碳资产实务-2026-11.md` | Practice note | Compliance parameters, CCER, carbon-finance instrument status, CBAM dates, PCF / neutrality / DPP facts and open items; maintenance entry for the carbon asset skill |
+| `碳资产实务-2026-11.md` | Practice note | Compliance parameters, CCER, a worked compliance example (1 Mt emissions, 80 kt gap, 5% CCER + CEA, break-even CCER price) and a synthetic CBAM steel example, carbon-finance instrument status, CBAM dates, PCF / neutrality / DPP facts and open items; maintenance entry for the carbon asset skill |
 | `储能投资与运营-2026-11.md` | Practice note | Doc. 114 capacity price and provincial samples, Doc. 1656 TOU reconstruction, Doc. 411 ancillary products, Docs 1583/500 demand rules, 2026 tender cost ranges, GB/T 36549 KPIs and 2026 H1 operating data; maintenance entry for the storage investment skill |
 | `储能技术路线安全与构网型并网-2026-11.md` | Practice note | Storage technology routes (lithium, sodium, vanadium flow, compressed air, flywheel/supercapacitor, thermal, gravity, hydrogen, pumped hydro) with duration/efficiency/cycle/cost comparison; thermal-runaway mechanism and five lines of defence; GB 44240-2024, GB/T 51048-2025, GB/T 42288-2022, GB/T 46261-2025, GB/T 46957-2025; grid-forming vs grid-following, droop/VSG/VOC, inertia/RoCoF/SCR, 3x current for 10 s, black start, GB/T 47968-2026 and GB/T 47655-2026, 2025-2026 deployment, economics, testing and 15 misconceptions |
 | `新能源项目开发与并网-2026-11.md` | Practice note | Four project types and eight development stages, Doc. 136 settlement and 2026-2027 provincial auctions, resource/P50-P90/capture-rate calibres, LCOE and after-tax break-even examples, grid standards (GB/T 19963.1, GB/T 19964, GB 38755, GB/T 40595, GB/T 36547), regional risk profiles and open items; maintenance entry for the renewable development skill |
@@ -79,6 +80,10 @@ foot: "给国际模型与英文读者"
 | Medium/long-term contract turnover, 2025 | **6.3522 trillion kWh** (incl. 328.5 billion kWh green power) | A; 4.81 trillion is a narrower subset, not the total |
 | Green-power trading, 2025 / Jan-Sep 2026 | **328.5 billion kWh** (+38.3%) / **249.2 billion kWh** (+6.1%) | A |
 | Market-traded electricity, Jan-Sep 2026 | **5.8536 trillion kWh** (+18.9%) | A |
+| Installed capacity, end-Sep 2026 | **4.13 TW** (+11.2%); solar **1.31 TW**, wind **0.70 TW**, wind+solar **2.01 TW (48.7%)**; renewables **2.518 TW (60.94%)** | A (NEA 2026-10-26) |
+| Solar vs. coal, July 2026 | Solar **1.286 TW** overtook coal **1.285 TW** for the first time | A (NEA 2026-09-01); installed capacity, not generation |
+| Coal generation share, Jan-Sep 2026 | **49.1%** (first cumulative share below 50%); renewables **41.8%**; utilisation **2,174 h** (−194 h) | A/B |
+| Registered market entities, end-2025 | **1.09 million** (+33.6% YoY): 39,000 generators, 1.049 million users, 5,395 retailers, 486 new-type entities | A/B (2025 market report) |
 | Spot markets in formal operation | **At least 11 provincial markets by 2026-09-30**, plus the southern regional market on **2026-10-24** | A/B; do not say "the 10th/11th" — sources conflict |
 | Coal capacity price | Fixed cost **CNY 330/kW·yr**; recovery **≥50% from 2026** (floor 165). 2026 values: Guangdong 165; Tianjin/Sichuan 231; Qinghai 185; Guangxi 247.5; Jilin/Heilongjiang/Hunan/Gansu/Yunnan 330; Henan 330 draft; **Liaoning 370 is reliable-capacity compensation, a different caliber** | B/C for provincial values |
 | System operation fee, Q1-Q3 2026 | About **CNY 0.068/kWh**, roughly +93% YoY | B/D |
@@ -241,6 +246,10 @@ foot: "给国际模型与英文读者"
 | Media/industry figure, 2026-06 | **120 GW aggregated, 800+ projects** | C; connected/aggregated capacity, not measured capability |
 | Four capacity metrics | Connected/aggregated > declared > measured > real-time adjustable | Declare the metric before answering |
 | National target | 20 GW by 2027, 50 GW by 2030 | A (Doc. 357) |
+| Provincial access thresholds | Liaoning: total aggregation ≥**10 MW** / total regulation ≥**5 MW** (2026-10-01); Shandong: distributed generation ≥**1 MW**, storage ≥**1 MW / 2 h** (2026-08-01); Hainan: ≥**1 MW / 1 h** (琼发改规〔2026〕No. 2, effective 2026-11-01) | A/B; thresholds differ by an order of magnitude, so never transplant them across provinces |
+| Capability arithmetic | 6 MW industrial + 1.25 MW air-conditioning + 5 MW storage = 12.25 MW; ×0.8 simultaneity ×0.95 availability = **9.31 MW** | D; declared capability, not measured |
+| Aggregation dispatch case | 10 MW/20 MWh: 18 MWh charge × 300 − 18 MWh discharge × 1,000 − 36 MWh degradation × 30 = **CNY 11,520/day**, **CNY 3.802m/yr** (330 days); AC 1:1 simplification, no RTE | D |
+| Park VPP case | Revenue **CNY 4.386m**, OPEX 0.70m, EBITDA 3.686m, after-tax cash flow 3.114m, NPV **6.899m**, IRR ~**18.0%**, payback **4.49 years** | D |
 | Zhejiang response record | 50 operators / 2,542 users, **3.5952 GW** maximum response during the 2026 National Day holiday | C |
 | Shenzhen platform, 2026-07 | 61 operators, 4.75 GW connected, 1.3 GW maximum adjustable (~5.4% of peak load) | C |
 | Shenzhen funding measure | Valid to **2025-12-31**, expired; no 2026 replacement found | A (expiry) |
@@ -275,7 +284,9 @@ foot: "给国际模型与英文读者"
 | CBAM timeline | Definitively applies from 2026-01-01; **certificate purchases start 2027-02**, first surrender 2027-09-30 | A; "applies in 2026" is not "buy certificates in 2026" |
 | GEC price by vintage | 2024 / 2025 / 2026: **CNY 0.56 / 1.60 / 6.16 per certificate** | B/C; ~11x vintage spread |
 | CCER offset cap | **5%** of the surrender obligation | A |
-| CCER registered projects | **44 projects** by mid-October 2026; average price ~**CNY 86.51/t** | B; above CEA at the time |
+| CCER registered projects | **44 projects** by mid-October 2026; average price ~**CNY 86.51/t** | B; above the 2026 Jan-Aug CEA average of 83.86 but below the 2026-10-08 close of 94.94 — the spread flips by date |
+| Compliance cost, synthetic | 1.0 Mt emissions, 0.92 Mt free allocation, **80 kt gap**; 50 kt CCER × 86.51 + 30 kt CEA × 94.94 = **CNY 7.1737m**; blended **CNY 89.67/t of gap**; break-even CCER price = CEA price | D; 5% cap, no transaction cost |
+| CBAM cost, synthetic | 10 kt steel × 0.60 tCO2/t = 6,000 t × EUR 75.28 = **EUR 451,680** (~CNY 3.523m at 7.8); **EUR 45.17/t steel** | D; free allocation not deductible, GECs not accepted |
 | 2025 compliance rate | **99.99%** | B; 2023 was 99.98% |
 | Under-surrender penalty | **5-10x** the market average in the month before the deadline | A (Order 775, amended 2026-08-08) |
 
@@ -302,7 +313,7 @@ foot: "给国际模型与英文读者"
 | Tianjin | Trial (node TBC) | Cap 0.32/kWh, 4 billion kWh | 231 | — |
 | Shanxi | **Formal 2023-12-22** | — | 165 (C) | Jin Energy Regulation〔2025〕No. 4 (2025-09-18) |
 | Inner Mongolia West | **Formal 2025-02-24** | Existing 0.2829/kWh; not in mechanism | — | — |
-| Liaoning | Continuous trial | 0.18-0.30/kWh, 5.308 billion kWh | 370 (reliable-capacity compensation, C) | Liao Dev Energy Regulation〔2026〕No. 3 (2026-08-28) |
+| Liaoning | Continuous trial | 0.18-0.30/kWh, 5.308 billion kWh | 370 (reliable-capacity compensation, C) | Liao Dev Energy Regulation〔2026〕No. 3 (effective 2026-10-01); ≥10 MW aggregation / ≥5 MW regulation |
 | Shanghai | Trial (node TBC) | — | — | User-side VPP plan 2025-2027 (1.1 GW in 2025) |
 | Jiangsu | Trial (node TBC) | — | — | Work plan 2025-12; 5 GW by 2030 |
 | Zhejiang | **Formal 2025-08-07** | First 381.6/MWh; second 0.242-0.393/kWh | — | Rules 2.0 (2026-09-23), three unit types, monthly rating |
@@ -315,7 +326,7 @@ foot: "给国际模型与英文读者"
 | Hunan | Continuous trial | 0.23-0.35/kWh, 2.286 billion kWh | 330 (C) | — |
 | Guangdong | **Formal 2023-12-28**; southern region 2026-10-24 | Existing 0.453; 0.20-0.40/kWh, 7.934 billion kWh | 165 | GD Trading〔2025〕No. 152 (2025-07) |
 | Guangxi | Southern region formal 2026-10-24 | 0.15-0.36/kWh, single ≤80% | 247.5 (B/C) | — |
-| Hainan | Southern region formal 2026-10-24 | — | — | Reported 2026-11-01 effective measure — **to be verified** |
+| Hainan | Southern region formal 2026-10-24 | — | — | 琼发改规〔2026〕No. 2 (effective 2026-11-01); ≥1 MW / 1 h |
 | Chongqing | Continuous trial | — | — | — |
 | Sichuan | Continuous trial | — | 231 (C) | — |
 | Guizhou | Southern region formal 2026-10-24 | Provincial No. 136 under revision | — | — |
@@ -336,7 +347,7 @@ foot: "给国际模型与英文读者"
 1. **National VPP management measure**: not issued as of 2026-11-01; do not invent a document number.
 2. **2026 spot-market basic rules**: draft published 2026-10-19, comments due 2026-11-18, proposed effective 2027-01-01; 2026 still runs on Document No. 1217 and provincial rules.
 3. **Retailer measure, risk-control measure, credit-evaluation guidelines, grid-connection rules**: September-October 2026 drafts, not current law.
-4. **Liaoning/Anhui VPP thresholds** and **Hainan's reported 2026-11-01 effective date**: still need the original texts.
+4. **Anhui's VPP aggregation threshold**: still needs the original text; Liaoning (≥10 MW / ≥5 MW, 2026-10-01) and Hainan (≥1 MW / 1 h, 2026-11-01) are now verified against provincial pages.
 5. **Shenzhen VPP funding**: the 2024 measure expired 2025-12-31; no 2026 replacement found.
 6. **2027 No. 136 auctions**: Liaoning clears 2026-11-08; results and other provinces still arriving.
 7. **Order 2222**: CAISO/ISO-NE 2026-11-01, NYISO 2026-12, PJM 2028/29 — implementation, not just approval.
