@@ -745,6 +745,7 @@ function buildPage(doc) {
 <meta name="color-scheme" content="light dark">
 <title>${esc(doc.title)} | energy-skills 知识库</title>
 <meta name="description" content="${esc(doc.summary)}">
+<link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>

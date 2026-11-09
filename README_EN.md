@@ -1,4 +1,11 @@
-# ⚡ Energy Skills · Power Systems, Power Markets & Carbon Markets
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="knowledge/assets/logo-book-dark.svg">
+    <img src="knowledge/assets/logo-book.svg" alt="Energy Skills book-and-bolt logo" width="96">
+  </picture>
+</p>
+
+# Energy Skills · Power Systems, Power Markets & Carbon Markets
 
 English | [中文](README.md)
 
@@ -74,6 +81,7 @@ energy-skills/
 └── knowledge/
     ├── index.template.html         ← hub skeleton (hand-maintained)
     ├── index.html                  ← generated
+    ├── assets/                     ← hand-drawn marks: book-bolt logo and favicon (4 SVGs)
     ├── html/                       ← generated: 46 knowledge pages + 18 skill pages
     │   └── download/skills/        ← generated: 18 skill TXT files
     └── *.md                        ← knowledge modules (source, frontmatter-driven)

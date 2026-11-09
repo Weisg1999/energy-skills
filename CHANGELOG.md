@@ -2,6 +2,15 @@
 
 本文件记录 energy-skills 的版本变更，按时间倒序。当前版本 **v1.9**，数据截止 **2026-11-09**。仓库入口见 [README.md](README.md)，英文版见 [CHANGELOG_EN.md](CHANGELOG_EN.md)。
 
+### 2026-11-09（v1.9 维护：知识库标识"书页电光"与全站 SVG favicon）
+
+- **标识定稿**：采用"书页电光"——一本摊开的书，中缝处留出一道闪电形负形。主体为单条 `path` 配合 `fill-rule="evenodd"` 挖空，不依赖 `mask`，可直接压在任何底色上；主色沿用站点青 `#0e6b66`，深色场景用 `#6cc8ba`。
+- **四个 SVG 资产**：`knowledge/assets/logo-book.svg` 为主标（固定青）；`logo-book-dark.svg` 为深色版（`#6cc8ba`）；`logo-book-mono.svg` 把填充改为 `currentColor`，供内联与单色使用；`logo-book-favicon.svg` 为小尺寸版，闪电加粗并在 SVG 内用 `prefers-color-scheme` 深浅切换。
+- **首页侧栏**：`knowledge/index.template.html` 原先 9px 的方块点改为 22px 书页图标 + "Energy Skills" 字样，图标走 `currentColor` 随主题变色；移动端标签字号收到 9.5px。
+- **favicon**：知识中心首页与 64 个生成页（46 个知识页 + 18 个技能页）在 `<head>` 接入 SVG favicon；技能页与知识页由 `scripts/build-knowledge-html.mjs` 统一注入 `../assets/` 路径。
+- **仓库首页**：README / README_EN 顶部加居中标识，用 `<picture>` 按 `prefers-color-scheme` 切换深浅版；标题去掉原有的 ⚡ 以免与标识重复；目录树补 `knowledge/assets/` 一行。
+- **计数与校验**：46 个模块 / 16,745 行 / 69 个 Markdown 与生成物计数不变；构建、`--check` 与一致性检查通过；侧栏标识在深浅主题下均取主题色，favicon 的加粗闪电在 16px 下仍可辨认。
+
 ### 2026-11-09（v1.9 维护：技能卡片接入 HTML 阅读页并支持 TXT 下载）
 
 - **技能阅读页**：知识中心首页的 9 个技能入口（顶部 chips 与底部卡片）不再跳转 `skills/*/SKILL.md` 原始 Markdown，改为 18 个生成式阅读页——每个技能中英各一页（`skill-<slug>.html` / `skill-<slug>-en.html`），由 `scripts/build-knowledge-html.mjs` 读取 `SKILL.md` / `SKILL_EN.md` 正文生成，与知识模块共用同一套版式、侧栏与深浅主题。

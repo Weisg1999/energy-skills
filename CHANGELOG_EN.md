@@ -2,6 +2,15 @@
 
 This file records energy-skills releases in reverse chronological order. Current version **v1.9**, data cutoff **2026-11-09**. Repository entry point: [README_EN.md](README_EN.md); Chinese version: [CHANGELOG.md](CHANGELOG.md).
 
+### 2026-11-09 (v1.9 maintenance: "book-bolt" identity and a site-wide SVG favicon)
+
+- **Identity**: an open book with a lightning bolt cut out of its gutter. The mark is a single `path` with `fill-rule="evenodd"`, so the cutout needs no mask and works on any background; it uses the site teal `#0e6b66` by default and `#6cc8ba` on dark surfaces.
+- **Four SVG assets**: `knowledge/assets/logo-book.svg` is the primary fixed-teal mark; `logo-book-dark.svg` is the dark-mode variant (`#6cc8ba`); `logo-book-mono.svg` swaps the fill to `currentColor` for inline and monochrome use; `logo-book-favicon.svg` is the small-size variant with a bolder bolt and an embedded `prefers-color-scheme` switch.
+- **Hub sidebar**: the 9px square dot in `knowledge/index.template.html` becomes a 22px book mark plus the "Energy Skills" wordmark, inheriting `currentColor`; the mobile label drops to 9.5px.
+- **Favicon**: the hub and all 64 generated pages (46 knowledge pages + 18 skill pages) link the SVG favicon from `<head>`; `scripts/build-knowledge-html.mjs` injects it uniformly with `../assets/` on generated pages.
+- **Repository front page**: README / README_EN open with a centred mark, using `<picture>` to switch between the light and dark variants via `prefers-color-scheme`; the ⚡ is dropped from the headings so it does not duplicate the mark; the trees list `knowledge/assets/`.
+- **Counts and checks**: 46 modules / 16,745 lines / 69 Markdown files and the artifact counts are unchanged; build, `--check` and the consistency check pass; the sidebar mark follows the theme in both light and dark mode, and the bold bolt stays legible at 16px.
+
 ### 2026-11-09 (v1.9 maintenance: skill cards now open HTML reading pages with TXT download)
 
 - **Skill reading pages**: the nine skill entries on the hub (top chips and bottom cards) no longer jump to raw `skills/*/SKILL.md`. They open 18 generated pages, Chinese and English per skill (`skill-<slug>.html` / `skill-<slug>-en.html`), built from the `SKILL.md` / `SKILL_EN.md` bodies by `scripts/build-knowledge-html.mjs` and sharing the same layout, sidebar and light/dark themes as the knowledge pages.
