@@ -2,7 +2,7 @@
 
 English | [中文](README.md)
 
-Nine domain skills for AI assistants, backed by **45 knowledge modules** (15,383 body lines across 10 sections). Each skill is a self-contained Markdown handbook that can be injected into an LLM as context: once loaded, the model answers as a senior practitioner and follows built-in discipline — figures cited with policy document numbers and dates, province confirmed before giving local rules, policy items returned with official lookup pointers, and unverified data flagged as "to be verified".
+Nine domain skills for AI assistants, backed by **45 knowledge modules** (15,512 body lines across 10 sections). Each skill is a self-contained Markdown handbook that can be injected into an LLM as context: once loaded, the model answers as a senior practitioner and follows built-in discipline — figures cited with policy document numbers and dates, province confirmed before giving local rules, policy items returned with official lookup pointers, and unverified data flagged as "to be verified".
 
 Current version **v1.9**, data cutoff **2026-11-09**. Entry points: [knowledge hub](knowledge/index.html) · [changelog](CHANGELOG_EN.md).
 
