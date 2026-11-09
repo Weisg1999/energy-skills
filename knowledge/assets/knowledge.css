@@ -1,15 +1,15 @@
 /* energy-skills 知识库 · 内容页共享样式
-   与 knowledge/index.html 同一套设计语言（纸感底 + 墨色字 + 分类强调色）。 */
+   与 knowledge/index.html 同一套设计语言（白底 + 墨色字 + 分类强调色）。 */
 
 :root{
-  --paper:#f6f2e9;
-  --paper-2:#efe9dc;
-  --card:#fffdf8;
+  --paper:#fff;
+  --paper-2:#f4f6f7;
+  --card:#fff;
   --ink:#16232f;
   --ink-2:#344250;
   --muted:#5b6772;
-  --line:#ddd5c6;
-  --line-strong:#c8bda9;
+  --line:#e2e6e9;
+  --line-strong:#c8d0d6;
   --teal:#0e6b66;
   --teal-2:#138780;
   --teal-soft:#e2f0ed;
@@ -252,7 +252,7 @@ h1.doc-title{
   border-bottom:1px solid var(--line-strong);white-space:nowrap;
 }
 .prose tbody tr:last-child td{border-bottom:0}
-.prose tbody tr:nth-child(even){background:rgba(246,242,233,.5)}
+.prose tbody tr:nth-child(even){background:rgba(22,35,47,.035)}
 .prose tbody tr:hover{background:var(--accent-soft)}
 .prose td code,.prose th code{white-space:nowrap}
 
@@ -490,8 +490,8 @@ h1.doc-title{
 /* 打印 */
 @media print{
   :root,:root[data-theme="dark"]{
-    --paper:#fff;--paper-2:#f6f2e9;--card:#fff;--ink:#16232f;--ink-2:#344250;
-    --muted:#5b6772;--line:#ddd5c6;--line-strong:#c8bda9;color-scheme:light;
+    --paper:#fff;--paper-2:#f4f6f7;--card:#fff;--ink:#16232f;--ink-2:#344250;
+    --muted:#5b6772;--line:#e2e6e9;--line-strong:#c8d0d6;color-scheme:light;
   }
   :root[data-theme="dark"] body[data-cat]{--accent:#16232f;--accent-soft:#f0ece3}
   .topbar,.sidebar,.toc,.toc-mobile,.related,.pager,.to-top,.progress,.scrim,.skip,.policy-bar,.policy-empty{display:none!important}

@@ -2,6 +2,23 @@
 
 This file records energy-skills releases in reverse chronological order. Current version **v1.9**, data cutoff **2026-11-09**. Repository entry point: [README_EN.md](README_EN.md); Chinese version: [CHANGELOG.md](CHANGELOG.md).
 
+### 2026-11-09 (v1.9 maintenance: light theme moves to a pure-white background)
+
+- **White light theme**: the light tokens for the hub and reading pages change from paper-yellow to pure white — `--paper` from `#f6f2e9` to `#fff` and `--card` from `#fffdf8` to `#fff`; the secondary surface `--paper-2` becomes a neutral light grey `#f4f6f7` for tags, counts and table headers. Ink, the teal/amber/blue/red/plum accents and the dark theme are unchanged.
+- **Neutral dividers**: `--line` moves from `#ddd5c6` to `#e2e6e9` and `--line-strong` from `#c8bda9` to `#c8d0d6`, so no beige outlines remain on white.
+- **Translucent surfaces and stripes**: the sticky filter bar and mobile sidebar drop their warm `rgba(246,242,233,.96/.95)` fills for white, and the scroll-fade masks follow; even table rows in reading pages switch from a warm 50% tint to `rgba(22,35,47,.035)`; the print palette is aligned to white with neutral dividers.
+- **One change covers the site**: the hub comes from `knowledge/index.template.html`, and all 46 knowledge pages and 18 skill pages share `knowledge/assets/knowledge.css`; after the rebuild only `index.html` is regenerated, while the other pages pick up the stylesheet change.
+- **Checks**: 46 modules / 16,745 lines / 69 Markdown files and the artifact counts are unchanged; build, `--check` and the consistency check pass; the hub was checked at desktop and 500px mobile widths, and a reading page in both light and dark mode, confirming the dark theme is unaffected.
+
+### 2026-11-09 (v1.9 maintenance: two-tone identity — pale-teal book, dark-teal bolt)
+
+- **Two-tone mark**: `knowledge/assets/logo-book.svg` moves from a single monochrome silhouette to two paths: the book is filled pale teal `#dcefe9` and outlined with a 3.2-wide, 35%-opaque dark-teal stroke; the bolt becomes a solid `#0e6b66` shape on top instead of a cutout. On light backgrounds the book recedes into a pale block while the bolt carries the mark; on dark backgrounds the pale book and dark-teal bolt contrast cleanly.
+- **Dark variant removed**: the two-tone mark does not depend on the theme, so `knowledge/assets/logo-book-dark.svg` is deleted and `knowledge/assets/` returns to three SVGs (primary, mono, favicon). The mono mark and the favicon are unchanged.
+- **Sidebar matches**: the 22px sidebar mark in `knowledge/index.template.html` becomes the inline two-tone version and no longer uses `currentColor`; in dark mode the pale book and dark-teal outline keep it visible, with layout and type sizes unchanged.
+- **README hero**: README / README_EN drop the `<picture>` light/dark switch for a single centred `<img>` (width 96, pointing at the primary mark); both trees now say "reading-page styles and scripts + marks (3 SVGs)".
+- **Small-size trade-off**: the favicon stays single-colour dark teal with a bolder bolt and its embedded `prefers-color-scheme` switch to `#6cc8ba`; at 16px the pale part of the two-tone book smears, while the single-colour mark stays crisp. At 22px in the sidebar both the book and the bolt still read.
+- **Counts and checks**: 46 modules / 16,745 lines / 69 Markdown files and the artifact counts are unchanged; build, `--check` and the consistency check pass; the hub was checked with light and dark screenshots, and the README hero at 96 / 44 / 22 / 16px.
+
 ### 2026-11-09 (v1.9 maintenance: "book-bolt" identity and a site-wide SVG favicon)
 
 - **Identity**: an open book with a lightning bolt cut out of its gutter. The mark is a single `path` with `fill-rule="evenodd"`, so the cutout needs no mask and works on any background; it uses the site teal `#0e6b66` by default and `#6cc8ba` on dark surfaces.

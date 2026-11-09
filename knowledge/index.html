@@ -12,14 +12,14 @@
 </script>
 <style>
 :root{
-  --paper:#f6f2e9;
-  --paper-2:#efe9dc;
-  --card:#fffdf8;
+  --paper:#fff;
+  --paper-2:#f4f6f7;
+  --card:#fff;
   --ink:#16232f;
   --ink-2:#344250;
   --muted:#5b6772;
-  --line:#ddd5c6;
-  --line-strong:#c8bda9;
+  --line:#e2e6e9;
+  --line-strong:#c8d0d6;
   --teal:#0e6b66;
   --teal-2:#138780;
   --teal-soft:#e2f0ed;
@@ -169,7 +169,7 @@ a.chip:hover{background:var(--teal-soft);border-color:#bcdad6;color:var(--teal);
 
 /* Browse / filter bar */
 .browse{scroll-margin-top:16px}
-.filterbar{position:sticky;top:0;z-index:20;margin:16px 0 0;padding:10px 0;background:rgba(246,242,233,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.filterbar{position:sticky;top:0;z-index:20;margin:16px 0 0;padding:10px 0;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .search-wrap{position:relative;flex:1;min-width:220px}
 .search-wrap svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:14px;height:14px;color:var(--muted)}
 #search{width:100%;padding:10px 12px 10px 34px;border:1px solid var(--line-strong);border-radius:8px;background:var(--card);font:14px var(--sans);color:var(--ink)}
@@ -355,15 +355,15 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
 @media (max-width:960px){
   html{scroll-padding-top:120px}
   .shell{grid-template-columns:minmax(0,1fr)}
-  .sidebar{min-width:0;position:sticky;top:0;z-index:40;height:auto;padding:10px 16px;border-right:0;border-bottom:1px solid var(--line);background:rgba(246,242,233,.95);backdrop-filter:blur(10px)}
+  .sidebar{min-width:0;position:sticky;top:0;z-index:40;height:auto;padding:10px 16px;border-right:0;border-bottom:1px solid var(--line);background:rgba(255,255,255,.95);backdrop-filter:blur(10px)}
   .brand{display:flex;align-items:center;justify-content:space-between;gap:12px}
   .brand h2{font-size:17px;margin:0}
   .brand p{display:none}
   .brand-mark{font-size:9.5px;white-space:nowrap}
   .nav-scroll{position:relative;flex:none;margin-top:8px}
   .nav-scroll::before,.nav-scroll::after{content:"";position:absolute;top:0;bottom:3px;width:20px;pointer-events:none;z-index:2;opacity:0;transition:opacity .2s}
-  .nav-scroll::before{left:0;background:linear-gradient(to right,var(--paper),rgba(246,242,233,0))}
-  .nav-scroll::after{right:0;background:linear-gradient(to left,var(--paper),rgba(246,242,233,0))}
+  .nav-scroll::before{left:0;background:linear-gradient(to right,var(--paper),rgba(255,255,255,0))}
+  .nav-scroll::after{right:0;background:linear-gradient(to left,var(--paper),rgba(255,255,255,0))}
   .nav-scroll.can-left::before,.nav-scroll.can-right::after{opacity:1}
   .nav{flex-direction:row;gap:5px;min-width:0;overflow-x:auto;margin-top:0;padding:0 4px 3px;scrollbar-width:none;scroll-snap-type:x proximity}
   .nav::-webkit-scrollbar{display:none}
@@ -456,8 +456,8 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
 
 @media print{
   :root,:root[data-theme="dark"]{
-    --paper:#fff;--paper-2:#f6f2e9;--card:#fff;--ink:#16232f;--ink-2:#344250;
-    --muted:#5b6772;--line:#ddd5c6;--line-strong:#c8bda9;color-scheme:light;
+    --paper:#fff;--paper-2:#f4f6f7;--card:#fff;--ink:#16232f;--ink-2:#344250;
+    --muted:#5b6772;--line:#e2e6e9;--line-strong:#c8d0d6;color-scheme:light;
   }
   :root[data-theme="dark"] .module-section[data-cat]{--cat:#16232f;--cat-soft:#f0ece3}
   body{background:#fff}
@@ -476,7 +476,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
 <div class="shell">
   <aside class="sidebar" aria-label="知识库目录">
     <a class="brand" href="#top">
-      <div class="brand-mark"><svg viewBox="0 0 120 120" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M60 45 C48 39 34 36.5 22 37.5 Q16 38 16 43.5 L16 78.5 Q16 84 22 83.2 C34 82 48 84 60 90 C72 84 86 82 98 83.2 Q104 84 104 78.5 L104 43.5 Q104 38 98 37.5 C86 36.5 72 39 60 45 Z M64 43 L49 66 H58 L54 92 L75 62 H64 Z"/></svg><span>Energy Skills</span></div>
+      <div class="brand-mark"><svg viewBox="0 0 120 120" aria-hidden="true"><path fill="#dcefe9" stroke="#0e6b66" stroke-opacity=".35" stroke-width="3.2" stroke-linejoin="round" d="M60 45 C48 39 34 36.5 22 37.5 Q16 38 16 43.5 L16 78.5 Q16 84 22 83.2 C34 82 48 84 60 90 C72 84 86 82 98 83.2 Q104 84 104 78.5 L104 43.5 Q104 38 98 37.5 C86 36.5 72 39 60 45 Z"/><path fill="#0e6b66" d="M64 43 L49 66 H58 L54 92 L75 62 H64 Z"/></svg><span>Energy Skills</span></div>
       <h2>知识库总览</h2>
       <p>46 个模块 · 16,745 行<br>数据截止 2026-11-09</p>
     </a>

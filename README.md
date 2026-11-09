@@ -1,8 +1,5 @@
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="knowledge/assets/logo-book-dark.svg">
-    <img src="knowledge/assets/logo-book.svg" alt="Energy Skills 书页电光标识" width="96">
-  </picture>
+  <img src="knowledge/assets/logo-book.svg" alt="Energy Skills 书页电光标识" width="96">
 </p>
 
 # Energy Skills · 电力系统、电力市场与碳市场技能库
@@ -81,7 +78,7 @@ energy-skills/
 └── knowledge/
     ├── index.template.html         ← 首页骨架（手动维护）
     ├── index.html                  ← 生成物
-    ├── assets/                     ← 手绘图标：书页电光 logo 与 favicon（4 个 SVG）
+    ├── assets/                     ← 阅读页样式与脚本 + 标识（3 个 SVG）
     ├── html/                       ← 生成物：46 个知识页 + 18 个技能页
     │   └── download/skills/        ← 生成物：18 个技能 TXT
     └── *.md                        ← 知识模块（源头，frontmatter 驱动）
