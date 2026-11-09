@@ -10,7 +10,7 @@
 
 - **注入 AI 助手**：将 `SKILL.md` 全文作为系统提示或上下文附加给模型；中文版信息密度更高，英文版便于国际模型理解。
 - **注册为技能**：把 `skills/<name>/` 放入支持自定义技能的 AI 编程工具（如 Claude Code）的技能目录，即可自动触发。
-- **直接阅读**：`knowledge/` 下的笔记本身就是带文号、数字与对比表的速查手册，从[知识中心](knowledge/index.html)按分区进入即可。
+- **直接阅读**：`knowledge/` 下的笔记本身就是带文号、数字与对比表的速查手册，从[知识中心](knowledge/index.html)按分区进入即可；九个技能也有 HTML 阅读页，并可在页内直接下载完整 TXT。
 - **提交前自检**：运行 `node scripts/check-consistency.mjs` 与 `node scripts/build-knowledge-html.mjs --check`；七个带工具的技能各跑一次 `python tools/selftest.py`。
 
 ## 九个技能
@@ -31,7 +31,7 @@
 
 ## 知识库
 
-46 个模块分为 10 个分区：通识与经济学、电力现货与省间交易、电价、新能源与并网、储能与 EMS（含 SCADA 数据链路）、综合能源与零碳园区、碳市场与碳管理、虚拟电厂、索引与工具、调研底稿。每份 Markdown 带 frontmatter（`id`、`section`、`level`、`title`、`summary`、`tags`、`cutoff`、`related` 等），[知识中心](knowledge/index.html)的卡片、计数、搜索与 46 个阅读页全部由构建脚本生成。
+46 个模块分为 10 个分区：通识与经济学、电力现货与省间交易、电价、新能源与并网、储能与 EMS（含 SCADA 数据链路）、综合能源与零碳园区、碳市场与碳管理、虚拟电厂、索引与工具、调研底稿。每份 Markdown 带 frontmatter（`id`、`section`、`level`、`title`、`summary`、`tags`、`cutoff`、`related` 等），[知识中心](knowledge/index.html)的卡片、计数、搜索、46 个知识阅读页与 18 个技能阅读页全部由构建脚本生成，技能页另附 TXT 下载。
 
 | 想解决的问题 | 从这里开始 |
 |---|---|
@@ -74,7 +74,8 @@ energy-skills/
 └── knowledge/
     ├── index.template.html         ← 首页骨架（手动维护）
     ├── index.html                  ← 生成物
-    ├── html/                       ← 生成物：46 个阅读页
+    ├── html/                       ← 生成物：46 个知识页 + 18 个技能页
+    │   └── download/skills/        ← 生成物：18 个技能 TXT
     └── *.md                        ← 知识模块（源头，frontmatter 驱动）
 ```
 

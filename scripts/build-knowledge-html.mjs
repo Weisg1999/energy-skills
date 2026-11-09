@@ -15,7 +15,7 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { nav, sections, site } from './knowledge.config.mjs';
+import { nav, sections, site, skillDocs } from './knowledge.config.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const knowledgeDir = join(root, 'knowledge');
@@ -148,6 +148,67 @@ const coreCount = manifest.filter((d) => d.level === 'core').length;
 const researchCount = manifest.filter((d) => d.level === 'research').length;
 const cutoff = manifest.map((d) => d.cutoff || '').filter((d) => /^\d{4}-\d{2}/.test(d)).sort().at(-1) || '';
 
+/* --------------------------------------------------------------- 技能清单 */
+
+const skillSection = { id: 'skill', cat: 'skill', num: '15 / SKILLS', title: '配套技能' };
+
+if (!Array.isArray(skillDocs) || !skillDocs.length) throw new Error('knowledge.config.mjs: skillDocs 不能为空');
+if (skillDocs.length !== site.skills) throw new Error(`skillDocs 有 ${skillDocs.length} 项，与 site.skills=${site.skills} 不一致`);
+
+function stripFrontmatter(raw, file) {
+  const normalized = raw.replace(/\r\n?/g, '\n');
+  if (!normalized.startsWith('---\n')) return normalized;
+  const end = normalized.indexOf('\n---\n', 4);
+  if (end === -1) throw new Error(`${file}: frontmatter 未闭合`);
+  return normalized.slice(end + 5);
+}
+
+const SKILL_FOOT = {
+  zh: '可执行流程与配套工具；正文与 SKILL.md 同步。',
+  en: 'Executable workflow and tools; synced with SKILL.md.',
+};
+
+const skillManifest = skillDocs.flatMap((meta) => {
+  const variants = [
+    { suffix: '', lang: 'zh-CN', file: 'SKILL.md', title: meta.title, summary: meta.summary, tags: meta.tags, foot: SKILL_FOOT.zh, kind: '技能' },
+    { suffix: '-en', lang: 'en', file: 'SKILL_EN.md', title: meta.titleEn, summary: meta.summaryEn, tags: meta.tagsEn, foot: SKILL_FOOT.en, kind: 'Skill' },
+  ];
+  return variants.map((v) => {
+    const rel = `skills/${meta.slug}/${v.file}`;
+    const abs = join(root, rel);
+    if (!existsSync(abs)) throw new Error(`缺少技能文件：${rel}`);
+    const raw = readFileSync(abs, 'utf8').replace(/\r\n?/g, '\n');
+    const body = stripFrontmatter(raw, rel);
+    return {
+      id: `skill-${meta.slug}${v.suffix}`,
+      section: 'skill',
+      order: meta.order,
+      level: 'tool',
+      kind: v.kind,
+      title: v.title,
+      summary: v.summary,
+      tags: v.tags,
+      foot: v.foot,
+      related: [],
+      md: rel,
+      srcHref: `../../${rel}`,
+      html: `skill-${meta.slug}${v.suffix}.html`,
+      download: `download/skills/skill-${meta.slug}${v.suffix}.txt`,
+      downloadName: `${v.title}-SKILL.txt`,
+      slug: meta.slug,
+      lang: v.lang,
+      hidden: v.lang === 'en',
+      body,
+      raw: body,
+      txt: raw,
+      lines: countLines(body),
+      cutoff: cutoffOf(body),
+    };
+  });
+});
+
+const skillCatalog = skillManifest.filter((d) => !d.hidden);
+
 /* ------------------------------------------------------------- 链接重写 */
 
 const mdSet = new Set(docs.map((d) => d.md));
@@ -169,6 +230,32 @@ function makeHrefMapper() {
 }
 
 const mapHref = makeHrefMapper();
+let activeMapHref = mapHref;
+
+function makeSkillHrefMapper(doc) {
+  return function mapSkillHref(href) {
+    if (/^(https?:|mailto:|#)/.test(href)) return href;
+    const hashAt = href.indexOf('#');
+    const path = hashAt === -1 ? href : href.slice(0, hashAt);
+    const hash = hashAt === -1 ? '' : href.slice(hashAt);
+    if (!path) return href;
+    const clean = path.replace(/\\/g, '/');
+    if (/\.md$/i.test(clean)) {
+      const b = basename(clean);
+      if (/^SKILL_EN\.md$/i.test(b)) return `skill-${doc.slug}-en.html${hash}`;
+      if (/^SKILL\.md$/i.test(b)) {
+        const sib = clean.match(/(?:^|\/)(?:\.\.\/)?([^/]+)\/SKILL(_EN)?\.md$/i);
+        if (sib && sib[1] !== doc.slug) return `skill-${sib[1]}${sib[2] ? '-en' : ''}.html${hash}`;
+        return `skill-${doc.slug}${sib?.[2] ? '-en' : ''}.html${hash}`;
+      }
+      const kn = clean.match(/(?:^|\/)knowledge\/([^/]+\.md)$/i) || (/^[^./][^/]*\.md$/i.test(clean) ? [null, clean] : null);
+      if (kn) return `${kn[1].replace(/\.md$/i, '.html')}${hash}`;
+    }
+    if (/^\.\.\/\.\.\//.test(clean)) return clean + hash;
+    if (/^\.\.\//.test(clean)) return `../../skills/${clean.slice(3)}${hash}`;
+    return `../../skills/${doc.slug}/${clean}${hash}`;
+  };
+}
 
 /* ------------------------------------------------------------- 行内解析 */
 
@@ -180,7 +267,7 @@ function inline(text) {
   });
   s = esc(s);
   s = s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, t, h) => {
-    const href = esc(mapHref(unesc(h)));
+    const href = esc(activeMapHref(unesc(h)));
     const ext = /^https?:/.test(href) ? ' target="_blank" rel="noopener"' : '';
     return `<a href="${href}"${ext}>${t}</a>`;
   });
@@ -589,9 +676,19 @@ function readingTime(md) {
 }
 
 function buildPage(doc) {
-  const sec = sectionById.get(doc.section);
+  const isSkill = doc.section === 'skill';
+  const sec = isSkill ? skillSection : sectionById.get(doc.section);
   const policyBar = doc.layout === 'policy' && doc.policy?.count ? renderPolicyBar(doc.policy) : '';
-  const lang = /^INDEX_EN/i.test(doc.md) ? 'en' : 'zh-CN';
+  const lang = doc.lang || (/^INDEX_EN/i.test(doc.md) ? 'en' : 'zh-CN');
+  const sourceHref = doc.srcHref || `../${doc.md}`;
+  const sourceLabel = doc.srcHref ? doc.md : `knowledge/${doc.md}`;
+  const langSwitch = isSkill
+    ? `<a class="src" href="skill-${doc.slug}${lang === 'en' ? '' : '-en'}.html">${lang === 'en' ? '中文' : 'English'}</a>`
+    : '';
+  const downloadSize = Math.max(1, Math.round((doc.txt || '').length / 1024));
+  const downloadBlock = isSkill
+    ? `<p class="doc-actions"><a class="dl-btn" href="${esc(doc.download)}" download="${esc(doc.downloadName)}">${lang === 'en' ? 'Download TXT' : '下载 TXT'}</a><span>${lang === 'en' ? `Full skill document, about ${downloadSize} KB, frontmatter included` : `完整技能文档，约 ${downloadSize} KB，含 frontmatter`}</span></p>`
+    : '';
   const h2s = doc.headings.filter((h) => h.level === 2);
   const h3s = doc.headings.filter((h) => h.level === 3);
   const toc = h2s.length ? h2s : doc.headings.filter((h) => h.level <= 3).slice(0, 12);
@@ -608,14 +705,17 @@ function buildPage(doc) {
     ? `<button class="toc-more" type="button" aria-expanded="${tocOpen}" data-count="${h3s.length}">${tocOpen ? '收起小节' : `展开 ${h3s.length} 个小节`}</button>`
     : '';
 
-  const sideList = manifest.filter((m) => m.section === sec.id)
-    .map((m) => `<li${m.id === doc.id ? ' class="on" aria-current="page"' : ''}><a href="${m.html}">${esc(m.title)}</a></li>`).join('\n              ');
-  const others = sections.filter((s) => s.id !== sec.id)
+  const currentId = isSkill ? doc.id.replace(/-en$/, '') : doc.id;
+  const sideDocs = isSkill ? skillCatalog : manifest.filter((m) => m.section === sec.id);
+  const sideList = sideDocs
+    .map((m) => `<li${m.id === currentId ? ' class="on" aria-current="page"' : ''}><a href="${m.html}">${esc(m.title)}</a></li>`).join('\n              ');
+  const others = sections.filter((s) => isSkill || s.id !== sec.id)
     .map((s) => `<li><a href="../index.html#${s.id}"><b>${esc(s.num.split('/')[0].trim())}</b>${esc(s.title)}</a></li>`).join('\n              ');
 
-  const idx = manifest.findIndex((d) => d.id === doc.id);
-  const prev = manifest[idx - 1];
-  const next = manifest[idx + 1];
+  const pagerDocs = isSkill ? skillCatalog : manifest;
+  const idx = pagerDocs.findIndex((d) => d.id === currentId);
+  const prev = pagerDocs[idx - 1];
+  const next = pagerDocs[idx + 1];
   const pager = [
     prev ? `<a class="prev" href="${prev.html}"><span class="dir">← 上一篇</span><span class="ttl">${esc(prev.title)}</span></a>` : '<span class="spacer"></span>',
     next ? `<a class="next" href="${next.html}"><span class="dir">下一篇 →</span><span class="ttl">${esc(next.title)}</span></a>` : '<span class="spacer"></span>',
@@ -667,7 +767,7 @@ function buildPage(doc) {
       <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
       <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-    <a class="src" href="../${doc.md}">.md 源文件</a>
+    ${[langSwitch, `<a class="src" href="${esc(sourceHref)}">.md 源文件</a>`].filter(Boolean).join('\n    ')}
     <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
   </div>
 </header>
@@ -676,7 +776,7 @@ function buildPage(doc) {
   <aside class="sidebar" id="nav">
     <div class="nav-kicker">当前分类</div>
     <div class="nav-num">${esc(sec.num)}</div>
-    <h2 class="nav-cat"><a href="../index.html#${esc(sec.id)}">${esc(sec.title)}</a></h2>
+    <h2 class="nav-cat"><a href="../index.html#${isSkill ? 'skills' : esc(sec.id)}">${esc(sec.title)}</a></h2>
     <ul class="nav-list">
               ${sideList}
     </ul>
@@ -695,7 +795,7 @@ function buildPage(doc) {
       <p class="lede">${esc(doc.summary)}</p>
       ${doc.foot ? `<p class="hook">${esc(doc.foot)}</p>` : ''}
       ${doc.tags.length ? `<div class="tags">${doc.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join('')}</div>` : ''}
-      <div class="doc-meta">${meta}</div>
+      <div class="doc-meta">${meta}</div>${downloadBlock ? `\n      ${downloadBlock}` : ''}
     </header>
 
     ${tocMobileItems.length ? `<details class="toc-mobile">
@@ -716,7 +816,7 @@ ${doc.layout === 'policy' ? '    <div class="policy-empty" id="policyEmpty" hidd
     </nav>
 
     <footer class="doc-foot">
-      <div class="lic">本页由 <a href="../${doc.md}">knowledge/${esc(doc.md)}</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div class="lic">本页由 <a href="${esc(sourceHref)}">${esc(sourceLabel)}</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
       <div><a href="../index.html">返回知识库总览 →</a></div>
     </footer>
   </main>
@@ -743,11 +843,33 @@ if (!existsSync(templatePath)) throw new Error('缺少 knowledge/index.template.
 
 mkdirSync(htmlDir, { recursive: true });
 
+function convertDoc(doc) {
+  activeMapHref = doc.section === 'skill' ? makeSkillHrefMapper(doc) : mapHref;
+  try {
+    return convert(doc.body, { layout: doc.layout });
+  } finally {
+    activeMapHref = mapHref;
+  }
+}
+
 const pages = manifest.map((doc) => {
-  const converted = convert(doc.body, { layout: doc.layout });
+  const converted = convertDoc(doc);
   const merged = { ...doc, ...converted };
   return { doc: merged, html: buildPage(merged) };
 });
+
+const skillPages = skillManifest.map((doc) => {
+  const converted = convertDoc(doc);
+  const merged = { ...doc, ...converted, h1: doc.title };
+  return { doc: merged, html: buildPage(merged) };
+});
+
+const allPages = [...pages, ...skillPages];
+const downloadDir = join(htmlDir, 'download', 'skills');
+const downloadFiles = skillManifest.map((doc) => ({
+  path: join(downloadDir, basename(doc.download)),
+  content: doc.txt,
+}));
 
 const indexHtml = renderIndex();
 
@@ -764,38 +886,50 @@ function verifyLinks(baseDir, html, label, pending = new Set()) {
   if (missing.length) throw new Error(`${label} 存在断链：${[...new Set(missing)].join('、')}`);
 }
 
-const pendingPages = new Set(pages.map((p) => join(htmlDir, p.doc.html)));
+const pendingPages = new Set(allPages.map((p) => join(htmlDir, p.doc.html)));
+for (const f of downloadFiles) pendingPages.add(f.path);
 verifyLinks(knowledgeDir, indexHtml, 'knowledge/index.html', pendingPages);
-for (const { doc, html } of pages) verifyLinks(htmlDir, html, `knowledge/html/${doc.html}`, pendingPages);
+for (const { doc, html } of allPages) verifyLinks(htmlDir, html, `knowledge/html/${doc.html}`, pendingPages);
 
 if (checkMode) {
   const diffs = [];
   const same = (path, expected) => existsSync(path) && readFileSync(path, 'utf8').replace(/\r\n?/g, '\n') === expected;
   if (!same(indexPath, indexHtml)) diffs.push('knowledge/index.html 不是最新生成物');
-  for (const { doc, html } of pages) {
+  for (const { doc, html } of allPages) {
     if (!same(join(htmlDir, doc.html), html)) diffs.push(`knowledge/html/${doc.html} 不是最新生成物`);
   }
-  const expected = new Set(pages.map((p) => p.doc.html));
+  for (const f of downloadFiles) {
+    if (!same(f.path, f.content)) diffs.push(`knowledge/html/download/skills/${basename(f.path)} 不是最新生成物`);
+  }
+  const expected = new Set(allPages.map((p) => p.doc.html));
   for (const f of readdirSync(htmlDir).filter((f) => f.endsWith('.html'))) {
     if (!expected.has(f)) diffs.push(`knowledge/html/${f} 已无对应 Markdown（删除或重新生成）`);
+  }
+  const expectedTxt = new Set(downloadFiles.map((f) => basename(f.path)));
+  if (existsSync(downloadDir)) {
+    for (const f of readdirSync(downloadDir).filter((f) => f.endsWith('.txt'))) {
+      if (!expectedTxt.has(f)) diffs.push(`knowledge/html/download/skills/${f} 已无对应技能（删除或重新生成）`);
+    }
   }
   if (diffs.length) {
     console.error('生成物校验失败，请运行 node scripts/build-knowledge-html.mjs：');
     for (const d of diffs) console.error(`- ${d}`);
     process.exit(1);
   }
-  console.log(`生成物校验通过：index.html + ${pages.length} 个内容页均为最新（${total} 个模块 / ${fmt(totalLines)} 行）。`);
+  console.log(`生成物校验通过：index.html + ${pages.length} 个知识页 + ${skillPages.length} 个技能页 + ${downloadFiles.length} 个下载文件均为最新（${total} 个模块 / ${fmt(totalLines)} 行）。`);
   process.exit(0);
 }
 
-for (const { doc, html } of pages) writeFileSync(join(htmlDir, doc.html), html, 'utf8');
+for (const { doc, html } of allPages) writeFileSync(join(htmlDir, doc.html), html, 'utf8');
+mkdirSync(downloadDir, { recursive: true });
+for (const f of downloadFiles) writeFileSync(f.path, f.content, 'utf8');
 if (rewriteIndex) writeFileSync(indexPath, indexHtml, 'utf8');
 
 const tables = pages.reduce((a, p) => a + p.doc.tableCount, 0);
 const codes = pages.reduce((a, p) => a + p.doc.codeCount, 0);
 const headings = pages.reduce((a, p) => a + p.doc.headings.length, 0);
-console.log(`已生成 ${pages.length} 个内容页 → knowledge/html/`);
+console.log(`已生成 ${pages.length} 个知识页 + ${skillPages.length} 个技能页 + ${downloadFiles.length} 个 TXT → knowledge/html/`);
 console.log(`模块 ${total} 个 / 正文 ${fmt(totalLines)} 行；章节 ${headings}，表格 ${tables}，代码/图块 ${codes}`);
 if (rewriteIndex) console.log('已生成 knowledge/index.html（卡片、侧栏与计数来自 frontmatter）');
-const biggest = [...pages].map((p) => ({ html: p.doc.html, kb: Math.round(p.html.length / 1024) })).sort((a, b) => b.kb - a.kb).slice(0, 3);
+const biggest = [...allPages].map((p) => ({ html: p.doc.html, kb: Math.round(p.html.length / 1024) })).sort((a, b) => b.kb - a.kb).slice(0, 3);
 console.log(`最大页面：${biggest.map((b) => `${b.html} ${b.kb}KB`).join('，')}`);

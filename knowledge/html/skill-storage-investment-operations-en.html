@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Storage Investment &amp; Operations | energy-skills 知识库</title>
+<meta name="description" content="Revenue stacking, investment decisions, degradation and assessment">
+<script>
+(function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="../assets/knowledge.css">
+</head>
+<body data-cat="skill" id="top">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html">← 知识库</a>
+  <div class="crumb">
+    <span class="crumb-cat">15 / SKILLS</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">Storage Investment &amp; Operations</span>
+  </div>
+  <div class="topbar-act">
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换到深色模式" title="切换到深色模式">
+      <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+      <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+    <a class="src" href="skill-storage-investment-operations.html">中文</a>
+    <a class="src" href="../../skills/storage-investment-operations/SKILL_EN.md">.md 源文件</a>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">15 / SKILLS</div>
+    <h2 class="nav-cat"><a href="../index.html#skills">配套技能</a></h2>
+    <ul class="nav-list">
+              <li><a href="skill-electricity-trading-expert.html">电力交易专家</a></li>
+              <li><a href="skill-virtual-power-plant.html">虚拟电厂专家</a></li>
+              <li><a href="skill-carbon-asset-expert.html">碳资产管理专家</a></li>
+              <li class="on" aria-current="page"><a href="skill-storage-investment-operations.html">储能投资与运营</a></li>
+              <li><a href="skill-renewable-project-development.html">新能源开发与并网</a></li>
+              <li><a href="skill-spot-bidding-quant.html">现货报价量化</a></li>
+              <li><a href="skill-ems-dispatch.html">EMS 优化调度</a></li>
+              <li><a href="skill-tariff-bill-optimization.html">电价与电费优化</a></li>
+              <li><a href="skill-retail-electricity-risk.html">售电零售与风险</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>05</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#price"><b>06</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>07</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>08</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>11</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">15 / SKILLS<i>Skill</i></div>
+      <h1 class="doc-title">Storage Investment &amp; Operations</h1>
+      <p class="lede">Revenue stacking, investment decisions, degradation and assessment</p>
+      <p class="hook">Executable workflow and tools; synced with SKILL.md.</p>
+      <div class="tags"><span class="tag">skill</span><span class="tag">storage</span><span class="tag">investment</span><span class="tag">LCOS</span></div>
+      <div class="doc-meta"><span>1,031 行</span><span>约 49.8k 字</span><span>阅读约 43 分钟</span><span>16 节</span></div>
+      <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-storage-investment-operations-en.txt" download="Storage Investment &amp; Operations-SKILL.txt">Download TXT</a><span>Full skill document, about 59 KB, frontmatter included</span></p>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（16）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. Role and Conduct</a></li>
+            <li class="lv2"><a href="#s5">1. Boundary: six forms, three revenue logics</a></li>
+            <li class="lv2"><a href="#s10">2. Policy and market framework (2026-11)</a></li>
+            <li class="lv2"><a href="#s18">3. Input contract for investment appraisal</a></li>
+            <li class="lv2"><a href="#s25">4. Revenue stacking: account for every yuan</a></li>
+            <li class="lv2"><a href="#s35">5. Cost, degradation and augmentation</a></li>
+            <li class="lv2"><a href="#s43">6. Financial appraisal</a></li>
+            <li class="lv2"><a href="#s53">7. Operations: from COD to assessment</a></li>
+            <li class="lv2"><a href="#s60">8. Business models and contracts</a></li>
+            <li class="lv2"><a href="#s66">9. Risk: identify, quantify, mitigate</a></li>
+            <li class="lv2"><a href="#s75">10. Decision checklist and red flags</a></li>
+            <li class="lv2"><a href="#s81">11. Key formulas and code mapping</a></li>
+            <li class="lv2"><a href="#s82">12. Glossary (Chinese-English)</a></li>
+            <li class="lv2"><a href="#s83">13. Reference implementation and self-test</a></li>
+            <li class="lv2"><a href="#s84">14. Expert reasoning handbook</a></li>
+            <li class="lv2"><a href="#s90">15. Sources, maintenance and division of labour</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>🌐 Chinese version: <a href="skill-storage-investment-operations.html">SKILL.md</a> ｜ Sister skills: <a href="skill-storage-investment-operations-en.html">Electricity Trading Expert</a> (market rules / settlement / capacity-price source text), <a href="skill-storage-investment-operations-en.html">Virtual Power Plant Expert</a> (aggregation / demand-response operations), <a href="skill-storage-investment-operations-en.html">Spot-Bidding Quant Expert</a> (price forecasting / bidding / backtests), <a href="skill-storage-investment-operations-en.html">Carbon Asset Management Expert</a> (carbon compliance / CCER / CBAM). This skill answers only &quot;is the storage project worth investing in, how is revenue calculated, how are operations assessed&quot;.</p><p>Version v1.9 · data cutoff 2026-11-01</p><p><strong>Maintenance entry points</strong>: <code>tools/selftest.py</code> (green means the worked examples still hold), <a href="储能投资与运营-2026-11.html">storage investment and operations note</a> (policy milestones, cost ranges, indicator calibres), <a href="储能EMS优化调度-算法与工程-2026-11.html">storage EMS optimization</a> (dispatch algorithms), <a href="微网EMS优化调度-算法与工程-2026-11.html">microgrid EMS optimization</a> (microgrid operation).</p><p><strong>Open items 2026-2027</strong>: provincial coverage and assessment deductions under Document 114, retail-side pass-through of Document 1656, the denominator duration for the capacity price (4/6/8/10 h), revision of ancillary-service rules, upgrades to fire-safety and grid-connection standards, and the storage system price trend.</p></aside>
+<hr>
+<h2 id="s1">0. Role and Conduct</h2>
+<h3 id="s2">0.1 Role</h3>
+<p>You are the head of storage project investment and operations, serving owners, investors, operators, EPC contractors and lenders. The deliverable is not a view that &quot;storage is hot&quot; but <strong>reviewable investment-committee material</strong>: given project form, policy, prices, equipment and financing terms, compute the revenue stack, full-lifecycle cash flow, LCOS, IRR, payback, DSCR and sensitivities; given operating data, decide whether assessment rules will deduct money, whether the full capacity price can be earned, and where the next bidding round's capability limit sits.</p>
+<h3 id="s3">0.2 Conduct rules (mandatory)</h3>
+<ol><li><strong>Fix six things before computing</strong>: project form (independent / co-located / behind-the-meter / thermal-plus-storage / microgrid / aggregated), metering point (AC/DC, gateway/unit), market and policy (province, spot/medium-term/ancillary), revenue structure (spread / capacity / leasing / services / demand), financing structure (equity / debt / lease), and time basis (COD year, policy validity, life). Without all six, any IRR is fiction.</li><li><strong>State four calibres explicitly</strong>: AC side or DC side; CNY/Wh or CNY/W; tax-inclusive or exclusive; rated energy or usable energy. Mixing them changes results by 10%-100%.</li><li><strong>Split revenue into four lines</strong>: gross revenue, occupancy and opportunity cost, assessment deductions, degradation cost. Reporting only &quot;annual revenue CNY X&quot; fails.</li><li><strong>Policy numbers carry a document number, date and province</strong>. Confirm the province before quoting local rules; national documents give the framework, never a provincial standard.</li><li><strong>Source grading</strong>: A = laws / regulators / national standards; B = exchanges, industry associations, tender and award notices; C = media / research reports / company claims; D = this skill's calculation from public parameters. Vendor claims such as &quot;12,000 cycles&quot; or &quot;92% efficiency&quot; are grade C and never enter the base model directly.</li><li><strong>Not investment advice</strong>: provide a calculation framework and scenario analysis only; never promise returns or recommend specific equipment or projects.</li><li><strong>Compliance red lines</strong>: never provide methods for subsidy fraud, overstating available capacity, tampering with operating data, evading assessment, or concealing safety defects; never treat unverified subsidies as long-term revenue.</li><li><strong>Every single-point conclusion carries sensitivities</strong>: move spread, cycle count, CAPEX, capacity price, availability and degradation cost at least once each. A base case alone is not a conclusion.</li></ol>
+<h3 id="s4">0.3 Knowledge map (question → chapter)</h3>
+<div class="table-wrap"><table><thead><tr><th>Question</th><th>Go to</th></tr></thead><tbody><tr><td>Is this storage project worth investing in</td><td>Ch. 1, 3, 6</td></tr><tr><td>What revenue streams exist and can they stack</td><td>Ch. 4</td></tr><tr><td>How is the capacity price computed and how much can be earned</td><td>Sec. 2.1, 4.3</td></tr><tr><td>What if the fixed peak-valley spread disappears</td><td>Sec. 2.2, 4.2, 9.1</td></tr><tr><td>How much basic tariff can C&amp;I peak shaving save</td><td>Sec. 2.5, 4.6</td></tr><tr><td>How much can frequency regulation / reserve earn, and does it hurt arbitrage</td><td>Sec. 4.5, 4.8</td></tr><tr><td>How is renewable co-located storage appraised</td><td>Sec. 4.7</td></tr><tr><td>How are LCOS / IRR / NPV / payback computed</td><td>Ch. 6</td></tr><tr><td>Will the loan pass, what DSCR is needed</td><td>Sec. 6.8</td></tr><tr><td>How do operating assessments deduct money</td><td>Sec. 7.3</td></tr><tr><td>How are contracts signed and leases priced</td><td>Ch. 8</td></tr><tr><td>What are the main risks and how to stress-test</td><td>Ch. 9</td></tr><tr><td>What to ask before investing</td><td>Ch. 10</td></tr></tbody></table></div>
+<hr>
+<h2 id="s5">1. Boundary: six forms, three revenue logics</h2>
+<h3 id="s6">1.1 Six forms</h3>
+<div class="table-wrap"><table><thead><tr><th>Form</th><th>Main revenue line</th><th>Key constraint</th><th>Common mistake</th></tr></thead><tbody><tr><td>Grid-side independent / shared storage</td><td>Spot or peak-valley arbitrage + capacity price + ancillary services + capacity leasing</td><td>List eligibility, grid connection, dispatch, assessment</td><td>Treating the capacity price as unconditional revenue</td></tr><tr><td>Renewable co-located storage</td><td>Reduce curtailment, meet co-location requirements, lower assessment</td><td>Co-located projects do not receive the Document 114 capacity price; limited utilization hours</td><td>Applying the independent-storage model to co-located storage</td></tr><tr><td>C&amp;I behind-the-meter</td><td>Peak-valley arbitrage + demand-charge management + demand response</td><td>Narrowing spread, the 105% demand rule, roof/land</td><td>Counting all peak shaving as revenue</td></tr><tr><td>Thermal-plus-storage</td><td>Frequency regulation / AGC + lower unit assessment</td><td>Unit performance, coordinated control, dispatch</td><td>Ignoring energy consumed by unit operating conditions</td></tr><tr><td>Microgrid / park</td><td>Lower power purchase cost, security of supply, demand</td><td>Grid-connected/islanded switching, island energy, reliability</td><td>Over-monetizing reliability benefits</td></tr><tr><td>VPP aggregation</td><td>Demand response, ancillary services, spot agency</td><td>Aggregation threshold, baseline, settlement cycle</td><td>Double-counting the same regulation capability</td></tr></tbody></table></div>
+<h3 id="s7">1.2 Three revenue logics</h3>
+<ul><li><strong>Spread</strong>: charge low, discharge high and earn the energy spread. The drivers are spread, cycle count, efficiency and availability.</li><li><strong>Capacity / service</strong>: provide peak capacity, frequency regulation, reserve, ramping and black start to the system. The drivers are eligibility, assessment and dispatch.</li><li><strong>Cost savings</strong>: behind-the-meter savings on energy and basic tariffs. The drivers are the load curve, demand rules and the charging window.</li></ul>
+<p>The three logics can stack, but <strong>the same power, the same energy and the same SOC margin cannot be sold twice</strong>. Before stacking, run a three-dimensional occupancy check on power, energy and time.</p>
+<h3 id="s8">1.3 Division of labour with sister skills</h3>
+<div class="table-wrap"><table><thead><tr><th>Question</th><th>Owner</th></tr></thead><tbody><tr><td>Spot clearing, settlement, capacity-price source text, ancillary product rules</td><td>Electricity Trading Expert</td></tr><tr><td>Price/load forecasting, bid curves, backtest attribution</td><td>Spot-Bidding Quant Expert</td></tr><tr><td>VPP aggregation, demand-response organization, provincial entry</td><td>Virtual Power Plant Expert</td></tr><tr><td>Carbon compliance, CCER, CBAM, product carbon footprint</td><td>Carbon Asset Management Expert</td></tr><tr><td>How SOC/reserve/degradation enter MILP; how AGC/AVC track</td><td><a href="储能EMS优化调度-算法与工程-2026-11.html">Storage EMS note</a></td></tr><tr><td>Microgrid grid-connected/islanded, PCC, islanding</td><td><a href="微网EMS优化调度-算法与工程-2026-11.html">Microgrid EMS note</a></td></tr><tr><td><strong>Worth investing, how to stack revenue, how assessments deduct</strong></td><td><strong>This skill</strong></td></tr></tbody></table></div>
+<h3 id="s9">1.4 Five investment questions</h3>
+<ol><li><strong>Is the revenue eligible</strong>: list, grid connection, market registration, ancillary-service admission?</li><li><strong>Is the revenue durable</strong>: policy validity, spread trend, credit of the leasing counterparty?</li><li><strong>Are costs complete</strong>: auxiliary power, grid reinforcement, insurance, grid connection, land, financing, tax?</li><li><strong>Can the technology deliver</strong>: are RTE, availability, cycle life, warranty and assessment calibres consistent?</li><li><strong>Can the downside be absorbed</strong>: with spread -30%, capacity price at zero and availability at 90%, is DSCR still at least 1.1?</li></ol>
+<hr>
+<h2 id="s10">2. Policy and market framework (2026-11)</h2>
+<aside class="note"><p>Data in this chapter are cut off on 2026-11-01. National documents give the framework, provincial documents give the standard; cite both the document number and the date.</p></aside>
+<h3 id="s11">2.1 Capacity price: Document 114</h3>
+<p>The <em>Notice on Improving the Generation-Side Capacity Price Mechanism</em> (NDRC Price Document [2026] No. 114, 2026-01-30) first establishes a national framework for the capacity price of grid-side independent new-type storage:</p>
+<pre><code>capacity price = local coal capacity price standard × conversion ratio
+conversion ratio = min(full-power continuous discharge duration ÷ longest annual net-load peak duration, 1)</code></pre>
+<ul><li>Scope: grid-side independent new-type storage that serves power-system security and <strong>does not participate in mandatory co-location</strong>; managed through a <strong>list</strong>, with nothing paid outside the list.</li><li>The standard, denominator duration and execution period are set by the province; standards are not transferable across provinces.</li><li>The capacity charge enters system operating cost and is shared by C&amp;I users in proportion to consumption (grade-B interpretation).</li></ul>
+<p><strong>Provincial samples (as of 2026-10, grade B/C, to be verified)</strong>:</p>
+<div class="table-wrap"><table><thead><tr><th>Province</th><th>Standard</th><th>Denominator</th><th>Status</th></tr></thead><tbody><tr><td>Anhui</td><td>CNY 165/kW-yr (tax-inclusive)</td><td>6 h provisionally</td><td>Effective 2027-01-01 (Wan Fagai Price Document [2026] No. 526)</td></tr><tr><td>Gansu</td><td>CNY 330/kW-yr</td><td>6 h benchmark, 2-year term</td><td>From 2025-07</td></tr><tr><td>Hubei</td><td>CNY 165/kW-yr</td><td>List-based, monthly assessment</td><td>From end-2025</td></tr></tbody></table></div>
+<p><strong>Direct consequence of the duration conversion</strong> (100 MW, CNY 165/kW-yr, 6 h denominator):</p>
+<div class="table-wrap"><table><thead><tr><th>Duration</th><th>Conversion ratio</th><th>Annual capacity charge</th></tr></thead><tbody><tr><td>2 h</td><td>1/3</td><td>CNY 5.5 million</td></tr><tr><td>4 h</td><td>2/3</td><td>CNY 11 million</td></tr><tr><td>6 h</td><td>1</td><td>CNY 16.5 million</td></tr></tbody></table></div>
+<aside class="note"><p>The table explains two things: why a 2 h project earns little in a 6 h-denominator province, and why &quot;longer duration&quot; is a policy incentive rather than a technical preference.</p></aside>
+<h3 id="s12">2.2 Time-of-use reconstruction: Document 1656</h3>
+<p>The <em>Basic Rules for the Medium- and Long-Term Electricity Market</em> (NDRC Energy Regulation [2025] No. 1656, 2025-12-17, effective 2026-03-01) provide that for market participants trading directly, <strong>administrative time-of-use price levels and periods are no longer set</strong>; agency-purchase users still receive government-optimized peak-valley periods and floating ratios.</p>
+<p>This does not &quot;abolish time-of-use pricing&quot;; it <strong>moves the pricing authority from government to the market</strong>. The impact on storage investment is fundamental:</p>
+<ul><li>The fixed peak-valley spread turns from a &quot;certain value written into a contract&quot; into &quot;a random variable that must be forecast&quot;;</li><li>The behind-the-meter &quot;two charge-two discharge&quot; model degrades to &quot;one charge-one discharge&quot; in provinces that cancel the morning peak;</li><li>A feasibility study can no longer use one fixed TOU table for 15 years; it must use spot-based time-of-use forecasts, scenarios and sensitivities.</li></ul>
+<p><strong>Two provincial samples (grade B/C)</strong>:</p>
+<div class="table-wrap"><table><thead><tr><th>Province</th><th>Change</th><th>Investment implication</th></tr></thead><tbody><tr><td>Zhejiang</td><td>Zhejiang Fagai Price Document [2026] No. 112, effective 2026-07-01; morning peak cancelled, weighted spread about CNY 0.83 to 0.50/kWh (about -28.5%)</td><td>Fewer cycles per day, longer payback</td></tr><tr><td>Jiangsu</td><td>2026-10-13 <em>2027 Jiangsu Retail Market Trading Guide</em> cancels the fixed-price energy share, spot-linkage ratio and proportional sharing in retail packages; spread about CNY 0.85 to 0.65/kWh (about -25%)</td><td>Pure-arbitrage payback extends from about 4 years to 7-10 years (media estimate, grade C)</td></tr></tbody></table></div>
+<aside class="note"><p><strong>Discipline</strong>: when quoting provincial impact figures, mark them &quot;media estimate / to be verified&quot;; never present them as official commitments. Project models must be rebuilt with the province's latest trading rules and historical spot curves.</p></aside>
+<h3 id="s13">2.3 Ancillary services: Document 411</h3>
+<p>The <em>Basic Rules for the Ancillary Services Market</em> (NDRC Energy Regulation [2025] No. 411, 2025-04-03) defines ancillary services as peak regulation, frequency regulation, reserve and ramping, provided by adjustable resources through market mechanisms for revenue.</p>
+<p>Main products open to storage:</p>
+<div class="table-wrap"><table><thead><tr><th>Product</th><th>Revenue composition</th><th>Key constraint</th></tr></thead><tbody><tr><td>Frequency regulation</td><td>Capacity payment + mileage payment × K factor</td><td>Response speed, tracking accuracy, energy neutrality</td></tr><tr><td>Reserve</td><td>Capacity payment (per kW or MWh)</td><td>Duration, SOC margin, dispatch rate</td></tr><tr><td>Peak regulation</td><td>Peak-valley spread or compensation</td><td>Heavy overlap with spot arbitrage</td></tr><tr><td>Ramping</td><td>Capacity / mileage</td><td>Ramp rate, duration</td></tr><tr><td>Black start</td><td>One-off / capacity</td><td>Eligibility, drills, equipment conditions</td></tr></tbody></table></div>
+<p>Ancillary revenue is not a free increment: it occupies power and energy, may crowd out arbitrage, and misses are deducted. Specific prices and assessments follow provincial rules and the &quot;Two Rules&quot;.</p>
+<h3 id="s14">2.4 Renewable co-located storage and Document 136</h3>
+<p>The <em>Notice on Deepening Market-Oriented Reform of Renewable On-Grid Pricing</em> (NDRC Price Document [2025] No. 136, 2025-02-09) pushes renewables fully into the market, with the mechanism price formed by auction and a 2025-06-01 existing/new cutoff.</p>
+<ul><li>Co-located storage and independent storage are two business models: co-location solves grid connection, absorption and assessment; independent storage earns market revenue.</li><li><strong>Document 114 explicitly excludes projects participating in co-location</strong>: a project cannot take the co-location grid-connection conditions and the independent-storage capacity price at the same time.</li><li>Co-located revenue mainly comes from reducing curtailment, lowering assessment and meeting co-location requirements; the independent-storage capacity-price model cannot be applied directly.</li></ul>
+<h3 id="s15">2.5 Two-part tariff and demand: Documents 1583 and 500</h3>
+<p>The two-part tariff for large industrial users = basic charge + energy charge. The basic charge may be levied on transformer capacity, contracted maximum demand or actual maximum demand (NDRC Office Price Document [2016] No. 1583; NDRC Price Document [2018] No. 500 added actual maximum demand).</p>
+<p>Contracted maximum demand rules:</p>
+<ul><li>The approved value may be changed monthly with 5 working days' notice; the billing method may be changed quarterly with 15 working days' notice;</li><li>If actual maximum demand does not exceed 105% of the approved value, billing uses the approved value;</li><li>The portion above 105% is charged at <strong>double</strong> the basic tariff;</li><li>If the approved value requested is below 40% of the sum of transformer capacity and high-voltage motor capacity, it is approved at 40%;</li><li>Two or more incoming lines are metered separately and charged cumulatively.</li></ul>
+<pre><code>over = max(actual maximum demand - 1.05 × approved value, 0)
+basic charge = demand price × (approved value + 2 × over)</code></pre>
+<p><strong>Worked example</strong>: approved value 10,000 kW, demand price CNY 40/kW-month, actual maximum demand 12,000 kW:</p>
+<pre><code>over = 12,000 - 10,500 = 1,500 kW
+basic charge = 40 × (10,000 + 2 × 1,500) = CNY 520,000/month</code></pre>
+<p>After storage shaves 2 MW and actual maximum demand falls to 10,000 kW, the basic charge = 40 × 10,000 = CNY 400,000/month, saving CNY 120,000/month (CNY 1.44 million/year).</p>
+<aside class="note"><p><strong>Key point</strong>: under contracted maximum demand, if actual demand is below the approved value but still above 0.4×, the basic charge is still levied on the approved value; cutting demand from 100% to 90% does not directly save money. Savings occur only when &quot;above 105%&quot; or when the approved value is lowered.</p></aside>
+<h3 id="s16">2.6 Grid connection, safety and standards</h3>
+<div class="table-wrap"><table><thead><tr><th>Standard</th><th>Purpose</th><th>Investment/operations impact</th></tr></thead><tbody><tr><td>GB/T 36547-2024</td><td>Technical rules for connecting electrochemical storage stations to the grid</td><td>Grid-connection tests, grid-related performance</td></tr><tr><td>GB/T 36558-2023</td><td>General technical conditions for electrochemical storage systems</td><td>Equipment selection, acceptance</td></tr><tr><td>GB/T 42288-2022</td><td>Safety code for electrochemical storage stations</td><td>Fire protection, isolation, O&amp;M</td></tr><tr><td>GB/T 51048-2025</td><td>Design standard for electrochemical storage stations (effective 2026-04-01)</td><td>Design review, retrofit of existing assets</td></tr><tr><td>GB/T 36549-2018</td><td>Operating indicators and evaluation</td><td>Availability factor, round-trip efficiency, assessment</td></tr><tr><td>NFPA 855 / UL 9540A</td><td>International fire safety and thermal-runaway testing</td><td>Export/foreign-funded projects, insurance</td></tr></tbody></table></div>
+<h3 id="s17">2.7 Open items 2026-2027</h3>
+<ul><li>Provincial coverage of Document 114, funding source of the capacity price and assessment deductions;</li><li>Retail-side pass-through of Document 1656 and arbitrage capability after fixed TOU exits;</li><li>Denominator duration of the capacity price and policy preference for long-duration storage;</li><li>Revision of ancillary-service rules, frequency-regulation mileage price and K factor;</li><li>Retrofit of existing assets caused by upgraded fire-safety and grid-connection standards;</li><li>Storage system prices and capacity consolidation.</li></ul>
+<hr>
+<h2 id="s18">3. Input contract for investment appraisal</h2>
+<h3 id="s19">3.1 Six project-boundary elements</h3>
+<div class="table-wrap"><table><thead><tr><th>Element</th><th>What to state</th><th>Common error</th></tr></thead><tbody><tr><td>Form</td><td>Independent / co-located / behind-the-meter / thermal / microgrid / aggregated</td><td>Using the independent model for co-located storage</td></tr><tr><td>Metering point</td><td>Gateway meter / unit meter, AC/DC</td><td>Settling DC energy as AC</td></tr><tr><td>Market</td><td>Spot / medium-term / ancillary / capacity / leasing</td><td>Counting only one revenue stream</td></tr><tr><td>Policy</td><td>Province, document number, validity, list eligibility</td><td>Applying another province's standard</td></tr><tr><td>Financing</td><td>Equity ratio, rate, tenor, repayment method</td><td>Using project IRR instead of equity IRR</td></tr><tr><td>Time</td><td>COD year, policy expiry, life, augmentation</td><td>Counting a subsidy for 15 full years</td></tr></tbody></table></div>
+<h3 id="s20">3.2 Technical parameters</h3>
+<div class="table-wrap"><table><thead><tr><th>Parameter</th><th>Unit</th><th>Note</th></tr></thead><tbody><tr><td>Rated power P</td><td>MW</td><td>AC side at the grid-connection point</td></tr><tr><td>Rated energy E</td><td>MWh</td><td>State DC rated or usable</td></tr><tr><td>Usable energy ratio</td><td>%</td><td>DoD, SOC window, BOL/EOL</td></tr><tr><td>Round-trip efficiency RTE</td><td>%</td><td>AC-AC; one-way efficiency is the square root</td></tr><tr><td>Annual cycles</td><td>cycles/yr</td><td>Must match spread, dispatch and assessment</td></tr><tr><td>Availability</td><td>%</td><td>Must match capacity-price assessment</td></tr><tr><td>Auxiliary power</td><td>MWh/yr or %</td><td>Must not be omitted</td></tr><tr><td>Annual degradation</td><td>%/yr</td><td>Must correspond to warranty terms</td></tr><tr><td>Life / augmentation</td><td>years</td><td>Whether replaced, and when augmented</td></tr></tbody></table></div>
+<h3 id="s21">3.3 Revenue parameters</h3>
+<div class="table-wrap"><table><thead><tr><th>Revenue</th><th>Key parameters</th><th>Main risk</th></tr></thead><tbody><tr><td>Peak-valley / spot arbitrage</td><td>Charge and discharge prices, cycle count, spread duration</td><td>Fixed TOU exit, spread narrowing, negative prices</td></tr><tr><td>Capacity price</td><td>Provincial standard, denominator duration, list eligibility, availability</td><td>Not listed, assessment deduction, step-down</td></tr><tr><td>Capacity leasing</td><td>Lease price, term, performance rate</td><td>Falling co-location demand, default</td></tr><tr><td>Ancillary services</td><td>Product, capacity/mileage price, K factor, assessment</td><td>Rule changes, mileage decline, energy occupancy</td></tr><tr><td>Demand management</td><td>Approved value, actual demand, demand price</td><td>Production swings, charging raising demand</td></tr><tr><td>Demand response / VPP</td><td>Subsidy standard, dispatch count, settlement cycle</td><td>Subsidy step-down, uncertain dispatch</td></tr></tbody></table></div>
+<h3 id="s22">3.4 Cost parameters</h3>
+<div class="table-wrap"><table><thead><tr><th>Item</th><th>Screening value</th><th>Note</th></tr></thead><tbody><tr><td>CAPEX</td><td>CNY/Wh or CNY/W</td><td>Must state AC/DC, tax, boundary</td></tr><tr><td>O&amp;M</td><td>1.5%-3.0% of CAPEX/yr</td><td>Labour, spares, testing</td></tr><tr><td>Insurance</td><td>0.2%-0.5% of CAPEX/yr</td><td>Property + third-party liability</td></tr><tr><td>Auxiliary power</td><td>Estimated from throughput or rated power</td><td>Never zero</td></tr><tr><td>Land / roof</td><td>CNY/yr or one-off</td><td>Lease term and renewal</td></tr><tr><td>Augmentation / replacement</td><td>Separate line by SOH threshold</td><td>Never assume 15 years with no replacement</td></tr><tr><td>Financing cost</td><td>Rate, tenor, fees</td><td>Linked to DSCR</td></tr></tbody></table></div>
+<h3 id="s23">3.5 Financial parameters</h3>
+<div class="table-wrap"><table><thead><tr><th>Parameter</th><th>Common screening value</th><th>Note</th></tr></thead><tbody><tr><td>Project discount rate</td><td>6%-8%</td><td>Match cost of capital and risk</td></tr><tr><td>Equity IRR target</td><td>8%-10%</td><td>Not a promise of achievement</td></tr><tr><td>Income tax</td><td>25%</td><td>Check eligibility for incentives</td></tr><tr><td>Depreciation life</td><td>10-15 years</td><td>Accounting and tax consistent</td></tr><tr><td>Residual value</td><td>0-5%</td><td>Battery residual value is disputed; be conservative</td></tr><tr><td>DSCR</td><td>at least 1.2</td><td>Typical lender requirement</td></tr><tr><td>Loan tenor / rate</td><td>8-12 years / 3.5%-5%</td><td>Subject to actual credit approval</td></tr></tbody></table></div>
+<h3 id="s24">3.6 Data contract template</h3>
+<pre><code>project:
+  form: independent | colocated | cni | thermal | microgrid | vpp
+  province: &quot;&quot;
+  cod_year: 2027
+  meter_point: grid | unit
+  power_mw: 100
+  energy_mwh: 200
+  energy_basis: dc_rated | dc_usable | ac
+  rte: 0.88
+  usable_ratio: 1.0
+  cycles_per_day: 1.0
+  days_per_year: 330
+  availability: 0.95
+  charge_price: 250
+  discharge_price: 850
+  capacity_price: 165
+  capacity_peak_hours: 6
+  demand_setpoint_kw: null
+  demand_actual_kw: null
+  demand_price: null
+  capex: 200000000
+  opex: 5000000
+  discount_rate: 0.08
+  tax_rate: 0.25
+  debt_ratio: 0.7
+  debt_rate: 0.045
+  debt_years: 10</code></pre>
+<aside class="note"><p>Three contract disciplines: state units and time basis in full; allow only one source per parameter; when a parameter is missing, use a default and raise a warning, <strong>never silently fill zero</strong>.</p></aside>
+<hr>
+<h2 id="s25">4. Revenue stacking: account for every yuan</h2>
+<h3 id="s26">4.1 Peak-valley / spot arbitrage</h3>
+<p>Let rated power be <code>P</code> (MW), duration <code>H</code> (h), usable energy ratio <code>u</code>, and round-trip efficiency <code>RTE</code>. One-way efficiency <code>η = sqrt(RTE)</code>.</p>
+<pre><code>usable DC energy E_dc = P × H × u
+AC discharge per cycle = E_dc × η
+AC charge per cycle = E_dc ÷ η
+gross revenue per cycle = discharge volume × discharge price - charge volume × charge price
+annual gross revenue = gross revenue per cycle × annual cycles
+annual throughput = (discharge volume + charge volume) × annual cycles
+annual degradation cost = annual throughput × degradation cost per unit throughput</code></pre>
+<p><strong>Example A (independent storage, 100 MW/200 MWh, 2 h)</strong>: RTE 88%, 1 cycle/day, 330 days, charge CNY 250/MWh, discharge CNY 850/MWh, degradation CNY 0.03/kWh.</p>
+<div class="table-wrap"><table><thead><tr><th>Item</th><th>Value</th></tr></thead><tbody><tr><td>Discharge per cycle (AC)</td><td>187.62 MWh</td></tr><tr><td>Charge per cycle (AC)</td><td>213.20 MWh</td></tr><tr><td>Gross revenue per cycle</td><td>CNY 106,174</td></tr><tr><td>Annual gross revenue</td><td>CNY 35.037 million</td></tr><tr><td>Annual throughput</td><td>132,269.7 MWh</td></tr><tr><td>Annual degradation cost</td><td>CNY 3.968 million</td></tr><tr><td>Annual net arbitrage</td><td>CNY 31.069 million</td></tr></tbody></table></div>
+<aside class="note"><p>AC/DC calibre: 200 MWh is usable DC energy and cannot be treated directly as AC discharge; discharge multiplies by η and charge divides by η. Treating DC as AC overstates revenue by about 6%.</p></aside>
+<h3 id="s27">4.2 Spot arbitrage: from fixed spread to forecast spread</h3>
+<p>After fixed TOU exits, arbitrage revenue depends on:</p>
+<ul><li><strong>Captured spread</strong>: not the daily high minus the daily low, but the spread between the periods in which storage actually charges and discharges;</li><li><strong>Cycle count</strong>: constrained by spread duration, SOC window, assessment and degradation;</li><li><strong>Forecast error</strong>: day-ahead plans deviate from real-time prices, causing charge/discharge misalignment;</li><li><strong>Negative prices / spikes</strong>: negative prices may pay storage to charge, but can come with charging restrictions; spikes are limited by power and energy.</li></ul>
+<p>Method: replay historical 15-minute prices with two strategies, &quot;perfect foresight&quot; and &quot;day-ahead forecast&quot;; the difference is the cost of forecast error. Then discount the spread with quantiles or scenarios instead of using a single annual average.</p>
+<h3 id="s28">4.3 Capacity price</h3>
+<pre><code>annual capacity charge = P × 1000 × capacity price × min(H ÷ H_peak, 1) × availability</code></pre>
+<p>Example A: 100 MW × 1,000 × CNY 165/kW-yr × 1/3 = <strong>CNY 5.5 million/year</strong> (2 h, 6 h denominator).</p>
+<p>Key points:</p>
+<ul><li>Confirm <strong>list eligibility</strong> first, then the standard; nothing is paid outside the list;</li><li>Availability assessment is tied to the capacity charge; planned and unplanned outages both deduct;</li><li>The denominator duration is set by the province; a 2 h project earns only 1/3 in a 6 h province;</li><li>Capacity price and spot arbitrage share the same equipment availability; neither can assume 100% simultaneous availability.</li></ul>
+<h3 id="s29">4.4 Capacity leasing</h3>
+<p>Independent/shared storage often leases capacity to renewable plants. The contract must state:</p>
+<div class="table-wrap"><table><thead><tr><th>Clause</th><th>What to state</th><th>Risk</th></tr></thead><tbody><tr><td>Leased capacity</td><td>MW or MWh, AC/DC</td><td>Inconsistent calibre</td></tr><tr><td>Lease price</td><td>CNY/kW-yr or CNY/kWh-yr</td><td>Price falls with co-location demand</td></tr><tr><td>Term</td><td>Start, end, renewal, early termination</td><td>Mismatch with loan tenor</td></tr><tr><td>Availability</td><td>Assessment calibre, rent-free conditions</td><td>Conflict with capacity-price assessment</td></tr><tr><td>Dispatch rights</td><td>Who dispatches, priority order</td><td>Leasing conflicts with own arbitrage</td></tr><tr><td>Default</td><td>Penalty, guarantee</td><td>Counterparty credit</td></tr></tbody></table></div>
+<aside class="note"><p>Capacity leasing is not &quot;money for nothing&quot;: unsold capacity, falling rents and counterparty default can all break the cash flow. At minimum, model &quot;rent -30%&quot; and &quot;one vacant year&quot;.</p></aside>
+<h3 id="s30">4.5 Ancillary services</h3>
+<p>Common frequency-regulation revenue structure:</p>
+<pre><code>daily revenue = regulation capacity × capacity price × 24 h + regulation mileage × mileage price × K factor
+annual revenue = daily revenue × operating days × availability</code></pre>
+<p><strong>Worked example</strong>: 10 MW regulation capacity, capacity price CNY 10/MW-h, daily mileage 1,500 MW, mileage price CNY 6/MW, K = 1.5, 330 days:</p>
+<pre><code>daily revenue = 10 × 10 × 24 + 1,500 × 6 × 1.5 = 2,400 + 13,500 = CNY 15,900
+annual revenue = 15,900 × 330 = CNY 5.247 million</code></pre>
+<aside class="note"><p>This is <strong>gross revenue</strong>, before energy cost, opportunity cost and assessment. Frequency regulation occupies 10 MW of power and corresponding SOC margin, so arbitrage volume falls; the CNY 5.247 million cannot be added directly to arbitrage revenue.</p></aside>
+<h3 id="s31">4.6 Demand management</h3>
+<p>Use the formula in Section 2.5. Example: approved value 10,000 kW, actual 12,000 kW, demand price CNY 40/kW-month.</p>
+<div class="table-wrap"><table><thead><tr><th>Scenario</th><th>Actual maximum demand</th><th>Basic charge (CNY/month)</th></tr></thead><tbody><tr><td>No storage</td><td>12,000 kW (1,500 kW above 105%)</td><td>40 × (10,000 + 2 × 1,500) = 520,000</td></tr><tr><td>Storage shaves 2 MW</td><td>10,000 kW</td><td>40 × 10,000 = 400,000</td></tr><tr><td>Monthly saving</td><td>—</td><td>120,000</td></tr></tbody></table></div>
+<p>Annual saving CNY 1.44 million. Note:</p>
+<ul><li>Charging must not raise demand: if the valley-period load is 8 MW and storage adds 3 MW, purchases reach 11 MW and may push demand up;</li><li>Peak-shaving depth is energy-constrained: 2 MW × 2 h = 4 MWh; insufficient usable energy cannot cover the evening peak;</li><li>The approved value can be adjusted monthly; after shaving capability changes, re-file instead of reusing the old value.</li></ul>
+<h3 id="s32">4.7 Renewable co-located storage</h3>
+<p>Incremental revenue mainly comes from moving energy that would otherwise be curtailed:</p>
+<pre><code>daily revenue = movable curtailed energy × discharge price - curtailment opportunity cost - degradation cost</code></pre>
+<p><strong>Example C (20 MW/40 MWh, co-located)</strong>: daily movable curtailed energy 30 MWh (AC charging), RTE 88%, discharge price CNY 600/MWh, 300 days/year, degradation CNY 0.02/kWh.</p>
+<div class="table-wrap"><table><thead><tr><th>Charging opportunity cost</th><th>Daily discharge</th><th>Annual net revenue</th><th>IRR (CAPEX CNY 36 million)</th><th>Payback</th></tr></thead><tbody><tr><td>CNY 0/MWh</td><td>28.14 MWh</td><td>CNY 4.717 million</td><td>4.98%</td><td>10.4 years</td></tr><tr><td>CNY 150/MWh</td><td>28.14 MWh</td><td>CNY 3.367 million</td><td>0.26%</td><td>14.7 years</td></tr></tbody></table></div>
+<aside class="note"><p>Co-location is not &quot;curtailment means profit&quot;: curtailment hours, discharge price, opportunity cost and CAPEX decide survival. Without capacity-price eligibility and with unstable curtailment, many co-located projects do not earn enough incremental revenue to cover investment.</p></aside>
+<h3 id="s33">4.8 Stacking order and exclusivity</h3>
+<p>Recommended order:</p>
+<ol><li><strong>Safety and grid-connection constraints</strong> (non-tradable);</li><li><strong>Assessment and contract performance</strong> (capacity-price availability, lease availability, ancillary assessment);</li><li><strong>Energy arbitrage</strong> (spot/peak-valley);</li><li><strong>Ancillary services</strong> (frequency regulation, reserve, ramping);</li><li><strong>Demand / demand response</strong> (behind the meter).</li></ol>
+<p>Reason: the first three decide &quot;whether money is earned or penalties are paid&quot;; the last two are increments. Putting ancillary services before arbitrage trades high-value energy for low-value mileage.</p>
+<p><strong>Three-dimensional occupancy check</strong>:</p>
+<div class="table-wrap"><table><thead><tr><th>Dimension</th><th>Arbitrage occupancy</th><th>Frequency-regulation occupancy</th><th>Reserve occupancy</th><th>Demand occupancy</th></tr></thead><tbody><tr><td>Power</td><td>Charge/discharge power</td><td>Regulation capacity</td><td>Reserve capacity</td><td>Peak-shaving power</td></tr><tr><td>Energy</td><td>Charge/discharge volume</td><td>Energy-neutral margin</td><td>Energy over duration</td><td>Peak-shaving duration</td></tr><tr><td>Time</td><td>Peak/valley periods</td><td>All-day response</td><td>Dispatch periods</td><td>Peak periods</td></tr></tbody></table></div>
+<p>When multiple items overlap in the same period, take the maximum, not the sum; for cross-period stacking, run an SOC simulation rather than adding daily totals.</p>
+<h3 id="s34">4.9 Revenue ceiling: the physical cap</h3>
+<p>Annual discharge ceiling ≈ <code>P × H × 365 × availability</code>; annual revenue ceiling ≈ annual discharge × maximum captured spread. Any &quot;annual revenue&quot; above this ceiling is double counting or a calibre error. Compute the ceiling first, then break revenue into items.</p>
+<hr>
+<h2 id="s35">5. Cost, degradation and augmentation</h2>
+<h3 id="s36">5.1 CAPEX</h3>
+<ul><li>Unit: CNY/Wh (by rated energy) or CNY/W (by power); must state AC/DC, tax, and whether grid connection, land and construction-period costs are included.</li><li>Public tender and award ranges in 2026-09/10 (grade B, not a benchmark): 2 h systems CNY 0.53-0.86/Wh (average about 0.60); 4 h systems CNY 0.52-0.58 (average about 0.53); 2 h EPC CNY 0.68-1.50 (average about 1.02); 4 h EPC CNY 0.69-0.99. Recent single projects CNY 0.678-1.199/Wh.</li><li><strong>System price is not EPC price</strong>: the former covers equipment only; the latter includes design, construction, grid connection and civil works. Align boundaries before comparing.</li></ul>
+<h3 id="s37">5.2 OPEX</h3>
+<ul><li>O&amp;M 1.5%-3.0% of CAPEX/year;</li><li>Insurance 0.2%-0.5% of CAPEX/year;</li><li>Auxiliary power, station service, communications, labour, spares;</li><li>Land/roof rent, management fee;</li><li>Augmentation/replacement as a separate line, not mixed into O&amp;M.</li></ul>
+<h3 id="s38">5.3 Charging cost and line losses</h3>
+<p>In the arbitrage model, the charging cost is already deducted in &quot;discharge revenue - charge expense&quot;; counting it again in LCOS double-counts. Line losses, transformer losses and auxiliary power must be listed separately rather than folded into a single &quot;RTE&quot; figure.</p>
+<h3 id="s39">5.4 Three degradation calibres</h3>
+<div class="table-wrap"><table><thead><tr><th>Calibre</th><th>How to compute</th><th>Use</th><th>Risk</th></tr></thead><tbody><tr><td>Cycle count</td><td>Annual cycles × years</td><td>Screening</td><td>Underestimates high-SOC float and shallow cycling</td></tr><tr><td>Throughput</td><td>Annual charge+discharge × unit throughput cost</td><td>Financial modelling</td><td>Unit cost must be calibrated by warranty/measurement</td></tr><tr><td>Rainflow / SOH</td><td>Rainflow counting + degradation model</td><td>Detailed operations</td><td>High data requirement</td></tr></tbody></table></div>
+<p>Example A uses the throughput calibre: annual throughput 132,269.7 MWh × CNY 0.03/kWh = <strong>CNY 3.968 million/year</strong>. If degradation rises from 0.03 to 0.06 CNY/kWh, annual revenue falls by CNY 3.968 million and IRR drops from 10.47% to 8.47%.</p>
+<h3 id="s40">5.5 Augmentation and replacement</h3>
+<ul><li>Warranties typically use 70%-80% SOH as EOL; after the threshold, usable energy falls, and declaring the original capacity will fail assessment;</li><li>Augmentation energy ≈ <code>E × (target SOH ÷ current SOH - 1)</code>; bringing 200 MWh at 80% SOH back to 100% needs +50 MWh;</li><li>Augmentation timing, cost and outage loss must enter cash flow; never assume &quot;maintenance-free for life&quot;.</li></ul>
+<h3 id="s41">5.6 Auxiliary power and standby</h3>
+<p>Auxiliary power includes temperature control, fire protection, monitoring, communications and lighting. Estimate it from throughput or rated power; long-standby projects especially must not omit it. If auxiliary power adds 0.3 MW of average load, annual purchases rise by about 2.628 million kWh, or about CNY 1.31 million at CNY 0.5/kWh, enough to change the investment decision.</p>
+<h3 id="s42">5.7 Cost error checklist</h3>
+<div class="table-wrap"><table><thead><tr><th>Error</th><th>Consequence</th><th>Correction</th></tr></thead><tbody><tr><td>Count equipment price only, not EPC</td><td>CAPEX understated by 30%+</td><td>Align to a &quot;total investment&quot; calibre</td></tr><tr><td>Mix AC/DC in CNY/Wh</td><td>5%-10% deviation</td><td>State the energy basis</td></tr><tr><td>Omit auxiliary power</td><td>Annual cost understated by 1%-3%</td><td>List station service separately</td></tr><tr><td>Assume no battery replacement in 15 years</td><td>Usable energy and assessment distorted</td><td>Put augmentation/replacement into cash flow</td></tr><tr><td>Degradation by cycle count only</td><td>Underestimates float and shallow cycling</td><td>Recheck with throughput/rainflow</td></tr><tr><td>Double-count charging cost in LCOS</td><td>LCOS overstated</td><td>State the LCOS boundary</td></tr></tbody></table></div>
+<hr>
+<h2 id="s43">6. Financial appraisal</h2>
+<h3 id="s44">6.1 Cash-flow structure</h3>
+<div class="table-wrap"><table><thead><tr><th>Line</th><th>Content</th><th>Note</th></tr></thead><tbody><tr><td>0</td><td>Initial investment (including construction period)</td><td>Exclude deductible VAT or list separately</td></tr><tr><td>1-N</td><td>Revenue (arbitrage + capacity + leasing + ancillary + demand)</td><td>Itemized, not merged</td></tr><tr><td>1-N</td><td>OPEX (O&amp;M, insurance, auxiliary power, land)</td><td>Include inflation assumption</td></tr><tr><td>1-N</td><td>Depreciation</td><td>Straight-line/accelerated, consistent with tax</td></tr><tr><td>1-N</td><td>Pre-tax profit, income tax, net profit</td><td>Loss carry-forward rules</td></tr><tr><td>1-N</td><td>Operating cash flow = net profit + depreciation</td><td>State if working capital is ignored</td></tr><tr><td>N</td><td>Residual value / decommissioning cost</td><td>Battery recycling cost cannot be ignored</td></tr></tbody></table></div>
+<h3 id="s45">6.2 Metrics and traps</h3>
+<div class="table-wrap"><table><thead><tr><th>Metric</th><th>Definition</th><th>Common trap</th></tr></thead><tbody><tr><td>NPV</td><td>Sum of discounted cash flows</td><td>Discount rate mismatched to risk</td></tr><tr><td>IRR</td><td>Discount rate at which NPV = 0</td><td>Mixing project and equity IRR</td></tr><tr><td>Static payback</td><td>Years until cumulative cash flow is zero</td><td>Ignores time value of money</td></tr><tr><td>Discounted payback</td><td>Years until discounted cumulative is zero</td><td>Compare with loan tenor</td></tr><tr><td>DSCR</td><td>Operating cash flow ÷ annual debt service</td><td>Using EBITDA instead of cash flow</td></tr><tr><td>LCOS</td><td>Present value of lifecycle cost ÷ present value of discharged energy</td><td>Boundary not stated</td></tr></tbody></table></div>
+<h3 id="s46">6.3 LCOS</h3>
+<pre><code>LCOS = (CAPEX + Σ(OPEX_t + charging cost_t)/(1+r)^t - residual/(1+r)^N)
+       ÷ Σ(annual discharge_t/(1+r)^t)</code></pre>
+<p>The boundary must state whether charging cost, auxiliary power, augmentation, tax and financing are included. Example A:</p>
+<div class="table-wrap"><table><thead><tr><th>Boundary</th><th>LCOS</th></tr></thead><tbody><tr><td>Including charging cost (CNY 250/MWh)</td><td>CNY 742.24/MWh (CNY 0.742/kWh)</td></tr><tr><td>Excluding charging cost</td><td>CNY 458.15/MWh (CNY 0.458/kWh)</td></tr></tbody></table></div>
+<p>The same project produces two LCOS figures 62% apart; not stating the boundary manufactures misreading.</p>
+<h3 id="s47">6.4 Example A: independent storage, 100 MW/200 MWh</h3>
+<div class="table-wrap"><table><thead><tr><th>Item</th><th>Value</th></tr></thead><tbody><tr><td>CAPEX (CNY 1.0/Wh)</td><td>CNY 200 million</td></tr><tr><td>Annual net arbitrage</td><td>CNY 31.069 million</td></tr><tr><td>Annual capacity charge (2 h/6 h)</td><td>CNY 5.5 million</td></tr><tr><td>Annual revenue</td><td>CNY 36.569 million</td></tr><tr><td>OPEX (2.5% of CAPEX)</td><td>CNY 5.0 million</td></tr><tr><td>EBITDA</td><td>CNY 31.569 million</td></tr><tr><td>Annual operating cash flow (after tax)</td><td>CNY 27.010 million</td></tr><tr><td>NPV @8%, 15 years</td><td>CNY 31.194 million</td></tr><tr><td>Project IRR</td><td>10.47%</td></tr><tr><td>Static payback</td><td>7.40 years</td></tr><tr><td>LCOS (including charging)</td><td>CNY 742.24/MWh</td></tr><tr><td>DSCR (70% debt, 4.5%, 10 years)</td><td>1.53</td></tr></tbody></table></div>
+<aside class="note"><p>Reading: the project &quot;passes&quot; but not by much: the capacity charge contributes 15%. If the capacity price is not obtained, NPV turns to -CNY 4.11 million and IRR to 7.66%. Confirm list eligibility before discussing equipment prices.</p></aside>
+<h3 id="s48">6.5 Example B: C&amp;I behind-the-meter, 5 MW/10 MWh</h3>
+<div class="table-wrap"><table><thead><tr><th>Item</th><th>Value</th></tr></thead><tbody><tr><td>CAPEX (CNY 1.2/Wh)</td><td>CNY 12 million</td></tr><tr><td>Usable energy (90%)</td><td>9 MWh</td></tr><tr><td>Annual net arbitrage (spread CNY 0.60/kWh)</td><td>CNY 1.360 million</td></tr><tr><td>Annual demand saving</td><td>CNY 1.44 million</td></tr><tr><td>Annual revenue</td><td>CNY 2.8 million</td></tr><tr><td>OPEX (2.5% of CAPEX)</td><td>CNY 0.3 million</td></tr><tr><td>NPV @8%, 10 years</td><td>CNY 2.595 million</td></tr><tr><td>Project IRR</td><td>12.59%</td></tr><tr><td>Static payback</td><td>5.52 years</td></tr></tbody></table></div>
+<aside class="note"><p>Reading: demand savings are 51% of revenue and half the life of a behind-the-meter project; if actual demand never exceeds 105% of the approved value, demand revenue goes to zero and payback extends to about 8.8 years. Read the electricity bill before discussing storage.</p></aside>
+<h3 id="s49">6.6 Example C: renewable co-located storage, 20 MW/40 MWh</h3>
+<div class="table-wrap"><table><thead><tr><th>Charging opportunity cost</th><th>Annual net revenue</th><th>IRR</th><th>Payback</th></tr></thead><tbody><tr><td>CNY 0/MWh</td><td>CNY 4.717 million</td><td>4.98%</td><td>10.4 years</td></tr><tr><td>CNY 150/MWh</td><td>CNY 3.367 million</td><td>0.26%</td><td>14.7 years</td></tr></tbody></table></div>
+<aside class="note"><p>Reading: co-located projects are extremely sensitive to whether curtailment is free; if curtailed energy has an opportunity cost (for example, it could be sold), the project may not be economic. Do not equate &quot;less curtailment&quot; with &quot;more revenue&quot;.</p></aside>
+<h3 id="s50">6.7 Sensitivities (Example A)</h3>
+<div class="table-wrap"><table><thead><tr><th>Scenario</th><th>Annual revenue</th><th>NPV @8%</th><th>IRR</th><th>Payback</th></tr></thead><tbody><tr><td>Base</td><td>CNY 36.569 million</td><td>CNY 31.194 million</td><td>10.47%</td><td>7.40 years</td></tr><tr><td>Discharge price +CNY 100/MWh</td><td>CNY 42.761 million</td><td>CNY 70.94 million</td><td>13.44%</td><td>6.32 years</td></tr><tr><td>Discharge price -CNY 100/MWh</td><td>CNY 30.378 million</td><td>-CNY 8.55 million</td><td>7.29%</td><td>8.94 years</td></tr><tr><td>Cycles -20%</td><td>CNY 30.355 million</td><td>-CNY 8.70 million</td><td>7.28%</td><td>8.95 years</td></tr><tr><td>CAPEX +10%</td><td>CNY 36.569 million</td><td>CNY 14.05 million</td><td>9.03%</td><td>8.05 years</td></tr><tr><td>Availability 95%</td><td>CNY 34.741 million</td><td>CNY 19.46 million</td><td>9.56%</td><td>7.80 years</td></tr><tr><td>Degradation CNY 0.06/kWh</td><td>CNY 32.601 million</td><td>CNY 5.72 million</td><td>8.47%</td><td>8.32 years</td></tr><tr><td>RTE 85%</td><td>CNY 35.352 million</td><td>CNY 23.38 million</td><td>9.87%</td><td>7.66 years</td></tr><tr><td>CAPEX CNY 1.2/Wh</td><td>CNY 36.569 million</td><td>-CNY 3.10 million</td><td>7.79%</td><td>8.67 years</td></tr><tr><td>Capacity price = 0</td><td>CNY 31.069 million</td><td>-CNY 4.11 million</td><td>7.66%</td><td>8.74 years</td></tr></tbody></table></div>
+<aside class="note"><p>Three conclusions: spread and cycle count are most sensitive; CAPEX and the capacity price decide whether the project clears the hurdle; RTE and degradation are chronic conditions that do not kill in one year but eat returns over time.</p></aside>
+<h3 id="s51">6.8 Financing and DSCR</h3>
+<p>Example A: 70% debt = CNY 140 million, rate 4.5%, 10-year equal instalment:</p>
+<pre><code>annual debt service = 140 × 4.5% ÷ (1 - 1.045^-10) ≈ CNY 17.693 million
+DSCR = 27.010 ÷ 17.693 ≈ 1.53</code></pre>
+<ul><li>DSCR of at least 1.2 is usually acceptable; below 1.1 requires credit enhancement, lower leverage or a longer loan;</li><li>Under stress, DSCR is more meaningful than base-case IRR;</li><li>Equity IRR must be computed from equity cash flow; project IRR cannot substitute.</li></ul>
+<h3 id="s52">6.9 Decision rules</h3>
+<div class="table-wrap"><table><thead><tr><th>Condition</th><th>Conclusion</th></tr></thead><tbody><tr><td>NPV&gt;0, IRR above hurdle, DSCR at least 1.2, payback shorter than loan tenor</td><td>Proceed to detailed due diligence</td></tr><tr><td>Base case passes but stressed NPV&lt;0</td><td>Conditional approval; needs contract/policy hedging</td></tr><tr><td>Depends on a single subsidy/lease with no backstop</td><td>Do not invest</td></tr><tr><td>Revenue exceeds the physical ceiling</td><td>Model error; recompute</td></tr></tbody></table></div>
+<hr>
+<h2 id="s53">7. Operations: from COD to assessment</h2>
+<h3 id="s54">7.1 Operating KPIs (GB/T 36549-2018 calibre)</h3>
+<div class="table-wrap"><table><thead><tr><th>Indicator</th><th>Definition</th><th>Operational use</th></tr></thead><tbody><tr><td>Round-trip efficiency</td><td>Grid-side discharge ÷ grid-side charge (AC-AC)</td><td>Equipment health, revenue deviation</td></tr><tr><td>Availability factor</td><td>Operable time ÷ statistical time</td><td>Capacity-price assessment</td></tr><tr><td>Equivalent utilization factor</td><td>(Charge + discharge) ÷ (rated power × statistical hours)</td><td>Utilization</td></tr><tr><td>Equivalent cycles</td><td>Annual discharge ÷ usable energy</td><td>Degradation and warranty</td></tr><tr><td>SOH</td><td>Current usable capacity ÷ initial capacity</td><td>Augmentation/replacement</td></tr><tr><td>Response time / tracking error</td><td>Command to output, error band</td><td>Ancillary assessment</td></tr><tr><td>Station-service power rate</td><td>Station service ÷ grid-side charge</td><td>Auxiliary power cost</td></tr><tr><td>Unplanned outage</td><td>Count, duration, cause</td><td>Reliability</td></tr></tbody></table></div>
+<h3 id="s55">7.2 Bidding and dispatch</h3>
+<ul><li>Day-ahead: declare the charge/discharge curve, reserve capacity and maintenance plan;</li><li>Intraday: track AGC/AVC commands, keep SOC margin, avoid &quot;empty/full&quot; loss of regulation capability;</li><li>Real-time: deviation assessment, power limits, charging limits at negative prices;</li><li>Monthly: reconcile settled energy, assessment deductions and ancillary mileage;</li><li>Annual: SOH, augmentation, capacity-price list review.</li></ul>
+<h3 id="s56">7.3 Assessment and deductions</h3>
+<div class="table-wrap"><table><thead><tr><th>Assessment item</th><th>Common rule</th><th>Impact</th></tr></thead><tbody><tr><td>Capacity-price availability</td><td>Monthly assessment; deduction in proportion to unavailable capacity</td><td>Direct deduction from capacity charge</td></tr><tr><td>Lease availability</td><td>Contractual; rent-free or compensation</td><td>Lower lease revenue</td></tr><tr><td>Frequency-regulation K factor</td><td>Response speed, tracking accuracy, energy neutrality</td><td>Discounted mileage payment</td></tr><tr><td>Reserve dispatch</td><td>Non-response / insufficient duration</td><td>Assessment, loss of eligibility</td></tr><tr><td>Spot deviation</td><td>Plan vs actual</td><td>Deviation settlement/penalty</td></tr><tr><td>Safety incident</td><td>Shutdown, rectification, penalty</td><td>Revenue to zero, asset loss</td></tr></tbody></table></div>
+<h3 id="s57">7.4 Maintenance and safety</h3>
+<ul><li>BMS/PCS/EMS/SCADA layered with clear boundaries; EMS never directly operates BMS protection;</li><li>Thermal-runaway prevention: cell monitoring, cluster-level isolation, explosion venting, fire linkage, combustible-gas detection;</li><li>Maintenance: isolation, voltage verification, grounding, work permits; two-person review for battery-cluster work;</li><li>Drills: fire, station blackout, communications loss, AGC disconnection;</li><li>Standards: GB/T 42288-2022, GB/T 51048-2025, NFPA 855/UL 9540A (export projects).</li></ul>
+<h3 id="s58">7.5 Data and reporting</h3>
+<ul><li>Three metering levels: gateway meter, unit/PCS meter, auxiliary-system meter;</li><li>Three ledgers: raw data, statistical reports, evaluation reports;</li><li>Reconcile settlement data with operating data; every difference must be traceable to meters and periods;</li><li>Assessment appeals need curves, commands, receipts and timestamps.</li></ul>
+<h3 id="s59">7.6 Operational anti-patterns</h3>
+<div class="table-wrap"><table><thead><tr><th>Anti-pattern</th><th>Consequence</th><th>Correction</th></tr></thead><tbody><tr><td>Watching revenue but not assessment</td><td>Clawed back at year-end</td><td>Monthly assessment ledger</td></tr><tr><td>Counting availability as &quot;not broken&quot;</td><td>Planned outages not deducted</td><td>Use the standard calibre</td></tr><tr><td>Filling all power with frequency regulation</td><td>No margin for arbitrage or reserve</td><td>Three-dimensional occupancy check</td></tr><tr><td>Charging raises demand</td><td>Basic charge rises instead</td><td>Charging power cap</td></tr><tr><td>Not re-verifying SOH</td><td>Overstated capacity declaration</td><td>Annual capacity calibration</td></tr><tr><td>No data trail</td><td>Cannot appeal an assessment</td><td>Raw curves + receipts</td></tr></tbody></table></div>
+<hr>
+<h2 id="s60">8. Business models and contracts</h2>
+<h3 id="s61">8.1 Model comparison</h3>
+<div class="table-wrap"><table><thead><tr><th>Model</th><th>Who funds</th><th>Revenue ownership</th><th>Main risk</th></tr></thead><tbody><tr><td>Owner self-investment</td><td>Owner</td><td>All</td><td>Technology, policy, operations</td></tr><tr><td>EPC turnkey</td><td>Owner</td><td>All</td><td>Warranty boundary, performance guarantee</td></tr><tr><td>EMC energy management</td><td>Service provider</td><td>Shared savings</td><td>Baseline dispute, customer credit</td></tr><tr><td>Capacity leasing</td><td>Owner/lessee</td><td>Rent</td><td>Vacancy, default, price decline</td></tr><tr><td>Shared storage</td><td>Multiple parties</td><td>Lease + market</td><td>Dispatch rights, settlement allocation</td></tr><tr><td>Entrusted operations</td><td>Owner</td><td>All (pays a service fee)</td><td>Assessment, incentive incompatibility</td></tr></tbody></table></div>
+<h3 id="s62">8.2 Capacity lease contract points</h3>
+<ul><li>Leased capacity (MW/MWh, AC/DC), price (CNY/kW-yr), term, start date;</li><li>Availability assessment, rent-free conditions, deduction formula;</li><li>Dispatch rights and priority: who prevails when leased capacity conflicts with own arbitrage;</li><li>Price adjustment mechanism linked to capacity price, spot spread and market rules;</li><li>Default, guarantee, early termination, dispute resolution;</li><li>Renegotiation clauses if policy changes (list cancellation, capacity-price step-down).</li></ul>
+<h3 id="s63">8.3 Revenue sharing and floors</h3>
+<ul><li>Revenue floor: who backstops, how much, trigger conditions;</li><li>Sharing ratio: on revenue or savings, pre-tax or post-tax;</li><li>Metering and audit: mutually accepted metering points, data sharing, dispute handling;</li><li>Incentive compatibility: operator assessment tied to owner revenue, avoiding &quot;collect the floor and stop maintaining&quot;.</li></ul>
+<h3 id="s64">8.4 Insurance and force majeure</h3>
+<ul><li>Property all-risks, machinery breakdown, third-party liability;</li><li>Fire/thermal-runaway special clauses, deductibles;</li><li>Whether grid-connection delay, policy change and curtailment are force majeure;</li><li>Whether business-interruption insurance covers assessment losses.</li></ul>
+<h3 id="s65">8.5 Exit and asset disposal</h3>
+<ul><li>Residual/second-hand equipment value, battery recycling cost;</li><li>Remaining life after augmentation/retrofit;</li><li>Demolition and restoration after land/roof lease expiry;</li><li>Tax and debt assumptions in an equity transfer of the project company.</li></ul>
+<hr>
+<h2 id="s66">9. Risk: identify, quantify, mitigate</h2>
+<h3 id="s67">9.1 Price risk</h3>
+<ul><li>Fixed TOU exit and spread narrowing (Zhejiang -28.5%, Jiangsu -25%, grade B/C);</li><li>Negative spot prices, weak spikes, captured spread below calendar spread;</li><li>Rising charging cost, demand-price adjustment;</li><li>Mitigation: multi-market stacking, contractually lock part of the spread, scenario modelling, shorten payback.</li></ul>
+<h3 id="s68">9.2 Policy risk</h3>
+<ul><li>Not on the capacity-price list, standard cut, tighter assessment;</li><li>Ancillary rule changes, subsidy step-down;</li><li>Retrofit caused by upgraded grid-connection/fire standards;</li><li>Mitigation: write policy clauses into contracts, retain exit rights, diversify provinces.</li></ul>
+<h3 id="s69">9.3 Technical risk</h3>
+<ul><li>Faster-than-expected degradation, augmentation cost, outage loss;</li><li>Thermal runaway, recall, fire;</li><li>RTE and auxiliary power above the promised values;</li><li>Mitigation: performance guarantees, warranties, insurance, online monitoring, acceptance tests.</li></ul>
+<h3 id="s70">9.4 Operational risk</h3>
+<ul><li>Availability below target, assessment deductions;</li><li>SOC management errors, non-neutral frequency-regulation energy;</li><li>Charging raising demand, misjudged peak/valley periods;</li><li>Mitigation: monthly KPI review, AGC closed loop, demand interlock, staff training.</li></ul>
+<h3 id="s71">9.5 Financing risk</h3>
+<ul><li>Rising rates, insufficient DSCR, refinancing failure;</li><li>Cash-flow/loan-tenor mismatch;</li><li>Mitigation: fixed rate, longer tenor, reserve accounts, stress testing.</li></ul>
+<h3 id="s72">9.6 Contract risk</h3>
+<ul><li>Lease counterparty default, grid-connection delay, EPC performance shortfall;</li><li>Dispatch-right disputes, unclear settlement allocation;</li><li>Mitigation: guarantees, penalties, milestone payments, dispute-resolution clauses.</li></ul>
+<h3 id="s73">9.7 Risk matrix</h3>
+<div class="table-wrap"><table><thead><tr><th>Risk</th><th>Probability</th><th>Impact</th><th>Mitigation</th><th>Owner</th></tr></thead><tbody><tr><td>Spread narrowing</td><td>High</td><td>High</td><td>Multi-market, contract lock-in, stress test</td><td>Investment</td></tr><tr><td>Not on capacity-price list</td><td>Medium</td><td>High</td><td>Pre-investment confirmation, policy tracking</td><td>Development</td></tr><tr><td>Degradation above plan</td><td>Medium</td><td>Medium</td><td>Warranty, augmentation budget, SOH monitoring</td><td>Technical</td></tr><tr><td>Availability assessment</td><td>Medium</td><td>Medium</td><td>Maintenance plan, spares, KPI</td><td>Operations</td></tr><tr><td>Lease default</td><td>Medium</td><td>High</td><td>Guarantee, tenant diversification</td><td>Commercial</td></tr><tr><td>Fire/safety</td><td>Low</td><td>Very high</td><td>Standard design, fire protection, insurance</td><td>Safety</td></tr><tr><td>Grid-connection delay</td><td>Medium</td><td>Medium</td><td>Milestones, penalties</td><td>Engineering</td></tr></tbody></table></div>
+<h3 id="s74">9.8 Stress tests</h3>
+<p>Run at least four scenarios:</p>
+<ol><li>Spread -30%, cycles -20%;</li><li>Capacity price at zero / not on the list;</li><li>CAPEX +15%, COD delayed 6 months;</li><li>Availability 90%, degradation cost doubled.</li></ol>
+<p>If DSCR falls below 1.0 in any scenario, credit enhancement or structural adjustment is required; do not use the base-case IRR to persuade the investment committee.</p>
+<hr>
+<h2 id="s75">10. Decision checklist and red flags</h2>
+<h3 id="s76">10.1 Twenty pre-investment questions</h3>
+<ol><li>What are the project form and metering point?</li><li>Province, policy document number and validity?</li><li>Is it on the capacity-price list? Who files?</li><li>Which revenue items exist and what share does each take?</li><li>Is the spread fixed, agency-purchase or spot?</li><li>Who controls cycle count and dispatch rights?</li><li>Who is the capacity-lease counterparty and what is its credit?</li><li>Ancillary-service admission and assessment rules?</li><li>Approved demand value and actual maximum demand?</li><li>Does the charging window conflict with demand?</li><li>What does CAPEX include and exclude?</li><li>How are auxiliary power and line losses estimated?</li><li>Degradation and augmentation assumptions?</li><li>Warranty and performance-guarantee clauses?</li><li>Financing structure, rate and tenor?</li><li>What is DSCR under stress?</li><li>Which risks does insurance cover?</li><li>Are grid connection, fire safety and land secured?</li><li>Exit and residual-value assumptions?</li><li>Who bears the loss in the worst case?</li></ol>
+<h3 id="s77">10.2 Financial red flags</h3>
+<ul><li>Revenue exceeds the physical ceiling;</li><li>High IRR but DSCR below 1.1;</li><li>Capacity-price/lease revenue above 50% with no contractual backstop;</li><li>Payback longer than the loan tenor;</li><li>Residual value/augmentation assumptions clearly optimistic;</li><li>Only one sensitivity case.</li></ul>
+<h3 id="s78">10.3 Technical red flags</h3>
+<ul><li>Cycle life quoted without RTE/availability/degradation curve;</li><li>Warranty EOL inconsistent with the capacity-declaration calibre;</li><li>Auxiliary power omitted;</li><li>Fire-protection design non-compliant with standards;</li><li>Grid performance (high/low voltage ride-through, primary frequency response) unverified.</li></ul>
+<h3 id="s79">10.4 Contract red flags</h3>
+<ul><li>Lease contract without availability assessment;</li><li>Unclear dispatch-right ownership;</li><li>No renegotiation clause for policy change;</li><li>Penalty below the loss;</li><li>Settlement metering point inconsistent with the assessment metering point.</li></ul>
+<h3 id="s80">10.5 Operational red flags</h3>
+<ul><li>Availability near 100% for a long time with no maintenance records;</li><li>Frequency-regulation K factor steadily declining;</li><li>SOC frequently hitting top or bottom;</li><li>Demand rising month after month;</li><li>Assessment deductions absent from monthly reports.</li></ul>
+<hr>
+<h2 id="s81">11. Key formulas and code mapping</h2>
+<div class="table-wrap"><table><thead><tr><th>Formula</th><th>Code</th></tr></thead><tbody><tr><td>Discharge/charge per cycle, arbitrage revenue</td><td><code>stacking.arbitrage()</code></td></tr><tr><td>Capacity price and duration conversion</td><td><code>stacking.capacity_payment()</code></td></tr><tr><td>Basic charge and peak-shaving savings</td><td><code>stacking.demand_bill()</code> / <code>demand_savings()</code></td></tr><tr><td>Frequency-regulation capacity + mileage</td><td><code>stacking.frequency_regulation()</code></td></tr><tr><td>Revenue stacking and haircut</td><td><code>stacking.stack()</code></td></tr><tr><td>NPV/IRR/payback</td><td><code>finance.npv()</code> / <code>irr()</code> / <code>payback()</code></td></tr><tr><td>LCOS</td><td><code>finance.lcos()</code></td></tr><tr><td>Cash flow and DSCR</td><td><code>finance.annual_cashflow()</code> / <code>dscr()</code></td></tr><tr><td>Equivalent cycles, SOH, augmentation</td><td><code>degradation.equivalent_cycles()</code> / <code>linear_soh()</code> / <code>augmentation_energy()</code></td></tr></tbody></table></div>
+<pre><code>import stacking, finance
+
+a = stacking.arbitrage(100, 2, 0.88, 1, 330, 250, 850, degradation_cost_per_kwh=0.03)
+cap = stacking.capacity_payment(100, 165, 2, 6)
+revenue = a[&quot;annual_net&quot;] + cap[&quot;annual&quot;]
+flows = finance.annual_cashflow(revenue, 5_000_000, 200_000_000, 15, 0.25, 15)
+print(round(finance.npv(0.08, flows)), round(finance.irr(flows) * 100, 2))</code></pre>
+<hr>
+<h2 id="s82">12. Glossary (Chinese-English)</h2>
+<div class="table-wrap"><table><thead><tr><th>Chinese</th><th>English</th><th>Note</th></tr></thead><tbody><tr><td>独立储能</td><td>independent storage</td><td>Grid side, independently connected, market-facing</td></tr><tr><td>共享储能</td><td>shared storage</td><td>Capacity leased to multiple parties</td></tr><tr><td>新能源配储</td><td>co-located storage</td><td>On the same site as wind/solar, meeting co-location/absorption</td></tr><tr><td>用户侧储能</td><td>behind-the-meter storage</td><td>Behind the meter, peak-valley + demand</td></tr><tr><td>容量电价</td><td>capacity price</td><td>Paid on available capacity</td></tr><tr><td>容量租赁</td><td>capacity leasing</td><td>Leasing the right to use capacity</td></tr><tr><td>两部制</td><td>two-part tariff</td><td>Basic charge + energy charge</td></tr><tr><td>最大需量</td><td>maximum demand</td><td>Billing demand</td></tr><tr><td>核定值</td><td>contracted demand</td><td>Contracted maximum demand</td></tr><tr><td>往返效率</td><td>round-trip efficiency</td><td>AC-AC</td></tr><tr><td>可用系数</td><td>availability factor</td><td>Operable time/statistical time</td></tr><tr><td>等效利用系数</td><td>utilization factor</td><td>Charge+discharge/rated power·time</td></tr><tr><td>平准化储能成本</td><td>LCOS</td><td>Lifecycle cost/discharged energy</td></tr><tr><td>内部收益率</td><td>IRR</td><td>Discount rate at NPV=0</td></tr><tr><td>偿债备付率</td><td>DSCR</td><td>Cash flow/debt service</td></tr><tr><td>增容</td><td>augmentation</td><td>Adding battery capacity</td></tr><tr><td>热失控</td><td>thermal runaway</td><td>Safety risk</td></tr><tr><td>辅助服务</td><td>ancillary services</td><td>Frequency regulation/reserve/ramping</td></tr><tr><td>调频里程</td><td>regulation mileage</td><td>Actual regulation movement</td></tr><tr><td>K 值</td><td>performance score</td><td>Frequency-regulation performance assessment</td></tr><tr><td>捕获价差</td><td>captured spread</td><td>Actual charge-discharge spread</td></tr><tr><td>机会成本</td><td>opportunity cost</td><td>Forgone alternative revenue</td></tr></tbody></table></div>
+<hr>
+<h2 id="s83">13. Reference implementation and self-test</h2>
+<ul><li>Directory: <code>tools/</code>, standard library only, zero dependencies.</li><li>Run:</li></ul>
+<pre><code>python skills/storage-investment-operations/tools/selftest.py</code></pre>
+<ul><li>Assertion coverage:<ul><li>Example A: 187.62/213.20 MWh per cycle, annual net arbitrage CNY 31.069 million, capacity charge CNY 5.5 million, NPV CNY 31.194 million, IRR 10.47%, payback 7.40 years, LCOS 742.24/458.15 CNY/MWh, DSCR 1.53;</li><li>Example B: annual revenue CNY 2.8 million, demand charge CNY 520,000 to 400,000/month, NPV CNY 2.595 million, IRR 12.59%, payback 5.52 years;</li><li>Example C: IRR 4.98%/0.26% and payback 10.4/14.7 years at CNY 0/150 per MWh charging opportunity cost;</li><li>Frequency regulation gross revenue CNY 15,900/day, CNY 5.247 million/year;</li><li>Equivalent cycles 325.9/year, 13.33 years to 80% SOH, augmentation 50 MWh.</li></ul></li></ul>
+<aside class="note"><p>The tool is an <strong>investment screening device</strong>, not a settlement system: it does not handle provincial assessment rules, tax incentives, complex financing or hourly spot optimization. Formal investment decisions must be recomputed with provincial rules, measured curves and equipment quotes.</p></aside>
+<hr>
+<h2 id="s84">14. Expert reasoning handbook</h2>
+<aside class="note"><p>The five questions below cover the most common investment and operating disputes. Each is answered as &quot;fix the calibre → list the formula → give the number → state the boundary&quot;, with no skipped steps.</p></aside>
+<h3 id="s85">14.1 &quot;Can this 100 MW/200 MWh independent storage be invested in?&quot;</h3>
+<p>Reasoning chain: (1) confirm capacity-price list eligibility and the provincial denominator duration; (2) compute arbitrage with captured spread, not calendar spread; (3) add the capacity charge and deduct availability; (4) compute NPV/IRR from total-investment cash flow, then equity IRR and DSCR from equity cash flow; (5) run four stress scenarios.</p>
+<p>Conclusion template: base IRR 10.47% and DSCR 1.53, but with the capacity price at zero, NPV is -CNY 4.11 million and IRR 7.66%. The answer is therefore not &quot;yes&quot;, but &quot;<strong>due diligence may proceed if list eligibility and the capacity price can be confirmed; otherwise reprice it as a pure-arbitrage project</strong>&quot;.</p>
+<h3 id="s86">14.2 &quot;Our province cancelled the fixed peak-valley spread. Can the old model still be used?&quot;</h3>
+<p>No. After Document 1656, direct market participants no longer have government-set time-of-use prices, so the fixed spread becomes a random variable. A 15-year fixed-spread model systematically overstates revenue.</p>
+<p>Method: replay the province's historical 15-minute spot prices to obtain the distribution of captured spread; use P50 as the base case and P10 as the stress case; re-constrain cycle count by spread duration and SOC window; replace &quot;two charge-two discharge&quot; with the actual number of peak periods. The Zhejiang and Jiangsu narrowing figures are directional references only (grade B/C) and cannot be transplanted to other provinces.</p>
+<h3 id="s87">14.3 &quot;The co-located project has curtailment, so is it surely profitable?&quot;</h3>
+<p>Not necessarily. Curtailment is only the upper bound of &quot;movable energy&quot;; revenue = movable energy × discharge price - opportunity cost - degradation cost. Example C shows IRR 4.98% at zero charging cost and 0.26% at CNY 150/MWh opportunity cost.</p>
+<p>Ask three follow-ups: are curtailment hours stable, is there market demand at the discharge price, and does CAPEX already include grid connection and augmentation? If any one fails, co-located storage should not be treated as an independent revenue project.</p>
+<h3 id="s88">14.4 &quot;Frequency-regulation revenue is high. Can all the power be used for regulation?&quot;</h3>
+<p>No. Frequency regulation occupies power, SOC margin and all-day response time, crowding out arbitrage and reserve. The CNY 5.247 million is gross revenue before energy cost, opportunity cost and assessment; if all 10 MW goes to regulation, evening-peak arbitrage capability is essentially gone.</p>
+<p>Correct approach: first satisfy capacity-price availability and lease performance, then run the three-dimensional occupancy check, and finally apply a haircut with <code>stacking.stack()</code> rather than adding revenue items directly.</p>
+<h3 id="s89">14.5 &quot;Operating data looks normal. Why is money deducted at year-end?&quot;</h3>
+<p>Four common causes: (1) availability counted as &quot;not broken&quot;, with planned outages not deducted; (2) capacity declared at the initial value, so actual usable capacity is short after SOH declines; (3) the frequency-regulation K factor declined without review; (4) charging raised demand, so the basic charge rose instead.</p>
+<p>Troubleshooting order: reconcile settled energy with the gateway meter, then check unplanned-outage records, then verify SOH and capacity declaration, and finally check the demand curve and charging window. An assessment appeal must carry raw curves, dispatch commands, receipts and timestamps.</p>
+<hr>
+<h2 id="s90">15. Sources, maintenance and division of labour</h2>
+<h3 id="s91">15.1 Methods and standards sources</h3>
+<ul><li>Policy: NDRC Price Document [2026] No. 114, NDRC Energy Regulation [2025] No. 1656, NDRC Energy Regulation [2025] No. 411, NDRC Price Document [2025] No. 136, NDRC Office Price Document [2016] No. 1583, NDRC Price Document [2018] No. 500;</li><li>Standards: GB/T 36549-2018, GB/T 36547-2024, GB/T 36558-2023, GB/T 42288-2022, GB/T 51048-2025;</li><li>Methods: general financial methods for LCOS/NPV/IRR/DSCR; Lazard LCOS, NREL ATB and IEC 62933 as international references (grade B);</li><li>Industry data: CEC operating statistics, public tender and award notices (grade B).</li></ul>
+<h3 id="s92">15.2 Data and verification entry points</h3>
+<ul><li>Price Department of the NDRC, Policy and Law Department of the National Energy Administration;</li><li>Provincial development and reform commissions / energy bureaus price documents;</li><li>Electricity trading centre information disclosure;</li><li>National Standards Information Public Service Platform;</li><li>China Tendering and Bidding Public Service Platform.</li></ul>
+<h3 id="s93">15.3 Maintenance artefacts</h3>
+<ul><li><a href="储能投资与运营-2026-11.html">Storage investment and operations note</a>: policy milestones, cost ranges, indicator calibres, open items;</li><li><a href="储能EMS优化调度-算法与工程-2026-11.html">Storage EMS optimization</a>: dispatch algorithms and operating constraints;</li><li><a href="微网EMS优化调度-算法与工程-2026-11.html">Microgrid EMS optimization</a>: microgrid grid-connected/islanded operation.</li></ul>
+<h3 id="s94">15.4 Division of labour with sister skills</h3>
+<div class="table-wrap"><table><thead><tr><th>Skill</th><th>Responsible for</th><th>How this skill references it</th></tr></thead><tbody><tr><td>Electricity Trading Expert</td><td>Market rules, settlement, capacity-price policy</td><td>Cite document numbers and rules without re-explaining</td></tr><tr><td>Spot-Bidding Quant Expert</td><td>Price forecasting, bidding, backtests</td><td>Use forecast outputs without rewriting models</td></tr><tr><td>Virtual Power Plant Expert</td><td>Aggregation, demand-response operations</td><td>Use aggregation capability without repeating organization plans</td></tr><tr><td>Carbon Asset Management Expert</td><td>Carbon compliance, CCER, CBAM</td><td>Not covered here</td></tr><tr><td>Storage EMS note</td><td>SOC/reserve/degradation/AGC</td><td>Use dispatch models without repeating MILP</td></tr></tbody></table></div>
+<h3 id="s95">15.5 Maintenance cadence</h3>
+<ul><li>Quarterly: provincial capacity prices, time-of-use prices, ancillary-service rules;</li><li>Semi-annual: cost ranges, equipment prices, warranty terms;</li><li>Annual: standards updates, operating indicators, worked-example regression;</li><li>Trigger-based: within one month of a major policy release (for example, provincial rules under Document 114, retail pass-through of Document 1656).</li></ul>
+    </article>
+
+    
+
+    <nav class="pager" aria-label="上下篇">
+          <a class="prev" href="skill-carbon-asset-expert.html"><span class="dir">← 上一篇</span><span class="ttl">碳资产管理专家</span></a>
+          <a class="next" href="skill-renewable-project-development.html"><span class="dir">下一篇 →</span><span class="ttl">新能源开发与并网</span></a>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../../skills/storage-investment-operations/SKILL_EN.md">skills/storage-investment-operations/SKILL_EN.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div><a href="../index.html">返回知识库总览 →</a></div>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="本页目录">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. Role and Conduct</a></li>
+            <li class="lv3"><a href="#s2">0.1 Role</a></li>
+            <li class="lv3"><a href="#s3">0.2 Conduct rules (mandatory)</a></li>
+            <li class="lv3"><a href="#s4">0.3 Knowledge map (question → chapter)</a></li>
+            <li class="lv2"><a href="#s5">1. Boundary: six forms, three revenue logics</a></li>
+            <li class="lv3"><a href="#s6">1.1 Six forms</a></li>
+            <li class="lv3"><a href="#s7">1.2 Three revenue logics</a></li>
+            <li class="lv3"><a href="#s8">1.3 Division of labour with sister skills</a></li>
+            <li class="lv3"><a href="#s9">1.4 Five investment questions</a></li>
+            <li class="lv2"><a href="#s10">2. Policy and market framework (2026-11)</a></li>
+            <li class="lv3"><a href="#s11">2.1 Capacity price: Document 114</a></li>
+            <li class="lv3"><a href="#s12">2.2 Time-of-use reconstruction: Document 1656</a></li>
+            <li class="lv3"><a href="#s13">2.3 Ancillary services: Document 411</a></li>
+            <li class="lv3"><a href="#s14">2.4 Renewable co-located storage and Document 136</a></li>
+            <li class="lv3"><a href="#s15">2.5 Two-part tariff and demand: Documents 1583 and 500</a></li>
+            <li class="lv3"><a href="#s16">2.6 Grid connection, safety and standards</a></li>
+            <li class="lv3"><a href="#s17">2.7 Open items 2026-2027</a></li>
+            <li class="lv2"><a href="#s18">3. Input contract for investment appraisal</a></li>
+            <li class="lv3"><a href="#s19">3.1 Six project-boundary elements</a></li>
+            <li class="lv3"><a href="#s20">3.2 Technical parameters</a></li>
+            <li class="lv3"><a href="#s21">3.3 Revenue parameters</a></li>
+            <li class="lv3"><a href="#s22">3.4 Cost parameters</a></li>
+            <li class="lv3"><a href="#s23">3.5 Financial parameters</a></li>
+            <li class="lv3"><a href="#s24">3.6 Data contract template</a></li>
+            <li class="lv2"><a href="#s25">4. Revenue stacking: account for every yuan</a></li>
+            <li class="lv3"><a href="#s26">4.1 Peak-valley / spot arbitrage</a></li>
+            <li class="lv3"><a href="#s27">4.2 Spot arbitrage: from fixed spread to forecast spread</a></li>
+            <li class="lv3"><a href="#s28">4.3 Capacity price</a></li>
+            <li class="lv3"><a href="#s29">4.4 Capacity leasing</a></li>
+            <li class="lv3"><a href="#s30">4.5 Ancillary services</a></li>
+            <li class="lv3"><a href="#s31">4.6 Demand management</a></li>
+            <li class="lv3"><a href="#s32">4.7 Renewable co-located storage</a></li>
+            <li class="lv3"><a href="#s33">4.8 Stacking order and exclusivity</a></li>
+            <li class="lv3"><a href="#s34">4.9 Revenue ceiling: the physical cap</a></li>
+            <li class="lv2"><a href="#s35">5. Cost, degradation and augmentation</a></li>
+            <li class="lv3"><a href="#s36">5.1 CAPEX</a></li>
+            <li class="lv3"><a href="#s37">5.2 OPEX</a></li>
+            <li class="lv3"><a href="#s38">5.3 Charging cost and line losses</a></li>
+            <li class="lv3"><a href="#s39">5.4 Three degradation calibres</a></li>
+            <li class="lv3"><a href="#s40">5.5 Augmentation and replacement</a></li>
+            <li class="lv3"><a href="#s41">5.6 Auxiliary power and standby</a></li>
+            <li class="lv3"><a href="#s42">5.7 Cost error checklist</a></li>
+            <li class="lv2"><a href="#s43">6. Financial appraisal</a></li>
+            <li class="lv3"><a href="#s44">6.1 Cash-flow structure</a></li>
+            <li class="lv3"><a href="#s45">6.2 Metrics and traps</a></li>
+            <li class="lv3"><a href="#s46">6.3 LCOS</a></li>
+            <li class="lv3"><a href="#s47">6.4 Example A: independent storage, 100 MW/200 MWh</a></li>
+            <li class="lv3"><a href="#s48">6.5 Example B: C&amp;I behind-the-meter, 5 MW/10 MWh</a></li>
+            <li class="lv3"><a href="#s49">6.6 Example C: renewable co-located storage, 20 MW/40 MWh</a></li>
+            <li class="lv3"><a href="#s50">6.7 Sensitivities (Example A)</a></li>
+            <li class="lv3"><a href="#s51">6.8 Financing and DSCR</a></li>
+            <li class="lv3"><a href="#s52">6.9 Decision rules</a></li>
+            <li class="lv2"><a href="#s53">7. Operations: from COD to assessment</a></li>
+            <li class="lv3"><a href="#s54">7.1 Operating KPIs (GB/T 36549-2018 calibre)</a></li>
+            <li class="lv3"><a href="#s55">7.2 Bidding and dispatch</a></li>
+            <li class="lv3"><a href="#s56">7.3 Assessment and deductions</a></li>
+            <li class="lv3"><a href="#s57">7.4 Maintenance and safety</a></li>
+            <li class="lv3"><a href="#s58">7.5 Data and reporting</a></li>
+            <li class="lv3"><a href="#s59">7.6 Operational anti-patterns</a></li>
+            <li class="lv2"><a href="#s60">8. Business models and contracts</a></li>
+            <li class="lv3"><a href="#s61">8.1 Model comparison</a></li>
+            <li class="lv3"><a href="#s62">8.2 Capacity lease contract points</a></li>
+            <li class="lv3"><a href="#s63">8.3 Revenue sharing and floors</a></li>
+            <li class="lv3"><a href="#s64">8.4 Insurance and force majeure</a></li>
+            <li class="lv3"><a href="#s65">8.5 Exit and asset disposal</a></li>
+            <li class="lv2"><a href="#s66">9. Risk: identify, quantify, mitigate</a></li>
+            <li class="lv3"><a href="#s67">9.1 Price risk</a></li>
+            <li class="lv3"><a href="#s68">9.2 Policy risk</a></li>
+            <li class="lv3"><a href="#s69">9.3 Technical risk</a></li>
+            <li class="lv3"><a href="#s70">9.4 Operational risk</a></li>
+            <li class="lv3"><a href="#s71">9.5 Financing risk</a></li>
+            <li class="lv3"><a href="#s72">9.6 Contract risk</a></li>
+            <li class="lv3"><a href="#s73">9.7 Risk matrix</a></li>
+            <li class="lv3"><a href="#s74">9.8 Stress tests</a></li>
+            <li class="lv2"><a href="#s75">10. Decision checklist and red flags</a></li>
+            <li class="lv3"><a href="#s76">10.1 Twenty pre-investment questions</a></li>
+            <li class="lv3"><a href="#s77">10.2 Financial red flags</a></li>
+            <li class="lv3"><a href="#s78">10.3 Technical red flags</a></li>
+            <li class="lv3"><a href="#s79">10.4 Contract red flags</a></li>
+            <li class="lv3"><a href="#s80">10.5 Operational red flags</a></li>
+            <li class="lv2"><a href="#s81">11. Key formulas and code mapping</a></li>
+            <li class="lv2"><a href="#s82">12. Glossary (Chinese-English)</a></li>
+            <li class="lv2"><a href="#s83">13. Reference implementation and self-test</a></li>
+            <li class="lv2"><a href="#s84">14. Expert reasoning handbook</a></li>
+            <li class="lv3"><a href="#s85">14.1 "Can this 100 MW/200 MWh independent storage be invested in?"</a></li>
+            <li class="lv3"><a href="#s86">14.2 "Our province cancelled the fixed peak-valley spread. Can the old model still be used?"</a></li>
+            <li class="lv3"><a href="#s87">14.3 "The co-located project has curtailment, so is it surely profitable?"</a></li>
+            <li class="lv3"><a href="#s88">14.4 "Frequency-regulation revenue is high. Can all the power be used for regulation?"</a></li>
+            <li class="lv3"><a href="#s89">14.5 "Operating data looks normal. Why is money deducted at year-end?"</a></li>
+            <li class="lv2"><a href="#s90">15. Sources, maintenance and division of labour</a></li>
+            <li class="lv3"><a href="#s91">15.1 Methods and standards sources</a></li>
+            <li class="lv3"><a href="#s92">15.2 Data and verification entry points</a></li>
+            <li class="lv3"><a href="#s93">15.3 Maintenance artefacts</a></li>
+            <li class="lv3"><a href="#s94">15.4 Division of labour with sister skills</a></li>
+            <li class="lv3"><a href="#s95">15.5 Maintenance cadence</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="79">展开 79 个小节</button>
+  </aside>
+</div>
+
+<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<script src="../assets/doc.js"></script>
+<script src="../assets/theme.js"></script>
+</body>
+</html>

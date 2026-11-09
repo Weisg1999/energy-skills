@@ -2,6 +2,16 @@
 
 本文件记录 energy-skills 的版本变更，按时间倒序。当前版本 **v1.9**，数据截止 **2026-11-09**。仓库入口见 [README.md](README.md)，英文版见 [CHANGELOG_EN.md](CHANGELOG_EN.md)。
 
+### 2026-11-09（v1.9 维护：技能卡片接入 HTML 阅读页并支持 TXT 下载）
+
+- **技能阅读页**：知识中心首页的 9 个技能入口（顶部 chips 与底部卡片）不再跳转 `skills/*/SKILL.md` 原始 Markdown，改为 18 个生成式阅读页——每个技能中英各一页（`skill-<slug>.html` / `skill-<slug>-en.html`），由 `scripts/build-knowledge-html.mjs` 读取 `SKILL.md` / `SKILL_EN.md` 正文生成，与知识模块共用同一套版式、侧栏与深浅主题。
+- **不改技能文件**：两份 SKILL 的 frontmatter 仍只有 `name` 与 `description`，技能目录可直接安装；标题、摘要、标签与顺序由 `scripts/knowledge.config.mjs` 新增的 `skillDocs`（9 项）提供，构建时校验其数量与 `site.skills` 一致。
+- **链接重写**：技能页内指向知识模块的 `../../knowledge/*.md` 改写为同目录 `*.html`；技能之间的 `../<slug>/SKILL.md` 改写为对应技能阅读页；`SKILL_EN.md` 指向该技能英文页；页头提供 English / 中文 切换，另保留"查看原文"指向仓库中的 Markdown。
+- **TXT 下载**：每个技能页新增"下载 TXT"按钮，内容为该技能完整 Markdown（含 frontmatter），共 18 个文件输出到 `knowledge/html/download/skills/skill-<slug>[-en].txt`（下载文件名形如 `电力交易专家-SKILL.txt`）；英文页按钮与提示文案同步为英文。
+- **导航与校验**：侧栏新增"配套技能"分区（15 / SKILLS，仅列中文页，英文页经语言切换进入），技能页的上一页/下一页只在技能目录内循环；`--check` 在 46 个知识页之外，另校验 18 个技能页与 18 个 TXT 是否为最新、是否残留无对应源的旧文件。
+- **首页与文档**：`knowledge/index.template.html` 的 chips 与卡片改指 `html/skill-*.html`，技能区加 `id="skills"`，说明文字改为"每个技能都有 HTML 阅读页与 TXT 下载"；README / README_EN 的"直接阅读"与目录树同步为 46 个知识页 + 18 个技能页与 `download/skills/` 下 18 个 TXT。
+- **计数不变**：46 个模块 / 16,745 行 / 69 个 Markdown 不变；生成物为 46 个知识阅读页 + 18 个技能阅读页 + 18 个 TXT。构建、`--check` 与一致性检查通过，英文页下载按钮与语言切换已在浏览器实测。
+
 ### 2026-11-09（v1.9 维护：补齐储能、电价与 VPP 三个核心模块）
 
 - **储能投资与运营补齐投决层**：[储能投资与运营](knowledge/储能投资与运营-2026-11.md)第 4 章扩为"参数、算例与敏感性"，新增 100 MW/200 MWh 全量投决算例（CAPEX 20,000 万元、年收入 3,656.9 万元、税后现金流 2,701.0 万元、NPV@8% 3,119.4 万元、IRR 10.47%、回收期 7.40 年、LCOS 742.24/458.15 元/MWh、DSCR 1.53），另加收入堆叠与三维占用、退化/质保/增容的现金流处理、O&M 与消防并网合规成本（0.3 MW 辅电年 131 万元）、10 情景敏感性，以及 5 MW/10 MWh 与 20 MW/40 MWh 两个对照算例；所有数字与储能技能一致。

@@ -155,6 +155,10 @@ h1.doc-title{
 .doc-meta span{display:inline-flex;align-items:center;gap:5px}
 .doc-meta span::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--line-strong)}
 .doc-meta span:first-child::before{display:none}
+.doc-actions{margin:14px 0 0;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.dl-btn{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;line-height:1;padding:8px 13px;border-radius:7px;border:1px solid var(--accent);background:var(--card);color:var(--accent)}
+.dl-btn:hover{background:var(--accent);color:var(--card);text-decoration:none}
+.doc-actions span{font-size:11px;color:var(--muted)}
 
 /* 正文 */
 .prose{max-width:74em;font-variant-numeric:tabular-nums}

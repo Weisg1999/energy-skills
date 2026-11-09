@@ -101,6 +101,94 @@ export const sections = [
   },
 ];
 
+/**
+ * 配套技能：只登记展示信息，SKILL.md 自身 frontmatter 保持不动，
+ * 以免破坏技能包格式。构建时按中英两份文件各生成一个阅读页。
+ */
+export const skillDocs = [
+  {
+    slug: 'electricity-trading-expert',
+    title: '电力交易专家',
+    titleEn: 'Electricity Trading Expert',
+    summary: '现货报价、结算、风险与市场分析',
+    summaryEn: 'Spot bidding, settlement, risk and market analysis',
+    tags: ['技能', '现货', '结算', '风控'],
+    tagsEn: ['skill', 'spot', 'settlement', 'risk'],
+  },
+  {
+    slug: 'virtual-power-plant',
+    title: '虚拟电厂专家',
+    titleEn: 'Virtual Power Plant Expert',
+    summary: '聚合、响应、市场参与与运营',
+    summaryEn: 'Aggregation, demand response, market participation and operations',
+    tags: ['技能', 'VPP', '聚合', '商业模式'],
+    tagsEn: ['skill', 'VPP', 'aggregation', 'business model'],
+  },
+  {
+    slug: 'carbon-asset-expert',
+    title: '碳资产管理专家',
+    titleEn: 'Carbon Asset Management Expert',
+    summary: '履约、CCER、碳足迹与碳金融',
+    summaryEn: 'Compliance, CCER, carbon footprint and carbon finance',
+    tags: ['技能', '履约', 'CCER', 'CBAM'],
+    tagsEn: ['skill', 'compliance', 'CCER', 'CBAM'],
+  },
+  {
+    slug: 'storage-investment-operations',
+    title: '储能投资与运营',
+    titleEn: 'Storage Investment & Operations',
+    summary: '收益堆叠、投决、退化与考核',
+    summaryEn: 'Revenue stacking, investment decisions, degradation and assessment',
+    tags: ['技能', '储能', '投决', 'LCOS'],
+    tagsEn: ['skill', 'storage', 'investment', 'LCOS'],
+  },
+  {
+    slug: 'renewable-project-development',
+    title: '新能源开发与并网',
+    titleEn: 'Renewable Project Development & Grid Connection',
+    summary: '资源、LCOE、机制电价与并网',
+    summaryEn: 'Resources, LCOE, mechanism pricing and grid connection',
+    tags: ['技能', '新能源', 'LCOE', '并网'],
+    tagsEn: ['skill', 'renewables', 'LCOE', 'grid'],
+  },
+  {
+    slug: 'spot-bidding-quant',
+    title: '现货报价量化',
+    titleEn: 'Spot Bidding Quant',
+    summary: '预测、报价、仿真与回测',
+    summaryEn: 'Forecasting, bidding, simulation and backtesting',
+    tags: ['技能', '预测', '报价', '回测'],
+    tagsEn: ['skill', 'forecast', 'bidding', 'backtest'],
+  },
+  {
+    slug: 'ems-dispatch',
+    title: 'EMS 优化调度',
+    titleEn: 'EMS Dispatch',
+    summary: '96 点调度、SOC、需量与可交付性',
+    summaryEn: '96-interval dispatch, SOC, demand charges and deliverability',
+    tags: ['技能', 'EMS', 'SOC', '需量'],
+    tagsEn: ['skill', 'EMS', 'SOC', 'demand charge'],
+  },
+  {
+    slug: 'tariff-bill-optimization',
+    title: '电价与电费优化',
+    titleEn: 'Tariff & Bill Optimization',
+    summary: '账单科目、基本电费、分时与套餐比价',
+    summaryEn: 'Bill line items, demand charges, TOU and package comparison',
+    tags: ['技能', '电费', '两部制', '套餐'],
+    tagsEn: ['skill', 'tariff', 'two-part', 'packages'],
+  },
+  {
+    slug: 'retail-electricity-risk',
+    title: '售电零售与风险',
+    titleEn: 'Retail Electricity Sales & Risk',
+    summary: '套餐定价、客户组合、偏差与保函',
+    summaryEn: 'Package pricing, customer portfolio, deviation and guarantees',
+    tags: ['技能', '零售', '偏差', '保函'],
+    tagsEn: ['skill', 'retail', 'deviation', 'guarantee'],
+  },
+].map((item, i) => ({ ...item, order: i + 1 }));
+
 /** 侧栏顺序与计数来源：total / section / 固定数字。 */
 export const nav = [
   { href: '#top', n: '00', label: '总览', count: 'total' },
