@@ -10,11 +10,12 @@
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
+<link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/knowledge.css">
 </head>
 <body data-cat="skill" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress"></div>
+<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -75,7 +76,7 @@
       <p class="lede">Forecasting, bidding, simulation and backtesting</p>
       <p class="hook">Executable workflow and tools; synced with SKILL.md.</p>
       <div class="tags"><span class="tag">skill</span><span class="tag">forecast</span><span class="tag">bidding</span><span class="tag">backtest</span></div>
-      <div class="doc-meta"><span>506 行</span><span>约 33.5k 字</span><span>阅读约 29 分钟</span><span>16 节</span></div>
+      <div class="doc-meta"><span>约 33.5k 字</span><span>阅读约 29 分钟</span><span>16 节</span></div>
       <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-spot-bidding-quant-en.txt" download="Spot Bidding Quant-SKILL.txt">Download TXT</a><span>Full skill document, about 39 KB, frontmatter included</span></p>
     </header>
 

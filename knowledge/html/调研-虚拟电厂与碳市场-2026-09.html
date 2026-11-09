@@ -10,11 +10,12 @@
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
+<link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/knowledge.css">
 </head>
 <body data-cat="research" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress"></div>
+<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -74,7 +75,7 @@
       <p class="lede">VPP 与碳市场的事实核对、开源数据清单、交叉应用与术语速查。</p>
       <p class="hook">2026-09 · 含事实核对清单</p>
       <div class="tags"><span class="tag">VPP</span><span class="tag">碳市场</span><span class="tag">开源数据</span></div>
-      <div class="doc-meta"><span>308 行</span><span>约 17.8k 字</span><span>阅读约 28 分钟</span><span>6 节</span><span>数据截止 2026-09</span></div>
+      <div class="doc-meta"><span>约 17.8k 字</span><span>阅读约 28 分钟</span><span>6 节</span><span>数据截止 2026-09</span></div>
     </header>
 
     <details class="toc-mobile">

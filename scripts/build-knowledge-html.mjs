@@ -22,6 +22,7 @@ const knowledgeDir = join(root, 'knowledge');
 const htmlDir = join(knowledgeDir, 'html');
 const indexPath = join(knowledgeDir, 'index.html');
 const templatePath = join(knowledgeDir, 'index.template.html');
+const tokensPath = join(knowledgeDir, 'assets', 'tokens.css');
 const checkMode = process.argv.includes('--check');
 const rewriteIndex = !process.argv.includes('--no-index') && !checkMode;
 
@@ -605,12 +606,13 @@ function renderSidebarNav() {
 function renderCard(doc) {
   const href = `html/${doc.html}`;
   const search = [doc.search, ...doc.tags.filter((t) => !String(doc.search || '').includes(t))].filter(Boolean).join(' ');
+  const minutes = readingTime(doc.raw || doc.body || '');
   return `          <article class="card" id="${esc(doc.id)}" data-type="${esc(doc.level)}" data-search="${esc(search)}">
-            <div class="card-top"><span class="kind">${esc(doc.kind)}</span><span class="lines">${fmt(doc.lines)} 行</span></div>
-            <h3><a href="${href}">${esc(doc.title)}</a></h3>
+            <div class="card-top"><span class="kind">${esc(doc.kind)}</span><span class="card-meta">阅读约 ${minutes} 分钟</span></div>
+            <h3><a class="card-link" href="${href}">${esc(doc.title)}</a></h3>
             <p>${esc(doc.summary)}</p>
             <div class="tags">${doc.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join('')}</div>
-            <div class="card-foot"><span>${esc(doc.foot)}</span><a href="${href}">进入模块 →</a></div>
+            <div class="card-foot"><span>${esc(doc.foot)}</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
           </article>`;
 }
 
@@ -636,12 +638,15 @@ ${mods.map(renderCard).join('\n')}
 }
 
 function renderIndex() {
-  const template = readFileSync(templatePath, 'utf8').replace(/\r\n?/g, '\n');
+  const tokensCss = readFileSync(tokensPath, 'utf8').trim();
+  const template = readFileSync(templatePath, 'utf8')
+    .replace(/\r\n?/g, '\n')
+    .replace('/* @@TOKENS@@ */', tokensCss);
   const tokens = {
     metaDescription: `energy-skills 知识库总览：${total} 个模块，覆盖${site.coverage}。数据截止 ${cutoff}。`,
-    brandLine: `${total} 个模块 · ${fmt(totalLines)} 行<br>数据截止 ${cutoff}`,
+    brandLine: `${total} 个模块<br>数据截止 ${cutoff}`,
     sidebarNav: renderSidebarNav(),
-    heroEyebrow: `Knowledge Hub · ${cutoff} · ${total} 模块 / ${fmt(totalLines)} 行`,
+    heroEyebrow: `Knowledge Hub · ${cutoff} · ${total} 模块`,
     heroLede: `把 ${total} 份主题笔记、政策索引与调研底稿，收进一张可检索、可跳转的知识地图。每个模块都有对应的 HTML 阅读页，文字与数字取自 Markdown 原文。`,
     heroStats: `
               <div class="stat"><b>${total}</b><span>知识模块</span></div>
@@ -651,7 +656,7 @@ function renderIndex() {
             `,
     resultDefault: `${total} / ${total} 个模块`,
     moduleSections: renderModuleSections(),
-    footerLine: `数据截止 ${cutoff} · ${total} 个模块 / ${fmt(totalLines)} 行 · ${cnNum(site.skills)}项技能`,
+    footerLine: `数据截止 ${cutoff} · ${total} 个模块 · ${cnNum(site.skills)}项技能`,
   };
   let out = template;
   for (const [key, value] of Object.entries(tokens)) {
@@ -730,7 +735,6 @@ function buildPage(doc) {
     </section>` : '';
 
   const meta = [
-    `<span>${fmt(doc.lines)} 行</span>`,
     `<span>约 ${chars}k 字</span>`,
     `<span>阅读约 ${minutes} 分钟</span>`,
     `<span>${toc.length} 节</span>`,
@@ -749,11 +753,12 @@ function buildPage(doc) {
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
+<link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/knowledge.css">
 </head>
 <body data-cat="${esc(sec.cat)}" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress"></div>
+<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 <div class="scrim"></div>
 
 <header class="topbar">

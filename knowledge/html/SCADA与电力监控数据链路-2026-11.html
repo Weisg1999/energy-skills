@@ -10,11 +10,12 @@
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
+<link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/knowledge.css">
 </head>
 <body data-cat="storage" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress"></div>
+<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -69,7 +70,7 @@
       <p class="lede">从 VPP/EMS 的数据底座出发，拆解点表与四遥、104/61850/Modbus/MQTT、边缘与云端两种部署形态、采集频率与时延、时钟同步、历史库、告警、冗余和电力监控安全防护。</p>
       <p class="hook">VPP/EMS 的数据底座</p>
       <div class="tags"><span class="tag">SCADA</span><span class="tag">点表</span><span class="tag">IEC 104</span><span class="tag">IEC 61850</span><span class="tag">MQTT</span><span class="tag">数据链路</span><span class="tag">云边协同</span></div>
-      <div class="doc-meta"><span>1,183 行</span><span>约 26.1k 字</span><span>阅读约 45 分钟</span><span>16 节</span><span>数据截止 2026-11-09</span></div>
+      <div class="doc-meta"><span>约 26.1k 字</span><span>阅读约 45 分钟</span><span>16 节</span><span>数据截止 2026-11-09</span></div>
     </header>
 
     <details class="toc-mobile">

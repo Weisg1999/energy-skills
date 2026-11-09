@@ -10,11 +10,12 @@
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
+<link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/knowledge.css">
 </head>
 <body data-cat="vpp" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress"></div>
+<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -67,7 +68,7 @@
       <p class="lede">从资源盘点、准入接入、云边控制到市场参与、结算分成与项目测算，补齐 2026 年 VPP 主线。</p>
       <p class="hook">2026-11 · 聚合、调度与商业模式</p>
       <div class="tags"><span class="tag">VPP 聚合</span><span class="tag">准入接入</span><span class="tag">收益堆叠</span><span class="tag">省级门槛</span></div>
-      <div class="doc-meta"><span>758 行</span><span>约 16.8k 字</span><span>阅读约 31 分钟</span><span>15 节</span><span>数据截止 2026-11-09</span></div>
+      <div class="doc-meta"><span>约 16.8k 字</span><span>阅读约 31 分钟</span><span>15 节</span><span>数据截止 2026-11-09</span></div>
     </header>
 
     <details class="toc-mobile">

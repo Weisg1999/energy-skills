@@ -11,7 +11,11 @@
     var doc = document.documentElement;
     var max = doc.scrollHeight - doc.clientHeight;
     var y = doc.scrollTop || body.scrollTop || 0;
-    if (bar) bar.style.width = (max > 0 ? (y / max) * 100 : 0).toFixed(2) + '%';
+    var pct = max > 0 ? Math.min(100, Math.max(0, (y / max) * 100)) : 0;
+    if (bar) {
+      bar.style.width = pct.toFixed(2) + '%';
+      bar.setAttribute('aria-valuenow', String(Math.round(pct)));
+    }
     if (topbar) topbar.classList.toggle('scrolled', y > 8);
     if (toTop) toTop.classList.toggle('show', y > 600);
   }
@@ -27,24 +31,70 @@
 
   var nav = document.getElementById('nav');
   var firstNavLink = nav ? nav.querySelector('a') : null;
+  var navOpen = false;
+  var inertTargets = Array.prototype.slice.call(document.querySelectorAll('.main,.toc'));
+
+  function navFocusables() {
+    if (!nav) return [];
+    return Array.prototype.slice.call(nav.querySelectorAll('a[href],button:not([disabled])'))
+      .filter(function (el) { return el.offsetParent !== null; });
+  }
+  function setBackgroundInert(on) {
+    inertTargets.forEach(function (el) {
+      if (on) el.setAttribute('inert', '');
+      else el.removeAttribute('inert');
+    });
+  }
   function closeNav() {
+    if (!navOpen) return;
+    navOpen = false;
     body.classList.remove('nav-open');
+    setBackgroundInert(false);
     if (toggle) toggle.setAttribute('aria-expanded', 'false');
     if (nav && nav.contains(document.activeElement) && toggle) toggle.focus();
   }
   function openNav() {
+    navOpen = true;
     body.classList.add('nav-open');
+    setBackgroundInert(true);
     if (toggle) toggle.setAttribute('aria-expanded', 'true');
     if (firstNavLink) firstNavLink.focus();
   }
   if (toggle) {
     toggle.addEventListener('click', function () {
-      if (body.classList.contains('nav-open')) closeNav();
+      if (navOpen) closeNav();
       else openNav();
     });
   }
   if (scrim) scrim.addEventListener('click', closeNav);
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeNav(); });
+  if (nav) {
+    nav.addEventListener('click', function (e) {
+      var link = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+      if (link && navOpen) closeNav();
+    });
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { closeNav(); return; }
+    if (e.key !== 'Tab' || !navOpen || !nav) return;
+    var items = navFocusables();
+    if (!items.length) return;
+    var first = items[0];
+    var last = items[items.length - 1];
+    if (!nav.contains(document.activeElement)) {
+      e.preventDefault();
+      first.focus();
+    } else if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
+  var wide = window.matchMedia('(min-width: 901px)');
+  var onWide = function (e) { if (e.matches) closeNav(); };
+  if (wide.addEventListener) wide.addEventListener('change', onWide);
+  else if (wide.addListener) wide.addListener(onWide);
 
   var tocBox = document.querySelector('.toc');
   var tocMore = document.querySelector('.toc-more');
@@ -65,9 +115,7 @@
       var el = document.getElementById(a.getAttribute('href').slice(1));
       if (el) { map[el.id] = a.parentNode; targets.push(el); }
     });
-    var visible = {};
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { visible[en.target.id] = en.isIntersecting; });
+    var io = new IntersectionObserver(function () {
       var current = null;
       for (var i = 0; i < targets.length; i += 1) {
         var r = targets[i].getBoundingClientRect();

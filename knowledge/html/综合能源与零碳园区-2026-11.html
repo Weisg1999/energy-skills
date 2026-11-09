@@ -10,11 +10,12 @@
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
+<link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/knowledge.css">
 </head>
 <body data-cat="park" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress"></div>
+<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -65,7 +66,7 @@
       <p class="lede">910/1082/国发 22/650/688/1192 号，园区评价、绿电直连门槛、源荷匹配与算例。</p>
       <p class="hook">政策、门槛与测算底稿</p>
       <div class="tags"><span class="tag">52 个首批园区</span><span class="tag">60 · 30 · 35 · 20</span><span class="tag">临界 LCOE 0.267</span></div>
-      <div class="doc-meta"><span>461 行</span><span>约 12.7k 字</span><span>阅读约 23 分钟</span><span>13 节</span><span>数据截止 2026-11-01</span></div>
+      <div class="doc-meta"><span>约 12.7k 字</span><span>阅读约 23 分钟</span><span>13 节</span><span>数据截止 2026-11-01</span></div>
     </header>
 
     <details class="toc-mobile">

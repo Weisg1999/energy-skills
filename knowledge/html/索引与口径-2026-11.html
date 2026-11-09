@@ -10,11 +10,12 @@
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
+<link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/knowledge.css">
 </head>
 <body data-cat="index" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress"></div>
+<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -70,7 +71,7 @@
       <p class="lede">政策文号索引、计算口径字典、来源分级、观察清单与跨技能归属边界。</p>
       <p class="hook">这个文号是什么状态、这个数字能不能信</p>
       <div class="tags"><span class="tag">文号索引</span><span class="tag">口径字典</span><span class="tag">A / B / C / D</span></div>
-      <div class="doc-meta"><span>241 行</span><span>约 20.0k 字</span><span>阅读约 37 分钟</span><span>5 节</span><span>数据截止 2026-11-08</span></div>
+      <div class="doc-meta"><span>约 20.0k 字</span><span>阅读约 37 分钟</span><span>5 节</span><span>数据截止 2026-11-08</span></div>
     </header>
 
     <details class="toc-mobile">

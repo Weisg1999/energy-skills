@@ -10,11 +10,12 @@
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
+<link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/knowledge.css">
 </head>
 <body data-cat="spot" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress"></div>
+<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -71,7 +72,7 @@
       <p class="lede">四层市场、省间中长期与现货、南方与长三角区域市场、跨经营区与输电权，附落地成本算例。</p>
       <p class="hook">2026-11 · 规则与价格总表</p>
       <div class="tags"><span class="tag">13,037 亿kWh</span><span class="tag">落地成本</span><span class="tag">输电权</span></div>
-      <div class="doc-meta"><span>683 行</span><span>约 23.3k 字</span><span>阅读约 44 分钟</span><span>14 节</span><span>数据截止 2026-11-01</span></div>
+      <div class="doc-meta"><span>约 23.3k 字</span><span>阅读约 44 分钟</span><span>14 节</span><span>数据截止 2026-11-01</span></div>
     </header>
 
     <details class="toc-mobile">

@@ -10,11 +10,12 @@
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
+<link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/knowledge.css">
 </head>
 <body data-cat="research" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress"></div>
+<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -74,7 +75,7 @@
       <p class="lede">参与侧与运营侧厂商的公开信息、专利与技术路线，提炼设计取舍；不构成厂商评价。</p>
       <p class="hook">2026-11 · 公开信息</p>
       <div class="tags"><span class="tag">专利</span><span class="tag">参与侧</span><span class="tag">运营侧</span></div>
-      <div class="doc-meta"><span>81 行</span><span>约 3.4k 字</span><span>阅读约 6 分钟</span><span>6 节</span><span>数据截止 2026-11</span></div>
+      <div class="doc-meta"><span>约 3.4k 字</span><span>阅读约 6 分钟</span><span>6 节</span><span>数据截止 2026-11</span></div>
     </header>
 
     <details class="toc-mobile">

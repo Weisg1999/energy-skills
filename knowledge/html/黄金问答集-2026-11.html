@@ -10,11 +10,12 @@
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
+<link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/knowledge.css">
 </head>
 <body data-cat="index" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress"></div>
+<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -70,7 +71,7 @@
       <p class="lede">28 个高频问答，覆盖市场、新能源、碳、零售、VPP 与国际工具，兼回归测试。</p>
       <p class="hook">检验回答是否跑偏</p>
       <div class="tags"><span class="tag">28 问</span><span class="tag">回归测试</span><span class="tag">口径纪律</span></div>
-      <div class="doc-meta"><span>169 行</span><span>约 7.4k 字</span><span>阅读约 13 分钟</span><span>6 节</span><span>数据截止 2026-11</span></div>
+      <div class="doc-meta"><span>约 7.4k 字</span><span>阅读约 13 分钟</span><span>6 节</span><span>数据截止 2026-11</span></div>
     </header>
 
     <details class="toc-mobile">

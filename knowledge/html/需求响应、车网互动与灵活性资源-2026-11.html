@@ -10,11 +10,12 @@
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
+<link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/knowledge.css">
 </head>
 <body data-cat="vpp" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress"></div>
+<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -67,7 +68,7 @@
       <p class="lede">从资源盘点、基线认定到考核结算，补齐 DR 产品体系与 V2G 参与市场的空白。</p>
       <p class="hook">2026-11 · 资源与机制</p>
       <div class="tags"><span class="tag">基线认定</span><span class="tag">V2G</span><span class="tag">考核结算</span></div>
-      <div class="doc-meta"><span>1,000 行</span><span>约 26.6k 字</span><span>阅读约 46 分钟</span><span>14 节</span><span>数据截止 2026-11-08</span></div>
+      <div class="doc-meta"><span>约 26.6k 字</span><span>阅读约 46 分钟</span><span>14 节</span><span>数据截止 2026-11-08</span></div>
     </header>
 
     <details class="toc-mobile">

@@ -10,11 +10,12 @@
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
+<link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/knowledge.css">
 </head>
 <body data-cat="foundation" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress"></div>
+<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -69,7 +70,7 @@
       <p class="lede">从 1985 集资办电到 2015 九号文，再到全国统一市场，每轮改革写清目的、影响与遗留。</p>
       <p class="hook">四十多年改了什么，为什么还没改完</p>
       <div class="tags"><span class="tag">1985 集资办电</span><span class="tag">2002 厂网分开</span><span class="tag">2015 九号文</span></div>
-      <div class="doc-meta"><span>185 行</span><span>约 4.9k 字</span><span>阅读约 9 分钟</span><span>12 节</span><span>数据截止 2026-11-01</span></div>
+      <div class="doc-meta"><span>约 4.9k 字</span><span>阅读约 9 分钟</span><span>12 节</span><span>数据截止 2026-11-01</span></div>
     </header>
 
     <details class="toc-mobile">

@@ -10,11 +10,12 @@
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
+<link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/knowledge.css">
 </head>
 <body data-cat="index" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress"></div>
+<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -70,7 +71,7 @@
       <p class="lede">知识库已引用的省级电力、储能与虚拟电厂文件，按主题分组、按状态筛选，点击直达省级官网原文页。</p>
       <p class="hook">这个省级文件在哪、是否已施行</p>
       <div class="tags"><span class="tag">政策索引</span><span class="tag">省级</span><span class="tag">官方原文</span><span class="tag">文号</span><span class="tag">状态</span></div>
-      <div class="doc-meta"><span>61 行</span><span>约 3.9k 字</span><span>阅读约 6 分钟</span><span>7 节</span><span>数据截止 2026-11-08</span></div>
+      <div class="doc-meta"><span>约 3.9k 字</span><span>阅读约 6 分钟</span><span>7 节</span><span>数据截止 2026-11-08</span></div>
     </header>
 
     <details class="toc-mobile">

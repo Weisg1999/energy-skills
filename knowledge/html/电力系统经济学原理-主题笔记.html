@@ -10,11 +10,12 @@
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
+<link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/knowledge.css">
 </head>
 <body data-cat="foundation" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress"></div>
+<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -69,7 +70,7 @@
       <p class="lede">市场结构、供需与福利、现货与金融工具、市场力、辅助服务、阻塞与节点定价。</p>
       <p class="hook">Kirschen &amp; Strbac · 朱治中译</p>
       <div class="tags"><span class="tag">SMP / ZMP / LMP</span><span class="tag">市场力</span><span class="tag">输电权</span></div>
-      <div class="doc-meta"><span>134 行</span><span>约 9.3k 字</span><span>阅读约 17 分钟</span><span>9 节</span></div>
+      <div class="doc-meta"><span>约 9.3k 字</span><span>阅读约 17 分钟</span><span>9 节</span></div>
     </header>
 
     <details class="toc-mobile">

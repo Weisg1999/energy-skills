@@ -10,11 +10,12 @@
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
+<link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/knowledge.css">
 </head>
 <body data-cat="skill" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress"></div>
+<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -75,7 +76,7 @@
       <p class="lede">资源、LCOE、机制电价与并网</p>
       <p class="hook">可执行流程与配套工具；正文与 SKILL.md 同步。</p>
       <div class="tags"><span class="tag">技能</span><span class="tag">新能源</span><span class="tag">LCOE</span><span class="tag">并网</span></div>
-      <div class="doc-meta"><span>890 行</span><span>约 20.2k 字</span><span>阅读约 34 分钟</span><span>16 节</span><span>数据截止 2026-11-01</span></div>
+      <div class="doc-meta"><span>约 20.2k 字</span><span>阅读约 34 分钟</span><span>16 节</span><span>数据截止 2026-11-01</span></div>
       <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-renewable-project-development.txt" download="新能源开发与并网-SKILL.txt">下载 TXT</a><span>完整技能文档，约 24 KB，含 frontmatter</span></p>
     </header>
 

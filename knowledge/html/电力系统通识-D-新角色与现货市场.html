@@ -10,11 +10,12 @@
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
+<link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/knowledge.css">
 </head>
 <body data-cat="foundation" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress"></div>
+<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -69,7 +70,7 @@
       <p class="lede">现货、高比例风光、储能/构网型、VPP 与系统成本，用 2026 年装机与市场数据解释新角色如何改变系统运行。</p>
       <p class="hook">风光储怎么改变电力系统</p>
       <div class="tags"><span class="tag">边际定价</span><span class="tag">负电价</span><span class="tag">2026 装机</span></div>
-      <div class="doc-meta"><span>207 行</span><span>约 5.0k 字</span><span>阅读约 10 分钟</span><span>10 节</span><span>数据截止 2026-11-09</span></div>
+      <div class="doc-meta"><span>约 5.0k 字</span><span>阅读约 10 分钟</span><span>10 节</span><span>数据截止 2026-11-09</span></div>
     </header>
 
     <details class="toc-mobile">

@@ -10,11 +10,12 @@
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
+<link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/knowledge.css">
 </head>
 <body data-cat="price" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress"></div>
+<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -68,7 +69,7 @@
       <p class="lede">五个阶段回答谁定价、按什么形式定价、成本怎么疏导、留下什么问题。</p>
       <p class="hook">从一厂一价到市场定价</p>
       <div class="tags"><span class="tag">5 阶段</span><span class="tag">1439 号</span><span class="tag">交叉补贴</span></div>
-      <div class="doc-meta"><span>217 行</span><span>约 6.4k 字</span><span>阅读约 12 分钟</span><span>11 节</span><span>数据截止 2026-11-01</span></div>
+      <div class="doc-meta"><span>约 6.4k 字</span><span>阅读约 12 分钟</span><span>11 节</span><span>数据截止 2026-11-01</span></div>
     </header>
 
     <details class="toc-mobile">
