@@ -241,6 +241,8 @@ mark.hit{background:var(--amber-soft);color:inherit;border-radius:2px;padding:0 
 .fact b{color:var(--teal)}
 
 .market-flow,.assess-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin:16px 0 14px}
+.market-flow.six{grid-template-columns:repeat(6,1fr)}
+.market-flow.eight{grid-template-columns:repeat(4,1fr)}
 .mf-step,.af-step{position:relative;padding:11px 11px 10px;border:1px solid var(--line);border-radius:9px;background:var(--paper)}
 .mf-step:not(:last-child)::after,.af-step:not(:last-child)::after{content:"→";position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:var(--fs-xs);color:var(--line-strong);background:var(--card);z-index:2;line-height:1}
 .mf-t{display:block;font:600 var(--fs-2xs)/1.4 var(--mono);letter-spacing:.07em;color:var(--teal);margin-bottom:3px;text-transform:uppercase}
@@ -395,7 +397,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   .panel.wide{grid-column:auto}
   .price-chain{grid-template-columns:1fr;gap:7px}
   .pc-arrow{height:16px;transform:rotate(90deg)}
-  .market-flow,.assess-flow{grid-template-columns:1fr 1fr}
+  .market-flow,.assess-flow,.market-flow.six,.market-flow.eight{grid-template-columns:1fr 1fr}
   .mf-step:not(:last-child)::after,.af-step:not(:last-child)::after{display:none}
   .market-grid{grid-template-columns:1fr}
   .method-grid{grid-template-columns:1fr}
@@ -424,7 +426,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   .hero-note{display:none}
   .sec-head{grid-template-columns:1fr;gap:6px}
   .sec-num{padding-top:0}
-  .market-flow,.assess-flow{grid-template-columns:1fr}
+  .market-flow,.assess-flow,.market-flow.six,.market-flow.eight{grid-template-columns:1fr}
   .carbon-chain{grid-template-columns:1fr 1fr}
   .rail{grid-template-columns:1fr}
   .map-skill{grid-template-columns:1fr;gap:6px}
@@ -599,6 +601,12 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
                   <a class="chip" href="#m-spot-practice">现货市场实务</a>
                   <a class="chip" href="#m-intl-au">澳大利亚 NEM</a>
                   <a class="chip" href="#m-intl-de">德国电力市场</a>
+                  <a class="chip" href="#m-intl-uk">英国电力市场</a>
+                  <a class="chip" href="#m-intl-it">意大利电力市场</a>
+                  <a class="chip" href="#m-intl-es">西班牙电力市场</a>
+                  <a class="chip" href="#m-intl-nl">荷兰电力市场</a>
+                  <a class="chip" href="#m-intl-pl">波兰电力市场</a>
+                  <a class="chip" href="#m-intl-benl">比利时与北欧</a>
                   <a class="chip" href="#m-intl-storage">澳德储能业务</a>
                   <a class="chip" href="#m-province">省级市场状态表</a>
                 </div>
@@ -814,7 +822,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
               <h3>从资源到并网的五道关</h3>
               <p>资源、电价、财务、并网、考核，每一关都有自己的口径。</p>
             </div>
-            <div class="market-flow" style="grid-template-columns:repeat(5,1fr)">
+            <div class="market-flow">
               <div class="mf-step"><span class="mf-t">资源</span><strong>P50 / P90</strong><small>测风 · 辐照 · 限电</small></div>
               <div class="mf-step"><span class="mf-t">电价</span><strong>机制电价</strong><small>存量 / 增量 · 竞价</small></div>
               <div class="mf-step"><span class="mf-t">测算</span><strong>LCOE / DSCR</strong><small>税前 / 税后 · 8%</small></div>
@@ -869,7 +877,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
               <h3>绿电直连的三道门槛</h3>
               <p>先看电量能否闭合，再看电价能否低过电网，最后看碳收益是不是可交易收益。</p>
             </div>
-            <div class="market-flow" style="grid-template-columns:repeat(5,1fr)">
+            <div class="market-flow">
               <div class="mf-step"><span class="mf-t">源</span><strong>风光</strong><small>可用发电量</small></div>
               <div class="mf-step"><span class="mf-t">网</span><strong>专线</strong><small>物理溯源</small></div>
               <div class="mf-step"><span class="mf-t">荷</span><strong>园区负荷</strong><small>逐时平衡</small></div>
@@ -921,28 +929,37 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
           <figure class="panel wide">
             <div class="panel-head">
               <span class="panel-kicker">专题 08 · 海外</span>
-              <h3>澳 / 德市场与储能设计对照</h3>
-              <p>一个用区域价与 5 分钟结算处理波动，一个用欧盟耦合与平衡市场消化新能源；储能在两国的收益结构也不同。</p>
+              <h3>澳 / 德 / 英 / 意 / 西 / 荷 / 波 / 比·北欧市场与储能设计对照</h3>
+              <p>八种处理波动的方式：区域价与 5 分钟结算、欧盟耦合与平衡市场、单一市场与容量市场、七区出清与 MACSE、伊比利亚双区与容量市场、单一报价区与拥堵接入、容量市场与储能补贴、CRM 与分区水电。</p>
             </div>
-            <div class="market-flow" style="grid-template-columns:repeat(5,1fr)">
+            <div class="market-flow eight">
               <div class="mf-step"><span class="mf-t">澳洲 · 出清</span><strong>5 分钟</strong><small>区域价 + 约束</small></div>
-              <div class="mf-step"><span class="mf-t">澳洲 · 辅助</span><strong>FCAS</strong><small>与能量共同优化</small></div>
-              <div class="mf-step"><span class="mf-t">澳洲 · 结算</span><strong>5MS + MLF</strong><small>周账单</small></div>
-              <div class="mf-step"><span class="mf-t">德国 · 日前</span><strong>15 分钟</strong><small>拍卖 pay-as-clear</small></div>
               <div class="mf-step"><span class="mf-t">德国 · 平衡</span><strong>FCR/aFRR/mFRR</strong><small>容量 + 能量分开</small></div>
+              <div class="mf-step"><span class="mf-t">英国 · 容量</span><strong>T-4 / T-1</strong><small>£/kW·年</small></div>
+              <div class="mf-step"><span class="mf-t">意大利 · 储能</span><strong>MACSE</strong><small>15 年容量溢价</small></div>
+              <div class="mf-step"><span class="mf-t">西班牙 · 容量</span><strong>2026 新规</strong><small>半岛系统 · pay-as-bid</small></div>
+              <div class="mf-step"><span class="mf-t">荷兰 · 接入</span><strong>无容量市场</strong><small>拥堵 / 非 firm</small></div>
+              <div class="mf-step"><span class="mf-t">波兰 · 容量</span><strong>Rynek mocy</strong><small>拍卖 + OZE + 储能补贴</small></div>
+              <div class="mf-step"><span class="mf-t">比·北欧 · 分区</span><strong>CRM / 12 区</strong><small>水电 + 负价</small></div>
             </div>
             <div class="mini-grid">
               <div class="mini"><b>澳洲价格带</b>2026-27 MPC A$23,200/MWh；CPT A$2,225,900/MWh；APC A$600/MWh。</div>
               <div class="mini"><b>德国价格带</b>日前最低 -500 €/MWh；日内最低 -9,999 €/MWh；EEG 负价归零。</div>
-              <div class="mini"><b>储能四象限</b>澳洲大储＝套利+FCAS+CIS；德国大储＝套利+平衡市场+电网费豁免；工商储主要看需量电费。</div>
+              <div class="mini"><b>英国容量价</b>T-4 2029/30 £27.10/kW·年；T-1 2026/27 £5.00/kW·年。</div>
+              <div class="mini"><b>意大利 MACSE</b>首轮 10 GWh；均价 €12,959/MWh·年；上限 €37,000/MWh·年。</div>
+              <div class="mini"><b>西班牙容量市场</b>Orden TED/966/2026；2026-09-18 生效；新投资最长 15 年；首拍待 REE。</div>
+              <div class="mini"><b>荷兰储能结构</b>无容量市场；能量 + FCR/aFRR/mFRR + 拥堵合同；SDE++ 不列独立电池。</div>
+              <div class="mini"><b>波兰容量价</b>2030 交付年 465.02 PLN/kW·年；义务 6,887.639 MW；储能补贴 41.5 亿兹罗提。</div>
+              <div class="mini"><b>比利时/北欧容量</b>CRM Y-4 4,690 MW；北欧 12 个报价区；15 分钟结算与负价并存。</div>
             </div>
             <div class="fact-row">
               <span class="fact"><b>5</b> 个 NEM 区域</span>
-              <span class="fact"><b>2031</b> 德国容量机制生效</span>
-              <span class="fact"><b>2029-08-04</b> 德国储能电网费豁免截止</span>
-              <span class="fact"><b>3</b> 份海外模块</span>
+              <span class="fact"><b>7</b> 个意大利报价区</span>
+              <span class="fact"><b>2</b> 个伊比利亚报价区</span>
+              <span class="fact"><b>12</b> 个北欧报价区</span>
+              <span class="fact"><b>8</b> 份海外模块</span>
             </div>
-            <figcaption>澳洲与德国不是“同一套市场规则的两个版本”：澳洲是能源-only + FCAS，德国是欧盟耦合 + 平衡市场 + 再调度。储能四象限的差异更大：同是 100 MW/200 MWh，澳洲靠套利+FCAS+CIS，德国靠套利+平衡市场+电网费豁免；工商储则主要看需量电费与并网规则。两国共同的坑是时区、报价区、结算口径与进场合规。图中数字的时点与级别见对应笔记。</figcaption>
+            <figcaption>澳洲、德国、英国、意大利、西班牙、荷兰、波兰与比利时/北欧不是同一套市场规则的八个版本：澳洲是能源-only + FCAS，德国是欧盟耦合 + 平衡市场 + 再调度，英国是单一市场 + 平衡机制 + 容量市场，意大利是七区出清 + MACSE 长周期拍卖，西班牙是伊比利亚双区 + 15 分钟结算 + 2026 年容量市场，荷兰是单一报价区 + 无容量市场 + 拥堵接入，波兰是容量市场 + OZE 拍卖 + 储能补贴，比利时/北欧是 CRM + 12 个报价区的水电市场。储能收益结构差异更大：同是 100 MW/200 MWh，澳洲靠套利+FCAS+CIS，德国靠套利+平衡市场+电网费豁免，英国靠套利+BM+容量市场，意大利靠 MACSE+容量市场+MSD，西班牙靠套利+辅助+容量市场（待首拍），荷兰靠套利+辅助+拥堵合同，波兰靠容量市场+储能补贴+套利，比利时/北欧靠 CRM/辅助+分区价差+水电灵活性。八国共同的坑是时区、报价区、结算口径与进场合规。图中数字的时点与级别见对应笔记。</figcaption>
           </figure>
         </div>
         </details>

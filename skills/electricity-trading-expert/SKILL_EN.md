@@ -49,7 +49,7 @@ You are a senior expert in electricity trading with the following composite back
 | How VPPs make money / demand response subsidies | Chapter 9 |
 | Carbon price / CCER / carbon audit / CBAM / GEC | Chapter 10 |
 | How retailers survive / risk control | Chapter 11 |
-| How Australia/Germany trade and how to enter | Chapter 7A |
+| How Australia/Germany/UK/Italy/Spain/Netherlands trade and how to enter | Chapter 7A |
 | Formulas / terminology / document numbers | Chapters 12~14 |
 
 ---
@@ -345,27 +345,43 @@ Market registration → market preparation → publication of trading announceme
 
 ---
 
-## 7A. Overseas Markets Quick Reference (Australia NEM / Germany)
+## 7A. Overseas Markets Quick Reference (Australia NEM / Germany / UK GB / Italy / Spain / Netherlands / Poland / Belgium & Nordics)
 
-> Chapter data cutoff: 2026-11-01. The 7A numbering avoids renumbering the existing China chapters. Coverage is limited to the Australian NEM and the German DE-LU bidding zone, not "all overseas markets". Trading is governed by local law, rules, exchange notices and contracts; this chapter is not legal, tax or investment advice.
+> Chapter data cutoff: 2026-11-10. The 7A numbering avoids renumbering the existing China chapters. Coverage is the Australian NEM, the German DE-LU bidding zone, UK GB, Italy, Spain, the Netherlands, Poland and Belgium/the Nordics, not "all overseas markets". Trading is governed by local law, rules, exchange notices and contracts; this chapter is not legal, tax or investment advice.
 
-### 7A.1 Market Selection: Two Cards
+### 7A.1 Market Selection: Six Core Cards
 
-| Dimension | Australian NEM | German DE-LU |
-|---|---|---|
-| Scope | Five regions: QLD, NSW (incl. ACT), VIC, SA, TAS | Germany + Luxembourg, one bidding zone in EU coupling |
-| Operator / rules | AEMO operates; AEMC makes rules; AER regulates | EPEX Spot trades; four TSOs balance/redispatch; BNetzA regulates |
-| Spot granularity | 5-minute dispatch + 5-minute settlement | Day-ahead/intraday 15-minute MTU; balancing energy 15 minutes |
-| Pricing | Regional prices + constraints; energy and FCAS co-optimized | Day-ahead auction pay-as-clear; intraday continuous pay-as-bid |
-| Price bounds | 2026-27 MPC A$23,200/MWh; CPT A$2,225,900/MWh; APC A$600/MWh; MFP -A$1,000/MWh | Day-ahead floor -€500/MWh; intraday floor -€9,999/MWh |
-| Ancillary services | FCAS (regulation + contingency, raise/lower) | FCR, aFRR, mFRR; capacity and energy separate |
-| Capacity | No centralized capacity market; RRO/RERT/CIS | StromVKG capacity mechanism from 2031; the 2026 auctions are reportedly not open to battery storage |
-| Renewables support | LGC/SRES, CIS, state schemes | EEG auctions + sliding market premium |
-| Congestion | Regional prices + constraints + MLF/IRLF | Single bidding zone + Redispatch 2.0 |
-| Settlement | Weekly statements; MLF/IRLF; prudential | ECC clearing + balancing-group imbalance + grid fees |
-| Entry | AEMO registration + metering + prudential (retail also needs AER authorisation) | Local entity + REMIT + balancing group + EPEX/ECC (retail also needs §5 licence) |
+| Dimension | Australian NEM | German DE-LU | UK GB | Italy | Spain | Netherlands |
+|---|---|---|---|---|---|---|
+| Scope | Five regions: QLD, NSW (incl. ACT), VIC, SA, TAS | Germany + Luxembourg, one bidding zone in EU coupling | England, Scotland, Wales; Northern Ireland excluded | Seven mainland bidding zones + cross-border virtual zones | Spain + Portugal, two bidding zones in MIBEL | One bidding zone (EPEX NL) |
+| Operator / rules | AEMO operates; AEMC makes rules; AER regulates | EPEX Spot trades; four TSOs balance/redispatch; BNetzA regulates | NESO system operation; Ofgem regulates; Elexon settles | GME exchange; Terna dispatch; ARERA regulates | OMIE market; REE dispatch/capacity; CNMC/MITECO regulate | EPEX NL trades; TenneT dispatch; ACM regulates |
+| Spot granularity | 5-minute dispatch + 5-minute settlement | Day-ahead/intraday 15-minute MTU; balancing 15 minutes | Half-hourly settlement; EPEX GB hourly + GB-30min | MGP 15-minute MTU; MI/MSD/MB layers | 15-minute MTU; 15-minute imbalance settlement | 15-minute MTU; 15-minute imbalance |
+| Pricing | Regional prices + constraints; energy/FCAS co-optimized | Day-ahead pay-as-clear; intraday pay-as-bid | Day-ahead uniform price; BM pay-as-bid | Zonal marginal prices; MSD/MB per rules | Day-ahead uniform price; intraday pay-as-bid | Day-ahead uniform price; intraday pay-as-bid |
+| Price bounds | 2026-27 MPC A$23,200/MWh; CPT A$2,225,900/MWh; APC A$600/MWh; MFP -A$1,000/MWh | Day-ahead floor -€500/MWh; intraday floor -€9,999/MWh | No administered wholesale band; CM cap £75/kW·yr | Per current GME/ARERA rules | Day-ahead -€600/+€4,000; intraday ±€9,999 | Per EPEX/EU rules; intraday floor around -€9,999/MWh |
+| Ancillary services | FCAS (regulation + contingency) | FCR, aFRR, mFRR; capacity and energy separate | DC/DM/DR, SFFR, QR/SR/BR, DFS | MSD/MB; procured by Terna | aFRR, mFRR, voltage control, black start | FCR, aFRR, mFRR; procured by TenneT |
+| Capacity | No centralized capacity market; RRO/RERT/CIS | StromVKG capacity mechanism from 2031 | T-4/T-1 capacity market, £/kW·yr | Capacity market + MACSE | 2026 capacity market, peninsular system | No capacity market (studied, not implemented) |
+| Renewables support | LGC/SRES, CIS, state schemes | EEG auctions + sliding market premium | CfD, LDES cap and floor | FER X two-way CfD | PNIEC, RD 997/2025, RDL 7/2026, auctions | SDE++ (no standalone battery category) |
+| Congestion | Regional prices + constraints + MLF/IRLF | Single zone + Redispatch 2.0 | BM + network constraints; TNUoS signal | Seven-zone spreads + MSD/redispatch | Two-zone spreads + redispatch/technical constraints | Connection queue + non-firm contracts + congestion management |
+| Settlement | Weekly statements; MLF/IRLF; prudential | ECC clearing + balancing-group imbalance + grid fees | Elexon/BSC, half-hourly; multi-run reconciliation | GME/Terna + credit support | OMIE/REE, 15 minutes; credit support | EPEX/TenneT, 15 minutes; credit support |
+| Entry | AEMO registration + metering + prudential | Local entity + REMIT + balancing group + EPEX/ECC | Entity + Ofgem licence/exemption + BSC + BMU + CM + REMIT | Entity + GME membership + Terna BRP/BSP + MACSE + REMIT | Entity + grid connection + OMIE registration + REE BRP + credit + REMIT | Entity + grid connection + EPEX + BRP + credit + REMIT |
 
-**Selection rule of thumb**: high volatility, batteries/FCAS and inter-regional spreads → NEM first; day-ahead/intraday, cross-border coupling, balancing and EEG assets → Germany first. Neither market is "register and trade": settlement, balancing responsibility and compliance are the real barriers.
+**7A.1b New Market Cards (Poland / Belgium / Nordics)**
+
+| Dimension | Poland | Belgium | Nordics |
+|---|---|---|---|
+| Scope | One Polish bidding zone | One Belgian bidding zone | 12 zones: NO1–NO5, SE1–SE4, DK1–DK2, FI |
+| Operator / rules | TGE trades; PSE dispatches; URE regulates | Belpex/EPEX trades; Elia dispatches; CREG regulates | Nord Pool trades; Statnett/SvK/Energinet/Fingrid dispatch; national regulators |
+| Spot granularity | 15-minute MTU; 15-minute imbalance | 15-minute MTU; 15-minute imbalance | 15-minute MTU; 15-minute imbalance + mFRR EAM since 2025-03-04 |
+| Pricing | Day-ahead pay-as-clear; intraday pay-as-bid | Day-ahead uniform price; intraday pay-as-bid | Day-ahead system price + zonal prices; intraday pay-as-bid |
+| Price bounds | EU SDAC/SIDC; day-ahead floor around -€500/MWh, intraday ±€9,999/MWh | Same EU SDAC/SIDC | Same EU SDAC/SIDC |
+| Ancillary services | FCR, aFRR, mFRR, RR; procured by PSE | FCR, aFRR, mFRR; procured by Elia | FCR-N/FCR-D, aFRR, mFRR; procured by national TSOs |
+| Capacity | rynek mocy auctions; 2030 delivery year PLN 465.02/kW·yr | CRM Y-4/Y-2/Y-1; Y-4 cleared 4,690 MW | Sweden effektreserv, Finland tehoreservi; no capacity market in Norway/Denmark |
+| Renewables support | OZE auctions (15-year CfD); 76.1 TWh / PLN 24.9bn in 2026 | Offshore wind CfD; no standalone battery subsidy | National auctions/CfD; Danish offshore 20-year CfD |
+| Congestion | Connection queue + cross-border capacity | Connection/permitting + interconnection | Zonal spreads + interconnectors + EPAD |
+| Settlement | TGE/IRGiT + PSE imbalance + capacity fee + OZE settlement | Belpex/Elia + CRM + grid fees | Nord Pool + national TSOs + Nasdaq financial settlement |
+| Entry | Entity + URE licence + PSE/OSD connection + TGE/IRGiT + POB + PSE prequalification + capacity registration + REMIT | Entity + Elia connection + Belpex/EPEX + BRP + CRM qualification + REMIT | Entity + TSO/DSO connection + Nord Pool membership + national BRP + prequalification + REMIT |
+
+**Selection rule of thumb**: high volatility, batteries/FCAS and inter-regional spreads → NEM first; day-ahead/intraday, cross-border coupling, balancing and EEG assets → Germany first; single market, capacity market, BM and LDES → UK first; seven-zone spreads, MACSE long-term storage auctions and FER X → Italy first; Iberian two-zone design, 15-minute settlement and a 2026 capacity market → Spain first; one bidding zone, no capacity market, congestion access and SDE++ → Netherlands first; capacity market + OZE auctions + storage grants → Poland first; CRM annuities + zonal hydro + negative prices → Belgium/Nordics first. None of the eight is "register and trade": settlement, balancing responsibility, connection and compliance are the real barriers.
 
 ### 7A.2 Australian NEM: Five Must-Knows
 
@@ -404,33 +420,160 @@ Industrial PPA saving = (spot average − PPA price) × consumption
 
 **Entry path**: German/EU entity → (retail) EnWG §5 licence → EPEX membership/broker + ECC clearing → REMIT registration → TSO balancing group (BKV) → MaStR/EEG registration → balancing-market prequalification. **Common errors**: confusing day-ahead with intraday, ignoring CET/CEST, treating FCR as an energy market, assuming the EEG surcharge still exists, treating the capacity mechanism as already operating, ignoring grid fees/§14a and REMIT.
 
-### 7A.4 The Same Question, Two Markets
+### 7A.4 UK GB: Five Must-Knows
 
-| Question | Australian NEM | German DE-LU |
-|---|---|---|
-| "What is the spot price now?" | Ask which region first; read the 5-minute dispatch price | Ask day-ahead or intraday first; read the DE-LU MTU |
-| "What is the price cap?" | 2026-27 MPC/CPT/APC, with financial year | Day-ahead/intraday floors differ; the cap is harmonised/validated by ACER |
-| "How do I lock in a price?" | ASX futures, OTC, PPAs, CfD/LTESA | EPEX day-ahead/intraday, OTC, PPAs, retail packages |
-| "How do batteries make money?" | Energy arbitrage + FCAS + CIS/state schemes | Energy arbitrage + FCR/aFRR/mFRR + capacity mechanism (from 2031) |
-| "Renewables support?" | LGC/SRES, CIS | EEG auctions + sliding premium; zero value at negative prices |
-| "How is congestion handled?" | Regional prices + constraints + MLF/IRLF | Single bidding zone + Redispatch 2.0 |
-| "How do I enter?" | AEMO registration + metering + prudential | Local entity + REMIT + balancing group + EPEX/ECC |
-| "Biggest risk?" | MLF, FCAS opportunity cost, prudential | Balancing responsibility, EEG negative prices, grid fees, REMIT |
+1. **GB is not an EU-coupled market**: it does not take part in SDAC/SIDC; day-ahead prices form in domestic auctions, cross-border volumes trade through explicit capacity auctions, and prices can diverge from neighbours.
+2. **Day-ahead means two auctions**: the EPEX GB hourly auction closes at 10:20 CET and the GB-30min auction at 16:30 CET; neither runs through EUPHEMIA coupling, and gate closure is one hour before the start of the half-hourly delivery period.
+3. **The BM is pay-as-bid**: NESO accepts bids/offers for system needs and BOALF is the settlement basis; expensive offers get skipped, with a reported skip rate around 38% in 2026.
+4. **The capacity market pays on de-rated capacity**: T-4 2029/30 cleared at £27.10/kW·yr for 40.1 GW; T-1 2026/27 at £5.00/kW·yr for 7,192 MW. Batteries can bid, but de-rating factors and delivery obligations matter.
+5. **Support tools are layered**: standalone storage generally does not take standard CfD; co-located storage needs separate metering/BMU registration; LDES uses cap and floor (minded-to on 2026-06-26 covered 16 projects, 7,645 MW); TMO4+ grid reform emphasises "ready + needed".
 
-### 7A.5 Answering Discipline for Overseas Markets
+**Three formulas**
 
-1. **Confirm market, region and time first**: for Australia ask state/region; for Germany ask day-ahead/intraday and CET/CEST. Never answer with a single "European price" or "Australian price".
-2. **Currency and units**: AUD/MWh and EUR/MWh; do not mix with CNY or CNY/kWh. If converting, state the FX date.
-3. **Time zones**: NEM is fixed AEST; Germany switches CET/CEST. Gates, settlement and reports must use one consistent clock.
-4. **Rule hierarchy**: Australia NER + AEMO procedures; Germany EnWG/StromNEV/EEG + BNetzA/EPEX rules; EU coupling rules only to the extent relevant to the trade.
-5. **Source grading**: official rules/notices A; exchange/regulator data A/B; media/reports B/C; own calculations D. Volatile figures such as capacity-mechanism costs or CIS auction results need a grade and a date.
+```
+Capacity market revenue = de-rated capacity (kW) × £/kW·yr
+BM revenue = accepted MW × offer price × instructed hours
+BSC imbalance settlement = deviation energy × imbalance price (plus credit/reconciliation)
+```
+
+**Entry path**: UK entity → Ofgem licence/exemption → BSC accession → BMU registration → CM prequalification/auction → (retail) supply licence → REMIT (remit.gb.net) → metering/MHHS. **Common errors**: treating GB as EU-coupled, using CET as UK time, assuming the BM clears at one price, using nameplate capacity for CM, expecting standard CfD for standalone storage.
+
+### 7A.5 Italy: Five Must-Knows
+
+1. **Seven bidding zones, not one price**: Nord, Centro-Nord, Centro-Sud, Sud, Calabria, Sicilia, Sardegna; PUN is a reference price, not a project's settlement price.
+2. **MGP is the main day-ahead market**: run by GME, closing 12:00 D-1, SDAC-coupled; delivery periods switch to 15-minute MTU from 2025-10-01.
+3. **MSD/MB belong to Terna**: GME runs the MGP/MI/MSD platforms, while Terna as dispatch operator procures frequency, reserve and congestion services; settlement differs from MGP.
+4. **MACSE is the storage-specific long-term mechanism**: paid in €/MWh·yr on a 15-year contract, pay-as-bid, zonal auctions, new-build only; the first auction cleared 10 GWh at an average €12,959/MWh·yr; the second offers 16 GWh on 2026-11-24; the battery cap is €37,000/MWh·yr.
+5. **Capacity market and FER X are two other tracks**: the capacity market pays for available capacity; FER X is a 20-year two-way CfD (DM 194/2026, 37.15 GW, 10 GW PV, €80/MWh reference), with NZIA-specific auctions imposing supply-chain conditions on PV above 1 MW.
+
+**Three formulas**
+
+```
+MACSE annual revenue = winning price (€/MWh·yr) × storage energy capacity (MWh)
+Capacity market revenue = available capacity (MW) × de-rating factor × capacity price (€/MW·yr)
+FER X CfD = (strike price − market price) × contracted energy
+```
+
+**Entry path**: Italian/EU entity → GME membership + credit support → Terna BRP/BSP registration + dispatch contract → grid connection agreement → MACSE qualification/guarantees → REMIT (MERIT/ARERA/GME rules) → (generation) FER X/NZIA. **Common errors**: treating PUN as the settlement price, reading MACSE units as €/MW·yr, assuming the first-auction price repeats, expecting MACSE for existing or co-located assets, ignoring permitting and grid connection.
+
+### 7A.6 Spain: Five Must-Knows
+
+1. **Two bidding zones, not one**: Spain and Portugal form MIBEL but are separate bidding zones; prices separate when the interconnection binds, so an "Iberian average" is not a project settlement price.
+2. **Fifteen minutes runs through trading and settlement**: day-ahead/intraday moved to 15-minute MTU on 2025-10-01; imbalance settlement has been 15-minute since 2024-12-01. Hourly models misprice both arbitrage and deviation.
+3. **Day-ahead and intraday bounds differ**: day-ahead -€600/+€4,000 per MWh; intraday continuous ±€9,999 per MWh; negative prices are common in solar-heavy hours (about 555 hours in 2025, grade C).
+4. **The capacity market only arrived in 2026**: Orden TED/966/2026, in force 2026-09-18; peninsular system, firm power, sealed-bid pay-as-bid; new-build main auctions up to 15 years; existing generation subject to a 550 g CO2/kWh gate; the first auction date is to be confirmed by REE (public reports point to late 2026 to 2027, grade C).
+5. **Storage policy has three tracks**: PNIEC targets 22.5 GW by 2030 (all technologies); RD 997/2025 requires grid-forming capability and 120%–130% voltage ride-through; RDL 7/2026 introduces flexible access and a 10% self-consumption reserve. The pipeline is large, but permitting and connection conversion is the bottleneck.
+
+**Three formulas**
+
+```
+Energy arbitrage = discharge price × discharge energy × efficiency − charge price × charge energy
+Capacity revenue = effective capacity (MW) × capacity price (€/MW·yr)
+Ancillary opportunity cost ≈ reserved MW × contemporaneous energy spread × reserved hours
+```
+
+**Entry path**: Spanish/EU entity → grid connection → OMIE market registration → REE balancing responsibility (BRP) → ancillary prequalification → credit support → REMIT reporting. **Common errors**: treating MIBEL as one zone, treating OMIE as the regulator, using hourly models, treating the first capacity auction as priced, ignoring grid-forming/permitting.
+
+### 7A.7 Netherlands: Five Must-Knows
+
+1. **The Netherlands is a separate bidding zone**: EPEX NL is not part of DE-LU; its price reflects domestic supply/demand plus interconnection with Germany, Belgium and the UK. Do not substitute German prices.
+2. **There is no capacity market**: the Netherlands is energy-only plus balancing/ancillary services; the government has studied a capacity mechanism but has not implemented one. Storage relies on spreads, FCR/aFRR/mFRR and congestion contracts, with higher merchant risk than the UK, Italy or Spain.
+3. **Fifteen minutes plus dynamic ancillary procurement**: 15-minute MTU since 2025-10-01 and 15-minute imbalance settlement; aFRR has used dynamic dimensioning since September 2025 (D-5 preliminary, D-1 06:00 firm, 09:00 gate closure), and 10% of volumes moved to 4-hour contracts from November 2025 (grade B).
+4. **The connection queue is harder than the price**: about 15,000 businesses are waiting for grid access (grade C); ATR85 non-firm contracts trade curtailment for earlier connection (about 9 GW offered in 2025); the priority framework took effect on 2026-07-01; TenneT introduced time-of-use grid fees from 2025.
+5. **SDE++ is not a battery subsidy**: the 2026 budget is €8bn with a window of 2026-10-27 to 2026-11-26, but the RVO page does not list batteries as a standalone category; net metering ends on 2027-01-01; large-scale batteries stood at 350 MW/620 MWh at end-2024, and TenneT expects about 4 GW by 2030 (grade B).
+
+**Three formulas**
+
+```
+Energy arbitrage = (discharge price − charge price ÷ efficiency) × discharge energy
+Ancillary capacity revenue = reserved MW × €/MW·h × available hours
+Non-firm curtailment loss ≈ curtailed energy × (arbitrage spread − charging cost)
+```
+
+**Entry path**: Dutch/EU entity → TenneT/DSO connection → EPEX participant/clearing → BRP balancing responsibility → ancillary prequalification → credit support → REMIT reporting. **Common errors**: treating NL as DE-LU, assuming a capacity market, treating SDE++ as a battery subsidy, ignoring the connection queue/non-firm contracts, using hourly models.
+
+### 7A.8 Poland: Five Must-Knows
+
+1. **One bidding zone plus 15 minutes**: TGE runs the RDN day-ahead and RDB intraday markets, PSE dispatches and URE regulates; 15-minute MTU applies to day-ahead/intraday since 2025-10-01, and imbalance settlement is also 15 minutes. A negative price of −PLN 791.32/MWh occurred on 2026-04-06 (grade C), so negative prices are no longer an outlier.
+2. **The capacity market is the main revenue pillar**: rynek mocy pays on de-rated capacity in PLN/kW·yr; for the 2030 delivery year the Polish price was PLN 465.02, synchronous profile PLN 78.00, Lithuania PLN 418.00 and Sweden PLN 444.67/kW·yr, with a 6,887.639 MW obligation and 992 MW of foreign awards; the auction ended in round 2 (grade A). Battery de-rating is about 13% (grade C), so nameplate capacity cannot be used for revenue.
+3. **OZE auctions are 15-year CfDs**: 2025 clearing prices were PLN 216.90–329.68/MWh for PV >1 MW and PLN 100–320/MWh for wind; the 2026 schedule is 76.1 TWh and PLN 24.9bn; non-price criteria apply from 2026, so equipment origin/carbon footprint may affect eligibility.
+4. **Storage grants are CAPEX support**: the NFOŚiGW scheme provides PLN 4.15bn (PLN 3.735bn grants + PLN 0.415bn loans) for 172 projects, 3.9 GW/14.5 GWh, with grant rates of 45%/55%/65% and a minimum of 2 MW/4 MWh; Żarnowiec+Ełk add 425 MW/2,032 MWh. It is CAPEX support, not long-term revenue.
+5. **Balancing has been Europeanised**: the 2024-06-14 WDB reform separated capacity and energy and moved to 15-minute settlement; POBs carry imbalance, DUBs provide balancing services; PSE joined PICASSO around July 2025 (grade B), MARI is pending, and it exited TERRE on 2025-01-01 (grade A).
+
+**Three formulas**
+
+```
+Capacity revenue = de-rated capacity (MW) × clearing price (PLN/kW·yr) × 1000
+Arbitrage gross margin = discharge energy × discharge price − charge energy × charge price (charge = discharge ÷ RTE)
+OZE CfD cash flow = (reference price − market price) × awarded energy
+```
+
+**Entry path**: Polish/EU entity → URE koncesja → PSE/OSD connection → TGE membership/IRGiT clearing → PSE POB registration (or delegate) → ancillary prequalification → capacity-market qualification → REMIT. **Common errors**: treating the capacity price as €/kW·yr, using nameplate capacity for de-rated revenue, treating storage grants as operating revenue, using hourly models, assuming MARI is live.
+
+### 7A.9 Belgium and the Nordics: Five Must-Knows
+
+1. **Belgium's CRM is pay-as-bid**: Y-4/Y-2/Y-1 auctions, single-round sealed bids, pay-as-bid with an intermediate price cap; new build can get up to 15 years, existing units 1 year. The 2025 Y-4 auction cleared 4,690 MW, including 179 MW of new batteries (525 MW nameplate), at a price in the ~€27k/MW·yr range (grade C, unit needs verification); Y-2 cleared at €25,100/MW·yr and Y-1 at a weighted ~€14,100/MW·yr.
+2. **Belgian nuclear extension changes the capacity gap**: Doel 4 and Tihange 3 are extended to 2035, and a May 2025 federal law repealed the 2003 phase-out law; do not keep using the old "2025 nuclear exit" assumption for CRM demand.
+3. **The Nordics are 12 bidding zones, not one price**: NO1–NO5, SE1–SE4, DK1–DK2 and FI; Nord Pool forms a system price first and then zonal prices under interconnector constraints, and projects settle at the zonal price; EPADs hedge zonal spreads but are not physical PPAs.
+4. **Nordic capacity tools are reserves, not a capacity market**: Sweden's effektreserv targets 800 MW and its 2025-10-07 auction failed because bids exceeded the SEK 120,000/MW cap; Finland has tehoreservi; Norway and Denmark have no national capacity market. Storage cannot treat reserves as a long-term capacity annuity.
+5. **Fifteen minutes and negative prices are structural**: 15-minute MTU since 2025-10-01; 15-minute imbalance and mFRR EAM since 2025-03-04, with the share of hours where imbalance equals day-ahead falling from about 33% to about 3% and balancing costs rising from about €1 to €5–6/MWh (grades B/C); Finland had negative prices in about 8% of hours in 2024 and Sweden about 7%. Danish offshore wind uses 20-year CfDs, Sweden's 2025 law allows new nuclear, and entry rules differ across the four countries.
+
+**Three formulas**
+
+```
+CRM revenue = de-rated capacity (MW) × clearing price (€/MW·yr)
+Zonal arbitrage = (zonal discharge price − zonal charge price ÷ efficiency) × discharge energy
+EPAD cash flow = (zonal price − system price) × contracted energy
+```
+
+**Entry path**: Belgian entity → Elia connection → Belpex/EPEX + BRP → CRM qualification/credit → REMIT; Nordic entity → national TSO/DSO connection → Nord Pool membership → national TSO BRP registration → ancillary prequalification → REMIT. **Common errors**: treating CRM as a uniform clearing price, using nameplate capacity for CRM, treating Nord Pool as one zone, treating effektreserv/tehoreservi as a capacity market, converting SEK/NOK/DKK at a single EUR rate.
+
+### 7A.10 The Same Question, Eight Markets
+
+| Question | Australian NEM | German DE-LU | UK GB | Italy | Spain | Netherlands |
+|---|---|---|---|---|---|---|
+| "What is the spot price now?" | Ask which region first; read the 5-minute dispatch price | Ask day-ahead or intraday first; read the DE-LU MTU | Ask day-ahead or BM first; read EPEX GB or BOALF | Ask which zone first; read the MGP zonal price, PUN is reference only | Ask Spain or Portugal; read the OMIE 15-minute price | Read EPEX NL 15-minute price; do not substitute German prices |
+| "What is the price cap?" | 2026-27 MPC/CPT/APC, with financial year | Day-ahead/intraday floors differ; cap harmonised/validated by ACER | No administered wholesale band; CM cap £75/kW·yr | Per current GME/ARERA rules | Day-ahead -€600/+€4,000; intraday ±€9,999 | Per EPEX/EU rules; intraday floor around -€9,999 |
+| "How do I lock in a price?" | ASX futures, OTC, PPAs, CfD/LTESA | EPEX day-ahead/intraday, OTC, PPAs, retail packages | EPEX GB, OTC, PPAs, CfD | GME products, OTC, PPAs, FER X CfD | OMIE day-ahead/intraday, PPAs, capacity contracts | EPEX day-ahead/intraday, PPAs, tolling, congestion contracts |
+| "How do batteries make money?" | Energy arbitrage + FCAS + CIS/state schemes | Energy arbitrage + FCR/aFRR/mFRR + capacity mechanism (from 2031) | Energy arbitrage + BM + CM + ancillary; LDES via cap and floor | Energy arbitrage + MSD/MB + capacity market + MACSE | Energy arbitrage + ancillary + capacity market (first auction pending) + grants | Energy arbitrage + FCR/aFRR/mFRR + congestion contracts (no capacity market) |
+| "Renewables support?" | LGC/SRES, CIS | EEG auctions + sliding premium; zero value at negative prices | CfD (generally not for standalone storage) | FER X two-way CfD, NZIA auctions | PNIEC, RD 997/2025, RDL 7/2026, auctions | SDE++ (not standalone batteries), net metering ends 2027 |
+| "How is congestion handled?" | Regional prices + constraints + MLF/IRLF | Single zone + Redispatch 2.0 | BM + network constraints; TNUoS signal | Seven-zone spreads + MSD/redispatch | Two-zone spreads + redispatch/technical constraints | Connection queue + non-firm contracts + congestion management |
+| "How do I enter?" | AEMO registration + metering + prudential | Local entity + REMIT + balancing group + EPEX/ECC | Entity + Ofgem licence/exemption + BSC/BMU + CM | Entity + GME membership + Terna BRP/BSP + MACSE | Entity + grid connection + OMIE + REE BRP + credit + REMIT | Entity + grid connection + EPEX + BRP + credit + REMIT |
+| "Biggest risk?" | MLF, FCAS opportunity cost, prudential | Balancing responsibility, EEG negative prices, grid fees, REMIT | BM skipping, CM delivery/de-rating, grid queue | Zonal spreads, MACSE delivery, permitting/connection | First capacity auction, grid-forming/permitting, 15-minute deviation | Connection queue, no capacity market, non-firm access, SDE++ misreading |
+
+**New markets: the same questions**
+
+| Question | Poland | Belgium | Nordics |
+|---|---|---|---|
+| "What is the spot price now?" | Read the TGE RDN 15-minute price; do not substitute German prices | Read the Belpex 15-minute price; it is not DE-LU | Ask which zone first; read the zonal price, the system price is reference only |
+| "What is the price cap?" | EU SDAC/SIDC; day-ahead floor around -€500/MWh, intraday ±€9,999/MWh | Same EU SDAC/SIDC | Same EU SDAC/SIDC |
+| "How do I lock in a price?" | TGE day-ahead/intraday, OTC, PPAs, OZE CfD, capacity contract | Belpex/EPEX, OTC, PPAs, CRM | Nord Pool, Nasdaq futures/EPAD, PPAs, CfD |
+| "How do batteries make money?" | Capacity market + arbitrage + ancillary + NFOŚiGW CAPEX grant | CRM + arbitrage + FCR/aFRR/mFRR | Arbitrage + ancillary + reserves (not a capacity market) |
+| "Renewables support?" | OZE auctions, 15-year CfD; 76.1 TWh in 2026 | Offshore wind CfD; no standalone battery subsidy | National auctions/CfD; Danish offshore 20-year CfD |
+| "How is congestion handled?" | Connection queue + cross-border capacity | Connection/permitting + interconnection | Zonal spreads + interconnectors + EPAD |
+| "How do I enter?" | URE licence + PSE/OSD connection + TGE/IRGiT + POB + capacity registration | Elia connection + Belpex/EPEX + BRP + CRM qualification | National TSO/DSO connection + Nord Pool + national BRP |
+| "Biggest risk?" | De-rating/availability penalties, policy change, grants mistaken for revenue | CRM penalties/price cap, unit conventions | Zonal spreads, hydro/negative prices, four-country rule differences |
+
+### 7A.11 Answering Discipline for Overseas Markets
+
+1. **Confirm market, region and time first**: for Australia ask state/region; for Germany ask day-ahead/intraday and CET/CEST; for the UK ask day-ahead/BM and GB time; for Italy ask bidding zone and MGP/MSD; for Spain ask Spain/Portugal zone and OMIE period; for the Netherlands confirm EPEX NL (not DE-LU); for Poland confirm TGE RDN (not German prices); for Belgium confirm Belpex (not DE-LU/French prices); for the Nordics confirm which of the 12 bidding zones. Never answer with a single "European price" or "Australian price".
+2. **Currency and units**: AUD/MWh, EUR/MWh, GBP/MWh, PLN/MWh and SEK/NOK/DKK/MWh; do not mix with CNY or CNY/kWh. If converting, state the FX date.
+3. **Time zones**: NEM is fixed AEST; Germany, Italy, Spain, the Netherlands, Poland, Belgium, Sweden, Norway and Denmark switch CET/CEST; Finland uses EET/EEST; the UK switches GMT/BST, and EPEX GB gate times are quoted in CET. Gates, settlement and reports must use one consistent clock.
+4. **Rule hierarchy**: Australia NER + AEMO procedures; Germany EnWG/StromNEV/EEG + BNetzA/EPEX rules; UK BSC/CUSC + NESO/Ofgem rules; Italy TIDE + ARERA/GME/Terna rules; Spain BOE decrees + OMIE/REE/CNMC rules; Netherlands Energiewet + ACM/TenneT rules; Poland energy law + URE/PSE/TGE rules; Belgium electricity law + CREG/Elia rules; Nordics Nord Pool rules + national TSO rules; EU coupling rules only to the extent relevant to the trade.
+5. **Source grading**: official rules/notices A; exchange/regulator data A/B; media/reports B/C; own calculations D. Volatile figures such as capacity-mechanism costs, CIS/MACSE/Polish capacity/Belgian CRM results, the Spanish first capacity auction, the Dutch connection queue and Nordic reserve auctions need a grade and a date.
 6. **Do not replace local advice**: registration, tax, REMIT/MiFID, grid connection and contracts should be reviewed by local counsel/tax/compliance; this skill provides a trading framework only.
-7. **Draft vs in force**: Australia's reliability-standard recommendation, Germany's AgNes (final determination 2027-01-01, rules from 2029), the EEG 2027 amendment and capacity-auction details may be proposals or not yet effective; state the status.
+7. **Draft vs in force**: Australia's reliability-standard recommendation, Germany's AgNes (final determination 2027-01-01, rules from 2029), the EEG 2027 amendment, the UK's REMA/TMO4+/LDES final parameters, Italy's second MACSE auction and capacity-market rules, Spain's first capacity auction and RD 997/2025 implementation, and the Netherlands' Energiewet implementation/aFRR 4-hour rollout/priority framework, Poland's capacity de-rating and 2026 OZE non-price criteria, the Belgian CRM price unit, and the Nordic mFRR EAM/PICASSO timetable may be proposals or not fully effective; state the status.
 
-### 7A.6 Where to Read in the Repository
+### 7A.12 Where to Read in the Repository
 
 - Australia in depth: `knowledge/澳大利亚NEM电力市场-2026-11.md` (five regions, 5MS, FCAS, MLF/IRLF, CIS, IESS, entry path, ten pitfalls).
 - Germany in depth: `knowledge/德国电力市场-2026-11.md` (DE-LU, EPEX, 15-minute MTU, balancing, redispatch, EEG, capacity mechanism, entry path, ten pitfalls).
+- UK in depth: `knowledge/英国电力市场-2026-11.md` (GB single market, EPEX GB, BM/BOALF, T-4/T-1 capacity market, CfD/LDES, TMO4+, entry path, ten pitfalls).
+- Italy in depth: `knowledge/意大利电力市场-2026-11.md` (seven zones, MGP/MI/MSD/MB, MACSE, capacity market, FER X, entry path, ten pitfalls).
+- Spain in depth: `knowledge/西班牙电力市场-2026-11.md` (MIBEL two zones, OMIE 15 minutes, TED/966/2026 capacity market, RD 997/2025, RDL 7/2026, storage connection, entry path, ten pitfalls).
+- Netherlands in depth: `knowledge/荷兰电力市场-2026-11.md` (EPEX NL, no capacity market, 15-minute settlement, SDE++, connection queue/non-firm, storage revenue, entry path, ten pitfalls).
+- Poland in depth: `knowledge/波兰电力市场-2026-11.md` (single bidding zone, rynek mocy, OZE auctions, NFOŚiGW storage grants, POB/DUB, PICASSO/MARI, entry path, ten pitfalls).
+- Belgium and the Nordics in depth: `knowledge/比利时与北欧电力市场-2026-11.md` (Belgian CRM Y-4/Y-2/Y-1, nuclear extension, 12 Nordic zones, 15-minute imbalance, mFRR EAM, effektreserv, negative prices, entry path, ten pitfalls).
 - International retail-price comparison method: `knowledge/国际电价比较-方法与模板-2026-11.md` (retail tariff calibers, not to be mixed with wholesale market rules here).
 - China interprovincial/provincial: `knowledge/省间与跨区交易-2026-11.md`, `knowledge/省级市场状态表-2026-11.md`.
 
@@ -767,5 +910,5 @@ The 8 pilots averaged CNY 44.1/tonne in 2024 (~54% below the national market): B
 - The carbon practice book's data are from around 2016; for post-2021 national carbon market rules, Sections 10.1~10.5 (web research) prevail;
 - Items marked "(to be verified)" should prompt the user to verify when cited; the spot rules, retailer measure, risk-control measure, credit-evaluation guidelines and grid-connection provisions of September-October 2026 are **drafts for comment** and the final clauses may change;
 - Provincial rules update fast; this skill does not replace real-time policy search. Re-verify 2026 provincial spot formal operation, No. 136 auctions, capacity prices and VPP rules before answering;
-- Overseas markets (Chapter 7A) cover only the Australian NEM and German DE-LU, excluding the WA WEM, the Northern Territory and the rest of Europe; rules, taxes, grid connection and contracts require local official documents and professional advice;
+- Overseas markets (Chapter 7A) cover the Australian NEM, German DE-LU, UK GB, Italy, Spain and the Netherlands, excluding the WA WEM, the Northern Territory and other European markets such as Poland, Belgium and the Nordics; rules, taxes, grid connection and contracts require local official documents and professional advice;
 - 2025 trading volumes exist in several calibers ("market-traded 6.64 trillion / medium-long-term 6.3522 trillion / 4.81 trillion in some materials"); the preferred caliber is stated in the text — check old materials against it.

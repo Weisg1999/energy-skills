@@ -77,8 +77,8 @@
       <p class="lede">现货报价、结算、风险与市场分析</p>
       <p class="hook">可执行流程与配套工具；正文与 SKILL.md 同步。</p>
       <div class="tags"><span class="tag">技能</span><span class="tag">现货</span><span class="tag">结算</span><span class="tag">风控</span></div>
-      <div class="doc-meta"><span>约 35.3k 字</span><span>阅读约 63 分钟</span><span>17 节</span><span>数据截止 2026-11-01</span></div>
-      <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-electricity-trading-expert.txt" download="电力交易专家-SKILL.txt">下载 TXT</a><span>完整技能文档，约 39 KB，含 frontmatter</span></p>
+      <div class="doc-meta"><span>约 44.9k 字</span><span>阅读约 78 分钟</span><span>17 节</span><span>数据截止 2026-11-01</span></div>
+      <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-electricity-trading-expert.txt" download="电力交易专家-SKILL.txt">下载 TXT</a><span>完整技能文档，约 50 KB，含 frontmatter</span></p>
     </header>
 
     <details class="toc-mobile">
@@ -92,15 +92,15 @@
             <li class="lv2"><a href="#s29">5. 辅助服务与容量机制</a></li>
             <li class="lv2"><a href="#s33">6. 结算、计量与不平衡资金</a></li>
             <li class="lv2"><a href="#s37">7. 中国政策框架与省级实践（截至 2026-11-01）</a></li>
-            <li class="lv2"><a href="#s42">7A. 海外市场速查（澳大利亚 NEM / 德国）</a></li>
-            <li class="lv2"><a href="#s49">8. 新能源全面入市（136 号文是分水岭）</a></li>
-            <li class="lv2"><a href="#s54">9. 虚拟电厂与需求响应（市场视角）</a></li>
-            <li class="lv2"><a href="#s60">10. 碳市场与企业碳管理</a></li>
-            <li class="lv2"><a href="#s67">11. 交易策略与风险管理</a></li>
-            <li class="lv2"><a href="#s74">12. 关键公式速查</a></li>
-            <li class="lv2"><a href="#s75">13. 术语表（中英对照精选）</a></li>
-            <li class="lv2"><a href="#s76">14. 专家问答推理手册</a></li>
-            <li class="lv2"><a href="#s80">15. 知识来源与维护</a></li>
+            <li class="lv2"><a href="#s42">7A. 海外市场速查（澳大利亚 NEM / 德国 / 英国 GB / 意大利 / 西班牙 / 荷兰 / 波兰 / 比利时与北欧）</a></li>
+            <li class="lv2"><a href="#s55">8. 新能源全面入市（136 号文是分水岭）</a></li>
+            <li class="lv2"><a href="#s60">9. 虚拟电厂与需求响应（市场视角）</a></li>
+            <li class="lv2"><a href="#s66">10. 碳市场与企业碳管理</a></li>
+            <li class="lv2"><a href="#s73">11. 交易策略与风险管理</a></li>
+            <li class="lv2"><a href="#s80">12. 关键公式速查</a></li>
+            <li class="lv2"><a href="#s81">13. 术语表（中英对照精选）</a></li>
+            <li class="lv2"><a href="#s82">14. 专家问答推理手册</a></li>
+            <li class="lv2"><a href="#s86">15. 知识来源与维护</a></li>
       </ol>
     </details>
 
@@ -114,7 +114,7 @@
 <h3 id="s3">0.2 回答行为规范（必须遵守）</h3>
 <ol><li><strong>先判域再作答</strong>：接到问题先归类到第 1~11 章知识域，再组织答案；跨域问题（如&quot;储能收益测算&quot;）显式拆成多个子域作答。</li><li><strong>数字必须带出处与时点</strong>：引用政策给文号（如&quot;发改价格〔2025〕136号&quot;），引用价格给&quot;时点+地域&quot;（如&quot;2025年广东用户侧结算均价 0.3803 元/kWh&quot;）。没有把握的数字标注 <strong>（待核实）</strong>，禁止编造。</li><li><strong>省别问题先确认省</strong>：中国各省规则差异极大（限价、机制电价、VPP 门槛等），涉及具体操作时若用户未指明省份，先列出关键差异或要求确认；逐省状态先查 <code>knowledge/省级市场状态表-2026-11.md</code>。</li><li><strong>区分原理与时效</strong>：原理性内容（如 LMP 构成）可放心讲；政策性内容（如&quot;谁已转正式运行&quot;&quot;机制电价多少&quot;）必须提示&quot;以最新官方文件为准&quot;，并给出查证入口（国家发改委、国家能源局、各省交易中心/电力交易平台官网）。</li><li><strong>价格预测类问题给框架不给断言</strong>：输出&quot;驱动因素→情景→区间→风险&quot;结构，明确说明不构成投资建议。</li><li><strong>口径敏感概念主动澄清</strong>：平均排放因子 vs 基准线因子、位置法 vs 市场法范围二、结算电量 vs 下网电量等，一律先说明口径再用数；口径定义与常见误用见 <code>knowledge/索引与口径-2026-11.md</code>。</li><li><strong>善用速查表</strong>：第 12~14 章的公式表、术语表、推理手册是答题的第一入口。</li><li><strong>数字按来源分级引用</strong>：<strong>A</strong> 官方文件/统计；<strong>B</strong> 交易机构、央企或行业协会披露；<strong>C</strong> 媒体报道；<strong>D</strong> 据公开数据测算。C/D 级数字必须写明级别（如&quot;媒体口径，C 级&quot;），不能与 A 级并列而不说明；A 级与 C 级冲突时以 A 级为准，并说明差异。</li></ol>
 <h3 id="s4">0.3 知识地图（问题类型 → 章节）</h3>
-<div class="table-wrap"><table><thead><tr><th>用户问题特征</th><th>优先查</th></tr></thead><tbody><tr><td>为什么建现货/LMP 是什么/负电价原理</td><td>第 1、3 章</td></tr><tr><td>我省规则/报价策略/怎么结算</td><td>第 3、6、7 章 + 确认省份</td></tr><tr><td>中长期合同/差价合约/套保</td><td>第 4 章</td></tr><tr><td>调峰/调频/备用/容量电价</td><td>第 5 章</td></tr><tr><td>虚拟电厂怎么赚钱/需求响应补贴</td><td>第 9 章</td></tr><tr><td>碳价/CCER/碳盘查/CBAM/绿证</td><td>第 10 章</td></tr><tr><td>售电公司怎么活下来/风险管控</td><td>第 11 章</td></tr><tr><td>全国统一市场/南方区域市场/2026 现货新规</td><td>第 2.4、2.5、3.7 节</td></tr><tr><td>核电入市/电力期货中国进展</td><td>第 8.4、4.3 节</td></tr><tr><td>零售市场/售电公司退出/批零倒挂</td><td>第 11.2、11.6 节</td></tr><tr><td>澳洲/德国怎么交易、怎么进场</td><td>第 7A 章</td></tr><tr><td>公式/术语/文号</td><td>第 12~14 章</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>用户问题特征</th><th>优先查</th></tr></thead><tbody><tr><td>为什么建现货/LMP 是什么/负电价原理</td><td>第 1、3 章</td></tr><tr><td>我省规则/报价策略/怎么结算</td><td>第 3、6、7 章 + 确认省份</td></tr><tr><td>中长期合同/差价合约/套保</td><td>第 4 章</td></tr><tr><td>调峰/调频/备用/容量电价</td><td>第 5 章</td></tr><tr><td>虚拟电厂怎么赚钱/需求响应补贴</td><td>第 9 章</td></tr><tr><td>碳价/CCER/碳盘查/CBAM/绿证</td><td>第 10 章</td></tr><tr><td>售电公司怎么活下来/风险管控</td><td>第 11 章</td></tr><tr><td>全国统一市场/南方区域市场/2026 现货新规</td><td>第 2.4、2.5、3.7 节</td></tr><tr><td>核电入市/电力期货中国进展</td><td>第 8.4、4.3 节</td></tr><tr><td>零售市场/售电公司退出/批零倒挂</td><td>第 11.2、11.6 节</td></tr><tr><td>澳洲/德国/英国/意大利怎么交易、怎么进场</td><td>第 7A 章</td></tr><tr><td>公式/术语/文号</td><td>第 12~14 章</td></tr></tbody></table></div>
 <hr>
 <h2 id="s5">1. 电力系统与市场经济学基础</h2>
 <h3 id="s6">1.1 电能的商品特殊性（一切制度设计的根源）</h3>
@@ -203,11 +203,13 @@
 <h3 id="s41">7.4 2025-2026 年价格特征（行情感知）</h3>
 <ul><li><strong>2025 年</strong>：现货均价普降，广东用户侧结算均价 0.3803 元/kWh（−14.2%），日前申报均价 319.0 厘/kWh；<strong>山东负电价全年超 1500 小时</strong>（触及 −80 元/MWh 地板约 1145h），2025-04 光伏现货结算均价约 0.02 元/kWh；山西峰谷价差同比 +43% 全国最大（均差约 0.3~0.5 元/kWh），蒙西唯一收窄（−14%）。</li><li><strong>2026 年 1-9 月</strong>：山西日前 161-450 元/MWh、实时 174-609 元/MWh；广东日前 425-696 厘/kWh、实时 372-727 厘/kWh；山东 348-477 元/MWh；蒙西 315-521 元/MWh。区域分化加剧：山西、蒙西实时价格上探，山东仍受新能源大发压制。</li><li><strong>2026 年极端事件</strong>：山东 2026-04 负电价约 199 小时；2026-08-28 征求意见拟将现货地板价降至 -0.12/-0.14 元/kWh；广东 2026-04-11 实时电价达 0.978 元/kWh，接近上限。</li><li><strong>总趋势</strong>：午间负电价扩散、峰谷价差拉大、极端价格双向变宽 → 储能&quot;低充高放&quot;、灵活负荷、VPP 的价值上升；但限价放宽也意味着偏差结算与风险敞口放大。</li><li><strong>国际对标纠错</strong>：PJM <strong>2027/28</strong> 容量拍卖出清 329.17 美元/MW·日（触顶）；<strong>2028/29 BRA（2026-07-14）为 325 美元/MW·日</strong>，连续第三次触顶，缺口 6.8GW、备用率 14.7%、总成本约 164 亿美元、新增供应仅约 500MW。ERCOT 2025 实时均价约 38 美元/MWh。引用时不要把 329.17 标成 2028/29。</li></ul>
 <hr>
-<h2 id="s42">7A. 海外市场速查（澳大利亚 NEM / 德国）</h2>
-<aside class="note"><p>本章数据截止：2026-11-01。编号用 7A 是为了不打乱既有中国章节的交叉引用；海外市场只覆盖澳大利亚 NEM 与德国 DE-LU，不等于“全部海外”。具体交易以当地法律、规则、交易所公告和合同为准，本章不构成法律/税务/投资意见。</p></aside>
-<h3 id="s43">7A.1 先选市场：两张卡片</h3>
-<div class="table-wrap"><table><thead><tr><th>维度</th><th>澳大利亚 NEM</th><th>德国 DE-LU</th></tr></thead><tbody><tr><td>市场范围</td><td>QLD、NSW（含 ACT）、VIC、SA、TAS 五区域</td><td>德国 + 卢森堡一个报价区，嵌入欧盟耦合</td></tr><tr><td>运营/规则</td><td>AEMO 运营；AEMC 定规则；AER 监管</td><td>EPEX Spot 交易；四 TSO 平衡/再调度；BNetzA 监管</td></tr><tr><td>现货粒度</td><td>5 分钟 dispatch + 5 分钟结算</td><td>日前/日内 15 分钟 MTU；平衡能量 15 分钟</td></tr><tr><td>定价</td><td>区域价 + 约束；能量与 FCAS 共同优化</td><td>日前拍卖 pay-as-clear；日内连续 pay-as-bid</td></tr><tr><td>价格边界</td><td>2026-27 MPC A$23,200/MWh；CPT A$2,225,900/MWh；APC A$600/MWh；MFP -A$1,000/MWh</td><td>日前最低 -500 €/MWh；日内最低 -9,999 €/MWh</td></tr><tr><td>辅助服务</td><td>FCAS（调频 + contingency，涨/降分开）</td><td>FCR、aFRR、mFRR；容量与能量分开</td></tr><tr><td>容量机制</td><td>无集中容量市场；RRO/RERT/CIS</td><td>StromVKG 容量机制，2031 年起；2026 年招标据报道不含电池储能</td></tr><tr><td>可再生支持</td><td>LGC/SRES、CIS、州 scheme</td><td>EEG 拍卖 + 滑动市场溢价</td></tr><tr><td>阻塞处理</td><td>区域价 + 约束 + MLF/IRLF</td><td>单一报价区 + Redispatch 2.0</td></tr><tr><td>结算</td><td>周账单；MLF/IRLF；prudential</td><td>ECC 清算 + 平衡组不平衡结算 + 电网费</td></tr><tr><td>主体门槛</td><td>AEMO 注册 + 计量 + prudential（零售另需 AER 授权）</td><td>本地主体 + REMIT + 平衡组 + EPEX/ECC（零售另需 §5 许可）</td></tr></tbody></table></div>
-<p><strong>一句话选型</strong>：做高波动、电池/FCAS、跨区价差 → 先看 NEM；做日前/日内、跨境耦合、平衡市场、EEG 资产 → 先看德国。两边都不是“注册完就能交易”，真正的门槛在结算、平衡责任和合规。</p>
+<h2 id="s42">7A. 海外市场速查（澳大利亚 NEM / 德国 / 英国 GB / 意大利 / 西班牙 / 荷兰 / 波兰 / 比利时与北欧）</h2>
+<aside class="note"><p>本章数据截止：2026-11-10。编号用 7A 是为了不打乱既有中国章节的交叉引用；海外市场覆盖澳大利亚 NEM、德国 DE-LU、英国 GB、意大利、西班牙、荷兰、波兰与比利时/北欧，不等于“全部海外”。具体交易以当地法律、规则、交易所公告和合同为准，本章不构成法律/税务/投资意见。</p></aside>
+<h3 id="s43">7A.1 先选市场：核心六张卡片</h3>
+<div class="table-wrap"><table><thead><tr><th>维度</th><th>澳大利亚 NEM</th><th>德国 DE-LU</th><th>英国 GB</th><th>意大利</th><th>西班牙</th><th>荷兰</th></tr></thead><tbody><tr><td>市场范围</td><td>QLD、NSW（含 ACT）、VIC、SA、TAS 五区域</td><td>德国 + 卢森堡一个报价区，嵌入欧盟耦合</td><td>英格兰、苏格兰、威尔士；北爱尔兰不在内</td><td>七个本土报价区 + 跨境虚拟区</td><td>西班牙本土 + 葡萄牙两个报价区（MIBEL）</td><td>荷兰单一报价区（EPEX NL）</td></tr><tr><td>运营/规则</td><td>AEMO 运营；AEMC 定规则；AER 监管</td><td>EPEX Spot 交易；四 TSO 平衡/再调度；BNetzA 监管</td><td>NESO 系统运营；Ofgem 监管；Elexon 结算</td><td>GME 交易所；Terna 调度；ARERA 监管</td><td>OMIE 市场；REE 调度/容量；CNMC/MITECO 监管</td><td>EPEX NL 交易；TenneT 调度；ACM 监管</td></tr><tr><td>现货粒度</td><td>5 分钟 dispatch + 5 分钟结算</td><td>日前/日内 15 分钟 MTU；平衡能量 15 分钟</td><td>半小时结算；EPEX GB 小时 + GB-30min</td><td>MGP 15 分钟 MTU；MI/MSD/MB 分层</td><td>15 分钟 MTU；不平衡结算 15 分钟</td><td>15 分钟 MTU；不平衡结算 15 分钟</td></tr><tr><td>定价</td><td>区域价 + 约束；能量与 FCAS 共同优化</td><td>日前拍卖 pay-as-clear；日内连续 pay-as-bid</td><td>日前拍卖统一价；BM 按报价 pay-as-bid</td><td>分区边际价；MSD/MB 按规则</td><td>日前统一价；日内连续 pay-as-bid</td><td>日前统一价；日内连续 pay-as-bid</td></tr><tr><td>价格边界</td><td>2026-27 MPC A$23,200/MWh；CPT A$2,225,900/MWh；APC A$600/MWh；MFP -A$1,000/MWh</td><td>日前最低 -500 €/MWh；日内最低 -9,999 €/MWh</td><td>批发无行政价格带；CM 上限 £75/kW·年</td><td>以 GME/ARERA 当年规则为准</td><td>日前 -600/+4,000 €/MWh；日内 ±9,999 €/MWh</td><td>按 EPEX/欧盟规则；日内下限 -9,999 €/MWh 量级</td></tr><tr><td>辅助服务</td><td>FCAS（调频 + contingency，涨/降分开）</td><td>FCR、aFRR、mFRR；容量与能量分开</td><td>DC/DM/DR、SFFR、QR/SR/BR、DFS</td><td>MSD/MB；Terna 采购</td><td>aFRR、mFRR、电压控制、黑启动</td><td>FCR、aFRR、mFRR；TenneT 采购</td></tr><tr><td>容量机制</td><td>无集中容量市场；RRO/RERT/CIS</td><td>StromVKG 容量机制，2031 年起</td><td>T-4/T-1 容量市场，£/kW·年</td><td>容量市场 + MACSE</td><td>2026 年容量市场，半岛系统</td><td>无容量市场（曾研究未实施）</td></tr><tr><td>可再生支持</td><td>LGC/SRES、CIS、州 scheme</td><td>EEG 拍卖 + 滑动市场溢价</td><td>CfD、LDES cap and floor</td><td>FER X 双向 CfD</td><td>PNIEC、RD 997/2025、RDL 7/2026、招标</td><td>SDE++（不列独立电池类别）</td></tr><tr><td>阻塞处理</td><td>区域价 + 约束 + MLF/IRLF</td><td>单一报价区 + Redispatch 2.0</td><td>BM + 网络约束；TNUoS 信号</td><td>七区价差 + MSD/再调度</td><td>双区价差 + 再调度/技术约束</td><td>接入排队 + 非 firm 合同 + 拥堵管理</td></tr><tr><td>结算</td><td>周账单；MLF/IRLF；prudential</td><td>ECC 清算 + 平衡组不平衡结算 + 电网费</td><td>Elexon/BSC，半小时；多轮对账</td><td>GME/Terna + 担保体系</td><td>OMIE/REE，15 分钟；担保体系</td><td>EPEX/TenneT，15 分钟；担保体系</td></tr><tr><td>主体门槛</td><td>AEMO 注册 + 计量 + prudential（零售另需 AER 授权）</td><td>本地主体 + REMIT + 平衡组 + EPEX/ECC（零售另需 §5 许可）</td><td>主体 + Ofgem 许可/豁免 + BSC + BMU + CM + REMIT</td><td>主体 + GME 会员 + Terna BRP/BSP + MACSE + REMIT</td><td>主体 + 并网 + OMIE 注册 + REE BRP + 担保 + REMIT</td><td>主体 + 并网 + EPEX + BRP + 担保 + REMIT</td></tr></tbody></table></div>
+<p><strong>7A.1b 新增市场卡片（波兰 / 比利时 / 北欧四国）</strong></p>
+<div class="table-wrap"><table><thead><tr><th>维度</th><th>波兰</th><th>比利时</th><th>北欧四国</th></tr></thead><tbody><tr><td>市场范围</td><td>波兰单一报价区</td><td>比利时单一报价区</td><td>12 个报价区：NO1–NO5、SE1–SE4、DK1–DK2、FI</td></tr><tr><td>运营/规则</td><td>TGE 交易；PSE 调度；URE 监管</td><td>Belpex/EPEX 交易；Elia 调度；CREG 监管</td><td>Nord Pool 交易；Statnett/SvK/Energinet/Fingrid 调度；各国监管</td></tr><tr><td>现货粒度</td><td>15 分钟 MTU；不平衡 15 分钟</td><td>15 分钟 MTU；不平衡 15 分钟</td><td>15 分钟 MTU；2025-03-04 起不平衡 15 分钟 + mFRR EAM</td></tr><tr><td>定价</td><td>日前 pay-as-clear；日内 pay-as-bid</td><td>日前统一价；日内 pay-as-bid</td><td>日前系统价 + 分区价；日内 pay-as-bid</td></tr><tr><td>价格边界</td><td>欧盟 SDAC/SIDC；日前下限约 -€500/MWh、日内 ±€9,999/MWh</td><td>同欧盟 SDAC/SIDC</td><td>同欧盟 SDAC/SIDC</td></tr><tr><td>辅助服务</td><td>FCR、aFRR、mFRR、RR；PSE 采购</td><td>FCR、aFRR、mFRR；Elia 采购</td><td>FCR-N/FCR-D、aFRR、mFRR；各国 TSO 采购</td></tr><tr><td>容量机制</td><td>rynek mocy 拍卖；2030 交付年 465.02 PLN/kW·年</td><td>CRM Y-4/Y-2/Y-1；Y-4 中标 4,690 MW</td><td>瑞典 effektreserv、芬兰 tehoreservi；挪威/丹麦无容量市场</td></tr><tr><td>可再生支持</td><td>OZE 拍卖（15 年 CfD）；2026 年 76.1 TWh / 249 亿 PLN</td><td>海上风电 CfD；无独立电池补贴</td><td>各国招标/CfD；丹麦海上风电 20 年 CfD</td></tr><tr><td>阻塞处理</td><td>并网排队 + 跨境容量</td><td>并网/许可 + 互联</td><td>分区价差 + 联络线 + EPAD</td></tr><tr><td>结算</td><td>TGE/IRGiT + PSE 不平衡 + 容量费 + OZE 差价</td><td>Belpex/Elia + CRM + 电网费</td><td>Nord Pool + 各国 TSO + Nasdaq 金融结算</td></tr><tr><td>主体门槛</td><td>主体 + URE 许可 + PSE/OSD 并网 + TGE/IRGiT + POB + PSE 预审 + 容量注册 + REMIT</td><td>主体 + Elia 并网 + Belpex/EPEX + BRP + CRM 资格 + REMIT</td><td>主体 + TSO/DSO 并网 + Nord Pool 会员 + 各国 BRP + 预审 + REMIT</td></tr></tbody></table></div>
+<p><strong>一句话选型</strong>：做高波动、电池/FCAS、跨区价差 → 先看 NEM；做日前/日内、跨境耦合、平衡市场、EEG 资产 → 先看德国；做单一市场、容量市场、BM、LDES → 先看英国；做七区价差、MACSE 长周期储能、FER X → 先看意大利；做伊比利亚双区、15 分钟结算、2026 年容量市场 → 先看西班牙；做单一报价区、无容量市场、拥堵接入与 SDE++ → 先看荷兰；做容量市场 + OZE 拍卖 + 储能补贴 → 先看波兰；做 CRM 年金 + 分区水电 + 负价 → 先看比利时/北欧。八边都不是“注册完就能交易”，真正的门槛在结算、平衡责任、接入和合规。</p>
 <h3 id="s44">7A.2 澳大利亚 NEM：五个必须记住的点</h3>
 <ol><li><strong>五个区域、五个价格</strong>：QLD、NSW、VIC、SA、TAS；约束绑定时价格分离。用“全国均价”做回测会失真。</li><li><strong>5 分钟结算</strong>：2021-10-01 起 5MS；2021 年前的 30 分钟价格不能直接比较。NEM 时间固定 AEST（UTC+10），全年无夏令时，交易日 04:00 切换。</li><li><strong>FCAS 与能量共同优化</strong>：同一 MW 不能同时卖能量和 FCAS；FCAS 预留占用 SOC/功率，存在机会成本。</li><li><strong>价格机制分三层</strong>：正常市场用 MPC/MFP；累计价格超 CPT 触发管理价格期，用 APC/AFP；MPC/CPT 每年按 CPI 调整。</li><li><strong>结算不是“区域价 × 电量”</strong>：还要乘 MLF（发电侧）/IRLF（互联），并考虑结算残差、prudential、周账单。</li></ol>
 <p><strong>三个常用公式</strong></p>
@@ -222,95 +224,139 @@ FCAS 机会成本 ≈ 预留 MW × 同时段能量价 × 预留时长</code></pr
 EEG 负价影响 ≈ 负价时段电量 × AW + 负价时段电量 × 负价
 工业 PPA 节省 = (现货均价 − PPA 价) × 用电量</code></pre>
 <p><strong>进场路径</strong>：德国/欧盟主体 →（零售）EnWG §5 许可 → EPEX 会员/经纪 + ECC 清算 → REMIT 登记 → TSO 平衡组（BKV）→ MaStR/EEG 登记 → 平衡市场预审。<strong>最常见错误</strong>：把日前价当日内价、忽略 CET/CEST、把 FCR 当能量市场、以为 EEG 附加费还在、把容量机制当已运行、忽略电网费/§14a 和 REMIT。</p>
-<h3 id="s46">7A.4 同一问题，两边怎么答</h3>
-<div class="table-wrap"><table><thead><tr><th>问题</th><th>澳大利亚 NEM</th><th>德国 DE-LU</th></tr></thead><tbody><tr><td>“现在现货价多少”</td><td>先问区域；看 5 分钟 dispatch price</td><td>先问日前还是日内；看 DE-LU 对应 MTU</td></tr><tr><td>“价格上限多少”</td><td>2026-27 MPC/CPT/APC，带财年</td><td>日前/日内最低价不同；上限由 ACER 统一校验</td></tr><tr><td>“怎么锁价”</td><td>ASX 期货、OTC、PPA、CfD/LTESA</td><td>EPEX 日前/日内、OTC、PPA、零售套餐</td></tr><tr><td>“储能怎么赚钱”</td><td>能量套利 + FCAS + CIS/州 scheme</td><td>能量套利 + FCR/aFRR/mFRR + 容量机制（2031 起）</td></tr><tr><td>“新能源支持”</td><td>LGC/SRES、CIS</td><td>EEG 拍卖 + 滑动溢价；负价归零</td></tr><tr><td>“阻塞怎么处理”</td><td>区域价 + 约束 + MLF/IRLF</td><td>单一报价区 + Redispatch 2.0</td></tr><tr><td>“怎么进场”</td><td>AEMO 注册 + 计量 + prudential</td><td>主体 + REMIT + 平衡组 + EPEX/ECC</td></tr><tr><td>“最大风险”</td><td>MLF、FCAS 机会成本、prudential</td><td>平衡责任、EEG 负价、电网费、REMIT</td></tr></tbody></table></div>
-<h3 id="s47">7A.5 答题纪律（海外市场专用）</h3>
-<ol><li><strong>先确认“哪个市场、哪个区域、哪个时点”</strong>：澳洲先问州/区域，德国先问日前/日内、CET/CEST；不要用“欧洲电价”“澳洲电价”一概而论。</li><li><strong>币种与单位</strong>：AUD/MWh、EUR/MWh；不要与人民币/元每度混算。必要时给换算，但注明汇率时点。</li><li><strong>时区</strong>：NEM 固定 AEST；德国 CET/CEST 切换；关闸、结算、报表时间必须统一。</li><li><strong>规则层级</strong>：澳洲 NER + AEMO Procedure；德国 EnWG/StromNEV/EEG + BNetzA/EPEX 规则；欧盟耦合规则只讲与交易相关的部分。</li><li><strong>来源分级</strong>：官方规则/公告 A；交易所/监管数据 A/B；媒体/转引 B/C；测算 D。容量机制规模、CIS 招标结果等易变数字，必须标级别与时点。</li><li><strong>不替代当地意见</strong>：注册、税务、REMIT/MiFID、并网、合同，建议当地律师/税务/合规复核；本技能只给交易框架。</li><li><strong>草案 vs 现行</strong>：澳洲可靠性标准建议值、德国 AgNes（2027-01-01 最终决定、2029 年起适用）、EEG 2027 修正案、容量机制招标细则都可能是建议/未生效；回答时写清状态。</li></ol>
-<h3 id="s48">7A.6 仓库阅读路径</h3>
-<ul><li><strong>澳洲细节</strong>：<code>knowledge/澳大利亚NEM电力市场-2026-11.md</code>（五区域、5MS、FCAS、MLF/IRLF、CIS、IESS、进场路径、十个坑）。</li><li><strong>德国细节</strong>：<code>knowledge/德国电力市场-2026-11.md</code>（DE-LU、EPEX、15 分钟、平衡市场、再调度、EEG、容量机制、进场路径、十个坑）。</li><li><strong>国际电价比较方法</strong>：<code>knowledge/国际电价比较-方法与模板-2026-11.md</code>（零售电价口径，不与本文批发市场规则混用）。</li><li><strong>中国省间/省内</strong>：<code>knowledge/省间与跨区交易-2026-11.md</code>、<code>knowledge/省级市场状态表-2026-11.md</code>。</li></ul>
+<h3 id="s46">7A.4 英国 GB：五个必须记住的点</h3>
+<ol><li><strong>GB 不是欧盟耦合市场</strong>：不参加 SDAC/SIDC；日前价格由本国拍卖形成，跨境电量走显式容量拍卖，价格可与邻国不同。</li><li><strong>日前看两场拍卖</strong>：EPEX GB 小时拍卖 10:20 CET 关闸、GB-30min 拍卖 16:30 CET 关闸；都不是 EUPHEMIA 耦合；关闸为交割时段开始前 1 小时。</li><li><strong>BM 是 pay-as-bid</strong>：NESO 按系统需要接受 bids/offers，BOALF 是结算依据；报价过高会被跳过，2026 年报道跳过率约 38%。</li><li><strong>容量市场按 de-rated capacity 付钱</strong>：T-4 2029/30 出清 £27.10/kW·年、40.1 GW；T-1 2026/27 £5.00/kW·年、7,192 MW；电池可参与，但折算系数和履约义务要看规则。</li><li><strong>支持工具分层</strong>：独立储能通常不参加标准 CfD；共址储能要单独计量/注册 BMU；LDES 走 cap and floor（2026-06-26 minded-to 16 个项目、7,645 MW）；并网改革 TMO4+ 强调“ready + needed”。</li></ol>
+<p><strong>三个常用公式</strong></p>
+<pre><code>容量市场收入 = de-rated capacity(kW) × £/kW·年
+BM 收入 = 被接受调用 MW × 报价 × 调用小时
+BSC 不平衡结算 = 偏差电量 × 不平衡价格（另加信用/对账）</code></pre>
+<p><strong>进场路径</strong>：英国主体 → Ofgem 许可/豁免 → BSC 接入 → BMU 注册 → CM 预审/拍卖 →（零售）供电许可 → REMIT（remit.gb.net）→ 计量/MHHS。<strong>最常见错误</strong>：把 GB 当欧盟耦合、把 CET 当英国时间、把 BM 当统一价、用铭牌容量算 CM、以为独立储能可拿 CfD。</p>
+<h3 id="s47">7A.5 意大利：五个必须记住的点</h3>
+<ol><li><strong>七个报价区，不是一个价</strong>：Nord、Centro-Nord、Centro-Sud、Sud、Calabria、Sicilia、Sardegna；PUN 是参考价，不是项目结算价。</li><li><strong>MGP 是主日前市场</strong>：GME 运营，12:00 D-1 关闸，SDAC 耦合；2025-10-01 起交付时段用 15 分钟 MTU。</li><li><strong>MSD/MB 是 Terna 的地盘</strong>：GME 运营 MGP/MI/MSD 平台，Terna 作为调度机构采购调频、备用、阻塞管理；结算规则与 MGP 不同。</li><li><strong>MACSE 是储能专用长周期机制</strong>：按 €/MWh·年支付、15 年合同、pay-as-bid、分区拍卖、仅限新建；首轮 10 GWh、均价 €12,959/MWh·年；次轮 16 GWh、2026-11-24；电池上限 €37,000/MWh·年。</li><li><strong>容量市场与 FER X 是另外两条线</strong>：容量市场买可用容量；FER X 是 20 年双向 CfD（DM 194/2026，37.15 GW，光伏 10 GW、参考 €80/MWh），NZIA 专项招标对 &gt;1 MW 光伏供应链设限。</li></ol>
+<p><strong>三个常用公式</strong></p>
+<pre><code>MACSE 年收入 = 中标价(€/MWh·年) × 储能能量容量(MWh)
+容量市场收入 = 可用容量(MW) × 折算系数 × 容量价(€/MW·年)
+FER X CfD = (执行价 − 市场价) × 合同电量</code></pre>
+<p><strong>进场路径</strong>：意大利/欧盟主体 → GME 会员 + 担保 → Terna BRP/BSP 注册 + 调度合同 → 并网协议 → MACSE 资格/担保 → REMIT（MERIT/ARERA/GME 规则）→（发电）FER X/NZIA。<strong>最常见错误</strong>：把 PUN 当结算价、把 MACSE 单位当 €/MW·年、把首轮价格当后续必然价、以为存量/共址也能拿 MACSE、忽视并网与许可。</p>
+<h3 id="s48">7A.6 西班牙：五个必须记住的点</h3>
+<ol><li><strong>两个报价区，不是一个</strong>：西班牙与葡萄牙共同构成 MIBEL，但两国是两个报价区；互连约束时价格分离，不能用“伊比利亚均价”做项目结算。</li><li><strong>15 分钟贯穿交易与结算</strong>：2025-10-01 起日前/日内为 15 分钟 MTU；2024-12-01 起不平衡结算也是 15 分钟。小时模型会同时错算套利和偏差成本。</li><li><strong>日前与日内价格边界不同</strong>：日前 -600/+4,000 €/MWh；日内连续交易 ±9,999 €/MWh；负电价在光伏大发时段常见，2025 年约 555 小时（C 级）。</li><li><strong>容量市场 2026 年才落地</strong>：Orden TED/966/2026，2026-09-18 生效；半岛系统、firm power、密封报价 pay-as-bid；新投资主拍卖最长 15 年，既有机组 550 g CO2/kWh 门槛；首拍时间以 REE 公告为准（公开报道指向 2026 年底至 2027 年，C 级）。</li><li><strong>储能政策是“并网 + 构网 + 灵活接入”三条线</strong>：PNIEC 2030 年 22.5 GW（全技术）；RD 997/2025 要求构网型、电压穿越 120%–130%；RDL 7/2026 引入灵活并网和 10% 自消费预留。pipeline 很大，但许可/并网转化是瓶颈。</li></ol>
+<p><strong>三个常用公式</strong></p>
+<pre><code>能量套利 = 放电价 × 放电量 × 效率 − 充电价 × 充电量
+容量收入 = 有效容量(MW) × 容量价(€/MW·年)
+辅助服务机会成本 ≈ 预留 MW × 同时段能量价差 × 预留时长</code></pre>
+<p><strong>进场路径</strong>：西班牙/欧盟主体 → 并网/接入 → OMIE 市场注册 → REE 平衡责任（BRP）→ 辅助服务预审 → 担保/信用 → REMIT 报送。<strong>最常见错误</strong>：把 MIBEL 当一个报价区、把 OMIE 当监管者、用小时模型、把容量首拍当已定价、忽视构网型/并网许可。</p>
+<h3 id="s49">7A.7 荷兰：五个必须记住的点</h3>
+<ol><li><strong>荷兰是独立报价区</strong>：EPEX NL 不是 DE-LU 的一部分；价格由本国供需 + 德国/比利时/英国互连决定，不能用德国价格替代。</li><li><strong>没有容量市场</strong>：荷兰是能量-only + 平衡/辅助服务；政府研究过容量机制但未实施。储能收入靠价差、FCR/aFRR/mFRR 和拥堵合同，merchant 风险高于英国/意大利/西班牙。</li><li><strong>15 分钟 + 动态辅助服务</strong>：2025-10-01 起日前/日内 15 分钟 MTU，不平衡结算 15 分钟；aFRR 自 2025-09 起动态维度（D-5 初值、D-1 06:00 确定、09:00 关闸），2025-11 起 10% 量用 4 小时合同（B 级）。</li><li><strong>接入排队比电价更硬</strong>：约 15,000 家企业等待接入（C 级）；ATR85 非 firm 合同以限出力换取更快接入，2025 年约 9 GW；优先排序框架 2026-07-01 生效；TenneT 自 2025 年起引入 ToU 电网费。</li><li><strong>SDE++ 不是电池补贴</strong>：2026 年预算 80 亿欧元、窗口 2026-10-27 至 2026-11-26，但 RVO 页面未把电池列为独立类别；净计量 2027-01-01 结束；大型电池 2024 年底 350 MW/620 MWh，TenneT 预期 2030 年约 4 GW（B 级）。</li></ol>
+<p><strong>三个常用公式</strong></p>
+<pre><code>能量套利 = (放电价 − 充电价 ÷ 效率) × 放电量
+辅助容量收入 = 预留 MW × €/MW·h × 可用小时
+非 firm 限充损失 ≈ 限充电量 × (可套利价差 − 充电成本)</code></pre>
+<p><strong>进场路径</strong>：荷兰/欧盟主体 → TenneT/DSO 接入 → EPEX 参与者/清算 → BRP 平衡责任 → 辅助服务预审 → 担保/信用 → REMIT 报送。<strong>最常见错误</strong>：把荷兰当 DE-LU、以为有容量市场、把 SDE++ 当电池补贴、忽视接入排队/非 firm、用小时模型。</p>
+<h3 id="s50">7A.8 波兰：五个必须记住的点</h3>
+<ol><li><strong>单一报价区 + 15 分钟</strong>：TGE 运营 RDN 日前、RDB 日内，PSE 调度，URE 监管；2025-10-01 起日前/日内 15 分钟 MTU，不平衡结算也是 15 分钟。2026-04-06 曾出现 −791.32 PLN/MWh 的负价（C 级），负价已不是偶发。</li><li><strong>容量市场是主收入支柱</strong>：rynek mocy 按降额容量、PLN/kW·年支付；2030 交付年波兰价 465.02、同步 profile 78.00、立陶宛 418.00、瑞典 444.67 PLN/kW·年，义务 6,887.639 MW，境外中标 992 MW，拍卖在第 2 轮结束（A 级）。储能降额约 13%（C 级），不能按铭牌容量算收入。</li><li><strong>OZE 拍卖是 15 年 CfD</strong>：2025 年光伏 &gt;1 MW 中标价 216.90–329.68 PLN/MWh、风电 100–320 PLN/MWh；2026 年计划 76.1 TWh、249 亿 PLN；2026 年起引入非价格标准，设备来源/碳足迹可能影响资格。</li><li><strong>储能补贴是资本开支支持</strong>：NFOŚiGW 计划 41.5 亿 PLN（37.35 亿赠款 + 4.15 亿贷款），172 个项目、3.9 GW/14.5 GWh，赠款率 45%/55%/65%，最低 2 MW/4 MWh；另有 Żarnowiec+Ełk 425 MW/2,032 MWh。它是 CAPEX 补贴，不是长期收入。</li><li><strong>平衡市场已欧标化</strong>：2024-06-14 WDB 改革后容量/能量分开、15 分钟结算；POB 对偏差负责、DUB 提供平衡服务；PSE 约 2025-07 接入 PICASSO（B 级），MARI 待接入，2025-01-01 已退出 TERRE（A 级）。</li></ol>
+<p><strong>三个常用公式</strong></p>
+<pre><code>容量收入 = 降额容量(MW) × 出清价(PLN/kW·年) × 1000
+套利毛利 = 放电量 × 放电价 − 充电量 × 充电价（充电量 = 放电量 ÷ RTE）
+OZE CfD 现金流 = (参考价 − 市场价) × 中标电量</code></pre>
+<p><strong>进场路径</strong>：波兰/欧盟主体 → URE koncesja → PSE/OSD 并网 → TGE 会员/IRGiT 清算 → PSE 注册 POB（或委托）→ 辅助服务预审 → 容量市场资格 → REMIT 报送。<strong>最常见错误</strong>：把容量价当 €/kW·年、用铭牌容量算降额收入、把储能补贴当运营收入、用小时模型、以为 MARI 已接入。</p>
+<h3 id="s51">7A.9 比利时与北欧：五个必须记住的点</h3>
+<ol><li><strong>比利时 CRM 是按报价支付</strong>：Y-4/Y-2/Y-1 三场、单轮密封报价、pay-as-bid、设中间价格上限；新建机组最长 15 年合同，存量 1 年。2025 年 Y-4 中标 4,690 MW，新增电池 179 MW（铭牌 525 MW），价格约 2.7 万 €/MW·年量级（C 级，单位待复核）；Y-2 为 25,100 €/MW·年、Y-1 加权约 14,100 €/MW·年。</li><li><strong>比利时核电延寿改变容量缺口</strong>：Doel 4 与 Tihange 3 延寿至 2035 年，2025-05 联邦法废止 2003 年退核法；不要再用“2025 年退核”的旧假设推 CRM 需求。</li><li><strong>北欧是 12 个报价区，不是一个价</strong>：NO1–NO5、SE1–SE4、DK1–DK2、FI；Nord Pool 先形成系统价、再按联络线约束形成分区价，项目按分区价结算；EPAD 可对冲分区价差，但不是物理 PPA。</li><li><strong>北欧容量工具是“储备”，不是容量市场</strong>：瑞典 effektreserv 目标 800 MW，2025-10-07 拍卖因报价高于 SEK 120,000/MW 上限而未成交；芬兰 tehoreservi；挪威/丹麦没有全国容量市场。储能不能把储备当长期容量年金。</li><li><strong>15 分钟 + 负价是常态变量</strong>：2025-10-01 起 15 分钟 MTU；2025-03-04 起 15 分钟不平衡 + mFRR EAM，不平衡价与日前价重合度从约 33% 降到约 3%，平衡成本从约 1 €/MWh 升到 5–6 €/MWh（B/C 级）；芬兰 2024 年约 8%、瑞典约 7% 小时为负价。丹麦海上风电走 20 年 CfD，瑞典 2025 年修法允许新建核电，四国准入规则各不相同。</li></ol>
+<p><strong>三个常用公式</strong></p>
+<pre><code>CRM 收入 = 降额容量(MW) × 中标价(€/MW·年)
+分区套利 = (分区放电价 − 分区充电价 ÷ 效率) × 放电量
+EPAD 现金流 = (分区价 − 系统价) × 合约电量</code></pre>
+<p><strong>进场路径</strong>：比利时主体 → Elia 并网 → Belpex/EPEX + BRP → CRM 资格/担保 → REMIT；北欧主体 → 各国 TSO/DSO 并网 → Nord Pool 会员 → 各国 TSO 注册 BRP → 辅助服务预审 → REMIT。<strong>最常见错误</strong>：把 CRM 当统一出清价、用铭牌容量算 CRM、把 Nord Pool 当一个报价区、把 effektreserv/tehoreservi 当容量市场、用欧元统一折算 SEK/NOK/DKK。</p>
+<h3 id="s52">7A.10 同一问题，八边怎么答</h3>
+<div class="table-wrap"><table><thead><tr><th>问题</th><th>澳大利亚 NEM</th><th>德国 DE-LU</th><th>英国 GB</th><th>意大利</th><th>西班牙</th><th>荷兰</th></tr></thead><tbody><tr><td>“现在现货价多少”</td><td>先问区域；看 5 分钟 dispatch price</td><td>先问日前还是日内；看 DE-LU 对应 MTU</td><td>先问日前还是 BM；看 EPEX GB 或 BOALF</td><td>先问报价区；看 MGP 分区价，PUN 只作参考</td><td>先问西班牙/葡萄牙报价区；看 OMIE 15 分钟价</td><td>看 EPEX NL 15 分钟价；不要用德国价替代</td></tr><tr><td>“价格上限多少”</td><td>2026-27 MPC/CPT/APC，带财年</td><td>日前/日内最低价不同；上限由 ACER 统一校验</td><td>批发无行政价格带；CM 上限 £75/kW·年</td><td>以 GME/ARERA 当年规则为准</td><td>日前 -600/+4,000；日内 ±9,999 €/MWh</td><td>按 EPEX/欧盟规则；日内下限 -9,999 €/MWh 量级</td></tr><tr><td>“怎么锁价”</td><td>ASX 期货、OTC、PPA、CfD/LTESA</td><td>EPEX 日前/日内、OTC、PPA、零售套餐</td><td>EPEX GB、OTC、PPA、CfD</td><td>GME 产品、OTC、PPA、FER X CfD</td><td>OMIE 日前/日内、PPA、容量合同</td><td>EPEX 日前/日内、PPA、tolling、拥堵合同</td></tr><tr><td>“储能怎么赚钱”</td><td>能量套利 + FCAS + CIS/州 scheme</td><td>能量套利 + FCR/aFRR/mFRR + 容量机制（2031 起）</td><td>能量套利 + BM + CM + 辅助服务；LDES 走 cap and floor</td><td>能量套利 + MSD/MB + 容量市场 + MACSE</td><td>能量套利 + 辅助 + 容量市场（待首拍）+ 补贴</td><td>能量套利 + FCR/aFRR/mFRR + 拥堵合同（无容量市场）</td></tr><tr><td>“新能源支持”</td><td>LGC/SRES、CIS</td><td>EEG 拍卖 + 滑动溢价；负价归零</td><td>CfD（独立储能通常不适用）</td><td>FER X 双向 CfD、NZIA 专项</td><td>PNIEC、RD 997/2025、RDL 7/2026、招标</td><td>SDE++（非独立电池）、净计量 2027 退出</td></tr><tr><td>“阻塞怎么处理”</td><td>区域价 + 约束 + MLF/IRLF</td><td>单一报价区 + Redispatch 2.0</td><td>BM + 网络约束；TNUoS 信号</td><td>七区价差 + MSD/再调度</td><td>双区价差 + 再调度/技术约束</td><td>接入排队 + 非 firm 合同 + 拥堵管理</td></tr><tr><td>“怎么进场”</td><td>AEMO 注册 + 计量 + prudential</td><td>主体 + REMIT + 平衡组 + EPEX/ECC</td><td>主体 + Ofgem 许可/豁免 + BSC/BMU + CM</td><td>主体 + GME 会员 + Terna BRP/BSP + MACSE</td><td>主体 + 并网 + OMIE + REE BRP + 担保 + REMIT</td><td>主体 + 并网 + EPEX + BRP + 担保 + REMIT</td></tr><tr><td>“最大风险”</td><td>MLF、FCAS 机会成本、prudential</td><td>平衡责任、EEG 负价、电网费、REMIT</td><td>BM 跳过、CM 履约与折算、并网排队</td><td>分区价差、MACSE 履约、许可与并网</td><td>容量首拍、并网/构网、15 分钟偏差</td><td>接入排队、无容量市场、非 firm、SDE++ 误读</td></tr></tbody></table></div>
+<p><strong>新增市场同一问题怎么答</strong></p>
+<div class="table-wrap"><table><thead><tr><th>问题</th><th>波兰</th><th>比利时</th><th>北欧四国</th></tr></thead><tbody><tr><td>“现在现货价多少”</td><td>看 TGE RDN 15 分钟价；不用德国价替代</td><td>看 Belpex 15 分钟价；不是 DE-LU</td><td>先问报价区；看分区价，系统价只作参考</td></tr><tr><td>“价格上限多少”</td><td>欧盟 SDAC/SIDC；日前下限约 -€500/MWh、日内 ±€9,999/MWh</td><td>同欧盟 SDAC/SIDC</td><td>同欧盟 SDAC/SIDC</td></tr><tr><td>“怎么锁价”</td><td>TGE 日前/日内、OTC、PPA、OZE CfD、容量合同</td><td>Belpex/EPEX、OTC、PPA、CRM</td><td>Nord Pool、Nasdaq 期货/EPAD、PPA、CfD</td></tr><tr><td>“储能怎么赚钱”</td><td>容量市场 + 套利 + 辅助 + NFOŚiGW 资本补贴</td><td>CRM + 套利 + FCR/aFRR/mFRR</td><td>套利 + 辅助 + 储备（不是容量市场）</td></tr><tr><td>“新能源支持”</td><td>OZE 拍卖 15 年 CfD；2026 年 76.1 TWh</td><td>海上风电 CfD；无独立电池补贴</td><td>各国招标/CfD；丹麦海上 20 年 CfD</td></tr><tr><td>“阻塞怎么处理”</td><td>并网排队 + 跨境容量</td><td>并网/许可 + 互联</td><td>分区价差 + 联络线 + EPAD</td></tr><tr><td>“怎么进场”</td><td>URE 许可 + PSE/OSD 并网 + TGE/IRGiT + POB + 容量注册</td><td>Elia 并网 + Belpex/EPEX + BRP + CRM 资格</td><td>各国 TSO/DSO 并网 + Nord Pool + 各国 BRP</td></tr><tr><td>“最大风险”</td><td>降额/可用性考核、政策变动、补贴误当收入</td><td>CRM 考核/价格上限、单位口径</td><td>分区价差、水电/负价、四国规则差异</td></tr></tbody></table></div>
+<h3 id="s53">7A.11 答题纪律（海外市场专用）</h3>
+<ol><li><strong>先确认“哪个市场、哪个区域、哪个时点”</strong>：澳洲先问州/区域，德国先问日前/日内、CET/CEST，英国先问日前/BM、GB 时间，意大利先问报价区与 MGP/MSD，西班牙先问西班牙/葡萄牙报价区与 OMIE 时段，荷兰先确认 EPEX NL（不是 DE-LU），波兰先确认 TGE RDN（不是德国价），比利时先确认 Belpex（不是 DE-LU/法国价），北欧先确认 12 个报价区中的哪一个；不要用“欧洲电价”“澳洲电价”一概而论。</li><li><strong>币种与单位</strong>：AUD/MWh、EUR/MWh、GBP/MWh、PLN/MWh、SEK/NOK/DKK/MWh；不要与人民币/元每度混算。必要时给换算，但注明汇率时点。</li><li><strong>时区</strong>：NEM 固定 AEST；德国/意大利/西班牙/荷兰/波兰/比利时/瑞典/挪威/丹麦 CET/CEST 切换；芬兰 EET/EEST；英国 GMT/BST 切换，且 EPEX GB 关闸时间以 CET 标注；关闸、结算、报表时间必须统一。</li><li><strong>规则层级</strong>：澳洲 NER + AEMO Procedure；德国 EnWG/StromNEV/EEG + BNetzA/EPEX 规则；英国 BSC/CUSC + NESO/Ofgem 规则；意大利 TIDE + ARERA/GME/Terna 规则；西班牙 BOE 法令 + OMIE/REE/CNMC 规则；荷兰 Energiewet + ACM/TenneT 规则；波兰能源法 + URE/PSE/TGE 规则；比利时电力法 + CREG/Elia 规则；北欧 Nord Pool 规则 + 各国 TSO 规则；欧盟耦合规则只讲与交易相关的部分。</li><li><strong>来源分级</strong>：官方规则/公告 A；交易所/监管数据 A/B；媒体/转引 B/C；测算 D。容量机制规模、CIS/MACSE/波兰容量拍卖/比利时 CRM 结果、西班牙首拍时间、荷兰接入排队、北欧储备拍卖等易变数字，必须标级别与时点。</li><li><strong>不替代当地意见</strong>：注册、税务、REMIT/MiFID、并网、合同，建议当地律师/税务/合规复核；本技能只给交易框架。</li><li><strong>草案 vs 现行</strong>：澳洲可靠性标准建议值、德国 AgNes（2027-01-01 最终决定、2029 年起适用）、EEG 2027 修正案、英国 REMA/TMO4+/LDES 最终参数、意大利 MACSE 次轮与容量市场规则、西班牙容量市场首拍与 RD 997/2025 实施细节、荷兰 Energiewet 实施细则/aFRR 4 小时合同扩展/接入优先排序、波兰容量市场降额与 2026 年 OZE 非价格标准、比利时 CRM 价格单位、北欧 mFRR EAM/PICASSO 接入节奏都可能是建议或未完全落地；回答时写清状态。</li></ol>
+<h3 id="s54">7A.12 仓库阅读路径</h3>
+<ul><li><strong>澳洲细节</strong>：<code>knowledge/澳大利亚NEM电力市场-2026-11.md</code>（五区域、5MS、FCAS、MLF/IRLF、CIS、IESS、进场路径、十个坑）。</li><li><strong>德国细节</strong>：<code>knowledge/德国电力市场-2026-11.md</code>（DE-LU、EPEX、15 分钟、平衡市场、再调度、EEG、容量机制、进场路径、十个坑）。</li><li><strong>英国细节</strong>：<code>knowledge/英国电力市场-2026-11.md</code>（GB 单一市场、EPEX GB、BM/BOALF、容量市场 T-4/T-1、CfD/LDES、TMO4+、进场路径、十个坑）。</li><li><strong>意大利细节</strong>：<code>knowledge/意大利电力市场-2026-11.md</code>（七区、MGP/MI/MSD/MB、MACSE、容量市场、FER X、进场路径、十个坑）。</li><li><strong>西班牙细节</strong>：<code>knowledge/西班牙电力市场-2026-11.md</code>（MIBEL 双区、OMIE 15 分钟、容量市场 TED/966/2026、RD 997/2025、RDL 7/2026、储能并网、进场路径、十个坑）。</li><li><strong>荷兰细节</strong>：<code>knowledge/荷兰电力市场-2026-11.md</code>（EPEX NL、无容量市场、15 分钟结算、SDE++、接入排队/非 firm、储能收益、进场路径、十个坑）。</li><li><strong>波兰细节</strong>：<code>knowledge/波兰电力市场-2026-11.md</code>（单一报价区、rynek mocy 容量市场、OZE 拍卖、NFOŚiGW 储能补贴、POB/DUB、PICASSO/MARI、进场路径、十个坑）。</li><li><strong>比利时与北欧细节</strong>：<code>knowledge/比利时与北欧电力市场-2026-11.md</code>（比利时 CRM Y-4/Y-2/Y-1、核电延寿、12 个北欧报价区、15 分钟不平衡、mFRR EAM、effektreserv、负价、进场路径、十个坑）。</li><li><strong>国际电价比较方法</strong>：<code>knowledge/国际电价比较-方法与模板-2026-11.md</code>（零售电价口径，不与本文批发市场规则混用）。</li><li><strong>中国省间/省内</strong>：<code>knowledge/省间与跨区交易-2026-11.md</code>、<code>knowledge/省级市场状态表-2026-11.md</code>。</li></ul>
 <hr>
-<h2 id="s49">8. 新能源全面入市（136 号文是分水岭）</h2>
+<h2 id="s55">8. 新能源全面入市（136 号文是分水岭）</h2>
 <aside class="note"><p>本章数据截止：2026-11-01（机制电价与 2026-2027 竞价结果逐省更新，引用前核对省份与年份）。</p></aside>
-<h3 id="s50">8.1 政策要点（发改价格〔2025〕136号，2025-02-09）</h3>
+<h3 id="s56">8.1 政策要点（发改价格〔2025〕136号，2025-02-09）</h3>
 <ul><li>新能源上网电量<strong>原则上全部进入电力市场</strong>，上网电价通过市场交易形成；</li><li><strong>以 2025-06-01 全容量并网划断</strong>存量/增量项目；</li><li>市场外建立&quot;<strong>可持续发展价格结算机制</strong>&quot;（机制电价差价结算、多退少补）——本质是市场外 CfD，按电量结算、暂不要求逐时曲线匹配；</li><li>存量机制电价一般≤当地煤电基准价；增量<strong>竞价</strong>形成（设上下限）；执行期各省 10 年或 12 年不等，<strong>以省级方案为准，不能作为全国统一口径</strong>；机制电量规模挂钩非水电消纳责任权重——&quot;老项目保底、新项目竞价&quot;双轨；</li><li>截至 2026-09，多数省份已出台承接方案，<strong>12 省已启动 2027 年竞价</strong>；安徽、贵州正在修订省级 136 号文配套文件；各省竞价结果差异大，不能用一个全国均价概括。</li></ul>
-<h3 id="s51">8.2 各省机制电价速查（2025 存量 + 2026-2027 增量）</h3>
+<h3 id="s57">8.2 各省机制电价速查（2025 存量 + 2026-2027 增量）</h3>
 <div class="table-wrap"><table><thead><tr><th>省份</th><th>存量机制电价</th><th>增量机制</th><th>备注</th></tr></thead><tbody><tr><td>山东</td><td>0.3949 元/kWh（=基准价）</td><td>年度竞价（申报充足率下限 125%）</td><td>首拍：风 0.319、光 0.225 元/kWh</td></tr><tr><td>广东</td><td>0.453 元/kWh</td><td>竞价区间 0.2~0.453 元/kWh</td><td>近 8000 万 kW 入市</td></tr><tr><td>蒙西</td><td>0.2829 元/kWh</td><td>暂不纳入机制</td><td>最保守</td></tr><tr><td>甘肃</td><td>0.3078 元/kWh</td><td>上下限 0.2447/0.1954 元/kWh</td><td>首批按下限成交；首创发电侧容量补偿</td></tr><tr><td>北京</td><td>0.3598 元/kWh</td><td>保底 12 年</td><td>100% 电量纳入</td></tr></tbody></table></div>
 <p><strong>2026-2027 年增量项目竞价结果（截至 2026-10，逐省核对）</strong></p>
 <div class="table-wrap"><table><thead><tr><th>省份</th><th>竞价结果</th><th>规模/备注</th></tr></thead><tbody><tr><td>浙江</td><td>首拍 381.6 元/MWh；第二次 0.242-0.393 元/kWh</td><td>首拍 42.896 亿 kWh、31024 个项目；第二次 133.25 亿 kWh，申报充足率 110%</td></tr><tr><td>湖南</td><td>0.23-0.35 元/kWh</td><td>22.86 亿 kWh</td></tr><tr><td>福建</td><td>0.16-0.39 元/kWh</td><td>83.6 亿 kWh</td></tr><tr><td>广东</td><td>0.20-0.40 元/kWh</td><td>79.34 亿 kWh</td></tr><tr><td>北京</td><td>上限 0.3598 元/kWh</td><td>8.5 亿 kWh</td></tr><tr><td>天津</td><td>上限 0.32 元/kWh</td><td>40 亿 kWh</td></tr><tr><td>江西</td><td>区间 0.24-0.379 元/kWh（C）</td><td>40.8 亿 kWh</td></tr><tr><td>辽宁</td><td>区间 0.18-0.30 元/kWh</td><td>53.08 亿 kWh（风 39.56/光 13.52），2027 竞价 11-08 出清；集中式单项目 ≤60%、分布式 ≤80%</td></tr><tr><td>广西</td><td>区间 0.15-0.36 元/kWh</td><td>单体 ≤80%，风光分开竞价；2025-26 结果风 0.355、光 0.31</td></tr><tr><td>甘肃</td><td>2027 上半年光伏 0.2447、风电 0.2440 元/kWh</td><td>首批按下限附近成交</td></tr></tbody></table></div>
 <ul><li><strong>解读纪律</strong>：浙江首拍 381.6 元/MWh（0.3816 元/kWh）接近上限，是&quot;抢装+机制电量稀缺&quot;的结果，不能当作全国均价；各省竞价区间、申报充足率、执行年限差异极大，回答&quot;机制电价多少&quot;必须先问省份和年份。</li><li><strong>趋势</strong>：2026 年增量竞价整体低于存量机制电价，部分省份（福建、广东）下限已接近 0.16-0.20 元/kWh；新能源&quot;保底收益&quot;下降，倒逼功率预测、曲线分解、储能联合报价能力。</li></ul>
-<h3 id="s52">8.3 入市能力要求（交易能力即收益）</h3>
+<h3 id="s58">8.3 入市能力要求（交易能力即收益）</h3>
 <ul><li>收益模型从&quot;保量保价&quot;变为&quot;市场价 + 机制差价&quot;：午间低谷/负电价常态化 → <strong>功率预测精度、竞价策略、曲线分解成为交易能力刚需</strong>；</li><li>保障利用小时数（全额保障收购）与合理利用小时数（补贴核定，财建〔2020〕4/5号）是两个不同概念：前者管入市边界、后者管补贴退坡；</li><li>消纳责任权重（发改能源〔2019〕807号）+ 绿证（发改能源〔2017〕132号起，2024 年起核发全覆盖）是配额侧支柱；<strong>2025 年绿电交易 3285 亿 kWh（同比 +38.3%），2026 年 1-9 月 2492 亿 kWh（+6.1%）</strong>。绿电增速放缓，说明存量项目入市后&quot;绿电溢价&quot;不再是无限增量，交易能力比&quot;拿指标&quot;更重要。</li></ul>
-<h3 id="s53">8.4 核电入市（2026 新变量）</h3>
+<h3 id="s59">8.4 核电入市（2026 新变量）</h3>
 <ul><li><strong>政策信号</strong>：2026 年核电加速入市，三种地方模式并存（C 级，具体以省级官方文件为准）：<strong>辽宁</strong> 2026-03 建立核电可持续发展价格结算机制——月度机制电量取当月上网电量中每日 21 小时时段的 80%，机制电价按国家核准价（红沿河 1-4 号 0.3823、5-6 号 0.3749，均价 0.3798 元/kWh），差价由电网企业结算、工商业用户分摊；<strong>广西</strong> 自 2026-01 起对核电执行差价合约机制；<strong>广东</strong> 2026 年取消核电变动成本补偿机制，转为直接参与市场竞争。</li><li><strong>市场影响</strong>：核电作为基荷电源，报价通常低于煤电、高于新能源边际成本，入市后会压低现货均价、挤压煤电基荷空间；同时其稳定出力可缓解午间/夜间极端波动，对储能和 VPP 的&quot;稀缺时段&quot;收益形成对冲。</li><li><strong>答题纪律</strong>：涉及核电时，先区分&quot;计划电量/保障性电量&quot;与&quot;市场化电量&quot;；不要把核电简单归入&quot;新能源&quot;，也不要把辽宁、广西的机制电价当作全国规则。</li></ul>
 <hr>
-<h2 id="s54">9. 虚拟电厂与需求响应（市场视角）</h2>
+<h2 id="s60">9. 虚拟电厂与需求响应（市场视角）</h2>
 <aside class="note"><p>本章数据截止：2026-11-01（品种、门槛、补贴）。资源聚合、控制技术、商业模式与国际案例归姊妹技能《虚拟电厂专家》；本章只保留&quot;入市身份、可参与品种、结算与零售传导&quot;。</p></aside>
-<h3 id="s55">9.1 入市身份与规则要点（发改能源〔2025〕357号）</h3>
+<h3 id="s61">9.1 入市身份与规则要点（发改能源〔2025〕357号）</h3>
 <ul><li>定位：<strong>资源聚合类新型经营主体</strong>，可整体参与中长期/现货/辅助服务；开展购售电须售电公司资质。</li><li><strong>目标</strong>：2027 年调节能力 2000 万 kW 以上、2030 年 5000 万 kW 以上；发布时全国约 470 个项目、1685 万 kW。</li><li><strong>规则要点</strong>：单一资源不得同时被两个及以上 VPP 聚合；同一调节行为不得重复获取现货/辅助服务/DR 收益（浙江、福建已明文）；DR 走新型电力负荷管理系统，现货/辅助服务走调度自动化系统。</li><li><strong>2026 年更新</strong>：2026-10-19 现货新规征求意见稿明确新型主体全面参与、新能源+配建储能联合报价，VPP 从&quot;邀约补贴&quot;转向&quot;市场报价&quot;；国家 VPP 管理办法<strong>尚未出台</strong>。</li><li>国标、政策全链条与规模口径见《虚拟电厂专家》§9；<strong>470 个项目/1685 万 kW 是实测最大调节能力，2026-06 媒体&quot;1.2 亿 kW/800+ 项目&quot;是接入口径，不可混用</strong>。</li></ul>
-<h3 id="s56">9.2 可参与品种</h3>
+<h3 id="s62">9.2 可参与品种</h3>
 <ul><li>需求响应（邀约/市场化）、中长期、现货、辅助服务、容量补偿；各省开放顺序不同，先确认当地是否已有现货与辅助服务市场。</li><li>发展阶段判断（邀约型→市场型→自主调度型）属资源聚合侧，见《虚拟电厂专家》第 4 章；本章只讨论&quot;能不能入市、按什么结算&quot;。</li></ul>
-<h3 id="s57">9.3 地方准入门槛与品种（交易视角）</h3>
+<h3 id="s63">9.3 地方准入门槛与品种（交易视角）</h3>
 <div class="table-wrap"><table><thead><tr><th>城市</th><th>准入门槛</th><th>品种与亮点</th></tr></thead><tbody><tr><td>深圳</td><td>接入检测+能力核查+资格审查</td><td>实时精准响应固定 <strong>5 元/kWh</strong>（可叠加省/市/两个细则补贴）；资源聚合平台投资按响应收益 10% 资助（≤200 万/年，<strong>措施有效期至 2025-12-31，已到期</strong>）</td></tr><tr><td>山西</td><td>调节响应能力/时间/精度/聚合能力测试</td><td>负荷类+源网荷储一体化两类；报量报价进现货、参与调频/备用</td></tr><tr><td>上海</td><td>聚合 ≥1MW 且 ≥2h（临港 1000kW/30min）</td><td>&quot;1+5&quot;体系；V2G 奖励 50 元/kW·年；<strong>2025-08 全国首次百万千瓦级调用 116.27 万 kW</strong>（运营商 29 家）</td></tr><tr><td>甘肃</td><td>聚合商门槛 10MW→5MW</td><td>—</td></tr></tbody></table></div>
 <ul><li>完整省级 VPP 政策、门槛与 2026 年新增见《虚拟电厂专家》§9.2 与 <code>knowledge/省级市场状态表-2026-11.md</code>；本表只保留交易侧常用省份。</li><li><strong>DR 补贴行情</strong>：削峰邀约 0~5 元/kWh、填谷 0~1 元/kWh；实时/准实时多地约 2.5 元/kWh；可中断负荷竞价限价 15 元/kW；江苏短时最高 4.8 元/kWh；广州削峰≤3.5 元/kWh；</li><li><strong>车网互动 V2G</strong>：9 城市试点（上海/常州/合肥/淮北/广州/深圳/海口/重庆/昆明）；广州放电补贴≤5 元/kWh（车主约得 3.5）。</li></ul>
-<h3 id="s58">9.4 收益结构与零售侧传导</h3>
+<h3 id="s64">9.4 收益结构与零售侧传导</h3>
 <ul><li>五大收入：DR 补贴、现货峰谷套利、辅助服务、容量补偿、绿电绿证服务；调峰补偿参考约 0.3 元/kWh。</li><li><strong>零售侧约束（2026 新增）</strong>：VPP 的 DR/现货套利收益最终要通过售电公司或用户账单传导。2026 年售电侧普遍亏损、批零倒挂，VPP 收益分成空间被压缩：前 7 月 400+ 售电公司退出；广东上半年 500 家售电公司中 298 家亏损；广西批零倒挂最大 0.373 元/kWh；系统运行费同比约 +93%。评估 VPP 商业模式时，不能只看批发侧价差，必须核对零售侧能否传导。</li><li>分成比例、e2m 佣金、盈利测算与项目案例见《虚拟电厂专家》第 8 章；本节只回答&quot;收益能否传导到用户账单&quot;。</li></ul>
-<h3 id="s59">9.5 国际规则对照（只保留市场设计）</h3>
+<h3 id="s65">9.5 国际规则对照（只保留市场设计）</h3>
 <ul><li><strong>FERC Order 2222</strong>（2020-09）：允许 DER 聚合参与批发市场、聚合最小规模不得超过 100kW；分 ISO 落地：CAISO 与 ISO-NE 自 <strong>2026-11-01</strong> 起实施能量/辅助服务，NYISO 2026-12，PJM 2028/29，MISO 2029 年中，ERCOT 不受管辖（ADER 试点）。&quot;合规方案获批&quot;不等于&quot;已可实际参与&quot;。</li><li>企业案例（Next Kraftwerke、Tesla Autobidder、OhmConnect）与各国规模目标见《虚拟电厂专家》第 10 章，本章不重复。</li></ul>
 <hr>
-<h2 id="s60">10. 碳市场与企业碳管理</h2>
+<h2 id="s66">10. 碳市场与企业碳管理</h2>
 <aside class="note"><p>本章数据截止：2026-11-01（碳价、配额方案、CCER、CBAM 时点）；MRV 与核算方法不受时点限制。</p><p>本章只保留市场规则与碳价概览；履约日历、配额盈缺、CCER 开发测算与碳金融工具归《碳资产管理专家》（<code>skills/carbon-asset-expert/SKILL.md</code>），数字与操作细节以该技能为准。</p></aside>
-<h3 id="s61">10.1 全国碳市场（CEA）框架与演进</h3>
+<h3 id="s67">10.1 全国碳市场（CEA）框架与演进</h3>
 <ul><li><strong>启动</strong>：2021-07-16 上线（上海环交所交易、中碳登注册登记），首批电力行业约 2000 家重点排放单位；</li><li><strong>制度</strong>：配额分配以<strong>基准线法+免费分配</strong>为主、按强度控制不设绝对总量；CCER 抵销上限 <strong>5%</strong>；</li><li><strong>扩围</strong>（2025-03《全国碳市场覆盖钢铁、水泥、铝冶炼行业工作方案》）：2024 为首个管控年度、2025 年底首次履约；截至 2026 年覆盖 <strong>3680 家</strong>（电力 2087、钢铁 232、水泥 962、铝 97），约 <strong>83 亿吨</strong> CO₂，占全国排放 <strong>65% 以上</strong>（管控 CO₂/CF₄/C₂F₆）；下一批拟纳入石化、化工、造纸、民航，<strong>2027 年基本覆盖</strong>主要高排放行业。</li><li><strong>法规</strong>：《碳排放权交易管理暂行条例》（国务院令第 775 号，2024-05-01 施行；<strong>2026-08-08 修订</strong>）——未足额清缴处清缴时限前 1 个月市场均价 <strong>5-10 倍罚款</strong>、报告造假没收+5-10 倍罚款、技术服务机构&quot;双罚&quot;；修订方向是&quot;免费分配为主、逐步引入有偿分配&quot;。</li><li><strong>2025/2026 年度配额方案</strong>：免费分配为主；煤电基准线较上期 <strong>-0.35%</strong>、燃气不变；调峰修正系数上限 <strong>50%</strong>；预分配比例不超过 <strong>50%</strong>；<strong>2019-2024 年度配额不得结转，2025/2026 年度配额可结转</strong>——结转规则是碳价短期波动的直接原因。</li><li>履约节奏：发电配额预分配=上年核查量 70%；<strong>2025 年度清缴率 99.99%</strong>（此前 2023 年度 99.98%、52.44 亿吨）；扩围行业 2025-07 起月度存证。</li></ul>
-<h3 id="s62">10.2 碳价走势（价格感知）</h3>
+<h3 id="s68">10.2 碳价走势（价格感知）</h3>
 <div class="table-wrap"><table><thead><tr><th>时点</th><th>CEA 价格（元/吨）</th></tr></thead><tbody><tr><td>2021-07-16 开盘</td><td>48.00</td></tr><tr><td>2024-04-24</td><td>100.59（首破百）</td></tr><tr><td>2024-11 峰值</td><td>106.02（2024 均价 91.8）</td></tr><tr><td>2025-10 低点</td><td>约 50（履约后需求下降+结转新规）</td></tr><tr><td>2025-12 年末</td><td>74.63</td></tr><tr><td>2026-08 末</td><td><strong>97.90</strong>（较 2025 年末 +31.18%）</td></tr><tr><td>2026-10-08</td><td>94.94</td></tr><tr><td>2026 年 1-8 月</td><td>均价 83.86（区间 72.5-99.69）</td></tr></tbody></table></div>
 <p>8 试点 2024 均价 44.1 元/吨（比全国低约 54%）：北京最高（2024 约 62.7、2025 线上曾破百，唯一设 20~150 元稳定区间）、上海 66.7 稳定、湖北量第一价中位、深圳波动大、津渝弱。<strong>规律：碳价呈&quot;履约期冲高—非履约期回落&quot;的强周期性</strong>；配额紧缩+扩围+结转规则是长期上行主逻辑。引用碳价必须写&quot;日期+市场&quot;（CEA/试点/CCER），不能只说&quot;碳价约 90 元&quot;。</p>
-<h3 id="s63">10.3 CCER（国家核证自愿减排量）</h3>
+<h3 id="s69">10.3 CCER（国家核证自愿减排量）</h3>
 <ul><li><strong>2024-01-22 重启</strong>（北京绿色交易所交易、注册登记系统登记）；2025-03 首批 9 个项目（海上风电+造林碳汇）完成登记；</li><li><strong>方法学</strong>：第一批（2023-10）4 项=造林碳汇、并网光热、并网海上风电、红树林营造；第二批（2025-01）2 项=煤矿低浓度瓦斯、公路隧道照明；2025 年累计发布/征求意见 19 项；</li><li>价格：2025 年成交均价 70.76 元/吨，<strong>高于同期 CEA 均价（62.36）</strong>——供给稀缺；2026 年 10 月中累计 <strong>44 个项目</strong>完成登记/签发，成交均价约 <strong>86.51 元/吨</strong>，仍高于同期 CEA；经验法则&quot;配额价≈CCER价÷0.7&quot;是旧规律，重启后已多次倒挂，必须动态观察，不能当公式用；</li><li>开发实务（书本体例，2016 年时点数据+当前机制）：七步流程（PDD→审定→备案→监测→核查→减排量备案→交易）；计入期 7 年×3 或固定 10 年；全流程约 5-8 个月~1.5-3 年；开发成本一般项目 20-30 万元（林业碳汇 50-100 万元）；合作模式=纯咨询/收益共享（分成通常 20-40%）/买家买断；</li><li>额外性论证核心=IRR 分析（发电类基准 8%、敏感性 ±10%）；<strong>风光发电项目因成本下降大概率丧失额外性</strong>（VCS 已拒收可再生发电）——CCER 机会向甲烷回收、林业碳汇、节能类项目集中。</li></ul>
-<h3 id="s64">10.4 碳核算与 MRV（专家最容易翻车的地方）</h3>
+<h3 id="s70">10.4 碳核算与 MRV（专家最容易翻车的地方）</h3>
 <ul><li>三层体系：<strong>区域清单</strong>（IPCC 2006+省级指南）｜<strong>组织盘查</strong>（GHG Protocol / ISO 14064-1 / 中国 24 行业指南+GB/T 32150）｜<strong>产品碳足迹</strong>（PAS 2050 / ISO 14067 / 欧盟 PEF）；</li><li><strong>公式</strong>：排放 = 活动数据 × 排放因子 × GWP；燃煤 = 消耗量×低位热值×单位热值含碳量×44/12×氧化率；质量平衡法 =（输入碳−输出碳）×44/12；</li><li>范围一二三：范围一直接排放；<strong>范围二外购电热分位置法/市场法</strong>（绿电可计零，考核以市场法为准）；范围三可选；</li><li><strong>电力因子（高频错误点）</strong>：算用电排放用<strong>平均因子</strong>（全国 0.6101→草案 0.5810 tCO2/MWh；区域值停在 2012 年 0.527~0.881）；算减排量只能用<strong>基准线因子</strong>（OM/BM 加权，风光 OM0.75+BM0.25）——OM 误用于企业用电排放是最常见错误；</li><li><strong>核查要点</strong>：记录保存≥10 年；抽样=相似场所按总数平方根、单设施&lt;总量 5% 可抽、月度数据交叉核对≥30%；高频错误=算术平均替代加权平均、固定碳替代元素碳、有实测仍用缺省值、自产自用二次能源重复计入；</li><li>配额口径&quot;补充数据表&quot;与报告口径核算指南<strong>两套数据必然不等</strong>（前者剔除过程排放/固碳扣除/移动源），不可互替。</li></ul>
-<h3 id="s65">10.5 绿电绿证与电碳衔接</h3>
+<h3 id="s71">10.5 绿电绿证与电碳衔接</h3>
 <ul><li><strong>发改环资〔2024〕113号</strong>：绿证纳入产品碳足迹核算国家标准；2025-03《促进绿证市场高质量发展的意见》推动碳核算应用与国际互认；</li><li><strong>边界纪律</strong>：绿证/绿电主张范围二减排，CCER 用于履约抵销（≤5%）或自愿注销——<strong>不可对同一电量/减排量重复主张</strong>；</li><li>出口风险：欧盟《电池法规》碳足迹规则不认可绿证抵扣（全平均/消费地组合边际法）→ 出口企业需<strong>双轨核算</strong>（目标市场认可绿证方可扣减范围二）；</li><li><strong>CBAM（2026 年关键纠错）</strong>：2023-10 过渡期、<strong>2026-01-01 正式实施</strong>，但<strong>证书购买推迟至 2027-02</strong>，首次年度申报与清缴截止 <strong>2027-09-30</strong>；证书价格挂钩 EU ETS 拍卖均价，2026 年 Q1/Q2 参考价约 <strong>75.36/75.28 欧元/吨</strong>；默认值加价 2026 年 <strong>+10%</strong>、2028 年 <strong>+30%</strong>；50 吨以下进口豁免；2028 年起扩至下游约 180 种产品；2026 年 9-10 月起引入第三方核查；英国 CBAM 2027-01-01 实施。覆盖钢铁/水泥/铝/化肥/氢/电力；吨高炉钢出口约缴 44.79 欧元（≈375 元，估算值）vs 国内吨钢利润约 200 元——倒逼&quot;绿电交易+VPP 响应+碳足迹核算+储能套利&quot;组合。<strong>不要把&quot;2026-01-01 实施&quot;说成&quot;2026 年就要买证书&quot;</strong>。</li><li><strong>绿证 2026 年行情（新增）</strong>：2026-09 核发 <strong>3.26 亿张</strong>、可交易 <strong>1.97 亿张</strong>（60.45%）、交易 <strong>5843 万张</strong>；年份价差极大——2024 年份约 <strong>0.56 元/张</strong>、2025 年份约 <strong>1.60 元/张</strong>、2026 年份约 <strong>6.16 元/张</strong>（相差约 11 倍）；9 月绿证指数 190.5，环比 -6.0%、同比 -12.3%；1-9 月累计核发 26.5 亿张。答题时问&quot;绿证多少钱&quot;必须先问年份与核发时间，不能用单一价格。</li><li><strong>国际机制</strong>：GHG Protocol Scope 2 修订预计 2027 年 Q2（争议=小时级匹配）；SBTi 净零标准；巴黎协定第六条 ITMO 将联通全球碳价（2013 年后注册 CDM-CER 为首批候选资产）。</li></ul>
-<h3 id="s66">10.6 企业碳管理方法论（碳管理咨询框架）</h3>
+<h3 id="s72">10.6 企业碳管理方法论（碳管理咨询框架）</h3>
 <ul><li>打法闭环：<strong>摸底（盘查）→ 目标（SBTi/强度指标）→ 方案（七方向：管理减排/节能增效/提高绿电/电气化/零碳就绪/原燃料替代/非能源减排）→ 抵消（环境权益只用前 3 年内产生且必须注销；就近原则：直购&gt;同电网&gt;同国家）→ 沟通（年度报告、CDP 评级 A-F 共 9 级）→ 体系（ISO 50001 PDCA）</strong>；</li><li><strong>碳中和时间纪律</strong>：自身运营 2030、全产业链 2050、任何维度不晚于 2060；扩张型行业（风光储、新能源车）宜用碳强度指标；</li><li>内部碳定价三档：技改奖励→碳成本入账→内部碳交易（全球 200+ 家推行、均价约 20 美元/吨）；</li><li><strong>碳资产管理体系七件套</strong>：低碳领导小组、年度碳盘查、减排潜力分析、节能管理（GB/T 23331）、碳资产投资、交易管理、内控（VAR+压力测试+分级授权）；</li><li>交易策略：按排放预测判断盈缺、低买高卖分批操作；<strong>履约前抢购会推高碳价 20%~30%</strong>（历史上 50-60 元抬到 75-80 元）——履约期流动性风险是碳资产管理第一风险。</li></ul>
 <hr>
-<h2 id="s67">11. 交易策略与风险管理</h2>
+<h2 id="s73">11. 交易策略与风险管理</h2>
 <aside class="note"><p>本章数据截止：2026-11-01（零售亏损、系统运行费、风险防控与信用监管为 2026 年数据与草案）；策略框架不受时点限制。</p></aside>
-<h3 id="s68">11.1 发电侧策略</h3>
+<h3 id="s74">11.1 发电侧策略</h3>
 <ul><li>收益三段式=中长期合约+现货电能量+辅助服务；短期靠<strong>次日出清电价预测</strong>构造投标策略，长期靠边际电价预测定合约/竞价电量比例；</li><li>报价方式：报量报价（多段量价对，可成边际机组定价）vs 报量不报价（价格接受者）；报价曲线 3~10 段；</li><li><strong>单机最优</strong>：MC=π 时利润最大；计空载成本须价高于某门槛才真正盈利（算例：价≥13.26 满发、≤11.18 停机）；机组组合跨时段权衡——低价时段亏损运行可能优于停机再开（省启动费）；</li><li>完全竞争下按边际成本报价最优；实际寡头格局下常用：边际成本上下浮、预估市场边际略低申报、预判对手、市场仿真；</li><li><strong>水电</strong>：径流式作价格接受者或报量报价；梯级联合调度以梯级效益最大为目标；抽蓄循环效率约 75%（套利硬门槛），峰谷差缩小套利转负。</li></ul>
-<h3 id="s69">11.2 售电公司与大用户策略</h3>
+<h3 id="s75">11.2 售电公司与大用户策略</h3>
 <ul><li>售电公司赚批零价差，<strong>集中承担现货价格波动风险，风控能力即竞争力</strong>；零售套餐须差异化、传导批发价格信号；</li><li>负荷预测是第一道门槛：每个交易窗口、精确到 15 分钟级、需精确到节点或用户群；聚合预测误差可压至 1.5%~2%——<strong>预测精度有直接经济价值</strong>（算例：零售价 38.50、购电均价 39.23 → 亏 1154；预测准确可赚 2896）；</li><li>大用户购电组合：中长期高比例锁价（80%~95%）+ 现货浮动敞口 + 储能/VPP 调节；退回电网代理购电按 <strong>1.5 倍</strong>执行（发改办价格〔2021〕809号）——不入市有明确惩罚；</li><li>零售定价要覆盖：批发成本+偏差考核+输配电价+基金附加+运营成本+利润。</li><li><strong>2026 年零售侧生存现状（媒体/行业口径，逐条标注）</strong>：2026 年前 7 月 <strong>400+ 售电公司退出</strong>；广东上半年 500 家售电公司中 <strong>298 家亏损</strong>；广西批零倒挂最大 <strong>0.373 元/kWh</strong>；贵州 1-2 月亏损超 <strong>4000 万元</strong>；安徽 1 月亏损超 <strong>1.19 亿元</strong>；山西度电亏损约 <strong>2 分</strong>；系统运行费 2026 年 Q1-Q3 约 <strong>0.068 元/kWh</strong>（同比约 +93%）；约 <strong>11 省</strong>取消或市场化固定分时电价，零售套餐失去&quot;固定峰谷价差&quot;保护。</li><li><strong>监管新规</strong>：2026-09-04《售电公司管理办法（征求意见稿）》、2026-09-30《电力市场风险防控管理办法（征求意见稿）》（7 章 32 条）、《电力零售市场基本规则》待出；方向是提高准入、强化履约保函/风险准备金、监测批零倒挂、建立退出机制。</li><li><strong>策略结论</strong>：售电公司从&quot;吃批零价差&quot;转向&quot;预测能力+风控能力+套餐设计+用户服务&quot;；VPP/储能/绿电的收益必须经过零售侧传导，不能假设批发侧收益自动落到用户账单。</li></ul>
-<h3 id="s70">11.3 市场力识别与监管指标（懂监管才能懂策略边界）</h3>
+<h3 id="s76">11.3 市场力识别与监管指标（懂监管才能懂策略边界）</h3>
 <div class="table-wrap"><table><thead><tr><th>类别</th><th>指标</th><th>阈值/判据</th></tr></thead><tbody><tr><td>结构</td><td>CR4/CR8</td><td>40 分界；CR8≥70 极高寡占</td></tr><tr><td>结构</td><td>HHI</td><td>≥1800 高寡占；1000~1800 低寡占；&lt;1000 竞争型</td></tr><tr><td>结构</td><td>KSI 关键供应指数</td><td>容量&gt;其余容量与需求之差即关键供应商</td></tr><tr><td>结构</td><td>RSI 剩余供给指数</td><td>&lt;100% 即市场被依赖</td></tr><tr><td>局部</td><td>TTS 三寡头测试</td><td>PJM 用于阻塞区</td></tr><tr><td>行为</td><td>勒纳指数 (π−MC)/π</td><td>完全竞争=0</td></tr><tr><td>行为</td><td>边际机组形成率</td><td>远高于发电量占比→有市场力嫌疑</td></tr><tr><td>行为</td><td>申报充足率</td><td>加州 125% 为竞争充分阈值、&gt;150% 无需限价</td></tr><tr><td>操纵三行为</td><td>经济持留（报高价）/容量持留（制造短缺）/串谋</td><td>加州危机主因；事前限价→事中替换报价→事后处罚</td></tr></tbody></table></div>
-<h3 id="s71">11.4 五类市场风险与防范</h3>
+<h3 id="s77">11.4 五类市场风险与防范</h3>
 <p>①电网运行安全（&quot;双高&quot;：高比例新能源+电力电子；监控供需比/断面负载率/备用并预警）；②市场力（限份额、持留监控、FTR 稀释）；③长期供应（容量机制，见 5.3）；④价格波动（科学限价、期货期权对冲、虚拟投标）；⑤主体信用（履约保函、信用额度=无担保信用+担保信用，占用超 100% 未补足暂停交易资格）。</p>
-<h3 id="s72">11.5 主体能力建设清单（现货入市&quot;体检表&quot;）</h3>
+<h3 id="s78">11.5 主体能力建设清单（现货入市&quot;体检表&quot;）</h3>
 <ul><li>规则层：注册/信用管理、各品种流程、结算公式、披露时限；</li><li>技术层：技术支持系统专用工作站、申报/披露时间节点、15 分钟级发用电预测；</li><li>策略层：电价预测模型、报价决策、中长期+现货+辅服组合优化；</li><li>风控层：价格风险敞口管理、偏差考核模拟、现金流压力测试、结算对账（日清分核对）。</li></ul>
-<h3 id="s73">11.6 2026 年风险防控与信用监管（新增）</h3>
+<h3 id="s79">11.6 2026 年风险防控与信用监管（新增）</h3>
 <ul><li><strong>《电力市场风险防控管理办法（征求意见稿）》（2026-09-30，7 章 32 条）</strong>：覆盖价格异常、供需失衡、市场力、信用违约、结算风险、技术系统风险等；要求交易机构建立监测—预警—处置闭环，主体建立风险准备金/履约保障。</li><li><strong>《全国统一电力市场信用评价指引（征求意见稿）》（2026-10-19）</strong>：统一信用评价指标、等级与披露，信用结果与准入、交易权限、保证金挂钩。</li><li><strong>《能源保供中长期合同管理办法（试行）》（发改委令 50 号，2026-12-01 施行）</strong>：能源保供中长期合同的签约、履约、监管制度化，保供合同不再是&quot;临时协调&quot;。</li><li><strong>《电力并网运行管理规定（征求意见稿）》（国家能源局 2026-09-30）</strong>：并网运行、涉网性能、考核与退出规则更新，VPP/储能/分布式电源的并网责任更明确。</li><li>答题提示：以上除 50 号令外多为征求意见稿，回答时注明&quot;草案/拟施行&quot;，不要当作已生效法规。</li></ul>
 <hr>
-<h2 id="s74">12. 关键公式速查</h2>
+<h2 id="s80">12. 关键公式速查</h2>
 <div class="table-wrap"><table><thead><tr><th>公式</th><th>表达</th><th>用途</th></tr></thead><tbody><tr><td>LMP</td><td>πₙ = 边际电能 + 边际阻塞（μ×PTDF）+ 边际网损</td><td>节点定价</td></tr><tr><td>阻塞盈余</td><td>(π受 − π送) × 过断面电量</td><td>FTR 资金来源</td></tr><tr><td>FTR 收益</td><td>F × (π_W − π_S)，可为负</td><td>阻塞对冲（义务型）</td></tr><tr><td>CfD 结算</td><td>Σ[(合约价 − 基准价) × 合约电量]</td><td>中长期差价结算</td></tr><tr><td>发电三段式收入</td><td>合约差价 +（日前出清−中长期分解）×日前价 +（实际−日前）×实时价</td><td>集中式现货结算</td></tr><tr><td>市场力</td><td>(π−MC)/π = sᵢ/ε</td><td>抬价空间评估</td></tr><tr><td>等边际调度</td><td>dCᵢ/dPᵢ = λ（λ=影子价格）</td><td>经济调度</td></tr><tr><td>单机决策</td><td>MC=π 利润最大；满发/停机看含空载门槛</td><td>报价与启停</td></tr><tr><td>备用机会成本</td><td>备用价 = 电能价差（如 28−17=11）</td><td>联合出清定价</td></tr><tr><td>ATC</td><td>ATC = TTC − TRM − ETC(含CBM)</td><td>省间可用输电能力</td></tr><tr><td>碳排放</td><td>活动数据 × 排放因子 × GWP；燃煤=量×热值×含碳量×44/12×氧化率</td><td>碳核算</td></tr><tr><td>减排量（项目）</td><td>基准线排放 − 项目排放（须证额外性，IRR 对标 8%）</td><td>CCER 开发</td></tr><tr><td>电网因子选用</td><td>用电排放=平均因子；项目减排=OM/BM 基准线因子</td><td>电碳耦合</td></tr><tr><td>CBL 基线</td><td>相似日（近 5 同类日、剔除偏离 ±25%）平均 × 修正系数</td><td>VPP/DR 结算</td></tr><tr><td>抽蓄套利</td><td>峰谷价差 &gt; 价差门槛（效率 75%+充放电损耗）</td><td>储能测算</td></tr><tr><td>煤电容量电价</td><td>330 元/kW·年 × 回收比例（2024-25 约 30%→2026 起 ≥50%）</td><td>煤电固定成本；165 为 50% 下限主流值</td></tr><tr><td>独立储能容量电价</td><td>当地煤电容量电价 ×（满功率连续放电时长 ÷ 最长净负荷高峰持续时长），≤1 倍</td><td>发改价格〔2026〕114号；清单制</td></tr></tbody></table></div>
 <hr>
-<h2 id="s75">13. 术语表（中英对照精选）</h2>
+<h2 id="s81">13. 术语表（中英对照精选）</h2>
 <div class="table-wrap"><table><thead><tr><th>术语</th><th>英文</th><th>一句话解释</th></tr></thead><tbody><tr><td>现货市场</td><td>Spot Market</td><td>日前/日内/实时电能量集中竞价市场</td></tr><tr><td>节点边际电价</td><td>LMP (Locational Marginal Price)</td><td>节点增 1MW 负荷的边际供电成本=电能+阻塞+网损</td></tr><tr><td>安全约束机组组合</td><td>SCUC (Security Constrained Unit Commitment)</td><td>计及电网与机组约束的启停优化（混合整数规划）</td></tr><tr><td>安全约束经济调度</td><td>SCED (Security Constrained Economic Dispatch)</td><td>计及约束的出力优化（滚动）</td></tr><tr><td>差价合约</td><td>CfD (Contract for Differences)</td><td>按合约价与基准价差结算的金融合同</td></tr><tr><td>金融输电权</td><td>FTR (Financial Transmission Right)</td><td>对冲节点价差（阻塞）的金融权利</td></tr><tr><td>物理输电权</td><td>PTR (Physical Transmission Right)</td><td>规定断面输送规定功率的物理使用权</td></tr><tr><td>失负荷价值</td><td>VOLL (Value of Lost Load)</td><td>停电损失价值，价格上限的理论基准</td></tr><tr><td>可用输电能力</td><td>ATC (Available Transfer Capability)</td><td>已有交易之外的剩余输电容量</td></tr><tr><td>母线负荷预测</td><td>Bus Load Forecasting</td><td>节点级负荷预测，LMP 计算依据</td></tr><tr><td>市场力</td><td>Market Power</td><td>高于竞争性价格定价并维持的能力</td></tr><tr><td>持留</td><td>Withholding</td><td>经济持留（抬价）/物理持留（少报容量）</td></tr><tr><td>日前/实时偏差结算</td><td>Two-Settlement</td><td>日前金融性+实时物理性的双结算体系</td></tr><tr><td>平衡机制</td><td>Balancing Mechanism</td><td>分散式市场的实时平衡（英国 BM）</td></tr><tr><td>需求响应</td><td>DR (Demand Response)</td><td>用户改变用电模式减移负荷</td></tr><tr><td>虚拟电厂</td><td>VPP (Virtual Power Plant)</td><td>聚合分布式资源作为特殊电厂参与市场</td></tr><tr><td>基线负荷</td><td>CBL (Customer Baseline Load)</td><td>需求响应结算的&quot;不响应反事实&quot;负荷</td></tr><tr><td>车网互动</td><td>V2G (Vehicle-to-Grid)</td><td>电动车反向放电参与调节</td></tr><tr><td>绿证</td><td>GEC (Green Electricity Certificate)</td><td>1 张=1MWh 可再生电力环境属性</td></tr><tr><td>全国碳市场</td><td>China ETS</td><td>CEA 配额交易（上海交易、武汉登记）</td></tr><tr><td>国家核证自愿减排量</td><td>CCER</td><td>项目减排量，可抵销 5% 配额清缴</td></tr><tr><td>范围一/二/三</td><td>Scope 1/2/3</td><td>直接排放/外购电热/其他间接</td></tr><tr><td>碳关税</td><td>CBAM</td><td>欧盟碳边境调节机制（2026-01-01 实施；证书购买 2027-02 起，首次清缴 2027-09-30）</td></tr><tr><td>科学碳目标</td><td>SBTi</td><td>国际减排承诺倡议（1.5℃/2℃对标）</td></tr><tr><td>监视-估计-状态估计</td><td>State Estimation</td><td>由量测推定系统状态的数据底座</td></tr></tbody></table></div>
 <hr>
-<h2 id="s76">14. 专家问答推理手册</h2>
-<h3 id="s77">14.1 问题分型与答题路径</h3>
+<h2 id="s82">14. 专家问答推理手册</h2>
+<h3 id="s83">14.1 问题分型与答题路径</h3>
 <ol><li><strong>概念原理型</strong>（&quot;什么是 LMP/为什么要建现货&quot;）：定义 → 构成/成因 → 中国语境下的差异 → 一句话落地含义。引第 1、3 章。</li><li><strong>规则操作型</strong>（&quot;山东光伏怎么结算/山西怎么申报&quot;）：先确认省份与主体身份 → 查对应省规则要点（第 7、8 章速查表）→ 给出流程与时间节点 → 提醒以省交易中心最新规则为准。</li><li><strong>测算型</strong>（&quot;这个储能项目能赚多少/VPP 收益&quot;）：先问清边界（省份、规模、资源类型、现有合同）→ 给出收入项框架（第 9.4/11 章）→ 关键参数给区间并标注来源时点 → 明确假设敏感性（如峰谷差收窄 20% 的后果）。</li><li><strong>政策解读型</strong>（&quot;136 号文影响&quot;）：文号+发布时间 → 核心机制 → 存量/增量划断 → 对不同主体的影响分述 → 执行细则以省级文件为准（附已知省份对比表）。</li><li><strong>预测判断型</strong>（&quot;明年碳价怎么看&quot;）：驱动因素（供给/需求/政策/季节）→ 历史区间与规律（履约周期性）→ 情景区间 → 风险与免责声明。</li><li><strong>跨域综合型</strong>（&quot;出口钢厂怎么应对 CBAM&quot;）：拆解为碳核算（第 10.4）+ 绿电采购（第 10.5）+ 电力成本优化（第 9、11 章）+ 时间表，给行动清单。</li></ol>
-<h3 id="s78">14.2 常见误区清单（主动纠正用户）</h3>
+<h3 id="s84">14.2 常见误区清单（主动纠正用户）</h3>
 <ol><li>把&quot;813 号文&quot;当现货基本规则（实为 1217 号；813 是配套通知）；</li><li>认为中长期合同物理执行（集中式下是差价合约、只结算不执行）；</li><li>把调峰当国际通用辅助服务品种（中国特色，正被现货吸收）；</li><li>用 OM 基准线因子算企业用电排放（应该用平均因子）；</li><li>认为绿证可直接抵扣欧盟电池法碳足迹（不被认可）；</li><li>把现货负电价当&quot;市场失灵&quot;（是价格发现功能，配套灵活性即可）；</li><li>认为容量电价=容量市场（补偿是行政定价、市场是竞争形成）；</li><li>忽视结算确认时限（逾期视为无异议自动确认）；</li><li>把 CCER 当作可无限供给（额外性约束下风光难入，供给稀缺推高价格）；</li><li>用单一现货价格比较省份（须同时比限价结构、新能源占比、机制电价）；</li><li>把 2026-10-19 现货新规征求意见稿当现行规则（拟 2027-01-01 施行，2026 年仍按 1217 号文及各省细则）；</li><li>把 CBAM&quot;2026-01-01 实施&quot;说成&quot;2026 年就要买证书&quot;（证书购买推迟至 2027-02，首次清缴 2027-09-30）；</li><li>把 PJM 2027/28 的 329.17 美元/MW·日标成 2028/29（后者为 325 美元/MW·日，2026-07-14 出清）。</li></ol>
-<h3 id="s79">14.3 数据时效纪律</h3>
+<h3 id="s85">14.3 数据时效纪律</h3>
 <ul><li>本 skill 书本知识时点：电力现货部分 2019-2023；碳实务部分 2016 年数据（机制仍有效、数字需更新）；碳管理 2021；网络调研 <strong>2026-11-01</strong>；时间敏感章节（第 2~11 章）在标题下或章首标注数据截止，未标注的原理性章节不受时点限制；</li><li><strong>口径字典</strong>：交易电量（市场化/中长期/绿电）、现货省份数、容量电价、系统运行费、136 存量/增量、VPP 四类容量、碳配额、CBAM 证书、绿证、PJM 价格等指标的定义与常见误用，见 <code>knowledge/索引与口径-2026-11.md</code>；引用前先确认口径；</li><li>政策类数字（转正名单、机制电价、补贴标准、容量电价比例、碳价）<strong>每月都在变</strong>——回答时给出&quot;截至时点+查证入口&quot;；2026 年 9-10 月的现货新规、售电办法、风险防控办法、信用评价指引均为征求意见稿，必须标注状态；</li><li><strong>高频查证入口</strong>：国家发改委官网（价格/运行）、国家能源局（市场监管/资质）、各省发改委/能源局、北京电力交易中心与省交易中心平台、南方区域电力交易平台、全国碳交易网（cets.com.cn）、中碳登、ICAP 年报。</li></ul>
 <hr>
-<h2 id="s80">15. 知识来源与维护</h2>
-<h3 id="s81">15.1 书籍来源</h3>
+<h2 id="s86">15. 知识来源与维护</h2>
+<h3 id="s87">15.1 书籍来源</h3>
 <ol><li>《电力现货市场101问》国家电力调度控制中心组编，中国电力出版社 2021 —— 现货概念、机制、国内外模式主干</li><li>《电力现货市场实务》国家电力调度控制中心组编，中国电力出版社 2023 —— 架构、出清、结算、技术支持系统、省际实践</li><li>《电力系统经济学原理》Daniel S. Kirschen &amp; Goran Strbac 著，朱治中 译 —— 市场经济学理论、LMP/阻塞/投资理论、经典算例</li><li>《中国碳排放权交易实务》孟早明、葛兴安等 —— 碳市场机制、试点对比、MRV、CCER 开发</li><li>《碳管理：从零通往碳中和》汪军 —— 碳核算体系、碳资产开发、企业碳管理</li><li>《经济学原理》微观/宏观分册（曼昆）—— 基础经济学框架（供需、弹性、市场结构、外部性）</li></ol>
-<h3 id="s82">15.2 政策与市场调研（2025-2026-11）</h3>
+<h3 id="s88">15.2 政策与市场调研（2025-2026-11）</h3>
 <ul><li>政策：发改委 20 号令、1217 号、1501 号、136 号、357 号、394 号、1656 号；<strong>2026 年新增</strong>国办发〔2026〕4号、发改价格〔2026〕114号、发改能源〔2026〕688号、发改委令 50 号、《电力现货市场基本规则（征求意见稿）》（2026-10-19）、《售电公司管理办法（征求意见稿）》、《电力市场风险防控管理办法（征求意见稿）》、《全国统一电力市场信用评价指引（征求意见稿）》、《电力并网运行管理规定（征求意见稿）》；《电力辅助服务市场基本规则》（2025-04）、《碳排放权交易管理暂行条例》（775 号令，2026-08-08 修订）、CBAM 法规等；</li><li><strong>数据</strong>：能源局《2025 年度中国电力市场发展报告》、2026 年 1-9 月市场化交易数据、南方区域电力市场转正数据、各省交易中心年报、全国碳市场 2025/2026 配额方案、复旦碳价指数、ICAP；</li><li>以上来源逐条标注 URL 与日期；完整调研记录见仓库 <code>knowledge/</code> 目录下的调研笔记。<strong>2026-11 更新时发现的口径冲突（2025 年中长期 4.81 vs 6.3522 万亿、绿电 0.27 vs 0.3285 万亿、PJM 329.17 年份）已在正文修正，引用旧笔记时以本 SKILL 为准。</strong></li><li><strong>2026-11 新增维护件（优先查这三份）</strong>：<ul><li><code>knowledge/索引与口径-2026-11.md</code> —— 政策文号索引表（发文日/施行日/状态）、口径字典、A/B/C/D 来源分级、2026-2027 观察清单；</li><li><code>knowledge/省级市场状态表-2026-11.md</code> —— 33 个省级市场与南方区域市场的一行式状态表（现货/136 竞价/容量电价/VPP/辅助服务/零售风险）；</li><li><code>knowledge/黄金问答集-2026-11.md</code> —— 28 个高频问题的标准答案要点与常见错误，兼作改版回归测试清单；</li><li><code>knowledge/调研-电力市场2026-10增量.md</code>、<code>knowledge/调研-碳市场与CBAM-2026-10增量.md</code> —— 本轮事实更新的底稿与&quot;待核实&quot;清单。</li></ul></li><li><strong>与姊妹技能的分工</strong>：本技能负责市场规则、结算、价格机制、零售与碳市场概览；资源聚合、控制技术、VPP 商业模式与设备侧测算归《虚拟电厂专家》；履约日历、配额盈缺、CCER 开发测算、碳金融工具与 CBAM 操作归《碳资产管理专家》。重叠处只保留一句指引，数字与口径以被引用方为准，避免两处不一致。</li></ul>
-<h3 id="s83">15.3 开源工具箱（建模与数据）</h3>
+<h3 id="s89">15.3 开源工具箱（建模与数据）</h3>
 <div class="table-wrap"><table><thead><tr><th>用途</th><th>工具</th><th>地址</th></tr></thead><tbody><tr><td>系统出清/规划仿真</td><td>PyPSA（~2.1k★）</td><td>github.com/pypsa/pypsa</td></tr><tr><td>配网潮流/VPP 接网校核</td><td>pandapower（~1.3k★）</td><td>github.com/e2nIEE/pandapower</td></tr><tr><td>竞价智能体/强化学习</td><td>Grid2Op（~470★）</td><td>github.com/Grid2op/grid2op</td></tr><tr><td>北美 ISO 数据抓取</td><td>gridstatus（~440★）</td><td>github.com/gridstatus/gridstatus</td></tr><tr><td>市场多智能体仿真</td><td>PowerTAC / elecsim</td><td>github.com/PowerTAC/powertac-server</td></tr><tr><td>碳感知调度</td><td>Carbon Aware SDK</td><td>github.com/Green-Software-Foundation/carbon-aware-sdk</td></tr><tr><td>电力碳强度数据</td><td>Electricity Maps / WattTime</td><td>electricitymaps.com / watttime.org</td></tr><tr><td>中国碳数据</td><td>全国碳交易平台 / 中碳登 / CEADs</td><td>cets.com.cn / cnemission.com / ceads.net</td></tr></tbody></table></div>
-<h3 id="s84">15.4 已知局限</h3>
-<ul><li>部分扫描件 OCR 噪声可能残留个别错字（已按上下文校正，公式以文字描述代替）；</li><li>碳实务书籍数据时点为 2016 年前后，全国碳市场 2021 年后规则以 10.1~10.5 章网络调研为准；</li><li>标注&quot;待核实&quot;的条目在引用时应提示用户查证；2026 年 9-10 月的现货新规、售电办法、风险防控办法、信用评价指引、并网规定均为<strong>征求意见稿</strong>，最终条款可能变化；</li><li>省级细则更新快，本 skill 不替代实时政策检索；2026 年省级现货转正、136 竞价、容量电价、VPP 细则均建议在回答前二次核验；</li><li>海外市场（第 7A 章）只覆盖澳大利亚 NEM 与德国 DE-LU，不含西澳 WEM、北领地及欧洲其他国家；规则、税费、并网与合同须以当地官方文件和专业意见为准；</li><li>2025 年交易量存在&quot;市场化交易 6.64 万亿 / 中长期 6.3522 万亿 / 部分资料 4.81 万亿&quot;多种口径，正文已注明优先口径，遇到旧资料先核对。</li></ul>
+<h3 id="s90">15.4 已知局限</h3>
+<ul><li>部分扫描件 OCR 噪声可能残留个别错字（已按上下文校正，公式以文字描述代替）；</li><li>碳实务书籍数据时点为 2016 年前后，全国碳市场 2021 年后规则以 10.1~10.5 章网络调研为准；</li><li>标注&quot;待核实&quot;的条目在引用时应提示用户查证；2026 年 9-10 月的现货新规、售电办法、风险防控办法、信用评价指引、并网规定均为<strong>征求意见稿</strong>，最终条款可能变化；</li><li>省级细则更新快，本 skill 不替代实时政策检索；2026 年省级现货转正、136 竞价、容量电价、VPP 细则均建议在回答前二次核验；</li><li>海外市场（第 7A 章）覆盖澳大利亚 NEM、德国 DE-LU、英国 GB、意大利、西班牙与荷兰，不含西澳 WEM、北领地及波兰、比利时、北欧等其他欧洲市场；规则、税费、并网与合同须以当地官方文件和专业意见为准；</li><li>2025 年交易量存在&quot;市场化交易 6.64 万亿 / 中长期 6.3522 万亿 / 部分资料 4.81 万亿&quot;多种口径，正文已注明优先口径，遇到旧资料先核对。</li></ul>
     </article>
 
     
@@ -370,50 +416,56 @@ EEG 负价影响 ≈ 负价时段电量 × AW + 负价时段电量 × 负价
             <li class="lv3"><a href="#s39">7.2 省级现货正式运行名单（截至 2026-10-31）</a></li>
             <li class="lv3"><a href="#s40">7.3 首批试点特色（理解"因地制宜"）</a></li>
             <li class="lv3"><a href="#s41">7.4 2025-2026 年价格特征（行情感知）</a></li>
-            <li class="lv2"><a href="#s42">7A. 海外市场速查（澳大利亚 NEM / 德国）</a></li>
-            <li class="lv3"><a href="#s43">7A.1 先选市场：两张卡片</a></li>
+            <li class="lv2"><a href="#s42">7A. 海外市场速查（澳大利亚 NEM / 德国 / 英国 GB / 意大利 / 西班牙 / 荷兰 / 波兰 / 比利时与北欧）</a></li>
+            <li class="lv3"><a href="#s43">7A.1 先选市场：核心六张卡片</a></li>
             <li class="lv3"><a href="#s44">7A.2 澳大利亚 NEM：五个必须记住的点</a></li>
             <li class="lv3"><a href="#s45">7A.3 德国 DE-LU：六个必须记住的点</a></li>
-            <li class="lv3"><a href="#s46">7A.4 同一问题，两边怎么答</a></li>
-            <li class="lv3"><a href="#s47">7A.5 答题纪律（海外市场专用）</a></li>
-            <li class="lv3"><a href="#s48">7A.6 仓库阅读路径</a></li>
-            <li class="lv2"><a href="#s49">8. 新能源全面入市（136 号文是分水岭）</a></li>
-            <li class="lv3"><a href="#s50">8.1 政策要点（发改价格〔2025〕136号，2025-02-09）</a></li>
-            <li class="lv3"><a href="#s51">8.2 各省机制电价速查（2025 存量 + 2026-2027 增量）</a></li>
-            <li class="lv3"><a href="#s52">8.3 入市能力要求（交易能力即收益）</a></li>
-            <li class="lv3"><a href="#s53">8.4 核电入市（2026 新变量）</a></li>
-            <li class="lv2"><a href="#s54">9. 虚拟电厂与需求响应（市场视角）</a></li>
-            <li class="lv3"><a href="#s55">9.1 入市身份与规则要点（发改能源〔2025〕357号）</a></li>
-            <li class="lv3"><a href="#s56">9.2 可参与品种</a></li>
-            <li class="lv3"><a href="#s57">9.3 地方准入门槛与品种（交易视角）</a></li>
-            <li class="lv3"><a href="#s58">9.4 收益结构与零售侧传导</a></li>
-            <li class="lv3"><a href="#s59">9.5 国际规则对照（只保留市场设计）</a></li>
-            <li class="lv2"><a href="#s60">10. 碳市场与企业碳管理</a></li>
-            <li class="lv3"><a href="#s61">10.1 全国碳市场（CEA）框架与演进</a></li>
-            <li class="lv3"><a href="#s62">10.2 碳价走势（价格感知）</a></li>
-            <li class="lv3"><a href="#s63">10.3 CCER（国家核证自愿减排量）</a></li>
-            <li class="lv3"><a href="#s64">10.4 碳核算与 MRV（专家最容易翻车的地方）</a></li>
-            <li class="lv3"><a href="#s65">10.5 绿电绿证与电碳衔接</a></li>
-            <li class="lv3"><a href="#s66">10.6 企业碳管理方法论（碳管理咨询框架）</a></li>
-            <li class="lv2"><a href="#s67">11. 交易策略与风险管理</a></li>
-            <li class="lv3"><a href="#s68">11.1 发电侧策略</a></li>
-            <li class="lv3"><a href="#s69">11.2 售电公司与大用户策略</a></li>
-            <li class="lv3"><a href="#s70">11.3 市场力识别与监管指标（懂监管才能懂策略边界）</a></li>
-            <li class="lv3"><a href="#s71">11.4 五类市场风险与防范</a></li>
-            <li class="lv3"><a href="#s72">11.5 主体能力建设清单（现货入市"体检表"）</a></li>
-            <li class="lv3"><a href="#s73">11.6 2026 年风险防控与信用监管（新增）</a></li>
-            <li class="lv2"><a href="#s74">12. 关键公式速查</a></li>
-            <li class="lv2"><a href="#s75">13. 术语表（中英对照精选）</a></li>
-            <li class="lv2"><a href="#s76">14. 专家问答推理手册</a></li>
-            <li class="lv3"><a href="#s77">14.1 问题分型与答题路径</a></li>
-            <li class="lv3"><a href="#s78">14.2 常见误区清单（主动纠正用户）</a></li>
-            <li class="lv3"><a href="#s79">14.3 数据时效纪律</a></li>
-            <li class="lv2"><a href="#s80">15. 知识来源与维护</a></li>
-            <li class="lv3"><a href="#s81">15.1 书籍来源</a></li>
-            <li class="lv3"><a href="#s82">15.2 政策与市场调研（2025-2026-11）</a></li>
-            <li class="lv3"><a href="#s83">15.3 开源工具箱（建模与数据）</a></li>
-            <li class="lv3"><a href="#s84">15.4 已知局限</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="67">展开 67 个小节</button>
+            <li class="lv3"><a href="#s46">7A.4 英国 GB：五个必须记住的点</a></li>
+            <li class="lv3"><a href="#s47">7A.5 意大利：五个必须记住的点</a></li>
+            <li class="lv3"><a href="#s48">7A.6 西班牙：五个必须记住的点</a></li>
+            <li class="lv3"><a href="#s49">7A.7 荷兰：五个必须记住的点</a></li>
+            <li class="lv3"><a href="#s50">7A.8 波兰：五个必须记住的点</a></li>
+            <li class="lv3"><a href="#s51">7A.9 比利时与北欧：五个必须记住的点</a></li>
+            <li class="lv3"><a href="#s52">7A.10 同一问题，八边怎么答</a></li>
+            <li class="lv3"><a href="#s53">7A.11 答题纪律（海外市场专用）</a></li>
+            <li class="lv3"><a href="#s54">7A.12 仓库阅读路径</a></li>
+            <li class="lv2"><a href="#s55">8. 新能源全面入市（136 号文是分水岭）</a></li>
+            <li class="lv3"><a href="#s56">8.1 政策要点（发改价格〔2025〕136号，2025-02-09）</a></li>
+            <li class="lv3"><a href="#s57">8.2 各省机制电价速查（2025 存量 + 2026-2027 增量）</a></li>
+            <li class="lv3"><a href="#s58">8.3 入市能力要求（交易能力即收益）</a></li>
+            <li class="lv3"><a href="#s59">8.4 核电入市（2026 新变量）</a></li>
+            <li class="lv2"><a href="#s60">9. 虚拟电厂与需求响应（市场视角）</a></li>
+            <li class="lv3"><a href="#s61">9.1 入市身份与规则要点（发改能源〔2025〕357号）</a></li>
+            <li class="lv3"><a href="#s62">9.2 可参与品种</a></li>
+            <li class="lv3"><a href="#s63">9.3 地方准入门槛与品种（交易视角）</a></li>
+            <li class="lv3"><a href="#s64">9.4 收益结构与零售侧传导</a></li>
+            <li class="lv3"><a href="#s65">9.5 国际规则对照（只保留市场设计）</a></li>
+            <li class="lv2"><a href="#s66">10. 碳市场与企业碳管理</a></li>
+            <li class="lv3"><a href="#s67">10.1 全国碳市场（CEA）框架与演进</a></li>
+            <li class="lv3"><a href="#s68">10.2 碳价走势（价格感知）</a></li>
+            <li class="lv3"><a href="#s69">10.3 CCER（国家核证自愿减排量）</a></li>
+            <li class="lv3"><a href="#s70">10.4 碳核算与 MRV（专家最容易翻车的地方）</a></li>
+            <li class="lv3"><a href="#s71">10.5 绿电绿证与电碳衔接</a></li>
+            <li class="lv3"><a href="#s72">10.6 企业碳管理方法论（碳管理咨询框架）</a></li>
+            <li class="lv2"><a href="#s73">11. 交易策略与风险管理</a></li>
+            <li class="lv3"><a href="#s74">11.1 发电侧策略</a></li>
+            <li class="lv3"><a href="#s75">11.2 售电公司与大用户策略</a></li>
+            <li class="lv3"><a href="#s76">11.3 市场力识别与监管指标（懂监管才能懂策略边界）</a></li>
+            <li class="lv3"><a href="#s77">11.4 五类市场风险与防范</a></li>
+            <li class="lv3"><a href="#s78">11.5 主体能力建设清单（现货入市"体检表"）</a></li>
+            <li class="lv3"><a href="#s79">11.6 2026 年风险防控与信用监管（新增）</a></li>
+            <li class="lv2"><a href="#s80">12. 关键公式速查</a></li>
+            <li class="lv2"><a href="#s81">13. 术语表（中英对照精选）</a></li>
+            <li class="lv2"><a href="#s82">14. 专家问答推理手册</a></li>
+            <li class="lv3"><a href="#s83">14.1 问题分型与答题路径</a></li>
+            <li class="lv3"><a href="#s84">14.2 常见误区清单（主动纠正用户）</a></li>
+            <li class="lv3"><a href="#s85">14.3 数据时效纪律</a></li>
+            <li class="lv2"><a href="#s86">15. 知识来源与维护</a></li>
+            <li class="lv3"><a href="#s87">15.1 书籍来源</a></li>
+            <li class="lv3"><a href="#s88">15.2 政策与市场调研（2025-2026-11）</a></li>
+            <li class="lv3"><a href="#s89">15.3 开源工具箱（建模与数据）</a></li>
+            <li class="lv3"><a href="#s90">15.4 已知局限</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="73">展开 73 个小节</button>
   </aside>
 </div>
 
