@@ -9,7 +9,7 @@ description: Storage investment and operations expert — investment appraisal a
 
 > Version v1.9 · data cutoff 2026-11-01
 
-> **Maintenance entry points**: `tools/selftest.py` (green means the worked examples still hold), [storage investment and operations note](../../knowledge/储能投资与运营-2026-11.md) (policy milestones, cost ranges, indicator calibres), [storage EMS optimization](../../knowledge/储能EMS优化调度-算法与工程-2026-11.md) (dispatch algorithms), [microgrid EMS optimization](../../knowledge/微网EMS优化调度-算法与工程-2026-11.md) (microgrid operation), [Australia–Germany storage business](../../knowledge/澳德储能业务-2026-11.md) (four quadrants), [UK electricity market](../../knowledge/英国电力市场-2026-11.md) and [Italy electricity market](../../knowledge/意大利电力市场-2026-11.md) (BM/CM/LDES, MACSE).
+> **Maintenance entry points**: `tools/selftest.py` (green means the worked examples still hold), [storage investment and operations note](../../knowledge/储能投资与运营-2026-11.md) (policy milestones, cost ranges, indicator calibres), [storage EMS optimization](../../knowledge/储能EMS优化调度-算法与工程-2026-11.md) (dispatch algorithms), [microgrid EMS optimization](../../knowledge/微网EMS优化调度-算法与工程-2026-11.md) (microgrid operation), [Overseas storage business](../../knowledge/海外储能业务-2026-11.md) (eight-market revenue and appraisal calibres), [UK electricity market](../../knowledge/英国电力市场-2026-11.md) and [Italy electricity market](../../knowledge/意大利电力市场-2026-11.md) (BM/CM/LDES, MACSE).
 > **Open items 2026-2027**: provincial coverage and assessment deductions under Document 114, retail-side pass-through of Document 1656, the denominator duration for the capacity price (4/6/8/10 h), revision of ancillary-service rules, upgrades to fire-safety and grid-connection standards, and the storage system price trend.
 
 ---
@@ -1157,7 +1157,7 @@ Reserve revenue = awarded capacity (MW) × reserve price (local currency/MW·sea
 ### 15.3 Maintenance artefacts
 
 - [Storage investment and operations note](../../knowledge/储能投资与运营-2026-11.md): policy milestones, cost ranges, indicator calibres, open items;
-- [Australia–Germany storage business](../../knowledge/澳德储能业务-2026-11.md): four-quadrant revenue, access, connection and appraisal calibres for NEM and DE-LU;
+- [Overseas storage business](../../knowledge/海外储能业务-2026-11.md): revenue, access, connection and appraisal calibres across Australia, Germany, the UK, Italy, Spain, the Netherlands, Poland and Belgium/the Nordics;
 - [UK electricity market](../../knowledge/英国电力市场-2026-11.md): GB single market, BM/BOALF, T-4/T-1 capacity market, LDES and grid reform;
 - [Italy electricity market](../../knowledge/意大利电力市场-2026-11.md): seven bidding zones, MGP/MSD, MACSE storage auctions, capacity market and FER X;
 - [Spain electricity market](../../knowledge/西班牙电力市场-2026-11.md): MIBEL two zones, OMIE 15 minutes, TED/966/2026 capacity market, storage connection and grid-forming;
