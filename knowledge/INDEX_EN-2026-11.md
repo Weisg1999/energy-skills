@@ -7,15 +7,15 @@ kind: "索引"
 title: "English Knowledge Index"
 summary: "英文入口：文件地图、关键数字、省级简表、未定事项与答题纪律。"
 tags: ["English","文件地图","Open items"]
-cutoff: 2026-11-09
+cutoff: 2026-11-10
 related: ["m-index","m-qa","m-province"]
 search: "INDEX EN English knowledge index digest knowledge map key figures provincial quick table open items answering discipline 2026 installed capacity carbon compliance"
 foot: "给国际模型与英文读者"
 ---
-# English Knowledge Index and Digest (2026-11-09)
+# English Knowledge Index and Digest (2026-11-10)
 
 > **Purpose**: an English entry point to this repository's knowledge layer. The full notes are written in Chinese; this file gives (1) a map of what each note contains, (2) the key figures most likely to be asked, (3) a condensed provincial table, and (4) the open items that must be flagged when answering.
-> **Data cutoff**: 2026-11-09. Policy figures change monthly; re-check before quoting. Source grades: **A** official documents/statistics, **B** exchanges, central SOEs and industry associations, **C** media/research reports, **D** calculations from public data.
+> **Data cutoff**: 2026-11-10. Policy figures change monthly; re-check before quoting. Source grades: **A** official documents/statistics, **B** exchanges, central SOEs and industry associations, **C** media/research reports, **D** calculations from public data.
 > **Policy full texts**: the [national policy index](政策列表-2026-11.md) links 55 national documents and the [provincial policy index](省级政策列表-2026-11.md) links 13 provincial documents to verified official pages (Chinese).
 > **Rule of thumb**: a number needs grade + time point + caliber. If any of the three is missing, mark it "to be verified".
 
@@ -29,6 +29,9 @@ foot: "给国际模型与英文读者"
 | `电力现货市场101问-B-出清结算与省域实践.md` | Book note | Clearing, settlement, provincial practice |
 | `电力现货市场101问-C-结算TTS与政策演进.md` | Book note | Settlement mechanisms, TTS, policy evolution |
 | `省间与跨区交易-2026-11.md` | Practice note | Four-layer market (inter-provincial, regional, provincial, cross-operator); inter-provincial medium/long-term and spot (2024 formal, 2026 physical delivery); southern regional market (formal 2026-10-24), Yangtze Delta; cross-operator trading under Doc. 915 and the Yunxiao HVDC transmission-right pilot; 2027 transmission prices and landed-cost arithmetic; two-level coupling, synthetic examples, twelve misconceptions and open items |
+| `澳大利亚NEM电力市场-2026-11.md` | Practice note | Australia's NEM: AEMO/AEMC/AER roles; five regions (QLD, NSW, VIC, SA, TAS; WA WEM and NT excluded); energy-only dispatch with FCAS co-optimisation; 5-minute dispatch and settlement since 2021-10-01; 2026-27 MPC A$23,200/MWh and CPT A$2,225,900/MWh, APC A$600, floor −A$1,000; MLF/IRLF, settlement residues and prudential requirements; RRO/RERT/CIS, LGC/SRES and IRP storage registration; ASX contracts and PPAs; entry path for Chinese market participants; ten pitfalls and a China–Australia comparison |
+| `德国电力市场-2026-11.md` | Practice note | Germany's DE-LU bidding zone inside EU market coupling: EPEX day-ahead (12:00 CET gate, pay-as-clear) and intraday (pay-as-bid), 15-minute MTU since 2025-10-01; SDAC floor −€500/MWh vs. SIDC floor −€9,999/MWh; balancing market (FCR/aFRR/mFRR capacity and energy, PICASSO/MARI); Redispatch 2.0 since 2021-10-01 for ≥100 kW; EEG §51 zero value at negative prices, §60 repealed; §14a controllable loads; AgNes grid-fee reform; StromVKG capacity mechanism from 2031; entry path, ten pitfalls and a China–Germany comparison |
+| `澳德储能业务-2026-11.md` | Practice note | Australia–Germany storage business in four quadrants: NEM utility-scale (arbitrage/FCAS/CIS), Australian C&I (demand charges, flexible export, WDRM aggregation), DE-LU utility-scale (arbitrage/FCR-aFRR-mFRR/§118(6) grid-fee exemption/2031 capacity market) and German C&I (demand charges, §14a, dynamic tariffs); access and registration, connection and fees, contracts and financing, O&M and degradation; four synthetic worked examples, ten pitfalls and a 2026 watch list |
 | `电力系统经济学原理-主题笔记.md` | Book note | Power-system economics: marginal cost, congestion, investment |
 | `电力现货市场实务-精读笔记.md` | Book note | Operational practice of China's spot markets |
 | `中国碳排放权交易实务-主题笔记.md` | Book note | China ETS mechanics (written ~2016; mechanisms valid, figures need updating) |
@@ -88,6 +91,27 @@ foot: "给国际模型与英文读者"
 | Coal capacity price | Fixed cost **CNY 330/kW·yr**; recovery **≥50% from 2026** (floor 165). 2026 values: Guangdong 165; Tianjin/Sichuan 231; Qinghai 185; Guangxi 247.5; Jilin/Heilongjiang/Hunan/Gansu/Yunnan 330; Henan 330 draft; **Liaoning 370 is reliable-capacity compensation, a different caliber** | B/C for provincial values |
 | System operation fee, Q1-Q3 2026 | About **CNY 0.068/kWh**, roughly +93% YoY | B/D |
 | PJM capacity price | **USD 329.17/MW-day for 2027/28**; USD 325/MW-day for 2028/29 (cleared 2026-07-14) | A (PJM) |
+
+### Overseas markets (2026-11)
+
+| Metric | Value | Grade / note |
+|---|---|---|
+| NEM footprint | **5 regions**: Queensland, New South Wales, Victoria, South Australia, Tasmania | A; WA's WEM and the Northern Territory are separate systems |
+| NEM dispatch and settlement | **5-minute** dispatch and settlement since **2021-10-01**; NEM time is fixed AEST (UTC+10, no daylight saving) | A |
+| NEM price bands, 2026-27 | Market price cap **A$23,200/MWh**; cumulative price threshold **A$2,225,900/MWh**; administered price cap **A$600/MWh**; market floor **−A$1,000/MWh** | A (AEMC) |
+| NEM reliability | Retailer reliability obligation, reliability and emergency reserve trader, customer compensation; 2028-32 reliability standard proposal at 99.997% is a draft | A / A (draft) |
+| German bidding zone | **DE-LU** inside the EU single day-ahead and intraday coupling; EPEX day-ahead gate **12:00 CET**, pay-as-clear | A |
+| German intraday | Pay-as-bid; **15-minute MTU since 2025-10-01**; SDAC floor **−€500/MWh**, SIDC floor **−€9,999/MWh** | A |
+| German balancing | FCR, aFRR and mFRR procured separately for capacity and energy; daily tenders with 4-hour products; aFRR/mFRR energy settled at 15 minutes via PICASSO/MARI | A |
+| German redispatch | **Redispatch 2.0** since **2021-10-01**, applicable from **100 kW** | A (EnWG §13a) |
+| German renewables at negative prices | EEG plants receive **zero market value** at negative prices; the former §60 surcharge provision is **repealed** | A (EEG §51) |
+| German capacity mechanism | **StromVKG** capacity mechanism from **2031**; EU state-aid approval 2026-09-02; the two 2026 4.5 GW auctions are reportedly not open to battery storage, while the 2027 ~2 GW new-capacity tender is open with **≥10 hours** (B) | A/B |
+| NEM storage revenue | Energy arbitrage + **10 FCAS markets** (very fast 1-second markets from 2023-10-09) + **CIS** revenue support; no capacity market | A/B |
+| CIS rounds | 2030 target **40 GW** (26 GW generation + 14 GW dispatchable); Tender 8 awarded **4.2 GW/16.1 GWh** of storage in 2026-06, COD by 2029-12-31; Tender 10 sought 4 GW dispatchable, bids closed 2026-08-18 | B |
+| NEM storage registration | **IRP** (Integrated Resource Provider) category created by the AEMC final rule of **2021-12-02**, effective **2024-06-03**; IESS is the rule-change name, not a registration category | A |
+| Australian demand response | **WDRM** since **2021-10-21**; direct participation at **MW-scale** demand reduction (per AER guidance), aggregators allowed | B |
+| German storage grid fees | **§118(6) EnWG**: 20-year grid-fee exemption for storage commissioned by **2029-08-04**; AgNes draft determination 2026-10, final determination **2027-01-01**, rules from 2029 | A / B |
+| German §14a | Low-voltage controllable loads including storage, power threshold **>4.2 kW**; three modules, module 2 gives a **60%** grid-fee reduction | B |
 
 ### Quantitative bidding and trading risk (2026-11)
 
@@ -364,6 +388,8 @@ foot: "给国际模型与英文读者"
 18. **Quantitative bidding and trading risk**: the final 2026 spot rules (whether the 76-article draft survives), the secondary price-cap and LMP clauses, whether renewable+storage joint bidding is adopted; final retailer/risk-control/credit rules and the actual guarantee ratio and dynamic-limit method; provincial clearing granularity (96 vs. 288 points) and settlement formulas; whether the new rules change backtest baselines or model benchmarks; public reconciliation cases and loss-sharing arrangements between aggregators, retailers and resources.
 19. **Demand response, V2G and flexible resources**: actual 2026 provincial DR dispatch and settlement data (most provinces publish calls but not settlement); Guangdong Doc. 233 and Jiangsu 2026 fast-response implementation details; whether Doc. 241 covers 30 or 32 projects; the post-2026-11-01 wording of DR baselines; V2G pilot mid-term evaluation; bidirectional-charger standards and battery-warranty coverage; how transmission/distribution charges apply to reverse discharge; the 2030 V2G 50 GW and VPP 50 GW targets' provincial allocation; whether DR and VPP double-count the same resources in national statistics.
 20. **Risk, credit and settlement**: whether the final retailer measure keeps the 1 fen/kWh × 1-10 formula, the CNY 2 million floor, the insurance restriction and the spot-real-time universal-service price; whether the risk-control measure creates a risk reserve or fund; final credit indicator weights, coefficient mapping and repair deadlines; how the 15/5 working-day objection and next-cycle retro-adjustment interact with stricter provincial rules; provincial deviation bands, penalty prices and responsibility sharing; whether the 2026-10 spot draft keeps the six risk types, three-level intervention, daily clearing/monthly settlement and price-difference direction; the timing and content of the Retail Market Basic Rules; the formal document number and penalties of the 2026-06-08 retail notice; universal-service provider selection, cost allocation and user choice window; the treatment of unresolved contracts on retailer exit; related-party volume caps; credit treatment of storage/VPP; green-power and mechanism-energy treatment in deviation and settlement; cross-provincial settlement risk and guarantees; negative-price deviation and retail package design; insurance exclusions, deductibles and claim order; 2027 contract negative-spread risk and regulatory tolerance.
+21. **Overseas markets**: Australia's Reliability Panel recommended a 99.997% standard for 2028-32 in its April 2026 final report, pending the AEMC decision; the NEM's 2026-27 price bands apply only to that financial year; Germany's AgNes grid-fee reform has a draft determination from 2026-10 and a final determination due 2027-01-01, with rules from 2029; the StromVKG capacity-mechanism auctions and contract terms are still taking shape after EU approval; EU market-coupling and balancing-platform changes (SDAC/SIDC, PICASSO/MARI) may alter gate times and products. Re-check the relevant rule before quoting either market.
+22. **Australia–Germany storage business**: CIS Tender 10 results are still pending; the §118(6) exemption only applies to storage commissioned by 2029-08-04; AgNes final determination is due 2027-01-01; the two 2026 StromVKG auctions reportedly exclude battery storage while the 2027 new-capacity tender is open with ≥10 hours; WDRM/FCAS revenue assumptions must be re-based on current prices; all worked examples in the storage module are synthetic (grade D), not investment advice.
 
 ---
 

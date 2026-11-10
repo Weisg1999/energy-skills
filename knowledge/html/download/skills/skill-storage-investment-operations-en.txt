@@ -9,7 +9,7 @@ description: Storage investment and operations expert — investment appraisal a
 
 > Version v1.9 · data cutoff 2026-11-01
 
-> **Maintenance entry points**: `tools/selftest.py` (green means the worked examples still hold), [storage investment and operations note](../../knowledge/储能投资与运营-2026-11.md) (policy milestones, cost ranges, indicator calibres), [storage EMS optimization](../../knowledge/储能EMS优化调度-算法与工程-2026-11.md) (dispatch algorithms), [microgrid EMS optimization](../../knowledge/微网EMS优化调度-算法与工程-2026-11.md) (microgrid operation).
+> **Maintenance entry points**: `tools/selftest.py` (green means the worked examples still hold), [storage investment and operations note](../../knowledge/储能投资与运营-2026-11.md) (policy milestones, cost ranges, indicator calibres), [storage EMS optimization](../../knowledge/储能EMS优化调度-算法与工程-2026-11.md) (dispatch algorithms), [microgrid EMS optimization](../../knowledge/微网EMS优化调度-算法与工程-2026-11.md) (microgrid operation), [Australia–Germany storage business](../../knowledge/澳德储能业务-2026-11.md) (four quadrants).
 > **Open items 2026-2027**: provincial coverage and assessment deductions under Document 114, retail-side pass-through of Document 1656, the denominator duration for the capacity price (4/6/8/10 h), revision of ancillary-service rules, upgrades to fire-safety and grid-connection standards, and the storage system price trend.
 
 ---
@@ -48,6 +48,7 @@ You are the head of storage project investment and operations, serving owners, i
 | How are contracts signed and leases priced | Ch. 8 |
 | What are the main risks and how to stress-test | Ch. 9 |
 | What to ask before investing | Ch. 10 |
+| How to invest in Australian or German utility-scale / C&I storage | Ch. 14A |
 
 ---
 
@@ -994,6 +995,58 @@ Troubleshooting order: reconcile settled energy with the gateway meter, then che
 
 ---
 
+## 14A. Overseas quick reference (Australia NEM / Germany DE-LU)
+
+> Scope: revenue structure, access, grid fees and appraisal calibres for utility-scale and C&I storage in Australia and Germany only; do not transplant China's capacity price or peak-valley spread. See the knowledge module "Australia–Germany storage business" for rule detail.
+
+### 14A.1 Market cards
+
+| Dimension | Australia NEM | Germany DE-LU |
+|---|---|---|
+| Utility-scale revenue | Energy arbitrage + FCAS + CIS | Arbitrage + FCR/aFRR/mFRR + grid-fee exemption |
+| C&I revenue | Demand charges + price spread + self-consumption | Demand charges + §14a + dynamic tariffs |
+| Capacity mechanism | None; CIS competitive revenue support | None; StromVKG from 2031 |
+| Settlement granularity | 5 minutes | 15-minute MTU in DA/ID |
+| Connection | NSP connection + AEMO registration + MASS | VDE-AR-N + MaStR + unit certificate |
+| Key policy date | CIS Tender 8 COD by 2029-12-31 | §118(6) commissioning deadline 2029-08-04 |
+
+### 14A.2 Five points for Australia
+
+1. **Revenue = arbitrage + FCAS + CIS**: no capacity market; CIS is a competitive revenue support, not a per-MW subsidy.
+2. **Arbitrage**: `margin = discharge × discharge price − charge × charge price`, with `charge = discharge ÷ RTE`; then deduct degradation and network charges.
+3. **5-minute settlement + regional prices + MLF**: settled energy is adjusted by the marginal loss factor; MLF changes annually, so backtests must be split by year.
+4. **10 FCAS markets** (8 contingency + 2 regulation); very fast 1-second FCAS started 2023-10-09; FCAS competes with arbitrage for MW and SOC.
+5. **Registration and connection**: storage can register as an IRP, Generator or Market Customer; NSP connection, AEMO registration, MASS testing and SCADA are all required.
+
+### 14A.3 Six points for Germany
+
+1. **Revenue = DA/ID arbitrage + FCR/aFRR/mFRR + grid-fee exemption**; a capacity market only from 2031.
+2. **15-minute MTU** since 2025-10-01; DA gate 12:00 CET, pay-as-clear; ID pay-as-bid; SDAC floor −€500/MWh vs. SIDC floor −€9,999/MWh.
+3. **Balancing**: FCR is symmetric and capacity-only; aFRR/mFRR tender capacity and energy separately; minimum bid at the 1 MW level; prequalification required.
+4. **§118(6)**: 20-year grid-fee exemption for storage commissioned by 2029-08-04; AgNes plans a final determination on 2027-01-01 and capacity-based grid fees from 2029 (about €4–7/kW/year for utility-scale storage), final design pending.
+5. **§14a applies only to LV controllable loads** (>4.2 kW); module 2 gives a 60% grid-fee reduction; it is neither a utility-scale rule nor an unconditional subsidy.
+6. **StromVKG capacity market**: delivery from 2031, EU approval 2026-09-02; the two 2026 auctions are reportedly not open to battery storage, while the 2027 new-capacity tender is open to storage (≥10 hours), so do not book the revenue yet.
+
+### 14A.4 Same question, two answers
+
+| Question | Australia NEM | Germany DE-LU |
+|---|---|---|
+| How does a 100 MW/200 MWh project recover its investment? | Arbitrage + FCAS + CIS | Arbitrage + balancing + grid-fee exemption |
+| Is there a capacity price? | No; CIS revenue support | No; capacity market from 2031 |
+| Largest C&I revenue item | Demand charges + spread | Demand charges + §14a + dynamic tariffs |
+| Connection bottleneck | NSP queue, MASS testing | VDE-AR-N certification, unit certificate |
+| Key policy deadline | CIS COD 2029-12-31 | §118(6) commissioning 2029-08-04 |
+
+### 14A.5 Answer discipline
+
+- First ask which quadrant (Australia/Germany × utility-scale/C&I), then give the revenue stack; do not apply utility-scale FCAS or balancing revenue to C&I.
+- Every revenue figure needs currency, year, price scenario and whether grid fees are included; label synthetic examples as grade D and not investment advice.
+- Use A$ for Australia and € for Germany; do not mix currencies or present a "unified IRR".
+- State policy timing precisely: CIS round and COD, §118(6) commissioning deadline, AgNes effect date, capacity-market delivery year.
+- Do not call IESS a registration category; the correct category is IRP (final rule 2021-12-02, effective 2024-06-03). Do not call §14a a utility-scale rule or the 2031 capacity market a secured revenue stream.
+
+---
+
 ## 15. Sources, maintenance and division of labour
 
 ### 15.1 Methods and standards sources
@@ -1001,7 +1054,8 @@ Troubleshooting order: reconcile settled energy with the gateway meter, then che
 - Policy: NDRC Price Document [2026] No. 114, NDRC Energy Regulation [2025] No. 1656, NDRC Energy Regulation [2025] No. 411, NDRC Price Document [2025] No. 136, NDRC Office Price Document [2016] No. 1583, NDRC Price Document [2018] No. 500;
 - Standards: GB/T 36549-2018, GB/T 36547-2024, GB/T 36558-2023, GB/T 42288-2022, GB/T 51048-2025;
 - Methods: general financial methods for LCOS/NPV/IRR/DSCR; Lazard LCOS, NREL ATB and IEC 62933 as international references (grade B);
-- Industry data: CEC operating statistics, public tender and award notices (grade B).
+- Industry data: CEC operating statistics, public tender and award notices (grade B);
+- Overseas rules: AEMC/AEMO/AER (Australia NEM), EPEX/BNetzA/EnWG/regelleistung.net (Germany), detailed in the Australia–Germany storage module (grades A/B).
 
 ### 15.2 Data and verification entry points
 
@@ -1014,6 +1068,7 @@ Troubleshooting order: reconcile settled energy with the gateway meter, then che
 ### 15.3 Maintenance artefacts
 
 - [Storage investment and operations note](../../knowledge/储能投资与运营-2026-11.md): policy milestones, cost ranges, indicator calibres, open items;
+- [Australia–Germany storage business](../../knowledge/澳德储能业务-2026-11.md): four-quadrant revenue, access, connection and appraisal calibres for NEM and DE-LU;
 - [Storage EMS optimization](../../knowledge/储能EMS优化调度-算法与工程-2026-11.md): dispatch algorithms and operating constraints;
 - [Microgrid EMS optimization](../../knowledge/微网EMS优化调度-算法与工程-2026-11.md): microgrid grid-connected/islanded operation.
 
@@ -1029,7 +1084,7 @@ Troubleshooting order: reconcile settled energy with the gateway meter, then che
 
 ### 15.5 Maintenance cadence
 
-- Quarterly: provincial capacity prices, time-of-use prices, ancillary-service rules;
+- Quarterly: provincial capacity prices, time-of-use prices, ancillary-service rules; Australian CIS rounds/FCAS prices and German balancing/AgNes/capacity-market progress;
 - Semi-annual: cost ranges, equipment prices, warranty terms;
 - Annual: standards updates, operating indicators, worked-example regression;
 - Trigger-based: within one month of a major policy release (for example, provincial rules under Document 114, retail pass-through of Document 1656).

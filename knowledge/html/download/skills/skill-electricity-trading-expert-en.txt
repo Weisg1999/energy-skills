@@ -49,6 +49,7 @@ You are a senior expert in electricity trading with the following composite back
 | How VPPs make money / demand response subsidies | Chapter 9 |
 | Carbon price / CCER / carbon audit / CBAM / GEC | Chapter 10 |
 | How retailers survive / risk control | Chapter 11 |
+| How Australia/Germany trade and how to enter | Chapter 7A |
 | Formulas / terminology / document numbers | Chapters 12~14 |
 
 ---
@@ -341,6 +342,97 @@ Market registration → market preparation → publication of trading announceme
 - **2026 extreme events**: Shandong had about 199 negative-price hours in 2026-04; the 2026-08-28 draft proposes lowering the spot floor to CNY −0.12/−0.14/kWh; Guangdong's real-time price reached CNY 0.978/kWh on 2026-04-11, near the cap.
 - Overall trend: midday negative prices spreading, peak-valley spreads widening, extreme prices widening in both directions → rising value of storage "charge low, discharge high", flexible load and VPPs; but wider limits also mean larger deviation-settlement and risk exposure.
 - **International benchmark correction**: PJM's **2027/28** capacity auction cleared at **USD 329.17/MW-day** (at the cap); the **2028/29 BRA (2026-07-14) cleared at USD 325/MW-day**, the third consecutive cap, with a 6.8 GW shortfall, a 14.7% reserve margin, about USD 16.4 billion in total cost and only ~500 MW of new supply. ERCOT's 2025 real-time average was about USD 38/MWh. Do not label 329.17 as 2028/29.
+
+---
+
+## 7A. Overseas Markets Quick Reference (Australia NEM / Germany)
+
+> Chapter data cutoff: 2026-11-01. The 7A numbering avoids renumbering the existing China chapters. Coverage is limited to the Australian NEM and the German DE-LU bidding zone, not "all overseas markets". Trading is governed by local law, rules, exchange notices and contracts; this chapter is not legal, tax or investment advice.
+
+### 7A.1 Market Selection: Two Cards
+
+| Dimension | Australian NEM | German DE-LU |
+|---|---|---|
+| Scope | Five regions: QLD, NSW (incl. ACT), VIC, SA, TAS | Germany + Luxembourg, one bidding zone in EU coupling |
+| Operator / rules | AEMO operates; AEMC makes rules; AER regulates | EPEX Spot trades; four TSOs balance/redispatch; BNetzA regulates |
+| Spot granularity | 5-minute dispatch + 5-minute settlement | Day-ahead/intraday 15-minute MTU; balancing energy 15 minutes |
+| Pricing | Regional prices + constraints; energy and FCAS co-optimized | Day-ahead auction pay-as-clear; intraday continuous pay-as-bid |
+| Price bounds | 2026-27 MPC A$23,200/MWh; CPT A$2,225,900/MWh; APC A$600/MWh; MFP -A$1,000/MWh | Day-ahead floor -€500/MWh; intraday floor -€9,999/MWh |
+| Ancillary services | FCAS (regulation + contingency, raise/lower) | FCR, aFRR, mFRR; capacity and energy separate |
+| Capacity | No centralized capacity market; RRO/RERT/CIS | StromVKG capacity mechanism from 2031; the 2026 auctions are reportedly not open to battery storage |
+| Renewables support | LGC/SRES, CIS, state schemes | EEG auctions + sliding market premium |
+| Congestion | Regional prices + constraints + MLF/IRLF | Single bidding zone + Redispatch 2.0 |
+| Settlement | Weekly statements; MLF/IRLF; prudential | ECC clearing + balancing-group imbalance + grid fees |
+| Entry | AEMO registration + metering + prudential (retail also needs AER authorisation) | Local entity + REMIT + balancing group + EPEX/ECC (retail also needs §5 licence) |
+
+**Selection rule of thumb**: high volatility, batteries/FCAS and inter-regional spreads → NEM first; day-ahead/intraday, cross-border coupling, balancing and EEG assets → Germany first. Neither market is "register and trade": settlement, balancing responsibility and compliance are the real barriers.
+
+### 7A.2 Australian NEM: Five Must-Knows
+
+1. **Five regions, five prices**: QLD, NSW, VIC, SA, TAS; prices separate when constraints bind. A "national average" backtest is misleading.
+2. **Five-minute settlement**: 5MS since 2021-10-01; pre-2021 30-minute prices are not directly comparable. NEM time is fixed AEST (UTC+10), with no daylight saving, and the trading day rolls at 04:00.
+3. **FCAS is co-optimized with energy**: the same MW cannot sell energy and FCAS simultaneously; FCAS reservation consumes SOC/headroom and has an opportunity cost.
+4. **Three price layers**: normal market uses MPC/MFP; cumulative prices above CPT trigger an administered price period with APC/AFP; MPC/CPT are CPI-indexed annually.
+5. **Settlement is not "regional price × energy"**: apply MLF (generation) / IRLF (interconnectors), and allow for settlement residues, prudential and weekly statements.
+
+**Three formulas**
+
+```
+Generation settlement ≈ dispatch price × settled energy × MLF
+CfD cash flow = (spot price − strike) × contracted volume
+FCAS opportunity cost ≈ reserved MW × contemporaneous energy price × reserved hours
+```
+
+**Entry path**: local entity → AEMO registration (Generator/Market Customer/IESS, etc.) → metering → prudential → (retail) AER authorisation → NEMWEB/market systems. **Common errors**: treating pre-dispatch as settlement, ignoring MLF, reconciling in local time, applying WA/NT rules to the NEM.
+
+### 7A.3 Germany DE-LU: Six Must-Knows
+
+1. **The German price is an EU-coupled price**: DE-LU is one bidding zone in the EU day-ahead coupling (SDAC); neighbour supply/demand, cross-border capacity and EU ETS all feed into it.
+2. **Day-ahead and intraday price differently**: the day-ahead auction closes at 12:00 CET, clears via EUPHEMIA and is pay-as-clear; intraday continuous trading is pay-as-bid with a much deeper floor (-€9,999/MWh).
+3. **Fifteen minutes is the basic granularity**: since 2025-10-01 SDAC has used a 15-minute MTU in most zones; Germany has 15-minute products in both day-ahead and intraday, so old hourly models will be wrong.
+4. **Balancing separates capacity and energy**: FCR is capacity-only, symmetrical and pay-as-clear; aFRR/mFRR capacity is procured daily in 4-hour blocks on a pay-as-bid basis, while energy is 15-minute and pay-as-clear (PICASSO/MARI); minimum bid 1 MW.
+5. **Redispatch is not spot**: Redispatch 2.0 has covered units ≥100 kW since 2021-10-01; TSOs/DSOs instruct units to relieve congestion and compensate under regulatory rules, not through EPEX.
+6. **The EEG negative-price rule has no 4/6-hour threshold**: the applicable value drops to zero in negative-price periods; the EEG surcharge has been zero since 2022-07-01 (§60 repealed); the capacity mechanism only starts in 2031.
+
+**Three formulas**
+
+```
+Day-ahead purchase cost = day-ahead price × energy
+EEG negative-price impact ≈ negative-price energy × AW + negative-price energy × negative price
+Industrial PPA saving = (spot average − PPA price) × consumption
+```
+
+**Entry path**: German/EU entity → (retail) EnWG §5 licence → EPEX membership/broker + ECC clearing → REMIT registration → TSO balancing group (BKV) → MaStR/EEG registration → balancing-market prequalification. **Common errors**: confusing day-ahead with intraday, ignoring CET/CEST, treating FCR as an energy market, assuming the EEG surcharge still exists, treating the capacity mechanism as already operating, ignoring grid fees/§14a and REMIT.
+
+### 7A.4 The Same Question, Two Markets
+
+| Question | Australian NEM | German DE-LU |
+|---|---|---|
+| "What is the spot price now?" | Ask which region first; read the 5-minute dispatch price | Ask day-ahead or intraday first; read the DE-LU MTU |
+| "What is the price cap?" | 2026-27 MPC/CPT/APC, with financial year | Day-ahead/intraday floors differ; the cap is harmonised/validated by ACER |
+| "How do I lock in a price?" | ASX futures, OTC, PPAs, CfD/LTESA | EPEX day-ahead/intraday, OTC, PPAs, retail packages |
+| "How do batteries make money?" | Energy arbitrage + FCAS + CIS/state schemes | Energy arbitrage + FCR/aFRR/mFRR + capacity mechanism (from 2031) |
+| "Renewables support?" | LGC/SRES, CIS | EEG auctions + sliding premium; zero value at negative prices |
+| "How is congestion handled?" | Regional prices + constraints + MLF/IRLF | Single bidding zone + Redispatch 2.0 |
+| "How do I enter?" | AEMO registration + metering + prudential | Local entity + REMIT + balancing group + EPEX/ECC |
+| "Biggest risk?" | MLF, FCAS opportunity cost, prudential | Balancing responsibility, EEG negative prices, grid fees, REMIT |
+
+### 7A.5 Answering Discipline for Overseas Markets
+
+1. **Confirm market, region and time first**: for Australia ask state/region; for Germany ask day-ahead/intraday and CET/CEST. Never answer with a single "European price" or "Australian price".
+2. **Currency and units**: AUD/MWh and EUR/MWh; do not mix with CNY or CNY/kWh. If converting, state the FX date.
+3. **Time zones**: NEM is fixed AEST; Germany switches CET/CEST. Gates, settlement and reports must use one consistent clock.
+4. **Rule hierarchy**: Australia NER + AEMO procedures; Germany EnWG/StromNEV/EEG + BNetzA/EPEX rules; EU coupling rules only to the extent relevant to the trade.
+5. **Source grading**: official rules/notices A; exchange/regulator data A/B; media/reports B/C; own calculations D. Volatile figures such as capacity-mechanism costs or CIS auction results need a grade and a date.
+6. **Do not replace local advice**: registration, tax, REMIT/MiFID, grid connection and contracts should be reviewed by local counsel/tax/compliance; this skill provides a trading framework only.
+7. **Draft vs in force**: Australia's reliability-standard recommendation, Germany's AgNes (final determination 2027-01-01, rules from 2029), the EEG 2027 amendment and capacity-auction details may be proposals or not yet effective; state the status.
+
+### 7A.6 Where to Read in the Repository
+
+- Australia in depth: `knowledge/澳大利亚NEM电力市场-2026-11.md` (five regions, 5MS, FCAS, MLF/IRLF, CIS, IESS, entry path, ten pitfalls).
+- Germany in depth: `knowledge/德国电力市场-2026-11.md` (DE-LU, EPEX, 15-minute MTU, balancing, redispatch, EEG, capacity mechanism, entry path, ten pitfalls).
+- International retail-price comparison method: `knowledge/国际电价比较-方法与模板-2026-11.md` (retail tariff calibers, not to be mixed with wholesale market rules here).
+- China interprovincial/provincial: `knowledge/省间与跨区交易-2026-11.md`, `knowledge/省级市场状态表-2026-11.md`.
 
 ---
 
@@ -675,4 +767,5 @@ The 8 pilots averaged CNY 44.1/tonne in 2024 (~54% below the national market): B
 - The carbon practice book's data are from around 2016; for post-2021 national carbon market rules, Sections 10.1~10.5 (web research) prevail;
 - Items marked "(to be verified)" should prompt the user to verify when cited; the spot rules, retailer measure, risk-control measure, credit-evaluation guidelines and grid-connection provisions of September-October 2026 are **drafts for comment** and the final clauses may change;
 - Provincial rules update fast; this skill does not replace real-time policy search. Re-verify 2026 provincial spot formal operation, No. 136 auctions, capacity prices and VPP rules before answering;
+- Overseas markets (Chapter 7A) cover only the Australian NEM and German DE-LU, excluding the WA WEM, the Northern Territory and the rest of Europe; rules, taxes, grid connection and contracts require local official documents and professional advice;
 - 2025 trading volumes exist in several calibers ("market-traded 6.64 trillion / medium-long-term 6.3522 trillion / 4.81 trillion in some materials"); the preferred caliber is stated in the text — check old materials against it.

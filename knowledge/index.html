@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>电力系统 · 电力市场 · 碳市场知识库 | energy-skills</title>
-<meta name="description" content="energy-skills 知识库总览：46 个模块，覆盖电力系统通识、电力现货与省间交易、电价、新能源与并网、储能、EMS 与 SCADA 数据链路、零碳园区、碳市场、虚拟电厂、需求响应与市场风险信用结算。数据截止 2026-11-09。">
+<meta name="description" content="energy-skills 知识库总览：49 个模块，覆盖电力系统通识、电力现货与省间交易、澳洲 NEM 与德国电力市场、电价、新能源与并网、储能、EMS 与 SCADA 数据链路、零碳园区、碳市场、虚拟电厂、需求响应与市场风险信用结算。数据截止 2026-11-10。">
 <link rel="icon" type="image/svg+xml" href="assets/logo-book-favicon.svg">
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+if(location.hash){document.documentElement.style.scrollBehavior='auto';}
 </script>
 <style>
 /* energy-skills · 共享设计令牌（颜色 / 字体 / 字号）
@@ -42,6 +43,8 @@
   --vpp-soft:#f6ebd9;
   --slate:#5a6470;
   --slate-soft:#eceff2;
+  --indigo:#43548f;
+  --indigo-soft:#e8ebf6;
   --renewable:#0d6a63;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
   --serif:"Noto Serif SC","Source Han Serif SC","Songti SC",SimSun,Georgia,serif;
@@ -84,6 +87,8 @@
   --vpp-soft:#352711;
   --slate:#9aa6b2;
   --slate-soft:#222a32;
+  --indigo:#a3b2e8;
+  --indigo-soft:#1c2440;
   --renewable:#83d6ca;
   color-scheme:dark;
 }
@@ -294,6 +299,7 @@ mark.hit{background:var(--amber-soft);color:inherit;border-radius:2px;padding:0 
 .card-cta{font-weight:600;color:var(--teal);white-space:nowrap}
 .module-section[data-cat="foundation"]{--cat:var(--teal);--cat-soft:var(--teal-soft)}
 .module-section[data-cat="spot"]{--cat:var(--blue);--cat-soft:var(--blue-soft)}
+.module-section[data-cat="intl"]{--cat:var(--indigo);--cat-soft:var(--indigo-soft)}
 .module-section[data-cat="price"]{--cat:var(--amber);--cat-soft:var(--amber-soft)}
 .module-section[data-cat="renewable"]{--cat:var(--renewable);--cat-soft:var(--teal-soft)}
 .module-section[data-cat="storage"]{--cat:var(--plum);--cat-soft:var(--plum-soft)}
@@ -555,25 +561,26 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
     <a class="brand" href="#top">
       <div class="brand-mark"><svg viewBox="0 0 120 120" aria-hidden="true"><path fill="#dcefe9" stroke="#0e6b66" stroke-opacity=".35" stroke-width="3.2" stroke-linejoin="round" d="M60 45 C48 39 34 36.5 22 37.5 Q16 38 16 43.5 L16 78.5 Q16 84 22 83.2 C34 82 48 84 60 90 C72 84 86 82 98 83.2 Q104 84 104 78.5 L104 43.5 Q104 38 98 37.5 C86 36.5 72 39 60 45 Z"/><path fill="#0e6b66" d="M64 43 L49 66 H58 L54 92 L75 62 H64 Z"/></svg><span>Energy Skills</span></div>
       <p class="brand-title">知识库总览</p>
-      <p>46 个模块<br>数据截止 2026-11-09</p>
+      <p>49 个模块<br>数据截止 2026-11-10</p>
     </a>
     <div class="nav-scroll">
       <nav class="nav" aria-label="章节导航">
-      <a href="#top" class="active"><span class="n">00</span><span>总览</span><span class="count">46</span></a>
-      <a href="#all"><span class="n">01</span><span>模块检索</span><span class="count">46</span></a>
+      <a href="#top" class="active"><span class="n">00</span><span>总览</span><span class="count">49</span></a>
+      <a href="#all"><span class="n">01</span><span>模块检索</span><span class="count">49</span></a>
       <a href="#map"><span class="n">02</span><span>知识地图</span><span class="count">5</span></a>
-      <a href="#atlas"><span class="n">03</span><span>专题图谱</span><span class="count">7</span></a>
+      <a href="#atlas"><span class="n">03</span><span>专题图谱</span><span class="count">8</span></a>
       <a href="#foundation"><span class="n">04</span><span>通识与经济学</span><span class="count">5</span></a>
       <a href="#spot"><span class="n">05</span><span>现货与省间交易</span><span class="count">7</span></a>
-      <a href="#price"><span class="n">06</span><span>电价</span><span class="count">4</span></a>
-      <a href="#renewable"><span class="n">07</span><span>新能源与并网</span><span class="count">2</span></a>
-      <a href="#storage"><span class="n">08</span><span>储能与 EMS</span><span class="count">5</span></a>
-      <a href="#park"><span class="n">09</span><span>零碳园区</span><span class="count">1</span></a>
-      <a href="#carbon"><span class="n">10</span><span>碳市场与碳管理</span><span class="count">3</span></a>
-      <a href="#vpp"><span class="n">11</span><span>虚拟电厂</span><span class="count">3</span></a>
-      <a href="#index"><span class="n">12</span><span>索引与查证</span><span class="count">6</span></a>
-      <a href="#research"><span class="n">13</span><span>调研底稿</span><span class="count">10</span></a>
-      <a href="#method"><span class="n">14</span><span>使用与口径</span><span class="count">9</span></a>
+      <a href="#intl"><span class="n">06</span><span>海外市场</span><span class="count">3</span></a>
+      <a href="#price"><span class="n">07</span><span>电价</span><span class="count">4</span></a>
+      <a href="#renewable"><span class="n">08</span><span>新能源与并网</span><span class="count">2</span></a>
+      <a href="#storage"><span class="n">09</span><span>储能与 EMS</span><span class="count">5</span></a>
+      <a href="#park"><span class="n">10</span><span>零碳园区</span><span class="count">1</span></a>
+      <a href="#carbon"><span class="n">11</span><span>碳市场与碳管理</span><span class="count">3</span></a>
+      <a href="#vpp"><span class="n">12</span><span>虚拟电厂</span><span class="count">3</span></a>
+      <a href="#index"><span class="n">13</span><span>索引与查证</span><span class="count">6</span></a>
+      <a href="#research"><span class="n">14</span><span>调研底稿</span><span class="count">10</span></a>
+      <a href="#method"><span class="n">15</span><span>使用与口径</span><span class="count">9</span></a>
       </nav>
     </div>
     <div class="sidebar-foot">
@@ -590,9 +597,9 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
     <div class="wrap">
       <header class="hero" id="top">
         <div>
-          <div class="eyebrow">Knowledge Hub · 2026-11-09 · 46 模块</div>
+          <div class="eyebrow">Knowledge Hub · 2026-11-10 · 49 模块</div>
           <h1>电力系统、电力市场<br>与碳市场 <em>知识库</em></h1>
-          <p class="lede">把 46 份主题笔记、政策索引与调研底稿，收进一张可检索、可跳转的知识地图。每个模块都有对应的 HTML 阅读页，文字与数字取自 Markdown 原文。</p>
+          <p class="lede">把 49 份主题笔记、政策索引与调研底稿，收进一张可检索、可跳转的知识地图。每个模块都有对应的 HTML 阅读页，文字与数字取自 Markdown 原文。</p>
           <div class="hero-actions">
             <a class="btn btn-solid" href="#all" data-focus-search>检索知识模块 <span aria-hidden="true">↓</span></a>
             <a class="btn btn-ghost" href="html/政策列表-2026-11.html">政策原文直达 <span aria-hidden="true">→</span></a>
@@ -604,8 +611,8 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
             </button>
           </div>
           <div class="hero-stats">
-              <div class="stat"><b>46</b><span>知识模块</span></div>
-              <div class="stat"><b>30</b><span>核心模块</span></div>
+              <div class="stat"><b>49</b><span>知识模块</span></div>
+              <div class="stat"><b>33</b><span>核心模块</span></div>
               <div class="stat"><b>10</b><span>调研底稿</span></div>
               <div class="stat"><b>9</b><span>配套技能</span></div>
             </div>
@@ -649,7 +656,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
             <option value="tool">索引工具</option>
             <option value="research">调研底稿</option>
           </select>
-          <span class="result" id="result" aria-live="polite">46 / 46 个模块</span>
+          <span class="result" id="result" aria-live="polite">49 / 49 个模块</span>
         </div>
         <div class="empty" id="empty">
           <p>没有匹配的模块。试试“储能”“136”“电价”或“CBAM”。</p>
@@ -766,10 +773,44 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         </div>
       </section>
 
-      <!-- 05 Price -->
+      <!-- 05 Global -->
+      <section class="sec module-section" id="intl" data-cat="intl">
+        <div class="sec-head">
+          <div class="sec-num">06 / GLOBAL</div>
+          <div>
+            <h2>海外市场</h2>
+            <p>澳大利亚 NEM 与德国是两套成熟但设计取向相反的市场：一个用能源-only + 稀缺定价 + 5 分钟结算撑住高波动，一个用日前/日内耦合 + 平衡市场 + 再调度处理高新能源渗透。三份笔记只讲交易与结算，不替代当地法律意见。</p>
+          </div>
+        </div>
+        <div class="cards">
+          <article class="card" id="m-intl-au" data-type="core" data-search="澳大利亚 NEM AEMO AEMC AER 新南威尔士 昆士兰 维多利亚 南澳 塔斯马尼亚 5分钟结算 FCAS 价格上限 CPT APC MLF IRLF 结算残差 RRO CIS LGC SRES IRP IESS 储能 中国主体 注册 保函 5 分钟结算">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 28 分钟</span></div>
+            <h3><a class="card-link" href="html/澳大利亚NEM电力市场-2026-11.html">澳大利亚 NEM 电力市场（2026 版）</a></h3>
+            <p>五个区域、5 分钟出清与结算、FCAS、价格上限与 CPT、MLF/IRLF、CfD/CIS 与储能进入路径。</p>
+            <div class="tags"><span class="tag">NEM</span><span class="tag">5 分钟结算</span><span class="tag">FCAS</span></div>
+            <div class="card-foot"><span>2026-11 · 五区域与 5 分钟结算</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+          </article>
+          <article class="card" id="m-intl-de" data-type="core" data-search="德国 电力市场 DE-LU EPEX 日前 日内 15分钟 EUPHEMIA SDAC SIDC 平衡市场 FCR aFRR mFRR 再调度 Redispatch 2.0 EEG 负电价 容量机制 StromVKG 电网费 §14a REMIT 中国主体 注册">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 28 分钟</span></div>
+            <h3><a class="card-link" href="html/德国电力市场-2026-11.html">德国电力市场（2026 版）</a></h3>
+            <p>DE-LU 报价区、EPEX 日前/日内 15 分钟、平衡市场、再调度 2.0、EEG 负价规则与容量机制。</p>
+            <div class="tags"><span class="tag">DE-LU</span><span class="tag">EPEX</span><span class="tag">平衡市场</span></div>
+            <div class="card-foot"><span>2026-11 · DE-LU 与欧盟耦合</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+          </article>
+          <article class="card" id="m-intl-storage" data-type="core" data-search="澳大利亚 储能 大储 工商储 NEM FCAS CIS IRP WDRM 需量电费 灵活出口 CSIP-AUS 德国 储能 DE-LU FCR aFRR mFRR §14a §118 EnWG 电网费 容量市场 StromVKG AgNes 收益堆叠 投决 并网 MaStR VDE-AR-N 退化 合成算例 澳洲大储 德国工商储">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 33 分钟</span></div>
+            <h3><a class="card-link" href="html/澳德储能业务-2026-11.html">澳德储能业务：大储与工商储（2026 版）</a></h3>
+            <p>澳洲 NEM 与德国 DE-LU 四个象限的收益堆叠、准入并网、电网费、合同融资与运维退化。</p>
+            <div class="tags"><span class="tag">澳洲大储</span><span class="tag">德国工商储</span><span class="tag">收益堆叠</span></div>
+            <div class="card-foot"><span>2026-11 · 四象限与投决口径</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 06 Price -->
       <section class="sec module-section" id="price" data-cat="price">
         <div class="sec-head">
-          <div class="sec-num">06 / PRICE</div>
+          <div class="sec-num">07 / PRICE</div>
           <div>
             <h2>电价</h2>
             <p>从历史沿革、制度谱系到 2026 年现行文件与用户侧查证，再加一套国际比较方法。回答“电价多少”之前，先把环节与口径定下来。</p>
@@ -807,10 +848,10 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         </div>
       </section>
 
-      <!-- 06 Renewable -->
+      <!-- 07 Renewable -->
       <section class="sec module-section" id="renewable" data-cat="renewable">
         <div class="sec-head">
-          <div class="sec-num">07 / RENEWABLE</div>
+          <div class="sec-num">08 / RENEWABLE</div>
           <div>
             <h2>新能源与并网</h2>
             <p>项目侧看资源、机制电价与 LCOE；运行侧看涉网性能、考核电量与免考。两份笔记把“能不能建”和“建完怎么被考核”接起来。</p>
@@ -834,10 +875,10 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         </div>
       </section>
 
-      <!-- 07 Storage -->
+      <!-- 08 Storage -->
       <section class="sec module-section" id="storage" data-cat="storage">
         <div class="sec-head">
-          <div class="sec-num">08 / STORAGE</div>
+          <div class="sec-num">09 / STORAGE</div>
           <div>
             <h2>储能与 EMS</h2>
             <p>技术侧看路线、安全与构网；投资侧看政策、成本、时长折算与考核；调度侧看 MILP、多市场堆叠、SOC/退化与 MPC；数据侧看 SCADA 点表、通信、时延、时钟同步与安全防护。两份 EMS 笔记分别覆盖独立储能与微网。</p>
@@ -882,10 +923,10 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         </div>
       </section>
 
-      <!-- 08 Park -->
+      <!-- 09 Park -->
       <section class="sec module-section" id="park" data-cat="park">
         <div class="sec-head">
-          <div class="sec-num">09 / PARK</div>
+          <div class="sec-num">10 / PARK</div>
           <div>
             <h2>综合能源与零碳园区</h2>
             <p>把“零碳园区、绿电直连、源网荷储、微网、VPP”几个近义词拆开，再用一套合成算例回答“直连能不能算得过账”。</p>
@@ -902,10 +943,10 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         </div>
       </section>
 
-      <!-- 09 Carbon -->
+      <!-- 10 Carbon -->
       <section class="sec module-section" id="carbon" data-cat="carbon">
         <div class="sec-head">
-          <div class="sec-num">10 / CARBON</div>
+          <div class="sec-num">11 / CARBON</div>
           <div>
             <h2>碳市场与碳管理</h2>
             <p>从碳定价与 EU ETS、三层核算与电力排放因子，到 2026 年履约参数、CCER、碳金融与 CBAM，并附“配额缺口 + CCER 5% + CBAM”履约成本算例。机制、方法与操作层分开读。</p>
@@ -936,10 +977,10 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         </div>
       </section>
 
-      <!-- 10 VPP -->
+      <!-- 11 VPP -->
       <section class="sec module-section" id="vpp" data-cat="vpp">
         <div class="sec-head">
-          <div class="sec-num">11 / VPP</div>
+          <div class="sec-num">12 / VPP</div>
           <div>
             <h2>虚拟电厂</h2>
             <p>2026 版核心模块补齐聚合资源、准入接入、云边控制、市场参与、结算分成、商业模式与省级门槛；另有 2020 年系统读物与需求响应/车网互动模块，分别补概念源流与基线考核。</p>
@@ -970,10 +1011,10 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         </div>
       </section>
 
-      <!-- 11 Index -->
+      <!-- 12 Index -->
       <section class="sec module-section" id="index" data-cat="index">
         <div class="sec-head">
-          <div class="sec-num">12 / INDEX</div>
+          <div class="sec-num">13 / INDEX</div>
           <div>
             <h2>索引、查证与工具</h2>
             <p>回答前的四个入口：文号与口径、省级状态、高频问答、英文摘要。先查状态与来源级别，再下结论。</p>
@@ -1009,7 +1050,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
             <div class="card-foot"><span>这个文号是什么状态、这个数字能不能信</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
           </article>
           <article class="card" id="m-index-en" data-type="tool" data-search="INDEX EN English knowledge index digest knowledge map key figures provincial quick table open items answering discipline 2026 installed capacity carbon compliance 文件地图 Open items">
-            <div class="card-top"><span class="kind">索引</span><span class="card-meta">阅读约 40 分钟</span></div>
+            <div class="card-top"><span class="kind">索引</span><span class="card-meta">阅读约 44 分钟</span></div>
             <h3><a class="card-link" href="html/INDEX_EN-2026-11.html">English Knowledge Index</a></h3>
             <p>英文入口：文件地图、关键数字、省级简表、未定事项与答题纪律。</p>
             <div class="tags"><span class="tag">English</span><span class="tag">文件地图</span><span class="tag">Open items</span></div>
@@ -1025,10 +1066,10 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         </div>
       </section>
 
-      <!-- 12 Research -->
+      <!-- 13 Research -->
       <section class="sec module-section" id="research" data-cat="research">
         <div class="sec-head">
-          <div class="sec-num">13 / RESEARCH</div>
+          <div class="sec-num">14 / RESEARCH</div>
           <div>
             <h2>调研底稿</h2>
             <p>十份按时间归档的增量调研。它们保留信源日期、核实状态与冲突口径，是“为什么这么写”的证据链；正式引用仍以索引与原文为准。</p>
@@ -1139,7 +1180,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
               <div class="layer-num">L2</div>
               <div>
                 <h3>市场机制</h3>
-                <p class="layer-q">现货如何出清、如何结算、省间与省内怎么衔接。</p>
+                <p class="layer-q">现货如何出清、如何结算，国内外市场怎么衔接。</p>
                 <div class="chips">
                   <a class="chip" href="#m-spot-a">101 问 A · 基础</a>
                   <a class="chip" href="#m-spot-b">101 问 B · 出清结算</a>
@@ -1148,6 +1189,9 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
                   <a class="chip" href="#m-quant-risk">量化报价与交易风控</a>
                   <a class="chip" href="#m-risk-credit">风险 · 信用 · 结算</a>
                   <a class="chip" href="#m-spot-practice">现货市场实务</a>
+                  <a class="chip" href="#m-intl-au">澳大利亚 NEM</a>
+                  <a class="chip" href="#m-intl-de">德国电力市场</a>
+                  <a class="chip" href="#m-intl-storage">澳德储能业务</a>
                   <a class="chip" href="#m-province">省级市场状态表</a>
                 </div>
               </div>
@@ -1231,13 +1275,13 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         <div class="sec-head">
           <div class="sec-num">03 / ATLAS</div>
           <div>
-            <h2>七条最容易讲混的链路</h2>
-            <p>把市场时间轴、电价三环节、储能收益、并网考核、新能源测算、零碳园区与碳履约画成结构图。图中的数字均来自对应笔记；标注 D 级的是合成算例，只用于理解口径。</p>
+            <h2>八条最容易讲混的链路</h2>
+            <p>把市场时间轴、电价三环节、储能收益、并网考核、新能源测算、零碳园区、碳履约与海外市场对照画成结构图。图中的数字均来自对应笔记；标注 D 级的是合成算例，只用于理解口径。</p>
           </div>
         </div>
 
         <details class="atlas-fold" id="atlasFold" open>
-        <summary>七条专题链路 · 展开查看</summary>
+        <summary>八条专题链路 · 展开查看</summary>
         <div class="panels">
           <figure class="panel wide">
             <div class="panel-head">
@@ -1465,6 +1509,33 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
             </div>
             <figcaption>零碳园区评价、绿证、CCER 是三套不同的东西：园区评价是建设目标，绿证支持范围二绿电主张，CCER 用于履约抵销或自愿注销；同一电量或减排量不可重复主张。引用碳价必须写“日期 + 市场（CEA / 试点 / CCER）”。</figcaption>
           </figure>
+
+          <figure class="panel wide">
+            <div class="panel-head">
+              <span class="panel-kicker">专题 08 · 海外</span>
+              <h3>澳 / 德市场与储能设计对照</h3>
+              <p>一个用区域价与 5 分钟结算处理波动，一个用欧盟耦合与平衡市场消化新能源；储能在两国的收益结构也不同。</p>
+            </div>
+            <div class="market-flow" style="grid-template-columns:repeat(5,1fr)">
+              <div class="mf-step"><span class="mf-t">澳洲 · 出清</span><strong>5 分钟</strong><small>区域价 + 约束</small></div>
+              <div class="mf-step"><span class="mf-t">澳洲 · 辅助</span><strong>FCAS</strong><small>与能量共同优化</small></div>
+              <div class="mf-step"><span class="mf-t">澳洲 · 结算</span><strong>5MS + MLF</strong><small>周账单</small></div>
+              <div class="mf-step"><span class="mf-t">德国 · 日前</span><strong>15 分钟</strong><small>拍卖 pay-as-clear</small></div>
+              <div class="mf-step"><span class="mf-t">德国 · 平衡</span><strong>FCR/aFRR/mFRR</strong><small>容量 + 能量分开</small></div>
+            </div>
+            <div class="mini-grid">
+              <div class="mini"><b>澳洲价格带</b>2026-27 MPC A$23,200/MWh；CPT A$2,225,900/MWh；APC A$600/MWh。</div>
+              <div class="mini"><b>德国价格带</b>日前最低 -500 €/MWh；日内最低 -9,999 €/MWh；EEG 负价归零。</div>
+              <div class="mini"><b>储能四象限</b>澳洲大储＝套利+FCAS+CIS；德国大储＝套利+平衡市场+电网费豁免；工商储主要看需量电费。</div>
+            </div>
+            <div class="fact-row">
+              <span class="fact"><b>5</b> 个 NEM 区域</span>
+              <span class="fact"><b>2031</b> 德国容量机制生效</span>
+              <span class="fact"><b>2029-08-04</b> 德国储能电网费豁免截止</span>
+              <span class="fact"><b>3</b> 份海外模块</span>
+            </div>
+            <figcaption>澳洲与德国不是“同一套市场规则的两个版本”：澳洲是能源-only + FCAS，德国是欧盟耦合 + 平衡市场 + 再调度。储能四象限的差异更大：同是 100 MW/200 MWh，澳洲靠套利+FCAS+CIS，德国靠套利+平衡市场+电网费豁免；工商储则主要看需量电费与并网规则。两国共同的坑是时区、报价区、结算口径与进场合规。图中数字的时点与级别见对应笔记。</figcaption>
+          </figure>
         </div>
         </details>
       </section>
@@ -1472,7 +1543,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
       <!-- 14 Method -->
       <section class="sec" id="method">
         <div class="sec-head">
-          <div class="sec-num">14 / METHOD</div>
+          <div class="sec-num">15 / METHOD</div>
           <div>
             <h2>使用与口径</h2>
             <p>这个知识库不是“事实的终点”，而是“查证的起点”。三条使用步骤、四级来源分级、四条口径纪律，决定回答能不能用。</p>
@@ -1529,7 +1600,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         </div>
 
         <footer>
-          <div>数据截止 2026-11-09 · 46 个模块 · 九项技能<br>内容以 <span class="mono">knowledge/*.md</span> 原文为准；本页摘要与图示不构成投资建议。</div>
+          <div>数据截止 2026-11-10 · 49 个模块 · 九项技能<br>内容以 <span class="mono">knowledge/*.md</span> 原文为准；本页摘要与图示不构成投资建议。</div>
           <div><a href="../README.md">仓库 README</a> · <a href="../README_EN.md">README_EN</a> · <a href="#top">回到顶部 ↑</a></div>
         </footer>
       </section>
@@ -1562,6 +1633,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   var activeFilter = 'all';
   var reduceMotion = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
   var debounceTimer = 0;
+  var navActivationOffset = 130;
 
   function scrollBehavior(){
     return reduceMotion && reduceMotion.matches ? 'auto' : 'smooth';
@@ -1574,6 +1646,8 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
     var barH = filterbar ? Math.round(filterbar.getBoundingClientRect().height) : 0;
     document.documentElement.style.setProperty('--hub-header', sideH + 'px');
     document.documentElement.style.setProperty('--hub-scroll-offset', (sideH + barH + 16) + 'px');
+    navActivationOffset = Math.max(130, sideH + barH + 16);
+    if(navLinks && navLinks.length) setActive();
   }
   syncStickyOffsets();
   window.addEventListener('resize', syncStickyOffsets);
@@ -1770,11 +1844,11 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
     if(!nav || !link || window.innerWidth > 960) return;
     var ar = link.getBoundingClientRect();
     var nr = nav.getBoundingClientRect();
-    if(ar.left < nr.left + 8) nav.scrollLeft += ar.left - nr.left - 8;
-    else if(ar.right > nr.right - 8) nav.scrollLeft += ar.right - nr.right + 8;
+    if(ar.left < nr.left + 28) nav.scrollLeft += ar.left - nr.left - 28;
+    else if(ar.right > nr.right - 28) nav.scrollLeft += ar.right - nr.right + 28;
   }
   function setActive(){
-    var y = window.scrollY + 130;
+    var y = window.scrollY + navActivationOffset + 1;
     var idx = 0;
     for(var i = 0; i < targets.length; i++){
       if(targets[i] && targets[i].offsetTop <= y) idx = i;
@@ -1785,8 +1859,8 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
       if(on) a.setAttribute('aria-current', 'true');
       else a.removeAttribute('aria-current');
     });
+    revealNav(navLinks[idx]);
     if(idx !== lastIdx){
-      revealNav(navLinks[idx]);
       lastIdx = idx;
       window.setTimeout(updateNavFade, 220);
     }
@@ -1804,6 +1878,19 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   window.addEventListener('resize', updateNavFade);
   setActive();
   updateNavFade();
+
+  function restoreSmooth(){
+    window.requestAnimationFrame(function(){
+      window.requestAnimationFrame(function(){
+        document.documentElement.style.removeProperty('scroll-behavior');
+        setActive();
+      });
+    });
+  }
+  if(location.hash){
+    if(document.readyState === 'complete') restoreSmooth();
+    else window.addEventListener('load', restoreSmooth);
+  }
 
   var atlas = document.getElementById('atlasFold');
   var mq = window.matchMedia('(max-width:620px)');

@@ -57,14 +57,15 @@
       <ul>
               <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
               <li><a href="../index.html#spot"><b>05</b>电力现货与省间交易</a></li>
-              <li><a href="../index.html#price"><b>06</b>电价</a></li>
-              <li><a href="../index.html#renewable"><b>07</b>新能源与并网</a></li>
-              <li><a href="../index.html#storage"><b>08</b>储能与 EMS</a></li>
-              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
-              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
-              <li><a href="../index.html#vpp"><b>11</b>虚拟电厂</a></li>
-              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
-              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
+              <li><a href="../index.html#intl"><b>06</b>海外市场</a></li>
+              <li><a href="../index.html#price"><b>07</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>08</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>09</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>10</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>11</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>12</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>13</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>14</b>调研底稿</a></li>
       </ul>
     </div>
   </aside>
@@ -76,12 +77,12 @@
       <p class="lede">收益堆叠、投决、退化与考核</p>
       <p class="hook">可执行流程与配套工具；正文与 SKILL.md 同步。</p>
       <div class="tags"><span class="tag">技能</span><span class="tag">储能</span><span class="tag">投决</span><span class="tag">LCOS</span></div>
-      <div class="doc-meta"><span>约 20.8k 字</span><span>阅读约 36 分钟</span><span>16 节</span><span>数据截止 2026-11-01</span></div>
-      <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-storage-investment-operations.txt" download="储能投资与运营-SKILL.txt">下载 TXT</a><span>完整技能文档，约 25 KB，含 frontmatter</span></p>
+      <div class="doc-meta"><span>约 22.7k 字</span><span>阅读约 39 分钟</span><span>17 节</span><span>数据截止 2026-11-01</span></div>
+      <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-storage-investment-operations.txt" download="储能投资与运营-SKILL.txt">下载 TXT</a><span>完整技能文档，约 27 KB，含 frontmatter</span></p>
     </header>
 
     <details class="toc-mobile">
-      <summary>本页目录（16）</summary>
+      <summary>本页目录（17）</summary>
       <ol>
             <li class="lv2"><a href="#s1">0. 角色定义与行为规范</a></li>
             <li class="lv2"><a href="#s5">1. 边界：六种形态、三条收益逻辑</a></li>
@@ -98,12 +99,13 @@
             <li class="lv2"><a href="#s82">12. 术语表（中英对照）</a></li>
             <li class="lv2"><a href="#s83">13. 参考实现与自测</a></li>
             <li class="lv2"><a href="#s84">14. 专家问答推理手册</a></li>
-            <li class="lv2"><a href="#s90">15. 知识来源、维护与分工</a></li>
+            <li class="lv2"><a href="#s90">14A. 海外市场速查（澳洲 NEM / 德国 DE-LU）</a></li>
+            <li class="lv2"><a href="#s96">15. 知识来源、维护与分工</a></li>
       </ol>
     </details>
 
     <article class="prose">
-<aside class="note note-head"><p>🌐 English version: <a href="skill-storage-investment-operations-en.html">SKILL_EN.md</a> ｜ 姊妹技能：<a href="skill-electricity-trading-expert.html">电力交易专家</a>（市场规则/结算/容量电价原文）、<a href="skill-virtual-power-plant.html">虚拟电厂专家</a>（聚合/需求响应运营）、<a href="skill-spot-bidding-quant.html">现货报价量化专家</a>（电价预测/报价/回测）、<a href="skill-carbon-asset-expert.html">碳资产管理专家</a>（碳履约/CCER/CBAM）。本技能只回答&quot;储能项目值不值得投、收益怎么算、运营怎么考核&quot;。</p><p>版本 v1.9 · 数据截止 2026-11-01</p><p><strong>维护入口</strong>：<code>tools/selftest.py</code>（跑通即代表正文算例未过期）、<a href="储能投资与运营-2026-11.html">储能投资与运营底稿</a>（政策节点、成本区间、指标口径）、<a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a>（调度算法）、<a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a>（微网运行）。</p><p><strong>2026-2027 未定事项</strong>：114 号文省级细则覆盖面与考核扣减、1656 号文在零售侧的传导、容量电价分母时长（4/6/8/10 h）、辅助服务规则修订、消防与并网标准升级、储能系统价格走势。</p></aside>
+<aside class="note note-head"><p>🌐 English version: <a href="skill-storage-investment-operations-en.html">SKILL_EN.md</a> ｜ 姊妹技能：<a href="skill-electricity-trading-expert.html">电力交易专家</a>（市场规则/结算/容量电价原文）、<a href="skill-virtual-power-plant.html">虚拟电厂专家</a>（聚合/需求响应运营）、<a href="skill-spot-bidding-quant.html">现货报价量化专家</a>（电价预测/报价/回测）、<a href="skill-carbon-asset-expert.html">碳资产管理专家</a>（碳履约/CCER/CBAM）。本技能只回答&quot;储能项目值不值得投、收益怎么算、运营怎么考核&quot;。</p><p>版本 v1.9 · 数据截止 2026-11-01</p><p><strong>维护入口</strong>：<code>tools/selftest.py</code>（跑通即代表正文算例未过期）、<a href="储能投资与运营-2026-11.html">储能投资与运营底稿</a>（政策节点、成本区间、指标口径）、<a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a>（调度算法）、<a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a>（微网运行）、<a href="澳德储能业务-2026-11.html">澳德储能业务</a>（澳洲/德国四象限）。</p><p><strong>2026-2027 未定事项</strong>：114 号文省级细则覆盖面与考核扣减、1656 号文在零售侧的传导、容量电价分母时长（4/6/8/10 h）、辅助服务规则修订、消防与并网标准升级、储能系统价格走势。</p></aside>
 <hr>
 <h2 id="s1">0. 角色定义与行为规范</h2>
 <h3 id="s2">0.1 角色画像</h3>
@@ -111,7 +113,7 @@
 <h3 id="s3">0.2 回答行为规范（必须遵守）</h3>
 <ol><li><strong>先定六件事再算</strong>：项目形态（独立/配储/用户侧/火储/微网/聚合）、计量点（AC/DC、关口/单元）、市场与政策（省份、现货/中长期/辅助服务）、收入结构（价差/容量/租赁/服务/需量）、融资结构（资本金/贷款/租赁）、时间口径（投运年、政策有效期、寿命）。六者不明，任何 IRR 都是虚构。</li><li><strong>四个口径必须写清</strong>：交流侧还是直流侧；元/Wh 还是元/W；含税还是不含税；额定能量还是可用能量。四者混用会让结果差 10%–100%。</li><li><strong>收入拆四行</strong>：毛收入、占用与机会成本、考核扣减、退化成本。只报&quot;年收入 X 万元&quot;不合格。</li><li><strong>政策数字带文号、时点、省份</strong>。省别规则先确认；国家文件只说框架，不替省份承诺标准。</li><li><strong>来源分级</strong>：A=法规/主管部门/国家标准；B=交易中心、行业协会、招中标公告；C=媒体/研报/企业宣传；D=本技能基于公开参数的测算。厂商&quot;循环寿命 12000 次&quot;&quot;效率 92%&quot;一律 C 级，不能直接进基准模型。</li><li><strong>不构成投资建议</strong>：只做测算框架与情景分析，不承诺收益、不推荐具体设备或项目。</li><li><strong>合规红线</strong>：不提供骗补、虚报可用容量、篡改运行数据、规避考核、隐瞒安全缺陷的方法；不把未核实的补贴当作长期收入。</li><li><strong>单点结论必须带敏感性</strong>：价差、循环次数、CAPEX、容量电价、可用率、退化成本至少各动一次；只给基准值等于没给结论。</li></ol>
 <h3 id="s4">0.3 知识地图（问题类型 → 章节）</h3>
-<div class="table-wrap"><table><thead><tr><th>你被问到</th><th>先查</th></tr></thead><tbody><tr><td>这个储能项目值不值得投</td><td>第 1、3、6 章</td></tr><tr><td>收益有哪些、能不能叠加</td><td>第 4 章</td></tr><tr><td>容量电价怎么算、能拿多少</td><td>第 2.1、4.3 节</td></tr><tr><td>固定峰谷价差没了怎么办</td><td>第 2.2、4.2、9.1 节</td></tr><tr><td>用户侧削峰能省多少基本电费</td><td>第 2.5、4.6 节</td></tr><tr><td>调频/备用能赚多少、会不会影响套利</td><td>第 4.5、4.8 节</td></tr><tr><td>新能源配储怎么算</td><td>第 4.7 节</td></tr><tr><td>LCOS/IRR/NPV/回收期怎么算</td><td>第 6 章</td></tr><tr><td>贷款能不能过、DSCR 多少</td><td>第 6.8 节</td></tr><tr><td>运营考核怎么扣钱</td><td>第 7.3 节</td></tr><tr><td>合同怎么签、租赁怎么定价</td><td>第 8 章</td></tr><tr><td>主要风险是什么、怎么压测</td><td>第 9 章</td></tr><tr><td>投前要问哪些问题</td><td>第 10 章</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>你被问到</th><th>先查</th></tr></thead><tbody><tr><td>这个储能项目值不值得投</td><td>第 1、3、6 章</td></tr><tr><td>收益有哪些、能不能叠加</td><td>第 4 章</td></tr><tr><td>容量电价怎么算、能拿多少</td><td>第 2.1、4.3 节</td></tr><tr><td>固定峰谷价差没了怎么办</td><td>第 2.2、4.2、9.1 节</td></tr><tr><td>用户侧削峰能省多少基本电费</td><td>第 2.5、4.6 节</td></tr><tr><td>调频/备用能赚多少、会不会影响套利</td><td>第 4.5、4.8 节</td></tr><tr><td>新能源配储怎么算</td><td>第 4.7 节</td></tr><tr><td>LCOS/IRR/NPV/回收期怎么算</td><td>第 6 章</td></tr><tr><td>贷款能不能过、DSCR 多少</td><td>第 6.8 节</td></tr><tr><td>运营考核怎么扣钱</td><td>第 7.3 节</td></tr><tr><td>合同怎么签、租赁怎么定价</td><td>第 8 章</td></tr><tr><td>主要风险是什么、怎么压测</td><td>第 9 章</td></tr><tr><td>投前要问哪些问题</td><td>第 10 章</td></tr><tr><td>澳洲/德国大储或工商储怎么投</td><td>第 14A 章</td></tr></tbody></table></div>
 <hr>
 <h2 id="s5">1. 边界：六种形态、三条收益逻辑</h2>
 <h3 id="s6">1.1 六种形态</h3>
@@ -406,17 +408,30 @@ print(round(finance.npv(0.08, flows)), round(finance.irr(flows) * 100, 2))</code
 <p>常见四个原因：① 可用率按&quot;没坏&quot;统计，计划停运未扣；② 容量申报沿用初始值，SOH 下降后实际可用容量不足；③ 调频 K 值下降未复盘；④ 充电抬高需量，基本电费反而上升。</p>
 <p>排查顺序：先对账结算电量与关口表，再查非计划停运记录，再核 SOH 与容量申报，最后查需量曲线与充电窗口。考核申诉必须带原始曲线、调度指令、回执与时间戳。</p>
 <hr>
-<h2 id="s90">15. 知识来源、维护与分工</h2>
-<h3 id="s91">15.1 方法与标准来源</h3>
-<ul><li><strong>政策</strong>：发改价格〔2026〕114号、发改能源规〔2025〕1656号、发改能源规〔2025〕411号、发改价格〔2025〕136号、发改办价格〔2016〕1583号、发改价格〔2018〕500号；</li><li><strong>标准</strong>：GB/T 36549-2018、GB/T 36547-2024、GB/T 36558-2023、GB/T 42288-2022、GB/T 51048-2025；</li><li><strong>方法</strong>：LCOS/NPV/IRR/DSCR 通用财务方法；Lazard LCOS、NREL ATB、IEC 62933 作为国际参照（B 级）；</li><li>行业数据：中电联运行统计、公开招中标公告（B 级）。</li></ul>
-<h3 id="s92">15.2 数据与查证入口</h3>
+<h2 id="s90">14A. 海外市场速查（澳洲 NEM / 德国 DE-LU）</h2>
+<aside class="note"><p>适用：只回答澳/德大储与工商储的收益结构、准入、并网费与投决口径；不把中国容量电价/峰谷价差平移到海外。规则细节见知识模块《澳德储能业务：大储与工商储（2026 版）》。</p></aside>
+<h3 id="s91">14A.1 市场卡片</h3>
+<div class="table-wrap"><table><thead><tr><th>维度</th><th>澳洲 NEM</th><th>德国 DE-LU</th></tr></thead><tbody><tr><td>大储收入</td><td>能量套利 + FCAS + CIS</td><td>套利 + FCR/aFRR/mFRR + 电网费豁免</td></tr><tr><td>工商储收入</td><td>需量电费 + 价差 + 自用</td><td>需量电费 + §14a + 动态电价</td></tr><tr><td>容量机制</td><td>无；CIS 竞标收入保障</td><td>无；StromVKG 2031 起</td></tr><tr><td>结算粒度</td><td>5 分钟</td><td>日前/日内 15 分钟 MTU</td></tr><tr><td>并网</td><td>NSP 连接 + AEMO 注册 + MASS</td><td>VDE-AR-N + MaStR + 机组认证</td></tr><tr><td>关键政策日</td><td>CIS 第 8 轮 COD 2029-12-31</td><td>§118(6) 投运截止 2029-08-04</td></tr></tbody></table></div>
+<h3 id="s92">14A.2 澳洲五条</h3>
+<ol><li><strong>收益 = 套利 + FCAS + CIS</strong>：没有容量电价；CIS 是竞标收入保障，不是按容量普发。</li><li><strong>套利公式</strong>：<code>套利毛利 = 放电量 × 放电价 − 充电量 × 充电价</code>，<code>充电量 = 放电量 ÷ RTE</code>；再扣退化与电网费。</li><li><strong>5 分钟结算 + 区域价 + MLF</strong>：结算电量按 MLF 调整；MLF 每年变，回测要分年。</li><li><strong>10 个 FCAS 品种</strong>（8 contingency + 2 regulation），1 秒极快 FCAS 于 2023-10-09 上线；FCAS 与套利争用功率和 SOC。</li><li><strong>注册与并网</strong>：储能可按 IRP/Generator/Market Customer 注册；NSP 连接、AEMO 注册、MASS 测试、SCADA 一个都不能少。</li></ol>
+<h3 id="s93">14A.3 德国六条</h3>
+<ol><li><strong>收益 = 日前/日内套利 + FCR/aFRR/mFRR + 电网费豁免</strong>；2031 年起才有容量市场。</li><li><strong>15 分钟 MTU</strong>（2025-10-01 起）；日前 12:00 CET 关闸、pay-as-clear，日内 pay-as-bid；SDAC 下限 −€500/MWh，SIDC 下限 −€9,999/MWh。</li><li><strong>平衡市场</strong>：FCR 对称、仅容量付费；aFRR/mFRR 容量+能量分开；最小投标 1 MW 级，需预资格。</li><li><strong>§118(6)</strong>：2029-08-04 前投运的储能，电网费豁免 20 年；AgNes 计划 2027-01-01 最终决定、2029 年起改为容量型电网费（大储约 €4–7/kW/年），最终规则待定。</li><li><strong>§14a 只适用低压可控负荷</strong>（&gt;4.2 kW），模块二为 60% 电网费减免；不是大储规则，也不是无条件补贴。</li><li><strong>StromVKG 容量市场</strong>：2031 年交付，2026-09-02 获欧盟批准；2026 年两轮招标据报道不含电池储能，2027 年新增容量招标对储能开放（≥10 小时），不能提前计入收入。</li></ol>
+<h3 id="s94">14A.4 同一问题，两种答案</h3>
+<div class="table-wrap"><table><thead><tr><th>问题</th><th>澳洲 NEM</th><th>德国 DE-LU</th></tr></thead><tbody><tr><td>100 MW/200 MWh 靠什么回收投资</td><td>套利 + FCAS + CIS</td><td>套利 + 平衡市场 + 电网费豁免</td></tr><tr><td>有没有容量电价</td><td>无；CIS 收入保障</td><td>无；2031 起容量市场</td></tr><tr><td>工商储最大收益项</td><td>需量电费 + 价差</td><td>需量电费 + §14a + 动态电价</td></tr><tr><td>并网难点</td><td>NSP 排队、MASS 测试</td><td>VDE-AR-N 认证、机组证书</td></tr><tr><td>关键政策截止日</td><td>CIS COD 2029-12-31</td><td>§118(6) 投运 2029-08-04</td></tr></tbody></table></div>
+<h3 id="s95">14A.5 回答纪律</h3>
+<ul><li>先问“哪个象限”（澳/德 × 大储/工商储），再给收益结构；不要把大储的 FCAS/平衡市场收入套到工商储。</li><li>收益数字必须带币种、年份、电价情景、是否含电网费；合成算例一律标 D 级、不构成投资建议。</li><li>澳洲用 A$，德国用 €；不混算，不做“统一 IRR”。</li><li>政策时点写清：CIS 轮次与 COD、§118(6) 投运截止、AgNes 生效日、容量市场交付年。</li><li>不把 IESS 当注册类别，正确是 IRP（2021-12-02 最终规则，2024-06-03 实施）；不把 §14a 当大储规则；不把 2031 容量市场当已确定收入。</li></ul>
+<hr>
+<h2 id="s96">15. 知识来源、维护与分工</h2>
+<h3 id="s97">15.1 方法与标准来源</h3>
+<ul><li><strong>政策</strong>：发改价格〔2026〕114号、发改能源规〔2025〕1656号、发改能源规〔2025〕411号、发改价格〔2025〕136号、发改办价格〔2016〕1583号、发改价格〔2018〕500号；</li><li><strong>标准</strong>：GB/T 36549-2018、GB/T 36547-2024、GB/T 36558-2023、GB/T 42288-2022、GB/T 51048-2025；</li><li><strong>方法</strong>：LCOS/NPV/IRR/DSCR 通用财务方法；Lazard LCOS、NREL ATB、IEC 62933 作为国际参照（B 级）；</li><li>行业数据：中电联运行统计、公开招中标公告（B 级）；</li><li><strong>海外规则</strong>：AEMC/AEMO/AER（澳洲 NEM）、EPEX/BNetzA/EnWG/regelleistung.net（德国），详见澳德储能模块（A/B 级）。</li></ul>
+<h3 id="s98">15.2 数据与查证入口</h3>
 <ul><li>国家发改委价格司、国家能源局政策法规司；</li><li>省级发改委/能源局价格文件；</li><li>电力交易中心信息披露；</li><li>全国标准信息公共服务平台；</li><li>中国招标投标公共服务平台。</li></ul>
-<h3 id="s93">15.3 维护件</h3>
-<ul><li><a href="储能投资与运营-2026-11.html">储能投资与运营底稿</a>：政策节点、成本区间、指标口径、未定事项；</li><li><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a>：调度算法与运行约束；</li><li><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a>：微网并离网与孤岛。</li></ul>
-<h3 id="s94">15.4 与姊妹技能的分工</h3>
+<h3 id="s99">15.3 维护件</h3>
+<ul><li><a href="储能投资与运营-2026-11.html">储能投资与运营底稿</a>：政策节点、成本区间、指标口径、未定事项；</li><li><a href="澳德储能业务-2026-11.html">澳德储能业务</a>：澳洲 NEM 与德国 DE-LU 四象限收益、准入、并网与投决口径；</li><li><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a>：调度算法与运行约束；</li><li><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a>：微网并离网与孤岛。</li></ul>
+<h3 id="s100">15.4 与姊妹技能的分工</h3>
 <div class="table-wrap"><table><thead><tr><th>技能</th><th>负责</th><th>本技能引用方式</th></tr></thead><tbody><tr><td>电力交易专家</td><td>市场规则、结算、容量电价政策</td><td>引用文号与规则，不重复解释</td></tr><tr><td>现货报价量化专家</td><td>电价预测、报价、回测</td><td>引用预测结果，不重写模型</td></tr><tr><td>虚拟电厂专家</td><td>聚合、需求响应运营</td><td>引用聚合能力，不重复组织方案</td></tr><tr><td>碳资产管理专家</td><td>碳履约、CCER、CBAM</td><td>不涉及</td></tr><tr><td>储能 EMS 底稿</td><td>SOC/备用/退化/AGC</td><td>引用调度模型，不重复 MILP</td></tr></tbody></table></div>
-<h3 id="s95">15.5 维护节奏</h3>
-<ul><li>季度：省级容量电价、分时电价、辅助服务规则；</li><li>半年：成本区间、设备价格、质保条款；</li><li>年度：标准更新、运行指标、算例回归；</li><li>触发式：重大政策（如 114 号省级细则、1656 号零售传导）发布后 1 个月内更新。</li></ul>
+<h3 id="s101">15.5 维护节奏</h3>
+<ul><li><strong>季度</strong>：省级容量电价、分时电价、辅助服务规则；澳洲 CIS 轮次/FCAS 价格、德国平衡市场/AgNes/容量市场进展；</li><li>半年：成本区间、设备价格、质保条款；</li><li>年度：标准更新、运行指标、算例回归；</li><li>触发式：重大政策（如 114 号省级细则、1656 号零售传导）发布后 1 个月内更新。</li></ul>
     </article>
 
     
@@ -524,13 +539,19 @@ print(round(finance.npv(0.08, flows)), round(finance.irr(flows) * 100, 2))</code
             <li class="lv3"><a href="#s87">14.3 "配储项目有弃电，是不是一定划算？"</a></li>
             <li class="lv3"><a href="#s88">14.4 "调频收益高，能不能把功率全拿去调频？"</a></li>
             <li class="lv3"><a href="#s89">14.5 "运行数据看着正常，为什么年底被考核扣钱？"</a></li>
-            <li class="lv2"><a href="#s90">15. 知识来源、维护与分工</a></li>
-            <li class="lv3"><a href="#s91">15.1 方法与标准来源</a></li>
-            <li class="lv3"><a href="#s92">15.2 数据与查证入口</a></li>
-            <li class="lv3"><a href="#s93">15.3 维护件</a></li>
-            <li class="lv3"><a href="#s94">15.4 与姊妹技能的分工</a></li>
-            <li class="lv3"><a href="#s95">15.5 维护节奏</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="79">展开 79 个小节</button>
+            <li class="lv2"><a href="#s90">14A. 海外市场速查（澳洲 NEM / 德国 DE-LU）</a></li>
+            <li class="lv3"><a href="#s91">14A.1 市场卡片</a></li>
+            <li class="lv3"><a href="#s92">14A.2 澳洲五条</a></li>
+            <li class="lv3"><a href="#s93">14A.3 德国六条</a></li>
+            <li class="lv3"><a href="#s94">14A.4 同一问题，两种答案</a></li>
+            <li class="lv3"><a href="#s95">14A.5 回答纪律</a></li>
+            <li class="lv2"><a href="#s96">15. 知识来源、维护与分工</a></li>
+            <li class="lv3"><a href="#s97">15.1 方法与标准来源</a></li>
+            <li class="lv3"><a href="#s98">15.2 数据与查证入口</a></li>
+            <li class="lv3"><a href="#s99">15.3 维护件</a></li>
+            <li class="lv3"><a href="#s100">15.4 与姊妹技能的分工</a></li>
+            <li class="lv3"><a href="#s101">15.5 维护节奏</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="84">展开 84 个小节</button>
   </aside>
 </div>
 

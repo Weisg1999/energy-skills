@@ -6,7 +6,7 @@
 
 [English](README_EN.md) | 中文
 
-九份面向 AI 助手的领域技能，配套 **46 个知识模块**（16,745 行正文、10 个分区）。每份技能是一册可直接注入大模型上下文的 Markdown 手册：加载后，模型以该领域资深从业者的身份回答，并遵守内置纪律——数字带文号与时点、涉及省份先确认、政策类内容给出查证入口、未交叉验证的数据标注"待核实"。
+九份面向 AI 助手的领域技能，配套 **49 个知识模块**（18,914 行正文、11 个分区）。每份技能是一册可直接注入大模型上下文的 Markdown 手册：加载后，模型以该领域资深从业者的身份回答，并遵守内置纪律——数字带文号与时点、涉及省份先确认、政策类内容给出查证入口、未交叉验证的数据标注"待核实"。
 
 当前版本 **v1.9**，数据截止 **2026-11-09**。入口：[知识中心](knowledge/index.html) · [更新记录](CHANGELOG.md)。
 
@@ -21,7 +21,7 @@
 
 | 技能 | 回答什么问题 | 交付物 | 入口 |
 |---|---|---|---|
-| 电力交易专家 electricity-trading-expert | 现货出清与定价、中长期与金融、辅助服务与容量、结算计量、省别实践、新能源入市、碳市场、交易策略与风控 | 双语手册 | [中文](skills/electricity-trading-expert/SKILL.md) · [English](skills/electricity-trading-expert/SKILL_EN.md) |
+| 电力交易专家 electricity-trading-expert | 现货出清与定价、中长期与金融、辅助服务与容量、结算计量、省别实践、新能源入市、碳市场、海外市场（澳/德）、交易策略与风控 | 双语手册 | [中文](skills/electricity-trading-expert/SKILL.md) · [English](skills/electricity-trading-expert/SKILL_EN.md) |
 | 虚拟电厂专家 virtual-power-plant-expert | VPP 概念辨析、资源聚合、三阶段演进、市场参与、商业模式、控制优化、政策与国际对标 | 双语手册 | [中文](skills/virtual-power-plant/SKILL.md) · [English](skills/virtual-power-plant/SKILL_EN.md) |
 | 现货报价量化专家 spot-bidding-quant | 负荷与电价预测、残差校正、量价曲线、购电组合、竞价仿真、滚动回测与 T+1 归因 | 双语手册 + 零依赖 Python 工具 + 合成数据 | [中文](skills/spot-bidding-quant/SKILL.md) · [English](skills/spot-bidding-quant/SKILL_EN.md) |
 | 碳资产管理专家 carbon-asset-expert | 履约日历、配额盈缺、CEA/CCER 采购、CCER 开发测算、碳金融、CBAM、产品碳足迹、碳中和声明、DPP | 双语手册 + 零依赖 Python 工具 | [中文](skills/carbon-asset-expert/SKILL.md) · [English](skills/carbon-asset-expert/SKILL_EN.md) |
@@ -35,13 +35,14 @@
 
 ## 知识库
 
-46 个模块分为 10 个分区：通识与经济学、电力现货与省间交易、电价、新能源与并网、储能与 EMS（含 SCADA 数据链路）、综合能源与零碳园区、碳市场与碳管理、虚拟电厂、索引与工具、调研底稿。每份 Markdown 带 frontmatter（`id`、`section`、`level`、`title`、`summary`、`tags`、`cutoff`、`related` 等），[知识中心](knowledge/index.html)的卡片、计数、搜索、46 个知识阅读页与 18 个技能阅读页全部由构建脚本生成，技能页另附 TXT 下载。
+49 个模块分为 11 个分区：通识与经济学、电力现货与省间交易、海外市场（澳大利亚 NEM 与德国）、电价、新能源与并网、储能与 EMS（含 SCADA 数据链路）、综合能源与零碳园区、碳市场与碳管理、虚拟电厂、索引与工具、调研底稿。每份 Markdown 带 frontmatter（`id`、`section`、`level`、`title`、`summary`、`tags`、`cutoff`、`related` 等），[知识中心](knowledge/index.html)的卡片、计数、搜索、49 个知识阅读页与 18 个技能阅读页全部由构建脚本生成，技能页另附 TXT 下载。
 
 | 想解决的问题 | 从这里开始 |
 |---|---|
 | 没有电力背景，先建立整体图景 | [通识 A 格局与主体](knowledge/电力系统通识-A-格局与主体.md)、[B 发输配变用](knowledge/电力系统通识-B-发输配变用.md)、[C 改革史](knowledge/电力系统通识-C-改革史.md)、[D 新角色与现货市场](knowledge/电力系统通识-D-新角色与现货市场.md) |
 | 政策文号、口径与省别状态 | [国家级政策列表（55 条官方原文）](knowledge/政策列表-2026-11.md)、[省级政策列表（13 条官方原文）](knowledge/省级政策列表-2026-11.md)、[索引与口径](knowledge/索引与口径-2026-11.md)、[省级市场状态表](knowledge/省级市场状态表-2026-11.md)、[英文索引](knowledge/INDEX_EN-2026-11.md) |
 | 现货怎么出清、怎么结算 | [101 问 A 基础与价格机制](knowledge/电力现货市场101问-A-基础与价格机制.md)、[B 出清结算与省域实践](knowledge/电力现货市场101问-B-出清结算与省域实践.md)、[C 结算 TTS 与政策演进](knowledge/电力现货市场101问-C-结算TTS与政策演进.md)、[实务精读](knowledge/电力现货市场实务-精读笔记.md)、[经济学原理](knowledge/电力系统经济学原理-主题笔记.md)、[省间与跨区交易](knowledge/省间与跨区交易-2026-11.md) |
+| 澳洲、德国市场怎么交易、储能怎么投 | [澳大利亚 NEM](knowledge/澳大利亚NEM电力市场-2026-11.md)、[德国电力市场](knowledge/德国电力市场-2026-11.md)、[澳德储能业务](knowledge/澳德储能业务-2026-11.md)、[技能第 7A 章](skills/electricity-trading-expert/SKILL.md)、[储能技能第 14A 章](skills/storage-investment-operations/SKILL.md) |
 | 电价怎么构成、现行文件怎么查 | [制度谱系](knowledge/中国电价制度谱系-2026-11.md)、[现行政策与查证](knowledge/中国电价现行政策与查证-2026-11.md)、[电价史](knowledge/中国电价史-2026-11.md)、[国际比较方法与模板](knowledge/国际电价比较-方法与模板-2026-11.md)、[电价与电费优化技能](skills/tariff-bill-optimization/SKILL.md) |
 | 储能值不值得投、怎么考核 | [储能投资与运营](knowledge/储能投资与运营-2026-11.md)、[技术路线安全与构网型并网](knowledge/储能技术路线安全与构网型并网-2026-11.md)、[储能 EMS 算法底稿](knowledge/储能EMS优化调度-算法与工程-2026-11.md)、[EMS 技能](skills/ems-dispatch/SKILL.md) |
 | 新能源能不能开发、能不能并网 | [新能源项目开发与并网](knowledge/新能源项目开发与并网-2026-11.md)、[并网运行考核与两个细则](knowledge/并网运行考核与两个细则-2026-11.md)、[综合能源与零碳园区](knowledge/综合能源与零碳园区-2026-11.md) |
@@ -79,7 +80,7 @@ energy-skills/
     ├── index.template.html         ← 首页骨架（手动维护）
     ├── index.html                  ← 生成物
     ├── assets/                     ← 阅读页样式与脚本 + 标识（3 个 SVG）
-    ├── html/                       ← 生成物：46 个知识页 + 18 个技能页
+    ├── html/                       ← 生成物：49 个知识页 + 18 个技能页
     │   └── download/skills/        ← 生成物：18 个技能 TXT
     └── *.md                        ← 知识模块（源头，frontmatter 驱动）
 ```
@@ -120,7 +121,7 @@ CI 会依次执行一致性校验、生成物比对与七个 Python 自测；任
 ## Roadmap
 
 - [x] 九份技能：电力交易、虚拟电厂、现货报价量化、碳资产管理、储能投资与运营、新能源项目开发与并网、EMS 优化调度、电价与电费优化、售电零售与风险（均为中英双语，后七份附零依赖工具）
-- [x] 知识库：通识、现货、电价、新能源、储能、综合能源、碳市场、VPP、索引与调研底稿共 46 个模块，知识中心已改为生成物
+- [x] 知识库：通识、现货、海外（澳/德，含储能业务）、电价、新能源、储能、综合能源、碳市场、VPP、索引与调研底稿共 49 个模块，知识中心已改为生成物
 - [x] **EMS 优化调度**：独立第七技能，附 96 点调度内核、需量/容量/调频测算与全部算例断言；微网与储能两份底稿的算例已对齐工具
 - [x] **电价与电费优化**：独立第八技能，附账单拆分、三种基本电费、闭式最优申报、分时平移与套餐比价工具，锁定 A–H 算例
 - [x] **售电零售与风险**：独立第九技能，附套餐全成本定价、客户组合、偏差期望与分位、保函缺口工具，锁定 A–H 算例
@@ -130,4 +131,4 @@ CI 会依次执行一致性校验、生成物比对与七个 Python 自测；任
 
 本仓库内容（Markdown 技能文件、知识笔记、调研记录与辅助脚本）采用 [CC BY-NC 4.0](LICENSE) 授权：可署名后自由复制、分发与改编，**不得用于商业用途**。引用或再发布请按 `LICENSE` 中的建议格式署名，并保留来源链接。
 
-*最后更新于 2026-11-08*
+*最后更新于 2026-11-10*

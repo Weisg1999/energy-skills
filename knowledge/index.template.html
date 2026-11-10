@@ -9,6 +9,7 @@
 <link rel="icon" type="image/svg+xml" href="assets/logo-book-favicon.svg">
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+if(location.hash){document.documentElement.style.scrollBehavior='auto';}
 </script>
 <style>
 /* @@TOKENS@@ */
@@ -210,6 +211,7 @@ mark.hit{background:var(--amber-soft);color:inherit;border-radius:2px;padding:0 
 .card-cta{font-weight:600;color:var(--teal);white-space:nowrap}
 .module-section[data-cat="foundation"]{--cat:var(--teal);--cat-soft:var(--teal-soft)}
 .module-section[data-cat="spot"]{--cat:var(--blue);--cat-soft:var(--blue-soft)}
+.module-section[data-cat="intl"]{--cat:var(--indigo);--cat-soft:var(--indigo-soft)}
 .module-section[data-cat="price"]{--cat:var(--amber);--cat-soft:var(--amber-soft)}
 .module-section[data-cat="renewable"]{--cat:var(--renewable);--cat-soft:var(--teal-soft)}
 .module-section[data-cat="storage"]{--cat:var(--plum);--cat-soft:var(--plum-soft)}
@@ -586,7 +588,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
               <div class="layer-num">L2</div>
               <div>
                 <h3>市场机制</h3>
-                <p class="layer-q">现货如何出清、如何结算、省间与省内怎么衔接。</p>
+                <p class="layer-q">现货如何出清、如何结算，国内外市场怎么衔接。</p>
                 <div class="chips">
                   <a class="chip" href="#m-spot-a">101 问 A · 基础</a>
                   <a class="chip" href="#m-spot-b">101 问 B · 出清结算</a>
@@ -595,6 +597,9 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
                   <a class="chip" href="#m-quant-risk">量化报价与交易风控</a>
                   <a class="chip" href="#m-risk-credit">风险 · 信用 · 结算</a>
                   <a class="chip" href="#m-spot-practice">现货市场实务</a>
+                  <a class="chip" href="#m-intl-au">澳大利亚 NEM</a>
+                  <a class="chip" href="#m-intl-de">德国电力市场</a>
+                  <a class="chip" href="#m-intl-storage">澳德储能业务</a>
                   <a class="chip" href="#m-province">省级市场状态表</a>
                 </div>
               </div>
@@ -678,13 +683,13 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         <div class="sec-head">
           <div class="sec-num">03 / ATLAS</div>
           <div>
-            <h2>七条最容易讲混的链路</h2>
-            <p>把市场时间轴、电价三环节、储能收益、并网考核、新能源测算、零碳园区与碳履约画成结构图。图中的数字均来自对应笔记；标注 D 级的是合成算例，只用于理解口径。</p>
+            <h2>八条最容易讲混的链路</h2>
+            <p>把市场时间轴、电价三环节、储能收益、并网考核、新能源测算、零碳园区、碳履约与海外市场对照画成结构图。图中的数字均来自对应笔记；标注 D 级的是合成算例，只用于理解口径。</p>
           </div>
         </div>
 
         <details class="atlas-fold" id="atlasFold" open>
-        <summary>七条专题链路 · 展开查看</summary>
+        <summary>八条专题链路 · 展开查看</summary>
         <div class="panels">
           <figure class="panel wide">
             <div class="panel-head">
@@ -912,6 +917,33 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
             </div>
             <figcaption>零碳园区评价、绿证、CCER 是三套不同的东西：园区评价是建设目标，绿证支持范围二绿电主张，CCER 用于履约抵销或自愿注销；同一电量或减排量不可重复主张。引用碳价必须写“日期 + 市场（CEA / 试点 / CCER）”。</figcaption>
           </figure>
+
+          <figure class="panel wide">
+            <div class="panel-head">
+              <span class="panel-kicker">专题 08 · 海外</span>
+              <h3>澳 / 德市场与储能设计对照</h3>
+              <p>一个用区域价与 5 分钟结算处理波动，一个用欧盟耦合与平衡市场消化新能源；储能在两国的收益结构也不同。</p>
+            </div>
+            <div class="market-flow" style="grid-template-columns:repeat(5,1fr)">
+              <div class="mf-step"><span class="mf-t">澳洲 · 出清</span><strong>5 分钟</strong><small>区域价 + 约束</small></div>
+              <div class="mf-step"><span class="mf-t">澳洲 · 辅助</span><strong>FCAS</strong><small>与能量共同优化</small></div>
+              <div class="mf-step"><span class="mf-t">澳洲 · 结算</span><strong>5MS + MLF</strong><small>周账单</small></div>
+              <div class="mf-step"><span class="mf-t">德国 · 日前</span><strong>15 分钟</strong><small>拍卖 pay-as-clear</small></div>
+              <div class="mf-step"><span class="mf-t">德国 · 平衡</span><strong>FCR/aFRR/mFRR</strong><small>容量 + 能量分开</small></div>
+            </div>
+            <div class="mini-grid">
+              <div class="mini"><b>澳洲价格带</b>2026-27 MPC A$23,200/MWh；CPT A$2,225,900/MWh；APC A$600/MWh。</div>
+              <div class="mini"><b>德国价格带</b>日前最低 -500 €/MWh；日内最低 -9,999 €/MWh；EEG 负价归零。</div>
+              <div class="mini"><b>储能四象限</b>澳洲大储＝套利+FCAS+CIS；德国大储＝套利+平衡市场+电网费豁免；工商储主要看需量电费。</div>
+            </div>
+            <div class="fact-row">
+              <span class="fact"><b>5</b> 个 NEM 区域</span>
+              <span class="fact"><b>2031</b> 德国容量机制生效</span>
+              <span class="fact"><b>2029-08-04</b> 德国储能电网费豁免截止</span>
+              <span class="fact"><b>3</b> 份海外模块</span>
+            </div>
+            <figcaption>澳洲与德国不是“同一套市场规则的两个版本”：澳洲是能源-only + FCAS，德国是欧盟耦合 + 平衡市场 + 再调度。储能四象限的差异更大：同是 100 MW/200 MWh，澳洲靠套利+FCAS+CIS，德国靠套利+平衡市场+电网费豁免；工商储则主要看需量电费与并网规则。两国共同的坑是时区、报价区、结算口径与进场合规。图中数字的时点与级别见对应笔记。</figcaption>
+          </figure>
         </div>
         </details>
       </section>
@@ -919,7 +951,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
       <!-- 14 Method -->
       <section class="sec" id="method">
         <div class="sec-head">
-          <div class="sec-num">14 / METHOD</div>
+          <div class="sec-num">15 / METHOD</div>
           <div>
             <h2>使用与口径</h2>
             <p>这个知识库不是“事实的终点”，而是“查证的起点”。三条使用步骤、四级来源分级、四条口径纪律，决定回答能不能用。</p>
@@ -1009,6 +1041,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   var activeFilter = 'all';
   var reduceMotion = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
   var debounceTimer = 0;
+  var navActivationOffset = 130;
 
   function scrollBehavior(){
     return reduceMotion && reduceMotion.matches ? 'auto' : 'smooth';
@@ -1021,6 +1054,8 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
     var barH = filterbar ? Math.round(filterbar.getBoundingClientRect().height) : 0;
     document.documentElement.style.setProperty('--hub-header', sideH + 'px');
     document.documentElement.style.setProperty('--hub-scroll-offset', (sideH + barH + 16) + 'px');
+    navActivationOffset = Math.max(130, sideH + barH + 16);
+    if(navLinks && navLinks.length) setActive();
   }
   syncStickyOffsets();
   window.addEventListener('resize', syncStickyOffsets);
@@ -1217,11 +1252,11 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
     if(!nav || !link || window.innerWidth > 960) return;
     var ar = link.getBoundingClientRect();
     var nr = nav.getBoundingClientRect();
-    if(ar.left < nr.left + 8) nav.scrollLeft += ar.left - nr.left - 8;
-    else if(ar.right > nr.right - 8) nav.scrollLeft += ar.right - nr.right + 8;
+    if(ar.left < nr.left + 28) nav.scrollLeft += ar.left - nr.left - 28;
+    else if(ar.right > nr.right - 28) nav.scrollLeft += ar.right - nr.right + 28;
   }
   function setActive(){
-    var y = window.scrollY + 130;
+    var y = window.scrollY + navActivationOffset + 1;
     var idx = 0;
     for(var i = 0; i < targets.length; i++){
       if(targets[i] && targets[i].offsetTop <= y) idx = i;
@@ -1232,8 +1267,8 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
       if(on) a.setAttribute('aria-current', 'true');
       else a.removeAttribute('aria-current');
     });
+    revealNav(navLinks[idx]);
     if(idx !== lastIdx){
-      revealNav(navLinks[idx]);
       lastIdx = idx;
       window.setTimeout(updateNavFade, 220);
     }
@@ -1251,6 +1286,19 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   window.addEventListener('resize', updateNavFade);
   setActive();
   updateNavFade();
+
+  function restoreSmooth(){
+    window.requestAnimationFrame(function(){
+      window.requestAnimationFrame(function(){
+        document.documentElement.style.removeProperty('scroll-behavior');
+        setActive();
+      });
+    });
+  }
+  if(location.hash){
+    if(document.readyState === 'complete') restoreSmooth();
+    else window.addEventListener('load', restoreSmooth);
+  }
 
   var atlas = document.getElementById('atlasFold');
   var mq = window.matchMedia('(max-width:620px)');

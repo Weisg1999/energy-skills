@@ -57,14 +57,15 @@
       <ul>
               <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
               <li><a href="../index.html#spot"><b>05</b>电力现货与省间交易</a></li>
-              <li><a href="../index.html#price"><b>06</b>电价</a></li>
-              <li><a href="../index.html#renewable"><b>07</b>新能源与并网</a></li>
-              <li><a href="../index.html#storage"><b>08</b>储能与 EMS</a></li>
-              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
-              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
-              <li><a href="../index.html#vpp"><b>11</b>虚拟电厂</a></li>
-              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
-              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
+              <li><a href="../index.html#intl"><b>06</b>海外市场</a></li>
+              <li><a href="../index.html#price"><b>07</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>08</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>09</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>10</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>11</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>12</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>13</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>14</b>调研底稿</a></li>
       </ul>
     </div>
   </aside>
@@ -76,12 +77,12 @@
       <p class="lede">Revenue stacking, investment decisions, degradation and assessment</p>
       <p class="hook">Executable workflow and tools; synced with SKILL.md.</p>
       <div class="tags"><span class="tag">skill</span><span class="tag">storage</span><span class="tag">investment</span><span class="tag">LCOS</span></div>
-      <div class="doc-meta"><span>约 49.8k 字</span><span>阅读约 43 分钟</span><span>16 节</span></div>
-      <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-storage-investment-operations-en.txt" download="Storage Investment &amp; Operations-SKILL.txt">Download TXT</a><span>Full skill document, about 59 KB, frontmatter included</span></p>
+      <div class="doc-meta"><span>约 53.9k 字</span><span>阅读约 47 分钟</span><span>17 节</span></div>
+      <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-storage-investment-operations-en.txt" download="Storage Investment &amp; Operations-SKILL.txt">Download TXT</a><span>Full skill document, about 63 KB, frontmatter included</span></p>
     </header>
 
     <details class="toc-mobile">
-      <summary>本页目录（16）</summary>
+      <summary>本页目录（17）</summary>
       <ol>
             <li class="lv2"><a href="#s1">0. Role and Conduct</a></li>
             <li class="lv2"><a href="#s5">1. Boundary: six forms, three revenue logics</a></li>
@@ -98,12 +99,13 @@
             <li class="lv2"><a href="#s82">12. Glossary (Chinese-English)</a></li>
             <li class="lv2"><a href="#s83">13. Reference implementation and self-test</a></li>
             <li class="lv2"><a href="#s84">14. Expert reasoning handbook</a></li>
-            <li class="lv2"><a href="#s90">15. Sources, maintenance and division of labour</a></li>
+            <li class="lv2"><a href="#s90">14A. Overseas quick reference (Australia NEM / Germany DE-LU)</a></li>
+            <li class="lv2"><a href="#s96">15. Sources, maintenance and division of labour</a></li>
       </ol>
     </details>
 
     <article class="prose">
-<aside class="note note-head"><p>🌐 Chinese version: <a href="skill-storage-investment-operations.html">SKILL.md</a> ｜ Sister skills: <a href="skill-storage-investment-operations-en.html">Electricity Trading Expert</a> (market rules / settlement / capacity-price source text), <a href="skill-storage-investment-operations-en.html">Virtual Power Plant Expert</a> (aggregation / demand-response operations), <a href="skill-storage-investment-operations-en.html">Spot-Bidding Quant Expert</a> (price forecasting / bidding / backtests), <a href="skill-storage-investment-operations-en.html">Carbon Asset Management Expert</a> (carbon compliance / CCER / CBAM). This skill answers only &quot;is the storage project worth investing in, how is revenue calculated, how are operations assessed&quot;.</p><p>Version v1.9 · data cutoff 2026-11-01</p><p><strong>Maintenance entry points</strong>: <code>tools/selftest.py</code> (green means the worked examples still hold), <a href="储能投资与运营-2026-11.html">storage investment and operations note</a> (policy milestones, cost ranges, indicator calibres), <a href="储能EMS优化调度-算法与工程-2026-11.html">storage EMS optimization</a> (dispatch algorithms), <a href="微网EMS优化调度-算法与工程-2026-11.html">microgrid EMS optimization</a> (microgrid operation).</p><p><strong>Open items 2026-2027</strong>: provincial coverage and assessment deductions under Document 114, retail-side pass-through of Document 1656, the denominator duration for the capacity price (4/6/8/10 h), revision of ancillary-service rules, upgrades to fire-safety and grid-connection standards, and the storage system price trend.</p></aside>
+<aside class="note note-head"><p>🌐 Chinese version: <a href="skill-storage-investment-operations.html">SKILL.md</a> ｜ Sister skills: <a href="skill-storage-investment-operations-en.html">Electricity Trading Expert</a> (market rules / settlement / capacity-price source text), <a href="skill-storage-investment-operations-en.html">Virtual Power Plant Expert</a> (aggregation / demand-response operations), <a href="skill-storage-investment-operations-en.html">Spot-Bidding Quant Expert</a> (price forecasting / bidding / backtests), <a href="skill-storage-investment-operations-en.html">Carbon Asset Management Expert</a> (carbon compliance / CCER / CBAM). This skill answers only &quot;is the storage project worth investing in, how is revenue calculated, how are operations assessed&quot;.</p><p>Version v1.9 · data cutoff 2026-11-01</p><p><strong>Maintenance entry points</strong>: <code>tools/selftest.py</code> (green means the worked examples still hold), <a href="储能投资与运营-2026-11.html">storage investment and operations note</a> (policy milestones, cost ranges, indicator calibres), <a href="储能EMS优化调度-算法与工程-2026-11.html">storage EMS optimization</a> (dispatch algorithms), <a href="微网EMS优化调度-算法与工程-2026-11.html">microgrid EMS optimization</a> (microgrid operation), <a href="澳德储能业务-2026-11.html">Australia–Germany storage business</a> (four quadrants).</p><p><strong>Open items 2026-2027</strong>: provincial coverage and assessment deductions under Document 114, retail-side pass-through of Document 1656, the denominator duration for the capacity price (4/6/8/10 h), revision of ancillary-service rules, upgrades to fire-safety and grid-connection standards, and the storage system price trend.</p></aside>
 <hr>
 <h2 id="s1">0. Role and Conduct</h2>
 <h3 id="s2">0.1 Role</h3>
@@ -111,7 +113,7 @@
 <h3 id="s3">0.2 Conduct rules (mandatory)</h3>
 <ol><li><strong>Fix six things before computing</strong>: project form (independent / co-located / behind-the-meter / thermal-plus-storage / microgrid / aggregated), metering point (AC/DC, gateway/unit), market and policy (province, spot/medium-term/ancillary), revenue structure (spread / capacity / leasing / services / demand), financing structure (equity / debt / lease), and time basis (COD year, policy validity, life). Without all six, any IRR is fiction.</li><li><strong>State four calibres explicitly</strong>: AC side or DC side; CNY/Wh or CNY/W; tax-inclusive or exclusive; rated energy or usable energy. Mixing them changes results by 10%-100%.</li><li><strong>Split revenue into four lines</strong>: gross revenue, occupancy and opportunity cost, assessment deductions, degradation cost. Reporting only &quot;annual revenue CNY X&quot; fails.</li><li><strong>Policy numbers carry a document number, date and province</strong>. Confirm the province before quoting local rules; national documents give the framework, never a provincial standard.</li><li><strong>Source grading</strong>: A = laws / regulators / national standards; B = exchanges, industry associations, tender and award notices; C = media / research reports / company claims; D = this skill's calculation from public parameters. Vendor claims such as &quot;12,000 cycles&quot; or &quot;92% efficiency&quot; are grade C and never enter the base model directly.</li><li><strong>Not investment advice</strong>: provide a calculation framework and scenario analysis only; never promise returns or recommend specific equipment or projects.</li><li><strong>Compliance red lines</strong>: never provide methods for subsidy fraud, overstating available capacity, tampering with operating data, evading assessment, or concealing safety defects; never treat unverified subsidies as long-term revenue.</li><li><strong>Every single-point conclusion carries sensitivities</strong>: move spread, cycle count, CAPEX, capacity price, availability and degradation cost at least once each. A base case alone is not a conclusion.</li></ol>
 <h3 id="s4">0.3 Knowledge map (question → chapter)</h3>
-<div class="table-wrap"><table><thead><tr><th>Question</th><th>Go to</th></tr></thead><tbody><tr><td>Is this storage project worth investing in</td><td>Ch. 1, 3, 6</td></tr><tr><td>What revenue streams exist and can they stack</td><td>Ch. 4</td></tr><tr><td>How is the capacity price computed and how much can be earned</td><td>Sec. 2.1, 4.3</td></tr><tr><td>What if the fixed peak-valley spread disappears</td><td>Sec. 2.2, 4.2, 9.1</td></tr><tr><td>How much basic tariff can C&amp;I peak shaving save</td><td>Sec. 2.5, 4.6</td></tr><tr><td>How much can frequency regulation / reserve earn, and does it hurt arbitrage</td><td>Sec. 4.5, 4.8</td></tr><tr><td>How is renewable co-located storage appraised</td><td>Sec. 4.7</td></tr><tr><td>How are LCOS / IRR / NPV / payback computed</td><td>Ch. 6</td></tr><tr><td>Will the loan pass, what DSCR is needed</td><td>Sec. 6.8</td></tr><tr><td>How do operating assessments deduct money</td><td>Sec. 7.3</td></tr><tr><td>How are contracts signed and leases priced</td><td>Ch. 8</td></tr><tr><td>What are the main risks and how to stress-test</td><td>Ch. 9</td></tr><tr><td>What to ask before investing</td><td>Ch. 10</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>Question</th><th>Go to</th></tr></thead><tbody><tr><td>Is this storage project worth investing in</td><td>Ch. 1, 3, 6</td></tr><tr><td>What revenue streams exist and can they stack</td><td>Ch. 4</td></tr><tr><td>How is the capacity price computed and how much can be earned</td><td>Sec. 2.1, 4.3</td></tr><tr><td>What if the fixed peak-valley spread disappears</td><td>Sec. 2.2, 4.2, 9.1</td></tr><tr><td>How much basic tariff can C&amp;I peak shaving save</td><td>Sec. 2.5, 4.6</td></tr><tr><td>How much can frequency regulation / reserve earn, and does it hurt arbitrage</td><td>Sec. 4.5, 4.8</td></tr><tr><td>How is renewable co-located storage appraised</td><td>Sec. 4.7</td></tr><tr><td>How are LCOS / IRR / NPV / payback computed</td><td>Ch. 6</td></tr><tr><td>Will the loan pass, what DSCR is needed</td><td>Sec. 6.8</td></tr><tr><td>How do operating assessments deduct money</td><td>Sec. 7.3</td></tr><tr><td>How are contracts signed and leases priced</td><td>Ch. 8</td></tr><tr><td>What are the main risks and how to stress-test</td><td>Ch. 9</td></tr><tr><td>What to ask before investing</td><td>Ch. 10</td></tr><tr><td>How to invest in Australian or German utility-scale / C&amp;I storage</td><td>Ch. 14A</td></tr></tbody></table></div>
 <hr>
 <h2 id="s5">1. Boundary: six forms, three revenue logics</h2>
 <h3 id="s6">1.1 Six forms</h3>
@@ -406,17 +408,30 @@ print(round(finance.npv(0.08, flows)), round(finance.irr(flows) * 100, 2))</code
 <p>Four common causes: (1) availability counted as &quot;not broken&quot;, with planned outages not deducted; (2) capacity declared at the initial value, so actual usable capacity is short after SOH declines; (3) the frequency-regulation K factor declined without review; (4) charging raised demand, so the basic charge rose instead.</p>
 <p>Troubleshooting order: reconcile settled energy with the gateway meter, then check unplanned-outage records, then verify SOH and capacity declaration, and finally check the demand curve and charging window. An assessment appeal must carry raw curves, dispatch commands, receipts and timestamps.</p>
 <hr>
-<h2 id="s90">15. Sources, maintenance and division of labour</h2>
-<h3 id="s91">15.1 Methods and standards sources</h3>
-<ul><li>Policy: NDRC Price Document [2026] No. 114, NDRC Energy Regulation [2025] No. 1656, NDRC Energy Regulation [2025] No. 411, NDRC Price Document [2025] No. 136, NDRC Office Price Document [2016] No. 1583, NDRC Price Document [2018] No. 500;</li><li>Standards: GB/T 36549-2018, GB/T 36547-2024, GB/T 36558-2023, GB/T 42288-2022, GB/T 51048-2025;</li><li>Methods: general financial methods for LCOS/NPV/IRR/DSCR; Lazard LCOS, NREL ATB and IEC 62933 as international references (grade B);</li><li>Industry data: CEC operating statistics, public tender and award notices (grade B).</li></ul>
-<h3 id="s92">15.2 Data and verification entry points</h3>
+<h2 id="s90">14A. Overseas quick reference (Australia NEM / Germany DE-LU)</h2>
+<aside class="note"><p>Scope: revenue structure, access, grid fees and appraisal calibres for utility-scale and C&amp;I storage in Australia and Germany only; do not transplant China's capacity price or peak-valley spread. See the knowledge module &quot;Australia–Germany storage business&quot; for rule detail.</p></aside>
+<h3 id="s91">14A.1 Market cards</h3>
+<div class="table-wrap"><table><thead><tr><th>Dimension</th><th>Australia NEM</th><th>Germany DE-LU</th></tr></thead><tbody><tr><td>Utility-scale revenue</td><td>Energy arbitrage + FCAS + CIS</td><td>Arbitrage + FCR/aFRR/mFRR + grid-fee exemption</td></tr><tr><td>C&amp;I revenue</td><td>Demand charges + price spread + self-consumption</td><td>Demand charges + §14a + dynamic tariffs</td></tr><tr><td>Capacity mechanism</td><td>None; CIS competitive revenue support</td><td>None; StromVKG from 2031</td></tr><tr><td>Settlement granularity</td><td>5 minutes</td><td>15-minute MTU in DA/ID</td></tr><tr><td>Connection</td><td>NSP connection + AEMO registration + MASS</td><td>VDE-AR-N + MaStR + unit certificate</td></tr><tr><td>Key policy date</td><td>CIS Tender 8 COD by 2029-12-31</td><td>§118(6) commissioning deadline 2029-08-04</td></tr></tbody></table></div>
+<h3 id="s92">14A.2 Five points for Australia</h3>
+<ol><li><strong>Revenue = arbitrage + FCAS + CIS</strong>: no capacity market; CIS is a competitive revenue support, not a per-MW subsidy.</li><li><strong>Arbitrage</strong>: <code>margin = discharge × discharge price − charge × charge price</code>, with <code>charge = discharge ÷ RTE</code>; then deduct degradation and network charges.</li><li><strong>5-minute settlement + regional prices + MLF</strong>: settled energy is adjusted by the marginal loss factor; MLF changes annually, so backtests must be split by year.</li><li><strong>10 FCAS markets</strong> (8 contingency + 2 regulation); very fast 1-second FCAS started 2023-10-09; FCAS competes with arbitrage for MW and SOC.</li><li><strong>Registration and connection</strong>: storage can register as an IRP, Generator or Market Customer; NSP connection, AEMO registration, MASS testing and SCADA are all required.</li></ol>
+<h3 id="s93">14A.3 Six points for Germany</h3>
+<ol><li><strong>Revenue = DA/ID arbitrage + FCR/aFRR/mFRR + grid-fee exemption</strong>; a capacity market only from 2031.</li><li><strong>15-minute MTU</strong> since 2025-10-01; DA gate 12:00 CET, pay-as-clear; ID pay-as-bid; SDAC floor −€500/MWh vs. SIDC floor −€9,999/MWh.</li><li><strong>Balancing</strong>: FCR is symmetric and capacity-only; aFRR/mFRR tender capacity and energy separately; minimum bid at the 1 MW level; prequalification required.</li><li><strong>§118(6)</strong>: 20-year grid-fee exemption for storage commissioned by 2029-08-04; AgNes plans a final determination on 2027-01-01 and capacity-based grid fees from 2029 (about €4–7/kW/year for utility-scale storage), final design pending.</li><li><strong>§14a applies only to LV controllable loads</strong> (&gt;4.2 kW); module 2 gives a 60% grid-fee reduction; it is neither a utility-scale rule nor an unconditional subsidy.</li><li><strong>StromVKG capacity market</strong>: delivery from 2031, EU approval 2026-09-02; the two 2026 auctions are reportedly not open to battery storage, while the 2027 new-capacity tender is open to storage (≥10 hours), so do not book the revenue yet.</li></ol>
+<h3 id="s94">14A.4 Same question, two answers</h3>
+<div class="table-wrap"><table><thead><tr><th>Question</th><th>Australia NEM</th><th>Germany DE-LU</th></tr></thead><tbody><tr><td>How does a 100 MW/200 MWh project recover its investment?</td><td>Arbitrage + FCAS + CIS</td><td>Arbitrage + balancing + grid-fee exemption</td></tr><tr><td>Is there a capacity price?</td><td>No; CIS revenue support</td><td>No; capacity market from 2031</td></tr><tr><td>Largest C&amp;I revenue item</td><td>Demand charges + spread</td><td>Demand charges + §14a + dynamic tariffs</td></tr><tr><td>Connection bottleneck</td><td>NSP queue, MASS testing</td><td>VDE-AR-N certification, unit certificate</td></tr><tr><td>Key policy deadline</td><td>CIS COD 2029-12-31</td><td>§118(6) commissioning 2029-08-04</td></tr></tbody></table></div>
+<h3 id="s95">14A.5 Answer discipline</h3>
+<ul><li>First ask which quadrant (Australia/Germany × utility-scale/C&amp;I), then give the revenue stack; do not apply utility-scale FCAS or balancing revenue to C&amp;I.</li><li>Every revenue figure needs currency, year, price scenario and whether grid fees are included; label synthetic examples as grade D and not investment advice.</li><li>Use A$ for Australia and € for Germany; do not mix currencies or present a &quot;unified IRR&quot;.</li><li>State policy timing precisely: CIS round and COD, §118(6) commissioning deadline, AgNes effect date, capacity-market delivery year.</li><li>Do not call IESS a registration category; the correct category is IRP (final rule 2021-12-02, effective 2024-06-03). Do not call §14a a utility-scale rule or the 2031 capacity market a secured revenue stream.</li></ul>
+<hr>
+<h2 id="s96">15. Sources, maintenance and division of labour</h2>
+<h3 id="s97">15.1 Methods and standards sources</h3>
+<ul><li>Policy: NDRC Price Document [2026] No. 114, NDRC Energy Regulation [2025] No. 1656, NDRC Energy Regulation [2025] No. 411, NDRC Price Document [2025] No. 136, NDRC Office Price Document [2016] No. 1583, NDRC Price Document [2018] No. 500;</li><li>Standards: GB/T 36549-2018, GB/T 36547-2024, GB/T 36558-2023, GB/T 42288-2022, GB/T 51048-2025;</li><li>Methods: general financial methods for LCOS/NPV/IRR/DSCR; Lazard LCOS, NREL ATB and IEC 62933 as international references (grade B);</li><li>Industry data: CEC operating statistics, public tender and award notices (grade B);</li><li>Overseas rules: AEMC/AEMO/AER (Australia NEM), EPEX/BNetzA/EnWG/regelleistung.net (Germany), detailed in the Australia–Germany storage module (grades A/B).</li></ul>
+<h3 id="s98">15.2 Data and verification entry points</h3>
 <ul><li>Price Department of the NDRC, Policy and Law Department of the National Energy Administration;</li><li>Provincial development and reform commissions / energy bureaus price documents;</li><li>Electricity trading centre information disclosure;</li><li>National Standards Information Public Service Platform;</li><li>China Tendering and Bidding Public Service Platform.</li></ul>
-<h3 id="s93">15.3 Maintenance artefacts</h3>
-<ul><li><a href="储能投资与运营-2026-11.html">Storage investment and operations note</a>: policy milestones, cost ranges, indicator calibres, open items;</li><li><a href="储能EMS优化调度-算法与工程-2026-11.html">Storage EMS optimization</a>: dispatch algorithms and operating constraints;</li><li><a href="微网EMS优化调度-算法与工程-2026-11.html">Microgrid EMS optimization</a>: microgrid grid-connected/islanded operation.</li></ul>
-<h3 id="s94">15.4 Division of labour with sister skills</h3>
+<h3 id="s99">15.3 Maintenance artefacts</h3>
+<ul><li><a href="储能投资与运营-2026-11.html">Storage investment and operations note</a>: policy milestones, cost ranges, indicator calibres, open items;</li><li><a href="澳德储能业务-2026-11.html">Australia–Germany storage business</a>: four-quadrant revenue, access, connection and appraisal calibres for NEM and DE-LU;</li><li><a href="储能EMS优化调度-算法与工程-2026-11.html">Storage EMS optimization</a>: dispatch algorithms and operating constraints;</li><li><a href="微网EMS优化调度-算法与工程-2026-11.html">Microgrid EMS optimization</a>: microgrid grid-connected/islanded operation.</li></ul>
+<h3 id="s100">15.4 Division of labour with sister skills</h3>
 <div class="table-wrap"><table><thead><tr><th>Skill</th><th>Responsible for</th><th>How this skill references it</th></tr></thead><tbody><tr><td>Electricity Trading Expert</td><td>Market rules, settlement, capacity-price policy</td><td>Cite document numbers and rules without re-explaining</td></tr><tr><td>Spot-Bidding Quant Expert</td><td>Price forecasting, bidding, backtests</td><td>Use forecast outputs without rewriting models</td></tr><tr><td>Virtual Power Plant Expert</td><td>Aggregation, demand-response operations</td><td>Use aggregation capability without repeating organization plans</td></tr><tr><td>Carbon Asset Management Expert</td><td>Carbon compliance, CCER, CBAM</td><td>Not covered here</td></tr><tr><td>Storage EMS note</td><td>SOC/reserve/degradation/AGC</td><td>Use dispatch models without repeating MILP</td></tr></tbody></table></div>
-<h3 id="s95">15.5 Maintenance cadence</h3>
-<ul><li>Quarterly: provincial capacity prices, time-of-use prices, ancillary-service rules;</li><li>Semi-annual: cost ranges, equipment prices, warranty terms;</li><li>Annual: standards updates, operating indicators, worked-example regression;</li><li>Trigger-based: within one month of a major policy release (for example, provincial rules under Document 114, retail pass-through of Document 1656).</li></ul>
+<h3 id="s101">15.5 Maintenance cadence</h3>
+<ul><li>Quarterly: provincial capacity prices, time-of-use prices, ancillary-service rules; Australian CIS rounds/FCAS prices and German balancing/AgNes/capacity-market progress;</li><li>Semi-annual: cost ranges, equipment prices, warranty terms;</li><li>Annual: standards updates, operating indicators, worked-example regression;</li><li>Trigger-based: within one month of a major policy release (for example, provincial rules under Document 114, retail pass-through of Document 1656).</li></ul>
     </article>
 
     
@@ -524,13 +539,19 @@ print(round(finance.npv(0.08, flows)), round(finance.irr(flows) * 100, 2))</code
             <li class="lv3"><a href="#s87">14.3 "The co-located project has curtailment, so is it surely profitable?"</a></li>
             <li class="lv3"><a href="#s88">14.4 "Frequency-regulation revenue is high. Can all the power be used for regulation?"</a></li>
             <li class="lv3"><a href="#s89">14.5 "Operating data looks normal. Why is money deducted at year-end?"</a></li>
-            <li class="lv2"><a href="#s90">15. Sources, maintenance and division of labour</a></li>
-            <li class="lv3"><a href="#s91">15.1 Methods and standards sources</a></li>
-            <li class="lv3"><a href="#s92">15.2 Data and verification entry points</a></li>
-            <li class="lv3"><a href="#s93">15.3 Maintenance artefacts</a></li>
-            <li class="lv3"><a href="#s94">15.4 Division of labour with sister skills</a></li>
-            <li class="lv3"><a href="#s95">15.5 Maintenance cadence</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="79">展开 79 个小节</button>
+            <li class="lv2"><a href="#s90">14A. Overseas quick reference (Australia NEM / Germany DE-LU)</a></li>
+            <li class="lv3"><a href="#s91">14A.1 Market cards</a></li>
+            <li class="lv3"><a href="#s92">14A.2 Five points for Australia</a></li>
+            <li class="lv3"><a href="#s93">14A.3 Six points for Germany</a></li>
+            <li class="lv3"><a href="#s94">14A.4 Same question, two answers</a></li>
+            <li class="lv3"><a href="#s95">14A.5 Answer discipline</a></li>
+            <li class="lv2"><a href="#s96">15. Sources, maintenance and division of labour</a></li>
+            <li class="lv3"><a href="#s97">15.1 Methods and standards sources</a></li>
+            <li class="lv3"><a href="#s98">15.2 Data and verification entry points</a></li>
+            <li class="lv3"><a href="#s99">15.3 Maintenance artefacts</a></li>
+            <li class="lv3"><a href="#s100">15.4 Division of labour with sister skills</a></li>
+            <li class="lv3"><a href="#s101">15.5 Maintenance cadence</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="84">展开 84 个小节</button>
   </aside>
 </div>
 

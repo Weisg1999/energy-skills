@@ -11,6 +11,7 @@
 }
 body[data-cat="foundation"]{--accent:var(--teal);--accent-soft:var(--teal-soft)}
 body[data-cat="spot"]{--accent:var(--blue);--accent-soft:var(--blue-soft)}
+body[data-cat="intl"]{--accent:var(--indigo);--accent-soft:var(--indigo-soft)}
 body[data-cat="price"]{--accent:var(--amber);--accent-soft:var(--amber-soft)}
 body[data-cat="renewable"]{--accent:var(--renewable);--accent-soft:var(--teal-soft)}
 body[data-cat="storage"]{--accent:var(--plum);--accent-soft:var(--plum-soft)}
