@@ -407,6 +407,8 @@ foot: "给国际模型与英文读者"
 
 ## 3. Provincial quick table (condensed; full table in the Chinese status file)
 
+> The provincial layer now has 33 market dossiers: 11 P0 formal markets, 8 P1 continuous-trial/regional markets, and 14 P2 thin dossiers (Beijing, Tianjin, Hebei North, Mengdong, Jilin, Heilongjiang, Shanghai, Jiangsu, Jiangxi, Henan, Qinghai, Ningxia, Xinjiang, Tibet). The quick table stays cross-sectional; each dossier carries the provincial delta, open items and official entry points.
+
 | Province | Spot status | No. 136 (2026-27) | Coal capacity price 2026 | VPP framework |
 |---|---|---|---|---|
 | Beijing | Trial (node TBC) | Cap 0.3598/kWh, 850 million kWh | — | — |

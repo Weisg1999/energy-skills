@@ -2,6 +2,32 @@
 
 This file records energy-skills releases in reverse chronological order. Current version **v1.9**, data cutoff **2026-11-11**. Repository entry point: [README_EN.md](README_EN.md); Chinese version: [CHANGELOG.md](CHANGELOG.md).
 
+### 2026-11-11 (v1.9 maintenance: third batch of 14 P2 thin provincial dossiers)
+
+- **33 market calibres completed**: added Beijing, Tianjin, Hebei North, Mengdong, Jilin, Heilongjiang, Shanghai, Jiangsu, Jiangxi, Henan, Qinghai, Ningxia, Xinjiang and Tibet as P2 thin dossiers. The provincial layer now covers 33 markets: 11 formal, 8 continuous-trial/regional and 14 thin.
+- **Thin scope**: each page records only market ownership, trial status, verified provincial deltas, official entry points and open items. It does not repeat national rules, present trial markets as formal, or use another province’s figures to fill gaps.
+- **Hebei/Inner Mongolia splits**: Hebei North (State Grid Jibei / Jibei exchange) is kept separate from Hebei South; Mengdong (State Grid Mengdong) is kept separate from Mengxi, so “Hebei” and “Inner Mongolia” are never treated as single markets.
+- **Key differences**: Beijing/Tianjin 136; Tianjin coal capacity 231; Shanghai and Jiangsu VPP plans; Jiangxi 136 and VPP registration guide; Henan emergency backup coal 188, draft reliable capacity 330 and fixed-TOU retirement; Qinghai 185; Xinjiang storage 165/6h. Unresolved items are listed page by page.
+- **Navigation and docs**: 14 P2 links added to the status table, 33 provincial dossiers on the hub, README carries the third-batch links and 99-module/32,765-line counts, and the P2 maintenance ledger gains 14 items.
+- **Verification**: `build --check`, consistency (122 Markdown files) and the maintenance-ledger structure pass; 99 knowledge pages and 18 skill pages generate correctly.
+
+### 2026-11-11 (v1.9 maintenance: second batch of 8 provincial-market dossiers)
+
+- **Scope**: eight P1 dossiers for Liaoning, Hunan, Chongqing, Sichuan, Guangxi, Yunnan, Guizhou and Hainan. The knowledge base grows from 77 to **85 modules**, body text from 30,621 to **31,640 lines**; the 13-section structure is unchanged.
+- **Status layers**: Liaoning, Hunan, Chongqing and Sichuan are labelled “continuous-settlement trial”, never formal. Guangxi, Yunnan, Guizhou and Hainan are labelled “Southern regional market formal (2026-10-24), provincial node to be verified”, making clear that regional clearing is not provincial spot formalisation.
+- **Differences captured**: Liaoning’s pending 136 result, 10 MW/5 MW VPP, coal capacity 165 / reliable capacity 370 and nuclear; Hunan’s 136 0.23–0.35 and 330 capacity; Chongqing’s fixed-TOU retirement with large gaps; Sichuan’s seasonal hydro/thermal design, historical 75–253.72 / 341.02–441.32 trial bands and 231 capacity; Guangxi’s 136 0.359/0.305, 247.5 draft vs 165 current, nuclear CfD; Yunnan’s VPP 198 and platform; Guizhou’s 136 revision and retail-loss sample; Hainan’s VPP measure effective 2026-11-01 with ≥1 MW/1 h.
+- **Navigation and docs**: the status table gains eight P1 dossier links, the hub shows 19 provincial dossiers, README carries the second-batch links and 85-module/31,640-line counts, and the P1 maintenance ledger gains eight quarterly review items.
+- **Verification**: `build --check`, consistency (108 Markdown files) and the maintenance-ledger structure pass; 85 knowledge pages and 18 skill pages generate normally. No neighbouring province’s rules were used to fill gaps.
+
+### 2026-11-11 (v1.9 maintenance: first 11 provincial-market dossiers)
+
+- **New section**: a “Chinese provincial markets” section joins the hub. The knowledge base grows from 12 to **13 sections** and from 66 to **77 modules** (100 Markdown files, 30,621 body lines). Hub filters, knowledge map, sidebar, search index and counts are updated.
+- **First batch**: 11 formal spot markets — Guangdong, Shandong, Shanxi, Zhejiang, Gansu, Mengxi, Anhui, Fujian, Shaanxi, Hebei South and Hubei. Mengxi is separated from Mengdong, Hebei South from Hebei North; the Southern regional market is treated as an upper layer in the Guangdong dossier, not as another province.
+- **Shared dossier template**: five conclusions, core parameters, market boundary, timeline, products, spot design, medium/long-term and settlement, tariffs/retail, renewables/storage/VPP, answer guidance, source entry points and open items. Each page records only the provincial delta; national rules link back to existing modules.
+- **Key differences**: Guangdong’s provincial/Southern two-layer market and nuclear entry; Shandong’s negative prices and capacity compensation; Shanxi’s first formal market and circuit breaker; Zhejiang’s authorised CfDs and two 136 auction rounds; Gansu’s high renewable share and minute-level compliance mechanism; Mengxi’s independent grid, full-volume single-track market and exclusion from the 136 mechanism; Anhui’s storage capacity and VPP operation centre; Fujian’s clean-energy absorption and 15-minute rolling clearing; Shaanxi/Hebei South fixed-TOU retirement; Hubei’s list-based storage capacity.
+- **Source discipline**: every parameter carries A/B/C or “to be verified”; missing provincial spot rules, 136 results, capacity, VPP and retail terms are listed as open items instead of being filled with another province’s rules. The status table gains 11 dossier links and INDEX_EN notes the batch.
+- **Verification**: `build --check`, consistency (100 Markdown files) and the maintenance-ledger structure pass; 77 knowledge pages, 18 skill pages and 18 TXT files generate correctly. Eleven provincial dossiers are added to the P0 maintenance list.
+
 ### 2026-11-11 (v1.9 maintenance: README first-screen visual alignment)
 
 - **Badge strip restored**: following the approved visual, the `version / modules / data cutoff / license` badges are back beneath the mark and positioning line, styled after Shields flat-square.
