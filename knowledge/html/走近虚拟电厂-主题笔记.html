@@ -19,9 +19,9 @@
 <div class="scrim"></div>
 
 <header class="topbar">
-  <a class="back" href="../index.html">← 知识库</a>
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
   <div class="crumb">
-    <span class="crumb-cat">13 / VPP</span>
+    <span class="crumb-cat">10 · VPP</span>
     <span class="crumb-sep">/</span>
     <span class="crumb-doc">走近虚拟电厂</span>
   </div>
@@ -30,7 +30,14 @@
       <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
       <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-    <a class="src" href="../走近虚拟电厂-主题笔记.md">.md 源文件</a>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../走近虚拟电厂-主题笔记.md">.md 源文件<small>knowledge/走近虚拟电厂-主题笔记.md</small></a>
+
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
     <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
   </div>
 </header>
@@ -38,7 +45,7 @@
 <div class="shell">
   <aside class="sidebar" id="nav">
     <div class="nav-kicker">当前分类</div>
-    <div class="nav-num">13 / VPP</div>
+    <div class="nav-num">10 · VPP</div>
     <h2 class="nav-cat"><a href="../index.html#vpp">虚拟电厂</a></h2>
     <ul class="nav-list">
               <li><a href="虚拟电厂聚合调度与商业模式-2026-11.html">虚拟电厂：聚合、调度与商业模式（2026 版）</a></li>
@@ -48,24 +55,24 @@
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
       <ul>
-              <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
-              <li><a href="../index.html#spot"><b>05</b>电力现货与省间交易</a></li>
-              <li><a href="../index.html#intl"><b>06</b>海外市场</a></li>
-              <li><a href="../index.html#cross"><b>07</b>横向专题</a></li>
-              <li><a href="../index.html#price"><b>08</b>电价</a></li>
-              <li><a href="../index.html#renewable"><b>09</b>新能源与并网</a></li>
-              <li><a href="../index.html#storage"><b>10</b>储能与 EMS</a></li>
-              <li><a href="../index.html#park"><b>11</b>综合能源与零碳园区</a></li>
-              <li><a href="../index.html#carbon"><b>12</b>碳市场与碳管理</a></li>
-              <li><a href="../index.html#index"><b>14</b>索引、查证与工具</a></li>
-              <li><a href="../index.html#research"><b>15</b>调研底稿</a></li>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#intl"><b>03</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>04</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>05</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>06</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>07</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>08</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>09</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#index"><b>11</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>12</b>调研底稿</a></li>
       </ul>
     </div>
   </aside>
 
   <main class="main" id="main">
     <header class="doc-head">
-      <div class="kicker">13 / VPP<i>教材笔记</i></div>
+      <div class="kicker">10 · VPP<i>教材笔记</i></div>
       <h1 class="doc-title">《走近虚拟电厂》全书主题笔记</h1>
       <p class="lede">VPP 与 DR/微网/能效电厂的边界、三类资源、省级样板与三阶段演进。</p>
       <p class="hook">王鹏、王冬容等编著 · 2020</p>
@@ -121,17 +128,45 @@
 <h3 id="s11">十一、意义、问题与政策建议</h3>
 <ul><li><strong>四大意义</strong>：提高电网安全保障；降低用能成本（南京试点平均提升用户能效20%；无锡园区综合能源利用率+约3个百分点、用能成本-约2%、年收益约300万元）；促新能源消纳（2019年风光新增装机5255万kW、占全国新增62.8%）；省投资（年最高负荷95%以上峰值年累计不足50小时；满足国网经营区5%峰值负荷：建煤电约4000亿元 vs VPP路径400亿–570亿元）。</li><li><strong>四大问题</strong>：认识不到位（沿袭DSM旧模式）；管理部门不明确（六部门职能交叉、牵头缺位）；规范标准不统一（无国家/行业标准、通信协议不一、分布式发电难入市）；激励与市场机制缺位（仅8省市出台支持政策，除华北小规模试点外VPP未成为市场主体）。</li><li><strong>四条建议</strong>：国务院层面出台顶层设计指导意见；加快VPP&quot;新基建&quot;（华为/腾讯/阿里等建基础平台）；完善激励与市场衔接（尖峰电价增收、超发电量结余等资金源）；纳入&quot;十四五&quot;规划考核、全国推广江苏模式（政府主导免费开放平台+社会资本主导聚合商生态）。</li><li><strong>后记要点</strong>：2025年（&quot;十四五&quot;末）火电装机将达11亿kW最高点、风光装机同达11亿kW，此后补贴退出；能源系统五个转向（集中单一→分散多元、传统持续→可再生间歇、负荷主导→源网荷互动、计划调控→市场化交易、单边固定价→双边灵活价）；VPP六大角色（全产业链整合、代理交易、互补调度、电网市场协调人、多能转换、服务套餐设计）；终局愿景——电力交易平台上只剩VPP一种市场主体（时点或2050/2100年）；VPP是能源互联网最佳入口、售电公司顶梁柱。</li></ul>
 <h2 id="s12">速查：关键数字与案例</h2>
-<div class="table-wrap"><table><thead><tr><th>主题</th><th>关键数字</th></tr></thead><tbody><tr><td>尖峰经济</td><td>95%以上峰值年累计&lt;50h；煤电满足5%峰值约4000亿元 vs VPP 400–570亿元</td></tr><tr><td>江苏</td><td>2016削峰352万kW→2019年402万kW；填谷257万kW；累计18次/2369万kW；促消纳3.38亿kWh</td></tr><tr><td>上海</td><td>峰谷差13GW；监测1450万/可控370万kW；可调120万kW；2020削峰235万/填谷66.95万kW</td></tr><tr><td>资源家底</td><td>可调负荷5000万–9000万kW；分布式电源6000万kW（2025经济可开发2亿kW）；储能全球809万/中国171万kW</td></tr><tr><td>可调比例</td><td>钢铁20%/水泥24%/电解铝22%/楼宇30%/居民50%；上海可调693万kW；楼宇空调203.7–253.4万kW</td></tr><tr><td>冀北</td><td>16万kW/11类19家；调节757.86万kWh；3.93万kW；收益约257万元；减排63.65万吨</td></tr><tr><td>合肥/山东/海南</td><td>51.59MW→89.91MW≈省80万kW电厂；山东三品种两衔接一平台；海南同等收益权</td></tr><tr><td>Next Kraftwerke</td><td>9516单元/8179MW/15.1TWh/6.277亿欧元≈4座核电站；德国二次调频10%份额</td></tr><tr><td>e2m</td><td>3700MW；2020-04-14近5GW波动动用1200余台；佣金25%（75%归业主）</td></tr><tr><td>Tesla南澳</td><td>规划250MW；账单-20%；FCAS 828kW vs 1MW（83%）；Kogan Creek 748MW→49.61Hz</td></tr><tr><td>AGL/Simply</td><td>5MW/12MWh、年省最高280美元；日付7美元/3年最高5100美元</td></tr><tr><td>美国市场</td><td>批发28GW（约6%）+零售35GW；VPP 680MW；Con Edison回报8%；Austin 8.6万台/90MW</td></tr><tr><td>芬兰</td><td>70%能源进口；2014年80%用户逐小时计量；300kW区域按30/270kW分配</td></tr><tr><td>国际储能市场</td><td>PJM占美40%（12MW/45min）；CAISO 5MW/4h；德国2019+1.1GW/户用18.2万套；澳洲2019新增376MWh</td></tr><tr><td>5G/区块链</td><td>uRLLC 1ms、mMTC密度10–100倍；青岛省80%巡检；冀北2019-12-11投运（国内首个）</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>主题</th><th>关键数字</th></tr></thead><tbody><tr><td>尖峰经济</td><td>95%以上峰值年累计&lt;50h；煤电满足5%峰值约4000亿元 vs VPP 400–570亿元</td></tr><tr><td>江苏</td><td>2016削峰352万kW→2019年402万kW；填谷257万kW；累计18次/2369万kW；促消纳3.38亿kWh</td></tr><tr><td>上海</td><td>峰谷差13GW；监测1450万/可控370万kW；可调120万kW；2020削峰235万/填谷66.95万kW</td></tr><tr><td>资源家底</td><td>可调负荷5000万–9000万kW；分布式电源6000万kW（2025经济可开发2亿kW）；储能全球809万/中国171万kW</td></tr><tr><td>可调比例</td><td>钢铁20%/水泥24%/电解铝22%/楼宇30%/居民50%；上海可调693万kW；楼宇空调203.7–253.4万kW</td></tr><tr><td>冀北</td><td>16万kW/11类19家；调节757.86万kWh；3.93万kW；收益约257万元；减排63.65万吨</td></tr><tr><td>合肥/山东/海南</td><td>51.59MW→89.91MW≈省80万kW电厂；山东三品种两衔接一平台；海南同等收益权</td></tr><tr><td>Next Kraftwerke</td><td>9516单元/8179MW/15.1TWh/6.277亿欧元≈4座核电站；德国二次调频10%份额</td></tr><tr><td>e2m</td><td>3700MW；2020-04-14近5GW波动动用1200余台；佣金25%（75%归业主）</td></tr><tr><td>Tesla南澳</td><td>规划250MW；账单-20%；FCAS 828kW vs 1MW（83%）；Kogan Creek 748MW→49.61Hz</td></tr><tr><td>AGL/Simply</td><td>5MW/12MWh、年省最高280美元；日付7美元/3年最高5100美元</td></tr><tr><td>美国市场</td><td>批发28GW（约6%）+零售35GW；VPP 680MW；Con Edison回报8%；Austin 8.6万台/90MW</td></tr><tr><td>芬兰</td><td>70%能源进口；2014年80%用户逐小时计量；300kW区域按30/270kW分配</td></tr><tr><td>国际储能市场</td><td>PJM占美40%（12MW/45min）；CAISO 5MW/4h；德国2019+1.1GW/户用18.2万套；澳洲2019新增376MWh</td></tr><tr><td>5G/区块链</td><td>uRLLC 1ms、mMTC密度10–100倍；青岛省80%巡检；冀北2019-12-11投运（国内首个）</td></tr></tbody></table></div>
     </article>
 
-    <section class="related" aria-label="相关模块">
-      <h2>相关模块</h2>
-      <ul>
-        <li><a href="虚拟电厂聚合调度与商业模式-2026-11.html">虚拟电厂：聚合、调度与商业模式（2026 版）</a></li>
-        <li><a href="需求响应、车网互动与灵活性资源-2026-11.html">需求响应、车网互动与灵活性资源</a></li>
-        <li><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a></li>
-        <li><a href="调研-VPP政策2026-10增量.html">VPP 政策 2026-10 增量</a></li>
-      </ul>
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>4</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="虚拟电厂聚合调度与商业模式-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>虚拟电厂：聚合、调度与商业模式（2026 版）</b>
+          <span>从资源盘点、准入接入、云边控制到市场参与、结算分成与项目测算，补齐 2026 年 VPP 主线。</span>
+        </a>
+        <a class="related-card" href="需求响应、车网互动与灵活性资源-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>需求响应、车网互动与灵活性资源</b>
+          <span>从资源盘点、基线认定到考核结算，补齐 DR 产品体系与 V2G 参与市场的空白。</span>
+        </a>
+        <a class="related-card" href="储能EMS优化调度-算法与工程-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>储能 EMS 优化调度</b>
+          <span>把储能调度建成 MILP：96 点经济调度、多市场堆叠、SOC/退化、MPC 与安全联锁。</span>
+        </a>
+        <a class="related-card" href="调研-VPP政策2026-10增量.html">
+          <span class="related-type">跨区对照</span>
+          <b>VPP 政策 2026-10 增量</b>
+          <span>国家与省级落地、2026 现货新规影响、规模口径、绿电直连与零售侧约束。</span>
+        </a>
+      </div>
+
+    </section>
+
+<section class="related" aria-labelledby="paired-skills-title">
+      <div class="related-head"><h2 id="paired-skills-title">配套技能</h2><span>1</span></div>
+      <div class="related-grid">
+        <a class="related-card skill-pair" href="skill-virtual-power-plant.html">
+          <span class="related-type">聚合、响应、市场参与与运营</span>
+          <b>虚拟电厂专家</b>
+          <span>技能 · VPP · 聚合 · 商业模式</span>
+        </a>
+      </div>
     </section>
 
     <nav class="pager" aria-label="上下篇">
@@ -141,7 +176,11 @@
 
     <footer class="doc-foot">
       <div class="lic">本页由 <a href="../走近虚拟电厂-主题笔记.md">knowledge/走近虚拟电厂-主题笔记.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
-      <div><a href="../index.html">返回知识库总览 →</a></div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
     </footer>
   </main>
 
@@ -160,7 +199,7 @@
             <li class="lv3"><a href="#s10">十、市场主体与新兴技术（SC/LSE/CSP/MSP、5G、区块链）</a></li>
             <li class="lv3"><a href="#s11">十一、意义、问题与政策建议</a></li>
             <li class="lv2"><a href="#s12">速查：关键数字与案例</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="true" data-count="11">收起小节</button>
+    </ol><button class="toc-more" type="button" aria-expanded="true" data-count="11" data-more-label="展开 11 个小节" data-less-label="收起小节">收起小节</button>
   </aside>
 </div>
 

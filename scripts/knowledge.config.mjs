@@ -5,6 +5,7 @@
 
 export const site = {
   skills: 9,
+  repository: 'https://github.com/Weisg1999/energy-skills',
   coverage: '电力系统通识、电力现货与省间交易、海外十一市场（澳/德/英/意/西/法/荷/波/比·北欧/美/日）、横向专题（并网合规、容量机制、辅助服务、储能收益与数据源、PPA/绿证、同口径快照与投决日历）、电价、新能源与并网、储能、EMS 与 SCADA 数据链路、零碳园区、碳市场与绿证/CCER/CBAM 衔接、虚拟电厂、需求响应与市场风险信用结算、术语与口径字典',
 };
 
@@ -12,7 +13,7 @@ export const sections = [
   {
     id: 'foundation',
     cat: 'foundation',
-    num: '04 / BASE',
+    num: '01 · BASE',
     title: '通识与经济学',
     navLabel: '通识与经济学',
     comment: '03 Foundation',
@@ -21,7 +22,7 @@ export const sections = [
   {
     id: 'spot',
     cat: 'spot',
-    num: '05 / SPOT',
+    num: '02 · SPOT',
     title: '电力现货与省间交易',
     navLabel: '现货与省间交易',
     comment: '04 Spot',
@@ -30,7 +31,7 @@ export const sections = [
   {
     id: 'intl',
     cat: 'intl',
-    num: '06 / GLOBAL',
+    num: '03 · GLOBAL',
     title: '海外市场',
     navLabel: '海外市场',
     comment: '05 Global',
@@ -39,7 +40,7 @@ export const sections = [
   {
     id: 'cross',
     cat: 'cross',
-    num: '07 / CROSS',
+    num: '04 · CROSS',
     title: '横向专题',
     navLabel: '横向专题',
     comment: '06 Cross',
@@ -48,7 +49,7 @@ export const sections = [
   {
     id: 'price',
     cat: 'price',
-    num: '08 / PRICE',
+    num: '05 · PRICE',
     title: '电价',
     navLabel: '电价',
     comment: '07 Price',
@@ -57,7 +58,7 @@ export const sections = [
   {
     id: 'renewable',
     cat: 'renewable',
-    num: '09 / RENEWABLE',
+    num: '06 · RENEWABLE',
     title: '新能源与并网',
     navLabel: '新能源与并网',
     comment: '08 Renewable',
@@ -66,7 +67,7 @@ export const sections = [
   {
     id: 'storage',
     cat: 'storage',
-    num: '10 / STORAGE',
+    num: '07 · STORAGE',
     title: '储能与 EMS',
     navLabel: '储能与 EMS',
     comment: '09 Storage',
@@ -75,7 +76,7 @@ export const sections = [
   {
     id: 'park',
     cat: 'park',
-    num: '11 / PARK',
+    num: '08 · PARK',
     title: '综合能源与零碳园区',
     navLabel: '零碳园区',
     comment: '10 Park',
@@ -84,7 +85,7 @@ export const sections = [
   {
     id: 'carbon',
     cat: 'carbon',
-    num: '12 / CARBON',
+    num: '09 · CARBON',
     title: '碳市场与碳管理',
     navLabel: '碳市场与碳管理',
     comment: '11 Carbon',
@@ -93,7 +94,7 @@ export const sections = [
   {
     id: 'vpp',
     cat: 'vpp',
-    num: '13 / VPP',
+    num: '10 · VPP',
     title: '虚拟电厂',
     navLabel: '虚拟电厂',
     comment: '12 VPP',
@@ -102,7 +103,7 @@ export const sections = [
   {
     id: 'index',
     cat: 'index',
-    num: '14 / INDEX',
+    num: '11 · INDEX',
     title: '索引、查证与工具',
     navLabel: '索引与查证',
     comment: '13 Index',
@@ -111,7 +112,7 @@ export const sections = [
   {
     id: 'research',
     cat: 'research',
-    num: '15 / RESEARCH',
+    num: '12 · RESEARCH',
     title: '调研底稿',
     navLabel: '调研底稿',
     comment: '14 Research',
@@ -132,6 +133,7 @@ export const skillDocs = [
     summaryEn: 'Spot bidding, settlement, risk and market analysis',
     tags: ['技能', '现货', '结算', '风控'],
     tagsEn: ['skill', 'spot', 'settlement', 'risk'],
+    modules: ['m-spot-a', 'm-spot-b', 'm-spot-c', 'm-spot-interprovincial', 'm-quant-risk', 'm-risk-credit'],
   },
   {
     slug: 'virtual-power-plant',
@@ -141,6 +143,7 @@ export const skillDocs = [
     summaryEn: 'Aggregation, demand response, market participation and operations',
     tags: ['技能', 'VPP', '聚合', '商业模式'],
     tagsEn: ['skill', 'VPP', 'aggregation', 'business model'],
+    modules: ['m-vpp-core', 'm-vpp-book', 'm-dr-v2g'],
   },
   {
     slug: 'carbon-asset-expert',
@@ -150,6 +153,7 @@ export const skillDocs = [
     summaryEn: 'Compliance, CCER, carbon footprint and carbon finance',
     tags: ['技能', '履约', 'CCER', 'CBAM'],
     tagsEn: ['skill', 'compliance', 'CCER', 'CBAM'],
+    modules: ['m-carbon-trade', 'm-carbon-mgmt', 'm-carbon-asset', 'm-carbon-link'],
   },
   {
     slug: 'storage-investment-operations',
@@ -159,6 +163,7 @@ export const skillDocs = [
     summaryEn: 'Revenue stacking, investment decisions, degradation and assessment',
     tags: ['技能', '储能', '投决', 'LCOS'],
     tagsEn: ['skill', 'storage', 'investment', 'LCOS'],
+    modules: ['m-storage-invest', 'm-storage-tech', 'm-storage-ems'],
   },
   {
     slug: 'renewable-project-development',
@@ -168,6 +173,7 @@ export const skillDocs = [
     summaryEn: 'Resources, LCOE, mechanism pricing and grid connection',
     tags: ['技能', '新能源', 'LCOE', '并网'],
     tagsEn: ['skill', 'renewables', 'LCOE', 'grid'],
+    modules: ['m-renewable', 'm-grid', 'm-price-policy'],
   },
   {
     slug: 'spot-bidding-quant',
@@ -177,6 +183,7 @@ export const skillDocs = [
     summaryEn: 'Forecasting, bidding, simulation and backtesting',
     tags: ['技能', '预测', '报价', '回测'],
     tagsEn: ['skill', 'forecast', 'bidding', 'backtest'],
+    modules: ['m-quant-risk', 'm-spot-b', 'm-spot-c'],
   },
   {
     slug: 'ems-dispatch',
@@ -186,6 +193,7 @@ export const skillDocs = [
     summaryEn: '96-interval dispatch, SOC, demand charges and deliverability',
     tags: ['技能', 'EMS', 'SOC', '需量'],
     tagsEn: ['skill', 'EMS', 'SOC', 'demand charge'],
+    modules: ['m-storage-ems', 'm-micro-ems', 'm-scada'],
   },
   {
     slug: 'tariff-bill-optimization',
@@ -195,6 +203,7 @@ export const skillDocs = [
     summaryEn: 'Bill line items, demand charges, TOU and package comparison',
     tags: ['技能', '电费', '两部制', '套餐'],
     tagsEn: ['skill', 'tariff', 'two-part', 'packages'],
+    modules: ['m-price-system', 'm-price-policy', 'm-price-history'],
   },
   {
     slug: 'retail-electricity-risk',
@@ -204,21 +213,35 @@ export const skillDocs = [
     summaryEn: 'Package pricing, customer portfolio, deviation and guarantees',
     tags: ['技能', '零售', '偏差', '保函'],
     tagsEn: ['skill', 'retail', 'deviation', 'guarantee'],
+    modules: ['m-risk-credit', 'm-province', 'm-vpp-core'],
   },
 ].map((item, i) => ({ ...item, order: i + 1 }));
 
-/** 侧栏顺序与计数来源：total / section / 固定数字。 */
+/** 阅读页英文侧栏标题；首页仍只使用中文。 */
+export const sectionTitlesEn = {
+  foundation: 'Foundations & economics',
+  spot: 'Spot & interprovincial trading',
+  intl: 'Overseas markets',
+  cross: 'Cross-cutting topics',
+  price: 'Electricity tariffs',
+  renewable: 'Renewables & grid connection',
+  storage: 'Storage & EMS',
+  park: 'Integrated energy & zero-carbon parks',
+  carbon: 'Carbon markets & management',
+  vpp: 'Virtual power plants',
+  index: 'Index & verification',
+  research: 'Research records',
+};
+
+/**
+ * 侧栏只保留六个页面级入口；十二个内容分区改由首页分类筛选承载。
+ * 顺序必须与首页 DOM 的真实顺序一致，滚动高亮才能单调推进。
+ */
 export const nav = [
   { href: '#top', n: '00', label: '总览', count: 'total' },
   { href: '#all', n: '01', label: '模块检索', count: 'total' },
   { href: '#map', n: '02', label: '知识地图', count: 6 },
   { href: '#atlas', n: '03', label: '专题图谱', count: 8 },
-  ...sections.map((s, i) => ({
-    href: `#${s.id}`,
-    n: String(i + 4).padStart(2, '0'),
-    label: s.navLabel,
-    count: 'section',
-    section: s.id,
-  })),
-  { href: '#method', n: '16', label: '使用与口径', count: 'skills' },
+  { href: '#skills', n: '04', label: '配套技能', count: 'skills' },
+  { href: '#method', n: '05', label: '使用与口径' },
 ];

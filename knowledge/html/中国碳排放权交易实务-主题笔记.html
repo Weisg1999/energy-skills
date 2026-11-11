@@ -19,9 +19,9 @@
 <div class="scrim"></div>
 
 <header class="topbar">
-  <a class="back" href="../index.html">← 知识库</a>
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
   <div class="crumb">
-    <span class="crumb-cat">12 / CARBON</span>
+    <span class="crumb-cat">09 · CARBON</span>
     <span class="crumb-sep">/</span>
     <span class="crumb-doc">中国碳排放权交易实务</span>
   </div>
@@ -30,7 +30,14 @@
       <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
       <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-    <a class="src" href="../中国碳排放权交易实务-主题笔记.md">.md 源文件</a>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../中国碳排放权交易实务-主题笔记.md">.md 源文件<small>knowledge/中国碳排放权交易实务-主题笔记.md</small></a>
+
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
     <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
   </div>
 </header>
@@ -38,7 +45,7 @@
 <div class="shell">
   <aside class="sidebar" id="nav">
     <div class="nav-kicker">当前分类</div>
-    <div class="nav-num">12 / CARBON</div>
+    <div class="nav-num">09 · CARBON</div>
     <h2 class="nav-cat"><a href="../index.html#carbon">碳市场与碳管理</a></h2>
     <ul class="nav-list">
               <li class="on" aria-current="page"><a href="中国碳排放权交易实务-主题笔记.html">中国碳排放权交易实务</a></li>
@@ -49,24 +56,24 @@
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
       <ul>
-              <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
-              <li><a href="../index.html#spot"><b>05</b>电力现货与省间交易</a></li>
-              <li><a href="../index.html#intl"><b>06</b>海外市场</a></li>
-              <li><a href="../index.html#cross"><b>07</b>横向专题</a></li>
-              <li><a href="../index.html#price"><b>08</b>电价</a></li>
-              <li><a href="../index.html#renewable"><b>09</b>新能源与并网</a></li>
-              <li><a href="../index.html#storage"><b>10</b>储能与 EMS</a></li>
-              <li><a href="../index.html#park"><b>11</b>综合能源与零碳园区</a></li>
-              <li><a href="../index.html#vpp"><b>13</b>虚拟电厂</a></li>
-              <li><a href="../index.html#index"><b>14</b>索引、查证与工具</a></li>
-              <li><a href="../index.html#research"><b>15</b>调研底稿</a></li>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#intl"><b>03</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>04</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>05</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>06</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>07</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>08</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#vpp"><b>10</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>11</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>12</b>调研底稿</a></li>
       </ul>
     </div>
   </aside>
 
   <main class="main" id="main">
     <header class="doc-head">
-      <div class="kicker">12 / CARBON<i>教材笔记</i></div>
+      <div class="kicker">09 · CARBON<i>教材笔记</i></div>
       <h1 class="doc-title">《中国碳排放权交易实务》全书主题笔记（孟早明、葛兴安等编著）</h1>
       <p class="lede">碳定价原理、EU ETS 与试点对比、MRV、核查实操与 CCER 项目开发。</p>
       <p class="hook">孟早明、葛兴安等编著</p>
@@ -130,26 +137,54 @@
 <h3 id="s19">碳金融产品与案例</h3>
 <ul><li><strong>三层体系</strong>：现货（配额/CCER）→衍生品（远期、期货、期权、掉期）→创新产品（基金、债券、质押抵押、信托、绿色信贷）；衍生品四大功能：价格发现、风险管理（核心）、资产配置、盘活碳资产。</li><li><strong>融资类</strong>：中广核风电附加碳收益中票10亿元/5年（固定5.65%+浮动5-20BP，2014.5，银行间首单）；富能新能源以配额质押获南粤银行5000万元（首单单一配额质押）；妈湾电力×BP跨境碳资产回购100万吨配额（试点三年最大单笔；深圳2014年获批境外投资者参与、不限额度币种）；广碳所法人账户透支（一年期循环额度）。</li><li><strong>风险管理类</strong>：国内首笔碳场外掉期1万吨（中信证券2015.6，固定价对结算日前20个交易日均价做差价结算、北交所监管保证金）；担保型CCER碳远期（&quot;碳保宝&quot;担保交付、标的年减排30万吨）。</li><li><strong>收益与流动类</strong>：华能×诺安碳基金3000万元（首支备案，武汉）；深能源200万吨配额托管（收益按42元/t×LPR5.1%上浮10%、32天31万元）；上海借碳（保证金30%、所借配额不得质押或履约）；兴业深圳绿色结构性存款（首单）；CCER碳众筹20万元（湖北红安11740户户用沼气、计划开发23万吨、助农增收约300万元）。</li></ul>
 <h2 id="s20">速查：关键数字与规则</h2>
-<div class="table-wrap"><table><thead><tr><th>主题</th><th>关键数字/规则</th></tr></thead><tbody><tr><td>全国纳入线</td><td>8行业36子类；能耗≥1万tce或自备电厂≥6000kW；一般报告单位≥1.3万吨CO2e或5000tce</td></tr><tr><td>试点门槛</td><td>深3000t、沪2万吨（非工业1万吨）、京1万吨、粤2万吨或1万tce、津2万吨、鄂6万tce、渝2万吨</td></tr><tr><td>抵消比例</td><td>深/津/鄂10%、渝8%、沪/京5%（京本地≥50%、京外≤2.5%）；RGGI 3.3%、加州8%</td></tr><tr><td>CCER备案</td><td>方法学192个（8批）；审定2114/项目备案654/减排量备案149个；签发2710.42万吨</td></tr><tr><td>CCER交易</td><td>至2015年底约3300万吨/3-4亿元；沪2961.5万吨居首（10-26元）；京563.8万吨、线上均价21.53元</td></tr><tr><td>开发周期</td><td>全流程约5-8个月；评估与审查各≤30个工作日；计入期7年×3或固定10年</td></tr><tr><td>试点量价</td><td>鄂2956万吨/6.05亿居首；深1089.6万吨/4.11亿；渝30.2万吨/704万垫底</td></tr><tr><td>试点拍卖</td><td>15次17场、粤占86.91%；首拍深35.43/沪48/鄂20元每吨</td></tr><tr><td>履约与处罚</td><td>履约率96%-100%（京首年约49%）；罚京3-5倍、深3倍、鄂最高15万元</td></tr><tr><td>EU ETS</td><td>总量22.99→20.81→约18亿吨/年；III期年降1.74%；折量拍卖9亿吨</td></tr><tr><td>RGGI/加州</td><td>RGGI均价2.95美元、CCR 4/6/8/10美元；加州门槛2.5万吨、底价10.71美元</td></tr><tr><td>电网因子</td><td>2012年华北0.881～南方0.527 tCO2/MWh；热力0.11 tCO2/GJ</td></tr><tr><td>折标与GWP</td><td>标煤29.271GJ/t；电0.1229tce/MWh；热0.03412tce/GJ；CH4=21、N2O=310</td></tr><tr><td>核查规则</td><td>八步三阶段；记录存10年；相似场所抽样√n、单设施&lt;5%可抽、月度≥30%</td></tr><tr><td>报告时点</td><td>排放报告3.31、核查报告4.30、清缴各试点5.31-6.30</td></tr><tr><td>关键时点</td><td>2011试点批准、2014.12暂行办法、2017启动全国市场</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>主题</th><th>关键数字/规则</th></tr></thead><tbody><tr><td>全国纳入线</td><td>8行业36子类；能耗≥1万tce或自备电厂≥6000kW；一般报告单位≥1.3万吨CO2e或5000tce</td></tr><tr><td>试点门槛</td><td>深3000t、沪2万吨（非工业1万吨）、京1万吨、粤2万吨或1万tce、津2万吨、鄂6万tce、渝2万吨</td></tr><tr><td>抵消比例</td><td>深/津/鄂10%、渝8%、沪/京5%（京本地≥50%、京外≤2.5%）；RGGI 3.3%、加州8%</td></tr><tr><td>CCER备案</td><td>方法学192个（8批）；审定2114/项目备案654/减排量备案149个；签发2710.42万吨</td></tr><tr><td>CCER交易</td><td>至2015年底约3300万吨/3-4亿元；沪2961.5万吨居首（10-26元）；京563.8万吨、线上均价21.53元</td></tr><tr><td>开发周期</td><td>全流程约5-8个月；评估与审查各≤30个工作日；计入期7年×3或固定10年</td></tr><tr><td>试点量价</td><td>鄂2956万吨/6.05亿居首；深1089.6万吨/4.11亿；渝30.2万吨/704万垫底</td></tr><tr><td>试点拍卖</td><td>15次17场、粤占86.91%；首拍深35.43/沪48/鄂20元每吨</td></tr><tr><td>履约与处罚</td><td>履约率96%-100%（京首年约49%）；罚京3-5倍、深3倍、鄂最高15万元</td></tr><tr><td>EU ETS</td><td>总量22.99→20.81→约18亿吨/年；III期年降1.74%；折量拍卖9亿吨</td></tr><tr><td>RGGI/加州</td><td>RGGI均价2.95美元、CCR 4/6/8/10美元；加州门槛2.5万吨、底价10.71美元</td></tr><tr><td>电网因子</td><td>2012年华北0.881～南方0.527 tCO2/MWh；热力0.11 tCO2/GJ</td></tr><tr><td>折标与GWP</td><td>标煤29.271GJ/t；电0.1229tce/MWh；热0.03412tce/GJ；CH4=21、N2O=310</td></tr><tr><td>核查规则</td><td>八步三阶段；记录存10年；相似场所抽样√n、单设施&lt;5%可抽、月度≥30%</td></tr><tr><td>报告时点</td><td>排放报告3.31、核查报告4.30、清缴各试点5.31-6.30</td></tr><tr><td>关键时点</td><td>2011试点批准、2014.12暂行办法、2017启动全国市场</td></tr></tbody></table></div>
     </article>
 
-    <section class="related" aria-label="相关模块">
-      <h2>相关模块</h2>
-      <ul>
-        <li><a href="碳管理-从零通往碳中和-主题笔记.html">碳管理：从零通往碳中和</a></li>
-        <li><a href="碳资产实务-2026-11.html">碳资产实务 2026-11</a></li>
-        <li><a href="调研-碳市场与CBAM-2026-10增量.html">碳市场与 CBAM 2026-10 增量</a></li>
-      </ul>
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>3</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="碳管理-从零通往碳中和-主题笔记.html">
+          <span class="related-type">同区延伸</span>
+          <b>碳管理：从零通往碳中和</b>
+          <span>区域/组织/产品三层核算、电力排放因子、CCER/VCS/GS、碳金融与企业碳中和。</span>
+        </a>
+        <a class="related-card" href="碳资产实务-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>碳资产实务 2026-11</b>
+          <span>2025/2026 履约参数、履约成本算例、CCER、碳金融工具、CBAM 时点与电碳衔接。</span>
+        </a>
+        <a class="related-card" href="调研-碳市场与CBAM-2026-10增量.html">
+          <span class="related-type">跨区对照</span>
+          <b>碳市场与 CBAM 2026-10 增量</b>
+          <span>全国碳市场扩围、775 号令罚则、配额方案、碳价、CCER 与 CBAM 时点纠错。</span>
+        </a>
+      </div>
+
+    </section>
+
+<section class="related" aria-labelledby="paired-skills-title">
+      <div class="related-head"><h2 id="paired-skills-title">配套技能</h2><span>1</span></div>
+      <div class="related-grid">
+        <a class="related-card skill-pair" href="skill-carbon-asset-expert.html">
+          <span class="related-type">履约、CCER、碳足迹与碳金融</span>
+          <b>碳资产管理专家</b>
+          <span>技能 · 履约 · CCER · CBAM</span>
+        </a>
+      </div>
     </section>
 
     <nav class="pager" aria-label="上下篇">
-          <a class="prev" href="综合能源与零碳园区-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">综合能源与零碳园区</span></a>
+          <span class="spacer"></span>
           <a class="next" href="碳管理-从零通往碳中和-主题笔记.html"><span class="dir">下一篇 →</span><span class="ttl">碳管理：从零通往碳中和</span></a>
     </nav>
 
     <footer class="doc-foot">
       <div class="lic">本页由 <a href="../中国碳排放权交易实务-主题笔记.md">knowledge/中国碳排放权交易实务-主题笔记.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
-      <div><a href="../index.html">返回知识库总览 →</a></div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
     </footer>
   </main>
 
@@ -176,7 +211,7 @@
             <li class="lv3"><a href="#s18">披露与碳中和</a></li>
             <li class="lv3"><a href="#s19">碳金融产品与案例</a></li>
             <li class="lv2"><a href="#s20">速查：关键数字与规则</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="12">展开 12 个小节</button>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="12" data-more-label="展开 12 个小节" data-less-label="收起小节">展开 12 个小节</button>
   </aside>
 </div>
 

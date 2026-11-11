@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>Spot Bidding Quant | energy-skills 知识库</title>
+<title>Spot Bidding Quant | energy-skills Knowledge Base</title>
 <meta name="description" content="Forecasting, bidding, simulation and backtesting">
 <link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
 <script>
@@ -14,76 +14,82 @@
 <link rel="stylesheet" href="../assets/knowledge.css">
 </head>
 <body data-cat="skill" id="top">
-<a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" id="progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
-  <a class="back" href="../index.html">← 知识库</a>
+  <a class="back" href="../index.html" data-home-link aria-label="Back to knowledge hub"><span aria-hidden="true">←</span><span class="back-label">Knowledge hub</span></a>
   <div class="crumb">
-    <span class="crumb-cat">16 / SKILLS</span>
+    <span class="crumb-cat">04 / SKILLS</span>
     <span class="crumb-sep">/</span>
     <span class="crumb-doc">Spot Bidding Quant</span>
   </div>
   <div class="topbar-act">
-    <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换到深色模式" title="切换到深色模式">
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" title="Switch to dark mode">
       <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
       <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-    <a class="src" href="skill-spot-bidding-quant.html">中文</a>
-    <a class="src" href="../../skills/spot-bidding-quant/SKILL_EN.md">.md 源文件</a>
-    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+    <details class="more">
+      <summary class="more-btn" aria-label="More" title="More"><span class="more-label">More</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../../skills/spot-bidding-quant/SKILL_EN.md">Source .md<small>skills/spot-bidding-quant/SKILL_EN.md</small></a>
+        <a class="src" href="skill-spot-bidding-quant.html" hreflang="zh-CN">中文</a>
+        <a class="src" href="../index.html#method">Method &amp; caliber</a>
+      </div>
+    </details>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">Contents</button>
   </div>
 </header>
 
 <div class="shell">
   <aside class="sidebar" id="nav">
-    <div class="nav-kicker">当前分类</div>
-    <div class="nav-num">16 / SKILLS</div>
-    <h2 class="nav-cat"><a href="../index.html#skills">配套技能</a></h2>
+    <div class="nav-kicker">Current section</div>
+    <div class="nav-num">04 / SKILLS</div>
+    <h2 class="nav-cat"><a href="../index.html#skills">Paired skills</a></h2>
     <ul class="nav-list">
-              <li><a href="skill-electricity-trading-expert.html">电力交易专家</a></li>
-              <li><a href="skill-virtual-power-plant.html">虚拟电厂专家</a></li>
-              <li><a href="skill-carbon-asset-expert.html">碳资产管理专家</a></li>
-              <li><a href="skill-storage-investment-operations.html">储能投资与运营</a></li>
-              <li><a href="skill-renewable-project-development.html">新能源开发与并网</a></li>
-              <li class="on" aria-current="page"><a href="skill-spot-bidding-quant.html">现货报价量化</a></li>
-              <li><a href="skill-ems-dispatch.html">EMS 优化调度</a></li>
-              <li><a href="skill-tariff-bill-optimization.html">电价与电费优化</a></li>
-              <li><a href="skill-retail-electricity-risk.html">售电零售与风险</a></li>
+              <li><a href="skill-electricity-trading-expert-en.html">Electricity Trading Expert</a></li>
+              <li><a href="skill-virtual-power-plant-en.html">Virtual Power Plant Expert</a></li>
+              <li><a href="skill-carbon-asset-expert-en.html">Carbon Asset Management Expert</a></li>
+              <li><a href="skill-storage-investment-operations-en.html">Storage Investment &amp; Operations</a></li>
+              <li><a href="skill-renewable-project-development-en.html">Renewable Project Development &amp; Grid Connection</a></li>
+              <li class="on" aria-current="page"><a href="skill-spot-bidding-quant-en.html">Spot Bidding Quant</a></li>
+              <li><a href="skill-ems-dispatch-en.html">EMS Dispatch</a></li>
+              <li><a href="skill-tariff-bill-optimization-en.html">Tariff &amp; Bill Optimization</a></li>
+              <li><a href="skill-retail-electricity-risk-en.html">Retail Electricity Sales &amp; Risk</a></li>
     </ul>
     <div class="nav-others">
-      <div class="nav-kicker">其他分类</div>
+      <div class="nav-kicker">Other sections</div>
       <ul>
-              <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
-              <li><a href="../index.html#spot"><b>05</b>电力现货与省间交易</a></li>
-              <li><a href="../index.html#intl"><b>06</b>海外市场</a></li>
-              <li><a href="../index.html#cross"><b>07</b>横向专题</a></li>
-              <li><a href="../index.html#price"><b>08</b>电价</a></li>
-              <li><a href="../index.html#renewable"><b>09</b>新能源与并网</a></li>
-              <li><a href="../index.html#storage"><b>10</b>储能与 EMS</a></li>
-              <li><a href="../index.html#park"><b>11</b>综合能源与零碳园区</a></li>
-              <li><a href="../index.html#carbon"><b>12</b>碳市场与碳管理</a></li>
-              <li><a href="../index.html#vpp"><b>13</b>虚拟电厂</a></li>
-              <li><a href="../index.html#index"><b>14</b>索引、查证与工具</a></li>
-              <li><a href="../index.html#research"><b>15</b>调研底稿</a></li>
+              <li><a href="../index.html#foundation"><b>01</b>Foundations &amp; economics</a></li>
+              <li><a href="../index.html#spot"><b>02</b>Spot &amp; interprovincial trading</a></li>
+              <li><a href="../index.html#intl"><b>03</b>Overseas markets</a></li>
+              <li><a href="../index.html#cross"><b>04</b>Cross-cutting topics</a></li>
+              <li><a href="../index.html#price"><b>05</b>Electricity tariffs</a></li>
+              <li><a href="../index.html#renewable"><b>06</b>Renewables &amp; grid connection</a></li>
+              <li><a href="../index.html#storage"><b>07</b>Storage &amp; EMS</a></li>
+              <li><a href="../index.html#park"><b>08</b>Integrated energy &amp; zero-carbon parks</a></li>
+              <li><a href="../index.html#carbon"><b>09</b>Carbon markets &amp; management</a></li>
+              <li><a href="../index.html#vpp"><b>10</b>Virtual power plants</a></li>
+              <li><a href="../index.html#index"><b>11</b>Index &amp; verification</a></li>
+              <li><a href="../index.html#research"><b>12</b>Research records</a></li>
       </ul>
     </div>
   </aside>
 
   <main class="main" id="main">
     <header class="doc-head">
-      <div class="kicker">16 / SKILLS<i>Skill</i></div>
+      <div class="kicker">04 / SKILLS<i>Skill</i></div>
       <h1 class="doc-title">Spot Bidding Quant</h1>
       <p class="lede">Forecasting, bidding, simulation and backtesting</p>
       <p class="hook">Executable workflow and tools; synced with SKILL.md.</p>
       <div class="tags"><span class="tag">skill</span><span class="tag">forecast</span><span class="tag">bidding</span><span class="tag">backtest</span></div>
-      <div class="doc-meta"><span>约 33.5k 字</span><span>阅读约 29 分钟</span><span>16 节</span></div>
+      <div class="doc-meta"><span>approx. 33.5k characters</span><span>29 min read</span><span>16 sections</span></div>
       <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-spot-bidding-quant-en.txt" download="Spot Bidding Quant-SKILL.txt">Download TXT</a><span>Full skill document, about 39 KB, frontmatter included</span></p>
     </header>
 
     <details class="toc-mobile">
-      <summary>本页目录（16）</summary>
+      <summary>On this page (16)</summary>
       <ol>
             <li class="lv2"><a href="#s1">0. Role and Conduct</a></li>
             <li class="lv2"><a href="#s5">1. Bid Space: Rules Before Methods</a></li>
@@ -113,12 +119,12 @@
 <h3 id="s3">0.2 Conduct rules (mandatory)</h3>
 <ol><li><strong>Fix three things before computing</strong>: province/market, entity type (generator / storage / retailer / consumer), time granularity (day-ahead 15-minute / real-time 5 or 15-minute). Without them every number is fiction.</li><li><strong>Report forecasting and decision quality separately</strong>: accuracy metrics (MAE / MAPE / direction accuracy) and decision outcomes (CNY/MWh, CNY/day) are different scales. A single &quot;accuracy improved by X%&quot; is not a revenue conclusion.</li><li><strong>Every backtest needs a baseline</strong>: compare against seasonal naive, state the sample period, rolling window and whether results are out-of-sample. &quot;A 30% improvement&quot; without a baseline is not a finding.</li><li><strong>Three classes of numbers</strong>: official rule parameters (grade A, with document number and date), public statistics (grade B), <strong>vendor-claimed performance (grade C, industry reference only, never a benchmark)</strong>. Claims such as &quot;accuracy improved up to 30%&quot; or &quot;CNY 1 million extra revenue per 100 MWh per year&quot; are grade C.</li><li><strong>Every revenue figure carries its assumptions</strong>: fuel cost, cycle cost, contract coverage, imbalance penalty coefficient. Anything omitted must be listed as omitted.</li><li><strong>Never provide</strong>: methods for evading regulation, economic or capacity withholding playbooks, or collusion strategies. Market-power content is limited to <strong>identification and compliance boundaries</strong>.</li><li><strong>Synthetic-data discipline</strong>: <code>data/sample/</code> is synthetic. Any number produced from it must be labelled &quot;synthetic sample, not live market&quot; and never quoted as a market benchmark.</li></ol>
 <h3 id="s4">0.3 Knowledge map (question → chapter)</h3>
-<div class="table-wrap"><table><thead><tr><th>Question</th><th>Go to</th></tr></thead><tbody><tr><td>Bid rules, segment count, price caps</td><td>Ch. 1 + confirm province</td></tr><tr><td>Which data, and where from</td><td>Ch. 2</td></tr><tr><td>How to forecast load / price, what error is good</td><td>Ch. 3, 4</td></tr><tr><td>How to declare renewables, how storage arbitrages</td><td>Ch. 5, 8</td></tr><tr><td>Should I mark up, and by how much</td><td>Ch. 6 (check pivotality first)</td></tr><tr><td>How to order a thermal multi-segment curve</td><td>Ch. 7</td></tr><tr><td>How to lock prices and set retail packages</td><td>Ch. 9</td></tr><tr><td>Can a simulation predict the clearing price</td><td>Ch. 10</td></tr><tr><td>Is the backtest credible, how to review</td><td>Ch. 11</td></tr><tr><td>How to validate a submission file, avoid errors</td><td>Ch. 12</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Question</th><th>Go to</th></tr></thead><tbody><tr><td>Bid rules, segment count, price caps</td><td>Ch. 1 + confirm province</td></tr><tr><td>Which data, and where from</td><td>Ch. 2</td></tr><tr><td>How to forecast load / price, what error is good</td><td>Ch. 3, 4</td></tr><tr><td>How to declare renewables, how storage arbitrages</td><td>Ch. 5, 8</td></tr><tr><td>Should I mark up, and by how much</td><td>Ch. 6 (check pivotality first)</td></tr><tr><td>How to order a thermal multi-segment curve</td><td>Ch. 7</td></tr><tr><td>How to lock prices and set retail packages</td><td>Ch. 9</td></tr><tr><td>Can a simulation predict the clearing price</td><td>Ch. 10</td></tr><tr><td>Is the backtest credible, how to review</td><td>Ch. 11</td></tr><tr><td>How to validate a submission file, avoid errors</td><td>Ch. 12</td></tr></tbody></table></div>
 <hr>
 <h2 id="s5">1. Bid Space: Rules Before Methods</h2>
 <aside class="note"><p>Chapter data cutoff: 2026-11-01. Segment counts, caps and deadlines change by province and by year — <strong>check the provincial trading-centre rules before quoting anything</strong>.</p></aside>
 <h3 id="s6">1.1 Ten parameters to confirm before bidding</h3>
-<div class="table-wrap"><table><thead><tr><th>Parameter</th><th>Meaning</th><th>Typical magnitude</th></tr></thead><tbody><tr><td>Trading window</td><td>Opening and deadline of day-ahead submission</td><td>Usually D-1 morning; varies</td></tr><tr><td>Bid segments</td><td>Maximum quantity-price pairs</td><td>Commonly 3-10; varies by province</td></tr><tr><td>Monotonicity</td><td>Must prices rise with segments</td><td>Most provinces require non-decreasing</td></tr><tr><td>Price floor / cap</td><td>Limits on bids and clearing</td><td>Caps often 1000-1500 CNY/MWh, floors -100 to 0</td></tr><tr><td>Secondary cap</td><td>Tightened cap after a trigger</td><td>Pilots in some provinces, parameters revised quarterly</td></tr><tr><td>Offer adequacy</td><td>Share of capacity offered, monitored</td><td>Commonly around 125%, definition varies</td></tr><tr><td>Minimum load</td><td>Lower adjustable limit</td><td>Coal typically 30%-50% of rating</td></tr><tr><td>Start-up and must-run</td><td>Shutdown permission, heat / grid constraints</td><td>Depends on unit type and dispatch</td></tr><tr><td>Contract decomposition</td><td>How contract energy lands on 96 slots</td><td>Monthly to daily decomposition</td></tr><tr><td>Settlement</td><td>Day-ahead + real-time two-settlement, deviations</td><td>See Electricity Trading Expert Ch. 6</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Parameter</th><th>Meaning</th><th>Typical magnitude</th></tr></thead><tbody><tr><td>Trading window</td><td>Opening and deadline of day-ahead submission</td><td>Usually D-1 morning; varies</td></tr><tr><td>Bid segments</td><td>Maximum quantity-price pairs</td><td>Commonly 3-10; varies by province</td></tr><tr><td>Monotonicity</td><td>Must prices rise with segments</td><td>Most provinces require non-decreasing</td></tr><tr><td>Price floor / cap</td><td>Limits on bids and clearing</td><td>Caps often 1000-1500 CNY/MWh, floors -100 to 0</td></tr><tr><td>Secondary cap</td><td>Tightened cap after a trigger</td><td>Pilots in some provinces, parameters revised quarterly</td></tr><tr><td>Offer adequacy</td><td>Share of capacity offered, monitored</td><td>Commonly around 125%, definition varies</td></tr><tr><td>Minimum load</td><td>Lower adjustable limit</td><td>Coal typically 30%-50% of rating</td></tr><tr><td>Start-up and must-run</td><td>Shutdown permission, heat / grid constraints</td><td>Depends on unit type and dispatch</td></tr><tr><td>Contract decomposition</td><td>How contract energy lands on 96 slots</td><td>Monthly to daily decomposition</td></tr><tr><td>Settlement</td><td>Day-ahead + real-time two-settlement, deviations</td><td>See Electricity Trading Expert Ch. 6</td></tr></tbody></table></div>
 <p><strong>The rule text and the system implementation are not the same thing.</strong> Your bid enters the operator's clearing system, and the system's implementation has details the text does not spell out — most importantly whether reliability unit commitment (RUC) runs <em>in parallel with</em> or <em>in series with</em> the day-ahead market, which decides whether an undispatched unit is still committed and whether it is paid the clearing price or cost-based compensation. That difference lives in formal rules and technical specifications, not in vendor material. Without system documentation, <strong>infer it from historical clearing results and label the inference &quot;to be verified&quot;</strong>; never pass an assumption off as a parameter.</p>
 <h3 id="s7">1.2 Three bidding identities</h3>
 <ul><li><strong>Quantity-price bidding</strong>: submit both quantity and price; you help form the price. Thermal, some renewables, storage.</li><li><strong>Quantity-only bidding</strong>: declare availability only and take the market price. Some provinces for renewables.</li><li><strong>Price taker</strong>: fully passive; the only decisions are how much to declare and whether to be available.</li></ul>
@@ -128,11 +134,11 @@
 <hr>
 <h2 id="s9">2. Data Layer: Availability, Cleaning, Leakage</h2>
 <h3 id="s10">2.1 Minimum data set</h3>
-<div class="table-wrap"><table><thead><tr><th>Category</th><th>Fields</th><th>Availability</th></tr></thead><tbody><tr><td>Prices</td><td>Day-ahead and real-time clearing prices (96/288 slots)</td><td>Disclosed by most provincial trading centres; some member-only</td></tr><tr><td>Load</td><td>Actual and day-ahead forecast system load</td><td>Disclosure varies by province</td></tr><tr><td>Renewables</td><td>Wind / solar forecast and actual output</td><td>Partly disclosed; otherwise build a weather-to-power model</td></tr><tr><td>Units</td><td>Maintenance plan, minimum load, start-up time</td><td>Own data + dispatch notices</td></tr><tr><td>Cost</td><td>Fuel price, unit cost, auxiliary consumption</td><td>Own data</td></tr><tr><td>Exogenous</td><td>Temperature, irradiance, wind, holidays, inflow</td><td>Weather vendors / public APIs</td></tr><tr><td>Network</td><td>Flow-gate limits, congestion</td><td>Mostly non-public; infer from price spreads</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Category</th><th>Fields</th><th>Availability</th></tr></thead><tbody><tr><td>Prices</td><td>Day-ahead and real-time clearing prices (96/288 slots)</td><td>Disclosed by most provincial trading centres; some member-only</td></tr><tr><td>Load</td><td>Actual and day-ahead forecast system load</td><td>Disclosure varies by province</td></tr><tr><td>Renewables</td><td>Wind / solar forecast and actual output</td><td>Partly disclosed; otherwise build a weather-to-power model</td></tr><tr><td>Units</td><td>Maintenance plan, minimum load, start-up time</td><td>Own data + dispatch notices</td></tr><tr><td>Cost</td><td>Fuel price, unit cost, auxiliary consumption</td><td>Own data</td></tr><tr><td>Exogenous</td><td>Temperature, irradiance, wind, holidays, inflow</td><td>Weather vendors / public APIs</td></tr><tr><td>Network</td><td>Flow-gate limits, congestion</td><td>Mostly non-public; infer from price spreads</td></tr></tbody></table></div>
 <h3 id="s11">2.2 Cleaning rules (directly usable)</h3>
 <ul><li><strong>Granularity</strong>: unify at 96 slots (15 minutes); aggregate 5-minute real-time data to 15 minutes by weighting, never mix granularities;</li><li><strong>Time zone</strong>: China has no daylight saving; only confirm the UTC+8 label to avoid a &quot;missing hour&quot;;</li><li><strong>Missing data</strong>: linear interpolation for runs of 2 slots or fewer; drop the whole day beyond that and flag it;</li><li><strong>Outliers</strong>: prices outside the cap range, load jumps above 30% per step, negative renewable output — flag for review;</li><li><strong>Keep negative prices</strong>: they are market signals, not dirty data;</li><li><strong>Holidays</strong>: tag separately; do not approximate long holidays with weekends.</li></ul>
 <h3 id="s12">2.3 Leakage prevention (the most common backtest error)</h3>
-<div class="table-wrap"><table><thead><tr><th>Feature</th><th>Earliest availability</th><th>Usable for day D</th></tr></thead><tbody><tr><td>Day-ahead price of D-1</td><td>Evening of D-1</td><td>Yes</td></tr><tr><td>Real-time price of D</td><td>D+1</td><td>No</td></tr><tr><td>Actual load of D</td><td>D+1</td><td>No</td></tr><tr><td>Temperature forecast for D</td><td>Before D-1</td><td>Yes (forecast, not observation)</td></tr><tr><td>Actual renewable output of D</td><td>D+1</td><td>No</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Feature</th><th>Earliest availability</th><th>Usable for day D</th></tr></thead><tbody><tr><td>Day-ahead price of D-1</td><td>Evening of D-1</td><td>Yes</td></tr><tr><td>Real-time price of D</td><td>D+1</td><td>No</td></tr><tr><td>Actual load of D</td><td>D+1</td><td>No</td></tr><tr><td>Temperature forecast for D</td><td>Before D-1</td><td>Yes (forecast, not observation)</td></tr><tr><td>Actual renewable output of D</td><td>D+1</td><td>No</td></tr></tbody></table></div>
 <p><strong>One hard rule</strong>: for every feature, answer &quot;did this number exist before the D-1 submission deadline&quot;. If you cannot answer, it does not enter the model.</p>
 <hr>
 <h2 id="s13">3. Load Forecasting: Baseline, Similar Days, Residual Correction</h2>
@@ -193,7 +199,7 @@ forecast' = forecast + residual(weekday, slot)</code></pre>
 <hr>
 <h2 id="s34">7. Thermal Bidding in Practice</h2>
 <h3 id="s35">7.1 Cost structure shapes the curve</h3>
-<div class="table-wrap"><table><thead><tr><th>Cost item</th><th>Varies with output</th><th>Effect on bidding</th></tr></thead><tbody><tr><td>Fuel</td><td>Yes (efficiency blocks)</td><td>Sets segment prices</td></tr><tr><td>No-load</td><td>No</td><td>Sets the minimum acceptable price</td></tr><tr><td>Start-up</td><td>One-off</td><td>Whether to stay online across hours</td></tr><tr><td>Ramp / minimum load</td><td>Constraints</td><td>Feasible segment range</td></tr><tr><td>Auxiliary consumption</td><td>Proportional</td><td>Raises the whole cost stack</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Cost item</th><th>Varies with output</th><th>Effect on bidding</th></tr></thead><tbody><tr><td>Fuel</td><td>Yes (efficiency blocks)</td><td>Sets segment prices</td></tr><tr><td>No-load</td><td>No</td><td>Sets the minimum acceptable price</td></tr><tr><td>Start-up</td><td>One-off</td><td>Whether to stay online across hours</td></tr><tr><td>Ramp / minimum load</td><td>Constraints</td><td>Feasible segment range</td></tr><tr><td>Auxiliary consumption</td><td>Proportional</td><td>Raises the whole cost stack</td></tr></tbody></table></div>
 <h3 id="s36">7.2 Multi-segment curves</h3>
 <p>Segment by cost (e.g. 40% / 70% / 100% output) with non-decreasing prices. A price taker fills segments at cost; only after confirming pivotality should the marginal segment carry a bounded markup from residual demand (6.2). Code: <code>bid.bid_curve()</code>.</p>
 <h3 id="s37">7.3 Start-up decisions</h3>
@@ -229,13 +235,13 @@ forecast' = forecast + residual(weekday, slot)</code></pre>
 <ul><li><strong>Can</strong>: explain the mechanism (who sets the price, who is squeezed out), stress-test (load, maintenance, fuel), screen market structure (HHI), and teach the dispatch cliff;</li><li><strong>Cannot</strong>: predict real clearing prices (rival strategies, unit commitment, network limits and rule details are incomplete), replace a production dispatch system, or prove &quot;my strategy makes money&quot;.</li></ul>
 <h3 id="s51">10.2 Bid sweep: the most useful chart</h3>
 <p>Hold rivals fixed and sweep your own bid:</p>
-<div class="table-wrap"><table><thead><tr><th>Your bid</th><th>Clearing</th><th>Volume</th><th>Profit</th></tr></thead><tbody><tr><td>300 (= cost)</td><td>300</td><td>300 MW</td><td>0</td></tr><tr><td>350</td><td>350</td><td>300 MW</td><td>+15000</td></tr><tr><td>400</td><td>400</td><td>300 MW</td><td>+30000</td></tr><tr><td>450 (above the next unit at 420)</td><td>420</td><td>0 MW</td><td>0</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Your bid</th><th>Clearing</th><th>Volume</th><th>Profit</th></tr></thead><tbody><tr><td>300 (= cost)</td><td>300</td><td>300 MW</td><td>0</td></tr><tr><td>350</td><td>350</td><td>300 MW</td><td>+15000</td></tr><tr><td>400</td><td>400</td><td>300 MW</td><td>+30000</td></tr><tr><td>450 (above the next unit at 420)</td><td>420</td><td>0 MW</td><td>0</td></tr></tbody></table></div>
 <p>Reading: between 300 and 420 you are pivotal and a higher bid earns more; above 420 the next unit replaces you and volume collapses to zero. <strong>The chart shows structure, not advice</strong> — rivals react in reality, and persistent raising invites regulatory attention. Code: <code>simulate.bid_sweep()</code>.</p>
 <h3 id="s52">10.3 Concentration</h3>
 <p>Compute HHI after clearing (sum of squared shares × 10000) and use KSI/RSI/TTS together for structural market power. Metrics are for <strong>identification and self-checks</strong>, not for bidding.</p>
 <h3 id="s53">10.4 What a production clearing engine looks like</h3>
 <p>The gap between a toy simulation and real clearing is not &quot;slightly less accurate&quot; — it is <strong>structurally different</strong>. The operator's system contains at least the following, and dropping any one changes the scope of your conclusion:</p>
-<div class="table-wrap"><table><thead><tr><th>Stage</th><th>Production system</th><th>This sandbox</th><th>Direct implication for bids</th></tr></thead><tbody><tr><td>Unit commitment (SCUC)</td><td>MILP with min up/down, start-up cost, ramping</td><td>None</td><td>Your bid affects <em>whether you start</em>, not just where you sit on a cost stack</td></tr><tr><td>Economic dispatch (SCED)</td><td>LP plus security constraints (lines, flowgates)</td><td>No network</td><td>Nodal/zonal spreads cannot be computed; congestion spreads cannot be inferred from supply-demand ratios</td></tr><tr><td>Reliability unit commitment (RUC)</td><td>Runs in parallel with or in series with the day-ahead market</td><td>None</td><td>You may be committed even when not cleared, paid by rule rather than at the clearing price</td></tr><tr><td>Joint clearing</td><td>Energy + reserve + frequency regulation + ramping optimised together</td><td>Single product</td><td>Reserve/regulation bids should be priced at opportunity cost, not as &quot;a bit of extra revenue&quot;</td></tr><tr><td>Inter-regional trade</td><td>ATC-based corridor optimisation</td><td>Single market</td><td>The sending-receiving price spread is not the local supply-demand gap</td></tr><tr><td>Capacity</td><td>Cleared on a reliability demand curve</td><td>None</td><td>Capacity revenue is decoupled from spot prices and cannot be folded into spot PnL</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Stage</th><th>Production system</th><th>This sandbox</th><th>Direct implication for bids</th></tr></thead><tbody><tr><td>Unit commitment (SCUC)</td><td>MILP with min up/down, start-up cost, ramping</td><td>None</td><td>Your bid affects <em>whether you start</em>, not just where you sit on a cost stack</td></tr><tr><td>Economic dispatch (SCED)</td><td>LP plus security constraints (lines, flowgates)</td><td>No network</td><td>Nodal/zonal spreads cannot be computed; congestion spreads cannot be inferred from supply-demand ratios</td></tr><tr><td>Reliability unit commitment (RUC)</td><td>Runs in parallel with or in series with the day-ahead market</td><td>None</td><td>You may be committed even when not cleared, paid by rule rather than at the clearing price</td></tr><tr><td>Joint clearing</td><td>Energy + reserve + frequency regulation + ramping optimised together</td><td>Single product</td><td>Reserve/regulation bids should be priced at opportunity cost, not as &quot;a bit of extra revenue&quot;</td></tr><tr><td>Inter-regional trade</td><td>ATC-based corridor optimisation</td><td>Single market</td><td>The sending-receiving price spread is not the local supply-demand gap</td></tr><tr><td>Capacity</td><td>Cleared on a reliability demand curve</td><td>None</td><td>Capacity revenue is decoupled from spot prices and cannot be folded into spot PnL</td></tr></tbody></table></div>
 <p>This system is continuously modified, and the cadence is publicly visible: in the &quot;Southern Regional Power Spot Market Technical Support System — 19 function upgrades&quot; tender published by China Southern Power Grid's bidding platform on 2026-05-27, <strong>Package 2 &quot;clearing-algorithm related upgrades&quot; was awarded to Beijing Tsintergy Technology for CNY 4.62 million</strong>, while Package 1 (platform and applications) went to Nanjing NARI-Relays for CNY 3.158 million. The scope covers day-ahead/intraday/real-time unit commitment and economic dispatch functions, <strong>parallel and serial computing architectures for RUC versus day-ahead clearing</strong>, and the inter-regional clearing model and price calculation module. In 2026-06 the same firm also won Guangzhou Power Exchange's &quot;Southern Regional Power Market Trading Operation Analysis and Auxiliary Verification System&quot;. (Grade B: CSG supply-chain platform notices and tender documents.)</p>
 <p>Three directly usable inferences:</p>
 <ol><li><strong>Every rule change triggers an engine change.</strong> Keep your provincial parameter sheet (bid segments, price caps, RUC settings, inter-provincial corridors) in step with system versions; copying the rule document alone misses implementation details;</li><li><strong>The operator runs a separate trading-operation analysis and verification system.</strong> Submission and execution deviations are reviewed systematically, not sampled — align your backtest definitions with the verification definitions, or your review will not match your assessment results;</li><li><strong>The clearing code adapts to rules through componentised constraints.</strong> Do the same in your own stack: separate a &quot;rule parameters&quot; layer from a &quot;model&quot; layer so a rule change touches parameters only; otherwise every rule revision forces a model rewrite.</li></ol>
@@ -247,7 +253,7 @@ forecast' = forecast + residual(weekday, slot)</code></pre>
 <h3 id="s56">11.1 Backtest protocol (must appear in the report)</h3>
 <ul><li><strong>Rolling origin</strong>: fit on data before day t, predict day t, roll forward;</li><li><strong>Out-of-sample</strong>: the residual-correction model may only use past <strong>out-of-sample</strong> errors, never training residuals;</li><li><strong>Window</strong>: fix and disclose the training window (e.g. 14/21/30 days); report window sensitivity separately;</li><li><strong>Layered comparison</strong>: seasonal naive → similar day → similar day + residual → machine learning, proving each step's gain.</li></ul>
 <h3 id="s57">11.2 Metric set</h3>
-<div class="table-wrap"><table><thead><tr><th>Target</th><th>Metrics</th></tr></thead><tbody><tr><td>Load</td><td>MAE, RMSE, MAPE (with floor), bias, error by time block</td></tr><tr><td>Price</td><td>MAE, pinball (quantiles), direction accuracy, spike recall</td></tr><tr><td>Decision</td><td>CNY/MWh, CNY/day, hit rate, worst-day loss, CVaR</td></tr><tr><td>Stability</td><td>Daily metric distribution, worst 5 days, parameter sensitivity</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Target</th><th>Metrics</th></tr></thead><tbody><tr><td>Load</td><td>MAE, RMSE, MAPE (with floor), bias, error by time block</td></tr><tr><td>Price</td><td>MAE, pinball (quantiles), direction accuracy, spike recall</td></tr><tr><td>Decision</td><td>CNY/MWh, CNY/day, hit rate, worst-day loss, CVaR</td></tr><tr><td>Stability</td><td>Daily metric distribution, worst 5 days, parameter sensitivity</td></tr></tbody></table></div>
 <p><strong>Reporting only averages is the most common form of backtest fraud</strong>: always show the daily distribution and the worst cases.</p>
 <h3 id="s58">11.3 T+1 PnL attribution</h3>
 <p>Compare actual revenue with the revenue of a &quot;perfect-execution-on-forecast&quot; counterfactual and split the gap into four parts:</p>
@@ -259,7 +265,7 @@ forecast' = forecast + residual(weekday, slot)</code></pre>
 <h2 id="s60">12. Engineering and Submission</h2>
 <aside class="note"><p>Chapter data cutoff: 2026-11-01. Deadlines and file formats follow the latest provincial trading-centre requirements.</p></aside>
 <h3 id="s61">12.1 D-1 timeline (template)</h3>
-<div class="table-wrap"><table><thead><tr><th>Time</th><th>Action</th><th>Output</th></tr></thead><tbody><tr><td>When data land</td><td>Pull prices, load, weather, maintenance; clean</td><td>Standardised dataset</td></tr><tr><td>Forecasting</td><td>Load / price / output forecasts + residual correction</td><td>96-slot curves + quantiles</td></tr><tr><td>Strategy</td><td>Build bid curves / declared quantity</td><td>Draft quantity-price pairs</td></tr><tr><td>Validation</td><td>Rule checks (12.2)</td><td>Pass / block</td></tr><tr><td>Submission</td><td>Upload to the trading centre</td><td>Receipt</td></tr><tr><td>After close</td><td>Record version, keep audit trail</td><td>Daily snapshot</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Time</th><th>Action</th><th>Output</th></tr></thead><tbody><tr><td>When data land</td><td>Pull prices, load, weather, maintenance; clean</td><td>Standardised dataset</td></tr><tr><td>Forecasting</td><td>Load / price / output forecasts + residual correction</td><td>96-slot curves + quantiles</td></tr><tr><td>Strategy</td><td>Build bid curves / declared quantity</td><td>Draft quantity-price pairs</td></tr><tr><td>Validation</td><td>Rule checks (12.2)</td><td>Pass / block</td></tr><tr><td>Submission</td><td>Upload to the trading centre</td><td>Receipt</td></tr><tr><td>After close</td><td>Record version, keep audit trail</td><td>Daily snapshot</td></tr></tbody></table></div>
 <h3 id="s62">12.2 Submission checklist (all required)</h3>
 <ul><li>Segment count and monotonicity comply with the rules;</li><li>Prices within the cap range, including the secondary cap;</li><li>Cumulative quantity equals available capacity minus maintenance;</li><li>Minimum load and ramp constraints are feasible;</li><li>Must-run units are flagged;</li><li>Contract decomposition does not conflict with the bid curve;</li><li>File format, encoding and field order match the trading-centre template.</li></ul>
 <p><strong>Every amendment needs a version</strong>: time, before/after values, reason. Amendments cannot be reconstructed later, and without them attribution is impossible.</p>
@@ -272,11 +278,11 @@ forecast' = forecast + residual(weekday, slot)</code></pre>
 <p><strong>Distinguish the two vendor camps first</strong>: one sits on the operations side (the exchange's and grid's clearing engines and technical-support systems), the other on the participant side (bidding decisions and submission). A participant-side product's rule layer must keep pace with operations-side upgrades — clearing-algorithm retrofits happen continuously (see 10.4), so one purchase is not permanent availability. Write the adaptation responsibility and response time for rule changes into the contract, along with who bears the cost when a rule changes before the system catches up.</p>
 <hr>
 <h2 id="s65">13. Formula-to-Code Map</h2>
-<div class="table-wrap"><table><thead><tr><th>Content</th><th>Formula / method</th><th>Code</th></tr></thead><tbody><tr><td>Seasonal naive baseline</td><td>ŷ_t = y_{t−96}</td><td><code>forecast.seasonal_naive</code></td></tr><tr><td>Similar day</td><td>mean of k nearest days (±25% filter)</td><td><code>forecast.similar_day</code></td></tr><tr><td>Residual correction</td><td>(n·cell + λ·slot)/(n+λ)</td><td><code>forecast.fit_residual_model</code></td></tr><tr><td>AR(p)</td><td>least squares + recursion</td><td><code>forecast.ar_forecast</code></td></tr><tr><td>Quantile loss</td><td>pinball loss</td><td><code>forecast.pinball</code></td></tr><tr><td>Direction accuracy</td><td>sign agreement with deadband</td><td><code>forecast.direction_accuracy</code></td></tr><tr><td>Error economics</td><td>Σ\</td><td>e\</td></tr><tr><td>Price-taker optimum</td><td>p* = c</td><td><code>bid.price_taker_optimum</code></td></tr><tr><td>Pivotal markup</td><td>p* = (a/b + c)/2</td><td><code>bid.pivotal_markup</code></td></tr><tr><td>Declared quantity</td><td>min expected asymmetric penalty</td><td><code>bid.declared_quantity</code></td></tr><tr><td>Multi-segment curve</td><td>cost stacking + monotonicity check</td><td><code>bid.bid_curve</code></td></tr><tr><td>Storage threshold</td><td>cycle cost / round-trip efficiency</td><td><code>bid.storage_arbitrage_threshold</code></td></tr><tr><td>Contract overlay</td><td>spot PnL + q_c(P_c − π)</td><td><code>bid.contract_adjustment</code></td></tr><tr><td>Merit-order clearing</td><td>sort offers, walk demand</td><td><code>simulate.clear</code></td></tr><tr><td>Bid sweep</td><td>fixed rivals, sweep own bid</td><td><code>simulate.bid_sweep</code></td></tr><tr><td>Concentration</td><td>HHI = Σs_i² × 10000</td><td><code>simulate.hhi</code></td></tr><tr><td>Rolling backtest</td><td>only data before t</td><td><code>backtest.rolling_predict</code></td></tr><tr><td>Out-of-sample correction</td><td>fit on past out-of-sample errors</td><td><code>backtest.rolling_corrected</code></td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Content</th><th>Formula / method</th><th>Code</th></tr></thead><tbody><tr><td>Seasonal naive baseline</td><td>ŷ_t = y_{t−96}</td><td><code>forecast.seasonal_naive</code></td></tr><tr><td>Similar day</td><td>mean of k nearest days (±25% filter)</td><td><code>forecast.similar_day</code></td></tr><tr><td>Residual correction</td><td>(n·cell + λ·slot)/(n+λ)</td><td><code>forecast.fit_residual_model</code></td></tr><tr><td>AR(p)</td><td>least squares + recursion</td><td><code>forecast.ar_forecast</code></td></tr><tr><td>Quantile loss</td><td>pinball loss</td><td><code>forecast.pinball</code></td></tr><tr><td>Direction accuracy</td><td>sign agreement with deadband</td><td><code>forecast.direction_accuracy</code></td></tr><tr><td>Error economics</td><td>Σ\</td><td>e\</td></tr><tr><td>Price-taker optimum</td><td>p* = c</td><td><code>bid.price_taker_optimum</code></td></tr><tr><td>Pivotal markup</td><td>p* = (a/b + c)/2</td><td><code>bid.pivotal_markup</code></td></tr><tr><td>Declared quantity</td><td>min expected asymmetric penalty</td><td><code>bid.declared_quantity</code></td></tr><tr><td>Multi-segment curve</td><td>cost stacking + monotonicity check</td><td><code>bid.bid_curve</code></td></tr><tr><td>Storage threshold</td><td>cycle cost / round-trip efficiency</td><td><code>bid.storage_arbitrage_threshold</code></td></tr><tr><td>Contract overlay</td><td>spot PnL + q_c(P_c − π)</td><td><code>bid.contract_adjustment</code></td></tr><tr><td>Merit-order clearing</td><td>sort offers, walk demand</td><td><code>simulate.clear</code></td></tr><tr><td>Bid sweep</td><td>fixed rivals, sweep own bid</td><td><code>simulate.bid_sweep</code></td></tr><tr><td>Concentration</td><td>HHI = Σs_i² × 10000</td><td><code>simulate.hhi</code></td></tr><tr><td>Rolling backtest</td><td>only data before t</td><td><code>backtest.rolling_predict</code></td></tr><tr><td>Out-of-sample correction</td><td>fit on past out-of-sample errors</td><td><code>backtest.rolling_corrected</code></td></tr></tbody></table></div>
 <p>Run: <code>python tools/selftest.py</code> (no third-party dependencies, Python 3.11+).</p>
 <hr>
 <h2 id="s66">14. Glossary (Chinese-English)</h2>
-<div class="table-wrap"><table><thead><tr><th>Chinese</th><th>English</th><th>Note</th></tr></thead><tbody><tr><td>报量报价</td><td>quantity-price bidding</td><td>Submit both quantity and price</td></tr><tr><td>报量不报价</td><td>quantity-only bidding</td><td>Declare volume, take the price</td></tr><tr><td>枢机机组</td><td>pivotal unit</td><td>A unit whose bid sets the clearing price</td></tr><tr><td>剩余需求</td><td>residual demand</td><td>Demand left after rivals' supply</td></tr><tr><td>经济持留</td><td>economic withholding</td><td>Bidding above cost without justification; prohibited</td></tr><tr><td>容量持留</td><td>capacity withholding</td><td>Hiding available capacity; prohibited</td></tr><tr><td>基线负荷</td><td>customer baseline load (CBL)</td><td>Baseline for demand-response settlement</td></tr><tr><td>报价曲线</td><td>bid curve / supply function</td><td>Segmented quantity-price pairs</td></tr><tr><td>边际机组</td><td>marginal unit</td><td>The unit that sets the clearing price</td></tr><tr><td>出清价</td><td>clearing price</td><td>Uniform settlement price</td></tr><tr><td>分位数损失</td><td>pinball loss</td><td>Metric for probabilistic forecasts</td></tr><tr><td>方向正确率</td><td>direction accuracy</td><td>Accuracy of price-change direction</td></tr><tr><td>期望损失</td><td>CVaR / expected shortfall</td><td>Tail-risk measure</td></tr><tr><td>滚动回测</td><td>rolling-origin backtest</td><td>Day-by-day out-of-sample evaluation</td></tr><tr><td>收益归因</td><td>PnL attribution</td><td>Split into forecast / bid / execution / rules</td></tr><tr><td>事后复盘</td><td>post-trade review</td><td>T+1 review</td></tr><tr><td>循环成本</td><td>cycle cost</td><td>Degradation and loss cost per storage cycle</td></tr><tr><td>往返效率</td><td>round-trip efficiency</td><td>Overall charge-discharge efficiency</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Chinese</th><th>English</th><th>Note</th></tr></thead><tbody><tr><td>报量报价</td><td>quantity-price bidding</td><td>Submit both quantity and price</td></tr><tr><td>报量不报价</td><td>quantity-only bidding</td><td>Declare volume, take the price</td></tr><tr><td>枢机机组</td><td>pivotal unit</td><td>A unit whose bid sets the clearing price</td></tr><tr><td>剩余需求</td><td>residual demand</td><td>Demand left after rivals' supply</td></tr><tr><td>经济持留</td><td>economic withholding</td><td>Bidding above cost without justification; prohibited</td></tr><tr><td>容量持留</td><td>capacity withholding</td><td>Hiding available capacity; prohibited</td></tr><tr><td>基线负荷</td><td>customer baseline load (CBL)</td><td>Baseline for demand-response settlement</td></tr><tr><td>报价曲线</td><td>bid curve / supply function</td><td>Segmented quantity-price pairs</td></tr><tr><td>边际机组</td><td>marginal unit</td><td>The unit that sets the clearing price</td></tr><tr><td>出清价</td><td>clearing price</td><td>Uniform settlement price</td></tr><tr><td>分位数损失</td><td>pinball loss</td><td>Metric for probabilistic forecasts</td></tr><tr><td>方向正确率</td><td>direction accuracy</td><td>Accuracy of price-change direction</td></tr><tr><td>期望损失</td><td>CVaR / expected shortfall</td><td>Tail-risk measure</td></tr><tr><td>滚动回测</td><td>rolling-origin backtest</td><td>Day-by-day out-of-sample evaluation</td></tr><tr><td>收益归因</td><td>PnL attribution</td><td>Split into forecast / bid / execution / rules</td></tr><tr><td>事后复盘</td><td>post-trade review</td><td>T+1 review</td></tr><tr><td>循环成本</td><td>cycle cost</td><td>Degradation and loss cost per storage cycle</td></tr><tr><td>往返效率</td><td>round-trip efficiency</td><td>Overall charge-discharge efficiency</td></tr></tbody></table></div>
 <hr>
 <h2 id="s67">15. Sources and Maintenance</h2>
 <h3 id="s68">15.1 Method sources</h3>
@@ -297,21 +303,47 @@ forecast' = forecast + residual(weekday, slot)</code></pre>
 <ul><li>Quarterly: verify bid-segment counts, price caps (including secondary caps) and submission deadlines per province;</li><li>Each revision: run <code>python tools/selftest.py</code>; a failed assertion means the figures in the text no longer hold;</li><li>Watch list: the 2026 spot rules (proposed 2027-01-01), scope of quantity-only bidding for renewables, rollout of secondary caps, and the storage capacity-payment definition.</li></ul>
     </article>
 
-    
 
-    <nav class="pager" aria-label="上下篇">
-          <a class="prev" href="skill-renewable-project-development.html"><span class="dir">← 上一篇</span><span class="ttl">新能源开发与并网</span></a>
-          <a class="next" href="skill-ems-dispatch.html"><span class="dir">下一篇 →</span><span class="ttl">EMS 优化调度</span></a>
+
+<section class="related" aria-labelledby="skill-modules-title">
+      <div class="related-head"><h2 id="skill-modules-title">Applicable knowledge modules</h2><span>3</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="量化报价与交易风控-工程化-2026-11.html">
+          <span class="related-type">Cross-section</span>
+          <b>量化报价与交易风控</b>
+          <span>Engineering loop from forecast to bidding, submission, clearing, settlement, attribution and risk control: rule-version registry, data contracts, probabilistic forecasts, mean-CVaR bidding…</span>
+        </a>
+        <a class="related-card" href="电力现货市场101问-B-出清结算与省域实践.html">
+          <span class="related-type">Cross-section</span>
+          <b>101 问 B · 出清结算与省域实践</b>
+          <span>Clearing, settlement, provincial practice</span>
+        </a>
+        <a class="related-card" href="电力现货市场101问-C-结算TTS与政策演进.html">
+          <span class="related-type">Cross-section</span>
+          <b>101 问 C · 结算、TTS 与政策演进</b>
+          <span>Settlement mechanisms, TTS, policy evolution</span>
+        </a>
+      </div>
+
+    </section>
+
+    <nav class="pager" aria-label="Previous and next">
+          <a class="prev" href="skill-renewable-project-development-en.html"><span class="dir">← Previous</span><span class="ttl">Renewable Project Development &amp; Grid Connection</span></a>
+          <a class="next" href="skill-ems-dispatch-en.html"><span class="dir">Next →</span><span class="ttl">EMS Dispatch</span></a>
     </nav>
 
     <footer class="doc-foot">
-      <div class="lic">本页由 <a href="../../skills/spot-bidding-quant/SKILL_EN.md">skills/spot-bidding-quant/SKILL_EN.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
-      <div><a href="../index.html">返回知识库总览 →</a></div>
+      <div class="lic">Built from <a href="../../skills/spot-bidding-quant/SKILL_EN.md">skills/spot-bidding-quant/SKILL_EN.md</a>; the Markdown source remains authoritative if the two differ. Worked examples are synthetic unless stated otherwise.</div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub repository：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>Back to knowledge hub →</a>
+      </div>
     </footer>
   </main>
 
-  <aside class="toc" aria-label="本页目录">
-    <div class="toc-title">本页目录</div>
+  <aside class="toc" aria-label="On this page">
+    <div class="toc-title">On this page</div>
     <ol>
             <li class="lv2"><a href="#s1">0. Role and Conduct</a></li>
             <li class="lv3"><a href="#s2">0.1 Role</a></li>
@@ -385,11 +417,11 @@ forecast' = forecast + residual(weekday, slot)</code></pre>
             <li class="lv3"><a href="#s70">15.3 Data note</a></li>
             <li class="lv3"><a href="#s71">15.4 Division of labour with the sister skills</a></li>
             <li class="lv3"><a href="#s72">15.5 Maintenance cadence and open items</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="56">展开 56 个小节</button>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="56" data-more-label="Show 56 subsections" data-less-label="Hide subsections">Show 56 subsections</button>
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<a class="to-top" href="#top" aria-label="Back to top">↑</a>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

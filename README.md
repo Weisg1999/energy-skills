@@ -6,16 +6,16 @@
 
 [English](README_EN.md) | 中文
 
-九份面向 AI 助手的领域技能，配套 **64 个知识模块**（28,769 行正文、12 个分区）。每份技能是一册可直接注入大模型上下文的 Markdown 手册：加载后，模型以该领域资深从业者的身份回答，并遵守内置纪律——数字带文号与时点、涉及省份先确认、政策类内容给出查证入口、未交叉验证的数据标注"待核实"。
+九份面向 AI 助手的领域技能，配套 **66 个知识模块**（29,198 行正文、12 个分区）。每份技能是一册可直接注入大模型上下文的 Markdown 手册：加载后，模型以该领域资深从业者的身份回答，并遵守内置纪律——数字带文号与时点、涉及省份先确认、政策类内容给出查证入口、未交叉验证的数据标注"待核实"。
 
-当前版本 **v1.9**，数据截止 **2026-11-10**。入口：[知识中心](knowledge/index.html) · [更新记录](CHANGELOG.md)。
+当前版本 **v1.9**，数据截止 **2026-11-11**。**在线阅读：[energy-skills 知识库](https://weisg1999.github.io/energy-skills/)** · [仓库内入口](knowledge/index.html) · [更新记录](CHANGELOG.md)。
 
 ## 快速开始
 
 - **注入 AI 助手**：将 `SKILL.md` 全文作为系统提示或上下文附加给模型；中文版信息密度更高，英文版便于国际模型理解。
 - **注册为技能**：把 `skills/<name>/` 放入支持自定义技能的 AI 编程工具（如 Claude Code）的技能目录，即可自动触发。
-- **直接阅读**：`knowledge/` 下的笔记本身就是带文号、数字与对比表的速查手册，从[知识中心](knowledge/index.html)按分区进入即可；九个技能也有 HTML 阅读页，并可在页内直接下载完整 TXT。
-- **提交前自检**：运行 `node scripts/check-consistency.mjs`、`node scripts/check-maintenance.mjs --check` 与 `node scripts/build-knowledge-html.mjs --check`；七个带工具的技能各跑一次 `python tools/selftest.py`。
+- **直接阅读**：打开[在线阅读入口](https://weisg1999.github.io/energy-skills/)即可；`knowledge/` 下的笔记本身就是带文号、数字与对比表的速查手册，按分类进入或直接检索标题、标签与正文。九个技能也有 HTML 阅读页，并可在页内直接下载完整 TXT。
+- **提交前自检**：运行 `node scripts/check-consistency.mjs`、`node scripts/check-maintenance.mjs --check` 与 `node scripts/build-knowledge-html.mjs --check`；九个带工具的技能各跑一次 `python tools/selftest.py`。
 
 ## 九个技能
 
@@ -35,7 +35,7 @@
 
 ## 知识库
 
-64 个模块分为 12 个分区：通识与经济学、电力现货与省间交易、海外市场（澳大利亚 NEM、德国、英国 GB、意大利、西班牙、法国、荷兰、波兰、比利时与北欧、美国三市场、日本）、横向专题（海外并网与合规、容量机制、辅助服务与平衡市场、储能收益建模与数据源、跨国 PPA/绿证/tolling、同口径快照与投决日历）、电价、新能源与并网、储能与 EMS（含 SCADA 数据链路）、综合能源与零碳园区、碳市场与碳管理、虚拟电厂、索引与工具、调研底稿。每份 Markdown 带 frontmatter（`id`、`section`、`level`、`title`、`summary`、`tags`、`cutoff`、`related` 等），[知识中心](knowledge/index.html)的卡片、计数、搜索、64 个知识阅读页与 18 个技能阅读页全部由构建脚本生成，技能页另附 TXT 下载。
+66 个模块分为 12 个分区：通识与经济学、电力现货与省间交易、海外市场（澳大利亚 NEM、德国、英国 GB、意大利、西班牙、法国、荷兰、波兰、比利时与北欧、美国三市场、日本）、横向专题（海外并网与合规、容量机制、辅助服务与平衡市场、储能收益建模与数据源、跨国 PPA/绿证/tolling、同口径快照与投决日历）、电价、新能源与并网、储能与 EMS（含 SCADA 数据链路）、综合能源与零碳园区、碳市场与碳管理、虚拟电厂、索引与工具、调研底稿。每份 Markdown 带 frontmatter（`id`、`section`、`level`、`title`、`summary`、`tags`、`cutoff`、`related` 等），[知识中心](knowledge/index.html)的卡片、计数、全文检索、66 个知识阅读页与 18 个技能阅读页全部由构建脚本生成，技能页另附 TXT 下载。首页只保留六个页面级入口，十二个内容分区通过分类筛选切换；检索覆盖标题、标签与正文，正文命中可直达小节锚点。
 
 | 想解决的问题 | 从这里开始 |
 |---|---|
@@ -60,13 +60,17 @@
 energy-skills/
 ├── README.md / README_EN.md        ← 入口说明（本页）
 ├── CHANGELOG.md / CHANGELOG_EN.md  ← 版本变更记录
+├── 更新清单.md                     ← 时效性模块台账、复核节奏与海外事件切片
+├── index.html                       ← GitHub Pages 短入口（跳转 knowledge/index.html）
+├── .nojekyll                        ← 关闭 Pages 的 Jekyll 处理
 ├── LICENSE                         ← CC BY-NC 4.0
 ├── .github/workflows/consistency.yml
+├── .github/workflows/deploy-pages.yml ← Pages 发布（校验通过后部署）
 ├── scripts/
 │   ├── check-consistency.mjs       ← 表格/链接/版本/中英数字 + 内容纪律校验
 │   ├── credibility.mjs             ← 可信度登记册解析与内容级门禁规则
 │   ├── check-maintenance.mjs       ← 更新清单到期看板与结构校验
-│   ├── build-knowledge-html.mjs    ← 知识中心构建器（frontmatter → HTML + credibility.json）
+│   ├── build-knowledge-html.mjs    ← 知识中心构建器（frontmatter → HTML + 全文索引 + credibility.json）
 │   └── knowledge.config.mjs        ← 分区、导航与固定文案
 ├── skills/                         ← 九份技能，各含 SKILL.md、SKILL_EN.md
 │   ├── electricity-trading-expert/     ← 附 tools/（单位换算、容量收入、三节点出清）
@@ -83,6 +87,7 @@ energy-skills/
     ├── index.html                  ← 生成物
     ├── credibility.json            ← 生成物：机器可读可信度登记册（C 级工单/未定事项/事件/模块声明）
     ├── english-digest.json          ← 生成物：英文摘要路由 + 关键数字/未定事项/工单状态
+    ├── search-index.js             ← 生成物：全文检索索引（按需懒加载，含小节锚点）
     ├── assets/                     ← 阅读页样式与脚本 + 标识（3 个 SVG）
     ├── html/                       ← 生成物：66 个知识页 + 18 个技能页
     │   └── download/skills/        ← 生成物：18 个技能 TXT
@@ -91,14 +96,15 @@ energy-skills/
 
 ## 维护知识中心
 
-`knowledge/index.html`、`knowledge/credibility.json` 与 `knowledge/html/` 是生成物，不要手改。新增或修改模块时：
+`knowledge/index.html`、`knowledge/credibility.json`、`knowledge/english-digest.json`、`knowledge/search-index.js` 与 `knowledge/html/` 是生成物，不要手改。新增或修改模块时：
 
 1. 在 `knowledge/*.md` 的 frontmatter 补全 `id`、`section`、`order`、`level`、`title`、`summary`、`summary_en`、`tags`、`cutoff`、`related`、`search`、`foot`；含算例的模块补 `examples`（`synthetic` / `documented`），史料型笔记补 `historical: true` 与 `confidence`；
 2. 分区与导航改 `scripts/knowledge.config.mjs`，首页骨架改 `knowledge/index.template.html`；
-3. 重建并校验：
+3. 时效性以 [更新清单.md](更新清单.md) 为准：P0 月度、P1 季度、P2 半年、P3 年度；海外 18 个模块另有拍卖/招标/清缴等事件驱动切片（§3.1），到日后由 `check-maintenance.mjs` 并入 P0 队列；
+4. 重建并校验：
 
 ```bash
-node scripts/build-knowledge-html.mjs           # 重建首页、阅读页与 credibility.json
+node scripts/build-knowledge-html.mjs           # 重建首页、阅读页、全文索引与 credibility.json
 node scripts/build-knowledge-html.mjs --check   # 只校验生成物是否最新
 node scripts/check-consistency.mjs              # 结构 + 内容纪律（C 级工单/草案/算例/史料）
 node scripts/check-maintenance.mjs              # 到期看板（不阻塞）
@@ -107,9 +113,13 @@ node scripts/check-maintenance.mjs --check      # 更新清单结构校验
 
 `knowledge/english-digest.json` 给英文模型做路由：66 个模块的英文摘要、INDEX_EN 关键数字表、37 项未定事项（含 16 条带触发日的登记）与 22 项 C 级工单状态；`historical: true` 的模块还会在阅读页顶部渲染「数据不可作现行引用」横幅。
 
+`knowledge/search-index.js` 是首页全文检索的数据源：构建时按二级/三级标题切块，保留模块标题、分类、正文与本页小节锚点；浏览器在首次聚焦搜索框时才加载，避免拖慢首屏。索引不进入模型上下文，只服务页面检索。
+
 `knowledge/credibility.json` 是给 AI 与检索用的机器可读登记册：22 项 C 级工单、37 项未定事项、32 条事件日历、政策草案条目，以及每个模块的 `confidence` / `examples` / `historical` 声明。22 项 C 级工单带销项终态（可用 / 改口径 / 已撤销 / 禁止引用 / 待复核）、复核日期与下次复核日，§1.4 空缺格也有补数节奏。注入上下文前可先按 `confidence` 过滤、按 `gradeC` 的 `usable` / `banned` 排除不可引用数字；`check-maintenance.mjs` 按到期日提示待销项工单与空缺格。事实源仍是 Markdown 正文里已有的结构化表格与列表，不另建清单。
 
 CI 依次执行一致性校验、维护台账结构校验、生成物比对与九个 Python 自测；任一步失败即拒绝合并。`summary_en` 缺漏、受控缩写未定义或悬空、未定事项触发日格式错误都会在一致性校验里报错。每月 1 号另有 `maintenance.yml` 把到期看板写进 Actions 摘要。
+
+站点发布由 `deploy-pages.yml` 负责：只在 `main` 的站点内容变更时触发，先复核生成物、内容与台账，再把 `index.html`、`knowledge/`、`skills/` 和说明文件部署到 GitHub Pages。首次启用需在仓库 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**；之后日常只需推送 `main`，访问地址保持不变。
 
 ## 资料来源
 
@@ -123,7 +133,7 @@ CI 依次执行一致性校验、维护台账结构校验、生成物比对与�
 
 ## 几点说明
 
-1. **时效性**：政策类数字整理至 **2026-11-10**；2026 年 9-10 月的现货新规、售电公司管理办法、风险防控办法、信用评价指引仍为征求意见稿，正文已标注状态。引用前以官方最新文件为准。
+1. **时效性**：政策类数字整理至 **2026-11-11**；2026 年 9-10 月的现货新规、售电公司管理办法、风险防控办法、信用评价指引仍为征求意见稿，正文已标注状态。引用前以官方最新文件为准。
 2. **原创性**：`knowledge/` 下的笔记是对原书内容的主题化摘要与提炼，非原文复制；书籍版权归原作者所有。
 3. **非投资建议**：文中的价格判断与测算框架仅供学习研究。
 4. **口径纪律**：技能内置"待核实"标注约定与常见误区清单，使用前建议先读 SKILL.md 第 0 章与推理手册章节。
@@ -131,7 +141,7 @@ CI 依次执行一致性校验、维护台账结构校验、生成物比对与�
 ## Roadmap
 
 - [x] 九份技能：电力交易、虚拟电厂、现货报价量化、碳资产管理、储能投资与运营、新能源项目开发与并网、EMS 优化调度、电价与电费优化、售电零售与风险（均为中英双语，后七份附零依赖工具）
-- [x] 知识库：通识、现货、海外（澳/德/英/意/西/法/荷/波/比·北欧/美/日，含储能业务）、横向专题（并网合规/容量机制/辅助服务/储能收益与数据源/PPA 绿证/同口径快照与投决日历）、电价、新能源、储能、综合能源、碳市场、VPP、索引与调研底稿共 64 个模块，知识中心已改为生成物
+- [x] 知识库：通识、现货、海外（澳/德/英/意/西/法/荷/波/比·北欧/美/日，含储能业务）、横向专题（并网合规/容量机制/辅助服务/储能收益与数据源/PPA 绿证/同口径快照与投决日历）、电价、新能源、储能、综合能源、碳市场、VPP、索引与调研底稿共 66 个模块，知识中心已改为生成物
 - [x] **EMS 优化调度**：独立第七技能，附 96 点调度内核、需量/容量/调频测算与全部算例断言；微网与储能两份底稿的算例已对齐工具
 - [x] **电价与电费优化**：独立第八技能，附账单拆分、三种基本电费、闭式最优申报、分时平移与套餐比价工具，锁定 A–H 算例
 - [x] **售电零售与风险**：独立第九技能，附套餐全成本定价、客户组合、偏差期望与分位、保函缺口工具，锁定 A–H 算例
@@ -141,4 +151,4 @@ CI 依次执行一致性校验、维护台账结构校验、生成物比对与�
 
 本仓库内容（Markdown 技能文件、知识笔记、调研记录与辅助脚本）采用 [CC BY-NC 4.0](LICENSE) 授权：可署名后自由复制、分发与改编，**不得用于商业用途**。引用或再发布请按 `LICENSE` 中的建议格式署名，并保留来源链接。
 
-*最后更新于 2026-11-10*
+*最后更新于 2026-11-11*

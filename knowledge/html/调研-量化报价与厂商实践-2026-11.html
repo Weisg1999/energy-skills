@@ -19,9 +19,9 @@
 <div class="scrim"></div>
 
 <header class="topbar">
-  <a class="back" href="../index.html">← 知识库</a>
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
   <div class="crumb">
-    <span class="crumb-cat">15 / RESEARCH</span>
+    <span class="crumb-cat">12 · RESEARCH</span>
     <span class="crumb-sep">/</span>
     <span class="crumb-doc">量化报价与厂商实践</span>
   </div>
@@ -30,7 +30,14 @@
       <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
       <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-    <a class="src" href="../调研-量化报价与厂商实践-2026-11.md">.md 源文件</a>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../调研-量化报价与厂商实践-2026-11.md">.md 源文件<small>knowledge/调研-量化报价与厂商实践-2026-11.md</small></a>
+
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
     <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
   </div>
 </header>
@@ -38,7 +45,7 @@
 <div class="shell">
   <aside class="sidebar" id="nav">
     <div class="nav-kicker">当前分类</div>
-    <div class="nav-num">15 / RESEARCH</div>
+    <div class="nav-num">12 · RESEARCH</div>
     <h2 class="nav-cat"><a href="../index.html#research">调研底稿</a></h2>
     <ul class="nav-list">
               <li><a href="调研-电力市场政策与开源资源-2026-09.html">电力市场政策与开源资源</a></li>
@@ -55,24 +62,24 @@
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
       <ul>
-              <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
-              <li><a href="../index.html#spot"><b>05</b>电力现货与省间交易</a></li>
-              <li><a href="../index.html#intl"><b>06</b>海外市场</a></li>
-              <li><a href="../index.html#cross"><b>07</b>横向专题</a></li>
-              <li><a href="../index.html#price"><b>08</b>电价</a></li>
-              <li><a href="../index.html#renewable"><b>09</b>新能源与并网</a></li>
-              <li><a href="../index.html#storage"><b>10</b>储能与 EMS</a></li>
-              <li><a href="../index.html#park"><b>11</b>综合能源与零碳园区</a></li>
-              <li><a href="../index.html#carbon"><b>12</b>碳市场与碳管理</a></li>
-              <li><a href="../index.html#vpp"><b>13</b>虚拟电厂</a></li>
-              <li><a href="../index.html#index"><b>14</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#intl"><b>03</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>04</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>05</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>06</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>07</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>08</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>09</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>10</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>11</b>索引、查证与工具</a></li>
       </ul>
     </div>
   </aside>
 
   <main class="main" id="main">
     <header class="doc-head">
-      <div class="kicker">15 / RESEARCH<i>调研底稿</i></div>
+      <div class="kicker">12 · RESEARCH<i>调研底稿</i></div>
       <h1 class="doc-title">调研：量化报价与厂商实践（2026-11）</h1>
       <p class="lede">参与侧与运营侧厂商的公开信息、专利与技术路线，提炼设计取舍；不构成厂商评价。</p>
       <p class="hook">2026-11 · 公开信息</p>
@@ -95,33 +102,47 @@
     <article class="prose">
 <aside class="note note-head"><p>目的：为 <code>skills/spot-bidding-quant</code> 的&quot;报价工程与产品化&quot;部分提供公开事实底稿。按<strong>参与侧</strong>（卖给发电/售电的交易决策产品）与<strong>运营/规则侧</strong>（交易中心与电网的出清引擎、技术支持系统）两类整理。全部来自公开渠道，标注来源级别；<strong>企业宣称的效果一律 C 级，不得作为基准</strong>。</p></aside>
 <h2 id="s1">1. 上海路明星光智能科技有限公司（Lumin AI）</h2>
-<div class="table-wrap"><table><thead><tr><th>项目</th><th>内容</th><th>级别/来源</th></tr></thead><tbody><tr><td>主体</td><td>上海路明星光智能科技有限公司，2025-02-19 成立，法定代表人 姬有，注册资本 2089.8884 万元</td><td>B 级：企业工商信息（天眼查/爱企查公开页）</td></tr><tr><td>业务</td><td>面向电力市场参与者，以机器学习做发用两侧现货交易指导；工商范围含发电、输电、供（配）电业务许可</td><td>B 级</td></tr><tr><td>规模</td><td>截至 2025 年底年代理交易电量 &gt;400 亿 kWh，覆盖以华东为主的 8 个省份；技术人员占比 &gt;60%</td><td>C 级：企业对外宣传</td></tr><tr><td>团队</td><td>创始团队来自哥伦比亚大学、哈佛、斯坦福、清华、上海交大等及阿里/腾讯/Google/Meta</td><td>C 级：招聘与媒体材料</td></tr><tr><td>产品线</td><td>火电（日前报价与申报）、新能源（气象/功率/负荷/电价预测 + 策略）、储能与配储（投资建议+改造+运营+运维）、售电（行情/预测/现货/中长期/负荷管理）、用户（电费/能效/交易/碳资产）、VPP（监控-调度-交易-运营）</td><td>C 级：厂商发布稿</td></tr><tr><td>系统</td><td>2026-06 发布 LuminFlex，宣称&quot;气象—功率—负荷—电价—交易&quot;全链路自研预测，支持一键导出交易中心申报文件、减少改单</td><td>C 级</td></tr><tr><td>效果宣称</td><td>价格预测准确率最高优化 30%；安徽市场价差方向正确率约 70%、2026-08 日前申报累计收益 &gt;200 万元、平均 3.61 元/MWh；山东市场准确预测正负电价并捕捉光伏骤降导致的快速上涨</td><td>C 级：媒体报道厂商口径</td></tr><tr><td>储能宣称</td><td>每百 MWh 年增收 &gt;100 万元；全生命周期综合收益提升 10%~15%；配储电站收益提升 15% 以上</td><td>C 级</td></tr><tr><td>合作</td><td>2026-02 与上海电力大学经济与管理学院开展校企合作交流</td><td>B 级：高校官网</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>内容</th><th>级别/来源</th></tr></thead><tbody><tr><td>主体</td><td>上海路明星光智能科技有限公司，2025-02-19 成立，法定代表人 姬有，注册资本 2089.8884 万元</td><td>B 级：企业工商信息（天眼查/爱企查公开页）</td></tr><tr><td>业务</td><td>面向电力市场参与者，以机器学习做发用两侧现货交易指导；工商范围含发电、输电、供（配）电业务许可</td><td>B 级</td></tr><tr><td>规模</td><td>截至 2025 年底年代理交易电量 &gt;400 亿 kWh，覆盖以华东为主的 8 个省份；技术人员占比 &gt;60%</td><td>C 级：企业对外宣传</td></tr><tr><td>团队</td><td>创始团队来自哥伦比亚大学、哈佛、斯坦福、清华、上海交大等及阿里/腾讯/Google/Meta</td><td>C 级：招聘与媒体材料</td></tr><tr><td>产品线</td><td>火电（日前报价与申报）、新能源（气象/功率/负荷/电价预测 + 策略）、储能与配储（投资建议+改造+运营+运维）、售电（行情/预测/现货/中长期/负荷管理）、用户（电费/能效/交易/碳资产）、VPP（监控-调度-交易-运营）</td><td>C 级：厂商发布稿</td></tr><tr><td>系统</td><td>2026-06 发布 LuminFlex，宣称&quot;气象—功率—负荷—电价—交易&quot;全链路自研预测，支持一键导出交易中心申报文件、减少改单</td><td>C 级</td></tr><tr><td>效果宣称</td><td>价格预测准确率最高优化 30%；安徽市场价差方向正确率约 70%、2026-08 日前申报累计收益 &gt;200 万元、平均 3.61 元/MWh；山东市场准确预测正负电价并捕捉光伏骤降导致的快速上涨</td><td>C 级：媒体报道厂商口径</td></tr><tr><td>储能宣称</td><td>每百 MWh 年增收 &gt;100 万元；全生命周期综合收益提升 10%~15%；配储电站收益提升 15% 以上</td><td>C 级</td></tr><tr><td>合作</td><td>2026-02 与上海电力大学经济与管理学院开展校企合作交流</td><td>B 级：高校官网</td></tr></tbody></table></div>
 <p><strong>为什么这些数字不能当基准</strong>：未披露基线模型、样本区间、省份规则版本、方向正确率的步长与死区、是否含考核与偏差成本、储能测算的循环成本与电价样本。引用时只能写&quot;某厂商宣称&quot;，不能写&quot;行业平均&quot;。</p>
 <h2 id="s2">2. 相关公开专利（国家知识产权局）</h2>
-<div class="table-wrap"><table><thead><tr><th>公开号</th><th>名称</th><th>要点</th><th>对本技能的启示</th></tr></thead><tbody><tr><td>CN121278688A</td><td>电力系统的时序数据预测偏差校正方法及系统（2025-12 申请）</td><td>将预测残差分解为时间维度分量（小时、星期）与外生变量分量（温度、辐照、负荷、发电、节假日），建立系统性偏差模型后修正基准预测</td><td>残差校正层应显式区分&quot;时段/星期&quot;与&quot;外生&quot;两类偏差，并对样本稀少的格子做收缩</td></tr><tr><td>CN122760154A</td><td>日前电价预测方法、装置、计算机设备和可读存储介质（2026-07 申请）</td><td>编码器把历史电价与历史可观测数据编码为潜在状态，解码器结合未来可观测数据输出日前价格；强调将物理约束与运行规则纳入模型</td><td>电价预测宜&quot;机理 + 数据&quot;结合；纯序列外推在拐点失效</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>公开号</th><th>名称</th><th>要点</th><th>对本技能的启示</th></tr></thead><tbody><tr><td>CN121278688A</td><td>电力系统的时序数据预测偏差校正方法及系统（2025-12 申请）</td><td>将预测残差分解为时间维度分量（小时、星期）与外生变量分量（温度、辐照、负荷、发电、节假日），建立系统性偏差模型后修正基准预测</td><td>残差校正层应显式区分&quot;时段/星期&quot;与&quot;外生&quot;两类偏差，并对样本稀少的格子做收缩</td></tr><tr><td>CN122760154A</td><td>日前电价预测方法、装置、计算机设备和可读存储介质（2026-07 申请）</td><td>编码器把历史电价与历史可观测数据编码为潜在状态，解码器结合未来可观测数据输出日前价格；强调将物理约束与运行规则纳入模型</td><td>电价预测宜&quot;机理 + 数据&quot;结合；纯序列外推在拐点失效</td></tr></tbody></table></div>
 <h2 id="s3">3. 北京清能互联科技有限公司（运营与规则侧）</h2>
 <p>与路明星光互补：路明星光卖给<strong>参与者</strong>，清能互联服务于<strong>交易中心与电网</strong>（出清引擎、技术支持系统、市场设计）。两类信息拼起来才完整。</p>
-<div class="table-wrap"><table><thead><tr><th>项目</th><th>内容</th><th>级别/来源</th></tr></thead><tbody><tr><td>主体</td><td>北京清能互联科技有限公司，2004 年成立，核心团队源自清华大学电机系</td><td>B 级：工商信息与公开报道</td></tr><tr><td>定位</td><td>电力市场建设、调度优化、能源互联网规划、市场技术支持系统</td><td>B 级</td></tr><tr><td>南方区域</td><td>自 2019 年起参与南方区域电力现货市场出清算法引擎设计与研发，与南网总调合作</td><td>B/C 级：获奖报道，素材由企业提供</td></tr><tr><td>2026-05 中标</td><td>南方区域电力现货市场技术支持系统 19 项功能加装项目，<strong>标包 2「出清算法相关功能加装改造」462 万元</strong>，项目负责人 汪洋；同项目标包 1（平台及应用）由南京南瑞继保 315.8 万元中标，标包 2 最高限价 499.4 万元</td><td>B 级：南方电网供应链统一服务平台中标候选人公示（2026-05-27）</td></tr><tr><td>招标范围</td><td>日前/日内/实时市场的机组组合与经济调度算法功能加装改造；可靠性机组组合（RUC）与日前市场出清的并行/串行计算架构；跨经营区交易的出清计算模型及电价计算模块；出清功能测试验证</td><td>B 级：招标公告（2026-04-08）</td></tr><tr><td>2026-06 中标</td><td>南方区域电力市场交易运行分析及辅助校验系统建设（招标人：广州电力交易中心）</td><td>B 级：中标结果公告（2026-06-03）</td></tr><tr><td>仿真/培训</td><td>面向市场主体的电力市场仿真培训（出清参数可配置）</td><td>C 级：厂商与培训宣传</td></tr><tr><td>待核实</td><td>媒体口径的&quot;20+ 省级市场&quot;&quot;专精特新小巨人&quot;&quot;C 轮融资&quot;等未逐项核验</td><td>—</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>内容</th><th>级别/来源</th></tr></thead><tbody><tr><td>主体</td><td>北京清能互联科技有限公司，2004 年成立，核心团队源自清华大学电机系</td><td>B 级：工商信息与公开报道</td></tr><tr><td>定位</td><td>电力市场建设、调度优化、能源互联网规划、市场技术支持系统</td><td>B 级</td></tr><tr><td>南方区域</td><td>自 2019 年起参与南方区域电力现货市场出清算法引擎设计与研发，与南网总调合作</td><td>B/C 级：获奖报道，素材由企业提供</td></tr><tr><td>2026-05 中标</td><td>南方区域电力现货市场技术支持系统 19 项功能加装项目，<strong>标包 2「出清算法相关功能加装改造」462 万元</strong>，项目负责人 汪洋；同项目标包 1（平台及应用）由南京南瑞继保 315.8 万元中标，标包 2 最高限价 499.4 万元</td><td>B 级：南方电网供应链统一服务平台中标候选人公示（2026-05-27）</td></tr><tr><td>招标范围</td><td>日前/日内/实时市场的机组组合与经济调度算法功能加装改造；可靠性机组组合（RUC）与日前市场出清的并行/串行计算架构；跨经营区交易的出清计算模型及电价计算模块；出清功能测试验证</td><td>B 级：招标公告（2026-04-08）</td></tr><tr><td>2026-06 中标</td><td>南方区域电力市场交易运行分析及辅助校验系统建设（招标人：广州电力交易中心）</td><td>B 级：中标结果公告（2026-06-03）</td></tr><tr><td>仿真/培训</td><td>面向市场主体的电力市场仿真培训（出清参数可配置）</td><td>C 级：厂商与培训宣传</td></tr><tr><td>待核实</td><td>媒体口径的&quot;20+ 省级市场&quot;&quot;专精特新小巨人&quot;&quot;C 轮融资&quot;等未逐项核验</td><td>—</td></tr></tbody></table></div>
 <p><strong>为什么值得记</strong>：它的公开采购记录比任何宣传都更清楚地说明运营侧系统在做什么改造——出清算法按标包单独采购、RUC 与日前的并行/串行架构被单列为改造内容、跨经营区电价计算模块另立。这三件事直接对应参与者最关心的三件不确定：<strong>我未中标会不会被开机、跨省价差怎么形成、规则变了多久生效</strong>。</p>
 <p><strong>必须避免的误读</strong>：南方区域市场的&quot;天权&quot;求解器由南网自研，不能算作清能互联的成果；媒体所称&quot;性能超越国际先进求解器 14%&quot;&quot;7000+ 节点、200 万+ 出清变量&quot;为 C 级媒体口径。</p>
 <h2 id="s4">4. 同期其他厂商专利（对照，说明技术路线不是孤例）</h2>
 <ul><li>昆明电力交易中心：多尺度卷积 + Transformer 编码的多任务价格预测（点预测、方向概率、波动强度）；</li><li>力田科技：年度/月度/日前三级级联价格预测；</li><li>派能科技、海博思创：LSTM Seq2Seq、时序整合的价格预测。</li></ul>
 <p>结论：价格预测的技术路线已趋同（多尺度特征 + 分任务输出 + 偏差校正），<strong>差异化不在模型结构，而在数据工程、规则适配和复盘能力</strong>。这也是本技能把&quot;申报校验—改单—T+1 归因&quot;单列一章的原因。</p>
 <h2 id="s5">5. 对本技能设计的影响</h2>
-<div class="table-wrap"><table><thead><tr><th>采纳</th><th>说明</th></tr></thead><tbody><tr><td>全链路视角</td><td>预测 → 报价 → 申报 → 出清 → 复盘，缺一环无法归因</td></tr><tr><td>残差校正独立成层</td><td>对应 CN121278688A 的两因子结构，代码 <code>forecast.fit_residual_model</code></td></tr><tr><td>方向正确率单列</td><td>厂商口径约 70%，但必须补步长/死区/样本区间三项说明</td></tr><tr><td>申报文件校验与改单留痕</td><td>厂商卖点&quot;减少改单&quot;，反过来说明改单是主要操作风险</td></tr><tr><td>自建 vs 采购判断</td><td>商业系统覆盖全链路，但最后一公里（校验、改单、归因）仍需自建</td></tr><tr><td>生产级引擎与教学仿真的边界</td><td>运营侧的 SCUC/SCED/RUC/联合出清/ATC 决定&quot;什么叫边际、未中标如何补偿&quot;，小仿真只做机制演示（正文 10.4）</td></tr><tr><td>规则参数层与模型层分离</td><td>对应运营侧以&quot;组件化约束&quot;响应规则变化；规则调整只改参数层，不重写模型（正文 10.4 推论 3）</td></tr><tr><td>区分运营侧与参与侧供应商</td><td>参与侧产品的规则层要跟上运营侧系统改造节奏，采购合同需约定规则变更的适配责任（正文 12.4）</td></tr></tbody></table></div>
-<div class="table-wrap"><table><thead><tr><th>不采纳</th><th>原因</th></tr></thead><tbody><tr><td>把厂商效果数字写进正文当基准</td><td>C 级，无基线定义</td></tr><tr><td>复现 encoder-decoder 模型</td><td>与&quot;零依赖标准库&quot;约束冲突；技能给出方法路线与评价协议即可</td></tr><tr><td>任何&quot;提高报价收益 X%&quot;的结论</td><td>无实盘验证条件，属于不可证伪宣称</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>采纳</th><th>说明</th></tr></thead><tbody><tr><td>全链路视角</td><td>预测 → 报价 → 申报 → 出清 → 复盘，缺一环无法归因</td></tr><tr><td>残差校正独立成层</td><td>对应 CN121278688A 的两因子结构，代码 <code>forecast.fit_residual_model</code></td></tr><tr><td>方向正确率单列</td><td>厂商口径约 70%，但必须补步长/死区/样本区间三项说明</td></tr><tr><td>申报文件校验与改单留痕</td><td>厂商卖点&quot;减少改单&quot;，反过来说明改单是主要操作风险</td></tr><tr><td>自建 vs 采购判断</td><td>商业系统覆盖全链路，但最后一公里（校验、改单、归因）仍需自建</td></tr><tr><td>生产级引擎与教学仿真的边界</td><td>运营侧的 SCUC/SCED/RUC/联合出清/ATC 决定&quot;什么叫边际、未中标如何补偿&quot;，小仿真只做机制演示（正文 10.4）</td></tr><tr><td>规则参数层与模型层分离</td><td>对应运营侧以&quot;组件化约束&quot;响应规则变化；规则调整只改参数层，不重写模型（正文 10.4 推论 3）</td></tr><tr><td>区分运营侧与参与侧供应商</td><td>参与侧产品的规则层要跟上运营侧系统改造节奏，采购合同需约定规则变更的适配责任（正文 12.4）</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>不采纳</th><th>原因</th></tr></thead><tbody><tr><td>把厂商效果数字写进正文当基准</td><td>C 级，无基线定义</td></tr><tr><td>复现 encoder-decoder 模型</td><td>与&quot;零依赖标准库&quot;约束冲突；技能给出方法路线与评价协议即可</td></tr><tr><td>任何&quot;提高报价收益 X%&quot;的结论</td><td>无实盘验证条件，属于不可证伪宣称</td></tr></tbody></table></div>
 <h2 id="s6">6. 待核实</h2>
 <ul><li>路明星光宣称的 400 亿 kWh 代理电量与 8 省覆盖，缺少第三方核验，仅企业口径；</li><li>&quot;准确率最高优化 30%&quot;的对比基线未公开，无法判断是相对何种模型；</li><li>安徽 3.61 元/MWh 的平均收益是否扣除偏差考核与考核罚款，未说明；</li><li>清能互联&quot;20+ 省级市场&quot;&quot;专精特新小巨人&quot;&quot;C 轮融资&quot;等为媒体与企业口径，未逐项核验；其在南方区域的具体交付边界（引擎核心算法 / 功能加装 / 运维）未公开；</li><li>南方区域 RUC 与日前&quot;并行/串行&quot;两种架构的实际切换条件，需查交易中心正式规则与技术规范书，本笔记只确认其被列为改造内容；</li><li>各省报价段数、限价、二次限价参数的 2026 年最新值，需逐省核对交易中心规则（见 <code>knowledge/省级市场状态表-2026-11.md</code>）。</li></ul>
     </article>
 
-    <section class="related" aria-label="相关模块">
-      <h2>相关模块</h2>
-      <ul>
-        <li><a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a></li>
-        <li><a href="电力现货市场101问-A-基础与价格机制.html">101 问 A · 基础与价格机制</a></li>
-        <li><a href="储能投资与运营-2026-11.html">储能投资与运营</a></li>
-      </ul>
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>3</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="量化报价与交易风控-工程化-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>量化报价与交易风控</b>
+          <span>预测→报价→申报→结算→归因的工程闭环，含风控限额、对账与 2026 规则版本管理。</span>
+        </a>
+        <a class="related-card" href="电力现货市场101问-A-基础与价格机制.html">
+          <span class="related-type">跨区对照</span>
+          <b>101 问 A · 基础与价格机制</b>
+          <span>第 1–26 问：电力市场定义、现货体系、集中式与分散式、SMP / ZMP / LMP。</span>
+        </a>
+        <a class="related-card" href="储能投资与运营-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>储能投资与运营</b>
+          <span>114/1656/411/1583 文号、容量电价时长折算、投决算例、收入堆叠、退化质保与敏感性。</span>
+        </a>
+      </div>
+
     </section>
+
 
     <nav class="pager" aria-label="上下篇">
           <a class="prev" href="调研-碳市场与CBAM-2026-10增量.html"><span class="dir">← 上一篇</span><span class="ttl">碳市场与 CBAM 2026-10 增量</span></a>
@@ -130,7 +151,11 @@
 
     <footer class="doc-foot">
       <div class="lic">本页由 <a href="../调研-量化报价与厂商实践-2026-11.md">knowledge/调研-量化报价与厂商实践-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
-      <div><a href="../index.html">返回知识库总览 →</a></div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
     </footer>
   </main>
 

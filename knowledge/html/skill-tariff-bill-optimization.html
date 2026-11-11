@@ -19,9 +19,9 @@
 <div class="scrim"></div>
 
 <header class="topbar">
-  <a class="back" href="../index.html">← 知识库</a>
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
   <div class="crumb">
-    <span class="crumb-cat">16 / SKILLS</span>
+    <span class="crumb-cat">04 / SKILLS</span>
     <span class="crumb-sep">/</span>
     <span class="crumb-doc">电价与电费优化</span>
   </div>
@@ -30,8 +30,14 @@
       <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
       <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-    <a class="src" href="skill-tariff-bill-optimization-en.html">English</a>
-    <a class="src" href="../../skills/tariff-bill-optimization/SKILL.md">.md 源文件</a>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../../skills/tariff-bill-optimization/SKILL.md">.md 源文件<small>skills/tariff-bill-optimization/SKILL.md</small></a>
+        <a class="src" href="skill-tariff-bill-optimization-en.html" hreflang="en">English</a>
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
     <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
   </div>
 </header>
@@ -39,7 +45,7 @@
 <div class="shell">
   <aside class="sidebar" id="nav">
     <div class="nav-kicker">当前分类</div>
-    <div class="nav-num">16 / SKILLS</div>
+    <div class="nav-num">04 / SKILLS</div>
     <h2 class="nav-cat"><a href="../index.html#skills">配套技能</a></h2>
     <ul class="nav-list">
               <li><a href="skill-electricity-trading-expert.html">电力交易专家</a></li>
@@ -55,25 +61,25 @@
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
       <ul>
-              <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
-              <li><a href="../index.html#spot"><b>05</b>电力现货与省间交易</a></li>
-              <li><a href="../index.html#intl"><b>06</b>海外市场</a></li>
-              <li><a href="../index.html#cross"><b>07</b>横向专题</a></li>
-              <li><a href="../index.html#price"><b>08</b>电价</a></li>
-              <li><a href="../index.html#renewable"><b>09</b>新能源与并网</a></li>
-              <li><a href="../index.html#storage"><b>10</b>储能与 EMS</a></li>
-              <li><a href="../index.html#park"><b>11</b>综合能源与零碳园区</a></li>
-              <li><a href="../index.html#carbon"><b>12</b>碳市场与碳管理</a></li>
-              <li><a href="../index.html#vpp"><b>13</b>虚拟电厂</a></li>
-              <li><a href="../index.html#index"><b>14</b>索引、查证与工具</a></li>
-              <li><a href="../index.html#research"><b>15</b>调研底稿</a></li>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#intl"><b>03</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>04</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>05</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>06</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>07</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>08</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>09</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>10</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>11</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>12</b>调研底稿</a></li>
       </ul>
     </div>
   </aside>
 
   <main class="main" id="main">
     <header class="doc-head">
-      <div class="kicker">16 / SKILLS<i>技能</i></div>
+      <div class="kicker">04 / SKILLS<i>技能</i></div>
       <h1 class="doc-title">电价与电费优化</h1>
       <p class="lede">账单科目、基本电费、分时与套餐比价</p>
       <p class="hook">可执行流程与配套工具；正文与 SKILL.md 同步。</p>
@@ -111,11 +117,11 @@
 <h3 id="s3">0.2 八条纪律</h3>
 <ol><li><strong>先问四件事</strong>：省份与电网营业区、用户类别与电压等级、价格通道（目录/代理购电/市场化）、账单期间。缺一项就先补问，不跨省套用。</li><li><strong>科目分列</strong>：电能量、输配、基本电费、系统运行费、基金附加、力率、高可靠性供电费、税费分别列出，任何&quot;综合单价&quot;都要说明含了什么。</li><li><strong>容量与电量不混</strong>：基本电费按 kW 或 kVA 计，电度电费按 kWh 计；两者不能相加成一个&quot;容量电价&quot;。</li><li><strong>三种基本电费分开算</strong>：按变压器容量、按合同最大需量、按实际最大需量，同一负荷下结果可能相差两位数百分比。</li><li><strong>力率与需量规则以省为准</strong>：0.9 标准、分档加收/减收、105% 超需、40% 下限、双路进线是否累加，都可能因省而异；默认参数只是演示。</li><li><strong>套餐只比电能量</strong>：零售套餐通常只覆盖电能量，输配、系统运行、基金与基本电费是公共科目，比价时必须同口径加回。</li><li><strong>合成数据标 D 级</strong>：本文算例全部为 D 级合成数据，不对应任何真实用户；引用省级数值必须给文号与时点。</li><li><strong>不承诺收益</strong>：测算给出的是&quot;按当前规则与给定曲线&quot;的结果，政策、负荷、市场价格任一变化都可能推翻结论。</li></ol>
 <h3 id="s4">0.3 知识地图</h3>
-<div class="table-wrap"><table><thead><tr><th>问题</th><th>去哪里</th></tr></thead><tbody><tr><td>电价有哪几个环节、九种价格怎么分</td><td><a href="中国电价制度谱系-2026-11.html">制度谱系 §0–§2</a></td></tr><tr><td>两部制、分时、力率、基金怎么算</td><td><a href="中国电价制度谱系-2026-11.html">制度谱系 §3</a></td></tr><tr><td>本省现行文件与查证入口</td><td><a href="中国电价现行政策与查证-2026-11.html">现行政策与查证 §3–§5</a></td></tr><tr><td>为什么居民电价长期低于工业、2021 年改了什么</td><td><a href="中国电价史-2026-11.html">电价史 §4–§5</a></td></tr><tr><td>国际比较的口径与陷阱</td><td><a href="国际电价比较-方法与模板-2026-11.html">国际电价比较 §2–§5</a></td></tr><tr><td>需量管理对储能收益的影响</td><td><a href="skill-storage-investment-operations.html">储能投资与运营 §4.6</a>、<a href="skill-ems-dispatch.html">EMS 技能 §4</a></td></tr><tr><td>售电套餐定价、批零倒挂、保函与退出</td><td><a href="skill-retail-electricity-risk.html">售电零售与风险技能</a></td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>问题</th><th>去哪里</th></tr></thead><tbody><tr><td>电价有哪几个环节、九种价格怎么分</td><td><a href="中国电价制度谱系-2026-11.html">制度谱系 §0–§2</a></td></tr><tr><td>两部制、分时、力率、基金怎么算</td><td><a href="中国电价制度谱系-2026-11.html">制度谱系 §3</a></td></tr><tr><td>本省现行文件与查证入口</td><td><a href="中国电价现行政策与查证-2026-11.html">现行政策与查证 §3–§5</a></td></tr><tr><td>为什么居民电价长期低于工业、2021 年改了什么</td><td><a href="中国电价史-2026-11.html">电价史 §4–§5</a></td></tr><tr><td>国际比较的口径与陷阱</td><td><a href="国际电价比较-方法与模板-2026-11.html">国际电价比较 §2–§5</a></td></tr><tr><td>需量管理对储能收益的影响</td><td><a href="skill-storage-investment-operations.html">储能投资与运营 §4.6</a>、<a href="skill-ems-dispatch.html">EMS 技能 §4</a></td></tr><tr><td>售电套餐定价、批零倒挂、保函与退出</td><td><a href="skill-retail-electricity-risk.html">售电零售与风险技能</a></td></tr></tbody></table></div>
 <hr>
 <h2 id="s5">1. 归属与边界</h2>
 <h3 id="s6">1.1 与其余技能的分工</h3>
-<div class="table-wrap"><table><thead><tr><th>问题</th><th>归属</th></tr></thead><tbody><tr><td>现货怎么出清、中长期怎么签、偏差怎么结算</td><td>电力交易专家</td></tr><tr><td>明天电池怎么充放、备用够不够</td><td>EMS 优化调度专家</td></tr><tr><td>储能/新能源项目值不值得投、LCOS/IRR</td><td>储能投资与运营、新能源开发与并网</td></tr><tr><td>聚合资源、需求响应怎么参与</td><td>虚拟电厂专家</td></tr><tr><td>售电公司怎么定价、批零倒挂、保函与退出</td><td>售电零售与风险专家</td></tr><tr><td><strong>电费单为什么贵、基本电费怎么选、套餐怎么比</strong></td><td><strong>本技能</strong></td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>问题</th><th>归属</th></tr></thead><tbody><tr><td>现货怎么出清、中长期怎么签、偏差怎么结算</td><td>电力交易专家</td></tr><tr><td>明天电池怎么充放、备用够不够</td><td>EMS 优化调度专家</td></tr><tr><td>储能/新能源项目值不值得投、LCOS/IRR</td><td>储能投资与运营、新能源开发与并网</td></tr><tr><td>聚合资源、需求响应怎么参与</td><td>虚拟电厂专家</td></tr><tr><td>售电公司怎么定价、批零倒挂、保函与退出</td><td>售电零售与风险专家</td></tr><tr><td><strong>电费单为什么贵、基本电费怎么选、套餐怎么比</strong></td><td><strong>本技能</strong></td></tr></tbody></table></div>
 <p>边界一句话：本技能回答&quot;<strong>选哪种价、报多少、账单对不对</strong>&quot;；一旦问题变成&quot;怎么把负荷排到那个时段&quot;，就交给 EMS；一旦问题变成&quot;售电公司怎么定价、怎么控风险&quot;，就交给售电零售与风险技能。</p>
 <h3 id="s7">1.2 适用与不适用</h3>
 <p>适用：</p>
@@ -138,12 +144,12 @@
 <p><strong>线损口径</strong>：线损一般在输配电价中回收，账单不单列；若某省账单出现独立线损科目，按该省文件确认，避免与输配电费重复相加。跨省跨区交易的线损可能单列，按交易规则处理。</p>
 <p><strong>含税口径</strong>：账单到户价一般含增值税；市场化合同、代理购电与零售套餐的报价可能含税也可能不含税，以合同和规则为准。复算或比价前先统一口径，按适用税率换算；基金附加、力率调整与基本电费也按同一口径处理。</p>
 <h3 id="s11">2.2 九种价格</h3>
-<div class="table-wrap"><table><thead><tr><th>#</th><th>价格</th><th>环节</th><th>形成方式</th><th>一句话</th></tr></thead><tbody><tr><td>1</td><td>标杆/基准价</td><td>上网</td><td>政府核定</td><td>燃煤基准价与新能源机制电价的锚</td></tr><tr><td>2</td><td>中长期/现货</td><td>上网</td><td>市场</td><td>电能量价格的主体</td></tr><tr><td>3</td><td>机制电价</td><td>上网</td><td>政府+竞价</td><td>136 号文后新能源的差价合约</td></tr><tr><td>4</td><td>容量电价</td><td>上网</td><td>政府核定</td><td>为可用容量付费，煤电与合规独立储能</td></tr><tr><td>5</td><td>辅助服务</td><td>上网/系统</td><td>市场或核定</td><td>调频、备用、爬坡等</td></tr><tr><td>6</td><td>输配电价</td><td>输配</td><td>政府核定</td><td>按电压等级、电量或容量</td></tr><tr><td>7</td><td>系统运行费</td><td>系统</td><td>分摊</td><td>容量电价、辅助服务、不平衡资金</td></tr><tr><td>8</td><td>销售电价</td><td>销售</td><td>政府/市场</td><td>目录、代理购电、市场化三条通道</td></tr><tr><td>9</td><td>基金及附加</td><td>销售</td><td>政府</td><td>水利、移民、可再生能源附加等</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>#</th><th>价格</th><th>环节</th><th>形成方式</th><th>一句话</th></tr></thead><tbody><tr><td>1</td><td>标杆/基准价</td><td>上网</td><td>政府核定</td><td>燃煤基准价与新能源机制电价的锚</td></tr><tr><td>2</td><td>中长期/现货</td><td>上网</td><td>市场</td><td>电能量价格的主体</td></tr><tr><td>3</td><td>机制电价</td><td>上网</td><td>政府+竞价</td><td>136 号文后新能源的差价合约</td></tr><tr><td>4</td><td>容量电价</td><td>上网</td><td>政府核定</td><td>为可用容量付费，煤电与合规独立储能</td></tr><tr><td>5</td><td>辅助服务</td><td>上网/系统</td><td>市场或核定</td><td>调频、备用、爬坡等</td></tr><tr><td>6</td><td>输配电价</td><td>输配</td><td>政府核定</td><td>按电压等级、电量或容量</td></tr><tr><td>7</td><td>系统运行费</td><td>系统</td><td>分摊</td><td>容量电价、辅助服务、不平衡资金</td></tr><tr><td>8</td><td>销售电价</td><td>销售</td><td>政府/市场</td><td>目录、代理购电、市场化三条通道</td></tr><tr><td>9</td><td>基金及附加</td><td>销售</td><td>政府</td><td>水利、移民、可再生能源附加等</td></tr></tbody></table></div>
 <h3 id="s12">2.3 三个价格通道</h3>
-<div class="table-wrap"><table><thead><tr><th>通道</th><th>电能量价格来源</th><th>适用</th><th>常见误用</th></tr></thead><tbody><tr><td>目录电价</td><td>政府核定</td><td>居民、农业等</td><td>把目录价套到工商业</td></tr><tr><td>代理购电</td><td>电网代理采购，按月测算</td><td>未直接入市用户</td><td>把代理购电价当市场价</td></tr><tr><td>市场化</td><td>中长期、现货、绿电等</td><td>直接入市、售电公司代理</td><td>只比电能量、漏掉公共科目</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>通道</th><th>电能量价格来源</th><th>适用</th><th>常见误用</th></tr></thead><tbody><tr><td>目录电价</td><td>政府核定</td><td>居民、农业等</td><td>把目录价套到工商业</td></tr><tr><td>代理购电</td><td>电网代理采购，按月测算</td><td>未直接入市用户</td><td>把代理购电价当市场价</td></tr><tr><td>市场化</td><td>中长期、现货、绿电等</td><td>直接入市、售电公司代理</td><td>只比电能量、漏掉公共科目</td></tr></tbody></table></div>
 <h3 id="s13">2.4 两部制与基本电费</h3>
 <p>大工业与部分一般工商业执行两部制：<strong>基本电费</strong>按容量或需量计，<strong>电度电费</strong>按电量计。基本电费三种方式：</p>
-<div class="table-wrap"><table><thead><tr><th>方式</th><th>计费基础</th><th>适合</th><th>风险</th></tr></thead><tbody><tr><td>按变压器容量</td><td>变压器容量 kVA</td><td>负荷稳定、利用率高</td><td>报装过大则长期多付</td></tr><tr><td>按合同最大需量</td><td>核定需量 kW</td><td>负荷波动、可管理</td><td>超 105% 部分加倍</td></tr><tr><td>按实际最大需量</td><td>实际最大需量 kW</td><td>波动大、需量可控</td><td>省级规则差异大</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>方式</th><th>计费基础</th><th>适合</th><th>风险</th></tr></thead><tbody><tr><td>按变压器容量</td><td>变压器容量 kVA</td><td>负荷稳定、利用率高</td><td>报装过大则长期多付</td></tr><tr><td>按合同最大需量</td><td>核定需量 kW</td><td>负荷波动、可管理</td><td>超 105% 部分加倍</td></tr><tr><td>按实际最大需量</td><td>实际最大需量 kW</td><td>波动大、需量可控</td><td>省级规则差异大</td></tr></tbody></table></div>
 <p>合同需量公式：</p>
 <pre><code>over = max(实际最大需量 − 1.05 × 核定值, 0)
 基本电费 = 需量电价 × (核定值 + 2 × over)</code></pre>
@@ -158,13 +164,13 @@
 <h3 id="s18">3.1 第一步：读单五问</h3>
 <ol><li>哪个省、哪个电网营业区？</li><li>用户类别与电压等级？</li><li>目录、代理购电还是市场化？</li><li>账单月份与政策生效日是否跨月？</li><li>两部制还单一制？基本电费按什么计？</li></ol>
 <h3 id="s19">3.2 第二步：科目分列</h3>
-<div class="table-wrap"><table><thead><tr><th>科目</th><th>计算口径</th><th>高频问题</th></tr></thead><tbody><tr><td>电能量电费</td><td>分时电量 × 分时价，或中长期 + 现货</td><td>把代理购电价当市场价</td></tr><tr><td>输配电费</td><td>电量 × 电压等级输配电价</td><td>漏掉容量/需量部分</td></tr><tr><td>基本电费</td><td>容量 × 容量价，或需量 × 需量价</td><td>只算电度、不算基本</td></tr><tr><td>系统运行费</td><td>电量 × 系统运行费标准</td><td>与输配电价混为一谈</td></tr><tr><td>基金附加</td><td>电量 × 各附加标准</td><td>用一个数概括全部</td></tr><tr><td>力率调整</td><td>功率因数考核加收/减收</td><td>忽略功率因数</td></tr><tr><td>高可靠性供电费</td><td>按容量或工程投资</td><td>多电源用户漏计</td></tr><tr><td>税费</td><td>增值税等，通常含在价内</td><td>含税/不含税混用</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>科目</th><th>计算口径</th><th>高频问题</th></tr></thead><tbody><tr><td>电能量电费</td><td>分时电量 × 分时价，或中长期 + 现货</td><td>把代理购电价当市场价</td></tr><tr><td>输配电费</td><td>电量 × 电压等级输配电价</td><td>漏掉容量/需量部分</td></tr><tr><td>基本电费</td><td>容量 × 容量价，或需量 × 需量价</td><td>只算电度、不算基本</td></tr><tr><td>系统运行费</td><td>电量 × 系统运行费标准</td><td>与输配电价混为一谈</td></tr><tr><td>基金附加</td><td>电量 × 各附加标准</td><td>用一个数概括全部</td></tr><tr><td>力率调整</td><td>功率因数考核加收/减收</td><td>忽略功率因数</td></tr><tr><td>高可靠性供电费</td><td>按容量或工程投资</td><td>多电源用户漏计</td></tr><tr><td>税费</td><td>增值税等，通常含在价内</td><td>含税/不含税混用</td></tr></tbody></table></div>
 <aside class="note"><p>线损一般不单列，已含在输配电价内；若账单出现独立线损科目，先确认是否为跨省跨区或代购的特殊口径，不要与输配电费重复相加。含税/不含税口径见 §2.1。</p></aside>
 <h3 id="s20">3.3 第三步：复算</h3>
 <p>用 <code>tools/bill.py</code> 的 <code>bill_breakdown</code> 按科目复算，至少核对三件事：</p>
 <ul><li>电量合计与抄表/计量是否一致；</li><li>分时电量与时段划分是否一致；</li><li>基本电费的计费基础（kVA 还是 kW）与申报值是否一致。</li></ul>
 <h3 id="s21">3.4 第四步：找异常</h3>
-<div class="table-wrap"><table><thead><tr><th>异常</th><th>典型表现</th><th>排查</th></tr></thead><tbody><tr><td>基本电费突增</td><td>需量超 105% 或申报值下调过猛</td><td>看最大需量出现日与超限幅度</td></tr><tr><td>力率加收</td><td>无功补偿投切失败、夜间轻载</td><td>看功率因数曲线与电容器状态</td></tr><tr><td>分时电量错位</td><td>时段调整后仍按旧表</td><td>核对政策生效日与计量时段</td></tr><tr><td>基金附加多算</td><td>减免政策未落地</td><td>核对用户类别与减免文件</td></tr><tr><td>代理购电价格异常</td><td>当月分摊项波动</td><td>看代理购电价格公示表</td></tr><tr><td>容量报装过大</td><td>基本电费长期高于需量方式</td><td>做三方式比选</td></tr><tr><td>双路进线重复</td><td>两路分别计费未合并</td><td>核对供电方案与计量点</td></tr><tr><td>退补未入账</td><td>调价月跨期</td><td>核对退补科目与期间</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>异常</th><th>典型表现</th><th>排查</th></tr></thead><tbody><tr><td>基本电费突增</td><td>需量超 105% 或申报值下调过猛</td><td>看最大需量出现日与超限幅度</td></tr><tr><td>力率加收</td><td>无功补偿投切失败、夜间轻载</td><td>看功率因数曲线与电容器状态</td></tr><tr><td>分时电量错位</td><td>时段调整后仍按旧表</td><td>核对政策生效日与计量时段</td></tr><tr><td>基金附加多算</td><td>减免政策未落地</td><td>核对用户类别与减免文件</td></tr><tr><td>代理购电价格异常</td><td>当月分摊项波动</td><td>看代理购电价格公示表</td></tr><tr><td>容量报装过大</td><td>基本电费长期高于需量方式</td><td>做三方式比选</td></tr><tr><td>双路进线重复</td><td>两路分别计费未合并</td><td>核对供电方案与计量点</td></tr><tr><td>退补未入账</td><td>调价月跨期</td><td>核对退补科目与期间</td></tr></tbody></table></div>
 <h3 id="s22">3.5 第五步：比选</h3>
 <p>对同一负荷曲线比较：计费方式（容量/合同需量/实际需量）、申报值、分时套餐、零售套餐、可移负荷方案。比选必须同口径：同一期间、同一公共科目、同一负荷。</p>
 <h3 id="s23">3.6 第六步：申报</h3>
@@ -190,7 +196,7 @@
 <pre><code>D* = max(40% 下限, A / 1.05)，且不超过变压器容量</code></pre>
 <p>直观解释：把申报值定在&quot;实际峰值 ÷ 1.05&quot;，刚好不触发加倍；定得更高是白付，定得更低会触发 2 倍超需。</p>
 <h3 id="s29">4.3 三方式比选</h3>
-<div class="table-wrap"><table><thead><tr><th>场景</th><th>倾向</th></tr></thead><tbody><tr><td>负荷平稳、变压器利用率高（&gt;80%）</td><td>容量计费通常更省</td></tr><tr><td>变压器报装偏大、峰值远低于容量</td><td>合同需量更省</td></tr><tr><td>峰值偶发、可控</td><td>实际最大需量可能更省</td></tr><tr><td>峰值持续增长</td><td>合同需量留 5%–10% 余量，避免频繁超限</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>场景</th><th>倾向</th></tr></thead><tbody><tr><td>负荷平稳、变压器利用率高（&gt;80%）</td><td>容量计费通常更省</td></tr><tr><td>变压器报装偏大、峰值远低于容量</td><td>合同需量更省</td></tr><tr><td>峰值偶发、可控</td><td>实际最大需量可能更省</td></tr><tr><td>峰值持续增长</td><td>合同需量留 5%–10% 余量，避免频繁超限</td></tr></tbody></table></div>
 <h3 id="s30">4.4 报装容量不是越大越好</h3>
 <p>报装容量影响基本电费、可靠性费用与增容投资。工程上要留裕度，费用上要算&quot;多报 1 kVA 的月成本 × 12 × 寿命期&quot;。若负荷可由储能削峰，先算削峰后的最大需量，再决定报装；<strong>不要先报大容量再靠储能省基本电费</strong>，顺序反了会锁死成本。</p>
 <h3 id="s31">4.5 常见错误</h3>
@@ -200,7 +206,7 @@
 <h3 id="s33">5.1 时段表先校验</h3>
 <p>任何分时测算前，先校验时段表：覆盖 0–24 时、无重叠、无缺口、时段名称与价格一一对应。<code>tools/tariff.py</code> 的 <code>validate_periods</code> 会在缺口或重叠时直接报错。</p>
 <p>本文算例的时段表：</p>
-<div class="table-wrap"><table><thead><tr><th>时段</th><th>时间</th><th>小时数</th><th>价格（元/kWh，D 级）</th></tr></thead><tbody><tr><td>谷</td><td>00–08、23–24</td><td>9</td><td>0.30</td></tr><tr><td>平</td><td>08–10、12–18、21–23</td><td>10</td><td>0.62</td></tr><tr><td>峰</td><td>10–12、18–19、20–21</td><td>4</td><td>1.05</td></tr><tr><td>尖</td><td>19–20</td><td>1</td><td>1.26</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>时段</th><th>时间</th><th>小时数</th><th>价格（元/kWh，D 级）</th></tr></thead><tbody><tr><td>谷</td><td>00–08、23–24</td><td>9</td><td>0.30</td></tr><tr><td>平</td><td>08–10、12–18、21–23</td><td>10</td><td>0.62</td></tr><tr><td>峰</td><td>10–12、18–19、20–21</td><td>4</td><td>1.05</td></tr><tr><td>尖</td><td>19–20</td><td>1</td><td>1.26</td></tr></tbody></table></div>
 <h3 id="s34">5.2 分时电费与结构</h3>
 <p>同一负荷曲线，分时电费 = Σ 各时段电量 × 各时段价格。要看三件事：总电费、平均价、各时段电量与电费占比。<strong>平均价相同不代表结构相同</strong>：谷段电量占比高的用户，对峰价上涨更不敏感；峰段占比高的用户，尖峰上浮会放大账单。</p>
 <h3 id="s35">5.3 可移负荷平移</h3>
@@ -228,7 +234,7 @@
 <hr>
 <h2 id="s43">7. 零售套餐与代理购电比价</h2>
 <h3 id="s44">7.1 三种常见套餐</h3>
-<div class="table-wrap"><table><thead><tr><th>套餐</th><th>定价方式</th><th>用户承担的风险</th><th>适合</th></tr></thead><tbody><tr><td>固定价</td><td>全年/季度固定元/kWh</td><td>几乎无价格风险，但含风险溢价</td><td>预算稳定、负荷可预测</td></tr><tr><td>分时价</td><td>峰平谷价格表</td><td>时段结构风险</td><td>负荷与分时时段匹配</td></tr><tr><td>市场联动</td><td>现货/月度均价 × 分成 + 加价，可封顶</td><td>价格波动风险</td><td>能承受波动、追求低均价</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>套餐</th><th>定价方式</th><th>用户承担的风险</th><th>适合</th></tr></thead><tbody><tr><td>固定价</td><td>全年/季度固定元/kWh</td><td>几乎无价格风险，但含风险溢价</td><td>预算稳定、负荷可预测</td></tr><tr><td>分时价</td><td>峰平谷价格表</td><td>时段结构风险</td><td>负荷与分时时段匹配</td></tr><tr><td>市场联动</td><td>现货/月度均价 × 分成 + 加价，可封顶</td><td>价格波动风险</td><td>能承受波动、追求低均价</td></tr></tbody></table></div>
 <h3 id="s45">7.2 比价口径</h3>
 <ol><li>只比<strong>电能量</strong>：输配、系统运行、基金、基本电费是公共科目，另行加回；</li><li>同一负荷曲线、同一年度天数、同一税率；</li><li>市场联动要看<strong>分成比例、加价、封顶/保底</strong>四个参数；</li><li>固定价要问清是否含绿电溢价、是否含偏差考核；</li><li>售电公司信用与履约保函是套餐的一部分，不能只看价格；</li><li>确认含税/不含税与线损口径：套餐报价、输配电价、基金附加是否同口径；线损是否已含在输配或采购价内。</li></ol>
 <h3 id="s46">7.3 情景与盈亏平衡</h3>
@@ -242,34 +248,34 @@
 <aside class="note"><p>复现：<code>python skills/tariff-bill-optimization/tools/selftest.py</code>（用例 A–H）。全部为 D 级合成数据，不对应任何真实用户或省份；正式测算必须替换为本省文件与真实账单。</p></aside>
 <h3 id="s50">8.1 账单复算</h3>
 <p>某 10 kV 工商业用户，月用电 200 MWh，合同最大需量 1,000 kW，需量电价 40 元/kW·月，电能量 0.42 元/kWh，输配 0.15 元/kWh，系统运行费 0.068 元/kWh，基金附加 0.02 元/kWh：</p>
-<div class="table-wrap"><table><thead><tr><th>项目</th><th>计算</th><th>金额</th></tr></thead><tbody><tr><td>电能量电费</td><td>200,000 × 0.42</td><td>84,000.00</td></tr><tr><td>输配电费</td><td>200,000 × 0.15</td><td>30,000.00</td></tr><tr><td>系统运行费</td><td>200,000 × 0.068</td><td>13,600.00</td></tr><tr><td>基金附加</td><td>200,000 × 0.02</td><td>4,000.00</td></tr><tr><td>基本电费</td><td>1,000 × 40</td><td>40,000.00</td></tr><tr><td>合计</td><td>—</td><td>171,600.00</td></tr><tr><td>折合度电</td><td>171,600 ÷ 200,000</td><td>0.858</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>计算</th><th>金额</th></tr></thead><tbody><tr><td>电能量电费</td><td>200,000 × 0.42</td><td>84,000.00</td></tr><tr><td>输配电费</td><td>200,000 × 0.15</td><td>30,000.00</td></tr><tr><td>系统运行费</td><td>200,000 × 0.068</td><td>13,600.00</td></tr><tr><td>基金附加</td><td>200,000 × 0.02</td><td>4,000.00</td></tr><tr><td>基本电费</td><td>1,000 × 40</td><td>40,000.00</td></tr><tr><td>合计</td><td>—</td><td>171,600.00</td></tr><tr><td>折合度电</td><td>171,600 ÷ 200,000</td><td>0.858</td></tr></tbody></table></div>
 <p>电能量只占 <strong>48.95%</strong>，输配、系统运行、基金与基本电费合计 <strong>51.05%</strong>。只盯电能量价格做决策，会低估基本电费与公共科目的影响。</p>
 <h3 id="s51">8.2 三种基本电费方式</h3>
 <p>某用户变压器 1,600 kVA，月最大需量 1,150 kW；容量电价 32 元/kVA·月，需量电价 40 元/kW·月：</p>
-<div class="table-wrap"><table><thead><tr><th>方式</th><th>计费基础</th><th>月基本电费</th></tr></thead><tbody><tr><td>按容量</td><td>1,600 kVA × 32</td><td>51,200.00</td></tr><tr><td>按合同需量（申报 1,095.24 kW）</td><td>1,150 ÷ 1.05</td><td>43,809.52</td></tr><tr><td>按实际最大需量</td><td>1,150 kW × 40</td><td>46,000.00</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>方式</th><th>计费基础</th><th>月基本电费</th></tr></thead><tbody><tr><td>按容量</td><td>1,600 kVA × 32</td><td>51,200.00</td></tr><tr><td>按合同需量（申报 1,095.24 kW）</td><td>1,150 ÷ 1.05</td><td>43,809.52</td></tr><tr><td>按实际最大需量</td><td>1,150 kW × 40</td><td>46,000.00</td></tr></tbody></table></div>
 <p>合同需量最省，比容量计费少 <strong>7,390.48 元/月</strong>。申报值 1,095.24 kW 正好让实际峰值落在 105% 线内，不触发加倍；申报 1,000 kW 则 <code>over = 100 kW</code>，基本电费变成 40 × (1,000 + 200) = 48,000 元，反而更贵。</p>
 <h3 id="s52">8.3 全年申报优化</h3>
 <p>同一用户 12 个月的月最大需量按季节系数缩放，峰值出现在 8 月（1,311 kW）：</p>
-<div class="table-wrap"><table><thead><tr><th>方式</th><th>年基本电费</th></tr></thead><tbody><tr><td>按容量</td><td>614,400.00</td></tr><tr><td>按月优化合同需量</td><td>500,304.76</td></tr><tr><td>按实际最大需量</td><td>525,320.00</td></tr><tr><td>按最大月峰值 1,311 kW 全年申报</td><td>629,280.00</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>方式</th><th>年基本电费</th></tr></thead><tbody><tr><td>按容量</td><td>614,400.00</td></tr><tr><td>按月优化合同需量</td><td>500,304.76</td></tr><tr><td>按实际最大需量</td><td>525,320.00</td></tr><tr><td>按最大月峰值 1,311 kW 全年申报</td><td>629,280.00</td></tr></tbody></table></div>
 <p>按月优化比&quot;按最大月一刀切&quot;少付 <strong>128,975.24 元/年</strong>。关键不是公式复杂，而是<strong>每月按当月峰值重算申报值</strong>；多数用户一年只调一次，浪费就在这里。</p>
 <h3 id="s53">8.4 力率调整</h3>
 <p>同一用户电度侧小计 131,600 元（电能量 + 输配 + 系统运行 + 基金）：</p>
-<div class="table-wrap"><table><thead><tr><th>功率因数</th><th>调整比例</th><th>调整金额</th></tr></thead><tbody><tr><td>0.85</td><td>+2.5%</td><td>+3,290.00</td></tr><tr><td>0.92</td><td>−0.3%</td><td>−394.80</td></tr><tr><td>差额</td><td>—</td><td>3,684.80</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>功率因数</th><th>调整比例</th><th>调整金额</th></tr></thead><tbody><tr><td>0.85</td><td>+2.5%</td><td>+3,290.00</td></tr><tr><td>0.92</td><td>−0.3%</td><td>−394.80</td></tr><tr><td>差额</td><td>—</td><td>3,684.80</td></tr></tbody></table></div>
 <p>仅功率因数从 0.85 提到 0.92，月电费就差 <strong>3,684.80 元</strong>，年化约 4.4 万元。应先查无功补偿投切与夜间轻载，再谈电价套餐。</p>
 <h3 id="s54">8.5 零售套餐比价</h3>
 <p>年用电 6,702,688.50 kWh，同一负荷曲线下比较三种套餐（只比电能量）：</p>
-<div class="table-wrap"><table><thead><tr><th>套餐</th><th>年电能量费用</th><th>平均价（元/kWh）</th></tr></thead><tbody><tr><td>固定价 0.60</td><td>4,021,613.10</td><td>0.6000</td></tr><tr><td>分时套餐</td><td>4,509,570.56</td><td>0.6728</td></tr><tr><td>市场联动（100% 传导 + 0.05）</td><td>3,681,791.55</td><td>0.5493</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>套餐</th><th>年电能量费用</th><th>平均价（元/kWh）</th></tr></thead><tbody><tr><td>固定价 0.60</td><td>4,021,613.10</td><td>0.6000</td></tr><tr><td>分时套餐</td><td>4,509,570.56</td><td>0.6728</td></tr><tr><td>市场联动（100% 传导 + 0.05）</td><td>3,681,791.55</td><td>0.5493</td></tr></tbody></table></div>
 <p>基准情景下市场联动比固定价省 <strong>339,821.55 元/年</strong>，但把市场价整体上浮 20% 后，联动账单升到 <strong>4,351,122.98 元</strong>，反而比固定价多 <strong>329,509.88 元</strong>；下浮 20% 时降到 <strong>3,012,460.13 元</strong>。联动的盈亏平衡点约为市场价上涨 <strong>10.15%</strong>——这个阈值比&quot;哪个更便宜&quot;更重要。</p>
 <h3 id="s55">8.6 可移负荷平移</h3>
 <p>某工业日负荷 19,275 kWh、日电费 12,968.225 元，峰段电量占 21.78%。把 1,600 kWh 从峰段移到谷段（最大功率 1,300 kW）：</p>
-<div class="table-wrap"><table><thead><tr><th>指标</th><th>平移前</th><th>平移后</th></tr></thead><tbody><tr><td>日电费</td><td>12,968.225</td><td>11,768.225</td></tr><tr><td>日节省</td><td>—</td><td>1,200.00</td></tr><tr><td>年化节省（365 天）</td><td>—</td><td>438,000.00</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>平移前</th><th>平移后</th></tr></thead><tbody><tr><td>日电费</td><td>12,968.225</td><td>11,768.225</td></tr><tr><td>日节省</td><td>—</td><td>1,200.00</td></tr><tr><td>年化节省（365 天）</td><td>—</td><td>438,000.00</td></tr></tbody></table></div>
 <p>单位收益 = 1.05 − 0.30 = 0.75 元/kWh。若工艺只能移 800 kWh，收益等比例减半；若平移抬高最大需量，还要扣掉基本电费的增量。</p>
 <h3 id="s56">8.7 读法</h3>
 <ul><li>账单先拆科目，再谈优化：基本电费、力率、公共科目往往比电能量单价更有空间；</li><li>基本电费的解是&quot;申报值 ÷ 1.05&quot;的闭式解，难点在每月重算与负荷预测；</li><li>套餐比价必须同口径、同曲线、带情景；基准情景的排名可能在 ±20% 内翻转；</li><li>负荷平移的收益 = 价差 × 电量，但要先过工艺、功率与需量三关；</li><li>所有数字都是 D 级合成数据，不能直接用于真实用户。</li></ul>
 <hr>
 <h2 id="s57">9. 申报与变更操作</h2>
 <h3 id="s58">9.1 时间窗口</h3>
-<div class="table-wrap"><table><thead><tr><th>事项</th><th>常见提前期</th><th>备注</th></tr></thead><tbody><tr><td>合同需量变更</td><td>5 个工作日</td><td>按月申请，次月生效</td></tr><tr><td>计费方式变更</td><td>15 个工作日</td><td>按季申请，部分省限制次数</td></tr><tr><td>报装增容</td><td>按供电方案</td><td>涉及设计、施工与验收</td></tr><tr><td>代理购电退出/进入</td><td>按省级规则</td><td>与市场化合同衔接</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>事项</th><th>常见提前期</th><th>备注</th></tr></thead><tbody><tr><td>合同需量变更</td><td>5 个工作日</td><td>按月申请，次月生效</td></tr><tr><td>计费方式变更</td><td>15 个工作日</td><td>按季申请，部分省限制次数</td></tr><tr><td>报装增容</td><td>按供电方案</td><td>涉及设计、施工与验收</td></tr><tr><td>代理购电退出/进入</td><td>按省级规则</td><td>与市场化合同衔接</td></tr></tbody></table></div>
 <p>时限与变更次数以本省实施细则为准；上表是常见口径，不是全国统一法定期限。</p>
 <h3 id="s59">9.2 材料与口径</h3>
 <ul><li>申请书、营业执照、用电户号；</li><li>近 3–12 个月最大需量与负荷曲线；</li><li>变压器与高压电动机容量清单（用于 40% 下限）；</li><li>双路进线的供电方案与计量点；</li><li>计费方式变更的理由与测算表。</li></ul>
@@ -278,14 +284,14 @@
 <hr>
 <h2 id="s61">10. 工程复核清单</h2>
 <h3 id="s62">10.1 P0：影响正确性</h3>
-<div class="table-wrap"><table><thead><tr><th>检查项</th><th>通过标准</th></tr></thead><tbody><tr><td>省份与营业区</td><td>电价、时段、力率均来自本省文件</td></tr><tr><td>电压等级与用户类别</td><td>与账单一致</td></tr><tr><td>价格通道</td><td>目录/代理购电/市场化不混用</td></tr><tr><td>账单期间</td><td>政策生效日与调价月已处理</td></tr><tr><td>单位</td><td>kVA、kW、kWh、元/kWh 不混</td></tr><tr><td>基本电费基础</td><td>容量或需量，申报值可追溯</td></tr><tr><td>105% 与 40% 下限</td><td>规则与省级一致</td></tr><tr><td>分时时段</td><td>覆盖 24 h、无重叠、与政策一致</td></tr><tr><td>力率基数</td><td>与省级考核口径一致</td></tr><tr><td>双路进线</td><td>分别计算或合并，按规则</td></tr><tr><td>套餐口径</td><td>只比电能量，公共科目另加</td></tr><tr><td>线损口径</td><td>已含在输配电价内，未重复加收</td></tr><tr><td>含税/不含税</td><td>含税/不含税已统一，税率与发票类型已核对</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>检查项</th><th>通过标准</th></tr></thead><tbody><tr><td>省份与营业区</td><td>电价、时段、力率均来自本省文件</td></tr><tr><td>电压等级与用户类别</td><td>与账单一致</td></tr><tr><td>价格通道</td><td>目录/代理购电/市场化不混用</td></tr><tr><td>账单期间</td><td>政策生效日与调价月已处理</td></tr><tr><td>单位</td><td>kVA、kW、kWh、元/kWh 不混</td></tr><tr><td>基本电费基础</td><td>容量或需量，申报值可追溯</td></tr><tr><td>105% 与 40% 下限</td><td>规则与省级一致</td></tr><tr><td>分时时段</td><td>覆盖 24 h、无重叠、与政策一致</td></tr><tr><td>力率基数</td><td>与省级考核口径一致</td></tr><tr><td>双路进线</td><td>分别计算或合并，按规则</td></tr><tr><td>套餐口径</td><td>只比电能量，公共科目另加</td></tr><tr><td>线损口径</td><td>已含在输配电价内，未重复加收</td></tr><tr><td>含税/不含税</td><td>含税/不含税已统一，税率与发票类型已核对</td></tr></tbody></table></div>
 <h3 id="s63">10.2 P1：影响可维护性</h3>
-<div class="table-wrap"><table><thead><tr><th>检查项</th><th>通过标准</th></tr></thead><tbody><tr><td>参数外置</td><td>价格、时段、考核标准不硬编码</td></tr><tr><td>版本管理</td><td>每次测算保存政策版本与输入快照</td></tr><tr><td>情景分析</td><td>至少高/中/低三档</td></tr><tr><td>可复现</td><td>同样输入得到同样账单</td></tr><tr><td>审计线索</td><td>每个数字能追到账单或文件</td></tr><tr><td>申报台账</td><td>申报值、生效月、回执齐全</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>检查项</th><th>通过标准</th></tr></thead><tbody><tr><td>参数外置</td><td>价格、时段、考核标准不硬编码</td></tr><tr><td>版本管理</td><td>每次测算保存政策版本与输入快照</td></tr><tr><td>情景分析</td><td>至少高/中/低三档</td></tr><tr><td>可复现</td><td>同样输入得到同样账单</td></tr><tr><td>审计线索</td><td>每个数字能追到账单或文件</td></tr><tr><td>申报台账</td><td>申报值、生效月、回执齐全</td></tr></tbody></table></div>
 <h3 id="s64">10.3 红线</h3>
 <ul><li>不把未生效或征求意见的规则写成已执行；</li><li>不用外省价格表替代本省；</li><li>不隐瞒基本电费与考核项，只报电能量&quot;低价&quot;；</li><li>不替用户承诺&quot;一定省多少钱&quot;；</li><li>不篡改负荷与需量数据。</li></ul>
 <hr>
 <h2 id="s65">11. 代码映射与自测</h2>
-<div class="table-wrap"><table><thead><tr><th>文件</th><th>作用</th></tr></thead><tbody><tr><td><code>tools/bill.py</code></td><td>账单科目、基本电费三方式、力率调整</td></tr><tr><td><code>tools/tariff.py</code></td><td>时段表校验、分时电费、负荷平移</td></tr><tr><td><code>tools/demand.py</code></td><td>最优申报值、三方式比选、年度优化</td></tr><tr><td><code>tools/retail.py</code></td><td>固定价/分时/市场联动套餐比价</td></tr><tr><td><code>tools/curves.py</code></td><td>合成负荷、分时电价与市场曲线</td></tr><tr><td><code>tools/selftest.py</code></td><td>锁定正文 A–H 全部算例</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>文件</th><th>作用</th></tr></thead><tbody><tr><td><code>tools/bill.py</code></td><td>账单科目、基本电费三方式、力率调整</td></tr><tr><td><code>tools/tariff.py</code></td><td>时段表校验、分时电费、负荷平移</td></tr><tr><td><code>tools/demand.py</code></td><td>最优申报值、三方式比选、年度优化</td></tr><tr><td><code>tools/retail.py</code></td><td>固定价/分时/市场联动套餐比价</td></tr><tr><td><code>tools/curves.py</code></td><td>合成负荷、分时电价与市场曲线</td></tr><tr><td><code>tools/selftest.py</code></td><td>锁定正文 A–H 全部算例</td></tr></tbody></table></div>
 <p>运行：</p>
 <pre><code>python skills/tariff-bill-optimization/tools/selftest.py</code></pre>
 <p>自测通过代表正文算例与代码一致；政策参数变化时，先改 <code>curves.py</code> 或调用参数，再同步正文数字。</p>
@@ -304,14 +310,36 @@
 <hr>
 <h2 id="s67">13. 来源与维护</h2>
 <h3 id="s68">13.1 主要来源</h3>
-<div class="table-wrap"><table><thead><tr><th>类型</th><th>内容</th></tr></thead><tbody><tr><td>知识底稿</td><td><a href="中国电价制度谱系-2026-11.html">电价制度谱系</a>、<a href="中国电价现行政策与查证-2026-11.html">现行政策与查证</a>、<a href="中国电价史-2026-11.html">电价史</a>、<a href="国际电价比较-方法与模板-2026-11.html">国际电价比较</a></td></tr><tr><td>政策原文</td><td>发改委价格司、省级发改委/能源局、电网代理购电公示；文号与链接见政策列表</td></tr><tr><td>省级样本</td><td><a href="省级市场状态表-2026-11.html">省级市场状态表</a>、<a href="省级政策列表-2026-11.html">省级政策列表</a>（B/C 级，待核实）</td></tr><tr><td>算例</td><td>全部为 D 级合成数据，由 <code>tools/curves.py</code> 生成</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>类型</th><th>内容</th></tr></thead><tbody><tr><td>知识底稿</td><td><a href="中国电价制度谱系-2026-11.html">电价制度谱系</a>、<a href="中国电价现行政策与查证-2026-11.html">现行政策与查证</a>、<a href="中国电价史-2026-11.html">电价史</a>、<a href="国际电价比较-方法与模板-2026-11.html">国际电价比较</a></td></tr><tr><td>政策原文</td><td>发改委价格司、省级发改委/能源局、电网代理购电公示；文号与链接见政策列表</td></tr><tr><td>省级样本</td><td><a href="省级市场状态表-2026-11.html">省级市场状态表</a>、<a href="省级政策列表-2026-11.html">省级政策列表</a>（B/C 级，待核实）</td></tr><tr><td>算例</td><td>全部为 D 级合成数据，由 <code>tools/curves.py</code> 生成</td></tr></tbody></table></div>
 <h3 id="s69">13.2 维护规则</h3>
 <ul><li>电价、时段、力率、基金任一变化，先改知识底稿，再改 <code>tools/</code> 参数与 <code>selftest.py</code>，最后同步本技能中英正文；</li><li>省级数值必须带文号、生效日与来源级别；</li><li>征求意见稿不得写成已执行；</li><li>每季度复核一次省级样本与代理购电价格；每月 P0 复核与知识库同步。</li></ul>
 <h3 id="s70">13.3 免责声明</h3>
 <p>本文与工具只做测算演示，不构成投资建议、报价承诺或法律意见。真实用户的电费优化必须使用本省最新文件、真实账单与负荷数据，并由具备资质的专业人员复核。</p>
     </article>
 
-    
+
+
+<section class="related" aria-labelledby="skill-modules-title">
+      <div class="related-head"><h2 id="skill-modules-title">适用知识模块</h2><span>3</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="中国电价制度谱系-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>中国电价制度谱系</b>
+          <span>把电价拆成上网、输配、销售三环节，列清九种价格、两部制与账单拆解。</span>
+        </a>
+        <a class="related-card" href="中国电价现行政策与查证-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>中国电价现行政策与查证</b>
+          <span>14 份现行文件总表、2026 年四条主线、电费计算链、两部制/力率算例与省级差异矩阵。</span>
+        </a>
+        <a class="related-card" href="中国电价史-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>中国电价史</b>
+          <span>五个阶段回答谁定价、按什么形式定价、成本怎么疏导、留下什么问题。</span>
+        </a>
+      </div>
+
+    </section>
 
     <nav class="pager" aria-label="上下篇">
           <a class="prev" href="skill-ems-dispatch.html"><span class="dir">← 上一篇</span><span class="ttl">EMS 优化调度</span></a>
@@ -320,7 +348,11 @@
 
     <footer class="doc-foot">
       <div class="lic">本页由 <a href="../../skills/tariff-bill-optimization/SKILL.md">skills/tariff-bill-optimization/SKILL.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
-      <div><a href="../index.html">返回知识库总览 →</a></div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
     </footer>
   </main>
 
@@ -397,7 +429,7 @@
             <li class="lv3"><a href="#s68">13.1 主要来源</a></li>
             <li class="lv3"><a href="#s69">13.2 维护规则</a></li>
             <li class="lv3"><a href="#s70">13.3 免责声明</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="56">展开 56 个小节</button>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="56" data-more-label="展开 56 个小节" data-less-label="收起小节">展开 56 个小节</button>
   </aside>
 </div>
 

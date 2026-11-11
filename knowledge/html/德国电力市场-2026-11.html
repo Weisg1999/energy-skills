@@ -19,9 +19,9 @@
 <div class="scrim"></div>
 
 <header class="topbar">
-  <a class="back" href="../index.html">← 知识库</a>
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
   <div class="crumb">
-    <span class="crumb-cat">06 / GLOBAL</span>
+    <span class="crumb-cat">03 · GLOBAL</span>
     <span class="crumb-sep">/</span>
     <span class="crumb-doc">德国电力市场（2026 版）</span>
   </div>
@@ -30,7 +30,14 @@
       <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
       <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-    <a class="src" href="../德国电力市场-2026-11.md">.md 源文件</a>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../德国电力市场-2026-11.md">.md 源文件<small>knowledge/德国电力市场-2026-11.md</small></a>
+
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
     <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
   </div>
 </header>
@@ -38,7 +45,7 @@
 <div class="shell">
   <aside class="sidebar" id="nav">
     <div class="nav-kicker">当前分类</div>
-    <div class="nav-num">06 / GLOBAL</div>
+    <div class="nav-num">03 · GLOBAL</div>
     <h2 class="nav-cat"><a href="../index.html#intl">海外市场</a></h2>
     <ul class="nav-list">
               <li><a href="澳大利亚NEM电力市场-2026-11.html">澳大利亚 NEM 电力市场（2026 版）</a></li>
@@ -57,24 +64,24 @@
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
       <ul>
-              <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
-              <li><a href="../index.html#spot"><b>05</b>电力现货与省间交易</a></li>
-              <li><a href="../index.html#cross"><b>07</b>横向专题</a></li>
-              <li><a href="../index.html#price"><b>08</b>电价</a></li>
-              <li><a href="../index.html#renewable"><b>09</b>新能源与并网</a></li>
-              <li><a href="../index.html#storage"><b>10</b>储能与 EMS</a></li>
-              <li><a href="../index.html#park"><b>11</b>综合能源与零碳园区</a></li>
-              <li><a href="../index.html#carbon"><b>12</b>碳市场与碳管理</a></li>
-              <li><a href="../index.html#vpp"><b>13</b>虚拟电厂</a></li>
-              <li><a href="../index.html#index"><b>14</b>索引、查证与工具</a></li>
-              <li><a href="../index.html#research"><b>15</b>调研底稿</a></li>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#cross"><b>04</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>05</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>06</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>07</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>08</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>09</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>10</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>11</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>12</b>调研底稿</a></li>
       </ul>
     </div>
   </aside>
 
   <main class="main" id="main">
     <header class="doc-head">
-      <div class="kicker">06 / GLOBAL<i>知识模块</i></div>
+      <div class="kicker">03 · GLOBAL<i>知识模块</i></div>
       <h1 class="doc-title">德国电力市场：DE-LU 报价区、EPEX 交易与平衡市场实务（2026-11）</h1>
       <p class="lede">DE-LU 报价区、EPEX 日前/日内 15 分钟、平衡市场、再调度 2.0、EEG 负价规则与容量机制。</p>
       <p class="hook">2026-11 · DE-LU 与欧盟耦合</p>
@@ -122,17 +129,17 @@
 └─ 监管：BNetzA；政策：BMWK；欧盟：ACER/ENTSO-E</code></pre>
 <ul><li><strong>德国不是一个“孤立市场”</strong>：DE-LU 价格由欧盟日前耦合决定，跨境容量、邻国供需、EU ETS 都会进入价格。</li><li><strong>日前和日内是两套机制</strong>：日前是拍卖、统一价（pay-as-clear）；日内连续交易是撮合、成交价（pay-as-bid）。</li><li><strong>15 分钟是新的基本粒度</strong>：2025-10-01 起 SDAC 在多数报价区引入 15 分钟 MTU；德国日前/日内均有 15 分钟产品。</li><li><strong>平衡市场不是“辅助服务打包”</strong>：FCR、aFRR、mFRR 分开采购，容量与能量分开报价，规则和平台各不相同。</li><li><strong>再调度不是现货</strong>：Redispatch 2.0 是电网运营商为消除阻塞进行的干预，按监管规则补偿，不走 EPEX 出清。</li></ul>
 <h3 id="s3">0.2 关键数字</h3>
-<div class="table-wrap"><table><thead><tr><th>数字</th><th>含义</th><th>级别</th></tr></thead><tbody><tr><td>DE-LU</td><td>德国—卢森堡报价区</td><td>A</td></tr><tr><td>12:00 CET</td><td>EPEX 日前拍卖关闸（冬令时；夏令时为 CEST）</td><td>A</td></tr><tr><td>15 分钟</td><td>日前/日内 MTU；2025-10-01 起 SDAC 多数区域</td><td>A</td></tr><tr><td>-500 €/MWh</td><td>SDAC 日前最低价</td><td>A</td></tr><tr><td>-9,999 €/MWh</td><td>SIDC 日内最低价</td><td>A</td></tr><tr><td>27 / 25</td><td>SDAC / SIDC 参与国家数量（EPEX 口径）</td><td>A</td></tr><tr><td>4 小时</td><td>FCR/aFRR/mFRR 容量产品长度</td><td>A</td></tr><tr><td>1 MW</td><td>平衡市场最小报价单位</td><td>A</td></tr><tr><td>2021-10-01</td><td>Redispatch 2.0 适用起始日</td><td>A</td></tr><tr><td>100 kW</td><td>Redispatch 2.0 覆盖的机组门槛</td><td>A</td></tr><tr><td>2022-07-01</td><td>EEG 附加费降为零的起始日</td><td>A</td></tr><tr><td>2031</td><td>容量机制开始生效的年份</td><td>A</td></tr><tr><td>€15.6–35.2bn</td><td>容量机制预计成本区间</td><td>B</td></tr><tr><td>301 小时</td><td>2023 年德国负电价小时数（BNetzA/SMARD 口径）</td><td>A</td></tr><tr><td>457 小时</td><td>2024 年德国负电价小时数（BNetzA/SMARD 口径）</td><td>A</td></tr><tr><td>573 小时</td><td>2025 年德国负电价小时数（BNetzA/SMARD 口径）</td><td>A</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>数字</th><th>含义</th><th>级别</th></tr></thead><tbody><tr><td>DE-LU</td><td>德国—卢森堡报价区</td><td>A</td></tr><tr><td>12:00 CET</td><td>EPEX 日前拍卖关闸（冬令时；夏令时为 CEST）</td><td>A</td></tr><tr><td>15 分钟</td><td>日前/日内 MTU；2025-10-01 起 SDAC 多数区域</td><td>A</td></tr><tr><td>-500 €/MWh</td><td>SDAC 日前最低价</td><td>A</td></tr><tr><td>-9,999 €/MWh</td><td>SIDC 日内最低价</td><td>A</td></tr><tr><td>27 / 25</td><td>SDAC / SIDC 参与国家数量（EPEX 口径）</td><td>A</td></tr><tr><td>4 小时</td><td>FCR/aFRR/mFRR 容量产品长度</td><td>A</td></tr><tr><td>1 MW</td><td>平衡市场最小报价单位</td><td>A</td></tr><tr><td>2021-10-01</td><td>Redispatch 2.0 适用起始日</td><td>A</td></tr><tr><td>100 kW</td><td>Redispatch 2.0 覆盖的机组门槛</td><td>A</td></tr><tr><td>2022-07-01</td><td>EEG 附加费降为零的起始日</td><td>A</td></tr><tr><td>2031</td><td>容量机制开始生效的年份</td><td>A</td></tr><tr><td>€15.6–35.2bn</td><td>容量机制预计成本区间</td><td>B</td></tr><tr><td>301 小时</td><td>2023 年德国负电价小时数（BNetzA/SMARD 口径）</td><td>A</td></tr><tr><td>457 小时</td><td>2024 年德国负电价小时数（BNetzA/SMARD 口径）</td><td>A</td></tr><tr><td>573 小时</td><td>2025 年德国负电价小时数（BNetzA/SMARD 口径）</td><td>A</td></tr></tbody></table></div>
 <aside class="note"><p>价格单位：EPEX 电力现货以 €/MWh 报价；日前与日内的价格上下限不同，不能混用。容量机制成本区间来自欧盟批准文件/转引，具体以官方新闻稿和 StromVKG 为准。</p></aside>
 <h3 id="s4">0.3 德国市场的三层结构</h3>
-<div class="table-wrap"><table><thead><tr><th>层级</th><th>内容</th><th>谁负责</th><th>交易含义</th></tr></thead><tbody><tr><td>欧盟耦合层</td><td>SDAC 日前耦合、SIDC 日内耦合、跨境容量</td><td>ENTSO-E/ACER/NEMO/TSO</td><td>德国价格受邻国供需和互联容量影响</td></tr><tr><td>国家市场层</td><td>EPEX 日前/日内、平衡市场、再调度</td><td>EPEX/TSO/BNetzA</td><td>报价、结算、平衡责任在这里</td></tr><tr><td>政策支持层</td><td>EEG、KWKG、§14a、容量机制</td><td>BMWK/BNetzA/TSO</td><td>改变项目收益和用户成本</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>层级</th><th>内容</th><th>谁负责</th><th>交易含义</th></tr></thead><tbody><tr><td>欧盟耦合层</td><td>SDAC 日前耦合、SIDC 日内耦合、跨境容量</td><td>ENTSO-E/ACER/NEMO/TSO</td><td>德国价格受邻国供需和互联容量影响</td></tr><tr><td>国家市场层</td><td>EPEX 日前/日内、平衡市场、再调度</td><td>EPEX/TSO/BNetzA</td><td>报价、结算、平衡责任在这里</td></tr><tr><td>政策支持层</td><td>EEG、KWKG、§14a、容量机制</td><td>BMWK/BNetzA/TSO</td><td>改变项目收益和用户成本</td></tr></tbody></table></div>
 <ul><li><strong>欧盟层决定“价格边界”</strong>：跨境容量紧张时，德国价格可以和邻国脱钩；不要只看德国境内供需。</li><li><strong>国家层决定“怎么交易”</strong>：EPEX 产品、平衡市场规则、再调度补偿都是德国/欧盟规则的具体落地。</li><li><strong>政策层决定“谁赚钱”</strong>：EEG 溢价、电网费减免、容量机制，会改变储能/可调机组的商业模式。</li></ul>
 <h3 id="s5">0.4 一句话记住</h3>
 <aside class="note"><p>德国市场用“欧盟耦合的日前价 + 连续的日内价 + 分开采购的平衡容量/能量 + 再调度”处理高新能源渗透；真正难的不是下单，而是把 EEG、电网费、平衡责任和跨境容量算进同一张账。</p></aside>
 <hr>
 <h2 id="s6">1. 谁在管：机构与规则层级</h2>
 <h3 id="s7">1.1 机构分工</h3>
-<div class="table-wrap"><table><thead><tr><th>机构</th><th>角色</th><th>与中国对应</th></tr></thead><tbody><tr><td>BMWK</td><td>联邦经济与能源部：能源政策、法律草案</td><td>国家能源主管部门</td></tr><tr><td>BNetzA</td><td>联邦网络局：电网、市场规则执行、平衡市场资格、REMIT 登记</td><td>监管机构/能源局</td></tr><tr><td>TSO</td><td>输电系统运营商：50Hertz、Amprion、TenneT、TransnetBW</td><td>国调/网调</td></tr><tr><td>DSO</td><td>配电系统运营商：配网接入、§14a、再调度</td><td>省/地市电网</td></tr><tr><td>EPEX Spot</td><td>指定电力市场运营商（NEMO）：日前/日内交易</td><td>交易中心</td></tr><tr><td>ECC</td><td>欧洲商品清算：EPEX 交易清算</td><td>清算机构</td></tr><tr><td>ACER</td><td>欧盟能源监管合作署：REMIT、跨境规则</td><td>欧盟层面监管</td></tr><tr><td>ENTSO-E</td><td>欧洲输电运营商网络：耦合、平衡平台</td><td>欧盟调度协调</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>机构</th><th>角色</th><th>与中国对应</th></tr></thead><tbody><tr><td>BMWK</td><td>联邦经济与能源部：能源政策、法律草案</td><td>国家能源主管部门</td></tr><tr><td>BNetzA</td><td>联邦网络局：电网、市场规则执行、平衡市场资格、REMIT 登记</td><td>监管机构/能源局</td></tr><tr><td>TSO</td><td>输电系统运营商：50Hertz、Amprion、TenneT、TransnetBW</td><td>国调/网调</td></tr><tr><td>DSO</td><td>配电系统运营商：配网接入、§14a、再调度</td><td>省/地市电网</td></tr><tr><td>EPEX Spot</td><td>指定电力市场运营商（NEMO）：日前/日内交易</td><td>交易中心</td></tr><tr><td>ECC</td><td>欧洲商品清算：EPEX 交易清算</td><td>清算机构</td></tr><tr><td>ACER</td><td>欧盟能源监管合作署：REMIT、跨境规则</td><td>欧盟层面监管</td></tr><tr><td>ENTSO-E</td><td>欧洲输电运营商网络：耦合、平衡平台</td><td>欧盟调度协调</td></tr></tbody></table></div>
 <ul><li><strong>BNetzA 既管电网也管市场</strong>：平衡市场资格、电网费、REMIT 登记都在它手里；不要把它只当成“电价监管”。</li><li><strong>TSO 不是“调度中心”那么简单</strong>：它负责平衡、再调度、并网和系统安全；四个 TSO 分区，规则基本统一但接口不同。</li><li><strong>EPEX 只是交易场所</strong>：它不决定电网安全，也不负责平衡；平衡是 TSO 的事。</li></ul>
 <h3 id="s8">1.2 规则文件层级</h3>
 <pre><code>欧盟法：电力内部市场条例、REMIT、容量机制国家援助决定
@@ -146,17 +153,17 @@
 BNetzA 决定/指南 + EPEX 规则 + TSO 平衡市场规则</code></pre>
 <ul><li><strong>EnWG 是“母法”</strong>：市场准入、零售许可、电网监管都在这里；具体价格/平衡规则在条例和 BNetzA 决定里。</li><li><strong>EEG 不是“电价法”</strong>：它管的是可再生项目的支持机制，不是 wholesale 价格；但负价规则会直接影响项目收入。</li><li><strong>StromVKG 是新法</strong>：容量机制 2031 年生效，2026 年已有首轮招标；不要把“已立法”当成“已运行”。</li></ul>
 <h3 id="s9">1.3 与中国的第一层差别</h3>
-<div class="table-wrap"><table><thead><tr><th>维度</th><th>中国</th><th>德国</th></tr></thead><tbody><tr><td>市场层级</td><td>省间 + 省内</td><td>欧盟耦合 + DE-LU 报价区</td></tr><tr><td>调度与交易</td><td>调度机构 + 交易中心</td><td>TSO 平衡/再调度 + EPEX 交易</td></tr><tr><td>现货粒度</td><td>15 分钟（多数）</td><td>15 分钟 MTU（日前/日内）</td></tr><tr><td>价格机制</td><td>中长期 + 现货 + 辅助服务</td><td>日前/日内 + 平衡市场 + 再调度</td></tr><tr><td>容量机制</td><td>容量电价/补偿</td><td>2031 年起容量机制</td></tr><tr><td>可再生支持</td><td>机制电价/绿证</td><td>EEG 拍卖 + 市场溢价</td></tr><tr><td>电网费</td><td>输配电价，政府核定</td><td>StromNEV/StromNZV，BNetzA 监管</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>中国</th><th>德国</th></tr></thead><tbody><tr><td>市场层级</td><td>省间 + 省内</td><td>欧盟耦合 + DE-LU 报价区</td></tr><tr><td>调度与交易</td><td>调度机构 + 交易中心</td><td>TSO 平衡/再调度 + EPEX 交易</td></tr><tr><td>现货粒度</td><td>15 分钟（多数）</td><td>15 分钟 MTU（日前/日内）</td></tr><tr><td>价格机制</td><td>中长期 + 现货 + 辅助服务</td><td>日前/日内 + 平衡市场 + 再调度</td></tr><tr><td>容量机制</td><td>容量电价/补偿</td><td>2031 年起容量机制</td></tr><tr><td>可再生支持</td><td>机制电价/绿证</td><td>EEG 拍卖 + 市场溢价</td></tr><tr><td>电网费</td><td>输配电价，政府核定</td><td>StromNEV/StromNZV，BNetzA 监管</td></tr></tbody></table></div>
 <aside class="note"><p>德国没有“省级市场”概念；DE-LU 是一个报价区，境内阻塞靠再调度解决。把中国省级现货规则直接套到德国，会错在“价格分区”和“平衡责任”两件事上。</p></aside>
 <hr>
 <h2 id="s10">2. 市场架构：日前、日内、平衡</h2>
 <h3 id="s11">2.1 日前市场</h3>
 <ul><li><strong>拍卖</strong>：EPEX Spot 每个交易日为次日 15 分钟/小时产品举行拍卖；订单簿在 12:00 CET 关闭（夏令时 12:00 CEST）。</li><li><strong>出清</strong>：EUPHEMIA 算法在满足跨境容量、机组约束、块订单等条件下最大化社会福利；德国价格与邻国价格通过耦合算法同时形成。</li><li><strong>定价</strong>：pay-as-clear，同一 MTU 同一报价区一个价格；不是按报价付费。</li><li><strong>产品</strong>：15 分钟 MTU 为主，也有 30/60 分钟产品；具体产品序列以 EPEX 规则为准。</li><li><strong>跨境</strong>：日前跨境容量通过市场耦合隐式分配；不需要单独拍卖（长期输电权另说）。</li></ul>
 <h3 id="s12">2.2 日内市场</h3>
-<div class="table-wrap"><table><thead><tr><th>维度</th><th>连续交易</th><th>日内拍卖</th></tr></thead><tbody><tr><td>机制</td><td>撮合，先到先得</td><td>集合竞价</td></tr><tr><td>定价</td><td>pay-as-bid（成交价）</td><td>拍卖价</td></tr><tr><td>产品</td><td>15/30/60 分钟</td><td>15/30/60 分钟</td></tr><tr><td>关闸</td><td>交付前数分钟</td><td>拍卖时点</td></tr><tr><td>用途</td><td>修正预测偏差、短时套利</td><td>集中流动性、价格发现</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>连续交易</th><th>日内拍卖</th></tr></thead><tbody><tr><td>机制</td><td>撮合，先到先得</td><td>集合竞价</td></tr><tr><td>定价</td><td>pay-as-bid（成交价）</td><td>拍卖价</td></tr><tr><td>产品</td><td>15/30/60 分钟</td><td>15/30/60 分钟</td></tr><tr><td>关闸</td><td>交付前数分钟</td><td>拍卖时点</td></tr><tr><td>用途</td><td>修正预测偏差、短时套利</td><td>集中流动性、价格发现</td></tr></tbody></table></div>
 <ul><li><strong>连续交易不是“随时能成交”</strong>：流动性、买卖价差、产品粒度都会影响成交；15 分钟产品在近端更活跃。</li><li><strong>日内价格下限更深</strong>：SIDC 最低 -9,999 €/MWh，远低于日前 -500 €/MWh；极端负价时，日内可以反映更极端的供需。</li><li><strong>关闸时间</strong>：连续交易在交付前数分钟关闭；具体时间以 EPEX 规则为准，跨市场套利要把关闸差算进去。</li></ul>
 <h3 id="s13">2.3 平衡市场</h3>
-<div class="table-wrap"><table><thead><tr><th>产品</th><th>采购粒度</th><th>产品长度</th><th>报价</th><th>定价</th><th>方向</th></tr></thead><tbody><tr><td>FCR</td><td>每日</td><td>4 小时</td><td>容量</td><td>pay-as-clear</td><td>对称（涨/降）</td></tr><tr><td>aFRR 容量</td><td>每日</td><td>4 小时</td><td>容量</td><td>pay-as-bid</td><td>涨/降分开</td></tr><tr><td>aFRR 能量</td><td>每 15 分钟</td><td>15 分钟</td><td>能量</td><td>pay-as-clear</td><td>涨/降分开</td></tr><tr><td>mFRR 容量</td><td>每日</td><td>4 小时</td><td>容量</td><td>pay-as-bid</td><td>涨/降分开</td></tr><tr><td>mFRR 能量</td><td>每 15 分钟</td><td>15 分钟</td><td>能量</td><td>pay-as-clear</td><td>涨/降分开</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>产品</th><th>采购粒度</th><th>产品长度</th><th>报价</th><th>定价</th><th>方向</th></tr></thead><tbody><tr><td>FCR</td><td>每日</td><td>4 小时</td><td>容量</td><td>pay-as-clear</td><td>对称（涨/降）</td></tr><tr><td>aFRR 容量</td><td>每日</td><td>4 小时</td><td>容量</td><td>pay-as-bid</td><td>涨/降分开</td></tr><tr><td>aFRR 能量</td><td>每 15 分钟</td><td>15 分钟</td><td>能量</td><td>pay-as-clear</td><td>涨/降分开</td></tr><tr><td>mFRR 容量</td><td>每日</td><td>4 小时</td><td>容量</td><td>pay-as-bid</td><td>涨/降分开</td></tr><tr><td>mFRR 能量</td><td>每 15 分钟</td><td>15 分钟</td><td>能量</td><td>pay-as-clear</td><td>涨/降分开</td></tr></tbody></table></div>
 <ul><li><strong>FCR 只有容量</strong>：FCR 不单独支付能量；提供者按容量报价，按 pay-as-clear 结算。</li><li><strong>aFRR/mFRR 容量与能量分开</strong>：容量市场锁定可用容量，能量市场按实际激活结算；两者价格逻辑不同。</li><li><strong>最小报价 1 MW</strong>：报价增量 1 MW；FCR 允许不可分割报价到 25 MW，aFRR/mFRR 能量要求可分割。</li><li><strong>平台</strong>：aFRR 能量通过 PICASSO，mFRR 能量通过 MARI；容量在 regelleistung.net 平台采购。</li></ul>
 <h3 id="s14">2.4 平衡责任与不平衡结算</h3>
 <ul><li><strong>平衡责任主体（BKV）</strong>：每个平衡组（Bilanzkreis）必须有一个 BKV；BKV 负责申报、平衡、结算。</li><li><strong>不平衡能量</strong>：实际出力/用电与申报的偏差由 TSO 结算；价格与平衡市场、激活成本相关。</li><li><strong>平衡组</strong>：发电、负荷、交易可以放在同一平衡组内对冲；跨平衡组的偏差不能自动抵消。</li><li><strong>对交易的含义</strong>：日前/日内的头寸最终要落到平衡组；交易系统与平衡组申报必须一致，否则会产生额外不平衡成本。</li></ul>
@@ -172,10 +179,10 @@ DE-LU 日前价格（每 MTU）</code></pre>
 <h3 id="s17">3.2 日内价格</h3>
 <ul><li><strong>连续撮合</strong>：价格由买卖盘决定，流动性不足时价差大；大单可能移动价格。</li><li><strong>预测修正</strong>：风光预测误差、机组故障、负荷变化，都会在日内反映；日内是“修正市场”。</li><li><strong>负价</strong>：日内可以出现比日前更深的负价；持有头寸的交易者需要预留保证金/风险限额。</li></ul>
 <h3 id="s18">3.3 负价的原因</h3>
-<div class="table-wrap"><table><thead><tr><th>原因</th><th>机制</th><th>交易含义</th></tr></thead><tbody><tr><td>风光高发</td><td>零边际成本压低价格</td><td>中午时段负价常态化</td></tr><tr><td>最小出力</td><td>煤电/核电/CHP 不能频繁启停</td><td>负价时仍发电</td></tr><tr><td>电网约束</td><td>再调度/并网限制</td><td>局部负价，不等于全德负价</td></tr><tr><td>补贴/税收</td><td>EEG 负价规则、电网费</td><td>项目收入与负价直接相关</td></tr><tr><td>需求刚性</td><td>部分负荷不能响应</td><td>负价持续时间拉长</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>原因</th><th>机制</th><th>交易含义</th></tr></thead><tbody><tr><td>风光高发</td><td>零边际成本压低价格</td><td>中午时段负价常态化</td></tr><tr><td>最小出力</td><td>煤电/核电/CHP 不能频繁启停</td><td>负价时仍发电</td></tr><tr><td>电网约束</td><td>再调度/并网限制</td><td>局部负价，不等于全德负价</td></tr><tr><td>补贴/税收</td><td>EEG 负价规则、电网费</td><td>项目收入与负价直接相关</td></tr><tr><td>需求刚性</td><td>部分负荷不能响应</td><td>负价持续时间拉长</td></tr></tbody></table></div>
 <ul><li><strong>负价不是“市场失灵”</strong>：它是高新能源渗透市场的正常信号；关键是谁承担负价成本。</li><li><strong>德国负价小时数</strong>：2023 年 301 小时、2024 年 457 小时、2025 年 573 小时（均为 BNetzA/SMARD 口径）；2026 年继续观察。2025-10 起改用 15 分钟 MTU，统计口径与往年不完全可比。</li><li><strong>对储能</strong>：负价充电是收益来源，但并网容量、SOC、电网费、§14a 控制会影响实际可用性。</li></ul>
 <h3 id="s19">3.4 价格上限/下限</h3>
-<div class="table-wrap"><table><thead><tr><th>市场</th><th>最低价</th><th>最高价</th><th>说明</th></tr></thead><tbody><tr><td>SDAC 日前</td><td>-500 €/MWh</td><td>由 ACER 统一校验</td><td>欧盟 harmonised 价格上限/下限</td></tr><tr><td>SIDC 日内</td><td>-9,999 €/MWh</td><td>由 ACER 统一校验</td><td>日内连续交易的价格边界更深</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>市场</th><th>最低价</th><th>最高价</th><th>说明</th></tr></thead><tbody><tr><td>SDAC 日前</td><td>-500 €/MWh</td><td>由 ACER 统一校验</td><td>欧盟 harmonised 价格上限/下限</td></tr><tr><td>SIDC 日内</td><td>-9,999 €/MWh</td><td>由 ACER 统一校验</td><td>日内连续交易的价格边界更深</td></tr></tbody></table></div>
 <ul><li><strong>价格边界不是“报价边界”</strong>：报价可以接近边界，但成交价受市场规则约束；具体以 EPEX/ACER 规则为准。</li><li><strong>极端价格</strong>：负价/高价时，保证金、结算、风险限额都会放大；不要只用正常时段的模型。</li></ul>
 <hr>
 <h2 id="s20">4. 结算与费用：现货价之外还有什么</h2>
@@ -187,7 +194,7 @@ DE-LU 日前价格（每 MTU）</code></pre>
 终端用户账单</code></pre>
 <ul><li><strong>EPEX 结算</strong>：通过 ECC 清算；保证金、结算周期、违约处理按 ECC 规则。</li><li><strong>不平衡结算</strong>：BKV 与 TSO 结算偏差；价格可能是平衡市场边际价或监管规定的价格。</li><li><strong>电网费</strong>：输配电费按 StromNEV/StromNZV；大用户、储能、§14a 可控负荷可能有减免/折扣。</li><li><strong>税费/附加费</strong>：电力税、特许经营费、各类附加费；具体以账单和现行法为准。</li></ul>
 <h3 id="s22">4.2 电网费</h3>
-<div class="table-wrap"><table><thead><tr><th>组成</th><th>对象</th><th>特点</th></tr></thead><tbody><tr><td>输电费</td><td>TSO 区域</td><td>按容量/电量，BNetzA 监管</td></tr><tr><td>配电费</td><td>DSO 区域</td><td>各 DSO 不同，§14a 有减免</td></tr><tr><td>§19 StromNEV 特殊网络费</td><td>大用户/特殊负荷</td><td>需申请，条件严格</td></tr><tr><td>§14a 可控负荷</td><td>热泵、EV 充电、电池等</td><td>以控制换取电网费减免</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>组成</th><th>对象</th><th>特点</th></tr></thead><tbody><tr><td>输电费</td><td>TSO 区域</td><td>按容量/电量，BNetzA 监管</td></tr><tr><td>配电费</td><td>DSO 区域</td><td>各 DSO 不同，§14a 有减免</td></tr><tr><td>§19 StromNEV 特殊网络费</td><td>大用户/特殊负荷</td><td>需申请，条件严格</td></tr><tr><td>§14a 可控负荷</td><td>热泵、EV 充电、电池等</td><td>以控制换取电网费减免</td></tr></tbody></table></div>
 <ul><li><strong>电网费不是“全国统一价”</strong>：不同 TSO/DSO 区域、不同电压等级、不同负荷特性，费用不同。</li><li><strong>§14a</strong>：BNetzA 可制定全国统一规则，对 &gt;4.2 kW 的低压可控消费设备/并网点在电网运营商控制下给予电网费减免；新装设备自 2024-01-01 起适用，存量设备过渡至 2028-12-31，具体模块/费率看 BNetzA 规定。</li><li><strong>AgNes 改革</strong>：BNetzA 于 2026-05-27 更新电网费改革进程，2026-10 发布决定草案（Festlegungsentwurf），计划 2027-01-01 作出最终决定（Festlegung），新规则自 2029 年起适用。大型储能拟改为容量型电网费（约 €4–7/kW/年，不再按电量收费），现有储能仍按 §118(6) 豁免到期后再适用；动态电网费分量最早 2030 年适用于储能、2032 年适用于发电，最迟 2035 年。BNetzA 已明确不会从 2029-01-01 起对全部储能普遍收费，最终规则以其决定为准。</li></ul>
 <h3 id="s23">4.3 EEG 附加费与支持成本</h3>
 <ul><li><strong>EEG 附加费（EEG-Umlage）</strong>：2022-07-01 起降为零，随后 §60 EEG 废止；支持成本改由联邦预算/能源与气候基金承担。</li><li><strong>EEG 溢价</strong>：可再生项目通过拍卖获得适用价值（Anzulegender Wert, AW），按“市场价 + 溢价”结算；具体是滑动溢价。</li><li><strong>负价规则</strong>：EEG §51 规定，负价时段的适用价值归零；没有“连续 4 小时/6 小时”才归零的门槛。</li><li><strong>豁免</strong>：小型机组（如 &lt;100 kW 在智能电表安装前、&lt;2 kW）有例外；具体以 EEG 现行文本为准。</li></ul>
@@ -196,12 +203,12 @@ DE-LU 日前价格（每 MTU）</code></pre>
 <hr>
 <h2 id="s25">5. 平衡市场：FCR、aFRR、mFRR</h2>
 <h3 id="s26">5.1 产品与时间线</h3>
-<div class="table-wrap"><table><thead><tr><th>产品</th><th>招标开闸</th><th>关闸</th><th>交付</th></tr></thead><tbody><tr><td>FCR 容量</td><td>D-7</td><td>D-1 08:00</td><td>次日 4 小时块</td></tr><tr><td>aFRR 容量</td><td>D-7</td><td>D-1 09:00</td><td>次日 4 小时块</td></tr><tr><td>aFRR 能量</td><td>D-1 约 09:00</td><td>T-25 分钟</td><td>15 分钟</td></tr><tr><td>mFRR 容量</td><td>D-7</td><td>D-1 10:00</td><td>次日 4 小时块</td></tr><tr><td>mFRR 能量</td><td>D-1 约 10:00</td><td>T-25 分钟</td><td>15 分钟</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>产品</th><th>招标开闸</th><th>关闸</th><th>交付</th></tr></thead><tbody><tr><td>FCR 容量</td><td>D-7</td><td>D-1 08:00</td><td>次日 4 小时块</td></tr><tr><td>aFRR 容量</td><td>D-7</td><td>D-1 09:00</td><td>次日 4 小时块</td></tr><tr><td>aFRR 能量</td><td>D-1 约 09:00</td><td>T-25 分钟</td><td>15 分钟</td></tr><tr><td>mFRR 容量</td><td>D-7</td><td>D-1 10:00</td><td>次日 4 小时块</td></tr><tr><td>mFRR 能量</td><td>D-1 约 10:00</td><td>T-25 分钟</td><td>15 分钟</td></tr></tbody></table></div>
 <ul><li><strong>时间均为德国当地时间</strong>：CET/CEST 切换会影响关闸；系统要自动处理夏令时。</li><li><strong>每日招标</strong>：FCR/aFRR/mFRR 容量都是每日招标、4 小时块；不是“年度容量”。</li><li><strong>能量近实时</strong>：aFRR/mFRR 能量在交付前 25 分钟关闸，接近实时；对自动化要求高。</li><li><strong>表中的容量关闸时间为常规安排</strong>：节假日、产品调整或平台变更时以 regelleistung.net 当期公告为准。</li></ul>
 <h3 id="s27">5.2 资格与预审</h3>
 <ul><li><strong>Prequalification</strong>：提供者需要通过 TSO 的预审，证明技术能力、响应时间、持续时间、计量与控制。</li><li><strong>regelleistung.net</strong>：预审、招标、结果发布都在这个平台；中国主体需要本地主体和银行/信用支持。</li><li><strong>FCR</strong>：对称、容量-only；提供者必须能在频率偏差时自动响应。</li><li><strong>aFRR/mFRR</strong>：分正/负方向；容量与能量分开；能量激活按 merit order。</li><li><strong>电池</strong>：SOC、持续时间、并网容量决定可提供容量；FCAS 预留会占用能量容量。</li></ul>
 <h3 id="s28">5.3 定价与结算</h3>
-<div class="table-wrap"><table><thead><tr><th>产品</th><th>定价</th><th>结算依据</th></tr></thead><tbody><tr><td>FCR 容量</td><td>pay-as-clear</td><td>中标容量 × 容量价</td></tr><tr><td>aFRR 容量</td><td>pay-as-bid</td><td>中标容量 × 报价</td></tr><tr><td>aFRR 能量</td><td>pay-as-clear</td><td>激活电量 × 边际价（PICASSO）</td></tr><tr><td>mFRR 容量</td><td>pay-as-bid</td><td>中标容量 × 报价</td></tr><tr><td>mFRR 能量</td><td>pay-as-clear</td><td>激活电量 × 边际价（MARI）</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>产品</th><th>定价</th><th>结算依据</th></tr></thead><tbody><tr><td>FCR 容量</td><td>pay-as-clear</td><td>中标容量 × 容量价</td></tr><tr><td>aFRR 容量</td><td>pay-as-bid</td><td>中标容量 × 报价</td></tr><tr><td>aFRR 能量</td><td>pay-as-clear</td><td>激活电量 × 边际价（PICASSO）</td></tr><tr><td>mFRR 容量</td><td>pay-as-bid</td><td>中标容量 × 报价</td></tr><tr><td>mFRR 能量</td><td>pay-as-clear</td><td>激活电量 × 边际价（MARI）</td></tr></tbody></table></div>
 <ul><li><strong>容量与能量分开</strong>：容量收入不等于能量收入；实际激活才支付能量。</li><li><strong>pay-as-bid 的风险</strong>：容量报价按“中标价”结算，报价过高可能不中标，过低可能亏损；要基于成本曲线。</li><li><strong>平台价格</strong>：aFRR/mFRR 能量边际价由 PICASSO/MARI 形成，德国价格与邻国耦合；不是德国单独出清。</li></ul>
 <h3 id="s29">5.4 平衡市场策略</h3>
 <ul><li><strong>容量收入</strong>：稳定但竞争激烈；电池、抽蓄、可调负荷都在抢。</li><li><strong>能量收入</strong>：波动大；极端时段价格高，但激活不确定。</li><li><strong>机会成本</strong>：提供平衡容量会占用能量/日内交易能力；要用联合优化。</li><li><strong>合规</strong>：未按指令响应、计量不达标、预审失效，都可能被处罚/取消资格。</li><li><strong>储能参与平衡市场的收益堆叠、预资格与退化成本</strong>：见《海外储能业务：十一市场大储与工商储（2026 版）》§3；本文只讲产品与规则。</li></ul>
@@ -213,13 +220,13 @@ DE-LU 日前价格（每 MTU）</code></pre>
 <pre><code>预测/计划 → 阻塞识别 → 再调度需求 → 指令 → 执行 → 计量 → 补偿</code></pre>
 <ul><li><strong>预测</strong>：TSO/DSO 使用发电/负荷预测识别阻塞；预测误差会影响再调度需求。</li><li><strong>指令</strong>：电网运营商按规则指令机组调整；机组必须响应。</li><li><strong>补偿</strong>：按监管规则补偿（成本/损失）；具体计算看 EnWG/条例/BNetzA 规定。</li><li><strong>数据</strong>：再调度数据在平台公开（如 Netztransparenz）；用于分析阻塞成本。</li></ul>
 <h3 id="s33">6.3 对交易/项目的影响</h3>
-<div class="table-wrap"><table><thead><tr><th>影响</th><th>说明</th></tr></thead><tbody><tr><td>收益</td><td>再调度补偿可能弥补部分收入，但不等于现货收入</td></tr><tr><td>预测</td><td>限发/再调度会改变实际发电量，影响 EEG 溢价结算</td></tr><tr><td>选址</td><td>电网阻塞严重区域，再调度/限发概率高；项目选址要考虑</td></tr><tr><td>储能</td><td>储能可提供再调度/灵活性服务，但规则/补偿要单独看</td></tr><tr><td>电网费</td><td>AgNes 改革可能引入发电侧/储能电网费，改变项目经济性</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>影响</th><th>说明</th></tr></thead><tbody><tr><td>收益</td><td>再调度补偿可能弥补部分收入，但不等于现货收入</td></tr><tr><td>预测</td><td>限发/再调度会改变实际发电量，影响 EEG 溢价结算</td></tr><tr><td>选址</td><td>电网阻塞严重区域，再调度/限发概率高；项目选址要考虑</td></tr><tr><td>储能</td><td>储能可提供再调度/灵活性服务，但规则/补偿要单独看</td></tr><tr><td>电网费</td><td>AgNes 改革可能引入发电侧/储能电网费，改变项目经济性</td></tr></tbody></table></div>
 <h3 id="s34">6.4 与中国的差别</h3>
 <ul><li><strong>中国</strong>：辅助服务/并网考核/调度指令体系；再调度概念不如德国突出。</li><li><strong>德国</strong>：再调度是电网运营商消除阻塞的常规工具，补偿由监管规则确定；与现货市场分开。</li><li><strong>不要混</strong>：Redispatch 2.0 不是“平衡市场”，也不是“容量市场”；它是电网阻塞管理。</li></ul>
 <hr>
 <h2 id="s35">7. 可再生支持：EEG 拍卖、溢价与负价</h2>
 <h3 id="s36">7.1 EEG 机制</h3>
-<div class="table-wrap"><table><thead><tr><th>要素</th><th>内容</th></tr></thead><tbody><tr><td>支持方式</td><td>拍卖确定适用价值（AW），滑动市场溢价</td></tr><tr><td>适用对象</td><td>风电、光伏、生物质等（按 EEG 规则）</td></tr><tr><td>结算</td><td>市场收入 + 溢价；溢价随市场价反向调整</td></tr><tr><td>负价</td><td>§51：负价时段适用价值归零</td></tr><tr><td>豁免</td><td>小型机组等（按现行 EEG）</td></tr><tr><td>直接营销</td><td>大多数项目需直接营销；有登记/申报要求</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>要素</th><th>内容</th></tr></thead><tbody><tr><td>支持方式</td><td>拍卖确定适用价值（AW），滑动市场溢价</td></tr><tr><td>适用对象</td><td>风电、光伏、生物质等（按 EEG 规则）</td></tr><tr><td>结算</td><td>市场收入 + 溢价；溢价随市场价反向调整</td></tr><tr><td>负价</td><td>§51：负价时段适用价值归零</td></tr><tr><td>豁免</td><td>小型机组等（按现行 EEG）</td></tr><tr><td>直接营销</td><td>大多数项目需直接营销；有登记/申报要求</td></tr></tbody></table></div>
 <ul><li><strong>滑动溢价</strong>：市场价低于 AW 时补差，高于 AW 时可能回收（有上限）；具体公式按 EEG。</li><li><strong>拍卖</strong>：政府设定招标量/上限价；中标项目获得 AW；未中标项目可能走其他支持/市场化。</li><li><strong>负价规则</strong>：负价时段不支付溢价；没有“持续 4 小时/6 小时”门槛，这一点与中国部分规则不同。</li><li><strong>EEG 2027 改革</strong>：联邦内阁已通过 EEG 2027 修正案草案（据报道，B 级），拟对新建屋顶光伏取消固定上网电价、改为过渡补贴/直销奖励；具体以正式法和欧盟国家援助审批为准。</li></ul>
 <h3 id="s37">7.2 负价对项目收益的影响</h3>
 <p>设：</p>
@@ -236,14 +243,14 @@ DE-LU 日前价格（每 MTU）</code></pre>
 <h3 id="s40">8.1 背景</h3>
 <ul><li><strong>能源-only 市场的可靠性问题</strong>：随煤电/核电退役、新能源占比上升，可调容量不足；德国决定引入容量机制。</li><li><strong>欧盟批准</strong>：欧盟委员会 2026-09-02 批准德国容量机制（国家援助），预计成本 €15.6–35.2bn；2031 年生效，15 年合同。</li><li><strong>技术中立（分阶段）</strong>：法律框架面向发电、储能、需求响应、现有/新增容量、跨境容量。2026 年两轮长时容量招标并未明文排除电池，而是设 <strong>≥10 小时持续满出力、1 小时内恢复、提供惯性、储能 100% 技术可用率、RTE≥92%、EEA 本地成分</strong>等条件（BNetzA 2026-07-21，A 级）；2–4 h 电池难以达标，10 h 以上长时储能可参与（10 h 降额 0.58、20 h 0.85）。BNetzA 2026-11-03 明确首轮「电厂与电力储能设施共同参与竞争」。2027-05-18 新增容量招标（约 2 GW）才开放全部时长储能。新建燃气机组必须具备氢能转换能力，2045 年前气候中和运行。</li><li><strong>StromVKG</strong>：为容量机制提供法律基础；具体通过与生效时间以正式法为准（B 级）。</li></ul>
 <h3 id="s41">8.2 招标安排</h3>
-<div class="table-wrap"><table><thead><tr><th>时间</th><th>规模</th><th>说明</th></tr></thead><tbody><tr><td>2026-09-08</td><td>4,500 rMW</td><td>首轮长时容量招标；≥10 h 持续出力门槛，储能与电厂共同参与；结果见 §8（A，BNetzA 2026-11-03）</td></tr><tr><td>2026-12-29（计划）</td><td>4,500 rMW</td><td>第二轮；日期以 BNetzA 公告为准，同样适用 ≥10 h 门槛</td></tr><tr><td>2027（报道称 3 月底启动）</td><td>约 2 GW</td><td>新增容量；储能可参与，要求 ≥10 小时时长</td></tr><tr><td>2027-10-31 / 2029-08-20</td><td>后续</td><td>综合容量拍卖；面向所有技术，含现有/新增容量</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>时间</th><th>规模</th><th>说明</th></tr></thead><tbody><tr><td>2026-09-08</td><td>4,500 rMW</td><td>首轮长时容量招标；≥10 h 持续出力门槛，储能与电厂共同参与；结果见 §8（A，BNetzA 2026-11-03）</td></tr><tr><td>2026-12-29（计划）</td><td>4,500 rMW</td><td>第二轮；日期以 BNetzA 公告为准，同样适用 ≥10 h 门槛</td></tr><tr><td>2027（报道称 3 月底启动）</td><td>约 2 GW</td><td>新增容量；储能可参与，要求 ≥10 小时时长</td></tr><tr><td>2027-10-31 / 2029-08-20</td><td>后续</td><td>综合容量拍卖；面向所有技术，含现有/新增容量</td></tr></tbody></table></div>
 <ul><li><strong>合同期</strong>：15 年；中标容量按可用性获得年度 payment。</li><li><strong>区域</strong>：约 1/3 在北区、2/3 在南区（B 级，具体以招标文件为准）。</li><li><strong>跨境</strong>：与德国直接电网连接的邻国容量可以参与（按欧盟批准条件）。</li><li><strong>注意</strong>：上述规模/价格/时间来自公开报道/转引，属于 B 级；投标前必须查 StromVKG、BNetzA/TSO 招标文件。</li></ul>
 <h3 id="s42">8.3 对交易/投资的影响</h3>
 <ul><li><strong>可调机组</strong>：容量收入改善新建燃气/储能/需求响应的经济性；但合同有可用性义务。</li><li><strong>储能</strong>：容量机制法律框架技术中立，2026 年长时招标以 ≥10 h 持续出力等条件区分技术，储能<strong>参与首轮竞标</strong>（BNetzA 2026-11-03）；2027-05-18 新增容量招标才向全部时长储能开放。即使中标，也要看可用性义务与能量/平衡市场收益的叠加关系。大储投决口径见《海外储能业务：十一市场大储与工商储（2026 版）》§3.2。</li><li><strong>跨境</strong>：邻国容量可以参与，可能改变德国/邻国的容量价格。</li><li><strong>时间</strong>：2031 年才生效；2026-2030 年仍是“过渡期”，不要按容量机制收入做短期测算。</li></ul>
 <hr>
 <h2 id="s43">9. 中国主体进入路径</h2>
 <h3 id="s44">9.1 主体与注册</h3>
-<div class="table-wrap"><table><thead><tr><th>步骤</th><th>内容</th><th>负责方</th></tr></thead><tbody><tr><td>1</td><td>设立德国/欧盟主体，确定税务/合规架构</td><td>企业/律师/税务</td></tr><tr><td>2</td><td>零售业务：EnWG §5 供电许可（或豁免）</td><td>BNetzA</td></tr><tr><td>3</td><td>交易：EPEX 会员/经纪、ECC 清算账户</td><td>EPEX/ECC</td></tr><tr><td>4</td><td>REMIT：在 BNetzA 的 CEREMP 登记，交易报告</td><td>BNetzA/ACER</td></tr><tr><td>5</td><td>平衡组：与 TSO 签 BKV 合同，开平衡组</td><td>TSO</td></tr><tr><td>6</td><td>资产：MaStR 登记；EEG 直接营销登记</td><td>BNetzA/TSO</td></tr><tr><td>7</td><td>平衡市场：预审（prequalification）</td><td>TSO/regelleistung.net</td></tr><tr><td>8</td><td>并网：连接协议、计量、§14a（如适用）</td><td>TSO/DSO</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>步骤</th><th>内容</th><th>负责方</th></tr></thead><tbody><tr><td>1</td><td>设立德国/欧盟主体，确定税务/合规架构</td><td>企业/律师/税务</td></tr><tr><td>2</td><td>零售业务：EnWG §5 供电许可（或豁免）</td><td>BNetzA</td></tr><tr><td>3</td><td>交易：EPEX 会员/经纪、ECC 清算账户</td><td>EPEX/ECC</td></tr><tr><td>4</td><td>REMIT：在 BNetzA 的 CEREMP 登记，交易报告</td><td>BNetzA/ACER</td></tr><tr><td>5</td><td>平衡组：与 TSO 签 BKV 合同，开平衡组</td><td>TSO</td></tr><tr><td>6</td><td>资产：MaStR 登记；EEG 直接营销登记</td><td>BNetzA/TSO</td></tr><tr><td>7</td><td>平衡市场：预审（prequalification）</td><td>TSO/regelleistung.net</td></tr><tr><td>8</td><td>并网：连接协议、计量、§14a（如适用）</td><td>TSO/DSO</td></tr></tbody></table></div>
 <ul><li><strong>零售 vs 批发</strong>：批发交易不需要零售许可，但需要 EPEX/ECC、REMIT、平衡组；零售还需要 EnWG §5 许可。</li><li><strong>REMIT</strong>：市场参与者要登记并报告交易；具体阈值/字段按 REMIT 和 BNetzA 指南。</li><li><strong>金融监管</strong>：如果交易衍生品，可能触发 MiFID II/BaFin 许可、EMIR 清算；要提前问律师。</li><li><strong>MaStR</strong>：发电/储能资产必须在 Marktstammdatenregister 登记；否则可能影响支持/并网。</li></ul>
 <h3 id="s45">9.2 数据与系统</h3>
 <ul><li><strong>EPEX 数据</strong>：日前/日内价格、成交量；公共数据有延迟。</li><li><strong>regelleistung.net</strong>：平衡市场招标/结果/预审。</li><li><strong>Netztransparenz</strong>：再调度、EEG、平衡数据。</li><li><strong>SMARD</strong>：BNetzA 的电力市场数据平台；适合做宏观分析。</li><li><strong>时区</strong>：CET/CEST 切换；系统要自动处理，不能硬编码 UTC+1。</li></ul>
@@ -263,7 +270,7 @@ DE-LU 日前价格（每 MTU）</code></pre>
 <ol><li><strong>把德国当成“欧洲统一市场”</strong>：DE-LU 是一个报价区，欧盟耦合决定边界；德国国内还有再调度/电网费。</li><li><strong>把日前价当日内价</strong>：日前是拍卖 pay-as-clear，日内连续交易 pay-as-bid；价格边界也不同。</li><li><strong>忽略 15 分钟 MTU</strong>：2025-10-01 起 SDAC 多数区域 15 分钟；旧的小时模型会错。</li><li><strong>时区错误</strong>：CET/CEST 切换；关闸时间、结算、报表都要自动处理。</li><li><strong>把 FCR 当“能量市场”</strong>：FCR 只有容量，不支付能量；aFRR/mFRR 容量/能量分开。</li><li><strong>以为 EEG 附加费还在</strong>：2022-07-01 起为零，§60 已废止；旧文章/旧模型会多算一项。</li><li><strong>以为负价要持续 4/6 小时才归零</strong>：EEG §51 是负价时段即归零，没有这个门槛。</li><li><strong>把容量机制当“已运行”</strong>：2031 年才生效；2026 年只是招标/过渡。</li><li><strong>忽略电网费/§14a</strong>：批发电价只是账单的一部分；储能/可调负荷的电网费减免会改变收益。</li><li><strong>忽略 REMIT/金融监管</strong>：交易报告、市场操纵、MiFID/EMIR 可能适用；不要只看 EPEX 规则。</li><li><strong>把再调度当现货</strong>：Redispatch 2.0 是电网阻塞管理，不走 EPEX；补偿规则不同。</li><li><strong>用“德国价格”套邻国</strong>：邻国报价区、跨境容量、税收/电网费都不同；跨境交易要按当地规则。</li></ol>
 <hr>
 <h2 id="s50">11. 中德对照</h2>
-<div class="table-wrap"><table><thead><tr><th>维度</th><th>中国</th><th>德国</th></tr></thead><tbody><tr><td>市场范围</td><td>省间 + 省内</td><td>欧盟耦合 + DE-LU</td></tr><tr><td>调度</td><td>调度机构</td><td>TSO 平衡/再调度</td></tr><tr><td>现货</td><td>日前/实时，15 分钟</td><td>日前/日内，15 分钟</td></tr><tr><td>定价</td><td>各省规则，统一出清/边际</td><td>日前 pay-as-clear；日内 pay-as-bid</td></tr><tr><td>平衡</td><td>辅助服务/两个细则</td><td>FCR/aFRR/mFRR，容量+能量</td></tr><tr><td>阻塞</td><td>省间/省内分区</td><td>再调度 + 单一报价区</td></tr><tr><td>容量</td><td>容量电价/补偿</td><td>2031 年起容量机制</td></tr><tr><td>可再生</td><td>机制电价/绿证</td><td>EEG 拍卖 + 滑动溢价</td></tr><tr><td>负价</td><td>部分省允许，规则不同</td><td>允许；EEG 负价归零</td></tr><tr><td>电网费</td><td>政府核定输配电价</td><td>StromNEV/StromNZV，§14a</td></tr><tr><td>零售</td><td>售电公司/套餐监管</td><td>EnWG §5 许可，默认供应</td></tr><tr><td>主体准入</td><td>注册/准入</td><td>主体 + REMIT + 平衡组 + EPEX/ECC</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>中国</th><th>德国</th></tr></thead><tbody><tr><td>市场范围</td><td>省间 + 省内</td><td>欧盟耦合 + DE-LU</td></tr><tr><td>调度</td><td>调度机构</td><td>TSO 平衡/再调度</td></tr><tr><td>现货</td><td>日前/实时，15 分钟</td><td>日前/日内，15 分钟</td></tr><tr><td>定价</td><td>各省规则，统一出清/边际</td><td>日前 pay-as-clear；日内 pay-as-bid</td></tr><tr><td>平衡</td><td>辅助服务/两个细则</td><td>FCR/aFRR/mFRR，容量+能量</td></tr><tr><td>阻塞</td><td>省间/省内分区</td><td>再调度 + 单一报价区</td></tr><tr><td>容量</td><td>容量电价/补偿</td><td>2031 年起容量机制</td></tr><tr><td>可再生</td><td>机制电价/绿证</td><td>EEG 拍卖 + 滑动溢价</td></tr><tr><td>负价</td><td>部分省允许，规则不同</td><td>允许；EEG 负价归零</td></tr><tr><td>电网费</td><td>政府核定输配电价</td><td>StromNEV/StromNZV，§14a</td></tr><tr><td>零售</td><td>售电公司/套餐监管</td><td>EnWG §5 许可，默认供应</td></tr><tr><td>主体准入</td><td>注册/准入</td><td>主体 + REMIT + 平衡组 + EPEX/ECC</td></tr></tbody></table></div>
 <aside class="note"><p>对照用于建立问题清单，不是规则翻译。德国交易的真正门槛在“平衡组 + REMIT + ECC + 电网费”，而不是“能不能在 EPEX 下单”。</p></aside>
 <hr>
 <h2 id="s51">12. 算例（D 级：方法演示，不是投资建议）</h2>
@@ -313,29 +320,46 @@ DE-LU 日前价格（每 MTU）</code></pre>
 <hr>
 <h2 id="s58">14. 官方来源与口径</h2>
 <aside class="note"><p>以下链接在 2026-11 做过可达性检查；规则/数据以官网最新版本为准。</p></aside>
-<div class="table-wrap"><table><thead><tr><th>来源</th><th>用途</th><th>链接</th></tr></thead><tbody><tr><td>EPEX Spot · 电力市场基础</td><td>日前/日内产品、关闸、定价</td><td><a href="https://www.epexspot.com/en/basicspowermarket" target="_blank" rel="noopener">https://www.epexspot.com/en/basicspowermarket</a></td></tr><tr><td>EPEX Spot · 15 分钟产品与耦合</td><td>15 分钟 MTU 规则与上线时间</td><td><a href="https://www.epexspot.com/en/15-minute-products-market-coupling" target="_blank" rel="noopener">https://www.epexspot.com/en/15-minute-products-market-coupling</a></td></tr><tr><td>regelleistung.net · 招标与报价</td><td>平衡市场产品/时间线/定价</td><td><a href="https://www.regelleistung.net/en-us/Become-a-balancing-service-provider/Tendering-and-bidding-process" target="_blank" rel="noopener">https://www.regelleistung.net/en-us/Become-a-balancing-service-provider/Tendering-and-bidding-process</a></td></tr><tr><td>EEG §51</td><td>负价规则</td><td><a href="https://www.gesetze-im-internet.de/eeg_2014/__51.html" target="_blank" rel="noopener">https://www.gesetze-im-internet.de/eeg_2014/__51.html</a></td></tr><tr><td>EEG §60</td><td>附加费条款（已废止）</td><td><a href="https://www.gesetze-im-internet.de/eeg_2014/__60.html" target="_blank" rel="noopener">https://www.gesetze-im-internet.de/eeg_2014/__60.html</a></td></tr><tr><td>EnWG §14a</td><td>可控负荷/电网费</td><td><a href="https://www.gesetze-im-internet.de/enwg_2005/__14a.html" target="_blank" rel="noopener">https://www.gesetze-im-internet.de/enwg_2005/__14a.html</a></td></tr><tr><td>EnWG §13a</td><td>再调度</td><td><a href="https://www.gesetze-im-internet.de/enwg_2005/__13a.html" target="_blank" rel="noopener">https://www.gesetze-im-internet.de/enwg_2005/__13a.html</a></td></tr><tr><td>BNetzA · AgNes 电网费改革</td><td>改革进程/决定草案/时间表</td><td><a href="https://www.bundesnetzagentur.de/1107474" target="_blank" rel="noopener">https://www.bundesnetzagentur.de/1107474</a></td></tr><tr><td>BNetzA · 官网</td><td>电网费/监管</td><td><a href="https://www.bundesnetzagentur.de/EN/Home/home_node.html" target="_blank" rel="noopener">https://www.bundesnetzagentur.de/EN/Home/home_node.html</a></td></tr><tr><td>Enerdata · 容量机制报道</td><td>欧盟批准/规模/时间</td><td><a href="https://www.enerdata.net/publications/daily-energy-news/eu-approves-german-capacity-scheme-secure-electricity-supply-2031.html" target="_blank" rel="noopener">https://www.enerdata.net/publications/daily-energy-news/eu-approves-german-capacity-scheme-secure-electricity-supply-2031.html</a></td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>来源</th><th>用途</th><th>链接</th></tr></thead><tbody><tr><td>EPEX Spot · 电力市场基础</td><td>日前/日内产品、关闸、定价</td><td><a href="https://www.epexspot.com/en/basicspowermarket" target="_blank" rel="noopener">https://www.epexspot.com/en/basicspowermarket</a></td></tr><tr><td>EPEX Spot · 15 分钟产品与耦合</td><td>15 分钟 MTU 规则与上线时间</td><td><a href="https://www.epexspot.com/en/15-minute-products-market-coupling" target="_blank" rel="noopener">https://www.epexspot.com/en/15-minute-products-market-coupling</a></td></tr><tr><td>regelleistung.net · 招标与报价</td><td>平衡市场产品/时间线/定价</td><td><a href="https://www.regelleistung.net/en-us/Become-a-balancing-service-provider/Tendering-and-bidding-process" target="_blank" rel="noopener">https://www.regelleistung.net/en-us/Become-a-balancing-service-provider/Tendering-and-bidding-process</a></td></tr><tr><td>EEG §51</td><td>负价规则</td><td><a href="https://www.gesetze-im-internet.de/eeg_2014/__51.html" target="_blank" rel="noopener">https://www.gesetze-im-internet.de/eeg_2014/__51.html</a></td></tr><tr><td>EEG §60</td><td>附加费条款（已废止）</td><td><a href="https://www.gesetze-im-internet.de/eeg_2014/__60.html" target="_blank" rel="noopener">https://www.gesetze-im-internet.de/eeg_2014/__60.html</a></td></tr><tr><td>EnWG §14a</td><td>可控负荷/电网费</td><td><a href="https://www.gesetze-im-internet.de/enwg_2005/__14a.html" target="_blank" rel="noopener">https://www.gesetze-im-internet.de/enwg_2005/__14a.html</a></td></tr><tr><td>EnWG §13a</td><td>再调度</td><td><a href="https://www.gesetze-im-internet.de/enwg_2005/__13a.html" target="_blank" rel="noopener">https://www.gesetze-im-internet.de/enwg_2005/__13a.html</a></td></tr><tr><td>BNetzA · AgNes 电网费改革</td><td>改革进程/决定草案/时间表</td><td><a href="https://www.bundesnetzagentur.de/1107474" target="_blank" rel="noopener">https://www.bundesnetzagentur.de/1107474</a></td></tr><tr><td>BNetzA · 官网</td><td>电网费/监管</td><td><a href="https://www.bundesnetzagentur.de/EN/Home/home_node.html" target="_blank" rel="noopener">https://www.bundesnetzagentur.de/EN/Home/home_node.html</a></td></tr><tr><td>Enerdata · 容量机制报道</td><td>欧盟批准/规模/时间</td><td><a href="https://www.enerdata.net/publications/daily-energy-news/eu-approves-german-capacity-scheme-secure-electricity-supply-2031.html" target="_blank" rel="noopener">https://www.enerdata.net/publications/daily-energy-news/eu-approves-german-capacity-scheme-secure-electricity-supply-2031.html</a></td></tr></tbody></table></div>
 <h3 id="s59">口径提醒</h3>
 <ul><li><strong>价格单位</strong>：€/MWh；日前/日内价格边界不同；负价是正常价格，不是错误数据。</li><li><strong>时间</strong>：CET/CEST；关闸时间随夏令时变化；系统要自动处理。</li><li><strong>EEG 附加费</strong>：2022-07-01 起为零；旧文章/旧模型仍可能列 3.7 ct/kWh 等历史值。</li><li><strong>EEG 负价规则</strong>：§51 是“负价时段归零”，没有 4/6 小时门槛；小型机组有例外。</li><li><strong>容量机制</strong>：2031 年生效；2026 年两轮 4,500 rMW 长时招标以 ≥10 h 持续出力等条件区分技术，并非明文排除电池；首轮结果已于 2026-11-03 公布（A 级）；2027-05-18 约 2 GW 新增容量招标开放全部时长储能。成本区间来自欧盟批准/转引，B 级。</li><li><strong>负价小时数</strong>：按 BNetzA/SMARD 统计；2025-10 起改用 15 分钟 MTU，逐年比较要看统计口径。</li><li><strong>电网费</strong>：TSO/DSO/电压等级/负荷特性不同；§14a/§19 减免要单独申请。</li><li><strong>再调度</strong>：不是现货/平衡市场；补偿按监管规则，不能按 EPEX 价格结算。</li><li><strong>链接可达性</strong>：BMWK 部分页面对自动化访问有 Radware 验证；打不开时用浏览器或 BNetzA 镜像。</li></ul>
 <hr>
 <h2 id="s60">速查</h2>
-<div class="table-wrap"><table><thead><tr><th>问题</th><th>先看</th><th>关键结论</th><th>依据</th></tr></thead><tbody><tr><td>德国报价区是什么</td><td>§0.1</td><td>DE-LU（德国 + 卢森堡）</td><td>EPEX/欧盟</td></tr><tr><td>日前几点关闸</td><td>§2.1</td><td>12:00 CET（夏令时 CEST）</td><td>EPEX</td></tr><tr><td>日前怎么定价</td><td>§2.1</td><td>拍卖、pay-as-clear、EUPHEMIA</td><td>EPEX</td></tr><tr><td>日内怎么定价</td><td>§2.2</td><td>连续交易 pay-as-bid；也有日内拍卖</td><td>EPEX</td></tr><tr><td>15 分钟什么时候开始</td><td>§0.2</td><td>2025-10-01 起 SDAC 多数区域</td><td>EPEX</td></tr><tr><td>价格下限多少</td><td>§3.4</td><td>日前 -500 €/MWh；日内 -9,999 €/MWh</td><td>EPEX/ACER</td></tr><tr><td>平衡市场有哪些</td><td>§5</td><td>FCR、aFRR、mFRR；容量/能量分开</td><td>regelleistung.net</td></tr><tr><td>FCR 怎么定价</td><td>§5.3</td><td>容量-only、pay-as-clear、对称</td><td>regelleistung.net</td></tr><tr><td>aFRR/mFRR 容量怎么定价</td><td>§5.3</td><td>pay-as-bid；能量 pay-as-clear</td><td>regelleistung.net</td></tr><tr><td>再调度是什么</td><td>§6</td><td>Redispatch 2.0，≥100 kW，TSO/DSO</td><td>EnWG §13a</td></tr><tr><td>EEG 负价怎么办</td><td>§7.1</td><td>负价时段适用价值归零，无 4/6 小时门槛</td><td>EEG §51</td></tr><tr><td>EEG 附加费还有吗</td><td>§4.3</td><td>2022-07-01 起为零；§60 已废止</td><td>EEG/联邦预算</td></tr><tr><td>容量机制什么时候</td><td>§8</td><td>2031 年生效；2026 年招标</td><td>EU/StromVKG</td></tr><tr><td>中国主体怎么进</td><td>§9</td><td>主体 + REMIT + 平衡组 + EPEX/ECC</td><td>BNetzA/EPEX</td></tr><tr><td>最常见的坑</td><td>§10</td><td>时区、15 分钟、容量/能量、EEG 负价、电网费</td><td>本文总结</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>问题</th><th>先看</th><th>关键结论</th><th>依据</th></tr></thead><tbody><tr><td>德国报价区是什么</td><td>§0.1</td><td>DE-LU（德国 + 卢森堡）</td><td>EPEX/欧盟</td></tr><tr><td>日前几点关闸</td><td>§2.1</td><td>12:00 CET（夏令时 CEST）</td><td>EPEX</td></tr><tr><td>日前怎么定价</td><td>§2.1</td><td>拍卖、pay-as-clear、EUPHEMIA</td><td>EPEX</td></tr><tr><td>日内怎么定价</td><td>§2.2</td><td>连续交易 pay-as-bid；也有日内拍卖</td><td>EPEX</td></tr><tr><td>15 分钟什么时候开始</td><td>§0.2</td><td>2025-10-01 起 SDAC 多数区域</td><td>EPEX</td></tr><tr><td>价格下限多少</td><td>§3.4</td><td>日前 -500 €/MWh；日内 -9,999 €/MWh</td><td>EPEX/ACER</td></tr><tr><td>平衡市场有哪些</td><td>§5</td><td>FCR、aFRR、mFRR；容量/能量分开</td><td>regelleistung.net</td></tr><tr><td>FCR 怎么定价</td><td>§5.3</td><td>容量-only、pay-as-clear、对称</td><td>regelleistung.net</td></tr><tr><td>aFRR/mFRR 容量怎么定价</td><td>§5.3</td><td>pay-as-bid；能量 pay-as-clear</td><td>regelleistung.net</td></tr><tr><td>再调度是什么</td><td>§6</td><td>Redispatch 2.0，≥100 kW，TSO/DSO</td><td>EnWG §13a</td></tr><tr><td>EEG 负价怎么办</td><td>§7.1</td><td>负价时段适用价值归零，无 4/6 小时门槛</td><td>EEG §51</td></tr><tr><td>EEG 附加费还有吗</td><td>§4.3</td><td>2022-07-01 起为零；§60 已废止</td><td>EEG/联邦预算</td></tr><tr><td>容量机制什么时候</td><td>§8</td><td>2031 年生效；2026 年招标</td><td>EU/StromVKG</td></tr><tr><td>中国主体怎么进</td><td>§9</td><td>主体 + REMIT + 平衡组 + EPEX/ECC</td><td>BNetzA/EPEX</td></tr><tr><td>最常见的坑</td><td>§10</td><td>时区、15 分钟、容量/能量、EEG 负价、电网费</td><td>本文总结</td></tr></tbody></table></div>
 <hr>
 <h2 id="s61">与技能和其他笔记的分工</h2>
 <aside class="note"><p><strong>横向口径</strong>：把本市场的装机、储能存量/管线、年度均价、负价小时、捕获率、并网排队与降额因子与其余九市场对照，见<a href="海外市场同口径快照与投决日历-2026-11.html">《海外市场同口径快照与投决日历》</a> §1–§2；中国主体进入六道门槛见该文 §4，C 级数字复核入口见 §5。</p></aside>
-<div class="table-wrap"><table><thead><tr><th>主题</th><th>本文</th><th>电力交易技能</th><th>其他笔记</th></tr></thead><tbody><tr><td>德国机构/法规</td><td>主责</td><td>概述</td><td>—</td></tr><tr><td>日前/日内交易</td><td>主责（机制）</td><td>策略/报价</td><td>量化报价笔记</td></tr><tr><td>15 分钟 MTU</td><td>主责</td><td>概述</td><td>—</td></tr><tr><td>平衡市场</td><td>主责（规则/产品）</td><td>策略/优化</td><td>储能笔记（海外业务）</td></tr><tr><td>再调度 2.0</td><td>主责（机制）</td><td>概述</td><td>—</td></tr><tr><td>EEG 支持/负价</td><td>主责（机制）</td><td>概述</td><td>新能源技能（项目收益）</td></tr><tr><td>电网费/§14a</td><td>主责（机制）</td><td>概述</td><td>电价笔记（账单）</td></tr><tr><td>容量机制</td><td>主责（机制）</td><td>概述</td><td>储能笔记（海外业务/投决）</td></tr><tr><td>储能业务（大储/工商储）</td><td>概述</td><td>市场参与</td><td>《海外储能业务》主责</td></tr><tr><td>中国主体进入</td><td>主责（路径）</td><td>概述</td><td>风险信用笔记（担保）</td></tr><tr><td>中国现货/省间</td><td>不展开</td><td>主责</td><td>省间笔记</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>主题</th><th>本文</th><th>电力交易技能</th><th>其他笔记</th></tr></thead><tbody><tr><td>德国机构/法规</td><td>主责</td><td>概述</td><td>—</td></tr><tr><td>日前/日内交易</td><td>主责（机制）</td><td>策略/报价</td><td>量化报价笔记</td></tr><tr><td>15 分钟 MTU</td><td>主责</td><td>概述</td><td>—</td></tr><tr><td>平衡市场</td><td>主责（规则/产品）</td><td>策略/优化</td><td>储能笔记（海外业务）</td></tr><tr><td>再调度 2.0</td><td>主责（机制）</td><td>概述</td><td>—</td></tr><tr><td>EEG 支持/负价</td><td>主责（机制）</td><td>概述</td><td>新能源技能（项目收益）</td></tr><tr><td>电网费/§14a</td><td>主责（机制）</td><td>概述</td><td>电价笔记（账单）</td></tr><tr><td>容量机制</td><td>主责（机制）</td><td>概述</td><td>储能笔记（海外业务/投决）</td></tr><tr><td>储能业务（大储/工商储）</td><td>概述</td><td>市场参与</td><td>《海外储能业务》主责</td></tr><tr><td>中国主体进入</td><td>主责（路径）</td><td>概述</td><td>风险信用笔记（担保）</td></tr><tr><td>中国现货/省间</td><td>不展开</td><td>主责</td><td>省间笔记</td></tr></tbody></table></div>
 <ul><li><strong>本文是“德国交易手册”</strong>：遇到“怎么开户、怎么报平衡、EEG 负价怎么算、再调度怎么补偿”，先看这里。</li><li><strong>遇到“怎么报价、怎么对冲、怎么做量化”</strong>：回到电力交易技能和量化报价笔记。</li><li><strong>遇到“储能项目能不能投、LCOS 多少”</strong>：查储能投资技能（中国口径）与《海外储能业务》（海外口径）；本文只讲德国市场规则。</li><li><strong>遇到“中国省间/省内规则”</strong>：查省间笔记和省级状态表；不要把德国规则套到中国。</li></ul>
     </article>
 
-    <section class="related" aria-label="相关模块">
-      <h2>相关模块</h2>
-      <ul>
-        <li><a href="省间与跨区交易-2026-11.html">省间与跨区交易（2026 版）</a></li>
-        <li><a href="国际电价比较-方法与模板-2026-11.html">国际电价比较：方法与模板</a></li>
-        <li><a href="新能源项目开发与并网-2026-11.html">新能源项目开发与并网</a></li>
-        <li><a href="储能投资与运营-2026-11.html">储能投资与运营</a></li>
-        <li><a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算（2026 版）</a></li>
-      </ul>
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>5</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="省间与跨区交易-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>省间与跨区交易（2026 版）</b>
+          <span>四层市场、省间中长期与现货、南方与长三角区域市场、跨经营区与输电权，附落地成本算例。</span>
+        </a>
+        <a class="related-card" href="国际电价比较-方法与模板-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>国际电价比较：方法与模板</b>
+          <span>先统一用户、构成、税费、汇率与时间口径，再做名义价与 PPP 排名。</span>
+        </a>
+        <a class="related-card" href="新能源项目开发与并网-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>新能源项目开发与并网</b>
+          <span>136 号机制电价、省级竞价、P50/P90、LCOE、并网标准与省别画像。</span>
+        </a>
+        <a class="related-card" href="储能投资与运营-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>储能投资与运营</b>
+          <span>114/1656/411/1583 文号、容量电价时长折算、投决算例、收入堆叠、退化质保与敏感性。</span>
+        </a>
+      </div>
+      <p class="related-rest"><b>更多关联</b><a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算（2026 版）</a></p>
     </section>
+
 
     <nav class="pager" aria-label="上下篇">
           <a class="prev" href="澳大利亚NEM电力市场-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">澳大利亚 NEM 电力市场（2026 版）</span></a>
@@ -344,7 +368,11 @@ DE-LU 日前价格（每 MTU）</code></pre>
 
     <footer class="doc-foot">
       <div class="lic">本页由 <a href="../德国电力市场-2026-11.md">knowledge/德国电力市场-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
-      <div><a href="../index.html">返回知识库总览 →</a></div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
     </footer>
   </main>
 
@@ -412,7 +440,7 @@ DE-LU 日前价格（每 MTU）</code></pre>
             <li class="lv3"><a href="#s59">口径提醒</a></li>
             <li class="lv2"><a href="#s60">速查</a></li>
             <li class="lv2"><a href="#s61">与技能和其他笔记的分工</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="44">展开 44 个小节</button>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="44" data-more-label="展开 44 个小节" data-less-label="收起小节">展开 44 个小节</button>
   </aside>
 </div>
 

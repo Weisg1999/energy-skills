@@ -19,9 +19,9 @@
 <div class="scrim"></div>
 
 <header class="topbar">
-  <a class="back" href="../index.html">← 知识库</a>
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
   <div class="crumb">
-    <span class="crumb-cat">10 / STORAGE</span>
+    <span class="crumb-cat">07 · STORAGE</span>
     <span class="crumb-sep">/</span>
     <span class="crumb-doc">储能投资与运营</span>
   </div>
@@ -30,7 +30,14 @@
       <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
       <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-    <a class="src" href="../储能投资与运营-2026-11.md">.md 源文件</a>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../储能投资与运营-2026-11.md">.md 源文件<small>knowledge/储能投资与运营-2026-11.md</small></a>
+
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
     <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
   </div>
 </header>
@@ -38,7 +45,7 @@
 <div class="shell">
   <aside class="sidebar" id="nav">
     <div class="nav-kicker">当前分类</div>
-    <div class="nav-num">10 / STORAGE</div>
+    <div class="nav-num">07 · STORAGE</div>
     <h2 class="nav-cat"><a href="../index.html#storage">储能与 EMS</a></h2>
     <ul class="nav-list">
               <li><a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线、安全与构网型并网</a></li>
@@ -50,24 +57,24 @@
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
       <ul>
-              <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
-              <li><a href="../index.html#spot"><b>05</b>电力现货与省间交易</a></li>
-              <li><a href="../index.html#intl"><b>06</b>海外市场</a></li>
-              <li><a href="../index.html#cross"><b>07</b>横向专题</a></li>
-              <li><a href="../index.html#price"><b>08</b>电价</a></li>
-              <li><a href="../index.html#renewable"><b>09</b>新能源与并网</a></li>
-              <li><a href="../index.html#park"><b>11</b>综合能源与零碳园区</a></li>
-              <li><a href="../index.html#carbon"><b>12</b>碳市场与碳管理</a></li>
-              <li><a href="../index.html#vpp"><b>13</b>虚拟电厂</a></li>
-              <li><a href="../index.html#index"><b>14</b>索引、查证与工具</a></li>
-              <li><a href="../index.html#research"><b>15</b>调研底稿</a></li>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#intl"><b>03</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>04</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>05</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>06</b>新能源与并网</a></li>
+              <li><a href="../index.html#park"><b>08</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>09</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>10</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>11</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>12</b>调研底稿</a></li>
       </ul>
     </div>
   </aside>
 
   <main class="main" id="main">
     <header class="doc-head">
-      <div class="kicker">10 / STORAGE<i>知识模块</i></div>
+      <div class="kicker">07 · STORAGE<i>知识模块</i></div>
       <h1 class="doc-title">储能投资与运营：政策、成本与口径底稿（2026-11）</h1>
       <p class="lede">114/1656/411/1583 文号、容量电价时长折算、投决算例、收入堆叠、退化质保与敏感性。</p>
       <p class="hook">政策、成本与口径底稿</p>
@@ -98,11 +105,11 @@
 <pre><code>容量电价 = 当地煤电容量电价标准 × 折算比例
 折算比例 = min(满功率连续放电时长 ÷ 全年最长净负荷高峰持续时长, 1)</code></pre>
 <ul><li><strong>要点</strong>：国家定规则，省级定标准、分母时长与执行期限；跨省不可套用；容量电费纳入系统运行费用，由工商业用户按用电量比例分摊（B 级解读）。</li><li><strong>省级落地（截至 2026-10，B/C 级，待核实）</strong>：</li></ul>
-<div class="table-wrap"><table><thead><tr><th>省份</th><th>标准</th><th>分母/口径</th><th>状态</th><th>来源级别</th></tr></thead><tbody><tr><td>安徽</td><td>165 元/kW·年（含税）</td><td>暂定 6 h；2 h≈55、4 h≈110、6 h=165</td><td>2027-01-01 执行（皖发改价格〔2026〕526号，2026-09-30）</td><td>A</td></tr><tr><td>甘肃</td><td>330 元/kW·年</td><td>6 h 基准，执行 2 年</td><td>2025-07 起（可靠容量补偿）</td><td>B</td></tr><tr><td>湖北</td><td>165 元/kW·年</td><td>清单制，按月考核</td><td>2025 年底起</td><td>B</td></tr><tr><td>青海</td><td>185 元/kW·年</td><td>据行业媒体</td><td>待核实</td><td>C</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>省份</th><th>标准</th><th>分母/口径</th><th>状态</th><th>来源级别</th></tr></thead><tbody><tr><td>安徽</td><td>165 元/kW·年（含税）</td><td>暂定 6 h；2 h≈55、4 h≈110、6 h=165</td><td>2027-01-01 执行（皖发改价格〔2026〕526号，2026-09-30）</td><td>A</td></tr><tr><td>甘肃</td><td>330 元/kW·年</td><td>6 h 基准，执行 2 年</td><td>2025-07 起（可靠容量补偿）</td><td>B</td></tr><tr><td>湖北</td><td>165 元/kW·年</td><td>清单制，按月考核</td><td>2025 年底起</td><td>B</td></tr><tr><td>青海</td><td>185 元/kW·年</td><td>据行业媒体</td><td>待核实</td><td>C</td></tr></tbody></table></div>
 <ul><li><strong>读法</strong>：2 h 系统在 6 h 分母下只能拿 1/3，4 h 拿 2/3；&quot;长时化&quot;不是技术偏好，而是容量电价的直接结果。清单、考核与可用率任一不满足，容量电费会被扣减甚至取消。</li></ul>
 <h3 id="s3">1.2 分时电价重构：1656 号文</h3>
 <ul><li><strong>文件</strong>：《电力中长期市场基本规则》（发改能源规〔2025〕1656号），2025-12-17 印发，2026-03-01 施行，有效期 5 年。<strong>A 级</strong>。</li><li><strong>核心条款</strong>：对直接参与市场交易的经营主体，<strong>不再人为规定分时电价水平和时段</strong>；对电网代理购电用户，仍由政府价格主管部门统筹优化峰谷时段与浮动比例。</li><li><strong>落地</strong>：截至 2026-01/02，贵州、河北南网、湖北、陕西、吉林、云南、重庆、辽宁、河南等 9 地明确落地；江苏、山西处于征求意见阶段（C 级媒体汇总，以省级文件为准）。</li><li><strong>对储能的影响</strong>：固定峰谷价差从&quot;政府给定&quot;变成&quot;市场预测&quot;，用户侧储能的纯套利模型失效或收益收窄；项目可研必须从&quot;固定价差 × 循环次数&quot;改为&quot;现货分时预测 + 多市场叠加&quot;。</li><li><strong>两个可核验的省级样本（B/C 级）</strong>：</li></ul>
-<div class="table-wrap"><table><thead><tr><th>省份</th><th>变化</th><th>对用户侧储能的影响</th></tr></thead><tbody><tr><td>浙江</td><td>浙发改价格〔2026〕112号，2026-07-01 执行；取消上午高峰，加权价差约 0.83→0.50 元/kWh（降幅约 28.5%）</td><td>一天通常只能一充一放，回本周期拉长</td></tr><tr><td>江苏</td><td>2026-10-13《2027年江苏电力零售市场交易工作指引》取消零售套餐固定价格电量比例、现货联动比例与比例分成；峰谷价差约 0.85→0.65 元/kWh（降幅约 25%）</td><td>纯套利回本由约 4 年拉长到 7–10 年（媒体测算，C 级）</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>省份</th><th>变化</th><th>对用户侧储能的影响</th></tr></thead><tbody><tr><td>浙江</td><td>浙发改价格〔2026〕112号，2026-07-01 执行；取消上午高峰，加权价差约 0.83→0.50 元/kWh（降幅约 28.5%）</td><td>一天通常只能一充一放，回本周期拉长</td></tr><tr><td>江苏</td><td>2026-10-13《2027年江苏电力零售市场交易工作指引》取消零售套餐固定价格电量比例、现货联动比例与比例分成；峰谷价差约 0.85→0.65 元/kWh（降幅约 25%）</td><td>纯套利回本由约 4 年拉长到 7–10 年（媒体测算，C 级）</td></tr></tbody></table></div>
 <ul><li><strong>纪律</strong>：不要把&quot;取消固定分时电价&quot;说成&quot;取消分时电价&quot;。取消的是政府核定的固定表和固定比例，市场化分时定价仍在，只是定价主体从政府变为市场。</li></ul>
 <h3 id="s4">1.3 辅助服务：411 号文</h3>
 <ul><li><strong>文件</strong>：《电力辅助服务市场基本规则》（发改能源规〔2025〕411号），2025-04-03 印发。<strong>A 级</strong>。</li><li><strong>定义</strong>：为维持电力系统安全稳定运行、保证电能质量，除正常电能生产、输送、使用外，由可调节资源提供的调峰、调频、备用、爬坡等服务。</li><li><strong>对储能</strong>：储能可作为独立主体或聚合主体参与；收益由容量补偿、里程补偿、考核等构成，具体品种、价格与结算以省级规则和&quot;两个细则&quot;为准。</li><li><strong>注意</strong>：辅助服务收入不是免费增量，会占用功率、能量与 SOC 裕度，必须扣减套利机会成本。</li></ul>
@@ -116,26 +123,26 @@
 <hr>
 <h2 id="s7">2. 成本与价格观察（2026-09/10，B 级）</h2>
 <h3 id="s8">2.1 公开中标区间</h3>
-<div class="table-wrap"><table><thead><tr><th>口径</th><th>区间（元/Wh）</th><th>均价/备注</th><th>时点</th></tr></thead><tbody><tr><td>2 h 储能系统</td><td>0.53–0.86</td><td>加权均价约 0.60</td><td>2026-09</td></tr><tr><td>4 h 储能系统</td><td>0.52–0.58</td><td>加权均价约 0.53</td><td>2026-09</td></tr><tr><td>2 h 储能 EPC</td><td>0.68–1.50</td><td>加权均价约 1.02</td><td>2026-09</td></tr><tr><td>4 h 储能 EPC</td><td>0.69–0.99</td><td>周均价 0.79–0.99</td><td>2026-09/10</td></tr><tr><td>近期单体项目</td><td>0.678–1.199</td><td>新疆 0.678、宁夏 0.881、青海 0.899、河南 1.054、山西 1.199</td><td>2026-11-02/04</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>口径</th><th>区间（元/Wh）</th><th>均价/备注</th><th>时点</th></tr></thead><tbody><tr><td>2 h 储能系统</td><td>0.53–0.86</td><td>加权均价约 0.60</td><td>2026-09</td></tr><tr><td>4 h 储能系统</td><td>0.52–0.58</td><td>加权均价约 0.53</td><td>2026-09</td></tr><tr><td>2 h 储能 EPC</td><td>0.68–1.50</td><td>加权均价约 1.02</td><td>2026-09</td></tr><tr><td>4 h 储能 EPC</td><td>0.69–0.99</td><td>周均价 0.79–0.99</td><td>2026-09/10</td></tr><tr><td>近期单体项目</td><td>0.678–1.199</td><td>新疆 0.678、宁夏 0.881、青海 0.899、河南 1.054、山西 1.199</td><td>2026-11-02/04</td></tr></tbody></table></div>
 <ul><li><strong>口径提醒</strong>：系统价只含电池、BMS、PCS、EMS 等设备；EPC 含设计、施工、并网、土建等，边界差异大。<strong>系统价与 EPC 价不可直接比较</strong>，元/Wh 要注明按直流侧还是交流侧额定能量。</li><li><strong>分级</strong>：招中标公告为 B 级公开信息，但不是项目基准价；单个项目受规模、时长、构网型、消防、地形、并网条件影响，偏离均价是常态。</li></ul>
 <h3 id="s9">2.2 成本构成（示意，D 级）</h3>
-<div class="table-wrap"><table><thead><tr><th>科目</th><th>典型内容</th><th>测算提醒</th></tr></thead><tbody><tr><td>电池与 BMS</td><td>电芯、模组、簇级管理</td><td>占设备成本大头，价格随锂价波动</td></tr><tr><td>PCS 与升压</td><td>变流器、变压器、开关柜</td><td>构网型、高低电压穿越会增加成本</td></tr><tr><td>EMS/SCADA</td><td>监控、调度、通信</td><td>要含 AGC/AVC 与双网冗余</td></tr><tr><td>消防与安全</td><td>探测、灭火、泄爆、隔离</td><td>标准升级会带来改造支出</td></tr><tr><td>土建与并网</td><td>基础、舱体、集电线路、升压站</td><td>山地、滩涂、高寒地区差异大</td></tr><tr><td>建设期费用</td><td>设计、监理、保险、融资</td><td>常被漏计，需单列</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>科目</th><th>典型内容</th><th>测算提醒</th></tr></thead><tbody><tr><td>电池与 BMS</td><td>电芯、模组、簇级管理</td><td>占设备成本大头，价格随锂价波动</td></tr><tr><td>PCS 与升压</td><td>变流器、变压器、开关柜</td><td>构网型、高低电压穿越会增加成本</td></tr><tr><td>EMS/SCADA</td><td>监控、调度、通信</td><td>要含 AGC/AVC 与双网冗余</td></tr><tr><td>消防与安全</td><td>探测、灭火、泄爆、隔离</td><td>标准升级会带来改造支出</td></tr><tr><td>土建与并网</td><td>基础、舱体、集电线路、升压站</td><td>山地、滩涂、高寒地区差异大</td></tr><tr><td>建设期费用</td><td>设计、监理、保险、融资</td><td>常被漏计，需单列</td></tr></tbody></table></div>
 <h3 id="s10">2.3 运维与运营成本（示意，D 级）</h3>
 <ul><li>O&amp;M：按 CAPEX 的 1.5%–3.0%/年做初筛；</li><li>辅助电源与站用电：按吞吐电量或额定功率估算，不能按零计；</li><li>保险：财产险 + 第三者责任，按 CAPEX 的 0.2%–0.5%/年；</li><li>土地/屋顶租金、通信、管理、人工；</li><li>增容/更换：按 SOH 阈值与 Warranty 条款单列，不能假设&quot;15 年不换电池&quot;。</li></ul>
 <hr>
 <h2 id="s11">3. 运行指标口径：GB/T 36549-2018</h2>
 <ul><li><strong>标准</strong>：《电化学储能电站运行指标及评价》（GB/T 36549-2018），适用于额定功率不小于 500 kW 且额定能量不小于 500 kWh 的电站，其他规模可参照。<strong>A 级</strong>。</li><li><strong>指标框架</strong>：</li></ul>
-<div class="table-wrap"><table><thead><tr><th>类别</th><th>指标</th><th>口径</th></tr></thead><tbody><tr><td>电量</td><td>上网电量、下网电量、站用电量、运行小时数、等效利用系数</td><td>关口表/单元计量</td></tr><tr><td>能效</td><td>综合效率、储能损耗率、站用电率</td><td>综合效率 = 上网电量 ÷ 下网电量（AC-AC）</td></tr><tr><td>可靠性</td><td>可用系数、非计划停运系数</td><td>可运行时间/统计时间；停运次数与时长</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>类别</th><th>指标</th><th>口径</th></tr></thead><tbody><tr><td>电量</td><td>上网电量、下网电量、站用电量、运行小时数、等效利用系数</td><td>关口表/单元计量</td></tr><tr><td>能效</td><td>综合效率、储能损耗率、站用电率</td><td>综合效率 = 上网电量 ÷ 下网电量（AC-AC）</td></tr><tr><td>可靠性</td><td>可用系数、非计划停运系数</td><td>可运行时间/统计时间；停运次数与时长</td></tr></tbody></table></div>
 <ul><li><strong>2026 年上半年行业数据（中电联，B 级）</strong>：电化学储能电站平均利用率指数 42%，整体可用系数 0.98；非计划停运 901 次，单次平均 31.55 h，电池问题导致的非计划停运次数占比 44.28%。</li><li><strong>读法</strong>：可用系数高不等于利用率高；综合效率必须扣辅助设备能耗，只算电池或 PCS 效率会高估 3–5 个百分点。</li></ul>
 <hr>
 <h2 id="s12">4. 投资测算：参数、算例与敏感性</h2>
 <aside class="note"><p>本节给出一套可复核的输入、公式与结果，用来判断&quot;数字是否自洽&quot;。完整的现金流模型、LCOS、DSCR 与工具实现见<a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a>；本文只保留投决底稿，避免两处维护漂移。以下算例均为 D 级合成数据，不对应任何真实项目。</p></aside>
 <h3 id="s13">4.1 技术参数</h3>
-<div class="table-wrap"><table><thead><tr><th>参数</th><th>单位</th><th>说明</th></tr></thead><tbody><tr><td>额定功率/额定能量</td><td>MW/MWh</td><td>注明 AC/DC 侧</td></tr><tr><td>可用能量比例</td><td>%</td><td>DoD、SOC 窗口、BOL/EOL</td></tr><tr><td>往返效率 RTE</td><td>%</td><td>AC-AC；单程取平方根</td></tr><tr><td>年循环次数</td><td>次/年</td><td>与价差、调度、考核匹配</td></tr><tr><td>可用率</td><td>%</td><td>与容量电价考核口径一致</td></tr><tr><td>辅助电源</td><td>% 或 MWh/年</td><td>不能漏</td></tr><tr><td>年衰减率</td><td>%/年</td><td>线性/雨流；与质保条款对应</td></tr><tr><td>寿命/增容计划</td><td>年</td><td>是否更换、何时增容</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>参数</th><th>单位</th><th>说明</th></tr></thead><tbody><tr><td>额定功率/额定能量</td><td>MW/MWh</td><td>注明 AC/DC 侧</td></tr><tr><td>可用能量比例</td><td>%</td><td>DoD、SOC 窗口、BOL/EOL</td></tr><tr><td>往返效率 RTE</td><td>%</td><td>AC-AC；单程取平方根</td></tr><tr><td>年循环次数</td><td>次/年</td><td>与价差、调度、考核匹配</td></tr><tr><td>可用率</td><td>%</td><td>与容量电价考核口径一致</td></tr><tr><td>辅助电源</td><td>% 或 MWh/年</td><td>不能漏</td></tr><tr><td>年衰减率</td><td>%/年</td><td>线性/雨流；与质保条款对应</td></tr><tr><td>寿命/增容计划</td><td>年</td><td>是否更换、何时增容</td></tr></tbody></table></div>
 <h3 id="s14">4.2 收入参数</h3>
-<div class="table-wrap"><table><thead><tr><th>收入</th><th>关键参数</th><th>主要风险</th></tr></thead><tbody><tr><td>峰谷/现货套利</td><td>充放电价、循环次数、价差持续时长</td><td>固定分时退出、价差收窄、负价</td></tr><tr><td>容量电价</td><td>省级标准、分母时长、清单资格、可用率</td><td>清单未入、考核扣减、政策退坡</td></tr><tr><td>容量租赁</td><td>租赁价格、租期、履约率</td><td>新能源配储需求下降、违约</td></tr><tr><td>辅助服务</td><td>品种、容量/里程价格、K 值、考核</td><td>规则变化、里程下降、能量占用</td></tr><tr><td>需量管理</td><td>核定值、实际需量、需量电价</td><td>生产波动、充电抬高需量</td></tr><tr><td>需求响应/VPP</td><td>补贴标准、调用次数、结算周期</td><td>补贴退坡、调用不确定</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>收入</th><th>关键参数</th><th>主要风险</th></tr></thead><tbody><tr><td>峰谷/现货套利</td><td>充放电价、循环次数、价差持续时长</td><td>固定分时退出、价差收窄、负价</td></tr><tr><td>容量电价</td><td>省级标准、分母时长、清单资格、可用率</td><td>清单未入、考核扣减、政策退坡</td></tr><tr><td>容量租赁</td><td>租赁价格、租期、履约率</td><td>新能源配储需求下降、违约</td></tr><tr><td>辅助服务</td><td>品种、容量/里程价格、K 值、考核</td><td>规则变化、里程下降、能量占用</td></tr><tr><td>需量管理</td><td>核定值、实际需量、需量电价</td><td>生产波动、充电抬高需量</td></tr><tr><td>需求响应/VPP</td><td>补贴标准、调用次数、结算周期</td><td>补贴退坡、调用不确定</td></tr></tbody></table></div>
 <h3 id="s15">4.3 财务参数</h3>
-<div class="table-wrap"><table><thead><tr><th>参数</th><th>常用初筛取值</th><th>说明</th></tr></thead><tbody><tr><td>项目折现率</td><td>6%–8%</td><td>与资本成本、风险匹配</td></tr><tr><td>资本金 IRR 目标</td><td>8%–10%</td><td>不代表实际可达到</td></tr><tr><td>所得税</td><td>25%</td><td>注意三免三减半等适用性</td></tr><tr><td>折旧年限</td><td>10–15 年</td><td>与会计/税务口径一致</td></tr><tr><td>残值</td><td>0–5%</td><td>电池残值争议大，宜保守</td></tr><tr><td>DSCR</td><td>≥1.2</td><td>融资方通常要求</td></tr><tr><td>贷款期限/利率</td><td>8–12 年 / 3.5%–5%</td><td>以实际授信为准</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>参数</th><th>常用初筛取值</th><th>说明</th></tr></thead><tbody><tr><td>项目折现率</td><td>6%–8%</td><td>与资本成本、风险匹配</td></tr><tr><td>资本金 IRR 目标</td><td>8%–10%</td><td>不代表实际可达到</td></tr><tr><td>所得税</td><td>25%</td><td>注意三免三减半等适用性</td></tr><tr><td>折旧年限</td><td>10–15 年</td><td>与会计/税务口径一致</td></tr><tr><td>残值</td><td>0–5%</td><td>电池残值争议大，宜保守</td></tr><tr><td>DSCR</td><td>≥1.2</td><td>融资方通常要求</td></tr><tr><td>贷款期限/利率</td><td>8–12 年 / 3.5%–5%</td><td>以实际授信为准</td></tr></tbody></table></div>
 <h3 id="s16">4.4 投决算例 A：独立储能 100 MW/200 MWh</h3>
 <p><strong>输入假设</strong>：2 h 系统，200 MWh 为直流可用电量；RTE 88%，单程效率 <code>η = sqrt(0.88) = 93.81%</code>；充电价 250 元/MWh、放电价 850 元/MWh；1 次/日、330 日/年；单位吞吐退化成本 0.03 元/kWh；CAPEX 1.0 元/Wh；容量电价 165 元/kW·年、分母 6 h；OPEX 为 CAPEX 的 2.5%；所得税 25%，直线折旧 15 年，折现率 8%，不计残值。</p>
 <p><strong>第一步：套利电量与收益</strong></p>
@@ -148,16 +155,16 @@
 年净套利 = 3,503.7 − 396.8 = 3,106.9 万元</code></pre>
 <aside class="note"><p>交直流口径是最常见的错误来源：200 MWh 是直流电量，不能直接当交流放电量。放电乘 η、充电除 η；把 DC 当 AC 会高估收益约 6%。</p></aside>
 <p><strong>第二步：容量电费与利润表</strong></p>
-<div class="table-wrap"><table><thead><tr><th>行</th><th>计算</th><th>金额</th></tr></thead><tbody><tr><td>年净套利</td><td>见上</td><td>3,106.9 万元</td></tr><tr><td>容量电费</td><td>100,000 kW × 165 元/kW·年 × min(2÷6, 1)</td><td>550.0 万元</td></tr><tr><td>年收入</td><td>3,106.9 + 550.0</td><td>3,656.9 万元</td></tr><tr><td>OPEX</td><td>20,000 × 2.5%</td><td>500.0 万元</td></tr><tr><td>EBITDA</td><td>3,656.9 − 500.0</td><td>3,156.9 万元</td></tr><tr><td>折旧</td><td>20,000 ÷ 15</td><td>1,333.3 万元</td></tr><tr><td>税前利润</td><td>3,156.9 − 1,333.3</td><td>1,823.6 万元</td></tr><tr><td>所得税</td><td>1,823.6 × 25%</td><td>455.9 万元</td></tr><tr><td>税后经营现金流</td><td>1,823.6 − 455.9 + 1,333.3</td><td>2,701.0 万元</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>行</th><th>计算</th><th>金额</th></tr></thead><tbody><tr><td>年净套利</td><td>见上</td><td>3,106.9 万元</td></tr><tr><td>容量电费</td><td>100,000 kW × 165 元/kW·年 × min(2÷6, 1)</td><td>550.0 万元</td></tr><tr><td>年收入</td><td>3,106.9 + 550.0</td><td>3,656.9 万元</td></tr><tr><td>OPEX</td><td>20,000 × 2.5%</td><td>500.0 万元</td></tr><tr><td>EBITDA</td><td>3,656.9 − 500.0</td><td>3,156.9 万元</td></tr><tr><td>折旧</td><td>20,000 ÷ 15</td><td>1,333.3 万元</td></tr><tr><td>税前利润</td><td>3,156.9 − 1,333.3</td><td>1,823.6 万元</td></tr><tr><td>所得税</td><td>1,823.6 × 25%</td><td>455.9 万元</td></tr><tr><td>税后经营现金流</td><td>1,823.6 − 455.9 + 1,333.3</td><td>2,701.0 万元</td></tr></tbody></table></div>
 <p><strong>第三步：指标</strong></p>
-<div class="table-wrap"><table><thead><tr><th>指标</th><th>数值</th><th>读法</th></tr></thead><tbody><tr><td>NPV @8%，15 年</td><td>3,119.4 万元</td><td>过线，但安全垫不厚</td></tr><tr><td>项目 IRR</td><td>10.47%</td><td>高于 8% 门槛约 2.5 个百分点</td></tr><tr><td>静态回收期</td><td>7.40 年</td><td>20,000 ÷ 2,701.0</td></tr><tr><td>LCOS（含充电成本）</td><td>742.24 元/MWh</td><td>与放电价 850 元/MWh 相比空间有限</td></tr><tr><td>LCOS（不含充电）</td><td>458.15 元/MWh</td><td>同一项目差 62%，边界必须写明</td></tr><tr><td>DSCR（70% 债、4.5%、10 年）</td><td>1.53</td><td>高于 1.2 的常见门槛</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>数值</th><th>读法</th></tr></thead><tbody><tr><td>NPV @8%，15 年</td><td>3,119.4 万元</td><td>过线，但安全垫不厚</td></tr><tr><td>项目 IRR</td><td>10.47%</td><td>高于 8% 门槛约 2.5 个百分点</td></tr><tr><td>静态回收期</td><td>7.40 年</td><td>20,000 ÷ 2,701.0</td></tr><tr><td>LCOS（含充电成本）</td><td>742.24 元/MWh</td><td>与放电价 850 元/MWh 相比空间有限</td></tr><tr><td>LCOS（不含充电）</td><td>458.15 元/MWh</td><td>同一项目差 62%，边界必须写明</td></tr><tr><td>DSCR（70% 债、4.5%、10 年）</td><td>1.53</td><td>高于 1.2 的常见门槛</td></tr></tbody></table></div>
 <aside class="note"><p>读法：这个项目&quot;能过&quot;但不高。容量电费贡献 15%，若拿不到容量电价，NPV 转为 −411 万元、IRR 7.66%。投决前先确认清单资格，再谈设备价格；把 2 h 项目放到 6 h 分母省份，容量电费天然只有三分之一。</p></aside>
 <h3 id="s17">4.5 收入堆叠：顺序、互斥与三维占用</h3>
 <p>收入堆叠不是把每一项收入相加，而是先判断同一时段、同一功率、同一能量能否被重复使用。推荐顺序：</p>
 <ol><li><strong>安全与并网约束</strong>（不可交易）：保护定值、电压/频率支撑、涉网试验；</li><li><strong>考核与合同履约</strong>：容量电价可用率、容量租赁可用率、辅助服务考核；</li><li><strong>能量套利</strong>：现货/峰谷，决定 SOC 主循环；</li><li><strong>辅助服务</strong>：调频、备用、爬坡，占用功率与 SOC 裕度；</li><li><strong>需量/需求响应</strong>：用户侧削峰，占用尖峰时段功率与电量。</li></ol>
 <p>原因：前两项决定&quot;能不能拿钱、会不会罚钱&quot;，后两项才是增量。把辅助服务放在套利之前，会用高价值能量去换低价值里程。</p>
 <p><strong>三维占用校核</strong>：</p>
-<div class="table-wrap"><table><thead><tr><th>维度</th><th>套利占用</th><th>调频占用</th><th>备用占用</th><th>需量占用</th></tr></thead><tbody><tr><td>功率</td><td>充放功率</td><td>调频容量</td><td>备用容量</td><td>削峰功率</td></tr><tr><td>能量</td><td>充放电量</td><td>能量中性裕度</td><td>持续时间内电量</td><td>削峰时长</td></tr><tr><td>时间</td><td>峰谷时段</td><td>全天响应</td><td>调用时段</td><td>尖峰时段</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>套利占用</th><th>调频占用</th><th>备用占用</th><th>需量占用</th></tr></thead><tbody><tr><td>功率</td><td>充放功率</td><td>调频容量</td><td>备用容量</td><td>削峰功率</td></tr><tr><td>能量</td><td>充放电量</td><td>能量中性裕度</td><td>持续时间内电量</td><td>削峰时长</td></tr><tr><td>时间</td><td>峰谷时段</td><td>全天响应</td><td>调用时段</td><td>尖峰时段</td></tr></tbody></table></div>
 <p>同一时段多项叠加时，取最大值而不是求和；跨时段叠加要做 SOC 仿真，不能按日总量简单相加。</p>
 <p><strong>物理天花板</strong>：</p>
 <pre><code>年放电量上限 ≈ P × H × 365 × 可用率
@@ -165,17 +172,17 @@
 <p>算例 A 的年放电量为 61,914.6 MWh；按 850 元/MWh 计算，毛收入上限约 5,263 万元，扣掉充电成本后才是可分配收入。任何&quot;年收入&quot;超过这个天花板，一定是重复计算、把 DC 当 AC，或把容量/租赁收入重复计入了套利。</p>
 <h3 id="s18">4.6 退化、质保与增容进现金流</h3>
 <p>退化有三种口径，精度与数据要求依次提高：</p>
-<div class="table-wrap"><table><thead><tr><th>口径</th><th>怎么算</th><th>适用</th><th>风险</th></tr></thead><tbody><tr><td>循环次数</td><td>年循环 × 年限</td><td>初筛</td><td>低估高 SOC 浮充、浅充浅放</td></tr><tr><td>吞吐量</td><td>年充放电量 × 单位吞吐成本</td><td>财务测算</td><td>单位成本需按质保/实测标定</td></tr><tr><td>雨流/SOH</td><td>雨流计数 + 衰减模型</td><td>精细运营</td><td>数据要求高</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>口径</th><th>怎么算</th><th>适用</th><th>风险</th></tr></thead><tbody><tr><td>循环次数</td><td>年循环 × 年限</td><td>初筛</td><td>低估高 SOC 浮充、浅充浅放</td></tr><tr><td>吞吐量</td><td>年充放电量 × 单位吞吐成本</td><td>财务测算</td><td>单位成本需按质保/实测标定</td></tr><tr><td>雨流/SOH</td><td>雨流计数 + 衰减模型</td><td>精细运营</td><td>数据要求高</td></tr></tbody></table></div>
 <p>算例 A 用吞吐口径：132,269.7 MWh × 0.03 元/kWh = 396.8 万元/年。若单位退化成本从 0.03 升到 0.06 元/kWh，年收益减少 396.8 万元，IRR 从 10.47% 降到 8.47%。退化成本只能在&quot;收入折减&quot;和&quot;成本扣除&quot;中选一种，两边同时扣会重复计算。</p>
 <p><strong>质保与增容</strong>：</p>
 <ul><li>质保通常以 SOH 70%–80% 为 EOL；到阈值后可用能量下降，若仍按原容量申报，容量电价与租赁考核会不合格；</li><li>增容能量 ≈ <code>E × (目标 SOH ÷ 当前 SOH − 1)</code>；200 MWh 在 80% SOH 时补到 100% 需 +50 MWh；</li><li>增容/更换的 CAPEX、停机损失、重新并网试验费要进第 k 年现金流，不能假设&quot;15 年不换电池&quot;；</li><li>算例 A 为简化未计更换，因此它的 10.47% 应理解为&quot;首轮电池寿命内&quot;的收益率；若第 10–12 年更换电池，IRR 会明显下降。</li></ul>
-<div class="table-wrap"><table><thead><tr><th>事件</th><th>进入现金流的方式</th><th>常见漏项</th></tr></thead><tbody><tr><td>年退化</td><td>收入按可用能量折减，或扣退化成本</td><td>收入与成本双重扣减</td></tr><tr><td>质保到期/更换</td><td>第 k 年 CAPEX + 停机损失</td><td>只算设备价，不算停机与并网</td></tr><tr><td>增容</td><td>增容 CAPEX + 新增收入</td><td>未重算考核容量与租赁合同</td></tr><tr><td>退役</td><td>回收收入 − 处置成本</td><td>默认残值为正</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>事件</th><th>进入现金流的方式</th><th>常见漏项</th></tr></thead><tbody><tr><td>年退化</td><td>收入按可用能量折减，或扣退化成本</td><td>收入与成本双重扣减</td></tr><tr><td>质保到期/更换</td><td>第 k 年 CAPEX + 停机损失</td><td>只算设备价，不算停机与并网</td></tr><tr><td>增容</td><td>增容 CAPEX + 新增收入</td><td>未重算考核容量与租赁合同</td></tr><tr><td>退役</td><td>回收收入 − 处置成本</td><td>默认残值为正</td></tr></tbody></table></div>
 <h3 id="s19">4.7 O&amp;M、消防与并网合规成本</h3>
-<div class="table-wrap"><table><thead><tr><th>科目</th><th>初筛口径</th><th>算例 A 量级</th><th>容易漏掉的部分</th></tr></thead><tbody><tr><td>O&amp;M</td><td>CAPEX 的 1.5%–3.0%/年</td><td>500 万元/年（2.5%）</td><td>备件、远程监控、年度检修</td></tr><tr><td>保险</td><td>CAPEX 的 0.2%–0.5%/年</td><td>40–100 万元/年</td><td>第三者责任、营业中断险</td></tr><tr><td>辅助电源</td><td>按平均负荷或吞吐电量</td><td>0.3 MW 平均负荷约 131 万元/年</td><td>温控、消防、监控、通信、照明</td></tr><tr><td>消防与安全</td><td>探测、灭火、泄爆、隔离、年检</td><td>与系统价强相关</td><td>标准升级改造、消防验收</td></tr><tr><td>并网与涉网</td><td>升压、AGC/AVC、一次调频、高低穿、通信双网、关口计量、涉网试验</td><td>构网型更高</td><td>电网验收整改、双网通信</td></tr><tr><td>土地/租金/人工</td><td>按当地实际</td><td>视项目</td><td>土地税、屋顶承重加固</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>科目</th><th>初筛口径</th><th>算例 A 量级</th><th>容易漏掉的部分</th></tr></thead><tbody><tr><td>O&amp;M</td><td>CAPEX 的 1.5%–3.0%/年</td><td>500 万元/年（2.5%）</td><td>备件、远程监控、年度检修</td></tr><tr><td>保险</td><td>CAPEX 的 0.2%–0.5%/年</td><td>40–100 万元/年</td><td>第三者责任、营业中断险</td></tr><tr><td>辅助电源</td><td>按平均负荷或吞吐电量</td><td>0.3 MW 平均负荷约 131 万元/年</td><td>温控、消防、监控、通信、照明</td></tr><tr><td>消防与安全</td><td>探测、灭火、泄爆、隔离、年检</td><td>与系统价强相关</td><td>标准升级改造、消防验收</td></tr><tr><td>并网与涉网</td><td>升压、AGC/AVC、一次调频、高低穿、通信双网、关口计量、涉网试验</td><td>构网型更高</td><td>电网验收整改、双网通信</td></tr><tr><td>土地/租金/人工</td><td>按当地实际</td><td>视项目</td><td>土地税、屋顶承重加固</td></tr></tbody></table></div>
 <p>辅助电源的例子值得单独看：0.3 MW 平均负荷 × 8,760 h = 262.8 万 kWh/年，按 0.5 元/kWh 计约 131 万元/年，足以把一个&quot;看起来过线&quot;的项目打到门槛以下。O&amp;M、保险、辅助电源、消防、并网如果已经在 OPEX 或 LCOS 中计过，不要再单列一次；关键是边界写清楚。</p>
 <h3 id="s20">4.8 敏感性与盈亏平衡</h3>
 <p>算例 A 的单因素敏感性（其余假设不变）：</p>
-<div class="table-wrap"><table><thead><tr><th>情景</th><th>年收入</th><th>NPV @8%</th><th>IRR</th><th>回收期</th></tr></thead><tbody><tr><td>基准</td><td>3,656.9 万元</td><td>3,119.4 万元</td><td>10.47%</td><td>7.40 年</td></tr><tr><td>放电价 +100 元/MWh</td><td>4,276.1 万元</td><td>7,094 万元</td><td>13.44%</td><td>6.32 年</td></tr><tr><td>放电价 −100 元/MWh</td><td>3,037.8 万元</td><td>−855 万元</td><td>7.29%</td><td>8.94 年</td></tr><tr><td>循环次数 −20%</td><td>3,035.5 万元</td><td>−870 万元</td><td>7.28%</td><td>8.95 年</td></tr><tr><td>CAPEX +10%</td><td>3,656.9 万元</td><td>1,405 万元</td><td>9.03%</td><td>8.05 年</td></tr><tr><td>可用率 95%</td><td>3,474.1 万元</td><td>1,946 万元</td><td>9.56%</td><td>7.80 年</td></tr><tr><td>退化成本 0.06 元/kWh</td><td>3,260.1 万元</td><td>572 万元</td><td>8.47%</td><td>8.32 年</td></tr><tr><td>RTE 85%</td><td>3,535.2 万元</td><td>2,338 万元</td><td>9.87%</td><td>7.66 年</td></tr><tr><td>CAPEX 1.2 元/Wh</td><td>3,656.9 万元</td><td>−310 万元</td><td>7.79%</td><td>8.67 年</td></tr><tr><td>容量电价为 0</td><td>3,106.9 万元</td><td>−411 万元</td><td>7.66%</td><td>8.74 年</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>情景</th><th>年收入</th><th>NPV @8%</th><th>IRR</th><th>回收期</th></tr></thead><tbody><tr><td>基准</td><td>3,656.9 万元</td><td>3,119.4 万元</td><td>10.47%</td><td>7.40 年</td></tr><tr><td>放电价 +100 元/MWh</td><td>4,276.1 万元</td><td>7,094 万元</td><td>13.44%</td><td>6.32 年</td></tr><tr><td>放电价 −100 元/MWh</td><td>3,037.8 万元</td><td>−855 万元</td><td>7.29%</td><td>8.94 年</td></tr><tr><td>循环次数 −20%</td><td>3,035.5 万元</td><td>−870 万元</td><td>7.28%</td><td>8.95 年</td></tr><tr><td>CAPEX +10%</td><td>3,656.9 万元</td><td>1,405 万元</td><td>9.03%</td><td>8.05 年</td></tr><tr><td>可用率 95%</td><td>3,474.1 万元</td><td>1,946 万元</td><td>9.56%</td><td>7.80 年</td></tr><tr><td>退化成本 0.06 元/kWh</td><td>3,260.1 万元</td><td>572 万元</td><td>8.47%</td><td>8.32 年</td></tr><tr><td>RTE 85%</td><td>3,535.2 万元</td><td>2,338 万元</td><td>9.87%</td><td>7.66 年</td></tr><tr><td>CAPEX 1.2 元/Wh</td><td>3,656.9 万元</td><td>−310 万元</td><td>7.79%</td><td>8.67 年</td></tr><tr><td>容量电价为 0</td><td>3,106.9 万元</td><td>−411 万元</td><td>7.66%</td><td>8.74 年</td></tr></tbody></table></div>
 <p><strong>三个结论</strong>：</p>
 <ul><li>价差与循环次数最敏感：放电价 −100 元/MWh 或循环 −20%，NPV 都由正转负；</li><li>CAPEX 与容量电价决定&quot;过不过线&quot;：CAPEX 上浮约 17% 或容量电费归零，NPV 即跌破零；</li><li>RTE 与退化是慢性病：单年不致命，长期持续吃掉收益。</li></ul>
 <p><strong>盈亏平衡的线性近似</strong>（D 级，仅用于判断量级）：</p>
@@ -183,38 +190,66 @@
 <p>这些阈值比单点 IRR 更有用：它们告诉决策者&quot;哪个假设一旦错了，项目就过不了会&quot;。</p>
 <h3 id="s21">4.9 两个对照算例：用户侧 B 与新能源配储 C</h3>
 <p><strong>算例 B：工商业用户侧 5 MW/10 MWh</strong></p>
-<div class="table-wrap"><table><thead><tr><th>项目</th><th>数值</th><th>说明</th></tr></thead><tbody><tr><td>CAPEX（1.2 元/Wh）</td><td>1,200 万元</td><td>含用户侧并网与消防</td></tr><tr><td>可用能量（90%）</td><td>9 MWh</td><td>DoD 与 SOC 窗口折减</td></tr><tr><td>年净套利（价差 0.60 元/kWh）</td><td>136.0 万元</td><td>已扣效率与退化</td></tr><tr><td>年需量节省</td><td>144.0 万元</td><td>削峰 2 MW、需量电价 40 元/kW·月，月省 12 万元</td></tr><tr><td>年收入</td><td>280.0 万元</td><td>套利 49% + 需量 51%</td></tr><tr><td>OPEX（2.5% CAPEX）</td><td>30.0 万元</td><td>O&amp;M、保险、通信</td></tr><tr><td>NPV @8%，10 年</td><td>259.5 万元</td><td>过线但依赖需量</td></tr><tr><td>项目 IRR</td><td>12.59%</td><td>—</td></tr><tr><td>静态回收期</td><td>5.52 年</td><td>—</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>数值</th><th>说明</th></tr></thead><tbody><tr><td>CAPEX（1.2 元/Wh）</td><td>1,200 万元</td><td>含用户侧并网与消防</td></tr><tr><td>可用能量（90%）</td><td>9 MWh</td><td>DoD 与 SOC 窗口折减</td></tr><tr><td>年净套利（价差 0.60 元/kWh）</td><td>136.0 万元</td><td>已扣效率与退化</td></tr><tr><td>年需量节省</td><td>144.0 万元</td><td>削峰 2 MW、需量电价 40 元/kW·月，月省 12 万元</td></tr><tr><td>年收入</td><td>280.0 万元</td><td>套利 49% + 需量 51%</td></tr><tr><td>OPEX（2.5% CAPEX）</td><td>30.0 万元</td><td>O&amp;M、保险、通信</td></tr><tr><td>NPV @8%，10 年</td><td>259.5 万元</td><td>过线但依赖需量</td></tr><tr><td>项目 IRR</td><td>12.59%</td><td>—</td></tr><tr><td>静态回收期</td><td>5.52 年</td><td>—</td></tr></tbody></table></div>
 <aside class="note"><p>读法：需量节省占收入 51%，是用户侧项目的半条命。若实际最大需量从未超过核定值的 105%，削峰不产生基本电费节省，需量收益归零，回收期拉长到约 8.8 年、IRR 跌破 8%。用户侧储能的第一份尽调材料不是设备报价，而是 12 个月的电费单与 96 点负荷曲线。</p></aside>
 <p><strong>算例 C：新能源配储 20 MW/40 MWh</strong></p>
-<div class="table-wrap"><table><thead><tr><th>充电机会成本</th><th>年净收益</th><th>IRR（CAPEX 3,600 万元）</th><th>回收期</th></tr></thead><tbody><tr><td>0 元/MWh</td><td>471.7 万元</td><td>4.98%</td><td>10.4 年</td></tr><tr><td>150 元/MWh</td><td>336.7 万元</td><td>0.26%</td><td>14.7 年</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>充电机会成本</th><th>年净收益</th><th>IRR（CAPEX 3,600 万元）</th><th>回收期</th></tr></thead><tbody><tr><td>0 元/MWh</td><td>471.7 万元</td><td>4.98%</td><td>10.4 年</td></tr><tr><td>150 元/MWh</td><td>336.7 万元</td><td>0.26%</td><td>14.7 年</td></tr></tbody></table></div>
 <p>假设：日可搬移弃电 30 MWh（充电侧）、RTE 88%、放电价 600 元/MWh、300 日/年、退化 0.02 元/kWh。机会成本按充电电量计：0 元时年净收益 471.7 万元，150 元/MWh 时降到 336.7 万元，IRR 从 4.98% 掉到 0.26%。</p>
 <aside class="note"><p>读法：配储不是&quot;有弃电就赚钱&quot;。弃电小时数、放电价、机会成本、CAPEX 四项决定生死；若弃电可参与市场、有机会成本，或没有容量电价/租赁收入，很多配储项目的增量收益不足以覆盖投资。不要把&quot;减少弃电&quot;直接等同于&quot;增加收入&quot;。</p></aside>
 <p><strong>三算例对照</strong>：</p>
-<div class="table-wrap"><table><thead><tr><th>维度</th><th>A 独立储能</th><th>B 用户侧</th><th>C 新能源配储</th></tr></thead><tbody><tr><td>规模</td><td>100 MW/200 MWh</td><td>5 MW/10 MWh</td><td>20 MW/40 MWh</td></tr><tr><td>CAPEX</td><td>20,000 万元</td><td>1,200 万元</td><td>3,600 万元</td></tr><tr><td>年收入/收益</td><td>3,656.9 万元</td><td>280.0 万元</td><td>471.7 / 336.7 万元</td></tr><tr><td>收入结构</td><td>套利 85% + 容量 15%</td><td>套利 49% + 需量 51%</td><td>弃电搬移 100%</td></tr><tr><td>IRR</td><td>10.47%</td><td>12.59%</td><td>4.98% / 0.26%</td></tr><tr><td>过线关键</td><td>容量电价资格</td><td>需量是否超 105%</td><td>弃电是否免费</td></tr><tr><td>主要风险</td><td>价差收窄、循环下降</td><td>需量收益归零</td><td>机会成本、无容量收入</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>A 独立储能</th><th>B 用户侧</th><th>C 新能源配储</th></tr></thead><tbody><tr><td>规模</td><td>100 MW/200 MWh</td><td>5 MW/10 MWh</td><td>20 MW/40 MWh</td></tr><tr><td>CAPEX</td><td>20,000 万元</td><td>1,200 万元</td><td>3,600 万元</td></tr><tr><td>年收入/收益</td><td>3,656.9 万元</td><td>280.0 万元</td><td>471.7 / 336.7 万元</td></tr><tr><td>收入结构</td><td>套利 85% + 容量 15%</td><td>套利 49% + 需量 51%</td><td>弃电搬移 100%</td></tr><tr><td>IRR</td><td>10.47%</td><td>12.59%</td><td>4.98% / 0.26%</td></tr><tr><td>过线关键</td><td>容量电价资格</td><td>需量是否超 105%</td><td>弃电是否免费</td></tr><tr><td>主要风险</td><td>价差收窄、循环下降</td><td>需量收益归零</td><td>机会成本、无容量收入</td></tr></tbody></table></div>
 <aside class="note"><p>三个项目不能用同一套假设。先把收入逐项拆开、把互斥关系说清，再看 IRR；否则&quot;高收益&quot;往往只是把同一度电卖了两次。</p></aside>
 <hr>
 <h2 id="s22">5. 来源分级与查证入口</h2>
-<div class="table-wrap"><table><thead><tr><th>级别</th><th>来源</th><th>本文用法</th></tr></thead><tbody><tr><td>A</td><td>国家发改委、国家能源局、省级发改委/能源局、国家标准全文</td><td>文号、公式、执行时间、标准指标</td></tr><tr><td>B</td><td>交易中心、中电联、招中标公告、行业协会统计</td><td>价格区间、运行指标、项目案例</td></tr><tr><td>C</td><td>行业媒体、券商研报、企业宣传</td><td>省级落地进度、影响测算；必须标&quot;待核实&quot;</td></tr><tr><td>D</td><td>本技能基于公开参数的测算</td><td>算例、敏感性；不得外推为项目收益</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>级别</th><th>来源</th><th>本文用法</th></tr></thead><tbody><tr><td>A</td><td>国家发改委、国家能源局、省级发改委/能源局、国家标准全文</td><td>文号、公式、执行时间、标准指标</td></tr><tr><td>B</td><td>交易中心、中电联、招中标公告、行业协会统计</td><td>价格区间、运行指标、项目案例</td></tr><tr><td>C</td><td>行业媒体、券商研报、企业宣传</td><td>省级落地进度、影响测算；必须标&quot;待核实&quot;</td></tr><tr><td>D</td><td>本技能基于公开参数的测算</td><td>算例、敏感性；不得外推为项目收益</td></tr></tbody></table></div>
 <ul><li><strong>查证入口</strong>：国家发改委价格司、国家能源局政策法规司、各省发改委价格处、电力交易中心信息披露平台、全国标准信息公共服务平台、中国招标投标公共服务平台。</li><li><strong>纪律</strong>：同一数字在不同来源冲突时，先看计量点、含税口径、统计期与项目边界；不能只比数字大小。</li></ul>
 <hr>
 <h2 id="s23">6. 未定事项与观察清单</h2>
 <ul><li>114 号文省级细则的覆盖面、容量电价资金来源与考核扣减规则；</li><li>1656 号文在零售侧的传导方式，固定分时退出后用户侧储能的现货套利能力；</li><li>容量电价分母时长（4/6/8/10 h）与长时储能的政策倾斜；</li><li>辅助服务市场规则修订、调频里程价格与 K 值考核；</li><li>储能消防标准与并网标准升级带来的存量改造；</li><li>2026–2027 年储能系统价格走势与产能出清；</li><li>容量租赁价格与新能源配储需求（C 级，需逐省核实）。</li></ul>
 <hr>
 <h2 id="s24">7. 与技能、笔记的分工</h2>
-<div class="table-wrap"><table><thead><tr><th>问题</th><th>归属</th></tr></thead><tbody><tr><td>储能怎么调度、SOC/备用/退化如何进 MILP</td><td><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a></td></tr><tr><td>微网并离网、PCC 与孤岛</td><td><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a></td></tr><tr><td>现货规则、结算、容量电价政策原文</td><td>电力交易专家</td></tr><tr><td>电价预测、报价与回测</td><td>现货报价量化专家</td></tr><tr><td>VPP 聚合、需求响应运营</td><td><a href="虚拟电厂聚合调度与商业模式-2026-11.html">虚拟电厂：聚合、调度与商业模式</a>、虚拟电厂专家</td></tr><tr><td>碳履约、CCER、CBAM</td><td>碳资产管理专家</td></tr><tr><td>储能值不值得投、怎么报量价、考核怎么扣</td><td><strong>本技能</strong></td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>问题</th><th>归属</th></tr></thead><tbody><tr><td>储能怎么调度、SOC/备用/退化如何进 MILP</td><td><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a></td></tr><tr><td>微网并离网、PCC 与孤岛</td><td><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a></td></tr><tr><td>现货规则、结算、容量电价政策原文</td><td>电力交易专家</td></tr><tr><td>电价预测、报价与回测</td><td>现货报价量化专家</td></tr><tr><td>VPP 聚合、需求响应运营</td><td><a href="虚拟电厂聚合调度与商业模式-2026-11.html">虚拟电厂：聚合、调度与商业模式</a>、虚拟电厂专家</td></tr><tr><td>碳履约、CCER、CBAM</td><td>碳资产管理专家</td></tr><tr><td>储能值不值得投、怎么报量价、考核怎么扣</td><td><strong>本技能</strong></td></tr></tbody></table></div>
 <hr>
 <h2 id="s25">8. 更新记录</h2>
 <ul><li>2026-11-04：首版。核实 114 号、1656 号、411 号、1583/500 号、GB/T 36549-2018 与 2026-09/10 公开中标区间；建立投资测算参数清单与来源分级。</li><li>2026-11-09：维护。把 §4 扩为“参数、算例与敏感性”，补入算例 A（独立 100 MW/200 MWh）的完整电量、利润表、NPV/IRR/LCOS/DSCR，收入堆叠与三维占用，退化/质保/增容，O&amp;M/消防/并网合规成本，单因素敏感性、盈亏平衡阈值，以及用户侧 B、配储 C 两个对照算例；数字与储能技能锁定一致。</li></ul>
     </article>
 
-    <section class="related" aria-label="相关模块">
-      <h2>相关模块</h2>
-      <ul>
-        <li><a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线、安全与构网型并网</a></li>
-        <li><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a></li>
-        <li><a href="中国电价现行政策与查证-2026-11.html">中国电价现行政策与查证</a></li>
-        <li><a href="虚拟电厂聚合调度与商业模式-2026-11.html">虚拟电厂：聚合、调度与商业模式（2026 版）</a></li>
-      </ul>
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>4</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="储能技术路线安全与构网型并网-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>储能技术路线、安全与构网型并网</b>
+          <span>锂电/钠电/液流/压缩空气/飞轮对比，五层安全设防与标准，构网型控制、指标与验收。</span>
+        </a>
+        <a class="related-card" href="储能EMS优化调度-算法与工程-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>储能 EMS 优化调度</b>
+          <span>把储能调度建成 MILP：96 点经济调度、多市场堆叠、SOC/退化、MPC 与安全联锁。</span>
+        </a>
+        <a class="related-card" href="中国电价现行政策与查证-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>中国电价现行政策与查证</b>
+          <span>14 份现行文件总表、2026 年四条主线、电费计算链、两部制/力率算例与省级差异矩阵。</span>
+        </a>
+        <a class="related-card" href="虚拟电厂聚合调度与商业模式-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>虚拟电厂：聚合、调度与商业模式（2026 版）</b>
+          <span>从资源盘点、准入接入、云边控制到市场参与、结算分成与项目测算，补齐 2026 年 VPP 主线。</span>
+        </a>
+      </div>
+
+    </section>
+
+<section class="related" aria-labelledby="paired-skills-title">
+      <div class="related-head"><h2 id="paired-skills-title">配套技能</h2><span>1</span></div>
+      <div class="related-grid">
+        <a class="related-card skill-pair" href="skill-storage-investment-operations.html">
+          <span class="related-type">收益堆叠、投决、退化与考核</span>
+          <b>储能投资与运营</b>
+          <span>技能 · 储能 · 投决 · LCOS</span>
+        </a>
+      </div>
     </section>
 
     <nav class="pager" aria-label="上下篇">
@@ -224,7 +259,11 @@
 
     <footer class="doc-foot">
       <div class="lic">本页由 <a href="../储能投资与运营-2026-11.md">knowledge/储能投资与运营-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
-      <div><a href="../index.html">返回知识库总览 →</a></div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
     </footer>
   </main>
 
@@ -256,7 +295,7 @@
             <li class="lv2"><a href="#s23">6. 未定事项与观察清单</a></li>
             <li class="lv2"><a href="#s24">7. 与技能、笔记的分工</a></li>
             <li class="lv2"><a href="#s25">8. 更新记录</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="17">展开 17 个小节</button>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="17" data-more-label="展开 17 个小节" data-less-label="收起小节">展开 17 个小节</button>
   </aside>
 </div>
 

@@ -9,7 +9,8 @@
  *   scripts/knowledge.config.mjs（分区、导航、固定文案）
  *   knowledge/index.template.html（首页静态骨架）
  *
- * 生成物（禁止手改）：knowledge/index.html、knowledge/html/**、knowledge/credibility.json、knowledge/english-digest.json
+ * 生成物（禁止手改）：knowledge/index.html、knowledge/html/**、knowledge/credibility.json、
+ *   knowledge/english-digest.json、knowledge/search-index.js
  *
  * 用法：
  *   node scripts/build-knowledge-html.mjs            # 生成 index.html 与 knowledge/html/*.html
@@ -19,7 +20,7 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { nav, sections, site, skillDocs } from './knowledge.config.mjs';
+import { nav, sectionTitlesEn, sections, site, skillDocs } from './knowledge.config.mjs';
 import { buildIndex, serializeIndex } from './credibility.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -28,10 +29,15 @@ const htmlDir = join(knowledgeDir, 'html');
 const indexPath = join(knowledgeDir, 'index.html');
 const credibilityPath = join(knowledgeDir, 'credibility.json');
 const englishDigestPath = join(knowledgeDir, 'english-digest.json');
+const searchIndexPath = join(knowledgeDir, 'search-index.js');
 const templatePath = join(knowledgeDir, 'index.template.html');
 const tokensPath = join(knowledgeDir, 'assets', 'tokens.css');
 const checkMode = process.argv.includes('--check');
 const rewriteIndex = !process.argv.includes('--no-index') && !checkMode;
+
+if (!/^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(site.repository || '')) {
+  throw new Error('knowledge.config.mjs: site.repository 必须是有效的 GitHub 仓库地址');
+}
 
 /* ---------------------------------------------------------------- 工具 */
 
@@ -150,6 +156,19 @@ for (const section of sections) {
 }
 
 const byId = new Map(manifest.map((d) => [d.id, d]));
+for (const meta of skillDocs) {
+  if (!Array.isArray(meta.modules) || !meta.modules.length) throw new Error(`knowledge.config.mjs: 技能 ${meta.slug} 缺少 modules 关联`);
+  for (const id of meta.modules) {
+    if (!byId.has(id)) throw new Error(`knowledge.config.mjs: 技能 ${meta.slug} 关联了不存在的模块 ${id}`);
+  }
+}
+const skillsByModuleId = new Map();
+for (const meta of skillDocs) {
+  for (const id of meta.modules) {
+    if (!skillsByModuleId.has(id)) skillsByModuleId.set(id, []);
+    skillsByModuleId.get(id).push(meta);
+  }
+}
 const total = manifest.length;
 const totalLines = manifest.reduce((sum, d) => sum + d.lines, 0);
 const coreCount = manifest.filter((d) => d.level === 'core').length;
@@ -158,7 +177,7 @@ const cutoff = manifest.map((d) => d.cutoff || '').filter((d) => /^\d{4}-\d{2}/.
 
 /* --------------------------------------------------------------- 技能清单 */
 
-const skillSection = { id: 'skill', cat: 'skill', num: '16 / SKILLS', title: '配套技能' };
+const skillSection = { id: 'skill', cat: 'skill', num: '04 / SKILLS', title: '配套技能' };
 
 if (!Array.isArray(skillDocs) || !skillDocs.length) throw new Error('knowledge.config.mjs: skillDocs 不能为空');
 if (skillDocs.length !== site.skills) throw new Error(`skillDocs 有 ${skillDocs.length} 项，与 site.skills=${site.skills} 不一致`);
@@ -198,6 +217,7 @@ const skillManifest = skillDocs.flatMap((meta) => {
       tags: v.tags,
       foot: v.foot,
       related: [],
+      modules: meta.modules,
       md: rel,
       srcHref: `../../${rel}`,
       html: `skill-${meta.slug}${v.suffix}.html`,
@@ -214,8 +234,6 @@ const skillManifest = skillDocs.flatMap((meta) => {
     };
   });
 });
-
-const skillCatalog = skillManifest.filter((d) => !d.hidden);
 
 /* ------------------------------------------------------------- 链接重写 */
 
@@ -551,7 +569,7 @@ function convert(md, options = {}) {
         const style = a && a !== 'left' ? ` style="text-align:${a}"` : '';
         return `<${tag}${style}>${inline(val)}</${tag}>`;
       };
-      let html = '<div class="table-wrap"><table><thead><tr>';
+      let html = '<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr>';
       header.forEach((c, k) => { html += cell('th', c, k); });
       html += '</tr></thead><tbody>';
       rows.forEach((r) => {
@@ -606,21 +624,43 @@ function renderSidebarNav() {
         : item.count === 'skills' ? site.skills
           : item.count;
     const active = item.href === '#top' ? ' class="active"' : '';
-    return `      <a href="${item.href}"${active}><span class="n">${item.n}</span><span>${esc(item.label)}</span><span class="count">${count}</span></a>`;
+    const badge = count === undefined ? '' : `<span class="count">${count}</span>`;
+    return `      <a href="${item.href}"${active}><span class="n">${item.n}</span><span>${esc(item.label)}</span>${badge}</a>`;
   }).join('\n');
 }
 
 function renderCard(doc) {
   const href = `html/${doc.html}`;
-  const search = [doc.search, ...doc.tags.filter((t) => !String(doc.search || '').includes(t))].filter(Boolean).join(' ');
+  const search = [doc.search, doc.title, doc.summary, ...doc.tags].filter(Boolean).join(' ');
   const minutes = readingTime(doc.raw || doc.body || '');
+  const cutoffLabel = doc.cutoff ? `截止 ${esc(doc.cutoff)}` : `约 ${minutes} 分钟`;
   return `          <article class="card" id="${esc(doc.id)}" data-type="${esc(doc.level)}" data-search="${esc(search)}">
-            <div class="card-top"><span class="kind">${esc(doc.kind)}</span><span class="card-meta">阅读约 ${minutes} 分钟</span></div>
+            <div class="card-top"><span class="kind">${esc(doc.kind)}</span><span class="card-meta">约 ${minutes} 分钟</span></div>
             <h3><a class="card-link" href="${href}">${esc(doc.title)}</a></h3>
             <p>${esc(doc.summary)}</p>
-            <div class="tags">${doc.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join('')}</div>
-            <div class="card-foot"><span>${esc(doc.foot)}</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>${cutoffLabel}</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>`;
+}
+
+function sectionCounts() {
+  const counts = new Map();
+  for (const d of manifest) counts.set(d.section, (counts.get(d.section) || 0) + 1);
+  return counts;
+}
+
+function renderCategoryFilters() {
+  const counts = sectionCounts();
+  return [
+    `<button class="cat-chip on" type="button" data-cat="all" aria-pressed="true">全部分类<b>${total}</b></button>`,
+    ...sections.map((s) => `<button class="cat-chip" type="button" data-cat="${s.id}" aria-pressed="false">${esc(s.navLabel)}<b>${counts.get(s.id) || 0}</b></button>`),
+  ].join('\n            ');
+}
+
+function renderCategoryOptions() {
+  return [
+    '<option value="all">全部分类</option>',
+    ...sections.map((s) => `<option value="${s.id}">${esc(s.navLabel)}</option>`),
+  ].join('\n              ');
 }
 
 function renderModuleSections() {
@@ -662,6 +702,10 @@ function renderIndex() {
               <div class="stat"><b>${site.skills}</b><span>配套技能</span></div>
             `,
     resultDefault: `${total} / ${total} 个模块`,
+    categoryFilters: renderCategoryFilters(),
+    categoryOptions: renderCategoryOptions(),
+    repositoryUrl: site.repository,
+    repositoryLabel: site.repository.replace(/^https?:\/\//, ''),
     moduleSections: renderModuleSections(),
     footerLine: `数据截止 ${cutoff} · ${total} 个模块 · ${cnNum(site.skills)}项技能`,
   };
@@ -687,15 +731,101 @@ function readingTime(md) {
   return Math.max(1, Math.round(cjk / 400 + words / 200));
 }
 
+const CHROME = {
+  zh: {
+    skip: '跳到正文',
+    progress: '阅读进度',
+    hub: '知识库',
+    back: '返回知识库',
+    themeDark: '切换到深色模式',
+    more: '更多',
+    source: '.md 源文件',
+    method: '使用与口径',
+    langSwitch: 'English',
+    tocToggle: '目录',
+    current: '当前分类',
+    others: '其他分类',
+    toc: '本页目录',
+    tocEmpty: '本文无分节标题',
+    tocMore: '展开 {n} 个小节',
+    tocLess: '收起小节',
+    related: '相关模块',
+    relationSame: '同区延伸',
+    relationCross: '跨区对照',
+    relationIndex: '查证入口',
+    moreRelated: '更多关联',
+    pairedSkills: '配套技能',
+    skillModules: '适用知识模块',
+    prev: '← 上一篇',
+    next: '下一篇 →',
+    download: '下载 TXT',
+    downloadNote: '完整技能文档，约 {n} KB，含 frontmatter',
+    footer: '本页由 {source} 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。',
+    returnHub: '返回知识库总览 →',
+    titleSuffix: 'energy-skills 知识库',
+  },
+  en: {
+    skip: 'Skip to content',
+    progress: 'Reading progress',
+    hub: 'Knowledge hub',
+    back: 'Back to knowledge hub',
+    themeDark: 'Switch to dark mode',
+    more: 'More',
+    source: 'Source .md',
+    method: 'Method & caliber',
+    langSwitch: '中文',
+    tocToggle: 'Contents',
+    current: 'Current section',
+    others: 'Other sections',
+    toc: 'On this page',
+    tocEmpty: 'No section headings',
+    tocMore: 'Show {n} subsections',
+    tocLess: 'Hide subsections',
+    related: 'Related modules',
+    relationSame: 'Same section',
+    relationCross: 'Cross-section',
+    relationIndex: 'Verification entry',
+    moreRelated: 'More links',
+    pairedSkills: 'Paired skills',
+    skillModules: 'Applicable knowledge modules',
+    prev: '← Previous',
+    next: 'Next →',
+    download: 'Download TXT',
+    downloadNote: 'Full skill document, about {n} KB, frontmatter included',
+    footer: 'Built from {source}; the Markdown source remains authoritative if the two differ. Worked examples are synthetic unless stated otherwise.',
+    returnHub: 'Back to knowledge hub →',
+    titleSuffix: 'energy-skills Knowledge Base',
+  },
+};
+
+const copyFor = (lang) => CHROME[lang === 'en' ? 'en' : 'zh'];
+const docTitle = (doc, lang) => (lang === 'en' && doc.title_en ? doc.title_en : doc.title);
+const docSummary = (doc, lang) => (lang === 'en' && doc.summary_en ? doc.summary_en : doc.summary);
+const KIND_EN = {
+  '知识模块': 'Knowledge note',
+  '索引': 'Index',
+  '教材笔记': 'Book note',
+  '主题笔记': 'Thematic note',
+  '算法底稿': 'Algorithm note',
+  '口径字典': 'Glossary',
+  '调研底稿': 'Research record',
+  '问答集': 'Q&A',
+};
+const kindLabel = (doc, lang) => (lang === 'en' ? KIND_EN[doc.kind] || doc.kind : doc.kind);
+
 function buildPage(doc) {
   const isSkill = doc.section === 'skill';
   const sec = isSkill ? skillSection : sectionById.get(doc.section);
-  const policyBar = doc.layout === 'policy' && doc.policy?.count ? renderPolicyBar(doc.policy) : '';
   const lang = doc.lang || (/^INDEX_EN/i.test(doc.md) ? 'en' : 'zh-CN');
+  const copy = copyFor(lang);
+  const secTitle = isSkill
+    ? (lang === 'en' ? 'Paired skills' : '配套技能')
+    : (lang === 'en' ? sectionTitlesEn[sec.id] || sec.title : sec.title);
+  const policyBar = doc.layout === 'policy' && doc.policy?.count ? renderPolicyBar(doc.policy) : '';
   const sourceHref = doc.srcHref || `../${doc.md}`;
   const sourceLabel = doc.srcHref ? doc.md : `knowledge/${doc.md}`;
-  const langSwitch = isSkill
-    ? `<a class="src" href="skill-${doc.slug}${lang === 'en' ? '' : '-en'}.html">${lang === 'en' ? '中文' : 'English'}</a>`
+  const languageLink = isSkill
+    ? `<a class="src" href="skill-${doc.slug}${lang === 'en' ? '' : '-en'}.html" hreflang="${lang === 'en' ? 'zh-CN' : 'en'}">${esc(copy.langSwitch)}</a>`
     : '';
   const isHistorical = doc.historical === true || doc.historical === 'true';
   const historicalBanner = isHistorical
@@ -706,9 +836,10 @@ function buildPage(doc) {
         : '本页规模、价格与政策节点均为成书期／历史时点数据，只能作史料引用；原理与公式部分仍适用，引用任何数字前须按现行规则复核。'}</span>
     </aside>`
     : '';
+  const repositoryLabel = site.repository.replace(/^https?:\/\//, '');
   const downloadSize = Math.max(1, Math.round((doc.txt || '').length / 1024));
   const downloadBlock = isSkill
-    ? `<p class="doc-actions"><a class="dl-btn" href="${esc(doc.download)}" download="${esc(doc.downloadName)}">${lang === 'en' ? 'Download TXT' : '下载 TXT'}</a><span>${lang === 'en' ? `Full skill document, about ${downloadSize} KB, frontmatter included` : `完整技能文档，约 ${downloadSize} KB，含 frontmatter`}</span></p>`
+    ? `<p class="doc-actions"><a class="dl-btn" href="${esc(doc.download)}" download="${esc(doc.downloadName)}">${esc(copy.download)}</a><span>${esc(copy.downloadNote.replace('{n}', String(downloadSize)))}</span></p>`
     : '';
   const h2s = doc.headings.filter((h) => h.level === 2);
   const h3s = doc.headings.filter((h) => h.level === 3);
@@ -723,47 +854,83 @@ function buildPage(doc) {
   const tocItems = tocAll.map((h) => `<li class="lv${h.level}"><a href="#${h.id}">${h.text}</a></li>`).join('\n            ');
   const tocMobile = tocMobileItems.map((h) => `<li class="lv${h.level}"><a href="#${h.id}">${h.text}</a></li>`).join('\n            ');
   const tocMore = h3s.length
-    ? `<button class="toc-more" type="button" aria-expanded="${tocOpen}" data-count="${h3s.length}">${tocOpen ? '收起小节' : `展开 ${h3s.length} 个小节`}</button>`
+    ? `<button class="toc-more" type="button" aria-expanded="${tocOpen}" data-count="${h3s.length}" data-more-label="${esc(copy.tocMore.replace('{n}', String(h3s.length)))}" data-less-label="${esc(copy.tocLess)}">${tocOpen ? esc(copy.tocLess) : esc(copy.tocMore.replace('{n}', String(h3s.length)))}</button>`
     : '';
 
-  const currentId = isSkill ? doc.id.replace(/-en$/, '') : doc.id;
-  const sideDocs = isSkill ? skillCatalog : manifest.filter((m) => m.section === sec.id);
+  const sideDocs = isSkill
+    ? skillManifest.filter((m) => m.lang === lang)
+    : manifest.filter((m) => m.section === sec.id);
   const sideList = sideDocs
-    .map((m) => `<li${m.id === currentId ? ' class="on" aria-current="page"' : ''}><a href="${m.html}">${esc(m.title)}</a></li>`).join('\n              ');
+    .map((m) => `<li${m.id === doc.id ? ' class="on" aria-current="page"' : ''}><a href="${m.html}">${esc(docTitle(m, lang))}</a></li>`).join('\n              ');
   const others = sections.filter((s) => isSkill || s.id !== sec.id)
-    .map((s) => `<li><a href="../index.html#${s.id}"><b>${esc(s.num.split('/')[0].trim())}</b>${esc(s.title)}</a></li>`).join('\n              ');
+    .map((s) => {
+      const label = lang === 'en' ? sectionTitlesEn[s.id] || s.title : s.title;
+      return `<li><a href="../index.html#${s.id}"><b>${esc(s.num.split('·')[0].trim())}</b>${esc(label)}</a></li>`;
+    }).join('\n              ');
 
-  const pagerDocs = isSkill ? skillCatalog : manifest;
-  const idx = pagerDocs.findIndex((d) => d.id === currentId);
-  const prev = pagerDocs[idx - 1];
-  const next = pagerDocs[idx + 1];
+  const idx = sideDocs.findIndex((d) => d.id === doc.id);
+  const prev = sideDocs[idx - 1];
+  const next = sideDocs[idx + 1];
   const pager = [
-    prev ? `<a class="prev" href="${prev.html}"><span class="dir">← 上一篇</span><span class="ttl">${esc(prev.title)}</span></a>` : '<span class="spacer"></span>',
-    next ? `<a class="next" href="${next.html}"><span class="dir">下一篇 →</span><span class="ttl">${esc(next.title)}</span></a>` : '<span class="spacer"></span>',
+    prev ? `<a class="prev" href="${prev.html}"><span class="dir">${esc(copy.prev)}</span><span class="ttl">${esc(docTitle(prev, lang))}</span></a>` : '<span class="spacer"></span>',
+    next ? `<a class="next" href="${next.html}"><span class="dir">${esc(copy.next)}</span><span class="ttl">${esc(docTitle(next, lang))}</span></a>` : '<span class="spacer"></span>',
   ].join('\n          ');
 
+  const relationLabel = (target) => {
+    if (target.section === 'index') return copy.relationIndex;
+    return target.section === doc.section ? copy.relationSame : copy.relationCross;
+  };
+  const renderRelatedCard = (target, label) => `<a class="related-card" href="${target.html}">
+          <span class="related-type">${esc(label)}</span>
+          <b>${esc(docTitle(target, lang))}</b>
+          <span>${esc(docSummary(target, lang))}</span>
+        </a>`;
   const related = doc.related.map((id) => byId.get(id));
-  const relatedBlock = related.length ? `<section class="related" aria-label="相关模块">
-      <h2>相关模块</h2>
-      <ul>
-        ${related.map((r) => `<li><a href="${r.html}">${esc(r.title)}</a></li>`).join('\n        ')}
-      </ul>
+  const relatedLead = related.slice(0, 4);
+  const relatedRest = related.slice(4);
+  const relatedBlock = related.length ? `<section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">${esc(copy.related)}</h2><span>${related.length}</span></div>
+      <div class="related-grid">
+        ${relatedLead.map((r) => renderRelatedCard(r, relationLabel(r))).join('\n        ')}
+      </div>
+      ${relatedRest.length ? `<p class="related-rest"><b>${esc(copy.moreRelated)}</b>${relatedRest.map((r) => `<a href="${r.html}">${esc(docTitle(r, lang))}</a>`).join('')}</p>` : ''}
+    </section>` : '';
+
+  const pairedSkills = !isSkill ? (skillsByModuleId.get(doc.id) || []) : [];
+  const skillModules = isSkill ? doc.modules.map((id) => byId.get(id)) : [];
+  const pairedSkillsBlock = pairedSkills.length ? `<section class="related" aria-labelledby="paired-skills-title">
+      <div class="related-head"><h2 id="paired-skills-title">${esc(copy.pairedSkills)}</h2><span>${pairedSkills.length}</span></div>
+      <div class="related-grid">
+        ${pairedSkills.map((s) => `<a class="related-card skill-pair" href="skill-${s.slug}.html">
+          <span class="related-type">${esc(s.summary)}</span>
+          <b>${esc(s.title)}</b>
+          <span>${esc(s.tags.join(' · '))}</span>
+        </a>`).join('\n        ')}
+      </div>
+    </section>` : '';
+  const skillModulesBlock = skillModules.length ? `<section class="related" aria-labelledby="skill-modules-title">
+      <div class="related-head"><h2 id="skill-modules-title">${esc(copy.skillModules)}</h2><span>${skillModules.length}</span></div>
+      <div class="related-grid">
+        ${skillModules.slice(0, 4).map((r) => renderRelatedCard(r, copy.relationCross)).join('\n        ')}
+      </div>
+      ${skillModules.length > 4 ? `<p class="related-rest"><b>${esc(copy.moreRelated)}</b>${skillModules.slice(4).map((r) => `<a href="${r.html}">${esc(docTitle(r, lang))}</a>`).join('')}</p>` : ''}
     </section>` : '';
 
   const meta = [
-    `<span>约 ${chars}k 字</span>`,
-    `<span>阅读约 ${minutes} 分钟</span>`,
-    `<span>${toc.length} 节</span>`,
-    pageCutoff ? `<span>数据截止 ${esc(pageCutoff)}</span>` : '',
+    `<span>${lang === 'en' ? `approx. ${chars}k characters` : `约 ${chars}k 字`}</span>`,
+    `<span>${lang === 'en' ? `${minutes} min read` : `阅读约 ${minutes} 分钟`}</span>`,
+    `<span>${lang === 'en' ? `${toc.length} sections` : `${toc.length} 节`}</span>`,
+    pageCutoff ? `<span>${lang === 'en' ? 'Data cutoff' : '数据截止'} ${esc(pageCutoff)}</span>` : '',
   ].filter(Boolean).join('');
+  const footerCopy = copy.footer.split('{source}');
 
-  return `<!doctype html>
+  const pageHtml = `<!doctype html>
 <html lang="${lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>${esc(doc.title)} | energy-skills 知识库</title>
+<title>${esc(doc.title)} | ${esc(copy.titleSuffix)}</title>
 <meta name="description" content="${esc(doc.summary)}">
 <link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
 <script>
@@ -773,37 +940,44 @@ function buildPage(doc) {
 <link rel="stylesheet" href="../assets/knowledge.css">
 </head>
 <body data-cat="${esc(sec.cat)}" id="top">
-<a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<a class="skip" href="#main">${esc(copy.skip)}</a>
+<div class="progress" id="progress" role="progressbar" aria-label="${esc(copy.progress)}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
-  <a class="back" href="../index.html">← 知识库</a>
+  <a class="back" href="../index.html" data-home-link aria-label="${esc(copy.back)}"><span aria-hidden="true">←</span><span class="back-label">${esc(copy.hub)}</span></a>
   <div class="crumb">
     <span class="crumb-cat">${esc(sec.num)}</span>
     <span class="crumb-sep">/</span>
     <span class="crumb-doc">${esc(doc.title)}</span>
   </div>
   <div class="topbar-act">
-    <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换到深色模式" title="切换到深色模式">
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="${esc(copy.themeDark)}" title="${esc(copy.themeDark)}">
       <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
       <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-    ${[langSwitch, `<a class="src" href="${esc(sourceHref)}">.md 源文件</a>`].filter(Boolean).join('\n    ')}
-    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+    <details class="more">
+      <summary class="more-btn" aria-label="${esc(copy.more)}" title="${esc(copy.more)}"><span class="more-label">${esc(copy.more)}</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="${esc(sourceHref)}">${esc(copy.source)}<small>${esc(sourceLabel)}</small></a>
+        ${languageLink}
+        <a class="src" href="../index.html#method">${esc(copy.method)}</a>
+      </div>
+    </details>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">${esc(copy.tocToggle)}</button>
   </div>
 </header>
 
 <div class="shell">
   <aside class="sidebar" id="nav">
-    <div class="nav-kicker">当前分类</div>
+    <div class="nav-kicker">${esc(copy.current)}</div>
     <div class="nav-num">${esc(sec.num)}</div>
-    <h2 class="nav-cat"><a href="../index.html#${isSkill ? 'skills' : esc(sec.id)}">${esc(sec.title)}</a></h2>
+    <h2 class="nav-cat"><a href="../index.html#${isSkill ? 'skills' : esc(sec.id)}">${esc(secTitle)}</a></h2>
     <ul class="nav-list">
               ${sideList}
     </ul>
     <div class="nav-others">
-      <div class="nav-kicker">其他分类</div>
+      <div class="nav-kicker">${esc(copy.others)}</div>
       <ul>
               ${others}
       </ul>
@@ -812,16 +986,16 @@ function buildPage(doc) {
 
   <main class="main" id="main">
     <header class="doc-head">
-      <div class="kicker">${esc(sec.num)}<i>${esc(doc.kind)}</i></div>
-      <h1 class="doc-title">${esc(doc.h1 || doc.title)}</h1>
-      <p class="lede">${esc(doc.summary)}</p>
+      <div class="kicker">${esc(sec.num)}<i>${esc(kindLabel(doc, lang))}</i></div>
+      <h1 class="doc-title">${esc(doc.h1 || docTitle(doc, lang))}</h1>
+      <p class="lede">${esc(docSummary(doc, lang))}</p>
       ${doc.foot ? `<p class="hook">${esc(doc.foot)}</p>` : ''}
       ${doc.tags.length ? `<div class="tags">${doc.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join('')}</div>` : ''}
       <div class="doc-meta">${meta}</div>${downloadBlock ? `\n      ${downloadBlock}` : ''}
     </header>
 
     ${historicalBanner ? `    ${historicalBanner}\n\n` : ''}${tocMobileItems.length ? `<details class="toc-mobile">
-      <summary>本页目录（${tocMobileItems.length}）</summary>
+      <summary>${esc(lang === 'en' ? `On this page (${tocMobileItems.length})` : `本页目录（${tocMobileItems.length}）`)}</summary>
       <ol>
             ${tocMobile}
       </ol>
@@ -832,30 +1006,94 @@ ${doc.body}
     </article>
 
 ${doc.layout === 'policy' ? '    <div class="policy-empty" id="policyEmpty" hidden>没有匹配的政策。试试文号、标题关键词，或切回「全部」。</div>\n\n' : ''}    ${relatedBlock}
+${skillModulesBlock ? `\n${skillModulesBlock}` : ''}${pairedSkillsBlock ? `\n${pairedSkillsBlock}` : ''}
 
-    <nav class="pager" aria-label="上下篇">
+    <nav class="pager" aria-label="${lang === 'en' ? 'Previous and next' : '上下篇'}">
           ${pager}
     </nav>
 
     <footer class="doc-foot">
-      <div class="lic">本页由 <a href="${esc(sourceHref)}">${esc(sourceLabel)}</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
-      <div><a href="../index.html">返回知识库总览 →</a></div>
+      <div class="lic">${esc(footerCopy[0])}<a href="${esc(sourceHref)}">${esc(sourceLabel)}</a>${esc(footerCopy[1] || '')}</div>
+      <div class="doc-foot-links">
+        <a href="${esc(site.repository)}" target="_blank" rel="noopener">${lang === 'en' ? 'GitHub repository' : 'GitHub 仓库'}：${esc(repositoryLabel)} ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>${esc(copy.returnHub)}</a>
+      </div>
     </footer>
   </main>
 
-  <aside class="toc${tocOpen ? ' expanded' : ''}" aria-label="本页目录">
-    <div class="toc-title">本页目录</div>
+  <aside class="toc${tocOpen ? ' expanded' : ''}" aria-label="${esc(copy.toc)}">
+    <div class="toc-title">${esc(copy.toc)}</div>
     ${tocAll.length ? `<ol>
             ${tocItems}
-    </ol>${tocMore}` : '<div class="toc-empty">本文无分节标题</div>'}
+    </ol>${tocMore}` : `<div class="toc-empty">${esc(copy.tocEmpty)}</div>`}
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<a class="to-top" href="#top" aria-label="${lang === 'en' ? 'Back to top' : '回到顶部'}">↑</a>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>
 </html>
+`;
+  return pageHtml.replace(/^[ \t]+$/gm, '');
+}
+
+/* ----------------------------------------------------------- 全文检索索引 */
+
+function htmlText(html) {
+  return unesc(String(html)
+    .replace(/<(script|style)[^>]*>[\s\S]*?<\/\1>/gi, ' ')
+    .replace(/<[^>]+>/g, ' '))
+    .replace(/&nbsp;/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function buildSearchIndex(pageItems) {
+  const records = pageItems.map(({ doc }) => {
+    const section = sectionById.get(doc.section);
+    const headingRe = /<h([23])\s+id="([^"]+)"[^>]*>([\s\S]*?)<\/h\1>/g;
+    const heads = [];
+    let match;
+    while ((match = headingRe.exec(doc.body))) {
+      heads.push({
+        level: Number(match[1]),
+        id: match[2],
+        title: htmlText(match[3]),
+        start: match.index,
+        end: headingRe.lastIndex,
+      });
+    }
+    const chunks = [];
+    const intro = htmlText(doc.body.slice(0, heads[0]?.start ?? doc.body.length));
+    if (intro) chunks.push({ h: doc.title, a: '', x: intro });
+    heads.forEach((head, i) => {
+      const text = htmlText(doc.body.slice(head.end, heads[i + 1]?.start ?? doc.body.length));
+      chunks.push({ h: head.title, a: head.id, x: text, l: head.level });
+    });
+    return {
+      id: doc.id,
+      title: doc.title,
+      summary: doc.summary,
+      tags: doc.tags,
+      cat: doc.section,
+      catTitle: section?.title || '',
+      catNum: section?.num || '',
+      type: doc.level,
+      html: `html/${doc.html}`,
+      cutoff: doc.cutoff || '',
+      keywords: [doc.search, doc.title, doc.summary, ...doc.tags].filter(Boolean).join(' '),
+      chunks,
+    };
+  });
+  if (records.length !== docs.length) throw new Error(`全文索引模块数 ${records.length} 与清单 ${docs.length} 不一致`);
+  const payload = JSON.stringify({ schema: 1, cutoff, docs: records })
+    .replace(/</g, '\\u003c')
+    .replace(/\u2028/g, '\\u2028')
+    .replace(/\u2029/g, '\\u2029');
+  return `/* 生成物：运行 node scripts/build-knowledge-html.mjs 重建；不要手改。 */
+window.__ES_SEARCH_INDEX__ = ${payload};
 `;
 }
 
@@ -894,6 +1132,7 @@ const downloadFiles = skillManifest.map((doc) => ({
 }));
 
 const indexHtml = renderIndex();
+const searchIndexJs = buildSearchIndex(pages);
 const credibilityIndex = buildIndex(root);
 const credibilityJson = serializeIndex(credibilityIndex);
 const credByFile = new Map(credibilityIndex.modules.map((m) => [m.file, m]));
@@ -955,6 +1194,7 @@ if (checkMode) {
   const diffs = [];
   const same = (path, expected) => existsSync(path) && readFileSync(path, 'utf8').replace(/\r\n?/g, '\n') === expected;
   if (!same(indexPath, indexHtml)) diffs.push('knowledge/index.html 不是最新生成物');
+  if (!same(searchIndexPath, searchIndexJs)) diffs.push('knowledge/search-index.js 不是最新生成物');
   if (!same(credibilityPath, credibilityJson)) diffs.push('knowledge/credibility.json 不是最新生成物');
   if (!same(englishDigestPath, englishDigestJson)) diffs.push('knowledge/english-digest.json 不是最新生成物');
   for (const { doc, html } of allPages) {
@@ -978,11 +1218,12 @@ if (checkMode) {
     for (const d of diffs) console.error(`- ${d}`);
     process.exit(1);
   }
-  console.log(`生成物校验通过：index.html + credibility.json + english-digest.json + ${pages.length} 个知识页 + ${skillPages.length} 个技能页 + ${downloadFiles.length} 个下载文件均为最新（${total} 个模块 / ${fmt(totalLines)} 行）。`);
+  console.log(`生成物校验通过：index.html + search-index.js + credibility.json + english-digest.json + ${pages.length} 个知识页 + ${skillPages.length} 个技能页 + ${downloadFiles.length} 个下载文件均为最新（${total} 个模块 / ${fmt(totalLines)} 行）。`);
   process.exit(0);
 }
 
 for (const { doc, html } of allPages) writeFileSync(join(htmlDir, doc.html), html, 'utf8');
+writeFileSync(searchIndexPath, searchIndexJs, 'utf8');
 writeFileSync(credibilityPath, credibilityJson, 'utf8');
 writeFileSync(englishDigestPath, englishDigestJson, 'utf8');
 mkdirSync(downloadDir, { recursive: true });
@@ -995,5 +1236,6 @@ const headings = pages.reduce((a, p) => a + p.doc.headings.length, 0);
 console.log(`已生成 ${pages.length} 个知识页 + ${skillPages.length} 个技能页 + ${downloadFiles.length} 个 TXT → knowledge/html/`);
 console.log(`模块 ${total} 个 / 正文 ${fmt(totalLines)} 行；章节 ${headings}，表格 ${tables}，代码/图块 ${codes}`);
 if (rewriteIndex) console.log('已生成 knowledge/index.html（卡片、侧栏与计数来自 frontmatter）');
+console.log(`已生成 knowledge/search-index.js（${pages.length} 个模块，全文懒加载）`);
 const biggest = [...allPages].map((p) => ({ html: p.doc.html, kb: Math.round(p.html.length / 1024) })).sort((a, b) => b.kb - a.kb).slice(0, 3);
 console.log(`最大页面：${biggest.map((b) => `${b.html} ${b.kb}KB`).join('，')}`);

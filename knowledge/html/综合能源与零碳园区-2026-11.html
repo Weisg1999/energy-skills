@@ -19,9 +19,9 @@
 <div class="scrim"></div>
 
 <header class="topbar">
-  <a class="back" href="../index.html">← 知识库</a>
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
   <div class="crumb">
-    <span class="crumb-cat">11 / PARK</span>
+    <span class="crumb-cat">08 · PARK</span>
     <span class="crumb-sep">/</span>
     <span class="crumb-doc">综合能源与零碳园区</span>
   </div>
@@ -30,7 +30,14 @@
       <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
       <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-    <a class="src" href="../综合能源与零碳园区-2026-11.md">.md 源文件</a>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../综合能源与零碳园区-2026-11.md">.md 源文件<small>knowledge/综合能源与零碳园区-2026-11.md</small></a>
+
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
     <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
   </div>
 </header>
@@ -38,7 +45,7 @@
 <div class="shell">
   <aside class="sidebar" id="nav">
     <div class="nav-kicker">当前分类</div>
-    <div class="nav-num">11 / PARK</div>
+    <div class="nav-num">08 · PARK</div>
     <h2 class="nav-cat"><a href="../index.html#park">综合能源与零碳园区</a></h2>
     <ul class="nav-list">
               <li class="on" aria-current="page"><a href="综合能源与零碳园区-2026-11.html">综合能源与零碳园区</a></li>
@@ -46,24 +53,24 @@
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
       <ul>
-              <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
-              <li><a href="../index.html#spot"><b>05</b>电力现货与省间交易</a></li>
-              <li><a href="../index.html#intl"><b>06</b>海外市场</a></li>
-              <li><a href="../index.html#cross"><b>07</b>横向专题</a></li>
-              <li><a href="../index.html#price"><b>08</b>电价</a></li>
-              <li><a href="../index.html#renewable"><b>09</b>新能源与并网</a></li>
-              <li><a href="../index.html#storage"><b>10</b>储能与 EMS</a></li>
-              <li><a href="../index.html#carbon"><b>12</b>碳市场与碳管理</a></li>
-              <li><a href="../index.html#vpp"><b>13</b>虚拟电厂</a></li>
-              <li><a href="../index.html#index"><b>14</b>索引、查证与工具</a></li>
-              <li><a href="../index.html#research"><b>15</b>调研底稿</a></li>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#intl"><b>03</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>04</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>05</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>06</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>07</b>储能与 EMS</a></li>
+              <li><a href="../index.html#carbon"><b>09</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>10</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>11</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>12</b>调研底稿</a></li>
       </ul>
     </div>
   </aside>
 
   <main class="main" id="main">
     <header class="doc-head">
-      <div class="kicker">11 / PARK<i>知识模块</i></div>
+      <div class="kicker">08 · PARK<i>知识模块</i></div>
       <h1 class="doc-title">综合能源与零碳园区：政策、门槛与测算底稿（2026-11）</h1>
       <p class="lede">910/1082/国发 22/650/688/1192 号，园区评价、绿电直连门槛、源荷匹配与算例。</p>
       <p class="hook">政策、门槛与测算底稿</p>
@@ -95,9 +102,9 @@
 <hr>
 <h2 id="s1">0. 一页看懂</h2>
 <h3 id="s2">0.1 四个概念不是同义词</h3>
-<div class="table-wrap"><table><thead><tr><th>概念</th><th>是什么</th><th>核心判据</th><th>常见误用</th></tr></thead><tbody><tr><td>综合能源服务</td><td>面向用户的多种能源与能效服务组合</td><td>是否以合同方式交付能源、节能或运维服务</td><td>当成&quot;卖设备&quot;</td></tr><tr><td>源网荷储一体化</td><td>电源、电网、负荷、储能作为整体规划运行</td><td>是否有统一的规划与运行主体</td><td>当成四个项目拼在一起</td></tr><tr><td>智能微电网</td><td>可并网、可孤岛运行的小型发配用电系统</td><td>是否有 PCC、孤岛能力与控制中心</td><td>把任何园区配电都叫微网</td></tr><tr><td>零碳园区</td><td>以单位能耗碳排放为核心的建设评价</td><td>是否在园区边界内达到评价要求</td><td>当成&quot;碳中和声明&quot;</td></tr><tr><td>绿电直连</td><td>新能源通过专线向用户直供、电量物理溯源</td><td>是否有专线与清晰的产权、安全界面</td><td>当成&quot;隔墙售电&quot;或 VPP</td></tr><tr><td>虚拟电厂</td><td>聚合分布式资源参与市场与调度</td><td>是否有聚合主体与可调能力</td><td>把直连园区直接等同于 VPP</td></tr><tr><td>增量配电网</td><td>增量配电业务改革范围内建设的配电网</td><td>是否取得供电类电力业务许可证</td><td>把绿电直连专线当增量配电网</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>概念</th><th>是什么</th><th>核心判据</th><th>常见误用</th></tr></thead><tbody><tr><td>综合能源服务</td><td>面向用户的多种能源与能效服务组合</td><td>是否以合同方式交付能源、节能或运维服务</td><td>当成&quot;卖设备&quot;</td></tr><tr><td>源网荷储一体化</td><td>电源、电网、负荷、储能作为整体规划运行</td><td>是否有统一的规划与运行主体</td><td>当成四个项目拼在一起</td></tr><tr><td>智能微电网</td><td>可并网、可孤岛运行的小型发配用电系统</td><td>是否有 PCC、孤岛能力与控制中心</td><td>把任何园区配电都叫微网</td></tr><tr><td>零碳园区</td><td>以单位能耗碳排放为核心的建设评价</td><td>是否在园区边界内达到评价要求</td><td>当成&quot;碳中和声明&quot;</td></tr><tr><td>绿电直连</td><td>新能源通过专线向用户直供、电量物理溯源</td><td>是否有专线与清晰的产权、安全界面</td><td>当成&quot;隔墙售电&quot;或 VPP</td></tr><tr><td>虚拟电厂</td><td>聚合分布式资源参与市场与调度</td><td>是否有聚合主体与可调能力</td><td>把直连园区直接等同于 VPP</td></tr><tr><td>增量配电网</td><td>增量配电业务改革范围内建设的配电网</td><td>是否取得供电类电力业务许可证</td><td>把绿电直连专线当增量配电网</td></tr></tbody></table></div>
 <h3 id="s3">0.2 关键数字</h3>
-<div class="table-wrap"><table><thead><tr><th>数字</th><th>含义</th><th>来源与级别</th></tr></thead><tbody><tr><td>52 个</td><td>首批国家级零碳园区</td><td>发改办环资〔2025〕1082号，A</td></tr><tr><td>100 个左右</td><td>&quot;十五五&quot;国家级零碳园区目标</td><td>国发〔2026〕22号，A</td></tr><tr><td>500 个左右</td><td>&quot;十五五&quot;零碳工厂目标</td><td>国发〔2026〕22号，A</td></tr><tr><td>60%</td><td>绿电直连自用电量占可用发电量下限</td><td>650/688 号，A</td></tr><tr><td>30%、35%</td><td>自用电量占总用电量下限；2030 年前提高到 35%</td><td>650/688 号，A</td></tr><tr><td>20%</td><td>上网电量占可用发电量上限（一般）</td><td>650 号，A</td></tr><tr><td>100 个、3410 万 kW</td><td>绿电直连项目与新能源装机（2026-07）</td><td>媒体/券商口径，B/C</td></tr><tr><td>730 小时</td><td>容需量电费折算小时数（省级参数）</td><td>广东 1848 号，B</td></tr><tr><td>0.267 元/kWh</td><td>本文示例的临界 LCOE</td><td>合成测算，D</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>数字</th><th>含义</th><th>来源与级别</th></tr></thead><tbody><tr><td>52 个</td><td>首批国家级零碳园区</td><td>发改办环资〔2025〕1082号，A</td></tr><tr><td>100 个左右</td><td>&quot;十五五&quot;国家级零碳园区目标</td><td>国发〔2026〕22号，A</td></tr><tr><td>500 个左右</td><td>&quot;十五五&quot;零碳工厂目标</td><td>国发〔2026〕22号，A</td></tr><tr><td>60%</td><td>绿电直连自用电量占可用发电量下限</td><td>650/688 号，A</td></tr><tr><td>30%、35%</td><td>自用电量占总用电量下限；2030 年前提高到 35%</td><td>650/688 号，A</td></tr><tr><td>20%</td><td>上网电量占可用发电量上限（一般）</td><td>650 号，A</td></tr><tr><td>100 个、3410 万 kW</td><td>绿电直连项目与新能源装机（2026-07）</td><td>媒体/券商口径，B/C</td></tr><tr><td>730 小时</td><td>容需量电费折算小时数（省级参数）</td><td>广东 1848 号，B</td></tr><tr><td>0.267 元/kWh</td><td>本文示例的临界 LCOE</td><td>合成测算，D</td></tr></tbody></table></div>
 <h3 id="s4">0.3 六个判断</h3>
 <ol><li><strong>目的</strong>：降电费、拿绿电属性，还是满足园区或出口的碳要求？三者对应不同方案。</li><li><strong>负荷</strong>：园区能不能在白天和夜间都吃下 60% 的自发电？年度电量平衡不算数，要逐时平衡。</li><li><strong>弃电</strong>：上网一般不超过 20%，弃电是直连项目最大的隐性成本。</li><li><strong>容量</strong>：接入公共电网容量能不能降下来？按容（需）量缴输配电费时，这是少数可控变量之一。</li><li><strong>临界点</strong>：风光 LCOE 与当地全口径电价的临界点在哪？本文示例约为 0.267 元/kWh。</li><li><strong>碳收益</strong>：是&quot;评价加分&quot;还是&quot;可交易收益&quot;？零碳园区评价、绿证、CCER 是三套不同的东西。</li></ol>
 <hr>
@@ -112,15 +119,15 @@
 <ul><li>首批国家级零碳园区是 <strong>52 个</strong>，不是网络流传的 56 个；文号是 1082 号，不是 910 号。</li><li>绿电直连项目数有 <strong>100 个/3410 万 kW</strong>（2026-07）与 <strong>99 个/3405 万 kW</strong> 两种表述，差异在统计时点与口径，引用时必须带日期。</li><li>自用比例的 35% 有两种写法：650/688 号写&quot;2030 年前不低于 35%&quot;，1192 号及部分省级文件写&quot;2030 年起新增项目不低于 35%&quot;。两者都指向逐步提高，但适用对象不同，不能简写成&quot;30% 或 35%&quot;。</li></ul>
 <hr>
 <h2 id="s9">2. 政策框架（截至 2026-11）</h2>
-<div class="table-wrap"><table><thead><tr><th>文号</th><th>文件</th><th>时间/状态</th><th>与本模块的关系</th><th>级别</th></tr></thead><tbody><tr><td>发改环资〔2025〕910号</td><td>关于开展零碳园区建设的通知</td><td>2025-06-30 成文，2025-07-08 公开</td><td>八项重点任务；启动国家级园区创建</td><td>A</td></tr><tr><td>发改办环资〔2025〕1082号</td><td>国家级零碳园区建设名单（第一批）</td><td>2025-12-23</td><td>首批 52 个园区</td><td>A</td></tr><tr><td>国发〔2026〕22号</td><td>&quot;十五五&quot;碳达峰行动方案</td><td>2026-07-05</td><td>100 个左右国家级零碳园区、500 个左右零碳工厂</td><td>A</td></tr><tr><td>发改能源〔2025〕650号</td><td>关于有序推动绿电直连发展有关事项的通知</td><td>2025-05-30 公开</td><td>单用户直连；60%/30%/20% 门槛</td><td>A</td></tr><tr><td>发改能源〔2026〕688号</td><td>关于有序推动多用户绿电直连发展有关事项的通知</td><td>2026-05（05-14/05-20 待核实）</td><td>多用户直连；园区可整体或部分参与</td><td>A</td></tr><tr><td>发改价格〔2025〕1192号</td><td>关于完善价格机制促进新能源发电就近消纳的通知</td><td>2025-09-12 发布，2025-10-01 实施</td><td>按容（需）量缴输配电费；公平承担系统运行费</td><td>A</td></tr><tr><td>发改运行〔2021〕280号</td><td>关于推进电力源网荷储一体化和多能互补发展的指导意见</td><td>2021-03</td><td>源网荷储项目形态与三个层级</td><td>A</td></tr><tr><td>发改能源〔2023〕1044号</td><td>关于做好可再生能源绿色电力证书全覆盖工作的通知</td><td>2023-07</td><td>绿证核发与交易</td><td>A</td></tr><tr><td>发改价格〔2025〕136号</td><td>关于深化新能源上网电价市场化改革的通知</td><td>2025-02-09</td><td>新能源全部入市；机制电价</td><td>A</td></tr><tr><td>发改能源规〔2025〕1656号</td><td>电力中长期市场基本规则</td><td>2025-12-17（2026-03-01 施行）</td><td>绿电交易与分时价格形成</td><td>A</td></tr><tr><td>发改能源〔2025〕357号</td><td>关于加快推进虚拟电厂发展的指导意见</td><td>2025-03-25</td><td>园区资源可聚合参与市场</td><td>A</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>文号</th><th>文件</th><th>时间/状态</th><th>与本模块的关系</th><th>级别</th></tr></thead><tbody><tr><td>发改环资〔2025〕910号</td><td>关于开展零碳园区建设的通知</td><td>2025-06-30 成文，2025-07-08 公开</td><td>八项重点任务；启动国家级园区创建</td><td>A</td></tr><tr><td>发改办环资〔2025〕1082号</td><td>国家级零碳园区建设名单（第一批）</td><td>2025-12-23</td><td>首批 52 个园区</td><td>A</td></tr><tr><td>国发〔2026〕22号</td><td>&quot;十五五&quot;碳达峰行动方案</td><td>2026-07-05</td><td>100 个左右国家级零碳园区、500 个左右零碳工厂</td><td>A</td></tr><tr><td>发改能源〔2025〕650号</td><td>关于有序推动绿电直连发展有关事项的通知</td><td>2025-05-30 公开</td><td>单用户直连；60%/30%/20% 门槛</td><td>A</td></tr><tr><td>发改能源〔2026〕688号</td><td>关于有序推动多用户绿电直连发展有关事项的通知</td><td>2026-05（05-14/05-20 待核实）</td><td>多用户直连；园区可整体或部分参与</td><td>A</td></tr><tr><td>发改价格〔2025〕1192号</td><td>关于完善价格机制促进新能源发电就近消纳的通知</td><td>2025-09-12 发布，2025-10-01 实施</td><td>按容（需）量缴输配电费；公平承担系统运行费</td><td>A</td></tr><tr><td>发改运行〔2021〕280号</td><td>关于推进电力源网荷储一体化和多能互补发展的指导意见</td><td>2021-03</td><td>源网荷储项目形态与三个层级</td><td>A</td></tr><tr><td>发改能源〔2023〕1044号</td><td>关于做好可再生能源绿色电力证书全覆盖工作的通知</td><td>2023-07</td><td>绿证核发与交易</td><td>A</td></tr><tr><td>发改价格〔2025〕136号</td><td>关于深化新能源上网电价市场化改革的通知</td><td>2025-02-09</td><td>新能源全部入市；机制电价</td><td>A</td></tr><tr><td>发改能源规〔2025〕1656号</td><td>电力中长期市场基本规则</td><td>2025-12-17（2026-03-01 施行）</td><td>绿电交易与分时价格形成</td><td>A</td></tr><tr><td>发改能源〔2025〕357号</td><td>关于加快推进虚拟电厂发展的指导意见</td><td>2025-03-25</td><td>园区资源可聚合参与市场</td><td>A</td></tr></tbody></table></div>
 <h3 id="s10">2.1 零碳园区：910 号文的八项任务</h3>
 <ol><li><strong>用能结构转型</strong>：绿电直连、新能源就近接入增量配电网、清洁供热、氢电耦合。</li><li><strong>节能降碳</strong>：能效碳效诊断、设备更新、极致能效工厂与零碳工厂。</li><li><strong>产业结构</strong>：低能耗、低污染、高附加值产业，探索&quot;以绿制绿&quot;。</li><li><strong>资源节约集约</strong>：余压、余热、余冷利用，废弃物循环。</li><li><strong>基础设施</strong>：电、热、气、氢、水系统协同，绿色建筑与绿色交通。</li><li><strong>先进技术</strong>：低碳、零碳、负碳技术示范。</li><li><strong>能碳管理</strong>：园区能碳管理平台，负荷监控、预测与调配。</li><li><strong>改革创新</strong>：政府、园区、企业、电网、综合能源服务商共同参与，VPP 与负荷聚合商参与市场。</li><li><strong>读法</strong>：八项任务里只有第 1 项直接对应&quot;绿电直连&quot;；零碳园区不等于&quot;全绿电园区&quot;，节能、产业、资源循环同样计入。</li><li><strong>申报</strong>：省级推荐加专家评审；有解读称每省推荐不超过 2 个（C 级，待原文核实）。</li><li><strong>评价</strong>：公开解读普遍把&quot;单位能耗碳排放（tCO2/tce）&quot;列为核心指标，另有引导指标，有&quot;1 项核心 + 5 项引导&quot;的说法（B/C 级，具体指标、权重与核算方法以 910 号附件为准）。</li></ol>
 <h3 id="s11">2.2 零碳园区的数量与时间线</h3>
-<div class="table-wrap"><table><thead><tr><th>时间</th><th>事项</th><th>数量/目标</th><th>级别</th></tr></thead><tbody><tr><td>2025-06</td><td>910 号启动国家级零碳园区创建</td><td>分批建设</td><td>A</td></tr><tr><td>2025-12</td><td>首批国家级名单（1082 号）</td><td>52 个</td><td>A</td></tr><tr><td>2026-07</td><td>国发 22 号&quot;十五五&quot;碳达峰行动方案</td><td>100 个左右国家级零碳园区、500 个左右零碳工厂</td><td>A</td></tr><tr><td>2030</td><td>910 号提出的阶段目标</td><td>建成一批零碳园区（以原文为准）</td><td>A</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>时间</th><th>事项</th><th>数量/目标</th><th>级别</th></tr></thead><tbody><tr><td>2025-06</td><td>910 号启动国家级零碳园区创建</td><td>分批建设</td><td>A</td></tr><tr><td>2025-12</td><td>首批国家级名单（1082 号）</td><td>52 个</td><td>A</td></tr><tr><td>2026-07</td><td>国发 22 号&quot;十五五&quot;碳达峰行动方案</td><td>100 个左右国家级零碳园区、500 个左右零碳工厂</td><td>A</td></tr><tr><td>2030</td><td>910 号提出的阶段目标</td><td>建成一批零碳园区（以原文为准）</td><td>A</td></tr></tbody></table></div>
 <ul><li>首批名单是&quot;建设名单&quot;，不是&quot;已建成名单&quot;；从名单到验收还有建设、评价、复核过程。</li><li>&quot;十五五&quot;的 100 个左右是<strong>五年目标</strong>，不是 2026 年存量；引用时不要与首批 52 个相加成&quot;已有 152 个&quot;。</li></ul>
 <h3 id="s12">2.3 绿电直连：650/688 号</h3>
 <ul><li><strong>650 号</strong>（2025-05-30 公开；另有 05-21 印发的表述，待核实）：新能源不直接接入公共电网，通过专线向<strong>单一用户</strong>供电，实现电量物理溯源；以荷定源；分并网型与离网型。</li><li><strong>688 号</strong>（2026-05；05-14 与 05-20 两种说法，待核实）：扩展到<strong>多用户</strong>，多用户指多个不同法人实体，不含居民和农业用户；工业园区、零碳园区、增量配电网可整体或部分负荷参与；主责单位可由电源方与负荷方合资，园区模式可由管委会或第三方机构组建。</li><li><strong>共同门槛</strong>：</li></ul>
-<div class="table-wrap"><table><thead><tr><th>门槛</th><th>要求</th><th>备注</th></tr></thead><tbody><tr><td>自用电量/可用发电量</td><td>≥60%</td><td>可用发电量扣减弃电；含储能释放的项目新能源电量</td></tr><tr><td>自用电量/总用电量</td><td>≥30%，2030 年前 ≥35%</td><td>1192 号及部分省表述为&quot;2030 年起新增项目 ≥35%&quot;</td></tr><tr><td>上网电量/可用发电量</td><td>≤20%</td><td>省级可更严；部分项目要求全部自发自用</td></tr><tr><td>电源接入位置</td><td>用户侧、产权分界点以内</td><td>以荷定源，电源规模与负荷匹配</td></tr><tr><td>接入电压等级</td><td>原则上不超过 220 kV</td><td>省级细则，如吉林</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>门槛</th><th>要求</th><th>备注</th></tr></thead><tbody><tr><td>自用电量/可用发电量</td><td>≥60%</td><td>可用发电量扣减弃电；含储能释放的项目新能源电量</td></tr><tr><td>自用电量/总用电量</td><td>≥30%，2030 年前 ≥35%</td><td>1192 号及部分省表述为&quot;2030 年起新增项目 ≥35%&quot;</td></tr><tr><td>上网电量/可用发电量</td><td>≤20%</td><td>省级可更严；部分项目要求全部自发自用</td></tr><tr><td>电源接入位置</td><td>用户侧、产权分界点以内</td><td>以荷定源，电源规模与负荷匹配</td></tr><tr><td>接入电压等级</td><td>原则上不超过 220 kV</td><td>省级细则，如吉林</td></tr></tbody></table></div>
 <ul><li><strong>运行约束</strong>：防孤岛、反送电限制、涉网性能按并网标准执行（并网标准细节见《新能源项目开发与并网专家》第 7 章）。</li><li><strong>绿证</strong>：直连自用电量对应绿证的核发、划转、核销按绿证规则执行；归属要在合同中写明，具体操作细则待核实。</li><li><strong>常见省级加码</strong>：广东规定直连项目新能源弃电不纳入新能源利用率统计；内蒙古对非氢基项目原则上要求全部自发自用、不得向公共电网反送；吉林对氢基项目设 2027 年底前上网 ≤40%、2028 年起 ≤20% 的过渡上限。</li></ul>
 <h3 id="s13">2.4 价格机制：1192 号</h3>
 <ul><li><strong>文件</strong>：《关于完善价格机制促进新能源发电就近消纳的通知》（发改价格〔2025〕1192号），2025-09-12 发布，2025-10-01 实施。<strong>A 级</strong>。</li><li><strong>适用范围</strong>：电源、负荷、储能作为整体与公共电网连接，形成清晰物理界面和安全责任界面，以新能源发电为主要电源的就近消纳项目。</li><li><strong>三条价格规则</strong>：<ol><li>公平承担输配电费、系统运行费等稳定供应保障费用；未接入公共电网的项目不缴纳。</li><li>输配电费按<strong>容（需）量</strong>缴纳；下网电量不再缴纳系统备用费、输配环节的电量电费。</li><li>项目整体参与电力市场，与其他经营主体地位平等；上网电量不纳入新能源机制电价（可持续发展价格结算机制）。</li></ol></li><li><strong>省级落地公式</strong>（广东 1848 号口径，B 级）：</li></ul>
@@ -128,16 +135,16 @@
                   + 所在电压等级平均电量电价（不含价区交叉补贴）
                   × 平均负荷率 × 730 小时 × 接入公共电网容量</code></pre>
 <ul><li><strong>三个容易读错的点</strong>：<ul><li>&quot;平均负荷率&quot;是省级公布的参数（吉林明确每年 11 月底公布），不是园区自己的负荷率。</li><li>730 小时是折算小时数，不是项目年利用小时。</li><li>接入容量是分子里唯一由项目可控的变量；储能、负荷管理、错峰生产都能降容量，从而降输配电费。</li></ul></li><li><strong>容量备份</strong>：两路及以上多回路供电的项目，可选择继续按现行两部制输配电价缴费，电量电费按实际用电量（含自发自用）缴纳（广东口径，B）。</li><li><strong>省级细则样本</strong>：</li></ul>
-<div class="table-wrap"><table><thead><tr><th>省份</th><th>文件/时间</th><th>与本模块相关要点</th><th>级别</th></tr></thead><tbody><tr><td>广东</td><td>粤发改能源〔2026〕267号（2026-08-13）；粤发改价格函〔2026〕1848号（2026-10-14）</td><td>直连上网 ≤20%；弃电不纳入利用率统计；直连、源网荷储、零碳园区三类同门槛；按容需量缴输配电费</td><td>B</td></tr><tr><td>浙江</td><td>浙发改价格〔2026〕142号（2026-07-10）</td><td>落实 1192 号；省级价格细则</td><td>B</td></tr><tr><td>内蒙古</td><td>内发改价费字〔2026〕534号（2026-06）；内能源新能发〔2026〕17号（2026-09-07）</td><td>就近消纳价格；多用户直连方案；非氢基项目原则上全部自发自用</td><td>B</td></tr><tr><td>吉林</td><td>多用户直连实施细则</td><td>730 小时折算；氢基项目 2027 年底前上网 ≤40%、2028 年起 ≤20%；接入原则上 ≤220 kV</td><td>B</td></tr><tr><td>山东</td><td>2026-08-18 发布会</td><td>已批复 7 个直连项目；2030 年起新增项目自用 ≥35%</td><td>B</td></tr><tr><td>辽宁</td><td>多用户直连实施方案（征求意见稿，2026-08-03）</td><td>存量分布式光伏可集中汇流参与</td><td>草案</td></tr><tr><td>湖南</td><td>湘工信节能〔2025〕467号（2025-12-24）</td><td>省级零碳园区方案；2027 年培育、2030 年建成验收</td><td>B</td></tr><tr><td>陕西</td><td>陕发改环资〔2026〕65号（2026-01）</td><td>首批 8 个省级零碳园区</td><td>B</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>省份</th><th>文件/时间</th><th>与本模块相关要点</th><th>级别</th></tr></thead><tbody><tr><td>广东</td><td>粤发改能源〔2026〕267号（2026-08-13）；粤发改价格函〔2026〕1848号（2026-10-14）</td><td>直连上网 ≤20%；弃电不纳入利用率统计；直连、源网荷储、零碳园区三类同门槛；按容需量缴输配电费</td><td>B</td></tr><tr><td>浙江</td><td>浙发改价格〔2026〕142号（2026-07-10）</td><td>落实 1192 号；省级价格细则</td><td>B</td></tr><tr><td>内蒙古</td><td>内发改价费字〔2026〕534号（2026-06）；内能源新能发〔2026〕17号（2026-09-07）</td><td>就近消纳价格；多用户直连方案；非氢基项目原则上全部自发自用</td><td>B</td></tr><tr><td>吉林</td><td>多用户直连实施细则</td><td>730 小时折算；氢基项目 2027 年底前上网 ≤40%、2028 年起 ≤20%；接入原则上 ≤220 kV</td><td>B</td></tr><tr><td>山东</td><td>2026-08-18 发布会</td><td>已批复 7 个直连项目；2030 年起新增项目自用 ≥35%</td><td>B</td></tr><tr><td>辽宁</td><td>多用户直连实施方案（征求意见稿，2026-08-03）</td><td>存量分布式光伏可集中汇流参与</td><td>草案</td></tr><tr><td>湖南</td><td>湘工信节能〔2025〕467号（2025-12-24）</td><td>省级零碳园区方案；2027 年培育、2030 年建成验收</td><td>B</td></tr><tr><td>陕西</td><td>陕发改环资〔2026〕65号（2026-01）</td><td>首批 8 个省级零碳园区</td><td>B</td></tr></tbody></table></div>
 <ul><li>甘肃、上海、贵州、新疆等地也有零碳园区或绿电直连文件，未逐条列入本表；截至 2026-07，有&quot;24 省出台配套政策&quot;的口径（B/C）。</li><li><strong>纪律</strong>：省级细则更新快，项目落地前必须查省级发改委、能源局与电网公司的最新文件；不要把广东的 730 小时公式直接套到其他省。</li></ul>
 <hr>
 <h2 id="s14">3. 零碳园区：怎么建、怎么评</h2>
 <h3 id="s15">3.1 边界与&quot;零碳&quot;的含义</h3>
 <ul><li><strong>园区边界</strong>：地理边界与运营控制权边界要提前统一；范围一（燃烧、工艺、逸散）、范围二（外购电、热）、范围三（供应链）是否纳入，取决于评价规则。</li><li><strong>强度指标</strong>：零碳园区评价的核心是单位能耗碳排放等强度指标，不是&quot;绝对零排放&quot;；残余排放能否用绿证、碳汇、CCER 处理，要看评价规则是否认可（待核实）。</li><li><strong>与碳中和声明的区别</strong>：碳中和按 ISO 14068:2026 的六步链，需要碳管理计划、抵消与第三方核查；零碳园区是建设评价，两者不能互换（核算细节见《碳资产管理专家》）。</li></ul>
 <h3 id="s16">3.2 建设路径</h3>
-<div class="table-wrap"><table><thead><tr><th>路径</th><th>主要措施</th><th>对指标的作用</th><th>常见问题</th></tr></thead><tbody><tr><td>降能源碳强度</td><td>绿电直连、绿电交易、绿证</td><td>降单位能耗碳排放的分子</td><td>只买绿证、不做节能</td></tr><tr><td>降能耗强度</td><td>节能改造、设备更新、余热利用</td><td>降分母，同时降分子</td><td>基线不清、节能量重复计算</td></tr><tr><td>调产业结构</td><td>低能耗高附加值产业、以绿制绿</td><td>降单位增加值排放</td><td>把产值变化当成减排</td></tr><tr><td>强能碳管理</td><td>能碳平台、计量、台账</td><td>保证数据可核查</td><td>平台上线但数据不闭环</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>路径</th><th>主要措施</th><th>对指标的作用</th><th>常见问题</th></tr></thead><tbody><tr><td>降能源碳强度</td><td>绿电直连、绿电交易、绿证</td><td>降单位能耗碳排放的分子</td><td>只买绿证、不做节能</td></tr><tr><td>降能耗强度</td><td>节能改造、设备更新、余热利用</td><td>降分母，同时降分子</td><td>基线不清、节能量重复计算</td></tr><tr><td>调产业结构</td><td>低能耗高附加值产业、以绿制绿</td><td>降单位增加值排放</td><td>把产值变化当成减排</td></tr><tr><td>强能碳管理</td><td>能碳平台、计量、台账</td><td>保证数据可核查</td><td>平台上线但数据不闭环</td></tr></tbody></table></div>
 <h3 id="s17">3.3 单位能耗碳排放算例（D 级）</h3>
-<div class="table-wrap"><table><thead><tr><th>指标</th><th>改造前</th><th>改造后</th><th>变化</th></tr></thead><tbody><tr><td>能源消费量（万 tce）</td><td>12.0</td><td>11.0</td><td>−8.3%</td></tr><tr><td>碳排放量（万 tCO2）</td><td>27.0</td><td>18.0</td><td>−33.3%</td></tr><tr><td>单位能耗碳排放（tCO2/tce）</td><td>2.25</td><td>1.64</td><td>−27.3%</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>改造前</th><th>改造后</th><th>变化</th></tr></thead><tbody><tr><td>能源消费量（万 tce）</td><td>12.0</td><td>11.0</td><td>−8.3%</td></tr><tr><td>碳排放量（万 tCO2）</td><td>27.0</td><td>18.0</td><td>−33.3%</td></tr><tr><td>单位能耗碳排放（tCO2/tce）</td><td>2.25</td><td>1.64</td><td>−27.3%</td></tr></tbody></table></div>
 <ul><li><strong>公式</strong>：单位能耗碳排放 = 园区碳排放量 ÷ 园区能源消费量。</li><li><strong>读法</strong>：绿电直连主要降分子，节能主要降分母；只报&quot;绿电比例&quot;不能说明指标改善。</li><li><strong>注意</strong>：不同园区的能源品种、外购热力、工艺过程排放口径不同，横向比较前先统一边界。</li></ul>
 <hr>
 <h2 id="s18">4. 绿电直连：能不能算得过账</h2>
@@ -145,11 +152,11 @@
 <ol><li><strong>负荷</strong>：8760 曲线、最大负荷、峰谷差、可中断与可时移比例。</li><li><strong>资源</strong>：风光逐时可用发电量、弃电条件、P50/P90。</li><li><strong>匹配</strong>：自用率、上网率、弃电率、下网率。</li><li><strong>价格</strong>：全口径电价、LCOE、输配电费、系统运行费、基金及附加。</li><li><strong>财务</strong>：年总成本、度电成本、临界 LCOE；如为投资项目，再算 IRR、NPV、DSCR。</li><li><strong>合规</strong>：60%/30%/20%、专线、防孤岛、涉网性能、绿证归属。</li></ol>
 <h3 id="s20">4.2 合成算例（D 级）</h3>
 <p><strong>假设</strong></p>
-<div class="table-wrap"><table><thead><tr><th>参数</th><th>取值</th><th>说明</th></tr></thead><tbody><tr><td>园区最大负荷</td><td>50 MW</td><td>年用电量 3.00 亿 kWh，负荷率约 68.5%</td></tr><tr><td>接入公共电网容量</td><td>63 MVA</td><td>两台 31.5 MVA 主变</td></tr><tr><td>省级平均负荷率</td><td>60%</td><td>价格公式参数，不是园区自身负荷率</td></tr><tr><td>风电、光伏</td><td>100 MW、100 MW</td><td>利用小时 2,400、1,600</td></tr><tr><td>可用发电量</td><td>4.00 亿 kWh</td><td>风光合计</td></tr><tr><td>储能</td><td>50 MW/100 MWh</td><td>年搬运 0.27 亿 kWh</td></tr><tr><td>自用、上网、弃电</td><td>2.48、0.40、1.12 亿 kWh</td><td>占可用发电量 62.0%、10.0%、28.0%</td></tr><tr><td>下网电量</td><td>0.52 亿 kWh</td><td>占总用电量 17.3%</td></tr><tr><td>风光 LCOE</td><td>0.22 元/kWh</td><td>按可用发电量计，弃电也摊成本</td></tr><tr><td>储能年化成本</td><td>887.8 万元</td><td>700 元/Wh，15 年，8%，CRF 0.1168，O&amp;M 1%</td></tr><tr><td>专线运维</td><td>0.01 元/kWh</td><td>按自用加上网电量</td></tr><tr><td>现行容量电价</td><td>30 元/kVA·月</td><td>示例值</td></tr><tr><td>输配电量电价</td><td>0.10 元/kWh</td><td>用于折算容量电费</td></tr><tr><td>下网电能量价</td><td>0.35 元/kWh</td><td>不含输配、系统运行、基金、线损</td></tr><tr><td>系统运行费</td><td>0.068 元/kWh</td><td>仅下网电量，示例假设</td></tr><tr><td>线损</td><td>0.012 元/kWh</td><td>仅下网电量，示例假设</td></tr><tr><td>政府性基金及附加</td><td>0.02 元/kWh</td><td>全部用电量</td></tr><tr><td>原全口径到户电价</td><td>0.6756 元/kWh</td><td>0.35 + 0.15 + 0.0756 + 0.068 + 0.012 + 0.02</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>参数</th><th>取值</th><th>说明</th></tr></thead><tbody><tr><td>园区最大负荷</td><td>50 MW</td><td>年用电量 3.00 亿 kWh，负荷率约 68.5%</td></tr><tr><td>接入公共电网容量</td><td>63 MVA</td><td>两台 31.5 MVA 主变</td></tr><tr><td>省级平均负荷率</td><td>60%</td><td>价格公式参数，不是园区自身负荷率</td></tr><tr><td>风电、光伏</td><td>100 MW、100 MW</td><td>利用小时 2,400、1,600</td></tr><tr><td>可用发电量</td><td>4.00 亿 kWh</td><td>风光合计</td></tr><tr><td>储能</td><td>50 MW/100 MWh</td><td>年搬运 0.27 亿 kWh</td></tr><tr><td>自用、上网、弃电</td><td>2.48、0.40、1.12 亿 kWh</td><td>占可用发电量 62.0%、10.0%、28.0%</td></tr><tr><td>下网电量</td><td>0.52 亿 kWh</td><td>占总用电量 17.3%</td></tr><tr><td>风光 LCOE</td><td>0.22 元/kWh</td><td>按可用发电量计，弃电也摊成本</td></tr><tr><td>储能年化成本</td><td>887.8 万元</td><td>700 元/Wh，15 年，8%，CRF 0.1168，O&amp;M 1%</td></tr><tr><td>专线运维</td><td>0.01 元/kWh</td><td>按自用加上网电量</td></tr><tr><td>现行容量电价</td><td>30 元/kVA·月</td><td>示例值</td></tr><tr><td>输配电量电价</td><td>0.10 元/kWh</td><td>用于折算容量电费</td></tr><tr><td>下网电能量价</td><td>0.35 元/kWh</td><td>不含输配、系统运行、基金、线损</td></tr><tr><td>系统运行费</td><td>0.068 元/kWh</td><td>仅下网电量，示例假设</td></tr><tr><td>线损</td><td>0.012 元/kWh</td><td>仅下网电量，示例假设</td></tr><tr><td>政府性基金及附加</td><td>0.02 元/kWh</td><td>全部用电量</td></tr><tr><td>原全口径到户电价</td><td>0.6756 元/kWh</td><td>0.35 + 0.15 + 0.0756 + 0.068 + 0.012 + 0.02</td></tr></tbody></table></div>
 <p><strong>年成本对比</strong></p>
-<div class="table-wrap"><table><thead><tr><th>科目</th><th>原模式（万元/年）</th><th>直连模式（万元/年）</th><th>说明</th></tr></thead><tbody><tr><td>电能量</td><td>10,500</td><td>1,820</td><td>直连只买下网电量</td></tr><tr><td>风光电源</td><td>—</td><td>8,800</td><td>4.00 亿 kWh × 0.22 元/kWh</td></tr><tr><td>储能年化</td><td>—</td><td>887.8</td><td>50 MW/100 MWh</td></tr><tr><td>专线运维</td><td>—</td><td>288</td><td>2.88 亿 kWh × 0.01 元/kWh</td></tr><tr><td>输配电费</td><td>6,768</td><td>5,579.28</td><td>直连按容需量缴纳</td></tr><tr><td>系统运行费</td><td>2,040</td><td>353.6</td><td>仅下网电量</td></tr><tr><td>线损</td><td>360</td><td>62.4</td><td>仅下网电量</td></tr><tr><td>政府性基金</td><td>600</td><td>600</td><td>全部用电量</td></tr><tr><td>合计</td><td>20,268</td><td>18,391.08</td><td>—</td></tr><tr><td>度电成本（元/kWh）</td><td>0.6756</td><td>0.6130</td><td>降 0.0626</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>科目</th><th>原模式（万元/年）</th><th>直连模式（万元/年）</th><th>说明</th></tr></thead><tbody><tr><td>电能量</td><td>10,500</td><td>1,820</td><td>直连只买下网电量</td></tr><tr><td>风光电源</td><td>—</td><td>8,800</td><td>4.00 亿 kWh × 0.22 元/kWh</td></tr><tr><td>储能年化</td><td>—</td><td>887.8</td><td>50 MW/100 MWh</td></tr><tr><td>专线运维</td><td>—</td><td>288</td><td>2.88 亿 kWh × 0.01 元/kWh</td></tr><tr><td>输配电费</td><td>6,768</td><td>5,579.28</td><td>直连按容需量缴纳</td></tr><tr><td>系统运行费</td><td>2,040</td><td>353.6</td><td>仅下网电量</td></tr><tr><td>线损</td><td>360</td><td>62.4</td><td>仅下网电量</td></tr><tr><td>政府性基金</td><td>600</td><td>600</td><td>全部用电量</td></tr><tr><td>合计</td><td>20,268</td><td>18,391.08</td><td>—</td></tr><tr><td>度电成本（元/kWh）</td><td>0.6756</td><td>0.6130</td><td>降 0.0626</td></tr></tbody></table></div>
 <p><strong>敏感性</strong></p>
-<div class="table-wrap"><table><thead><tr><th>情景</th><th>关键变化</th><th>年总成本（万元）</th><th>度电成本（元/kWh）</th><th>相对原模式（万元）</th></tr></thead><tbody><tr><td>基准</td><td>LCOE 0.22，弃电 28%</td><td>18,391.08</td><td>0.6130</td><td>−1,876.92</td></tr><tr><td>低 LCOE</td><td>0.20</td><td>17,591.08</td><td>0.5864</td><td>−2,676.92</td></tr><tr><td>高 LCOE</td><td>0.30</td><td>21,591.08</td><td>0.7197</td><td>+1,323.08</td></tr><tr><td>低弃电</td><td>弃电 10%、上网 18%，自用 2.88 亿 kWh</td><td>16,743.08</td><td>0.5581</td><td>−3,524.92</td></tr><tr><td>降接入容量</td><td>63 MVA 降到 50 MVA</td><td>17,239.80</td><td>0.5747</td><td>−3,028.20</td></tr><tr><td>临界 LCOE</td><td>0.267</td><td>20,268</td><td>0.6756</td><td>0</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>情景</th><th>关键变化</th><th>年总成本（万元）</th><th>度电成本（元/kWh）</th><th>相对原模式（万元）</th></tr></thead><tbody><tr><td>基准</td><td>LCOE 0.22，弃电 28%</td><td>18,391.08</td><td>0.6130</td><td>−1,876.92</td></tr><tr><td>低 LCOE</td><td>0.20</td><td>17,591.08</td><td>0.5864</td><td>−2,676.92</td></tr><tr><td>高 LCOE</td><td>0.30</td><td>21,591.08</td><td>0.7197</td><td>+1,323.08</td></tr><tr><td>低弃电</td><td>弃电 10%、上网 18%，自用 2.88 亿 kWh</td><td>16,743.08</td><td>0.5581</td><td>−3,524.92</td></tr><tr><td>降接入容量</td><td>63 MVA 降到 50 MVA</td><td>17,239.80</td><td>0.5747</td><td>−3,028.20</td></tr><tr><td>临界 LCOE</td><td>0.267</td><td>20,268</td><td>0.6756</td><td>0</td></tr></tbody></table></div>
 <p><strong>结论</strong></p>
 <ul><li>基准情景度电成本 0.6130 元/kWh，比原全口径 0.6756 元/kWh 低 0.0626 元/kWh，年省 1,876.92 万元。</li><li><strong>临界 LCOE 约 0.267 元/kWh</strong>：高于此值，直连不如直接买电。资源条件与设备价格决定项目生死，不是政策口号。</li><li>弃电率从 28% 降到 10%，年省扩大到 3,524.92 万元（自用 2.88、上网 0.72、弃电 0.40 亿 kWh，三者合计 4.00）；<strong>弃电是最大的隐性成本</strong>。</li><li>接入容量从 63 MVA 降到 50 MVA，相对原模式年省 3,028.20 万元，相对直连基准的增量为 1,151.28 万元（现行容需量 468 + 1192 折算项 683.28）；储能和负荷管理的价值在这里，不只是峰谷套利。</li><li><strong>输配电费口径</strong>：直连模式 = 现行容（需）量电费（63 MVA × 30 元/kVA·月 × 12 = 2,268 万元）+ 1192 号折算项（0.10 元/kWh × 60% × 730 h × 63 MVA × 12 = 3,311.28 万元）= 5,579.28 万元；容量降到 50 MVA 时两项同步下降，合计省 1,151.28 万元。算例把 0.10 元/kWh 作为 1192 号公式的不含价区交叉补贴口径，0.15 元/kWh 作为原模式含交叉补贴的到户输配口径；两者不能混用，实际项目按省级文件拆分。</li><li><strong>能量平衡</strong>：基准与低弃电情景均按&quot;自用 + 上网 + 弃电 = 可用发电量&quot;闭合；储能年搬运量视为已在自用与弃电之间调剂，只计年化成本，不单独重复计入电量平衡。</li><li><strong>纪律</strong>：算例未计入土地、专线建设、融资、税、保险、备用电源；实际项目要补全。任一假设变化，结论都可能反转。</li></ul>
 <h3 id="s21">4.3 六种&quot;算得过&quot;的假象</h3>
@@ -159,13 +166,13 @@
 <h3 id="s23">5.1 280 号文的三个层级</h3>
 <ul><li><strong>区域（省）级</strong>、<strong>市（县）级</strong>、<strong>园区（居民区）级</strong>；园区级最贴近零碳园区。</li><li><strong>原则</strong>：以荷定源、就地平衡、灵活调节、安全稳定。</li><li>93 号文把符合条件的源网荷储一体化项目视作智能微电网（新型经营主体身份见《虚拟电厂专家》）。</li></ul>
 <h3 id="s24">5.2 并网型、离网型与微网</h3>
-<div class="table-wrap"><table><thead><tr><th>类型</th><th>与公共电网关系</th><th>费用</th><th>适用</th><th>主要风险</th></tr></thead><tbody><tr><td>并网型</td><td>整体接入，有清晰物理与安全界面</td><td>缴输配电费、系统运行费</td><td>大多数园区</td><td>反送电限制、容量费</td></tr><tr><td>离网型</td><td>不接入公共电网</td><td>不缴稳定供应保障费用</td><td>偏远、矿区、海岛</td><td>备用、黑启动、可靠性</td></tr><tr><td>微网（可并网可孤岛）</td><td>有 PCC，可切换</td><td>按接入方式</td><td>高可靠性负荷</td><td>切换、保护、孤岛检测</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>类型</th><th>与公共电网关系</th><th>费用</th><th>适用</th><th>主要风险</th></tr></thead><tbody><tr><td>并网型</td><td>整体接入，有清晰物理与安全界面</td><td>缴输配电费、系统运行费</td><td>大多数园区</td><td>反送电限制、容量费</td></tr><tr><td>离网型</td><td>不接入公共电网</td><td>不缴稳定供应保障费用</td><td>偏远、矿区、海岛</td><td>备用、黑启动、可靠性</td></tr><tr><td>微网（可并网可孤岛）</td><td>有 PCC，可切换</td><td>按接入方式</td><td>高可靠性负荷</td><td>切换、保护、孤岛检测</td></tr></tbody></table></div>
 <h3 id="s25">5.3 配置要点</h3>
 <ul><li><strong>源</strong>：风光容量按负荷与自用率反推，不以资源最大化。</li><li><strong>网</strong>：专线或微网架结构、PCC、保护配合、短路电流校核。</li><li><strong>荷</strong>：可中断与可时移负荷比例，决定降容量空间。</li><li><strong>储</strong>：功率定削峰，能量定搬移，同时承担备用与黑启动（算法见微网与储能 EMS 底稿）。</li><li><strong>备</strong>：并网型仍需备用电源；离网型按负荷等级与 N-1 配置。</li><li><strong>控</strong>：能碳平台、EMS、交易接口三套数据要打通，才能支撑绿电溯源与碳核算。</li></ul>
 <hr>
 <h2 id="s26">6. 规划与配置方法</h2>
 <h3 id="s27">6.1 六步法</h3>
-<div class="table-wrap"><table><thead><tr><th>步骤</th><th>输入</th><th>输出</th><th>常见错误</th></tr></thead><tbody><tr><td>1 负荷分析</td><td>8760 曲线、生产计划</td><td>最大负荷、用电量、可调比例</td><td>用月度电量代替逐时</td></tr><tr><td>2 资源评估</td><td>测风/辐照、可用面积</td><td>逐时可用发电量、P50/P90</td><td>用理论发电量</td></tr><tr><td>3 源荷匹配</td><td>负荷、资源、储能</td><td>自用、上网、弃电、下网</td><td>只做年度平衡</td></tr><tr><td>4 定容</td><td>投资、土地、接入条件</td><td>风光储容量组合</td><td>风光储分开优化</td></tr><tr><td>5 电气校核</td><td>短路、保护、稳定</td><td>接入方案、设备参数</td><td>忽略反送电与孤岛</td></tr><tr><td>6 经济评价</td><td>成本、电价、政策</td><td>度电成本、临界 LCOE、IRR</td><td>漏算容量费与弃电</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>步骤</th><th>输入</th><th>输出</th><th>常见错误</th></tr></thead><tbody><tr><td>1 负荷分析</td><td>8760 曲线、生产计划</td><td>最大负荷、用电量、可调比例</td><td>用月度电量代替逐时</td></tr><tr><td>2 资源评估</td><td>测风/辐照、可用面积</td><td>逐时可用发电量、P50/P90</td><td>用理论发电量</td></tr><tr><td>3 源荷匹配</td><td>负荷、资源、储能</td><td>自用、上网、弃电、下网</td><td>只做年度平衡</td></tr><tr><td>4 定容</td><td>投资、土地、接入条件</td><td>风光储容量组合</td><td>风光储分开优化</td></tr><tr><td>5 电气校核</td><td>短路、保护、稳定</td><td>接入方案、设备参数</td><td>忽略反送电与孤岛</td></tr><tr><td>6 经济评价</td><td>成本、电价、政策</td><td>度电成本、临界 LCOE、IRR</td><td>漏算容量费与弃电</td></tr></tbody></table></div>
 <h3 id="s28">6.2 指标与公式</h3>
 <pre><code>自用率 = 自用电量 ÷ 可用发电量
 上网率 = 上网电量 ÷ 可用发电量
@@ -178,11 +185,11 @@
 <ul><li><strong>功率</strong>：按最大削峰需求或备用需求定，不按年电量。</li><li><strong>能量</strong>：按日搬移电量与连续阴天、无风时长定。</li><li><strong>经济</strong>：储能价值 = 降容量费 + 提高自用率 + 减少弃电 + 辅助服务；只算峰谷套利会低估或高估。</li></ul>
 <hr>
 <h2 id="s30">7. 商业模式与合同</h2>
-<div class="table-wrap"><table><thead><tr><th>模式</th><th>投资主体</th><th>收入来源</th><th>适用场景</th><th>主要风险</th></tr></thead><tbody><tr><td>园区自投</td><td>园区或企业</td><td>电费节省、绿证</td><td>负荷稳定、资金充足</td><td>资本占用、专业能力</td></tr><tr><td>能源企业投建</td><td>发电或综合能源公司</td><td>直连售电、上网、绿证</td><td>源荷匹配好</td><td>负荷信用、政策变化</td></tr><tr><td>合资公司</td><td>电源方与负荷方</td><td>按股比分电费节省</td><td>多用户园区</td><td>治理与分配</td></tr><tr><td>合同能源管理</td><td>服务商</td><td>节能分享</td><td>存量改造</td><td>基线认定、回款</td></tr><tr><td>租赁或 BOO</td><td>资产方</td><td>租金或服务费</td><td>轻资产用户</td><td>退租、残值</td></tr><tr><td>增量配电网</td><td>配网运营商</td><td>配电费、服务费</td><td>新增负荷</td><td>许可、监管</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>模式</th><th>投资主体</th><th>收入来源</th><th>适用场景</th><th>主要风险</th></tr></thead><tbody><tr><td>园区自投</td><td>园区或企业</td><td>电费节省、绿证</td><td>负荷稳定、资金充足</td><td>资本占用、专业能力</td></tr><tr><td>能源企业投建</td><td>发电或综合能源公司</td><td>直连售电、上网、绿证</td><td>源荷匹配好</td><td>负荷信用、政策变化</td></tr><tr><td>合资公司</td><td>电源方与负荷方</td><td>按股比分电费节省</td><td>多用户园区</td><td>治理与分配</td></tr><tr><td>合同能源管理</td><td>服务商</td><td>节能分享</td><td>存量改造</td><td>基线认定、回款</td></tr><tr><td>租赁或 BOO</td><td>资产方</td><td>租金或服务费</td><td>轻资产用户</td><td>退租、残值</td></tr><tr><td>增量配电网</td><td>配网运营商</td><td>配电费、服务费</td><td>新增负荷</td><td>许可、监管</td></tr></tbody></table></div>
 <h3 id="s31">7.1 合同必须写清的八件事</h3>
 <ol><li><strong>电量与电价</strong>：自用、下网、上网分别计价。</li><li><strong>偏差</strong>：发用电偏差由谁承担，是否按现货结算。</li><li><strong>弃电</strong>：弃电责任、补偿、是否计入可用发电量。</li><li><strong>上网收益</strong>：归电源方、负荷方还是按比例。</li><li><strong>容量费</strong>：接入容量、扩容、容量费分摊。</li><li><strong>绿证</strong>：归属、划转、核销、价格。</li><li><strong>退出</strong>：提前终止、回购、资产处置、未到期合同处理。</li><li><strong>政策变化</strong>：1192 号或省级细则调整时的重新谈判机制。</li></ol>
 <h3 id="s32">7.2 风险分配</h3>
-<div class="table-wrap"><table><thead><tr><th>风险</th><th>主要承担方</th><th>缓释工具</th></tr></thead><tbody><tr><td>资源</td><td>电源方</td><td>P90、发电量保证、保险</td></tr><tr><td>负荷</td><td>负荷方或合资公司</td><td>最低用电量、照付不议</td></tr><tr><td>价格</td><td>双方</td><td>电价公式、封顶保底、对冲</td></tr><tr><td>政策</td><td>双方</td><td>重新谈判条款、政策变化条款</td></tr><tr><td>并网</td><td>项目公司</td><td>接入协议、备用、防孤岛</td></tr><tr><td>信用</td><td>负荷方</td><td>担保、预付款、履约保函</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>风险</th><th>主要承担方</th><th>缓释工具</th></tr></thead><tbody><tr><td>资源</td><td>电源方</td><td>P90、发电量保证、保险</td></tr><tr><td>负荷</td><td>负荷方或合资公司</td><td>最低用电量、照付不议</td></tr><tr><td>价格</td><td>双方</td><td>电价公式、封顶保底、对冲</td></tr><tr><td>政策</td><td>双方</td><td>重新谈判条款、政策变化条款</td></tr><tr><td>并网</td><td>项目公司</td><td>接入协议、备用、防孤岛</td></tr><tr><td>信用</td><td>负荷方</td><td>担保、预付款、履约保函</td></tr></tbody></table></div>
 <hr>
 <h2 id="s33">8. 碳核算接口</h2>
 <h3 id="s34">8.1 园区边界与范围</h3>
@@ -202,27 +209,45 @@
 <ol><li>688 号文的成文与印发日期（05-14 与 05-20 两种说法）。</li><li>910 号附件中评价指标的完整清单、权重与碳排放核算细则。</li><li>第二批国家级零碳园区名单与验收标准。</li><li>&quot;十五五&quot;零碳园区建设指南的出台时间。</li><li>绿电直连自用电量对应绿证的核发、划转与核销规则。</li><li>直连项目配套储能能否参与辅助服务、容量补偿或容量租赁。</li><li>各省&quot;平均负荷率&quot;参数的发布频率与更新规则。</li><li>2026 年绿电直连项目清单、省份分布与最新装机口径。</li><li>2030 年后 35% 门槛的适用范围与存量项目处理。</li><li>零碳园区评价与全国碳市场、CCER、CBAM 的衔接规则。</li></ol>
 <hr>
 <h2 id="s40">12. 与技能和其他笔记的分工</h2>
-<div class="table-wrap"><table><thead><tr><th>主题</th><th>归属</th></tr></thead><tbody><tr><td>现货、中长期、辅助服务、容量电价与结算规则</td><td>电力交易专家</td></tr><tr><td>风光资源评估、LCOE、并网标准、项目投决</td><td>新能源项目开发与并网专家及<a href="新能源项目开发与并网-2026-11.html">维护笔记</a></td></tr><tr><td>储能选型、收益堆叠、考核扣减、租赁合同</td><td>储能投资与运营专家及<a href="储能投资与运营-2026-11.html">维护笔记</a></td></tr><tr><td>VPP 聚合、控制、商业模式与国际对标</td><td>虚拟电厂专家</td></tr><tr><td>碳核算、履约、CCER、PCF、碳中和与 CBAM</td><td>碳资产管理专家</td></tr><tr><td>电价构成、现行文件与用户侧查证</td><td><a href="中国电价制度谱系-2026-11.html">中国电价制度谱系</a>、<a href="中国电价现行政策与查证-2026-11.html">中国电价现行政策与查证</a></td></tr><tr><td>微网与储能 EMS 算法</td><td><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 底稿</a>、<a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 底稿</a></td></tr><tr><td>园区与直连的项目形态、门槛、价格机制、源荷匹配、商业模式</td><td>本笔记</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>主题</th><th>归属</th></tr></thead><tbody><tr><td>现货、中长期、辅助服务、容量电价与结算规则</td><td>电力交易专家</td></tr><tr><td>风光资源评估、LCOE、并网标准、项目投决</td><td>新能源项目开发与并网专家及<a href="新能源项目开发与并网-2026-11.html">维护笔记</a></td></tr><tr><td>储能选型、收益堆叠、考核扣减、租赁合同</td><td>储能投资与运营专家及<a href="储能投资与运营-2026-11.html">维护笔记</a></td></tr><tr><td>VPP 聚合、控制、商业模式与国际对标</td><td>虚拟电厂专家</td></tr><tr><td>碳核算、履约、CCER、PCF、碳中和与 CBAM</td><td>碳资产管理专家</td></tr><tr><td>电价构成、现行文件与用户侧查证</td><td><a href="中国电价制度谱系-2026-11.html">中国电价制度谱系</a>、<a href="中国电价现行政策与查证-2026-11.html">中国电价现行政策与查证</a></td></tr><tr><td>微网与储能 EMS 算法</td><td><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 底稿</a>、<a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 底稿</a></td></tr><tr><td>园区与直连的项目形态、门槛、价格机制、源荷匹配、商业模式</td><td>本笔记</td></tr></tbody></table></div>
 <ul><li><strong>同一数字在多处出现时</strong>：绿电直连门槛以 650/688 号原文为准，价格机制以 1192 号与省级细则为准，零碳园区数量与评价以 910/1082 号与国发 22 号为准。</li><li>本笔记不重复技能里的市场规则、报价方法、储能测算与碳核算公式，只保留园区与直连特有的接口。</li></ul>
     </article>
 
-    <section class="related" aria-label="相关模块">
-      <h2>相关模块</h2>
-      <ul>
-        <li><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a></li>
-        <li><a href="需求响应、车网互动与灵活性资源-2026-11.html">需求响应、车网互动与灵活性资源</a></li>
-        <li><a href="碳资产实务-2026-11.html">碳资产实务 2026-11</a></li>
-      </ul>
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>3</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="微网EMS优化调度-算法与工程-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>微网 EMS 优化调度</b>
+          <span>PCC 购售双变量、备用/孤岛/退化约束、MPC 滚动与验收测试，区分保护与优化。</span>
+        </a>
+        <a class="related-card" href="需求响应、车网互动与灵活性资源-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>需求响应、车网互动与灵活性资源</b>
+          <span>从资源盘点、基线认定到考核结算，补齐 DR 产品体系与 V2G 参与市场的空白。</span>
+        </a>
+        <a class="related-card" href="碳资产实务-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>碳资产实务 2026-11</b>
+          <span>2025/2026 履约参数、履约成本算例、CCER、碳金融工具、CBAM 时点与电碳衔接。</span>
+        </a>
+      </div>
+
     </section>
 
+
     <nav class="pager" aria-label="上下篇">
-          <a class="prev" href="SCADA与电力监控数据链路-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">SCADA 与电力监控数据链路</span></a>
-          <a class="next" href="中国碳排放权交易实务-主题笔记.html"><span class="dir">下一篇 →</span><span class="ttl">中国碳排放权交易实务</span></a>
+          <span class="spacer"></span>
+          <span class="spacer"></span>
     </nav>
 
     <footer class="doc-foot">
       <div class="lic">本页由 <a href="../综合能源与零碳园区-2026-11.md">knowledge/综合能源与零碳园区-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
-      <div><a href="../index.html">返回知识库总览 →</a></div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
     </footer>
   </main>
 
@@ -269,7 +294,7 @@
             <li class="lv2"><a href="#s38">10. 常见错误（12 条）</a></li>
             <li class="lv2"><a href="#s39">11. 待核实与未定事项</a></li>
             <li class="lv2"><a href="#s40">12. 与技能和其他笔记的分工</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="27">展开 27 个小节</button>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="27" data-more-label="展开 27 个小节" data-less-label="收起小节">展开 27 个小节</button>
   </aside>
 </div>
 

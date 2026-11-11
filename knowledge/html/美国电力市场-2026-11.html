@@ -19,9 +19,9 @@
 <div class="scrim"></div>
 
 <header class="topbar">
-  <a class="back" href="../index.html">← 知识库</a>
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
   <div class="crumb">
-    <span class="crumb-cat">06 / GLOBAL</span>
+    <span class="crumb-cat">03 · GLOBAL</span>
     <span class="crumb-sep">/</span>
     <span class="crumb-doc">美国电力市场（2026 版）：ERCOT / PJM / CAISO</span>
   </div>
@@ -30,7 +30,14 @@
       <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
       <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-    <a class="src" href="../美国电力市场-2026-11.md">.md 源文件</a>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../美国电力市场-2026-11.md">.md 源文件<small>knowledge/美国电力市场-2026-11.md</small></a>
+
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
     <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
   </div>
 </header>
@@ -38,7 +45,7 @@
 <div class="shell">
   <aside class="sidebar" id="nav">
     <div class="nav-kicker">当前分类</div>
-    <div class="nav-num">06 / GLOBAL</div>
+    <div class="nav-num">03 · GLOBAL</div>
     <h2 class="nav-cat"><a href="../index.html#intl">海外市场</a></h2>
     <ul class="nav-list">
               <li><a href="澳大利亚NEM电力市场-2026-11.html">澳大利亚 NEM 电力市场（2026 版）</a></li>
@@ -57,24 +64,24 @@
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
       <ul>
-              <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
-              <li><a href="../index.html#spot"><b>05</b>电力现货与省间交易</a></li>
-              <li><a href="../index.html#cross"><b>07</b>横向专题</a></li>
-              <li><a href="../index.html#price"><b>08</b>电价</a></li>
-              <li><a href="../index.html#renewable"><b>09</b>新能源与并网</a></li>
-              <li><a href="../index.html#storage"><b>10</b>储能与 EMS</a></li>
-              <li><a href="../index.html#park"><b>11</b>综合能源与零碳园区</a></li>
-              <li><a href="../index.html#carbon"><b>12</b>碳市场与碳管理</a></li>
-              <li><a href="../index.html#vpp"><b>13</b>虚拟电厂</a></li>
-              <li><a href="../index.html#index"><b>14</b>索引、查证与工具</a></li>
-              <li><a href="../index.html#research"><b>15</b>调研底稿</a></li>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#cross"><b>04</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>05</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>06</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>07</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>08</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>09</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>10</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>11</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>12</b>调研底稿</a></li>
       </ul>
     </div>
   </aside>
 
   <main class="main" id="main">
     <header class="doc-head">
-      <div class="kicker">06 / GLOBAL<i>知识模块</i></div>
+      <div class="kicker">03 · GLOBAL<i>知识模块</i></div>
       <h1 class="doc-title">美国电力市场：ERCOT、PJM 与 CAISO 的三种设计（2026-11）</h1>
       <p class="lede">三种设计范式：ERCOT 能量-only 与节点价、PJM 容量市场、CAISO 日前实时与西部市场；储能收益、并网、ITC/FEOC 与中资进入路径。</p>
       <p class="hook">2026-11 · ERCOT / PJM / CAISO 三范式</p>
@@ -127,7 +134,7 @@
    ├─ EDAM 2026-05-01 投运；WEIM 早已运行
    └─ 储能 &gt;21 GW；负价与弃电是常态变量</code></pre>
 <h3 id="s3">0.2 关键数字</h3>
-<div class="table-wrap"><table><thead><tr><th>市场</th><th>项目</th><th>数字</th><th>时点</th><th>级别</th></tr></thead><tbody><tr><td>ERCOT</td><td>在运电池</td><td>15,008 MW</td><td>2025-09</td><td>B</td></tr><tr><td>ERCOT</td><td>单日最大电池放电</td><td>7,741 MW</td><td>2025-09-11</td><td>B</td></tr><tr><td>ERCOT</td><td>价格上限 HCAP / LCAP</td><td>5,000 / 2,000 美元/MWh</td><td>2026 现行</td><td>A</td></tr><tr><td>ERCOT</td><td>RTC+B 首个运行日</td><td>2025-12-05</td><td>2025-12</td><td>A</td></tr><tr><td>ERCOT</td><td>大负荷并网申请</td><td>约 474 GW，&gt;90% 数据中心</td><td>2026-08</td><td>C</td></tr><tr><td>PJM</td><td>2028/29 BRA 出清价</td><td>325 美元/MW-day（触顶）</td><td>2026-07-14</td><td>A</td></tr><tr><td>PJM</td><td>2028/29 清算量 / 需求</td><td>152,083.4 / 156,013 MW</td><td>2026-07-14</td><td>A</td></tr><tr><td>PJM</td><td>2028/29 缺口</td><td>6,831 MW；备用率 14.7%</td><td>2026-07-14</td><td>A</td></tr><tr><td>PJM</td><td>4 小时电池 ELCC</td><td>50%</td><td>2026-02</td><td>B</td></tr><tr><td>CAISO</td><td>在运储能</td><td>&gt;21,000 MW</td><td>2026-08</td><td>A（CEC 转引）</td></tr><tr><td>CAISO</td><td>EDAM 投运</td><td>2026-05-01</td><td>2026-05</td><td>A</td></tr><tr><td>全美</td><td>电池装机</td><td>2025 年底 43.6 GW；2026-06 约 52 GW</td><td>2026-08</td><td>A</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>市场</th><th>项目</th><th>数字</th><th>时点</th><th>级别</th></tr></thead><tbody><tr><td>ERCOT</td><td>在运电池</td><td>15,008 MW</td><td>2025-09</td><td>B</td></tr><tr><td>ERCOT</td><td>单日最大电池放电</td><td>7,741 MW</td><td>2025-09-11</td><td>B</td></tr><tr><td>ERCOT</td><td>价格上限 HCAP / LCAP</td><td>5,000 / 2,000 美元/MWh</td><td>2026 现行</td><td>A</td></tr><tr><td>ERCOT</td><td>RTC+B 首个运行日</td><td>2025-12-05</td><td>2025-12</td><td>A</td></tr><tr><td>ERCOT</td><td>大负荷并网申请</td><td>约 474 GW，&gt;90% 数据中心</td><td>2026-08</td><td>C</td></tr><tr><td>PJM</td><td>2028/29 BRA 出清价</td><td>325 美元/MW-day（触顶）</td><td>2026-07-14</td><td>A</td></tr><tr><td>PJM</td><td>2028/29 清算量 / 需求</td><td>152,083.4 / 156,013 MW</td><td>2026-07-14</td><td>A</td></tr><tr><td>PJM</td><td>2028/29 缺口</td><td>6,831 MW；备用率 14.7%</td><td>2026-07-14</td><td>A</td></tr><tr><td>PJM</td><td>4 小时电池 ELCC</td><td>50%</td><td>2026-02</td><td>B</td></tr><tr><td>CAISO</td><td>在运储能</td><td>&gt;21,000 MW</td><td>2026-08</td><td>A（CEC 转引）</td></tr><tr><td>CAISO</td><td>EDAM 投运</td><td>2026-05-01</td><td>2026-05</td><td>A</td></tr><tr><td>全美</td><td>电池装机</td><td>2025 年底 43.6 GW；2026-06 约 52 GW</td><td>2026-08</td><td>A</td></tr></tbody></table></div>
 <aside class="note"><p>负电价小时数、ERCOT 2026 年在运电池 MW/MWh、PJM 在运储能 MW 三项没有取得同口径官方数，正文标注“待复核”，不用于精确回测。</p></aside>
 <h3 id="s4">0.3 为什么是三篇而不是一篇</h3>
 <ul><li><strong>ERCOT 是能量-only 的极端样本</strong>：没有容量市场，靠稀缺定价和辅助服务回收固定成本；储能收益高度依赖实时价差。</li><li><strong>PJM 是容量市场的极端样本</strong>：容量收入可以占储能收入的一半以上，但拍卖价格触顶并不等于新项目可融资。</li><li><strong>CAISO 是“日前 + 实时 + 西部区域市场”的样本</strong>：资源充裕度、爬坡产品和州级政策叠加，储能装机最大，但套利收益被光伏时段压缩。</li><li>三套规则不能互相套用：同一个 100 MW/400 MWh 项目，在三地的收入结构、降额口径和并网时长都不同。</li></ul>
@@ -136,21 +143,21 @@
 <hr>
 <h2 id="s6">1. 治理：联邦、州与 ISO/RTO</h2>
 <h3 id="s7">1.1 三层结构</h3>
-<div class="table-wrap"><table><thead><tr><th>层级</th><th>管什么</th><th>典型机构</th></tr></thead><tbody><tr><td>联邦</td><td>跨州批发、可靠性、并网与市场 tariff</td><td>FERC、NERC</td></tr><tr><td>州</td><td>配电、零售、选址、消防、环境许可</td><td>PUCT（得州）、州 PUC、CPUC（加州）</td></tr><tr><td>ISO/RTO</td><td>市场运行、调度、结算、并网队列</td><td>ERCOT、PJM、CAISO</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>层级</th><th>管什么</th><th>典型机构</th></tr></thead><tbody><tr><td>联邦</td><td>跨州批发、可靠性、并网与市场 tariff</td><td>FERC、NERC</td></tr><tr><td>州</td><td>配电、零售、选址、消防、环境许可</td><td>PUCT（得州）、州 PUC、CPUC（加州）</td></tr><tr><td>ISO/RTO</td><td>市场运行、调度、结算、并网队列</td><td>ERCOT、PJM、CAISO</td></tr></tbody></table></div>
 <ul><li><strong>ERCOT 的特殊性</strong>：得州电网与外部互联有限，批发市场不受 FERC 费率管辖，主要由 PUCT 和 ERCOT 规则约束；这也意味着联邦层面的市场改革工具在 ERCOT 作用有限。</li><li><strong>PJM 的复杂性</strong>：跨 13 州 + 华盛顿特区，容量市场按 LDA（负荷交付区）出清，州级政策（如可再生能源配额、数据中心负荷）会通过容量需求曲线传导。</li><li><strong>CAISO 的州级叠加</strong>：CPUC 管资源充裕度和零售，CEC 管规划与装机统计，CAISO 管市场运行；同一个项目要同时满足三方要求。</li></ul>
 <h3 id="s8">1.2 三市场治理对照</h3>
-<div class="table-wrap"><table><thead><tr><th>维度</th><th>ERCOT</th><th>PJM</th><th>CAISO</th></tr></thead><tbody><tr><td>批发监管</td><td>PUCT 为主</td><td>FERC tariff</td><td>FERC tariff</td></tr><tr><td>容量机制</td><td>无</td><td>BRA + FRR</td><td>无集中容量市场；RA 义务</td></tr><tr><td>价格形成</td><td>节点价 + ORDC</td><td>节点价 + 容量价</td><td>节点价 + RA</td></tr><tr><td>结算粒度</td><td>15 分钟</td><td>小时/5 分钟（按产品）</td><td>5 分钟</td></tr><tr><td>并网队列</td><td>ERCOT 集中</td><td>PJM 集中，研究周期长</td><td>CAISO 集群制</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>ERCOT</th><th>PJM</th><th>CAISO</th></tr></thead><tbody><tr><td>批发监管</td><td>PUCT 为主</td><td>FERC tariff</td><td>FERC tariff</td></tr><tr><td>容量机制</td><td>无</td><td>BRA + FRR</td><td>无集中容量市场；RA 义务</td></tr><tr><td>价格形成</td><td>节点价 + ORDC</td><td>节点价 + 容量价</td><td>节点价 + RA</td></tr><tr><td>结算粒度</td><td>15 分钟</td><td>小时/5 分钟（按产品）</td><td>5 分钟</td></tr><tr><td>并网队列</td><td>ERCOT 集中</td><td>PJM 集中，研究周期长</td><td>CAISO 集群制</td></tr></tbody></table></div>
 <h3 id="s9">1.3 与中国第一层差别</h3>
 <ul><li><strong>没有“全国统一市场”</strong>：中国是省间 + 省级两层，美国是 ISO/RTO 拼图；跨市场没有统一规则。</li><li><strong>容量机制不是标配</strong>：ERCOT 和 CAISO 都没有集中容量拍卖，固定成本回收方式完全不同。</li><li><strong>节点价与分区价并存</strong>：ERCOT/PJM 节点价，CAISO 以分区价为主；报价与结算模型不能只用一个价格。</li><li><strong>并网是项目的第一约束</strong>：三地队列都在 2026 年承压，价格信号再好，没有并网容量也拿不到收入。</li></ul>
 <hr>
 <h2 id="s10">2. ERCOT：能量-only 与稀缺定价</h2>
 <h3 id="s11">2.1 市场时序</h3>
-<div class="table-wrap"><table><thead><tr><th>环节</th><th>时间</th><th>说明</th></tr></thead><tbody><tr><td>日前市场</td><td>D-1</td><td>小时级、财务结算；自愿参与，大量负荷在实时结算</td></tr><tr><td>实时调度</td><td>每 5 分钟</td><td>SCED 出清，形成节点价</td></tr><tr><td>结算</td><td>每 15 分钟</td><td>4 个结算间隔/小时；不是按 5 分钟结算</td></tr><tr><td>辅助服务</td><td>日前 + 实时</td><td>与能量联合或分开采购，按产品定</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>环节</th><th>时间</th><th>说明</th></tr></thead><tbody><tr><td>日前市场</td><td>D-1</td><td>小时级、财务结算；自愿参与，大量负荷在实时结算</td></tr><tr><td>实时调度</td><td>每 5 分钟</td><td>SCED 出清，形成节点价</td></tr><tr><td>结算</td><td>每 15 分钟</td><td>4 个结算间隔/小时；不是按 5 分钟结算</td></tr><tr><td>辅助服务</td><td>日前 + 实时</td><td>与能量联合或分开采购，按产品定</td></tr></tbody></table></div>
 <ul><li><strong>日前是“可选的金融工具”</strong>：ERCOT 的实时市场占比高，储能若只按日前价差建模，会低估实时波动，也会错算结算。</li><li><strong>15 分钟结算是建模的硬约束</strong>：调度 5 分钟、结算 15 分钟，SOC 与偏差要用 15 分钟颗粒度核对。</li></ul>
 <h3 id="s12">2.2 价格上限与 ORDC</h3>
 <ul><li><strong>HCAP / LCAP</strong>：高系统报价上限 5,000 美元/MWh，低系统报价上限 2,000 美元/MWh；当 ORDC 加价持续超过低上限时进入高上限。</li><li><strong>ORDC</strong>：备用低于阈值时自动加价，把稀缺价值传导到实时价格；这是 ERCOT 没有容量市场却能吸引可调度资源的核心机制。</li><li><strong>对储能</strong>：ORDC 事件少但价格高，收益分布高度偏斜；用年均价差做模型会低估尾部、也高估可捕获比例。</li></ul>
 <h3 id="s13">2.3 辅助服务</h3>
-<div class="table-wrap"><table><thead><tr><th>产品</th><th>作用</th><th>储能参与</th><th>备注</th></tr></thead><tbody><tr><td>Reg Up / Reg Down</td><td>调频</td><td>可</td><td>需满足响应与遥测要求</td></tr><tr><td>RRS（响应备用）</td><td>事故备用</td><td>可</td><td>通常要求 10 分钟内响应</td></tr><tr><td>Non-Spin</td><td>非旋转备用</td><td>可</td><td>启动时间要求较宽</td></tr><tr><td>ECRS</td><td>可调用应急备用</td><td>可</td><td>2023-06 上线</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>产品</th><th>作用</th><th>储能参与</th><th>备注</th></tr></thead><tbody><tr><td>Reg Up / Reg Down</td><td>调频</td><td>可</td><td>需满足响应与遥测要求</td></tr><tr><td>RRS（响应备用）</td><td>事故备用</td><td>可</td><td>通常要求 10 分钟内响应</td></tr><tr><td>Non-Spin</td><td>非旋转备用</td><td>可</td><td>启动时间要求较宽</td></tr><tr><td>ECRS</td><td>可调用应急备用</td><td>可</td><td>2023-06 上线</td></tr></tbody></table></div>
 <ul><li><strong>辅助服务收入已过峰值</strong>：2022–2023 年是高收入期，2024 年后竞争加剧、价格回落；用旧年份收入做投决会系统性高估。</li><li><strong>RTC+B 改变调度与定价</strong>：2025-12-05 起，实时能量与辅助服务联合优化并纳入电池 SOC；对电池的可用容量、辅助服务中标和价格都有影响，需用上线后的数据重新校准。</li></ul>
 <h3 id="s14">2.4 大负荷与并网</h3>
 <ul><li><strong>申请量</strong>：约 474 GW、&gt;90% 为数据中心（2026-08，C 级）。</li><li><strong>Batch Zero</strong>：2026-09-03 分类，204 个项目/66.4 GW 列为“基荷”，158 个/127.9 GW 列为“研究负荷”；最终分配预计 2027 年春（C 级）。</li><li><strong>SB6 落地</strong>：2026 年大负荷信息、净计量审批与财务担保规则陆续生效；并网不再只是“先到先得”。</li><li><strong>TEF 不补贴储能</strong>：得州能源基金 50 亿美元只贷给可调度（燃气）机组，储能不适用。</li><li><strong>低电压穿越</strong>：NOGRR 282 于 2026-08-01 生效，逆变器与储能的控制参数要按新规复核。</li></ul>
@@ -161,7 +168,7 @@
 <h3 id="s17">3.1 BRA 机制</h3>
 <ul><li><strong>提前拍卖</strong>：BRA（Base Residual Auction）按交付年提前约 3 年出清，按 LDA 分区定价；后续还有增量拍卖。</li><li><strong>产品</strong>：容量是“可交付的可靠性价值”，不是铭牌容量；可用性、考核与惩罚由容量性能规则约束。</li><li><strong>FRR</strong>：负荷服务实体可选择固定资源要求（FRR）替代部分 BRA 采购，2028/29 有 13,765.6 MW 走 FRR。</li></ul>
 <h3 id="s18">3.2 拍卖结果</h3>
-<div class="table-wrap"><table><thead><tr><th>交付年</th><th>出清价（美元/MW-day）</th><th>说明</th><th>级别</th></tr></thead><tbody><tr><td>2026/27</td><td>329.17</td><td>触顶，约 134.3 GW</td><td>B/C</td></tr><tr><td>2027/28</td><td>333.44</td><td>触顶（2025-12-17）</td><td>B</td></tr><tr><td>2028/29</td><td>325.00</td><td>新上限；缺口 6,831 MW</td><td>A</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>交付年</th><th>出清价（美元/MW-day）</th><th>说明</th><th>级别</th></tr></thead><tbody><tr><td>2026/27</td><td>329.17</td><td>触顶，约 134.3 GW</td><td>B/C</td></tr><tr><td>2027/28</td><td>333.44</td><td>触顶（2025-12-17）</td><td>B</td></tr><tr><td>2028/29</td><td>325.00</td><td>新上限；缺口 6,831 MW</td><td>A</td></tr></tbody></table></div>
 <ul><li><strong>2028/29 关键数</strong>：清算 138,317.8 MW + FRR 13,765.6 MW = 152,083.4 MW；需求 156,013 MW；备用率 14.7%；新增实际容量仅约 525 MW。</li><li><strong>未触顶模拟价</strong>：554.72 美元/MW-day；ComEd 分区 776.69 美元/MW-day（A 级，用于说明分区稀缺）。</li><li><strong>上限/下限</strong>：325/175 美元/MW-day 已延长覆盖 2029/30 拍卖（B 级）。</li><li><strong>兜底拍卖</strong>：PJM 曾申请 555 美元/MW-day 的兜底拍卖，FERC 于 2026-09-29 暂停（C 级）。</li></ul>
 <aside class="note"><p>触顶不等于新项目可融资：2028/29 仅约 525 MW 新增，说明 325 美元/MW-day 仍不足以覆盖新建成本与并网风险。</p></aside>
 <h3 id="s19">3.3 容量性能与 FRR</h3>
@@ -175,7 +182,7 @@
 <hr>
 <h2 id="s23">4. CAISO：日前、实时与西部市场</h2>
 <h3 id="s24">4.1 市场时序</h3>
-<div class="table-wrap"><table><thead><tr><th>环节</th><th>时间</th><th>说明</th></tr></thead><tbody><tr><td>日前市场</td><td>D-1</td><td>小时级，含机组组合与经济调度</td></tr><tr><td>FMM</td><td>15 分钟</td><td>调整机组组合与爬坡</td></tr><tr><td>RTD</td><td>5 分钟</td><td>实时调度与结算</td></tr><tr><td>FRP</td><td>5/15 分钟</td><td>灵活性爬坡产品</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>环节</th><th>时间</th><th>说明</th></tr></thead><tbody><tr><td>日前市场</td><td>D-1</td><td>小时级，含机组组合与经济调度</td></tr><tr><td>FMM</td><td>15 分钟</td><td>调整机组组合与爬坡</td></tr><tr><td>RTD</td><td>5 分钟</td><td>实时调度与结算</td></tr><tr><td>FRP</td><td>5/15 分钟</td><td>灵活性爬坡产品</td></tr></tbody></table></div>
 <ul><li><strong>DAME</strong>：2026-05-01 起在日前市场引入不确定性/爬坡产品，日前与实时的衔接更细。</li><li><strong>结算</strong>：实时按 5 分钟结算；储能 SOC 与偏差要按 5 分钟建模，比 ERCOT 更细。</li></ul>
 <h3 id="s25">4.2 资源充裕度 RA</h3>
 <ul><li><strong>Slice-of-Day</strong>：24 个小时切片，自 2025 合规年过渡、2026 全面执行；RA 义务从“月/年”转向“小时”。</li><li><strong>CPUC 规则</strong>：R.25-10-003 仍在推进；RA 认证、净 qualifying capacity（NQC）与可用性考核会影响储能容量收入。</li><li><strong>对储能</strong>：4 小时储能在 RA 中的有效容量按小时切片认证，不能把铭牌容量当 RA 容量。</li></ul>
@@ -186,7 +193,7 @@
 <hr>
 <h2 id="s28">5. 储能：三市场收益对照</h2>
 <h3 id="s29">5.1 收入线</h3>
-<div class="table-wrap"><table><thead><tr><th>收入线</th><th>ERCOT</th><th>PJM</th><th>CAISO</th></tr></thead><tbody><tr><td>能量套利</td><td>主收入（约 76%）</td><td>有，占比次之</td><td>主收入（约 91%）</td></tr><tr><td>辅助服务</td><td>Reg/RRS/ECRS 等</td><td>调频/同步备用/DASR</td><td>FRP/调频/备用</td></tr><tr><td>容量</td><td>无</td><td>BRA/FRR，按 ELCC</td><td>无集中市场；RA 义务</td></tr><tr><td>其他</td><td>—</td><td>共址/输电服务</td><td>RA、EDAM 跨区</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>收入线</th><th>ERCOT</th><th>PJM</th><th>CAISO</th></tr></thead><tbody><tr><td>能量套利</td><td>主收入（约 76%）</td><td>有，占比次之</td><td>主收入（约 91%）</td></tr><tr><td>辅助服务</td><td>Reg/RRS/ECRS 等</td><td>调频/同步备用/DASR</td><td>FRP/调频/备用</td></tr><tr><td>容量</td><td>无</td><td>BRA/FRR，按 ELCC</td><td>无集中市场；RA 义务</td></tr><tr><td>其他</td><td>—</td><td>共址/输电服务</td><td>RA、EDAM 跨区</td></tr></tbody></table></div>
 <h3 id="s30">5.2 降额与有效容量</h3>
 <ul><li><strong>ERCOT</strong>：无容量市场，但辅助服务与 ORDC 对可用容量有要求；SOC 与响应速度决定可中标容量。</li><li><strong>PJM</strong>：4 小时电池 ELCC 约 50%；2 小时更低，长时更高；ELCC 随渗透率下行。</li><li><strong>CAISO</strong>：RA 按小时切片认证 NQC；4 小时是主流配置，但 RA 价值取决于净负荷高峰时段。</li></ul>
 <h3 id="s31">5.3 收益趋势</h3>
@@ -196,20 +203,20 @@
 <hr>
 <h2 id="s33">6. 并网、许可与供应链</h2>
 <h3 id="s34">6.1 队列</h3>
-<div class="table-wrap"><table><thead><tr><th>市场</th><th>队列规模</th><th>典型周期</th><th>级别</th></tr></thead><tbody><tr><td>ERCOT</td><td>大负荷约 474 GW；Batch Zero 待分配</td><td>最终分配 2027 春</td><td>C</td></tr><tr><td>PJM</td><td>715 个项目/201.5 GW（储能约 60 GW）</td><td>约 40 个月</td><td>A</td></tr><tr><td>CAISO</td><td>约 197 GW</td><td>集群制，数年</td><td>B</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>市场</th><th>队列规模</th><th>典型周期</th><th>级别</th></tr></thead><tbody><tr><td>ERCOT</td><td>大负荷约 474 GW；Batch Zero 待分配</td><td>最终分配 2027 春</td><td>C</td></tr><tr><td>PJM</td><td>715 个项目/201.5 GW（储能约 60 GW）</td><td>约 40 个月</td><td>A</td></tr><tr><td>CAISO</td><td>约 197 GW</td><td>集群制，数年</td><td>B</td></tr></tbody></table></div>
 <h3 id="s35">6.2 许可与消防</h3>
 <ul><li><strong>选址与许可</strong>：州/县层面为主，ERCOT 与 PJM 各州差异大；CAISO 还要满足 CPUC/CEC 要求。</li><li><strong>消防</strong>：NFPA 855-2026 将大规模火烧测试（LSFT）列为强制要求；地方 AHJ 可能加严。</li><li><strong>UL 9540A</strong>：第 6 版于 2026-03-13 发布，强制 LSFT；储能系统认证与消防审查要按新版准备。</li></ul>
 <h3 id="s36">6.3 标准与认证</h3>
 <ul><li><strong>系统</strong>：UL 9540（储能系统）、UL 1741（逆变器/并网设备）、IEEE 1547-2018（分布式并网）、NEC 706（储能安装）。</li><li><strong>并网</strong>：IEEE 1547.1 测试、州级互连规则、ISO 的并网协议与模型验证。</li><li><strong>消防</strong>：NFPA 855、UL 9540A、地方消防规范；保险公司可能要求额外测试。</li></ul>
 <h3 id="s37">6.4 联邦政策</h3>
-<div class="table-wrap"><table><thead><tr><th>政策</th><th>内容</th><th>时点</th><th>级别</th></tr></thead><tbody><tr><td>ITC（48E）</td><td>储能 30% 基础抵免；+10% 本土含量、+10% 能源社区</td><td>2026 现行</td><td>A/B</td></tr><tr><td>45Y/48E 开工截止</td><td>风光须在 2026-07-04 前开工</td><td>2026-07-04</td><td>A/B</td></tr><tr><td>FEOC/PFE</td><td>2025-12-31 后开工适用禁止外国实体规则；材料成本比 2026 年 55%→2029 年后 75%</td><td>2026-02 指引</td><td>A/B</td></tr><tr><td>301 关税</td><td>非车用锂电池 7.5%→25%（2026-01-01）</td><td>2026-01-01</td><td>B/C</td></tr><tr><td>IEEPA 对等关税</td><td>2026-02-20 被最高法院判违法（301 不受影响）</td><td>2026-02-20</td><td>B/C</td></tr><tr><td>电网设备行政令</td><td>2026-08-26 将逆变器、BESS 列入大容量电力系统设备；DOE 120 天内出细则</td><td>2026-08-26</td><td>B</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>政策</th><th>内容</th><th>时点</th><th>级别</th></tr></thead><tbody><tr><td>ITC（48E）</td><td>储能 30% 基础抵免；+10% 本土含量、+10% 能源社区</td><td>2026 现行</td><td>A/B</td></tr><tr><td>45Y/48E 开工截止</td><td>风光须在 2026-07-04 前开工</td><td>2026-07-04</td><td>A/B</td></tr><tr><td>FEOC/PFE</td><td>2025-12-31 后开工适用禁止外国实体规则；材料成本比 2026 年 55%→2029 年后 75%</td><td>2026-02 指引</td><td>A/B</td></tr><tr><td>301 关税</td><td>非车用锂电池 7.5%→25%（2026-01-01）</td><td>2026-01-01</td><td>B/C</td></tr><tr><td>IEEPA 对等关税</td><td>2026-02-20 被最高法院判违法（301 不受影响）</td><td>2026-02-20</td><td>B/C</td></tr><tr><td>电网设备行政令</td><td>2026-08-26 将逆变器、BESS 列入大容量电力系统设备；DOE 120 天内出细则</td><td>2026-08-26</td><td>B</td></tr></tbody></table></div>
 <ul><li><strong>FEOC 是关键变量</strong>：材料成本比不达标会失去 ITC，且规则按项目开工时点适用；中国电芯、PCS 与系统集成的来源要逐项核算。</li><li><strong>关税叠加</strong>：301 关税提高后，综合税负可能接近 48.4%（B/C 级）；具体税号与豁免以 USTR 公告为准。</li><li><strong>行政令的尾部风险</strong>：已装中资 BESS/逆变器存在被要求隔离或更换的可能，投决要留出合规与更换预算。</li></ul>
 <h3 id="s38">6.5 外资审查</h3>
 <ul><li><strong>CFIUS/FIRRMA</strong>：覆盖“控制权”交易与特定房地产/关键基础设施；州级关键基础设施法可能叠加。</li><li><strong>交易结构</strong>：少数股权、董事会席位、否决权、数据访问都可能触发审查；不是“低于 10% 就免报”。</li><li><strong>应对</strong>：提前做股权与治理隔离、供应链溯源、数据本地化；把审查时间计入交割计划。</li></ul>
 <hr>
 <h2 id="s39">7. 中国主体进入路径</h2>
 <h3 id="s40">7.1 三种模式</h3>
-<div class="table-wrap"><table><thead><tr><th>模式</th><th>内容</th><th>优势</th><th>主要风险</th></tr></thead><tbody><tr><td>设备出口</td><td>电芯/PCS/系统卖给美国集成商或开发商</td><td>轻资产</td><td>关税、FEOC、行政令</td></tr><tr><td>OEM/代工</td><td>为美国品牌代工，使用非受限电芯</td><td>规避品牌与合规风险</td><td>客户集中、利润薄</td></tr><tr><td>项目开发/持股</td><td>设项目公司、持股、参与投决</td><td>收益高</td><td>CFIUS、FEOC、并网与税务</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>模式</th><th>内容</th><th>优势</th><th>主要风险</th></tr></thead><tbody><tr><td>设备出口</td><td>电芯/PCS/系统卖给美国集成商或开发商</td><td>轻资产</td><td>关税、FEOC、行政令</td></tr><tr><td>OEM/代工</td><td>为美国品牌代工，使用非受限电芯</td><td>规避品牌与合规风险</td><td>客户集中、利润薄</td></tr><tr><td>项目开发/持股</td><td>设项目公司、持股、参与投决</td><td>收益高</td><td>CFIUS、FEOC、并网与税务</td></tr></tbody></table></div>
 <h3 id="s41">7.2 股权与合规</h3>
 <ul><li><strong>股权隔离</strong>：项目公司层面控制权与治理权分离，避免触发 CFIUS；具体比例与控制权安排按个案判断。</li><li><strong>供应链</strong>：电芯、PCS、BMS 的来源与材料成本比要可审计；FEOC 规则按开工时点适用。</li><li><strong>税务</strong>：ITC 通过 tax equity 或直接抵免实现；税务合伙人、折旧与被动亏损规则复杂，需本地税务顾问。</li><li><strong>并网</strong>：并网协议、可靠性责任、辅助服务资格与容量市场注册是四套流程，不能相互替代。</li></ul>
 <h3 id="s42">7.3 开发顺序</h3>
@@ -221,7 +228,7 @@
 <ol><li><strong>把 ERCOT 当 5 分钟结算</strong>：调度 5 分钟、结算 15 分钟，SOC 与偏差模型必须按 15 分钟。</li><li><strong>用 2022–2023 年 ERCOT 辅助服务收入做模型</strong>：2024 年后收入已大幅回落，旧数据会高估。</li><li><strong>把 PJM 触顶容量价当作可融资</strong>：2028/29 仅约 525 MW 新增，价格仍不足以覆盖新建。</li><li><strong>忽略 ELCC 逐年衰减</strong>：4 小时电池 50%，渗透率上升后下行，不能线性外推。</li><li><strong>忽视容量性能罚则</strong>：PJM CP 考核与缺电季履约会影响实际容量收入。</li><li><strong>以为 TEF 能补贴储能</strong>：法定只贷给可调度燃气机组。</li><li><strong>低估并网时间</strong>：PJM 约 40 个月；ERCOT 大负荷排队到 2027 年；CAISO 集群制更久。</li><li><strong>忽视电网设备行政令</strong>：已装中资 BESS/逆变器存在隔离或更换风险。</li><li><strong>只算 ITC 30%</strong>：漏算 FEOC 材料成本比与本土含量，可能全额失去抵免。</li><li><strong>混用单位</strong>：美元/MW-day、美元/kW-年、美元/kW-月、美元/MWh 不能直接比较。</li></ol>
 <hr>
 <h2 id="s45">9. 中美对照</h2>
-<div class="table-wrap"><table><thead><tr><th>维度</th><th>中国</th><th>美国（三市场）</th></tr></thead><tbody><tr><td>市场层级</td><td>省间 + 省级</td><td>ISO/RTO 拼图，无全国统一市场</td></tr><tr><td>价格形成</td><td>节点/分区，省间现货</td><td>节点价（ERCOT/PJM）、分区价（CAISO）</td></tr><tr><td>容量机制</td><td>容量电价/容量市场试点</td><td>PJM 容量市场；ERCOT/CAISO 无集中容量市场</td></tr><tr><td>辅助服务</td><td>调频、备用、爬坡等</td><td>Reg/RRS/ECRS、调频/同步备用、FRP</td></tr><tr><td>储能收入</td><td>容量租赁 + 现货 + 辅助</td><td>套利 + 辅助 + 容量/RA</td></tr><tr><td>并网</td><td>省级电网公司</td><td>ISO/RTO 队列，2–4 年</td></tr><tr><td>政策工具</td><td>容量电价、机制电价、补贴</td><td>ITC、州级补贴、容量市场</td></tr><tr><td>外资/供应链</td><td>外资准入负面清单</td><td>CFIUS、FEOC、关税、行政令</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>中国</th><th>美国（三市场）</th></tr></thead><tbody><tr><td>市场层级</td><td>省间 + 省级</td><td>ISO/RTO 拼图，无全国统一市场</td></tr><tr><td>价格形成</td><td>节点/分区，省间现货</td><td>节点价（ERCOT/PJM）、分区价（CAISO）</td></tr><tr><td>容量机制</td><td>容量电价/容量市场试点</td><td>PJM 容量市场；ERCOT/CAISO 无集中容量市场</td></tr><tr><td>辅助服务</td><td>调频、备用、爬坡等</td><td>Reg/RRS/ECRS、调频/同步备用、FRP</td></tr><tr><td>储能收入</td><td>容量租赁 + 现货 + 辅助</td><td>套利 + 辅助 + 容量/RA</td></tr><tr><td>并网</td><td>省级电网公司</td><td>ISO/RTO 队列，2–4 年</td></tr><tr><td>政策工具</td><td>容量电价、机制电价、补贴</td><td>ITC、州级补贴、容量市场</td></tr><tr><td>外资/供应链</td><td>外资准入负面清单</td><td>CFIUS、FEOC、关税、行政令</td></tr></tbody></table></div>
 <hr>
 <h2 id="s46">10. 算例（D 级：方法演示，不是投资建议）</h2>
 <h3 id="s47">10.1 ERCOT 100 MW/200 MWh 套利</h3>
@@ -236,33 +243,49 @@
 <hr>
 <h2 id="s51">12. 官方来源与口径</h2>
 <aside class="note"><p>以下链接在 2026-11 做过可达性检查；规则/数据以官网最新版本为准。无法稳定访问的页面注明状态，仅作查证入口。</p></aside>
-<div class="table-wrap"><table><thead><tr><th>来源</th><th>用途</th><th>级别</th><th>链接状态</th></tr></thead><tbody><tr><td>ERCOT · 资源与装机</td><td>电池装机、负荷、资源</td><td>A</td><td><a href="https://www.ercot.com/gridinfo/resource" target="_blank" rel="noopener">https://www.ercot.com/gridinfo/resource</a></td></tr><tr><td>ERCOT · 市场规则</td><td>Nodal 规则、结算、辅助服务</td><td>A</td><td><a href="https://www.ercot.com/mktrules/nprotocols" target="_blank" rel="noopener">https://www.ercot.com/mktrules/nprotocols</a></td></tr><tr><td>PJM · 官网</td><td>容量市场、并网、公告</td><td>A</td><td><a href="https://www.pjm.com/" target="_blank" rel="noopener">https://www.pjm.com/</a></td></tr><tr><td>CAISO · 官网</td><td>市场、RA、EDAM</td><td>A</td><td><a href="https://www.caiso.com/" target="_blank" rel="noopener">https://www.caiso.com/</a></td></tr><tr><td>EIA · 电池装机</td><td>全美与区域储能统计</td><td>A</td><td><a href="https://www.eia.gov/todayinenergy/detail.php?id=67925" target="_blank" rel="noopener">https://www.eia.gov/todayinenergy/detail.php?id=67925</a></td></tr><tr><td>IRS · ITC/FEOC</td><td>48E、FEOC 指引</td><td>A</td><td><a href="https://www.irs.gov/" target="_blank" rel="noopener">https://www.irs.gov/</a></td></tr><tr><td>USTR · 301 关税</td><td>锂电池关税</td><td>A</td><td><a href="https://www.ustr.gov/" target="_blank" rel="noopener">https://www.ustr.gov/</a></td></tr><tr><td>UL · UL 9540A</td><td>储能安全测试</td><td>A</td><td><a href="https://www.ul.com/" target="_blank" rel="noopener">https://www.ul.com/</a></td></tr><tr><td>NFPA · NFPA 855</td><td>储能安装与消防</td><td>A</td><td><a href="https://www.nfpa.org/" target="_blank" rel="noopener">https://www.nfpa.org/</a></td></tr><tr><td>得州州长办公室 · TEF</td><td>能源基金</td><td>A</td><td><a href="https://gov.texas.gov/" target="_blank" rel="noopener">https://gov.texas.gov/</a></td></tr><tr><td>FERC · 官网</td><td>批发市场、共址、Section 206</td><td>A</td><td><code>ferc.gov</code>（自动访问返回 403）</td></tr><tr><td>PUCT · 官网</td><td>得州公用事业监管</td><td>A</td><td><code>puct.texas.gov</code>（自动访问返回 000）</td></tr><tr><td>美国财政部 · CFIUS</td><td>外资审查</td><td>A</td><td><code>treasury.gov</code>（自动访问返回 000）</td></tr><tr><td>加州能源委员会 · 装机</td><td>CAISO 储能统计</td><td>A</td><td><code>energy.ca.gov</code>（自动访问返回 000）</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>来源</th><th>用途</th><th>级别</th><th>链接状态</th></tr></thead><tbody><tr><td>ERCOT · 资源与装机</td><td>电池装机、负荷、资源</td><td>A</td><td><a href="https://www.ercot.com/gridinfo/resource" target="_blank" rel="noopener">https://www.ercot.com/gridinfo/resource</a></td></tr><tr><td>ERCOT · 市场规则</td><td>Nodal 规则、结算、辅助服务</td><td>A</td><td><a href="https://www.ercot.com/mktrules/nprotocols" target="_blank" rel="noopener">https://www.ercot.com/mktrules/nprotocols</a></td></tr><tr><td>PJM · 官网</td><td>容量市场、并网、公告</td><td>A</td><td><a href="https://www.pjm.com/" target="_blank" rel="noopener">https://www.pjm.com/</a></td></tr><tr><td>CAISO · 官网</td><td>市场、RA、EDAM</td><td>A</td><td><a href="https://www.caiso.com/" target="_blank" rel="noopener">https://www.caiso.com/</a></td></tr><tr><td>EIA · 电池装机</td><td>全美与区域储能统计</td><td>A</td><td><a href="https://www.eia.gov/todayinenergy/detail.php?id=67925" target="_blank" rel="noopener">https://www.eia.gov/todayinenergy/detail.php?id=67925</a></td></tr><tr><td>IRS · ITC/FEOC</td><td>48E、FEOC 指引</td><td>A</td><td><a href="https://www.irs.gov/" target="_blank" rel="noopener">https://www.irs.gov/</a></td></tr><tr><td>USTR · 301 关税</td><td>锂电池关税</td><td>A</td><td><a href="https://www.ustr.gov/" target="_blank" rel="noopener">https://www.ustr.gov/</a></td></tr><tr><td>UL · UL 9540A</td><td>储能安全测试</td><td>A</td><td><a href="https://www.ul.com/" target="_blank" rel="noopener">https://www.ul.com/</a></td></tr><tr><td>NFPA · NFPA 855</td><td>储能安装与消防</td><td>A</td><td><a href="https://www.nfpa.org/" target="_blank" rel="noopener">https://www.nfpa.org/</a></td></tr><tr><td>得州州长办公室 · TEF</td><td>能源基金</td><td>A</td><td><a href="https://gov.texas.gov/" target="_blank" rel="noopener">https://gov.texas.gov/</a></td></tr><tr><td>FERC · 官网</td><td>批发市场、共址、Section 206</td><td>A</td><td><code>ferc.gov</code>（自动访问返回 403）</td></tr><tr><td>PUCT · 官网</td><td>得州公用事业监管</td><td>A</td><td><code>puct.texas.gov</code>（自动访问返回 000）</td></tr><tr><td>美国财政部 · CFIUS</td><td>外资审查</td><td>A</td><td><code>treasury.gov</code>（自动访问返回 000）</td></tr><tr><td>加州能源委员会 · 装机</td><td>CAISO 储能统计</td><td>A</td><td><code>energy.ca.gov</code>（自动访问返回 000）</td></tr></tbody></table></div>
 <h3 id="s52">口径提醒</h3>
 <ul><li><strong>时间</strong>：ERCOT 用北美中部时间（CT），PJM 用东部时间（ET），CAISO 用太平洋时间（PT）；跨市场数据要对齐时区与夏令时。</li><li><strong>价格</strong>：ERCOT 美元/MWh、美元/kW-月；PJM 美元/MW-day；CAISO 美元/kW-年；不要混用。</li><li><strong>容量</strong>：ERCOT 铭牌/可用容量；PJM ELCC；CAISO NQC/RA；三个口径不同。</li><li><strong>结算</strong>：ERCOT 15 分钟、CAISO 5 分钟、PJM 按产品；SOC 模型要匹配结算粒度。</li><li><strong>政策</strong>：ITC/FEOC/关税按项目开工时点适用；引用前先确认项目时间线。</li><li><strong>数据缺口</strong>：ERCOT 负价小时、2026 年在运电池 MW/MWh、PJM 在运储能 MW、CAISO 2025/2026 弃电均标“待复核”。</li></ul>
 <hr>
 <h2 id="s53">速查</h2>
-<div class="table-wrap"><table><thead><tr><th>问题</th><th>先看</th><th>关键结论</th><th>依据</th></tr></thead><tbody><tr><td>美国有统一电力市场吗</td><td>§1</td><td>没有；ISO/RTO 拼图</td><td>FERC/ISO</td></tr><tr><td>ERCOT 有容量市场吗</td><td>§2</td><td>没有；靠 ORDC 与辅助服务</td><td>ERCOT</td></tr><tr><td>ERCOT 怎么结算</td><td>§2.1</td><td>5 分钟调度、15 分钟结算</td><td>ERCOT</td></tr><tr><td>PJM 2028/29 容量价</td><td>§3.2</td><td>325 美元/MW-day 触顶，缺口 6.8 GW</td><td>PJM</td></tr><tr><td>PJM 电池怎么算容量</td><td>§3.5</td><td>4 小时 ELCC 约 50%</td><td>PJM/行业</td></tr><tr><td>CAISO 储能多少</td><td>§4.4</td><td>&gt;21 GW（2026-08）</td><td>CEC</td></tr><tr><td>EDAM 何时投运</td><td>§4.3</td><td>2026-05-01</td><td>CAISO</td></tr><tr><td>储能主收入</td><td>§5</td><td>ERCOT 套利、PJM 容量、CAISO 套利+RA</td><td>本文</td></tr><tr><td>中国设备怎么进</td><td>§7</td><td>设备/OEM/持股三条路，先过 FEOC 与并网</td><td>本文</td></tr><tr><td>最常见的坑</td><td>§8</td><td>结算粒度、旧收入、ELCC、并网、FEOC</td><td>本文</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>问题</th><th>先看</th><th>关键结论</th><th>依据</th></tr></thead><tbody><tr><td>美国有统一电力市场吗</td><td>§1</td><td>没有；ISO/RTO 拼图</td><td>FERC/ISO</td></tr><tr><td>ERCOT 有容量市场吗</td><td>§2</td><td>没有；靠 ORDC 与辅助服务</td><td>ERCOT</td></tr><tr><td>ERCOT 怎么结算</td><td>§2.1</td><td>5 分钟调度、15 分钟结算</td><td>ERCOT</td></tr><tr><td>PJM 2028/29 容量价</td><td>§3.2</td><td>325 美元/MW-day 触顶，缺口 6.8 GW</td><td>PJM</td></tr><tr><td>PJM 电池怎么算容量</td><td>§3.5</td><td>4 小时 ELCC 约 50%</td><td>PJM/行业</td></tr><tr><td>CAISO 储能多少</td><td>§4.4</td><td>&gt;21 GW（2026-08）</td><td>CEC</td></tr><tr><td>EDAM 何时投运</td><td>§4.3</td><td>2026-05-01</td><td>CAISO</td></tr><tr><td>储能主收入</td><td>§5</td><td>ERCOT 套利、PJM 容量、CAISO 套利+RA</td><td>本文</td></tr><tr><td>中国设备怎么进</td><td>§7</td><td>设备/OEM/持股三条路，先过 FEOC 与并网</td><td>本文</td></tr><tr><td>最常见的坑</td><td>§8</td><td>结算粒度、旧收入、ELCC、并网、FEOC</td><td>本文</td></tr></tbody></table></div>
 <hr>
 <h2 id="s54">与技能和其他笔记的分工</h2>
 <aside class="note"><p><strong>横向口径</strong>：把本市场的装机、储能存量/管线、年度均价、负价小时、捕获率、并网排队与降额因子与其余九市场对照，见<a href="海外市场同口径快照与投决日历-2026-11.html">《海外市场同口径快照与投决日历》</a> §1–§2；中国主体进入六道门槛见该文 §4，C 级数字复核入口见 §5。</p></aside>
-<div class="table-wrap"><table><thead><tr><th>主题</th><th>本文</th><th>电力交易技能</th><th>其他笔记</th></tr></thead><tbody><tr><td>美国三市场机制</td><td>主责</td><td>概述</td><td>—</td></tr><tr><td>容量市场/RA</td><td>主责（机制）</td><td>概述</td><td>储能笔记（投决）</td></tr><tr><td>储能收益</td><td>概述</td><td>市场参与</td><td>《海外储能业务》主责；美国部分见本文</td></tr><tr><td>并网与供应链</td><td>主责（框架）</td><td>概述</td><td>新能源技能（项目开发）</td></tr><tr><td>中国主体进入</td><td>主责（路径）</td><td>概述</td><td>风险信用笔记（担保）</td></tr><tr><td>中国现货/省间</td><td>不展开</td><td>主责</td><td>省间笔记</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>主题</th><th>本文</th><th>电力交易技能</th><th>其他笔记</th></tr></thead><tbody><tr><td>美国三市场机制</td><td>主责</td><td>概述</td><td>—</td></tr><tr><td>容量市场/RA</td><td>主责（机制）</td><td>概述</td><td>储能笔记（投决）</td></tr><tr><td>储能收益</td><td>概述</td><td>市场参与</td><td>《海外储能业务》主责；美国部分见本文</td></tr><tr><td>并网与供应链</td><td>主责（框架）</td><td>概述</td><td>新能源技能（项目开发）</td></tr><tr><td>中国主体进入</td><td>主责（路径）</td><td>概述</td><td>风险信用笔记（担保）</td></tr><tr><td>中国现货/省间</td><td>不展开</td><td>主责</td><td>省间笔记</td></tr></tbody></table></div>
 <ul><li><strong>本文是“美国交易手册”</strong>：遇到 ERCOT/PJM/CAISO 的机制、容量、并网与合规问题，先看这里。</li><li><strong>遇到“怎么报价、怎么对冲、怎么做量化”</strong>：回到电力交易技能与量化报价笔记。</li><li><strong>遇到“储能项目能不能投、LCOS 多少”</strong>：查储能投资技能（中国口径）与《海外储能业务》（海外口径）；美国项目另按本文的容量/ELCC/ITC 口径建模。</li><li><strong>遇到“中国省间/省内规则”</strong>：查省间笔记和省级状态表；不要把美国规则套到中国。</li></ul>
 <hr>
 <h2 id="s55">更新记录</h2>
-<div class="table-wrap"><table><thead><tr><th>日期</th><th>内容</th></tr></thead><tbody><tr><td>2026-11-10</td><td>首版：新增美国三市场模块；覆盖 ERCOT 能量-only 与 RTC+B、PJM 容量市场与 2028/29 BRA、CAISO EDAM/RA，含储能收益、并网、ITC/FEOC、十个坑与合成算例</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>日期</th><th>内容</th></tr></thead><tbody><tr><td>2026-11-10</td><td>首版：新增美国三市场模块；覆盖 ERCOT 能量-only 与 RTC+B、PJM 容量市场与 2028/29 BRA、CAISO EDAM/RA，含储能收益、并网、ITC/FEOC、十个坑与合成算例</td></tr></tbody></table></div>
     </article>
 
-    <section class="related" aria-label="相关模块">
-      <h2>相关模块</h2>
-      <ul>
-        <li><a href="澳大利亚NEM电力市场-2026-11.html">澳大利亚 NEM 电力市场（2026 版）</a></li>
-        <li><a href="德国电力市场-2026-11.html">德国电力市场（2026 版）</a></li>
-        <li><a href="日本电力市场-2026-11.html">日本电力市场（2026 版）：现货、容量市场与 LTDA</a></li>
-        <li><a href="海外储能业务-2026-11.html">海外储能业务：十一市场大储与工商储（2026 版）</a></li>
-        <li><a href="储能投资与运营-2026-11.html">储能投资与运营</a></li>
-        <li><a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算（2026 版）</a></li>
-      </ul>
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>6</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="澳大利亚NEM电力市场-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>澳大利亚 NEM 电力市场（2026 版）</b>
+          <span>五个区域、5 分钟出清与结算、FCAS、价格上限与 CPT、MLF/IRLF、CfD/CIS 与储能进入路径。</span>
+        </a>
+        <a class="related-card" href="德国电力市场-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>德国电力市场（2026 版）</b>
+          <span>DE-LU 报价区、EPEX 日前/日内 15 分钟、平衡市场、再调度 2.0、EEG 负价规则与容量机制。</span>
+        </a>
+        <a class="related-card" href="日本电力市场-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>日本电力市场（2026 版）：现货、容量市场与 LTDA</b>
+          <span>JEPX 30 分钟现货、容量市场、需给调整市场与长期脱碳电源拍卖；储能收益、并网排队、外为法与中资进入路径。</span>
+        </a>
+        <a class="related-card" href="海外储能业务-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>海外储能业务：十一市场大储与工商储（2026 版）</b>
+          <span>澳、德、英、法、意、西、荷、波、比·北欧、美、日十一市场的收益堆叠、准入并网、电网费、合同融资与投决口径。</span>
+        </a>
+      </div>
+      <p class="related-rest"><b>更多关联</b><a href="储能投资与运营-2026-11.html">储能投资与运营</a><a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算（2026 版）</a></p>
     </section>
+
 
     <nav class="pager" aria-label="上下篇">
           <a class="prev" href="法国电力市场-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">法国电力市场（2026 版）：核电、ARENH 退场与容量机制</span></a>
@@ -271,7 +294,11 @@
 
     <footer class="doc-foot">
       <div class="lic">本页由 <a href="../美国电力市场-2026-11.md">knowledge/美国电力市场-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
-      <div><a href="../index.html">返回知识库总览 →</a></div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
     </footer>
   </main>
 
@@ -333,7 +360,7 @@
             <li class="lv2"><a href="#s53">速查</a></li>
             <li class="lv2"><a href="#s54">与技能和其他笔记的分工</a></li>
             <li class="lv2"><a href="#s55">更新记录</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="39">展开 39 个小节</button>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="39" data-more-label="展开 39 个小节" data-less-label="收起小节">展开 39 个小节</button>
   </aside>
 </div>
 

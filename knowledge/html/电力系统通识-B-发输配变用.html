@@ -19,9 +19,9 @@
 <div class="scrim"></div>
 
 <header class="topbar">
-  <a class="back" href="../index.html">← 知识库</a>
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
   <div class="crumb">
-    <span class="crumb-cat">04 / BASE</span>
+    <span class="crumb-cat">01 · BASE</span>
     <span class="crumb-sep">/</span>
     <span class="crumb-doc">电力系统通识 B · 发输配变用</span>
   </div>
@@ -30,7 +30,14 @@
       <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
       <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-    <a class="src" href="../电力系统通识-B-发输配变用.md">.md 源文件</a>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../电力系统通识-B-发输配变用.md">.md 源文件<small>knowledge/电力系统通识-B-发输配变用.md</small></a>
+
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
     <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
   </div>
 </header>
@@ -38,7 +45,7 @@
 <div class="shell">
   <aside class="sidebar" id="nav">
     <div class="nav-kicker">当前分类</div>
-    <div class="nav-num">04 / BASE</div>
+    <div class="nav-num">01 · BASE</div>
     <h2 class="nav-cat"><a href="../index.html#foundation">通识与经济学</a></h2>
     <ul class="nav-list">
               <li><a href="电力系统通识-A-格局与主体.html">电力系统通识 A · 格局与主体</a></li>
@@ -50,24 +57,24 @@
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
       <ul>
-              <li><a href="../index.html#spot"><b>05</b>电力现货与省间交易</a></li>
-              <li><a href="../index.html#intl"><b>06</b>海外市场</a></li>
-              <li><a href="../index.html#cross"><b>07</b>横向专题</a></li>
-              <li><a href="../index.html#price"><b>08</b>电价</a></li>
-              <li><a href="../index.html#renewable"><b>09</b>新能源与并网</a></li>
-              <li><a href="../index.html#storage"><b>10</b>储能与 EMS</a></li>
-              <li><a href="../index.html#park"><b>11</b>综合能源与零碳园区</a></li>
-              <li><a href="../index.html#carbon"><b>12</b>碳市场与碳管理</a></li>
-              <li><a href="../index.html#vpp"><b>13</b>虚拟电厂</a></li>
-              <li><a href="../index.html#index"><b>14</b>索引、查证与工具</a></li>
-              <li><a href="../index.html#research"><b>15</b>调研底稿</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#intl"><b>03</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>04</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>05</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>06</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>07</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>08</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>09</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>10</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>11</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>12</b>调研底稿</a></li>
       </ul>
     </div>
   </aside>
 
   <main class="main" id="main">
     <header class="doc-head">
-      <div class="kicker">04 / BASE<i>主题笔记</i></div>
+      <div class="kicker">01 · BASE<i>主题笔记</i></div>
       <h1 class="doc-title">电力系统通识 B · 发输配变用：电是怎么从煤和风光走到插座的</h1>
       <p class="lede">功率与电量、50 Hz、发输配变用五环节、备用与稳定，建立电力系统的物理常识。</p>
       <p class="hook">电怎么从煤和风光走到插座</p>
@@ -99,7 +106,7 @@
 <hr>
 <h2 id="s1">1. 先分清两个量：功率与电量</h2>
 <p>这是一切电费、报价、结算的起点，也是非专业读者最容易混的一对概念。</p>
-<div class="table-wrap"><table><thead><tr><th>概念</th><th>含义</th><th>单位</th><th>类比</th></tr></thead><tbody><tr><td>功率</td><td>某一瞬间&quot;电走得多快&quot;</td><td>kW（千瓦）、MW（兆瓦）、GW（吉瓦）</td><td>水管的流量（升/秒）</td></tr><tr><td>电量</td><td>一段时间内&quot;一共走了多少电&quot;</td><td>kWh（度）、MWh、GWh</td><td>一段时间接了多少桶水</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>概念</th><th>含义</th><th>单位</th><th>类比</th></tr></thead><tbody><tr><td>功率</td><td>某一瞬间&quot;电走得多快&quot;</td><td>kW（千瓦）、MW（兆瓦）、GW（吉瓦）</td><td>水管的流量（升/秒）</td></tr><tr><td>电量</td><td>一段时间内&quot;一共走了多少电&quot;</td><td>kWh（度）、MWh、GWh</td><td>一段时间接了多少桶水</td></tr></tbody></table></div>
 <p>关系很简单：<strong>电量 = 功率 × 时间</strong>。1 台 1 kW 的电器开 1 小时，用 1 kWh（1 度电）。中文里&quot;度&quot;就是 kWh。</p>
 <p>三个常用换算，务必记住：</p>
 <ul><li>1 万 kW = 10 MW；100 万 kW = 1 GW；</li><li>1 亿 kWh = 100 GWh = 0.1 TWh；</li><li><strong>利用小时数 = 年发电量 ÷ 装机容量</strong>：一台 100 万 kW 的机组一年发 50 亿 kWh，利用小时就是 5000 小时。它衡量的是&quot;这台机组一年有多少时间在满发等效状态下工作&quot;，比单看装机更能说明资产效率。</li></ul>
@@ -109,7 +116,7 @@
 <ul><li><strong>交流</strong>：发电机的转子转一圈，电压电流方向变化一个周期。交流的最大好处是<strong>变压器可以方便地升降压</strong>，这是远距离输电的前提。直流输电在远距离、跨区、海底电缆场景有优势，但两端需要换流站。</li><li><strong>频率</strong>：中国与欧洲用 50 Hz，北美用 60 Hz。50 Hz 意味着每秒 50 个周期。频率是全网统一的——<strong>它反映的是全系统的功率平衡状态</strong>，这也是为什么频率是电力系统最重要的&quot;体检指标&quot;。</li><li><strong>三相</strong>：发电、输电、用电普遍采用三相制。居民家里看到的是单相 220 V，线电压是 380 V（工业用电）。</li></ul>
 <hr>
 <h2 id="s3">3. 五个环节：发、输、配、变、用</h2>
-<div class="table-wrap"><table><thead><tr><th>环节</th><th>干什么</th><th>典型电压</th><th>谁在管</th></tr></thead><tbody><tr><td>发电</td><td>把煤、气、水、核、风、光的能量变成电能</td><td>发电机端 10~27 kV</td><td>发电企业</td></tr><tr><td>输电</td><td>把电从电厂送到负荷中心，跨省跨区</td><td>220~1000 kV（交流）、±800/±1100 kV（直流）</td><td>电网企业</td></tr><tr><td>变电</td><td>升压或降压，连接不同电压等级</td><td>变电站</td><td>电网企业</td></tr><tr><td>配电</td><td>把电分送到街区、园区、楼宇</td><td>110/35/10 kV → 0.4 kV</td><td>电网企业（含增量配电）</td></tr><tr><td>用电</td><td>工业、商业、居民消费</td><td>380/220 V</td><td>用户</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>环节</th><th>干什么</th><th>典型电压</th><th>谁在管</th></tr></thead><tbody><tr><td>发电</td><td>把煤、气、水、核、风、光的能量变成电能</td><td>发电机端 10~27 kV</td><td>发电企业</td></tr><tr><td>输电</td><td>把电从电厂送到负荷中心，跨省跨区</td><td>220~1000 kV（交流）、±800/±1100 kV（直流）</td><td>电网企业</td></tr><tr><td>变电</td><td>升压或降压，连接不同电压等级</td><td>变电站</td><td>电网企业</td></tr><tr><td>配电</td><td>把电分送到街区、园区、楼宇</td><td>110/35/10 kV → 0.4 kV</td><td>电网企业（含增量配电）</td></tr><tr><td>用电</td><td>工业、商业、居民消费</td><td>380/220 V</td><td>用户</td></tr></tbody></table></div>
 <h3 id="s4">3.1 为什么要&quot;升压—输电—降压&quot;</h3>
 <p>同样的功率，电压越高，电流越小；线路损耗与电流的平方成正比（P损 = I²R）。所以远距离送电要先升到高压再送，到了城市再逐级降下来。</p>
 <p>中国的电压等级序列大致是：<strong>1000 kV（特高压交流）/ ±800、±1100 kV（特高压直流）→ 500 kV → 220 kV → 110 kV → 35 kV → 10 kV → 0.4 kV</strong>。220 kV 及以上一般称&quot;输电网&quot;，110 kV 及以下称&quot;配电网&quot;，但各地划分口径略有差异。</p>
@@ -122,13 +129,13 @@
 <h3 id="s8">4.2 频率为什么掉</h3>
 <p>如果用电突然增加而发电没跟上，转子转速下降，频率下降；反之频率上升。频率偏离额定值过多会损坏设备、引发保护动作，严重时导致大面积停电。所以系统要保持频率在很小范围内（中国一般要求 50±0.2 Hz，故障时允许更大偏差，具体以导则为准）。</p>
 <h3 id="s9">4.3 三道调节手段</h3>
-<div class="table-wrap"><table><thead><tr><th>层级</th><th>手段</th><th>响应时间</th><th>谁来做</th></tr></thead><tbody><tr><td>一次调频</td><td>发电机调速器自动响应频率偏差</td><td>秒级</td><td>并网机组</td></tr><tr><td>二次调频（AGC）</td><td>调度自动发电控制，指令机组增减出力</td><td>分钟级</td><td>调频机组、储能</td></tr><tr><td>三次调节</td><td>调整机组组合、启停、跨区支援</td><td>分钟到小时</td><td>调度</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>层级</th><th>手段</th><th>响应时间</th><th>谁来做</th></tr></thead><tbody><tr><td>一次调频</td><td>发电机调速器自动响应频率偏差</td><td>秒级</td><td>并网机组</td></tr><tr><td>二次调频（AGC）</td><td>调度自动发电控制，指令机组增减出力</td><td>分钟级</td><td>调频机组、储能</td></tr><tr><td>三次调节</td><td>调整机组组合、启停、跨区支援</td><td>分钟到小时</td><td>调度</td></tr></tbody></table></div>
 <p><strong>惯量</strong>是另一个概念：同步发电机转子天然有惯性，能在扰动瞬间&quot;顶住&quot;频率变化。风电、光伏通过电力电子并网，不提供天然惯量，所以新能源占比越高，系统&quot;抗扰动&quot;的能力越弱——这是&quot;惯量支撑&quot;&quot;构网型储能&quot;这些词流行的原因（见笔记 D）。</p>
 <hr>
 <h2 id="s10">5. 负荷：一天之内为什么有高低</h2>
 <h3 id="s11">5.1 典型日负荷曲线</h3>
 <p>把一天 24 小时的用电功率画成曲线，就是<strong>日负荷曲线</strong>。中国多数地区呈&quot;双峰&quot;形态：早高峰、午间略降、晚高峰最高；夏季与冬季因空调、采暖再叠加。</p>
-<div class="table-wrap"><table><thead><tr><th>概念</th><th>含义</th></tr></thead><tbody><tr><td>最大负荷</td><td>一天/一年中的最高用电功率</td></tr><tr><td>最小负荷</td><td>最低用电功率</td></tr><tr><td>峰谷差</td><td>最大负荷 − 最小负荷；峰谷差率 = 峰谷差 ÷ 最大负荷</td></tr><tr><td>基荷</td><td>全天稳定、不随峰谷变化的那部分负荷</td></tr><tr><td>腰荷</td><td>介于基荷与峰荷之间的部分</td></tr><tr><td>峰荷</td><td>只在高峰时段出现的部分</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>概念</th><th>含义</th></tr></thead><tbody><tr><td>最大负荷</td><td>一天/一年中的最高用电功率</td></tr><tr><td>最小负荷</td><td>最低用电功率</td></tr><tr><td>峰谷差</td><td>最大负荷 − 最小负荷；峰谷差率 = 峰谷差 ÷ 最大负荷</td></tr><tr><td>基荷</td><td>全天稳定、不随峰谷变化的那部分负荷</td></tr><tr><td>腰荷</td><td>介于基荷与峰荷之间的部分</td></tr><tr><td>峰荷</td><td>只在高峰时段出现的部分</td></tr></tbody></table></div>
 <h3 id="s12">5.2 为什么&quot;调峰&quot;是中国特色问题</h3>
 <p>中国的电源结构以煤电为主，煤电启停慢、低负荷运行不经济；而负荷峰谷差大、新能源又&quot;靠天吃饭&quot;，于是&quot;谁在高峰多发、谁在低谷少发&quot;成了长期矛盾。早期的解决办法是行政性的&quot;调峰辅助服务&quot;，2023 年后逐步被现货市场价格信号吸收。</p>
 <h3 id="s13">5.3 负荷预测为什么值钱</h3>
@@ -137,23 +144,23 @@
 <h2 id="s14">6. 备用、辅助服务与安全</h2>
 <h3 id="s15">6.1 备用</h3>
 <p><strong>备用</strong>是&quot;已经准备好、随时能顶上&quot;的容量。常见分类：</p>
-<div class="table-wrap"><table><thead><tr><th>类型</th><th>含义</th></tr></thead><tbody><tr><td>旋转备用（热备用）</td><td>已并网机组的空闲容量，可在数分钟内顶上</td></tr><tr><td>冷备用</td><td>未并网但可启动的机组</td></tr><tr><td>调频备用</td><td>专门用于跟踪频率波动的容量</td></tr><tr><td>事故备用</td><td>应对机组跳闸、线路故障的容量</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>类型</th><th>含义</th></tr></thead><tbody><tr><td>旋转备用（热备用）</td><td>已并网机组的空闲容量，可在数分钟内顶上</td></tr><tr><td>冷备用</td><td>未并网但可启动的机组</td></tr><tr><td>调频备用</td><td>专门用于跟踪频率波动的容量</td></tr><tr><td>事故备用</td><td>应对机组跳闸、线路故障的容量</td></tr></tbody></table></div>
 <h3 id="s16">6.2 辅助服务</h3>
 <p>除电能量之外，系统还需要<strong>调频、调压、备用、黑启动</strong>等服务。这些服务的特点是&quot;平时看不见、出事时救命&quot;，其成本如何在市场主体间分摊，是各省规则的核心争议之一。</p>
 <h3 id="s17">6.3 稳定：三类问题</h3>
-<div class="table-wrap"><table><thead><tr><th>类型</th><th>通俗解释</th><th>典型场景</th></tr></thead><tbody><tr><td>功角稳定</td><td>发电机之间&quot;同步&quot;能否维持</td><td>长距离送电、短路故障后</td></tr><tr><td>电压稳定</td><td>电压能否维持在合格范围</td><td>负荷集中、无功不足</td></tr><tr><td>频率稳定</td><td>全系统功率能否重新平衡</td><td>大机组跳闸、直流闭锁</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>类型</th><th>通俗解释</th><th>典型场景</th></tr></thead><tbody><tr><td>功角稳定</td><td>发电机之间&quot;同步&quot;能否维持</td><td>长距离送电、短路故障后</td></tr><tr><td>电压稳定</td><td>电压能否维持在合格范围</td><td>负荷集中、无功不足</td></tr><tr><td>频率稳定</td><td>全系统功率能否重新平衡</td><td>大机组跳闸、直流闭锁</td></tr></tbody></table></div>
 <p>工程上用&quot;<strong>N-1 准则</strong>&quot;做安全校核：任意一个元件（一条线路、一台机组、一台变压器）故障，系统仍应保持稳定运行。更严重的连锁故障，则依靠&quot;三道防线&quot;：快速保护切除故障 → 安全稳定装置切机切负荷 → 解列与低频减载保电网。</p>
 <hr>
 <h2 id="s18">7. 继电保护与调度自动化</h2>
 <ul><li><strong>继电保护</strong>：故障时快速、准确地切除故障元件，防止事故扩大。评价保护装置有&quot;四性&quot;：选择性、速动性、灵敏性、可靠性。</li><li><strong>调度自动化</strong>：调度中心通过 SCADA/EMS 采集&quot;四遥&quot;（遥测、遥信、遥控、遥调），实现监视、控制与经济调度。现货市场的出清结果，最终就是通过 AGC/AVC 等系统落到机组上的。</li><li><strong>为什么这些对报价重要</strong>：你的报价再好，若机组在检修、断面受阻或爬坡能力不足，调度执行不了，结算就会偏离预期。这是&quot;申报校验清单&quot;存在的物理原因。</li></ul>
 <hr>
 <h2 id="s19">8. 损耗：线损与厂用电</h2>
-<div class="table-wrap"><table><thead><tr><th>指标</th><th>含义</th><th>量级（工程经验）</th></tr></thead><tbody><tr><td>线损率</td><td>输配电网损耗电量 ÷ 供电量</td><td>全国电网综合线损率长期在 5%~6% 区间</td></tr><tr><td>厂用电率</td><td>电厂自身耗电 ÷ 发电量</td><td>煤电约 5%~6%，随负荷率与机组类型变化</td></tr><tr><td>综合厂用电率</td><td>含脱硫脱硝等环保设施的自用电</td><td>略高于厂用电率</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>含义</th><th>量级（工程经验）</th></tr></thead><tbody><tr><td>线损率</td><td>输配电网损耗电量 ÷ 供电量</td><td>全国电网综合线损率长期在 5%~6% 区间</td></tr><tr><td>厂用电率</td><td>电厂自身耗电 ÷ 发电量</td><td>煤电约 5%~6%，随负荷率与机组类型变化</td></tr><tr><td>综合厂用电率</td><td>含脱硫脱硝等环保设施的自用电</td><td>略高于厂用电率</td></tr></tbody></table></div>
 <p>线损在输配电价中回收（不单独向用户另收），厂用电则直接减少上网电量——后者是发电成本测算里容易被漏掉的一项。</p>
 <hr>
 <h2 id="s20">9. 七类电源的&quot;性格&quot;</h2>
 <p>理解电源的调节特性，才能理解为什么现货价格会剧烈波动。</p>
-<div class="table-wrap"><table><thead><tr><th>电源</th><th>出力可控性</th><th>最小技术出力</th><th>爬坡/响应</th><th>启停</th><th>度电成本主要构成</th></tr></thead><tbody><tr><td>煤电</td><td>可控</td><td>约 30%~50% 额定（供热机组更高）</td><td>较慢，分钟级</td><td>慢，数小时</td><td>燃料为主，容量与环保次之</td></tr><tr><td>气电</td><td>可控</td><td>较低</td><td>快，分钟级</td><td>较快</td><td>燃料为主</td></tr><tr><td>水电</td><td>可控（受来水约束）</td><td>低</td><td>秒级到分钟级</td><td>快</td><td>折旧为主，边际成本低</td></tr><tr><td>核电</td><td>一般基荷，部分可调</td><td>较高</td><td>慢</td><td>很慢</td><td>折旧与燃料，边际成本低</td></tr><tr><td>风电</td><td>不可控</td><td>—</td><td>由风决定</td><td>—</td><td>折旧为主，边际成本接近零</td></tr><tr><td>光伏</td><td>不可控</td><td>—</td><td>由光照决定</td><td>—</td><td>折旧为主，边际成本接近零</td></tr><tr><td>储能</td><td>可控（受 SOC 约束）</td><td>—</td><td>毫秒到秒级</td><td>快</td><td>循环损耗与折旧</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>电源</th><th>出力可控性</th><th>最小技术出力</th><th>爬坡/响应</th><th>启停</th><th>度电成本主要构成</th></tr></thead><tbody><tr><td>煤电</td><td>可控</td><td>约 30%~50% 额定（供热机组更高）</td><td>较慢，分钟级</td><td>慢，数小时</td><td>燃料为主，容量与环保次之</td></tr><tr><td>气电</td><td>可控</td><td>较低</td><td>快，分钟级</td><td>较快</td><td>燃料为主</td></tr><tr><td>水电</td><td>可控（受来水约束）</td><td>低</td><td>秒级到分钟级</td><td>快</td><td>折旧为主，边际成本低</td></tr><tr><td>核电</td><td>一般基荷，部分可调</td><td>较高</td><td>慢</td><td>很慢</td><td>折旧与燃料，边际成本低</td></tr><tr><td>风电</td><td>不可控</td><td>—</td><td>由风决定</td><td>—</td><td>折旧为主，边际成本接近零</td></tr><tr><td>光伏</td><td>不可控</td><td>—</td><td>由光照决定</td><td>—</td><td>折旧为主，边际成本接近零</td></tr><tr><td>储能</td><td>可控（受 SOC 约束）</td><td>—</td><td>毫秒到秒级</td><td>快</td><td>循环损耗与折旧</td></tr></tbody></table></div>
 <p>两条推论：</p>
 <ol><li><strong>边际成本低的电源（风、光、水、核）越多，现货价格越容易被压到很低甚至为负</strong>——不是&quot;市场失灵&quot;，而是&quot;多发一度电几乎不增加成本&quot;的直接结果；</li><li><strong>煤电的&quot;最小技术出力&quot;决定了系统能消纳多少新能源</strong>。深夜负荷低、风光又大发时，若煤电降不下去，就只能弃风弃光。这也是灵活性改造、储能、需求响应存在的理由。</li></ol>
 <aside class="note"><p>数值均为量级参考，具体机组的参数以设备铭牌、调度协议与试验报告为准。</p></aside>
@@ -165,7 +172,7 @@
 <p>驱动这一切的，是<strong>价格信号</strong>：现货价格高时少用电、多发电，价格低时反过来。没有价格信号，&quot;互动&quot;就只是行政调度。</p>
 <hr>
 <h2 id="s22">11. 单位与常用换算速查</h2>
-<div class="table-wrap"><table><thead><tr><th>场景</th><th>换算</th></tr></thead><tbody><tr><td>功率</td><td>1 万 kW = 10 MW；100 万 kW = 1 GW</td></tr><tr><td>电量</td><td>1 亿 kWh = 100 GWh = 0.1 TWh；1 TWh = 10 亿 kWh</td></tr><tr><td>利用小时</td><td>年发电量（kWh）÷ 装机（kW）</td></tr><tr><td>电价</td><td>元/MWh ÷ 10 = 分/kWh；1 元/kWh = 1000 元/MWh</td></tr><tr><td>煤耗</td><td>克标煤/kWh；300 g/kWh 约对应供电煤耗先进水平</td></tr><tr><td>碳排放</td><td>约 2.6~2.7 tCO₂/t 标煤（简化口径，实际按因子计算）</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>场景</th><th>换算</th></tr></thead><tbody><tr><td>功率</td><td>1 万 kW = 10 MW；100 万 kW = 1 GW</td></tr><tr><td>电量</td><td>1 亿 kWh = 100 GWh = 0.1 TWh；1 TWh = 10 亿 kWh</td></tr><tr><td>利用小时</td><td>年发电量（kWh）÷ 装机（kW）</td></tr><tr><td>电价</td><td>元/MWh ÷ 10 = 分/kWh；1 元/kWh = 1000 元/MWh</td></tr><tr><td>煤耗</td><td>克标煤/kWh；300 g/kWh 约对应供电煤耗先进水平</td></tr><tr><td>碳排放</td><td>约 2.6~2.7 tCO₂/t 标煤（简化口径，实际按因子计算）</td></tr></tbody></table></div>
 <hr>
 <h2 id="s23">12. 六个常见误解</h2>
 <ol><li><strong>&quot;电可以存起来&quot;</strong>——不能大规模、经济地存。抽水蓄能、电化学储能都是&quot;转换后再转换&quot;，有损耗、有成本。</li><li><strong>&quot;装机容量大就等于发电多&quot;</strong>——要看利用小时。100 GW 光伏的年发电量可能不如 30 GW 煤电。</li><li><strong>&quot;基荷机组一定便宜&quot;</strong>——基荷是&quot;运行方式&quot;不是&quot;成本属性&quot;。核电边际成本低，但折旧高；煤电在低负荷时度电成本反而上升。</li><li><strong>&quot;负电价是市场坏了&quot;</strong>——负电价说明供大于求，机组宁愿付钱也要发电（避免启停成本或拿补贴），是价格发现功能。</li><li><strong>&quot;调峰是国际通用品种&quot;</strong>——调峰辅助服务是中国特色的过渡设计，正被现货市场吸收。</li><li><strong>&quot;线损可以忽略&quot;</strong>——全国线损率 5%~6%，对应的是千亿度级的电量，是输配电价核定的重要成本项。</li></ol>
@@ -174,14 +181,28 @@
 <ul><li>电力系统分析基础：任何一本《电力系统分析》教材（稳态、暂态、稳定三部分）；</li><li>运行与调度：《电网调度管理条例》、国调中心《电力系统调度运行规程》（A 级）；</li><li>统计口径：中电联《电力行业统计快报》、国家能源局年度统计（A 级）；</li><li>术语定义：《中国电力百科全书·电力系统卷》（A/B 级）；</li><li>与市场衔接的部分，见本仓库《电力交易专家》第 1、3 章与《现货报价量化专家》第 1、3 章。</li></ul>
     </article>
 
-    <section class="related" aria-label="相关模块">
-      <h2>相关模块</h2>
-      <ul>
-        <li><a href="电力系统通识-A-格局与主体.html">电力系统通识 A · 格局与主体</a></li>
-        <li><a href="电力系统通识-D-新角色与现货市场.html">电力系统通识 D · 新角色与现货市场</a></li>
-        <li><a href="并网运行考核与两个细则-2026-11.html">并网运行考核与两个细则</a></li>
-      </ul>
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>3</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="电力系统通识-A-格局与主体.html">
+          <span class="related-type">同区延伸</span>
+          <b>电力系统通识 A · 格局与主体</b>
+          <span>两网加蒙西、五大四小、设备与二次系统、交易调度监管分工，以及 2026 年装机与市场主体快照。</span>
+        </a>
+        <a class="related-card" href="电力系统通识-D-新角色与现货市场.html">
+          <span class="related-type">同区延伸</span>
+          <b>电力系统通识 D · 新角色与现货市场</b>
+          <span>现货、高比例风光、储能/构网型、VPP 与系统成本，用 2026 年装机与市场数据解释新角色如何改变系统运行。</span>
+        </a>
+        <a class="related-card" href="并网运行考核与两个细则-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>并网运行考核与两个细则</b>
+          <span>60/61 号、AGC/AVC/一次调频公式、20 项罚则、六类免考与合成算例。</span>
+        </a>
+      </div>
+
     </section>
+
 
     <nav class="pager" aria-label="上下篇">
           <a class="prev" href="电力系统通识-A-格局与主体.html"><span class="dir">← 上一篇</span><span class="ttl">电力系统通识 A · 格局与主体</span></a>
@@ -190,7 +211,11 @@
 
     <footer class="doc-foot">
       <div class="lic">本页由 <a href="../电力系统通识-B-发输配变用.md">knowledge/电力系统通识-B-发输配变用.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
-      <div><a href="../index.html">返回知识库总览 →</a></div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
     </footer>
   </main>
 
@@ -221,7 +246,7 @@
             <li class="lv2"><a href="#s22">11. 单位与常用换算速查</a></li>
             <li class="lv2"><a href="#s23">12. 六个常见误解</a></li>
             <li class="lv2"><a href="#s24">13. 来源</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="11">展开 11 个小节</button>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="11" data-more-label="展开 11 个小节" data-less-label="收起小节">展开 11 个小节</button>
   </aside>
 </div>
 

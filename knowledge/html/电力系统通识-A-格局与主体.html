@@ -19,9 +19,9 @@
 <div class="scrim"></div>
 
 <header class="topbar">
-  <a class="back" href="../index.html">← 知识库</a>
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
   <div class="crumb">
-    <span class="crumb-cat">04 / BASE</span>
+    <span class="crumb-cat">01 · BASE</span>
     <span class="crumb-sep">/</span>
     <span class="crumb-doc">电力系统通识 A · 格局与主体</span>
   </div>
@@ -30,7 +30,14 @@
       <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
       <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-    <a class="src" href="../电力系统通识-A-格局与主体.md">.md 源文件</a>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../电力系统通识-A-格局与主体.md">.md 源文件<small>knowledge/电力系统通识-A-格局与主体.md</small></a>
+
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
     <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
   </div>
 </header>
@@ -38,7 +45,7 @@
 <div class="shell">
   <aside class="sidebar" id="nav">
     <div class="nav-kicker">当前分类</div>
-    <div class="nav-num">04 / BASE</div>
+    <div class="nav-num">01 · BASE</div>
     <h2 class="nav-cat"><a href="../index.html#foundation">通识与经济学</a></h2>
     <ul class="nav-list">
               <li class="on" aria-current="page"><a href="电力系统通识-A-格局与主体.html">电力系统通识 A · 格局与主体</a></li>
@@ -50,24 +57,24 @@
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
       <ul>
-              <li><a href="../index.html#spot"><b>05</b>电力现货与省间交易</a></li>
-              <li><a href="../index.html#intl"><b>06</b>海外市场</a></li>
-              <li><a href="../index.html#cross"><b>07</b>横向专题</a></li>
-              <li><a href="../index.html#price"><b>08</b>电价</a></li>
-              <li><a href="../index.html#renewable"><b>09</b>新能源与并网</a></li>
-              <li><a href="../index.html#storage"><b>10</b>储能与 EMS</a></li>
-              <li><a href="../index.html#park"><b>11</b>综合能源与零碳园区</a></li>
-              <li><a href="../index.html#carbon"><b>12</b>碳市场与碳管理</a></li>
-              <li><a href="../index.html#vpp"><b>13</b>虚拟电厂</a></li>
-              <li><a href="../index.html#index"><b>14</b>索引、查证与工具</a></li>
-              <li><a href="../index.html#research"><b>15</b>调研底稿</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#intl"><b>03</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>04</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>05</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>06</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>07</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>08</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>09</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>10</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>11</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>12</b>调研底稿</a></li>
       </ul>
     </div>
   </aside>
 
   <main class="main" id="main">
     <header class="doc-head">
-      <div class="kicker">04 / BASE<i>主题笔记</i></div>
+      <div class="kicker">01 · BASE<i>主题笔记</i></div>
       <h1 class="doc-title">电力系统通识 A · 格局与主体：谁在发电、谁在送电、谁在定规则</h1>
       <p class="lede">两网加蒙西、五大四小、设备与二次系统、交易调度监管分工，以及 2026 年装机与市场主体快照。</p>
       <p class="hook">谁在发电、谁在送电、谁定规则</p>
@@ -95,13 +102,13 @@
 <hr>
 <h2 id="s1">1. 三十秒建立全景</h2>
 <p>电从一次能源到插座，要经过五个环节（下一份笔记 B 会展开）：<strong>发电 → 输电 → 配电 → 变电 → 用电</strong>。围绕这条链，站着五类主体：</p>
-<div class="table-wrap"><table><thead><tr><th>主体</th><th>干什么</th><th>收入从哪来</th></tr></thead><tbody><tr><td>电网企业</td><td>建设和运营输配电网，提供&quot;过路&quot;服务</td><td>输配电价（政府核定）+ 部分政府性基金</td></tr><tr><td>发电企业</td><td>建电厂、卖电</td><td>上网电价（计划或市场）</td></tr><tr><td>调度机构</td><td>下指令决定哪台机组发多少</td><td>不直接收费，隶属电网</td></tr><tr><td>交易机构</td><td>组织买卖、出清、发布价格</td><td>交易服务费</td></tr><tr><td>监管部门</td><td>定规则、核价、处罚</td><td>财政</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>主体</th><th>干什么</th><th>收入从哪来</th></tr></thead><tbody><tr><td>电网企业</td><td>建设和运营输配电网，提供&quot;过路&quot;服务</td><td>输配电价（政府核定）+ 部分政府性基金</td></tr><tr><td>发电企业</td><td>建电厂、卖电</td><td>上网电价（计划或市场）</td></tr><tr><td>调度机构</td><td>下指令决定哪台机组发多少</td><td>不直接收费，隶属电网</td></tr><tr><td>交易机构</td><td>组织买卖、出清、发布价格</td><td>交易服务费</td></tr><tr><td>监管部门</td><td>定规则、核价、处罚</td><td>财政</td></tr></tbody></table></div>
 <p>一句话记住三者的区别：<strong>交易机构管&quot;钱和量&quot;，调度机构管&quot;电和物理安全&quot;，监管机构管&quot;规则和价格&quot;</strong>。三者分开，是 2015 年新一轮电改的核心安排之一。</p>
 <p>中国电力行业还有一个别处少见的特点：<strong>电网不是一张网，而是三张</strong>（国家电网、南方电网、蒙西电网），发电侧则是&quot;五大 + 四小 + 一批地方与新能源公司&quot;的格局。</p>
 <hr>
 <h2 id="s2">2. 电网：两网加一个&quot;蒙西&quot;</h2>
 <h3 id="s3">2.1 三家电网企业的分工</h3>
-<div class="table-wrap"><table><thead><tr><th>企业</th><th>供区</th><th>特点</th></tr></thead><tbody><tr><td>国家电网有限公司</td><td>26 个省（自治区、直辖市），约占国土面积 88%</td><td>全球最大公用事业企业；下辖六大分部（华北、华东、华中、东北、西北、西南）与省级电力公司</td></tr><tr><td>中国南方电网有限责任公司</td><td>广东、广西、云南、贵州、海南 5 省区</td><td>与国网平级，不是国网子公司；南方区域电力市场 2026-10-24 转入正式运行</td></tr><tr><td>内蒙古电力（集团）有限责任公司（俗称&quot;蒙西电网&quot;）</td><td>内蒙古西部 8 个盟市</td><td>全国唯一独立于两大电网的省级电网企业；蒙西是 2017 年首批 8 个现货试点之一</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>企业</th><th>供区</th><th>特点</th></tr></thead><tbody><tr><td>国家电网有限公司</td><td>26 个省（自治区、直辖市），约占国土面积 88%</td><td>全球最大公用事业企业；下辖六大分部（华北、华东、华中、东北、西北、西南）与省级电力公司</td></tr><tr><td>中国南方电网有限责任公司</td><td>广东、广西、云南、贵州、海南 5 省区</td><td>与国网平级，不是国网子公司；南方区域电力市场 2026-10-24 转入正式运行</td></tr><tr><td>内蒙古电力（集团）有限责任公司（俗称&quot;蒙西电网&quot;）</td><td>内蒙古西部 8 个盟市</td><td>全国唯一独立于两大电网的省级电网企业；蒙西是 2017 年首批 8 个现货试点之一</td></tr></tbody></table></div>
 <p>补充两点容易被忽略：</p>
 <ul><li>内蒙古东部 4 个盟市（赤峰、通辽、呼伦贝尔、兴安）由<strong>国网蒙东电力</strong>供电，不属蒙西电网。所以&quot;内蒙古的电&quot;在市场上要分东西两套规则看。</li><li>西藏由国网西藏电力供电，但电网联系与调度体制有特殊性；新疆、青海等西部省份同样属国网，但网架薄弱、新能源占比高，市场设计差别很大。</li></ul>
 <h3 id="s4">2.2 蒙西为什么能独立</h3>
@@ -113,7 +120,7 @@
 <hr>
 <h2 id="s6">3. 发电：五大、四小、地方与新能源</h2>
 <h3 id="s7">3.1 五大发电集团</h3>
-<div class="table-wrap"><table><thead><tr><th>集团</th><th>组建/沿革</th><th>特点</th></tr></thead><tbody><tr><td>国家能源投资集团</td><td>2017 年由神华集团与中国国电集团合并</td><td>煤电、煤炭、铁路港口一体化，&quot;煤电运&quot;协同；旗下有龙源电力（风电）</td></tr><tr><td>中国华能集团</td><td>1985 年华能国际电力开发公司起步</td><td>最早的市场化发电企业之一，火电、水电、新能源并举</td></tr><tr><td>中国大唐集团</td><td>2002 年厂网分开时组建</td><td>火电为主，近年加码新能源</td></tr><tr><td>中国华电集团</td><td>2002 年厂网分开时组建</td><td>火电、水电、新能源；旗下华电新能专注新能源</td></tr><tr><td>国家电力投资集团</td><td>2015 年由中电投与国家核电技术公司重组</td><td>核电（CAP 系列）、光伏装机规模居前</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>集团</th><th>组建/沿革</th><th>特点</th></tr></thead><tbody><tr><td>国家能源投资集团</td><td>2017 年由神华集团与中国国电集团合并</td><td>煤电、煤炭、铁路港口一体化，&quot;煤电运&quot;协同；旗下有龙源电力（风电）</td></tr><tr><td>中国华能集团</td><td>1985 年华能国际电力开发公司起步</td><td>最早的市场化发电企业之一，火电、水电、新能源并举</td></tr><tr><td>中国大唐集团</td><td>2002 年厂网分开时组建</td><td>火电为主，近年加码新能源</td></tr><tr><td>中国华电集团</td><td>2002 年厂网分开时组建</td><td>火电、水电、新能源；旗下华电新能专注新能源</td></tr><tr><td>国家电力投资集团</td><td>2015 年由中电投与国家核电技术公司重组</td><td>核电（CAP 系列）、光伏装机规模居前</td></tr></tbody></table></div>
 <p><strong>格局含义</strong>：五大集团合计装机长期占全国四成以上（比例逐年变化，引用前查中电联年度统计）。对市场而言，这意味着发电侧集中度不低，<strong>市场力监测</strong>是各省规则里的固定内容——这也是《现货报价量化专家》只做市场力&quot;识别&quot;、不做&quot;利用&quot;的原因。</p>
 <h3 id="s8">3.2 &quot;四小&quot;是历史称谓，别当现行分类</h3>
 <p>常说的&quot;四小豪门&quot;指<strong>国投电力、华润电力、中广核、国华电力</strong>。但这个说法有两个坑：</p>
@@ -121,23 +128,23 @@
 <p>所以写作时应说&quot;'四小'（历史称谓）&quot;，或者干脆改称&quot;其他中央发电企业与大型地方发电企业&quot;。</p>
 <h3 id="s9">3.3 地方能源集团</h3>
 <p>省级政府通常有自己的能源投资平台，它们既是本地电源的重要持有者，也是地方能源政策的执行者：</p>
-<div class="table-wrap"><table><thead><tr><th>类型</th><th>例子</th></tr></thead><tbody><tr><td>省级能源集团</td><td>浙能集团（浙江）、广东能源集团、京能集团（北京）、申能集团（上海）、晋能控股（山西）、内蒙古能源集团</td></tr><tr><td>省级投资平台</td><td>皖能、豫能、赣能、川投能源等</td></tr><tr><td>城市燃气/综合能源</td><td>深圳能源、广州发展等</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>类型</th><th>例子</th></tr></thead><tbody><tr><td>省级能源集团</td><td>浙能集团（浙江）、广东能源集团、京能集团（北京）、申能集团（上海）、晋能控股（山西）、内蒙古能源集团</td></tr><tr><td>省级投资平台</td><td>皖能、豫能、赣能、川投能源等</td></tr><tr><td>城市燃气/综合能源</td><td>深圳能源、广州发展等</td></tr></tbody></table></div>
 <p>地方集团的重要性在于：<strong>它们常常是本省现货市场里&quot;既懂规则又是本地国企&quot;的一类主体</strong>，在省内平衡、供热、保供上承担政策性任务。</p>
 <h3 id="s10">3.4 新能源运营商</h3>
 <p>&quot;五大&quot;之外，新能源装机还有几支独立力量：三峡能源（海上风电、光伏）、中广核新能源、华电新能、龙源电力，以及大量民营与外资电站。它们的特点是<strong>资产新、负债高、对电价与消纳政策敏感</strong>——136 号文（新能源上网电价市场化）对这类企业的影响最大。</p>
 <h3 id="s11">3.5 2026 年格局快照：装机、主体与市场</h3>
 <p>截至 2026-09 底，全国发电装机 <strong>41.3 亿 kW</strong>，同比增长 11.2%。这不是&quot;多建了几台机组&quot;的量变，而是电源结构与市场主体同时换挡：</p>
-<div class="table-wrap"><table><thead><tr><th>指标</th><th>2026 年值</th><th>时点/口径</th><th>级别</th></tr></thead><tbody><tr><td>全国发电装机</td><td><strong>41.3 亿 kW</strong>（+11.2%）</td><td>2026-09 底</td><td>A</td></tr><tr><td>光伏装机</td><td><strong>13.1 亿 kW</strong>（+16.5%）</td><td>2026-09 底</td><td>A</td></tr><tr><td>风电装机</td><td><strong>7.0 亿 kW</strong>（+20.4%）</td><td>2026-09 底</td><td>A</td></tr><tr><td>风光合计</td><td><strong>20.1 亿 kW，占 48.7%</strong></td><td>2026-09 底</td><td>A/D</td></tr><tr><td>可再生能源装机</td><td><strong>25.18 亿 kW，占 60.94%</strong></td><td>2026-09 底</td><td>A</td></tr><tr><td>光伏 vs 煤电</td><td>光伏 <strong>12.86 亿 kW</strong> 首次超过煤电 <strong>12.85 亿 kW</strong></td><td>2026-07 底</td><td>A</td></tr><tr><td>煤电发电量占比</td><td><strong>49.1%</strong>（前三季度累计首次低于 50%）</td><td>2026 年 1-9 月</td><td>A/B</td></tr><tr><td>发电设备利用小时</td><td><strong>2,174 h</strong>（同比 −194 h）</td><td>2026 年 1-9 月</td><td>A</td></tr><tr><td>市场化交易电量</td><td><strong>5.8536 万亿 kWh</strong>（+18.9%）</td><td>2026 年 1-9 月</td><td>A</td></tr><tr><td>注册经营主体</td><td><strong>109 万家</strong>（发电 3.9 万、用户 104.9 万、售电 5,395、新型 486）</td><td>2025 年底</td><td>A/B</td></tr><tr><td>现货正式运行</td><td>至少 <strong>11 个省级市场</strong> + 南方区域市场（2026-10-24）</td><td>2026-09-30 / 10-24</td><td>A/B</td></tr><tr><td>全国最大负荷</td><td><strong>15.57 亿 kW</strong>（夏季四创新高）</td><td>2026 年夏季</td><td>B</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>2026 年值</th><th>时点/口径</th><th>级别</th></tr></thead><tbody><tr><td>全国发电装机</td><td><strong>41.3 亿 kW</strong>（+11.2%）</td><td>2026-09 底</td><td>A</td></tr><tr><td>光伏装机</td><td><strong>13.1 亿 kW</strong>（+16.5%）</td><td>2026-09 底</td><td>A</td></tr><tr><td>风电装机</td><td><strong>7.0 亿 kW</strong>（+20.4%）</td><td>2026-09 底</td><td>A</td></tr><tr><td>风光合计</td><td><strong>20.1 亿 kW，占 48.7%</strong></td><td>2026-09 底</td><td>A/D</td></tr><tr><td>可再生能源装机</td><td><strong>25.18 亿 kW，占 60.94%</strong></td><td>2026-09 底</td><td>A</td></tr><tr><td>光伏 vs 煤电</td><td>光伏 <strong>12.86 亿 kW</strong> 首次超过煤电 <strong>12.85 亿 kW</strong></td><td>2026-07 底</td><td>A</td></tr><tr><td>煤电发电量占比</td><td><strong>49.1%</strong>（前三季度累计首次低于 50%）</td><td>2026 年 1-9 月</td><td>A/B</td></tr><tr><td>发电设备利用小时</td><td><strong>2,174 h</strong>（同比 −194 h）</td><td>2026 年 1-9 月</td><td>A</td></tr><tr><td>市场化交易电量</td><td><strong>5.8536 万亿 kWh</strong>（+18.9%）</td><td>2026 年 1-9 月</td><td>A</td></tr><tr><td>注册经营主体</td><td><strong>109 万家</strong>（发电 3.9 万、用户 104.9 万、售电 5,395、新型 486）</td><td>2025 年底</td><td>A/B</td></tr><tr><td>现货正式运行</td><td>至少 <strong>11 个省级市场</strong> + 南方区域市场（2026-10-24）</td><td>2026-09-30 / 10-24</td><td>A/B</td></tr><tr><td>全国最大负荷</td><td><strong>15.57 亿 kW</strong>（夏季四创新高）</td><td>2026 年夏季</td><td>B</td></tr></tbody></table></div>
 <p><strong>三条读法</strong>：</p>
 <ul><li><strong>装机第一 ≠ 电量第一</strong>：光伏在 2026-07 底装机超过煤电，但 2026 年前三季度煤电发电量仍占 49.1%，光伏利用小时远低于煤电；说&quot;第一大电源&quot;必须说明是装机口径。</li><li><strong>新增装机更集中</strong>：2026 年前三季度风光新增 1.7 亿 kW，占全部新增装机的 67.6%；存量结构变化会慢于增量结构。</li><li><strong>主体比机组多得更快</strong>：注册经营主体从 2016 年的 4.2 万家增至 2025 年底的 109 万家，售电公司 5,395 家、新型经营主体 486 家；市场规则与结算链条的复杂度随之上升。</li></ul>
 <hr>
 <h2 id="s12">4. 设备与二次系统：电厂的&quot;硬件&quot;和电网的&quot;神经系统&quot;</h2>
 <p>普通人容易只关注发电集团，但电力和所有重资产行业一样，<strong>装备与自动化厂商决定了系统的能力边界</strong>。</p>
-<div class="table-wrap"><table><thead><tr><th>类别</th><th>代表企业</th><th>作用</th></tr></thead><tbody><tr><td>一次设备（发电与变电）</td><td>东方电气、上海电气、哈尔滨电气；特变电工、平高电气、中国西电</td><td>发电机、汽轮机、变压器、开关（GIS）、换流阀</td></tr><tr><td>二次设备（保护与自动化）</td><td>南瑞集团（国电南瑞）、许继电气、四方股份、长园深瑞、国电南自</td><td>继电保护、调度自动化、变电站自动化、稳定控制</td></tr><tr><td>新能源制造</td><td>金风科技、远景能源、明阳智能；隆基绿能、通威股份、晶科能源</td><td>风机、组件</td></tr><tr><td>储能</td><td>宁德时代、比亚迪、阳光电源、华为数字能源</td><td>电芯、PCS、系统集成</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>类别</th><th>代表企业</th><th>作用</th></tr></thead><tbody><tr><td>一次设备（发电与变电）</td><td>东方电气、上海电气、哈尔滨电气；特变电工、平高电气、中国西电</td><td>发电机、汽轮机、变压器、开关（GIS）、换流阀</td></tr><tr><td>二次设备（保护与自动化）</td><td>南瑞集团（国电南瑞）、许继电气、四方股份、长园深瑞、国电南自</td><td>继电保护、调度自动化、变电站自动化、稳定控制</td></tr><tr><td>新能源制造</td><td>金风科技、远景能源、明阳智能；隆基绿能、通威股份、晶科能源</td><td>风机、组件</td></tr><tr><td>储能</td><td>宁德时代、比亚迪、阳光电源、华为数字能源</td><td>电芯、PCS、系统集成</td></tr></tbody></table></div>
 <p><strong>南瑞为什么总被提到</strong>：它是国网电科院（国网电力科学研究院）旗下的产业集团，做的是调度自动化系统、变电站自动化、继电保护和电力市场技术支持系统——也就是本仓库三个技能里反复出现的&quot;交易中心系统&quot;和&quot;出清系统&quot;的主要供应商之一。理解这一点，就能理解为什么&quot;规则变更&quot;往往同时是一次&quot;系统改造&quot;（见《现货报价量化专家》第 10.4 节）。</p>
 <hr>
 <h2 id="s13">5. 科研、标准与行业组织</h2>
-<div class="table-wrap"><table><thead><tr><th>机构</th><th>隶属/性质</th><th>干什么</th></tr></thead><tbody><tr><td>中国电力科学研究院（中国电科院）</td><td>国家电网直属</td><td>电力系统分析、仿真、标准制定、试验检测</td></tr><tr><td>国网电力科学研究院（国网电科院，与南瑞集团一体化运作）</td><td>国家电网</td><td>二次系统、自动化、市场技术支持系统</td></tr><tr><td>南方电网科学研究院（南网科研院）</td><td>南方电网</td><td>南方区域电网运行与市场仿真、直流输电研究</td></tr><tr><td>各省电力科学研究院</td><td>省级电力公司</td><td>本省试验、检测、技术监督</td></tr><tr><td>电力规划设计总院（电规总院）</td><td>中国能建</td><td>电力规划、评审、政策研究</td></tr><tr><td>水电水利规划设计总院（水规总院）</td><td>中国电建</td><td>水电与新能源规划</td></tr><tr><td>中国电力企业联合会（中电联）</td><td>行业协会</td><td>统计、标准、行业报告（很多数字的原始出处）</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>机构</th><th>隶属/性质</th><th>干什么</th></tr></thead><tbody><tr><td>中国电力科学研究院（中国电科院）</td><td>国家电网直属</td><td>电力系统分析、仿真、标准制定、试验检测</td></tr><tr><td>国网电力科学研究院（国网电科院，与南瑞集团一体化运作）</td><td>国家电网</td><td>二次系统、自动化、市场技术支持系统</td></tr><tr><td>南方电网科学研究院（南网科研院）</td><td>南方电网</td><td>南方区域电网运行与市场仿真、直流输电研究</td></tr><tr><td>各省电力科学研究院</td><td>省级电力公司</td><td>本省试验、检测、技术监督</td></tr><tr><td>电力规划设计总院（电规总院）</td><td>中国能建</td><td>电力规划、评审、政策研究</td></tr><tr><td>水电水利规划设计总院（水规总院）</td><td>中国电建</td><td>水电与新能源规划</td></tr><tr><td>中国电力企业联合会（中电联）</td><td>行业协会</td><td>统计、标准、行业报告（很多数字的原始出处）</td></tr></tbody></table></div>
 <p><strong>怎么用</strong>：需要&quot;权威数字&quot;时，先想到中电联与国家能源局的统计；需要&quot;技术边界&quot;时，想到电科院与设计总院；需要&quot;行业惯例&quot;时，想到中电联的团体标准。</p>
 <hr>
 <h2 id="s14">6. 三类机构：交易、调度、监管</h2>
@@ -149,10 +156,10 @@
 <ul><li>安排开机方式与检修；</li><li>执行日前/实时出清结果，保证发用电实时平衡；</li><li>事故处理与黑启动。</li></ul>
 <p>所以行业里有句话：<strong>&quot;交易决定价格，调度决定能不能发&quot;</strong>。报价策略再优，若机组检修、爬坡或断面约束不允许，也无法执行——这是《现货报价量化专家》第 12 章申报校验的现实来源。</p>
 <h3 id="s17">6.3 监管机构</h3>
-<div class="table-wrap"><table><thead><tr><th>机构</th><th>管什么</th></tr></thead><tbody><tr><td>国家能源局及派出机构（各能源监管局）</td><td>市场准入、交易行为、辅助服务、电力安全</td></tr><tr><td>国家发展改革委（价格司）</td><td>电价政策、输配电价核定、容量电价</td></tr><tr><td>国家市场监督管理总局</td><td>价格违法、反垄断（市场力滥用可能同时触发）</td></tr><tr><td>地方政府（发改/能源局）</td><td>省级实施方案、补贴、项目核准</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>机构</th><th>管什么</th></tr></thead><tbody><tr><td>国家能源局及派出机构（各能源监管局）</td><td>市场准入、交易行为、辅助服务、电力安全</td></tr><tr><td>国家发展改革委（价格司）</td><td>电价政策、输配电价核定、容量电价</td></tr><tr><td>国家市场监督管理总局</td><td>价格违法、反垄断（市场力滥用可能同时触发）</td></tr><tr><td>地方政府（发改/能源局）</td><td>省级实施方案、补贴、项目核准</td></tr></tbody></table></div>
 <hr>
 <h2 id="s18">7. 速查表：角色—关心什么—在本仓库哪里</h2>
-<div class="table-wrap"><table><thead><tr><th>角色</th><th>最关心</th><th>对应章节</th></tr></thead><tbody><tr><td>发电企业（火电）</td><td>报价、检修、合约覆盖、煤价</td><td>交易专家第 7、9 章；量化专家第 7 章</td></tr><tr><td>新能源运营商</td><td>机制电价、消纳、预测偏差考核</td><td>交易专家第 4 章；量化专家第 5、8 章</td></tr><tr><td>储能</td><td>容量补偿、套利价差、调用频次</td><td>VPP 专家第 8、9 章；量化专家第 8 章</td></tr><tr><td>售电公司</td><td>批零价差、偏差、用户流失</td><td>交易专家第 8 章；量化专家第 9 章</td></tr><tr><td>电网企业</td><td>输配电价、安全、投资</td><td>本笔记第 2 节；交易专家第 6 章</td></tr><tr><td>交易/调度机构</td><td>规则执行、系统稳定、公平</td><td>交易专家第 5、6 章；量化专家第 10、12 章</td></tr><tr><td>监管部门</td><td>市场力、价格异常、保供</td><td>交易专家第 11 章</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>角色</th><th>最关心</th><th>对应章节</th></tr></thead><tbody><tr><td>发电企业（火电）</td><td>报价、检修、合约覆盖、煤价</td><td>交易专家第 7、9 章；量化专家第 7 章</td></tr><tr><td>新能源运营商</td><td>机制电价、消纳、预测偏差考核</td><td>交易专家第 4 章；量化专家第 5、8 章</td></tr><tr><td>储能</td><td>容量补偿、套利价差、调用频次</td><td>VPP 专家第 8、9 章；量化专家第 8 章</td></tr><tr><td>售电公司</td><td>批零价差、偏差、用户流失</td><td>交易专家第 8 章；量化专家第 9 章</td></tr><tr><td>电网企业</td><td>输配电价、安全、投资</td><td>本笔记第 2 节；交易专家第 6 章</td></tr><tr><td>交易/调度机构</td><td>规则执行、系统稳定、公平</td><td>交易专家第 5、6 章；量化专家第 10、12 章</td></tr><tr><td>监管部门</td><td>市场力、价格异常、保供</td><td>交易专家第 11 章</td></tr></tbody></table></div>
 <hr>
 <h2 id="s19">8. 五个常见误解</h2>
 <ol><li><strong>&quot;国家电网管全国&quot;</strong>——错。南网 5 省区、蒙西 8 盟市不在国网供区。</li><li><strong>&quot;南方电网是国家电网的子公司&quot;</strong>——错。两家是平行的中央企业，供区互不重叠。</li><li><strong>&quot;五大发电就是全部发电&quot;</strong>——错。还有四小（历史称谓）、地方能源集团、新能源运营商、自备电厂与分布式电源。</li><li><strong>&quot;交易中心就是电网的一个部门&quot;</strong>——改制后交易机构相对独立，但调度仍在电网，两者不能混为一谈。</li><li><strong>&quot;电科院都是一家&quot;</strong>——中国电科院（国网直属）与国网电科院/南瑞（产业与研究院一体化）是两回事，南网科研院又是一家。</li></ol>
@@ -162,14 +169,28 @@
 <p><strong>待核实</strong>：五大集团装机占比的当期值、蒙西与蒙东供区的盟市名单变动、各交易中心股份制改造的最新股东结构、2026 年全年装机与利用小时的最终统计——前两项本笔记只给结构，不给当期数字；数据引用前请按上述入口核对并注明时点。</p>
     </article>
 
-    <section class="related" aria-label="相关模块">
-      <h2>相关模块</h2>
-      <ul>
-        <li><a href="电力系统通识-B-发输配变用.html">电力系统通识 B · 发输配变用</a></li>
-        <li><a href="电力系统通识-C-改革史.html">电力系统通识 C · 改革史</a></li>
-        <li><a href="电力系统经济学原理-主题笔记.html">电力系统经济学原理</a></li>
-      </ul>
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>3</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="电力系统通识-B-发输配变用.html">
+          <span class="related-type">同区延伸</span>
+          <b>电力系统通识 B · 发输配变用</b>
+          <span>功率与电量、50 Hz、发输配变用五环节、备用与稳定，建立电力系统的物理常识。</span>
+        </a>
+        <a class="related-card" href="电力系统通识-C-改革史.html">
+          <span class="related-type">同区延伸</span>
+          <b>电力系统通识 C · 改革史</b>
+          <span>从 1985 集资办电到 2015 九号文，再到全国统一市场，每轮改革写清目的、影响与遗留。</span>
+        </a>
+        <a class="related-card" href="电力系统经济学原理-主题笔记.html">
+          <span class="related-type">同区延伸</span>
+          <b>电力系统经济学原理</b>
+          <span>市场结构、供需与福利、现货与金融工具、市场力、辅助服务、阻塞与节点定价。</span>
+        </a>
+      </div>
+
     </section>
+
 
     <nav class="pager" aria-label="上下篇">
           <span class="spacer"></span>
@@ -178,7 +199,11 @@
 
     <footer class="doc-foot">
       <div class="lic">本页由 <a href="../电力系统通识-A-格局与主体.md">knowledge/电力系统通识-A-格局与主体.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
-      <div><a href="../index.html">返回知识库总览 →</a></div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
     </footer>
   </main>
 
@@ -205,7 +230,7 @@
             <li class="lv2"><a href="#s18">7. 速查表：角色—关心什么—在本仓库哪里</a></li>
             <li class="lv2"><a href="#s19">8. 五个常见误解</a></li>
             <li class="lv2"><a href="#s20">9. 来源与核对入口</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="11">展开 11 个小节</button>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="11" data-more-label="展开 11 个小节" data-less-label="收起小节">展开 11 个小节</button>
   </aside>
 </div>
 

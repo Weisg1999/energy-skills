@@ -19,9 +19,9 @@
 <div class="scrim"></div>
 
 <header class="topbar">
-  <a class="back" href="../index.html">← 知识库</a>
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
   <div class="crumb">
-    <span class="crumb-cat">06 / GLOBAL</span>
+    <span class="crumb-cat">03 · GLOBAL</span>
     <span class="crumb-sep">/</span>
     <span class="crumb-doc">意大利电力市场（2026 版）</span>
   </div>
@@ -30,7 +30,14 @@
       <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
       <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-    <a class="src" href="../意大利电力市场-2026-11.md">.md 源文件</a>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../意大利电力市场-2026-11.md">.md 源文件<small>knowledge/意大利电力市场-2026-11.md</small></a>
+
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
     <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
   </div>
 </header>
@@ -38,7 +45,7 @@
 <div class="shell">
   <aside class="sidebar" id="nav">
     <div class="nav-kicker">当前分类</div>
-    <div class="nav-num">06 / GLOBAL</div>
+    <div class="nav-num">03 · GLOBAL</div>
     <h2 class="nav-cat"><a href="../index.html#intl">海外市场</a></h2>
     <ul class="nav-list">
               <li><a href="澳大利亚NEM电力市场-2026-11.html">澳大利亚 NEM 电力市场（2026 版）</a></li>
@@ -57,24 +64,24 @@
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
       <ul>
-              <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
-              <li><a href="../index.html#spot"><b>05</b>电力现货与省间交易</a></li>
-              <li><a href="../index.html#cross"><b>07</b>横向专题</a></li>
-              <li><a href="../index.html#price"><b>08</b>电价</a></li>
-              <li><a href="../index.html#renewable"><b>09</b>新能源与并网</a></li>
-              <li><a href="../index.html#storage"><b>10</b>储能与 EMS</a></li>
-              <li><a href="../index.html#park"><b>11</b>综合能源与零碳园区</a></li>
-              <li><a href="../index.html#carbon"><b>12</b>碳市场与碳管理</a></li>
-              <li><a href="../index.html#vpp"><b>13</b>虚拟电厂</a></li>
-              <li><a href="../index.html#index"><b>14</b>索引、查证与工具</a></li>
-              <li><a href="../index.html#research"><b>15</b>调研底稿</a></li>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#cross"><b>04</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>05</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>06</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>07</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>08</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>09</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>10</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>11</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>12</b>调研底稿</a></li>
       </ul>
     </div>
   </aside>
 
   <main class="main" id="main">
     <header class="doc-head">
-      <div class="kicker">06 / GLOBAL<i>知识模块</i></div>
+      <div class="kicker">03 · GLOBAL<i>知识模块</i></div>
       <h1 class="doc-title">意大利电力市场：七个报价区、MACSE 与储能实务（2026-11）</h1>
       <p class="lede">七个报价区、MGP/MI/MSD、MACSE 储能容量拍卖、容量市场与 FER X。</p>
       <p class="hook">2026-11 · 七区与 MACSE</p>
@@ -123,32 +130,32 @@
 └─ 结算：GME/Terna/银行担保体系</code></pre>
 <ul><li><strong>意大利不是“一个价格”</strong>：批发市场按报价区出清，南部/岛屿与北部经常存在价差；PUN 只是全国参考价。</li><li><strong>MGP 是主日前市场</strong>：GME 运营，按 SDAC 规则出清；2025-10-01 起交付时段采用 15 分钟 MTU。</li><li><strong>MSD 和 MB 不是“交易所现货”</strong>：Terna 作为调度机构采购调频、备用、阻塞管理等服务；结算规则与 MGP 不同。</li><li><strong>MACSE 是储能专用长周期机制</strong>：15 年合同、按 €/MWh·年支付容量溢价、pay-as-bid、分区拍卖、仅限新建项目。</li><li><strong>容量市场与 MACSE 是两套机制</strong>：前者买可用容量，后者租储能容量用于负荷转移；可以叠加，但义务和标的要分开看。</li></ul>
 <h3 id="s3">0.2 关键数字</h3>
-<div class="table-wrap"><table><thead><tr><th>数字</th><th>含义</th><th>级别</th></tr></thead><tbody><tr><td>7 个</td><td>意大利本土报价区数量</td><td>A</td></tr><tr><td>2021-01-01</td><td>现行七区结构生效（Rossano 并入）</td><td>B</td></tr><tr><td>12:00 D-1</td><td>MGP 关闸（CET）</td><td>A</td></tr><tr><td>约 12:55</td><td>MGP 结果公布（CET）</td><td>B</td></tr><tr><td>15 分钟</td><td>2025-10-01 起交付时段的 MTU</td><td>A</td></tr><tr><td>22.5 GW</td><td>PNIEC 2030 储能目标；官方分项为抽蓄 8 GW + 分布式 4 GW + 独立 11 GW（分项加总约 23 GW，主目标仍按 22.5 GW 引用）</td><td>B</td></tr><tr><td>10 GWh</td><td>MACSE 首轮采购容量</td><td>A</td></tr><tr><td>1,491.392 MW / 9,968 MWh</td><td>MACSE 首轮中标功率/能量</td><td>B</td></tr><tr><td>€12,959/MWh·年</td><td>MACSE 首轮加权均价</td><td>B</td></tr><tr><td>€37,000/MWh·年</td><td>MACSE 电池价格上限（储备溢价）</td><td>B</td></tr><tr><td>15 年</td><td>MACSE 电池合同期限</td><td>A</td></tr><tr><td>16 GWh</td><td>MACSE 第二轮采购容量</td><td>A</td></tr><tr><td>2026-11-24 10:00</td><td>MACSE 第二轮拍卖时间</td><td>A</td></tr><tr><td>37.15 GW</td><td>FER X 支持总规模（至 2030 年底）</td><td>A</td></tr><tr><td>€80/MWh</td><td>FER X 光伏参考执行价</td><td>A</td></tr><tr><td>7.961 GW / 19.3 GWh</td><td>2026-06 意大利储能累计（含分布式）</td><td>B</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>数字</th><th>含义</th><th>级别</th></tr></thead><tbody><tr><td>7 个</td><td>意大利本土报价区数量</td><td>A</td></tr><tr><td>2021-01-01</td><td>现行七区结构生效（Rossano 并入）</td><td>B</td></tr><tr><td>12:00 D-1</td><td>MGP 关闸（CET）</td><td>A</td></tr><tr><td>约 12:55</td><td>MGP 结果公布（CET）</td><td>B</td></tr><tr><td>15 分钟</td><td>2025-10-01 起交付时段的 MTU</td><td>A</td></tr><tr><td>22.5 GW</td><td>PNIEC 2030 储能目标；官方分项为抽蓄 8 GW + 分布式 4 GW + 独立 11 GW（分项加总约 23 GW，主目标仍按 22.5 GW 引用）</td><td>B</td></tr><tr><td>10 GWh</td><td>MACSE 首轮采购容量</td><td>A</td></tr><tr><td>1,491.392 MW / 9,968 MWh</td><td>MACSE 首轮中标功率/能量</td><td>B</td></tr><tr><td>€12,959/MWh·年</td><td>MACSE 首轮加权均价</td><td>B</td></tr><tr><td>€37,000/MWh·年</td><td>MACSE 电池价格上限（储备溢价）</td><td>B</td></tr><tr><td>15 年</td><td>MACSE 电池合同期限</td><td>A</td></tr><tr><td>16 GWh</td><td>MACSE 第二轮采购容量</td><td>A</td></tr><tr><td>2026-11-24 10:00</td><td>MACSE 第二轮拍卖时间</td><td>A</td></tr><tr><td>37.15 GW</td><td>FER X 支持总规模（至 2030 年底）</td><td>A</td></tr><tr><td>€80/MWh</td><td>FER X 光伏参考执行价</td><td>A</td></tr><tr><td>7.961 GW / 19.3 GWh</td><td>2026-06 意大利储能累计（含分布式）</td><td>B</td></tr></tbody></table></div>
 <h3 id="s4">0.3 七个报价区与南北阻塞</h3>
-<div class="table-wrap"><table><thead><tr><th>报价区</th><th>覆盖范围（示意）</th><th>主要特征</th></tr></thead><tbody><tr><td>Nord</td><td>皮埃蒙特、伦巴第、威尼托、艾米利亚-罗马涅等</td><td>负荷中心、工业负荷大、常为进口/高价区</td></tr><tr><td>Centro-Nord</td><td>托斯卡纳、翁布里亚、马尔凯</td><td>连接南北，受阻塞影响</td></tr><tr><td>Centro-Sud</td><td>拉齐奥、阿布鲁佐、坎帕尼亚</td><td>中部负荷与可再生并存</td></tr><tr><td>Sud</td><td>莫利塞、普利亚、巴西利卡塔</td><td>光伏/风电富集，外送受限</td></tr><tr><td>Calabria</td><td>卡拉布里亚</td><td>2021 年起单列；与西西里/南部连接受限</td></tr><tr><td>Sicilia</td><td>西西里</td><td>岛屿系统，互联容量有限</td></tr><tr><td>Sardegna</td><td>撒丁岛</td><td>岛屿系统，独立性强</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>报价区</th><th>覆盖范围（示意）</th><th>主要特征</th></tr></thead><tbody><tr><td>Nord</td><td>皮埃蒙特、伦巴第、威尼托、艾米利亚-罗马涅等</td><td>负荷中心、工业负荷大、常为进口/高价区</td></tr><tr><td>Centro-Nord</td><td>托斯卡纳、翁布里亚、马尔凯</td><td>连接南北，受阻塞影响</td></tr><tr><td>Centro-Sud</td><td>拉齐奥、阿布鲁佐、坎帕尼亚</td><td>中部负荷与可再生并存</td></tr><tr><td>Sud</td><td>莫利塞、普利亚、巴西利卡塔</td><td>光伏/风电富集，外送受限</td></tr><tr><td>Calabria</td><td>卡拉布里亚</td><td>2021 年起单列；与西西里/南部连接受限</td></tr><tr><td>Sicilia</td><td>西西里</td><td>岛屿系统，互联容量有限</td></tr><tr><td>Sardegna</td><td>撒丁岛</td><td>岛屿系统，独立性强</td></tr></tbody></table></div>
 <ul><li><strong>报价区不是行政大区</strong>：它是市场出清的节点集合，边界由 Terna/GME 按电网约束划定；不要按行政区划直接套。</li><li><strong>南北阻塞是价格分化的主因</strong>：南部和岛屿可再生富集，外送通道受限；北部负荷大、常需进口，价格较高。</li><li><strong>跨境虚拟区</strong>：法国、瑞士、奥地利、斯洛文尼亚、希腊、马耳他、科西嘉、黑山等以虚拟区形式参与（B，按 GME/Terna 边界）；它们影响边境价格，但不是意大利本土报价区。</li><li><strong>2021 年改革</strong>：Rossano 报价区撤销，Calabria 成为独立报价区；历史价格数据跨 2021 年比较时要注意口径。</li></ul>
 <h3 id="s5">0.4 一句话记住</h3>
 <p><strong>意大利是“七区出清 + PUN 参考 + Terna 调度 + MACSE 长周期储能”的市场：先看报价区，再看 MGP/MI/MSD/MB 的分工，最后把 MACSE 的 €/MWh·年容量溢价和能量/辅助服务收入分开算。</strong></p>
 <hr>
 <h2 id="s6">1. 谁在管：机构与规则层级</h2>
 <h3 id="s7">1.1 机构分工</h3>
-<div class="table-wrap"><table><thead><tr><th>机构</th><th>职责</th><th>与交易/项目的关系</th></tr></thead><tbody><tr><td>MASE</td><td>能源政策、PNIEC、FER X、MACSE 需求</td><td>决定支持机制与拍卖规模</td></tr><tr><td>ARERA</td><td>电力/天然气监管、网络收费、市场规则</td><td>定电价方法、MACSE 标准、并网规则</td></tr><tr><td>Terna</td><td>输电系统运营商（TSO）</td><td>调度、MSD/MB、容量市场、MACSE 采购</td></tr><tr><td>GME</td><td>电力交易所</td><td>MGP、MI、MSD 平台、MTE</td></tr><tr><td>Acquirente Unico</td><td>保护性市场单一买方</td><td>居民/小微用户供电</td></tr><tr><td>GSE</td><td>可再生能源支持机构</td><td>FER X 招标、补贴结算</td></tr><tr><td>银行/担保机构</td><td>信用与保证金</td><td>GME、Terna、MACSE 担保</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>机构</th><th>职责</th><th>与交易/项目的关系</th></tr></thead><tbody><tr><td>MASE</td><td>能源政策、PNIEC、FER X、MACSE 需求</td><td>决定支持机制与拍卖规模</td></tr><tr><td>ARERA</td><td>电力/天然气监管、网络收费、市场规则</td><td>定电价方法、MACSE 标准、并网规则</td></tr><tr><td>Terna</td><td>输电系统运营商（TSO）</td><td>调度、MSD/MB、容量市场、MACSE 采购</td></tr><tr><td>GME</td><td>电力交易所</td><td>MGP、MI、MSD 平台、MTE</td></tr><tr><td>Acquirente Unico</td><td>保护性市场单一买方</td><td>居民/小微用户供电</td></tr><tr><td>GSE</td><td>可再生能源支持机构</td><td>FER X 招标、补贴结算</td></tr><tr><td>银行/担保机构</td><td>信用与保证金</td><td>GME、Terna、MACSE 担保</td></tr></tbody></table></div>
 <ul><li><strong>Terna 是“调度 + 采购”的双重角色</strong>：既管系统安全，又通过容量市场/MACSE 采购资源；交易对手和规则制定者要分开看。</li><li><strong>GME 不是“唯一市场”</strong>：MGP/MI/MSD 在 GME 平台，MB 由 Terna 运营；不要把 GME 价格当成全部调度价格。</li><li><strong>ARERA 的决定是“规则依据”</strong>：MACSE 标准、并网 TICA、网络收费都出自 ARERA；做投决要查最新决定。</li></ul>
 <h3 id="s8">1.2 规则文件层级</h3>
-<div class="table-wrap"><table><thead><tr><th>层级</th><th>文件</th><th>作用</th></tr></thead><tbody><tr><td>法律</td><td>D.Lgs. 79/1999（Bersani）、D.Lgs. 210/2021</td><td>市场化改革、MACSE 法律基础</td></tr><tr><td>法令</td><td>DM 2019-06-28（容量市场）、DM 194/2026（FER X）</td><td>机制设计与支持参数</td></tr><tr><td>监管</td><td>ARERA 247/2023/R/eel（MACSE）、420/2017/R/eel（容量市场）</td><td>标准合同、拍卖规则、收费</td></tr><tr><td>市场规则</td><td>GME 市场规则、Terna 调度规则</td><td>MGP/MI/MSD/MB 的操作细则</td></tr><tr><td>并网</td><td>TICA、网络代码</td><td>连接、加固、计量</td></tr><tr><td>欧盟</td><td>SDAC/SIDC 规则、国家援助决定</td><td>耦合、价格边界、援助合规</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>层级</th><th>文件</th><th>作用</th></tr></thead><tbody><tr><td>法律</td><td>D.Lgs. 79/1999（Bersani）、D.Lgs. 210/2021</td><td>市场化改革、MACSE 法律基础</td></tr><tr><td>法令</td><td>DM 2019-06-28（容量市场）、DM 194/2026（FER X）</td><td>机制设计与支持参数</td></tr><tr><td>监管</td><td>ARERA 247/2023/R/eel（MACSE）、420/2017/R/eel（容量市场）</td><td>标准合同、拍卖规则、收费</td></tr><tr><td>市场规则</td><td>GME 市场规则、Terna 调度规则</td><td>MGP/MI/MSD/MB 的操作细则</td></tr><tr><td>并网</td><td>TICA、网络代码</td><td>连接、加固、计量</td></tr><tr><td>欧盟</td><td>SDAC/SIDC 规则、国家援助决定</td><td>耦合、价格边界、援助合规</td></tr></tbody></table></div>
 <ul><li><strong>MACSE 的法律链条</strong>：D.Lgs. 210/2021 第 18 条 → ARERA 247/2023/R/eel → 欧盟国家援助批准（SA.104106）→ Terna 拍卖规则。</li><li><strong>容量市场的法律链条</strong>：DM 2019-06-28 → ARERA 420/2017/R/eel → Terna 拍卖规则；与 MACSE 是两套不同的机制。</li><li><strong>FER X 的法律链条</strong>：DM 194/2026 → GSE 招标规则 → 欧盟批准（约 €230 亿）；NZIA 条款写在招标规则里。</li></ul>
 <h3 id="s9">1.3 与中国的第一层差别</h3>
-<div class="table-wrap"><table><thead><tr><th>维度</th><th>意大利</th><th>中国</th></tr></thead><tbody><tr><td>市场范围</td><td>全国统一市场 + 七个报价区</td><td>省/区域市场 + 省间</td></tr><tr><td>日前</td><td>MGP，GME 运营，SDAC 耦合</td><td>现货试点，调度/交易中心运营</td></tr><tr><td>日内</td><td>MI，连续/分场次</td><td>滚动撮合/挂牌</td></tr><tr><td>平衡</td><td>MSD/MB，Terna 采购</td><td>调度 + 两个细则/辅助服务</td></tr><tr><td>容量</td><td>容量市场 + MACSE</td><td>容量电价/补偿 + 容量租赁</td></tr><tr><td>储能支持</td><td>MACSE 15 年容量溢价</td><td>容量租赁/容量补偿/现货</td></tr><tr><td>结算</td><td>GME/Terna + 担保</td><td>电网/交易中心，分省</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>意大利</th><th>中国</th></tr></thead><tbody><tr><td>市场范围</td><td>全国统一市场 + 七个报价区</td><td>省/区域市场 + 省间</td></tr><tr><td>日前</td><td>MGP，GME 运营，SDAC 耦合</td><td>现货试点，调度/交易中心运营</td></tr><tr><td>日内</td><td>MI，连续/分场次</td><td>滚动撮合/挂牌</td></tr><tr><td>平衡</td><td>MSD/MB，Terna 采购</td><td>调度 + 两个细则/辅助服务</td></tr><tr><td>容量</td><td>容量市场 + MACSE</td><td>容量电价/补偿 + 容量租赁</td></tr><tr><td>储能支持</td><td>MACSE 15 年容量溢价</td><td>容量租赁/容量补偿/现货</td></tr><tr><td>结算</td><td>GME/Terna + 担保</td><td>电网/交易中心，分省</td></tr></tbody></table></div>
 <ul><li><strong>意大利的“分区”比中国省间更细</strong>：七个报价区不是行政省，价格差异由电网约束决定；中国省间价差更多由省供需和输电权决定。</li><li><strong>MACSE 不是“容量租赁”</strong>：它是监管设计的长期容量拍卖，Terna 作为买方，合同 15 年，价格按 €/MWh·年；中国多数储能容量租赁是双边/市场化合同。</li><li><strong>不要把 PUN 当成“意大利电价”</strong>：PUN 是参考价，发电和用户按报价区结算；做项目收益要用所在区价格。</li></ul>
 <hr>
 <h2 id="s10">2. 市场架构：MGP、MI、MSD、MB</h2>
 <h3 id="s11">2.1 MGP 日前市场</h3>
-<div class="table-wrap"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>运营机构</td><td>GME</td></tr><tr><td>产品</td><td>15 分钟 MTU（2025-10-01 起交付时段）</td></tr><tr><td>关闸</td><td>12:00 D-1（CET）</td></tr><tr><td>结果</td><td>约 12:55（CET）</td></tr><tr><td>出清</td><td>SDAC 耦合，EUPHEMIA</td></tr><tr><td>定价</td><td>分区边际价（zonal price）</td></tr><tr><td>参与者</td><td>发电、负荷、交易商、BRP</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>运营机构</td><td>GME</td></tr><tr><td>产品</td><td>15 分钟 MTU（2025-10-01 起交付时段）</td></tr><tr><td>关闸</td><td>12:00 D-1（CET）</td></tr><tr><td>结果</td><td>约 12:55（CET）</td></tr><tr><td>出清</td><td>SDAC 耦合，EUPHEMIA</td></tr><tr><td>定价</td><td>分区边际价（zonal price）</td></tr><tr><td>参与者</td><td>发电、负荷、交易商、BRP</td></tr></tbody></table></div>
 <ul><li><strong>MGP 是主价格信号</strong>：日前价格决定大部分能量交易；15 分钟 MTU 提高了预测和报价的颗粒度要求。</li><li><strong>分区出清</strong>：同一时刻不同报价区可以有不同价格；跨区价差反映输电约束。</li><li><strong>SDAC 耦合</strong>：意大利与邻国日前市场耦合，跨境容量进入 EUPHEMIA 出清；但国内分区价格仍由内部约束决定。</li><li><strong>关闸后不能改</strong>：日前头寸锁定，偏差进入 MI/MSD/MB。</li></ul>
 <h3 id="s12">2.2 MI 日内市场</h3>
 <ul><li><strong>MI 是日内调整市场</strong>：参与者根据预测更新和机组状态调整头寸；GME 运营，按市场规则分场次/连续交易。</li><li><strong>关闸在交割前约 1 小时</strong>：具体时间以 GME 规则为准；关闸后只能通过调度/平衡机制调整。</li><li><strong>价格是成交价</strong>：不是统一出清价；流动性集中在临近交割的时段。</li><li><strong>与 MGP 的关系</strong>：MI 修正 MGP 后的偏差，但不替代 MGP 的主价格信号；做交易要把 MGP/MI/MSD 的头寸统一管理。</li></ul>
 <h3 id="s13">2.3 MSD 调度服务市场</h3>
-<div class="table-wrap"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>运营机构</td><td>GME 平台，Terna 采购</td></tr><tr><td>产品</td><td>调频、备用、阻塞管理、电压支撑等</td></tr><tr><td>参与者</td><td>BSP（Balancing Service Provider）</td></tr><tr><td>定价</td><td>按报价/规则结算</td></tr><tr><td>用途</td><td>系统安全、实时平衡、阻塞缓解</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>运营机构</td><td>GME 平台，Terna 采购</td></tr><tr><td>产品</td><td>调频、备用、阻塞管理、电压支撑等</td></tr><tr><td>参与者</td><td>BSP（Balancing Service Provider）</td></tr><tr><td>定价</td><td>按报价/规则结算</td></tr><tr><td>用途</td><td>系统安全、实时平衡、阻塞缓解</td></tr></tbody></table></div>
 <ul><li><strong>MSD 不是“能量市场”</strong>：它买的是调度服务，不是普通电量；报价要反映机会成本和技术约束。</li><li><strong>Terna 是买方</strong>：Terna 按系统需要选择报价；中标后要按调度指令执行。</li><li><strong>资格与预审</strong>：BSP 要满足技术、计量、通信要求；储能、抽蓄、可调负荷都可参与，具体资格以 Terna 规则为准。</li><li><strong>与 MB 的边界</strong>：MSD 偏“事前/计划”，MB 偏“实时/平衡”；不同资料可能混用这两个词，读规则时要看具体产品。</li></ul>
 <h3 id="s14">2.4 MB 平衡市场</h3>
 <ul><li><strong>MB 是实时平衡市场</strong>：Terna 运营，用于处理实时偏差和系统安全事件。</li><li><strong>Terna 选择报价</strong>：按报价和系统需要调用；结算按规则，不是统一价。</li><li><strong>与 MSD 的关系</strong>：MB 可以理解为 MSD 的实时补充；具体产品、时间窗口和结算以 Terna 调度规则为准。</li><li><strong>对储能的要求</strong>：快速响应、SOC 管理、通信可靠性；中标容量不能随意用于能量套利。</li></ul>
@@ -176,7 +183,7 @@
   → 零售结算（PUN/分区价 + 费用）</code></pre>
 <ul><li><strong>GME 和 Terna 分开结算</strong>：能量市场与调度服务不是同一张账单；项目要分别对账。</li><li><strong>担保是前置条件</strong>：GME 会员、Terna BSP、MACSE 参与都需要银行担保/保证金。</li><li><strong>计量是结算基础</strong>：关口表、发电表、储能表要满足规则；数据错误会影响结算和考核。</li><li><strong>争议处理</strong>：按 GME/Terna 规则提交争议；跨境项目要预留法律和语言成本。</li></ul>
 <h3 id="s24">4.2 电网与系统费用</h3>
-<div class="table-wrap"><table><thead><tr><th>费用</th><th>作用</th><th>备注</th></tr></thead><tbody><tr><td>输电费</td><td>输电网络投资与运维</td><td>ARERA 定费率；按电压等级/位置</td></tr><tr><td>配电费</td><td>配电网络投资与运维</td><td>与接入电压、容量有关</td></tr><tr><td>系统一般费用（oneri generali）</td><td>支持可再生、能效等政策</td><td>账单附加，具体科目按 ARERA</td></tr><tr><td>容量市场费用</td><td>容量市场付款</td><td>由用户/系统分摊</td></tr><tr><td>MACSE 费用</td><td>储能容量溢价</td><td>通过输电费回收</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>费用</th><th>作用</th><th>备注</th></tr></thead><tbody><tr><td>输电费</td><td>输电网络投资与运维</td><td>ARERA 定费率；按电压等级/位置</td></tr><tr><td>配电费</td><td>配电网络投资与运维</td><td>与接入电压、容量有关</td></tr><tr><td>系统一般费用（oneri generali）</td><td>支持可再生、能效等政策</td><td>账单附加，具体科目按 ARERA</td></tr><tr><td>容量市场费用</td><td>容量市场付款</td><td>由用户/系统分摊</td></tr><tr><td>MACSE 费用</td><td>储能容量溢价</td><td>通过输电费回收</td></tr></tbody></table></div>
 <ul><li><strong>网络费用是选址变量</strong>：南部/岛屿的并网和加固成本可能更高；做投决要把连接费和网络费纳入。</li><li><strong>MACSE 成本最终由用户承担</strong>：容量溢价通过输电费回收；这不是“免费补贴”，而是系统成本。</li><li><strong>费用口径要统一</strong>：含税/不含税、容量/电量、电压等级；不同来源的数字不能直接比较。</li></ul>
 <h3 id="s25">4.3 容量市场与 MACSE 的成本回收</h3>
 <ul><li><strong>容量市场</strong>：Terna 向中标容量支付容量费，成本通过系统费用回收；具体分摊按 ARERA 规则。</li><li><strong>MACSE</strong>：Terna 支付 15 年容量溢价，成本通过输电费回收；拍卖价格越低，用户成本越低。</li><li><strong>两者不重复支付同一服务</strong>：容量市场买“可用容量”，MACSE 买“储能容量用于负荷转移”；合同义务不同。</li><li><strong>对项目的影响</strong>：两套收入可以叠加，但要在报价和可用性上满足各自规则。</li></ul>
@@ -185,15 +192,15 @@
 <hr>
 <h2 id="s27">5. MACSE：储能容量拍卖</h2>
 <h3 id="s28">5.1 机制设计</h3>
-<div class="table-wrap"><table><thead><tr><th>要素</th><th>内容</th></tr></thead><tbody><tr><td>法律基础</td><td>D.Lgs. 210/2021 第 18 条</td></tr><tr><td>监管标准</td><td>ARERA 247/2023/R/eel（2023-06-06）</td></tr><tr><td>国家援助</td><td>欧盟 SA.104106，约 €17.7bn，支持 &gt;9 GW/71 GWh，至 2033-12-31</td></tr><tr><td>采购方</td><td>Terna（代表系统）</td></tr><tr><td>合同期限</td><td>电池 15 年；其他技术按技术类别</td></tr><tr><td>定价</td><td>pay-as-bid（按投标价成交）</td></tr><tr><td>拍卖方式</td><td>分区、技术分类、竞争性拍卖</td></tr><tr><td>资格</td><td>仅限新建项目；需满足并网、许可、担保等条件</td></tr><tr><td>价格单位</td><td>€/MWh·年（按储能能量容量支付）</td></tr><tr><td>价格上限</td><td>电池约 €37,000/MWh·年（B）</td></tr><tr><td>成本回收</td><td>通过输电费回收</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>要素</th><th>内容</th></tr></thead><tbody><tr><td>法律基础</td><td>D.Lgs. 210/2021 第 18 条</td></tr><tr><td>监管标准</td><td>ARERA 247/2023/R/eel（2023-06-06）</td></tr><tr><td>国家援助</td><td>欧盟 SA.104106，约 €17.7bn，支持 &gt;9 GW/71 GWh，至 2033-12-31</td></tr><tr><td>采购方</td><td>Terna（代表系统）</td></tr><tr><td>合同期限</td><td>电池 15 年；其他技术按技术类别</td></tr><tr><td>定价</td><td>pay-as-bid（按投标价成交）</td></tr><tr><td>拍卖方式</td><td>分区、技术分类、竞争性拍卖</td></tr><tr><td>资格</td><td>仅限新建项目；需满足并网、许可、担保等条件</td></tr><tr><td>价格单位</td><td>€/MWh·年（按储能能量容量支付）</td></tr><tr><td>价格上限</td><td>电池约 €37,000/MWh·年（B）</td></tr><tr><td>成本回收</td><td>通过输电费回收</td></tr></tbody></table></div>
 <ul><li><strong>MACSE 付的是“容量溢价”</strong>：按 MWh 储能容量每年付钱，不是按放电量；项目仍可在能量/辅助服务市场获得收入。</li><li><strong>Terna 租用容量</strong>：中标容量用于第三方（可再生）负荷转移服务；项目要按合同提供可用容量。</li><li><strong>pay-as-bid</strong>：每个中标项目按自己的报价结算，不是统一价；报价策略直接决定收入。</li><li><strong>分区拍卖</strong>：不同报价区的需求、竞争和价格不同；首轮价格从 €12,146 到 €15,846/MWh·年不等。</li><li><strong>仅限新建</strong>：存量改造、共址项目的资格要以拍卖规则为准；本文不给定论（未核实项）。</li></ul>
 <h3 id="s29">5.2 首轮结果（2025-10-01 公布）</h3>
-<div class="table-wrap"><table><thead><tr><th>项目</th><th>结果</th></tr></thead><tbody><tr><td>拍卖日</td><td>2025-09-30</td></tr><tr><td>采购容量</td><td>10 GWh</td></tr><tr><td>投标规模</td><td>约 40 GWh，约为需求的 4 倍</td></tr><tr><td>中标项目</td><td>15 个（其中 1 个 5 MW/32 MWh 项目退出，实际剩 14 个）</td></tr><tr><td>中标功率/能量</td><td>1,491.392 MW / 9,968 MWh</td></tr><tr><td>平均时长</td><td>约 6.6 小时</td></tr><tr><td>加权均价</td><td>€12,959/MWh·年</td></tr><tr><td>价格上限</td><td>€37,000/MWh·年</td></tr><tr><td>技术</td><td>全部为锂离子电池</td></tr><tr><td>交付年</td><td>2028</td></tr><tr><td>合同期</td><td>15 年</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>结果</th></tr></thead><tbody><tr><td>拍卖日</td><td>2025-09-30</td></tr><tr><td>采购容量</td><td>10 GWh</td></tr><tr><td>投标规模</td><td>约 40 GWh，约为需求的 4 倍</td></tr><tr><td>中标项目</td><td>15 个（其中 1 个 5 MW/32 MWh 项目退出，实际剩 14 个）</td></tr><tr><td>中标功率/能量</td><td>1,491.392 MW / 9,968 MWh</td></tr><tr><td>平均时长</td><td>约 6.6 小时</td></tr><tr><td>加权均价</td><td>€12,959/MWh·年</td></tr><tr><td>价格上限</td><td>€37,000/MWh·年</td></tr><tr><td>技术</td><td>全部为锂离子电池</td></tr><tr><td>交付年</td><td>2028</td></tr><tr><td>合同期</td><td>15 年</td></tr></tbody></table></div>
 <p><strong>分区加权均价（B）</strong></p>
-<div class="table-wrap"><table><thead><tr><th>报价区</th><th>均价（€/MWh·年）</th></tr></thead><tbody><tr><td>Centro-Sud</td><td>14,566</td></tr><tr><td>Sud + Calabria</td><td>12,146</td></tr><tr><td>Sicilia</td><td>15,846</td></tr><tr><td>Sardegna</td><td>15,029</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>报价区</th><th>均价（€/MWh·年）</th></tr></thead><tbody><tr><td>Centro-Sud</td><td>14,566</td></tr><tr><td>Sud + Calabria</td><td>12,146</td></tr><tr><td>Sicilia</td><td>15,846</td></tr><tr><td>Sardegna</td><td>15,029</td></tr></tbody></table></div>
 <ul><li><strong>价格远低于上限</strong>：加权均价约为上限的 35%，说明竞争激烈；但不能把首轮价格当成后续拍卖的必然结果。</li><li><strong>南部和岛屿为主</strong>：中标容量集中在南部/岛屿，符合“可再生富集 + 外送受限”的系统需求。</li><li><strong>市场集中度高</strong>：Enel 约占一半，Eni 等也中标；单一运营商集中度是后续拍卖规则讨论的焦点。</li><li><strong>项目退出</strong>：ACL SPV 2（5 MW/32 MWh）退出，说明中标后仍可能因许可/并网/融资问题无法交付。</li></ul>
 <h3 id="s30">5.3 第二轮（2026-11-24）</h3>
-<div class="table-wrap"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>采购容量</td><td>16 GWh</td></tr><tr><td>交付年</td><td>2029</td></tr><tr><td>拍卖时间</td><td>2026-11-24 10:00</td></tr><tr><td>申请窗口</td><td>2026-07-07 至 2026-07-27 16:00</td></tr><tr><td>资格文件</td><td>2026-09-10 前提交</td></tr><tr><td>拍卖前担保</td><td>2026 年 10 月中（约 10-20）</td></tr><tr><td>结果</td><td>截至 2026-11-10 尚未公布</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>采购容量</td><td>16 GWh</td></tr><tr><td>交付年</td><td>2029</td></tr><tr><td>拍卖时间</td><td>2026-11-24 10:00</td></tr><tr><td>申请窗口</td><td>2026-07-07 至 2026-07-27 16:00</td></tr><tr><td>资格文件</td><td>2026-09-10 前提交</td></tr><tr><td>拍卖前担保</td><td>2026 年 10 月中（约 10-20）</td></tr><tr><td>结果</td><td>截至 2026-11-10 尚未公布</td></tr></tbody></table></div>
 <ul><li><strong>规模扩大</strong>：从 10 GWh 增至 16 GWh，交付年推迟到 2029；Terna/MASE 可能根据容量市场与项目进度微调规模（B）。</li><li><strong>竞争仍激烈</strong>：据报道，处于高级许可阶段的项目超过 32 GWh，对 16 GWh 需求形成压力（B）。</li><li><strong>价格不确定</strong>：首轮低价可能压低第二轮报价，也可能因成本/并网上升而反弹；不能线性外推。</li><li><strong>对已中标项目的影响</strong>：第二轮价格会成为第一轮项目的市场参照，但不改变已签 15 年合同。</li></ul>
 <h3 id="s31">5.4 参与门槛与义务</h3>
 <ul><li><strong>新建项目</strong>：项目要在拍卖前具备可开工、可并网、可融资的条件；具体资格以 Terna 拍卖规则为准。</li><li><strong>担保</strong>：提交拍卖前担保；中标后还要提供履约担保，未履约会被没收/罚款。</li><li><strong>惩罚</strong>：延期/未交付的罚款按规则计算，有资料称与最高溢价挂钩（B）；具体条款以合同为准。</li><li><strong>年度费用</strong>：交付期可能收取年度费用；是否退还/抵扣以规则为准。</li><li><strong>可用性义务</strong>：中标容量要按 Terna 调度要求提供；不能把全部容量用于纯套利而忽略合同义务。</li><li><strong>容量可用于第三方</strong>：Terna 将容量用于可再生负荷转移；项目要配合调度和计量。</li></ul>
@@ -202,19 +209,19 @@
 <hr>
 <h2 id="s33">6. 容量市场与其他灵活性机制</h2>
 <h3 id="s34">6.1 容量市场</h3>
-<div class="table-wrap"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>运营机构</td><td>Terna</td></tr><tr><td>法律基础</td><td>DM 2019-06-28；ARERA 420/2017/R/eel（B）</td></tr><tr><td>产品</td><td>可用容量（年度/多年）</td></tr><tr><td>参与者</td><td>发电、储能、需求侧、互联线</td></tr><tr><td>定价</td><td>竞争性拍卖</td></tr><tr><td>储能资格</td><td>可参与；按技术/时长折算</td></tr><tr><td>交付年</td><td>按拍卖公告</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>运营机构</td><td>Terna</td></tr><tr><td>法律基础</td><td>DM 2019-06-28；ARERA 420/2017/R/eel（B）</td></tr><tr><td>产品</td><td>可用容量（年度/多年）</td></tr><tr><td>参与者</td><td>发电、储能、需求侧、互联线</td></tr><tr><td>定价</td><td>竞争性拍卖</td></tr><tr><td>储能资格</td><td>可参与；按技术/时长折算</td></tr><tr><td>交付年</td><td>按拍卖公告</td></tr></tbody></table></div>
 <ul><li><strong>容量市场买“可用性”</strong>：中标容量要在系统需要时可用；与 MACSE 的“储能容量租用”不同。</li><li><strong>储能折算</strong>：2028 交付年 4 小时电池的容量折算系数上限约 54%（B，按 Terna 规则）；具体系数随时长和技术变化。</li><li><strong>拍卖结果要单独核对</strong>：2026 年容量市场招标结果未见公开确认，本文不引用具体价格；以 Terna 公布为准。</li><li><strong>与 MACSE 叠加</strong>：同一项目可以同时参与容量市场和 MACSE，但可用性义务、调度优先级和合同条款要协调。</li></ul>
 <h3 id="s35">6.2 MSD/辅助服务</h3>
 <ul><li><strong>Terna 采购</strong>：调频、备用、阻塞管理、电压支撑等；BSP 按报价参与。</li><li><strong>储能优势</strong>：快速响应、双向调节；但要注意 SOC、循环寿命和合同可用性。</li><li><strong>价格波动</strong>：辅助服务价格随系统需求、可再生渗透和竞争变化；不能按当前价格做长期假设。</li><li><strong>资格</strong>：技术测试、计量、通信、调度指令执行能力；具体以 Terna 规则为准。</li></ul>
 <h3 id="s36">6.3 需求响应与聚合</h3>
 <ul><li><strong>需求侧资源</strong>：工商业负荷、EV、热泵等可以通过聚合商参与 MSD/MB 或容量市场。</li><li><strong>计量与基线</strong>：需求响应需要可靠的基线和计量验证；规则比发电侧复杂。</li><li><strong>与储能的关系</strong>：储能可以作为聚合资源的一部分，但合同和调度要区分“储能”和“负荷削减”。</li><li><strong>本文不展开</strong>：意大利需求响应的具体产品/门槛以 Terna/ARERA 最新规则为准。</li></ul>
 <h3 id="s37">6.4 收益堆叠</h3>
-<div class="table-wrap"><table><thead><tr><th>收入线</th><th>驱动因素</th><th>主要风险</th></tr></thead><tbody><tr><td>MACSE</td><td>中标价、可用性</td><td>报价竞争、履约罚款</td></tr><tr><td>容量市场</td><td>折算系数、拍卖价</td><td>履约义务、价格波动</td></tr><tr><td>能量套利</td><td>分区价差、时段价差</td><td>价差收窄、预测误差</td></tr><tr><td>MSD/MB</td><td>系统需求、报价</td><td>竞争、调用不确定</td></tr><tr><td>可再生 PPA</td><td>绿电需求、合同条款</td><td>基差、信用风险</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>收入线</th><th>驱动因素</th><th>主要风险</th></tr></thead><tbody><tr><td>MACSE</td><td>中标价、可用性</td><td>报价竞争、履约罚款</td></tr><tr><td>容量市场</td><td>折算系数、拍卖价</td><td>履约义务、价格波动</td></tr><tr><td>能量套利</td><td>分区价差、时段价差</td><td>价差收窄、预测误差</td></tr><tr><td>MSD/MB</td><td>系统需求、报价</td><td>竞争、调用不确定</td></tr><tr><td>可再生 PPA</td><td>绿电需求、合同条款</td><td>基差、信用风险</td></tr></tbody></table></div>
 <ul><li><strong>按“功率×能量×时间”拆</strong>：MACSE 按 MWh 付钱，容量市场按可用容量，能量市场按 MWh 成交；三者口径不同。</li><li><strong>不要重复计算同一容量</strong>：同一 MW 不能同时满额参与所有市场；要做联合优化。</li></ul>
 <hr>
 <h2 id="s38">7. 可再生支持与并网</h2>
 <h3 id="s39">7.1 FER X</h3>
-<div class="table-wrap"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>法令</td><td>DM 194/2026</td></tr><tr><td>生效</td><td>2026-08-07</td></tr><tr><td>规模</td><td>37.15 GW，至 2030-12-31</td></tr><tr><td>机制</td><td>20 年双向差价合约（two-way CfD）</td></tr><tr><td>光伏配额</td><td>10 GW</td></tr><tr><td>光伏参考价</td><td>€80/MWh；区间 €65–95/MWh</td></tr><tr><td>额外调整</td><td>石棉屋顶 +€27/MWh；漂浮光伏 +€10/MWh</td></tr><tr><td>门槛</td><td>1 MW 以下可直接申请；1 MW 以上须参加 GSE 招标</td></tr><tr><td>投运期限</td><td>中标后 36 个月</td></tr><tr><td>供应链</td><td>每年至少 30% 的光伏/风电招标容量用于符合 NZIA 标准的项目</td></tr><tr><td>资金</td><td>欧盟批准约 €230 亿</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>法令</td><td>DM 194/2026</td></tr><tr><td>生效</td><td>2026-08-07</td></tr><tr><td>规模</td><td>37.15 GW，至 2030-12-31</td></tr><tr><td>机制</td><td>20 年双向差价合约（two-way CfD）</td></tr><tr><td>光伏配额</td><td>10 GW</td></tr><tr><td>光伏参考价</td><td>€80/MWh；区间 €65–95/MWh</td></tr><tr><td>额外调整</td><td>石棉屋顶 +€27/MWh；漂浮光伏 +€10/MWh</td></tr><tr><td>门槛</td><td>1 MW 以下可直接申请；1 MW 以上须参加 GSE 招标</td></tr><tr><td>投运期限</td><td>中标后 36 个月</td></tr><tr><td>供应链</td><td>每年至少 30% 的光伏/风电招标容量用于符合 NZIA 标准的项目</td></tr><tr><td>资金</td><td>欧盟批准约 €230 亿</td></tr></tbody></table></div>
 <ul><li><strong>FER X 是“双向 CfD”</strong>：市场价格高于执行价时项目返还，低于时补足；降低价格风险，但不保证电量。</li><li><strong>NZIA 条款</strong>：NZIA 专项招标对 &gt;1 MW 光伏的组件、电池片、逆变器来源设限（B，按招标条款）；中国供应商要提前判断可参与的范围。</li><li><strong>延期惩罚</strong>：延期会按规则降低执行价，超过期限可能取消资格/没收担保；投决要留足许可和并网时间。</li><li><strong>与 MACSE 的区别</strong>：FER X 支持发电，MACSE 支持储能；两者可以出现在同一项目组合，但合同和标的独立。</li></ul>
 <h3 id="s40">7.2 过渡拍卖</h3>
 <ul><li><strong>首轮过渡拍卖</strong>：2025-12 收官，光伏约 7.698 GW，平均 €56.825/MWh；风电约 940 MW，平均 €72.851/MWh（B）。</li><li><strong>第二轮光伏</strong>：约 1.1 GW，首次执行 NZIA 供应链标准，平均 €66.37/MWh（B）。</li><li><strong>价格信号</strong>：光伏中标价低于 FER X 参考价，说明竞争激烈；风电价格更高，反映成本和资源差异。</li><li><strong>对储能的意义</strong>：光伏/风电新增会扩大午间低价和晚峰价差，提升储能套利价值；但并网和弃电也会增加。</li></ul>
@@ -225,17 +232,17 @@
 <hr>
 <h2 id="s43">8. 储能市场与项目经济</h2>
 <h3 id="s44">8.1 装机</h3>
-<div class="table-wrap"><table><thead><tr><th>指标</th><th>数值</th><th>时点/口径</th><th>级别</th></tr></thead><tbody><tr><td>储能累计（含分布式）</td><td>7.961 GW / 19.3 GWh</td><td>2026-06，ANIE</td><td>B</td></tr><tr><td>公用事业级储能</td><td>约 1.9 GW / 7.3 GWh</td><td>2025 年底，媒体口径</td><td>B</td></tr><tr><td>2026 年上半年新增</td><td>593 MW / 1,349 MWh</td><td>2026H1</td><td>B</td></tr><tr><td>PNIEC 2030 目标</td><td>22.5 GW</td><td>官方分项：抽蓄 8 GW + 分布式 4 GW + 独立 11 GW；分项加总约 23 GW，主目标按 22.5 GW</td><td>B</td></tr><tr><td>Terna 2030 需求（基准）</td><td>104 GWh</td><td>2026 报告</td><td>B</td></tr><tr><td>Terna 2030 需求（保守）</td><td>42±2 GWh</td><td>仅保供电充裕性</td><td>B</td></tr><tr><td>Terna 2035 需求</td><td>134 GWh</td><td>基准情景</td><td>B</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>数值</th><th>时点/口径</th><th>级别</th></tr></thead><tbody><tr><td>储能累计（含分布式）</td><td>7.961 GW / 19.3 GWh</td><td>2026-06，ANIE</td><td>B</td></tr><tr><td>公用事业级储能</td><td>约 1.9 GW / 7.3 GWh</td><td>2025 年底，媒体口径</td><td>B</td></tr><tr><td>2026 年上半年新增</td><td>593 MW / 1,349 MWh</td><td>2026H1</td><td>B</td></tr><tr><td>PNIEC 2030 目标</td><td>22.5 GW</td><td>官方分项：抽蓄 8 GW + 分布式 4 GW + 独立 11 GW；分项加总约 23 GW，主目标按 22.5 GW</td><td>B</td></tr><tr><td>Terna 2030 需求（基准）</td><td>104 GWh</td><td>2026 报告</td><td>B</td></tr><tr><td>Terna 2030 需求（保守）</td><td>42±2 GWh</td><td>仅保供电充裕性</td><td>B</td></tr><tr><td>Terna 2035 需求</td><td>134 GWh</td><td>基准情景</td><td>B</td></tr></tbody></table></div>
 <ul><li><strong>含分布式与不含分布式差异很大</strong>：意大利户储/工商储基数大，7.961 GW/19.3 GWh 是含分布式的口径；公用事业级约 1.9 GW/7.3 GWh。</li><li><strong>MACSE 是集中式储能的主推力</strong>：首轮 10 GWh、次轮 16 GWh，交付 2028/2029；后续拍卖规模决定增长节奏。</li><li><strong>需求预测差异大</strong>：Terna 基准 104 GWh 与保守 42±2 GWh 的差距，反映消纳、成本、价格和政策假设不同；投决要用多情景。</li></ul>
 <h3 id="s45">8.2 收益堆叠</h3>
-<div class="table-wrap"><table><thead><tr><th>收入线</th><th>适用对象</th><th>备注</th></tr></thead><tbody><tr><td>MACSE</td><td>新建集中式储能</td><td>15 年容量溢价；pay-as-bid</td></tr><tr><td>容量市场</td><td>发电/储能/需求侧</td><td>可用容量；折算系数</td></tr><tr><td>能量套利</td><td>所有储能</td><td>分区价差 + 时段价差</td></tr><tr><td>MSD/MB</td><td>BSP</td><td>调频/备用/阻塞</td></tr><tr><td>工商业需量管理</td><td>工商储</td><td>需量电费 + 分时价差</td></tr><tr><td>税务/补贴</td><td>分布式/工商储</td><td>具体政策以当年法规为准</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>收入线</th><th>适用对象</th><th>备注</th></tr></thead><tbody><tr><td>MACSE</td><td>新建集中式储能</td><td>15 年容量溢价；pay-as-bid</td></tr><tr><td>容量市场</td><td>发电/储能/需求侧</td><td>可用容量；折算系数</td></tr><tr><td>能量套利</td><td>所有储能</td><td>分区价差 + 时段价差</td></tr><tr><td>MSD/MB</td><td>BSP</td><td>调频/备用/阻塞</td></tr><tr><td>工商业需量管理</td><td>工商储</td><td>需量电费 + 分时价差</td></tr><tr><td>税务/补贴</td><td>分布式/工商储</td><td>具体政策以当年法规为准</td></tr></tbody></table></div>
 <ul><li><strong>MACSE 不是“保底收益”</strong>：它付容量溢价，但项目仍要承担并网、许可、运维和可用性风险。</li><li><strong>套利空间看分区</strong>：南部午间光伏低价、晚峰高价；北部价差更多受进口和负荷影响。</li><li><strong>辅助服务价格会变</strong>：储能渗透率上升后，MSD/MB 价格可能下降；要用衰减情景。</li></ul>
 <h3 id="s46">8.3 项目风险</h3>
-<div class="table-wrap"><table><thead><tr><th>风险</th><th>说明</th><th>缓释</th></tr></thead><tbody><tr><td>拍卖价格</td><td>pay-as-bid，竞争激烈</td><td>成本优化、合理报价</td></tr><tr><td>并网/许可</td><td>南部/岛屿排队、加固</td><td>早锁定连接、留足时间</td></tr><tr><td>供应链</td><td>NZIA 对光伏限制；电池来源</td><td>提前做合规与双供应</td></tr><tr><td>履约</td><td>可用性、延期罚款</td><td>保守排期、担保安排</td></tr><tr><td>价格</td><td>分区价差、负价、辅助服务饱和</td><td>多市场堆叠、对冲</td></tr><tr><td>汇率/利率</td><td>欧元融资、设备进口</td><td>自然对冲/金融对冲</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>风险</th><th>说明</th><th>缓释</th></tr></thead><tbody><tr><td>拍卖价格</td><td>pay-as-bid，竞争激烈</td><td>成本优化、合理报价</td></tr><tr><td>并网/许可</td><td>南部/岛屿排队、加固</td><td>早锁定连接、留足时间</td></tr><tr><td>供应链</td><td>NZIA 对光伏限制；电池来源</td><td>提前做合规与双供应</td></tr><tr><td>履约</td><td>可用性、延期罚款</td><td>保守排期、担保安排</td></tr><tr><td>价格</td><td>分区价差、负价、辅助服务饱和</td><td>多市场堆叠、对冲</td></tr><tr><td>汇率/利率</td><td>欧元融资、设备进口</td><td>自然对冲/金融对冲</td></tr></tbody></table></div>
 <hr>
 <h2 id="s47">9. 中国主体进入路径</h2>
 <h3 id="s48">9.1 主体与注册</h3>
-<div class="table-wrap"><table><thead><tr><th>步骤</th><th>内容</th><th>备注</th></tr></thead><tbody><tr><td>1. 设立主体</td><td>意大利/欧盟公司或分支机构</td><td>税务、银行、合同</td></tr><tr><td>2. GME 会员</td><td>申请会员、缴纳担保</td><td>参与 MGP/MI/MSD</td></tr><tr><td>3. Terna 注册</td><td>BRP/BSP 注册、调度合同</td><td>参与 MSD/MB/容量市场</td></tr><tr><td>4. 并网协议</td><td>Terna/DSO 连接</td><td>TICA、加固、计量</td></tr><tr><td>5. MACSE 资格</td><td>新建项目、许可、担保</td><td>拍卖前完成</td></tr><tr><td>6. REMIT 报送</td><td>MERIT/ARERA/GME 规则</td><td>交易与基本面信息</td></tr><tr><td>7. FER X（如做发电）</td><td>GSE 招标、NZIA 合规</td><td>光伏/风电</td></tr><tr><td>8. 运营系统</td><td>EMS、计量、调度通信</td><td>可用性与结算</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>步骤</th><th>内容</th><th>备注</th></tr></thead><tbody><tr><td>1. 设立主体</td><td>意大利/欧盟公司或分支机构</td><td>税务、银行、合同</td></tr><tr><td>2. GME 会员</td><td>申请会员、缴纳担保</td><td>参与 MGP/MI/MSD</td></tr><tr><td>3. Terna 注册</td><td>BRP/BSP 注册、调度合同</td><td>参与 MSD/MB/容量市场</td></tr><tr><td>4. 并网协议</td><td>Terna/DSO 连接</td><td>TICA、加固、计量</td></tr><tr><td>5. MACSE 资格</td><td>新建项目、许可、担保</td><td>拍卖前完成</td></tr><tr><td>6. REMIT 报送</td><td>MERIT/ARERA/GME 规则</td><td>交易与基本面信息</td></tr><tr><td>7. FER X（如做发电）</td><td>GSE 招标、NZIA 合规</td><td>光伏/风电</td></tr><tr><td>8. 运营系统</td><td>EMS、计量、调度通信</td><td>可用性与结算</td></tr></tbody></table></div>
 <ul><li><strong>先定商业模式</strong>：独立储能、共址储能、工商储、发电+储能、还是设备供应；不同模式的准入和合规不同。</li><li><strong>GME 与 Terna 是两道门</strong>：能量市场会员和调度服务注册不是一回事；做储能通常两者都要。</li><li><strong>MACSE 只对新建</strong>：收购存量项目不能直接拿 MACSE；要看清项目是否已中标/是否新造。</li></ul>
 <h3 id="s49">9.2 数据与系统</h3>
 <ul><li><strong>交易系统</strong>：对接 GME 的 MGP/MI/MSD 平台，支持 15 分钟 MTU、分区价格和担保管理。</li><li><strong>调度系统</strong>：对接 Terna 的调度指令，支持 SOC、可用容量、响应时间；BSP 要满足通信/计量要求。</li><li><strong>计量</strong>：关口表、发电表、储能表；数据要满足 GME/Terna 结算规则。</li><li><strong>REMIT</strong>：交易报送、内幕信息、市场滥用监控；跨境主体要明确报送责任。</li></ul>
@@ -250,7 +257,7 @@
 <ol><li><strong>把 PUN 当成项目结算价</strong>：PUN 是参考价，项目按分区价结算；南部/岛屿基差可能很大。</li><li><strong>把 MACSE 的单位搞错</strong>：是 €/MWh·年（按储能能量），不是 €/MW·年；1 GWh 项目的收入量级完全不同。</li><li><strong>把首轮 €12,959 当成后续必然价格</strong>：pay-as-bid + 4 倍超额认购，首轮价格是竞争结果，不可线性外推。</li><li><strong>把 MACSE 当成全部收入</strong>：它只是容量溢价；能量/辅助服务/容量市场要另外建模。</li><li><strong>忽视担保和罚款</strong>：拍卖前担保、履约担保、延期罚款都会影响现金流。</li><li><strong>以为存量/共址项目也能拿 MACSE</strong>：仅限新建；共址/改造资格要以规则为准（未核实项）。</li><li><strong>低估并网和许可</strong>：南部/岛屿排队、加固、地方反对；并网申请量远超可建规模。</li><li><strong>忽视 15 分钟 MTU</strong>：预测、报价、结算都更细；旧的小时模型会偏差。</li><li><strong>忽视 FER X 的 NZIA 条款</strong>：&gt;1 MW 光伏的专项招标对供应链设限；中国组件/逆变器不是无条件可参与。</li><li><strong>把容量市场和 MACSE 混为一谈</strong>：一个买可用容量，一个租储能容量；义务、结算、期限都不同。</li></ol>
 <hr>
 <h2 id="s54">11. 中意对照</h2>
-<div class="table-wrap"><table><thead><tr><th>维度</th><th>意大利</th><th>中国</th></tr></thead><tbody><tr><td>市场层级</td><td>全国市场 + 七个报价区</td><td>省/区域 + 省间</td></tr><tr><td>日前</td><td>MGP，SDAC 耦合，15 分钟 MTU</td><td>现货试点，分省规则</td></tr><tr><td>日内</td><td>MI，连续/分场次</td><td>滚动撮合/挂牌</td></tr><tr><td>平衡</td><td>MSD/MB，Terna 采购</td><td>调度 + 两个细则</td></tr><tr><td>容量</td><td>容量市场 + MACSE</td><td>容量电价/补偿 + 租赁</td></tr><tr><td>储能支持</td><td>15 年 MACSE 容量溢价</td><td>容量租赁/补偿/现货</td></tr><tr><td>可再生支持</td><td>FER X 双向 CfD</td><td>机制电价/补贴</td></tr><tr><td>分区</td><td>七个报价区</td><td>省级/区域价</td></tr><tr><td>结算</td><td>GME/Terna + 担保</td><td>电网/交易中心</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>意大利</th><th>中国</th></tr></thead><tbody><tr><td>市场层级</td><td>全国市场 + 七个报价区</td><td>省/区域 + 省间</td></tr><tr><td>日前</td><td>MGP，SDAC 耦合，15 分钟 MTU</td><td>现货试点，分省规则</td></tr><tr><td>日内</td><td>MI，连续/分场次</td><td>滚动撮合/挂牌</td></tr><tr><td>平衡</td><td>MSD/MB，Terna 采购</td><td>调度 + 两个细则</td></tr><tr><td>容量</td><td>容量市场 + MACSE</td><td>容量电价/补偿 + 租赁</td></tr><tr><td>储能支持</td><td>15 年 MACSE 容量溢价</td><td>容量租赁/补偿/现货</td></tr><tr><td>可再生支持</td><td>FER X 双向 CfD</td><td>机制电价/补贴</td></tr><tr><td>分区</td><td>七个报价区</td><td>省级/区域价</td></tr><tr><td>结算</td><td>GME/Terna + 担保</td><td>电网/交易中心</td></tr></tbody></table></div>
 <ul><li><strong>相同点</strong>：都在用“能量 + 容量 + 辅助服务”组合支持储能；都在推进现货和新能源消纳。</li><li><strong>不同点</strong>：意大利是分区出清 + 监管型长周期拍卖；中国是省级市场 + 行政/市场化容量机制。</li><li><strong>不要直接套算例</strong>：价格、费用、担保、合同期限都不同；跨境项目要按当地规则重建模型。</li></ul>
 <hr>
 <h2 id="s55">12. 算例（D 级：方法演示，不是投资建议）</h2>
@@ -280,30 +287,46 @@ CfD 补足 = (80 - 60) × 150,000 = €3.0m</code></pre>
 <hr>
 <h2 id="s61">14. 官方来源与口径</h2>
 <aside class="note"><p>以下链接在 2026-11 做过可达性检查；规则/数据以官网最新版本为准。部分意大利官网对自动化访问有拦截，表中注明。</p></aside>
-<div class="table-wrap"><table><thead><tr><th>来源</th><th>用途</th><th>级别</th><th>链接状态</th></tr></thead><tbody><tr><td>Terna · 官网</td><td>调度、容量市场、MACSE</td><td>A</td><td><a href="https://www.terna.it/" target="_blank" rel="noopener">https://www.terna.it/</a></td></tr><tr><td>GME · 官网</td><td>MGP/MI/MSD/MTE 市场规则与数据</td><td>A</td><td><code>gme.it</code>（自动访问失败）</td></tr><tr><td>ARERA · 官网</td><td>监管决定、网络收费、MACSE 标准</td><td>A</td><td><a href="https://www.arera.it/" target="_blank" rel="noopener">https://www.arera.it/</a></td></tr><tr><td>MASE · 官网</td><td>能源政策、FER X、MACSE 需求</td><td>A</td><td><code>mase.gov.it</code>（自动访问返回 403）</td></tr><tr><td>GSE · 官网</td><td>FER X 招标与补贴</td><td>A</td><td><code>gse.it</code>（自动访问返回 403）</td></tr><tr><td>Acquirente Unico · 官网</td><td>保护性市场单一买方</td><td>A</td><td><code>acquirenteunico.it</code>（自动访问失败）</td></tr><tr><td>欧盟竞争总司 · SA.104106</td><td>MACSE 国家援助批准</td><td>A</td><td><a href="https://competition-cases.ec.europa.eu/cases/SA.104106" target="_blank" rel="noopener">https://competition-cases.ec.europa.eu/cases/SA.104106</a></td></tr><tr><td>ARERA · 247/2023/R/eel</td><td>MACSE 监管标准</td><td>A</td><td><a href="https://www.arera.it/it/docs/23/247-23.htm" target="_blank" rel="noopener">https://www.arera.it/it/docs/23/247-23.htm</a></td></tr><tr><td>Review Energy · 第二轮拍卖报道</td><td>2026-11-24、16 GWh</td><td>B</td><td><a href="https://www.review-energy.com/almacenamiento/italy-s-macse-mechanism-takes-next-step-as-terna-confirms-24-november-2026-auction-date" target="_blank" rel="noopener">https://www.review-energy.com/almacenamiento/italy-s-macse-mechanism-takes-next-step-as-terna-confirms-24-november-2026-auction-date</a></td></tr><tr><td>Argus · MACSE/CM Q&amp;A</td><td>第二轮与容量市场关系</td><td>B</td><td><code>argusmedia.com</code>（自动访问返回 403）</td></tr><tr><td>Trade.gov · Italy Energy Guide</td><td>PNIEC 22.5 GW 结构</td><td>B</td><td><a href="https://www.trade.gov/country-commercial-guides/italy-natural-gas-renewable-energy" target="_blank" rel="noopener">https://www.trade.gov/country-commercial-guides/italy-natural-gas-renewable-energy</a></td></tr><tr><td>Solarbe · FER X 报道</td><td>DM 194/2026、配额、NZIA</td><td>B</td><td><code>m.solarbe.com</code>（自动访问失败）</td></tr><tr><td>Solarzoom · FER X 解读</td><td>价格区间、额外补贴、期限</td><td>B</td><td><a href="http://m.solarzoom.com/article-203313-1.html" target="_blank" rel="noopener">http://m.solarzoom.com/article-203313-1.html</a></td></tr><tr><td>CNESA · 意大利储能数据</td><td>装机、需求、拍卖</td><td>B</td><td><a href="https://www.cnesa.org/information/detail/?column_id=2&amp;id=8593" target="_blank" rel="noopener">https://www.cnesa.org/information/detail/?column_id=2&amp;id=8593</a></td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>来源</th><th>用途</th><th>级别</th><th>链接状态</th></tr></thead><tbody><tr><td>Terna · 官网</td><td>调度、容量市场、MACSE</td><td>A</td><td><a href="https://www.terna.it/" target="_blank" rel="noopener">https://www.terna.it/</a></td></tr><tr><td>GME · 官网</td><td>MGP/MI/MSD/MTE 市场规则与数据</td><td>A</td><td><code>gme.it</code>（自动访问失败）</td></tr><tr><td>ARERA · 官网</td><td>监管决定、网络收费、MACSE 标准</td><td>A</td><td><a href="https://www.arera.it/" target="_blank" rel="noopener">https://www.arera.it/</a></td></tr><tr><td>MASE · 官网</td><td>能源政策、FER X、MACSE 需求</td><td>A</td><td><code>mase.gov.it</code>（自动访问返回 403）</td></tr><tr><td>GSE · 官网</td><td>FER X 招标与补贴</td><td>A</td><td><code>gse.it</code>（自动访问返回 403）</td></tr><tr><td>Acquirente Unico · 官网</td><td>保护性市场单一买方</td><td>A</td><td><code>acquirenteunico.it</code>（自动访问失败）</td></tr><tr><td>欧盟竞争总司 · SA.104106</td><td>MACSE 国家援助批准</td><td>A</td><td><a href="https://competition-cases.ec.europa.eu/cases/SA.104106" target="_blank" rel="noopener">https://competition-cases.ec.europa.eu/cases/SA.104106</a></td></tr><tr><td>ARERA · 247/2023/R/eel</td><td>MACSE 监管标准</td><td>A</td><td><a href="https://www.arera.it/it/docs/23/247-23.htm" target="_blank" rel="noopener">https://www.arera.it/it/docs/23/247-23.htm</a></td></tr><tr><td>Review Energy · 第二轮拍卖报道</td><td>2026-11-24、16 GWh</td><td>B</td><td><a href="https://www.review-energy.com/almacenamiento/italy-s-macse-mechanism-takes-next-step-as-terna-confirms-24-november-2026-auction-date" target="_blank" rel="noopener">https://www.review-energy.com/almacenamiento/italy-s-macse-mechanism-takes-next-step-as-terna-confirms-24-november-2026-auction-date</a></td></tr><tr><td>Argus · MACSE/CM Q&amp;A</td><td>第二轮与容量市场关系</td><td>B</td><td><code>argusmedia.com</code>（自动访问返回 403）</td></tr><tr><td>Trade.gov · Italy Energy Guide</td><td>PNIEC 22.5 GW 结构</td><td>B</td><td><a href="https://www.trade.gov/country-commercial-guides/italy-natural-gas-renewable-energy" target="_blank" rel="noopener">https://www.trade.gov/country-commercial-guides/italy-natural-gas-renewable-energy</a></td></tr><tr><td>Solarbe · FER X 报道</td><td>DM 194/2026、配额、NZIA</td><td>B</td><td><code>m.solarbe.com</code>（自动访问失败）</td></tr><tr><td>Solarzoom · FER X 解读</td><td>价格区间、额外补贴、期限</td><td>B</td><td><a href="http://m.solarzoom.com/article-203313-1.html" target="_blank" rel="noopener">http://m.solarzoom.com/article-203313-1.html</a></td></tr><tr><td>CNESA · 意大利储能数据</td><td>装机、需求、拍卖</td><td>B</td><td><a href="https://www.cnesa.org/information/detail/?column_id=2&amp;id=8593" target="_blank" rel="noopener">https://www.cnesa.org/information/detail/?column_id=2&amp;id=8593</a></td></tr></tbody></table></div>
 <h3 id="s62">口径提醒</h3>
 <ul><li><strong>时间</strong>：意大利用 CET/CEST；MGP 关闸 12:00 D-1；15 分钟 MTU 从 2025-10-01 交付时段开始。</li><li><strong>价格</strong>：MGP/MI 是 €/MWh；MACSE 是 €/MWh·年（按储能能量）；容量市场是 €/MW·年或拍卖规则口径。三者不能混用。</li><li><strong>分区</strong>：七个本土报价区 + 跨境虚拟区；PUN 是参考价，不是结算价。</li><li><strong>MACSE</strong>：首轮 10 GWh、均价 €12,959/MWh·年；次轮 16 GWh、2026-11-24；仅限新建；pay-as-bid；15 年电池合同。</li><li><strong>MACSE 资格</strong>：共址/存量/抽蓄的资格要以拍卖规则为准；本文不给定论。</li><li><strong>FER X</strong>：DM 194/2026，2026-08-07 生效，37.15 GW；光伏 10 GW，参考 €80/MWh；NZIA 专项招标对 &gt;1 MW 光伏供应链设限。</li><li><strong>容量市场</strong>：2026 年结果未公开确认，本文不引用具体价格；储能折算系数以 Terna 规则为准。</li><li><strong>装机口径</strong>：7.961 GW/19.3 GWh 含分布式；公用事业级约 1.9 GW/7.3 GWh（媒体口径）。引用时必须写口径。</li><li><strong>链接可达性</strong>：GME/MASE/GSE/Acquirente Unico 对自动化访问可能拦截；打不开时用浏览器或 Terna/ARERA 镜像。</li></ul>
 <hr>
 <h2 id="s63">速查</h2>
-<div class="table-wrap"><table><thead><tr><th>问题</th><th>先看</th><th>关键结论</th><th>依据</th></tr></thead><tbody><tr><td>意大利有几个报价区</td><td>§0.3</td><td>7 个本土区 + 跨境虚拟区</td><td>GME/Terna</td></tr><tr><td>日前几点关闸</td><td>§2.1</td><td>12:00 D-1（CET）</td><td>GME</td></tr><tr><td>日前怎么出清</td><td>§2.1</td><td>SDAC 耦合、分区价、15 分钟 MTU</td><td>GME/SDAC</td></tr><tr><td>PUN 是什么</td><td>§3.3</td><td>全国参考价，不是结算价</td><td>GME</td></tr><tr><td>MSD 和 MB 有什么区别</td><td>§2.3/2.4</td><td>MSD 偏事前/计划，MB 偏实时；以 Terna 规则为准</td><td>Terna</td></tr><tr><td>MACSE 怎么付钱</td><td>§5</td><td>€/MWh·年，15 年，pay-as-bid</td><td>ARERA/Terna</td></tr><tr><td>首轮 MACSE 结果</td><td>§5.2</td><td>10 GWh；€12,959/MWh·年；2028 交付</td><td>Terna</td></tr><tr><td>第二轮什么时候</td><td>§5.3</td><td>2026-11-24；16 GWh；2029 交付</td><td>Terna</td></tr><tr><td>MACSE 价格上限</td><td>§5.1</td><td>€37,000/MWh·年（电池）</td><td>ARERA/Terna（B）</td></tr><tr><td>容量市场与 MACSE 能叠加吗</td><td>§6.4</td><td>可以，但义务/标的要分开</td><td>Terna</td></tr><tr><td>FER X 是什么</td><td>§7.1</td><td>20 年双向 CfD；37.15 GW；光伏 10 GW</td><td>DM 194/2026</td></tr><tr><td>光伏 NZIA 限制</td><td>§7.1</td><td>专项招标对 &gt;1 MW 光伏供应链设限</td><td>GSE 招标</td></tr><tr><td>储能装机多少</td><td>§8.1</td><td>含分布式 7.961 GW/19.3 GWh；公用事业级约 1.9 GW/7.3 GWh</td><td>ANIE/媒体（B）</td></tr><tr><td>中国主体怎么进</td><td>§9</td><td>主体 + GME + Terna + MACSE + REMIT</td><td>本文总结</td></tr><tr><td>最常见的坑</td><td>§10</td><td>PUN、单位、首轮价格、担保、并网、NZIA</td><td>本文总结</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>问题</th><th>先看</th><th>关键结论</th><th>依据</th></tr></thead><tbody><tr><td>意大利有几个报价区</td><td>§0.3</td><td>7 个本土区 + 跨境虚拟区</td><td>GME/Terna</td></tr><tr><td>日前几点关闸</td><td>§2.1</td><td>12:00 D-1（CET）</td><td>GME</td></tr><tr><td>日前怎么出清</td><td>§2.1</td><td>SDAC 耦合、分区价、15 分钟 MTU</td><td>GME/SDAC</td></tr><tr><td>PUN 是什么</td><td>§3.3</td><td>全国参考价，不是结算价</td><td>GME</td></tr><tr><td>MSD 和 MB 有什么区别</td><td>§2.3/2.4</td><td>MSD 偏事前/计划，MB 偏实时；以 Terna 规则为准</td><td>Terna</td></tr><tr><td>MACSE 怎么付钱</td><td>§5</td><td>€/MWh·年，15 年，pay-as-bid</td><td>ARERA/Terna</td></tr><tr><td>首轮 MACSE 结果</td><td>§5.2</td><td>10 GWh；€12,959/MWh·年；2028 交付</td><td>Terna</td></tr><tr><td>第二轮什么时候</td><td>§5.3</td><td>2026-11-24；16 GWh；2029 交付</td><td>Terna</td></tr><tr><td>MACSE 价格上限</td><td>§5.1</td><td>€37,000/MWh·年（电池）</td><td>ARERA/Terna（B）</td></tr><tr><td>容量市场与 MACSE 能叠加吗</td><td>§6.4</td><td>可以，但义务/标的要分开</td><td>Terna</td></tr><tr><td>FER X 是什么</td><td>§7.1</td><td>20 年双向 CfD；37.15 GW；光伏 10 GW</td><td>DM 194/2026</td></tr><tr><td>光伏 NZIA 限制</td><td>§7.1</td><td>专项招标对 &gt;1 MW 光伏供应链设限</td><td>GSE 招标</td></tr><tr><td>储能装机多少</td><td>§8.1</td><td>含分布式 7.961 GW/19.3 GWh；公用事业级约 1.9 GW/7.3 GWh</td><td>ANIE/媒体（B）</td></tr><tr><td>中国主体怎么进</td><td>§9</td><td>主体 + GME + Terna + MACSE + REMIT</td><td>本文总结</td></tr><tr><td>最常见的坑</td><td>§10</td><td>PUN、单位、首轮价格、担保、并网、NZIA</td><td>本文总结</td></tr></tbody></table></div>
 <hr>
 <h2 id="s64">与技能和其他笔记的分工</h2>
 <aside class="note"><p><strong>横向口径</strong>：把本市场的装机、储能存量/管线、年度均价、负价小时、捕获率、并网排队与降额因子与其余九市场对照，见<a href="海外市场同口径快照与投决日历-2026-11.html">《海外市场同口径快照与投决日历》</a> §1–§2；中国主体进入六道门槛见该文 §4，C 级数字复核入口见 §5。</p></aside>
-<div class="table-wrap"><table><thead><tr><th>主题</th><th>本文</th><th>电力交易技能</th><th>其他笔记</th></tr></thead><tbody><tr><td>意大利机构/法规</td><td>主责</td><td>概述</td><td>—</td></tr><tr><td>MGP/MI 交易</td><td>主责（机制）</td><td>策略/报价</td><td>量化报价笔记</td></tr><tr><td>MSD/MB</td><td>主责（规则）</td><td>策略/优化</td><td>储能笔记（海外业务）</td></tr><tr><td>报价区/PUN</td><td>主责（机制）</td><td>概述</td><td>电价笔记（国际比较）</td></tr><tr><td>MACSE</td><td>主责（机制）</td><td>概述</td><td>储能笔记（投决）</td></tr><tr><td>容量市场</td><td>主责（机制）</td><td>概述</td><td>储能笔记（投决）</td></tr><tr><td>FER X</td><td>主责（机制）</td><td>概述</td><td>新能源技能（项目收益）</td></tr><tr><td>并网/许可</td><td>主责（框架）</td><td>概述</td><td>新能源技能（并网）</td></tr><tr><td>中国主体进入</td><td>主责（路径）</td><td>概述</td><td>风险信用笔记（担保）</td></tr><tr><td>中国现货/省间</td><td>不展开</td><td>主责</td><td>省间笔记</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>主题</th><th>本文</th><th>电力交易技能</th><th>其他笔记</th></tr></thead><tbody><tr><td>意大利机构/法规</td><td>主责</td><td>概述</td><td>—</td></tr><tr><td>MGP/MI 交易</td><td>主责（机制）</td><td>策略/报价</td><td>量化报价笔记</td></tr><tr><td>MSD/MB</td><td>主责（规则）</td><td>策略/优化</td><td>储能笔记（海外业务）</td></tr><tr><td>报价区/PUN</td><td>主责（机制）</td><td>概述</td><td>电价笔记（国际比较）</td></tr><tr><td>MACSE</td><td>主责（机制）</td><td>概述</td><td>储能笔记（投决）</td></tr><tr><td>容量市场</td><td>主责（机制）</td><td>概述</td><td>储能笔记（投决）</td></tr><tr><td>FER X</td><td>主责（机制）</td><td>概述</td><td>新能源技能（项目收益）</td></tr><tr><td>并网/许可</td><td>主责（框架）</td><td>概述</td><td>新能源技能（并网）</td></tr><tr><td>中国主体进入</td><td>主责（路径）</td><td>概述</td><td>风险信用笔记（担保）</td></tr><tr><td>中国现货/省间</td><td>不展开</td><td>主责</td><td>省间笔记</td></tr></tbody></table></div>
 <ul><li><strong>本文是“意大利交易手册”</strong>：遇到“怎么参与 MGP、MACSE 怎么报价、容量市场怎么叠加、中国主体怎么落地”，先看这里。</li><li><strong>遇到“怎么报价、怎么对冲、怎么做量化”</strong>：回到电力交易技能和量化报价笔记。</li><li><strong>遇到“储能项目能不能投、LCOS 多少”</strong>：查储能投资技能（中国口径）与《海外储能业务》（海外口径）；意大利项目另按本文的 MACSE/容量市场口径建模。</li><li><strong>遇到“中国省间/省内规则”</strong>：查省间笔记和省级状态表；不要把意大利规则套到中国。</li></ul>
     </article>
 
-    <section class="related" aria-label="相关模块">
-      <h2>相关模块</h2>
-      <ul>
-        <li><a href="澳大利亚NEM电力市场-2026-11.html">澳大利亚 NEM 电力市场（2026 版）</a></li>
-        <li><a href="德国电力市场-2026-11.html">德国电力市场（2026 版）</a></li>
-        <li><a href="英国电力市场-2026-11.html">英国电力市场（2026 版）</a></li>
-        <li><a href="储能投资与运营-2026-11.html">储能投资与运营</a></li>
-        <li><a href="新能源项目开发与并网-2026-11.html">新能源项目开发与并网</a></li>
-        <li><a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算（2026 版）</a></li>
-      </ul>
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>6</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="澳大利亚NEM电力市场-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>澳大利亚 NEM 电力市场（2026 版）</b>
+          <span>五个区域、5 分钟出清与结算、FCAS、价格上限与 CPT、MLF/IRLF、CfD/CIS 与储能进入路径。</span>
+        </a>
+        <a class="related-card" href="德国电力市场-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>德国电力市场（2026 版）</b>
+          <span>DE-LU 报价区、EPEX 日前/日内 15 分钟、平衡市场、再调度 2.0、EEG 负价规则与容量机制。</span>
+        </a>
+        <a class="related-card" href="英国电力市场-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>英国电力市场（2026 版）</b>
+          <span>GB 单一市场、EPEX 日前与半小时拍卖、平衡机制、容量市场、CfD/LDES 与储能进入路径。</span>
+        </a>
+        <a class="related-card" href="储能投资与运营-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>储能投资与运营</b>
+          <span>114/1656/411/1583 文号、容量电价时长折算、投决算例、收入堆叠、退化质保与敏感性。</span>
+        </a>
+      </div>
+      <p class="related-rest"><b>更多关联</b><a href="新能源项目开发与并网-2026-11.html">新能源项目开发与并网</a><a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算（2026 版）</a></p>
     </section>
+
 
     <nav class="pager" aria-label="上下篇">
           <a class="prev" href="英国电力市场-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">英国电力市场（2026 版）</span></a>
@@ -312,7 +335,11 @@ CfD 补足 = (80 - 60) × 150,000 = €3.0m</code></pre>
 
     <footer class="doc-foot">
       <div class="lic">本页由 <a href="../意大利电力市场-2026-11.md">knowledge/意大利电力市场-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
-      <div><a href="../index.html">返回知识库总览 →</a></div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
     </footer>
   </main>
 
@@ -383,7 +410,7 @@ CfD 补足 = (80 - 60) × 150,000 = €3.0m</code></pre>
             <li class="lv3"><a href="#s62">口径提醒</a></li>
             <li class="lv2"><a href="#s63">速查</a></li>
             <li class="lv2"><a href="#s64">与技能和其他笔记的分工</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="47">展开 47 个小节</button>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="47" data-more-label="展开 47 个小节" data-less-label="收起小节">展开 47 个小节</button>
   </aside>
 </div>
 

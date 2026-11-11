@@ -29,9 +29,7 @@ body{
   font-family:var(--sans);
   font-size:var(--fs-base);
   line-height:1.65;
-  background:
-    radial-gradient(900px 480px at 82% -8%, rgba(14,107,102,.07), transparent 62%),
-    var(--paper);
+  background:var(--paper);
   -webkit-font-smoothing:antialiased;
 }
 ::selection{background:rgba(14,107,102,.18)}
@@ -82,21 +80,41 @@ a:hover{text-decoration:underline;text-underline-offset:3px}
 .main{min-width:0;padding:0 clamp(20px,4vw,56px) 72px}
 .wrap{max-width:var(--maxw);margin:0 auto}
 
-/* Hero */
-.hero{padding:44px 0 22px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:34px;align-items:start}
+/* Hero: one primary action, one visual axis. */
+.hero{padding:52px 0 24px;display:block}
+.hero-copy{max-width:880px}
 .eyebrow{display:flex;align-items:center;gap:8px;font:600 var(--fs-2xs)/1.5 var(--mono);letter-spacing:.12em;color:var(--teal);text-transform:uppercase;margin-bottom:12px}
 .eyebrow::before{content:"";width:26px;height:1px;background:var(--teal);opacity:.55}
-.hero h1{font-family:var(--serif);font-size:clamp(30px,3.8vw,46px);line-height:1.16;letter-spacing:-.025em;margin:0 0 14px;font-weight:600}
+.hero h1{font-family:var(--serif);font-size:clamp(30px,4.2vw,50px);line-height:1.13;letter-spacing:-.03em;margin:0 0 14px;font-weight:600}
 .hero h1 em{font-style:normal;color:var(--teal);white-space:nowrap;position:relative}
 .hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:6px;background:var(--teal-soft);z-index:-1;border-radius:2px}
-.lede{font-size:var(--fs-base);line-height:1.75;color:var(--ink-2);max-width:620px;margin:0 0 16px}
-.hero-actions{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px}
-.btn{display:inline-flex;align-items:center;gap:7px;padding:9px 14px;border-radius:8px;font-size:var(--fs-xs);font-weight:600;text-decoration:none;border:1px solid transparent;transition:transform .15s,background .15s}
+.hero .lede{font-size:var(--fs-base);line-height:1.75;color:var(--ink-2);max-width:680px;margin:0 0 22px}
+.hero-search{
+  position:relative;display:flex;align-items:center;gap:8px;max-width:780px;
+  padding:7px 7px 7px 16px;border:1px solid var(--control-line);border-radius:12px;
+  background:var(--card);box-shadow:0 1px 2px rgba(22,35,47,.05),0 18px 42px -32px rgba(22,35,47,.4);
+  transition:border-color .15s,box-shadow .15s;
+}
+.hero-search:focus-within{border-color:var(--teal);box-shadow:0 0 0 4px var(--teal-soft),0 18px 42px -32px rgba(22,35,47,.4)}
+.hero-search>svg{width:18px;height:18px;color:var(--muted);flex:none}
+.hero-search input{
+  flex:1;min-width:0;border:0;background:none;outline:none;
+  padding:11px 0;font:var(--fs-md)/1.5 var(--sans);color:var(--ink);
+}
+.hero-search input::placeholder{color:var(--muted)}
+.hero-search .search-clear{position:static;transform:none;flex:none;width:30px;height:30px;margin-right:2px}
+.hero-search-go{
+  flex:none;min-height:42px;padding:0 17px;border:0;border-radius:8px;
+  background:var(--ink);color:var(--paper);font:600 var(--fs-xs)/1 var(--sans);cursor:pointer;
+}
+.hero-search-go:hover{background:color-mix(in srgb,var(--ink) 86%,var(--paper))}
+.hero-search-status{min-height:1.6em;margin:9px 0 0;font-size:var(--fs-xs);color:var(--muted);line-height:1.6}
+.hero-actions{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 20px}
+.btn{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:0 13px;border-radius:8px;font-size:var(--fs-xs);font-weight:600;text-decoration:none;border:1px solid transparent;transition:transform .15s,background .15s}
 .btn:hover{text-decoration:none;transform:translateY(-1px)}
-.btn-solid{background:var(--ink);color:var(--paper)}
-.btn-solid:hover{background:color-mix(in srgb,var(--ink) 88%,var(--paper))}
-.btn-ghost{background:var(--paper-2);color:var(--ink);border-color:var(--control-line)}
-.btn-ghost:hover{background:var(--card)}
+.btn-ghost{background:var(--paper-2);color:var(--ink-2);border-color:var(--line)}
+.btn-ghost:hover{background:var(--card);border-color:var(--control-line);color:var(--ink)}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 /* Theme switch lives in the top-right corner on every page, matching the reading-page topbar control. */
 .hub-theme-toggle{
   position:fixed;top:14px;right:18px;z-index:50;
@@ -115,14 +133,6 @@ a:hover{text-decoration:underline;text-underline-offset:3px}
 .stat b{display:block;font-family:var(--serif);font-size:22px;line-height:1.1;font-weight:600;letter-spacing:-.02em}
 .stat span{display:block;font-size:var(--fs-2xs);color:var(--muted);margin-top:3px;letter-spacing:.02em}
 .hero-note{font-size:var(--fs-xs);color:var(--muted);margin-top:9px;line-height:1.6}
-.hero-panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:4px 16px 12px;box-shadow:var(--shadow)}
-.hero-panel-kicker{font:600 var(--fs-2xs)/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:11px 0 7px;border-bottom:1px solid var(--line)}
-.hero-panel a{display:grid;grid-template-columns:20px minmax(0,1fr);column-gap:8px;padding:10px 0;border-bottom:1px dashed var(--line);color:inherit}
-.hero-panel a:hover{color:var(--teal);text-decoration:none}
-.hero-panel a span{grid-row:1/3;font:600 var(--fs-2xs)/1.7 var(--mono);color:var(--teal)}
-.hero-panel a b{font-size:var(--fs-xs);line-height:1.4;font-weight:600}
-.hero-panel a small{font-size:var(--fs-2xs);line-height:1.45;color:var(--muted)}
-.hero-panel .hero-panel-all{display:block;padding:11px 0 0;border-bottom:0;font-size:var(--fs-xs);font-weight:600;color:var(--teal)}
 
 /* Section */
 .sec{padding-top:44px}
@@ -174,12 +184,41 @@ a.chip:hover{background:var(--teal-soft);border-color:#bcdad6;color:var(--teal);
 .filterbar{position:sticky;top:0;z-index:20;margin:16px 0 0;padding:10px 0;background:color-mix(in srgb, var(--paper) 96%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .search-wrap{position:relative;flex:1;min-width:220px}
 .search-wrap svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:14px;height:14px;color:var(--muted)}
-#search{width:100%;padding:10px 40px 10px 34px;border:1px solid var(--control-line);border-radius:8px;background:var(--card);font:var(--fs-md) var(--sans);color:var(--ink)}
-#search::placeholder{color:var(--muted)}
-#search::-webkit-search-cancel-button{display:none}
+#searchInline{width:100%;padding:9px 40px 9px 34px;border:1px solid var(--control-line);border-radius:8px;background:var(--card);font:var(--fs-sm) var(--sans);color:var(--ink)}
+#searchInline::placeholder{color:var(--muted)}
+#search::-webkit-search-cancel-button,#searchInline::-webkit-search-cancel-button{display:none}
 .search-clear{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:32px;height:32px;border:0;border-radius:50%;background:var(--paper-2);color:var(--ink-2);font-size:var(--fs-md);line-height:1;cursor:pointer;display:grid;place-items:center}
 .search-clear:hover{background:var(--line)}
 .search-clear[hidden]{display:none}
+.catbar{display:flex;align-items:flex-start;gap:10px;margin:10px 0 18px;min-width:0}
+.catbar-label{flex:none;padding-top:7px;font:600 var(--fs-2xs)/1.4 var(--mono);letter-spacing:.08em;color:var(--muted)}
+.cat-chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 2px 4px;min-width:0}
+.cat-chip{
+  flex:none;display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 10px;
+  border:1px solid var(--line);border-radius:999px;background:var(--card);
+  color:var(--ink-2);font:600 var(--fs-xs)/1 var(--sans);cursor:pointer;
+}
+.cat-chip b{font:var(--fs-2xs)/1 var(--mono);color:var(--muted)}
+.cat-chip:hover{border-color:var(--control-line);color:var(--ink)}
+.cat-chip.on{background:var(--teal-soft);border-color:color-mix(in srgb,var(--teal) 42%,var(--line));color:var(--teal)}
+.cat-chip.on b{color:var(--teal)}
+.cat-select{display:none;min-height:40px;padding:0 30px 0 10px;border:1px solid var(--control-line);border-radius:8px;background:var(--card);color:var(--ink-2);font:var(--fs-xs) var(--sans)}
+.search-results{margin:4px 0 22px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:var(--card);box-shadow:var(--shadow)}
+.search-results[hidden]{display:none}
+.search-results-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:10px}
+.search-results-head h3{margin:0;font-family:var(--serif);font-size:var(--fs-md);font-weight:600}
+.search-results-head span{font:var(--fs-xs)/1.4 var(--mono);color:var(--muted)}
+.search-result-list{display:grid;gap:2px}
+.search-result{display:block;padding:10px 8px;border-radius:8px;color:inherit}
+.search-result:hover{background:var(--paper-2);text-decoration:none}
+.search-result-body{display:block}
+.search-result-title{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.search-result b{font-size:var(--fs-sm);line-height:1.45;color:var(--ink)}
+.search-result-breadcrumb{display:block;margin-bottom:2px;font:var(--fs-2xs)/1.4 var(--mono);color:var(--muted)}
+.search-result-snippet{display:block;margin-top:3px;font-size:var(--fs-xs);line-height:1.65;color:var(--muted);overflow-wrap:break-word}
+.search-result-count{font:var(--fs-2xs)/1.5 var(--mono);color:var(--teal);white-space:nowrap}
+.search-index-status{margin:10px 0 0;font-size:var(--fs-xs);color:var(--muted)}
+.search-index-status[hidden]{display:none}
 .filter-btn{font:var(--fs-xs) var(--sans);padding:9px 12px;border-radius:8px;border:1px solid var(--control-line);background:var(--card);color:var(--ink-2);cursor:pointer;transition:background .15s,color .15s,border-color .15s}
 .filter-btn:hover{border-color:var(--teal)}
 .filter-btn.active{background:var(--ink);border-color:var(--ink);color:var(--paper)}
@@ -198,26 +237,24 @@ mark.hit{background:var(--amber-soft);color:inherit;border-radius:2px;padding:0 
 .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
 .card{
   position:relative;display:flex;flex-direction:column;
-  background:var(--card);border:1px solid var(--card-line);border-radius:var(--radius);
-  padding:16px 16px 13px;box-shadow:var(--shadow-card);
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 16px 13px;box-shadow:none;
   transition:transform .16s,border-color .16s,box-shadow .16s;
 }
-.card::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:2px;border-radius:0 2px 2px 0;background:var(--cat)}
-.card:hover{transform:translateY(-2px);border-color:var(--line-strong);box-shadow:0 3px 5px rgba(22,35,47,.06),0 22px 44px -26px rgba(22,35,47,.4)}
+.card::before{content:"";position:absolute;left:0;top:15px;bottom:15px;width:2px;border-radius:0 2px 2px 0;background:var(--cat)}
+.card:hover{transform:translateY(-1px);border-color:var(--card-line);box-shadow:var(--shadow-card)}
 .card:focus-within{border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft),var(--shadow-card)}
 .card.is-hidden{display:none}
 .card-top{display:flex;align-items:center;gap:7px;margin-bottom:9px}
 .kind{font:600 var(--fs-2xs)/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--cat);background:var(--cat-soft);padding:4px 6px;border-radius:4px}
 .card-meta{font:var(--fs-2xs)/1 var(--mono);color:var(--muted);margin-left:auto}
-.card h3{font-family:var(--serif);font-size:17.5px;line-height:1.35;letter-spacing:-.01em;margin:0 0 6px;font-weight:600}
+.card h3{font-family:var(--serif);font-size:17px;line-height:1.4;letter-spacing:-.01em;margin:0 0 6px;font-weight:600;text-wrap:balance}
 .card h3 a{color:var(--ink);text-decoration:none}
 .card h3 a:hover{color:var(--teal);text-decoration:none}
 .card h3 a::after{content:"";position:absolute;inset:0;border-radius:inherit;z-index:1}
 .card h3 a:focus-visible{outline:0}
-.card p{font-size:var(--fs-sm);line-height:1.65;color:var(--muted);margin:0 0 11px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto}
-.tag{font-size:var(--fs-2xs);line-height:1.4;padding:3px 7px;border-radius:5px;background:var(--paper-2);color:var(--ink-2);white-space:nowrap}
-.card-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:11px;padding-top:9px;border-top:1px dashed var(--line);font-size:var(--fs-2xs);color:var(--muted)}
+.card p{font-size:var(--fs-sm);line-height:1.65;color:var(--muted);margin:0 0 12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto;padding-top:9px;border-top:1px dashed var(--line);font-size:var(--fs-2xs);color:var(--muted)}
 .card-cta{font-weight:600;color:var(--teal);white-space:nowrap}
 .module-section[data-cat="foundation"]{--cat:var(--teal);--cat-soft:var(--teal-soft)}
 .module-section[data-cat="spot"]{--cat:var(--blue);--cat-soft:var(--blue-soft)}
@@ -233,9 +270,18 @@ mark.hit{background:var(--amber-soft);color:inherit;border-radius:2px;padding:0 
 .module-section[data-cat="research"]{--cat:var(--slate);--cat-soft:var(--slate-soft)}
 
 /* Atlas */
-.panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
-.atlas-fold>summary{display:none}
+.panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}
+.atlas-fold>summary{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;list-style:none;
+  margin-top:20px;padding:13px 16px;border:1px solid var(--line);border-radius:10px;
+  background:var(--card);font-size:var(--fs-sm);font-weight:600;color:var(--ink);cursor:pointer;
+}
 .atlas-fold>summary::-webkit-details-marker{display:none}
+.atlas-fold>summary span{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.atlas-fold>summary small{font:var(--fs-xs)/1.5 var(--sans);font-weight:400;color:var(--muted)}
+.atlas-fold>summary::after{content:"+";font:600 var(--fs-md)/1 var(--mono);color:var(--teal)}
+.atlas-fold[open]>summary::after{content:"−"}
+.atlas-fold:not([open]) .panels{display:none}
 .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);margin:0;min-width:0}
 .panel.wide{grid-column:1/-1}
 .panel-head{margin-bottom:14px}
@@ -344,12 +390,8 @@ mark.hit{background:var(--amber-soft);color:inherit;border-radius:2px;padding:0 
 .discipline div::before{content:"";position:absolute;left:0;top:.58em;width:6px;height:6px;border-radius:50%;background:var(--amber)}
 .discipline b{color:var(--ink)}
 
-.skills{margin-top:16px;border-top:1px solid var(--line);padding-top:18px}
-.skills-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:10px}
-.skills-head h3{font-family:var(--serif);font-size:19px;margin:0;font-weight:600}
-.skills-head p{margin:0;font-size:var(--fs-2xs);color:var(--muted)}
-.skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.skill-card{display:block;border:1px solid var(--line);border-radius:9px;padding:10px 12px;background:var(--card);color:inherit;text-decoration:none;transition:border-color .15s,transform .15s}
+.skill-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:22px}
+.skill-card{display:block;border:1px solid var(--line);border-radius:10px;padding:14px 15px;background:var(--card);color:inherit;text-decoration:none;transition:border-color .15s,transform .15s}
 .skill-card:hover{border-color:var(--teal);text-decoration:none;transform:translateY(-1px)}
 .skill-card b{display:block;font-size:var(--fs-xs);margin-bottom:1px}
 .skill-card span{display:block;font-size:var(--fs-2xs);line-height:1.5;color:var(--muted)}
@@ -371,11 +413,6 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
 }
 @media (max-width:1180px){
   .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .hero{grid-template-columns:1fr;gap:18px}
-  .hero-panel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px;padding:2px 14px 10px}
-  .hero-panel a{grid-template-columns:18px minmax(0,1fr);padding:9px 0}
-  .hero-panel a small{display:none}
-  .hero-panel .hero-panel-all{grid-column:1/-1}
   .map{grid-template-columns:1fr}
   .rail{display:grid;grid-template-columns:repeat(2,1fr)}
   .rail-head{grid-column:1/-1}
@@ -429,15 +466,30 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   .result{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
   .empty-reset{min-height:44px}
   .search-clear{width:40px;height:40px;right:2px}
-  #search{padding-right:48px}
+  #searchInline{padding-right:48px}
+  .hero-search .search-clear{width:36px;height:36px}
+  .catbar{margin:8px 0 16px}
+  .catbar-label{display:none}
+  .cat-chips{display:none}
+  .cat-select{display:block;width:100%}
+  .search-results{padding:13px 14px}
+  .search-result{padding:10px 4px;border-bottom:1px solid var(--line)}
+  .search-result:last-child{border-bottom:0}
 }
 @media (max-width:620px){
   .cards{grid-template-columns:1fr}
-  .hero{padding-top:24px}
+  .hero{padding-top:30px}
+  .hero h1{font-size:clamp(27px,8vw,36px)}
+  .hero .lede{font-size:var(--fs-sm);max-width:none}
+  .hero-search{padding-left:12px;gap:6px}
+  .hero-search>svg{width:16px;height:16px}
+  .hero-search input{font-size:16px;padding-top:10px;padding-bottom:10px}
+  .hero-search-go{min-height:40px;padding:0 12px}
   .hero-stats{grid-template-columns:1fr 1fr}
   .hero-actions{display:flex;flex-wrap:wrap;gap:9px}
   .hero-actions .btn{justify-content:center;min-height:44px}
   .hero-note{display:none}
+  .sec-head h2{font-size:clamp(22px,7vw,29px)}
   .sec-head{grid-template-columns:1fr;gap:6px}
   .sec-num{padding-top:0}
   .market-flow,.assess-flow,.market-flow.six,.market-flow.eight,.market-flow.ten,.market-flow.eleven{grid-template-columns:1fr}
@@ -445,7 +497,6 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   .rail{grid-template-columns:1fr}
   .map-skill{grid-template-columns:1fr;gap:6px}
   #search{font-size:16px}
-  .hero-panel{grid-template-columns:1fr}
   .lcoe-row,.ladder-row,.cap-bar{grid-template-columns:82px 1fr 62px}
   .skill-grid{grid-template-columns:1fr}
   .callout{gap:8px}
@@ -455,6 +506,17 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   .atlas-fold[open]>summary::after{content:"−"}
   .atlas-fold:not([open]) .panels{display:none}
 }
+
+@media (max-width:380px){
+  .eyebrow{
+    display:block;position:relative;padding-left:22px;font-size:10px;letter-spacing:.05em;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .eyebrow::before{position:absolute;left:0;top:50%;width:14px}
+  .hero-actions{gap:6px}
+  .hero-actions .btn{padding:0 10px;font-size:12px}
+}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *{transition:none!important;animation:none!important}
@@ -472,7 +534,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
 @media print{
   :root[data-theme="dark"] .module-section[data-cat]{--cat:#16232f;--cat-soft:#f0ece3}
   body{background:#fff}
-  .sidebar,.hero-panel,.filterbar,.fab-stack,.hub-theme-toggle,.skip,.hero-actions,.atlas-fold>summary,.nav-scroll{display:none!important}
+  .sidebar,.hero-search,.hero-search-status,.filterbar,.catbar,.search-results,.fab-stack,.hub-theme-toggle,.skip,.hero-actions,.atlas-fold>summary,.nav-scroll{display:none!important}
   .shell{display:block;max-width:none}
   .main{padding:0}
   .card,.panel,.method-card{box-shadow:none;break-inside:avoid}
@@ -513,29 +575,26 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   <main id="main" class="main">
     <div class="wrap">
       <header class="hero" id="top">
-        <div>
+        <div class="hero-copy">
           <div class="eyebrow">{{heroEyebrow}}</div>
           <h1>电力系统、电力市场<br>与碳市场 <em>知识库</em></h1>
           <p class="lede">{{heroLede}}</p>
+          <form class="hero-search" id="heroSearchForm" role="search" aria-label="检索知识库">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+            <label class="sr-only" for="search">检索模块、文号或正文关键词</label>
+            <input id="search" type="search" placeholder="检索模块、文号或正文关键词，例如：红沿河 / 136 / CBAM" autocomplete="off">
+            <button class="search-clear" type="button" id="searchClear" aria-label="清除检索" hidden>×</button>
+            <button class="hero-search-go" type="submit">查看结果</button>
+          </form>
+          <p class="hero-search-status" id="heroSearchStatus" aria-live="polite">标题、标签与正文都可检索；按 <span class="mono">/</span> 快速聚焦。</p>
           <div class="hero-actions">
-            <a class="btn btn-solid" href="#all" data-focus-search>检索知识模块 <span aria-hidden="true">↓</span></a>
-            <a class="btn btn-ghost" href="html/政策列表-2026-11.html">政策原文直达 <span aria-hidden="true">→</span></a>
+            <a class="btn btn-ghost" href="html/政策列表-2026-11.html">政策原文 <span aria-hidden="true">→</span></a>
             <a class="btn btn-ghost" href="#map">知识地图</a>
+            <a class="btn btn-ghost" href="#skills">九项配套技能</a>
           </div>
           <div class="hero-stats">{{heroStats}}</div>
           <p class="hero-note">全部内容以 <span class="mono">knowledge/*.md</span> 原文为准；阅读页由 <span class="mono">scripts/build-knowledge-html.mjs</span> 自动生成。本页摘要不替代原文，也不构成投资建议。</p>
         </div>
-
-        <aside class="hero-panel" aria-label="快速入口">
-          <div class="hero-panel-kicker">热门入口</div>
-          <a href="#m-spot-a"><span>01</span><b>电力现货 101 问</b><small>出清、结算与治理</small></a>
-          <a href="#m-price-history"><span>02</span><b>中国电价史</b><small>三环节、九种价</small></a>
-          <a href="#m-storage-invest"><span>03</span><b>储能投资与运营</b><small>收益堆叠与硬边界</small></a>
-          <a href="#m-carbon-trade"><span>04</span><b>碳排放权交易实务</b><small>履约、CCER 与 CBAM</small></a>
-          <a href="html/政策列表-2026-11.html"><span>05</span><b>国家级政策原文</b><small>按文号与状态筛选</small></a>
-          <a href="html/省级政策列表-2026-11.html"><span>06</span><b>省级政策原文</b><small>按主题分组与状态筛选</small></a>
-          <a class="hero-panel-all" href="#all">查看全部模块 →</a>
-        </aside>
       </header>
 
       <!-- 01 Find -->
@@ -550,14 +609,15 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         <div class="filterbar" role="search" aria-label="检索知识模块">
           <div class="search-wrap">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
-            <input id="search" type="search" placeholder="检索模块、文号或关键词，例如：136 / 储能 / CBAM" autocomplete="off" aria-label="检索知识模块">
-            <button class="search-clear" type="button" id="searchClear" aria-label="清除检索" hidden>×</button>
+            <label class="sr-only" for="searchInline">在当前模块目录中检索</label>
+            <input id="searchInline" type="search" placeholder="在目录中检索…" autocomplete="off">
+            <button class="search-clear" type="button" id="searchInlineClear" aria-label="清除检索" hidden>×</button>
           </div>
           <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">全部</button>
           <button class="filter-btn" type="button" data-filter="core" aria-pressed="false">核心模块</button>
           <button class="filter-btn" type="button" data-filter="tool" aria-pressed="false">索引工具</button>
           <button class="filter-btn" type="button" data-filter="research" aria-pressed="false">调研底稿</button>
-          <select class="filter-select" id="catSelect" aria-label="按类型筛选">
+          <select class="filter-select" id="typeSelect" aria-label="按类型筛选">
             <option value="all">全部模块</option>
             <option value="core">核心模块</option>
             <option value="tool">索引工具</option>
@@ -565,8 +625,25 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
           </select>
           <span class="result" id="result" aria-live="polite">{{resultDefault}}</span>
         </div>
+        <div class="catbar" aria-label="按内容分类筛选">
+          <span class="catbar-label">分类</span>
+          <div class="cat-chips" id="catChips" role="group" aria-label="内容分类">
+            {{categoryFilters}}
+          </div>
+          <select class="cat-select" id="catSelect" aria-label="按内容分类筛选">
+            {{categoryOptions}}
+          </select>
+        </div>
+        <section class="search-results" id="searchResults" aria-labelledby="searchResultsTitle" hidden>
+          <div class="search-results-head">
+            <h3 id="searchResultsTitle">正文命中</h3>
+            <span id="searchResultsCount"></span>
+          </div>
+          <div class="search-result-list" id="searchResultsList"></div>
+          <p class="search-index-status" id="searchIndexStatus" hidden>全文索引未能加载；标题、标签与摘要检索仍可使用。</p>
+        </section>
         <div class="empty" id="empty">
-          <p>没有匹配的模块。试试“储能”“136”“电价”或“CBAM”。</p>
+          <p>没有匹配的模块或正文。试试“储能”“红沿河”“136”或“CBAM”。</p>
           <button class="empty-reset" type="button" id="emptyReset">清除检索条件</button>
         </div>
 
@@ -726,8 +803,8 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
           </div>
         </div>
 
-        <details class="atlas-fold" id="atlasFold" open>
-        <summary>八条专题链路 · 展开查看</summary>
+        <details class="atlas-fold" id="atlasFold">
+        <summary><span>八条专题链路</span><small>按需展开，避免首屏堆叠数字</small></summary>
         <div class="panels">
           <figure class="panel wide">
             <div class="panel-head">
@@ -1001,10 +1078,32 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         </details>
       </section>
 
-      <!-- 16 Method -->
+      <!-- 04 Skills -->
+      <section class="sec" id="skills">
+        <div class="sec-head">
+          <div class="sec-num">04 / SKILLS</div>
+          <div>
+            <h2>九项配套技能</h2>
+            <p>知识库回答“是什么、为什么”，技能回答“怎么做、怎么算”。每个技能都有 HTML 阅读页与 TXT 下载，知识模块末尾也能直接进入对应技能。</p>
+          </div>
+        </div>
+        <div class="skill-grid">
+          <a class="skill-card" href="html/skill-electricity-trading-expert.html"><b>电力交易专家</b><span>现货报价、结算、风险与市场分析</span></a>
+          <a class="skill-card" href="html/skill-virtual-power-plant.html"><b>虚拟电厂专家</b><span>聚合、响应、市场参与与运营</span></a>
+          <a class="skill-card" href="html/skill-carbon-asset-expert.html"><b>碳资产管理专家</b><span>履约、CCER、碳足迹与碳金融</span></a>
+          <a class="skill-card" href="html/skill-storage-investment-operations.html"><b>储能投资与运营</b><span>收益堆叠、投决、退化与考核</span></a>
+          <a class="skill-card" href="html/skill-renewable-project-development.html"><b>新能源开发与并网</b><span>资源、LCOE、机制电价与并网</span></a>
+          <a class="skill-card" href="html/skill-spot-bidding-quant.html"><b>现货报价量化</b><span>预测、报价、仿真与回测</span></a>
+          <a class="skill-card" href="html/skill-ems-dispatch.html"><b>EMS 优化调度</b><span>96 点调度、SOC、需量与可交付性</span></a>
+          <a class="skill-card" href="html/skill-tariff-bill-optimization.html"><b>电价与电费优化</b><span>账单科目、基本电费、分时与套餐比价</span></a>
+          <a class="skill-card" href="html/skill-retail-electricity-risk.html"><b>售电零售与风险</b><span>套餐定价、客户组合、偏差与保函</span></a>
+        </div>
+      </section>
+
+      <!-- 05 Method -->
       <section class="sec" id="method">
         <div class="sec-head">
-          <div class="sec-num">16 / METHOD</div>
+          <div class="sec-num">05 / METHOD</div>
           <div>
             <h2>使用与口径</h2>
             <p>这个知识库不是“事实的终点”，而是“查证的起点”。三条使用步骤、四级来源分级、四条口径纪律，决定回答能不能用。</p>
@@ -1042,27 +1141,17 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
           </div>
         </div>
 
-        <div class="skills" id="skills">
-          <div class="skills-head">
-            <h3>九项配套技能</h3>
-            <p>知识库回答“是什么、为什么”，技能回答“怎么做、怎么算”。每个技能都有 HTML 阅读页与 TXT 下载。</p>
-          </div>
-          <div class="skill-grid">
-            <a class="skill-card" href="html/skill-electricity-trading-expert.html"><b>电力交易专家</b><span>现货报价、结算、风险与市场分析</span></a>
-            <a class="skill-card" href="html/skill-virtual-power-plant.html"><b>虚拟电厂专家</b><span>聚合、响应、市场参与与运营</span></a>
-            <a class="skill-card" href="html/skill-carbon-asset-expert.html"><b>碳资产管理专家</b><span>履约、CCER、碳足迹与碳金融</span></a>
-            <a class="skill-card" href="html/skill-storage-investment-operations.html"><b>储能投资与运营</b><span>收益堆叠、投决、退化与考核</span></a>
-            <a class="skill-card" href="html/skill-renewable-project-development.html"><b>新能源开发与并网</b><span>资源、LCOE、机制电价与并网</span></a>
-            <a class="skill-card" href="html/skill-spot-bidding-quant.html"><b>现货报价量化</b><span>预测、报价、仿真与回测</span></a>
-            <a class="skill-card" href="html/skill-ems-dispatch.html"><b>EMS 优化调度</b><span>96 点调度、SOC、需量与可交付性</span></a>
-            <a class="skill-card" href="html/skill-tariff-bill-optimization.html"><b>电价与电费优化</b><span>账单科目、基本电费、分时与套餐比价</span></a>
-            <a class="skill-card" href="html/skill-retail-electricity-risk.html"><b>售电零售与风险</b><span>套餐定价、客户组合、偏差与保函</span></a>
-          </div>
-        </div>
-
         <footer>
           <div>{{footerLine}}<br>内容以 <span class="mono">knowledge/*.md</span> 原文为准；本页摘要与图示不构成投资建议。</div>
-          <div><a href="../README.md">仓库 README</a> · <a href="../README_EN.md">README_EN</a> · <a href="#top">回到顶部 ↑</a></div>
+          <div>
+            <a href="{{repositoryUrl}}" target="_blank" rel="noopener">GitHub：{{repositoryLabel}} ↗</a>
+            <span aria-hidden="true"> · </span>
+            <a href="../README.md">仓库 README</a>
+            <span aria-hidden="true"> · </span>
+            <a href="../README_EN.md">README_EN</a>
+            <span aria-hidden="true"> · </span>
+            <a href="#top">回到顶部 ↑</a>
+          </div>
         </footer>
       </section>
     </div>
@@ -1074,308 +1163,559 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
 </div>
 
 <script>
-(function(){
+(function () {
+  'use strict';
+
+  var HOME_KEY = 'es-hub-return';
   var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
   var sections = Array.prototype.slice.call(document.querySelectorAll('.module-section'));
-  var search = document.getElementById('search');
+  var heroSearch = document.getElementById('search');
+  var inlineSearch = document.getElementById('searchInline');
+  var searchInputs = [heroSearch, inlineSearch].filter(Boolean);
+  var heroForm = document.getElementById('heroSearchForm');
+  var heroStatus = document.getElementById('heroSearchStatus');
   var result = document.getElementById('result');
   var empty = document.getElementById('empty');
-  var filterBtns = Array.prototype.slice.call(document.querySelectorAll('.filter-btn'));
-  var filterSelect = document.getElementById('catSelect');
-  var searchClear = document.getElementById('searchClear');
+  var typeBtns = Array.prototype.slice.call(document.querySelectorAll('.filter-btn'));
+  var typeSelect = document.getElementById('typeSelect');
+  var catChips = Array.prototype.slice.call(document.querySelectorAll('.cat-chip'));
+  var catSelect = document.getElementById('catSelect');
+  var searchResults = document.getElementById('searchResults');
+  var searchResultsList = document.getElementById('searchResultsList');
+  var searchResultsCount = document.getElementById('searchResultsCount');
+  var searchIndexStatus = document.getElementById('searchIndexStatus');
   var emptyReset = document.getElementById('emptyReset');
   var browse = document.getElementById('all');
   var sidebar = document.querySelector('.sidebar');
   var filterbar = document.querySelector('.filterbar');
-  var activeFilter = 'all';
+  var activeType = 'all';
+  var activeCat = 'all';
+  var searchIndex = null;
+  var searchFailed = false;
+  var searchPromise = null;
   var reduceMotion = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
   var debounceTimer = 0;
-  var navActivationOffset = 130;
+  var navActivationOffset = 150;
+  var DEFAULT_HINT = heroStatus ? heroStatus.innerHTML : '';
 
-  function scrollBehavior(){
+  function scrollBehavior() {
     return reduceMotion && reduceMotion.matches ? 'auto' : 'smooth';
   }
 
-  function syncStickyOffsets(){
-    if(!sidebar) return;
+  function norm(value) {
+    return String(value || '').toLowerCase().replace(/\s+/g, ' ').trim();
+  }
+
+  function queryTokens(value) {
+    var q = norm(value);
+    return q ? q.split(' ').filter(Boolean) : [];
+  }
+
+  function hasTokens(text, tokens) {
+    if (!tokens.length) return true;
+    var hay = norm(text);
+    for (var i = 0; i < tokens.length; i += 1) {
+      if (hay.indexOf(tokens[i]) === -1) return false;
+    }
+    return true;
+  }
+
+  function currentQuery() {
+    return heroSearch ? heroSearch.value.trim() : (inlineSearch ? inlineSearch.value.trim() : '');
+  }
+
+  function syncStickyOffsets() {
+    if (!sidebar) return;
     var mobile = window.innerWidth <= 960;
     var sideH = mobile ? Math.round(sidebar.getBoundingClientRect().height) : 0;
     var barH = filterbar ? Math.round(filterbar.getBoundingClientRect().height) : 0;
     document.documentElement.style.setProperty('--hub-header', sideH + 'px');
-    document.documentElement.style.setProperty('--hub-scroll-offset', (sideH + barH + 16) + 'px');
-    navActivationOffset = Math.max(130, sideH + barH + 16);
-    if(navLinks && navLinks.length) setActive();
-  }
-  syncStickyOffsets();
-  window.addEventListener('resize', syncStickyOffsets);
-  window.addEventListener('load', syncStickyOffsets);
-  if(document.fonts && document.fonts.ready) document.fonts.ready.then(syncStickyOffsets);
-  if(window.ResizeObserver){
-    var ro = new ResizeObserver(syncStickyOffsets);
-    if(sidebar) ro.observe(sidebar);
-    if(filterbar) ro.observe(filterbar);
+    document.documentElement.style.setProperty('--hub-scroll-offset', (sideH + barH + 18) + 'px');
+    navActivationOffset = Math.max(150, sideH + barH + 18);
+    if (navLinks && navLinks.length) setActive();
   }
 
-  function ensureResultsVisible(){
-    if(!browse) return;
-    var offset = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--hub-scroll-offset')) || 84;
+  function ensureResultsVisible() {
+    if (!browse) return;
+    var offset = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--hub-scroll-offset')) || 96;
     var top = browse.getBoundingClientRect().top + window.scrollY - offset + 1;
-    if(window.scrollY > top + 240) window.scrollTo({top: top, behavior: scrollBehavior()});
+    if (window.scrollY > top + 240 || window.scrollY < top - 16) {
+      window.scrollTo({ top: top, behavior: scrollBehavior() });
+    }
   }
 
-  function filtersActive(){
-    return activeFilter !== 'all' || (search && search.value.trim() !== '');
-  }
-
-  function setActiveFilter(value){
-    activeFilter = value || 'all';
-    filterBtns.forEach(function(b){
-      var on = b.getAttribute('data-filter') === activeFilter;
-      b.classList.toggle('active', on);
-      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  function setType(value) {
+    activeType = value || 'all';
+    typeBtns.forEach(function (btn) {
+      var on = btn.getAttribute('data-filter') === activeType;
+      btn.classList.toggle('active', on);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
-    if(filterSelect) filterSelect.value = activeFilter;
+    if (typeSelect) typeSelect.value = activeType;
   }
 
-  function syncUrl(){
-    try{
+  function setCategory(value) {
+    activeCat = value || 'all';
+    catChips.forEach(function (btn) {
+      var on = btn.getAttribute('data-cat') === activeCat;
+      btn.classList.toggle('on', on);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    if (catSelect) catSelect.value = activeCat;
+  }
+
+  function syncSearchValue(value) {
+    searchInputs.forEach(function (input) {
+      if (input.value !== value) input.value = value;
+    });
+    document.querySelectorAll('.search-clear').forEach(function (button) {
+      button.hidden = !value;
+    });
+  }
+
+  function syncUrl() {
+    try {
       var url = new URL(window.location.href);
-      if(search && search.value.trim()) url.searchParams.set('q', search.value.trim());
+      var q = currentQuery();
+      if (q) url.searchParams.set('q', q);
       else url.searchParams.delete('q');
-      if(activeFilter !== 'all') url.searchParams.set('type', activeFilter);
+      if (activeType !== 'all') url.searchParams.set('type', activeType);
       else url.searchParams.delete('type');
+      if (activeCat !== 'all') url.searchParams.set('cat', activeCat);
+      else url.searchParams.delete('cat');
       window.history.replaceState(null, '', url.href);
-    }catch(e){}
+    } catch (e) {}
   }
 
-  function clearHighlights(){
-    Array.prototype.forEach.call(document.querySelectorAll('mark.hit'), function(mark){
-      var parent = mark.parentNode;
-      if(!parent) return;
-      parent.replaceChild(document.createTextNode(mark.textContent), mark);
-      parent.normalize();
+  function loadSearchIndex() {
+    if (searchIndex || searchFailed) return Promise.resolve(searchIndex);
+    if (searchPromise) return searchPromise;
+    searchPromise = new Promise(function (resolve) {
+      if (window.__ES_SEARCH_INDEX__) {
+        searchIndex = window.__ES_SEARCH_INDEX__;
+        resolve(searchIndex);
+        return;
+      }
+      var script = document.createElement('script');
+      script.src = 'search-index.js';
+      script.async = true;
+      script.onload = function () {
+        searchIndex = window.__ES_SEARCH_INDEX__ || null;
+        if (!searchIndex) searchFailed = true;
+        resolve(searchIndex);
+      };
+      script.onerror = function () {
+        searchFailed = true;
+        resolve(null);
+      };
+      document.head.appendChild(script);
+    });
+    return searchPromise;
+  }
+
+  function docChunkText(chunk) {
+    return norm(chunk.h + ' ' + (chunk.x || ''));
+  }
+
+  function contentSearch(query) {
+    if (!searchIndex || !searchIndex.docs) return [];
+    var tokens = queryTokens(query);
+    if (!tokens.length || norm(query).length < 2) return [];
+    return searchIndex.docs.map(function (doc) {
+      var allText = doc.keywords + ' ' + doc.chunks.map(function (chunk) {
+        return chunk.h + ' ' + (chunk.x || '');
+      }).join(' ');
+      if (!hasTokens(allText, tokens)) return null;
+      var scored = [];
+      doc.chunks.forEach(function (chunk) {
+        var text = docChunkText(chunk);
+        var matched = 0;
+        tokens.forEach(function (token) {
+          if (text.indexOf(token) !== -1) matched += 1;
+        });
+        if (matched) scored.push({ chunk: chunk, matched: matched });
+      });
+      if (!scored.length) return null;
+      scored.sort(function (a, b) {
+        return b.matched - a.matched || b.chunk.x.length - a.chunk.x.length;
+      });
+      return { doc: doc, chunk: scored[0].chunk, hits: scored.length };
+    }).filter(Boolean).sort(function (a, b) {
+      var at = norm(a.doc.title).indexOf(tokens[0]) !== -1 ? 1 : 0;
+      var bt = norm(b.doc.title).indexOf(tokens[0]) !== -1 ? 1 : 0;
+      return bt - at || b.hits - a.hits;
     });
   }
 
-  function highlight(container, q){
-    if(!q || q.length < 2 || !container) return;
-    var walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null, false);
-    var nodes = [];
-    var node;
-    while((node = walker.nextNode())) nodes.push(node);
-    nodes.forEach(function(textNode){
-      var text = textNode.nodeValue;
-      var idx = text.toLowerCase().indexOf(q);
-      if(idx < 0) return;
-      var frag = document.createDocumentFragment();
-      var last = 0;
-      while(idx >= 0){
-        frag.appendChild(document.createTextNode(text.slice(last, idx)));
+  function escapeRegExp(text) {
+    return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  function appendSnippet(container, text, tokens, limit) {
+    var source = String(text || '').replace(/\s+/g, ' ').trim();
+    if (!source) {
+      container.textContent = '';
+      return;
+    }
+    var lower = source.toLowerCase();
+    var first = -1;
+    tokens.forEach(function (token) {
+      var index = lower.indexOf(token);
+      if (index !== -1 && (first === -1 || index < first)) first = index;
+    });
+    var start = Math.max(0, first === -1 ? 0 : first - 42);
+    var end = Math.min(source.length, start + limit);
+    var snippet = source.slice(start, end);
+    var pattern = tokens
+      .slice()
+      .sort(function (a, b) { return b.length - a.length; })
+      .map(escapeRegExp)
+      .join('|');
+    var reg = pattern ? new RegExp('(' + pattern + ')', 'gi') : null;
+    var parts = reg ? snippet.split(reg) : [snippet];
+    var hitSet = {};
+    tokens.forEach(function (token) { hitSet[token] = true; });
+    parts.forEach(function (part) {
+      if (hitSet[norm(part)]) {
         var mark = document.createElement('mark');
         mark.className = 'hit';
-        mark.textContent = text.slice(idx, idx + q.length);
-        frag.appendChild(mark);
-        last = idx + q.length;
-        idx = text.toLowerCase().indexOf(q, last);
+        mark.textContent = part;
+        container.appendChild(mark);
+      } else {
+        container.appendChild(document.createTextNode(part));
       }
-      frag.appendChild(document.createTextNode(text.slice(last)));
-      textNode.parentNode.replaceChild(frag, textNode);
+    });
+    if (start > 0) container.insertBefore(document.createTextNode('…'), container.firstChild);
+    if (end < source.length) container.appendChild(document.createTextNode('…'));
+  }
+
+  function renderSearchResults(groups, query) {
+    if (!searchResults || !searchResultsList) return;
+    var tokens = queryTokens(query);
+    searchResultsList.textContent = '';
+    var visible = groups.filter(function (item) {
+      if (activeType !== 'all' && item.doc.type !== activeType) return false;
+      if (activeCat !== 'all' && item.doc.cat !== activeCat) return false;
+      return true;
+    }).slice(0, 8);
+    var totalHits = visible.reduce(function (sum, item) { return sum + item.hits; }, 0);
+    if (!visible.length) {
+      searchResults.hidden = true;
+      return;
+    }
+    searchResults.hidden = false;
+    if (searchResultsCount) searchResultsCount.textContent = visible.length + ' 个模块 · ' + totalHits + ' 处匹配';
+    visible.forEach(function (item) {
+      var link = document.createElement('a');
+      link.className = 'search-result';
+      link.href = item.doc.html + (item.chunk.a ? '#' + item.chunk.a : '');
+      var body = document.createElement('span');
+      body.className = 'search-result-body';
+      var crumb = document.createElement('span');
+      crumb.className = 'search-result-breadcrumb';
+      crumb.textContent = item.doc.catNum + ' · ' + (item.chunk.h || item.doc.title);
+      body.appendChild(crumb);
+      var titleRow = document.createElement('span');
+      titleRow.className = 'search-result-title';
+      var title = document.createElement('b');
+      title.textContent = item.doc.title;
+      titleRow.appendChild(title);
+      var count = document.createElement('span');
+      count.className = 'search-result-count';
+      count.textContent = item.hits + ' 处 →';
+      titleRow.appendChild(count);
+      body.appendChild(titleRow);
+      var snippet = document.createElement('span');
+      snippet.className = 'search-result-snippet';
+      appendSnippet(snippet, item.chunk.x || item.chunk.h || item.doc.summary, tokens, 180);
+      body.appendChild(snippet);
+      link.appendChild(body);
+      searchResultsList.appendChild(link);
     });
   }
 
-  function applyFilter(){
-    var q = search ? search.value.trim().toLowerCase() : '';
+  function updateSearchStatus(visible, groups, query) {
+    if (!heroStatus) return;
+    if (!query) {
+      heroStatus.innerHTML = DEFAULT_HINT;
+      return;
+    }
+    if (!searchIndex && !searchFailed) {
+      heroStatus.textContent = '正在载入全文索引…';
+      return;
+    }
+    if (searchFailed) {
+      heroStatus.textContent = '全文索引不可用；已按标题、标签与摘要匹配 ' + visible + ' 个模块。';
+      return;
+    }
+    var hits = groups.filter(function (item) {
+      if (activeType !== 'all' && item.doc.type !== activeType) return false;
+      if (activeCat !== 'all' && item.doc.cat !== activeCat) return false;
+      return true;
+    }).reduce(function (sum, item) { return sum + item.hits; }, 0);
+    heroStatus.textContent = visible + ' 个相关模块 · ' + hits + ' 处正文命中';
+  }
+
+  function applyFilter() {
+    var q = currentQuery();
+    var tokens = queryTokens(q);
+    var groups = q ? contentSearch(q) : [];
+    var contentIds = {};
+    groups.forEach(function (item) { contentIds[item.doc.id] = true; });
     var visible = 0;
-    clearHighlights();
-    cards.forEach(function(card){
-      var hay = (card.getAttribute('data-search') || '') + ' ' + card.textContent.toLowerCase();
-      var typeOK = activeFilter === 'all' || card.getAttribute('data-type') === activeFilter;
-      var queryOK = !q || hay.indexOf(q) !== -1;
-      var show = typeOK && queryOK;
+    cards.forEach(function (card) {
+      var section = card.closest('.module-section');
+      var cat = section ? section.id : '';
+      var typeOK = activeType === 'all' || card.getAttribute('data-type') === activeType;
+      var catOK = activeCat === 'all' || cat === activeCat;
+      var queryOK = !q || hasTokens(card.getAttribute('data-search') || '', tokens) || Boolean(contentIds[card.id]);
+      var show = typeOK && catOK && queryOK;
       card.classList.toggle('is-hidden', !show);
-      if(show){
-        visible++;
-        if(q){
-          highlight(card.querySelector('h3'), q);
-          highlight(card.querySelector('p'), q);
-        }
-      }
+      if (show) visible += 1;
     });
-    sections.forEach(function(sec){
-      var any = sec.querySelector('.card:not(.is-hidden)');
-      sec.classList.toggle('is-empty', !any);
+    sections.forEach(function (section) {
+      section.classList.toggle('is-empty', !section.querySelector('.card:not(.is-hidden)'));
     });
-    if(result) result.textContent = visible + ' / ' + cards.length + ' 个模块';
-    if(empty) empty.classList.toggle('show', visible === 0);
-    if(searchClear) searchClear.hidden = !(search && search.value.length);
+    if (result) result.textContent = visible + ' / ' + cards.length + ' 个模块';
+    renderSearchResults(groups, q);
+    updateSearchStatus(visible, groups, q);
+    if (searchIndexStatus) searchIndexStatus.hidden = !searchFailed;
+    var stillLoading = Boolean(q) && !searchIndex && !searchFailed;
+    if (empty) empty.classList.toggle('show', visible === 0 && !stillLoading);
+    if (q && !searchIndex && !searchFailed) {
+      loadSearchIndex().then(function () { applyFilter(); });
+    }
+    document.querySelectorAll('.search-clear').forEach(function (button) {
+      button.hidden = !q;
+    });
     syncUrl();
   }
 
-  function resetFilters(focusSearch){
-    if(search) search.value = '';
-    setActiveFilter('all');
+  function resetFilters(focusInput, scrollToBrowse) {
+    syncSearchValue('');
+    setType('all');
+    setCategory('all');
     applyFilter();
-    if(focusSearch && search) search.focus({preventScroll:true});
+    if (scrollToBrowse && browse) browse.scrollIntoView({ behavior: scrollBehavior(), block: 'start' });
+    if (focusInput) focusInput.focus({ preventScroll: true });
   }
 
-  if(search){
-    search.addEventListener('input', function(){
-      if(searchClear) searchClear.hidden = !search.value;
+  searchInputs.forEach(function (input) {
+    input.addEventListener('input', function () {
+      syncSearchValue(input.value);
       window.clearTimeout(debounceTimer);
-      debounceTimer = window.setTimeout(applyFilter, 150);
+      debounceTimer = window.setTimeout(applyFilter, 140);
+      if (input.value.trim()) loadSearchIndex().then(function () { applyFilter(); });
     });
-    search.addEventListener('keydown', function(e){
-      if(e.key === 'Escape'){ resetFilters(false); search.blur(); }
+    input.addEventListener('focus', function () {
+      loadSearchIndex();
     });
-  }
-  if(searchClear){
-    searchClear.addEventListener('click', function(){ resetFilters(true); });
-  }
-  if(emptyReset){
-    emptyReset.addEventListener('click', function(){
-      resetFilters(true);
-      if(browse) browse.scrollIntoView({behavior: scrollBehavior(), block:'start'});
+    input.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        resetFilters(null, false);
+        input.blur();
+      }
     });
-  }
-  filterBtns.forEach(function(btn){
-    btn.addEventListener('click', function(){
-      setActiveFilter(btn.getAttribute('data-filter'));
-      applyFilter();
-      ensureResultsVisible();
-    });
-  });
-  if(filterSelect){
-    filterSelect.addEventListener('change', function(){
-      setActiveFilter(filterSelect.value);
-      applyFilter();
-      ensureResultsVisible();
-    });
-  }
-  document.addEventListener('click', function(e){
-    var link = e.target.closest ? e.target.closest('a[href^="#"]') : null;
-    if(!link || link.closest('.filterbar')) return;
-    var target = document.querySelector(link.getAttribute('href'));
-    if(target && (target.classList.contains('card') || target.classList.contains('module-section')) && filtersActive()){
-      resetFilters(false);
-    }
   });
 
-  try{
-    var params = new URLSearchParams(window.location.search);
-    var initialQuery = params.get('q');
-    var initialType = params.get('type');
-    if(initialQuery && search) search.value = initialQuery;
-    if(initialType && ['all','core','tool','research'].indexOf(initialType) !== -1) activeFilter = initialType;
-  }catch(e){}
-  setActiveFilter(activeFilter);
-  applyFilter();
-  Array.prototype.forEach.call(document.querySelectorAll('[data-focus-search]'), function(link){
-    link.addEventListener('click', function(){
-      if(!search) return;
-      window.setTimeout(function(){ search.focus({preventScroll:true}); }, 260);
+  document.querySelectorAll('.search-clear').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var target = button.closest('.filterbar') ? inlineSearch : heroSearch;
+      resetFilters(target, false);
     });
   });
-  document.addEventListener('keydown', function(e){
-    if(e.key === '/' && document.activeElement !== search && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)){
-      e.preventDefault();
-      if(search) search.focus();
-    }
+
+  if (heroForm) {
+    heroForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      if (!currentQuery()) {
+        if (heroSearch) heroSearch.focus();
+        return;
+      }
+      applyFilter();
+      ensureResultsVisible();
+      if (heroSearch) heroSearch.blur();
+    });
+  }
+
+  if (emptyReset) emptyReset.addEventListener('click', function () { resetFilters(inlineSearch, true); });
+
+  typeBtns.forEach(function (button) {
+    button.addEventListener('click', function () {
+      setType(button.getAttribute('data-filter'));
+      applyFilter();
+      ensureResultsVisible();
+    });
   });
+
+  if (typeSelect) {
+    typeSelect.addEventListener('change', function () {
+      setType(typeSelect.value);
+      applyFilter();
+      ensureResultsVisible();
+    });
+  }
+
+  catChips.forEach(function (button) {
+    button.addEventListener('click', function () {
+      setCategory(button.getAttribute('data-cat'));
+      applyFilter();
+      ensureResultsVisible();
+    });
+  });
+
+  if (catSelect) {
+    catSelect.addEventListener('change', function () {
+      setCategory(catSelect.value);
+      applyFilter();
+      ensureResultsVisible();
+    });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key !== '/' || event.metaKey || event.ctrlKey || event.altKey) return;
+    var tag = (document.activeElement && document.activeElement.tagName) || '';
+    if (/^(INPUT|TEXTAREA|SELECT)$/.test(tag)) return;
+    event.preventDefault();
+    if (heroSearch) heroSearch.focus();
+  });
+
+  try {
+    var params = new URLSearchParams(window.location.search);
+    var initialQuery = params.get('q') || '';
+    var initialType = params.get('type');
+    var initialCat = params.get('cat');
+    if (initialQuery) syncSearchValue(initialQuery);
+    if (initialType && ['all', 'core', 'tool', 'research'].indexOf(initialType) !== -1) activeType = initialType;
+    if (initialCat && (initialCat === 'all' || sections.some(function (section) { return section.id === initialCat; }))) activeCat = initialCat;
+  } catch (e) {}
+  setType(activeType);
+  setCategory(activeCat);
+  applyFilter();
+  if (currentQuery()) loadSearchIndex().then(function () { applyFilter(); });
 
   var nav = document.querySelector('.nav');
   var navScroll = document.querySelector('.nav-scroll');
   var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav a'));
-  var targets = navLinks.map(function(a){
-    var id = a.getAttribute('href');
-    return id && id.charAt(0) === '#' ? document.querySelector(id) : null;
+  var targets = navLinks.map(function (link) {
+    var href = link.getAttribute('href');
+    return href && href.charAt(0) === '#' ? document.querySelector(href) : null;
   });
   var lastIdx = -1;
 
-  function updateNavFade(){
-    if(!nav || !navScroll) return;
+  function updateNavFade() {
+    if (!nav || !navScroll) return;
     var max = nav.scrollWidth - nav.clientWidth;
     navScroll.classList.toggle('can-left', nav.scrollLeft > 4);
     navScroll.classList.toggle('can-right', nav.scrollLeft < max - 4);
   }
-  function revealNav(link){
-    if(!nav || !link || window.innerWidth > 960) return;
+
+  function revealNav(link) {
+    if (!nav || !link || window.innerWidth > 960) return;
     var ar = link.getBoundingClientRect();
     var nr = nav.getBoundingClientRect();
-    if(ar.left < nr.left + 28) nav.scrollLeft += ar.left - nr.left - 28;
-    else if(ar.right > nr.right - 28) nav.scrollLeft += ar.right - nr.right + 28;
+    if (ar.left < nr.left + 28) nav.scrollLeft += ar.left - nr.left - 28;
+    else if (ar.right > nr.right - 28) nav.scrollLeft += ar.right - nr.right + 28;
   }
-  function setActive(){
+
+  function setActive() {
     var y = window.scrollY + navActivationOffset + 1;
     var idx = 0;
-    for(var i = 0; i < targets.length; i++){
-      if(targets[i] && targets[i].offsetTop <= y) idx = i;
+    var atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
+    if (atBottom) idx = targets.length - 1;
+    else {
+      for (var i = 0; i < targets.length; i += 1) {
+        if (targets[i] && targets[i].getBoundingClientRect().top + window.scrollY <= y) idx = i;
+      }
     }
-    navLinks.forEach(function(a, i){
-      var on = i === idx;
-      a.classList.toggle('active', on);
-      if(on) a.setAttribute('aria-current', 'true');
-      else a.removeAttribute('aria-current');
+    navLinks.forEach(function (link, k) {
+      var on = k === idx;
+      link.classList.toggle('active', on);
+      if (on) link.setAttribute('aria-current', 'true');
+      else link.removeAttribute('aria-current');
     });
     revealNav(navLinks[idx]);
-    if(idx !== lastIdx){
+    if (idx !== lastIdx) {
       lastIdx = idx;
       window.setTimeout(updateNavFade, 220);
     }
-    var top = document.querySelector('.to-top');
-    if(top) top.classList.toggle('show', window.scrollY > 700);
+    var toTop = document.querySelector('.to-top');
+    if (toTop) toTop.classList.toggle('show', window.scrollY > 700);
   }
+
   var ticking = false;
-  window.addEventListener('scroll', function(){
-    if(!ticking){
-      window.requestAnimationFrame(function(){ setActive(); ticking = false; });
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      window.requestAnimationFrame(function () { setActive(); ticking = false; });
       ticking = true;
     }
-  }, {passive:true});
-  if(nav) nav.addEventListener('scroll', updateNavFade, {passive:true});
+  }, { passive: true });
+  if (nav) nav.addEventListener('scroll', updateNavFade, { passive: true });
   window.addEventListener('resize', updateNavFade);
   setActive();
   updateNavFade();
 
-  function restoreSmooth(){
-    window.requestAnimationFrame(function(){
-      window.requestAnimationFrame(function(){
-        document.documentElement.style.removeProperty('scroll-behavior');
-        setActive();
-      });
-    });
+  function saveReturnState() {
+    try {
+      var path = window.location.pathname + window.location.search;
+      sessionStorage.setItem(HOME_KEY, JSON.stringify({
+        path: path,
+        href: path,
+        scrollY: window.scrollY,
+        at: Date.now(),
+        restore: false
+      }));
+    } catch (e) {}
   }
-  if(location.hash){
-    if(document.readyState === 'complete') restoreSmooth();
-    else window.addEventListener('load', restoreSmooth);
+
+  document.addEventListener('click', function (event) {
+    var link = event.target && event.target.closest ? event.target.closest('a') : null;
+    if (!link) return;
+    if (link.closest('.card') || link.closest('.search-result') || link.closest('.skill-card')) saveReturnState();
+  });
+
+  function restoreScroll() {
+    try {
+      var saved = JSON.parse(sessionStorage.getItem(HOME_KEY) || 'null');
+      var path = window.location.pathname + window.location.search;
+      if (!saved || !saved.restore || saved.path !== path || Date.now() - saved.at > 6 * 60 * 60 * 1000) return;
+      window.scrollTo({ top: Math.max(0, Number(saved.scrollY) || 0), behavior: 'auto' });
+      saved.restore = false;
+      sessionStorage.setItem(HOME_KEY, JSON.stringify(saved));
+    } catch (e) {}
   }
 
   var atlas = document.getElementById('atlasFold');
-  var mq = window.matchMedia('(max-width:620px)');
-  function syncAtlas(){
-    if(!atlas) return;
-    if(mq.matches) atlas.removeAttribute('open');
-    else atlas.setAttribute('open', '');
-  }
-  syncAtlas();
-  if(mq.addEventListener) mq.addEventListener('change', syncAtlas);
-  else if(mq.addListener) mq.addListener(syncAtlas);
-
-  var phFull = search ? search.getAttribute('placeholder') : '';
-  function syncSearchPh(){
-    if(!search) return;
-    search.placeholder = mq.matches ? '检索模块或关键词' : phFull;
-  }
-  syncSearchPh();
-  if(mq.addEventListener) mq.addEventListener('change', syncSearchPh);
-  else if(mq.addListener) mq.addListener(syncSearchPh);
-  window.addEventListener('beforeprint', function(){ if(atlas) atlas.setAttribute('open', ''); });
-
-  var topBtn = document.querySelector('.to-top');
-  if(topBtn){
-    topBtn.addEventListener('click', function(){
-      window.scrollTo({top:0, behavior: scrollBehavior()});
+  if (atlas) {
+    var atlasWasOpen = false;
+    window.addEventListener('beforeprint', function () {
+      atlasWasOpen = atlas.hasAttribute('open');
+      atlas.setAttribute('open', '');
+    });
+    window.addEventListener('afterprint', function () {
+      if (!atlasWasOpen) atlas.removeAttribute('open');
     });
   }
+
+  var topBtn = document.querySelector('.to-top');
+  if (topBtn) {
+    topBtn.addEventListener('click', function (event) {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: scrollBehavior() });
+    });
+  }
+
+  syncStickyOffsets();
+  window.addEventListener('resize', syncStickyOffsets);
+  window.addEventListener('load', function () { syncStickyOffsets(); window.setTimeout(restoreScroll, 0); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncStickyOffsets);
+  if (window.ResizeObserver) {
+    var ro = new ResizeObserver(syncStickyOffsets);
+    if (sidebar) ro.observe(sidebar);
+    if (filterbar) ro.observe(filterbar);
+  }
+  window.setTimeout(restoreScroll, 0);
 })();
 </script>
 <script src="assets/theme.js"></script>

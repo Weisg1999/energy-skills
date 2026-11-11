@@ -18,7 +18,10 @@
 
   function render() {
     var dark = current() === 'dark';
-    var label = dark ? '切换到浅色模式' : '切换到深色模式';
+    var en = (document.documentElement.lang || '').toLowerCase().indexOf('en') === 0;
+    var label = dark
+      ? (en ? 'Switch to light mode' : '切换到浅色模式')
+      : (en ? 'Switch to dark mode' : '切换到深色模式');
     var buttons = document.querySelectorAll('[data-theme-toggle]');
     for (var i = 0; i < buttons.length; i += 1) {
       buttons[i].setAttribute('aria-label', label);

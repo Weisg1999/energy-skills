@@ -6,6 +6,42 @@
   var toTop = document.querySelector('.to-top');
   var toggle = document.getElementById('navToggle');
   var scrim = document.querySelector('.scrim');
+  var HOME_KEY = 'es-hub-return';
+  var isEnglish = (document.documentElement.lang || '').toLowerCase().indexOf('en') === 0;
+
+  function readHomeState() {
+    try {
+      var saved = JSON.parse(sessionStorage.getItem(HOME_KEY) || 'null');
+      if (!saved || !saved.href || Date.now() - (saved.at || 0) > 6 * 60 * 60 * 1000) return null;
+      return saved;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  var homeState = readHomeState();
+  if (homeState) {
+    var homeLinks = document.querySelectorAll('[data-home-link]');
+    for (var hi = 0; hi < homeLinks.length; hi += 1) homeLinks[hi].setAttribute('href', homeState.href);
+    var backLabel = document.querySelector('.back-label');
+    var hasFilter = /[?&](q|type|cat)=/.test(homeState.href);
+    if (backLabel && hasFilter) {
+      backLabel.textContent = isEnglish ? 'Search results' : '检索结果';
+      var backLink = document.querySelector('.back');
+      if (backLink) {
+        backLink.setAttribute('aria-label', isEnglish ? 'Back to search results' : '返回检索结果');
+        backLink.setAttribute('title', isEnglish ? 'Back to search results' : '返回检索结果');
+      }
+    }
+    document.addEventListener('click', function (event) {
+      var link = event.target && event.target.closest ? event.target.closest('[data-home-link]') : null;
+      if (!link) return;
+      try {
+        homeState.restore = true;
+        sessionStorage.setItem(HOME_KEY, JSON.stringify(homeState));
+      } catch (e) {}
+    });
+  }
 
   function onScroll() {
     var doc = document.documentElement;
@@ -73,8 +109,17 @@
       if (link && navOpen) closeNav();
     });
   }
+  var more = document.querySelector('.more');
+  function closeMore() {
+    if (more) more.removeAttribute('open');
+  }
+  if (more) {
+    document.addEventListener('click', function (e) {
+      if (more.hasAttribute('open') && !more.contains(e.target)) closeMore();
+    });
+  }
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') { closeNav(); return; }
+    if (e.key === 'Escape') { closeNav(); closeMore(); return; }
     if (e.key !== 'Tab' || !navOpen || !nav) return;
     var items = navFocusables();
     if (!items.length) return;
@@ -102,7 +147,9 @@
     tocMore.addEventListener('click', function () {
       var open = tocBox.classList.toggle('expanded');
       tocMore.setAttribute('aria-expanded', open ? 'true' : 'false');
-      tocMore.textContent = open ? '收起小节' : '展开 ' + tocMore.getAttribute('data-count') + ' 个小节';
+      tocMore.textContent = open
+        ? (tocMore.getAttribute('data-less-label') || '收起小节')
+        : (tocMore.getAttribute('data-more-label') || '展开 ' + tocMore.getAttribute('data-count') + ' 个小节');
     });
   }
 

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta http-equiv="refresh" content="2; url=knowledge/index.html">
+<title>正在进入 energy-skills 知识库</title>
+<style>
+  :root{color-scheme:light dark}
+  *{box-sizing:border-box}
+  body{
+    margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;
+    background:#fff;color:#16232f;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  }
+  main{width:min(540px,100%);text-align:center}
+  .mark{display:grid;place-items:center;width:56px;height:56px;margin:0 auto 20px;border:1px solid #c8d0d6;border-radius:14px;color:#0e6b66}
+  .mark svg{width:28px;height:28px;fill:currentColor}
+  h1{font-family:"Noto Serif SC","Songti SC",serif;font-size:clamp(22px,5vw,30px);line-height:1.35;margin:0 0 10px}
+  p{line-height:1.75;color:#5b6772;margin:0 0 18px}
+  a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:8px;background:#16232f;color:#fff;text-decoration:none;font-size:14px;font-weight:600}
+  a:hover{background:#344250}
+  small{display:block;margin-top:18px;font-size:12px;color:#7f8a91}
+  @media (prefers-color-scheme:dark){
+    body{background:#0f1418;color:#e7e2d6}
+    .mark{border-color:#3b4751;color:#6cc8ba}
+    p{color:#94a1ac}
+    a{background:#e7e2d6;color:#16232f}
+    a:hover{background:#c2c9cf}
+  }
+</style>
+</head>
+<body>
+<main>
+  <div class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></div>
+  <h1>正在进入 energy-skills 知识库</h1>
+  <p>若页面没有自动跳转，请点击下方按钮。</p>
+  <a id="enter" href="knowledge/index.html">进入知识库</a>
+  <small>电力系统 · 电力市场 · 碳市场</small>
+</main>
+<script>
+(function () {
+  var target = 'knowledge/index.html' + window.location.search + window.location.hash;
+  var enter = document.getElementById('enter');
+  if (enter) enter.setAttribute('href', target);
+  window.location.replace(target);
+})();
+</script>
+</body>
+</html>

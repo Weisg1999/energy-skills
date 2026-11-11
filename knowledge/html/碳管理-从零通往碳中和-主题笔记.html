@@ -19,9 +19,9 @@
 <div class="scrim"></div>
 
 <header class="topbar">
-  <a class="back" href="../index.html">← 知识库</a>
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
   <div class="crumb">
-    <span class="crumb-cat">12 / CARBON</span>
+    <span class="crumb-cat">09 · CARBON</span>
     <span class="crumb-sep">/</span>
     <span class="crumb-doc">碳管理：从零通往碳中和</span>
   </div>
@@ -30,7 +30,14 @@
       <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
       <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-    <a class="src" href="../碳管理-从零通往碳中和-主题笔记.md">.md 源文件</a>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../碳管理-从零通往碳中和-主题笔记.md">.md 源文件<small>knowledge/碳管理-从零通往碳中和-主题笔记.md</small></a>
+
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
     <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
   </div>
 </header>
@@ -38,7 +45,7 @@
 <div class="shell">
   <aside class="sidebar" id="nav">
     <div class="nav-kicker">当前分类</div>
-    <div class="nav-num">12 / CARBON</div>
+    <div class="nav-num">09 · CARBON</div>
     <h2 class="nav-cat"><a href="../index.html#carbon">碳市场与碳管理</a></h2>
     <ul class="nav-list">
               <li><a href="中国碳排放权交易实务-主题笔记.html">中国碳排放权交易实务</a></li>
@@ -49,24 +56,24 @@
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
       <ul>
-              <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
-              <li><a href="../index.html#spot"><b>05</b>电力现货与省间交易</a></li>
-              <li><a href="../index.html#intl"><b>06</b>海外市场</a></li>
-              <li><a href="../index.html#cross"><b>07</b>横向专题</a></li>
-              <li><a href="../index.html#price"><b>08</b>电价</a></li>
-              <li><a href="../index.html#renewable"><b>09</b>新能源与并网</a></li>
-              <li><a href="../index.html#storage"><b>10</b>储能与 EMS</a></li>
-              <li><a href="../index.html#park"><b>11</b>综合能源与零碳园区</a></li>
-              <li><a href="../index.html#vpp"><b>13</b>虚拟电厂</a></li>
-              <li><a href="../index.html#index"><b>14</b>索引、查证与工具</a></li>
-              <li><a href="../index.html#research"><b>15</b>调研底稿</a></li>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#intl"><b>03</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>04</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>05</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>06</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>07</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>08</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#vpp"><b>10</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>11</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>12</b>调研底稿</a></li>
       </ul>
     </div>
   </aside>
 
   <main class="main" id="main">
     <header class="doc-head">
-      <div class="kicker">12 / CARBON<i>教材笔记</i></div>
+      <div class="kicker">09 · CARBON<i>教材笔记</i></div>
       <h1 class="doc-title">《碳管理：从零通往碳中和》（汪军著）主题化笔记</h1>
       <p class="lede">区域/组织/产品三层核算、电力排放因子、CCER/VCS/GS、碳金融与企业碳中和。</p>
       <p class="hook">汪军著 · 主题化笔记</p>
@@ -110,16 +117,40 @@
 <h2 id="s7">七、进阶业务与国际衔接</h2>
 <ul><li><strong>双碳规划</strong>：达峰方案=清单摸底+国家指标分解（2025年非化石能源消费占比20%左右、单位GDP能耗较2020年降13.5%、CO2排放降18%）+碳达峰十大行动；央企提达峰+中和双目标、民企一般只提碳中和。</li><li><strong>第三方业务</strong>：碳核查（2015年起上千家机构、最佳入门但天花板低）、CCER审定核查（资质稀缺、重启即爆发、全英文门槛高）、低碳认证（成长性强）。</li><li>碳普惠：全国机制近百种；蚂蚁森林40余种低碳场景、流量闭环难以复制；成败在商业模式而非场景数。</li><li>碳管理信息化五级：组织核算→产品核算（需权威数据库）→数据实时抓取→减排潜力分析→配套功能；市面多数停留在第一级。</li><li><strong>客户策略</strong>：控排企业帮其&quot;赚钱省钱&quot;（话术：100万吨×50元/吨=5000万资产）、减排项目业主按认知定模式（不懂者由开发方垫资提高分成）、ESG企业以碳中和规划报告入场再顺供应链延伸、政府做核查+清单+达峰+普惠。</li><li><strong>国际衔接</strong>：CBAM、PEF等规则使中小企业被动需要碳咨询（外购为主）；CDP被MSCI列为单独评分项、入驻投资者资产超100万亿美元、评级A-F共9级（不回复即F）。</li><li><strong>从业史教训</strong>：2012年碳价崩盘（6.2美元→约0.2美元）、2007年低谷每吨净利仅5美分；行业三起两落，&quot;专业+英语+学习能力&quot;复合者穿越周期。</li></ul>
 <h2 id="s8">速查：关键数字与标准</h2>
-<div class="table-wrap"><table><thead><tr><th>项目</th><th>数值</th></tr></thead><tbody><tr><td>温室气体七大类</td><td>CO2、CH4、N2O、HFCs、PFCs、SF6、NF3（AR5纳入）</td></tr><tr><td>GWP</td><td>CH4=25（沿用IPCC第2版）；R22≈1800；R134a=1430；SF6=22800；HFC-23超CO2一万倍</td></tr><tr><td>电网因子</td><td>全国0.6101（2015）/草案0.5810 tCO2/MWh；区域停2012、省级2018、基准线2019；风光OM0.75+BM0.25</td></tr><tr><td>核算阈值</td><td>剔除单源&lt;1%、累计≤5%；基准年重算&gt;5%；PAS 2050覆盖≥95%、单源&gt;5%、初级数据10%传导</td></tr><tr><td>中国NDC与全球空间</td><td>2030年碳强度较2005年降65%以上；1.5℃剩余可排约4000亿吨</td></tr><tr><td>碳市场规则</td><td>纳入门槛2.6万吨；CCER替代全国5%/试点5-10%；配额价≈CCER÷0.7</td></tr><tr><td>中国市场</td><td>碳价约40-60元；2021年成交约3.5亿吨/90亿元；电力配额超40亿吨</td></tr><tr><td>全球市场</td><td>25运行/22在建；2021年约7600亿欧元；欧盟配额破100美元/吨</td></tr><tr><td>CCER供需</td><td>2017.3暂停；需求2亿吨→5亿吨/年；剔除水风光后约4000万吨/年</td></tr><tr><td>CCER开发</td><td>方法学12批200多个；小型&lt;6万吨；简化≤2%或≤50MW；IRR基准8%；成本20-30万（林业50-100万元）；周期1.5-3年；计入期7×3或10年</td></tr><tr><td>国际机制</td><td>VCS超1700项目/签发9.6亿吨；GS（WWF）；GCC 2020启动；自愿市场均价约3欧元/吨</td></tr><tr><td>碳中和时间</td><td>运营2030、全产业链2050、不晚于2060</td></tr><tr><td>抵消纪律</td><td>权益限前3年+必须注销；绿证价光伏&gt;风电&gt;水电</td></tr><tr><td>达峰指标</td><td>2025年非化石能源20%、能耗-13.5%、碳强度-18%（较2020）</td></tr><tr><td>国际倡议</td><td>RE100 2050全绿电；EP100零碳建筑2030；EV100 2030；SBTi入会2年内提交；CDP评级9级/100万亿美元</td></tr><tr><td>关键年份</td><td>2005京都生效→2011试点→2012 CCER→2017.3暂停→2020双碳→2021.7全国市场</td></tr><tr><td>碳金融</td><td>JR/T 0228—2021；碳中和债券首批6只64亿元；中介费峰值5元/吨</td></tr><tr><td>价格史</td><td>2012崩盘约0.2美元/吨；三类CCER&lt;10元→涨十几倍；内部碳定价&lt;1至100美元+</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>数值</th></tr></thead><tbody><tr><td>温室气体七大类</td><td>CO2、CH4、N2O、HFCs、PFCs、SF6、NF3（AR5纳入）</td></tr><tr><td>GWP</td><td>CH4=25（沿用IPCC第2版）；R22≈1800；R134a=1430；SF6=22800；HFC-23超CO2一万倍</td></tr><tr><td>电网因子</td><td>全国0.6101（2015）/草案0.5810 tCO2/MWh；区域停2012、省级2018、基准线2019；风光OM0.75+BM0.25</td></tr><tr><td>核算阈值</td><td>剔除单源&lt;1%、累计≤5%；基准年重算&gt;5%；PAS 2050覆盖≥95%、单源&gt;5%、初级数据10%传导</td></tr><tr><td>中国NDC与全球空间</td><td>2030年碳强度较2005年降65%以上；1.5℃剩余可排约4000亿吨</td></tr><tr><td>碳市场规则</td><td>纳入门槛2.6万吨；CCER替代全国5%/试点5-10%；配额价≈CCER÷0.7</td></tr><tr><td>中国市场</td><td>碳价约40-60元；2021年成交约3.5亿吨/90亿元；电力配额超40亿吨</td></tr><tr><td>全球市场</td><td>25运行/22在建；2021年约7600亿欧元；欧盟配额破100美元/吨</td></tr><tr><td>CCER供需</td><td>2017.3暂停；需求2亿吨→5亿吨/年；剔除水风光后约4000万吨/年</td></tr><tr><td>CCER开发</td><td>方法学12批200多个；小型&lt;6万吨；简化≤2%或≤50MW；IRR基准8%；成本20-30万（林业50-100万元）；周期1.5-3年；计入期7×3或10年</td></tr><tr><td>国际机制</td><td>VCS超1700项目/签发9.6亿吨；GS（WWF）；GCC 2020启动；自愿市场均价约3欧元/吨</td></tr><tr><td>碳中和时间</td><td>运营2030、全产业链2050、不晚于2060</td></tr><tr><td>抵消纪律</td><td>权益限前3年+必须注销；绿证价光伏&gt;风电&gt;水电</td></tr><tr><td>达峰指标</td><td>2025年非化石能源20%、能耗-13.5%、碳强度-18%（较2020）</td></tr><tr><td>国际倡议</td><td>RE100 2050全绿电；EP100零碳建筑2030；EV100 2030；SBTi入会2年内提交；CDP评级9级/100万亿美元</td></tr><tr><td>关键年份</td><td>2005京都生效→2011试点→2012 CCER→2017.3暂停→2020双碳→2021.7全国市场</td></tr><tr><td>碳金融</td><td>JR/T 0228—2021；碳中和债券首批6只64亿元；中介费峰值5元/吨</td></tr><tr><td>价格史</td><td>2012崩盘约0.2美元/吨；三类CCER&lt;10元→涨十几倍；内部碳定价&lt;1至100美元+</td></tr></tbody></table></div>
     </article>
 
-    <section class="related" aria-label="相关模块">
-      <h2>相关模块</h2>
-      <ul>
-        <li><a href="中国碳排放权交易实务-主题笔记.html">中国碳排放权交易实务</a></li>
-        <li><a href="碳资产实务-2026-11.html">碳资产实务 2026-11</a></li>
-        <li><a href="调研-碳管理与碳足迹厂商-2026-11.html">碳管理与碳足迹厂商</a></li>
-      </ul>
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>3</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="中国碳排放权交易实务-主题笔记.html">
+          <span class="related-type">同区延伸</span>
+          <b>中国碳排放权交易实务</b>
+          <span>碳定价原理、EU ETS 与试点对比、MRV、核查实操与 CCER 项目开发。</span>
+        </a>
+        <a class="related-card" href="碳资产实务-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>碳资产实务 2026-11</b>
+          <span>2025/2026 履约参数、履约成本算例、CCER、碳金融工具、CBAM 时点与电碳衔接。</span>
+        </a>
+        <a class="related-card" href="调研-碳管理与碳足迹厂商-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>碳管理与碳足迹厂商</b>
+          <span>服务矩阵、有日期的公开案例、可借鉴方法，以及不能当基准的宣称复核清单。</span>
+        </a>
+      </div>
+
+    </section>
+
+<section class="related" aria-labelledby="paired-skills-title">
+      <div class="related-head"><h2 id="paired-skills-title">配套技能</h2><span>1</span></div>
+      <div class="related-grid">
+        <a class="related-card skill-pair" href="skill-carbon-asset-expert.html">
+          <span class="related-type">履约、CCER、碳足迹与碳金融</span>
+          <b>碳资产管理专家</b>
+          <span>技能 · 履约 · CCER · CBAM</span>
+        </a>
+      </div>
     </section>
 
     <nav class="pager" aria-label="上下篇">
@@ -129,7 +160,11 @@
 
     <footer class="doc-foot">
       <div class="lic">本页由 <a href="../碳管理-从零通往碳中和-主题笔记.md">knowledge/碳管理-从零通往碳中和-主题笔记.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
-      <div><a href="../index.html">返回知识库总览 →</a></div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
     </footer>
   </main>
 

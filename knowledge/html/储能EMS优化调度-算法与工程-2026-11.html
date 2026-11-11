@@ -19,9 +19,9 @@
 <div class="scrim"></div>
 
 <header class="topbar">
-  <a class="back" href="../index.html">← 知识库</a>
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
   <div class="crumb">
-    <span class="crumb-cat">10 / STORAGE</span>
+    <span class="crumb-cat">07 · STORAGE</span>
     <span class="crumb-sep">/</span>
     <span class="crumb-doc">储能 EMS 优化调度</span>
   </div>
@@ -30,7 +30,14 @@
       <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
       <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-    <a class="src" href="../储能EMS优化调度-算法与工程-2026-11.md">.md 源文件</a>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../储能EMS优化调度-算法与工程-2026-11.md">.md 源文件<small>knowledge/储能EMS优化调度-算法与工程-2026-11.md</small></a>
+
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
     <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
   </div>
 </header>
@@ -38,7 +45,7 @@
 <div class="shell">
   <aside class="sidebar" id="nav">
     <div class="nav-kicker">当前分类</div>
-    <div class="nav-num">10 / STORAGE</div>
+    <div class="nav-num">07 · STORAGE</div>
     <h2 class="nav-cat"><a href="../index.html#storage">储能与 EMS</a></h2>
     <ul class="nav-list">
               <li><a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线、安全与构网型并网</a></li>
@@ -50,24 +57,24 @@
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
       <ul>
-              <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
-              <li><a href="../index.html#spot"><b>05</b>电力现货与省间交易</a></li>
-              <li><a href="../index.html#intl"><b>06</b>海外市场</a></li>
-              <li><a href="../index.html#cross"><b>07</b>横向专题</a></li>
-              <li><a href="../index.html#price"><b>08</b>电价</a></li>
-              <li><a href="../index.html#renewable"><b>09</b>新能源与并网</a></li>
-              <li><a href="../index.html#park"><b>11</b>综合能源与零碳园区</a></li>
-              <li><a href="../index.html#carbon"><b>12</b>碳市场与碳管理</a></li>
-              <li><a href="../index.html#vpp"><b>13</b>虚拟电厂</a></li>
-              <li><a href="../index.html#index"><b>14</b>索引、查证与工具</a></li>
-              <li><a href="../index.html#research"><b>15</b>调研底稿</a></li>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#intl"><b>03</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>04</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>05</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>06</b>新能源与并网</a></li>
+              <li><a href="../index.html#park"><b>08</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>09</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>10</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>11</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>12</b>调研底稿</a></li>
       </ul>
     </div>
   </aside>
 
   <main class="main" id="main">
     <header class="doc-head">
-      <div class="kicker">10 / STORAGE<i>算法底稿</i></div>
+      <div class="kicker">07 · STORAGE<i>算法底稿</i></div>
       <h1 class="doc-title">储能 EMS 优化调度：算法、模型与工程实践</h1>
       <p class="lede">把储能调度建成 MILP：96 点经济调度、多市场堆叠、SOC/退化、MPC 与安全联锁。</p>
       <p class="hook">算法、模型与工程实践</p>
@@ -101,47 +108,47 @@
 <hr>
 <h2 id="s1">0. 一页速查</h2>
 <h3 id="s2">0.1 储能控制链分层</h3>
-<div class="table-wrap"><table><thead><tr><th>层级</th><th>时间尺度</th><th>典型功能</th><th>本文是否覆盖</th></tr></thead><tbody><tr><td>电芯/模组保护</td><td>ms</td><td>过压、过流、过温、断路</td><td>否（只取 BMS 限值）</td></tr><tr><td>BMS</td><td>10 ms–s</td><td>SOC/SOH 估算、均衡、保护、限功率</td><td>部分（作为边界输入）</td></tr><tr><td>PCS 本地控制</td><td>ms–s</td><td>电流环、电压环、并网同步、故障穿越</td><td>否（只取能力边界）</td></tr><tr><td>站控/协调控制器</td><td>100 ms–s</td><td>AGC/AVC 响应、功率分配、联锁</td><td>部分（§6）</td></tr><tr><td><strong>EMS 优化调度</strong></td><td><strong>min–h</strong></td><td><strong>96 点经济调度、多市场申报、SOC 计划、滚动修正</strong></td><td><strong>本文主体</strong></td></tr><tr><td>云平台/聚合层</td><td>min–day</td><td>多站聚合、VPP、交易申报、结算对账</td><td>部分（§2、§4.9）</td></tr><tr><td>规划</td><td>年</td><td>容量配置、选址、时长选型</td><td>否</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>层级</th><th>时间尺度</th><th>典型功能</th><th>本文是否覆盖</th></tr></thead><tbody><tr><td>电芯/模组保护</td><td>ms</td><td>过压、过流、过温、断路</td><td>否（只取 BMS 限值）</td></tr><tr><td>BMS</td><td>10 ms–s</td><td>SOC/SOH 估算、均衡、保护、限功率</td><td>部分（作为边界输入）</td></tr><tr><td>PCS 本地控制</td><td>ms–s</td><td>电流环、电压环、并网同步、故障穿越</td><td>否（只取能力边界）</td></tr><tr><td>站控/协调控制器</td><td>100 ms–s</td><td>AGC/AVC 响应、功率分配、联锁</td><td>部分（§6）</td></tr><tr><td><strong>EMS 优化调度</strong></td><td><strong>min–h</strong></td><td><strong>96 点经济调度、多市场申报、SOC 计划、滚动修正</strong></td><td><strong>本文主体</strong></td></tr><tr><td>云平台/聚合层</td><td>min–day</td><td>多站聚合、VPP、交易申报、结算对账</td><td>部分（§2、§4.9）</td></tr><tr><td>规划</td><td>年</td><td>容量配置、选址、时长选型</td><td>否</td></tr></tbody></table></div>
 <p><strong>EMS 不替代 BMS、PCS 与保护。</strong> 优化器输出的是功率与 SOC 计划；单体保护、故障穿越、消防联锁由设备与站控完成。EMS 的指令必须先过 BMS/PCS 限值校验再下发。</p>
 <h3 id="s3">0.2 三句话</h3>
 <ol><li><strong>储能 EMS 是 MILP，不是 LP</strong>：充放互斥、市场品种选择、检修可用性、退化分档都是逻辑约束；松弛成 LP 会得到&quot;同时充放&quot;&quot;全品种中标&quot;的虚假最优。</li><li><strong>四条硬边界先于收益</strong>：并网点功率与并网标准、AGC/AVC 与一次调频能力、容量补偿的清单与可用率资格、BMS/安全限值。收益再高，越界或不合格即不可交付。</li><li><strong>可交付优于最优</strong>：超时返回可行解、不可行给诊断、数值异常回退上一版计划；结算口径与考核口径必须在模型里显式出现，不能事后补。</li></ol>
 <h3 id="s4">0.3 适用与不适用</h3>
-<div class="table-wrap"><table><thead><tr><th>适用</th><th>不适用</th></tr></thead><tbody><tr><td>电网侧独立储能的日前/日内经济调度</td><td>电网全网络安全约束调度</td></tr><tr><td>用户侧储能的峰谷套利与需量管理</td><td>毫秒级保护定值与电磁暂态</td></tr><tr><td>新能源配储的消纳与计划跟踪</td><td>电力市场报价策略与报价曲线优化（见《现货报价量化专家》）</td></tr><tr><td>火电联合调频的储能侧功率分配</td><td>电芯选型与电化学体系设计</td></tr><tr><td>共享储能/多站聚合的容量分配</td><td>消防系统设计与灭火策略</td></tr><tr><td>调频、备用、爬坡等多品种申报</td><td>中长期合约分解与结算（见《电力交易专家》）</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>适用</th><th>不适用</th></tr></thead><tbody><tr><td>电网侧独立储能的日前/日内经济调度</td><td>电网全网络安全约束调度</td></tr><tr><td>用户侧储能的峰谷套利与需量管理</td><td>毫秒级保护定值与电磁暂态</td></tr><tr><td>新能源配储的消纳与计划跟踪</td><td>电力市场报价策略与报价曲线优化（见《现货报价量化专家》）</td></tr><tr><td>火电联合调频的储能侧功率分配</td><td>电芯选型与电化学体系设计</td></tr><tr><td>共享储能/多站聚合的容量分配</td><td>消防系统设计与灭火策略</td></tr><tr><td>调频、备用、爬坡等多品种申报</td><td>中长期合约分解与结算（见《电力交易专家》）</td></tr></tbody></table></div>
 <hr>
 <h2 id="s5">1. 问题定位：储能 EMS 是什么运筹问题</h2>
 <h3 id="s6">1.1 六维度识别</h3>
-<div class="table-wrap"><table><thead><tr><th>维度</th><th>需要先回答的问题</th><th>对模型的影响</th></tr></thead><tbody><tr><td>时间尺度</td><td>日前、日内、实时分别多长颗粒度</td><td>96×15 min / 24×1 h / 秒级跟踪</td></tr><tr><td>空间范围</td><td>单站、多站、共享储能、VPP</td><td>是否引入聚合约束与容量分配</td></tr><tr><td>收益来源</td><td>套利、调频、备用、爬坡、容量、需量</td><td>目标函数项与市场约束</td></tr><tr><td>设备约束</td><td>PCS、BMS、SOC、温度、SOH、辅助电源</td><td>变量界、降额系数、退化成本</td></tr><tr><td>市场约束</td><td>申报、出清、考核、非预期性</td><td>上界约束、信息集约束、惩罚项</td></tr><tr><td>安全约束</td><td>并网、保护、消防、隔离</td><td>硬约束与联锁，不进入目标</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>需要先回答的问题</th><th>对模型的影响</th></tr></thead><tbody><tr><td>时间尺度</td><td>日前、日内、实时分别多长颗粒度</td><td>96×15 min / 24×1 h / 秒级跟踪</td></tr><tr><td>空间范围</td><td>单站、多站、共享储能、VPP</td><td>是否引入聚合约束与容量分配</td></tr><tr><td>收益来源</td><td>套利、调频、备用、爬坡、容量、需量</td><td>目标函数项与市场约束</td></tr><tr><td>设备约束</td><td>PCS、BMS、SOC、温度、SOH、辅助电源</td><td>变量界、降额系数、退化成本</td></tr><tr><td>市场约束</td><td>申报、出清、考核、非预期性</td><td>上界约束、信息集约束、惩罚项</td></tr><tr><td>安全约束</td><td>并网、保护、消防、隔离</td><td>硬约束与联锁，不进入目标</td></tr></tbody></table></div>
 <h3 id="s7">1.2 为什么是 MILP，而不是 LP 或 NLP</h3>
-<div class="table-wrap"><table><thead><tr><th>现象</th><th>线性松弛后的错误</th><th>需要的建模元素</th></tr></thead><tbody><tr><td>同时充放</td><td>套利收益虚高、退化被低估</td><td>0-1 互斥变量</td></tr><tr><td>同时购售电</td><td>负价差下虚假套利</td><td>购/售双变量 + 互斥</td></tr><tr><td>多市场全中标</td><td>容量被重复计算</td><td>品种选择变量与容量耦合</td></tr><tr><td>检修/故障停运</td><td>不可用时段仍被安排出力</td><td>可用性 0-1 参数或变量</td></tr><tr><td>退化分档</td><td>低成本档被无限使用</td><td>分段线性或 SOS2</td></tr><tr><td>容量补偿资格</td><td>不合格时长仍计入补偿</td><td>资格 0-1 与可用率约束</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>现象</th><th>线性松弛后的错误</th><th>需要的建模元素</th></tr></thead><tbody><tr><td>同时充放</td><td>套利收益虚高、退化被低估</td><td>0-1 互斥变量</td></tr><tr><td>同时购售电</td><td>负价差下虚假套利</td><td>购/售双变量 + 互斥</td></tr><tr><td>多市场全中标</td><td>容量被重复计算</td><td>品种选择变量与容量耦合</td></tr><tr><td>检修/故障停运</td><td>不可用时段仍被安排出力</td><td>可用性 0-1 参数或变量</td></tr><tr><td>退化分档</td><td>低成本档被无限使用</td><td>分段线性或 SOS2</td></tr><tr><td>容量补偿资格</td><td>不合格时长仍计入补偿</td><td>资格 0-1 与可用率约束</td></tr></tbody></table></div>
 <p><strong>结论</strong>：涉及&quot;开/关、买/卖、充/放、合格/不合格&quot;的决策，一律用 MILP；只有纯经济分配且互斥可由价格保证时，才可退化为 LP。</p>
 <h3 id="s8">1.3 与经典运筹问题的同构关系</h3>
-<div class="table-wrap"><table><thead><tr><th>经典问题</th><th>对应关系</th></tr></thead><tbody><tr><td>机组组合</td><td>充/放 = 开/停机；最小开停机 ≈ 最小充放持续时间</td></tr><tr><td>库存管理</td><td>SOC = 库存；充放电 = 进货/出货；自放电 = 损耗</td></tr><tr><td>多产品组合</td><td>电能量、调频、备用、爬坡共享同一功率与能量</td></tr><tr><td>带爬坡的调度</td><td>PCS 功率变化率与 AGC 响应能力</td></tr><tr><td>收益管理</td><td>多市场容量分配与机会成本</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>经典问题</th><th>对应关系</th></tr></thead><tbody><tr><td>机组组合</td><td>充/放 = 开/停机；最小开停机 ≈ 最小充放持续时间</td></tr><tr><td>库存管理</td><td>SOC = 库存；充放电 = 进货/出货；自放电 = 损耗</td></tr><tr><td>多产品组合</td><td>电能量、调频、备用、爬坡共享同一功率与能量</td></tr><tr><td>带爬坡的调度</td><td>PCS 功率变化率与 AGC 响应能力</td></tr><tr><td>收益管理</td><td>多市场容量分配与机会成本</td></tr></tbody></table></div>
 <p>同构的价值在于复用成熟算法与求解器参数，而不是从零发明。</p>
 <h3 id="s9">1.4 标准坐标（中国）</h3>
-<div class="table-wrap"><table><thead><tr><th>标准号</th><th>名称</th><th>时点</th><th>与本模块的关系</th></tr></thead><tbody><tr><td>GB/T 36547-2024</td><td>电化学储能电站接入电网技术规定</td><td>2024-05-28 发布，2024-12-01 实施（替代 2018 版）</td><td>并网功率、一次调频、惯量响应、故障穿越</td></tr><tr><td>GB/T 36548-2024</td><td>电化学储能电站接入电网测试规程</td><td>2024-06-29 发布，2025-01-01 实施</td><td>并网检测与验收测试</td></tr><tr><td>GB/T 36558-2023</td><td>电力系统电化学储能系统通用技术条件</td><td>2023-12-28 发布，2024-07-01 实施</td><td>系统级技术条件与性能</td></tr><tr><td>GB/T 36276-2023</td><td>电力储能用锂离子电池</td><td>2023-12-28 发布，2024-07-01 实施</td><td>电芯/电池安全与性能边界</td></tr><tr><td>GB/T 34131-2023</td><td>电力储能用电池管理系统</td><td>2023-03-17 发布，2023-10-01 实施</td><td>BMS 数据、保护与限功率</td></tr><tr><td>GB/T 34120-2023</td><td>电化学储能系统储能变流器技术要求</td><td>2023-12-28 发布，2024-07-01 实施；交流侧 ≤35 kV</td><td>PCS 能力、一次调频、惯量、HVRT、连续故障穿越</td></tr><tr><td>GB/T 42726-2023</td><td>电化学储能电站监控系统技术规范</td><td>2023-05-23 发布，2023-12-01 实施</td><td>站控层/现地层、双网冗余、SOE、对时</td></tr><tr><td>GB/T 42288-2022</td><td>电化学储能电站安全规程</td><td>2022-12-30 发布，2023-07-01 实施</td><td>安全联锁、消防与应急</td></tr><tr><td>GB/T 40090-2021</td><td>储能电站运行维护规程</td><td>2021-11-01 实施</td><td>运维、检修与可用性</td></tr><tr><td>GB/T 36549-2018</td><td>电化学储能电站运行指标及评价</td><td>2018-07-13 发布，2019-02-01 实施；适用 ≥500 kW 且 ≥500 kWh</td><td>运行指标与统计方法（见 §8.5）</td></tr><tr><td>GB/T 51048-2025</td><td>电化学储能电站设计标准</td><td>2025-12-10 发布，2026-04-01 实施</td><td>站级设计与布置（新建项目）</td></tr><tr><td>GB/T 44112-2024</td><td>电化学储能电站接入电网运行控制规范</td><td>2024 年</td><td>运行控制与调度接口</td></tr><tr><td>GB/T 44113-2024</td><td>用户侧电化学储能系统并网管理规范</td><td>2024 年</td><td>用户侧并网、防逆流</td></tr><tr><td>GB/T 44114-2024</td><td>低压配电网运行控制规范</td><td>2024 年</td><td>低压接入的运行边界</td></tr><tr><td>GB/T 44111-2024</td><td>电化学储能电站检修试验规程</td><td>2024 年</td><td>检修计划与试验</td></tr><tr><td>GB/T 43868-2024</td><td>电化学储能电站启动验收规程</td><td>2024 年</td><td>启动验收</td></tr><tr><td>GB/T 42737-2023</td><td>电化学储能电站调试规程</td><td>2023 年</td><td>调试与并网前试验</td></tr><tr><td>GB/T 44026-2024</td><td>预制舱式锂离子电池储能系统技术规范</td><td>2024 年</td><td>预制舱系统集成</td></tr><tr><td>GB/T 46261-2025</td><td>电化学储能电站火灾监测预警系统通用技术要求</td><td>2025 年发布，2026-09 实施</td><td>火灾监测预警</td></tr><tr><td>GB/T 46957-2025</td><td>并网储能系统安全通用规范</td><td>2025 年发布，2026-07-01 实施</td><td>并网安全</td></tr><tr><td>GB/T 47968-2026</td><td>构网型变流器通用技术规范</td><td>2026-07-30 发布，2026-11-01 实施</td><td>构网型能力与惯量/电压支撑</td></tr><tr><td>DL/T 2917-2025</td><td>电化学储能电站并网验收技术规范</td><td>2025-12-30</td><td>并网验收</td></tr><tr><td>DL/T 2246-2021（系列）</td><td>电化学储能电站并网运行与控制技术规范</td><td>2021 年</td><td>并网运行与控制、调度信息通信</td></tr><tr><td>DL/T 2247-2021（系列）</td><td>电化学储能电站调度运行管理</td><td>2021 年</td><td>调度端与电站监控系统接口、检测</td></tr><tr><td>DL/T 2919-2025</td><td>电化学储能电站经济评价导则</td><td>2025 年</td><td>经济评价口径（可研与后评价）</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>标准号</th><th>名称</th><th>时点</th><th>与本模块的关系</th></tr></thead><tbody><tr><td>GB/T 36547-2024</td><td>电化学储能电站接入电网技术规定</td><td>2024-05-28 发布，2024-12-01 实施（替代 2018 版）</td><td>并网功率、一次调频、惯量响应、故障穿越</td></tr><tr><td>GB/T 36548-2024</td><td>电化学储能电站接入电网测试规程</td><td>2024-06-29 发布，2025-01-01 实施</td><td>并网检测与验收测试</td></tr><tr><td>GB/T 36558-2023</td><td>电力系统电化学储能系统通用技术条件</td><td>2023-12-28 发布，2024-07-01 实施</td><td>系统级技术条件与性能</td></tr><tr><td>GB/T 36276-2023</td><td>电力储能用锂离子电池</td><td>2023-12-28 发布，2024-07-01 实施</td><td>电芯/电池安全与性能边界</td></tr><tr><td>GB/T 34131-2023</td><td>电力储能用电池管理系统</td><td>2023-03-17 发布，2023-10-01 实施</td><td>BMS 数据、保护与限功率</td></tr><tr><td>GB/T 34120-2023</td><td>电化学储能系统储能变流器技术要求</td><td>2023-12-28 发布，2024-07-01 实施；交流侧 ≤35 kV</td><td>PCS 能力、一次调频、惯量、HVRT、连续故障穿越</td></tr><tr><td>GB/T 42726-2023</td><td>电化学储能电站监控系统技术规范</td><td>2023-05-23 发布，2023-12-01 实施</td><td>站控层/现地层、双网冗余、SOE、对时</td></tr><tr><td>GB/T 42288-2022</td><td>电化学储能电站安全规程</td><td>2022-12-30 发布，2023-07-01 实施</td><td>安全联锁、消防与应急</td></tr><tr><td>GB/T 40090-2021</td><td>储能电站运行维护规程</td><td>2021-11-01 实施</td><td>运维、检修与可用性</td></tr><tr><td>GB/T 36549-2018</td><td>电化学储能电站运行指标及评价</td><td>2018-07-13 发布，2019-02-01 实施；适用 ≥500 kW 且 ≥500 kWh</td><td>运行指标与统计方法（见 §8.5）</td></tr><tr><td>GB/T 51048-2025</td><td>电化学储能电站设计标准</td><td>2025-12-10 发布，2026-04-01 实施</td><td>站级设计与布置（新建项目）</td></tr><tr><td>GB/T 44112-2024</td><td>电化学储能电站接入电网运行控制规范</td><td>2024 年</td><td>运行控制与调度接口</td></tr><tr><td>GB/T 44113-2024</td><td>用户侧电化学储能系统并网管理规范</td><td>2024 年</td><td>用户侧并网、防逆流</td></tr><tr><td>GB/T 44114-2024</td><td>低压配电网运行控制规范</td><td>2024 年</td><td>低压接入的运行边界</td></tr><tr><td>GB/T 44111-2024</td><td>电化学储能电站检修试验规程</td><td>2024 年</td><td>检修计划与试验</td></tr><tr><td>GB/T 43868-2024</td><td>电化学储能电站启动验收规程</td><td>2024 年</td><td>启动验收</td></tr><tr><td>GB/T 42737-2023</td><td>电化学储能电站调试规程</td><td>2023 年</td><td>调试与并网前试验</td></tr><tr><td>GB/T 44026-2024</td><td>预制舱式锂离子电池储能系统技术规范</td><td>2024 年</td><td>预制舱系统集成</td></tr><tr><td>GB/T 46261-2025</td><td>电化学储能电站火灾监测预警系统通用技术要求</td><td>2025 年发布，2026-09 实施</td><td>火灾监测预警</td></tr><tr><td>GB/T 46957-2025</td><td>并网储能系统安全通用规范</td><td>2025 年发布，2026-07-01 实施</td><td>并网安全</td></tr><tr><td>GB/T 47968-2026</td><td>构网型变流器通用技术规范</td><td>2026-07-30 发布，2026-11-01 实施</td><td>构网型能力与惯量/电压支撑</td></tr><tr><td>DL/T 2917-2025</td><td>电化学储能电站并网验收技术规范</td><td>2025-12-30</td><td>并网验收</td></tr><tr><td>DL/T 2246-2021（系列）</td><td>电化学储能电站并网运行与控制技术规范</td><td>2021 年</td><td>并网运行与控制、调度信息通信</td></tr><tr><td>DL/T 2247-2021（系列）</td><td>电化学储能电站调度运行管理</td><td>2021 年</td><td>调度端与电站监控系统接口、检测</td></tr><tr><td>DL/T 2919-2025</td><td>电化学储能电站经济评价导则</td><td>2025 年</td><td>经济评价口径（可研与后评价）</td></tr></tbody></table></div>
 <aside class="note"><p>标准名称、日期与适用范围以正式文本为准。2024–2026 年新标准的实施时点存在项目所在地的执行口径差异，落地前复核（B/C 级）。</p></aside>
 <h3 id="s10">1.5 标准坐标（国际）</h3>
-<div class="table-wrap"><table><thead><tr><th>标准</th><th>范围</th><th>与本模块的关系</th></tr></thead><tbody><tr><td>IEEE 1547-2018 / 1547a-2020</td><td>分布式能源并网</td><td>电压/频率穿越、无功与功率控制</td></tr><tr><td>IEEE 2800-2022</td><td>逆变型电源并网</td><td>弱网、惯量与故障穿越</td></tr><tr><td>IEC 62933 系列</td><td>电能存储系统</td><td>单元参数、测试方法、安全</td></tr><tr><td>IEC 62443</td><td>工业控制系统网络安全</td><td>EMS/云平台访问控制与分区</td></tr><tr><td>NFPA 855</td><td>储能系统安装</td><td>布置、间距、消防</td></tr><tr><td>UL 9540 / 9540A</td><td>储能系统与热失控测试</td><td>系统安全与热扩散</td></tr><tr><td>IEC 61850-7-420</td><td>分布式能源信息模型</td><td>站控层建模与互操作</td></tr><tr><td>OpenADR 2.0b / IEEE 2030.5</td><td>需求响应通信</td><td>用户侧聚合与调度接口</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>标准</th><th>范围</th><th>与本模块的关系</th></tr></thead><tbody><tr><td>IEEE 1547-2018 / 1547a-2020</td><td>分布式能源并网</td><td>电压/频率穿越、无功与功率控制</td></tr><tr><td>IEEE 2800-2022</td><td>逆变型电源并网</td><td>弱网、惯量与故障穿越</td></tr><tr><td>IEC 62933 系列</td><td>电能存储系统</td><td>单元参数、测试方法、安全</td></tr><tr><td>IEC 62443</td><td>工业控制系统网络安全</td><td>EMS/云平台访问控制与分区</td></tr><tr><td>NFPA 855</td><td>储能系统安装</td><td>布置、间距、消防</td></tr><tr><td>UL 9540 / 9540A</td><td>储能系统与热失控测试</td><td>系统安全与热扩散</td></tr><tr><td>IEC 61850-7-420</td><td>分布式能源信息模型</td><td>站控层建模与互操作</td></tr><tr><td>OpenADR 2.0b / IEEE 2030.5</td><td>需求响应通信</td><td>用户侧聚合与调度接口</td></tr></tbody></table></div>
 <h3 id="s11">1.6 政策与市场坐标</h3>
-<div class="table-wrap"><table><thead><tr><th>文件</th><th>时点</th><th>与本模块的关系</th></tr></thead><tbody><tr><td>发改能源规〔2021〕1051号</td><td>2021</td><td>新型储能发展指导意见，明确市场主体地位</td></tr><tr><td>国能发科技规〔2021〕47号</td><td>2021</td><td>新型储能项目管理规范（规划、备案、并网）</td></tr><tr><td>发改办运行〔2022〕475号</td><td>2022</td><td>新型储能参与电力市场与调度运用</td></tr><tr><td>发改体改〔2022〕118号</td><td>2022</td><td>统一电力市场体系</td></tr><tr><td>发改办体改〔2023〕813号</td><td>2023</td><td>现货市场基本规则</td></tr><tr><td>国能发科技规〔2024〕26号</td><td>2024-04-02 发布，有效期 5 年</td><td>并网与调度运用：区分调度调用型与电站自用型，要求功率控制/协调系统与 AGC/AVC 接口</td></tr><tr><td>发改价格〔2024〕196号</td><td>2024</td><td>辅助服务价格机制</td></tr><tr><td>发改能源规〔2025〕411号</td><td>2025-04-03</td><td>电力辅助服务市场基本规则：调峰、调频、备用、爬坡</td></tr><tr><td>发改价格〔2026〕114号</td><td>2026-01</td><td>发电侧容量电价机制：电网侧独立储能容量补偿框架、清单制、按时长折算</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>文件</th><th>时点</th><th>与本模块的关系</th></tr></thead><tbody><tr><td>发改能源规〔2021〕1051号</td><td>2021</td><td>新型储能发展指导意见，明确市场主体地位</td></tr><tr><td>国能发科技规〔2021〕47号</td><td>2021</td><td>新型储能项目管理规范（规划、备案、并网）</td></tr><tr><td>发改办运行〔2022〕475号</td><td>2022</td><td>新型储能参与电力市场与调度运用</td></tr><tr><td>发改体改〔2022〕118号</td><td>2022</td><td>统一电力市场体系</td></tr><tr><td>发改办体改〔2023〕813号</td><td>2023</td><td>现货市场基本规则</td></tr><tr><td>国能发科技规〔2024〕26号</td><td>2024-04-02 发布，有效期 5 年</td><td>并网与调度运用：区分调度调用型与电站自用型，要求功率控制/协调系统与 AGC/AVC 接口</td></tr><tr><td>发改价格〔2024〕196号</td><td>2024</td><td>辅助服务价格机制</td></tr><tr><td>发改能源规〔2025〕411号</td><td>2025-04-03</td><td>电力辅助服务市场基本规则：调峰、调频、备用、爬坡</td></tr><tr><td>发改价格〔2026〕114号</td><td>2026-01</td><td>发电侧容量电价机制：电网侧独立储能容量补偿框架、清单制、按时长折算</td></tr></tbody></table></div>
 <p><strong>市场化调用与紧急调度并存</strong>：正常情况下按市场出清或调度计划调用；紧急状态下调度机构可直接下发指令，EMS 必须有旁路与优先响应通道。</p>
 <h3 id="s12">1.7 六类业务形态</h3>
-<div class="table-wrap"><table><thead><tr><th>形态</th><th>主要收益</th><th>关键约束</th><th>调度主体</th></tr></thead><tbody><tr><td>电网侧独立储能</td><td>现货套利、调频、备用、容量补偿</td><td>并网标准、AGC/AVC、容量清单、可用率</td><td>调度机构直调</td></tr><tr><td>用户侧储能</td><td>峰谷价差、需量管理、需求响应</td><td>防逆流、并网容量、消防、负荷耦合</td><td>用户/聚合商</td></tr><tr><td>新能源配储</td><td>减少弃电、跟踪计划、一次调频</td><td>与新能源出力耦合、充电来源、并网点限值</td><td>场站/调度</td></tr><tr><td>火电联合调频</td><td>调频里程分成</td><td>联合控制、K 值考核、设备寿命</td><td>电厂/调度</td></tr><tr><td>共享储能</td><td>容量租赁、多用户分摊</td><td>容量分配、计量结算、优先级</td><td>运营商/交易机构</td></tr><tr><td>VPP 聚合</td><td>聚合参与现货/辅助服务/需求响应</td><td>可调能力评估、通信时延、基线</td><td>聚合商</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>形态</th><th>主要收益</th><th>关键约束</th><th>调度主体</th></tr></thead><tbody><tr><td>电网侧独立储能</td><td>现货套利、调频、备用、容量补偿</td><td>并网标准、AGC/AVC、容量清单、可用率</td><td>调度机构直调</td></tr><tr><td>用户侧储能</td><td>峰谷价差、需量管理、需求响应</td><td>防逆流、并网容量、消防、负荷耦合</td><td>用户/聚合商</td></tr><tr><td>新能源配储</td><td>减少弃电、跟踪计划、一次调频</td><td>与新能源出力耦合、充电来源、并网点限值</td><td>场站/调度</td></tr><tr><td>火电联合调频</td><td>调频里程分成</td><td>联合控制、K 值考核、设备寿命</td><td>电厂/调度</td></tr><tr><td>共享储能</td><td>容量租赁、多用户分摊</td><td>容量分配、计量结算、优先级</td><td>运营商/交易机构</td></tr><tr><td>VPP 聚合</td><td>聚合参与现货/辅助服务/需求响应</td><td>可调能力评估、通信时延、基线</td><td>聚合商</td></tr></tbody></table></div>
 <h3 id="s13">1.8 四条硬约束</h3>
 <ol><li><strong>并网点功率与并网标准</strong>：最大受电/送出功率、功率因数、电压/频率范围、故障穿越。对应 GB/T 36547-2024、GB/T 44112-2024、GB/T 44113-2024。</li><li><strong>AGC/AVC 与一次调频/惯量</strong>：调度调用型必须保持 AGC/AVC 在线；一次调频与惯量响应是并网能力，不是可选收益项。对应国能发科技规〔2024〕26号、GB/T 36547-2024、GB/T 34120-2023。</li><li><strong>容量补偿资格</strong>：清单制、可用率考核、按当地煤电容量电价与时长比例折算，上限为 1 倍。对应发改价格〔2026〕114号及省级细则。</li><li><strong>BMS/安全边界</strong>：SOC、单体电压、温度、压差、绝缘、消防联锁。对应 GB/T 34131-2023、GB/T 42288-2022、GB/T 46957-2025。</li></ol>
 <h3 id="s14">1.9 常见口径误区</h3>
-<div class="table-wrap"><table><thead><tr><th>误区</th><th>正确口径</th></tr></thead><tbody><tr><td>用 PCS 铭牌功率当可调功率</td><td>扣辅助电源、温度降额、BMS 限功率、并网点限值后取最小</td></tr><tr><td>用铭牌容量当可用电量</td><td>可用能量 = (SOC_max − SOC_min) × 额定能量 × SOH</td></tr><tr><td>把可用直流电量当交流放电量</td><td>交流放电 = 直流可用电量 × η；交流充电 = 直流 ÷ η</td></tr><tr><td>用单程效率当循环效率</td><td>系统 RTE 含充电、放电、辅助电源与静置损耗</td></tr><tr><td>调频中标容量与能量备用脱节</td><td>中标容量必须同时留功率裕度与能量裕度</td></tr><tr><td>需量电费按净功率计算</td><td>需量按购电功率（进口）取最大，售电不抵扣</td></tr><tr><td>容量补偿按铭牌容量计算</td><td>按清单容量、可用率、时长折算系数计算</td></tr><tr><td>调频里程收入当净收入</td><td>扣考核、扣退化、扣辅助电源</td></tr><tr><td>跨日 SOC 不设终端约束</td><td>设终端 SOC 带或终端价值，避免&quot;最后一天放空&quot;</td></tr><tr><td>负电价时段仍安排充电收益</td><td>负电价时充电是收益，但需检查并网点与市场规则</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>误区</th><th>正确口径</th></tr></thead><tbody><tr><td>用 PCS 铭牌功率当可调功率</td><td>扣辅助电源、温度降额、BMS 限功率、并网点限值后取最小</td></tr><tr><td>用铭牌容量当可用电量</td><td>可用能量 = (SOC_max − SOC_min) × 额定能量 × SOH</td></tr><tr><td>把可用直流电量当交流放电量</td><td>交流放电 = 直流可用电量 × η；交流充电 = 直流 ÷ η</td></tr><tr><td>用单程效率当循环效率</td><td>系统 RTE 含充电、放电、辅助电源与静置损耗</td></tr><tr><td>调频中标容量与能量备用脱节</td><td>中标容量必须同时留功率裕度与能量裕度</td></tr><tr><td>需量电费按净功率计算</td><td>需量按购电功率（进口）取最大，售电不抵扣</td></tr><tr><td>容量补偿按铭牌容量计算</td><td>按清单容量、可用率、时长折算系数计算</td></tr><tr><td>调频里程收入当净收入</td><td>扣考核、扣退化、扣辅助电源</td></tr><tr><td>跨日 SOC 不设终端约束</td><td>设终端 SOC 带或终端价值，避免&quot;最后一天放空&quot;</td></tr><tr><td>负电价时段仍安排充电收益</td><td>负电价时充电是收益，但需检查并网点与市场规则</td></tr></tbody></table></div>
 <hr>
 <h2 id="s15">2. 参考架构：设备—站控—云与市场</h2>
 <h3 id="s16">2.1 分层</h3>
-<div class="table-wrap"><table><thead><tr><th>层</th><th>组成</th><th>主要职责</th></tr></thead><tbody><tr><td>设备层</td><td>电芯、模组、簇、堆、BMS、PCS、热管理、消防</td><td>安全保护、功率变换、状态采集</td></tr><tr><td>站控层</td><td>EMS、SCADA、协调控制器、通信网关、时钟源</td><td>优化调度、功率分配、AGC/AVC 响应、联锁</td></tr><tr><td>云/聚合层</td><td>多站管理、VPP 平台、交易接口、结算对账</td><td>聚合申报、容量分配、绩效评估</td></tr><tr><td>市场层</td><td>调度机构、交易中心、辅助服务市场</td><td>出清、指令、考核、结算</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>层</th><th>组成</th><th>主要职责</th></tr></thead><tbody><tr><td>设备层</td><td>电芯、模组、簇、堆、BMS、PCS、热管理、消防</td><td>安全保护、功率变换、状态采集</td></tr><tr><td>站控层</td><td>EMS、SCADA、协调控制器、通信网关、时钟源</td><td>优化调度、功率分配、AGC/AVC 响应、联锁</td></tr><tr><td>云/聚合层</td><td>多站管理、VPP 平台、交易接口、结算对账</td><td>聚合申报、容量分配、绩效评估</td></tr><tr><td>市场层</td><td>调度机构、交易中心、辅助服务市场</td><td>出清、指令、考核、结算</td></tr></tbody></table></div>
 <h3 id="s17">2.2 数据流（抽象）</h3>
 <pre><code>市场出清/调度计划 → EMS 优化 → 功率与 SOC 计划 → 站控校验 → PCS 设定值
         ↑                                                        ↓
    结算/考核 ← 计量与遥测 ← BMS/PCS/辅助系统 ← 执行与保护</code></pre>
 <p>关键点：<strong>优化用的输入与结算用的数据必须同源同时标</strong>；否则会出现&quot;模型里赚钱、结算时亏钱&quot;。</p>
 <h3 id="s18">2.3 BMS/PCS/EMS 的职责边界</h3>
-<div class="table-wrap"><table><thead><tr><th>设备/系统</th><th>职责</th><th>向 EMS 提供</th><th>EMS 不得越权</th></tr></thead><tbody><tr><td>BMS</td><td>单体电压/温度、SOC/SOH、均衡、保护</td><td>SOC、SOH、允许充放功率、告警等级</td><td>绕过 BMS 限值下发指令</td></tr><tr><td>PCS</td><td>功率变换、并网控制、保护、故障穿越</td><td>实际 P/Q、可用功率、故障码、效率</td><td>下发超过 PCS 能力的指令</td></tr><tr><td>热管理/消防</td><td>温控、探测、灭火、排风</td><td>温度、烟感、可燃气体、阀状态</td><td>告警时继续充放</td></tr><tr><td>站控/协调控制器</td><td>功率分配、AGC/AVC 跟踪、联锁</td><td>执行结果、跟踪偏差</td><td>跳过联锁直接控制接触器</td></tr><tr><td>EMS</td><td>优化、计划、申报、评估</td><td>计划曲线、设定值、诊断</td><td>替代保护或消防逻辑</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>设备/系统</th><th>职责</th><th>向 EMS 提供</th><th>EMS 不得越权</th></tr></thead><tbody><tr><td>BMS</td><td>单体电压/温度、SOC/SOH、均衡、保护</td><td>SOC、SOH、允许充放功率、告警等级</td><td>绕过 BMS 限值下发指令</td></tr><tr><td>PCS</td><td>功率变换、并网控制、保护、故障穿越</td><td>实际 P/Q、可用功率、故障码、效率</td><td>下发超过 PCS 能力的指令</td></tr><tr><td>热管理/消防</td><td>温控、探测、灭火、排风</td><td>温度、烟感、可燃气体、阀状态</td><td>告警时继续充放</td></tr><tr><td>站控/协调控制器</td><td>功率分配、AGC/AVC 跟踪、联锁</td><td>执行结果、跟踪偏差</td><td>跳过联锁直接控制接触器</td></tr><tr><td>EMS</td><td>优化、计划、申报、评估</td><td>计划曲线、设定值、诊断</td><td>替代保护或消防逻辑</td></tr></tbody></table></div>
 <h3 id="s19">2.4 五条架构经验</h3>
 <ol><li><strong>优化与控制分离</strong>：EMS 出计划，PCS/协调控制器做快速跟踪；不要把秒级控制塞进 MILP。</li><li><strong>限值双保险</strong>：模型内约束 + 下发前独立校验；两处都过才允许执行。</li><li><strong>时钟统一</strong>：SOE、计量、结算、市场时标必须同源；对时偏差直接导致考核争议。</li><li><strong>断网自治</strong>：与市场/云断开时，按本地保底策略运行（安全优先、避免越限），恢复后对账。</li><li><strong>指令可追溯</strong>：每条计划、设定值、执行结果、越限告警都要可回放，支持事后归因。</li></ol>
 <h3 id="s20">2.5 评估—优化闭环</h3>
@@ -149,16 +156,16 @@
 <ul><li>实际 RTE、可用功率、可用能量、K 值、响应时间、可用率 → 修正模型参数；</li><li>计划与执行偏差 → 修正预测与跟踪模型；</li><li>考核与结算差异 → 修正市场口径与惩罚项；</li><li>退化与故障 → 修正寿命模型与检修计划。</li></ul>
 <h3 id="s21">2.6 输入数据契约（字段清单）</h3>
 <p>模型质量的上限由输入数据决定。下面是一份最小可用契约；<strong>定义了却未实现的字段必须删除，不能留作隐式约定</strong>。</p>
-<div class="table-wrap"><table><thead><tr><th>分组</th><th>字段</th><th>单位</th><th>来源</th><th>频率</th><th>缺失后果</th></tr></thead><tbody><tr><td>价格</td><td>分时/现货购价、售价</td><td>元/MWh</td><td>交易中心、零售合同</td><td>日/15 min</td><td>套利方向错</td></tr><tr><td>价格</td><td>需量电价、基本电价计费方式、核定值</td><td>元/kW·月、元/kVA·月</td><td>电价文件、供用电合同</td><td>月</td><td>需量收益算错</td></tr><tr><td>价格</td><td>调频容量价、里程价、K 值</td><td>元/MW·h、元/MW、p.u.</td><td>辅助服务市场规则</td><td>日/结算后</td><td>调频收益错</td></tr><tr><td>价格</td><td>备用/爬坡容量价、时长要求</td><td>元/MW·h、h</td><td>辅助服务市场规则</td><td>日</td><td>备用申报错</td></tr><tr><td>价格</td><td>容量补偿价、清单容量、时长分母、可用率门槛</td><td>元/kW·年、MW、h、%</td><td>省级细则</td><td>月/年</td><td>容量收益高估</td></tr><tr><td>设备</td><td>额定功率、额定能量</td><td>MW、MWh</td><td>铭牌/合同</td><td>静态</td><td>全模型错</td></tr><tr><td>设备</td><td>SOC 窗口、SOH、充放效率、自放电率</td><td>p.u.、p.u.、p.u./h</td><td>BMS、实测标定</td><td>日/月</td><td>可用电量错</td></tr><tr><td>设备</td><td>辅助电源功率（待机/运行/调频）</td><td>MW</td><td>实测</td><td>月</td><td>收益虚高</td></tr><tr><td>设备</td><td>温度降额表、PCS 效率曲线</td><td>—</td><td>厂家文件、实测</td><td>月</td><td>高温/低温越限</td></tr><tr><td>设备</td><td>爬坡率、响应时间</td><td>MW/min、ms</td><td>厂家文件、并网检测</td><td>静态</td><td>调频/备用不可交付</td></tr><tr><td>状态</td><td>实时 SOC、SOH、温度、压差</td><td>p.u.、℃、mV</td><td>BMS</td><td>s–min</td><td>计划不可执行</td></tr><tr><td>状态</td><td>可用功率（BMS/PCS 限功率）</td><td>MW</td><td>BMS、PCS</td><td>s–min</td><td>申报超能力</td></tr><tr><td>状态</td><td>告警等级、联锁状态</td><td>—</td><td>BMS、消防</td><td>实时</td><td>安全越界</td></tr><tr><td>状态</td><td>并网点实测 P/Q、电压、频率</td><td>MW、Mvar、kV、Hz</td><td>关口表、SCADA</td><td>s–min</td><td>越限、考核</td></tr><tr><td>计划</td><td>检修计划、可用性</td><td>0/1</td><td>运维系统</td><td>日</td><td>检修期仍安排出力</td></tr><tr><td>计划</td><td>已中标容量与曲线</td><td>MW</td><td>交易/调度</td><td>日</td><td>重复申报</td></tr><tr><td>计量</td><td>关口表与站用表电量、计量点拓扑</td><td>kWh</td><td>计量系统</td><td>15 min/日</td><td>结算对不上账</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>分组</th><th>字段</th><th>单位</th><th>来源</th><th>频率</th><th>缺失后果</th></tr></thead><tbody><tr><td>价格</td><td>分时/现货购价、售价</td><td>元/MWh</td><td>交易中心、零售合同</td><td>日/15 min</td><td>套利方向错</td></tr><tr><td>价格</td><td>需量电价、基本电价计费方式、核定值</td><td>元/kW·月、元/kVA·月</td><td>电价文件、供用电合同</td><td>月</td><td>需量收益算错</td></tr><tr><td>价格</td><td>调频容量价、里程价、K 值</td><td>元/MW·h、元/MW、p.u.</td><td>辅助服务市场规则</td><td>日/结算后</td><td>调频收益错</td></tr><tr><td>价格</td><td>备用/爬坡容量价、时长要求</td><td>元/MW·h、h</td><td>辅助服务市场规则</td><td>日</td><td>备用申报错</td></tr><tr><td>价格</td><td>容量补偿价、清单容量、时长分母、可用率门槛</td><td>元/kW·年、MW、h、%</td><td>省级细则</td><td>月/年</td><td>容量收益高估</td></tr><tr><td>设备</td><td>额定功率、额定能量</td><td>MW、MWh</td><td>铭牌/合同</td><td>静态</td><td>全模型错</td></tr><tr><td>设备</td><td>SOC 窗口、SOH、充放效率、自放电率</td><td>p.u.、p.u.、p.u./h</td><td>BMS、实测标定</td><td>日/月</td><td>可用电量错</td></tr><tr><td>设备</td><td>辅助电源功率（待机/运行/调频）</td><td>MW</td><td>实测</td><td>月</td><td>收益虚高</td></tr><tr><td>设备</td><td>温度降额表、PCS 效率曲线</td><td>—</td><td>厂家文件、实测</td><td>月</td><td>高温/低温越限</td></tr><tr><td>设备</td><td>爬坡率、响应时间</td><td>MW/min、ms</td><td>厂家文件、并网检测</td><td>静态</td><td>调频/备用不可交付</td></tr><tr><td>状态</td><td>实时 SOC、SOH、温度、压差</td><td>p.u.、℃、mV</td><td>BMS</td><td>s–min</td><td>计划不可执行</td></tr><tr><td>状态</td><td>可用功率（BMS/PCS 限功率）</td><td>MW</td><td>BMS、PCS</td><td>s–min</td><td>申报超能力</td></tr><tr><td>状态</td><td>告警等级、联锁状态</td><td>—</td><td>BMS、消防</td><td>实时</td><td>安全越界</td></tr><tr><td>状态</td><td>并网点实测 P/Q、电压、频率</td><td>MW、Mvar、kV、Hz</td><td>关口表、SCADA</td><td>s–min</td><td>越限、考核</td></tr><tr><td>计划</td><td>检修计划、可用性</td><td>0/1</td><td>运维系统</td><td>日</td><td>检修期仍安排出力</td></tr><tr><td>计划</td><td>已中标容量与曲线</td><td>MW</td><td>交易/调度</td><td>日</td><td>重复申报</td></tr><tr><td>计量</td><td>关口表与站用表电量、计量点拓扑</td><td>kWh</td><td>计量系统</td><td>15 min/日</td><td>结算对不上账</td></tr></tbody></table></div>
 <p><strong>计量点是最容易被忽略的契约字段</strong>：EMS 优化用的是站内量测，结算用的是关口表；两者的精度、时标与拓扑不同，必须在契约里写清映射关系，否则&quot;模型赚钱、结算亏钱&quot;。</p>
 <hr>
 <h2 id="s22">3. 统一数学模型</h2>
 <h3 id="s23">3.1 集合与索引</h3>
-<div class="table-wrap"><table><thead><tr><th>符号</th><th>含义</th></tr></thead><tbody><tr><td>t ∈ T</td><td>时段，Δt = 0.25 h（96 点）或 1 h（24 点）</td></tr><tr><td>s ∈ S</td><td>储能站/单元</td></tr><tr><td>r ∈ R</td><td>市场品种：能量、调频、备用、爬坡等</td></tr><tr><td>ω ∈ Ω</td><td>场景（随机/鲁棒优化时）</td></tr><tr><td>k ∈ K</td><td>退化分段或检修状态</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>符号</th><th>含义</th></tr></thead><tbody><tr><td>t ∈ T</td><td>时段，Δt = 0.25 h（96 点）或 1 h（24 点）</td></tr><tr><td>s ∈ S</td><td>储能站/单元</td></tr><tr><td>r ∈ R</td><td>市场品种：能量、调频、备用、爬坡等</td></tr><tr><td>ω ∈ Ω</td><td>场景（随机/鲁棒优化时）</td></tr><tr><td>k ∈ K</td><td>退化分段或检修状态</td></tr></tbody></table></div>
 <h3 id="s24">3.2 参数（示例量级）</h3>
-<div class="table-wrap"><table><thead><tr><th>参数</th><th>含义</th><th>单位</th></tr></thead><tbody><tr><td>P_ch_max, P_dis_max</td><td>最大充电/放电功率</td><td>MW</td></tr><tr><td>E_cap</td><td>额定能量</td><td>MWh</td></tr><tr><td>SOC_min, SOC_max</td><td>SOC 运行窗口</td><td>p.u.</td></tr><tr><td>η_ch, η_dis</td><td>充电/放电效率</td><td>p.u.</td></tr><tr><td>σ</td><td>自放电率（每时段）</td><td>p.u.</td></tr><tr><td>p_aux</td><td>辅助电源/厂用电功率</td><td>MW</td></tr><tr><td>P_imp_max, P_exp_max</td><td>并网点最大受电/送出功率</td><td>MW</td></tr><tr><td>ΔP_up, ΔP_dn</td><td>爬坡上限</td><td>MW/时段</td></tr><tr><td>c_buy, c_sell</td><td>购/售电价</td><td>元/MWh</td></tr><tr><td>c_cap[r], c_mil[r]</td><td>品种容量价/里程价</td><td>元/MW·h、元/MW</td></tr><tr><td>K_r</td><td>调频性能系数</td><td>p.u.</td></tr><tr><td>c_dem</td><td>需量电价</td><td>元/kW·月</td></tr><tr><td>c_deg</td><td>度电退化成本</td><td>元/kWh</td></tr><tr><td>a[s,t]</td><td>可用性（1 可用，0 检修/故障）</td><td>0/1</td></tr><tr><td>κ_T, κ_SOH</td><td>温度/SOH 降额系数</td><td>p.u.</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>参数</th><th>含义</th><th>单位</th></tr></thead><tbody><tr><td>P_ch_max, P_dis_max</td><td>最大充电/放电功率</td><td>MW</td></tr><tr><td>E_cap</td><td>额定能量</td><td>MWh</td></tr><tr><td>SOC_min, SOC_max</td><td>SOC 运行窗口</td><td>p.u.</td></tr><tr><td>η_ch, η_dis</td><td>充电/放电效率</td><td>p.u.</td></tr><tr><td>σ</td><td>自放电率（每时段）</td><td>p.u.</td></tr><tr><td>p_aux</td><td>辅助电源/厂用电功率</td><td>MW</td></tr><tr><td>P_imp_max, P_exp_max</td><td>并网点最大受电/送出功率</td><td>MW</td></tr><tr><td>ΔP_up, ΔP_dn</td><td>爬坡上限</td><td>MW/时段</td></tr><tr><td>c_buy, c_sell</td><td>购/售电价</td><td>元/MWh</td></tr><tr><td>c_cap[r], c_mil[r]</td><td>品种容量价/里程价</td><td>元/MW·h、元/MW</td></tr><tr><td>K_r</td><td>调频性能系数</td><td>p.u.</td></tr><tr><td>c_dem</td><td>需量电价</td><td>元/kW·月</td></tr><tr><td>c_deg</td><td>度电退化成本</td><td>元/kWh</td></tr><tr><td>a[s,t]</td><td>可用性（1 可用，0 检修/故障）</td><td>0/1</td></tr><tr><td>κ_T, κ_SOH</td><td>温度/SOH 降额系数</td><td>p.u.</td></tr></tbody></table></div>
 <h3 id="s25">3.3 决策变量</h3>
-<div class="table-wrap"><table><thead><tr><th>变量</th><th>含义</th><th>类型</th></tr></thead><tbody><tr><td>p_ch[s,t], p_dis[s,t]</td><td>充电/放电功率</td><td>连续 ≥0</td></tr><tr><td>u_ch[s,t], u_dis[s,t]</td><td>充/放状态</td><td>0/1</td></tr><tr><td>E[s,t]</td><td>时段末能量</td><td>连续</td></tr><tr><td>p_imp[s,t], p_exp[s,t]</td><td>并网点购/售功率</td><td>连续 ≥0</td></tr><tr><td>v_imp[s,t], v_exp[s,t]</td><td>购/售状态</td><td>0/1</td></tr><tr><td>r[s,r,t]</td><td>品种中标容量</td><td>连续 ≥0</td></tr><tr><td>m[s,r,t]</td><td>调频里程（折算）</td><td>连续 ≥0</td></tr><tr><td>D[s]</td><td>计费需量</td><td>连续 ≥0</td></tr><tr><td>z[s,k,t]</td><td>退化分段/检修选择</td><td>0/1 或 SOS2</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>变量</th><th>含义</th><th>类型</th></tr></thead><tbody><tr><td>p_ch[s,t], p_dis[s,t]</td><td>充电/放电功率</td><td>连续 ≥0</td></tr><tr><td>u_ch[s,t], u_dis[s,t]</td><td>充/放状态</td><td>0/1</td></tr><tr><td>E[s,t]</td><td>时段末能量</td><td>连续</td></tr><tr><td>p_imp[s,t], p_exp[s,t]</td><td>并网点购/售功率</td><td>连续 ≥0</td></tr><tr><td>v_imp[s,t], v_exp[s,t]</td><td>购/售状态</td><td>0/1</td></tr><tr><td>r[s,r,t]</td><td>品种中标容量</td><td>连续 ≥0</td></tr><tr><td>m[s,r,t]</td><td>调频里程（折算）</td><td>连续 ≥0</td></tr><tr><td>D[s]</td><td>计费需量</td><td>连续 ≥0</td></tr><tr><td>z[s,k,t]</td><td>退化分段/检修选择</td><td>0/1 或 SOS2</td></tr></tbody></table></div>
 <h3 id="s26">3.4 目标函数（最小化净成本）</h3>
 <p>按日净成本最小化，收益项取负：</p>
 <pre><code>min  Σ_t [ c_buy(t)·p_imp(t)·Δt − c_sell(t)·p_exp(t)·Δt ]
@@ -241,7 +248,7 @@ E_cap(t)    = E_cap · κ_SOH(SOH(t))</code></pre>
 <h3 id="s28">3.6 模型边界：不建模什么</h3>
 <ul><li>电芯内部电化学过程与热失控传播；</li><li>电磁暂态与次同步振荡；</li><li>保护定值与断路器动作时序；</li><li>消防系统设计与灭火效果；</li><li>中长期合约分解与金融结算；</li><li>网络潮流与阻塞（站级模型不涉及，聚合层可外挂）。</li></ul>
 <h3 id="s29">3.7 规模量级</h3>
-<div class="table-wrap"><table><thead><tr><th>场景</th><th>时段数</th><th>0-1 变量量级</th><th>求解特征</th></tr></thead><tbody><tr><td>单站 96 点</td><td>96</td><td>数百</td><td>秒级</td></tr><tr><td>单站 96 点 + 多品种</td><td>96</td><td>数千</td><td>秒–分钟</td></tr><tr><td>10 站聚合</td><td>960</td><td>数万</td><td>分钟</td></tr><tr><td>100 站 + 场景</td><td>9,600×Ω</td><td>十万级</td><td>需分解或场景削减</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>场景</th><th>时段数</th><th>0-1 变量量级</th><th>求解特征</th></tr></thead><tbody><tr><td>单站 96 点</td><td>96</td><td>数百</td><td>秒级</td></tr><tr><td>单站 96 点 + 多品种</td><td>96</td><td>数千</td><td>秒–分钟</td></tr><tr><td>10 站聚合</td><td>960</td><td>数万</td><td>分钟</td></tr><tr><td>100 站 + 场景</td><td>9,600×Ω</td><td>十万级</td><td>需分解或场景削减</td></tr></tbody></table></div>
 <p>规模不是主要矛盾；<strong>数据质量、口径一致性与降级策略</strong>才是。</p>
 <hr>
 <h2 id="s30">4. 关键建模技巧</h2>
@@ -250,19 +257,19 @@ E_cap(t)    = E_cap · κ_SOH(SOH(t))</code></pre>
 <p>工程做法：</p>
 <ul><li>效率按充/放分别标定，系统 RTE = η_ch·η_dis；</li><li>辅助电源按站级实测曲线，至少分&quot;待机/运行/调频&quot;三档；</li><li>自放电按日折算，长期静置场景不可忽略。</li></ul>
 <h3 id="s32">4.2 充放互斥：Big-M、SOS1 与指示约束</h3>
-<div class="table-wrap"><table><thead><tr><th>方法</th><th>优点</th><th>缺点</th><th>适用</th></tr></thead><tbody><tr><td>Big-M</td><td>通用、易实现</td><td>M 过大会松弛、数值差</td><td>大多数 MILP</td></tr><tr><td>SOS1</td><td>无需大 M</td><td>部分求解器支持差异</td><td>同一功率变量拆分</td></tr><tr><td>指示约束</td><td>语义清晰</td><td>依赖求解器</td><td>现代求解器</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>方法</th><th>优点</th><th>缺点</th><th>适用</th></tr></thead><tbody><tr><td>Big-M</td><td>通用、易实现</td><td>M 过大会松弛、数值差</td><td>大多数 MILP</td></tr><tr><td>SOS1</td><td>无需大 M</td><td>部分求解器支持差异</td><td>同一功率变量拆分</td></tr><tr><td>指示约束</td><td>语义清晰</td><td>依赖求解器</td><td>现代求解器</td></tr></tbody></table></div>
 <p>Big-M 取&quot;该约束的物理上界&quot;，不要取 1e9；否则分支定界会因松弛过松而变慢。</p>
 <h3 id="s33">4.3 并网点双变量</h3>
 <p>购/售必须拆成两个非负变量并互斥，不能用一个带符号的净功率变量：</p>
 <ul><li>净功率变量无法表达&quot;购售同时发生&quot;的禁止；</li><li>负电价时净功率模型会给出虚假套利；</li><li>需量电费必须对购电功率取最大，净功率会低估需量。</li></ul>
 <h3 id="s34">4.4 备用的四个维度</h3>
-<div class="table-wrap"><table><thead><tr><th>维度</th><th>含义</th><th>约束落点</th></tr></thead><tbody><tr><td>容量</td><td>中标容量能否持续输出</td><td>S7 功率裕度</td></tr><tr><td>能量</td><td>持续时间内的电量</td><td>S8 能量裕度</td></tr><tr><td>爬坡</td><td>从当前出力到目标出力的速度</td><td>S6 爬坡</td></tr><tr><td>持续时间</td><td>品种要求的连续时长</td><td>d_r 参数</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>含义</th><th>约束落点</th></tr></thead><tbody><tr><td>容量</td><td>中标容量能否持续输出</td><td>S7 功率裕度</td></tr><tr><td>能量</td><td>持续时间内的电量</td><td>S8 能量裕度</td></tr><tr><td>爬坡</td><td>从当前出力到目标出力的速度</td><td>S6 爬坡</td></tr><tr><td>持续时间</td><td>品种要求的连续时长</td><td>d_r 参数</td></tr></tbody></table></div>
 <p>四者缺一，都会出现&quot;中标但无法交付&quot;。</p>
 <h3 id="s35">4.5 调频：K 值、能量中性与 SOC 恢复</h3>
 <ul><li><strong>K 值</strong>：响应速度、调节精度、稳定性的综合系数；结算里程 = 里程 × 价格 × K。多数省份 K 在 0.5–2 区间，具体以当期规则为准（C 级，待核实）。</li><li><strong>能量中性</strong>：调频是双向服务，长期净偏移应接近零；模型不能假设每次调用都回到同一 SOC。</li><li><strong>SOC 恢复</strong>：在考核周期末设置恢复带，或预留恢复功率；否则连续上调后无法继续响应。</li><li><strong>退化</strong>：高频小功率动作的退化成本与深度循环不同，需单独标定。</li></ul>
 <h3 id="s36">4.6 需量电费与两部制基本电价</h3>
 <p>大工业用户普遍执行<strong>两部制电价</strong>：基本电费 + 电度电费。基本电费有三种计费方式（发改办价格〔2016〕1583号给出前两种，发改价格〔2018〕500号增加第三种）：</p>
-<div class="table-wrap"><table><thead><tr><th>计费方式</th><th>计费基数</th><th>储能的作用</th></tr></thead><tbody><tr><td>按变压器容量</td><td>容量 × 容量单价</td><td>基本无直接影响</td></tr><tr><td>按合同最大需量</td><td>核定值；超 105% 部分加倍</td><td>削峰 + 核定值申报</td></tr><tr><td>按实际最大需量</td><td>当月实际最大需量</td><td>削峰</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>计费方式</th><th>计费基数</th><th>储能的作用</th></tr></thead><tbody><tr><td>按变压器容量</td><td>容量 × 容量单价</td><td>基本无直接影响</td></tr><tr><td>按合同最大需量</td><td>核定值；超 105% 部分加倍</td><td>削峰 + 核定值申报</td></tr><tr><td>按实际最大需量</td><td>当月实际最大需量</td><td>削峰</td></tr></tbody></table></div>
 <p><strong>1583号的关键规则</strong>（引用前核对当期文件与当地执行口径）：</p>
 <ul><li>计费方式按季变更，提前 15 个工作日申请；</li><li>合同最大需量核定值按月变更，提前 5 个工作日申请；</li><li>实际最大需量超过合同确定值 105% 时，<strong>超过 105% 的部分基本电费加一倍收取</strong>；未超过 105% 的按合同确定值收取；</li><li>申请核定值低于变压器容量与高压电动机容量总和 40% 时，按总和的 40% 核定；</li><li>两路及以上进线用户，各路进线分别计算最大需量，累加计收。</li></ul>
 <p><strong>模型表达</strong>（需量对购电功率取最大，售电不抵扣）：</p>
@@ -276,22 +283,22 @@ over ≥ 0
 <ol><li><strong>超 105% 是双倍惩罚，不是线性惩罚</strong>：用分段变量 <code>over</code> 显式建模，否则优化器会&quot;顺手&quot;越过 105% 线；</li><li><strong>核定值申报本身是决策变量</strong>：储能削峰能力改变最优核定值，需要&quot;核定值 × 削峰量&quot;联合测算，而不是先定核定值再优化；</li><li><strong>充电会抬高需量</strong>：谷段充电若落在需量计费窗口内，会抵消削峰收益，需量与套利必须在同一模型里出现；</li><li><strong>多进线累加</strong>：储能接入点选择影响收益，接入方案要与计量点拓扑一起评估；</li><li><strong>日模型近似</strong>：需量是月度最大值，日模型常用&quot;当月历史最大需量作下界 + 月末回算修正&quot;；</li><li><strong>功率因数考核</strong>：储能 PCS 可提供无功，但占用容量；功率因数调整电费（力调电费）的标准与调整系数按当地电价文件执行（B/C 级，待核实）。</li></ol>
 <p><strong>量级示意（合成数据）</strong>：核定值 8,000 kW、需量电价 40 元/kW·月 → 基本电费 320,000 元/月。若实际最大需量 8,800 kW（110%），<code>over = 8,800 − 8,400 = 400 kW</code>，基本电费 = 320,000 + 2 × 400 × 40 = 352,000 元/月，多付 32,000 元/月。储能削掉这 400 kW 尖峰即可回到 105% 以内，月省约 32,000 元（约 1,067 元/天），且不影响谷充峰放的套利窗口。</p>
 <h3 id="s37">4.7 退化建模的三档精度</h3>
-<div class="table-wrap"><table><thead><tr><th>档</th><th>方法</th><th>输入</th><th>适用</th></tr></thead><tbody><tr><td>T1</td><td>度电退化成本</td><td>元/kWh 吞吐</td><td>日前调度、快速测算</td></tr><tr><td>T2</td><td>循环/吞吐预算</td><td>等效循环数、DoD</td><td>周/月计划</td></tr><tr><td>T3</td><td>半经验 SOH 模型</td><td>温度、DoD、C 率、日历</td><td>寿命评估、投资决策</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>档</th><th>方法</th><th>输入</th><th>适用</th></tr></thead><tbody><tr><td>T1</td><td>度电退化成本</td><td>元/kWh 吞吐</td><td>日前调度、快速测算</td></tr><tr><td>T2</td><td>循环/吞吐预算</td><td>等效循环数、DoD</td><td>周/月计划</td></tr><tr><td>T3</td><td>半经验 SOH 模型</td><td>温度、DoD、C 率、日历</td><td>寿命评估、投资决策</td></tr></tbody></table></div>
 <p>T3 不建议直接嵌入 96 点 MILP；用离线仿真生成&quot;吞吐—寿命&quot;曲线，再分段线性化进模型。</p>
 <h3 id="s38">4.8 温度与 SOH 降额</h3>
 <ul><li>高温降功率、低温限充电是 BMS 的硬限值，EMS 只读取，不重算；</li><li>SOH 下降同时降低可用能量与可用功率，需分别降额；</li><li>降额系数按小时更新，避免在 15 min 内频繁跳变；</li><li>降额后的能力必须同步到市场申报，否则中标无法交付。</li></ul>
 <h3 id="s39">4.9 多站聚合与共享储能</h3>
-<div class="table-wrap"><table><thead><tr><th>模式</th><th>优化对象</th><th>关键约束</th></tr></thead><tbody><tr><td>多站聚合</td><td>各站充放 + 聚合并网点</td><td>聚合功率限值、各站 SOC 独立</td></tr><tr><td>共享储能</td><td>容量分配 + 租赁结算</td><td>用户优先级、计量点、容量不超卖</td></tr><tr><td>VPP 聚合</td><td>储能 + 可调负荷 + 分布式电源</td><td>基线、通信时延、可调能力评估</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>模式</th><th>优化对象</th><th>关键约束</th></tr></thead><tbody><tr><td>多站聚合</td><td>各站充放 + 聚合并网点</td><td>聚合功率限值、各站 SOC 独立</td></tr><tr><td>共享储能</td><td>容量分配 + 租赁结算</td><td>用户优先级、计量点、容量不超卖</td></tr><tr><td>VPP 聚合</td><td>储能 + 可调负荷 + 分布式电源</td><td>基线、通信时延、可调能力评估</td></tr></tbody></table></div>
 <p>共享储能的核心不是算法，是<strong>容量不超卖与计量可追溯</strong>；优化模型必须把每个用户的容量权限作为上界。</p>
 <h3 id="s40">4.10 容量补偿资格</h3>
 <ul><li>清单制：未纳入清单的容量不计补偿；</li><li>可用率：考核期内可用时间比例低于门槛，按规则扣减；</li><li>时长折算：按当地分母时长（4/6/8/10 小时）折算，2 小时系统通常按比例拿；</li><li>上限：不超过当地煤电容量电价的 1 倍（发改价格〔2026〕114号框架）；</li><li>省级差异大，跨省项目不能套用同一系数。</li></ul>
 <h3 id="s41">4.11 AGC/AVC 能力约束</h3>
 <ul><li>调度调用型储能必须保持 AGC/AVC 在线（国能发科技规〔2024〕26号）；</li><li>能量套利不得占用 AGC/AVC 预留的调节容量；</li><li>AVC 的无功能力受 PCS 容量与并网点电压约束，有功优先时无功裕度下降；</li><li>一次调频/惯量响应是并网能力，不能作为可交易容量重复计算。</li></ul>
 <h3 id="s42">4.12 安全联锁与故障态</h3>
-<div class="table-wrap"><table><thead><tr><th>事件</th><th>EMS 动作</th><th>模型落点</th></tr></thead><tbody><tr><td>单体过压/欠压</td><td>禁止对应簇充/放</td><td>可用功率降额</td></tr><tr><td>温度越限</td><td>降功率或停机</td><td>κ_T 降额</td></tr><tr><td>压差/绝缘异常</td><td>隔离、禁止并网</td><td>a[t] = 0</td></tr><tr><td>烟感/可燃气体</td><td>跳闸、启动消防、禁止充放</td><td>硬联锁</td></tr><tr><td>通信中断</td><td>本地保底、保持安全态</td><td>降级策略</td></tr><tr><td>并网点越限</td><td>限功率/解列（按规则）</td><td>S5 约束 + 下发校验</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>事件</th><th>EMS 动作</th><th>模型落点</th></tr></thead><tbody><tr><td>单体过压/欠压</td><td>禁止对应簇充/放</td><td>可用功率降额</td></tr><tr><td>温度越限</td><td>降功率或停机</td><td>κ_T 降额</td></tr><tr><td>压差/绝缘异常</td><td>隔离、禁止并网</td><td>a[t] = 0</td></tr><tr><td>烟感/可燃气体</td><td>跳闸、启动消防、禁止充放</td><td>硬联锁</td></tr><tr><td>通信中断</td><td>本地保底、保持安全态</td><td>降级策略</td></tr><tr><td>并网点越限</td><td>限功率/解列（按规则）</td><td>S5 约束 + 下发校验</td></tr></tbody></table></div>
 <h3 id="s43">4.13 多簇/多 PCS 功率分配与 SOC 均衡</h3>
 <p>站级 EMS 只决定&quot;全站出多少力&quot;，簇级/PCS 级分配由站控层完成。<strong>分配是分钟—秒级问题，不要塞进 15 min MILP</strong>；MILP 只需把&quot;各簇可用能力之和&quot;作为站级上界。</p>
-<div class="table-wrap"><table><thead><tr><th>分配原则</th><th>做法</th><th>适用</th></tr></thead><tbody><tr><td>等功率</td><td>按额定功率平均分配</td><td>簇间差异小、新站</td></tr><tr><td>按可用容量加权</td><td>权重 = 可用能量 / 额定能量</td><td>常规运行</td></tr><tr><td>SOC 均衡</td><td>SOC 高者多放、低者多充</td><td>长期运行，抑制簇间差异扩大</td></tr><tr><td>健康度均衡</td><td>循环次数/SOH 差的簇少承担</td><td>延寿优先</td></tr><tr><td>温度与降额</td><td>高温/低温簇降权或隔离</td><td>季节与故障期</td></tr><tr><td>故障隔离</td><td>告警簇退出，剩余簇重分配</td><td>异常态</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>分配原则</th><th>做法</th><th>适用</th></tr></thead><tbody><tr><td>等功率</td><td>按额定功率平均分配</td><td>簇间差异小、新站</td></tr><tr><td>按可用容量加权</td><td>权重 = 可用能量 / 额定能量</td><td>常规运行</td></tr><tr><td>SOC 均衡</td><td>SOC 高者多放、低者多充</td><td>长期运行，抑制簇间差异扩大</td></tr><tr><td>健康度均衡</td><td>循环次数/SOH 差的簇少承担</td><td>延寿优先</td></tr><tr><td>温度与降额</td><td>高温/低温簇降权或隔离</td><td>季节与故障期</td></tr><tr><td>故障隔离</td><td>告警簇退出，剩余簇重分配</td><td>异常态</td></tr></tbody></table></div>
 <p>关键工程点：</p>
 <ul><li><strong>簇间环流</strong>：电压差会在并联簇间形成环流，靠 BMS/PCS 限制；EMS 不得安排&quot;一簇充、一簇放&quot;的对冲功率；</li><li><strong>聚合后必须回代</strong>：聚合优化的结果要逐簇校验 SOC、限功率与温度，不满足则重分配或降总功率；</li><li><strong>不要按额定容量平均分配</strong>：忽略 SOH 与温度差异会让弱簇先过充过放，加速衰减；</li><li><strong>可用容量是动态的</strong>：每轮分配前重算，故障簇退出后要同步下调站级申报能力。</li></ul>
 <h3 id="s44">4.14 品种叠加的容量分配顺序与机会成本</h3>
@@ -303,12 +310,12 @@ over ≥ 0
 <h3 id="s45">4.15 时长选型与容量折算</h3>
 <p>发改价格〔2026〕114号给出框架：电网侧独立储能按当地煤电容量电价、以峰值能力/持续时间比例折算，上限为 1 倍；省级细则规定分母时长。折算系数可近似为：</p>
 <pre><code>折算系数 = min(系统时长 / 当地分母时长, 1)</code></pre>
-<div class="table-wrap"><table><thead><tr><th>系统时长</th><th>分母 4 h</th><th>分母 6 h</th><th>分母 8 h</th><th>分母 10 h</th></tr></thead><tbody><tr><td>2 h</td><td>0.50</td><td>0.33</td><td>0.25</td><td>0.20</td></tr><tr><td>4 h</td><td>1.00</td><td>0.67</td><td>0.50</td><td>0.40</td></tr><tr><td>8 h</td><td>1.00</td><td>1.00</td><td>1.00</td><td>0.80</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>系统时长</th><th>分母 4 h</th><th>分母 6 h</th><th>分母 8 h</th><th>分母 10 h</th></tr></thead><tbody><tr><td>2 h</td><td>0.50</td><td>0.33</td><td>0.25</td><td>0.20</td></tr><tr><td>4 h</td><td>1.00</td><td>0.67</td><td>0.50</td><td>0.40</td></tr><tr><td>8 h</td><td>1.00</td><td>1.00</td><td>1.00</td><td>0.80</td></tr></tbody></table></div>
 <p>对 EMS 的三点含义：</p>
 <ol><li><strong>补偿按&quot;可用容量 × 折算系数 × 可用率&quot;计</strong>，不是铭牌容量；</li><li><strong>EMS 改不了物理时长，但能改可用容量与可用率</strong>：SOC 窗口、降额管理、检修窗口选择、故障恢复速度都直接进收益；</li><li><strong>检修要避开考核期</strong>：可用率低于门槛按比例扣减甚至取消补偿，检修计划必须与考核期、高价期联动，不能只按设备便利安排。</li></ol>
 <aside class="note"><p>折算系数与可用率门槛的省级差异很大，表中数值为按公开框架的示意推算（C/D 级），项目测算以当期省级文件为准。</p></aside>
 <h3 id="s46">4.16 常见建模错误</h3>
-<div class="table-wrap"><table><thead><tr><th>错误</th><th>后果</th><th>修正</th></tr></thead><tbody><tr><td>用净功率单变量</td><td>同时购售、需量低估</td><td>购/售双变量</td></tr><tr><td>Big-M 取 1e9</td><td>求解慢、松弛假解</td><td>取物理上界</td></tr><tr><td>SOC 用百分比不折算能量</td><td>多站规模不可比</td><td>统一用 MWh</td></tr><tr><td>效率只乘一次</td><td>RTE 虚高</td><td>充放分别效率</td></tr><tr><td>备用只约束功率</td><td>能量不足无法交付</td><td>加 S8</td></tr><tr><td>调频不设恢复带</td><td>连续上调后失效</td><td>加 S9</td></tr><tr><td>退化只算循环不算待机</td><td>寿命高估</td><td>加日历/待机项</td></tr><tr><td>容量补偿按铭牌</td><td>收益高估</td><td>清单 + 可用率 + 时长折算</td></tr><tr><td>终端 SOC 不约束</td><td>期末放空套利</td><td>终端带/终端价值</td></tr><tr><td>把考核惩罚当软约束</td><td>实际结算亏损</td><td>显式惩罚或硬约束</td></tr><tr><td>需量超核定值 105% 未分段</td><td>基本电费加倍</td><td><code>over</code> 变量 + 双倍惩罚</td></tr><tr><td>每个品种复制一份容量变量</td><td>容量超卖、中标不可交付</td><td>共用功率/能量变量 + 品种上界</td></tr><tr><td>簇间按额定容量平均分配</td><td>弱簇过充过放</td><td>按可用容量/健康度/温度加权</td></tr><tr><td>检修计划与考核期脱节</td><td>可用率不达标、补偿被扣</td><td>检修窗口纳入优化</td></tr><tr><td>关口表与站内量测混用</td><td>结算对不上账</td><td>契约写清计量点映射</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>错误</th><th>后果</th><th>修正</th></tr></thead><tbody><tr><td>用净功率单变量</td><td>同时购售、需量低估</td><td>购/售双变量</td></tr><tr><td>Big-M 取 1e9</td><td>求解慢、松弛假解</td><td>取物理上界</td></tr><tr><td>SOC 用百分比不折算能量</td><td>多站规模不可比</td><td>统一用 MWh</td></tr><tr><td>效率只乘一次</td><td>RTE 虚高</td><td>充放分别效率</td></tr><tr><td>备用只约束功率</td><td>能量不足无法交付</td><td>加 S8</td></tr><tr><td>调频不设恢复带</td><td>连续上调后失效</td><td>加 S9</td></tr><tr><td>退化只算循环不算待机</td><td>寿命高估</td><td>加日历/待机项</td></tr><tr><td>容量补偿按铭牌</td><td>收益高估</td><td>清单 + 可用率 + 时长折算</td></tr><tr><td>终端 SOC 不约束</td><td>期末放空套利</td><td>终端带/终端价值</td></tr><tr><td>把考核惩罚当软约束</td><td>实际结算亏损</td><td>显式惩罚或硬约束</td></tr><tr><td>需量超核定值 105% 未分段</td><td>基本电费加倍</td><td><code>over</code> 变量 + 双倍惩罚</td></tr><tr><td>每个品种复制一份容量变量</td><td>容量超卖、中标不可交付</td><td>共用功率/能量变量 + 品种上界</td></tr><tr><td>簇间按额定容量平均分配</td><td>弱簇过充过放</td><td>按可用容量/健康度/温度加权</td></tr><tr><td>检修计划与考核期脱节</td><td>可用率不达标、补偿被扣</td><td>检修窗口纳入优化</td></tr><tr><td>关口表与站内量测混用</td><td>结算对不上账</td><td>契约写清计量点映射</td></tr></tbody></table></div>
 <hr>
 <h2 id="s47">5. 求解与工程化</h2>
 <h3 id="s48">5.1 分支定界在做什么</h3>
@@ -316,20 +323,20 @@ over ≥ 0
 <ol><li>求解 LP 松弛，得到下界；</li><li>对 fractional 变量分支，形成子问题；</li><li>用割平面收紧松弛；</li><li>上下界收敛到 gap 内即停止。</li></ol>
 <p>工程含义：<strong>模型越紧（Big-M 越小、变量界越准），求解越快</strong>；模型越松，求解器越像在&quot;猜&quot;。</p>
 <h3 id="s49">5.2 生产求解器必须设的参数</h3>
-<div class="table-wrap"><table><thead><tr><th>参数</th><th>建议</th><th>说明</th></tr></thead><tbody><tr><td>TimeLimit</td><td>按调度周期设定</td><td>日前可长，日内必须短</td></tr><tr><td>MIPGap</td><td>0.1%–1%</td><td>收益量级小时可放宽</td></tr><tr><td>MIPFocus</td><td>1（找可行）或 2（证最优）</td><td>日内偏可行</td></tr><tr><td>Presolve</td><td>开</td><td>大多数模型有效</td></tr><tr><td>Threads</td><td>按核数</td><td>避免与实时任务争抢</td></tr><tr><td>NumericFocus</td><td>数值病态时提高</td><td>效率链、价格尖峰易病态</td></tr><tr><td>Warm Start</td><td>用上一版解</td><td>滚动调度显著加速</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>参数</th><th>建议</th><th>说明</th></tr></thead><tbody><tr><td>TimeLimit</td><td>按调度周期设定</td><td>日前可长，日内必须短</td></tr><tr><td>MIPGap</td><td>0.1%–1%</td><td>收益量级小时可放宽</td></tr><tr><td>MIPFocus</td><td>1（找可行）或 2（证最优）</td><td>日内偏可行</td></tr><tr><td>Presolve</td><td>开</td><td>大多数模型有效</td></tr><tr><td>Threads</td><td>按核数</td><td>避免与实时任务争抢</td></tr><tr><td>NumericFocus</td><td>数值病态时提高</td><td>效率链、价格尖峰易病态</td></tr><tr><td>Warm Start</td><td>用上一版解</td><td>滚动调度显著加速</td></tr></tbody></table></div>
 <h3 id="s50">5.3 降级阶梯</h3>
-<div class="table-wrap"><table><thead><tr><th>级别</th><th>策略</th><th>触发</th><th>输出</th></tr></thead><tbody><tr><td>L0</td><td>完整 MILP</td><td>正常</td><td>最优/近优计划</td></tr><tr><td>L1</td><td>固定 0-1 变量，只解 LP</td><td>超时</td><td>可行计划</td></tr><tr><td>L2</td><td>固定充放状态，重解功率</td><td>超时/数值异常</td><td>可行计划</td></tr><tr><td>L3</td><td>启发式（阈值套利 + 备用预留）</td><td>求解失败</td><td>保守计划</td></tr><tr><td>L4</td><td>上一版计划 + 安全校验</td><td>连续失败</td><td>保底计划</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>级别</th><th>策略</th><th>触发</th><th>输出</th></tr></thead><tbody><tr><td>L0</td><td>完整 MILP</td><td>正常</td><td>最优/近优计划</td></tr><tr><td>L1</td><td>固定 0-1 变量，只解 LP</td><td>超时</td><td>可行计划</td></tr><tr><td>L2</td><td>固定充放状态，重解功率</td><td>超时/数值异常</td><td>可行计划</td></tr><tr><td>L3</td><td>启发式（阈值套利 + 备用预留）</td><td>求解失败</td><td>保守计划</td></tr><tr><td>L4</td><td>上一版计划 + 安全校验</td><td>连续失败</td><td>保底计划</td></tr></tbody></table></div>
 <p><strong>任何级别都必须过安全校验；宁可不优化，不可下发越限指令。</strong></p>
 <h3 id="s51">5.4 分解与加速</h3>
-<div class="table-wrap"><table><thead><tr><th>方法</th><th>适用</th><th>说明</th></tr></thead><tbody><tr><td>滚动时域</td><td>长周期</td><td>只解前 N 段，滚动执行</td></tr><tr><td>Benders</td><td>投资/运行耦合</td><td>主问题容量，子问题运行</td></tr><tr><td>ADMM</td><td>多站/多主体</td><td>共享并网点耦合</td></tr><tr><td>拉格朗日松弛</td><td>耦合约束</td><td>并网点/市场容量</td></tr><tr><td>场景削减</td><td>随机优化</td><td>保留代表性场景</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>方法</th><th>适用</th><th>说明</th></tr></thead><tbody><tr><td>滚动时域</td><td>长周期</td><td>只解前 N 段，滚动执行</td></tr><tr><td>Benders</td><td>投资/运行耦合</td><td>主问题容量，子问题运行</td></tr><tr><td>ADMM</td><td>多站/多主体</td><td>共享并网点耦合</td></tr><tr><td>拉格朗日松弛</td><td>耦合约束</td><td>并网点/市场容量</td></tr><tr><td>场景削减</td><td>随机优化</td><td>保留代表性场景</td></tr></tbody></table></div>
 <h3 id="s52">5.5 数值与实现陷阱</h3>
 <ul><li>单位混用：元/kWh 与元/MWh、kW 与 MW、% 与 p.u.；</li><li>时间索引 off-by-one：SOC 递推的 t−1 与首时段初值；</li><li>效率链：充电效率与放电效率的乘积，不要重复乘；</li><li>价格尖峰：负价/极高价导致目标系数跨度大，需缩放；</li><li>同时充放：LP 松弛后出现 1e-6 级同时充放，需后处理清洗；</li><li>终端 SOC：跨日/跨周计划的终端值不一致，导致&quot;周末放空&quot;；</li><li>时区与夏令时：市场时标与本地时标不一致。</li></ul>
 <h3 id="s53">5.6 基准与回归</h3>
-<div class="table-wrap"><table><thead><tr><th>测试</th><th>目的</th></tr></thead><tbody><tr><td>单时段手算</td><td>验证目标与约束符号</td></tr><tr><td>无市场基准</td><td>只做套利，结果应与阈值策略一致</td></tr><tr><td>退化=0 基准</td><td>验证退化项不影响可行性</td></tr><tr><td>极端价格</td><td>负价、零价、尖峰价下的行为</td></tr><tr><td>不可行诊断</td><td>故意收紧约束，检查冲突集</td></tr><tr><td>历史回放</td><td>与基线策略对比收益与越限次数</td></tr><tr><td>求解时间</td><td>P50/P95，按调度周期设阈值</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>测试</th><th>目的</th></tr></thead><tbody><tr><td>单时段手算</td><td>验证目标与约束符号</td></tr><tr><td>无市场基准</td><td>只做套利，结果应与阈值策略一致</td></tr><tr><td>退化=0 基准</td><td>验证退化项不影响可行性</td></tr><tr><td>极端价格</td><td>负价、零价、尖峰价下的行为</td></tr><tr><td>不可行诊断</td><td>故意收紧约束，检查冲突集</td></tr><tr><td>历史回放</td><td>与基线策略对比收益与越限次数</td></tr><tr><td>求解时间</td><td>P50/P95，按调度周期设阈值</td></tr></tbody></table></div>
 <hr>
 <h2 id="s54">6. 时间尺度与 MPC</h2>
 <h3 id="s55">6.1 三环结构</h3>
-<div class="table-wrap"><table><thead><tr><th>环</th><th>周期</th><th>horizon</th><th>输出</th></tr></thead><tbody><tr><td>日前</td><td>日</td><td>96×15 min</td><td>申报曲线、SOC 计划、检修计划</td></tr><tr><td>日内</td><td>15 min–1 h</td><td>4–8 h</td><td>修正计划、备用调整</td></tr><tr><td>实时</td><td>1–4 s（AGC）</td><td>秒级</td><td>功率设定值、跟踪</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>环</th><th>周期</th><th>horizon</th><th>输出</th></tr></thead><tbody><tr><td>日前</td><td>日</td><td>96×15 min</td><td>申报曲线、SOC 计划、检修计划</td></tr><tr><td>日内</td><td>15 min–1 h</td><td>4–8 h</td><td>修正计划、备用调整</td></tr><tr><td>实时</td><td>1–4 s（AGC）</td><td>秒级</td><td>功率设定值、跟踪</td></tr></tbody></table></div>
 <p>三环的边界要写清楚：日前决定&quot;大体怎么走&quot;，日内决定&quot;偏差怎么补&quot;，实时决定&quot;这一刻出多少力&quot;。</p>
 <h3 id="s56">6.2 MPC 形式</h3>
 <pre><code>min  Σ_{k=0}^{N−1} 阶段成本(x_k, u_k) + 终端价值(x_N)
@@ -338,7 +345,7 @@ s.t. x_{k+1} = f(x_k, u_k)
      终端约束 x_N ∈ X_f</code></pre>
 <p>只执行第一个时段的控制量，下一周期用新观测重解。储能 MPC 的状态通常是 SOC，控制是充放功率。</p>
 <h3 id="s57">6.3 与教科书 MPC 的差距</h3>
-<div class="table-wrap"><table><thead><tr><th>教科书假设</th><th>工程现实</th></tr></thead><tbody><tr><td>模型精确</td><td>效率、SOH、温度随时间漂移</td></tr><tr><td>扰动可测</td><td>价格与出力预测有误差</td></tr><tr><td>求解实时</td><td>MILP 可能超时</td></tr><tr><td>约束不变</td><td>市场规则、检修、并网限值会变</td></tr><tr><td>终端约束可保证</td><td>跨日/跨周终端值需人工设定</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>教科书假设</th><th>工程现实</th></tr></thead><tbody><tr><td>模型精确</td><td>效率、SOH、温度随时间漂移</td></tr><tr><td>扰动可测</td><td>价格与出力预测有误差</td></tr><tr><td>求解实时</td><td>MILP 可能超时</td></tr><tr><td>约束不变</td><td>市场规则、检修、并网限值会变</td></tr><tr><td>终端约束可保证</td><td>跨日/跨周终端值需人工设定</td></tr></tbody></table></div>
 <h3 id="s58">6.4 分层设定值链</h3>
 <pre><code>市场计划 → EMS 优化 → 站控分配 → PCS 设定值 → 本地控制</code></pre>
 <p>每一层都要有速率限制、死区与回差，避免指令抖动；分配层要处理多簇/多 PCS 的 SOC 均衡。</p>
@@ -347,14 +354,14 @@ s.t. x_{k+1} = f(x_k, u_k)
 <ul><li>市场出清结果更新；</li><li>AGC/AVC 指令变化；</li><li>BMS 告警/降额；</li><li>并网点越限；</li><li>通信中断/恢复；</li><li>检修计划变更。</li></ul>
 <p>重算要限频，避免&quot;事件风暴&quot;导致求解器过载。</p>
 <h3 id="s60">6.6 状态机</h3>
-<div class="table-wrap"><table><thead><tr><th>状态</th><th>进入条件</th><th>允许动作</th><th>退出条件</th></tr></thead><tbody><tr><td>初始化</td><td>上电/复位</td><td>自检、对时、读限值</td><td>自检通过</td></tr><tr><td>待机</td><td>无计划/无指令</td><td>静置、保 SOC</td><td>收到计划</td></tr><tr><td>充电</td><td>计划/价格触发</td><td>按计划充电</td><td>达到 SOC/计划切换</td></tr><tr><td>放电</td><td>计划/价格触发</td><td>按计划放电</td><td>达到 SOC/计划切换</td></tr><tr><td>调频待命</td><td>中标调频</td><td>预留功率/能量</td><td>退市/考核周期结束</td></tr><tr><td>故障</td><td>告警/保护</td><td>停机、隔离</td><td>故障清除</td></tr><tr><td>恢复</td><td>故障清除</td><td>自检、同步、并网</td><td>恢复待机</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>状态</th><th>进入条件</th><th>允许动作</th><th>退出条件</th></tr></thead><tbody><tr><td>初始化</td><td>上电/复位</td><td>自检、对时、读限值</td><td>自检通过</td></tr><tr><td>待机</td><td>无计划/无指令</td><td>静置、保 SOC</td><td>收到计划</td></tr><tr><td>充电</td><td>计划/价格触发</td><td>按计划充电</td><td>达到 SOC/计划切换</td></tr><tr><td>放电</td><td>计划/价格触发</td><td>按计划放电</td><td>达到 SOC/计划切换</td></tr><tr><td>调频待命</td><td>中标调频</td><td>预留功率/能量</td><td>退市/考核周期结束</td></tr><tr><td>故障</td><td>告警/保护</td><td>停机、隔离</td><td>故障清除</td></tr><tr><td>恢复</td><td>故障清除</td><td>自检、同步、并网</td><td>恢复待机</td></tr></tbody></table></div>
 <p>状态机与优化模型要解耦：状态机保证安全，优化器在允许状态内做经济决策。</p>
 <h3 id="s61">6.7 反模式</h3>
 <ul><li>用日前计划直接控制 PCS，跳过站控校验；</li><li>日内频繁重算导致指令抖动；</li><li>把 AGC 响应塞进 15 min MILP；</li><li>状态机与优化器各自维护一套 SOC，互相打架；</li><li>断网后仍按云端计划运行，忽略本地限值。</li></ul>
 <hr>
 <h2 id="s62">7. 不确定性优化</h2>
 <h3 id="s63">7.1 不确定性来源</h3>
-<div class="table-wrap"><table><thead><tr><th>来源</th><th>影响</th><th>典型处理</th></tr></thead><tbody><tr><td>电价</td><td>套利收益</td><td>场景/鲁棒</td></tr><tr><td>新能源出力（配储）</td><td>充电来源与计划跟踪</td><td>场景</td></tr><tr><td>负荷（用户侧）</td><td>需量与防逆流</td><td>场景/机会约束</td></tr><tr><td>调频信号/里程</td><td>收益与 SOC 偏移</td><td>随机/恢复预留</td></tr><tr><td>K 值</td><td>结算收入</td><td>保守估计</td></tr><tr><td>设备停运</td><td>可用容量</td><td>情景/备用</td></tr><tr><td>温度</td><td>可用功率</td><td>降额</td></tr><tr><td>退化</td><td>寿命与成本</td><td>分段线性/预算</td></tr><tr><td>市场规则</td><td>收益结构</td><td>情景/敏感性</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>来源</th><th>影响</th><th>典型处理</th></tr></thead><tbody><tr><td>电价</td><td>套利收益</td><td>场景/鲁棒</td></tr><tr><td>新能源出力（配储）</td><td>充电来源与计划跟踪</td><td>场景</td></tr><tr><td>负荷（用户侧）</td><td>需量与防逆流</td><td>场景/机会约束</td></tr><tr><td>调频信号/里程</td><td>收益与 SOC 偏移</td><td>随机/恢复预留</td></tr><tr><td>K 值</td><td>结算收入</td><td>保守估计</td></tr><tr><td>设备停运</td><td>可用容量</td><td>情景/备用</td></tr><tr><td>温度</td><td>可用功率</td><td>降额</td></tr><tr><td>退化</td><td>寿命与成本</td><td>分段线性/预算</td></tr><tr><td>市场规则</td><td>收益结构</td><td>情景/敏感性</td></tr></tbody></table></div>
 <h3 id="s64">7.2 确定性 + 备用</h3>
 <p>最常用的工程解：用点预测优化，再预留备用与 SOC 裕度。优点是简单、可解释；缺点是无法量化尾部风险。</p>
 <h3 id="s65">7.3 两阶段随机规划与 CVaR</h3>
@@ -369,13 +376,13 @@ s.t. x_{k+1} = f(x_k, u_k)
 <p>常见冲突：收益 vs 退化、收益 vs 可用率、套利 vs 调频预留。做法：</p>
 <ol><li>主目标收益，次目标退化/考核以惩罚项或约束处理；</li><li>帕累托前沿用于投资决策，不用于实时调度；</li><li>权重按结算口径标定，不凭感觉。</li></ol>
 <h3 id="s69">7.7 成熟度分级</h3>
-<div class="table-wrap"><table><thead><tr><th>级别</th><th>方法</th><th>适用阶段</th></tr></thead><tbody><tr><td>1</td><td>确定性 + 固定备用</td><td>初始上线</td></tr><tr><td>2</td><td>场景 + CVaR</td><td>价格波动大</td></tr><tr><td>3</td><td>鲁棒/机会约束</td><td>考核严格</td></tr><tr><td>4</td><td>DRO/自适应</td><td>研究与小规模试点</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>级别</th><th>方法</th><th>适用阶段</th></tr></thead><tbody><tr><td>1</td><td>确定性 + 固定备用</td><td>初始上线</td></tr><tr><td>2</td><td>场景 + CVaR</td><td>价格波动大</td></tr><tr><td>3</td><td>鲁棒/机会约束</td><td>考核严格</td></tr><tr><td>4</td><td>DRO/自适应</td><td>研究与小规模试点</td></tr></tbody></table></div>
 <h3 id="s70">7.8 评估方法</h3>
 <ul><li>样本外回测：用历史价格/出力，比较策略收益与风险；</li><li>压力测试：极端价格、连续阴雨、设备停运；</li><li>滚动一致性：相邻两次计划的差异是否合理；</li><li>考核模拟：按当地规则计算 K 值、可用率、偏差惩罚。</li></ul>
 <hr>
 <h2 id="s71">8. 可调能力评估</h2>
 <h3 id="s72">8.1 四张能力表</h3>
-<div class="table-wrap"><table><thead><tr><th>能力</th><th>计算</th><th>用途</th></tr></thead><tbody><tr><td>可用功率</td><td>min(PCS 额定, BMS 允许, 并网点限值, 温度/SOH 降额)</td><td>申报、备用</td></tr><tr><td>可用能量</td><td>(SOC_max − SOC_min) × E_cap × SOH</td><td>持续时间、能量备用</td></tr><tr><td>持续时间</td><td>可用能量 / 可用功率</td><td>容量补偿资格、品种准入</td></tr><tr><td>爬坡</td><td>min(PCS 爬坡, AGC 响应要求)</td><td>调频/爬坡品种</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>能力</th><th>计算</th><th>用途</th></tr></thead><tbody><tr><td>可用功率</td><td>min(PCS 额定, BMS 允许, 并网点限值, 温度/SOH 降额)</td><td>申报、备用</td></tr><tr><td>可用能量</td><td>(SOC_max − SOC_min) × E_cap × SOH</td><td>持续时间、能量备用</td></tr><tr><td>持续时间</td><td>可用能量 / 可用功率</td><td>容量补偿资格、品种准入</td></tr><tr><td>爬坡</td><td>min(PCS 爬坡, AGC 响应要求)</td><td>调频/爬坡品种</td></tr></tbody></table></div>
 <h3 id="s73">8.2 P-Q 能力与无功</h3>
 <p>PCS 的 P-Q 曲线受容量与电压约束；有功优先时无功裕度下降。EMS 做有功计划时，必须给 AVC 留无功裕度，否则并网点电压越限。</p>
 <h3 id="s74">8.3 闭环</h3>
@@ -385,7 +392,7 @@ s.t. x_{k+1} = f(x_k, u_k)
 <ul><li>用额定功率申报，忽略降额与辅助电源；</li><li>用额定能量计算持续时间，忽略 SOC 窗口与 SOH；</li><li>调频与备用重复计算同一容量；</li><li>不考虑并网点限值，导致中标无法交付；</li><li>不更新 SOH，长期高估能力。</li></ul>
 <h3 id="s76">8.5 运行指标与口径</h3>
 <p>GB/T 36549-2018 规定电化学储能电站运行指标的内容与统计方法，电量指标包括上网电量、下网电量、站用电量、运行小时数、等效利用系数以及储能单元充电量与放电量；评价所涉计量表计应有校验合格记录。<strong>指标定义与统计方法以标准正文为准</strong>，下表是工程常用口径与易错点。</p>
-<div class="table-wrap"><table><thead><tr><th>指标</th><th>常用口径</th><th>易错点</th></tr></thead><tbody><tr><td>系统综合效率（RTE）</td><td>放电量 ÷ 充电量，含站用电</td><td>只算电池系统效率，忽略辅助电源，结果偏高</td></tr><tr><td>可用率</td><td>可运行时间 ÷ 统计周期总时长</td><td>与&quot;利用率&quot;混用</td></tr><tr><td>利用率</td><td>实际运行时间 ÷ 可运行时间</td><td>误报为可用率</td></tr><tr><td>站用电率</td><td>站用电量与充放电量的比值</td><td>口径不统一，需按标准或合同</td></tr><tr><td>等效利用系数</td><td>按 GB/T 36549-2018 统计方法</td><td>与&quot;等效满充放次数&quot;混淆</td></tr><tr><td>吞吐量</td><td>充电量 + 放电量</td><td>只统计放电量，退化成本低估</td></tr><tr><td>等效满充满放次数</td><td>累计吞吐量 ÷ (2 × 额定能量)</td><td>与质保循环口径不一致</td></tr><tr><td>SOH</td><td>当前可用容量 ÷ 额定容量</td><td>用铭牌容量而非实测容量</td></tr><tr><td>响应时间</td><td>指令下发到达到目标功率的时间</td><td>含通信时延与不含通信时延两种口径</td></tr><tr><td>调节精度</td><td>实际功率对指令功率的偏差</td><td>稳态精度与动态精度分开统计</td></tr><tr><td>K 值</td><td>速度、精度、稳定性的综合系数</td><td>按省级规则，跨省不可套用</td></tr><tr><td>非计划停运</td><td>故障停运时长与次数</td><td>影响可用率与容量补偿</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>常用口径</th><th>易错点</th></tr></thead><tbody><tr><td>系统综合效率（RTE）</td><td>放电量 ÷ 充电量，含站用电</td><td>只算电池系统效率，忽略辅助电源，结果偏高</td></tr><tr><td>可用率</td><td>可运行时间 ÷ 统计周期总时长</td><td>与&quot;利用率&quot;混用</td></tr><tr><td>利用率</td><td>实际运行时间 ÷ 可运行时间</td><td>误报为可用率</td></tr><tr><td>站用电率</td><td>站用电量与充放电量的比值</td><td>口径不统一，需按标准或合同</td></tr><tr><td>等效利用系数</td><td>按 GB/T 36549-2018 统计方法</td><td>与&quot;等效满充放次数&quot;混淆</td></tr><tr><td>吞吐量</td><td>充电量 + 放电量</td><td>只统计放电量，退化成本低估</td></tr><tr><td>等效满充满放次数</td><td>累计吞吐量 ÷ (2 × 额定能量)</td><td>与质保循环口径不一致</td></tr><tr><td>SOH</td><td>当前可用容量 ÷ 额定容量</td><td>用铭牌容量而非实测容量</td></tr><tr><td>响应时间</td><td>指令下发到达到目标功率的时间</td><td>含通信时延与不含通信时延两种口径</td></tr><tr><td>调节精度</td><td>实际功率对指令功率的偏差</td><td>稳态精度与动态精度分开统计</td></tr><tr><td>K 值</td><td>速度、精度、稳定性的综合系数</td><td>按省级规则，跨省不可套用</td></tr><tr><td>非计划停运</td><td>故障停运时长与次数</td><td>影响可用率与容量补偿</td></tr></tbody></table></div>
 <p>指标进入 EMS 的三个用途：</p>
 <ol><li><strong>参数标定</strong>：效率、降额、退化系数由运行指标反推，而不是用铭牌值；</li><li><strong>收益核算</strong>：可用率、非计划停运直接决定容量补偿与辅助服务考核；</li><li><strong>考核应对</strong>：响应时间、调节精度、K 值决定调频收益，需在计划层预留能力。</li></ol>
 <p>数据采集要求：连续记录、带时标、可追溯到小时级；只保留月度汇总会导致过温、越限等事件无法复盘。</p>
@@ -393,31 +400,31 @@ s.t. x_{k+1} = f(x_k, u_k)
 <h2 id="s77">9. 算例（合成数据）</h2>
 <aside class="note"><p>复现：<code>python skills/ems-dispatch/tools/selftest.py</code>。价格曲线由 <code>curves.storage_day_prices()</code> 生成（24 点：00–08 时 200、08–18 时 450、18–22 时 900、22–24 时 450 元/MWh），初始 SOC 10%、日循环。§9.1–9.5 为解析口径，调度内核在 400 个 SOC 网格上复算，充放电量与解析值一致；§9.6–9.7 为分项测算。全部为 D 级合成数据。</p></aside>
 <h3 id="s78">9.1 设定</h3>
-<div class="table-wrap"><table><thead><tr><th>参数</th><th>取值</th></tr></thead><tbody><tr><td>额定功率</td><td>100 MW</td></tr><tr><td>额定能量</td><td>200 MWh</td></tr><tr><td>SOC 窗口</td><td>10%–90%</td></tr><tr><td>可用能量（直流侧）</td><td>160 MWh</td></tr><tr><td>系统 RTE</td><td>88%（η ≈ 0.938）</td></tr><tr><td>日价格曲线</td><td>24 点；谷 200、平 450、峰 900 元/MWh</td></tr><tr><td>谷/峰时段</td><td>00–08 谷、18–22 峰，其余平价</td></tr><tr><td>初始/终端 SOC</td><td>10% / 10%（日循环）</td></tr><tr><td>日循环</td><td>1 次（谷充峰放）</td></tr><tr><td>退化成本</td><td>0.03 元/kWh 吞吐</td></tr><tr><td>容量补偿</td><td>165 元/kW·年，时长折算 2/6</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>参数</th><th>取值</th></tr></thead><tbody><tr><td>额定功率</td><td>100 MW</td></tr><tr><td>额定能量</td><td>200 MWh</td></tr><tr><td>SOC 窗口</td><td>10%–90%</td></tr><tr><td>可用能量（直流侧）</td><td>160 MWh</td></tr><tr><td>系统 RTE</td><td>88%（η ≈ 0.938）</td></tr><tr><td>日价格曲线</td><td>24 点；谷 200、平 450、峰 900 元/MWh</td></tr><tr><td>谷/峰时段</td><td>00–08 谷、18–22 峰，其余平价</td></tr><tr><td>初始/终端 SOC</td><td>10% / 10%（日循环）</td></tr><tr><td>日循环</td><td>1 次（谷充峰放）</td></tr><tr><td>退化成本</td><td>0.03 元/kWh 吞吐</td></tr><tr><td>容量补偿</td><td>165 元/kW·年，时长折算 2/6</td></tr></tbody></table></div>
 <p><strong>口径前提</strong>：160 MWh 是直流侧可用电量（SOC 窗口 × 额定能量）。交流侧放电量 = 160 × η = 150.1 MWh，充电量 = 160 / η = 170.6 MWh。把 160 MWh 直接当放电量是高频错误，会高估收入约 6%、低估充电成本约 6%。</p>
 <h3 id="s79">9.2 结果</h3>
-<div class="table-wrap"><table><thead><tr><th>项目</th><th>计算</th><th>金额（元/天）</th></tr></thead><tbody><tr><td>放电电量（交流侧）</td><td>160 × 0.938083 = 150.09 MWh</td><td>—</td></tr><tr><td>放电收入</td><td>150.09 × 900</td><td>135,083.97</td></tr><tr><td>充电电量（交流侧）</td><td>160 / 0.938083 = 170.56 MWh</td><td>—</td></tr><tr><td>充电成本</td><td>170.56 × 200</td><td>34,112.11</td></tr><tr><td>毛套利</td><td>135,083.97 − 34,112.11</td><td>100,971.86</td></tr><tr><td>退化成本</td><td>0.03 × 320.65 MWh</td><td>9,619.62</td></tr><tr><td>能量净收益</td><td>100,971.86 − 9,619.62</td><td>91,352.24</td></tr><tr><td>容量补偿</td><td>165 × 100,000 kW × (2/6) / 365</td><td>15,068.49</td></tr><tr><td>合计</td><td>91,352.24 + 15,068.49</td><td>106,420.74</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>计算</th><th>金额（元/天）</th></tr></thead><tbody><tr><td>放电电量（交流侧）</td><td>160 × 0.938083 = 150.09 MWh</td><td>—</td></tr><tr><td>放电收入</td><td>150.09 × 900</td><td>135,083.97</td></tr><tr><td>充电电量（交流侧）</td><td>160 / 0.938083 = 170.56 MWh</td><td>—</td></tr><tr><td>充电成本</td><td>170.56 × 200</td><td>34,112.11</td></tr><tr><td>毛套利</td><td>135,083.97 − 34,112.11</td><td>100,971.86</td></tr><tr><td>退化成本</td><td>0.03 × 320.65 MWh</td><td>9,619.62</td></tr><tr><td>能量净收益</td><td>100,971.86 − 9,619.62</td><td>91,352.24</td></tr><tr><td>容量补偿</td><td>165 × 100,000 kW × (2/6) / 365</td><td>15,068.49</td></tr><tr><td>合计</td><td>91,352.24 + 15,068.49</td><td>106,420.74</td></tr></tbody></table></div>
 <aside class="note"><p>校验：150.09 / 170.56 = 0.88，与设定的系统 RTE 一致。若计入 0.3 MW 辅助电源（400 元/MWh），再扣 0.3 × 24 × 400 = 2,880 元/天，合计约 103,540.74 元/天。调度内核按谷充峰放求解，充放电量与上表一致（±0.01 MWh），说明解析口径与 24 点调度模型同构；同一内核改 <code>dt_h</code> 与价格曲线即可换到 96 点。</p></aside>
 <h3 id="s80">9.3 典型解形态</h3>
 <ul><li>谷段满功率充电约 1.71 h（170.56 MWh / 100 MW）；</li><li>峰段满功率放电约 1.50 h（150.09 MWh / 100 MW）；</li><li>充放时长不同：充电时间更长，因为要多充 η 的损耗；</li><li>其余时段待机，SOC 维持在中位；</li><li>若叠加调频，需在峰谷套利之外预留功率与能量裕度，套利电量下降。</li></ul>
 <h3 id="s81">9.4 调频叠加（示意）</h3>
-<div class="table-wrap"><table><thead><tr><th>项目</th><th>计算</th><th>金额（元/天）</th></tr></thead><tbody><tr><td>调频容量 10 MW</td><td>10 元/MW·h × 10 MW × 24 h</td><td>2,400</td></tr><tr><td>调频里程 1,500 MW/日</td><td>6 元/MW × 1,500 × K 1.5</td><td>13,500</td></tr><tr><td>合计</td><td>—</td><td>15,900</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>计算</th><th>金额（元/天）</th></tr></thead><tbody><tr><td>调频容量 10 MW</td><td>10 元/MW·h × 10 MW × 24 h</td><td>2,400</td></tr><tr><td>调频里程 1,500 MW/日</td><td>6 元/MW × 1,500 × K 1.5</td><td>13,500</td></tr><tr><td>合计</td><td>—</td><td>15,900</td></tr></tbody></table></div>
 <p>叠加调频会占用 10 MW 功率与相应能量裕度，套利电量减少；净增益取决于 K 值、里程与考核，不能只看容量补偿。数字为 D 级示意。</p>
 <h3 id="s82">9.5 敏感性</h3>
-<div class="table-wrap"><table><thead><tr><th>变化</th><th>影响（元/天）</th></tr></thead><tbody><tr><td>峰价 ±100 元/MWh</td><td>±15,009.3（150.09 MWh）</td></tr><tr><td>谷价 ±100 元/MWh</td><td>∓17,056.1（170.56 MWh）</td></tr><tr><td>RTE 88% → 85%</td><td>放电 147.51、充电 173.54 MWh，净收益 −2,931.4</td></tr><tr><td>退化成本 0.03 → 0.06 元/kWh</td><td>−9,619.6</td></tr><tr><td>时长折算 2/6 → 4/6</td><td>容量补偿 +15,068.5</td></tr><tr><td>可用率 95%</td><td>容量补偿 −753.4</td></tr><tr><td>辅助电源 0.3 MW</td><td>−2,880.0</td></tr><tr><td>调频 K 值 1.5 → 1.0</td><td>里程收入 −4,500（按 §9.4）</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>变化</th><th>影响（元/天）</th></tr></thead><tbody><tr><td>峰价 ±100 元/MWh</td><td>±15,009.3（150.09 MWh）</td></tr><tr><td>谷价 ±100 元/MWh</td><td>∓17,056.1（170.56 MWh）</td></tr><tr><td>RTE 88% → 85%</td><td>放电 147.51、充电 173.54 MWh，净收益 −2,931.4</td></tr><tr><td>退化成本 0.03 → 0.06 元/kWh</td><td>−9,619.6</td></tr><tr><td>时长折算 2/6 → 4/6</td><td>容量补偿 +15,068.5</td></tr><tr><td>可用率 95%</td><td>容量补偿 −753.4</td></tr><tr><td>辅助电源 0.3 MW</td><td>−2,880.0</td></tr><tr><td>调频 K 值 1.5 → 1.0</td><td>里程收入 −4,500（按 §9.4）</td></tr></tbody></table></div>
 <h3 id="s83">9.6 用户侧算例：峰谷套利 + 需量管理（合成数据）</h3>
-<div class="table-wrap"><table><thead><tr><th>参数</th><th>取值</th></tr></thead><tbody><tr><td>用户最大负荷</td><td>12 MW</td></tr><tr><td>储能</td><td>5 MW / 10 MWh，SOC 10%–90%（可用直流 8 MWh）</td></tr><tr><td>系统 RTE</td><td>88%（η ≈ 0.938）</td></tr><tr><td>分时电价</td><td>谷 350、平 700、峰 1,050 元/MWh</td></tr><tr><td>需量电价</td><td>40 元/kW·月，核定值 10,000 kW</td></tr><tr><td>充/放功率</td><td>4 MW（一充一放）</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>参数</th><th>取值</th></tr></thead><tbody><tr><td>用户最大负荷</td><td>12 MW</td></tr><tr><td>储能</td><td>5 MW / 10 MWh，SOC 10%–90%（可用直流 8 MWh）</td></tr><tr><td>系统 RTE</td><td>88%（η ≈ 0.938）</td></tr><tr><td>分时电价</td><td>谷 350、平 700、峰 1,050 元/MWh</td></tr><tr><td>需量电价</td><td>40 元/kW·月，核定值 10,000 kW</td></tr><tr><td>充/放功率</td><td>4 MW（一充一放）</td></tr></tbody></table></div>
 <p><strong>能量部分</strong>：</p>
-<div class="table-wrap"><table><thead><tr><th>项目</th><th>计算</th><th>金额（元/天）</th></tr></thead><tbody><tr><td>交流充电量</td><td>8 / 0.938083 = 8.5280 MWh</td><td>—</td></tr><tr><td>充电成本</td><td>8.5280 × 350</td><td>2,984.81</td></tr><tr><td>交流放电量</td><td>8 × 0.938083 = 7.5047 MWh</td><td>—</td></tr><tr><td>放电收入</td><td>7.5047 × 1,050</td><td>7,879.90</td></tr><tr><td>毛价差</td><td>7,879.90 − 2,984.81</td><td>4,895.09</td></tr><tr><td>退化成本</td><td>0.03 × 16.0327 MWh</td><td>480.98</td></tr><tr><td>净价差</td><td>4,895.09 − 480.98</td><td>4,414.11</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>计算</th><th>金额（元/天）</th></tr></thead><tbody><tr><td>交流充电量</td><td>8 / 0.938083 = 8.5280 MWh</td><td>—</td></tr><tr><td>充电成本</td><td>8.5280 × 350</td><td>2,984.81</td></tr><tr><td>交流放电量</td><td>8 × 0.938083 = 7.5047 MWh</td><td>—</td></tr><tr><td>放电收入</td><td>7.5047 × 1,050</td><td>7,879.90</td></tr><tr><td>毛价差</td><td>7,879.90 − 2,984.81</td><td>4,895.09</td></tr><tr><td>退化成本</td><td>0.03 × 16.0327 MWh</td><td>480.98</td></tr><tr><td>净价差</td><td>4,895.09 − 480.98</td><td>4,414.11</td></tr></tbody></table></div>
 <p>充电约 2.13 h、放电约 1.88 h（4 MW）。</p>
 <p><strong>需量部分</strong>：</p>
-<div class="table-wrap"><table><thead><tr><th>场景</th><th>实际最大需量</th><th>基本电费（元/月）</th></tr></thead><tbody><tr><td>无储能</td><td>12,000 kW（超 105% 核定值 1,500 kW）</td><td>40 × (10,000 + 2 × 1,500) = 520,000</td></tr><tr><td>储能峰段放电 4 MW</td><td>8,000 kW（未超 105%）</td><td>40 × 10,000 = 400,000</td></tr><tr><td>月节省</td><td>—</td><td>120,000（约 4,000 元/天）</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>场景</th><th>实际最大需量</th><th>基本电费（元/月）</th></tr></thead><tbody><tr><td>无储能</td><td>12,000 kW（超 105% 核定值 1,500 kW）</td><td>40 × (10,000 + 2 × 1,500) = 520,000</td></tr><tr><td>储能峰段放电 4 MW</td><td>8,000 kW（未超 105%）</td><td>40 × 10,000 = 400,000</td></tr><tr><td>月节省</td><td>—</td><td>120,000（约 4,000 元/天）</td></tr></tbody></table></div>
 <p>合计 8,414.11 元/天（能量 4,414.11 + 需量按 30 天日摊 4,000），其中需量贡献接近一半。</p>
 <p><strong>三个必须同时成立的约束</strong>：</p>
 <ol><li>放电窗口必须覆盖月度最大需量时刻，否则削峰收益为零；</li><li><strong>充电不得抬高需量</strong>：谷段负荷 6 MW 时充电 4 MW → 购电 10 MW，未超核定值；谷段负荷 8 MW 时购电 12 MW，反而把需量顶上去，充电功率须限制在&quot;核定值 − 谷段负荷&quot;以内；</li><li>核定值本身可按月申请变更（提前 5 个工作日），储能削峰能力改变最优核定值，应联合测算。</li></ol>
 <h3 id="s84">9.7 新能源配储算例：弃电充电（合成数据）</h3>
-<div class="table-wrap"><table><thead><tr><th>参数</th><th>取值</th></tr></thead><tbody><tr><td>风电场</td><td>100 MW</td></tr><tr><td>配储</td><td>20 MW / 40 MWh（20%、2 h），SOC 10%–90%（可用直流 32 MWh）</td></tr><tr><td>系统 RTE</td><td>88%（η ≈ 0.938）</td></tr><tr><td>夜间可充弃电</td><td>30 MWh/天</td></tr><tr><td>早峰电价</td><td>600 元/MWh</td></tr><tr><td>退化成本</td><td>0.03 元/kWh</td></tr></tbody></table></div>
-<div class="table-wrap"><table><thead><tr><th>项目</th><th>计算</th><th>金额（元/天）</th></tr></thead><tbody><tr><td>交流充电量</td><td>30 MWh（20 MW × 1.5 h）</td><td>—</td></tr><tr><td>存入直流电量</td><td>30 × 0.938083 = 28.14 MWh ≤ 32 MWh</td><td>可行</td></tr><tr><td>交流放电量</td><td>28.14 × 0.938083 = 26.40 MWh</td><td>—</td></tr><tr><td>放电收入</td><td>26.40 × 600</td><td>15,840</td></tr><tr><td>退化成本</td><td>0.03 × 56.40 MWh</td><td>1,692</td></tr><tr><td>净收益（弃电按 0 元计）</td><td>15,840 − 1,692</td><td>14,148</td></tr><tr><td>净收益（充电按 150 元/MWh 计）</td><td>再扣 30 × 150 = 4,500</td><td>9,648</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>参数</th><th>取值</th></tr></thead><tbody><tr><td>风电场</td><td>100 MW</td></tr><tr><td>配储</td><td>20 MW / 40 MWh（20%、2 h），SOC 10%–90%（可用直流 32 MWh）</td></tr><tr><td>系统 RTE</td><td>88%（η ≈ 0.938）</td></tr><tr><td>夜间可充弃电</td><td>30 MWh/天</td></tr><tr><td>早峰电价</td><td>600 元/MWh</td></tr><tr><td>退化成本</td><td>0.03 元/kWh</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>计算</th><th>金额（元/天）</th></tr></thead><tbody><tr><td>交流充电量</td><td>30 MWh（20 MW × 1.5 h）</td><td>—</td></tr><tr><td>存入直流电量</td><td>30 × 0.938083 = 28.14 MWh ≤ 32 MWh</td><td>可行</td></tr><tr><td>交流放电量</td><td>28.14 × 0.938083 = 26.40 MWh</td><td>—</td></tr><tr><td>放电收入</td><td>26.40 × 600</td><td>15,840</td></tr><tr><td>退化成本</td><td>0.03 × 56.40 MWh</td><td>1,692</td></tr><tr><td>净收益（弃电按 0 元计）</td><td>15,840 − 1,692</td><td>14,148</td></tr><tr><td>净收益（充电按 150 元/MWh 计）</td><td>再扣 30 × 150 = 4,500</td><td>9,648</td></tr></tbody></table></div>
 <p><strong>口径提醒</strong>：</p>
 <ul><li>弃电充电的边际成本是 0 还是低价时段电价，取决于结算口径（是否计入场站上网电量、是否有弃电补偿）；两种口径差 4,500 元/天，必须与合同和结算单一致；</li><li>储能充电相当于减少场站送出功率，需检查并网点送出限值是否越限；</li><li>配储的另一收益是减少计划跟踪偏差考核，属定性项，本例不计；</li><li>若夜间弃电超过 30 MWh，受可用直流电量 32 MWh 与 2 h 时长限制，多余弃电无法消纳，这是时长选型的直接后果（见 §4.15）。</li></ul>
 <h3 id="s85">9.8 读法</h3>
@@ -425,21 +432,21 @@ s.t. x_{k+1} = f(x_k, u_k)
 <hr>
 <h2 id="s86">10. 工程复核清单</h2>
 <h3 id="s87">10.1 P0：影响正确性或可用性</h3>
-<div class="table-wrap"><table><thead><tr><th>检查项</th><th>通过标准</th></tr></thead><tbody><tr><td>购/售双变量与互斥</td><td>无同时购售</td></tr><tr><td>充放互斥</td><td>无同时充放</td></tr><tr><td>SOC 递推</td><td>含效率、自放电、辅助电源，守恒</td></tr><tr><td>SOC 边界与终端</td><td>不越限，跨日终端合理</td></tr><tr><td>并网点限值</td><td>不越限，防逆流生效</td></tr><tr><td>备用功率/能量</td><td>中标可交付</td></tr><tr><td>调频恢复</td><td>考核周期末回到基线带</td></tr><tr><td>容量补偿资格</td><td>清单、可用率、时长折算正确</td></tr><tr><td>BMS/PCS 限值</td><td>下发前独立校验</td></tr><tr><td>安全联锁</td><td>告警时禁止充放</td></tr><tr><td>降级策略</td><td>超时/失败有可行解</td></tr><tr><td>时钟与结算口径</td><td>同源同时标</td></tr><tr><td>直流/交流电量口径</td><td>可用直流电量与交流充放电量分开，差一个 η</td></tr><tr><td>两部制计费方式与核定值</td><td>计费方式、核定值、超 105% 加倍进入模型</td></tr><tr><td>计量点映射</td><td>关口表与站内量测的映射写清，可对账</td></tr><tr><td>簇级分配回代</td><td>站级计划逐簇校验 SOC/限功率/温度不越限</td></tr><tr><td>品种容量不超卖</td><td>共用功率/能量变量，无重复申报</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>检查项</th><th>通过标准</th></tr></thead><tbody><tr><td>购/售双变量与互斥</td><td>无同时购售</td></tr><tr><td>充放互斥</td><td>无同时充放</td></tr><tr><td>SOC 递推</td><td>含效率、自放电、辅助电源，守恒</td></tr><tr><td>SOC 边界与终端</td><td>不越限，跨日终端合理</td></tr><tr><td>并网点限值</td><td>不越限，防逆流生效</td></tr><tr><td>备用功率/能量</td><td>中标可交付</td></tr><tr><td>调频恢复</td><td>考核周期末回到基线带</td></tr><tr><td>容量补偿资格</td><td>清单、可用率、时长折算正确</td></tr><tr><td>BMS/PCS 限值</td><td>下发前独立校验</td></tr><tr><td>安全联锁</td><td>告警时禁止充放</td></tr><tr><td>降级策略</td><td>超时/失败有可行解</td></tr><tr><td>时钟与结算口径</td><td>同源同时标</td></tr><tr><td>直流/交流电量口径</td><td>可用直流电量与交流充放电量分开，差一个 η</td></tr><tr><td>两部制计费方式与核定值</td><td>计费方式、核定值、超 105% 加倍进入模型</td></tr><tr><td>计量点映射</td><td>关口表与站内量测的映射写清，可对账</td></tr><tr><td>簇级分配回代</td><td>站级计划逐簇校验 SOC/限功率/温度不越限</td></tr><tr><td>品种容量不超卖</td><td>共用功率/能量变量，无重复申报</td></tr></tbody></table></div>
 <h3 id="s88">10.2 P1：影响性能或可维护性</h3>
-<div class="table-wrap"><table><thead><tr><th>检查项</th><th>通过标准</th></tr></thead><tbody><tr><td>Big-M 大小</td><td>取物理上界</td></tr><tr><td>求解时间</td><td>P95 在调度周期内</td></tr><tr><td>热启动</td><td>滚动调度生效</td></tr><tr><td>场景数</td><td>经削减，规模可控</td></tr><tr><td>退化模型</td><td>与厂商/实测标定</td></tr><tr><td>温度降额</td><td>按小时更新</td></tr><tr><td>多站聚合</td><td>并网点限值正确</td></tr><tr><td>日志与回放</td><td>指令可追溯</td></tr><tr><td>告警分级</td><td>求解失败/越限/通信中断分级</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>检查项</th><th>通过标准</th></tr></thead><tbody><tr><td>Big-M 大小</td><td>取物理上界</td></tr><tr><td>求解时间</td><td>P95 在调度周期内</td></tr><tr><td>热启动</td><td>滚动调度生效</td></tr><tr><td>场景数</td><td>经削减，规模可控</td></tr><tr><td>退化模型</td><td>与厂商/实测标定</td></tr><tr><td>温度降额</td><td>按小时更新</td></tr><tr><td>多站聚合</td><td>并网点限值正确</td></tr><tr><td>日志与回放</td><td>指令可追溯</td></tr><tr><td>告警分级</td><td>求解失败/越限/通信中断分级</td></tr></tbody></table></div>
 <h3 id="s89">10.3 P2：工程化与可观测性</h3>
-<div class="table-wrap"><table><thead><tr><th>检查项</th><th>通过标准</th></tr></thead><tbody><tr><td>指标</td><td>收益、RTE、K、可用率、偏差</td></tr><tr><td>对账</td><td>模型收益与结算差异可解释</td></tr><tr><td>版本</td><td>模型/参数/规则版本化</td></tr><tr><td>权限</td><td>最小权限、操作审计</td></tr><tr><td>网络安全</td><td>IEC 62443 / GB/T 22239</td></tr><tr><td>容灾</td><td>断网自治、恢复对账</td></tr><tr><td>文档</td><td>口径、假设、限制写清楚</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>检查项</th><th>通过标准</th></tr></thead><tbody><tr><td>指标</td><td>收益、RTE、K、可用率、偏差</td></tr><tr><td>对账</td><td>模型收益与结算差异可解释</td></tr><tr><td>版本</td><td>模型/参数/规则版本化</td></tr><tr><td>权限</td><td>最小权限、操作审计</td></tr><tr><td>网络安全</td><td>IEC 62443 / GB/T 22239</td></tr><tr><td>容灾</td><td>断网自治、恢复对账</td></tr><tr><td>文档</td><td>口径、假设、限制写清楚</td></tr></tbody></table></div>
 <h3 id="s90">10.4 标准合规映射</h3>
-<div class="table-wrap"><table><thead><tr><th>要求</th><th>模型/工程落点</th><th>证据</th></tr></thead><tbody><tr><td>并网功率与功率因数</td><td>S5、S16 + 下发校验</td><td>参数表、并网检测</td></tr><tr><td>一次调频/惯量</td><td>能力约束、PCS 参数</td><td>并网检测、HIL</td></tr><tr><td>AGC/AVC</td><td>预留容量、接口联调</td><td>调度协议、联调记录</td></tr><tr><td>故障穿越</td><td>PCS 能力，不进经济模型</td><td>检测报告</td></tr><tr><td>通信与对时</td><td>双网、SOE、时钟同步</td><td>通信日志、对时记录</td></tr><tr><td>安全与消防</td><td>S17 联锁、BMS 限值</td><td>消防验收、联锁测试</td></tr><tr><td>运行指标</td><td>RTE、可用率、K、响应时间</td><td>月报、结算单</td></tr><tr><td>并网验收</td><td>GB/T 36548、DL/T 2917</td><td>验收报告</td></tr><tr><td>网络安全</td><td>IEC 62443、等保</td><td>测评报告</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>要求</th><th>模型/工程落点</th><th>证据</th></tr></thead><tbody><tr><td>并网功率与功率因数</td><td>S5、S16 + 下发校验</td><td>参数表、并网检测</td></tr><tr><td>一次调频/惯量</td><td>能力约束、PCS 参数</td><td>并网检测、HIL</td></tr><tr><td>AGC/AVC</td><td>预留容量、接口联调</td><td>调度协议、联调记录</td></tr><tr><td>故障穿越</td><td>PCS 能力，不进经济模型</td><td>检测报告</td></tr><tr><td>通信与对时</td><td>双网、SOE、时钟同步</td><td>通信日志、对时记录</td></tr><tr><td>安全与消防</td><td>S17 联锁、BMS 限值</td><td>消防验收、联锁测试</td></tr><tr><td>运行指标</td><td>RTE、可用率、K、响应时间</td><td>月报、结算单</td></tr><tr><td>并网验收</td><td>GB/T 36548、DL/T 2917</td><td>验收报告</td></tr><tr><td>网络安全</td><td>IEC 62443、等保</td><td>测评报告</td></tr></tbody></table></div>
 <h3 id="s91">10.5 测试与验收</h3>
-<div class="table-wrap"><table><thead><tr><th>测试</th><th>方法</th><th>通过标准</th></tr></thead><tbody><tr><td>模型单元测试</td><td>构造算例，验证守恒/边界/互斥</td><td>无同时充放、SOC 守恒、限值不越</td></tr><tr><td>回放测试</td><td>历史日回放</td><td>收益不劣于基线，约束满足</td></tr><tr><td>极端价格</td><td>负价、零价、尖峰</td><td>行为合理，无越限</td></tr><tr><td>不可行诊断</td><td>收紧约束</td><td>给出冲突集</td></tr><tr><td>HIL/PHIL</td><td>控制器/功率在环</td><td>指令跟踪、切换正确</td></tr><tr><td>AGC/AVC 跟踪</td><td>阶跃/斜坡</td><td>响应时间、稳态误差达标</td></tr><tr><td>一次调频</td><td>频率阶跃</td><td>调差率、响应时间达标</td></tr><tr><td>通信中断</td><td>断网/丢包/时延</td><td>本地兜底，不误动作</td></tr><tr><td>长时运行</td><td>72 h 连续</td><td>无泄漏、无计划漂移</td></tr><tr><td>网络安全</td><td>渗透/等保</td><td>无高危漏洞</td></tr><tr><td>结算对账</td><td>模型 vs 结算单</td><td>差异可解释</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>测试</th><th>方法</th><th>通过标准</th></tr></thead><tbody><tr><td>模型单元测试</td><td>构造算例，验证守恒/边界/互斥</td><td>无同时充放、SOC 守恒、限值不越</td></tr><tr><td>回放测试</td><td>历史日回放</td><td>收益不劣于基线，约束满足</td></tr><tr><td>极端价格</td><td>负价、零价、尖峰</td><td>行为合理，无越限</td></tr><tr><td>不可行诊断</td><td>收紧约束</td><td>给出冲突集</td></tr><tr><td>HIL/PHIL</td><td>控制器/功率在环</td><td>指令跟踪、切换正确</td></tr><tr><td>AGC/AVC 跟踪</td><td>阶跃/斜坡</td><td>响应时间、稳态误差达标</td></tr><tr><td>一次调频</td><td>频率阶跃</td><td>调差率、响应时间达标</td></tr><tr><td>通信中断</td><td>断网/丢包/时延</td><td>本地兜底，不误动作</td></tr><tr><td>长时运行</td><td>72 h 连续</td><td>无泄漏、无计划漂移</td></tr><tr><td>网络安全</td><td>渗透/等保</td><td>无高危漏洞</td></tr><tr><td>结算对账</td><td>模型 vs 结算单</td><td>差异可解释</td></tr></tbody></table></div>
 <h3 id="s92">10.6 红线</h3>
 <ol><li>同时充放或同时购售未被约束；</li><li>备用/调频容量超过功率或能量可支撑范围；</li><li>计划越限（并网点/SOC/爬坡）仍下发；</li><li>绕过 BMS/PCS 限值下发指令；</li><li>告警/消防联锁状态下继续充放；</li><li>超时/异常直接下发空计划或全零计划；</li><li>用未对时的&quot;实时&quot;数据做结算；</li><li>把合成算例收益当作项目承诺；</li><li>容量补偿按铭牌容量、忽略清单与可用率；</li><li>用日前计划直接控制 PCS，跳过站控校验。</li></ol>
 <hr>
 <h2 id="s93">11. 对储能 EMS 模块的写法建议</h2>
 <h3 id="s94">11.1 模块边界</h3>
-<div class="table-wrap"><table><thead><tr><th>模块</th><th>核心问题</th><th>本文覆盖</th></tr></thead><tbody><tr><td>储能 EMS 优化调度</td><td>单站/多站如何充放、如何申报</td><td>是</td></tr><tr><td>微网 EMS 优化调度</td><td>源荷储协同、并离网切换</td><td>引用<a href="微网EMS优化调度-算法与工程-2026-11.html">姊妹笔记</a></td></tr><tr><td>虚拟电厂</td><td>聚合、基线、需求响应</td><td>引用《虚拟电厂专家》</td></tr><tr><td>现货报价</td><td>预测、报价曲线、回测</td><td>引用《现货报价量化专家》</td></tr><tr><td>电力交易</td><td>中长期分解、结算</td><td>引用《电力交易专家》</td></tr><tr><td>碳资产</td><td>碳核算、绿证</td><td>引用《碳资产管理专家》</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>模块</th><th>核心问题</th><th>本文覆盖</th></tr></thead><tbody><tr><td>储能 EMS 优化调度</td><td>单站/多站如何充放、如何申报</td><td>是</td></tr><tr><td>微网 EMS 优化调度</td><td>源荷储协同、并离网切换</td><td>引用<a href="微网EMS优化调度-算法与工程-2026-11.html">姊妹笔记</a></td></tr><tr><td>虚拟电厂</td><td>聚合、基线、需求响应</td><td>引用《虚拟电厂专家》</td></tr><tr><td>现货报价</td><td>预测、报价曲线、回测</td><td>引用《现货报价量化专家》</td></tr><tr><td>电力交易</td><td>中长期分解、结算</td><td>引用《电力交易专家》</td></tr><tr><td>碳资产</td><td>碳核算、绿证</td><td>引用《碳资产管理专家》</td></tr></tbody></table></div>
 <p>两者共享同一套 MILP 内核与求解工程；差异在边界、约束与业务目标。<strong>先写共用的模型与算例，再分别加模块特有约束。</strong></p>
 <h3 id="s95">11.2 需要补充的材料</h3>
 <ul><li>省级辅助服务市场规则（调频、备用、爬坡的申报、出清、考核）；</li><li>省级容量电价细则（清单、时长分母、可用率门槛）；</li><li>并网调度协议（AGC/AVC 接口、点表、通信规约）；</li><li>设备参数（PCS 效率曲线、BMS 限功率表、温度降额表）；</li><li>退化与质保条款（循环次数、吞吐量、SOH 保证）；</li><li>真实或合成的 96 点电价、负荷、新能源出力曲线；</li><li>消防与安全联锁逻辑（厂家文件 + 验收报告）。</li></ul>
@@ -448,30 +455,63 @@ s.t. x_{k+1} = f(x_k, u_k)
 <h3 id="s97">11.4 待核实</h3>
 <ul><li>省级调频/备用/爬坡的申报与考核细则，按当期规则核实；</li><li>容量补偿的省级分母时长与可用率门槛，按当期文件核实；</li><li>GB/T 51048-2025、GB/T 46957-2025、GB/T 46261-2025 等新标准的实施时点与适用范围，以正式文本为准；</li><li>构网型（GB/T 47968-2026）对 EMS 的具体要求，待标准正文与项目实践；</li><li>设备效率、降额、退化参数，以厂家文件与现场实测为准；</li><li>功率因数调整电费（力调电费）的考核标准与调整系数，按当地电价文件核实；</li><li>两部制基本电价的省级执行差异（核定值下限、多进线累加、按实际最大需量计费的适用范围）；</li><li>DL/T 2246、DL/T 2247、DL/T 2919 系列的适用范围与最新版本，以正式文本为准；</li><li>GB/T 36549-2018 各指标的定义与统计方法，以标准正文为准；</li><li>本文算例为合成数据，不能作为项目收益承诺。</li></ul>
 <h3 id="s98">11.5 后续 SKILL 章节草案</h3>
-<div class="table-wrap"><table><thead><tr><th>章节</th><th>内容</th></tr></thead><tbody><tr><td>0</td><td>定位、边界、与 BMS/PCS/保护的分工</td></tr><tr><td>1</td><td>问题识别与 MILP 建模</td></tr><tr><td>2</td><td>统一模型（目标、约束、规模）</td></tr><tr><td>3</td><td>建模技巧与常见错误</td></tr><tr><td>4</td><td>求解器工程与降级</td></tr><tr><td>5</td><td>多时间尺度、MPC 与状态机</td></tr><tr><td>6</td><td>不确定性</td></tr><tr><td>7</td><td>可调能力评估</td></tr><tr><td>8</td><td>并网标准、市场规则与验收</td></tr><tr><td>9</td><td>算例与工具</td></tr><tr><td>10</td><td>复核清单</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>章节</th><th>内容</th></tr></thead><tbody><tr><td>0</td><td>定位、边界、与 BMS/PCS/保护的分工</td></tr><tr><td>1</td><td>问题识别与 MILP 建模</td></tr><tr><td>2</td><td>统一模型（目标、约束、规模）</td></tr><tr><td>3</td><td>建模技巧与常见错误</td></tr><tr><td>4</td><td>求解器工程与降级</td></tr><tr><td>5</td><td>多时间尺度、MPC 与状态机</td></tr><tr><td>6</td><td>不确定性</td></tr><tr><td>7</td><td>可调能力评估</td></tr><tr><td>8</td><td>并网标准、市场规则与验收</td></tr><tr><td>9</td><td>算例与工具</td></tr><tr><td>10</td><td>复核清单</td></tr></tbody></table></div>
 <hr>
 <h2 id="s99">12. 公开工具与数据</h2>
-<div class="table-wrap"><table><thead><tr><th>工具/数据</th><th>用途</th><th>许可/注意</th></tr></thead><tbody><tr><td>OpenEMS</td><td>开源 EMS/边缘控制</td><td>按项目核实版本与许可</td></tr><tr><td>PyPSA / oemof</td><td>能源系统建模与优化</td><td>开源；适合原型与教学</td></tr><tr><td>pandapower</td><td>配网潮流</td><td>开源；用于事后校验</td></tr><tr><td>EPRI StorageVET</td><td>储能价值评估</td><td>按官方许可</td></tr><tr><td>NREL REopt / HOMER / SAM</td><td>容量配置与可研</td><td>许可与版本按官方说明</td></tr><tr><td>HiGHS / SCIP / CBC</td><td>开源 MIP 求解器</td><td>性能差异大，需基准</td></tr><tr><td>Gurobi / COPT</td><td>商业 MIP 求解器</td><td>许可；适合生产</td></tr><tr><td>OR-Tools</td><td>建模与 CP-SAT/MIP</td><td>开源；原型友好</td></tr><tr><td>cvxpy</td><td>凸优化建模</td><td>不适合大规模 MILP</td></tr><tr><td>IEC 61850-7-420 / DL/T 860</td><td>设备信息模型</td><td>按项目点表</td></tr><tr><td>OpenADR 2.0b / IEEE 2030.5</td><td>需求响应通信</td><td>互操作性需测试</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>工具/数据</th><th>用途</th><th>许可/注意</th></tr></thead><tbody><tr><td>OpenEMS</td><td>开源 EMS/边缘控制</td><td>按项目核实版本与许可</td></tr><tr><td>PyPSA / oemof</td><td>能源系统建模与优化</td><td>开源；适合原型与教学</td></tr><tr><td>pandapower</td><td>配网潮流</td><td>开源；用于事后校验</td></tr><tr><td>EPRI StorageVET</td><td>储能价值评估</td><td>按官方许可</td></tr><tr><td>NREL REopt / HOMER / SAM</td><td>容量配置与可研</td><td>许可与版本按官方说明</td></tr><tr><td>HiGHS / SCIP / CBC</td><td>开源 MIP 求解器</td><td>性能差异大，需基准</td></tr><tr><td>Gurobi / COPT</td><td>商业 MIP 求解器</td><td>许可；适合生产</td></tr><tr><td>OR-Tools</td><td>建模与 CP-SAT/MIP</td><td>开源；原型友好</td></tr><tr><td>cvxpy</td><td>凸优化建模</td><td>不适合大规模 MILP</td></tr><tr><td>IEC 61850-7-420 / DL/T 860</td><td>设备信息模型</td><td>按项目点表</td></tr><tr><td>OpenADR 2.0b / IEEE 2030.5</td><td>需求响应通信</td><td>互操作性需测试</td></tr></tbody></table></div>
 <aside class="note"><p>工具只解决&quot;能算&quot;，不解决&quot;算得对&quot;。<strong>模型校验、现场回放与验收测试不可省略。</strong></p></aside>
 <hr>
 <h2 id="s100">13. 内容说明</h2>
 <ul><li>本文只讨论公开标准、公开政策、公开市场规则、通用运筹方法与合成算例；</li><li>不含具体企业、项目、站点、设备参数或部署信息；</li><li>文中系数为示例量级，算例为合成数据，不能直接用于项目测算；</li><li>市场规则与省级细则随时点变化，引用前查当期文件。</li></ul>
 <hr>
 <h2 id="s101">14. 来源分级</h2>
-<div class="table-wrap"><table><thead><tr><th>级别</th><th>本文用法</th><th>示例</th></tr></thead><tbody><tr><td>A</td><td>标准号、发布/实施日期、文件名称</td><td>GB/T 36547-2024、GB/T 34120-2023、GB/T 42288-2022</td></tr><tr><td>B</td><td>国家部委/交易中心/电网企业公开文件</td><td>国能发科技规〔2024〕26号、发改价格〔2026〕114号、发改能源规〔2025〕411号、发改办价格〔2016〕1583号、发改价格〔2018〕500号</td></tr><tr><td>C</td><td>公开解读、媒体报道、厂商资料</td><td>省级容量电价数值、K 值区间、时长分母、力调电费系数</td></tr><tr><td>D</td><td>测算与合成算例</td><td>§9 三个算例的收益、敏感性结论、调频叠加与折算系数示意</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>级别</th><th>本文用法</th><th>示例</th></tr></thead><tbody><tr><td>A</td><td>标准号、发布/实施日期、文件名称</td><td>GB/T 36547-2024、GB/T 34120-2023、GB/T 42288-2022</td></tr><tr><td>B</td><td>国家部委/交易中心/电网企业公开文件</td><td>国能发科技规〔2024〕26号、发改价格〔2026〕114号、发改能源规〔2025〕411号、发改办价格〔2016〕1583号、发改价格〔2018〕500号</td></tr><tr><td>C</td><td>公开解读、媒体报道、厂商资料</td><td>省级容量电价数值、K 值区间、时长分母、力调电费系数</td></tr><tr><td>D</td><td>测算与合成算例</td><td>§9 三个算例的收益、敏感性结论、调频叠加与折算系数示意</td></tr></tbody></table></div>
 <ul><li>引用标准条款时，至少写&quot;标准号 + 条款主题 + 时点&quot;；未取得正文的，标&quot;公开解读，待核实&quot;。</li><li>省级容量电价数值多来自公开报道（C 级），只能作量级参考，不能直接用于测算。</li><li>厂商资料只作方法参考，不作基准；项目参数以现场设备文件与并网协议为准。</li></ul>
 <hr>
 <p><em>本笔记为工程方法整理；所有算例均为合成数据。</em></p>
     </article>
 
-    <section class="related" aria-label="相关模块">
-      <h2>相关模块</h2>
-      <ul>
-        <li><a href="储能投资与运营-2026-11.html">储能投资与运营</a></li>
-        <li><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a></li>
-        <li><a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a></li>
-        <li><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a></li>
-      </ul>
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>4</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="储能投资与运营-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>储能投资与运营</b>
+          <span>114/1656/411/1583 文号、容量电价时长折算、投决算例、收入堆叠、退化质保与敏感性。</span>
+        </a>
+        <a class="related-card" href="微网EMS优化调度-算法与工程-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>微网 EMS 优化调度</b>
+          <span>PCC 购售双变量、备用/孤岛/退化约束、MPC 滚动与验收测试，区分保护与优化。</span>
+        </a>
+        <a class="related-card" href="量化报价与交易风控-工程化-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>量化报价与交易风控</b>
+          <span>预测→报价→申报→结算→归因的工程闭环，含风控限额、对账与 2026 规则版本管理。</span>
+        </a>
+        <a class="related-card" href="SCADA与电力监控数据链路-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>SCADA 与电力监控数据链路</b>
+          <span>从 VPP/EMS 的数据底座出发，拆解点表与四遥、104/61850/Modbus/MQTT、边缘与云端两种部署形态、采集频率与时延、时钟同步、历史库、告警、冗余和电力监控安全防护。</span>
+        </a>
+      </div>
+
+    </section>
+
+<section class="related" aria-labelledby="paired-skills-title">
+      <div class="related-head"><h2 id="paired-skills-title">配套技能</h2><span>2</span></div>
+      <div class="related-grid">
+        <a class="related-card skill-pair" href="skill-storage-investment-operations.html">
+          <span class="related-type">收益堆叠、投决、退化与考核</span>
+          <b>储能投资与运营</b>
+          <span>技能 · 储能 · 投决 · LCOS</span>
+        </a>
+        <a class="related-card skill-pair" href="skill-ems-dispatch.html">
+          <span class="related-type">96 点调度、SOC、需量与可交付性</span>
+          <b>EMS 优化调度</b>
+          <span>技能 · EMS · SOC · 需量</span>
+        </a>
+      </div>
     </section>
 
     <nav class="pager" aria-label="上下篇">
@@ -481,7 +521,11 @@ s.t. x_{k+1} = f(x_k, u_k)
 
     <footer class="doc-foot">
       <div class="lic">本页由 <a href="../储能EMS优化调度-算法与工程-2026-11.md">knowledge/储能EMS优化调度-算法与工程-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
-      <div><a href="../index.html">返回知识库总览 →</a></div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
     </footer>
   </main>
 
@@ -589,7 +633,7 @@ s.t. x_{k+1} = f(x_k, u_k)
             <li class="lv2"><a href="#s99">12. 公开工具与数据</a></li>
             <li class="lv2"><a href="#s100">13. 内容说明</a></li>
             <li class="lv2"><a href="#s101">14. 来源分级</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="86">展开 86 个小节</button>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="86" data-more-label="展开 86 个小节" data-less-label="收起小节">展开 86 个小节</button>
   </aside>
 </div>
 

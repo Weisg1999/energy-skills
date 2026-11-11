@@ -19,9 +19,9 @@
 <div class="scrim"></div>
 
 <header class="topbar">
-  <a class="back" href="../index.html">← 知识库</a>
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
   <div class="crumb">
-    <span class="crumb-cat">16 / SKILLS</span>
+    <span class="crumb-cat">04 / SKILLS</span>
     <span class="crumb-sep">/</span>
     <span class="crumb-doc">新能源开发与并网</span>
   </div>
@@ -30,8 +30,14 @@
       <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
       <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-    <a class="src" href="skill-renewable-project-development-en.html">English</a>
-    <a class="src" href="../../skills/renewable-project-development/SKILL.md">.md 源文件</a>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../../skills/renewable-project-development/SKILL.md">.md 源文件<small>skills/renewable-project-development/SKILL.md</small></a>
+        <a class="src" href="skill-renewable-project-development-en.html" hreflang="en">English</a>
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
     <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
   </div>
 </header>
@@ -39,7 +45,7 @@
 <div class="shell">
   <aside class="sidebar" id="nav">
     <div class="nav-kicker">当前分类</div>
-    <div class="nav-num">16 / SKILLS</div>
+    <div class="nav-num">04 / SKILLS</div>
     <h2 class="nav-cat"><a href="../index.html#skills">配套技能</a></h2>
     <ul class="nav-list">
               <li><a href="skill-electricity-trading-expert.html">电力交易专家</a></li>
@@ -55,25 +61,25 @@
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
       <ul>
-              <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
-              <li><a href="../index.html#spot"><b>05</b>电力现货与省间交易</a></li>
-              <li><a href="../index.html#intl"><b>06</b>海外市场</a></li>
-              <li><a href="../index.html#cross"><b>07</b>横向专题</a></li>
-              <li><a href="../index.html#price"><b>08</b>电价</a></li>
-              <li><a href="../index.html#renewable"><b>09</b>新能源与并网</a></li>
-              <li><a href="../index.html#storage"><b>10</b>储能与 EMS</a></li>
-              <li><a href="../index.html#park"><b>11</b>综合能源与零碳园区</a></li>
-              <li><a href="../index.html#carbon"><b>12</b>碳市场与碳管理</a></li>
-              <li><a href="../index.html#vpp"><b>13</b>虚拟电厂</a></li>
-              <li><a href="../index.html#index"><b>14</b>索引、查证与工具</a></li>
-              <li><a href="../index.html#research"><b>15</b>调研底稿</a></li>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#intl"><b>03</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>04</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>05</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>06</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>07</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>08</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>09</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>10</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>11</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>12</b>调研底稿</a></li>
       </ul>
     </div>
   </aside>
 
   <main class="main" id="main">
     <header class="doc-head">
-      <div class="kicker">16 / SKILLS<i>技能</i></div>
+      <div class="kicker">04 / SKILLS<i>技能</i></div>
       <h1 class="doc-title">新能源开发与并网</h1>
       <p class="lede">资源、LCOE、机制电价与并网</p>
       <p class="hook">可执行流程与配套工具；正文与 SKILL.md 同步。</p>
@@ -113,15 +119,15 @@
 <h3 id="s3">0.2 回答行为规范（必须遵守）</h3>
 <ol><li><strong>先定六件事再算</strong>：省份与场址、资源口径（P50/P90、测风/辐照来源）、项目边界（交流侧/直流侧、是否配储）、电价通道（机制电价/市场化/绿电直连）、并网与消纳条件、融资与时间口径。六者不明，任何 IRR 都是虚构。</li><li><strong>四个口径必须写清</strong>：MW 还是 MWh；交流侧还是直流侧；元/kWh 还是元/MWh；P50 还是 P90、税前还是税后。四者混用会让 LCOE 差 10%–50%。</li><li><strong>收入拆四行</strong>：市场电能量收入、机制电价差价、绿证/绿电溢价、其他收入；再单列限电损失与考核扣减。只报&quot;年收入 X 万元&quot;不合格。</li><li><strong>政策数字带文号、省份、年份、批次</strong>。136 号文只说国家框架，机制电价由省级竞价形成；不能拿一个省的结果当全国价。</li><li><strong>来源分级</strong>：A=法规/主管部门/国家标准；B=交易中心、电网公示、招中标公告；C=媒体/研报/企业宣传；D=本技能基于公开参数的测算。厂商&quot;保证利用小时&quot;&quot;保证 LCOE&quot;一律 C 级，不能进基准模型。</li><li><strong>不构成投资建议</strong>：只做测算框架与情景分析，不承诺收益、不推荐具体设备、不替业主做投标决策。</li><li><strong>合规红线</strong>：不提供伪造资源数据、隐瞒生态/用地/并网限制、规避环评水保、骗取补贴、虚报发电量、无证并网的方法；不把未落实的机制电价、绿证价格、补贴当作确定收入。</li><li><strong>单点结论必须带敏感性</strong>：资源、CAPEX、限电率、捕获价、机制电价、融资成本至少各动一次；只给基准值等于没给结论。</li></ol>
 <h3 id="s4">0.3 知识地图（问题类型 → 章节）</h3>
-<div class="table-wrap"><table><thead><tr><th>你被问到</th><th>先查</th></tr></thead><tbody><tr><td>这个风电/光伏项目能不能过投决</td><td>第 1、5、6 章</td></tr><tr><td>136 号文机制电价怎么算、能拿多少</td><td>第 2.1、4.2 节</td></tr><tr><td>机制电价 0.30 元/kWh 是高还是低</td><td>第 4.3、5.4、6.5 节</td></tr><tr><td>LCOE 怎么算、和 IRR 什么关系</td><td>第 5、6 章</td></tr><tr><td>P50/P90、利用小时、容量系数怎么用</td><td>第 3 章</td></tr><tr><td>并网批复、接入系统、涉网试验怎么走</td><td>第 7 章</td></tr><tr><td>弃风弃光怎么量化、怎么进模型</td><td>第 3.4、7.4、10 章</td></tr><tr><td>哪些省机制电价多少</td><td>第 9.1 节</td></tr><tr><td>配储能不能提高收益</td><td>第 9.3、14.5 节</td></tr><tr><td>项目风险主要在哪</td><td>第 10 章</td></tr><tr><td>投前要准备哪些材料</td><td>第 11 章</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>你被问到</th><th>先查</th></tr></thead><tbody><tr><td>这个风电/光伏项目能不能过投决</td><td>第 1、5、6 章</td></tr><tr><td>136 号文机制电价怎么算、能拿多少</td><td>第 2.1、4.2 节</td></tr><tr><td>机制电价 0.30 元/kWh 是高还是低</td><td>第 4.3、5.4、6.5 节</td></tr><tr><td>LCOE 怎么算、和 IRR 什么关系</td><td>第 5、6 章</td></tr><tr><td>P50/P90、利用小时、容量系数怎么用</td><td>第 3 章</td></tr><tr><td>并网批复、接入系统、涉网试验怎么走</td><td>第 7 章</td></tr><tr><td>弃风弃光怎么量化、怎么进模型</td><td>第 3.4、7.4、10 章</td></tr><tr><td>哪些省机制电价多少</td><td>第 9.1 节</td></tr><tr><td>配储能不能提高收益</td><td>第 9.3、14.5 节</td></tr><tr><td>项目风险主要在哪</td><td>第 10 章</td></tr><tr><td>投前要准备哪些材料</td><td>第 11 章</td></tr></tbody></table></div>
 <hr>
 <h2 id="s5">1. 边界：四类项目、八个阶段、六个问题</h2>
 <h3 id="s6">1.1 四类项目</h3>
-<div class="table-wrap"><table><thead><tr><th>类型</th><th>典型规模</th><th>资源口径</th><th>并网特点</th><th>本技能重点</th></tr></thead><tbody><tr><td>集中式陆上风电</td><td>50–500 MW</td><td>测风塔/激光雷达 + 再分析</td><td>升压站、集电线路、送出</td><td>资源、吊装、限电、LCOE</td></tr><tr><td>集中式光伏</td><td>50–500 MW</td><td>辐照观测 + 卫星/再分析</td><td>升压站、集电线路、送出</td><td>辐照、温度、双面、限电</td></tr><tr><td>海上风电</td><td>200–1,000 MW</td><td>海上测风塔/激光雷达、波浪</td><td>海缆、海上升压站、登陆点</td><td>海域、施工窗口、送出、LCOE</td></tr><tr><td>分布式光伏</td><td>1–50 MW</td><td>屋顶/地面辐照、遮挡</td><td>台区/配电侧、反送电</td><td>屋顶、消纳、并网容量、结算</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>类型</th><th>典型规模</th><th>资源口径</th><th>并网特点</th><th>本技能重点</th></tr></thead><tbody><tr><td>集中式陆上风电</td><td>50–500 MW</td><td>测风塔/激光雷达 + 再分析</td><td>升压站、集电线路、送出</td><td>资源、吊装、限电、LCOE</td></tr><tr><td>集中式光伏</td><td>50–500 MW</td><td>辐照观测 + 卫星/再分析</td><td>升压站、集电线路、送出</td><td>辐照、温度、双面、限电</td></tr><tr><td>海上风电</td><td>200–1,000 MW</td><td>海上测风塔/激光雷达、波浪</td><td>海缆、海上升压站、登陆点</td><td>海域、施工窗口、送出、LCOE</td></tr><tr><td>分布式光伏</td><td>1–50 MW</td><td>屋顶/地面辐照、遮挡</td><td>台区/配电侧、反送电</td><td>屋顶、消纳、并网容量、结算</td></tr></tbody></table></div>
 <h3 id="s7">1.2 八个阶段</h3>
-<div class="table-wrap"><table><thead><tr><th>阶段</th><th>主要工作</th><th>关键产出</th><th>常见卡点</th></tr></thead><tbody><tr><td>前期开发</td><td>选址、资源测量、土地/林草/环保初判、接入初步</td><td>项目建议书、初可研</td><td>生态红线、基本草原、耕地、军事/民航</td></tr><tr><td>核准备案</td><td>省级建设方案/竞争性配置、核准或备案</td><td>核准/备案文件</td><td>指标、规模、竞配规则</td></tr><tr><td>专题审批</td><td>用地、用林/用草、环评、水保、洪评、地灾、压矿</td><td>批复/许可</td><td>用地指标、生态、村民协调</td></tr><tr><td>接入系统</td><td>接入方案、消纳评估、送出工程</td><td>接入批复、送出核准</td><td>间隔、走廊、消纳空间</td></tr><tr><td>建设</td><td>设计、采购、施工、质监</td><td>并网前验收</td><td>吊装窗口、设备交付、征地</td></tr><tr><td>并网调试</td><td>涉网试验、AGC/AVC、建模</td><td>并网调度协议、购售电合同、COD</td><td>模型入库、测试不通过</td></tr><tr><td>商业运行</td><td>发电、结算、绿证、市场交易</td><td>发电量/收益</td><td>限电、故障、价格</td></tr><tr><td>技改/退役</td><td>增容、换型、退役与生态修复</td><td>技改批复、退役方案</td><td>土地复垦、设备处置</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>阶段</th><th>主要工作</th><th>关键产出</th><th>常见卡点</th></tr></thead><tbody><tr><td>前期开发</td><td>选址、资源测量、土地/林草/环保初判、接入初步</td><td>项目建议书、初可研</td><td>生态红线、基本草原、耕地、军事/民航</td></tr><tr><td>核准备案</td><td>省级建设方案/竞争性配置、核准或备案</td><td>核准/备案文件</td><td>指标、规模、竞配规则</td></tr><tr><td>专题审批</td><td>用地、用林/用草、环评、水保、洪评、地灾、压矿</td><td>批复/许可</td><td>用地指标、生态、村民协调</td></tr><tr><td>接入系统</td><td>接入方案、消纳评估、送出工程</td><td>接入批复、送出核准</td><td>间隔、走廊、消纳空间</td></tr><tr><td>建设</td><td>设计、采购、施工、质监</td><td>并网前验收</td><td>吊装窗口、设备交付、征地</td></tr><tr><td>并网调试</td><td>涉网试验、AGC/AVC、建模</td><td>并网调度协议、购售电合同、COD</td><td>模型入库、测试不通过</td></tr><tr><td>商业运行</td><td>发电、结算、绿证、市场交易</td><td>发电量/收益</td><td>限电、故障、价格</td></tr><tr><td>技改/退役</td><td>增容、换型、退役与生态修复</td><td>技改批复、退役方案</td><td>土地复垦、设备处置</td></tr></tbody></table></div>
 <h3 id="s8">1.3 与姊妹技能的分工</h3>
-<div class="table-wrap"><table><thead><tr><th>问题</th><th>归谁</th></tr></thead><tbody><tr><td>资源评估、LCOE、投决、并网、建设运维</td><td><strong>本技能</strong></td></tr><tr><td>电价预测、报价、回测、售电组合</td><td>现货报价量化专家</td></tr><tr><td>市场规则、结算公式、136/1656/114 号文原文</td><td>电力交易专家</td></tr><tr><td>配储容量、储能收益、容量电价、需量管理</td><td>储能投资与运营专家</td></tr><tr><td>资源聚合、需求响应、VPP 商业模式</td><td>虚拟电厂专家</td></tr><tr><td>碳履约、CCER、CBAM、产品碳足迹</td><td>碳资产管理专家</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>问题</th><th>归谁</th></tr></thead><tbody><tr><td>资源评估、LCOE、投决、并网、建设运维</td><td><strong>本技能</strong></td></tr><tr><td>电价预测、报价、回测、售电组合</td><td>现货报价量化专家</td></tr><tr><td>市场规则、结算公式、136/1656/114 号文原文</td><td>电力交易专家</td></tr><tr><td>配储容量、储能收益、容量电价、需量管理</td><td>储能投资与运营专家</td></tr><tr><td>资源聚合、需求响应、VPP 商业模式</td><td>虚拟电厂专家</td></tr><tr><td>碳履约、CCER、CBAM、产品碳足迹</td><td>碳资产管理专家</td></tr></tbody></table></div>
 <h3 id="s9">1.4 投决六问</h3>
 <ol><li><strong>在哪里</strong>：省份、场址、海拔、地形、土地/海域性质。</li><li><strong>有多少</strong>：P50/P90 利用小时、容量系数、限电率。</li><li><strong>卖给谁</strong>：机制电价、市场化交易、绿电直连、绿证。</li><li><strong>能不能并</strong>：接入批复、消纳空间、送出工程、涉网性能。</li><li><strong>花多少</strong>：CAPEX、OPEX、融资成本、建设期。</li><li><strong>赚多少</strong>：税后 IRR、NPV、回收期、DSCR、敏感性。</li></ol>
 <hr>
@@ -129,7 +135,7 @@
 <h3 id="s11">2.1 136 号文：新能源全面入市与机制电价</h3>
 <ul><li><strong>文件</strong>：《关于深化新能源上网电价市场化改革 促进新能源高质量发展的通知》（发改价格〔2025〕136号），2025-02-09 印发。<strong>A 级</strong>。</li><li><strong>核心安排</strong>：<ul><li>新能源上网电量原则上全部进入电力市场，上网电价通过市场交易形成；</li><li>建立<strong>新能源可持续发展价格结算机制</strong>：对纳入机制的电量，按机制电价与市场交易均价差额结算；</li><li><strong>存量/增量以 2025-06-01 划断</strong>：存量项目机制电价按当地燃煤发电基准价执行；增量项目机制电价通过竞价形成；</li><li>机制电量比例、执行期限、竞价上下限由省级实施方案确定；</li><li><strong>不得将配置储能作为新建新能源项目核准、并网、上网等的前置条件</strong>。</li></ul></li><li><strong>对开发的影响</strong>：项目收益从&quot;固定标杆电价&quot;变成&quot;机制电价覆盖一部分电量 + 其余电量暴露于市场&quot;；可研必须同时算机制电量与非机制电量的价格情景。</li><li><strong>纪律</strong>：不要把&quot;机制电价&quot;说成&quot;政府保证电价&quot;。机制电价只覆盖机制电量，且高市场价时存在<strong>退还差额</strong>（多退少补）。</li></ul>
 <h3 id="s12">2.2 2026-2027 增量项目竞价结果（B/C 级）</h3>
-<div class="table-wrap"><table><thead><tr><th>省份</th><th>机制电价（元/kWh）</th><th>规模/备注</th></tr></thead><tbody><tr><td>浙江</td><td>首批 0.3816；第二批 0.242–0.393</td><td>首批 42.896 亿 kWh；第二批 133.25 亿 kWh</td></tr><tr><td>湖南</td><td>0.23–0.35</td><td>22.86 亿 kWh</td></tr><tr><td>福建</td><td>0.16–0.39</td><td>83.6 亿 kWh</td></tr><tr><td>广东</td><td>0.20–0.40</td><td>79.34 亿 kWh</td></tr><tr><td>北京</td><td>上限 0.3598</td><td>8.5 亿 kWh</td></tr><tr><td>天津</td><td>上限 0.32</td><td>40 亿 kWh</td></tr><tr><td>江西</td><td>0.24–0.379</td><td>40.8 亿 kWh</td></tr><tr><td>辽宁</td><td>0.18–0.30</td><td>53.08 亿 kWh（风电 39.56 / 光伏 13.52）</td></tr><tr><td>广西</td><td>0.15–0.36</td><td>单项目 ≤80%，风光分开竞价</td></tr><tr><td>甘肃</td><td>2027 上半年：风电 0.2440 / 光伏 0.2447</td><td>贴近下限成交</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>省份</th><th>机制电价（元/kWh）</th><th>规模/备注</th></tr></thead><tbody><tr><td>浙江</td><td>首批 0.3816；第二批 0.242–0.393</td><td>首批 42.896 亿 kWh；第二批 133.25 亿 kWh</td></tr><tr><td>湖南</td><td>0.23–0.35</td><td>22.86 亿 kWh</td></tr><tr><td>福建</td><td>0.16–0.39</td><td>83.6 亿 kWh</td></tr><tr><td>广东</td><td>0.20–0.40</td><td>79.34 亿 kWh</td></tr><tr><td>北京</td><td>上限 0.3598</td><td>8.5 亿 kWh</td></tr><tr><td>天津</td><td>上限 0.32</td><td>40 亿 kWh</td></tr><tr><td>江西</td><td>0.24–0.379</td><td>40.8 亿 kWh</td></tr><tr><td>辽宁</td><td>0.18–0.30</td><td>53.08 亿 kWh（风电 39.56 / 光伏 13.52）</td></tr><tr><td>广西</td><td>0.15–0.36</td><td>单项目 ≤80%，风光分开竞价</td></tr><tr><td>甘肃</td><td>2027 上半年：风电 0.2440 / 光伏 0.2447</td><td>贴近下限成交</td></tr></tbody></table></div>
 <ul><li><strong>读法</strong>：同一国家文件下，省间机制电价可以差一倍以上；竞价结果受资源、消纳、参与者数量与省级规则共同影响。</li><li><strong>纪律</strong>：引用时必须写&quot;省份 + 年份 + 批次（存量/增量、首批/第二批）&quot;。浙江首批 0.3816 元/kWh 不是全国均价，甘肃 0.2440 也不是全国下限。</li></ul>
 <h3 id="s13">2.3 其他相关规则</h3>
 <ul><li><strong>1656 号文</strong>（发改能源规〔2025〕1656号，2025-12-17，2026-03-01 施行）：直接入市主体不再执行政府固定分时电价；分时价格由市场形成。影响捕获价与配储套利，不直接决定机制电价。</li><li><strong>114 号文</strong>（发改价格〔2026〕114号，2026-01-30）：电网侧独立储能容量电价；<strong>新能源配储不执行容量电价</strong>，配储与独立储能是两种商业模式。</li><li><strong>411 号文</strong>（发改能源规〔2025〕411号，2025-04-03）：辅助服务市场；新能源场站主要承担涉网义务，辅助服务收益通常归可调节资源。</li><li><strong>绿电直连</strong>（发改能源〔2025〕650号）：符合条件的项目可向单一用户直连供电；不是电价保证，负荷、线路、结算与备用都要落实。</li><li><strong>国办发〔2026〕4号</strong>（2026-02）：全国统一电力市场；2027 年现货全面转正、2030 年基本建成、2035 年全面建成。影响未来捕获价与省间交易，不改变当期机制电价。</li></ul>
@@ -152,16 +158,16 @@
 <pre><code>容量系数 CF = 年净发电量 ÷ (装机容量 × 8760)
 利用小时 = 年净发电量 ÷ 装机容量
 光伏比发电量 = 斜面辐照 × 系统效率 × (1 + 双面增益)</code></pre>
-<div class="table-wrap"><table><thead><tr><th>指标</th><th>算例 A（风电）</th><th>算例 B（光伏）</th></tr></thead><tbody><tr><td>装机</td><td>100 MW</td><td>100 MW</td></tr><tr><td>利用小时</td><td>2,400 h</td><td>1,400 h</td></tr><tr><td>容量系数</td><td>27.40%</td><td>15.98%</td></tr><tr><td>年毛发电量</td><td>240,000 MWh</td><td>140,000 MWh</td></tr><tr><td>限电率</td><td>3%</td><td>2%</td></tr><tr><td>年净发电量</td><td>232,800 MWh</td><td>137,200 MWh</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>算例 A（风电）</th><th>算例 B（光伏）</th></tr></thead><tbody><tr><td>装机</td><td>100 MW</td><td>100 MW</td></tr><tr><td>利用小时</td><td>2,400 h</td><td>1,400 h</td></tr><tr><td>容量系数</td><td>27.40%</td><td>15.98%</td></tr><tr><td>年毛发电量</td><td>240,000 MWh</td><td>140,000 MWh</td></tr><tr><td>限电率</td><td>3%</td><td>2%</td></tr><tr><td>年净发电量</td><td>232,800 MWh</td><td>137,200 MWh</td></tr></tbody></table></div>
 <ul><li><strong>Weibull 筛查</strong>：平均风速 7.0 m/s、形状参数 k=2.0、切入 3 m/s、额定 11 m/s、切出 25 m/s、可用率 97% 时，容量系数约 <strong>27.92%</strong>。这是筛查模型，不能替代实测功率曲线。</li><li><strong>光伏比发电量</strong>：斜面辐照 1,650 kWh/m²、PR 0.82、双面增益 4%，比发电量约 <strong>1,407.12 kWh/kWp</strong>。</li></ul>
 <h3 id="s21">3.5 资源数据契约</h3>
-<div class="table-wrap"><table><thead><tr><th>数据</th><th>最低要求</th><th>用途</th></tr></thead><tbody><tr><td>测风/辐照</td><td>至少 1 年，覆盖轮毂高度/组件平面</td><td>基准发电量</td></tr><tr><td>再分析</td><td>10 年以上，与实测相关</td><td>长期订正</td></tr><tr><td>地形</td><td>DEM、粗糙度、遮挡</td><td>流场/阴影</td></tr><tr><td>机型和功率曲线</td><td>厂家实测曲线、空气密度修正</td><td>发电量</td></tr><tr><td>限电</td><td>近 3–5 年同区域限电率</td><td>净发电量</td></tr><tr><td>衰减</td><td>组件/风机质保曲线</td><td>全生命周期</td></tr><tr><td>可用率</td><td>同类型项目实际值</td><td>净发电量</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>数据</th><th>最低要求</th><th>用途</th></tr></thead><tbody><tr><td>测风/辐照</td><td>至少 1 年，覆盖轮毂高度/组件平面</td><td>基准发电量</td></tr><tr><td>再分析</td><td>10 年以上，与实测相关</td><td>长期订正</td></tr><tr><td>地形</td><td>DEM、粗糙度、遮挡</td><td>流场/阴影</td></tr><tr><td>机型和功率曲线</td><td>厂家实测曲线、空气密度修正</td><td>发电量</td></tr><tr><td>限电</td><td>近 3–5 年同区域限电率</td><td>净发电量</td></tr><tr><td>衰减</td><td>组件/风机质保曲线</td><td>全生命周期</td></tr><tr><td>可用率</td><td>同类型项目实际值</td><td>净发电量</td></tr></tbody></table></div>
 <h3 id="s22">3.6 资源常见错误</h3>
 <ul><li>用测风年的风光资源直接代表长期；</li><li>用 P50 做融资，不做 P90；</li><li>忽略空气密度、温度、污损、积雪；</li><li>用理论功率曲线代替实测曲线；</li><li>把限电率当 0，或只用一个历史年份；</li><li>把&quot;可利用小时&quot;与&quot;上网小时&quot;混用。</li></ul>
 <hr>
 <h2 id="s23">4. 收入：机制电价、市场与绿证</h2>
 <h3 id="s24">4.1 收入四行</h3>
-<div class="table-wrap"><table><thead><tr><th>收入行</th><th>计算</th><th>备注</th></tr></thead><tbody><tr><td>市场电能量</td><td>捕获价 × 上网电量</td><td>捕获价通常低于市场均价</td></tr><tr><td>机制电价差价</td><td>(机制电价 − 市场均价) × 机制电量</td><td>正为补差，负为退还</td></tr><tr><td>绿证/绿电溢价</td><td>绿证数量 × 价格，或绿电溢价</td><td>与机制电量是否重复按省级规则</td></tr><tr><td>其他</td><td>辅助服务、容量（如有）</td><td>新能源通常无容量电价</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>收入行</th><th>计算</th><th>备注</th></tr></thead><tbody><tr><td>市场电能量</td><td>捕获价 × 上网电量</td><td>捕获价通常低于市场均价</td></tr><tr><td>机制电价差价</td><td>(机制电价 − 市场均价) × 机制电量</td><td>正为补差，负为退还</td></tr><tr><td>绿证/绿电溢价</td><td>绿证数量 × 价格，或绿电溢价</td><td>与机制电量是否重复按省级规则</td></tr><tr><td>其他</td><td>辅助服务、容量（如有）</td><td>新能源通常无容量电价</td></tr></tbody></table></div>
 <h3 id="s25">4.2 机制电价结算公式</h3>
 <pre><code>机制差价 = (机制电价 − 市场交易均价) × 机制电量
 市场收入 = 捕获价 × 全部上网电量（基准可假设捕获价 = 市场均价）
@@ -170,11 +176,11 @@
 <ul><li><strong>覆盖比例</strong>：机制电量 ÷ 全部上网电量。</li><li><strong>有效电价（不含绿证）</strong>：机制电价 × 覆盖率 + 市场均价 × (1 − 覆盖率)。</li><li><strong>全口径电价</strong>：总收入 ÷ 上网电量。</li><li><strong>市场均价口径</strong>：省级规则可能按月/按年、按同类项目加权或按全部市场化电量计算；必须查省级文件，不能自行假设。</li></ul>
 <h3 id="s26">4.3 算例 A：100 MW 陆上风电</h3>
 <ul><li>年净发电量 232,800 MWh；机制电价 0.30 元/kWh；市场均价 0.25 元/kWh；机制电量比例 70%；绿证 6 元/张（1 张/MWh，B/C 级示意）。<strong>基准财务算例假设捕获率 100%（市场结算价 = 市场均价）；捕获率低于 100% 的影响见 §4.4 与 §6.8。</strong></li></ul>
-<div class="table-wrap"><table><thead><tr><th>项目</th><th>金额</th></tr></thead><tbody><tr><td>市场收入</td><td>0.25 × 232,800 × 1,000 = <strong>5,820.0 万元</strong></td></tr><tr><td>机制补差</td><td>(0.30 − 0.25) × 162,960 × 1,000 = <strong>814.8 万元</strong></td></tr><tr><td>绿证收入</td><td>6 × 232,800 = <strong>139.68 万元</strong></td></tr><tr><td>总收入</td><td><strong>6,774.48 万元</strong></td></tr><tr><td>有效电价（不含绿证）</td><td><strong>0.285 元/kWh</strong></td></tr><tr><td>全口径电价</td><td><strong>0.291 元/kWh</strong></td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>金额</th></tr></thead><tbody><tr><td>市场收入</td><td>0.25 × 232,800 × 1,000 = <strong>5,820.0 万元</strong></td></tr><tr><td>机制补差</td><td>(0.30 − 0.25) × 162,960 × 1,000 = <strong>814.8 万元</strong></td></tr><tr><td>绿证收入</td><td>6 × 232,800 = <strong>139.68 万元</strong></td></tr><tr><td>总收入</td><td><strong>6,774.48 万元</strong></td></tr><tr><td>有效电价（不含绿证）</td><td><strong>0.285 元/kWh</strong></td></tr><tr><td>全口径电价</td><td><strong>0.291 元/kWh</strong></td></tr></tbody></table></div>
 <ul><li><strong>市场价上行</strong>：若市场均价 0.35 元/kWh，机制差价变为 <strong>−814.8 万元</strong>（退还），总收入 <strong>7,472.88 万元</strong>，有效电价 0.315 元/kWh、全口径 0.321 元/kWh。</li><li><strong>结论</strong>：机制电价只锁定 70% 电量；剩余 30% 仍暴露于市场。市场价越高，退还越多，但总收入仍随市场价上升。</li></ul>
 <h3 id="s27">4.4 捕获价：新能源的&quot;实际卖价&quot;</h3>
 <ul><li><strong>捕获价</strong> = 市场均价 × 捕获率。风电出力与负荷/价格的相关性、光伏午间大发导致的低价，都会让捕获率低于 100%。</li><li><strong>示例</strong>：市场均价 0.25 元/kWh，风电捕获率 92% → 捕获价 0.23 元/kWh；光伏捕获率 85% → 0.2125 元/kWh。</li></ul>
-<div class="table-wrap"><table><thead><tr><th>品种</th><th>市场均价</th><th>捕获率</th><th>捕获价</th><th>70% 机制 + 30% 市场有效价</th></tr></thead><tbody><tr><td>风电</td><td>0.25</td><td>92%</td><td>0.230</td><td><strong>0.279</strong></td></tr><tr><td>光伏</td><td>0.25</td><td>85%</td><td>0.2125</td><td><strong>0.274</strong></td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>品种</th><th>市场均价</th><th>捕获率</th><th>捕获价</th><th>70% 机制 + 30% 市场有效价</th></tr></thead><tbody><tr><td>风电</td><td>0.25</td><td>92%</td><td>0.230</td><td><strong>0.279</strong></td></tr><tr><td>光伏</td><td>0.25</td><td>85%</td><td>0.2125</td><td><strong>0.274</strong></td></tr></tbody></table></div>
 <ul><li><strong>纪律</strong>：可研中不能用&quot;市场均价&quot;直接乘全部电量；必须用捕获价，或明确假设捕获率。高比例风光省份的捕获率可能显著低于 90%，要用当地历史数据校准。</li></ul>
 <h3 id="s28">4.5 机制电价保本线：LCOE 不是投标底线</h3>
 <ul><li><strong>税前、按 LCOE 的保本机制价</strong>：</li></ul>
@@ -188,10 +194,10 @@
 <hr>
 <h2 id="s31">5. 成本与 LCOE</h2>
 <h3 id="s32">5.1 CAPEX 构成（示意，D 级）</h3>
-<div class="table-wrap"><table><thead><tr><th>类型</th><th>CAPEX 示意（元/kW）</th><th>主要科目</th></tr></thead><tbody><tr><td>集中式陆上风电</td><td>4,000–6,000</td><td>风机、塔筒基础、集电线路、升压站、道路、吊装、送出</td></tr><tr><td>集中式光伏</td><td>2,800–3,800</td><td>组件、逆变器、支架、电缆、升压站、土建、送出</td></tr><tr><td>海上风电</td><td>9,000–14,000</td><td>风机、基础、海缆、海上升压站、施工船机、登陆点</td></tr><tr><td>分布式光伏</td><td>3,000–4,500</td><td>组件、逆变器、支架、屋面加固、并网、计量</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>类型</th><th>CAPEX 示意（元/kW）</th><th>主要科目</th></tr></thead><tbody><tr><td>集中式陆上风电</td><td>4,000–6,000</td><td>风机、塔筒基础、集电线路、升压站、道路、吊装、送出</td></tr><tr><td>集中式光伏</td><td>2,800–3,800</td><td>组件、逆变器、支架、电缆、升压站、土建、送出</td></tr><tr><td>海上风电</td><td>9,000–14,000</td><td>风机、基础、海缆、海上升压站、施工船机、登陆点</td></tr><tr><td>分布式光伏</td><td>3,000–4,500</td><td>组件、逆变器、支架、屋面加固、并网、计量</td></tr></tbody></table></div>
 <ul><li><strong>口径提醒</strong>：CAPEX 是否含送出工程、升压站、建设期利息、土地/海域费用、储能，必须逐项列明；不同口径不可直接比较。</li><li><strong>纪律</strong>：以上为示意区间，不是报价；项目必须用当期设备报价、施工条件和送出方案重算。</li></ul>
 <h3 id="s33">5.2 OPEX 构成（示意，D 级）</h3>
-<div class="table-wrap"><table><thead><tr><th>类型</th><th>OPEX 示意（元/kW·年）</th><th>主要科目</th></tr></thead><tbody><tr><td>陆上风电</td><td>100–180</td><td>运维、备件、保险、土地租金、管理、电网考核</td></tr><tr><td>集中式光伏</td><td>60–120</td><td>清洗、运维、备件、保险、土地租金、管理</td></tr><tr><td>海上风电</td><td>250–400</td><td>运维船、备件、保险、海缆检测、防腐</td></tr><tr><td>分布式光伏</td><td>60–120</td><td>清洗、运维、屋面维护、保险、管理</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>类型</th><th>OPEX 示意（元/kW·年）</th><th>主要科目</th></tr></thead><tbody><tr><td>陆上风电</td><td>100–180</td><td>运维、备件、保险、土地租金、管理、电网考核</td></tr><tr><td>集中式光伏</td><td>60–120</td><td>清洗、运维、备件、保险、土地租金、管理</td></tr><tr><td>海上风电</td><td>250–400</td><td>运维船、备件、保险、海缆检测、防腐</td></tr><tr><td>分布式光伏</td><td>60–120</td><td>清洗、运维、屋面维护、保险、管理</td></tr></tbody></table></div>
 <ul><li>还需考虑：限电损失、辅助服务分摊、系统运行费（按当地规则）、技改、退役与生态修复。</li><li><strong>不要假设&quot;零 OPEX&quot;或&quot;OPEX 不随通胀&quot;</strong>；长期模型应设 1%–2% 的年涨幅情景。</li></ul>
 <h3 id="s34">5.3 LCOE 公式</h3>
 <pre><code>LCOE = [CAPEX + Σ(OPEX_t ÷ (1+r)^t) − 残值 ÷ (1+r)^N]
@@ -200,10 +206,10 @@
 净发电量_t = 年毛发电量 × (1 − 限电率) × (1 − 衰减)^(t−1)</code></pre>
 <ul><li><strong>税前 LCOE</strong> 用于技术经济比较；<strong>税后现金流</strong>用于投决。</li><li>LCOE 对折现率、利用小时、CAPEX、限电率最敏感；对 OPEX 相对不敏感。</li></ul>
 <h3 id="s35">5.4 三个算例</h3>
-<div class="table-wrap"><table><thead><tr><th>参数</th><th>A 陆上风电</th><th>B 集中式光伏</th><th>C 海上风电</th></tr></thead><tbody><tr><td>装机</td><td>100 MW</td><td>100 MW</td><td>200 MW</td></tr><tr><td>利用小时</td><td>2,400 h</td><td>1,400 h</td><td>3,200 h</td></tr><tr><td>限电率</td><td>3%</td><td>2%</td><td>3%</td></tr><tr><td>CAPEX</td><td>45,000 万元</td><td>30,000 万元</td><td>220,000 万元</td></tr><tr><td>OPEX</td><td>1,100 万元/年</td><td>900 万元/年</td><td>6,000 万元/年</td></tr><tr><td>寿命</td><td>20 年</td><td>25 年</td><td>25 年</td></tr><tr><td>衰减</td><td>0.5%/年</td><td>0.6%/年</td><td>0.5%/年</td></tr><tr><td>折现率</td><td>8%</td><td>8%</td><td>8%</td></tr><tr><td><strong>LCOE</strong></td><td><strong>252.80 元/MWh</strong></td><td><strong>283.94 元/MWh</strong></td><td><strong>446.43 元/MWh</strong></td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>参数</th><th>A 陆上风电</th><th>B 集中式光伏</th><th>C 海上风电</th></tr></thead><tbody><tr><td>装机</td><td>100 MW</td><td>100 MW</td><td>200 MW</td></tr><tr><td>利用小时</td><td>2,400 h</td><td>1,400 h</td><td>3,200 h</td></tr><tr><td>限电率</td><td>3%</td><td>2%</td><td>3%</td></tr><tr><td>CAPEX</td><td>45,000 万元</td><td>30,000 万元</td><td>220,000 万元</td></tr><tr><td>OPEX</td><td>1,100 万元/年</td><td>900 万元/年</td><td>6,000 万元/年</td></tr><tr><td>寿命</td><td>20 年</td><td>25 年</td><td>25 年</td></tr><tr><td>衰减</td><td>0.5%/年</td><td>0.6%/年</td><td>0.5%/年</td></tr><tr><td>折现率</td><td>8%</td><td>8%</td><td>8%</td></tr><tr><td><strong>LCOE</strong></td><td><strong>252.80 元/MWh</strong></td><td><strong>283.94 元/MWh</strong></td><td><strong>446.43 元/MWh</strong></td></tr></tbody></table></div>
 <ul><li><strong>读法</strong>：海上风电 LCOE 显著高于陆上风光，需要更高的机制电价或更大的规模效应；集中式光伏 LCOE 与陆上风电接近，但利用小时低、CAPEX 低。</li><li><strong>口径</strong>：以上为税前、不含送出工程以外税费优惠的示意算例；实际项目必须用本省造价、限电与融资条件重算。</li></ul>
 <h3 id="s36">5.5 敏感性（算例 A）</h3>
-<div class="table-wrap"><table><thead><tr><th>情景</th><th>LCOE（元/MWh）</th><th>变化</th></tr></thead><tbody><tr><td>基准</td><td>252.80</td><td>—</td></tr><tr><td>CAPEX +10%</td><td>273.19</td><td>+8.1%</td></tr><tr><td>发电量 −10%</td><td>280.89</td><td>+11.1%</td></tr><tr><td>OPEX +20%</td><td>262.59</td><td>+3.9%</td></tr><tr><td>折现率 10%</td><td>283.30</td><td>+12.1%</td></tr><tr><td>限电率 10%</td><td>272.46</td><td>+7.8%</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>情景</th><th>LCOE（元/MWh）</th><th>变化</th></tr></thead><tbody><tr><td>基准</td><td>252.80</td><td>—</td></tr><tr><td>CAPEX +10%</td><td>273.19</td><td>+8.1%</td></tr><tr><td>发电量 −10%</td><td>280.89</td><td>+11.1%</td></tr><tr><td>OPEX +20%</td><td>262.59</td><td>+3.9%</td></tr><tr><td>折现率 10%</td><td>283.30</td><td>+12.1%</td></tr><tr><td>限电率 10%</td><td>272.46</td><td>+7.8%</td></tr></tbody></table></div>
 <ul><li><strong>结论</strong>：发电量与折现率最敏感；资源评估的误差比 OPEX 优化更重要。投决时应优先把资源、限电、造价三件事做实。</li></ul>
 <h3 id="s37">5.6 成本侧常见错误</h3>
 <ul><li>用厂家 CAPEX 宣传值当项目造价；</li><li>漏算送出工程、升压站、土地/海域、建设期利息；</li><li>用 20 年 LCOE 评价 25 年资产；</li><li>不设限电与衰减；</li><li>把 OPEX 按零增长处理；</li><li>用含税 CAPEX 与不含税电价比较。</li></ul>
@@ -218,17 +224,17 @@
 税后现金流 = 收入 − 成本 − 所得税</code></pre>
 <ul><li>折旧年限、残值、税收优惠、亏损结转按项目所在地与公司政策；本技能用直线折旧与 25% 所得税做示意。</li></ul>
 <h3 id="s40">6.2 指标与陷阱</h3>
-<div class="table-wrap"><table><thead><tr><th>指标</th><th>用途</th><th>陷阱</th></tr></thead><tbody><tr><td>NPV</td><td>是否创造价值</td><td>折现率与现金流口径不一致</td></tr><tr><td>IRR</td><td>资本回报</td><td>非常规现金流可能出现多解</td></tr><tr><td>回收期</td><td>风险暴露时间</td><td>忽略资金时间价值</td></tr><tr><td>DSCR</td><td>偿债能力</td><td>用 EBITDA 代替 CFADS</td></tr><tr><td>LCOE</td><td>技术经济比较</td><td>当投标底线或含税口径混用</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>用途</th><th>陷阱</th></tr></thead><tbody><tr><td>NPV</td><td>是否创造价值</td><td>折现率与现金流口径不一致</td></tr><tr><td>IRR</td><td>资本回报</td><td>非常规现金流可能出现多解</td></tr><tr><td>回收期</td><td>风险暴露时间</td><td>忽略资金时间价值</td></tr><tr><td>DSCR</td><td>偿债能力</td><td>用 EBITDA 代替 CFADS</td></tr><tr><td>LCOE</td><td>技术经济比较</td><td>当投标底线或含税口径混用</td></tr></tbody></table></div>
 <h3 id="s41">6.3 算例 A：100 MW 陆上风电</h3>
 <ul><li>收入 6,774.48 万元/年；OPEX 1,100 万元/年；CAPEX 45,000 万元；20 年；25% 所得税；20 年折旧；收入随发电量衰减 0.5%/年；捕获率 100%。</li></ul>
-<div class="table-wrap"><table><thead><tr><th>指标</th><th>数值</th></tr></thead><tbody><tr><td>第 1 年税后现金流</td><td><strong>4,818.36 万元</strong></td></tr><tr><td>NPV @8%</td><td><strong>596.3 万元</strong></td></tr><tr><td>IRR</td><td><strong>8.18%</strong></td></tr><tr><td>回收期</td><td><strong>9.55 年</strong></td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>数值</th></tr></thead><tbody><tr><td>第 1 年税后现金流</td><td><strong>4,818.36 万元</strong></td></tr><tr><td>NPV @8%</td><td><strong>596.3 万元</strong></td></tr><tr><td>IRR</td><td><strong>8.18%</strong></td></tr><tr><td>回收期</td><td><strong>9.55 年</strong></td></tr></tbody></table></div>
 <ul><li><strong>结论</strong>：在机制电价 0.30 元/kWh、市场均价 0.25 元/kWh、70% 覆盖率的假设下，项目&quot;刚过 8% 门槛&quot;，NPV 仅 596.3 万元，安全边际很薄。</li></ul>
 <h3 id="s42">6.4 机制电价降到 0.244 元/kWh</h3>
 <ul><li>收入降至 5,861.90 万元/年；第 1 年现金流 4,133.93 万元。</li></ul>
-<div class="table-wrap"><table><thead><tr><th>指标</th><th>数值</th></tr></thead><tbody><tr><td>NPV @8%</td><td><strong>−5,893.1 万元</strong></td></tr><tr><td>IRR</td><td><strong>6.15%</strong></td></tr><tr><td>回收期</td><td><strong>11.18 年</strong></td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>数值</th></tr></thead><tbody><tr><td>NPV @8%</td><td><strong>−5,893.1 万元</strong></td></tr><tr><td>IRR</td><td><strong>6.15%</strong></td></tr><tr><td>回收期</td><td><strong>11.18 年</strong></td></tr></tbody></table></div>
 <ul><li><strong>结论</strong>：机制电价从 0.30 降到 0.244（约 −18.7%），项目从&quot;勉强过线&quot;变成&quot;8% 门槛下不过线&quot;；这就是省别竞价差异对投决的直接影响。</li></ul>
 <h3 id="s43">6.5 税后保本机制电价</h3>
-<div class="table-wrap"><table><thead><tr><th>折现率/门槛</th><th>税后保本机制电价（元/MWh）</th></tr></thead><tbody><tr><td>6%</td><td><strong>239.94</strong></td></tr><tr><td>7%</td><td><strong>266.95</strong></td></tr><tr><td>8%</td><td><strong>294.85</strong></td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>折现率/门槛</th><th>税后保本机制电价（元/MWh）</th></tr></thead><tbody><tr><td>6%</td><td><strong>239.94</strong></td></tr><tr><td>7%</td><td><strong>266.95</strong></td></tr><tr><td>8%</td><td><strong>294.85</strong></td></tr></tbody></table></div>
 <ul><li>与税前 LCOE 252.80 相比，8% 门槛下保本线高约 42 元/MWh；投标时用 LCOE 当底线会低估风险。</li></ul>
 <h3 id="s44">6.6 融资与 DSCR</h3>
 <ul><li>假设 70% 债务、利率 4.5%、15 年等额本息：债务本金 31,500 万元，年还本付息 <strong>2,933.09 万元</strong>。</li><li>第 1 年 CFADS = EBITDA − 所得税 = 5,674.48 − 501.75 = <strong>5,172.74 万元</strong>；DSCR = <strong>1.76</strong>。</li><li><strong>纪律</strong>：DSCR 要用 CFADS（不含利息的现金流）除以还本付息；用净利润或 EBITDA 直接除会高估偿债能力。融资机构通常要求 DSCR ≥1.2–1.3，具体按贷款合同。</li></ul>
@@ -239,11 +245,11 @@
 <hr>
 <h2 id="s47">7. 并网与涉网：能不能接、接了会不会限</h2>
 <h3 id="s48">7.1 并网流程</h3>
-<div class="table-wrap"><table><thead><tr><th>步骤</th><th>内容</th><th>责任方</th></tr></thead><tbody><tr><td>接入系统方案</td><td>电压等级、接入点、送出线路、无功配置</td><td>项目业主委托设计院</td></tr><tr><td>方案评审/批复</td><td>电网组织评审并出具意见</td><td>电网企业</td></tr><tr><td>消纳评估</td><td>当地负荷、通道、调峰能力</td><td>电网/省级能源主管部门</td></tr><tr><td>送出工程</td><td>线路、间隔、升压站扩建</td><td>项目或电网，按协议</td></tr><tr><td>并网调度协议</td><td>调度关系、AGC/AVC、通信、计量</td><td>项目与电网</td></tr><tr><td>购售电合同</td><td>结算、计量、电价</td><td>项目与电网/售电公司</td></tr><tr><td>质监注册</td><td>电力工程质量监督</td><td>质监机构</td></tr><tr><td>启动验收</td><td>并网前检查、试验</td><td>电网/项目</td></tr><tr><td>涉网试验</td><td>故障穿越、一次调频、AGC/AVC、建模</td><td>具备资质机构</td></tr><tr><td>COD</td><td>商业运行日</td><td>项目/电网</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>步骤</th><th>内容</th><th>责任方</th></tr></thead><tbody><tr><td>接入系统方案</td><td>电压等级、接入点、送出线路、无功配置</td><td>项目业主委托设计院</td></tr><tr><td>方案评审/批复</td><td>电网组织评审并出具意见</td><td>电网企业</td></tr><tr><td>消纳评估</td><td>当地负荷、通道、调峰能力</td><td>电网/省级能源主管部门</td></tr><tr><td>送出工程</td><td>线路、间隔、升压站扩建</td><td>项目或电网，按协议</td></tr><tr><td>并网调度协议</td><td>调度关系、AGC/AVC、通信、计量</td><td>项目与电网</td></tr><tr><td>购售电合同</td><td>结算、计量、电价</td><td>项目与电网/售电公司</td></tr><tr><td>质监注册</td><td>电力工程质量监督</td><td>质监机构</td></tr><tr><td>启动验收</td><td>并网前检查、试验</td><td>电网/项目</td></tr><tr><td>涉网试验</td><td>故障穿越、一次调频、AGC/AVC、建模</td><td>具备资质机构</td></tr><tr><td>COD</td><td>商业运行日</td><td>项目/电网</td></tr></tbody></table></div>
 <h3 id="s49">7.2 涉网技术要求</h3>
 <ul><li>有功/无功控制、功率因数范围、电压/频率耐受；</li><li>低电压穿越（LVRT）、高电压穿越（HVRT）；</li><li>一次调频、惯量响应（按标准与省级要求）；</li><li>AGC/AVC 在线，调度可调；</li><li>谐波、闪变、三相不平衡；</li><li>宽频振荡监测与抑制（高比例电力电子系统）；</li><li>故障录波、通信、二次安防、计量；</li><li>仿真模型（机电暂态/电磁暂态）与实测参数入库。</li></ul>
 <h3 id="s50">7.3 主要标准</h3>
-<div class="table-wrap"><table><thead><tr><th>标准</th><th>内容</th><th>备注</th></tr></thead><tbody><tr><td>GB/T 19963.1-2021</td><td>风电场接入电力系统技术规定 第 1 部分：陆上风电</td><td>A；海上风电另有规定</td></tr><tr><td>GB/T 19964-2024</td><td>光伏发电站接入电力系统技术规定</td><td>A；版本以标准文本为准</td></tr><tr><td>GB 38755-2019</td><td>电力系统安全稳定导则</td><td>A</td></tr><tr><td>GB/T 40595-2021</td><td>并网电源一次调频技术规定及试验导则</td><td>A；版本以标准文本为准</td></tr><tr><td>GB/T 36547-2024</td><td>电化学储能电站接入电网技术规定</td><td>配储时适用</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>标准</th><th>内容</th><th>备注</th></tr></thead><tbody><tr><td>GB/T 19963.1-2021</td><td>风电场接入电力系统技术规定 第 1 部分：陆上风电</td><td>A；海上风电另有规定</td></tr><tr><td>GB/T 19964-2024</td><td>光伏发电站接入电力系统技术规定</td><td>A；版本以标准文本为准</td></tr><tr><td>GB 38755-2019</td><td>电力系统安全稳定导则</td><td>A</td></tr><tr><td>GB/T 40595-2021</td><td>并网电源一次调频技术规定及试验导则</td><td>A；版本以标准文本为准</td></tr><tr><td>GB/T 36547-2024</td><td>电化学储能电站接入电网技术规定</td><td>配储时适用</td></tr></tbody></table></div>
 <ul><li><strong>纪律</strong>：标准号与版本要以现行标准文本为准；不要把征求意见稿当强制标准，也不要用旧版参数做并网设计。</li></ul>
 <h3 id="s51">7.4 消纳与限电</h3>
 <ul><li><strong>消纳空间</strong>：当地负荷、外送通道、调峰能力、其他电源出力、网架约束。</li><li><strong>限电率</strong> = 限发电量 ÷ 可发电量；可研必须用同区域近 3–5 年数据，并做未来情景。</li><li><strong>捕获价与限电</strong>：限电通常发生在低价时段，限电率上升会同时降低电量和捕获价。</li><li><strong>分布式光伏</strong>：台区容量、反送电限制、电压越限、保护定值；屋顶业主用电曲线决定自用比例。</li><li><strong>纪律</strong>：不要用&quot;全额上网&quot;假设分布式项目；不要用&quot;无限电&quot;假设三北基地项目。</li></ul>
@@ -256,13 +262,13 @@
 <hr>
 <h2 id="s55">8. 建设、调试与运营</h2>
 <h3 id="s56">8.1 建设模式</h3>
-<div class="table-wrap"><table><thead><tr><th>模式</th><th>优点</th><th>风险</th></tr></thead><tbody><tr><td>EPC 总包</td><td>界面清晰、工期可控</td><td>总包加价、设计优化不足</td></tr><tr><td>分标段</td><td>成本可控、灵活</td><td>界面多、协调成本高</td></tr><tr><td>业主自建</td><td>掌握供应链</td><td>管理能力要求高</td></tr><tr><td>代建</td><td>轻资产</td><td>代建方激励不一致</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>模式</th><th>优点</th><th>风险</th></tr></thead><tbody><tr><td>EPC 总包</td><td>界面清晰、工期可控</td><td>总包加价、设计优化不足</td></tr><tr><td>分标段</td><td>成本可控、灵活</td><td>界面多、协调成本高</td></tr><tr><td>业主自建</td><td>掌握供应链</td><td>管理能力要求高</td></tr><tr><td>代建</td><td>轻资产</td><td>代建方激励不一致</td></tr></tbody></table></div>
 <h3 id="s57">8.2 建设质量</h3>
 <ul><li>风机基础/桩基、吊装、塔筒垂直度、螺栓力矩；</li><li>光伏支架、组件安装、电缆敷设、接地、防雷；</li><li>升压站土建、电气安装、保护定值、通信；</li><li>隐蔽工程验收、质监注册、并网前检查；</li><li>设备到场验收、质保文件、备品备件。</li></ul>
 <h3 id="s58">8.3 调试与并网</h3>
 <ul><li>分系统调试、升压站受电、集电线路送电；</li><li>风机/逆变器并网、功率控制、无功控制；</li><li>涉网试验：故障穿越、一次调频、AGC/AVC、电能质量、建模；</li><li>消防、环保、水保、档案验收；</li><li>试运行与 COD；按并网调度协议与启动方案执行。</li></ul>
 <h3 id="s59">8.4 运营 KPI</h3>
-<div class="table-wrap"><table><thead><tr><th>指标</th><th>口径</th><th>用途</th></tr></thead><tbody><tr><td>可利用系数</td><td>可运行时间 ÷ 统计时间</td><td>运维水平</td></tr><tr><td>容量系数</td><td>净发电量 ÷ (装机 × 8760)</td><td>资源与性能</td></tr><tr><td>等效利用小时</td><td>净发电量 ÷ 装机</td><td>年度对比</td></tr><tr><td>系统效率 PR（光伏）</td><td>实际发电量 ÷ 理论发电量</td><td>组件/逆变器/污损</td></tr><tr><td>限电率</td><td>限发电量 ÷ 可发电量</td><td>并网与消纳</td></tr><tr><td>故障率/MTBF</td><td>故障次数/运行时间</td><td>设备可靠性</td></tr><tr><td>度电运维成本</td><td>OPEX ÷ 发电量</td><td>成本控制</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>口径</th><th>用途</th></tr></thead><tbody><tr><td>可利用系数</td><td>可运行时间 ÷ 统计时间</td><td>运维水平</td></tr><tr><td>容量系数</td><td>净发电量 ÷ (装机 × 8760)</td><td>资源与性能</td></tr><tr><td>等效利用小时</td><td>净发电量 ÷ 装机</td><td>年度对比</td></tr><tr><td>系统效率 PR（光伏）</td><td>实际发电量 ÷ 理论发电量</td><td>组件/逆变器/污损</td></tr><tr><td>限电率</td><td>限发电量 ÷ 可发电量</td><td>并网与消纳</td></tr><tr><td>故障率/MTBF</td><td>故障次数/运行时间</td><td>设备可靠性</td></tr><tr><td>度电运维成本</td><td>OPEX ÷ 发电量</td><td>成本控制</td></tr></tbody></table></div>
 <ul><li><strong>纪律</strong>：KPI 要写清毛/净、是否扣限电、统计周期；不同口径不可直接对比。</li></ul>
 <h3 id="s60">8.5 技改与退役</h3>
 <ul><li>增容、换型、延长寿命、加装储能/调相机；</li><li>退役与生态修复、土地复垦、设备回收；</li><li>技改收益要重新算 LCOE 与并网条件，不能沿用原批复。</li></ul>
@@ -272,18 +278,18 @@
 <p>见第 2.2 节。使用时的四步：</p>
 <ol><li>确认省份与电网营业区；</li><li>确认项目是存量还是增量、首批还是第二批；</li><li>确认机制电量比例、执行期限、竞价上下限；</li><li>确认市场均价口径与绿证处理。</li></ol>
 <h3 id="s63">9.2 区域风险画像（定性）</h3>
-<div class="table-wrap"><table><thead><tr><th>区域</th><th>资源</th><th>消纳/并网</th><th>主要风险</th></tr></thead><tbody><tr><td>三北/西北</td><td>风光资源好</td><td>外送通道与调峰能力决定消纳</td><td>限电、低价、土地/生态</td></tr><tr><td>华北/黄淮</td><td>资源中等、负荷高</td><td>分布式光伏多、午间低价</td><td>反送电、台区容量、弃光</td></tr><tr><td>华东</td><td>负荷高、土地紧</td><td>海上风电、分布式</td><td>用地/用海、并网成本、台风</td></tr><tr><td>南方</td><td>水风光互补</td><td>丰枯与通道影响消纳</td><td>台风、洪涝、生态、限电</td></tr><tr><td>东北</td><td>风资源好、负荷低</td><td>外送与调峰约束</td><td>低温、限电、低价</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>区域</th><th>资源</th><th>消纳/并网</th><th>主要风险</th></tr></thead><tbody><tr><td>三北/西北</td><td>风光资源好</td><td>外送通道与调峰能力决定消纳</td><td>限电、低价、土地/生态</td></tr><tr><td>华北/黄淮</td><td>资源中等、负荷高</td><td>分布式光伏多、午间低价</td><td>反送电、台区容量、弃光</td></tr><tr><td>华东</td><td>负荷高、土地紧</td><td>海上风电、分布式</td><td>用地/用海、并网成本、台风</td></tr><tr><td>南方</td><td>水风光互补</td><td>丰枯与通道影响消纳</td><td>台风、洪涝、生态、限电</td></tr><tr><td>东北</td><td>风资源好、负荷低</td><td>外送与调峰约束</td><td>低温、限电、低价</td></tr></tbody></table></div>
 <ul><li><strong>纪律</strong>：以上为定性画像，不能替代省级消纳数据；具体项目要用当地近 3–5 年运行数据。</li></ul>
 <h3 id="s64">9.3 省级尽调清单</h3>
-<div class="table-wrap"><table><thead><tr><th>事项</th><th>要查</th></tr></thead><tbody><tr><td>省级 136 实施方案</td><td>机制电量比例、执行期限、竞价上下限、结算周期</td></tr><tr><td>竞价公告</td><td>批次、规模、资格、履约保函</td></tr><tr><td>消纳空间</td><td>电网公示、省级新能源消纳预警</td></tr><tr><td>用地/用林/用草/海域</td><td>国土空间规划、生态红线、基本草原、海域论证</td></tr><tr><td>并网标准</td><td>省级涉网要求、AGC/AVC、一次调频、建模</td></tr><tr><td>电价与结算</td><td>市场均价口径、绿证、补贴、辅助服务分摊</td></tr><tr><td>配储</td><td>是否仍作为并网条件、容量电价资格</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>事项</th><th>要查</th></tr></thead><tbody><tr><td>省级 136 实施方案</td><td>机制电量比例、执行期限、竞价上下限、结算周期</td></tr><tr><td>竞价公告</td><td>批次、规模、资格、履约保函</td></tr><tr><td>消纳空间</td><td>电网公示、省级新能源消纳预警</td></tr><tr><td>用地/用林/用草/海域</td><td>国土空间规划、生态红线、基本草原、海域论证</td></tr><tr><td>并网标准</td><td>省级涉网要求、AGC/AVC、一次调频、建模</td></tr><tr><td>电价与结算</td><td>市场均价口径、绿证、补贴、辅助服务分摊</td></tr><tr><td>配储</td><td>是否仍作为并网条件、容量电价资格</td></tr></tbody></table></div>
 <h3 id="s65">9.4 配储的两种逻辑</h3>
 <ul><li><strong>独立储能</strong>：可拿容量电价（114 号文），收益来自容量、租赁、现货/辅助服务；与新能源项目分开算。</li><li><strong>新能源配储</strong>：不执行容量电价；价值主要来自并网条件、限电改善、弃电利用，必须扣减储能 CAPEX/OPEX 与效率损失。</li><li><strong>纪律</strong>：不要把&quot;配储&quot;与&quot;独立储能&quot;的容量电价重复计入；不要假设配储一定能提高收益率。</li></ul>
 <hr>
 <h2 id="s66">10. 风险：识别、量化、缓释</h2>
 <h3 id="s67">10.1 风险清单</h3>
-<div class="table-wrap"><table><thead><tr><th>风险</th><th>表现</th><th>量化方式</th></tr></thead><tbody><tr><td>资源风险</td><td>实测低于可研</td><td>P90、CV、发电量 −10%</td></tr><tr><td>价格风险</td><td>市场均价/捕获价下降</td><td>捕获率 −5–10 个百分点</td></tr><tr><td>机制电价风险</td><td>竞价低于预期、退还差额</td><td>机制电价 −20%、覆盖率下降</td></tr><tr><td>限电风险</td><td>弃风弃光上升</td><td>限电率 +5–10 个百分点</td></tr><tr><td>并网风险</td><td>接入/送出延迟</td><td>COD 延迟 6–12 个月</td></tr><tr><td>用地/生态风险</td><td>红线、草原、林地、海域</td><td>项目缩减或重新选址</td></tr><tr><td>建设风险</td><td>CAPEX 超支、吊装窗口</td><td>CAPEX +10%–20%</td></tr><tr><td>融资风险</td><td>利率上升、DSCR 不达标</td><td>利率 +100 bp</td></tr><tr><td>运营风险</td><td>可用率低、故障多</td><td>发电量 −5%</td></tr><tr><td>极端天气</td><td>台风、洪涝、覆冰</td><td>保险与停机损失</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>风险</th><th>表现</th><th>量化方式</th></tr></thead><tbody><tr><td>资源风险</td><td>实测低于可研</td><td>P90、CV、发电量 −10%</td></tr><tr><td>价格风险</td><td>市场均价/捕获价下降</td><td>捕获率 −5–10 个百分点</td></tr><tr><td>机制电价风险</td><td>竞价低于预期、退还差额</td><td>机制电价 −20%、覆盖率下降</td></tr><tr><td>限电风险</td><td>弃风弃光上升</td><td>限电率 +5–10 个百分点</td></tr><tr><td>并网风险</td><td>接入/送出延迟</td><td>COD 延迟 6–12 个月</td></tr><tr><td>用地/生态风险</td><td>红线、草原、林地、海域</td><td>项目缩减或重新选址</td></tr><tr><td>建设风险</td><td>CAPEX 超支、吊装窗口</td><td>CAPEX +10%–20%</td></tr><tr><td>融资风险</td><td>利率上升、DSCR 不达标</td><td>利率 +100 bp</td></tr><tr><td>运营风险</td><td>可用率低、故障多</td><td>发电量 −5%</td></tr><tr><td>极端天气</td><td>台风、洪涝、覆冰</td><td>保险与停机损失</td></tr></tbody></table></div>
 <h3 id="s68">10.2 风险矩阵</h3>
-<div class="table-wrap"><table><thead><tr><th>风险</th><th>概率</th><th>影响</th><th>缓释</th></tr></thead><tbody><tr><td>资源低于 P90</td><td>中</td><td>高</td><td>补测、P90 融资、发电量保险</td></tr><tr><td>机制电价低于保本线</td><td>中</td><td>高</td><td>不投标、降 CAPEX、锁定其他收入</td></tr><tr><td>限电上升</td><td>中高</td><td>中高</td><td>选址、配储、绿电直连、参与市场</td></tr><tr><td>并网延迟</td><td>中</td><td>中</td><td>提前接入、送出工程同步</td></tr><tr><td>用地/生态否决</td><td>低中</td><td>极高</td><td>早期尽调、备选场址</td></tr><tr><td>CAPEX 超支</td><td>中</td><td>中</td><td>固定总价 EPC、履约保函</td></tr><tr><td>融资成本上升</td><td>中</td><td>中</td><td>固定利率、延长贷款、提高资本金</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>风险</th><th>概率</th><th>影响</th><th>缓释</th></tr></thead><tbody><tr><td>资源低于 P90</td><td>中</td><td>高</td><td>补测、P90 融资、发电量保险</td></tr><tr><td>机制电价低于保本线</td><td>中</td><td>高</td><td>不投标、降 CAPEX、锁定其他收入</td></tr><tr><td>限电上升</td><td>中高</td><td>中高</td><td>选址、配储、绿电直连、参与市场</td></tr><tr><td>并网延迟</td><td>中</td><td>中</td><td>提前接入、送出工程同步</td></tr><tr><td>用地/生态否决</td><td>低中</td><td>极高</td><td>早期尽调、备选场址</td></tr><tr><td>CAPEX 超支</td><td>中</td><td>中</td><td>固定总价 EPC、履约保函</td></tr><tr><td>融资成本上升</td><td>中</td><td>中</td><td>固定利率、延长贷款、提高资本金</td></tr></tbody></table></div>
 <h3 id="s69">10.3 压力测试</h3>
 <ul><li><strong>单变量</strong>：资源 −10%、CAPEX +10%、捕获率 −5 个百分点、机制电价 −20%、限电 +5 个百分点、COD 延迟 1 年。</li><li>组合：P90 + CAPEX +10% + 捕获率 90% + 机制电价不变（第 6.8 节），算例 A 的 NPV 为 <strong>−9,404.85 万元</strong>、IRR <strong>5.28%</strong>。</li><li><strong>结论</strong>：组合压力下的结果才是投决依据；单变量都过线不代表项目安全。</li></ul>
 <h3 id="s70">10.4 缓释工具</h3>
@@ -303,7 +309,7 @@
 <ul><li><strong>Go</strong>：基准 NPV&gt;0、IRR≥门槛、DSCR≥要求、P90 组合压力可承受、并网/用地/环评无硬约束。</li><li><strong>Conditional Go</strong>：基准过线但压力情景不过线，需锁定电价/造价/融资或调整规模。</li><li><strong>No-Go</strong>：机制电价低于税后保本线且无其他收入、并网/用地存在否决性约束、资源数据不足以支撑 P90。</li></ul>
 <hr>
 <h2 id="s75">12. 关键公式与代码映射</h2>
-<div class="table-wrap"><table><thead><tr><th>公式</th><th>代码</th></tr></thead><tbody><tr><td>容量系数、利用小时</td><td><code>resource.capacity_factor()</code> / <code>annual_energy_mwh()</code></td></tr><tr><td>P90</td><td><code>resource.p90_from_p50()</code></td></tr><tr><td>风电容量系数（Weibull 筛查）</td><td><code>resource.wind_capacity_factor()</code></td></tr><tr><td>光伏比发电量</td><td><code>resource.pv_specific_yield()</code></td></tr><tr><td>LCOE</td><td><code>lcoe.lcoe()</code></td></tr><tr><td>机制电价结算</td><td><code>mechanism.cfd_settlement()</code></td></tr><tr><td>税前保本机制价</td><td><code>mechanism.break_even_mechanism_price()</code></td></tr><tr><td>捕获价</td><td><code>mechanism.capture_price()</code></td></tr><tr><td>税后现金流/NPV/IRR/回收期</td><td><code>finance.project_cashflow()</code> / <code>npv()</code> / <code>irr()</code> / <code>payback()</code></td></tr><tr><td>还本付息/DSCR</td><td><code>finance.debt_payment()</code> / <code>dscr()</code></td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>公式</th><th>代码</th></tr></thead><tbody><tr><td>容量系数、利用小时</td><td><code>resource.capacity_factor()</code> / <code>annual_energy_mwh()</code></td></tr><tr><td>P90</td><td><code>resource.p90_from_p50()</code></td></tr><tr><td>风电容量系数（Weibull 筛查）</td><td><code>resource.wind_capacity_factor()</code></td></tr><tr><td>光伏比发电量</td><td><code>resource.pv_specific_yield()</code></td></tr><tr><td>LCOE</td><td><code>lcoe.lcoe()</code></td></tr><tr><td>机制电价结算</td><td><code>mechanism.cfd_settlement()</code></td></tr><tr><td>税前保本机制价</td><td><code>mechanism.break_even_mechanism_price()</code></td></tr><tr><td>捕获价</td><td><code>mechanism.capture_price()</code></td></tr><tr><td>税后现金流/NPV/IRR/回收期</td><td><code>finance.project_cashflow()</code> / <code>npv()</code> / <code>irr()</code> / <code>payback()</code></td></tr><tr><td>还本付息/DSCR</td><td><code>finance.debt_payment()</code> / <code>dscr()</code></td></tr></tbody></table></div>
 <pre><code>import lcoe, mechanism, finance
 
 a = lcoe.lcoe(450_000_000, 11_000_000, 240_000, 20, 0.08, 0.005, 0.03)
@@ -313,7 +319,7 @@ flows = finance.project_cashflow(rev[&quot;total_revenue&quot;], 11_000_000, 450
 print(round(a[&quot;lcoe&quot;], 2), round(finance.npv(0.08, flows)), round(finance.irr(flows) * 100, 2))</code></pre>
 <hr>
 <h2 id="s76">13. 术语表（中英对照）</h2>
-<div class="table-wrap"><table><thead><tr><th>中文</th><th>English</th><th>说明</th></tr></thead><tbody><tr><td>集中式风电</td><td>centralized onshore wind</td><td>集中并网、升压送出</td></tr><tr><td>集中式光伏</td><td>utility-scale PV</td><td>地面电站</td></tr><tr><td>海上风电</td><td>offshore wind</td><td>海域、海缆、海上升压站</td></tr><tr><td>分布式光伏</td><td>distributed PV</td><td>屋顶/配电侧</td></tr><tr><td>资源评估</td><td>resource assessment</td><td>测风/辐照与发电量</td></tr><tr><td>利用小时</td><td>full-load hours</td><td>年发电量/装机</td></tr><tr><td>容量系数</td><td>capacity factor</td><td>利用小时/8760</td></tr><tr><td>P50/P90</td><td>P50/P90</td><td>50%/90% 概率发电量</td></tr><tr><td>变异系数</td><td>coefficient of variation</td><td>标准差/均值</td></tr><tr><td>限电率</td><td>curtailment rate</td><td>限发电量/可发电量</td></tr><tr><td>捕获价</td><td>capture price</td><td>新能源实际卖价</td></tr><tr><td>捕获率</td><td>capture rate</td><td>捕获价/市场均价</td></tr><tr><td>机制电价</td><td>mechanism price</td><td>136 号文差价结算价</td></tr><tr><td>机制电量</td><td>mechanism quantity</td><td>纳入机制的电量</td></tr><tr><td>差价结算</td><td>difference settlement</td><td>多退少补</td></tr><tr><td>存量/增量</td><td>existing/incremental</td><td>2025-06-01 划断</td></tr><tr><td>绿证</td><td>green certificate</td><td>1 张/MWh</td></tr><tr><td>平准化度电成本</td><td>LCOE</td><td>全生命周期成本/发电量</td></tr><tr><td>内部收益率</td><td>IRR</td><td>NPV=0 折现率</td></tr><tr><td>净现值</td><td>NPV</td><td>折现现金流</td></tr><tr><td>偿债备付率</td><td>DSCR</td><td>CFADS/还本付息</td></tr><tr><td>接入系统</td><td>grid interconnection</td><td>接入方案与批复</td></tr><tr><td>送出工程</td><td>transmission works</td><td>线路/升压站</td></tr><tr><td>消纳</td><td>consumption/absorption</td><td>电网接纳能力</td></tr><tr><td>低电压穿越</td><td>LVRT</td><td>故障期间不脱网</td></tr><tr><td>高电压穿越</td><td>HVRT</td><td>高电压耐受</td></tr><tr><td>一次调频</td><td>primary frequency response</td><td>频率支撑</td></tr><tr><td>AGC/AVC</td><td>AGC/AVC</td><td>有功/无功控制</td></tr><tr><td>商业运行日</td><td>COD</td><td>commercial operation date</td></tr><tr><td>系统效率</td><td>performance ratio</td><td>光伏实际/理论发电量</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>中文</th><th>English</th><th>说明</th></tr></thead><tbody><tr><td>集中式风电</td><td>centralized onshore wind</td><td>集中并网、升压送出</td></tr><tr><td>集中式光伏</td><td>utility-scale PV</td><td>地面电站</td></tr><tr><td>海上风电</td><td>offshore wind</td><td>海域、海缆、海上升压站</td></tr><tr><td>分布式光伏</td><td>distributed PV</td><td>屋顶/配电侧</td></tr><tr><td>资源评估</td><td>resource assessment</td><td>测风/辐照与发电量</td></tr><tr><td>利用小时</td><td>full-load hours</td><td>年发电量/装机</td></tr><tr><td>容量系数</td><td>capacity factor</td><td>利用小时/8760</td></tr><tr><td>P50/P90</td><td>P50/P90</td><td>50%/90% 概率发电量</td></tr><tr><td>变异系数</td><td>coefficient of variation</td><td>标准差/均值</td></tr><tr><td>限电率</td><td>curtailment rate</td><td>限发电量/可发电量</td></tr><tr><td>捕获价</td><td>capture price</td><td>新能源实际卖价</td></tr><tr><td>捕获率</td><td>capture rate</td><td>捕获价/市场均价</td></tr><tr><td>机制电价</td><td>mechanism price</td><td>136 号文差价结算价</td></tr><tr><td>机制电量</td><td>mechanism quantity</td><td>纳入机制的电量</td></tr><tr><td>差价结算</td><td>difference settlement</td><td>多退少补</td></tr><tr><td>存量/增量</td><td>existing/incremental</td><td>2025-06-01 划断</td></tr><tr><td>绿证</td><td>green certificate</td><td>1 张/MWh</td></tr><tr><td>平准化度电成本</td><td>LCOE</td><td>全生命周期成本/发电量</td></tr><tr><td>内部收益率</td><td>IRR</td><td>NPV=0 折现率</td></tr><tr><td>净现值</td><td>NPV</td><td>折现现金流</td></tr><tr><td>偿债备付率</td><td>DSCR</td><td>CFADS/还本付息</td></tr><tr><td>接入系统</td><td>grid interconnection</td><td>接入方案与批复</td></tr><tr><td>送出工程</td><td>transmission works</td><td>线路/升压站</td></tr><tr><td>消纳</td><td>consumption/absorption</td><td>电网接纳能力</td></tr><tr><td>低电压穿越</td><td>LVRT</td><td>故障期间不脱网</td></tr><tr><td>高电压穿越</td><td>HVRT</td><td>高电压耐受</td></tr><tr><td>一次调频</td><td>primary frequency response</td><td>频率支撑</td></tr><tr><td>AGC/AVC</td><td>AGC/AVC</td><td>有功/无功控制</td></tr><tr><td>商业运行日</td><td>COD</td><td>commercial operation date</td></tr><tr><td>系统效率</td><td>performance ratio</td><td>光伏实际/理论发电量</td></tr></tbody></table></div>
 <hr>
 <h2 id="s77">14. 专家问答推理手册</h2>
 <h3 id="s78">14.1 &quot;这个 100 MW 风电项目能过投决吗？&quot;</h3>
@@ -341,7 +347,29 @@ print(round(a[&quot;lcoe&quot;], 2), round(finance.npv(0.08, flows)), round(fina
 <aside class="note"><p><strong>免责声明</strong>：本技能提供测算框架与公开信息整理，不构成投资建议、电价预测或设备推荐。项目投决必须以本省最新文件、实测资源数据、正式报价与融资条件为准。</p></aside>
     </article>
 
-    
+
+
+<section class="related" aria-labelledby="skill-modules-title">
+      <div class="related-head"><h2 id="skill-modules-title">适用知识模块</h2><span>3</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="新能源项目开发与并网-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>新能源项目开发与并网</b>
+          <span>136 号机制电价、省级竞价、P50/P90、LCOE、并网标准与省别画像。</span>
+        </a>
+        <a class="related-card" href="并网运行考核与两个细则-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>并网运行考核与两个细则</b>
+          <span>60/61 号、AGC/AVC/一次调频公式、20 项罚则、六类免考与合成算例。</span>
+        </a>
+        <a class="related-card" href="中国电价现行政策与查证-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>中国电价现行政策与查证</b>
+          <span>14 份现行文件总表、2026 年四条主线、电费计算链、两部制/力率算例与省级差异矩阵。</span>
+        </a>
+      </div>
+
+    </section>
 
     <nav class="pager" aria-label="上下篇">
           <a class="prev" href="skill-storage-investment-operations.html"><span class="dir">← 上一篇</span><span class="ttl">储能投资与运营</span></a>
@@ -350,7 +378,11 @@ print(round(a[&quot;lcoe&quot;], 2), round(finance.npv(0.08, flows)), round(fina
 
     <footer class="doc-foot">
       <div class="lic">本页由 <a href="../../skills/renewable-project-development/SKILL.md">skills/renewable-project-development/SKILL.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
-      <div><a href="../index.html">返回知识库总览 →</a></div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
     </footer>
   </main>
 
@@ -445,7 +477,7 @@ print(round(a[&quot;lcoe&quot;], 2), round(finance.npv(0.08, flows)), round(fina
             <li class="lv3"><a href="#s86">15.3 维护件</a></li>
             <li class="lv3"><a href="#s87">15.4 与姊妹技能的分工</a></li>
             <li class="lv3"><a href="#s88">15.5 维护节奏</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="72">展开 72 个小节</button>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="72" data-more-label="展开 72 个小节" data-less-label="收起小节">展开 72 个小节</button>
   </aside>
 </div>
 

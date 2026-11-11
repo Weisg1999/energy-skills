@@ -19,9 +19,9 @@
 <div class="scrim"></div>
 
 <header class="topbar">
-  <a class="back" href="../index.html">← 知识库</a>
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
   <div class="crumb">
-    <span class="crumb-cat">04 / BASE</span>
+    <span class="crumb-cat">01 · BASE</span>
     <span class="crumb-sep">/</span>
     <span class="crumb-doc">电力系统经济学原理</span>
   </div>
@@ -30,7 +30,14 @@
       <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
       <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-    <a class="src" href="../电力系统经济学原理-主题笔记.md">.md 源文件</a>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../电力系统经济学原理-主题笔记.md">.md 源文件<small>knowledge/电力系统经济学原理-主题笔记.md</small></a>
+
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
     <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
   </div>
 </header>
@@ -38,7 +45,7 @@
 <div class="shell">
   <aside class="sidebar" id="nav">
     <div class="nav-kicker">当前分类</div>
-    <div class="nav-num">04 / BASE</div>
+    <div class="nav-num">01 · BASE</div>
     <h2 class="nav-cat"><a href="../index.html#foundation">通识与经济学</a></h2>
     <ul class="nav-list">
               <li><a href="电力系统通识-A-格局与主体.html">电力系统通识 A · 格局与主体</a></li>
@@ -50,24 +57,24 @@
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
       <ul>
-              <li><a href="../index.html#spot"><b>05</b>电力现货与省间交易</a></li>
-              <li><a href="../index.html#intl"><b>06</b>海外市场</a></li>
-              <li><a href="../index.html#cross"><b>07</b>横向专题</a></li>
-              <li><a href="../index.html#price"><b>08</b>电价</a></li>
-              <li><a href="../index.html#renewable"><b>09</b>新能源与并网</a></li>
-              <li><a href="../index.html#storage"><b>10</b>储能与 EMS</a></li>
-              <li><a href="../index.html#park"><b>11</b>综合能源与零碳园区</a></li>
-              <li><a href="../index.html#carbon"><b>12</b>碳市场与碳管理</a></li>
-              <li><a href="../index.html#vpp"><b>13</b>虚拟电厂</a></li>
-              <li><a href="../index.html#index"><b>14</b>索引、查证与工具</a></li>
-              <li><a href="../index.html#research"><b>15</b>调研底稿</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#intl"><b>03</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>04</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>05</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>06</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>07</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>08</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>09</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>10</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>11</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>12</b>调研底稿</a></li>
       </ul>
     </div>
   </aside>
 
   <main class="main" id="main">
     <header class="doc-head">
-      <div class="kicker">04 / BASE<i>教材笔记</i></div>
+      <div class="kicker">01 · BASE<i>教材笔记</i></div>
       <h1 class="doc-title">《电力系统经济学原理》主题化笔记（Kirschen &amp; Strbac 著，朱治中译）</h1>
       <p class="lede">市场结构、供需与福利、现货与金融工具、市场力、辅助服务、阻塞与节点定价。</p>
       <p class="hook">Kirschen &amp; Strbac · 朱治中译</p>
@@ -153,26 +160,44 @@
 <h3 id="s31">SCOPF与参考网络</h3>
 <ul><li><strong>参考网络</strong>：拓扑同现状、每线容量取全系统最优的假想网，用于绩效评价、识别新增投资与搁浅资产（Boiteux 1949起）。</li><li><strong>SCOPF</strong>：min年发电+输电成本，DC-OPF、N-1全事故状态、负荷分段、计及停运；PTDF只依赖拓扑与电抗；约束生成算法迭代至无过载；节点价=系统能量乘子−Σ(阻塞乘子×PTDF)。IEEE 24节点：多数线路潮流&lt;最优容量50%——安全所需容量远大于纯输电需要，忽视N-1的输电定价必失真。</li></ul>
 <h2 id="s32">速查：关键公式与数字</h2>
-<div class="table-wrap"><table><thead><tr><th>条目</th><th>公式/数值</th><th>含义</th></tr></thead><tbody><tr><td>市场力</td><td>(π−MC)/π=s_i/ε</td><td>弹性低+集中度高→提价空间大</td></tr><tr><td>等边际调度</td><td>dC_i/dP_i=λ</td><td>λ=电能影子价格；算例λ=10.67美元/MWh</td></tr><tr><td>单机最优</td><td>MC=π；价12→257.7MW</td><td>≥13.26满发、≤11.18停机（美元/MWh）</td></tr><tr><td>结算规则</td><td>统一按SMP</td><td>PAB诱发抬价与低成本机组落选</td></tr><tr><td>备用定价</td><td>备用价=电能价差，如28−17=11</td><td>重调度机会成本；单独报价时电能价22=20−5+7</td></tr><tr><td>安全调度成本</td><td>2835.00−2647.50=187.50美元/h</td><td>三节点消除F12越限的代价</td></tr><tr><td>LMP</td><td>π2=1.5×10.00−0.5×7.50=11.25</td><td>m条阻塞约束→m+1台边际机组</td></tr><tr><td>阻塞剩余</td><td>(35−19)×400=6400美元/h</td><td>用户支出−发电收入，FTR资金来源</td></tr><tr><td>FTR</td><td>收入=F×(πW−πS)，可为负</td><td>义务属性；例100MW对冲后净支800=8×100</td></tr><tr><td>FGR</td><td>收入=关口权×μ，如40×6.25=250</td><td>期权属性，μ≥0</td></tr><tr><td>网损</td><td>受端边际成本=c(1+2DK)</td><td>价差随潮流线性增；输电损1-3%、配电4-9%</td></tr><tr><td>投资判据</td><td>燃煤IRR=13.58%、IIRR=12.56%&gt;MARR 12%</td><td>预测电价&gt;LRMC；互斥方案用增量IRR</td></tr><tr><td>尖峰机组报价</td><td>年运行5h须&gt;1000美元/MWh</td><td>全成本报价才能回收固定成本（均值37.70）</td></tr><tr><td>容量因子</td><td>CE=VOLL×LOLP，电价上限=VOLL</td><td>E&amp;W机制，NETA后废除</td></tr><tr><td>VOLL</td><td>≈2768镑/MWh（E&amp;W）</td><td>失负荷价值远高于市场电价</td></tr><tr><td>可靠性合同</td><td>s≈1.25×峰机组变动成本；返还(π−s)×q</td><td>长期期权+罚金，市场干预最小</td></tr><tr><td>输电最优容量</td><td>28−0.03F=4.00→800MW</td><td>阻塞剩余=年化变动投资成本</td></tr><tr><td>效率与分摊</td><td>抽蓄效率75%；34%负荷→93%AGC需求</td><td>套利硬门槛；辅助服务按责任分摊</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>条目</th><th>公式/数值</th><th>含义</th></tr></thead><tbody><tr><td>市场力</td><td>(π−MC)/π=s_i/ε</td><td>弹性低+集中度高→提价空间大</td></tr><tr><td>等边际调度</td><td>dC_i/dP_i=λ</td><td>λ=电能影子价格；算例λ=10.67美元/MWh</td></tr><tr><td>单机最优</td><td>MC=π；价12→257.7MW</td><td>≥13.26满发、≤11.18停机（美元/MWh）</td></tr><tr><td>结算规则</td><td>统一按SMP</td><td>PAB诱发抬价与低成本机组落选</td></tr><tr><td>备用定价</td><td>备用价=电能价差，如28−17=11</td><td>重调度机会成本；单独报价时电能价22=20−5+7</td></tr><tr><td>安全调度成本</td><td>2835.00−2647.50=187.50美元/h</td><td>三节点消除F12越限的代价</td></tr><tr><td>LMP</td><td>π2=1.5×10.00−0.5×7.50=11.25</td><td>m条阻塞约束→m+1台边际机组</td></tr><tr><td>阻塞剩余</td><td>(35−19)×400=6400美元/h</td><td>用户支出−发电收入，FTR资金来源</td></tr><tr><td>FTR</td><td>收入=F×(πW−πS)，可为负</td><td>义务属性；例100MW对冲后净支800=8×100</td></tr><tr><td>FGR</td><td>收入=关口权×μ，如40×6.25=250</td><td>期权属性，μ≥0</td></tr><tr><td>网损</td><td>受端边际成本=c(1+2DK)</td><td>价差随潮流线性增；输电损1-3%、配电4-9%</td></tr><tr><td>投资判据</td><td>燃煤IRR=13.58%、IIRR=12.56%&gt;MARR 12%</td><td>预测电价&gt;LRMC；互斥方案用增量IRR</td></tr><tr><td>尖峰机组报价</td><td>年运行5h须&gt;1000美元/MWh</td><td>全成本报价才能回收固定成本（均值37.70）</td></tr><tr><td>容量因子</td><td>CE=VOLL×LOLP，电价上限=VOLL</td><td>E&amp;W机制，NETA后废除</td></tr><tr><td>VOLL</td><td>≈2768镑/MWh（E&amp;W）</td><td>失负荷价值远高于市场电价</td></tr><tr><td>可靠性合同</td><td>s≈1.25×峰机组变动成本；返还(π−s)×q</td><td>长期期权+罚金，市场干预最小</td></tr><tr><td>输电最优容量</td><td>28−0.03F=4.00→800MW</td><td>阻塞剩余=年化变动投资成本</td></tr><tr><td>效率与分摊</td><td>抽蓄效率75%；34%负荷→93%AGC需求</td><td>套利硬门槛；辅助服务按责任分摊</td></tr></tbody></table></div>
     </article>
 
-    <section class="related" aria-label="相关模块">
-      <h2>相关模块</h2>
-      <ul>
-        <li><a href="电力现货市场101问-A-基础与价格机制.html">101 问 A · 基础与价格机制</a></li>
-        <li><a href="电力现货市场101问-B-出清结算与省域实践.html">101 问 B · 出清结算与省域实践</a></li>
-        <li><a href="电力系统通识-A-格局与主体.html">电力系统通识 A · 格局与主体</a></li>
-      </ul>
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>3</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="电力现货市场101问-A-基础与价格机制.html">
+          <span class="related-type">跨区对照</span>
+          <b>101 问 A · 基础与价格机制</b>
+          <span>第 1–26 问：电力市场定义、现货体系、集中式与分散式、SMP / ZMP / LMP。</span>
+        </a>
+        <a class="related-card" href="电力现货市场101问-B-出清结算与省域实践.html">
+          <span class="related-type">跨区对照</span>
+          <b>101 问 B · 出清结算与省域实践</b>
+          <span>第 27–65 问：联合/独立出清、节点价算例、结算、市场力识别与用户侧参与。</span>
+        </a>
+        <a class="related-card" href="电力系统通识-A-格局与主体.html">
+          <span class="related-type">同区延伸</span>
+          <b>电力系统通识 A · 格局与主体</b>
+          <span>两网加蒙西、五大四小、设备与二次系统、交易调度监管分工，以及 2026 年装机与市场主体快照。</span>
+        </a>
+      </div>
+
     </section>
+
 
     <nav class="pager" aria-label="上下篇">
           <a class="prev" href="电力系统通识-D-新角色与现货市场.html"><span class="dir">← 上一篇</span><span class="ttl">电力系统通识 D · 新角色与现货市场</span></a>
-          <a class="next" href="省间与跨区交易-2026-11.html"><span class="dir">下一篇 →</span><span class="ttl">省间与跨区交易（2026 版）</span></a>
+          <span class="spacer"></span>
     </nav>
 
     <footer class="doc-foot">
       <div class="lic">本页由 <a href="../电力系统经济学原理-主题笔记.md">knowledge/电力系统经济学原理-主题笔记.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
-      <div><a href="../index.html">返回知识库总览 →</a></div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
     </footer>
   </main>
 
@@ -211,7 +236,7 @@
             <li class="lv3"><a href="#s30">价值导向与最优容量</a></li>
             <li class="lv3"><a href="#s31">SCOPF与参考网络</a></li>
             <li class="lv2"><a href="#s32">速查：关键公式与数字</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="23">展开 23 个小节</button>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="23" data-more-label="展开 23 个小节" data-less-label="收起小节">展开 23 个小节</button>
   </aside>
 </div>
 

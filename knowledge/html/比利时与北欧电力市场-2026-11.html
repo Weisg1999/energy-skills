@@ -19,9 +19,9 @@
 <div class="scrim"></div>
 
 <header class="topbar">
-  <a class="back" href="../index.html">← 知识库</a>
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
   <div class="crumb">
-    <span class="crumb-cat">06 / GLOBAL</span>
+    <span class="crumb-cat">03 · GLOBAL</span>
     <span class="crumb-sep">/</span>
     <span class="crumb-doc">比利时与北欧电力市场（2026 版）</span>
   </div>
@@ -30,7 +30,14 @@
       <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
       <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-    <a class="src" href="../比利时与北欧电力市场-2026-11.md">.md 源文件</a>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../比利时与北欧电力市场-2026-11.md">.md 源文件<small>knowledge/比利时与北欧电力市场-2026-11.md</small></a>
+
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
     <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
   </div>
 </header>
@@ -38,7 +45,7 @@
 <div class="shell">
   <aside class="sidebar" id="nav">
     <div class="nav-kicker">当前分类</div>
-    <div class="nav-num">06 / GLOBAL</div>
+    <div class="nav-num">03 · GLOBAL</div>
     <h2 class="nav-cat"><a href="../index.html#intl">海外市场</a></h2>
     <ul class="nav-list">
               <li><a href="澳大利亚NEM电力市场-2026-11.html">澳大利亚 NEM 电力市场（2026 版）</a></li>
@@ -57,24 +64,24 @@
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
       <ul>
-              <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
-              <li><a href="../index.html#spot"><b>05</b>电力现货与省间交易</a></li>
-              <li><a href="../index.html#cross"><b>07</b>横向专题</a></li>
-              <li><a href="../index.html#price"><b>08</b>电价</a></li>
-              <li><a href="../index.html#renewable"><b>09</b>新能源与并网</a></li>
-              <li><a href="../index.html#storage"><b>10</b>储能与 EMS</a></li>
-              <li><a href="../index.html#park"><b>11</b>综合能源与零碳园区</a></li>
-              <li><a href="../index.html#carbon"><b>12</b>碳市场与碳管理</a></li>
-              <li><a href="../index.html#vpp"><b>13</b>虚拟电厂</a></li>
-              <li><a href="../index.html#index"><b>14</b>索引、查证与工具</a></li>
-              <li><a href="../index.html#research"><b>15</b>调研底稿</a></li>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#cross"><b>04</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>05</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>06</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>07</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>08</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>09</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>10</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>11</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>12</b>调研底稿</a></li>
       </ul>
     </div>
   </aside>
 
   <main class="main" id="main">
     <header class="doc-head">
-      <div class="kicker">06 / GLOBAL<i>知识模块</i></div>
+      <div class="kicker">03 · GLOBAL<i>知识模块</i></div>
       <h1 class="doc-title">比利时与北欧电力市场（2026-11）</h1>
       <p class="lede">比利时 CRM 与北欧分区水电市场：两种容量充裕性路径、负价与储能收益结构。</p>
       <p class="hook">2026-11 · 容量市场与分区水电</p>
@@ -111,59 +118,59 @@
 <h2 id="s1">0. 一页看懂</h2>
 <p>比利时和北欧代表欧洲容量充裕性的两条路线：<strong>比利时用容量报酬机制（CRM）给可用容量付钱</strong>，<strong>北欧主要靠能量市场 + 平衡市场 + 战略/容量储备</strong>，没有英国式全国容量市场。两地的共同点是：可再生占比高、负价时段多、跨境互联强；不同点是：比利时的储能收入更依赖 CRM 多年合同，北欧的储能更依赖日内/平衡价差、辅助服务和稀缺时段。</p>
 <p><strong>五个先记住的数字</strong></p>
-<div class="table-wrap"><table><thead><tr><th>数字</th><th>含义</th><th>级别</th></tr></thead><tbody><tr><td>4,690 MW</td><td>比利时 Y-4 2029-30 交付年 CRM 中标容量；新增电池 179 MW（铭牌 525 MW）</td><td>C</td></tr><tr><td>€27.3k/MW·年（27,300 €/MW·年）</td><td>比利时 2029-30 交付年 Y-4 CRM 出清价（Elia 2025-10-30 公告）</td><td>A</td></tr><tr><td>12 个报价区</td><td>北欧四国：NO1–NO5、SE1–SE4、DK1–DK2、FI</td><td>A</td></tr><tr><td>2025-03-04</td><td>北欧 15 分钟不平衡结算 + mFRR 能量激活市场（EAM）上线</td><td>B</td></tr><tr><td>8% / 7%</td><td>2024 年芬兰/瑞典负价小时占比（IEA 口径）</td><td>B</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>数字</th><th>含义</th><th>级别</th></tr></thead><tbody><tr><td>4,690 MW</td><td>比利时 Y-4 2029-30 交付年 CRM 中标容量；新增电池 179 MW（铭牌 525 MW）</td><td>C</td></tr><tr><td>€27.3k/MW·年（27,300 €/MW·年）</td><td>比利时 2029-30 交付年 Y-4 CRM 出清价（Elia 2025-10-30 公告）</td><td>A</td></tr><tr><td>12 个报价区</td><td>北欧四国：NO1–NO5、SE1–SE4、DK1–DK2、FI</td><td>A</td></tr><tr><td>2025-03-04</td><td>北欧 15 分钟不平衡结算 + mFRR 能量激活市场（EAM）上线</td><td>B</td></tr><tr><td>8% / 7%</td><td>2024 年芬兰/瑞典负价小时占比（IEA 口径）</td><td>B</td></tr></tbody></table></div>
 <p><strong>一句话记住</strong>：比利时看 CRM（多年合同 + 降额 + 电池主导新增容量），北欧看分区价差 + 水电/核电/风电的边际结构 + 15 分钟平衡；两边都不能用“欧洲统一电价”做模型。</p>
 <h3 id="s2">0.1 两地全景</h3>
-<div class="table-wrap"><table><thead><tr><th>维度</th><th>比利时</th><th>北欧四国</th></tr></thead><tbody><tr><td>报价区</td><td>比利时单一报价区</td><td>12 个报价区（NO1–5、SE1–4、DK1–2、FI）</td></tr><tr><td>日前市场</td><td>Belpex（EPEX Spot 比利时），SDAC 耦合</td><td>Nord Pool，SDAC 耦合；系统价 + 分区价</td></tr><tr><td>日内市场</td><td>SIDC 连续交易</td><td>Nord Pool 日内 + SIDC</td></tr><tr><td>平衡市场</td><td>Elia 采购 FCR/aFRR/mFRR</td><td>四国 TSO 分别/联合采购；mFRR EAM</td></tr><tr><td>容量机制</td><td>CRM（Y-4/Y-2/Y-1）</td><td>无全国容量市场；瑞典 effektreserv、芬兰 tehoreservi 等储备</td></tr><tr><td>可再生支持</td><td>海上风电 CfD、区域绿证</td><td>瑞典/芬兰/丹麦拍卖/CfD、绿证；挪威以水电为主</td></tr><tr><td>核电</td><td>Doel 4/Tihange 3 延寿至 2035</td><td>瑞典核电延寿/新建；芬兰核电；丹麦无核电</td></tr><tr><td>储能驱动</td><td>CRM + 辅助服务 + 套利</td><td>价差 + 辅助服务 + 稀缺时段；无容量费兜底</td></tr><tr><td>监管</td><td>CREG（联邦）+ 区域监管</td><td>各国监管机构 + Nord Pool/ENTSO-E 规则</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>比利时</th><th>北欧四国</th></tr></thead><tbody><tr><td>报价区</td><td>比利时单一报价区</td><td>12 个报价区（NO1–5、SE1–4、DK1–2、FI）</td></tr><tr><td>日前市场</td><td>Belpex（EPEX Spot 比利时），SDAC 耦合</td><td>Nord Pool，SDAC 耦合；系统价 + 分区价</td></tr><tr><td>日内市场</td><td>SIDC 连续交易</td><td>Nord Pool 日内 + SIDC</td></tr><tr><td>平衡市场</td><td>Elia 采购 FCR/aFRR/mFRR</td><td>四国 TSO 分别/联合采购；mFRR EAM</td></tr><tr><td>容量机制</td><td>CRM（Y-4/Y-2/Y-1）</td><td>无全国容量市场；瑞典 effektreserv、芬兰 tehoreservi 等储备</td></tr><tr><td>可再生支持</td><td>海上风电 CfD、区域绿证</td><td>瑞典/芬兰/丹麦拍卖/CfD、绿证；挪威以水电为主</td></tr><tr><td>核电</td><td>Doel 4/Tihange 3 延寿至 2035</td><td>瑞典核电延寿/新建；芬兰核电；丹麦无核电</td></tr><tr><td>储能驱动</td><td>CRM + 辅助服务 + 套利</td><td>价差 + 辅助服务 + 稀缺时段；无容量费兜底</td></tr><tr><td>监管</td><td>CREG（联邦）+ 区域监管</td><td>各国监管机构 + Nord Pool/ENTSO-E 规则</td></tr></tbody></table></div>
 <h3 id="s3">0.2 两种容量充裕性逻辑</h3>
 <ul><li><strong>比利时 CRM</strong>：技术中立、按降额容量付费、单轮密封报价，设中间价格上限 IPC 与全局上限 GAPC；新建机组最长 15 年合同，存量机组 1 年合同。储能是新增容量的主力，但 CRM 收入通常只是项目总收入的“一部分”，不是全部。</li><li><strong>北欧能量-only</strong>：没有全国容量市场；系统充裕性靠能量市场价格、跨境互联、战略/容量储备和需求响应。储能的收入更依赖价差、平衡市场和辅助服务，merchant 风险高于比利时。</li><li><strong>共同点</strong>：两地都参加欧盟日前/日内耦合，都有 15 分钟 MTU，都要面对负价和跨境价差；两地的储能都不能只靠单一收入过投决。</li></ul>
 <hr>
 <h2 id="s4">1. 谁在管：机构与规则层级</h2>
 <h3 id="s5">1.1 比利时机构</h3>
-<div class="table-wrap"><table><thead><tr><th>机构</th><th>角色</th><th>交易相关抓手</th></tr></thead><tbody><tr><td>Elia</td><td>输电系统运营商（TSO）</td><td>平衡市场、辅助服务、CRM 拍卖组织、并网</td></tr><tr><td>CREG</td><td>联邦能源监管机构</td><td>费率、市场监督、CRM 规则建议</td></tr><tr><td>联邦能源部</td><td>政策主管部门</td><td>核电、海上风电、CRM 立法</td></tr><tr><td>区域监管机构</td><td>佛兰德/瓦隆/布鲁塞尔</td><td>配电、区域绿证、许可</td></tr><tr><td>Belpex/EPEX Spot</td><td>日前/日内市场</td><td>比利时报价区交易</td></tr><tr><td>海上风电招标机构</td><td>联邦/Elia</td><td>Princess Elisabeth 区招标、并网</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>机构</th><th>角色</th><th>交易相关抓手</th></tr></thead><tbody><tr><td>Elia</td><td>输电系统运营商（TSO）</td><td>平衡市场、辅助服务、CRM 拍卖组织、并网</td></tr><tr><td>CREG</td><td>联邦能源监管机构</td><td>费率、市场监督、CRM 规则建议</td></tr><tr><td>联邦能源部</td><td>政策主管部门</td><td>核电、海上风电、CRM 立法</td></tr><tr><td>区域监管机构</td><td>佛兰德/瓦隆/布鲁塞尔</td><td>配电、区域绿证、许可</td></tr><tr><td>Belpex/EPEX Spot</td><td>日前/日内市场</td><td>比利时报价区交易</td></tr><tr><td>海上风电招标机构</td><td>联邦/Elia</td><td>Princess Elisabeth 区招标、并网</td></tr></tbody></table></div>
 <ul><li><strong>Elia 既管系统也管 CRM 拍卖</strong>：平衡、辅助服务、CRM 拍卖、并网都在 Elia 体系；项目能不能拿 CRM，先看 Elia 的资格与并网。</li><li><strong>CREG 管“费率与规则”</strong>：电网费率、平衡规则、市场监督；CRM 的具体参数由法律/皇家法令确定，CREG 提供建议。</li><li><strong>区域与联邦分权</strong>：海上风电、核电是联邦事务；配电、区域绿证、部分许可在区域层面；项目落地要同时看联邦和区域规则。</li></ul>
 <h3 id="s6">1.2 北欧机构</h3>
-<div class="table-wrap"><table><thead><tr><th>机构/市场</th><th>角色</th><th>交易相关抓手</th></tr></thead><tbody><tr><td>Nord Pool</td><td>NEMO（ nominated electricity market operator）</td><td>日前/日内市场、15 分钟产品</td></tr><tr><td>Statnett</td><td>挪威 TSO</td><td>平衡、辅助服务、互联</td></tr><tr><td>Svenska kraftnät</td><td>瑞典 TSO</td><td>平衡、辅助服务、effektreserv</td></tr><tr><td>Energinet</td><td>丹麦 TSO</td><td>平衡、辅助服务、海上风电并网</td></tr><tr><td>Fingrid</td><td>芬兰 TSO</td><td>平衡、辅助服务、tehoreservi</td></tr><tr><td>各国监管机构</td><td>NVE（挪威）、Ei（瑞典）、Danish Energy Agency/ Forsyningstilsynet（丹麦）、Energiavirasto（芬兰）</td><td>许可、费率、市场监管</td></tr><tr><td>Nasdaq Commodities</td><td>金融交易</td><td>北欧电力期货/EPAD，现金结算</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>机构/市场</th><th>角色</th><th>交易相关抓手</th></tr></thead><tbody><tr><td>Nord Pool</td><td>NEMO（ nominated electricity market operator）</td><td>日前/日内市场、15 分钟产品</td></tr><tr><td>Statnett</td><td>挪威 TSO</td><td>平衡、辅助服务、互联</td></tr><tr><td>Svenska kraftnät</td><td>瑞典 TSO</td><td>平衡、辅助服务、effektreserv</td></tr><tr><td>Energinet</td><td>丹麦 TSO</td><td>平衡、辅助服务、海上风电并网</td></tr><tr><td>Fingrid</td><td>芬兰 TSO</td><td>平衡、辅助服务、tehoreservi</td></tr><tr><td>各国监管机构</td><td>NVE（挪威）、Ei（瑞典）、Danish Energy Agency/ Forsyningstilsynet（丹麦）、Energiavirasto（芬兰）</td><td>许可、费率、市场监管</td></tr><tr><td>Nasdaq Commodities</td><td>金融交易</td><td>北欧电力期货/EPAD，现金结算</td></tr></tbody></table></div>
 <ul><li><strong>Nord Pool 是市场平台，不是监管者</strong>：日前/日内的规则由 Nord Pool 与各国 TSO/监管机构共同确定；市场注册不等于平衡责任。</li><li><strong>四国 TSO 各自采购平衡/辅助服务</strong>：mFRR EAM 是联合市场，但容量采购、FCR、aFRR 仍由各国 TSO 按本国规则组织；跨境参与要看 TSO 协议。</li><li><strong>金融与现货分开</strong>：Nasdaq Commodities 的期货/EPAD 是金融合约，现金结算；现货交割仍在 Nord Pool。</li></ul>
 <h3 id="s7">1.3 规则层级</h3>
-<div class="table-wrap"><table><thead><tr><th>层级</th><th>内容</th><th>举例</th></tr></thead><tbody><tr><td>欧盟条例</td><td>电力内市场、透明度、REMIT、平衡指南</td><td>Regulation (EU) 2019/943、EB GL、REMIT</td></tr><tr><td>国家法律</td><td>电力法、核电法、海上风电法</td><td>比利时电力法/核电法；瑞典/挪威/丹麦/芬兰电力法</td></tr><tr><td>监管/系统规则</td><td>平衡、辅助服务、并网、费率</td><td>Elia/四国 TSO 规则</td></tr><tr><td>市场规则</td><td>日前/日内/金融</td><td>Nord Pool、Belpex、Nasdaq 规则</td></tr><tr><td>合同</td><td>并网、CRM、CfD、PPA</td><td>项目层面</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>层级</th><th>内容</th><th>举例</th></tr></thead><tbody><tr><td>欧盟条例</td><td>电力内市场、透明度、REMIT、平衡指南</td><td>Regulation (EU) 2019/943、EB GL、REMIT</td></tr><tr><td>国家法律</td><td>电力法、核电法、海上风电法</td><td>比利时电力法/核电法；瑞典/挪威/丹麦/芬兰电力法</td></tr><tr><td>监管/系统规则</td><td>平衡、辅助服务、并网、费率</td><td>Elia/四国 TSO 规则</td></tr><tr><td>市场规则</td><td>日前/日内/金融</td><td>Nord Pool、Belpex、Nasdaq 规则</td></tr><tr><td>合同</td><td>并网、CRM、CfD、PPA</td><td>项目层面</td></tr></tbody></table></div>
 <p><strong>一句话记住</strong>：比利时是“CRM 法律 + Elia 规则”，北欧是“Nord Pool 市场规则 + 四国 TSO 平衡规则”；两地的“注册”都不是单一窗口。</p>
 <hr>
 <h2 id="s8">2. 比利时市场架构</h2>
 <h3 id="s9">2.1 日前与日内</h3>
-<div class="table-wrap"><table><thead><tr><th>项目</th><th>规则</th></tr></thead><tbody><tr><td>日前运营方</td><td>Belpex（EPEX Spot 比利时）</td></tr><tr><td>关闸</td><td>SDAC 统一关闸（12:00 CET 量级）</td></tr><tr><td>出清</td><td>SDAC 耦合，统一价（pay-as-clear）</td></tr><tr><td>粒度</td><td>2025-10-01 起 15 分钟 MTU</td></tr><tr><td>日内</td><td>SIDC 连续交易，pay-as-bid</td></tr><tr><td>价格边界</td><td>沿用欧盟 SDAC/SIDC 规则</td></tr><tr><td>申报</td><td>发电、储能、可调负荷按 15 分钟报量报价</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>规则</th></tr></thead><tbody><tr><td>日前运营方</td><td>Belpex（EPEX Spot 比利时）</td></tr><tr><td>关闸</td><td>SDAC 统一关闸（12:00 CET 量级）</td></tr><tr><td>出清</td><td>SDAC 耦合，统一价（pay-as-clear）</td></tr><tr><td>粒度</td><td>2025-10-01 起 15 分钟 MTU</td></tr><tr><td>日内</td><td>SIDC 连续交易，pay-as-bid</td></tr><tr><td>价格边界</td><td>沿用欧盟 SDAC/SIDC 规则</td></tr><tr><td>申报</td><td>发电、储能、可调负荷按 15 分钟报量报价</td></tr></tbody></table></div>
 <ul><li><strong>比利时是独立报价区</strong>：不是 DE-LU、也不是法国报价区；与邻国的价差由互联容量和阻塞决定。</li><li><strong>Belpex 是 EPEX Spot 的比利时市场</strong>：日前/日内的具体产品、关闸和结算以 EPEX/SIDC 规则为准；不要把 Belpex 当成独立交易所。</li><li><strong>15 分钟不是“小时价拆四段”</strong>：光伏爬坡、风电预测误差、储能充放电在 15 分钟内差异很大；用小时模型回测会高估套利收益。</li></ul>
 <h3 id="s10">2.2 平衡与辅助服务</h3>
-<div class="table-wrap"><table><thead><tr><th>品种</th><th>采购方</th><th>作用</th><th>结算</th></tr></thead><tbody><tr><td>FCR</td><td>Elia</td><td>秒级频率支撑（对称）</td><td>容量</td></tr><tr><td>aFRR</td><td>Elia</td><td>自动频率恢复</td><td>容量 + 能量</td></tr><tr><td>mFRR</td><td>Elia</td><td>人工/自动调度恢复</td><td>容量 + 能量</td></tr><tr><td>黑启动/电压</td><td>Elia</td><td>系统恢复/无功支撑</td><td>按规则/合同</td></tr><tr><td>偏差结算</td><td>Elia</td><td>平衡责任主体偏差</td><td>15 分钟不平衡价</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>品种</th><th>采购方</th><th>作用</th><th>结算</th></tr></thead><tbody><tr><td>FCR</td><td>Elia</td><td>秒级频率支撑（对称）</td><td>容量</td></tr><tr><td>aFRR</td><td>Elia</td><td>自动频率恢复</td><td>容量 + 能量</td></tr><tr><td>mFRR</td><td>Elia</td><td>人工/自动调度恢复</td><td>容量 + 能量</td></tr><tr><td>黑启动/电压</td><td>Elia</td><td>系统恢复/无功支撑</td><td>按规则/合同</td></tr><tr><td>偏差结算</td><td>Elia</td><td>平衡责任主体偏差</td><td>15 分钟不平衡价</td></tr></tbody></table></div>
 <ul><li><strong>比利时接入 PICASSO</strong>：Elia 于 2024 年接入 aFRR 能量平台（B 级）；aFRR 能量可以跨境交换，价格与国内出清的关系会变化。</li><li><strong>平衡责任在 BRP</strong>：发电、售电、储能都要有平衡责任主体；偏差按不平衡价格结算。</li><li><strong>辅助服务与能量市场分开</strong>：同一 MW 不能同时满额卖能量和备用；储能要做机会成本优化。</li></ul>
 <h3 id="s11">2.3 容量报酬机制（CRM）</h3>
-<div class="table-wrap"><table><thead><tr><th>项目</th><th>比利时规则</th><th>备注</th></tr></thead><tbody><tr><td>拍卖类型</td><td>Y-4、Y-2、Y-1</td><td>2025 年首次同时举行三场</td></tr><tr><td>提前期</td><td>Y-4 提前 4 年；Y-2 提前 2 年；Y-1 提前 1 年</td><td>交付年对应 2029-30、2027-28、2026-27</td></tr><tr><td>定价</td><td>单轮密封报价、按报价支付（pay-as-bid），设中间价格上限（IPC）</td><td>具体以 Elia/CRM 规则为准</td></tr><tr><td>合同年限</td><td>新建机组最长 15 年；存量 1 年</td><td>Y-4 新电池可拿 15 年</td></tr><tr><td>技术范围</td><td>技术中立，按降额容量付费</td><td>电池、燃气、需求响应同场竞争</td></tr><tr><td>义务</td><td>可用性义务</td><td>不可用要考核/扣减</td></tr><tr><td>费用</td><td>通过电网费率/容量费回收</td><td>用户侧分摊</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>比利时规则</th><th>备注</th></tr></thead><tbody><tr><td>拍卖类型</td><td>Y-4、Y-2、Y-1</td><td>2025 年首次同时举行三场</td></tr><tr><td>提前期</td><td>Y-4 提前 4 年；Y-2 提前 2 年；Y-1 提前 1 年</td><td>交付年对应 2029-30、2027-28、2026-27</td></tr><tr><td>定价</td><td>单轮密封报价、按报价支付（pay-as-bid），设中间价格上限（IPC）</td><td>具体以 Elia/CRM 规则为准</td></tr><tr><td>合同年限</td><td>新建机组最长 15 年；存量 1 年</td><td>Y-4 新电池可拿 15 年</td></tr><tr><td>技术范围</td><td>技术中立，按降额容量付费</td><td>电池、燃气、需求响应同场竞争</td></tr><tr><td>义务</td><td>可用性义务</td><td>不可用要考核/扣减</td></tr><tr><td>费用</td><td>通过电网费率/容量费回收</td><td>用户侧分摊</td></tr></tbody></table></div>
 <ul><li><strong>CRM 不是“容量市场价”：它是按报价支付</strong>：每个中标机组拿自己的报价（受 IPC 约束），不是统一出清价；报价策略与英国/波兰的统一价不同。</li><li><strong>Y-4 是新建的主战场</strong>：新建机组可以拿最长 15 年合同，银行更愿意融资；电池项目集中在 Y-4。</li><li><strong>Y-2 是新增的中间拍卖</strong>：2025 年首次举行，用于提前 2 年补缺口；合同期 1 年，适合可快速交付的容量。</li><li><strong>Y-1 是短期调整</strong>：提前 1 年，合同期 1 年；价格波动大，适合存量/需求响应，不是长期投资依据。</li></ul>
 <h3 id="s12">2.4 2025 年三场 CRM 结果（A 级，Elia 2025-10-30 公告）</h3>
-<div class="table-wrap"><table><thead><tr><th>拍卖</th><th>交付年</th><th>需求</th><th>中标</th><th>新增容量</th><th>价格</th><th>合同</th></tr></thead><tbody><tr><td>Y-4</td><td>2029-30</td><td>4,694 MW</td><td>4,690 MW</td><td>电池 179 MW（铭牌 525 MW）+ 翻新 25 MW</td><td>€27.3k/MW·年（A，Elia 2025-10-30）</td><td>新建最长 15 年</td></tr><tr><td>Y-2</td><td>2027-28</td><td>3,590 MW</td><td>3,238 MW</td><td>162 MW（含 60 MW 电池/123 MW 铭牌）</td><td>25,100 €/MW·年</td><td>1 年</td></tr><tr><td>Y-1</td><td>2026-27</td><td>4,555 MW</td><td>4,556 MW</td><td>171 MW</td><td>加权均价约 14,100 €/MW·年</td><td>1 年</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>拍卖</th><th>交付年</th><th>需求</th><th>中标</th><th>新增容量</th><th>价格</th><th>合同</th></tr></thead><tbody><tr><td>Y-4</td><td>2029-30</td><td>4,694 MW</td><td>4,690 MW</td><td>电池 179 MW（铭牌 525 MW）+ 翻新 25 MW</td><td>€27.3k/MW·年（A，Elia 2025-10-30）</td><td>新建最长 15 年</td></tr><tr><td>Y-2</td><td>2027-28</td><td>3,590 MW</td><td>3,238 MW</td><td>162 MW（含 60 MW 电池/123 MW 铭牌）</td><td>25,100 €/MW·年</td><td>1 年</td></tr><tr><td>Y-1</td><td>2026-27</td><td>4,555 MW</td><td>4,556 MW</td><td>171 MW</td><td>加权均价约 14,100 €/MW·年</td><td>1 年</td></tr></tbody></table></div>
 <ul><li><strong>Y-4 供应略高于需求</strong>：69 个机组投标 4,998 MW，65 个中标 4,690 MW；新增容量几乎全部来自电池，说明 CRM 对储能是有效工具。</li><li><strong>Y-2 供不应求</strong>：51 个机组仅提供 3,238 MW，低于 3,590 MW 需求，所有项目都中标；价格 25,100 €/MW·年。</li><li><strong>Y-1 价格低</strong>：加权均价约 14,100 €/MW·年，远低于 IPC；短期容量充足，价格回落。</li><li><strong>价格单位已澄清（2026-11-11 复核，A 级）</strong>：Elia 2025-10-30 公告写明 Y-4 价为 <strong>€27.3k/MW·年</strong>（27,300 €/MW·年 ≈ 2.73 万）；部分中文报道的“27.3 万”是单位错误，不是另一个口径。同轮 Y-2 为 €25.1k/MW·年（低于 IPC €28.6k），不要与 Y-4 混用。</li></ul>
 <h4 id="s13">2.4.1 CRM 拍卖日程（A 级，Elia CRM Auction Calendar）</h4>
 <aside class="note"><p>2026-11-11 复核：工单 #20「下一轮 CRM 时间」此前在模块内没有落日期，现已按 Elia 官方日历补齐。</p></aside>
-<div class="table-wrap"><table><thead><tr><th>拍卖</th><th>交付期</th><th>保存报价开门</th><th>提交报价开门</th><th>截标</th><th>结果公布</th></tr></thead><tbody><tr><td>2030 Y-4</td><td>2030-11-01 起</td><td>2026-09-01 09:00</td><td>2026-09-16 09:00</td><td>2026-09-30 17:00</td><td>2026-10-30（Elia 新闻稿）</td></tr><tr><td>2028 Y-2</td><td>2027-11-01 起</td><td>2026-09-01 09:00</td><td>2026-09-16 09:00</td><td>2026-09-30 17:00</td><td>同上</td></tr><tr><td>2027 Y-1</td><td>2026-11-01 起</td><td>2026-09-01 09:00</td><td>2026-09-16 09:00</td><td>2026-09-30 17:00</td><td>同上</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>拍卖</th><th>交付期</th><th>保存报价开门</th><th>提交报价开门</th><th>截标</th><th>结果公布</th></tr></thead><tbody><tr><td>2030 Y-4</td><td>2030-11-01 起</td><td>2026-09-01 09:00</td><td>2026-09-16 09:00</td><td>2026-09-30 17:00</td><td>2026-10-30（Elia 新闻稿）</td></tr><tr><td>2028 Y-2</td><td>2027-11-01 起</td><td>2026-09-01 09:00</td><td>2026-09-16 09:00</td><td>2026-09-30 17:00</td><td>同上</td></tr><tr><td>2027 Y-1</td><td>2026-11-01 起</td><td>2026-09-01 09:00</td><td>2026-09-16 09:00</td><td>2026-09-30 17:00</td><td>同上</td></tr></tbody></table></div>
 <ul><li><strong>年度节奏</strong>：每个交付期各有 Y-4 / Y-2 / Y-1 三场；每年 9 月 15–30 日投标、最迟 10 月 31 日公布结果（Elia《CRM Auction》规则页）。2027 年的三场（2031 Y-4 / 2029 Y-2 / 2028 Y-1）按此节奏应在 2027-09-30 截标，但<strong>官方日历尚未列出</strong>，不得当作确定日期。</li><li><strong>本表 2025 年三场结果对应的是 2026 年 9 月这三场</strong>（Y-4 交付 2029-30、Y-2 交付 2027-28、Y-1 交付 2026-27），不要与「2025 年举办的拍卖」混淆。</li></ul>
 <h3 id="s14">2.5 核电与战略储备</h3>
 <ul><li><strong>核电延寿</strong>：Doel 4 与 Tihange 3 延寿至 2035 年；2023-12 政府与 Engie 达成协议；2025-05 联邦法废止 2003 年退核法；欧盟委员会 2025 年批准相关国家援助（B/C 级）。</li><li><strong>核电对市场的影响</strong>：延寿降低了比利时中长期容量缺口，CRM 的需求曲线和价格会随之变化；不要把“2025 年退核”的旧假设继续用于 2026 年以后。</li><li><strong>战略储备</strong>：比利时另有战略储备（约 650 MW，2025/26，C 级单一来源），与 CRM 并行；战略储备的触发条件和补偿规则与 CRM 不同。</li><li><strong>天然气</strong>：CCGT 仍是容量市场的重要参与者；比利时 CRM 新增容量中燃气联合循环占相当比例（C 级）。</li></ul>
 <hr>
 <h2 id="s15">3. 北欧市场架构</h2>
 <h3 id="s16">3.1 12 个报价区</h3>
-<div class="table-wrap"><table><thead><tr><th>国家</th><th>报价区</th><th>特点</th></tr></thead><tbody><tr><td>挪威</td><td>NO1–NO5</td><td>水电为主；南北/东西价差大</td></tr><tr><td>瑞典</td><td>SE1–SE4</td><td>北部水电、南部负荷/核电；SE1–SE2 与 SE3–SE4 价差常见</td></tr><tr><td>丹麦</td><td>DK1、DK2</td><td>风电占比高；与德国/瑞典/挪威互联</td></tr><tr><td>芬兰</td><td>FI</td><td>核电 + 水电 + 风电；与瑞典/爱沙尼亚互联</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>国家</th><th>报价区</th><th>特点</th></tr></thead><tbody><tr><td>挪威</td><td>NO1–NO5</td><td>水电为主；南北/东西价差大</td></tr><tr><td>瑞典</td><td>SE1–SE4</td><td>北部水电、南部负荷/核电；SE1–SE2 与 SE3–SE4 价差常见</td></tr><tr><td>丹麦</td><td>DK1、DK2</td><td>风电占比高；与德国/瑞典/挪威互联</td></tr><tr><td>芬兰</td><td>FI</td><td>核电 + 水电 + 风电；与瑞典/爱沙尼亚互联</td></tr></tbody></table></div>
 <ul><li><strong>12 个报价区不是“12 个国家”</strong>：北欧四国分成 12 个报价区；价格由区内供需 + 跨区联络线约束决定。</li><li><strong>系统价 vs 分区价</strong>：Nord Pool 先形成系统价，再按联络线约束形成分区价；系统价是参考，不是项目结算价。</li><li><strong>水电主导</strong>：挪威约 90% 电力来自水电（C 级）；瑞典约 40% 水电 + 约 30% 核电；芬兰核电约 35%；丹麦风电约 50%+（C 级，年度会有波动）。</li><li><strong>报价区审查（瑞典，进程）</strong>：2026-05-29 瑞典政府扩大 Svenska kraftnät 的报价区分析授权，要求 2027-01-29 前提交结构性拥塞与最优分区报告；是否调整分区由政府决定，结果待核实（A 级：进程）。</li></ul>
 <p><strong>报价区审查：时间线与投决含义</strong></p>
-<div class="table-wrap"><table><thead><tr><th>节点</th><th>日期</th><th>状态</th><th>说明</th></tr></thead><tbody><tr><td>政府授权</td><td>2026-05-29</td><td>已完成（A）</td><td>扩大 Svenska kraftnät 的报价区分析授权；政策方向是减少报价区数量</td></tr><tr><td>报告提交</td><td>2027-01-29</td><td>待完成（A）</td><td>结构性拥塞与最优分区报告</td></tr><tr><td>政府决定</td><td>报告后</td><td>待定</td><td>是否调整、如何调整；当前 12 区继续适用</td></tr><tr><td>实施</td><td>未定</td><td>待定</td><td>程序与时间表未公布</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>节点</th><th>日期</th><th>状态</th><th>说明</th></tr></thead><tbody><tr><td>政府授权</td><td>2026-05-29</td><td>已完成（A）</td><td>扩大 Svenska kraftnät 的报价区分析授权；政策方向是减少报价区数量</td></tr><tr><td>报告提交</td><td>2027-01-29</td><td>待完成（A）</td><td>结构性拥塞与最优分区报告</td></tr><tr><td>政府决定</td><td>报告后</td><td>待定</td><td>是否调整、如何调整；当前 12 区继续适用</td></tr><tr><td>实施</td><td>未定</td><td>待定</td><td>程序与时间表未公布</td></tr></tbody></table></div>
 <ul><li><strong>报告不等于决定</strong>：2027-01-29 是分析报告期限，不是分区调整生效日；在政府决定前，按现有 12 个报价区建模。</li><li><strong>对分区价差</strong>：若相邻分区合并，相关分区价差与 EPAD 标的会变；存量 PPA 的分区指数、并网点与结算区要逐份核对。</li><li><strong>对 EPAD 对冲</strong>：EPAD 按分区价与系统价之差结算；分区结构变化会改变可用的对冲工具，长期合同要留重签或替代对冲条款。</li><li><strong>对选址</strong>：不要把“分区必然合并”作为选址或套利假设；对南部溢价项目同时做“维持现状”和“合并”两种敏感性。</li><li><strong>观察入口</strong>：Regeringen 新闻稿、Svenska kraftnät 报告、欧盟/ACER 后续程序；结果公布前不升级为既定事实。</li></ul>
 <h3 id="s17">3.2 日前与日内</h3>
-<div class="table-wrap"><table><thead><tr><th>项目</th><th>规则</th></tr></thead><tbody><tr><td>日前运营方</td><td>Nord Pool（NEMO）</td></tr><tr><td>关闸</td><td>12:00 CET</td></tr><tr><td>出清</td><td>SDAC 耦合；系统价 + 分区价</td></tr><tr><td>粒度</td><td>2025-10-01 起 15 分钟 MTU</td></tr><tr><td>日内</td><td>Nord Pool 日内 + SIDC 连续交易</td></tr><tr><td>金融</td><td>Nasdaq Commodities 期货/EPAD，现金结算</td></tr><tr><td>价格边界</td><td>按欧盟 SDAC/SIDC 规则</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>规则</th></tr></thead><tbody><tr><td>日前运营方</td><td>Nord Pool（NEMO）</td></tr><tr><td>关闸</td><td>12:00 CET</td></tr><tr><td>出清</td><td>SDAC 耦合；系统价 + 分区价</td></tr><tr><td>粒度</td><td>2025-10-01 起 15 分钟 MTU</td></tr><tr><td>日内</td><td>Nord Pool 日内 + SIDC 连续交易</td></tr><tr><td>金融</td><td>Nasdaq Commodities 期货/EPAD，现金结算</td></tr><tr><td>价格边界</td><td>按欧盟 SDAC/SIDC 规则</td></tr></tbody></table></div>
 <ul><li><strong>Nord Pool 覆盖 17 个市场</strong>：北欧 12 个报价区 + 爱沙尼亚、拉脱维亚、立陶宛、斯洛文尼亚等（A 级，Nord Pool 官网）；不要把 Nord Pool 等同于“北欧四国”。</li><li><strong>15 分钟 MTU 已上线</strong>：2025-10-01 起交付时段为 15 分钟；旧的“小时模型”会错算套利和偏差。</li><li><strong>EPAD 是分区价差的金融工具</strong>：EPAD（Electricity Price Area Differential）按分区价与系统价之差结算；项目可以用 EPAD 对冲分区价差，但不能替代物理 PPA。</li></ul>
 <h3 id="s18">3.3 平衡市场</h3>
-<div class="table-wrap"><table><thead><tr><th>品种</th><th>采购方</th><th>作用</th><th>结算</th></tr></thead><tbody><tr><td>FCR-N</td><td>各国 TSO</td><td>正常运行的频率控制</td><td>容量</td></tr><tr><td>FCR-D</td><td>各国 TSO</td><td>扰动后的频率控制（上/下）</td><td>容量</td></tr><tr><td>aFRR</td><td>各国 TSO</td><td>自动频率恢复</td><td>容量 + 能量</td></tr><tr><td>mFRR</td><td>各国 TSO</td><td>人工/自动调度恢复</td><td>容量 + 能量</td></tr><tr><td>mFRR EAM</td><td>四国 TSO 联合</td><td>mFRR 能量激活市场</td><td>15 分钟</td></tr><tr><td>偏差结算</td><td>各国 TSO</td><td>平衡责任主体偏差</td><td>15 分钟不平衡价</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>品种</th><th>采购方</th><th>作用</th><th>结算</th></tr></thead><tbody><tr><td>FCR-N</td><td>各国 TSO</td><td>正常运行的频率控制</td><td>容量</td></tr><tr><td>FCR-D</td><td>各国 TSO</td><td>扰动后的频率控制（上/下）</td><td>容量</td></tr><tr><td>aFRR</td><td>各国 TSO</td><td>自动频率恢复</td><td>容量 + 能量</td></tr><tr><td>mFRR</td><td>各国 TSO</td><td>人工/自动调度恢复</td><td>容量 + 能量</td></tr><tr><td>mFRR EAM</td><td>四国 TSO 联合</td><td>mFRR 能量激活市场</td><td>15 分钟</td></tr><tr><td>偏差结算</td><td>各国 TSO</td><td>平衡责任主体偏差</td><td>15 分钟不平衡价</td></tr></tbody></table></div>
 <ul><li><strong>2025-03-04 是分水岭</strong>：北欧四国 TSO 启动新的平衡市场，15 分钟结算替代小时制，mFRR 能量激活市场（EAM）上线（B 级）。</li><li><strong>不平衡价与现货价的脱钩</strong>：改革前不平衡价与日前价在约 33% 的小时相同，改革后降到约 3%；平衡成本从约 1 €/MWh 升到 5–6 €/MWh（B/C 级，Montel/ACER 口径）。</li><li><strong>PICASSO 接入不统一</strong>：丹麦 2024-10、芬兰 2025-03 接入 aFRR 能量平台；瑞典、挪威预计更晚（B 级）；跨境 aFRR 价格要看平台与本国规则。</li><li><strong>FCR-N/FCR-D 是北欧特色</strong>：FCR-N 用于正常运行，FCR-D 用于扰动；储能参与要满足响应时间、持续能力和 SOC 要求。</li></ul>
 <h3 id="s19">3.4 容量与战略储备</h3>
-<div class="table-wrap"><table><thead><tr><th>国家</th><th>机制</th><th>说明</th></tr></thead><tbody><tr><td>瑞典</td><td>effektreserv</td><td>冬季峰值容量储备；2025/26 目标 800 MW</td></tr><tr><td>芬兰</td><td>tehoreservi</td><td>容量储备，保障峰值供需</td></tr><tr><td>挪威</td><td>无全国容量市场</td><td>水电 + 互联 + 战略储备</td></tr><tr><td>丹麦</td><td>无全国容量市场</td><td>风电 + 互联 + 战略储备</td></tr><tr><td>北欧整体</td><td>能量-only + 储备</td><td>没有英国式 T-4/T-1 容量市场</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>国家</th><th>机制</th><th>说明</th></tr></thead><tbody><tr><td>瑞典</td><td>effektreserv</td><td>冬季峰值容量储备；2025/26 目标 800 MW</td></tr><tr><td>芬兰</td><td>tehoreservi</td><td>容量储备，保障峰值供需</td></tr><tr><td>挪威</td><td>无全国容量市场</td><td>水电 + 互联 + 战略储备</td></tr><tr><td>丹麦</td><td>无全国容量市场</td><td>风电 + 互联 + 战略储备</td></tr><tr><td>北欧整体</td><td>能量-only + 储备</td><td>没有英国式 T-4/T-1 容量市场</td></tr></tbody></table></div>
 <ul><li><strong>瑞典 effektreserv 2025/26 拍卖失败</strong>：2025-10-07 拍卖收到 3 个高于 SEK 120,000/MW 上限的报价，未成交；目标 800 MW，覆盖 2025-11-16 至 2026-03-15；新拍卖截止 2025-12-10，目标 2026-01-15 到位（B 级，SVT）。</li><li><strong>储备不是容量市场</strong>：effektreserv/tehoreservi 是峰值保障工具，规模小、期限短，不能给储能提供长期容量收入。</li><li><strong>挪威/丹麦没有容量费</strong>：储能收入靠价差、辅助服务和稀缺时段；merchant 风险高于比利时/英国/波兰。</li></ul>
 <hr>
 <h2 id="s20">4. 价格形成：水电、核电、风电与负价</h2>
@@ -171,66 +178,66 @@
 <p>北欧的边际机组大致按“水电（近零边际成本）→ 核电 → 风电/光伏 → 燃气/进口”排序，但实际出清受以下因素影响：</p>
 <ul><li><strong>水电水库</strong>：挪威/瑞典的水库水位、来水、季节决定水电的可调度性和边际成本；枯水期价格上升，丰水期价格下降。</li><li><strong>核电</strong>：瑞典/芬兰核电是基荷，检修/停运会影响价格；核电延寿/新建会改变长期供给。</li><li><strong>风电/光伏</strong>：丹麦风电、瑞典/芬兰风电和光伏压低净负荷；负价多出现在风光大发、出口受限时。</li><li><strong>互联</strong>：与德国、荷兰、英国、波兰、波罗的海的互联容量决定“外部边际机组”能否进入。</li><li><strong>分区约束</strong>：SE1–SE4、NO1–NO5 的价差由联络线约束和本地供需决定；不能用系统价替代分区价。</li></ul>
 <h3 id="s22">4.2 负电价的三个来源</h3>
-<div class="table-wrap"><table><thead><tr><th>来源</th><th>机制</th><th>对储能的含义</th></tr></thead><tbody><tr><td>风电大发</td><td>夜间/风暴时段净负荷低于最小出力</td><td>充电收益，但要注意并网/限充</td></tr><tr><td>水电/核电最小出力</td><td>水电环保流量、核电基荷无法快速下调</td><td>负价时段可能持续</td></tr><tr><td>跨区出口受限</td><td>互联/内部约束，过剩电力无法外送</td><td>本地储能/负荷价值上升</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>来源</th><th>机制</th><th>对储能的含义</th></tr></thead><tbody><tr><td>风电大发</td><td>夜间/风暴时段净负荷低于最小出力</td><td>充电收益，但要注意并网/限充</td></tr><tr><td>水电/核电最小出力</td><td>水电环保流量、核电基荷无法快速下调</td><td>负价时段可能持续</td></tr><tr><td>跨区出口受限</td><td>互联/内部约束，过剩电力无法外送</td><td>本地储能/负荷价值上升</td></tr></tbody></table></div>
 <ul><li><strong>负价小时数</strong>：2024 年芬兰约 8%、瑞典约 7% 的小时为负价；2025 年芬兰下降约 40%、瑞典下降约 30%（B 级，IEA）。</li><li><strong>负价下降的原因</strong>：flow-based 耦合、储能增长、价格响应需求；但负价仍会在风光大发时段出现，不能假设“负价会消失”。</li><li><strong>负价不是“必然充电”</strong>：还要看充电效率、并网容量、辅助服务机会成本和电网费；负价时充电可能影响 FCR/aFRR 的可用性。</li></ul>
 <h3 id="s23">4.3 分区价差与捕获率</h3>
 <ul><li><strong>分区价差是北欧储能的核心</strong>：SE1–SE2 与 SE3–SE4、NO1–NO5、DK1–DK2 之间的价差，来自水电/负荷/互联约束；储能选址要同时看“价格区”和“并网点”。</li><li><strong>系统价不是结算价</strong>：Nord Pool 系统价是参考价，项目按所在报价区结算；用系统价做回测会失真。</li><li><strong>捕获率下降</strong>：风电/光伏越多，捕获价越低；储能捕获的是价差，不是均价。</li><li><strong>水电的“免费电池”效应</strong>：挪威/瑞典水电本身是巨型储能，储能要与水电的灵活性竞争；在丰水期，储能的套利空间可能被压缩。</li></ul>
 <hr>
 <h2 id="s24">5. 结算与费用</h2>
 <h3 id="s25">5.1 比利时结算链路</h3>
-<div class="table-wrap"><table><thead><tr><th>环节</th><th>主体</th><th>内容</th></tr></thead><tbody><tr><td>日前/日内成交</td><td>Belpex/EPEX、SIDC</td><td>按 15 分钟出清价/成交价结算</td></tr><tr><td>不平衡结算</td><td>Elia</td><td>按不平衡价格结算偏差</td></tr><tr><td>辅助服务</td><td>Elia</td><td>容量/能量/考核</td></tr><tr><td>CRM</td><td>Elia</td><td>按容量义务与报价支付</td></tr><tr><td>电网费</td><td>Elia/区域 DSO</td><td>输电/配电费</td></tr><tr><td>税费</td><td>联邦/区域</td><td>能源税、增值税等</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>环节</th><th>主体</th><th>内容</th></tr></thead><tbody><tr><td>日前/日内成交</td><td>Belpex/EPEX、SIDC</td><td>按 15 分钟出清价/成交价结算</td></tr><tr><td>不平衡结算</td><td>Elia</td><td>按不平衡价格结算偏差</td></tr><tr><td>辅助服务</td><td>Elia</td><td>容量/能量/考核</td></tr><tr><td>CRM</td><td>Elia</td><td>按容量义务与报价支付</td></tr><tr><td>电网费</td><td>Elia/区域 DSO</td><td>输电/配电费</td></tr><tr><td>税费</td><td>联邦/区域</td><td>能源税、增值税等</td></tr></tbody></table></div>
 <ul><li><strong>CRM 支付与可用性挂钩</strong>：中标机组要按合同可用；不可用要考核/扣减。</li><li><strong>电网费与双重收费</strong>：比利时对储能的电网费/双重收费有减免安排（B/C 级，具体以 CREG/Elia 费率决定为准）；不要把“免双重收费”当成“全免电网费”。</li><li><strong>不平衡结算</strong>：偏差按 Elia 规则结算；储能可以通过日内/平衡市场修正偏差，但频繁调节会增加退化。</li></ul>
 <h3 id="s26">5.2 北欧结算链路</h3>
-<div class="table-wrap"><table><thead><tr><th>环节</th><th>主体</th><th>内容</th></tr></thead><tbody><tr><td>日前/日内成交</td><td>Nord Pool</td><td>按分区价/成交价结算</td></tr><tr><td>不平衡结算</td><td>各国 TSO</td><td>按 15 分钟不平衡价结算偏差</td></tr><tr><td>辅助服务</td><td>各国 TSO</td><td>容量/能量/考核</td></tr><tr><td>电网费</td><td>各国 TSO/DSO</td><td>输电/配电费</td></tr><tr><td>税费</td><td>各国税务</td><td>能源税、增值税等</td></tr><tr><td>金融合约</td><td>Nasdaq Commodities</td><td>期货/EPAD 现金结算</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>环节</th><th>主体</th><th>内容</th></tr></thead><tbody><tr><td>日前/日内成交</td><td>Nord Pool</td><td>按分区价/成交价结算</td></tr><tr><td>不平衡结算</td><td>各国 TSO</td><td>按 15 分钟不平衡价结算偏差</td></tr><tr><td>辅助服务</td><td>各国 TSO</td><td>容量/能量/考核</td></tr><tr><td>电网费</td><td>各国 TSO/DSO</td><td>输电/配电费</td></tr><tr><td>税费</td><td>各国税务</td><td>能源税、增值税等</td></tr><tr><td>金融合约</td><td>Nasdaq Commodities</td><td>期货/EPAD 现金结算</td></tr></tbody></table></div>
 <ul><li><strong>结算按报价区</strong>：项目按所在报价区结算，不是按系统价；跨境交易还要看互联容量和平衡责任。</li><li><strong>15 分钟不平衡结算</strong>：2025-03-04 起北欧不平衡结算改为 15 分钟；偏差成本上升，预测精度更重要。</li><li><strong>金融与实物分开</strong>：Nasdaq 的期货/EPAD 是现金结算，不交割电力；现货交割仍在 Nord Pool。</li></ul>
 <h3 id="s27">5.3 计量与数据</h3>
 <ul><li>15 分钟结算要求 15 分钟计量或可推算的负荷曲线；计量点、通信、数据校验要满足 TSO/DSO 要求。</li><li>储能需要单独计量充/放电量，否则无法准确计算效率、辅助服务可用性和电网费。</li><li>北欧的计量数据交换由各国 TSO/DSO 系统管理；跨境主体要确认数据接口和时区（CET/CEST）。</li></ul>
 <hr>
 <h2 id="s28">6. 容量机制：CRM 与储备</h2>
 <h3 id="s29">6.1 比利时 CRM 的设计要点</h3>
-<div class="table-wrap"><table><thead><tr><th>要点</th><th>内容</th><th>对储能的含义</th></tr></thead><tbody><tr><td>技术中立</td><td>电池、燃气、需求响应同场竞争</td><td>储能要与燃气/需求响应比报价</td></tr><tr><td>降额容量</td><td>按可用容量/降额因子付费</td><td>100 MW 铭牌可能只算部分容量</td></tr><tr><td>单轮密封</td><td>一次报价，按报价支付</td><td>报价过高会落选；报价过低会亏损</td></tr><tr><td>IPC</td><td>中间价格上限</td><td>防止价格过高；具体数值以规则为准</td></tr><tr><td>合同年限</td><td>新建最长 15 年；存量 1 年</td><td>新建立项靠多年合同融资</td></tr><tr><td>可用性义务</td><td>不可用要考核/扣减</td><td>SOC、并网、检修要满足合同</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>要点</th><th>内容</th><th>对储能的含义</th></tr></thead><tbody><tr><td>技术中立</td><td>电池、燃气、需求响应同场竞争</td><td>储能要与燃气/需求响应比报价</td></tr><tr><td>降额容量</td><td>按可用容量/降额因子付费</td><td>100 MW 铭牌可能只算部分容量</td></tr><tr><td>单轮密封</td><td>一次报价，按报价支付</td><td>报价过高会落选；报价过低会亏损</td></tr><tr><td>IPC</td><td>中间价格上限</td><td>防止价格过高；具体数值以规则为准</td></tr><tr><td>合同年限</td><td>新建最长 15 年；存量 1 年</td><td>新建立项靠多年合同融资</td></tr><tr><td>可用性义务</td><td>不可用要考核/扣减</td><td>SOC、并网、检修要满足合同</td></tr></tbody></table></div>
 <ul><li><strong>CRM 收入是“年金”</strong>：多年合同可以提供稳定现金流，但降额、考核和价格上限会降低实际收入。</li><li><strong>CRM 不是“暴利”</strong>：行业分析认为 CRM 收入通常只占 4 小时电池全生命周期收入的很小一部分；储能还要靠能量套利、辅助服务和容量市场的组合（C 级）。</li><li><strong>新增容量由电池主导</strong>：2025 年 Y-4 新增容量几乎全部来自电池；但电池的降额容量远低于铭牌容量，不能按铭牌算收入。</li></ul>
 <h3 id="s30">6.2 北欧储备机制</h3>
-<div class="table-wrap"><table><thead><tr><th>机制</th><th>国家</th><th>规模/期限</th><th>对储能的意义</th></tr></thead><tbody><tr><td>effektreserv</td><td>瑞典</td><td>2025/26 目标 800 MW；冬季峰值</td><td>短期容量收入，非长期年金</td></tr><tr><td>tehoreservi</td><td>芬兰</td><td>容量储备；按法规采购</td><td>短期保障，非容量市场</td></tr><tr><td>战略储备</td><td>挪威/丹麦</td><td>按需</td><td>规模小、规则各异</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>机制</th><th>国家</th><th>规模/期限</th><th>对储能的意义</th></tr></thead><tbody><tr><td>effektreserv</td><td>瑞典</td><td>2025/26 目标 800 MW；冬季峰值</td><td>短期容量收入，非长期年金</td></tr><tr><td>tehoreservi</td><td>芬兰</td><td>容量储备；按法规采购</td><td>短期保障，非容量市场</td></tr><tr><td>战略储备</td><td>挪威/丹麦</td><td>按需</td><td>规模小、规则各异</td></tr></tbody></table></div>
 <ul><li><strong>储备不是容量市场</strong>：规模小、期限短、触发条件严格；不能给储能提供 15 年期的稳定收入。</li><li><strong>瑞典 effektreserv 拍卖失败</strong>：2025-10-07 拍卖因报价高于上限未成交；说明储备价格上限与市场预期有差距，储能不能假设“报了就能中”。</li><li><strong>北欧储能靠能量+辅助</strong>：没有容量费兜底，储能投决要按“能量-only + 辅助服务”做基准情景。</li></ul>
 <hr>
 <h2 id="s31">7. 平衡与辅助服务</h2>
 <h3 id="s32">7.1 比利时辅助服务</h3>
 <ul><li><strong>FCR/aFRR/mFRR</strong>：Elia 采购；aFRR 已接入 PICASSO（2024 年，B 级）；mFRR 可能通过 MARI 跨境交换（以 Elia 公告为准）。</li><li><strong>预审</strong>：通信、控制、计量、响应时间要通过 Elia 测试；没有预审资格，报价无效。</li><li><strong>机会成本</strong>：预留容量不能同时满额放电；储能要做“能量 + 备用”的联合优化。</li><li><strong>收入衰减</strong>：储能多了，辅助服务价格会回落；不要用当前高价外推 15 年。</li></ul>
 <h3 id="s33">7.2 北欧辅助服务</h3>
-<div class="table-wrap"><table><thead><tr><th>品种</th><th>特点</th><th>对储能的要求</th></tr></thead><tbody><tr><td>FCR-N</td><td>正常运行频率控制；对称</td><td>快速响应、持续能力、SOC</td></tr><tr><td>FCR-D</td><td>扰动后频率控制；上/下分开</td><td>快速响应、持续时间</td></tr><tr><td>aFRR</td><td>自动频率恢复；容量+能量</td><td>预审、通信、SOC</td></tr><tr><td>mFRR</td><td>人工/自动调度恢复；容量+能量</td><td>可调度容量、爬坡能力</td></tr><tr><td>mFRR EAM</td><td>15 分钟能量激活市场</td><td>报价、自动化、结算</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>品种</th><th>特点</th><th>对储能的要求</th></tr></thead><tbody><tr><td>FCR-N</td><td>正常运行频率控制；对称</td><td>快速响应、持续能力、SOC</td></tr><tr><td>FCR-D</td><td>扰动后频率控制；上/下分开</td><td>快速响应、持续时间</td></tr><tr><td>aFRR</td><td>自动频率恢复；容量+能量</td><td>预审、通信、SOC</td></tr><tr><td>mFRR</td><td>人工/自动调度恢复；容量+能量</td><td>可调度容量、爬坡能力</td></tr><tr><td>mFRR EAM</td><td>15 分钟能量激活市场</td><td>报价、自动化、结算</td></tr></tbody></table></div>
 <ul><li><strong>FCR-N/FCR-D 是北欧储能的重要收入</strong>：但市场规模有限，储能渗透率上升后价格会下降。</li><li><strong>mFRR EAM 改变平衡逻辑</strong>：15 分钟结算 + 自动化采购，不平衡价与现货价脱钩；储能要重新做报价和 SOC 优化。</li><li><strong>PICASSO 接入不统一</strong>：丹麦/芬兰已接入，瑞典/挪威较晚；跨境 aFRR 参与要看本国 TSO 规则。</li></ul>
 <h3 id="s34">7.3 平衡责任与聚合</h3>
 <ul><li>发电、售电、储能、聚合商都可以成为平衡责任主体（BRP）或委托 BRP。</li><li>偏差按 15 分钟不平衡价结算；预测误差越大，偏差成本越高。</li><li>储能可以通过日内/平衡市场修正偏差，但频繁调节会增加退化与效率损失。</li><li><strong>聚合商</strong>：可以把分布式储能、可调负荷聚合为平衡服务提供者；但计量、通信、基线、考核要满足 TSO 规则。</li></ul>
 <hr>
 <h2 id="s35">8. 可再生支持与并网</h2>
 <h3 id="s36">8.1 比利时海上风电</h3>
-<div class="table-wrap"><table><thead><tr><th>项目</th><th>内容</th><th>级别</th></tr></thead><tbody><tr><td>在运海上风电</td><td>约 2.26 GW</td><td>C</td></tr><tr><td>2030 目标</td><td>约 5.8 GW（含 Princess Elisabeth 区 3.5 GW）</td><td>C</td></tr><tr><td>2040 目标</td><td>约 8 GW</td><td>C</td></tr><tr><td>Princess Elisabeth 区</td><td>3.5 GW（700 MW + 2×1.4 GW）</td><td>C/B</td></tr><tr><td>招标</td><td>PEZ1 2024-11 启动，2025-07 延迟，2026 年重启</td><td>C</td></tr><tr><td>支持机制</td><td>双向 CfD；具体执行价/上限以招标文件为准</td><td>B/C</td></tr><tr><td>供应链条件</td><td>报道提到对中国风机的限制（具体比例/范围以官方文件为准）</td><td>C</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>内容</th><th>级别</th></tr></thead><tbody><tr><td>在运海上风电</td><td>约 2.26 GW</td><td>C</td></tr><tr><td>2030 目标</td><td>约 5.8 GW（含 Princess Elisabeth 区 3.5 GW）</td><td>C</td></tr><tr><td>2040 目标</td><td>约 8 GW</td><td>C</td></tr><tr><td>Princess Elisabeth 区</td><td>3.5 GW（700 MW + 2×1.4 GW）</td><td>C/B</td></tr><tr><td>招标</td><td>PEZ1 2024-11 启动，2025-07 延迟，2026 年重启</td><td>C</td></tr><tr><td>支持机制</td><td>双向 CfD；具体执行价/上限以招标文件为准</td><td>B/C</td></tr><tr><td>供应链条件</td><td>报道提到对中国风机的限制（具体比例/范围以官方文件为准）</td><td>C</td></tr></tbody></table></div>
 <ul><li><strong>海上风电是比利时可再生增量的主力</strong>：Princess Elisabeth 能源岛和 3.5 GW 招标区是核心；并网、许可、供应链是瓶颈。</li><li><strong>CfD 是双向的</strong>：市场价高于执行价时要返还；不要把 CfD 当成固定电价。</li><li><strong>供应链限制</strong>：比利时海上风电招标对中国风机有约束（C 级）；中国设备商进入比利时海上风电要提前评估资格风险。</li><li><strong>核电延寿</strong>：核电延寿降低了海上风电的“替代紧迫性”，但 2030/2040 目标仍在；政策会随政府更迭调整。</li></ul>
 <h3 id="s37">8.2 北欧可再生支持</h3>
-<div class="table-wrap"><table><thead><tr><th>国家</th><th>机制</th><th>说明</th></tr></thead><tbody><tr><td>瑞典</td><td>绿证/拍卖、核电支持</td><td>绿证市场；核电延寿/新建国家援助</td></tr><tr><td>挪威</td><td>绿证（与瑞典共同市场）</td><td>水电为主；风电/光伏支持</td></tr><tr><td>丹麦</td><td>海上风电招标/CfD</td><td>2024-12 3 GW 招标零报价；2025-11 重启 2.8 GW</td></tr><tr><td>芬兰</td><td>拍卖/补贴、核电</td><td>核电 + 风电；tehoreservi</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>国家</th><th>机制</th><th>说明</th></tr></thead><tbody><tr><td>瑞典</td><td>绿证/拍卖、核电支持</td><td>绿证市场；核电延寿/新建国家援助</td></tr><tr><td>挪威</td><td>绿证（与瑞典共同市场）</td><td>水电为主；风电/光伏支持</td></tr><tr><td>丹麦</td><td>海上风电招标/CfD</td><td>2024-12 3 GW 招标零报价；2025-11 重启 2.8 GW</td></tr><tr><td>芬兰</td><td>拍卖/补贴、核电</td><td>核电 + 风电；tehoreservi</td></tr></tbody></table></div>
 <ul><li><strong>丹麦海上风电招标波折</strong>：2024-12 3 GW 招标零报价；2025-11 重启 2.8 GW；2026-08 Vattenfall 中标 Nordsøen Midt 1 GW（504 DKK/MWh）和 Hesselø 800 MW（542 DKK/MWh），20 年 CfD，2032 年 COD；Nordsøen Syd 1 GW 投标截止 2028-10（C/B 级）。</li><li><strong>丹麦核电</strong>：2025-05 只是“考虑解除 1985 年核电禁令”并做 SMR 分析；截至 2026-11 没有废止立法（B/C 级）；不要把“考虑”写成“已解除”。</li><li><strong>瑞典核电</strong>：2025-05 议会通过国家援助法，2025-08-01 生效；为国家贷款支持约 4 台大型机组（约 5,000 MWe）和双向 CfD 提供框架；2035 年目标 2,500 MW；2026 年预算设 SEK 220 bn 贷款框架 + 每年 SEK 1–3 bn 用于 40 年 PPA（B/C 级）。</li><li><strong>挪威水电</strong>：水电是主力，也是“天然储能”；风电/光伏增量有限，储能更多用于平衡和辅助服务。</li></ul>
 <h3 id="s38">8.3 并网流程</h3>
-<div class="table-wrap"><table><thead><tr><th>步骤</th><th>比利时</th><th>北欧</th></tr></thead><tbody><tr><td>1. 接入申请</td><td>Elia/区域 DSO</td><td>各国 TSO/DSO</td></tr><tr><td>2. 许可/环评</td><td>联邦/区域许可</td><td>各国许可/环评</td></tr><tr><td>3. 并网协议</td><td>技术条件、保护、通信、计量</td><td>技术条件、保护、通信、计量</td></tr><tr><td>4. 建设/调试</td><td>设备、测试、验收</td><td>设备、测试、验收</td></tr><tr><td>5. 市场注册</td><td>Belpex/Elia/BRP</td><td>Nord Pool/TSO/BRP</td></tr><tr><td>6. 投运</td><td>计量、结算、考核</td><td>计量、结算、考核</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>步骤</th><th>比利时</th><th>北欧</th></tr></thead><tbody><tr><td>1. 接入申请</td><td>Elia/区域 DSO</td><td>各国 TSO/DSO</td></tr><tr><td>2. 许可/环评</td><td>联邦/区域许可</td><td>各国许可/环评</td></tr><tr><td>3. 并网协议</td><td>技术条件、保护、通信、计量</td><td>技术条件、保护、通信、计量</td></tr><tr><td>4. 建设/调试</td><td>设备、测试、验收</td><td>设备、测试、验收</td></tr><tr><td>5. 市场注册</td><td>Belpex/Elia/BRP</td><td>Nord Pool/TSO/BRP</td></tr><tr><td>6. 投运</td><td>计量、结算、考核</td><td>计量、结算、考核</td></tr></tbody></table></div>
 <ul><li><strong>并网是硬约束</strong>：比利时海上风电并网、北欧水电/风电富集区的输电约束都会影响项目；价格信号再好，没有接入容量也拿不到收益。</li><li><strong>共址/混合项目</strong>：风电+储能、光伏+储能可以共享并网点，但计量、容量分配、并网条件和市场资格要分别处理。</li><li><strong>北极圈/偏远地区</strong>：北欧北部风电资源好，但输电容量和负荷较低；储能选址要把“资源节点”和“负荷/价格节点”一起看。</li></ul>
 <hr>
 <h2 id="s39">9. 储能与灵活性</h2>
 <h3 id="s40">9.1 比利时储能</h3>
-<div class="table-wrap"><table><thead><tr><th>指标</th><th>数值</th><th>级别/时点</th></tr></thead><tbody><tr><td>2024 年新增储能</td><td>约 491 MWh</td><td>C，LCP 口径</td></tr><tr><td>CRM 累计新电池合同</td><td>约 1.6 GW</td><td>C，Aurora 口径</td></tr><tr><td>2030 年电池储能</td><td>约 3.6 GW</td><td>C</td></tr><tr><td>Y-4 2029-30 新增电池</td><td>179 MW（铭牌 525 MW）</td><td>C</td></tr><tr><td>主要开发商</td><td>Engie、Storm、GIGA Storage 等</td><td>C</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>数值</th><th>级别/时点</th></tr></thead><tbody><tr><td>2024 年新增储能</td><td>约 491 MWh</td><td>C，LCP 口径</td></tr><tr><td>CRM 累计新电池合同</td><td>约 1.6 GW</td><td>C，Aurora 口径</td></tr><tr><td>2030 年电池储能</td><td>约 3.6 GW</td><td>C</td></tr><tr><td>Y-4 2029-30 新增电池</td><td>179 MW（铭牌 525 MW）</td><td>C</td></tr><tr><td>主要开发商</td><td>Engie、Storm、GIGA Storage 等</td><td>C</td></tr></tbody></table></div>
 <ul><li><strong>CRM 是比利时储能的第一推动力</strong>：2021 年以来多轮 CRM 已给约 1.6 GW 新电池合同；Y-4 的 15 年合同是融资关键。</li><li><strong>4 小时配置为主</strong>：比利时项目多为 4 小时时长；CRM 降额、能量套利和辅助服务共同决定收益。</li><li><strong>电网费减免</strong>：比利时对储能的电网费/双重收费有减免安排（B/C）；具体费率和条件以 CREG/Elia 决定为准。</li><li><strong>海上风电+储能</strong>：Princess Elisabeth 区可能配套储能/灵活性；但海上风电并网和储能并网是两套流程。</li></ul>
 <h3 id="s41">9.2 北欧储能</h3>
-<div class="table-wrap"><table><thead><tr><th>指标</th><th>数值</th><th>级别/时点</th></tr></thead><tbody><tr><td>2025 年瑞典+芬兰新增</td><td>超过 1 GWh</td><td>C</td></tr><tr><td>2030 年北欧储能</td><td>超过 4 GW/10 GWh</td><td>C，BNEF 口径</td></tr><tr><td>芬兰+DK2+瑞典 pipeline</td><td>约 5.1 GW</td><td>C</td></tr><tr><td>主要驱动</td><td>负价、辅助服务、数据中心/电气化</td><td>B/C</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>数值</th><th>级别/时点</th></tr></thead><tbody><tr><td>2025 年瑞典+芬兰新增</td><td>超过 1 GWh</td><td>C</td></tr><tr><td>2030 年北欧储能</td><td>超过 4 GW/10 GWh</td><td>C，BNEF 口径</td></tr><tr><td>芬兰+DK2+瑞典 pipeline</td><td>约 5.1 GW</td><td>C</td></tr><tr><td>主要驱动</td><td>负价、辅助服务、数据中心/电气化</td><td>B/C</td></tr></tbody></table></div>
 <ul><li><strong>北欧储能基数小、增长快</strong>：2025 年瑞典+芬兰新增超过 1 GWh；BNEF 预计 2030 年北欧超过 4 GW/10 GWh（C 级）。</li><li><strong>收入结构</strong>：能量套利 + FCR-N/FCR-D + aFRR/mFRR + 稀缺时段；没有容量费兜底。</li><li><strong>水电竞争</strong>：挪威/瑞典水电是“天然储能”，储能的套利空间在丰水期可能被压缩；选址要靠近负荷/约束节点。</li><li><strong>数据中心/电气化</strong>：瑞典/芬兰的数据中心、交通电气化推高负荷增长；储能可以参与容量/辅助服务，但需要并网和许可。</li></ul>
 <h3 id="s42">9.3 收益堆叠</h3>
-<div class="table-wrap"><table><thead><tr><th>收入</th><th>比利时</th><th>北欧</th></tr></thead><tbody><tr><td>容量市场</td><td>CRM（多年合同）</td><td>无；仅有小型储备</td></tr><tr><td>能量套利</td><td>日前/日内/平衡</td><td>分区价差 + 日前/日内/平衡</td></tr><tr><td>FCR</td><td>Elia</td><td>FCR-N/FCR-D</td></tr><tr><td>aFRR/mFRR</td><td>Elia/PICASSO</td><td>各国 TSO/PICASSO/EAM</td></tr><tr><td>电网费减免</td><td>有（B/C）</td><td>各国不同</td></tr><tr><td>PPA/tolling</td><td>有</td><td>有</td></tr><tr><td>补贴</td><td>海上风电 CfD（不直接给储能）</td><td>绿证/拍卖（不直接给储能）</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>收入</th><th>比利时</th><th>北欧</th></tr></thead><tbody><tr><td>容量市场</td><td>CRM（多年合同）</td><td>无；仅有小型储备</td></tr><tr><td>能量套利</td><td>日前/日内/平衡</td><td>分区价差 + 日前/日内/平衡</td></tr><tr><td>FCR</td><td>Elia</td><td>FCR-N/FCR-D</td></tr><tr><td>aFRR/mFRR</td><td>Elia/PICASSO</td><td>各国 TSO/PICASSO/EAM</td></tr><tr><td>电网费减免</td><td>有（B/C）</td><td>各国不同</td></tr><tr><td>PPA/tolling</td><td>有</td><td>有</td></tr><tr><td>补贴</td><td>海上风电 CfD（不直接给储能）</td><td>绿证/拍卖（不直接给储能）</td></tr></tbody></table></div>
 <ul><li><strong>比利时靠 CRM 年金</strong>：多年合同降低 merchant 风险，但降额/考核/价格上限会降低收入。</li><li><strong>北欧靠价差+辅助</strong>：merchant 风险高，但分区价差和负价提供套利机会；储能要与水电/互联竞争。</li><li><strong>不要直接套算例</strong>：两地的价格、费用、结算周期、合同条款都不同；跨境项目要按当地规则重建模型。</li></ul>
 <hr>
 <h2 id="s43">10. 中国主体进入路径</h2>
 <h3 id="s44">10.1 比利时</h3>
-<div class="table-wrap"><table><thead><tr><th>步骤</th><th>内容</th><th>备注</th></tr></thead><tbody><tr><td>1. 设立主体</td><td>比利时公司/分支机构</td><td>税务、银行、合同签署</td></tr><tr><td>2. 并网/接入</td><td>Elia/区域 DSO</td><td>容量、许可、并网协议</td></tr><tr><td>3. 市场注册</td><td>Belpex/EPEX、Elia BRP</td><td>日前/日内、平衡责任</td></tr><tr><td>4. CRM 资格</td><td>Elia 预审/注册</td><td>降额、可用性义务</td></tr><tr><td>5. 辅助服务预审</td><td>Elia 技术测试</td><td>通信、控制、计量</td></tr><tr><td>6. 担保/信用</td><td>Elia/清算要求</td><td>银行担保/现金</td></tr><tr><td>7. REMIT 报送</td><td>欧盟 REMIT</td><td>交易与基本面信息</td></tr><tr><td>8. 运营</td><td>交易、计量、结算、合规</td><td>本地团队/合作伙伴</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>步骤</th><th>内容</th><th>备注</th></tr></thead><tbody><tr><td>1. 设立主体</td><td>比利时公司/分支机构</td><td>税务、银行、合同签署</td></tr><tr><td>2. 并网/接入</td><td>Elia/区域 DSO</td><td>容量、许可、并网协议</td></tr><tr><td>3. 市场注册</td><td>Belpex/EPEX、Elia BRP</td><td>日前/日内、平衡责任</td></tr><tr><td>4. CRM 资格</td><td>Elia 预审/注册</td><td>降额、可用性义务</td></tr><tr><td>5. 辅助服务预审</td><td>Elia 技术测试</td><td>通信、控制、计量</td></tr><tr><td>6. 担保/信用</td><td>Elia/清算要求</td><td>银行担保/现金</td></tr><tr><td>7. REMIT 报送</td><td>欧盟 REMIT</td><td>交易与基本面信息</td></tr><tr><td>8. 运营</td><td>交易、计量、结算、合规</td><td>本地团队/合作伙伴</td></tr></tbody></table></div>
 <ul><li><strong>CRM 资格是额外门槛</strong>：不是注册了市场就能参加 CRM；要满足 Elia 的资格、降额、可用性和担保要求。</li><li><strong>外资审查</strong>：比利时对能源等战略行业有外资审查/ cooperation mechanism（B 级）；交易结构可能触发申报，按交易结构判断。</li><li><strong>供应链限制</strong>：海上风电招标对中国风机有约束（C 级）；储能设备/光伏组件的非价格标准也可能影响资格。</li></ul>
 <h3 id="s45">10.2 北欧</h3>
-<div class="table-wrap"><table><thead><tr><th>步骤</th><th>内容</th><th>备注</th></tr></thead><tbody><tr><td>1. 设立主体</td><td>瑞典/挪威/丹麦/芬兰公司或分支机构</td><td>税务、银行、合同签署</td></tr><tr><td>2. 并网/接入</td><td>各国 TSO/DSO</td><td>容量、许可、并网协议</td></tr><tr><td>3. 市场注册</td><td>Nord Pool 会员/参与者</td><td>日前/日内交易资格</td></tr><tr><td>4. 平衡责任</td><td>各国 TSO 注册 BRP 或委托 BRP</td><td>偏差结算</td></tr><tr><td>5. 辅助服务预审</td><td>各国 TSO 技术测试</td><td>通信、控制、计量</td></tr><tr><td>6. 担保/信用</td><td>Nord Pool/TSO 要求</td><td>银行担保/现金</td></tr><tr><td>7. REMIT 报送</td><td>欧盟/挪威 REMIT</td><td>交易与基本面信息</td></tr><tr><td>8. 运营</td><td>交易、计量、结算、合规</td><td>本地团队/合作伙伴</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>步骤</th><th>内容</th><th>备注</th></tr></thead><tbody><tr><td>1. 设立主体</td><td>瑞典/挪威/丹麦/芬兰公司或分支机构</td><td>税务、银行、合同签署</td></tr><tr><td>2. 并网/接入</td><td>各国 TSO/DSO</td><td>容量、许可、并网协议</td></tr><tr><td>3. 市场注册</td><td>Nord Pool 会员/参与者</td><td>日前/日内交易资格</td></tr><tr><td>4. 平衡责任</td><td>各国 TSO 注册 BRP 或委托 BRP</td><td>偏差结算</td></tr><tr><td>5. 辅助服务预审</td><td>各国 TSO 技术测试</td><td>通信、控制、计量</td></tr><tr><td>6. 担保/信用</td><td>Nord Pool/TSO 要求</td><td>银行担保/现金</td></tr><tr><td>7. REMIT 报送</td><td>欧盟/挪威 REMIT</td><td>交易与基本面信息</td></tr><tr><td>8. 运营</td><td>交易、计量、结算、合规</td><td>本地团队/合作伙伴</td></tr></tbody></table></div>
 <ul><li><strong>四国规则不同</strong>：瑞典/挪威/丹麦/芬兰的许可、平衡责任、辅助服务预审、税率都不同；不能用一套注册走四国。</li><li><strong>Nord Pool 会员不是平衡责任</strong>：注册 Nord Pool 只解决交易资格；平衡责任要向各国 TSO 注册或委托 BRP。</li><li><strong>外资审查</strong>：北欧四国对能源等战略行业有外资审查（B 级）；交易结构可能触发申报。</li><li><strong>本地合作伙伴</strong>：跨境主体可以通过收购项目、与本地开发商合资、委托 BRP/交易代理进入；纯财务投资不一定要自己注册。</li></ul>
 <h3 id="s46">10.3 资金与合规</h3>
 <ul><li><strong>担保</strong>：Nord Pool/Elia/TSO 会要求银行担保或现金覆盖；跨境主体要提前安排。</li><li><strong>并网保证金</strong>：部分接入/许可流程要求保证金，退出可能损失。</li><li><strong>REMIT</strong>：欧盟交易与基本面信息报送；挪威作为 EEA 国家适用 REMIT；跨境交易、关联交易要注意。</li><li><strong>市场滥用</strong>：报价、容量预留、信息披露都要合规。</li><li><strong>税务</strong>：企业所得税、增值税、能源税；跨境结构提前设计。</li><li><strong>汇率</strong>：瑞典克朗、挪威克朗、丹麦克朗、欧元；汇率波动会影响收益，不要用单一币种做长期模型。</li></ul>
@@ -266,30 +273,46 @@
 <hr>
 <h2 id="s54">14. 官方来源与口径</h2>
 <aside class="note"><p>以下链接在 2026-11 做过可达性检查；规则/数据以官网最新版本为准。无法稳定访问的页面在表中注明。</p></aside>
-<div class="table-wrap"><table><thead><tr><th>来源</th><th>用途</th><th>级别</th><th>链接状态</th></tr></thead><tbody><tr><td>Elia · 官网</td><td>平衡、辅助服务、CRM</td><td>A/B</td><td><code>elia.be</code>（自动访问返回 403）</td></tr><tr><td>CREG · 官网</td><td>费率、市场监督</td><td>A</td><td><a href="https://www.creg.be/" target="_blank" rel="noopener">https://www.creg.be/</a></td></tr><tr><td>Nord Pool · 报价区</td><td>12 个北欧报价区</td><td>A</td><td><a href="https://www.nordpoolgroup.com/en/the-power-market/Bidding-areas/" target="_blank" rel="noopener">https://www.nordpoolgroup.com/en/the-power-market/Bidding-areas/</a></td></tr><tr><td>Nord Pool · 官网</td><td>日前/日内、市场范围</td><td>A</td><td><a href="https://www.nordpoolgroup.com/" target="_blank" rel="noopener">https://www.nordpoolgroup.com/</a></td></tr><tr><td>Statnett · 官网</td><td>挪威 TSO</td><td>A</td><td><a href="https://www.statnett.no/" target="_blank" rel="noopener">https://www.statnett.no/</a></td></tr><tr><td>Svenska kraftnät · 官网</td><td>瑞典 TSO/effektreserv</td><td>A</td><td><a href="https://www.svk.se/" target="_blank" rel="noopener">https://www.svk.se/</a></td></tr><tr><td>Energinet · 官网</td><td>丹麦 TSO</td><td>A</td><td><a href="https://www.energinet.dk/" target="_blank" rel="noopener">https://www.energinet.dk/</a></td></tr><tr><td>Fingrid · 官网</td><td>芬兰 TSO</td><td>A</td><td><a href="https://www.fingrid.fi/" target="_blank" rel="noopener">https://www.fingrid.fi/</a></td></tr><tr><td>IEA · Electricity 2026 · Prices</td><td>负价小时占比</td><td>B</td><td><a href="https://www.iea.org/reports/electricity-2026/prices" target="_blank" rel="noopener">https://www.iea.org/reports/electricity-2026/prices</a></td></tr><tr><td>SVT · effektreserv</td><td>2025/26 拍卖失败</td><td>B</td><td><a href="https://www.svt.se/nyheter/inrikes/efter-floppen-svenska-kraftnat-elreserv-pa-plats-i-januari" target="_blank" rel="noopener">https://www.svt.se/nyheter/inrikes/efter-floppen-svenska-kraftnat-elreserv-pa-plats-i-januari</a></td></tr><tr><td>比利时 CRM 结果</td><td>Y-4/Y-2/Y-1</td><td>C</td><td>媒体转引，Elia 原文 403</td></tr><tr><td>北欧平衡改革</td><td>15 分钟/mFRR EAM</td><td>B/C</td><td>Montel/ACER 转引</td></tr><tr><td>丹麦海上风电</td><td>招标结果</td><td>C/B</td><td>媒体转引，官方招标文件未逐页核验</td></tr><tr><td>瑞典核电</td><td>国家援助/贷款框架</td><td>B/C</td><td>媒体转引，政府文件未逐页核验</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>来源</th><th>用途</th><th>级别</th><th>链接状态</th></tr></thead><tbody><tr><td>Elia · 官网</td><td>平衡、辅助服务、CRM</td><td>A/B</td><td><code>elia.be</code>（自动访问返回 403）</td></tr><tr><td>CREG · 官网</td><td>费率、市场监督</td><td>A</td><td><a href="https://www.creg.be/" target="_blank" rel="noopener">https://www.creg.be/</a></td></tr><tr><td>Nord Pool · 报价区</td><td>12 个北欧报价区</td><td>A</td><td><a href="https://www.nordpoolgroup.com/en/the-power-market/Bidding-areas/" target="_blank" rel="noopener">https://www.nordpoolgroup.com/en/the-power-market/Bidding-areas/</a></td></tr><tr><td>Nord Pool · 官网</td><td>日前/日内、市场范围</td><td>A</td><td><a href="https://www.nordpoolgroup.com/" target="_blank" rel="noopener">https://www.nordpoolgroup.com/</a></td></tr><tr><td>Statnett · 官网</td><td>挪威 TSO</td><td>A</td><td><a href="https://www.statnett.no/" target="_blank" rel="noopener">https://www.statnett.no/</a></td></tr><tr><td>Svenska kraftnät · 官网</td><td>瑞典 TSO/effektreserv</td><td>A</td><td><a href="https://www.svk.se/" target="_blank" rel="noopener">https://www.svk.se/</a></td></tr><tr><td>Energinet · 官网</td><td>丹麦 TSO</td><td>A</td><td><a href="https://www.energinet.dk/" target="_blank" rel="noopener">https://www.energinet.dk/</a></td></tr><tr><td>Fingrid · 官网</td><td>芬兰 TSO</td><td>A</td><td><a href="https://www.fingrid.fi/" target="_blank" rel="noopener">https://www.fingrid.fi/</a></td></tr><tr><td>IEA · Electricity 2026 · Prices</td><td>负价小时占比</td><td>B</td><td><a href="https://www.iea.org/reports/electricity-2026/prices" target="_blank" rel="noopener">https://www.iea.org/reports/electricity-2026/prices</a></td></tr><tr><td>SVT · effektreserv</td><td>2025/26 拍卖失败</td><td>B</td><td><a href="https://www.svt.se/nyheter/inrikes/efter-floppen-svenska-kraftnat-elreserv-pa-plats-i-januari" target="_blank" rel="noopener">https://www.svt.se/nyheter/inrikes/efter-floppen-svenska-kraftnat-elreserv-pa-plats-i-januari</a></td></tr><tr><td>比利时 CRM 结果</td><td>Y-4/Y-2/Y-1</td><td>C</td><td>媒体转引，Elia 原文 403</td></tr><tr><td>北欧平衡改革</td><td>15 分钟/mFRR EAM</td><td>B/C</td><td>Montel/ACER 转引</td></tr><tr><td>丹麦海上风电</td><td>招标结果</td><td>C/B</td><td>媒体转引，官方招标文件未逐页核验</td></tr><tr><td>瑞典核电</td><td>国家援助/贷款框架</td><td>B/C</td><td>媒体转引，政府文件未逐页核验</td></tr></tbody></table></div>
 <h3 id="s55">口径提醒</h3>
 <ul><li><strong>币种</strong>：比利时/芬兰用 €，瑞典用 SEK，挪威用 NOK，丹麦用 DKK；不要混算，不做“统一 IRR”。</li><li><strong>时间</strong>：CET/CEST 切换；Nord Pool 日前关闸 12:00 CET；15 分钟 MTU。</li><li><strong>报价区</strong>：北欧 12 个报价区；系统价不是结算价；比利时是单一报价区。</li><li><strong>容量机制</strong>：比利时 CRM 是 pay-as-bid + IPC + 降额；北欧没有全国容量市场，只有小型储备。</li><li><strong>核电状态</strong>：比利时延寿至 2035；瑞典国家援助推进中；丹麦只是“考虑解除”核电禁令；不要把计划写成已投运。</li><li><strong>数据级别</strong>：比利时 CRM 价格/中标量、北欧储能装机、丹麦海上风电结果为 C 级；引用时标注来源与时点。</li><li><strong>供应链</strong>：比利时海上风电对中国风机有约束（C 级）；具体比例/适用范围以官方招标文件为准。</li></ul>
 <hr>
 <h2 id="s56">速查</h2>
-<div class="table-wrap"><table><thead><tr><th>问题</th><th>先看</th><th>关键结论</th><th>依据</th></tr></thead><tbody><tr><td>比利时是独立报价区吗</td><td>§2.1</td><td>是；Belpex/EPEX 比利时</td><td>EPEX</td></tr><tr><td>比利时 15 分钟吗</td><td>§2.1</td><td>2025-10-01 起日前/日内 15 分钟</td><td>SDAC</td></tr><tr><td>比利时 CRM 怎么定价</td><td>§2.3</td><td>单轮密封、pay-as-bid、IPC</td><td>Elia/CRM</td></tr><tr><td>比利时 Y-4 2029-30 中标多少</td><td>§2.4</td><td>4,690 MW；电池 179 MW（铭牌 525 MW）</td><td>C</td></tr><tr><td>比利时 Y-4 价格多少</td><td>§2.4</td><td>€27.3k/MW·年（27,300，Elia 2025-10-30）</td><td>A</td></tr><tr><td>比利时核电站还退吗</td><td>§2.5</td><td>不退；Doel 4/Tihange 3 延寿至 2035</td><td>B/C</td></tr><tr><td>北欧有几个报价区</td><td>§3.1</td><td>12 个</td><td>Nord Pool</td></tr><tr><td>北欧有容量市场吗</td><td>§3.4</td><td>没有全国容量市场；有小型储备</td><td>本文总结</td></tr><tr><td>北欧不平衡结算粒度</td><td>§3.3</td><td>2025-03-04 起 15 分钟</td><td>B</td></tr><tr><td>北欧 mFRR EAM 是什么</td><td>§3.3</td><td>15 分钟 mFRR 能量激活市场</td><td>B</td></tr><tr><td>北欧负价多吗</td><td>§4.2</td><td>2024 年芬兰 8%、瑞典 7% 小时</td><td>IEA</td></tr><tr><td>瑞典 effektreserv 多大</td><td>§3.4</td><td>2025/26 目标 800 MW</td><td>B</td></tr><tr><td>丹麦核电解禁了吗</td><td>§8.2</td><td>没有；只是“考虑解除”</td><td>B/C</td></tr><tr><td>比利时海上风电目标</td><td>§8.1</td><td>2030 年约 6 GW；2040 年约 8 GW</td><td>C</td></tr><tr><td>储能收入怎么堆</td><td>§9.3</td><td>比利时 CRM + 套利 + 辅助；北欧套利 + 辅助</td><td>本文总结</td></tr><tr><td>中国主体怎么进</td><td>§10</td><td>主体 + 并网 + 市场注册 + BRP + 担保 + REMIT</td><td>本文总结</td></tr><tr><td>最常见的坑</td><td>§11</td><td>pay-as-bid、分区价、无容量市场、15 分钟</td><td>本文总结</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>问题</th><th>先看</th><th>关键结论</th><th>依据</th></tr></thead><tbody><tr><td>比利时是独立报价区吗</td><td>§2.1</td><td>是；Belpex/EPEX 比利时</td><td>EPEX</td></tr><tr><td>比利时 15 分钟吗</td><td>§2.1</td><td>2025-10-01 起日前/日内 15 分钟</td><td>SDAC</td></tr><tr><td>比利时 CRM 怎么定价</td><td>§2.3</td><td>单轮密封、pay-as-bid、IPC</td><td>Elia/CRM</td></tr><tr><td>比利时 Y-4 2029-30 中标多少</td><td>§2.4</td><td>4,690 MW；电池 179 MW（铭牌 525 MW）</td><td>C</td></tr><tr><td>比利时 Y-4 价格多少</td><td>§2.4</td><td>€27.3k/MW·年（27,300，Elia 2025-10-30）</td><td>A</td></tr><tr><td>比利时核电站还退吗</td><td>§2.5</td><td>不退；Doel 4/Tihange 3 延寿至 2035</td><td>B/C</td></tr><tr><td>北欧有几个报价区</td><td>§3.1</td><td>12 个</td><td>Nord Pool</td></tr><tr><td>北欧有容量市场吗</td><td>§3.4</td><td>没有全国容量市场；有小型储备</td><td>本文总结</td></tr><tr><td>北欧不平衡结算粒度</td><td>§3.3</td><td>2025-03-04 起 15 分钟</td><td>B</td></tr><tr><td>北欧 mFRR EAM 是什么</td><td>§3.3</td><td>15 分钟 mFRR 能量激活市场</td><td>B</td></tr><tr><td>北欧负价多吗</td><td>§4.2</td><td>2024 年芬兰 8%、瑞典 7% 小时</td><td>IEA</td></tr><tr><td>瑞典 effektreserv 多大</td><td>§3.4</td><td>2025/26 目标 800 MW</td><td>B</td></tr><tr><td>丹麦核电解禁了吗</td><td>§8.2</td><td>没有；只是“考虑解除”</td><td>B/C</td></tr><tr><td>比利时海上风电目标</td><td>§8.1</td><td>2030 年约 6 GW；2040 年约 8 GW</td><td>C</td></tr><tr><td>储能收入怎么堆</td><td>§9.3</td><td>比利时 CRM + 套利 + 辅助；北欧套利 + 辅助</td><td>本文总结</td></tr><tr><td>中国主体怎么进</td><td>§10</td><td>主体 + 并网 + 市场注册 + BRP + 担保 + REMIT</td><td>本文总结</td></tr><tr><td>最常见的坑</td><td>§11</td><td>pay-as-bid、分区价、无容量市场、15 分钟</td><td>本文总结</td></tr></tbody></table></div>
 <hr>
 <h2 id="s57">与技能和其他笔记的分工</h2>
 <aside class="note"><p><strong>横向口径</strong>：把本市场的装机、储能存量/管线、年度均价、负价小时、捕获率、并网排队与降额因子与其余九市场对照，见<a href="海外市场同口径快照与投决日历-2026-11.html">《海外市场同口径快照与投决日历》</a> §1–§2；中国主体进入六道门槛见该文 §4，C 级数字复核入口见 §5。</p></aside>
-<div class="table-wrap"><table><thead><tr><th>主题</th><th>本文</th><th>电力交易技能</th><th>其他笔记</th></tr></thead><tbody><tr><td>比利时机构/法规</td><td>主责</td><td>概述</td><td>—</td></tr><tr><td>北欧机构/报价区</td><td>主责</td><td>概述</td><td>—</td></tr><tr><td>日前/日内交易</td><td>主责（机制）</td><td>策略/报价</td><td>量化报价笔记</td></tr><tr><td>容量机制</td><td>主责（CRM/储备）</td><td>概述</td><td>储能笔记（投决）</td></tr><tr><td>平衡与辅助服务</td><td>主责（规则）</td><td>策略/优化</td><td>储能笔记（海外业务）</td></tr><tr><td>可再生支持/并网</td><td>主责（框架）</td><td>概述</td><td>新能源开发笔记</td></tr><tr><td>储能收益</td><td>主责（结构）</td><td>概述</td><td>储能投资技能</td></tr><tr><td>中国主体进入</td><td>主责（路径）</td><td>概述</td><td>风险信用笔记（担保）</td></tr><tr><td>中国现货/省间</td><td>不展开</td><td>主责</td><td>省间笔记</td></tr><tr><td>波兰/荷兰/德国/英国/意大利/西班牙</td><td>对照</td><td>概述</td><td>各自模块</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>主题</th><th>本文</th><th>电力交易技能</th><th>其他笔记</th></tr></thead><tbody><tr><td>比利时机构/法规</td><td>主责</td><td>概述</td><td>—</td></tr><tr><td>北欧机构/报价区</td><td>主责</td><td>概述</td><td>—</td></tr><tr><td>日前/日内交易</td><td>主责（机制）</td><td>策略/报价</td><td>量化报价笔记</td></tr><tr><td>容量机制</td><td>主责（CRM/储备）</td><td>概述</td><td>储能笔记（投决）</td></tr><tr><td>平衡与辅助服务</td><td>主责（规则）</td><td>策略/优化</td><td>储能笔记（海外业务）</td></tr><tr><td>可再生支持/并网</td><td>主责（框架）</td><td>概述</td><td>新能源开发笔记</td></tr><tr><td>储能收益</td><td>主责（结构）</td><td>概述</td><td>储能投资技能</td></tr><tr><td>中国主体进入</td><td>主责（路径）</td><td>概述</td><td>风险信用笔记（担保）</td></tr><tr><td>中国现货/省间</td><td>不展开</td><td>主责</td><td>省间笔记</td></tr><tr><td>波兰/荷兰/德国/英国/意大利/西班牙</td><td>对照</td><td>概述</td><td>各自模块</td></tr></tbody></table></div>
 <ul><li><strong>本文是“比利时/北欧交易与投决手册”</strong>：遇到“CRM 怎么算、北欧分区价怎么看、15 分钟平衡怎么影响储能、中国主体怎么落地”，先看这里。</li><li><strong>遇到“怎么报价、怎么对冲、怎么做量化”</strong>：回到电力交易技能和量化报价笔记。</li><li><strong>遇到“储能项目能不能投、LCOS 多少”</strong>：查储能投资技能（中国口径）与《海外储能业务》（海外口径）；比利时项目按“CRM 年金 + 套利 + 辅助”建模，北欧项目按“无容量费 + 分区价差 + 辅助”建模。</li></ul>
     </article>
 
-    <section class="related" aria-label="相关模块">
-      <h2>相关模块</h2>
-      <ul>
-        <li><a href="波兰电力市场-2026-11.html">波兰电力市场（2026 版）</a></li>
-        <li><a href="荷兰电力市场-2026-11.html">荷兰电力市场（2026 版）</a></li>
-        <li><a href="德国电力市场-2026-11.html">德国电力市场（2026 版）</a></li>
-        <li><a href="英国电力市场-2026-11.html">英国电力市场（2026 版）</a></li>
-        <li><a href="海外储能业务-2026-11.html">海外储能业务：十一市场大储与工商储（2026 版）</a></li>
-        <li><a href="储能投资与运营-2026-11.html">储能投资与运营</a></li>
-      </ul>
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>6</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="波兰电力市场-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>波兰电力市场（2026 版）</b>
+          <span>容量市场主导、OZE 拍卖、15 分钟结算与储能补贴共同构成波兰电力市场。</span>
+        </a>
+        <a class="related-card" href="荷兰电力市场-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>荷兰电力市场（2026 版）</b>
+          <span>EPEX NL 日前/日内、15 分钟结算、无容量市场、SDE++ 与电网拥堵下的储能路径。</span>
+        </a>
+        <a class="related-card" href="德国电力市场-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>德国电力市场（2026 版）</b>
+          <span>DE-LU 报价区、EPEX 日前/日内 15 分钟、平衡市场、再调度 2.0、EEG 负价规则与容量机制。</span>
+        </a>
+        <a class="related-card" href="英国电力市场-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>英国电力市场（2026 版）</b>
+          <span>GB 单一市场、EPEX 日前与半小时拍卖、平衡机制、容量市场、CfD/LDES 与储能进入路径。</span>
+        </a>
+      </div>
+      <p class="related-rest"><b>更多关联</b><a href="海外储能业务-2026-11.html">海外储能业务：十一市场大储与工商储（2026 版）</a><a href="储能投资与运营-2026-11.html">储能投资与运营</a></p>
     </section>
+
 
     <nav class="pager" aria-label="上下篇">
           <a class="prev" href="波兰电力市场-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">波兰电力市场（2026 版）</span></a>
@@ -298,7 +321,11 @@
 
     <footer class="doc-foot">
       <div class="lic">本页由 <a href="../比利时与北欧电力市场-2026-11.md">knowledge/比利时与北欧电力市场-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
-      <div><a href="../index.html">返回知识库总览 →</a></div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
     </footer>
   </main>
 
@@ -361,7 +388,7 @@
             <li class="lv3"><a href="#s55">口径提醒</a></li>
             <li class="lv2"><a href="#s56">速查</a></li>
             <li class="lv2"><a href="#s57">与技能和其他笔记的分工</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="39">展开 39 个小节</button>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="39" data-more-label="展开 39 个小节" data-less-label="收起小节">展开 39 个小节</button>
   </aside>
 </div>
 

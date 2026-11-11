@@ -121,9 +121,7 @@ body{
   font-family:var(--sans);
   font-size:var(--fs-base);
   line-height:1.65;
-  background:
-    radial-gradient(900px 480px at 82% -8%, rgba(14,107,102,.07), transparent 62%),
-    var(--paper);
+  background:var(--paper);
   -webkit-font-smoothing:antialiased;
 }
 ::selection{background:rgba(14,107,102,.18)}
@@ -174,21 +172,41 @@ a:hover{text-decoration:underline;text-underline-offset:3px}
 .main{min-width:0;padding:0 clamp(20px,4vw,56px) 72px}
 .wrap{max-width:var(--maxw);margin:0 auto}
 
-/* Hero */
-.hero{padding:44px 0 22px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:34px;align-items:start}
+/* Hero: one primary action, one visual axis. */
+.hero{padding:52px 0 24px;display:block}
+.hero-copy{max-width:880px}
 .eyebrow{display:flex;align-items:center;gap:8px;font:600 var(--fs-2xs)/1.5 var(--mono);letter-spacing:.12em;color:var(--teal);text-transform:uppercase;margin-bottom:12px}
 .eyebrow::before{content:"";width:26px;height:1px;background:var(--teal);opacity:.55}
-.hero h1{font-family:var(--serif);font-size:clamp(30px,3.8vw,46px);line-height:1.16;letter-spacing:-.025em;margin:0 0 14px;font-weight:600}
+.hero h1{font-family:var(--serif);font-size:clamp(30px,4.2vw,50px);line-height:1.13;letter-spacing:-.03em;margin:0 0 14px;font-weight:600}
 .hero h1 em{font-style:normal;color:var(--teal);white-space:nowrap;position:relative}
 .hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:6px;background:var(--teal-soft);z-index:-1;border-radius:2px}
-.lede{font-size:var(--fs-base);line-height:1.75;color:var(--ink-2);max-width:620px;margin:0 0 16px}
-.hero-actions{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px}
-.btn{display:inline-flex;align-items:center;gap:7px;padding:9px 14px;border-radius:8px;font-size:var(--fs-xs);font-weight:600;text-decoration:none;border:1px solid transparent;transition:transform .15s,background .15s}
+.hero .lede{font-size:var(--fs-base);line-height:1.75;color:var(--ink-2);max-width:680px;margin:0 0 22px}
+.hero-search{
+  position:relative;display:flex;align-items:center;gap:8px;max-width:780px;
+  padding:7px 7px 7px 16px;border:1px solid var(--control-line);border-radius:12px;
+  background:var(--card);box-shadow:0 1px 2px rgba(22,35,47,.05),0 18px 42px -32px rgba(22,35,47,.4);
+  transition:border-color .15s,box-shadow .15s;
+}
+.hero-search:focus-within{border-color:var(--teal);box-shadow:0 0 0 4px var(--teal-soft),0 18px 42px -32px rgba(22,35,47,.4)}
+.hero-search>svg{width:18px;height:18px;color:var(--muted);flex:none}
+.hero-search input{
+  flex:1;min-width:0;border:0;background:none;outline:none;
+  padding:11px 0;font:var(--fs-md)/1.5 var(--sans);color:var(--ink);
+}
+.hero-search input::placeholder{color:var(--muted)}
+.hero-search .search-clear{position:static;transform:none;flex:none;width:30px;height:30px;margin-right:2px}
+.hero-search-go{
+  flex:none;min-height:42px;padding:0 17px;border:0;border-radius:8px;
+  background:var(--ink);color:var(--paper);font:600 var(--fs-xs)/1 var(--sans);cursor:pointer;
+}
+.hero-search-go:hover{background:color-mix(in srgb,var(--ink) 86%,var(--paper))}
+.hero-search-status{min-height:1.6em;margin:9px 0 0;font-size:var(--fs-xs);color:var(--muted);line-height:1.6}
+.hero-actions{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 20px}
+.btn{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:0 13px;border-radius:8px;font-size:var(--fs-xs);font-weight:600;text-decoration:none;border:1px solid transparent;transition:transform .15s,background .15s}
 .btn:hover{text-decoration:none;transform:translateY(-1px)}
-.btn-solid{background:var(--ink);color:var(--paper)}
-.btn-solid:hover{background:color-mix(in srgb,var(--ink) 88%,var(--paper))}
-.btn-ghost{background:var(--paper-2);color:var(--ink);border-color:var(--control-line)}
-.btn-ghost:hover{background:var(--card)}
+.btn-ghost{background:var(--paper-2);color:var(--ink-2);border-color:var(--line)}
+.btn-ghost:hover{background:var(--card);border-color:var(--control-line);color:var(--ink)}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 /* Theme switch lives in the top-right corner on every page, matching the reading-page topbar control. */
 .hub-theme-toggle{
   position:fixed;top:14px;right:18px;z-index:50;
@@ -207,14 +225,6 @@ a:hover{text-decoration:underline;text-underline-offset:3px}
 .stat b{display:block;font-family:var(--serif);font-size:22px;line-height:1.1;font-weight:600;letter-spacing:-.02em}
 .stat span{display:block;font-size:var(--fs-2xs);color:var(--muted);margin-top:3px;letter-spacing:.02em}
 .hero-note{font-size:var(--fs-xs);color:var(--muted);margin-top:9px;line-height:1.6}
-.hero-panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:4px 16px 12px;box-shadow:var(--shadow)}
-.hero-panel-kicker{font:600 var(--fs-2xs)/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:11px 0 7px;border-bottom:1px solid var(--line)}
-.hero-panel a{display:grid;grid-template-columns:20px minmax(0,1fr);column-gap:8px;padding:10px 0;border-bottom:1px dashed var(--line);color:inherit}
-.hero-panel a:hover{color:var(--teal);text-decoration:none}
-.hero-panel a span{grid-row:1/3;font:600 var(--fs-2xs)/1.7 var(--mono);color:var(--teal)}
-.hero-panel a b{font-size:var(--fs-xs);line-height:1.4;font-weight:600}
-.hero-panel a small{font-size:var(--fs-2xs);line-height:1.45;color:var(--muted)}
-.hero-panel .hero-panel-all{display:block;padding:11px 0 0;border-bottom:0;font-size:var(--fs-xs);font-weight:600;color:var(--teal)}
 
 /* Section */
 .sec{padding-top:44px}
@@ -266,12 +276,41 @@ a.chip:hover{background:var(--teal-soft);border-color:#bcdad6;color:var(--teal);
 .filterbar{position:sticky;top:0;z-index:20;margin:16px 0 0;padding:10px 0;background:color-mix(in srgb, var(--paper) 96%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .search-wrap{position:relative;flex:1;min-width:220px}
 .search-wrap svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:14px;height:14px;color:var(--muted)}
-#search{width:100%;padding:10px 40px 10px 34px;border:1px solid var(--control-line);border-radius:8px;background:var(--card);font:var(--fs-md) var(--sans);color:var(--ink)}
-#search::placeholder{color:var(--muted)}
-#search::-webkit-search-cancel-button{display:none}
+#searchInline{width:100%;padding:9px 40px 9px 34px;border:1px solid var(--control-line);border-radius:8px;background:var(--card);font:var(--fs-sm) var(--sans);color:var(--ink)}
+#searchInline::placeholder{color:var(--muted)}
+#search::-webkit-search-cancel-button,#searchInline::-webkit-search-cancel-button{display:none}
 .search-clear{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:32px;height:32px;border:0;border-radius:50%;background:var(--paper-2);color:var(--ink-2);font-size:var(--fs-md);line-height:1;cursor:pointer;display:grid;place-items:center}
 .search-clear:hover{background:var(--line)}
 .search-clear[hidden]{display:none}
+.catbar{display:flex;align-items:flex-start;gap:10px;margin:10px 0 18px;min-width:0}
+.catbar-label{flex:none;padding-top:7px;font:600 var(--fs-2xs)/1.4 var(--mono);letter-spacing:.08em;color:var(--muted)}
+.cat-chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 2px 4px;min-width:0}
+.cat-chip{
+  flex:none;display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 10px;
+  border:1px solid var(--line);border-radius:999px;background:var(--card);
+  color:var(--ink-2);font:600 var(--fs-xs)/1 var(--sans);cursor:pointer;
+}
+.cat-chip b{font:var(--fs-2xs)/1 var(--mono);color:var(--muted)}
+.cat-chip:hover{border-color:var(--control-line);color:var(--ink)}
+.cat-chip.on{background:var(--teal-soft);border-color:color-mix(in srgb,var(--teal) 42%,var(--line));color:var(--teal)}
+.cat-chip.on b{color:var(--teal)}
+.cat-select{display:none;min-height:40px;padding:0 30px 0 10px;border:1px solid var(--control-line);border-radius:8px;background:var(--card);color:var(--ink-2);font:var(--fs-xs) var(--sans)}
+.search-results{margin:4px 0 22px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:var(--card);box-shadow:var(--shadow)}
+.search-results[hidden]{display:none}
+.search-results-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:10px}
+.search-results-head h3{margin:0;font-family:var(--serif);font-size:var(--fs-md);font-weight:600}
+.search-results-head span{font:var(--fs-xs)/1.4 var(--mono);color:var(--muted)}
+.search-result-list{display:grid;gap:2px}
+.search-result{display:block;padding:10px 8px;border-radius:8px;color:inherit}
+.search-result:hover{background:var(--paper-2);text-decoration:none}
+.search-result-body{display:block}
+.search-result-title{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.search-result b{font-size:var(--fs-sm);line-height:1.45;color:var(--ink)}
+.search-result-breadcrumb{display:block;margin-bottom:2px;font:var(--fs-2xs)/1.4 var(--mono);color:var(--muted)}
+.search-result-snippet{display:block;margin-top:3px;font-size:var(--fs-xs);line-height:1.65;color:var(--muted);overflow-wrap:break-word}
+.search-result-count{font:var(--fs-2xs)/1.5 var(--mono);color:var(--teal);white-space:nowrap}
+.search-index-status{margin:10px 0 0;font-size:var(--fs-xs);color:var(--muted)}
+.search-index-status[hidden]{display:none}
 .filter-btn{font:var(--fs-xs) var(--sans);padding:9px 12px;border-radius:8px;border:1px solid var(--control-line);background:var(--card);color:var(--ink-2);cursor:pointer;transition:background .15s,color .15s,border-color .15s}
 .filter-btn:hover{border-color:var(--teal)}
 .filter-btn.active{background:var(--ink);border-color:var(--ink);color:var(--paper)}
@@ -290,26 +329,24 @@ mark.hit{background:var(--amber-soft);color:inherit;border-radius:2px;padding:0 
 .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
 .card{
   position:relative;display:flex;flex-direction:column;
-  background:var(--card);border:1px solid var(--card-line);border-radius:var(--radius);
-  padding:16px 16px 13px;box-shadow:var(--shadow-card);
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 16px 13px;box-shadow:none;
   transition:transform .16s,border-color .16s,box-shadow .16s;
 }
-.card::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:2px;border-radius:0 2px 2px 0;background:var(--cat)}
-.card:hover{transform:translateY(-2px);border-color:var(--line-strong);box-shadow:0 3px 5px rgba(22,35,47,.06),0 22px 44px -26px rgba(22,35,47,.4)}
+.card::before{content:"";position:absolute;left:0;top:15px;bottom:15px;width:2px;border-radius:0 2px 2px 0;background:var(--cat)}
+.card:hover{transform:translateY(-1px);border-color:var(--card-line);box-shadow:var(--shadow-card)}
 .card:focus-within{border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft),var(--shadow-card)}
 .card.is-hidden{display:none}
 .card-top{display:flex;align-items:center;gap:7px;margin-bottom:9px}
 .kind{font:600 var(--fs-2xs)/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--cat);background:var(--cat-soft);padding:4px 6px;border-radius:4px}
 .card-meta{font:var(--fs-2xs)/1 var(--mono);color:var(--muted);margin-left:auto}
-.card h3{font-family:var(--serif);font-size:17.5px;line-height:1.35;letter-spacing:-.01em;margin:0 0 6px;font-weight:600}
+.card h3{font-family:var(--serif);font-size:17px;line-height:1.4;letter-spacing:-.01em;margin:0 0 6px;font-weight:600;text-wrap:balance}
 .card h3 a{color:var(--ink);text-decoration:none}
 .card h3 a:hover{color:var(--teal);text-decoration:none}
 .card h3 a::after{content:"";position:absolute;inset:0;border-radius:inherit;z-index:1}
 .card h3 a:focus-visible{outline:0}
-.card p{font-size:var(--fs-sm);line-height:1.65;color:var(--muted);margin:0 0 11px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto}
-.tag{font-size:var(--fs-2xs);line-height:1.4;padding:3px 7px;border-radius:5px;background:var(--paper-2);color:var(--ink-2);white-space:nowrap}
-.card-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:11px;padding-top:9px;border-top:1px dashed var(--line);font-size:var(--fs-2xs);color:var(--muted)}
+.card p{font-size:var(--fs-sm);line-height:1.65;color:var(--muted);margin:0 0 12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto;padding-top:9px;border-top:1px dashed var(--line);font-size:var(--fs-2xs);color:var(--muted)}
 .card-cta{font-weight:600;color:var(--teal);white-space:nowrap}
 .module-section[data-cat="foundation"]{--cat:var(--teal);--cat-soft:var(--teal-soft)}
 .module-section[data-cat="spot"]{--cat:var(--blue);--cat-soft:var(--blue-soft)}
@@ -325,9 +362,18 @@ mark.hit{background:var(--amber-soft);color:inherit;border-radius:2px;padding:0 
 .module-section[data-cat="research"]{--cat:var(--slate);--cat-soft:var(--slate-soft)}
 
 /* Atlas */
-.panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
-.atlas-fold>summary{display:none}
+.panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}
+.atlas-fold>summary{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;list-style:none;
+  margin-top:20px;padding:13px 16px;border:1px solid var(--line);border-radius:10px;
+  background:var(--card);font-size:var(--fs-sm);font-weight:600;color:var(--ink);cursor:pointer;
+}
 .atlas-fold>summary::-webkit-details-marker{display:none}
+.atlas-fold>summary span{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.atlas-fold>summary small{font:var(--fs-xs)/1.5 var(--sans);font-weight:400;color:var(--muted)}
+.atlas-fold>summary::after{content:"+";font:600 var(--fs-md)/1 var(--mono);color:var(--teal)}
+.atlas-fold[open]>summary::after{content:"−"}
+.atlas-fold:not([open]) .panels{display:none}
 .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);margin:0;min-width:0}
 .panel.wide{grid-column:1/-1}
 .panel-head{margin-bottom:14px}
@@ -436,12 +482,8 @@ mark.hit{background:var(--amber-soft);color:inherit;border-radius:2px;padding:0 
 .discipline div::before{content:"";position:absolute;left:0;top:.58em;width:6px;height:6px;border-radius:50%;background:var(--amber)}
 .discipline b{color:var(--ink)}
 
-.skills{margin-top:16px;border-top:1px solid var(--line);padding-top:18px}
-.skills-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:10px}
-.skills-head h3{font-family:var(--serif);font-size:19px;margin:0;font-weight:600}
-.skills-head p{margin:0;font-size:var(--fs-2xs);color:var(--muted)}
-.skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.skill-card{display:block;border:1px solid var(--line);border-radius:9px;padding:10px 12px;background:var(--card);color:inherit;text-decoration:none;transition:border-color .15s,transform .15s}
+.skill-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:22px}
+.skill-card{display:block;border:1px solid var(--line);border-radius:10px;padding:14px 15px;background:var(--card);color:inherit;text-decoration:none;transition:border-color .15s,transform .15s}
 .skill-card:hover{border-color:var(--teal);text-decoration:none;transform:translateY(-1px)}
 .skill-card b{display:block;font-size:var(--fs-xs);margin-bottom:1px}
 .skill-card span{display:block;font-size:var(--fs-2xs);line-height:1.5;color:var(--muted)}
@@ -463,11 +505,6 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
 }
 @media (max-width:1180px){
   .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .hero{grid-template-columns:1fr;gap:18px}
-  .hero-panel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px;padding:2px 14px 10px}
-  .hero-panel a{grid-template-columns:18px minmax(0,1fr);padding:9px 0}
-  .hero-panel a small{display:none}
-  .hero-panel .hero-panel-all{grid-column:1/-1}
   .map{grid-template-columns:1fr}
   .rail{display:grid;grid-template-columns:repeat(2,1fr)}
   .rail-head{grid-column:1/-1}
@@ -521,15 +558,30 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   .result{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
   .empty-reset{min-height:44px}
   .search-clear{width:40px;height:40px;right:2px}
-  #search{padding-right:48px}
+  #searchInline{padding-right:48px}
+  .hero-search .search-clear{width:36px;height:36px}
+  .catbar{margin:8px 0 16px}
+  .catbar-label{display:none}
+  .cat-chips{display:none}
+  .cat-select{display:block;width:100%}
+  .search-results{padding:13px 14px}
+  .search-result{padding:10px 4px;border-bottom:1px solid var(--line)}
+  .search-result:last-child{border-bottom:0}
 }
 @media (max-width:620px){
   .cards{grid-template-columns:1fr}
-  .hero{padding-top:24px}
+  .hero{padding-top:30px}
+  .hero h1{font-size:clamp(27px,8vw,36px)}
+  .hero .lede{font-size:var(--fs-sm);max-width:none}
+  .hero-search{padding-left:12px;gap:6px}
+  .hero-search>svg{width:16px;height:16px}
+  .hero-search input{font-size:16px;padding-top:10px;padding-bottom:10px}
+  .hero-search-go{min-height:40px;padding:0 12px}
   .hero-stats{grid-template-columns:1fr 1fr}
   .hero-actions{display:flex;flex-wrap:wrap;gap:9px}
   .hero-actions .btn{justify-content:center;min-height:44px}
   .hero-note{display:none}
+  .sec-head h2{font-size:clamp(22px,7vw,29px)}
   .sec-head{grid-template-columns:1fr;gap:6px}
   .sec-num{padding-top:0}
   .market-flow,.assess-flow,.market-flow.six,.market-flow.eight,.market-flow.ten,.market-flow.eleven{grid-template-columns:1fr}
@@ -537,7 +589,6 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   .rail{grid-template-columns:1fr}
   .map-skill{grid-template-columns:1fr;gap:6px}
   #search{font-size:16px}
-  .hero-panel{grid-template-columns:1fr}
   .lcoe-row,.ladder-row,.cap-bar{grid-template-columns:82px 1fr 62px}
   .skill-grid{grid-template-columns:1fr}
   .callout{gap:8px}
@@ -547,6 +598,17 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   .atlas-fold[open]>summary::after{content:"−"}
   .atlas-fold:not([open]) .panels{display:none}
 }
+
+@media (max-width:380px){
+  .eyebrow{
+    display:block;position:relative;padding-left:22px;font-size:10px;letter-spacing:.05em;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .eyebrow::before{position:absolute;left:0;top:50%;width:14px}
+  .hero-actions{gap:6px}
+  .hero-actions .btn{padding:0 10px;font-size:12px}
+}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *{transition:none!important;animation:none!important}
@@ -564,7 +626,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
 @media print{
   :root[data-theme="dark"] .module-section[data-cat]{--cat:#16232f;--cat-soft:#f0ece3}
   body{background:#fff}
-  .sidebar,.hero-panel,.filterbar,.fab-stack,.hub-theme-toggle,.skip,.hero-actions,.atlas-fold>summary,.nav-scroll{display:none!important}
+  .sidebar,.hero-search,.hero-search-status,.filterbar,.catbar,.search-results,.fab-stack,.hub-theme-toggle,.skip,.hero-actions,.atlas-fold>summary,.nav-scroll{display:none!important}
   .shell{display:block;max-width:none}
   .main{padding:0}
   .card,.panel,.method-card{box-shadow:none;break-inside:avoid}
@@ -593,19 +655,8 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
       <a href="#all"><span class="n">01</span><span>模块检索</span><span class="count">66</span></a>
       <a href="#map"><span class="n">02</span><span>知识地图</span><span class="count">6</span></a>
       <a href="#atlas"><span class="n">03</span><span>专题图谱</span><span class="count">8</span></a>
-      <a href="#foundation"><span class="n">04</span><span>通识与经济学</span><span class="count">5</span></a>
-      <a href="#spot"><span class="n">05</span><span>现货与省间交易</span><span class="count">7</span></a>
-      <a href="#intl"><span class="n">06</span><span>海外市场</span><span class="count">12</span></a>
-      <a href="#cross"><span class="n">07</span><span>横向专题</span><span class="count">6</span></a>
-      <a href="#price"><span class="n">08</span><span>电价</span><span class="count">4</span></a>
-      <a href="#renewable"><span class="n">09</span><span>新能源与并网</span><span class="count">2</span></a>
-      <a href="#storage"><span class="n">10</span><span>储能与 EMS</span><span class="count">5</span></a>
-      <a href="#park"><span class="n">11</span><span>零碳园区</span><span class="count">1</span></a>
-      <a href="#carbon"><span class="n">12</span><span>碳市场与碳管理</span><span class="count">4</span></a>
-      <a href="#vpp"><span class="n">13</span><span>虚拟电厂</span><span class="count">3</span></a>
-      <a href="#index"><span class="n">14</span><span>索引与查证</span><span class="count">7</span></a>
-      <a href="#research"><span class="n">15</span><span>调研底稿</span><span class="count">10</span></a>
-      <a href="#method"><span class="n">16</span><span>使用与口径</span><span class="count">9</span></a>
+      <a href="#skills"><span class="n">04</span><span>配套技能</span><span class="count">9</span></a>
+      <a href="#method"><span class="n">05</span><span>使用与口径</span></a>
       </nav>
     </div>
     <div class="sidebar-foot">
@@ -621,14 +672,22 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   <main id="main" class="main">
     <div class="wrap">
       <header class="hero" id="top">
-        <div>
+        <div class="hero-copy">
           <div class="eyebrow">Knowledge Hub · 2026-11-11 · 66 模块</div>
           <h1>电力系统、电力市场<br>与碳市场 <em>知识库</em></h1>
           <p class="lede">把 66 份主题笔记、政策索引与调研底稿，收进一张可检索、可跳转的知识地图。每个模块都有对应的 HTML 阅读页，文字与数字取自 Markdown 原文。</p>
+          <form class="hero-search" id="heroSearchForm" role="search" aria-label="检索知识库">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+            <label class="sr-only" for="search">检索模块、文号或正文关键词</label>
+            <input id="search" type="search" placeholder="检索模块、文号或正文关键词，例如：红沿河 / 136 / CBAM" autocomplete="off">
+            <button class="search-clear" type="button" id="searchClear" aria-label="清除检索" hidden>×</button>
+            <button class="hero-search-go" type="submit">查看结果</button>
+          </form>
+          <p class="hero-search-status" id="heroSearchStatus" aria-live="polite">标题、标签与正文都可检索；按 <span class="mono">/</span> 快速聚焦。</p>
           <div class="hero-actions">
-            <a class="btn btn-solid" href="#all" data-focus-search>检索知识模块 <span aria-hidden="true">↓</span></a>
-            <a class="btn btn-ghost" href="html/政策列表-2026-11.html">政策原文直达 <span aria-hidden="true">→</span></a>
+            <a class="btn btn-ghost" href="html/政策列表-2026-11.html">政策原文 <span aria-hidden="true">→</span></a>
             <a class="btn btn-ghost" href="#map">知识地图</a>
+            <a class="btn btn-ghost" href="#skills">九项配套技能</a>
           </div>
           <div class="hero-stats">
               <div class="stat"><b>66</b><span>知识模块</span></div>
@@ -638,17 +697,6 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
             </div>
           <p class="hero-note">全部内容以 <span class="mono">knowledge/*.md</span> 原文为准；阅读页由 <span class="mono">scripts/build-knowledge-html.mjs</span> 自动生成。本页摘要不替代原文，也不构成投资建议。</p>
         </div>
-
-        <aside class="hero-panel" aria-label="快速入口">
-          <div class="hero-panel-kicker">热门入口</div>
-          <a href="#m-spot-a"><span>01</span><b>电力现货 101 问</b><small>出清、结算与治理</small></a>
-          <a href="#m-price-history"><span>02</span><b>中国电价史</b><small>三环节、九种价</small></a>
-          <a href="#m-storage-invest"><span>03</span><b>储能投资与运营</b><small>收益堆叠与硬边界</small></a>
-          <a href="#m-carbon-trade"><span>04</span><b>碳排放权交易实务</b><small>履约、CCER 与 CBAM</small></a>
-          <a href="html/政策列表-2026-11.html"><span>05</span><b>国家级政策原文</b><small>按文号与状态筛选</small></a>
-          <a href="html/省级政策列表-2026-11.html"><span>06</span><b>省级政策原文</b><small>按主题分组与状态筛选</small></a>
-          <a class="hero-panel-all" href="#all">查看全部模块 →</a>
-        </aside>
       </header>
 
       <!-- 01 Find -->
@@ -663,14 +711,15 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         <div class="filterbar" role="search" aria-label="检索知识模块">
           <div class="search-wrap">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
-            <input id="search" type="search" placeholder="检索模块、文号或关键词，例如：136 / 储能 / CBAM" autocomplete="off" aria-label="检索知识模块">
-            <button class="search-clear" type="button" id="searchClear" aria-label="清除检索" hidden>×</button>
+            <label class="sr-only" for="searchInline">在当前模块目录中检索</label>
+            <input id="searchInline" type="search" placeholder="在目录中检索…" autocomplete="off">
+            <button class="search-clear" type="button" id="searchInlineClear" aria-label="清除检索" hidden>×</button>
           </div>
           <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">全部</button>
           <button class="filter-btn" type="button" data-filter="core" aria-pressed="false">核心模块</button>
           <button class="filter-btn" type="button" data-filter="tool" aria-pressed="false">索引工具</button>
           <button class="filter-btn" type="button" data-filter="research" aria-pressed="false">调研底稿</button>
-          <select class="filter-select" id="catSelect" aria-label="按类型筛选">
+          <select class="filter-select" id="typeSelect" aria-label="按类型筛选">
             <option value="all">全部模块</option>
             <option value="core">核心模块</option>
             <option value="tool">索引工具</option>
@@ -678,55 +727,91 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
           </select>
           <span class="result" id="result" aria-live="polite">66 / 66 个模块</span>
         </div>
+        <div class="catbar" aria-label="按内容分类筛选">
+          <span class="catbar-label">分类</span>
+          <div class="cat-chips" id="catChips" role="group" aria-label="内容分类">
+            <button class="cat-chip on" type="button" data-cat="all" aria-pressed="true">全部分类<b>66</b></button>
+            <button class="cat-chip" type="button" data-cat="foundation" aria-pressed="false">通识与经济学<b>5</b></button>
+            <button class="cat-chip" type="button" data-cat="spot" aria-pressed="false">现货与省间交易<b>7</b></button>
+            <button class="cat-chip" type="button" data-cat="intl" aria-pressed="false">海外市场<b>12</b></button>
+            <button class="cat-chip" type="button" data-cat="cross" aria-pressed="false">横向专题<b>6</b></button>
+            <button class="cat-chip" type="button" data-cat="price" aria-pressed="false">电价<b>4</b></button>
+            <button class="cat-chip" type="button" data-cat="renewable" aria-pressed="false">新能源与并网<b>2</b></button>
+            <button class="cat-chip" type="button" data-cat="storage" aria-pressed="false">储能与 EMS<b>5</b></button>
+            <button class="cat-chip" type="button" data-cat="park" aria-pressed="false">零碳园区<b>1</b></button>
+            <button class="cat-chip" type="button" data-cat="carbon" aria-pressed="false">碳市场与碳管理<b>4</b></button>
+            <button class="cat-chip" type="button" data-cat="vpp" aria-pressed="false">虚拟电厂<b>3</b></button>
+            <button class="cat-chip" type="button" data-cat="index" aria-pressed="false">索引与查证<b>7</b></button>
+            <button class="cat-chip" type="button" data-cat="research" aria-pressed="false">调研底稿<b>10</b></button>
+          </div>
+          <select class="cat-select" id="catSelect" aria-label="按内容分类筛选">
+            <option value="all">全部分类</option>
+              <option value="foundation">通识与经济学</option>
+              <option value="spot">现货与省间交易</option>
+              <option value="intl">海外市场</option>
+              <option value="cross">横向专题</option>
+              <option value="price">电价</option>
+              <option value="renewable">新能源与并网</option>
+              <option value="storage">储能与 EMS</option>
+              <option value="park">零碳园区</option>
+              <option value="carbon">碳市场与碳管理</option>
+              <option value="vpp">虚拟电厂</option>
+              <option value="index">索引与查证</option>
+              <option value="research">调研底稿</option>
+          </select>
+        </div>
+        <section class="search-results" id="searchResults" aria-labelledby="searchResultsTitle" hidden>
+          <div class="search-results-head">
+            <h3 id="searchResultsTitle">正文命中</h3>
+            <span id="searchResultsCount"></span>
+          </div>
+          <div class="search-result-list" id="searchResultsList"></div>
+          <p class="search-index-status" id="searchIndexStatus" hidden>全文索引未能加载；标题、标签与摘要检索仍可使用。</p>
+        </section>
         <div class="empty" id="empty">
-          <p>没有匹配的模块。试试“储能”“136”“电价”或“CBAM”。</p>
+          <p>没有匹配的模块或正文。试试“储能”“红沿河”“136”或“CBAM”。</p>
           <button class="empty-reset" type="button" id="emptyReset">清除检索条件</button>
         </div>
 
       <!-- 03 Foundation -->
       <section class="sec module-section" id="foundation" data-cat="foundation">
         <div class="sec-head">
-          <div class="sec-num">04 / BASE</div>
+          <div class="sec-num">01 · BASE</div>
           <div>
             <h2>通识与经济学</h2>
             <p>先建立物理与制度直觉：电从哪里来、谁在管、为什么改革，以及市场为什么需要集中调度兜底。五份笔记，适合零基础起步；篇末附 2026 年装机、市场主体与现货省份快照。</p>
           </div>
         </div>
         <div class="cards">
-          <article class="card" id="m-ts-a" data-type="core" data-search="通识 A 格局 主体 国家电网 南方电网 蒙西 五大四小 调度 交易 监管 两网 2026 装机 41.3 亿千瓦 光伏 煤电 市场主体 109 万家 现货 11 个 3 张网 5 类主体 41.3 亿 kW">
-            <div class="card-top"><span class="kind">主题笔记</span><span class="card-meta">阅读约 11 分钟</span></div>
+          <article class="card" id="m-ts-a" data-type="core" data-search="通识 A 格局 主体 国家电网 南方电网 蒙西 五大四小 调度 交易 监管 两网 2026 装机 41.3 亿千瓦 光伏 煤电 市场主体 109 万家 现货 11 个 电力系统通识 A · 格局与主体 两网加蒙西、五大四小、设备与二次系统、交易调度监管分工，以及 2026 年装机与市场主体快照。 3 张网 5 类主体 41.3 亿 kW">
+            <div class="card-top"><span class="kind">主题笔记</span><span class="card-meta">约 11 分钟</span></div>
             <h3><a class="card-link" href="html/电力系统通识-A-格局与主体.html">电力系统通识 A · 格局与主体</a></h3>
             <p>两网加蒙西、五大四小、设备与二次系统、交易调度监管分工，以及 2026 年装机与市场主体快照。</p>
-            <div class="tags"><span class="tag">3 张网</span><span class="tag">5 类主体</span><span class="tag">41.3 亿 kW</span></div>
-            <div class="card-foot"><span>谁在发电、谁在送电、谁定规则</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-09</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-ts-b" data-type="core" data-search="通识 B 发输配变用 功率 电量 50Hz 电压 频率 备用 稳定 利用小时 功率 ≠ 电量 50 Hz">
-            <div class="card-top"><span class="kind">主题笔记</span><span class="card-meta">阅读约 9 分钟</span></div>
+          <article class="card" id="m-ts-b" data-type="core" data-search="通识 B 发输配变用 功率 电量 50Hz 电压 频率 备用 稳定 利用小时 电力系统通识 B · 发输配变用 功率与电量、50 Hz、发输配变用五环节、备用与稳定，建立电力系统的物理常识。 功率 ≠ 电量 50 Hz 利用小时">
+            <div class="card-top"><span class="kind">主题笔记</span><span class="card-meta">约 9 分钟</span></div>
             <h3><a class="card-link" href="html/电力系统通识-B-发输配变用.html">电力系统通识 B · 发输配变用</a></h3>
             <p>功率与电量、50 Hz、发输配变用五环节、备用与稳定，建立电力系统的物理常识。</p>
-            <div class="tags"><span class="tag">功率 ≠ 电量</span><span class="tag">50 Hz</span><span class="tag">利用小时</span></div>
-            <div class="card-foot"><span>电怎么从煤和风光走到插座</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-01</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-ts-c" data-type="core" data-search="通识 C 改革史 集资办电 厂网分开 九号文 2015 2002 1439 136 全国统一市场 1985 集资办电 2002 厂网分开 2015 九号文">
-            <div class="card-top"><span class="kind">主题笔记</span><span class="card-meta">阅读约 9 分钟</span></div>
+          <article class="card" id="m-ts-c" data-type="core" data-search="通识 C 改革史 集资办电 厂网分开 九号文 2015 2002 1439 136 全国统一市场 电力系统通识 C · 改革史 从 1985 集资办电到 2015 九号文，再到全国统一市场，每轮改革写清目的、影响与遗留。 1985 集资办电 2002 厂网分开 2015 九号文">
+            <div class="card-top"><span class="kind">主题笔记</span><span class="card-meta">约 9 分钟</span></div>
             <h3><a class="card-link" href="html/电力系统通识-C-改革史.html">电力系统通识 C · 改革史</a></h3>
             <p>从 1985 集资办电到 2015 九号文，再到全国统一市场，每轮改革写清目的、影响与遗留。</p>
-            <div class="tags"><span class="tag">1985 集资办电</span><span class="tag">2002 厂网分开</span><span class="tag">2015 九号文</span></div>
-            <div class="card-foot"><span>四十多年改了什么，为什么还没改完</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-01</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-ts-d" data-type="core" data-search="通识 D 新角色 现货 高比例风光 储能 构网型 虚拟电厂 VPP 系统成本 负电价 2026 装机 41.3 亿千瓦 光伏超煤电 煤电 49.1% 新型储能 1.36 亿千瓦 边际定价">
-            <div class="card-top"><span class="kind">主题笔记</span><span class="card-meta">阅读约 10 分钟</span></div>
+          <article class="card" id="m-ts-d" data-type="core" data-search="通识 D 新角色 现货 高比例风光 储能 构网型 虚拟电厂 VPP 系统成本 负电价 2026 装机 41.3 亿千瓦 光伏超煤电 煤电 49.1% 新型储能 1.36 亿千瓦 电力系统通识 D · 新角色与现货市场 现货、高比例风光、储能/构网型、VPP 与系统成本，用 2026 年装机与市场数据解释新角色如何改变系统运行。 边际定价 负电价 2026 装机">
+            <div class="card-top"><span class="kind">主题笔记</span><span class="card-meta">约 10 分钟</span></div>
             <h3><a class="card-link" href="html/电力系统通识-D-新角色与现货市场.html">电力系统通识 D · 新角色与现货市场</a></h3>
             <p>现货、高比例风光、储能/构网型、VPP 与系统成本，用 2026 年装机与市场数据解释新角色如何改变系统运行。</p>
-            <div class="tags"><span class="tag">边际定价</span><span class="tag">负电价</span><span class="tag">2026 装机</span></div>
-            <div class="card-foot"><span>风光储怎么改变电力系统</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-09</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-econ" data-type="core" data-search="电力系统经济学原理 Kirschen Strbac 供需 弹性 福利 边际成本 现货 期货 期权 市场力 节点电价 辅助服务 阻塞 输电权 SMP / ZMP / LMP">
-            <div class="card-top"><span class="kind">教材笔记</span><span class="card-meta">阅读约 18 分钟</span></div>
+          <article class="card" id="m-econ" data-type="core" data-search="电力系统经济学原理 Kirschen Strbac 供需 弹性 福利 边际成本 现货 期货 期权 市场力 节点电价 辅助服务 阻塞 输电权 电力系统经济学原理 市场结构、供需与福利、现货与金融工具、市场力、辅助服务、阻塞与节点定价。 SMP / ZMP / LMP 市场力 输电权">
+            <div class="card-top"><span class="kind">教材笔记</span><span class="card-meta">约 18 分钟</span></div>
             <h3><a class="card-link" href="html/电力系统经济学原理-主题笔记.html">电力系统经济学原理</a></h3>
             <p>市场结构、供需与福利、现货与金融工具、市场力、辅助服务、阻塞与节点定价。</p>
-            <div class="tags"><span class="tag">SMP / ZMP / LMP</span><span class="tag">市场力</span><span class="tag">输电权</span></div>
-            <div class="card-foot"><span>Kirschen &amp; Strbac · 朱治中译</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>约 18 分钟</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
         </div>
       </section>
@@ -734,61 +819,54 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
       <!-- 04 Spot -->
       <section class="sec module-section" id="spot" data-cat="spot">
         <div class="sec-head">
-          <div class="sec-num">05 / SPOT</div>
+          <div class="sec-num">02 · SPOT</div>
           <div>
             <h2>电力现货与省间交易</h2>
             <p>从《电力现货市场101问》的基础、出清结算与技术支持系统，到《电力现货市场实务》的国内外实践，再到 2026 年省间与跨区交易、量化报价风控与风险信用结算。七份笔记覆盖机制、算例、治理与制度链路。</p>
           </div>
         </div>
         <div class="cards">
-          <article class="card" id="m-spot-interprovincial" data-type="core" data-search="省间 跨区 中长期 现货 区域市场 南方 长三角 京津冀 跨经营区 915 云霄 输电权 输电价 落地成本 1656 国办4号 275 715 734 绿电 统一电力市场 13,037 亿kWh">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 44 分钟</span></div>
+          <article class="card" id="m-spot-interprovincial" data-type="core" data-search="省间 跨区 中长期 现货 区域市场 南方 长三角 京津冀 跨经营区 915 云霄 输电权 输电价 落地成本 1656 国办4号 275 715 734 绿电 统一电力市场 省间与跨区交易（2026 版） 四层市场、省间中长期与现货、南方与长三角区域市场、跨经营区与输电权，附落地成本算例。 13,037 亿kWh 落地成本 输电权">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 44 分钟</span></div>
             <h3><a class="card-link" href="html/省间与跨区交易-2026-11.html">省间与跨区交易（2026 版）</a></h3>
             <p>四层市场、省间中长期与现货、南方与长三角区域市场、跨经营区与输电权，附落地成本算例。</p>
-            <div class="tags"><span class="tag">13,037 亿kWh</span><span class="tag">落地成本</span><span class="tag">输电权</span></div>
-            <div class="card-foot"><span>2026-11 · 规则与价格总表</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-01</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-quant-risk" data-type="core" data-search="量化 报价 交易 风控 预测 回测 申报 出清 结算 对账 归因 限额 VaR CVaR 储能 售电 VPP 现货新规 履约保函 信用评价 2027 工程闭环 结算对账">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 43 分钟</span></div>
+          <article class="card" id="m-quant-risk" data-type="core" data-search="量化 报价 交易 风控 预测 回测 申报 出清 结算 对账 归因 限额 VaR CVaR 储能 售电 VPP 现货新规 履约保函 信用评价 2027 量化报价与交易风控 预测→报价→申报→结算→归因的工程闭环，含风控限额、对账与 2026 规则版本管理。 工程闭环 CVaR 结算对账">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 43 分钟</span></div>
             <h3><a class="card-link" href="html/量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a></h3>
             <p>预测→报价→申报→结算→归因的工程闭环，含风控限额、对账与 2026 规则版本管理。</p>
-            <div class="tags"><span class="tag">工程闭环</span><span class="tag">CVaR</span><span class="tag">结算对账</span></div>
-            <div class="card-foot"><span>2026-11 · 工程与风控</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-01</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-risk-credit" data-type="core" data-search="风险 信用 结算 履约保函 保险 现金保证金 偏差考核 对手方 违约 退出 保底售电 零售 批零倒挂 信用评价 A B C D 1656 976 1595 2026 草案 风险防控 追退补 信用 A–D">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 56 分钟</span></div>
+          <article class="card" id="m-risk-credit" data-type="core" data-search="风险 信用 结算 履约保函 保险 现金保证金 偏差考核 对手方 违约 退出 保底售电 零售 批零倒挂 信用评价 A B C D 1656 976 1595 2026 草案 风险防控 追退补 电力市场风险、信用与结算（2026 版） 风险分类与分级、A/B/C/D 信用评价、履约保函与逐日盯市、偏差考核、5/8/10 结算时限、违约退出与保底售电。 履约保函 偏差考核 信用 A–D">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 56 分钟</span></div>
             <h3><a class="card-link" href="html/电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算（2026 版）</a></h3>
             <p>风险分类与分级、A/B/C/D 信用评价、履约保函与逐日盯市、偏差考核、5/8/10 结算时限、违约退出与保底售电。</p>
-            <div class="tags"><span class="tag">履约保函</span><span class="tag">偏差考核</span><span class="tag">信用 A–D</span></div>
-            <div class="card-foot"><span>2026-11 · 制度与流程</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-08</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-spot-a" data-type="core" data-search="现货 101问 A 基础 价格机制 定义 体系 集中式 分散式 SMP ZMP LMP 96 时段 日前 实时 日前 + 实时">
-            <div class="card-top"><span class="kind">教材笔记</span><span class="card-meta">阅读约 29 分钟</span></div>
+          <article class="card" id="m-spot-a" data-type="core" data-search="现货 101问 A 基础 价格机制 定义 体系 集中式 分散式 SMP ZMP LMP 96 时段 日前 实时 101 问 A · 基础与价格机制 第 1–26 问：电力市场定义、现货体系、集中式与分散式、SMP / ZMP / LMP。 96 时段 日前 + 实时 LMP">
+            <div class="card-top"><span class="kind">教材笔记</span><span class="card-meta">约 29 分钟</span></div>
             <h3><a class="card-link" href="html/电力现货市场101问-A-基础与价格机制.html">101 问 A · 基础与价格机制</a></h3>
             <p>第 1–26 问：电力市场定义、现货体系、集中式与分散式、SMP / ZMP / LMP。</p>
-            <div class="tags"><span class="tag">96 时段</span><span class="tag">日前 + 实时</span><span class="tag">LMP</span></div>
-            <div class="card-foot"><span>现货为什么是市场体系的重点</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>约 29 分钟</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-spot-b" data-type="core" data-search="现货 101问 B 出清 结算 省域 联合出清 独立出清 节点价 市场力 HHI 边际机组 用户侧 需求响应 联合 / 独立出清 节点价算例">
-            <div class="card-top"><span class="kind">教材笔记</span><span class="card-meta">阅读约 35 分钟</span></div>
+          <article class="card" id="m-spot-b" data-type="core" data-search="现货 101问 B 出清 结算 省域 联合出清 独立出清 节点价 市场力 HHI 边际机组 用户侧 需求响应 101 问 B · 出清结算与省域实践 第 27–65 问：联合/独立出清、节点价算例、结算、市场力识别与用户侧参与。 联合 / 独立出清 节点价算例 HHI">
+            <div class="card-top"><span class="kind">教材笔记</span><span class="card-meta">约 35 分钟</span></div>
             <h3><a class="card-link" href="html/电力现货市场101问-B-出清结算与省域实践.html">101 问 B · 出清结算与省域实践</a></h3>
             <p>第 27–65 问：联合/独立出清、节点价算例、结算、市场力识别与用户侧参与。</p>
-            <div class="tags"><span class="tag">联合 / 独立出清</span><span class="tag">节点价算例</span><span class="tag">HHI</span></div>
-            <div class="card-foot"><span>谁定价、怎么结算、如何识别市场力</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>约 35 分钟</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-spot-c" data-type="core" data-search="现货 101问 C 结算 TTS 技术支持系统 政策演进 省间 日内 水电 调峰 安全校核 熔断 免责 省间日内 熔断 ≤24 h">
-            <div class="card-top"><span class="kind">教材笔记</span><span class="card-meta">阅读约 25 分钟</span></div>
+          <article class="card" id="m-spot-c" data-type="core" data-search="现货 101问 C 结算 TTS 技术支持系统 政策演进 省间 日内 水电 调峰 安全校核 熔断 免责 101 问 C · 结算、TTS 与政策演进 第 65–101 问：省间日内、水电与调峰、安全校核、市场治理、应急熔断与免责。 省间日内 调峰 熔断 ≤24 h">
+            <div class="card-top"><span class="kind">教材笔记</span><span class="card-meta">约 25 分钟</span></div>
             <h3><a class="card-link" href="html/电力现货市场101问-C-结算TTS与政策演进.html">101 问 C · 结算、TTS 与政策演进</a></h3>
             <p>第 65–101 问：省间日内、水电与调峰、安全校核、市场治理、应急熔断与免责。</p>
-            <div class="tags"><span class="tag">省间日内</span><span class="tag">调峰</span><span class="tag">熔断 ≤24 h</span></div>
-            <div class="card-foot"><span>规则如何落到系统与治理</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>约 25 分钟</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-spot-practice" data-type="core" data-search="电力现货市场实务 精读 理论 国外 PJM ERCOT 英国 欧洲 澳大利亚 巴西 浙江 山西 山东 福建 四川 甘肃 技术支持 15 环节 VOLL 五篇 31 章">
-            <div class="card-top"><span class="kind">教材笔记</span><span class="card-meta">阅读约 12 分钟</span></div>
+          <article class="card" id="m-spot-practice" data-type="core" data-search="电力现货市场实务 精读 理论 国外 PJM ERCOT 英国 欧洲 澳大利亚 巴西 浙江 山西 山东 福建 四川 甘肃 技术支持 15 环节 VOLL 电力现货市场实务 五篇 31 章：理论、国外实践、国内八省、技术支持系统与展望，附 15 环节交易流程。 五篇 31 章 15 环节 VOLL">
+            <div class="card-top"><span class="kind">教材笔记</span><span class="card-meta">约 12 分钟</span></div>
             <h3><a class="card-link" href="html/电力现货市场实务-精读笔记.html">电力现货市场实务</a></h3>
             <p>五篇 31 章：理论、国外实践、国内八省、技术支持系统与展望，附 15 环节交易流程。</p>
-            <div class="tags"><span class="tag">五篇 31 章</span><span class="tag">15 环节</span><span class="tag">VOLL</span></div>
-            <div class="card-foot"><span>国调中心组编 · 2023</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>约 12 分钟</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
         </div>
       </section>
@@ -796,96 +874,84 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
       <!-- 05 Global -->
       <section class="sec module-section" id="intl" data-cat="intl">
         <div class="sec-head">
-          <div class="sec-num">06 / GLOBAL</div>
+          <div class="sec-num">03 · GLOBAL</div>
           <div>
             <h2>海外市场</h2>
             <p>澳大利亚 NEM、德国、英国、意大利、西班牙、法国、荷兰、波兰、比利时/北欧、美国（ERCOT/PJM/CAISO）与日本是十一套设计取向不同的市场：澳洲用区域价 + 5 分钟结算，德国用欧盟耦合 + 平衡市场，英国用单一市场 + 平衡机制 + 容量市场，意大利用七个报价区 + MACSE 长周期储能拍卖，西班牙用伊比利亚双区 + 15 分钟结算 + 2026 年容量市场，法国用核电主导 + RTE 单一买方容量机制 + ARENH 退场，荷兰用单一报价区 + 无容量市场 + 拥堵接入，波兰用容量市场 + OZE 拍卖 + 储能补贴，比利时/北欧用 CRM 与分区水电市场，美国用 ISO/RTO 拼图 + 能量-only/容量市场/RA 三种范式，日本用 30 分钟现货 + 容量市场 + LTDA。十二份笔记只讲交易与结算，不替代当地法律意见。</p>
           </div>
         </div>
         <div class="cards">
-          <article class="card" id="m-intl-au" data-type="core" data-search="澳大利亚 NEM AEMO AEMC AER 新南威尔士 昆士兰 维多利亚 南澳 塔斯马尼亚 5分钟结算 FCAS 价格上限 CPT APC MLF IRLF 结算残差 RRO CIS LGC SRES IRP IESS 储能 中国主体 注册 保函 5 分钟结算">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 28 分钟</span></div>
+          <article class="card" id="m-intl-au" data-type="core" data-search="澳大利亚 NEM AEMO AEMC AER 新南威尔士 昆士兰 维多利亚 南澳 塔斯马尼亚 5分钟结算 FCAS 价格上限 CPT APC MLF IRLF 结算残差 RRO CIS LGC SRES IRP IESS 储能 中国主体 注册 保函 澳大利亚 NEM 电力市场（2026 版） 五个区域、5 分钟出清与结算、FCAS、价格上限与 CPT、MLF/IRLF、CfD/CIS 与储能进入路径。 NEM 5 分钟结算 FCAS">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 28 分钟</span></div>
             <h3><a class="card-link" href="html/澳大利亚NEM电力市场-2026-11.html">澳大利亚 NEM 电力市场（2026 版）</a></h3>
             <p>五个区域、5 分钟出清与结算、FCAS、价格上限与 CPT、MLF/IRLF、CfD/CIS 与储能进入路径。</p>
-            <div class="tags"><span class="tag">NEM</span><span class="tag">5 分钟结算</span><span class="tag">FCAS</span></div>
-            <div class="card-foot"><span>2026-11 · 五区域与 5 分钟结算</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-01</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-intl-de" data-type="core" data-search="德国 电力市场 DE-LU EPEX 日前 日内 15分钟 EUPHEMIA SDAC SIDC 平衡市场 FCR aFRR mFRR 再调度 Redispatch 2.0 EEG 负电价 容量机制 StromVKG 电网费 §14a REMIT 中国主体 注册">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 29 分钟</span></div>
+          <article class="card" id="m-intl-de" data-type="core" data-search="德国 电力市场 DE-LU EPEX 日前 日内 15分钟 EUPHEMIA SDAC SIDC 平衡市场 FCR aFRR mFRR 再调度 Redispatch 2.0 EEG 负电价 容量机制 StromVKG 电网费 §14a REMIT 中国主体 注册 德国电力市场（2026 版） DE-LU 报价区、EPEX 日前/日内 15 分钟、平衡市场、再调度 2.0、EEG 负价规则与容量机制。 DE-LU EPEX 平衡市场">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 29 分钟</span></div>
             <h3><a class="card-link" href="html/德国电力市场-2026-11.html">德国电力市场（2026 版）</a></h3>
             <p>DE-LU 报价区、EPEX 日前/日内 15 分钟、平衡市场、再调度 2.0、EEG 负价规则与容量机制。</p>
-            <div class="tags"><span class="tag">DE-LU</span><span class="tag">EPEX</span><span class="tag">平衡市场</span></div>
-            <div class="card-foot"><span>2026-11 · DE-LU 与欧盟耦合</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-01</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-intl-uk" data-type="core" data-search="英国 大不列颠 GB 电力市场 NESO Ofgem Elexon DESNZ EPEX 日前 半小时拍卖 平衡机制 BMU BOALF 容量市场 T-4 T-1 CfD LDES 长时储能 cap and floor 并网改革 TMO4+ REMA TNUoS DUoS BSUoS REMIT 储能 电池 中国主体 注册">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 32 分钟</span></div>
+          <article class="card" id="m-intl-uk" data-type="core" data-search="英国 大不列颠 GB 电力市场 NESO Ofgem Elexon DESNZ EPEX 日前 半小时拍卖 平衡机制 BMU BOALF 容量市场 T-4 T-1 CfD LDES 长时储能 cap and floor 并网改革 TMO4+ REMA TNUoS DUoS BSUoS REMIT 储能 电池 中国主体 注册 英国电力市场（2026 版） GB 单一市场、EPEX 日前与半小时拍卖、平衡机制、容量市场、CfD/LDES 与储能进入路径。 GB 平衡机制 容量市场">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 32 分钟</span></div>
             <h3><a class="card-link" href="html/英国电力市场-2026-11.html">英国电力市场（2026 版）</a></h3>
             <p>GB 单一市场、EPEX 日前与半小时拍卖、平衡机制、容量市场、CfD/LDES 与储能进入路径。</p>
-            <div class="tags"><span class="tag">GB</span><span class="tag">平衡机制</span><span class="tag">容量市场</span></div>
-            <div class="card-foot"><span>2026-11 · GB 单一市场与容量机制</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-10</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-intl-it" data-type="core" data-search="意大利 电力市场 IPEX GME Terna MGP MI MSD MB 七个报价区 PUN MACSE 储能容量拍卖 容量市场 FER X 194/2026 双向差价合约 NZIA 并网 中国主体 注册">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 32 分钟</span></div>
+          <article class="card" id="m-intl-it" data-type="core" data-search="意大利 电力市场 IPEX GME Terna MGP MI MSD MB 七个报价区 PUN MACSE 储能容量拍卖 容量市场 FER X 194/2026 双向差价合约 NZIA 并网 中国主体 注册 意大利电力市场（2026 版） 七个报价区、MGP/MI/MSD、MACSE 储能容量拍卖、容量市场与 FER X。 IPEX MACSE 七个报价区">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 32 分钟</span></div>
             <h3><a class="card-link" href="html/意大利电力市场-2026-11.html">意大利电力市场（2026 版）</a></h3>
             <p>七个报价区、MGP/MI/MSD、MACSE 储能容量拍卖、容量市场与 FER X。</p>
-            <div class="tags"><span class="tag">IPEX</span><span class="tag">MACSE</span><span class="tag">七个报价区</span></div>
-            <div class="card-foot"><span>2026-11 · 七区与 MACSE</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-10</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-intl-es" data-type="core" data-search="西班牙 Spain 伊比利亚 MIBEL OMIE REE CNMC MITECO 日前 日内 15分钟 不平衡结算 容量市场 TED/966/2026 储能 PNIEC 22.5GW RD 997/2025 RDL 7/2026 灵活并网 构网型 负电价 大停电 中国主体 注册 BRP REMIT">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 26 分钟</span></div>
+          <article class="card" id="m-intl-es" data-type="core" data-search="西班牙 Spain 伊比利亚 MIBEL OMIE REE CNMC MITECO 日前 日内 15分钟 不平衡结算 容量市场 TED/966/2026 储能 PNIEC 22.5GW RD 997/2025 RDL 7/2026 灵活并网 构网型 负电价 大停电 中国主体 注册 BRP REMIT 西班牙电力市场（2026 版） MIBEL 与 OMIE 日前/日内、15 分钟结算、2026 年容量市场、储能并网改革与进入路径。 西班牙 MIBEL 容量市场">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 26 分钟</span></div>
             <h3><a class="card-link" href="html/西班牙电力市场-2026-11.html">西班牙电力市场（2026 版）</a></h3>
             <p>MIBEL 与 OMIE 日前/日内、15 分钟结算、2026 年容量市场、储能并网改革与进入路径。</p>
-            <div class="tags"><span class="tag">西班牙</span><span class="tag">MIBEL</span><span class="tag">容量市场</span></div>
-            <div class="card-foot"><span>2026-11 · 伊比利亚市场与容量机制</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-10</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-intl-nl" data-type="core" data-search="荷兰 Netherlands NL EPEX 日前 日内 15分钟 不平衡结算 TenneT ACM Energiewet SDE++ 电网拥堵 ATR85 非 firm 优先排序 aFRR mFRR FCR 容量市场 储能 电池 净计量 中国主体 REMIT EPEX NL">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 24 分钟</span></div>
+          <article class="card" id="m-intl-nl" data-type="core" data-search="荷兰 Netherlands NL EPEX 日前 日内 15分钟 不平衡结算 TenneT ACM Energiewet SDE++ 电网拥堵 ATR85 非 firm 优先排序 aFRR mFRR FCR 容量市场 储能 电池 净计量 中国主体 REMIT 荷兰电力市场（2026 版） EPEX NL 日前/日内、15 分钟结算、无容量市场、SDE++ 与电网拥堵下的储能路径。 荷兰 EPEX NL 电网拥堵">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 24 分钟</span></div>
             <h3><a class="card-link" href="html/荷兰电力市场-2026-11.html">荷兰电力市场（2026 版）</a></h3>
             <p>EPEX NL 日前/日内、15 分钟结算、无容量市场、SDE++ 与电网拥堵下的储能路径。</p>
-            <div class="tags"><span class="tag">荷兰</span><span class="tag">EPEX NL</span><span class="tag">电网拥堵</span></div>
-            <div class="card-foot"><span>2026-11 · 单一报价区与拥堵市场</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-10</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-intl-pl" data-type="core" data-search="波兰 Poland PSE URE TGE RDN RDB IRGiT 容量市场 rynek mocy 2030 465.02 6887.639 OZE 拍卖 15分钟 平衡市场 PICASSO MARI 储能 BESS NFOŚiGW 4.15亿兹罗提 中国主体 REMIT">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 34 分钟</span></div>
+          <article class="card" id="m-intl-pl" data-type="core" data-search="波兰 Poland PSE URE TGE RDN RDB IRGiT 容量市场 rynek mocy 2030 465.02 6887.639 OZE 拍卖 15分钟 平衡市场 PICASSO MARI 储能 BESS NFOŚiGW 4.15亿兹罗提 中国主体 REMIT 波兰电力市场（2026 版） 容量市场主导、OZE 拍卖、15 分钟结算与储能补贴共同构成波兰电力市场。 波兰 容量市场 OZE 拍卖">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 34 分钟</span></div>
             <h3><a class="card-link" href="html/波兰电力市场-2026-11.html">波兰电力市场（2026 版）</a></h3>
             <p>容量市场主导、OZE 拍卖、15 分钟结算与储能补贴共同构成波兰电力市场。</p>
-            <div class="tags"><span class="tag">波兰</span><span class="tag">容量市场</span><span class="tag">OZE 拍卖</span></div>
-            <div class="card-foot"><span>2026-11 · 容量市场与储能补贴双轮</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-10</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-intl-benl" data-type="core" data-search="比利时 Belgium Elia CREG CRM 容量市场 Y-4 Y-2 Y-1 北欧 Nordic Nord Pool 瑞典 挪威 芬兰 丹麦 SE1 SE2 SE3 SE4 NO1 NO5 DK1 DK2 FI 15分钟 mFRR EAM 负电价 水电 核电 effektreserv 海上风电 储能 BESS 中国主体 REMIT">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 34 分钟</span></div>
+          <article class="card" id="m-intl-benl" data-type="core" data-search="比利时 Belgium Elia CREG CRM 容量市场 Y-4 Y-2 Y-1 北欧 Nordic Nord Pool 瑞典 挪威 芬兰 丹麦 SE1 SE2 SE3 SE4 NO1 NO5 DK1 DK2 FI 15分钟 mFRR EAM 负电价 水电 核电 effektreserv 海上风电 储能 BESS 中国主体 REMIT 比利时与北欧电力市场（2026 版） 比利时 CRM 与北欧分区水电市场：两种容量充裕性路径、负价与储能收益结构。 比利时 北欧 Nord Pool">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 34 分钟</span></div>
             <h3><a class="card-link" href="html/比利时与北欧电力市场-2026-11.html">比利时与北欧电力市场（2026 版）</a></h3>
             <p>比利时 CRM 与北欧分区水电市场：两种容量充裕性路径、负价与储能收益结构。</p>
-            <div class="tags"><span class="tag">比利时</span><span class="tag">北欧</span><span class="tag">Nord Pool</span></div>
-            <div class="card-foot"><span>2026-11 · 容量市场与分区水电</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-10</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-intl-fr" data-type="core" data-search="法国 电力市场 核电 EDF ARENH VNU 容量机制 mécanisme de capacité RTE CRE EPEX 日前 负价 储能 并网 IEF 中国主体">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 24 分钟</span></div>
+          <article class="card" id="m-intl-fr" data-type="core" data-search="法国 电力市场 核电 EDF ARENH VNU 容量机制 mécanisme de capacité RTE CRE EPEX 日前 负价 储能 并网 IEF 中国主体 法国电力市场（2026 版）：核电、ARENH 退场与容量机制 核电主导的日前市场、ARENH 于 2025 年底终止后的 VNU 安排、2026 年集中化容量机制首拍、平衡与辅助服务、储能收益与中国主体准入。 法国 核电 ARENH VNU 容量机制 储能">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 24 分钟</span></div>
             <h3><a class="card-link" href="html/法国电力市场-2026-11.html">法国电力市场（2026 版）：核电、ARENH 退场与容量机制</a></h3>
             <p>核电主导的日前市场、ARENH 于 2025 年底终止后的 VNU 安排、2026 年集中化容量机制首拍、平衡与辅助服务、储能收益与中国主体准入。</p>
-            <div class="tags"><span class="tag">法国</span><span class="tag">核电</span><span class="tag">ARENH</span><span class="tag">VNU</span><span class="tag">容量机制</span><span class="tag">储能</span></div>
-            <div class="card-foot"><span>2026-11 · 核电 + ARENH 退场 + 容量机制</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-11</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-intl-us" data-type="core" data-search="美国 电力市场 ERCOT 得州 PJM CAISO 加州 节点价 能量-only 容量市场 BRA 资源充裕度 RA ELCC 辅助服务 RTC+B ORDC 价格上限 储能 电池 ITC FEOC 关税 并网 队列 CFIUS UL 9540A NFPA 855 中国主体">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 21 分钟</span></div>
+          <article class="card" id="m-intl-us" data-type="core" data-search="美国 电力市场 ERCOT 得州 PJM CAISO 加州 节点价 能量-only 容量市场 BRA 资源充裕度 RA ELCC 辅助服务 RTC+B ORDC 价格上限 储能 电池 ITC FEOC 关税 并网 队列 CFIUS UL 9540A NFPA 855 中国主体 美国电力市场（2026 版）：ERCOT / PJM / CAISO 三种设计范式：ERCOT 能量-only 与节点价、PJM 容量市场、CAISO 日前实时与西部市场；储能收益、并网、ITC/FEOC 与中资进入路径。 美国 ERCOT PJM CAISO 储能">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 21 分钟</span></div>
             <h3><a class="card-link" href="html/美国电力市场-2026-11.html">美国电力市场（2026 版）：ERCOT / PJM / CAISO</a></h3>
             <p>三种设计范式：ERCOT 能量-only 与节点价、PJM 容量市场、CAISO 日前实时与西部市场；储能收益、并网、ITC/FEOC 与中资进入路径。</p>
-            <div class="tags"><span class="tag">美国</span><span class="tag">ERCOT</span><span class="tag">PJM</span><span class="tag">CAISO</span><span class="tag">储能</span></div>
-            <div class="card-foot"><span>2026-11 · ERCOT / PJM / CAISO 三范式</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-10</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-intl-jp" data-type="core" data-search="日本 电力市场 JEPX 现货 30 分钟 容量市场 需给调整市场 EPRX LTDA 长期脱碳电源拍卖 非化石证书 FIT FIP 储能 系统用蓄电池 并网 接续检讨 外为法 中国主体">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 19 分钟</span></div>
+          <article class="card" id="m-intl-jp" data-type="core" data-search="日本 电力市场 JEPX 现货 30 分钟 容量市场 需给调整市场 EPRX LTDA 长期脱碳电源拍卖 非化石证书 FIT FIP 储能 系统用蓄电池 并网 接续检讨 外为法 中国主体 日本电力市场（2026 版）：现货、容量市场与 LTDA JEPX 30 分钟现货、容量市场、需给调整市场与长期脱碳电源拍卖；储能收益、并网排队、外为法与中资进入路径。 日本 JEPX 容量市场 LTDA 储能">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 19 分钟</span></div>
             <h3><a class="card-link" href="html/日本电力市场-2026-11.html">日本电力市场（2026 版）：现货、容量市场与 LTDA</a></h3>
             <p>JEPX 30 分钟现货、容量市场、需给调整市场与长期脱碳电源拍卖；储能收益、并网排队、外为法与中资进入路径。</p>
-            <div class="tags"><span class="tag">日本</span><span class="tag">JEPX</span><span class="tag">容量市场</span><span class="tag">LTDA</span><span class="tag">储能</span></div>
-            <div class="card-foot"><span>2026-11 · 现货 + 容量 + LTDA</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-10</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-intl-storage" data-type="core" data-search="海外储能 澳大利亚 德国 英国 法国 意大利 西班牙 荷兰 波兰 比利时 北欧 美国 日本 大储 工商储 NEM FCAS CIS DE-LU FCR aFRR mFRR §14a §118 BM 容量市场 T-4 T-1 LDES MACSE MSD MIBEL 容量首拍 SDE++ ATR85 rynek mocy NFOŚiGW CRM ARENH VNU PL-1 PL-4 RTE ERCOT PJM CAISO ELCC ITC FEOC JEPX EPRX LTDA 报价区 收益堆叠 投决 并网 合成算例 十一市场">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 87 分钟</span></div>
+          <article class="card" id="m-intl-storage" data-type="core" data-search="海外储能 澳大利亚 德国 英国 法国 意大利 西班牙 荷兰 波兰 比利时 北欧 美国 日本 大储 工商储 NEM FCAS CIS DE-LU FCR aFRR mFRR §14a §118 BM 容量市场 T-4 T-1 LDES MACSE MSD MIBEL 容量首拍 SDE++ ATR85 rynek mocy NFOŚiGW CRM ARENH VNU PL-1 PL-4 RTE ERCOT PJM CAISO ELCC ITC FEOC JEPX EPRX LTDA 报价区 收益堆叠 投决 并网 合成算例 海外储能业务：十一市场大储与工商储（2026 版） 澳、德、英、法、意、西、荷、波、比·北欧、美、日十一市场的收益堆叠、准入并网、电网费、合同融资与投决口径。 海外储能 十一市场 收益堆叠 投决">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 87 分钟</span></div>
             <h3><a class="card-link" href="html/海外储能业务-2026-11.html">海外储能业务：十一市场大储与工商储（2026 版）</a></h3>
             <p>澳、德、英、法、意、西、荷、波、比·北欧、美、日十一市场的收益堆叠、准入并网、电网费、合同融资与投决口径。</p>
-            <div class="tags"><span class="tag">海外储能</span><span class="tag">十一市场</span><span class="tag">收益堆叠</span><span class="tag">投决</span></div>
-            <div class="card-foot"><span>2026-11 · 十一市场与投决口径</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-11</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
         </div>
       </section>
@@ -893,54 +959,48 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
       <!-- 06 Cross -->
       <section class="sec module-section" id="cross" data-cat="cross">
         <div class="sec-head">
-          <div class="sec-num">07 / CROSS</div>
+          <div class="sec-num">04 · CROSS</div>
           <div>
             <h2>横向专题</h2>
             <p>把散落在十一市场模块里的“同一类问题”横向拉平：海外并网与合规、容量机制、辅助服务与平衡市场、储能收益建模与数据源、跨国 PPA/绿证/tolling、同口径快照与投决日历。六份笔记不重复单市场规则，只做跨市场对照、投决口径与查证入口。</p>
           </div>
         </div>
         <div class="cards">
-          <article class="card" id="m-cross-grid" data-type="core" data-search="海外并网 grid code VDE-AR-N 4105 4110 4120 4130 G99 G100 CEI 0-21 CEI 0-16 NTS RD 647/2020 Netcode 波兰并网 EN 50549 RfG 2016/631 IEC 62933 UL 9540 UL 9540A NFPA 855 消防 NIS2 电池法规 2023/1542 电池护照 2027-02-18 NZIA 2024/1735 外资审查 CFIUS FEFTA FIRB NSIA 中国厂商 合规 Grid Code">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 38 分钟</span></div>
+          <article class="card" id="m-cross-grid" data-type="core" data-search="海外并网 grid code VDE-AR-N 4105 4110 4120 4130 G99 G100 CEI 0-21 CEI 0-16 NTS RD 647/2020 Netcode 波兰并网 EN 50549 RfG 2016/631 IEC 62933 UL 9540 UL 9540A NFPA 855 消防 NIS2 电池法规 2023/1542 电池护照 2027-02-18 NZIA 2024/1735 外资审查 CFIUS FEFTA FIRB NSIA 中国厂商 海外并网与合规手册（2026 版）：从 grid code 到电池护照 把散落在十一市场模块里的并网标准、设备认证、消防、NIS2、电池法规与电池护照、NZIA、外资审查拉成一张投决清单。 并网 合规 Grid Code NIS2 电池护照 NZIA 外资审查">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 38 分钟</span></div>
             <h3><a class="card-link" href="html/海外并网与合规-2026-11.html">海外并网与合规手册（2026 版）：从 grid code 到电池护照</a></h3>
             <p>把散落在十一市场模块里的并网标准、设备认证、消防、NIS2、电池法规与电池护照、NZIA、外资审查拉成一张投决清单。</p>
-            <div class="tags"><span class="tag">并网</span><span class="tag">合规</span><span class="tag">Grid Code</span><span class="tag">NIS2</span><span class="tag">电池护照</span><span class="tag">NZIA</span><span class="tag">外资审查</span></div>
-            <div class="card-foot"><span>2026-11 · 并网 / 认证 / 消防 / 网络 / 电池 / 供应链 / 外资</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-10</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-cross-capacity" data-type="core" data-search="容量机制 容量市场 横向对照 英国 CM T-4 T-1 意大利 容量市场 MACSE 西班牙 TED/966 法国 RTE PL-1 PL-4 波兰 rynek mocy 比利时 CRM 德国 StromVKG 瑞典 effektreserv 芬兰 tehoreservi 澳洲 CIS 美国 PJM BRA ELCC ERCOT 能量-only CAISO RA 日本 容量市场 LTDA 年金 拍卖 双向 CfD 战略储备 de-rating 降额 储能 收入叠加">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 35 分钟</span></div>
+          <article class="card" id="m-cross-capacity" data-type="core" data-search="容量机制 容量市场 横向对照 英国 CM T-4 T-1 意大利 容量市场 MACSE 西班牙 TED/966 法国 RTE PL-1 PL-4 波兰 rynek mocy 比利时 CRM 德国 StromVKG 瑞典 effektreserv 芬兰 tehoreservi 澳洲 CIS 美国 PJM BRA ELCC ERCOT 能量-only CAISO RA 日本 容量市场 LTDA 年金 拍卖 双向 CfD 战略储备 de-rating 降额 储能 收入叠加 容量机制横向对照（2026 版）：年金、拍卖、双向 CfD 与战略储备 把英国 CM、意大利 CM+MACSE、西班牙 TED/966、法国 PL-1/PL-4、波兰 rynek mocy、比利时 CRM、德国 StromVKG、澳洲 CIS、美国 PJM/CAISO 与日本 CM/LTDA 拉到一张表：先分类型，再统一单位，最后算储能容量收入。 容量机制 容量市场 CRM MACSE PL-1 PL-4 StromVKG CIS LTDA">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 35 分钟</span></div>
             <h3><a class="card-link" href="html/容量机制横向对照-2026-11.html">容量机制横向对照（2026 版）：年金、拍卖、双向 CfD 与战略储备</a></h3>
             <p>把英国 CM、意大利 CM+MACSE、西班牙 TED/966、法国 PL-1/PL-4、波兰 rynek mocy、比利时 CRM、德国 StromVKG、澳洲 CIS、美国 PJM/CAISO 与日本 CM/LTDA 拉到一张表：先分类型，再统一单位，最后算储能容量收入。</p>
-            <div class="tags"><span class="tag">容量机制</span><span class="tag">容量市场</span><span class="tag">CRM</span><span class="tag">MACSE</span><span class="tag">PL-1</span><span class="tag">PL-4</span><span class="tag">StromVKG</span><span class="tag">CIS</span><span class="tag">LTDA</span></div>
-            <div class="card-foot"><span>2026-11 · 年金 / 拍卖 / 双向 CfD / 储备</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-11</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-cross-ancillary" data-type="core" data-search="辅助服务 平衡市场 横向对照 FCR aFRR mFRR PICASSO MARI 法国 MA mécanisme d'ajustement RTE 英国 BM BOALF DC DM DR SFFR QR SR BR DFS 意大利 MSD MB 西班牙 二次备用 三次备用 荷兰 TenneT 波兰 PSE 比利时 Elia 北欧 mFRR EAM FCR-N FCR-D 澳洲 FCAS 1秒 6秒 60秒 美国 ERCOT Reg Up Down RRS ECRS PJM Regulation Synchronized Reserve CAISO FRP 日本 EPRX 一次调整 二次调整 三次调整 储能 预审 SOC 机会成本">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 24 分钟</span></div>
+          <article class="card" id="m-cross-ancillary" data-type="core" data-search="辅助服务 平衡市场 横向对照 FCR aFRR mFRR PICASSO MARI 法国 MA mécanisme d'ajustement RTE 英国 BM BOALF DC DM DR SFFR QR SR BR DFS 意大利 MSD MB 西班牙 二次备用 三次备用 荷兰 TenneT 波兰 PSE 比利时 Elia 北欧 mFRR EAM FCR-N FCR-D 澳洲 FCAS 1秒 6秒 60秒 美国 ERCOT Reg Up Down RRS ECRS PJM Regulation Synchronized Reserve CAISO FRP 日本 EPRX 一次调整 二次调整 三次调整 储能 预审 SOC 机会成本 辅助服务与平衡市场对照（2026 版）：从 FCR 到 FCAS，从 BM 到 EPRX 把欧洲 FCR/aFRR/mFRR、法国 MA、英国 BM、意大利 MSD/MB、澳洲 FCAS、美国 Reg/RRS/FRP、日本 EPRX 放到同一张功能表：先分频率、备用、爬坡、电压与黑启动，再比采购、结算、储能资格与收入叠加。 辅助服务 平衡市场 FCR aFRR mFRR MA FCAS BM EPRX">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 24 分钟</span></div>
             <h3><a class="card-link" href="html/辅助服务与平衡市场对照-2026-11.html">辅助服务与平衡市场对照（2026 版）：从 FCR 到 FCAS，从 BM 到 EPRX</a></h3>
             <p>把欧洲 FCR/aFRR/mFRR、法国 MA、英国 BM、意大利 MSD/MB、澳洲 FCAS、美国 Reg/RRS/FRP、日本 EPRX 放到同一张功能表：先分频率、备用、爬坡、电压与黑启动，再比采购、结算、储能资格与收入叠加。</p>
-            <div class="tags"><span class="tag">辅助服务</span><span class="tag">平衡市场</span><span class="tag">FCR</span><span class="tag">aFRR</span><span class="tag">mFRR</span><span class="tag">MA</span><span class="tag">FCAS</span><span class="tag">BM</span><span class="tag">EPRX</span></div>
-            <div class="card-foot"><span>2026-11 · 频率 / 备用 / 爬坡 / 平衡</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-11</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-cross-revenue" data-type="core" data-search="储能收益建模 数据源 国别入口 ENTSO-E Transparency EPEX RTE CRE NESO Elexon BMRS GME OMIE REE PSE Nord Pool CAISO OASIS ERCOT PJM Data Miner JEPX OCCTO 15分钟 5分钟 粒度 RTE 往返效率 退化 循环寿命 捕获率 capture rate 降额 ELCC 收入叠加 回测 过拟合 LCOS NPV IRR 法国 PL-1 PL-4 容量交付期">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 21 分钟</span></div>
+          <article class="card" id="m-cross-revenue" data-type="core" data-search="储能收益建模 数据源 国别入口 ENTSO-E Transparency EPEX RTE CRE NESO Elexon BMRS GME OMIE REE PSE Nord Pool CAISO OASIS ERCOT PJM Data Miner JEPX OCCTO 15分钟 5分钟 粒度 RTE 往返效率 退化 循环寿命 捕获率 capture rate 降额 ELCC 收入叠加 回测 过拟合 LCOS NPV IRR 法国 PL-1 PL-4 容量交付期 储能收益建模与数据源（2026 版）：从 5 分钟价格到 15 年现金流 把 ENTSO-E、EPEX、RTE、CRE、NESO、Elexon BMRS、GME、OMIE、REE、PSE、Nord Pool、CAISO、ERCOT、PJM、JEPX 的取数入口放进一张表，再按十一市场列国别入口与缺口，并讲粒度对齐、RTE/退化、捕获率、降额、收入叠加冲突与回测方法。 储能收益 数据源 RTE 退化 捕获率 回测 国别入口">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 21 分钟</span></div>
             <h3><a class="card-link" href="html/储能收益建模与数据源-2026-11.html">储能收益建模与数据源（2026 版）：从 5 分钟价格到 15 年现金流</a></h3>
             <p>把 ENTSO-E、EPEX、RTE、CRE、NESO、Elexon BMRS、GME、OMIE、REE、PSE、Nord Pool、CAISO、ERCOT、PJM、JEPX 的取数入口放进一张表，再按十一市场列国别入口与缺口，并讲粒度对齐、RTE/退化、捕获率、降额、收入叠加冲突与回测方法。</p>
-            <div class="tags"><span class="tag">储能收益</span><span class="tag">数据源</span><span class="tag">RTE</span><span class="tag">退化</span><span class="tag">捕获率</span><span class="tag">回测</span><span class="tag">国别入口</span></div>
-            <div class="card-foot"><span>2026-11 · 取数 / 粒度 / 效率 / 退化 / 回测</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-11</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-cross-ppa" data-type="core" data-search="跨国 PPA 绿证 GO REGO REC LGC GEC AIB EECS 跨境承认 绿电 环境属性 CfD 差价合约 法国 CRE complément de rémunération ARENH VNU 德国 EEG 西班牙 TED 966 荷兰 SDE++ 比利时 CRM 美国 ITC FEOC 日本 FIT FIP LTDA NFC 储能资格 merchant tail tolling 托管 包销 24/7 小时级匹配 GHG Protocol Scope 2 market-based pay-as-produced baseload collar floor cap proxy revenue swap 形状风险 基差风险 捕获率 信用 合同条款 中国 GEC 美国 REC 澳洲 LGC 日本 非化石证书 英国 REGO">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 31 分钟</span></div>
+          <article class="card" id="m-cross-ppa" data-type="core" data-search="跨国 PPA 绿证 GO REGO REC LGC GEC AIB EECS 跨境承认 绿电 环境属性 CfD 差价合约 法国 CRE complément de rémunération ARENH VNU 德国 EEG 西班牙 TED 966 荷兰 SDE++ 比利时 CRM 美国 ITC FEOC 日本 FIT FIP LTDA NFC 储能资格 merchant tail tolling 托管 包销 24/7 小时级匹配 GHG Protocol Scope 2 market-based pay-as-produced baseload collar floor cap proxy revenue swap 形状风险 基差风险 捕获率 信用 合同条款 中国 GEC 美国 REC 澳洲 LGC 日本 非化石证书 英国 REGO 跨国 PPA、绿证与 tolling（2026 版）：从 GO 到 merchant tail 把 GO/REGO/REC/LGC/GEC、AIB EECS 跨境承认、十一市场支持工具与储能资格、法国 CRE CfD、CfD 与 CIS 叠加、merchant tail、tolling 条款和 24/7 小时级匹配拉成一张合同表；附 D 级合成算例与尽调清单。 PPA 绿证 GO CfD CRE EEG SDE++ ITC tolling merchant tail">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 31 分钟</span></div>
             <h3><a class="card-link" href="html/跨国PPA与绿证-2026-11.html">跨国 PPA、绿证与 tolling（2026 版）：从 GO 到 merchant tail</a></h3>
             <p>把 GO/REGO/REC/LGC/GEC、AIB EECS 跨境承认、十一市场支持工具与储能资格、法国 CRE CfD、CfD 与 CIS 叠加、merchant tail、tolling 条款和 24/7 小时级匹配拉成一张合同表；附 D 级合成算例与尽调清单。</p>
-            <div class="tags"><span class="tag">PPA</span><span class="tag">绿证</span><span class="tag">GO</span><span class="tag">CfD</span><span class="tag">CRE</span><span class="tag">EEG</span><span class="tag">SDE++</span><span class="tag">ITC</span><span class="tag">tolling</span><span class="tag">merchant tail</span></div>
-            <div class="card-foot"><span>2026-11 · 合同 / 证书 / 跨境承认 / 现金流</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-11</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-cross-snapshot" data-type="core" data-search="海外市场 同口径 快照 装机 储能存量 管线 年度均价 负价小时 捕获率 并网排队 降额因子 横向专题 覆盖矩阵 并网合规 容量机制 辅助服务 数据源 PPA 绿证 澳大利亚 德国 英国 意大利 西班牙 法国 荷兰 波兰 比利时 北欧 美国 日本 2026Q4 2027 日历 MACSE 英国 LDES 西班牙容量首拍 波兰容量拍卖 比利时 CRM 北欧报价区 MHHS Energiewet PL-1 PL-4 VNU 中国主体 公司设立 税务 外资审查 认证 BRP 保险 C 级 待复核 数据源 投决日历 数据复核">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 39 分钟</span></div>
+          <article class="card" id="m-cross-snapshot" data-type="core" data-search="海外市场 同口径 快照 装机 储能存量 管线 年度均价 负价小时 捕获率 并网排队 降额因子 横向专题 覆盖矩阵 并网合规 容量机制 辅助服务 数据源 PPA 绿证 澳大利亚 德国 英国 意大利 西班牙 法国 荷兰 波兰 比利时 北欧 美国 日本 2026Q4 2027 日历 MACSE 英国 LDES 西班牙容量首拍 波兰容量拍卖 比利时 CRM 北欧报价区 MHHS Energiewet PL-1 PL-4 VNU 中国主体 公司设立 税务 外资审查 认证 BRP 保险 C 级 待复核 数据源 海外市场同口径快照与投决日历（2026 版）：十一市场、七列口径、五张工单 把澳/德/英/意/西/法/荷/波/比·北欧/美/日的装机、储能、均价、负价小时、捕获率、并网排队与降额因子拉成同一张表，并完成 2025 年 P0 装机与均价回填；空缺明确标“待核实”，附五专题×十一市场覆盖矩阵、2026Q4–2027 事件日历、中国主体进入勾选表与 C 级数字待复核页。 海外市场 同口径 并网排队 投决日历 中国主体 数据复核">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 39 分钟</span></div>
             <h3><a class="card-link" href="html/海外市场同口径快照与投决日历-2026-11.html">海外市场同口径快照与投决日历（2026 版）：十一市场、七列口径、五张工单</a></h3>
             <p>把澳/德/英/意/西/法/荷/波/比·北欧/美/日的装机、储能、均价、负价小时、捕获率、并网排队与降额因子拉成同一张表，并完成 2025 年 P0 装机与均价回填；空缺明确标“待核实”，附五专题×十一市场覆盖矩阵、2026Q4–2027 事件日历、中国主体进入勾选表与 C 级数字待复核页。</p>
-            <div class="tags"><span class="tag">海外市场</span><span class="tag">同口径</span><span class="tag">并网排队</span><span class="tag">投决日历</span><span class="tag">中国主体</span><span class="tag">数据复核</span></div>
-            <div class="card-foot"><span>2026-11 · 十一市场 / 七列口径 / 事件日历 / 复核工单</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-11</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
         </div>
       </section>
@@ -948,40 +1008,36 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
       <!-- 07 Price -->
       <section class="sec module-section" id="price" data-cat="price">
         <div class="sec-head">
-          <div class="sec-num">08 / PRICE</div>
+          <div class="sec-num">05 · PRICE</div>
           <div>
             <h2>电价</h2>
             <p>从历史沿革、制度谱系到 2026 年现行文件与用户侧查证，再加一套国际比较方法。回答“电价多少”之前，先把环节与口径定下来。</p>
           </div>
         </div>
         <div class="cards">
-          <article class="card" id="m-price-system" data-type="core" data-search="电价 制度谱系 上网 输配 销售 九种价格 两部制 需量 账单 到户电价 交叉补贴 3 环节 9 种价格">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 12 分钟</span></div>
+          <article class="card" id="m-price-system" data-type="core" data-search="电价 制度谱系 上网 输配 销售 九种价格 两部制 需量 账单 到户电价 交叉补贴 中国电价制度谱系 把电价拆成上网、输配、销售三环节，列清九种价格、两部制与账单拆解。 3 环节 9 种价格 两部制">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 12 分钟</span></div>
             <h3><a class="card-link" href="html/中国电价制度谱系-2026-11.html">中国电价制度谱系</a></h3>
             <p>把电价拆成上网、输配、销售三环节，列清九种价格、两部制与账单拆解。</p>
-            <div class="tags"><span class="tag">3 环节</span><span class="tag">9 种价格</span><span class="tag">两部制</span></div>
-            <div class="card-foot"><span>三个环节、九种价格</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-01</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-price-history" data-type="core" data-search="电价史 1949 1985 集资办电 经营期 2002 标杆电价 煤电联动 阶梯 2015 现货 2021 1439 交叉补贴 5 阶段 1439 号">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 12 分钟</span></div>
+          <article class="card" id="m-price-history" data-type="core" data-search="电价史 1949 1985 集资办电 经营期 2002 标杆电价 煤电联动 阶梯 2015 现货 2021 1439 交叉补贴 中国电价史 五个阶段回答谁定价、按什么形式定价、成本怎么疏导、留下什么问题。 5 阶段 1439 号 交叉补贴">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 12 分钟</span></div>
             <h3><a class="card-link" href="html/中国电价史-2026-11.html">中国电价史</a></h3>
             <p>五个阶段回答谁定价、按什么形式定价、成本怎么疏导、留下什么问题。</p>
-            <div class="tags"><span class="tag">5 阶段</span><span class="tag">1439 号</span><span class="tag">交叉补贴</span></div>
-            <div class="card-foot"><span>从一厂一价到市场定价</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-01</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-price-policy" data-type="core" data-search="电价 现行政策 查证 14 份文件 2026 四条主线 分时 容量 代理购电 输配电价 基金附加 四步法 电费单 计算链 两部制 合同需量 实际需量 105% 40% 力率 功率因数 系统运行费 高可靠性 省级差异 算例 电费计算链 两部制算例">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 18 分钟</span></div>
+          <article class="card" id="m-price-policy" data-type="core" data-search="电价 现行政策 查证 14 份文件 2026 四条主线 分时 容量 代理购电 输配电价 基金附加 四步法 电费单 计算链 两部制 合同需量 实际需量 105% 40% 力率 功率因数 系统运行费 高可靠性 省级差异 算例 中国电价现行政策与查证 14 份现行文件总表、2026 年四条主线、电费计算链、两部制/力率算例与省级差异矩阵。 14 份文件 电费计算链 两部制算例 省级差异">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 18 分钟</span></div>
             <h3><a class="card-link" href="html/中国电价现行政策与查证-2026-11.html">中国电价现行政策与查证</a></h3>
             <p>14 份现行文件总表、2026 年四条主线、电费计算链、两部制/力率算例与省级差异矩阵。</p>
-            <div class="tags"><span class="tag">14 份文件</span><span class="tag">电费计算链</span><span class="tag">两部制算例</span><span class="tag">省级差异</span></div>
-            <div class="card-foot"><span>文号、时点、管什么、查哪里</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-09</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-price-intl" data-type="core" data-search="国际电价 比较 方法 模板 口径 居民 工业 含税 不含税 汇率 PPP 购买力 名义 国别卡片 六行科目 五步口径 名义 vs PPP">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 8 分钟</span></div>
+          <article class="card" id="m-price-intl" data-type="core" data-search="国际电价 比较 方法 模板 口径 居民 工业 含税 不含税 汇率 PPP 购买力 名义 国别卡片 六行科目 国际电价比较：方法与模板 先统一用户、构成、税费、汇率与时间口径，再做名义价与 PPP 排名。 五步口径 名义 vs PPP 国别卡片">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 8 分钟</span></div>
             <h3><a class="card-link" href="html/国际电价比较-方法与模板-2026-11.html">国际电价比较：方法与模板</a></h3>
             <p>先统一用户、构成、税费、汇率与时间口径，再做名义价与 PPP 排名。</p>
-            <div class="tags"><span class="tag">五步口径</span><span class="tag">名义 vs PPP</span><span class="tag">国别卡片</span></div>
-            <div class="card-foot"><span>没有统一口径，就没有国际排名</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-01</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
         </div>
       </section>
@@ -989,26 +1045,24 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
       <!-- 08 Renewable -->
       <section class="sec module-section" id="renewable" data-cat="renewable">
         <div class="sec-head">
-          <div class="sec-num">09 / RENEWABLE</div>
+          <div class="sec-num">06 · RENEWABLE</div>
           <div>
             <h2>新能源与并网</h2>
             <p>项目侧看资源、机制电价与 LCOE；运行侧看涉网性能、考核电量与免考。两份笔记把“能不能建”和“建完怎么被考核”接起来。</p>
           </div>
         </div>
         <div class="cards">
-          <article class="card" id="m-renewable" data-type="core" data-search="新能源 项目开发 并网 136 机制电价 竞价 存量 增量 P50 P90 LCOE 捕获价 限电 涉网 标准 省别 136 号 P50 / P90">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 12 分钟</span></div>
+          <article class="card" id="m-renewable" data-type="core" data-search="新能源 项目开发 并网 136 机制电价 竞价 存量 增量 P50 P90 LCOE 捕获价 限电 涉网 标准 省别 新能源项目开发与并网 136 号机制电价、省级竞价、P50/P90、LCOE、并网标准与省别画像。 136 号 P50 / P90 LCOE">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 12 分钟</span></div>
             <h3><a class="card-link" href="html/新能源项目开发与并网-2026-11.html">新能源项目开发与并网</a></h3>
             <p>136 号机制电价、省级竞价、P50/P90、LCOE、并网标准与省别画像。</p>
-            <div class="tags"><span class="tag">136 号</span><span class="tag">P50 / P90</span><span class="tag">LCOE</span></div>
-            <div class="card-foot"><span>政策、口径与测算底稿</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-01</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-grid" data-type="core" data-search="并网 运行考核 两个细则 60 61 AGC AVC 一次调频 罚则 免考 Kp K1 K2 K3 山东 52 号 南方 华北 储能 考核电量 60 / 61 号 Kp ≤ 2 20 项罚则">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 36 分钟</span></div>
+          <article class="card" id="m-grid" data-type="core" data-search="并网 运行考核 两个细则 60 61 AGC AVC 一次调频 罚则 免考 Kp K1 K2 K3 山东 52 号 南方 华北 储能 考核电量 并网运行考核与两个细则 60/61 号、AGC/AVC/一次调频公式、20 项罚则、六类免考与合成算例。 60 / 61 号 Kp ≤ 2 20 项罚则">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 36 分钟</span></div>
             <h3><a class="card-link" href="html/并网运行考核与两个细则-2026-11.html">并网运行考核与两个细则</a></h3>
             <p>60/61 号、AGC/AVC/一次调频公式、20 项罚则、六类免考与合成算例。</p>
-            <div class="tags"><span class="tag">60 / 61 号</span><span class="tag">Kp ≤ 2</span><span class="tag">20 项罚则</span></div>
-            <div class="card-foot"><span>涉网性能、考核与免考</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-01</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
         </div>
       </section>
@@ -1016,47 +1070,42 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
       <!-- 09 Storage -->
       <section class="sec module-section" id="storage" data-cat="storage">
         <div class="sec-head">
-          <div class="sec-num">10 / STORAGE</div>
+          <div class="sec-num">07 · STORAGE</div>
           <div>
             <h2>储能与 EMS</h2>
             <p>技术侧看路线、安全与构网；投资侧看政策、成本、时长折算与考核；调度侧看 MILP、多市场堆叠、SOC/退化与 MPC；数据侧看 SCADA 点表、通信、时延、时钟同步与安全防护。两份 EMS 笔记分别覆盖独立储能与微网。</p>
           </div>
         </div>
         <div class="cards">
-          <article class="card" id="m-storage-tech" data-type="core" data-search="储能 技术路线 锂电 钠电 液流 全钒 压缩空气 飞轮 超级电容 热储能 氢 安全 热失控 GB 44240 GB/T 51048 42288 46261 46957 构网型 GFM 跟网型 3倍过流 黑启动 惯量 VSG 下垂 短路比 SCR 标准 3× 过流">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 42 分钟</span></div>
+          <article class="card" id="m-storage-tech" data-type="core" data-search="储能 技术路线 锂电 钠电 液流 全钒 压缩空气 飞轮 超级电容 热储能 氢 安全 热失控 GB 44240 GB/T 51048 42288 46261 46957 构网型 GFM 跟网型 3倍过流 黑启动 惯量 VSG 下垂 短路比 SCR 标准 储能技术路线、安全与构网型并网 锂电/钠电/液流/压缩空气/飞轮对比，五层安全设防与标准，构网型控制、指标与验收。 技术路线 GB 44240 3× 过流">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 42 分钟</span></div>
             <h3><a class="card-link" href="html/储能技术路线安全与构网型并网-2026-11.html">储能技术路线、安全与构网型并网</a></h3>
             <p>锂电/钠电/液流/压缩空气/飞轮对比，五层安全设防与标准，构网型控制、指标与验收。</p>
-            <div class="tags"><span class="tag">技术路线</span><span class="tag">GB 44240</span><span class="tag">3× 过流</span></div>
-            <div class="card-foot"><span>2026-11 · 路线、安全与构网</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-01</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-storage-invest" data-type="core" data-search="储能 投资 运营 114 1656 411 1583 容量电价 时长折算 成本 区间 GB/T 36549 投决 算例 NPV IRR LCOS 敏感性 收入堆叠 退化 质保 增容 需量 调频 备用 辅助电源 114 号 投决算例">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 19 分钟</span></div>
+          <article class="card" id="m-storage-invest" data-type="core" data-search="储能 投资 运营 114 1656 411 1583 容量电价 时长折算 成本 区间 GB/T 36549 投决 算例 NPV IRR LCOS 敏感性 收入堆叠 退化 质保 增容 需量 调频 备用 辅助电源 储能投资与运营 114/1656/411/1583 文号、容量电价时长折算、投决算例、收入堆叠、退化质保与敏感性。 114 号 时长折算 投决算例 GB/T 36549">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 19 分钟</span></div>
             <h3><a class="card-link" href="html/储能投资与运营-2026-11.html">储能投资与运营</a></h3>
             <p>114/1656/411/1583 文号、容量电价时长折算、投决算例、收入堆叠、退化质保与敏感性。</p>
-            <div class="tags"><span class="tag">114 号</span><span class="tag">时长折算</span><span class="tag">投决算例</span><span class="tag">GB/T 36549</span></div>
-            <div class="card-foot"><span>政策、成本与口径底稿</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-09</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-storage-ems" data-type="core" data-search="储能 EMS 优化调度 MILP 96 点 多市场 堆叠 SOC 退化 两部制 需量 容量补偿 调频 备用 MPC 安全 联锁 并网点 四条硬边界">
-            <div class="card-top"><span class="kind">算法底稿</span><span class="card-meta">阅读约 49 分钟</span></div>
+          <article class="card" id="m-storage-ems" data-type="core" data-search="储能 EMS 优化调度 MILP 96 点 多市场 堆叠 SOC 退化 两部制 需量 容量补偿 调频 备用 MPC 安全 联锁 并网点 储能 EMS 优化调度 把储能调度建成 MILP：96 点经济调度、多市场堆叠、SOC/退化、MPC 与安全联锁。 MILP 96 点 四条硬边界">
+            <div class="card-top"><span class="kind">算法底稿</span><span class="card-meta">约 49 分钟</span></div>
             <h3><a class="card-link" href="html/储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a></h3>
             <p>把储能调度建成 MILP：96 点经济调度、多市场堆叠、SOC/退化、MPC 与安全联锁。</p>
-            <div class="tags"><span class="tag">MILP</span><span class="tag">96 点</span><span class="tag">四条硬边界</span></div>
-            <div class="card-foot"><span>算法、模型与工程实践</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-01</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-micro-ems" data-type="core" data-search="微网 EMS 优化调度 MILP PCC 购售 双变量 备用 孤岛 退化 MPC 滚动 验收 保护 控制 黑启动 PCC 双变量">
-            <div class="card-top"><span class="kind">算法底稿</span><span class="card-meta">阅读约 48 分钟</span></div>
+          <article class="card" id="m-micro-ems" data-type="core" data-search="微网 EMS 优化调度 MILP PCC 购售 双变量 备用 孤岛 退化 MPC 滚动 验收 保护 控制 黑启动 微网 EMS 优化调度 PCC 购售双变量、备用/孤岛/退化约束、MPC 滚动与验收测试，区分保护与优化。 PCC 双变量 孤岛 MPC">
+            <div class="card-top"><span class="kind">算法底稿</span><span class="card-meta">约 48 分钟</span></div>
             <h3><a class="card-link" href="html/微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a></h3>
             <p>PCC 购售双变量、备用/孤岛/退化约束、MPC 滚动与验收测试，区分保护与优化。</p>
-            <div class="tags"><span class="tag">PCC 双变量</span><span class="tag">孤岛</span><span class="tag">MPC</span></div>
-            <div class="card-foot"><span>算法、模型与工程实践</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-04</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-scada" data-type="core" data-search="SCADA 数据采集 监视控制 点表 遥测 遥信 遥控 遥调 IEC 60870-5-104 IEC 61850 Modbus MQTT 边缘 SCADA 云端 SCADA 云边协同 集控中心 时延 时钟同步 历史库 告警 冗余 安全分区 等保 VPP EMS IEC 104 数据链路">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 45 分钟</span></div>
+          <article class="card" id="m-scada" data-type="core" data-search="SCADA 数据采集 监视控制 点表 遥测 遥信 遥控 遥调 IEC 60870-5-104 IEC 61850 Modbus MQTT 边缘 SCADA 云端 SCADA 云边协同 集控中心 时延 时钟同步 历史库 告警 冗余 安全分区 等保 VPP EMS SCADA 与电力监控数据链路 从 VPP/EMS 的数据底座出发，拆解点表与四遥、104/61850/Modbus/MQTT、边缘与云端两种部署形态、采集频率与时延、时钟同步、历史库、告警、冗余和电力监控安全防护。 SCADA 点表 IEC 104 IEC 61850 MQTT 数据链路 云边协同">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 45 分钟</span></div>
             <h3><a class="card-link" href="html/SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a></h3>
             <p>从 VPP/EMS 的数据底座出发，拆解点表与四遥、104/61850/Modbus/MQTT、边缘与云端两种部署形态、采集频率与时延、时钟同步、历史库、告警、冗余和电力监控安全防护。</p>
-            <div class="tags"><span class="tag">SCADA</span><span class="tag">点表</span><span class="tag">IEC 104</span><span class="tag">IEC 61850</span><span class="tag">MQTT</span><span class="tag">数据链路</span><span class="tag">云边协同</span></div>
-            <div class="card-foot"><span>VPP/EMS 的数据底座</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-09</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
         </div>
       </section>
@@ -1064,19 +1113,18 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
       <!-- 10 Park -->
       <section class="sec module-section" id="park" data-cat="park">
         <div class="sec-head">
-          <div class="sec-num">11 / PARK</div>
+          <div class="sec-num">08 · PARK</div>
           <div>
             <h2>综合能源与零碳园区</h2>
             <p>把“零碳园区、绿电直连、源网荷储、微网、VPP”几个近义词拆开，再用一套合成算例回答“直连能不能算得过账”。</p>
           </div>
         </div>
         <div class="cards">
-          <article class="card" id="m-park" data-type="core" data-search="综合能源 零碳园区 910 1082 国发22 650 688 1192 绿电直连 源网荷储 微网 评价 单位能耗碳排放 直连门槛 LCOE 容需量 730 小时 52 个首批园区 60 · 30 · 35 · 20 临界 LCOE 0.267">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 23 分钟</span></div>
+          <article class="card" id="m-park" data-type="core" data-search="综合能源 零碳园区 910 1082 国发22 650 688 1192 绿电直连 源网荷储 微网 评价 单位能耗碳排放 直连门槛 LCOE 容需量 730 小时 综合能源与零碳园区 910/1082/国发 22/650/688/1192 号，园区评价、绿电直连门槛、源荷匹配与算例。 52 个首批园区 60 · 30 · 35 · 20 临界 LCOE 0.267">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 23 分钟</span></div>
             <h3><a class="card-link" href="html/综合能源与零碳园区-2026-11.html">综合能源与零碳园区</a></h3>
             <p>910/1082/国发 22/650/688/1192 号，园区评价、绿电直连门槛、源荷匹配与算例。</p>
-            <div class="tags"><span class="tag">52 个首批园区</span><span class="tag">60 · 30 · 35 · 20</span><span class="tag">临界 LCOE 0.267</span></div>
-            <div class="card-foot"><span>政策、门槛与测算底稿</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-01</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
         </div>
       </section>
@@ -1084,40 +1132,36 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
       <!-- 11 Carbon -->
       <section class="sec module-section" id="carbon" data-cat="carbon">
         <div class="sec-head">
-          <div class="sec-num">12 / CARBON</div>
+          <div class="sec-num">09 · CARBON</div>
           <div>
             <h2>碳市场与碳管理</h2>
             <p>从碳定价与 EU ETS、三层核算与电力排放因子，到 2026 年履约参数、CCER、碳金融与 CBAM，并附“配额缺口 + CCER 5% + CBAM”履约成本算例。机制、方法与操作层分开读。</p>
           </div>
         </div>
         <div class="cards">
-          <article class="card" id="m-carbon-trade" data-type="core" data-search="碳排放权交易实务 碳定价 EU ETS 试点 配额 CDM 联合履约 MRV 核算 核查 CCER 项目开发 深圳 上海 北京 广东 湖北 重庆 福建 7 试点">
-            <div class="card-top"><span class="kind">教材笔记</span><span class="card-meta">阅读约 15 分钟</span></div>
+          <article class="card" id="m-carbon-trade" data-type="core" data-search="碳排放权交易实务 碳定价 EU ETS 试点 配额 CDM 联合履约 MRV 核算 核查 CCER 项目开发 深圳 上海 北京 广东 湖北 重庆 福建 中国碳排放权交易实务 碳定价原理、EU ETS 与试点对比、MRV、核查实操与 CCER 项目开发。 7 试点 EU ETS MRV">
+            <div class="card-top"><span class="kind">教材笔记</span><span class="card-meta">约 15 分钟</span></div>
             <h3><a class="card-link" href="html/中国碳排放权交易实务-主题笔记.html">中国碳排放权交易实务</a></h3>
             <p>碳定价原理、EU ETS 与试点对比、MRV、核查实操与 CCER 项目开发。</p>
-            <div class="tags"><span class="tag">7 试点</span><span class="tag">EU ETS</span><span class="tag">MRV</span></div>
-            <div class="card-foot"><span>孟早明、葛兴安等编著</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>约 15 分钟</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-carbon-mgmt" data-type="core" data-search="碳管理 从零通往碳中和 汪军 范围一 范围二 范围三 核算 电力排放因子 平均因子 基准线因子 OM BM CCER VCS GS 碳金融 碳中和 产品碳足迹 范围一 / 二 / 三 平均 vs 基准线因子">
-            <div class="card-top"><span class="kind">教材笔记</span><span class="card-meta">阅读约 13 分钟</span></div>
+          <article class="card" id="m-carbon-mgmt" data-type="core" data-search="碳管理 从零通往碳中和 汪军 范围一 范围二 范围三 核算 电力排放因子 平均因子 基准线因子 OM BM CCER VCS GS 碳金融 碳中和 产品碳足迹 碳管理：从零通往碳中和 区域/组织/产品三层核算、电力排放因子、CCER/VCS/GS、碳金融与企业碳中和。 范围一 / 二 / 三 平均 vs 基准线因子 CCER">
+            <div class="card-top"><span class="kind">教材笔记</span><span class="card-meta">约 13 分钟</span></div>
             <h3><a class="card-link" href="html/碳管理-从零通往碳中和-主题笔记.html">碳管理：从零通往碳中和</a></h3>
             <p>区域/组织/产品三层核算、电力排放因子、CCER/VCS/GS、碳金融与企业碳中和。</p>
-            <div class="tags"><span class="tag">范围一 / 二 / 三</span><span class="tag">平均 vs 基准线因子</span><span class="tag">CCER</span></div>
-            <div class="card-foot"><span>汪军著 · 主题化笔记</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>约 13 分钟</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-carbon-asset" data-type="core" data-search="碳资产实务 2026 履约 参数 3680 83 亿吨 CCER 5% 履约成本 配额缺口 盈亏平衡 碳金融 配额质押 回购 远期 碳期货 CBAM 证书 2027 绿证 电碳衔接 产品碳足迹 碳中和 DPP 3,680 家 履约算例">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 14 分钟</span></div>
+          <article class="card" id="m-carbon-asset" data-type="core" data-search="碳资产实务 2026 履约 参数 3680 83 亿吨 CCER 5% 履约成本 配额缺口 盈亏平衡 碳金融 配额质押 回购 远期 碳期货 CBAM 证书 2027 绿证 电碳衔接 产品碳足迹 碳中和 DPP 碳资产实务 2026-11 2025/2026 履约参数、履约成本算例、CCER、碳金融工具、CBAM 时点与电碳衔接。 3,680 家 履约算例 CBAM">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 14 分钟</span></div>
             <h3><a class="card-link" href="html/碳资产实务-2026-11.html">碳资产实务 2026-11</a></h3>
             <p>2025/2026 履约参数、履约成本算例、CCER、碳金融工具、CBAM 时点与电碳衔接。</p>
-            <div class="tags"><span class="tag">3,680 家</span><span class="tag">履约算例</span><span class="tag">CBAM</span></div>
-            <div class="card-foot"><span>履约参数、CCER、碳金融与 CBAM</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-09</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-carbon-link" data-type="core" data-search="绿证 GEC CCER CBAM Scope 2 market-based 重复计算 double counting 环境权益唯一性 同一度电 同一吨减排量 二选一 国能综通新能2024 124号 发改能源2026 622号 发改能源2023 1044号 5% 抵销上限 2027-02-01 证书 2027-09-30 首次清缴 RE100 无条件认可 物理直连 PPA residual mix 注销 PCF EPD 产品碳足迹 绿电直连 自用电力绿证归属 原产国已支付碳价 凭证不互认 成本双计 归属边界">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 22 分钟</span></div>
+          <article class="card" id="m-carbon-link" data-type="core" data-search="绿证 GEC CCER CBAM Scope 2 market-based 重复计算 double counting 环境权益唯一性 同一度电 同一吨减排量 二选一 国能综通新能2024 124号 发改能源2026 622号 发改能源2023 1044号 5% 抵销上限 2027-02-01 证书 2027-09-30 首次清缴 RE100 无条件认可 物理直连 PPA residual mix 注销 PCF EPD 产品碳足迹 绿电直连 自用电力绿证归属 原产国已支付碳价 凭证不互认 成本双计 绿证、CCER 与 CBAM 的衔接与重复计算边界 回答同一度绿电、同一吨减排量能否同时在绿证、CCER、CBAM、Scope 2 里使用：给出归属总表、六组能不能、四种重复计算错法、三条申报留痕清单与 D 级合成算例。只写交叉边界，单体系规则留指针。 重复计算 归属边界 环境权益唯一性 二选一 不互认 成本双计">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 22 分钟</span></div>
             <h3><a class="card-link" href="html/绿证-CCER-CBAM衔接-2026-11.html">绿证、CCER 与 CBAM 的衔接与重复计算边界</a></h3>
             <p>回答同一度绿电、同一吨减排量能否同时在绿证、CCER、CBAM、Scope 2 里使用：给出归属总表、六组能不能、四种重复计算错法、三条申报留痕清单与 D 级合成算例。只写交叉边界，单体系规则留指针。</p>
-            <div class="tags"><span class="tag">重复计算</span><span class="tag">归属边界</span><span class="tag">环境权益唯一性</span><span class="tag">二选一</span><span class="tag">不互认</span><span class="tag">成本双计</span></div>
-            <div class="card-foot"><span>同一度电、同一吨减排量，只能主张一次</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-11</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
         </div>
       </section>
@@ -1125,33 +1169,30 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
       <!-- 12 VPP -->
       <section class="sec module-section" id="vpp" data-cat="vpp">
         <div class="sec-head">
-          <div class="sec-num">13 / VPP</div>
+          <div class="sec-num">10 · VPP</div>
           <div>
             <h2>虚拟电厂</h2>
             <p>2026 版核心模块补齐聚合资源、准入接入、云边控制、市场参与、结算分成、商业模式与省级门槛；另有 2020 年系统读物与需求响应/车网互动模块，分别补概念源流与基线考核。</p>
           </div>
         </div>
         <div class="cards">
-          <article class="card" id="m-vpp-core" data-type="core" data-search="虚拟电厂 VPP 聚合 资源 准入 接入 能力认定 云边协同 现货 辅助服务 需求响应 容量 结算 分成 商业模式 省级门槛 山西 山东 辽宁 海南 上海 浙江 福建 安徽 云南 广东 江苏 深圳 容量口径 基线 准入接入 收益堆叠">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 31 分钟</span></div>
+          <article class="card" id="m-vpp-core" data-type="core" data-search="虚拟电厂 VPP 聚合 资源 准入 接入 能力认定 云边协同 现货 辅助服务 需求响应 容量 结算 分成 商业模式 省级门槛 山西 山东 辽宁 海南 上海 浙江 福建 安徽 云南 广东 江苏 深圳 容量口径 基线 虚拟电厂：聚合、调度与商业模式（2026 版） 从资源盘点、准入接入、云边控制到市场参与、结算分成与项目测算，补齐 2026 年 VPP 主线。 VPP 聚合 准入接入 收益堆叠 省级门槛">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 31 分钟</span></div>
             <h3><a class="card-link" href="html/虚拟电厂聚合调度与商业模式-2026-11.html">虚拟电厂：聚合、调度与商业模式（2026 版）</a></h3>
             <p>从资源盘点、准入接入、云边控制到市场参与、结算分成与项目测算，补齐 2026 年 VPP 主线。</p>
-            <div class="tags"><span class="tag">VPP 聚合</span><span class="tag">准入接入</span><span class="tag">收益堆叠</span><span class="tag">省级门槛</span></div>
-            <div class="card-foot"><span>2026-11 · 聚合、调度与商业模式</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-09</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-vpp-book" data-type="core" data-search="走近虚拟电厂 王鹏 王冬容 VPP DR 需求响应 微网 能效电厂 可调负荷 分布式电源 储能 电动汽车 三阶段 邀约型 市场型 自主调度 CVPP TVPP VPP ≠ DR 三类资源">
-            <div class="card-top"><span class="kind">教材笔记</span><span class="card-meta">阅读约 20 分钟</span></div>
+          <article class="card" id="m-vpp-book" data-type="core" data-search="走近虚拟电厂 王鹏 王冬容 VPP DR 需求响应 微网 能效电厂 可调负荷 分布式电源 储能 电动汽车 三阶段 邀约型 市场型 自主调度 CVPP TVPP 走近虚拟电厂 VPP 与 DR/微网/能效电厂的边界、三类资源、省级样板与三阶段演进。 VPP ≠ DR 三阶段 三类资源">
+            <div class="card-top"><span class="kind">教材笔记</span><span class="card-meta">约 20 分钟</span></div>
             <h3><a class="card-link" href="html/走近虚拟电厂-主题笔记.html">走近虚拟电厂</a></h3>
             <p>VPP 与 DR/微网/能效电厂的边界、三类资源、省级样板与三阶段演进。</p>
-            <div class="tags"><span class="tag">VPP ≠ DR</span><span class="tag">三阶段</span><span class="tag">三类资源</span></div>
-            <div class="card-foot"><span>王鹏、王冬容等编著 · 2020</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>约 20 分钟</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-dr-v2g" data-type="core" data-search="需求响应 车网互动 V2G 灵活性资源 基线 削峰 填谷 可中断 响应产品 考核 结算 有序用电 充电桩 虚拟电厂 2026 广东 江苏 浙江 山东 安徽 基线认定 考核结算">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 46 分钟</span></div>
+          <article class="card" id="m-dr-v2g" data-type="core" data-search="需求响应 车网互动 V2G 灵活性资源 基线 削峰 填谷 可中断 响应产品 考核 结算 有序用电 充电桩 虚拟电厂 2026 广东 江苏 浙江 山东 安徽 需求响应、车网互动与灵活性资源 从资源盘点、基线认定到考核结算，补齐 DR 产品体系与 V2G 参与市场的空白。 基线认定 V2G 考核结算">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">约 46 分钟</span></div>
             <h3><a class="card-link" href="html/需求响应、车网互动与灵活性资源-2026-11.html">需求响应、车网互动与灵活性资源</a></h3>
             <p>从资源盘点、基线认定到考核结算，补齐 DR 产品体系与 V2G 参与市场的空白。</p>
-            <div class="tags"><span class="tag">基线认定</span><span class="tag">V2G</span><span class="tag">考核结算</span></div>
-            <div class="card-foot"><span>2026-11 · 资源与机制</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-08</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
         </div>
       </section>
@@ -1159,61 +1200,54 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
       <!-- 13 Index -->
       <section class="sec module-section" id="index" data-cat="index">
         <div class="sec-head">
-          <div class="sec-num">14 / INDEX</div>
+          <div class="sec-num">11 · INDEX</div>
           <div>
             <h2>索引、查证与工具</h2>
             <p>回答前的四个入口：文号与口径、省级状态、高频问答、英文摘要。先查状态与来源级别，再下结论。</p>
           </div>
         </div>
         <div class="cards">
-          <article class="card" id="m-province" data-type="tool" data-search="省级 市场 状态 总表 33 省 南方区域 现货 正式 试运行 136 机制电价 容量电价 VPP 零售 风险 广东 山东 浙江 山西 甘肃 河北南网 安徽 陕西 福建 海南 辽宁 河南 广西 11 个正式">
-            <div class="card-top"><span class="kind">索引</span><span class="card-meta">阅读约 13 分钟</span></div>
+          <article class="card" id="m-province" data-type="tool" data-search="省级 市场 状态 总表 33 省 南方区域 现货 正式 试运行 136 机制电价 容量电价 VPP 零售 风险 广东 山东 浙江 山西 甘肃 河北南网 安徽 陕西 福建 海南 辽宁 河南 广西 省级电力市场状态总表 33 个省级市场 + 南方区域，一行看清现货状态、136、容量电价、VPP 与零售风险。 33 省 11 个正式 南方区域">
+            <div class="card-top"><span class="kind">索引</span><span class="card-meta">约 13 分钟</span></div>
             <h3><a class="card-link" href="html/省级市场状态表-2026-11.html">省级电力市场状态总表</a></h3>
             <p>33 个省级市场 + 南方区域，一行看清现货状态、136、容量电价、VPP 与零售风险。</p>
-            <div class="tags"><span class="tag">33 省</span><span class="tag">11 个正式</span><span class="tag">南方区域</span></div>
-            <div class="card-foot"><span>涉及具体省份先查表</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-08</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-policies" data-type="tool" data-search="政策 列表 原文 官网 文号 136 1656 1217 357 411 976 114 889 1595 60 61 775 1250 942 910 1082 275 734 715 915 809 全国统一电力市场 现货 中长期 辅助服务 储能 虚拟电厂 碳市场 政策索引 国家级 官方原文 状态">
-            <div class="card-top"><span class="kind">索引</span><span class="card-meta">阅读约 14 分钟</span></div>
+          <article class="card" id="m-policies" data-type="tool" data-search="政策 列表 原文 官网 文号 136 1656 1217 357 411 976 114 889 1595 60 61 775 1250 942 910 1082 275 734 715 915 809 全国统一电力市场 现货 中长期 辅助服务 储能 虚拟电厂 碳市场 政策列表 知识库涉及的国家级电力、储能、虚拟电厂与碳市场政策清单，按主题分组、按状态筛选，点击直达官方原文页。 政策索引 国家级 官方原文 文号 状态">
+            <div class="card-top"><span class="kind">索引</span><span class="card-meta">约 14 分钟</span></div>
             <h3><a class="card-link" href="html/政策列表-2026-11.html">政策列表</a></h3>
             <p>知识库涉及的国家级电力、储能、虚拟电厂与碳市场政策清单，按主题分组、按状态筛选，点击直达官方原文页。</p>
-            <div class="tags"><span class="tag">政策索引</span><span class="tag">国家级</span><span class="tag">官方原文</span><span class="tag">文号</span><span class="tag">状态</span></div>
-            <div class="card-foot"><span>这个文号的原文在哪、现在是否还有效</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-08</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-policies-prov" data-type="tool" data-search="省级 政策 列表 原文 官网 文号 虚拟电厂 山西 上海 辽宁 山东 云南 安徽 浙江 广东 湖南 容量电价 分时电价 就近消纳 两个细则 零碳园区 407 52 526 112 142 1848 467 198 516 528 政策索引 官方原文 状态">
-            <div class="card-top"><span class="kind">索引</span><span class="card-meta">阅读约 6 分钟</span></div>
+          <article class="card" id="m-policies-prov" data-type="tool" data-search="省级 政策 列表 原文 官网 文号 虚拟电厂 山西 上海 辽宁 山东 云南 安徽 浙江 广东 湖南 容量电价 分时电价 就近消纳 两个细则 零碳园区 407 52 526 112 142 1848 467 198 516 528 省级政策列表 知识库已引用的省级电力、储能与虚拟电厂文件，按主题分组、按状态筛选，点击直达省级官网原文页。 政策索引 省级 官方原文 文号 状态">
+            <div class="card-top"><span class="kind">索引</span><span class="card-meta">约 6 分钟</span></div>
             <h3><a class="card-link" href="html/省级政策列表-2026-11.html">省级政策列表</a></h3>
             <p>知识库已引用的省级电力、储能与虚拟电厂文件，按主题分组、按状态筛选，点击直达省级官网原文页。</p>
-            <div class="tags"><span class="tag">政策索引</span><span class="tag">省级</span><span class="tag">官方原文</span><span class="tag">文号</span><span class="tag">状态</span></div>
-            <div class="card-foot"><span>这个省级文件在哪、是否已施行</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-08</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-index" data-type="tool" data-search="索引 口径 文号 状态 计算口径 字典 来源分级 A B C D 观察清单 技能 边界 待核实 813 1217 60 61 114 136 文号索引 口径字典 A / B / C / D">
-            <div class="card-top"><span class="kind">索引</span><span class="card-meta">阅读约 37 分钟</span></div>
+          <article class="card" id="m-index" data-type="tool" data-search="索引 口径 文号 状态 计算口径 字典 来源分级 A B C D 观察清单 技能 边界 待核实 813 1217 60 61 114 136 索引与口径 政策文号索引、计算口径字典、来源分级、观察清单与跨技能归属边界。 文号索引 口径字典 A / B / C / D">
+            <div class="card-top"><span class="kind">索引</span><span class="card-meta">约 37 分钟</span></div>
             <h3><a class="card-link" href="html/索引与口径-2026-11.html">索引与口径</a></h3>
             <p>政策文号索引、计算口径字典、来源分级、观察清单与跨技能归属边界。</p>
-            <div class="tags"><span class="tag">文号索引</span><span class="tag">口径字典</span><span class="tag">A / B / C / D</span></div>
-            <div class="card-foot"><span>这个文号是什么状态、这个数字能不能信</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-08</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-index-en" data-type="tool" data-search="INDEX EN English knowledge index digest knowledge map key figures provincial quick table open items answering discipline 2026 installed capacity carbon compliance 文件地图 Open items">
-            <div class="card-top"><span class="kind">索引</span><span class="card-meta">阅读约 73 分钟</span></div>
+          <article class="card" id="m-index-en" data-type="tool" data-search="INDEX EN English knowledge index digest knowledge map key figures provincial quick table open items answering discipline 2026 installed capacity carbon compliance English Knowledge Index 英文入口：文件地图、关键数字、省级简表、未定事项与答题纪律。 English 文件地图 Open items">
+            <div class="card-top"><span class="kind">索引</span><span class="card-meta">约 73 分钟</span></div>
             <h3><a class="card-link" href="html/INDEX_EN-2026-11.html">English Knowledge Index</a></h3>
             <p>英文入口：文件地图、关键数字、省级简表、未定事项与答题纪律。</p>
-            <div class="tags"><span class="tag">English</span><span class="tag">文件地图</span><span class="tag">Open items</span></div>
-            <div class="card-foot"><span>给国际模型与英文读者</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-11</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-qa" data-type="tool" data-search="黄金问答 回归测试 28 问 高频 电力市场 新能源 碳市场 CBAM 零售 风险 虚拟电厂 国际 工具 口径 纪律 口径纪律">
-            <div class="card-top"><span class="kind">问答集</span><span class="card-meta">阅读约 13 分钟</span></div>
+          <article class="card" id="m-qa" data-type="tool" data-search="黄金问答 回归测试 28 问 高频 电力市场 新能源 碳市场 CBAM 零售 风险 虚拟电厂 国际 工具 口径 纪律 黄金问答集与回归测试 28 个高频问答，覆盖市场、新能源、碳、零售、VPP 与国际工具，兼回归测试。 28 问 回归测试 口径纪律">
+            <div class="card-top"><span class="kind">问答集</span><span class="card-meta">约 13 分钟</span></div>
             <h3><a class="card-link" href="html/黄金问答集-2026-11.html">黄金问答集与回归测试</a></h3>
             <p>28 个高频问答，覆盖市场、新能源、碳、零售、VPP 与国际工具，兼回归测试。</p>
-            <div class="tags"><span class="tag">28 问</span><span class="tag">回归测试</span><span class="tag">口径纪律</span></div>
-            <div class="card-foot"><span>检验回答是否跑偏</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-glossary" data-type="tool" data-search="术语 缩写 字典 glossary 口径 边界 易混 同名异义 FCR aFRR mFRR ELCC NQC de-rated GEC GO REGO REC LGC NFC CCER CBAM PL-1 PL-4 VNU ARENH EPRX LTDA MACSE TMO4+ PUN BRP MTU SDAC SIDC PICASSO MARI 口径边界 易混项 查证入口">
-            <div class="card-top"><span class="kind">口径字典</span><span class="card-meta">阅读约 11 分钟</span></div>
+          <article class="card" id="m-glossary" data-type="tool" data-search="术语 缩写 字典 glossary 口径 边界 易混 同名异义 FCR aFRR mFRR ELCC NQC de-rated GEC GO REGO REC LGC NFC CCER CBAM PL-1 PL-4 VNU ARENH EPRX LTDA MACSE TMO4+ PUN BRP MTU SDAC SIDC PICASSO MARI 术语与口径字典 十一市场、六个横向专题与碳市场的高频缩写、口径边界与易混项对照；给人和模型查同名异义用，不重复写单市场规则。 术语 缩写 口径边界 易混项 查证入口">
+            <div class="card-top"><span class="kind">口径字典</span><span class="card-meta">约 11 分钟</span></div>
             <h3><a class="card-link" href="html/术语与口径字典-2026-11.html">术语与口径字典</a></h3>
             <p>十一市场、六个横向专题与碳市场的高频缩写、口径边界与易混项对照；给人和模型查同名异义用，不重复写单市场规则。</p>
-            <div class="tags"><span class="tag">术语</span><span class="tag">缩写</span><span class="tag">口径边界</span><span class="tag">易混项</span><span class="tag">查证入口</span></div>
-            <div class="card-foot"><span>查完口径再引用数字</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-11</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
         </div>
       </section>
@@ -1221,82 +1255,72 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
       <!-- 14 Research -->
       <section class="sec module-section" id="research" data-cat="research">
         <div class="sec-head">
-          <div class="sec-num">15 / RESEARCH</div>
+          <div class="sec-num">12 · RESEARCH</div>
           <div>
             <h2>调研底稿</h2>
             <p>十份按时间归档的增量调研。它们保留信源日期、核实状态与冲突口径，是“为什么这么写”的证据链；正式引用仍以索引与原文为准。</p>
           </div>
         </div>
         <div class="cards">
-          <article class="card" id="m-res-market-policy" data-type="research" data-search="调研 电力市场 政策 开源 资源 2026-09 20 号令 1217 136 1501 省级 现货 辅助服务 数据">
-            <div class="card-top"><span class="kind">调研底稿</span><span class="card-meta">阅读约 23 分钟</span></div>
+          <article class="card" id="m-res-market-policy" data-type="research" data-search="调研 电力市场 政策 开源 资源 2026-09 20 号令 1217 136 1501 省级 现货 辅助服务 数据 电力市场政策与开源资源 20 号令、1217、136、1501 等基础文件，省级现货、辅助服务与开源数据资源。 20 号令 1217 136">
+            <div class="card-top"><span class="kind">调研底稿</span><span class="card-meta">约 23 分钟</span></div>
             <h3><a class="card-link" href="html/调研-电力市场政策与开源资源-2026-09.html">电力市场政策与开源资源</a></h3>
             <p>20 号令、1217、136、1501 等基础文件，省级现货、辅助服务与开源数据资源。</p>
-            <div class="tags"><span class="tag">20 号令</span><span class="tag">1217</span><span class="tag">136</span></div>
-            <div class="card-foot"><span>2026-09 · 网络资料汇编</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-09</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-res-market-2026" data-type="research" data-search="调研 电力市场 2026-10 增量 全国统一市场 南方区域 现货 新规 征求意见 容量电价 2.0 零售 售电 核电 入市 草案">
-            <div class="card-top"><span class="kind">调研底稿</span><span class="card-meta">阅读约 8 分钟</span></div>
+          <article class="card" id="m-res-market-2026" data-type="research" data-search="调研 电力市场 2026-10 增量 全国统一市场 南方区域 现货 新规 征求意见 容量电价 2.0 零售 售电 核电 入市 电力市场 2026-10 增量 全国统一市场、南方区域、2026 现货新规草案、容量电价 2.0、零售风险与核电入市。 统一市场 南方区域 草案">
+            <div class="card-top"><span class="kind">调研底稿</span><span class="card-meta">约 8 分钟</span></div>
             <h3><a class="card-link" href="html/调研-电力市场2026-10增量.html">电力市场 2026-10 增量</a></h3>
             <p>全国统一市场、南方区域、2026 现货新规草案、容量电价 2.0、零售风险与核电入市。</p>
-            <div class="tags"><span class="tag">统一市场</span><span class="tag">南方区域</span><span class="tag">草案</span></div>
-            <div class="card-foot"><span>2026-11 事实更新底稿</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-01</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-res-vpp-carbon" data-type="research" data-search="调研 虚拟电厂 碳市场 2024 2026 开源 数据 资源 VPP 碳市场 交叉 术语 事实 核对 开源数据">
-            <div class="card-top"><span class="kind">调研底稿</span><span class="card-meta">阅读约 28 分钟</span></div>
+          <article class="card" id="m-res-vpp-carbon" data-type="research" data-search="调研 虚拟电厂 碳市场 2024 2026 开源 数据 资源 VPP 碳市场 交叉 术语 事实 核对 虚拟电厂与碳市场 VPP 与碳市场的事实核对、开源数据清单、交叉应用与术语速查。 VPP 碳市场 开源数据">
+            <div class="card-top"><span class="kind">调研底稿</span><span class="card-meta">约 28 分钟</span></div>
             <h3><a class="card-link" href="html/调研-虚拟电厂与碳市场-2026-09.html">虚拟电厂与碳市场</a></h3>
             <p>VPP 与碳市场的事实核对、开源数据清单、交叉应用与术语速查。</p>
-            <div class="tags"><span class="tag">VPP</span><span class="tag">碳市场</span><span class="tag">开源数据</span></div>
-            <div class="card-foot"><span>2026-09 · 含事实核对清单</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-09</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-res-quick" data-type="research" data-search="调研 速查 合并 2026-09 电力市场 VPP 碳市场 绿电 绿证 术语 二次压缩 绿电绿证">
-            <div class="card-top"><span class="kind">调研底稿</span><span class="card-meta">阅读约 15 分钟</span></div>
+          <article class="card" id="m-res-quick" data-type="research" data-search="调研 速查 合并 2026-09 电力市场 VPP 碳市场 绿电 绿证 术语 二次压缩 电力市场 · VPP · 碳市场速查 把电力市场、VPP、碳市场与绿电绿证压缩成一份二次速查。 二次压缩 绿电绿证 术语">
+            <div class="card-top"><span class="kind">调研底稿</span><span class="card-meta">约 15 分钟</span></div>
             <h3><a class="card-link" href="html/调研-速查合并-2026-09.html">电力市场 · VPP · 碳市场速查</a></h3>
             <p>把电力市场、VPP、碳市场与绿电绿证压缩成一份二次速查。</p>
-            <div class="tags"><span class="tag">二次压缩</span><span class="tag">绿电绿证</span><span class="tag">术语</span></div>
-            <div class="card-foot"><span>2026-09 · 快速回忆</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-09</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-res-vpp-policy" data-type="research" data-search="调研 VPP 政策 市场 2025 2026 357 号 93 号 国标 规模 530 项目 V2G 车网互动 现货 参与 省级 530+ 项目">
-            <div class="card-top"><span class="kind">调研底稿</span><span class="card-meta">阅读约 27 分钟</span></div>
+          <article class="card" id="m-res-vpp-policy" data-type="research" data-search="调研 VPP 政策 市场 2025 2026 357 号 93 号 国标 规模 530 项目 V2G 车网互动 现货 参与 省级 VPP 政策与市场增量 357 号文目标、93 号新型经营主体、国标进展、规模口径、V2G 与现货参与。 357 号 93 号 530+ 项目">
+            <div class="card-top"><span class="kind">调研底稿</span><span class="card-meta">约 27 分钟</span></div>
             <h3><a class="card-link" href="html/调研-VPP政策与市场-2026-09增量.html">VPP 政策与市场增量</a></h3>
             <p>357 号文目标、93 号新型经营主体、国标进展、规模口径、V2G 与现货参与。</p>
-            <div class="tags"><span class="tag">357 号</span><span class="tag">93 号</span><span class="tag">530+ 项目</span></div>
-            <div class="card-foot"><span>2025—2026 · 含核实标记</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-09</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-res-vpp-biz" data-type="research" data-search="调研 VPP 商业模式 国际 2025 2026 AI 大模型 美澳 ADR ADER 户用 VPP 南澳 特斯拉 案例">
-            <div class="card-top"><span class="kind">调研底稿</span><span class="card-meta">阅读约 26 分钟</span></div>
+          <article class="card" id="m-res-vpp-biz" data-type="research" data-search="调研 VPP 商业模式 国际 2025 2026 AI 大模型 美澳 ADR ADER 户用 VPP 南澳 特斯拉 案例 VPP 商业模式与国际 国内商业模式、AI×VPP、国际 ADR/ADER 与户用 VPP 运行细节。 商业模式 AI ADER">
+            <div class="card-top"><span class="kind">调研底稿</span><span class="card-meta">约 26 分钟</span></div>
             <h3><a class="card-link" href="html/调研-VPP商业模式与国际-2026-09增量.html">VPP 商业模式与国际</a></h3>
             <p>国内商业模式、AI×VPP、国际 ADR/ADER 与户用 VPP 运行细节。</p>
-            <div class="tags"><span class="tag">商业模式</span><span class="tag">AI</span><span class="tag">ADER</span></div>
-            <div class="card-foot"><span>2025—2026 · 国际进展</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-09</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-res-vpp-2026" data-type="research" data-search="调研 VPP 政策 2026-10 增量 国家 省级 落地 2026 现货 新规 规模 口径 绿电 直连 零碳园区 零售 约束 2026 增量 规模口径 零售约束">
-            <div class="card-top"><span class="kind">调研底稿</span><span class="card-meta">阅读约 9 分钟</span></div>
+          <article class="card" id="m-res-vpp-2026" data-type="research" data-search="调研 VPP 政策 2026-10 增量 国家 省级 落地 2026 现货 新规 规模 口径 绿电 直连 零碳园区 零售 约束 VPP 政策 2026-10 增量 国家与省级落地、2026 现货新规影响、规模口径、绿电直连与零售侧约束。 2026 增量 规模口径 零售约束">
+            <div class="card-top"><span class="kind">调研底稿</span><span class="card-meta">约 9 分钟</span></div>
             <h3><a class="card-link" href="html/调研-VPP政策2026-10增量.html">VPP 政策 2026-10 增量</a></h3>
             <p>国家与省级落地、2026 现货新规影响、规模口径、绿电直连与零售侧约束。</p>
-            <div class="tags"><span class="tag">2026 增量</span><span class="tag">规模口径</span><span class="tag">零售约束</span></div>
-            <div class="card-foot"><span>2026-10 · 省级落地跟踪</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-01</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-res-carbon-cbam" data-type="research" data-search="调研 碳市场 CBAM 2026-10 增量 扩围 3680 775 号令 罚则 配额 碳价 CEA CCER 绿证 CBAM 时点 纠错">
-            <div class="card-top"><span class="kind">调研底稿</span><span class="card-meta">阅读约 5 分钟</span></div>
+          <article class="card" id="m-res-carbon-cbam" data-type="research" data-search="调研 碳市场 CBAM 2026-10 增量 扩围 3680 775 号令 罚则 配额 碳价 CEA CCER 绿证 CBAM 时点 纠错 碳市场与 CBAM 2026-10 增量 全国碳市场扩围、775 号令罚则、配额方案、碳价、CCER 与 CBAM 时点纠错。 扩围 775 号令 CBAM">
+            <div class="card-top"><span class="kind">调研底稿</span><span class="card-meta">约 5 分钟</span></div>
             <h3><a class="card-link" href="html/调研-碳市场与CBAM-2026-10增量.html">碳市场与 CBAM 2026-10 增量</a></h3>
             <p>全国碳市场扩围、775 号令罚则、配额方案、碳价、CCER 与 CBAM 时点纠错。</p>
-            <div class="tags"><span class="tag">扩围</span><span class="tag">775 号令</span><span class="tag">CBAM</span></div>
-            <div class="card-foot"><span>2026-10 · 时点纠错</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-01</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-res-quant" data-type="research" data-search="调研 量化 报价 厂商 实践 2026-11 参与侧 运营侧 专利 技术路线 设计取舍 模型">
-            <div class="card-top"><span class="kind">调研底稿</span><span class="card-meta">阅读约 6 分钟</span></div>
+          <article class="card" id="m-res-quant" data-type="research" data-search="调研 量化 报价 厂商 实践 2026-11 参与侧 运营侧 专利 技术路线 设计取舍 模型 量化报价与厂商实践 参与侧与运营侧厂商的公开信息、专利与技术路线，提炼设计取舍；不构成厂商评价。 专利 参与侧 运营侧">
+            <div class="card-top"><span class="kind">调研底稿</span><span class="card-meta">约 6 分钟</span></div>
             <h3><a class="card-link" href="html/调研-量化报价与厂商实践-2026-11.html">量化报价与厂商实践</a></h3>
             <p>参与侧与运营侧厂商的公开信息、专利与技术路线，提炼设计取舍；不构成厂商评价。</p>
-            <div class="tags"><span class="tag">专利</span><span class="tag">参与侧</span><span class="tag">运营侧</span></div>
-            <div class="card-foot"><span>2026-11 · 公开信息</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
-          <article class="card" id="m-res-carbon-vendor" data-type="research" data-search="调研 碳管理 碳足迹 厂商 2026-11 服务矩阵 公开案例 方法 复核 清单 不能当基准 宣称">
-            <div class="card-top"><span class="kind">调研底稿</span><span class="card-meta">阅读约 7 分钟</span></div>
+          <article class="card" id="m-res-carbon-vendor" data-type="research" data-search="调研 碳管理 碳足迹 厂商 2026-11 服务矩阵 公开案例 方法 复核 清单 不能当基准 宣称 碳管理与碳足迹厂商 服务矩阵、有日期的公开案例、可借鉴方法，以及不能当基准的宣称复核清单。 服务矩阵 公开案例 复核">
+            <div class="card-top"><span class="kind">调研底稿</span><span class="card-meta">约 7 分钟</span></div>
             <h3><a class="card-link" href="html/调研-碳管理与碳足迹厂商-2026-11.html">碳管理与碳足迹厂商</a></h3>
             <p>服务矩阵、有日期的公开案例、可借鉴方法，以及不能当基准的宣称复核清单。</p>
-            <div class="tags"><span class="tag">服务矩阵</span><span class="tag">公开案例</span><span class="tag">复核</span></div>
-            <div class="card-foot"><span>2026-11 · 只做地图，不做排名</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+            <div class="card-foot"><span>截止 2026-11-01</span><span class="card-cta" aria-hidden="true">阅读 →</span></div>
           </article>
         </div>
       </section>
@@ -1455,8 +1479,8 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
           </div>
         </div>
 
-        <details class="atlas-fold" id="atlasFold" open>
-        <summary>八条专题链路 · 展开查看</summary>
+        <details class="atlas-fold" id="atlasFold">
+        <summary><span>八条专题链路</span><small>按需展开，避免首屏堆叠数字</small></summary>
         <div class="panels">
           <figure class="panel wide">
             <div class="panel-head">
@@ -1730,10 +1754,32 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         </details>
       </section>
 
-      <!-- 16 Method -->
+      <!-- 04 Skills -->
+      <section class="sec" id="skills">
+        <div class="sec-head">
+          <div class="sec-num">04 / SKILLS</div>
+          <div>
+            <h2>九项配套技能</h2>
+            <p>知识库回答“是什么、为什么”，技能回答“怎么做、怎么算”。每个技能都有 HTML 阅读页与 TXT 下载，知识模块末尾也能直接进入对应技能。</p>
+          </div>
+        </div>
+        <div class="skill-grid">
+          <a class="skill-card" href="html/skill-electricity-trading-expert.html"><b>电力交易专家</b><span>现货报价、结算、风险与市场分析</span></a>
+          <a class="skill-card" href="html/skill-virtual-power-plant.html"><b>虚拟电厂专家</b><span>聚合、响应、市场参与与运营</span></a>
+          <a class="skill-card" href="html/skill-carbon-asset-expert.html"><b>碳资产管理专家</b><span>履约、CCER、碳足迹与碳金融</span></a>
+          <a class="skill-card" href="html/skill-storage-investment-operations.html"><b>储能投资与运营</b><span>收益堆叠、投决、退化与考核</span></a>
+          <a class="skill-card" href="html/skill-renewable-project-development.html"><b>新能源开发与并网</b><span>资源、LCOE、机制电价与并网</span></a>
+          <a class="skill-card" href="html/skill-spot-bidding-quant.html"><b>现货报价量化</b><span>预测、报价、仿真与回测</span></a>
+          <a class="skill-card" href="html/skill-ems-dispatch.html"><b>EMS 优化调度</b><span>96 点调度、SOC、需量与可交付性</span></a>
+          <a class="skill-card" href="html/skill-tariff-bill-optimization.html"><b>电价与电费优化</b><span>账单科目、基本电费、分时与套餐比价</span></a>
+          <a class="skill-card" href="html/skill-retail-electricity-risk.html"><b>售电零售与风险</b><span>套餐定价、客户组合、偏差与保函</span></a>
+        </div>
+      </section>
+
+      <!-- 05 Method -->
       <section class="sec" id="method">
         <div class="sec-head">
-          <div class="sec-num">16 / METHOD</div>
+          <div class="sec-num">05 / METHOD</div>
           <div>
             <h2>使用与口径</h2>
             <p>这个知识库不是“事实的终点”，而是“查证的起点”。三条使用步骤、四级来源分级、四条口径纪律，决定回答能不能用。</p>
@@ -1771,27 +1817,17 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
           </div>
         </div>
 
-        <div class="skills" id="skills">
-          <div class="skills-head">
-            <h3>九项配套技能</h3>
-            <p>知识库回答“是什么、为什么”，技能回答“怎么做、怎么算”。每个技能都有 HTML 阅读页与 TXT 下载。</p>
-          </div>
-          <div class="skill-grid">
-            <a class="skill-card" href="html/skill-electricity-trading-expert.html"><b>电力交易专家</b><span>现货报价、结算、风险与市场分析</span></a>
-            <a class="skill-card" href="html/skill-virtual-power-plant.html"><b>虚拟电厂专家</b><span>聚合、响应、市场参与与运营</span></a>
-            <a class="skill-card" href="html/skill-carbon-asset-expert.html"><b>碳资产管理专家</b><span>履约、CCER、碳足迹与碳金融</span></a>
-            <a class="skill-card" href="html/skill-storage-investment-operations.html"><b>储能投资与运营</b><span>收益堆叠、投决、退化与考核</span></a>
-            <a class="skill-card" href="html/skill-renewable-project-development.html"><b>新能源开发与并网</b><span>资源、LCOE、机制电价与并网</span></a>
-            <a class="skill-card" href="html/skill-spot-bidding-quant.html"><b>现货报价量化</b><span>预测、报价、仿真与回测</span></a>
-            <a class="skill-card" href="html/skill-ems-dispatch.html"><b>EMS 优化调度</b><span>96 点调度、SOC、需量与可交付性</span></a>
-            <a class="skill-card" href="html/skill-tariff-bill-optimization.html"><b>电价与电费优化</b><span>账单科目、基本电费、分时与套餐比价</span></a>
-            <a class="skill-card" href="html/skill-retail-electricity-risk.html"><b>售电零售与风险</b><span>套餐定价、客户组合、偏差与保函</span></a>
-          </div>
-        </div>
-
         <footer>
           <div>数据截止 2026-11-11 · 66 个模块 · 九项技能<br>内容以 <span class="mono">knowledge/*.md</span> 原文为准；本页摘要与图示不构成投资建议。</div>
-          <div><a href="../README.md">仓库 README</a> · <a href="../README_EN.md">README_EN</a> · <a href="#top">回到顶部 ↑</a></div>
+          <div>
+            <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub：github.com/Weisg1999/energy-skills ↗</a>
+            <span aria-hidden="true"> · </span>
+            <a href="../README.md">仓库 README</a>
+            <span aria-hidden="true"> · </span>
+            <a href="../README_EN.md">README_EN</a>
+            <span aria-hidden="true"> · </span>
+            <a href="#top">回到顶部 ↑</a>
+          </div>
         </footer>
       </section>
     </div>
@@ -1803,308 +1839,559 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
 </div>
 
 <script>
-(function(){
+(function () {
+  'use strict';
+
+  var HOME_KEY = 'es-hub-return';
   var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
   var sections = Array.prototype.slice.call(document.querySelectorAll('.module-section'));
-  var search = document.getElementById('search');
+  var heroSearch = document.getElementById('search');
+  var inlineSearch = document.getElementById('searchInline');
+  var searchInputs = [heroSearch, inlineSearch].filter(Boolean);
+  var heroForm = document.getElementById('heroSearchForm');
+  var heroStatus = document.getElementById('heroSearchStatus');
   var result = document.getElementById('result');
   var empty = document.getElementById('empty');
-  var filterBtns = Array.prototype.slice.call(document.querySelectorAll('.filter-btn'));
-  var filterSelect = document.getElementById('catSelect');
-  var searchClear = document.getElementById('searchClear');
+  var typeBtns = Array.prototype.slice.call(document.querySelectorAll('.filter-btn'));
+  var typeSelect = document.getElementById('typeSelect');
+  var catChips = Array.prototype.slice.call(document.querySelectorAll('.cat-chip'));
+  var catSelect = document.getElementById('catSelect');
+  var searchResults = document.getElementById('searchResults');
+  var searchResultsList = document.getElementById('searchResultsList');
+  var searchResultsCount = document.getElementById('searchResultsCount');
+  var searchIndexStatus = document.getElementById('searchIndexStatus');
   var emptyReset = document.getElementById('emptyReset');
   var browse = document.getElementById('all');
   var sidebar = document.querySelector('.sidebar');
   var filterbar = document.querySelector('.filterbar');
-  var activeFilter = 'all';
+  var activeType = 'all';
+  var activeCat = 'all';
+  var searchIndex = null;
+  var searchFailed = false;
+  var searchPromise = null;
   var reduceMotion = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
   var debounceTimer = 0;
-  var navActivationOffset = 130;
+  var navActivationOffset = 150;
+  var DEFAULT_HINT = heroStatus ? heroStatus.innerHTML : '';
 
-  function scrollBehavior(){
+  function scrollBehavior() {
     return reduceMotion && reduceMotion.matches ? 'auto' : 'smooth';
   }
 
-  function syncStickyOffsets(){
-    if(!sidebar) return;
+  function norm(value) {
+    return String(value || '').toLowerCase().replace(/\s+/g, ' ').trim();
+  }
+
+  function queryTokens(value) {
+    var q = norm(value);
+    return q ? q.split(' ').filter(Boolean) : [];
+  }
+
+  function hasTokens(text, tokens) {
+    if (!tokens.length) return true;
+    var hay = norm(text);
+    for (var i = 0; i < tokens.length; i += 1) {
+      if (hay.indexOf(tokens[i]) === -1) return false;
+    }
+    return true;
+  }
+
+  function currentQuery() {
+    return heroSearch ? heroSearch.value.trim() : (inlineSearch ? inlineSearch.value.trim() : '');
+  }
+
+  function syncStickyOffsets() {
+    if (!sidebar) return;
     var mobile = window.innerWidth <= 960;
     var sideH = mobile ? Math.round(sidebar.getBoundingClientRect().height) : 0;
     var barH = filterbar ? Math.round(filterbar.getBoundingClientRect().height) : 0;
     document.documentElement.style.setProperty('--hub-header', sideH + 'px');
-    document.documentElement.style.setProperty('--hub-scroll-offset', (sideH + barH + 16) + 'px');
-    navActivationOffset = Math.max(130, sideH + barH + 16);
-    if(navLinks && navLinks.length) setActive();
-  }
-  syncStickyOffsets();
-  window.addEventListener('resize', syncStickyOffsets);
-  window.addEventListener('load', syncStickyOffsets);
-  if(document.fonts && document.fonts.ready) document.fonts.ready.then(syncStickyOffsets);
-  if(window.ResizeObserver){
-    var ro = new ResizeObserver(syncStickyOffsets);
-    if(sidebar) ro.observe(sidebar);
-    if(filterbar) ro.observe(filterbar);
+    document.documentElement.style.setProperty('--hub-scroll-offset', (sideH + barH + 18) + 'px');
+    navActivationOffset = Math.max(150, sideH + barH + 18);
+    if (navLinks && navLinks.length) setActive();
   }
 
-  function ensureResultsVisible(){
-    if(!browse) return;
-    var offset = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--hub-scroll-offset')) || 84;
+  function ensureResultsVisible() {
+    if (!browse) return;
+    var offset = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--hub-scroll-offset')) || 96;
     var top = browse.getBoundingClientRect().top + window.scrollY - offset + 1;
-    if(window.scrollY > top + 240) window.scrollTo({top: top, behavior: scrollBehavior()});
+    if (window.scrollY > top + 240 || window.scrollY < top - 16) {
+      window.scrollTo({ top: top, behavior: scrollBehavior() });
+    }
   }
 
-  function filtersActive(){
-    return activeFilter !== 'all' || (search && search.value.trim() !== '');
-  }
-
-  function setActiveFilter(value){
-    activeFilter = value || 'all';
-    filterBtns.forEach(function(b){
-      var on = b.getAttribute('data-filter') === activeFilter;
-      b.classList.toggle('active', on);
-      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  function setType(value) {
+    activeType = value || 'all';
+    typeBtns.forEach(function (btn) {
+      var on = btn.getAttribute('data-filter') === activeType;
+      btn.classList.toggle('active', on);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
-    if(filterSelect) filterSelect.value = activeFilter;
+    if (typeSelect) typeSelect.value = activeType;
   }
 
-  function syncUrl(){
-    try{
+  function setCategory(value) {
+    activeCat = value || 'all';
+    catChips.forEach(function (btn) {
+      var on = btn.getAttribute('data-cat') === activeCat;
+      btn.classList.toggle('on', on);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    if (catSelect) catSelect.value = activeCat;
+  }
+
+  function syncSearchValue(value) {
+    searchInputs.forEach(function (input) {
+      if (input.value !== value) input.value = value;
+    });
+    document.querySelectorAll('.search-clear').forEach(function (button) {
+      button.hidden = !value;
+    });
+  }
+
+  function syncUrl() {
+    try {
       var url = new URL(window.location.href);
-      if(search && search.value.trim()) url.searchParams.set('q', search.value.trim());
+      var q = currentQuery();
+      if (q) url.searchParams.set('q', q);
       else url.searchParams.delete('q');
-      if(activeFilter !== 'all') url.searchParams.set('type', activeFilter);
+      if (activeType !== 'all') url.searchParams.set('type', activeType);
       else url.searchParams.delete('type');
+      if (activeCat !== 'all') url.searchParams.set('cat', activeCat);
+      else url.searchParams.delete('cat');
       window.history.replaceState(null, '', url.href);
-    }catch(e){}
+    } catch (e) {}
   }
 
-  function clearHighlights(){
-    Array.prototype.forEach.call(document.querySelectorAll('mark.hit'), function(mark){
-      var parent = mark.parentNode;
-      if(!parent) return;
-      parent.replaceChild(document.createTextNode(mark.textContent), mark);
-      parent.normalize();
+  function loadSearchIndex() {
+    if (searchIndex || searchFailed) return Promise.resolve(searchIndex);
+    if (searchPromise) return searchPromise;
+    searchPromise = new Promise(function (resolve) {
+      if (window.__ES_SEARCH_INDEX__) {
+        searchIndex = window.__ES_SEARCH_INDEX__;
+        resolve(searchIndex);
+        return;
+      }
+      var script = document.createElement('script');
+      script.src = 'search-index.js';
+      script.async = true;
+      script.onload = function () {
+        searchIndex = window.__ES_SEARCH_INDEX__ || null;
+        if (!searchIndex) searchFailed = true;
+        resolve(searchIndex);
+      };
+      script.onerror = function () {
+        searchFailed = true;
+        resolve(null);
+      };
+      document.head.appendChild(script);
+    });
+    return searchPromise;
+  }
+
+  function docChunkText(chunk) {
+    return norm(chunk.h + ' ' + (chunk.x || ''));
+  }
+
+  function contentSearch(query) {
+    if (!searchIndex || !searchIndex.docs) return [];
+    var tokens = queryTokens(query);
+    if (!tokens.length || norm(query).length < 2) return [];
+    return searchIndex.docs.map(function (doc) {
+      var allText = doc.keywords + ' ' + doc.chunks.map(function (chunk) {
+        return chunk.h + ' ' + (chunk.x || '');
+      }).join(' ');
+      if (!hasTokens(allText, tokens)) return null;
+      var scored = [];
+      doc.chunks.forEach(function (chunk) {
+        var text = docChunkText(chunk);
+        var matched = 0;
+        tokens.forEach(function (token) {
+          if (text.indexOf(token) !== -1) matched += 1;
+        });
+        if (matched) scored.push({ chunk: chunk, matched: matched });
+      });
+      if (!scored.length) return null;
+      scored.sort(function (a, b) {
+        return b.matched - a.matched || b.chunk.x.length - a.chunk.x.length;
+      });
+      return { doc: doc, chunk: scored[0].chunk, hits: scored.length };
+    }).filter(Boolean).sort(function (a, b) {
+      var at = norm(a.doc.title).indexOf(tokens[0]) !== -1 ? 1 : 0;
+      var bt = norm(b.doc.title).indexOf(tokens[0]) !== -1 ? 1 : 0;
+      return bt - at || b.hits - a.hits;
     });
   }
 
-  function highlight(container, q){
-    if(!q || q.length < 2 || !container) return;
-    var walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null, false);
-    var nodes = [];
-    var node;
-    while((node = walker.nextNode())) nodes.push(node);
-    nodes.forEach(function(textNode){
-      var text = textNode.nodeValue;
-      var idx = text.toLowerCase().indexOf(q);
-      if(idx < 0) return;
-      var frag = document.createDocumentFragment();
-      var last = 0;
-      while(idx >= 0){
-        frag.appendChild(document.createTextNode(text.slice(last, idx)));
+  function escapeRegExp(text) {
+    return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  function appendSnippet(container, text, tokens, limit) {
+    var source = String(text || '').replace(/\s+/g, ' ').trim();
+    if (!source) {
+      container.textContent = '';
+      return;
+    }
+    var lower = source.toLowerCase();
+    var first = -1;
+    tokens.forEach(function (token) {
+      var index = lower.indexOf(token);
+      if (index !== -1 && (first === -1 || index < first)) first = index;
+    });
+    var start = Math.max(0, first === -1 ? 0 : first - 42);
+    var end = Math.min(source.length, start + limit);
+    var snippet = source.slice(start, end);
+    var pattern = tokens
+      .slice()
+      .sort(function (a, b) { return b.length - a.length; })
+      .map(escapeRegExp)
+      .join('|');
+    var reg = pattern ? new RegExp('(' + pattern + ')', 'gi') : null;
+    var parts = reg ? snippet.split(reg) : [snippet];
+    var hitSet = {};
+    tokens.forEach(function (token) { hitSet[token] = true; });
+    parts.forEach(function (part) {
+      if (hitSet[norm(part)]) {
         var mark = document.createElement('mark');
         mark.className = 'hit';
-        mark.textContent = text.slice(idx, idx + q.length);
-        frag.appendChild(mark);
-        last = idx + q.length;
-        idx = text.toLowerCase().indexOf(q, last);
+        mark.textContent = part;
+        container.appendChild(mark);
+      } else {
+        container.appendChild(document.createTextNode(part));
       }
-      frag.appendChild(document.createTextNode(text.slice(last)));
-      textNode.parentNode.replaceChild(frag, textNode);
+    });
+    if (start > 0) container.insertBefore(document.createTextNode('…'), container.firstChild);
+    if (end < source.length) container.appendChild(document.createTextNode('…'));
+  }
+
+  function renderSearchResults(groups, query) {
+    if (!searchResults || !searchResultsList) return;
+    var tokens = queryTokens(query);
+    searchResultsList.textContent = '';
+    var visible = groups.filter(function (item) {
+      if (activeType !== 'all' && item.doc.type !== activeType) return false;
+      if (activeCat !== 'all' && item.doc.cat !== activeCat) return false;
+      return true;
+    }).slice(0, 8);
+    var totalHits = visible.reduce(function (sum, item) { return sum + item.hits; }, 0);
+    if (!visible.length) {
+      searchResults.hidden = true;
+      return;
+    }
+    searchResults.hidden = false;
+    if (searchResultsCount) searchResultsCount.textContent = visible.length + ' 个模块 · ' + totalHits + ' 处匹配';
+    visible.forEach(function (item) {
+      var link = document.createElement('a');
+      link.className = 'search-result';
+      link.href = item.doc.html + (item.chunk.a ? '#' + item.chunk.a : '');
+      var body = document.createElement('span');
+      body.className = 'search-result-body';
+      var crumb = document.createElement('span');
+      crumb.className = 'search-result-breadcrumb';
+      crumb.textContent = item.doc.catNum + ' · ' + (item.chunk.h || item.doc.title);
+      body.appendChild(crumb);
+      var titleRow = document.createElement('span');
+      titleRow.className = 'search-result-title';
+      var title = document.createElement('b');
+      title.textContent = item.doc.title;
+      titleRow.appendChild(title);
+      var count = document.createElement('span');
+      count.className = 'search-result-count';
+      count.textContent = item.hits + ' 处 →';
+      titleRow.appendChild(count);
+      body.appendChild(titleRow);
+      var snippet = document.createElement('span');
+      snippet.className = 'search-result-snippet';
+      appendSnippet(snippet, item.chunk.x || item.chunk.h || item.doc.summary, tokens, 180);
+      body.appendChild(snippet);
+      link.appendChild(body);
+      searchResultsList.appendChild(link);
     });
   }
 
-  function applyFilter(){
-    var q = search ? search.value.trim().toLowerCase() : '';
+  function updateSearchStatus(visible, groups, query) {
+    if (!heroStatus) return;
+    if (!query) {
+      heroStatus.innerHTML = DEFAULT_HINT;
+      return;
+    }
+    if (!searchIndex && !searchFailed) {
+      heroStatus.textContent = '正在载入全文索引…';
+      return;
+    }
+    if (searchFailed) {
+      heroStatus.textContent = '全文索引不可用；已按标题、标签与摘要匹配 ' + visible + ' 个模块。';
+      return;
+    }
+    var hits = groups.filter(function (item) {
+      if (activeType !== 'all' && item.doc.type !== activeType) return false;
+      if (activeCat !== 'all' && item.doc.cat !== activeCat) return false;
+      return true;
+    }).reduce(function (sum, item) { return sum + item.hits; }, 0);
+    heroStatus.textContent = visible + ' 个相关模块 · ' + hits + ' 处正文命中';
+  }
+
+  function applyFilter() {
+    var q = currentQuery();
+    var tokens = queryTokens(q);
+    var groups = q ? contentSearch(q) : [];
+    var contentIds = {};
+    groups.forEach(function (item) { contentIds[item.doc.id] = true; });
     var visible = 0;
-    clearHighlights();
-    cards.forEach(function(card){
-      var hay = (card.getAttribute('data-search') || '') + ' ' + card.textContent.toLowerCase();
-      var typeOK = activeFilter === 'all' || card.getAttribute('data-type') === activeFilter;
-      var queryOK = !q || hay.indexOf(q) !== -1;
-      var show = typeOK && queryOK;
+    cards.forEach(function (card) {
+      var section = card.closest('.module-section');
+      var cat = section ? section.id : '';
+      var typeOK = activeType === 'all' || card.getAttribute('data-type') === activeType;
+      var catOK = activeCat === 'all' || cat === activeCat;
+      var queryOK = !q || hasTokens(card.getAttribute('data-search') || '', tokens) || Boolean(contentIds[card.id]);
+      var show = typeOK && catOK && queryOK;
       card.classList.toggle('is-hidden', !show);
-      if(show){
-        visible++;
-        if(q){
-          highlight(card.querySelector('h3'), q);
-          highlight(card.querySelector('p'), q);
-        }
-      }
+      if (show) visible += 1;
     });
-    sections.forEach(function(sec){
-      var any = sec.querySelector('.card:not(.is-hidden)');
-      sec.classList.toggle('is-empty', !any);
+    sections.forEach(function (section) {
+      section.classList.toggle('is-empty', !section.querySelector('.card:not(.is-hidden)'));
     });
-    if(result) result.textContent = visible + ' / ' + cards.length + ' 个模块';
-    if(empty) empty.classList.toggle('show', visible === 0);
-    if(searchClear) searchClear.hidden = !(search && search.value.length);
+    if (result) result.textContent = visible + ' / ' + cards.length + ' 个模块';
+    renderSearchResults(groups, q);
+    updateSearchStatus(visible, groups, q);
+    if (searchIndexStatus) searchIndexStatus.hidden = !searchFailed;
+    var stillLoading = Boolean(q) && !searchIndex && !searchFailed;
+    if (empty) empty.classList.toggle('show', visible === 0 && !stillLoading);
+    if (q && !searchIndex && !searchFailed) {
+      loadSearchIndex().then(function () { applyFilter(); });
+    }
+    document.querySelectorAll('.search-clear').forEach(function (button) {
+      button.hidden = !q;
+    });
     syncUrl();
   }
 
-  function resetFilters(focusSearch){
-    if(search) search.value = '';
-    setActiveFilter('all');
+  function resetFilters(focusInput, scrollToBrowse) {
+    syncSearchValue('');
+    setType('all');
+    setCategory('all');
     applyFilter();
-    if(focusSearch && search) search.focus({preventScroll:true});
+    if (scrollToBrowse && browse) browse.scrollIntoView({ behavior: scrollBehavior(), block: 'start' });
+    if (focusInput) focusInput.focus({ preventScroll: true });
   }
 
-  if(search){
-    search.addEventListener('input', function(){
-      if(searchClear) searchClear.hidden = !search.value;
+  searchInputs.forEach(function (input) {
+    input.addEventListener('input', function () {
+      syncSearchValue(input.value);
       window.clearTimeout(debounceTimer);
-      debounceTimer = window.setTimeout(applyFilter, 150);
+      debounceTimer = window.setTimeout(applyFilter, 140);
+      if (input.value.trim()) loadSearchIndex().then(function () { applyFilter(); });
     });
-    search.addEventListener('keydown', function(e){
-      if(e.key === 'Escape'){ resetFilters(false); search.blur(); }
+    input.addEventListener('focus', function () {
+      loadSearchIndex();
     });
-  }
-  if(searchClear){
-    searchClear.addEventListener('click', function(){ resetFilters(true); });
-  }
-  if(emptyReset){
-    emptyReset.addEventListener('click', function(){
-      resetFilters(true);
-      if(browse) browse.scrollIntoView({behavior: scrollBehavior(), block:'start'});
+    input.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        resetFilters(null, false);
+        input.blur();
+      }
     });
-  }
-  filterBtns.forEach(function(btn){
-    btn.addEventListener('click', function(){
-      setActiveFilter(btn.getAttribute('data-filter'));
-      applyFilter();
-      ensureResultsVisible();
-    });
-  });
-  if(filterSelect){
-    filterSelect.addEventListener('change', function(){
-      setActiveFilter(filterSelect.value);
-      applyFilter();
-      ensureResultsVisible();
-    });
-  }
-  document.addEventListener('click', function(e){
-    var link = e.target.closest ? e.target.closest('a[href^="#"]') : null;
-    if(!link || link.closest('.filterbar')) return;
-    var target = document.querySelector(link.getAttribute('href'));
-    if(target && (target.classList.contains('card') || target.classList.contains('module-section')) && filtersActive()){
-      resetFilters(false);
-    }
   });
 
-  try{
-    var params = new URLSearchParams(window.location.search);
-    var initialQuery = params.get('q');
-    var initialType = params.get('type');
-    if(initialQuery && search) search.value = initialQuery;
-    if(initialType && ['all','core','tool','research'].indexOf(initialType) !== -1) activeFilter = initialType;
-  }catch(e){}
-  setActiveFilter(activeFilter);
-  applyFilter();
-  Array.prototype.forEach.call(document.querySelectorAll('[data-focus-search]'), function(link){
-    link.addEventListener('click', function(){
-      if(!search) return;
-      window.setTimeout(function(){ search.focus({preventScroll:true}); }, 260);
+  document.querySelectorAll('.search-clear').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var target = button.closest('.filterbar') ? inlineSearch : heroSearch;
+      resetFilters(target, false);
     });
   });
-  document.addEventListener('keydown', function(e){
-    if(e.key === '/' && document.activeElement !== search && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)){
-      e.preventDefault();
-      if(search) search.focus();
-    }
+
+  if (heroForm) {
+    heroForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      if (!currentQuery()) {
+        if (heroSearch) heroSearch.focus();
+        return;
+      }
+      applyFilter();
+      ensureResultsVisible();
+      if (heroSearch) heroSearch.blur();
+    });
+  }
+
+  if (emptyReset) emptyReset.addEventListener('click', function () { resetFilters(inlineSearch, true); });
+
+  typeBtns.forEach(function (button) {
+    button.addEventListener('click', function () {
+      setType(button.getAttribute('data-filter'));
+      applyFilter();
+      ensureResultsVisible();
+    });
   });
+
+  if (typeSelect) {
+    typeSelect.addEventListener('change', function () {
+      setType(typeSelect.value);
+      applyFilter();
+      ensureResultsVisible();
+    });
+  }
+
+  catChips.forEach(function (button) {
+    button.addEventListener('click', function () {
+      setCategory(button.getAttribute('data-cat'));
+      applyFilter();
+      ensureResultsVisible();
+    });
+  });
+
+  if (catSelect) {
+    catSelect.addEventListener('change', function () {
+      setCategory(catSelect.value);
+      applyFilter();
+      ensureResultsVisible();
+    });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key !== '/' || event.metaKey || event.ctrlKey || event.altKey) return;
+    var tag = (document.activeElement && document.activeElement.tagName) || '';
+    if (/^(INPUT|TEXTAREA|SELECT)$/.test(tag)) return;
+    event.preventDefault();
+    if (heroSearch) heroSearch.focus();
+  });
+
+  try {
+    var params = new URLSearchParams(window.location.search);
+    var initialQuery = params.get('q') || '';
+    var initialType = params.get('type');
+    var initialCat = params.get('cat');
+    if (initialQuery) syncSearchValue(initialQuery);
+    if (initialType && ['all', 'core', 'tool', 'research'].indexOf(initialType) !== -1) activeType = initialType;
+    if (initialCat && (initialCat === 'all' || sections.some(function (section) { return section.id === initialCat; }))) activeCat = initialCat;
+  } catch (e) {}
+  setType(activeType);
+  setCategory(activeCat);
+  applyFilter();
+  if (currentQuery()) loadSearchIndex().then(function () { applyFilter(); });
 
   var nav = document.querySelector('.nav');
   var navScroll = document.querySelector('.nav-scroll');
   var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav a'));
-  var targets = navLinks.map(function(a){
-    var id = a.getAttribute('href');
-    return id && id.charAt(0) === '#' ? document.querySelector(id) : null;
+  var targets = navLinks.map(function (link) {
+    var href = link.getAttribute('href');
+    return href && href.charAt(0) === '#' ? document.querySelector(href) : null;
   });
   var lastIdx = -1;
 
-  function updateNavFade(){
-    if(!nav || !navScroll) return;
+  function updateNavFade() {
+    if (!nav || !navScroll) return;
     var max = nav.scrollWidth - nav.clientWidth;
     navScroll.classList.toggle('can-left', nav.scrollLeft > 4);
     navScroll.classList.toggle('can-right', nav.scrollLeft < max - 4);
   }
-  function revealNav(link){
-    if(!nav || !link || window.innerWidth > 960) return;
+
+  function revealNav(link) {
+    if (!nav || !link || window.innerWidth > 960) return;
     var ar = link.getBoundingClientRect();
     var nr = nav.getBoundingClientRect();
-    if(ar.left < nr.left + 28) nav.scrollLeft += ar.left - nr.left - 28;
-    else if(ar.right > nr.right - 28) nav.scrollLeft += ar.right - nr.right + 28;
+    if (ar.left < nr.left + 28) nav.scrollLeft += ar.left - nr.left - 28;
+    else if (ar.right > nr.right - 28) nav.scrollLeft += ar.right - nr.right + 28;
   }
-  function setActive(){
+
+  function setActive() {
     var y = window.scrollY + navActivationOffset + 1;
     var idx = 0;
-    for(var i = 0; i < targets.length; i++){
-      if(targets[i] && targets[i].offsetTop <= y) idx = i;
+    var atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
+    if (atBottom) idx = targets.length - 1;
+    else {
+      for (var i = 0; i < targets.length; i += 1) {
+        if (targets[i] && targets[i].getBoundingClientRect().top + window.scrollY <= y) idx = i;
+      }
     }
-    navLinks.forEach(function(a, i){
-      var on = i === idx;
-      a.classList.toggle('active', on);
-      if(on) a.setAttribute('aria-current', 'true');
-      else a.removeAttribute('aria-current');
+    navLinks.forEach(function (link, k) {
+      var on = k === idx;
+      link.classList.toggle('active', on);
+      if (on) link.setAttribute('aria-current', 'true');
+      else link.removeAttribute('aria-current');
     });
     revealNav(navLinks[idx]);
-    if(idx !== lastIdx){
+    if (idx !== lastIdx) {
       lastIdx = idx;
       window.setTimeout(updateNavFade, 220);
     }
-    var top = document.querySelector('.to-top');
-    if(top) top.classList.toggle('show', window.scrollY > 700);
+    var toTop = document.querySelector('.to-top');
+    if (toTop) toTop.classList.toggle('show', window.scrollY > 700);
   }
+
   var ticking = false;
-  window.addEventListener('scroll', function(){
-    if(!ticking){
-      window.requestAnimationFrame(function(){ setActive(); ticking = false; });
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      window.requestAnimationFrame(function () { setActive(); ticking = false; });
       ticking = true;
     }
-  }, {passive:true});
-  if(nav) nav.addEventListener('scroll', updateNavFade, {passive:true});
+  }, { passive: true });
+  if (nav) nav.addEventListener('scroll', updateNavFade, { passive: true });
   window.addEventListener('resize', updateNavFade);
   setActive();
   updateNavFade();
 
-  function restoreSmooth(){
-    window.requestAnimationFrame(function(){
-      window.requestAnimationFrame(function(){
-        document.documentElement.style.removeProperty('scroll-behavior');
-        setActive();
-      });
-    });
+  function saveReturnState() {
+    try {
+      var path = window.location.pathname + window.location.search;
+      sessionStorage.setItem(HOME_KEY, JSON.stringify({
+        path: path,
+        href: path,
+        scrollY: window.scrollY,
+        at: Date.now(),
+        restore: false
+      }));
+    } catch (e) {}
   }
-  if(location.hash){
-    if(document.readyState === 'complete') restoreSmooth();
-    else window.addEventListener('load', restoreSmooth);
+
+  document.addEventListener('click', function (event) {
+    var link = event.target && event.target.closest ? event.target.closest('a') : null;
+    if (!link) return;
+    if (link.closest('.card') || link.closest('.search-result') || link.closest('.skill-card')) saveReturnState();
+  });
+
+  function restoreScroll() {
+    try {
+      var saved = JSON.parse(sessionStorage.getItem(HOME_KEY) || 'null');
+      var path = window.location.pathname + window.location.search;
+      if (!saved || !saved.restore || saved.path !== path || Date.now() - saved.at > 6 * 60 * 60 * 1000) return;
+      window.scrollTo({ top: Math.max(0, Number(saved.scrollY) || 0), behavior: 'auto' });
+      saved.restore = false;
+      sessionStorage.setItem(HOME_KEY, JSON.stringify(saved));
+    } catch (e) {}
   }
 
   var atlas = document.getElementById('atlasFold');
-  var mq = window.matchMedia('(max-width:620px)');
-  function syncAtlas(){
-    if(!atlas) return;
-    if(mq.matches) atlas.removeAttribute('open');
-    else atlas.setAttribute('open', '');
-  }
-  syncAtlas();
-  if(mq.addEventListener) mq.addEventListener('change', syncAtlas);
-  else if(mq.addListener) mq.addListener(syncAtlas);
-
-  var phFull = search ? search.getAttribute('placeholder') : '';
-  function syncSearchPh(){
-    if(!search) return;
-    search.placeholder = mq.matches ? '检索模块或关键词' : phFull;
-  }
-  syncSearchPh();
-  if(mq.addEventListener) mq.addEventListener('change', syncSearchPh);
-  else if(mq.addListener) mq.addListener(syncSearchPh);
-  window.addEventListener('beforeprint', function(){ if(atlas) atlas.setAttribute('open', ''); });
-
-  var topBtn = document.querySelector('.to-top');
-  if(topBtn){
-    topBtn.addEventListener('click', function(){
-      window.scrollTo({top:0, behavior: scrollBehavior()});
+  if (atlas) {
+    var atlasWasOpen = false;
+    window.addEventListener('beforeprint', function () {
+      atlasWasOpen = atlas.hasAttribute('open');
+      atlas.setAttribute('open', '');
+    });
+    window.addEventListener('afterprint', function () {
+      if (!atlasWasOpen) atlas.removeAttribute('open');
     });
   }
+
+  var topBtn = document.querySelector('.to-top');
+  if (topBtn) {
+    topBtn.addEventListener('click', function (event) {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: scrollBehavior() });
+    });
+  }
+
+  syncStickyOffsets();
+  window.addEventListener('resize', syncStickyOffsets);
+  window.addEventListener('load', function () { syncStickyOffsets(); window.setTimeout(restoreScroll, 0); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncStickyOffsets);
+  if (window.ResizeObserver) {
+    var ro = new ResizeObserver(syncStickyOffsets);
+    if (sidebar) ro.observe(sidebar);
+    if (filterbar) ro.observe(filterbar);
+  }
+  window.setTimeout(restoreScroll, 0);
 })();
 </script>
 <script src="assets/theme.js"></script>

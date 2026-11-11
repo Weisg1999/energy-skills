@@ -19,9 +19,9 @@
 <div class="scrim"></div>
 
 <header class="topbar">
-  <a class="back" href="../index.html">← 知识库</a>
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
   <div class="crumb">
-    <span class="crumb-cat">05 / SPOT</span>
+    <span class="crumb-cat">02 · SPOT</span>
     <span class="crumb-sep">/</span>
     <span class="crumb-doc">电力现货市场实务</span>
   </div>
@@ -30,7 +30,14 @@
       <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
       <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-    <a class="src" href="../电力现货市场实务-精读笔记.md">.md 源文件</a>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../电力现货市场实务-精读笔记.md">.md 源文件<small>knowledge/电力现货市场实务-精读笔记.md</small></a>
+
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
     <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
   </div>
 </header>
@@ -38,7 +45,7 @@
 <div class="shell">
   <aside class="sidebar" id="nav">
     <div class="nav-kicker">当前分类</div>
-    <div class="nav-num">05 / SPOT</div>
+    <div class="nav-num">02 · SPOT</div>
     <h2 class="nav-cat"><a href="../index.html#spot">电力现货与省间交易</a></h2>
     <ul class="nav-list">
               <li><a href="省间与跨区交易-2026-11.html">省间与跨区交易（2026 版）</a></li>
@@ -52,24 +59,24 @@
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
       <ul>
-              <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
-              <li><a href="../index.html#intl"><b>06</b>海外市场</a></li>
-              <li><a href="../index.html#cross"><b>07</b>横向专题</a></li>
-              <li><a href="../index.html#price"><b>08</b>电价</a></li>
-              <li><a href="../index.html#renewable"><b>09</b>新能源与并网</a></li>
-              <li><a href="../index.html#storage"><b>10</b>储能与 EMS</a></li>
-              <li><a href="../index.html#park"><b>11</b>综合能源与零碳园区</a></li>
-              <li><a href="../index.html#carbon"><b>12</b>碳市场与碳管理</a></li>
-              <li><a href="../index.html#vpp"><b>13</b>虚拟电厂</a></li>
-              <li><a href="../index.html#index"><b>14</b>索引、查证与工具</a></li>
-              <li><a href="../index.html#research"><b>15</b>调研底稿</a></li>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#intl"><b>03</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>04</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>05</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>06</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>07</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>08</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>09</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>10</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>11</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>12</b>调研底稿</a></li>
       </ul>
     </div>
   </aside>
 
   <main class="main" id="main">
     <header class="doc-head">
-      <div class="kicker">05 / SPOT<i>教材笔记</i></div>
+      <div class="kicker">02 · SPOT<i>教材笔记</i></div>
       <h1 class="doc-title">《电力现货市场实务》精读笔记</h1>
       <p class="lede">五篇 31 章：理论、国外实践、国内八省、技术支持系统与展望，附 15 环节交易流程。</p>
       <p class="hook">国调中心组编 · 2023</p>
@@ -116,23 +123,41 @@
 <ol><li>现货定价理论（Schweppe 实时电价）是现代电力市场理论基石——所有市场架构都围绕&quot;现货市场&quot;构筑，中长期只是风险对冲工具。</li><li>全电量竞价+差价合约是我国现货试点主流技术路线：中长期合同不物理执行，而是分解到日后按现货价格做差价结算——这是理解中国现货市场的钥匙。</li><li>边际出清（MCP）虽然短期看起来&quot;贵&quot;（按最高中标价结算），但长期激励降价提效且公平；PAB 看似省钱实则扭曲报价行为、劣化竞争。</li><li>价格上限的科学设定常参照 VOLL（失负荷价值）——德国/澳洲的做法；价格帽过低会掩盖稀缺信号、阻碍投资（得州危机与价格帽两难）。</li><li><strong>阻塞是节点电价存在性的根源</strong>：无阻塞+无网损时全网电价一致；阻塞产生区域/节点价差和阻塞盈余，盈余归属需公平机制（我国尚在探索）。</li><li>调峰是中国特色过渡品种，其功能终将被现货实时市场吸收——理解这一点才能理解&quot;调峰辅助服务市场逐步取消&quot;的政策方向。</li><li><strong>实时市场不是&quot;实时报价实时出清&quot;</strong>：我国多数市场实时环节采用日前封存报价，15min 滚动 SCED，5/15min 间隔发布计划。</li><li>结算&quot;日清分仅记账、月结算真收付、逾期视为无异议&quot;——市场主体必须盯紧月度结算单确认时限与争议举证。</li><li>安全校核与市场出清是迭代耦合关系，不是出清后简单盖章——越限即回滚重算，体现了&quot;物理约束优先于经济结果&quot;的中国现货市场设计原则。</li><li>现货市场中煤电价值要从&quot;卖电量&quot;转向&quot;卖调节&quot;（容量、调频、备用、惯量），投资逻辑随之改变。</li><li><strong>828号文（2020）明确现货市场建设目的</strong>：完善市场化电力电量平衡机制和价格形成机制——现货不是&quot;降价工具&quot;，而是定价机制重建。</li><li>&quot;统一市场、两级运作&quot;：省间市场与省内市场耦合运行，中长期+现货+辅助服务多时间尺度衔接。</li></ol>
     </article>
 
-    <section class="related" aria-label="相关模块">
-      <h2>相关模块</h2>
-      <ul>
-        <li><a href="电力现货市场101问-A-基础与价格机制.html">101 问 A · 基础与价格机制</a></li>
-        <li><a href="省间与跨区交易-2026-11.html">省间与跨区交易（2026 版）</a></li>
-        <li><a href="省级市场状态表-2026-11.html">省级电力市场状态总表</a></li>
-      </ul>
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>3</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="电力现货市场101问-A-基础与价格机制.html">
+          <span class="related-type">同区延伸</span>
+          <b>101 问 A · 基础与价格机制</b>
+          <span>第 1–26 问：电力市场定义、现货体系、集中式与分散式、SMP / ZMP / LMP。</span>
+        </a>
+        <a class="related-card" href="省间与跨区交易-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>省间与跨区交易（2026 版）</b>
+          <span>四层市场、省间中长期与现货、南方与长三角区域市场、跨经营区与输电权，附落地成本算例。</span>
+        </a>
+        <a class="related-card" href="省级市场状态表-2026-11.html">
+          <span class="related-type">查证入口</span>
+          <b>省级电力市场状态总表</b>
+          <span>33 个省级市场 + 南方区域，一行看清现货状态、136、容量电价、VPP 与零售风险。</span>
+        </a>
+      </div>
+
     </section>
+
 
     <nav class="pager" aria-label="上下篇">
           <a class="prev" href="电力现货市场101问-C-结算TTS与政策演进.html"><span class="dir">← 上一篇</span><span class="ttl">101 问 C · 结算、TTS 与政策演进</span></a>
-          <a class="next" href="澳大利亚NEM电力市场-2026-11.html"><span class="dir">下一篇 →</span><span class="ttl">澳大利亚 NEM 电力市场（2026 版）</span></a>
+          <span class="spacer"></span>
     </nav>
 
     <footer class="doc-foot">
       <div class="lic">本页由 <a href="../电力现货市场实务-精读笔记.md">knowledge/电力现货市场实务-精读笔记.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
-      <div><a href="../index.html">返回知识库总览 →</a></div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
     </footer>
   </main>
 
@@ -150,7 +175,7 @@
             <li class="lv3"><a href="#s9">7. 电力市场结算（第27章）</a></li>
             <li class="lv3"><a href="#s10">8. "双碳"与新型电力系统展望（第31章）</a></li>
             <li class="lv2"><a href="#s11">专家级洞察</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="8">展开 8 个小节</button>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="8" data-more-label="展开 8 个小节" data-less-label="收起小节">展开 8 个小节</button>
   </aside>
 </div>
 

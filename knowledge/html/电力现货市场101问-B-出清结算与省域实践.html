@@ -19,9 +19,9 @@
 <div class="scrim"></div>
 
 <header class="topbar">
-  <a class="back" href="../index.html">← 知识库</a>
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
   <div class="crumb">
-    <span class="crumb-cat">05 / SPOT</span>
+    <span class="crumb-cat">02 · SPOT</span>
     <span class="crumb-sep">/</span>
     <span class="crumb-doc">101 问 B · 出清结算与省域实践</span>
   </div>
@@ -30,7 +30,14 @@
       <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
       <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-    <a class="src" href="../电力现货市场101问-B-出清结算与省域实践.md">.md 源文件</a>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../电力现货市场101问-B-出清结算与省域实践.md">.md 源文件<small>knowledge/电力现货市场101问-B-出清结算与省域实践.md</small></a>
+
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
     <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
   </div>
 </header>
@@ -38,7 +45,7 @@
 <div class="shell">
   <aside class="sidebar" id="nav">
     <div class="nav-kicker">当前分类</div>
-    <div class="nav-num">05 / SPOT</div>
+    <div class="nav-num">02 · SPOT</div>
     <h2 class="nav-cat"><a href="../index.html#spot">电力现货与省间交易</a></h2>
     <ul class="nav-list">
               <li><a href="省间与跨区交易-2026-11.html">省间与跨区交易（2026 版）</a></li>
@@ -52,24 +59,24 @@
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
       <ul>
-              <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
-              <li><a href="../index.html#intl"><b>06</b>海外市场</a></li>
-              <li><a href="../index.html#cross"><b>07</b>横向专题</a></li>
-              <li><a href="../index.html#price"><b>08</b>电价</a></li>
-              <li><a href="../index.html#renewable"><b>09</b>新能源与并网</a></li>
-              <li><a href="../index.html#storage"><b>10</b>储能与 EMS</a></li>
-              <li><a href="../index.html#park"><b>11</b>综合能源与零碳园区</a></li>
-              <li><a href="../index.html#carbon"><b>12</b>碳市场与碳管理</a></li>
-              <li><a href="../index.html#vpp"><b>13</b>虚拟电厂</a></li>
-              <li><a href="../index.html#index"><b>14</b>索引、查证与工具</a></li>
-              <li><a href="../index.html#research"><b>15</b>调研底稿</a></li>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#intl"><b>03</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>04</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>05</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>06</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>07</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>08</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>09</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>10</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>11</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>12</b>调研底稿</a></li>
       </ul>
     </div>
   </aside>
 
   <main class="main" id="main">
     <header class="doc-head">
-      <div class="kicker">05 / SPOT<i>教材笔记</i></div>
+      <div class="kicker">02 · SPOT<i>教材笔记</i></div>
       <h1 class="doc-title">《电力现货市场101问》主题笔记B：出清结算机制与省域实践（第27~65问）</h1>
       <p class="lede">第 27–65 问：联合/独立出清、节点价算例、结算、市场力识别与用户侧参与。</p>
       <p class="hook">谁定价、怎么结算、如何识别市场力</p>
@@ -117,16 +124,45 @@
 <h3 id="s10">十、省间市场：ATC、富余可再生现货与两级衔接</h3>
 <ul><li>可用传输容量ATC=已有交易基础上可进一步用于交易的剩余输电容量；TTC=满足设备热容量、系统安全稳定、节点电压三约束的最大传输功率（取最小）；TRM=为不确定性预留（时间跨度越长越大，常取固定百分比、结果保守）；ETC=已签输电合同占用（分计划/预约、可撤销/不可撤销，高峰受威胁可削可撤销合同）；CBM=保不可撤销协议执行的预留（常取机组最大容量比例或TTC固定百分比）。北美1995年NERC统一输电能力定义；欧洲NTC=TTC−TRM、SATC=NTC−ATF（ATF类似CBM+不可更改服务容量TC之和），随预订与发电计划动态更新。中国：省间富余现货已实现基于ATC的跨区交易组织；计及ATC的省间中长期交易软件已部署新一代电力交易平台、出清同时考虑通道剩余能力。</li><li><strong>省间富余可再生现货</strong>：政策依据发改价格〔2015〕962号（跨省跨区送电可协商或市场化定价）、发改能源〔2016〕625号、发改运行〔2016〕1558号（建灵活日前日内交易机制）。时间线：2016年上半年国网编方案与规则、9月上报；2017年7月24日国能函监管〔2017〕46号复函同意；8月15日国调中心与北京电力交易中心发《跨区域省间富余可再生能源电力现货交易试点规则（试行）》；8月18日启动弃风弃光及四川弃水电能试点（17日竞价日、18日执行日）。定位：送端调节资源用尽、可再生仍富余时用跨区通道可用能力的日前日内交易。四大特点：首次支持可再生参与外送（主体含送端水风光企业、受端电网企业/大用户/售电公司/火电）；专用出清模型（买方报价考虑输电电价与线损折算到送端关口，报价最低售电方与最高购电方优先成交，售电侧最后一笔成交均价为售电侧边际出清价，购电侧价由其折算）；日前+日内多时间维度；国、网、省三级协同组织流程。成果：至2020年底运行超3年、超2300家发电企业、成交超190亿kWh、覆盖国网全部经营区、涉及25条跨区通道、通道平均利用率提升约1.6个百分点；系新一轮电改首个不间断运行的现货市场。六条经验：示范带头、完善&quot;中长期+现货&quot;交易体系、缓解&quot;三弃&quot;、提高通道利用率、促进机制与技术进步（融合电力流与交易流、考虑级联通道输电费网损与动态ATC的集中出清）、培育人才与市场意识。</li><li><strong>省间—省内衔接</strong>：&quot;统一市场、两级运作&quot;，分层申报、协调出清——省内依省间送受电预计划形成开机方式与预安排，省间量价结果作省内边界。时序：省间日前+日内，省内日前+实时。省间日前七步（0日=运行日）：0-2日国调依中长期结果下发联络线0日96时段预计划及直调机组预计划、网调发区域预计划；0-1日依次为信息公告（负荷与新能源预测、停电计划、联络线可用容量）→省内预出清（预平衡）并上报国调/网调→交易申报（省间系统终端报电力-价格曲线、省调安全校验上报）→国调/网调组织省间日前集中出清并纳入联络线计划、安全校核后发布→网调组织区域辅助服务出清并下发联络线计划→省调编省内日前发电计划或组织省内日前市场及辅助服务出清并发布。日内衔接：运行日按时限发布超短期预测等信息，基于省内实时预出清参与省间日内，结果下发后作省内实时市场边界再出清。闭环逻辑：省间中长期结果为省间现货边界；省间出清结果与省内中长期共同构成省内现货边界；省内预出清/预平衡结果同时上报支撑省间出清。</li></ul>
 <h2 id="s11">速查：关键数字与文号</h2>
-<div class="table-wrap"><table><thead><tr><th>项目</th><th>数值/文号</th></tr></thead><tbody><tr><td>首批现货试点</td><td>发改办能源〔2017〕1453号：南方(广东起步)、蒙西、浙、晋、鲁、闽、川、甘8试点，2018年底前启动试运行</td></tr><tr><td>新电改框架</td><td>中发9号文(2015.3)；发改经体〔2015〕2752号；发改价格〔2015〕742号(输配电价、顺价依据)</td></tr><tr><td>结算与调度文件</td><td>发改能源〔2018〕1518号(结算科目九类)；发改体改〔2020〕234号(调度权责)</td></tr><tr><td>发用电计划放开</td><td>国发〔2002〕5号；发改运行〔2017〕294号；〔2018〕1027号(四行业)；〔2019〕1105号(经营性全放开)；〔2019〕144号(优发优购)</td></tr><tr><td>可再生政策</td><td>财建〔2020〕4号/5号(合理利用小时)；发改能源〔2016〕625号、〔2017〕132号(绿证)；发改价格〔2017〕1941号；发改能源〔2019〕807号(消纳权重)；国能综通新能〔2020〕29号</td></tr><tr><td>省间富余现货</td><td>发改价格〔2015〕962号；发改运行〔2016〕1558号；国能函监管〔2017〕46号；2017.8.18启动</td></tr><tr><td>省间现货成果</td><td>运行超3年、2300+发电企业、190亿kWh、25条通道、利用率+1.6pct</td></tr><tr><td>国网6试点</td><td>2019.9进入结算试运行；2020连续结算：闽7个月、甘5个月、晋2个月</td></tr><tr><td>第一轮试点</td><td>国办发〔1998〕146号6省市；2004.5终止</td></tr><tr><td>出清节奏与备用</td><td>实时每5分钟出清；PJM辅助服务实时前1小时关闭、5分钟联合出清；备用分10分钟(仅在线)/30分钟(在线+离线)</td></tr><tr><td>负电价算例</td><td>负荷7500MW三节点：节点2最高640、最低−80元/MWh</td></tr><tr><td>集中度阈值</td><td>CR4/CR8=40分界；HHI≥1800高寡占、1000~1800低寡占、&lt;1000竞争型</td></tr><tr><td>申报充足率</td><td>加州125%阈值、&gt;150%无需限价；示例39000/30000=130%</td></tr><tr><td>VPP规模</td><td>美国超3000万kW占尖峰4%+；日本2030年2500万kW；Next Kraft 280万kW、占德国二次调频10%</td></tr><tr><td>微电网边界</td><td>≤10kV、兆瓦级及以下；外交换电≤总电量20%；多联供利用率≥70%；分布式五类含≤6MW/≤2万kW光伏/≤5万kW小水电</td></tr><tr><td>ATC公式</td><td>ATC=TTC−TRM−ETC(含CBM)；欧洲NTC=TTC−TRM、SATC=NTC−ATF；NERC 1995年定义</td></tr><tr><td>MISO评价权重</td><td>可靠性合规安全25%；组合效率/市场效率/财务/顾客服务各10%；系统可用性5%</td></tr><tr><td>英国现货</td><td>APX 10:50关/11:50出清；N2EX 09:30/10:00；约450万小用户分时电价(01:00~08:00低价)</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>数值/文号</th></tr></thead><tbody><tr><td>首批现货试点</td><td>发改办能源〔2017〕1453号：南方(广东起步)、蒙西、浙、晋、鲁、闽、川、甘8试点，2018年底前启动试运行</td></tr><tr><td>新电改框架</td><td>中发9号文(2015.3)；发改经体〔2015〕2752号；发改价格〔2015〕742号(输配电价、顺价依据)</td></tr><tr><td>结算与调度文件</td><td>发改能源〔2018〕1518号(结算科目九类)；发改体改〔2020〕234号(调度权责)</td></tr><tr><td>发用电计划放开</td><td>国发〔2002〕5号；发改运行〔2017〕294号；〔2018〕1027号(四行业)；〔2019〕1105号(经营性全放开)；〔2019〕144号(优发优购)</td></tr><tr><td>可再生政策</td><td>财建〔2020〕4号/5号(合理利用小时)；发改能源〔2016〕625号、〔2017〕132号(绿证)；发改价格〔2017〕1941号；发改能源〔2019〕807号(消纳权重)；国能综通新能〔2020〕29号</td></tr><tr><td>省间富余现货</td><td>发改价格〔2015〕962号；发改运行〔2016〕1558号；国能函监管〔2017〕46号；2017.8.18启动</td></tr><tr><td>省间现货成果</td><td>运行超3年、2300+发电企业、190亿kWh、25条通道、利用率+1.6pct</td></tr><tr><td>国网6试点</td><td>2019.9进入结算试运行；2020连续结算：闽7个月、甘5个月、晋2个月</td></tr><tr><td>第一轮试点</td><td>国办发〔1998〕146号6省市；2004.5终止</td></tr><tr><td>出清节奏与备用</td><td>实时每5分钟出清；PJM辅助服务实时前1小时关闭、5分钟联合出清；备用分10分钟(仅在线)/30分钟(在线+离线)</td></tr><tr><td>负电价算例</td><td>负荷7500MW三节点：节点2最高640、最低−80元/MWh</td></tr><tr><td>集中度阈值</td><td>CR4/CR8=40分界；HHI≥1800高寡占、1000~1800低寡占、&lt;1000竞争型</td></tr><tr><td>申报充足率</td><td>加州125%阈值、&gt;150%无需限价；示例39000/30000=130%</td></tr><tr><td>VPP规模</td><td>美国超3000万kW占尖峰4%+；日本2030年2500万kW；Next Kraft 280万kW、占德国二次调频10%</td></tr><tr><td>微电网边界</td><td>≤10kV、兆瓦级及以下；外交换电≤总电量20%；多联供利用率≥70%；分布式五类含≤6MW/≤2万kW光伏/≤5万kW小水电</td></tr><tr><td>ATC公式</td><td>ATC=TTC−TRM−ETC(含CBM)；欧洲NTC=TTC−TRM、SATC=NTC−ATF；NERC 1995年定义</td></tr><tr><td>MISO评价权重</td><td>可靠性合规安全25%；组合效率/市场效率/财务/顾客服务各10%；系统可用性5%</td></tr><tr><td>英国现货</td><td>APX 10:50关/11:50出清；N2EX 09:30/10:00；约450万小用户分时电价(01:00~08:00低价)</td></tr></tbody></table></div>
     </article>
 
-    <section class="related" aria-label="相关模块">
-      <h2>相关模块</h2>
-      <ul>
-        <li><a href="电力现货市场101问-A-基础与价格机制.html">101 问 A · 基础与价格机制</a></li>
-        <li><a href="电力现货市场101问-C-结算TTS与政策演进.html">101 问 C · 结算、TTS 与政策演进</a></li>
-        <li><a href="电力现货市场实务-精读笔记.html">电力现货市场实务</a></li>
-      </ul>
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>3</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="电力现货市场101问-A-基础与价格机制.html">
+          <span class="related-type">同区延伸</span>
+          <b>101 问 A · 基础与价格机制</b>
+          <span>第 1–26 问：电力市场定义、现货体系、集中式与分散式、SMP / ZMP / LMP。</span>
+        </a>
+        <a class="related-card" href="电力现货市场101问-C-结算TTS与政策演进.html">
+          <span class="related-type">同区延伸</span>
+          <b>101 问 C · 结算、TTS 与政策演进</b>
+          <span>第 65–101 问：省间日内、水电与调峰、安全校核、市场治理、应急熔断与免责。</span>
+        </a>
+        <a class="related-card" href="电力现货市场实务-精读笔记.html">
+          <span class="related-type">同区延伸</span>
+          <b>电力现货市场实务</b>
+          <span>五篇 31 章：理论、国外实践、国内八省、技术支持系统与展望，附 15 环节交易流程。</span>
+        </a>
+      </div>
+
+    </section>
+
+<section class="related" aria-labelledby="paired-skills-title">
+      <div class="related-head"><h2 id="paired-skills-title">配套技能</h2><span>2</span></div>
+      <div class="related-grid">
+        <a class="related-card skill-pair" href="skill-electricity-trading-expert.html">
+          <span class="related-type">现货报价、结算、风险与市场分析</span>
+          <b>电力交易专家</b>
+          <span>技能 · 现货 · 结算 · 风控</span>
+        </a>
+        <a class="related-card skill-pair" href="skill-spot-bidding-quant.html">
+          <span class="related-type">预测、报价、仿真与回测</span>
+          <b>现货报价量化</b>
+          <span>技能 · 预测 · 报价 · 回测</span>
+        </a>
+      </div>
     </section>
 
     <nav class="pager" aria-label="上下篇">
@@ -136,7 +172,11 @@
 
     <footer class="doc-foot">
       <div class="lic">本页由 <a href="../电力现货市场101问-B-出清结算与省域实践.md">knowledge/电力现货市场101问-B-出清结算与省域实践.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
-      <div><a href="../index.html">返回知识库总览 →</a></div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
     </footer>
   </main>
 
@@ -154,7 +194,7 @@
             <li class="lv3"><a href="#s9">九、运营组织、调度职责与预出清</a></li>
             <li class="lv3"><a href="#s10">十、省间市场：ATC、富余可再生现货与两级衔接</a></li>
             <li class="lv2"><a href="#s11">速查：关键数字与文号</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="true" data-count="10">收起小节</button>
+    </ol><button class="toc-more" type="button" aria-expanded="true" data-count="10" data-more-label="展开 10 个小节" data-less-label="收起小节">收起小节</button>
   </aside>
 </div>
 
