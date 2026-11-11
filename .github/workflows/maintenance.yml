@@ -1,0 +1,25 @@
+name: maintenance-board
+
+# 每月 1 号把「更新清单」的到期看板写进 Actions 运行摘要。
+# 结构校验已由 consistency.yml 在每次 push/PR 执行，这里只做提醒，不阻塞。
+on:
+  schedule:
+    - cron: '0 1 1 * *'
+  workflow_dispatch:
+
+jobs:
+  board:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Publish due-review board to job summary
+        run: |
+          echo '## 更新清单到期看板' >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          node scripts/check-maintenance.mjs >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          echo '' >> "$GITHUB_STEP_SUMMARY"
+          echo '结构校验：`node scripts/check-maintenance.mjs --check`（consistency workflow 已执行）' >> "$GITHUB_STEP_SUMMARY"

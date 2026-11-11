@@ -1,0 +1,2018 @@
+{
+  "schema": 1,
+  "description": "Machine-readable credibility register. Filter modules by confidence/examples/historical before injecting into a model; gradeC and openItems carry the unverified figures and undecided items.",
+  "summary": {
+    "modules": 64,
+    "gradeCItems": 22,
+    "openItems": 37,
+    "events": 32,
+    "draftPolicies": 3,
+    "mixedModules": 45,
+    "historicalModules": 15,
+    "unverifiedGradeC": 19
+  },
+  "enums": {
+    "confidence": [
+      "verified",
+      "mixed",
+      "draft",
+      "historical"
+    ],
+    "examples": [
+      "synthetic",
+      "documented",
+      "none"
+    ],
+    "policyStatus": [
+      "现行",
+      "即将施行",
+      "草案",
+      "征求意见稿",
+      "已被取代",
+      "参考"
+    ],
+    "priority": [
+      "P0",
+      "P1",
+      "P2",
+      "P0（储能）"
+    ],
+    "ticketStatus": [
+      "待复核",
+      "已复核",
+      "已改口径",
+      "口径已确认",
+      "部分确认"
+    ]
+  },
+  "gradeC": [
+    {
+      "n": 1,
+      "figure": "比利时 CRM 约 2.7 万 €/MW·年",
+      "module": "比利时/北欧 §3",
+      "reason": "媒体单位有“27.3 万/2.73 万”混用；Elia 原文 403",
+      "source": "`elia.be` CRM 公告、CREG",
+      "priority": "P0",
+      "status": "待复核",
+      "columns": 7
+    },
+    {
+      "n": 2,
+      "figure": "波兰电池降额约 13%",
+      "module": "波兰 §4、海外储能 §6",
+      "reason": "媒体口径；规则调整中",
+      "source": "`ure.gov.pl`、`pse.pl` 容量市场规则",
+      "priority": "P0",
+      "status": "待复核",
+      "columns": 7
+    },
+    {
+      "n": 3,
+      "figure": "意大利 2028 交付年 4 h 电池降额上限约 54%",
+      "module": "意大利 §6",
+      "reason": "Terna 规则转引；随技术/时长变化",
+      "source": "`terna.it` 容量市场规则",
+      "priority": "P1",
+      "status": "待复核",
+      "columns": 7
+    },
+    {
+      "n": 4,
+      "figure": "荷兰约 1.5 万家各类企业等待接入",
+      "module": "荷兰 §6",
+      "reason": "媒体口径；未区分申请/许可/在建，也不是储能专用",
+      "source": "`acm.nl`、`netbeheernederland.nl`",
+      "priority": "P1",
+      "status": "待复核",
+      "columns": 7
+    },
+    {
+      "n": 5,
+      "figure": "西班牙负价 555 h（2025）/397 h（2026Q1）",
+      "module": "西班牙 §2",
+      "reason": "媒体统计；日前/实时口径未完全统一",
+      "source": "`omie.es`、`ree.es`",
+      "priority": "P1",
+      "status": "已改口径：2025 为 553 h（<0）+247 h（=0）（B，Ember）；2026Q1 397 h 仍为 C",
+      "columns": 7
+    },
+    {
+      "n": 6,
+      "figure": "西班牙已许可 24.3 GW / 待审 15.1 GW",
+      "module": "西班牙 §6",
+      "reason": "媒体口径；许可是状态不是装机",
+      "source": "`ree.es`、MITECO",
+      "priority": "P1",
+      "status": "待复核",
+      "columns": 7
+    },
+    {
+      "n": 7,
+      "figure": "西班牙接入申请约 37.37 GW",
+      "module": "西班牙 §6",
+      "reason": "媒体口径；申请量≠可并网量",
+      "source": "`ree.es`",
+      "priority": "P1",
+      "status": "待复核",
+      "columns": 7
+    },
+    {
+      "n": 8,
+      "figure": "英国队列约 750 GW → 200–250 GW",
+      "module": "英国 §5",
+      "reason": "媒体/行业口径；TMO4+ 清理中",
+      "source": "`neso.energy` 队列报告",
+      "priority": "P1",
+      "status": "待复核",
+      "columns": 7
+    },
+    {
+      "n": 9,
+      "figure": "波兰 2030 交付年储能约 685 MW",
+      "module": "波兰 §4",
+      "reason": "媒体统计；容量市场中标≠投运",
+      "source": "`ure.gov.pl`、`pse.pl`",
+      "priority": "P1",
+      "status": "待复核",
+      "columns": 7
+    },
+    {
+      "n": 10,
+      "figure": "波兰单次负价 −791.32 PLN/MWh 约 10 h",
+      "module": "波兰 §2",
+      "reason": "媒体口径；需 TGE/PSE 原始数据",
+      "source": "`tge.pl`、`pse.pl`",
+      "priority": "P1",
+      "status": "待复核",
+      "columns": 7
+    },
+    {
+      "n": 11,
+      "figure": "比利时 Y-4：4,690 MW / 电池 179 MW（铭牌 525 MW）",
+      "module": "比利时/北欧 §3",
+      "reason": "媒体转引；Elia 原文 403",
+      "source": "`elia.be`、CREG",
+      "priority": "P1",
+      "status": "待复核",
+      "columns": 7
+    },
+    {
+      "n": 12,
+      "figure": "日本接续检讨 24,880 件（FY2025）",
+      "module": "日本 §6",
+      "reason": "媒体口径；件数≠容量",
+      "source": "`occto.or.jp`、METI",
+      "priority": "P1",
+      "status": "待复核",
+      "columns": 7
+    },
+    {
+      "n": 13,
+      "figure": "JEPX FY2025 系统价均值 ¥11.06/kWh",
+      "module": "日本 §2",
+      "reason": "媒体/行业统计；系统价非分区结算价",
+      "source": "`jepx.jp`",
+      "priority": "P1",
+      "status": "口径已确认（B）：30 分钟简单平均，非负荷加权/分区价；仍不作横比",
+      "columns": 7
+    },
+    {
+      "n": 14,
+      "figure": "ERCOT 大负荷申请约 474 GW",
+      "module": "美国 §4",
+      "reason": "媒体口径；申请量≠并网量",
+      "source": "`ercot.com`、PUCT",
+      "priority": "P1",
+      "status": "待复核",
+      "columns": 7
+    },
+    {
+      "n": 15,
+      "figure": "ERCOT Batch Zero 204/66.4 GW + 158/127.9 GW",
+      "module": "美国 §4",
+      "reason": "媒体口径；最终分配 2027 春",
+      "source": "`ercot.com`",
+      "priority": "P1",
+      "status": "待复核",
+      "columns": 7
+    },
+    {
+      "n": 16,
+      "figure": "PJM 2026/27 BRA $329.17/MW-day",
+      "module": "美国 §3",
+      "reason": "媒体/行业口径；以 PJM 拍卖报告为准",
+      "source": "`pjm.com`",
+      "priority": "P1",
+      "status": "待复核",
+      "columns": 7
+    },
+    {
+      "n": 17,
+      "figure": "CAISO 2024 弃电约 3.4 TWh、93% 光伏",
+      "module": "美国 §4",
+      "reason": "媒体口径；弃电≠负价",
+      "source": "`caiso.com`、CEC",
+      "priority": "P2",
+      "status": "待复核",
+      "columns": 7
+    },
+    {
+      "n": 18,
+      "figure": "德国 2026 两轮容量招标“不向电池开放”",
+      "module": "德国 §8",
+      "reason": "报道口径；以招标文件为准",
+      "source": "`bundesnetzagentur.de`、`regelleistung.net`",
+      "priority": "P0（储能）",
+      "status": "待复核",
+      "columns": 7
+    },
+    {
+      "n": 19,
+      "figure": "西班牙容量首拍“2026 年底至 2027 年”",
+      "module": "西班牙 §5",
+      "reason": "媒体口径；以 REE 公告为准",
+      "source": "`ree.es`",
+      "priority": "P0（储能）",
+      "status": "待复核",
+      "columns": 7
+    },
+    {
+      "n": 20,
+      "figure": "比利时下一轮 CRM 时间",
+      "module": "比利时/北欧 §3",
+      "reason": "模块未落具体日期",
+      "source": "`elia.be`",
+      "priority": "P0（储能）",
+      "status": "待复核",
+      "columns": 7
+    },
+    {
+      "n": 21,
+      "figure": "法国“gabarits”灵活接入机制",
+      "module": "法国 §7",
+      "reason": "仅有 B 级交易商文章，未见 RTE 官方文本",
+      "source": "`rte-france.com`、CRE",
+      "priority": "P1",
+      "status": "待复核；投决前书面确认",
+      "columns": 7
+    },
+    {
+      "n": 22,
+      "figure": "法国 PL-1 2027-28 拍卖“通常 7 月”",
+      "module": "法国 §12",
+      "reason": "历史节奏推断，非官方日程",
+      "source": "`rte-france.com`、`cre.fr`",
+      "priority": "P2",
+      "status": "待复核",
+      "columns": 7
+    }
+  ],
+  "openItems": [
+    {
+      "n": 1,
+      "topic": "National VPP management measure",
+      "text": "not issued as of 2026-11-01; do not invent a document number."
+    },
+    {
+      "n": 2,
+      "topic": "2026 spot-market basic rules",
+      "text": "draft published 2026-10-19, comments due 2026-11-18, proposed effective 2027-01-01; 2026 still runs on Document No. 1217 and provincial rules."
+    },
+    {
+      "n": 3,
+      "topic": "Retailer measure, risk-control measure, credit-evaluation guidelines, grid-connection rules",
+      "text": "September-October 2026 drafts, not current law."
+    },
+    {
+      "n": 4,
+      "topic": "Anhui's VPP aggregation threshold",
+      "text": "still needs the original text; Liaoning (≥10 MW / ≥5 MW, 2026-10-01) and Hainan (≥1 MW / 1 h, 2026-11-01) are now verified against provincial pages."
+    },
+    {
+      "n": 5,
+      "topic": "Shenzhen VPP funding",
+      "text": "the 2024 measure expired 2025-12-31; no 2026 replacement found."
+    },
+    {
+      "n": 6,
+      "topic": "2027 No. 136 auctions",
+      "text": "Liaoning clears 2026-11-08; results and other provinces still arriving."
+    },
+    {
+      "n": 7,
+      "topic": "Order 2222",
+      "text": "CAISO/ISO-NE 2026-11-01, NYISO 2026-12, PJM 2028/29 — implementation, not just approval."
+    },
+    {
+      "n": 8,
+      "topic": "CBAM",
+      "text": "certificates purchasable from 2027-02, first surrender 2027-09-30."
+    },
+    {
+      "n": 9,
+      "topic": "ISO 14068:2026",
+      "text": "certificate transition from 14068-1:2023 still to be confirmed by certification bodies."
+    },
+    {
+      "n": 10,
+      "topic": "DPP",
+      "text": "registry operating rules and the final battery data-item list are not yet public in full; delegated-act dates for steel, construction, textiles, aluminium, tyres and furniture are indicative."
+    },
+    {
+      "n": 11,
+      "topic": "PCF label",
+      "text": "later certification batches, product-specific rules and the formal Shanghai incentive document."
+    },
+    {
+      "n": 12,
+      "topic": "Cross-border carbon data",
+      "text": "official Lingang statistics and sectoral important-data catalogues."
+    },
+    {
+      "n": 13,
+      "topic": "Renewable development",
+      "text": "provincial Document 136 implementation plans, mechanism-energy ratios and contract terms, 2027 incremental auction results, whether green-certificate revenue overlaps with mechanism energy, and the effect of the 2027 spot rules on capture prices."
+    },
+    {
+      "n": 14,
+      "topic": "Zero-carbon parks and green direct connection",
+      "text": "the second national park list, the park construction/evaluation guideline annex (core vs. guiding indicators), provincial direct-connection rules (Guangdong/Zhejiang/Inner Mongolia/Jilin/Shandong/Liaoning draft), the provincial average-load-factor parameter, green-certificate ownership and transfer for self-used direct-connection energy, and the exact adoption dates of Docs 650 (2025-05-21 vs. 05-30) and 688 (2026-05-14 vs. 05-20)."
+    },
+    {
+      "n": 15,
+      "topic": "Doc. 1192 provincial implementation",
+      "text": "the conversion formula in each province, treatment of multi-circuit supply that keeps the two-part tariff, and whether export energy keeps any mechanism-price eligibility."
+    },
+    {
+      "n": 16,
+      "topic": "Grid-connection assessment (\"two detailed rules\")",
+      "text": "the final text and effective date of the 2026-09-30 national draft; the 2026 North/East China and southern-region revisions; the Shanxi 2025 document number; Northeast/Northwest 2024-2026 rules; the clause numbers behind Shandong's late-AGC, parameter-change and plan-curve penalties; whether provincial assessment prices and caps converge; renewable- and storage-specific primary-frequency and AGC clauses."
+    },
+    {
+      "n": 17,
+      "topic": "Storage technology, safety and grid-forming",
+      "text": "final 2026 storage statistics; the 136 GW vs. 144.7 GW end-2025 calibre gap; conflicting 2025 grid-forming annual vs. cumulative figures; the full texts of GB/T 47968-2026 and GB/T 47655-2026; whether any national document mandates grid-forming (the circulated 2026-04-01 claim and 30% target are unverified); provincial grid-forming ratios and compensation rules; exact GB/T 51048-2025 separation/compartment clauses; the project boundary behind \"flow battery below 2 CNY/Wh\"; 300 MW CAES actual efficiency and cost; sodium-ion utility-scale cycle-life and safety data; the 15 incidents of 2026 H1; the 2% lithium-battery consumption tax pass-through; whether Doc. 114 capacity pricing differentiates grid-forming or long-duration storage; inertia/voltage-support/black-start ancillary-service payment rules."
+    },
+    {
+      "n": 18,
+      "topic": "Quantitative bidding and trading risk",
+      "text": "the final 2026 spot rules (whether the 76-article draft survives), the secondary price-cap and LMP clauses, whether renewable+storage joint bidding is adopted; final retailer/risk-control/credit rules and the actual guarantee ratio and dynamic-limit method; provincial clearing granularity (96 vs. 288 points) and settlement formulas; whether the new rules change backtest baselines or model benchmarks; public reconciliation cases and loss-sharing arrangements between aggregators, retailers and resources."
+    },
+    {
+      "n": 19,
+      "topic": "Demand response, V2G and flexible resources",
+      "text": "actual 2026 provincial DR dispatch and settlement data (most provinces publish calls but not settlement); Guangdong Doc. 233 and Jiangsu 2026 fast-response implementation details; whether Doc. 241 covers 30 or 32 projects; the post-2026-11-01 wording of DR baselines; V2G pilot mid-term evaluation; bidirectional-charger standards and battery-warranty coverage; how transmission/distribution charges apply to reverse discharge; the 2030 V2G 50 GW and VPP 50 GW targets' provincial allocation; whether DR and VPP double-count the same resources in national statistics."
+    },
+    {
+      "n": 20,
+      "topic": "Risk, credit and settlement",
+      "text": "whether the final retailer measure keeps the 1 fen/kWh × 1-10 formula, the CNY 2 million floor, the insurance restriction and the spot-real-time universal-service price; whether the risk-control measure creates a risk reserve or fund; final credit indicator weights, coefficient mapping and repair deadlines; how the 15/5 working-day objection and next-cycle retro-adjustment interact with stricter provincial rules; provincial deviation bands, penalty prices and responsibility sharing; whether the 2026-10 spot draft keeps the six risk types, three-level intervention, daily clearing/monthly settlement and price-difference direction; the timing and content of the Retail Market Basic Rules; the formal document number and penalties of the 2026-06-08 retail notice; universal-service provider selection, cost allocation and user choice window; the treatment of unresolved contracts on retailer exit; related-party volume caps; credit treatment of storage/VPP; green-power and mechanism-energy treatment in deviation and settlement; cross-provincial settlement risk and guarantees; negative-price deviation and retail package design; insurance exclusions, deductibles and claim order; 2027 contract negative-spread risk and regulatory tolerance."
+    },
+    {
+      "n": 21,
+      "topic": "Overseas markets",
+      "text": "Australia's Reliability Panel recommended a 99.997% standard for 2028-32 in its April 2026 final report, pending the AEMC decision; the NEM's 2026-27 price bands apply only to that financial year; Germany's AgNes grid-fee reform has a draft determination from 2026-10 and a final determination due 2027-01-01, with rules from 2029; the StromVKG capacity-mechanism auctions and contract terms are still taking shape after EU approval; UK REMA, TMO4+ delivery and LDES final parameters are pending; Italy's second MACSE auction (2026-11-24) and capacity-market rules may change; EU market-coupling and balancing-platform changes (SDAC/SIDC, PICASSO/MARI) may alter gate times and products. Re-check the relevant rule before quoting any market."
+    },
+    {
+      "n": 22,
+      "topic": "UK market and storage",
+      "text": "whether REMA adopts zonal pricing (the 2026 decision rejected it) and the final TMO4+ queue rules; T-4/T-1 auction parameters for 2030/31 and later; the LDES cap-and-floor final parameters due in autumn 2026 and the first allocation round; BM skip-rate and pay-as-bid reform; CfD eligibility for co-located storage; MHHS migration timing; TNUoS reform by 2029 and BSUoS treatment."
+    },
+    {
+      "n": 23,
+      "topic": "Italy market and storage",
+      "text": "the MACSE second auction result (2026-11-24) and later round sizes; capacity-market parameters and 2028 de-rating factors; FER X auction schedules and NZIA eligibility; the 277 GW connection-application queue and regional permitting (aree idonee); PUN and zonal-price volatility; MSD/MB product changes as storage penetration rises."
+    },
+    {
+      "n": 24,
+      "topic": "Australia–Germany storage business",
+      "text": "CIS Tender 10 results are still pending; the §118(6) exemption only applies to storage commissioned by 2029-08-04; AgNes final determination is due 2027-01-01; the two 2026 StromVKG auctions reportedly exclude battery storage while the 2027 new-capacity tender is open with ≥10 hours; WDRM/FCAS revenue assumptions must be re-based on current prices; all worked examples in the storage module are synthetic (grade D), not investment advice."
+    },
+    {
+      "n": 25,
+      "topic": "Spain market and storage",
+      "text": "the first capacity auction under Orden TED/966/2026 (timing and clearing price) and the EU state-aid terms; whether the RDL 7/2026 flexible-access reserve and RD 997/2025 grid-forming conditions are implemented in full; 2026 negative-price hours and solar capture rates; the 2025-04-28 blackout investigation outcome; conversion of the permitted/pending storage pipeline."
+    },
+    {
+      "n": 26,
+      "topic": "Netherlands market and storage",
+      "text": "whether a capacity mechanism follows the completed study; SDE++ 2027 parameters and any battery-specific category; rollout of the 2026-07-01 priority framework and ATR85 non-firm contracts; TenneT's 4 GW-by-2030 storage connection plan; the aFRR 4-hour contract migration; the end of net metering (2027-01-01) and its effect on behind-the-meter storage; congestion-fee design."
+    },
+    {
+      "n": 27,
+      "topic": "Poland market and storage",
+      "text": "battery de-rating (13% is a grade-C figure), the 2030 vs. 2029 auction outcomes, foreign participation, NFOŚiGW delivery by end-2028 and Article 62 deductions, MARI accession, the 2026 OZE non-price criteria, negative-price hours and the coal phase-down."
+    },
+    {
+      "n": 28,
+      "topic": "Belgium/Nordics market and storage",
+      "text": "the Belgian CRM price unit and Y-4/Y-2/Y-1 results, nuclear extension and state aid, offshore build-out, Nordic mFRR EAM/PICASSO rollout in Sweden/Norway, the effektreserv auction, the Swedish bidding-zone review (report due 2027-01-29), negative-price hours and the four countries' different entry rules."
+    },
+    {
+      "n": 29,
+      "topic": "US market and storage",
+      "text": "the ERCOT RTC+B performance and any ORDC changes; PJM 2028/29 BRA delivery, the 2029/30 BRA and ELCC parameter updates; CAISO RA slice-of-day implementation, EDAM expansion and FMM/RTD changes; ITC/FEOC/Section 301 implementation details and the August 2026 grid-equipment executive order; PJM/CAISO queue reform and co-location rules; state permitting and fire-code adoption."
+    },
+    {
+      "n": 30,
+      "topic": "Japan market and storage",
+      "text": "the FY2030 capacity auction, de-rating factors and round-4 LTDA cap/results (schedule published 2026-10-09); implementation of the ≥6-hour threshold and the ~90% clawback; EPRX product migration and cap changes; the connection-study cap enforcement and queue processing; the JEPX spot cap rulebook wording; SII grant amounts; FEFTA review practice for storage SPVs."
+    },
+    {
+      "n": 31,
+      "topic": "Cross-border grid connection and compliance",
+      "text": "the final NZIA implementing acts and IAA status; national implementation of NIS2 and the EU Battery Regulation delegated acts (battery passport data fields, carbon-footprint methodology); the exact fire-code adoption path in each US state and UK/Netherlands/Poland local permits; whether FDI screening practice changes for storage SPVs; all country-specific entries not verified line by line are written as \"local permits\" in the module and must be checked against the original text."
+    },
+    {
+      "n": 32,
+      "topic": "Capacity mechanisms",
+      "text": "the first Spanish auction under TED/966/2026 (timing and price); the Italian MACSE second auction result (2026-11-24) and later rounds; the German StromVKG auction terms and whether batteries are admitted; the Belgian CRM price unit (the ~€27k/MW·yr figure is grade C); the Swedish effektreserv re-auction; the Australian CIS Tender 10 result and state-scheme stacking rules; PJM 2029/30 BRA and ELCC updates; Japan FY2030 CM and round-4 LTDA; all five worked examples in the capacity module are synthetic (grade D)."
+    },
+    {
+      "n": 33,
+      "topic": "Ancillary and balancing markets",
+      "text": "PICASSO/MARI accession dates for the remaining TSOs (Poland MARI, Sweden/Norway PICASSO, etc.); UK BM and DC/DM/DR product changes; Italy MSD/MB product migration; Spain aFRR/mFRR product changes; Australia FCAS market design and very fast FCAS; ERCOT RTC+B and ORDC changes; PJM/CAISO ancillary product reforms; Japan EPRX product migration and cap changes; storage prequalification rules and SOC/performance tests are country-specific and must be checked against the current rulebook."
+    },
+    {
+      "n": 34,
+      "topic": "Storage revenue modelling and data sources",
+      "text": "the data-access terms, API changes and redistribution limits of each platform (ENTSO-E, EPEX, Nord Pool, Elexon, GME, OMIE, PSE, AEMO, CAISO, ERCOT, PJM, JEPX); settlement-granularity changes; whether 5-minute or 15-minute data are final or preliminary; degradation and RTE test standards; the treatment of capacity/ancillary co-optimisation; all four worked examples are synthetic (grade D) and must not be used as investment benchmarks."
+    },
+    {
+      "n": 35,
+      "topic": "Cross-border PPAs and certificates",
+      "text": "whether EU GO and UK REGO move toward mutual recognition; AIB membership changes; the treatment of GO vintage and 12-month validity in each registry; the final EU Battery Regulation carbon-footprint rules and whether green certificates can be used (currently not recognised for that purpose); the legal status of 24/7/hourly matching claims and granular certificates; CfD/CIS/state-scheme stacking and clawback terms; tolling contract terms are private and the module only provides a checklist; all five worked examples are synthetic (grade D)."
+    },
+    {
+      "n": 36,
+      "topic": "Eleven-market snapshot and decision calendar",
+      "text": "2025 installed capacity and annual average price are now backfilled for eleven markets, but Spain's installed capacity remains blocked (REE/ESIOS automation returns 403), Poland's and ERCOT's local-currency annual averages are still open, Australia's and the US annual negative-price hours are missing, and capture rates, interconnection durations and de-rating coefficients are incomplete; the Poland 2031 delivery-year auction, the next Belgian CRM round, the outcome of the Swedish bidding-zone review (report due 2027-01-29), the French PL-4 first round and the MHHS migration dates are not confirmed; 22 grade-C figures are listed with verification entries and must be re-checked before use."
+    },
+    {
+      "n": 37,
+      "topic": "France market and storage",
+      "text": "the PL-4 2030-31 first auction date and parameters, the PPI exemption applications accepted before 2026-11-23, the first actual VNU settlement in 2027, the end-2026 grid-framework reform, the battery-queue conversion rate (14 GW/180 projects vs ~30 GW access rights), the de-rating coefficients applied to batteries in PL-1/PL-4, and the 2027 CRE tender calendar; the first-auction €28,182.99/MW is a 151-day delivery-period price and must not be annualised without stating the conversion."
+    }
+  ],
+  "events": [
+    {
+      "date": "2026-11-09/10",
+      "market": "波兰",
+      "event": "OZE 拍卖",
+      "note": "新能源增量与 CfD 价格；储能配套需求",
+      "grade": "B/C；按日程举行，结果待 URE 公布"
+    },
+    {
+      "date": "2026-11-23",
+      "market": "法国",
+      "event": "PL-4 2030-31 拍卖的 PPI 豁免受理截止",
+      "note": "项目前期费用能否回收；长时/新建项目资格",
+      "grade": "A，CRE 2026-199"
+    },
+    {
+      "date": "2026-11-24 10:00",
+      "market": "意大利",
+      "event": "MACSE 第二轮拍卖，16 GWh，2029 交付",
+      "note": "储能容量收入；中标价与分区分布",
+      "grade": "A；待举行"
+    },
+    {
+      "date": "2026-11-26",
+      "market": "荷兰",
+      "event": "SDE++ 2026 窗口截止（预算 80 亿欧元）",
+      "note": "可再生与低碳项目补贴；电池不是独立类别",
+      "grade": "A"
+    },
+    {
+      "date": "2026-12-09",
+      "market": "英国",
+      "event": "Wholesale CfD 咨询截止（2026-10-28 启动）",
+      "note": "未来支持方式；储能/共址项目资格",
+      "grade": "B"
+    },
+    {
+      "date": "2026-12-29",
+      "market": "德国",
+      "event": "第二轮 4.5 GW 容量招标（计划）",
+      "note": "据报道不向电池开放；储能看 2027 年招标",
+      "grade": "C；以招标文件为准"
+    },
+    {
+      "date": "2026-12",
+      "market": "美国 PJM",
+      "event": "2029/30 BRA 截标",
+      "note": "容量价格上限/下限是否调整；储能 ELCC",
+      "grade": "B"
+    },
+    {
+      "date": "2026-12（预计）",
+      "market": "波兰",
+      "event": "2031 交付年容量主拍卖（T-5）",
+      "note": "储能容量收入；降额因子与境外分价",
+      "grade": "待核实；以 URE/PSE 公告为准"
+    },
+    {
+      "date": "2026 秋季",
+      "market": "英国",
+      "event": "LDES 首轮最终决定（16 项目/7,645 MW）",
+      "note": "长时储能的 floor/cap 与项目存续",
+      "grade": "B；截至 11-10 未公布"
+    },
+    {
+      "date": "2026 年底",
+      "market": "英国",
+      "event": "SSEP 上线（替代现有结算系统）",
+      "note": "结算与数据链路；迁移风险",
+      "grade": "B"
+    },
+    {
+      "date": "2026Q4–2027",
+      "market": "西班牙",
+      "event": "容量市场首拍",
+      "note": "储能容量收入从“预期”变“合同”",
+      "grade": "C；以 REE 公告为准"
+    },
+    {
+      "date": "2026Q4",
+      "market": "法国",
+      "event": "PL-4 2030-31 拍卖（具体日期待核实）",
+      "note": "长时/新建项目的多年期容量收入；4 h 电池匹配度低",
+      "grade": "待核实；以 RTE/CRE 公告为准"
+    },
+    {
+      "date": "2026 年底",
+      "market": "法国",
+      "event": "并网框架改革完成",
+      "note": "排队、接入时限、非 firm 接入规则",
+      "grade": "A（进程）；细节待核实"
+    },
+    {
+      "date": "2026 年内",
+      "market": "比利时",
+      "event": "下一轮 CRM（Y-4 2030-31 交付年）",
+      "note": "电池中标量、15 年合同、价格单位",
+      "grade": "C/待核实；以 Elia 公告为准"
+    },
+    {
+      "date": "2026 年内",
+      "market": "荷兰",
+      "event": "Energiewet 实施细继续落地",
+      "note": "接入优先排序、灵活合同、数据交换",
+      "grade": "B/C"
+    },
+    {
+      "date": "2026–2027",
+      "market": "英国",
+      "event": "MHHS 迁移里程碑",
+      "note": "半小时结算与需求侧灵活性计量",
+      "grade": "待核实；以 Ofgem/Elexon 为准"
+    },
+    {
+      "date": "2027-01-01",
+      "market": "德国",
+      "event": "AgNes 电网费最终决定（2029 适用）",
+      "note": "大型储能容量型电网费（约 €4–7/kW·年）",
+      "grade": "B"
+    },
+    {
+      "date": "2027-01-01",
+      "market": "荷兰",
+      "event": "净计量退出",
+      "note": "户用光伏余电不再按零售价抵扣；户储需求",
+      "grade": "B/C"
+    },
+    {
+      "date": "2027 Q1",
+      "market": "英国",
+      "event": "LDES 许可框架目标",
+      "note": "长时项目许可路径",
+      "grade": "B"
+    },
+    {
+      "date": "2027 年（报道 3 月底）",
+      "market": "德国",
+      "event": "约 2 GW 新增容量招标，储能可参与但要求 ≥10 h",
+      "note": "长时储能的容量收入入口",
+      "grade": "B"
+    },
+    {
+      "date": "2027 年（通常 7 月，待核实）",
+      "market": "法国",
+      "event": "PL-1 2027-28 拍卖",
+      "note": "4 h 电池的冬季容量收入",
+      "grade": "B/待核实"
+    },
+    {
+      "date": "2027 年",
+      "market": "法国",
+      "event": "VNU 首次实际结算",
+      "note": "核电收入、售电成本与批发价",
+      "grade": "待核实"
+    },
+    {
+      "date": "2027-02-18",
+      "market": "法国/欧盟",
+      "event": "电池护照强制（EV/工业 >2 kWh）",
+      "note": "出口欧盟电池的碳足迹与数据合规",
+      "grade": "A（EU 2023/1542）"
+    },
+    {
+      "date": "2027 年",
+      "market": "英国",
+      "event": "LDES 第二轮决定（2026 年咨询）",
+      "note": "下一批长时项目",
+      "grade": "B"
+    },
+    {
+      "date": "2027 年春",
+      "market": "美国 ERCOT",
+      "event": "Batch Zero 最终分配",
+      "note": "大负荷并网顺序；储能竞争",
+      "grade": "C"
+    },
+    {
+      "date": "2027 年（预计；日程 2026-10-09 已公布）",
+      "market": "日本",
+      "event": "LTDA 第 4 回（应札年度 2026）结果公布；脱碳电源募集量约 6 GW（C）",
+      "note": "电池中标规模与上限价",
+      "grade": "A（日程）；C（规模）；上限价与结果待核实"
+    },
+    {
+      "date": "2027 年",
+      "market": "美国 CAISO",
+      "event": "EDAM 新成员加入（BANC、LADWP、TID、PNM、IID 等）",
+      "note": "西部市场价差与流动性",
+      "grade": "A"
+    },
+    {
+      "date": "2027-10-31",
+      "market": "德国",
+      "event": "综合容量拍卖（面向所有技术）",
+      "note": "储能/需求响应的资格与规模",
+      "grade": "B"
+    },
+    {
+      "date": "2027–2028",
+      "market": "德国",
+      "event": "StromVKG 拍卖规则细化",
+      "note": "储能资格、产品设计、可用性义务",
+      "grade": "B"
+    },
+    {
+      "date": "2027-01-29（进程起点 2026-05-29）",
+      "market": "瑞典（北欧报价区）",
+      "event": "政府要求 Svenska kraftnät 提交结构性拥塞与最优分区报告；是否调整分区由政府决定",
+      "note": "分区结构是否调整；分区价差与 EPAD 对冲",
+      "grade": "A（进程）；结果待核实"
+    },
+    {
+      "date": "2027 年",
+      "market": "意大利",
+      "event": "FER X 执行（总规模 37.15 GW、光伏配额 10 GW）",
+      "note": "新能源并网与储能配套",
+      "grade": "A/B"
+    },
+    {
+      "date": "2029-08-20",
+      "market": "德国",
+      "event": "第二次综合容量拍卖",
+      "note": "2030 年代容量收入",
+      "grade": "B"
+    }
+  ],
+  "policyDrafts": [
+    {
+      "file": "政策列表-2026-11.md",
+      "line": 101,
+      "doc": "《电力现货市场基本规则（公开征求意见稿）》",
+      "status": "草案",
+      "note": "129→76 条；拟 2027-01-01 施行；反馈截止 2026-11-18",
+      "date": "2026-10-19"
+    },
+    {
+      "file": "政策列表-2026-11.md",
+      "line": 102,
+      "doc": "《电力市场风险防控管理办法（征求意见稿）》",
+      "status": "草案",
+      "note": "7 章 32 条；内部 5 类 + 外部 3 类风险",
+      "date": "2026-09-30"
+    },
+    {
+      "file": "政策列表-2026-11.md",
+      "line": 103,
+      "doc": "《售电公司管理办法（征求意见稿）》",
+      "status": "草案",
+      "note": "注册资本 ≥2,000 万元；履约保障最低 200 万元；逐日盯市",
+      "date": "2026-09-04"
+    }
+  ],
+  "modules": [
+    {
+      "id": "m-index-en",
+      "file": "INDEX_EN-2026-11.md",
+      "title": "English Knowledge Index",
+      "level": "tool",
+      "kind": "索引",
+      "cutoff": "2026-11-11",
+      "confidence": "mixed",
+      "confidenceInferred": false,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 18,
+        "draft": 0,
+        "pending": 3,
+        "example": 6
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-scada",
+      "file": "SCADA与电力监控数据链路-2026-11.md",
+      "title": "SCADA 与电力监控数据链路",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-09",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 1,
+        "draft": 2,
+        "pending": 1,
+        "example": 9
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-price-system",
+      "file": "中国电价制度谱系-2026-11.md",
+      "title": "中国电价制度谱系",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-01",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 1,
+        "draft": 0,
+        "pending": 0,
+        "example": 2
+      },
+      "exampleSections": [
+        "## 6. 终端电价算例（合成，D 级）"
+      ]
+    },
+    {
+      "id": "m-price-history",
+      "file": "中国电价史-2026-11.md",
+      "title": "中国电价史",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-01",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 4,
+        "draft": 0,
+        "pending": 2,
+        "example": 1
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-price-policy",
+      "file": "中国电价现行政策与查证-2026-11.md",
+      "title": "中国电价现行政策与查证",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-09",
+      "confidence": "mixed",
+      "confidenceInferred": false,
+      "examples": "synthetic",
+      "historical": false,
+      "marks": {
+        "gradeC": 11,
+        "draft": 1,
+        "pending": 5,
+        "example": 10
+      },
+      "exampleSections": [
+        "## 4. 电费单拆解：科目、计算链与算例",
+        "### 4.3 两部制三方式算例：容量、合同需量、实际需量",
+        "### 4.4 力调电费：分档、基数与功率因数算例",
+        "### 4.6 一张完整账单算例与省级差异矩阵"
+      ]
+    },
+    {
+      "id": "m-carbon-trade",
+      "file": "中国碳排放权交易实务-主题笔记.md",
+      "title": "中国碳排放权交易实务",
+      "level": "core",
+      "kind": "教材笔记",
+      "cutoff": "",
+      "confidence": "historical",
+      "confidenceInferred": false,
+      "examples": null,
+      "historical": true,
+      "marks": {
+        "gradeC": 0,
+        "draft": 0,
+        "pending": 0,
+        "example": 2
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-storage-ems",
+      "file": "储能EMS优化调度-算法与工程-2026-11.md",
+      "title": "储能 EMS 优化调度",
+      "level": "core",
+      "kind": "算法底稿",
+      "cutoff": "2026-11-01",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 7,
+        "draft": 1,
+        "pending": 5,
+        "example": 18
+      },
+      "exampleSections": [
+        "### 3.2 参数（示例量级）",
+        "## 9. 算例（合成数据）",
+        "### 9.6 用户侧算例：峰谷套利 + 需量管理（合成数据）",
+        "### 9.7 新能源配储算例：弃电充电（合成数据）"
+      ]
+    },
+    {
+      "id": "m-storage-tech",
+      "file": "储能技术路线安全与构网型并网-2026-11.md",
+      "title": "储能技术路线、安全与构网型并网",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-01",
+      "confidence": "mixed",
+      "confidenceInferred": false,
+      "examples": "synthetic",
+      "historical": false,
+      "marks": {
+        "gradeC": 6,
+        "draft": 1,
+        "pending": 1,
+        "example": 7
+      },
+      "exampleSections": [
+        "## 3. 技术路线对比与选型算例",
+        "### 3.2 选型评分（示例，D 级）"
+      ]
+    },
+    {
+      "id": "m-storage-invest",
+      "file": "储能投资与运营-2026-11.md",
+      "title": "储能投资与运营",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-09",
+      "confidence": "mixed",
+      "confidenceInferred": false,
+      "examples": "synthetic",
+      "historical": false,
+      "marks": {
+        "gradeC": 7,
+        "draft": 1,
+        "pending": 4,
+        "example": 15
+      },
+      "exampleSections": [
+        "## 4. 投资测算：参数、算例与敏感性",
+        "### 4.4 投决算例 A：独立储能 100 MW/200 MWh",
+        "### 4.9 两个对照算例：用户侧 B 与新能源配储 C"
+      ]
+    },
+    {
+      "id": "m-cross-revenue",
+      "file": "储能收益建模与数据源-2026-11.md",
+      "title": "储能收益建模与数据源（2026 版）：从 5 分钟价格到 15 年现金流",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-11",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 1,
+        "draft": 0,
+        "pending": 0,
+        "example": 2
+      },
+      "exampleSections": [
+        "## 8. 合成算例（D 级，仅演示方法）"
+      ]
+    },
+    {
+      "id": "m-price-intl",
+      "file": "国际电价比较-方法与模板-2026-11.md",
+      "title": "国际电价比较：方法与模板",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-01",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 1,
+        "draft": 0,
+        "pending": 0,
+        "example": 3
+      },
+      "exampleSections": [
+        "## 5. 合成算例：名义排名与 PPP 排名可能翻转（D 级）"
+      ]
+    },
+    {
+      "id": "m-cross-capacity",
+      "file": "容量机制横向对照-2026-11.md",
+      "title": "容量机制横向对照（2026 版）：年金、拍卖、双向 CfD 与战略储备",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-11",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 5,
+        "draft": 0,
+        "pending": 2,
+        "example": 10
+      },
+      "exampleSections": [
+        "### 6.2 七个合成算例（D 级，仅演示量级）"
+      ]
+    },
+    {
+      "id": "m-grid",
+      "file": "并网运行考核与两个细则-2026-11.md",
+      "title": "并网运行考核与两个细则",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-01",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 4,
+        "draft": 32,
+        "pending": 3,
+        "example": 5
+      },
+      "exampleSections": [
+        "## 9. 合成算例（D 级）"
+      ]
+    },
+    {
+      "id": "m-micro-ems",
+      "file": "微网EMS优化调度-算法与工程-2026-11.md",
+      "title": "微网 EMS 优化调度",
+      "level": "core",
+      "kind": "算法底稿",
+      "cutoff": "2026-11-04",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 3,
+        "draft": 2,
+        "pending": 2,
+        "example": 21
+      },
+      "exampleSections": [
+        "## 9. 算例（合成数据）"
+      ]
+    },
+    {
+      "id": "m-intl-de",
+      "file": "德国电力市场-2026-11.md",
+      "title": "德国电力市场（2026 版）",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-01",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 1,
+        "draft": 5,
+        "pending": 0,
+        "example": 1
+      },
+      "exampleSections": [
+        "## 12. 算例（D 级：方法演示，不是投资建议）"
+      ]
+    },
+    {
+      "id": "m-intl-it",
+      "file": "意大利电力市场-2026-11.md",
+      "title": "意大利电力市场（2026 版）",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-10",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 1,
+        "draft": 0,
+        "pending": 0,
+        "example": 2
+      },
+      "exampleSections": [
+        "## 12. 算例（D 级：方法演示，不是投资建议）"
+      ]
+    },
+    {
+      "id": "m-policies",
+      "file": "政策列表-2026-11.md",
+      "title": "政策列表",
+      "level": "tool",
+      "kind": "索引",
+      "cutoff": "2026-11-08",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 0,
+        "draft": 7,
+        "pending": 0,
+        "example": 0
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-renewable",
+      "file": "新能源项目开发与并网-2026-11.md",
+      "title": "新能源项目开发与并网",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-01",
+      "confidence": "mixed",
+      "confidenceInferred": false,
+      "examples": "synthetic",
+      "historical": false,
+      "marks": {
+        "gradeC": 5,
+        "draft": 1,
+        "pending": 4,
+        "example": 7
+      },
+      "exampleSections": [
+        "### 3.3 两个筛查算例（D 级）",
+        "### 4.2 三个算例（D 级，税前）",
+        "### 4.3 敏感性（算例 A）",
+        "### 4.6 财务评价（算例 A）"
+      ]
+    },
+    {
+      "id": "m-intl-jp",
+      "file": "日本电力市场-2026-11.md",
+      "title": "日本电力市场（2026 版）：现货、容量市场与 LTDA",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-10",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 24,
+        "draft": 0,
+        "pending": 9,
+        "example": 2
+      },
+      "exampleSections": [
+        "## 12. 算例（D 级：方法演示，不是投资建议）"
+      ]
+    },
+    {
+      "id": "m-intl-benl",
+      "file": "比利时与北欧电力市场-2026-11.md",
+      "title": "比利时与北欧电力市场（2026 版）",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-10",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 20,
+        "draft": 0,
+        "pending": 4,
+        "example": 2
+      },
+      "exampleSections": [
+        "## 12. 算例（D 级：方法演示，不是投资建议）"
+      ]
+    },
+    {
+      "id": "m-intl-fr",
+      "file": "法国电力市场-2026-11.md",
+      "title": "法国电力市场（2026 版）：核电、ARENH 退场与容量机制",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-11",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 13,
+        "draft": 0,
+        "pending": 12,
+        "example": 0
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-intl-pl",
+      "file": "波兰电力市场-2026-11.md",
+      "title": "波兰电力市场（2026 版）",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-10",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 15,
+        "draft": 0,
+        "pending": 0,
+        "example": 2
+      },
+      "exampleSections": [
+        "## 12. 算例（D 级：方法演示，不是投资建议）"
+      ]
+    },
+    {
+      "id": "m-intl-storage",
+      "file": "海外储能业务-2026-11.md",
+      "title": "海外储能业务：十一市场大储与工商储（2026 版）",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-11",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 17,
+        "draft": 2,
+        "pending": 11,
+        "example": 13
+      },
+      "exampleSections": [
+        "### 1.7 合成算例 A：NEM 100 MW / 200 MWh（D 级）",
+        "### 2.6 合成算例 B：澳洲 200 kW / 400 kWh 工厂（D 级）",
+        "### 3.7 合成算例 C：DE-LU 100 MW / 200 MWh（D 级）",
+        "### 4.5 合成算例 D：德国 200 kW / 400 kWh 工厂（D 级）"
+      ]
+    },
+    {
+      "id": "m-cross-snapshot",
+      "file": "海外市场同口径快照与投决日历-2026-11.md",
+      "title": "海外市场同口径快照与投决日历（2026 版）：十一市场、七列口径、五张工单",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-11",
+      "confidence": "mixed",
+      "confidenceInferred": false,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 90,
+        "draft": 0,
+        "pending": 79,
+        "example": 0
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-cross-grid",
+      "file": "海外并网与合规-2026-11.md",
+      "title": "海外并网与合规手册（2026 版）：从 grid code 到电池护照",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-10",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 2,
+        "draft": 3,
+        "pending": 0,
+        "example": 2
+      },
+      "exampleSections": [
+        "## 12. 算例（D 级：方法演示，不是投资建议）"
+      ]
+    },
+    {
+      "id": "m-intl-au",
+      "file": "澳大利亚NEM电力市场-2026-11.md",
+      "title": "澳大利亚 NEM 电力市场（2026 版）",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-01",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 1,
+        "draft": 1,
+        "pending": 0,
+        "example": 2
+      },
+      "exampleSections": [
+        "## 12. 算例（D 级：方法演示，不是投资建议）"
+      ]
+    },
+    {
+      "id": "m-risk-credit",
+      "file": "电力市场风险、信用与结算-2026-11.md",
+      "title": "电力市场风险、信用与结算（2026 版）",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-08",
+      "confidence": "mixed",
+      "confidenceInferred": false,
+      "examples": "synthetic",
+      "historical": false,
+      "marks": {
+        "gradeC": 5,
+        "draft": 45,
+        "pending": 4,
+        "example": 5
+      },
+      "exampleSections": [
+        "### 5.4 算例：30 亿 kWh 售电公司",
+        "### 6.5 算例：一个月的偏差账",
+        "### 8.6 退出情景算例"
+      ]
+    },
+    {
+      "id": "m-spot-a",
+      "file": "电力现货市场101问-A-基础与价格机制.md",
+      "title": "101 问 A · 基础与价格机制",
+      "level": "core",
+      "kind": "教材笔记",
+      "cutoff": "",
+      "confidence": "verified",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 0,
+        "draft": 0,
+        "pending": 0,
+        "example": 3
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-spot-b",
+      "file": "电力现货市场101问-B-出清结算与省域实践.md",
+      "title": "101 问 B · 出清结算与省域实践",
+      "level": "core",
+      "kind": "教材笔记",
+      "cutoff": "",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 0,
+        "draft": 1,
+        "pending": 1,
+        "example": 3
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-spot-c",
+      "file": "电力现货市场101问-C-结算TTS与政策演进.md",
+      "title": "101 问 C · 结算、TTS 与政策演进",
+      "level": "core",
+      "kind": "教材笔记",
+      "cutoff": "",
+      "confidence": "verified",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 0,
+        "draft": 0,
+        "pending": 0,
+        "example": 2
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-spot-practice",
+      "file": "电力现货市场实务-精读笔记.md",
+      "title": "电力现货市场实务",
+      "level": "core",
+      "kind": "教材笔记",
+      "cutoff": "",
+      "confidence": "historical",
+      "confidenceInferred": false,
+      "examples": null,
+      "historical": true,
+      "marks": {
+        "gradeC": 0,
+        "draft": 0,
+        "pending": 0,
+        "example": 1
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-econ",
+      "file": "电力系统经济学原理-主题笔记.md",
+      "title": "电力系统经济学原理",
+      "level": "core",
+      "kind": "教材笔记",
+      "cutoff": "",
+      "confidence": "historical",
+      "confidenceInferred": false,
+      "examples": "documented",
+      "historical": true,
+      "marks": {
+        "gradeC": 0,
+        "draft": 0,
+        "pending": 0,
+        "example": 3
+      },
+      "exampleSections": [
+        "### 三节点经典算例"
+      ]
+    },
+    {
+      "id": "m-ts-a",
+      "file": "电力系统通识-A-格局与主体.md",
+      "title": "电力系统通识 A · 格局与主体",
+      "level": "core",
+      "kind": "主题笔记",
+      "cutoff": "2026-11-09",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 1,
+        "draft": 0,
+        "pending": 1,
+        "example": 0
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-ts-b",
+      "file": "电力系统通识-B-发输配变用.md",
+      "title": "电力系统通识 B · 发输配变用",
+      "level": "core",
+      "kind": "主题笔记",
+      "cutoff": "2026-11-01",
+      "confidence": "verified",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 0,
+        "draft": 0,
+        "pending": 0,
+        "example": 0
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-ts-c",
+      "file": "电力系统通识-C-改革史.md",
+      "title": "电力系统通识 C · 改革史",
+      "level": "core",
+      "kind": "主题笔记",
+      "cutoff": "2026-11-01",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 1,
+        "draft": 3,
+        "pending": 1,
+        "example": 0
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-ts-d",
+      "file": "电力系统通识-D-新角色与现货市场.md",
+      "title": "电力系统通识 D · 新角色与现货市场",
+      "level": "core",
+      "kind": "主题笔记",
+      "cutoff": "2026-11-09",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 3,
+        "draft": 2,
+        "pending": 1,
+        "example": 0
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-province",
+      "file": "省级市场状态表-2026-11.md",
+      "title": "省级电力市场状态总表",
+      "level": "tool",
+      "kind": "索引",
+      "cutoff": "2026-11-08",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 31,
+        "draft": 10,
+        "pending": 21,
+        "example": 0
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-policies-prov",
+      "file": "省级政策列表-2026-11.md",
+      "title": "省级政策列表",
+      "level": "tool",
+      "kind": "索引",
+      "cutoff": "2026-11-08",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 0,
+        "draft": 3,
+        "pending": 3,
+        "example": 0
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-spot-interprovincial",
+      "file": "省间与跨区交易-2026-11.md",
+      "title": "省间与跨区交易（2026 版）",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-01",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 4,
+        "draft": 9,
+        "pending": 4,
+        "example": 2
+      },
+      "exampleSections": [
+        "## 8. 算例（D 级）"
+      ]
+    },
+    {
+      "id": "m-carbon-mgmt",
+      "file": "碳管理-从零通往碳中和-主题笔记.md",
+      "title": "碳管理：从零通往碳中和",
+      "level": "core",
+      "kind": "教材笔记",
+      "cutoff": "",
+      "confidence": "historical",
+      "confidenceInferred": false,
+      "examples": null,
+      "historical": true,
+      "marks": {
+        "gradeC": 0,
+        "draft": 2,
+        "pending": 0,
+        "example": 0
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-carbon-asset",
+      "file": "碳资产实务-2026-11.md",
+      "title": "碳资产实务 2026-11",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-09",
+      "confidence": "mixed",
+      "confidenceInferred": false,
+      "examples": "synthetic",
+      "historical": false,
+      "marks": {
+        "gradeC": 6,
+        "draft": 2,
+        "pending": 1,
+        "example": 5
+      },
+      "exampleSections": [
+        "### 3.1 履约成本算例：配额缺口 + CCER 5% + CBAM"
+      ]
+    },
+    {
+      "id": "m-index",
+      "file": "索引与口径-2026-11.md",
+      "title": "索引与口径",
+      "level": "tool",
+      "kind": "索引",
+      "cutoff": "2026-11-08",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 9,
+        "draft": 15,
+        "pending": 5,
+        "example": 19
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-park",
+      "file": "综合能源与零碳园区-2026-11.md",
+      "title": "综合能源与零碳园区",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-01",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 10,
+        "draft": 1,
+        "pending": 8,
+        "example": 10
+      },
+      "exampleSections": [
+        "### 3.3 单位能耗碳排放算例（D 级）",
+        "### 4.2 合成算例（D 级）"
+      ]
+    },
+    {
+      "id": "m-intl-us",
+      "file": "美国电力市场-2026-11.md",
+      "title": "美国电力市场（2026 版）：ERCOT / PJM / CAISO",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-10",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 10,
+        "draft": 0,
+        "pending": 4,
+        "example": 2
+      },
+      "exampleSections": [
+        "## 10. 算例（D 级：方法演示，不是投资建议）"
+      ]
+    },
+    {
+      "id": "m-intl-uk",
+      "file": "英国电力市场-2026-11.md",
+      "title": "英国电力市场（2026 版）",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-10",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 2,
+        "draft": 1,
+        "pending": 0,
+        "example": 2
+      },
+      "exampleSections": [
+        "## 12. 算例（D 级：方法演示，不是投资建议）"
+      ]
+    },
+    {
+      "id": "m-intl-nl",
+      "file": "荷兰电力市场-2026-11.md",
+      "title": "荷兰电力市场（2026 版）",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-10",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 4,
+        "draft": 1,
+        "pending": 0,
+        "example": 2
+      },
+      "exampleSections": [
+        "## 12. 算例（D 级：方法演示，不是投资建议）"
+      ]
+    },
+    {
+      "id": "m-vpp-core",
+      "file": "虚拟电厂聚合调度与商业模式-2026-11.md",
+      "title": "虚拟电厂：聚合、调度与商业模式（2026 版）",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-09",
+      "confidence": "mixed",
+      "confidenceInferred": false,
+      "examples": "synthetic",
+      "historical": false,
+      "marks": {
+        "gradeC": 6,
+        "draft": 8,
+        "pending": 4,
+        "example": 6
+      },
+      "exampleSections": [
+        "### 2.3 能力测算公式与算例",
+        "### 6.3 小算例：10 MW/20 MWh 储能的日调度",
+        "### 7.5 单次调用算例",
+        "### 8.3 园区 VPP 算例（D 级合成）"
+      ]
+    },
+    {
+      "id": "m-intl-es",
+      "file": "西班牙电力市场-2026-11.md",
+      "title": "西班牙电力市场（2026 版）",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-10",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 9,
+        "draft": 1,
+        "pending": 1,
+        "example": 2
+      },
+      "exampleSections": [
+        "## 12. 算例（D 级：方法演示，不是投资建议）"
+      ]
+    },
+    {
+      "id": "m-res-vpp-biz",
+      "file": "调研-VPP商业模式与国际-2026-09增量.md",
+      "title": "VPP 商业模式与国际",
+      "level": "research",
+      "kind": "调研底稿",
+      "cutoff": "2026-09",
+      "confidence": "historical",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 27,
+        "draft": 2,
+        "pending": 27,
+        "example": 0
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-res-vpp-2026",
+      "file": "调研-VPP政策2026-10增量.md",
+      "title": "VPP 政策 2026-10 增量",
+      "level": "research",
+      "kind": "调研底稿",
+      "cutoff": "2026-11-01",
+      "confidence": "historical",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 5,
+        "draft": 5,
+        "pending": 4,
+        "example": 1
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-res-vpp-policy",
+      "file": "调研-VPP政策与市场-2026-09增量.md",
+      "title": "VPP 政策与市场增量",
+      "level": "research",
+      "kind": "调研底稿",
+      "cutoff": "2026-09",
+      "confidence": "historical",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 19,
+        "draft": 1,
+        "pending": 19,
+        "example": 0
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-res-market-2026",
+      "file": "调研-电力市场2026-10增量.md",
+      "title": "电力市场 2026-10 增量",
+      "level": "research",
+      "kind": "调研底稿",
+      "cutoff": "2026-11-01",
+      "confidence": "historical",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 2,
+        "draft": 10,
+        "pending": 2,
+        "example": 0
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-res-market-policy",
+      "file": "调研-电力市场政策与开源资源-2026-09.md",
+      "title": "电力市场政策与开源资源",
+      "level": "research",
+      "kind": "调研底稿",
+      "cutoff": "2026-09",
+      "confidence": "historical",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 17,
+        "draft": 1,
+        "pending": 17,
+        "example": 0
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-res-carbon-cbam",
+      "file": "调研-碳市场与CBAM-2026-10增量.md",
+      "title": "碳市场与 CBAM 2026-10 增量",
+      "level": "research",
+      "kind": "调研底稿",
+      "cutoff": "2026-11-01",
+      "confidence": "historical",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 1,
+        "draft": 2,
+        "pending": 1,
+        "example": 0
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-res-carbon-vendor",
+      "file": "调研-碳管理与碳足迹厂商-2026-11.md",
+      "title": "碳管理与碳足迹厂商",
+      "level": "research",
+      "kind": "调研底稿",
+      "cutoff": "2026-11-01",
+      "confidence": "historical",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 3,
+        "draft": 0,
+        "pending": 1,
+        "example": 0
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-res-vpp-carbon",
+      "file": "调研-虚拟电厂与碳市场-2026-09.md",
+      "title": "虚拟电厂与碳市场",
+      "level": "research",
+      "kind": "调研底稿",
+      "cutoff": "2026-09",
+      "confidence": "historical",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 13,
+        "draft": 5,
+        "pending": 13,
+        "example": 1
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-res-quick",
+      "file": "调研-速查合并-2026-09.md",
+      "title": "电力市场 · VPP · 碳市场速查",
+      "level": "research",
+      "kind": "调研底稿",
+      "cutoff": "2026-09",
+      "confidence": "historical",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 8,
+        "draft": 3,
+        "pending": 8,
+        "example": 0
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-res-quant",
+      "file": "调研-量化报价与厂商实践-2026-11.md",
+      "title": "量化报价与厂商实践",
+      "level": "research",
+      "kind": "调研底稿",
+      "cutoff": "2026-11",
+      "confidence": "historical",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 13,
+        "draft": 0,
+        "pending": 2,
+        "example": 0
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-vpp-book",
+      "file": "走近虚拟电厂-主题笔记.md",
+      "title": "走近虚拟电厂",
+      "level": "core",
+      "kind": "教材笔记",
+      "cutoff": "",
+      "confidence": "historical",
+      "confidenceInferred": false,
+      "examples": null,
+      "historical": true,
+      "marks": {
+        "gradeC": 0,
+        "draft": 0,
+        "pending": 0,
+        "example": 1
+      },
+      "exampleSections": []
+    },
+    {
+      "id": "m-cross-ppa",
+      "file": "跨国PPA与绿证-2026-11.md",
+      "title": "跨国 PPA、绿证与 tolling（2026 版）：从 GO 到 merchant tail",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-11",
+      "confidence": "verified",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 0,
+        "draft": 0,
+        "pending": 0,
+        "example": 2
+      },
+      "exampleSections": [
+        "## 7. 合成算例（D 级，仅演示口径）"
+      ]
+    },
+    {
+      "id": "m-cross-ancillary",
+      "file": "辅助服务与平衡市场对照-2026-11.md",
+      "title": "辅助服务与平衡市场对照（2026 版）：从 FCR 到 FCAS，从 BM 到 EPRX",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-11",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 3,
+        "draft": 0,
+        "pending": 0,
+        "example": 3
+      },
+      "exampleSections": [
+        "## 8. 三个合成算例（D 级，仅演示方法）"
+      ]
+    },
+    {
+      "id": "m-quant-risk",
+      "file": "量化报价与交易风控-工程化-2026-11.md",
+      "title": "量化报价与交易风控",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-01",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": "documented",
+      "historical": false,
+      "marks": {
+        "gradeC": 2,
+        "draft": 37,
+        "pending": 1,
+        "example": 11
+      },
+      "exampleSections": [
+        "### 3.4 数据质量 SLO（示例）",
+        "## 10. 算例（合成，D 级）",
+        "### 10.4 T+1 归因示例"
+      ]
+    },
+    {
+      "id": "m-dr-v2g",
+      "file": "需求响应、车网互动与灵活性资源-2026-11.md",
+      "title": "需求响应、车网互动与灵活性资源",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-08",
+      "confidence": "mixed",
+      "confidenceInferred": false,
+      "examples": "synthetic",
+      "historical": false,
+      "marks": {
+        "gradeC": 3,
+        "draft": 0,
+        "pending": 1,
+        "example": 5
+      },
+      "exampleSections": [
+        "### 2.5 算例 A：10 MW 工业负荷与 1,000 台充电桩",
+        "### 4.6 算例 B：基线 10 MW、报价 2 MW、响应 2 h",
+        "### 7.8 经济性算例（合成，D 级）"
+      ]
+    },
+    {
+      "id": "m-qa",
+      "file": "黄金问答集-2026-11.md",
+      "title": "黄金问答集与回归测试",
+      "level": "tool",
+      "kind": "问答集",
+      "cutoff": "2026-11",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": null,
+      "historical": false,
+      "marks": {
+        "gradeC": 3,
+        "draft": 7,
+        "pending": 2,
+        "example": 0
+      },
+      "exampleSections": []
+    }
+  ]
+}

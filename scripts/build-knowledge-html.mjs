@@ -3,9 +3,13 @@
  * 知识中心构建器。
  *
  * 单一事实源：
- *   knowledge/*.md 的 frontmatter（id、section、order、level、title、summary、tags、cutoff、related、search、foot）
+ *   knowledge/*.md 的 frontmatter（id、section、order、level、title、summary、tags、cutoff、related、search、foot，
+ *     以及可信度声明 confidence / examples / historical）
+ *   knowledge/*.md 里已有的结构化登记（快照 §5 C 级工单表、INDEX_EN §4 Open items、政策状态列、算例章节标题）
  *   scripts/knowledge.config.mjs（分区、导航、固定文案）
  *   knowledge/index.template.html（首页静态骨架）
+ *
+ * 生成物（禁止手改）：knowledge/index.html、knowledge/html/**、knowledge/credibility.json
  *
  * 用法：
  *   node scripts/build-knowledge-html.mjs            # 生成 index.html 与 knowledge/html/*.html
@@ -16,11 +20,13 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 
 import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { nav, sections, site, skillDocs } from './knowledge.config.mjs';
+import { buildIndex, serializeIndex } from './credibility.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const knowledgeDir = join(root, 'knowledge');
 const htmlDir = join(knowledgeDir, 'html');
 const indexPath = join(knowledgeDir, 'index.html');
+const credibilityPath = join(knowledgeDir, 'credibility.json');
 const templatePath = join(knowledgeDir, 'index.template.html');
 const tokensPath = join(knowledgeDir, 'assets', 'tokens.css');
 const checkMode = process.argv.includes('--check');
@@ -878,6 +884,7 @@ const downloadFiles = skillManifest.map((doc) => ({
 }));
 
 const indexHtml = renderIndex();
+const credibilityJson = serializeIndex(buildIndex(root));
 
 function verifyLinks(baseDir, html, label, pending = new Set()) {
   const missing = [];
@@ -901,6 +908,7 @@ if (checkMode) {
   const diffs = [];
   const same = (path, expected) => existsSync(path) && readFileSync(path, 'utf8').replace(/\r\n?/g, '\n') === expected;
   if (!same(indexPath, indexHtml)) diffs.push('knowledge/index.html 不是最新生成物');
+  if (!same(credibilityPath, credibilityJson)) diffs.push('knowledge/credibility.json 不是最新生成物');
   for (const { doc, html } of allPages) {
     if (!same(join(htmlDir, doc.html), html)) diffs.push(`knowledge/html/${doc.html} 不是最新生成物`);
   }
@@ -922,11 +930,12 @@ if (checkMode) {
     for (const d of diffs) console.error(`- ${d}`);
     process.exit(1);
   }
-  console.log(`生成物校验通过：index.html + ${pages.length} 个知识页 + ${skillPages.length} 个技能页 + ${downloadFiles.length} 个下载文件均为最新（${total} 个模块 / ${fmt(totalLines)} 行）。`);
+  console.log(`生成物校验通过：index.html + credibility.json + ${pages.length} 个知识页 + ${skillPages.length} 个技能页 + ${downloadFiles.length} 个下载文件均为最新（${total} 个模块 / ${fmt(totalLines)} 行）。`);
   process.exit(0);
 }
 
 for (const { doc, html } of allPages) writeFileSync(join(htmlDir, doc.html), html, 'utf8');
+writeFileSync(credibilityPath, credibilityJson, 'utf8');
 mkdirSync(downloadDir, { recursive: true });
 for (const f of downloadFiles) writeFileSync(f.path, f.content, 'utf8');
 if (rewriteIndex) writeFileSync(indexPath, indexHtml, 'utf8');

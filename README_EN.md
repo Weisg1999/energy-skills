@@ -15,7 +15,7 @@ Current version **v1.9**, data cutoff **2026-11-10**. Entry points: [knowledge h
 - **Inject into any AI assistant**: paste the full text of a `SKILL.md` as system prompt or context; the Chinese versions are denser, the English versions easier for international models.
 - **Register as a skill**: place `skills/<name>/` into the skills directory of an AI coding tool that supports custom skills (e.g. Claude Code).
 - **Read directly**: the notes under `knowledge/` are standalone quick-reference handbooks with document numbers, figures and comparison tables; browse them from the [knowledge hub](knowledge/index.html). Each of the nine skills also has an HTML reading page with a one-click TXT download. The [national policy index](knowledge/政策列表-2026-11.md) links 55 national documents and the [provincial policy index](knowledge/省级政策列表-2026-11.md) links 13 provincial documents to verified official full texts.
-- **Check before committing**: run `node scripts/check-consistency.mjs` and `node scripts/build-knowledge-html.mjs --check`; run `python tools/selftest.py` once for each of the seven skills that ship tools.
+- **Check before committing**: run `node scripts/check-consistency.mjs`, `node scripts/check-maintenance.mjs --check` and `node scripts/build-knowledge-html.mjs --check`; run `python tools/selftest.py` once for each of the seven skills that ship tools.
 
 ## Skills
 
@@ -63,8 +63,10 @@ energy-skills/
 ├── LICENSE                         ← CC BY-NC 4.0
 ├── .github/workflows/consistency.yml
 ├── scripts/
-│   ├── check-consistency.mjs       ← tables / links / versions / CN-EN number parity
-│   ├── build-knowledge-html.mjs    ← hub builder (frontmatter → HTML)
+│   ├── check-consistency.mjs       ← structure / links / versions / CN-EN parity / content discipline
+│   ├── credibility.mjs             ← credibility register parser and content gates
+│   ├── check-maintenance.mjs       ← due-review board and maintenance-ledger checks
+│   ├── build-knowledge-html.mjs    ← hub builder (frontmatter → HTML + credibility.json)
 │   └── knowledge.config.mjs        ← sections, navigation and static copy
 ├── skills/                         ← nine skills, each with SKILL.md and SKILL_EN.md
 │   ├── electricity-trading-expert/
@@ -79,6 +81,7 @@ energy-skills/
 └── knowledge/
     ├── index.template.html         ← hub skeleton (hand-maintained)
     ├── index.html                  ← generated
+    ├── credibility.json            ← generated: machine-readable credibility register
     ├── assets/                     ← reading-page styles and scripts + marks (3 SVGs)
     ├── html/                       ← generated: 64 knowledge pages + 18 skill pages
     │   └── download/skills/        ← generated: 18 skill TXT files
@@ -87,19 +90,23 @@ energy-skills/
 
 ## Maintaining the knowledge hub
 
-`knowledge/index.html` and `knowledge/html/` are generated artifacts — do not edit them by hand. When adding or changing a module:
+`knowledge/index.html`, `knowledge/credibility.json` and `knowledge/html/` are generated artifacts — do not edit them by hand. When adding or changing a module:
 
-1. fill in the frontmatter of `knowledge/*.md`: `id`, `section`, `order`, `level`, `title`, `summary`, `tags`, `cutoff`, `related`, `search`, `foot`;
+1. fill in the frontmatter of `knowledge/*.md`: `id`, `section`, `order`, `level`, `title`, `summary`, `tags`, `cutoff`, `related`, `search`, `foot`; modules with worked examples also declare `examples` (`synthetic` / `documented`), and book-note modules declare `historical: true` plus `confidence`;
 2. change sections and navigation in `scripts/knowledge.config.mjs`, and the hub skeleton in `knowledge/index.template.html`;
 3. rebuild and verify:
 
 ```bash
-node scripts/build-knowledge-html.mjs           # rebuild hub and reading pages
+node scripts/build-knowledge-html.mjs           # rebuild hub, reading pages and credibility.json
 node scripts/build-knowledge-html.mjs --check   # verify artifacts are current
-node scripts/check-consistency.mjs              # tables, links, versions and CN/EN numbers
+node scripts/check-consistency.mjs              # structure + content discipline (grade-C / drafts / examples / historical)
+node scripts/check-maintenance.mjs              # due-review board (non-blocking)
+node scripts/check-maintenance.mjs --check      # maintenance-ledger structure check
 ```
 
-CI runs the consistency check, the artifact comparison and seven Python self-tests in sequence; any failure blocks the merge.
+`knowledge/credibility.json` is the machine-readable register for models and search: 22 grade-C verification tickets, 37 open items, 32 calendar events, draft policy entries, and per-module `confidence` / `examples` / `historical` flags. Filter by `confidence` and exclude unverified `gradeC` figures before injecting content. The source of truth remains the structured tables and lists already present in the Markdown; no second inventory is maintained.
+
+CI runs the consistency check, the maintenance-ledger check, the artifact comparison and seven Python self-tests in sequence; any failure blocks the merge. On the first day of each month `maintenance.yml` publishes the due-review board to the Actions run summary.
 
 ## Sources
 

@@ -15,7 +15,7 @@
 - **注入 AI 助手**：将 `SKILL.md` 全文作为系统提示或上下文附加给模型；中文版信息密度更高，英文版便于国际模型理解。
 - **注册为技能**：把 `skills/<name>/` 放入支持自定义技能的 AI 编程工具（如 Claude Code）的技能目录，即可自动触发。
 - **直接阅读**：`knowledge/` 下的笔记本身就是带文号、数字与对比表的速查手册，从[知识中心](knowledge/index.html)按分区进入即可；九个技能也有 HTML 阅读页，并可在页内直接下载完整 TXT。
-- **提交前自检**：运行 `node scripts/check-consistency.mjs` 与 `node scripts/build-knowledge-html.mjs --check`；七个带工具的技能各跑一次 `python tools/selftest.py`。
+- **提交前自检**：运行 `node scripts/check-consistency.mjs`、`node scripts/check-maintenance.mjs --check` 与 `node scripts/build-knowledge-html.mjs --check`；七个带工具的技能各跑一次 `python tools/selftest.py`。
 
 ## 九个技能
 
@@ -63,8 +63,10 @@ energy-skills/
 ├── LICENSE                         ← CC BY-NC 4.0
 ├── .github/workflows/consistency.yml
 ├── scripts/
-│   ├── check-consistency.mjs       ← 表格/链接/版本/中英数字校验
-│   ├── build-knowledge-html.mjs    ← 知识中心构建器（frontmatter → HTML）
+│   ├── check-consistency.mjs       ← 表格/链接/版本/中英数字 + 内容纪律校验
+│   ├── credibility.mjs             ← 可信度登记册解析与内容级门禁规则
+│   ├── check-maintenance.mjs       ← 更新清单到期看板与结构校验
+│   ├── build-knowledge-html.mjs    ← 知识中心构建器（frontmatter → HTML + credibility.json）
 │   └── knowledge.config.mjs        ← 分区、导航与固定文案
 ├── skills/                         ← 九份技能，各含 SKILL.md、SKILL_EN.md
 │   ├── electricity-trading-expert/
@@ -79,6 +81,7 @@ energy-skills/
 └── knowledge/
     ├── index.template.html         ← 首页骨架（手动维护）
     ├── index.html                  ← 生成物
+    ├── credibility.json            ← 生成物：机器可读可信度登记册（C 级工单/未定事项/事件/模块声明）
     ├── assets/                     ← 阅读页样式与脚本 + 标识（3 个 SVG）
     ├── html/                       ← 生成物：64 个知识页 + 18 个技能页
     │   └── download/skills/        ← 生成物：18 个技能 TXT
@@ -87,19 +90,23 @@ energy-skills/
 
 ## 维护知识中心
 
-`knowledge/index.html` 与 `knowledge/html/` 是生成物，不要手改。新增或修改模块时：
+`knowledge/index.html`、`knowledge/credibility.json` 与 `knowledge/html/` 是生成物，不要手改。新增或修改模块时：
 
-1. 在 `knowledge/*.md` 的 frontmatter 补全 `id`、`section`、`order`、`level`、`title`、`summary`、`tags`、`cutoff`、`related`、`search`、`foot`；
+1. 在 `knowledge/*.md` 的 frontmatter 补全 `id`、`section`、`order`、`level`、`title`、`summary`、`tags`、`cutoff`、`related`、`search`、`foot`；含算例的模块补 `examples`（`synthetic` / `documented`），史料型笔记补 `historical: true` 与 `confidence`；
 2. 分区与导航改 `scripts/knowledge.config.mjs`，首页骨架改 `knowledge/index.template.html`；
 3. 重建并校验：
 
 ```bash
-node scripts/build-knowledge-html.mjs           # 重建首页与阅读页
+node scripts/build-knowledge-html.mjs           # 重建首页、阅读页与 credibility.json
 node scripts/build-knowledge-html.mjs --check   # 只校验生成物是否最新
-node scripts/check-consistency.mjs              # 表格、链接、版本与中英数字
+node scripts/check-consistency.mjs              # 结构 + 内容纪律（C 级工单/草案/算例/史料）
+node scripts/check-maintenance.mjs              # 到期看板（不阻塞）
+node scripts/check-maintenance.mjs --check      # 更新清单结构校验
 ```
 
-CI 会依次执行一致性校验、生成物比对与七个 Python 自测；任一步失败即拒绝合并。
+`knowledge/credibility.json` 是给 AI 与检索用的机器可读登记册：22 项 C 级工单、37 项未定事项、32 条事件日历、政策草案条目，以及每个模块的 `confidence` / `examples` / `historical` 声明。注入上下文前可先按 `confidence` 过滤、按 `gradeC` 排除未复核数字。事实源仍是 Markdown 正文里已有的结构化表格与列表，不另建清单。
+
+CI 依次执行一致性校验、维护台账结构校验、生成物比对与七个 Python 自测；任一步失败即拒绝合并。每月 1 号另有 `maintenance.yml` 把到期看板写进 Actions 摘要。
 
 ## 资料来源
 

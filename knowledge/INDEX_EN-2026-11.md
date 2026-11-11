@@ -10,6 +10,7 @@ tags: ["English","文件地图","Open items"]
 cutoff: 2026-11-11
 related: ["m-index","m-qa","m-province"]
 search: "INDEX EN English knowledge index digest knowledge map key figures provincial quick table open items answering discipline 2026 installed capacity carbon compliance"
+confidence: mixed
 foot: "给国际模型与英文读者"
 ---
 # English Knowledge Index and Digest (2026-11-11)

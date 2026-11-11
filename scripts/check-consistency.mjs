@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
+import { checkContent } from './credibility.mjs';
 
 const root = resolve(process.argv[2] ?? process.cwd());
 const errors = [];
@@ -382,9 +383,17 @@ for (const file of currentFiles) {
   });
 }
 
+// 6. Content discipline (credibility layer).
+//    Only structured objects are checked — scanning prose for "draft + current"
+//    produced 22 false positives and 479 untraceable marker lines in practice.
+const content = checkContent(root);
+errors.push(...content.errors);
+const warnings = content.warnings;
+
 if (errors.length) {
   console.error(`Consistency check failed with ${errors.length} issue(s):\n`);
   for (const error of errors) console.error(`- ${error}`);
   process.exit(1);
 }
-console.log(`Consistency check passed: ${files.length} Markdown files.`);
+for (const warning of warnings) console.warn(`[warning] ${warning}`);
+console.log(`Consistency check passed: ${files.length} Markdown files; credibility register ${content.index.summary.gradeCItems} grade-C tickets / ${content.index.summary.openItems} open items / ${content.index.summary.events} events.`);
