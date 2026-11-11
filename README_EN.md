@@ -69,8 +69,8 @@ energy-skills/
 │   ├── build-knowledge-html.mjs    ← hub builder (frontmatter → HTML + credibility.json)
 │   └── knowledge.config.mjs        ← sections, navigation and static copy
 ├── skills/                         ← nine skills, each with SKILL.md and SKILL_EN.md
-│   ├── electricity-trading-expert/
-│   ├── virtual-power-plant/
+│   ├── electricity-trading-expert/     ← plus tools/ (unit conversion, capacity revenue, three-node clearing)
+│   ├── virtual-power-plant/            ← plus tools/ (aggregation, CBL, daily dispatch, NPV/IRR)
 │   ├── spot-bidding-quant/             ← plus tools/ and data/sample/
 │   ├── carbon-asset-expert/            ← plus tools/
 │   ├── storage-investment-operations/  ← plus tools/
@@ -82,8 +82,9 @@ energy-skills/
     ├── index.template.html         ← hub skeleton (hand-maintained)
     ├── index.html                  ← generated
     ├── credibility.json            ← generated: machine-readable credibility register
+    ├── english-digest.json          ← generated: English routing digest, key figures, open items and ticket states
     ├── assets/                     ← reading-page styles and scripts + marks (3 SVGs)
-    ├── html/                       ← generated: 64 knowledge pages + 18 skill pages
+    ├── html/                       ← generated: 66 knowledge pages + 18 skill pages
     │   └── download/skills/        ← generated: 18 skill TXT files
     └── *.md                        ← knowledge modules (source, frontmatter-driven)
 ```
@@ -92,7 +93,7 @@ energy-skills/
 
 `knowledge/index.html`, `knowledge/credibility.json` and `knowledge/html/` are generated artifacts — do not edit them by hand. When adding or changing a module:
 
-1. fill in the frontmatter of `knowledge/*.md`: `id`, `section`, `order`, `level`, `title`, `summary`, `tags`, `cutoff`, `related`, `search`, `foot`; modules with worked examples also declare `examples` (`synthetic` / `documented`), and book-note modules declare `historical: true` plus `confidence`;
+1. fill in the frontmatter of `knowledge/*.md`: `id`, `section`, `order`, `level`, `title`, `summary`, `summary_en`, `tags`, `cutoff`, `related`, `search`, `foot`; modules with worked examples also declare `examples` (`synthetic` / `documented`), and book-note modules declare `historical: true` plus `confidence`;
 2. change sections and navigation in `scripts/knowledge.config.mjs`, and the hub skeleton in `knowledge/index.template.html`;
 3. rebuild and verify:
 
@@ -104,9 +105,11 @@ node scripts/check-maintenance.mjs              # due-review board (non-blocking
 node scripts/check-maintenance.mjs --check      # maintenance-ledger structure check
 ```
 
+`knowledge/english-digest.json` routes English-language models: English summaries for all 66 modules, the INDEX_EN key-figure table, 37 open items (16 with trigger dates) and 22 grade-C ticket states; modules with `historical: true` also render a "data is not current" banner at the top of the reading page.
+
 `knowledge/credibility.json` is the machine-readable register for models and search: 22 grade-C verification tickets, 37 open items, 32 calendar events, draft policy entries, and per-module `confidence` / `examples` / `historical` flags. The 22 grade-C tickets carry resolution states (usable / recalibrated / withdrawn / banned / pending), review dates and next-review dates; the §1.4 gap list carries due dates too. Filter by `confidence` and by `gradeC` `usable` / `banned` before injecting content; `check-maintenance.mjs` flags tickets and gaps that come due. The source of truth remains the structured tables and lists already present in the Markdown; no second inventory is maintained.
 
-CI runs the consistency check, the maintenance-ledger check, the artifact comparison and seven Python self-tests in sequence; any failure blocks the merge. On the first day of each month `maintenance.yml` publishes the due-review board to the Actions run summary.
+CI runs the consistency check, the maintenance-ledger check, the artifact comparison and nine Python self-tests in sequence; any failure blocks the merge. A missing `summary_en`, an undefined or orphaned controlled abbreviation, or a malformed open-item due date all fail the consistency check. On the first day of each month `maintenance.yml` publishes the due-review board to the Actions run summary.
 
 ## Sources
 

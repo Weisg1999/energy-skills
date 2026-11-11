@@ -10,6 +10,7 @@ tags: ["省间日内","调峰","熔断 ≤24 h"]
 cutoff: ""
 related: ["m-spot-b","m-spot-practice","m-grid"]
 search: "现货 101问 C 结算 TTS 技术支持系统 政策演进 省间 日内 水电 调峰 安全校核 熔断 免责"
+summary_en: "Settlement mechanisms, TTS, policy evolution"
 foot: "规则如何落到系统与治理"
 ---
 # 《电力现货市场101问》主题笔记C：结算·技术支持系统·政策演进（第65~101问）

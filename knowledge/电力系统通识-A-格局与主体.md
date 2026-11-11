@@ -10,6 +10,7 @@ tags: ["3 张网","5 类主体","41.3 亿 kW"]
 cutoff: 2026-11-09
 related: ["m-ts-b","m-ts-c","m-econ"]
 search: "通识 A 格局 主体 国家电网 南方电网 蒙西 五大四小 调度 交易 监管 两网 2026 装机 41.3 亿千瓦 光伏 煤电 市场主体 109 万家 现货 11 个"
+summary_en: "Industry landscape: State Grid / CSG / Inner Mongolia West, five majors and the \"four smalls\", equipment vendors, research bodies, trading-dispatch-regulation split, a 2026 snapshot (4.13…"
 foot: "谁在发电、谁在送电、谁定规则"
 ---
 # 电力系统通识 A · 格局与主体：谁在发电、谁在送电、谁在定规则

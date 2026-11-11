@@ -10,6 +10,7 @@ tags: ["边际定价","负电价","2026 装机"]
 cutoff: 2026-11-09
 related: ["m-ts-b","m-spot-a","m-storage-tech"]
 search: "通识 D 新角色 现货 高比例风光 储能 构网型 虚拟电厂 VPP 系统成本 负电价 2026 装机 41.3 亿千瓦 光伏超煤电 煤电 49.1% 新型储能 1.36 亿千瓦"
+summary_en: "Spot markets and system operation, high-renewables technical issues, storage (grid-following vs."
 foot: "风光储怎么改变电力系统"
 ---
 # 电力系统通识 D · 新角色：现货市场与风光储怎么改变电力系统

@@ -134,6 +134,10 @@ h1.doc-title{
 .doc-meta span{display:inline-flex;align-items:center;gap:5px}
 .doc-meta span::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--line-strong)}
 .doc-meta span:first-child::before{display:none}
+/* Historical-note banner: figures are historical evidence, never current data. */
+.historical-banner{display:flex;flex-direction:column;gap:6px;margin:18px 0 4px;padding:13px 16px;border:1px solid var(--amber);border-left-width:4px;border-radius:8px;background:var(--amber-soft);font-size:var(--fs-sm);line-height:1.75}
+.historical-banner strong{color:var(--amber);font-weight:700;letter-spacing:.01em}
+.historical-banner span{color:var(--ink-2)}
 .doc-actions{margin:14px 0 0;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .dl-btn{display:inline-flex;align-items:center;gap:6px;font-size:var(--fs-xs);font-weight:600;line-height:1;padding:8px 13px;border-radius:7px;border:1px solid var(--accent);background:var(--card);color:var(--accent)}
 .dl-btn:hover{background:var(--accent);color:var(--card);text-decoration:none}
@@ -457,6 +461,8 @@ h1.doc-title{
 @media print{
   :root[data-theme="dark"] body[data-cat]{--accent:#16232f;--accent-soft:#f0ece3}
   .topbar,.sidebar,.toc,.toc-mobile,.related,.pager,.to-top,.progress,.scrim,.skip,.policy-bar,.policy-empty{display:none!important}
+  .historical-banner{background:#fff;border-color:#888;color:#000}
+  .historical-banner strong,.historical-banner span{color:#000}
   body{background:#fff;font-size:11.5pt}
   .shell{display:block;max-width:none}
   .main{padding:0}

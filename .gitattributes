@@ -1,4 +1,5 @@
 knowledge/index.html text eol=lf
 knowledge/credibility.json text eol=lf
+knowledge/english-digest.json text eol=lf
 knowledge/html/*.html text eol=lf
 knowledge/html/download/skills/*.txt text eol=lf

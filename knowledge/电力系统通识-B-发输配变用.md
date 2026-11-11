@@ -10,6 +10,7 @@ tags: ["功率 ≠ 电量","50 Hz","利用小时"]
 cutoff: 2026-11-01
 related: ["m-ts-a","m-ts-d","m-grid"]
 search: "通识 B 发输配变用 功率 电量 50Hz 电压 频率 备用 稳定 利用小时"
+summary_en: "Fundamentals for non-specialists: power vs."
 foot: "电怎么从煤和风光走到插座"
 ---
 # 电力系统通识 B · 发输配变用：电是怎么从煤和风光走到插座的

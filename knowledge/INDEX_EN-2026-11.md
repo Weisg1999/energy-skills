@@ -11,6 +11,7 @@ cutoff: 2026-11-11
 related: ["m-index","m-qa","m-province"]
 search: "INDEX EN English knowledge index digest knowledge map key figures provincial quick table open items answering discipline 2026 installed capacity carbon compliance"
 confidence: mixed
+summary_en: "English entry point: file map, key figures, a provincial quick table, open items and answering discipline."
 foot: "给国际模型与英文读者"
 ---
 # English Knowledge Index and Digest (2026-11-11)
@@ -86,6 +87,9 @@ foot: "给国际模型与英文读者"
 | `储能EMS优化调度-算法与工程-2026-11.md` | Algorithm note | Storage EMS MILP: multi-market stacking (energy, frequency regulation, reserve, ramping, capacity), SOC/efficiency recursion, four reserve dimensions, frequency-regulation energy neutrality and SOC recovery, two-part tariff and the 105% demand threshold, capacity-payment eligibility and duration scaling, three degradation tiers, cluster-level dispatch and SOC balancing, KPI calibers per GB/T 36549-2018, AGC/AVC, safety interlocks, input data contract, solver fallbacks, three worked examples and acceptance tests; source material for the planned EMS module |
 | `SCADA与电力监控数据链路-2026-11.md` | Practice note | SCADA as the VPP/EMS data plane: layered architecture with production-control, safe-access and management zones; point tables and the four remotes; IEC 60870-5-104, IEC 61850, Modbus, MQTT, OPC UA and CIM selection; scan rates, latency budgets, time sync and quality codes; historian, alarms and redundancy; 2024 No. 27 order security zones and MLPS; data/control contracts with EMS and settlement; P0/P1 acceptance checklists and 15 failure modes |
 | `黄金问答集-2026-11.md` | Q&A | 28 high-frequency questions with answer points and common errors; regression checklist |
+| `绿证-CCER-CBAM衔接-2026-11.md` | Cross-cutting note | Where green certificates (GEC), CCER and CBAM meet: which environmental attribute can be claimed where, which combinations double-count, the CCER 5% offset cap, CBAM certificate purchase (2027-02) and first surrender (2027-09-30), and the evidence trail for Scope 2 / PCF / CBAM filings; draft rules are not current law |
+| `术语与口径字典-2026-11.md` | Reference | Caliber dictionary for the abbreviations used across eleven markets, six cross-cutting topics and the carbon market: definitions, caliber boundaries, common confusions and owning modules; a controlled abbreviation list is validated by `scripts/credibility.mjs` |
+| `调研-量化报价与厂商实践-2026-11.md` | Research note | Public information, patents and technology routes of bidding-side and operations-side vendors; design trade-offs only, not a vendor assessment (2026-11 snapshot) |
 
 ---
 
@@ -477,6 +481,29 @@ foot: "给国际模型与英文读者"
 35. **Cross-border PPAs and certificates**: whether EU GO and UK REGO move toward mutual recognition; AIB membership changes; the treatment of GO vintage and 12-month validity in each registry; the final EU Battery Regulation carbon-footprint rules and whether green certificates can be used (currently not recognised for that purpose); the legal status of 24/7/hourly matching claims and granular certificates; CfD/CIS/state-scheme stacking and clawback terms; tolling contract terms are private and the module only provides a checklist; all five worked examples are synthetic (grade D).
 36. **Eleven-market snapshot and decision calendar**: 2025 installed capacity and annual average price are now backfilled for eleven markets, but Spain's installed capacity remains blocked (REE/ESIOS automation returns 403), Poland's and ERCOT's local-currency annual averages are still open, Australia's and the US annual negative-price hours are missing, and capture rates, interconnection durations and de-rating coefficients are incomplete; the Poland 2031 delivery-year auction, the next Belgian CRM round, the outcome of the Swedish bidding-zone review (report due 2027-01-29), the French PL-4 first round and the MHHS migration dates are not confirmed; 22 grade-C tickets are now a resolution ledger: 8 closed on 2026-11-11 (including the Belgian CRM price upgraded to A and the incorrect German battery-ban wording withdrawn), 14 still pending with next-review dates; the remaining gaps carry explicit due dates and must not be filled with estimates.
 37. **France market and storage**: the PL-4 2030-31 first auction date and parameters, the PPI exemption applications accepted before 2026-11-23, the first actual VNU settlement in 2027, the end-2026 grid-framework reform, the battery-queue conversion rate (14 GW/180 projects vs ~30 GW access rights), the de-rating coefficients applied to batteries in PL-1/PL-4, and the 2027 CRE tender calendar; the first-auction €28,182.99/MW is a 151-day delivery-period price and must not be annualised without stating the conversion.
+
+### 4.1 Due-date register (open items with known trigger dates)
+
+> Only items with a concrete, citable date are listed; the rest stay open without an invented deadline. `scripts/credibility.mjs` parses this table into `credibility.json`, and `check-maintenance.mjs` moves anything due into the P0 review queue. Dates that have passed are **not** deleted — they are overdue review triggers until the item is resolved.
+
+| # | Item | Trigger date | Type | Verification entry |
+|---|---|---|---|---|
+| 2 | 2026 spot-market basic rules: comment period closes | 2026-11-18 | Consultation | `ndrc.gov.cn`, `nea.gov.cn` |
+| 21 | EU market-coupling / balancing-platform changes; MACSE round 2 | 2026-11-24 | Rule / auction | `entsoe.eu`, `terna.it` |
+| 23 | Italy MACSE second auction result | 2026-11-24 | Auction | `terna.it`, `gme.it` |
+| 32 | German StromVKG second-auction date announcement | 2026-11-10 | Rule (overdue) | `bundesnetzagentur.de` |
+| 37 | France PL-4 PPI exemption application deadline | 2026-11-23 | Rule | `cre.fr`, `rte-france.com` |
+| 25 | Spain first capacity auction — convocatoria check | 2026-12-01 | Auction | `ree.es`, `miteco.gob.es` |
+| 30 | Japan LTDA round-4 cap / results | 2026-12-01 | Auction | `occto.or.jp`, `meti.go.jp` |
+| 32 | German StromVKG second auction (planned) | 2026-12-29 | Auction | `bundesnetzagentur.de` |
+| 22 | UK LDES final parameters / REMA follow-up | 2027-01-01 | Rule | `ofgem.gov.uk`, `neso.energy` |
+| 26 | Netherlands SDE++ 2027 parameters | 2027-01-01 | Rule | `rvo.nl`, `acm.nl` |
+| 33 | PICASSO / MARI accession milestones | 2027-01-01 | Platform | `entsoe.eu` |
+| 8 | CBAM certificates purchasable from | 2027-02-01 | Compliance | `taxation-customs.ec.europa.eu` |
+| 28 | Swedish bidding-zone review report | 2027-01-29 | Review | `svk.se`, `ei.se` |
+| 36 | French PL-4 first round / MHHS migration dates | 2027-01-29 | Auction / migration | `cre.fr`, `elexon.co.uk` |
+| 35 | EU GO / UK REGO mutual recognition decision | 2027-02-01 | Certificate | `aib-net.org`, `ofgem.gov.uk` |
+| 8 | CBAM first certificate surrender | 2027-09-30 | Compliance | `taxation-customs.ec.europa.eu` |
 
 ---
 

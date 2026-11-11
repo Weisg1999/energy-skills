@@ -36,3 +36,7 @@ jobs:
         run: python skills/retail-electricity-risk/tools/selftest.py
       - name: Run the tariff and bill optimization self-test
         run: python skills/tariff-bill-optimization/tools/selftest.py
+      - name: Run the electricity-trading reference implementation self-test
+        run: python skills/electricity-trading-expert/tools/selftest.py
+      - name: Run the VPP reference implementation self-test
+        run: python skills/virtual-power-plant/tools/selftest.py

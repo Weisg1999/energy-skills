@@ -69,8 +69,8 @@ energy-skills/
 │   ├── build-knowledge-html.mjs    ← 知识中心构建器（frontmatter → HTML + credibility.json）
 │   └── knowledge.config.mjs        ← 分区、导航与固定文案
 ├── skills/                         ← 九份技能，各含 SKILL.md、SKILL_EN.md
-│   ├── electricity-trading-expert/
-│   ├── virtual-power-plant/
+│   ├── electricity-trading-expert/     ← 附 tools/（单位换算、容量收入、三节点出清）
+│   ├── virtual-power-plant/            ← 附 tools/（聚合折算、CBL、调度日收益、NPV/IRR）
 │   ├── spot-bidding-quant/             ← 附 tools/ 与 data/sample/
 │   ├── carbon-asset-expert/            ← 附 tools/
 │   ├── storage-investment-operations/  ← 附 tools/
@@ -82,8 +82,9 @@ energy-skills/
     ├── index.template.html         ← 首页骨架（手动维护）
     ├── index.html                  ← 生成物
     ├── credibility.json            ← 生成物：机器可读可信度登记册（C 级工单/未定事项/事件/模块声明）
+    ├── english-digest.json          ← 生成物：英文摘要路由 + 关键数字/未定事项/工单状态
     ├── assets/                     ← 阅读页样式与脚本 + 标识（3 个 SVG）
-    ├── html/                       ← 生成物：64 个知识页 + 18 个技能页
+    ├── html/                       ← 生成物：66 个知识页 + 18 个技能页
     │   └── download/skills/        ← 生成物：18 个技能 TXT
     └── *.md                        ← 知识模块（源头，frontmatter 驱动）
 ```
@@ -92,7 +93,7 @@ energy-skills/
 
 `knowledge/index.html`、`knowledge/credibility.json` 与 `knowledge/html/` 是生成物，不要手改。新增或修改模块时：
 
-1. 在 `knowledge/*.md` 的 frontmatter 补全 `id`、`section`、`order`、`level`、`title`、`summary`、`tags`、`cutoff`、`related`、`search`、`foot`；含算例的模块补 `examples`（`synthetic` / `documented`），史料型笔记补 `historical: true` 与 `confidence`；
+1. 在 `knowledge/*.md` 的 frontmatter 补全 `id`、`section`、`order`、`level`、`title`、`summary`、`summary_en`、`tags`、`cutoff`、`related`、`search`、`foot`；含算例的模块补 `examples`（`synthetic` / `documented`），史料型笔记补 `historical: true` 与 `confidence`；
 2. 分区与导航改 `scripts/knowledge.config.mjs`，首页骨架改 `knowledge/index.template.html`；
 3. 重建并校验：
 
@@ -104,9 +105,11 @@ node scripts/check-maintenance.mjs              # 到期看板（不阻塞）
 node scripts/check-maintenance.mjs --check      # 更新清单结构校验
 ```
 
+`knowledge/english-digest.json` 给英文模型做路由：66 个模块的英文摘要、INDEX_EN 关键数字表、37 项未定事项（含 16 条带触发日的登记）与 22 项 C 级工单状态；`historical: true` 的模块还会在阅读页顶部渲染「数据不可作现行引用」横幅。
+
 `knowledge/credibility.json` 是给 AI 与检索用的机器可读登记册：22 项 C 级工单、37 项未定事项、32 条事件日历、政策草案条目，以及每个模块的 `confidence` / `examples` / `historical` 声明。22 项 C 级工单带销项终态（可用 / 改口径 / 已撤销 / 禁止引用 / 待复核）、复核日期与下次复核日，§1.4 空缺格也有补数节奏。注入上下文前可先按 `confidence` 过滤、按 `gradeC` 的 `usable` / `banned` 排除不可引用数字；`check-maintenance.mjs` 按到期日提示待销项工单与空缺格。事实源仍是 Markdown 正文里已有的结构化表格与列表，不另建清单。
 
-CI 依次执行一致性校验、维护台账结构校验、生成物比对与七个 Python 自测；任一步失败即拒绝合并。每月 1 号另有 `maintenance.yml` 把到期看板写进 Actions 摘要。
+CI 依次执行一致性校验、维护台账结构校验、生成物比对与九个 Python 自测；任一步失败即拒绝合并。`summary_en` 缺漏、受控缩写未定义或悬空、未定事项触发日格式错误都会在一致性校验里报错。每月 1 号另有 `maintenance.yml` 把到期看板写进 Actions 摘要。
 
 ## 资料来源
 

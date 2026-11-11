@@ -9,7 +9,7 @@
  *   scripts/knowledge.config.mjs（分区、导航、固定文案）
  *   knowledge/index.template.html（首页静态骨架）
  *
- * 生成物（禁止手改）：knowledge/index.html、knowledge/html/**、knowledge/credibility.json
+ * 生成物（禁止手改）：knowledge/index.html、knowledge/html/**、knowledge/credibility.json、knowledge/english-digest.json
  *
  * 用法：
  *   node scripts/build-knowledge-html.mjs            # 生成 index.html 与 knowledge/html/*.html
@@ -27,6 +27,7 @@ const knowledgeDir = join(root, 'knowledge');
 const htmlDir = join(knowledgeDir, 'html');
 const indexPath = join(knowledgeDir, 'index.html');
 const credibilityPath = join(knowledgeDir, 'credibility.json');
+const englishDigestPath = join(knowledgeDir, 'english-digest.json');
 const templatePath = join(knowledgeDir, 'index.template.html');
 const tokensPath = join(knowledgeDir, 'assets', 'tokens.css');
 const checkMode = process.argv.includes('--check');
@@ -696,6 +697,15 @@ function buildPage(doc) {
   const langSwitch = isSkill
     ? `<a class="src" href="skill-${doc.slug}${lang === 'en' ? '' : '-en'}.html">${lang === 'en' ? '中文' : 'English'}</a>`
     : '';
+  const isHistorical = doc.historical === true || doc.historical === 'true';
+  const historicalBanner = isHistorical
+    ? `<aside class="historical-banner" role="note">
+      <strong>${lang === 'en' ? 'Historical note — data is not current' : '史料笔记 — 数据不可作现行引用'}</strong>
+      <span>${lang === 'en'
+        ? 'Figures in this note date from the book / historical snapshot. Use them as historical evidence only; principles and formulas remain applicable, but verify every number against current rules before quoting.'
+        : '本页规模、价格与政策节点均为成书期／历史时点数据，只能作史料引用；原理与公式部分仍适用，引用任何数字前须按现行规则复核。'}</span>
+    </aside>`
+    : '';
   const downloadSize = Math.max(1, Math.round((doc.txt || '').length / 1024));
   const downloadBlock = isSkill
     ? `<p class="doc-actions"><a class="dl-btn" href="${esc(doc.download)}" download="${esc(doc.downloadName)}">${lang === 'en' ? 'Download TXT' : '下载 TXT'}</a><span>${lang === 'en' ? `Full skill document, about ${downloadSize} KB, frontmatter included` : `完整技能文档，约 ${downloadSize} KB，含 frontmatter`}</span></p>`
@@ -810,7 +820,7 @@ function buildPage(doc) {
       <div class="doc-meta">${meta}</div>${downloadBlock ? `\n      ${downloadBlock}` : ''}
     </header>
 
-    ${tocMobileItems.length ? `<details class="toc-mobile">
+    ${historicalBanner ? `    ${historicalBanner}\n\n` : ''}${tocMobileItems.length ? `<details class="toc-mobile">
       <summary>本页目录（${tocMobileItems.length}）</summary>
       <ol>
             ${tocMobile}
@@ -884,7 +894,44 @@ const downloadFiles = skillManifest.map((doc) => ({
 }));
 
 const indexHtml = renderIndex();
-const credibilityJson = serializeIndex(buildIndex(root));
+const credibilityIndex = buildIndex(root);
+const credibilityJson = serializeIndex(credibilityIndex);
+const credByFile = new Map(credibilityIndex.modules.map((m) => [m.file, m]));
+const englishDigestJson = `${JSON.stringify({
+  schema: 1,
+  description: 'English routing digest for the Chinese knowledge notes. Use it to decide which module to open and which figures are safe to quote; the full notes remain in Chinese.',
+  note: 'A number needs a grade, a time point and a caliber. Filter gradeC by usable/banned before using any unverified figure. Full texts of policies are linked from the Chinese policy indexes.',
+  generatedFrom: 'knowledge/*.md frontmatter (summary_en) + INDEX_EN structured tables + credibility register',
+  summary: {
+    modules: docs.length,
+    withEnglishSummary: docs.filter((d) => d.summary_en).length,
+    keyFigures: credibilityIndex.keyFigures.length,
+    openItems: credibilityIndex.openItems.length,
+    datedOpenItems: credibilityIndex.openItemDues.length,
+    gradeCTickets: credibilityIndex.gradeC.length,
+    pendingGradeC: credibilityIndex.summary.unverifiedGradeC,
+  },
+  modules: docs.map((d) => ({
+    id: d.id,
+    file: d.md,
+    section: d.section,
+    kind: d.kind,
+    cutoff: d.cutoff || null,
+    title: d.title,
+    titleEn: d.title_en || null,
+    summaryEn: d.summary_en || null,
+    confidence: credByFile.get(d.md)?.confidence ?? null,
+    historical: d.historical === true || d.historical === 'true',
+    html: `html/${d.html}`,
+  })),
+  keyFigures: credibilityIndex.keyFigures,
+  openItems: credibilityIndex.openItems,
+  datedOpenItems: credibilityIndex.openItemDues,
+  gradeC: credibilityIndex.gradeC.map((t) => ({
+    n: t.n, figure: t.figure, status: t.status, usable: t.usable, banned: t.banned,
+    pending: t.pending, nextReview: t.nextReview, conclusion: t.conclusion,
+  })),
+}, null, 2)}\n`;
 
 function verifyLinks(baseDir, html, label, pending = new Set()) {
   const missing = [];
@@ -909,6 +956,7 @@ if (checkMode) {
   const same = (path, expected) => existsSync(path) && readFileSync(path, 'utf8').replace(/\r\n?/g, '\n') === expected;
   if (!same(indexPath, indexHtml)) diffs.push('knowledge/index.html 不是最新生成物');
   if (!same(credibilityPath, credibilityJson)) diffs.push('knowledge/credibility.json 不是最新生成物');
+  if (!same(englishDigestPath, englishDigestJson)) diffs.push('knowledge/english-digest.json 不是最新生成物');
   for (const { doc, html } of allPages) {
     if (!same(join(htmlDir, doc.html), html)) diffs.push(`knowledge/html/${doc.html} 不是最新生成物`);
   }
@@ -930,12 +978,13 @@ if (checkMode) {
     for (const d of diffs) console.error(`- ${d}`);
     process.exit(1);
   }
-  console.log(`生成物校验通过：index.html + credibility.json + ${pages.length} 个知识页 + ${skillPages.length} 个技能页 + ${downloadFiles.length} 个下载文件均为最新（${total} 个模块 / ${fmt(totalLines)} 行）。`);
+  console.log(`生成物校验通过：index.html + credibility.json + english-digest.json + ${pages.length} 个知识页 + ${skillPages.length} 个技能页 + ${downloadFiles.length} 个下载文件均为最新（${total} 个模块 / ${fmt(totalLines)} 行）。`);
   process.exit(0);
 }
 
 for (const { doc, html } of allPages) writeFileSync(join(htmlDir, doc.html), html, 'utf8');
 writeFileSync(credibilityPath, credibilityJson, 'utf8');
+writeFileSync(englishDigestPath, englishDigestJson, 'utf8');
 mkdirSync(downloadDir, { recursive: true });
 for (const f of downloadFiles) writeFileSync(f.path, f.content, 'utf8');
 if (rewriteIndex) writeFileSync(indexPath, indexHtml, 'utf8');

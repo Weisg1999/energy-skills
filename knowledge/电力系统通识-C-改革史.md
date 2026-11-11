@@ -10,6 +10,7 @@ tags: ["1985 集资办电","2002 厂网分开","2015 九号文"]
 cutoff: 2026-11-01
 related: ["m-ts-a","m-ts-d","m-res-market-policy"]
 search: "通识 C 改革史 集资办电 厂网分开 九号文 2015 2002 1439 136 全国统一市场"
+summary_en: "Reform history 1985-2026 in eight stages, each with problem / measure / impact / legacy."
 foot: "四十多年改了什么，为什么还没改完"
 ---
 # 电力系统通识 C · 改革史：四十多年改了什么，为什么还没改完

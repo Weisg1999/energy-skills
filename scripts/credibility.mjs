@@ -36,6 +36,7 @@ export const TICKET_COLUMNS = 9;
 
 const SNAPSHOT = '海外市场同口径快照与投决日历-2026-11.md';
 const INDEX_EN = 'INDEX_EN-2026-11.md';
+const GLOSSARY = '术语与口径字典-2026-11.md';
 const POLICY_FILES = ['政策列表-2026-11.md', '省级政策列表-2026-11.md'];
 
 const GRADE_C_RE = /C 级|（C）|\(C\)|待核实|待复核|grade C/i;
@@ -130,6 +131,69 @@ export function readGaps(root) {
   return gaps;
 }
 
+/** 解析 INDEX_EN §2 的英文关键数字表（English digest 用）。 */
+export function readKeyFigures(root) {
+  const path = join(root, 'knowledge', INDEX_EN);
+  if (!existsSync(path)) return [];
+  const text = norm(readFileSync(path, 'utf8'));
+  const start = text.indexOf('## 2.');
+  if (start === -1) return [];
+  const endMark = text.indexOf('\n## ', start + 4);
+  const seg = text.slice(start, endMark === -1 ? undefined : endMark);
+  const out = [];
+  for (const line of seg.split('\n')) {
+    if (!/^\|/.test(line) || /^\|\s*-/.test(line)) continue;
+    const c = cells(line);
+    if (c.length < 3 || /^(Topic|主题)/i.test(c[0])) continue;
+    out.push({ topic: c[0], figures: c[1], grade: c[2] });
+  }
+  return out;
+}
+
+/** 解析 INDEX_EN §4.1 的未定事项到期登记册。 */
+export function readOpenItemDues(root) {
+  const path = join(root, 'knowledge', INDEX_EN);
+  if (!existsSync(path)) return [];
+  const text = norm(readFileSync(path, 'utf8'));
+  const start = text.indexOf('### 4.1');
+  if (start === -1) return [];
+  const endMark = text.indexOf('\n## ', start + 4);
+  const seg = text.slice(start, endMark === -1 ? undefined : endMark);
+  const out = [];
+  for (const line of seg.split('\n')) {
+    if (!/^\|\s*\d+\s*\|/.test(line)) continue;
+    const c = cells(line);
+    out.push({ n: Number(c[0]), item: c[1] || '', due: c[2] || '', trigger: c[3] || '', source: c[4] || '', columns: c.length });
+  }
+  return out;
+}
+
+/** 解析术语字典：定义表中的缩写 + §7 受控缩写清单。 */
+export function readGlossary(root) {
+  const path = join(root, 'knowledge', GLOSSARY);
+  if (!existsSync(path)) return { defined: [], controlled: [], error: `缺少术语字典：knowledge/${GLOSSARY}` };
+  const text = norm(readFileSync(path, 'utf8'));
+  const defined = [];
+  for (const line of text.split('\n')) {
+    if (!/^\|/.test(line) || /^\|\s*-/.test(line)) continue;
+    const c = cells(line);
+    if (c.length !== 6) continue;
+    // 一行可能合并多个同族缩写（如 "GO / REGO / REC / LGC / NFC"），逐个登记。
+    const terms = c[0].split(/[\/、,\s]+/).map((s) => s.trim()).filter((s) => s && s !== '—' && s !== '缩写' && s !== '-');
+    for (const term of terms) defined.push({ term, definition: c[3], confusion: c[4], columns: c.length });
+  }
+  const controlled = [];
+  const head = text.indexOf('## 7. 受控缩写清单');
+  if (head !== -1) {
+    const seg = text.slice(head);
+    for (const line of seg.split('\n')) {
+      const m = line.match(/^\|\s*([A-Za-z][A-Za-z0-9+/.-]*)\s*\|$/);
+      if (m) controlled.push(m[1]);
+    }
+  }
+  return { defined, controlled, error: null };
+}
+
 /** 解析 INDEX_EN §4 的 Open items 编号列表。 */
 export function readOpenItems(root) {
   const path = join(root, 'knowledge', INDEX_EN);
@@ -213,6 +277,9 @@ export function buildIndex(root) {
   const events = readEvents(root);
   const policies = readPolicyStatus(root);
   const gaps = readGaps(root);
+  const keyFigures = readKeyFigures(root);
+  const openItemDues = readOpenItemDues(root);
+  const glossary = readGlossary(root);
   const modules = [];
   for (const file of readdirSync(dir).filter((f) => f.endsWith('.md')).sort()) {
     const text = norm(readFileSync(join(dir, file), 'utf8'));
@@ -231,6 +298,8 @@ export function buildIndex(root) {
       confidenceInferred: confidence.inferred,
       examples: fm.examples || null,
       historical: fm.historical === true || fm.historical === 'true',
+      summaryEn: fm.summary_en || null,
+      titleEn: fm.title_en || null,
       marks,
       exampleSections,
     });
@@ -251,11 +320,19 @@ export function buildIndex(root) {
       bannedTickets: ledger.rows.filter((r) => r.banned).length,
       ticketsDueForReview: ledger.rows.filter((r) => r.pending && r.nextReview).length,
       openGaps: gaps.length,
+      englishSummaries: modules.filter((m) => m.summaryEn).length,
+      keyFigures: keyFigures.length,
+      glossaryTerms: glossary.defined.length,
+      controlledAbbreviations: glossary.controlled.length,
+      openItemDues: openItemDues.length,
     },
     enums: { confidence: CONFIDENCE, examples: EXAMPLE_MODES, policyStatus: POLICY_STATUS, priority: PRIORITIES, ticketStatus: TICKET_STATUS },
     gradeC: ledger.rows,
     gaps,
+    keyFigures,
     openItems: open.items,
+    openItemDues,
+    glossary: { defined: glossary.defined, controlled: glossary.controlled },
     events,
     policyDrafts: policies.filter((p) => /草案|征求意见/.test(p.status)),
     modules,
@@ -387,6 +464,44 @@ export function checkContent(root) {
     if (/^待公布/.test(e.date) && !/空缺|禁止|复核/.test(e.grade)) {
       push('knowledge/' + SNAPSHOT, 0, `事件「${e.event}」日期待公布，级别列必须写明空缺/禁令/复核日`);
     }
+  }
+
+  // C9 English layer: every module must carry a summary_en so the digest is complete.
+  for (const m of index.modules) {
+    if (!m.summaryEn) push(`knowledge/${m.file}`, 1, '缺少 summary_en（English digest 需要每个模块都有英文摘要）');
+  }
+
+  // C10 Glossary: controlled abbreviations must be defined and actually used elsewhere.
+  const gloss = readGlossary(root);
+  if (gloss.error) push('knowledge/' + GLOSSARY, 0, gloss.error);
+  const defined = new Set(gloss.defined.map((d) => d.term));
+  for (const d of gloss.defined) {
+    if (!d.definition || !d.confusion) {
+      push('knowledge/' + GLOSSARY, 0, `术语「${d.term}」缺少定义或易混项`);
+    }
+  }
+  const seenCtl = new Set();
+  let corpus = '';
+  for (const m of index.modules) {
+    if (m.file === GLOSSARY) continue;
+    corpus += norm(readFileSync(join(dir, m.file), 'utf8'));
+  }
+  for (const term of gloss.controlled) {
+    if (seenCtl.has(term)) push('knowledge/' + GLOSSARY, 0, `受控缩写重复：${term}`);
+    seenCtl.add(term);
+    if (!defined.has(term)) push('knowledge/' + GLOSSARY, 0, `受控缩写「${term}」没有定义表条目`);
+    if (!corpus.includes(term)) push('knowledge/' + GLOSSARY, 0, `受控缩写「${term}」未在任何其它模块出现（字典悬空）`);
+  }
+
+  // C11 Open-item due register: valid dates, 5 columns, ids must exist in §4.
+  const dues = readOpenItemDues(root);
+  if (!dues.length) push('knowledge/' + INDEX_EN, 0, '§4.1 未定事项到期登记册为空');
+  const openNums = new Set(open.items.map((i) => i.n));
+  for (const d of dues) {
+    if (d.columns !== 5) push('knowledge/' + INDEX_EN + '#due', 0, `到期登记册 #${d.n} 列数 ${d.columns} != 5`);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(d.due)) push('knowledge/' + INDEX_EN + '#due', 0, `到期登记册 #${d.n} 日期非法：${d.due}`);
+    if (!openNums.has(d.n)) push('knowledge/' + INDEX_EN + '#due', 0, `到期登记册 #${d.n} 在 §4 Open items 里不存在`);
+    if (!d.source) push('knowledge/' + INDEX_EN + '#due', 0, `到期登记册 #${d.n} 缺少查证入口`);
   }
 
   return { errors, warnings, index };

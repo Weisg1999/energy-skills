@@ -1,0 +1,2586 @@
+{
+  "schema": 1,
+  "description": "English routing digest for the Chinese knowledge notes. Use it to decide which module to open and which figures are safe to quote; the full notes remain in Chinese.",
+  "note": "A number needs a grade, a time point and a caliber. Filter gradeC by usable/banned before using any unverified figure. Full texts of policies are linked from the Chinese policy indexes.",
+  "generatedFrom": "knowledge/*.md frontmatter (summary_en) + INDEX_EN structured tables + credibility register",
+  "summary": {
+    "modules": 66,
+    "withEnglishSummary": 66,
+    "keyFigures": 234,
+    "openItems": 37,
+    "datedOpenItems": 16,
+    "gradeCTickets": 22,
+    "pendingGradeC": 14
+  },
+  "modules": [
+    {
+      "id": "m-index-en",
+      "file": "INDEX_EN-2026-11.md",
+      "section": "index",
+      "kind": "索引",
+      "cutoff": "2026-11-11",
+      "title": "English Knowledge Index",
+      "titleEn": null,
+      "summaryEn": "English entry point: file map, key figures, a provincial quick table, open items and answering discipline.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/INDEX_EN-2026-11.html"
+    },
+    {
+      "id": "m-scada",
+      "file": "SCADA与电力监控数据链路-2026-11.md",
+      "section": "storage",
+      "kind": "知识模块",
+      "cutoff": "2026-11-09",
+      "title": "SCADA 与电力监控数据链路",
+      "titleEn": null,
+      "summaryEn": "SCADA as the VPP/EMS data plane: layered architecture with production-control, safe-access and management zones.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/SCADA与电力监控数据链路-2026-11.html"
+    },
+    {
+      "id": "m-price-system",
+      "file": "中国电价制度谱系-2026-11.md",
+      "section": "price",
+      "kind": "知识模块",
+      "cutoff": "2026-11-01",
+      "title": "中国电价制度谱系",
+      "titleEn": null,
+      "summaryEn": "Three segments (generation / network / retail) and nine price types.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/中国电价制度谱系-2026-11.html"
+    },
+    {
+      "id": "m-price-history",
+      "file": "中国电价史-2026-11.md",
+      "section": "price",
+      "kind": "知识模块",
+      "cutoff": "2026-11-01",
+      "title": "中国电价史",
+      "titleEn": null,
+      "summaryEn": "China's electricity prices in five stages (1949-1985, 1985-2002, 2002-2015, 2015-2021, 2021-2026), each with who sets prices, price form, cost recovery and legacy.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/中国电价史-2026-11.html"
+    },
+    {
+      "id": "m-price-policy",
+      "file": "中国电价现行政策与查证-2026-11.md",
+      "section": "price",
+      "kind": "知识模块",
+      "cutoff": "2026-11-09",
+      "title": "中国电价现行政策与查证",
+      "titleEn": null,
+      "summaryEn": "14-document table (742/1583/500/1093/1439/809/1047/1217/1501/136/411/1656/114, State Council Doc.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/中国电价现行政策与查证-2026-11.html"
+    },
+    {
+      "id": "m-carbon-trade",
+      "file": "中国碳排放权交易实务-主题笔记.md",
+      "section": "carbon",
+      "kind": "教材笔记",
+      "cutoff": null,
+      "title": "中国碳排放权交易实务",
+      "titleEn": null,
+      "summaryEn": "China ETS mechanics (written ~2016.",
+      "confidence": "historical",
+      "historical": true,
+      "html": "html/中国碳排放权交易实务-主题笔记.html"
+    },
+    {
+      "id": "m-storage-ems",
+      "file": "储能EMS优化调度-算法与工程-2026-11.md",
+      "section": "storage",
+      "kind": "算法底稿",
+      "cutoff": "2026-11-01",
+      "title": "储能 EMS 优化调度",
+      "titleEn": null,
+      "summaryEn": "Storage EMS MILP: multi-market stacking (energy, frequency regulation, reserve, ramping, capacity), SOC/efficiency recursion, four reserve dimensions, frequency-regulation energy neutrality…",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/储能EMS优化调度-算法与工程-2026-11.html"
+    },
+    {
+      "id": "m-storage-tech",
+      "file": "储能技术路线安全与构网型并网-2026-11.md",
+      "section": "storage",
+      "kind": "知识模块",
+      "cutoff": "2026-11-01",
+      "title": "储能技术路线、安全与构网型并网",
+      "titleEn": null,
+      "summaryEn": "Storage technology routes (lithium, sodium, vanadium flow, compressed air, flywheel/supercapacitor, thermal, gravity, hydrogen, pumped hydro) with duration/efficiency/cycle/cost comparison.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/储能技术路线安全与构网型并网-2026-11.html"
+    },
+    {
+      "id": "m-storage-invest",
+      "file": "储能投资与运营-2026-11.md",
+      "section": "storage",
+      "kind": "知识模块",
+      "cutoff": "2026-11-09",
+      "title": "储能投资与运营",
+      "titleEn": null,
+      "summaryEn": "Doc.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/储能投资与运营-2026-11.html"
+    },
+    {
+      "id": "m-cross-revenue",
+      "file": "储能收益建模与数据源-2026-11.md",
+      "section": "cross",
+      "kind": "知识模块",
+      "cutoff": "2026-11-11",
+      "title": "储能收益建模与数据源（2026 版）：从 5 分钟价格到 15 年现金流",
+      "titleEn": null,
+      "summaryEn": "Storage revenue modelling and public data: ENTSO-E, EPEX, Nord Pool, Elexon BMRS, NESO, GME, OMIE, REE e·sios, PSE, TenneT, Elia, Svenska kraftnät/Statnett/Fingrid/Energinet, AEMO…",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/储能收益建模与数据源-2026-11.html"
+    },
+    {
+      "id": "m-price-intl",
+      "file": "国际电价比较-方法与模板-2026-11.md",
+      "section": "price",
+      "kind": "知识模块",
+      "cutoff": "2026-11-01",
+      "title": "国际电价比较：方法与模板",
+      "titleEn": null,
+      "summaryEn": "Why direct comparison fails.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/国际电价比较-方法与模板-2026-11.html"
+    },
+    {
+      "id": "m-cross-capacity",
+      "file": "容量机制横向对照-2026-11.md",
+      "section": "cross",
+      "kind": "知识模块",
+      "cutoff": "2026-11-11",
+      "title": "容量机制横向对照（2026 版）：年金、拍卖、双向 CfD 与战略储备",
+      "titleEn": null,
+      "summaryEn": "Capacity mechanisms side by side: five archetypes (capacity annuity, long-term auction, two-way CfD/revenue underwriting, strategic reserve, energy-only + scarcity pricing) and four design…",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/容量机制横向对照-2026-11.html"
+    },
+    {
+      "id": "m-grid",
+      "file": "并网运行考核与两个细则-2026-11.md",
+      "section": "renewable",
+      "kind": "知识模块",
+      "cutoff": "2026-11-01",
+      "title": "并网运行考核与两个细则",
+      "titleEn": null,
+      "summaryEn": "Grid-connection assessment and the \"two detailed rules\": national Docs 60/61 (35 kV and above), the 2026-09-30 draft revision, regional samples (southern, central, Shandong, Shanxi, north…",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/并网运行考核与两个细则-2026-11.html"
+    },
+    {
+      "id": "m-micro-ems",
+      "file": "微网EMS优化调度-算法与工程-2026-11.md",
+      "section": "storage",
+      "kind": "算法底稿",
+      "cutoff": "2026-11-04",
+      "title": "微网 EMS 优化调度",
+      "titleEn": null,
+      "summaryEn": "Microgrid EMS day-ahead MILP: objective terms, constraints, SOC efficiency, SOS1 vs Big-M, demand-charge linearization, solver parameters and fallbacks, dual-timescale rolling, input data…",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/微网EMS优化调度-算法与工程-2026-11.html"
+    },
+    {
+      "id": "m-intl-de",
+      "file": "德国电力市场-2026-11.md",
+      "section": "intl",
+      "kind": "知识模块",
+      "cutoff": "2026-11-01",
+      "title": "德国电力市场（2026 版）",
+      "titleEn": null,
+      "summaryEn": "Germany's DE-LU bidding zone inside EU market coupling: EPEX day-ahead (12:00 CET gate, pay-as-clear) and intraday (pay-as-bid), 15-minute MTU since 2025-10-01.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/德国电力市场-2026-11.html"
+    },
+    {
+      "id": "m-intl-it",
+      "file": "意大利电力市场-2026-11.md",
+      "section": "intl",
+      "kind": "知识模块",
+      "cutoff": "2026-11-10",
+      "title": "意大利电力市场（2026 版）",
+      "titleEn": null,
+      "summaryEn": "Italy's seven mainland bidding zones and IPEX: GME's MGP (12:00 D-1, SDAC-coupled, 15-minute MTU from 2025-10-01), MI, MSD and MB.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/意大利电力市场-2026-11.html"
+    },
+    {
+      "id": "m-policies",
+      "file": "政策列表-2026-11.md",
+      "section": "index",
+      "kind": "索引",
+      "cutoff": "2026-11-08",
+      "title": "政策列表",
+      "titleEn": null,
+      "summaryEn": "National-level policy index: electricity, storage, VPP and carbon-market documents grouped by topic, with status filters and verified links to official full texts.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/政策列表-2026-11.html"
+    },
+    {
+      "id": "m-renewable",
+      "file": "新能源项目开发与并网-2026-11.md",
+      "section": "renewable",
+      "kind": "知识模块",
+      "cutoff": "2026-11-01",
+      "title": "新能源项目开发与并网",
+      "titleEn": null,
+      "summaryEn": "Four project types and eight development stages, Doc.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/新能源项目开发与并网-2026-11.html"
+    },
+    {
+      "id": "m-intl-jp",
+      "file": "日本电力市场-2026-11.md",
+      "section": "intl",
+      "kind": "知识模块",
+      "cutoff": "2026-11-10",
+      "title": "日本电力市场（2026 版）：现货、容量市场与 LTDA",
+      "titleEn": null,
+      "summaryEn": "Japan's ten supply areas: JEPX 48 half-hour day-ahead products (10:00 gate, floor ¥0.01/kWh, no negative prices), 30-minute imbalance with C/D values rising to ¥300/¥50 per kWh from…",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/日本电力市场-2026-11.html"
+    },
+    {
+      "id": "m-glossary",
+      "file": "术语与口径字典-2026-11.md",
+      "section": "index",
+      "kind": "口径字典",
+      "cutoff": "2026-11-11",
+      "title": "术语与口径字典",
+      "titleEn": null,
+      "summaryEn": "A caliber dictionary for the abbreviations used across eleven overseas markets, six cross-cutting topics and the carbon market: definitions, caliber boundaries, common confusions and the modules that own each term.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/术语与口径字典-2026-11.html"
+    },
+    {
+      "id": "m-intl-benl",
+      "file": "比利时与北欧电力市场-2026-11.md",
+      "section": "intl",
+      "kind": "知识模块",
+      "cutoff": "2026-11-10",
+      "title": "比利时与北欧电力市场（2026 版）",
+      "titleEn": null,
+      "summaryEn": "Belgium's single Belpex zone and CRM (Y-4/Y-2/Y-1, pay-as-bid with IPC, new build up to 15 years.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/比利时与北欧电力市场-2026-11.html"
+    },
+    {
+      "id": "m-intl-fr",
+      "file": "法国电力市场-2026-11.md",
+      "section": "intl",
+      "kind": "知识模块",
+      "cutoff": "2026-11-11",
+      "title": "法国电力市场（2026 版）：核电、ARENH 退场与容量机制",
+      "titleEn": null,
+      "summaryEn": "France's nuclear-dominated system and RTE single-buyer capacity mechanism: 164.5 GW installed at end-2025, nuclear 62.99 GW/373.0 TWh (68.1%), total generation 547.5 TWh and net exports…",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/法国电力市场-2026-11.html"
+    },
+    {
+      "id": "m-intl-pl",
+      "file": "波兰电力市场-2026-11.md",
+      "section": "intl",
+      "kind": "知识模块",
+      "cutoff": "2026-11-10",
+      "title": "波兰电力市场（2026 版）",
+      "titleEn": null,
+      "summaryEn": "Poland's single bidding zone: TGE RDN day-ahead and RDB intraday, PSE dispatch, URE regulation, 15-minute MTU since 2025-10-01 and 15-minute imbalance.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/波兰电力市场-2026-11.html"
+    },
+    {
+      "id": "m-intl-storage",
+      "file": "海外储能业务-2026-11.md",
+      "section": "intl",
+      "kind": "知识模块",
+      "cutoff": "2026-11-11",
+      "title": "海外储能业务：十一市场大储与工商储（2026 版）",
+      "titleEn": null,
+      "summaryEn": "Storage business across eleven markets: Australia's NEM (arbitrage/FCAS/CIS), Germany's DE-LU (arbitrage/FCR-aFRR-mFRR/§118(6) grid-fee exemption/2031 capacity market), the UK (BM, T-4/T-1…",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/海外储能业务-2026-11.html"
+    },
+    {
+      "id": "m-cross-snapshot",
+      "file": "海外市场同口径快照与投决日历-2026-11.md",
+      "section": "cross",
+      "kind": "知识模块",
+      "cutoff": "2026-11-11",
+      "title": "海外市场同口径快照与投决日历（2026 版）：十一市场、七列口径、五张工单",
+      "titleEn": null,
+      "summaryEn": "Eleven-market same-caliber snapshot: installed capacity, storage stock/pipeline, 2025 average price, negative-price hours, capture rate, interconnection queue and de-rating factor, each…",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/海外市场同口径快照与投决日历-2026-11.html"
+    },
+    {
+      "id": "m-cross-grid",
+      "file": "海外并网与合规-2026-11.md",
+      "section": "cross",
+      "kind": "知识模块",
+      "cutoff": "2026-11-10",
+      "title": "海外并网与合规手册（2026 版）：从 grid code 到电池护照",
+      "titleEn": null,
+      "summaryEn": "Grid codes and compliance across eleven markets: EU RfG/DCC/HVDC and EN 50549.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/海外并网与合规-2026-11.html"
+    },
+    {
+      "id": "m-intl-au",
+      "file": "澳大利亚NEM电力市场-2026-11.md",
+      "section": "intl",
+      "kind": "知识模块",
+      "cutoff": "2026-11-01",
+      "title": "澳大利亚 NEM 电力市场（2026 版）",
+      "titleEn": null,
+      "summaryEn": "Australia's NEM: AEMO/AEMC/AER roles.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/澳大利亚NEM电力市场-2026-11.html"
+    },
+    {
+      "id": "m-risk-credit",
+      "file": "电力市场风险、信用与结算-2026-11.md",
+      "section": "spot",
+      "kind": "知识模块",
+      "cutoff": "2026-11-08",
+      "title": "电力市场风险、信用与结算（2026 版）",
+      "titleEn": null,
+      "summaryEn": "Institutional chain from risk to credit, guarantee, deviation, settlement and exit: internal/external risk taxonomy and major/general × emergency/non-emergency grading.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/电力市场风险、信用与结算-2026-11.html"
+    },
+    {
+      "id": "m-spot-a",
+      "file": "电力现货市场101问-A-基础与价格机制.md",
+      "section": "spot",
+      "kind": "教材笔记",
+      "cutoff": null,
+      "title": "101 问 A · 基础与价格机制",
+      "titleEn": null,
+      "summaryEn": "Spot-market basics: pricing, LMP, supply-demand and market power",
+      "confidence": "verified",
+      "historical": false,
+      "html": "html/电力现货市场101问-A-基础与价格机制.html"
+    },
+    {
+      "id": "m-spot-b",
+      "file": "电力现货市场101问-B-出清结算与省域实践.md",
+      "section": "spot",
+      "kind": "教材笔记",
+      "cutoff": null,
+      "title": "101 问 B · 出清结算与省域实践",
+      "titleEn": null,
+      "summaryEn": "Clearing, settlement, provincial practice",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/电力现货市场101问-B-出清结算与省域实践.html"
+    },
+    {
+      "id": "m-spot-c",
+      "file": "电力现货市场101问-C-结算TTS与政策演进.md",
+      "section": "spot",
+      "kind": "教材笔记",
+      "cutoff": null,
+      "title": "101 问 C · 结算、TTS 与政策演进",
+      "titleEn": null,
+      "summaryEn": "Settlement mechanisms, TTS, policy evolution",
+      "confidence": "verified",
+      "historical": false,
+      "html": "html/电力现货市场101问-C-结算TTS与政策演进.html"
+    },
+    {
+      "id": "m-spot-practice",
+      "file": "电力现货市场实务-精读笔记.md",
+      "section": "spot",
+      "kind": "教材笔记",
+      "cutoff": null,
+      "title": "电力现货市场实务",
+      "titleEn": null,
+      "summaryEn": "Operational practice of China's spot markets",
+      "confidence": "historical",
+      "historical": true,
+      "html": "html/电力现货市场实务-精读笔记.html"
+    },
+    {
+      "id": "m-econ",
+      "file": "电力系统经济学原理-主题笔记.md",
+      "section": "foundation",
+      "kind": "教材笔记",
+      "cutoff": null,
+      "title": "电力系统经济学原理",
+      "titleEn": null,
+      "summaryEn": "Power-system economics: marginal cost, congestion, investment",
+      "confidence": "historical",
+      "historical": true,
+      "html": "html/电力系统经济学原理-主题笔记.html"
+    },
+    {
+      "id": "m-ts-a",
+      "file": "电力系统通识-A-格局与主体.md",
+      "section": "foundation",
+      "kind": "主题笔记",
+      "cutoff": "2026-11-09",
+      "title": "电力系统通识 A · 格局与主体",
+      "titleEn": null,
+      "summaryEn": "Industry landscape: State Grid / CSG / Inner Mongolia West, five majors and the \"four smalls\", equipment vendors, research bodies, trading-dispatch-regulation split, a 2026 snapshot (4.13…",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/电力系统通识-A-格局与主体.html"
+    },
+    {
+      "id": "m-ts-b",
+      "file": "电力系统通识-B-发输配变用.md",
+      "section": "foundation",
+      "kind": "主题笔记",
+      "cutoff": "2026-11-01",
+      "title": "电力系统通识 B · 发输配变用",
+      "titleEn": null,
+      "summaryEn": "Fundamentals for non-specialists: power vs.",
+      "confidence": "verified",
+      "historical": false,
+      "html": "html/电力系统通识-B-发输配变用.html"
+    },
+    {
+      "id": "m-ts-c",
+      "file": "电力系统通识-C-改革史.md",
+      "section": "foundation",
+      "kind": "主题笔记",
+      "cutoff": "2026-11-01",
+      "title": "电力系统通识 C · 改革史",
+      "titleEn": null,
+      "summaryEn": "Reform history 1985-2026 in eight stages, each with problem / measure / impact / legacy.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/电力系统通识-C-改革史.html"
+    },
+    {
+      "id": "m-ts-d",
+      "file": "电力系统通识-D-新角色与现货市场.md",
+      "section": "foundation",
+      "kind": "主题笔记",
+      "cutoff": "2026-11-09",
+      "title": "电力系统通识 D · 新角色与现货市场",
+      "titleEn": null,
+      "summaryEn": "Spot markets and system operation, high-renewables technical issues, storage (grid-following vs.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/电力系统通识-D-新角色与现货市场.html"
+    },
+    {
+      "id": "m-province",
+      "file": "省级市场状态表-2026-11.md",
+      "section": "index",
+      "kind": "索引",
+      "cutoff": "2026-11-08",
+      "title": "省级电力市场状态总表",
+      "titleEn": null,
+      "summaryEn": "One row per province: spot / No.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/省级市场状态表-2026-11.html"
+    },
+    {
+      "id": "m-policies-prov",
+      "file": "省级政策列表-2026-11.md",
+      "section": "index",
+      "kind": "索引",
+      "cutoff": "2026-11-08",
+      "title": "省级政策列表",
+      "titleEn": null,
+      "summaryEn": "Provincial policy index: document numbers, effective dates and official full-text links for provincial electricity-market rules.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/省级政策列表-2026-11.html"
+    },
+    {
+      "id": "m-spot-interprovincial",
+      "file": "省间与跨区交易-2026-11.md",
+      "section": "spot",
+      "kind": "知识模块",
+      "cutoff": "2026-11-01",
+      "title": "省间与跨区交易（2026 版）",
+      "titleEn": null,
+      "summaryEn": "Four-layer market (inter-provincial, regional, provincial, cross-operator).",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/省间与跨区交易-2026-11.html"
+    },
+    {
+      "id": "m-carbon-mgmt",
+      "file": "碳管理-从零通往碳中和-主题笔记.md",
+      "section": "carbon",
+      "kind": "教材笔记",
+      "cutoff": null,
+      "title": "碳管理：从零通往碳中和",
+      "titleEn": null,
+      "summaryEn": "Corporate carbon management, Scope 1/2/3, abatement cost",
+      "confidence": "historical",
+      "historical": true,
+      "html": "html/碳管理-从零通往碳中和-主题笔记.html"
+    },
+    {
+      "id": "m-carbon-asset",
+      "file": "碳资产实务-2026-11.md",
+      "section": "carbon",
+      "kind": "知识模块",
+      "cutoff": "2026-11-09",
+      "title": "碳资产实务 2026-11",
+      "titleEn": null,
+      "summaryEn": "Compliance parameters, CCER, a worked compliance example (1 Mt emissions, 80 kt gap, 5% CCER + CEA, break-even CCER price) and a synthetic CBAM steel example, carbon-finance instrument…",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/碳资产实务-2026-11.html"
+    },
+    {
+      "id": "m-index",
+      "file": "索引与口径-2026-11.md",
+      "section": "index",
+      "kind": "索引",
+      "cutoff": "2026-11-08",
+      "title": "索引与口径",
+      "titleEn": null,
+      "summaryEn": "Document-number index, caliber dictionary, source grading, watchlist",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/索引与口径-2026-11.html"
+    },
+    {
+      "id": "m-park",
+      "file": "综合能源与零碳园区-2026-11.md",
+      "section": "park",
+      "kind": "知识模块",
+      "cutoff": "2026-11-01",
+      "title": "综合能源与零碳园区",
+      "titleEn": null,
+      "summaryEn": "Docs 910 / 1082 / State Council 22 (zero-carbon parks, 52 first-batch, ~100/~500 targets), Docs 650 / 688 (single- and multi-user green direct connection, 60%/30%/35%/20%), Doc.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/综合能源与零碳园区-2026-11.html"
+    },
+    {
+      "id": "m-carbon-link",
+      "file": "绿证-CCER-CBAM衔接-2026-11.md",
+      "section": "carbon",
+      "kind": "知识模块",
+      "cutoff": "2026-11-11",
+      "title": "绿证、CCER 与 CBAM 的衔接与重复计算边界",
+      "titleEn": null,
+      "summaryEn": "Where green certificates, CCER and CBAM meet: which environmental attribute can be claimed where, and which combinations double-count.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/绿证-CCER-CBAM衔接-2026-11.html"
+    },
+    {
+      "id": "m-intl-us",
+      "file": "美国电力市场-2026-11.md",
+      "section": "intl",
+      "kind": "知识模块",
+      "cutoff": "2026-11-10",
+      "title": "美国电力市场（2026 版）：ERCOT / PJM / CAISO",
+      "titleEn": null,
+      "summaryEn": "Three US market designs: ERCOT energy-only with ORDC, 5-minute SCED/15-minute settlement, HCAP/LCAP $5,000/$2,000 per MWh and RTC+B from 2025-12-05.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/美国电力市场-2026-11.html"
+    },
+    {
+      "id": "m-intl-uk",
+      "file": "英国电力市场-2026-11.md",
+      "section": "intl",
+      "kind": "知识模块",
+      "cutoff": "2026-11-10",
+      "title": "英国电力市场（2026 版）",
+      "titleEn": null,
+      "summaryEn": "UK GB's single market outside EU coupling: NESO/Ofgem/Elexon roles.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/英国电力市场-2026-11.html"
+    },
+    {
+      "id": "m-intl-nl",
+      "file": "荷兰电力市场-2026-11.md",
+      "section": "intl",
+      "kind": "知识模块",
+      "cutoff": "2026-11-10",
+      "title": "荷兰电力市场（2026 版）",
+      "titleEn": null,
+      "summaryEn": "The Netherlands' single EPEX NL bidding zone, separate from DE-LU: day-ahead and intraday, 15-minute MTU since 2025-10-01 and 15-minute imbalance settlement.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/荷兰电力市场-2026-11.html"
+    },
+    {
+      "id": "m-vpp-core",
+      "file": "虚拟电厂聚合调度与商业模式-2026-11.md",
+      "section": "vpp",
+      "kind": "知识模块",
+      "cutoff": "2026-11-09",
+      "title": "虚拟电厂：聚合、调度与商业模式（2026 版）",
+      "titleEn": null,
+      "summaryEn": "2026 VPP core: resource inventory and A-D classification, capability arithmetic (a 12.25 MW theoretical pool derates to 9.31 MW at 0.8 simultaneity and 0.95 availability), seven-step access…",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/虚拟电厂聚合调度与商业模式-2026-11.html"
+    },
+    {
+      "id": "m-intl-es",
+      "file": "西班牙电力市场-2026-11.md",
+      "section": "intl",
+      "kind": "知识模块",
+      "cutoff": "2026-11-10",
+      "title": "西班牙电力市场（2026 版）",
+      "titleEn": null,
+      "summaryEn": "Spain's MIBEL (with Portugal) inside EU coupling: OMIE day-ahead (12:00 CET) and intraday, 15-minute MTU since 2025-10-01 and 15-minute imbalance settlement since 2024-12-01.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/西班牙电力市场-2026-11.html"
+    },
+    {
+      "id": "m-res-vpp-biz",
+      "file": "调研-VPP商业模式与国际-2026-09增量.md",
+      "section": "research",
+      "kind": "调研底稿",
+      "cutoff": "2026-09",
+      "title": "VPP 商业模式与国际",
+      "titleEn": null,
+      "summaryEn": "VPP revenue models, company data, international cases",
+      "confidence": "historical",
+      "historical": false,
+      "html": "html/调研-VPP商业模式与国际-2026-09增量.html"
+    },
+    {
+      "id": "m-res-vpp-2026",
+      "file": "调研-VPP政策2026-10增量.md",
+      "section": "research",
+      "kind": "调研底稿",
+      "cutoff": "2026-11-01",
+      "title": "VPP 政策 2026-10 增量",
+      "titleEn": null,
+      "summaryEn": "October 2026 VPP policy, scale calibers and business models",
+      "confidence": "historical",
+      "historical": false,
+      "html": "html/调研-VPP政策2026-10增量.html"
+    },
+    {
+      "id": "m-res-vpp-policy",
+      "file": "调研-VPP政策与市场-2026-09增量.md",
+      "section": "research",
+      "kind": "调研底稿",
+      "cutoff": "2026-09",
+      "title": "VPP 政策与市场增量",
+      "titleEn": null,
+      "summaryEn": "Provincial VPP policies, national scale, V2G, pilots",
+      "confidence": "historical",
+      "historical": false,
+      "html": "html/调研-VPP政策与市场-2026-09增量.html"
+    },
+    {
+      "id": "m-res-market-2026",
+      "file": "调研-电力市场2026-10增量.md",
+      "section": "research",
+      "kind": "调研底稿",
+      "cutoff": "2026-11-01",
+      "title": "电力市场 2026-10 增量",
+      "titleEn": null,
+      "summaryEn": "October 2026 electricity-market updates and correction list",
+      "confidence": "historical",
+      "historical": false,
+      "html": "html/调研-电力市场2026-10增量.html"
+    },
+    {
+      "id": "m-res-market-policy",
+      "file": "调研-电力市场政策与开源资源-2026-09.md",
+      "section": "research",
+      "kind": "调研底稿",
+      "cutoff": "2026-09",
+      "title": "电力市场政策与开源资源",
+      "titleEn": null,
+      "summaryEn": "2026-09 policy and open-source tooling",
+      "confidence": "historical",
+      "historical": false,
+      "html": "html/调研-电力市场政策与开源资源-2026-09.html"
+    },
+    {
+      "id": "m-res-carbon-cbam",
+      "file": "调研-碳市场与CBAM-2026-10增量.md",
+      "section": "research",
+      "kind": "调研底稿",
+      "cutoff": "2026-11-01",
+      "title": "碳市场与 CBAM 2026-10 增量",
+      "titleEn": null,
+      "summaryEn": "October 2026 carbon market and CBAM updates",
+      "confidence": "historical",
+      "historical": false,
+      "html": "html/调研-碳市场与CBAM-2026-10增量.html"
+    },
+    {
+      "id": "m-res-carbon-vendor",
+      "file": "调研-碳管理与碳足迹厂商-2026-11.md",
+      "section": "research",
+      "kind": "调研底稿",
+      "cutoff": "2026-11-01",
+      "title": "碳管理与碳足迹厂商",
+      "titleEn": null,
+      "summaryEn": "Carbon Newture service matrix, dated public cases, borrowable methods, claims that must not be used as benchmarks",
+      "confidence": "historical",
+      "historical": false,
+      "html": "html/调研-碳管理与碳足迹厂商-2026-11.html"
+    },
+    {
+      "id": "m-res-vpp-carbon",
+      "file": "调研-虚拟电厂与碳市场-2026-09.md",
+      "section": "research",
+      "kind": "调研底稿",
+      "cutoff": "2026-09",
+      "title": "虚拟电厂与碳市场",
+      "titleEn": null,
+      "summaryEn": "2026-09 VPP and carbon-market findings",
+      "confidence": "historical",
+      "historical": false,
+      "html": "html/调研-虚拟电厂与碳市场-2026-09.html"
+    },
+    {
+      "id": "m-res-quick",
+      "file": "调研-速查合并-2026-09.md",
+      "section": "research",
+      "kind": "调研底稿",
+      "cutoff": "2026-09",
+      "title": "电力市场 · VPP · 碳市场速查",
+      "titleEn": null,
+      "summaryEn": "2026-09 merged quick-reference",
+      "confidence": "historical",
+      "historical": false,
+      "html": "html/调研-速查合并-2026-09.html"
+    },
+    {
+      "id": "m-res-quant",
+      "file": "调研-量化报价与厂商实践-2026-11.md",
+      "section": "research",
+      "kind": "调研底稿",
+      "cutoff": "2026-11",
+      "title": "量化报价与厂商实践",
+      "titleEn": null,
+      "summaryEn": "Research note on quantitative bidding vendors and practitioners: public information, patents and technology routes; not a vendor assessment.",
+      "confidence": "historical",
+      "historical": false,
+      "html": "html/调研-量化报价与厂商实践-2026-11.html"
+    },
+    {
+      "id": "m-vpp-book",
+      "file": "走近虚拟电厂-主题笔记.md",
+      "section": "vpp",
+      "kind": "教材笔记",
+      "cutoff": null,
+      "title": "走近虚拟电厂",
+      "titleEn": null,
+      "summaryEn": "VPP concepts, control, business models (book published 2020.",
+      "confidence": "historical",
+      "historical": true,
+      "html": "html/走近虚拟电厂-主题笔记.html"
+    },
+    {
+      "id": "m-cross-ppa",
+      "file": "跨国PPA与绿证-2026-11.md",
+      "section": "cross",
+      "kind": "知识模块",
+      "cutoff": "2026-11-11",
+      "title": "跨国 PPA、绿证与 tolling（2026 版）：从 GO 到 merchant tail",
+      "titleEn": null,
+      "summaryEn": "Cross-border PPAs, green certificates and tolling: physical pay-as-produced vs.",
+      "confidence": "verified",
+      "historical": false,
+      "html": "html/跨国PPA与绿证-2026-11.html"
+    },
+    {
+      "id": "m-cross-ancillary",
+      "file": "辅助服务与平衡市场对照-2026-11.md",
+      "section": "cross",
+      "kind": "知识模块",
+      "cutoff": "2026-11-11",
+      "title": "辅助服务与平衡市场对照（2026 版）：从 FCR 到 FCAS，从 BM 到 EPRX",
+      "titleEn": null,
+      "summaryEn": "Ancillary and balancing markets side by side: six functional families (inertia/fast frequency response, frequency restoration, reserve/replacement, ramping, voltage/reactive power, black…",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/辅助服务与平衡市场对照-2026-11.html"
+    },
+    {
+      "id": "m-quant-risk",
+      "file": "量化报价与交易风控-工程化-2026-11.md",
+      "section": "spot",
+      "kind": "知识模块",
+      "cutoff": "2026-11-01",
+      "title": "量化报价与交易风控",
+      "titleEn": null,
+      "summaryEn": "Engineering loop from forecast to bidding, submission, clearing, settlement, attribution and risk control: rule-version registry, data contracts, probabilistic forecasts, mean-CVaR bidding…",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/量化报价与交易风控-工程化-2026-11.html"
+    },
+    {
+      "id": "m-dr-v2g",
+      "file": "需求响应、车网互动与灵活性资源-2026-11.md",
+      "section": "vpp",
+      "kind": "知识模块",
+      "cutoff": "2026-11-08",
+      "title": "需求响应、车网互动与灵活性资源",
+      "titleEn": null,
+      "summaryEn": "Demand response, V2G and flexible resources: DR vs.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/需求响应、车网互动与灵活性资源-2026-11.html"
+    },
+    {
+      "id": "m-qa",
+      "file": "黄金问答集-2026-11.md",
+      "section": "index",
+      "kind": "问答集",
+      "cutoff": "2026-11",
+      "title": "黄金问答集与回归测试",
+      "titleEn": null,
+      "summaryEn": "28 high-frequency questions with answer points and common errors.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/黄金问答集-2026-11.html"
+    }
+  ],
+  "keyFigures": [
+    {
+      "topic": "Metric",
+      "figures": "Value",
+      "grade": "Grade / note"
+    },
+    {
+      "topic": "National market-traded electricity, 2025",
+      "figures": "**6.64 trillion kWh** (+7.4%, ~64.0% of total consumption)",
+      "grade": "A"
+    },
+    {
+      "topic": "Medium/long-term contract turnover, 2025",
+      "figures": "**6.3522 trillion kWh** (incl. 328.5 billion kWh green power)",
+      "grade": "A; 4.81 trillion is a narrower subset, not the total"
+    },
+    {
+      "topic": "Green-power trading, 2025 / Jan-Sep 2026",
+      "figures": "**328.5 billion kWh** (+38.3%) / **249.2 billion kWh** (+6.1%)",
+      "grade": "A"
+    },
+    {
+      "topic": "Market-traded electricity, Jan-Sep 2026",
+      "figures": "**5.8536 trillion kWh** (+18.9%)",
+      "grade": "A"
+    },
+    {
+      "topic": "Installed capacity, end-Sep 2026",
+      "figures": "**4.13 TW** (+11.2%); solar **1.31 TW**, wind **0.70 TW**, wind+solar **2.01 TW (48.7%)**; renewables **2.518 TW (60.94%)**",
+      "grade": "A (NEA 2026-10-26)"
+    },
+    {
+      "topic": "Solar vs. coal, July 2026",
+      "figures": "Solar **1.286 TW** overtook coal **1.285 TW** for the first time",
+      "grade": "A (NEA 2026-09-01); installed capacity, not generation"
+    },
+    {
+      "topic": "Coal generation share, Jan-Sep 2026",
+      "figures": "**49.1%** (first cumulative share below 50%); renewables **41.8%**; utilisation **2,174 h** (−194 h)",
+      "grade": "A/B"
+    },
+    {
+      "topic": "Registered market entities, end-2025",
+      "figures": "**1.09 million** (+33.6% YoY): 39,000 generators, 1.049 million users, 5,395 retailers, 486 new-type entities",
+      "grade": "A/B (2025 market report)"
+    },
+    {
+      "topic": "Spot markets in formal operation",
+      "figures": "**At least 11 provincial markets by 2026-09-30**, plus the southern regional market on **2026-10-24**",
+      "grade": "A/B; do not say \"the 10th/11th\" — sources conflict"
+    },
+    {
+      "topic": "Coal capacity price",
+      "figures": "Fixed cost **CNY 330/kW·yr**; recovery **≥50% from 2026** (floor 165). 2026 values: Guangdong 165; Tianjin/Sichuan 231; Qinghai 185; Guangxi 247.5; Jilin/Heilongjiang/Hunan/Gansu/Yunnan 330; Henan 330 draft; **Liaoning 370 is reliable-capacity compensation, a different caliber**",
+      "grade": "B/C for provincial values"
+    },
+    {
+      "topic": "System operation fee, Q1-Q3 2026",
+      "figures": "About **CNY 0.068/kWh**, roughly +93% YoY",
+      "grade": "B/D"
+    },
+    {
+      "topic": "PJM capacity price",
+      "figures": "**USD 329.17/MW-day for 2027/28**; USD 325/MW-day for 2028/29 (cleared 2026-07-14)",
+      "grade": "A (PJM)"
+    },
+    {
+      "topic": "Metric",
+      "figures": "Value",
+      "grade": "Grade / note"
+    },
+    {
+      "topic": "NEM footprint",
+      "figures": "**5 regions**: Queensland, New South Wales, Victoria, South Australia, Tasmania",
+      "grade": "A; WA's WEM and the Northern Territory are separate systems"
+    },
+    {
+      "topic": "NEM dispatch and settlement",
+      "figures": "**5-minute** dispatch and settlement since **2021-10-01**; NEM time is fixed AEST (UTC+10, no daylight saving)",
+      "grade": "A"
+    },
+    {
+      "topic": "NEM price bands, 2026-27",
+      "figures": "Market price cap **A$23,200/MWh**; cumulative price threshold **A$2,225,900/MWh**; administered price cap **A$600/MWh**; market floor **−A$1,000/MWh**",
+      "grade": "A (AEMC)"
+    },
+    {
+      "topic": "NEM reliability",
+      "figures": "Retailer reliability obligation, reliability and emergency reserve trader, customer compensation; 2028-32 reliability standard proposal at 99.997% is a draft",
+      "grade": "A / A (draft)"
+    },
+    {
+      "topic": "German bidding zone",
+      "figures": "**DE-LU** inside the EU single day-ahead and intraday coupling; EPEX day-ahead gate **12:00 CET**, pay-as-clear",
+      "grade": "A"
+    },
+    {
+      "topic": "German intraday",
+      "figures": "Pay-as-bid; **15-minute MTU since 2025-10-01**; SDAC floor **−€500/MWh**, SIDC floor **−€9,999/MWh**",
+      "grade": "A"
+    },
+    {
+      "topic": "German balancing",
+      "figures": "FCR, aFRR and mFRR procured separately for capacity and energy; daily tenders with 4-hour products; aFRR/mFRR energy settled at 15 minutes via PICASSO/MARI",
+      "grade": "A"
+    },
+    {
+      "topic": "German redispatch",
+      "figures": "**Redispatch 2.0** since **2021-10-01**, applicable from **100 kW**",
+      "grade": "A (EnWG §13a)"
+    },
+    {
+      "topic": "German renewables at negative prices",
+      "figures": "EEG plants receive **zero market value** at negative prices; the former §60 surcharge provision is **repealed**",
+      "grade": "A (EEG §51)"
+    },
+    {
+      "topic": "German capacity mechanism",
+      "figures": "**StromVKG** from **2031**; EU approval 2026-09-02; the two 2026 4,500 rMW long-duration auctions are gated by **≥10 h sustained output** (not an explicit battery ban — BNetzA 2026-11-03 confirms storage competed); first auction 2026-09-08: 41 bids/11,958 rMW, 11 awarded ~5,160 rMW at **€155,296/rMW·yr**; the 2027-05-18 ~2 GW new-capacity tender opens to all durations",
+      "grade": "A/B"
+    },
+    {
+      "topic": "NEM storage revenue",
+      "figures": "Energy arbitrage + **10 FCAS markets** (very fast 1-second markets from 2023-10-09) + **CIS** revenue support; no capacity market",
+      "grade": "A/B"
+    },
+    {
+      "topic": "CIS rounds",
+      "figures": "2030 target **40 GW** (26 GW generation + 14 GW dispatchable); Tender 8 awarded **4.2 GW/16.1 GWh** of storage in 2026-06, COD by 2029-12-31; Tender 10 sought 4 GW dispatchable, bids closed 2026-08-18",
+      "grade": "B"
+    },
+    {
+      "topic": "NEM storage registration",
+      "figures": "**IRP** (Integrated Resource Provider) category created by the AEMC final rule of **2021-12-02**, effective **2024-06-03**; IESS is the rule-change name, not a registration category",
+      "grade": "A"
+    },
+    {
+      "topic": "Australian demand response",
+      "figures": "**WDRM** since **2021-10-21**; direct participation at **MW-scale** demand reduction (per AER guidance), aggregators allowed",
+      "grade": "B"
+    },
+    {
+      "topic": "German storage grid fees",
+      "figures": "**§118(6) EnWG**: 20-year grid-fee exemption for storage commissioned by **2029-08-04**; AgNes draft determination 2026-10, final determination **2027-01-01**, rules from 2029",
+      "grade": "A / B"
+    },
+    {
+      "topic": "German §14a",
+      "figures": "Low-voltage controllable loads including storage, power threshold **>4.2 kW**; three modules, module 2 gives a **60%** grid-fee reduction",
+      "grade": "B"
+    },
+    {
+      "topic": "UK market design",
+      "figures": "GB is **outside EU coupling**; EPEX GB **hourly** auction closes **10:20 CET**, **GB-30min** closes **16:30 CET**; gate closure **1 hour** before delivery; half-hourly settlement",
+      "grade": "A/B"
+    },
+    {
+      "topic": "UK capacity market",
+      "figures": "Cap **£75/kW·yr**, net CONE £49/kW·yr; **T-4 2029/30 £27.10/kW·yr for 40.1 GW**; **T-1 2026/27 £5.00/kW·yr for 7,192 MW**; batteries de-rated",
+      "grade": "B"
+    },
+    {
+      "topic": "UK storage",
+      "figures": "**7.5 GW** grid-scale batteries at end-2025 (+2.3 GW in 2025); **23–27 GW** 2030 target; **LDES** minded-to 16 projects/**7,645 MW** on 2026-06-26, final parameters autumn 2026",
+      "grade": "A/B"
+    },
+    {
+      "topic": "UK balancing",
+      "figures": "BM is **pay-as-bid**; BOALF is the settlement basis; reported **~38%** offer skip rate in 2026; DC/DM/DR, SFFR, QR/SR/BR and DFS products",
+      "grade": "B"
+    },
+    {
+      "topic": "Italian bidding zones",
+      "figures": "**Seven**: Nord, Centro-Nord, Centro-Sud, Sud, Calabria, Sicilia, Sardegna; **PUN is a reference price**, not settlement; MGP closes **12:00 D-1** and is SDAC-coupled",
+      "grade": "A"
+    },
+    {
+      "topic": "Italian market granularity",
+      "figures": "**15-minute MTU** in MGP from **2025-10-01**; MI, MSD and MB operate on separate rules; Terna procures MSD/MB",
+      "grade": "A"
+    },
+    {
+      "topic": "Italian MACSE",
+      "figures": "Storage-specific 15-year pay-as-bid zonal auction in **€/MWh·yr**; first auction **10 GWh**, average **€12,959/MWh·yr**, 2028 delivery; second **16 GWh** on **2026-11-24**, 2029 delivery; battery cap **€37,000/MWh·yr**",
+      "grade": "B"
+    },
+    {
+      "topic": "Italian storage and support",
+      "figures": "**7.961 GW/19.3 GWh** cumulative incl. distributed (2026-06); PNIEC 2030 **22.5 GW**; FER X **DM 194/2026**, **37.15 GW**, 20-year two-way CfD, €80/MWh reference; NZIA 30%",
+      "grade": "B"
+    },
+    {
+      "topic": "Spanish bidding zone",
+      "figures": "**MIBEL** prices Spain and Portugal as **two zones** inside EU coupling; OMIE day-ahead gate **12:00 CET**; day-ahead bounds **−€600/+€4,000/MWh**, intraday **±€9,999/MWh**",
+      "grade": "A"
+    },
+    {
+      "topic": "Spanish granularity",
+      "figures": "**15-minute MTU** since **2025-10-01**; **15-minute imbalance settlement** since **2024-12-01** (BOE-A-2025-5342)",
+      "grade": "A"
+    },
+    {
+      "topic": "Spanish prices, 2025–2026",
+      "figures": "~**555 h** of negative prices in 2025 and ~**397 h** in Q1 2026; solar capture **€33.95/MWh (−19.7%)** in 2025",
+      "grade": "C"
+    },
+    {
+      "topic": "Spanish capacity market",
+      "figures": "**Orden TED/966/2026** (BOE-A-2026-19329, in force 2026-09-18): peninsular firm power, pay-as-bid, 15-year new-build, **550 g CO2/kWh** gate; EU approval 2026-05-29 up to **€9bn/10y**; **no convocatoria as of 2026-11-11** (press timing withdrawn)",
+      "grade": "A/B"
+    },
+    {
+      "topic": "Spanish storage and grid",
+      "figures": "PNIEC 2030 target **22.5 GW**; **RD 997/2025** grid-forming and **120–130%** voltage ride-through; **RDL 7/2026** flexible access with a **10%** self-consumption reserve and **€5bn**; pipeline **24.3 GW permitted + 15.1 GW pending** (Jan 2026)",
+      "grade": "A/B/C"
+    },
+    {
+      "topic": "Dutch market design",
+      "figures": "Single **EPEX NL** zone, separate from DE-LU; day-ahead and intraday; **15-minute MTU since 2025-10-01** and 15-minute imbalance settlement; **no capacity market**",
+      "grade": "A/B"
+    },
+    {
+      "topic": "Dutch support",
+      "figures": "**SDE++ 2026**: **€8bn**, window **2026-10-27 to 2026-11-26**, **no standalone battery category**; net metering ends **2027-01-01**",
+      "grade": "A/B"
+    },
+    {
+      "topic": "Dutch balancing",
+      "figures": "aFRR dynamic dimensioning since 2025-09, 4-hour contracts from 2025-11 (**10%** then **100%** within 12 months); mFRR asymmetric from **1 MW**, weekly/daily",
+      "grade": "B"
+    },
+    {
+      "topic": "Dutch grid and storage",
+      "figures": "**ATR85** non-firm ~**9 GW** in 2025; priority framework **2026-07-01**; ~**15,000** businesses waiting; storage **350 MW/620 MWh** at end-2024, ~**3 GWh** at end-2025",
+      "grade": "A/B/C"
+    },
+    {
+      "topic": "US ERCOT design",
+      "figures": "Energy-only + **ORDC**; **5-minute SCED**, **15-minute settlement**; **HCAP $5,000 / LCAP $2,000 per MWh**; **RTC+B** live **2025-12-05**; **15,008 MW** of batteries in operation (2025-09)",
+      "grade": "A/B"
+    },
+    {
+      "topic": "US PJM capacity",
+      "figures": "**2028/29 BRA $325/MW-day** (new cap, cleared 2026-07-14), **152.1 GW** cleared, **6.8 GW** gap, **14.7%** reserve margin, about **525 MW** new effective capacity; 4-hour battery **ELCC ~50%**; **2027/28 $333.44** and **2026/27 $329.17** per MW-day",
+      "grade": "A/B"
+    },
+    {
+      "topic": "US CAISO design",
+      "figures": "Day-ahead + **15-minute FMM** + **5-minute RTD**; **RA slice-of-day** from the 2026 compliance year; **EDAM** live **2026-05-01**; storage **>21 GW** (2026-08, CEC)",
+      "grade": "A"
+    },
+    {
+      "topic": "US federal support and access",
+      "figures": "**ITC 30%** + **10%** domestic content + **10%** energy community; **FEOC** for construction after **2025-12-31**; **Section 301 25%** from **2026-01-01**; PJM queue about **40 months** (715 projects/201.5 GW), CAISO queue about **197 GW**",
+      "grade": "A/B"
+    },
+    {
+      "topic": "Japan spot",
+      "figures": "JEPX **48 half-hour products**, **10:00** gate, blind single price; floor **¥0.01/kWh** (no negative prices); cap quoted as ¥100 or ¥200/kWh (to verify)",
+      "grade": "A"
+    },
+    {
+      "topic": "Japan imbalance",
+      "figures": "**30-minute** settlement; C value **¥300/kWh** and D value **¥50/kWh** from **2026-10-01** (C); deviation can exceed arbitrage margin",
+      "grade": "A/C"
+    },
+    {
+      "topic": "Japan capacity market",
+      "figures": "Four years ahead, single price, 1-year contract; **FY2028 ¥11,134/kW**; **FY2029 ¥13,303/kW**; historical range ¥3,109–14,137/kW; batteries de-rated",
+      "grade": "A"
+    },
+    {
+      "topic": "Japan LTDA",
+      "figures": "**20-year** pay-as-bid capacity revenue; about **90%** of other market revenue clawed back; **≥6 hours** from round 3; round 3 batteries **1,251 MW/19 projects**, 36% award rate (C)",
+      "grade": "A/C"
+    },
+    {
+      "topic": "Japan EPRX",
+      "figures": "5 products + combined; capacity (ΔkW) + energy (kWh); cap cut from ¥19.51 to **¥10.00/ΔkW·30min** on **2026-09-01** (C)",
+      "grade": "A/C"
+    },
+    {
+      "topic": "Japan grid and foreign investment",
+      "figures": "**24,880** connection-study applications in FY2025; per-applicant caps from **2026-08-01** (Tokyo 11, Kansai 12, Kyushu 8); FEFTA prior notification, 30 days to 5 months",
+      "grade": "A/C"
+    },
+    {
+      "topic": "Metric",
+      "figures": "Value",
+      "grade": "Grade / note"
+    },
+    {
+      "topic": "UK capacity market",
+      "figures": "T-4 2029/30 **£27.10/kW·yr** for 40.1 GW; T-1 2026/27 **£5.00/kW·yr** for 7,192 MW; cap £75/kW·yr, net CONE £49/kW·yr",
+      "grade": "B"
+    },
+    {
+      "topic": "Italy MACSE",
+      "figures": "First auction **10 GWh** at an average **€12,959/MWh·yr**, 2028 delivery; second **16 GWh** on **2026-11-24**, 2029 delivery; battery cap **€37,000/MWh·yr**",
+      "grade": "B"
+    },
+    {
+      "topic": "Spain capacity market",
+      "figures": "**Orden TED/966/2026** (BOE-A-2026-19329, in force 2026-09-18): peninsular firm power, pay-as-bid, 15-year new-build, 550 g CO2/kWh gate; **no convocatoria as of 2026-11-11** (press timing estimates withdrawn)",
+      "grade": "A/B"
+    },
+    {
+      "topic": "France capacity PL-1",
+      "figures": "RTE single buyer from 2026; first auction **2026-07-06** cleared **€28,182.99/MW** for the **151-day** delivery period 2026-11-01 to 2027-03-31; **86,197.8 MW** certified / **82,446.8 MW** cleared; batteries **608 MW certified / 577 MW awarded**; **€18,646.6/MW** is the cost-sharing quotient, not a price",
+      "grade": "A"
+    },
+    {
+      "topic": "France capacity PL-4",
+      "figures": "2030-31 requirement **79.3–81.8 GW**; **CoNE €60,000/MW·yr**, cap **€90,000**, **PPI €15,000**, up to **15 years** (CRE 2026-199); PPI exemption acceptance deadline **2026-11-23**",
+      "grade": "A"
+    },
+    {
+      "topic": "France spot and nuclear",
+      "figures": "End-2025 installed **164.5 GW**; nuclear **62.99 GW/373.0 TWh (68.1%)**; total generation **547.5 TWh**; net exports **92.3 TWh**; 2025 day-ahead average **€61.1/MWh**; **513** negative-price hours averaging **−€6.5/MWh**; ARENH ends **2025-12-31**; VNU thresholds **78/110 €/MWh**, CRE estimates **€66.08 (2026)** and **€65.50 (2027)**",
+      "grade": "A"
+    },
+    {
+      "topic": "Poland capacity market",
+      "figures": "2030 delivery year **PLN 465.02/kW·yr**, **6,887.639 MW** obligation, 992 MW foreign; battery de-rating around **13%** (C)",
+      "grade": "A/B/C"
+    },
+    {
+      "topic": "Germany StromVKG",
+      "figures": "Capacity mechanism from **2031**; EU approval **2026-09-02**; **€15.6–35.2bn**; 15-year contracts; 2026 4,500 rMW auctions gated by **≥10 h** sustained output (no explicit battery ban); first round awarded ~5,160 rMW at **€155,296/rMW·yr** (BNetzA 2026-11-03); 2027-05-18 ~2 GW tender opens to all durations",
+      "grade": "A/B"
+    },
+    {
+      "topic": "Australia CIS",
+      "figures": "Revenue underwriting, not a capacity market; 2030 target **40 GW**; Tender 8 **4.2 GW/16.1 GWh** of storage, COD **2029-12-31**; Tender 10 sought 4 GW dispatchable, bids closed **2026-08-18**",
+      "grade": "B"
+    },
+    {
+      "topic": "PJM capacity",
+      "figures": "2028/29 BRA **$325/MW-day** (cap), **152.1 GW** cleared, 6.8 GW gap, 14.7% reserve margin; 4-hour battery ELCC **~50%**",
+      "grade": "A/B"
+    },
+    {
+      "topic": "Japan capacity and LTDA",
+      "figures": "FY2028 CM **¥11,134/kW**, FY2029 **¥13,303/kW**; LTDA 20-year pay-as-bid, ~90% clawback, **≥6 hours** from round 3",
+      "grade": "A"
+    },
+    {
+      "topic": "Ancillary product families",
+      "figures": "Europe **FCR/aFRR/mFRR**; UK **DC/DM/DR, SFFR, QR/SR/BR, DFS**; Australia **~10 FCAS products** (1-second from 2023-10-09); ERCOT **Reg Up/Down, RRS, Non-Spin, ECRS**; PJM **Regulation, Synchronized/Non-Synchronized Reserve, DASR**; CAISO **Reg Up/Down, Spin/Non-Spin, FRP**; Japan **EPRX 5 products + combined**",
+      "grade": "A/B"
+    },
+    {
+      "topic": "Balancing platforms",
+      "figures": "**PICASSO** (aFRR energy, live 2022-06-01, ~30 TSOs by 2026-10, B); **MARI** (mFRR energy, live 2022); **TERRE** (RR; Poland exited 2025-01-01)",
+      "grade": "A/B"
+    },
+    {
+      "topic": "AIB/EECS",
+      "figures": "**42 members and 6 observers from 36 countries** (2026-11); EECS certificates transfer cross-border through the AIB Hub; UK REGO is outside AIB/EECS",
+      "grade": "B"
+    },
+    {
+      "topic": "French GO auctions",
+      "figures": "June 2026 weighted averages **€1.73–1.85/MWh** by region; technology averages onshore wind **€1.78**, hydro **€1.75**, solar **€1.77**, thermal **€1.73**; total volume about **4.05 TWh**",
+      "grade": "B (EEX)"
+    },
+    {
+      "topic": "EU GO validity",
+      "figures": "**12 months from production** under RED II Article 19; check the latest EECS Rules for each domain",
+      "grade": "A/B"
+    },
+    {
+      "topic": "China GEC",
+      "figures": "2026-09 issued **326 million**, tradable **197 million**, traded **58.43 million**; 2024/2025/2026 vintage prices about **CNY 0.56/1.60/6.16 per certificate**",
+      "grade": "B"
+    },
+    {
+      "topic": "Scope 2 accounting",
+      "figures": "GHG Protocol Scope 2 **market-based** method allows annual matching; hourly (24/7) matching is a voluntary higher standard, not a universal mandatory rule",
+      "grade": "A/B"
+    },
+    {
+      "topic": "Cross-market snapshot gaps",
+      "figures": "2025 P0 capacity and average-price data are now backfilled for all eleven markets; remaining gaps are Spain's installed capacity (REE/ESIOS blocked), Poland's and ERCOT's local-currency annual average, Australia's and the US annual negative-price hours, capture rates, interconnection durations and de-rating coefficients; storage figures mix stock, permitted, auction and pipeline (Italy **7.961 GW** cumulative, Spain **24.3 GW** permitted, Poland **685 MW** capacity award, UK **7,645 MW** LDES minded-to, France **1.6 GW** stock vs **14 GW** queue)",
+      "grade": "A/B/C; do not add or compare without caliber"
+    },
+    {
+      "topic": "Negative-price hours",
+      "figures": "Germany **301/457/573 h** in 2023/2024/2025 (A); France **513 h** in 2025 averaging **−€6.5/MWh** (A); Spain **~553 h (<0) + 247 h (=0)** in 2025 (B, Ember) and **~397 h** in 2026Q1 (C); Japan no negative prices (floor **¥0.01/kWh**, A)",
+      "grade": "A/B/C"
+    },
+    {
+      "topic": "Interconnection queues",
+      "figures": "UK **~750 GW → 200–250 GW** (C); Italy **~277 GW** storage applications (B); Spain **~37.37 GW** (C); Netherlands **~15,000 businesses** and **~9 GW** ATR85 non-firm (B/C); France **14 GW/180 battery projects** and **~30 GW access rights** at end-2025 (A); PJM **715 projects/201.5 GW**, ~40-month studies (A); ERCOT **~474 GW** (C)",
+      "grade": "A/B/C"
+    },
+    {
+      "topic": "De-rating / ELCC",
+      "figures": "UK **4.1 GW** connection → **1.2 GW** de-rated (B); Italy 2028 4-hour battery cap **~54%** (C, to verify); Poland battery **13.39%** (C, 2030 delivery-year main auction only); France first-auction batteries **608 MW certified / 577 MW awarded** (A); PJM 4-hour battery ELCC **~50%** (B); Belgium coefficient to be verified",
+      "grade": "A/B/C"
+    },
+    {
+      "topic": "2026Q4–2027 calendar",
+      "figures": "France PL-4 PPI acceptance **2026-11-23** and PL-4 first round Q4 2026 (to verify); Italy MACSE round 2 **2026-11-24** (16 GWh); Netherlands SDE++ closes **2026-11-26**; Germany capacity auction **2026-12-29**; UK LDES final decision autumn 2026; Spain first capacity auction not yet called as of 2026-11-11; Germany AgNes final decision **2027-01-01**; Netherlands net metering ends **2027-01-01**; Germany **~2 GW** storage ≥10 h auction in 2027",
+      "grade": "A/B/C"
+    },
+    {
+      "topic": "China-entry gates",
+      "figures": "Local entity, tax, FDI review, certification/grid code, balancing responsibility and credit/insurance in eleven markets; no single registration covers all",
+      "grade": "A/B"
+    },
+    {
+      "topic": "Metric",
+      "figures": "Value",
+      "grade": "Grade / note"
+    },
+    {
+      "topic": "Spot-market reach",
+      "figures": "**At least 11 provincial markets formal by 2026-09-30**, plus the southern regional market **2026-10-24** (15-min prices, ~290,000 entities)",
+      "grade": "A/B"
+    },
+    {
+      "topic": "2026 spot basic rules",
+      "figures": "Draft **2026-10-19**, comments due **2026-11-18**, proposed effective **2027-01-01**, 5-year term; 129→~76 articles; day-ahead/intraday/real-time, LMP, secondary price cap, cost compensation, renewable+storage joint bidding",
+      "grade": "A（draft）/B for interpretation"
+    },
+    {
+      "topic": "Risk-control measure",
+      "figures": "Draft **2026-09-30**, comments to 10-30; **7 chapters / 32 articles**; four risk categories, monitoring-warning-disposal-report loop",
+      "grade": "A（draft）/B"
+    },
+    {
+      "topic": "Retailer measure",
+      "figures": "Draft **2026-09-04**, comments to 10-04, proposed **2027-01-01**; guarantee/insurance/cash, **minimum CNY 2 million**; daily exposure monitoring; next-day trading limit",
+      "grade": "A（draft）/B"
+    },
+    {
+      "topic": "Credit evaluation",
+      "figures": "Draft published **2026-10-19** (issued 10-13); **A/B/C/D**, quarterly, nationally recognised; C/D constrain access, trading rights and margin",
+      "grade": "A（draft）/B"
+    },
+    {
+      "topic": "Clearing granularity",
+      "figures": "Day-ahead **24 h / 96 points**; real-time **15 min / 96 points**; some provinces use 288 five-minute points for settlement",
+      "grade": "B; confirm the provincial rule"
+    },
+    {
+      "topic": "Risk metrics",
+      "figures": "`VaR_α = inf{l : P(L ≤ l) ≥ α}`; `CVaR_α = E[L where L ≥ VaR_α]`; `U = exposure / limit`; `E[π] − λ·CVaR`",
+      "grade": "D; state confidence level, horizon and sample"
+    },
+    {
+      "topic": "Synthetic storage case",
+      "figures": "100 MW/400 MWh, DoD 90%, RTE 85%, 330 days: **306 MWh** discharge per cycle, **CNY 105,480/day**, ~**CNY 34.81 million/yr**, ~**CNY 344.7/MWh**; CVaR90 ≈ **−CNY 16,900/day**",
+      "grade": "D"
+    },
+    {
+      "topic": "Synthetic retailer case",
+      "figures": "1 TWh/yr, 2.74 GWh/day, retail 0.42, 70% hedged at 0.36, spot 0.35: base margin **0.063 CNY/kWh, CNY 172,600/day**; spot +0.30 → **−0.027 CNY/kWh**, 10-day loss **CNY 740,000**",
+      "grade": "D"
+    },
+    {
+      "topic": "Settlement reconciliation",
+      "figures": "Expected CNY 40.00m vs. statement 39.20m: **−0.80m** = meter −0.20m + price −0.20m + ancillary omission −0.15m + penalty −0.25m",
+      "grade": "D"
+    },
+    {
+      "topic": "T+1 PnL attribution",
+      "figures": "−CNY 190,000 = forecast −120,000 + bid −50,000 + execution −30,000 + rule +20,000 + residual −10,000",
+      "grade": "D"
+    },
+    {
+      "topic": "Metric",
+      "figures": "Value",
+      "grade": "Grade / note"
+    },
+    {
+      "topic": "Credit grades",
+      "figures": "A **(85,100]**, B **(70,85]**, C **(40,70]**, D **[0,40] or serious dishonesty**; public-credit D cannot be A",
+      "grade": "A (draft)"
+    },
+    {
+      "topic": "Credit cycle",
+      "figures": "Quarterly, plus dynamic adjustment; results publicised for **5 working days**",
+      "grade": "A (draft)"
+    },
+    {
+      "topic": "Credit consequences",
+      "figures": "A: lower guarantee, more instruments, facilitation, priority universal service; C/D: higher guarantee, **incremental guarantee cannot use insurance**, more verification, risk warning, closer supervision",
+      "grade": "A (draft)"
+    },
+    {
+      "topic": "Guarantee formula (2026 draft)",
+      "figures": "Expected annual retail energy × **1 fen/kWh** × coefficient **1-10**, minimum **CNY 2 million**",
+      "grade": "A (draft)"
+    },
+    {
+      "topic": "Guarantee formula (current)",
+      "figures": "max(12-month wholesale purchase × **0.8 fen/kWh**, 2-month maximum purchase × **5 fen/kWh**)",
+      "grade": "A (Doc. 1595)"
+    },
+    {
+      "topic": "3 TWh retailer guarantee",
+      "figures": "Old rule ~**CNY 25 million**; new rule coefficient 1/5/10 → **CNY 30m / 150m / 300m**",
+      "grade": "D; assumptions stated"
+    },
+    {
+      "topic": "Guarantee cure",
+      "figures": "Notice within **1 working day**, top-up within **3 working days**, restore within **1 working day**",
+      "grade": "A (draft)"
+    },
+    {
+      "topic": "Settlement timeline",
+      "figures": "Draft basis by **5th working day**, formal basis by **8th**, bill by **10th**",
+      "grade": "A (Doc. 976)"
+    },
+    {
+      "topic": "Settlement objection",
+      "figures": "Raise within **15 working days**; confirm/evaluate within **5 working days**; retro-adjust in the **next settlement cycle**",
+      "grade": "A (Doc. 976, Art. 51)"
+    },
+    {
+      "topic": "Settlement dispute",
+      "figures": "Market management committee mediation, price/regulatory mediation, then arbitration/litigation",
+      "grade": "A (Doc. 976, Art. 52)"
+    },
+    {
+      "topic": "Deviation settlement",
+      "figures": "Doc. 1656 Art. 74 allows price-difference or quantity-difference settlement; a registered entity without a medium/long-term contract has actual energy settled as deviation",
+      "grade": "A"
+    },
+    {
+      "topic": "Deviation assessment",
+      "figures": "**No national uniform threshold**; exemption band, penalty price and responsibility sharing are provincial; excess portion often 0.8-2x spot/medium-term price",
+      "grade": "A/B/C"
+    },
+    {
+      "topic": "Universal-service price",
+      "figures": "Current/local practice often **1.5x/2x** agency-purchase price; 2026 draft proposes **spot real-time price in the failure month**",
+      "grade": "A (draft) / B/C"
+    },
+    {
+      "topic": "Retail distress 2026",
+      "figures": "**400+ retailers exited in Jan-Jul 2026**; Guangdong **298 of 500** loss-making; average margin **0.0039 CNY/kWh** in H1 2026",
+      "grade": "C; media/exchange calibres"
+    },
+    {
+      "topic": "Retail fixed TOU withdrawal",
+      "figures": "About **11 provinces** removed or marketised fixed TOU packages",
+      "grade": "C; province list to verify"
+    },
+    {
+      "topic": "Metric",
+      "figures": "Value",
+      "grade": "Grade / note"
+    },
+    {
+      "topic": "Inter-provincial traded electricity, Jan-Sep 2026",
+      "figures": "**1,303.7 TWh** (+9.1%)",
+      "grade": "A"
+    },
+    {
+      "topic": "Of which medium/long-term / spot / green",
+      "figures": "**1,240.3 TWh (95.1%) / 57.8 TWh (4.4%) / 57.5 TWh**",
+      "grade": "A; spot share is small, so contracts and curves dominate"
+    },
+    {
+      "topic": "Cross-operator trading (State Grid / CSG / Inner Mongolia West)",
+      "figures": "**7.0 TWh** in Jan-Sep 2026 (3.4 TWh in 2025)",
+      "grade": "A"
+    },
+    {
+      "topic": "Beijing / Guangzhou trading centres",
+      "figures": "**1,089.7 TWh (+11.2%) / 214.1 TWh (−0.6%)**",
+      "grade": "A"
+    },
+    {
+      "topic": "Inter-provincial spot, formal operation",
+      "figures": "**2024-10-15**; 2026-04 revision makes it a **physical** market",
+      "grade": "A/B"
+    },
+    {
+      "topic": "Southern regional market",
+      "figures": "**Formal 2026-10-24**; ~290,000 registered entities; daily turnover 2.862→4.422 TWh",
+      "grade": "A/B"
+    },
+    {
+      "topic": "Yunxiao HVDC transmission rights",
+      "figures": "**2 GW**, capacity fee **CNY 230 million/yr**, bid band **CNY 25.6–100/MWh**, from 2026-06-01",
+      "grade": "B"
+    },
+    {
+      "topic": "2027 transmission prices",
+      "figures": "Special projects **0.81–8.36 fen/kWh**; sending-province charge **≤3 fen/kWh**",
+      "grade": "B; annual table, not a long-run constant"
+    },
+    {
+      "topic": "Landed cost",
+      "figures": "Energy price + sending-province + regional + project transmission charges + loss + receiving-province distribution",
+      "grade": "D; always state the settlement reference point"
+    },
+    {
+      "topic": "Metric",
+      "figures": "Value",
+      "grade": "Grade / note"
+    },
+    {
+      "topic": "Retail price components",
+      "figures": "Energy + transmission/distribution + system operation fee + government funds and surcharges + taxes; basic charge added for two-part-tariff users",
+      "grade": "A; components vary by province and user category"
+    },
+    {
+      "topic": "Network permitted revenue",
+      "figures": "Permitted cost + reasonable return + taxes; reasonable return = effective assets × permitted return rate",
+      "grade": "A (Doc. 742 framework)"
+    },
+    {
+      "topic": "Contract maximum demand",
+      "figures": "Actual demand up to 105% of the agreed value is billed at the agreed value; the excess is charged at double; agreed value floor is 40% of transformer plus high-voltage motor capacity",
+      "grade": "A (Docs 1583/500)"
+    },
+    {
+      "topic": "TOU reconstruction, 2026",
+      "figures": "Doc. 1656 removes administratively fixed TOU levels and periods for direct market participants; Zhejiang spread 0.83→0.50 CNY/kWh (−28.5%), Jiangsu 0.85→0.65 (−25%)",
+      "grade": "B for Zhejiang; C for Jiangsu"
+    },
+    {
+      "topic": "Synthetic bill",
+      "figures": "200 MWh at 10 kV: energy 0.42 + network 0.15 + system 0.068 + funds 0.02, basic charge CNY 40,000 → **CNY 171,600, 0.858 CNY/kWh**",
+      "grade": "D; synthetic example, not a provincial tariff"
+    },
+    {
+      "topic": "Province",
+      "figures": "Range",
+      "grade": "Volume / note"
+    },
+    {
+      "topic": "Zhejiang",
+      "figures": "First auction CNY 381.6/MWh; second 0.242-0.393/kWh",
+      "grade": "First 4.2896 billion kWh; second 13.325 billion kWh"
+    },
+    {
+      "topic": "Hunan",
+      "figures": "0.23-0.35/kWh",
+      "grade": "2.286 billion kWh"
+    },
+    {
+      "topic": "Fujian",
+      "figures": "0.16-0.39/kWh",
+      "grade": "8.36 billion kWh"
+    },
+    {
+      "topic": "Guangdong",
+      "figures": "0.20-0.40/kWh",
+      "grade": "7.934 billion kWh"
+    },
+    {
+      "topic": "Beijing",
+      "figures": "Cap 0.3598/kWh",
+      "grade": "850 million kWh"
+    },
+    {
+      "topic": "Tianjin",
+      "figures": "Cap 0.32/kWh",
+      "grade": "4 billion kWh"
+    },
+    {
+      "topic": "Jiangxi",
+      "figures": "0.24-0.379/kWh",
+      "grade": "4.08 billion kWh"
+    },
+    {
+      "topic": "Liaoning",
+      "figures": "0.18-0.30/kWh",
+      "grade": "5.308 billion kWh (wind 3.956 / solar 1.352), clears 2026-11-08"
+    },
+    {
+      "topic": "Guangxi",
+      "figures": "0.15-0.36/kWh",
+      "grade": "Single project ≤80%, wind and solar auctioned separately"
+    },
+    {
+      "topic": "Gansu",
+      "figures": "2027 H1 solar 0.2447 / wind 0.2440/kWh",
+      "grade": "Cleared near the floor"
+    },
+    {
+      "topic": "Metric",
+      "figures": "Value",
+      "grade": "Grade / note"
+    },
+    {
+      "topic": "Resource calibres",
+      "figures": "P50 as base, P90 for financing; `P90 = P50 × (1 − 1.2816 × CV)`; example P50 2,400 h, CV 8% → **P90 2,153.93 h**",
+      "grade": "D; normal approximation"
+    },
+    {
+      "topic": "Capacity factors",
+      "figures": "Wind 2,400 h → **27.40%**; PV 1,400 h → **15.98%**; Weibull screening (7.0 m/s, k=2, 97% availability) → **27.92%**",
+      "grade": "D; screening model"
+    },
+    {
+      "topic": "PV specific yield",
+      "figures": "1,650 kWh/m² plane-of-array, PR 0.82, 4% bifacial gain → **1,407.12 kWh/kWp**",
+      "grade": "D"
+    },
+    {
+      "topic": "LCOE, three examples",
+      "figures": "Onshore wind **252.80**, utility PV **283.94**, offshore wind **446.43** CNY/MWh",
+      "grade": "D; pre-tax, 8% discount"
+    },
+    {
+      "topic": "Mechanism settlement, Example A",
+      "figures": "232,800 MWh, 70% coverage, mechanism 0.30, market 0.25, certificate CNY 6 → total **CNY 67.7448 million**; effective price **0.285**, all-in **0.291** CNY/kWh",
+      "grade": "D"
+    },
+    {
+      "topic": "Capture prices",
+      "figures": "Wind 92% capture → **0.279**; PV 85% → **0.274** CNY/kWh effective (70% mechanism + 30% market)",
+      "grade": "D"
+    },
+    {
+      "topic": "Break-even mechanism price",
+      "figures": "Pre-tax **245.43** CNY/MWh (LCOE-based); after-tax **294.85** at an 8% hurdle, 266.95 at 7%, 239.94 at 6%",
+      "grade": "D; LCOE is not the bid floor"
+    },
+    {
+      "topic": "Investment metrics, Example A",
+      "figures": "NPV **CNY 5.963 million**, IRR **8.18%**, payback **9.55 years**, DSCR **1.76**",
+      "grade": "D; 25% tax, 20-year depreciation"
+    },
+    {
+      "topic": "Downside cases",
+      "figures": "Mechanism 0.244 → NPV **−CNY 58.931 million**, IRR **6.15%**; combined P90 + CAPEX +10% + capture 90% → NPV **−CNY 94.0485 million**, IRR **5.28%**",
+      "grade": "D"
+    },
+    {
+      "topic": "Grid standards",
+      "figures": "GB/T 19963.1-2021, GB/T 19964-2024, GB 38755-2019, GB/T 40595-2021, GB/T 36547-2024",
+      "grade": "A; editions per current standard text"
+    },
+    {
+      "topic": "Metric",
+      "figures": "Value",
+      "grade": "Grade / note"
+    },
+    {
+      "topic": "First national zero-carbon park list",
+      "figures": "**52 parks** (Doc. 1082, 2025-12-23)",
+      "grade": "A; 56 circulating online is wrong; 910 is the creation notice, not the list"
+    },
+    {
+      "topic": "\"15th Five-Year Plan\" targets",
+      "figures": "~**100** national zero-carbon parks and ~**500** zero-carbon factories (State Council Doc. 22, 2026-07-05)",
+      "grade": "A; a five-year target, not current stock — do not add 52 + 100"
+    },
+    {
+      "topic": "Green direct-connection thresholds",
+      "figures": "Self-use ≥**60%** of available generation; ≥**30%** of total consumption (≥**35%** before 2030); export ≤**20%**",
+      "grade": "A (Docs 650/688); Doc. 1192 words the 35% for a different cohort"
+    },
+    {
+      "topic": "Green direct-connection fleet",
+      "figures": "**100 projects / 34.10 GW** (2026-07); an earlier **99 / 34.05 GW** caliber also appears",
+      "grade": "B/C; quote with the date"
+    },
+    {
+      "topic": "Doc. 1192 network charge",
+      "figures": "Capacity/demand-based transmission-distribution charge; grid imports no longer pay the system backup fee or volumetric network charge; fair share of system operation fees; off-grid projects exempt",
+      "grade": "A; effective 2025-10-01"
+    },
+    {
+      "topic": "Guangdong conversion formula",
+      "figures": "Monthly capacity charge = existing charge + voltage-level average volumetric price × **average load factor** × **730 h** × public-grid access capacity",
+      "grade": "B (Guangdong Doc. 1848); the load factor is a provincial parameter, not the park's own"
+    },
+    {
+      "topic": "Direct-connection economics, synthetic",
+      "figures": "Base **0.6130** vs. **0.6756** CNY/kWh; saving **CNY 18.7692 million/yr**; break-even LCOE **CNY 0.267/kWh**",
+      "grade": "D; 50 MW load, 63 MVA access, 100 MW wind + 100 MW PV, 28% curtailment"
+    },
+    {
+      "topic": "Sensitivities, synthetic",
+      "figures": "Low LCOE 0.20 → −CNY 26.7692m; high LCOE 0.30 → +CNY 13.2308m; curtailment 10% → −CNY 35.2492m; access 50 MVA → −CNY 30.2820m vs. the original mode (−CNY 11.5128m vs. the direct-connection base)",
+      "grade": "D"
+    },
+    {
+      "topic": "Unit-energy carbon intensity, synthetic",
+      "figures": "**2.25 → 1.64 tCO2/tce** (−27.3%) when energy falls 12.0→11.0 万tce and emissions 27.0→18.0 万tCO2",
+      "grade": "D; intensity = park emissions ÷ energy consumption"
+    },
+    {
+      "topic": "Metric",
+      "figures": "Value",
+      "grade": "Grade / note"
+    },
+    {
+      "topic": "National framework",
+      "figures": "Docs [2021] No. 60 (grid-connection operation) and No. 61 (ancillary services), 2021-12-21",
+      "grade": "A; scope extended to 35 kV and above"
+    },
+    {
+      "topic": "2026 draft",
+      "figures": "NEA draft of 2026-09-30: \"assessment\" → \"management\"; force majeure and first-of-a-kind relief; no dispatch agreement, no connection",
+      "grade": "A (draft); not current law"
+    },
+    {
+      "topic": "AGC parameters",
+      "figures": "K1 = actual/standard ramp, K2 = 2 − ΔP/allowance, K3 = 2 − t/standard response; components commonly 0.1-2; Kp ≤2",
+      "grade": "A/B; Doc. 196 caps Kp at 2"
+    },
+    {
+      "topic": "AGC response time",
+      "figures": "60 s thermal, 20 s hydro",
+      "grade": "B; regional common values"
+    },
+    {
+      "topic": "AGC assessment (southern)",
+      "figures": "daily on-grid energy × (1 − qualified rate) × 0.1%",
+      "grade": "B; monthly cap 10%"
+    },
+    {
+      "topic": "AVC thresholds",
+      "figures": "availability / adjustment / reactive-call commonly 98%/96%/90%; Anhui 99%/99%, 0.03% per percentage point, 0.5% per-item cap; southern bus voltage 99.9%, 0.1% per 0.1 pp",
+      "grade": "B/C"
+    },
+    {
+      "topic": "Primary-frequency standards",
+      "figures": "GB/T 40595-2021: dead zones by source type, ±0.02-0.06 Hz (wind ±0.03-0.06, PV ±0.02-0.05, storage ±0.03-0.05); droop 2%-6%, recommended 5%; lag ≤1 s, rise ≤3 s, settling ≤4 s; GB/T 30370-2013 thermal: ±0.033 Hz, droop 3%-6%, 75% in 15 s, 90% in 30 s",
+      "grade": "A/B"
+    },
+    {
+      "topic": "Primary-frequency assessment (southern)",
+      "figures": "100% baseline; below 90%, 0.1% per pp; 90-100%, 0.05%-0.1% per 0.1 pp (version-dependent); monthly input rate ≥90%, 0.1% per pp; action threshold 70% of theoretical contribution (35% for CFB / coal slurry / coal gangue); cap 0.5%",
+      "grade": "B"
+    },
+    {
+      "topic": "Assessment caps",
+      "figures": "primary frequency 0.5%-1%, AVC 2%, AGC 10%, monthly total 10%",
+      "grade": "B; Shandong 2026 parameters"
+    },
+    {
+      "topic": "Synthetic example",
+      "figures": "300 MW coal, 150,000 MWh/month, CNY 0.40/kWh: 2,437.5 MWh / CNY 975,000, 1.63% of monthly revenue; primary frequency + dispatch discipline + forced outage = 92.3%, per-point AGC = 0.3%",
+      "grade": "D"
+    },
+    {
+      "topic": "Cap effect",
+      "figures": "under the stricter southern 0.1%/0.1 pp version, uncapped primary frequency CNY 6m vs capped CNY 300k (20×); 90%→99.9% saves CNY 240k/month, while 90%→99% remains capped and saves nothing",
+      "grade": "D"
+    },
+    {
+      "topic": "Shandong 2026",
+      "figures": "Doc. 鲁监能市场规〔2026〕52号, issued 2026-09-30, effective 2026-10-01; storage AGC availability 96%, α_KA 0.1, α_K1/K2/K3 0.5, performance benchmarks K1/K2/K3 = 1.3/1.7/1.4; 5-min plan curve ±1%; late AGC 1%/event; parameter change not rectified 0.5%/month",
+      "grade": "A/B"
+    },
+    {
+      "topic": "Metric",
+      "figures": "Value",
+      "grade": "Grade / note"
+    },
+    {
+      "topic": "New-type storage, end-Sep 2026",
+      "figures": "**167 GW / 435 GWh** (+63%); average **2.61 h**; Jan-Sep equivalent utilisation **915 h**",
+      "grade": "A; NEA 2026-10-30"
+    },
+    {
+      "topic": "2027 target",
+      "figures": "**180 GW**; about **CNY 250 billion** direct investment",
+      "grade": "A; Doc. 1144 (2025-08-27)"
+    },
+    {
+      "topic": "2030 target",
+      "figures": "**300 GW**; grid-side independent storage **140 GW**; 4 h equivalent peak duration",
+      "grade": "B"
+    },
+    {
+      "topic": "Route mix",
+      "figures": "Lithium-ion **>96%** of new-type storage; independent/shared storage ~51.2% of cumulative capacity",
+      "grade": "B"
+    },
+    {
+      "topic": "2026 system price",
+      "figures": "2-4 h systems commonly **0.45-0.60 CNY/Wh**; EPC not comparable",
+      "grade": "B; AC/DC and duration calibres differ"
+    },
+    {
+      "topic": "4 h lowest bid",
+      "figures": "**0.391 CNY/Wh** in 2025; **0.497 CNY/Wh** in 2026-07",
+      "grade": "B/C; lowest bid, not benchmark"
+    },
+    {
+      "topic": "Safety standards",
+      "figures": "**GB 44240-2024** mandatory from 2025-08-01; **GB/T 51048-2025** design standard from 2026-04-01; GB/T 42288-2022; **GB/T 46261-2025** from 2026-09; **GB/T 46957-2025** from 2026-07-01",
+      "grade": "A"
+    },
+    {
+      "topic": "Grid-forming standards",
+      "figures": "**GB/T 47968-2026** effective 2026-11-01 (19 indicators, **3x current for 10 s**); **GB/T 47655-2026** effective 2027-02-01 (first national definition of \"grid-forming\")",
+      "grade": "A/B"
+    },
+    {
+      "topic": "Grid-forming deployment",
+      "figures": "2025 additions about **7.3 GW/25.2 GWh**, penetration **12.8%**; 2026 Q1 **2.48 GW/6.89 GWh**, **19.2%** of capacity",
+      "grade": "B; 2025 annual vs. Sep-2025 cumulative figures conflict"
+    },
+    {
+      "topic": "Route parameters",
+      "figures": "LFP AC-AC 85%-90%, 6,000-10,000 cycles, 10-15 years; vanadium flow 65%-75%, 15,000-25,000 cycles, 20-25 years; CAES 60%-72%, 30-40 years",
+      "grade": "C; project-specific"
+    },
+    {
+      "topic": "LCOS illustration",
+      "figures": "100 MW/400 MWh: lithium ~**0.25-0.32**, flow ~**0.55-0.65**, CAES ~**0.30-0.38** CNY/kWh",
+      "grade": "D; excludes charging cost, capacity payment and ancillary revenue"
+    },
+    {
+      "topic": "Unverified claims",
+      "figures": "\"nationwide mandatory grid-forming from 2026-04-01\"; \"30% grid-forming penetration target\"",
+      "grade": "C; no public national document found"
+    },
+    {
+      "topic": "2026 H1 incidents",
+      "figures": "at least **15** reported storage fire/explosion incidents globally; **>160** cumulative 2011-2025, about 80% during normal operation",
+      "grade": "B; media/industry statistics"
+    },
+    {
+      "topic": "Metric",
+      "figures": "Value",
+      "grade": "Grade / note"
+    },
+    {
+      "topic": "Official national fleet, end-2025",
+      "figures": "**470 projects**, **16.85 GW** measured maximum adjustment capability (+~70% YoY)",
+      "grade": "A (NEA, 2026-08)"
+    },
+    {
+      "topic": "Media/industry figure, 2026-06",
+      "figures": "**120 GW aggregated, 800+ projects**",
+      "grade": "C; connected/aggregated capacity, not measured capability"
+    },
+    {
+      "topic": "Four capacity metrics",
+      "figures": "Connected/aggregated > declared > measured > real-time adjustable",
+      "grade": "Declare the metric before answering"
+    },
+    {
+      "topic": "National target",
+      "figures": "20 GW by 2027, 50 GW by 2030",
+      "grade": "A (Doc. 357)"
+    },
+    {
+      "topic": "Provincial access thresholds",
+      "figures": "Liaoning: total aggregation ≥**10 MW** / total regulation ≥**5 MW** (2026-10-01); Shandong: distributed generation ≥**1 MW**, storage ≥**1 MW / 2 h** (2026-08-01); Hainan: ≥**1 MW / 1 h** (琼发改规〔2026〕No. 2, effective 2026-11-01)",
+      "grade": "A/B; thresholds differ by an order of magnitude, so never transplant them across provinces"
+    },
+    {
+      "topic": "Capability arithmetic",
+      "figures": "6 MW industrial + 1.25 MW air-conditioning + 5 MW storage = 12.25 MW; ×0.8 simultaneity ×0.95 availability = **9.31 MW**",
+      "grade": "D; declared capability, not measured"
+    },
+    {
+      "topic": "Aggregation dispatch case",
+      "figures": "10 MW/20 MWh: 18 MWh charge × 300 − 18 MWh discharge × 1,000 − 36 MWh degradation × 30 = **CNY 11,520/day**, **CNY 3.802m/yr** (330 days); AC 1:1 simplification, no RTE",
+      "grade": "D"
+    },
+    {
+      "topic": "Park VPP case",
+      "figures": "Revenue **CNY 4.386m**, OPEX 0.70m, EBITDA 3.686m, after-tax cash flow 3.114m, NPV **6.899m**, IRR ~**18.0%**, payback **4.49 years**",
+      "grade": "D"
+    },
+    {
+      "topic": "Zhejiang response record",
+      "figures": "50 operators / 2,542 users, **3.5952 GW** maximum response during the 2026 National Day holiday",
+      "grade": "C"
+    },
+    {
+      "topic": "Shenzhen platform, 2026-07",
+      "figures": "61 operators, 4.75 GW connected, 1.3 GW maximum adjustable (~5.4% of peak load)",
+      "grade": "C"
+    },
+    {
+      "topic": "Shenzhen funding measure",
+      "figures": "Valid to **2025-12-31**, expired; no 2026 replacement found",
+      "grade": "A (expiry)"
+    },
+    {
+      "topic": "Metric",
+      "figures": "Value",
+      "grade": "Grade / note"
+    },
+    {
+      "topic": "National DR framework",
+      "figures": "Docs 1283 (demand-side management) and 1261 (load management), both effective **2023-10-01** for 5 years",
+      "grade": "A; DR is economic, orderly use is administrative"
+    },
+    {
+      "topic": "DR capability target",
+      "figures": "**3%-5%** of maximum load by 2025; **≥5%** where the peak-valley gap exceeds 40%",
+      "grade": "A (Doc. 1283); a target, not measured response"
+    },
+    {
+      "topic": "Orderly-use plan scale",
+      "figures": "**≥30%** of historical maximum load; six levels (I-VI), 5% each; \"shift first, then avoid, then curtail\"",
+      "grade": "A (Doc. 1261)"
+    },
+    {
+      "topic": "Demand-side capability, 2026",
+      "figures": "**>90 GW**, **6.0%+** of maximum load",
+      "grade": "B (CEC); measured capability, not dispatched volume"
+    },
+    {
+      "topic": "2026 summer peak",
+      "figures": "National maximum load **1,557 GW**, four records; 6 regional and 20 provincial grids at records; **31 provincial grids did not start DR or orderly use**",
+      "grade": "B (CEC, 2026-11-05); \"not started\" is not \"no capability\""
+    },
+    {
+      "topic": "VPP fleet",
+      "figures": "2025: **470 projects / 16.85 GW** measured; 2026 industry figure **>530 / >18 GW**",
+      "grade": "A / C; declare connected vs. measured"
+    },
+    {
+      "topic": "National VPP targets",
+      "figures": "**20 GW by 2027**, **50 GW by 2030**",
+      "grade": "A (Doc. 357)"
+    },
+    {
+      "topic": "V2G pilot (Doc. 241)",
+      "figures": "**9 cities** (Shanghai, Changzhou, Hefei, Huaibei, Guangzhou, Shenzhen, Haikou, Chongqing, Kunming) + **30 projects**, 2025-2027",
+      "grade": "A; some reports say 32 projects — use the original text"
+    },
+    {
+      "topic": "V2G targets",
+      "figures": "2030 aggregated adjustable charging **50 GW** (2025 base 10 GW); 2027 **5,000** bidirectional facilities and **20 GWh** reverse discharge",
+      "grade": "A/B; 1721's \"tens of GW bidirectional flexibility\" is a different caliber"
+    },
+    {
+      "topic": "Baseline methods",
+      "figures": "DL/T 2162-2020, GB/T 32127, GB/T 37016; \"5+3\" average, 15-min samples, 25%-200% trimming, 3-h real-time correction",
+      "grade": "A/B; methods are provincial, not universal"
+    },
+    {
+      "topic": "Guangdong 2026 DR",
+      "figures": "Doc. 233 replaces Doc. 356; annual peak trade **0-2,700 CNY/MWh**; minimum **0.02 MW**; VPP **≥5 MW / ≥1 h**; coefficients **1.0/1.4/1.6**",
+      "grade": "A; one VPP per user per month"
+    },
+    {
+      "topic": "Jiangsu 2026 fast response",
+      "figures": "Direct control **15 CNY/kWh**, self-control **10 CNY/kWh**; first batch 27 direct (6-15, avg 13.17) and 314 self (5-10, avg 9.94); over-response caps 150%/120%",
+      "grade": "A/B; funded from peak-price surplus"
+    },
+    {
+      "topic": "Zhejiang 2026",
+      "figures": "Capacity **1 CNY/kW-month** plus energy **2-3 CNY/kWh**; A+ **3.9 CNY/kWh**",
+      "grade": "C"
+    },
+    {
+      "topic": "V2G economics, synthetic",
+      "figures": "Private car net **CNY 2,870/yr**, break-even spread **0.381 CNY/kWh**; 50 buses net **CNY 597,500/yr**",
+      "grade": "D; excludes subsidy and battery-warranty cost"
+    },
+    {
+      "topic": "V2G battery life",
+      "figures": "Traction cells 2,000-3,000 cycles (LFP 3,000-5,000); private cars ~400-600 full cycles over life; SOC 20%-80%/95%",
+      "grade": "C; lab cycles are not real-car cycles"
+    },
+    {
+      "topic": "Metric",
+      "figures": "Value",
+      "grade": "Grade / note"
+    },
+    {
+      "topic": "China ETS coverage",
+      "figures": "**3,680 entities**, ~**8.3 billion tCO2**, 65%+ of national emissions",
+      "grade": "A"
+    },
+    {
+      "topic": "CEA price",
+      "figures": "**CNY 97.90/t** end-2026-08; **CNY 94.94/t** on 2026-10-08; 2026 Jan-Aug average 83.86",
+      "grade": "A/B"
+    },
+    {
+      "topic": "CBAM certificate reference price",
+      "figures": "~**EUR 75.36/t** (2026 Q1), **75.28/t** (2026 Q2)",
+      "grade": "A"
+    },
+    {
+      "topic": "CBAM timeline",
+      "figures": "Definitively applies from 2026-01-01; **certificate purchases start 2027-02**, first surrender 2027-09-30",
+      "grade": "A; \"applies in 2026\" is not \"buy certificates in 2026\""
+    },
+    {
+      "topic": "GEC price by vintage",
+      "figures": "2024 / 2025 / 2026: **CNY 0.56 / 1.60 / 6.16 per certificate**",
+      "grade": "B/C; ~11x vintage spread"
+    },
+    {
+      "topic": "CCER offset cap",
+      "figures": "**5%** of the surrender obligation",
+      "grade": "A"
+    },
+    {
+      "topic": "CCER registered projects",
+      "figures": "**44 projects** by mid-October 2026; average price ~**CNY 86.51/t**",
+      "grade": "B; above the 2026 Jan-Aug CEA average of 83.86 but below the 2026-10-08 close of 94.94 — the spread flips by date"
+    },
+    {
+      "topic": "Compliance cost, synthetic",
+      "figures": "1.0 Mt emissions, 0.92 Mt free allocation, **80 kt gap**; 50 kt CCER × 86.51 + 30 kt CEA × 94.94 = **CNY 7.1737m**; blended **CNY 89.67/t of gap**; break-even CCER price = CEA price",
+      "grade": "D; 5% cap, no transaction cost"
+    },
+    {
+      "topic": "CBAM cost, synthetic",
+      "figures": "10 kt steel × 0.60 tCO2/t = 6,000 t × EUR 75.28 = **EUR 451,680** (~CNY 3.523m at 7.8); **EUR 45.17/t steel**",
+      "grade": "D; free allocation not deductible, GECs not accepted"
+    },
+    {
+      "topic": "2025 compliance rate",
+      "figures": "**99.99%**",
+      "grade": "B; 2023 was 99.98%"
+    },
+    {
+      "topic": "Under-surrender penalty",
+      "figures": "**5-10x** the market average in the month before the deadline",
+      "grade": "A (Order 775, amended 2026-08-08)"
+    },
+    {
+      "topic": "Metric",
+      "figures": "Value",
+      "grade": "Grade / note"
+    },
+    {
+      "topic": "PCF standards",
+      "figures": "**ISO 14067:2018**; **GB/T 24067-2024** (effective 2024-10-01)",
+      "grade": "A"
+    },
+    {
+      "topic": "Carbon-label pilot",
+      "figures": "Launched 2024-08; 2025-01 list covers 25 provinces / 57 regions / 10 product categories; first 6 certificates in 2026",
+      "grade": "A/B"
+    },
+    {
+      "topic": "Shanghai allowance uplift",
+      "figures": "**0.5 pp** for certified covered entities (cumulative cap 1 pp reported)",
+      "grade": "B (0.5 pp); C (cumulative cap)"
+    },
+    {
+      "topic": "Carbon-neutrality standard",
+      "figures": "**ISO 14068:2026**, published 2026-09-11, replacing ISO 14068-1:2023; PAS 2060 withdrawn end-2025",
+      "grade": "A/B"
+    },
+    {
+      "topic": "Battery passport",
+      "figures": "Mandatory from **2027-02-18** for EV, LMT and >2 kWh industrial batteries",
+      "grade": "A ((EU) 2023/1542)"
+    },
+    {
+      "topic": "DPP registry",
+      "figures": "Live **2026-07-20**; about 71 battery data items in 2026-08 guidance",
+      "grade": "B/C"
+    },
+    {
+      "topic": "Cross-border carbon data",
+      "figures": "Pil/DSL/CSL + March 2024 provisions; Lingang pilot: 330 consultations / 32 companies / 34 scenarios by 2026-04",
+      "grade": "A (law); B/C (pilot)"
+    },
+    {
+      "topic": "Carbon-data loans",
+      "figures": "CCB Shanghai \"carbon-data loan\" 2024-04-25; Postal Savings Bank Beijing 236 firms / CNY 1.11 bn by 2026-06",
+      "grade": "B/C"
+    }
+  ],
+  "openItems": [
+    {
+      "n": 1,
+      "topic": "National VPP management measure",
+      "text": "not issued as of 2026-11-01; do not invent a document number."
+    },
+    {
+      "n": 2,
+      "topic": "2026 spot-market basic rules",
+      "text": "draft published 2026-10-19, comments due 2026-11-18, proposed effective 2027-01-01; 2026 still runs on Document No. 1217 and provincial rules."
+    },
+    {
+      "n": 3,
+      "topic": "Retailer measure, risk-control measure, credit-evaluation guidelines, grid-connection rules",
+      "text": "September-October 2026 drafts, not current law."
+    },
+    {
+      "n": 4,
+      "topic": "Anhui's VPP aggregation threshold",
+      "text": "still needs the original text; Liaoning (≥10 MW / ≥5 MW, 2026-10-01) and Hainan (≥1 MW / 1 h, 2026-11-01) are now verified against provincial pages."
+    },
+    {
+      "n": 5,
+      "topic": "Shenzhen VPP funding",
+      "text": "the 2024 measure expired 2025-12-31; no 2026 replacement found."
+    },
+    {
+      "n": 6,
+      "topic": "2027 No. 136 auctions",
+      "text": "Liaoning clears 2026-11-08; results and other provinces still arriving."
+    },
+    {
+      "n": 7,
+      "topic": "Order 2222",
+      "text": "CAISO/ISO-NE 2026-11-01, NYISO 2026-12, PJM 2028/29 — implementation, not just approval."
+    },
+    {
+      "n": 8,
+      "topic": "CBAM",
+      "text": "certificates purchasable from 2027-02, first surrender 2027-09-30."
+    },
+    {
+      "n": 9,
+      "topic": "ISO 14068:2026",
+      "text": "certificate transition from 14068-1:2023 still to be confirmed by certification bodies."
+    },
+    {
+      "n": 10,
+      "topic": "DPP",
+      "text": "registry operating rules and the final battery data-item list are not yet public in full; delegated-act dates for steel, construction, textiles, aluminium, tyres and furniture are indicative."
+    },
+    {
+      "n": 11,
+      "topic": "PCF label",
+      "text": "later certification batches, product-specific rules and the formal Shanghai incentive document."
+    },
+    {
+      "n": 12,
+      "topic": "Cross-border carbon data",
+      "text": "official Lingang statistics and sectoral important-data catalogues."
+    },
+    {
+      "n": 13,
+      "topic": "Renewable development",
+      "text": "provincial Document 136 implementation plans, mechanism-energy ratios and contract terms, 2027 incremental auction results, whether green-certificate revenue overlaps with mechanism energy, and the effect of the 2027 spot rules on capture prices."
+    },
+    {
+      "n": 14,
+      "topic": "Zero-carbon parks and green direct connection",
+      "text": "the second national park list, the park construction/evaluation guideline annex (core vs. guiding indicators), provincial direct-connection rules (Guangdong/Zhejiang/Inner Mongolia/Jilin/Shandong/Liaoning draft), the provincial average-load-factor parameter, green-certificate ownership and transfer for self-used direct-connection energy, and the exact adoption dates of Docs 650 (2025-05-21 vs. 05-30) and 688 (2026-05-14 vs. 05-20)."
+    },
+    {
+      "n": 15,
+      "topic": "Doc. 1192 provincial implementation",
+      "text": "the conversion formula in each province, treatment of multi-circuit supply that keeps the two-part tariff, and whether export energy keeps any mechanism-price eligibility."
+    },
+    {
+      "n": 16,
+      "topic": "Grid-connection assessment (\"two detailed rules\")",
+      "text": "the final text and effective date of the 2026-09-30 national draft; the 2026 North/East China and southern-region revisions; the Shanxi 2025 document number; Northeast/Northwest 2024-2026 rules; the clause numbers behind Shandong's late-AGC, parameter-change and plan-curve penalties; whether provincial assessment prices and caps converge; renewable- and storage-specific primary-frequency and AGC clauses."
+    },
+    {
+      "n": 17,
+      "topic": "Storage technology, safety and grid-forming",
+      "text": "final 2026 storage statistics; the 136 GW vs. 144.7 GW end-2025 calibre gap; conflicting 2025 grid-forming annual vs. cumulative figures; the full texts of GB/T 47968-2026 and GB/T 47655-2026; whether any national document mandates grid-forming (the circulated 2026-04-01 claim and 30% target are unverified); provincial grid-forming ratios and compensation rules; exact GB/T 51048-2025 separation/compartment clauses; the project boundary behind \"flow battery below 2 CNY/Wh\"; 300 MW CAES actual efficiency and cost; sodium-ion utility-scale cycle-life and safety data; the 15 incidents of 2026 H1; the 2% lithium-battery consumption tax pass-through; whether Doc. 114 capacity pricing differentiates grid-forming or long-duration storage; inertia/voltage-support/black-start ancillary-service payment rules."
+    },
+    {
+      "n": 18,
+      "topic": "Quantitative bidding and trading risk",
+      "text": "the final 2026 spot rules (whether the 76-article draft survives), the secondary price-cap and LMP clauses, whether renewable+storage joint bidding is adopted; final retailer/risk-control/credit rules and the actual guarantee ratio and dynamic-limit method; provincial clearing granularity (96 vs. 288 points) and settlement formulas; whether the new rules change backtest baselines or model benchmarks; public reconciliation cases and loss-sharing arrangements between aggregators, retailers and resources."
+    },
+    {
+      "n": 19,
+      "topic": "Demand response, V2G and flexible resources",
+      "text": "actual 2026 provincial DR dispatch and settlement data (most provinces publish calls but not settlement); Guangdong Doc. 233 and Jiangsu 2026 fast-response implementation details; whether Doc. 241 covers 30 or 32 projects; the post-2026-11-01 wording of DR baselines; V2G pilot mid-term evaluation; bidirectional-charger standards and battery-warranty coverage; how transmission/distribution charges apply to reverse discharge; the 2030 V2G 50 GW and VPP 50 GW targets' provincial allocation; whether DR and VPP double-count the same resources in national statistics."
+    },
+    {
+      "n": 20,
+      "topic": "Risk, credit and settlement",
+      "text": "whether the final retailer measure keeps the 1 fen/kWh × 1-10 formula, the CNY 2 million floor, the insurance restriction and the spot-real-time universal-service price; whether the risk-control measure creates a risk reserve or fund; final credit indicator weights, coefficient mapping and repair deadlines; how the 15/5 working-day objection and next-cycle retro-adjustment interact with stricter provincial rules; provincial deviation bands, penalty prices and responsibility sharing; whether the 2026-10 spot draft keeps the six risk types, three-level intervention, daily clearing/monthly settlement and price-difference direction; the timing and content of the Retail Market Basic Rules; the formal document number and penalties of the 2026-06-08 retail notice; universal-service provider selection, cost allocation and user choice window; the treatment of unresolved contracts on retailer exit; related-party volume caps; credit treatment of storage/VPP; green-power and mechanism-energy treatment in deviation and settlement; cross-provincial settlement risk and guarantees; negative-price deviation and retail package design; insurance exclusions, deductibles and claim order; 2027 contract negative-spread risk and regulatory tolerance."
+    },
+    {
+      "n": 21,
+      "topic": "Overseas markets",
+      "text": "Australia's Reliability Panel recommended a 99.997% standard for 2028-32 in its April 2026 final report, pending the AEMC decision; the NEM's 2026-27 price bands apply only to that financial year; Germany's AgNes grid-fee reform has a draft determination from 2026-10 and a final determination due 2027-01-01, with rules from 2029; the StromVKG capacity-mechanism auctions and contract terms are still taking shape after EU approval; UK REMA, TMO4+ delivery and LDES final parameters are pending; Italy's second MACSE auction (2026-11-24) and capacity-market rules may change; EU market-coupling and balancing-platform changes (SDAC/SIDC, PICASSO/MARI) may alter gate times and products. Re-check the relevant rule before quoting any market."
+    },
+    {
+      "n": 22,
+      "topic": "UK market and storage",
+      "text": "whether REMA adopts zonal pricing (the 2026 decision rejected it) and the final TMO4+ queue rules; T-4/T-1 auction parameters for 2030/31 and later; the LDES cap-and-floor final parameters due in autumn 2026 and the first allocation round; BM skip-rate and pay-as-bid reform; CfD eligibility for co-located storage; MHHS migration timing; TNUoS reform by 2029 and BSUoS treatment."
+    },
+    {
+      "n": 23,
+      "topic": "Italy market and storage",
+      "text": "the MACSE second auction result (2026-11-24) and later round sizes; capacity-market parameters and 2028 de-rating factors; FER X auction schedules and NZIA eligibility; the 277 GW connection-application queue and regional permitting (aree idonee); PUN and zonal-price volatility; MSD/MB product changes as storage penetration rises."
+    },
+    {
+      "n": 24,
+      "topic": "Australia–Germany storage business",
+      "text": "CIS Tender 10 results are still pending; the §118(6) exemption only applies to storage commissioned by 2029-08-04; AgNes final determination is due 2027-01-01; the two 2026 StromVKG auctions reportedly exclude battery storage while the 2027 new-capacity tender is open with ≥10 hours; WDRM/FCAS revenue assumptions must be re-based on current prices; all worked examples in the storage module are synthetic (grade D), not investment advice."
+    },
+    {
+      "n": 25,
+      "topic": "Spain market and storage",
+      "text": "the first capacity auction under Orden TED/966/2026 (timing and clearing price) and the EU state-aid terms; whether the RDL 7/2026 flexible-access reserve and RD 997/2025 grid-forming conditions are implemented in full; 2026 negative-price hours and solar capture rates; the 2025-04-28 blackout investigation outcome; conversion of the permitted/pending storage pipeline."
+    },
+    {
+      "n": 26,
+      "topic": "Netherlands market and storage",
+      "text": "whether a capacity mechanism follows the completed study; SDE++ 2027 parameters and any battery-specific category; rollout of the 2026-07-01 priority framework and ATR85 non-firm contracts; TenneT's 4 GW-by-2030 storage connection plan; the aFRR 4-hour contract migration; the end of net metering (2027-01-01) and its effect on behind-the-meter storage; congestion-fee design."
+    },
+    {
+      "n": 27,
+      "topic": "Poland market and storage",
+      "text": "battery de-rating (13.39% is a grade-C figure, 2030 delivery-year main auction only; do not mix with the 95% used in the 2027 T-1 top-up), the 2030 vs. 2029 auction outcomes, foreign participation, NFOŚiGW delivery by end-2028 and Article 62 deductions, MARI accession, the 2026 OZE non-price criteria, negative-price hours and the coal phase-down."
+    },
+    {
+      "n": 28,
+      "topic": "Belgium/Nordics market and storage",
+      "text": "the Belgian CRM price unit and Y-4/Y-2/Y-1 results, nuclear extension and state aid, offshore build-out, Nordic mFRR EAM/PICASSO rollout in Sweden/Norway, the effektreserv auction, the Swedish bidding-zone review (report due 2027-01-29), negative-price hours and the four countries' different entry rules."
+    },
+    {
+      "n": 29,
+      "topic": "US market and storage",
+      "text": "the ERCOT RTC+B performance and any ORDC changes; PJM 2028/29 BRA delivery, the 2029/30 BRA and ELCC parameter updates; CAISO RA slice-of-day implementation, EDAM expansion and FMM/RTD changes; ITC/FEOC/Section 301 implementation details and the August 2026 grid-equipment executive order; PJM/CAISO queue reform and co-location rules; state permitting and fire-code adoption."
+    },
+    {
+      "n": 30,
+      "topic": "Japan market and storage",
+      "text": "the FY2030 capacity auction, de-rating factors and round-4 LTDA cap/results (schedule published 2026-10-09); implementation of the ≥6-hour threshold and the ~90% clawback; EPRX product migration and cap changes; the connection-study cap enforcement and queue processing; the JEPX spot cap rulebook wording; SII grant amounts; FEFTA review practice for storage SPVs."
+    },
+    {
+      "n": 31,
+      "topic": "Cross-border grid connection and compliance",
+      "text": "the final NZIA implementing acts and IAA status; national implementation of NIS2 and the EU Battery Regulation delegated acts (battery passport data fields, carbon-footprint methodology); the exact fire-code adoption path in each US state and UK/Netherlands/Poland local permits; whether FDI screening practice changes for storage SPVs; all country-specific entries not verified line by line are written as \"local permits\" in the module and must be checked against the original text."
+    },
+    {
+      "n": 32,
+      "topic": "Capacity mechanisms",
+      "text": "the first Spanish auction under TED/966/2026 (no convocatoria as of 2026-11-11; timing and price); the Italian MACSE second auction result (2026-11-24) and later rounds; the German StromVKG auction terms and whether batteries are admitted; the Belgian CRM price unit (resolved 2026-11-11: €27.3k/MW·yr, grade A, Elia 2025-10-30); the Swedish effektreserv re-auction; the Australian CIS Tender 10 result and state-scheme stacking rules; PJM 2029/30 BRA and ELCC updates; Japan FY2030 CM and round-4 LTDA; all five worked examples in the capacity module are synthetic (grade D)."
+    },
+    {
+      "n": 33,
+      "topic": "Ancillary and balancing markets",
+      "text": "PICASSO/MARI accession dates for the remaining TSOs (Poland MARI, Sweden/Norway PICASSO, etc.); UK BM and DC/DM/DR product changes; Italy MSD/MB product migration; Spain aFRR/mFRR product changes; Australia FCAS market design and very fast FCAS; ERCOT RTC+B and ORDC changes; PJM/CAISO ancillary product reforms; Japan EPRX product migration and cap changes; storage prequalification rules and SOC/performance tests are country-specific and must be checked against the current rulebook."
+    },
+    {
+      "n": 34,
+      "topic": "Storage revenue modelling and data sources",
+      "text": "the data-access terms, API changes and redistribution limits of each platform (ENTSO-E, EPEX, Nord Pool, Elexon, GME, OMIE, PSE, AEMO, CAISO, ERCOT, PJM, JEPX); settlement-granularity changes; whether 5-minute or 15-minute data are final or preliminary; degradation and RTE test standards; the treatment of capacity/ancillary co-optimisation; all four worked examples are synthetic (grade D) and must not be used as investment benchmarks."
+    },
+    {
+      "n": 35,
+      "topic": "Cross-border PPAs and certificates",
+      "text": "whether EU GO and UK REGO move toward mutual recognition; AIB membership changes; the treatment of GO vintage and 12-month validity in each registry; the final EU Battery Regulation carbon-footprint rules and whether green certificates can be used (currently not recognised for that purpose); the legal status of 24/7/hourly matching claims and granular certificates; CfD/CIS/state-scheme stacking and clawback terms; tolling contract terms are private and the module only provides a checklist; all five worked examples are synthetic (grade D)."
+    },
+    {
+      "n": 36,
+      "topic": "Eleven-market snapshot and decision calendar",
+      "text": "2025 installed capacity and annual average price are now backfilled for eleven markets, but Spain's installed capacity remains blocked (REE/ESIOS automation returns 403), Poland's and ERCOT's local-currency annual averages are still open, Australia's and the US annual negative-price hours are missing, and capture rates, interconnection durations and de-rating coefficients are incomplete; the Poland 2031 delivery-year auction, the next Belgian CRM round, the outcome of the Swedish bidding-zone review (report due 2027-01-29), the French PL-4 first round and the MHHS migration dates are not confirmed; 22 grade-C tickets are now a resolution ledger: 8 closed on 2026-11-11 (including the Belgian CRM price upgraded to A and the incorrect German battery-ban wording withdrawn), 14 still pending with next-review dates; the remaining gaps carry explicit due dates and must not be filled with estimates."
+    },
+    {
+      "n": 37,
+      "topic": "France market and storage",
+      "text": "the PL-4 2030-31 first auction date and parameters, the PPI exemption applications accepted before 2026-11-23, the first actual VNU settlement in 2027, the end-2026 grid-framework reform, the battery-queue conversion rate (14 GW/180 projects vs ~30 GW access rights), the de-rating coefficients applied to batteries in PL-1/PL-4, and the 2027 CRE tender calendar; the first-auction €28,182.99/MW is a 151-day delivery-period price and must not be annualised without stating the conversion."
+    }
+  ],
+  "datedOpenItems": [
+    {
+      "n": 2,
+      "item": "2026 spot-market basic rules: comment period closes",
+      "due": "2026-11-18",
+      "trigger": "Consultation",
+      "source": "`ndrc.gov.cn`, `nea.gov.cn`",
+      "columns": 5
+    },
+    {
+      "n": 21,
+      "item": "EU market-coupling / balancing-platform changes; MACSE round 2",
+      "due": "2026-11-24",
+      "trigger": "Rule / auction",
+      "source": "`entsoe.eu`, `terna.it`",
+      "columns": 5
+    },
+    {
+      "n": 23,
+      "item": "Italy MACSE second auction result",
+      "due": "2026-11-24",
+      "trigger": "Auction",
+      "source": "`terna.it`, `gme.it`",
+      "columns": 5
+    },
+    {
+      "n": 32,
+      "item": "German StromVKG second-auction date announcement",
+      "due": "2026-11-10",
+      "trigger": "Rule (overdue)",
+      "source": "`bundesnetzagentur.de`",
+      "columns": 5
+    },
+    {
+      "n": 37,
+      "item": "France PL-4 PPI exemption application deadline",
+      "due": "2026-11-23",
+      "trigger": "Rule",
+      "source": "`cre.fr`, `rte-france.com`",
+      "columns": 5
+    },
+    {
+      "n": 25,
+      "item": "Spain first capacity auction — convocatoria check",
+      "due": "2026-12-01",
+      "trigger": "Auction",
+      "source": "`ree.es`, `miteco.gob.es`",
+      "columns": 5
+    },
+    {
+      "n": 30,
+      "item": "Japan LTDA round-4 cap / results",
+      "due": "2026-12-01",
+      "trigger": "Auction",
+      "source": "`occto.or.jp`, `meti.go.jp`",
+      "columns": 5
+    },
+    {
+      "n": 32,
+      "item": "German StromVKG second auction (planned)",
+      "due": "2026-12-29",
+      "trigger": "Auction",
+      "source": "`bundesnetzagentur.de`",
+      "columns": 5
+    },
+    {
+      "n": 22,
+      "item": "UK LDES final parameters / REMA follow-up",
+      "due": "2027-01-01",
+      "trigger": "Rule",
+      "source": "`ofgem.gov.uk`, `neso.energy`",
+      "columns": 5
+    },
+    {
+      "n": 26,
+      "item": "Netherlands SDE++ 2027 parameters",
+      "due": "2027-01-01",
+      "trigger": "Rule",
+      "source": "`rvo.nl`, `acm.nl`",
+      "columns": 5
+    },
+    {
+      "n": 33,
+      "item": "PICASSO / MARI accession milestones",
+      "due": "2027-01-01",
+      "trigger": "Platform",
+      "source": "`entsoe.eu`",
+      "columns": 5
+    },
+    {
+      "n": 8,
+      "item": "CBAM certificates purchasable from",
+      "due": "2027-02-01",
+      "trigger": "Compliance",
+      "source": "`taxation-customs.ec.europa.eu`",
+      "columns": 5
+    },
+    {
+      "n": 28,
+      "item": "Swedish bidding-zone review report",
+      "due": "2027-01-29",
+      "trigger": "Review",
+      "source": "`svk.se`, `ei.se`",
+      "columns": 5
+    },
+    {
+      "n": 36,
+      "item": "French PL-4 first round / MHHS migration dates",
+      "due": "2027-01-29",
+      "trigger": "Auction / migration",
+      "source": "`cre.fr`, `elexon.co.uk`",
+      "columns": 5
+    },
+    {
+      "n": 35,
+      "item": "EU GO / UK REGO mutual recognition decision",
+      "due": "2027-02-01",
+      "trigger": "Certificate",
+      "source": "`aib-net.org`, `ofgem.gov.uk`",
+      "columns": 5
+    },
+    {
+      "n": 8,
+      "item": "CBAM first certificate surrender",
+      "due": "2027-09-30",
+      "trigger": "Compliance",
+      "source": "`taxation-customs.ec.europa.eu`",
+      "columns": 5
+    }
+  ],
+  "gradeC": [
+    {
+      "n": 1,
+      "figure": "比利时 CRM €27.3k/MW·年（原记「约 2.7 万」）",
+      "status": "已复核",
+      "usable": true,
+      "banned": false,
+      "pending": false,
+      "nextReview": null,
+      "conclusion": "A 级：€27.3k/MW·年（27,300 €/MW·年），Elia 2025-10-30 新闻稿；「27.3 万」是单位错误，正确量级为 2.73 万。可用于投决，须写明 2029-30 交付年与 pay-as-bid 口径"
+    },
+    {
+      "n": 2,
+      "figure": "波兰电池降额约 13%",
+      "status": "已改口径",
+      "usable": true,
+      "banned": false,
+      "pending": false,
+      "nextReview": null,
+      "conclusion": "C 级：13.39%（Modo Energy / UZ Energy 等多源一致），仅适用 2025-12 主拍卖、2030 交付年新建电池；与 2027 T-1 沿用的 95%、2029 主拍卖 61.3% 并存，禁止跨拍卖混用。URE 决议原文仍缺，投决前须书面确认"
+    },
+    {
+      "n": 3,
+      "figure": "意大利 2028 交付年 4 h 电池降额上限约 54%",
+      "status": "待复核",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "nextReview": "2027-02-01",
+      "conclusion": "原状态「待复核」；下次复核 2027-02-01（P1）"
+    },
+    {
+      "n": 4,
+      "figure": "荷兰约 1.5 万家各类企业等待接入",
+      "status": "待复核",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "nextReview": "2027-02-01",
+      "conclusion": "原状态「待复核」；下次复核 2027-02-01（P1）"
+    },
+    {
+      "n": 5,
+      "figure": "西班牙负价 555 h（2025）/397 h（2026Q1）",
+      "status": "已改口径",
+      "usable": true,
+      "banned": false,
+      "pending": false,
+      "nextReview": "2027-02-01",
+      "conclusion": "B 级：2025 为 553 h（<0）+247 h（=0）（Ember）；2026Q1 397 h 仍为 C；下次复核 2027-02-01（P1）；下次复核 2027-02-01（P1）"
+    },
+    {
+      "n": 6,
+      "figure": "西班牙已许可 24.3 GW / 待审 15.1 GW",
+      "status": "待复核",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "nextReview": "2027-02-01",
+      "conclusion": "原状态「待复核」；下次复核 2027-02-01（P1）"
+    },
+    {
+      "n": 7,
+      "figure": "西班牙接入申请约 37.37 GW",
+      "status": "待复核",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "nextReview": "2027-02-01",
+      "conclusion": "原状态「待复核」；下次复核 2027-02-01（P1）"
+    },
+    {
+      "n": 8,
+      "figure": "英国队列约 750 GW → 200–250 GW",
+      "status": "待复核",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "nextReview": "2027-02-01",
+      "conclusion": "原状态「待复核」；下次复核 2027-02-01（P1）"
+    },
+    {
+      "n": 9,
+      "figure": "波兰 2030 交付年储能约 685 MW",
+      "status": "待复核",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "nextReview": "2027-02-01",
+      "conclusion": "原状态「待复核」；下次复核 2027-02-01（P1）"
+    },
+    {
+      "n": 10,
+      "figure": "波兰单次负价 −791.32 PLN/MWh 约 10 h",
+      "status": "待复核",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "nextReview": "2027-02-01",
+      "conclusion": "原状态「待复核」；下次复核 2027-02-01（P1）"
+    },
+    {
+      "n": 11,
+      "figure": "比利时 Y-4：4,690 MW / 电池 179 MW（铭牌 525 MW）",
+      "status": "已复核",
+      "usable": true,
+      "banned": false,
+      "pending": false,
+      "nextReview": null,
+      "conclusion": "A 级：Y-4 中标 4,690 MW、新电池 179 MW（铭牌 525 MW，11 个项目）、翻新 25 MW，Elia 2025-10-30；与 #1 同一来源"
+    },
+    {
+      "n": 12,
+      "figure": "日本接续检讨 24,880 件（FY2025）",
+      "status": "待复核",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "nextReview": "2027-02-01",
+      "conclusion": "原状态「待复核」；下次复核 2027-02-01（P1）"
+    },
+    {
+      "n": 13,
+      "figure": "JEPX FY2025 系统价均值 ¥11.06/kWh",
+      "status": "口径已确认",
+      "usable": true,
+      "banned": false,
+      "pending": false,
+      "nextReview": "2027-02-01",
+      "conclusion": "B 级：JEPX 30 分钟简单平均，非负荷加权/分区价；仍不作横比；下次复核 2027-02-01（P1）；下次复核 2027-02-01（P1）"
+    },
+    {
+      "n": 14,
+      "figure": "ERCOT 大负荷申请约 474 GW",
+      "status": "待复核",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "nextReview": "2027-02-01",
+      "conclusion": "原状态「待复核」；下次复核 2027-02-01（P1）"
+    },
+    {
+      "n": 15,
+      "figure": "ERCOT Batch Zero 204/66.4 GW + 158/127.9 GW",
+      "status": "待复核",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "nextReview": "2027-02-01",
+      "conclusion": "原状态「待复核」；下次复核 2027-02-01（P1）"
+    },
+    {
+      "n": 16,
+      "figure": "PJM 2026/27 BRA $329.17/MW-day",
+      "status": "待复核",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "nextReview": "2027-02-01",
+      "conclusion": "原状态「待复核」；下次复核 2027-02-01（P1）"
+    },
+    {
+      "n": 17,
+      "figure": "CAISO 2024 弃电约 3.4 TWh、93% 光伏",
+      "status": "待复核",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "nextReview": "2027-05-01",
+      "conclusion": "原状态「待复核」；下次复核 2027-05-01（P2）"
+    },
+    {
+      "n": 18,
+      "figure": "德国 2026 两轮容量招标「不向电池开放」旧表述（已撤销）",
+      "status": "已撤销",
+      "usable": false,
+      "banned": true,
+      "pending": false,
+      "nextReview": null,
+      "conclusion": "原表述错误：BNetzA 2026-11-03 明确「电厂与储能设施共同参与竞争」。改为 ≥10 h 持续出力等准入条件（A）；首轮 2026-09-08 截标，41 标/11,958 rMW，11 标中标约 5,160 rMW，量加权均价 €155,296/rMW·年（上限 €244,000）。禁止再写「不向电池开放」"
+    },
+    {
+      "n": 19,
+      "figure": "西班牙容量首拍“2026 年底至 2027 年”",
+      "status": "禁止引用",
+      "usable": false,
+      "banned": true,
+      "pending": false,
+      "nextReview": "2026-12-01",
+      "conclusion": "截至 2026-11-11 REE / 能源国务秘书处未发布 convocatoria；「2026 年底至 2027 年」为媒体推测，已从正文撤销。下次复核 2026-12-01；不得把首拍容量收入写成确定现金流"
+    },
+    {
+      "n": 20,
+      "figure": "比利时下一轮 CRM 时间",
+      "status": "已复核",
+      "usable": true,
+      "banned": false,
+      "pending": false,
+      "nextReview": null,
+      "conclusion": "A 级：Elia CRM Auction Calendar——2026 年三场（2030 Y-4 / 2028 Y-2 / 2027 Y-1）均 2026-09-30 17:00 截标、10-30 公布结果；2027 年场次按年度节奏约 2027-09-30，官方日历尚未列出"
+    },
+    {
+      "n": 21,
+      "figure": "法国“gabarits”灵活接入机制",
+      "status": "待复核",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "nextReview": "2027-02-01",
+      "conclusion": "仅 B 级交易商文章，未见 RTE 官方文本；投决前必须向 RTE 书面确认；下次复核 2027-02-01（P1）"
+    },
+    {
+      "n": 22,
+      "figure": "法国 PL-1 2027-28 拍卖“通常 7 月”",
+      "status": "待复核",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "nextReview": "2027-05-01",
+      "conclusion": "原状态「待复核」；下次复核 2027-05-01（P2）"
+    }
+  ]
+}
