@@ -15,7 +15,7 @@
 </head>
 <body data-cat="skill" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -151,11 +151,11 @@
 <ul><li><strong>辐照</strong>：水平面总辐射（GHI）、法向直射（DNI）、散射；卫星数据与地面站结合；积雪、沙尘、云。</li><li><strong>倾角与朝向</strong>：最佳倾角随纬度变化；跟踪支架可提高发电量但增加成本与运维。</li><li><strong>温度</strong>：组件温度系数、逆变器降额；高温地区要扣减。</li><li><strong>双面与反射</strong>：双面组件增益与地面反射率、离地高度、支架结构有关。</li><li><strong>污损与积雪</strong>：清洗频率、沙尘、积雪损失。</li><li><strong>系统效率（PR）</strong>：逆变器效率、线损、变压器损耗、可用率、限电、衰减；典型 PR 80%–85%（D 级示意）。</li></ul>
 <h3 id="s19">3.3 不确定性：P50、P75、P90</h3>
 <ul><li><strong>P50</strong>：50% 概率达到的年发电量，常用于基准测算。</li><li><strong>P90</strong>：90% 概率达到的年发电量，融资与投决常用保守情景。</li><li><strong>近似公式</strong>（正态假设）：</li></ul>
-<pre><code>P90 = P50 × (1 − 1.2816 × CV)</code></pre>
+<pre tabindex="0"><code>P90 = P50 × (1 − 1.2816 × CV)</code></pre>
 <p>其中 CV 为年发电量的变异系数。示例：P50 = 2,400 h、CV = 8%，则 P90 = 2,153.93 h。</p>
 <ul><li><strong>纪律</strong>：P90 不是&quot;最差情况&quot;，只是 90% 置信下限；融资模型还应做 P99 或自定义压力情景。测风不足 1 年、复杂地形、卫星辐照误差大时，CV 应上调。</li></ul>
 <h3 id="s20">3.4 关键公式与算例</h3>
-<pre><code>容量系数 CF = 年净发电量 ÷ (装机容量 × 8760)
+<pre tabindex="0"><code>容量系数 CF = 年净发电量 ÷ (装机容量 × 8760)
 利用小时 = 年净发电量 ÷ 装机容量
 光伏比发电量 = 斜面辐照 × 系统效率 × (1 + 双面增益)</code></pre>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>算例 A（风电）</th><th>算例 B（光伏）</th></tr></thead><tbody><tr><td>装机</td><td>100 MW</td><td>100 MW</td></tr><tr><td>利用小时</td><td>2,400 h</td><td>1,400 h</td></tr><tr><td>容量系数</td><td>27.40%</td><td>15.98%</td></tr><tr><td>年毛发电量</td><td>240,000 MWh</td><td>140,000 MWh</td></tr><tr><td>限电率</td><td>3%</td><td>2%</td></tr><tr><td>年净发电量</td><td>232,800 MWh</td><td>137,200 MWh</td></tr></tbody></table></div>
@@ -169,7 +169,7 @@
 <h3 id="s24">4.1 收入四行</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>收入行</th><th>计算</th><th>备注</th></tr></thead><tbody><tr><td>市场电能量</td><td>捕获价 × 上网电量</td><td>捕获价通常低于市场均价</td></tr><tr><td>机制电价差价</td><td>(机制电价 − 市场均价) × 机制电量</td><td>正为补差，负为退还</td></tr><tr><td>绿证/绿电溢价</td><td>绿证数量 × 价格，或绿电溢价</td><td>与机制电量是否重复按省级规则</td></tr><tr><td>其他</td><td>辅助服务、容量（如有）</td><td>新能源通常无容量电价</td></tr></tbody></table></div>
 <h3 id="s25">4.2 机制电价结算公式</h3>
-<pre><code>机制差价 = (机制电价 − 市场交易均价) × 机制电量
+<pre tabindex="0"><code>机制差价 = (机制电价 − 市场交易均价) × 机制电量
 市场收入 = 捕获价 × 全部上网电量（基准可假设捕获价 = 市场均价）
 绿证收入 = 绿证价格 × 上网电量（1 张/MWh）
 总收入 = 市场收入 + 机制差价 + 绿证收入 + 其他</code></pre>
@@ -184,7 +184,7 @@
 <ul><li><strong>纪律</strong>：可研中不能用&quot;市场均价&quot;直接乘全部电量；必须用捕获价，或明确假设捕获率。高比例风光省份的捕获率可能显著低于 90%，要用当地历史数据校准。</li></ul>
 <h3 id="s28">4.5 机制电价保本线：LCOE 不是投标底线</h3>
 <ul><li><strong>税前、按 LCOE 的保本机制价</strong>：</li></ul>
-<pre><code>Pm_breakeven = (LCOE − 市场价 × (1 − 覆盖率) − 绿证/其他) ÷ 覆盖率</code></pre>
+<pre tabindex="0"><code>Pm_breakeven = (LCOE − 市场价 × (1 − 覆盖率) − 绿证/其他) ÷ 覆盖率</code></pre>
 <p>算例 A：LCOE 252.80 元/MWh、市场价 250 元/MWh、覆盖率 70%、绿证 6 元/MWh，则税前保本机制价 <strong>245.43 元/MWh</strong>。</p>
 <ul><li><strong>税后保本线更高</strong>：按 25% 所得税、20 年折旧、8% 折现，算例 A 的税后保本机制价约 <strong>294.85 元/MWh</strong>；7% 折现约 <strong>266.95 元/MWh</strong>；6% 折现约 <strong>239.94 元/MWh</strong>。</li><li><strong>结论</strong>：LCOE 252.80 元/MWh 只能说明&quot;度电成本&quot;，不能直接当投标底线；税、折旧节奏与融资结构会把保本线抬高约 42 元/MWh（8% 折现下）。投标前必须用税后现金流反算。</li></ul>
 <h3 id="s29">4.6 绿证与绿电溢价</h3>
@@ -200,7 +200,7 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>类型</th><th>OPEX 示意（元/kW·年）</th><th>主要科目</th></tr></thead><tbody><tr><td>陆上风电</td><td>100–180</td><td>运维、备件、保险、土地租金、管理、电网考核</td></tr><tr><td>集中式光伏</td><td>60–120</td><td>清洗、运维、备件、保险、土地租金、管理</td></tr><tr><td>海上风电</td><td>250–400</td><td>运维船、备件、保险、海缆检测、防腐</td></tr><tr><td>分布式光伏</td><td>60–120</td><td>清洗、运维、屋面维护、保险、管理</td></tr></tbody></table></div>
 <ul><li>还需考虑：限电损失、辅助服务分摊、系统运行费（按当地规则）、技改、退役与生态修复。</li><li><strong>不要假设&quot;零 OPEX&quot;或&quot;OPEX 不随通胀&quot;</strong>；长期模型应设 1%–2% 的年涨幅情景。</li></ul>
 <h3 id="s34">5.3 LCOE 公式</h3>
-<pre><code>LCOE = [CAPEX + Σ(OPEX_t ÷ (1+r)^t) − 残值 ÷ (1+r)^N]
+<pre tabindex="0"><code>LCOE = [CAPEX + Σ(OPEX_t ÷ (1+r)^t) − 残值 ÷ (1+r)^N]
        ÷ Σ(净发电量_t ÷ (1+r)^t)
 
 净发电量_t = 年毛发电量 × (1 − 限电率) × (1 − 衰减)^(t−1)</code></pre>
@@ -216,7 +216,7 @@
 <hr>
 <h2 id="s38">6. 财务评价与投决</h2>
 <h3 id="s39">6.1 现金流结构</h3>
-<pre><code>初始投资 = −CAPEX
+<pre tabindex="0"><code>初始投资 = −CAPEX
 年收入 = 市场收入 + 机制差价 + 绿证 + 其他
 年成本 = OPEX + 限电损失（已在电量中扣除）+ 辅助服务分摊
 税前利润 = 收入 − 成本 − 折旧
@@ -310,7 +310,7 @@
 <hr>
 <h2 id="s75">12. 关键公式与代码映射</h2>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>公式</th><th>代码</th></tr></thead><tbody><tr><td>容量系数、利用小时</td><td><code>resource.capacity_factor()</code> / <code>annual_energy_mwh()</code></td></tr><tr><td>P90</td><td><code>resource.p90_from_p50()</code></td></tr><tr><td>风电容量系数（Weibull 筛查）</td><td><code>resource.wind_capacity_factor()</code></td></tr><tr><td>光伏比发电量</td><td><code>resource.pv_specific_yield()</code></td></tr><tr><td>LCOE</td><td><code>lcoe.lcoe()</code></td></tr><tr><td>机制电价结算</td><td><code>mechanism.cfd_settlement()</code></td></tr><tr><td>税前保本机制价</td><td><code>mechanism.break_even_mechanism_price()</code></td></tr><tr><td>捕获价</td><td><code>mechanism.capture_price()</code></td></tr><tr><td>税后现金流/NPV/IRR/回收期</td><td><code>finance.project_cashflow()</code> / <code>npv()</code> / <code>irr()</code> / <code>payback()</code></td></tr><tr><td>还本付息/DSCR</td><td><code>finance.debt_payment()</code> / <code>dscr()</code></td></tr></tbody></table></div>
-<pre><code>import lcoe, mechanism, finance
+<pre tabindex="0"><code>import lcoe, mechanism, finance
 
 a = lcoe.lcoe(450_000_000, 11_000_000, 240_000, 20, 0.08, 0.005, 0.03)
 energy = 240_000 * 0.97
@@ -481,7 +481,9 @@ print(round(a[&quot;lcoe&quot;], 2), round(finance.npv(0.08, flows)), round(fina
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

@@ -150,7 +150,7 @@ a:hover{text-decoration:underline;text-underline-offset:3px}
 }
 .nav a:hover{background:var(--paper-2);text-decoration:none}
 .nav a.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.nav .n{font:var(--fs-2xs)/1 var(--mono);color:var(--line-strong);letter-spacing:.04em}
+.nav .n{font:var(--fs-2xs)/1 var(--mono);color:var(--muted);letter-spacing:.04em}
 .nav a.active .n{color:#9fc9c5}
 .nav .count{font:var(--fs-2xs)/1 var(--mono);color:var(--muted);background:var(--paper-2);padding:3px 5px;border-radius:5px}
 .nav a.active .count{background:rgba(255,255,255,.12);color:#dceceb}
@@ -1834,9 +1834,9 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   </main>
 </div>
 
-<div class="fab-stack">
+<nav class="fab-stack" aria-label="页面辅助">
   <button class="fab to-top" type="button" aria-label="回到顶部">↑</button>
-</div>
+</nav>
 
 <script>
 (function () {

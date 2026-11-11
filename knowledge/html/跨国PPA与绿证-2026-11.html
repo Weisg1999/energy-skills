@@ -15,7 +15,7 @@
 </head>
 <body data-cat="cross" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -118,7 +118,7 @@
 <h3 id="s4">1.1 八种常见结构</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>结构</th><th>价格暴露</th><th>量与曲线风险</th><th>典型期限</th><th>主要用途</th></tr></thead><tbody><tr><td>Merchant（无合同）</td><td>现货/平衡价</td><td>全部由项目承担</td><td>无</td><td>追求 upside、待签合同</td></tr><tr><td>Physical pay-as-produced PPA</td><td>固定价 × 实际出力</td><td>资源风险在卖方，曲线在买方</td><td>5–15 年</td><td>风电/光伏常规 corporate PPA</td></tr><tr><td>Baseload / fixed-volume PPA</td><td>固定价 × 约定电量</td><td>资源 + 曲线风险都在卖方</td><td>5–15 年</td><td>需要稳定电量的工业用户</td></tr><tr><td>Financial / virtual PPA（CfD）</td><td>差价结算</td><td>卖方保留电量与曲线风险</td><td>5–15 年</td><td>无物理交付的锁价</td></tr><tr><td>Collar（floor + cap）</td><td>区间内暴露</td><td>按合同</td><td>3–10 年</td><td>控制极端价格</td></tr><tr><td>Floor / cap（单边）</td><td>单边保护</td><td>按合同</td><td>3–10 年</td><td>保底或封顶</td></tr><tr><td>Proxy revenue swap</td><td>按资源指数与电价结算</td><td>Basis/资源指数风险</td><td>5–15 年</td><td>风电收入平滑</td></tr><tr><td>Tolling</td><td>容量费 + 变动成本</td><td>调度权在买方</td><td>2–10 年</td><td>储能/调峰资产包销</td></tr></tbody></table></div>
 <h3 id="s5">1.2 Pay-as-produced 与 baseload 的分水岭</h3>
-<pre><code>Pay-as-produced：
+<pre tabindex="0"><code>Pay-as-produced：
   卖方收入 = 合同价 × 实际出力
   卖方承担资源风险（风小/阴天少发电）
   买方承担曲线风险（拿到的是光伏形状）
@@ -129,20 +129,20 @@ Baseload：
   出力不足时，卖方要去市场买电补足</code></pre>
 <ul><li><strong>光伏/风电签 baseload，等于把形状风险揽回自己</strong>；没有储能或灵活电源， baseload PPA 的报价必须加“形状溢价”。</li><li><strong>Pay-as-produced 不是“没风险”</strong>：资源风险仍在卖方，P50/P90 的差距会直接变成收入差距。</li><li><strong>带储能的混合项目</strong>：可以签“部分 baseload + 部分 pay-as-produced”，但计量、SOC 分配和证书归属要拆清。</li></ul>
 <h3 id="s6">1.3 金融 PPA / CfD 的结算</h3>
-<pre><code>CfD 结算 = (strike − reference price) × 合约电量</code></pre>
+<pre tabindex="0"><code>CfD 结算 = (strike − reference price) × 合约电量</code></pre>
 <ul><li>市场价低于 strike：买方补足；市场价高于 strike：卖方返还（双向 CfD）。</li><li><strong>reference price 的口径最关键</strong>：是日前均价、日内均价、还是所在报价区/节点的捕获价？口径不同，基差可能很大。</li><li><strong>金融 PPA 不交割电量</strong>：项目仍要在现货/平衡市场卖电，CfD 只处理价格差。</li><li><strong>虚拟 PPA（VPPA）</strong>：常见于企业买家，按证书和差价结算，不涉及物理输送；跨境 VPPA 还要解决证书跨境承认。</li></ul>
 <h3 id="s7">1.4 Tolling 的本质</h3>
 <ul><li><strong>Tolling 是“买调度权”，不是“买电量”</strong>：买方支付容量费，获得在约定窗口内调度资产的权力；卖方按可用性和性能拿钱。</li><li><strong>储能 tolling 常见条款</strong>：容量费（€/MW·年或 €/MW·月）、可用率、RTE 保证、退化上限、充电成本归属、SOC 窗口、调度独占、性能测试、违约赔偿。</li><li><strong>与 PPA 的差别</strong>：PPA 锁的是电价和电量；tolling 锁的是资产使用权，价格风险由调度方承担。</li><li><strong>与租赁的差别</strong>：租赁通常只收固定租金；tolling 把调度、性能和维护责任写得更细。</li></ul>
 <hr>
 <h2 id="s8">2. PPA 定价：把“合同价”还原成“有效价”</h2>
 <h3 id="s9">2.1 卖方有效价</h3>
-<pre><code>卖方有效价 ≈ 合同价 + 证书价值 − 平衡成本 − 偏差/不平衡成本 − 信用/担保成本</code></pre>
+<pre tabindex="0"><code>卖方有效价 ≈ 合同价 + 证书价值 − 平衡成本 − 偏差/不平衡成本 − 信用/担保成本</code></pre>
 <ul><li><strong>证书价值</strong>：如果证书随 PPA 转让，合同价里应体现；如果证书归卖方，证书收入单独算。</li><li><strong>平衡成本</strong>：谁负责平衡责任（BSC/平衡组/BRP）要在合同里写清；买方承担平衡时，报价会扣掉这部分。</li><li><strong>偏差成本</strong>：pay-as-produced 的出力预测误差、baseload 的补电成本，都会吃掉名义价差。</li><li><strong>信用成本</strong>：长期 PPA 通常要母公司担保、信用证或押金；这些占用资金，要计入有效价。</li></ul>
 <h3 id="s10">2.2 买方有效成本</h3>
-<pre><code>买方有效成本 ≈ 合同价 + 平衡/偏差成本 + 电网费 + 证书成本 − 现货转售收益</code></pre>
+<pre tabindex="0"><code>买方有效成本 ≈ 合同价 + 平衡/偏差成本 + 电网费 + 证书成本 − 现货转售收益</code></pre>
 <ul><li>买方如果拿到的是光伏形状，自用曲线不匹配时要转售或配储能；转售价格可能低于合同价。</li><li>电网费、容量费、系统运行费不因为签了 PPA 就消失；跨境 PPA 还要考虑输电权和跨境容量。</li><li><strong>不要只比“PPA 价 vs 现货均价”</strong>：要比“PPA 有效成本 vs 实际用电曲线的现货成本”。</li></ul>
 <h3 id="s11">2.3 捕获率与形状风险</h3>
-<pre><code>捕获率 = 项目捕获价 ÷ 同期基荷均价
+<pre tabindex="0"><code>捕获率 = 项目捕获价 ÷ 同期基荷均价
 捕获价 = Σ(项目出力 × 该时段价格) ÷ Σ项目出力</code></pre>
 <ul><li>光伏中午出力高、价格低，捕获率通常低于 100%；风电夜间出力高，捕获率可能高于或低于 100%，取决于市场。</li><li><strong>PPA 报价要看捕获价，不是基荷均价</strong>：用基荷均价减 PPA 价算“节省”，会高估光伏项目的收益。</li><li><strong>储能可以抬高捕获率</strong>：把中午的电搬到晚高峰，但会增加 RTE 损失、退化和辅助服务机会成本。</li></ul>
 <h3 id="s12">2.4 基差与跨境</h3>
@@ -205,7 +205,7 @@ Baseload：
 <hr>
 <h2 id="s38">5. Tolling：条款比价格更重要</h2>
 <h3 id="s39">5.1 收入结构</h3>
-<pre><code>项目收入 = 容量费 × 可用容量 × 可用率调整
+<pre tabindex="0"><code>项目收入 = 容量费 × 可用容量 × 可用率调整
          + 变动成本 pass-through（如充电成本）
          − 性能罚则（RTE/可用率/响应）
          − 退化成本</code></pre>
@@ -217,7 +217,7 @@ Baseload：
 <hr>
 <h2 id="s42">6. 24/7 小时级绿电匹配</h2>
 <h3 id="s43">6.1 年度匹配 vs 小时级匹配</h3>
-<pre><code>年度匹配率 = 年度绿电采购量 ÷ 年度用电量
+<pre tabindex="0"><code>年度匹配率 = 年度绿电采购量 ÷ 年度用电量
 小时级匹配率 = Σ min(每小时绿电供应, 每小时用电) ÷ Σ 每小时用电</code></pre>
 <ul><li><strong>年度匹配</strong>是主流披露口径：GHG Protocol Scope 2 的 market-based 方法允许年度匹配（A/B）。</li><li><strong>小时级匹配</strong>是自愿的更高标准：要求每小时的供需匹配，通常需要储能、灵活负荷或多技术组合。</li><li><strong>两者不能互相替代</strong>：年度 100% 不代表每小时 100%；24/7 报告要披露匹配方法、地理边界、时间戳和证书类型。</li></ul>
 <h3 id="s44">6.2 实现路径</h3>
@@ -229,22 +229,22 @@ Baseload：
 <aside class="note"><p>以下全部是合成假设，不代表任何真实项目、市场价格或投资建议。</p></aside>
 <h3 id="s47">7.1 GO 收入：100 GWh 项目</h3>
 <p>假设：年发电 100 GWh；GO 全部未签长约，按现货 GO 价格卖出；参考 EEX 法国 2026-06 拍卖技术加权均价 €1.73–1.78/MWh（B）。</p>
-<pre><code>GO 收入 = 100,000 MWh × €1.80/MWh = €180,000/年</code></pre>
+<pre tabindex="0"><code>GO 收入 = 100,000 MWh × €1.80/MWh = €180,000/年</code></pre>
 <ul><li>如果只卖 50 GWh 的 GO，收入约 €90,000/年。</li><li><strong>GO 收入相对 CAPEX 很小</strong>：它不能拯救项目收益，但可以作为绿电溢价的一部分。</li><li>若 GO 与 PPA 捆绑，合同价里要体现证书价值；否则等于把证书白送。</li></ul>
 <h3 id="s48">7.2 Pay-as-produced vs baseload vs merchant</h3>
 <p>假设：预期发电 100 GWh；实际 95 GWh；PPA 价 €65/MWh；现货捕获价 €60/MWh；baseload 缺口补电价 €70/MWh。</p>
-<pre><code>Pay-as-produced：95,000 × €65 = €6,175,000
+<pre tabindex="0"><code>Pay-as-produced：95,000 × €65 = €6,175,000
 Baseload 100 GWh：100,000 × €65 − 5,000 × €70 = €6,150,000
 Merchant：95,000 × €60 = €5,700,000</code></pre>
 <ul><li>PPA 比 merchant 多约 €475k（pay-as-produced）或 €450k（baseload）。</li><li>Baseload 名义收入更高，但补电成本和形状风险要吃掉一部分；实际净收入可能低于 pay-as-produced。</li><li><strong>不要用“PPA 价 − 现货均价”直接算节省</strong>：要用项目实际捕获价和实际出力。</li></ul>
 <h3 id="s49">7.3 CfD 补足与返还</h3>
 <p>假设：合同电量 150 GWh；strike €80/MWh；市场 reference price 分别为 €60 和 €90。</p>
-<pre><code>市场 €60：补足 = (80 − 60) × 150,000 = €3,000,000
+<pre tabindex="0"><code>市场 €60：补足 = (80 − 60) × 150,000 = €3,000,000
 市场 €90：返还 = (90 − 80) × 150,000 = €1,500,000</code></pre>
 <ul><li>双向 CfD 封顶/兜底，但不是“固定电价”；项目仍要承担电量、曲线和基差风险。</li><li>如果 reference price 用错口径（例如用全国均价代替分区价），结算会出现意外偏差。</li></ul>
 <h3 id="s50">7.4 Merchant tail 估值</h3>
 <p>假设：20 年资产；前 10 年 PPA 70 GWh × €65/MWh = €4.55m/年；后 10 年 merchant 70 GWh × €50/MWh = €3.5m/年；折现率 7%。</p>
-<pre><code>年金因子 AF(10) ≈ 7.024；AF(20) ≈ 10.594
+<pre tabindex="0"><code>年金因子 AF(10) ≈ 7.024；AF(20) ≈ 10.594
 PPA 期 PV = 4.55 × 7.024 ≈ €31.96m
 Merchant 期 PV = 3.5 × (10.594 − 7.024) ≈ €12.50m
 合计 ≈ €44.45m
@@ -254,7 +254,7 @@ Merchant 期 PV = 3.5 × (10.594 − 7.024) ≈ €12.50m
 <ul><li>有 10 年 PPA 比全 merchant 多约 €7.37m PV；比全 PPA 少约 €3.75m PV。</li><li><strong>merchant tail 的假设最敏感</strong>：价格、捕获率、退化、辅助服务价格都会改变结论；要做情景和敏感性分析。</li></ul>
 <h3 id="s51">7.5 Tolling vs merchant</h3>
 <p>假设：100 MW 储能；tolling 容量费 €60k/MW·年 = €6.0m/年；OPEX €1.0m/年；退化成本 €0.5m/年；merchant 预期净收入 €4.0m/年。</p>
-<pre><code>Tolling 净收入 = 6.0 − 1.0 − 0.5 = €4.5m/年
+<pre tabindex="0"><code>Tolling 净收入 = 6.0 − 1.0 − 0.5 = €4.5m/年
 Tolling 溢价 = 4.5 − 4.0 = €0.5m/年</code></pre>
 <ul><li>Tolling 用 €0.5m/年的溢价换取了 upside 和部分调度权；如果电价大涨，项目方可能后悔。</li><li>如果对手方信用不足或性能罚则苛刻，tolling 的“稳定”可能是假的。</li></ul>
 <hr>
@@ -390,7 +390,9 @@ Tolling 溢价 = 4.5 − 4.0 = €0.5m/年</code></pre>
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

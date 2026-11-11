@@ -71,6 +71,7 @@ energy-skills/
 │   ├── credibility.mjs             ← 可信度登记册解析与内容级门禁规则
 │   ├── check-maintenance.mjs       ← 更新清单到期看板与结构校验
 │   ├── build-knowledge-html.mjs    ← 知识中心构建器（frontmatter → HTML + 全文索引 + credibility.json）
+│   ├── architecture-diagrams.mjs   ← 5 张核心架构图的人工语义化规格与指纹校验
 │   └── knowledge.config.mjs        ← 分区、导航与固定文案
 ├── skills/                         ← 九份技能，各含 SKILL.md、SKILL_EN.md
 │   ├── electricity-trading-expert/     ← 附 tools/（单位换算、容量收入、三节点出清）
@@ -110,6 +111,8 @@ node scripts/check-consistency.mjs              # 结构 + 内容纪律（C 级�
 node scripts/check-maintenance.mjs              # 到期看板（不阻塞）
 node scripts/check-maintenance.mjs --check      # 更新清单结构校验
 ```
+
+正文中不带语言标记、含树形或流程符号的代码围栏会在构建时自动转为 HTML 图形：`├/└` 层级树渲染为结构卡片，多列阶段和箭头链路渲染为流程卡片，依赖坐标对齐的复杂图保留为带网格与彩色连线的“蓝图”面板。作者仍用纯文本维护，不需要手写 HTML。“中国主体进入路径”和“并网流程”章节中的步骤表会自动转成纵向里程碑，表格里的负责方、备注、风险和双地区信息都会保留；储能安全因果/应急链、碳核查与 CCER 流程会嵌在原有列表中，微网孤岛/黑启动表会转为运行状态卡。SCADA 安全分区、VPP/EMS 数据链、V2G、量化交易参考架构和灵活性资源地图另有 5 套人工语义化规格；源图关键节点变动时构建会报错，提示同步更新规格。
 
 `knowledge/english-digest.json` 给英文模型做路由：66 个模块的英文摘要、INDEX_EN 关键数字表、37 项未定事项（含 16 条带触发日的登记）与 22 项 C 级工单状态；`historical: true` 的模块还会在阅读页顶部渲染「数据不可作现行引用」横幅。
 

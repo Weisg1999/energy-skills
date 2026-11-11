@@ -15,7 +15,7 @@
 </head>
 <body data-cat="intl" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -117,16 +117,99 @@
 <hr>
 <h2 id="s1">0. 一页看懂</h2>
 <h3 id="s2">0.1 市场全景</h3>
-<pre><code>德国电力市场
-├─ 报价区：DE-LU（德国 + 卢森堡），欧盟市场耦合中的一个 bidding zone
-├─ 日前：EPEX Spot 拍卖，EUPHEMIA 出清，pay-as-clear
-├─ 日内：连续交易 + 日内拍卖，pay-as-bid；15/30/60 分钟产品
-├─ 平衡：FCR / aFRR / mFRR；容量市场 + 能量市场分开
-├─ 再调度：Redispatch 2.0，TSO/DSO 共同参与，≥100 kW
-├─ 可再生：EEG 拍卖 + 滑动市场溢价；负价时段适用价值归零
-├─ 电网费：StromNEV/StromNZV；§14a 可控负荷；AgNes 改革（2029）
-├─ 容量：StromVKG 容量机制，2031 年起；2026 年首轮招标
-└─ 监管：BNetzA；政策：BMWK；欧盟：ACER/ENTSO-E</code></pre>
+<figure class="tree-diagram" aria-label="德国电力市场结构图">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构图 · STRUCTURE</span>
+        <span class="diagram-meta">9 个一级分支</span>
+      </span>
+      <span class="tree-root-title">德国电力市场</span>
+
+    </figcaption>
+    <div class="tree-grid"><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">01</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">报价区</span>
+        <span class="tree-node-detail">DE-LU（德国 + 卢森堡），欧盟市场耦合中的一个 bidding zone</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">02</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">日前</span>
+        <span class="tree-node-detail">EPEX Spot 拍卖，EUPHEMIA 出清，pay-as-clear</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">03</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">日内</span>
+        <span class="tree-node-detail">连续交易 + 日内拍卖，pay-as-bid；15/30/60 分钟产品</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">04</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">平衡</span>
+        <span class="tree-node-detail">FCR / aFRR / mFRR；容量市场 + 能量市场分开</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">05</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">再调度</span>
+        <span class="tree-node-detail">Redispatch 2.0，TSO/DSO 共同参与，≥100 kW</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">06</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">可再生</span>
+        <span class="tree-node-detail">EEG 拍卖 + 滑动市场溢价；负价时段适用价值归零</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">07</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">电网费</span>
+        <span class="tree-node-detail">StromNEV/StromNZV；§14a 可控负荷；AgNes 改革（2029）</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">08</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">容量</span>
+        <span class="tree-node-detail">StromVKG 容量机制，2031 年起；2026 年首轮招标</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">09</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">监管</span>
+        <span class="tree-node-detail">BNetzA；政策：BMWK；欧盟：ACER/ENTSO-E</span>
+      </span>
+    </div>
+
+  </article></div>
+
+  </figure>
 <ul><li><strong>德国不是一个“孤立市场”</strong>：DE-LU 价格由欧盟日前耦合决定，跨境容量、邻国供需、EU ETS 都会进入价格。</li><li><strong>日前和日内是两套机制</strong>：日前是拍卖、统一价（pay-as-clear）；日内连续交易是撮合、成交价（pay-as-bid）。</li><li><strong>15 分钟是新的基本粒度</strong>：2025-10-01 起 SDAC 在多数报价区引入 15 分钟 MTU；德国日前/日内均有 15 分钟产品。</li><li><strong>平衡市场不是“辅助服务打包”</strong>：FCR、aFRR、mFRR 分开采购，容量与能量分开报价，规则和平台各不相同。</li><li><strong>再调度不是现货</strong>：Redispatch 2.0 是电网运营商为消除阻塞进行的干预，按监管规则补偿，不走 EPEX 出清。</li></ul>
 <h3 id="s3">0.2 关键数字</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>数字</th><th>含义</th><th>级别</th></tr></thead><tbody><tr><td>DE-LU</td><td>德国—卢森堡报价区</td><td>A</td></tr><tr><td>12:00 CET</td><td>EPEX 日前拍卖关闸（冬令时；夏令时为 CEST）</td><td>A</td></tr><tr><td>15 分钟</td><td>日前/日内 MTU；2025-10-01 起 SDAC 多数区域</td><td>A</td></tr><tr><td>-500 €/MWh</td><td>SDAC 日前最低价</td><td>A</td></tr><tr><td>-9,999 €/MWh</td><td>SIDC 日内最低价</td><td>A</td></tr><tr><td>27 / 25</td><td>SDAC / SIDC 参与国家数量（EPEX 口径）</td><td>A</td></tr><tr><td>4 小时</td><td>FCR/aFRR/mFRR 容量产品长度</td><td>A</td></tr><tr><td>1 MW</td><td>平衡市场最小报价单位</td><td>A</td></tr><tr><td>2021-10-01</td><td>Redispatch 2.0 适用起始日</td><td>A</td></tr><tr><td>100 kW</td><td>Redispatch 2.0 覆盖的机组门槛</td><td>A</td></tr><tr><td>2022-07-01</td><td>EEG 附加费降为零的起始日</td><td>A</td></tr><tr><td>2031</td><td>容量机制开始生效的年份</td><td>A</td></tr><tr><td>€15.6–35.2bn</td><td>容量机制预计成本区间</td><td>B</td></tr><tr><td>301 小时</td><td>2023 年德国负电价小时数（BNetzA/SMARD 口径）</td><td>A</td></tr><tr><td>457 小时</td><td>2024 年德国负电价小时数（BNetzA/SMARD 口径）</td><td>A</td></tr><tr><td>573 小时</td><td>2025 年德国负电价小时数（BNetzA/SMARD 口径）</td><td>A</td></tr></tbody></table></div>
@@ -142,15 +225,51 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>机构</th><th>角色</th><th>与中国对应</th></tr></thead><tbody><tr><td>BMWK</td><td>联邦经济与能源部：能源政策、法律草案</td><td>国家能源主管部门</td></tr><tr><td>BNetzA</td><td>联邦网络局：电网、市场规则执行、平衡市场资格、REMIT 登记</td><td>监管机构/能源局</td></tr><tr><td>TSO</td><td>输电系统运营商：50Hertz、Amprion、TenneT、TransnetBW</td><td>国调/网调</td></tr><tr><td>DSO</td><td>配电系统运营商：配网接入、§14a、再调度</td><td>省/地市电网</td></tr><tr><td>EPEX Spot</td><td>指定电力市场运营商（NEMO）：日前/日内交易</td><td>交易中心</td></tr><tr><td>ECC</td><td>欧洲商品清算：EPEX 交易清算</td><td>清算机构</td></tr><tr><td>ACER</td><td>欧盟能源监管合作署：REMIT、跨境规则</td><td>欧盟层面监管</td></tr><tr><td>ENTSO-E</td><td>欧洲输电运营商网络：耦合、平衡平台</td><td>欧盟调度协调</td></tr></tbody></table></div>
 <ul><li><strong>BNetzA 既管电网也管市场</strong>：平衡市场资格、电网费、REMIT 登记都在它手里；不要把它只当成“电价监管”。</li><li><strong>TSO 不是“调度中心”那么简单</strong>：它负责平衡、再调度、并网和系统安全；四个 TSO 分区，规则基本统一但接口不同。</li><li><strong>EPEX 只是交易场所</strong>：它不决定电网安全，也不负责平衡；平衡是 TSO 的事。</li></ul>
 <h3 id="s8">1.2 规则文件层级</h3>
-<pre><code>欧盟法：电力内部市场条例、REMIT、容量机制国家援助决定
-└─ 德国法：
-   ├─ EnWG（能源经济法）：市场、电网、零售、监管
-   ├─ StromNEV（电网费条例）：输配电价
-   ├─ StromNZV（电网接入条例）：接入、计量、平衡
-   ├─ EEG（可再生能源法）：拍卖、溢价、负价规则
-   ├─ KWKG（热电联产法）：CHP 支持
-   └─ StromVKG（电力安全法）：容量机制
-BNetzA 决定/指南 + EPEX 规则 + TSO 平衡市场规则</code></pre>
+<figure class="tree-diagram" aria-label="欧盟法结构图">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构图 · STRUCTURE</span>
+        <span class="diagram-meta">1 个一级分支</span>
+      </span>
+      <span class="tree-root-title">欧盟法</span>
+      <span class="tree-root-detail">电力内部市场条例、REMIT、容量机制国家援助决定</span>
+    </figcaption>
+    <div class="tree-grid"><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">01</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">德国法</span>
+
+      </span>
+    </div>
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">EnWG（能源经济法）</span>
+    <span class="tree-child-detail">市场、电网、零售、监管</span>
+
+  </li><li>
+    <span class="tree-child-title">StromNEV（电网费条例）</span>
+    <span class="tree-child-detail">输配电价</span>
+
+  </li><li>
+    <span class="tree-child-title">StromNZV（电网接入条例）</span>
+    <span class="tree-child-detail">接入、计量、平衡</span>
+
+  </li><li>
+    <span class="tree-child-title">EEG（可再生能源法）</span>
+    <span class="tree-child-detail">拍卖、溢价、负价规则</span>
+
+  </li><li>
+    <span class="tree-child-title">KWKG（热电联产法）</span>
+    <span class="tree-child-detail">CHP 支持</span>
+
+  </li><li>
+    <span class="tree-child-title">StromVKG（电力安全法）</span>
+    <span class="tree-child-detail">容量机制</span>
+
+  </li></ul>
+  </article></div>
+    <p class="diagram-note">BNetzA 决定/指南 + EPEX 规则 + TSO 平衡市场规则</p>
+  </figure>
 <ul><li><strong>EnWG 是“母法”</strong>：市场准入、零售许可、电网监管都在这里；具体价格/平衡规则在条例和 BNetzA 决定里。</li><li><strong>EEG 不是“电价法”</strong>：它管的是可再生项目的支持机制，不是 wholesale 价格；但负价规则会直接影响项目收入。</li><li><strong>StromVKG 是新法</strong>：容量机制 2031 年生效，2026 年已有首轮招标；不要把“已立法”当成“已运行”。</li></ul>
 <h3 id="s9">1.3 与中国的第一层差别</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>中国</th><th>德国</th></tr></thead><tbody><tr><td>市场层级</td><td>省间 + 省内</td><td>欧盟耦合 + DE-LU 报价区</td></tr><tr><td>调度与交易</td><td>调度机构 + 交易中心</td><td>TSO 平衡/再调度 + EPEX 交易</td></tr><tr><td>现货粒度</td><td>15 分钟（多数）</td><td>15 分钟 MTU（日前/日内）</td></tr><tr><td>价格机制</td><td>中长期 + 现货 + 辅助服务</td><td>日前/日内 + 平衡市场 + 再调度</td></tr><tr><td>容量机制</td><td>容量电价/补偿</td><td>2031 年起容量机制</td></tr><tr><td>可再生支持</td><td>机制电价/绿证</td><td>EEG 拍卖 + 市场溢价</td></tr><tr><td>电网费</td><td>输配电价，政府核定</td><td>StromNEV/StromNZV，BNetzA 监管</td></tr></tbody></table></div>
@@ -170,7 +289,7 @@ BNetzA 决定/指南 + EPEX 规则 + TSO 平衡市场规则</code></pre>
 <hr>
 <h2 id="s15">3. 价格形成：从 merit order 到负价</h2>
 <h3 id="s16">3.1 日前价格</h3>
-<pre><code>邻国报价 + 德国报价 + 跨境容量 + 机组约束
+<pre tabindex="0"><code>邻国报价 + 德国报价 + 跨境容量 + 机组约束
         ↓
 EUPHEMIA 耦合出清
         ↓
@@ -187,11 +306,41 @@ DE-LU 日前价格（每 MTU）</code></pre>
 <hr>
 <h2 id="s20">4. 结算与费用：现货价之外还有什么</h2>
 <h3 id="s21">4.1 结算链条</h3>
-<pre><code>EPEX 成交 → ECC 清算 → 平衡组申报 → TSO 不平衡结算
-        ↓
-电网费 + 税费/附加费 + 零售成本
-        ↓
-终端用户账单</code></pre>
+<figure class="flow-diagram" aria-label="流程示意">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">流程 · FLOW</span>
+        <span class="diagram-meta">6 个步骤</span>
+      </span>
+
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">EPEX 成交</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">ECC 清算</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">平衡组申报</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">04</span>
+      <span class="flow-text">TSO 不平衡结算</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">05</span>
+      <span class="flow-text">电网费 + 税费/附加费 + 零售成本</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">06</span>
+      <span class="flow-text">终端用户账单</span>
+
+    </li></ol>
+
+  </figure>
 <ul><li><strong>EPEX 结算</strong>：通过 ECC 清算；保证金、结算周期、违约处理按 ECC 规则。</li><li><strong>不平衡结算</strong>：BKV 与 TSO 结算偏差；价格可能是平衡市场边际价或监管规定的价格。</li><li><strong>电网费</strong>：输配电费按 StromNEV/StromNZV；大用户、储能、§14a 可控负荷可能有减免/折扣。</li><li><strong>税费/附加费</strong>：电力税、特许经营费、各类附加费；具体以账单和现行法为准。</li></ul>
 <h3 id="s22">4.2 电网费</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>组成</th><th>对象</th><th>特点</th></tr></thead><tbody><tr><td>输电费</td><td>TSO 区域</td><td>按容量/电量，BNetzA 监管</td></tr><tr><td>配电费</td><td>DSO 区域</td><td>各 DSO 不同，§14a 有减免</td></tr><tr><td>§19 StromNEV 特殊网络费</td><td>大用户/特殊负荷</td><td>需申请，条件严格</td></tr><tr><td>§14a 可控负荷</td><td>热泵、EV 充电、电池等</td><td>以控制换取电网费减免</td></tr></tbody></table></div>
@@ -217,7 +366,45 @@ DE-LU 日前价格（每 MTU）</code></pre>
 <h3 id="s31">6.1 是什么</h3>
 <ul><li><strong>再调度</strong>：电网运营商为消除线路阻塞，指令机组增减出力/改变出力计划；不是现货交易，不通过 EPEX 出清。</li><li><strong>Redispatch 2.0</strong>：自 2021-10-01 起适用，覆盖 ≥100 kW 的发电机组，TSO 和 DSO 共同参与；使用预测数据进行前置计算。</li><li><strong>法律基础</strong>：EnWG §13a（再调度）及相关条例/BNetzA 规定；具体流程、补偿、数据交换按现行规则。</li><li><strong>与 EEG 的关系</strong>：可再生机组也可能被再调度/限发；补偿和 EEG 支持按规则处理，不能把“限发”当成“市场没买”。</li></ul>
 <h3 id="s32">6.2 流程</h3>
-<pre><code>预测/计划 → 阻塞识别 → 再调度需求 → 指令 → 执行 → 计量 → 补偿</code></pre>
+<figure class="flow-diagram" aria-label="流程示意">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">流程 · FLOW</span>
+        <span class="diagram-meta">7 个步骤</span>
+      </span>
+
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">预测/计划</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">阻塞识别</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">再调度需求</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">04</span>
+      <span class="flow-text">指令</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">05</span>
+      <span class="flow-text">执行</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">06</span>
+      <span class="flow-text">计量</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">07</span>
+      <span class="flow-text">补偿</span>
+
+    </li></ol>
+
+  </figure>
 <ul><li><strong>预测</strong>：TSO/DSO 使用发电/负荷预测识别阻塞；预测误差会影响再调度需求。</li><li><strong>指令</strong>：电网运营商按规则指令机组调整；机组必须响应。</li><li><strong>补偿</strong>：按监管规则补偿（成本/损失）；具体计算看 EnWG/条例/BNetzA 规定。</li><li><strong>数据</strong>：再调度数据在平台公开（如 Netztransparenz）；用于分析阻塞成本。</li></ul>
 <h3 id="s33">6.3 对交易/项目的影响</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>影响</th><th>说明</th></tr></thead><tbody><tr><td>收益</td><td>再调度补偿可能弥补部分收入，但不等于现货收入</td></tr><tr><td>预测</td><td>限发/再调度会改变实际发电量，影响 EEG 溢价结算</td></tr><tr><td>选址</td><td>电网阻塞严重区域，再调度/限发概率高；项目选址要考虑</td></tr><tr><td>储能</td><td>储能可提供再调度/灵活性服务，但规则/补偿要单独看</td></tr><tr><td>电网费</td><td>AgNes 改革可能引入发电侧/储能电网费，改变项目经济性</td></tr></tbody></table></div>
@@ -232,9 +419,9 @@ DE-LU 日前价格（每 MTU）</code></pre>
 <p>设：</p>
 <ul><li>光伏 10 MW，负价持续 2 小时，AW = €70/MWh</li><li>负价时段发电 20 MWh</li><li>忽略其他费用</li></ul>
 <p>负价时段溢价损失：</p>
-<pre><code>20 × 70 = €1,400</code></pre>
+<pre tabindex="0"><code>20 × 70 = €1,400</code></pre>
 <ul><li>若负价时段市场价为 -€50/MWh，项目还要承担负价售电损失：</li></ul>
-<pre><code>20 × (-50) = -€1,000</code></pre>
+<pre tabindex="0"><code>20 × (-50) = -€1,000</code></pre>
 <ul><li>合计影响约 €2,400；具体按 EEG 结算规则。</li><li>储能可以把负价时段的电“存起来”或减少上网，但受并网/电网费/§14a 约束。</li></ul>
 <h3 id="s38">7.3 绿证与来源证明</h3>
 <ul><li><strong>Herkunftsnachweis（HKN）</strong>：德国来源证明，由 UBA 管理；绿电属性与物理电量分开。</li><li><strong>EEG 项目</strong>：享受 EEG 支持的电量通常不能同时转让绿证属性；具体看规则。</li><li><strong>PPA</strong>：绿电 PPA 的 HKN 归属要在合同中写清；否则“绿电”可能只是价格条款。</li></ul>
@@ -250,7 +437,79 @@ DE-LU 日前价格（每 MTU）</code></pre>
 <hr>
 <h2 id="s43">9. 中国主体进入路径</h2>
 <h3 id="s44">9.1 主体与注册</h3>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>步骤</th><th>内容</th><th>负责方</th></tr></thead><tbody><tr><td>1</td><td>设立德国/欧盟主体，确定税务/合规架构</td><td>企业/律师/税务</td></tr><tr><td>2</td><td>零售业务：EnWG §5 供电许可（或豁免）</td><td>BNetzA</td></tr><tr><td>3</td><td>交易：EPEX 会员/经纪、ECC 清算账户</td><td>EPEX/ECC</td></tr><tr><td>4</td><td>REMIT：在 BNetzA 的 CEREMP 登记，交易报告</td><td>BNetzA/ACER</td></tr><tr><td>5</td><td>平衡组：与 TSO 签 BKV 合同，开平衡组</td><td>TSO</td></tr><tr><td>6</td><td>资产：MaStR 登记；EEG 直接营销登记</td><td>BNetzA/TSO</td></tr><tr><td>7</td><td>平衡市场：预审（prequalification）</td><td>TSO/regelleistung.net</td></tr><tr><td>8</td><td>并网：连接协议、计量、§14a（如适用）</td><td>TSO/DSO</td></tr></tbody></table></div>
+<figure class="milestone-diagram" aria-label="市场进入路径">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">进入路径 · ROADMAP</span>
+        <span class="diagram-meta">8 个步骤</span>
+      </span>
+    </figcaption>
+    <ol class="milestone-list"><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">01</span>
+      <div class="milestone-card">
+        <span class="milestone-title">设立德国/欧盟主体</span>
+        <span class="milestone-detail">确定税务/合规架构</span>
+
+        <div class="milestone-meta" data-meta="负责方"><span class="milestone-meta-label">负责方</span><span>企业/律师/税务</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">02</span>
+      <div class="milestone-card">
+        <span class="milestone-title">零售业务</span>
+        <span class="milestone-detail">EnWG §5 供电许可（或豁免）</span>
+
+        <div class="milestone-meta" data-meta="负责方"><span class="milestone-meta-label">负责方</span><span>BNetzA</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">03</span>
+      <div class="milestone-card">
+        <span class="milestone-title">交易</span>
+        <span class="milestone-detail">EPEX 会员/经纪、ECC 清算账户</span>
+
+        <div class="milestone-meta" data-meta="负责方"><span class="milestone-meta-label">负责方</span><span>EPEX/ECC</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">04</span>
+      <div class="milestone-card">
+        <span class="milestone-title">REMIT</span>
+        <span class="milestone-detail">在 BNetzA 的 CEREMP 登记，交易报告</span>
+
+        <div class="milestone-meta" data-meta="负责方"><span class="milestone-meta-label">负责方</span><span>BNetzA/ACER</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">05</span>
+      <div class="milestone-card">
+        <span class="milestone-title">平衡组</span>
+        <span class="milestone-detail">与 TSO 签 BKV 合同，开平衡组</span>
+
+        <div class="milestone-meta" data-meta="负责方"><span class="milestone-meta-label">负责方</span><span>TSO</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">06</span>
+      <div class="milestone-card">
+        <span class="milestone-title">资产</span>
+        <span class="milestone-detail">MaStR 登记；EEG 直接营销登记</span>
+
+        <div class="milestone-meta" data-meta="负责方"><span class="milestone-meta-label">负责方</span><span>BNetzA/TSO</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">07</span>
+      <div class="milestone-card">
+        <span class="milestone-title">平衡市场</span>
+        <span class="milestone-detail">预审（prequalification）</span>
+
+        <div class="milestone-meta" data-meta="负责方"><span class="milestone-meta-label">负责方</span><span>TSO/regelleistung.net</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">08</span>
+      <div class="milestone-card">
+        <span class="milestone-title">并网</span>
+        <span class="milestone-detail">连接协议、计量、§14a（如适用）</span>
+
+        <div class="milestone-meta" data-meta="负责方"><span class="milestone-meta-label">负责方</span><span>TSO/DSO</span></div>
+      </div>
+    </li></ol>
+  </figure>
 <ul><li><strong>零售 vs 批发</strong>：批发交易不需要零售许可，但需要 EPEX/ECC、REMIT、平衡组；零售还需要 EnWG §5 许可。</li><li><strong>REMIT</strong>：市场参与者要登记并报告交易；具体阈值/字段按 REMIT 和 BNetzA 指南。</li><li><strong>金融监管</strong>：如果交易衍生品，可能触发 MiFID II/BaFin 许可、EMIR 清算；要提前问律师。</li><li><strong>MaStR</strong>：发电/储能资产必须在 Marktstammdatenregister 登记；否则可能影响支持/并网。</li></ul>
 <h3 id="s45">9.2 数据与系统</h3>
 <ul><li><strong>EPEX 数据</strong>：日前/日内价格、成交量；公共数据有延迟。</li><li><strong>regelleistung.net</strong>：平衡市场招标/结果/预审。</li><li><strong>Netztransparenz</strong>：再调度、EEG、平衡数据。</li><li><strong>SMARD</strong>：BNetzA 的电力市场数据平台；适合做宏观分析。</li><li><strong>时区</strong>：CET/CEST 切换；系统要自动处理，不能硬编码 UTC+1。</li></ul>
@@ -259,11 +518,37 @@ DE-LU 日前价格（每 MTU）</code></pre>
 <h3 id="s47">9.4 合规</h3>
 <ul><li><strong>REMIT</strong>：禁止内幕交易、市场操纵；交易报告、记录保存。</li><li><strong>BNetzA</strong>：电网费、§14a、平衡市场资格、零售许可。</li><li><strong>EEG</strong>：直接营销登记、负价规则、结算申报。</li><li><strong>反垄断/国家援助</strong>：容量机制、补贴、跨境交易可能涉及；具体看欧盟/德国规则。</li><li><strong>AML/KYC</strong>：银行、交易对手、ECC 的合规要求。</li></ul>
 <h3 id="s48">9.5 落地顺序</h3>
-<pre><code>先做“数据 + 回测”（不注册）
-  → 再做“主体 + REMIT + 平衡组”
-  → 再做“EPEX 交易/ECC 清算”
-  → 再做“平衡市场预审”
-  → 再扩“零售/EEG/容量机制”</code></pre>
+<figure class="flow-diagram" aria-label="流程示意">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">流程 · FLOW</span>
+        <span class="diagram-meta">5 个步骤</span>
+      </span>
+
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">先做“数据 + 回测”（不注册）</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">再做“主体 + REMIT + 平衡组”</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">再做“EPEX 交易/ECC 清算”</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">04</span>
+      <span class="flow-text">再做“平衡市场预审”</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">05</span>
+      <span class="flow-text">再扩“零售/EEG/容量机制”</span>
+
+    </li></ol>
+
+  </figure>
 <ul><li><strong>不要先签 PPA 再补平衡组</strong>：平衡责任、计量、并网都可能卡住。</li><li><strong>先做一个平衡组/一个区域</strong>：德国四个 TSO 区域规则基本统一，但接口/费用不同；先跑通一个。</li><li><strong>先做日前还是日内</strong>：日前流动性好、门槛低；日内需要更强的预测和自动化。</li></ul>
 <hr>
 <h2 id="s49">10. 十个常见坑</h2>
@@ -278,41 +563,41 @@ DE-LU 日前价格（每 MTU）</code></pre>
 <p>设：</p>
 <ul><li>10 MW 负荷，某 15 分钟时段</li><li>日前价 €40/MWh，日内价 €90/MWh</li><li>电量：10 MW × 0.25 h = 2.5 MWh</li></ul>
 <p>日前买入成本：</p>
-<pre><code>40 × 2.5 = €100</code></pre>
+<pre tabindex="0"><code>40 × 2.5 = €100</code></pre>
 <p>日内卖出收入：</p>
-<pre><code>90 × 2.5 = €225</code></pre>
+<pre tabindex="0"><code>90 × 2.5 = €225</code></pre>
 <p>毛收益：</p>
-<pre><code>225 - 100 = €125</code></pre>
+<pre tabindex="0"><code>225 - 100 = €125</code></pre>
 <ul><li>忽略交易费、清算费、不平衡成本；实际收益会下降。</li><li>若日内价格反向，亏损也会放大；需要风险限额。</li></ul>
 <h3 id="s53">12.2 EEG 负价损失</h3>
 <p>设：</p>
 <ul><li>光伏 10 MW，负价 2 小时，发电 20 MWh</li><li>AW = €70/MWh；负价时段市场价 -€50/MWh</li></ul>
 <p>溢价损失：</p>
-<pre><code>20 × 70 = €1,400</code></pre>
+<pre tabindex="0"><code>20 × 70 = €1,400</code></pre>
 <p>负价售电损失：</p>
-<pre><code>20 × (-50) = -€1,000</code></pre>
+<pre tabindex="0"><code>20 × (-50) = -€1,000</code></pre>
 <p>合计影响：</p>
-<pre><code>1,400 + 1,000 = €2,400</code></pre>
+<pre tabindex="0"><code>1,400 + 1,000 = €2,400</code></pre>
 <ul><li>若配置储能，把部分电量移到正价时段，可减少损失；但要算储能成本/电网费。</li><li>具体结算按 EEG §51 和项目合同。</li></ul>
 <h3 id="s54">12.3 工业 PPA 对冲</h3>
 <p>设：</p>
 <ul><li>用户年用电 100 GWh，PPA 价 €60/MWh</li><li>现货均价 €80/MWh</li><li>忽略电网费/税费</li></ul>
 <p>现货成本：</p>
-<pre><code>100,000 × 80 = €8,000,000</code></pre>
+<pre tabindex="0"><code>100,000 × 80 = €8,000,000</code></pre>
 <p>PPA 成本：</p>
-<pre><code>100,000 × 60 = €6,000,000</code></pre>
+<pre tabindex="0"><code>100,000 × 60 = €6,000,000</code></pre>
 <p>节省：</p>
-<pre><code>8,000,000 - 6,000,000 = €2,000,000</code></pre>
+<pre tabindex="0"><code>8,000,000 - 6,000,000 = €2,000,000</code></pre>
 <ul><li>若用户出力曲线与现货价格负相关，PPA 的“节省”可能被 profile 风险吃掉。</li><li>还要看 HKN/绿证归属、平衡责任、电网费。</li></ul>
 <h3 id="s55">12.4 §14a 可控负荷</h3>
 <p>设：</p>
 <ul><li>1 MW 可控负荷，年用电 4,000 MWh</li><li>电网费减免 €20/MWh（假设）</li><li>可减免：</li></ul>
-<pre><code>4,000 × 20 = €80,000/年</code></pre>
+<pre tabindex="0"><code>4,000 × 20 = €80,000/年</code></pre>
 <ul><li>代价是电网运营商可以控制负荷；生产/舒适度受影响。</li><li>具体减免/控制模块按 BNetzA §14a 规定，不能直接用假设值。</li></ul>
 <h3 id="s56">12.5 容量机制（示意）</h3>
 <p>设：</p>
 <ul><li>储能 100 MW，容量机制中标 €50k/MW/年</li><li>年容量收入：</li></ul>
-<pre><code>100 × 50,000 = €5,000,000</code></pre>
+<pre tabindex="0"><code>100 × 50,000 = €5,000,000</code></pre>
 <ul><li>合同有可用性义务；实际收入还取决于能量/平衡市场收益和合同条款。</li><li>上述价格为假设，不代表 2026 年招标结果。</li></ul>
 <hr>
 <h2 id="s57">13. 2026 观察点</h2>
@@ -444,7 +729,9 @@ DE-LU 日前价格（每 MTU）</code></pre>
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

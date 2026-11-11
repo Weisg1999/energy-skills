@@ -15,7 +15,7 @@
 </head>
 <body data-cat="carbon" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -132,7 +132,7 @@
 <h2 id="s6">5. CBAM：时点与计算</h2>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>事项</th><th>状态/时点</th><th>级别</th></tr></thead><tbody><tr><td>过渡期</td><td>2023-10-01 开始</td><td>A</td></tr><tr><td>正式实施</td><td>2026-01-01</td><td>A</td></tr><tr><td>证书购买</td><td>2027-02 起</td><td>A</td></tr><tr><td>首次年度申报与清缴</td><td>2027-09-30</td><td>A</td></tr><tr><td>默认值加价</td><td>2026 年 +10%，2028 年 +30%</td><td>A</td></tr><tr><td>50 吨以下进口豁免</td><td>适用</td><td>A</td></tr><tr><td>下游产品扩围</td><td>2028 年起约 180 种</td><td>A</td></tr><tr><td>第三方核查</td><td>2026 年 9-10 月起引入</td><td>A</td></tr><tr><td>英国 CBAM</td><td>2027-01-01 实施</td><td>A</td></tr><tr><td>证书参考价</td><td>2026 年 Q1/Q2 约 75.36/75.28 欧元/吨</td><td>A/B</td></tr></tbody></table></div>
 <p>计算逻辑：</p>
-<pre><code>应缴证书 = 隐含排放 − 原产国已支付碳价对应的排放
+<pre tabindex="0"><code>应缴证书 = 隐含排放 − 原产国已支付碳价对应的排放
 证书成本 = 应缴证书 × EU ETS 拍卖均价</code></pre>
 <ul><li>隐含排放按产品规则计算，含直接排放与部分间接排放；</li><li>默认值可用但会被加价，实际数据更有利；</li><li>原产国已支付碳价可扣减，但<strong>免费配额部分通常不构成可扣减碳价</strong>，需逐项举证（B）；</li><li><strong>量级参考</strong>：吨高炉钢出口约缴 44.79 欧元（约 375 元，D 级估算），对照国内吨钢利润约 200 元（C 级）——只作量级感知，不作报价依据。</li></ul>
 <p><strong>纠错</strong>：&quot;2026-01-01 实施&quot;不等于&quot;2026 年买证书&quot;；证书购买从 2027-02 开始，首次清缴 2027-09-30。</p>
@@ -236,7 +236,9 @@
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

@@ -15,7 +15,7 @@
 </head>
 <body data-cat="cross" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -131,25 +131,35 @@
 <h3 id="s12">2.1 排队、时长与非 firm 选项</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>市场</th><th>排队规模（状态）</th><th>典型时长</th><th>非 firm/灵活接入</th><th>级别/时点</th></tr></thead><tbody><tr><td>澳大利亚 NEM</td><td>待核实</td><td>待核实</td><td>待核实；AEMO 对自动访问返回 403</td><td>—</td></tr><tr><td>德国</td><td>待核实</td><td>待核实</td><td>待核实；§14a 是可控负荷，不是发电非 firm</td><td>—</td></tr><tr><td>英国</td><td>约 750 GW → 200–250 GW（申请/清理后）</td><td>待核实</td><td>TMO4+ 以“ready + needed”清退占位；非 firm 接入选项待核实</td><td>C；TMO4+ 为 A</td></tr><tr><td>意大利</td><td>约 277 GW（储能接入申请）</td><td>待核实</td><td>待核实</td><td>B</td></tr><tr><td>西班牙</td><td>约 37.37 GW（接入申请）</td><td>待核实</td><td>RDL 7/2026 灵活接入（flexible access）+ 自消费预留 10%</td><td>C（申请）；B（RDL）</td></tr><tr><td>法国</td><td>电池队列 14 GW/180 项目；另 2025 末已授接入权约 30 GW（数据中心 14 + 制氢 9.5 + 工业 6.5）</td><td>待核实（RTE 未披露典型时长）</td><td>“gabarits”灵活接入仅有 B 级交易商文章，未见官方文本；投决前向 RTE 确认</td><td>A（队列）；B（灵活接入）</td></tr><tr><td>荷兰</td><td>约 1.5 万家各类企业等待接入（排队）</td><td>待核实</td><td>ATR85 等非 firm 合同；2025 年约 9 GW 非 firm 容量被提供</td><td>C（排队）；B（ATR85）</td></tr><tr><td>波兰</td><td>储能接入申请 &gt;20 GW/122 GWh</td><td>待核实</td><td>待核实</td><td>C</td></tr><tr><td>比利时 + 北欧</td><td>待核实</td><td>待核实</td><td>待核实</td><td>—</td></tr><tr><td>美国 ERCOT</td><td>约 474 GW（大负荷申请，&gt;90% 数据中心）</td><td>大负荷已排队到 2027 年</td><td>Batch Zero 分“基荷/研究负荷”，最终分配 2027 春</td><td>C</td></tr><tr><td>美国 PJM</td><td>715 项目/201.5 GW（2026-08 首轮并联；储能约 60 GW）</td><td>研究约 40 个月，目标 8–11 个月</td><td>FERC 2026-04 批复四条并网路径</td><td>A</td></tr><tr><td>美国 CAISO</td><td>约 197 GW</td><td>集群制，较 PJM/ERCOT 更久（定性）</td><td>待核实</td><td>B</td></tr><tr><td>日本</td><td>接续检讨 24,880 件（FY2025）</td><td>待核实</td><td>同一事业者件数上限：东京 11、关西 12、九州 8（2026-08 起）</td><td>C</td></tr></tbody></table></div>
 <h3 id="s13">2.2 四种排队治理</h3>
-<pre><code>英国 TMO4+：
+<figure class="diagram-blueprint">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构示意 · DIAGRAM</span>
+        <span class="diagram-meta">可横向滚动</span>
+      </span>
+    </figcaption>
+    <div class="diagram-canvas" tabindex="0" role="group" aria-label="结构示意图">
+      <pre>英国 TMO4+：
   从“先到先得”转向“ready + needed”
-  → 项目要证明土地、设备、资金、并网条件都就绪
-  → 占位不建会被清理；队列从约 750 GW 压到 200–250 GW（C）
+  <span class="d-arrow">→</span> 项目要证明土地、设备、资金、并网条件都就绪
+  <span class="d-arrow">→</span> 占位不建会被清理；队列从约 750 GW 压到 200–250 GW（C）
 
 西班牙 RDL 7/2026：
   灵活接入（flexible access）+ 自消费预留 10%
-  → 允许在限定时段限出力换取更快接入
-  → 具体条款以 BOE-A-2026-6544 为准（B）
+  <span class="d-arrow">→</span> 允许在限定时段限出力换取更快接入
+  <span class="d-arrow">→</span> 具体条款以 BOE-A-2026-6544 为准（B）
 
 荷兰 ATR85：
   非 firm 合同，以限出力/限充电换取更快接入
-  → 2025 年约 9 GW 非 firm 容量被提供（B）
-  → 2026-07-01 起接入优先排序框架生效（B/C）
+  <span class="d-arrow">→</span> 2025 年约 9 GW 非 firm 容量被提供（B）
+  <span class="d-arrow">→</span> 2026-07-01 起接入优先排序框架生效（B/C）
 
 美国 ERCOT Batch Zero：
   2026-09-03 分类：204 个项目/66.4 GW 为“基荷”，158 个/127.9 GW 为“研究负荷”
-  → 最终分配预计 2027 年春（C）
-  → 大负荷与储能争抢并网和输电资源</code></pre>
+  <span class="d-arrow">→</span> 最终分配预计 2027 年春（C）
+  <span class="d-arrow">→</span> 大负荷与储能争抢并网和输电资源</pre>
+    </div>
+  </figure>
 <h3 id="s14">2.3 投决读法</h3>
 <ul><li><strong>排队规模不是可开发规模</strong>：申请量里包含大量“占位不建”和“一址多报”；英国 TMO4+ 的清理比例就是证据。</li><li><strong>典型时长比排队规模更影响 IRR</strong>：PJM 研究约 40 个月、ERCOT 大负荷排到 2027 年，意味着并网时间要按“P90 延迟”做敏感性，而不是按开发商口头承诺。</li><li><strong>非 firm 是“用收益换时间”</strong>：荷兰 ATR85、西班牙灵活接入都会限制可用容量或时段；模型里要把“限出力小时”和“容量收入减少”同时扣掉。</li><li><strong>先确认状态再引用</strong>：申请、许可、在建、并网、投运是五个状态；本表在“排队规模”列尽量写状态，未写状态的数字不能当在建。</li><li><strong>法国的 30 GW 与 14 GW 不是一回事</strong>：30 GW 是 2025 年末已授接入权（数据中心/制氢/工业），14 GW/180 是电池并网队列；两者相加会把“已授”与“排队”混成一个数。RTE 未披露典型并网时长，模型里只能用 P50/P90 区间假设并标注为 D 级。</li></ul>
 <hr>
@@ -184,10 +194,18 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>工单</th><th>结论</th><th>证据</th><th>处理</th></tr></thead><tbody><tr><td>#1 比利时 CRM 价格</td><td><strong>已复核，升 A 级</strong>：€27.3k/MW·年（27,300），「27.3 万」是单位错误</td><td>Elia 2025-10-30《CRM auction results published》新闻稿</td><td>国别模块、容量对照、海外储能、电力交易技能中英版、INDEX_EN 全部同步</td></tr><tr><td>#2 波兰电池降额</td><td><strong>已改口径，仍 C 级</strong>：13.39%，仅适用 2025-12 主拍卖 / 2030 交付年；2027 T-1 用 95%、2029 主拍卖用 61.3%，禁止跨场次混用</td><td>Modo Energy、UZ Energy 等多源一致；URE 决议原文仍缺</td><td>补口径隔离说明，投决前须书面确认</td></tr><tr><td>#18 德国「不向电池开放」</td><td><strong>已撤销（原表述错误）</strong>：BNetzA 明确首轮「电厂与电力储能设施共同参与竞争」；实际是 ≥10 h 持续出力等准入条件</td><td>BNetzA 2026-07-21（招标启动）、2026-11-03（首轮结果）</td><td>全仓 18 处表述改为规则条件；补首轮 A 级结果：41 标/11,958 rMW、11 标中标约 5,160 rMW、量加权均价 €155,296/rMW·年</td></tr><tr><td>#19 西班牙首拍时点</td><td><strong>禁止引用</strong>：截至 2026-11-11 REE / 能源国务秘书处未发布 convocatoria，「2026 年底至 2027 年」是媒体推测</td><td>Garrigues / DLA Piper / Mondaq 对 TED/966/2026 的解读、2026-10 行业报道「Spain is still awaiting the first calls」</td><td>撤销推测时点，正文改为「空缺」并标下次复核 2026-12-01；补 A 级框架（2026-09-18 生效、欧盟 2026-05-29 批准 €90 亿/10 年、三类拍卖）</td></tr><tr><td>#20 比利时下一轮 CRM 时间</td><td><strong>已复核，升 A 级</strong>：2026 年三场（2030 Y-4 / 2028 Y-2 / 2027 Y-1）均 2026-09-30 17:00 截标、10-30 公布结果</td><td>Elia CRM Auction Calendar 官方页 + 2025-10-30 新闻稿</td><td>国别模块补 §2.4.1 日程表；2027 年场次官方日历未列，仍标待公布</td></tr></tbody></table></div>
 <aside class="note"><p>顺带闭环 #11（比利时 Y-4 4,690 MW / 电池 179 MW，与 #1 同源，升 A 级）。本轮共销项 8 项，剩 14 项按 P0 每月 / P1 每季 / P2 半年写入「下次复核」日期，由 <code>check-maintenance.mjs</code> 到期提示。</p></aside>
 <h3 id="s27">5.3 复核方法</h3>
-<pre><code>第一步：找一手来源
-  法规 → 官方公报/监管机构
-  拍卖 → 交易所/TSO 公告
-  装机 → TSO/统计机构年度报告
+<figure class="diagram-blueprint">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构示意 · DIAGRAM</span>
+        <span class="diagram-meta">可横向滚动</span>
+      </span>
+    </figcaption>
+    <div class="diagram-canvas" tabindex="0" role="group" aria-label="结构示意图">
+      <pre>第一步：找一手来源
+  法规 <span class="d-arrow">→</span> 官方公报/监管机构
+  拍卖 <span class="d-arrow">→</span> 交易所/TSO 公告
+  装机 <span class="d-arrow">→</span> TSO/统计机构年度报告
 
 第二步：对齐单位与口径
   €/MW·年 vs €/MWh·年 vs 美元/kW·月
@@ -199,9 +217,11 @@
   两个 C 级不能互相证明
 
 第四步：回填
-  升级 → 改级别与时点
-  无法确认 → 保留“待核实”并写区间
-  过期 → 标“历史值”，不删除</code></pre>
+  升级 <span class="d-arrow">→</span> 改级别与时点
+  无法确认 <span class="d-arrow">→</span> 保留“待核实”并写区间
+  过期 <span class="d-arrow">→</span> 标“历史值”，不删除</pre>
+    </div>
+  </figure>
 <hr>
 <h2 id="s28">6. 维护方式</h2>
 <h3 id="s29">6.1 更新触发</h3>
@@ -296,7 +316,9 @@
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

@@ -15,7 +15,7 @@
 </head>
 <body data-cat="vpp" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -140,7 +140,7 @@
 <p>调节能力五要素：<strong>使用频次、保留负荷、可调时段、响应时间与持续时间、峰荷同时率</strong>。五要素不写清，能力测算就是拍脑袋。</p>
 <h3 id="s13">2.3 能力测算公式与算例</h3>
 <p>单资源可调能力不是额定功率，而是以下三者取小：</p>
-<pre><code>单资源可调能力 = min(
+<pre tabindex="0"><code>单资源可调能力 = min(
   额定功率 − 保留负荷,
   响应时间内可爬坡量,
   持续时间内的能量约束
@@ -178,9 +178,36 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>层级</th><th>时间尺度</th><th>主要功能</th><th>部署位置</th><th>失效策略</th></tr></thead><tbody><tr><td>市场/云平台</td><td>日前–15 min</td><td>预测、报价、组合优化、结算对账</td><td>云端</td><td>降级为计划曲线</td></tr><tr><td>站级/边缘</td><td>秒–分钟</td><td>聚合计、AGC/AVC、SOC 管理、指令分解</td><td>站端/边缘网关</td><td>本地自治</td></tr><tr><td>设备级</td><td>毫秒–秒</td><td>变流器控制、保护、联锁</td><td>设备</td><td>安全停机/保供</td></tr></tbody></table></div>
 <p>原则：<strong>慢过程上云，快过程下沉，保护级不上云</strong>。把秒级调频做成&quot;云端算完再下发&quot;，通信抖动就会导致考核不合格；把保护逻辑放到云端，更是安全红线。</p>
 <h3 id="s23">4.2 数据链路</h3>
-<pre><code>现场表计/RTU/PLC → 边缘网关 → 站级 SCADA/EMS → VPP 平台 → 交易/调度系统
-        ↑                ↓                ↓
-     设备状态        本地自治          市场报价/结算</code></pre>
+<figure class="arch-diagram arch-pipeline-figure" data-arch-id="vpp-data-chain" aria-label="VPP 与 EMS 数据链路">
+    <figcaption class="diagram-head">
+    <span class="diagram-head-row">
+      <span class="diagram-kicker">数据链路 · DATA FLOW</span>
+      <span class="diagram-meta">5 个节点</span>
+    </span>
+    <span class="diagram-title">VPP / EMS 数据链路</span>
+  </figcaption>
+    <div class="arch-pipeline"><article class="arch-node">
+      <span class="arch-node-index" aria-hidden="true">01</span>
+      <span class="arch-node-title">现场表计/RTU/PLC</span>
+      <span class="arch-node-note" data-dir="up"><span aria-hidden="true">↑</span>设备状态</span>
+    </article><span class="arch-pipe-arrow" aria-hidden="true">→</span><article class="arch-node">
+      <span class="arch-node-index" aria-hidden="true">02</span>
+      <span class="arch-node-title">边缘网关</span>
+      <span class="arch-node-note" data-dir="down"><span aria-hidden="true">↓</span>本地自治</span>
+    </article><span class="arch-pipe-arrow" aria-hidden="true">→</span><article class="arch-node">
+      <span class="arch-node-index" aria-hidden="true">03</span>
+      <span class="arch-node-title">站级 SCADA/EMS</span>
+      <span class="arch-node-note" data-dir="down"><span aria-hidden="true">↓</span>市场报价/结算</span>
+    </article><span class="arch-pipe-arrow" aria-hidden="true">→</span><article class="arch-node">
+      <span class="arch-node-index" aria-hidden="true">04</span>
+      <span class="arch-node-title">VPP 平台</span>
+
+    </article><span class="arch-pipe-arrow" aria-hidden="true">→</span><article class="arch-node">
+      <span class="arch-node-index" aria-hidden="true">05</span>
+      <span class="arch-node-title">交易/调度系统</span>
+
+    </article></div>
+  </figure>
 <p>关键数据：</p>
 <ul><li>实时功率、分时电量、最大需量、功率因数；</li><li>储能 SOC、SOH、可用能量、充放电状态；</li><li>分布式电源出力、可用率、限发状态；</li><li>负荷基线、生产状态、可调容量；</li><li>通信在线率、指令时延、执行偏差。</li></ul>
 <h3 id="s24">4.3 协议选型</h3>
@@ -207,7 +234,7 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>套利</th><th>调频</th><th>备用</th><th>需量/DR</th></tr></thead><tbody><tr><td>功率</td><td>充放功率</td><td>调频容量</td><td>备用容量</td><td>削峰功率</td></tr><tr><td>能量</td><td>充放电量</td><td>能量中性裕度</td><td>持续时间内电量</td><td>削峰时长</td></tr><tr><td>时间</td><td>峰谷时段</td><td>全天响应</td><td>调用时段</td><td>尖峰时段</td></tr></tbody></table></div>
 <p>同一时段取最大值，不做求和；跨时段叠加要做 SOC 仿真。</p>
 <h3 id="s31">5.4 收入公式与订单结构</h3>
-<pre><code>年收入 = Σ_i (可调容量_i × 年调用小时_i × 价格_i × 分成比例_i)
+<pre tabindex="0"><code>年收入 = Σ_i (可调容量_i × 年调用小时_i × 价格_i × 分成比例_i)
        − 偏差罚款 − 考核扣减 − 机会成本</code></pre>
 <p>订单结构通常由四部分组成：</p>
 <ul><li><strong>容量/可用性费用</strong>：按可调容量或可用率支付；</li><li><strong>电量/里程费用</strong>：按实际调用电量或调节里程支付；</li><li><strong>考核/罚款</strong>：未响应、响应不足、通信离线；</li><li><strong>分成</strong>：运营商与资源方按合同分配。</li></ul>
@@ -216,7 +243,7 @@
 <h2 id="s32">6. 聚合调度优化</h2>
 <h3 id="s33">6.1 优化问题</h3>
 <p>VPP 调度的本质是：在资源约束、用户生产约束、市场规则约束下，把有限的功率、能量和响应能力分配到最值钱的品种上。</p>
-<pre><code>max Σ_t [ 现货收益_t + 辅助服务容量收益_t + DR 补偿_t
+<pre tabindex="0"><code>max Σ_t [ 现货收益_t + 辅助服务容量收益_t + DR 补偿_t
           − 退化成本_t − 偏差惩罚_t − 用户机会成本_t ]</code></pre>
 <p>约束至少包括：</p>
 <ul><li>功率平衡与并网点限值；</li><li>储能 SOC、充放电功率、RTE、退化；</li><li>可调负荷的保留负荷、响应时间、持续时间、恢复时间；</li><li>分布式电源的预测出力与限发；</li><li>合同/申报的容量与时长；</li><li>同一资源同一时段的品种互斥；</li><li>基线认定与计量口径。</li></ul>
@@ -226,7 +253,7 @@
 <p>假设：可用能量 18 MWh，充电价 0.30 元/kWh，放电价 1.00 元/kWh，退化成本 0.03 元/kWh，日循环 1 次。</p>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>时段</th><th>动作</th><th>功率</th><th>电量</th><th>SOC</th><th>说明</th></tr></thead><tbody><tr><td>00–04</td><td>充电</td><td>4.5 MW</td><td>18 MWh（AC）</td><td>0→90%</td><td>谷段低价</td></tr><tr><td>10–12</td><td>放电</td><td>5 MW</td><td>10 MWh</td><td>90→40%</td><td>峰段</td></tr><tr><td>18–20</td><td>放电</td><td>4 MW</td><td>8 MWh</td><td>40→0%</td><td>晚峰</td></tr></tbody></table></div>
 <p>日收益：</p>
-<pre><code>充电成本 = 18 MWh × 300 元/MWh = 5,400 元
+<pre tabindex="0"><code>充电成本 = 18 MWh × 300 元/MWh = 5,400 元
 放电收入 = 18 MWh × 1,000 元/MWh = 18,000 元
 退化成本 = (18 + 18) MWh × 30 元/MWh = 1,080 元
 日净收益 = 18,000 − 5,400 − 1,080 = 11,520 元
@@ -242,7 +269,29 @@
 <hr>
 <h2 id="s38">7. 结算、考核与分成</h2>
 <h3 id="s39">7.1 结算链</h3>
-<pre><code>电力交易中心/电网 → VPP 运营商（或售电公司）→ 资源方/用户</code></pre>
+<figure class="flow-diagram" aria-label="流程示意">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">流程 · FLOW</span>
+        <span class="diagram-meta">3 个步骤</span>
+      </span>
+
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">电力交易中心/电网</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">VPP 运营商（或售电公司）</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">资源方/用户</span>
+
+    </li></ol>
+
+  </figure>
 <p>三种常见结构：</p>
 <ol><li><strong>VPP 直接结算</strong>：VPP 作为市场主体与交易中心结算，再按合同分给资源方；</li><li><strong>电网代结算</strong>：93 号文的过渡安排，批发市场结算数据由被聚合资源计量数据加总，暂由电网企业清分到户；</li><li><strong>售电公司代结算</strong>：VPP 通过售电公司参与零售/批发市场，售电公司统一结算。</li></ol>
 <p>结算链越长，现金流越慢、信用风险越大。做测算时必须写清：谁结算、结算周期、发票流、谁承担偏差与考核。</p>
@@ -260,7 +309,7 @@
 <ul><li>分成基数要写清是毛收入、净收入还是利润；</li><li>考核罚款、偏差成本、代结算费用由谁承担；</li><li>&quot;运营商与资源方 1:9&quot;只是行业口语口径，不是公开权威标准，引用必须要求合同依据；</li><li>保底收益要能覆盖资源方的机会成本，否则用户会在调用时&quot;失联&quot;。</li></ul>
 <h3 id="s43">7.5 单次调用算例</h3>
 <p>某 VPP 组织一次削峰：可调容量 10 MW，持续 2 h，补贴 2.5 元/kWh，运营商分成 10%。</p>
-<pre><code>响应电量 = 10 MW × 2 h = 20 MWh
+<pre tabindex="0"><code>响应电量 = 10 MW × 2 h = 20 MWh
 补偿收入 = 20,000 kWh × 2.5 元/kWh = 50,000 元
 运营商分成 = 50,000 × 10% = 5,000 元
 资源方所得 = 50,000 − 5,000 = 45,000 元
@@ -442,7 +491,9 @@
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

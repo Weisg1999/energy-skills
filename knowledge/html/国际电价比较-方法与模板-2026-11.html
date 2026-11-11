@@ -15,7 +15,7 @@
 </head>
 <body data-cat="price" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -111,7 +111,7 @@
 <ul><li>居民 / 工业 / 商业 / 农业；</li><li>电压等级（如 1 kV 以下、1-10 kV、35 kV、110 kV 及以上）；</li><li>年用电量（居民可用 2,000/4,000 kWh 两档；工业可用 1 GWh、10 GWh 两档）；</li><li>是否两部制、是否参与市场、是否执行分时。</li></ul>
 <h3 id="s4">第二步：定义价格构成</h3>
 <p>把价格拆成同一组科目：</p>
-<pre><code>终端电价 = 电能量 + 输配电网 + 系统服务 + 税费/附加 + 增值税</code></pre>
+<pre tabindex="0"><code>终端电价 = 电能量 + 输配电网 + 系统服务 + 税费/附加 + 增值税</code></pre>
 <ul><li>电能量：批发市场价、长期合约价或政府定价；</li><li>输配电网：输电、配电、线损；</li><li>系统服务：容量、辅助服务、不平衡、可靠性；</li><li>税费/附加：能源税、环境税、可再生能源附加、碳成本；</li><li>增值税/销售税：单独列，不混入前三项。</li></ul>
 <h3 id="s5">第三步：定义时间与币种</h3>
 <ul><li>时间：同一季度或同一年度均价；燃料与汇率波动大时，加注月度区间；</li><li>币种：本币、市场汇率美元、PPP 美元三列并列；</li><li>汇率：市场汇率用 IMF/央行中间价；PPP 用 World Bank/IMF 转换因子，不能混用。</li></ul>
@@ -127,7 +127,7 @@
 <hr>
 <h2 id="s9">4. 国别卡片模板</h2>
 <p>每个国家一张卡片，固定字段，固定顺序：</p>
-<pre><code>country:
+<pre tabindex="0"><code>country:
   name: &quot;&quot;
   year: 2026
   currency: &quot;&quot;
@@ -253,7 +253,9 @@
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

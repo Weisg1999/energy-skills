@@ -15,7 +15,7 @@
 </head>
 <body data-cat="skill" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -134,7 +134,7 @@
 <h2 id="s9">2. 电价制度最小必要</h2>
 <h3 id="s10">2.1 三个环节与终端电价</h3>
 <p>终端电价由三张&quot;价格表&quot;叠加：</p>
-<pre><code>用户到户价 = 电能量价格（上网侧/市场）
+<pre tabindex="0"><code>用户到户价 = 电能量价格（上网侧/市场）
            + 输配电价
            + 系统运行费
            + 政府性基金及附加
@@ -151,7 +151,7 @@
 <p>大工业与部分一般工商业执行两部制：<strong>基本电费</strong>按容量或需量计，<strong>电度电费</strong>按电量计。基本电费三种方式：</p>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>方式</th><th>计费基础</th><th>适合</th><th>风险</th></tr></thead><tbody><tr><td>按变压器容量</td><td>变压器容量 kVA</td><td>负荷稳定、利用率高</td><td>报装过大则长期多付</td></tr><tr><td>按合同最大需量</td><td>核定需量 kW</td><td>负荷波动、可管理</td><td>超 105% 部分加倍</td></tr><tr><td>按实际最大需量</td><td>实际最大需量 kW</td><td>波动大、需量可控</td><td>省级规则差异大</td></tr></tbody></table></div>
 <p>合同需量公式：</p>
-<pre><code>over = max(实际最大需量 − 1.05 × 核定值, 0)
+<pre tabindex="0"><code>over = max(实际最大需量 − 1.05 × 核定值, 0)
 基本电费 = 需量电价 × (核定值 + 2 × over)</code></pre>
 <h3 id="s14">2.5 分时、尖峰、深谷与季节</h3>
 <ul><li>峰、平、谷分段；2021 年 1093 号文要求峰谷价差原则上不低于 4:1（最大峰谷差率超过 40% 的地区），其他地区不低于 3:1；</li><li>尖峰在峰段基础上上浮不低于 20%，时段由省级确定；</li><li>深谷出现在新能源大发、负荷低谷时段，部分省用于鼓励充电；</li><li>丰枯/夏冬季节性电价在四川等水电大省更常见；</li><li>2026 年 1656 号文后，直接入市用户不再执行政府固定分时表，分时价格由市场形成；代理购电用户仍执行政府优化后的时段与浮动比例。</li></ul>
@@ -186,14 +186,14 @@
 <hr>
 <h2 id="s26">4. 基本电费与申报</h2>
 <h3 id="s27">4.1 三种方式的计算</h3>
-<pre><code>按容量：    基本电费 = 容量电价（元/kVA·月） × 变压器容量（kVA）
+<pre tabindex="0"><code>按容量：    基本电费 = 容量电价（元/kVA·月） × 变压器容量（kVA）
 按合同需量：基本电费 = 需量电价（元/kW·月） × (核定值 + 2 × max(实际 − 1.05×核定值, 0))
 按实际需量：基本电费 = 需量电价 × 实际最大需量</code></pre>
 <h3 id="s28">4.2 最优申报值的闭式解</h3>
 <p>设需量电价 p、实际最大需量 A、阈值 k = 1.05、超需倍数 m = 2：</p>
-<pre><code>charge(D) = p × (D + m × max(A − kD, 0))</code></pre>
+<pre tabindex="0"><code>charge(D) = p × (D + m × max(A − kD, 0))</code></pre>
 <p>当 D ≥ A/k 时 charge = pD，随 D 上升；当 D &lt; A/k 时 charge = p(2A − (mk − 1)D)，随 D 上升而下降。因此最优值：</p>
-<pre><code>D* = max(40% 下限, A / 1.05)，且不超过变压器容量</code></pre>
+<pre tabindex="0"><code>D* = max(40% 下限, A / 1.05)，且不超过变压器容量</code></pre>
 <p>直观解释：把申报值定在&quot;实际峰值 ÷ 1.05&quot;，刚好不触发加倍；定得更高是白付，定得更低会触发 2 倍超需。</p>
 <h3 id="s29">4.3 三方式比选</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>场景</th><th>倾向</th></tr></thead><tbody><tr><td>负荷平稳、变压器利用率高（&gt;80%）</td><td>容量计费通常更省</td></tr><tr><td>变压器报装偏大、峰值远低于容量</td><td>合同需量更省</td></tr><tr><td>峰值偶发、可控</td><td>实际最大需量可能更省</td></tr><tr><td>峰值持续增长</td><td>合同需量留 5%–10% 余量，避免频繁超限</td></tr></tbody></table></div>
@@ -221,7 +221,7 @@
 <h2 id="s38">6. 力率与附加费</h2>
 <h3 id="s39">6.1 力率调整</h3>
 <p>功率因数低于标准加收、高于标准减收。本文工具采用简化两段口径：</p>
-<pre><code>低于 0.9：每低 0.01，加收电度侧小计的 0.5%，封顶 15%
+<pre tabindex="0"><code>低于 0.9：每低 0.01，加收电度侧小计的 0.5%，封顶 15%
 高于 0.9：每高 0.01，减收电度侧小计的 0.15%，封顶 7.5%</code></pre>
 <p>省级规则常见分档（如 0.85–0.9、0.8–0.85 不同比例），引用前必须核对本省《功率因数调整电费办法》。<strong>力率基数</strong>也因省而异：本文默认电度侧小计（电能量 + 输配 + 系统运行 + 基金），若本省只按电能量电费考核，应显式传入 <code>pf_base</code>。</p>
 <aside class="note"><p>上述两段比例只是演示口径，不是任何省份的官方标准；正式测算必须用本省分档表替换 <code>bill.py</code> 的参数，不能把 0.5%/0.15% 当成全国规则。</p></aside>
@@ -293,7 +293,7 @@
 <h2 id="s65">11. 代码映射与自测</h2>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>文件</th><th>作用</th></tr></thead><tbody><tr><td><code>tools/bill.py</code></td><td>账单科目、基本电费三方式、力率调整</td></tr><tr><td><code>tools/tariff.py</code></td><td>时段表校验、分时电费、负荷平移</td></tr><tr><td><code>tools/demand.py</code></td><td>最优申报值、三方式比选、年度优化</td></tr><tr><td><code>tools/retail.py</code></td><td>固定价/分时/市场联动套餐比价</td></tr><tr><td><code>tools/curves.py</code></td><td>合成负荷、分时电价与市场曲线</td></tr><tr><td><code>tools/selftest.py</code></td><td>锁定正文 A–H 全部算例</td></tr></tbody></table></div>
 <p>运行：</p>
-<pre><code>python skills/tariff-bill-optimization/tools/selftest.py</code></pre>
+<pre tabindex="0"><code>python skills/tariff-bill-optimization/tools/selftest.py</code></pre>
 <p>自测通过代表正文算例与代码一致；政策参数变化时，先改 <code>curves.py</code> 或调用参数，再同步正文数字。</p>
 <hr>
 <h2 id="s66">12. 常见问答</h2>
@@ -433,7 +433,9 @@
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

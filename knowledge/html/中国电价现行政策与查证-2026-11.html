@@ -15,7 +15,7 @@
 </head>
 <body data-cat="price" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -128,7 +128,7 @@
 <aside class="note"><p>本节给出一套可复算的科目顺序、公式与合成算例，用来核对账单是否自洽。完整的工具实现、套餐比选与申报操作见<a href="../../skills/tariff-bill-optimization/SKILL.md">电价与电费优化专家</a>；本文只保留知识底稿。以下数字均为 D 级合成数据，不对应任何真实用户或省份。</p></aside>
 <h3 id="s13">4.1 电费计算总链</h3>
 <p>用户侧电费不是&quot;电量 × 一个电价&quot;，而是多个科目叠加。推荐按以下顺序复算，避免漏项或重复：</p>
-<pre><code>电费合计 = 电能量电费 + 输配电费 + 基本电费 + 系统运行费 + 基金及附加
+<pre tabindex="0"><code>电费合计 = 电能量电费 + 输配电费 + 基本电费 + 系统运行费 + 基金及附加
            + 力率调整 + 高可靠性供电费 + 其他（退补、考核、偏差）</code></pre>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>科目</th><th>计算式</th><th>计费基础</th><th>常见错误</th></tr></thead><tbody><tr><td>电能量电费</td><td>Σ 分时电量 × 分时价，或中长期 + 现货结算</td><td>kWh</td><td>把代理购电价当市场价</td></tr><tr><td>输配电费</td><td>电量 × 电压等级输配电价</td><td>kWh</td><td>漏掉容量/需量部分</td></tr><tr><td>基本电费</td><td>容量 × 容量价，或需量 × 需量价</td><td>kVA / kW</td><td>只算电度、不算基本</td></tr><tr><td>系统运行费</td><td>电量 × 系统运行费标准</td><td>kWh</td><td>与输配电价混为一谈</td></tr><tr><td>基金及附加</td><td>电量 × 各附加标准</td><td>kWh</td><td>用一个数概括全部</td></tr><tr><td>力率调整</td><td>力率基数 × 调整比例</td><td>元</td><td>基数与分档用错</td></tr><tr><td>高可靠性供电费</td><td>容量或工程投资 × 标准</td><td>kVA / 元</td><td>双电源、多回路漏计</td></tr><tr><td>税费</td><td>按含税/不含税口径折算</td><td>—</td><td>在含税价上重复加税</td></tr></tbody></table></div>
 <aside class="note"><p>&quot;力率基数&quot;是否包含输配、系统运行、基金，各省口径不同。本文算例默认电度侧小计（电能量 + 输配 + 系统运行 + 基金）；正式测算必须用本省《功率因数调整电费办法》替换。线损一般不单列，已含在输配电价内；若账单出现独立线损科目，先确认是否为跨省跨区或代购的特殊口径，不要与输配电费重复相加。</p></aside>
@@ -136,7 +136,7 @@
 <p>代理购电是未直接入市用户的默认通道。省级电网企业按月公示代理购电价格表，常见组成如下：</p>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>组成</th><th>说明</th><th>是否随电量</th><th>备注</th></tr></thead><tbody><tr><td>代理购电价格</td><td>电网代理采购的电能量价格，按月测算</td><td>是（按分时电量）</td><td>不等于市场成交价</td></tr><tr><td>输配电价</td><td>政府核定的过网费</td><td>是</td><td>分电压等级</td></tr><tr><td>系统运行费</td><td>容量电价、辅助服务、不平衡资金等分摊</td><td>多数按电量</td><td>与输配分开列示</td></tr><tr><td>基金及附加</td><td>政府性基金及附加</td><td>是</td><td>减免范围按政策</td></tr><tr><td>基本电费</td><td>两部制用户</td><td>否</td><td>容量或需量</td></tr><tr><td>力率/高可靠性</td><td>考核或专项费用</td><td>否</td><td>按省级规则</td></tr></tbody></table></div>
 <p>月度测算链：</p>
-<pre><code>到户平段价 = 代理购电价格 + 输配电价 + 系统运行费 + 基金附加
+<pre tabindex="0"><code>到户平段价 = 代理购电价格 + 输配电价 + 系统运行费 + 基金附加
 分时到户价 = 可浮动部分 × (1 ± 峰谷浮动比例) + 不浮动部分
 月电费 = Σ(分时电量 × 分时到户价) + 基本电费 ± 力率调整 + 高可靠性 + 退补</code></pre>
 <p><strong>五个校验点</strong>：</p>
@@ -144,12 +144,12 @@
 <aside class="note"><p>代理购电价格是&quot;电网代理采购价&quot;，不是&quot;市场价&quot;，也不是&quot;到户价&quot;。回答用户问题时，必须把三个概念分开；把代理购电价格直接与售电公司套餐价比，是常见的错误比价。</p></aside>
 <h3 id="s15">4.3 两部制三方式算例：容量、合同需量、实际需量</h3>
 <p><strong>输入</strong>：某用户变压器 1,600 kVA，月最大需量 1,150 kW；容量电价 32 元/kVA·月，需量电价 40 元/kW·月。合同最大需量的计费公式：</p>
-<pre><code>over = max(实际最大需量 − 1.05 × 核定值, 0)
+<pre tabindex="0"><code>over = max(实际最大需量 − 1.05 × 核定值, 0)
 基本电费 = 需量电价 × (核定值 + 2 × over)</code></pre>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>方式</th><th>计费基础</th><th>月基本电费</th></tr></thead><tbody><tr><td>按容量</td><td>1,600 kVA × 32 元/kVA·月</td><td>51,200.00</td></tr><tr><td>按合同需量（申报 1,095.24 kW）</td><td>1,150 ÷ 1.05</td><td>43,809.52</td></tr><tr><td>按实际最大需量</td><td>1,150 kW × 40 元/kW·月</td><td>46,000.00</td></tr></tbody></table></div>
 <p>合同需量最省，比容量计费少 <strong>7,390.48 元/月</strong>。申报值 1,095.24 kW 正好让实际峰值落在 105% 线内，不触发加倍；申报 1,000 kW 则 <code>over = 100 kW</code>，基本电费变成 <code>40 × (1,000 + 200) = 48,000 元</code>，反而比 43,809.52 元更贵。<strong>申报值不是越低越省</strong>。</p>
 <p><strong>最优申报值的闭式解</strong>：</p>
-<pre><code>D* = max(40% 下限, 实际最大需量 ÷ 1.05)，且不超过变压器容量</code></pre>
+<pre tabindex="0"><code>D* = max(40% 下限, 实际最大需量 ÷ 1.05)，且不超过变压器容量</code></pre>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>实际最大需量</th><th>A ÷ 1.05</th><th>40% 下限（1,600 × 40%）</th><th>最优申报 D*</th><th>月基本电费</th></tr></thead><tbody><tr><td>1,150 kW</td><td>1,095.24 kW</td><td>640 kW</td><td>1,095.24 kW</td><td>43,809.52</td></tr><tr><td>500 kW</td><td>476.19 kW</td><td>640 kW</td><td>640 kW</td><td>25,600.00</td></tr></tbody></table></div>
 <aside class="note"><p>40% 下限是&quot;申请核定值低于变压器容量与高压电动机容量总和 40% 的，按 40% 核定&quot;。上表第二行若申报 476.19 kW，会被按 640 kW 核定，算得再低也无法执行。两路及以上进线分别计算最大需量、累加计收；变更时限（通常提前 5 个工作日/15 个工作日）以本省细则为准。</p></aside>
 <p><strong>全年申报优化</strong>（同一用户 12 个月，峰值出现在 8 月 1,311 kW）：</p>
@@ -157,7 +157,7 @@
 <p>按月优化比&quot;按最大月一刀切&quot;少付 <strong>128,975.24 元/年</strong>，也比按实际最大需量少付 25,015.24 元/年。关键不是公式复杂，而是<strong>每月按当月峰值重算申报值</strong>；多数用户一年只调一次，浪费就在这里。</p>
 <h3 id="s16">4.4 力调电费：分档、基数与功率因数算例</h3>
 <p>力率调整按功率因数考核：低于标准加收，高于标准减收。功率因数按当月抄见有功、无功电量计算，不是某一个瞬时点。本文工具采用简化两段口径（<strong>演示用，不是任何省份的官方标准</strong>）：</p>
-<pre><code>低于 0.90：每低 0.01，加收力率基数的 0.5%，封顶 15%
+<pre tabindex="0"><code>低于 0.90：每低 0.01，加收力率基数的 0.5%，封顶 15%
 高于 0.90：每高 0.01，减收力率基数的 0.15%，封顶 7.5%</code></pre>
 <p><strong>算例</strong>：电度侧小计 131,600 元（电能量 84,000 + 输配 30,000 + 系统运行 13,600 + 基金 4,000）。</p>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>功率因数</th><th>调整比例</th><th>调整金额</th></tr></thead><tbody><tr><td>0.85</td><td>+2.5%</td><td>+3,290.00</td></tr><tr><td>0.92</td><td>−0.3%</td><td>−394.80</td></tr><tr><td>差额</td><td>—</td><td>3,684.80</td></tr></tbody></table></div>
@@ -287,7 +287,9 @@
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

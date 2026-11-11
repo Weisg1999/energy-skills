@@ -15,7 +15,7 @@
 </head>
 <body data-cat="storage" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -102,7 +102,7 @@
 <h2 id="s1">1. 政策框架（截至 2026-11）</h2>
 <h3 id="s2">1.1 容量电价：114 号文</h3>
 <ul><li><strong>文件</strong>：《国家发展改革委 国家能源局关于完善发电侧容量电价机制的通知》（发改价格〔2026〕114号），2026-01-30 印发。<strong>A 级</strong>。</li><li><strong>适用对象</strong>：服务于电力系统安全运行、未参与配储的电网侧独立新型储能电站；实行<strong>清单制</strong>管理，清单外项目不执行。</li><li><strong>折算公式</strong>：</li></ul>
-<pre><code>容量电价 = 当地煤电容量电价标准 × 折算比例
+<pre tabindex="0"><code>容量电价 = 当地煤电容量电价标准 × 折算比例
 折算比例 = min(满功率连续放电时长 ÷ 全年最长净负荷高峰持续时长, 1)</code></pre>
 <ul><li><strong>要点</strong>：国家定规则，省级定标准、分母时长与执行期限；跨省不可套用；容量电费纳入系统运行费用，由工商业用户按用电量比例分摊（B 级解读）。</li><li><strong>省级落地（截至 2026-10，B/C 级，待核实）</strong>：</li></ul>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>省份</th><th>标准</th><th>分母/口径</th><th>状态</th><th>来源级别</th></tr></thead><tbody><tr><td>安徽</td><td>165 元/kW·年（含税）</td><td>暂定 6 h；2 h≈55、4 h≈110、6 h=165</td><td>2027-01-01 执行（皖发改价格〔2026〕526号，2026-09-30）</td><td>A</td></tr><tr><td>甘肃</td><td>330 元/kW·年</td><td>6 h 基准，执行 2 年</td><td>2025-07 起（可靠容量补偿）</td><td>B</td></tr><tr><td>湖北</td><td>165 元/kW·年</td><td>清单制，按月考核</td><td>2025 年底起</td><td>B</td></tr><tr><td>青海</td><td>185 元/kW·年</td><td>据行业媒体</td><td>待核实</td><td>C</td></tr></tbody></table></div>
@@ -117,7 +117,7 @@
 <ul><li><strong>文件</strong>：《关于深化新能源上网电价市场化改革 促进新能源高质量发展的通知》（发改价格〔2025〕136号），2025-02-09 印发。<strong>A 级</strong>。</li><li><strong>与储能相关</strong>：新能源机制电价通过竞价形成，存量/增量以 2025-06-01 划断；配储不再作为并网前置条件的趋势下，独立储能与共享储能成为主要形态。</li><li><strong>114 号的排除项</strong>：参与配储的电网侧独立储能不执行容量电价；&quot;配储&quot;与&quot;独立&quot;是两种商业模式，不能同时拿两份钱。</li></ul>
 <h3 id="s6">1.5 两部制与需量：1583 号、500 号</h3>
 <ul><li><strong>文件</strong>：发改办价格〔2016〕1583号、发改价格〔2018〕500号。<strong>A 级</strong>。</li><li><strong>计费方式</strong>：按变压器容量、按合同最大需量、按实际最大需量（500 号增加）。</li><li><strong>合同最大需量规则</strong>：<ul><li>核定值可按月变更，提前 5 个工作日申请；计费方式按季变更，提前 15 个工作日申请；</li><li>实际最大需量未超过核定值 105% 的，按核定值计费；</li><li>超过 105% 的部分，基本电费<strong>加一倍</strong>收取；</li><li>申请核定值低于变压器容量与高压电动机容量总和 40% 的，按 40% 核定；</li><li>两路及以上进线分别计算最大需量，累加计收。</li></ul></li><li><strong>公式（合同最大需量）</strong>：</li></ul>
-<pre><code>over = max(实际最大需量 − 1.05 × 核定值, 0)
+<pre tabindex="0"><code>over = max(实际最大需量 − 1.05 × 核定值, 0)
 基本电费 = 需量电价 × (核定值 + 2 × over)</code></pre>
 <ul><li><strong>对用户侧储能</strong>：削峰的价值只在&quot;实际需量超过 105% 核定值&quot;或&quot;下调核定值&quot;时体现；把需量从 105% 以内继续往下削，在合同最大需量模式下并不直接省钱。</li></ul>
 <hr>
@@ -146,7 +146,7 @@
 <h3 id="s16">4.4 投决算例 A：独立储能 100 MW/200 MWh</h3>
 <p><strong>输入假设</strong>：2 h 系统，200 MWh 为直流可用电量；RTE 88%，单程效率 <code>η = sqrt(0.88) = 93.81%</code>；充电价 250 元/MWh、放电价 850 元/MWh；1 次/日、330 日/年；单位吞吐退化成本 0.03 元/kWh；CAPEX 1.0 元/Wh；容量电价 165 元/kW·年、分母 6 h；OPEX 为 CAPEX 的 2.5%；所得税 25%，直线折旧 15 年，折现率 8%，不计残值。</p>
 <p><strong>第一步：套利电量与收益</strong></p>
-<pre><code>单次放电（AC） = 200 MWh × sqrt(0.88) = 187.62 MWh
+<pre tabindex="0"><code>单次放电（AC） = 200 MWh × sqrt(0.88) = 187.62 MWh
 单次充电（AC） = 200 MWh ÷ sqrt(0.88) = 213.20 MWh
 单次毛收益 = 187.62 × 850 − 213.20 × 250 = 106,174 元
 年毛收益 = 106,174 × 330 = 3,503.7 万元
@@ -167,7 +167,7 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>套利占用</th><th>调频占用</th><th>备用占用</th><th>需量占用</th></tr></thead><tbody><tr><td>功率</td><td>充放功率</td><td>调频容量</td><td>备用容量</td><td>削峰功率</td></tr><tr><td>能量</td><td>充放电量</td><td>能量中性裕度</td><td>持续时间内电量</td><td>削峰时长</td></tr><tr><td>时间</td><td>峰谷时段</td><td>全天响应</td><td>调用时段</td><td>尖峰时段</td></tr></tbody></table></div>
 <p>同一时段多项叠加时，取最大值而不是求和；跨时段叠加要做 SOC 仿真，不能按日总量简单相加。</p>
 <p><strong>物理天花板</strong>：</p>
-<pre><code>年放电量上限 ≈ P × H × 365 × 可用率
+<pre tabindex="0"><code>年放电量上限 ≈ P × H × 365 × 可用率
 年电能量收入上限 ≈ 年放电量上限 × 最大捕获价差</code></pre>
 <p>算例 A 的年放电量为 61,914.6 MWh；按 850 元/MWh 计算，毛收入上限约 5,263 万元，扣掉充电成本后才是可分配收入。任何&quot;年收入&quot;超过这个天花板，一定是重复计算、把 DC 当 AC，或把容量/租赁收入重复计入了套利。</p>
 <h3 id="s18">4.6 退化、质保与增容进现金流</h3>
@@ -299,7 +299,9 @@
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

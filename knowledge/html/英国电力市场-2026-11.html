@@ -15,7 +15,7 @@
 </head>
 <body data-cat="intl" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -117,16 +117,99 @@
 <hr>
 <h2 id="s1">0. 一页看懂</h2>
 <h3 id="s2">0.1 市场全景</h3>
-<pre><code>大不列颠电力市场（GB）
-├─ 批发：EPEX GB 日前拍卖 + GB-30min 拍卖；N2EX 小时拍卖
-├─ 日内：交易所连续交易 + 双边/OTC；关闸为交割前 1 小时
-├─ 平衡：NESO 运行平衡机制（BM），BSC 结算
-├─ 辅助：动态调频、快速/慢速备用、需求灵活性等
-├─ 容量：T-4 / T-1 容量市场，£/kW·年
-├─ 支持：CfD（差价合约）、LDES cap and floor
-├─ 费用：TNUoS、DUoS、BSUoS + 政策成本
-├─ 监管：Ofgem；政策：DESNZ；系统运营：NESO
-└─ 结算：Elexon（BSC）；EMR 结算机构（CfD/CM）</code></pre>
+<figure class="tree-diagram" aria-label="大不列颠电力市场（GB）结构图">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构图 · STRUCTURE</span>
+        <span class="diagram-meta">9 个一级分支</span>
+      </span>
+      <span class="tree-root-title">大不列颠电力市场（GB）</span>
+
+    </figcaption>
+    <div class="tree-grid"><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">01</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">批发</span>
+        <span class="tree-node-detail">EPEX GB 日前拍卖 + GB-30min 拍卖；N2EX 小时拍卖</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">02</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">日内</span>
+        <span class="tree-node-detail">交易所连续交易 + 双边/OTC；关闸为交割前 1 小时</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">03</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">平衡</span>
+        <span class="tree-node-detail">NESO 运行平衡机制（BM），BSC 结算</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">04</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">辅助</span>
+        <span class="tree-node-detail">动态调频、快速/慢速备用、需求灵活性等</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">05</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">容量</span>
+        <span class="tree-node-detail">T-4 / T-1 容量市场，£/kW·年</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">06</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">支持</span>
+        <span class="tree-node-detail">CfD（差价合约）、LDES cap and floor</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">07</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">费用</span>
+        <span class="tree-node-detail">TNUoS、DUoS、BSUoS + 政策成本</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">08</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">监管</span>
+        <span class="tree-node-detail">Ofgem；政策：DESNZ；系统运营：NESO</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">09</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">结算</span>
+        <span class="tree-node-detail">Elexon（BSC）；EMR 结算机构（CfD/CM）</span>
+      </span>
+    </div>
+
+  </article></div>
+
+  </figure>
 <ul><li><strong>GB 是单一批发市场，不是“欧盟耦合的一个报价区”</strong>：日前价格由本国拍卖形成，跨境电量通过显式容量拍卖，价格可与相邻市场不同。</li><li><strong>日前的核心是两场拍卖</strong>：EPEX GB 小时拍卖（10:20 CET 关闸）和 GB-30min 拍卖（16:30 CET 关闸）；两场都不是 SDAC 的 EUPHEMIA 出清。</li><li><strong>平衡机制（BM）是“连续报价、按需调用”</strong>：NESO 按系统需要接受 bids/offers，按报价结算，不是统一价。</li><li><strong>容量市场是另一条收入线</strong>：T-4 提前四年、T-1 提前一年，按 de-rated capacity 付 £/kW·年；电池可参与，但折算系数和履约义务要看规则。</li><li><strong>储能的支持工具分层</strong>：短时电池靠批发套利 + BM + 辅助服务 + 容量市场；长时储能另有 LDES cap and floor，不能把两者混为一谈。</li></ul>
 <h3 id="s3">0.2 关键数字</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>数字</th><th>含义</th><th>级别</th></tr></thead><tbody><tr><td>2024-10-01</td><td>NESO 正式成为 GB 系统运营商</td><td>A</td></tr><tr><td>10:20 CET</td><td>EPEX GB 日前小时拍卖关闸（约 09:20 英国时间）</td><td>A</td></tr><tr><td>16:30 CET</td><td>EPEX GB-30min 拍卖关闸（约 15:30 英国时间）</td><td>A</td></tr><tr><td>1 小时</td><td>平衡机制关闸（交割时段开始前 1 小时）</td><td>A</td></tr><tr><td>30 分钟</td><td>GB 结算时段长度</td><td>A</td></tr><tr><td>£75/kW·年</td><td>容量市场拍卖价格上限</td><td>A</td></tr><tr><td>£49/kW·年</td><td>容量市场净 CONE（2025/2026 参数）</td><td>A</td></tr><tr><td>3 小时 LOLE</td><td>容量市场可靠性标准</td><td>A</td></tr><tr><td>£60.00/kW·年</td><td>T-4 2028/29 出清价；43.1 GW de-rated</td><td>A</td></tr><tr><td>£27.10/kW·年</td><td>T-4 2029/30 出清价；40.1 GW de-rated</td><td>B</td></tr><tr><td>£5.00/kW·年</td><td>T-1 2026/27 出清价；7,192 MW</td><td>B</td></tr><tr><td>7.5 GW</td><td>2025 年底 GB 电网级电池功率；2025 年新增 2.3 GW</td><td>A</td></tr><tr><td>23–27 GW</td><td>2030 年电池储能政策目标区间</td><td>A</td></tr><tr><td>7,645 MW</td><td>LDES cap and floor 首轮 minded-to 项目总规模</td><td>B</td></tr></tbody></table></div>
@@ -174,12 +257,41 @@
 <hr>
 <h2 id="s21">4. 结算与费用：现货价之外还有什么</h2>
 <h3 id="s22">4.1 结算链条</h3>
-<pre><code>计量数据（HH/MHHS）
-  → Elexon 平衡结算（BSC）
-  → 交易所/清算机构结算（日前/日内）
-  → 容量市场结算（EMR Settlement）
-  → CfD 结算（LCCC）
-  → 网络费用（TNUoS/DUoS/BSUoS）</code></pre>
+<figure class="flow-diagram" aria-label="流程示意">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">流程 · FLOW</span>
+        <span class="diagram-meta">6 个步骤</span>
+      </span>
+
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">计量数据（HH/MHHS）</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">Elexon 平衡结算（BSC）</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">交易所/清算机构结算（日前/日内）</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">04</span>
+      <span class="flow-text">容量市场结算（EMR Settlement）</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">05</span>
+      <span class="flow-text">CfD 结算（LCCC）</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">06</span>
+      <span class="flow-text">网络费用（TNUoS/DUoS/BSUoS）</span>
+
+    </li></ol>
+
+  </figure>
 <ul><li><strong>现货结算与平衡结算分开</strong>：交易所成交按成交价结算；偏差按 BM/不平衡价格结算。</li><li><strong>容量市场付款与履约分开</strong>：中标拿容量付款，但要在系统紧张时按合同提供容量；未履约面临罚款。</li><li><strong>CfD 结算是“参考价与执行价之差”</strong>：按合同条款计算，和现货交易所的结算不是一回事。</li></ul>
 <h3 id="s23">4.2 输配电费</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>费用</th><th>收取对象</th><th>作用</th><th>备注</th></tr></thead><tbody><tr><td>TNUoS</td><td>输电用户</td><td>输电网络投资与运维</td><td>发电/负荷分别有 tariffs；储能待遇需按当年方法核对</td></tr><tr><td>DUoS</td><td>配电用户</td><td>配电网络投资与运维</td><td>与电压等级、容量、时段有关</td></tr><tr><td>BSUoS</td><td>平衡服务使用者</td><td>平衡服务成本</td><td>2023 年起改为固定季节费率，12 个月收入回收，可重开</td></tr><tr><td>连接费</td><td>新接入项目</td><td>网络加固与接入</td><td>与接入方案、加固范围有关</td></tr></tbody></table></div>
@@ -239,7 +351,79 @@
 <hr>
 <h2 id="s46">9. 中国主体进入路径</h2>
 <h3 id="s47">9.1 主体与注册</h3>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>步骤</th><th>内容</th><th>备注</th></tr></thead><tbody><tr><td>1. 设立主体</td><td>英国公司或分支机构</td><td>税务、银行、合同签署</td></tr><tr><td>2. Ofgem 许可/豁免</td><td>发电、供电、配电或储能豁免</td><td>按业务模式确定</td></tr><tr><td>3. BSC 接入</td><td>成为 BSC Party</td><td>平衡责任、信用覆盖、计量</td></tr><tr><td>4. BMU 注册</td><td>注册平衡单元</td><td>计量、通信、控制</td></tr><tr><td>5. 容量市场预审</td><td>CM 预审与拍卖</td><td>资格、de-rating、合同</td></tr><tr><td>6. REMIT 报送</td><td>remit.gb.net</td><td>交易与基本面信息</td></tr><tr><td>7. 并网协议</td><td>NESO/DNO</td><td>连接费、加固、合规</td></tr><tr><td>8. 计量与数据</td><td>HH 计量、MHHS</td><td>结算与对账</td></tr></tbody></table></div>
+<figure class="milestone-diagram" aria-label="市场进入路径">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">进入路径 · ROADMAP</span>
+        <span class="diagram-meta">8 个步骤</span>
+      </span>
+    </figcaption>
+    <ol class="milestone-list"><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">01</span>
+      <div class="milestone-card">
+        <span class="milestone-title">设立主体</span>
+        <span class="milestone-detail">英国公司或分支机构</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>税务、银行、合同签署</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">02</span>
+      <div class="milestone-card">
+        <span class="milestone-title">Ofgem 许可/豁免</span>
+        <span class="milestone-detail">发电、供电、配电或储能豁免</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>按业务模式确定</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">03</span>
+      <div class="milestone-card">
+        <span class="milestone-title">BSC 接入</span>
+        <span class="milestone-detail">成为 BSC Party</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>平衡责任、信用覆盖、计量</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">04</span>
+      <div class="milestone-card">
+        <span class="milestone-title">BMU 注册</span>
+        <span class="milestone-detail">注册平衡单元</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>计量、通信、控制</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">05</span>
+      <div class="milestone-card">
+        <span class="milestone-title">容量市场预审</span>
+        <span class="milestone-detail">CM 预审与拍卖</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>资格、de-rating、合同</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">06</span>
+      <div class="milestone-card">
+        <span class="milestone-title">REMIT 报送</span>
+        <span class="milestone-detail">remit.gb.net</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>交易与基本面信息</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">07</span>
+      <div class="milestone-card">
+        <span class="milestone-title">并网协议</span>
+        <span class="milestone-detail">NESO/DNO</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>连接费、加固、合规</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">08</span>
+      <div class="milestone-card">
+        <span class="milestone-title">计量与数据</span>
+        <span class="milestone-detail">HH 计量、MHHS</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>结算与对账</span></div>
+      </div>
+    </li></ol>
+  </figure>
 <ul><li><strong>许可是“按业务”而不是“按项目”</strong>：发电、供电、储能、聚合的业务边界不同，先确定商业模式再申请。</li><li><strong>BSC 接入是硬门槛</strong>：没有 BSC Party 身份，无法直接参与 BM 和平衡结算；多数海外主体通过收购项目或与本地伙伴合作进入。</li><li><strong>REMIT 不是“可选项”</strong>：英国 REMIT 要求交易和基本面信息报送，违规会面临处罚。</li></ul>
 <h3 id="s48">9.2 数据与系统</h3>
 <ul><li><strong>交易系统</strong>：对接 EPEX/N2EX、BMRS、Elexon 数据；支持半小时/小时产品、BM 报价和结算对账。</li><li><strong>计量系统</strong>：HH 计量、数据校验、通信冗余；BMU 需要满足 BSC 的技术要求。</li><li><strong>调度系统</strong>：电池 EMS 要能接收 NESO 指令、执行 BOALF、管理 SOC 和循环寿命。</li><li><strong>数据合规</strong>：REMIT 报送、市场滥用监控、交易记录保存。</li></ul>
@@ -260,25 +444,25 @@
 <h2 id="s54">12. 算例（D 级：方法演示，不是投资建议）</h2>
 <h3 id="s55">12.1 电池日套利（合成）</h3>
 <p>假设：100 MW/200 MWh 电池，可用深度 90%，循环效率 88%，日充放电各一次；日前价差 £80/MWh，日内优化带来额外 £10/MWh；年运行 330 天。</p>
-<pre><code>可用电量 = 200 × 90% = 180 MWh
+<pre tabindex="0"><code>可用电量 = 200 × 90% = 180 MWh
 单次放电电量 = 180 × 88% ≈ 158.4 MWh
 单日毛收入 = 158.4 × (80 + 10) ≈ £14,256
 年毛收入 ≈ 14,256 × 330 ≈ £4.70m</code></pre>
 <ul><li>未扣充电成本、网络费、运维、退化、交易费用和税。</li><li>若价差降到 £40/MWh，年毛收入约 £2.61m；价差是收益的核心变量。</li></ul>
 <h3 id="s56">12.2 容量市场收入（合成）</h3>
 <p>假设：100 MW 连接容量，de-rating 系数 30%，T-4 出清价 £27.10/kW·年。</p>
-<pre><code>de-rated capacity = 100,000 kW × 30% = 30,000 kW
+<pre tabindex="0"><code>de-rated capacity = 100,000 kW × 30% = 30,000 kW
 年容量收入 = 30,000 × 27.10 ≈ £813,000</code></pre>
 <ul><li>若 de-rating 系数降到 20%，收入约 £542,000；若价格回到 £60，收入约 £1.80m。</li><li>未扣履约罚款、可用率考核和合同成本。</li></ul>
 <h3 id="s57">12.3 BM + 调频收入（合成）</h3>
 <p>假设：100 MW 电池，BM 可用 4 小时/日，平均价差 £15/MWh；动态调频 50 MW，价格 £8/MW/h，可用 20 小时/日。</p>
-<pre><code>BM 年毛收入 ≈ 100 × 4 × 15 × 330 ≈ £1.98m
+<pre tabindex="0"><code>BM 年毛收入 ≈ 100 × 4 × 15 × 330 ≈ £1.98m
 调频年毛收入 ≈ 50 × 8 × 20 × 330 ≈ £2.64m
 合计 ≈ £4.62m</code></pre>
 <ul><li>两项收入不能简单叠加：同一功率不能同时满额参与；实际要按机会成本优化。</li><li>调频价格可能随渗透率下降；要用衰减情景。</li></ul>
 <h3 id="s58">12.4 LDES cap and floor（示意）</h3>
 <p>假设：200 MW/1,600 MWh（8 小时）项目，年市场化收入 £30m；floor 设定为 £35m，cap 设定为 £55m。</p>
-<pre><code>机制补足 = 35 - 30 = £5m
+<pre tabindex="0"><code>机制补足 = 35 - 30 = £5m
 项目总收入 = 30 + 5 = £35m</code></pre>
 <ul><li>若市场化收入 £60m，则返还 £5m，项目收入封顶 £55m。</li><li>上述 floor/cap 为假设，不代表 Ofgem 最终条款；LDES 首轮仍在咨询/决定阶段。</li></ul>
 <hr>
@@ -413,7 +597,9 @@
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

@@ -71,6 +71,7 @@ energy-skills/
 │   ├── credibility.mjs             ← credibility register parser and content gates
 │   ├── check-maintenance.mjs       ← due-review board and maintenance-ledger checks
 │   ├── build-knowledge-html.mjs    ← hub builder (frontmatter → HTML + search index + credibility.json)
+│   ├── architecture-diagrams.mjs   ← hand-semantic specs and fingerprint checks for five core architecture diagrams
 │   └── knowledge.config.mjs        ← sections, navigation and static copy
 ├── skills/                         ← nine skills, each with SKILL.md and SKILL_EN.md
 │   ├── electricity-trading-expert/     ← plus tools/ (unit conversion, capacity revenue, three-node clearing)
@@ -110,6 +111,8 @@ node scripts/check-consistency.mjs              # structure + content discipline
 node scripts/check-maintenance.mjs              # due-review board (non-blocking)
 node scripts/check-maintenance.mjs --check      # maintenance-ledger structure check
 ```
+
+Unlabelled fenced blocks containing tree or flow symbols are converted to HTML diagrams at build time: `├/└` hierarchies become structure cards, multi-column stages and arrow chains become process cards, and complex coordinate-dependent layouts stay in a "blueprint" panel with a grid and coloured connectors. Authors keep maintaining plain text and do not write HTML by hand. Step tables under "market entry path" and "grid connection process" headings automatically become vertical milestones, retaining owner, note, risk and two-region fields; storage-safety causal/response chains and carbon verification/CCER flows render inside their original lists, while the microgrid islanding/black-start table becomes state cards. Five further diagrams — SCADA security zones, the VPP/EMS data chain, V2G, the quantitative reference architecture and the flexibility resource map — use hand-written semantic specs; the build fails if their source anchors move.
 
 `knowledge/english-digest.json` routes English-language models: English summaries for all 66 modules, the INDEX_EN key-figure table, 37 open items (16 with trigger dates) and 22 grade-C ticket states; modules with `historical: true` also render a "data is not current" banner at the top of the reading page.
 

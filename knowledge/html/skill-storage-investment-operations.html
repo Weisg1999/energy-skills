@@ -15,7 +15,7 @@
 </head>
 <body data-cat="skill" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -137,7 +137,7 @@
 <aside class="note"><p>本章数据截止 2026-11-01。国家文件给框架，省级文件给标准；引用时必须同时给文号与时点。</p></aside>
 <h3 id="s11">2.1 容量电价：114 号文</h3>
 <p>《关于完善发电侧容量电价机制的通知》（发改价格〔2026〕114号，2026-01-30）首次在国家层面明确电网侧独立新型储能容量电价：</p>
-<pre><code>容量电价 = 当地煤电容量电价标准 × 折算比例
+<pre tabindex="0"><code>容量电价 = 当地煤电容量电价标准 × 折算比例
 折算比例 = min(满功率连续放电时长 ÷ 全年最长净负荷高峰持续时长, 1)</code></pre>
 <ul><li>适用：服务于电力系统安全运行、<strong>未参与配储</strong>的电网侧独立新型储能；<strong>清单制</strong>管理，清单外不执行。</li><li>标准、分母时长、执行期限由省级确定；跨省不可套用。</li><li>容量电费纳入系统运行费用，由工商业用户按用电量比例分摊（B 级解读）。</li></ul>
 <p><strong>省级样本（截至 2026-10，B/C 级，待核实）</strong>：</p>
@@ -164,10 +164,10 @@
 <p>大工业用户两部制电价 = 基本电费 + 电度电费。基本电费可按变压器容量、合同最大需量、实际最大需量计收（发改办价格〔2016〕1583号；发改价格〔2018〕500号增加实际最大需量）。</p>
 <p>合同最大需量规则：</p>
 <ul><li>核定值可按月变更，提前 5 个工作日申请；计费方式按季变更，提前 15 个工作日申请；</li><li>实际最大需量未超过核定值 105% 的，按核定值计费；</li><li>超过 105% 的部分，基本电费<strong>加一倍</strong>收取；</li><li>申请核定值低于变压器容量与高压电动机容量总和 40% 的，按 40% 核定；</li><li>两路及以上进线分别计算最大需量，累加计收。</li></ul>
-<pre><code>over = max(实际最大需量 − 1.05 × 核定值, 0)
+<pre tabindex="0"><code>over = max(实际最大需量 − 1.05 × 核定值, 0)
 基本电费 = 需量电价 × (核定值 + 2 × over)</code></pre>
 <p><strong>算例</strong>：核定值 10,000 kW，需量电价 40 元/kW·月，实际最大需量 12,000 kW：</p>
-<pre><code>over = 12,000 − 10,500 = 1,500 kW
+<pre tabindex="0"><code>over = 12,000 − 10,500 = 1,500 kW
 基本电费 = 40 × (10,000 + 2 × 1,500) = 520,000 元/月</code></pre>
 <p>储能削峰 2 MW 后实际最大需量降到 10,000 kW，基本电费 = 40 × 10,000 = 400,000 元/月，月省 120,000 元（年 144 万元）。</p>
 <aside class="note"><p><strong>关键</strong>：在合同最大需量模式下，实际需量低于核定值但仍高于 0.4 倍时，基本电费仍按核定值收；把需量从 100% 削到 90% 并不直接省钱。削峰收益只发生在&quot;超过 105%&quot;或&quot;下调核定值&quot;时。</p></aside>
@@ -188,7 +188,7 @@
 <h3 id="s23">3.5 财务参数</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>参数</th><th>常用初筛值</th><th>说明</th></tr></thead><tbody><tr><td>项目折现率</td><td>6%–8%</td><td>与资本成本、风险匹配</td></tr><tr><td>资本金 IRR 目标</td><td>8%–10%</td><td>不代表实际可达到</td></tr><tr><td>所得税</td><td>25%</td><td>注意税收优惠适用性</td></tr><tr><td>折旧年限</td><td>10–15 年</td><td>会计/税务口径一致</td></tr><tr><td>残值</td><td>0–5%</td><td>电池残值争议大，宜保守</td></tr><tr><td>DSCR</td><td>≥1.2</td><td>融资方通常要求</td></tr><tr><td>贷款期限/利率</td><td>8–12 年 / 3.5%–5%</td><td>以实际授信为准</td></tr></tbody></table></div>
 <h3 id="s24">3.6 数据契约模板</h3>
-<pre><code>project:
+<pre tabindex="0"><code>project:
   form: independent | colocated | cni | thermal | microgrid | vpp
   province: &quot;&quot;
   cod_year: 2027
@@ -220,7 +220,7 @@
 <h2 id="s25">4. 收益堆叠：先把每一块钱说清楚</h2>
 <h3 id="s26">4.1 峰谷/现货套利</h3>
 <p>设额定功率 <code>P</code>（MW）、时长 <code>H</code>（h）、可用能量比例 <code>u</code>、往返效率 <code>RTE</code>。单程效率 <code>η = sqrt(RTE)</code>。</p>
-<pre><code>可用直流电量 E_dc = P × H × u
+<pre tabindex="0"><code>可用直流电量 E_dc = P × H × u
 单次交流放电 = E_dc × η
 单次交流充电 = E_dc ÷ η
 单次毛收益 = 放电量 × 放电价 − 充电量 × 充电价
@@ -235,7 +235,7 @@
 <ul><li><strong>捕获价差</strong>：不是全天最高价减最低价，而是储能实际充放时段的价差；</li><li><strong>循环次数</strong>：受价差持续时长、SOC 窗口、考核与退化约束；</li><li><strong>预测误差</strong>：日前计划与实时价格偏离，导致充放错位；</li><li><strong>负价/尖峰</strong>：负价时充电可能被付费，但也可能伴随限充；尖峰时放电受功率与能量限制。</li></ul>
 <p>做法：用历史 15 分钟价格回放&quot;完美预见&quot;与&quot;日前预测&quot;两套策略，差额就是预测误差的成本；再用分位数/情景法给价差打折，而不是用单一年均值。</p>
 <h3 id="s28">4.3 容量电价</h3>
-<pre><code>年容量电费 = P × 1000 × 容量电价 × min(H ÷ H_peak, 1) × 可用率</code></pre>
+<pre tabindex="0"><code>年容量电费 = P × 1000 × 容量电价 × min(H ÷ H_peak, 1) × 可用率</code></pre>
 <p>算例 A：100 MW × 1,000 × 165 元/kW·年 × 1/3 = <strong>550 万元/年</strong>（2 h，6 h 分母）。</p>
 <p>要点：</p>
 <ul><li>先确认<strong>清单资格</strong>，再看标准；清单外一分没有；</li><li>可用率考核与容量电费挂钩，计划停运/非计划停运都会扣；</li><li>分母时长由省级确定，2 h 项目在 6 h 省份只拿 1/3；</li><li>容量电价与现货套利共享同一设备可用性，不能假设 100% 同时可用。</li></ul>
@@ -245,10 +245,10 @@
 <aside class="note"><p>容量租赁不是&quot;躺赚&quot;：租不出去、租金下降、对手方违约都会直接击穿现金流。测算时至少做&quot;租金 −30%&quot;与&quot;空租 1 年&quot;两个情景。</p></aside>
 <h3 id="s30">4.5 辅助服务</h3>
 <p>调频收益的常见结构：</p>
-<pre><code>日收益 = 调频容量 × 容量价格 × 24 h + 调频里程 × 里程价格 × K 值
+<pre tabindex="0"><code>日收益 = 调频容量 × 容量价格 × 24 h + 调频里程 × 里程价格 × K 值
 年收益 = 日收益 × 运行天数 × 可用率</code></pre>
 <p><strong>算例</strong>：10 MW 调频容量，容量价格 10 元/MW·h，日里程 1,500 MW，里程价格 6 元/MW，K=1.5，330 日：</p>
-<pre><code>日收益 = 10 × 10 × 24 + 1,500 × 6 × 1.5 = 2,400 + 13,500 = 15,900 元
+<pre tabindex="0"><code>日收益 = 10 × 10 × 24 + 1,500 × 6 × 1.5 = 2,400 + 13,500 = 15,900 元
 年收益 = 15,900 × 330 = 524.7 万元</code></pre>
 <aside class="note"><p>这是<strong>毛收入</strong>，未扣能量成本、机会成本与考核。调频占用 10 MW 功率与相应 SOC 裕度，套利电量会下降；不能把 524.7 万元直接加到套利收益上。</p></aside>
 <h3 id="s31">4.6 需量管理</h3>
@@ -258,7 +258,7 @@
 <ul><li>储能充电不能抬高需量：谷段负荷 8 MW 时再充 3 MW，购电 11 MW，可能把需量顶上去；</li><li>削峰深度受能量约束：2 MW × 2 h = 4 MWh，可用能量不足时撑不到晚峰；</li><li>核定值可按月调整，削峰能力变化后应重新申报，而不是沿用旧值。</li></ul>
 <h3 id="s32">4.7 新能源配储</h3>
 <p>配储的增量收益主要来自&quot;把本来要弃掉的电搬移&quot;：</p>
-<pre><code>日收益 = 可搬移弃电量 × 放电价 − 弃电机会成本 − 退化成本</code></pre>
+<pre tabindex="0"><code>日收益 = 可搬移弃电量 × 放电价 − 弃电机会成本 − 退化成本</code></pre>
 <p><strong>算例 C（20 MW/40 MWh，配储）</strong>：日可搬移弃电 30 MWh（AC 充电），RTE 88%，放电价 600 元/MWh，年 300 日，退化 0.02 元/kWh。</p>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>充电机会成本</th><th>日放电量</th><th>年净收益</th><th>IRR（CAPEX 3,600 万元）</th><th>回收期</th></tr></thead><tbody><tr><td>0 元/MWh</td><td>28.14 MWh</td><td>471.7 万元</td><td>4.98%</td><td>10.4 年</td></tr><tr><td>150 元/MWh</td><td>28.14 MWh</td><td>336.7 万元</td><td>0.26%</td><td>14.7 年</td></tr></tbody></table></div>
 <aside class="note"><p>配储不是&quot;有弃电就赚钱&quot;：弃电小时数、放电价、机会成本、CAPEX 四项决定生死。若无容量电价资格、弃电又不稳定，很多配储项目的增量收益不足以覆盖投资。</p></aside>
@@ -295,7 +295,7 @@
 <h3 id="s45">6.2 指标与陷阱</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>定义</th><th>常见陷阱</th></tr></thead><tbody><tr><td>NPV</td><td>折现现金流之和</td><td>折现率与风险不匹配</td></tr><tr><td>IRR</td><td>NPV=0 的折现率</td><td>全投资 vs 资本金混用</td></tr><tr><td>静态回收期</td><td>累计现金流为零的年数</td><td>忽略资金时间价值</td></tr><tr><td>动态回收期</td><td>折现累计为零的年数</td><td>与贷款期限比较</td></tr><tr><td>DSCR</td><td>经营现金流 ÷ 年还本付息</td><td>用 EBITDA 代替现金流</td></tr><tr><td>LCOS</td><td>全生命周期成本现值 ÷ 放电量现值</td><td>边界不写清</td></tr></tbody></table></div>
 <h3 id="s46">6.3 LCOS</h3>
-<pre><code>LCOS = (CAPEX + Σ(OPEX_t + 充电成本_t)/(1+r)^t − 残值/(1+r)^N)
+<pre tabindex="0"><code>LCOS = (CAPEX + Σ(OPEX_t + 充电成本_t)/(1+r)^t − 残值/(1+r)^N)
        ÷ Σ(年放电量_t/(1+r)^t)</code></pre>
 <p>边界必须写明：是否含充电成本、辅助电源、增容、税、融资。算例 A：</p>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>边界</th><th>LCOS</th></tr></thead><tbody><tr><td>含充电成本（250 元/MWh）</td><td>742.24 元/MWh（0.742 元/kWh）</td></tr><tr><td>不含充电成本</td><td>458.15 元/MWh（0.458 元/kWh）</td></tr></tbody></table></div>
@@ -314,7 +314,7 @@
 <aside class="note"><p>三个结论：价差与循环次数最敏感；CAPEX 与容量电价决定&quot;过不过线&quot;；RTE 与退化是慢性病，单年不致命、长期吃掉收益。</p></aside>
 <h3 id="s51">6.8 融资与 DSCR</h3>
 <p>算例 A：70% 债务 = 14,000 万元，利率 4.5%，10 年等额本息：</p>
-<pre><code>年还本付息 = 14,000 × 4.5% ÷ (1 − 1.045^−10) ≈ 1,769.3 万元
+<pre tabindex="0"><code>年还本付息 = 14,000 × 4.5% ÷ (1 − 1.045^−10) ≈ 1,769.3 万元
 DSCR = 2,701.0 ÷ 1,769.3 ≈ 1.53</code></pre>
 <ul><li>DSCR ≥1.2 通常可接受；&lt;1.1 需要增信、降杠杆或延长贷款；</li><li>压力情景下 DSCR 比基准 IRR 更有意义；</li><li>资本金 IRR 要用&quot;权益现金流&quot;算，不能拿项目 IRR 代替。</li></ul>
 <h3 id="s52">6.9 决策规则</h3>
@@ -380,7 +380,7 @@ DSCR = 2,701.0 ÷ 1,769.3 ≈ 1.53</code></pre>
 <hr>
 <h2 id="s81">11. 关键公式与代码映射</h2>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>公式</th><th>代码</th></tr></thead><tbody><tr><td>单次放电/充电、套利收益</td><td><code>stacking.arbitrage()</code></td></tr><tr><td>容量电价与时长折算</td><td><code>stacking.capacity_payment()</code></td></tr><tr><td>基本电费与削峰节省</td><td><code>stacking.demand_bill()</code> / <code>demand_savings()</code></td></tr><tr><td>调频容量+里程</td><td><code>stacking.frequency_regulation()</code></td></tr><tr><td>收益叠加与 haircut</td><td><code>stacking.stack()</code></td></tr><tr><td>NPV/IRR/回收期</td><td><code>finance.npv()</code> / <code>irr()</code> / <code>payback()</code></td></tr><tr><td>LCOS</td><td><code>finance.lcos()</code></td></tr><tr><td>现金流与 DSCR</td><td><code>finance.annual_cashflow()</code> / <code>dscr()</code></td></tr><tr><td>等效循环、SOH、增容</td><td><code>degradation.equivalent_cycles()</code> / <code>linear_soh()</code> / <code>augmentation_energy()</code></td></tr></tbody></table></div>
-<pre><code>import stacking, finance
+<pre tabindex="0"><code>import stacking, finance
 
 a = stacking.arbitrage(100, 2, 0.88, 1, 330, 250, 850, degradation_cost_per_kwh=0.03)
 cap = stacking.capacity_payment(100, 165, 2, 6)
@@ -393,7 +393,7 @@ print(round(finance.npv(0.08, flows)), round(finance.irr(flows) * 100, 2))</code
 <hr>
 <h2 id="s83">13. 参考实现与自测</h2>
 <ul><li>目录：<code>tools/</code>，仅标准库，零依赖。</li><li>运行：</li></ul>
-<pre><code>python skills/storage-investment-operations/tools/selftest.py</code></pre>
+<pre tabindex="0"><code>python skills/storage-investment-operations/tools/selftest.py</code></pre>
 <ul><li>断言覆盖：<ul><li><strong>算例 A</strong>：单次充放 187.62/213.20 MWh、年净套利 3,106.9 万元、容量电费 550 万元、NPV 3,119.4 万元、IRR 10.47%、回收期 7.40 年、LCOS 742.24/458.15 元/MWh、DSCR 1.53；</li><li><strong>算例 B</strong>：年收入 280.0 万元、需量电费 52.0→40.0 万元/月、NPV 259.5 万元、IRR 12.59%、回收期 5.52 年；</li><li>算例 C：0/150 元/MWh 充电机会成本下 IRR 4.98%/0.26%、回收期 10.4/14.7 年；</li><li>调频毛收入 15,900 元/日、524.7 万元/年；</li><li>等效循环 325.9 次/年、80% SOH 需 13.33 年、增容 50 MWh。</li></ul></li></ul>
 <aside class="note"><p>工具是<strong>投决筛查器</strong>，不是结算系统：不处理省级考核细则、税费优惠、复杂融资、现货逐时优化。正式投决必须用本省规则、实测曲线与设备报价重算。</p></aside>
 <hr>
@@ -440,31 +440,31 @@ print(round(finance.npv(0.08, flows)), round(finance.irr(flows) * 100, 2))</code
 <h3 id="s98">14A.8 波兰五条</h3>
 <ol><li><strong>收益 = 容量市场 + 套利 + 辅助 + 补贴</strong>：容量市场是第一推动力，2022–2024 年储能中标从 165 MW 增至 2.5 GW，2030 交付年因降额规则回落到约 685 MW（C 级）。只靠套利很难过投决。</li><li><strong>容量收入按降额容量算</strong>：2030 交付年波兰实体出清价 465.02 PLN/kW·年；电池降额约 13%（C 级），100 MW 铭牌只算约 13 MW；新建 GP BESS 合同期示例为 17 年，但不是所有机组都 17 年。可用性考核和补贴扣减会降低实际收入。</li><li><strong>NFOŚiGW 补贴是 CAPEX 支持</strong>：总预算 41.5 亿 PLN（37.35 亿赠款 + 4.15 亿贷款），172 个项目、约 3.9 GW/14.5 GWh，计划 2028 年底前建成；补贴与容量收入叠加会按《容量市场法》第 62 条扣减（B/C 级）。它不是年度运营收入。</li><li><strong>15 分钟 + 负价</strong>：2025-10-01 起日前/日内 15 分钟 MTU；2026-04-06 出现 −791.32 PLN/MWh、约 10 小时负价（C 级）；用小时模型会同时错算套利和容量义务。</li><li><strong>并网/许可/容量注册是硬门槛</strong>：PSE/OSD 接入排队、URE koncesja、TGE/IRGiT 会员、POB 平衡责任、PSE 辅助服务预审、容量市场资格是不同流程；拿到并网不等于拿到容量合同。</li></ol>
 <p><strong>三个常用公式</strong></p>
-<pre><code>容量收入 = 降额容量(MW) × 出清价(PLN/kW·年) × 1000
+<pre tabindex="0"><code>容量收入 = 降额容量(MW) × 出清价(PLN/kW·年) × 1000
 套利毛利 = (放电价 − 充电价 ÷ RTE) × 放电量
 补贴后 CAPEX = CAPEX − 合格成本 × 补贴率</code></pre>
 <h3 id="s99">14A.9 比利时与北欧五条</h3>
 <ol><li><strong>比利时靠 CRM 年金</strong>：Y-4/Y-2/Y-1 三场、pay-as-bid、中间价格上限；新建最长 15 年。2025 年 Y-4 中标 4,690 MW，新增电池 179 MW（铭牌 525 MW），价格 €27.3k/MW·年（27,300，A 级，Elia 2025-10-30）；CRM 按降额容量付钱，不是铭牌。</li><li><strong>比利时容量缺口在变</strong>：Doel 4/Tihange 3 延寿至 2035 年、2025-05 废止退核法；海上风电 2030 年目标 5.8 GW。2024 年新增储能 491 MWh，CRM 累计新电池约 1.6 GW，2030 年储能目标约 3.6 GW（C 级）。投决要用最新容量缺口，不用“2025 退核”旧假设。</li><li><strong>北欧是 12 个报价区</strong>：NO1–NO5、SE1–SE4、DK1–DK2、FI；项目按分区价结算，系统价只是参考；水电灵活性决定价差形态，EPAD 可对冲分区价差但不是物理合同。</li><li><strong>北欧储备不是容量市场</strong>：瑞典 effektreserv 目标 800 MW，2025-10-07 拍卖因报价高于 SEK 120,000/MW 上限流拍；芬兰 tehoreservi；挪威/丹麦无全国容量市场。储能不能把储备当长期年金。</li><li><strong>15 分钟不平衡改变收益</strong>：2025-03-04 起 15 分钟不平衡 + mFRR EAM，不平衡价与日前价重合度从约 33% 降到约 3%，平衡成本从约 1 €/MWh 升到 5–6 €/MWh（B/C 级）；PICASSO 在丹麦（2024-10）、芬兰（2025-03）已接入，瑞典/挪威更晚。四国许可、BRP、辅助服务预审各不相同。</li></ol>
 <p><strong>三个常用公式</strong></p>
-<pre><code>CRM 收入 = 降额容量(MW) × 中标价(€/MW·年)
+<pre tabindex="0"><code>CRM 收入 = 降额容量(MW) × 中标价(€/MW·年)
 分区套利 = (分区放电价 − 分区充电价 ÷ RTE) × 放电量
 储备收入 = 中标容量(MW) × 储备价(当地币/MW·季)</code></pre>
 <h3 id="s100">14A.9b 美国三市场五条</h3>
 <ol><li><strong>三个市场三套逻辑</strong>：ERCOT 是能量-only + ORDC 稀缺定价；PJM 靠容量市场（BRA/ELCC）；CAISO 靠日前/实时 + RA 资源充裕度。同一套收益模型不能平移到三地。</li><li><strong>ERCOT 按 15 分钟结算</strong>：实时 SCED 5 分钟、结算 15 分钟；HCAP/LCAP 5,000/2,000 美元/MWh；RTC+B 于 2025-12-05 上线，把实时能量与辅助服务联合优化并纳入 SOC；在运电池 15,008 MW（2025-09，B 级）。</li><li><strong>PJM 容量收入按 ELCC 折算</strong>：2028/29 BRA 出清 325 美元/MW·日（新上限）触顶，清算 152.1 GW、缺口 6.8 GW、备用率 14.7%，新增实际容量仅约 525 MW；4 小时电池 ELCC 约 50%，容量收入约 6 万美元/MW-年（量级口径）；触顶价不等于可融资价，还要算性能罚则。</li><li><strong>CAISO 叠加 RA 与 FRP</strong>：日前 + FMM 15 分钟 + RTD 5 分钟；RA 自 2026 合规年全面执行小时切片；EDAM 于 2026-05-01 投运；储能 &gt;21 GW，负价集中在白天光伏高峰，套利时段后移。</li><li><strong>并网与供应链是硬门槛</strong>：PJM 2026-08 首轮并联 715 个项目/201.5 GW、研究周期约 40 个月；CAISO 队列约 197 GW；ITC 30% + 本土含量 10% + 能源社区 10%；FEOC 规则按 2025-12-31 后开工适用；301 关税 2026-01-01 起 25%；消防按 UL 9540/NFPA 855、并网按 IEEE 1547。</li></ol>
 <p><strong>三个常用公式</strong></p>
-<pre><code>PJM 容量收入 ≈ ELCC(MW) × 出清价(美元/MW-day) × 365
+<pre tabindex="0"><code>PJM 容量收入 ≈ ELCC(MW) × 出清价(美元/MW-day) × 365
 ERCOT 套利毛收入 ≈ 放电量(MWh) × 价差(美元/MWh) × RTE × 循环次数
 CAISO RA 收入 ≈ NQC(MW) × 容量价(美元/kW-年) × 1000</code></pre>
 <h3 id="s101">14A.9c 日本五条</h3>
 <ol><li><strong>收益 = 现货 + EPRX + 容量市场 + LTDA</strong>：JEPX 日前 48 个 30 分钟商品、10:00 截止、盲拍单一价；价格下限 0.01 日元/kWh，<strong>没有负电价</strong>，套用欧洲负价模型会高估充电收益。</li><li><strong>容量市场按降额容量付钱</strong>：提前 4 年、单一价、1 年契约；第 5 回（FY2028）11,134 日元/kW、第 6 回（FY2029）13,303 日元/kW；历史均价在 3,109–14,137 日元/kW 之间，不能单次外推。</li><li><strong>LTDA 是 20 年收入但有还付与时长门槛</strong>：pay-as-bid、其他市场收益约 90% 事后还付；第 3 回起 &lt;6 小时电池不再具备资格；第 3 回电池中标 1,251 MW/19 件、落札率 36%（C 级）。LTDA 收入不能与现货/EPRX 收入简单相加。</li><li><strong>不平衡成本高</strong>：30 分钟结算；2026-10-01 起 C 值 200→300 日元/kWh、D 值 45→50 日元/kWh（C 级）；偏差成本可能超过套利毛利，必须配日内滚动预测。EPRX 上限 2026-09-01 起降至 10.00 日元/ΔkW·30 分，单靠 ΔkW 不成立。</li><li><strong>并网排队与外资审查是硬门槛</strong>：储能接续检讨 FY2025 达 24,880 件；2026-08-01 起同一事业者件数上限——东京 11、关西 12、九州 8；一般送配电、送电、≥5 万 kW 发电属外为法核心行业，事前届报、审查 30 日–5 个月。</li></ol>
 <p><strong>三个常用公式</strong></p>
-<pre><code>容量市场收入 ≈ de-rated 容量(kW) × 出清价(日元/kW·年)
+<pre tabindex="0"><code>容量市场收入 ≈ de-rated 容量(kW) × 出清价(日元/kW·年)
 LTDA 净收入 ≈ LTDA 容量收入 + 其他市场收益 × (1 − 90%)
 EPRX 收入 ≈ Σ ΔkW × 单价(日元/ΔkW·30 分) + 调用电量 × kWh 单价</code></pre>
 <h3 id="s102">14A.9d 法国五条</h3>
 <ol><li><strong>收益 = 容量 PL-1 + MA/辅助 + 套利</strong>：法国没有英式单一容量拍卖年金；2026 年起 RTE 是容量机制单一买方，PL-1 按交付期定价。电池首拍认证 608 MW、中标 577 MW，容量收入基数很小，不能把首拍价直接乘铭牌容量。</li><li><strong>€28,182.99/MW 是交付期价，不是年价</strong>：首拍交付期 2026-11-01 至 2027-03-31，共 151 天；折算年化要除以 151/365。<strong>€18,646.6/MW 是成本分摊商数（quotient），不是清算价</strong>，两者不能混用。</li><li><strong>PL-4 是多年期长合约</strong>：2030-31 需求 79.3–81.8 GW，CoNE €60,000/MW·yr、上限 €90,000、PPI €15,000、最长 15 年（CRE 2026-199）；PPI 豁免受理截止 2026-11-23。签 PL-4 意味着长期可用性义务，不是免费年金。</li><li><strong>核电基荷改变套利形态</strong>：2025 年核电 62.99 GW、373.0 TWh（68.1%），总发电 547.5 TWh、净出口 92.3 TWh；日前均价 €61.1/MWh，负价 513 h、均值 −€6.5/MWh。价差窄、负价时段集中在核电+光伏叠加的中午，储能套利要按 15 分钟曲线建模。</li><li><strong>并网与外资审查是硬门槛</strong>：电池队列 14 GW/180 项目；2025 末接入权约 30 GW 是“已授权利”不是“已并网”；IEF 外资审查非欧盟 25%、欧盟 10% 门槛；REMIT、CRE 容量认证、RTE BRP 注册是不同流程。</li></ol>
 <p><strong>三个常用公式</strong></p>
-<pre><code>PL-1 容量收入 = 认证容量(MW) × 降额系数 × 交付期价(€/MW) × 交付期天数 ÷ 365
+<pre tabindex="0"><code>PL-1 容量收入 = 认证容量(MW) × 降额系数 × 交付期价(€/MW) × 交付期天数 ÷ 365
 PL-4 容量收入 = 认证容量(MW) × 降额系数 × 中标价(€/MW·yr)
 法国套利毛利 = (放电价 − 充电价 ÷ RTE) × 放电量 − MA 偏差成本</code></pre>
 <h3 id="s103">14A.10 同一问题，十一市场怎么答</h3>
@@ -647,7 +647,9 @@ PL-4 容量收入 = 认证容量(MW) × 降额系数 × 中标价(€/MW·yr)
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

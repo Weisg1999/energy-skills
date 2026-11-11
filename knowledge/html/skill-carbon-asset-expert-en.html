@@ -15,7 +15,7 @@
 </head>
 <body data-cat="skill" id="top">
 <a class="skip" href="#main">Skip to content</a>
-<div class="progress" id="progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -155,7 +155,7 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Layer</th><th>Use</th><th>Main basis</th></tr></thead><tbody><tr><td>Regional inventory</td><td>Government greenhouse-gas inventories</td><td>IPCC guidelines plus provincial guidance</td></tr><tr><td>Organisational inventory</td><td>Annual corporate reporting and compliance</td><td>Sector guidance, GB/T 32150, ISO 14064-1</td></tr><tr><td>Product footprint</td><td>Exports, customer requests, carbon-label certification, CBAM data base</td><td>ISO 14067:2018, GB/T 24067-2024, product category rules</td></tr><tr><td>Claim verification</td><td>Third-party verification of carbon-neutrality and footprint claims</td><td>ISO 14064-3</td></tr></tbody></table></div>
 <p>Compliance uses the <strong>organisational inventory</strong>, not the product footprint or the regional inventory. The boundaries differ; numbers cannot be borrowed across layers. A product footprint answers &quot;how much does one product emit&quot;; an organisational inventory answers &quot;how much does one legal entity emit in a year&quot;. Neither can be converted into the other by multiplying or dividing by output, and an average factor cannot replace product-level accounting. Boundary, allocation and factor choices are in §11.6.</p>
 <h3 id="s18">3.2 Core formulas</h3>
-<pre><code>Emissions = Σ(activity data × emission factor × GWP)
+<pre tabindex="0"><code>Emissions = Σ(activity data × emission factor × GWP)
 Coal combustion = consumption × net calorific value × carbon content per unit energy × 44/12 × oxidation rate</code></pre>
 <ul><li>Activity data come from meters, ledgers, invoices and production reports; measured values first, defaults only as fallback;</li><li>Emission factors come from regulator publications or measurement; never mix a regional grid factor with a project baseline factor;</li><li>GWP values follow the current guidance and stay consistent within a reporting period.</li></ul>
 <h3 id="s19">3.3 Data chain: from meter to report</h3>
@@ -182,7 +182,7 @@ Coal combustion = consumption × net calorific value × carbon content per unit 
 <h2 id="s28">5. Allowance Gap: From Tonnes to Money</h2>
 <aside class="note"><p>Worked examples are synthetic and do not represent any company or regulator value. Code: <code>compliance.py</code>.</p></aside>
 <h3 id="s29">5.1 Formulas</h3>
-<pre><code>Free allocation A = activity Q × benchmark b × correction k
+<pre tabindex="0"><code>Free allocation A = activity Q × benchmark b × correction k
 Gap G = verified emissions E − A
 CCER usable = min(available CCER, 5% × surrender obligation, max(G, 0))
 CEA purchase = max(G, 0) − CCER usable
@@ -233,7 +233,7 @@ Surplus = max(−G, 0)</code></pre>
 <h2 id="s45">8. CCER Economics: NPV, IRR and Break-even</h2>
 <aside class="note"><p>Worked examples are synthetic and do not represent any project. Code: <code>ccer.py</code>.</p></aside>
 <h3 id="s46">8.1 Formulas</h3>
-<pre><code>Annual reductions ER = baseline emissions − project emissions − leakage
+<pre tabindex="0"><code>Annual reductions ER = baseline emissions − project emissions − leakage
 Annual net cash flow = ER × carbon price − operating cost
 NPV = −capex + Σ(net cash flow / (1+r)^t)
 Break-even price = (annual opex + capex / annuity factor) / annual reductions</code></pre>
@@ -256,7 +256,7 @@ Break-even price = (annual opex + capex / annuity factor) / annual reductions</c
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Instrument</th><th>Underlying / structure</th><th>Main use</th><th>Key risk</th><th>Status in China</th></tr></thead><tbody><tr><td>Allowance pledge</td><td>Allowances as collateral</td><td>Financing</td><td>Price fall, pledge registration, disposal</td><td>In practice</td></tr><tr><td>Repo</td><td>Sale plus repurchase</td><td>Short-term funding</td><td>Counterparty, repurchase default</td><td>In practice</td></tr><tr><td>Carbon forward / swap</td><td>OTC future price</td><td>Lock cost or revenue</td><td>Credit risk, no central clearing</td><td>Mostly OTC</td></tr><tr><td>Carbon fund / bond / trust</td><td>Portfolio or project financing</td><td>Funding, allocation</td><td>Asset quality, liquidity</td><td>Cases exist</td></tr><tr><td>Carbon insurance / guarantee</td><td>Delivery or price protection</td><td>Credit enhancement</td><td>Terms, payout conditions</td><td>Emerging</td></tr><tr><td>Carbon futures / options</td><td>Exchange derivatives</td><td>Standardised hedging</td><td>Margin, basis</td><td><strong>Not listed as of 2026-11</strong></td></tr></tbody></table></div>
 <h3 id="s52">9.2 Pledge: how much, and when is margin called</h3>
 <p>Example: 100,000 t CEA at CNY 95/t, 60% advance rate → CNY 5.7 million loan. With an 80% LTV trigger, a price fall to <strong>CNY 71.25/t</strong> triggers a margin call or top-up — about a 25% decline from CNY 95.</p>
-<pre><code>Pledge value = quantity × price × advance rate
+<pre tabindex="0"><code>Pledge value = quantity × price × advance rate
 Margin-call price = loan / (quantity × LTV cap)</code></pre>
 <p>A pledge is not a sale: the company retains title, but the allowances are frozen and cannot be surrendered or re-pledged. The contract must cover margin calls, disposal and early repayment.</p>
 <h3 id="s53">9.3 Forwards/swaps: locking price is not removing risk</h3>
@@ -271,7 +271,7 @@ Margin-call price = loan / (quantity × LTV cap)</code></pre>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Structure</th><th>Linked to</th><th>Typical terms</th><th>Best fit</th></tr></thead><tbody><tr><td>Carbon-data underwriting</td><td>Verified organisational/product data, carbon-efficiency rating</td><td>Eligibility, limit, rate discount</td><td>SMEs, export manufacturers</td></tr><tr><td>Carbon-linked loan</td><td>KPI: reduction rate, carbon intensity, certification progress</td><td>Rate step-down on target, step-up on miss</td><td>Firms with retrofit projects</td></tr><tr><td>Carbon-asset pledge</td><td>Allowances, CCER</td><td>Haircut, margin trigger</td><td>Allowance holders</td></tr></tbody></table></div>
 <p><strong>Public examples (product shape only, not a return benchmark)</strong>: on 2024-04-25, CCB Shanghai and Carbon Newture launched &quot;碳数贷&quot;, positioned as the first carbon-service inclusive-finance product for SMEs; it uses a &quot;carbon footprint profile&quot; to select borrowers and the proceeds may fund product-footprint/carbon-neutrality certification, GECs, carbon credits and low-carbon retrofits (B/C). Public materials do not disclose a uniform limit, rate or portfolio size; in 2025-10 CCB Shanghai said green loans had passed CNY 200 billion and that the product had served several firms (B). Other local products include Postal Savings Bank Beijing's &quot;降碳贷&quot; (236 firms and CNY 1.11 billion by 2026-06, carbon-account rating linked to the rate, B/C) and CCB Guangzhou's &quot;穗碳贷&quot; (CNY 5 million unsecured loan to a carbon-efficiency A-rated firm, C). These are local products, not a national rule.</p>
 <p><strong>The arithmetic</strong>:</p>
-<pre><code>Annual interest saved = principal × rate step-down × years</code></pre>
+<pre tabindex="0"><code>Annual interest saved = principal × rate step-down × years</code></pre>
 <p>CNY 5 million, 20 bp step-down, one year → CNY 10,000. That is usually smaller than the cost of certification and retrofit, so <strong>do not certify merely to obtain a rate discount</strong>. If certification also brings market access, an allowance uplift and a passed customer audit, value all four together.</p>
 <p>Six checks when structuring a carbon-linked loan:</p>
 <ol><li><strong>Verifiable data</strong>: third-party verification/certification, report number and certificate validity can be checked;</li><li><strong>Transparent rating</strong>: boundary, factors, base year and weights disclosed;</li><li><strong>Measurable KPI</strong>: absolute or intensity, fixed baseline, no &quot;produce more to look greener&quot;;</li><li><strong>Monitoring and reporting</strong>: quarterly/annual, who verifies, what happens on a miss;</li><li><strong>Data authorisation</strong>: scope, term and withdrawal of the firm's consent to bank/platform use;</li><li><strong>Anti-greenwashing</strong>: whether a miss is covered only by offsets, and whether it is disclosed.</li></ol>
@@ -300,7 +300,7 @@ Margin-call price = loan / (quantity × LTV cap)</code></pre>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Item</th><th>Status / date</th></tr></thead><tbody><tr><td>Transitional period</td><td>Started 2023-10-01</td></tr><tr><td>Definitive regime</td><td>2026-01-01</td></tr><tr><td>Certificate purchases</td><td><strong>From 2027-02</strong></td></tr><tr><td>First annual declaration and surrender</td><td><strong>2027-09-30</strong></td></tr><tr><td>Default-value adder</td><td>+10% in 2026, +30% in 2028</td></tr><tr><td>De minimis exemption</td><td>Consignments below 50 tonnes</td></tr><tr><td>Downstream product expansion</td><td>About 180 products from 2028</td></tr><tr><td>Third-party verification</td><td>From September-October 2026</td></tr><tr><td>UK CBAM</td><td>Starts 2027-01-01</td></tr></tbody></table></div>
 <p><strong>&quot;Effective 2026-01-01&quot; does not mean &quot;buy certificates in 2026&quot;</strong>: 2026 is the definitive-regime and data-preparation year; purchases start in February 2027, with the first surrender due 30 September 2027.</p>
 <h3 id="s65">11.3 Estimating CBAM cost</h3>
-<pre><code>Certificates due = embedded emissions − emissions covered by carbon price paid in the country of origin
+<pre tabindex="0"><code>Certificates due = embedded emissions − emissions covered by carbon price paid in the country of origin
 Certificate cost = certificates due × EU ETS auction average</code></pre>
 <ul><li>Embedded emissions follow product rules and include direct and some indirect emissions;</li><li>Default values are allowed but carry an adder (+10% in 2026, +30% in 2028); actual data is better;</li><li>Carbon price already paid in the country of origin can be deducted, but free allocation generally is not a deductible carbon price and must be evidenced item by item (grade B);</li><li>Q1/Q2 2026 reference prices were about EUR 75.36/75.28 per tonne (grade A/B).</li></ul>
 <p>Order of magnitude: about EUR 44.79 per tonne of blast-furnace steel exported (roughly CNY 375, grade D estimate), against domestic steel margins of about CNY 200/t. Carbon cost can already change an order decision. The number moves with EUA prices, default values and product rules, so <strong>use it for scale, not for quoting</strong>.</p>
@@ -314,7 +314,7 @@ Certificate cost = certificates due × EU ETS auction average</code></pre>
 <p><strong>Five stages, two boundaries</strong>: raw-material acquisition, production, transport (delivery), use and end-of-life. Counting only the first three is cradle-to-gate; counting all five is cradle-to-grave. Always state the boundary when quoting a customer, or two products with the same name can differ by double-digit percentages.</p>
 <p><strong>Four choices that must be disclosed</strong>:</p>
 <ol><li><strong>Functional / declared unit</strong>: per kg, per piece, per kWh, or per unit of revenue;</li><li><strong>Cut-off criteria</strong>: which inputs and outputs are excluded, and the single and cumulative thresholds;</li><li><strong>Co-product allocation</strong>: by mass, energy or economic value; once chosen, stay consistent across periods;</li><li><strong>Recycling and waste treatment</strong>: cut-off, circular allocation or substitution, as the product rules require.</li></ol>
-<pre><code>Product carbon footprint = Σ(activity data × emission factor) ÷ declared unit</code></pre>
+<pre tabindex="0"><code>Product carbon footprint = Σ(activity data × emission factor) ÷ declared unit</code></pre>
 <p><strong>Worked example (synthetic data, arithmetic only)</strong>: one tonne of product, with stage emissions of 8,200 kg CO2e for raw materials, 2,100 kg for production, 480 kg for transport, 1,300 kg for use and 320 kg CO2e for end-of-life.</p>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Boundary</th><th>Emissions</th><th>Intensity</th><th>Use</th></tr></thead><tbody><tr><td>Cradle-to-gate</td><td>10,780 kg</td><td>10.78 kg/kg</td><td>Common for B2B customer data requests</td></tr><tr><td>Cradle-to-grave</td><td>12,400 kg</td><td>12.4 kg/kg</td><td>Consumer-facing labels / neutrality claims</td></tr><tr><td>Raw-material share</td><td>8,200/12,400 = 66.1%</td><td>—</td><td>Abatement should start with materials</td></tr><tr><td>Co-product allocation (60/40 by mass)</td><td>7,440 kg main, 4,960 kg by-product</td><td>—</td><td>Must be disclosed for multi-output processes</td></tr></tbody></table></div>
 <p>Extending the boundary from gate to grave raises the result from 10.78 to 12.4 kg/kg (+15%). After a 20% reduction the residual is 9,920 kg; offsetting at CNY 90/t costs only <strong>CNY 892.8</strong>. The conclusion is blunt: <strong>offsetting is cheap; the hard part is getting 12.4 tonnes down and producing verifiable data</strong>.</p>
@@ -329,7 +329,41 @@ Certificate cost = certificates due × EU ETS auction average</code></pre>
 <h3 id="s69">11.7 Carbon-neutrality claims: the ISO 14068:2026 hierarchy</h3>
 <p><strong>Standard status</strong>: ISO 14068:2026 <em>Climate change management — Carbon neutrality</em> was published on <strong>2026-09-11</strong>, replacing ISO 14068-1:2023 (A/B); PAS 2060 was withdrawn at the end of 2025 (A/B). The standard applies to organisations, products and activities, not to countries or regions.</p>
 <p><strong>The hierarchy cannot be skipped</strong>:</p>
-<pre><code>Quantify → reduce / remove → offset the residual → report → claim → verify</code></pre>
+<figure class="flow-diagram" aria-label="Process flow">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">Step flow · FLOW</span>
+        <span class="diagram-meta">6 steps</span>
+      </span>
+
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">Quantify</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">reduce / remove</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">offset the residual</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">04</span>
+      <span class="flow-text">report</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">05</span>
+      <span class="flow-text">claim</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">06</span>
+      <span class="flow-text">verify</span>
+
+    </li></ol>
+
+  </figure>
 <p>Buying credits without reducing does not meet the standard; reducing without quantifying the residual cannot support a claim. A carbon-neutrality claim must rest on <strong>achieved</strong> reductions and offsets, not on a promise of &quot;carbon neutral by year X&quot;.</p>
 <p><strong>A carbon-neutrality management plan (CNMP) contains at least</strong>:</p>
 <ul><li>Claiming entity and boundary (organisation/product/activity, base year);</li><li>A 1.5°C-aligned reduction pathway with five-year milestones;</li><li>Specific measures, responsible departments and budget;</li><li>Residual emissions and offset arrangements, shifting gradually to removal credits;</li><li>Monitoring, reporting, verification and continual improvement.</li></ul>
@@ -542,7 +576,9 @@ Certificate cost = certificates due × EU ETS auction average</code></pre>
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="Back to top">↑</a>
+<nav class="page-aux" aria-label="Page utilities">
+  <a class="to-top" href="#top" aria-label="Back to top">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

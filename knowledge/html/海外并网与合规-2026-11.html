@@ -15,7 +15,7 @@
 </head>
 <body data-cat="cross" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -112,30 +112,145 @@
 <hr>
 <h2 id="s1">0. 一页看懂</h2>
 <h3 id="s2">0.1 七道门，不是一道门</h3>
-<pre><code>海外储能项目合规
-├─ 门 1  并网（Grid Code）
-│  ├─ 欧盟：RfG 2016/631 + 本国实施 + EN 50549
-│  ├─ 国家：VDE-AR-N / G99 / CEI 0-21 / NTS / Netcode / NC RfG
-│  └─ 并网协议、单元证书、建模、测试、调试
-├─ 门 2  设备安全（Product Safety）
-│  ├─ IEC 62933 / IEC 62619 / IEC 63056 / IEC 62477
-│  ├─ UL 9540 / UL 1741 / IEEE 1547（北美）
-│  └─ CE / UKCA / UN 38.3 / 并网认证
-├─ 门 3  消防（Fire）
-│  ├─ NFPA 855 / UL 9540A（北美及引用地区）
-│  └─ 欧盟/各国消防规范 + 电池法规热失控要求
-├─ 门 4  网络安全（NIS2）
-│  ├─ 实体范围、风险管理、24h/72h/1 个月报告
-│  └─ 供应链安全、EMS/SCADA/远程运维合同
-├─ 门 5  电池法规与电池护照
-│  ├─ 碳足迹声明、性能等级、再生含量、尽职调查
-│  └─ 2027-02-18 数字护照 + 二维码 + 海关核验
-├─ 门 6  供应链与产业政策（NZIA / IAA）
-│  ├─ 非价格标准、本地含量、 resilience
-│  └─ 公共采购与招标资格
-└─ 门 7  外资审查（FDI）
-   ├─ 欧盟合作机制 + 成员国审查
-   └─ 美国 CFIUS/FIRRMA、日本 FEFTA、澳洲 FIRB、英国 NSIA</code></pre>
+<figure class="tree-diagram" aria-label="海外储能项目合规结构图">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构图 · STRUCTURE</span>
+        <span class="diagram-meta">7 个一级分支</span>
+      </span>
+      <span class="tree-root-title">海外储能项目合规</span>
+
+    </figcaption>
+    <div class="tree-grid"><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">01</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">门 1</span>
+        <span class="tree-node-detail">并网（Grid Code）</span>
+      </span>
+    </div>
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">欧盟</span>
+    <span class="tree-child-detail">RfG 2016/631 + 本国实施 + EN 50549</span>
+
+  </li><li>
+    <span class="tree-child-title">国家</span>
+    <span class="tree-child-detail">VDE-AR-N / G99 / CEI 0-21 / NTS / Netcode / NC RfG</span>
+
+  </li><li>
+    <span class="tree-child-title">并网协议、单元证书、建模、测试、调试</span>
+
+
+  </li></ul>
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">02</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">门 2</span>
+        <span class="tree-node-detail">设备安全（Product Safety）</span>
+      </span>
+    </div>
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">IEC 62933 / IEC 62619 / IEC 63056 / IEC 62477</span>
+
+
+  </li><li>
+    <span class="tree-child-title">UL 9540 / UL 1741 / IEEE 1547（北美）</span>
+
+
+  </li><li>
+    <span class="tree-child-title">CE / UKCA / UN 38.3 / 并网认证</span>
+
+
+  </li></ul>
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">03</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">门 3</span>
+        <span class="tree-node-detail">消防（Fire）</span>
+      </span>
+    </div>
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">NFPA 855 / UL 9540A（北美及引用地区）</span>
+
+
+  </li><li>
+    <span class="tree-child-title">欧盟/各国消防规范 + 电池法规热失控要求</span>
+
+
+  </li></ul>
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">04</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">门 4</span>
+        <span class="tree-node-detail">网络安全（NIS2）</span>
+      </span>
+    </div>
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">实体范围、风险管理、24h/72h/1 个月报告</span>
+
+
+  </li><li>
+    <span class="tree-child-title">供应链安全、EMS/SCADA/远程运维合同</span>
+
+
+  </li></ul>
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">05</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">门 5</span>
+        <span class="tree-node-detail">电池法规与电池护照</span>
+      </span>
+    </div>
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">碳足迹声明、性能等级、再生含量、尽职调查</span>
+
+
+  </li><li>
+    <span class="tree-child-title">2027-02-18 数字护照 + 二维码 + 海关核验</span>
+
+
+  </li></ul>
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">06</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">门 6</span>
+        <span class="tree-node-detail">供应链与产业政策（NZIA / IAA）</span>
+      </span>
+    </div>
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">非价格标准、本地含量、 resilience</span>
+
+
+  </li><li>
+    <span class="tree-child-title">公共采购与招标资格</span>
+
+
+  </li></ul>
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">07</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">门 7</span>
+        <span class="tree-node-detail">外资审查（FDI）</span>
+      </span>
+    </div>
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">欧盟合作机制 + 成员国审查</span>
+
+
+  </li><li>
+    <span class="tree-child-title">美国 CFIUS/FIRRMA、日本 FEFTA、澳洲 FIRB、英国 NSIA</span>
+
+
+  </li></ul>
+  </article></div>
+
+  </figure>
 <ul><li><strong>七道门是并联，不是串联</strong>：并网过了，消防可能卡；设备过了，电池护照可能卡；项目过了，股权交易可能被外资审查卡。</li><li><strong>每道门都有“时间窗”</strong>：并网排队 6–36 个月、认证 3–9 个月、消防审查 3–12 个月、电池护照数据准备 12–18 个月；投决模型要把合规时间当成现金流变量，不是后台事务。</li><li><strong>每道门都有“责任人”</strong>：设备商、EPC、业主、运营商、进口商（producer）责任不同；电池法规下的“生产者”可能是进口商，不是中国制造商。</li></ul>
 <h3 id="s3">0.2 十一市场速查</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>市场</th><th>并网主标准</th><th>并网主管</th><th>储能特殊点</th><th>消防/认证</th><th>外资审查</th></tr></thead><tbody><tr><td>德国</td><td>VDE-AR-N 4105/4110/4120/4130；FGW TR3/TR4/TR8</td><td>配电网/输电网运营商；BNetzA</td><td>中压及以上要单元证书；MaStR 登记</td><td>VDE + 州消防；UL 9540A 常被保险要求</td><td>AWV 投资审查</td></tr><tr><td>英国</td><td>G98（≤16 A/相）、G99（&gt;16 A）、G100（出口限制）</td><td>DNO；NESO（输电）</td><td>并网队列改革 TMO4+；G100 控制出口</td><td>无储能专用国标；按消防评估、DNO 与保险人要求</td><td>NSIA 2021</td></tr><tr><td>意大利</td><td>CEI 0-21（低压）、CEI 0-16（中高压）</td><td>配电网/TERNA</td><td>中低压并网设备强制认证</td><td>消防规范 + VVF；UL 9540A 常见</td><td>Golden Power</td></tr><tr><td>西班牙</td><td>NTS、RD 647/2020、TED/749/2020、TED/82/2026</td><td>REE/CNMC</td><td>2026-05-12 起自消费技术豁免取消</td><td>消防规范 + 自治州许可</td><td>2020 年起 FDI 审查</td></tr><tr><td>法国</td><td>NF C 15-100/13-100；RTE DTR</td><td>RTE/Enedis；CRE</td><td>2026 年底并网框架改革；容量认证与 PPI 豁免</td><td>消防/ICPE 按项目；UL 9540A 非强制</td><td>IEF：非欧经区 25%/上市 10%</td></tr><tr><td>荷兰</td><td>Netcode elektriciteit</td><td>TenneT/DSO；ACM</td><td>电网拥堵、容量限制合同、电池优先</td><td>PGS 37 系列与地方环境许可</td><td>投资审查合作机制</td></tr><tr><td>波兰</td><td>能源法 + NC RfG 实施 + PSE/OSD 条件</td><td>PSE/OSD；URE</td><td>≤1 kV 30 天、&gt;1 kV 150 天出条件；并网费减半</td><td>消防 + UDT 等技术检验，按当地许可</td><td>2020 年起审查</td></tr><tr><td>比利时/北欧</td><td>C10/11（比）；各国 grid code</td><td>Elia/各国 TSO/DSO</td><td>预审、辅助服务资格、并网容量</td><td>各国消防</td><td>各国审查</td></tr><tr><td>美国</td><td>IEEE 1547-2018、UL 1741、UL 9540、NEC 706</td><td>ISO/RTO + 州/地方 AHJ</td><td>队列改革、共址、ERCOD/NOGRR</td><td>NFPA 855-2026、UL 9540A 第 6 版</td><td>CFIUS/FIRRMA</td></tr><tr><td>澳大利亚</td><td>NER + AEMO 注册；AS/NZS 4777.2（DER）</td><td>AEMO/DNSP</td><td>5 分钟调度、FCAS 资格、IRP 注册</td><td>AS 5139、NCC、州消防</td><td>FIRB</td></tr><tr><td>日本</td><td>电气事业法 + 系统连系规程（JEAC 9701）</td><td>OCCTO/一般送配电事业者</td><td>30 分钟现货、容量市场、LTDA</td><td>消防法 + 建筑基准法</td><td>外为法</td></tr></tbody></table></div>
@@ -194,10 +309,45 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>内容</th><th>备注</th></tr></thead><tbody><tr><td>CE-LVD</td><td>低电压指令 2014/35/EU</td><td>电气安全</td></tr><tr><td>CE-EMC</td><td>电磁兼容指令 2014/30/EU</td><td>干扰/抗扰</td></tr><tr><td>RoHS</td><td>有害物质限制</td><td>材料合规</td></tr><tr><td>电池法规</td><td>(EU) 2023/1542</td><td>碳足迹、护照、回收</td></tr><tr><td>并网</td><td>EN 50549 / 本国 grid code</td><td>并网证书</td></tr><tr><td>消防</td><td>各国消防规范 + 电池法规热失控</td><td>项目级审批</td></tr></tbody></table></div>
 <ul><li><strong>CE 是“自我声明 + 技术文件”</strong>：大多数储能设备不需要公告机构发证，但需要有完整的技术文件、风险评估、测试报告；并网认证是单独的。</li><li><strong>EN 50549-1/-2 是并网通用标准</strong>：低压/中压发电设施；部分国家用 EN 50549-10 或本国标准覆盖储能并网测试，具体以 CENELEC 和本国电网运营商为准（B）。</li><li><strong>电池法规改变“CE”的内涵</strong>：除了 LVD/EMC/RoHS，还要满足电池法规的碳足迹、标签、护照、尽职调查；CE 标志不再是“一张证书”，而是一套持续义务。</li><li><strong>常见坑</strong>：把 CE 当并网证书；技术文件没有覆盖储能系统；电池法规的“生产者”责任没有落地到进口商。</li></ul>
 <h3 id="s23">3.4 认证与并网的关系</h3>
-<pre><code>设备认证（型式试验）
-   ├─ IEC / UL / EN 标准 → 证明设备安全与性能
-   ├─ 并网认证（Unit Certificate / G99 / CEI）→ 证明设备符合电网规则
-   └─ 项目认证（系统集成 + 现场测试）→ 证明整个项目符合并网协议</code></pre>
+<figure class="tree-diagram" aria-label="设备认证（型式试验）结构图">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构图 · STRUCTURE</span>
+        <span class="diagram-meta">3 个一级分支</span>
+      </span>
+      <span class="tree-root-title">设备认证（型式试验）</span>
+
+    </figcaption>
+    <div class="tree-grid"><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">01</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">IEC / UL / EN 标准</span>
+        <span class="tree-node-detail">证明设备安全与性能</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">02</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">并网认证（Unit Certificate / G99 / CEI）→ 证明设备符合电网规则</span>
+
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">03</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">项目认证（系统集成 + 现场测试）</span>
+        <span class="tree-node-detail">证明整个项目符合并网协议</span>
+      </span>
+    </div>
+
+  </article></div>
+
+  </figure>
 <ul><li><strong>三层不能互相替代</strong>：IEC 62619 过了，不代表 VDE-AR-N 4110 过；UL 9540 过了，不代表 NFPA 855 安装合规。</li><li><strong>项目级认证常被忽略</strong>：即使设备有证书，现场接线、保护定值、通信、无功设置仍要按并网协议测试；现场测试不通过，项目不能并网。</li><li><strong>认证的“版本”很重要</strong>：标准更新后，旧证书可能不被接受；投标前要确认业主/电网运营商接受的版本和有效期。</li></ul>
 <hr>
 <h2 id="s24">4. 消防：从“设备安全”到“安装合规”</h2>
@@ -268,14 +418,14 @@
 <p>假设：</p>
 <ul><li>项目：100 MW/200 MWh，capex €30m，年 EBITDA €6m；</li><li>融资：70% 债务，利率 5%，建设期利息按 capex 计；</li><li>延迟：并网+消防+护照合计延迟 6 个月。</li></ul>
 <p>计算：</p>
-<pre><code>建设期利息增加 ≈ €30m × 70% × 5% × 0.5 = €0.525m
+<pre tabindex="0"><code>建设期利息增加 ≈ €30m × 70% × 5% × 0.5 = €0.525m
 EBITDA 损失 ≈ €6m × 0.5 = €3.0m
 总影响 ≈ €3.525m（未折现）</code></pre>
 <ul><li><strong>延迟 6 个月可能吃掉 0.5–1.0 个百分点的 IRR</strong>；具体取决于电价曲线和融资结构。</li><li><strong>如果延迟导致错过容量市场/拍卖交付年</strong>，损失更大；要把“交付年”当成硬约束。</li></ul>
 <h3 id="s50">12.2 合规成本对 LCOS 的影响</h3>
-<pre><code>LCOS = (capex + 合规成本 + 运维现值 - 残值) / 全生命周期放电量</code></pre>
+<pre tabindex="0"><code>LCOS = (capex + 合规成本 + 运维现值 - 残值) / 全生命周期放电量</code></pre>
 <p>假设合规成本 €1.5m，全生命周期放电量 400 GWh：</p>
-<pre><code>合规成本分摊 ≈ €1.5m / 400 GWh = €3.75/MWh</code></pre>
+<pre tabindex="0"><code>合规成本分摊 ≈ €1.5m / 400 GWh = €3.75/MWh</code></pre>
 <ul><li><strong>合规成本不是小数</strong>：€3.75/MWh 相当于 LCOS 的 5–10%；在低价差市场可能决定项目生死。</li><li><strong>认证/消防/护照的成本要按项目分摊</strong>，不能只算设备单价。</li></ul>
 <h3 id="s51">12.3 电池护照数据准备的“关键路径”</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>任务</th><th>前置</th><th>时间</th></tr></thead><tbody><tr><td>碳足迹核算</td><td>电力因子、供应链数据</td><td>3–6 月</td></tr><tr><td>第三方验证</td><td>核算报告</td><td>2–4 月</td></tr><tr><td>DPP 数据映射</td><td>71 项数据点</td><td>3–6 月</td></tr><tr><td>系统对接</td><td>DPP 注册库</td><td>2–4 月</td></tr><tr><td>试运行</td><td>海关/客户</td><td>1–2 月</td></tr></tbody></table></div>
@@ -408,7 +558,9 @@ EBITDA 损失 ≈ €6m × 0.5 = €3.0m
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

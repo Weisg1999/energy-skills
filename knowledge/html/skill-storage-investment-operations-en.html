@@ -15,7 +15,7 @@
 </head>
 <body data-cat="skill" id="top">
 <a class="skip" href="#main">Skip to content</a>
-<div class="progress" id="progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -137,7 +137,7 @@
 <aside class="note"><p>Data in this chapter are cut off on 2026-11-01. National documents give the framework, provincial documents give the standard; cite both the document number and the date.</p></aside>
 <h3 id="s11">2.1 Capacity price: Document 114</h3>
 <p>The <em>Notice on Improving the Generation-Side Capacity Price Mechanism</em> (NDRC Price Document [2026] No. 114, 2026-01-30) first establishes a national framework for the capacity price of grid-side independent new-type storage:</p>
-<pre><code>capacity price = local coal capacity price standard × conversion ratio
+<pre tabindex="0"><code>capacity price = local coal capacity price standard × conversion ratio
 conversion ratio = min(full-power continuous discharge duration ÷ longest annual net-load peak duration, 1)</code></pre>
 <ul><li>Scope: grid-side independent new-type storage that serves power-system security and <strong>does not participate in mandatory co-location</strong>; managed through a <strong>list</strong>, with nothing paid outside the list.</li><li>The standard, denominator duration and execution period are set by the province; standards are not transferable across provinces.</li><li>The capacity charge enters system operating cost and is shared by C&amp;I users in proportion to consumption (grade-B interpretation).</li></ul>
 <p><strong>Provincial samples (as of 2026-10, grade B/C, to be verified)</strong>:</p>
@@ -164,10 +164,10 @@ conversion ratio = min(full-power continuous discharge duration ÷ longest annua
 <p>The two-part tariff for large industrial users = basic charge + energy charge. The basic charge may be levied on transformer capacity, contracted maximum demand or actual maximum demand (NDRC Office Price Document [2016] No. 1583; NDRC Price Document [2018] No. 500 added actual maximum demand).</p>
 <p>Contracted maximum demand rules:</p>
 <ul><li>The approved value may be changed monthly with 5 working days' notice; the billing method may be changed quarterly with 15 working days' notice;</li><li>If actual maximum demand does not exceed 105% of the approved value, billing uses the approved value;</li><li>The portion above 105% is charged at <strong>double</strong> the basic tariff;</li><li>If the approved value requested is below 40% of the sum of transformer capacity and high-voltage motor capacity, it is approved at 40%;</li><li>Two or more incoming lines are metered separately and charged cumulatively.</li></ul>
-<pre><code>over = max(actual maximum demand - 1.05 × approved value, 0)
+<pre tabindex="0"><code>over = max(actual maximum demand - 1.05 × approved value, 0)
 basic charge = demand price × (approved value + 2 × over)</code></pre>
 <p><strong>Worked example</strong>: approved value 10,000 kW, demand price CNY 40/kW-month, actual maximum demand 12,000 kW:</p>
-<pre><code>over = 12,000 - 10,500 = 1,500 kW
+<pre tabindex="0"><code>over = 12,000 - 10,500 = 1,500 kW
 basic charge = 40 × (10,000 + 2 × 1,500) = CNY 520,000/month</code></pre>
 <p>After storage shaves 2 MW and actual maximum demand falls to 10,000 kW, the basic charge = 40 × 10,000 = CNY 400,000/month, saving CNY 120,000/month (CNY 1.44 million/year).</p>
 <aside class="note"><p><strong>Key point</strong>: under contracted maximum demand, if actual demand is below the approved value but still above 0.4×, the basic charge is still levied on the approved value; cutting demand from 100% to 90% does not directly save money. Savings occur only when &quot;above 105%&quot; or when the approved value is lowered.</p></aside>
@@ -188,7 +188,7 @@ basic charge = 40 × (10,000 + 2 × 1,500) = CNY 520,000/month</code></pre>
 <h3 id="s23">3.5 Financial parameters</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Parameter</th><th>Common screening value</th><th>Note</th></tr></thead><tbody><tr><td>Project discount rate</td><td>6%-8%</td><td>Match cost of capital and risk</td></tr><tr><td>Equity IRR target</td><td>8%-10%</td><td>Not a promise of achievement</td></tr><tr><td>Income tax</td><td>25%</td><td>Check eligibility for incentives</td></tr><tr><td>Depreciation life</td><td>10-15 years</td><td>Accounting and tax consistent</td></tr><tr><td>Residual value</td><td>0-5%</td><td>Battery residual value is disputed; be conservative</td></tr><tr><td>DSCR</td><td>at least 1.2</td><td>Typical lender requirement</td></tr><tr><td>Loan tenor / rate</td><td>8-12 years / 3.5%-5%</td><td>Subject to actual credit approval</td></tr></tbody></table></div>
 <h3 id="s24">3.6 Data contract template</h3>
-<pre><code>project:
+<pre tabindex="0"><code>project:
   form: independent | colocated | cni | thermal | microgrid | vpp
   province: &quot;&quot;
   cod_year: 2027
@@ -220,7 +220,7 @@ basic charge = 40 × (10,000 + 2 × 1,500) = CNY 520,000/month</code></pre>
 <h2 id="s25">4. Revenue stacking: account for every yuan</h2>
 <h3 id="s26">4.1 Peak-valley / spot arbitrage</h3>
 <p>Let rated power be <code>P</code> (MW), duration <code>H</code> (h), usable energy ratio <code>u</code>, and round-trip efficiency <code>RTE</code>. One-way efficiency <code>η = sqrt(RTE)</code>.</p>
-<pre><code>usable DC energy E_dc = P × H × u
+<pre tabindex="0"><code>usable DC energy E_dc = P × H × u
 AC discharge per cycle = E_dc × η
 AC charge per cycle = E_dc ÷ η
 gross revenue per cycle = discharge volume × discharge price - charge volume × charge price
@@ -235,7 +235,7 @@ annual degradation cost = annual throughput × degradation cost per unit through
 <ul><li><strong>Captured spread</strong>: not the daily high minus the daily low, but the spread between the periods in which storage actually charges and discharges;</li><li><strong>Cycle count</strong>: constrained by spread duration, SOC window, assessment and degradation;</li><li><strong>Forecast error</strong>: day-ahead plans deviate from real-time prices, causing charge/discharge misalignment;</li><li><strong>Negative prices / spikes</strong>: negative prices may pay storage to charge, but can come with charging restrictions; spikes are limited by power and energy.</li></ul>
 <p>Method: replay historical 15-minute prices with two strategies, &quot;perfect foresight&quot; and &quot;day-ahead forecast&quot;; the difference is the cost of forecast error. Then discount the spread with quantiles or scenarios instead of using a single annual average.</p>
 <h3 id="s28">4.3 Capacity price</h3>
-<pre><code>annual capacity charge = P × 1000 × capacity price × min(H ÷ H_peak, 1) × availability</code></pre>
+<pre tabindex="0"><code>annual capacity charge = P × 1000 × capacity price × min(H ÷ H_peak, 1) × availability</code></pre>
 <p>Example A: 100 MW × 1,000 × CNY 165/kW-yr × 1/3 = <strong>CNY 5.5 million/year</strong> (2 h, 6 h denominator).</p>
 <p>Key points:</p>
 <ul><li>Confirm <strong>list eligibility</strong> first, then the standard; nothing is paid outside the list;</li><li>Availability assessment is tied to the capacity charge; planned and unplanned outages both deduct;</li><li>The denominator duration is set by the province; a 2 h project earns only 1/3 in a 6 h province;</li><li>Capacity price and spot arbitrage share the same equipment availability; neither can assume 100% simultaneous availability.</li></ul>
@@ -245,10 +245,10 @@ annual degradation cost = annual throughput × degradation cost per unit through
 <aside class="note"><p>Capacity leasing is not &quot;money for nothing&quot;: unsold capacity, falling rents and counterparty default can all break the cash flow. At minimum, model &quot;rent -30%&quot; and &quot;one vacant year&quot;.</p></aside>
 <h3 id="s30">4.5 Ancillary services</h3>
 <p>Common frequency-regulation revenue structure:</p>
-<pre><code>daily revenue = regulation capacity × capacity price × 24 h + regulation mileage × mileage price × K factor
+<pre tabindex="0"><code>daily revenue = regulation capacity × capacity price × 24 h + regulation mileage × mileage price × K factor
 annual revenue = daily revenue × operating days × availability</code></pre>
 <p><strong>Worked example</strong>: 10 MW regulation capacity, capacity price CNY 10/MW-h, daily mileage 1,500 MW, mileage price CNY 6/MW, K = 1.5, 330 days:</p>
-<pre><code>daily revenue = 10 × 10 × 24 + 1,500 × 6 × 1.5 = 2,400 + 13,500 = CNY 15,900
+<pre tabindex="0"><code>daily revenue = 10 × 10 × 24 + 1,500 × 6 × 1.5 = 2,400 + 13,500 = CNY 15,900
 annual revenue = 15,900 × 330 = CNY 5.247 million</code></pre>
 <aside class="note"><p>This is <strong>gross revenue</strong>, before energy cost, opportunity cost and assessment. Frequency regulation occupies 10 MW of power and corresponding SOC margin, so arbitrage volume falls; the CNY 5.247 million cannot be added directly to arbitrage revenue.</p></aside>
 <h3 id="s31">4.6 Demand management</h3>
@@ -258,7 +258,7 @@ annual revenue = 15,900 × 330 = CNY 5.247 million</code></pre>
 <ul><li>Charging must not raise demand: if the valley-period load is 8 MW and storage adds 3 MW, purchases reach 11 MW and may push demand up;</li><li>Peak-shaving depth is energy-constrained: 2 MW × 2 h = 4 MWh; insufficient usable energy cannot cover the evening peak;</li><li>The approved value can be adjusted monthly; after shaving capability changes, re-file instead of reusing the old value.</li></ul>
 <h3 id="s32">4.7 Renewable co-located storage</h3>
 <p>Incremental revenue mainly comes from moving energy that would otherwise be curtailed:</p>
-<pre><code>daily revenue = movable curtailed energy × discharge price - curtailment opportunity cost - degradation cost</code></pre>
+<pre tabindex="0"><code>daily revenue = movable curtailed energy × discharge price - curtailment opportunity cost - degradation cost</code></pre>
 <p><strong>Example C (20 MW/40 MWh, co-located)</strong>: daily movable curtailed energy 30 MWh (AC charging), RTE 88%, discharge price CNY 600/MWh, 300 days/year, degradation CNY 0.02/kWh.</p>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Charging opportunity cost</th><th>Daily discharge</th><th>Annual net revenue</th><th>IRR (CAPEX CNY 36 million)</th><th>Payback</th></tr></thead><tbody><tr><td>CNY 0/MWh</td><td>28.14 MWh</td><td>CNY 4.717 million</td><td>4.98%</td><td>10.4 years</td></tr><tr><td>CNY 150/MWh</td><td>28.14 MWh</td><td>CNY 3.367 million</td><td>0.26%</td><td>14.7 years</td></tr></tbody></table></div>
 <aside class="note"><p>Co-location is not &quot;curtailment means profit&quot;: curtailment hours, discharge price, opportunity cost and CAPEX decide survival. Without capacity-price eligibility and with unstable curtailment, many co-located projects do not earn enough incremental revenue to cover investment.</p></aside>
@@ -295,7 +295,7 @@ annual revenue = 15,900 × 330 = CNY 5.247 million</code></pre>
 <h3 id="s45">6.2 Metrics and traps</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Metric</th><th>Definition</th><th>Common trap</th></tr></thead><tbody><tr><td>NPV</td><td>Sum of discounted cash flows</td><td>Discount rate mismatched to risk</td></tr><tr><td>IRR</td><td>Discount rate at which NPV = 0</td><td>Mixing project and equity IRR</td></tr><tr><td>Static payback</td><td>Years until cumulative cash flow is zero</td><td>Ignores time value of money</td></tr><tr><td>Discounted payback</td><td>Years until discounted cumulative is zero</td><td>Compare with loan tenor</td></tr><tr><td>DSCR</td><td>Operating cash flow ÷ annual debt service</td><td>Using EBITDA instead of cash flow</td></tr><tr><td>LCOS</td><td>Present value of lifecycle cost ÷ present value of discharged energy</td><td>Boundary not stated</td></tr></tbody></table></div>
 <h3 id="s46">6.3 LCOS</h3>
-<pre><code>LCOS = (CAPEX + Σ(OPEX_t + charging cost_t)/(1+r)^t - residual/(1+r)^N)
+<pre tabindex="0"><code>LCOS = (CAPEX + Σ(OPEX_t + charging cost_t)/(1+r)^t - residual/(1+r)^N)
        ÷ Σ(annual discharge_t/(1+r)^t)</code></pre>
 <p>The boundary must state whether charging cost, auxiliary power, augmentation, tax and financing are included. Example A:</p>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Boundary</th><th>LCOS</th></tr></thead><tbody><tr><td>Including charging cost (CNY 250/MWh)</td><td>CNY 742.24/MWh (CNY 0.742/kWh)</td></tr><tr><td>Excluding charging cost</td><td>CNY 458.15/MWh (CNY 0.458/kWh)</td></tr></tbody></table></div>
@@ -314,7 +314,7 @@ annual revenue = 15,900 × 330 = CNY 5.247 million</code></pre>
 <aside class="note"><p>Three conclusions: spread and cycle count are most sensitive; CAPEX and the capacity price decide whether the project clears the hurdle; RTE and degradation are chronic conditions that do not kill in one year but eat returns over time.</p></aside>
 <h3 id="s51">6.8 Financing and DSCR</h3>
 <p>Example A: 70% debt = CNY 140 million, rate 4.5%, 10-year equal instalment:</p>
-<pre><code>annual debt service = 140 × 4.5% ÷ (1 - 1.045^-10) ≈ CNY 17.693 million
+<pre tabindex="0"><code>annual debt service = 140 × 4.5% ÷ (1 - 1.045^-10) ≈ CNY 17.693 million
 DSCR = 27.010 ÷ 17.693 ≈ 1.53</code></pre>
 <ul><li>DSCR of at least 1.2 is usually acceptable; below 1.1 requires credit enhancement, lower leverage or a longer loan;</li><li>Under stress, DSCR is more meaningful than base-case IRR;</li><li>Equity IRR must be computed from equity cash flow; project IRR cannot substitute.</li></ul>
 <h3 id="s52">6.9 Decision rules</h3>
@@ -380,7 +380,7 @@ DSCR = 27.010 ÷ 17.693 ≈ 1.53</code></pre>
 <hr>
 <h2 id="s81">11. Key formulas and code mapping</h2>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Formula</th><th>Code</th></tr></thead><tbody><tr><td>Discharge/charge per cycle, arbitrage revenue</td><td><code>stacking.arbitrage()</code></td></tr><tr><td>Capacity price and duration conversion</td><td><code>stacking.capacity_payment()</code></td></tr><tr><td>Basic charge and peak-shaving savings</td><td><code>stacking.demand_bill()</code> / <code>demand_savings()</code></td></tr><tr><td>Frequency-regulation capacity + mileage</td><td><code>stacking.frequency_regulation()</code></td></tr><tr><td>Revenue stacking and haircut</td><td><code>stacking.stack()</code></td></tr><tr><td>NPV/IRR/payback</td><td><code>finance.npv()</code> / <code>irr()</code> / <code>payback()</code></td></tr><tr><td>LCOS</td><td><code>finance.lcos()</code></td></tr><tr><td>Cash flow and DSCR</td><td><code>finance.annual_cashflow()</code> / <code>dscr()</code></td></tr><tr><td>Equivalent cycles, SOH, augmentation</td><td><code>degradation.equivalent_cycles()</code> / <code>linear_soh()</code> / <code>augmentation_energy()</code></td></tr></tbody></table></div>
-<pre><code>import stacking, finance
+<pre tabindex="0"><code>import stacking, finance
 
 a = stacking.arbitrage(100, 2, 0.88, 1, 330, 250, 850, degradation_cost_per_kwh=0.03)
 cap = stacking.capacity_payment(100, 165, 2, 6)
@@ -393,7 +393,7 @@ print(round(finance.npv(0.08, flows)), round(finance.irr(flows) * 100, 2))</code
 <hr>
 <h2 id="s83">13. Reference implementation and self-test</h2>
 <ul><li>Directory: <code>tools/</code>, standard library only, zero dependencies.</li><li>Run:</li></ul>
-<pre><code>python skills/storage-investment-operations/tools/selftest.py</code></pre>
+<pre tabindex="0"><code>python skills/storage-investment-operations/tools/selftest.py</code></pre>
 <ul><li>Assertion coverage:<ul><li>Example A: 187.62/213.20 MWh per cycle, annual net arbitrage CNY 31.069 million, capacity charge CNY 5.5 million, NPV CNY 31.194 million, IRR 10.47%, payback 7.40 years, LCOS 742.24/458.15 CNY/MWh, DSCR 1.53;</li><li>Example B: annual revenue CNY 2.8 million, demand charge CNY 520,000 to 400,000/month, NPV CNY 2.595 million, IRR 12.59%, payback 5.52 years;</li><li>Example C: IRR 4.98%/0.26% and payback 10.4/14.7 years at CNY 0/150 per MWh charging opportunity cost;</li><li>Frequency regulation gross revenue CNY 15,900/day, CNY 5.247 million/year;</li><li>Equivalent cycles 325.9/year, 13.33 years to 80% SOH, augmentation 50 MWh.</li></ul></li></ul>
 <aside class="note"><p>The tool is an <strong>investment screening device</strong>, not a settlement system: it does not handle provincial assessment rules, tax incentives, complex financing or hourly spot optimization. Formal investment decisions must be recomputed with provincial rules, measured curves and equipment quotes.</p></aside>
 <hr>
@@ -440,31 +440,31 @@ print(round(finance.npv(0.08, flows)), round(finance.irr(flows) * 100, 2))</code
 <h3 id="s98">14A.8 Five points for Poland</h3>
 <ol><li><strong>Revenue = capacity market + arbitrage + ancillary + grants</strong>: the capacity market is the first driver; storage awards rose from 165 MW in 2022 to 2.5 GW in 2024, then fell to about 685 MW for the 2030 delivery year after the de-rating change (grade C). Arbitrage alone rarely carries the investment case.</li><li><strong>Capacity revenue uses de-rated capacity</strong>: the 2030 Polish price is PLN 465.02/kW·yr; battery de-rating is <strong>13.39%</strong> (grade C, 2030 delivery-year main auction only), so 100 MW nameplate counts as roughly 13.4 MW; the 2027 T-1 top-up uses 95% and the 2029 main auction 61.3% — never mix auctions; the GP BESS example has a 17-year contract, but not every unit gets 17 years. Availability tests and grant deductions reduce actual revenue.</li><li><strong>NFOŚiGW grants are CAPEX support</strong>: the total budget is PLN 4.15bn (PLN 3.735bn grants + PLN 0.415bn loans) for 172 projects, about 3.9 GW/14.5 GWh, targeted for completion by end-2028; stacking with capacity revenue triggers a deduction under Article 62 of the Capacity Market Act (grades B/C). It is not annual operating revenue.</li><li><strong>Fifteen minutes and negative prices</strong>: 15-minute MTU in day-ahead/intraday since 2025-10-01; a −PLN 791.32/MWh price lasted about 10 hours on 2026-04-06 (grade C); hourly models misstate both arbitrage and capacity obligations.</li><li><strong>Connection, licensing and capacity registration are hard gates</strong>: PSE/OSD connection queue, URE koncesja, TGE/IRGiT membership, POB balancing responsibility, PSE ancillary prequalification and capacity-market qualification are separate processes; a connection is not a capacity contract.</li></ol>
 <p><strong>Three formulas</strong></p>
-<pre><code>Capacity revenue = de-rated capacity (MW) × clearing price (PLN/kW·yr) × 1000
+<pre tabindex="0"><code>Capacity revenue = de-rated capacity (MW) × clearing price (PLN/kW·yr) × 1000
 Arbitrage gross margin = (discharge price − charge price ÷ RTE) × discharge energy
 Post-grant CAPEX = CAPEX − eligible cost × grant rate</code></pre>
 <h3 id="s99">14A.9 Five points for Belgium and the Nordics</h3>
 <ol><li><strong>Belgium relies on CRM annuities</strong>: Y-4/Y-2/Y-1 auctions, pay-as-bid with an intermediate price cap; new build up to 15 years. The 2025 Y-4 auction cleared 4,690 MW, including 179 MW of new batteries (525 MW nameplate), at <strong>€27.3k/MW·yr</strong> (€27,300, grade A, Elia 2025-10-30); CRM pays on de-rated capacity, not nameplate.</li><li><strong>Belgium's capacity gap is changing</strong>: Doel 4/Tihange 3 are extended to 2035 and the phase-out law was repealed in May 2025; offshore wind targets 5.8 GW by 2030. New storage was 491 MWh in 2024, CRM has contracted about 1.6 GW of new batteries, and the 2030 storage target is about 3.6 GW (grade C). Use the latest gap, not the old &quot;2025 nuclear exit&quot; assumption.</li><li><strong>The Nordics are 12 bidding zones</strong>: NO1–NO5, SE1–SE4, DK1–DK2 and FI; projects settle at the zonal price, the system price is reference only; hydro flexibility shapes the spreads, and EPADs hedge zonal differences but are not physical contracts.</li><li><strong>Nordic reserves are not a capacity market</strong>: Sweden's effektreserv targets 800 MW and its 2025-10-07 auction failed because bids exceeded the SEK 120,000/MW cap; Finland has tehoreservi; Norway and Denmark have no national capacity market. Storage cannot treat reserves as a long-term annuity.</li><li><strong>Fifteen-minute imbalance changes revenue</strong>: 15-minute imbalance and mFRR EAM since 2025-03-04; the share of hours where imbalance equals day-ahead fell from about 33% to about 3%, and balancing costs rose from about €1 to €5–6/MWh (grades B/C); PICASSO is live in Denmark (2024-10) and Finland (2025-03), with Sweden/Norway later. Licensing, BRP registration and ancillary prequalification differ across the four countries.</li></ol>
 <p><strong>Three formulas</strong></p>
-<pre><code>CRM revenue = de-rated capacity (MW) × clearing price (€/MW·yr)
+<pre tabindex="0"><code>CRM revenue = de-rated capacity (MW) × clearing price (€/MW·yr)
 Zonal arbitrage = (zonal discharge price − zonal charge price ÷ RTE) × discharge energy
 Reserve revenue = awarded capacity (MW) × reserve price (local currency/MW·season)</code></pre>
 <h3 id="s100">14A.9b Five points for the United States (three markets)</h3>
 <ol><li><strong>Three markets, three logics</strong>: ERCOT is energy-only with ORDC scarcity pricing; PJM runs on a capacity market (BRA/ELCC); CAISO runs on day-ahead/real-time plus RA. One revenue model cannot be transplanted across the three.</li><li><strong>ERCOT settles every 15 minutes</strong>: real-time SCED every 5 minutes, settlement every 15 minutes; HCAP/LCAP $5,000/$2,000 per MWh; RTC+B went live on 2025-12-05, co-optimising real-time energy and ancillary services and modelling SOC; 15,008 MW of batteries in operation (2025-09, grade B).</li><li><strong>PJM capacity revenue is ELCC-de-rated</strong>: the 2028/29 BRA cleared at $325/MW-day (the new cap), 152.1 GW cleared against a 6.8 GW gap and a 14.7% reserve margin, with only about 525 MW of new effective capacity; a 4-hour battery has an ELCC of about 50% and capacity revenue of roughly $60k/MW-yr (order of magnitude). A capped price is not a bankable price, and performance penalties still apply.</li><li><strong>CAISO layers RA and FRP</strong>: day-ahead + 15-minute FMM + 5-minute RTD; RA moves to full slice-of-day compliance from the 2026 compliance year; EDAM went live on 2026-05-01; storage exceeds 21 GW and negative prices cluster in midday solar hours, pushing the arbitrage window later.</li><li><strong>Interconnection and supply chain are hard gates</strong>: PJM's first 2026-08 cycle includes 715 projects/201.5 GW with a study cycle of about 40 months; the CAISO queue is about 197 GW; ITC is 30% plus 10% domestic content plus 10% energy community; FEOC rules apply to projects starting construction after 2025-12-31; Section 301 tariffs rise to 25% from 2026-01-01; fire compliance follows UL 9540/NFPA 855 and interconnection IEEE 1547.</li></ol>
 <p><strong>Three formulas</strong></p>
-<pre><code>PJM capacity revenue ≈ ELCC (MW) × clearing price ($/MW-day) × 365
+<pre tabindex="0"><code>PJM capacity revenue ≈ ELCC (MW) × clearing price ($/MW-day) × 365
 ERCOT arbitrage gross revenue ≈ discharged energy (MWh) × spread ($/MWh) × RTE × cycles
 CAISO RA revenue ≈ NQC (MW) × capacity price ($/kW-yr) × 1000</code></pre>
 <h3 id="s101">14A.9c Five points for Japan</h3>
 <ol><li><strong>Revenue = spot + EPRX + capacity market + LTDA</strong>: JEPX day-ahead has 48 half-hour products, a 10:00 gate and a blind single-price auction; the floor is ¥0.01/kWh and there are <strong>no negative prices</strong>, so applying European negative-price models overstates charging revenue.</li><li><strong>The capacity market pays on de-rated capacity</strong>: four years ahead, single price, one-year contracts; round 5 (FY2028) cleared ¥11,134/kW and round 6 (FY2029) ¥13,303/kW; historical average prices have ranged from ¥3,109 to ¥14,137/kW, so a single result cannot be extrapolated.</li><li><strong>LTDA is 20-year revenue with clawback and a duration threshold</strong>: pay-as-bid with about 90% of other market revenue clawed back ex post; from round 3 batteries under 6 hours are no longer eligible; round 3 awarded 1,251 MW/19 battery projects at a 36% award rate (grade C). LTDA revenue cannot simply be added to spot/EPRX revenue.</li><li><strong>Imbalance costs are high</strong>: 30-minute settlement; from 2026-10-01 the C value rises from ¥200 to ¥300/kWh and the D value from ¥45 to ¥50/kWh (grade C); deviation costs can exceed arbitrage margin, so intraday rolling forecasts are mandatory. The EPRX cap fell to ¥10.00/ΔkW·30min on 2026-09-01, so a ΔkW-only model no longer works.</li><li><strong>Grid queueing and foreign-investment review are hard gates</strong>: storage connection-study applications reached 24,880 in FY2025; from 2026-08-01 each applicant is capped — Tokyo 11, Kansai 12, Kyushu 8; general transmission/distribution, transmission and generation of 50 MW or more are core sectors under FEFTA, requiring prior notification with a 30-day to 5-month review.</li></ol>
 <p><strong>Three formulas</strong></p>
-<pre><code>Capacity market revenue ≈ de-rated capacity (kW) × clearing price (¥/kW-yr)
+<pre tabindex="0"><code>Capacity market revenue ≈ de-rated capacity (kW) × clearing price (¥/kW-yr)
 LTDA net revenue ≈ LTDA capacity revenue + other market revenue × (1 − 90%)
 EPRX revenue ≈ Σ ΔkW × unit price (¥/ΔkW·30min) + dispatched energy × kWh price</code></pre>
 <h3 id="s102">14A.9d Five points for France</h3>
 <ol><li><strong>Revenue = capacity PL-1 + MA/ancillary + arbitrage</strong>: France has no UK-style single capacity annuity; from 2026 RTE is the single buyer of the capacity mechanism and PL-1 is priced per delivery period. Batteries had 608 MW certified and 577 MW awarded in the first auction, so the capacity base is small — never multiply the first-auction price by nameplate capacity.</li><li><strong>€28,182.99/MW is a delivery-period price, not an annual price</strong>: the delivery period runs from 2026-11-01 to 2027-03-31, 151 days; annualising means dividing by 151/365. <strong>€18,646.6/MW is a cost-sharing quotient, not a clearing price</strong> — the two must not be mixed.</li><li><strong>PL-4 is a multi-year long contract</strong>: the 2030-31 requirement is 79.3–81.8 GW, with CoNE €60,000/MW·yr, a cap of €90,000, PPI €15,000 and up to 15 years (CRE 2026-199); the PPI exemption acceptance deadline is 2026-11-23. Signing PL-4 means long-term availability obligations, not a free annuity.</li><li><strong>Nuclear baseload changes the arbitrage shape</strong>: 2025 nuclear output was 62.99 GW and 373.0 TWh (68.1%), total generation 547.5 TWh and net exports 92.3 TWh; the day-ahead average was €61.1/MWh with 513 negative-price hours averaging −€6.5/MWh. Spreads are narrow and negative hours cluster at midday when nuclear and solar coincide, so model arbitrage on 15-minute curves.</li><li><strong>Connection and foreign-investment review are hard gates</strong>: the battery queue is 14 GW/180 projects; the ~30 GW of access rights at end-2025 are &quot;rights granted&quot;, not &quot;connected&quot;; the IEF screens non-EU investors at 25% and EU investors at 10%; REMIT, CRE capacity certification and RTE BRP registration are separate processes.</li></ol>
 <p><strong>Three formulas</strong></p>
-<pre><code>PL-1 capacity revenue = certified capacity (MW) × de-rating factor × delivery-period price (€/MW) × delivery days ÷ 365
+<pre tabindex="0"><code>PL-1 capacity revenue = certified capacity (MW) × de-rating factor × delivery-period price (€/MW) × delivery days ÷ 365
 PL-4 capacity revenue = certified capacity (MW) × de-rating factor × awarded price (€/MW·yr)
 France arbitrage gross margin = (discharge price − charge price ÷ RTE) × discharge energy − MA deviation cost</code></pre>
 <h3 id="s103">14A.10 Same question, eleven answers</h3>
@@ -647,7 +647,9 @@ France arbitrage gross margin = (discharge price − charge price ÷ RTE) × dis
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="Back to top">↑</a>
+<nav class="page-aux" aria-label="Page utilities">
+  <a class="to-top" href="#top" aria-label="Back to top">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

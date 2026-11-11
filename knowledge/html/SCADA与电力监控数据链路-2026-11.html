@@ -15,7 +15,7 @@
 </head>
 <body data-cat="storage" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -111,31 +111,61 @@
 <h3 id="s2">0.1 三句话</h3>
 <ol><li><strong>SCADA 是数据平面，EMS 是决策平面</strong>：SCADA 负责&quot;采得准、传得稳、控得住、查得到&quot;，EMS 负责&quot;算得优&quot;；两者用点表与数据契约解耦，不能把优化器直接接到设备寄存器上。</li><li><strong>四遥不是四个按钮</strong>：遥测、遥信、遥控、遥调各有自己的点表字段、质量码、时标与确认语义；把遥控当普通写入，等于把安全联锁交给网络。</li><li><strong>安全分区先于技术选型</strong>：27号令下，储能电站监控、虚拟电厂监控、分布式电源监控都在电力监控系统范围内；公网到生产控制区没有&quot;直连&quot;选项。</li></ol>
 <h3 id="s3">0.2 SCADA 在 VPP/EMS 中的分层架构</h3>
-<pre><code>┌─ 管理信息区（安全 III / IV）────────────────────────────────
-│  VPP 云平台 · 交易申报 · 结算对账 · 经营看板 · 运维工单
-└───────────────▲───────────────────────────┬────────────────
-                │ 受控上行（隔离装置）        │ 云边下行（TLS/APN，
-                │                           │ 经安全接入区）
-┌───────────────┴───────────────────────────▼────────────────
-│  安全接入区：代理转发 · 端到端认证 · 不直连生产控制区
-└───────────────┬────────────────────────────────────────────
-                │ 纵向加密 / 受控通道
-┌───────────────▼────────────────────────────────────────────
-│  生产控制区（安全 I / II）
-│
-│   SCADA 前置（FEP 双机）──▶ 实时库 ──▶ 历史/时序库 ──▶ 告警/HMI
-│          │                     │
-│          │ 104 / 61850 / Modbus│  时钟同步（北斗 / NTP / PTP）
-│   ┌──────▼─────────────────────▼──────────────────────────
-│   │  站控层 / 边缘网关：点表映射 · 协议转换 · 本地联锁 · 断点续传
-│   └──────┬────────────────────────────────────────────────
-└──────────┼─────────────────────────────────────────────────
-           │ 现场总线 / 工业以太网 / 串口
-┌──────────▼─────────────────────────────────────────────────
-│  现场设备层
-│   测控 · 保护 · 关口表 · BMS · PCS · 逆变器 · 充电桩 · PLC
-└────────────────────────────────────────────────────────────
-图例：──▶ 数据/控制流   ▲▼ 分区边界   FEP 前置处理器</code></pre>
+<figure class="arch-diagram arch-layered" data-arch-id="scada-zones" aria-label="SCADA 分层安全架构">
+    <figcaption class="diagram-head">
+    <span class="diagram-head-row">
+      <span class="diagram-kicker">安全分区 · ZONES</span>
+      <span class="diagram-meta">4 个安全区</span>
+    </span>
+    <span class="diagram-title">SCADA 分层安全架构</span>
+  </figcaption>
+    <div class="arch-layers"><section class="arch-layer" data-tone="teal">
+    <div class="arch-layer-head">
+      <span class="arch-zone">管理信息区</span>
+      <span class="arch-tag">安全 III / IV</span>
+    </div>
+    <div class="arch-layer-body">
+      <span class="arch-layer-title">VPP 云平台</span>
+      <div class="arch-chips"><span class="arch-chip">交易申报</span><span class="arch-chip">结算对账</span><span class="arch-chip">经营看板</span><span class="arch-chip">运维工单</span></div>
+
+
+    </div>
+  </section><div class="arch-connector"><span class="arch-connector-mark" aria-hidden="true">↕</span><span>受控上行（隔离装置） / 云边下行（TLS/APN，经安全接入区）</span></div><section class="arch-layer" data-tone="amber">
+    <div class="arch-layer-head">
+      <span class="arch-zone">安全接入区</span>
+      <span class="arch-tag">受控边界</span>
+    </div>
+    <div class="arch-layer-body">
+      <span class="arch-layer-title">代理转发 · 端到端认证</span>
+      <div class="arch-chips"><span class="arch-chip">不直连生产控制区</span></div>
+
+
+    </div>
+  </section><div class="arch-connector"><span class="arch-connector-mark" aria-hidden="true">↕</span><span>纵向加密 / 受控通道</span></div><section class="arch-layer" data-tone="slate">
+    <div class="arch-layer-head">
+      <span class="arch-zone">生产控制区</span>
+      <span class="arch-tag">安全 I / II</span>
+    </div>
+    <div class="arch-layer-body">
+      <span class="arch-layer-title">实时监控与站控</span>
+
+      <div class="arch-inline-flow"><span>SCADA 前置（FEP 双机）</span><span class="arch-inline-arrow" aria-hidden="true">→</span><span>实时库</span><span class="arch-inline-arrow" aria-hidden="true">→</span><span>历史/时序库</span><span class="arch-inline-arrow" aria-hidden="true">→</span><span>告警/HMI</span></div>
+      <div class="arch-modules"><div class="arch-module"><span class="arch-module-title">站控层 / 边缘网关</span><div class="arch-chips"><span class="arch-chip">点表映射</span><span class="arch-chip">协议转换</span><span class="arch-chip">本地联锁</span><span class="arch-chip">断点续传</span></div></div><div class="arch-module"><span class="arch-module-title">通信</span><div class="arch-chips"><span class="arch-chip">104 / 61850 / Modbus</span></div></div><div class="arch-module"><span class="arch-module-title">时钟同步</span><div class="arch-chips"><span class="arch-chip">北斗 / NTP / PTP</span></div></div></div>
+    </div>
+  </section><div class="arch-connector"><span class="arch-connector-mark" aria-hidden="true">↕</span><span>现场总线 / 工业以太网 / 串口</span></div><section class="arch-layer" data-tone="blue">
+    <div class="arch-layer-head">
+      <span class="arch-zone">现场设备层</span>
+      <span class="arch-tag">现场</span>
+    </div>
+    <div class="arch-layer-body">
+      <span class="arch-layer-title">设备与测点</span>
+      <div class="arch-chips"><span class="arch-chip">测控</span><span class="arch-chip">保护</span><span class="arch-chip">关口表</span><span class="arch-chip">BMS</span><span class="arch-chip">PCS</span><span class="arch-chip">逆变器</span><span class="arch-chip">充电桩</span><span class="arch-chip">PLC</span></div>
+
+
+    </div>
+  </section></div>
+    <p class="diagram-note arch-legend"><span class="arch-legend-label">图例：</span><span><b aria-hidden="true">↕</b> 数据/控制流</span><span>分区边界按安全区划分</span><span><b>FEP</b> 前置处理器</span></p>
+  </figure>
 <p>这张图只回答&quot;谁在哪里、走哪条路&quot;，不回答&quot;优化怎么算&quot;。VPP 的预测、报价、调度模型在管理信息区或安全接入区运行；真正碰一次设备的控制指令，必须穿过安全边界进入生产控制区，或在安全接入区完成代理与认证后受控转发。边缘侧与云端两种部署形态的职责差异见 1.5、1.6 节。</p>
 <h3 id="s4">0.3 架构图读法</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>层级</th><th>典型设备或软件</th><th>主要职责</th><th>不该放什么</th></tr></thead><tbody><tr><td>现场设备层</td><td>测控、保护、关口表、BMS、PCS、逆变器、充电桩、PLC</td><td>采样、执行、保护、就地联锁</td><td>跨站调度逻辑、市场报价</td></tr><tr><td>站控/边缘层</td><td>站控机、通信管理机、边缘网关、协议转换器</td><td>点表映射、协议转换、断点续传、本地联锁</td><td>全局优化、结算主数据</td></tr><tr><td>生产控制区</td><td>SCADA 前置、实时库、历史库、告警、HMI、AGC/AVC</td><td>实时监视、控制下发、SOE、审计</td><td>公网服务、办公应用、邮件</td></tr><tr><td>安全接入区</td><td>接入网关、代理、认证、加密</td><td>外部资源接入、代理转发、端到端认证</td><td>直接控制、通用网络服务</td></tr><tr><td>管理信息区</td><td>VPP 云平台、EMS 优化、交易、结算、看板</td><td>预测、优化、申报、对账、经营分析</td><td>实时控制、保护定值</td></tr><tr><td>外部主体</td><td>调度主站、交易中心、计量主站、第三方聚合商</td><td>计划、结算、考核、计量</td><td>绕过边界直连现场</td></tr></tbody></table></div>
@@ -150,22 +180,32 @@
 <ol><li><strong>传感/变送</strong>：CT/PT、温度、SOC、开关位置等转成电信号或数字量；</li><li><strong>采集装置</strong>：测控、RTU、BMS、PCS 按扫描周期采样，形成原始值；</li><li><strong>边缘处理</strong>：滤波、标度变换、死区判断、打时标、加质量码；</li><li><strong>通信</strong>：104/61850/Modbus/MQTT 把数据送到前置或云平台；</li><li><strong>前置处理</strong>：解帧、点表映射、合法性检查、双通道去重；</li><li><strong>实时库</strong>：写当前值、时标、质量码，触发告警与计算点；</li><li><strong>历史库与应用</strong>：压缩入库、报表、优化模型、结算对账。</li></ol>
 <p>每一道关都可能改变数值的含义。<strong>点表错一个变比，后面所有优化和考核都错</strong>；时标错一个时区，SOE 顺序就会反过来。数据链路的第一原则不是&quot;快&quot;，而是&quot;每个数都能追到来源&quot;。</p>
 <h3 id="s9">1.2 一条控制指令的闭环</h3>
-<pre><code>EMS/VPP 决策
-   │ ① 生成指令：目标值、时限、指令ID、权限
-   ▼
+<figure class="diagram-blueprint">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构示意 · DIAGRAM</span>
+        <span class="diagram-meta">可横向滚动</span>
+      </span>
+    </figcaption>
+    <div class="diagram-canvas" tabindex="0" role="group" aria-label="结构示意图">
+      <pre>EMS/VPP 决策
+   <span class="d-line">│</span> ① 生成指令：目标值、时限、指令ID、权限
+   <span class="d-arrow">▼</span>
 指令网关 / 边缘代理
-   │ ② 鉴权、限幅、互锁、有效期校验
-   ▼
+   <span class="d-line">│</span> ② 鉴权、限幅、互锁、有效期校验
+   <span class="d-arrow">▼</span>
 站控 / 设备控制器
-   │ ③ 选择-执行（SBO）或直接执行
-   ▼
+   <span class="d-line">│</span> ③ 选择-执行（SBO）或直接执行
+   <span class="d-arrow">▼</span>
 PCS / BMS / 逆变器 / 充电桩
-   │ ④ 执行，回读实际值
-   ▼
-SCADA 实时库 ◀── ⑤ 遥测/遥信确认 ── 现场
-   │
-   ▼
-历史库 + 审计日志 + 考核/对账</code></pre>
+   <span class="d-line">│</span> ④ 执行，回读实际值
+   <span class="d-arrow">▼</span>
+SCADA 实时库 <span class="d-arrow">◀</span><span class="d-line">─</span><span class="d-line">─</span> ⑤ 遥测/遥信确认 <span class="d-line">─</span><span class="d-line">─</span> 现场
+   <span class="d-line">│</span>
+   <span class="d-arrow">▼</span>
+历史库 + 审计日志 + 考核/对账</pre>
+    </div>
+  </figure>
 <p>控制链路的每一环都要有<strong>明确回执</strong>：谁发的、发给谁、发的是什么、什么时候失效、设备有没有执行、执行后的实际值是多少。没有回执的&quot;成功&quot;等于没有执行；只有下发没有回读，等于把控制变成了广播。</p>
 <h3 id="s10">1.3 五条链路</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>链路</th><th>关键问题</th><th>关键指标</th><th>常见断点</th></tr></thead><tbody><tr><td>采集链路</td><td>采得到、采得准</td><td>完整率、正确率、时延</td><td>点表错、变比错、网关单点</td></tr><tr><td>控制链路</td><td>控得动、控得对</td><td>下发成功率、回读一致率、时延</td><td>权限、互锁、超时、无回执</td></tr><tr><td>对时链路</td><td>所有时标同一把尺</td><td>对时误差、守时能力</td><td>无 GPS、NTP 漂移、时区错</td></tr><tr><td>历史链路</td><td>查得到、查得全</td><td>入库完整率、保留期、可追溯</td><td>压缩过度、磁盘满、补数丢失</td></tr><tr><td>安全链路</td><td>进不来、出不丢</td><td>边界合规、审计完整、告警闭环</td><td>直连、弱口令、无监测</td></tr></tbody></table></div>
@@ -222,10 +262,35 @@ SCADA 实时库 ◀── ⑤ 遥测/遥信确认 ── 现场
 <h2 id="s14">2. 点表：SCADA 的合同</h2>
 <h3 id="s15">2.1 对象模型</h3>
 <p>点表不是一张 Excel，而是&quot;站—间隔—设备—测点&quot;的对象模型。推荐至少四层：</p>
-<pre><code>区域/聚合商
-  └─ 场站（储能站、微网、充电站、分布式光伏）
-       └─ 间隔/设备（1# 储能单元、PCS、BMS、关口表）
-            └─ 测点（遥测、遥信、遥控、遥调、遥脉）</code></pre>
+<figure class="tree-diagram" aria-label="区域/聚合商结构图">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构图 · STRUCTURE</span>
+        <span class="diagram-meta">1 个一级分支</span>
+      </span>
+      <span class="tree-root-title">区域/聚合商</span>
+
+    </figcaption>
+    <div class="tree-grid"><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">01</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">场站（储能站、微网、充电站、分布式光伏）</span>
+
+      </span>
+    </div>
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">间隔/设备（1# 储能单元、PCS、BMS、关口表）</span>
+
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">测点（遥测、遥信、遥控、遥调、遥脉）</span>
+
+
+  </li></ul>
+  </li></ul>
+  </article></div>
+
+  </figure>
 <p>对象模型的价值在于：当设备增容、改名或更换通信地址时，只改一层映射，不用修改上层优化模型和报表公式。</p>
 <h3 id="s16">2.2 四遥与遥脉</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>类型</th><th>方向</th><th>典型量</th><th>关键字段</th><th>常见错误</th></tr></thead><tbody><tr><td>遥测</td><td>上行</td><td>功率、电压、电流、SOC、温度、频率</td><td>量纲、变比、死区、时标、质量码</td><td>把 kW 当 W、把百分比当小数</td></tr><tr><td>遥信</td><td>上行</td><td>开关位置、保护动作、告警、运行状态</td><td>单点/双点、取反、抖动抑制</td><td>双点遥信压成布尔，丢失中间态</td></tr><tr><td>遥控</td><td>下行</td><td>分合闸、启停、复位</td><td>选择-执行、超时、回执、互锁</td><td>直接执行、无回读、无权限校验</td></tr><tr><td>遥调</td><td>下行</td><td>功率目标、电压目标、SOC 上限</td><td>目标值、爬坡率、有效期、回执</td><td>把遥调当遥测写、无变化率限制</td></tr><tr><td>遥脉</td><td>上行</td><td>电度脉冲、累计电量</td><td>脉冲常数、累计清零、时标</td><td>把脉冲当瞬时功率、清零未记录</td></tr></tbody></table></div>
@@ -235,7 +300,7 @@ SCADA 实时库 ◀── ⑤ 遥测/遥信确认 ── 现场
 <ul><li><strong>稳定</strong>：点 ID 一旦投运不改；设备改名只改显示名；</li><li><strong>唯一</strong>：跨站、跨协议不重复；不把 IP 或寄存器地址当点 ID；</li><li><strong>可读</strong>：人能看懂对象路径，机器能解析；</li><li><strong>不复用</strong>：退役点保留并标记 <code>retired</code>，不复用给新设备；</li><li><strong>可版本化</strong>：点表有版本号、生效时间、变更记录与回滚方案。</li></ul>
 <h3 id="s19">2.5 变比、量纲与死区</h3>
 <p>工程值换算：</p>
-<pre><code>工程值 = 原始值 × 变比 + 偏移</code></pre>
+<pre tabindex="0"><code>工程值 = 原始值 × 变比 + 偏移</code></pre>
 <p>三个常见坑：</p>
 <ol><li><strong>CT/PT 变比重复</strong>：设备已经按一次值输出，网关又乘了一次变比；</li><li><strong>单位混用</strong>：kW 与 W、kWh 与 MWh、百分比与小数混在一张表里；</li><li><strong>死区过大</strong>：为了省带宽把死区设成量程的 5%，小功率变化全被吃掉，考核时&quot;没有数据&quot;。</li></ol>
 <p>死区至少分三种：<strong>采集死区</strong>（设备上报）、<strong>归档死区</strong>（历史库存储）、<strong>告警死区</strong>（阈值判断）。三者目的不同，不能共用一个值。</p>
@@ -303,7 +368,7 @@ SCADA 实时库 ◀── ⑤ 遥测/遥信确认 ── 现场
 <p><strong>四条纪律</strong>：</p>
 <ol><li><strong>存储统一 UTC，显示转本地</strong>；跨时区系统不要存本地时间；</li><li><strong>CP56Time2a 是本地时间</strong>，61850 时间戳通常是 UTC，转换要显式；</li><li><strong>时钟跳变要检测</strong>：发现大步长回跳，标记数据质量并记录，不用错误时标回填；</li><li><strong>对时质量要入点表</strong>：主时钟失锁、偏差超限、天线故障都要告警。</li></ol>
 <h3 id="s36">4.5 数据质量指标</h3>
-<pre><code>完整率 = 有效采样点数 / 应采样点数 × 100%
+<pre tabindex="0"><code>完整率 = 有效采样点数 / 应采样点数 × 100%
 正确率 = 与参考源一致的点数 / 抽检点数 × 100%
 及时率 = 在时限内到达的点数 / 应到达点数 × 100%
 可用率 = MTBF / (MTBF + MTTR) × 100%</code></pre>
@@ -325,9 +390,9 @@ SCADA 实时库 ◀── ⑤ 遥测/遥信确认 ── 现场
 <ul><li><strong>结算、考核、事故分析</strong>用的点，保留原始采样或可审计的压缩参数；</li><li><strong>趋势监视</strong>用的点，可以用较大死区；</li><li>压缩参数变更要版本化，否则同一份报表前后不可比；</li><li>不要拿压缩后的曲线反推电量，再拿去和关口表对账。</li></ul>
 <h3 id="s42">5.4 补数与断点续传</h3>
 <p>边缘网关/RTU 应具备本地缓存与断点续传：</p>
-<pre><code>缓存容量 ≈ 点数 × 每秒采样次数 × 单条字节数 × 断网时长</code></pre>
+<pre tabindex="0"><code>缓存容量 ≈ 点数 × 每秒采样次数 × 单条字节数 × 断网时长</code></pre>
 <p>示例（D 级）：5,000 点、5 s 扫描、单条 32 B、断网 15 min：</p>
-<pre><code>5,000 × 0.2 × 32 × 900 ≈ 28.8 MB</code></pre>
+<pre tabindex="0"><code>5,000 × 0.2 × 32 × 900 ≈ 28.8 MB</code></pre>
 <p>补数规则要写清：</p>
 <ul><li>补数数据的时标用<strong>原采样时标</strong>，不用补传时间；</li><li>重复数据按&quot;设备+点+时标&quot;去重；</li><li>迟到数据有水位线（watermark），超过窗口不再入实时库，只入历史；</li><li>补数不能覆盖人工置数/检修标记，冲突要告警。</li></ul>
 <h3 id="s43">5.5 数据血缘</h3>
@@ -346,7 +411,49 @@ SCADA 实时库 ◀── ⑤ 遥测/遥信确认 ── 现场
 <p>常用抑制手段：</p>
 <ul><li><strong>抖动抑制</strong>：短时反复动作合并为一条；</li><li><strong>因果抑制</strong>：上级故障时抑制下属派生告警；</li><li><strong>首出（first-out）</strong>：保留第一个原因，后续标为衍生；</li><li><strong>检修模式</strong>：设备检修期间屏蔽已知告警，但要有到期时间；</li><li><strong>搁置（shelving）</strong>：人工临时搁置，必须记录原因与到期时间；</li><li><strong>分层聚合</strong>：站级/设备级/点级分级展示，默认只看站级。</li></ul>
 <h3 id="s48">6.3 告警生命周期</h3>
-<pre><code>检测 → 播报 → 确认 → 派单 → 处理 → 恢复 → 关闭 → 复盘</code></pre>
+<figure class="flow-diagram" aria-label="流程示意">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">流程 · FLOW</span>
+        <span class="diagram-meta">8 个步骤</span>
+      </span>
+
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">检测</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">播报</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">确认</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">04</span>
+      <span class="flow-text">派单</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">05</span>
+      <span class="flow-text">处理</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">06</span>
+      <span class="flow-text">恢复</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">07</span>
+      <span class="flow-text">关闭</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">08</span>
+      <span class="flow-text">复盘</span>
+
+    </li></ol>
+
+  </figure>
 <p>每一环要有时间戳、责任人、处理记录。只&quot;报&quot;不&quot;闭环&quot;的告警系统，最后一定被静音。</p>
 <h3 id="s49">6.4 事件与告警的区别</h3>
 <ul><li><strong>事件（Event/SOE）</strong>：发生了什么，按时间顺序记录，不一定需要人处理；</li><li><strong>告警（Alarm）</strong>：需要人关注或处理的事件，有级别、确认、闭环。</li></ul>
@@ -575,7 +682,9 @@ SCADA 实时库 ◀── ⑤ 遥测/遥信确认 ── 现场
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

@@ -15,7 +15,7 @@
 </head>
 <body data-cat="spot" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -110,13 +110,45 @@
 <hr>
 <h2 id="s1">0. 一页看懂</h2>
 <h3 id="s2">0.1 一条主线</h3>
-<pre><code>   风险识别          信用评价          履约保障          偏差考核          结算             违约/退出         用户承接
-      │                 │                 │                 │                 │                 │                 │
-  内部/外部          A/B/C/D          保函/保险/现金     合同 vs 实际      日清月结          预警→暂停→注销     保底售电
-  重大/一般          季度+动态         逐日盯市          免考/考核         5/8/10 工作日      保函执行          电网承接
-  紧急/非紧急        激励/约束         补缴/限额          责任分摊          异议/追退补        合同终止/转让      价格与选择
-      └─────────────────┴─────────────────┴─────────────────┴─────────────────┴─────────────────┴─────────────────┘
-                         制度链路的终点不是&quot;罚钱&quot;，而是&quot;让交易可预期、让用户不断电&quot;</code></pre>
+<figure class="flow-diagram" aria-label="流程示意">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">流程 · FLOW</span>
+        <span class="diagram-meta">7 个步骤</span>
+      </span>
+
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">风险识别</span>
+      <ul class="flow-points"><li>内部/外部</li><li>重大/一般</li><li>紧急/非紧急</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">信用评价</span>
+      <ul class="flow-points"><li>A/B/C/D</li><li>季度+动态</li><li>激励/约束</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">履约保障</span>
+      <ul class="flow-points"><li>保函/保险/现金</li><li>逐日盯市</li><li>补缴/限额</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">04</span>
+      <span class="flow-text">偏差考核</span>
+      <ul class="flow-points"><li>合同 vs 实际</li><li>免考/考核</li><li>责任分摊</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">05</span>
+      <span class="flow-text">结算</span>
+      <ul class="flow-points"><li>日清月结</li><li>5/8/10 工作日</li><li>异议/追退补</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">06</span>
+      <span class="flow-text">违约/退出</span>
+      <ul class="flow-points"><li>预警→暂停→注销</li><li>保函执行</li><li>合同终止/转让</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">07</span>
+      <span class="flow-text">用户承接</span>
+      <ul class="flow-points"><li>保底售电</li><li>电网承接</li><li>价格与选择</li></ul>
+    </li></ol>
+    <div class="flow-note"><span class="flow-note-item">制度链路的终点不是&quot;罚钱&quot;，而是&quot;让交易可预期、让用户不断电&quot;</span></div>
+  </figure>
 <ul><li><strong>风险侧回答&quot;会出什么事&quot;</strong>：市场内部的不正当竞争、合同违约、价格异常、机制漏洞；外部的供需失衡、系统故障、舆情。</li><li><strong>信用侧回答&quot;谁靠谱&quot;</strong>：把公共信用、财务信息、交易行为合成 A/B/C/D，按季度评价、动态调整，结果全国通用。</li><li><strong>担保侧回答&quot;拿什么兜底&quot;</strong>：履约保函、保险、现金保证金，按预计年售电量计收，逐日盯市、不足补缴。</li><li><strong>偏差侧回答&quot;说好的电没发/没用怎么办&quot;</strong>：合同电量与实际上网/用电量的差值，按省规则考核或按现货结算。</li><li><strong>结算侧回答&quot;钱怎么算、什么时候到&quot;</strong>：日清月结、统一时限、异议与追退补、争议调解与仲裁。</li><li><strong>退出侧回答&quot;公司倒了用户怎么办&quot;</strong>：暂停交易、执行保函、合同终止或转让、业务地减少/注销、保底售电承接。</li></ul>
 <h3 id="s3">0.2 关键数字</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>数字</th><th>含义</th><th>来源与级别</th></tr></thead><tbody><tr><td>(85,100] / (70,85] / (40,70] / [0,40]</td><td>信用评价 A / B / C / D 四级的综合得分区间</td><td>《全国统一电力市场信用评价指引（征求意见稿）》第六条，A（草案）</td></tr><tr><td>5 个工作日</td><td>信用评价结果公示期；无异议后发布</td><td>同上，A（草案）</td></tr><tr><td>每季度</td><td>信用评价原则上开展频次；另设动态调整</td><td>同上第十三条，A（草案）</td></tr><tr><td>预计年售电量 × 1 分/kWh × 系数</td><td>2026 售电办法草案的履约保障额度公式</td><td>《售电公司管理办法（修订征求意见稿）》，A（草案）</td></tr><tr><td>1–10</td><td>履约保障调整系数区间，由省级主管部门确定并动态调整</td><td>同上，A（草案）</td></tr><tr><td>200 万元</td><td>履约保障额度最低值；不是注册资本</td><td>同上，A（草案）</td></tr><tr><td>2,000 万元</td><td>售电公司注册资本最低要求（现行办法为资产总额）</td><td>同上，A（草案）</td></tr><tr><td>0.8 分/kWh 与 5 分/kWh</td><td>现行办法履约保障的两条计算口径，取大</td><td>发改体改规〔2021〕1595 号，A</td></tr><tr><td>1 / 3 / 1 个工作日</td><td>保函不足：通知补缴 / 完成补缴 / 恢复交易</td><td>2026 售电办法草案，A（草案）</td></tr><tr><td>第 5 / 8 / 10 个工作日</td><td>结算依据（核对版）/ 正式结算依据 / 电费账单</td><td>发改能源规〔2025〕976 号及答记者问，A</td></tr><tr><td>15 / 5 个工作日</td><td>结算依据或电费账单异议 / 交易机构与电网企业确认评估</td><td>976 号第五十一条，A</td></tr><tr><td>下一结算周期</td><td>异议属实后的追退补或清算时点</td><td>同上，A</td></tr><tr><td>2026-03-01</td><td>《电力中长期市场基本规则》施行日，有效期 5 年</td><td>发改能源规〔2025〕1656 号，A</td></tr><tr><td>2025-10-01</td><td>《电力市场计量结算基本规则》施行日，有效期 5 年</td><td>发改能源规〔2025〕976 号，A</td></tr><tr><td>2027-01-01</td><td>2026 售电办法草案、2026 现货规则草案拟施行日</td><td>两份征求意见稿，A（草案）</td></tr><tr><td>7 章 32 条</td><td>《电力市场风险防控管理办法（公开征求意见稿）》结构</td><td>2026-09-30 发布，A（草案）</td></tr><tr><td>6 类</td><td>2026 现货规则草案的市场风险类型</td><td>2026-10-19 征求意见稿，A（草案）</td></tr><tr><td>400+ 家</td><td>2026 年前 7 个月退出市场的售电公司数量</td><td>公开报道汇总，C</td></tr><tr><td>0.0039 元/kWh</td><td>广东 2026 年上半年售电公司平均度电收益</td><td>广东电力交易中心公开数据/媒体，B/C</td></tr></tbody></table></div>
@@ -128,14 +160,24 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>说法</th><th>真正含义</th><th>典型问题</th><th>主要归属</th></tr></thead><tbody><tr><td>市场风险</td><td>价格、电量、供需波动带来的损益不确定性</td><td>现货价格飙升、负电价、偏差电量</td><td>交易/量化</td></tr><tr><td>信用风险</td><td>对手方不履约、不付款、不交货的可能性</td><td>售电公司欠费、发电企业少发、用户拖欠</td><td>本文</td></tr><tr><td>结算风险</td><td>计量、规则、时限、对账、资金链导致的收付不确定性</td><td>结算依据争议、发票、追退补、保证金不足</td><td>本文</td></tr><tr><td>合规风险</td><td>违反市场规则、监管规定、合同约定的责任</td><td>串通报价、虚假注册、阴阳合同、线下返利</td><td>本文 + 交易技能</td></tr></tbody></table></div>
 <ul><li><strong>市场风险可以用限额、对冲、组合管理来控</strong>；信用风险靠准入、担保、信用评价、合同条款来控；结算风险靠流程、时限、对账、异议机制来控。</li><li><strong>四类风险会互相转化</strong>：价格持续单边上涨 → 售电公司亏损 → 保证金不足 → 违约 → 用户转保底 → 结算争议。只盯一个环节会漏掉链条。</li><li><strong>&quot;风险防控&quot;在监管文件里是狭义的</strong>：2026 风险防控草案管的是市场运行风险（内外部），不等同于企业内部的全面风险管理（ERM）。</li></ul>
 <h3 id="s7">1.2 三条链路</h3>
-<pre><code>链路 A：交易前
-  注册准入 → 信用评价 → 履约保障 → 交易限额 → 合同签订
+<figure class="diagram-blueprint">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构示意 · DIAGRAM</span>
+        <span class="diagram-meta">可横向滚动</span>
+      </span>
+    </figcaption>
+    <div class="diagram-canvas" tabindex="0" role="group" aria-label="结构示意图">
+      <pre>链路 A：交易前
+  注册准入 <span class="d-arrow">→</span> 信用评价 <span class="d-arrow">→</span> 履约保障 <span class="d-arrow">→</span> 交易限额 <span class="d-arrow">→</span> 合同签订
 
 链路 B：交易中
-  申报 → 出清 → 偏差 → 监测预警 → 风险处置（调整/暂停/中止）
+  申报 <span class="d-arrow">→</span> 出清 <span class="d-arrow">→</span> 偏差 <span class="d-arrow">→</span> 监测预警 <span class="d-arrow">→</span> 风险处置（调整/暂停/中止）
 
 链路 C：交易后
-  计量 → 结算依据 → 电费账单 → 收付 → 异议/追退补 → 争议解决</code></pre>
+  计量 <span class="d-arrow">→</span> 结算依据 <span class="d-arrow">→</span> 电费账单 <span class="d-arrow">→</span> 收付 <span class="d-arrow">→</span> 异议/追退补 <span class="d-arrow">→</span> 争议解决</pre>
+    </div>
+  </figure>
 <ul><li><strong>交易前</strong>的重点是&quot;有没有资格、有没有钱、能做多大&quot;；<strong>交易中</strong>的重点是&quot;有没有异常、要不要干预&quot;；<strong>交易后</strong>的重点是&quot;算得对不对、钱到不到位&quot;。</li><li><strong>三条链路共用一套主体标识与信用记录</strong>：注册信息、信用等级、履约保障余额、结算记录要能串起来，否则风险监测就是盲人摸象。</li></ul>
 <h3 id="s8">1.3 本文与量化报价笔记的分工</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>本文</th><th>量化报价与交易风控笔记</th></tr></thead><tbody><tr><td>风险分类</td><td>监管口径的内外部风险、分级、处置</td><td>价格风险、电量风险、模型风险、操作风险</td></tr><tr><td>信用</td><td>信用评价指标、等级、后果、修复</td><td>对手方授信、限额、敞口</td></tr><tr><td>担保</td><td>保函/保险/现金、公式、盯市、执行</td><td>保证金占用、资金成本、压力测试</td></tr><tr><td>偏差</td><td>制度定义、省别规则、责任分摊</td><td>预测误差、偏差成本、报价修正</td></tr><tr><td>结算</td><td>流程、时限、异议、争议</td><td>对账、差异定位、PnL 归因</td></tr><tr><td>退出</td><td>违约、终止、转让、保底售电</td><td>对手方违约情景、损失估算</td></tr></tbody></table></div>
@@ -146,17 +188,27 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>层级</th><th>文件</th><th>文号/日期</th><th>状态</th><th>与本文的关系</th></tr></thead><tbody><tr><td>部门规章</td><td>电力市场运行基本规则</td><td>发改委令第 20 号，2024-04-25</td><td>现行，2024-07-01 施行</td><td>市场成员、风险、争议的基础规定</td></tr><tr><td>部门规章</td><td>电力市场监管办法</td><td>发改委令第 18 号</td><td>现行</td><td>监管职责、违规处理</td></tr><tr><td>规范性文件</td><td>电力现货市场基本规则（试行）</td><td>发改能源规〔2023〕1217 号</td><td>现行</td><td>现货风险、结算、违约</td></tr><tr><td>规范性文件</td><td>电力现货市场基本规则（公开征求意见稿）</td><td>2026-10-19 发布，意见至 11-18</td><td>草案，拟 2027-01-01 施行</td><td>六类风险、日清月结、三级干预、差价结算方向</td></tr><tr><td>规范性文件</td><td>电力中长期市场基本规则</td><td>发改能源规〔2025〕1656 号</td><td>现行，2026-03-01 施行，5 年</td><td>中长期结算、偏差、风险、争议</td></tr><tr><td>规范性文件</td><td>电力市场计量结算基本规则</td><td>发改能源规〔2025〕976 号</td><td>现行，2025-10-01 施行，5 年</td><td>计量、结算时限、异议、追退补</td></tr><tr><td>规范性文件</td><td>售电公司管理办法</td><td>发改体改规〔2021〕1595 号</td><td>现行</td><td>准入、履约保障、退出、保底售电</td></tr><tr><td>规范性文件</td><td>售电公司管理办法（修订征求意见稿）</td><td>2026-09-04 发布，意见至 10-04</td><td>草案，拟 2027-01-01 施行，5 年</td><td>注册资本、履约保障、逐日盯市、退出</td></tr><tr><td>规范性文件</td><td>电力市场风险防控管理办法（公开征求意见稿）</td><td>2026-09-30 发布，意见至 10-30</td><td>草案</td><td>风险分类、分级、职责、处置</td></tr><tr><td>规范性文件</td><td>全国统一电力市场信用评价指引（征求意见稿）</td><td>国家能源局，2026-10-13 印发，10-19 发布</td><td>草案，30 日征求意见</td><td>信用指标、等级、程序、激励约束</td></tr><tr><td>规范性文件</td><td>关于加强电力零售市场管理有关事项的通知</td><td>2026-06-08</td><td>现行（公开报道口径，未核到正式文号）</td><td>零售价格、套餐、信息披露、禁止性行为</td></tr><tr><td>规范性文件</td><td>电力零售市场基本规则</td><td>待出台</td><td>未发布</td><td>零售合同、套餐、退出、用户保护</td></tr></tbody></table></div>
 <ul><li><strong>上位法</strong>：《能源法》《电力法》；国办发〔2026〕4 号《关于完善全国统一电力市场体系的实施意见》是多份 2026 文件的共同依据。</li><li><strong>&quot;1+6&quot;基础规则体系</strong>：以《电力市场运行基本规则》为统领，配套中长期、现货、辅助服务、计量结算、信息披露、注册等规则；本文重点在中长期、现货、计量结算三条。</li><li><strong>草案标注</strong>：凡引用 2026 年三份征求意见稿，正文都加&quot;草案&quot;；正式稿可能改数字、改表述、改生效时间。</li></ul>
 <h3 id="s11">2.2 规则之间的关系</h3>
-<pre><code>                  《电力市场运行基本规则》（20 号令）
-                                │
-        ┌───────────────────────┼───────────────────────┐
-        │                       │                       │
+<figure class="diagram-blueprint">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构示意 · DIAGRAM</span>
+        <span class="diagram-meta">可横向滚动</span>
+      </span>
+    </figcaption>
+    <div class="diagram-canvas" tabindex="0" role="group" aria-label="结构示意图">
+      <pre>                  《电力市场运行基本规则》（20 号令）
+                                <span class="d-line">│</span>
+        <span class="d-line">┌</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┼</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┐</span>
+        <span class="d-line">│</span>                       <span class="d-line">│</span>                       <span class="d-line">│</span>
   《电力中长期市场基本规则》  《电力现货市场基本规则》  《电力市场计量结算基本规则》
-        │                       │                       │
-        └───────────────┬───────┴───────────────┬───────┘
-                        │                       │
+        <span class="d-line">│</span>                       <span class="d-line">│</span>                       <span class="d-line">│</span>
+        <span class="d-line">└</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┬</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┴</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┬</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┘</span>
+                        <span class="d-line">│</span>                       <span class="d-line">│</span>
               《售电公司管理办法》        《电力市场风险防控管理办法》
-                        │                       │
-              《信用评价指引》          《电力零售市场基本规则》（待出）</code></pre>
+                        <span class="d-line">│</span>                       <span class="d-line">│</span>
+              《信用评价指引》          《电力零售市场基本规则》（待出）</pre>
+    </div>
+  </figure>
 <ul><li><strong>结算规则是&quot;底座&quot;</strong>：中长期、现货、辅助服务都要落到计量结算基本规则的时限、异议、追退补框架。</li><li><strong>风险防控是&quot;横切&quot;</strong>：不替代各市场规则，而是要求各市场运营机构把风险识别、预案、处置嵌入日常运营。</li><li><strong>信用评价是&quot;连接器&quot;</strong>：把公共信用、财务、交易行为连到履约保障额度和交易权限。</li></ul>
 <h3 id="s12">2.3 2026 年三份草案的共同信号</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>信号</th><th>售电办法草案</th><th>风险防控草案</th><th>信用评价草案</th></tr></thead><tbody><tr><td>从静态准入转向持续合规</td><td>注册资本、持续满足条件、自动减少业务地</td><td>市场成员内控、申报差错自担</td><td>季度评价、动态调整</td></tr><tr><td>从材料审核转向资金约束</td><td>履约保障按年售电量计收、逐日盯市</td><td>风险处置可暂停/中止市场</td><td>C/D 级提高保障额度</td></tr><tr><td>从分散规则转向全国统一</td><td>一地注册、全国共享</td><td>全国风险分类、跨经营区职责</td><td>统一指标、结果全国通用</td></tr><tr><td>从单一监管转向协同</td><td>交易机构监测、政府处置</td><td>交易/调度/电网/政府/市场委员会分工</td><td>信用中国/信用能源数据共享</td></tr></tbody></table></div>
@@ -167,28 +219,48 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>大类</th><th>子类</th><th>监管定义要点</th><th>典型触发</th></tr></thead><tbody><tr><td>市场内部风险</td><td>不正当竞争风险</td><td>违规行使市场力、操纵价格、持留容量、垄断协议、串通报价、哄抬或压低价格</td><td>报价异常一致、检修集中、份额过高</td></tr><tr><td>市场内部风险</td><td>合同违约风险</td><td>中长期、现货差价、辅助服务合同履约瑕疵</td><td>少发/超用、拒绝执行、拖欠</td></tr><tr><td>市场内部风险</td><td>市场价格异常风险</td><td>部分时段或局部价格持续偏高/偏低，波动或持续时间明显超常</td><td>尖峰价格、价格倒挂、负电价</td></tr><tr><td>市场内部风险</td><td>市场机制风险</td><td>规则不完善、不衔接、有缺陷/漏洞，或受不当干预</td><td>规则冲突、参数设置不当、地方保护</td></tr><tr><td>市场内部风险</td><td>其他市场运行风险</td><td>申报差错、滥用高频量化、虚假注册资料等</td><td>申报错误、异常高频报撤单</td></tr><tr><td>市场外部风险</td><td>电力供需失衡风险</td><td>供需大幅波动，出现明显缺口或富余</td><td>极端天气、燃料供应、大机组故障</td></tr><tr><td>市场外部风险</td><td>技术支持系统运行异常风险</td><td>交易/调度/结算/通信系统故障，或异常交易影响系统，或网络攻击</td><td>系统宕机、数据损坏、黑客攻击</td></tr><tr><td>市场外部风险</td><td>市场舆情风险</td><td>社会负面评价或舆情事件发酵，影响市场稳定</td><td>电费争议、限电传言、价格谣言</td></tr></tbody></table></div>
 <ul><li><strong>内外部不是按&quot;谁造成&quot;划分，而是按&quot;风险来源&quot;划分</strong>：市场价格异常可能由内部操纵引起，也可能由外部供需引起；定性要看证据。</li><li><strong>&quot;其他市场运行风险&quot;是兜底项</strong>：申报差错、高频量化滥用、虚假注册都在这里；不要以为只有价格操纵才算风险。</li><li><strong>2026 现货规则草案另列六类风险</strong>：供需、价格异常、系统安全、技术支持系统、网络安全、市场交易异常；与风险防控办法的分类互相映射，不是两套互斥体系。</li></ul>
 <h3 id="s15">3.2 风险分级</h3>
-<pre><code>                     影响结果
+<figure class="diagram-blueprint">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构示意 · DIAGRAM</span>
+        <span class="diagram-meta">可横向滚动</span>
+      </span>
+    </figcaption>
+    <div class="diagram-canvas" tabindex="0" role="group" aria-label="结构示意图">
+      <pre>                     影响结果
                 重大风险        一般风险
-          ┌──────────────┬──────────────┐
-   紧急   │ 重大+紧急     │ 一般+紧急     │  → 可先处置、后报告
-          ├──────────────┼──────────────┤
- 非紧急   │ 重大+非紧急   │ 一般+非紧急   │  → 按预案/审定后处置
-          └──────────────┴──────────────┘</code></pre>
+          <span class="d-line">┌</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┬</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┐</span>
+   紧急   <span class="d-line">│</span> 重大+紧急     <span class="d-line">│</span> 一般+紧急     <span class="d-line">│</span>  <span class="d-arrow">→</span> 可先处置、后报告
+          <span class="d-line">├</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┼</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┤</span>
+ 非紧急   <span class="d-line">│</span> 重大+非紧急   <span class="d-line">│</span> 一般+非紧急   <span class="d-line">│</span>  <span class="d-arrow">→</span> 按预案/审定后处置
+          <span class="d-line">└</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┴</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┘</span></pre>
+    </div>
+  </figure>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>等级</th><th>判定要点</th><th>处置差异</th></tr></thead><tbody><tr><td>影响结果</td><td>重大风险</td><td>可能引发市场暂停/中止、终端用户电价大幅波动、经营主体大面积或大额亏损</td><td>可提级管理；政府审定；更强处置</td></tr><tr><td>影响结果</td><td>一般风险</td><td>影响范围有限、可控</td><td>省级指导市场运营机构防控</td></tr><tr><td>紧急程度</td><td>紧急风险</td><td>日前/日内供需失衡、技术支持系统异常等</td><td>经授权可先处置、后报告</td></tr><tr><td>紧急程度</td><td>非紧急风险</td><td>有窗口研判、会商、审批</td><td>按预案或临时措施审定后执行</td></tr></tbody></table></div>
 <ul><li><strong>重大不等于紧急</strong>：重大风险可能是慢变量（规则漏洞、持续亏损），需要会商和制度修补；紧急风险可能是局部故障，需要立即处置。</li><li><strong>各地要细化阈值和&quot;典型事件—风险类型—等级&quot;对应清单</strong>：全国办法只给框架，省里给阈值。</li><li><strong>提级管理</strong>：重大风险可由国家发改委、国家能源局视情况提级；跨省跨区、跨经营区交易的临时措施要报国家层面审定。</li></ul>
 <h3 id="s16">3.3 职责分工</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>主体</th><th>职责</th><th>容易误解的点</th></tr></thead><tbody><tr><td>国家发改委、国家能源局</td><td>建立健全全国风险防控机制；指导跨省跨区、跨经营区风险防控</td><td>不是所有风险都由国家直接处置</td></tr><tr><td>省级政府主管部门、派出机构</td><td>指导辖区内一般/重大风险防控；审定临时措施；同意市场恢复</td><td>省级是日常防控的主责层级</td></tr><tr><td>电力交易机构</td><td>牵头全品种、各环节运营监测与风险防控；具体负责中长期等市场</td><td>&quot;牵头&quot;不等于&quot;包办&quot;现货</td></tr><tr><td>电力调度机构</td><td>负责现货、辅助服务市场运营监测与风险防控；暂停/中止时按安全第一组织生产</td><td>安全优先，不是市场优先</td></tr><tr><td>北京电力交易中心 + 国家电力调度控制中心</td><td>跨经营区（北京侧）风险防控</td><td>与广州侧分工，不是一家统管</td></tr><tr><td>广州电力交易中心 + 南方电网调度控制中心</td><td>跨经营区（广州侧）风险防控</td><td>同上</td></tr><tr><td>电网企业</td><td>配合风险防控，保障电网安全与电力供应</td><td>不是只负责抄表收费</td></tr><tr><td>市场管理委员会</td><td>自律管理、争议调解</td><td>不是监管机构，没有行政处罚权</td></tr><tr><td>经营主体</td><td>建立内部风险防控机制；申报差错自担后果；配合处置</td><td>&quot;报错了&quot;不能当免责理由</td></tr></tbody></table></div>
 <ul><li><strong>&quot;谁运营、谁防范&quot;</strong>：交易机构对交易组织负责，调度机构对现货与辅助服务运行负责，电网企业对电网安全负责。</li><li><strong>&quot;谁申报、谁负责&quot;</strong>：申报差错、虚假资料、滥用高频量化，责任在经营主体；不能把锅甩给系统。</li><li><strong>跨经营区是&quot;分侧负责&quot;</strong>：北京侧、广州侧各自与国家/南方调度协同，跨两侧的协调由国家层面统筹。</li></ul>
 <h3 id="s17">3.4 闭环：监测—预警—处置—报告</h3>
-<pre><code>  事前预控                事中处置                 事后修复
-  ┌─────────┐          ┌─────────────┐          ┌─────────────┐
-  │ 预案     │          │ 立即处置     │          │ 完善预案     │
-  │ 阈值     │  ─────&gt;  │ 调整/暂停/中止│  ─────&gt;  │ 纳入规则     │
-  │ 演练     │          │ 价格/分摊     │          │ 恢复市场     │
-  │ 清单     │          │ 发电调用/负荷 │          │ 复盘问责     │
-  └─────────┘          └─────────────┘          └─────────────┘
-        │                      │                      │
-        └──────────── 监测—预警—处置—报告 ────────────┘</code></pre>
+<figure class="diagram-blueprint">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构示意 · DIAGRAM</span>
+        <span class="diagram-meta">可横向滚动</span>
+      </span>
+    </figcaption>
+    <div class="diagram-canvas" tabindex="0" role="group" aria-label="结构示意图">
+      <pre>  事前预控                事中处置                 事后修复
+  <span class="d-line">┌</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┐</span>          <span class="d-line">┌</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┐</span>          <span class="d-line">┌</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┐</span>
+  <span class="d-line">│</span> 预案     <span class="d-line">│</span>          <span class="d-line">│</span> 立即处置     <span class="d-line">│</span>          <span class="d-line">│</span> 完善预案     <span class="d-line">│</span>
+  <span class="d-line">│</span> 阈值     <span class="d-line">│</span>  <span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span>&gt;  <span class="d-line">│</span> 调整/暂停/中止<span class="d-line">│</span>  <span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span>&gt;  <span class="d-line">│</span> 纳入规则     <span class="d-line">│</span>
+  <span class="d-line">│</span> 演练     <span class="d-line">│</span>          <span class="d-line">│</span> 价格/分摊     <span class="d-line">│</span>          <span class="d-line">│</span> 恢复市场     <span class="d-line">│</span>
+  <span class="d-line">│</span> 清单     <span class="d-line">│</span>          <span class="d-line">│</span> 发电调用/负荷 <span class="d-line">│</span>          <span class="d-line">│</span> 复盘问责     <span class="d-line">│</span>
+  <span class="d-line">└</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┘</span>          <span class="d-line">└</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┘</span>          <span class="d-line">└</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┘</span>
+        <span class="d-line">│</span>                      <span class="d-line">│</span>                      <span class="d-line">│</span>
+        <span class="d-line">└</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span> 监测—预警—处置—报告 <span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┘</span></pre>
+    </div>
+  </figure>
 <ul><li><strong>事前</strong>：编风险防范与处置预案，明确风险类型、等级、预警、程序、措施、职责；定期演练；设置阈值和典型事件清单。</li><li><strong>事中</strong>：按预案处置；未明确措施的，非紧急风险由交易机构提出临时措施，报省级主管部门/派出机构审定；跨省跨区报国家层面；紧急风险可先处置后报告。</li><li><strong>事后</strong>：风险消除后完善临时措施并纳入预案；评估是否具备重启条件；提出书面申请，按权限同意后恢复并公告。</li><li><strong>暂停/中止期间</strong>：调度机构按&quot;安全第一&quot;组织电力生产、优化运行方式，保障系统安全和可靠供应；不是&quot;市场停了，电也停了&quot;。</li></ul>
 <h3 id="s18">3.5 事前预控与事中处置的工具箱</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>阶段</th><th>工具</th><th>作用</th><th>注意</th></tr></thead><tbody><tr><td>事前</td><td>交易限额</td><td>限制单主体/单品种敞口</td><td>要与履约保障余额联动</td></tr><tr><td>事前</td><td>报价上下限/申报限价</td><td>防止价格离群</td><td>限价不是出清价</td></tr><tr><td>事前</td><td>履约保障</td><td>资金兜底</td><td>逐日盯市、不足补缴</td></tr><tr><td>事前</td><td>信用约束</td><td>提高违规成本</td><td>C/D 级提高保障、限制便利</td></tr><tr><td>事中</td><td>调整已有交易</td><td>减少失衡</td><td>要明确调整范围、价格、结算</td></tr><tr><td>事中</td><td>暂停/中止市场</td><td>阻断风险扩散</td><td>明确适用情形、启动条件、程序</td></tr><tr><td>事中</td><td>价格干预</td><td>防止价格失控</td><td>要说明期间价格、费用分摊</td></tr><tr><td>事中</td><td>发电调用/负荷控制</td><td>保系统安全</td><td>调度主导，按安全优先</td></tr><tr><td>事后</td><td>追退补/清算</td><td>纠正结算偏差</td><td>按 976 号的异议与追退补流程</td></tr><tr><td>事后</td><td>复盘与规则修补</td><td>防止同类风险</td><td>纳入预案和规则修订</td></tr></tbody></table></div>
@@ -202,11 +274,21 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>等级</th><th>综合得分区间</th><th>基本含义</th><th>典型后果</th></tr></thead><tbody><tr><td>A</td><td>(85,100]</td><td>信用优秀</td><td>适当降低履约保障、扩展保障形式、便利服务、优先保底售电、评先评优</td></tr><tr><td>B</td><td>(70,85]</td><td>信用良好</td><td>按常规办理，不实施激励</td></tr><tr><td>C</td><td>(40,70]</td><td>信用一般/偏弱</td><td>限制便利服务、适当提高履约保障、提高核验频次、风险提示、重点监管</td></tr><tr><td>D</td><td>[0,40]，或严重失信</td><td>信用差</td><td>同上并从重；严重失信原则上不得选为市场管理委员会成员，可能被限制或强制退出</td></tr></tbody></table></div>
 <ul><li><strong>分数不是&quot;信用评级&quot;</strong>：它是电力市场维度的综合评价，不等同于银行内部评级、债券评级；但会直接影响保证金、交易权限、保底售电资格。</li><li><strong>A 级不是终身制</strong>：季度评价 + 动态调整；出现严重失信、重大违规、履约保障不足，可能快速下调。</li><li><strong>D 级有两条路径</strong>：分数落到 [0,40]，或被列入严重失信主体名单；后者不看分数。</li><li><strong>公共信用 D 的&quot;天花板&quot;</strong>：电力市场信用评价不能为 A，但未必直接 D；具体映射看正式稿。</li></ul>
 <h3 id="s22">4.3 评价程序</h3>
-<pre><code>  信息归集          评价计算          结果公示          异议申诉          结果发布
-      │                 │                 │                 │                 │
+<figure class="diagram-blueprint">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构示意 · DIAGRAM</span>
+        <span class="diagram-meta">可横向滚动</span>
+      </span>
+    </figcaption>
+    <div class="diagram-canvas" tabindex="0" role="group" aria-label="结构示意图">
+      <pre>  信息归集          评价计算          结果公示          异议申诉          结果发布
+      <span class="d-line">│</span>                 <span class="d-line">│</span>                 <span class="d-line">│</span>                 <span class="d-line">│</span>                 <span class="d-line">│</span>
   公共信用          指标打分          5 个工作日        受理/核查        推送信用中国
-  财务信息          综合得分          无异议→发布      更正/维持        信用能源
-  交易行为          等级判定                                            结果可查询</code></pre>
+  财务信息          综合得分          无异议<span class="d-arrow">→</span>发布      更正/维持        信用能源
+  交易行为          等级判定                                            结果可查询</pre>
+    </div>
+  </figure>
 <ul><li><strong>信息归集</strong>：公共信用信息在每个评价周期最后一个自然日获取；北京、广州交易中心通过接口从&quot;信用中国&quot;&quot;信用能源&quot;归集，再回传省级交易中心。</li><li><strong>评价计算</strong>：按指标权重打分；财务信息缺失按 0 分；交易行为按合同履约、结算、申报、信息披露等记录。</li><li><strong>公示与异议</strong>：结果公示 5 个工作日；经营主体可提出异议，交易中心核查；无异议后发布。</li><li><strong>发布与共享</strong>：结果推送全国信用信息共享平台和能源行业信用信息平台；结果可查询一定年限（公开解读提到 3 年，具体以正式稿为准）。</li><li><strong>动态调整</strong>：新增严重失信信息，可能在 5 个工作日内调整为 D；具体触发和时限以正式稿为准。</li></ul>
 <h3 id="s23">4.4 激励与约束</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>对象</th><th>激励/约束</th><th>具体措施</th><th>交易含义</th></tr></thead><tbody><tr><td>A 级</td><td>激励</td><td>适当降低履约保障额度、扩展保障形式、容缺受理、降低核验频次、优先保底售电、评先评优</td><td>资金占用更低、业务办理更快、机会更多</td></tr><tr><td>B 级</td><td>常规</td><td>按常规办理，不实施激励</td><td>不额外加码，也不享受便利</td></tr><tr><td>C 级</td><td>约束</td><td>限制信用承诺/绿色通道/容缺受理；适当提高保障额度；增量不得用履约保险；提高核验频次；风险提示</td><td>资金更贵、审核更严、交易对手更谨慎</td></tr><tr><td>D 级</td><td>约束</td><td>同上并从重；重点监管、提高抽查比例；严重失信不得任市场管理委员会成员</td><td>可能被限制交易、强制退出</td></tr><tr><td>严重失信</td><td>联合约束</td><td>信用中国/信用能源公示；跨部门联合惩戒</td><td>影响融资、招投标、政府补贴</td></tr></tbody></table></div>
@@ -223,11 +305,11 @@
 <ul><li><strong>&quot;见索即付&quot;</strong>：保函受益人索赔时，银行按表面单据付款，不介入基础合同争议；这是保函比保险更&quot;硬&quot;的原因。</li><li><strong>&quot;优先赔付&quot;</strong>：保险在符合条件时优先赔付，但不能设置不合理的免责条款、等待期、免赔额来规避责任；具体条款要逐条看。</li><li><strong>额度关系</strong>：2026 售电办法草案要求履约保函、现金保证金额度应超过履约保险额度；部分省份还限制保险占比（如贵州 2027 方案保险额度占比不超过 40%，属地方规则）。</li><li><strong>低信用限制</strong>：信用评价较低的售电公司，草案拟不得采用履约保险形式；C/D 级增量保障也不得用保险。</li></ul>
 <h3 id="s28">5.2 现行办法的额度口径</h3>
 <p>现行《售电公司管理办法》（发改体改规〔2021〕1595 号）下，履约保障额度通常按以下两者取大：</p>
-<pre><code>额度 = max( 过去 12 个月批发购电量 × 0.8 分/kWh,
+<pre tabindex="0"><code>额度 = max( 过去 12 个月批发购电量 × 0.8 分/kWh,
             2 个月最大购电量 × 5 分/kWh )</code></pre>
 <ul><li><strong>口径一</strong>：过去 12 个月批发购电量 × 0.8 分/kWh，反映年度规模。</li><li><strong>口径二</strong>：2 个月最大购电量 × 5 分/kWh，反映短期峰值风险。</li><li><strong>取大</strong>：防止&quot;年度量小但某两个月集中采购&quot;的风险被低估。</li><li><strong>各省可能在国家框架下加严</strong>：具体计算基数、时间窗口、是否含跨省跨区，以当地交易中心规则为准。</li></ul>
 <h3 id="s29">5.3 2026 草案的额度公式</h3>
-<pre><code>履约保障额度 = 预计年售电量 × 1 分/kWh × 调整系数
+<pre tabindex="0"><code>履约保障额度 = 预计年售电量 × 1 分/kWh × 调整系数
               调整系数 ∈ [1, 10]
               最低不少于 200 万元</code></pre>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>参数</th><th>含义</th><th>谁来确定</th><th>注意事项</th></tr></thead><tbody><tr><td>预计年售电量</td><td>业务地预计年度售电量</td><td>售电公司申报，交易机构核定/动态调整</td><td>不是历史电量；新公司按预计</td></tr><tr><td>1 分/kWh</td><td>单位保障基准</td><td>国家规则</td><td>与现行 0.8 分/kWh 不同</td></tr><tr><td>调整系数</td><td>1–10，反映信用、风险、管理能力</td><td>省级能源/发改部门确定并动态调整</td><td>系数越高，资金占用越大</td></tr><tr><td>200 万元</td><td>最低额度</td><td>国家规则</td><td>不是注册资本，不是保证金上限</td></tr></tbody></table></div>
@@ -238,11 +320,37 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>口径</th><th>计算</th><th>额度</th></tr></thead><tbody><tr><td>旧规口径一</td><td>30 亿 × 0.8 分/kWh = 30 亿 × 0.008 元/kWh</td><td>2,400 万元</td></tr><tr><td>旧规口径二</td><td>2 个月电量 5 亿 kWh × 5 分/kWh = 5 亿 × 0.05 元/kWh</td><td>2,500 万元</td></tr><tr><td>旧规取大</td><td>max(2,400, 2,500)</td><td>2,500 万元</td></tr><tr><td>新规系数 1</td><td>30 亿 × 1 分/kWh × 1 = 30 亿 × 0.01 元/kWh</td><td>3,000 万元</td></tr><tr><td>新规系数 5</td><td>30 亿 × 1 分/kWh × 5</td><td>1.5 亿元</td></tr><tr><td>新规系数 10</td><td>30 亿 × 1 分/kWh × 10</td><td>3 亿元</td></tr></tbody></table></div>
 <ul><li><strong>结论</strong>：同样的电量，新规下保障额度可能是旧规的 1.2 倍到 12 倍；系数是最大的敏感变量。</li><li><strong>资金成本</strong>：若保函费率为 0.5%–1.5%/年，1.5 亿元保函的年费约 75 万–225 万元；3 亿元约 150 万–450 万元（D，按假设测算，实际费率看银行）。</li><li><strong>保险对比</strong>：保险保费可能低于保函费，但保障范围、除外责任、赔付顺序不同；不能只看费率。</li><li><strong>经营含义</strong>：低价抢量会同时推高&quot;预计年售电量&quot;和&quot;风险系数&quot;，形成&quot;越冲量、越占资金&quot;的约束。</li></ul>
 <h3 id="s31">5.5 逐日盯市与补缴</h3>
-<pre><code>  每日监测            额度不足            通知补缴            暂停交易            补足恢复
-     │                   │                   │                   │                   │
-  剩余额度            风险敞口            1 个工作日          逾期未补            1 个工作日
-  动态盈亏            红色/黄色阈值        3 个工作日          暂停本省交易        恢复交易
-  交易限额            下一日限额调整       完成补缴            进一步处置          解除预警</code></pre>
+<figure class="flow-diagram" aria-label="流程示意">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">流程 · FLOW</span>
+        <span class="diagram-meta">5 个步骤</span>
+      </span>
+
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">每日监测</span>
+      <ul class="flow-points"><li>剩余额度</li><li>动态盈亏</li><li>交易限额</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">额度不足</span>
+      <ul class="flow-points"><li>风险敞口</li><li>红色/黄色阈值</li><li>下一日限额调整</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">通知补缴</span>
+      <ul class="flow-points"><li>1 个工作日</li><li>3 个工作日</li><li>完成补缴</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">04</span>
+      <span class="flow-text">暂停交易</span>
+      <ul class="flow-points"><li>逾期未补</li><li>暂停本省交易</li><li>进一步处置</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">05</span>
+      <span class="flow-text">补足恢复</span>
+      <ul class="flow-points"><li>1 个工作日</li><li>恢复交易</li><li>解除预警</li></ul>
+    </li></ol>
+
+  </figure>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>环节</th><th>时限</th><th>动作</th><th>后果</th></tr></thead><tbody><tr><td>监测</td><td>每日</td><td>交易机构监测履约保障剩余额度、风险敞口、动态盈亏</td><td>形成预警</td></tr><tr><td>通知</td><td>1 个工作日</td><td>通知售电公司补缴</td><td>未补缴进入暂停</td></tr><tr><td>补缴</td><td>3 个工作日</td><td>售电公司完成补缴</td><td>逾期未补，暂停相关省份交易资格，处置升级</td></tr><tr><td>恢复</td><td>1 个工作日</td><td>足额缴纳后恢复交易</td><td>解除暂停</td></tr><tr><td>限额</td><td>下一交易日</td><td>根据剩余额度动态调整交易限额</td><td>防止继续扩大敞口</td></tr><tr><td>拦截</td><td>交易前</td><td>某笔交易将导致保函达到红色预警阈值的，不予成交</td><td>地方规则，如贵州 2027 方案</td></tr></tbody></table></div>
 <ul><li><strong>&quot;逐日盯市&quot;不是&quot;逐日结算&quot;</strong>：每天估算盈亏和敞口，按剩余额度调整下一日交易限额；不是每天收付资金。</li><li><strong>&quot;暂停&quot;是按省</strong>：售电公司可能在 A 省被暂停，但在 B 省仍可交易；跨省经营要分别管理额度。</li><li><strong>&quot;补缴&quot;不是&quot;罚款&quot;</strong>：补缴是恢复保障额度；违规、违约另有处罚。</li><li><strong>&quot;红色预警&quot;可能直接拦截交易</strong>：地方规则可以把保函阈值嵌入交易前置校验，达到阈值就不让成交。</li></ul>
 <h3 id="s32">5.6 保函执行与保险赔付</h3>
@@ -254,11 +362,21 @@
 <hr>
 <h2 id="s34">6. 偏差考核：合同与实际的差</h2>
 <h3 id="s35">6.1 偏差是什么</h3>
-<pre><code>   合同电量（曲线）  ────────────────┐
-                                     │  差值 = 偏差电量
-   实际电量（曲线）  ────────────────┘
-                                     │
-   偏差率 k = (实际电量 − 合同电量) / 合同电量</code></pre>
+<figure class="diagram-blueprint">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构示意 · DIAGRAM</span>
+        <span class="diagram-meta">可横向滚动</span>
+      </span>
+    </figcaption>
+    <div class="diagram-canvas" tabindex="0" role="group" aria-label="结构示意图">
+      <pre>   合同电量（曲线）  <span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┐</span>
+                                     <span class="d-line">│</span>  差值 = 偏差电量
+   实际电量（曲线）  <span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┘</span>
+                                     <span class="d-line">│</span>
+   偏差率 k = (实际电量 − 合同电量) / 合同电量</pre>
+    </div>
+  </figure>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>概念</th><th>定义</th><th>注意</th></tr></thead><tbody><tr><td>合同电量</td><td>中长期合同、现货申报、零售合同约定的电量/曲线</td><td>分时段、分品种</td></tr><tr><td>实际电量</td><td>实际上网/用电量，按计量点数据</td><td>受计量、抄表、线损影响</td></tr><tr><td>偏差电量</td><td>实际与合同的差值</td><td>正偏差/负偏差</td></tr><tr><td>偏差率</td><td>偏差电量 / 合同电量</td><td>分母口径要一致</td></tr><tr><td>免考区间</td><td>规则允许的偏差范围</td><td>各省不同，没有全国统一 ±5%</td></tr><tr><td>考核价格</td><td>对超范围偏差的结算/惩罚价格</td><td>可能是现货价、中长期价、基准价的倍数</td></tr><tr><td>责任分摊</td><td>偏差由谁承担</td><td>按原因、合同约定、规则</td></tr></tbody></table></div>
 <ul><li><strong>偏差不是&quot;错误&quot;，是常态</strong>：负荷预测、新能源出力、机组故障、检修、天气都会造成偏差；规则的目标是&quot;可预期地分摊&quot;，不是&quot;消灭偏差&quot;。</li><li><strong>偏差考核不是&quot;罚款&quot;</strong>：多数是结算价格差异（超额部分按更高/更低价格结算），不是行政处罚；但可能显著影响收益。</li><li><strong>&quot;偏差率&quot;分母很关键</strong>：按合同电量、实际电量、月度总量还是分时段，结果不同；签约时要写清楚。</li></ul>
 <h3 id="s36">6.2 国家规则给了什么</h3>
@@ -283,11 +401,33 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>层级</th><th>内容</th><th>规则依据</th><th>备注</th></tr></thead><tbody><tr><td>计量</td><td>计量点设置、数据采集、核对、异常处理</td><td>976 号</td><td>数据是结算的基础</td></tr><tr><td>结算准备</td><td>合同、曲线、出清结果、计量数据</td><td>976 号、1656 号</td><td>多方数据要对齐</td></tr><tr><td>结算依据</td><td>交易机构出具结算依据（核对版/正式版）</td><td>976 号</td><td>第 5/8 个工作日</td></tr><tr><td>电费账单</td><td>电网企业出具账单</td><td>976 号</td><td>第 10 个工作日</td></tr><tr><td>收付</td><td>发电企业、用户、售电公司与电网企业收付</td><td>976 号、2020 年电费结算办法</td><td>发票、承兑、结算协议</td></tr><tr><td>追退补</td><td>异议属实后的下一周期追退补/清算</td><td>976 号第五十一条</td><td>不是&quot;当月改&quot;</td></tr><tr><td>争议</td><td>调解、仲裁、诉讼</td><td>976 号第五十二条、1656 号</td><td>程序出口</td></tr></tbody></table></div>
 <ul><li><strong>&quot;日清月结&quot;</strong>：现货连续运行地区按日清分、按月结算；不是每天打款。</li><li><strong>&quot;月结月清&quot;</strong>：中长期合同按月结算、按月清算；与&quot;日清月结&quot;不冲突，层级不同。</li><li><strong>&quot;结算依据&quot;不是&quot;账单&quot;</strong>：交易机构给结算依据，电网企业给账单；两者主体、内容、时限不同。</li></ul>
 <h3 id="s43">7.2 统一时限</h3>
-<pre><code>  每月第 5 个工作日        1 个工作日          第 8 个工作日        第 10 个工作日
-        │                     │                     │                     │
-  结算依据（核对版）      核对/异议/确认      正式结算依据          电费账单
-        │                     │                     │                     │
-        └──── 有异议：1 个工作日内组织核实，修正后再确认 ────┘</code></pre>
+<figure class="flow-diagram" aria-label="流程示意">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">流程 · FLOW</span>
+        <span class="diagram-meta">4 个步骤</span>
+      </span>
+
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">每月第 5 个工作日</span>
+      <ul class="flow-points"><li>结算依据（核对版）</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">1 个工作日</span>
+      <ul class="flow-points"><li>核对/异议/确认</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">第 8 个工作日</span>
+      <ul class="flow-points"><li>正式结算依据</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">04</span>
+      <span class="flow-text">第 10 个工作日</span>
+      <ul class="flow-points"><li>电费账单</li></ul>
+    </li></ol>
+    <div class="flow-note"><span class="flow-note-item">有异议：1 个工作日内组织核实，修正后再确认</span></div>
+  </figure>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>节点</th><th>时限</th><th>责任方</th><th>动作</th></tr></thead><tbody><tr><td>核对版结算依据</td><td>每月第 5 个工作日前</td><td>电力交易机构</td><td>向经营主体、相关电网企业出具</td></tr><tr><td>核对/异议/确认</td><td>1 个工作日内</td><td>经营主体、电网企业</td><td>核对、反馈异议、确认</td></tr><tr><td>异议核实</td><td>1 个工作日内</td><td>电力交易机构</td><td>组织经营主体、电网企业、调度核实</td></tr><tr><td>修正后确认</td><td>1 个工作日内</td><td>经营主体</td><td>对修正后的核对版确认</td></tr><tr><td>正式结算依据</td><td>每月第 8 个工作日前</td><td>电力交易机构</td><td>发布</td></tr><tr><td>电费账单</td><td>每月第 10 个工作日前</td><td>电网企业</td><td>向发电企业、用户、售电公司发行</td></tr></tbody></table></div>
 <ul><li><strong>&quot;工作日&quot;不是&quot;自然日&quot;</strong>：遇节假日顺延；跨月、跨年要提前排日历。</li><li><strong>&quot;具备条件的地区可进一步优化&quot;</strong>：有的省可能更快；以当地细则为准。</li><li><strong>&quot;1 个工作日&quot;很短</strong>：经营主体要提前准备对账模板、异常清单、联系人；否则容易错过确认窗口。</li></ul>
 <h3 id="s44">7.3 结算项目与&quot;不得设不平衡资金池&quot;</h3>
@@ -308,11 +448,37 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>对手方</th><th>主要风险</th><th>预警信号</th><th>缓释</th></tr></thead><tbody><tr><td>售电公司</td><td>亏损、保证金不足、退出</td><td>批零倒挂、连续亏损、保函余额低、用户集中、欠费</td><td>信用评价、担保、限额、合同终止权</td></tr><tr><td>发电企业</td><td>少发、超发、机组故障</td><td>出力偏差大、检修频繁、燃料紧张</td><td>合同条款、替代采购、偏差考核</td></tr><tr><td>电力用户</td><td>拖欠电费、超用、违约用电</td><td>逾期、负荷异常、信用下调</td><td>预付费、保证金、停电程序</td></tr><tr><td>储能/VPP</td><td>容量不实、调用不达标</td><td>参数虚报、可用率低、考核多</td><td>并网考核、信用、合同违约金</td></tr><tr><td>电网企业</td><td>结算延迟、计量争议</td><td>账单延迟、数据不一致</td><td>监管投诉、争议调解</td></tr><tr><td>交易机构</td><td>规则变更、系统故障</td><td>公告频繁、系统异常</td><td>规则版本库、应急预案</td></tr></tbody></table></div>
 <ul><li><strong>对手方风险不是&quot;看财报&quot;</strong>：电力市场的对手方风险还看信用等级、履约保障、结算记录、交易行为。</li><li><strong>&quot;大公司&quot;不等于&quot;低风险&quot;</strong>：发电集团所属售电公司也可能亏损；要看独立法人、担保、合同。</li><li><strong>&quot;用户拖欠&quot;是最容易被忽视的风险</strong>：售电公司对电网企业要按时付款，但用户可能拖欠；现金流错配会拖垮售电公司。</li></ul>
 <h3 id="s50">8.2 违约的触发与处置</h3>
-<pre><code>  预警              违约              处置              退出              承接
-   │                 │                 │                 │                 │
-  保函不足          欠费/少发         暂停交易          减少业务地        保底售电
-  信用下调          拒绝履约          执行保函          注销              代理购电
-  连续亏损          严重违规          合同终止/转让      清算              用户选择</code></pre>
+<figure class="flow-diagram" aria-label="流程示意">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">流程 · FLOW</span>
+        <span class="diagram-meta">5 个步骤</span>
+      </span>
+
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">预警</span>
+      <ul class="flow-points"><li>保函不足</li><li>信用下调</li><li>连续亏损</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">违约</span>
+      <ul class="flow-points"><li>欠费/少发</li><li>拒绝履约</li><li>严重违规</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">处置</span>
+      <ul class="flow-points"><li>暂停交易</li><li>执行保函</li><li>合同终止/转让</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">04</span>
+      <span class="flow-text">退出</span>
+      <ul class="flow-points"><li>减少业务地</li><li>注销</li><li>清算</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">05</span>
+      <span class="flow-text">承接</span>
+      <ul class="flow-points"><li>保底售电</li><li>代理购电</li><li>用户选择</li></ul>
+    </li></ol>
+
+  </figure>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>阶段</th><th>触发</th><th>处置</th><th>依据</th></tr></thead><tbody><tr><td>预警</td><td>保函余额低于阈值、信用下调、连续亏损</td><td>提示、限制新增交易、要求补充材料</td><td>交易机构监测、信用评价</td></tr><tr><td>违约</td><td>欠费、少发、拒绝履约、严重违规</td><td>暂停交易、执行保函/保险、追偿</td><td>合同、市场规则、担保文件</td></tr><tr><td>退出</td><td>持续不满足注册条件、长期不结算、执照注销</td><td>减少业务地、注销、清算</td><td>2026 售电办法草案、现行 1595 号</td></tr><tr><td>承接</td><td>售电公司无法履约</td><td>保底售电、代理购电、用户选择新售电公司</td><td>售电办法、地方保底售电规则</td></tr></tbody></table></div>
 <ul><li><strong>&quot;暂停交易&quot;不是&quot;注销&quot;</strong>：暂停是限制新增交易，原有合同仍要履行；注销是退出市场。</li><li><strong>&quot;执行保函&quot;不是&quot;免除债务&quot;</strong>：保函赔付后，售电公司仍欠款，担保机构可追偿。</li><li><strong>&quot;合同终止&quot;要有依据</strong>：不能因为&quot;公司经营困难&quot;单方终止；要看合同条款、规则、监管决定。</li></ul>
 <h3 id="s51">8.3 2026 售电办法草案的退出机制</h3>
@@ -505,7 +671,9 @@
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

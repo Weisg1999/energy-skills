@@ -15,7 +15,7 @@
 </head>
 <body data-cat="cross" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -145,14 +145,14 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>成本层</th><th>计算逻辑</th><th>注意</th></tr></thead><tbody><tr><td>充电成本</td><td>充电电量 × 充电价</td><td>负价时是收入，不是成本</td></tr><tr><td>退化成本</td><td>循环/吞吐 × 单位退化成本</td><td>高频调频可能更伤电池</td></tr><tr><td>运维成本</td><td>固定 O&amp;M + 可变 O&amp;M</td><td>年化</td></tr><tr><td>并网/电网费</td><td>容量费/电量费/接入费</td><td>各国差异大</td></tr><tr><td>不平衡成本</td><td>偏差电量 × 不平衡价</td><td>预测误差直接进成本</td></tr><tr><td>融资成本</td><td>债务/权益</td><td>合同期影响利率</td></tr><tr><td>保险/土地/许可</td><td>年化</td><td>容易漏</td></tr></tbody></table></div>
 <h3 id="s16">3.3 核心公式</h3>
 <p><strong>日套利毛利</strong></p>
-<pre><code>日毛利 = Σ(放电量_t × 放电价_t) - Σ(充电量_t × 充电价_t) - 退化成本</code></pre>
+<pre tabindex="0"><code>日毛利 = Σ(放电量_t × 放电价_t) - Σ(充电量_t × 充电价_t) - 退化成本</code></pre>
 <p><strong>考虑 RTE</strong></p>
-<pre><code>放电量 = 充电量 × RTE
+<pre tabindex="0"><code>放电量 = 充电量 × RTE
 充电量 = 放电量 ÷ RTE</code></pre>
 <p><strong>年化</strong></p>
-<pre><code>年收入 = 日收入 × 运行天数 × 可用率</code></pre>
+<pre tabindex="0"><code>年收入 = 日收入 × 运行天数 × 可用率</code></pre>
 <p><strong>LCOS（简化）</strong></p>
-<pre><code>LCOS = (CAPEX + Σ OPEX_t/(1+r)^t + Σ 充电成本_t/(1+r)^t - 残值)
+<pre tabindex="0"><code>LCOS = (CAPEX + Σ OPEX_t/(1+r)^t + Σ 充电成本_t/(1+r)^t - 残值)
        ÷ Σ 放电量_t/(1+r)^t</code></pre>
 <aside class="note"><p>LCOS 的完整口径见储能投资技能；本文只强调“充电成本、退化、可用率”不能漏。</p></aside>
 <hr>
@@ -164,18 +164,18 @@
 <ul><li><strong>循环寿命</strong>：不要只用“6,000 次”一个数；要看 DOD、温度、倍率、质保条款。</li><li><strong>容量保持率</strong>：15 年合同期内可能要增容/更换；投决要留 CAPEX。</li><li><strong>退化成本</strong>：把更换成本摊到每 MWh 吞吐，进入报价；否则高频辅助服务会“看起来赚钱、实际亏寿命”。</li></ul>
 <h3 id="s20">4.3 降额</h3>
 <ul><li><strong>并网降额</strong>：电网允许的 MW 可能低于铭牌；以并网协议为准。</li><li><strong>容量市场降额</strong>：英国/波兰/比利时按 de-rating；PJM 按 ELCC；CAISO 按 NQC。</li><li><strong>辅助服务降额</strong>：SOC 预留、持续时间、响应时间会降低可售容量。</li><li><strong>高温/低温降额</strong>：极端温度下可用功率下降；要用设备曲线。</li></ul>
-<pre><code>可交付容量 = min(铭牌 MW, 并网 MW, 温度降额, SOC 可持续容量, 市场降额)</code></pre>
+<pre tabindex="0"><code>可交付容量 = min(铭牌 MW, 并网 MW, 温度降额, SOC 可持续容量, 市场降额)</code></pre>
 <aside class="note"><p>投决模型要用“可交付容量”，不是铭牌容量。铭牌 100 MW 的项目，在容量市场可能只按 13–50 MW 付费。</p></aside>
 <hr>
 <h2 id="s21">5. 捕获率与价差捕获</h2>
 <h3 id="s22">5.1 捕获价与捕获率</h3>
 <p><strong>捕获价（capture price）</strong></p>
-<pre><code>捕获价 = Σ(价格_t × 电量_t) / Σ(电量_t)</code></pre>
+<pre tabindex="0"><code>捕获价 = Σ(价格_t × 电量_t) / Σ(电量_t)</code></pre>
 <p><strong>捕获率（capture rate）</strong></p>
-<pre><code>捕获率 = 捕获价 / 时间加权均价</code></pre>
+<pre tabindex="0"><code>捕获率 = 捕获价 / 时间加权均价</code></pre>
 <ul><li><strong>可再生捕获率</strong>：光伏/风电的出力与价格负相关，捕获率通常低于 100%；西班牙光伏 2025 年约 €33.95/MWh（−19.7%）（C）。</li><li><strong>储能没有“发电捕获率”</strong>：储能是价格接受者/套利者，更适用“价差捕获率”。</li></ul>
 <h3 id="s23">5.2 价差捕获率</h3>
-<pre><code>理论日价差 = 最高放电价 - 最低充电价（同时段约束下）
+<pre tabindex="0"><code>理论日价差 = 最高放电价 - 最低充电价（同时段约束下）
 实际日毛利 = 放电收入 - 充电成本
 价差捕获率 = 实际日毛利 / (理论日价差 × 可用能量)</code></pre>
 <ul><li><strong>100% 捕获是上限</strong>：实际受 RTE、SOC、并网、辅助服务预留、预测误差影响。</li><li><strong>不要用“最高价 - 最低价”直接乘容量</strong>：那是最理想情况，不是可实现收益。</li><li><strong>分时段统计</strong>：早高峰、晚高峰、午间负价、夜间低谷的捕获率不同。</li></ul>
@@ -184,7 +184,7 @@
 <hr>
 <h2 id="s25">6. 收入叠加冲突</h2>
 <h3 id="s26">6.1 同一 MW、同一 SOC 只能卖一次</h3>
-<pre><code>功率约束：P_charge + P_discharge + P_AS_up + P_AS_down ≤ P_available
+<pre tabindex="0"><code>功率约束：P_charge + P_discharge + P_AS_up + P_AS_down ≤ P_available
 能量约束：SOC_min ≤ SOC_t ≤ SOC_max
 持续时间：P_AS × T_AS ≤ 可用能量</code></pre>
 <ul><li><strong>能量 vs 辅助服务</strong>：预留 10 MW 调频，就少 10 MW 可卖能量；SOC 也要留裕度。</li><li><strong>容量 vs 辅助服务</strong>：容量中标要求可用性；辅助服务调用可能影响容量履约。</li><li><strong>容量 vs 能量</strong>：容量义务要求系统紧张时可用；不能为了套利把 SOC 放空。</li><li><strong>法国 PL-1/PL-4 vs MA</strong>：容量义务与 MA/FCR/aFRR/mFRR 预留存在机会成本；PPI 与容量报酬的关系按 CRE 规则处理，不能把两者简单相加。</li></ul>
@@ -204,24 +204,24 @@
 <h2 id="s33">8. 合成算例（D 级，仅演示方法）</h2>
 <h3 id="s34">8.1 日套利</h3>
 <p>假设：100 MW/200 MWh；RTE 85%；日内充电价 20 €/MWh，放电价 120 €/MWh；充电 100 MWh，放电 85 MWh；退化成本 10 €/MWh 放电。</p>
-<pre><code>放电收入 = 85 × 120 = €10,200
+<pre tabindex="0"><code>放电收入 = 85 × 120 = €10,200
 充电成本 = 100 × 20 = €2,000
 退化成本 = 85 × 10 = €850
 日毛利 = 10,200 - 2,000 - 850 = €7,350
 年毛利（330 天）= €2,425,500</code></pre>
 <h3 id="s35">8.2 加辅助服务</h3>
 <p>假设：预留 10 MW 做 FCR，容量价 5 €/MW/h，20 小时/日，330 天；能量套利可用容量降到 90 MW，日毛利按比例降到 €6,615。</p>
-<pre><code>FCR 年收入 = 10 × 5 × 20 × 330 = €330,000
+<pre tabindex="0"><code>FCR 年收入 = 10 × 5 × 20 × 330 = €330,000
 能量年毛利 = 6,615 × 330 = €2,182,950
 合计 = €2,512,950</code></pre>
 <ul><li>相比只做能量（€2,425,500），增加约 €87,450；但辅助服务预留降低了套利规模，且增加退化/考核风险。</li><li><strong>不要直接加 €330,000</strong>：那会高估。</li></ul>
 <h3 id="s36">8.3 加容量市场</h3>
 <p>假设：同一项目在英国 CM 中标，de-rating 30%，£27.10/kW·年：</p>
-<pre><code>容量收入 = 100,000 kW × 30% × 27.10 = £813,000/年</code></pre>
+<pre tabindex="0"><code>容量收入 = 100,000 kW × 30% × 27.10 = £813,000/年</code></pre>
 <ul><li>容量收入要扣履约罚则、可用性考核；容量义务会限制套利策略。</li><li>三种收入相加前，先用统一优化模型检查约束是否冲突。</li></ul>
 <h3 id="s37">8.4 LCOS 简化</h3>
 <p>假设：CAPEX €40m（100 MW/200 MWh，€200/kWh）；年 OPEX €0.8m；年放电量 50,000 MWh；充电成本 €1.0m/年；折现率 7%；10 年；残值 0。</p>
-<pre><code>LCOS ≈ (40m + 0.8m × 年金因子 + 1.0m × 年金因子) ÷ (50,000 × 年金因子)</code></pre>
+<pre tabindex="0"><code>LCOS ≈ (40m + 0.8m × 年金因子 + 1.0m × 年金因子) ÷ (50,000 × 年金因子)</code></pre>
 <ul><li>年金因子（7%，10 年）约 7.02；LCOS ≈ (€40m + €1.8m × 7.02) ÷ (50,000 MWh × 7.02) ≈ €52.6m ÷ 351,000 MWh ≈ €150/MWh。</li><li>这个数字只用于演示公式；实际要按项目 CAPEX、RTE、退化、电网费和融资结构重算。</li></ul>
 <hr>
 <h2 id="s38">9. 十一个坑</h2>
@@ -341,7 +341,9 @@
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

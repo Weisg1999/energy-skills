@@ -15,7 +15,7 @@
 </head>
 <body data-cat="skill" id="top">
 <a class="skip" href="#main">Skip to content</a>
-<div class="progress" id="progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -134,16 +134,26 @@
 <hr>
 <h2 id="s9">2. Minimum Necessary Knowledge of the 2026 Retail Market</h2>
 <h3 id="s10">2.1 The structure of the retail business</h3>
-<pre><code>        Wholesale side                            Retail side
-  Long-term contracts (locked volume/price) ─┐
-  Spot market (residual / deviation)         ─┼──► Retailer ──► Packages (fixed/TOU/linked)
-  System operation, T&amp;D, funds               ─┘        │
-                                                       ├── Deviation assessment
-                                                       ├── Opex and acquisition
-                                                       ├── Bonds / insurance / cash
-                                                       └── Bad debt and churn</code></pre>
+<figure class="diagram-blueprint">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">Schematic · DIAGRAM</span>
+        <span class="diagram-meta">Scroll horizontally</span>
+      </span>
+    </figcaption>
+    <div class="diagram-canvas" tabindex="0" role="group" aria-label="Schematic diagram">
+      <pre>        Wholesale side                            Retail side
+  Long-term contracts (locked volume/price) <span class="d-line">─</span><span class="d-line">┐</span>
+  Spot market (residual / deviation)         <span class="d-line">─</span><span class="d-line">┼</span><span class="d-line">─</span><span class="d-line">─</span>► Retailer <span class="d-line">─</span><span class="d-line">─</span>► Packages (fixed/TOU/linked)
+  System operation, T&amp;D, funds               <span class="d-line">─</span><span class="d-line">┘</span>        <span class="d-line">│</span>
+                                                       <span class="d-line">├</span><span class="d-line">─</span><span class="d-line">─</span> Deviation assessment
+                                                       <span class="d-line">├</span><span class="d-line">─</span><span class="d-line">─</span> Opex and acquisition
+                                                       <span class="d-line">├</span><span class="d-line">─</span><span class="d-line">─</span> Bonds / insurance / cash
+                                                       <span class="d-line">└</span><span class="d-line">─</span><span class="d-line">─</span> Bad debt and churn</pre>
+    </div>
+  </figure>
 <p>A retailer's profit is not &quot;retail price − wholesale price&quot; but:</p>
-<pre><code>Net profit = Retail revenue
+<pre tabindex="0"><code>Net profit = Retail revenue
            − Wholesale energy cost
            − Deviation assessment cost
            − Opex and customer acquisition
@@ -182,24 +192,24 @@
 <hr>
 <h2 id="s24">4. Package Pricing</h2>
 <h3 id="s25">4.1 Full-cost breakdown</h3>
-<pre><code>Fixed price = Wholesale cost W
+<pre tabindex="0"><code>Fixed price = Wholesale cost W
             + Deviation cost D
             + Opex and acquisition O
             + Guarantee funding cost F
             + Risk premium R
             + Target profit M</code></pre>
 <p>Wholesale cost follows the procurement structure:</p>
-<pre><code>W = long-term coverage ratio × long-term price + (1 − coverage ratio) × spot price</code></pre>
+<pre tabindex="0"><code>W = long-term coverage ratio × long-term price + (1 − coverage ratio) × spot price</code></pre>
 <h3 id="s26">4.2 Three pricing formulas</h3>
-<pre><code>Fixed price:    P = W + D + O + F + R + M
+<pre tabindex="0"><code>Fixed price:    P = W + D + O + F + R + M
 TOU price:      P_t = W_t + D_t + O + F + R + M_t
 Market-linked:  P = clamp(α × S + a, floor, cap)</code></pre>
 <ul><li>A fixed price shifts price risk from the user to the retailer, so it must carry a risk premium;</li><li>A TOU price shifts part of the hourly risk to the user, but the retailer still bears curve forecast error;</li><li>A market-linked price passes price risk back to the user, but a floor set too low loses money when prices fall and a cap set too high is rejected by users.</li></ul>
 <h3 id="s27">4.3 Break-even point</h3>
 <p>A fixed-price contract breaks even in cash (zero profit) at spot price S*:</p>
-<pre><code>S* = (P − D − O − F − c × L) / (1 − c)</code></pre>
+<pre tabindex="0"><code>S* = (P − D − O − F − c × L) / (1 − c)</code></pre>
 <p>If the contract must also earn the risk premium R on top of break-even, the safety line is:</p>
-<pre><code>S*_R = (P − D − O − F − R − c × L) / (1 − c)</code></pre>
+<pre tabindex="0"><code>S*_R = (P − D − O − F − R − c × L) / (1 − c)</code></pre>
 <p>where c is the long-term coverage ratio and L the long-term price. The gap between S* and the current spot price is this contract's price safety margin. R is a deliberate buffer, not an incurred cost, so it must not be mixed into the &quot;break-even&quot; calibre; quote S* externally and use S*_R for internal limits and credit.</p>
 <h3 id="s28">4.4 Package selection matrix</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>User trait</th><th>Preferred package</th><th>Reason</th></tr></thead><tbody><tr><td>Stable load, low risk appetite</td><td>Fixed price</td><td>Certain budget, but the retailer needs a risk premium</td></tr><tr><td>Can shift load, high peak-valley ratio</td><td>TOU</td><td>Price signals can guide load</td></tr><tr><td>Accepts volatility, wants low average price</td><td>Average-price linked</td><td>Smoother pass-through, less inversion</td></tr><tr><td>Large user with bargaining power</td><td>Floor plus floating / service fee</td><td>Risk shared by both sides</td></tr><tr><td>Integrated energy customer</td><td>Service fee</td><td>Moves from spread to service value</td></tr></tbody></table></div>
@@ -212,11 +222,11 @@ Market-linked:  P = clamp(α × S + a, floor, cap)</code></pre>
 <h2 id="s31">5. Customer Portfolio and Procurement Matching</h2>
 <h3 id="s32">5.1 Customer contribution</h3>
 <p>Annual contribution of one customer:</p>
-<pre><code>Contribution_i = Q_i × (P_i − W − D − O − F_i)</code></pre>
+<pre tabindex="0"><code>Contribution_i = Q_i × (P_i − W − D − O − F_i)</code></pre>
 <p>where F_i is the guarantee funding cost allocated by volume or contract; if it is not allocated at customer level, deduct F at portfolio level. The worked examples set F=0 for simplicity.</p>
 <ul><li>A negative-contribution customer should be repriced or exited unless there is strategic, scale or synergy value;</li><li>A positive but volatile customer must be judged by stress tests, not averages;</li><li>Excessive concentration (for example one customer above 30%) requires separate credit and exit-risk assessment.</li></ul>
 <h3 id="s33">5.2 Portfolio net profit</h3>
-<pre><code>Net profit = Σ Q_i × P_i − Q × W − Q × D − Q × O − F</code></pre>
+<pre tabindex="0"><code>Net profit = Σ Q_i × P_i − Q × W − Q × D − Q × O − F</code></pre>
 <p>where Q is total portfolio volume and F is the portfolio-level guarantee funding cost. Portfolio net profit is not a simple sum of single-customer contributions; it also depends on:</p>
 <ul><li>The peak-valley profile of stacked user curves;</li><li>Correlation between users (same industry maintaining or overusing at the same time);</li><li>Curve matching and deviation of wholesale procurement;</li><li>Acquisition cost and renewal rate.</li></ul>
 <h3 id="s34">5.3 Procurement coverage</h3>
@@ -229,14 +239,14 @@ Market-linked:  P = clamp(α × S + a, floor, cap)</code></pre>
 <hr>
 <h2 id="s37">6. Deviation Assessment and Forecast Risk</h2>
 <h3 id="s38">6.1 Definition of deviation</h3>
-<pre><code>Deviation volume = Actual volume − Contracted volume
+<pre tabindex="0"><code>Deviation volume = Actual volume − Contracted volume
 Deviation rate   = Deviation volume / Contracted volume</code></pre>
 <ul><li>Contracted volume may be a long-term contract, a spot declaration or the curve specified in a retail contract;</li><li>The tolerance band, assessment price and responsibility allocation are set by provincial rules, and <strong>there is no nationwide ±5%</strong>;</li><li>Article 74 of Document 1656 gives the &quot;price-difference settlement / volume-difference settlement&quot; principle; specific parameters are provincial;</li><li>Deviation assessment is mostly a settlement price difference, not an administrative penalty, but it materially affects profit.</li></ul>
 <h3 id="s39">6.2 Expected deviation cost</h3>
 <p>Let F be the forecast in kWh, σ_F = σ × F the standard deviation of forecast error and ±t_F = ±t × F the tolerance band, where σ and t are shares of F; assume zero-mean normal errors. The expected volume outside the band is:</p>
-<pre><code>E[|ε| × 1{|ε| &gt; t_F}] = 2 × σ_F × φ(t_F / σ_F) = 2 × σ × F × φ(t / σ)</code></pre>
+<pre tabindex="0"><code>E[|ε| × 1{|ε| &gt; t_F}] = 2 × σ_F × φ(t_F / σ_F) = 2 × σ × F × φ(t / σ)</code></pre>
 <p>where φ is the standard normal density. The 95% quantile of out-of-band volume is approximated by:</p>
-<pre><code>q_95 = max(z × σ_F − t_F, 0) = max((z × σ − t) × F, 0), z = 1.96</code></pre>
+<pre tabindex="0"><code>q_95 = max(z × σ_F − t_F, 0) = max((z × σ − t) × F, 0), z = 1.96</code></pre>
 <p>This model is for order-of-magnitude calculation only; provincial rules may assess at spot price, long-term price or a multiplier and must be replaced with the local formula.</p>
 <h3 id="s40">6.3 Deviation management</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Stage</th><th>Action</th><th>Frequency</th></tr></thead><tbody><tr><td>Forecast</td><td>Model by industry, history, weather and maintenance</td><td>Daily / monthly</td></tr><tr><td>Warning</td><td>Notify users when deviation approaches the band</td><td>Daily / weekly</td></tr><tr><td>Adjustment</td><td>Intra-month contract adjustment, transfer, buy-back</td><td>Per rule window</td></tr><tr><td>Allocation</td><td>Pass assessment costs to the responsible party by contract</td><td>Monthly</td></tr><tr><td>Review</td><td>Analyse error sources and fix the model</td><td>Monthly / quarterly</td></tr></tbody></table></div>
@@ -255,7 +265,7 @@ Deviation rate   = Deviation volume / Contracted volume</code></pre>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Dimension</th><th>Scenario</th><th>What to watch</th></tr></thead><tbody><tr><td>Spot price</td><td>+20% / +30% / +50%</td><td>Net profit, break-even point, guarantee usage</td></tr><tr><td>Deviation</td><td>σ = 2% / 4% / 6%</td><td>Assessment cost, whether the tolerance band suffices</td></tr><tr><td>Customer churn</td><td>−10% / −20%</td><td>Fixed-cost dilution, over-coverage</td></tr><tr><td>Guarantee</td><td>Coefficient raised, gap top-up</td><td>Funding cost, trading limits</td></tr><tr><td>Collection</td><td>Arrears of 30 / 60 / 90 days</td><td>Cash-flow gap</td></tr></tbody></table></div>
 <h3 id="s46">7.3 Break-even point and safety margin</h3>
 <p>Portfolio break-even spot multiplier:</p>
-<pre><code>m* = 1 + net profit / (total volume × spot exposure ratio × base spot price)</code></pre>
+<pre tabindex="0"><code>m* = 1 + net profit / (total volume × spot exposure ratio × base spot price)</code></pre>
 <p><code>m* − 1</code> is the percentage by which the spot price can rise. Below it the portfolio still profits; above it, losses begin. A single fixed-price contract's break-even point can be far below the portfolio's, because high-margin customers subsidise low-margin ones.</p>
 <h3 id="s47">7.4 Cash flow</h3>
 <ul><li>Retail collects monthly or per contract while wholesale pays on the 5/8/10 timeline, creating a timing mismatch;</li><li>User arrears directly squeeze guarantees and cash flow;</li><li>Bonds, insurance and cash all consume funds; low-price volume chasing raises both business scale and guarantee demand;</li><li>Stress tests must cover both profit and cash flow, not profit alone.</li></ul>
@@ -269,10 +279,10 @@ Deviation rate   = Deviation volume / Contracted volume</code></pre>
 <ul><li>Quarterly evaluation with dynamic adjustment; results are valid nationwide;</li><li>Credit is not a bank rating, but it directly affects deposits, trading permissions and universal-service eligibility;</li><li>At grade C, fix performance, settlement and disclosure issues; do not wait for D.</li></ul>
 <h3 id="s51">8.2 Performance guarantee: current and draft</h3>
 <p>Current Document 1595:</p>
-<pre><code>Amount = max(wholesale purchases in the past 12 months × 0.8 fen/kWh,
+<pre tabindex="0"><code>Amount = max(wholesale purchases in the past 12 months × 0.8 fen/kWh,
              2 months of maximum purchases × 5 fen/kWh)</code></pre>
 <p>2026-09-04 retail company measures revision (draft):</p>
-<pre><code>Amount = max(2 million CNY, expected annual sales × 1 fen/kWh × adjustment coefficient)
+<pre tabindex="0"><code>Amount = max(2 million CNY, expected annual sales × 1 fen/kWh × adjustment coefficient)
 Adjustment coefficient ∈ [1, 10]</code></pre>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Dimension</th><th>Current 1595</th><th>2026 draft</th></tr></thead><tbody><tr><td>Base</td><td>Historical purchases / short-term peak</td><td>Expected annual sales</td></tr><tr><td>Unit rate</td><td>0.8 fen / 5 fen</td><td>1 fen</td></tr><tr><td>Adjustment</td><td>No coefficient</td><td>Coefficient 1–10</td></tr><tr><td>Minimum</td><td>No unified floor</td><td>2 million CNY</td></tr><tr><td>Monitoring</td><td>Mainly static prepayment</td><td>Daily mark-to-market, top-up on shortfall</td></tr><tr><td>Top-up timing</td><td>Local rules</td><td>1 working day notice, 3 working days payment, 1 working day restore</td></tr></tbody></table></div>
 <h3 id="s52">8.3 Bonds, insurance and cash</h3>
@@ -342,7 +352,7 @@ Adjustment coefficient ∈ [1, 10]</code></pre>
 <h2 id="s76">12. Code Map and Self-Test</h2>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>File</th><th>Purpose</th></tr></thead><tbody><tr><td><code>tools/package.py</code></td><td>Fixed and market-linked quotations, single-customer annual result, break-even spot price</td></tr><tr><td><code>tools/portfolio.py</code></td><td>Portfolio net profit, customer contribution, spot stress, break-even multiplier</td></tr><tr><td><code>tools/deviation.py</code></td><td>Out-of-band volume, assessment cost, expectation and 95% quantile</td></tr><tr><td><code>tools/guarantee.py</code></td><td>Current and draft guarantees, funding cost, gap</td></tr><tr><td><code>tools/curves.py</code></td><td>Synthetic customer curves, spot curve and TOU prices</td></tr><tr><td><code>tools/selftest.py</code></td><td>Locks all worked examples A–H in the text</td></tr></tbody></table></div>
 <p>Run:</p>
-<pre><code>python skills/retail-electricity-risk/tools/selftest.py</code></pre>
+<pre tabindex="0"><code>python skills/retail-electricity-risk/tools/selftest.py</code></pre>
 <p>A green self-test means the text and code agree; when a policy parameter changes, update <code>curves.py</code> or the call parameters first, then sync the numbers in both language versions.</p>
 <hr>
 <h2 id="s77">13. Q&amp;A</h2>
@@ -493,7 +503,9 @@ Adjustment coefficient ∈ [1, 10]</code></pre>
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="Back to top">↑</a>
+<nav class="page-aux" aria-label="Page utilities">
+  <a class="to-top" href="#top" aria-label="Back to top">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

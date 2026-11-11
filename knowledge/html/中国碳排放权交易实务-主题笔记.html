@@ -15,7 +15,7 @@
 </head>
 <body data-cat="carbon" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -123,17 +123,135 @@
 <h2 id="s11">四、核算与MRV（温室气体排放报告）</h2>
 <ul><li>七种温室气体按GWP折算CO2当量，24指南统一用IPCC第二次评估报告值（CH4=21、N2O=310）；核算五原则：相关、完整、一致、准确、透明。</li><li><strong>边界</strong>：独立法人或视同法人（五条件）按运营控制法；排放源四类——化石燃料燃烧、工业生产过程、扣除排放（回收利用/固碳产品）、净购入电力热力。</li><li><strong>量化</strong>：排放因子法（活动水平×排放因子×GWP）与碳质量平衡法（碳输入-输出）×44/12；实测优先于缺省值且须时间序列一致；占比&lt;1%且指南未列明的源可免算。</li><li><strong>2012年区域电网因子（tCO2/MWh）</strong>：华北0.881、东北0.777、华东0.704、华中0.526、西北0.667、南方0.527；热力缺省0.11tCO2/GJ；折标：标煤29.271GJ/t、电力0.1229tce/MWh、热力0.03412tce/GJ。</li><li><strong>行业要点</strong>：发电燃煤低位热值每日实测、碳氧化率缺省98%（无烟煤27.19/烟煤26.18/褐煤27.97 tC/TJ）；水泥按CaO/MgO追踪过程排放、石灰石因子按国内纯度95%-99%本地化修正；钢铁二次能源自产自用按&quot;黑箱&quot;处理、粗钢固碳0.0154tCO2/t；电解铝阳极效应因子由行业协会重测；石化列明8类过程排放装置。</li><li>补充数据表（配额口径）与核算指南（报告口径）双轨并行：前者只算CO2、按机组/工序边界、排除过程排放与固碳扣除等，两套数据不可互替。</li></ul>
 <h2 id="s12">五、核查实操</h2>
-<ul><li>三阶段八步：签协议→核查准备→文件评审→现场核查→报告编制→内部技术评审→交付→记录保存（至少10年）。</li><li><strong>组织</strong>：核查组≥2人（组长+专业核查员）；人天参考文审2-6、现场1-6（石化最重）、报告4-10、内审1-2；现场前5个工作日发送计划。</li><li><strong>抽样</strong>：相似场所按总数平方根取整、与上年重复≤50%；单设施排放&lt;总量5%可抽样、月度数据交叉核对≥30%（北京经验）；发现不符合扩样至20%再至80%-100%。</li><li><strong>三类必开不符合项</strong>：核算方法不符准则；边界/设施/数据与实际不一致；证据不充分或计算错误；历年排放波动超20%或5000tCO2判异常；全部关闭方可出肯定结论，报告须给出指南与补充数据两个口径的排放量声明。</li><li><strong>高频错误</strong>：算术平均替代加权平均、固定碳替代元素碳、有实测仍用缺省值、漏报非常规燃料、体积当质量、未折标套用标准产品因子、自产自用二次能源重复计入。</li><li>七大案例（钢铁/电力/水泥/造纸/电石/铜压延/机场）：不符项铜压延0、电石1、电力/造纸/机场各2、钢铁5、水泥6；核证量示例——钢铁637.6万tCO2、水泥约66.1万t、造纸36.79万t。</li><li>试点核查管理：机构数深28/京22/渝11/沪10；深企业自费、沪2015年起自费、余多政府出资；深随机抽查≥10%。</li></ul>
+<ul><li class="list-figure"><figure class="flow-diagram" aria-label="核查：三阶段八步">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">核查流程 · PROCESS</span>
+        <span class="diagram-meta">8 个步骤</span>
+      </span>
+      <span class="diagram-title">核查：三阶段八步</span>
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">签协议</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">核查准备</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">文件评审</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">04</span>
+      <span class="flow-text">现场核查</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">05</span>
+      <span class="flow-text">报告编制</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">06</span>
+      <span class="flow-text">内部技术评审</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">07</span>
+      <span class="flow-text">交付</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">08</span>
+      <span class="flow-text">记录保存（至少10年）</span>
+
+    </li></ol>
+
+  </figure></li><li><strong>组织</strong>：核查组≥2人（组长+专业核查员）；人天参考文审2-6、现场1-6（石化最重）、报告4-10、内审1-2；现场前5个工作日发送计划。</li><li><strong>抽样</strong>：相似场所按总数平方根取整、与上年重复≤50%；单设施排放&lt;总量5%可抽样、月度数据交叉核对≥30%（北京经验）；发现不符合扩样至20%再至80%-100%。</li><li><strong>三类必开不符合项</strong>：核算方法不符准则；边界/设施/数据与实际不一致；证据不充分或计算错误；历年排放波动超20%或5000tCO2判异常；全部关闭方可出肯定结论，报告须给出指南与补充数据两个口径的排放量声明。</li><li><strong>高频错误</strong>：算术平均替代加权平均、固定碳替代元素碳、有实测仍用缺省值、漏报非常规燃料、体积当质量、未折标套用标准产品因子、自产自用二次能源重复计入。</li><li>七大案例（钢铁/电力/水泥/造纸/电石/铜压延/机场）：不符项铜压延0、电石1、电力/造纸/机场各2、钢铁5、水泥6；核证量示例——钢铁637.6万tCO2、水泥约66.1万t、造纸36.79万t。</li><li>试点核查管理：机构数深28/京22/渝11/沪10；深企业自费、沪2015年起自费、余多政府出资；深随机抽查≥10%。</li></ul>
 <h2 id="s13">六、CCER项目开发</h2>
 <h3 id="s14">制度与市场</h3>
 <ul><li><strong>CCER</strong>：按《温室气体自愿减排交易管理暂行办法》（2012.6，6种气体）经国家发改委备案并在国家登记簿登记的自愿减排量；1吨CCER抵1吨配额清缴；登记簿2015.1.14上线、开户免费。</li><li><strong>项目四类资格（2005.2.16后开工）</strong>：①备案方法学新开发；②CDM批准未在EB注册；③EB注册前已产生减排量；④EB注册未签发；第四类因CDM退出机制未落地而零备案，京/沪/粤禁第三类用于履约。</li><li><strong>支撑体系</strong>：8批192个方法学（CDM转化174+新开发18；常规104/小型83/林业碳汇5）；10家审定核证机构（CQC、赛宝、中环联合业绩居前）；8家备案交易所（四川联合环境所为唯一非试点）。</li><li><strong>项目数据</strong>：审定公示2114个、项目备案654个、减排量备案149个（至2016.6.14）；签发2710.42万吨（至2016.4.12），前五省贵州419.06万吨领衔；类型占比水电33.82%、风电19.78%、天然气14.10%、废能回收14.06%；至2015年底累计成交约3300万吨、交易额3-4亿元。</li><li><strong>2015年格局</strong>：沪占74.1%（月均280万吨以上、年终挂牌约15元/t、试点累计2961.5万吨居首、挂牌价区间10-26元）；京512.5万吨/2472.2万元、线上均价21.53元/t、95%以上销往外地（累计563.8万吨）；粤179/津124.8/鄂90.2/深31.9万吨，渝为零。</li><li><strong>高频方法学约10个</strong>：CM-001并网可再生能源、CMS-002、垃圾处理CM-072/填埋气CM-077、生物质CM-070/CM-092、废能回收CM-005、户用沼气CMS-026、煤层气CM-003、碳汇造林AR-CM-001。</li></ul>
 <h3 id="s15">流程、周期与成本</h3>
-<ul><li><strong>七步</strong>：项目设计（PDD）→审定→备案→监测→核查核证→减排量备案→交易；审定公示14天（CDM转化7天）、专家评估与主管部门审查各≤30个工作日；43家央企可直接报国家发改委。</li><li><strong>周期</strong>：项目备案约70-120天、减排量备案约80-120天，全流程约5-8个月；审定拖延超2年备案风险大增；计入期可更新7年×3（最长21年）或固定10年。</li><li><strong>费用四类</strong>：咨询费、审定费、核证费、备案后成功费；合作三模式——纯咨询、收益共享（咨询方全担成本、分成较高）、风险共担（阶段费+分成）。</li><li><strong>案例要点</strong>：垃圾焚烧（CM-072、年减排62917t，需证明填埋气法规未被遵从以立基准线）；新疆风电（CM-001、49.5MW、首期申报78770t）；新疆光伏（20.304MW、13218t）；江苏天然气热电联产（CM-038、基准线用投资比较分析、热电比决定减排量）；河南生物质热电（CM-075、第三类CDM转化、补充计入期减排量2015.12.23备案）。</li></ul>
+<ul><li class="list-figure"><figure class="flow-diagram" aria-label="CCER 项目：七步">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">项目流程 · PROCESS</span>
+        <span class="diagram-meta">7 个步骤</span>
+      </span>
+      <span class="diagram-title">CCER 项目：七步</span>
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">项目设计（PDD）</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">审定</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">备案</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">04</span>
+      <span class="flow-text">监测</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">05</span>
+      <span class="flow-text">核查核证</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">06</span>
+      <span class="flow-text">减排量备案</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">07</span>
+      <span class="flow-text">交易</span>
+
+    </li></ol>
+    <div class="flow-note"><span class="flow-note-item">审定公示14天（CDM转化7天）、专家评估与主管部门审查各≤30个工作日</span><span class="flow-note-item">43家央企可直接报国家发改委。</span></div>
+  </figure></li><li><strong>周期</strong>：项目备案约70-120天、减排量备案约80-120天，全流程约5-8个月；审定拖延超2年备案风险大增；计入期可更新7年×3（最长21年）或固定10年。</li><li><strong>费用四类</strong>：咨询费、审定费、核证费、备案后成功费；合作三模式——纯咨询、收益共享（咨询方全担成本、分成较高）、风险共担（阶段费+分成）。</li><li><strong>案例要点</strong>：垃圾焚烧（CM-072、年减排62917t，需证明填埋气法规未被遵从以立基准线）；新疆风电（CM-001、49.5MW、首期申报78770t）；新疆光伏（20.304MW、13218t）；江苏天然气热电联产（CM-038、基准线用投资比较分析、热电比决定减排量）；河南生物质热电（CM-075、第三类CDM转化、补充计入期减排量2015.12.23备案）。</li></ul>
 <h2 id="s16">七、碳资产管理与碳金融</h2>
 <h3 id="s17">管理体系</h3>
 <ul><li>碳资产=配额碳资产+减排碳资产；重点单位管理七件套：低碳领导小组、碳盘查（ISO 14064-1/GHG Protocol、至少年度）、减排潜力与成本分析、内部节能（GB/T 23331）、碳资产投资管理、交易管理、内控体系（VAR+压力测试+分级授权）。</li><li>履约三义务：监测计划报省级备案；年度排放报告经核查后提交；清缴不少于经确认排放量的配额（可用CCER抵消）。</li><li><strong>交易策略</strong>：按历年与年度排放预测判断盈缺，低买高卖、分批操作；反例——履约前抢购使碳价从50-60元/t抬升至75-80元/t。</li></ul>
 <h3 id="s18">披露与碳中和</h3>
-<ul><li>CDP（2000年由伦敦35家机构发起）问卷四模块：低碳战略、碳核算、碳管理、全球治理；中国参与度低，2015年仅9家公司完成披露。</li><li>PAS 2060（BSI 2010）碳中和七步：定标的→量化碳足迹→承诺声明→实施减排→重新量化→抵消剩余→实现声明；案例：汇丰2005年成首家碳中和国际银行；上海济丰2011年购2万余吨水电CCER（内地首单PAS2060交易）；2016绿公司年会144tCO2e以58亩碳汇林10年中和。</li></ul>
+<ul><li>CDP（2000年由伦敦35家机构发起）问卷四模块：低碳战略、碳核算、碳管理、全球治理；中国参与度低，2015年仅9家公司完成披露。</li><li class="list-figure"><figure class="flow-diagram" aria-label="PAS 2060：碳中和七步">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">碳中和路径 · PATHWAY</span>
+        <span class="diagram-meta">7 个步骤</span>
+      </span>
+      <span class="diagram-title">PAS 2060：碳中和七步</span>
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">定标的</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">量化碳足迹</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">承诺声明</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">04</span>
+      <span class="flow-text">实施减排</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">05</span>
+      <span class="flow-text">重新量化</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">06</span>
+      <span class="flow-text">抵消剩余</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">07</span>
+      <span class="flow-text">实现声明</span>
+
+    </li></ol>
+    <div class="flow-note"><span class="flow-note-item">案例：汇丰2005年成首家碳中和国际银行</span><span class="flow-note-item">上海济丰2011年购2万余吨水电CCER（内地首单PAS2060交易）</span><span class="flow-note-item">2016绿公司年会144tCO2e以58亩碳汇林10年中和。</span></div>
+  </figure></li></ul>
 <h3 id="s19">碳金融产品与案例</h3>
 <ul><li><strong>三层体系</strong>：现货（配额/CCER）→衍生品（远期、期货、期权、掉期）→创新产品（基金、债券、质押抵押、信托、绿色信贷）；衍生品四大功能：价格发现、风险管理（核心）、资产配置、盘活碳资产。</li><li><strong>融资类</strong>：中广核风电附加碳收益中票10亿元/5年（固定5.65%+浮动5-20BP，2014.5，银行间首单）；富能新能源以配额质押获南粤银行5000万元（首单单一配额质押）；妈湾电力×BP跨境碳资产回购100万吨配额（试点三年最大单笔；深圳2014年获批境外投资者参与、不限额度币种）；广碳所法人账户透支（一年期循环额度）。</li><li><strong>风险管理类</strong>：国内首笔碳场外掉期1万吨（中信证券2015.6，固定价对结算日前20个交易日均价做差价结算、北交所监管保证金）；担保型CCER碳远期（&quot;碳保宝&quot;担保交付、标的年减排30万吨）。</li><li><strong>收益与流动类</strong>：华能×诺安碳基金3000万元（首支备案，武汉）；深能源200万吨配额托管（收益按42元/t×LPR5.1%上浮10%、32天31万元）；上海借碳（保证金30%、所借配额不得质押或履约）；兴业深圳绿色结构性存款（首单）；CCER碳众筹20万元（湖北红安11740户户用沼气、计划开发23万吨、助农增收约300万元）。</li></ul>
 <h2 id="s20">速查：关键数字与规则</h2>
@@ -215,7 +333,9 @@
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

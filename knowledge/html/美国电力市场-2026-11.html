@@ -15,7 +15,7 @@
 </head>
 <body data-cat="intl" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -116,23 +116,97 @@
 <hr>
 <h2 id="s1">0. 一页看懂</h2>
 <h3 id="s2">0.1 三市场全景</h3>
-<pre><code>美国电力市场（三个代表）
-├─ ERCOT（得州，州内系统）
-│  ├─ 能量-only：日前（小时）+ 实时 SCED（5 分钟）
-│  ├─ 结算：15 分钟结算间隔（4 个/小时），不是 5 分钟
-│  ├─ 稀缺定价：ORDC + HCAP 5,000 / LCAP 2,000 美元/MWh
-│  ├─ 辅助服务：Reg Up/Down、RRS、Non-Spin、ECRS
-│  └─ 无容量市场；大负荷并网与 RTC+B 是 2026 年主线
-├─ PJM（容量市场）
-│  ├─ 能量：日前 + 实时；辅助：调频、同步备用、DASR
-│  ├─ 容量：BRA 提前拍卖，容量性能考核，FRR 可选
-│  ├─ 2028/29 BRA：325 美元/MW-day 触顶，缺口 6.8 GW
-│  └─ 共址、大负荷与并网改革是 2026 年主线
-└─ CAISO（日前 + 实时 + 西部市场）
-   ├─ 日前（小时）+ FMM（15 分钟）+ RTD（5 分钟）
-   ├─ 灵活性爬坡 FRP；资源充裕度 RA 小时切片
-   ├─ EDAM 2026-05-01 投运；WEIM 早已运行
-   └─ 储能 &gt;21 GW；负价与弃电是常态变量</code></pre>
+<figure class="tree-diagram" aria-label="美国电力市场（三个代表）结构图">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构图 · STRUCTURE</span>
+        <span class="diagram-meta">3 个一级分支</span>
+      </span>
+      <span class="tree-root-title">美国电力市场（三个代表）</span>
+
+    </figcaption>
+    <div class="tree-grid"><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">01</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">ERCOT（得州，州内系统）</span>
+
+      </span>
+    </div>
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">能量-only</span>
+    <span class="tree-child-detail">日前（小时）+ 实时 SCED（5 分钟）</span>
+
+  </li><li>
+    <span class="tree-child-title">结算</span>
+    <span class="tree-child-detail">15 分钟结算间隔（4 个/小时），不是 5 分钟</span>
+
+  </li><li>
+    <span class="tree-child-title">稀缺定价</span>
+    <span class="tree-child-detail">ORDC + HCAP 5,000 / LCAP 2,000 美元/MWh</span>
+
+  </li><li>
+    <span class="tree-child-title">辅助服务</span>
+    <span class="tree-child-detail">Reg Up/Down、RRS、Non-Spin、ECRS</span>
+
+  </li><li>
+    <span class="tree-child-title">无容量市场；大负荷并网与 RTC+B 是 2026 年主线</span>
+
+
+  </li></ul>
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">02</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">PJM（容量市场）</span>
+
+      </span>
+    </div>
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">能量</span>
+    <span class="tree-child-detail">日前 + 实时；辅助：调频、同步备用、DASR</span>
+
+  </li><li>
+    <span class="tree-child-title">容量</span>
+    <span class="tree-child-detail">BRA 提前拍卖，容量性能考核，FRR 可选</span>
+
+  </li><li>
+    <span class="tree-child-title">2028/29 BRA</span>
+    <span class="tree-child-detail">325 美元/MW-day 触顶，缺口 6.8 GW</span>
+
+  </li><li>
+    <span class="tree-child-title">共址、大负荷与并网改革是 2026 年主线</span>
+
+
+  </li></ul>
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">03</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">CAISO（日前 + 实时 + 西部市场）</span>
+
+      </span>
+    </div>
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">日前（小时）+ FMM（15 分钟）+ RTD（5 分钟）</span>
+
+
+  </li><li>
+    <span class="tree-child-title">灵活性爬坡 FRP；资源充裕度 RA 小时切片</span>
+
+
+  </li><li>
+    <span class="tree-child-title">EDAM 2026-05-01 投运；WEIM 早已运行</span>
+
+
+  </li><li>
+    <span class="tree-child-title">储能 &gt;21 GW；负价与弃电是常态变量</span>
+
+
+  </li></ul>
+  </article></div>
+
+  </figure>
 <h3 id="s3">0.2 关键数字</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>市场</th><th>项目</th><th>数字</th><th>时点</th><th>级别</th></tr></thead><tbody><tr><td>ERCOT</td><td>在运电池</td><td>15,008 MW</td><td>2025-09</td><td>B</td></tr><tr><td>ERCOT</td><td>单日最大电池放电</td><td>7,741 MW</td><td>2025-09-11</td><td>B</td></tr><tr><td>ERCOT</td><td>价格上限 HCAP / LCAP</td><td>5,000 / 2,000 美元/MWh</td><td>2026 现行</td><td>A</td></tr><tr><td>ERCOT</td><td>RTC+B 首个运行日</td><td>2025-12-05</td><td>2025-12</td><td>A</td></tr><tr><td>ERCOT</td><td>大负荷并网申请</td><td>约 474 GW，&gt;90% 数据中心</td><td>2026-08</td><td>C</td></tr><tr><td>PJM</td><td>2028/29 BRA 出清价</td><td>325 美元/MW-day（触顶）</td><td>2026-07-14</td><td>A</td></tr><tr><td>PJM</td><td>2028/29 清算量 / 需求</td><td>152,083.4 / 156,013 MW</td><td>2026-07-14</td><td>A</td></tr><tr><td>PJM</td><td>2028/29 缺口</td><td>6,831 MW；备用率 14.7%</td><td>2026-07-14</td><td>A</td></tr><tr><td>PJM</td><td>4 小时电池 ELCC</td><td>50%</td><td>2026-02</td><td>B</td></tr><tr><td>CAISO</td><td>在运储能</td><td>&gt;21,000 MW</td><td>2026-08</td><td>A（CEC 转引）</td></tr><tr><td>CAISO</td><td>EDAM 投运</td><td>2026-05-01</td><td>2026-05</td><td>A</td></tr><tr><td>全美</td><td>电池装机</td><td>2025 年底 43.6 GW；2026-06 约 52 GW</td><td>2026-08</td><td>A</td></tr></tbody></table></div>
 <aside class="note"><p>负电价小时数、ERCOT 2026 年在运电池 MW/MWh、PJM 在运储能 MW 三项没有取得同口径官方数，正文标注“待复核”，不用于精确回测。</p></aside>
@@ -220,7 +294,55 @@
 <h3 id="s41">7.2 股权与合规</h3>
 <ul><li><strong>股权隔离</strong>：项目公司层面控制权与治理权分离，避免触发 CFIUS；具体比例与控制权安排按个案判断。</li><li><strong>供应链</strong>：电芯、PCS、BMS 的来源与材料成本比要可审计；FEOC 规则按开工时点适用。</li><li><strong>税务</strong>：ITC 通过 tax equity 或直接抵免实现；税务合伙人、折旧与被动亏损规则复杂，需本地税务顾问。</li><li><strong>并网</strong>：并网协议、可靠性责任、辅助服务资格与容量市场注册是四套流程，不能相互替代。</li></ul>
 <h3 id="s42">7.3 开发顺序</h3>
-<ol><li><strong>选址与许可</strong>：州/县许可、消防、环境、社区关系。</li><li><strong>并网申请</strong>：ERCOT/PJM/CAISO 队列，预留 2–4 年。</li><li><strong>供应链与合规</strong>：电芯来源、FEOC 成本比、UL 9540A/NFPA 855、行政令。</li><li><strong>收入合同</strong>：PJM 容量、CAISO RA、ERCOT 双边/套利；必要时做 tolling。</li><li><strong>融资与税务</strong>：tax equity、债务、保险；把 ITC 与 FEOC 风险写进模型。</li></ol>
+<figure class="milestone-diagram" aria-label="市场进入路径">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">进入路径 · ROADMAP</span>
+        <span class="diagram-meta">5 个步骤</span>
+      </span>
+    </figcaption>
+    <ol class="milestone-list"><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">01</span>
+      <div class="milestone-card">
+        <span class="milestone-title"><strong>选址与许可</strong></span>
+        <span class="milestone-detail">州/县许可、消防、环境、社区关系。</span>
+
+
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">02</span>
+      <div class="milestone-card">
+        <span class="milestone-title"><strong>并网申请</strong></span>
+        <span class="milestone-detail">ERCOT/PJM/CAISO 队列，预留 2–4 年。</span>
+
+
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">03</span>
+      <div class="milestone-card">
+        <span class="milestone-title"><strong>供应链与合规</strong></span>
+        <span class="milestone-detail">电芯来源、FEOC 成本比、UL 9540A/NFPA 855、行政令。</span>
+
+
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">04</span>
+      <div class="milestone-card">
+        <span class="milestone-title"><strong>收入合同</strong></span>
+        <span class="milestone-detail">PJM 容量、CAISO RA、ERCOT 双边/套利；必要时做 tolling。</span>
+
+
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">05</span>
+      <div class="milestone-card">
+        <span class="milestone-title"><strong>融资与税务</strong></span>
+        <span class="milestone-detail">tax equity、债务、保险；把 ITC 与 FEOC 风险写进模型。</span>
+
+
+      </div>
+    </li></ol>
+  </figure>
 <h3 id="s43">7.4 风险清单</h3>
 <ul><li>并网延期、并网成本分摊、输电升级。</li><li>关税与 FEOC 规则变化、行政令追溯。</li><li>容量价格触顶但新建不足，项目收益不达预期。</li><li>数据中心负荷增长带来并网竞争与地方政治风险。</li><li>消防与保险：LSFT、地方 AHJ、保险公司条款。</li></ul>
 <hr>
@@ -364,7 +486,9 @@
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

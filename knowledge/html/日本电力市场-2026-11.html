@@ -15,7 +15,7 @@
 </head>
 <body data-cat="intl" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -118,14 +118,81 @@
 <hr>
 <h2 id="s1">0. 一页看懂</h2>
 <h3 id="s2">0.1 市场全景</h3>
-<pre><code>日本电力市场
-├─ 现货：JEPX 日前 48 个 30 分钟商品（10:00 截止）
-├─ 不平衡：30 分钟结算；C/D 值 2026-10 上调
-├─ 容量：容量市场（提前 4 年、单一价、1 年契约）
-├─ 平衡：需给调整市场 EPRX（ΔkW + kWh，5 类商品 + 复合）
-├─ 长期支持：LTDA（20 年容量收入、pay-as-bid、90% 还付）
-├─ 补贴：FIT/FIP、非化石证书、SII 系统用电池补贴
-└─ 电网：10 个区域 + OCCTO 广域运用；接续检讨排队</code></pre>
+<figure class="tree-diagram" aria-label="日本电力市场结构图">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构图 · STRUCTURE</span>
+        <span class="diagram-meta">7 个一级分支</span>
+      </span>
+      <span class="tree-root-title">日本电力市场</span>
+
+    </figcaption>
+    <div class="tree-grid"><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">01</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">现货</span>
+        <span class="tree-node-detail">JEPX 日前 48 个 30 分钟商品（10:00 截止）</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">02</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">不平衡</span>
+        <span class="tree-node-detail">30 分钟结算；C/D 值 2026-10 上调</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">03</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">容量</span>
+        <span class="tree-node-detail">容量市场（提前 4 年、单一价、1 年契约）</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">04</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">平衡</span>
+        <span class="tree-node-detail">需给调整市场 EPRX（ΔkW + kWh，5 类商品 + 复合）</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">05</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">长期支持</span>
+        <span class="tree-node-detail">LTDA（20 年容量收入、pay-as-bid、90% 还付）</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">06</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">补贴</span>
+        <span class="tree-node-detail">FIT/FIP、非化石证书、SII 系统用电池补贴</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">07</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">电网</span>
+        <span class="tree-node-detail">10 个区域 + OCCTO 广域运用；接续检讨排队</span>
+      </span>
+    </div>
+
+  </article></div>
+
+  </figure>
 <h3 id="s3">0.2 关键数字</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>数字</th><th>时点</th><th>级别</th></tr></thead><tbody><tr><td>JEPX 现货商品</td><td>48 个 30 分钟商品</td><td>2026 现行</td><td>A</td></tr><tr><td>JEPX 价格下限</td><td>0.01 日元/kWh（无负电价）</td><td>2026 现行</td><td>A</td></tr><tr><td>FY2025 系统价均值</td><td>11.06 日元/kWh</td><td>2026-04</td><td>C</td></tr><tr><td>容量市场第 5 回（FY2028）</td><td>11,134 日元/kW；166.21 GW</td><td>2026-02-20</td><td>A</td></tr><tr><td>容量市场第 6 回（FY2029）</td><td>13,303 日元/kW；166.08 GW</td><td>2026</td><td>A</td></tr><tr><td>EPRX 商品</td><td>5 类 + 复合</td><td>2026 现行</td><td>A</td></tr><tr><td>EPRX 上限（2026-09 起）</td><td>10.00 日元/ΔkW·30 分</td><td>2026-09-01</td><td>C</td></tr><tr><td>LTDA 第 3 回电池</td><td>1,251 MW / 19 件</td><td>2026-05-13</td><td>C</td></tr><tr><td>接续检讨申请</td><td>24,880 件（FY2025）</td><td>2026-10</td><td>C</td></tr><tr><td>2040 再生能源目标</td><td>40–50%</td><td>2025-02-18</td><td>A</td></tr></tbody></table></div>
 <aside class="note"><p>日本现货<strong>没有负电价</strong>（下限 0.01 日元/kWh），这是与欧洲市场最大的建模差异；现货价格上限存在 100 与 200 日元/kWh 两种说法，规程原文待复核。</p></aside>
@@ -216,7 +283,55 @@
 <h3 id="s42">9.3 设备与合规</h3>
 <ul><li><strong>认证</strong>：并网设备需满足电网代码与接网契约；储能系统安全、消防与运输要求按日本法规。</li><li><strong>供应链</strong>：本地集成商/EPC 常见；电芯与 PCS 的溯源、保修与保险条款要提前确认。</li><li><strong>税务</strong>：法人税、消费税、折旧与地方税；跨境资金安排需本地税务顾问。</li></ul>
 <h3 id="s43">9.4 落地顺序</h3>
-<ol><li><strong>选址与接续检讨</strong>：尽早排队；注意件数上限。</li><li><strong>主体与备案</strong>：发电事业备案、平衡责任、JEPX/EPRX 注册。</li><li><strong>收入合同</strong>：容量市场/LTDA/EPRX；必要时签 PPA/tolling。</li><li><strong>设备与并网</strong>：电网代码、认证、消防、通信。</li><li><strong>融资与保险</strong>：LTDA 合同可提升可融资性；还付条款要进模型。</li></ol>
+<figure class="milestone-diagram" aria-label="市场进入路径">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">进入路径 · ROADMAP</span>
+        <span class="diagram-meta">5 个步骤</span>
+      </span>
+    </figcaption>
+    <ol class="milestone-list"><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">01</span>
+      <div class="milestone-card">
+        <span class="milestone-title"><strong>选址与接续检讨</strong></span>
+        <span class="milestone-detail">尽早排队；注意件数上限。</span>
+
+
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">02</span>
+      <div class="milestone-card">
+        <span class="milestone-title"><strong>主体与备案</strong></span>
+        <span class="milestone-detail">发电事业备案、平衡责任、JEPX/EPRX 注册。</span>
+
+
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">03</span>
+      <div class="milestone-card">
+        <span class="milestone-title"><strong>收入合同</strong></span>
+        <span class="milestone-detail">容量市场/LTDA/EPRX；必要时签 PPA/tolling。</span>
+
+
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">04</span>
+      <div class="milestone-card">
+        <span class="milestone-title"><strong>设备与并网</strong></span>
+        <span class="milestone-detail">电网代码、认证、消防、通信。</span>
+
+
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">05</span>
+      <div class="milestone-card">
+        <span class="milestone-title"><strong>融资与保险</strong></span>
+        <span class="milestone-detail">LTDA 合同可提升可融资性；还付条款要进模型。</span>
+
+
+      </div>
+    </li></ol>
+  </figure>
 <hr>
 <h2 id="s44">10. 十个常见坑</h2>
 <ol><li><strong>套用欧洲负电价模型</strong>：日本现货下限 0.01 日元/kWh，没有负价；会高估充电收益。</li><li><strong>把现货上限锁死</strong>：100 与 200 日元/kWh 两种说法未在规程原文复核，极端情景要留区间。</li><li><strong>低估不平衡成本</strong>：2026-10 起 C 值 300 日元/kWh，预测误差直接吃掉价差。</li><li><strong>囤接续检讨位</strong>：2026-08-01 起同一事业者件数上限，东京 11、关西 12、九州 8。</li><li><strong>用 4 小时项目投 LTDA</strong>：第 3 回起 &lt;6 小时电池出局。</li><li><strong>把容量市场单次价格外推</strong>：3,109→13,303 日元/kW 波动巨大。</li><li><strong>只算 EPRX 收入</strong>：上限从 19.51 降到 10.00 日元/ΔkW·30 分，单靠 ΔkW 不成立。</li><li><strong>把 LTDA 收入与其他市场收入简单相加</strong>：约 90% 还付条款会扣减。</li><li><strong>忽视外为法审查</strong>：核心行业事前届报 30 日–5 个月，影响交割与并网。</li><li><strong>按小时建模</strong>：现货与不平衡都是 30 分钟，SOC 与偏差要按 30 分钟。</li></ol>
@@ -358,7 +473,9 @@
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

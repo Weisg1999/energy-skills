@@ -15,7 +15,7 @@
 </head>
 <body data-cat="intl" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -208,7 +208,71 @@
 <h3 id="s35">7.2 绿证与存量项目</h3>
 <ul><li><strong>绿证（TGC）</strong>：波兰有商品绿证（PMOZE_A 等）与property rights market；存量项目可能仍靠绿证，新增项目主要通过 OZE 拍卖。</li><li><strong>绿证价格波动大</strong>：供需、政策、履约需求都会影响价格；不要把绿证价格当固定收入。</li><li><strong>OZE 拍卖与绿证不重复</strong>：同一电量不能同时拿拍卖差价和绿证；具体以 OZE 法为准。</li></ul>
 <h3 id="s36">7.3 并网流程</h3>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>步骤</th><th>内容</th><th>风险</th></tr></thead><tbody><tr><td>1. 接入申请</td><td>向 PSE/OSD 申请接入容量</td><td>排队、容量不足、约束</td></tr><tr><td>2. 并网条件</td><td>PSE/OSD 出具 warunki przyłączenia</td><td>有效期、技术条件、保证金</td></tr><tr><td>3. 并网协议</td><td>签订 umowa o przyłączenie</td><td>工期、限出力、责任</td></tr><tr><td>4. 输电/配电服务</td><td>签订服务合同</td><td>费率、计量、平衡责任</td></tr><tr><td>5. 建设/调试</td><td>设备、测试、验收</td><td>设备交付、调试延期</td></tr><tr><td>6. 市场注册</td><td>TGE/PSE/POB/DUB</td><td>材料不全、担保不足</td></tr><tr><td>7. 投运</td><td>计量、结算、考核</td><td>数据错误、履约失败</td></tr></tbody></table></div>
+<figure class="milestone-diagram" aria-label="并网流程">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">并网流程 · MILESTONES</span>
+        <span class="diagram-meta">7 个步骤</span>
+      </span>
+    </figcaption>
+    <ol class="milestone-list"><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">01</span>
+      <div class="milestone-card">
+        <span class="milestone-title">接入申请</span>
+        <span class="milestone-detail">向 PSE/OSD 申请接入容量</span>
+
+        <div class="milestone-meta" data-meta="风险"><span class="milestone-meta-label">风险</span><span>排队、容量不足、约束</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">02</span>
+      <div class="milestone-card">
+        <span class="milestone-title">并网条件</span>
+        <span class="milestone-detail">PSE/OSD 出具 warunki przyłączenia</span>
+
+        <div class="milestone-meta" data-meta="风险"><span class="milestone-meta-label">风险</span><span>有效期、技术条件、保证金</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">03</span>
+      <div class="milestone-card">
+        <span class="milestone-title">并网协议</span>
+        <span class="milestone-detail">签订 umowa o przyłączenie</span>
+
+        <div class="milestone-meta" data-meta="风险"><span class="milestone-meta-label">风险</span><span>工期、限出力、责任</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">04</span>
+      <div class="milestone-card">
+        <span class="milestone-title">输电/配电服务</span>
+        <span class="milestone-detail">签订服务合同</span>
+
+        <div class="milestone-meta" data-meta="风险"><span class="milestone-meta-label">风险</span><span>费率、计量、平衡责任</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">05</span>
+      <div class="milestone-card">
+        <span class="milestone-title">建设/调试</span>
+        <span class="milestone-detail">设备、测试、验收</span>
+
+        <div class="milestone-meta" data-meta="风险"><span class="milestone-meta-label">风险</span><span>设备交付、调试延期</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">06</span>
+      <div class="milestone-card">
+        <span class="milestone-title">市场注册</span>
+        <span class="milestone-detail">TGE/PSE/POB/DUB</span>
+
+        <div class="milestone-meta" data-meta="风险"><span class="milestone-meta-label">风险</span><span>材料不全、担保不足</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">07</span>
+      <div class="milestone-card">
+        <span class="milestone-title">投运</span>
+        <span class="milestone-detail">计量、结算、考核</span>
+
+        <div class="milestone-meta" data-meta="风险"><span class="milestone-meta-label">风险</span><span>数据错误、履约失败</span></div>
+      </div>
+    </li></ol>
+  </figure>
 <ul><li><strong>并网条件是硬门槛</strong>：波兰并网排队严重，PSE/OSD 的接入容量、并网条件有效期、保证金要求会直接影响项目能否落地；具体规则近年多次调整，以 PSE/OSD 最新文件为准（B 级）。</li><li><strong>共址/共用并网</strong>：光伏+储能、风电+储能可以共用并网点，但计量、容量分配、并网条件和容量市场资格要分别处理；不要假设“共址自动共享容量”。</li><li><strong>配电网与输电网不同</strong>：大储通常接 PSE 输电网络，工商储接 OSD 配电网；并网流程、费率、平衡责任不同。</li></ul>
 <h3 id="s37">7.4 可再生与储能的组合</h3>
 <ul><li><strong>光伏 + 储能</strong>：共享并网点、降低限电、把午间负价电量搬到晚高峰；但要注意“共址”计量与并网容量分配。</li><li><strong>风电 + 储能</strong>：平滑出力、提供备用；收益依赖风速与价差。</li><li><strong>独立储能</strong>：容量市场 + 能量套利 + 辅助服务 + 补贴；选址看并网容量和价差。</li><li><strong>PPA/tolling</strong>：储能可以通过长期合同锁定部分收入，降低 merchant 风险；但波兰 PPAs 的对手方信用和合同结构要仔细评估。</li></ul>
@@ -225,7 +289,95 @@
 <hr>
 <h2 id="s42">9. 中国主体进入路径</h2>
 <h3 id="s43">9.1 主体与注册</h3>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>步骤</th><th>内容</th><th>备注</th></tr></thead><tbody><tr><td>1. 设立主体</td><td>波兰公司/分支机构</td><td>税务、银行、合同签署</td></tr><tr><td>2. 发电/交易许可</td><td>向 Prezes URE 申请 koncesja</td><td>具体豁免情形以能源法/URE 解释为准</td></tr><tr><td>3. 并网/接入</td><td>向 PSE/OSD 申请</td><td>容量、排队、并网条件</td></tr><tr><td>4. 市场注册</td><td>TGE 会员/IRGiT 清算</td><td>日前/日内交易资格</td></tr><tr><td>5. 平衡责任</td><td>PSE 注册 POB 或委托 POB</td><td>偏差结算</td></tr><tr><td>6. 辅助服务预审</td><td>PSE 技术测试</td><td>通信、控制、计量</td></tr><tr><td>7. 容量市场注册</td><td>PSE/URE 资格</td><td>容量合同、可用性义务</td></tr><tr><td>8. 担保/信用</td><td>TGE/IRGiT/PSE 要求</td><td>银行担保/现金</td></tr><tr><td>9. REMIT 报送</td><td>欧盟 REMIT</td><td>交易与基本面信息</td></tr><tr><td>10. 运营</td><td>交易、计量、结算、合规</td><td>本地团队/合作伙伴</td></tr></tbody></table></div>
+<figure class="milestone-diagram" aria-label="市场进入路径">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">进入路径 · ROADMAP</span>
+        <span class="diagram-meta">10 个步骤</span>
+      </span>
+    </figcaption>
+    <ol class="milestone-list"><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">01</span>
+      <div class="milestone-card">
+        <span class="milestone-title">设立主体</span>
+        <span class="milestone-detail">波兰公司/分支机构</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>税务、银行、合同签署</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">02</span>
+      <div class="milestone-card">
+        <span class="milestone-title">发电/交易许可</span>
+        <span class="milestone-detail">向 Prezes URE 申请 koncesja</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>具体豁免情形以能源法/URE 解释为准</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">03</span>
+      <div class="milestone-card">
+        <span class="milestone-title">并网/接入</span>
+        <span class="milestone-detail">向 PSE/OSD 申请</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>容量、排队、并网条件</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">04</span>
+      <div class="milestone-card">
+        <span class="milestone-title">市场注册</span>
+        <span class="milestone-detail">TGE 会员/IRGiT 清算</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>日前/日内交易资格</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">05</span>
+      <div class="milestone-card">
+        <span class="milestone-title">平衡责任</span>
+        <span class="milestone-detail">PSE 注册 POB 或委托 POB</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>偏差结算</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">06</span>
+      <div class="milestone-card">
+        <span class="milestone-title">辅助服务预审</span>
+        <span class="milestone-detail">PSE 技术测试</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>通信、控制、计量</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">07</span>
+      <div class="milestone-card">
+        <span class="milestone-title">容量市场注册</span>
+        <span class="milestone-detail">PSE/URE 资格</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>容量合同、可用性义务</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">08</span>
+      <div class="milestone-card">
+        <span class="milestone-title">担保/信用</span>
+        <span class="milestone-detail">TGE/IRGiT/PSE 要求</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>银行担保/现金</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">09</span>
+      <div class="milestone-card">
+        <span class="milestone-title">REMIT 报送</span>
+        <span class="milestone-detail">欧盟 REMIT</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>交易与基本面信息</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">10</span>
+      <div class="milestone-card">
+        <span class="milestone-title">运营</span>
+        <span class="milestone-detail">交易、计量、结算、合规</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>本地团队/合作伙伴</span></div>
+      </div>
+    </li></ol>
+  </figure>
 <ul><li><strong>市场注册不是“一张表”</strong>：TGE 会员、PSE 平衡责任、辅助服务资格、容量市场资格是四套流程，材料和测试不同。</li><li><strong>本地主体/合作伙伴</strong>：跨境主体可以通过收购项目、与本地开发商合资、委托 POB/交易代理进入；纯财务投资不一定要自己注册。</li><li><strong>零售业务另需许可</strong>：如果要做售电/聚合，按波兰法规注册供应主体，不能只用发电注册。</li></ul>
 <h3 id="s44">9.2 数据与系统</h3>
 <ul><li><strong>交易系统</strong>：对接 TGE RDN/RDB、SIDC、PSE 平衡市场；支持 15 分钟产品、报价、结算对账。</li><li><strong>计量系统</strong>：15 分钟计量、数据校验、通信冗余；储能充/放电单独计量。</li><li><strong>调度系统</strong>：EMS 要能接收 PSE 指令、管理 SOC、执行备用预留、记录调用。</li><li><strong>合规系统</strong>：REMIT 报送、市场滥用监控、交易记录保存。</li></ul>
@@ -246,23 +398,23 @@
 <h2 id="s50">12. 算例（D 级：方法演示，不是投资建议）</h2>
 <h3 id="s51">12.1 容量市场收入（合成）</h3>
 <p>假设：100 MW/400 MWh 电池，降额因子 13%，2030 年波兰实体出清价 465.02 PLN/kW·年，合同期 17 年（仅为演示，实际以合同为准）。</p>
-<pre><code>降额容量 = 100,000 kW × 13% = 13,000 kW
+<pre tabindex="0"><code>降额容量 = 100,000 kW × 13% = 13,000 kW
 年容量收入 = 13,000 × 465.02 ≈ 6.05m PLN/年
 17 年名义合计 ≈ 6.05m × 17 ≈ 102.8m PLN</code></pre>
 <ul><li>未扣可用性考核、补贴扣减、运维、保险和税；实际收入会低。</li><li>若降额因子为 30%，年容量收入约 13.95m PLN；降额因子是最大敏感变量。</li><li>若出清价降到 264.9 PLN/kW·年（2029 年水平），年容量收入约 3.44m PLN。</li></ul>
 <h3 id="s52">12.2 能量套利（合成）</h3>
 <p>假设：400 MWh，可用深度 90%，循环效率 88%，日充放电各一次；放电价 500 PLN/MWh、充电价 200 PLN/MWh（价差 300 PLN/MWh）；年运行 330 天。</p>
-<pre><code>可用电量 = 400 × 90% = 360 MWh
+<pre tabindex="0"><code>可用电量 = 400 × 90% = 360 MWh
 单次放电电量 = 360 × 88% ≈ 316.8 MWh
 单日毛收入 ≈ 316.8 × 300 ≈ 95,040 PLN
 年毛收入 ≈ 95,040 × 330 ≈ 31.36m PLN</code></pre>
 <ul><li>未扣充电成本、电网费、运维、退化、交易费用和税。</li><li>若价差降到 150 PLN/MWh，年毛收入约 15.68m PLN；价差是收益的核心变量。</li><li>若午间负价 −100 PLN/MWh、晚间 400 PLN/MWh，实际价差约 500 PLN/MWh，但要把充电效率、限充概率和容量义务算进去。</li></ul>
 <h3 id="s53">12.3 辅助服务收入（合成）</h3>
 <p>假设：20 MW 参与 aFRR，容量价格 181 PLN/MW·h，可用 8 小时/日，年运行 330 天；能量调用另计。</p>
-<pre><code>年容量收入 ≈ 20 × 181 × 8 × 330 ≈ 9.56m PLN</code></pre>
+<pre tabindex="0"><code>年容量收入 ≈ 20 × 181 × 8 × 330 ≈ 9.56m PLN</code></pre>
 <ul><li>这是容量费，不含能量调用；实际收入取决于调用次数和价格。</li><li>与能量套利存在机会成本：预留 20 MW 就不能同时满额放电。</li><li>辅助服务价格会随储能渗透率下降；要用衰减情景。</li></ul>
 <h3 id="s54">12.4 三层收入合计（合成）</h3>
-<pre><code>容量市场 ≈ 6.05m PLN
+<pre tabindex="0"><code>容量市场 ≈ 6.05m PLN
 能量套利 ≈ 31.36m PLN
 辅助服务 ≈ 9.56m PLN
 合计 ≈ 46.97m PLN/年</code></pre>
@@ -395,7 +547,9 @@
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

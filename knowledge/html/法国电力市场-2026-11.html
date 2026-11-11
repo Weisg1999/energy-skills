@@ -15,7 +15,7 @@
 </head>
 <body data-cat="intl" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -194,7 +194,55 @@
 <h3 id="s37">7.2 GO 与 PPA</h3>
 <ul><li>法国 GO 通过 EEX 拍卖；2026-06 光伏 GO 成交 <strong>2,170,833 MWh</strong>，均价 <strong>€1.77/MWh</strong>（A，EEX）。</li><li>法国 GO 属于 AIB EECS 体系；跨境承认按 AIB 规则，默认不与其他证书体系互认。</li><li>PPA 市场以企业购电协议为主；ARENH 退场后，售电公司和工业用户更依赖长协与 PPA。</li><li>储能本身不生产 GO；与可再生共址时，GO 归属和计量边界要在合同中写清。</li></ul>
 <h3 id="s38">7.3 并网流程</h3>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>步骤</th><th>内容</th><th>负责方</th></tr></thead><tbody><tr><td>接入申请</td><td>提交容量、位置、技术参数</td><td>RTE/Enedis</td></tr><tr><td>技术条件</td><td>保护、通信、故障穿越、无功</td><td>RTE/Enedis</td></tr><tr><td>并网协议</td><td>接入容量、时限、费用、保证金</td><td>RTE/Enedis</td></tr><tr><td>CRE 批准</td><td>部分规则与费用需 CRE 批准</td><td>CRE</td></tr><tr><td>调试与验收</td><td>保护定值、通信、黑启动（如适用）</td><td>RTE/Enedis</td></tr></tbody></table></div>
+<figure class="milestone-diagram" aria-label="并网流程">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">并网流程 · MILESTONES</span>
+        <span class="diagram-meta">5 个步骤</span>
+      </span>
+    </figcaption>
+    <ol class="milestone-list"><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">01</span>
+      <div class="milestone-card">
+        <span class="milestone-title">接入申请</span>
+        <span class="milestone-detail">提交容量、位置、技术参数</span>
+
+        <div class="milestone-meta" data-meta="负责方"><span class="milestone-meta-label">负责方</span><span>RTE/Enedis</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">02</span>
+      <div class="milestone-card">
+        <span class="milestone-title">技术条件</span>
+        <span class="milestone-detail">保护、通信、故障穿越、无功</span>
+
+        <div class="milestone-meta" data-meta="负责方"><span class="milestone-meta-label">负责方</span><span>RTE/Enedis</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">03</span>
+      <div class="milestone-card">
+        <span class="milestone-title">并网协议</span>
+        <span class="milestone-detail">接入容量、时限、费用、保证金</span>
+
+        <div class="milestone-meta" data-meta="负责方"><span class="milestone-meta-label">负责方</span><span>RTE/Enedis</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">04</span>
+      <div class="milestone-card">
+        <span class="milestone-title">CRE 批准</span>
+        <span class="milestone-detail">部分规则与费用需 CRE 批准</span>
+
+        <div class="milestone-meta" data-meta="负责方"><span class="milestone-meta-label">负责方</span><span>CRE</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">05</span>
+      <div class="milestone-card">
+        <span class="milestone-title">调试与验收</span>
+        <span class="milestone-detail">保护定值、通信、黑启动（如适用）</span>
+
+        <div class="milestone-meta" data-meta="负责方"><span class="milestone-meta-label">负责方</span><span>RTE/Enedis</span></div>
+      </div>
+    </li></ol>
+  </figure>
 <ul><li>并网典型时长：官方未披露，不能引用单一固定值。</li><li>2025 年末已获接入权约 <strong>30 GW</strong>：数据中心 14、制氢 9.5、工业 6.5 GW；另有电池排队约 <strong>14 GW / 180 项目</strong>（A，RTE）。三类数字不能直接相加当“总排队”。</li><li>灵活/非 firm 接入（“gabarits”）目前只有 B 级交易商文章，未见官方文本；投决前要向 RTE 确认。</li><li>2026 年底并网框架改革完成（A，RTE 2026H1）；改革细节待核实。</li></ul>
 <h3 id="s39">7.4 合规清单</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>事项</th><th>法国要求</th><th>状态</th></tr></thead><tbody><tr><td>低压并网</td><td>NF C 15-100</td><td>常用标准；储能具体适用条款待核实</td></tr><tr><td>高压并网</td><td>NF C 13-100；RTE DTR</td><td>常用标准；项目按 DTR 执行</td></tr><tr><td>电池系统</td><td>IEC 62933 等</td><td>适用清单未找到官方强制文本</td></tr><tr><td>热失控测试</td><td>UL 9540A</td><td>法国是否强制引用未找到；不要默认等同</td></tr><tr><td>消防/环境</td><td>ICPE</td><td>具体 rubrique 未找到；按项目环评与消防审查</td></tr><tr><td>网络安全</td><td>NIS2 法国转化</td><td>截至 2026-11 未确认生效（C）</td></tr><tr><td>电池护照</td><td>EU 2023/1542 第 77 条</td><td>2027-02-18 起对 EV/工业 &gt;2 kWh 电池强制</td></tr><tr><td>外资审查</td><td>IEF：非欧经区 25% 表决权（上市公司 10%），能源属敏感</td><td>2026-718 号法令扩展部分情形（B）</td></tr></tbody></table></div>
@@ -224,7 +272,63 @@
 <h3 id="s50">9.5 税务、信用与保险</h3>
 <ul><li>税务：企业所得税、地方税、CSPE/容量分摊；具体按项目结构。</li><li>信用：容量合同、PPA、并网协议通常要求履约担保/母公司担保。</li><li>保险：建设期、运营期、电池热失控/火灾、第三方责任；法国消防审查会看保险安排。</li></ul>
 <h3 id="s51">9.6 落地顺序</h3>
-<ol><li>选市场与场址：优先输网侧/负荷中心，确认接入容量。</li><li>设 SPV：股权结构、IEF 预判、税务。</li><li>锁并网：接入申请、技术条件、保证金、非 firm 选项。</li><li>锁收入：容量 PL-1、辅助服务预审、PPA/GO。</li><li>过合规：NF C/DTR、ICPE、消防、NIS2、电池护照。</li><li>投决：按净收益和敏感性出 IC  memo，不用单一均价。</li></ol>
+<figure class="milestone-diagram" aria-label="市场进入路径">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">进入路径 · ROADMAP</span>
+        <span class="diagram-meta">6 个步骤</span>
+      </span>
+    </figcaption>
+    <ol class="milestone-list"><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">01</span>
+      <div class="milestone-card">
+        <span class="milestone-title">选市场与场址</span>
+        <span class="milestone-detail">优先输网侧/负荷中心，确认接入容量。</span>
+
+
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">02</span>
+      <div class="milestone-card">
+        <span class="milestone-title">设 SPV</span>
+        <span class="milestone-detail">股权结构、IEF 预判、税务。</span>
+
+
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">03</span>
+      <div class="milestone-card">
+        <span class="milestone-title">锁并网</span>
+        <span class="milestone-detail">接入申请、技术条件、保证金、非 firm 选项。</span>
+
+
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">04</span>
+      <div class="milestone-card">
+        <span class="milestone-title">锁收入</span>
+        <span class="milestone-detail">容量 PL-1、辅助服务预审、PPA/GO。</span>
+
+
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">05</span>
+      <div class="milestone-card">
+        <span class="milestone-title">过合规</span>
+        <span class="milestone-detail">NF C/DTR、ICPE、消防、NIS2、电池护照。</span>
+
+
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">06</span>
+      <div class="milestone-card">
+        <span class="milestone-title">投决</span>
+        <span class="milestone-detail">按净收益和敏感性出 IC  memo，不用单一均价。</span>
+
+
+      </div>
+    </li></ol>
+  </figure>
 <hr>
 <h2 id="s52">10. 十个常见坑</h2>
 <ol><li><strong>把 ARENH 的 100 TWh / €42/MWh 当成 2026 年仍有效</strong>：2025-12-31 终止，2026 年起全部市场采购。</li><li><strong>把 VNU 当成 CfD 或保底价</strong>：VNU 是对核电超阈值收入的征缴，不是收入保证。</li><li><strong>把 €28,182.99/MW 当年度价</strong>：这是 2026-27 交付期价，年化要按交付期换算。</li><li><strong>把 €18,646.6/MW 当清算价</strong>：这是成本分摊商数，不是拍卖出清价。</li><li><strong>把 63 GW 核电当成完全可调</strong>：核电有最小出力、爬坡和检修约束；2025 年调节约 33 TWh，不是无限灵活。</li><li><strong>把 513 h 负价当实时负价</strong>：RTE 口径是日前小时价；实时负价可能更多或更少。</li><li><strong>把 30 GW 接入权与 14 GW 电池排队相加</strong>：两类数字口径不同，不能当总排队。</li><li><strong>以为法国有储能专属招标</strong>：没有；储能靠容量机制、辅助服务和套利。</li><li><strong>把 UL 9540A 当法国强制认证</strong>：法国适用清单未核实；不要用北美证书替代。</li><li><strong>用年度均价做套利假设</strong>：法国负价集中在午间、尖峰在晚峰；必须用 15 分钟/小时 profile。</li></ol>
@@ -357,7 +461,9 @@
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

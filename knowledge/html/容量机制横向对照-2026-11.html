@@ -15,7 +15,7 @@
 </head>
 <body data-cat="cross" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -140,9 +140,9 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>交付年</th><th>拍卖</th><th>出清价</th><th>清算量</th><th>级别</th></tr></thead><tbody><tr><td>2028/29</td><td>T-4（2025-03）</td><td>£60.00/kW·年</td><td>43.1 GW de-rated</td><td>A</td></tr><tr><td>2029/30</td><td>T-4（2026-03）</td><td>£27.10/kW·年</td><td>40.1 GW de-rated</td><td>B</td></tr><tr><td>2026/27</td><td>T-1（2026-03）</td><td>£5.00/kW·年</td><td>7,192 MW</td><td>B</td></tr></tbody></table></div>
 <ul><li><strong>价格大幅回落</strong>：2029/30 T-4 从 £60 区间降到 £27.10，主要因目标容量下调、约 14 GW 燃气机组以改造身份进入，供给增加。</li><li><strong>T-1 接近地板价</strong>：£5.00/kW·年说明当年边际稀缺性弱，不能把 T-1 价格当长期容量价值。</li><li><strong>电池中标</strong>：2029/30 T-4 中，电池以约 4.1 GW 连接容量拿到约 1.2 GW de-rated 容量（B，Modo 统计）；2 小时系统在连接容量上领先，4/5 小时系统合计的 de-rated 容量更高。</li></ul>
 <p><strong>储能收入公式</strong></p>
-<pre><code>年容量收入 = 并网 MW × 1000 × de-rating 系数 × £/kW·年</code></pre>
+<pre tabindex="0"><code>年容量收入 = 并网 MW × 1000 × de-rating 系数 × £/kW·年</code></pre>
 <p>示例（D 级合成）：100 MW 连接容量、30% de-rating、£27.10/kW·年：</p>
-<pre><code>100,000 kW × 30% × 27.10 = £813,000/年</code></pre>
+<pre tabindex="0"><code>100,000 kW × 30% × 27.10 = £813,000/年</code></pre>
 <aside class="note"><p>英国 CM 是“年金 + 履约义务”，不是“白拿的容量费”。中标后系统紧张时要按合同可用，否则罚款；套利策略要给容量义务留 SOC 裕度。</p></aside>
 <h3 id="s12">2.2 意大利：容量市场 + MACSE 双轨</h3>
 <p><strong>容量市场（CM）</strong></p>
@@ -151,9 +151,9 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>要素</th><th>内容</th><th>级别</th></tr></thead><tbody><tr><td>法律基础</td><td>D.Lgs. 210/2021 第 18 条</td><td>A</td></tr><tr><td>监管标准</td><td>ARERA 247/2023/R/eel</td><td>A</td></tr><tr><td>国家援助</td><td>SA.104106，约 €17.7bn，支持 &gt;9 GW/71 GWh，至 2033-12-31</td><td>A</td></tr><tr><td>采购方</td><td>Terna</td><td>A</td></tr><tr><td>合同期</td><td>电池 15 年</td><td>A</td></tr><tr><td>定价</td><td>pay-as-bid，分区拍卖</td><td>A</td></tr><tr><td>资格</td><td>仅限新建项目；并网、许可、担保</td><td>A</td></tr><tr><td>价格单位</td><td>€/MWh·年（按储能能量容量）</td><td>A</td></tr><tr><td>价格上限</td><td>电池约 €37,000/MWh·年</td><td>B</td></tr><tr><td>首轮</td><td>10 GWh；1,491.392 MW/9,968 MWh；均价 €12,959/MWh·年；2028 交付</td><td>B</td></tr><tr><td>第二轮</td><td>16 GWh；2026-11-24 拍卖；2029 交付</td><td>A</td></tr></tbody></table></div>
 <ul><li><strong>MACSE 付的是“容量溢价”</strong>：按 MWh 储能容量每年付钱，不是按放电量；项目仍可在能量/辅助服务市场获得收入。</li><li><strong>pay-as-bid</strong>：每个中标项目按自己的报价结算；首轮分区均价从 €12,146 到 €15,846/MWh·年不等。</li><li><strong>仅限新建</strong>：存量改造、共址项目的资格要以拍卖规则为准，本文不给定论。</li><li><strong>竞争激烈</strong>：首轮投标约 40 GWh，约为需求的 4 倍；均价约为上限的 35%，但不能把首轮价格当后续必然结果。</li></ul>
 <p><strong>储能收入公式</strong></p>
-<pre><code>年容量收入 = 储能能量（MWh）× 中标价（€/MWh·年）</code></pre>
+<pre tabindex="0"><code>年容量收入 = 储能能量（MWh）× 中标价（€/MWh·年）</code></pre>
 <p>示例（D 级合成）：100 MW/400 MWh、€12,959/MWh·年：</p>
-<pre><code>400 MWh × 12,959 = €5,183,600/年</code></pre>
+<pre tabindex="0"><code>400 MWh × 12,959 = €5,183,600/年</code></pre>
 <aside class="note"><p>MACSE 的单位是 €/MWh·年，不是 €/MW·年。把 400 MWh 当成 400 MW 会高估 4 倍；把 100 MW 当成 100 MWh 会低估 4 倍。</p></aside>
 <h3 id="s13">2.3 西班牙：TED/966/2026 的“项目制”容量市场</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>要素</th><th>内容</th><th>级别</th></tr></thead><tbody><tr><td>法令</td><td>Orden TED/966/2026（BOE-A-2026-19329）</td><td>A</td></tr><tr><td>公布/生效</td><td>2026-09-17 公布，2026-09-18 生效</td><td>A</td></tr><tr><td>适用系统</td><td>半岛电力系统</td><td>A</td></tr><tr><td>产品</td><td>稳定容量（firm power）</td><td>A</td></tr><tr><td>拍卖类型</td><td>主拍卖、调整拍卖、过渡拍卖</td><td>A</td></tr><tr><td>合同期</td><td>主拍卖新投资最长 15 年；调整拍卖 12 个月</td><td>A</td></tr><tr><td>定价</td><td>密封报价、pay-as-bid</td><td>A</td></tr><tr><td>欧盟审批</td><td>2026-05-29 获批，上限约 €9bn/10 年</td><td>B/C</td></tr><tr><td>首拍</td><td><strong>截至 2026-11-11 REE / 能源国务秘书处未发布 convocatoria</strong>（空缺，不作时点推测）；下次复核 2026-12-01</td><td>—</td></tr></tbody></table></div>
@@ -168,9 +168,9 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>数值</th><th>级别</th></tr></thead><tbody><tr><td>拍卖日</td><td>2025-12-11；最终结果 2026-01 公布</td><td>A</td></tr><tr><td>容量义务总量</td><td>6,887.639 MW，其中境外 992 MW</td><td>A</td></tr><tr><td>波兰实体出清价</td><td>465.02 PLN/kW·年</td><td>A</td></tr><tr><td>境外价格</td><td>同步 profile 78.00、立陶宛 418.00、瑞典 444.67 PLN/kW·年</td><td>A</td></tr><tr><td>电池降额因子（2025-12 主拍卖 / 2030 交付年）</td><td>13.39%</td><td>C</td></tr><tr><td>电池中标</td><td>约 685 MW（2024 交付年曾为 2.5 GW）</td><td>C</td></tr></tbody></table></div>
 <ul><li><strong>降额是储能的核心变量</strong>：13.39% 意味着 100 MW 电池在 2030 交付年主拍卖里只按约 13.4 MW 拿容量费；但 2027 T-1 用 95%、2029 主拍卖用 61.3%，引用时必须写明场次与交付年。URE 决议原文仍缺，投决前须书面确认。</li><li><strong>境外价格远低于波兰价格</strong>：跨境容量有“可交付性”折价，不能用波兰价格推算境外机组收入。</li><li><strong>补贴会扣减容量报酬</strong>：NFOŚiGW 投资补贴可与容量市场叠加，但同一容量单元获得的投资补贴会导致容量报酬相应减少（《容量市场法》第 62 条，B/C 级）。</li></ul>
 <p><strong>储能收入公式</strong></p>
-<pre><code>年容量收入 = 并网 kW × 降额因子 × PLN/kW·年</code></pre>
+<pre tabindex="0"><code>年容量收入 = 并网 kW × 降额因子 × PLN/kW·年</code></pre>
 <p>示例（D 级合成）：100 MW/4h、13%、465.02 PLN/kW·年：</p>
-<pre><code>100,000 kW × 13% × 465.02 = 6,045,260 PLN/年</code></pre>
+<pre tabindex="0"><code>100,000 kW × 13% × 465.02 = 6,045,260 PLN/年</code></pre>
 <h3 id="s16">2.6 比利时：CRM 的 pay-as-bid 年金</h3>
 <p><strong>机制</strong></p>
 <ul><li><strong>CRM（Capacity Remuneration Mechanism）</strong>：Y-4 主拍卖、Y-2 中间拍卖、Y-1 调整拍卖。</li><li><strong>定价</strong>：单轮密封报价、pay-as-bid，设中间价格上限（IPC）；每个中标机组拿自己的报价，不是统一出清价。</li><li><strong>合同期</strong>：新建机组最长 15 年；存量机组 1 年。</li><li><strong>技术范围</strong>：技术中立，按降额容量付费；电池、燃气、需求响应同场竞争。</li><li><strong>费用</strong>：通过电网费率/容量费回收。</li></ul>
@@ -178,9 +178,9 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>数值</th></tr></thead><tbody><tr><td>Y-4 2029-30 交付年</td><td>4,690 MW 中标；新增电池 179 MW（铭牌 525 MW）</td></tr><tr><td>Y-4 出清价</td><td>€27.3k/MW·年（27,300，A，Elia 2025-10-30；非 27.3 万）</td></tr><tr><td>Y-1 加权均价</td><td>约 14,100 €/MW·年</td></tr><tr><td>战略储备</td><td>约 650 MW（2025/26，C 级单一来源）</td></tr></tbody></table></div>
 <ul><li><strong>CRM 不是统一价</strong>：pay-as-bid 下报价策略决定收入；不能照搬英国/波兰的“预测出清价”思路。</li><li><strong>新增容量由电池主导</strong>：Y-4 新增容量几乎全部来自电池，但电池降额容量远低于铭牌。</li><li><strong>4 小时配置为主</strong>：比利时项目多为 4 小时；CRM 降额、能量套利和辅助服务共同决定收益。</li><li><strong>战略储备与 CRM 并行</strong>：战略储备触发条件和补偿规则不同，不能混为一谈。</li></ul>
 <p><strong>储能收入公式</strong></p>
-<pre><code>年 CRM 收入 = 并网 MW × 降额因子 × €/MW·年</code></pre>
+<pre tabindex="0"><code>年 CRM 收入 = 并网 MW × 降额因子 × €/MW·年</code></pre>
 <p>示例（D 级合成）：100 MW/4h、50% 降额、27,300 €/MW·年：</p>
-<pre><code>100 MW × 50% × 27,300 = €1,365,000/年</code></pre>
+<pre tabindex="0"><code>100 MW × 50% × 27,300 = €1,365,000/年</code></pre>
 <h3 id="s17">2.7 德国：StromVKG（2031 起）</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>要素</th><th>内容</th><th>级别</th></tr></thead><tbody><tr><td>法律基础</td><td>StromVKG（容量机制法律基础）</td><td>B</td></tr><tr><td>欧盟批准</td><td>2026-09-02 批准国家援助</td><td>A/B</td></tr><tr><td>预计成本</td><td>€15.6–35.2bn</td><td>B</td></tr><tr><td>生效</td><td>2031 年</td><td>A</td></tr><tr><td>合同期</td><td>15 年</td><td>B</td></tr><tr><td>2026-09-08</td><td>首轮 4,500 rMW；41 标/11,958 rMW，11 标中标约 5,160 rMW，量加权均价 €155,296/rMW·年（上限 €244,000）；储能与电厂共同参与（A，BNetzA 2026-11-03）</td><td>A</td></tr><tr><td>2026-12-29（计划）</td><td>第二轮 4,500 rMW；日期以 BNetzA 公告为准，同样适用 ≥10 h 持续出力门槛</td><td>B/C</td></tr><tr><td>2027（报道称 3 月底）</td><td>约 2 GW 新增容量；储能可参与，要求 ≥10 小时</td><td>B</td></tr><tr><td>2027-10-31 / 2029-08-20</td><td>后续综合容量拍卖；面向所有技术</td><td>B</td></tr></tbody></table></div>
 <ul><li><strong>2031 年才生效</strong>：2026–2030 年是过渡期，不要按容量机制收入做短期测算。</li><li><strong>旧表述「不向电池开放」已撤销（2026-11-11 复核）</strong>：BNetzA 2026-11-03 官方新闻稿明确首轮「电厂与电力储能设施共同参与竞争」，并非明文排除。实际约束是长时容量招标的准入条件——≥10 h 持续满出力、1 h 内恢复能力、惯性、储能 100% 技术可用率、RTE≥92%、EEA 本地成分（BNetzA 2026-07-21，A 级）；2–4 h 电池难以达标，10 h 以上长时储能可参与（10 h 降额 0.58 / 20 h 0.85）。2027-05-18 新增容量招标才开放全部时长的储能。</li><li><strong>技术中立是分阶段的</strong>：法律框架覆盖发电、储能、需求响应、现有/新增容量、跨境容量，但首轮招标有技术限制。</li><li><strong>跨境容量可参与</strong>：与德国直接电网连接的邻国容量可按欧盟批准条件参与，可能改变德国/邻国容量价格。</li><li><strong>新建燃气要求氢能转换能力</strong>：2045 年前气候中和运行；这是技术门槛，不是储能门槛。</li></ul>
@@ -202,9 +202,9 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>数值</th><th>级别</th></tr></thead><tbody><tr><td>出清价</td><td>325 美元/MW-day（触顶）</td><td>A</td></tr><tr><td>清算量</td><td>138,317.8 MW + FRR 13,765.6 MW = 152,083.4 MW</td><td>A</td></tr><tr><td>需求</td><td>156,013 MW</td><td>A</td></tr><tr><td>缺口</td><td>6,831 MW；备用率 14.7%</td><td>A</td></tr><tr><td>新增实际容量</td><td>约 525 MW</td><td>A/B</td></tr><tr><td>4 小时电池 ELCC</td><td>约 50%</td><td>B</td></tr></tbody></table></div>
 <ul><li><strong>触顶不等于可融资</strong>：价格触顶但新增容量极少，说明 325 美元/MW-day 仍不足以覆盖新建成本；不要把触顶价当长期可持续价格。</li><li><strong>ELCC 会下行</strong>：4 小时电池约 50%，渗透率上升后还会下降；不能线性外推。</li><li><strong>容量性能罚则</strong>：短缺时按非履约费率计罚，超额有奖励；具体费率以当年 tariff 为准。</li></ul>
 <p><strong>储能收入公式</strong></p>
-<pre><code>年容量收入 = 并网 MW × ELCC × 美元/MW-day × 365</code></pre>
+<pre tabindex="0"><code>年容量收入 = 并网 MW × ELCC × 美元/MW-day × 365</code></pre>
 <p>示例（D 级合成）：100 MW/4h、50% ELCC、325 美元/MW-day：</p>
-<pre><code>100 MW × 50% × 325 × 365 = 5,931,250 美元/年</code></pre>
+<pre tabindex="0"><code>100 MW × 50% × 325 × 365 = 5,931,250 美元/年</code></pre>
 <h3 id="s22">3.2 ERCOT：能量-only + ORDC</h3>
 <ul><li><strong>没有容量市场</strong>：ERCOT 靠稀缺定价和辅助服务回收固定成本。</li><li><strong>ORDC</strong>：备用低于阈值时自动加价，把稀缺价值传导到实时价格。</li><li><strong>RTC+B</strong>：2025-12-05 起实时能量与辅助服务联合优化并纳入电池 SOC；对电池可用容量、辅助服务中标和价格都有影响。</li><li><strong>价格上限</strong>：HCAP 5,000 美元/MWh、LCAP 2,000 美元/MWh（2026 现行）。</li><li><strong>电池装机</strong>：15,008 MW（2025-09，B 级）。</li><li><strong>TEF 不是容量市场</strong>：得州能源基金（Texas Energy Fund）是州级支持工具，不是容量拍卖；不要把它当容量收入。</li></ul>
 <aside class="note"><p>用 PJM 的容量收入模型套 ERCOT 会高估。ERCOT 储能收入主要来自实时价差和辅助服务，固定成本回收依赖稀缺时段。</p></aside>
@@ -357,7 +357,9 @@
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

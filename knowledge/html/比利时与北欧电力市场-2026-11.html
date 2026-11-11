@@ -15,7 +15,7 @@
 </head>
 <body data-cat="intl" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -218,7 +218,63 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>国家</th><th>机制</th><th>说明</th></tr></thead><tbody><tr><td>瑞典</td><td>绿证/拍卖、核电支持</td><td>绿证市场；核电延寿/新建国家援助</td></tr><tr><td>挪威</td><td>绿证（与瑞典共同市场）</td><td>水电为主；风电/光伏支持</td></tr><tr><td>丹麦</td><td>海上风电招标/CfD</td><td>2024-12 3 GW 招标零报价；2025-11 重启 2.8 GW</td></tr><tr><td>芬兰</td><td>拍卖/补贴、核电</td><td>核电 + 风电；tehoreservi</td></tr></tbody></table></div>
 <ul><li><strong>丹麦海上风电招标波折</strong>：2024-12 3 GW 招标零报价；2025-11 重启 2.8 GW；2026-08 Vattenfall 中标 Nordsøen Midt 1 GW（504 DKK/MWh）和 Hesselø 800 MW（542 DKK/MWh），20 年 CfD，2032 年 COD；Nordsøen Syd 1 GW 投标截止 2028-10（C/B 级）。</li><li><strong>丹麦核电</strong>：2025-05 只是“考虑解除 1985 年核电禁令”并做 SMR 分析；截至 2026-11 没有废止立法（B/C 级）；不要把“考虑”写成“已解除”。</li><li><strong>瑞典核电</strong>：2025-05 议会通过国家援助法，2025-08-01 生效；为国家贷款支持约 4 台大型机组（约 5,000 MWe）和双向 CfD 提供框架；2035 年目标 2,500 MW；2026 年预算设 SEK 220 bn 贷款框架 + 每年 SEK 1–3 bn 用于 40 年 PPA（B/C 级）。</li><li><strong>挪威水电</strong>：水电是主力，也是“天然储能”；风电/光伏增量有限，储能更多用于平衡和辅助服务。</li></ul>
 <h3 id="s38">8.3 并网流程</h3>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>步骤</th><th>比利时</th><th>北欧</th></tr></thead><tbody><tr><td>1. 接入申请</td><td>Elia/区域 DSO</td><td>各国 TSO/DSO</td></tr><tr><td>2. 许可/环评</td><td>联邦/区域许可</td><td>各国许可/环评</td></tr><tr><td>3. 并网协议</td><td>技术条件、保护、通信、计量</td><td>技术条件、保护、通信、计量</td></tr><tr><td>4. 建设/调试</td><td>设备、测试、验收</td><td>设备、测试、验收</td></tr><tr><td>5. 市场注册</td><td>Belpex/Elia/BRP</td><td>Nord Pool/TSO/BRP</td></tr><tr><td>6. 投运</td><td>计量、结算、考核</td><td>计量、结算、考核</td></tr></tbody></table></div>
+<figure class="milestone-diagram" aria-label="并网流程">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">并网流程 · MILESTONES</span>
+        <span class="diagram-meta">6 个步骤</span>
+      </span>
+    </figcaption>
+    <ol class="milestone-list"><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">01</span>
+      <div class="milestone-card">
+        <span class="milestone-title">接入申请</span>
+
+        <div class="milestone-tracks"><div class="milestone-track"><span class="milestone-track-label">比利时</span><span>Elia/区域 DSO</span></div><div class="milestone-track"><span class="milestone-track-label">北欧</span><span>各国 TSO/DSO</span></div></div>
+
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">02</span>
+      <div class="milestone-card">
+        <span class="milestone-title">许可/环评</span>
+
+        <div class="milestone-tracks"><div class="milestone-track"><span class="milestone-track-label">比利时</span><span>联邦/区域许可</span></div><div class="milestone-track"><span class="milestone-track-label">北欧</span><span>各国许可/环评</span></div></div>
+
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">03</span>
+      <div class="milestone-card">
+        <span class="milestone-title">并网协议</span>
+
+        <div class="milestone-tracks"><div class="milestone-track"><span class="milestone-track-label">比利时</span><span>技术条件、保护、通信、计量</span></div><div class="milestone-track"><span class="milestone-track-label">北欧</span><span>技术条件、保护、通信、计量</span></div></div>
+
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">04</span>
+      <div class="milestone-card">
+        <span class="milestone-title">建设/调试</span>
+
+        <div class="milestone-tracks"><div class="milestone-track"><span class="milestone-track-label">比利时</span><span>设备、测试、验收</span></div><div class="milestone-track"><span class="milestone-track-label">北欧</span><span>设备、测试、验收</span></div></div>
+
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">05</span>
+      <div class="milestone-card">
+        <span class="milestone-title">市场注册</span>
+
+        <div class="milestone-tracks"><div class="milestone-track"><span class="milestone-track-label">比利时</span><span>Belpex/Elia/BRP</span></div><div class="milestone-track"><span class="milestone-track-label">北欧</span><span>Nord Pool/TSO/BRP</span></div></div>
+
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">06</span>
+      <div class="milestone-card">
+        <span class="milestone-title">投运</span>
+
+        <div class="milestone-tracks"><div class="milestone-track"><span class="milestone-track-label">比利时</span><span>计量、结算、考核</span></div><div class="milestone-track"><span class="milestone-track-label">北欧</span><span>计量、结算、考核</span></div></div>
+
+      </div>
+    </li></ol>
+  </figure>
 <ul><li><strong>并网是硬约束</strong>：比利时海上风电并网、北欧水电/风电富集区的输电约束都会影响项目；价格信号再好，没有接入容量也拿不到收益。</li><li><strong>共址/混合项目</strong>：风电+储能、光伏+储能可以共享并网点，但计量、容量分配、并网条件和市场资格要分别处理。</li><li><strong>北极圈/偏远地区</strong>：北欧北部风电资源好，但输电容量和负荷较低；储能选址要把“资源节点”和“负荷/价格节点”一起看。</li></ul>
 <hr>
 <h2 id="s39">9. 储能与灵活性</h2>
@@ -234,10 +290,154 @@
 <hr>
 <h2 id="s43">10. 中国主体进入路径</h2>
 <h3 id="s44">10.1 比利时</h3>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>步骤</th><th>内容</th><th>备注</th></tr></thead><tbody><tr><td>1. 设立主体</td><td>比利时公司/分支机构</td><td>税务、银行、合同签署</td></tr><tr><td>2. 并网/接入</td><td>Elia/区域 DSO</td><td>容量、许可、并网协议</td></tr><tr><td>3. 市场注册</td><td>Belpex/EPEX、Elia BRP</td><td>日前/日内、平衡责任</td></tr><tr><td>4. CRM 资格</td><td>Elia 预审/注册</td><td>降额、可用性义务</td></tr><tr><td>5. 辅助服务预审</td><td>Elia 技术测试</td><td>通信、控制、计量</td></tr><tr><td>6. 担保/信用</td><td>Elia/清算要求</td><td>银行担保/现金</td></tr><tr><td>7. REMIT 报送</td><td>欧盟 REMIT</td><td>交易与基本面信息</td></tr><tr><td>8. 运营</td><td>交易、计量、结算、合规</td><td>本地团队/合作伙伴</td></tr></tbody></table></div>
+<figure class="milestone-diagram" aria-label="市场进入路径">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">进入路径 · ROADMAP</span>
+        <span class="diagram-meta">8 个步骤</span>
+      </span>
+    </figcaption>
+    <ol class="milestone-list"><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">01</span>
+      <div class="milestone-card">
+        <span class="milestone-title">设立主体</span>
+        <span class="milestone-detail">比利时公司/分支机构</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>税务、银行、合同签署</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">02</span>
+      <div class="milestone-card">
+        <span class="milestone-title">并网/接入</span>
+        <span class="milestone-detail">Elia/区域 DSO</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>容量、许可、并网协议</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">03</span>
+      <div class="milestone-card">
+        <span class="milestone-title">市场注册</span>
+        <span class="milestone-detail">Belpex/EPEX、Elia BRP</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>日前/日内、平衡责任</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">04</span>
+      <div class="milestone-card">
+        <span class="milestone-title">CRM 资格</span>
+        <span class="milestone-detail">Elia 预审/注册</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>降额、可用性义务</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">05</span>
+      <div class="milestone-card">
+        <span class="milestone-title">辅助服务预审</span>
+        <span class="milestone-detail">Elia 技术测试</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>通信、控制、计量</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">06</span>
+      <div class="milestone-card">
+        <span class="milestone-title">担保/信用</span>
+        <span class="milestone-detail">Elia/清算要求</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>银行担保/现金</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">07</span>
+      <div class="milestone-card">
+        <span class="milestone-title">REMIT 报送</span>
+        <span class="milestone-detail">欧盟 REMIT</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>交易与基本面信息</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">08</span>
+      <div class="milestone-card">
+        <span class="milestone-title">运营</span>
+        <span class="milestone-detail">交易、计量、结算、合规</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>本地团队/合作伙伴</span></div>
+      </div>
+    </li></ol>
+  </figure>
 <ul><li><strong>CRM 资格是额外门槛</strong>：不是注册了市场就能参加 CRM；要满足 Elia 的资格、降额、可用性和担保要求。</li><li><strong>外资审查</strong>：比利时对能源等战略行业有外资审查/ cooperation mechanism（B 级）；交易结构可能触发申报，按交易结构判断。</li><li><strong>供应链限制</strong>：海上风电招标对中国风机有约束（C 级）；储能设备/光伏组件的非价格标准也可能影响资格。</li></ul>
 <h3 id="s45">10.2 北欧</h3>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>步骤</th><th>内容</th><th>备注</th></tr></thead><tbody><tr><td>1. 设立主体</td><td>瑞典/挪威/丹麦/芬兰公司或分支机构</td><td>税务、银行、合同签署</td></tr><tr><td>2. 并网/接入</td><td>各国 TSO/DSO</td><td>容量、许可、并网协议</td></tr><tr><td>3. 市场注册</td><td>Nord Pool 会员/参与者</td><td>日前/日内交易资格</td></tr><tr><td>4. 平衡责任</td><td>各国 TSO 注册 BRP 或委托 BRP</td><td>偏差结算</td></tr><tr><td>5. 辅助服务预审</td><td>各国 TSO 技术测试</td><td>通信、控制、计量</td></tr><tr><td>6. 担保/信用</td><td>Nord Pool/TSO 要求</td><td>银行担保/现金</td></tr><tr><td>7. REMIT 报送</td><td>欧盟/挪威 REMIT</td><td>交易与基本面信息</td></tr><tr><td>8. 运营</td><td>交易、计量、结算、合规</td><td>本地团队/合作伙伴</td></tr></tbody></table></div>
+<figure class="milestone-diagram" aria-label="市场进入路径">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">进入路径 · ROADMAP</span>
+        <span class="diagram-meta">8 个步骤</span>
+      </span>
+    </figcaption>
+    <ol class="milestone-list"><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">01</span>
+      <div class="milestone-card">
+        <span class="milestone-title">设立主体</span>
+        <span class="milestone-detail">瑞典/挪威/丹麦/芬兰公司或分支机构</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>税务、银行、合同签署</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">02</span>
+      <div class="milestone-card">
+        <span class="milestone-title">并网/接入</span>
+        <span class="milestone-detail">各国 TSO/DSO</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>容量、许可、并网协议</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">03</span>
+      <div class="milestone-card">
+        <span class="milestone-title">市场注册</span>
+        <span class="milestone-detail">Nord Pool 会员/参与者</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>日前/日内交易资格</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">04</span>
+      <div class="milestone-card">
+        <span class="milestone-title">平衡责任</span>
+        <span class="milestone-detail">各国 TSO 注册 BRP 或委托 BRP</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>偏差结算</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">05</span>
+      <div class="milestone-card">
+        <span class="milestone-title">辅助服务预审</span>
+        <span class="milestone-detail">各国 TSO 技术测试</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>通信、控制、计量</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">06</span>
+      <div class="milestone-card">
+        <span class="milestone-title">担保/信用</span>
+        <span class="milestone-detail">Nord Pool/TSO 要求</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>银行担保/现金</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">07</span>
+      <div class="milestone-card">
+        <span class="milestone-title">REMIT 报送</span>
+        <span class="milestone-detail">欧盟/挪威 REMIT</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>交易与基本面信息</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">08</span>
+      <div class="milestone-card">
+        <span class="milestone-title">运营</span>
+        <span class="milestone-detail">交易、计量、结算、合规</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>本地团队/合作伙伴</span></div>
+      </div>
+    </li></ol>
+  </figure>
 <ul><li><strong>四国规则不同</strong>：瑞典/挪威/丹麦/芬兰的许可、平衡责任、辅助服务预审、税率都不同；不能用一套注册走四国。</li><li><strong>Nord Pool 会员不是平衡责任</strong>：注册 Nord Pool 只解决交易资格；平衡责任要向各国 TSO 注册或委托 BRP。</li><li><strong>外资审查</strong>：北欧四国对能源等战略行业有外资审查（B 级）；交易结构可能触发申报。</li><li><strong>本地合作伙伴</strong>：跨境主体可以通过收购项目、与本地开发商合资、委托 BRP/交易代理进入；纯财务投资不一定要自己注册。</li></ul>
 <h3 id="s46">10.3 资金与合规</h3>
 <ul><li><strong>担保</strong>：Nord Pool/Elia/TSO 会要求银行担保或现金覆盖；跨境主体要提前安排。</li><li><strong>并网保证金</strong>：部分接入/许可流程要求保证金，退出可能损失。</li><li><strong>REMIT</strong>：欧盟交易与基本面信息报送；挪威作为 EEA 国家适用 REMIT；跨境交易、关联交易要注意。</li><li><strong>市场滥用</strong>：报价、容量预留、信息披露都要合规。</li><li><strong>税务</strong>：企业所得税、增值税、能源税；跨境结构提前设计。</li><li><strong>汇率</strong>：瑞典克朗、挪威克朗、丹麦克朗、欧元；汇率波动会影响收益，不要用单一币种做长期模型。</li></ul>
@@ -248,23 +448,23 @@
 <h2 id="s48">12. 算例（D 级：方法演示，不是投资建议）</h2>
 <h3 id="s49">12.1 比利时 CRM 收入（合成）</h3>
 <p>假设：100 MW/400 MWh 电池，降额因子 50%（仅为演示；实际以 Elia 规则为准），Y-4 价格 27,300 €/MW·年，合同期 15 年。</p>
-<pre><code>降额容量 = 100 MW × 50% = 50 MW
+<pre tabindex="0"><code>降额容量 = 100 MW × 50% = 50 MW
 年 CRM 收入 = 50 × 27,300 ≈ €1.365m/年
 15 年名义合计 ≈ 1.365m × 15 ≈ €20.5m</code></pre>
 <ul><li>未扣可用性考核、运维、保险和税；实际收入会低。</li><li>若降额因子为 30%，年收入约 €0.819m；降额因子是最大敏感变量。</li><li>若价格降到 25,100 €/MW·年（Y-2 水平），年收入约 €1.255m。</li></ul>
 <h3 id="s50">12.2 北欧能量套利（合成）</h3>
 <p>假设：100 MW/200 MWh 电池，可用深度 90%，循环效率 88%，日充放电各一次；分区价差 40 €/MWh；年运行 330 天。</p>
-<pre><code>可用电量 = 200 × 90% = 180 MWh
+<pre tabindex="0"><code>可用电量 = 200 × 90% = 180 MWh
 单次放电电量 = 180 × 88% ≈ 158.4 MWh
 单日毛收入 ≈ 158.4 × 40 ≈ €6,336
 年毛收入 ≈ 6,336 × 330 ≈ €2.09m</code></pre>
 <ul><li>未扣充电成本、电网费、运维、退化、交易费用和税。</li><li>若价差降到 20 €/MWh，年毛收入约 €1.05m；价差是收益的核心变量。</li><li>若负价 −20 €/MWh、晚间 60 €/MWh，实际价差约 80 €/MWh，但要把充电效率、限充概率和辅助服务机会成本算进去。</li></ul>
 <h3 id="s51">12.3 北欧辅助服务收入（合成）</h3>
 <p>假设：30 MW 参与 FCR-N/FCR-D，容量价格 5 €/MW·h，可用 20 小时/日，年运行 330 天；能量调用另计。</p>
-<pre><code>年容量收入 ≈ 30 × 5 × 20 × 330 ≈ €0.99m</code></pre>
+<pre tabindex="0"><code>年容量收入 ≈ 30 × 5 × 20 × 330 ≈ €0.99m</code></pre>
 <ul><li>这是容量费，不含能量调用；实际收入取决于调用次数和价格。</li><li>与能量套利存在机会成本：预留 30 MW 就不能同时满额放电。</li><li>辅助服务价格会随储能渗透率下降；要用衰减情景。</li></ul>
 <h3 id="s52">12.4 三层收入合计（合成）</h3>
-<pre><code>比利时：CRM ≈ €1.365m + 套利 ≈ €2.09m + 辅助 ≈ €0.99m ≈ €4.45m/年
+<pre tabindex="0"><code>比利时：CRM ≈ €1.365m + 套利 ≈ €2.09m + 辅助 ≈ €0.99m ≈ €4.45m/年
 北欧：  无 CRM；套利 ≈ €2.09m + 辅助 ≈ €0.99m ≈ €3.08m/年</code></pre>
 <ul><li>三项不能简单叠加：同一 MW/SOC 不能同时满额参与；实际要用统一优化模型。</li><li>未扣电网费、运维、退化、保险、交易费用和税；真实净收益会低很多。</li><li>比利时 CRM 收入是“年金”，北欧没有容量费；两地的 merchant 风险不同，不能直接比较 IRR。</li><li>上述数字全部是 D 级假设，只用于说明“收益堆叠”的计算方法。</li></ul>
 <hr>
@@ -392,7 +592,9 @@
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

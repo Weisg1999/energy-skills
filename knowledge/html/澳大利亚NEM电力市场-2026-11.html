@@ -15,7 +15,7 @@
 </head>
 <body data-cat="intl" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -117,18 +117,92 @@
 <hr>
 <h2 id="s1">0. 一页看懂</h2>
 <h3 id="s2">0.1 市场全景</h3>
-<pre><code>澳大利亚国家电力市场（NEM）
-├─ 五个区域（Region）
-│   ├─ QLD（昆士兰）
-│   ├─ NSW（新南威尔士，含 ACT）
-│   ├─ VIC（维多利亚）
-│   ├─ SA（南澳）
-│   └─ TAS（塔斯马尼亚，经 Basslink 与 VIC 互联）
-├─ 现货：能量 + FCAS 共同优化，5 分钟 dispatch
-├─ 结算：5 分钟粒度，按区域价 + 损失因子
-├─ 合约：ASX 期货、OTC 远期、PPA、政府 CfD/LTESA
-├─ 可靠性：RRO、RERT、CIS（容量/收入支持，不是容量市场）
-└─ 运行机构：AEMO；规则：AEMC；监管：AER</code></pre>
+<figure class="tree-diagram" aria-label="澳大利亚国家电力市场（NEM）结构图">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构图 · STRUCTURE</span>
+        <span class="diagram-meta">6 个一级分支</span>
+      </span>
+      <span class="tree-root-title">澳大利亚国家电力市场（NEM）</span>
+
+    </figcaption>
+    <div class="tree-grid"><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">01</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">五个区域（Region）</span>
+
+      </span>
+    </div>
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">QLD（昆士兰）</span>
+
+
+  </li><li>
+    <span class="tree-child-title">NSW（新南威尔士，含 ACT）</span>
+
+
+  </li><li>
+    <span class="tree-child-title">VIC（维多利亚）</span>
+
+
+  </li><li>
+    <span class="tree-child-title">SA（南澳）</span>
+
+
+  </li><li>
+    <span class="tree-child-title">TAS（塔斯马尼亚，经 Basslink 与 VIC 互联）</span>
+
+
+  </li></ul>
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">02</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">现货</span>
+        <span class="tree-node-detail">能量 + FCAS 共同优化，5 分钟 dispatch</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">03</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">结算</span>
+        <span class="tree-node-detail">5 分钟粒度，按区域价 + 损失因子</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">04</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">合约</span>
+        <span class="tree-node-detail">ASX 期货、OTC 远期、PPA、政府 CfD/LTESA</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">05</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">可靠性</span>
+        <span class="tree-node-detail">RRO、RERT、CIS（容量/收入支持，不是容量市场）</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">06</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">运行机构</span>
+        <span class="tree-node-detail">AEMO；规则：AEMC；监管：AER</span>
+      </span>
+    </div>
+
+  </article></div>
+
+  </figure>
 <ul><li><strong>NEM 是能源-only 市场</strong>：没有集中容量市场，靠稀缺定价、RRO、RERT 和 CIS 兜底可靠性。</li><li><strong>五个区域不是五个国家</strong>：互连线路阻塞时区域价格分离；不阻塞时价格趋同，但结算仍按各自区域价。</li><li><strong>5 分钟既是调度粒度，也是结算粒度</strong>：2021-10-01 起 5 分钟结算（5MS），历史 30 分钟结算数据不能直接与现行价格比较。</li><li><strong>NEM 时间固定为 AEST（UTC+10）</strong>：全年不实行夏令时；交易日在 NEM 时间 04:00 切换。做报价、对账、看新闻时，先把时区统一。</li></ul>
 <h3 id="s3">0.2 关键数字</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>数字</th><th>含义</th><th>级别</th></tr></thead><tbody><tr><td>5</td><td>NEM 区域数：QLD、NSW、VIC、SA、TAS</td><td>A</td></tr><tr><td>5 分钟</td><td>dispatch 与结算间隔；2021-10-01 起 5MS</td><td>A</td></tr><tr><td>A$23,200/MWh</td><td>2026-27 市场电价上限（MPC）</td><td>A</td></tr><tr><td>A$2,225,900/MWh</td><td>2026-27 累计价格阈值（CPT）</td><td>A</td></tr><tr><td>A$20,300/MWh</td><td>2025-26 MPC</td><td>A</td></tr><tr><td>A$1,823,600/MWh</td><td>2025-26 CPT</td><td>A</td></tr><tr><td>A$600/MWh</td><td>管理价格上限（APC）</td><td>A</td></tr><tr><td>-A$1,000/MWh</td><td>市场电价下限（MFP）</td><td>A</td></tr><tr><td>-A$600/MWh</td><td>管理价格下限（AFP）</td><td>A</td></tr><tr><td>99.998%</td><td>现行可靠性标准（未供能量口径）</td><td>A</td></tr><tr><td>99.997%</td><td>2028–2032 可靠性标准建议值（Reliability Panel 最终报告，2026-04）</td><td>B</td></tr><tr><td>04:00</td><td>NEM 交易日切换时刻（AEST）</td><td>A</td></tr><tr><td>约 10 个</td><td>FCAS 品种量级（含 1 秒极快 FCAS，涨/降分开）</td><td>B</td></tr></tbody></table></div>
@@ -144,16 +218,79 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>机构</th><th>角色</th><th>与中国对应</th></tr></thead><tbody><tr><td>AEMO</td><td>系统与市场运营者：dispatch、pre-dispatch、PASA、结算、注册、NEMWEB 数据</td><td>调度机构 + 交易中心 + 部分结算职能</td></tr><tr><td>AEMC</td><td>规则制定者：National Electricity Rules（NER）修订、可靠性标准建议</td><td>规则制定/政策研究</td></tr><tr><td>AER</td><td>经济监管者：网络收入、零售授权、合规与执法、RRO 相关</td><td>监管机构</td></tr><tr><td>Reliability Panel</td><td>向 AEMC 建议可靠性设置：MPC、CPT、APC、MFP、AFP、可靠性标准</td><td>可靠性标准审议机构</td></tr><tr><td>ACCC</td><td>竞争与消费者监管；部分市场行为调查</td><td>竞争监管</td></tr><tr><td>AEMO Markets</td><td>市场注册、参与方费用、 prudential 管理</td><td>交易中心注册与风控</td></tr></tbody></table></div>
 <ul><li><strong>AEMO 既是调度又是结算</strong>：这与中国“调度机构 + 交易中心”分工不同。中国主体进场时，很多在中国要分别对接的流程，在 NEM 由 AEMO 一个入口串起来。</li><li><strong>AEMC 不运营市场</strong>：它改规则，但不决定某天谁中标；不要把 AEMC 的规则修订当成交易信号。</li><li><strong>AER 不负责日常出清</strong>：它管网络收入、零售授权和合规；价格尖峰是否“市场力”通常由 ACCC/AER 在另一条线上看。</li></ul>
 <h3 id="s8">1.2 规则文件层级</h3>
-<pre><code>National Electricity Law（联邦立法）
-└─ National Electricity Rules（NER）
-   ├─ Chapter 3：市场规则（dispatch、pricing、FCAS）
-   ├─ Chapter 4：网络与连接
-   ├─ Chapter 5：网络定价
-   ├─ Chapter 6：零售与计量
-   └─ Chapter 8：行政与注册
-AEMO Procedures（程序文件）
-├─ Market Operations、Settlement、Registration、FCAS 等
-└─ 具体时限、表格、数据接口</code></pre>
+<figure class="tree-diagram" aria-label="结构总览结构图">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构图 · STRUCTURE</span>
+        <span class="diagram-meta">2 个部分</span>
+      </span>
+      <span class="tree-root-title">结构总览</span>
+
+    </figcaption>
+    <div class="tree-groups"><section class="tree-group">
+      <div class="tree-group-head">
+        <span class="tree-group-index" aria-hidden="true">01</span>
+        <span class="tree-group-title">National Electricity Law（联邦立法）</span>
+
+      </div>
+      <div class="tree-grid"><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">01</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">National Electricity Rules（NER）</span>
+
+      </span>
+    </div>
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">Chapter 3</span>
+    <span class="tree-child-detail">市场规则（dispatch、pricing、FCAS）</span>
+
+  </li><li>
+    <span class="tree-child-title">Chapter 4</span>
+    <span class="tree-child-detail">网络与连接</span>
+
+  </li><li>
+    <span class="tree-child-title">Chapter 5</span>
+    <span class="tree-child-detail">网络定价</span>
+
+  </li><li>
+    <span class="tree-child-title">Chapter 6</span>
+    <span class="tree-child-detail">零售与计量</span>
+
+  </li><li>
+    <span class="tree-child-title">Chapter 8</span>
+    <span class="tree-child-detail">行政与注册</span>
+
+  </li></ul>
+  </article></div>
+    </section><section class="tree-group">
+      <div class="tree-group-head">
+        <span class="tree-group-index" aria-hidden="true">02</span>
+        <span class="tree-group-title">AEMO Procedures（程序文件）</span>
+
+      </div>
+      <div class="tree-grid"><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">01</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">Market Operations、Settlement、Registration、FCAS 等</span>
+
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">02</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">具体时限、表格、数据接口</span>
+
+      </span>
+    </div>
+
+  </article></div>
+    </section></div>
+
+  </figure>
 <ul><li><strong>NER 是“法”</strong>，AEMO Procedure 是“操作手册”。回答“应该怎么做”时先看 NER，回答“表格什么时候交”时看 Procedure。</li><li><strong>NER 修订频繁</strong>：IESS、5MS、FCAS、RRO、CIS 相关规则都在近年改过；引用规则时写明版本/生效日，不要用旧版条款号硬套。</li></ul>
 <h3 id="s9">1.3 与中国的第一层差别</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>中国</th><th>澳大利亚 NEM</th></tr></thead><tbody><tr><td>市场层级</td><td>省间 + 省内 + 区域市场</td><td>五个区域，统一 NER</td></tr><tr><td>调度与交易</td><td>调度机构与交易中心分设</td><td>AEMO 统一运营</td></tr><tr><td>价格机制</td><td>中长期 + 现货 + 辅助服务，政府干预较多</td><td>能源-only + 稀缺定价 + FCAS</td></tr><tr><td>结算粒度</td><td>15 分钟（多数现货）</td><td>5 分钟</td></tr><tr><td>容量机制</td><td>容量电价/容量补偿</td><td>无集中容量市场；RRO/RERT/CIS</td></tr></tbody></table></div>
@@ -175,13 +312,37 @@ AEMO Procedures（程序文件）
 <h3 id="s16">3.1 报价</h3>
 <ul><li><strong>报价段</strong>：每台机组/负荷单元提交多个价格-数量段；AEMO 按报价和约束排序。</li><li><strong>报价上限</strong>：报价不能超过市场价上限（MPC）对应的报价上限；具体以 NER/Procedure 为准。</li><li><strong>日更与重报</strong>：报价可按规则更新；重报时点和限制会影响策略，不能把“随时改价”当成默认能力。</li><li><strong>自调度与半调度</strong>：不同注册类别义务不同；储能、负荷、聚合资源的报价方式要按注册类型处理。</li></ul>
 <h3 id="s17">3.2 出清</h3>
-<pre><code>报价 + 网络约束 + 机组状态 + FCAS 需求
-        ↓
-安全约束经济调度（SCED）
-        ↓
-5 分钟 dispatch price（区域）
-        ↓
-调度指令 → 机组/负荷响应</code></pre>
+<figure class="flow-diagram" aria-label="流程示意">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">流程 · FLOW</span>
+        <span class="diagram-meta">5 个步骤</span>
+      </span>
+
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">报价 + 网络约束 + 机组状态 + FCAS 需求</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">安全约束经济调度（SCED）</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">5 分钟 dispatch price（区域）</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">04</span>
+      <span class="flow-text">调度指令</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">05</span>
+      <span class="flow-text">机组/负荷响应</span>
+
+    </li></ol>
+
+  </figure>
 <ul><li><strong>目标函数</strong>：在满足功率平衡、网络、FCAS、机组爬坡/启停等约束下最小化总成本。</li><li><strong>区域价</strong>：每个区域一个价格；约束影子价格进入区域价差。</li><li><strong>FCAS 共同优化</strong>：能量和 FCAS 的报价一起进入目标函数，FCAS 的机会成本会反映在能量报价策略里。</li><li><strong>不可行/约束</strong>：当约束导致无法满足全部需求时，AEMO 可能采取方向、RERT 等非市场手段；这些不是正常出清价格。</li></ul>
 <h3 id="s18">3.3 Pre-dispatch 与 PASA</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>文件</th><th>粒度/ horizon</th><th>是否财务结算</th><th>用途</th></tr></thead><tbody><tr><td>Pre-dispatch（PD）</td><td>30 分钟粒度、滚动数十小时</td><td>否</td><td>预判价格、机组组合、检修</td></tr><tr><td>P5MIN</td><td>5 分钟粒度、近端</td><td>否</td><td>近端调度预判</td></tr><tr><td>ST-PASA</td><td>短周期</td><td>否</td><td>短期供需/检修</td></tr><tr><td>MT-PASA</td><td>中周期</td><td>否</td><td>中期可靠性</td></tr><tr><td>LT-PASA</td><td>长周期</td><td>否</td><td>长期可靠性/投资信号</td></tr></tbody></table></div>
@@ -191,13 +352,37 @@ AEMO Procedures（程序文件）
 <hr>
 <h2 id="s20">4. 结算：5 分钟、MLF、IRLF、residues</h2>
 <h3 id="s21">4.1 结算链条</h3>
-<pre><code>5 分钟 dispatch price
-   ↓ × 计量电量
-区域结算金额
-   ↓ 应用 MLF（发电侧）/ IRLF（互联线路）
-参与方结算金额
-   ↓ 汇总为周账单
-AEMO 结算报表 → 收付</code></pre>
+<figure class="flow-diagram" aria-label="流程示意">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">流程 · FLOW</span>
+        <span class="diagram-meta">5 个步骤</span>
+      </span>
+
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">5 分钟 dispatch price</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">区域结算金额</span>
+      <ul class="flow-points"><li>× 计量电量</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">参与方结算金额</span>
+      <ul class="flow-points"><li>应用 MLF（发电侧）/ IRLF（互联线路）</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">04</span>
+      <span class="flow-text">AEMO 结算报表</span>
+      <ul class="flow-points"><li>汇总为周账单</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">05</span>
+      <span class="flow-text">收付</span>
+
+    </li></ol>
+
+  </figure>
 <ul><li><strong>5 分钟结算</strong>：能量和 FCAS 都按 5 分钟 dispatch 结果结算；不是按 30 分钟平均。</li><li><strong>周结算</strong>：AEMO 按周出具结算报表；具体时间、修正、争议流程看 Settlement Procedure。</li><li><strong>计量</strong>：结算以计量数据为准；计量点、计量 Coordinator、数据质量都会影响账单。</li><li><strong>参与方费用</strong>：AEMO 的运行成本通过参与方费用回收；报价时要把它算进固定成本。</li></ul>
 <h3 id="s22">4.2 MLF 与 IRLF</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>因子</th><th>作用对象</th><th>含义</th><th>影响</th></tr></thead><tbody><tr><td>MLF</td><td>发电机/负荷（区域内有位置差异）</td><td>边际损失因子，反映注入/提取对网络损耗的影响</td><td>MLF &lt; 1 表示结算电量打折；&gt; 1 表示加成</td></tr><tr><td>IRLF</td><td>互联线路</td><td>区域间送电的损失因子</td><td>影响跨区套利的实际到手价</td></tr></tbody></table></div>
@@ -223,10 +408,45 @@ AEMO 结算报表 → 收付</code></pre>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>品种</th><th>响应时间</th><th>方向</th><th>典型提供者</th></tr></thead><tbody><tr><td>Regulation raise/lower</td><td>秒级连续调节</td><td>涨/降</td><td>电池、水电、部分火电</td></tr><tr><td>1 秒极快 FCAS</td><td>1 秒</td><td>涨/降</td><td>电池、快速响应资源</td></tr><tr><td>6 秒 contingency</td><td>6 秒</td><td>涨/降</td><td>电池、水电、火电</td></tr><tr><td>60 秒 contingency</td><td>60 秒</td><td>涨/降</td><td>电池、水电、火电</td></tr><tr><td>5 分钟 contingency</td><td>5 分钟</td><td>涨/降</td><td>电池、水电、火电、需求响应</td></tr></tbody></table></div>
 <ul><li><strong>具体品种/资格以 AEMO MASS 和现行 Procedure 为准</strong>；上表是量级，不是注册清单。</li><li><strong>涨/降分开</strong>：提供“升”不等于能提供“降”；电池的 SOC 决定它在两个方向的能力。</li><li><strong>FCAS 与能量共同优化</strong>：同一 MW 不能同时卖能量和 FCAS；机会成本要算清。</li></ul>
 <h3 id="s32">6.2 共同优化与机会成本</h3>
-<pre><code>电池 100 MW / 200 MWh
-├─ 卖能量：放电价 × 电量
-├─ 卖 FCAS：FCAS 价 × 预留 MW × 时间
-└─ 约束：SOC、功率、并网、FCAS 持续时间</code></pre>
+<figure class="tree-diagram" aria-label="电池 100 MW / 200 MWh结构图">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构图 · STRUCTURE</span>
+        <span class="diagram-meta">3 个一级分支</span>
+      </span>
+      <span class="tree-root-title">电池 100 MW / 200 MWh</span>
+
+    </figcaption>
+    <div class="tree-grid"><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">01</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">卖能量</span>
+        <span class="tree-node-detail">放电价 × 电量</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">02</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">卖 FCAS</span>
+        <span class="tree-node-detail">FCAS 价 × 预留 MW × 时间</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">03</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">约束</span>
+        <span class="tree-node-detail">SOC、功率、并网、FCAS 持续时间</span>
+      </span>
+    </div>
+
+  </article></div>
+
+  </figure>
 <ul><li><strong>FCAS 预留会减少可用能量</strong>：预留 10 MW 的 contingency，意味着这 10 MW 不能同时放电。</li><li><strong>FCAS 价格波动大</strong>：某些时段 FCAS 收益高于能量；但不能只看历史均价，要看同时段的机会成本。</li><li><strong>SOC 管理</strong>：FCAS 提供后可能改变 SOC；如果 SOC 不足，无法持续响应，会被考核/取消资格。</li></ul>
 <h3 id="s33">6.3 资格与测试</h3>
 <ul><li><strong>Prequalification</strong>：FCAS 提供者需要通过 AEMO 的资格测试，证明响应能力、持续时间、控制精度。</li><li><strong>MASS</strong>：Market Ancillary Service Specification 规定测试信号、响应要求、数据采集。</li><li><strong>持续响应</strong>：contingency FCAS 不是“瞬时一下”，需要按品种要求持续；电池容量和并网限值决定能否满足。</li><li><strong>合规</strong>：未按指令响应可能导致非 Conformance 处罚、资格暂停；不要用“先注册再补能力”的方式。</li></ul>
@@ -242,9 +462,9 @@ AEMO 结算报表 → 收付</code></pre>
 <p>设：</p>
 <ul><li>参考价（strike）：A$80/MWh</li><li>结算量：100 MW × 1 小时 = 100 MWh</li><li>现货价：A$120/MWh</li></ul>
 <p>则发电侧向 CfD 对手方支付：</p>
-<pre><code>(120 - 80) × 100 = A$4,000</code></pre>
+<pre tabindex="0"><code>(120 - 80) × 100 = A$4,000</code></pre>
 <p>若现货价为 A$50/MWh，则发电侧收到：</p>
-<pre><code>(80 - 50) × 100 = A$3,000</code></pre>
+<pre tabindex="0"><code>(80 - 50) × 100 = A$3,000</code></pre>
 <ul><li><strong>CfD 不改变现货收入</strong>：发电侧仍按现货价结算，CfD 只是叠加的差价。</li><li><strong>政府 scheme 的 CfD</strong>：可能有上限、 clawback、合规条件；商业 PPA 的 CfD 条款不同，不能混用。</li><li><strong>会计与税务</strong>：CfD 的现金流分类、保证金、会计处理，需要财务/税务顾问确认。</li></ul>
 <h3 id="s38">7.3 PPA</h3>
 <ul><li><strong>固定量 PPA</strong>：按约定电量结算，风光出力不足时可能需要在现货市场买电补足；profile 风险高。</li><li><strong>按比例/按出力 PPA</strong>：按实际发电量比例结算，profile 风险较低，但价格可能不同。</li><li><strong>绿证</strong>：LGC 是否随 PPA 转移，直接影响绿电价值；合同要写清。</li><li><strong>计量与结算</strong>：PPA 的计量点、损失因子、结算周期，可能与 AEMO 结算不同；要做对账。</li></ul>
@@ -265,7 +485,71 @@ AEMO 结算报表 → 收付</code></pre>
 <hr>
 <h2 id="s45">9. 中国主体进入路径</h2>
 <h3 id="s46">9.1 主体与注册</h3>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>步骤</th><th>内容</th><th>负责方</th></tr></thead><tbody><tr><td>1</td><td>设立澳大利亚/本地主体，确定税务与合规架构</td><td>企业/律师/税务</td></tr><tr><td>2</td><td>AEMO 参与方注册，取得 Participant ID</td><td>AEMO</td></tr><tr><td>3</td><td>按业务选择注册类别：Generator、Market Customer、IRP 等</td><td>AEMO</td></tr><tr><td>4</td><td>零售业务需 AER 零售授权（如适用）</td><td>AER/州</td></tr><tr><td>5</td><td>计量安排：Metering Coordinator、计量点注册</td><td>AEMO/计量方</td></tr><tr><td>6</td><td>prudential：信用额度、保证金/银行担保</td><td>AEMO</td></tr><tr><td>7</td><td>NEMWEB/市场系统接入、报价与结算测试</td><td>AEMO</td></tr></tbody></table></div>
+<figure class="milestone-diagram" aria-label="市场进入路径">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">进入路径 · ROADMAP</span>
+        <span class="diagram-meta">7 个步骤</span>
+      </span>
+    </figcaption>
+    <ol class="milestone-list"><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">01</span>
+      <div class="milestone-card">
+        <span class="milestone-title">设立澳大利亚/本地主体</span>
+        <span class="milestone-detail">确定税务与合规架构</span>
+
+        <div class="milestone-meta" data-meta="负责方"><span class="milestone-meta-label">负责方</span><span>企业/律师/税务</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">02</span>
+      <div class="milestone-card">
+        <span class="milestone-title">AEMO 参与方注册</span>
+        <span class="milestone-detail">取得 Participant ID</span>
+
+        <div class="milestone-meta" data-meta="负责方"><span class="milestone-meta-label">负责方</span><span>AEMO</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">03</span>
+      <div class="milestone-card">
+        <span class="milestone-title">按业务选择注册类别</span>
+        <span class="milestone-detail">Generator、Market Customer、IRP 等</span>
+
+        <div class="milestone-meta" data-meta="负责方"><span class="milestone-meta-label">负责方</span><span>AEMO</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">04</span>
+      <div class="milestone-card">
+        <span class="milestone-title">零售业务需 AER 零售授权（如适用）</span>
+
+
+        <div class="milestone-meta" data-meta="负责方"><span class="milestone-meta-label">负责方</span><span>AER/州</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">05</span>
+      <div class="milestone-card">
+        <span class="milestone-title">计量安排</span>
+        <span class="milestone-detail">Metering Coordinator、计量点注册</span>
+
+        <div class="milestone-meta" data-meta="负责方"><span class="milestone-meta-label">负责方</span><span>AEMO/计量方</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">06</span>
+      <div class="milestone-card">
+        <span class="milestone-title">prudential</span>
+        <span class="milestone-detail">信用额度、保证金/银行担保</span>
+
+        <div class="milestone-meta" data-meta="负责方"><span class="milestone-meta-label">负责方</span><span>AEMO</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">07</span>
+      <div class="milestone-card">
+        <span class="milestone-title">NEMWEB/市场系统接入、报价与结算测试</span>
+
+
+        <div class="milestone-meta" data-meta="负责方"><span class="milestone-meta-label">负责方</span><span>AEMO</span></div>
+      </div>
+    </li></ol>
+  </figure>
 <ul><li><strong>注册类别决定义务</strong>：不是“注册了就能做所有业务”；发电、负荷、零售、聚合各有不同要求。</li><li><strong>零售授权</strong>：如果直接向终端用户售电，需要 AER 零售授权（或适用豁免）；批发交易不需要零售授权，但仍需 AEMO 注册。</li><li><strong>计量</strong>：NEM 的计量安排是独立环节；计量数据质量直接影响结算。</li></ul>
 <h3 id="s47">9.2 数据与系统</h3>
 <ul><li><strong>NEMWEB</strong>：AEMO 公开数据平台，提供 dispatch、price、PASA、FCAS 等数据；历史数据是回测基础。</li><li><strong>AEMO Markets Portal</strong>：参与方报价、结算、注册等操作入口。</li><li><strong>数据延迟</strong>：公开数据有延迟；实时交易需要自己的数据链路和备份。</li><li><strong>时区</strong>：NEM 时间固定 AEST；系统、报表、监控都要统一，避免夏令时错位。</li></ul>
@@ -274,10 +558,33 @@ AEMO 结算报表 → 收付</code></pre>
 <h3 id="s49">9.4 合规</h3>
 <ul><li><strong>NER/AEMO Procedure</strong>：报价、调度、结算、FCAS 资格都有合规要求；违规可能被处罚/暂停。</li><li><strong>AER</strong>：零售授权、合规报告、消费者保护。</li><li><strong>ACCC</strong>：竞争与消费者法；市场行为不当可能被调查。</li><li><strong>REMIT 类市场滥用规则</strong>：澳大利亚没有照搬欧盟 REMIT，但有市场行为/内幕信息相关规则；具体看 ASIC/AER/ACCC 的适用。</li><li><strong>反洗钱/制裁</strong>：跨境主体、银行、交易对手的 KYC/AML 要求。</li></ul>
 <h3 id="s50">9.5 落地顺序</h3>
-<pre><code>先做“数据 + 回测”（不注册）
-  → 再做“注册 + 计量 + prudential”
-  → 再做“小规模实盘”（能量/FCAS）
-  → 再扩“合约/PPA/零售”</code></pre>
+<figure class="flow-diagram" aria-label="流程示意">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">流程 · FLOW</span>
+        <span class="diagram-meta">4 个步骤</span>
+      </span>
+
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">先做“数据 + 回测”（不注册）</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">再做“注册 + 计量 + prudential”</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">再做“小规模实盘”（能量/FCAS）</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">04</span>
+      <span class="flow-text">再扩“合约/PPA/零售”</span>
+
+    </li></ol>
+
+  </figure>
 <ul><li><strong>不要先签长期 PPA 再补注册</strong>：注册、计量、并网、prudential 都可能卡住。</li><li><strong>先做单一区域</strong>：五个区域规则相同但结构不同；先选一个区域跑通，再扩。</li><li><strong>先做金融合约还是现货</strong>：取决于主体能力和风控；现货需要 24/7 运营，金融合约需要信用和保证金。</li></ul>
 <hr>
 <h2 id="s51">10. 十个常见坑</h2>
@@ -292,36 +599,36 @@ AEMO 结算报表 → 收付</code></pre>
 <p>设：</p>
 <ul><li>电池 100 MW / 200 MWh，效率 90%（单程 95%）</li><li>某 5 分钟时段充电价 -A$50/MWh，充电 100 MWh（ac）</li><li>另一时段放电价 A$300/MWh，放电 90 MWh（ac）</li><li>忽略 FCAS、MLF、退化、并网限制</li></ul>
 <p>充电成本：</p>
-<pre><code>-50 × 100 = -A$5,000（即收到 A$5,000）</code></pre>
+<pre tabindex="0"><code>-50 × 100 = -A$5,000（即收到 A$5,000）</code></pre>
 <p>放电收入：</p>
-<pre><code>300 × 90 = A$27,000</code></pre>
+<pre tabindex="0"><code>300 × 90 = A$27,000</code></pre>
 <p>毛收益：</p>
-<pre><code>27,000 - (-5,000) = A$32,000</code></pre>
+<pre tabindex="0"><code>27,000 - (-5,000) = A$32,000</code></pre>
 <ul><li>若计入 MLF=0.95、退化 A$5/MWh、并网限制，净收益会下降。</li><li>若同时预留 FCAS，放电量减少，需比较 FCAS 收益与能量机会成本。</li></ul>
 <h3 id="s55">12.2 CfD 结算</h3>
 <p>设：</p>
 <ul><li>strike A$80/MWh，100 MW，1 小时，结算量 100 MWh</li><li>现货 A$120/MWh</li></ul>
 <p>发电侧 CfD 支付：</p>
-<pre><code>(120 - 80) × 100 = A$4,000</code></pre>
+<pre tabindex="0"><code>(120 - 80) × 100 = A$4,000</code></pre>
 <p>现货收入：</p>
-<pre><code>120 × 100 = A$12,000</code></pre>
+<pre tabindex="0"><code>120 × 100 = A$12,000</code></pre>
 <p>合计：</p>
-<pre><code>12,000 - 4,000 = A$8,000（相当于 80 × 100）</code></pre>
+<pre tabindex="0"><code>12,000 - 4,000 = A$8,000（相当于 80 × 100）</code></pre>
 <ul><li>若现货 A$50/MWh：现货收入 5,000，CfD 收到 3,000，合计 8,000。</li><li>这就是 CfD 的“锁价”效果；实际还有 MLF、计量、合约费用。</li></ul>
 <h3 id="s56">12.3 MLF 对项目收益的影响</h3>
 <p>设：</p>
 <ul><li>项目年发电 100,000 MWh</li><li>区域现货均价 A$70/MWh</li><li>项目节点 MLF=0.93</li><li>忽略 LGC、FCAS、合约</li></ul>
 <p>结算收入：</p>
-<pre><code>100,000 × 70 × 0.93 = A$6,510,000</code></pre>
+<pre tabindex="0"><code>100,000 × 70 × 0.93 = A$6,510,000</code></pre>
 <p>若按区域平均 MLF=1.00 估算，收入为 A$7,000,000；差 A$490,000。</p>
 <ul><li>MLF 差 7%，收入差 7%；对薄利项目，可能决定投不投。</li><li>每年 MLF 会变；财务模型要做敏感性分析。</li></ul>
 <h3 id="s57">12.4 FCAS 机会成本</h3>
 <p>设：</p>
 <ul><li>电池 100 MW，某 5 分钟时段能量价 A$200/MWh</li><li>预留 10 MW regulation raise，FCAS 价 A$15/MW/5min</li><li>预留期间不能放电</li></ul>
 <p>能量机会成本：</p>
-<pre><code>10 × 200 × (5/60) = A$166.7</code></pre>
+<pre tabindex="0"><code>10 × 200 × (5/60) = A$166.7</code></pre>
 <p>FCAS 收入：</p>
-<pre><code>10 × 15 = A$150</code></pre>
+<pre tabindex="0"><code>10 × 15 = A$150</code></pre>
 <ul><li>该时段 FCAS 收益低于能量机会成本；但 FCAS 可能提供更稳定的收入/资格价值。</li><li>实际决策要用联合优化，而不是单时段比较。</li></ul>
 <hr>
 <h2 id="s58">13. 2026 观察点</h2>
@@ -454,7 +761,9 @@ AEMO 结算报表 → 收付</code></pre>
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

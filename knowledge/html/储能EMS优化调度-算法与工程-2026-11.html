@@ -15,7 +15,7 @@
 </head>
 <body data-cat="storage" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -143,9 +143,19 @@
 <h3 id="s16">2.1 分层</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>层</th><th>组成</th><th>主要职责</th></tr></thead><tbody><tr><td>设备层</td><td>电芯、模组、簇、堆、BMS、PCS、热管理、消防</td><td>安全保护、功率变换、状态采集</td></tr><tr><td>站控层</td><td>EMS、SCADA、协调控制器、通信网关、时钟源</td><td>优化调度、功率分配、AGC/AVC 响应、联锁</td></tr><tr><td>云/聚合层</td><td>多站管理、VPP 平台、交易接口、结算对账</td><td>聚合申报、容量分配、绩效评估</td></tr><tr><td>市场层</td><td>调度机构、交易中心、辅助服务市场</td><td>出清、指令、考核、结算</td></tr></tbody></table></div>
 <h3 id="s17">2.2 数据流（抽象）</h3>
-<pre><code>市场出清/调度计划 → EMS 优化 → 功率与 SOC 计划 → 站控校验 → PCS 设定值
+<figure class="diagram-blueprint">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构示意 · DIAGRAM</span>
+        <span class="diagram-meta">可横向滚动</span>
+      </span>
+    </figcaption>
+    <div class="diagram-canvas" tabindex="0" role="group" aria-label="结构示意图">
+      <pre>市场出清/调度计划 <span class="d-arrow">→</span> EMS 优化 <span class="d-arrow">→</span> 功率与 SOC 计划 <span class="d-arrow">→</span> 站控校验 <span class="d-arrow">→</span> PCS 设定值
         ↑                                                        ↓
-   结算/考核 ← 计量与遥测 ← BMS/PCS/辅助系统 ← 执行与保护</code></pre>
+   结算/考核 <span class="d-arrow">←</span> 计量与遥测 <span class="d-arrow">←</span> BMS/PCS/辅助系统 <span class="d-arrow">←</span> 执行与保护</pre>
+    </div>
+  </figure>
 <p>关键点：<strong>优化用的输入与结算用的数据必须同源同时标</strong>；否则会出现&quot;模型里赚钱、结算时亏钱&quot;。</p>
 <h3 id="s18">2.3 BMS/PCS/EMS 的职责边界</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>设备/系统</th><th>职责</th><th>向 EMS 提供</th><th>EMS 不得越权</th></tr></thead><tbody><tr><td>BMS</td><td>单体电压/温度、SOC/SOH、均衡、保护</td><td>SOC、SOH、允许充放功率、告警等级</td><td>绕过 BMS 限值下发指令</td></tr><tr><td>PCS</td><td>功率变换、并网控制、保护、故障穿越</td><td>实际 P/Q、可用功率、故障码、效率</td><td>下发超过 PCS 能力的指令</td></tr><tr><td>热管理/消防</td><td>温控、探测、灭火、排风</td><td>温度、烟感、可燃气体、阀状态</td><td>告警时继续充放</td></tr><tr><td>站控/协调控制器</td><td>功率分配、AGC/AVC 跟踪、联锁</td><td>执行结果、跟踪偏差</td><td>跳过联锁直接控制接触器</td></tr><tr><td>EMS</td><td>优化、计划、申报、评估</td><td>计划曲线、设定值、诊断</td><td>替代保护或消防逻辑</td></tr></tbody></table></div>
@@ -168,7 +178,7 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>变量</th><th>含义</th><th>类型</th></tr></thead><tbody><tr><td>p_ch[s,t], p_dis[s,t]</td><td>充电/放电功率</td><td>连续 ≥0</td></tr><tr><td>u_ch[s,t], u_dis[s,t]</td><td>充/放状态</td><td>0/1</td></tr><tr><td>E[s,t]</td><td>时段末能量</td><td>连续</td></tr><tr><td>p_imp[s,t], p_exp[s,t]</td><td>并网点购/售功率</td><td>连续 ≥0</td></tr><tr><td>v_imp[s,t], v_exp[s,t]</td><td>购/售状态</td><td>0/1</td></tr><tr><td>r[s,r,t]</td><td>品种中标容量</td><td>连续 ≥0</td></tr><tr><td>m[s,r,t]</td><td>调频里程（折算）</td><td>连续 ≥0</td></tr><tr><td>D[s]</td><td>计费需量</td><td>连续 ≥0</td></tr><tr><td>z[s,k,t]</td><td>退化分段/检修选择</td><td>0/1 或 SOS2</td></tr></tbody></table></div>
 <h3 id="s26">3.4 目标函数（最小化净成本）</h3>
 <p>按日净成本最小化，收益项取负：</p>
-<pre><code>min  Σ_t [ c_buy(t)·p_imp(t)·Δt − c_sell(t)·p_exp(t)·Δt ]
+<pre tabindex="0"><code>min  Σ_t [ c_buy(t)·p_imp(t)·Δt − c_sell(t)·p_exp(t)·Δt ]
    + Σ_r [ −c_cap[r]·r[r,t]·Δt − c_mil[r]·m[r,t]·K_r ]
    − 容量补偿日摊
    + c_dem·D
@@ -181,68 +191,68 @@
 <aside class="note"><p>目标函数必须与结算单同构：结算里有的项，模型里要有；模型里有而结算没有的项，只作为内部影子价格，不对外承诺。</p></aside>
 <h3 id="s27">3.5 约束条件</h3>
 <p><strong>S1 并网点功率平衡</strong></p>
-<pre><code>p_imp[t] − p_exp[t] = p_ch[t] − p_dis[t] + p_aux[t] − p_gen[t]</code></pre>
+<pre tabindex="0"><code>p_imp[t] − p_exp[t] = p_ch[t] − p_dis[t] + p_aux[t] − p_gen[t]</code></pre>
 <p>p_gen 为站内分布式电源（配储场景可选）。符号约定一旦确定，全模型统一。</p>
 <p><strong>S2 SOC 递推（含效率、自放电、辅助电源）</strong></p>
-<pre><code>E[t] = (1−σ)·E[t−1] + η_ch·p_ch[t]·Δt − p_dis[t]·Δt/η_dis − p_aux[t]·Δt</code></pre>
+<pre tabindex="0"><code>E[t] = (1−σ)·E[t−1] + η_ch·p_ch[t]·Δt − p_dis[t]·Δt/η_dis − p_aux[t]·Δt</code></pre>
 <p><strong>S3 SOC 边界与终端</strong></p>
-<pre><code>SOC_min·E_cap ≤ E[t] ≤ SOC_max·E_cap
+<pre tabindex="0"><code>SOC_min·E_cap ≤ E[t] ≤ SOC_max·E_cap
 E[T] ≥ E_end_min        （或 E[T] = E[0]）</code></pre>
 <p><strong>S4 充放互斥</strong></p>
-<pre><code>p_ch[t] ≤ P_ch_max·u_ch[t]
+<pre tabindex="0"><code>p_ch[t] ≤ P_ch_max·u_ch[t]
 p_dis[t] ≤ P_dis_max·u_dis[t]
 u_ch[t] + u_dis[t] ≤ 1</code></pre>
 <p><strong>S5 并网点双变量与防逆流</strong></p>
-<pre><code>p_imp[t] ≤ P_imp_max·v_imp[t]
+<pre tabindex="0"><code>p_imp[t] ≤ P_imp_max·v_imp[t]
 p_exp[t] ≤ P_exp_max·v_exp[t]
 v_imp[t] + v_exp[t] ≤ 1</code></pre>
 <p>用户侧无送出条件时，令 P_exp_max = 0。</p>
 <p><strong>S6 爬坡</strong></p>
-<pre><code>−ΔP_dn ≤ (p_dis[t] − p_ch[t]) − (p_dis[t−1] − p_ch[t−1]) ≤ ΔP_up</code></pre>
+<pre tabindex="0"><code>−ΔP_dn ≤ (p_dis[t] − p_ch[t]) − (p_dis[t−1] − p_ch[t−1]) ≤ ΔP_up</code></pre>
 <p><strong>S7 备用功率裕度</strong></p>
-<pre><code>p_dis[t] + Σ_r r_up[r,t] ≤ κ_T·κ_SOH·P_dis_max·a[t]
+<pre tabindex="0"><code>p_dis[t] + Σ_r r_up[r,t] ≤ κ_T·κ_SOH·P_dis_max·a[t]
 p_ch[t]  + Σ_r r_dn[r,t] ≤ κ_T·κ_SOH·P_ch_max·a[t]</code></pre>
 <p><strong>S8 备用能量裕度</strong></p>
-<pre><code>E[t] − SOC_min·E_cap ≥ Σ_r r_up[r,t]·d_r
+<pre tabindex="0"><code>E[t] − SOC_min·E_cap ≥ Σ_r r_up[r,t]·d_r
 SOC_max·E_cap − E[t] ≥ Σ_r r_dn[r,t]·d_r</code></pre>
 <p>d_r 为品种要求的持续时长（小时）。上调备用要求能量，下调备用要求空位。</p>
 <p><strong>S9 调频能量中性与 SOC 恢复</strong></p>
-<pre><code>Σ_{t∈W} 预期偏移电量 ≈ 0
+<pre tabindex="0"><code>Σ_{t∈W} 预期偏移电量 ≈ 0
 E[t_end(W)] ∈ [E_base − ε_rec, E_base + ε_rec]</code></pre>
 <p>调频是双向、零均值服务，但实际部署有随机偏差；模型用&quot;恢复预留&quot;保证一个考核周期后能回到基线带，而不是假设严格零偏移。</p>
 <p><strong>S10 市场约束与非预期性</strong></p>
-<pre><code>r[s,r,t] ≤ 申报量[s,r,t]
+<pre tabindex="0"><code>r[s,r,t] ≤ 申报量[s,r,t]
 r[s,r,t] ≤ 可用能力[s,r,t]</code></pre>
 <p>日前计划只能使用日前信息；日内滚动只能用截至决策时刻的观测。<strong>非预期性不是求解器问题，是数据管道问题。</strong></p>
 <p><strong>S11 需量电费</strong></p>
-<pre><code>D ≥ p_imp[t]      ∀t
+<pre tabindex="0"><code>D ≥ p_imp[t]      ∀t
 D ≥ 0</code></pre>
 <p>需量对购电功率取最大，售电不抵扣；多站共用计量点时按合计购电功率计算。</p>
 <p><strong>S12 退化预算</strong></p>
-<pre><code>Σ_t (η_ch·p_ch[t] + p_dis[t]/η_dis)·Δt ≤ 日吞吐预算</code></pre>
+<pre tabindex="0"><code>Σ_t (η_ch·p_ch[t] + p_dis[t]/η_dis)·Δt ≤ 日吞吐预算</code></pre>
 <p>或按等效循环：</p>
-<pre><code>Σ_t (η_ch·p_ch[t] + p_dis[t]/η_dis)·Δt / (2·E_cap) ≤ N_day</code></pre>
+<pre tabindex="0"><code>Σ_t (η_ch·p_ch[t] + p_dis[t]/η_dis)·Δt / (2·E_cap) ≤ N_day</code></pre>
 <p><strong>S13 温度/SOH 降额</strong></p>
-<pre><code>P_ch_max(t) = P_ch_max · κ_T(T(t)) · κ_SOH(SOH(t))
+<pre tabindex="0"><code>P_ch_max(t) = P_ch_max · κ_T(T(t)) · κ_SOH(SOH(t))
 E_cap(t)    = E_cap · κ_SOH(SOH(t))</code></pre>
 <p>温度与 SOH 是慢变量，可按日/小时更新；不要在每个 15 min 内重新优化电化学模型。</p>
 <p><strong>S14 检修与可用性</strong></p>
-<pre><code>p_ch[t] + p_dis[t] ≤ M·a[t]</code></pre>
+<pre tabindex="0"><code>p_ch[t] + p_dis[t] ≤ M·a[t]</code></pre>
 <p>a[t] = 0 时该站该时段强制停运；检修计划与市场申报必须联动。</p>
 <p><strong>S15 多站聚合</strong></p>
-<pre><code>Σ_s (p_imp[s,t] − p_exp[s,t]) ≤ P_imp_max^agg
+<pre tabindex="0"><code>Σ_s (p_imp[s,t] − p_exp[s,t]) ≤ P_imp_max^agg
 Σ_s (p_exp[s,t] − p_imp[s,t]) ≤ P_exp_max^agg</code></pre>
 <p>各站 SOC 独立，聚合层只共享并网点限值与市场容量。</p>
 <p><strong>S16 并网规范能力</strong></p>
-<pre><code>Q_min(t) ≤ Q(t) ≤ Q_max(t)
+<pre tabindex="0"><code>Q_min(t) ≤ Q(t) ≤ Q_max(t)
 功率因数 ∈ [cosφ_min, 1]
 频率/电压穿越能力：能力约束，不进 15 min 经济模型</code></pre>
 <p><strong>S17 安全联锁</strong></p>
-<pre><code>告警等级 ≥ 阈值 ⇒ p_ch = p_dis = 0
+<pre tabindex="0"><code>告警等级 ≥ 阈值 ⇒ p_ch = p_dis = 0
 温度/压差/绝缘越限 ⇒ 隔离并禁止并网</code></pre>
 <p>这是硬联锁，不是惩罚项；优化器不得用&quot;罚款换出力&quot;。</p>
 <p><strong>S18 容量补偿资格</strong></p>
-<pre><code>补偿容量 = min(清单容量, 可用容量) · 时长折算系数 · 可用率
+<pre tabindex="0"><code>补偿容量 = min(清单容量, 可用容量) · 时长折算系数 · 可用率
 可用率 = 可用时间 / 考核时间 ≥ 门槛</code></pre>
 <p>发改价格〔2026〕114号给出框架：电网侧独立储能按当地煤电容量电价与峰值能力/持续时间比例折算，上限为 1 倍；省级细则规定分母时长（常见 4/6/8/10 小时）与考核门槛。<strong>具体系数以当期省级文件为准（B/C 级，待核实）。</strong></p>
 <h3 id="s28">3.6 模型边界：不建模什么</h3>
@@ -273,7 +283,7 @@ E_cap(t)    = E_cap · κ_SOH(SOH(t))</code></pre>
 <p><strong>1583号的关键规则</strong>（引用前核对当期文件与当地执行口径）：</p>
 <ul><li>计费方式按季变更，提前 15 个工作日申请；</li><li>合同最大需量核定值按月变更，提前 5 个工作日申请；</li><li>实际最大需量超过合同确定值 105% 时，<strong>超过 105% 的部分基本电费加一倍收取</strong>；未超过 105% 的按合同确定值收取；</li><li>申请核定值低于变压器容量与高压电动机容量总和 40% 时，按总和的 40% 核定；</li><li>两路及以上进线用户，各路进线分别计算最大需量，累加计收。</li></ul>
 <p><strong>模型表达</strong>（需量对购电功率取最大，售电不抵扣）：</p>
-<pre><code>max_p ≥ p_imp[t]            ∀t
+<pre tabindex="0"><code>max_p ≥ p_imp[t]            ∀t
 max_p ≥ D0                  （本月已发生最大需量）
 over ≥ max_p − 1.05·D_set
 over ≥ 0
@@ -309,7 +319,7 @@ over ≥ 0
 <p>两个必查项：同一容量是否被重复申报；中标容量是否有足够的能量与爬坡支撑。</p>
 <h3 id="s45">4.15 时长选型与容量折算</h3>
 <p>发改价格〔2026〕114号给出框架：电网侧独立储能按当地煤电容量电价、以峰值能力/持续时间比例折算，上限为 1 倍；省级细则规定分母时长。折算系数可近似为：</p>
-<pre><code>折算系数 = min(系统时长 / 当地分母时长, 1)</code></pre>
+<pre tabindex="0"><code>折算系数 = min(系统时长 / 当地分母时长, 1)</code></pre>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>系统时长</th><th>分母 4 h</th><th>分母 6 h</th><th>分母 8 h</th><th>分母 10 h</th></tr></thead><tbody><tr><td>2 h</td><td>0.50</td><td>0.33</td><td>0.25</td><td>0.20</td></tr><tr><td>4 h</td><td>1.00</td><td>0.67</td><td>0.50</td><td>0.40</td></tr><tr><td>8 h</td><td>1.00</td><td>1.00</td><td>1.00</td><td>0.80</td></tr></tbody></table></div>
 <p>对 EMS 的三点含义：</p>
 <ol><li><strong>补偿按&quot;可用容量 × 折算系数 × 可用率&quot;计</strong>，不是铭牌容量；</li><li><strong>EMS 改不了物理时长，但能改可用容量与可用率</strong>：SOC 窗口、降额管理、检修窗口选择、故障恢复速度都直接进收益；</li><li><strong>检修要避开考核期</strong>：可用率低于门槛按比例扣减甚至取消补偿，检修计划必须与考核期、高价期联动，不能只按设备便利安排。</li></ol>
@@ -339,7 +349,7 @@ over ≥ 0
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>环</th><th>周期</th><th>horizon</th><th>输出</th></tr></thead><tbody><tr><td>日前</td><td>日</td><td>96×15 min</td><td>申报曲线、SOC 计划、检修计划</td></tr><tr><td>日内</td><td>15 min–1 h</td><td>4–8 h</td><td>修正计划、备用调整</td></tr><tr><td>实时</td><td>1–4 s（AGC）</td><td>秒级</td><td>功率设定值、跟踪</td></tr></tbody></table></div>
 <p>三环的边界要写清楚：日前决定&quot;大体怎么走&quot;，日内决定&quot;偏差怎么补&quot;，实时决定&quot;这一刻出多少力&quot;。</p>
 <h3 id="s56">6.2 MPC 形式</h3>
-<pre><code>min  Σ_{k=0}^{N−1} 阶段成本(x_k, u_k) + 终端价值(x_N)
+<pre tabindex="0"><code>min  Σ_{k=0}^{N−1} 阶段成本(x_k, u_k) + 终端价值(x_N)
 s.t. x_{k+1} = f(x_k, u_k)
      x_k ∈ X, u_k ∈ U
      终端约束 x_N ∈ X_f</code></pre>
@@ -347,7 +357,37 @@ s.t. x_{k+1} = f(x_k, u_k)
 <h3 id="s57">6.3 与教科书 MPC 的差距</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>教科书假设</th><th>工程现实</th></tr></thead><tbody><tr><td>模型精确</td><td>效率、SOH、温度随时间漂移</td></tr><tr><td>扰动可测</td><td>价格与出力预测有误差</td></tr><tr><td>求解实时</td><td>MILP 可能超时</td></tr><tr><td>约束不变</td><td>市场规则、检修、并网限值会变</td></tr><tr><td>终端约束可保证</td><td>跨日/跨周终端值需人工设定</td></tr></tbody></table></div>
 <h3 id="s58">6.4 分层设定值链</h3>
-<pre><code>市场计划 → EMS 优化 → 站控分配 → PCS 设定值 → 本地控制</code></pre>
+<figure class="flow-diagram" aria-label="流程示意">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">流程 · FLOW</span>
+        <span class="diagram-meta">5 个步骤</span>
+      </span>
+
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">市场计划</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">EMS 优化</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">站控分配</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">04</span>
+      <span class="flow-text">PCS 设定值</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">05</span>
+      <span class="flow-text">本地控制</span>
+
+    </li></ol>
+
+  </figure>
 <p>每一层都要有速率限制、死区与回差，避免指令抖动；分配层要处理多簇/多 PCS 的 SOC 均衡。</p>
 <h3 id="s59">6.5 事件驱动调度</h3>
 <p>以下事件应触发重算，而不是等下一个周期：</p>
@@ -386,7 +426,45 @@ s.t. x_{k+1} = f(x_k, u_k)
 <h3 id="s73">8.2 P-Q 能力与无功</h3>
 <p>PCS 的 P-Q 曲线受容量与电压约束；有功优先时无功裕度下降。EMS 做有功计划时，必须给 AVC 留无功裕度，否则并网点电压越限。</p>
 <h3 id="s74">8.3 闭环</h3>
-<pre><code>能力评估 → 市场申报 → 出清 → 调度指令 → 执行 → 实际能力回测 → 修正评估</code></pre>
+<figure class="flow-diagram" aria-label="流程示意">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">流程 · FLOW</span>
+        <span class="diagram-meta">7 个步骤</span>
+      </span>
+
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">能力评估</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">市场申报</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">出清</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">04</span>
+      <span class="flow-text">调度指令</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">05</span>
+      <span class="flow-text">执行</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">06</span>
+      <span class="flow-text">实际能力回测</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">07</span>
+      <span class="flow-text">修正评估</span>
+
+    </li></ol>
+
+  </figure>
 <p>评估不是一次性配置，而是每日/每月滚动更新。</p>
 <h3 id="s75">8.4 常见错误</h3>
 <ul><li>用额定功率申报，忽略降额与辅助电源；</li><li>用额定能量计算持续时间，忽略 SOC 窗口与 SOH；</li><li>调频与备用重复计算同一容量；</li><li>不考虑并网点限值，导致中标无法交付；</li><li>不更新 SOH，长期高估能力。</li></ul>
@@ -637,7 +715,9 @@ s.t. x_{k+1} = f(x_k, u_k)
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

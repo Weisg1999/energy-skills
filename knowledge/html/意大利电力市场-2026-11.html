@@ -15,7 +15,7 @@
 </head>
 <body data-cat="intl" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -117,17 +117,108 @@
 <hr>
 <h2 id="s1">0. 一页看懂</h2>
 <h3 id="s2">0.1 市场全景</h3>
-<pre><code>意大利电力市场（IPEX）
-├─ 日前：MGP（GME 运营），15 分钟 MTU
-├─ 日内：MI（GME 运营），连续/分场次交易
-├─ 调度：MSD（GME 平台，Terna 采购）
-├─ 平衡：MB（Terna 运营），实时平衡
-├─ 远期：MTE（GME 运营），金融/远期
-├─ 报价区：7 个本土区 + 若干跨境虚拟区
-├─ 容量：容量市场（Terna）+ MACSE（储能长周期）
-├─ 支持：FER X 双向差价合约
-├─ 监管：ARERA；政策：MASE；TSO：Terna
-└─ 结算：GME/Terna/银行担保体系</code></pre>
+<figure class="tree-diagram" aria-label="意大利电力市场（IPEX）结构图">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构图 · STRUCTURE</span>
+        <span class="diagram-meta">10 个一级分支</span>
+      </span>
+      <span class="tree-root-title">意大利电力市场（IPEX）</span>
+
+    </figcaption>
+    <div class="tree-grid"><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">01</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">日前</span>
+        <span class="tree-node-detail">MGP（GME 运营），15 分钟 MTU</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">02</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">日内</span>
+        <span class="tree-node-detail">MI（GME 运营），连续/分场次交易</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">03</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">调度</span>
+        <span class="tree-node-detail">MSD（GME 平台，Terna 采购）</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">04</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">平衡</span>
+        <span class="tree-node-detail">MB（Terna 运营），实时平衡</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">05</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">远期</span>
+        <span class="tree-node-detail">MTE（GME 运营），金融/远期</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">06</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">报价区</span>
+        <span class="tree-node-detail">7 个本土区 + 若干跨境虚拟区</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">07</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">容量</span>
+        <span class="tree-node-detail">容量市场（Terna）+ MACSE（储能长周期）</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">08</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">支持</span>
+        <span class="tree-node-detail">FER X 双向差价合约</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">09</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">监管</span>
+        <span class="tree-node-detail">ARERA；政策：MASE；TSO：Terna</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">10</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">结算</span>
+        <span class="tree-node-detail">GME/Terna/银行担保体系</span>
+      </span>
+    </div>
+
+  </article></div>
+
+  </figure>
 <ul><li><strong>意大利不是“一个价格”</strong>：批发市场按报价区出清，南部/岛屿与北部经常存在价差；PUN 只是全国参考价。</li><li><strong>MGP 是主日前市场</strong>：GME 运营，按 SDAC 规则出清；2025-10-01 起交付时段采用 15 分钟 MTU。</li><li><strong>MSD 和 MB 不是“交易所现货”</strong>：Terna 作为调度机构采购调频、备用、阻塞管理等服务；结算规则与 MGP 不同。</li><li><strong>MACSE 是储能专用长周期机制</strong>：15 年合同、按 €/MWh·年支付容量溢价、pay-as-bid、分区拍卖、仅限新建项目。</li><li><strong>容量市场与 MACSE 是两套机制</strong>：前者买可用容量，后者租储能容量用于负荷转移；可以叠加，但义务和标的要分开看。</li></ul>
 <h3 id="s3">0.2 关键数字</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>数字</th><th>含义</th><th>级别</th></tr></thead><tbody><tr><td>7 个</td><td>意大利本土报价区数量</td><td>A</td></tr><tr><td>2021-01-01</td><td>现行七区结构生效（Rossano 并入）</td><td>B</td></tr><tr><td>12:00 D-1</td><td>MGP 关闸（CET）</td><td>A</td></tr><tr><td>约 12:55</td><td>MGP 结果公布（CET）</td><td>B</td></tr><tr><td>15 分钟</td><td>2025-10-01 起交付时段的 MTU</td><td>A</td></tr><tr><td>22.5 GW</td><td>PNIEC 2030 储能目标；官方分项为抽蓄 8 GW + 分布式 4 GW + 独立 11 GW（分项加总约 23 GW，主目标仍按 22.5 GW 引用）</td><td>B</td></tr><tr><td>10 GWh</td><td>MACSE 首轮采购容量</td><td>A</td></tr><tr><td>1,491.392 MW / 9,968 MWh</td><td>MACSE 首轮中标功率/能量</td><td>B</td></tr><tr><td>€12,959/MWh·年</td><td>MACSE 首轮加权均价</td><td>B</td></tr><tr><td>€37,000/MWh·年</td><td>MACSE 电池价格上限（储备溢价）</td><td>B</td></tr><tr><td>15 年</td><td>MACSE 电池合同期限</td><td>A</td></tr><tr><td>16 GWh</td><td>MACSE 第二轮采购容量</td><td>A</td></tr><tr><td>2026-11-24 10:00</td><td>MACSE 第二轮拍卖时间</td><td>A</td></tr><tr><td>37.15 GW</td><td>FER X 支持总规模（至 2030 年底）</td><td>A</td></tr><tr><td>€80/MWh</td><td>FER X 光伏参考执行价</td><td>A</td></tr><tr><td>7.961 GW / 19.3 GWh</td><td>2026-06 意大利储能累计（含分布式）</td><td>B</td></tr></tbody></table></div>
@@ -176,11 +267,37 @@
 <hr>
 <h2 id="s22">4. 结算与费用</h2>
 <h3 id="s23">4.1 结算链条</h3>
-<pre><code>计量数据（MGP/MI 成交、调度指令）
-  → GME 结算（能量市场）
-  → Terna 结算（MSD/MB、容量市场、MACSE）
-  → 网络/系统费用（ARERA 费率）
-  → 零售结算（PUN/分区价 + 费用）</code></pre>
+<figure class="flow-diagram" aria-label="流程示意">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">流程 · FLOW</span>
+        <span class="diagram-meta">5 个步骤</span>
+      </span>
+
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">计量数据（MGP/MI 成交、调度指令）</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">GME 结算（能量市场）</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">Terna 结算（MSD/MB、容量市场、MACSE）</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">04</span>
+      <span class="flow-text">网络/系统费用（ARERA 费率）</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">05</span>
+      <span class="flow-text">零售结算（PUN/分区价 + 费用）</span>
+
+    </li></ol>
+
+  </figure>
 <ul><li><strong>GME 和 Terna 分开结算</strong>：能量市场与调度服务不是同一张账单；项目要分别对账。</li><li><strong>担保是前置条件</strong>：GME 会员、Terna BSP、MACSE 参与都需要银行担保/保证金。</li><li><strong>计量是结算基础</strong>：关口表、发电表、储能表要满足规则；数据错误会影响结算和考核。</li><li><strong>争议处理</strong>：按 GME/Terna 规则提交争议；跨境项目要预留法律和语言成本。</li></ul>
 <h3 id="s24">4.2 电网与系统费用</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>费用</th><th>作用</th><th>备注</th></tr></thead><tbody><tr><td>输电费</td><td>输电网络投资与运维</td><td>ARERA 定费率；按电压等级/位置</td></tr><tr><td>配电费</td><td>配电网络投资与运维</td><td>与接入电压、容量有关</td></tr><tr><td>系统一般费用（oneri generali）</td><td>支持可再生、能效等政策</td><td>账单附加，具体科目按 ARERA</td></tr><tr><td>容量市场费用</td><td>容量市场付款</td><td>由用户/系统分摊</td></tr><tr><td>MACSE 费用</td><td>储能容量溢价</td><td>通过输电费回收</td></tr></tbody></table></div>
@@ -242,7 +359,79 @@
 <hr>
 <h2 id="s47">9. 中国主体进入路径</h2>
 <h3 id="s48">9.1 主体与注册</h3>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>步骤</th><th>内容</th><th>备注</th></tr></thead><tbody><tr><td>1. 设立主体</td><td>意大利/欧盟公司或分支机构</td><td>税务、银行、合同</td></tr><tr><td>2. GME 会员</td><td>申请会员、缴纳担保</td><td>参与 MGP/MI/MSD</td></tr><tr><td>3. Terna 注册</td><td>BRP/BSP 注册、调度合同</td><td>参与 MSD/MB/容量市场</td></tr><tr><td>4. 并网协议</td><td>Terna/DSO 连接</td><td>TICA、加固、计量</td></tr><tr><td>5. MACSE 资格</td><td>新建项目、许可、担保</td><td>拍卖前完成</td></tr><tr><td>6. REMIT 报送</td><td>MERIT/ARERA/GME 规则</td><td>交易与基本面信息</td></tr><tr><td>7. FER X（如做发电）</td><td>GSE 招标、NZIA 合规</td><td>光伏/风电</td></tr><tr><td>8. 运营系统</td><td>EMS、计量、调度通信</td><td>可用性与结算</td></tr></tbody></table></div>
+<figure class="milestone-diagram" aria-label="市场进入路径">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">进入路径 · ROADMAP</span>
+        <span class="diagram-meta">8 个步骤</span>
+      </span>
+    </figcaption>
+    <ol class="milestone-list"><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">01</span>
+      <div class="milestone-card">
+        <span class="milestone-title">设立主体</span>
+        <span class="milestone-detail">意大利/欧盟公司或分支机构</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>税务、银行、合同</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">02</span>
+      <div class="milestone-card">
+        <span class="milestone-title">GME 会员</span>
+        <span class="milestone-detail">申请会员、缴纳担保</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>参与 MGP/MI/MSD</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">03</span>
+      <div class="milestone-card">
+        <span class="milestone-title">Terna 注册</span>
+        <span class="milestone-detail">BRP/BSP 注册、调度合同</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>参与 MSD/MB/容量市场</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">04</span>
+      <div class="milestone-card">
+        <span class="milestone-title">并网协议</span>
+        <span class="milestone-detail">Terna/DSO 连接</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>TICA、加固、计量</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">05</span>
+      <div class="milestone-card">
+        <span class="milestone-title">MACSE 资格</span>
+        <span class="milestone-detail">新建项目、许可、担保</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>拍卖前完成</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">06</span>
+      <div class="milestone-card">
+        <span class="milestone-title">REMIT 报送</span>
+        <span class="milestone-detail">MERIT/ARERA/GME 规则</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>交易与基本面信息</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">07</span>
+      <div class="milestone-card">
+        <span class="milestone-title">FER X（如做发电）</span>
+        <span class="milestone-detail">GSE 招标、NZIA 合规</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>光伏/风电</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">08</span>
+      <div class="milestone-card">
+        <span class="milestone-title">运营系统</span>
+        <span class="milestone-detail">EMS、计量、调度通信</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>可用性与结算</span></div>
+      </div>
+    </li></ol>
+  </figure>
 <ul><li><strong>先定商业模式</strong>：独立储能、共址储能、工商储、发电+储能、还是设备供应；不同模式的准入和合规不同。</li><li><strong>GME 与 Terna 是两道门</strong>：能量市场会员和调度服务注册不是一回事；做储能通常两者都要。</li><li><strong>MACSE 只对新建</strong>：收购存量项目不能直接拿 MACSE；要看清项目是否已中标/是否新造。</li></ul>
 <h3 id="s49">9.2 数据与系统</h3>
 <ul><li><strong>交易系统</strong>：对接 GME 的 MGP/MI/MSD 平台，支持 15 分钟 MTU、分区价格和担保管理。</li><li><strong>调度系统</strong>：对接 Terna 的调度指令，支持 SOC、可用容量、响应时间；BSP 要满足通信/计量要求。</li><li><strong>计量</strong>：关口表、发电表、储能表；数据要满足 GME/Terna 结算规则。</li><li><strong>REMIT</strong>：交易报送、内幕信息、市场滥用监控；跨境主体要明确报送责任。</li></ul>
@@ -263,22 +452,22 @@
 <h2 id="s55">12. 算例（D 级：方法演示，不是投资建议）</h2>
 <h3 id="s56">12.1 MACSE 年收入（合成）</h3>
 <p>假设：100 MW/400 MWh 项目，MACSE 中标价 €12,959/MWh·年。</p>
-<pre><code>年容量收入 = 400 MWh × 12,959 ≈ €5.18m
+<pre tabindex="0"><code>年容量收入 = 400 MWh × 12,959 ≈ €5.18m
 15 年合同名义收入 ≈ 5.18 × 15 ≈ €77.7m（未折现）</code></pre>
 <ul><li>未扣 EPC、并网、运维、退化、保险、税费和融资成本。</li><li>若中标价降到 €8,000/MWh·年，年收入约 €3.2m；价格是项目经济性的核心。</li></ul>
 <h3 id="s57">12.2 价格上限对比（合成）</h3>
 <p>假设同一项目，价格上限 €37,000/MWh·年。</p>
-<pre><code>上限年收入 = 400 × 37,000 = €14.8m
+<pre tabindex="0"><code>上限年收入 = 400 × 37,000 = €14.8m
 首轮均价 / 上限 ≈ 12,959 / 37,000 ≈ 35%</code></pre>
 <ul><li>首轮竞争把价格压到上限的约 35%；这说明“上限”不是可预期的收入。</li><li>若项目按上限报价，中标概率会显著下降。</li></ul>
 <h3 id="s58">12.3 容量市场 + MACSE 叠加（合成）</h3>
 <p>假设：100 MW/400 MWh 项目，MACSE 年收入 €5.18m；容量市场折算系数 40%，出清价 €30,000/MW·年（假设）。</p>
-<pre><code>容量市场收入 = 100 MW × 40% × 30,000 = €1.2m
+<pre tabindex="0"><code>容量市场收入 = 100 MW × 40% × 30,000 = €1.2m
 合计 = 5.18 + 1.2 = €6.38m</code></pre>
 <ul><li>未扣能量/辅助服务收入，也未扣履约和可用性成本。</li><li>容量市场与 MACSE 的可用性义务要协调；不能简单相加。</li></ul>
 <h3 id="s59">12.4 FER X 光伏 CfD（合成）</h3>
 <p>假设：100 MW 光伏，年利用 1,500 小时，执行价 €80/MWh，市场均价 €60/MWh。</p>
-<pre><code>年发电量 = 100 × 1,500 = 150,000 MWh
+<pre tabindex="0"><code>年发电量 = 100 × 1,500 = 150,000 MWh
 CfD 补足 = (80 - 60) × 150,000 = €3.0m</code></pre>
 <ul><li>若市场均价 €90/MWh，项目返还 €1.5m；双向 CfD 封顶/兜底。</li><li>未考虑分区价、弃电、衰减、税费和融资成本。</li></ul>
 <hr>
@@ -414,7 +603,9 @@ CfD 补足 = (80 - 60) × 150,000 = €3.0m</code></pre>
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

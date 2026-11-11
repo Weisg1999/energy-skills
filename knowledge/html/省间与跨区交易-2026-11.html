@@ -15,7 +15,7 @@
 </head>
 <body data-cat="spot" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -109,21 +109,94 @@
 <hr>
 <h2 id="s1">0. 一页看懂</h2>
 <h3 id="s2">0.1 市场分层（四层）</h3>
-<pre><code>全国统一电力市场
-├─ 省间市场（跨省跨区）
-│   ├─ 省间中长期：多年 / 年 / 月 / 月内（2026 年 1-9 月占省间交易 95.1%）
-│   ├─ 省间现货与南方区域现货：日前 / 日内（合计占省间 4.4%）
-│   ├─ 省间绿电、合同转让
-│   └─ 组织：北京、广州电力交易中心 + 国调 / 网调
-├─ 区域市场
-│   ├─ 南方区域：广东、广西、云南、贵州、海南，五省区统一出清
-│   ├─ 长三角：沪苏浙皖闽 + 华东直调，D-3 滚动撮合按自然日连续开市
-│   └─ 京津冀、东北等：模拟 / 互济 / 现货转正推进中
-├─ 省内市场
-│   └─ 省级中长期 + 省级现货 + 辅助服务
-└─ 跨经营区
-    ├─ 国家电网 — 南方电网 — 蒙西电网之间（915 号机制）
-    └─ 云霄直流输电权试点（2026-06-01 起）</code></pre>
+<figure class="tree-diagram" aria-label="全国统一电力市场结构图">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构图 · STRUCTURE</span>
+        <span class="diagram-meta">4 个一级分支</span>
+      </span>
+      <span class="tree-root-title">全国统一电力市场</span>
+
+    </figcaption>
+    <div class="tree-grid"><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">01</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">省间市场（跨省跨区）</span>
+
+      </span>
+    </div>
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">省间中长期</span>
+    <span class="tree-child-detail">多年 / 年 / 月 / 月内（2026 年 1-9 月占省间交易 95.1%）</span>
+
+  </li><li>
+    <span class="tree-child-title">省间现货与南方区域现货</span>
+    <span class="tree-child-detail">日前 / 日内（合计占省间 4.4%）</span>
+
+  </li><li>
+    <span class="tree-child-title">省间绿电、合同转让</span>
+
+
+  </li><li>
+    <span class="tree-child-title">组织</span>
+    <span class="tree-child-detail">北京、广州电力交易中心 + 国调 / 网调</span>
+
+  </li></ul>
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">02</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">区域市场</span>
+
+      </span>
+    </div>
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">南方区域</span>
+    <span class="tree-child-detail">广东、广西、云南、贵州、海南，五省区统一出清</span>
+
+  </li><li>
+    <span class="tree-child-title">长三角</span>
+    <span class="tree-child-detail">沪苏浙皖闽 + 华东直调，D-3 滚动撮合按自然日连续开市</span>
+
+  </li><li>
+    <span class="tree-child-title">京津冀、东北等</span>
+    <span class="tree-child-detail">模拟 / 互济 / 现货转正推进中</span>
+
+  </li></ul>
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">03</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">省内市场</span>
+
+      </span>
+    </div>
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">省级中长期 + 省级现货 + 辅助服务</span>
+
+
+  </li></ul>
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">04</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">跨经营区</span>
+
+      </span>
+    </div>
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">国家电网 — 南方电网 — 蒙西电网之间（915 号机制）</span>
+
+
+  </li><li>
+    <span class="tree-child-title">云霄直流输电权试点（2026-06-01 起）</span>
+
+
+  </li></ul>
+  </article></div>
+
+  </figure>
 <ul><li><strong>四层不是四套孤立市场</strong>：省间中长期是省间现货的边界，省间现货结果是省内现货的边界；区域市场则把&quot;省间 + 省内&quot;合并成一次统一出清。</li><li>&quot;跨省&quot;指同一经营区内部的省与省之间；&quot;跨经营区&quot;指国网、南网、蒙西三张网之间。两者的规则、组织机构和结算路径不同，不能混用。</li><li><strong>2026 年是分水岭</strong>：国办发〔2026〕4 号给出 2030/2035 时间表，省间现货完成&quot;实物交易&quot;修订，南方区域市场正式运行，省间中长期按自然日连续开市。</li></ul>
 <h3 id="s3">0.2 关键数字</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>数字</th><th>含义</th><th>级别</th></tr></thead><tbody><tr><td>2025 年跨省跨区</td><td>1.59 万亿kWh，同比 +11.6%；其中跨经营区 34 亿kWh</td><td>A</td></tr><tr><td>13,037 亿kWh</td><td>2026 年 1-9 月省间交易电量，同比 +9.1%</td><td>A</td></tr><tr><td>12,403 亿kWh</td><td>省间中长期，占省间交易 95.1%</td><td>A</td></tr><tr><td>578 亿kWh</td><td>省间交易中的电力现货（含省间现货、南方区域现货），占省间交易 4.4%</td><td>A</td></tr><tr><td>575 亿kWh</td><td>省间绿电，占省间中长期 4.6%</td><td>A</td></tr><tr><td>70 亿kWh</td><td>跨经营区交易，占省间交易 0.5%（1-8 月 67.7 亿kWh）</td><td>A</td></tr><tr><td>10,897 / 2,141 亿kWh</td><td>北京 / 广州电力交易中心省间交易</td><td>A</td></tr><tr><td>58,536 亿kWh</td><td>2026 年 1-9 月全国市场交易电量，同比 +18.9%</td><td>A</td></tr><tr><td>2024-10-15</td><td>省间电力现货市场转入正式运行</td><td>A</td></tr><tr><td>6,000+ / 880 亿 / 44%</td><td>转正时主体数 / 累计交易电量 / 清洁能源占比</td><td>A/B</td></tr><tr><td>2025-10-13</td><td>两网首次跨经营区现货交易：国网组织浙沪等华东省市购买南方区域现货，最大 180 万kW、4,230 万kWh</td><td>A/B</td></tr><tr><td>2026-04-24</td><td>275 号复函同意修订省间现货规则；2026-04-28 新版规则施行，2021 版废止</td><td>B</td></tr><tr><td>2026-06-15 / 2026-10</td><td>省间中长期按自然日连续开市：首批 17 个地区 → 除西藏外全国覆盖</td><td>B</td></tr><tr><td>2026-10-14</td><td>发改办体改〔2026〕715 号复函（2026-10-28 公开）同意南方区域转正</td><td>A</td></tr><tr><td>2026-10-24</td><td>南方区域电力市场转入正式运行</td><td>A</td></tr><tr><td>29 万</td><td>南方区域市场注册经营主体，约占全国 1/4</td><td>B</td></tr><tr><td>28.62 → 44.22 亿kWh</td><td>南方区域日成交电量（试运行初期 → 连续运行后）</td><td>B</td></tr><tr><td>2.82 亿kW</td><td>南方区域 2026 年 8 月最高负荷</td><td>B</td></tr><tr><td>314 元/MWh</td><td>南方区域 2026 年 8 月零售用户平均结算价，环比 +1.4%</td><td>B</td></tr><tr><td>200 万kW / 2.3 亿元</td><td>云霄直流额定容量 / 年容量电费</td><td>B</td></tr><tr><td>25.6–100 元/MWh</td><td>云霄直流输电权报价下限 / 上限</td><td>B</td></tr><tr><td>0.81–8.36 分/kWh</td><td>2027 年跨省跨区专项工程输电价区间</td><td>B</td></tr><tr><td>不超过 3 分/kWh</td><td>2027 年送出省输电价原则上限（特殊安排除外）</td><td>B</td></tr><tr><td>5.83% / 6.489 分</td><td>青豫直流线损率 / 输电价</td><td>B</td></tr><tr><td>2.78 亿kW</td><td>2026-07-14 跨省跨区跨网最大输送电力</td><td>B</td></tr><tr><td>70%</td><td>2030 年市场化交易电量占全社会用电量目标</td><td>A</td></tr></tbody></table></div>
@@ -132,7 +205,7 @@
 <hr>
 <h2 id="s5">1. 文件体系与市场分层</h2>
 <h3 id="s6">1.1 三个层次的文件</h3>
-<pre><code>国家层：电力市场运行基本规则（20 号令）
+<pre tabindex="0"><code>国家层：电力市场运行基本规则（20 号令）
         + 电力中长期市场基本规则（1656 号）
         + 电力现货市场基本规则（2023 试行；2026-10 公开征求意见，拟 2027-01-01 施行）
         + 关于完善全国统一电力市场体系的实施意见（国办发〔2026〕4 号）
@@ -155,10 +228,20 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>省间中长期</th><th>省内中长期</th></tr></thead><tbody><tr><td>交易标的</td><td>跨省关口分时电量与曲线</td><td>省内分时电量</td></tr><tr><td>价格构成</td><td>电能价 + 多环节输电价 + 网损</td><td>电能价 + 省级输配电价</td></tr><tr><td>组织机构</td><td>北京 / 广州电力交易中心</td><td>省级电力交易中心</td></tr><tr><td>输电约束</td><td>ATC、安全校核、优先计划</td><td>省内断面与机组约束</td></tr><tr><td>偏差处理</td><td>合同转让、现货对冲、偏差考核</td><td>省内规则，通常可合同转让</td></tr><tr><td>绿电</td><td>省间绿电，环境价值单列</td><td>省内绿电，D-3 滚动撮合</td></tr></tbody></table></div>
 <h3 id="s11">2.2 组织与时序</h3>
 <ul><li><strong>年度交易</strong>：锁定次年基本盘，通常在年底前完成；大用户、售电公司、发电企业按年度双边或集中竞价签约。</li><li><strong>月度交易</strong>：按月补充或调整；年度合同分解到月，月度交易修正偏差。</li><li><strong>月内交易</strong>：旬、周、多日；2026-06-15 起，17 个地区（山东、浙江、山西、安徽、河南、江西、辽宁、吉林、黑龙江、蒙东、陕西、甘肃、青海、宁夏、新疆、四川、重庆）按自然日连续开市，打破&quot;只在工作日开市&quot;的限制；原计划 2026 年底前覆盖国网经营区，2026-10-30 国家能源局季度发布会称除西藏外已全国覆盖，交易时间由约 250 个工作日扩展到 365 个自然日。&quot;五一&quot;试点成交 13.87 亿kWh、增加东北外送电力 450 万kW；度夏期间全国新增市场交易电量约 240 亿kWh（A/B）。</li><li><strong>与现货的衔接</strong>：中长期形成送受电预计划与通道占用，现货在剩余通道能力上做边际调整；中长期曲线越准，现货偏差越小。</li></ul>
-<pre><code>年度 / 月度：锁定电量与价格 → 形成送受电预计划
-月内多日：滚动撮合 → 修正分时曲线
-D-1：省间现货出清 → 形成联络线计划
-D 日：省间日内 → 省内实时 → 调度执行</code></pre>
+<figure class="diagram-blueprint">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构示意 · DIAGRAM</span>
+        <span class="diagram-meta">可横向滚动</span>
+      </span>
+    </figcaption>
+    <div class="diagram-canvas" tabindex="0" role="group" aria-label="结构示意图">
+      <pre>年度 / 月度：锁定电量与价格 <span class="d-arrow">→</span> 形成送受电预计划
+月内多日：滚动撮合 <span class="d-arrow">→</span> 修正分时曲线
+D-1：省间现货出清 <span class="d-arrow">→</span> 形成联络线计划
+D 日：省间日内 <span class="d-arrow">→</span> 省内实时 <span class="d-arrow">→</span> 调度执行</pre>
+    </div>
+  </figure>
 <ul><li><strong>注意</strong>：17 个首批地区名单已明确（见上）；每日开市时段、交易品种、各省申报限额与出清频次，仍以北京电力交易中心公告和各省细则为准（B）。</li></ul>
 <h3 id="s12">2.3 价格、合同与结算</h3>
 <ul><li><strong>价格形成</strong>：双边协商或集中竞价；年度长协通常参考送受端供需、煤电基准价、新能源机制电价与通道成本。</li><li><strong>合同要素</strong>：分时电量、分时价格、结算参考点、执行期、曲线形成方式、输电费分担、偏差处理。1656 号要求经营主体约定合同曲线或曲线形成方式，并约定分时电量、分时价格、结算参考点。</li><li><strong>结算参考点</strong>：决定送端/受端按哪个节点价格结算；省间合同通常约定送端关口或受端关口，跨经营区还要约定两网清算路径。</li><li><strong>偏差处理</strong>：合同转让、发电权置换、省间现货对冲、偏差考核；具体阈值与考核标准以省间细则和合同为准。</li><li><strong>绿电环境价值</strong>：电能量价格之外单列，不纳入峰谷分时电价和力调电费计算（B）。</li></ul>
@@ -181,7 +264,7 @@ D 日：省间日内 → 省内实时 → 调度执行</code></pre>
 <ul><li>2026 版规则自 2026-04-28 起执行：经营主体申报电力最小单位 1 MW，价格最小单位 1 元/MWh，最高申报价为省内市场价上限的 2 倍；日内交易改为以 1 小时为固定周期（以江西落地安排为例），2021 版&quot;每日 12 次、每段 2 小时&quot;不再适用（B）。</li><li>各省落地的最低申报价不同（江西暂定 0 元/MWh），申报截止时间也可能调整，交易前必须查当期规则与交易中心公告（B）。</li><li><strong>安全校核</strong>：省间出清结果必须通过 N-1 与稳定限额校核；通道可用容量（ATC）是硬约束，不是&quot;报价高就能送&quot;。</li></ul>
 <h3 id="s20">3.4 出清与价格</h3>
 <ul><li><strong>输入</strong>：卖方报价、买方报价、通道可用容量、输电价、网损率、安全约束、优先计划。</li><li><strong>折算</strong>：把两端报价折算到同一价格基准，再按报价排序、满足通道与安全约束形成成交。</li><li><strong>出清</strong>：2021 版规则采用集中竞价、边际出清；2026 修订版延续集中出清框架，具体算法以现行规则为准。</li><li><strong>价格上下限</strong>：2026 版规则设定最高申报价为省内市场价上限的 2 倍；报价最小单位 1 元/MWh；最低申报价由各省落地细则确定（江西暂定 0 元/MWh），不能沿用 2021 版限价。</li><li><strong>阻塞</strong>：通道剩余能力不足时，送受端价差扩大；输电权是分配稀缺通道的新工具。</li></ul>
-<pre><code>买方在送端的等效报价
+<pre tabindex="0"><code>买方在送端的等效报价
   = (受端报价 − 专项工程输电价 − 区域电网电价 − 送出省输电价) × (1 − 线损率)
 
 卖方在受端的等效报价
@@ -216,7 +299,7 @@ D 日：省间日内 → 省内实时 → 调度执行</code></pre>
 <hr>
 <h2 id="s33">6. 输电价与落地成本</h2>
 <h3 id="s34">6.1 一笔跨省电的构成</h3>
-<pre><code>用户落地成本 = 市场交易价格
+<pre tabindex="0"><code>用户落地成本 = 市场交易价格
              + 送出省输电价格及损耗
              + 区域电网电量电价及损耗
              + 跨省跨区专项工程输电价格及损耗
@@ -241,11 +324,21 @@ D 日：省间日内 → 省内实时 → 调度执行</code></pre>
 <h3 id="s41">7.1 边界怎么传</h3>
 <ul><li><strong>省间中长期 → 省间现货</strong>：中长期合同形成送受电预计划与通道占用，是省间现货的边界。</li><li><strong>省间现货 → 省内现货</strong>：省间出清结果作为省内联络线计划与边界；2026 现货基本规则草案明确，跨省跨区交易卖方结果作为送端关口负荷增量，买方成交结果作为受端关口电源。</li><li><strong>省内预出清 → 省间申报</strong>：省内预平衡结果支撑省间出清；省间结果下发后，省内再出清，形成闭环。</li><li><strong>实时</strong>：省间日内调整联络线计划，省内实时市场按最新边界出清。</li></ul>
 <h3 id="s42">7.2 时序示意</h3>
-<pre><code>D-3 / D-2  省间中长期（月内 / 多日）滚动成交 → 送受电预计划
-D-1 上午   省间日前现货申报 → 安全校核 → 集中出清
-D-1 下午   省间结果下发 → 省内日前市场边界
-D-1 晚间   省内日前出清 → 机组开机与出力计划
-D 日       省间日内（按小时滚动）→ 省内实时 → 调度执行</code></pre>
+<figure class="diagram-blueprint">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构示意 · DIAGRAM</span>
+        <span class="diagram-meta">可横向滚动</span>
+      </span>
+    </figcaption>
+    <div class="diagram-canvas" tabindex="0" role="group" aria-label="结构示意图">
+      <pre>D-3 / D-2  省间中长期（月内 / 多日）滚动成交 <span class="d-arrow">→</span> 送受电预计划
+D-1 上午   省间日前现货申报 <span class="d-arrow">→</span> 安全校核 <span class="d-arrow">→</span> 集中出清
+D-1 下午   省间结果下发 <span class="d-arrow">→</span> 省内日前市场边界
+D-1 晚间   省内日前出清 <span class="d-arrow">→</span> 机组开机与出力计划
+D 日       省间日内（按小时滚动）<span class="d-arrow">→</span> 省内实时 <span class="d-arrow">→</span> 调度执行</pre>
+    </div>
+  </figure>
 <ul><li>这是示意时序，具体时限以现行省间规则、省内规则和调度机构公告为准。</li><li><strong>时序错配是省间与省内衔接的主要摩擦点</strong>：省间出清早于省内，省内预出清又要支撑省间，形成&quot;先有鸡还是先有蛋&quot;的循环，需要按规则分层迭代。</li></ul>
 <h3 id="s43">7.3 2026 年规则的衔接要求</h3>
 <ul><li><strong>实物交易</strong>：省间现货交易对应实际输电路径，不再是纯财务安排。</li><li><strong>严禁隐性壁垒</strong>：省间价格信号必须被省内市场接纳或消化，地方不得设置行政障碍。</li><li><strong>统一报价、联合交易</strong>：国办 4 号提出，各层次市场从&quot;各自报价、各自交易&quot;逐步转向&quot;统一报价、联合交易&quot;；目标是<strong>到 2030 年跨省跨区和省内实现联合交易</strong>，不是&quot;2030 年前逐步实现&quot;。</li><li><strong>一地注册、全国共享</strong>：主体一次注册即可参与多层市场；但结算与偏差责任仍按市场分层处理。</li><li><strong>衔接要素</strong>：参与主体、时段划分、组织时序、偏差处理、注册、申报、出清、信息披露。</li></ul>
@@ -410,7 +503,9 @@ D 日       省间日内（按小时滚动）→ 省内实时 → 调度执行</
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

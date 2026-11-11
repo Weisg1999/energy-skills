@@ -15,7 +15,7 @@
 </head>
 <body data-cat="skill" id="top">
 <a class="skip" href="#main">Skip to content</a>
-<div class="progress" id="progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -140,7 +140,7 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Symbol</th><th>Meaning</th><th>Unit</th></tr></thead><tbody><tr><td>t ∈ T</td><td>Interval, Δt = 0.25 h (96 points) or 1 h (24 points)</td><td>h</td></tr><tr><td>s ∈ S</td><td>Storage station/unit</td><td>—</td></tr><tr><td>r ∈ R</td><td>Market product: energy, regulation, reserve, ramping</td><td>—</td></tr><tr><td>P_ch_max, P_dis_max</td><td>Maximum charge/discharge power</td><td>kW or MW</td></tr><tr><td>E_cap</td><td>Rated energy</td><td>kWh or MWh</td></tr><tr><td>SOC_min, SOC_max</td><td>SOC operating window</td><td>p.u.</td></tr><tr><td>η_ch, η_dis</td><td>Charge/discharge efficiency</td><td>p.u.</td></tr><tr><td>c_buy, c_sell</td><td>Buy/sell price</td><td>CNY/kWh or CNY/MWh</td></tr><tr><td>c_deg</td><td>Degradation cost per kWh throughput</td><td>CNY/kWh</td></tr><tr><td>D</td><td>Billed demand</td><td>kW</td></tr></tbody></table></div>
 <p><strong>Unit discipline</strong>: the kernel uses kW, kWh and CNY/kWh; the station wrapper uses MW, MWh and CNY/MWh. Conversion happens only in the wrapper; units are never mixed inside the model.</p>
 <h3 id="s12">2.2 Objective (minimize net cost)</h3>
-<pre><code>min  Σ_t [ c_buy(t)·p_imp(t)·Δt − c_sell(t)·p_exp(t)·Δt ]
+<pre tabindex="0"><code>min  Σ_t [ c_buy(t)·p_imp(t)·Δt − c_sell(t)·p_exp(t)·Δt ]
    + c_dem·D
    + c_deg·Σ_t (p_ch(t) + p_dis(t))·Δt
    + c_curt·Σ_t pv_curt(t)·Δt
@@ -170,12 +170,12 @@
 <h3 id="s22">4.1 PCC and export blocking</h3>
 <ul><li>Import and export must be two non-negative variables with mutual exclusion, not one signed net-power variable: otherwise a negative spread produces fake simultaneous import and export.</li><li>When a behind-the-meter site or co-located plant cannot export, set <code>p_exp_max = 0</code>; surplus PV can only be curtailed. Whether curtailment is penalized follows the contract and rules, never assume it is free.</li><li>Separate the physical service from the billing threshold: 900 kW may be the service capacity while 840 kW is the 105% demand line. Merging them into one &quot;PCC limit&quot; makes the bill impossible to explain.</li></ul>
 <h3 id="s23">4.2 BMS/PCS and derating</h3>
-<pre><code>P_available = min(P_PCS, P_BMS, P_PCC) × derate × SOH
+<pre tabindex="0"><code>P_available = min(P_PCS, P_BMS, P_PCC) × derate × SOH
 E_available = (SOC_max − SOC_min) × E_rated × SOH
 duration    = E_available / P_available</code></pre>
 <p>Temperature and SOH are slow variables, updated daily or hourly; never re-optimize an electrochemical model inside a 15-minute interval. EMS commands must pass BMS/PCS limit checks before dispatch.</p>
 <h3 id="s24">4.3 Capacity-price eligibility</h3>
-<pre><code>compensated capacity = min(listed capacity, available capacity) × duration factor × availability
+<pre tabindex="0"><code>compensated capacity = min(listed capacity, available capacity) × duration factor × availability
 duration factor = min(full-power discharge duration ÷ provincial denominator, 1)</code></pre>
 <p>Document 114 (NDRC price〔2026〕No. 114) gives the framework; provincial rules give the denominator and assessment threshold. <strong>No payment outside the list</strong>; availability is measured over the assessment period; common denominators are 4/6/8/10 h. The ratio is capped at 1, so a 2-hour system cannot earn the full 1.0.</p>
 <h3 id="s25">4.4 Safety interlocks</h3>
@@ -211,7 +211,7 @@ duration factor = min(full-power discharge duration ÷ provincial denominator, 1
 <p>The day-ahead plan may use only day-ahead information; intraday rolling may use only observations available at decision time. <strong>Non-anticipativity is a data-pipeline problem, not a solver problem</strong>: leaking future measurements into features produces beautiful but unreproducible backtests.</p>
 <h3 id="s38">6.5 Fallback ladder and islanding</h3>
 <p>Timeout → return the best feasible solution so far; infeasible → output a conflicting-constraint diagnosis (SOC, PCC, reserve, power); numerical failure → roll back the previous plan and alarm. For islanding, check energy first:</p>
-<pre><code>island energy need = Σ load × Δt
+<pre tabindex="0"><code>island energy need = Σ load × Δt
 available energy  = (SOC − SOC_min) × E_rated × SOH
 feasible if: available energy ≥ need × (1 + reserve ratio)</code></pre>
 <p>Enough energy is only necessary; also check maximum power, ramping and the black-start sequence (microgrid note §4.11).</p>
@@ -224,7 +224,7 @@ feasible if: available energy ≥ need × (1 + reserve ratio)</code></pre>
 <p>Billed demand takes the maximum purchase power; export does not offset it; the portion above 105% of the contracted value is usually billed at double. Example at 40 CNY/kW·month, 800 kW contracted, 840 kW threshold:</p>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Case</th><th>Maximum purchase</th><th>Billed demand</th><th>Monthly basic charge (CNY)</th></tr></thead><tbody><tr><td>No storage</td><td>878.54 kW (38.54 kW above threshold)</td><td>800 + 2 × 38.54 = 877.07</td><td>35,082.99</td></tr><tr><td>Storage, 840 kW cap</td><td>838.50 kW</td><td>800</td><td>32,000.00</td></tr><tr><td>Monthly saving</td><td>—</td><td>—</td><td>3,082.99 (about 102.77 CNY/day)</td></tr></tbody></table></div>
 <p><strong>Charging raises demand</strong>: with 400 kW valley load, charging at full 500 kW makes purchase 900 kW, <code>over = 60 kW</code>, and the basic charge becomes 36,800 CNY/month — 1,717.01 CNY/month more than without storage. Hence the valley charging cap:</p>
-<pre><code>p_ch ≤ 1.05·D_set − P_load_valley   (here 840 − 400 = 440 kW)</code></pre>
+<pre tabindex="0"><code>p_ch ≤ 1.05·D_set − P_load_valley   (here 840 − 400 = 440 kW)</code></pre>
 <p>Demand and arbitrage must be solved in one model; fixing charging power after an energy-only optimum pushes the charging window into more expensive intervals.</p>
 <h3 id="s42">7.3 DC and AC calibres</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Calibre</th><th>Definition</th><th>Common error</th></tr></thead><tbody><tr><td>Rated energy</td><td>Nameplate kWh/MWh</td><td>Treating it as usable energy</td></tr><tr><td>Usable DC energy</td><td>(SOC_max − SOC_min) × rated × SOH</td><td>Treating it as discharge energy</td></tr><tr><td>AC discharge energy</td><td>Usable DC energy × η_dis</td><td>Missing one factor of eta</td></tr><tr><td>AC charge energy</td><td>Usable DC energy ÷ η_ch</td><td>Missing one factor of eta</td></tr></tbody></table></div>
@@ -268,7 +268,7 @@ feasible if: available energy ≥ need × (1 + reserve ratio)</code></pre>
 <hr>
 <h2 id="s56">10. Formulas and Code Mapping</h2>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Formula/model</th><th>Code</th></tr></thead><tbody><tr><td>Daily dispatch (SOC-grid DP)</td><td><code>dispatch.dispatch_day()</code></td></tr><tr><td>No-storage baseline</td><td><code>dispatch.baseline_day()</code></td></tr><tr><td>Station MW/MWh dispatch</td><td><code>storage.station_day()</code></td></tr><tr><td>Single cycle and round-trip efficiency</td><td><code>storage.arbitrage_cycle()</code></td></tr><tr><td>Curtailment charging</td><td><code>storage.curtailment_charge()</code></td></tr><tr><td>Available power/energy/duration</td><td><code>storage.capability()</code></td></tr><tr><td>Capacity payment and conversion</td><td><code>market.capacity_payment()</code></td></tr><tr><td>Regulation capacity + mileage</td><td><code>market.frequency_regulation()</code></td></tr><tr><td>Demand bill and saving</td><td><code>market.demand_bill()</code> / <code>demand_saving()</code></td></tr><tr><td>Microgrid dispatch and baseline</td><td><code>microgrid.microgrid_day()</code> / <code>baseline_day()</code></td></tr><tr><td>Island energy check</td><td><code>microgrid.island_energy_need()</code> / <code>island_feasible()</code></td></tr><tr><td>Synthetic curves</td><td><code>curves.storage_day_prices()</code> / <code>microgrid_day()</code> / <code>user_day()</code></td></tr></tbody></table></div>
-<pre><code>import dispatch, market, microgrid, curves, storage
+<pre tabindex="0"><code>import dispatch, market, microgrid, curves, storage
 
 # Station: 100 MW / 200 MWh, RTE 88%, 24-point peak-valley prices
 prices = curves.storage_day_prices()
@@ -286,7 +286,7 @@ print(base[&quot;cost&quot;] - plan[&quot;cost&quot;])                  # 883.59
 <hr>
 <h2 id="s58">12. Reference Implementation and Self-Test</h2>
 <ul><li>Directory: <code>tools/</code>, standard library only, zero dependencies.</li><li>Run:</li></ul>
-<pre><code>python skills/ems-dispatch/tools/selftest.py</code></pre>
+<pre tabindex="0"><code>python skills/ems-dispatch/tools/selftest.py</code></pre>
 <ul><li>Assertions cover:<ul><li>Storage station: 150.09/170.56 MWh, gross arbitrage 100,971.86, degradation 9,619.62, net 91,352.24, capacity payment 15,068.49, total 106,420.74, 88,420.85 at RTE 85%;</li><li>Behind-the-meter: charge 8.5280 MWh, discharge 7.5047 MWh, net 4,414.11, demand 520,000 → 400,000 CNY/month, total 8,414.11;</li><li>Co-located: stored 28.14 MWh, discharge 26.40 MWh, net 14,148 / 9,648;</li><li>Capability: 418.95 kW / 735.00 kWh / 1.7544 h;</li><li>Microgrid: baseline 7,408.72, optimized 6,525.12, peak 838.50 kW, throughput 3,086.56 kWh, 1.5433 cycles, saving 883.59 (11.93%);</li><li>Sensitivities: degradation 6,617.72, storage +20% 6,350.61, 900 kW cap 6,519.97, reserve energy 6,663.52;</li><li>Demand: 35,082.99 → 32,000.00 CNY/month, saving 3,082.99, full charge 36,800, charging cap 440 kW;</li><li>Islanding: 100 kWh need feasible with 10% reserve, and an energy shortfall is flagged correctly.</li></ul></li></ul>
 <aside class="note"><p>The tool is a <strong>screening tool</strong>, not a settlement system: it does not handle provincial assessment rules, taxes, complex financing, network security constraints or real-time tracking. Live operation must be recomputed with provincial rules, measured curves and equipment parameters.</p></aside>
 <hr>
@@ -429,7 +429,9 @@ print(base[&quot;cost&quot;] - plan[&quot;cost&quot;])                  # 883.59
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="Back to top">↑</a>
+<nav class="page-aux" aria-label="Page utilities">
+  <a class="to-top" href="#top" aria-label="Back to top">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

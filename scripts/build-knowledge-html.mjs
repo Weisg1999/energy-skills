@@ -22,6 +22,7 @@ import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { nav, sectionTitlesEn, sections, site, skillDocs } from './knowledge.config.mjs';
 import { buildIndex, serializeIndex } from './credibility.mjs';
+import { CURATED_ARCH_IDS, renderCuratedArchitecture } from './architecture-diagrams.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const knowledgeDir = join(root, 'knowledge');
@@ -370,7 +371,7 @@ function parseList(lines, start) {
   return { items, next: j };
 }
 
-function renderList(items) {
+function renderList(items, options = {}) {
   if (!items.length) return '';
   const base = Math.min(...items.map((i) => i.indent));
   const tag = items.find((i) => i.indent === base)?.ordered ? 'ol' : 'ul';
@@ -378,7 +379,14 @@ function renderList(items) {
   let k = 0;
   while (k < items.length) {
     if (items[k].indent > base) { k += 1; continue; }
-    const text = inline(emphasizeLead(items[k].text.join(' ')));
+    const raw = items[k].text.join(' ');
+    const special = options.special ? options.special(raw) : null;
+    if (special) {
+      out += `<li class="list-figure">${special}</li>`;
+      k += 1;
+      continue;
+    }
+    const text = inline(emphasizeLead(raw));
     k += 1;
     const kids = [];
     while (k < items.length && items[k].indent > base) { kids.push(items[k]); k += 1; }
@@ -444,8 +452,373 @@ function renderPolicyBar(policy) {
     </div>`;
 }
 
+/* ------------------------------------------------------------ 结构图 */
+
+const DIAGRAM_GLYPHS = /[─│┌┐└┘├┤┬┴┼→←↔▲▼◀▶]/;
+
+function splitDiagramText(raw) {
+  const text = String(raw || '').trim();
+  let m = text.match(/^(.{1,32}?)[：:]\s*(.+)$/);
+  if (m) return { title: m[1].trim(), detail: m[2].trim() };
+  m = text.match(/^(.{1,24}?)\s*(?:→|⟶|──>|->)\s*(.+)$/);
+  if (m) return { title: m[1].trim(), detail: m[2].trim() };
+  m = text.match(/^(.{1,24}?)\s{2,}(.+)$/);
+  if (m) return { title: m[1].trim(), detail: m[2].trim() };
+  return { title: text.replace(/[：:]$/, '').trim(), detail: '' };
+}
+
+function renderTreeChildren(children) {
+  if (!children.length) return '';
+  return `<ul class="tree-children">${children.map((node) => `<li>
+    <span class="tree-child-title">${inline(node.title)}</span>
+    ${node.detail ? `<span class="tree-child-detail">${inline(node.detail)}</span>` : ''}
+    ${renderTreeChildren(node.children)}
+  </li>`).join('')}</ul>`;
+}
+
+function renderTreeDiagram(body, isEn) {
+  const lines = body.split('\n').map((line) => line.replace(/\s+$/, '')).filter((line) => line.trim());
+  const branches = lines.filter((line) => /[├└]/.test(line));
+  if (branches.length < 2) return null;
+  if (lines.some((line) => /[┌┐]/.test(line) || /[▲▼◀▶]/.test(line) || /─{3,}/.test(line))) return null;
+
+  const groups = [];
+  let current = null;
+  for (const line of lines) {
+    const m = line.match(/^([ \t│]*)([├└])(?:[─-]+)?\s*(.*)$/);
+    if (!m) {
+      current = { root: { ...splitDiagramText(line.trim()), children: [] }, flat: [] };
+      groups.push(current);
+      continue;
+    }
+    if (!current) {
+      current = { root: { title: isEn ? 'Structure' : '结构一览', detail: '', children: [] }, flat: [] };
+      groups.push(current);
+    }
+    const prefix = m[1].replace(/\t/g, '    ');
+    current.flat.push({ rawLevel: Math.ceil(prefix.length / 4), ...splitDiagramText(m[3]), children: [] });
+  }
+
+  for (const group of groups) {
+    if (!group.flat.length) continue;
+    const min = Math.min(...group.flat.map((node) => node.rawLevel));
+    for (const node of group.flat) node.level = node.rawLevel - min + 1;
+    const stack = [{ level: 0, children: group.root.children }];
+    for (const node of group.flat) {
+      while (stack.length && stack[stack.length - 1].level >= node.level) stack.pop();
+      const parent = stack[stack.length - 1] || stack[0];
+      parent.children.push(node);
+      stack.push(node);
+    }
+  }
+
+  const treeGroups = groups.filter((group) => group.root.children.length);
+  if (!treeGroups.length) return null;
+  const notes = groups.filter((group) => !group.root.children.length)
+    .map((group) => [group.root.title, group.root.detail].filter(Boolean).join('：'))
+    .filter(Boolean);
+  const renderCards = (nodes) => nodes.map((node, idx) => `<article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">${String(idx + 1).padStart(2, '0')}</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">${inline(node.title)}</span>
+        ${node.detail ? `<span class="tree-node-detail">${inline(node.detail)}</span>` : ''}
+      </span>
+    </div>
+    ${renderTreeChildren(node.children)}
+  </article>`).join('');
+
+  const multi = treeGroups.length > 1;
+  const main = treeGroups[0];
+  const title = multi ? (isEn ? 'Structure overview' : '结构总览') : main.root.title;
+  const detail = multi ? '' : main.root.detail;
+  const branchCount = treeGroups.reduce((sum, group) => sum + group.root.children.length, 0);
+  const meta = multi
+    ? `${treeGroups.length} ${isEn ? 'parts' : '个部分'}`
+    : `${branchCount} ${isEn ? (branchCount === 1 ? 'branch' : 'branches') : '个一级分支'}`;
+  const grid = multi
+    ? `<div class="tree-groups">${treeGroups.map((group, idx) => `<section class="tree-group">
+      <div class="tree-group-head">
+        <span class="tree-group-index" aria-hidden="true">${String(idx + 1).padStart(2, '0')}</span>
+        <span class="tree-group-title">${inline(group.root.title)}</span>
+        ${group.root.detail ? `<span class="tree-group-detail">${inline(group.root.detail)}</span>` : ''}
+      </div>
+      <div class="tree-grid">${renderCards(group.root.children)}</div>
+    </section>`).join('')}</div>`
+    : `<div class="tree-grid">${renderCards(main.root.children)}</div>`;
+
+  return `<figure class="tree-diagram" aria-label="${esc(title)}${isEn ? ' structure map' : '结构图'}">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">${isEn ? 'System map · STRUCTURE' : '结构图 · STRUCTURE'}</span>
+        <span class="diagram-meta">${meta}</span>
+      </span>
+      <span class="tree-root-title">${inline(title)}</span>
+      ${detail ? `<span class="tree-root-detail">${inline(detail)}</span>` : ''}
+    </figcaption>
+    ${grid}
+    ${notes.length ? `<p class="diagram-note">${notes.map((note) => inline(note)).join('；')}</p>` : ''}
+  </figure>`;
+}
+
+function renderFlowFigure(steps, isEn, note = '', options = {}) {
+  const notes = (Array.isArray(note) ? note : String(note || '').split('；'))
+    .map((item) => item.trim())
+    .filter(Boolean);
+  const variant = options.variant ? ` is-${options.variant}` : '';
+  const title = options.title ? `<span class="diagram-title">${inline(options.title)}</span>` : '';
+  return `<figure class="flow-diagram${variant}" aria-label="${esc(options.title || (isEn ? 'Process flow' : '流程示意'))}">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">${esc(options.kicker || (isEn ? 'Step flow · FLOW' : '流程 · FLOW'))}</span>
+        <span class="diagram-meta">${steps.length} ${isEn ? 'steps' : '个步骤'}</span>
+      </span>
+      ${title}
+    </figcaption>
+    <ol class="flow-steps">${steps.map((step, idx) => `<li>
+      <span class="flow-index" aria-hidden="true">${String(idx + 1).padStart(2, '0')}</span>
+      <span class="flow-text">${inline(step.title)}</span>
+      ${step.points.length ? `<ul class="flow-points">${step.points.map((point) => `<li>${inline(point)}</li>`).join('')}</ul>` : ''}
+    </li>`).join('')}</ol>
+    ${notes.length ? `<div class="flow-note">${notes.map((item) => `<span class="flow-note-item">${inline(item)}</span>`).join('')}</div>` : ''}
+  </figure>`;
+}
+
+function renderFlowDiagram(body, isEn) {
+  const lines = body.split('\n').map((line) => line.trim()).filter(Boolean);
+  if (lines.length !== 1) return null;
+  const parts = lines[0].split(/\s*(?:→|⟶|──>|->)\s*/).map((part) => part.trim()).filter(Boolean);
+  if (parts.length < 3) return null;
+  return renderFlowFigure(parts.map((title) => ({ title, points: [] })), isEn);
+}
+
+function renderVerticalFlow(body, isEn) {
+  if (/[┌┐└┘├┤┬┴┼─]/.test(body)) return null;
+  const rawLines = body.split('\n').map((line) => line.trim()).filter(Boolean);
+  if (rawLines.length < 3) return null;
+  const arrowLead = rawLines.slice(1).every((line) => /^(?:→|⟶|──>|->)/.test(line));
+  const hasDown = rawLines.some((line) => /^[│\s]*[↓▲▼]/.test(line));
+  if (!arrowLead && !hasDown) return null;
+  const arrowCount = (body.match(/[→⟶↓▲▼]/g) || []).length;
+  if (arrowCount < 2) return null;
+
+  const steps = [];
+  let pending = [];
+  const pushText = (text) => {
+    const parts = text.split(/\s*(?:→|⟶|──>|->)\s*/).map((part) => part.trim()).filter(Boolean);
+    for (const part of parts) {
+      steps.push({ title: part, points: pending });
+      pending = [];
+    }
+  };
+  for (const line of rawLines) {
+    if (/^[│\s]*[↓▲▼]\s*(.*)$/.test(line) || /^│/.test(line)) {
+      const note = line.replace(/^[│\s]*[↓▲▼]?\s*/, '').replace(/^[│\s]+/, '').trim();
+      if (note) pending.push(note);
+      continue;
+    }
+    pushText(line.replace(/^(?:→|⟶|──>|->)\s*/, ''));
+  }
+  if (steps.length < 3) return null;
+  return renderFlowFigure(steps, isEn, pending.join(' '));
+}
+
+function renderColumnFlow(body, isEn) {
+  if (/[┌┐]/.test(body)) return null;
+  const lines = body.split('\n').map((line) => line.trim()).filter(Boolean);
+  if (lines.length < 3) return null;
+  const head = lines[0].split(/\s{2,}/).map((part) => part.trim()).filter(Boolean);
+  if (head.length < 3) return null;
+  const pure = (line) => /^[\s│─┼┬┴┐┘└]+$/.test(line);
+  const content = lines.slice(1).filter((line) => !pure(line));
+  const rows = [];
+  const notes = [];
+  for (const line of content) {
+    const cols = line.split(/\s{2,}/).map((part) => part.trim()).filter(Boolean);
+    if (cols.length === head.length) rows.push(cols);
+    else if (cols.length === 1) notes.push(cols[0]);
+    else return null;
+  }
+  if (!rows.length) return null;
+  const steps = head.map((title, idx) => ({
+    title,
+    points: rows.map((row) => row[idx]).filter(Boolean),
+  }));
+  const note = notes.join(' ')
+    .replace(/^[└┌─\s]+/, '')
+    .replace(/[─┘┐\s]+$/, '')
+    .trim();
+  return renderFlowFigure(steps, isEn, note);
+}
+
+function renderDiagramBlueprint(body, isEn) {
+  const decorated = esc(body).replace(/[─│┌┐└┘├┤┬┴┼→←↔▲▼◀▶]/g, (char) => {
+    const kind = /[→←↔▲▼◀▶]/.test(char) ? 'd-arrow' : 'd-line';
+    return `<span class="${kind}">${char}</span>`;
+  });
+  return `<figure class="diagram-blueprint">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">${isEn ? 'Schematic · DIAGRAM' : '结构示意 · DIAGRAM'}</span>
+        <span class="diagram-meta">${isEn ? 'Scroll horizontally' : '可横向滚动'}</span>
+      </span>
+    </figcaption>
+    <div class="diagram-canvas" tabindex="0" role="group" aria-label="${isEn ? 'Schematic diagram' : '结构示意图'}">
+      <pre>${decorated}</pre>
+    </div>
+  </figure>`;
+}
+
+function renderAsciiDiagram(body, isEn) {
+  if (!DIAGRAM_GLYPHS.test(body)) return null;
+  const tree = renderTreeDiagram(body, isEn);
+  if (tree) return tree;
+  const columnFlow = renderColumnFlow(body, isEn);
+  if (columnFlow) return columnFlow;
+  const flow = renderFlowDiagram(body, isEn);
+  if (flow) return flow;
+  const verticalFlow = renderVerticalFlow(body, isEn);
+  if (verticalFlow) return verticalFlow;
+  return renderDiagramBlueprint(body, isEn);
+}
+
+/* ------------------------------------------------------------ 落地路径 */
+
+function splitMilestoneText(raw) {
+  const text = String(raw || '').trim();
+  let m = text.match(/^(.{1,32}?)[：:]\s*(.+)$/);
+  if (m) return { title: m[1].trim(), detail: m[2].trim() };
+  m = text.match(/^(.{1,24}?)[，,]\s*(.+)$/);
+  if (m) return { title: m[1].trim(), detail: m[2].trim() };
+  return { title: text, detail: '' };
+}
+
+function renderMilestoneFigure(steps, kind, isEn) {
+  const isGrid = kind === 'grid';
+  return `<figure class="milestone-diagram" aria-label="${isEn ? (isGrid ? 'Grid connection milestones' : 'Market entry roadmap') : (isGrid ? '并网流程' : '市场进入路径')}">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">${isEn ? (isGrid ? 'Grid connection · MILESTONES' : 'Market entry · ROADMAP') : (isGrid ? '并网流程 · MILESTONES' : '进入路径 · ROADMAP')}</span>
+        <span class="diagram-meta">${steps.length} ${isEn ? 'steps' : '个步骤'}</span>
+      </span>
+    </figcaption>
+    <ol class="milestone-list">${steps.map((step, idx) => `<li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">${String(idx + 1).padStart(2, '0')}</span>
+      <div class="milestone-card">
+        <span class="milestone-title">${inline(step.title)}</span>
+        ${step.detail ? `<span class="milestone-detail">${inline(step.detail)}</span>` : ''}
+        ${step.tracks && step.tracks.length ? `<div class="milestone-tracks">${step.tracks.map((track) => `<div class="milestone-track"><span class="milestone-track-label">${inline(track.label)}</span><span>${inline(track.text)}</span></div>`).join('')}</div>` : ''}
+        ${step.metaLabel && step.metaValue ? `<div class="milestone-meta" data-meta="${esc(step.metaLabel)}"><span class="milestone-meta-label">${inline(step.metaLabel)}</span><span>${inline(step.metaValue)}</span></div>` : ''}
+      </div>
+    </li>`).join('')}</ol>
+  </figure>`;
+}
+
+function renderMilestoneTable(header, rows, isEn, kind) {
+  if (header[0] !== '步骤' || rows.length < 3 || header.length < 2) return null;
+  const isTrackTable = header.length === 3 && header[1] !== '内容';
+  const steps = rows.map((row) => {
+    let stepLabel = (row[0] || '').replace(/^\d+\s*[.、)）]?\s*/, '').trim();
+    if (isTrackTable) {
+      return {
+        title: stepLabel || row[0],
+        detail: '',
+        tracks: [{ label: header[1], text: row[1] || '' }, { label: header[2], text: row[2] || '' }],
+      };
+    }
+    const content = (row[1] || '').trim();
+    const parsed = /^\d+$/.test(stepLabel) || !stepLabel ? splitMilestoneText(content) : { title: stepLabel, detail: content };
+    return {
+      title: parsed.title,
+      detail: parsed.detail,
+      metaLabel: header[2] || '',
+      metaValue: row[2] || '',
+    };
+  });
+  return renderMilestoneFigure(steps, kind, isEn);
+}
+
+function renderMilestoneList(items, isEn) {
+  const steps = items.map((item) => {
+    const parsed = splitMilestoneText(item.text.join(' '));
+    return { title: parsed.title, detail: parsed.detail };
+  });
+  return renderMilestoneFigure(steps, 'entry', isEn);
+}
+
+/* ------------------------------------------------ 安全链 / 应急 / 状态 */
+
+function renderInlineChain(raw, options, isEn) {
+  const at = raw.search(/[：:]/);
+  if (at < 0) return null;
+  const parts = raw.slice(at + 1).trim().split(/\s*→\s*/).map((part) => part.trim()).filter(Boolean);
+  if (parts.length < 3) return null;
+  let note = '';
+  let last = parts.pop();
+  const tail = last.match(/^(.+?)[；。]\s*(.+)$/);
+  if (tail) {
+    last = tail[1].trim();
+    note = tail[2].trim();
+  } else {
+    last = last.replace(/。\s*$/, '');
+  }
+  parts.push(last);
+  return renderFlowFigure(parts.map((title) => ({ title, points: [] })), isEn, note, options);
+}
+
+function renderSpecialFlowItem(raw, h2, h3, isEn) {
+  const plain = raw.replace(/\*\*/g, '').trim();
+  if (/安全：从电芯到站级/.test(h2)) {
+    if (/^链式反应[：:]/.test(plain)) {
+      return renderInlineChain(raw, { title: '热失控链式反应', kicker: isEn ? 'Cause chain · CAUSE' : '因果链 · CAUSE', variant: 'chain' }, isEn);
+    }
+    if (/^传播路径[：:]/.test(plain)) {
+      return renderInlineChain(raw, { title: '热蔓延路径', kicker: isEn ? 'Spread chain · SPREAD' : '传播链 · SPREAD', variant: 'chain' }, isEn);
+    }
+    if (/^处置顺序（原则）[：:]/.test(plain)) {
+      return renderInlineChain(raw, { title: '应急处置顺序', kicker: isEn ? 'Emergency response · RESPONSE' : '应急流程 · RESPONSE' }, isEn);
+    }
+  }
+  if (/核查实操/.test(h2) && /^三阶段八步[：:]/.test(plain)) {
+    return renderInlineChain(raw, { title: '核查：三阶段八步', kicker: isEn ? 'Verification · PROCESS' : '核查流程 · PROCESS' }, isEn);
+  }
+  if (/CCER项目开发/.test(h2) && /^七步[：:]/.test(plain)) {
+    return renderInlineChain(raw, { title: 'CCER 项目：七步', kicker: isEn ? 'Project cycle · PROCESS' : '项目流程 · PROCESS' }, isEn);
+  }
+  if (/碳资产管理与碳金融/.test(h2) && /^PAS 2060/.test(plain) && /[：:]/.test(plain)) {
+    return renderInlineChain(raw, { title: 'PAS 2060：碳中和七步', kicker: isEn ? 'Carbon neutrality · PATHWAY' : '碳中和路径 · PATHWAY' }, isEn);
+  }
+  return null;
+}
+
+function renderStateTable(header, rows, isEn) {
+  if (header[0] !== '阶段' || header.length < 3 || rows.length < 3) return null;
+  const states = rows.map((row) => ({
+    title: row[0],
+    actions: (row[1] || '').split(/\s*→\s*/).map((item) => item.trim()).filter(Boolean),
+    roleLabel: header[2],
+    role: row[2] || '',
+  }));
+  return `<figure class="state-diagram" aria-label="${isEn ? 'Operating states' : '运行状态场景'}">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">${isEn ? 'Operating states · STATES' : '运行状态 · STATES'}</span>
+        <span class="diagram-meta">${states.length} ${isEn ? 'states' : '个场景'}</span>
+      </span>
+    </figcaption>
+    <div class="state-grid">${states.map((state, idx) => `<article class="state-card">
+      <span class="state-index" aria-hidden="true">${String(idx + 1).padStart(2, '0')}</span>
+      <span class="state-title">${inline(state.title)}</span>
+      <ol class="state-actions">${state.actions.map((action) => `<li>${inline(action)}</li>`).join('')}</ol>
+      ${state.role ? `<div class="state-role"><span class="state-role-label">${inline(state.roleLabel)}</span><span>${inline(state.role)}</span></div>` : ''}
+    </article>`).join('')}</div>
+  </figure>`;
+}
+
 function convert(md, options = {}) {
   const lines = md.replace(/\r\n?/g, '\n').split('\n');
+  const isEn = options.lang === 'en';
+  const isSkillPage = !!options.isSkill;
   const policy = options.layout === 'policy';
   const policyCounts = policy ? policyGroupCounts(lines) : [];
   let policyGroupIdx = 0;
@@ -455,6 +828,9 @@ function convert(md, options = {}) {
   const out = [];
   const headings = [];
   let h1 = '';
+  let h2 = '';
+  let h3 = '';
+  let entryTableConverted = false;
   let i = 0;
   let seq = 0;
   let seenBlock = false;
@@ -467,14 +843,24 @@ function convert(md, options = {}) {
     const line = lines[i];
 
     if (/^\s*```/.test(line)) {
+      const lang = line.replace(/^\s*```/, '').trim();
       const buf = [];
       i += 1;
       while (i < lines.length && !/^\s*```/.test(lines[i])) { buf.push(lines[i]); i += 1; }
       i += 1;
       codeCount += 1;
-      out.push(`<pre><code>${esc(buf.join('\n'))}</code></pre>`);
-      seenBlock = true;
-      lastBlock = 'code';
+      const body = buf.join('\n');
+      const curated = !lang ? renderCuratedArchitecture(body) : null;
+      const diagram = curated || ((!lang || /^(diagram|arch|tree|flow)$/i.test(lang)) ? renderAsciiDiagram(body, isEn) : null);
+      if (diagram) {
+        out.push(diagram);
+        seenBlock = true;
+        lastBlock = 'diagram';
+      } else {
+        out.push(`<pre tabindex="0"><code>${esc(body)}</code></pre>`);
+        seenBlock = true;
+        lastBlock = 'code';
+      }
       continue;
     }
 
@@ -492,6 +878,8 @@ function convert(md, options = {}) {
     if (h) {
       const level = h[1].length;
       const text = h[2].replace(/\s+#+\s*$/, '').trim();
+      if (level === 2) { h2 = plainText(text); h3 = ''; entryTableConverted = false; }
+      else if (level === 3) h3 = plainText(text);
       if (level === 1 && !h1) { h1 = text; i += 1; continue; }
       if (level === 1) { out.push(`<h2>${inline(text)}</h2>`); i += 1; seenBlock = true; lastBlock = 'heading'; continue; }
       if (policy && level === 2) {
@@ -548,6 +936,30 @@ function convert(md, options = {}) {
       const rows = [];
       let j = i + 2;
       while (j < lines.length && /^\s*\|/.test(lines[j]) && lines[j].trim() !== '') { rows.push(splitCells(lines[j])); j += 1; }
+      if (!isSkillPage && /孤岛、GFM 与黑启动/.test(h3) && header[0] === '阶段') {
+        const states = renderStateTable(header, rows, isEn);
+        if (states) {
+          out.push(states);
+          tableCount += 1;
+          i = j;
+          seenBlock = true;
+          lastBlock = 'diagram';
+          continue;
+        }
+      }
+      const milestoneKind = !isSkillPage && (/并网流程/.test(h3) ? 'grid' : (/中国主体进入路径/.test(h2) ? 'entry' : null));
+      if (milestoneKind && header[0] === '步骤' && rows.length >= 3) {
+        const milestone = renderMilestoneTable(header, rows, isEn, milestoneKind);
+        if (milestone) {
+          out.push(milestone);
+          tableCount += 1;
+          if (milestoneKind === 'entry') entryTableConverted = true;
+          i = j;
+          seenBlock = true;
+          lastBlock = 'diagram';
+          continue;
+        }
+      }
       if (policy && header.some((c) => c.includes('文号'))) {
         const col = (name) => header.findIndex((c) => c.includes(name));
         const cols = { no: col('文号'), title: col('文件'), note: col('要点'), org: col('机关'), date: col('日期'), status: col('状态'), link: col('原文') };
@@ -588,7 +1000,16 @@ function convert(md, options = {}) {
 
     if (LIST_RE.test(line)) {
       const { items, next } = parseList(lines, i);
-      out.push(renderList(items));
+      if (!isSkillPage && !entryTableConverted && /中国主体进入路径/.test(h2) && /(落地顺序|开发顺序)/.test(h3)
+        && items.length >= 3 && items.every((item) => item.ordered)) {
+        out.push(renderMilestoneList(items, isEn));
+        i = next;
+        seenBlock = true;
+        lastBlock = 'diagram';
+        continue;
+      }
+      const special = isSkillPage ? null : (raw) => renderSpecialFlowItem(raw, h2, h3, isEn);
+      out.push(renderList(items, special ? { special } : {}));
       i = next;
       seenBlock = true;
       lastBlock = 'list';
@@ -941,7 +1362,7 @@ function buildPage(doc) {
 </head>
 <body data-cat="${esc(sec.cat)}" id="top">
 <a class="skip" href="#main">${esc(copy.skip)}</a>
-<div class="progress" id="progress" role="progressbar" aria-label="${esc(copy.progress)}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -1030,7 +1451,9 @@ ${skillModulesBlock ? `\n${skillModulesBlock}` : ''}${pairedSkillsBlock ? `\n${p
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="${lang === 'en' ? 'Back to top' : '回到顶部'}">↑</a>
+<nav class="page-aux" aria-label="${lang === 'en' ? 'Page utilities' : '页面辅助'}">
+  <a class="to-top" href="#top" aria-label="${lang === 'en' ? 'Back to top' : '回到顶部'}">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>
@@ -1051,6 +1474,10 @@ function htmlText(html) {
 }
 
 function buildSearchIndex(pageItems) {
+  const searchText = (html) => htmlText(html)
+    .replace(/[─│┌┐└┘├┤┬┴┼▲▼◀▶]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
   const records = pageItems.map(({ doc }) => {
     const section = sectionById.get(doc.section);
     const headingRe = /<h([23])\s+id="([^"]+)"[^>]*>([\s\S]*?)<\/h\1>/g;
@@ -1066,10 +1493,10 @@ function buildSearchIndex(pageItems) {
       });
     }
     const chunks = [];
-    const intro = htmlText(doc.body.slice(0, heads[0]?.start ?? doc.body.length));
+    const intro = searchText(doc.body.slice(0, heads[0]?.start ?? doc.body.length));
     if (intro) chunks.push({ h: doc.title, a: '', x: intro });
     heads.forEach((head, i) => {
-      const text = htmlText(doc.body.slice(head.end, heads[i + 1]?.start ?? doc.body.length));
+      const text = searchText(doc.body.slice(head.end, heads[i + 1]?.start ?? doc.body.length));
       chunks.push({ h: head.title, a: head.id, x: text, l: head.level });
     });
     return {
@@ -1105,8 +1532,9 @@ mkdirSync(htmlDir, { recursive: true });
 
 function convertDoc(doc) {
   activeMapHref = doc.section === 'skill' ? makeSkillHrefMapper(doc) : mapHref;
+  const lang = doc.lang || (/^INDEX_EN/i.test(doc.md) ? 'en' : 'zh-CN');
   try {
-    return convert(doc.body, { layout: doc.layout });
+    return convert(doc.body, { layout: doc.layout, lang, isSkill: doc.section === 'skill' });
   } finally {
     activeMapHref = mapHref;
   }
@@ -1125,6 +1553,18 @@ const skillPages = skillManifest.map((doc) => {
 });
 
 const allPages = [...pages, ...skillPages];
+const archHits = new Map();
+for (const page of allPages) {
+  for (const match of page.html.matchAll(/data-arch-id="([^"]+)"/g)) {
+    archHits.set(match[1], (archHits.get(match[1]) || 0) + 1);
+  }
+}
+for (const id of CURATED_ARCH_IDS) {
+  if (archHits.get(id) !== 1) throw new Error(`核心架构图 ${id} 应恰好出现 1 次，实际 ${archHits.get(id) || 0} 次；检查源图指纹`);
+}
+for (const id of archHits.keys()) {
+  if (!CURATED_ARCH_IDS.includes(id)) throw new Error(`未登记的核心架构图：${id}`);
+}
 const downloadDir = join(htmlDir, 'download', 'skills');
 const downloadFiles = skillManifest.map((doc) => ({
   path: join(downloadDir, basename(doc.download)),

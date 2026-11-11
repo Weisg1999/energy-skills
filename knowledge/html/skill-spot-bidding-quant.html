@@ -15,7 +15,7 @@
 </head>
 <body data-cat="skill" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -148,7 +148,7 @@
 <p>制冷/制热负荷与温度呈分段线性：设定基准温度（如 26℃），计算 HDD/CDD，再用线性回归估计每度温差的负荷增量。<strong>温度用预报值</strong>，不要用实测值。</p>
 <h3 id="s16">3.3 残差校正是性价比最高的一层</h3>
 <p>系统性偏差常来自两个方向：时段（某些点总是偏高）与星期（周一/周末模式不同）。可加的两因子校正：</p>
-<pre><code>residual(weekday, slot) = (n·cell_mean + λ·slot_mean) / (n + λ)
+<pre tabindex="0"><code>residual(weekday, slot) = (n·cell_mean + λ·slot_mean) / (n + λ)
 forecast' = forecast + residual(weekday, slot)</code></pre>
 <p><code>λ</code>（收缩系数，代码默认 3）用来防止样本稀少的格子过拟合。这一结构与公开专利中&quot;时间维度分量 + 外生变量分量&quot;的偏差校正思路一致（见第 15 章）。</p>
 <h3 id="s17">3.4 指标口径</h3>
@@ -179,17 +179,27 @@ forecast' = forecast + residual(weekday, slot)</code></pre>
 <p>光伏中午大发压低净负荷，形成&quot;鸭子曲线&quot;；傍晚光伏骤降叠加负荷爬坡，价格快速抬升。典型风险场景：午间负价（弃电或负价消纳）、晚峰尖峰（预测偏低导致少报）。这两种场景的报价动作相反，必须分开建模。</p>
 <h3 id="s28">5.3 申报量决策（非对称罚则）</h3>
 <p>新能源常见的决策不是&quot;报什么价&quot;，而是&quot;报多少量&quot;。设超报罚则系数 <code>p_over</code>、欠报罚则系数 <code>p_under</code>，最小化：</p>
-<pre><code>E[cost] = p_over·E[(q − actual)+] + p_under·E[(actual − q)+]</code></pre>
+<pre tabindex="0"><code>E[cost] = p_over·E[(q − actual)+] + p_under·E[(actual − q)+]</code></pre>
 <p>对称罚则下最优申报量是中位数；<strong>超报罚得更重时，最优申报量低于中位数</strong>——这就是&quot;保守申报&quot;的数学依据，而不是经验拍脑袋。代码：<code>bid.declared_quantity()</code>。</p>
 <hr>
 <h2 id="s29">6. 报价理论：价格接受者定理与枢机定价</h2>
 <h3 id="s30">6.1 价格接受者：最优报价 = 边际成本</h3>
 <p>在按报价出清（pay-as-clear）、无容量约束、无合约约束的设定下，报价 <code>p</code> 的期望利润为：</p>
-<pre><code>E[profit] = q · E[(π − c) · 1{π ≥ p}]</code></pre>
+<pre tabindex="0"><code>E[profit] = q · E[(π − c) · 1{π ≥ p}]</code></pre>
 <p>报价低于成本会引入负利润样本，报价高于成本会放弃正利润样本，最优解恰为 <code>p* = c</code>。<strong>任何对非枢机机组算出&quot;最优加价 X%&quot;的模型，都是在拟合噪声。</strong> 代码：<code>bid.price_taker_optimum()</code>，自测直接断言其等于成本。</p>
 <h3 id="s31">6.2 枢机机组：加价来自剩余需求，不来自愿望</h3>
 <p>当你的机组位于边际、且下一台竞争机组报价更高时，你的报价会决定出清价。用剩余需求曲线 <code>R(p) = a − b·p</code> 近似（a 为你可服务的剩余需求截距，b 为斜率）：</p>
-<pre><code>profit = (p − c)(a − b·p)  →  p* = (a/b + c)/2</code></pre>
+<figure class="diagram-blueprint">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构示意 · DIAGRAM</span>
+        <span class="diagram-meta">可横向滚动</span>
+      </span>
+    </figcaption>
+    <div class="diagram-canvas" tabindex="0" role="group" aria-label="结构示意图">
+      <pre>profit = (p − c)(a − b·p)  <span class="d-arrow">→</span>  p* = (a/b + c)/2</pre>
+    </div>
+  </figure>
 <p>关键是 <strong>a 与 b 必须从观测到的剩余需求估计</strong>（对手报价分布、检修、负荷水平），不能用假设值。代码：<code>bid.pivotal_markup()</code>。</p>
 <h3 id="s32">6.3 合规红线</h3>
 <ul><li><strong>经济持留</strong>：无正当成本理由地报高价以抬升出清价，属于市场力滥用，监管明确监测；</li><li><strong>容量持留</strong>：可用容量不申报以制造稀缺，同样违规；</li><li><strong>串谋</strong>：与其他主体协调报价，违法。</li></ul>
@@ -211,7 +221,7 @@ forecast' = forecast + residual(weekday, slot)</code></pre>
 <h3 id="s40">8.1 新能源：先解决量与偏差，再谈价</h3>
 <ul><li>报量不报价：策略空间在&quot;申报量&quot;与&quot;是否可用&quot;，用第 5.3 节的非对称罚则模型；</li><li>报量报价：在预测曲线上叠加分位数，低价时段宁可不中标（避免负价损失），高价时段争取中标；</li><li>偏差考核与两个细则：把考核费用计入报价决策的成本项，否则策略会在&quot;多中标&quot;与&quot;少罚款&quot;之间选错。</li></ul>
 <h3 id="s41">8.2 储能：套利有硬门槛</h3>
-<pre><code>最低可套利价差 = 循环成本 / 往返效率</code></pre>
+<pre tabindex="0"><code>最低可套利价差 = 循环成本 / 往返效率</code></pre>
 <p>往返效率 88%、循环成本 60 元/MWh 时，门槛约 68.2 元/MWh（代码：<code>bid.storage_arbitrage_threshold()</code>）。叠加容量补偿、辅助服务收益后门槛下降，但<strong>不能用补贴掩盖电能量套利本身不成立的事实</strong>。</p>
 <h3 id="s42">8.3 光储联合报价</h3>
 <p>典型形态：午间光伏大发、价格低（甚至为负）时充电；晚峰放电。联合报价要同时满足：SOC 约束、充放电功率、并网容量、辅助服务申报占用。输出应是一条<strong>净出力曲线 + 分时段报价</strong>，而不是两个独立资产的报价简单相加。</p>
@@ -421,7 +431,9 @@ forecast' = forecast + residual(weekday, slot)</code></pre>
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

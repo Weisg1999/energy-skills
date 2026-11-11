@@ -15,7 +15,7 @@
 </head>
 <body data-cat="storage" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -134,7 +134,7 @@
 <h3 id="s11">1.6 三条硬约束（模型必须显式表达）</h3>
 <p><strong>① 并网点最大受电/送出功率</strong></p>
 <p>GB/T 33589-2026 引入最大受电功率、最大送出功率两个概念。模型必须用 <code>p_imp</code>、<code>p_exp</code> 两个非负变量分别设限：</p>
-<pre><code>0 ≤ p_imp[t] ≤ P_imp_max
+<pre tabindex="0"><code>0 ≤ p_imp[t] ≤ P_imp_max
 0 ≤ p_exp[t] ≤ P_exp_max
 SOS1(p_imp[t], p_exp[t])</code></pre>
 <p>若只用一个净功率变量 <code>p_cc = p_imp − p_exp</code>，会出现三个问题：两个不同限值无法分别表达；同时购售无法检查；需量电费与结算口径无法对账。</p>
@@ -150,14 +150,24 @@ SOS1(p_imp[t], p_exp[t])</code></pre>
 <p>成熟的微网优化系统通常不是&quot;一个程序算完&quot;，而是三层分工。</p>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>层次</th><th>职责</th><th>典型产出</th><th>技术选型</th></tr></thead><tbody><tr><td>算法原型层</td><td>建模验证、现场数据回归、契约定义</td><td>可复现的算例、模型文件、接口定义</td><td>Python + 代数建模语言（Pyomo/OR-Tools 等）</td></tr><tr><td>求解内核层</td><td>高性能、可容器化的求解服务</td><td>gRPC 服务，输入 96 点数组，输出功率/SOC 曲线</td><td>C++/Rust + 求解器 C-API（SCIP/CBC/Gurobi/HiGHS）</td></tr><tr><td>业务编排层</td><td>多源数据装配、定时与事件触发、策略与容错、结果下发</td><td>日计划、滚动计划、告警与回退曲线</td><td>Go/Java + 任务队列 + 关系库/时序库</td></tr></tbody></table></div>
 <h3 id="s14">2.1 数据流（抽象）</h3>
-<pre><code>预测服务（负荷/光伏/风电） ─┐
-电价服务（峰谷平尖/需量）    ─┼─&gt; 编排层：拼装 96 点输入 ─&gt; gRPC ─&gt; 求解层（MILP）
-设备配置 / 实时 SOC / 状态   ─┘                                      │
+<figure class="diagram-blueprint">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构示意 · DIAGRAM</span>
+        <span class="diagram-meta">可横向滚动</span>
+      </span>
+    </figcaption>
+    <div class="diagram-canvas" tabindex="0" role="group" aria-label="结构示意图">
+      <pre>预测服务（负荷/光伏/风电） <span class="d-line">─</span><span class="d-line">┐</span>
+电价服务（峰谷平尖/需量）    <span class="d-line">─</span><span class="d-line">┼</span><span class="d-line">─</span>&gt; 编排层：拼装 96 点输入 <span class="d-line">─</span>&gt; gRPC <span class="d-line">─</span>&gt; 求解层（MILP）
+设备配置 / 实时 SOC / 状态   <span class="d-line">─</span><span class="d-line">┘</span>                                      <span class="d-line">│</span>
                                                                      v
-监控/时序库 &lt;─ 结果落库 &lt;─ 编排层：聚合、校验、回退 &lt;─ 功率/SOC/备用曲线
-                                                                     │
+监控/时序库 &lt;<span class="d-line">─</span> 结果落库 &lt;<span class="d-line">─</span> 编排层：聚合、校验、回退 &lt;<span class="d-line">─</span> 功率/SOC/备用曲线
+                                                                     <span class="d-line">│</span>
                                                                      v
-                                                              MGCC/下层控制器执行</code></pre>
+                                                              MGCC/下层控制器执行</pre>
+    </div>
+  </figure>
 <h3 id="s15">2.2 MMCS 与 MEMS 的分工</h3>
 <p>IEC TS 62898-3-4 给出一种常见拆分：容量较大（如 &gt;100 kW）的微网把<strong>微网监控/控制（MMCS）</strong>与<strong>能量管理（MEMS）</strong>分开；容量较小的微网可一体实现。工程上的对应关系：</p>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>角色</th><th>关注</th><th>时间尺度</th><th>失败模式</th></tr></thead><tbody><tr><td>MMCS/MGCC</td><td>状态机、并离网切换、保护配合、通信</td><td>100 ms–s</td><td>切换失败、通信中断</td></tr><tr><td>MEMS/EMS</td><td>经济调度、备用核算、滚动修正</td><td>min–h</td><td>超时、不可行、预测偏差</td></tr><tr><td>设备控制器</td><td>功率跟踪、下垂/GFM、保护</td><td>ms–s</td><td>限幅、脱网</td></tr></tbody></table></div>
@@ -178,7 +188,7 @@ SOS1(p_imp[t], p_exp[t])</code></pre>
 <h3 id="s21">3.2 决策变量</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>变量</th><th>含义</th><th>类型</th></tr></thead><tbody><tr><td><code>p_imp[t], p_exp[t] ≥ 0</code></td><td>并网点购/售功率</td><td>连续</td></tr><tr><td><code>p_ch[i,t], p_dis[i,t] ≥ 0</code></td><td>储能充/放功率</td><td>连续</td></tr><tr><td><code>soc[i,t]</code>（<code>t=0..T</code>）</td><td>荷电状态</td><td>连续</td></tr><tr><td><code>b_ch/b_dis[i,t]</code></td><td>充放互斥</td><td>0-1 或 SOS1</td></tr><tr><td><code>b_imp/b_exp[t]</code></td><td>购售互斥</td><td>0-1 或 SOS1</td></tr><tr><td><code>max_p</code></td><td>计费需量</td><td>连续</td></tr><tr><td><code>p_pv_used[t], p_pv_curt[t]</code></td><td>光伏使用/弃光</td><td>连续</td></tr><tr><td><code>p_shed[t]</code></td><td>失负荷</td><td>连续</td></tr><tr><td><code>p_dg[g,t], u_dg, y_dg, z_dg</code></td><td>柴发功率/运行/启动/停机</td><td>连续 + 0-1</td></tr><tr><td><code>p_ev_ch/p_ev_dis[j,t], soc_ev[j,t]</code></td><td>EV 充放与 SOC</td><td>连续</td></tr><tr><td><code>r_up/r_dn[...]</code></td><td>各类资源备用</td><td>连续</td></tr><tr><td><code>D[i]</code></td><td>退化吞吐/当量循环</td><td>连续</td></tr></tbody></table></div>
 <h3 id="s22">3.3 目标函数（最小化）</h3>
-<pre><code>min  Σ_t ( C_buy[t]·p_imp[t] − C_sell[t]·p_exp[t] )·Δt          ① 购售电
+<pre tabindex="0"><code>min  Σ_t ( C_buy[t]·p_imp[t] − C_sell[t]·p_exp[t] )·Δt          ① 购售电
    + C_dem·max_p                                                 ② 需量
    + Σ_i Σ_t c_deg[i]·(p_ch[i,t] + p_dis[i,t])·Δt                ③ 退化
    + w_soc·Σ_i Σ_t (d_plus[i,t] + d_minus[i,t])                  ④ SOC 跟踪
@@ -190,7 +200,7 @@ SOS1(p_imp[t], p_exp[t])</code></pre>
    − c_term·Σ_i soc[i,T]                                         ⑩ 终端储能价值（可选）</code></pre>
 <ul><li>④ 中 <code>d_plus − d_minus = soc − soc_ref</code>，目标罚 <code>d_plus + d_minus</code>。</li><li>⑤ 中 <code>u − v = p_net[t] − p_net[t−1]</code>，目标罚 <code>u + v</code>。</li><li>权重是<strong>相对量级</strong>：<code>w_soc</code> 取 1e2–1e4（取决于 SOC 用 % 还是 0–1），<code>w_l1</code> 取 1e-6–1e-4。必须先归一化目标量级再标定，不能照搬。</li><li>③ 与 ⑩ 不建议同时启用：日循环模型用 ③，跨日模型用 ⑩，否则会重复计价。</li></ul>
 <h3 id="s23">3.4 约束条件</h3>
-<pre><code>(C1) 并网功率平衡
+<pre tabindex="0"><code>(C1) 并网功率平衡
      p_imp[t] − p_exp[t] + Σ_g p_dg[g,t] + p_pv_used[t] + p_wind_used[t]
      + Σ_i (p_dis[i,t] − p_ch[i,t]) + Σ_j (p_ev_dis[j,t] − p_ev_ch[j,t])
      = P_load[t] + Σ_l p_fl[l,t] − p_shed[t]                         ∀t
@@ -276,20 +286,20 @@ SOS1(p_imp[t], p_exp[t])</code></pre>
 <hr>
 <h2 id="s26">4. 关键建模技巧</h2>
 <h3 id="s27">4.1 SOC 递推必须含效率与自放电</h3>
-<pre><code>soc[t+1] = soc[t] + (100·Δt/E)·(η_ch·p_ch[t] − p_dis[t]/η_dis) − σ·Δt</code></pre>
+<pre tabindex="0"><code>soc[t+1] = soc[t] + (100·Δt/E)·(η_ch·p_ch[t] − p_dis[t]/η_dis) − σ·Δt</code></pre>
 <p>漏掉效率会系统性高估套利收益：充电时少算损耗、放电时多算可用电量。<strong>效率和容量单位（kWh）必须同时进入递推，SOC 用百分比时不要忘记 <code>/100</code>。</strong></p>
 <p>单元测试：充 1 kWh 再放 1 kWh，SOC 净变化应为 <code>−(1/η_ch − η_dis)</code> 量级的损耗；<code>η=0.95</code> 时往返效率约 0.9025。</p>
 <h3 id="s28">4.2 充放互斥：Big-M、SOS1 与指示约束</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>方案</th><th>数学表达</th><th>LP 松弛质量</th><th>分支效率</th><th>适用</th></tr></thead><tbody><tr><td>Big-M</td><td><code>p_ch ≤ M·b_ch</code>；<code>p_dis ≤ M·b_dis</code>；<code>b_ch+b_dis ≤ 1</code></td><td>松（M 大时 b=0.5 仍允许半功率）</td><td>慢</td><td>求解器不支持 SOS1/指示约束时的兜底</td></tr><tr><td>SOS1</td><td><code>SOS1(p_ch, p_dis)</code>，至多一个非零</td><td>紧（凸包天然排除同时非零）</td><td>快</td><td>生产首选</td></tr><tr><td>指示约束</td><td><code>b=0 ⟹ p_ch=0</code>；<code>b=1 ⟹ p_dis=0</code></td><td>取决于求解器实现</td><td>中</td><td>支持指示约束的求解器，表达最直观</td></tr></tbody></table></div>
 <p>Big-M 的 <code>M</code> 通常取功率上限；<code>M</code> 越大松弛越松，<code>M</code> 越小可能误割可行解。<strong>SOS1 不需要调 M，是更稳的生产选择。</strong></p>
 <h3 id="s29">4.3 需量电费：对购电功率取最大</h3>
-<pre><code>max_p ≥ p_imp[t]   for all t
+<pre tabindex="0"><code>max_p ≥ p_imp[t]   for all t
 max_p ≥ D0
 obj += C_dem · max_p</code></pre>
 <p>目标最小化会自然把 <code>max_p</code> 压到实际最大购电功率。三个易错点：</p>
 <ol><li><strong>不要对净功率取最大</strong>：净功率把中午反送与晚峰受电混在一个变量里，既无法分别设限，也无法与需量结算口径对账。</li><li><strong>不要漏 <code>D0</code></strong>：本月已发生最大需量，遗漏会导致月初重复计费或月底低估。</li><li><strong>确认计费口径</strong>：是按月最大 15 min 平均受电功率，还是按变压器容量/合同需量；不同口径对应不同约束。</li></ol>
 <h3 id="s30">4.4 绝对值：u-v 拆解</h3>
-<pre><code>dP = u − v,  u ≥ 0,  v ≥ 0
+<pre tabindex="0"><code>dP = u − v,  u ≥ 0,  v ≥ 0
 abs(dP) = u + v</code></pre>
 <p>只要目标里是最小化 <code>u+v</code>，最优解不会让 u、v 同时为正。SOC 偏差同理，用 <code>d+ − d−</code> 拆解后对 <code>d+ + d−</code> 罚。</p>
 <h3 id="s31">4.5 SOC 日循环与跨日套利</h3>
@@ -297,7 +307,7 @@ abs(dP) = u + v</code></pre>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>做法</th><th>表达</th><th>适用</th><th>风险</th></tr></thead><tbody><tr><td>显式终端等式</td><td><code>soc[T] = soc[0]</code></td><td>日循环、有固定作息</td><td>初始 SOC 异常时会把偏差带入全天</td></tr><tr><td>终端不等式</td><td><code>soc[T] ≥ SOC_end</code></td><td>EV、备用要求</td><td>可能留下过多电量</td></tr><tr><td>终端价值</td><td>目标加 <code>−c_term·soc[T]</code></td><td>跨日连续优化</td><td><code>c_term</code> 难标定，易造成末端囤电</td></tr></tbody></table></div>
 <h3 id="s32">4.6 用变量界代替逻辑约束</h3>
 <p>不可调设备不必新增 0-1 变量，直接把功率上下界夹到当前值：</p>
-<pre><code>if not adjustable:
+<pre tabindex="0"><code>if not adjustable:
     P_lo = P_hi = current_power</code></pre>
 <p>这比&quot;加一个开关变量&quot;更轻，也避免求解器在无意义的分支上浪费时间。</p>
 <h3 id="s33">4.7 EV/V2G 建模</h3>
@@ -305,7 +315,7 @@ abs(dP) = u + v</code></pre>
 <h3 id="s34">4.8 多储能聚合</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>口径</th><th>做法</th><th>风险</th></tr></thead><tbody><tr><td>逐设备建模</td><td>每台储能独立变量与 SOC</td><td>规模大，但物理准确</td></tr><tr><td>聚合成虚拟储能</td><td>功率直接求和，SOC 按容量加权</td><td>简化，可能掩盖设备间效率、循环次数与环流差异</td></tr></tbody></table></div>
 <p>聚合 SOC 的常见写法：</p>
-<pre><code>SOC_agg = Σ_i E[i]·soc[i] / Σ_i E[i]</code></pre>
+<pre tabindex="0"><code>SOC_agg = Σ_i E[i]·soc[i] / Σ_i E[i]</code></pre>
 <p>但聚合后无法保证每台设备都不越界。<strong>对外展示可用聚合值，下发控制必须回到逐设备曲线</strong>；调度前要用逐设备 SOC 做一次可行性回代。</p>
 <h3 id="s35">4.9 退化建模的三档精度</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>档位</th><th>模型</th><th>成本</th><th>适用</th></tr></thead><tbody><tr><td>一档</td><td>吞吐量线性：<code>c_deg·Σ(p_ch+p_dis)·Δt</code></td><td>低</td><td>日前经济调度</td></tr><tr><td>二档</td><td>当量循环：按 DoD 分档加权，或雨流计数</td><td>中</td><td>周/月计划、寿命评估</td></tr><tr><td>三档</td><td>电化学-热耦合</td><td>高</td><td>研发、质保争议</td></tr></tbody></table></div>
@@ -317,7 +327,35 @@ abs(dP) = u + v</code></pre>
 <h3 id="s37">4.11 孤岛、GFM 与黑启动</h3>
 <p><strong>孤岛不是稳态优化问题，而是带时序的状态切换。</strong> 优化器能做的是：</p>
 <ol><li>孤岛前：核算孤岛期能量裕度与 GFM 容量；</li><li>孤岛中：在孤岛平衡下做经济调度与备用分配；</li><li>复电前：校验同期条件，安排负荷逐级恢复。</li></ol>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>阶段</th><th>关键动作</th><th>EMS 角色</th></tr></thead><tbody><tr><td>非计划孤岛</td><td>保护检测 → 快速解列 → GFM 建压 → 切负荷保关键负荷</td><td>读取状态，重算孤岛计划</td></tr><tr><td>计划孤岛</td><td>调度许可 → 功率预平衡 → 解列 → 孤岛运行</td><td>生成孤岛计划与备用</td></tr><tr><td>黑启动</td><td>启动电源 → 建立母线电压 → 逐级带负荷 → 并网</td><td>给启动顺序与能量校验点</td></tr><tr><td>重连</td><td>同期检测 → 合闸 → 功率回代</td><td>平滑过渡，避免冲击</td></tr></tbody></table></div>
+<figure class="state-diagram" aria-label="运行状态场景">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">运行状态 · STATES</span>
+        <span class="diagram-meta">4 个场景</span>
+      </span>
+    </figcaption>
+    <div class="state-grid"><article class="state-card">
+      <span class="state-index" aria-hidden="true">01</span>
+      <span class="state-title">非计划孤岛</span>
+      <ol class="state-actions"><li>保护检测</li><li>快速解列</li><li>GFM 建压</li><li>切负荷保关键负荷</li></ol>
+      <div class="state-role"><span class="state-role-label">EMS 角色</span><span>读取状态，重算孤岛计划</span></div>
+    </article><article class="state-card">
+      <span class="state-index" aria-hidden="true">02</span>
+      <span class="state-title">计划孤岛</span>
+      <ol class="state-actions"><li>调度许可</li><li>功率预平衡</li><li>解列</li><li>孤岛运行</li></ol>
+      <div class="state-role"><span class="state-role-label">EMS 角色</span><span>生成孤岛计划与备用</span></div>
+    </article><article class="state-card">
+      <span class="state-index" aria-hidden="true">03</span>
+      <span class="state-title">黑启动</span>
+      <ol class="state-actions"><li>启动电源</li><li>建立母线电压</li><li>逐级带负荷</li><li>并网</li></ol>
+      <div class="state-role"><span class="state-role-label">EMS 角色</span><span>给启动顺序与能量校验点</span></div>
+    </article><article class="state-card">
+      <span class="state-index" aria-hidden="true">04</span>
+      <span class="state-title">重连</span>
+      <ol class="state-actions"><li>同期检测</li><li>合闸</li><li>功率回代</li></ol>
+      <div class="state-role"><span class="state-role-label">EMS 角色</span><span>平滑过渡，避免冲击</span></div>
+    </article></div>
+  </figure>
 <p>GFM 是孤岛可行性的前提：跟网型（GFL）变流器无法独立建压。GB/T 47968-2026 对构网型变流器提出通用要求，选型与测试要以正式文本为准。</p>
 <h3 id="s38">4.12 与储能 EMS 的接口边界</h3>
 <p>微网内的储能与站级储能 EMS 面对的是同一套物理设备、两种业务视角。<strong>谁主谁从必须写死</strong>，否则会出现两个优化器同时下发设定值。</p>
@@ -331,7 +369,7 @@ abs(dP) = u + v</code></pre>
 <hr>
 <h2 id="s40">5. 求解与工程化</h2>
 <h3 id="s41">5.1 分支定界在做什么</h3>
-<pre><code>1. LP 松弛：忽略整数性，解连续 LP，得下界
+<pre tabindex="0"><code>1. LP 松弛：忽略整数性，解连续 LP，得下界
 2. 分支：对分数变量分裂子问题
 3. 定界：子问题下界劣于当前最优整数解则剪枝
 4. 割平面：收紧松弛，加速收敛
@@ -353,7 +391,7 @@ abs(dP) = u + v</code></pre>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>环</th><th>触发</th><th>窗口</th><th>初始 SOC</th><th>性质</th></tr></thead><tbody><tr><td>日前</td><td>每日固定时刻</td><td>次日 0 点起 96 点</td><td>常用保守假设（如 SOC 下限）</td><td>开环计划</td></tr><tr><td>日内滚动</td><td>每 15 min–1 h</td><td><code>[now, now+24h]</code></td><td>读实时 SOC</td><td>闭环纠偏，近似 MPC</td></tr></tbody></table></div>
 <p>日内用最新 SOC 与滚动预测重优化，只执行首个时段，下一时段再滚动——这是滚动时域控制的离散近似。</p>
 <h3 id="s49">6.2 MPC 形式</h3>
-<pre><code>min_{u_0..u_{H−1}}  Σ_{k=0}^{H−1} L(x_k, u_k) + J_H(x_H)
+<pre tabindex="0"><code>min_{u_0..u_{H−1}}  Σ_{k=0}^{H−1} L(x_k, u_k) + J_H(x_H)
 s.t.                x_{k+1} = f(x_k, u_k)
                     x_k ∈ X,  u_k ∈ U
                     x_0 = 当前实测状态</code></pre>
@@ -381,10 +419,10 @@ s.t.                x_{k+1} = f(x_k, u_k)
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>来源</th><th>典型偏差</th><th>影响</th></tr></thead><tbody><tr><td>光伏</td><td>云层、遮挡、污染</td><td>白天功率与弃光</td></tr><tr><td>风电</td><td>风速/风向</td><td>夜间/全天功率</td></tr><tr><td>负荷</td><td>天气、生产班次、节假日</td><td>峰值与需量</td></tr><tr><td>电价</td><td>市场出清、政策调整</td><td>套利方向</td></tr><tr><td>EV</td><td>到达时间、停留时长、目标 SOC</td><td>充电负荷与 V2G 能力</td></tr><tr><td>设备</td><td>故障、检修、限功率</td><td>可用容量</td></tr><tr><td>模型</td><td>效率、退化、温度修正</td><td>系统性偏差</td></tr></tbody></table></div>
 <h3 id="s58">7.2 确定性 + 备用</h3>
 <p>最常见、成本最低的做法：用点预测优化，再按预测误差分位数留备用。</p>
-<pre><code>R_up[t] = quantile_{1−α}(预测误差分布)</code></pre>
+<pre tabindex="0"><code>R_up[t] = quantile_{1−α}(预测误差分布)</code></pre>
 <p>优点是易落地；缺点是无法区分&quot;备而不用&quot;与&quot;备用不足&quot;的经济价值。</p>
 <h3 id="s59">7.3 两阶段随机规划与 CVaR</h3>
-<pre><code>min  Σ_s π_s·C_s(x, y_s) + λ·CVaR_α(成本)
+<pre tabindex="0"><code>min  Σ_s π_s·C_s(x, y_s) + λ·CVaR_α(成本)
 s.t. 第一阶段：日前计划 x（购售、启停、备用）
      第二阶段：各场景下的调整 y_s</code></pre>
 <ul><li>第一阶段决策在所有场景下可行（或允许弃负荷/弃光作为惩罚）；</li><li>场景数多时用 Benders/L-shaped 分解；</li><li>CVaR 用于控制尾部风险，适合对失负荷/考核敏感的场景。</li></ul>
@@ -402,7 +440,7 @@ s.t. 第一阶段：日前计划 x（购售、启停、备用）
 <h3 id="s64">7.8 评估方法</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>含义</th></tr></thead><tbody><tr><td>样本外成本</td><td>用未参与训练/标定的历史日回放</td></tr><tr><td>CVaR</td><td>最差 5%–10% 日的平均成本</td></tr><tr><td>违约率</td><td>越限、失负荷、备用不足的发生频率</td></tr><tr><td>备用利用率</td><td>预留备用被实际调用的比例</td></tr><tr><td>计划稳定性</td><td>相邻两次计划的功率变化量</td></tr></tbody></table></div>
 <h3 id="s65">7.9 建议顺序</h3>
-<pre><code>近期：MPC 显式化 + 多目标 epsilon-约束
+<pre tabindex="0"><code>近期：MPC 显式化 + 多目标 epsilon-约束
 中期：场景法两阶段随机 + CVaR
 远期：鲁棒/DRO + 离网/孤岛 + 潮流约束</code></pre>
 <hr>
@@ -441,7 +479,7 @@ s.t. 第一阶段：日前计划 x（购售、启停、备用）
 <p><strong>需量电费</strong>（40 元/kW·月、核定值 800 kW、105% 门槛 840 kW，规则见<a href="储能EMS优化调度-算法与工程-2026-11.html">储能篇 §4.6</a>）：</p>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>场景</th><th>最大购电</th><th>计费需量</th><th>基本电费（元/月）</th></tr></thead><tbody><tr><td>无储能</td><td>878.54 kW（超门槛 38.54 kW）</td><td>800 + 2 × 38.54 = 877.07</td><td>35,082.99</td></tr><tr><td>储能、购电上限 840 kW</td><td>838.50 kW（未超门槛）</td><td>800</td><td>32,000.00</td></tr><tr><td>月节省</td><td>—</td><td>—</td><td>3,082.99（约 102.77 元/天）</td></tr></tbody></table></div>
 <p><strong>充电会抬高需量</strong>：谷段负荷 400 kW 时若满功率充 500 kW，购电达 900 kW，<code>over = 60 kW</code>，基本电费变成 40 × (800 + 2 × 60) = 36,800 元/月，比不装储能还多付 1,717.01 元/月。因此谷段充电功率必须限制在：</p>
-<pre><code>p_ch ≤ 1.05·D_set − P_load_valley   （本例 = 840 − 400 = 440 kW）</code></pre>
+<pre tabindex="0"><code>p_ch ≤ 1.05·D_set − P_load_valley   （本例 = 840 − 400 = 440 kW）</code></pre>
 <p>本例第一次充电实际约 426 kW，正是在这条约束之内；第二次充电发生在 15:00（负荷 415.6 kW、电价 0.65 元/kWh），不在谷段，不受该式约束，但同样不能把购电顶过 840 kW。<strong>需量与套利必须在同一模型里求解</strong>：分两步先做能量最优再修充电功率，会把充电窗口推到更贵的时段。</p>
 <p><strong>能量收益与需量收益不是一个量级</strong>：本例储能 500 kW 相对 800 kW 核定值只有 62.5%，晚峰只需削掉 40 kW 就越过门槛，所以需量节省只有 102.77 元/天，远小于能量套利的 883.59 元/天。若储能更小、需量单价更高、或超门槛更多，结论会反过来——<strong>先估两者量级，再决定目标函数里要不要加需量项</strong>。把购电上限 840 kW 写进约束后，日能量成本只比放宽到 900 kW 贵 5.15 元（6,525.12 vs 6,519.97），但月需量账单少 3,082.99 元，这就是&quot;约束换收益&quot;的典型形态。</p>
 <h3 id="s77">9.6 读法</h3>
@@ -642,7 +680,9 @@ s.t. 第一阶段：日前计划 x（购售、启停、备用）
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

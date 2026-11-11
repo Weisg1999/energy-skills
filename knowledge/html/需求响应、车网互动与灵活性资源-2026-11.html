@@ -15,7 +15,7 @@
 </head>
 <body data-cat="vpp" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -105,12 +105,45 @@
 <hr>
 <h2 id="s1">0. 一页看懂</h2>
 <h3 id="s2">0.1 一条主线</h3>
-<pre><code>  资源盘点        能力认定        产品选择        邀约/调用        基线计量        考核结算        复盘
-     │              │              │              │              │              │              │
- 行业/设备       容量/时长       削峰/填谷       日前/实时       基线/表计       补偿/罚款       偏差/改进
- 可调比例        爬坡/通知       电量/容量       可靠性          修正/审计       资金/分摊       规则版本
-     └──────────────┴──────────────┴──────────────┴──────────────┴──────────────┴──────────────┘
-                                       需求响应 = 用价格买&quot;少用电/多用电&quot;的能力</code></pre>
+<figure class="flow-diagram" aria-label="流程示意">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">流程 · FLOW</span>
+        <span class="diagram-meta">7 个步骤</span>
+      </span>
+
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">资源盘点</span>
+      <ul class="flow-points"><li>行业/设备</li><li>可调比例</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">能力认定</span>
+      <ul class="flow-points"><li>容量/时长</li><li>爬坡/通知</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">产品选择</span>
+      <ul class="flow-points"><li>削峰/填谷</li><li>电量/容量</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">04</span>
+      <span class="flow-text">邀约/调用</span>
+      <ul class="flow-points"><li>日前/实时</li><li>可靠性</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">05</span>
+      <span class="flow-text">基线计量</span>
+      <ul class="flow-points"><li>基线/表计</li><li>修正/审计</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">06</span>
+      <span class="flow-text">考核结算</span>
+      <ul class="flow-points"><li>补偿/罚款</li><li>资金/分摊</li></ul>
+    </li><li>
+      <span class="flow-index" aria-hidden="true">07</span>
+      <span class="flow-text">复盘</span>
+      <ul class="flow-points"><li>偏差/改进</li><li>规则版本</li></ul>
+    </li></ol>
+    <div class="flow-note"><span class="flow-note-item">需求响应 = 用价格买&quot;少用电/多用电&quot;的能力</span></div>
+  </figure>
 <ul><li><strong>资源侧回答&quot;谁可调&quot;</strong>：工业可中断、楼宇空调、用户侧储能、充电桩、数据中心备电、分布式电源，各有不同的可调深度、时长与机会成本。</li><li><strong>机制侧回答&quot;怎么买&quot;</strong>：削峰/填谷、日前/实时、电量/容量、邀约/紧急，是不同的产品，不是同一个&quot;补贴&quot;。</li><li><strong>结算侧回答&quot;给多少&quot;</strong>：基线决定响应量，响应率决定系数，考核决定罚款，资金池决定能不能兑现。</li><li><strong>V2G 是资源侧的新变量</strong>：车是移动储能，但单车容量小、可用性受出行约束，必须靠聚合与规模。</li></ul>
 <h3 id="s3">0.2 关键数字</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>数字</th><th>含义</th><th>来源与级别</th></tr></thead><tbody><tr><td>3%–5%</td><td>2025 年各省需求响应能力占最大用电负荷目标；峰谷差率超 40% 的省份≥5%</td><td>发改运行规〔2023〕1283 号，A</td></tr><tr><td>2030</td><td>形成规模化实时需求响应能力</td><td>同上，A</td></tr><tr><td>30% / Ⅰ–Ⅵ级 / 每档 5%</td><td>有序用电方案规模不低于历史最高负荷 30%；六级方案</td><td>发改运行规〔2023〕1261 号，A</td></tr><tr><td>9,000 万kW / 6.0%</td><td>2026 年全国需求侧最大负荷调节能力及占比</td><td>中电联，B</td></tr><tr><td>530 个 / 1,800 万kW</td><td>2026 年全国已建虚拟电厂数量与最大调节能力</td><td>中电联，B</td></tr><tr><td>470 个 / 1,685 万kW</td><td>2025 年底全国虚拟电厂项目数量与可同时调节能力</td><td>国家能源局，A/B</td></tr><tr><td>15.57 亿kW</td><td>2026 年迎峰度夏全国最大用电负荷；较 2025 年极值增约 4,900 万kW</td><td>国家发改委、中电联，A/B</td></tr><tr><td>0 / 31</td><td>2026 年迎峰度夏全国 31 个省份均未采取需求响应、有序用电措施</td><td>中电联 2026-11-05，B</td></tr><tr><td>9 + 30</td><td>首批车网互动规模化应用试点：9 个城市、30 个项目</td><td>发改办能源〔2025〕241 号，A</td></tr><tr><td>1,000 万kW → 5,000 万kW</td><td>车网互动聚合可调充电规模：2025 年基础 → 2030 年目标</td><td>《新型电力系统建设&quot;十五五&quot;规划》，A/B</td></tr><tr><td>5,000 个 / 2,000 万kWh</td><td>到 2027 年底新增双向充放电设施、反向放电量目标</td><td>六部门&quot;三年倍增&quot;行动方案，A</td></tr><tr><td>2,800 万个 / 3 亿kW</td><td>到 2027 年底充电设施总数、公共充电容量目标</td><td>同上，A</td></tr><tr><td>2,700 元/MWh</td><td>广东 2026 年削峰需求响应年度交易申报价格上限</td><td>广东电力交易中心，A/B</td></tr><tr><td>15 / 10 元/kWh</td><td>江苏 2026 年负荷快速响应申报上限：直控型 / 自控型</td><td>苏发改规发〔2026〕1 号，A</td></tr><tr><td>3.5 元/kWh</td><td>广州虚拟电厂有功需求响应补贴上限</td><td>《广州市虚拟电厂高质量发展实施方案》，A</td></tr><tr><td>164.77 万kW</td><td>上海虚拟电厂 2026 年迎峰度夏实测响应纪录</td><td>公开报道，B</td></tr><tr><td>4.21 MW / 61 辆</td><td>深圳单站车网互动最大充放电功率与同时服务车辆数</td><td>公开报道，B</td></tr><tr><td>2,000–3,000 次</td><td>主流动力电池循环寿命常见区间</td><td>行业口径，C</td></tr><tr><td>0.13% / 80 次</td><td>某 V2G 车型 80 次满充满放测试的容量衰减</td><td>单一测试，C</td></tr></tbody></table></div>
@@ -122,13 +155,23 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>概念</th><th>一句话定义</th><th>谁组织</th><th>自愿/强制</th><th>收益来源</th><th>典型时长</th></tr></thead><tbody><tr><td>需求响应（DR）</td><td>用经济激励引导用户自愿改变用电行为，削峰或填谷</td><td>政府主管部门、电网、交易中心</td><td>自愿</td><td>补偿、市场出清</td><td>分钟–小时</td></tr><tr><td>有序用电</td><td>供应不足时依法依规控制部分负荷，保供用电秩序</td><td>政府、电网</td><td>强制</td><td>一般无补偿，按政策</td><td>小时–日</td></tr><tr><td>虚拟电厂（VPP）</td><td>聚合分布式电源、可调负荷、储能，作为新型主体参与系统与市场</td><td>运营商</td><td>合同自愿</td><td>现货、辅助服务、DR、容量</td><td>秒–小时</td></tr><tr><td>车网互动（V2G）</td><td>电动汽车与电网双向充放电，车作为移动储能</td><td>聚合商、充电运营商</td><td>合同自愿</td><td>电价差、DR、辅助服务</td><td>分钟–小时</td></tr><tr><td>可中断负荷</td><td>合同约定在需要时中断/削减的负荷</td><td>电网、聚合商</td><td>合同</td><td>容量 + 电量</td><td>分钟–小时</td></tr><tr><td>共享储能</td><td>储能容量按需租用、共享调用</td><td>储能运营商</td><td>合同</td><td>租金、服务费</td><td>小时</td></tr></tbody></table></div>
 <ul><li><strong>DR 是&quot;产品&quot;，VPP 是&quot;主体&quot;</strong>：VPP 可以卖 DR，也可以卖现货、辅助服务；DR 可以由用户直接卖，也可以由负荷聚合商、VPP 代理。</li><li><strong>DR 是&quot;经济手段&quot;，有序用电是&quot;行政手段&quot;</strong>：1261 号明确&quot;先错峰、后避峰、再限电&quot;，DR 在前、有序用电在后。</li><li><strong>V2G 是&quot;双向&quot;，有序充电（V1G）是&quot;单向&quot;</strong>：V1G 已在规模化，V2G 是增量；把 V1G 说成 V2G，会高估可放电容量。</li></ul>
 <h3 id="s7">1.2 DR 与 VPP 的关系</h3>
-<pre><code>                 ┌──────────────── 虚拟电厂（主体） ────────────────┐
-                 │  资源池：分布式电源 + 可调负荷 + 储能 + 充电桩     │
-                 │  能力：预测 / 聚合 / 控制 / 计量 / 结算           │
-                 └───────┬───────────────┬───────────────┬──────────┘
-                         │               │               │
+<figure class="diagram-blueprint">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构示意 · DIAGRAM</span>
+        <span class="diagram-meta">可横向滚动</span>
+      </span>
+    </figcaption>
+    <div class="diagram-canvas" tabindex="0" role="group" aria-label="结构示意图">
+      <pre>                 <span class="d-line">┌</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span> 虚拟电厂（主体） <span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┐</span>
+                 <span class="d-line">│</span>  资源池：分布式电源 + 可调负荷 + 储能 + 充电桩     <span class="d-line">│</span>
+                 <span class="d-line">│</span>  能力：预测 / 聚合 / 控制 / 计量 / 结算           <span class="d-line">│</span>
+                 <span class="d-line">└</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┬</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┬</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┬</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┘</span>
+                         <span class="d-line">│</span>               <span class="d-line">│</span>               <span class="d-line">│</span>
                     需求响应          现货/中长期        辅助服务
-                   （削峰/填谷）      （报量报价）      （调频/备用/爬坡）</code></pre>
+                   （削峰/填谷）      （报量报价）      （调频/备用/爬坡）</pre>
+    </div>
+  </figure>
 <ul><li><strong>VPP 不是 DR 的同义词</strong>：VPP 是组织形态，DR 是它可参与的一个市场品种。</li><li><strong>DR 也不是 VPP 的子集</strong>：大工业用户可以直接参与 DR，不必经过 VPP；VPP 只是把分散资源&quot;打包&quot;的一种方式。</li><li><strong>判断边界看&quot;有没有反向供电&quot;</strong>：能反向供电、作为&quot;正电厂&quot;的，更接近 VPP；只削负荷的，是 DR 的典型形态。这条判据来自早期 VPP 研究，今天仍好用。</li></ul>
 <h3 id="s8">1.3 DR 与有序用电的关系</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>需求响应</th><th>有序用电</th></tr></thead><tbody><tr><td>触发条件</td><td>短时供需紧张、新能源消纳困难、局部阻塞</td><td>可预知供应不足，且其他措施用尽</td></tr><tr><td>手段</td><td>价格、补偿、合同</td><td>行政指标、负荷控制</td></tr><tr><td>用户选择</td><td>自愿参与，可报价</td><td>按方案刚性执行</td></tr><tr><td>补偿</td><td>有，按规则</td><td>一般无，或按地方政策</td></tr><tr><td>顺序</td><td>先</td><td>后</td></tr></tbody></table></div>
@@ -138,14 +181,29 @@
 <hr>
 <h2 id="s10">2. 灵活性资源盘点与能力测算</h2>
 <h3 id="s11">2.1 资源地图</h3>
-<pre><code>┌──────────────────────────── 灵活性资源 ────────────────────────────┐
-│ 电源侧            电网侧              负荷侧                储侧        │
-│ 煤电灵活性        独立储能            工业可中断/可转移      用户侧储能  │
-│ 气电顶峰          SVG/调相机          楼宇空调/居民           V2G        │
-│ 抽水蓄能          互联互济            数据中心/算力          备电/共享   │
-│ 新能源+储能       配网重构            电解铝/钢铁/水泥       移动储能    │
-│ 可中断新能源      需求侧资源库        充电桩/换电站          热储能      │
-└────────────────────────────────────────────────────────────────────┘</code></pre>
+<figure class="arch-diagram arch-resource" data-arch-id="flex-resource-map" aria-label="灵活性资源地图">
+    <figcaption class="diagram-head">
+    <span class="diagram-head-row">
+      <span class="diagram-kicker">资源地图 · RESOURCE MAP</span>
+      <span class="diagram-meta">4 类 · 20 项</span>
+    </span>
+    <span class="diagram-title">灵活性资源地图</span>
+  </figcaption>
+    <div class="arch-resource-root"><span>灵活性资源</span><small>电源侧 · 电网侧 · 负荷侧 · 储侧</small></div>
+    <div class="arch-resource-grid"><section class="arch-resource-card" data-tone="teal">
+      <div class="arch-resource-head"><span>电源侧</span><small>5</small></div>
+      <ul class="arch-resource-list"><li>煤电灵活性</li><li>气电顶峰</li><li>抽水蓄能</li><li>新能源+储能</li><li>可中断新能源</li></ul>
+    </section><section class="arch-resource-card" data-tone="amber">
+      <div class="arch-resource-head"><span>电网侧</span><small>5</small></div>
+      <ul class="arch-resource-list"><li>独立储能</li><li>SVG/调相机</li><li>互联互济</li><li>配网重构</li><li>需求侧资源库</li></ul>
+    </section><section class="arch-resource-card" data-tone="blue">
+      <div class="arch-resource-head"><span>负荷侧</span><small>5</small></div>
+      <ul class="arch-resource-list"><li>工业可中断/可转移</li><li>楼宇空调/居民</li><li>数据中心/算力</li><li>电解铝/钢铁/水泥</li><li>充电桩/换电站</li></ul>
+    </section><section class="arch-resource-card" data-tone="plum">
+      <div class="arch-resource-head"><span>储侧</span><small>5</small></div>
+      <ul class="arch-resource-list"><li>用户侧储能</li><li>V2G</li><li>备电/共享</li><li>移动储能</li><li>热储能</li></ul>
+    </section></div>
+  </figure>
 <ul><li><strong>电源侧</strong>：煤电灵活性改造、气电、抽蓄、新能源配储；调峰深度、爬坡率、启停时间是关键。</li><li><strong>电网侧</strong>：独立/共享储能、SVG、调相机、跨区互济；解决阻塞、电压、惯量问题。</li><li><strong>负荷侧</strong>：工业可中断/可转移、楼宇空调、居民、数据中心、电解铝/钢铁/水泥、充电桩；DR 的主战场。</li><li><strong>储侧</strong>：用户侧储能、V2G、备电、共享储能；既能削峰填谷，也能做备用与调频。</li></ul>
 <h3 id="s12">2.2 五维能力参数</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>参数</th><th>含义</th><th>为什么重要</th><th>常见陷阱</th></tr></thead><tbody><tr><td>可调容量（MW）</td><td>在基线上可增加/削减的最大功率</td><td>决定能卖多少容量</td><td>用铭牌功率代替可调容量</td></tr><tr><td>持续时间（h）</td><td>满功率能维持多久</td><td>决定能卖能量型还是功率型</td><td>只看 1 h，忽略 2–4 h</td></tr><tr><td>爬坡率（MW/min）</td><td>从基线到目标功率的速度</td><td>决定能否做调频/快速响应</td><td>用理论值代替实测值</td></tr><tr><td>通知提前量</td><td>从收到指令到开始执行的时间</td><td>决定产品类型与价格系数</td><td>把&quot;日前&quot;资源报成&quot;实时&quot;</td></tr><tr><td>可用率/响应率</td><td>可调用概率、实际响应/中标响应</td><td>决定考核与结算</td><td>用签约容量代替可用容量</td></tr></tbody></table></div>
@@ -153,20 +211,20 @@
 <ul><li><strong>调用频次上限</strong>：一年能被打几次？生产恢复、设备寿命、用户耐受都有上限。</li><li><strong>机会成本</strong>：少生产一吨钢、少服务一单生意、少充一次电，损失多少？</li><li><strong>恢复时间</strong>：响应结束后多久能回到正常生产？这决定连续两天的调用能力。</li></ul>
 <h3 id="s13">2.3 测算公式</h3>
 <p><strong>削峰能力：</strong></p>
-<pre><code>P_shave = min(P_base − P_min, P_rated, P_contract)
+<pre tabindex="0"><code>P_shave = min(P_base − P_min, P_rated, P_contract)
 E_shave = Σ P_shave,t × Δt</code></pre>
 <p><strong>填谷能力：</strong></p>
-<pre><code>P_fill = min(P_max − P_base, P_rated, P_contract)
+<pre tabindex="0"><code>P_fill = min(P_max − P_base, P_rated, P_contract)
 E_fill = Σ P_fill,t × Δt</code></pre>
 <p><strong>聚合容量（同时率与可用率）：</strong></p>
-<pre><code>P_agg = Σ_i P_i × k_i × a_i</code></pre>
+<pre tabindex="0"><code>P_agg = Σ_i P_i × k_i × a_i</code></pre>
 <ul><li><code>P_i</code>：单个资源可调容量；<code>k_i</code>：同时率（同一时刻有多少资源可用）；<code>a_i</code>：可用率/响应率。</li><li><strong>同时率不是 1</strong>：100 台充电桩不会同时满功率，100 户空调不会同时响应；<code>k</code> 通常远小于 1。</li><li><strong>可用率不是 100%</strong>：设备检修、车主出行、生产安排都会让资源&quot;在库但不可用&quot;。</li></ul>
 <p><strong>有效响应量：</strong></p>
-<pre><code>ΔP_t = max(0, P_base,t − P_actual,t)
+<pre tabindex="0"><code>ΔP_t = max(0, P_base,t − P_actual,t)
 R = ΔP_t / P_bid
 E_eff = Σ ΔP_t × Δt</code></pre>
 <p><strong>V2G 单枪可用容量：</strong></p>
-<pre><code>P_v2g = min(P_pile, E_available / T, S_transformer − P_load)</code></pre>
+<pre tabindex="0"><code>P_v2g = min(P_pile, E_available / T, S_transformer − P_load)</code></pre>
 <ul><li><code>E_available</code>：车辆允许放出的电量（不是电池总容量）；<code>T</code>：放电时长；<code>S_transformer</code>：台区/配变容量裕度。</li><li><strong>V2G 的瓶颈常在配变，不在车</strong>：台区晚高峰本身重载，反向放电可能加剧电压/保护问题，必须做配网校核。</li></ul>
 <h3 id="s14">2.4 分行业可调比例（经验值）</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>资源</th><th>可调比例/潜力</th><th>主要约束</th><th>级别</th></tr></thead><tbody><tr><td>钢铁</td><td>约 20%</td><td>连续生产、炉温、订单</td><td>C</td></tr><tr><td>水泥</td><td>约 24%</td><td>窑炉启停、熟料库存</td><td>C</td></tr><tr><td>电解铝</td><td>约 22%</td><td>电解槽安全、阳极效应</td><td>C</td></tr><tr><td>楼宇空调</td><td>约 30% 楼宇负荷；空调约占楼宇负荷 25%</td><td>舒适度、蓄冷、天气</td><td>C</td></tr><tr><td>居民负荷</td><td>家庭负荷 25%–50%</td><td>用户意愿、家电类型</td><td>C</td></tr><tr><td>数据中心</td><td>5%–15%（备电/制冷/算力调度）</td><td>业务连续性、SLA</td><td>D</td></tr><tr><td>公共充电桩</td><td>30%–60% 可调（有序充电）</td><td>车辆到达率、用户接受度</td><td>D</td></tr><tr><td>V2G 私家车</td><td>单车可用 20–40 kWh；聚合同时率低</td><td>出行、SOC、桩兼容、质保</td><td>D</td></tr></tbody></table></div>
@@ -193,29 +251,74 @@ E_eff = Σ ΔP_t × Δt</code></pre>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>产品</th><th>提前量</th><th>持续时间</th><th>调用频次</th><th>价格结构</th><th>最适合</th></tr></thead><tbody><tr><td>日前削峰</td><td>D-1</td><td>1–4 h</td><td>中</td><td>电量</td><td>工业、楼宇、储能</td></tr><tr><td>实时削峰</td><td>分钟级</td><td>0.5–2 h</td><td>低</td><td>电量 × 速度系数</td><td>储能、直控负荷</td></tr><tr><td>可中断</td><td>分钟级</td><td>1–4 h</td><td>低–中</td><td>容量 + 电量</td><td>工业可中断</td></tr><tr><td>灵活避峰</td><td>0.5–2 h</td><td>0.5–2 h</td><td>中</td><td>电量 × 1.4–1.6</td><td>空调、储能</td></tr><tr><td>填谷</td><td>D-1/实时</td><td>2–6 h</td><td>高</td><td>电量（低价）</td><td>储能、充电桩</td></tr><tr><td>容量/备用</td><td>月/年</td><td>随时</td><td>低</td><td>元/kW·月</td><td>储能、备电、可中断</td></tr></tbody></table></div>
 <h3 id="s22">3.5 价格结构与系数</h3>
 <p><strong>电量补偿：</strong></p>
-<pre><code>C_energy = E_eff × p × α_speed × α_rate</code></pre>
+<pre tabindex="0"><code>C_energy = E_eff × p × α_speed × α_rate</code></pre>
 <p><strong>容量补偿：</strong></p>
-<pre><code>C_capacity = P_available × p_cap × T</code></pre>
+<pre tabindex="0"><code>C_capacity = P_available × p_cap × T</code></pre>
 <p><strong>两部制：</strong></p>
-<pre><code>C = C_capacity + C_energy</code></pre>
+<pre tabindex="0"><code>C = C_capacity + C_energy</code></pre>
 <ul><li><code>p</code>：出清价/补偿单价；<code>α_speed</code>：速度系数；<code>α_rate</code>：响应率系数；<code>P_available</code>：可用容量。</li><li><strong>价格上限只是&quot;申报天花板&quot;</strong>：广东 2,700 元/MWh、江苏 15/10 元/kWh、广州 3.5 元/kWh，都是上限；实际按出清价/系数结算。</li><li><strong>系数是&quot;隐形价格&quot;</strong>：响应率 80% 以上系数 1.0、50%–80% 系数 0.6、低于 50% 为 0（福建口径，C）；速度系数 1–3 倍（厦门口径，C）。</li><li><strong>考核是&quot;负价格&quot;</strong>：未达到中标量的 80%，按差额扣罚；扣罚公式各省不同，但逻辑一致。</li></ul>
 <h3 id="s23">3.6 报价策略（简版）</h3>
 <ol><li><strong>算机会成本</strong>：少生产、少服务、少充电的损失，是报价的地板。</li><li><strong>算设备损耗</strong>：储能循环、空调启停、电池衰减，都是成本。</li><li><strong>算考核风险</strong>：报价越高，考核越严；宁可少报，不要报满。</li><li><strong>算竞争</strong>：价格优先、容量优先（江苏），边际出清；不是报得高就赚得多。</li><li><strong>算时间</strong>：同一时段不能重复参与多个产品；报了这个，就不能报那个。</li></ol>
 <h3 id="s24">3.7 产品选择树</h3>
-<pre><code>有生产弹性/可转移工序?
-├─ 是 → 工业可中断/可转移 → 日前削峰 / 可中断
-└─ 否
-   ├─ 有储能/空调/充电桩?
-   │  ├─ 是 → 短时削峰/填谷 → 实时/灵活避峰/填谷
-   │  └─ 否
-   │     ├─ 有备电/自备电源?
-   │     │  ├─ 是 → 容量/备用
-   │     │  └─ 否 → 先做计量与资源入库，不急着报价</code></pre>
+<figure class="tree-diagram" aria-label="有生产弹性/可转移工序?结构图">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构图 · STRUCTURE</span>
+        <span class="diagram-meta">2 个一级分支</span>
+      </span>
+      <span class="tree-root-title">有生产弹性/可转移工序?</span>
+
+    </figcaption>
+    <div class="tree-grid"><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">01</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">是</span>
+        <span class="tree-node-detail">工业可中断/可转移 → 日前削峰 / 可中断</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">02</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">否</span>
+
+      </span>
+    </div>
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">有储能/空调/充电桩?</span>
+
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">是</span>
+    <span class="tree-child-detail">短时削峰/填谷 → 实时/灵活避峰/填谷</span>
+
+  </li><li>
+    <span class="tree-child-title">否</span>
+
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">有备电/自备电源?</span>
+
+
+  </li><li>
+    <span class="tree-child-title">是</span>
+    <span class="tree-child-detail">容量/备用</span>
+
+  </li><li>
+    <span class="tree-child-title">否</span>
+    <span class="tree-child-detail">先做计量与资源入库，不急着报价</span>
+
+  </li></ul>
+  </li></ul>
+  </li></ul>
+  </article></div>
+
+  </figure>
 <hr>
 <h2 id="s25">4. 基线认定与效果评估</h2>
 <h3 id="s26">4.1 基线是什么</h3>
 <p><strong>基线（baseline）</strong>：假定用户没有参与需求响应时，在响应时段&quot;本来会用多少电&quot;的负荷曲线。它是反事实，不是实际负荷。</p>
-<pre><code>响应量 = 基线负荷 − 实际负荷</code></pre>
+<pre tabindex="0"><code>响应量 = 基线负荷 − 实际负荷</code></pre>
 <ul><li>基线高，响应量就大；基线低，响应量就小。<strong>基线认定是 DR 结算的第一道会计</strong>。</li><li>基线不是&quot;历史最大负荷&quot;，也不是&quot;昨天同一时刻的负荷&quot;；它是按规则计算的、可复现的曲线。</li></ul>
 <h3 id="s27">4.2 常用方法</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>方法</th><th>怎么做</th><th>适用</th><th>风险</th></tr></thead><tbody><tr><td>典型日平均法（5+3）</td><td>取响应日前 5 个工作日/3 个非工作日，同时刻 15 分钟样本平均</td><td>大多数工业、商业、居民</td><td>天气、生产变化大时失真</td></tr><tr><td>异常剔除</td><td>剔除低于均值 25% 或高于 200% 的样本，向前递推</td><td>所有方法的前处理</td><td>剔除规则不一致会引发争议</td></tr><tr><td>回归法</td><td>用温度、湿度、产量、日期等解释负荷</td><td>空调、可变生产</td><td>模型过拟合、数据质量差</td></tr><tr><td>控制组法</td><td>找一组未响应、特征相似的客户作对照</td><td>聚合商、居民</td><td>对照组难匹配</td></tr><tr><td>实时修正</td><td>用响应前 3 h 的负荷差修正基线</td><td>实时/紧急响应</td><td>修正窗口被操纵</td></tr><tr><td>最大/平均基线</td><td>最大基线用于容量，平均基线用于电量</td><td>容量型/电量型产品</td><td>两个口径混用</td></tr></tbody></table></div>
@@ -240,20 +343,30 @@ E_eff = Σ ΔP_t × Δt</code></pre>
 <hr>
 <h2 id="s33">5. 调用、结算与考核</h2>
 <h3 id="s34">5.1 全流程</h3>
-<pre><code>注册/签约 → 能力测试 → 资源入库 → 邀约/出清 → 用户确认 → 执行 → 监测
-   → 效果评估 → 结果公示 → 结算 → 复盘/退出</code></pre>
+<figure class="diagram-blueprint">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构示意 · DIAGRAM</span>
+        <span class="diagram-meta">可横向滚动</span>
+      </span>
+    </figcaption>
+    <div class="diagram-canvas" tabindex="0" role="group" aria-label="结构示意图">
+      <pre>注册/签约 <span class="d-arrow">→</span> 能力测试 <span class="d-arrow">→</span> 资源入库 <span class="d-arrow">→</span> 邀约/出清 <span class="d-arrow">→</span> 用户确认 <span class="d-arrow">→</span> 执行 <span class="d-arrow">→</span> 监测
+   <span class="d-arrow">→</span> 效果评估 <span class="d-arrow">→</span> 结果公示 <span class="d-arrow">→</span> 结算 <span class="d-arrow">→</span> 复盘/退出</pre>
+    </div>
+  </figure>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>环节</th><th>谁做</th><th>交付物</th><th>常见失败</th></tr></thead><tbody><tr><td>注册/签约</td><td>用户、聚合商、交易中心</td><td>合同、户号、计量点</td><td>户号与计量点不一致</td></tr><tr><td>能力测试</td><td>电网/负荷管理中心</td><td>测试报告、可调容量</td><td>测试时段不代表真实高峰</td></tr><tr><td>资源入库</td><td>电网/交易中心</td><td>资源清单、基线</td><td>资源重复入库</td></tr><tr><td>邀约/出清</td><td>交易中心/电网</td><td>邀约、出清结果</td><td>价格优先/容量优先规则不清</td></tr><tr><td>用户确认</td><td>用户/聚合商</td><td>确认回执</td><td>未及时确认视为放弃</td></tr><tr><td>执行</td><td>用户/聚合商</td><td>执行记录、曲线</td><td>只关设备，未达目标</td></tr><tr><td>监测</td><td>电网/平台</td><td>15 分钟/1 分钟数据</td><td>表计故障、通信中断</td></tr><tr><td>评估</td><td>电网/交易中心</td><td>基线、响应量、响应率</td><td>基线争议</td></tr><tr><td>公示</td><td>交易中心/电网</td><td>公示清单</td><td>用户未及时申诉</td></tr><tr><td>结算</td><td>电网/交易中心</td><td>结算单、发票/退补</td><td>科目不清、重复扣罚</td></tr><tr><td>复盘/退出</td><td>各方</td><td>复盘报告、退出申请</td><td>长期不响应仍占资源</td></tr></tbody></table></div>
 <h3 id="s35">5.2 结算公式</h3>
 <p><strong>电量型：</strong></p>
-<pre><code>C = E_eff × p × α_speed × α_rate</code></pre>
+<pre tabindex="0"><code>C = E_eff × p × α_speed × α_rate</code></pre>
 <p><strong>容量型：</strong></p>
-<pre><code>C = P_available × p_cap × T</code></pre>
+<pre tabindex="0"><code>C = P_available × p_cap × T</code></pre>
 <p><strong>两部制：</strong></p>
-<pre><code>C = P_available × p_cap × T + E_eff × p_energy</code></pre>
+<pre tabindex="0"><code>C = P_available × p_cap × T + E_eff × p_energy</code></pre>
 <p><strong>考核：</strong></p>
-<pre><code>Penalty = max(0, (θ × Q_bid − Q_actual) × p × β)</code></pre>
+<pre tabindex="0"><code>Penalty = max(0, (θ × Q_bid − Q_actual) × p × β)</code></pre>
 <p><strong>净收益：</strong></p>
-<pre><code>Net = C − C_opportunity − C_equipment − C_labor − C_penalty − C_platform</code></pre>
+<pre tabindex="0"><code>Net = C − C_opportunity − C_equipment − C_labor − C_penalty − C_platform</code></pre>
 <ul><li><strong>结算周期</strong>：常见&quot;日清月结&quot;（四川）、按月/季度结算；居民/小用户可能按季度或年度。</li><li><strong>结算依据</strong>：电网企业电能计量装置；平台数据是过程证据，表计是结算证据。</li><li><strong>发票/退补</strong>：企业用户通常走电费退补或服务费发票；居民用户走平台/电网代发。</li><li><strong>税务</strong>：补偿款、服务费、容量费的税目不同，合同要写清。</li></ul>
 <h3 id="s36">5.3 资金从哪来</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>来源</th><th>机制</th><th>优点</th><th>风险</th></tr></thead><tbody><tr><td>尖峰电价增收</td><td>季节性尖峰电价多收的钱，注入 DR 资金池</td><td>用户侧自筹，财政压力小</td><td>资金来源不稳定，随电价政策变化</td></tr><tr><td>系统运行费</td><td>纳入输配电价/系统运行费</td><td>稳定、可持续</td><td>需要价格主管部门核定</td></tr><tr><td>财政补贴</td><td>省/市财政预算</td><td>启动快、力度大</td><td>不可持续、年度额度有限</td></tr><tr><td>受益者付费</td><td>电网、发电、用户按受益分摊</td><td>公平</td><td>分摊机制复杂、争议大</td></tr><tr><td>市场出清</td><td>现货/辅助服务/容量市场</td><td>价格信号真实</td><td>需要市场成熟、监管到位</td></tr></tbody></table></div>
@@ -264,7 +377,37 @@ E_eff = Σ ΔP_t × Δt</code></pre>
 <p><strong>保留五类证据：</strong></p>
 <ol><li>邀约通知（时间、时段、容量、价格）。</li><li>基线及样本（D-1 发布版本）。</li><li>执行记录（设备动作、功率曲线、平台日志）。</li><li>计量数据（15 分钟/1 分钟，表计编号）。</li><li>结算单与公示（补偿、考核、扣罚明细）。</li></ol>
 <p><strong>争议处理五步：</strong></p>
-<pre><code>收到结算单 → 3–5 个工作日内核对 → 提出书面异议 → 电网/交易中心复核 → 公示/仲裁</code></pre>
+<figure class="flow-diagram" aria-label="流程示意">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">流程 · FLOW</span>
+        <span class="diagram-meta">5 个步骤</span>
+      </span>
+
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">收到结算单</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">3–5 个工作日内核对</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">提出书面异议</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">04</span>
+      <span class="flow-text">电网/交易中心复核</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">05</span>
+      <span class="flow-text">公示/仲裁</span>
+
+    </li></ol>
+
+  </figure>
 <ul><li><strong>超期视为认可</strong>：很多细则规定异议期，过期不再受理。</li><li><strong>先核对基线，再核对计量，最后核对系数</strong>：80% 的争议在基线，15% 在计量，5% 在系数。</li></ul>
 <hr>
 <h2 id="s39">6. 省级规则对照（2026）</h2>
@@ -290,15 +433,38 @@ E_eff = Σ ΔP_t × Δt</code></pre>
 <h3 id="s48">7.3 试点城市与项目</h3>
 <ul><li><strong>9 个城市</strong>：上海、常州、合肥、淮北、广州、深圳、海口、重庆、昆明。</li><li><strong>30 个项目</strong>：北京、天津、保定、晋城、上海、广州、深圳等地，覆盖园区、公交、社区、重卡、公共场站等场景。</li><li><strong>口径提醒</strong>：有报道写&quot;32 个项目&quot;，与 241 号&quot;30 个项目&quot;不一致；以官方附件为准，引用时注明&quot;30 个（部分报道称 32 个）&quot;。</li><li><strong>2026 年运行数据</strong>：<ul><li><strong>上海</strong>：2026-09-12 单次最大放电 3.46 万kW、5,856.77 kWh、410 辆车；夏季累计 48 次、10.91 万kWh、8,030 辆车（公开报道，B）。</li><li>深圳：光明虹桥公园单站 61 辆车、4.21 MW，接入深圳 VPP 管理中心（B）。</li><li>广州：2026-05-28 首个固定示范日，76 座站、492 台桩、反向放电 1.5 万kWh（B）。</li><li><strong>湖北</strong>：2025-08 至 2026-03 常态化试点，有效放电订单超 2.1 万次、放电量超 37.6 万kWh（B）。</li><li>济南：居民 V2G 虚拟电厂聚合 7,860 kW，居民放电收益 0.46 元/kWh（B）。</li></ul></li><li><strong>结论</strong>：单站已到兆瓦级，城市级到数万千瓦级；离&quot;千万千瓦&quot;还有两个数量级，靠的是规模复制，不是单站放大。</li></ul>
 <h3 id="s49">7.4 技术架构</h3>
-<pre><code>┌──────────┐    ┌──────────────┐    ┌──────────────┐    ┌──────────────┐
-│ 车辆 BMS │←→│ 双向充电桩/直流桩 │←→│ 台区/配变/保护 │←→│ 聚合平台/VPP │
-│ SOC/温度 │    │ 功率/计量/通信  │    │ 容量/电压/谐波 │    │ 预测/策略/结算│
-└──────────┘    └──────────────┘    └──────────────┘    └──────┬───────┘
-                                                               │
-                                              ┌────────────────┴────────────────┐
-                                              │ 电网调度 / 交易中心 / 负荷管理中心 │
-                                              │ 邀约 / 出清 / 考核 / 结算          │
-                                              └─────────────────────────────────┘</code></pre>
+<figure class="arch-diagram arch-v2g" data-arch-id="v2g-chain" aria-label="V2G 技术架构">
+    <figcaption class="diagram-head">
+    <span class="diagram-head-row">
+      <span class="diagram-kicker">技术架构 · V2G</span>
+      <span class="diagram-meta">4 个环节</span>
+    </span>
+    <span class="diagram-title">V2G 技术架构</span>
+  </figcaption>
+    <div class="arch-v2g-row"><article class="arch-node arch-node-detail">
+      <span class="arch-node-index" aria-hidden="true">01</span>
+      <span class="arch-node-title">车辆 BMS</span>
+      <span class="arch-node-detail">SOC/温度</span>
+    </article><span class="arch-bi-arrow" aria-hidden="true">↔</span><article class="arch-node arch-node-detail">
+      <span class="arch-node-index" aria-hidden="true">02</span>
+      <span class="arch-node-title">双向充电桩/直流桩</span>
+      <span class="arch-node-detail">功率/计量/通信</span>
+    </article><span class="arch-bi-arrow" aria-hidden="true">↔</span><article class="arch-node arch-node-detail">
+      <span class="arch-node-index" aria-hidden="true">03</span>
+      <span class="arch-node-title">台区/配变/保护</span>
+      <span class="arch-node-detail">容量/电压/谐波</span>
+    </article><span class="arch-bi-arrow" aria-hidden="true">↔</span><article class="arch-node arch-node-detail">
+      <span class="arch-node-index" aria-hidden="true">04</span>
+      <span class="arch-node-title">聚合平台/VPP</span>
+      <span class="arch-node-detail">预测/策略/结算</span>
+    </article></div>
+    <div class="arch-v2g-drop"><span aria-hidden="true">↕</span></div>
+    <article class="arch-upstream-node">
+      <span class="arch-node-title">电网调度 / 交易中心 / 负荷管理中心</span>
+      <div class="arch-chips"><span class="arch-chip arch-chip-strong">邀约</span><span class="arch-chip arch-chip-strong">出清</span><span class="arch-chip arch-chip-strong">考核</span><span class="arch-chip arch-chip-strong">结算</span></div>
+    </article>
+    <p class="sr-only">车辆、充电桩、台区与聚合平台之间为双向连接。</p>
+  </figure>
 <ul><li><strong>车端</strong>：BMS 提供 SOC、温度、可用充放电功率、健康状态；V2G 需要车端允许反向放电。</li><li><strong>桩端</strong>：双向桩/直流桩，支持计量、通信、保护、孤岛检测；交流 V2G 成本低但功率小，直流 V2G 功率大但成本高。</li><li><strong>台区</strong>：配变容量、电压、谐波、保护定值是硬约束；V2G 集中放电可能造成过电压、保护误动。</li><li><strong>平台</strong>：聚合、预测、报价、控制、计量、结算；要能对接负荷管理系统、调度自动化、交易平台。</li><li><strong>标准</strong>：充电系统、连接器、通信协议、互操作性标准体系仍在完善；跨品牌车-桩-网兼容是落地难点。具体标准号与版本以现行目录为准。</li></ul>
 <h3 id="s50">7.5 参与市场的四条路径</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>路径</th><th>卖什么</th><th>门槛</th><th>收益</th><th>难点</th></tr></thead><tbody><tr><td>需求响应</td><td>削峰/填谷/可中断</td><td>低–中</td><td>补偿</td><td>基线、调用频次</td></tr><tr><td>电力现货</td><td>电能量</td><td>中–高</td><td>价差</td><td>预测、申报、偏差</td></tr><tr><td>辅助服务</td><td>调频/备用/爬坡</td><td>高</td><td>容量+里程</td><td>响应速度、持续时间、AGC 接口</td></tr><tr><td>容量/容量租赁</td><td>可用容量</td><td>中</td><td>容量补偿/租金</td><td>认定规则、可用率</td></tr></tbody></table></div>
@@ -326,9 +492,31 @@ E_eff = Σ ΔP_t × Δt</code></pre>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>数据</th><th>含义</th><th>级别</th></tr></thead><tbody><tr><td>全国最大负荷</td><td>15.57 亿kW，四次创历史新高，较 2025 年极值增约 4,900 万kW</td><td>保供压力持续上升</td><td>A/B</td></tr><tr><td>区域/省级纪录</td><td>6 个区域电网、20 个省级电网多次创新高</td><td>局部高峰更突出</td><td>B</td></tr><tr><td>DR/有序用电</td><td>31 个省份均未采取 DR、有序用电措施</td><td>供应侧+市场调节扛住了</td><td>B</td></tr><tr><td>装机</td><td>超 40 亿kW；46 条特高压；新型储能 1.53 亿kW</td><td>保供底盘厚</td><td>B</td></tr><tr><td>VPP</td><td>超 530 个，最大调节能力 1,800 万kW 以上</td><td>需求侧调节规模化</td><td>B</td></tr><tr><td>需求侧调节能力</td><td>超 9,000 万kW，占最大负荷 6.0% 以上</td><td>已超 2025 年 3%–5% 目标</td><td>B</td></tr><tr><td>上海 VPP</td><td>164.77 万kW 实测响应</td><td>城市级 VPP 进入&quot;百万千瓦&quot;时代</td><td>B</td></tr><tr><td>深圳 VPP</td><td>140 万kW，61 家运营商、1.4 万+ 用户</td><td>市场化聚合规模</td><td>B</td></tr></tbody></table></div>
 <ul><li><strong>&quot;没启动 DR&quot;不等于&quot;DR 没参与&quot;</strong>：上海 VPP 在迎峰度夏期间做了 164.77 万kW 响应，属于市场化的系统调节，不是政府行政 DR。</li><li><strong>&quot;能力 9,000 万kW&quot;不等于&quot;随时能调 9,000 万kW&quot;</strong>：这是资源潜力/能力口径；实际调用要打同时率、可用率、响应率。</li></ul>
 <h3 id="s58">8.2 三层口径</h3>
-<pre><code>理论潜力（资源盘点）
-   └─ 可调用能力（入库、签约、测试、平台接入）
-        └─ 实际响应（邀约、执行、计量、考核）</code></pre>
+<figure class="tree-diagram" aria-label="理论潜力（资源盘点）结构图">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构图 · STRUCTURE</span>
+        <span class="diagram-meta">1 个一级分支</span>
+      </span>
+      <span class="tree-root-title">理论潜力（资源盘点）</span>
+
+    </figcaption>
+    <div class="tree-grid"><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">01</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">可调用能力（入库、签约、测试、平台接入）</span>
+
+      </span>
+    </div>
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">实际响应（邀约、执行、计量、考核）</span>
+
+
+  </li></ul>
+  </article></div>
+
+  </figure>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>口径</th><th>2026 示例</th><th>折扣因素</th></tr></thead><tbody><tr><td>理论潜力</td><td>工商业+EV+分布式储能 &gt;3 亿kW（C）</td><td>资源是否愿意参与</td></tr><tr><td>能力/入库</td><td>需求侧 9,000 万kW、VPP 1,800 万kW</td><td>同时率、可用率、测试</td></tr><tr><td>实际响应</td><td>上海 164.77 万kW、深圳 140 万kW</td><td>调用次数、响应率、考核</td></tr></tbody></table></div>
 <ul><li><strong>做规划用&quot;能力&quot;，做结算用&quot;实际响应&quot;</strong>：两个口径不能混。</li><li><strong>做投资用&quot;可调用能力 × 年调用次数 × 单价&quot;</strong>：只算能力，会高估收益；只算 2026 年实际调用，会低估期权价值。</li></ul>
 <h3 id="s59">8.3 为什么 2026 年没启动 DR</h3>
@@ -505,7 +693,9 @@ E_eff = Σ ΔP_t × Δt</code></pre>
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

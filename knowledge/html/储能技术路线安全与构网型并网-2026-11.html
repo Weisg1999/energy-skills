@@ -15,7 +15,7 @@
 </head>
 <body data-cat="storage" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -104,17 +104,27 @@
 <hr>
 <h2 id="s1">0. 一页看懂</h2>
 <h3 id="s2">0.1 三条主线</h3>
-<pre><code>                    ┌──────────── 电力系统要什么 ────────────┐
-                    │ 削峰填谷 / 调频 / 惯量 / 电压 / 黑启动 │
-                    └───────────────┬───────────────────────┘
-        ┌───────────────────────────┼───────────────────────────┐
-        ▼                           ▼                           ▼
+<figure class="diagram-blueprint">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构示意 · DIAGRAM</span>
+        <span class="diagram-meta">可横向滚动</span>
+      </span>
+    </figcaption>
+    <div class="diagram-canvas" tabindex="0" role="group" aria-label="结构示意图">
+      <pre>                    <span class="d-line">┌</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span> 电力系统要什么 <span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┐</span>
+                    <span class="d-line">│</span> 削峰填谷 / 调频 / 惯量 / 电压 / 黑启动 <span class="d-line">│</span>
+                    <span class="d-line">└</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┬</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┘</span>
+        <span class="d-line">┌</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┼</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┐</span>
+        <span class="d-arrow">▼</span>                           <span class="d-arrow">▼</span>                           <span class="d-arrow">▼</span>
    技术路线选型                  安全设防                    并网控制
-   锂电 / 钠电 / 液流            电芯→模组→舱→站→应急        跟网 GFL / 构网 GFM
+   锂电 / 钠电 / 液流            电芯<span class="d-arrow">→</span>模组<span class="d-arrow">→</span>舱<span class="d-arrow">→</span>站<span class="d-arrow">→</span>应急        跟网 GFL / 构网 GFM
    压缩空气 / 飞轮 / 热           标准+探测+灭火+泄压          惯量/一次调频/短路电流
-        └───────────────────────────┴───────────────────────────┘
-                                    ▼
-                    全生命周期：选型 → 设计 → 验收 → 运维 → 退役</code></pre>
+        <span class="d-line">└</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┴</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┘</span>
+                                    <span class="d-arrow">▼</span>
+                    全生命周期：选型 <span class="d-arrow">→</span> 设计 <span class="d-arrow">→</span> 验收 <span class="d-arrow">→</span> 运维 <span class="d-arrow">→</span> 退役</pre>
+    </div>
+  </figure>
 <ul><li><strong>技术路线回答&quot;用什么装能量&quot;</strong>：锂电、钠电、液流、压缩空气、飞轮、热储能、氢储能，各有自己的时长、效率、寿命与成本边界。</li><li><strong>安全回答&quot;怎么不出事、出了事怎么收住&quot;</strong>：不是只买消防设备，而是电芯、模组、舱、站、应急五层设防，加上标准、探测、断电、灭火、泄压、防复燃的闭环。</li><li><strong>构网回答&quot;储能能不能像同步机一样支撑电网&quot;</strong>：电压源、惯量、短路电流、黑启动，是四个硬指标；软件里写一个下垂系数不等于构网。</li></ul>
 <h3 id="s3">0.2 关键数字</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>数字</th><th>含义</th><th>来源与级别</th></tr></thead><tbody><tr><td>1.67 亿kW / 4.35 亿kWh</td><td>截至 2026-09 全国已投运新型储能；同比 +63%</td><td>国家能源局 2026-10-30 发布会，A</td></tr><tr><td>2.61 h</td><td>2026-09 新型储能平均时长；同比 +0.27 h</td><td>同上，A</td></tr><tr><td>915 h</td><td>2026 年 1-9 月全国新型储能等效利用小时数；同比 +10 h</td><td>同上，A</td></tr><tr><td>1.8 亿kW</td><td>2027 年全国新型储能装机目标；带动直接投资约 2,500 亿元</td><td>发改能源〔2025〕1144 号，A</td></tr><tr><td>3 亿kW / 1.4 亿kW</td><td>2030 年新型储能 / 电网侧独立储能目标</td><td>《新型电力系统建设&quot;十五五&quot;规划》及解读，B</td></tr><tr><td>96% 以上</td><td>锂离子电池在新型储能装机中的占比</td><td>国家能源局《中国新型储能发展报告（2026）》口径，B</td></tr><tr><td>0.45–0.60 元/Wh</td><td>2026 年 2–4 h 储能系统（设备）价格常见区间</td><td>招中标公开信息，B</td></tr><tr><td>0.391 / 0.497 元/Wh</td><td>4 h 储能系统最低中标价：2025 年 / 2026-07</td><td>行业媒体统计，B/C</td></tr><tr><td>7.3 GW / 25.2 GWh</td><td>2025 年国内构网型储能新增投运；渗透率约 12.8%</td><td>行业统计，B（与累计口径有冲突）</td></tr><tr><td>2.48 GW / 6.89 GWh</td><td>2026 年一季度构网型储能新增并网；容量占比约 19.2%</td><td>行业统计，B</td></tr><tr><td>2025-08-01</td><td>GB 44240-2024 储能电池强制性国标实施</td><td>A</td></tr><tr><td>2026-04-01</td><td>GB/T 51048-2025《电化学储能电站设计标准》实施</td><td>A</td></tr><tr><td>2026-11-01</td><td>GB/T 47968-2026《构网型变流器通用技术规范》实施</td><td>A/B</td></tr><tr><td>3 倍 / 10 s</td><td>构网型变流器短时过流能力要求（不降额）</td><td>GB/T 47968-2026 及行业解读，B</td></tr><tr><td>15 起 / 160 起</td><td>2026 年上半年全球公开报道储能事故 / 2011–2025 年累计</td><td>行业媒体统计，B</td></tr></tbody></table></div>
@@ -168,7 +178,7 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>权重</th><th>评分要点</th></tr></thead><tbody><tr><td>时长匹配</td><td>25%</td><td>能否覆盖净负荷高峰；过长/过短都扣分</td></tr><tr><td>全生命周期成本</td><td>25%</td><td>LCOS、初装、运维、更换、残值</td></tr><tr><td>安全与合规</td><td>20%</td><td>标准符合性、消防、选址、保险</td></tr><tr><td>并网/构网</td><td>15%</td><td>SCR、故障穿越、构网、黑启动</td></tr><tr><td>供应链与运维</td><td>15%</td><td>产能、备件、质保、远程监控</td></tr></tbody></table></div>
 <ul><li><strong>4 h 弱网独立储能示例</strong>：锂电+构网 4.0 分，全钒液流+构网 3.6 分，压缩空气 3.3 分。液流胜在寿命与安全，锂电胜在成本与响应，压缩空气受选址约束。</li><li><strong>评分不是结论</strong>：权重随项目变化；安全敏感区应提高安全权重，弱网应提高构网权重。</li></ul>
 <h3 id="s22">3.3 LCOS 粗算（D 级）</h3>
-<pre><code>LCOS = (CAPEX + Σ OPEX_t/(1+r)^t + Σ 更换_t/(1+r)^t − 残值/(1+r)^N)
+<pre tabindex="0"><code>LCOS = (CAPEX + Σ OPEX_t/(1+r)^t + Σ 更换_t/(1+r)^t − 残值/(1+r)^N)
        ÷ Σ (E_rated × DoD × η × 年循环次数)/(1+r)^t</code></pre>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>路线</th><th>规模</th><th>单位投资</th><th>年循环</th><th>年限</th><th>RTE</th><th>年运维</th><th>粗算 LCOS</th></tr></thead><tbody><tr><td>锂电</td><td>100 MW/400 MWh</td><td>0.55 元/Wh</td><td>300</td><td>10 年</td><td>88%</td><td>2% CAPEX</td><td>约 0.25–0.32 元/kWh</td></tr><tr><td>全钒液流</td><td>100 MW/400 MWh</td><td>2.0 元/Wh</td><td>300</td><td>20 年</td><td>70%</td><td>1.5% CAPEX</td><td>约 0.55–0.65 元/kWh</td></tr><tr><td>压缩空气</td><td>100 MW/400 MWh</td><td>1.2 元/Wh</td><td>250</td><td>30 年</td><td>65%</td><td>1% CAPEX</td><td>约 0.30–0.38 元/kWh</td></tr></tbody></table></div>
 <ul><li><strong>锂电</strong>：CAPEX 2.2 亿元，年放电 10.56 万 MWh；不计折现的度电成本约 0.25 元/kWh，折现后约 0.30 元/kWh。</li><li><strong>液流</strong>：CAPEX 8 亿元，年放电 8.4 万 MWh；初装高，但 20 年寿命摊薄，LCOS 仍高于锂电；若项目需要 6 h 以上或高频循环，差距会缩小。</li><li><strong>压缩空气</strong>：CAPEX 4.8 亿元，年放电 6.5 万 MWh；寿命 30 年、运维低，LCOS 有竞争力，但选址与建设周期是硬约束。</li><li><strong>纪律</strong>：以上不含充电电费、容量补偿、辅助服务收益、土地与并网成本；不能直接当投资结论。</li></ul>
@@ -177,11 +187,125 @@
 <hr>
 <h2 id="s24">4. 安全：从电芯到站级</h2>
 <h3 id="s25">4.1 热失控机理</h3>
-<ul><li><strong>诱因</strong>：机械滥用（针刺、挤压、跌落）、电滥用（过充、过放、外短路）、热滥用（高温、局部过热、冷却失效）、制造缺陷（金属异物、毛刺、焊接不良）、老化（SEI 增厚、析锂、内阻上升）。</li><li><strong>链式反应</strong>：温度升高 → SEI 分解（约 80–120°C）→ 隔膜收缩/熔断（约 130–150°C）→ 正极分解/释氧（约 200°C 以上）→ 电解液燃烧 → 产气/喷阀 → 起火或缺氧爆炸。</li><li><strong>LFP 的特点</strong>：橄榄石结构稳定、释氧少，热失控触发温度更高；但电解液仍可燃，产气（CO、H₂、HF、电解液蒸气）与复燃风险仍在。</li><li><strong>传播路径</strong>：电芯 → 模组 → 簇 → 舱 → 站；热蔓延靠传导、辐射、热气流与喷阀火焰。</li><li><strong>关键认知</strong>：约八成事故发生在正常运行状态下，不是施工或极端天气；这意味着<strong>监测、运维与早期预警</strong>比&quot;事后灭火&quot;更重要（B）。</li></ul>
+<ul><li><strong>诱因</strong>：机械滥用（针刺、挤压、跌落）、电滥用（过充、过放、外短路）、热滥用（高温、局部过热、冷却失效）、制造缺陷（金属异物、毛刺、焊接不良）、老化（SEI 增厚、析锂、内阻上升）。</li><li class="list-figure"><figure class="flow-diagram is-chain" aria-label="热失控链式反应">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">因果链 · CAUSE</span>
+        <span class="diagram-meta">7 个步骤</span>
+      </span>
+      <span class="diagram-title">热失控链式反应</span>
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">温度升高</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">SEI 分解（约 80–120°C）</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">隔膜收缩/熔断（约 130–150°C）</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">04</span>
+      <span class="flow-text">正极分解/释氧（约 200°C 以上）</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">05</span>
+      <span class="flow-text">电解液燃烧</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">06</span>
+      <span class="flow-text">产气/喷阀</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">07</span>
+      <span class="flow-text">起火或缺氧爆炸</span>
+
+    </li></ol>
+
+  </figure></li><li><strong>LFP 的特点</strong>：橄榄石结构稳定、释氧少，热失控触发温度更高；但电解液仍可燃，产气（CO、H₂、HF、电解液蒸气）与复燃风险仍在。</li><li class="list-figure"><figure class="flow-diagram is-chain" aria-label="热蔓延路径">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">传播链 · SPREAD</span>
+        <span class="diagram-meta">5 个步骤</span>
+      </span>
+      <span class="diagram-title">热蔓延路径</span>
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">电芯</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">模组</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">簇</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">04</span>
+      <span class="flow-text">舱</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">05</span>
+      <span class="flow-text">站</span>
+
+    </li></ol>
+    <div class="flow-note"><span class="flow-note-item">热蔓延靠传导、辐射、热气流与喷阀火焰。</span></div>
+  </figure></li><li><strong>关键认知</strong>：约八成事故发生在正常运行状态下，不是施工或极端天气；这意味着<strong>监测、运维与早期预警</strong>比&quot;事后灭火&quot;更重要（B）。</li></ul>
 <h3 id="s26">4.2 五道防线</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>层级</th><th>目标</th><th>关键措施</th><th>常见失效</th></tr></thead><tbody><tr><td>电芯本体</td><td>不触发热失控</td><td>材料体系、结构设计、制造一致性、GB 44240 认证</td><td>杂质、析锂、一致性差</td></tr><tr><td>模组/簇</td><td>不蔓延</td><td>隔热、间距、熔断、模块级探测与抑制、热蔓延试验</td><td>隔热失效、连接松动</td></tr><tr><td>舱/室</td><td>不扩大</td><td>防火分隔、泄压、可燃气体探测、排风、灭火、电缆封堵</td><td>舱门开启、通风联锁错误</td></tr><tr><td>站级</td><td>不影响电网与人员</td><td>选址、防火间距、消防水、疏散、监测、并网保护</td><td>消防通道堵塞、水源不足</td></tr><tr><td>应急</td><td>不伤人、不复燃</td><td>预案、断电、疏散、消防联动、复燃监视、PPE</td><td>盲目开舱、复燃、二次爆炸</td></tr></tbody></table></div>
 <h3 id="s27">4.3 BMS、EMS、PCS 与消防的联动</h3>
-<ul><li><strong>BMS</strong>：监测单体电压、温度、电流、绝缘、SOC/SOH；执行过压、欠压、过流、过温、绝缘告警与保护；三级架构（BMU/BCU/BAMS）。</li><li><strong>EMS</strong>：负责功率分配、SOC 平衡、告警分级、降额/停机、与消防/空调/门禁联动。</li><li><strong>PCS</strong>：接收停机命令，封锁脉冲、分断交直流开关、隔离故障簇；确认直流侧失电后才允许人员接近。</li><li><strong>消防系统</strong>：探测（烟感、温感、可燃气体、VOC、声学/气压）、报警、联动（停 PCS、断直流、停空调/关风阀、启动排风、释放灭火介质、开启泄压）。</li><li><strong>处置顺序（原则）</strong>：探测 → 告警 → 停机 → 断电/隔离 → 确认人员撤离 → 启动灭火/冷却 → 排风/泄压 → 持续监测复燃 → 专业消防处置。<strong>不要在未断电、未确认气体浓度时开舱门</strong>。</li></ul>
+<ul><li><strong>BMS</strong>：监测单体电压、温度、电流、绝缘、SOC/SOH；执行过压、欠压、过流、过温、绝缘告警与保护；三级架构（BMU/BCU/BAMS）。</li><li><strong>EMS</strong>：负责功率分配、SOC 平衡、告警分级、降额/停机、与消防/空调/门禁联动。</li><li><strong>PCS</strong>：接收停机命令，封锁脉冲、分断交直流开关、隔离故障簇；确认直流侧失电后才允许人员接近。</li><li><strong>消防系统</strong>：探测（烟感、温感、可燃气体、VOC、声学/气压）、报警、联动（停 PCS、断直流、停空调/关风阀、启动排风、释放灭火介质、开启泄压）。</li><li class="list-figure"><figure class="flow-diagram" aria-label="应急处置顺序">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">应急流程 · RESPONSE</span>
+        <span class="diagram-meta">9 个步骤</span>
+      </span>
+      <span class="diagram-title">应急处置顺序</span>
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">探测</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">告警</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">停机</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">04</span>
+      <span class="flow-text">断电/隔离</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">05</span>
+      <span class="flow-text">确认人员撤离</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">06</span>
+      <span class="flow-text">启动灭火/冷却</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">07</span>
+      <span class="flow-text">排风/泄压</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">08</span>
+      <span class="flow-text">持续监测复燃</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">09</span>
+      <span class="flow-text">专业消防处置</span>
+
+    </li></ol>
+    <div class="flow-note"><span class="flow-note-item"><strong>不要在未断电、未确认气体浓度时开舱门</strong>。</span></div>
+  </figure></li></ul>
 <h3 id="s28">4.4 灭火介质与系统选型</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>介质</th><th>原理</th><th>优点</th><th>局限</th><th>适用</th></tr></thead><tbody><tr><td>全氟己酮</td><td>化学抑制 + 降温</td><td>绝缘、洁净、毒性低、适合电气</td><td>分解产生 HF；降温有限；可能复燃</td><td>模组/簇/舱级</td></tr><tr><td>七氟丙烷</td><td>化学抑制</td><td>洁净、速度快</td><td>大空间用量大；HF；降温弱</td><td>房间级</td></tr><tr><td>细水雾/水</td><td>冷却、润湿</td><td>降温强、防复燃</td><td>电气风险、水损、需排水</td><td>舱/站级，断电后</td></tr><tr><td>气溶胶</td><td>化学抑制</td><td>成本低、体积小</td><td>残留、腐蚀、复燃</td><td>小柜/小空间</td></tr><tr><td>惰性气体</td><td>氧置换</td><td>洁净、无残留</td><td>窒息风险、泄漏、大空间成本高</td><td>房间级</td></tr><tr><td>干粉</td><td>化学抑制</td><td>便宜、快速</td><td>残留、绝缘差、清理难</td><td>小型/辅助</td></tr></tbody></table></div>
 <ul><li><strong>没有一种介质包打天下</strong>：主流方案是&quot;早期探测 + 模块级抑制 + 舱级灭火 + 水冷却/防复燃 + 泄压排风&quot;的组合。</li><li><strong>探测比灭火更重要</strong>：热失控早期是气体与温升，烟感往往偏晚；可燃气体、VOC、气压/声学探测可争取 minutes 级时间。</li><li><strong>复燃是常态</strong>：灭火后必须持续监测温度与气体，防止复燃与二次爆炸。</li></ul>
@@ -207,7 +331,7 @@
 <h3 id="s37">5.3 构网型能提供什么</h3>
 <ol><li><strong>惯量支撑</strong>：等效惯量常数 H 可配置，减缓频率变化率（RoCoF）。</li><li><strong>一次调频</strong>：P-f 下垂/VSG 响应，死区、调差率、响应时间可设。</li><li><strong>电压/无功支撑</strong>：Q-V 控制、AVR、无功电流注入，支撑并网点电压。</li><li><strong>短路电流</strong>：3 倍额定、10 s 短时过流，帮助保护识别故障、维持电压。</li><li><strong>黑启动</strong>：无外部电源时建立电压，启动变压器、辅助负荷、逐步带载。</li><li><strong>阻尼与振荡抑制</strong>：提供正阻尼，抑制功率振荡与宽频振荡（但多机也可能引发新振荡）。</li><li><strong>孤岛运行</strong>：计划孤岛下维持电压/频率，支撑微网与重要负荷。</li></ol>
 <h3 id="s38">5.4 关键指标与公式</h3>
-<pre><code>H = E_k / S_N = J ω² / (2 S_N)
+<pre tabindex="0"><code>H = E_k / S_N = J ω² / (2 S_N)
 df/dt ≈ ΔP / (2 H_eq S_N)
 SCR = S_sc / S_N</code></pre>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>含义</th><th>构网型关注点</th></tr></thead><tbody><tr><td>惯量常数 H</td><td>等效惯性时间常数（s）</td><td>可配置，但受能量与过流限制</td></tr><tr><td>RoCoF</td><td>频率变化率（Hz/s）</td><td>越小越好；与 H、故障功率缺额有关</td></tr><tr><td>频率最低点</td><td>扰动后最低频率</td><td>与惯量、一次调频、能量有关</td></tr><tr><td>短路比 SCR</td><td>电网短路容量/设备容量</td><td>SCR&lt;3 为弱网，&lt;1.5–2 为极弱网（C/D）</td></tr><tr><td>过流能力</td><td>额定电流倍数/持续时间</td><td>3 倍/10 s 是 GB/T 47968 的重要门槛</td></tr><tr><td>故障穿越</td><td>低/高电压、频率穿越</td><td>故障期间不脱网，故障后快速恢复</td></tr><tr><td>阻尼比</td><td>功率振荡衰减</td><td>避免负阻尼与宽频振荡</td></tr><tr><td>黑启动时间</td><td>从零到带负荷</td><td>含辅助负荷、变压器励磁、负荷爬坡</td></tr></tbody></table></div>
@@ -229,21 +353,99 @@ SCR = S_sc / S_N</code></pre>
 <hr>
 <h2 id="s45">6. 三条主线的交叉决策</h2>
 <h3 id="s46">6.1 一张决策树</h3>
-<pre><code>项目要解决什么？
-├─ 2–4 h 削峰/套利
-│   ├─ 强网、成本优先 → 锂电 + 跟网型
-│   └─ 弱网/孤网/要求构网 → 锂电 + 构网型（3×过流、黑启动）
-├─ 4–10 h 长时
-│   ├─ 有盐穴/硐室、追求低 LCOS → 压缩空气
-│   ├─ 安全敏感、高循环、占地可接受 → 全钒液流
-│   └─ 需要快速响应 + 长时 → 锂电/液流混合
-├─ 秒级–分钟级调频/惯量
-│   ├─ 高频、长寿命 → 飞轮/超级电容
-│   └─ 兼顾能量 → 锂电 + 超级电容/飞轮
-├─ 孤网/黑启动/重要负荷
-│   └─ 构网型 + 足够能量 + 黑启动试验 + 保护配合
-└─ 城市/人口密集/地下受限
-    └─ 安全优先：液流/钠电/严格消防设计的锂电；锂/钠舱不设地下</code></pre>
+<figure class="tree-diagram" aria-label="项目要解决什么？结构图">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构图 · STRUCTURE</span>
+        <span class="diagram-meta">5 个一级分支</span>
+      </span>
+      <span class="tree-root-title">项目要解决什么？</span>
+
+    </figcaption>
+    <div class="tree-grid"><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">01</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">2–4 h 削峰/套利</span>
+
+      </span>
+    </div>
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">强网、成本优先</span>
+    <span class="tree-child-detail">锂电 + 跟网型</span>
+
+  </li><li>
+    <span class="tree-child-title">弱网/孤网/要求构网</span>
+    <span class="tree-child-detail">锂电 + 构网型（3×过流、黑启动）</span>
+
+  </li></ul>
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">02</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">4–10 h 长时</span>
+
+      </span>
+    </div>
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">有盐穴/硐室、追求低 LCOS</span>
+    <span class="tree-child-detail">压缩空气</span>
+
+  </li><li>
+    <span class="tree-child-title">安全敏感、高循环、占地可接受</span>
+    <span class="tree-child-detail">全钒液流</span>
+
+  </li><li>
+    <span class="tree-child-title">需要快速响应 + 长时</span>
+    <span class="tree-child-detail">锂电/液流混合</span>
+
+  </li></ul>
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">03</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">秒级–分钟级调频/惯量</span>
+
+      </span>
+    </div>
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">高频、长寿命</span>
+    <span class="tree-child-detail">飞轮/超级电容</span>
+
+  </li><li>
+    <span class="tree-child-title">兼顾能量</span>
+    <span class="tree-child-detail">锂电 + 超级电容/飞轮</span>
+
+  </li></ul>
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">04</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">孤网/黑启动/重要负荷</span>
+
+      </span>
+    </div>
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">构网型 + 足够能量 + 黑启动试验 + 保护配合</span>
+
+
+  </li></ul>
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">05</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">城市/人口密集/地下受限</span>
+
+      </span>
+    </div>
+    <ul class="tree-children"><li>
+    <span class="tree-child-title">安全优先</span>
+    <span class="tree-child-detail">液流/钠电/严格消防设计的锂电；锂/钠舱不设地下</span>
+
+  </li></ul>
+  </article></div>
+
+  </figure>
 <h3 id="s47">6.2 场景组合</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>场景</th><th>推荐路线</th><th>并网</th><th>安全重点</th><th>备注</th></tr></thead><tbody><tr><td>弱网独立储能 4 h</td><td>锂电 + 构网</td><td>3×过流、黑启动、SCR 校核</td><td>舱级消防、泄压、气体探测</td><td>容量电价 + 辅助服务</td></tr><tr><td>新能源基地配储</td><td>锂电/钠电/液流</td><td>构网或跟网按电网要求</td><td>热蔓延、消防水、运维</td><td>15%–20% 配储常见</td></tr><tr><td>工商业用户侧</td><td>锂电/钠电</td><td>跟网、防逆流</td><td>靠近人员，消防与疏散</td><td>需量管理、峰谷套利</td></tr><tr><td>微网/孤岛</td><td>锂电 + 超级电容/飞轮</td><td>构网、黑启动</td><td>独立消防、远程监控</td><td>主从控制、负荷匹配</td></tr><tr><td>调频</td><td>飞轮/超级电容/锂电</td><td>构网/跟网</td><td>机械/电气安全</td><td>按元/kW 与循环算</td></tr><tr><td>长时</td><td>液流/压缩空气</td><td>按电网要求</td><td>酸/高压/机械</td><td>选址与 LCOS 是关键</td></tr><tr><td>数据中心</td><td>锂电</td><td>构网、快速切载</td><td>高可靠消防、气体探测</td><td>15%–20%、2–4 h（B/C）</td></tr></tbody></table></div>
 <h3 id="s48">6.3 招标技术规范书清单</h3>
@@ -373,7 +575,9 @@ SCR = S_sc / S_N</code></pre>
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

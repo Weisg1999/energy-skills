@@ -15,7 +15,7 @@
 </head>
 <body data-cat="skill" id="top">
 <a class="skip" href="#main">Skip to content</a>
-<div class="progress" id="progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -151,11 +151,11 @@
 <ul><li><strong>Irradiance</strong>: global horizontal irradiance (GHI), direct normal irradiance (DNI), diffuse; combine satellite data with ground stations; snow, dust, clouds.</li><li><strong>Tilt and orientation</strong>: optimal tilt varies with latitude; trackers raise yield but add cost and O&amp;M.</li><li><strong>Temperature</strong>: module temperature coefficient, inverter derating; deduct in hot regions.</li><li><strong>Bifacial and albedo</strong>: bifacial gain depends on ground albedo, mounting height and structure.</li><li><strong>Soiling and snow</strong>: cleaning frequency, dust, snow losses.</li><li><strong>Performance ratio (PR)</strong>: inverter efficiency, line losses, transformer losses, availability, curtailment, degradation; typical PR 80%-85% (grade D illustration).</li></ul>
 <h3 id="s19">3.3 Uncertainty: P50, P75, P90</h3>
 <ul><li><strong>P50</strong>: annual energy exceeded with 50% probability, commonly used for the base case.</li><li><strong>P90</strong>: annual energy exceeded with 90% probability, commonly used for financing and conservative investment cases.</li><li><strong>Approximate formula</strong> (normal assumption):</li></ul>
-<pre><code>P90 = P50 × (1 − 1.2816 × CV)</code></pre>
+<pre tabindex="0"><code>P90 = P50 × (1 − 1.2816 × CV)</code></pre>
 <p>where CV is the coefficient of variation of annual energy. Example: P50 = 2,400 h, CV = 8%, so P90 = 2,153.93 h.</p>
 <ul><li><strong>Discipline</strong>: P90 is not the &quot;worst case&quot;, only a 90% confidence lower bound; financing models should also run P99 or custom stress cases. Raise CV when measurement is under one year, terrain is complex, or satellite irradiance error is large.</li></ul>
 <h3 id="s20">3.4 Key formulas and worked examples</h3>
-<pre><code>capacity factor CF = annual net generation ÷ (installed capacity × 8760)
+<pre tabindex="0"><code>capacity factor CF = annual net generation ÷ (installed capacity × 8760)
 full-load hours = annual net generation ÷ installed capacity
 PV specific yield = plane-of-array irradiation × performance ratio × (1 + bifacial gain)</code></pre>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Indicator</th><th>Example A (wind)</th><th>Example B (PV)</th></tr></thead><tbody><tr><td>Installed capacity</td><td>100 MW</td><td>100 MW</td></tr><tr><td>Full-load hours</td><td>2,400 h</td><td>1,400 h</td></tr><tr><td>Capacity factor</td><td>27.40%</td><td>15.98%</td></tr><tr><td>Annual gross generation</td><td>240,000 MWh</td><td>140,000 MWh</td></tr><tr><td>Curtailment rate</td><td>3%</td><td>2%</td></tr><tr><td>Annual net generation</td><td>232,800 MWh</td><td>137,200 MWh</td></tr></tbody></table></div>
@@ -169,7 +169,7 @@ PV specific yield = plane-of-array irradiation × performance ratio × (1 + bifa
 <h3 id="s24">4.1 Four revenue lines</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Revenue line</th><th>Calculation</th><th>Note</th></tr></thead><tbody><tr><td>Market energy</td><td>Capture price × on-grid energy</td><td>Capture price is usually below the market average</td></tr><tr><td>Mechanism-price difference</td><td>(Mechanism price − market average) × mechanism energy</td><td>Positive is top-up, negative is refund</td></tr><tr><td>Green-certificate / green-power premium</td><td>Certificates × price, or green premium</td><td>Whether it overlaps with mechanism energy follows provincial rules</td></tr><tr><td>Other</td><td>Ancillary services, capacity (if any)</td><td>Renewables usually have no capacity price</td></tr></tbody></table></div>
 <h3 id="s25">4.2 Mechanism-price settlement formula</h3>
-<pre><code>mechanism difference = (mechanism price − market average price) × mechanism energy
+<pre tabindex="0"><code>mechanism difference = (mechanism price − market average price) × mechanism energy
 market revenue = capture price × total on-grid energy (base case may assume capture price = market average)
 certificate revenue = certificate price × on-grid energy (1 certificate/MWh)
 total revenue = market revenue + mechanism difference + certificate revenue + other</code></pre>
@@ -184,7 +184,7 @@ total revenue = market revenue + mechanism difference + certificate revenue + ot
 <ul><li><strong>Discipline</strong>: never multiply the market average by all energy in a feasibility study; use the capture price, or state the capture-rate assumption. Provinces with a high renewable share may have capture rates well below 90%; calibrate with local historical data.</li></ul>
 <h3 id="s28">4.5 Mechanism-price break-even: LCOE is not the bid floor</h3>
 <ul><li><strong>Pre-tax break-even mechanism price based on LCOE</strong>:</li></ul>
-<pre><code>Pm_breakeven = (LCOE − market price × (1 − coverage) − certificate/other) ÷ coverage</code></pre>
+<pre tabindex="0"><code>Pm_breakeven = (LCOE − market price × (1 − coverage) − certificate/other) ÷ coverage</code></pre>
 <p>Example A: LCOE CNY 252.80/MWh, market price CNY 250/MWh, coverage 70%, certificate CNY 6/MWh, so the pre-tax break-even mechanism price is <strong>CNY 245.43/MWh</strong>.</p>
 <ul><li><strong>After-tax break-even is higher</strong>: with 25% income tax, 20-year depreciation and 8% discount rate, Example A's after-tax break-even mechanism price is about <strong>CNY 294.85/MWh</strong>; about <strong>CNY 266.95/MWh</strong> at 7% and <strong>CNY 239.94/MWh</strong> at 6%.</li><li><strong>Conclusion</strong>: LCOE CNY 252.80/MWh describes only the unit cost and cannot be used directly as the bid floor; tax, depreciation profile and financing structure raise the break-even by about CNY 42/MWh at an 8% discount rate. Back-solve with after-tax cash flow before bidding.</li></ul>
 <h3 id="s29">4.6 Green certificates and green premiums</h3>
@@ -200,7 +200,7 @@ total revenue = market revenue + mechanism difference + certificate revenue + ot
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Type</th><th>OPEX illustration (CNY/kW-yr)</th><th>Main items</th></tr></thead><tbody><tr><td>Onshore wind</td><td>100-180</td><td>O&amp;M, spare parts, insurance, land rent, management, grid assessment</td></tr><tr><td>Utility-scale PV</td><td>60-120</td><td>Cleaning, O&amp;M, spare parts, insurance, land rent, management</td></tr><tr><td>Offshore wind</td><td>250-400</td><td>O&amp;M vessels, spare parts, insurance, cable inspection, anti-corrosion</td></tr><tr><td>Distributed PV</td><td>60-120</td><td>Cleaning, O&amp;M, roof maintenance, insurance, management</td></tr></tbody></table></div>
 <ul><li>Also consider: curtailment losses, ancillary-service allocation, system operation fees (per local rules), repowering, retirement and ecological restoration.</li><li><strong>Never assume &quot;zero OPEX&quot; or &quot;OPEX does not inflate&quot;</strong>; long-term models should include a 1%-2% annual escalation scenario.</li></ul>
 <h3 id="s34">5.3 LCOE formula</h3>
-<pre><code>LCOE = [CAPEX + Σ(OPEX_t ÷ (1+r)^t) − residual value ÷ (1+r)^N]
+<pre tabindex="0"><code>LCOE = [CAPEX + Σ(OPEX_t ÷ (1+r)^t) − residual value ÷ (1+r)^N]
        ÷ Σ(net generation_t ÷ (1+r)^t)
 
 net generation_t = annual gross generation × (1 − curtailment rate) × (1 − degradation)^(t−1)</code></pre>
@@ -216,7 +216,7 @@ net generation_t = annual gross generation × (1 − curtailment rate) × (1 −
 <hr>
 <h2 id="s38">6. Financial appraisal and investment decision</h2>
 <h3 id="s39">6.1 Cash-flow structure</h3>
-<pre><code>initial investment = −CAPEX
+<pre tabindex="0"><code>initial investment = −CAPEX
 annual revenue = market revenue + mechanism difference + certificates + other
 annual cost = OPEX + curtailment loss (already deducted in energy) + ancillary allocation
 pre-tax profit = revenue − cost − depreciation
@@ -310,7 +310,7 @@ after-tax cash flow = revenue − cost − income tax</code></pre>
 <hr>
 <h2 id="s75">12. Formula-to-code map</h2>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Formula</th><th>Code</th></tr></thead><tbody><tr><td>Capacity factor, full-load hours</td><td><code>resource.capacity_factor()</code> / <code>annual_energy_mwh()</code></td></tr><tr><td>P90</td><td><code>resource.p90_from_p50()</code></td></tr><tr><td>Wind capacity factor (Weibull screening)</td><td><code>resource.wind_capacity_factor()</code></td></tr><tr><td>PV specific yield</td><td><code>resource.pv_specific_yield()</code></td></tr><tr><td>LCOE</td><td><code>lcoe.lcoe()</code></td></tr><tr><td>Mechanism-price settlement</td><td><code>mechanism.cfd_settlement()</code></td></tr><tr><td>Pre-tax break-even mechanism price</td><td><code>mechanism.break_even_mechanism_price()</code></td></tr><tr><td>Capture price</td><td><code>mechanism.capture_price()</code></td></tr><tr><td>After-tax cash flow / NPV / IRR / payback</td><td><code>finance.project_cashflow()</code> / <code>npv()</code> / <code>irr()</code> / <code>payback()</code></td></tr><tr><td>Debt service / DSCR</td><td><code>finance.debt_payment()</code> / <code>dscr()</code></td></tr></tbody></table></div>
-<pre><code>import lcoe, mechanism, finance
+<pre tabindex="0"><code>import lcoe, mechanism, finance
 
 a = lcoe.lcoe(450_000_000, 11_000_000, 240_000, 20, 0.08, 0.005, 0.03)
 energy = 240_000 * 0.97
@@ -481,7 +481,9 @@ print(round(a[&quot;lcoe&quot;], 2), round(finance.npv(0.08, flows)), round(fina
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="Back to top">↑</a>
+<nav class="page-aux" aria-label="Page utilities">
+  <a class="to-top" href="#top" aria-label="Back to top">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

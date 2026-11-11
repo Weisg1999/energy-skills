@@ -15,7 +15,7 @@
 </head>
 <body data-cat="spot" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -110,31 +110,41 @@
 <hr>
 <h2 id="s1">0. 一页看懂</h2>
 <h3 id="s2">0.1 一条闭环</h3>
-<pre><code> 市场规则/合同/调度/气象/计量/信用
-              │
-              ▼
+<figure class="diagram-blueprint">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构示意 · DIAGRAM</span>
+        <span class="diagram-meta">可横向滚动</span>
+      </span>
+    </figcaption>
+    <div class="diagram-canvas" tabindex="0" role="group" aria-label="结构示意图">
+      <pre> 市场规则/合同/调度/气象/计量/信用
+              <span class="d-line">│</span>
+              <span class="d-arrow">▼</span>
       数据接入与质量校验
-              │
-              ▼
-   预测（价格/负荷/新能源）──► 场景与概率分布
-              │                         │
-              └────────┬────────────────┘
-                       ▼
+              <span class="d-line">│</span>
+              <span class="d-arrow">▼</span>
+   预测（价格/负荷/新能源）<span class="d-line">─</span><span class="d-line">─</span>► 场景与概率分布
+              <span class="d-line">│</span>                         <span class="d-line">│</span>
+              <span class="d-line">└</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┬</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┘</span>
+                       <span class="d-arrow">▼</span>
             报价与组合优化（量价曲线）
-                       │
-                       ▼
-        规则校验 → 限额校验 → 双人审批
-                       │
-                       ▼
+                       <span class="d-line">│</span>
+                       <span class="d-arrow">▼</span>
+        规则校验 <span class="d-arrow">→</span> 限额校验 <span class="d-arrow">→</span> 双人审批
+                       <span class="d-line">│</span>
+                       <span class="d-arrow">▼</span>
               申报网关（回执/改单/留痕）
-                       │
-                       ▼
-        出清结果 → 结算单 → 对账 → 归因
-                       │                    │
-                       └──── 风控与绩效 ◄───┘
-                                  │
-                                  ▼
-                        规则/模型/限额迭代</code></pre>
+                       <span class="d-line">│</span>
+                       <span class="d-arrow">▼</span>
+        出清结果 <span class="d-arrow">→</span> 结算单 <span class="d-arrow">→</span> 对账 <span class="d-arrow">→</span> 归因
+                       <span class="d-line">│</span>                    <span class="d-line">│</span>
+                       <span class="d-line">└</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span> 风控与绩效 ◄<span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┘</span>
+                                  <span class="d-line">│</span>
+                                  <span class="d-arrow">▼</span>
+                        规则/模型/限额迭代</pre>
+    </div>
+  </figure>
 <ul><li><strong>闭环的重点不是&quot;预测更准&quot;，而是每一环都能被追溯、复现和拦截</strong>：错了要知道错在哪一环，改了什么、谁批准的、影响多少钱。</li><li><strong>风控不是最后一道止损</strong>：限额、授权、校验、对账要嵌进流程；事后止损只能减少损失，不能防止错误发生。</li></ul>
 <h3 id="s3">0.2 关键数字</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>数字</th><th>含义</th><th>来源与级别</th></tr></thead><tbody><tr><td>至少 11 个</td><td>截至 2026-09-30 省级现货市场正式运行数量</td><td>各省公告汇总，B</td></tr><tr><td>2026-10-24</td><td>南方区域电力市场转入正式运行；统一出清、15 分钟价格</td><td>交易机构公告，A/B</td></tr><tr><td>2027-01-01</td><td>《电力现货市场基本规则（公开征求意见稿）》拟施行；有效期 5 年</td><td>国家发改委 2026-10-19，A（草案）</td></tr><tr><td>2026-11-18</td><td>现货新规征求意见截止</td><td>国家发改委，A</td></tr><tr><td>2026-03-01</td><td>1656 号《电力中长期市场基本规则》施行；入市主体不再执行政府固定分时</td><td>发改能源规〔2025〕1656号，A</td></tr><tr><td>1000–1500 / −100–0</td><td>申报或出清价格上下限的常见量级（元/MWh）</td><td>省级规则汇总，B/C</td></tr><tr><td>96 / 288</td><td>日前 15 分钟结算点 / 实时 5 分钟点（部分省）</td><td>省级规则，B</td></tr><tr><td>200 万元</td><td>售电公司履约保障额度最低值（征求意见稿）</td><td>2026-09-04 草案及媒体解读，A（草案）/B</td></tr><tr><td>A/B/C/D</td><td>全国统一电力市场信用评价四级</td><td>2026-10-13 征求意见稿，A（草案）</td></tr><tr><td>400+</td><td>2026 年前 7 月退出市场的售电公司数量</td><td>媒体报道，C</td></tr><tr><td>298/500</td><td>广东上半年亏损售电公司数/总数</td><td>媒体报道，C</td></tr><tr><td>0.068 元/kWh</td><td>2026 年 Q1-Q3 全国平均系统运行费</td><td>行业口径，B/C</td></tr></tbody></table></div>
@@ -200,16 +210,26 @@
 <h3 id="s29">4.4 残差校正与分层</h3>
 <ul><li><strong>残差校正</strong>是性价比最高的一层：按&quot;时段 × 星期&quot;与外生变量（温度、辐照、负荷、节假日）分解系统偏差，再做收缩估计。</li><li><strong>分层建模</strong>：正常时段、尖峰时段、负价时段、极端天气分别建模；用一个模型包打天下，通常在拐点失效。</li><li><strong>规则特征</strong>：检修、阻塞、必开必停、外送计划、机组报价行为，都是价格形状的驱动因素；纯时序外推不够。</li><li><strong>方法细节</strong>见《现货报价量化专家》第 3–5 章；本文只保留接口与评价。</li></ul>
 <h3 id="s30">4.5 预测到报价的接口</h3>
-<pre><code>预测分布 ──► 场景/分位数 ──► 风险偏好 λ ──► 报价优化
-   │              │                │
-   └─ 校准/回测 ──┴─ 限额/合约 ────┘</code></pre>
+<figure class="diagram-blueprint">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构示意 · DIAGRAM</span>
+        <span class="diagram-meta">可横向滚动</span>
+      </span>
+    </figcaption>
+    <div class="diagram-canvas" tabindex="0" role="group" aria-label="结构示意图">
+      <pre>预测分布 <span class="d-line">─</span><span class="d-line">─</span>► 场景/分位数 <span class="d-line">─</span><span class="d-line">─</span>► 风险偏好 λ <span class="d-line">─</span><span class="d-line">─</span>► 报价优化
+   <span class="d-line">│</span>              <span class="d-line">│</span>                <span class="d-line">│</span>
+   <span class="d-line">└</span><span class="d-line">─</span> 校准/回测 <span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┴</span><span class="d-line">─</span> 限额/合约 <span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┘</span></pre>
+    </div>
+  </figure>
 <ul><li><strong>输入契约</strong>：预测服务输出 <code>timestamp, quantile, value, model_version, trained_until</code>；报价服务不得直接读原始模型。</li><li><strong>风险偏好</strong>：<code>λ</code> 越大越保守；λ 应由风险委员会设定，不能由报价员临时调。</li><li><strong>回退</strong>：预测服务故障时，回退到&quot;季节朴素 + 成本报价 + 保守申报量&quot;，并记录降级原因。</li></ul>
 <h3 id="s31">4.6 漂移监控</h3>
 <ul><li><strong>数据漂移</strong>：PSI、KS、分布均值/方差；特征漂移超过阈值触发复核。</li><li><strong>模型漂移</strong>：分时段误差、方向正确率、尖峰召回；连续 N 天恶化触发重训。</li><li><strong>规则漂移</strong>：限价、段数、结算方式变化；规则变更必须重新校准，不能沿用旧参数。</li><li><strong>监控看板</strong>：按市场、品种、时段、模型版本四个维度展示；异常自动告警到责任人。</li></ul>
 <hr>
 <h2 id="s32">5. 报价与组合决策</h2>
 <h3 id="s33">5.1 目标函数：收益减去风险</h3>
-<pre><code>max  E[π] − λ · CVaR_α(L)
+<pre tabindex="0"><code>max  E[π] − λ · CVaR_α(L)
 s.t. 申报量 ≤ 可用容量 − 检修容量
      最小技术出力 ≤ 申报量
      爬坡约束、启停约束、合约分解约束
@@ -221,11 +241,11 @@ s.t. 申报量 ≤ 可用容量 − 检修容量
 <h3 id="s35">5.3 新能源：先解决量与偏差</h3>
 <ul><li><strong>申报量</strong>：在预测分布上按不对称罚则选分位数；少报的罚则与多报的罚则不同。</li><li><strong>配储联合报价</strong>：新能源与场站内配套储能可作为联合报价主体参与申报、出清、调用、结算、考核（2026-10 草案方向，A（草案））。</li><li><strong>捕获价</strong>：高比例风光省份，午间低价/负价会拉低捕获价；报价要结合储能/负荷灵活性。</li><li><strong>考核</strong>：功率预测准确率、并网考核、偏差考核都要计入成本；不能只算电能量收益。</li></ul>
 <h3 id="s36">5.4 储能：价差要覆盖循环成本</h3>
-<pre><code>单次套利净收益 ≈ Q_dis × (p_dis − p_ch / η_rt) − Q_dis × (c_deg + c_om)
+<pre tabindex="0"><code>单次套利净收益 ≈ Q_dis × (p_dis − p_ch / η_rt) − Q_dis × (c_deg + c_om)
 可行条件：p_dis − p_ch / η_rt ≥ c_deg + c_om</code></pre>
 <ul><li><code>Q_dis</code> 是可放电量（受 DoD、RTE、SOC 约束）；<code>η_rt</code> 是往返效率；<code>c_deg</code> 是退化成本；<code>c_om</code> 是运维成本。</li><li><strong>机会成本</strong>：SOC 是稀缺资源；低价充电会占用高价放电机会，要用边际价值曲线，而不是简单阈值。</li><li><strong>辅助服务</strong>：调频、备用会占用 SOC 与容量，收益要与现货套利比较，不能重复计算。</li><li><strong>容量补偿</strong>：114 号文的容量电价按可用容量与时长折算，不是按放电量；与套利收益分账。</li><li><strong>退化</strong>：循环次数、深度、温度影响寿命；报价模型要把退化成本内生化，不能只算电费。</li></ul>
 <h3 id="s37">5.5 售电：组合、对冲与传导</h3>
-<pre><code>零售毛利 = 零售收入 − [w_h × 合约价 + (1 − w_h) × 现货价] × 用电量 − 服务成本</code></pre>
+<pre tabindex="0"><code>零售毛利 = 零售收入 − [w_h × 合约价 + (1 − w_h) × 现货价] × 用电量 − 服务成本</code></pre>
 <ul><li><code>w_h</code> 是对冲比例；对冲不足，现货上涨会侵蚀毛利；对冲过度，现货下跌会失去竞争力。</li><li><strong>用户结构</strong>：居民、商业、工业的负荷曲线不同；组合的偏差风险不等于单用户风险相加。</li><li><strong>套餐设计</strong>：固定价、浮动价、峰谷价、现货联动；1656 号后，固定分时套餐失去政府定价保护，套餐要与现货风险匹配。</li><li><strong>履约保障</strong>：保函/保险/保证金要覆盖风险敞口；按日监测，动态调整交易限额（2026-09 草案方向）。</li><li><strong>批零倒挂</strong>：零售价低于采购成本时，越卖越亏；系统要能实时测算&quot;每卖一单亏多少&quot;。</li></ul>
 <h3 id="s38">5.6 多市场协同：同一容量不能重复卖</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>市场</th><th>占用资源</th><th>收益口径</th><th>冲突点</th></tr></thead><tbody><tr><td>电能量</td><td>发电/放电能力、SOC</td><td>元/MWh</td><td>与辅助服务争夺容量</td></tr><tr><td>调频</td><td>调节容量、响应速度</td><td>元/MW·里程/容量</td><td>频繁调用影响 SOC 与退化</td></tr><tr><td>备用</td><td>可用容量</td><td>元/MW·小时</td><td>与电能量申报互斥</td></tr><tr><td>容量</td><td>可用容量</td><td>元/kW·年</td><td>与现货/辅助服务叠加规则不同</td></tr><tr><td>绿电/绿证</td><td>电量属性</td><td>元/MWh、元/张</td><td>与电能量重复计算风险</td></tr><tr><td>需求响应</td><td>可削减负荷</td><td>元/kW、元/kWh</td><td>与基线、现货偏差交互</td></tr></tbody></table></div>
@@ -256,15 +276,25 @@ s.t. 申报量 ≤ 可用容量 − 检修容量
 <hr>
 <h2 id="s50">7. 交易风控体系</h2>
 <h3 id="s51">7.1 治理架构</h3>
-<pre><code>董事会/风险管理委员会
-        │  批准风险偏好、年度限额
-        ▼
+<figure class="diagram-blueprint">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构示意 · DIAGRAM</span>
+        <span class="diagram-meta">可横向滚动</span>
+      </span>
+    </figcaption>
+    <div class="diagram-canvas" tabindex="0" role="group" aria-label="结构示意图">
+      <pre>董事会/风险管理委员会
+        <span class="d-line">│</span>  批准风险偏好、年度限额
+        <span class="d-arrow">▼</span>
   风险管理部门（中台，独立报告）
-        │  限额、计量、压力测试、预警
-        ├──────────────┐
-        ▼              ▼
+        <span class="d-line">│</span>  限额、计量、压力测试、预警
+        <span class="d-line">├</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┐</span>
+        <span class="d-arrow">▼</span>              <span class="d-arrow">▼</span>
   前台（报价/交易）   后台（结算/财务）
-  收益与执行          对账、资金、审计</code></pre>
+  收益与执行          对账、资金、审计</pre>
+    </div>
+  </figure>
 <ul><li><strong>三道防线</strong>：业务部门（第一道）、风险/合规（第二道）、审计（第三道）。</li><li><strong>独立性</strong>：中台不能由前台负责人兼任；限额调整要经风险委员会，不能由交易员自己改。</li><li><strong>授权体系</strong>：按品种、市场、金额、期限设授权；超授权必须升级，不能&quot;先做后补&quot;。</li></ul>
 <h3 id="s52">7.2 风险分类</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>风险</th><th>触发信号</th><th>主要缓释</th></tr></thead><tbody><tr><td>价格风险</td><td>现货价格波动、尖峰、负价</td><td>限额、对冲、场景分析、止损</td></tr><tr><td>电量/偏差风险</td><td>负荷/出力预测偏差、考核</td><td>分位数申报、备用、偏差准备</td></tr><tr><td>基差/形状风险</td><td>合约价与现货价、峰谷形状不一致</td><td>分时段对冲、差价合约</td></tr><tr><td>流动性风险</td><td>保证金不足、无法平仓</td><td>现金流预测、授信、保函</td></tr><tr><td>信用风险</td><td>用户/对手违约、保函不足</td><td>信用评估、保证金、限额</td></tr><tr><td>操作风险</td><td>数据错误、重复申报、改单</td><td>校验、双人复核、审计</td></tr><tr><td>模型风险</td><td>过拟合、漂移、参数失效</td><td>验证、监控、冠军 challenger</td></tr><tr><td>合规风险</td><td>市场力、串谋、虚假申报</td><td>合规审查、红线清单、培训</td></tr><tr><td>政策风险</td><td>规则切换、限价调整</td><td>规则版本管理、情景分析</td></tr><tr><td>结算风险</td><td>计量争议、结算差异、跨期</td><td>对账、差异管理、证据链</td></tr></tbody></table></div>
@@ -272,7 +302,7 @@ s.t. 申报量 ≤ 可用容量 − 检修容量
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>层级</th><th>示例</th><th>批准</th><th>复核</th></tr></thead><tbody><tr><td>战略限额</td><td>年度最大亏损、最大敞口、市场集中度</td><td>董事会/风险委员会</td><td>年度</td></tr><tr><td>战术限额</td><td>分市场/品种/期限的 VaR、Notional</td><td>风险委员会</td><td>季度</td></tr><tr><td>操作限额</td><td>单日亏损、单笔申报量、单机组敞口、保函使用率</td><td>风险负责人</td><td>日/周</td></tr><tr><td>对手限额</td><td>单一用户/对手的应收、预付、保函</td><td>信用/风险</td><td>月/季</td></tr></tbody></table></div>
 <ul><li><strong>限额要可计算</strong>：每个限额都要有明确公式、数据源、更新频率、责任人；不能只写&quot;控制风险&quot;。</li><li><strong>限额要可执行</strong>：事前拦截优于事后报告；系统里没有限额校验，等于没有限额。</li><li><strong>限额要可调整</strong>：市场/规则变化时能复核调整，但不能由前台随意改。</li></ul>
 <h3 id="s54">7.4 风险度量</h3>
-<pre><code>VaR_α = inf{ l : P(L ≤ l) ≥ α }
+<pre tabindex="0"><code>VaR_α = inf{ l : P(L ≤ l) ≥ α }
 CVaR_α = E[L | L ≥ VaR_α]
 限额使用率 U = 当前敞口 / 限额</code></pre>
 <ul><li><strong>VaR 不是最大损失</strong>：它只说明&quot;以 α 概率不超过&quot;，尾部可能更大；必须配合 CVaR 与压力测试。</li><li><strong>历史模拟</strong>：用历史价格/负荷场景重估组合；简单，但依赖历史代表性。</li><li><strong>参数法</strong>：假设正态/厚尾分布；计算快，但极端行情会低估。</li><li><strong>蒙特卡洛</strong>：模拟价格、负荷、出力、违约；灵活，但模型风险高。</li><li><strong>压力测试</strong>：价格翻倍、负价持续、来水偏枯、台风、规则突变；不依赖概率，直接看生存能力。</li></ul>
@@ -292,55 +322,92 @@ CVaR_α = E[L | L ≥ VaR_α]
 <h3 id="s61">8.1 结算科目</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>科目</th><th>内容</th><th>常见差异来源</th></tr></thead><tbody><tr><td>电能量</td><td>日前/实时电量 × 价格</td><td>计量、价格版本、分时点</td></tr><tr><td>偏差</td><td>实际与申报/合约的偏差</td><td>考核规则、罚则、阈值</td></tr><tr><td>辅助服务</td><td>调频、备用、爬坡、无功</td><td>性能系数、调用时长、考核</td></tr><tr><td>容量</td><td>煤电/储能/抽蓄容量电费</td><td>清单、可用率、折算比例</td></tr><tr><td>绿电/绿证</td><td>绿电溢价、绿证交易</td><td>核发、交易、注销</td></tr><tr><td>零售</td><td>用户电费、套餐、服务费</td><td>用户数、电量、套餐版本</td></tr><tr><td>考核/罚款</td><td>并网、预测、偏差、违约</td><td>规则版本、免考、证据</td></tr><tr><td>分摊/返还</td><td>不平衡资金、辅助服务分摊</td><td>分摊比例、返还规则</td></tr></tbody></table></div>
 <h3 id="s62">8.2 结算流程</h3>
-<pre><code>计量数据 → 结算初算 → 结算单 → 对账 → 差异处理 → 确认 → 开票/收付
-   │           │          │        │          │
-   └─ 校验 ────┴─ 规则版本 ┴─ 科目 ┴─ 证据链 ─┘</code></pre>
+<figure class="diagram-blueprint">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构示意 · DIAGRAM</span>
+        <span class="diagram-meta">可横向滚动</span>
+      </span>
+    </figcaption>
+    <div class="diagram-canvas" tabindex="0" role="group" aria-label="结构示意图">
+      <pre>计量数据 <span class="d-arrow">→</span> 结算初算 <span class="d-arrow">→</span> 结算单 <span class="d-arrow">→</span> 对账 <span class="d-arrow">→</span> 差异处理 <span class="d-arrow">→</span> 确认 <span class="d-arrow">→</span> 开票/收付
+   <span class="d-line">│</span>           <span class="d-line">│</span>          <span class="d-line">│</span>        <span class="d-line">│</span>          <span class="d-line">│</span>
+   <span class="d-line">└</span><span class="d-line">─</span> 校验 <span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">─</span><span class="d-line">┴</span><span class="d-line">─</span> 规则版本 <span class="d-line">┴</span><span class="d-line">─</span> 科目 <span class="d-line">┴</span><span class="d-line">─</span> 证据链 <span class="d-line">─</span><span class="d-line">┘</span></pre>
+    </div>
+  </figure>
 <ul><li><strong>计量是起点</strong>：计量点、倍率、时点、正反向、失压失流，任何一项错位都会传导到结算。</li><li><strong>规则版本</strong>：结算要按业务日期对应的规则版本，不能用当前规则重算历史。</li><li><strong>结算单</strong>：保留原始文件、解析结果、版本号；不能只存汇总数。</li><li><strong>争议</strong>：规定期限内提出，附证据（计量、调度指令、规则条款、计算过程）；逾期可能不被受理。</li></ul>
 <h3 id="s63">8.3 对账五步法</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>步骤</th><th>检查</th><th>工具</th></tr></thead><tbody><tr><td>完整性</td><td>科目、时段、主体是否齐全</td><td>科目清单、结算单结构</td></tr><tr><td>算术</td><td>电量 × 价格 = 金额；汇总 = 明细</td><td>重算、交叉表</td></tr><tr><td>价格</td><td>规则版本、限价、分时、节点/分区</td><td>价格表、规则库</td></tr><tr><td>电量</td><td>计量、申报、出清、考核</td><td>计量系统、调度记录</td></tr><tr><td>跨期</td><td>月末/年末、结算周期、追溯调整</td><td>时间轴、版本对比</td></tr></tbody></table></div>
 <h3 id="s64">8.4 差异处理</h3>
 <ul><li><strong>分级</strong>：金额/比例阈值（示例：差异 &gt;0.5% 或 &gt;10 万元升级，D）；不同主体可按规模设定。</li><li><strong>分类</strong>：计量、价格、规则、电量、考核、跨期、人工录入；每类有责任人与处理时限。</li><li><strong>证据链</strong>：原始数据、计算过程、规则条款、沟通记录；不能只有一句&quot;系统差异&quot;。</li><li><strong>闭环</strong>：差异确认后调整/冲销，更新对账台账；重复出现的差异要改流程，不能每次手工修。</li></ul>
 <h3 id="s65">8.5 PnL 归因</h3>
-<pre><code>ΔPnL = 预测误差 + 报价偏离 + 执行偏差 + 规则/市场 + 残差</code></pre>
+<pre tabindex="0"><code>ΔPnL = 预测误差 + 报价偏离 + 执行偏差 + 规则/市场 + 残差</code></pre>
 <ul><li><strong>预测误差</strong>：价格/负荷/出力预测与实际差异导致的收益差。</li><li><strong>报价偏离</strong>：实际报价曲线与&quot;按预测最优&quot;曲线的差异；含人工改单。</li><li><strong>执行偏差</strong>：实际出力/用电与申报量的差异；含爬坡、故障、限电。</li><li><strong>规则/市场</strong>：限价、结算、考核、检修、对手行为。</li><li><strong>残差</strong>：四项解释不了的部分；残差过大说明模型遗漏变量或数据错误。</li></ul>
 <h3 id="s66">8.6 审计留痕</h3>
 <ul><li>申报文件、回执、改单记录、审批记录、模型版本、规则版本、结算单、对账底稿，全部归档。</li><li>关键操作日志不可篡改；保留期限覆盖结算周期、考核申诉期、信用评价周期。</li><li>对外报送（监管、交易中心、审计）的数据要与内部报表同源；不能两套口径。</li></ul>
 <hr>
 <h2 id="s67">9. 工程架构</h2>
 <h3 id="s68">9.1 参考架构</h3>
-<pre><code>┌─────────────────────────────────────────────────────────┐
-│ 源系统：交易中心 / 调度 / 气象 / 计量 / ERP / 信用平台   │
-└───────────────┬─────────────────────────────────────────┘
-                │ API / 文件 / 消息
-                ▼
-┌─────────────────────────────────────────────────────────┐
-│ 接入层：采集、解析、校验、去重、补采、血缘               │
-└───────────────┬─────────────────────────────────────────┘
-                ▼
-┌─────────────────────────────────────────────────────────┐
-│ 数据层：数据湖 / 时序库 / 特征库 / 规则库 / 合约库       │
-└───────────────┬─────────────────────────────────────────┘
-                ▼
-┌───────────────┬───────────────┬─────────────────────────┐
-│ 预测服务      │ 策略/优化服务 │ 校验/审批服务            │
-│ 价格/负荷/出力 │ 报价/组合/储能 │ 规则/限额/双人复核       │
-└───────┬───────┴───────┬───────┴──────────┬──────────────┘
-        │               │                  │
-        └───────────────┼──────────────────┘
-                        ▼
-              ┌──────────────────┐
-              │ 申报网关         │
-              │ 回执/改单/留痕   │
-              └────────┬─────────┘
-                       ▼
-        出清结果 / 结算单 / 计量数据
-                       │
-                       ▼
-        ┌──────────────────────────────┐
-        │ 对账 / 归因 / 风控 / 绩效     │
-        └──────────────┬───────────────┘
-                       │
-                       └──── 反馈到规则、模型、限额</code></pre>
+<figure class="arch-diagram arch-reference" data-arch-id="quant-reference" aria-label="量化交易参考架构">
+    <figcaption class="diagram-head">
+    <span class="diagram-head-row">
+      <span class="diagram-kicker">参考架构 · REFERENCE</span>
+      <span class="diagram-meta">7 个层次 · 闭环</span>
+    </span>
+    <span class="diagram-title">量化交易参考架构</span>
+  </figcaption>
+    <div class="arch-stages"><section class="arch-stage">
+      <span class="arch-stage-index" aria-hidden="true">01</span>
+      <div class="arch-stage-body">
+        <span class="arch-stage-title">源系统</span>
+        <div class="arch-chips"><span class="arch-chip">交易中心</span><span class="arch-chip">调度</span><span class="arch-chip">气象</span><span class="arch-chip">计量</span><span class="arch-chip">ERP</span><span class="arch-chip">信用平台</span></div>
+
+      </div>
+    </section><div class="arch-stage-link"><span aria-hidden="true">↓</span><small>API / 文件 / 消息</small></div><section class="arch-stage">
+      <span class="arch-stage-index" aria-hidden="true">02</span>
+      <div class="arch-stage-body">
+        <span class="arch-stage-title">接入层</span>
+        <div class="arch-chips"><span class="arch-chip">采集、解析、校验、去重、补采、血缘</span></div>
+
+      </div>
+    </section><div class="arch-stage-link"><span aria-hidden="true">↓</span></div><section class="arch-stage">
+      <span class="arch-stage-index" aria-hidden="true">03</span>
+      <div class="arch-stage-body">
+        <span class="arch-stage-title">数据层</span>
+        <div class="arch-chips"><span class="arch-chip">数据湖</span><span class="arch-chip">时序库</span><span class="arch-chip">特征库</span><span class="arch-chip">规则库</span><span class="arch-chip">合约库</span></div>
+
+      </div>
+    </section><div class="arch-stage-link"><span aria-hidden="true">↓</span></div><section class="arch-stage">
+      <span class="arch-stage-index" aria-hidden="true">04</span>
+      <div class="arch-stage-body">
+        <span class="arch-stage-title">服务层</span>
+
+        <div class="arch-services"><div class="arch-service"><span>预测服务</span><small>价格/负荷/出力</small></div><div class="arch-service"><span>策略/优化服务</span><small>报价/组合/储能</small></div><div class="arch-service"><span>校验/审批服务</span><small>规则/限额/双人复核</small></div></div>
+      </div>
+    </section><div class="arch-stage-link"><span aria-hidden="true">↓</span></div><section class="arch-stage">
+      <span class="arch-stage-index" aria-hidden="true">05</span>
+      <div class="arch-stage-body">
+        <span class="arch-stage-title">申报网关</span>
+        <div class="arch-chips"><span class="arch-chip">回执/改单/留痕</span></div>
+
+      </div>
+    </section><div class="arch-stage-link"><span aria-hidden="true">↓</span></div><section class="arch-stage">
+      <span class="arch-stage-index" aria-hidden="true">06</span>
+      <div class="arch-stage-body">
+        <span class="arch-stage-title">结果</span>
+        <div class="arch-chips"><span class="arch-chip">出清结果</span><span class="arch-chip">结算单</span><span class="arch-chip">计量数据</span></div>
+
+      </div>
+    </section><div class="arch-stage-link"><span aria-hidden="true">↓</span></div><section class="arch-stage">
+      <span class="arch-stage-index" aria-hidden="true">07</span>
+      <div class="arch-stage-body">
+        <span class="arch-stage-title">分析闭环</span>
+        <div class="arch-chips"><span class="arch-chip">对账</span><span class="arch-chip">归因</span><span class="arch-chip">风控</span><span class="arch-chip">绩效</span></div>
+
+      </div>
+    </section></div>
+    <div class="arch-feedback"><span class="arch-feedback-icon" aria-hidden="true">↺</span><span>反馈到规则、模型、限额</span></div>
+  </figure>
 <h3 id="s69">9.2 时效分层</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>层</th><th>典型任务</th><th>时效</th><th>失败模式</th><th>兜底</th></tr></thead><tbody><tr><td>D-1 批处理</td><td>数据清洗、预测、报价、审批、申报</td><td>小时级</td><td>数据迟到、模型故障</td><td>回退成本报价、人工复核</td></tr><tr><td>日内</td><td>滚动预测、改单、限额监控</td><td>分钟级</td><td>价格突变、系统延迟</td><td>保守申报、熔断</td></tr><tr><td>实时</td><td>出力/用电监控、偏差预警</td><td>秒/分钟级</td><td>通信中断、计量异常</td><td>本地控制、人工介入</td></tr><tr><td>结算</td><td>对账、归因、报表</td><td>日/月级</td><td>数据修订、规则切换</td><td>版本对比、差异台账</td></tr></tbody></table></div>
 <h3 id="s70">9.3 核心服务</h3>
@@ -362,7 +429,7 @@ CVaR_α = E[L | L ≥ VaR_α]
 <p><strong>假设</strong></p>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>参数</th><th>取值</th></tr></thead><tbody><tr><td>额定功率/能量</td><td>100 MW / 400 MWh</td></tr><tr><td>可用深度 DoD</td><td>90%</td></tr><tr><td>往返效率 RTE</td><td>85%</td></tr><tr><td>退化成本</td><td>0.05 元/kWh（按放电量）</td></tr><tr><td>运维成本</td><td>0.02 元/kWh（按放电量）</td></tr><tr><td>谷段充电价</td><td>0.20 元/kWh</td></tr><tr><td>峰段放电价</td><td>0.65 元/kWh</td></tr><tr><td>年运行天数</td><td>330 天</td></tr><tr><td>单日循环</td><td>1 次</td></tr></tbody></table></div>
 <p><strong>计算</strong></p>
-<pre><code>可放电量 = 400 × 90% × 85% = 306 MWh
+<pre tabindex="0"><code>可放电量 = 400 × 90% × 85% = 306 MWh
 充电成本 = 306 / 0.85 × 0.20 = 72,000 元
 放电收入 = 306 × 0.65 = 198,900 元
 退化+运维 = 306 × (0.05 + 0.02) = 21,420 元
@@ -371,18 +438,18 @@ CVaR_α = E[L | L ≥ VaR_α]
 单位放电净收益 ≈ 105,480 / 306 = 344.7 元/MWh</code></pre>
 <p><strong>价差情景与 CVaR</strong></p>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>峰谷价差（元/kWh）</th><th>概率</th><th>单日净收益（万元）</th></tr></thead><tbody><tr><td>0.25</td><td>10%</td><td>−1.69</td></tr><tr><td>0.35</td><td>20%</td><td>1.37</td></tr><tr><td>0.45</td><td>40%</td><td>4.43</td></tr><tr><td>0.55</td><td>20%</td><td>7.49</td></tr><tr><td>0.65</td><td>10%</td><td>10.55</td></tr></tbody></table></div>
-<pre><code>期望收益 = 4.43 万元/日
+<pre tabindex="0"><code>期望收益 = 4.43 万元/日
 最差 10% 条件均值（CVaR90）≈ −1.69 万元/日</code></pre>
 <ul><li><strong>读法</strong>：价差 0.25 元/kWh 时，扣掉充电、退化、运维后为负；套利不是&quot;有价差就赚钱&quot;。</li><li><strong>风控</strong>：若单日亏损限额 2 万元，最差情景 −1.69 万元在限额内，但已接近；若价差进一步收窄到 0.20 元/kWh，亏损会超过限额，应降低申报量或不出手。</li><li><strong>策略</strong>：设置最低价差门槛（例：0.30 元/kWh，D），低于门槛不套利；门槛要用当前效率、退化、运维参数重算，不能固定不变。</li></ul>
 <h3 id="s77">10.2 售电公司 10 亿 kWh 组合压力测试</h3>
 <p><strong>假设</strong></p>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>参数</th><th>取值</th></tr></thead><tbody><tr><td>年售电量</td><td>10 亿 kWh</td></tr><tr><td>日均售电量</td><td>约 2.74 GWh</td></tr><tr><td>零售价</td><td>0.42 元/kWh（固定价）</td></tr><tr><td>中长期对冲比例</td><td>70%，对冲价 0.36 元/kWh</td></tr><tr><td>现货敞口</td><td>30%</td></tr><tr><td>基准现货价</td><td>0.35 元/kWh</td></tr></tbody></table></div>
 <p><strong>基准毛利</strong></p>
-<pre><code>综合采购价 = 70% × 0.36 + 30% × 0.35 = 0.357 元/kWh
+<pre tabindex="0"><code>综合采购价 = 70% × 0.36 + 30% × 0.35 = 0.357 元/kWh
 单位毛利 = 0.42 − 0.357 = 0.063 元/kWh
 日毛利 ≈ 2.74 GWh × 0.063 = 17.26 万元/日</code></pre>
 <p><strong>压力情景：现货价 +0.30 元/kWh</strong></p>
-<pre><code>综合采购价 = 70% × 0.36 + 30% × 0.65 = 0.447 元/kWh
+<pre tabindex="0"><code>综合采购价 = 70% × 0.36 + 30% × 0.65 = 0.447 元/kWh
 单位毛利 = 0.42 − 0.447 = −0.027 元/kWh
 日亏损 ≈ 2.74 GWh × 0.027 = 7.40 万元/日
 连续 10 日 ≈ 74.0 万元</code></pre>
@@ -563,7 +630,9 @@ CVaR_α = E[L | L ≥ VaR_α]
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

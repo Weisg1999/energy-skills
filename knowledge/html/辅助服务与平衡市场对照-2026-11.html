@@ -15,7 +15,7 @@
 </head>
 <body data-cat="cross" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -157,10 +157,45 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>品种</th><th>响应时间</th><th>方向</th><th>典型提供者</th></tr></thead><tbody><tr><td>Regulation raise/lower</td><td>秒级连续调节</td><td>涨/降</td><td>电池、水电、部分火电</td></tr><tr><td>1 秒极快 FCAS</td><td>1 秒</td><td>涨/降</td><td>电池、快速响应资源</td></tr><tr><td>6 秒 contingency</td><td>6 秒</td><td>涨/降</td><td>电池、水电、火电</td></tr><tr><td>60 秒 contingency</td><td>60 秒</td><td>涨/降</td><td>电池、水电、火电</td></tr><tr><td>5 分钟 contingency</td><td>5 分钟</td><td>涨/降</td><td>电池、水电、火电、需求响应</td></tr></tbody></table></div>
 <ul><li><strong>约 10 个 FCAS 品种</strong>：涨/降分开，时间尺度从 1 秒到 5 分钟；1 秒极快 FCAS 自 2023-10-09 起。</li><li><strong>具体品种/资格以 AEMO MASS 和现行 Procedure 为准</strong>；上表是量级，不是注册清单。</li><li><strong>涨/降分开</strong>：提供“升”不等于能提供“降”；电池的 SOC 决定它在两个方向的能力。</li><li><strong>FCAS 与能量共同优化</strong>：同一 MW 不能同时卖能量和 FCAS；机会成本要算清。</li></ul>
 <h3 id="s17">2.2 共同优化与机会成本</h3>
-<pre><code>电池 100 MW / 200 MWh
-├─ 卖能量：放电价 × 电量
-├─ 卖 FCAS：FCAS 价 × 预留 MW × 时间
-└─ 约束：SOC、功率、并网、FCAS 持续时间</code></pre>
+<figure class="tree-diagram" aria-label="电池 100 MW / 200 MWh结构图">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构图 · STRUCTURE</span>
+        <span class="diagram-meta">3 个一级分支</span>
+      </span>
+      <span class="tree-root-title">电池 100 MW / 200 MWh</span>
+
+    </figcaption>
+    <div class="tree-grid"><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">01</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">卖能量</span>
+        <span class="tree-node-detail">放电价 × 电量</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">02</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">卖 FCAS</span>
+        <span class="tree-node-detail">FCAS 价 × 预留 MW × 时间</span>
+      </span>
+    </div>
+
+  </article><article class="tree-node">
+    <div class="tree-node-head">
+      <span class="tree-node-index" aria-hidden="true">03</span>
+      <span class="tree-node-copy">
+        <span class="tree-node-title">约束</span>
+        <span class="tree-node-detail">SOC、功率、并网、FCAS 持续时间</span>
+      </span>
+    </div>
+
+  </article></div>
+
+  </figure>
 <ul><li><strong>FCAS 预留会减少可用能量</strong>：预留 10 MW 的 contingency，意味着这 10 MW 不能同时放电。</li><li><strong>FCAS 价格波动大</strong>：某些时段 FCAS 收益高于能量；但不能只看历史均价，要看同时段的机会成本。</li><li><strong>SOC 管理</strong>：FCAS 提供后可能改变 SOC；如果 SOC 不足，无法持续响应，会被考核/取消资格。</li></ul>
 <h3 id="s18">2.3 资格与测试</h3>
 <ul><li><strong>Prequalification</strong>：FCAS 提供者需要通过 AEMO 的资格测试，证明响应能力、持续时间、控制精度。</li><li><strong>MASS</strong>：Market Ancillary Service Specification 规定测试信号、响应要求、数据采集。</li><li><strong>持续响应</strong>：contingency FCAS 不是“瞬时一下”，需要按品种要求持续；电池容量和并网限值决定能否满足。</li><li><strong>合规</strong>：未按指令响应可能导致非 Conformance 处罚、资格暂停。</li></ul>
@@ -194,7 +229,7 @@
 <h3 id="s30">7.2 SOC 预留</h3>
 <ul><li><strong>上调备用</strong>：需要保留充电空间；SOC 太低无法向上响应。</li><li><strong>下调备用</strong>：需要保留放电空间；SOC 太高无法向下响应。</li><li><strong>持续时间</strong>：FCR 可能要求 15–30 分钟；mFRR 可能要求更长；电池要按产品要求配置。</li><li><strong>连续调用</strong>：一次调用后 SOC 可能偏离，需要时间恢复；恢复期间可能失去资格。</li></ul>
 <h3 id="s31">7.3 机会成本</h3>
-<pre><code>辅助服务净收益 = 容量费 + 能量费 - 能量套利机会成本 - 循环退化成本 - 考核风险</code></pre>
+<pre tabindex="0"><code>辅助服务净收益 = 容量费 + 能量费 - 能量套利机会成本 - 循环退化成本 - 考核风险</code></pre>
 <ul><li><strong>能量套利机会成本</strong>：预留 1 MW 备用，就少 1 MW 可用于能量市场；要用同一套优化模型比较。</li><li><strong>循环退化成本</strong>：高频调频可能比能量套利更伤电池；要把退化成本计入报价。</li><li><strong>考核风险</strong>：未按指令响应会被扣减/罚款；报价要覆盖考核风险。</li></ul>
 <h3 id="s32">7.4 收入叠加冲突</h3>
 <ul><li><strong>辅助服务 vs 能量</strong>：同一 MW 不能同时满额卖能量和备用；SOC 也要共享。</li><li><strong>辅助服务 vs 容量市场</strong>：容量中标要求可用性；辅助服务调用可能影响容量履约。</li><li><strong>辅助服务 vs 补贴</strong>：部分补贴按发电量/可用性计算，辅助服务收入可能影响补贴；以规则为准。</li><li><strong>辅助服务 vs 退休/更换</strong>：频繁调用加速退化，15 年合同期内可能要增容。</li></ul>
@@ -202,15 +237,15 @@
 <h2 id="s33">8. 三个合成算例（D 级，仅演示方法）</h2>
 <h3 id="s34">8.1 德国 FCR</h3>
 <p>假设：10 MW 参与 FCR，容量价格 5 €/MW/h，可用 20 小时/日，330 天；能量不单独支付。</p>
-<pre><code>年容量收入 = 10 MW × 5 €/MW/h × 20 h/日 × 330 日 = €330,000</code></pre>
+<pre tabindex="0"><code>年容量收入 = 10 MW × 5 €/MW/h × 20 h/日 × 330 日 = €330,000</code></pre>
 <ul><li>未计：预审成本、SOC 预留、考核、退化；FCR 是 4 小时产品，实际可用时段要与产品匹配。</li></ul>
 <h3 id="s35">8.2 澳洲 FCAS</h3>
 <p>假设：100 MW/200 MWh 电池，预留 10 MW 做 contingency FCAS，FCAS 价格 3 A$/MW/h，全年可用。</p>
-<pre><code>年 FCAS 收入 = 10 MW × 3 A$/MW/h × 8,760 h = A$262,800</code></pre>
+<pre tabindex="0"><code>年 FCAS 收入 = 10 MW × 3 A$/MW/h × 8,760 h = A$262,800</code></pre>
 <ul><li>未计：能量套利机会成本、SOC 管理、资格测试、考核；FCAS 价格波动大，不能用均价外推。</li></ul>
 <h3 id="s36">8.3 日本 EPRX</h3>
 <p>假设：10 MW 参与二次调整①，价格 3.21 日元/ΔkW·30 分，全年全容量中标。</p>
-<pre><code>年容量收入 = 10,000 kW × 3.21 日元/kW·30 分 × 48 × 365 = ¥562,392,000</code></pre>
+<pre tabindex="0"><code>年容量收入 = 10,000 kW × 3.21 日元/kW·30 分 × 48 × 365 = ¥562,392,000</code></pre>
 <ul><li>未计：中标率、考核、上限下调、能量调用；实际收入远低于“全容量全年中标”的理论值。</li></ul>
 <aside class="note"><p>三个算例只用于说明公式和量级，不是项目预测。辅助服务收入要扣机会成本、退化、考核和预审成本。</p></aside>
 <hr>
@@ -330,7 +365,9 @@
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

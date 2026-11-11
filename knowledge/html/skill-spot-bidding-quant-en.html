@@ -15,7 +15,7 @@
 </head>
 <body data-cat="skill" id="top">
 <a class="skip" href="#main">Skip to content</a>
-<div class="progress" id="progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -148,7 +148,7 @@
 <p>Cooling and heating load is piecewise linear in temperature: pick a reference temperature (e.g. 26°C), compute HDD/CDD, and regress load on it. <strong>Use the forecast temperature, not the observation.</strong></p>
 <h3 id="s16">3.3 Residual correction is the best value per line of code</h3>
 <p>Systematic bias usually has two dimensions: slot (some slots always run high) and weekday (Monday versus weekend patterns). A two-factor additive correction:</p>
-<pre><code>residual(weekday, slot) = (n·cell_mean + λ·slot_mean) / (n + λ)
+<pre tabindex="0"><code>residual(weekday, slot) = (n·cell_mean + λ·slot_mean) / (n + λ)
 forecast' = forecast + residual(weekday, slot)</code></pre>
 <p><code>λ</code> (shrinkage, default 3 in the code) prevents thin cells from overfitting. The structure matches the published patent's &quot;time component + exogenous component&quot; bias correction (Ch. 15).</p>
 <h3 id="s17">3.4 Metric definitions</h3>
@@ -179,17 +179,27 @@ forecast' = forecast + residual(weekday, slot)</code></pre>
 <p>Midday solar depresses net load (the duck curve); the evening drop in solar plus the load ramp lifts prices quickly. Two opposite risk scenarios: midday negative prices and evening spikes (under-declaration). The bidding responses differ and must be modelled separately.</p>
 <h3 id="s28">5.3 Declared quantity under asymmetric penalties</h3>
 <p>For renewables the decision is often not &quot;what price&quot; but &quot;how much&quot;. With an over-declaration penalty <code>p_over</code> and an under-declaration penalty <code>p_under</code>, minimise:</p>
-<pre><code>E[cost] = p_over·E[(q − actual)+] + p_under·E[(actual − q)+]</code></pre>
+<pre tabindex="0"><code>E[cost] = p_over·E[(q − actual)+] + p_under·E[(actual − q)+]</code></pre>
 <p>With symmetric penalties the optimum is the median; <strong>when over-declaration is punished more heavily, the optimum falls below the median</strong> — this is the mathematics behind &quot;declare conservatively&quot;, not a rule of thumb. Code: <code>bid.declared_quantity()</code>.</p>
 <hr>
 <h2 id="s29">6. Bidding Theory: The Price-Taker Theorem and Pivotal Pricing</h2>
 <h3 id="s30">6.1 Price taker: optimal bid = marginal cost</h3>
 <p>Under pay-as-clear with no capacity or contract constraints, expected profit for bid <code>p</code> is:</p>
-<pre><code>E[profit] = q · E[(π − c) · 1{π ≥ p}]</code></pre>
+<pre tabindex="0"><code>E[profit] = q · E[(π − c) · 1{π ≥ p}]</code></pre>
 <p>Bidding below cost admits negative-margin samples; bidding above cost forfeits profitable ones. The optimum is exactly <code>p* = c</code>. <strong>Any model that reports an &quot;optimal markup of X%&quot; for a non-pivotal unit is fitting noise.</strong> Code: <code>bid.price_taker_optimum()</code>, and the self-test asserts equality with cost.</p>
 <h3 id="s31">6.2 Pivotal units: markup comes from residual demand, not wishes</h3>
 <p>When your unit is on the margin and the next competing unit is more expensive, your bid sets the price. Approximate the residual demand curve as <code>R(p) = a − b·p</code> (a is the residual-demand intercept you can serve, b the slope):</p>
-<pre><code>profit = (p − c)(a − b·p)  →  p* = (a/b + c)/2</code></pre>
+<figure class="diagram-blueprint">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">Schematic · DIAGRAM</span>
+        <span class="diagram-meta">Scroll horizontally</span>
+      </span>
+    </figcaption>
+    <div class="diagram-canvas" tabindex="0" role="group" aria-label="Schematic diagram">
+      <pre>profit = (p − c)(a − b·p)  <span class="d-arrow">→</span>  p* = (a/b + c)/2</pre>
+    </div>
+  </figure>
 <p>Crucially, <strong>a and b must be estimated from observed residual demand</strong> (rival bid distribution, maintenance, load level), never assumed. Code: <code>bid.pivotal_markup()</code>.</p>
 <h3 id="s32">6.3 Compliance red lines</h3>
 <ul><li><strong>Economic withholding</strong>: bidding above cost without a cost justification to lift the clearing price is market-power abuse and is monitored;</li><li><strong>Capacity withholding</strong>: not offering available capacity to create scarcity is equally prohibited;</li><li><strong>Collusion</strong>: coordinating bids with other participants is illegal.</li></ul>
@@ -211,7 +221,7 @@ forecast' = forecast + residual(weekday, slot)</code></pre>
 <h3 id="s40">8.1 Renewables: quantity and deviation first, price second</h3>
 <ul><li>Quantity-only bidding: the decision space is declared quantity and availability; use the asymmetric-penalty model in 5.3;</li><li>Quantity-price bidding: overlay quantiles on the forecast curve — in low-price hours prefer not to clear (avoid negative-price losses), in high-price hours compete to clear;</li><li>Deviation assessment and the Two Rules: include assessment fees as a cost item in the bid decision, otherwise the model trades &quot;more volume&quot; against &quot;fewer penalties&quot; incorrectly.</li></ul>
 <h3 id="s41">8.2 Storage: arbitrage has a hard threshold</h3>
-<pre><code>minimum arbitrage spread = cycle cost / round-trip efficiency</code></pre>
+<pre tabindex="0"><code>minimum arbitrage spread = cycle cost / round-trip efficiency</code></pre>
 <p>At 88% round-trip efficiency and CNY 60/MWh cycle cost the threshold is about CNY 68.2/MWh (code: <code>bid.storage_arbitrage_threshold()</code>). Capacity payments and ancillary revenue lower the threshold, but <strong>subsidies must not disguise the fact that the energy arbitrage alone does not clear</strong>.</p>
 <h3 id="s42">8.3 Solar-plus-storage bidding</h3>
 <p>Typical shape: charge at midday when solar is abundant and prices are low (sometimes negative), discharge in the evening peak. A joint bid must satisfy SOC limits, charge/discharge power, grid capacity and ancillary-service commitments. The output is a <strong>net output curve plus time-block prices</strong>, not two independent bids summed.</p>
@@ -421,7 +431,9 @@ forecast' = forecast + residual(weekday, slot)</code></pre>
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="Back to top">↑</a>
+<nav class="page-aux" aria-label="Page utilities">
+  <a class="to-top" href="#top" aria-label="Back to top">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

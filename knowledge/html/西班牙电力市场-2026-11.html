@@ -15,7 +15,7 @@
 </head>
 <body data-cat="intl" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -196,7 +196,63 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>工具</th><th>状态</th><th>作用</th><th>级别</th></tr></thead><tbody><tr><td>PNIEC</td><td>现行规划</td><td>2030 年储能 22.5 GW、可再生占比提升</td><td>A/B</td></tr><tr><td>RD 997/2025</td><td>2025-11-05</td><td>储能列为公共事业、构网型要求、并网简化</td><td>B</td></tr><tr><td>RDL 7/2026</td><td>2026-03-20</td><td>灵活并网、10% 自消费预留、50 亿欧元 package</td><td>B</td></tr><tr><td>容量市场</td><td>2026 年新规</td><td>为可调度容量提供固定收入</td><td>A</td></tr><tr><td>招标/补贴</td><td>按年度</td><td>特定技术/项目支持</td><td>B/C</td></tr></tbody></table></div>
 <ul><li><strong>RD 997/2025</strong>：把储能纳入公共事业范畴，目标从 20 GW 上调到 22.5 GW，要求构网型（grid-forming）能力，电压穿越范围提高到 120%–130%（B 级，具体条款以 BOE 为准）。</li><li><strong>RDL 7/2026</strong>：引入灵活并网（flexible access），为自消费预留 10% 容量，配套约 50 亿欧元支持（B 级，具体以 BOE-A-2026-6544 为准）。</li><li><strong>政策目标是“更多储能 + 更强电网”</strong>：大停电后，监管更关注电压支撑、惯量和黑启动，而不是单纯装机量。</li></ul>
 <h3 id="s32">7.2 并网流程</h3>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>步骤</th><th>内容</th><th>风险</th></tr></thead><tbody><tr><td>1. 接入申请</td><td>向 REE/配电公司申请接入容量</td><td>热点区域排队、容量不足</td></tr><tr><td>2. 许可/环评</td><td>行政授权、环境影响评估</td><td>工期长、可能被驳回</td></tr><tr><td>3. 并网协议</td><td>技术条件、保护、通信、计量</td><td>构网型/电压穿越要求</td></tr><tr><td>4. 建设/调试</td><td>设备、测试、验收</td><td>设备交付、调试延期</td></tr><tr><td>5. 注册</td><td>OMIE/REE/BRP 注册</td><td>材料不全、担保不足</td></tr><tr><td>6. 投运</td><td>计量、结算、考核</td><td>数据错误、履约失败</td></tr></tbody></table></div>
+<figure class="milestone-diagram" aria-label="并网流程">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">并网流程 · MILESTONES</span>
+        <span class="diagram-meta">6 个步骤</span>
+      </span>
+    </figcaption>
+    <ol class="milestone-list"><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">01</span>
+      <div class="milestone-card">
+        <span class="milestone-title">接入申请</span>
+        <span class="milestone-detail">向 REE/配电公司申请接入容量</span>
+
+        <div class="milestone-meta" data-meta="风险"><span class="milestone-meta-label">风险</span><span>热点区域排队、容量不足</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">02</span>
+      <div class="milestone-card">
+        <span class="milestone-title">许可/环评</span>
+        <span class="milestone-detail">行政授权、环境影响评估</span>
+
+        <div class="milestone-meta" data-meta="风险"><span class="milestone-meta-label">风险</span><span>工期长、可能被驳回</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">03</span>
+      <div class="milestone-card">
+        <span class="milestone-title">并网协议</span>
+        <span class="milestone-detail">技术条件、保护、通信、计量</span>
+
+        <div class="milestone-meta" data-meta="风险"><span class="milestone-meta-label">风险</span><span>构网型/电压穿越要求</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">04</span>
+      <div class="milestone-card">
+        <span class="milestone-title">建设/调试</span>
+        <span class="milestone-detail">设备、测试、验收</span>
+
+        <div class="milestone-meta" data-meta="风险"><span class="milestone-meta-label">风险</span><span>设备交付、调试延期</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">05</span>
+      <div class="milestone-card">
+        <span class="milestone-title">注册</span>
+        <span class="milestone-detail">OMIE/REE/BRP 注册</span>
+
+        <div class="milestone-meta" data-meta="风险"><span class="milestone-meta-label">风险</span><span>材料不全、担保不足</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">06</span>
+      <div class="milestone-card">
+        <span class="milestone-title">投运</span>
+        <span class="milestone-detail">计量、结算、考核</span>
+
+        <div class="milestone-meta" data-meta="风险"><span class="milestone-meta-label">风险</span><span>数据错误、履约失败</span></div>
+      </div>
+    </li></ol>
+  </figure>
 <ul><li><strong>“nudo”容量是稀缺资源</strong>：接入点容量、网架加固、短路容量都会影响可并网规模。</li><li><strong>灵活并网不是“无条件并网”</strong>：它允许在约束时段限出力/限充电，换取更快接入；项目收益模型要包含限电/限充情景。</li><li><strong>构网型要求会改变设备选型</strong>：变流器、控制策略、储能系统集成都要满足新规，不能沿用旧机型。</li></ul>
 <h3 id="s33">7.3 可再生与储能的组合</h3>
 <ul><li><strong>光伏 + 储能</strong>：共享并网点、降低限电、把午间负价电量搬到晚高峰；但要注意“共址”计量与并网容量分配。</li><li><strong>风电 + 储能</strong>：平滑出力、提供备用；收益依赖风速与价差。</li><li><strong>独立储能</strong>：能量套利 + 辅助服务 + 容量市场；选址看并网容量和价差。</li><li><strong>PPA/托底</strong>：储能可以通过容量合同、tolling、PPA 锁定部分收入，降低 merchant 风险。</li></ul>
@@ -213,7 +269,79 @@
 <hr>
 <h2 id="s38">9. 中国主体进入路径</h2>
 <h3 id="s39">9.1 主体与注册</h3>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>步骤</th><th>内容</th><th>备注</th></tr></thead><tbody><tr><td>1. 设立主体</td><td>西班牙公司/分支机构</td><td>税务、银行、合同签署</td></tr><tr><td>2. 并网/接入</td><td>向 REE/配电公司申请</td><td>容量、网架、许可</td></tr><tr><td>3. 市场注册</td><td>OMIE 市场代理/参与者</td><td>日前/日内交易资格</td></tr><tr><td>4. 平衡责任</td><td>REE 注册 BRP 或委托 BRP</td><td>偏差结算</td></tr><tr><td>5. 辅助服务预审</td><td>REE 技术测试</td><td>通信、控制、计量</td></tr><tr><td>6. 担保/信用</td><td>OMIE/REE 要求</td><td>银行担保/现金</td></tr><tr><td>7. REMIT 报送</td><td>欧盟 REMIT</td><td>交易与基本面信息</td></tr><tr><td>8. 运营</td><td>交易、计量、结算、合规</td><td>本地团队/合作伙伴</td></tr></tbody></table></div>
+<figure class="milestone-diagram" aria-label="市场进入路径">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">进入路径 · ROADMAP</span>
+        <span class="diagram-meta">8 个步骤</span>
+      </span>
+    </figcaption>
+    <ol class="milestone-list"><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">01</span>
+      <div class="milestone-card">
+        <span class="milestone-title">设立主体</span>
+        <span class="milestone-detail">西班牙公司/分支机构</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>税务、银行、合同签署</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">02</span>
+      <div class="milestone-card">
+        <span class="milestone-title">并网/接入</span>
+        <span class="milestone-detail">向 REE/配电公司申请</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>容量、网架、许可</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">03</span>
+      <div class="milestone-card">
+        <span class="milestone-title">市场注册</span>
+        <span class="milestone-detail">OMIE 市场代理/参与者</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>日前/日内交易资格</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">04</span>
+      <div class="milestone-card">
+        <span class="milestone-title">平衡责任</span>
+        <span class="milestone-detail">REE 注册 BRP 或委托 BRP</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>偏差结算</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">05</span>
+      <div class="milestone-card">
+        <span class="milestone-title">辅助服务预审</span>
+        <span class="milestone-detail">REE 技术测试</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>通信、控制、计量</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">06</span>
+      <div class="milestone-card">
+        <span class="milestone-title">担保/信用</span>
+        <span class="milestone-detail">OMIE/REE 要求</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>银行担保/现金</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">07</span>
+      <div class="milestone-card">
+        <span class="milestone-title">REMIT 报送</span>
+        <span class="milestone-detail">欧盟 REMIT</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>交易与基本面信息</span></div>
+      </div>
+    </li><li class="milestone-step">
+      <span class="milestone-node" aria-hidden="true">08</span>
+      <div class="milestone-card">
+        <span class="milestone-title">运营</span>
+        <span class="milestone-detail">交易、计量、结算、合规</span>
+
+        <div class="milestone-meta" data-meta="备注"><span class="milestone-meta-label">备注</span><span>本地团队/合作伙伴</span></div>
+      </div>
+    </li></ol>
+  </figure>
 <ul><li><strong>市场注册不是“一张表”</strong>：OMIE 参与者、REE 平衡责任、辅助服务资格是三套流程，材料和测试不同。</li><li><strong>本地主体/合作伙伴</strong>：跨境主体可以通过收购项目、与本地开发商合资、委托 BRP/交易代理进入；纯财务投资不一定要自己注册。</li><li><strong>零售业务另需许可</strong>：如果要做售电/聚合，按西班牙法规注册商业化主体，不能只用发电注册。</li></ul>
 <h3 id="s40">9.2 数据与系统</h3>
 <ul><li><strong>交易系统</strong>：对接 OMIE 日前/日内、XBID、REE 平衡市场；支持 15 分钟产品、报价、结算对账。</li><li><strong>计量系统</strong>：15 分钟计量、数据校验、通信冗余；储能充/放电单独计量。</li><li><strong>调度系统</strong>：EMS 要能接收 REE 指令、管理 SOC、执行备用预留、记录调用。</li><li><strong>合规系统</strong>：REMIT 报送、市场滥用监控、交易记录保存。</li></ul>
@@ -234,22 +362,22 @@
 <h2 id="s46">12. 算例（D 级：方法演示，不是投资建议）</h2>
 <h3 id="s47">12.1 电池日套利（合成）</h3>
 <p>假设：100 MW/200 MWh 电池，可用深度 90%，循环效率 88%，日充放电各一次；日前价差 60 €/MWh；年运行 330 天。</p>
-<pre><code>可用电量 = 200 × 90% = 180 MWh
+<pre tabindex="0"><code>可用电量 = 200 × 90% = 180 MWh
 单次放电电量 = 180 × 88% ≈ 158.4 MWh
 单日毛收入 = 158.4 × 60 ≈ €9,504
 年毛收入 ≈ 9,504 × 330 ≈ €3.14m</code></pre>
 <ul><li>未扣充电成本、电网费、运维、退化、交易费用和税。</li><li>若价差降到 30 €/MWh，年毛收入约 €1.57m；价差是收益的核心变量。</li><li>若午间负价 −20 €/MWh、晚间 60 €/MWh，实际价差约 80 €/MWh，但要把充电效率和限充概率算进去。</li></ul>
 <h3 id="s48">12.2 容量市场收入（合成）</h3>
 <p>假设：100 MW 连接容量，容量价格 15,000 €/MW·年（<strong>纯假设，不是首拍价格</strong>），可用率考核后折算 80%。</p>
-<pre><code>有效容量 = 100 × 80% = 80 MW
+<pre tabindex="0"><code>有效容量 = 100 × 80% = 80 MW
 年容量收入 = 80 × 15,000 = €1.20m</code></pre>
 <ul><li>首拍价格、产品定义、履约考核都未落定；15,000 €/MW·年 只用于演示敏感性。</li><li>若容量价格 30,000 €/MW·年，收入约 €2.40m；若考核折算 60%，收入约 €0.90m。</li><li>未扣履约罚款、通信/控制改造和合同成本。</li></ul>
 <h3 id="s49">12.3 辅助服务收入（合成）</h3>
 <p>假设：50 MW 参与 aFRR，容量价格 8 €/MW/h，可用 20 小时/日，年运行 330 天；能量调用另计。</p>
-<pre><code>年容量收入 ≈ 50 × 8 × 20 × 330 ≈ €2.64m</code></pre>
+<pre tabindex="0"><code>年容量收入 ≈ 50 × 8 × 20 × 330 ≈ €2.64m</code></pre>
 <ul><li>这是容量费，不含能量调用；实际收入取决于调用次数和价格。</li><li>与能量套利存在机会成本：预留 50 MW 就不能同时满额放电。</li><li>辅助服务价格会随储能渗透率下降；要用衰减情景。</li></ul>
 <h3 id="s50">12.4 三层收入合计（合成）</h3>
-<pre><code>能量套利 ≈ €3.14m
+<pre tabindex="0"><code>能量套利 ≈ €3.14m
 容量市场 ≈ €1.20m
 辅助服务 ≈ €2.64m
 合计 ≈ €6.98m/年</code></pre>
@@ -378,7 +506,9 @@
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

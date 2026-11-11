@@ -15,7 +15,7 @@
 </head>
 <body data-cat="skill" id="top">
 <a class="skip" href="#main">Skip to content</a>
-<div class="progress" id="progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -134,7 +134,7 @@
 <h2 id="s9">2. Minimum Necessary Tariff System</h2>
 <h3 id="s10">2.1 Three segments and the end-user price</h3>
 <p>The end-user price stacks three &quot;price tables&quot;:</p>
-<pre><code>End-user price = energy price (generation side / market)
+<pre tabindex="0"><code>End-user price = energy price (generation side / market)
                + transmission and distribution price
                + system operation fee
                + government funds and surcharges
@@ -151,7 +151,7 @@
 <p>Large industry and some general commercial users follow a two-part tariff: the <strong>basic charge</strong> is per capacity or demand, the <strong>energy charge</strong> per kWh. Three basic-charge methods:</p>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Method</th><th>Basis</th><th>Suits</th><th>Risk</th></tr></thead><tbody><tr><td>By transformer capacity</td><td>Transformer kVA</td><td>Stable load, high utilization</td><td>Over-installed capacity pays forever</td></tr><tr><td>By contracted maximum demand</td><td>Approved demand kW</td><td>Fluctuating, manageable load</td><td>The part above 105% is doubled</td></tr><tr><td>By actual maximum demand</td><td>Actual maximum demand kW</td><td>Highly variable, controllable demand</td><td>Big provincial rule differences</td></tr></tbody></table></div>
 <p>Contracted-demand formula:</p>
-<pre><code>over = max(actual max demand − 1.05 × declared value, 0)
+<pre tabindex="0"><code>over = max(actual max demand − 1.05 × declared value, 0)
 basic charge = demand price × (declared value + 2 × over)</code></pre>
 <h3 id="s14">2.5 TOU, critical peak, deep valley and seasons</h3>
 <ul><li>Peak, flat and valley segments; Document 1093 of 2021 requires a peak-valley spread of at least 4:1 where the maximum peak-valley difference rate exceeds 40%, and at least 3:1 elsewhere;</li><li>Critical peak is at least 20% above the peak price, with periods set provincially;</li><li>Deep valley appears when renewables surge and load is low, used by some provinces to encourage charging;</li><li>Wet/dry and summer/winter seasonal pricing is more common in hydro-heavy provinces such as Sichuan;</li><li>After Document 1656 of 2026, direct-market users no longer follow the government's fixed TOU schedule; TOU prices are formed by the market. Agency-purchasing users still follow the government-optimized periods and floating ratios.</li></ul>
@@ -186,14 +186,14 @@ basic charge = demand price × (declared value + 2 × over)</code></pre>
 <hr>
 <h2 id="s26">4. Basic Charge and Filing</h2>
 <h3 id="s27">4.1 The three methods</h3>
-<pre><code>By capacity:     basic charge = capacity price (CNY/kVA·month) × transformer capacity (kVA)
+<pre tabindex="0"><code>By capacity:     basic charge = capacity price (CNY/kVA·month) × transformer capacity (kVA)
 By contract:     basic charge = demand price (CNY/kW·month) × (declared + 2 × max(actual − 1.05×declared, 0))
 By actual:       basic charge = demand price × actual maximum demand</code></pre>
 <h3 id="s28">4.2 Closed-form optimal declared value</h3>
 <p>Let demand price p, actual maximum demand A, threshold k = 1.05, overrun multiplier m = 2:</p>
-<pre><code>charge(D) = p × (D + m × max(A − kD, 0))</code></pre>
+<pre tabindex="0"><code>charge(D) = p × (D + m × max(A − kD, 0))</code></pre>
 <p>When D ≥ A/k, charge = pD and rises with D; when D &lt; A/k, charge = p(2A − (mk − 1)D) and falls as D rises. Hence the optimum:</p>
-<pre><code>D* = max(40% floor, A / 1.05), and no more than transformer capacity</code></pre>
+<pre tabindex="0"><code>D* = max(40% floor, A / 1.05), and no more than transformer capacity</code></pre>
 <p>Intuition: declare &quot;actual peak ÷ 1.05&quot; so the doubling is not triggered; declaring higher is wasted, declaring lower triggers the 2× overrun.</p>
 <h3 id="s29">4.3 Three-method comparison</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Scenario</th><th>Tendency</th></tr></thead><tbody><tr><td>Stable load, high transformer utilization (&gt;80%)</td><td>Capacity charging usually cheaper</td></tr><tr><td>Transformer oversized, peak far below capacity</td><td>Contracted demand cheaper</td></tr><tr><td>Occasional, controllable peaks</td><td>Actual maximum demand may be cheaper</td></tr><tr><td>Peak growing steadily</td><td>Keep 5%–10% headroom in contracted demand to avoid frequent overruns</td></tr></tbody></table></div>
@@ -221,7 +221,7 @@ By actual:       basic charge = demand price × actual maximum demand</code></pr
 <h2 id="s38">6. Power Factor and Surcharges</h2>
 <h3 id="s39">6.1 Power-factor adjustment</h3>
 <p>A power factor below standard is surcharged and above standard is discounted. The tool uses a simplified two-segment calibre:</p>
-<pre><code>Below 0.9: for each 0.01 below, surcharge 0.5% of the energy-side subtotal, capped at 15%
+<pre tabindex="0"><code>Below 0.9: for each 0.01 below, surcharge 0.5% of the energy-side subtotal, capped at 15%
 Above 0.9: for each 0.01 above, discount 0.15% of the energy-side subtotal, capped at 7.5%</code></pre>
 <p>Provincial rules often use tiers (e.g. different ratios for 0.85–0.9 and 0.8–0.85); verify the provincial &quot;power-factor adjustment measure&quot; before quoting. <strong>The power-factor base</strong> also differs by province: this skill defaults to the energy-side subtotal (energy + T&amp;D + system operation + funds). If the province assesses energy charge only, pass <code>pf_base</code> explicitly.</p>
 <aside class="note"><p>The two-segment ratios above are an illustrative calibre, not an official standard of any province. Formal work must replace the parameters in <code>bill.py</code> with the provincial tier table; never present 0.5%/0.15% as a national rule.</p></aside>
@@ -293,7 +293,7 @@ Above 0.9: for each 0.01 above, discount 0.15% of the energy-side subtotal, capp
 <h2 id="s65">11. Code Map and Self-Test</h2>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>File</th><th>Purpose</th></tr></thead><tbody><tr><td><code>tools/bill.py</code></td><td>Bill items, three basic-charge methods, power-factor adjustment</td></tr><tr><td><code>tools/tariff.py</code></td><td>Period-table validation, TOU cost, load shifting</td></tr><tr><td><code>tools/demand.py</code></td><td>Optimal declared value, three-method comparison, annual optimization</td></tr><tr><td><code>tools/retail.py</code></td><td>Fixed / TOU / market-linked package comparison</td></tr><tr><td><code>tools/curves.py</code></td><td>Synthetic load, TOU prices and market curves</td></tr><tr><td><code>tools/selftest.py</code></td><td>Locks all worked examples A–H in the text</td></tr></tbody></table></div>
 <p>Run:</p>
-<pre><code>python skills/tariff-bill-optimization/tools/selftest.py</code></pre>
+<pre tabindex="0"><code>python skills/tariff-bill-optimization/tools/selftest.py</code></pre>
 <p>A green self-test means the worked examples match the code; when policy parameters change, modify <code>curves.py</code> or the call parameters first, then synchronize the numbers in the text.</p>
 <hr>
 <h2 id="s66">12. Frequently Asked Questions</h2>
@@ -433,7 +433,9 @@ Above 0.9: for each 0.01 above, discount 0.15% of the energy-side subtotal, capp
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="Back to top">↑</a>
+<nav class="page-aux" aria-label="Page utilities">
+  <a class="to-top" href="#top" aria-label="Back to top">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

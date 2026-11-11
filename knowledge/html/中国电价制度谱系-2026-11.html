@@ -15,7 +15,7 @@
 </head>
 <body data-cat="price" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -104,16 +104,16 @@
 <hr>
 <h2 id="s1">0. 一页看懂</h2>
 <h3 id="s2">0.1 三个环节</h3>
-<pre><code>发电侧：上网电价（电能量 + 容量 + 辅助服务 + 环保电价等）
+<pre tabindex="0"><code>发电侧：上网电价（电能量 + 容量 + 辅助服务 + 环保电价等）
    ↓
 电网侧：输配电价（准许收入，按电压等级核定）+ 线损
    ↓
 用户侧：销售电价（电能量 + 输配电价 + 系统运行费 + 政府性基金及附加 + 税费）</code></pre>
 <h3 id="s3">0.2 终端电价的两个常用公式</h3>
 <p><strong>代理购电用户</strong>：</p>
-<pre><code>到户电价 = 代理购电价格 + 输配电价 + 系统运行费 + 政府性基金及附加</code></pre>
+<pre tabindex="0"><code>到户电价 = 代理购电价格 + 输配电价 + 系统运行费 + 政府性基金及附加</code></pre>
 <p><strong>直接参与市场的用户</strong>：</p>
-<pre><code>到户电价 = 市场交易电价 + 输配电价 + 系统运行费 + 政府性基金及附加</code></pre>
+<pre tabindex="0"><code>到户电价 = 市场交易电价 + 输配电价 + 系统运行费 + 政府性基金及附加</code></pre>
 <p>两式结构相同，差别在&quot;电能量价格&quot;的来源：前者由电网企业代理采购、按月测算并公示，后者由用户或售电公司通过中长期、现货等市场形成。</p>
 <aside class="note"><p>到户电价通常为含税价；系统运行费是否单列、基金附加包含哪些项目，各省口径不同，引用时必须写清省份与账单期间。</p></aside>
 <h3 id="s4">0.3 九种价格</h3>
@@ -133,7 +133,7 @@
 <h2 id="s10">2. 输配电价</h2>
 <h3 id="s11">2.1 准许收入</h3>
 <p>输配电价是电网的&quot;过网费&quot;，按&quot;准许成本 + 合理收益&quot;核定：</p>
-<pre><code>准许收入 = 准许成本 + 合理收益 + 税金
+<pre tabindex="0"><code>准许收入 = 准许成本 + 合理收益 + 税金
 合理收益 = 有效资产 × 准许收益率
 准许收益率 = 权益资本收益率 × (1 − 资产负债率) + 债务资本收益率 × 资产负债率</code></pre>
 <ul><li>准许成本包括折旧、运行维护、人工等；有效资产、收益率、成本参数由监管周期核定。</li><li>电网不再靠&quot;低买高卖&quot;赚价差，而是收核定过网费；这是 2015 年输配电价改革的核心。</li><li>监管周期通常三年，上一周期实际数据与下一周期参数衔接；具体办法见发改价格〔2016〕2711号、发改价格规〔2017〕2269号及后续修订。</li></ul>
@@ -151,7 +151,7 @@
 <p>基本电费可按三种方式计收：</p>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>方式</th><th>计费基础</th><th>适用</th><th>注意</th></tr></thead><tbody><tr><td>按变压器容量</td><td>变压器容量（kVA）</td><td>负荷稳定、容量利用率高</td><td>容量报装过大则基本电费偏高</td></tr><tr><td>按合同最大需量</td><td>核定需量（kW）</td><td>负荷波动、可管理</td><td>超 105% 部分加一倍</td></tr><tr><td>按实际最大需量</td><td>实际最大需量（kW）</td><td>负荷波动大、需量可控</td><td>500 号文增加，具体以省级规则为准</td></tr></tbody></table></div>
 <p>合同最大需量公式：</p>
-<pre><code>over = max(实际最大需量 − 1.05 × 核定值, 0)
+<pre tabindex="0"><code>over = max(实际最大需量 − 1.05 × 核定值, 0)
 基本电费 = 需量电价 × (核定值 + 2 × over)</code></pre>
 <ul><li>核定值可按月变更，提前 5 个工作日申请；计费方式按季变更，提前 15 个工作日申请。</li><li>申请核定值低于变压器容量与高压电动机容量总和 40% 的，按 40% 核定；两路及以上进线分别计算、累加计收。</li><li>基本电费是固定成本，不能只看电度电价；用户侧储能削峰的价值，往往体现在&quot;少交基本电费&quot;而不是&quot;少用电&quot;。</li></ul>
 <h3 id="s18">3.4 分时、尖峰、深谷与季节性电价</h3>
@@ -279,7 +279,9 @@
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

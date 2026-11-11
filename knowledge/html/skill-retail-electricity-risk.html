@@ -15,7 +15,7 @@
 </head>
 <body data-cat="skill" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -134,16 +134,26 @@
 <hr>
 <h2 id="s9">2. 2026 年零售市场的最小必要</h2>
 <h3 id="s10">2.1 零售侧的生意结构</h3>
-<pre><code>        批发侧                                零售侧
-  中长期合同（锁量锁价）  ─┐
-  现货市场（余量/偏差）    ─┼──► 售电公司 ──► 套餐（固定/分时/联动）
-  系统运行费、输配、基金   ─┘        │
-                                     ├── 偏差考核
-                                     ├── 运营与获客
-                                     ├── 保函/保险/现金
-                                     └── 坏账与用户流失</code></pre>
+<figure class="diagram-blueprint">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">结构示意 · DIAGRAM</span>
+        <span class="diagram-meta">可横向滚动</span>
+      </span>
+    </figcaption>
+    <div class="diagram-canvas" tabindex="0" role="group" aria-label="结构示意图">
+      <pre>        批发侧                                零售侧
+  中长期合同（锁量锁价）  <span class="d-line">─</span><span class="d-line">┐</span>
+  现货市场（余量/偏差）    <span class="d-line">─</span><span class="d-line">┼</span><span class="d-line">─</span><span class="d-line">─</span>► 售电公司 <span class="d-line">─</span><span class="d-line">─</span>► 套餐（固定/分时/联动）
+  系统运行费、输配、基金   <span class="d-line">─</span><span class="d-line">┘</span>        <span class="d-line">│</span>
+                                     <span class="d-line">├</span><span class="d-line">─</span><span class="d-line">─</span> 偏差考核
+                                     <span class="d-line">├</span><span class="d-line">─</span><span class="d-line">─</span> 运营与获客
+                                     <span class="d-line">├</span><span class="d-line">─</span><span class="d-line">─</span> 保函/保险/现金
+                                     <span class="d-line">└</span><span class="d-line">─</span><span class="d-line">─</span> 坏账与用户流失</pre>
+    </div>
+  </figure>
 <p>售电公司的利润不是&quot;零售价 − 批发价&quot;，而是：</p>
-<pre><code>净利 = 零售收入
+<pre tabindex="0"><code>净利 = 零售收入
      − 批发购电成本
      − 偏差考核成本
      − 运营与获客成本
@@ -182,24 +192,24 @@
 <hr>
 <h2 id="s24">4. 套餐定价</h2>
 <h3 id="s25">4.1 全成本拆解</h3>
-<pre><code>固定价 = 批发成本 W
+<pre tabindex="0"><code>固定价 = 批发成本 W
        + 偏差成本 D
        + 运营与获客 O
        + 担保资金成本 F
        + 风险溢价 R
        + 目标利润 M</code></pre>
 <p>其中批发成本按采购结构计算：</p>
-<pre><code>W = 中长期覆盖比例 × 中长期价 + (1 − 覆盖比例) × 现货价</code></pre>
+<pre tabindex="0"><code>W = 中长期覆盖比例 × 中长期价 + (1 − 覆盖比例) × 现货价</code></pre>
 <h3 id="s26">4.2 三种定价公式</h3>
-<pre><code>固定价：      P = W + D + O + F + R + M
+<pre tabindex="0"><code>固定价：      P = W + D + O + F + R + M
 分时价：      P_t = W_t + D_t + O + F + R + M_t
 市场联动：    P = clamp(α × S + a, 下限, 上限)</code></pre>
 <ul><li>固定价把价格风险从用户转到售电公司，必须留风险溢价；</li><li>分时价把时段风险部分转给用户，但售电公司仍承担曲线预测偏差；</li><li>市场联动把价格风险传回用户，但&quot;下限&quot;设得太低会在低价时亏损，&quot;上限&quot;设得太高用户不接受。</li></ul>
 <h3 id="s27">4.3 保本点</h3>
 <p>固定价合同在现货价格为 S* 时现金保本（利润为零）：</p>
-<pre><code>S* = (P − D − O − F − c × L) / (1 − c)</code></pre>
+<pre tabindex="0"><code>S* = (P − D − O − F − c × L) / (1 − c)</code></pre>
 <p>若要求保本之上再留出风险溢价 R，对应的安全线是：</p>
-<pre><code>S*_R = (P − D − O − F − R − c × L) / (1 − c)</code></pre>
+<pre tabindex="0"><code>S*_R = (P − D − O − F − R − c × L) / (1 − c)</code></pre>
 <p>其中 c 为中长期覆盖比例，L 为中长期价。S* 与当前现货价的差距，就是这张合同的价格安全垫。R 是主动留出的缓冲，不是已发生成本，不能混进&quot;保本&quot;口径；对外的保本报价用 S*，内部限额与授信可用 S*_R。</p>
 <h3 id="s28">4.4 套餐选择矩阵</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>用户特征</th><th>倾向套餐</th><th>理由</th></tr></thead><tbody><tr><td>用电稳定、风险偏好低</td><td>固定价</td><td>预算确定，但售电公司要留风险溢价</td></tr><tr><td>可错峰、峰谷比高</td><td>分时价</td><td>价格信号能引导负荷</td></tr><tr><td>接受波动、追求低均价</td><td>均价联动</td><td>传导较顺，减少批零倒挂</td></tr><tr><td>大用户、议价强</td><td>保底+浮动/服务费</td><td>双方分担风险</td></tr><tr><td>综合能源客户</td><td>服务费</td><td>从价差转向服务增值</td></tr></tbody></table></div>
@@ -212,11 +222,11 @@
 <h2 id="s31">5. 客户组合与购电匹配</h2>
 <h3 id="s32">5.1 客户贡献</h3>
 <p>单客户年贡献：</p>
-<pre><code>贡献_i = Q_i × (P_i − W − D − O − F_i)</code></pre>
+<pre tabindex="0"><code>贡献_i = Q_i × (P_i − W − D − O − F_i)</code></pre>
 <p>其中 F_i 为按电量或合同分摊的担保资金成本；若不在客户层分摊，至少在组合层扣除 F。算例为简化设 F=0。</p>
 <ul><li>贡献为负的客户，除非有战略/规模/协同价值，否则应退出或调价；</li><li>贡献为正但波动大的客户，要用压力测试而非平均值判断；</li><li>客户集中度过高（例如单一客户超过 30%）要单独评估其信用与退出风险。</li></ul>
 <h3 id="s33">5.2 组合净利</h3>
-<pre><code>净利 = Σ Q_i × P_i − Q × W − Q × D − Q × O − F</code></pre>
+<pre tabindex="0"><code>净利 = Σ Q_i × P_i − Q × W − Q × D − Q × O − F</code></pre>
 <p>其中 Q 为组合总电量，F 为组合层担保资金成本。组合净利不是单客户贡献的简单相加，还要考虑：</p>
 <ul><li>用户曲线叠加后的峰谷特性；</li><li>用户之间的相关性（同行业同时检修/同时超用）；</li><li>批发采购的曲线匹配与偏差；</li><li>获客成本与续约率。</li></ul>
 <h3 id="s34">5.3 购电覆盖</h3>
@@ -229,14 +239,14 @@
 <hr>
 <h2 id="s37">6. 偏差考核与预测风险</h2>
 <h3 id="s38">6.1 偏差的定义</h3>
-<pre><code>偏差电量 = 实际电量 − 合同电量
+<pre tabindex="0"><code>偏差电量 = 实际电量 − 合同电量
 偏差率   = 偏差电量 / 合同电量</code></pre>
 <ul><li>合同电量可能是中长期合同、现货申报或零售合同约定的曲线；</li><li>免考区间、考核价格、责任分摊由省级规则确定，<strong>全国没有统一的 ±5%</strong>；</li><li>1656 号第七十四条给&quot;差价结算/差量结算&quot;原则，具体参数看省；</li><li>偏差考核多数是结算价格差异，不是行政处罚，但会显著影响利润。</li></ul>
 <h3 id="s39">6.2 预期偏差成本</h3>
 <p>设预测值 F（kWh），预测误差标准差为 σ_F = σ × F，免考带为 ±t_F = ±t × F，其中 σ、t 为占 F 的比例；误差服从零均值正态分布，则超出免考带的期望电量：</p>
-<pre><code>E[|ε| × 1{|ε| &gt; t_F}] = 2 × σ_F × φ(t_F / σ_F) = 2 × σ × F × φ(t / σ)</code></pre>
+<pre tabindex="0"><code>E[|ε| × 1{|ε| &gt; t_F}] = 2 × σ_F × φ(t_F / σ_F) = 2 × σ × F × φ(t / σ)</code></pre>
 <p>其中 φ 为标准正态密度函数。95% 分位的超出电量近似：</p>
-<pre><code>q_95 = max(z × σ_F − t_F, 0) = max((z × σ − t) × F, 0)，z = 1.96</code></pre>
+<pre tabindex="0"><code>q_95 = max(z × σ_F − t_F, 0) = max((z × σ − t) × F, 0)，z = 1.96</code></pre>
 <p>这个模型只用于量级测算；省级规则可能按现货价、中长期价或倍数考核，必须替换为本地公式。</p>
 <h3 id="s40">6.3 偏差管理</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>环节</th><th>动作</th><th>频率</th></tr></thead><tbody><tr><td>预测</td><td>按行业、历史、天气、检修建模</td><td>日/月</td></tr><tr><td>预警</td><td>偏差接近免考带时通知用户</td><td>日/周</td></tr><tr><td>调整</td><td>月内合同调整、转让、回购</td><td>按规则窗口</td></tr><tr><td>分摊</td><td>按合同把考核费用传导给责任方</td><td>月</td></tr><tr><td>复盘</td><td>分析误差来源、修正模型</td><td>月/季</td></tr></tbody></table></div>
@@ -255,7 +265,7 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>情景</th><th>看什么</th></tr></thead><tbody><tr><td>现货价格</td><td>+20% / +30% / +50%</td><td>净利、保本点、保函占用</td></tr><tr><td>偏差</td><td>σ = 2% / 4% / 6%</td><td>考核成本、免考带是否足够</td></tr><tr><td>用户流失</td><td>−10% / −20%</td><td>固定成本摊薄、采购过度覆盖</td></tr><tr><td>保函</td><td>系数上调、缺口补缴</td><td>资金成本、交易限额</td></tr><tr><td>回款</td><td>用户拖欠 30/60/90 天</td><td>现金流缺口</td></tr></tbody></table></div>
 <h3 id="s46">7.3 保本点与安全垫</h3>
 <p>组合保本现货倍数：</p>
-<pre><code>m* = 1 + 净利 / (总电量 × 现货敞口比例 × 基准现货价)</code></pre>
+<pre tabindex="0"><code>m* = 1 + 净利 / (总电量 × 现货敞口比例 × 基准现货价)</code></pre>
 <p><code>m* − 1</code> 就是现货价格可以上涨的百分比。低于这个幅度，组合仍盈利；高于它，开始亏损。单张固定价合同的保本点可能远低于组合保本点，因为高毛利客户在补贴低毛利客户。</p>
 <h3 id="s47">7.4 现金流</h3>
 <ul><li>零售侧按月/按合同回款，批发侧按 5/8/10 时限付款，存在时点错配；</li><li>用户拖欠会直接挤压保函与现金流；</li><li>保函、保险、现金都占资金，低价冲量会同时推高业务规模和担保需求；</li><li>压力测试要同时看利润表和现金流，不能只看利润。</li></ul>
@@ -269,10 +279,10 @@
 <ul><li>季度评价 + 动态调整；结果全国通用；</li><li>信用不是银行评级，但会直接影响保证金、交易权限、保底售电资格；</li><li>C 级就要处理履约、结算、披露问题，不要等到 D 级。</li></ul>
 <h3 id="s51">8.2 履约保障：现行与草案</h3>
 <p>现行 1595 号：</p>
-<pre><code>额度 = max(过去 12 个月批发购电量 × 0.8 分/kWh,
+<pre tabindex="0"><code>额度 = max(过去 12 个月批发购电量 × 0.8 分/kWh,
            2 个月最大购电量 × 5 分/kWh)</code></pre>
 <p>2026-09-04 售电办法修订稿（草案）：</p>
-<pre><code>额度 = max(200 万元, 预计年售电量 × 1 分/kWh × 调整系数)
+<pre tabindex="0"><code>额度 = max(200 万元, 预计年售电量 × 1 分/kWh × 调整系数)
 调整系数 ∈ [1, 10]</code></pre>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>现行 1595</th><th>2026 草案</th></tr></thead><tbody><tr><td>计算基数</td><td>历史购电量/短期峰值</td><td>预计年售电量</td></tr><tr><td>单位</td><td>0.8 分 / 5 分</td><td>1 分</td></tr><tr><td>调节项</td><td>无系数</td><td>1–10 系数</td></tr><tr><td>最低额</td><td>无统一地板</td><td>200 万元</td></tr><tr><td>监测</td><td>静态预缴为主</td><td>逐日盯市、不足补缴</td></tr><tr><td>补缴时限</td><td>按地方</td><td>通知 1 个工作日、补缴 3 个工作日、恢复 1 个工作日</td></tr></tbody></table></div>
 <h3 id="s52">8.3 保函、保险与现金</h3>
@@ -342,7 +352,7 @@
 <h2 id="s76">12. 代码映射与自测</h2>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>文件</th><th>作用</th></tr></thead><tbody><tr><td><code>tools/package.py</code></td><td>固定价/市场联动报价、单客户年度结果、保本现货价</td></tr><tr><td><code>tools/portfolio.py</code></td><td>组合净利、客户贡献、现货压力、保本倍数</td></tr><tr><td><code>tools/deviation.py</code></td><td>超带电量、考核成本、期望与 95% 分位</td></tr><tr><td><code>tools/guarantee.py</code></td><td>现行/草案保函、资金成本、缺口</td></tr><tr><td><code>tools/curves.py</code></td><td>合成客户曲线、现货曲线与分时价格</td></tr><tr><td><code>tools/selftest.py</code></td><td>锁定正文 A–H 全部算例</td></tr></tbody></table></div>
 <p>运行：</p>
-<pre><code>python skills/retail-electricity-risk/tools/selftest.py</code></pre>
+<pre tabindex="0"><code>python skills/retail-electricity-risk/tools/selftest.py</code></pre>
 <p>自测通过代表正文算例与代码一致；政策参数变化时，先改 <code>curves.py</code> 或调用参数，再同步正文数字。</p>
 <hr>
 <h2 id="s77">13. 常见问答</h2>
@@ -493,7 +503,9 @@
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>

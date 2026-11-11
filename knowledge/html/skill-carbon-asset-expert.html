@@ -15,7 +15,7 @@
 </head>
 <body data-cat="skill" id="top">
 <a class="skip" href="#main">跳到正文</a>
-<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="scrim"></div>
 
 <header class="topbar">
@@ -155,7 +155,7 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>层级</th><th>用途</th><th>主要依据</th></tr></thead><tbody><tr><td>区域清单</td><td>政府编制温室气体清单</td><td>IPCC 指南 + 省级清单指南</td></tr><tr><td>组织盘查</td><td>企业年度排放报告、履约</td><td>行业核算指南、GB/T 32150、ISO 14064-1</td></tr><tr><td>产品碳足迹</td><td>出口、客户要求、碳标识认证、CBAM 数据基础</td><td>ISO 14067:2018、GB/T 24067-2024、产品类别规则</td></tr><tr><td>声明核查</td><td>碳中和声明、碳足迹声明的第三方核查</td><td>ISO 14064-3</td></tr></tbody></table></div>
 <p>履约用的是<strong>组织盘查</strong>，不是产品碳足迹，也不是区域清单。三者边界不同，数字不能互借。产品碳足迹要回答的是&quot;一件产品多少排放&quot;，组织盘查回答的是&quot;一个法人一年多少排放&quot;，前者不能直接乘产量倒推后者，后者也不能用平均因子替代产品级核算。产品碳足迹的边界、分配与因子选择见 11.6。</p>
 <h3 id="s18">3.2 基本公式</h3>
-<pre><code>排放量 = Σ(活动数据 × 排放因子 × GWP)
+<pre tabindex="0"><code>排放量 = Σ(活动数据 × 排放因子 × GWP)
 燃煤排放 = 消耗量 × 低位热值 × 单位热值含碳量 × 44/12 × 氧化率</code></pre>
 <ul><li>活动数据来自计量、台账、发票、生产报表；优先实测，缺省值只作兜底；</li><li>排放因子优先用主管部门发布值或实测值，不能把区域电网因子与项目基准线因子混用；</li><li>GWP 按现行指南取值，同一报告期内保持一致。</li></ul>
 <h3 id="s19">3.3 数据链：从表计到报告</h3>
@@ -182,7 +182,7 @@
 <h2 id="s28">5. 配额盈缺测算：从吨到钱</h2>
 <aside class="note"><p>本章算例为合成示例，参数不代表任何企业或监管值。代码：<code>compliance.py</code>。</p></aside>
 <h3 id="s29">5.1 公式</h3>
-<pre><code>免费配额 A = 供电量 Q × 基准线 b × 修正系数 k
+<pre tabindex="0"><code>免费配额 A = 供电量 Q × 基准线 b × 修正系数 k
 缺口 G = 核实排放 E − A
 CCER 可用量 = min(可用 CCER, 5% × 应清缴配额, max(G, 0))
 CEA 采购量 = max(G, 0) − CCER 可用量
@@ -233,7 +233,7 @@ CEA 采购量 = max(G, 0) − CCER 可用量
 <h2 id="s45">8. CCER 开发测算：NPV、IRR 与盈亏平衡价</h2>
 <aside class="note"><p>本章算例为合成示例，价格与成本不代表任何真实项目。代码：<code>ccer.py</code>。</p></aside>
 <h3 id="s46">8.1 公式</h3>
-<pre><code>年减排量 ER = 基准线排放 − 项目排放 − 泄漏
+<pre tabindex="0"><code>年减排量 ER = 基准线排放 − 项目排放 − 泄漏
 年净现金流 = ER × 碳价 − 运营成本
 NPV = −初始投资 + Σ(年净现金流 / (1+r)^t)
 盈亏平衡碳价 = (年运营成本 + 初始投资 / 年金系数) / 年减排量</code></pre>
@@ -256,7 +256,7 @@ NPV = −初始投资 + Σ(年净现金流 / (1+r)^t)
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>工具</th><th>标的/结构</th><th>主要用途</th><th>关键风险</th><th>国内状态</th></tr></thead><tbody><tr><td>配额质押</td><td>配额作为质押物</td><td>融资</td><td>价格下跌、质押登记、处置</td><td>已有实践</td></tr><tr><td>配额回购</td><td>卖出+约定回购</td><td>短期融资</td><td>对手方信用、回购违约</td><td>已有实践</td></tr><tr><td>碳远期/掉期</td><td>场外约定未来价格</td><td>锁定成本/收益</td><td>信用风险、无中央清算</td><td>场外为主</td></tr><tr><td>碳基金/碳债券/碳信托</td><td>组合或项目融资</td><td>融资、资产配置</td><td>底层资产质量、流动性</td><td>已有案例</td></tr><tr><td>碳保险/担保</td><td>交付或价格保障</td><td>增信</td><td>条款理解、赔付条件</td><td>探索中</td></tr><tr><td>碳期货/期权</td><td>交易所衍生品</td><td>标准化对冲</td><td>保证金、基差</td><td><strong>截至 2026-11 未上市</strong></td></tr></tbody></table></div>
 <h3 id="s52">9.2 质押：能贷多少、什么时候追保</h3>
 <p>示例：100,000 吨 CEA，价格 95 元/吨，质押率 60% → 贷款额度 570 万元。若合同约定贷款价值比（LTV）上限 80%，当价格跌到 <strong>71.25 元/吨</strong>时触发追保或补仓；从 95 元跌到 71.25 元，跌幅约 25%。</p>
-<pre><code>质押价值 = 数量 × 价格 × 质押率
+<pre tabindex="0"><code>质押价值 = 数量 × 价格 × 质押率
 追保价格 = 贷款额 / (数量 × LTV 上限)</code></pre>
 <p>质押不是&quot;把配额卖了&quot;：配额所有权仍归企业，但被冻结，不能用于履约或再质押；合同里要写清追保、处置、提前还款条款。</p>
 <h3 id="s53">9.3 远期/掉期：锁价不等于没有风险</h3>
@@ -271,7 +271,7 @@ NPV = −初始投资 + Σ(年净现金流 / (1+r)^t)
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>结构</th><th>挂钩对象</th><th>典型条款</th><th>适配企业</th></tr></thead><tbody><tr><td>碳数据授信</td><td>第三方核查的组织/产品碳数据、碳效评级</td><td>准入、额度、利率优惠</td><td>小微、出口制造</td></tr><tr><td>碳挂钩贷款</td><td>KPI：减排率、碳强度、认证进度</td><td>达标降息、未达标升息</td><td>有节能改造项目</td></tr><tr><td>碳资产质押</td><td>配额、CCER</td><td>质押率、追保线</td><td>持有配额的企业</td></tr></tbody></table></div>
 <p><strong>公开案例（只作产品形态参考，不作收益基准）</strong>：2024-04-25，建设银行上海市分行与碳衡科技发布&quot;碳数贷&quot;，定位为首个面向中小微企业的碳服务普惠金融项目；以&quot;碳足迹画像&quot;识别客群，贷款可用于产品碳足迹/碳中和核算认证、绿证与碳信用、低碳改造（B/C）。公开材料未披露统一额度、利率与投放规模；2025-10 建行上海市分行披露绿色贷款首破 2,000 亿元，&quot;碳数贷&quot;已服务多家企业（B）。同期还有邮储银行北京分行&quot;降碳贷&quot;（截至 2026-06 服务 236 家、投放 11.1 亿元，碳账户评级与利率挂钩，B/C）与建行广州&quot;穗碳贷&quot;（碳效 A 级获 500 万元纯信用贷款，C）——都是地方产品，不是全国统一规则。</p>
 <p><strong>算一笔账</strong>：</p>
-<pre><code>年省息 = 本金 × 降息幅度 × 年限</code></pre>
+<pre tabindex="0"><code>年省息 = 本金 × 降息幅度 × 年限</code></pre>
 <p>500 万元、降 20bp、1 年 → 省息 1 万元。这个量级通常小于碳足迹认证与改造投入，<strong>不要为了降息去做没有减排价值的认证</strong>；反过来，如果认证同时带来订单准入、配额倾斜与客户审核通过，三项收益要合并评估。</p>
 <p>设计碳挂钩贷款时核对六件事：</p>
 <ol><li><strong>数据可核验</strong>：第三方核查/认证，报告编号与证书有效期可查；</li><li><strong>评级方法透明</strong>：边界、因子、基准年、权重公开；</li><li><strong>KPI 可测</strong>：绝对量还是强度，基准是否固定，避免&quot;越生产越低碳&quot;；</li><li><strong>监测与报告</strong>：季度/年度频率、谁核、未达标怎么处理；</li><li><strong>数据授权</strong>：企业授权银行/平台使用的范围、期限、撤回机制；</li><li><strong>反漂绿</strong>：未达标时是否只买抵消、是否公开调整，不能只做宣传。</li></ol>
@@ -300,7 +300,7 @@ NPV = −初始投资 + Σ(年净现金流 / (1+r)^t)
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>事项</th><th>状态/时点</th></tr></thead><tbody><tr><td>过渡期</td><td>2023-10-01 开始</td></tr><tr><td>正式实施</td><td>2026-01-01</td></tr><tr><td>证书购买</td><td><strong>2027-02 起</strong></td></tr><tr><td>首次年度申报与清缴</td><td><strong>2027-09-30</strong></td></tr><tr><td>默认值加价</td><td>2026 年 +10%，2028 年 +30%</td></tr><tr><td>50 吨以下进口豁免</td><td>适用</td></tr><tr><td>下游产品扩围</td><td>2028 年起约 180 种</td></tr><tr><td>第三方核查</td><td>2026 年 9-10 月起引入</td></tr><tr><td>英国 CBAM</td><td>2027-01-01 实施</td></tr></tbody></table></div>
 <p><strong>&quot;2026-01-01 实施&quot;不等于&quot;2026 年就要买证书&quot;</strong>：2026 年是正式实施与数据准备年，证书购买从 2027-02 开始，首次清缴在 2027-09-30。</p>
 <h3 id="s65">11.3 CBAM 成本怎么估</h3>
-<pre><code>应缴证书 = 隐含排放 − 原产国已支付碳价对应的排放
+<pre tabindex="0"><code>应缴证书 = 隐含排放 − 原产国已支付碳价对应的排放
 证书成本 = 应缴证书 × EU ETS 拍卖均价</code></pre>
 <ul><li>隐含排放按产品规则计算，含直接排放与部分间接排放；</li><li>默认值可用，但会被加价（2026 年 +10%，2028 年 +30%），实际数据更有利；</li><li>原产国已支付碳价可扣减，但免费配额部分通常不构成可扣减碳价，需逐项举证（B）；</li><li>2026 年 Q1/Q2 参考价约 75.36/75.28 欧元/吨（A/B 级）。</li></ul>
 <p>量级参考：吨高炉钢出口约缴 44.79 欧元（约 375 元，D 级估算），对照国内吨钢利润约 200 元，碳成本已足以改变接单决策。这个数字会随 EUA 价格、默认值、产品规则变化，<strong>只能作为量级感知，不能作为报价依据</strong>。</p>
@@ -314,7 +314,7 @@ NPV = −初始投资 + Σ(年净现金流 / (1+r)^t)
 <p><strong>五个阶段与两种边界</strong>：原材料获取、生产、运输（交付）、使用、生命末期。只算前三个阶段叫&quot;摇篮到大门&quot;（cradle-to-gate），五个阶段全算叫&quot;摇篮到坟墓&quot;（cradle-to-grave）。报价给客户时必须写清边界，否则同名产品可以差出十几个百分点。</p>
 <p><strong>四个必须写明的选择</strong>：</p>
 <ol><li><strong>功能单位/声明单位</strong>：每 kg、每件、每 kWh，还是每元产值；</li><li><strong>取舍准则</strong>：哪些输入输出排除，单项与累计比例是多少；</li><li><strong>共产品分配</strong>：按质量、能量还是经济价值；方法一旦选定，跨期保持一致；</li><li><strong>回收与废弃物处理</strong>：cut-off、循环分配还是替代法，按产品规则执行。</li></ol>
-<pre><code>产品碳足迹 = Σ(活动数据 × 排放因子) ÷ 声明单位</code></pre>
+<pre tabindex="0"><code>产品碳足迹 = Σ(活动数据 × 排放因子) ÷ 声明单位</code></pre>
 <p><strong>算例（合成数据，仅演示算术）</strong>：1 吨产品，各阶段排放为原材料 8,200 kg CO2e、生产 2,100 kg、运输 480 kg、使用 1,300 kg、生命末期 320 kg CO2e。</p>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>口径</th><th>排放量</th><th>强度</th><th>用途</th></tr></thead><tbody><tr><td>摇篮到大门</td><td>10,780 kg</td><td>10.78 kg/kg</td><td>客户 B2B 数据请求常用</td></tr><tr><td>摇篮到坟墓</td><td>12,400 kg</td><td>12.4 kg/kg</td><td>面向消费者的碳标识/碳中和</td></tr><tr><td>原材料占比</td><td>8,200/12,400 = 66.1%</td><td>—</td><td>减排优先抓原料</td></tr><tr><td>共产品分配（60/40 按质量）</td><td>主产品 7,440 kg、副产品 4,960 kg</td><td>—</td><td>多产出工艺必须披露</td></tr></tbody></table></div>
 <p>边界从大门扩到坟墓，结果从 10.78 升到 12.4 kg/kg（+15%）。减排 20% 后残余 9,920 kg；按 90 元/吨抵消，成本仅 <strong>892.8 元</strong>。结论很直接：<strong>抵消很便宜，难的是把 12.4 吨降下来并拿到可核查的数据</strong>。</p>
@@ -329,7 +329,41 @@ NPV = −初始投资 + Σ(年净现金流 / (1+r)^t)
 <h3 id="s69">11.7 碳中和声明：ISO 14068:2026 的层级链</h3>
 <p><strong>标准状态</strong>：ISO 14068:2026《气候变化管理——碳中和》于 <strong>2026-09-11</strong> 发布，替代 ISO 14068-1:2023（A/B）；PAS 2060 已于 2025 年底退出（A/B）。标准适用于组织、产品与活动，不适用于国家/地区。</p>
 <p><strong>层级链不能跳步</strong>：</p>
-<pre><code>量化 → 减排/增汇 → 抵消残余 → 报告 → 声明 → 核查</code></pre>
+<figure class="flow-diagram" aria-label="流程示意">
+    <figcaption class="diagram-head">
+      <span class="diagram-head-row">
+        <span class="diagram-kicker">流程 · FLOW</span>
+        <span class="diagram-meta">6 个步骤</span>
+      </span>
+
+    </figcaption>
+    <ol class="flow-steps"><li>
+      <span class="flow-index" aria-hidden="true">01</span>
+      <span class="flow-text">量化</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">02</span>
+      <span class="flow-text">减排/增汇</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">03</span>
+      <span class="flow-text">抵消残余</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">04</span>
+      <span class="flow-text">报告</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">05</span>
+      <span class="flow-text">声明</span>
+
+    </li><li>
+      <span class="flow-index" aria-hidden="true">06</span>
+      <span class="flow-text">核查</span>
+
+    </li></ol>
+
+  </figure>
 <p>只买碳信用不减排，不符合标准；只减排不量化残余，也不能声明。碳中和声明必须建立在<strong>已实现</strong>的减排与抵消之上，不能做&quot;未来某年碳中和&quot;的承诺式声明。</p>
 <p><strong>碳中和管理计划（CNMP）至少包含</strong>：</p>
 <ul><li>声明主体与边界（组织/产品/活动，基准年）；</li><li>与 1.5°C 对齐的减排路径，含五年里程碑；</li><li>具体减排措施、责任部门、预算；</li><li>残余排放与抵消安排，逐步转向移除型信用；</li><li>监测、报告、核查与持续改进安排。</li></ul>
@@ -542,7 +576,9 @@ NPV = −初始投资 + Σ(年净现金流 / (1+r)^t)
   </aside>
 </div>
 
-<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
 </body>
