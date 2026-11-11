@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>辅助服务与平衡市场对照（2026 版）：从 FCR 到 FCAS，从 BM 到 EPRX | energy-skills 知识库</title>
-<meta name="description" content="把欧洲 FCR/aFRR/mFRR、英国 BM、意大利 MSD/MB、澳洲 FCAS、美国 Reg/RRS/FRP、日本 EPRX 放到同一张功能表：先分频率、备用、爬坡、电压与黑启动，再比采购、结算、储能资格与收入叠加。">
+<meta name="description" content="把欧洲 FCR/aFRR/mFRR、法国 MA、英国 BM、意大利 MSD/MB、澳洲 FCAS、美国 Reg/RRS/FRP、日本 EPRX 放到同一张功能表：先分频率、备用、爬坡、电压与黑启动，再比采购、结算、储能资格与收入叠加。">
 <link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
@@ -46,7 +46,7 @@
               <li class="on" aria-current="page"><a href="辅助服务与平衡市场对照-2026-11.html">辅助服务与平衡市场对照（2026 版）：从 FCR 到 FCAS，从 BM 到 EPRX</a></li>
               <li><a href="储能收益建模与数据源-2026-11.html">储能收益建模与数据源（2026 版）：从 5 分钟价格到 15 年现金流</a></li>
               <li><a href="跨国PPA与绿证-2026-11.html">跨国 PPA、绿证与 tolling（2026 版）：从 GO 到 merchant tail</a></li>
-              <li><a href="海外市场同口径快照与投决日历-2026-11.html">海外市场同口径快照与投决日历（2026 版）：十市场、七列口径、五张工单</a></li>
+              <li><a href="海外市场同口径快照与投决日历-2026-11.html">海外市场同口径快照与投决日历（2026 版）：十一市场、七列口径、五张工单</a></li>
     </ul>
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
@@ -70,10 +70,10 @@
     <header class="doc-head">
       <div class="kicker">07 / CROSS<i>知识模块</i></div>
       <h1 class="doc-title">辅助服务与平衡市场对照：从 FCR 到 FCAS，从 BM 到 EPRX（2026-11）</h1>
-      <p class="lede">把欧洲 FCR/aFRR/mFRR、英国 BM、意大利 MSD/MB、澳洲 FCAS、美国 Reg/RRS/FRP、日本 EPRX 放到同一张功能表：先分频率、备用、爬坡、电压与黑启动，再比采购、结算、储能资格与收入叠加。</p>
+      <p class="lede">把欧洲 FCR/aFRR/mFRR、法国 MA、英国 BM、意大利 MSD/MB、澳洲 FCAS、美国 Reg/RRS/FRP、日本 EPRX 放到同一张功能表：先分频率、备用、爬坡、电压与黑启动，再比采购、结算、储能资格与收入叠加。</p>
       <p class="hook">2026-11 · 频率 / 备用 / 爬坡 / 平衡</p>
-      <div class="tags"><span class="tag">辅助服务</span><span class="tag">平衡市场</span><span class="tag">FCR</span><span class="tag">aFRR</span><span class="tag">mFRR</span><span class="tag">FCAS</span><span class="tag">BM</span><span class="tag">EPRX</span></div>
-      <div class="doc-meta"><span>约 13.5k 字</span><span>阅读约 21 分钟</span><span>15 节</span><span>数据截止 2026-11-10</span></div>
+      <div class="tags"><span class="tag">辅助服务</span><span class="tag">平衡市场</span><span class="tag">FCR</span><span class="tag">aFRR</span><span class="tag">mFRR</span><span class="tag">MA</span><span class="tag">FCAS</span><span class="tag">BM</span><span class="tag">EPRX</span></div>
+      <div class="doc-meta"><span>约 14.9k 字</span><span>阅读约 24 分钟</span><span>15 节</span><span>数据截止 2026-11-11</span></div>
     </header>
 
     <details class="toc-mobile">
@@ -81,24 +81,24 @@
       <ol>
             <li class="lv2"><a href="#s1">0. 先分功能，再看国别</a></li>
             <li class="lv2"><a href="#s5">1. 欧洲：FCR/aFRR/mFRR 三层结构</a></li>
-            <li class="lv2"><a href="#s14">2. 澳大利亚：FCAS 的“时间尺度货架”</a></li>
-            <li class="lv2"><a href="#s18">3. 北美：三种辅助服务设计</a></li>
-            <li class="lv2"><a href="#s22">4. 日本：EPRX 的 ΔkW 市场</a></li>
-            <li class="lv2"><a href="#s25">5. 功能对照总表</a></li>
-            <li class="lv2"><a href="#s26">6. 市场对照总表</a></li>
-            <li class="lv2"><a href="#s27">7. 储能参与：资格、SOC 与机会成本</a></li>
-            <li class="lv2"><a href="#s32">8. 三个合成算例（D 级，仅演示方法）</a></li>
-            <li class="lv2"><a href="#s36">9. 十个坑</a></li>
-            <li class="lv2"><a href="#s37">10. 2026–2027 观察清单</a></li>
-            <li class="lv2"><a href="#s38">11. 官方来源与口径</a></li>
-            <li class="lv2"><a href="#s40">速查</a></li>
-            <li class="lv2"><a href="#s41">与技能和其他笔记的分工</a></li>
-            <li class="lv2"><a href="#s42">更新记录</a></li>
+            <li class="lv2"><a href="#s15">2. 澳大利亚：FCAS 的“时间尺度货架”</a></li>
+            <li class="lv2"><a href="#s19">3. 北美：三种辅助服务设计</a></li>
+            <li class="lv2"><a href="#s23">4. 日本：EPRX 的 ΔkW 市场</a></li>
+            <li class="lv2"><a href="#s26">5. 功能对照总表</a></li>
+            <li class="lv2"><a href="#s27">6. 市场对照总表</a></li>
+            <li class="lv2"><a href="#s28">7. 储能参与：资格、SOC 与机会成本</a></li>
+            <li class="lv2"><a href="#s33">8. 三个合成算例（D 级，仅演示方法）</a></li>
+            <li class="lv2"><a href="#s37">9. 十一个坑</a></li>
+            <li class="lv2"><a href="#s38">10. 2026–2027 观察清单</a></li>
+            <li class="lv2"><a href="#s39">11. 官方来源与口径</a></li>
+            <li class="lv2"><a href="#s41">速查</a></li>
+            <li class="lv2"><a href="#s42">与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s43">更新记录</a></li>
       </ol>
     </details>
 
     <article class="prose">
-<aside class="note note-head"><p>适用边界：只比较“系统服务怎么采购、怎么结算、储能怎么参与”，不展开各国现货出清、容量市场与并网许可。覆盖德国、英国、意大利、西班牙、荷兰、波兰、比利时、北欧、澳大利亚、美国 ERCOT/PJM/CAISO、日本。产品名称和规则变化快，具体以 TSO、交易所和监管机构的最新文件为准；本文不构成法律、税务或投资意见。</p><p>用途：回答“FCR 和 aFRR 差在哪”“英国 BM 是不是容量市场”“意大利 MSD 和 MB 怎么分”“澳洲 FCAS 为什么有 1 秒产品”“储能到底能卖哪几种服务”“辅助服务收入能不能和能量套利简单相加”六类问题。</p></aside>
+<aside class="note note-head"><p>适用边界：只比较“系统服务怎么采购、怎么结算、储能怎么参与”，不展开各国现货出清、容量市场与并网许可。覆盖德国、英国、意大利、西班牙、法国、荷兰、波兰、比利时、北欧、澳大利亚、美国 ERCOT/PJM/CAISO、日本。产品名称和规则变化快，具体以 TSO、交易所和监管机构的最新文件为准；本文不构成法律、税务或投资意见。</p><p>用途：回答“FCR 和 aFRR 差在哪”“英国 BM 是不是容量市场”“意大利 MSD 和 MB 怎么分”“澳洲 FCAS 为什么有 1 秒产品”“储能到底能卖哪几种服务”“辅助服务收入能不能和能量套利简单相加”六类问题。</p></aside>
 <hr>
 <h2 id="s1">0. 先分功能，再看国别</h2>
 <h3 id="s2">0.1 辅助服务的六个功能族</h3>
@@ -131,100 +131,103 @@
 <ul><li><strong>MSD 不是能量市场</strong>：它买调度服务，不是普通电量；报价要反映机会成本和技术约束。</li><li><strong>MB 是 MSD 的实时补充</strong>：具体产品、时间窗口和结算以 Terna 调度规则为准。</li><li><strong>储能要求</strong>：快速响应、SOC 管理、通信可靠性；中标容量不能随意用于能量套利。</li><li><strong>与 MACSE 的区别</strong>：MACSE 是储能容量拍卖，MSD/MB 是系统服务采购；两者可以叠加，但义务不同。</li></ul>
 <h3 id="s10">1.5 西班牙：二次/三次备用</h3>
 <ul><li><strong>REE 采购二次备用（aFRR）和三次备用（mFRR）</strong>，另有电压控制、黑启动等服务。</li><li><strong>容量与能量分开结算</strong>：容量费买“可用”，能量费买“实际调用”；只报容量不管理 SOC，会在连续调用时失约。</li><li><strong>不平衡结算 15 分钟</strong>：2024-12-01 起（CNMC 决议，BOE-A-2025-5342）。</li><li><strong>储能机会成本</strong>：预留 1 MW 备用，就少 1 MW 可用于能量套利；要用同一套优化模型比较。</li></ul>
-<h3 id="s11">1.6 荷兰：动态维度与 4 小时合同</h3>
+<h3 id="s11">1.6 法国：MA 与 FCR/aFRR/mFRR 三层</h3>
+<div class="table-wrap"><table><thead><tr><th>品种</th><th>规模/门槛</th><th>采购方式</th><th>储能资格</th></tr></thead><tbody><tr><td>MA 快速备用</td><td>响应 &lt;13 分钟</td><td>RTE 事前合同 + 激活报价</td><td>发用两侧开放</td></tr><tr><td>MA 补充备用</td><td>响应 &lt;30 分钟</td><td>RTE 事前合同 + 激活报价</td><td>发用两侧开放</td></tr><tr><td>FCR</td><td>约 540 MW</td><td>与 DE/AT/BE/NL/CH 联合周度招标</td><td>满足响应与持续时间</td></tr><tr><td>aFRR</td><td>500–1,180 MW</td><td>RTE 采购；&gt;120 MW 机组强制</td><td>满足响应与 SOC</td></tr><tr><td>mFRR</td><td>按需</td><td>RTE；能量经 MARI 跨境</td><td>满足响应与 SOC</td></tr><tr><td>偏差结算</td><td>全市场</td><td>RTE 不平衡结算</td><td>自任或委托平衡责任</td></tr></tbody></table></div>
+<ul><li><strong>MA 是法国版平衡机制</strong>：快速备用 &lt;13 分钟、补充备用 &lt;30 分钟，容量与激活电量分开；2026-01-01 起 &gt;10 MW 的 OA/CR 机组强制参加（A，RTE）。</li><li><strong>PICASSO/MARI 都已接入</strong>：法国 2025-04-04 接入 PICASSO，2026-04-16 接入 MARI（A，ENTSO-E）；跨境平台提高流动性，也把邻国价格带入法国平衡价。</li><li><strong>FCR 是联合采购</strong>：法国与德国、奥地利、比利时、荷兰、瑞士自 2017 年起联合周度招标，约 540 MW；不是法国单独定价。</li><li><strong>aFRR 有强制门槛</strong>：&gt;120 MW 机组必须提供；储能参与要看响应时间、SOC 和恢复时间。</li><li><strong>风光参与扩大</strong>：到 2026-06 约 22 GW 风光参与平衡；2026H1 调节量约 0.2 TWh，远高于 2025H1 的约 15 GWh（A，RTE）。</li><li><strong>与容量机制分开</strong>：PL-1/PL-4 买容量可用性，MA/FCR/aFRR/mFRR 买系统服务；同一 MW 不能重复卖满。</li></ul>
+<h3 id="s12">1.7 荷兰：动态维度与 4 小时合同</h3>
 <ul><li><strong>TenneT 采购 FCR/aFRR/mFRR</strong>；没有容量市场。</li><li><strong>aFRR 动态维度</strong>：自 2025-09 起，TenneT 采用动态维度（D-5 初值、D-1 06:00 确定、09:00 关闸）。</li><li><strong>4 小时合同</strong>：2025-11 起对 10% 的量采用 4 小时合同，计划 12 个月内扩展到全部（B）。</li><li><strong>mFRR</strong>：容量报价可不对称，最小 1 MW，按周/日招标（B）。</li><li><strong>FCR</strong>：对称、按日采购；储能要注意 SOC 与持续能力。</li><li><strong>不平衡结算 15 分钟</strong>：偏差按 15 分钟不平衡价结算。</li></ul>
-<h3 id="s12">1.7 波兰：PICASSO 已接入，MARI 待接入</h3>
+<h3 id="s13">1.8 波兰：PICASSO 已接入，MARI 待接入</h3>
 <ul><li><strong>PSE 采购 FCR/aFRR/mFRR/RR</strong>；2024-06-14 平衡市场改革后 15 分钟结算。</li><li><strong>PICASSO</strong>：PSE 于 2025 年 7 月前后接入（B）；aFRR 能量可跨境交换。</li><li><strong>MARI</strong>：接入时间以 PSE/ENTSO-E 公告为准；不要假设已经接入。</li><li><strong>TERRE</strong>：PSE 已于 2025-01-01 退出（A，ENTSO-E 公告）。</li><li><strong>aFRR 容量价格</strong>：2025 年均价约 181 PLN/MW·h（C，行业分析），在欧洲偏高；储能渗透率上升后可能回落。</li></ul>
-<h3 id="s13">1.8 比利时与北欧</h3>
+<h3 id="s14">1.9 比利时与北欧</h3>
 <p><strong>比利时</strong></p>
 <ul><li>Elia 采购 FCR/aFRR/mFRR；aFRR 于 2024 年接入 PICASSO（B）。</li><li>不平衡按 Elia 规则结算；储能可通过日内/平衡市场修正偏差。</li><li>战略储备与 CRM 是另外两套机制，不是辅助服务。</li></ul>
 <p><strong>北欧</strong></p>
 <div class="table-wrap"><table><thead><tr><th>产品</th><th>作用</th><th>特点</th></tr></thead><tbody><tr><td>FCR-N</td><td>正常运行频率控制</td><td>对称；储能可参与</td></tr><tr><td>FCR-D</td><td>扰动后频率控制</td><td>上/下分开；持续时间要求</td></tr><tr><td>aFRR</td><td>自动频率恢复</td><td>容量 + 能量</td></tr><tr><td>mFRR</td><td>人工/自动调度恢复</td><td>容量 + 能量</td></tr><tr><td>mFRR EAM</td><td>mFRR 能量激活市场</td><td>2025-03-04 上线；15 分钟</td></tr><tr><td>偏差结算</td><td>平衡责任主体偏差</td><td>2025-03-04 起 15 分钟</td></tr></tbody></table></div>
 <ul><li><strong>2025-03-04 是分水岭</strong>：北欧四国 TSO 启动新平衡市场，15 分钟结算替代小时制，mFRR 能量激活市场（EAM）上线（B）。</li><li><strong>不平衡价与现货价脱钩</strong>：改革前不平衡价与日前价在约 33% 的小时相同，改革后降到约 3%；平衡成本从约 1 €/MWh 升到 5–6 €/MWh（B/C，Montel/ACER 口径）。</li><li><strong>PICASSO 接入不统一</strong>：丹麦 2024-10、芬兰 2025-03 接入；瑞典、挪威预计更晚（B）。</li><li><strong>FCR-N/FCR-D 是北欧特色</strong>：储能参与要满足响应时间、持续能力和 SOC 要求。</li></ul>
 <hr>
-<h2 id="s14">2. 澳大利亚：FCAS 的“时间尺度货架”</h2>
-<h3 id="s15">2.1 产品结构</h3>
+<h2 id="s15">2. 澳大利亚：FCAS 的“时间尺度货架”</h2>
+<h3 id="s16">2.1 产品结构</h3>
 <div class="table-wrap"><table><thead><tr><th>品种</th><th>响应时间</th><th>方向</th><th>典型提供者</th></tr></thead><tbody><tr><td>Regulation raise/lower</td><td>秒级连续调节</td><td>涨/降</td><td>电池、水电、部分火电</td></tr><tr><td>1 秒极快 FCAS</td><td>1 秒</td><td>涨/降</td><td>电池、快速响应资源</td></tr><tr><td>6 秒 contingency</td><td>6 秒</td><td>涨/降</td><td>电池、水电、火电</td></tr><tr><td>60 秒 contingency</td><td>60 秒</td><td>涨/降</td><td>电池、水电、火电</td></tr><tr><td>5 分钟 contingency</td><td>5 分钟</td><td>涨/降</td><td>电池、水电、火电、需求响应</td></tr></tbody></table></div>
 <ul><li><strong>约 10 个 FCAS 品种</strong>：涨/降分开，时间尺度从 1 秒到 5 分钟；1 秒极快 FCAS 自 2023-10-09 起。</li><li><strong>具体品种/资格以 AEMO MASS 和现行 Procedure 为准</strong>；上表是量级，不是注册清单。</li><li><strong>涨/降分开</strong>：提供“升”不等于能提供“降”；电池的 SOC 决定它在两个方向的能力。</li><li><strong>FCAS 与能量共同优化</strong>：同一 MW 不能同时卖能量和 FCAS；机会成本要算清。</li></ul>
-<h3 id="s16">2.2 共同优化与机会成本</h3>
+<h3 id="s17">2.2 共同优化与机会成本</h3>
 <pre><code>电池 100 MW / 200 MWh
 ├─ 卖能量：放电价 × 电量
 ├─ 卖 FCAS：FCAS 价 × 预留 MW × 时间
 └─ 约束：SOC、功率、并网、FCAS 持续时间</code></pre>
 <ul><li><strong>FCAS 预留会减少可用能量</strong>：预留 10 MW 的 contingency，意味着这 10 MW 不能同时放电。</li><li><strong>FCAS 价格波动大</strong>：某些时段 FCAS 收益高于能量；但不能只看历史均价，要看同时段的机会成本。</li><li><strong>SOC 管理</strong>：FCAS 提供后可能改变 SOC；如果 SOC 不足，无法持续响应，会被考核/取消资格。</li></ul>
-<h3 id="s17">2.3 资格与测试</h3>
+<h3 id="s18">2.3 资格与测试</h3>
 <ul><li><strong>Prequalification</strong>：FCAS 提供者需要通过 AEMO 的资格测试，证明响应能力、持续时间、控制精度。</li><li><strong>MASS</strong>：Market Ancillary Service Specification 规定测试信号、响应要求、数据采集。</li><li><strong>持续响应</strong>：contingency FCAS 不是“瞬时一下”，需要按品种要求持续；电池容量和并网限值决定能否满足。</li><li><strong>合规</strong>：未按指令响应可能导致非 Conformance 处罚、资格暂停。</li></ul>
 <hr>
-<h2 id="s18">3. 北美：三种辅助服务设计</h2>
-<h3 id="s19">3.1 ERCOT：Reg + RRS + Non-Spin + ECRS</h3>
+<h2 id="s19">3. 北美：三种辅助服务设计</h2>
+<h3 id="s20">3.1 ERCOT：Reg + RRS + Non-Spin + ECRS</h3>
 <div class="table-wrap"><table><thead><tr><th>产品</th><th>作用</th><th>储能参与</th><th>要点</th></tr></thead><tbody><tr><td>Reg Up / Reg Down</td><td>调频</td><td>可</td><td>需满足响应与遥测要求</td></tr><tr><td>RRS（响应备用）</td><td>事故备用</td><td>可</td><td>通常要求 10 分钟内响应</td></tr><tr><td>Non-Spin</td><td>非旋转备用</td><td>可</td><td>启动时间要求较宽</td></tr><tr><td>ECRS</td><td>可调用应急备用</td><td>可</td><td>2023-06 上线</td></tr></tbody></table></div>
 <ul><li><strong>RTC+B</strong>：2025-12-05 起，实时能量与辅助服务联合优化并纳入电池 SOC；对电池可用容量、辅助服务中标和价格都有影响。</li><li><strong>调度 5 分钟、结算 15 分钟</strong>：SOC 与偏差要用 15 分钟颗粒度核对。</li><li><strong>没有容量市场</strong>：辅助服务是固定成本回收的一部分，但不是长期容量年金。</li></ul>
-<h3 id="s20">3.2 PJM：Reg + 同步备用 + 日前调度备用</h3>
+<h3 id="s21">3.2 PJM：Reg + 同步备用 + 日前调度备用</h3>
 <ul><li><strong>产品</strong>：调频（Regulation）、同步备用（Synchronized Reserve）、非同步备用（Non-Synchronized Reserve）、日前调度备用（DASR）、黑启动等。</li><li><strong>市场-based</strong>：辅助服务通过市场采购，价格随供需变化。</li><li><strong>容量性能另算</strong>：PJM 的容量市场（BRA）与辅助服务是两套机制；容量性能罚则不影响辅助服务结算。</li><li><strong>储能参与</strong>：需要满足响应时间、持续时间、遥测和考核要求；具体资格以 PJM 规则为准。</li></ul>
-<h3 id="s21">3.3 CAISO：Reg + Spin/Non-Spin + FRP</h3>
+<h3 id="s22">3.3 CAISO：Reg + Spin/Non-Spin + FRP</h3>
 <ul><li><strong>产品</strong>：Regulation Up/Down、Spinning Reserve、Non-Spinning Reserve、Flexible Ramping Product（FRP）。</li><li><strong>FRP 是爬坡产品</strong>：在 FMM/RTD 中采购，买的是“向上/向下爬坡能力”，不是能量或传统备用。</li><li><strong>结算粒度</strong>：FMM 15 分钟、RTD 5 分钟；储能 SOC 与偏差要按 5 分钟建模。</li><li><strong>RA 另算</strong>：RA 是资源充裕度义务，不是辅助服务；不要把 RA 收入与 FRP 收入混在一起。</li></ul>
 <hr>
-<h2 id="s22">4. 日本：EPRX 的 ΔkW 市场</h2>
-<h3 id="s23">4.1 产品与机制</h3>
+<h2 id="s23">4. 日本：EPRX 的 ΔkW 市场</h2>
+<h3 id="s24">4.1 产品与机制</h3>
 <div class="table-wrap"><table><thead><tr><th>商品</th><th>内容</th><th>2026 状态</th></tr></thead><tbody><tr><td>一次调整</td><td>频率响应</td><td>运行中</td></tr><tr><td>二次调整①②</td><td>跟随指令</td><td>运行中</td></tr><tr><td>三次调整①②</td><td>替代备用</td><td>运行中</td></tr><tr><td>复合商品</td><td>组合产品</td><td>运行中</td></tr></tbody></table></div>
 <ul><li><strong>计价</strong>：ΔkW 容量费 + kWh 电量费；容量费按 30 分钟结算。</li><li><strong>2026 年度迁移</strong>：周商品 30 分钟化/前日化；15 分钟粒度随“同时市场”推进（目标约 FY2028）。</li><li><strong>交易手续费</strong>：2026 年度 0.03→0.06 日元/ΔkW·30 分（C）。</li><li><strong>价格上限</strong>：2025 年度 19.51/7.21/无上限；2026-03-14 起降至 15.00；2026-09-01 起降至 10.00 日元/ΔkW·30 分（C）。</li></ul>
-<h3 id="s24">4.2 价格与储能</h3>
+<h3 id="s25">4.2 价格与储能</h3>
 <ul><li><strong>FY2024 平均落札单价</strong>：一次 3.10、二次① 3.21、二次② 2.67、三次① 2.69、三次② 3.30、复合 2.80 日元/ΔkW·30 分（C）。</li><li><strong>上限连续下调</strong>：单靠 ΔkW 收入的模型已不成立；必须叠加现货、容量市场与 LTDA。</li><li><strong>储能资格</strong>：需满足响应时间、持续时间、遥测与指令执行要求；不同商品门槛不同。</li><li><strong>策略</strong>：一次/二次调频适合电池，但容量费下降；三次与复合商品可与现货套利组合。</li><li><strong>风险</strong>：考核与指令不达标会扣减；30 分钟结算下，SOC 管理要留冗余。</li></ul>
 <hr>
-<h2 id="s25">5. 功能对照总表</h2>
+<h2 id="s26">5. 功能对照总表</h2>
 <div class="table-wrap"><table><thead><tr><th>功能族</th><th>欧洲</th><th>英国</th><th>意大利</th><th>澳洲</th><th>美国</th><th>日本</th></tr></thead><tbody><tr><td>快速频率响应</td><td>FCR</td><td>DC/DM/DR、SFR</td><td>MSD 调频</td><td>1 秒 FCAS</td><td>ERCOT Reg、CAISO Reg</td><td>一次调整</td></tr><tr><td>频率恢复</td><td>aFRR</td><td>DR、QR</td><td>MSD 调频/备用</td><td>Regulation FCAS</td><td>ERCOT Reg、PJM Reg、CAISO Reg</td><td>二次调整</td></tr><tr><td>备用/替代</td><td>mFRR</td><td>QR/SR/BR</td><td>MSD/MB 备用</td><td>6 秒/60 秒/5 分钟 FCAS</td><td>ERCOT RRS/Non-Spin/ECRS、PJM Sync/Non-Sync、CAISO Spin/Non-Spin</td><td>三次调整</td></tr><tr><td>爬坡</td><td>部分 aFRR/mFRR</td><td>部分 QR</td><td>MSD</td><td>5 分钟 FCAS</td><td>CAISO FRP</td><td>复合商品</td></tr><tr><td>电压/无功</td><td>各国 TSO 采购</td><td>电压服务</td><td>MSD 电压支撑</td><td>部分州/网络服务</td><td>各 ISO/RTO</td><td>电压调整</td></tr><tr><td>黑启动</td><td>各国 TSO</td><td>黑启动服务</td><td>Terna</td><td>部分州</td><td>PJM/CAISO/ERCOT</td><td>部分区域</td></tr><tr><td>需求响应</td><td>各国 DSR</td><td>DFS/LCM</td><td>MSD/MB</td><td>WDRM</td><td>各 ISO/RTO</td><td>需给调整/DR</td></tr></tbody></table></div>
 <aside class="note"><p>表中“部分”表示产品边界因国家/年份而异；不要把一个国家的产品一一对应到另一个国家。</p></aside>
 <hr>
-<h2 id="s26">6. 市场对照总表</h2>
-<div class="table-wrap"><table><thead><tr><th>市场</th><th>频率控制</th><th>备用</th><th>爬坡</th><th>平衡机制</th><th>结算粒度</th><th>储能资格</th></tr></thead><tbody><tr><td>德国</td><td>FCR/aFRR/mFRR</td><td>aFRR/mFRR</td><td>无独立产品</td><td>平衡组 + 不平衡结算</td><td>15 分钟</td><td>预审、1 MW、SOC</td></tr><tr><td>英国</td><td>DC/DM/DR、SFR</td><td>QR/SR/BR</td><td>部分</td><td>BM（pay-as-bid）</td><td>半小时</td><td>预审、BMU、SOC</td></tr><tr><td>意大利</td><td>MSD 调频</td><td>MSD/MB 备用</td><td>MSD</td><td>MSD + MB</td><td>15 分钟</td><td>BSP 预审、SOC</td></tr><tr><td>西班牙</td><td>aFRR</td><td>aFRR/mFRR</td><td>部分</td><td>REE 平衡市场</td><td>15 分钟</td><td>预审、SOC</td></tr><tr><td>荷兰</td><td>FCR/aFRR/mFRR</td><td>aFRR/mFRR</td><td>无独立产品</td><td>TenneT 平衡市场</td><td>15 分钟</td><td>预审、4h 合同</td></tr><tr><td>波兰</td><td>FCR/aFRR/mFRR</td><td>aFRR/mFRR/RR</td><td>部分</td><td>PSE 平衡市场</td><td>15 分钟</td><td>预审、SOC</td></tr><tr><td>比利时</td><td>FCR/aFRR/mFRR</td><td>aFRR/mFRR</td><td>部分</td><td>Elia 平衡市场</td><td>15 分钟</td><td>预审、SOC</td></tr><tr><td>北欧</td><td>FCR-N/FCR-D、aFRR</td><td>mFRR</td><td>部分</td><td>mFRR EAM</td><td>15 分钟</td><td>预审、SOC</td></tr><tr><td>澳洲</td><td>Regulation FCAS</td><td>6s/60s/5min FCAS</td><td>5min FCAS</td><td>能量+FCAS 联合优化</td><td>5 分钟</td><td>MASS 预审、SOC</td></tr><tr><td>ERCOT</td><td>Reg Up/Down</td><td>RRS/Non-Spin/ECRS</td><td>部分</td><td>RTC+B</td><td>15 分钟</td><td>预审、SOC</td></tr><tr><td>PJM</td><td>Regulation</td><td>Sync/Non-Sync/DASR</td><td>部分</td><td>辅助服务市场</td><td>按产品</td><td>预审、SOC</td></tr><tr><td>CAISO</td><td>Reg Up/Down</td><td>Spin/Non-Spin</td><td>FRP</td><td>FMM/RTD</td><td>5 分钟</td><td>预审、SOC</td></tr><tr><td>日本</td><td>一次调整</td><td>二次/三次调整</td><td>复合商品</td><td>EPRX</td><td>30 分钟</td><td>预审、SOC</td></tr></tbody></table></div>
+<h2 id="s27">6. 市场对照总表</h2>
+<div class="table-wrap"><table><thead><tr><th>市场</th><th>频率控制</th><th>备用</th><th>爬坡</th><th>平衡机制</th><th>结算粒度</th><th>储能资格</th></tr></thead><tbody><tr><td>德国</td><td>FCR/aFRR/mFRR</td><td>aFRR/mFRR</td><td>无独立产品</td><td>平衡组 + 不平衡结算</td><td>15 分钟</td><td>预审、1 MW、SOC</td></tr><tr><td>英国</td><td>DC/DM/DR、SFR</td><td>QR/SR/BR</td><td>部分</td><td>BM（pay-as-bid）</td><td>半小时</td><td>预审、BMU、SOC</td></tr><tr><td>意大利</td><td>MSD 调频</td><td>MSD/MB 备用</td><td>MSD</td><td>MSD + MB</td><td>15 分钟</td><td>BSP 预审、SOC</td></tr><tr><td>西班牙</td><td>aFRR</td><td>aFRR/mFRR</td><td>部分</td><td>REE 平衡市场</td><td>15 分钟</td><td>预审、SOC</td></tr><tr><td>法国</td><td>FCR/aFRR/mFRR</td><td>MA 快速/补充、aFRR/mFRR</td><td>无独立产品</td><td>MA + 不平衡结算</td><td>15 分钟</td><td>预审、SOC、BRP</td></tr><tr><td>荷兰</td><td>FCR/aFRR/mFRR</td><td>aFRR/mFRR</td><td>无独立产品</td><td>TenneT 平衡市场</td><td>15 分钟</td><td>预审、4h 合同</td></tr><tr><td>波兰</td><td>FCR/aFRR/mFRR</td><td>aFRR/mFRR/RR</td><td>部分</td><td>PSE 平衡市场</td><td>15 分钟</td><td>预审、SOC</td></tr><tr><td>比利时</td><td>FCR/aFRR/mFRR</td><td>aFRR/mFRR</td><td>部分</td><td>Elia 平衡市场</td><td>15 分钟</td><td>预审、SOC</td></tr><tr><td>北欧</td><td>FCR-N/FCR-D、aFRR</td><td>mFRR</td><td>部分</td><td>mFRR EAM</td><td>15 分钟</td><td>预审、SOC</td></tr><tr><td>澳洲</td><td>Regulation FCAS</td><td>6s/60s/5min FCAS</td><td>5min FCAS</td><td>能量+FCAS 联合优化</td><td>5 分钟</td><td>MASS 预审、SOC</td></tr><tr><td>ERCOT</td><td>Reg Up/Down</td><td>RRS/Non-Spin/ECRS</td><td>部分</td><td>RTC+B</td><td>15 分钟</td><td>预审、SOC</td></tr><tr><td>PJM</td><td>Regulation</td><td>Sync/Non-Sync/DASR</td><td>部分</td><td>辅助服务市场</td><td>按产品</td><td>预审、SOC</td></tr><tr><td>CAISO</td><td>Reg Up/Down</td><td>Spin/Non-Spin</td><td>FRP</td><td>FMM/RTD</td><td>5 分钟</td><td>预审、SOC</td></tr><tr><td>日本</td><td>一次调整</td><td>二次/三次调整</td><td>复合商品</td><td>EPRX</td><td>30 分钟</td><td>预审、SOC</td></tr></tbody></table></div>
 <hr>
-<h2 id="s27">7. 储能参与：资格、SOC 与机会成本</h2>
-<h3 id="s28">7.1 预审的五个环节</h3>
+<h2 id="s28">7. 储能参与：资格、SOC 与机会成本</h2>
+<h3 id="s29">7.1 预审的五个环节</h3>
 <ol><li><strong>注册主体</strong>：BSP/BMU/FCAS provider 等；需要税号、银行账户、担保。</li><li><strong>技术资格</strong>：响应时间、持续时间、爬坡率、控制精度、遥测。</li><li><strong>通信与控制</strong>：调度指令接收、执行确认、数据上传；不能只靠人工。</li><li><strong>计量与结算</strong>：表计精度、数据频率、对账规则。</li><li><strong>性能测试</strong>：部分市场要求现场测试或历史运行数据。</li></ol>
-<h3 id="s29">7.2 SOC 预留</h3>
+<h3 id="s30">7.2 SOC 预留</h3>
 <ul><li><strong>上调备用</strong>：需要保留充电空间；SOC 太低无法向上响应。</li><li><strong>下调备用</strong>：需要保留放电空间；SOC 太高无法向下响应。</li><li><strong>持续时间</strong>：FCR 可能要求 15–30 分钟；mFRR 可能要求更长；电池要按产品要求配置。</li><li><strong>连续调用</strong>：一次调用后 SOC 可能偏离，需要时间恢复；恢复期间可能失去资格。</li></ul>
-<h3 id="s30">7.3 机会成本</h3>
+<h3 id="s31">7.3 机会成本</h3>
 <pre><code>辅助服务净收益 = 容量费 + 能量费 - 能量套利机会成本 - 循环退化成本 - 考核风险</code></pre>
 <ul><li><strong>能量套利机会成本</strong>：预留 1 MW 备用，就少 1 MW 可用于能量市场；要用同一套优化模型比较。</li><li><strong>循环退化成本</strong>：高频调频可能比能量套利更伤电池；要把退化成本计入报价。</li><li><strong>考核风险</strong>：未按指令响应会被扣减/罚款；报价要覆盖考核风险。</li></ul>
-<h3 id="s31">7.4 收入叠加冲突</h3>
+<h3 id="s32">7.4 收入叠加冲突</h3>
 <ul><li><strong>辅助服务 vs 能量</strong>：同一 MW 不能同时满额卖能量和备用；SOC 也要共享。</li><li><strong>辅助服务 vs 容量市场</strong>：容量中标要求可用性；辅助服务调用可能影响容量履约。</li><li><strong>辅助服务 vs 补贴</strong>：部分补贴按发电量/可用性计算，辅助服务收入可能影响补贴；以规则为准。</li><li><strong>辅助服务 vs 退休/更换</strong>：频繁调用加速退化，15 年合同期内可能要增容。</li></ul>
 <hr>
-<h2 id="s32">8. 三个合成算例（D 级，仅演示方法）</h2>
-<h3 id="s33">8.1 德国 FCR</h3>
+<h2 id="s33">8. 三个合成算例（D 级，仅演示方法）</h2>
+<h3 id="s34">8.1 德国 FCR</h3>
 <p>假设：10 MW 参与 FCR，容量价格 5 €/MW/h，可用 20 小时/日，330 天；能量不单独支付。</p>
 <pre><code>年容量收入 = 10 MW × 5 €/MW/h × 20 h/日 × 330 日 = €330,000</code></pre>
 <ul><li>未计：预审成本、SOC 预留、考核、退化；FCR 是 4 小时产品，实际可用时段要与产品匹配。</li></ul>
-<h3 id="s34">8.2 澳洲 FCAS</h3>
+<h3 id="s35">8.2 澳洲 FCAS</h3>
 <p>假设：100 MW/200 MWh 电池，预留 10 MW 做 contingency FCAS，FCAS 价格 3 A$/MW/h，全年可用。</p>
 <pre><code>年 FCAS 收入 = 10 MW × 3 A$/MW/h × 8,760 h = A$262,800</code></pre>
 <ul><li>未计：能量套利机会成本、SOC 管理、资格测试、考核；FCAS 价格波动大，不能用均价外推。</li></ul>
-<h3 id="s35">8.3 日本 EPRX</h3>
+<h3 id="s36">8.3 日本 EPRX</h3>
 <p>假设：10 MW 参与二次调整①，价格 3.21 日元/ΔkW·30 分，全年全容量中标。</p>
 <pre><code>年容量收入 = 10,000 kW × 3.21 日元/kW·30 分 × 48 × 365 = ¥562,392,000</code></pre>
 <ul><li>未计：中标率、考核、上限下调、能量调用；实际收入远低于“全容量全年中标”的理论值。</li></ul>
 <aside class="note"><p>三个算例只用于说明公式和量级，不是项目预测。辅助服务收入要扣机会成本、退化、考核和预审成本。</p></aside>
 <hr>
-<h2 id="s36">9. 十个坑</h2>
-<ol><li><strong>把辅助服务当容量市场</strong>：辅助服务按调用/可用性付费，不是长期容量年金。</li><li><strong>把 FCR 当能量产品</strong>：FCR 通常只付容量，不单独付能量。</li><li><strong>忽略 SOC 和持续时间</strong>：电池响应快，但持续能力有限；连续调用会失约。</li><li><strong>用小时模型做 15 分钟结算</strong>：欧洲多数市场已 15 分钟；澳洲/CAISO 更细。</li><li><strong>把 PICASSO/MARI 当产品</strong>：它们是能量激活平台，不是统一产品。</li><li><strong>把 pay-as-bid 当统一价</strong>：英国 BM、意大利 MB 按报价结算；报价策略不同。</li><li><strong>忽略 performance penalty</strong>：未按指令响应会被扣减/罚款；报价要覆盖考核风险。</li><li><strong>把频率响应和备用混为一谈</strong>：响应时间、持续时间、考核都不同。</li><li><strong>把不同国家的产品一一对应</strong>：FCR ≠ DC ≠ 1 秒 FCAS；产品设计不同。</li><li><strong>忽略退化/循环成本</strong>：高频调频可能比能量套利更伤电池；要把退化计入报价。</li></ol>
+<h2 id="s37">9. 十一个坑</h2>
+<ol><li><strong>把辅助服务当容量市场</strong>：辅助服务按调用/可用性付费，不是长期容量年金。</li><li><strong>把 FCR 当能量产品</strong>：FCR 通常只付容量，不单独付能量。</li><li><strong>忽略 SOC 和持续时间</strong>：电池响应快，但持续能力有限；连续调用会失约。</li><li><strong>用小时模型做 15 分钟结算</strong>：欧洲多数市场已 15 分钟；澳洲/CAISO 更细。</li><li><strong>把 PICASSO/MARI 当产品</strong>：它们是能量激活平台，不是统一产品。</li><li><strong>把 pay-as-bid 当统一价</strong>：英国 BM、意大利 MB 按报价结算；报价策略不同。</li><li><strong>忽略 performance penalty</strong>：未按指令响应会被扣减/罚款；报价要覆盖考核风险。</li><li><strong>把频率响应和备用混为一谈</strong>：响应时间、持续时间、考核都不同。</li><li><strong>把不同国家的产品一一对应</strong>：FCR ≠ DC ≠ 1 秒 FCAS；产品设计不同。</li><li><strong>忽略退化/循环成本</strong>：高频调频可能比能量套利更伤电池；要把退化计入报价。</li><li><strong>把法国 FCR 当本国独立定价</strong>：法国 FCR 与 DE/AT/BE/NL/CH 联合周度招标，约 540 MW；价格是联合出清结果，不能拿法国历史均价外推。</li></ol>
 <hr>
-<h2 id="s37">10. 2026–2027 观察清单</h2>
-<ol><li><strong>PICASSO/MARI</strong>：接入国家数量、跨境价格、国内出清关系；MARI 在波兰/北欧的进度。</li><li><strong>15 分钟 MTU</strong>：欧洲日前/日内/不平衡的全面落地；旧小时模型退役。</li><li><strong>英国 REMA/BM 改革</strong>：BM 跳过率、产品整合、DFS 扩展。</li><li><strong>澳洲 FCAS</strong>：1 秒极快 FCAS 的流动性、价格波动、电池占比。</li><li><strong>ERCOT RTC+B</strong>：上线后的辅助服务价格、电池中标、SOC 管理。</li><li><strong>PJM 辅助服务</strong>：调频/备用价格、储能参与、容量性能互动。</li><li><strong>CAISO FRP</strong>：爬坡产品的价格、储能资格、与 RA 的关系。</li><li><strong>日本 EPRX</strong>：上限下调后的价格、15 分钟粒度、储能中标。</li><li><strong>储能渗透率</strong>：FCR/aFRR/FCAS 价格随电池增多而下降；用衰减情景。</li><li><strong>退化与更换</strong>：高频辅助服务对电池寿命的影响；15 年合同期内的增容策略。</li></ol>
+<h2 id="s38">10. 2026–2027 观察清单</h2>
+<ol><li><strong>PICASSO/MARI</strong>：接入国家数量、跨境价格、国内出清关系；MARI 在波兰/北欧的进度。</li><li><strong>15 分钟 MTU</strong>：欧洲日前/日内/不平衡的全面落地；旧小时模型退役。</li><li><strong>法国 MA</strong>：&gt;10 MW 强制参与的执行；风光参与扩大后平衡市场流动性与价格；PICASSO/MARI 接入后的跨境价格传导。</li><li><strong>英国 REMA/BM 改革</strong>：BM 跳过率、产品整合、DFS 扩展。</li><li><strong>澳洲 FCAS</strong>：1 秒极快 FCAS 的流动性、价格波动、电池占比。</li><li><strong>ERCOT RTC+B</strong>：上线后的辅助服务价格、电池中标、SOC 管理。</li><li><strong>PJM 辅助服务</strong>：调频/备用价格、储能参与、容量性能互动。</li><li><strong>CAISO FRP</strong>：爬坡产品的价格、储能资格、与 RA 的关系。</li><li><strong>日本 EPRX</strong>：上限下调后的价格、15 分钟粒度、储能中标。</li><li><strong>储能渗透率</strong>：FCR/aFRR/FCAS 价格随电池增多而下降；用衰减情景。</li><li><strong>退化与更换</strong>：高频辅助服务对电池寿命的影响；15 年合同期内的增容策略。</li></ol>
 <hr>
-<h2 id="s38">11. 官方来源与口径</h2>
+<h2 id="s39">11. 官方来源与口径</h2>
 <aside class="note"><p>以下链接在 2026-11 做过可达性检查；规则/数据以官网最新版本为准。无法稳定访问的页面注明状态，仅作查证入口。</p></aside>
-<div class="table-wrap"><table><thead><tr><th>来源</th><th>用途</th><th>级别</th><th>链接状态</th></tr></thead><tbody><tr><td>ENTSO-E · PICASSO</td><td>aFRR 能量平台</td><td>A</td><td><a href="https://www.entsoe.eu/network_codes/eb/picasso/" target="_blank" rel="noopener">https://www.entsoe.eu/network_codes/eb/picasso/</a></td></tr><tr><td>ENTSO-E · MARI</td><td>mFRR 能量平台</td><td>A</td><td><a href="https://www.entsoe.eu/network_codes/eb/mari/" target="_blank" rel="noopener">https://www.entsoe.eu/network_codes/eb/mari/</a></td></tr><tr><td>ENTSO-E · TERRE</td><td>RR 平台</td><td>A</td><td><a href="https://www.entsoe.eu/network_codes/eb/terre/" target="_blank" rel="noopener">https://www.entsoe.eu/network_codes/eb/terre/</a></td></tr><tr><td>ACER · 官网</td><td>欧盟平衡市场/监管</td><td>A</td><td><a href="https://www.acer.europa.eu/" target="_blank" rel="noopener">https://www.acer.europa.eu/</a></td></tr><tr><td>regelleistung.net · 招标与报价</td><td>德国平衡市场产品/时间线/定价</td><td>A</td><td><a href="https://www.regelleistung.net/en-us/Become-a-balancing-service-provider/Tendering-and-bidding-process" target="_blank" rel="noopener">https://www.regelleistung.net/en-us/Become-a-balancing-service-provider/Tendering-and-bidding-process</a></td></tr><tr><td>NESO · 官网</td><td>英国 BM、辅助服务</td><td>A</td><td><code>neso.energy</code>（自动访问返回 403）</td></tr><tr><td>Elexon · 官网</td><td>BSC、BOALF、结算</td><td>A</td><td><code>elexon.co.uk</code>（自动访问返回 403）</td></tr><tr><td>Terna · 官网</td><td>MSD/MB、调度</td><td>A</td><td><a href="https://www.terna.it/" target="_blank" rel="noopener">https://www.terna.it/</a></td></tr><tr><td>GME · 官网</td><td>MSD 平台、市场规则</td><td>A</td><td><code>gme.it</code>（自动访问失败）</td></tr><tr><td>REE · 官网</td><td>西班牙平衡市场/辅助服务</td><td>A</td><td><code>ree.es</code>（自动访问返回 403）</td></tr><tr><td>TenneT · 官网</td><td>荷兰平衡市场/辅助服务</td><td>A</td><td><code>tennet.eu</code>（自动访问返回 403）</td></tr><tr><td>PSE · 平衡市场参与</td><td>波兰 POB/DUB 角色</td><td>A</td><td><a href="https://www.pse.pl/obszary-dzialalnosci/uslugi-przesylania-energii-elektrycznej-udzial-w-rynku-bilansujacym" target="_blank" rel="noopener">https://www.pse.pl/obszary-dzialalnosci/uslugi-przesylania-energii-elektrycznej-udzial-w-rynku-bilansujacym</a></td></tr><tr><td>Elia · 官网</td><td>比利时平衡市场/辅助服务</td><td>A</td><td><code>elia.be</code>（自动访问返回 403）</td></tr><tr><td>Svenska kraftnät · 官网</td><td>瑞典平衡/effektreserv</td><td>A</td><td><a href="https://www.svk.se/" target="_blank" rel="noopener">https://www.svk.se/</a></td></tr><tr><td>Fingrid · 官网</td><td>芬兰平衡/容量储备</td><td>A</td><td><a href="https://www.fingrid.fi/" target="_blank" rel="noopener">https://www.fingrid.fi/</a></td></tr><tr><td>AEMO · NEM 入口</td><td>澳洲 FCAS/注册</td><td>A</td><td><code>aemo.com.au</code>（自动访问受限）</td></tr><tr><td>ERCOT · 市场规则</td><td>Reg/RRS/ECRS、RTC+B</td><td>A</td><td><a href="https://www.ercot.com/mktrules/nprotocols" target="_blank" rel="noopener">https://www.ercot.com/mktrules/nprotocols</a></td></tr><tr><td>PJM · 官网</td><td>辅助服务、容量市场</td><td>A</td><td><a href="https://www.pjm.com/" target="_blank" rel="noopener">https://www.pjm.com/</a></td></tr><tr><td>CAISO · 官网</td><td>Reg/Spin/FRP、RA</td><td>A</td><td><a href="https://www.caiso.com/" target="_blank" rel="noopener">https://www.caiso.com/</a></td></tr><tr><td>EPRX · 官网</td><td>日本需给调整市场商品与结果</td><td>A</td><td><a href="https://www.eprx.or.jp/" target="_blank" rel="noopener">https://www.eprx.or.jp/</a></td></tr><tr><td>OCCTO · 官网</td><td>日本广域调度/容量市场</td><td>A</td><td><a href="https://www.occto.or.jp/" target="_blank" rel="noopener">https://www.occto.or.jp/</a></td></tr></tbody></table></div>
-<h3 id="s39">口径提醒</h3>
-<ul><li><strong>价格</strong>：FCR/aFRR/mFRR 多为 €/MW·h 或 €/MW·4h；英国 BM 为 £/MWh；澳洲 FCAS 为 A$/MW/h；ERCOT/PJM/CAISO 为 $/MW·h 或 $/MW-day；日本 EPRX 为 日元/ΔkW·30 分。不要混用。</li><li><strong>粒度</strong>：欧洲 15 分钟、澳洲 5 分钟、ERCOT 调度 5 分钟/结算 15 分钟、CAISO 5 分钟、日本 30 分钟。</li><li><strong>容量 vs 能量</strong>：FCR 通常只有容量；aFRR/mFRR 容量+能量；澳洲 FCAS 与能量联合优化。</li><li><strong>资格</strong>：储能参与前要预审、通信测试、计量；只注册现货不等于能提供辅助服务。</li><li><strong>数据缺口</strong>：PICASSO/MARI 的接入国家数量、部分国家辅助服务价格、储能中标数据仍在变化，本文标注 B/C 或以公告为准。</li></ul>
+<div class="table-wrap"><table><thead><tr><th>来源</th><th>用途</th><th>级别</th><th>链接状态</th></tr></thead><tbody><tr><td>ENTSO-E · PICASSO</td><td>aFRR 能量平台</td><td>A</td><td><a href="https://www.entsoe.eu/network_codes/eb/picasso/" target="_blank" rel="noopener">https://www.entsoe.eu/network_codes/eb/picasso/</a></td></tr><tr><td>ENTSO-E · MARI</td><td>mFRR 能量平台</td><td>A</td><td><a href="https://www.entsoe.eu/network_codes/eb/mari/" target="_blank" rel="noopener">https://www.entsoe.eu/network_codes/eb/mari/</a></td></tr><tr><td>ENTSO-E · TERRE</td><td>RR 平台</td><td>A</td><td><a href="https://www.entsoe.eu/network_codes/eb/terre/" target="_blank" rel="noopener">https://www.entsoe.eu/network_codes/eb/terre/</a></td></tr><tr><td>ACER · 官网</td><td>欧盟平衡市场/监管</td><td>A</td><td><a href="https://www.acer.europa.eu/" target="_blank" rel="noopener">https://www.acer.europa.eu/</a></td></tr><tr><td>regelleistung.net · 招标与报价</td><td>德国平衡市场产品/时间线/定价</td><td>A</td><td><a href="https://www.regelleistung.net/en-us/Become-a-balancing-service-provider/Tendering-and-bidding-process" target="_blank" rel="noopener">https://www.regelleistung.net/en-us/Become-a-balancing-service-provider/Tendering-and-bidding-process</a></td></tr><tr><td>NESO · 官网</td><td>英国 BM、辅助服务</td><td>A</td><td><code>neso.energy</code>（自动访问返回 403）</td></tr><tr><td>Elexon · 官网</td><td>BSC、BOALF、结算</td><td>A</td><td><code>elexon.co.uk</code>（自动访问返回 403）</td></tr><tr><td>Terna · 官网</td><td>MSD/MB、调度</td><td>A</td><td><a href="https://www.terna.it/" target="_blank" rel="noopener">https://www.terna.it/</a></td></tr><tr><td>GME · 官网</td><td>MSD 平台、市场规则</td><td>A</td><td><code>gme.it</code>（自动访问失败）</td></tr><tr><td>REE · 官网</td><td>西班牙平衡市场/辅助服务</td><td>A</td><td><code>ree.es</code>（自动访问返回 403）</td></tr><tr><td>RTE · Bilan H1 2026</td><td>法国 MA、平衡数据、并网改革</td><td>A</td><td><a href="https://assets.rte-france.com/prod/public/2026-07/2026-07-16-bilan-semestre1.pdf" target="_blank" rel="noopener">https://assets.rte-france.com/prod/public/2026-07/2026-07-16-bilan-semestre1.pdf</a></td></tr><tr><td>CRE · 系统服务与 MA</td><td>法国 FCR/aFRR/mFRR、MA 规则</td><td>A</td><td><a href="https://www.cre.fr/electricite/reseaux-delectricite/services-systeme-et-mecanisme-dajustement.html" target="_blank" rel="noopener">https://www.cre.fr/electricite/reseaux-delectricite/services-systeme-et-mecanisme-dajustement.html</a></td></tr><tr><td>TenneT · 官网</td><td>荷兰平衡市场/辅助服务</td><td>A</td><td><code>tennet.eu</code>（自动访问返回 403）</td></tr><tr><td>PSE · 平衡市场参与</td><td>波兰 POB/DUB 角色</td><td>A</td><td><a href="https://www.pse.pl/obszary-dzialalnosci/uslugi-przesylania-energii-elektrycznej-udzial-w-rynku-bilansujacym" target="_blank" rel="noopener">https://www.pse.pl/obszary-dzialalnosci/uslugi-przesylania-energii-elektrycznej-udzial-w-rynku-bilansujacym</a></td></tr><tr><td>Elia · 官网</td><td>比利时平衡市场/辅助服务</td><td>A</td><td><code>elia.be</code>（自动访问返回 403）</td></tr><tr><td>Svenska kraftnät · 官网</td><td>瑞典平衡/effektreserv</td><td>A</td><td><a href="https://www.svk.se/" target="_blank" rel="noopener">https://www.svk.se/</a></td></tr><tr><td>Fingrid · 官网</td><td>芬兰平衡/容量储备</td><td>A</td><td><a href="https://www.fingrid.fi/" target="_blank" rel="noopener">https://www.fingrid.fi/</a></td></tr><tr><td>AEMO · NEM 入口</td><td>澳洲 FCAS/注册</td><td>A</td><td><code>aemo.com.au</code>（自动访问受限）</td></tr><tr><td>ERCOT · 市场规则</td><td>Reg/RRS/ECRS、RTC+B</td><td>A</td><td><a href="https://www.ercot.com/mktrules/nprotocols" target="_blank" rel="noopener">https://www.ercot.com/mktrules/nprotocols</a></td></tr><tr><td>PJM · 官网</td><td>辅助服务、容量市场</td><td>A</td><td><a href="https://www.pjm.com/" target="_blank" rel="noopener">https://www.pjm.com/</a></td></tr><tr><td>CAISO · 官网</td><td>Reg/Spin/FRP、RA</td><td>A</td><td><a href="https://www.caiso.com/" target="_blank" rel="noopener">https://www.caiso.com/</a></td></tr><tr><td>EPRX · 官网</td><td>日本需给调整市场商品与结果</td><td>A</td><td><a href="https://www.eprx.or.jp/" target="_blank" rel="noopener">https://www.eprx.or.jp/</a></td></tr><tr><td>OCCTO · 官网</td><td>日本广域调度/容量市场</td><td>A</td><td><a href="https://www.occto.or.jp/" target="_blank" rel="noopener">https://www.occto.or.jp/</a></td></tr></tbody></table></div>
+<h3 id="s40">口径提醒</h3>
+<ul><li><strong>价格</strong>：FCR/aFRR/mFRR 多为 €/MW·h 或 €/MW·4h；法国 MA 为事前容量合同 + 激活电量报价（以 RTE 规则为准）；英国 BM 为 £/MWh；澳洲 FCAS 为 A$/MW/h；ERCOT/PJM/CAISO 为 $/MW·h 或 $/MW-day；日本 EPRX 为 日元/ΔkW·30 分。不要混用。</li><li><strong>粒度</strong>：欧洲 15 分钟、澳洲 5 分钟、ERCOT 调度 5 分钟/结算 15 分钟、CAISO 5 分钟、日本 30 分钟。</li><li><strong>容量 vs 能量</strong>：FCR 通常只有容量；aFRR/mFRR 容量+能量；法国 MA 容量合同与激活电量分开；澳洲 FCAS 与能量联合优化。</li><li><strong>资格</strong>：储能参与前要预审、通信测试、计量；法国 2026-01-01 起 &gt;10 MW 的 OA/CR 机组强制参加 MA；只注册现货不等于能提供辅助服务。</li><li><strong>数据缺口</strong>：PICASSO/MARI 的接入国家数量、部分国家辅助服务价格、储能中标数据仍在变化，本文标注 B/C 或以公告为准。</li></ul>
 <hr>
-<h2 id="s40">速查</h2>
-<div class="table-wrap"><table><thead><tr><th>问题</th><th>先看</th><th>关键结论</th><th>依据</th></tr></thead><tbody><tr><td>FCR 和 aFRR 差在哪</td><td>§1.1</td><td>FCR 秒级对称、仅容量；aFRR 容量+能量</td><td>ENTSO-E</td></tr><tr><td>PICASSO 是什么</td><td>§1.1</td><td>aFRR 能量激活平台，不是产品</td><td>ENTSO-E</td></tr><tr><td>英国 BM 是容量市场吗</td><td>§1.3</td><td>不是；BM 买实时平衡能量</td><td>NESO/Elexon</td></tr><tr><td>意大利 MSD 和 MB 怎么分</td><td>§1.4</td><td>MSD 偏事前调度，MB 偏实时平衡</td><td>Terna/GME</td></tr><tr><td>澳洲 FCAS 有几个品种</td><td>§2.1</td><td>约 10 个，1 秒到 5 分钟</td><td>AEMO</td></tr><tr><td>ERCOT 有哪些辅助服务</td><td>§3.1</td><td>Reg/RRS/Non-Spin/ECRS；RTC+B</td><td>ERCOT</td></tr><tr><td>CAISO FRP 是什么</td><td>§3.3</td><td>爬坡产品，不是能量/备用</td><td>CAISO</td></tr><tr><td>日本 EPRX 怎么计价</td><td>§4.1</td><td>ΔkW 容量费 + kWh 能量费；30 分钟</td><td>EPRX</td></tr><tr><td>储能怎么参与</td><td>§7</td><td>预审、通信、计量、SOC 预留</td><td>本文</td></tr><tr><td>最常见的坑</td><td>§9</td><td>把辅助服务当容量、忽略 SOC、单位混用</td><td>本文</td></tr></tbody></table></div>
+<h2 id="s41">速查</h2>
+<div class="table-wrap"><table><thead><tr><th>问题</th><th>先看</th><th>关键结论</th><th>依据</th></tr></thead><tbody><tr><td>FCR 和 aFRR 差在哪</td><td>§1.1</td><td>FCR 秒级对称、仅容量；aFRR 容量+能量</td><td>ENTSO-E</td></tr><tr><td>PICASSO 是什么</td><td>§1.1</td><td>aFRR 能量激活平台，不是产品</td><td>ENTSO-E</td></tr><tr><td>英国 BM 是容量市场吗</td><td>§1.3</td><td>不是；BM 买实时平衡能量</td><td>NESO/Elexon</td></tr><tr><td>意大利 MSD 和 MB 怎么分</td><td>§1.4</td><td>MSD 偏事前调度，MB 偏实时平衡</td><td>Terna/GME</td></tr><tr><td>法国 MA 是什么</td><td>§1.6</td><td>快速 &lt;13 分钟、补充 &lt;30 分钟；容量+激活</td><td>RTE/CRE</td></tr><tr><td>澳洲 FCAS 有几个品种</td><td>§2.1</td><td>约 10 个，1 秒到 5 分钟</td><td>AEMO</td></tr><tr><td>ERCOT 有哪些辅助服务</td><td>§3.1</td><td>Reg/RRS/Non-Spin/ECRS；RTC+B</td><td>ERCOT</td></tr><tr><td>CAISO FRP 是什么</td><td>§3.3</td><td>爬坡产品，不是能量/备用</td><td>CAISO</td></tr><tr><td>日本 EPRX 怎么计价</td><td>§4.1</td><td>ΔkW 容量费 + kWh 能量费；30 分钟</td><td>EPRX</td></tr><tr><td>储能怎么参与</td><td>§7</td><td>预审、通信、计量、SOC 预留</td><td>本文</td></tr><tr><td>最常见的坑</td><td>§9</td><td>把辅助服务当容量、忽略 SOC、单位混用</td><td>本文</td></tr></tbody></table></div>
 <hr>
-<h2 id="s41">与技能和其他笔记的分工</h2>
-<div class="table-wrap"><table><thead><tr><th>主题</th><th>本文</th><th>电力交易技能</th><th>其他笔记</th></tr></thead><tbody><tr><td>辅助服务横向对照</td><td>主责</td><td>概述</td><td>各市场模块（单市场细节）</td></tr><tr><td>平衡市场机制</td><td>主责（对照）</td><td>概述</td><td>德国/英国/意大利/西班牙/荷兰/波兰/比利时/北欧模块</td></tr><tr><td>储能参与/预审</td><td>概述</td><td>概述</td><td>储能 EMS 调度模块（SOC/优化）</td></tr><tr><td>容量市场</td><td>概述</td><td>概述</td><td>容量机制横向对照模块</td></tr><tr><td>现货报价</td><td>概述</td><td>主责</td><td>现货报价量化模块</td></tr></tbody></table></div>
+<h2 id="s42">与技能和其他笔记的分工</h2>
+<div class="table-wrap"><table><thead><tr><th>主题</th><th>本文</th><th>电力交易技能</th><th>其他笔记</th></tr></thead><tbody><tr><td>辅助服务横向对照</td><td>主责</td><td>概述</td><td>各市场模块（单市场细节）</td></tr><tr><td>平衡市场机制</td><td>主责（对照）</td><td>概述</td><td>德国/英国/意大利/西班牙/法国/荷兰/波兰/比利时/北欧模块</td></tr><tr><td>储能参与/预审</td><td>概述</td><td>概述</td><td>储能 EMS 调度模块（SOC/优化）</td></tr><tr><td>容量市场</td><td>概述</td><td>概述</td><td>容量机制横向对照模块</td></tr><tr><td>现货报价</td><td>概述</td><td>主责</td><td>现货报价量化模块</td></tr></tbody></table></div>
 <ul><li><strong>本文是“辅助服务对照表”</strong>：遇到“某市场有哪些辅助服务、怎么结算、储能能不能参与”，先看这里。</li><li><strong>遇到单市场规则</strong>：回到对应国别模块；本文只做横向比较。</li><li><strong>遇到 SOC/调度优化</strong>：查《储能 EMS 优化调度》模块；本文只讲市场资格与收入。</li><li><strong>遇到容量收入</strong>：查《容量机制横向对照》；辅助服务与容量市场是两个收入池，不能混算。</li></ul>
 <hr>
-<h2 id="s42">更新记录</h2>
-<div class="table-wrap"><table><thead><tr><th>日期</th><th>内容</th></tr></thead><tbody><tr><td>2026-11-10</td><td>首版：新增辅助服务与平衡市场横向对照；覆盖欧洲 FCR/aFRR/mFRR、PICASSO/MARI、英国 BM、意大利 MSD/MB、西班牙二次/三次备用、荷兰/波兰/比利时/北欧平衡市场、澳洲 FCAS、美国 ERCOT/PJM/CAISO、日本 EPRX；含功能分类、市场对照、储能资格与三个合成算例</td></tr></tbody></table></div>
+<h2 id="s43">更新记录</h2>
+<div class="table-wrap"><table><thead><tr><th>日期</th><th>内容</th></tr></thead><tbody><tr><td>2026-11-11</td><td>法国接入：新增 §1.6 MA 与 FCR/aFRR/mFRR；市场对照表、坑（11 个）、观察清单、来源、口径与速查同步；补充法国 FCR 联合招标口径</td></tr><tr><td>2026-11-10</td><td>首版：新增辅助服务与平衡市场横向对照；覆盖欧洲 FCR/aFRR/mFRR、PICASSO/MARI、英国 BM、意大利 MSD/MB、西班牙二次/三次备用、荷兰/波兰/比利时/北欧平衡市场、澳洲 FCAS、美国 ERCOT/PJM/CAISO、日本 EPRX；含功能分类、市场对照、储能资格与三个合成算例</td></tr></tbody></table></div>
     </article>
 
     <section class="related" aria-label="相关模块">
@@ -237,6 +240,7 @@
         <li><a href="英国电力市场-2026-11.html">英国电力市场（2026 版）</a></li>
         <li><a href="意大利电力市场-2026-11.html">意大利电力市场（2026 版）</a></li>
         <li><a href="西班牙电力市场-2026-11.html">西班牙电力市场（2026 版）</a></li>
+        <li><a href="法国电力市场-2026-11.html">法国电力市场（2026 版）：核电、ARENH 退场与容量机制</a></li>
         <li><a href="荷兰电力市场-2026-11.html">荷兰电力市场（2026 版）</a></li>
         <li><a href="波兰电力市场-2026-11.html">波兰电力市场（2026 版）</a></li>
         <li><a href="比利时与北欧电力市场-2026-11.html">比利时与北欧电力市场（2026 版）</a></li>
@@ -271,39 +275,40 @@
             <li class="lv3"><a href="#s8">1.3 英国：BM + 频率响应 + 备用 + DFS</a></li>
             <li class="lv3"><a href="#s9">1.4 意大利：MSD 与 MB</a></li>
             <li class="lv3"><a href="#s10">1.5 西班牙：二次/三次备用</a></li>
-            <li class="lv3"><a href="#s11">1.6 荷兰：动态维度与 4 小时合同</a></li>
-            <li class="lv3"><a href="#s12">1.7 波兰：PICASSO 已接入，MARI 待接入</a></li>
-            <li class="lv3"><a href="#s13">1.8 比利时与北欧</a></li>
-            <li class="lv2"><a href="#s14">2. 澳大利亚：FCAS 的“时间尺度货架”</a></li>
-            <li class="lv3"><a href="#s15">2.1 产品结构</a></li>
-            <li class="lv3"><a href="#s16">2.2 共同优化与机会成本</a></li>
-            <li class="lv3"><a href="#s17">2.3 资格与测试</a></li>
-            <li class="lv2"><a href="#s18">3. 北美：三种辅助服务设计</a></li>
-            <li class="lv3"><a href="#s19">3.1 ERCOT：Reg + RRS + Non-Spin + ECRS</a></li>
-            <li class="lv3"><a href="#s20">3.2 PJM：Reg + 同步备用 + 日前调度备用</a></li>
-            <li class="lv3"><a href="#s21">3.3 CAISO：Reg + Spin/Non-Spin + FRP</a></li>
-            <li class="lv2"><a href="#s22">4. 日本：EPRX 的 ΔkW 市场</a></li>
-            <li class="lv3"><a href="#s23">4.1 产品与机制</a></li>
-            <li class="lv3"><a href="#s24">4.2 价格与储能</a></li>
-            <li class="lv2"><a href="#s25">5. 功能对照总表</a></li>
-            <li class="lv2"><a href="#s26">6. 市场对照总表</a></li>
-            <li class="lv2"><a href="#s27">7. 储能参与：资格、SOC 与机会成本</a></li>
-            <li class="lv3"><a href="#s28">7.1 预审的五个环节</a></li>
-            <li class="lv3"><a href="#s29">7.2 SOC 预留</a></li>
-            <li class="lv3"><a href="#s30">7.3 机会成本</a></li>
-            <li class="lv3"><a href="#s31">7.4 收入叠加冲突</a></li>
-            <li class="lv2"><a href="#s32">8. 三个合成算例（D 级，仅演示方法）</a></li>
-            <li class="lv3"><a href="#s33">8.1 德国 FCR</a></li>
-            <li class="lv3"><a href="#s34">8.2 澳洲 FCAS</a></li>
-            <li class="lv3"><a href="#s35">8.3 日本 EPRX</a></li>
-            <li class="lv2"><a href="#s36">9. 十个坑</a></li>
-            <li class="lv2"><a href="#s37">10. 2026–2027 观察清单</a></li>
-            <li class="lv2"><a href="#s38">11. 官方来源与口径</a></li>
-            <li class="lv3"><a href="#s39">口径提醒</a></li>
-            <li class="lv2"><a href="#s40">速查</a></li>
-            <li class="lv2"><a href="#s41">与技能和其他笔记的分工</a></li>
-            <li class="lv2"><a href="#s42">更新记录</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="27">展开 27 个小节</button>
+            <li class="lv3"><a href="#s11">1.6 法国：MA 与 FCR/aFRR/mFRR 三层</a></li>
+            <li class="lv3"><a href="#s12">1.7 荷兰：动态维度与 4 小时合同</a></li>
+            <li class="lv3"><a href="#s13">1.8 波兰：PICASSO 已接入，MARI 待接入</a></li>
+            <li class="lv3"><a href="#s14">1.9 比利时与北欧</a></li>
+            <li class="lv2"><a href="#s15">2. 澳大利亚：FCAS 的“时间尺度货架”</a></li>
+            <li class="lv3"><a href="#s16">2.1 产品结构</a></li>
+            <li class="lv3"><a href="#s17">2.2 共同优化与机会成本</a></li>
+            <li class="lv3"><a href="#s18">2.3 资格与测试</a></li>
+            <li class="lv2"><a href="#s19">3. 北美：三种辅助服务设计</a></li>
+            <li class="lv3"><a href="#s20">3.1 ERCOT：Reg + RRS + Non-Spin + ECRS</a></li>
+            <li class="lv3"><a href="#s21">3.2 PJM：Reg + 同步备用 + 日前调度备用</a></li>
+            <li class="lv3"><a href="#s22">3.3 CAISO：Reg + Spin/Non-Spin + FRP</a></li>
+            <li class="lv2"><a href="#s23">4. 日本：EPRX 的 ΔkW 市场</a></li>
+            <li class="lv3"><a href="#s24">4.1 产品与机制</a></li>
+            <li class="lv3"><a href="#s25">4.2 价格与储能</a></li>
+            <li class="lv2"><a href="#s26">5. 功能对照总表</a></li>
+            <li class="lv2"><a href="#s27">6. 市场对照总表</a></li>
+            <li class="lv2"><a href="#s28">7. 储能参与：资格、SOC 与机会成本</a></li>
+            <li class="lv3"><a href="#s29">7.1 预审的五个环节</a></li>
+            <li class="lv3"><a href="#s30">7.2 SOC 预留</a></li>
+            <li class="lv3"><a href="#s31">7.3 机会成本</a></li>
+            <li class="lv3"><a href="#s32">7.4 收入叠加冲突</a></li>
+            <li class="lv2"><a href="#s33">8. 三个合成算例（D 级，仅演示方法）</a></li>
+            <li class="lv3"><a href="#s34">8.1 德国 FCR</a></li>
+            <li class="lv3"><a href="#s35">8.2 澳洲 FCAS</a></li>
+            <li class="lv3"><a href="#s36">8.3 日本 EPRX</a></li>
+            <li class="lv2"><a href="#s37">9. 十一个坑</a></li>
+            <li class="lv2"><a href="#s38">10. 2026–2027 观察清单</a></li>
+            <li class="lv2"><a href="#s39">11. 官方来源与口径</a></li>
+            <li class="lv3"><a href="#s40">口径提醒</a></li>
+            <li class="lv2"><a href="#s41">速查</a></li>
+            <li class="lv2"><a href="#s42">与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s43">更新记录</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="28">展开 28 个小节</button>
   </aside>
 </div>
 
