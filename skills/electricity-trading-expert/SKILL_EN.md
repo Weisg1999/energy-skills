@@ -49,7 +49,7 @@ You are a senior expert in electricity trading with the following composite back
 | How VPPs make money / demand response subsidies | Chapter 9 |
 | Carbon price / CCER / carbon audit / CBAM / GEC | Chapter 10 |
 | How retailers survive / risk control | Chapter 11 |
-| How Australia/Germany/UK/Italy/Spain/Netherlands trade and how to enter | Chapter 7A |
+| How Australia/Germany/UK/Italy/Spain/Netherlands/Poland/Belgium/Nordics/US/Japan trade and how to enter | Chapter 7A |
 | Formulas / terminology / document numbers | Chapters 12~14 |
 
 ---
@@ -345,9 +345,9 @@ Market registration → market preparation → publication of trading announceme
 
 ---
 
-## 7A. Overseas Markets Quick Reference (Australia NEM / Germany / UK GB / Italy / Spain / Netherlands / Poland / Belgium & Nordics)
+## 7A. Overseas Markets Quick Reference (Australia NEM / Germany / UK GB / Italy / Spain / Netherlands / Poland / Belgium & Nordics / United States / Japan)
 
-> Chapter data cutoff: 2026-11-10. The 7A numbering avoids renumbering the existing China chapters. Coverage is the Australian NEM, the German DE-LU bidding zone, UK GB, Italy, Spain, the Netherlands, Poland and Belgium/the Nordics, not "all overseas markets". Trading is governed by local law, rules, exchange notices and contracts; this chapter is not legal, tax or investment advice.
+> Chapter data cutoff: 2026-11-10. The 7A numbering avoids renumbering the existing China chapters. Coverage is the Australian NEM, the German DE-LU bidding zone, UK GB, Italy, Spain, the Netherlands, Poland, Belgium/the Nordics, the United States (ERCOT/PJM/CAISO) and Japan, not "all overseas markets". Trading is governed by local law, rules, exchange notices and contracts; this chapter is not legal, tax or investment advice.
 
 ### 7A.1 Market Selection: Six Core Cards
 
@@ -381,7 +381,21 @@ Market registration → market preparation → publication of trading announceme
 | Settlement | TGE/IRGiT + PSE imbalance + capacity fee + OZE settlement | Belpex/Elia + CRM + grid fees | Nord Pool + national TSOs + Nasdaq financial settlement |
 | Entry | Entity + URE licence + PSE/OSD connection + TGE/IRGiT + POB + PSE prequalification + capacity registration + REMIT | Entity + Elia connection + Belpex/EPEX + BRP + CRM qualification + REMIT | Entity + TSO/DSO connection + Nord Pool membership + national BRP + prequalification + REMIT |
 
-**Selection rule of thumb**: high volatility, batteries/FCAS and inter-regional spreads → NEM first; day-ahead/intraday, cross-border coupling, balancing and EEG assets → Germany first; single market, capacity market, BM and LDES → UK first; seven-zone spreads, MACSE long-term storage auctions and FER X → Italy first; Iberian two-zone design, 15-minute settlement and a 2026 capacity market → Spain first; one bidding zone, no capacity market, congestion access and SDE++ → Netherlands first; capacity market + OZE auctions + storage grants → Poland first; CRM annuities + zonal hydro + negative prices → Belgium/Nordics first. None of the eight is "register and trade": settlement, balancing responsibility, connection and compliance are the real barriers.
+**7A.1c United States and Japan Cards**
+
+| Dimension | US ERCOT | US PJM | US CAISO | Japan |
+|---|---|---|---|---|
+| Scope | Intrastate Texas system | 13 states + Washington DC | California + EDAM members | 10 service areas + wide-area operation |
+| Operator / rules | ERCOT operates; PUCT regulates; wholesale rates outside FERC jurisdiction | PJM operates; FERC tariff; state PUCs for distribution/siting | CAISO operates; FERC + CPUC/CEC overlay | JEPX/EPRX trade; OCCTO wide-area; METI regulates |
+| Spot granularity | Day-ahead hourly + real-time SCED 5 minutes; 15-minute settlement | Day-ahead + real-time; settlement by product | Day-ahead hourly + FMM 15 minutes + RTD 5 minutes | 48 half-hour products; 30-minute imbalance |
+| Pricing | Nodal + ORDC; HCAP $5,000 / LCAP $2,000/MWh | Nodal + capacity; BRA by LDA | Nodal/zonal + RA; day-ahead uniform price | Blind auction uniform price; floor ¥0.01/kWh (no negative prices) |
+| Ancillary services | Reg Up/Down, RRS, Non-Spin, ECRS | Regulation, synchronized reserve, DASR | FRP, regulation, reserve | EPRX primary/secondary/tertiary + combined |
+| Capacity | None; ORDC scarcity pricing | BRA/FRR; 4-hour battery ELCC ~50% | No centralized market; RA slice-of-day/NQC | Capacity market (4 years ahead, single price, 1 year) + LTDA (20 years, 90% clawback) |
+| Support | Federal ITC; state schemes | Federal ITC; state schemes | Federal ITC; state schemes | FIT/FIP, non-fossil certificates, SII battery grants |
+| Settlement | 15 minutes; weekly/monthly statements | By product; capacity monthly | 5 minutes; RA annual/hourly | 30 minutes; capacity annual, LTDA 20 years |
+| Entry | ERCOT registration + interconnection agreement | PJM registration + capacity qualification + interconnection | CAISO registration + RA qualification + interconnection | Generation notification + supply-adjustment contract + JEPX/EPRX + FEFTA |
+
+**Selection rule of thumb**: high volatility, batteries/FCAS and inter-regional spreads → NEM first; day-ahead/intraday, cross-border coupling, balancing and EEG assets → Germany first; single market, capacity market, BM and LDES → UK first; seven-zone spreads, MACSE long-term storage auctions and FER X → Italy first; Iberian two-zone design, 15-minute settlement and a 2026 capacity market → Spain first; one bidding zone, no capacity market, congestion access and SDE++ → Netherlands first; capacity market + OZE auctions + storage grants → Poland first; CRM annuities + zonal hydro + negative prices → Belgium/Nordics first; energy-only scarcity pricing and real-time spreads → ERCOT, capacity market and ELCC → PJM, day-ahead/real-time + RA + Western market → CAISO; 30-minute spot + capacity market + 20-year LTDA → Japan. None of the ten is "register and trade": settlement, balancing responsibility, connection and compliance are the real barriers.
 
 ### 7A.2 Australian NEM: Five Must-Knows
 
@@ -528,7 +542,43 @@ EPAD cash flow = (zonal price − system price) × contracted energy
 
 **Entry path**: Belgian entity → Elia connection → Belpex/EPEX + BRP → CRM qualification/credit → REMIT; Nordic entity → national TSO/DSO connection → Nord Pool membership → national TSO BRP registration → ancillary prequalification → REMIT. **Common errors**: treating CRM as a uniform clearing price, using nameplate capacity for CRM, treating Nord Pool as one zone, treating effektreserv/tehoreservi as a capacity market, converting SEK/NOK/DKK at a single EUR rate.
 
-### 7A.10 The Same Question, Eight Markets
+### 7A.9b United States: Five Must-Knows
+
+1. **There is no single national market**: ERCOT is an intrastate system whose wholesale pricing is governed mainly by PUCT and ERCOT rules; PJM spans 13 states plus DC and clears capacity by LDA; CAISO layers CPUC resource adequacy and CEC planning data on top. The three rulebooks are not interchangeable.
+2. **ERCOT is energy-only with scarcity pricing**: real-time SCED runs every 5 minutes and settlement is 15 minutes; HCAP/LCAP are $5,000/$2,000 per MWh; ORDC adds scarcity payments when reserves are short. RTC+B went live on 2025-12-05, co-optimising real-time energy and ancillary services and modelling SOC.
+3. **PJM runs on capacity, but a cap is not bankability**: the 2028/29 BRA cleared at $325/MW-day (the new cap), 152.1 GW cleared against a 6.8 GW gap and a 14.7% reserve margin, yet only about 525 MW of new effective capacity was added; a 4-hour battery has an ELCC of about 50% and capacity revenue of roughly $60k/MW-yr (order of magnitude).
+4. **CAISO runs on day-ahead/real-time plus RA**: day-ahead + 15-minute FMM + 5-minute RTD; RA moves to full slice-of-day compliance from the 2026 compliance year; EDAM went live on 2026-05-01 with PacifiCorp as the first member and PGE joining 2026-10-01; storage exceeds 21 GW, and negative prices cluster in midday solar hours.
+5. **Interconnection and supply chain are hard gates**: PJM's first 2026-08 cycle includes 715 projects/201.5 GW with a study cycle of about 40 months; the CAISO queue is about 197 GW; FEOC rules apply to projects starting construction after 2025-12-31, ITC is 30% plus 10% domestic content plus 10% energy community, Section 301 tariffs rise to 25% from 2026-01-01, and an August 2026 executive order targets grid equipment.
+
+**Three formulas**
+
+```
+PJM capacity revenue ≈ ELCC (MW) × clearing price ($/MW-day) × 365
+ERCOT arbitrage gross revenue ≈ discharged energy (MWh) × spread ($/MWh) × RTE × cycles
+CAISO RA revenue ≈ NQC (MW) × capacity price ($/kW-yr) × 1000
+```
+
+**Entry path**: US entity/project company → ISO/RTO interconnection queue → market registration (ERCOT/PJM/CAISO) → capacity/RA qualification (PJM ELCC, CAISO NQC) → ancillary prequalification → state/local permits and fire code → tax (ITC/tax equity) and CFIUS/FEOC compliance. **Common errors**: treating ERCOT as 5-minute settlement, modelling 2022–2023 ancillary revenue, treating the PJM cap as bankable, ignoring ELCC decay and capacity performance penalties, counting only the 30% ITC.
+
+### 7A.9c Japan: Five Must-Knows
+
+1. **Thirty-minute granularity, no negative prices**: JEPX day-ahead has 48 half-hour products, a 10:00 gate and a blind single-price auction; the floor is ¥0.01/kWh, so surplus solar presses the price to the floor but never negative; the cap is quoted as either ¥100 or ¥200/kWh, and the rulebook wording still needs verification.
+2. **Imbalance costs are high**: 30-minute settlement; from 2026-10-01 the C value rises from ¥200 to ¥300/kWh and the D value from ¥45 to ¥50/kWh (grade C); deviation costs can exceed arbitrage margin, so storage needs intraday rolling forecasts.
+3. **The capacity market is four years ahead, single-price, one-year contracts**: units of 1,000 kW or more can participate and batteries are certified by de-rating factor; round 5 (FY2028) cleared ¥11,134/kW and round 6 (FY2029) ¥13,303/kW; historical average prices have ranged from ¥3,109 to ¥14,137/kW, so a single result cannot be extrapolated.
+4. **LTDA is 20-year revenue with clawback and a duration threshold**: pay-as-bid with about 90% of other market revenue clawed back ex post; from round 3 batteries under 6 hours are no longer eligible; round 3 awarded 1,251 MW/19 battery projects at a 36% award rate (grade C). The EPRX cap fell from ¥19.51 to ¥10.00/ΔkW·30min in September 2026, so a ΔkW-only model no longer works.
+5. **Grid queueing and foreign-investment review are hard gates**: storage connection-study applications reached 24,880 in FY2025; from 2026-08-01 each applicant is capped — Tokyo 11, Kansai 12, Kyushu 8; general transmission/distribution, transmission and generation of 50 MW or more are core sectors under FEFTA, requiring prior notification with a 30-day to 5-month review.
+
+**Three formulas**
+
+```
+Capacity market revenue ≈ de-rated capacity (kW) × clearing price (¥/kW-yr)
+LTDA net revenue ≈ LTDA capacity revenue + other market revenue × (1 − 90%)
+EPRX revenue ≈ Σ ΔkW × unit price (¥/ΔkW·30min) + dispatched energy × kWh price
+```
+
+**Entry path**: Japanese entity/project company → connection study and grid connection → generation business filing → generation output adjustment contract (balancing responsibility) → JEPX/EPRX membership → capacity market/LTDA registration → FEFTA prior notification → equipment certification/fire code/telecoms. **Common errors**: applying European negative-price models, hard-coding the spot cap, underestimating C-value deviation costs, bidding 4-hour projects into LTDA, extrapolating one capacity-market price, ignoring FEFTA and the per-applicant connection-study cap.
+
+### 7A.10 The Same Question, Ten Markets
 
 | Question | Australian NEM | German DE-LU | UK GB | Italy | Spain | Netherlands |
 |---|---|---|---|---|---|---|
@@ -554,15 +604,28 @@ EPAD cash flow = (zonal price − system price) × contracted energy
 | "How do I enter?" | URE licence + PSE/OSD connection + TGE/IRGiT + POB + capacity registration | Elia connection + Belpex/EPEX + BRP + CRM qualification | National TSO/DSO connection + Nord Pool + national BRP |
 | "Biggest risk?" | De-rating/availability penalties, policy change, grants mistaken for revenue | CRM penalties/price cap, unit conventions | Zonal spreads, hydro/negative prices, four-country rule differences |
 
+**United States and Japan: the same questions**
+
+| Question | ERCOT | PJM | CAISO | Japan |
+|---|---|---|---|---|
+| "What is the spot price now?" | Read the nodal price and ORDC; real-time dominates | Read the nodal price; capacity is a separate BRA | Read the zonal price with FMM/RTD; negative prices midday | Read the JEPX 30-minute product price; no negative prices |
+| "What is the price cap?" | HCAP $5,000 / LCAP $2,000 per MWh | Capacity $325/$175 per MW-day; energy per tariff | Day-ahead/real-time bounds per CAISO tariff | Spot cap ¥100/¥200 per kWh (to verify) |
+| "How do I lock in a price?" | Bilateral, ASX/OTC, PPAs, tolling | Bilateral, futures, PPAs, capacity contracts | Bilateral, PPAs, RA, EDAM | JEPX forward/time-ahead, PPAs, capacity/LTDA |
+| "How do batteries make money?" | Arbitrage + ancillary (Reg/RRS/ECRS) | Capacity + arbitrage + ancillary | Arbitrage + RA + FRP | Spot + EPRX + capacity + LTDA |
+| "How is capacity priced?" | No capacity market; ORDC scarcity pricing | ELCC × $/MW-day × 365 | NQC/RA slice-of-day | De-rated capacity × ¥/kW-yr |
+| "Renewables support?" | Federal ITC + state schemes | Federal ITC + state schemes | Federal ITC + state schemes | FIT/FIP, non-fossil certificates, SII grants |
+| "How do I enter?" | ERCOT registration + interconnection + state permits | PJM registration + capacity qualification + state permits | CAISO registration + RA certification + CPUC/CEC | Filing + balancing responsibility + connection study + FEFTA |
+| "Biggest risk?" | Skewed spreads, interconnection queue, FEOC | Cap is not bankable, ELCC decay, 40-month interconnection | Negative prices, RA penalties, cluster interconnection | ≥6h threshold, 90% clawback, C-value deviation, queue |
+
 ### 7A.11 Answering Discipline for Overseas Markets
 
-1. **Confirm market, region and time first**: for Australia ask state/region; for Germany ask day-ahead/intraday and CET/CEST; for the UK ask day-ahead/BM and GB time; for Italy ask bidding zone and MGP/MSD; for Spain ask Spain/Portugal zone and OMIE period; for the Netherlands confirm EPEX NL (not DE-LU); for Poland confirm TGE RDN (not German prices); for Belgium confirm Belpex (not DE-LU/French prices); for the Nordics confirm which of the 12 bidding zones. Never answer with a single "European price" or "Australian price".
-2. **Currency and units**: AUD/MWh, EUR/MWh, GBP/MWh, PLN/MWh and SEK/NOK/DKK/MWh; do not mix with CNY or CNY/kWh. If converting, state the FX date.
-3. **Time zones**: NEM is fixed AEST; Germany, Italy, Spain, the Netherlands, Poland, Belgium, Sweden, Norway and Denmark switch CET/CEST; Finland uses EET/EEST; the UK switches GMT/BST, and EPEX GB gate times are quoted in CET. Gates, settlement and reports must use one consistent clock.
-4. **Rule hierarchy**: Australia NER + AEMO procedures; Germany EnWG/StromNEV/EEG + BNetzA/EPEX rules; UK BSC/CUSC + NESO/Ofgem rules; Italy TIDE + ARERA/GME/Terna rules; Spain BOE decrees + OMIE/REE/CNMC rules; Netherlands Energiewet + ACM/TenneT rules; Poland energy law + URE/PSE/TGE rules; Belgium electricity law + CREG/Elia rules; Nordics Nord Pool rules + national TSO rules; EU coupling rules only to the extent relevant to the trade.
-5. **Source grading**: official rules/notices A; exchange/regulator data A/B; media/reports B/C; own calculations D. Volatile figures such as capacity-mechanism costs, CIS/MACSE/Polish capacity/Belgian CRM results, the Spanish first capacity auction, the Dutch connection queue and Nordic reserve auctions need a grade and a date.
-6. **Do not replace local advice**: registration, tax, REMIT/MiFID, grid connection and contracts should be reviewed by local counsel/tax/compliance; this skill provides a trading framework only.
-7. **Draft vs in force**: Australia's reliability-standard recommendation, Germany's AgNes (final determination 2027-01-01, rules from 2029), the EEG 2027 amendment, the UK's REMA/TMO4+/LDES final parameters, Italy's second MACSE auction and capacity-market rules, Spain's first capacity auction and RD 997/2025 implementation, and the Netherlands' Energiewet implementation/aFRR 4-hour rollout/priority framework, Poland's capacity de-rating and 2026 OZE non-price criteria, the Belgian CRM price unit, and the Nordic mFRR EAM/PICASSO timetable may be proposals or not fully effective; state the status.
+1. **Confirm market, region and time first**: for Australia ask state/region; for Germany ask day-ahead/intraday and CET/CEST; for the UK ask day-ahead/BM and GB time; for Italy ask bidding zone and MGP/MSD; for Spain ask Spain/Portugal zone and OMIE period; for the Netherlands confirm EPEX NL (not DE-LU); for Poland confirm TGE RDN (not German prices); for Belgium confirm Belpex (not DE-LU/French prices); for the Nordics confirm which of the 12 bidding zones; for the US confirm ERCOT, PJM or CAISO; for Japan confirm the supply area and JEPX product. Never answer with a single "European price", "US price" or "Australian price".
+2. **Currency and units**: AUD/MWh, EUR/MWh, GBP/MWh, PLN/MWh, SEK/NOK/DKK/MWh, USD/MWh and USD/kW-month, USD/MW-day, USD/kW-yr, JPY/kWh and JPY/kW-yr; do not mix with CNY or CNY/kWh. If converting, state the FX date.
+3. **Time zones**: NEM is fixed AEST; Germany, Italy, Spain, the Netherlands, Poland, Belgium, Sweden, Norway and Denmark switch CET/CEST; Finland uses EET/EEST; the UK switches GMT/BST, and EPEX GB gate times are quoted in CET; ERCOT uses CT, PJM ET and CAISO PT, each with daylight saving; Japan uses JST with no daylight saving. Gates, settlement and reports must use one consistent clock.
+4. **Rule hierarchy**: Australia NER + AEMO procedures; Germany EnWG/StromNEV/EEG + BNetzA/EPEX rules; UK BSC/CUSC + NESO/Ofgem rules; Italy TIDE + ARERA/GME/Terna rules; Spain BOE decrees + OMIE/REE/CNMC rules; Netherlands Energiewet + ACM/TenneT rules; Poland energy law + URE/PSE/TGE rules; Belgium electricity law + CREG/Elia rules; Nordics Nord Pool rules + national TSO rules; US FERC tariffs + ISO/RTO rules + state PUC rules (ERCOT wholesale sales are not FERC rate-jurisdictional); Japan the Electricity Business Act + METI ordinances + OCCTO/JEPX/EPRX rules; EU coupling rules only to the extent relevant to the trade.
+5. **Source grading**: official rules/notices A; exchange/regulator data A/B; media/reports B/C; own calculations D. Volatile figures such as capacity-mechanism costs, CIS/MACSE/Polish capacity/Belgian CRM/PJM BRA/Japanese capacity-market and LTDA results, the Spanish first capacity auction, the Dutch connection queue and Nordic reserve auctions need a grade and a date.
+6. **Do not replace local advice**: registration, tax, REMIT/MiFID, grid connection and contracts, US ITC/FEOC and CFIUS, and Japanese FEFTA should be reviewed by local counsel/tax/compliance; this skill provides a trading framework only.
+7. **Draft vs in force**: Australia's reliability-standard recommendation, Germany's AgNes (final determination 2027-01-01, rules from 2029), the EEG 2027 amendment, the UK's REMA/TMO4+/LDES final parameters, Italy's second MACSE auction and capacity-market rules, Spain's first capacity auction and RD 997/2025 implementation, the Netherlands' Energiewet implementation/aFRR 4-hour rollout/priority framework, Poland's capacity de-rating and 2026 OZE non-price criteria, the Belgian CRM price unit, the Nordic mFRR EAM/PICASSO timetable, US FEOC/tariff/grid-equipment executive-order details, and Japan's capacity-market de-rating and LTDA round-4 rules may be proposals or not fully effective; state the status.
 
 ### 7A.12 Where to Read in the Repository
 
@@ -574,8 +637,20 @@ EPAD cash flow = (zonal price − system price) × contracted energy
 - Netherlands in depth: `knowledge/荷兰电力市场-2026-11.md` (EPEX NL, no capacity market, 15-minute settlement, SDE++, connection queue/non-firm, storage revenue, entry path, ten pitfalls).
 - Poland in depth: `knowledge/波兰电力市场-2026-11.md` (single bidding zone, rynek mocy, OZE auctions, NFOŚiGW storage grants, POB/DUB, PICASSO/MARI, entry path, ten pitfalls).
 - Belgium and the Nordics in depth: `knowledge/比利时与北欧电力市场-2026-11.md` (Belgian CRM Y-4/Y-2/Y-1, nuclear extension, 12 Nordic zones, 15-minute imbalance, mFRR EAM, effektreserv, negative prices, entry path, ten pitfalls).
+- United States in depth: `knowledge/美国电力市场-2026-11.md` (ERCOT energy-only and ORDC, PJM BRA/ELCC, CAISO RA/EDAM, interconnection and ITC/FEOC, Chinese entry paths, ten pitfalls).
+- Japan in depth: `knowledge/日本电力市场-2026-11.md` (JEPX 30-minute spot, imbalance C/D values, capacity market, EPRX, LTDA, connection study, FEFTA, entry path, ten pitfalls).
 - International retail-price comparison method: `knowledge/国际电价比较-方法与模板-2026-11.md` (retail tariff calibers, not to be mixed with wholesale market rules here).
 - China interprovincial/provincial: `knowledge/省间与跨区交易-2026-11.md`, `knowledge/省级市场状态表-2026-11.md`.
+
+### 7A.13 Cross-Cutting Topics
+
+- Grid connection and compliance: `knowledge/海外并网与合规-2026-11.md` (EU RfG/EN 50549; German VDE-AR-N; UK G99/G100; Italian CEI 0-21/0-16; Spanish NTS; Dutch Netcode; Polish grid code; IEC 62933, UL 9540/9540A, NFPA 855, NIS2, Battery Regulation/passport, NZIA, FDI screening).
+- Capacity mechanisms: `knowledge/容量机制横向对照-2026-11.md` (capacity annuity / auction / two-way CfD / strategic reserve / energy-only archetypes; unit conversion, five capacity calibres, de-rating, storage capacity revenue).
+- Ancillary services: `knowledge/辅助服务与平衡市场对照-2026-11.md` (FCR/aFRR/mFRR, FCAS, BM, MSD/MB, EPRX; PICASSO/MARI/TERRE accession and storage eligibility).
+- Storage revenue and data: `knowledge/储能收益建模与数据源-2026-11.md` (ENTSO-E, NEMWEB, Elexon BMRS, GME, OMIE, PSE, Nord Pool and other data entry points; granularity/time zones, RTE, degradation, capture rate, de-rating, revenue stacking, backtest).
+- PPA / certificates / tolling: `knowledge/跨国PPA与绿证-2026-11.md` (GO/REGO/REC/LGC/NFC/GEC, AIB EECS cross-border recognition, CfD/CIS stacking, merchant tail, tolling terms, 24/7 hourly matching).
+- Same-caliber snapshot and decision calendar: `knowledge/海外市场同口径快照与投决日历-2026-11.md` (ten markets side by side on installed capacity, storage, average price, negative-price hours, capture rate, interconnection queue and de-rating, with gaps marked "to be verified"; 2026Q4–2027 event calendar, China-entry six gates and 20 grade-C figures with verification entries).
+- **How to use**: confirm local rules in the single-market module first, then compare across markets with the cross-cutting note; the cross-cutting note does not replace local rules, contract texts or local legal advice. Before an investment decision, check whether a number is comparable in the snapshot, then model the project in the single-market module.
 
 ---
 
@@ -910,5 +985,5 @@ The 8 pilots averaged CNY 44.1/tonne in 2024 (~54% below the national market): B
 - The carbon practice book's data are from around 2016; for post-2021 national carbon market rules, Sections 10.1~10.5 (web research) prevail;
 - Items marked "(to be verified)" should prompt the user to verify when cited; the spot rules, retailer measure, risk-control measure, credit-evaluation guidelines and grid-connection provisions of September-October 2026 are **drafts for comment** and the final clauses may change;
 - Provincial rules update fast; this skill does not replace real-time policy search. Re-verify 2026 provincial spot formal operation, No. 136 auctions, capacity prices and VPP rules before answering;
-- Overseas markets (Chapter 7A) cover the Australian NEM, German DE-LU, UK GB, Italy, Spain and the Netherlands, excluding the WA WEM, the Northern Territory and other European markets such as Poland, Belgium and the Nordics; rules, taxes, grid connection and contracts require local official documents and professional advice;
+- Overseas markets (Chapter 7A) cover the Australian NEM, German DE-LU, UK GB, Italy, Spain, the Netherlands, Poland, Belgium and the Nordics, the United States (ERCOT/PJM/CAISO) and Japan, excluding the WA WEM, the Northern Territory and other US ISOs/RTOs such as MISO, SPP, NYISO and ISO-NE; rules, taxes, grid connection and contracts require local official documents and professional advice;
 - 2025 trading volumes exist in several calibers ("market-traded 6.64 trillion / medium-long-term 6.3522 trillion / 4.81 trillion in some materials"); the preferred caliber is stated in the text — check old materials against it.

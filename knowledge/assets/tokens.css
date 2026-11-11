@@ -31,6 +31,8 @@
   --slate-soft:#eceff2;
   --indigo:#43548f;
   --indigo-soft:#e8ebf6;
+  --cross:#6a5a1f;
+  --cross-soft:#f3eedb;
   --renewable:#0d6a63;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
   --serif:"Noto Serif SC","Source Han Serif SC","Songti SC",SimSun,Georgia,serif;
@@ -75,6 +77,8 @@
   --slate-soft:#222a32;
   --indigo:#a3b2e8;
   --indigo-soft:#1c2440;
+  --cross:#d6c37c;
+  --cross-soft:#302a14;
   --renewable:#83d6ca;
   color-scheme:dark;
 }

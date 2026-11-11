@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>电力系统 · 电力市场 · 碳市场知识库 | energy-skills</title>
-<meta name="description" content="energy-skills 知识库总览：55 个模块，覆盖电力系统通识、电力现货与省间交易、澳洲 NEM 与德国电力市场、英国 GB 与意大利电力市场、西班牙 MIBEL 与荷兰 EPEX NL、电价、新能源与并网、储能、EMS 与 SCADA 数据链路、零碳园区、碳市场、虚拟电厂、需求响应与市场风险信用结算。数据截止 2026-11-10。">
+<meta name="description" content="energy-skills 知识库总览：63 个模块，覆盖电力系统通识、电力现货与省间交易、海外十市场（澳/德/英/意/西/荷/波/比·北欧/美/日）、横向专题（并网合规、容量机制、辅助服务、储能收益与数据源、PPA/绿证、同口径快照与投决日历）、电价、新能源与并网、储能、EMS 与 SCADA 数据链路、零碳园区、碳市场、虚拟电厂、需求响应与市场风险信用结算。数据截止 2026-11-11。">
 <link rel="icon" type="image/svg+xml" href="assets/logo-book-favicon.svg">
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
@@ -45,6 +45,8 @@ if(location.hash){document.documentElement.style.scrollBehavior='auto';}
   --slate-soft:#eceff2;
   --indigo:#43548f;
   --indigo-soft:#e8ebf6;
+  --cross:#6a5a1f;
+  --cross-soft:#f3eedb;
   --renewable:#0d6a63;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
   --serif:"Noto Serif SC","Source Han Serif SC","Songti SC",SimSun,Georgia,serif;
@@ -89,6 +91,8 @@ if(location.hash){document.documentElement.style.scrollBehavior='auto';}
   --slate-soft:#222a32;
   --indigo:#a3b2e8;
   --indigo-soft:#1c2440;
+  --cross:#d6c37c;
+  --cross-soft:#302a14;
   --renewable:#83d6ca;
   color-scheme:dark;
 }
@@ -229,6 +233,7 @@ a:hover{text-decoration:underline;text-underline-offset:3px}
 .layer[data-a="3"] .layer-num{background:var(--amber)}
 .layer[data-a="4"] .layer-num{background:var(--plum)}
 .layer[data-a="5"] .layer-num{background:var(--red)}
+.layer[data-a="6"] .layer-num{background:var(--cross)}
 .layer h3{font-family:var(--serif);font-size:var(--fs-md);margin:0 0 2px;font-weight:600}
 .layer .layer-q{font-size:var(--fs-xs);color:var(--muted);margin:0 0 9px;line-height:1.55}
 .chips{display:flex;flex-wrap:wrap;gap:5px}
@@ -300,6 +305,7 @@ mark.hit{background:var(--amber-soft);color:inherit;border-radius:2px;padding:0 
 .module-section[data-cat="foundation"]{--cat:var(--teal);--cat-soft:var(--teal-soft)}
 .module-section[data-cat="spot"]{--cat:var(--blue);--cat-soft:var(--blue-soft)}
 .module-section[data-cat="intl"]{--cat:var(--indigo);--cat-soft:var(--indigo-soft)}
+.module-section[data-cat="cross"]{--cat:var(--cross);--cat-soft:var(--cross-soft)}
 .module-section[data-cat="price"]{--cat:var(--amber);--cat-soft:var(--amber-soft)}
 .module-section[data-cat="renewable"]{--cat:var(--renewable);--cat-soft:var(--teal-soft)}
 .module-section[data-cat="storage"]{--cat:var(--plum);--cat-soft:var(--plum-soft)}
@@ -331,6 +337,7 @@ mark.hit{background:var(--amber-soft);color:inherit;border-radius:2px;padding:0 
 .market-flow,.assess-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin:16px 0 14px}
 .market-flow.six{grid-template-columns:repeat(6,1fr)}
 .market-flow.eight{grid-template-columns:repeat(4,1fr)}
+.market-flow.ten{grid-template-columns:repeat(5,1fr)}
 .mf-step,.af-step{position:relative;padding:11px 11px 10px;border:1px solid var(--line);border-radius:9px;background:var(--paper)}
 .mf-step:not(:last-child)::after,.af-step:not(:last-child)::after{content:"→";position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:var(--fs-xs);color:var(--line-strong);background:var(--card);z-index:2;line-height:1}
 .mf-t{display:block;font:600 var(--fs-2xs)/1.4 var(--mono);letter-spacing:.07em;color:var(--teal);margin-bottom:3px;text-transform:uppercase}
@@ -485,7 +492,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   .panel.wide{grid-column:auto}
   .price-chain{grid-template-columns:1fr;gap:7px}
   .pc-arrow{height:16px;transform:rotate(90deg)}
-  .market-flow,.assess-flow,.market-flow.six,.market-flow.eight{grid-template-columns:1fr 1fr}
+  .market-flow,.assess-flow,.market-flow.six,.market-flow.eight,.market-flow.ten{grid-template-columns:1fr 1fr}
   .mf-step:not(:last-child)::after,.af-step:not(:last-child)::after{display:none}
   .market-grid{grid-template-columns:1fr}
   .method-grid{grid-template-columns:1fr}
@@ -514,7 +521,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   .hero-note{display:none}
   .sec-head{grid-template-columns:1fr;gap:6px}
   .sec-num{padding-top:0}
-  .market-flow,.assess-flow,.market-flow.six,.market-flow.eight{grid-template-columns:1fr}
+  .market-flow,.assess-flow,.market-flow.six,.market-flow.eight,.market-flow.ten{grid-template-columns:1fr}
   .carbon-chain{grid-template-columns:1fr 1fr}
   .rail{grid-template-columns:1fr}
   .map-skill{grid-template-columns:1fr;gap:6px}
@@ -563,26 +570,27 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
     <a class="brand" href="#top">
       <div class="brand-mark"><svg viewBox="0 0 120 120" aria-hidden="true"><path fill="#dcefe9" stroke="#0e6b66" stroke-opacity=".35" stroke-width="3.2" stroke-linejoin="round" d="M60 45 C48 39 34 36.5 22 37.5 Q16 38 16 43.5 L16 78.5 Q16 84 22 83.2 C34 82 48 84 60 90 C72 84 86 82 98 83.2 Q104 84 104 78.5 L104 43.5 Q104 38 98 37.5 C86 36.5 72 39 60 45 Z"/><path fill="#0e6b66" d="M64 43 L49 66 H58 L54 92 L75 62 H64 Z"/></svg><span>Energy Skills</span></div>
       <p class="brand-title">知识库总览</p>
-      <p>55 个模块<br>数据截止 2026-11-10</p>
+      <p>63 个模块<br>数据截止 2026-11-11</p>
     </a>
     <div class="nav-scroll">
       <nav class="nav" aria-label="章节导航">
-      <a href="#top" class="active"><span class="n">00</span><span>总览</span><span class="count">55</span></a>
-      <a href="#all"><span class="n">01</span><span>模块检索</span><span class="count">55</span></a>
+      <a href="#top" class="active"><span class="n">00</span><span>总览</span><span class="count">63</span></a>
+      <a href="#all"><span class="n">01</span><span>模块检索</span><span class="count">63</span></a>
       <a href="#map"><span class="n">02</span><span>知识地图</span><span class="count">5</span></a>
       <a href="#atlas"><span class="n">03</span><span>专题图谱</span><span class="count">8</span></a>
       <a href="#foundation"><span class="n">04</span><span>通识与经济学</span><span class="count">5</span></a>
       <a href="#spot"><span class="n">05</span><span>现货与省间交易</span><span class="count">7</span></a>
-      <a href="#intl"><span class="n">06</span><span>海外市场</span><span class="count">9</span></a>
-      <a href="#price"><span class="n">07</span><span>电价</span><span class="count">4</span></a>
-      <a href="#renewable"><span class="n">08</span><span>新能源与并网</span><span class="count">2</span></a>
-      <a href="#storage"><span class="n">09</span><span>储能与 EMS</span><span class="count">5</span></a>
-      <a href="#park"><span class="n">10</span><span>零碳园区</span><span class="count">1</span></a>
-      <a href="#carbon"><span class="n">11</span><span>碳市场与碳管理</span><span class="count">3</span></a>
-      <a href="#vpp"><span class="n">12</span><span>虚拟电厂</span><span class="count">3</span></a>
-      <a href="#index"><span class="n">13</span><span>索引与查证</span><span class="count">6</span></a>
-      <a href="#research"><span class="n">14</span><span>调研底稿</span><span class="count">10</span></a>
-      <a href="#method"><span class="n">15</span><span>使用与口径</span><span class="count">9</span></a>
+      <a href="#intl"><span class="n">06</span><span>海外市场</span><span class="count">11</span></a>
+      <a href="#cross"><span class="n">07</span><span>横向专题</span><span class="count">6</span></a>
+      <a href="#price"><span class="n">08</span><span>电价</span><span class="count">4</span></a>
+      <a href="#renewable"><span class="n">09</span><span>新能源与并网</span><span class="count">2</span></a>
+      <a href="#storage"><span class="n">10</span><span>储能与 EMS</span><span class="count">5</span></a>
+      <a href="#park"><span class="n">11</span><span>零碳园区</span><span class="count">1</span></a>
+      <a href="#carbon"><span class="n">12</span><span>碳市场与碳管理</span><span class="count">3</span></a>
+      <a href="#vpp"><span class="n">13</span><span>虚拟电厂</span><span class="count">3</span></a>
+      <a href="#index"><span class="n">14</span><span>索引与查证</span><span class="count">6</span></a>
+      <a href="#research"><span class="n">15</span><span>调研底稿</span><span class="count">10</span></a>
+      <a href="#method"><span class="n">16</span><span>使用与口径</span><span class="count">9</span></a>
       </nav>
     </div>
     <div class="sidebar-foot">
@@ -599,9 +607,9 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
     <div class="wrap">
       <header class="hero" id="top">
         <div>
-          <div class="eyebrow">Knowledge Hub · 2026-11-10 · 55 模块</div>
+          <div class="eyebrow">Knowledge Hub · 2026-11-11 · 63 模块</div>
           <h1>电力系统、电力市场<br>与碳市场 <em>知识库</em></h1>
-          <p class="lede">把 55 份主题笔记、政策索引与调研底稿，收进一张可检索、可跳转的知识地图。每个模块都有对应的 HTML 阅读页，文字与数字取自 Markdown 原文。</p>
+          <p class="lede">把 63 份主题笔记、政策索引与调研底稿，收进一张可检索、可跳转的知识地图。每个模块都有对应的 HTML 阅读页，文字与数字取自 Markdown 原文。</p>
           <div class="hero-actions">
             <a class="btn btn-solid" href="#all" data-focus-search>检索知识模块 <span aria-hidden="true">↓</span></a>
             <a class="btn btn-ghost" href="html/政策列表-2026-11.html">政策原文直达 <span aria-hidden="true">→</span></a>
@@ -613,8 +621,8 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
             </button>
           </div>
           <div class="hero-stats">
-              <div class="stat"><b>55</b><span>知识模块</span></div>
-              <div class="stat"><b>39</b><span>核心模块</span></div>
+              <div class="stat"><b>63</b><span>知识模块</span></div>
+              <div class="stat"><b>47</b><span>核心模块</span></div>
               <div class="stat"><b>10</b><span>调研底稿</span></div>
               <div class="stat"><b>9</b><span>配套技能</span></div>
             </div>
@@ -658,7 +666,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
             <option value="tool">索引工具</option>
             <option value="research">调研底稿</option>
           </select>
-          <span class="result" id="result" aria-live="polite">55 / 55 个模块</span>
+          <span class="result" id="result" aria-live="polite">63 / 63 个模块</span>
         </div>
         <div class="empty" id="empty">
           <p>没有匹配的模块。试试“储能”“136”“电价”或“CBAM”。</p>
@@ -781,7 +789,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
           <div class="sec-num">06 / GLOBAL</div>
           <div>
             <h2>海外市场</h2>
-            <p>澳大利亚 NEM、德国、英国、意大利、西班牙、荷兰、波兰与比利时/北欧是八套设计取向不同的市场：澳洲用区域价 + 5 分钟结算，德国用欧盟耦合 + 平衡市场，英国用单一市场 + 平衡机制 + 容量市场，意大利用七个报价区 + MACSE 长周期储能拍卖，西班牙用伊比利亚双区 + 15 分钟结算 + 2026 年容量市场，荷兰用单一报价区 + 无容量市场 + 拥堵接入，波兰用容量市场 + OZE 拍卖 + 储能补贴，比利时/北欧用 CRM 与分区水电市场。九份笔记只讲交易与结算，不替代当地法律意见。</p>
+            <p>澳大利亚 NEM、德国、英国、意大利、西班牙、荷兰、波兰、比利时/北欧、美国（ERCOT/PJM/CAISO）与日本是十套设计取向不同的市场：澳洲用区域价 + 5 分钟结算，德国用欧盟耦合 + 平衡市场，英国用单一市场 + 平衡机制 + 容量市场，意大利用七个报价区 + MACSE 长周期储能拍卖，西班牙用伊比利亚双区 + 15 分钟结算 + 2026 年容量市场，荷兰用单一报价区 + 无容量市场 + 拥堵接入，波兰用容量市场 + OZE 拍卖 + 储能补贴，比利时/北欧用 CRM 与分区水电市场，美国用 ISO/RTO 拼图 + 能量-only/容量市场/RA 三种范式，日本用 30 分钟现货 + 容量市场 + LTDA。十一份笔记只讲交易与结算，不替代当地法律意见。</p>
           </div>
         </div>
         <div class="cards">
@@ -800,21 +808,21 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
             <div class="card-foot"><span>2026-11 · DE-LU 与欧盟耦合</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
           </article>
           <article class="card" id="m-intl-uk" data-type="core" data-search="英国 大不列颠 GB 电力市场 NESO Ofgem Elexon DESNZ EPEX 日前 半小时拍卖 平衡机制 BMU BOALF 容量市场 T-4 T-1 CfD LDES 长时储能 cap and floor 并网改革 TMO4+ REMA TNUoS DUoS BSUoS REMIT 储能 电池 中国主体 注册">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 31 分钟</span></div>
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 32 分钟</span></div>
             <h3><a class="card-link" href="html/英国电力市场-2026-11.html">英国电力市场（2026 版）</a></h3>
             <p>GB 单一市场、EPEX 日前与半小时拍卖、平衡机制、容量市场、CfD/LDES 与储能进入路径。</p>
             <div class="tags"><span class="tag">GB</span><span class="tag">平衡机制</span><span class="tag">容量市场</span></div>
             <div class="card-foot"><span>2026-11 · GB 单一市场与容量机制</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
           </article>
           <article class="card" id="m-intl-it" data-type="core" data-search="意大利 电力市场 IPEX GME Terna MGP MI MSD MB 七个报价区 PUN MACSE 储能容量拍卖 容量市场 FER X 194/2026 双向差价合约 NZIA 并网 中国主体 注册">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 31 分钟</span></div>
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 32 分钟</span></div>
             <h3><a class="card-link" href="html/意大利电力市场-2026-11.html">意大利电力市场（2026 版）</a></h3>
             <p>七个报价区、MGP/MI/MSD、MACSE 储能容量拍卖、容量市场与 FER X。</p>
             <div class="tags"><span class="tag">IPEX</span><span class="tag">MACSE</span><span class="tag">七个报价区</span></div>
             <div class="card-foot"><span>2026-11 · 七区与 MACSE</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
           </article>
           <article class="card" id="m-intl-es" data-type="core" data-search="西班牙 Spain 伊比利亚 MIBEL OMIE REE CNMC MITECO 日前 日内 15分钟 不平衡结算 容量市场 TED/966/2026 储能 PNIEC 22.5GW RD 997/2025 RDL 7/2026 灵活并网 构网型 负电价 大停电 中国主体 注册 BRP REMIT">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 25 分钟</span></div>
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 26 分钟</span></div>
             <h3><a class="card-link" href="html/西班牙电力市场-2026-11.html">西班牙电力市场（2026 版）</a></h3>
             <p>MIBEL 与 OMIE 日前/日内、15 分钟结算、2026 年容量市场、储能并网改革与进入路径。</p>
             <div class="tags"><span class="tag">西班牙</span><span class="tag">MIBEL</span><span class="tag">容量市场</span></div>
@@ -835,26 +843,95 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
             <div class="card-foot"><span>2026-11 · 容量市场与储能补贴双轮</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
           </article>
           <article class="card" id="m-intl-benl" data-type="core" data-search="比利时 Belgium Elia CREG CRM 容量市场 Y-4 Y-2 Y-1 北欧 Nordic Nord Pool 瑞典 挪威 芬兰 丹麦 SE1 SE2 SE3 SE4 NO1 NO5 DK1 DK2 FI 15分钟 mFRR EAM 负电价 水电 核电 effektreserv 海上风电 储能 BESS 中国主体 REMIT">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 32 分钟</span></div>
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 33 分钟</span></div>
             <h3><a class="card-link" href="html/比利时与北欧电力市场-2026-11.html">比利时与北欧电力市场（2026 版）</a></h3>
             <p>比利时 CRM 与北欧分区水电市场：两种容量充裕性路径、负价与储能收益结构。</p>
             <div class="tags"><span class="tag">比利时</span><span class="tag">北欧</span><span class="tag">Nord Pool</span></div>
             <div class="card-foot"><span>2026-11 · 容量市场与分区水电</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
           </article>
-          <article class="card" id="m-intl-storage" data-type="core" data-search="海外储能 澳大利亚 德国 英国 意大利 西班牙 荷兰 波兰 比利时 北欧 大储 工商储 NEM FCAS CIS DE-LU FCR aFRR mFRR §14a §118 BM 容量市场 T-4 T-1 LDES MACSE MSD MIBEL 容量首拍 SDE++ ATR85 rynek mocy NFOŚiGW CRM 报价区 收益堆叠 投决 并网 合成算例 八市场">
-            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 62 分钟</span></div>
-            <h3><a class="card-link" href="html/海外储能业务-2026-11.html">海外储能业务：八市场大储与工商储（2026 版）</a></h3>
-            <p>澳、德、英、意、西、荷、波、比·北欧八市场的收益堆叠、准入并网、电网费、合同融资与投决口径。</p>
-            <div class="tags"><span class="tag">海外储能</span><span class="tag">八市场</span><span class="tag">收益堆叠</span><span class="tag">投决</span></div>
-            <div class="card-foot"><span>2026-11 · 八市场与投决口径</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+          <article class="card" id="m-intl-us" data-type="core" data-search="美国 电力市场 ERCOT 得州 PJM CAISO 加州 节点价 能量-only 容量市场 BRA 资源充裕度 RA ELCC 辅助服务 RTC+B ORDC 价格上限 储能 电池 ITC FEOC 关税 并网 队列 CFIUS UL 9540A NFPA 855 中国主体">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 21 分钟</span></div>
+            <h3><a class="card-link" href="html/美国电力市场-2026-11.html">美国电力市场（2026 版）：ERCOT / PJM / CAISO</a></h3>
+            <p>三种设计范式：ERCOT 能量-only 与节点价、PJM 容量市场、CAISO 日前实时与西部市场；储能收益、并网、ITC/FEOC 与中资进入路径。</p>
+            <div class="tags"><span class="tag">美国</span><span class="tag">ERCOT</span><span class="tag">PJM</span><span class="tag">CAISO</span><span class="tag">储能</span></div>
+            <div class="card-foot"><span>2026-11 · ERCOT / PJM / CAISO 三范式</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+          </article>
+          <article class="card" id="m-intl-jp" data-type="core" data-search="日本 电力市场 JEPX 现货 30 分钟 容量市场 需给调整市场 EPRX LTDA 长期脱碳电源拍卖 非化石证书 FIT FIP 储能 系统用蓄电池 并网 接续检讨 外为法 中国主体">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 19 分钟</span></div>
+            <h3><a class="card-link" href="html/日本电力市场-2026-11.html">日本电力市场（2026 版）：现货、容量市场与 LTDA</a></h3>
+            <p>JEPX 30 分钟现货、容量市场、需给调整市场与长期脱碳电源拍卖；储能收益、并网排队、外为法与中资进入路径。</p>
+            <div class="tags"><span class="tag">日本</span><span class="tag">JEPX</span><span class="tag">容量市场</span><span class="tag">LTDA</span><span class="tag">储能</span></div>
+            <div class="card-foot"><span>2026-11 · 现货 + 容量 + LTDA</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+          </article>
+          <article class="card" id="m-intl-storage" data-type="core" data-search="海外储能 澳大利亚 德国 英国 意大利 西班牙 荷兰 波兰 比利时 北欧 美国 日本 大储 工商储 NEM FCAS CIS DE-LU FCR aFRR mFRR §14a §118 BM 容量市场 T-4 T-1 LDES MACSE MSD MIBEL 容量首拍 SDE++ ATR85 rynek mocy NFOŚiGW CRM ERCOT PJM CAISO ELCC ITC FEOC JEPX EPRX LTDA 报价区 收益堆叠 投决 并网 合成算例 十市场">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 78 分钟</span></div>
+            <h3><a class="card-link" href="html/海外储能业务-2026-11.html">海外储能业务：十市场大储与工商储（2026 版）</a></h3>
+            <p>澳、德、英、意、西、荷、波、比·北欧、美、日十市场的收益堆叠、准入并网、电网费、合同融资与投决口径。</p>
+            <div class="tags"><span class="tag">海外储能</span><span class="tag">十市场</span><span class="tag">收益堆叠</span><span class="tag">投决</span></div>
+            <div class="card-foot"><span>2026-11 · 十市场与投决口径</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
           </article>
         </div>
       </section>
 
-      <!-- 06 Price -->
+      <!-- 06 Cross -->
+      <section class="sec module-section" id="cross" data-cat="cross">
+        <div class="sec-head">
+          <div class="sec-num">07 / CROSS</div>
+          <div>
+            <h2>横向专题</h2>
+            <p>把散落在十市场模块里的“同一类问题”横向拉平：海外并网与合规、容量机制、辅助服务与平衡市场、储能收益建模与数据源、跨国 PPA/绿证/tolling、同口径快照与投决日历。六份笔记不重复单市场规则，只做跨市场对照、投决口径与查证入口。</p>
+          </div>
+        </div>
+        <div class="cards">
+          <article class="card" id="m-cross-grid" data-type="core" data-search="海外并网 grid code VDE-AR-N 4105 4110 4120 4130 G99 G100 CEI 0-21 CEI 0-16 NTS RD 647/2020 Netcode 波兰并网 EN 50549 RfG 2016/631 IEC 62933 UL 9540 UL 9540A NFPA 855 消防 NIS2 电池法规 2023/1542 电池护照 2027-02-18 NZIA 2024/1735 外资审查 CFIUS FEFTA FIRB NSIA 中国厂商 合规 Grid Code">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 35 分钟</span></div>
+            <h3><a class="card-link" href="html/海外并网与合规-2026-11.html">海外并网与合规手册（2026 版）：从 grid code 到电池护照</a></h3>
+            <p>把散落在十市场模块里的并网标准、设备认证、消防、NIS2、电池法规与电池护照、NZIA、外资审查拉成一张投决清单。</p>
+            <div class="tags"><span class="tag">并网</span><span class="tag">合规</span><span class="tag">Grid Code</span><span class="tag">NIS2</span><span class="tag">电池护照</span><span class="tag">NZIA</span><span class="tag">外资审查</span></div>
+            <div class="card-foot"><span>2026-11 · 并网 / 认证 / 消防 / 网络 / 电池 / 供应链 / 外资</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+          </article>
+          <article class="card" id="m-cross-capacity" data-type="core" data-search="容量机制 容量市场 横向对照 英国 CM T-4 T-1 意大利 容量市场 MACSE 西班牙 TED/966 波兰 rynek mocy 比利时 CRM 德国 StromVKG 瑞典 effektreserv 芬兰 tehoreservi 澳洲 CIS 美国 PJM BRA ELCC ERCOT 能量-only CAISO RA 日本 容量市场 LTDA 年金 拍卖 双向 CfD 战略储备 de-rating 降额 储能 收入叠加">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 30 分钟</span></div>
+            <h3><a class="card-link" href="html/容量机制横向对照-2026-11.html">容量机制横向对照（2026 版）：年金、拍卖、双向 CfD 与战略储备</a></h3>
+            <p>把英国 CM、意大利 CM+MACSE、西班牙 TED/966、波兰 rynek mocy、比利时 CRM、德国 StromVKG、澳洲 CIS、美国 PJM/CAISO 与日本 CM/LTDA 拉到一张表：先分类型，再统一单位，最后算储能容量收入。</p>
+            <div class="tags"><span class="tag">容量机制</span><span class="tag">容量市场</span><span class="tag">CRM</span><span class="tag">MACSE</span><span class="tag">StromVKG</span><span class="tag">CIS</span><span class="tag">LTDA</span></div>
+            <div class="card-foot"><span>2026-11 · 年金 / 拍卖 / 双向 CfD / 储备</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+          </article>
+          <article class="card" id="m-cross-ancillary" data-type="core" data-search="辅助服务 平衡市场 横向对照 FCR aFRR mFRR PICASSO MARI 英国 BM BOALF DC DM DR SFFR QR SR BR DFS 意大利 MSD MB 西班牙 二次备用 三次备用 荷兰 TenneT 波兰 PSE 比利时 Elia 北欧 mFRR EAM FCR-N FCR-D 澳洲 FCAS 1秒 6秒 60秒 美国 ERCOT Reg Up Down RRS ECRS PJM Regulation Synchronized Reserve CAISO FRP 日本 EPRX 一次调整 二次调整 三次调整 储能 预审 SOC 机会成本">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 21 分钟</span></div>
+            <h3><a class="card-link" href="html/辅助服务与平衡市场对照-2026-11.html">辅助服务与平衡市场对照（2026 版）：从 FCR 到 FCAS，从 BM 到 EPRX</a></h3>
+            <p>把欧洲 FCR/aFRR/mFRR、英国 BM、意大利 MSD/MB、澳洲 FCAS、美国 Reg/RRS/FRP、日本 EPRX 放到同一张功能表：先分频率、备用、爬坡、电压与黑启动，再比采购、结算、储能资格与收入叠加。</p>
+            <div class="tags"><span class="tag">辅助服务</span><span class="tag">平衡市场</span><span class="tag">FCR</span><span class="tag">aFRR</span><span class="tag">mFRR</span><span class="tag">FCAS</span><span class="tag">BM</span><span class="tag">EPRX</span></div>
+            <div class="card-foot"><span>2026-11 · 频率 / 备用 / 爬坡 / 平衡</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+          </article>
+          <article class="card" id="m-cross-revenue" data-type="core" data-search="储能收益建模 数据源 ENTSO-E Transparency NEMWEB Elexon BMRS GME OMIE PSE Nord Pool EPEX CAISO OASIS ERCOT PJM Data Miner JEPX OCCTO 15分钟 5分钟 粒度 RTE 往返效率 退化 循环寿命 捕获率 capture rate 降额 ELCC 收入叠加 回测 过拟合 LCOS NPV IRR">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 17 分钟</span></div>
+            <h3><a class="card-link" href="html/储能收益建模与数据源-2026-11.html">储能收益建模与数据源（2026 版）：从 5 分钟价格到 15 年现金流</a></h3>
+            <p>把 ENTSO-E、NEMWEB、Elexon BMRS、GME、OMIE、PSE、Nord Pool、CAISO、ERCOT、PJM、JEPX 的取数入口放进一张表，再讲粒度对齐、RTE/退化、捕获率、降额、收入叠加冲突与回测方法。</p>
+            <div class="tags"><span class="tag">储能收益</span><span class="tag">数据源</span><span class="tag">RTE</span><span class="tag">退化</span><span class="tag">捕获率</span><span class="tag">回测</span></div>
+            <div class="card-foot"><span>2026-11 · 取数 / 粒度 / 效率 / 退化 / 回测</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+          </article>
+          <article class="card" id="m-cross-ppa" data-type="core" data-search="跨国 PPA 绿证 GO REGO REC LGC GEC AIB EECS 跨境承认 绿电 环境属性 CfD 差价合约 双向 CfD merchant tail tolling 托管 包销 24/7 小时级匹配 GHG Protocol Scope 2 market-based pay-as-produced baseload collar floor cap proxy revenue swap 形状风险 基差风险 捕获率 信用 合同条款 中国 GEC 美国 REC 澳洲 LGC 日本 非化石证书 英国 REGO">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 22 分钟</span></div>
+            <h3><a class="card-link" href="html/跨国PPA与绿证-2026-11.html">跨国 PPA、绿证与 tolling（2026 版）：从 GO 到 merchant tail</a></h3>
+            <p>把 GO/REGO/REC/LGC/GEC、AIB EECS 跨境承认、CfD 与 CIS 叠加、merchant tail、tolling 条款和 24/7 小时级匹配拉成一张合同表；附 D 级合成算例与尽调清单。</p>
+            <div class="tags"><span class="tag">PPA</span><span class="tag">绿证</span><span class="tag">GO</span><span class="tag">CfD</span><span class="tag">tolling</span><span class="tag">merchant tail</span></div>
+            <div class="card-foot"><span>2026-11 · 合同 / 证书 / 跨境承认 / 现金流</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+          </article>
+          <article class="card" id="m-cross-snapshot" data-type="core" data-search="海外市场 同口径 快照 装机 储能存量 管线 年度均价 负价小时 捕获率 并网排队 降额因子 澳大利亚 德国 英国 意大利 西班牙 荷兰 波兰 比利时 北欧 美国 日本 2026Q4 2027 日历 MACSE 英国 LDES 西班牙容量首拍 波兰容量拍卖 比利时 CRM 北欧报价区 MHHS Energiewet 中国主体 公司设立 税务 外资审查 认证 BRP 保险 C 级 待复核 数据源 投决日历 数据复核">
+            <div class="card-top"><span class="kind">知识模块</span><span class="card-meta">阅读约 22 分钟</span></div>
+            <h3><a class="card-link" href="html/海外市场同口径快照与投决日历-2026-11.html">海外市场同口径快照与投决日历（2026 版）：十市场、七列口径、五张工单</a></h3>
+            <p>把澳/德/英/意/西/荷/波/比·北欧/美/日的装机、储能、均价、负价小时、捕获率、并网排队与降额因子拉成同一张表；空缺明确标“待核实”，并附 2026Q4–2027 事件日历、中国主体进入勾选表与 C 级数字待复核页。</p>
+            <div class="tags"><span class="tag">海外市场</span><span class="tag">同口径</span><span class="tag">并网排队</span><span class="tag">投决日历</span><span class="tag">中国主体</span><span class="tag">数据复核</span></div>
+            <div class="card-foot"><span>2026-11 · 十市场 / 七列口径 / 事件日历 / 复核工单</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 07 Price -->
       <section class="sec module-section" id="price" data-cat="price">
         <div class="sec-head">
-          <div class="sec-num">07 / PRICE</div>
+          <div class="sec-num">08 / PRICE</div>
           <div>
             <h2>电价</h2>
             <p>从历史沿革、制度谱系到 2026 年现行文件与用户侧查证，再加一套国际比较方法。回答“电价多少”之前，先把环节与口径定下来。</p>
@@ -892,10 +969,10 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         </div>
       </section>
 
-      <!-- 07 Renewable -->
+      <!-- 08 Renewable -->
       <section class="sec module-section" id="renewable" data-cat="renewable">
         <div class="sec-head">
-          <div class="sec-num">08 / RENEWABLE</div>
+          <div class="sec-num">09 / RENEWABLE</div>
           <div>
             <h2>新能源与并网</h2>
             <p>项目侧看资源、机制电价与 LCOE；运行侧看涉网性能、考核电量与免考。两份笔记把“能不能建”和“建完怎么被考核”接起来。</p>
@@ -919,10 +996,10 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         </div>
       </section>
 
-      <!-- 08 Storage -->
+      <!-- 09 Storage -->
       <section class="sec module-section" id="storage" data-cat="storage">
         <div class="sec-head">
-          <div class="sec-num">09 / STORAGE</div>
+          <div class="sec-num">10 / STORAGE</div>
           <div>
             <h2>储能与 EMS</h2>
             <p>技术侧看路线、安全与构网；投资侧看政策、成本、时长折算与考核；调度侧看 MILP、多市场堆叠、SOC/退化与 MPC；数据侧看 SCADA 点表、通信、时延、时钟同步与安全防护。两份 EMS 笔记分别覆盖独立储能与微网。</p>
@@ -967,10 +1044,10 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         </div>
       </section>
 
-      <!-- 09 Park -->
+      <!-- 10 Park -->
       <section class="sec module-section" id="park" data-cat="park">
         <div class="sec-head">
-          <div class="sec-num">10 / PARK</div>
+          <div class="sec-num">11 / PARK</div>
           <div>
             <h2>综合能源与零碳园区</h2>
             <p>把“零碳园区、绿电直连、源网荷储、微网、VPP”几个近义词拆开，再用一套合成算例回答“直连能不能算得过账”。</p>
@@ -987,10 +1064,10 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         </div>
       </section>
 
-      <!-- 10 Carbon -->
+      <!-- 11 Carbon -->
       <section class="sec module-section" id="carbon" data-cat="carbon">
         <div class="sec-head">
-          <div class="sec-num">11 / CARBON</div>
+          <div class="sec-num">12 / CARBON</div>
           <div>
             <h2>碳市场与碳管理</h2>
             <p>从碳定价与 EU ETS、三层核算与电力排放因子，到 2026 年履约参数、CCER、碳金融与 CBAM，并附“配额缺口 + CCER 5% + CBAM”履约成本算例。机制、方法与操作层分开读。</p>
@@ -1021,10 +1098,10 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         </div>
       </section>
 
-      <!-- 11 VPP -->
+      <!-- 12 VPP -->
       <section class="sec module-section" id="vpp" data-cat="vpp">
         <div class="sec-head">
-          <div class="sec-num">12 / VPP</div>
+          <div class="sec-num">13 / VPP</div>
           <div>
             <h2>虚拟电厂</h2>
             <p>2026 版核心模块补齐聚合资源、准入接入、云边控制、市场参与、结算分成、商业模式与省级门槛；另有 2020 年系统读物与需求响应/车网互动模块，分别补概念源流与基线考核。</p>
@@ -1055,10 +1132,10 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         </div>
       </section>
 
-      <!-- 12 Index -->
+      <!-- 13 Index -->
       <section class="sec module-section" id="index" data-cat="index">
         <div class="sec-head">
-          <div class="sec-num">13 / INDEX</div>
+          <div class="sec-num">14 / INDEX</div>
           <div>
             <h2>索引、查证与工具</h2>
             <p>回答前的四个入口：文号与口径、省级状态、高频问答、英文摘要。先查状态与来源级别，再下结论。</p>
@@ -1094,7 +1171,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
             <div class="card-foot"><span>这个文号是什么状态、这个数字能不能信</span><span class="card-cta" aria-hidden="true">进入模块 →</span></div>
           </article>
           <article class="card" id="m-index-en" data-type="tool" data-search="INDEX EN English knowledge index digest knowledge map key figures provincial quick table open items answering discipline 2026 installed capacity carbon compliance 文件地图 Open items">
-            <div class="card-top"><span class="kind">索引</span><span class="card-meta">阅读约 53 分钟</span></div>
+            <div class="card-top"><span class="kind">索引</span><span class="card-meta">阅读约 66 分钟</span></div>
             <h3><a class="card-link" href="html/INDEX_EN-2026-11.html">English Knowledge Index</a></h3>
             <p>英文入口：文件地图、关键数字、省级简表、未定事项与答题纪律。</p>
             <div class="tags"><span class="tag">English</span><span class="tag">文件地图</span><span class="tag">Open items</span></div>
@@ -1110,10 +1187,10 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         </div>
       </section>
 
-      <!-- 13 Research -->
+      <!-- 14 Research -->
       <section class="sec module-section" id="research" data-cat="research">
         <div class="sec-head">
-          <div class="sec-num">14 / RESEARCH</div>
+          <div class="sec-num">15 / RESEARCH</div>
           <div>
             <h2>调研底稿</h2>
             <p>十份按时间归档的增量调研。它们保留信源日期、核实状态与冲突口径，是“为什么这么写”的证据链；正式引用仍以索引与原文为准。</p>
@@ -1200,7 +1277,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
           <div class="sec-num">02 / MAP</div>
           <div>
             <h2>从物理系统到市场，再到碳资产</h2>
-            <p>五层知识栈，外加一层查证工具。先建立物理与制度直觉，再理解市场如何出清与定价，最后落到资产现金流与合规。每一层都可以直接跳到对应模块。</p>
+            <p>五层知识栈，外加一层横向专题和一层查证工具。先建立物理与制度直觉，再理解市场如何出清与定价，最后落到资产现金流与合规；横向专题把十个市场里的同一类问题拉平对照。每一层都可以直接跳到对应模块。</p>
           </div>
         </div>
 
@@ -1241,6 +1318,8 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
                   <a class="chip" href="#m-intl-nl">荷兰电力市场</a>
                   <a class="chip" href="#m-intl-pl">波兰电力市场</a>
                   <a class="chip" href="#m-intl-benl">比利时与北欧</a>
+                  <a class="chip" href="#m-intl-us">美国电力市场</a>
+                  <a class="chip" href="#m-intl-jp">日本电力市场</a>
                   <a class="chip" href="#m-intl-storage">海外储能业务</a>
                   <a class="chip" href="#m-province">省级市场状态表</a>
                 </div>
@@ -1287,6 +1366,20 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
                   <a class="chip" href="#m-carbon-mgmt">碳管理</a>
                   <a class="chip" href="#m-carbon-asset">碳资产实务</a>
                   <a class="chip" href="#m-res-carbon-cbam">CBAM 增量调研</a>
+                </div>
+              </div>
+            </article>
+            <article class="layer" data-a="6">
+              <div class="layer-num">X</div>
+              <div>
+                <h3>横向专题</h3>
+                <p class="layer-q">把十个市场、五个层级里的同一类问题拉平对照。</p>
+                <div class="chips">
+                  <a class="chip" href="#m-cross-grid">海外并网与合规</a>
+                  <a class="chip" href="#m-cross-capacity">容量机制横向对照</a>
+                  <a class="chip" href="#m-cross-ancillary">辅助服务与平衡市场</a>
+                  <a class="chip" href="#m-cross-revenue">储能收益建模与数据源</a>
+                  <a class="chip" href="#m-cross-ppa">跨国 PPA 与绿证</a>
                 </div>
               </div>
             </article>
@@ -1563,10 +1656,10 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
           <figure class="panel wide">
             <div class="panel-head">
               <span class="panel-kicker">专题 08 · 海外</span>
-              <h3>澳 / 德 / 英 / 意 / 西 / 荷 / 波 / 比·北欧市场与储能设计对照</h3>
-              <p>八种处理波动的方式：区域价与 5 分钟结算、欧盟耦合与平衡市场、单一市场与容量市场、七区出清与 MACSE、伊比利亚双区与容量市场、单一报价区与拥堵接入、容量市场与储能补贴、CRM 与分区水电。</p>
+              <h3>澳 / 德 / 英 / 意 / 西 / 荷 / 波 / 比·北欧 / 美 / 日市场与储能设计对照</h3>
+              <p>十种处理波动的方式：区域价与 5 分钟结算、欧盟耦合与平衡市场、单一市场与容量市场、七区出清与 MACSE、伊比利亚双区与容量市场、单一报价区与拥堵接入、容量市场与储能补贴、CRM 与分区水电、ISO/RTO 三范式、30 分钟现货与 LTDA。</p>
             </div>
-            <div class="market-flow eight">
+            <div class="market-flow ten">
               <div class="mf-step"><span class="mf-t">澳洲 · 出清</span><strong>5 分钟</strong><small>区域价 + 约束</small></div>
               <div class="mf-step"><span class="mf-t">德国 · 平衡</span><strong>FCR/aFRR/mFRR</strong><small>容量 + 能量分开</small></div>
               <div class="mf-step"><span class="mf-t">英国 · 容量</span><strong>T-4 / T-1</strong><small>£/kW·年</small></div>
@@ -1575,6 +1668,8 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
               <div class="mf-step"><span class="mf-t">荷兰 · 接入</span><strong>无容量市场</strong><small>拥堵 / 非 firm</small></div>
               <div class="mf-step"><span class="mf-t">波兰 · 容量</span><strong>Rynek mocy</strong><small>拍卖 + OZE + 储能补贴</small></div>
               <div class="mf-step"><span class="mf-t">比·北欧 · 分区</span><strong>CRM / 12 区</strong><small>水电 + 负价</small></div>
+              <div class="mf-step"><span class="mf-t">美国 · 三范式</span><strong>ERCOT / PJM / CAISO</strong><small>能量-only / 容量 / RA</small></div>
+              <div class="mf-step"><span class="mf-t">日本 · 长期</span><strong>容量 + LTDA</strong><small>30 分钟现货 · 90% 还付</small></div>
             </div>
             <div class="mini-grid">
               <div class="mini"><b>澳洲价格带</b>2026-27 MPC A$23,200/MWh；CPT A$2,225,900/MWh；APC A$600/MWh。</div>
@@ -1585,15 +1680,17 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
               <div class="mini"><b>荷兰储能结构</b>无容量市场；能量 + FCR/aFRR/mFRR + 拥堵合同；SDE++ 不列独立电池。</div>
               <div class="mini"><b>波兰容量价</b>2030 交付年 465.02 PLN/kW·年；义务 6,887.639 MW；储能补贴 41.5 亿兹罗提。</div>
               <div class="mini"><b>比利时/北欧容量</b>CRM Y-4 4,690 MW；北欧 12 个报价区；15 分钟结算与负价并存。</div>
+              <div class="mini"><b>美国容量与降额</b>PJM 2028/29 BRA 325 美元/MW-day 触顶；4 小时电池 ELCC 约 50%；ERCOT 无容量市场、15 分钟结算。</div>
+              <div class="mini"><b>日本容量与 LTDA</b>容量市场第 6 回 13,303 日元/kW；LTDA 20 年、90% 还付、第 3 回起电池 ≥6 小时。</div>
             </div>
             <div class="fact-row">
               <span class="fact"><b>5</b> 个 NEM 区域</span>
               <span class="fact"><b>7</b> 个意大利报价区</span>
               <span class="fact"><b>2</b> 个伊比利亚报价区</span>
               <span class="fact"><b>12</b> 个北欧报价区</span>
-              <span class="fact"><b>8</b> 份海外模块</span>
+              <span class="fact"><b>10</b> 份海外模块</span>
             </div>
-            <figcaption>澳洲、德国、英国、意大利、西班牙、荷兰、波兰与比利时/北欧不是同一套市场规则的八个版本：澳洲是能源-only + FCAS，德国是欧盟耦合 + 平衡市场 + 再调度，英国是单一市场 + 平衡机制 + 容量市场，意大利是七区出清 + MACSE 长周期拍卖，西班牙是伊比利亚双区 + 15 分钟结算 + 2026 年容量市场，荷兰是单一报价区 + 无容量市场 + 拥堵接入，波兰是容量市场 + OZE 拍卖 + 储能补贴，比利时/北欧是 CRM + 12 个报价区的水电市场。储能收益结构差异更大：同是 100 MW/200 MWh，澳洲靠套利+FCAS+CIS，德国靠套利+平衡市场+电网费豁免，英国靠套利+BM+容量市场，意大利靠 MACSE+容量市场+MSD，西班牙靠套利+辅助+容量市场（待首拍），荷兰靠套利+辅助+拥堵合同，波兰靠容量市场+储能补贴+套利，比利时/北欧靠 CRM/辅助+分区价差+水电灵活性。八国共同的坑是时区、报价区、结算口径与进场合规。图中数字的时点与级别见对应笔记。</figcaption>
+            <figcaption>澳洲、德国、英国、意大利、西班牙、荷兰、波兰、比利时/北欧、美国与日本不是同一套市场规则的十个版本：澳洲是能源-only + FCAS，德国是欧盟耦合 + 平衡市场 + 再调度，英国是单一市场 + 平衡机制 + 容量市场，意大利是七区出清 + MACSE 长周期拍卖，西班牙是伊比利亚双区 + 15 分钟结算 + 2026 年容量市场，荷兰是单一报价区 + 无容量市场 + 拥堵接入，波兰是容量市场 + OZE 拍卖 + 储能补贴，比利时/北欧是 CRM + 12 个报价区的水电市场，美国是 ERCOT 能量-only、PJM 容量市场与 CAISO 日前实时 + RA 的三范式，日本是 30 分钟现货 + 容量市场 + LTDA 的双轨长期机制。储能收益结构差异更大：同是 100 MW/200 MWh，澳洲靠套利+FCAS+CIS，德国靠套利+平衡市场+电网费豁免，英国靠套利+BM+容量市场，意大利靠 MACSE+容量市场+MSD，西班牙靠套利+辅助+容量市场（待首拍），荷兰靠套利+辅助+拥堵合同，波兰靠容量市场+储能补贴+套利，比利时/北欧靠 CRM/辅助+分区价差+水电灵活性，美国 ERCOT 靠价差、PJM 靠容量、CAISO 靠 RA+价差，日本靠现货+EPRX+容量+LTDA。十国共同的坑是时区、报价区、结算口径与进场合规。图中数字的时点与级别见对应笔记。</figcaption>
           </figure>
         </div>
         </details>
@@ -1659,7 +1756,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         </div>
 
         <footer>
-          <div>数据截止 2026-11-10 · 55 个模块 · 九项技能<br>内容以 <span class="mono">knowledge/*.md</span> 原文为准；本页摘要与图示不构成投资建议。</div>
+          <div>数据截止 2026-11-11 · 63 个模块 · 九项技能<br>内容以 <span class="mono">knowledge/*.md</span> 原文为准；本页摘要与图示不构成投资建议。</div>
           <div><a href="../README.md">仓库 README</a> · <a href="../README_EN.md">README_EN</a> · <a href="#top">回到顶部 ↑</a></div>
         </footer>
       </section>

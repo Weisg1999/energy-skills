@@ -141,6 +141,7 @@ a:hover{text-decoration:underline;text-underline-offset:3px}
 .layer[data-a="3"] .layer-num{background:var(--amber)}
 .layer[data-a="4"] .layer-num{background:var(--plum)}
 .layer[data-a="5"] .layer-num{background:var(--red)}
+.layer[data-a="6"] .layer-num{background:var(--cross)}
 .layer h3{font-family:var(--serif);font-size:var(--fs-md);margin:0 0 2px;font-weight:600}
 .layer .layer-q{font-size:var(--fs-xs);color:var(--muted);margin:0 0 9px;line-height:1.55}
 .chips{display:flex;flex-wrap:wrap;gap:5px}
@@ -212,6 +213,7 @@ mark.hit{background:var(--amber-soft);color:inherit;border-radius:2px;padding:0 
 .module-section[data-cat="foundation"]{--cat:var(--teal);--cat-soft:var(--teal-soft)}
 .module-section[data-cat="spot"]{--cat:var(--blue);--cat-soft:var(--blue-soft)}
 .module-section[data-cat="intl"]{--cat:var(--indigo);--cat-soft:var(--indigo-soft)}
+.module-section[data-cat="cross"]{--cat:var(--cross);--cat-soft:var(--cross-soft)}
 .module-section[data-cat="price"]{--cat:var(--amber);--cat-soft:var(--amber-soft)}
 .module-section[data-cat="renewable"]{--cat:var(--renewable);--cat-soft:var(--teal-soft)}
 .module-section[data-cat="storage"]{--cat:var(--plum);--cat-soft:var(--plum-soft)}
@@ -243,6 +245,7 @@ mark.hit{background:var(--amber-soft);color:inherit;border-radius:2px;padding:0 
 .market-flow,.assess-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin:16px 0 14px}
 .market-flow.six{grid-template-columns:repeat(6,1fr)}
 .market-flow.eight{grid-template-columns:repeat(4,1fr)}
+.market-flow.ten{grid-template-columns:repeat(5,1fr)}
 .mf-step,.af-step{position:relative;padding:11px 11px 10px;border:1px solid var(--line);border-radius:9px;background:var(--paper)}
 .mf-step:not(:last-child)::after,.af-step:not(:last-child)::after{content:"→";position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:var(--fs-xs);color:var(--line-strong);background:var(--card);z-index:2;line-height:1}
 .mf-t{display:block;font:600 var(--fs-2xs)/1.4 var(--mono);letter-spacing:.07em;color:var(--teal);margin-bottom:3px;text-transform:uppercase}
@@ -397,7 +400,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   .panel.wide{grid-column:auto}
   .price-chain{grid-template-columns:1fr;gap:7px}
   .pc-arrow{height:16px;transform:rotate(90deg)}
-  .market-flow,.assess-flow,.market-flow.six,.market-flow.eight{grid-template-columns:1fr 1fr}
+  .market-flow,.assess-flow,.market-flow.six,.market-flow.eight,.market-flow.ten{grid-template-columns:1fr 1fr}
   .mf-step:not(:last-child)::after,.af-step:not(:last-child)::after{display:none}
   .market-grid{grid-template-columns:1fr}
   .method-grid{grid-template-columns:1fr}
@@ -426,7 +429,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   .hero-note{display:none}
   .sec-head{grid-template-columns:1fr;gap:6px}
   .sec-num{padding-top:0}
-  .market-flow,.assess-flow,.market-flow.six,.market-flow.eight{grid-template-columns:1fr}
+  .market-flow,.assess-flow,.market-flow.six,.market-flow.eight,.market-flow.ten{grid-template-columns:1fr}
   .carbon-chain{grid-template-columns:1fr 1fr}
   .rail{grid-template-columns:1fr}
   .map-skill{grid-template-columns:1fr;gap:6px}
@@ -566,7 +569,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
           <div class="sec-num">02 / MAP</div>
           <div>
             <h2>从物理系统到市场，再到碳资产</h2>
-            <p>五层知识栈，外加一层查证工具。先建立物理与制度直觉，再理解市场如何出清与定价，最后落到资产现金流与合规。每一层都可以直接跳到对应模块。</p>
+            <p>五层知识栈，外加一层横向专题和一层查证工具。先建立物理与制度直觉，再理解市场如何出清与定价，最后落到资产现金流与合规；横向专题把十个市场里的同一类问题拉平对照。每一层都可以直接跳到对应模块。</p>
           </div>
         </div>
 
@@ -607,6 +610,8 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
                   <a class="chip" href="#m-intl-nl">荷兰电力市场</a>
                   <a class="chip" href="#m-intl-pl">波兰电力市场</a>
                   <a class="chip" href="#m-intl-benl">比利时与北欧</a>
+                  <a class="chip" href="#m-intl-us">美国电力市场</a>
+                  <a class="chip" href="#m-intl-jp">日本电力市场</a>
                   <a class="chip" href="#m-intl-storage">海外储能业务</a>
                   <a class="chip" href="#m-province">省级市场状态表</a>
                 </div>
@@ -653,6 +658,20 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
                   <a class="chip" href="#m-carbon-mgmt">碳管理</a>
                   <a class="chip" href="#m-carbon-asset">碳资产实务</a>
                   <a class="chip" href="#m-res-carbon-cbam">CBAM 增量调研</a>
+                </div>
+              </div>
+            </article>
+            <article class="layer" data-a="6">
+              <div class="layer-num">X</div>
+              <div>
+                <h3>横向专题</h3>
+                <p class="layer-q">把十个市场、五个层级里的同一类问题拉平对照。</p>
+                <div class="chips">
+                  <a class="chip" href="#m-cross-grid">海外并网与合规</a>
+                  <a class="chip" href="#m-cross-capacity">容量机制横向对照</a>
+                  <a class="chip" href="#m-cross-ancillary">辅助服务与平衡市场</a>
+                  <a class="chip" href="#m-cross-revenue">储能收益建模与数据源</a>
+                  <a class="chip" href="#m-cross-ppa">跨国 PPA 与绿证</a>
                 </div>
               </div>
             </article>
@@ -929,10 +948,10 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
           <figure class="panel wide">
             <div class="panel-head">
               <span class="panel-kicker">专题 08 · 海外</span>
-              <h3>澳 / 德 / 英 / 意 / 西 / 荷 / 波 / 比·北欧市场与储能设计对照</h3>
-              <p>八种处理波动的方式：区域价与 5 分钟结算、欧盟耦合与平衡市场、单一市场与容量市场、七区出清与 MACSE、伊比利亚双区与容量市场、单一报价区与拥堵接入、容量市场与储能补贴、CRM 与分区水电。</p>
+              <h3>澳 / 德 / 英 / 意 / 西 / 荷 / 波 / 比·北欧 / 美 / 日市场与储能设计对照</h3>
+              <p>十种处理波动的方式：区域价与 5 分钟结算、欧盟耦合与平衡市场、单一市场与容量市场、七区出清与 MACSE、伊比利亚双区与容量市场、单一报价区与拥堵接入、容量市场与储能补贴、CRM 与分区水电、ISO/RTO 三范式、30 分钟现货与 LTDA。</p>
             </div>
-            <div class="market-flow eight">
+            <div class="market-flow ten">
               <div class="mf-step"><span class="mf-t">澳洲 · 出清</span><strong>5 分钟</strong><small>区域价 + 约束</small></div>
               <div class="mf-step"><span class="mf-t">德国 · 平衡</span><strong>FCR/aFRR/mFRR</strong><small>容量 + 能量分开</small></div>
               <div class="mf-step"><span class="mf-t">英国 · 容量</span><strong>T-4 / T-1</strong><small>£/kW·年</small></div>
@@ -941,6 +960,8 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
               <div class="mf-step"><span class="mf-t">荷兰 · 接入</span><strong>无容量市场</strong><small>拥堵 / 非 firm</small></div>
               <div class="mf-step"><span class="mf-t">波兰 · 容量</span><strong>Rynek mocy</strong><small>拍卖 + OZE + 储能补贴</small></div>
               <div class="mf-step"><span class="mf-t">比·北欧 · 分区</span><strong>CRM / 12 区</strong><small>水电 + 负价</small></div>
+              <div class="mf-step"><span class="mf-t">美国 · 三范式</span><strong>ERCOT / PJM / CAISO</strong><small>能量-only / 容量 / RA</small></div>
+              <div class="mf-step"><span class="mf-t">日本 · 长期</span><strong>容量 + LTDA</strong><small>30 分钟现货 · 90% 还付</small></div>
             </div>
             <div class="mini-grid">
               <div class="mini"><b>澳洲价格带</b>2026-27 MPC A$23,200/MWh；CPT A$2,225,900/MWh；APC A$600/MWh。</div>
@@ -951,15 +972,17 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
               <div class="mini"><b>荷兰储能结构</b>无容量市场；能量 + FCR/aFRR/mFRR + 拥堵合同；SDE++ 不列独立电池。</div>
               <div class="mini"><b>波兰容量价</b>2030 交付年 465.02 PLN/kW·年；义务 6,887.639 MW；储能补贴 41.5 亿兹罗提。</div>
               <div class="mini"><b>比利时/北欧容量</b>CRM Y-4 4,690 MW；北欧 12 个报价区；15 分钟结算与负价并存。</div>
+              <div class="mini"><b>美国容量与降额</b>PJM 2028/29 BRA 325 美元/MW-day 触顶；4 小时电池 ELCC 约 50%；ERCOT 无容量市场、15 分钟结算。</div>
+              <div class="mini"><b>日本容量与 LTDA</b>容量市场第 6 回 13,303 日元/kW；LTDA 20 年、90% 还付、第 3 回起电池 ≥6 小时。</div>
             </div>
             <div class="fact-row">
               <span class="fact"><b>5</b> 个 NEM 区域</span>
               <span class="fact"><b>7</b> 个意大利报价区</span>
               <span class="fact"><b>2</b> 个伊比利亚报价区</span>
               <span class="fact"><b>12</b> 个北欧报价区</span>
-              <span class="fact"><b>8</b> 份海外模块</span>
+              <span class="fact"><b>10</b> 份海外模块</span>
             </div>
-            <figcaption>澳洲、德国、英国、意大利、西班牙、荷兰、波兰与比利时/北欧不是同一套市场规则的八个版本：澳洲是能源-only + FCAS，德国是欧盟耦合 + 平衡市场 + 再调度，英国是单一市场 + 平衡机制 + 容量市场，意大利是七区出清 + MACSE 长周期拍卖，西班牙是伊比利亚双区 + 15 分钟结算 + 2026 年容量市场，荷兰是单一报价区 + 无容量市场 + 拥堵接入，波兰是容量市场 + OZE 拍卖 + 储能补贴，比利时/北欧是 CRM + 12 个报价区的水电市场。储能收益结构差异更大：同是 100 MW/200 MWh，澳洲靠套利+FCAS+CIS，德国靠套利+平衡市场+电网费豁免，英国靠套利+BM+容量市场，意大利靠 MACSE+容量市场+MSD，西班牙靠套利+辅助+容量市场（待首拍），荷兰靠套利+辅助+拥堵合同，波兰靠容量市场+储能补贴+套利，比利时/北欧靠 CRM/辅助+分区价差+水电灵活性。八国共同的坑是时区、报价区、结算口径与进场合规。图中数字的时点与级别见对应笔记。</figcaption>
+            <figcaption>澳洲、德国、英国、意大利、西班牙、荷兰、波兰、比利时/北欧、美国与日本不是同一套市场规则的十个版本：澳洲是能源-only + FCAS，德国是欧盟耦合 + 平衡市场 + 再调度，英国是单一市场 + 平衡机制 + 容量市场，意大利是七区出清 + MACSE 长周期拍卖，西班牙是伊比利亚双区 + 15 分钟结算 + 2026 年容量市场，荷兰是单一报价区 + 无容量市场 + 拥堵接入，波兰是容量市场 + OZE 拍卖 + 储能补贴，比利时/北欧是 CRM + 12 个报价区的水电市场，美国是 ERCOT 能量-only、PJM 容量市场与 CAISO 日前实时 + RA 的三范式，日本是 30 分钟现货 + 容量市场 + LTDA 的双轨长期机制。储能收益结构差异更大：同是 100 MW/200 MWh，澳洲靠套利+FCAS+CIS，德国靠套利+平衡市场+电网费豁免，英国靠套利+BM+容量市场，意大利靠 MACSE+容量市场+MSD，西班牙靠套利+辅助+容量市场（待首拍），荷兰靠套利+辅助+拥堵合同，波兰靠容量市场+储能补贴+套利，比利时/北欧靠 CRM/辅助+分区价差+水电灵活性，美国 ERCOT 靠价差、PJM 靠容量、CAISO 靠 RA+价差，日本靠现货+EPRX+容量+LTDA。十国共同的坑是时区、报价区、结算口径与进场合规。图中数字的时点与级别见对应笔记。</figcaption>
           </figure>
         </div>
         </details>

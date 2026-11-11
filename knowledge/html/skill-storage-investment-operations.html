@@ -58,14 +58,15 @@
               <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
               <li><a href="../index.html#spot"><b>05</b>电力现货与省间交易</a></li>
               <li><a href="../index.html#intl"><b>06</b>海外市场</a></li>
-              <li><a href="../index.html#price"><b>07</b>电价</a></li>
-              <li><a href="../index.html#renewable"><b>08</b>新能源与并网</a></li>
-              <li><a href="../index.html#storage"><b>09</b>储能与 EMS</a></li>
-              <li><a href="../index.html#park"><b>10</b>综合能源与零碳园区</a></li>
-              <li><a href="../index.html#carbon"><b>11</b>碳市场与碳管理</a></li>
-              <li><a href="../index.html#vpp"><b>12</b>虚拟电厂</a></li>
-              <li><a href="../index.html#index"><b>13</b>索引、查证与工具</a></li>
-              <li><a href="../index.html#research"><b>14</b>调研底稿</a></li>
+              <li><a href="../index.html#cross"><b>07</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>08</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>09</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>10</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>11</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>12</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>13</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>14</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>15</b>调研底稿</a></li>
       </ul>
     </div>
   </aside>
@@ -77,8 +78,8 @@
       <p class="lede">收益堆叠、投决、退化与考核</p>
       <p class="hook">可执行流程与配套工具；正文与 SKILL.md 同步。</p>
       <div class="tags"><span class="tag">技能</span><span class="tag">储能</span><span class="tag">投决</span><span class="tag">LCOS</span></div>
-      <div class="doc-meta"><span>约 29.3k 字</span><span>阅读约 50 分钟</span><span>17 节</span><span>数据截止 2026-11-01</span></div>
-      <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-storage-investment-operations.txt" download="储能投资与运营-SKILL.txt">下载 TXT</a><span>完整技能文档，约 35 KB，含 frontmatter</span></p>
+      <div class="doc-meta"><span>约 33.4k 字</span><span>阅读约 57 分钟</span><span>17 节</span><span>数据截止 2026-11-01</span></div>
+      <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-storage-investment-operations.txt" download="储能投资与运营-SKILL.txt">下载 TXT</a><span>完整技能文档，约 39 KB，含 frontmatter</span></p>
     </header>
 
     <details class="toc-mobile">
@@ -99,13 +100,13 @@
             <li class="lv2"><a href="#s82">12. 术语表（中英对照）</a></li>
             <li class="lv2"><a href="#s83">13. 参考实现与自测</a></li>
             <li class="lv2"><a href="#s84">14. 专家问答推理手册</a></li>
-            <li class="lv2"><a href="#s90">14A. 海外市场速查（澳洲 NEM / 德国 DE-LU / 英国 GB / 意大利 / 西班牙 / 荷兰 / 波兰 / 比利时与北欧）</a></li>
-            <li class="lv2"><a href="#s102">15. 知识来源、维护与分工</a></li>
+            <li class="lv2"><a href="#s90">14A. 海外市场速查（澳洲 NEM / 德国 DE-LU / 英国 GB / 意大利 / 西班牙 / 荷兰 / 波兰 / 比利时与北欧 / 美国三市场 / 日本）</a></li>
+            <li class="lv2"><a href="#s104">15. 知识来源、维护与分工</a></li>
       </ol>
     </details>
 
     <article class="prose">
-<aside class="note note-head"><p>🌐 English version: <a href="skill-storage-investment-operations-en.html">SKILL_EN.md</a> ｜ 姊妹技能：<a href="skill-electricity-trading-expert.html">电力交易专家</a>（市场规则/结算/容量电价原文）、<a href="skill-virtual-power-plant.html">虚拟电厂专家</a>（聚合/需求响应运营）、<a href="skill-spot-bidding-quant.html">现货报价量化专家</a>（电价预测/报价/回测）、<a href="skill-carbon-asset-expert.html">碳资产管理专家</a>（碳履约/CCER/CBAM）。本技能只回答&quot;储能项目值不值得投、收益怎么算、运营怎么考核&quot;。</p><p>版本 v1.9 · 数据截止 2026-11-01</p><p><strong>维护入口</strong>：<code>tools/selftest.py</code>（跑通即代表正文算例未过期）、<a href="储能投资与运营-2026-11.html">储能投资与运营底稿</a>（政策节点、成本区间、指标口径）、<a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a>（调度算法）、<a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a>（微网运行）、<a href="海外储能业务-2026-11.html">海外储能业务</a>（八市场收益与投决口径）、<a href="英国电力市场-2026-11.html">英国电力市场</a>、<a href="意大利电力市场-2026-11.html">意大利电力市场</a>（BM/CM/LDES、MACSE）。</p><p><strong>2026-2027 未定事项</strong>：114 号文省级细则覆盖面与考核扣减、1656 号文在零售侧的传导、容量电价分母时长（4/6/8/10 h）、辅助服务规则修订、消防与并网标准升级、储能系统价格走势。</p></aside>
+<aside class="note note-head"><p>🌐 English version: <a href="skill-storage-investment-operations-en.html">SKILL_EN.md</a> ｜ 姊妹技能：<a href="skill-electricity-trading-expert.html">电力交易专家</a>（市场规则/结算/容量电价原文）、<a href="skill-virtual-power-plant.html">虚拟电厂专家</a>（聚合/需求响应运营）、<a href="skill-spot-bidding-quant.html">现货报价量化专家</a>（电价预测/报价/回测）、<a href="skill-carbon-asset-expert.html">碳资产管理专家</a>（碳履约/CCER/CBAM）。本技能只回答&quot;储能项目值不值得投、收益怎么算、运营怎么考核&quot;。</p><p>版本 v1.9 · 数据截止 2026-11-01</p><p><strong>维护入口</strong>：<code>tools/selftest.py</code>（跑通即代表正文算例未过期）、<a href="储能投资与运营-2026-11.html">储能投资与运营底稿</a>（政策节点、成本区间、指标口径）、<a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a>（调度算法）、<a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a>（微网运行）、<a href="海外储能业务-2026-11.html">海外储能业务</a>（十市场收益与投决口径）、<a href="英国电力市场-2026-11.html">英国电力市场</a>、<a href="意大利电力市场-2026-11.html">意大利电力市场</a>（BM/CM/LDES、MACSE）、<a href="美国电力市场-2026-11.html">美国电力市场</a>、<a href="日本电力市场-2026-11.html">日本电力市场</a>（ERCOT/PJM/CAISO、JEPX/容量/LTDA）。</p><p><strong>2026-2027 未定事项</strong>：114 号文省级细则覆盖面与考核扣减、1656 号文在零售侧的传导、容量电价分母时长（4/6/8/10 h）、辅助服务规则修订、消防与并网标准升级、储能系统价格走势。</p></aside>
 <hr>
 <h2 id="s1">0. 角色定义与行为规范</h2>
 <h3 id="s2">0.1 角色画像</h3>
@@ -113,7 +114,7 @@
 <h3 id="s3">0.2 回答行为规范（必须遵守）</h3>
 <ol><li><strong>先定六件事再算</strong>：项目形态（独立/配储/用户侧/火储/微网/聚合）、计量点（AC/DC、关口/单元）、市场与政策（省份、现货/中长期/辅助服务）、收入结构（价差/容量/租赁/服务/需量）、融资结构（资本金/贷款/租赁）、时间口径（投运年、政策有效期、寿命）。六者不明，任何 IRR 都是虚构。</li><li><strong>四个口径必须写清</strong>：交流侧还是直流侧；元/Wh 还是元/W；含税还是不含税；额定能量还是可用能量。四者混用会让结果差 10%–100%。</li><li><strong>收入拆四行</strong>：毛收入、占用与机会成本、考核扣减、退化成本。只报&quot;年收入 X 万元&quot;不合格。</li><li><strong>政策数字带文号、时点、省份</strong>。省别规则先确认；国家文件只说框架，不替省份承诺标准。</li><li><strong>来源分级</strong>：A=法规/主管部门/国家标准；B=交易中心、行业协会、招中标公告；C=媒体/研报/企业宣传；D=本技能基于公开参数的测算。厂商&quot;循环寿命 12000 次&quot;&quot;效率 92%&quot;一律 C 级，不能直接进基准模型。</li><li><strong>不构成投资建议</strong>：只做测算框架与情景分析，不承诺收益、不推荐具体设备或项目。</li><li><strong>合规红线</strong>：不提供骗补、虚报可用容量、篡改运行数据、规避考核、隐瞒安全缺陷的方法；不把未核实的补贴当作长期收入。</li><li><strong>单点结论必须带敏感性</strong>：价差、循环次数、CAPEX、容量电价、可用率、退化成本至少各动一次；只给基准值等于没给结论。</li></ol>
 <h3 id="s4">0.3 知识地图（问题类型 → 章节）</h3>
-<div class="table-wrap"><table><thead><tr><th>你被问到</th><th>先查</th></tr></thead><tbody><tr><td>这个储能项目值不值得投</td><td>第 1、3、6 章</td></tr><tr><td>收益有哪些、能不能叠加</td><td>第 4 章</td></tr><tr><td>容量电价怎么算、能拿多少</td><td>第 2.1、4.3 节</td></tr><tr><td>固定峰谷价差没了怎么办</td><td>第 2.2、4.2、9.1 节</td></tr><tr><td>用户侧削峰能省多少基本电费</td><td>第 2.5、4.6 节</td></tr><tr><td>调频/备用能赚多少、会不会影响套利</td><td>第 4.5、4.8 节</td></tr><tr><td>新能源配储怎么算</td><td>第 4.7 节</td></tr><tr><td>LCOS/IRR/NPV/回收期怎么算</td><td>第 6 章</td></tr><tr><td>贷款能不能过、DSCR 多少</td><td>第 6.8 节</td></tr><tr><td>运营考核怎么扣钱</td><td>第 7.3 节</td></tr><tr><td>合同怎么签、租赁怎么定价</td><td>第 8 章</td></tr><tr><td>主要风险是什么、怎么压测</td><td>第 9 章</td></tr><tr><td>投前要问哪些问题</td><td>第 10 章</td></tr><tr><td>澳洲/德国大储或工商储怎么投</td><td>第 14A 章</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>你被问到</th><th>先查</th></tr></thead><tbody><tr><td>这个储能项目值不值得投</td><td>第 1、3、6 章</td></tr><tr><td>收益有哪些、能不能叠加</td><td>第 4 章</td></tr><tr><td>容量电价怎么算、能拿多少</td><td>第 2.1、4.3 节</td></tr><tr><td>固定峰谷价差没了怎么办</td><td>第 2.2、4.2、9.1 节</td></tr><tr><td>用户侧削峰能省多少基本电费</td><td>第 2.5、4.6 节</td></tr><tr><td>调频/备用能赚多少、会不会影响套利</td><td>第 4.5、4.8 节</td></tr><tr><td>新能源配储怎么算</td><td>第 4.7 节</td></tr><tr><td>LCOS/IRR/NPV/回收期怎么算</td><td>第 6 章</td></tr><tr><td>贷款能不能过、DSCR 多少</td><td>第 6.8 节</td></tr><tr><td>运营考核怎么扣钱</td><td>第 7.3 节</td></tr><tr><td>合同怎么签、租赁怎么定价</td><td>第 8 章</td></tr><tr><td>主要风险是什么、怎么压测</td><td>第 9 章</td></tr><tr><td>投前要问哪些问题</td><td>第 10 章</td></tr><tr><td>海外大储或工商储怎么投</td><td>第 14A 章</td></tr></tbody></table></div>
 <hr>
 <h2 id="s5">1. 边界：六种形态、三条收益逻辑</h2>
 <h3 id="s6">1.1 六种形态</h3>
@@ -408,12 +409,14 @@ print(round(finance.npv(0.08, flows)), round(finance.irr(flows) * 100, 2))</code
 <p>常见四个原因：① 可用率按&quot;没坏&quot;统计，计划停运未扣；② 容量申报沿用初始值，SOH 下降后实际可用容量不足；③ 调频 K 值下降未复盘；④ 充电抬高需量，基本电费反而上升。</p>
 <p>排查顺序：先对账结算电量与关口表，再查非计划停运记录，再核 SOH 与容量申报，最后查需量曲线与充电窗口。考核申诉必须带原始曲线、调度指令、回执与时间戳。</p>
 <hr>
-<h2 id="s90">14A. 海外市场速查（澳洲 NEM / 德国 DE-LU / 英国 GB / 意大利 / 西班牙 / 荷兰 / 波兰 / 比利时与北欧）</h2>
-<aside class="note"><p>适用：只回答澳/德/英/意/西/荷/波/比·北欧大储与工商储的收益结构、准入、并网费与投决口径；不把中国容量电价/峰谷价差平移到海外。海外八市场口径截止 2026-11-10；规则细节见知识模块《海外储能业务：八市场大储与工商储（2026 版）》《英国电力市场（2026 版）》《意大利电力市场（2026 版）》《西班牙电力市场（2026 版）》《荷兰电力市场（2026 版）》《波兰电力市场（2026 版）》《比利时与北欧电力市场（2026 版）》。</p></aside>
+<h2 id="s90">14A. 海外市场速查（澳洲 NEM / 德国 DE-LU / 英国 GB / 意大利 / 西班牙 / 荷兰 / 波兰 / 比利时与北欧 / 美国三市场 / 日本）</h2>
+<aside class="note"><p>适用：只回答澳/德/英/意/西/荷/波/比·北欧/美/日大储与工商储的收益结构、准入、并网费与投决口径；不把中国容量电价/峰谷价差平移到海外。海外十市场口径截止 2026-11-10；规则细节见知识模块《海外储能业务：十市场大储与工商储（2026 版）》《英国电力市场（2026 版）》《意大利电力市场（2026 版）》《西班牙电力市场（2026 版）》《荷兰电力市场（2026 版）》《波兰电力市场（2026 版）》《比利时与北欧电力市场（2026 版）》《美国电力市场（2026 版）》《日本电力市场（2026 版）》。</p></aside>
 <h3 id="s91">14A.1 市场卡片：核心六市场</h3>
 <div class="table-wrap"><table><thead><tr><th>维度</th><th>澳洲 NEM</th><th>德国 DE-LU</th><th>英国 GB</th><th>意大利</th><th>西班牙</th><th>荷兰</th></tr></thead><tbody><tr><td>大储收入</td><td>能量套利 + FCAS + CIS</td><td>套利 + FCR/aFRR/mFRR + 电网费豁免</td><td>套利 + BM + 容量市场 + 调频/辅助服务</td><td>套利 + MSD/MB + 容量市场 + MACSE</td><td>套利 + aFRR/mFRR + 容量市场（待首拍）+ 补贴</td><td>套利 + FCR/aFRR/mFRR + 拥堵合同</td></tr><tr><td>工商储收入</td><td>需量电费 + 价差 + 自用</td><td>需量电费 + §14a + 动态电价</td><td>需量电费 + 分时价差 + DFS + 聚合参与 BM/CM</td><td>需量管理 + 分时价差 + 自用（补贴以当年法规为准）</td><td>需量电费 + 分时价差 + 自用 + 灵活并网</td><td>需量电费 + 分时价差 + 自用 + 拥堵/非 firm</td></tr><tr><td>容量机制</td><td>无；CIS 竞标收入保障</td><td>无；StromVKG 2031 起</td><td>T-4/T-1，£/kW·年；电池可参与但按 de-rating</td><td>容量市场 + MACSE（储能专用，15 年）</td><td>2026 年容量市场，半岛系统，firm power，pay-as-bid</td><td>无容量市场（曾研究未实施）</td></tr><tr><td>结算粒度</td><td>5 分钟</td><td>日前/日内 15 分钟 MTU</td><td>半小时结算；EPEX GB 小时 + GB-30min</td><td>MGP 15 分钟 MTU；MSD/MB 分层</td><td>15 分钟（日前/日内/不平衡）</td><td>15 分钟 MTU；不平衡 15 分钟</td></tr><tr><td>并网</td><td>NSP 连接 + AEMO 注册 + MASS</td><td>VDE-AR-N + MaStR + 机组认证</td><td>NESO/DNO 连接 + BSC/BMU + CM 预审 + TMO4+</td><td>Terna/GME 注册 + 并网协议 + 许可（南部/岛屿排队）</td><td>REE/配电接入 + 许可/环评 + 构网型 + 并网协议</td><td>TenneT/DSO 接入 + 非 firm/ATR85 + 许可</td></tr><tr><td>关键政策日</td><td>CIS 第 8 轮 COD 2029-12-31</td><td>§118(6) 投运截止 2029-08-04</td><td>LDES minded-to 2026-06-26、最终参数 2026 秋</td><td>MACSE 次轮 2026-11-24；FER X DM 194/2026 已生效</td><td>RD 997/2025、RDL 7/2026 已生效；容量首拍待 REE</td><td>Energiewet 2026-01-01；优先排序 2026-07-01；净计量 2027-01-01</td></tr></tbody></table></div>
 <p><strong>14A.1b 新增市场卡片（波兰 / 比利时 / 北欧四国）</strong></p>
 <div class="table-wrap"><table><thead><tr><th>维度</th><th>波兰</th><th>比利时</th><th>北欧四国</th></tr></thead><tbody><tr><td>大储收入</td><td>容量市场 + 套利 + FCR/aFRR/mFRR + NFOŚiGW CAPEX</td><td>CRM + 套利 + FCR/aFRR/mFRR</td><td>套利 + 辅助 + 储备（无容量市场）</td></tr><tr><td>工商储收入</td><td>需量电费 + 价差 + 自用 + 容量费优化</td><td>需量电费 + 分时价差 + 自用</td><td>需量电费 + 分时价差 + 自用 + 分区价差</td></tr><tr><td>容量机制</td><td>rynek mocy；2030 交付年 465.02 PLN/kW·年；降额约 13%（C）</td><td>CRM Y-4/Y-2/Y-1；Y-4 中标 4,690 MW；新建最长 15 年</td><td>瑞典 effektreserv、芬兰 tehoreservi；挪威/丹麦无容量市场</td></tr><tr><td>结算粒度</td><td>15 分钟 MTU；不平衡 15 分钟</td><td>15 分钟 MTU；不平衡 15 分钟</td><td>15 分钟 MTU；2025-03-04 起不平衡 15 分钟 + mFRR EAM</td></tr><tr><td>并网</td><td>PSE/OSD 接入 + URE 许可 + 容量注册</td><td>Elia 接入 + 许可 + CRM 资格</td><td>各国 TSO/DSO 接入 + 许可 + 预审</td></tr><tr><td>关键政策日</td><td>2030 容量拍卖已结束（第 2 轮）；2026 OZE 拍卖 76.1 TWh</td><td>2025 年 Y-4/Y-2/Y-1 结果；核电延寿至 2035</td><td>2025-03-04 不平衡改革；2025-10-01 15 分钟 MTU；effektreserv 2025-10-07 流拍</td></tr></tbody></table></div>
+<p><strong>14A.1c 美国与日本卡片</strong></p>
+<div class="table-wrap"><table><thead><tr><th>维度</th><th>美国 ERCOT</th><th>美国 PJM</th><th>美国 CAISO</th><th>日本</th></tr></thead><tbody><tr><td>大储收入</td><td>套利 + Reg/RRS/ECRS</td><td>容量 + 套利 + 辅助</td><td>套利 + RA + FRP</td><td>现货 + EPRX + 容量 + LTDA</td></tr><tr><td>工商储收入</td><td>需量电费 + 价差 + 自用</td><td>需量电费 + 价差 + 容量/辅助聚合</td><td>需量电费 + 价差 + RA/FRP</td><td>需量电费 + 价差 + 自用 + EPRX</td></tr><tr><td>容量机制</td><td>无；ORDC 稀缺定价</td><td>BRA/FRR；ELCC 降额；2028/29 触顶 $325/MW-day</td><td>无集中容量拍卖；RA 小时切片</td><td>容量市场（提前 4 年、单一价、1 年）+ LTDA（20 年）</td></tr><tr><td>现货与结算</td><td>5 分钟调度、15 分钟结算；HCAP/LCAP 5,000/2,000 美元/MWh</td><td>按产品（小时/5 分钟）；能量按 tariff</td><td>日前 + FMM 15 分钟 + RTD 5 分钟；5 分钟结算</td><td>JEPX 48 个 30 分钟商品；30 分钟结算；无负价</td></tr><tr><td>平衡/辅助</td><td>Reg/RRS/ECRS；RTC+B 2025-12-05 上线</td><td>调频/备用按产品；容量性能罚则</td><td>FRP（向上/向下）；RA 月度展示</td><td>EPRX 5 类 + 复合；上限 10.00 日元/ΔkW·30 分</td></tr><tr><td>并网</td><td>ERCOT 并网队列 + 州/地方许可</td><td>队列约 40 个月 + 州许可</td><td>集群制队列约 197 GW + CPUC/CEC</td><td>OCCTO 接续检讨 FY2025 24,880 件 + 件数上限</td></tr><tr><td>关键政策日</td><td>RTC+B 2025-12-05；301 关税 2026-01-01 起 25%</td><td>2028/29 BRA 2026-07-14 出清；FEOC 2025-12-31 后开工适用</td><td>EDAM 2026-05-01；RA 2026 合规年</td><td>C 值 2026-10-01；EPRX 上限 2026-09-01；LTDA 第 3 回 2026-05-13</td></tr></tbody></table></div>
 <h3 id="s92">14A.2 澳洲五条</h3>
 <ol><li><strong>收益 = 套利 + FCAS + CIS</strong>：没有容量电价；CIS 是竞标收入保障，不是按容量普发。</li><li><strong>套利公式</strong>：<code>套利毛利 = 放电量 × 放电价 − 充电量 × 充电价</code>，<code>充电量 = 放电量 ÷ RTE</code>；再扣退化与电网费。</li><li><strong>5 分钟结算 + 区域价 + MLF</strong>：结算电量按 MLF 调整；MLF 每年变，回测要分年。</li><li><strong>10 个 FCAS 品种</strong>（8 contingency + 2 regulation），1 秒极快 FCAS 于 2023-10-09 上线；FCAS 与套利争用功率和 SOC。</li><li><strong>注册与并网</strong>：储能可按 IRP/Generator/Market Customer 注册；NSP 连接、AEMO 注册、MASS 测试、SCADA 一个都不能少。</li></ol>
 <h3 id="s93">14A.3 德国六条</h3>
@@ -438,24 +441,38 @@ print(round(finance.npv(0.08, flows)), round(finance.irr(flows) * 100, 2))</code
 <pre><code>CRM 收入 = 降额容量(MW) × 中标价(€/MW·年)
 分区套利 = (分区放电价 − 分区充电价 ÷ RTE) × 放电量
 储备收入 = 中标容量(MW) × 储备价(当地币/MW·季)</code></pre>
-<h3 id="s100">14A.10 同一问题，八边怎么答</h3>
+<h3 id="s100">14A.9b 美国三市场五条</h3>
+<ol><li><strong>三个市场三套逻辑</strong>：ERCOT 是能量-only + ORDC 稀缺定价；PJM 靠容量市场（BRA/ELCC）；CAISO 靠日前/实时 + RA 资源充裕度。同一套收益模型不能平移到三地。</li><li><strong>ERCOT 按 15 分钟结算</strong>：实时 SCED 5 分钟、结算 15 分钟；HCAP/LCAP 5,000/2,000 美元/MWh；RTC+B 于 2025-12-05 上线，把实时能量与辅助服务联合优化并纳入 SOC；在运电池 15,008 MW（2025-09，B 级）。</li><li><strong>PJM 容量收入按 ELCC 折算</strong>：2028/29 BRA 出清 325 美元/MW·日（新上限）触顶，清算 152.1 GW、缺口 6.8 GW、备用率 14.7%，新增实际容量仅约 525 MW；4 小时电池 ELCC 约 50%，容量收入约 6 万美元/MW-年（量级口径）；触顶价不等于可融资价，还要算性能罚则。</li><li><strong>CAISO 叠加 RA 与 FRP</strong>：日前 + FMM 15 分钟 + RTD 5 分钟；RA 自 2026 合规年全面执行小时切片；EDAM 于 2026-05-01 投运；储能 &gt;21 GW，负价集中在白天光伏高峰，套利时段后移。</li><li><strong>并网与供应链是硬门槛</strong>：PJM 2026-08 首轮并联 715 个项目/201.5 GW、研究周期约 40 个月；CAISO 队列约 197 GW；ITC 30% + 本土含量 10% + 能源社区 10%；FEOC 规则按 2025-12-31 后开工适用；301 关税 2026-01-01 起 25%；消防按 UL 9540/NFPA 855、并网按 IEEE 1547。</li></ol>
+<p><strong>三个常用公式</strong></p>
+<pre><code>PJM 容量收入 ≈ ELCC(MW) × 出清价(美元/MW-day) × 365
+ERCOT 套利毛收入 ≈ 放电量(MWh) × 价差(美元/MWh) × RTE × 循环次数
+CAISO RA 收入 ≈ NQC(MW) × 容量价(美元/kW-年) × 1000</code></pre>
+<h3 id="s101">14A.9c 日本五条</h3>
+<ol><li><strong>收益 = 现货 + EPRX + 容量市场 + LTDA</strong>：JEPX 日前 48 个 30 分钟商品、10:00 截止、盲拍单一价；价格下限 0.01 日元/kWh，<strong>没有负电价</strong>，套用欧洲负价模型会高估充电收益。</li><li><strong>容量市场按降额容量付钱</strong>：提前 4 年、单一价、1 年契约；第 5 回（FY2028）11,134 日元/kW、第 6 回（FY2029）13,303 日元/kW；历史均价在 3,109–14,137 日元/kW 之间，不能单次外推。</li><li><strong>LTDA 是 20 年收入但有还付与时长门槛</strong>：pay-as-bid、其他市场收益约 90% 事后还付；第 3 回起 &lt;6 小时电池不再具备资格；第 3 回电池中标 1,251 MW/19 件、落札率 36%（C 级）。LTDA 收入不能与现货/EPRX 收入简单相加。</li><li><strong>不平衡成本高</strong>：30 分钟结算；2026-10-01 起 C 值 200→300 日元/kWh、D 值 45→50 日元/kWh（C 级）；偏差成本可能超过套利毛利，必须配日内滚动预测。EPRX 上限 2026-09-01 起降至 10.00 日元/ΔkW·30 分，单靠 ΔkW 不成立。</li><li><strong>并网排队与外资审查是硬门槛</strong>：储能接续检讨 FY2025 达 24,880 件；2026-08-01 起同一事业者件数上限——东京 11、关西 12、九州 8；一般送配电、送电、≥5 万 kW 发电属外为法核心行业，事前届报、审查 30 日–5 个月。</li></ol>
+<p><strong>三个常用公式</strong></p>
+<pre><code>容量市场收入 ≈ de-rated 容量(kW) × 出清价(日元/kW·年)
+LTDA 净收入 ≈ LTDA 容量收入 + 其他市场收益 × (1 − 90%)
+EPRX 收入 ≈ Σ ΔkW × 单价(日元/ΔkW·30 分) + 调用电量 × kWh 单价</code></pre>
+<h3 id="s102">14A.10 同一问题，十边怎么答</h3>
 <div class="table-wrap"><table><thead><tr><th>问题</th><th>澳洲 NEM</th><th>德国 DE-LU</th><th>英国 GB</th><th>意大利</th><th>西班牙</th><th>荷兰</th></tr></thead><tbody><tr><td>100 MW/200 MWh 靠什么回收投资</td><td>套利 + FCAS + CIS</td><td>套利 + 平衡市场 + 电网费豁免</td><td>套利 + BM + 容量市场 + 辅助服务</td><td>套利 + MSD/MB + 容量市场 + MACSE</td><td>套利 + 辅助 + 容量市场（待首拍）+ 补贴</td><td>套利 + FCR/aFRR/mFRR + 拥堵合同</td></tr><tr><td>有没有容量电价</td><td>无；CIS 收入保障</td><td>无；2031 起容量市场</td><td>有；T-4/T-1，按 de-rating</td><td>有；容量市场 + MACSE</td><td>有；2026 年新机制，半岛系统</td><td>无；曾研究未实施</td></tr><tr><td>工商储最大收益项</td><td>需量电费 + 价差</td><td>需量电费 + §14a + 动态电价</td><td>需量电费 + 分时价差 + DFS</td><td>需量管理 + 分时价差</td><td>需量电费 + 分时价差 + 灵活并网</td><td>需量电费 + 分时价差 + 拥堵/非 firm</td></tr><tr><td>并网难点</td><td>NSP 排队、MASS 测试</td><td>VDE-AR-N 认证、机组证书</td><td>并网排队、TMO4+、G99/G100</td><td>南部/岛屿排队、许可与加固</td><td>许可/环评、构网型、接入容量</td><td>接入排队、非 firm、拥堵</td></tr><tr><td>关键政策截止日</td><td>CIS COD 2029-12-31</td><td>§118(6) 投运 2029-08-04</td><td>LDES 最终参数 2026 秋</td><td>MACSE 次轮 2026-11-24</td><td>容量首拍待 REE；RD/RDL 已生效</td><td>Energiewet 2026-01-01；净计量 2027-01-01</td></tr></tbody></table></div>
 <p><strong>新增市场同一问题怎么答</strong></p>
 <div class="table-wrap"><table><thead><tr><th>问题</th><th>波兰</th><th>比利时</th><th>北欧四国</th></tr></thead><tbody><tr><td>100 MW/200 MWh 靠什么回收投资</td><td>容量市场 + 套利 + 辅助 + NFOŚiGW CAPEX</td><td>CRM + 套利 + FCR/aFRR/mFRR</td><td>套利 + 辅助 + 储备（无容量市场）</td></tr><tr><td>有没有容量电价</td><td>有；rynek mocy，按降额容量</td><td>有；CRM Y-4/Y-2/Y-1，按降额容量</td><td>无全国容量市场；瑞典/芬兰有峰值储备</td></tr><tr><td>工商储最大收益项</td><td>需量电费 + 价差 + 容量费优化</td><td>需量电费 + 分时价差</td><td>需量电费 + 分时价差 + 分区价差</td></tr><tr><td>并网难点</td><td>PSE/OSD 排队、URE 许可、容量注册</td><td>Elia 接入/许可、CRM 资格</td><td>各国 TSO/DSO 接入、四国规则不同</td></tr><tr><td>关键政策截止日</td><td>2030 容量拍卖已结束；2026 OZE 拍卖 76.1 TWh</td><td>2025 年 CRM 结果；核电延寿至 2035</td><td>2025-03-04 不平衡改革；2025-10-01 15 分钟 MTU</td></tr></tbody></table></div>
-<h3 id="s101">14A.11 回答纪律</h3>
-<ul><li>先问“哪个象限”（澳/德/英/意/西/荷/波/比·北欧 × 大储/工商储），再给收益结构；不要把大储的 FCAS/平衡市场/BM/MACSE/容量收入套到工商储。</li><li>收益数字必须带币种、年份、电价情景、是否含电网费；合成算例一律标 D 级、不构成投资建议。</li><li>澳洲用 A$，德国/意大利/西班牙/荷兰/比利时用 €，英国用 £，波兰用 PLN，北欧用 SEK/NOK/DKK；不混算，不做“统一 IRR”。</li><li><strong>政策时点写清</strong>：CIS 轮次与 COD、§118(6) 投运截止、AgNes 生效日、英国 LDES 最终参数、意大利 MACSE 轮次与交付年、西班牙容量首拍与 RD 997/2025 实施、荷兰 Energiewet/优先排序/净计量、波兰容量拍卖/OZE 拍卖/NFOŚiGW 进度、比利时 CRM 轮次/核电延寿、北欧不平衡改革/effektreserv。</li><li>不把 IESS 当注册类别，正确是 IRP（2021-12-02 最终规则，2024-06-03 实施）；不把 §14a 当大储规则；不把 2031 容量市场当已确定收入；不把 MACSE 的 €/MWh·年当成 €/MW·年；不把 PUN 当结算价。</li><li>西班牙：不把 MIBEL 当一个报价区；不把容量首拍当已定价；不把构网型/并网许可当形式。</li><li><strong>荷兰</strong>：不把 EPEX NL 当 DE-LU；不假设有容量市场；不把 SDE++ 当独立电池补贴；不把非 firm 接入当 firm。</li><li><strong>波兰</strong>：不把容量价当 €/kW·年；不按铭牌容量算降额收入；不把 NFOŚiGW 补贴当年度收入；不假设 MARI 已接入。</li><li><strong>比利时/北欧</strong>：不把 CRM 当统一出清价；不按铭牌容量算 CRM；不把 Nord Pool 当一个报价区；不把 effektreserv/tehoreservi 当容量市场；不把四国规则当一套。</li></ul>
+<p><strong>美国/日本同一问题怎么答</strong></p>
+<div class="table-wrap"><table><thead><tr><th>问题</th><th>美国 ERCOT</th><th>美国 PJM</th><th>美国 CAISO</th><th>日本</th></tr></thead><tbody><tr><td>100 MW/200 MWh 靠什么回收投资</td><td>套利 + Reg/RRS/ECRS</td><td>容量 + 套利 + 辅助</td><td>套利 + RA + FRP</td><td>现货 + EPRX + 容量 + LTDA</td></tr><tr><td>有没有容量电价</td><td>无；ORDC 稀缺定价</td><td>有；BRA/FRR，按 ELCC 降额</td><td>无集中拍卖；RA 小时切片</td><td>有；容量市场 + LTDA</td></tr><tr><td>工商储最大收益项</td><td>需量电费 + 价差 + 自用</td><td>需量电费 + 价差 + 容量/辅助聚合</td><td>需量电费 + 价差 + RA/FRP</td><td>需量电费 + 价差 + 自用 + EPRX</td></tr><tr><td>并网难点</td><td>ERCOT 队列、州/地方许可</td><td>约 40 个月队列、州许可、共址规则</td><td>集群制队列、CPUC/CEC</td><td>接续检讨排队、件数上限、外为法</td></tr><tr><td>关键政策截止日</td><td>RTC+B 2025-12-05；301 关税 2026-01-01</td><td>2028/29 BRA 已出清；FEOC 2025-12-31</td><td>EDAM 2026-05-01；RA 2026 合规年</td><td>C 值 2026-10-01；LTDA 第 3 回 2026-05-13</td></tr></tbody></table></div>
+<h3 id="s103">14A.11 回答纪律</h3>
+<ul><li>先问“哪个象限”（澳/德/英/意/西/荷/波/比·北欧/美/日 × 大储/工商储），再给收益结构；不要把大储的 FCAS/平衡市场/BM/MACSE/容量收入套到工商储。美国还要先问 ERCOT/PJM/CAISO，日本先问供电区域与 JEPX 商品。</li><li>收益数字必须带币种、年份、电价情景、是否含电网费；合成算例一律标 D 级、不构成投资建议。</li><li>澳洲用 A$，德国/意大利/西班牙/荷兰/比利时用 €，英国用 £，波兰用 PLN，北欧用 SEK/NOK/DKK，美国用 USD（注意美元/MW-day 与美元/kW-年两种口径），日本用日元（日元/kWh 与日元/kW·年）；不混算，不做“统一 IRR”。</li><li><strong>政策时点写清</strong>：CIS 轮次与 COD、§118(6) 投运截止、AgNes 生效日、英国 LDES 最终参数、意大利 MACSE 轮次与交付年、西班牙容量首拍与 RD 997/2025 实施、荷兰 Energiewet/优先排序/净计量、波兰容量拍卖/OZE 拍卖/NFOŚiGW 进度、比利时 CRM 轮次/核电延寿、北欧不平衡改革/effektreserv、美国 BRA/ELCC/ITC/FEOC/关税、日本容量市场/LTDA 轮次/EPRX 上限/C 值。</li><li>不把 IESS 当注册类别，正确是 IRP（2021-12-02 最终规则，2024-06-03 实施）；不把 §14a 当大储规则；不把 2031 容量市场当已确定收入；不把 MACSE 的 €/MWh·年当成 €/MW·年；不把 PUN 当结算价。</li><li>西班牙：不把 MIBEL 当一个报价区；不把容量首拍当已定价；不把构网型/并网许可当形式。</li><li><strong>荷兰</strong>：不把 EPEX NL 当 DE-LU；不假设有容量市场；不把 SDE++ 当独立电池补贴；不把非 firm 接入当 firm。</li><li><strong>波兰</strong>：不把容量价当 €/kW·年；不按铭牌容量算降额收入；不把 NFOŚiGW 补贴当年度收入；不假设 MARI 已接入。</li><li><strong>比利时/北欧</strong>：不把 CRM 当统一出清价；不按铭牌容量算 CRM；不把 Nord Pool 当一个报价区；不把 effektreserv/tehoreservi 当容量市场；不把四国规则当一套。</li><li><strong>美国</strong>：不把 ERCOT 当有容量市场；不把 PJM 触顶价当可融资；不按铭牌容量算容量收入（要 ELCC/NQC）；不把 2022–2023 年辅助服务收入当常态；不忽略 FEOC/301 关税。</li><li><strong>日本</strong>：不套用欧洲负电价模型；不把现货上限锁死；不低估 C 值偏差成本；不用 4 小时项目投 LTDA；不把容量市场单次价格外推；不忽略接续检讨件数上限与外为法。</li></ul>
 <hr>
-<h2 id="s102">15. 知识来源、维护与分工</h2>
-<h3 id="s103">15.1 方法与标准来源</h3>
+<h2 id="s104">15. 知识来源、维护与分工</h2>
+<h3 id="s105">15.1 方法与标准来源</h3>
 <ul><li><strong>政策</strong>：发改价格〔2026〕114号、发改能源规〔2025〕1656号、发改能源规〔2025〕411号、发改价格〔2025〕136号、发改办价格〔2016〕1583号、发改价格〔2018〕500号；</li><li><strong>标准</strong>：GB/T 36549-2018、GB/T 36547-2024、GB/T 36558-2023、GB/T 42288-2022、GB/T 51048-2025；</li><li><strong>方法</strong>：LCOS/NPV/IRR/DSCR 通用财务方法；Lazard LCOS、NREL ATB、IEC 62933 作为国际参照（B 级）；</li><li>行业数据：中电联运行统计、公开招中标公告（B 级）；</li><li><strong>海外规则</strong>：AEMC/AEMO/AER（澳洲 NEM）、EPEX/BNetzA/EnWG/regelleistung.net（德国）等，详见海外储能模块（A/B 级）。</li></ul>
-<h3 id="s104">15.2 数据与查证入口</h3>
+<h3 id="s106">15.2 数据与查证入口</h3>
 <ul><li>国家发改委价格司、国家能源局政策法规司；</li><li>省级发改委/能源局价格文件；</li><li>电力交易中心信息披露；</li><li>全国标准信息公共服务平台；</li><li>中国招标投标公共服务平台。</li></ul>
-<h3 id="s105">15.3 维护件</h3>
-<ul><li><a href="储能投资与运营-2026-11.html">储能投资与运营底稿</a>：政策节点、成本区间、指标口径、未定事项；</li><li><a href="海外储能业务-2026-11.html">海外储能业务</a>：澳、德、英、意、西、荷、波、比·北欧八市场的收益、准入、并网与投决口径；</li><li><a href="英国电力市场-2026-11.html">英国电力市场</a>：GB 单一市场、BM/BOALF、容量市场 T-4/T-1、LDES 与并网改革；</li><li><a href="意大利电力市场-2026-11.html">意大利电力市场</a>：七个报价区、MGP/MSD、MACSE 储能拍卖、容量市场与 FER X；</li><li><a href="西班牙电力市场-2026-11.html">西班牙电力市场</a>：MIBEL 双区、OMIE 15 分钟、容量市场 TED/966/2026、储能并网与构网；</li><li><a href="荷兰电力市场-2026-11.html">荷兰电力市场</a>：EPEX NL、无容量市场、15 分钟结算、SDE++ 与接入拥堵；</li><li><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a>：调度算法与运行约束；</li><li><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a>：微网并离网与孤岛。</li></ul>
-<h3 id="s106">15.4 与姊妹技能的分工</h3>
+<h3 id="s107">15.3 维护件</h3>
+<ul><li><a href="储能投资与运营-2026-11.html">储能投资与运营底稿</a>：政策节点、成本区间、指标口径、未定事项；</li><li><a href="海外储能业务-2026-11.html">海外储能业务</a>：澳、德、英、意、西、荷、波、比·北欧、美、日十市场的收益、准入、并网与投决口径；</li><li><a href="英国电力市场-2026-11.html">英国电力市场</a>：GB 单一市场、BM/BOALF、容量市场 T-4/T-1、LDES 与并网改革；</li><li><a href="意大利电力市场-2026-11.html">意大利电力市场</a>：七个报价区、MGP/MSD、MACSE 储能拍卖、容量市场与 FER X；</li><li><a href="西班牙电力市场-2026-11.html">西班牙电力市场</a>：MIBEL 双区、OMIE 15 分钟、容量市场 TED/966/2026、储能并网与构网；</li><li><a href="荷兰电力市场-2026-11.html">荷兰电力市场</a>：EPEX NL、无容量市场、15 分钟结算、SDE++ 与接入拥堵；</li><li><a href="美国电力市场-2026-11.html">美国电力市场</a>：ERCOT/PJM/CAISO 三套机制、ELCC/RA、并网与 ITC/FEOC；</li><li><a href="日本电力市场-2026-11.html">日本电力市场</a>：JEPX 30 分钟现货、容量市场、EPRX、LTDA 与接续检讨；</li><li><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a>：调度算法与运行约束；</li><li><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a>：微网并离网与孤岛；</li><li><a href="海外并网与合规-2026-11.html">海外并网与合规</a>：十市场 grid code、IEC/UL 认证、消防、NIS2、电池法规/护照、NZIA、外资审查；</li><li><a href="容量机制横向对照-2026-11.html">容量机制横向对照</a>：CM/MACSE/TED-966/rynek mocy/CRM/StromVKG/CIS/PJM/CAISO/日本 CM/LTDA 的容量收入口径；</li><li><a href="辅助服务与平衡市场对照-2026-11.html">辅助服务与平衡市场对照</a>：FCR/aFRR/mFRR、FCAS、BM、MSD/MB、EPRX 的资格、结算与储能机会成本；</li><li><a href="储能收益建模与数据源-2026-11.html">储能收益建模与数据源</a>：公开数据入口、粒度/时区、RTE/退化、捕获率、降额、收入叠加与回测；</li><li><a href="跨国PPA与绿证-2026-11.html">跨国 PPA 与绿证</a>：PPA/CfD/tolling 结构、GO/REGO/REC/LGC/GEC、merchant tail 与 24/7 匹配；</li><li><a href="海外市场同口径快照与投决日历-2026-11.html">海外市场同口径快照与投决日历</a>：十市场七列口径（装机/储能/均价/负价小时/捕获率/并网排队/降额因子）、2026Q4–2027 事件日历、中国主体进入勾选表与 C 级数字复核工单；先查“能不能横着比”，再做单项目测算。</li></ul>
+<h3 id="s108">15.4 与姊妹技能的分工</h3>
 <div class="table-wrap"><table><thead><tr><th>技能</th><th>负责</th><th>本技能引用方式</th></tr></thead><tbody><tr><td>电力交易专家</td><td>市场规则、结算、容量电价政策</td><td>引用文号与规则，不重复解释</td></tr><tr><td>现货报价量化专家</td><td>电价预测、报价、回测</td><td>引用预测结果，不重写模型</td></tr><tr><td>虚拟电厂专家</td><td>聚合、需求响应运营</td><td>引用聚合能力，不重复组织方案</td></tr><tr><td>碳资产管理专家</td><td>碳履约、CCER、CBAM</td><td>不涉及</td></tr><tr><td>储能 EMS 底稿</td><td>SOC/备用/退化/AGC</td><td>引用调度模型，不重复 MILP</td></tr></tbody></table></div>
-<h3 id="s107">15.5 维护节奏</h3>
-<ul><li><strong>季度</strong>：省级容量电价、分时电价、辅助服务规则；澳洲 CIS 轮次/FCAS 价格、德国平衡市场/AgNes/容量市场进展、英国 CM 拍卖/LDES/TMO4+、意大利 MACSE 轮次/容量市场/FER X、西班牙容量首拍/RD 997 实施/储能并网、荷兰 aFRR 合同/接入排序/SDE++；</li><li>半年：成本区间、设备价格、质保条款；</li><li>年度：标准更新、运行指标、算例回归；</li><li>触发式：重大政策（如 114 号省级细则、1656 号零售传导）发布后 1 个月内更新。</li></ul>
+<h3 id="s109">15.5 维护节奏</h3>
+<ul><li><strong>季度</strong>：省级容量电价、分时电价、辅助服务规则；澳洲 CIS 轮次/FCAS 价格、德国平衡市场/AgNes/容量市场进展、英国 CM 拍卖/LDES/TMO4+、意大利 MACSE 轮次/容量市场/FER X、西班牙容量首拍/RD 997 实施/储能并网、荷兰 aFRR 合同/接入排序/SDE++、美国 BRA/ELCC/ITC/FEOC/关税、日本容量市场/LTDA 轮次/EPRX 上限/接续检讨；</li><li>半年：成本区间、设备价格、质保条款；</li><li>年度：标准更新、运行指标、算例回归；</li><li>触发式：重大政策（如 114 号省级细则、1656 号零售传导）发布后 1 个月内更新。</li></ul>
     </article>
 
     
@@ -563,7 +580,7 @@ print(round(finance.npv(0.08, flows)), round(finance.irr(flows) * 100, 2))</code
             <li class="lv3"><a href="#s87">14.3 "配储项目有弃电，是不是一定划算？"</a></li>
             <li class="lv3"><a href="#s88">14.4 "调频收益高，能不能把功率全拿去调频？"</a></li>
             <li class="lv3"><a href="#s89">14.5 "运行数据看着正常，为什么年底被考核扣钱？"</a></li>
-            <li class="lv2"><a href="#s90">14A. 海外市场速查（澳洲 NEM / 德国 DE-LU / 英国 GB / 意大利 / 西班牙 / 荷兰 / 波兰 / 比利时与北欧）</a></li>
+            <li class="lv2"><a href="#s90">14A. 海外市场速查（澳洲 NEM / 德国 DE-LU / 英国 GB / 意大利 / 西班牙 / 荷兰 / 波兰 / 比利时与北欧 / 美国三市场 / 日本）</a></li>
             <li class="lv3"><a href="#s91">14A.1 市场卡片：核心六市场</a></li>
             <li class="lv3"><a href="#s92">14A.2 澳洲五条</a></li>
             <li class="lv3"><a href="#s93">14A.3 德国六条</a></li>
@@ -573,15 +590,17 @@ print(round(finance.npv(0.08, flows)), round(finance.irr(flows) * 100, 2))</code
             <li class="lv3"><a href="#s97">14A.7 荷兰五条</a></li>
             <li class="lv3"><a href="#s98">14A.8 波兰五条</a></li>
             <li class="lv3"><a href="#s99">14A.9 比利时与北欧五条</a></li>
-            <li class="lv3"><a href="#s100">14A.10 同一问题，八边怎么答</a></li>
-            <li class="lv3"><a href="#s101">14A.11 回答纪律</a></li>
-            <li class="lv2"><a href="#s102">15. 知识来源、维护与分工</a></li>
-            <li class="lv3"><a href="#s103">15.1 方法与标准来源</a></li>
-            <li class="lv3"><a href="#s104">15.2 数据与查证入口</a></li>
-            <li class="lv3"><a href="#s105">15.3 维护件</a></li>
-            <li class="lv3"><a href="#s106">15.4 与姊妹技能的分工</a></li>
-            <li class="lv3"><a href="#s107">15.5 维护节奏</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="90">展开 90 个小节</button>
+            <li class="lv3"><a href="#s100">14A.9b 美国三市场五条</a></li>
+            <li class="lv3"><a href="#s101">14A.9c 日本五条</a></li>
+            <li class="lv3"><a href="#s102">14A.10 同一问题，十边怎么答</a></li>
+            <li class="lv3"><a href="#s103">14A.11 回答纪律</a></li>
+            <li class="lv2"><a href="#s104">15. 知识来源、维护与分工</a></li>
+            <li class="lv3"><a href="#s105">15.1 方法与标准来源</a></li>
+            <li class="lv3"><a href="#s106">15.2 数据与查证入口</a></li>
+            <li class="lv3"><a href="#s107">15.3 维护件</a></li>
+            <li class="lv3"><a href="#s108">15.4 与姊妹技能的分工</a></li>
+            <li class="lv3"><a href="#s109">15.5 维护节奏</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="92">展开 92 个小节</button>
   </aside>
 </div>
 

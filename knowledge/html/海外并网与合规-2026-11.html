@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>海外并网与合规手册（2026 版）：从 grid code 到电池护照 | energy-skills 知识库</title>
+<meta name="description" content="把散落在十市场模块里的并网标准、设备认证、消防、NIS2、电池法规与电池护照、NZIA、外资审查拉成一张投决清单。">
+<link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
+<script>
+(function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/knowledge.css">
+</head>
+<body data-cat="cross" id="top">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html">← 知识库</a>
+  <div class="crumb">
+    <span class="crumb-cat">07 / CROSS</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">海外并网与合规手册（2026 版）：从 grid code 到电池护照</span>
+  </div>
+  <div class="topbar-act">
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换到深色模式" title="切换到深色模式">
+      <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+      <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+    <a class="src" href="../海外并网与合规-2026-11.md">.md 源文件</a>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">07 / CROSS</div>
+    <h2 class="nav-cat"><a href="../index.html#cross">横向专题</a></h2>
+    <ul class="nav-list">
+              <li class="on" aria-current="page"><a href="海外并网与合规-2026-11.html">海外并网与合规手册（2026 版）：从 grid code 到电池护照</a></li>
+              <li><a href="容量机制横向对照-2026-11.html">容量机制横向对照（2026 版）：年金、拍卖、双向 CfD 与战略储备</a></li>
+              <li><a href="辅助服务与平衡市场对照-2026-11.html">辅助服务与平衡市场对照（2026 版）：从 FCR 到 FCAS，从 BM 到 EPRX</a></li>
+              <li><a href="储能收益建模与数据源-2026-11.html">储能收益建模与数据源（2026 版）：从 5 分钟价格到 15 年现金流</a></li>
+              <li><a href="跨国PPA与绿证-2026-11.html">跨国 PPA、绿证与 tolling（2026 版）：从 GO 到 merchant tail</a></li>
+              <li><a href="海外市场同口径快照与投决日历-2026-11.html">海外市场同口径快照与投决日历（2026 版）：十市场、七列口径、五张工单</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>05</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#intl"><b>06</b>海外市场</a></li>
+              <li><a href="../index.html#price"><b>08</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>09</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>10</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>11</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>12</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>13</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>14</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>15</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">07 / CROSS<i>知识模块</i></div>
+      <h1 class="doc-title">海外并网与合规手册：中国厂商投决前的七道门（2026-11）</h1>
+      <p class="lede">把散落在十市场模块里的并网标准、设备认证、消防、NIS2、电池法规与电池护照、NZIA、外资审查拉成一张投决清单。</p>
+      <p class="hook">2026-11 · 并网 / 认证 / 消防 / 网络 / 电池 / 供应链 / 外资</p>
+      <div class="tags"><span class="tag">并网</span><span class="tag">合规</span><span class="tag">Grid Code</span><span class="tag">NIS2</span><span class="tag">电池护照</span><span class="tag">NZIA</span><span class="tag">外资审查</span></div>
+      <div class="doc-meta"><span>约 21.0k 字</span><span>阅读约 35 分钟</span><span>18 节</span><span>数据截止 2026-11-10</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（18）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv2"><a href="#s4">1. 并网规则的分层：欧盟框架与本国实施</a></li>
+            <li class="lv2"><a href="#s7">2. 十个市场的并网要点</a></li>
+            <li class="lv2"><a href="#s18">3. 设备认证：一张“证书地图”</a></li>
+            <li class="lv2"><a href="#s23">4. 消防：从“设备安全”到“安装合规”</a></li>
+            <li class="lv2"><a href="#s27">5. NIS2：网络安全从“IT 的事”变成“董事会的事”</a></li>
+            <li class="lv2"><a href="#s31">6. 电池法规与电池护照：2027-02-18 是硬节点</a></li>
+            <li class="lv2"><a href="#s35">7. NZIA 与产业政策：公共采购的“非价格标准”</a></li>
+            <li class="lv2"><a href="#s38">8. 外资审查：股权交易也可能被卡</a></li>
+            <li class="lv2"><a href="#s42">9. 合规项目时间轴：把“审批”当成关键路径</a></li>
+            <li class="lv2"><a href="#s45">10. 十个坑</a></li>
+            <li class="lv2"><a href="#s46">11. 合规检查清单（投决前）</a></li>
+            <li class="lv2"><a href="#s47">12. 算例（D 级：方法演示，不是投资建议）</a></li>
+            <li class="lv2"><a href="#s51">13. 2026–2027 观察点</a></li>
+            <li class="lv2"><a href="#s52">14. 官方来源与口径</a></li>
+            <li class="lv2"><a href="#s54">速查</a></li>
+            <li class="lv2"><a href="#s55">与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s56">更新记录</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>数据截止：2026-11-10｜定位：横向专题第一篇</p><p>适用边界：覆盖德国、英国、意大利、西班牙、荷兰、波兰、比利时/北欧、美国、澳大利亚、日本十个市场，以及欧盟层面的并网、网络、电池与供应链规则。本文是合规框架与查证入口，不构成法律意见；具体项目以当地电网运营商、监管机构、公告机构（Notified Body）和交易文件为准。</p><p>用途：回答“设备能不能进、项目能不能并、并了会不会被罚、数据要不要交、股权能不能买”五类问题。遇到单一市场的交易规则，回到对应的海外市场模块；本文只做横向对照。</p></aside>
+<hr>
+<h2 id="s1">0. 一页看懂</h2>
+<h3 id="s2">0.1 七道门，不是一道门</h3>
+<pre><code>海外储能项目合规
+├─ 门 1  并网（Grid Code）
+│  ├─ 欧盟：RfG 2016/631 + 本国实施 + EN 50549
+│  ├─ 国家：VDE-AR-N / G99 / CEI 0-21 / NTS / Netcode / NC RfG
+│  └─ 并网协议、单元证书、建模、测试、调试
+├─ 门 2  设备安全（Product Safety）
+│  ├─ IEC 62933 / IEC 62619 / IEC 63056 / IEC 62477
+│  ├─ UL 9540 / UL 1741 / IEEE 1547（北美）
+│  └─ CE / UKCA / UN 38.3 / 并网认证
+├─ 门 3  消防（Fire）
+│  ├─ NFPA 855 / UL 9540A（北美及引用地区）
+│  └─ 欧盟/各国消防规范 + 电池法规热失控要求
+├─ 门 4  网络安全（NIS2）
+│  ├─ 实体范围、风险管理、24h/72h/1 个月报告
+│  └─ 供应链安全、EMS/SCADA/远程运维合同
+├─ 门 5  电池法规与电池护照
+│  ├─ 碳足迹声明、性能等级、再生含量、尽职调查
+│  └─ 2027-02-18 数字护照 + 二维码 + 海关核验
+├─ 门 6  供应链与产业政策（NZIA / IAA）
+│  ├─ 非价格标准、本地含量、 resilience
+│  └─ 公共采购与招标资格
+└─ 门 7  外资审查（FDI）
+   ├─ 欧盟合作机制 + 成员国审查
+   └─ 美国 CFIUS/FIRRMA、日本 FEFTA、澳洲 FIRB、英国 NSIA</code></pre>
+<ul><li><strong>七道门是并联，不是串联</strong>：并网过了，消防可能卡；设备过了，电池护照可能卡；项目过了，股权交易可能被外资审查卡。</li><li><strong>每道门都有“时间窗”</strong>：并网排队 6–36 个月、认证 3–9 个月、消防审查 3–12 个月、电池护照数据准备 12–18 个月；投决模型要把合规时间当成现金流变量，不是后台事务。</li><li><strong>每道门都有“责任人”</strong>：设备商、EPC、业主、运营商、进口商（producer）责任不同；电池法规下的“生产者”可能是进口商，不是中国制造商。</li></ul>
+<h3 id="s3">0.2 十市场速查</h3>
+<div class="table-wrap"><table><thead><tr><th>市场</th><th>并网主标准</th><th>并网主管</th><th>储能特殊点</th><th>消防/认证</th><th>外资审查</th></tr></thead><tbody><tr><td>德国</td><td>VDE-AR-N 4105/4110/4120/4130；FGW TR3/TR4/TR8</td><td>配电网/输电网运营商；BNetzA</td><td>中压及以上要单元证书；MaStR 登记</td><td>VDE + 州消防；UL 9540A 常被保险要求</td><td>AWV 投资审查</td></tr><tr><td>英国</td><td>G98（≤16 A/相）、G99（&gt;16 A）、G100（出口限制）</td><td>DNO；NESO（输电）</td><td>并网队列改革 TMO4+；G100 控制出口</td><td>无储能专用国标；按消防评估、DNO 与保险人要求</td><td>NSIA 2021</td></tr><tr><td>意大利</td><td>CEI 0-21（低压）、CEI 0-16（中高压）</td><td>配电网/TERNA</td><td>中低压并网设备强制认证</td><td>消防规范 + VVF；UL 9540A 常见</td><td>Golden Power</td></tr><tr><td>西班牙</td><td>NTS、RD 647/2020、TED/749/2020、TED/82/2026</td><td>REE/CNMC</td><td>2026-05-12 起自消费技术豁免取消</td><td>消防规范 + 自治州许可</td><td>2020 年起 FDI 审查</td></tr><tr><td>荷兰</td><td>Netcode elektriciteit</td><td>TenneT/DSO；ACM</td><td>电网拥堵、容量限制合同、电池优先</td><td>PGS 37 系列与地方环境许可</td><td>投资审查合作机制</td></tr><tr><td>波兰</td><td>能源法 + NC RfG 实施 + PSE/OSD 条件</td><td>PSE/OSD；URE</td><td>≤1 kV 30 天、&gt;1 kV 150 天出条件；并网费减半</td><td>消防 + UDT 等技术检验，按当地许可</td><td>2020 年起审查</td></tr><tr><td>比利时/北欧</td><td>C10/11（比）；各国 grid code</td><td>Elia/各国 TSO/DSO</td><td>预审、辅助服务资格、并网容量</td><td>各国消防</td><td>各国审查</td></tr><tr><td>美国</td><td>IEEE 1547-2018、UL 1741、UL 9540、NEC 706</td><td>ISO/RTO + 州/地方 AHJ</td><td>队列改革、共址、ERCOD/NOGRR</td><td>NFPA 855-2026、UL 9540A 第 6 版</td><td>CFIUS/FIRRMA</td></tr><tr><td>澳大利亚</td><td>NER + AEMO 注册；AS/NZS 4777.2（DER）</td><td>AEMO/DNSP</td><td>5 分钟调度、FCAS 资格、IRP 注册</td><td>AS 5139、NCC、州消防</td><td>FIRB</td></tr><tr><td>日本</td><td>电气事业法 + 系统连系规程（JEAC 9701）</td><td>OCCTO/一般送配电事业者</td><td>30 分钟现货、容量市场、LTDA</td><td>消防法 + 建筑基准法</td><td>外为法</td></tr></tbody></table></div>
+<aside class="note"><p>表中“消防/认证”只列最常用入口；具体项目还要看地方 AHJ、保险公司和业主标准。未逐项核实的国别条目按“当地许可”表述，投标前查原文。</p></aside>
+<hr>
+<h2 id="s4">1. 并网规则的分层：欧盟框架与本国实施</h2>
+<h3 id="s5">1.1 三层结构</h3>
+<div class="table-wrap"><table><thead><tr><th>层级</th><th>文件</th><th>作用</th><th>对储能的意义</th></tr></thead><tbody><tr><td>欧盟网络码</td><td>RfG (EU) 2016/631</td><td>发电模块并网要求</td><td>储能按 power park module 处理的情况最常见</td></tr><tr><td>欧盟网络码</td><td>DCC (EU) 2016/1388</td><td>需求设施并网要求</td><td>储能作为负荷/双向设施时适用</td></tr><tr><td>欧盟网络码</td><td>HVDC (EU) 2016/1447</td><td>高压直流并网</td><td>大型海风/互联项目</td></tr><tr><td>欧洲标准</td><td>EN 50549-1/-2</td><td>低压/中压发电设施并网</td><td>各国标准的共同底稿</td></tr><tr><td>本国实施</td><td>VDE-AR-N、G99、CEI 0-21、NTS、Netcode 等</td><td>具体门槛、测试、证书</td><td>项目真正被审的是这一层</td></tr></tbody></table></div>
+<ul><li><strong>RfG 是“框架”，不是“证书”</strong>：它规定 Type A/B/C/D 的分级和参数范围，具体测试、建模、证书由本国 TSO/DSO 实施。</li><li><strong>Type A/B/C/D 的门槛以 RfG 第 5 条和本国实施为准</strong>：大陆欧洲同步区通常以 1 MW、50 MW、110 kV 为分界；英国、爱尔兰、北欧同步区有单独门槛。不要拿一个国家的门槛套另一个国家。</li><li><strong>储能的双重身份</strong>：充电时是负荷，放电时是发电；RfG 管发电模块，DCC 管需求设施，项目可能同时触发两套要求。并网申请时要明确“运行模式”和“控制架构”，否则会被要求补做 DCC 合规。</li><li><strong>EN 50549 不是“欧盟强制认证”</strong>：它是欧洲标准，各国通过本国电网规则引用；有 CE 标志不等于满足并网要求，并网证书是单独的。</li></ul>
+<h3 id="s6">1.2 并网申请的标准动作</h3>
+<div class="table-wrap"><table><thead><tr><th>步骤</th><th>产出</th><th>常见耗时</th><th>备注</th></tr></thead><tbody><tr><td>1. 预可研/接入咨询</td><td>可接入容量、接入点、初步方案</td><td>1–3 个月</td><td>先问“有没有容量”，再谈设备</td></tr><tr><td>2. 正式申请</td><td>并网申请、单线图、参数表</td><td>1–2 个月</td><td>资料不全会被打回</td></tr><tr><td>3. 系统研究</td><td>潮流、短路、稳定、保护配合</td><td>3–12 个月</td><td>新能源富集区更久</td></tr><tr><td>4. 并网协议</td><td>连接条件、费用、工期</td><td>1–6 个月</td><td>关注“照付不议”和延期条款</td></tr><tr><td>5. 设备认证</td><td>单元证书/型式试验/建模报告</td><td>3–9 个月</td><td>与设备采购并行</td></tr><tr><td>6. 调试与验收</td><td>测试报告、涉网试验</td><td>1–3 个月</td><td>频率/电压/无功/故障穿越</td></tr><tr><td>7. 注册与市场准入</td><td>MaStR/市场注册/辅助服务预审</td><td>1–3 个月</td><td>没有注册不能结算</td></tr></tbody></table></div>
+<ul><li><strong>并网排队是投决的第一约束</strong>：设备可以买，土地可以租，但接入点不能凭空造；很多项目的“开发权”本质是排队位置。</li><li><strong>系统研究结论会改变项目配置</strong>：无功要求、构网要求、短路比、限发比例，都会改变 PCS 选型和收益率。</li><li><strong>并网协议里的“限发”条款要建模</strong>：如果电网要求 0 出力或限功率，项目的捕获率假设要下调。</li></ul>
+<hr>
+<h2 id="s7">2. 十个市场的并网要点</h2>
+<h3 id="s8">2.1 德国：单元证书是硬门槛</h3>
+<div class="table-wrap"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>低压</td><td>VDE-AR-N 4105；户用/工商储</td></tr><tr><td>中压</td><td>VDE-AR-N 4110；大储最常见</td></tr><tr><td>高压</td><td>VDE-AR-N 4120</td></tr><tr><td>超高压</td><td>VDE-AR-N 4130</td></tr><tr><td>技术指引</td><td>FGW TR3（电气特性）、TR4（建模/仿真）、TR8（认证）</td></tr><tr><td>证书</td><td>单元证书（Unit Certificate）、组件证书、并网声明</td></tr><tr><td>登记</td><td>MaStR（市场主数据登记）</td></tr></tbody></table></div>
+<ul><li><strong>中压及以上要“单元证书 + 建模”</strong>：不是交一份型式试验报告就完事；FGW TR4 要求提供 PSCAD/DIgSILENT 等模型，TSO 会用模型做系统研究。</li><li><strong>储能按发电/负荷双向设备处理</strong>：充电功率、放电功率、无功能力、故障穿越都要申报；只报放电容量会被要求补件。</li><li><strong>VDE-AR-N 4110 覆盖中压</strong>：风机、光伏、储能都要满足；储能的无功、频率响应、高/低电压穿越测试比传统光伏更严。</li><li><strong>认证周期</strong>：PCS 单元证书 3–6 个月，系统集成后并网测试 1–3 个月；如果换 PCS 型号或电池簇，可能要重新做部分测试。</li><li><strong>常见坑</strong>：拿低压证书去接中压；模型版本与现场固件不一致；MaStR 登记滞后导致不能结算。</li></ul>
+<h3 id="s9">2.2 英国：G99 之后还有队列</h3>
+<div class="table-wrap"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>户用/小系统</td><td>G98（≤16 A/相）</td></tr><tr><td>中大系统</td><td>G99（&gt;16 A/相）</td></tr><tr><td>出口限制</td><td>G100；ANM（主动网络管理）</td></tr><tr><td>输电</td><td>NESO 连接协议；TMO4+ 队列改革</td></tr><tr><td>并网主管</td><td>DNO（配网）；NESO（输网）</td></tr></tbody></table></div>
+<ul><li><strong>G99 是配网并网的核心</strong>：G99 覆盖大于 16 A/相 的发电设施，储能按发电/储能混合设施申请；需要提交接线图、保护定值、仿真模型和调试计划。</li><li><strong>G100 管出口限制</strong>：如果接入点容量小于设备容量，需要用 G100 认证的出口限制方案；出口限制的可靠性和失效安全是审查重点。</li><li><strong>TMO4+ 改变排队逻辑</strong>：2025–2026 年英国推进连接改革，按“项目成熟度”重排队列；没有规划许可、土地和融资的项目会被移出快速通道。新项目拿到 2030 年前接入日期的难度显著上升。</li><li><strong>输电并网</strong>：大型储能走 NESO 的连接流程；与配网并网不同，输电并网还要考虑平衡机制（BM）注册和 BSC。</li><li><strong>常见坑</strong>：只看 G99 证书，不看 DNO 的连接条件；出口限制方案没有 G100 认证；队列改革后仍按旧时间表做投决。</li></ul>
+<h3 id="s10">2.3 意大利：CEI 0-21 与 CEI 0-16 分工明确</h3>
+<div class="table-wrap"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>低压</td><td>CEI 0-21；户用/工商储</td></tr><tr><td>中高压</td><td>CEI 0-16；大储/电站</td></tr><tr><td>并网主管</td><td>配电网运营商（e-distribuzione 等）；TERNA（输电）</td></tr><tr><td>认证</td><td>型式试验 + 并网认证 + 现场测试</td></tr><tr><td>特殊点</td><td>中低压并网设备强制符合 CEI 标准</td></tr></tbody></table></div>
+<ul><li><strong>CEI 0-21 管低压</strong>：不仅管逆变器，也管储能系统的并网保护、无功、频率响应和反孤岛；工商储一体机通常按 CEI 0-21 认证。</li><li><strong>CEI 0-16 管中高压</strong>：对无功能力、电压支撑、故障穿越和通信的要求更高；大储项目要按 CEI 0-16 做单元认证和现场测试。</li><li><strong>认证与补贴/拍卖挂钩</strong>：MACSE、容量市场、FER X 都要求项目具备并网资格；并网证书是参与拍卖的前置条件之一。</li><li><strong>常见坑</strong>：用光伏逆变器证书替代储能证书；CEI 0-21 版本更新后未重新测试；中压项目只做 CEI 0-21。</li></ul>
+<h3 id="s11">2.4 西班牙：2026 年并网规则更新</h3>
+<div class="table-wrap"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>基础法规</td><td>RD 647/2020；Orden TED/749/2020</td></tr><tr><td>2026 更新</td><td>Orden TED/82/2026，修改 TED/749/2020</td></tr><tr><td>覆盖</td><td>小型发电、储能、自消费</td></tr><tr><td>关键变化</td><td>自消费技术豁免（DT3ª RD 647/2020）取消，2026-05-12 起全面合规</td></tr><tr><td>并网主管</td><td>REE（输电）；CNMC（监管）</td></tr></tbody></table></div>
+<ul><li><strong>NTS 是西班牙的并网技术规范体系</strong>：包括对发电设施、需求设施和储能的技术要求；项目要按 NTS 和 REE 的并网程序提交模型与测试。</li><li><strong>2026 年更新收紧自消费</strong>：过去部分自消费项目可以豁免某些技术要求，TED/82/2026 取消该豁免；表后储能和自发自用项目也要按并网规范做合规。</li><li><strong>储能并网许可不等于建成</strong>：截至 2026 年，西班牙有大量电池项目持有并网许可但未并网；许可有期限和里程碑要求，未按期建设可能失效。</li><li><strong>常见坑</strong>：拿旧版 TED/749/2020 做设计；忽略自消费豁免取消；并网许可与土地/环境许可不匹配。</li></ul>
+<h3 id="s12">2.5 荷兰：先解决“有没有容量”</h3>
+<div class="table-wrap"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>并网规则</td><td>Netcode elektriciteit</td></tr><tr><td>主管</td><td>TenneT（输电）；区域 DSO；ACM（监管）</td></tr><tr><td>结构性问题</td><td>电网拥堵，新增容量排队</td></tr><tr><td>储能机会</td><td>容量限制合同（capacity-limiting contract）+ 电池</td></tr><tr><td>优先顺序</td><td>缓解拥堵的项目优先；医院、消防等关键服务优先</td></tr></tbody></table></div>
+<ul><li><strong>荷兰的并网瓶颈不是标准，是容量</strong>：大量地区红色拥堵，新增或扩容申请排队；2026 年中约 1.5 万家企业/机构在等待名单上（C 级）。</li><li><strong>容量限制合同是折中方案</strong>：用户接受在电网紧张时限功率，换取更快接入；配套电池可以在限功率时保供，并参与市场交易。</li><li><strong>储能被列入“缓解拥堵”的优先类别</strong>：大型电池可以帮助电网调峰、缓解局部阻塞，因此在部分拥堵区获得优先接入；具体资格以 DSO 的优先规则为准。</li><li><strong>常见坑</strong>：先买设备再申请接入；忽略“运输/施工”对电网的影响；没有评估容量限制合同的收益损失。</li></ul>
+<h3 id="s13">2.6 波兰：并网条件有法定时限</h3>
+<div class="table-wrap"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>并网规则</td><td>能源法 + NC RfG 实施 + PSE/OSD 技术条件</td></tr><tr><td>主管</td><td>PSE（输电）；OSD（配网）；URE（监管）</td></tr><tr><td>时限</td><td>≤1 kV：30 天内出连接条件；&gt;1 kV：150 天内</td></tr><tr><td>费用</td><td>储能并网费按并网成本的一半计（能源法修正案，B/C）</td></tr><tr><td>特殊点</td><td>并网许可多、实际并网少；2026–2028 是集中并网期</td></tr></tbody></table></div>
+<ul><li><strong>并网条件是“有法定时限”的</strong>：这降低了不确定性，但不等于一定能接入；PSE/OSD 仍会做系统研究，容量不足时会给出限发或扩容方案。</li><li><strong>储能并网费减半</strong>：波兰通过能源法修正案降低储能并网成本，并把储能纳入 DSO/TSO 的投资计划；具体适用以最新法规为准。</li><li><strong>并网许可与实际并网差距大</strong>：大量项目持有并网条件但未建成；投决时要看“并网条件有效期 + 建设里程碑”，不要只看许可数量。</li><li><strong>常见坑</strong>：把并网条件当成并网协议；忽略限发条款；没有预留扩容/升压站工期。</li></ul>
+<h3 id="s14">2.7 比利时与北欧：预审和辅助服务资格</h3>
+<ul><li><strong>比利时</strong>：C10/11 是低压/中压并网的技术标准（Synergrid），输电并网走 Elia；储能还要通过 Elia 的辅助服务预审（FCR/aFRR/mFRR）。CRM 资格与并网容量、降额因子挂钩。</li><li><strong>北欧</strong>：各国 grid code 与平衡市场规则不同；FCR-N/FCR-D、aFRR、mFRR 的预审和计量要求是储能收入的前提。mFRR EAM 的 15 分钟能量激活市场改变了报价与结算逻辑。</li><li><strong>共同点</strong>：并网容量、辅助服务预审、平衡责任主体（BRP）注册是三件不同的事；只拿到并网协议，不等于能参与辅助服务。</li><li><strong>常见坑</strong>：忽略预审的响应时间/持续时间要求；没有本地 BRP；把并网容量当成可交易容量。</li></ul>
+<h3 id="s15">2.8 美国：IEEE 1547 + UL 1741 + AHJ</h3>
+<div class="table-wrap"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>分布式并网</td><td>IEEE 1547-2018；UL 1741（逆变器）</td></tr><tr><td>储能系统</td><td>UL 9540；NEC 706（安装）</td></tr><tr><td>消防</td><td>NFPA 855；UL 9540A</td></tr><tr><td>并网主管</td><td>ISO/RTO（批发）；州 PUC；地方 AHJ</td></tr><tr><td>队列</td><td>FERC Order 2023 改革；PJM/CAISO 各自队列</td></tr></tbody></table></div>
+<ul><li><strong>美国没有统一并网码</strong>：IEEE 1547 是分布式并网的技术基准，UL 1741 是设备认证；具体并网条件由 ISO/RTO tariff、州规则和地方 AHJ 决定。</li><li><strong>UL 9540 是系统认证</strong>：电池、PCS、BMS、消防、控制作为一个系统认证；换电芯/换 PCS 可能触发重新认证。</li><li><strong>NFPA 855 是安装标准</strong>：间距、防火分区、灭火、通风、应急响应；地方 AHJ 可能加严，保险公司也可能要求 UL 9540A 大规模火烧测试（LSFT）。</li><li><strong>队列改革</strong>：FERC Order 2023 要求 RTO 采用先到先得 +  readiness 门槛；PJM 2026 年首轮并联队列约 715 个项目/201.5 GW，研究周期约 40 个月（B）。</li><li><strong>ERCOT 特殊点</strong>：ERCOT 是州内系统，并网走 ERCOT 的 NOGRR/资源注册；2026-08-01 生效的 NOGRR 282 对逆变器与储能控制参数有新要求，项目要按新规复核。</li><li><strong>常见坑</strong>：只做 UL 1741 不做 UL 9540；忽略 AHJ 的消防审查；共址项目没有处理容量资格和并网费。</li></ul>
+<h3 id="s16">2.9 澳大利亚：NER + AEMO 注册</h3>
+<div class="table-wrap"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>并网规则</td><td>National Electricity Rules（NER）；AEMO 注册</td></tr><tr><td>DER 并网</td><td>AS/NZS 4777.2</td></tr><tr><td>储能安全</td><td>AS 5139（B）</td></tr><tr><td>消防</td><td>州/领地消防规范 + NCC</td></tr><tr><td>市场注册</td><td>Generator / Market Customer / IRP</td></tr></tbody></table></div>
+<ul><li><strong>并网与市场注册是两条线</strong>：NSP（网络服务提供商）给连接协议，AEMO 给市场注册；储能可以按 Generator、Market Customer 或 IRP 注册，不同类别义务不同。</li><li><strong>AS/NZS 4777.2 管 DER</strong>：户用/工商储的逆变器并网要求；大储走 NER 和 AEMO 的并网标准，不适用 4777.2。</li><li><strong>FCAS 资格是单独预审</strong>：并网不等于能提供 FCAS；要通过 AEMO 的 MASS 测试，证明响应时间、持续时间、控制精度。</li><li><strong>常见坑</strong>：只拿连接协议不做市场注册；忽略 MLF/IRLF 对收益的影响；FCAS 预留没有纳入 SOC 模型。</li></ul>
+<h3 id="s17">2.10 日本：电气事业法 + 系统连系规程</h3>
+<div class="table-wrap"><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>法律</td><td>电气事业法；系统连系规程（JEAC 9701）</td></tr><tr><td>并网主管</td><td>一般送配电事业者；OCCTO（系统协调）</td></tr><tr><td>市场</td><td>JEPX 30 分钟现货；容量市场；EPRX；LTDA</td></tr><tr><td>外资</td><td>外为法事前届报</td></tr><tr><td>消防</td><td>消防法 + 建筑基准法</td></tr></tbody></table></div>
+<ul><li><strong>并网审查细</strong>：日本对频率、电压、故障穿越、无功、保护配合的要求细，提交资料多；并网前要与一般送配电事业者做系统研究。</li><li><strong>30 分钟市场粒度</strong>：JEPX 日前是 48 个 30 分钟商品；储能调度和 SOC 模型要按 30 分钟，不是 15 分钟。</li><li><strong>容量市场/LTDA 资格与并网挂钩</strong>：没有并网容量，不能参与容量市场或 LTDA；LTDA 还要求 ≥6 小时时长（第 3 回起）。</li><li><strong>外资审查</strong>：电气业中的一般送配电、送电、≥5 万 kW 发电属于外为法核心行业，事前届报；审查 30 日、最长 5 个月（A）。</li><li><strong>常见坑</strong>：用中国并网标准做日本项目；忽略 30 分钟结算；外资申报滞后。</li></ul>
+<hr>
+<h2 id="s18">3. 设备认证：一张“证书地图”</h2>
+<h3 id="s19">3.1 国际电工委员会（IEC）</h3>
+<div class="table-wrap"><table><thead><tr><th>标准</th><th>范围</th><th>用途</th></tr></thead><tbody><tr><td>IEC 62933 系列</td><td>电能存储系统（EES）</td><td>术语、规划、安全、并网、环境</td></tr><tr><td>IEC 62619</td><td>工业用锂二次电池/电池组安全</td><td>电芯/电池组安全</td></tr><tr><td>IEC 63056</td><td>电能存储系统用二次电池/电池组</td><td>储能电池安全</td></tr><tr><td>IEC 62620</td><td>工业用锂二次电池性能</td><td>容量、效率、循环</td></tr><tr><td>IEC 62477-1</td><td>电力电子变换器安全</td><td>PCS 安全</td></tr><tr><td>IEC 61000 系列</td><td>电磁兼容</td><td>EMC</td></tr><tr><td>UN 38.3</td><td>锂电池运输</td><td>海运/空运/陆运</td></tr></tbody></table></div>
+<ul><li><strong>IEC 62933 是“系统级”标准族</strong>：不是单一证书；不同部分覆盖术语、规划、安全、并网、环境、火灾。项目招标常要求“符合 IEC 62933-5-2”或“IEC 62933-5-3”，要看清是哪一部分。</li><li><strong>电池与系统分开认证</strong>：电芯/模组按 IEC 62619/63056，系统按 IEC 62933/UL 9540；PCS 按 IEC 62477-1；缺一项都可能被业主拒绝。</li><li><strong>UN 38.3 是运输门槛</strong>：没有 UN 38.3 报告，电池不能合法运输；这是项目物流的前置条件，不是并网要求。</li></ul>
+<h3 id="s20">3.2 北美：UL 与 IEEE</h3>
+<div class="table-wrap"><table><thead><tr><th>标准</th><th>范围</th><th>备注</th></tr></thead><tbody><tr><td>UL 9540</td><td>储能系统与设备</td><td>系统级认证；电池/PCS/BMS/消防一起</td></tr><tr><td>UL 9540A</td><td>热失控火灾蔓延测试</td><td>第 6 版 2026-03 发布，强制 LSFT</td></tr><tr><td>UL 1741</td><td>逆变器/并网设备</td><td>与 IEEE 1547 配合</td></tr><tr><td>IEEE 1547-2018</td><td>分布式能源并网</td><td>电压/频率/无功/故障穿越</td></tr><tr><td>NEC 706</td><td>储能系统安装</td><td>电气安装</td></tr><tr><td>NFPA 855</td><td>固定式储能安装</td><td>间距、消防、通风</td></tr></tbody></table></div>
+<ul><li><strong>UL 9540 是“系统认证”，不是“电池认证”</strong>：电池、PCS、BMS、消防系统、控制逻辑要作为一个系统评估；换电芯、换 PCS、改消防方案都可能触发重新认证。</li><li><strong>UL 9540A 第 6 版把 LSFT 推到台前</strong>：2026-03-13 发布，强制大规模火烧测试；NFPA 855-2026 将 LSFT 纳入安装合规前置条件（B）。</li><li><strong>IEEE 1547-2018 是并网基准</strong>：美国分布式并网按 IEEE 1547，具体参数由州/ISO 的 tariff 决定；UL 1741 是设备认证，两者不能互相替代。</li><li><strong>常见坑</strong>：只做 UL 9540A 不做 UL 9540；UL 9540A 报告版本过旧；NFPA 855 的地方修订版与 2026 版不一致。</li></ul>
+<h3 id="s21">3.3 欧洲：CE、EN 与并网认证</h3>
+<div class="table-wrap"><table><thead><tr><th>项目</th><th>内容</th><th>备注</th></tr></thead><tbody><tr><td>CE-LVD</td><td>低电压指令 2014/35/EU</td><td>电气安全</td></tr><tr><td>CE-EMC</td><td>电磁兼容指令 2014/30/EU</td><td>干扰/抗扰</td></tr><tr><td>RoHS</td><td>有害物质限制</td><td>材料合规</td></tr><tr><td>电池法规</td><td>(EU) 2023/1542</td><td>碳足迹、护照、回收</td></tr><tr><td>并网</td><td>EN 50549 / 本国 grid code</td><td>并网证书</td></tr><tr><td>消防</td><td>各国消防规范 + 电池法规热失控</td><td>项目级审批</td></tr></tbody></table></div>
+<ul><li><strong>CE 是“自我声明 + 技术文件”</strong>：大多数储能设备不需要公告机构发证，但需要有完整的技术文件、风险评估、测试报告；并网认证是单独的。</li><li><strong>EN 50549-1/-2 是并网通用标准</strong>：低压/中压发电设施；部分国家用 EN 50549-10 或本国标准覆盖储能并网测试，具体以 CENELEC 和本国电网运营商为准（B）。</li><li><strong>电池法规改变“CE”的内涵</strong>：除了 LVD/EMC/RoHS，还要满足电池法规的碳足迹、标签、护照、尽职调查；CE 标志不再是“一张证书”，而是一套持续义务。</li><li><strong>常见坑</strong>：把 CE 当并网证书；技术文件没有覆盖储能系统；电池法规的“生产者”责任没有落地到进口商。</li></ul>
+<h3 id="s22">3.4 认证与并网的关系</h3>
+<pre><code>设备认证（型式试验）
+   ├─ IEC / UL / EN 标准 → 证明设备安全与性能
+   ├─ 并网认证（Unit Certificate / G99 / CEI）→ 证明设备符合电网规则
+   └─ 项目认证（系统集成 + 现场测试）→ 证明整个项目符合并网协议</code></pre>
+<ul><li><strong>三层不能互相替代</strong>：IEC 62619 过了，不代表 VDE-AR-N 4110 过；UL 9540 过了，不代表 NFPA 855 安装合规。</li><li><strong>项目级认证常被忽略</strong>：即使设备有证书，现场接线、保护定值、通信、无功设置仍要按并网协议测试；现场测试不通过，项目不能并网。</li><li><strong>认证的“版本”很重要</strong>：标准更新后，旧证书可能不被接受；投标前要确认业主/电网运营商接受的版本和有效期。</li></ul>
+<hr>
+<h2 id="s23">4. 消防：从“设备安全”到“安装合规”</h2>
+<h3 id="s24">4.1 北美：NFPA 855 + UL 9540A</h3>
+<div class="table-wrap"><table><thead><tr><th>要素</th><th>要求</th><th>对项目的影响</th></tr></thead><tbody><tr><td>间距</td><td>储能与建筑、红线、其他危险物的最小距离</td><td>决定土地面积和总图</td></tr><tr><td>防火分区</td><td>防火墙、防火间距、分隔</td><td>影响土建成本</td></tr><tr><td>灭火</td><td>自动喷水/气体/水雾；抑制复燃</td><td>影响消防系统和保险</td></tr><tr><td>通风</td><td>可燃气体探测与排风</td><td>影响 HVAC 与控制</td></tr><tr><td>应急</td><td>消防接入、应急断电、标识</td><td>影响运维与培训</td></tr><tr><td>LSFT</td><td>UL 9540A 大规模火烧测试</td><td>影响设备选型与保险</td></tr></tbody></table></div>
+<ul><li><strong>NFPA 855-2026 把 LSFT 纳入安装合规</strong>：没有 UL 9540A 大规模火烧测试报告，项目可能无法通过消防审查、无法融资、无法投保（B）。</li><li><strong>AHJ 是最终裁判</strong>：NFPA 855 是模型规范，地方消防局（AHJ）可以加严；同一套设备在不同州/县可能得到不同结论。</li><li><strong>保险是隐形门槛</strong>：保险公司可能要求额外的热失控测试、消防系统、运维协议；没有保险，项目融资关闭不了。</li></ul>
+<h3 id="s25">4.2 欧洲：电池法规 + 国家消防规范</h3>
+<ul><li><strong>电池法规的热失控要求</strong>：电池法规要求电池/系统提供安全信息，热失控测试方法与 UL 9540A 有相似之处，但不等于 UL 9540A 认证；欧盟没有全盘采纳 NFPA 855。</li><li><strong>国家消防规范</strong>：德国各州消防规范、英国 BS 标准与消防评估、意大利 VVF、西班牙自治州许可、波兰消防审批；项目要按当地规范做消防设计。</li><li><strong>保险与业主标准</strong>：欧洲业主/保险商常要求 UL 9540A 或等效测试；即使当地法规不强制，商业合同也可能强制。</li><li><strong>常见坑</strong>：只按设备证书做消防设计；忽略地方 AHJ 的附加要求；没有把消防审批时间纳入项目计划。</li></ul>
+<h3 id="s26">4.3 澳大利亚与日本</h3>
+<ul><li><strong>澳大利亚</strong>：AS 5139 储能安全、NCC 建筑规范、州消防规范；大储项目还要看各州的规划许可和消防要求。</li><li><strong>日本</strong>：消防法、建筑基准法、电气事业法；储能系统的设置、防火、通风、标识要按消防法申报；项目审批周期长。</li><li><strong>共同点</strong>：消防不是“设备认证”，是“项目审批”；设备证书只是敲门砖，最终看总图、间距、消防系统和应急方案。</li></ul>
+<hr>
+<h2 id="s27">5. NIS2：网络安全从“IT 的事”变成“董事会的事”</h2>
+<h3 id="s28">5.1 适用范围与门槛</h3>
+<div class="table-wrap"><table><thead><tr><th>要素</th><th>内容</th></tr></thead><tbody><tr><td>法律</td><td>Directive (EU) 2022/2555</td></tr><tr><td>生效</td><td>2023-01-16</td></tr><tr><td>转化截止</td><td>2024-10-17</td></tr><tr><td>适用</td><td>2024-10-18 起</td></tr><tr><td>行业</td><td>Annex I 能源（电力、区域供热、石油、天然气、氢）等</td></tr><tr><td>门槛</td><td>中型及以上企业：≥50 员工或年营业额 &gt;€10m</td></tr><tr><td>分类</td><td>essential（关键）/ important（重要）</td></tr><tr><td>罚则</td><td>essential：€10m 或全球营业额 2%；important：€7m 或 1.4%</td></tr></tbody></table></div>
+<ul><li><strong>电力子行业覆盖发电、输配、NEMO、市场参与者</strong>：储能按“电力 undertaking/市场参与者”落入范围的可能性高，具体以成员国转化法为准（B）。</li><li><strong>不是“自愿指南”</strong>：NIS2 是指令，成员国必须转化为国内法；不遵守可能被罚、被限制经营、管理层被追责。</li><li><strong>供应链安全是核心</strong>：Art 21(2)(d) 要求评估供应链安全，包括供应商和 service provider 的漏洞与 practices；中国设备商/EMS 供应商会被要求提供安全证据。</li></ul>
+<h3 id="s29">5.2 合规义务</h3>
+<div class="table-wrap"><table><thead><tr><th>义务</th><th>内容</th><th>落地动作</th></tr></thead><tbody><tr><td>风险管理</td><td>风险评估、事件处理、业务连续性、供应链安全</td><td>建立 ISMS；做资产清单和威胁建模</td></tr><tr><td>技术措施</td><td>多因素认证、加密、访问控制、漏洞管理</td><td>EMS/SCADA 加固；远程运维 MFA</td></tr><tr><td>事件报告</td><td>24h 早期预警、72h 事件通知、1 个月最终报告</td><td>建立 24/7 响应流程；与 CSIRT 对接</td></tr><tr><td>管理层责任</td><td>管理层批准风险措施、接受培训</td><td>董事会签字；指定 CISO</td></tr><tr><td>供应链</td><td>供应商安全要求、合同条款</td><td>采购合同加安全附件；审计权</td></tr></tbody></table></div>
+<ul><li><strong>24h/72h/1 个月是硬时钟</strong>：从“意识到重大事件”开始算；没有 24/7 响应能力，企业很难按时报告。</li><li><strong>储能项目的“事件”包括</strong>：EMS 被入侵、SCADA 失控、远程运维账号泄露、电池数据被篡改、并网控制指令被伪造。</li><li><strong>合同要写清楚</strong>：设备商/EMS 供应商的漏洞披露、补丁时限、事件配合、数据访问、审计权；否则出事时责任不清。</li></ul>
+<h3 id="s30">5.3 2026 年转化状态</h3>
+<div class="table-wrap"><table><thead><tr><th>国家/地区</th><th>状态</th><th>备注</th></tr></thead><tbody><tr><td>比利时、克罗地亚</td><td>2024-10-17 前完成</td><td>少数按时完成的国家</td></tr><tr><td>波兰</td><td>2026-03-02 转化，2026-04-02 生效</td><td>晚于截止日</td></tr><tr><td>荷兰</td><td>2026-07-10 完成</td><td>晚于截止日</td></tr><tr><td>爱尔兰、西班牙、法国、荷兰</td><td>2026-07-08 被欧盟委员会诉至法院</td><td>未完成全面转化</td></tr><tr><td>多数成员国</td><td>2026 年中已转化或接近完成</td><td>具体以欧盟委员会/各国官方为准</td></tr></tbody></table></div>
+<ul><li><strong>“欧盟有指令”不等于“当地已执行”</strong>：各国转化进度不同，执法力度不同；项目要按“当地法”做合规，不是按指令原文。</li><li><strong>跨境项目</strong>：在多个成员国运营的企业，可能要在每个国家分别注册/报告；不要假设“一国合规，全欧合规”。</li><li><strong>常见坑</strong>：把 NIS2 当成 IT 部门的事；没有做供应链安全评估；事件报告流程没有演练。</li></ul>
+<hr>
+<h2 id="s31">6. 电池法规与电池护照：2027-02-18 是硬节点</h2>
+<h3 id="s32">6.1 时间表</h3>
+<div class="table-wrap"><table><thead><tr><th>日期</th><th>义务</th><th>适用</th></tr></thead><tbody><tr><td>2024-02-18</td><td>电池法规开始适用</td><td>所有电池</td></tr><tr><td>2025-02-18</td><td>EV 电池碳足迹声明（已延期）</td><td>EV 电池</td></tr><tr><td>2026-02-18</td><td>&gt;2 kWh 工业电池碳足迹声明（已延期）</td><td>工业电池（含储能）</td></tr><tr><td>2026-08-18</td><td>通用信息标签；碳足迹性能等级标签</td><td>EV/LMT/工业电池</td></tr><tr><td>2026-07-16</td><td>DPP 注册系统实施条例 (EU) 2026/1778 通过</td><td>电池护照</td></tr><tr><td>2026-07-20</td><td>DPP 注册系统上线（B/C）</td><td>电池护照</td></tr><tr><td>2027-02-18</td><td>电池护照强制；所有电池加 QR 码</td><td>EV/LMT/&gt;2 kWh 工业电池</td></tr><tr><td>2027-08-18</td><td>供应链尽职调查</td><td>相关电池</td></tr><tr><td>2028-08-18</td><td>再生材料含量：Co 16%、Li 6%、Ni 6%</td><td>EV/LMT/工业电池</td></tr></tbody></table></div>
+<ul><li><strong>储能电池属于“工业电池 &gt;2 kWh”</strong>：直流侧容量超过 2 kWh 的储能系统，原则上要护照；具体按电池类别、用途和投放方式判断。</li><li><strong>护照不是“贴个二维码”</strong>：它是贯穿电池全生命周期的数据体系，约 71 项数据点（委员会 2026-08 指南，B/C），包括身份、溯源、碳足迹、再生含量、电化学性能、拆解与安全。</li><li><strong>数据分层</strong>：公开信息（制造商、材料、碳足迹）与受限信息（健康状态、循环次数、维修记录）分级访问；数据要持续更新，不是一次性填报。</li><li><strong>海关核验</strong>：进口产品的唯一标识将在欧盟海关环节核验；没有护照/二维码，产品可能无法上市。</li></ul>
+<h3 id="s33">6.2 责任划分</h3>
+<div class="table-wrap"><table><thead><tr><th>角色</th><th>责任</th></tr></thead><tbody><tr><td>生产者（producer）</td><td>在欧盟首次投放电池的一方，包括进口商；承担护照、标签、碳足迹、回收责任</td></tr><tr><td>制造商</td><td>提供数据、技术文件、碳足迹核算、供应链溯源</td></tr><tr><td>进口商</td><td>确认生产者责任已履行；保存合规文件</td></tr><tr><td>回收商</td><td>访问拆解/回收数据；反馈再生含量</td></tr><tr><td>公告机构</td><td>碳足迹验证、部分合规评估</td></tr></tbody></table></div>
+<ul><li><strong>“生产者”可能是进口商</strong>：中国制造商把电池卖给欧洲进口商，进口商可能是法规下的 producer；合同要明确谁负责护照、谁承担召回/罚款。</li><li><strong>数据要“可验证”</strong>：碳足迹要按欧盟方法学核算，第三方验证；供应链要穿透到矿山，证明没有环境破坏和劳工风险。</li><li><strong>再生含量</strong>：2028-08-18 起，钴 16%、锂 6%、镍 6%；提前布局回收料供应链，否则可能无法达标。</li></ul>
+<h3 id="s34">6.3 对中国厂商的影响</h3>
+<ul><li><strong>碳足迹是新的“成本项”</strong>：电力碳因子、运输、前驱体、正极材料都要核算；用中国电网平均因子还是项目绿电，会显著改变结果。</li><li><strong>数据跨境</strong>：护照数据要存放在欧盟可访问的系统；涉及供应链数据出境，要评估中国数据合规与欧盟访问要求的冲突。</li><li><strong>产品设计</strong>：电芯/模组/系统的身份编码、BMS 数据接口、拆解设计要提前做；后期改造比前期设计贵得多。</li><li><strong>常见坑</strong>：把电池护照当成 2027 年的事；没有做碳足迹核算；供应链数据无法追溯；进口商/制造商责任不清。</li></ul>
+<hr>
+<h2 id="s35">7. NZIA 与产业政策：公共采购的“非价格标准”</h2>
+<h3 id="s36">7.1 NZIA 的核心数字</h3>
+<div class="table-wrap"><table><thead><tr><th>要素</th><th>内容</th></tr></thead><tbody><tr><td>法规</td><td>Regulation (EU) 2024/1735</td></tr><tr><td>生效</td><td>2024-06-29</td></tr><tr><td>目标</td><td>2030 年欧盟净零技术制造能力满足 40% 需求</td></tr><tr><td>非价格标准</td><td>2025-12-30 起，成员国拍卖至少 30% 年容量或 6 GW 适用</td></tr><tr><td>权重</td><td>非价格标准占评标 15–30%</td></tr><tr><td>韧性</td><td>单一第三国供应 &gt;85% 时触发</td></tr><tr><td>实施条例</td><td>(EU) 2025/1176（2025-05-23）</td></tr></tbody></table></div>
+<ul><li><strong>NZIA 不是“禁止中国产品”</strong>：它通过非价格标准（可持续性、韧性、网络安全、本地就业等）给欧盟制造加分；中国产品仍可参与，但要在评标中弥补差距。</li><li><strong>适用对象是“净零技术”</strong>：太阳能、风能、电池/储能、电网、热泵、电解槽、CCS、核能等；储能项目在成员国招标中可能适用。</li><li><strong>“30% 或 6 GW”是触发门槛</strong>：成员国可以选择按容量比例或绝对规模适用；具体拍卖规则决定中国设备能不能参与。</li><li><strong>意大利 FER X 是先行案例</strong>：FER X 对 &gt;1 MW 光伏的组件、电池片、逆变器来源设限，首次执行 NZIA 供应链标准；储能项目的 MACSE/容量市场是否适用，要看拍卖条款。</li></ul>
+<h3 id="s37">7.2 工业加速器法案（IAA，草案）</h3>
+<div class="table-wrap"><table><thead><tr><th>要素</th><th>内容</th><th>状态</th></tr></thead><tbody><tr><td>提案</td><td>2026-03-04 欧盟委员会提出</td><td>草案，未生效</td></tr><tr><td>公共采购</td><td>分阶段“欧盟制造”：先 BMS/组件，后电芯</td><td>谈判中</td></tr><tr><td>外资条件</td><td>投资 &gt;€100m 且来源国占全球产能 &gt;40%</td><td>谈判中</td></tr><tr><td>审批标准</td><td>六项中满足四项（本地用工、研发、采购、合资、持股 ≤49%、知识产权）</td><td>谈判中</td></tr><tr><td>不追溯</td><td>已建/在建项目不受影响</td><td>谈判中</td></tr></tbody></table></div>
+<ul><li><strong>IAA 是“草案”，不是现行法</strong>：不要按草案做已生效的合规结论；但可以作为项目选址/股权结构的提前量。</li><li><strong>“€100m + 40%”针对制造业投资</strong>：不是所有储能项目投资；具体适用范围以最终文本为准。</li><li><strong>不追溯是窗口期</strong>：已开工/已签约项目可能不受影响，这也是 2026 年中国厂商密集签约的原因之一（C）。</li><li><strong>常见坑</strong>：把 IAA 当成已生效；忽略 NZIA 在招标中的评分；没有准备本地含量/碳足迹证明。</li></ul>
+<hr>
+<h2 id="s38">8. 外资审查：股权交易也可能被卡</h2>
+<h3 id="s39">8.1 欧盟层面</h3>
+<div class="table-wrap"><table><thead><tr><th>要素</th><th>内容</th></tr></thead><tbody><tr><td>现行法规</td><td>Regulation (EU) 2019/452，2020-10-11 适用</td></tr><tr><td>新法规</td><td>2026-06-17 通过，取代 2019/452；生效后 18 个月适用（B/C）</td></tr><tr><td>机制</td><td>成员国审查 + 欧盟合作机制</td></tr><tr><td>覆盖</td><td>能源、关键基础设施、关键技术、关键原材料等</td></tr><tr><td>新增</td><td>欧盟境内企业但最终由第三国控制的交易</td></tr></tbody></table></div>
+<ul><li><strong>欧盟不是“统一审查”</strong>：审查权在成员国；欧盟委员会可以发表意见，但最终决定在成员国。</li><li><strong>新法规扩大范围</strong>：覆盖欧盟境内企业但最终由第三国投资者控制的交易；敏感领域可能强制审查（B/C，以最终文本为准）。</li><li><strong>能源资产是敏感领域</strong>：电网、发电、储能、LNG、关键矿产都可能触发审查；少数股权、董事会席位、否决权、数据访问都可能被认定为“控制”。</li></ul>
+<h3 id="s40">8.2 主要国家</h3>
+<div class="table-wrap"><table><thead><tr><th>国家</th><th>法规/机构</th><th>触发点</th><th>备注</th></tr></thead><tbody><tr><td>美国</td><td>CFIUS/FIRRMA；财政部</td><td>控制权、关键基础设施、房地产、数据</td><td>少数股权+否决权也可能触发</td></tr><tr><td>日本</td><td>外为法；财务省/经产省</td><td>核心行业（电气、发电 ≥5 万 kW）</td><td>事前届报；审查 30 日、最长 5 个月</td></tr><tr><td>澳大利亚</td><td>FIRB；财政部</td><td>能源、关键基础设施、土地</td><td>门槛按投资者国籍/资产类型</td></tr><tr><td>英国</td><td>NSIA 2021；BEIS/DSIT</td><td>17 个敏感行业（含能源）</td><td>强制申报；未申报可能无效</td></tr><tr><td>德国</td><td>AWV；BMWK</td><td>关键基础设施、能源、国防</td><td>跨行业审查；可附条件</td></tr><tr><td>法国</td><td>IEF；经济部</td><td>能源、国防、交通、数字</td><td>事前审批</td></tr><tr><td>意大利</td><td>Golden Power；总理府</td><td>能源、网络、国防</td><td>可附条件/否决</td></tr><tr><td>西班牙</td><td>FDI 审查；贸易部</td><td>能源、关键基础设施</td><td>2020 年起扩展</td></tr><tr><td>波兰</td><td>2020 年审查法；UOKiK</td><td>能源、关键基础设施</td><td>事前申报</td></tr></tbody></table></div>
+<ul><li><strong>“不到 10% 就免报”是过时理解</strong>：CFIUS/FIRRMA、日本外为法、英国 NSIA 都可能覆盖少数股权 + 权利安排；要看“控制”而不是“持股比例”。</li><li><strong>交易结构设计要前置</strong>：合资、少数股权、董事会观察员、技术许可、数据访问，都可能触发审查；先做 Jurisdiction Analysis，再谈估值。</li><li><strong>时间成本</strong>：美国 CFIUS 30 天初审 + 45 天调查（可延长）；日本 30 日 + 最长 5 个月；欧盟成员国 1–6 个月；要把审查时间写进 SPA 的 long-stop date。</li></ul>
+<h3 id="s41">8.3 中国厂商的常见路径</h3>
+<div class="table-wrap"><table><thead><tr><th>路径</th><th>优点</th><th>风险</th></tr></thead><tbody><tr><td>设备出口</td><td>轻资产、快</td><td>关税/供应链审查；并网/认证门槛</td></tr><tr><td>OEM/ODM</td><td>本地品牌、合规</td><td>技术授权、质量责任</td></tr><tr><td>本地建厂</td><td>绕开关税/本地含量</td><td>重资产、FDI 审查、补贴条件</td></tr><tr><td>合资</td><td>本地资源、合规</td><td>控制权/知识产权/退出</td></tr><tr><td>收购存量项目</td><td>快速获得并网/容量</td><td>外资审查、负债/许可瑕疵</td></tr></tbody></table></div>
+<ul><li><strong>设备出口不是“没有合规”</strong>：电池法规、NIS2 供应链、UL 9540A、并网认证都适用；只是没有 FDI 审查。</li><li><strong>本地建厂要过 FDI + 补贴 + 本地含量</strong>：德国/法国/意大利/西班牙/波兰都可能审查；美国还有 FEOC/ITC 限制。</li><li><strong>合资要设计“控制权”</strong>：50/50 合资可能被认定为共同控制；董事会席位、否决权、知识产权许可都可能触发审查。</li></ul>
+<hr>
+<h2 id="s42">9. 合规项目时间轴：把“审批”当成关键路径</h2>
+<h3 id="s43">9.1 典型 100 MW/200 MWh 项目的合规时间轴（D 级，方法演示）</h3>
+<div class="table-wrap"><table><thead><tr><th>阶段</th><th>时间</th><th>关键交付</th><th>依赖</th></tr></thead><tbody><tr><td>选址/土地</td><td>0–6 月</td><td>土地权属、规划许可</td><td>地方规划</td></tr><tr><td>并网申请</td><td>0–3 月</td><td>申请受理、接入点</td><td>电网容量</td></tr><tr><td>系统研究</td><td>3–15 月</td><td>并网方案、限发条件</td><td>电网研究</td></tr><tr><td>设备认证</td><td>3–12 月</td><td>IEC/UL/并网证书</td><td>设备选型</td></tr><tr><td>消防审批</td><td>6–18 月</td><td>消防设计、AHJ 许可</td><td>总图/设备</td></tr><tr><td>NIS2 合规</td><td>6–18 月</td><td>ISMS、事件流程、合同条款</td><td>IT/OT</td></tr><tr><td>电池护照</td><td>6–24 月</td><td>数据、碳足迹、DPP 注册</td><td>供应链</td></tr><tr><td>FDI 审查</td><td>交易前 1–6 月</td><td>申报/批准</td><td>交易结构</td></tr><tr><td>建设/调试</td><td>12–24 月</td><td>并网测试、市场注册</td><td>设备/施工</td></tr></tbody></table></div>
+<ul><li><strong>关键路径不是设备交付，是并网+消防+数据</strong>：设备可以提前买，但并网研究、消防审批、电池护照数据往往更慢。</li><li><strong>并行是唯一解</strong>：设备认证、消防设计、NIS2、电池护照要同步启动；串行做会把 18 个月拖成 36 个月。</li><li><strong>时间轴要写进投决模型</strong>：每延迟 1 个月，融资成本、电价暴露、设备降价/涨价都会变。</li></ul>
+<h3 id="s44">9.2 合规成本清单</h3>
+<div class="table-wrap"><table><thead><tr><th>项目</th><th>量级（D 级）</th><th>备注</th></tr></thead><tbody><tr><td>并网研究/测试</td><td>€0.2–1.0m</td><td>取决于电网和项目规模</td></tr><tr><td>设备认证</td><td>€0.1–0.5m</td><td>IEC/UL/并网</td></tr><tr><td>消防设计与审批</td><td>€0.1–0.3m</td><td>不含消防系统硬件</td></tr><tr><td>NIS2 合规</td><td>€0.05–0.3m/年</td><td>ISMS、审计、人员</td></tr><tr><td>电池护照/碳足迹</td><td>€0.1–0.5m</td><td>数据、验证、系统</td></tr><tr><td>法律/外资审查</td><td>€0.1–0.5m</td><td>交易结构、申报</td></tr><tr><td>合计</td><td>€0.65–3.1m</td><td>不含硬件和土建</td></tr></tbody></table></div>
+<aside class="note"><p>以上为合成量级，不是报价；实际成本随项目规模、国家、设备类型、认证范围变化。</p></aside>
+<hr>
+<h2 id="s45">10. 十个坑</h2>
+<ol><li><strong>把 CE 当并网证书</strong>：CE 是产品安全，并网要看 VDE/G99/CEI 等本国规则；两者不能互相替代。</li><li><strong>只做设备认证，不做项目认证</strong>：现场保护定值、通信、无功、故障穿越测试不通过，项目不能并网。</li><li><strong>忽略消防审批时间</strong>：NFPA 855/AHJ 或欧洲地方消防审批可能比设备交付更慢；总图要提前做。</li><li><strong>电池护照等到 2027 年</strong>：数据、碳足迹、供应链溯源需要 12–18 个月；2026 年就要启动。</li><li><strong>把 NIS2 当成 IT 项目</strong>：EMS/SCADA/远程运维是 OT 安全，事件报告有 24h/72h 硬时钟；董事会要签字。</li><li><strong>供应链数据不可追溯</strong>：电池法规要求穿透到矿山；没有供应链数据，护照和碳足迹都做不出来。</li><li><strong>NZIA 只影响光伏</strong>：储能招标也可能适用非价格标准；投标前要看招标条款。</li><li><strong>外资审查只看持股比例</strong>：少数股权+否决权/董事会席位也可能触发；交易结构要前置设计。</li><li><strong>并网许可当并网协议</strong>：许可有期限和里程碑；没有并网协议，项目不能投运。</li><li><strong>合规成本没有进投决</strong>：认证、消防、NIS2、护照、法律费用是真实成本；漏算会高估 IRR。</li></ol>
+<hr>
+<h2 id="s46">11. 合规检查清单（投决前）</h2>
+<div class="table-wrap"><table><thead><tr><th>问题</th><th>是/否</th><th>证据</th></tr></thead><tbody><tr><td>接入点有容量吗？排队位置/预计接入时间？</td><td></td><td>电网书面回复</td></tr><tr><td>并网标准/版本/证书要求明确吗？</td><td></td><td>电网/TSO 文件</td></tr><tr><td>设备有 IEC/UL/并网证书吗？版本有效吗？</td><td></td><td>证书/报告</td></tr><tr><td>消防方案通过 AHJ/地方审批了吗？</td><td></td><td>消防许可/审查意见</td></tr><tr><td>NIS2 适用吗？谁负责报告？</td><td></td><td>法律意见/ISMS</td></tr><tr><td>电池护照/碳足迹数据准备好了吗？</td><td></td><td>数据清单/验证报告</td></tr><tr><td>招标适用 NZIA 吗？本地含量够吗？</td><td></td><td>招标文件/供应链证明</td></tr><tr><td>交易触发 FDI 审查吗？时间够吗？</td><td></td><td>法律意见/申报回执</td></tr><tr><td>合规成本和延迟进模型了吗？</td><td></td><td>投决模型</td></tr></tbody></table></div>
+<hr>
+<h2 id="s47">12. 算例（D 级：方法演示，不是投资建议）</h2>
+<h3 id="s48">12.1 合规延迟对 IRR 的影响</h3>
+<p>假设：</p>
+<ul><li>项目：100 MW/200 MWh，capex €30m，年 EBITDA €6m；</li><li>融资：70% 债务，利率 5%，建设期利息按 capex 计；</li><li>延迟：并网+消防+护照合计延迟 6 个月。</li></ul>
+<p>计算：</p>
+<pre><code>建设期利息增加 ≈ €30m × 70% × 5% × 0.5 = €0.525m
+EBITDA 损失 ≈ €6m × 0.5 = €3.0m
+总影响 ≈ €3.525m（未折现）</code></pre>
+<ul><li><strong>延迟 6 个月可能吃掉 0.5–1.0 个百分点的 IRR</strong>；具体取决于电价曲线和融资结构。</li><li><strong>如果延迟导致错过容量市场/拍卖交付年</strong>，损失更大；要把“交付年”当成硬约束。</li></ul>
+<h3 id="s49">12.2 合规成本对 LCOS 的影响</h3>
+<pre><code>LCOS = (capex + 合规成本 + 运维现值 - 残值) / 全生命周期放电量</code></pre>
+<p>假设合规成本 €1.5m，全生命周期放电量 400 GWh：</p>
+<pre><code>合规成本分摊 ≈ €1.5m / 400 GWh = €3.75/MWh</code></pre>
+<ul><li><strong>合规成本不是小数</strong>：€3.75/MWh 相当于 LCOS 的 5–10%；在低价差市场可能决定项目生死。</li><li><strong>认证/消防/护照的成本要按项目分摊</strong>，不能只算设备单价。</li></ul>
+<h3 id="s50">12.3 电池护照数据准备的“关键路径”</h3>
+<div class="table-wrap"><table><thead><tr><th>任务</th><th>前置</th><th>时间</th></tr></thead><tbody><tr><td>碳足迹核算</td><td>电力因子、供应链数据</td><td>3–6 月</td></tr><tr><td>第三方验证</td><td>核算报告</td><td>2–4 月</td></tr><tr><td>DPP 数据映射</td><td>71 项数据点</td><td>3–6 月</td></tr><tr><td>系统对接</td><td>DPP 注册库</td><td>2–4 月</td></tr><tr><td>试运行</td><td>海关/客户</td><td>1–2 月</td></tr></tbody></table></div>
+<ul><li><strong>总时间 11–22 个月</strong>；如果 2027-02-18 是硬节点，最晚 2025 年底/2026 年初就要启动。</li><li><strong>数据缺口</strong>：供应链矿山数据、回收料比例、碳足迹因子；这些不是 IT 系统能补的。</li></ul>
+<hr>
+<h2 id="s51">13. 2026–2027 观察点</h2>
+<ul><li><strong>欧盟</strong>：RfG/DCC 修订；NIS2 各国执法；电池护照 DPP 注册库运行；NZIA 拍卖执行；IAA 立法进度。</li><li><strong>德国</strong>：VDE-AR-N 版本更新；单元证书互认；StromVKG 招标的并网/本地含量条件。</li><li><strong>英国</strong>：TMO4+ 队列改革落地；G99/G100 版本；NSIA 审查案例。</li><li><strong>意大利</strong>：CEI 0-21/0-16 更新；MACSE 第二轮并网资格；NZIA 在 FER X 的执行。</li><li><strong>西班牙</strong>：TED/82/2026 执行；自消费合规；并网许可里程碑。</li><li><strong>荷兰</strong>：拥堵优先规则；容量限制合同；电池并网优先。</li><li><strong>波兰</strong>：并网条件时限执行；储能并网费减半；容量市场降额。</li><li><strong>美国</strong>：UL 9540A 第 6 版/NFPA 855-2026 执行；FERC 队列改革；FEOC/关税；CFIUS 案例。</li><li><strong>澳大利亚</strong>：AS 5139 更新；AEMO 并网标准；FIRB 审查。</li><li><strong>日本</strong>：系统连系规程更新；外为法审查；容量市场/LTDA 并网条件。</li></ul>
+<hr>
+<h2 id="s52">14. 官方来源与口径</h2>
+<aside class="note"><p>以下链接在 2026-11 做过可达性检查；规则以官网最新版本为准。无法稳定访问的页面注明状态，仅作查证入口。</p></aside>
+<div class="table-wrap"><table><thead><tr><th>来源</th><th>用途</th><th>级别</th><th>链接状态</th></tr></thead><tbody><tr><td>EU · RfG 2016/631</td><td>发电模块并网框架</td><td>A</td><td><code>eur-lex.europa.eu/eli/reg/2016/631/oj</code>（自动访问返回 202）</td></tr><tr><td>EU · DCC 2016/1388</td><td>需求设施并网框架</td><td>A</td><td><code>eur-lex.europa.eu/eli/reg/2016/1388/oj</code>（自动访问返回 202）</td></tr><tr><td>EU · NIS2 2022/2555</td><td>网络安全</td><td>A</td><td><code>eur-lex.europa.eu/eli/dir/2022/2555/oj</code>（自动访问返回 202）</td></tr><tr><td>EU · 电池法规 2023/1542</td><td>电池护照/碳足迹</td><td>A</td><td><code>eur-lex.europa.eu/eli/reg/2023/1542/oj</code>（自动访问返回 202）</td></tr><tr><td>EU · NZIA 2024/1735</td><td>净零产业</td><td>A</td><td><code>eur-lex.europa.eu/eli/reg/2024/1735/oj</code>（自动访问返回 202）</td></tr><tr><td>EU · FDI 2019/452</td><td>外资审查框架</td><td>A</td><td><code>eur-lex.europa.eu/eli/reg/2019/452/oj</code>（自动访问返回 202）</td></tr><tr><td>ENTSO-E · RfG</td><td>网络码实施</td><td>A</td><td><a href="https://www.entsoe.eu/network_codes/rfg/" target="_blank" rel="noopener">https://www.entsoe.eu/network_codes/rfg/</a></td></tr><tr><td>VDE FNN</td><td>VDE-AR-N 系列</td><td>A</td><td><code>vde.com</code>（未实测，未挂链接）</td></tr><tr><td>UK · Ofgem</td><td>G98/G99/G100</td><td>A</td><td><a href="https://www.ofgem.gov.uk/" target="_blank" rel="noopener">https://www.ofgem.gov.uk/</a></td></tr><tr><td>UK · NESO</td><td>并网/队列</td><td>A</td><td><a href="https://www.neso.energy/" target="_blank" rel="noopener">https://www.neso.energy/</a></td></tr><tr><td>Italy · CEI</td><td>CEI 0-21/0-16</td><td>A</td><td><code>www.ceiweb.it</code>（自动访问返回 000）</td></tr><tr><td>Spain · BOE</td><td>TED/749/2020、TED/82/2026</td><td>A</td><td><a href="https://www.boe.es/" target="_blank" rel="noopener">https://www.boe.es/</a></td></tr><tr><td>Netherlands · ACM</td><td>Netcode/拥堵</td><td>A</td><td><a href="https://www.acm.nl/" target="_blank" rel="noopener">https://www.acm.nl/</a></td></tr><tr><td>Poland · URE</td><td>并网/容量市场</td><td>A</td><td><a href="https://www.ure.gov.pl/" target="_blank" rel="noopener">https://www.ure.gov.pl/</a></td></tr><tr><td>US · UL</td><td>UL 9540/9540A</td><td>A</td><td><a href="https://www.ul.com/" target="_blank" rel="noopener">https://www.ul.com/</a></td></tr><tr><td>US · NFPA</td><td>NFPA 855</td><td>A</td><td><a href="https://www.nfpa.org/" target="_blank" rel="noopener">https://www.nfpa.org/</a></td></tr><tr><td>Australia · AEMO</td><td>NER/并网</td><td>A</td><td><code>aemo.com.au</code>（自动访问返回 403）</td></tr><tr><td>Japan · OCCTO</td><td>系统连系/容量市场</td><td>A</td><td><a href="https://www.occto.or.jp/" target="_blank" rel="noopener">https://www.occto.or.jp/</a></td></tr><tr><td>Japan · METI</td><td>电气事业法/外为法</td><td>A</td><td><code>meti.go.jp</code>（自动访问返回 403）</td></tr><tr><td>EU Commission · NIS2</td><td>转化状态</td><td>A</td><td><a href="https://digital-strategy.ec.europa.eu/en/policies/nis2-directive" target="_blank" rel="noopener">https://digital-strategy.ec.europa.eu/en/policies/nis2-directive</a></td></tr><tr><td>EU Commission · 电池护照</td><td>DPP 指南</td><td>A</td><td><a href="https://environment.ec.europa.eu/topics/waste-and-recycling/batteries_en" target="_blank" rel="noopener">https://environment.ec.europa.eu/topics/waste-and-recycling/batteries_en</a></td></tr></tbody></table></div>
+<h3 id="s53">口径提醒</h3>
+<ul><li><strong>标准版本</strong>：IEC/UL/NFPA/VDE 都有版本号；引用时写“现行版”，不要把旧版当现行。</li><li><strong>“认证”与“合规”</strong>：认证是证书，合规是持续义务；电池法规/NIS2 都是持续义务，不是一次性证书。</li><li><strong>“欧盟”与“成员国”</strong>：指令要转化为国内法；项目要看当地法，不是只看布鲁塞尔。</li><li><strong>“并网”与“市场注册”</strong>：并网协议不等于市场注册；辅助服务/容量市场还有单独预审。</li><li><strong>“设备”与“项目”</strong>：设备证书不等于项目合规；现场测试、消防审批、数据护照都是项目级。</li></ul>
+<hr>
+<h2 id="s54">速查</h2>
+<div class="table-wrap"><table><thead><tr><th>问题</th><th>先看</th><th>关键结论</th><th>依据</th></tr></thead><tbody><tr><td>德国中压并网要什么</td><td>§2.1</td><td>VDE-AR-N 4110 + FGW TR3/4/8 + 单元证书</td><td>VDE/FGW</td></tr><tr><td>英国配网并网看什么</td><td>§2.2</td><td>G99/G100 + DNO + 队列</td><td>Ofgem/DNO</td></tr><tr><td>意大利低压/中压</td><td>§2.3</td><td>CEI 0-21 / CEI 0-16</td><td>CEI</td></tr><tr><td>西班牙 2026 变化</td><td>§2.4</td><td>TED/82/2026；自消费豁免取消</td><td>BOE</td></tr><tr><td>荷兰并网瓶颈</td><td>§2.5</td><td>容量排队；容量限制合同+电池</td><td>ACM/DSO</td></tr><tr><td>波兰并网时限</td><td>§2.6</td><td>≤1 kV 30 天；&gt;1 kV 150 天</td><td>能源法</td></tr><tr><td>美国储能认证</td><td>§3.2</td><td>UL 9540 + UL 9540A + IEEE 1547</td><td>UL/IEEE</td></tr><tr><td>消防</td><td>§4</td><td>NFPA 855 + UL 9540A；欧洲地方规范</td><td>NFPA/UL</td></tr><tr><td>NIS2 罚则</td><td>§5.1</td><td>€10m/2%；€7m/1.4%</td><td>NIS2</td></tr><tr><td>电池护照</td><td>§6.1</td><td>2027-02-18；71 项数据点</td><td>2023/1542</td></tr><tr><td>NZIA</td><td>§7.1</td><td>40% 目标；30%/6 GW；15–30% 权重</td><td>2024/1735</td></tr><tr><td>外资审查</td><td>§8</td><td>控制权/权利安排；不是只看持股</td><td>各国法规</td></tr></tbody></table></div>
+<hr>
+<h2 id="s55">与技能和其他笔记的分工</h2>
+<div class="table-wrap"><table><thead><tr><th>主题</th><th>本文</th><th>技能</th><th>其他笔记</th></tr></thead><tbody><tr><td>并网标准/认证</td><td>主责（横向）</td><td>新能源技能（项目开发）</td><td>各海外市场模块（单市场）</td></tr><tr><td>消防/安全</td><td>主责（框架）</td><td>储能技能（投决）</td><td>储能技术模块（设备）</td></tr><tr><td>NIS2</td><td>主责（框架）</td><td>不展开</td><td>风险信用笔记（合规风险）</td></tr><tr><td>电池护照/碳足迹</td><td>主责（框架）</td><td>碳资产技能（核算）</td><td>碳资产实务（CBAM/DPP）</td></tr><tr><td>NZIA/IAA</td><td>主责（框架）</td><td>不展开</td><td>意大利模块（FER X）</td></tr><tr><td>外资审查</td><td>主责（框架）</td><td>不展开</td><td>各市场模块（单国）</td></tr><tr><td>容量机制</td><td>概述</td><td>储能技能（收入）</td><td>《容量机制横向对照》主责</td></tr><tr><td>辅助服务</td><td>概述</td><td>电力交易技能（市场）</td><td>《辅助服务与平衡市场对照》主责</td></tr></tbody></table></div>
+<ul><li><strong>本文是“合规总图”</strong>：遇到“要什么证书、什么时候要、谁负责”，先看这里。</li><li><strong>遇到单一市场的交易规则</strong>：回到德国/英国/意大利/西班牙/荷兰/波兰/比利时/美国/澳大利亚/日本模块。</li><li><strong>遇到容量/辅助服务/收益建模</strong>：看横向专题的另外三篇。</li><li><strong>遇到中国国内并网考核</strong>：看《并网运行考核与两个细则》，不要套用海外规则。</li></ul>
+<hr>
+<h2 id="s56">更新记录</h2>
+<div class="table-wrap"><table><thead><tr><th>日期</th><th>内容</th></tr></thead><tbody><tr><td>2026-11-10</td><td>首版：横向专题第一篇；覆盖十市场并网标准、IEC/UL/CE 认证、NFPA 855/UL 9540A 消防、NIS2、电池法规/电池护照、NZIA/IAA、外资审查，附合规时间轴、成本清单、十个坑与三个合成算例</td></tr></tbody></table></div>
+    </article>
+
+    <section class="related" aria-label="相关模块">
+      <h2>相关模块</h2>
+      <ul>
+        <li><a href="容量机制横向对照-2026-11.html">容量机制横向对照（2026 版）：年金、拍卖、双向 CfD 与战略储备</a></li>
+        <li><a href="辅助服务与平衡市场对照-2026-11.html">辅助服务与平衡市场对照（2026 版）：从 FCR 到 FCAS，从 BM 到 EPRX</a></li>
+        <li><a href="储能收益建模与数据源-2026-11.html">储能收益建模与数据源（2026 版）：从 5 分钟价格到 15 年现金流</a></li>
+        <li><a href="德国电力市场-2026-11.html">德国电力市场（2026 版）</a></li>
+        <li><a href="英国电力市场-2026-11.html">英国电力市场（2026 版）</a></li>
+        <li><a href="美国电力市场-2026-11.html">美国电力市场（2026 版）：ERCOT / PJM / CAISO</a></li>
+        <li><a href="海外储能业务-2026-11.html">海外储能业务：十市场大储与工商储（2026 版）</a></li>
+        <li><a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线、安全与构网型并网</a></li>
+      </ul>
+    </section>
+
+    <nav class="pager" aria-label="上下篇">
+          <a class="prev" href="海外储能业务-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">海外储能业务：十市场大储与工商储（2026 版）</span></a>
+          <a class="next" href="容量机制横向对照-2026-11.html"><span class="dir">下一篇 →</span><span class="ttl">容量机制横向对照（2026 版）：年金、拍卖、双向 CfD 与战略储备</span></a>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../海外并网与合规-2026-11.md">knowledge/海外并网与合规-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div><a href="../index.html">返回知识库总览 →</a></div>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="本页目录">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv3"><a href="#s2">0.1 七道门，不是一道门</a></li>
+            <li class="lv3"><a href="#s3">0.2 十市场速查</a></li>
+            <li class="lv2"><a href="#s4">1. 并网规则的分层：欧盟框架与本国实施</a></li>
+            <li class="lv3"><a href="#s5">1.1 三层结构</a></li>
+            <li class="lv3"><a href="#s6">1.2 并网申请的标准动作</a></li>
+            <li class="lv2"><a href="#s7">2. 十个市场的并网要点</a></li>
+            <li class="lv3"><a href="#s8">2.1 德国：单元证书是硬门槛</a></li>
+            <li class="lv3"><a href="#s9">2.2 英国：G99 之后还有队列</a></li>
+            <li class="lv3"><a href="#s10">2.3 意大利：CEI 0-21 与 CEI 0-16 分工明确</a></li>
+            <li class="lv3"><a href="#s11">2.4 西班牙：2026 年并网规则更新</a></li>
+            <li class="lv3"><a href="#s12">2.5 荷兰：先解决“有没有容量”</a></li>
+            <li class="lv3"><a href="#s13">2.6 波兰：并网条件有法定时限</a></li>
+            <li class="lv3"><a href="#s14">2.7 比利时与北欧：预审和辅助服务资格</a></li>
+            <li class="lv3"><a href="#s15">2.8 美国：IEEE 1547 + UL 1741 + AHJ</a></li>
+            <li class="lv3"><a href="#s16">2.9 澳大利亚：NER + AEMO 注册</a></li>
+            <li class="lv3"><a href="#s17">2.10 日本：电气事业法 + 系统连系规程</a></li>
+            <li class="lv2"><a href="#s18">3. 设备认证：一张“证书地图”</a></li>
+            <li class="lv3"><a href="#s19">3.1 国际电工委员会（IEC）</a></li>
+            <li class="lv3"><a href="#s20">3.2 北美：UL 与 IEEE</a></li>
+            <li class="lv3"><a href="#s21">3.3 欧洲：CE、EN 与并网认证</a></li>
+            <li class="lv3"><a href="#s22">3.4 认证与并网的关系</a></li>
+            <li class="lv2"><a href="#s23">4. 消防：从“设备安全”到“安装合规”</a></li>
+            <li class="lv3"><a href="#s24">4.1 北美：NFPA 855 + UL 9540A</a></li>
+            <li class="lv3"><a href="#s25">4.2 欧洲：电池法规 + 国家消防规范</a></li>
+            <li class="lv3"><a href="#s26">4.3 澳大利亚与日本</a></li>
+            <li class="lv2"><a href="#s27">5. NIS2：网络安全从“IT 的事”变成“董事会的事”</a></li>
+            <li class="lv3"><a href="#s28">5.1 适用范围与门槛</a></li>
+            <li class="lv3"><a href="#s29">5.2 合规义务</a></li>
+            <li class="lv3"><a href="#s30">5.3 2026 年转化状态</a></li>
+            <li class="lv2"><a href="#s31">6. 电池法规与电池护照：2027-02-18 是硬节点</a></li>
+            <li class="lv3"><a href="#s32">6.1 时间表</a></li>
+            <li class="lv3"><a href="#s33">6.2 责任划分</a></li>
+            <li class="lv3"><a href="#s34">6.3 对中国厂商的影响</a></li>
+            <li class="lv2"><a href="#s35">7. NZIA 与产业政策：公共采购的“非价格标准”</a></li>
+            <li class="lv3"><a href="#s36">7.1 NZIA 的核心数字</a></li>
+            <li class="lv3"><a href="#s37">7.2 工业加速器法案（IAA，草案）</a></li>
+            <li class="lv2"><a href="#s38">8. 外资审查：股权交易也可能被卡</a></li>
+            <li class="lv3"><a href="#s39">8.1 欧盟层面</a></li>
+            <li class="lv3"><a href="#s40">8.2 主要国家</a></li>
+            <li class="lv3"><a href="#s41">8.3 中国厂商的常见路径</a></li>
+            <li class="lv2"><a href="#s42">9. 合规项目时间轴：把“审批”当成关键路径</a></li>
+            <li class="lv3"><a href="#s43">9.1 典型 100 MW/200 MWh 项目的合规时间轴（D 级，方法演示）</a></li>
+            <li class="lv3"><a href="#s44">9.2 合规成本清单</a></li>
+            <li class="lv2"><a href="#s45">10. 十个坑</a></li>
+            <li class="lv2"><a href="#s46">11. 合规检查清单（投决前）</a></li>
+            <li class="lv2"><a href="#s47">12. 算例（D 级：方法演示，不是投资建议）</a></li>
+            <li class="lv3"><a href="#s48">12.1 合规延迟对 IRR 的影响</a></li>
+            <li class="lv3"><a href="#s49">12.2 合规成本对 LCOS 的影响</a></li>
+            <li class="lv3"><a href="#s50">12.3 电池护照数据准备的“关键路径”</a></li>
+            <li class="lv2"><a href="#s51">13. 2026–2027 观察点</a></li>
+            <li class="lv2"><a href="#s52">14. 官方来源与口径</a></li>
+            <li class="lv3"><a href="#s53">口径提醒</a></li>
+            <li class="lv2"><a href="#s54">速查</a></li>
+            <li class="lv2"><a href="#s55">与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s56">更新记录</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="38">展开 38 个小节</button>
+  </aside>
+</div>
+
+<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<script src="../assets/doc.js"></script>
+<script src="../assets/theme.js"></script>
+</body>
+</html>

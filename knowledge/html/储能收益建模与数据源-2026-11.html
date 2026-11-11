@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>储能收益建模与数据源（2026 版）：从 5 分钟价格到 15 年现金流 | energy-skills 知识库</title>
+<meta name="description" content="把 ENTSO-E、NEMWEB、Elexon BMRS、GME、OMIE、PSE、Nord Pool、CAISO、ERCOT、PJM、JEPX 的取数入口放进一张表，再讲粒度对齐、RTE/退化、捕获率、降额、收入叠加冲突与回测方法。">
+<link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
+<script>
+(function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/knowledge.css">
+</head>
+<body data-cat="cross" id="top">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" role="progressbar" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html">← 知识库</a>
+  <div class="crumb">
+    <span class="crumb-cat">07 / CROSS</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">储能收益建模与数据源（2026 版）：从 5 分钟价格到 15 年现金流</span>
+  </div>
+  <div class="topbar-act">
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换到深色模式" title="切换到深色模式">
+      <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+      <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+    <a class="src" href="../储能收益建模与数据源-2026-11.md">.md 源文件</a>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">07 / CROSS</div>
+    <h2 class="nav-cat"><a href="../index.html#cross">横向专题</a></h2>
+    <ul class="nav-list">
+              <li><a href="海外并网与合规-2026-11.html">海外并网与合规手册（2026 版）：从 grid code 到电池护照</a></li>
+              <li><a href="容量机制横向对照-2026-11.html">容量机制横向对照（2026 版）：年金、拍卖、双向 CfD 与战略储备</a></li>
+              <li><a href="辅助服务与平衡市场对照-2026-11.html">辅助服务与平衡市场对照（2026 版）：从 FCR 到 FCAS，从 BM 到 EPRX</a></li>
+              <li class="on" aria-current="page"><a href="储能收益建模与数据源-2026-11.html">储能收益建模与数据源（2026 版）：从 5 分钟价格到 15 年现金流</a></li>
+              <li><a href="跨国PPA与绿证-2026-11.html">跨国 PPA、绿证与 tolling（2026 版）：从 GO 到 merchant tail</a></li>
+              <li><a href="海外市场同口径快照与投决日历-2026-11.html">海外市场同口径快照与投决日历（2026 版）：十市场、七列口径、五张工单</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#foundation"><b>04</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>05</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#intl"><b>06</b>海外市场</a></li>
+              <li><a href="../index.html#price"><b>08</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>09</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>10</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>11</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>12</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>13</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>14</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>15</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">07 / CROSS<i>知识模块</i></div>
+      <h1 class="doc-title">储能收益建模与数据源：从 5 分钟价格到 15 年现金流（2026-11）</h1>
+      <p class="lede">把 ENTSO-E、NEMWEB、Elexon BMRS、GME、OMIE、PSE、Nord Pool、CAISO、ERCOT、PJM、JEPX 的取数入口放进一张表，再讲粒度对齐、RTE/退化、捕获率、降额、收入叠加冲突与回测方法。</p>
+      <p class="hook">2026-11 · 取数 / 粒度 / 效率 / 退化 / 回测</p>
+      <div class="tags"><span class="tag">储能收益</span><span class="tag">数据源</span><span class="tag">RTE</span><span class="tag">退化</span><span class="tag">捕获率</span><span class="tag">回测</span></div>
+      <div class="doc-meta"><span>约 10.4k 字</span><span>阅读约 17 分钟</span><span>15 节</span><span>数据截止 2026-11-10</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（15）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. 建模前先回答五个问题</a></li>
+            <li class="lv2"><a href="#s2">1. 数据源地图</a></li>
+            <li class="lv2"><a href="#s8">2. 粒度与时区：回测的第一道坎</a></li>
+            <li class="lv2"><a href="#s12">3. 收入与成本拆解</a></li>
+            <li class="lv2"><a href="#s16">4. RTE、退化与降额</a></li>
+            <li class="lv2"><a href="#s20">5. 捕获率与价差捕获</a></li>
+            <li class="lv2"><a href="#s24">6. 收入叠加冲突</a></li>
+            <li class="lv2"><a href="#s28">7. 回测方法</a></li>
+            <li class="lv2"><a href="#s32">8. 合成算例（D 级，仅演示方法）</a></li>
+            <li class="lv2"><a href="#s37">9. 十个坑</a></li>
+            <li class="lv2"><a href="#s38">10. 2026–2027 观察清单</a></li>
+            <li class="lv2"><a href="#s39">11. 官方来源与口径</a></li>
+            <li class="lv2"><a href="#s41">速查</a></li>
+            <li class="lv2"><a href="#s42">与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s43">更新记录</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>适用边界：讲“怎么把公开数据变成可回测的储能收益模型”，不替代单市场规则、并网许可、税务和融资意见。覆盖欧洲、澳大利亚、美国、日本的主要公开数据入口；中国省级市场的数据源与规则另见国内现货/储能模块。</p><p>用途：回答“去哪里取数”“15 分钟和 5 分钟怎么对齐”“RTE 和退化怎么进模型”“捕获率怎么算”“降额怎么处理”“容量 + 能量 + 辅助服务能不能简单相加”“回测为什么总高估”七类问题。</p></aside>
+<hr>
+<h2 id="s1">0. 建模前先回答五个问题</h2>
+<div class="table-wrap"><table><thead><tr><th>问题</th><th>为什么重要</th><th>常见错误</th></tr></thead><tbody><tr><td>项目在哪个市场、哪个报价区？</td><td>价格、规则、结算粒度都不同</td><td>用全国均价代替分区价</td></tr><tr><td>收入来自哪几层？</td><td>能量、辅助服务、容量、补贴、PPA 的合同逻辑不同</td><td>把所有收入简单相加</td></tr><tr><td>结算粒度是什么？</td><td>5 分钟、15 分钟、30 分钟、半小时决定 SOC 与偏差模型</td><td>用小时模型做 15 分钟结算</td></tr><tr><td>约束是什么？</td><td>并网容量、SOC、持续时间、爬坡、降额</td><td>用铭牌 MW 当可交付容量</td></tr><tr><td>回测区间够不够？</td><td>价格形态、政策、渗透率都在变</td><td>用 2022 高价年外推 15 年</td></tr></tbody></table></div>
+<p><strong>一句话结论</strong>：储能收益模型不是“价格 × 电量”，而是“在约束下把有限能量分配到最多价值的时段”。数据、粒度、效率和退化任何一项错了，IRR 都会失真。</p>
+<hr>
+<h2 id="s2">1. 数据源地图</h2>
+<h3 id="s3">1.1 欧洲</h3>
+<div class="table-wrap"><table><thead><tr><th>数据源</th><th>覆盖</th><th>主要内容</th><th>粒度</th><th>访问方式</th><th>备注</th></tr></thead><tbody><tr><td>ENTSO-E Transparency</td><td>欧盟/邻国</td><td>日前价格、实际负荷、发电、跨区潮流、平衡</td><td>15 分钟/小时</td><td>网页 + API（需 token）</td><td>欧洲最通用的跨市场入口</td></tr><tr><td>EPEX Spot</td><td>DE-LU、GB、FR、NL、BE 等</td><td>日前/日内拍卖、成交量</td><td>15 分钟/小时</td><td>网页/数据服务</td><td>自动访问可能 403</td></tr><tr><td>Nord Pool</td><td>北欧/波罗的海</td><td>日前/日内、报价区</td><td>15 分钟/小时</td><td>网页/API</td><td>12 个北欧报价区</td></tr><tr><td>Elexon BMRS</td><td>GB</td><td>平衡机制、BOALF、不平衡、结算</td><td>半小时</td><td>网页/API</td><td>GB 平衡与结算的核心</td></tr><tr><td>GME</td><td>意大利</td><td>MGP/MI/MSD/MB、分区价</td><td>15 分钟/小时</td><td>网页/下载</td><td>MSD/MB 规则单独</td></tr><tr><td>OMIE</td><td>西班牙/葡萄牙</td><td>日前/日内、MIBEL</td><td>15 分钟/小时</td><td>网页/下载</td><td>西葡两区</td></tr><tr><td>PSE</td><td>波兰</td><td>日前/平衡、容量市场结果</td><td>15 分钟</td><td>网页/下载</td><td>容量市场单独发布</td></tr><tr><td>TenneT</td><td>荷兰/德国</td><td>平衡市场、辅助服务、拥堵</td><td>15 分钟/小时</td><td>网页/API</td><td>荷兰无容量市场</td></tr><tr><td>Elia</td><td>比利时</td><td>平衡、辅助服务、CRM</td><td>15 分钟/小时</td><td>网页/API</td><td>自动访问可能 403</td></tr></tbody></table></div>
+<h3 id="s4">1.2 澳大利亚</h3>
+<div class="table-wrap"><table><thead><tr><th>数据源</th><th>覆盖</th><th>主要内容</th><th>粒度</th><th>访问方式</th><th>备注</th></tr></thead><tbody><tr><td>AEMO NEMWEB</td><td>NEM 五区</td><td>现货价格、负荷、发电、FCAS、预调度</td><td>5 分钟调度 / 30 分钟交易</td><td>MMS 表/CSV</td><td>数据量大，按日/月下载</td></tr><tr><td>AEMO MMS</td><td>NEM</td><td>结算、约束、机组参数</td><td>5 分钟/30 分钟</td><td>数据模型</td><td>需要字段映射</td></tr></tbody></table></div>
+<ul><li><strong>NEM 是 5 分钟调度、5 分钟结算</strong>（2021-10-01 起 5MS）；交易/合约常按 30 分钟粒度。</li><li><strong>NEM 时间固定 AEST（UTC+10）</strong>，不随夏令时变化；跨市场对比要转换。</li></ul>
+<h3 id="s5">1.3 北美</h3>
+<div class="table-wrap"><table><thead><tr><th>数据源</th><th>覆盖</th><th>主要内容</th><th>粒度</th><th>访问方式</th><th>备注</th></tr></thead><tbody><tr><td>CAISO OASIS</td><td>CAISO</td><td>日前、FMM、RTD、辅助服务、RA</td><td>5 分钟/15 分钟/小时</td><td>网页/API</td><td>5 分钟 RTD、15 分钟 FMM</td></tr><tr><td>ERCOT</td><td>得州</td><td>实时价格、SCED、负荷、电池装机</td><td>5 分钟调度 / 15 分钟结算</td><td>网页/下载</td><td>CDR 报告按月</td></tr><tr><td>PJM Data Miner</td><td>PJM</td><td>实时/日前 LMP、辅助服务、容量</td><td>5 分钟/小时/年</td><td>网页/API</td><td>BRA 年度</td></tr><tr><td>EIA</td><td>全美</td><td>发电、负荷、电价、电池装机</td><td>小时/月/年</td><td>网页/API</td><td>宏观与装机统计</td></tr></tbody></table></div>
+<ul><li><strong>ERCOT 调度 5 分钟、结算 15 分钟</strong>；SOC 与偏差模型要按 15 分钟。</li><li><strong>CAISO 5 分钟 RTD、15 分钟 FMM</strong>；FRP 在 FMM/RTD 采购。</li><li><strong>PJM 按产品</strong>：能量 5 分钟/小时，容量年度；不要把 BRA 价格当日价格。</li></ul>
+<h3 id="s6">1.4 日本</h3>
+<div class="table-wrap"><table><thead><tr><th>数据源</th><th>覆盖</th><th>主要内容</th><th>粒度</th><th>访问方式</th><th>备注</th></tr></thead><tbody><tr><td>JEPX</td><td>全国</td><td>现货 48 个 30 分钟商品</td><td>30 分钟</td><td>网页/下载</td><td>无负价，下限 0.01 日元/kWh</td></tr><tr><td>OCCTO</td><td>全国</td><td>广域调度、容量市场、LTDA</td><td>30 分钟/年</td><td>网页/下载</td><td>容量市场年度</td></tr><tr><td>EPRX</td><td>全国</td><td>需给调整市场（辅助服务）</td><td>30 分钟</td><td>网页/下载</td><td>ΔkW + kWh</td></tr></tbody></table></div>
+<ul><li><strong>日本现货是 30 分钟</strong>；15 分钟粒度计划约 FY2028，回测要用当前粒度。</li><li><strong>容量市场/LTDA 是年度/长期</strong>，不能与现货价格混在同一时间序列。</li></ul>
+<h3 id="s7">1.5 取数顺序</h3>
+<ol><li><strong>先定市场与报价区</strong>：不要先下载全国数据再筛。</li><li><strong>先取价格，再取负荷/发电</strong>：价格是收益主变量，负荷/发电用于解释和场景。</li><li><strong>先取结算粒度，再取调度粒度</strong>：结算粒度决定 SOC 模型；调度粒度用于复核。</li><li><strong>先取规则/产品定义，再取数据</strong>：产品变更会让历史价格不可直接比较。</li><li><strong>保留原始文件与时间戳</strong>：所有清洗步骤可追溯。</li></ol>
+<hr>
+<h2 id="s8">2. 粒度与时区：回测的第一道坎</h2>
+<h3 id="s9">2.1 主要市场的粒度</h3>
+<div class="table-wrap"><table><thead><tr><th>市场</th><th>现货/调度粒度</th><th>结算粒度</th><th>不平衡结算</th><th>注意</th></tr></thead><tbody><tr><td>欧洲多数市场</td><td>15 分钟 MTU（2025-10-01 起）</td><td>15 分钟/半小时</td><td>15 分钟</td><td>旧小时模型要重做</td></tr><tr><td>英国 GB</td><td>半小时</td><td>半小时</td><td>半小时</td><td>BM 关闸 1 小时</td></tr><tr><td>意大利</td><td>15 分钟 MGP</td><td>15 分钟</td><td>按规则</td><td>MSD/MB 单独</td></tr><tr><td>西班牙</td><td>15 分钟</td><td>15 分钟</td><td>15 分钟（2024-12-01 起）</td><td>MIBEL 两区</td></tr><tr><td>荷兰</td><td>15 分钟</td><td>15 分钟</td><td>15 分钟</td><td>无容量市场</td></tr><tr><td>波兰</td><td>15 分钟</td><td>15 分钟</td><td>15 分钟（2024-06-14 起）</td><td>容量市场年度</td></tr><tr><td>北欧</td><td>15 分钟</td><td>15 分钟</td><td>15 分钟（2025-03-04 起）</td><td>mFRR EAM</td></tr><tr><td>澳洲 NEM</td><td>5 分钟调度</td><td>5 分钟</td><td>5 分钟</td><td>交易常按 30 分钟</td></tr><tr><td>ERCOT</td><td>5 分钟 SCED</td><td>15 分钟</td><td>15 分钟</td><td>RTC+B</td></tr><tr><td>CAISO</td><td>5 分钟 RTD / 15 分钟 FMM</td><td>5 分钟</td><td>5 分钟</td><td>FRP</td></tr><tr><td>PJM</td><td>5 分钟/小时</td><td>按产品</td><td>按产品</td><td>容量年度</td></tr><tr><td>日本</td><td>30 分钟</td><td>30 分钟</td><td>30 分钟</td><td>15 分钟待推进</td></tr></tbody></table></div>
+<h3 id="s10">2.2 时区与夏令时</h3>
+<ul><li><strong>统一用 UTC 存储</strong>：所有原始时间戳先转 UTC，再转市场本地时间。</li><li><strong>欧洲</strong>：CET/CEST；夏令时切换会出现 23/25 小时日，重复/缺失小时要显式处理。</li><li><strong>英国</strong>：GMT/BST；与欧洲大陆不完全同步。</li><li><strong>澳洲 NEM</strong>：固定 AEST（UTC+10），不用悉尼/墨尔本夏令时。</li><li><strong>美国</strong>：ERCOT 用 CT，PJM 用 ET，CAISO 用 PT；夏令时切换日要检查。</li><li><strong>日本</strong>：JST（UTC+9），无夏令时。</li></ul>
+<h3 id="s11">2.3 粒度对齐的四种做法</h3>
+<div class="table-wrap"><table><thead><tr><th>做法</th><th>适用</th><th>风险</th></tr></thead><tbody><tr><td>向下采样（5 分钟→15 分钟）</td><td>结算是 15 分钟</td><td>用平均价会抹掉极端值；应按结算规则加权</td></tr><tr><td>向上采样（15 分钟→5 分钟）</td><td>只有 15 分钟价格，但调度是 5 分钟</td><td>会制造“假精度”；要用插值/情景</td></tr><tr><td>保持原粒度 + 约束</td><td>回测精度要求高</td><td>数据量大、计算慢</td></tr><tr><td>分市场分别建模</td><td>跨市场组合</td><td>不能直接比较 IRR</td></tr></tbody></table></div>
+<ul><li><strong>不要用“小时均价 × 小时电量”做 15 分钟结算</strong>：极端价格和 SOC 约束会被平均掉。</li><li><strong>不要用未来数据</strong>：关闸后的价格、调度指令、实际出力都不能进入当时决策。</li></ul>
+<hr>
+<h2 id="s12">3. 收入与成本拆解</h2>
+<h3 id="s13">3.1 收入层</h3>
+<div class="table-wrap"><table><thead><tr><th>收入层</th><th>计算逻辑</th><th>数据来源</th><th>风险</th></tr></thead><tbody><tr><td>能量套利</td><td>放电收入 - 充电成本</td><td>现货/平衡价格</td><td>价差收窄、捕获率下降</td></tr><tr><td>辅助服务</td><td>容量费 + 能量费</td><td>TSO/交易所</td><td>价格随渗透率下降、考核</td></tr><tr><td>容量市场</td><td>降额容量 × 容量价</td><td>容量拍卖结果</td><td>降额、履约罚则</td></tr><tr><td>补贴/PPA/CfD</td><td>合同价差/固定价</td><td>合同/拍卖</td><td>回补、资格、交易对手</td></tr><tr><td>需求侧/需量管理</td><td>需量节省/事件补偿</td><td>零售合同/聚合商</td><td>基线争议、客户行为</td></tr></tbody></table></div>
+<h3 id="s14">3.2 成本层</h3>
+<div class="table-wrap"><table><thead><tr><th>成本层</th><th>计算逻辑</th><th>注意</th></tr></thead><tbody><tr><td>充电成本</td><td>充电电量 × 充电价</td><td>负价时是收入，不是成本</td></tr><tr><td>退化成本</td><td>循环/吞吐 × 单位退化成本</td><td>高频调频可能更伤电池</td></tr><tr><td>运维成本</td><td>固定 O&amp;M + 可变 O&amp;M</td><td>年化</td></tr><tr><td>并网/电网费</td><td>容量费/电量费/接入费</td><td>各国差异大</td></tr><tr><td>不平衡成本</td><td>偏差电量 × 不平衡价</td><td>预测误差直接进成本</td></tr><tr><td>融资成本</td><td>债务/权益</td><td>合同期影响利率</td></tr><tr><td>保险/土地/许可</td><td>年化</td><td>容易漏</td></tr></tbody></table></div>
+<h3 id="s15">3.3 核心公式</h3>
+<p><strong>日套利毛利</strong></p>
+<pre><code>日毛利 = Σ(放电量_t × 放电价_t) - Σ(充电量_t × 充电价_t) - 退化成本</code></pre>
+<p><strong>考虑 RTE</strong></p>
+<pre><code>放电量 = 充电量 × RTE
+充电量 = 放电量 ÷ RTE</code></pre>
+<p><strong>年化</strong></p>
+<pre><code>年收入 = 日收入 × 运行天数 × 可用率</code></pre>
+<p><strong>LCOS（简化）</strong></p>
+<pre><code>LCOS = (CAPEX + Σ OPEX_t/(1+r)^t + Σ 充电成本_t/(1+r)^t - 残值)
+       ÷ Σ 放电量_t/(1+r)^t</code></pre>
+<aside class="note"><p>LCOS 的完整口径见储能投资技能；本文只强调“充电成本、退化、可用率”不能漏。</p></aside>
+<hr>
+<h2 id="s16">4. RTE、退化与降额</h2>
+<h3 id="s17">4.1 RTE（往返效率）</h3>
+<ul><li><strong>定义</strong>：放电量 ÷ 充电量；交流侧/直流侧口径不同，不能混用。</li><li><strong>典型值</strong>：锂电系统 AC-AC 约 85–90%，取决于 PCS、变压器、辅助系统；项目要用设备保证值，不用行业平均值。</li><li><strong>对收益的影响</strong>：RTE 从 90% 降到 85%，同样的充电量少放 5.6% 的电；价差小时可能直接吃掉毛利。</li><li><strong>对 SOC 的影响</strong>：充电时 SOC 上升 = 充电量 × 充电效率；放电时 SOC 下降 = 放电量 ÷ 放电效率。</li></ul>
+<h3 id="s18">4.2 退化</h3>
+<div class="table-wrap"><table><thead><tr><th>退化类型</th><th>驱动</th><th>建模方式</th></tr></thead><tbody><tr><td>循环退化</td><td>充放电次数、深度、温度</td><td>按吞吐量/等效全循环计成本</td></tr><tr><td>日历退化</td><td>时间、温度、SOC 窗口</td><td>年容量保持率衰减</td></tr><tr><td>高频退化</td><td>调频、快速爬坡</td><td>按调用次数/吞吐量加成本</td></tr></tbody></table></div>
+<ul><li><strong>循环寿命</strong>：不要只用“6,000 次”一个数；要看 DOD、温度、倍率、质保条款。</li><li><strong>容量保持率</strong>：15 年合同期内可能要增容/更换；投决要留 CAPEX。</li><li><strong>退化成本</strong>：把更换成本摊到每 MWh 吞吐，进入报价；否则高频辅助服务会“看起来赚钱、实际亏寿命”。</li></ul>
+<h3 id="s19">4.3 降额</h3>
+<ul><li><strong>并网降额</strong>：电网允许的 MW 可能低于铭牌；以并网协议为准。</li><li><strong>容量市场降额</strong>：英国/波兰/比利时按 de-rating；PJM 按 ELCC；CAISO 按 NQC。</li><li><strong>辅助服务降额</strong>：SOC 预留、持续时间、响应时间会降低可售容量。</li><li><strong>高温/低温降额</strong>：极端温度下可用功率下降；要用设备曲线。</li></ul>
+<pre><code>可交付容量 = min(铭牌 MW, 并网 MW, 温度降额, SOC 可持续容量, 市场降额)</code></pre>
+<aside class="note"><p>投决模型要用“可交付容量”，不是铭牌容量。铭牌 100 MW 的项目，在容量市场可能只按 13–50 MW 付费。</p></aside>
+<hr>
+<h2 id="s20">5. 捕获率与价差捕获</h2>
+<h3 id="s21">5.1 捕获价与捕获率</h3>
+<p><strong>捕获价（capture price）</strong></p>
+<pre><code>捕获价 = Σ(价格_t × 电量_t) / Σ(电量_t)</code></pre>
+<p><strong>捕获率（capture rate）</strong></p>
+<pre><code>捕获率 = 捕获价 / 时间加权均价</code></pre>
+<ul><li><strong>可再生捕获率</strong>：光伏/风电的出力与价格负相关，捕获率通常低于 100%；西班牙光伏 2025 年约 €33.95/MWh（−19.7%）（C）。</li><li><strong>储能没有“发电捕获率”</strong>：储能是价格接受者/套利者，更适用“价差捕获率”。</li></ul>
+<h3 id="s22">5.2 价差捕获率</h3>
+<pre><code>理论日价差 = 最高放电价 - 最低充电价（同时段约束下）
+实际日毛利 = 放电收入 - 充电成本
+价差捕获率 = 实际日毛利 / (理论日价差 × 可用能量)</code></pre>
+<ul><li><strong>100% 捕获是上限</strong>：实际受 RTE、SOC、并网、辅助服务预留、预测误差影响。</li><li><strong>不要用“最高价 - 最低价”直接乘容量</strong>：那是最理想情况，不是可实现收益。</li><li><strong>分时段统计</strong>：早高峰、晚高峰、午间负价、夜间低谷的捕获率不同。</li></ul>
+<h3 id="s23">5.3 价格情景</h3>
+<ul><li><strong>历史重放</strong>：用历史价格序列回测，但要注意市场结构变化（MTU、耦合、补贴）。</li><li><strong>分位数情景</strong>：P10/P50/P90 价格，用于压力测试。</li><li><strong>结构情景</strong>：新能源渗透率上升、负价增多、晚高峰更尖、辅助服务价格下降。</li><li><strong>政策情景</strong>：容量市场/补贴/电网费变化。</li></ul>
+<hr>
+<h2 id="s24">6. 收入叠加冲突</h2>
+<h3 id="s25">6.1 同一 MW、同一 SOC 只能卖一次</h3>
+<pre><code>功率约束：P_charge + P_discharge + P_AS_up + P_AS_down ≤ P_available
+能量约束：SOC_min ≤ SOC_t ≤ SOC_max
+持续时间：P_AS × T_AS ≤ 可用能量</code></pre>
+<ul><li><strong>能量 vs 辅助服务</strong>：预留 10 MW 调频，就少 10 MW 可卖能量；SOC 也要留裕度。</li><li><strong>容量 vs 辅助服务</strong>：容量中标要求可用性；辅助服务调用可能影响容量履约。</li><li><strong>容量 vs 能量</strong>：容量义务要求系统紧张时可用；不能为了套利把 SOC 放空。</li></ul>
+<h3 id="s26">6.2 合同回补</h3>
+<ul><li><strong>日本 LTDA</strong>：其他市场收益约 90% 还付；容量 + 能量 + 辅助不能简单相加。</li><li><strong>波兰容量 + 补贴</strong>：NFOŚiGW 补贴会扣减容量报酬（《容量市场法》第 62 条）。</li><li><strong>澳洲 CIS + 州 scheme</strong>：可能叠加，但资格、优先级和回补条款不同。</li><li><strong>CfD + 容量</strong>：英国 CfD 主要针对可再生发电；储能通常不参加标准 CfD，不要把 CfD 收入与 CM 收入混算。</li></ul>
+<h3 id="s27">6.3 收入叠加的正确做法</h3>
+<ol><li><strong>建立统一优化模型</strong>：能量、辅助服务、容量义务在同一组约束下优化。</li><li><strong>按结算粒度建模</strong>：15 分钟/5 分钟/30 分钟。</li><li><strong>按合同回补做净值</strong>：先算各市场收入，再按合同扣减。</li><li><strong>做情景分析</strong>：价格下降、辅助服务价格下降、降额下调、退化加速。</li><li><strong>不要用“收入上限”做基准</strong>：用保守情景做投决，乐观情景做敏感性。</li></ol>
+<hr>
+<h2 id="s28">7. 回测方法</h2>
+<h3 id="s29">7.1 回测的七个步骤</h3>
+<ol><li><strong>定义策略</strong>：只做能量套利，还是能量 + 辅助服务 + 容量？</li><li><strong>定义约束</strong>：功率、能量、SOC、RTE、降额、并网、辅助服务预留。</li><li><strong>准备数据</strong>：UTC 时间戳、结算粒度、价格、负荷/发电、辅助服务价格。</li><li><strong>按当时信息决策</strong>：不能用未来价格；预测误差要模拟。</li><li><strong>按市场规则结算</strong>：pay-as-bid/pay-as-clear、关闸、考核。</li><li><strong>扣除成本</strong>：充电、退化、O&amp;M、电网费、不平衡。</li><li><strong>样本外验证</strong>：用不同年份/市场做 out-of-sample，不要只调参拟合历史。</li></ol>
+<h3 id="s30">7.2 常见偏差</h3>
+<div class="table-wrap"><table><thead><tr><th>偏差</th><th>表现</th><th>修正</th></tr></thead><tbody><tr><td>前视偏差</td><td>用了关闸后的价格/实际出力</td><td>只用当时可得信息</td></tr><tr><td>粒度偏差</td><td>小时模型做 15 分钟</td><td>按结算粒度重建</td></tr><tr><td>幸存者偏差</td><td>只选高价年份/高收益项目</td><td>用完整周期</td></tr><tr><td>过拟合</td><td>参数在历史样本完美，样本外失效</td><td>简化模型、样本外测试</td></tr><tr><td>忽略交易成本</td><td>没有手续费/偏差/考核</td><td>全部计入</td></tr><tr><td>忽略退化</td><td>15 年只算一次 CAPEX</td><td>加增容/更换</td></tr><tr><td>忽略并网/降额</td><td>用铭牌 MW</td><td>用可交付容量</td></tr></tbody></table></div>
+<h3 id="s31">7.3 模型输出</h3>
+<ul><li><strong>NPV/IRR</strong>：按合同期和残值。</li><li><strong>LCOS</strong>：与替代方案比较。</li><li><strong>DSCR</strong>：债务覆盖率，看现金流稳定性。</li><li><strong>回收期</strong>：简单但有用。</li><li><strong>敏感性</strong>：价差、RTE、退化、降额、辅助服务价格、电网费。</li><li><strong>盈亏平衡</strong>：最低价差/最低容量价格。</li></ul>
+<hr>
+<h2 id="s32">8. 合成算例（D 级，仅演示方法）</h2>
+<h3 id="s33">8.1 日套利</h3>
+<p>假设：100 MW/200 MWh；RTE 85%；日内充电价 20 €/MWh，放电价 120 €/MWh；充电 100 MWh，放电 85 MWh；退化成本 10 €/MWh 放电。</p>
+<pre><code>放电收入 = 85 × 120 = €10,200
+充电成本 = 100 × 20 = €2,000
+退化成本 = 85 × 10 = €850
+日毛利 = 10,200 - 2,000 - 850 = €7,350
+年毛利（330 天）= €2,425,500</code></pre>
+<h3 id="s34">8.2 加辅助服务</h3>
+<p>假设：预留 10 MW 做 FCR，容量价 5 €/MW/h，20 小时/日，330 天；能量套利可用容量降到 90 MW，日毛利按比例降到 €6,615。</p>
+<pre><code>FCR 年收入 = 10 × 5 × 20 × 330 = €330,000
+能量年毛利 = 6,615 × 330 = €2,182,950
+合计 = €2,512,950</code></pre>
+<ul><li>相比只做能量（€2,425,500），增加约 €87,450；但辅助服务预留降低了套利规模，且增加退化/考核风险。</li><li><strong>不要直接加 €330,000</strong>：那会高估。</li></ul>
+<h3 id="s35">8.3 加容量市场</h3>
+<p>假设：同一项目在英国 CM 中标，de-rating 30%，£27.10/kW·年：</p>
+<pre><code>容量收入 = 100,000 kW × 30% × 27.10 = £813,000/年</code></pre>
+<ul><li>容量收入要扣履约罚则、可用性考核；容量义务会限制套利策略。</li><li>三种收入相加前，先用统一优化模型检查约束是否冲突。</li></ul>
+<h3 id="s36">8.4 LCOS 简化</h3>
+<p>假设：CAPEX €40m（100 MW/200 MWh，€200/kWh）；年 OPEX €0.8m；年放电量 50,000 MWh；充电成本 €1.0m/年；折现率 7%；10 年；残值 0。</p>
+<pre><code>LCOS ≈ (40m + 0.8m × 年金因子 + 1.0m × 年金因子) ÷ (50,000 × 年金因子)</code></pre>
+<ul><li>年金因子（7%，10 年）约 7.02；LCOS ≈ (€40m + €1.8m × 7.02) ÷ (50,000 MWh × 7.02) ≈ €52.6m ÷ 351,000 MWh ≈ €150/MWh。</li><li>这个数字只用于演示公式；实际要按项目 CAPEX、RTE、退化、电网费和融资结构重算。</li></ul>
+<hr>
+<h2 id="s37">9. 十个坑</h2>
+<ol><li><strong>用小时模型做 15 分钟结算</strong>：欧洲多数市场已 15 分钟；澳洲/CAISO 更细。</li><li><strong>忽略时区/夏令时</strong>：重复/缺失小时会让 SOC 和结算错位。</li><li><strong>用均价代替捕获价</strong>：储能收益来自价差，不是均价。</li><li><strong>忽略 RTE</strong>：充电 100 MWh 只放 85 MWh；少算 15% 会高估毛利。</li><li><strong>忽略退化</strong>：高频调频/深度循环会加速寿命衰减。</li><li><strong>把辅助服务收入简单相加</strong>：预留容量会降低能量套利规模。</li><li><strong>用历史高价外推</strong>：2022 高价年不是常态；要用分位数和结构情景。</li><li><strong>忽略并网/降额</strong>：铭牌 MW ≠ 可交付 MW ≠ 容量市场 MW。</li><li><strong>忽略合同回补</strong>：LTDA 90% 还付、波兰补贴扣减、CIS 州 scheme 叠加。</li><li><strong>过拟合回测</strong>：参数在历史完美、样本外失效；要用样本外验证。</li></ol>
+<hr>
+<h2 id="s38">10. 2026–2027 观察清单</h2>
+<ol><li><strong>欧洲 15 分钟 MTU</strong>：全面落地后的价格形态、捕获率、偏差成本。</li><li><strong>PICASSO/MARI</strong>：跨境 aFRR/mFRR 价格与国内出清关系。</li><li><strong>英国 REMA/BM 改革</strong>：BM 跳过率、产品整合、LDES。</li><li><strong>澳洲 5MS/FCAS</strong>：1 秒 FCAS 流动性、FCAS 价格与电池渗透率。</li><li><strong>ERCOT RTC+B</strong>：辅助服务价格、电池中标、SOC 管理。</li><li><strong>PJM BRA/ELCC</strong>：2029/30 BRA、ELCC 下调、容量价格。</li><li><strong>CAISO RA/FRP</strong>：小时切片、FRP 价格、EDAM 跨区。</li><li><strong>日本 15 分钟</strong>：现货/不平衡粒度推进、EPRX 上限。</li><li><strong>储能渗透率</strong>：辅助服务/容量价格随渗透率下降；用衰减情景。</li><li><strong>退化/增容</strong>：15 年合同期内更换/增容成本；质保条款。</li></ol>
+<hr>
+<h2 id="s39">11. 官方来源与口径</h2>
+<aside class="note"><p>以下链接在 2026-11 做过可达性检查；规则/数据以官网最新版本为准。无法稳定访问的页面注明状态，仅作查证入口。</p></aside>
+<div class="table-wrap"><table><thead><tr><th>来源</th><th>用途</th><th>级别</th><th>链接状态</th></tr></thead><tbody><tr><td>ENTSO-E Transparency</td><td>欧洲价格、负荷、发电、潮流</td><td>A</td><td><a href="https://transparency.entsoe.eu/" target="_blank" rel="noopener">https://transparency.entsoe.eu/</a></td></tr><tr><td>EPEX Spot</td><td>欧洲日前/日内价格</td><td>A</td><td><code>epexspot.com</code>（自动访问返回 403）</td></tr><tr><td>Nord Pool</td><td>北欧价格/报价区</td><td>A</td><td><a href="https://www.nordpoolgroup.com/" target="_blank" rel="noopener">https://www.nordpoolgroup.com/</a></td></tr><tr><td>Elexon BMRS</td><td>GB 平衡/结算</td><td>A</td><td><code>bmrs.elexon.co.uk</code>（自动访问可能受限）</td></tr><tr><td>GME</td><td>意大利 MGP/MI/MSD/MB</td><td>A</td><td><code>mercatoelettrico.org</code>（自动访问可能受限）</td></tr><tr><td>OMIE</td><td>西班牙/葡萄牙 MIBEL</td><td>A</td><td><a href="https://www.omie.es/" target="_blank" rel="noopener">https://www.omie.es/</a></td></tr><tr><td>PSE</td><td>波兰日前/平衡/容量</td><td>A</td><td><a href="https://www.pse.pl/" target="_blank" rel="noopener">https://www.pse.pl/</a></td></tr><tr><td>TenneT</td><td>荷兰/德国平衡与辅助服务</td><td>A</td><td><code>tennet.eu</code>（自动访问返回 403）</td></tr><tr><td>Elia</td><td>比利时平衡/辅助服务</td><td>A</td><td><code>elia.be</code>（自动访问返回 403）</td></tr><tr><td>AEMO NEMWEB</td><td>澳洲 NEM 价格/负荷/FCAS</td><td>A</td><td><code>aemo.com.au</code>（自动访问受限）</td></tr><tr><td>CAISO OASIS</td><td>CAISO 价格/辅助服务/RA</td><td>A</td><td><a href="https://oasis.caiso.com/" target="_blank" rel="noopener">https://oasis.caiso.com/</a></td></tr><tr><td>ERCOT</td><td>得州价格/负荷/电池装机</td><td>A</td><td><a href="https://www.ercot.com/gridinfo/resource" target="_blank" rel="noopener">https://www.ercot.com/gridinfo/resource</a></td></tr><tr><td>PJM Data Miner</td><td>PJM 价格/辅助服务/容量</td><td>A</td><td><a href="https://dataminer2.pjm.com/" target="_blank" rel="noopener">https://dataminer2.pjm.com/</a></td></tr><tr><td>EIA</td><td>美国发电/负荷/电价/装机</td><td>A</td><td><a href="https://www.eia.gov/" target="_blank" rel="noopener">https://www.eia.gov/</a></td></tr><tr><td>JEPX</td><td>日本现货 30 分钟价格</td><td>A</td><td><a href="https://www.jepx.jp/" target="_blank" rel="noopener">https://www.jepx.jp/</a></td></tr><tr><td>OCCTO</td><td>日本广域调度/容量市场</td><td>A</td><td><a href="https://www.occto.or.jp/" target="_blank" rel="noopener">https://www.occto.or.jp/</a></td></tr><tr><td>EPRX</td><td>日本需给调整市场</td><td>A</td><td><a href="https://www.eprx.or.jp/" target="_blank" rel="noopener">https://www.eprx.or.jp/</a></td></tr></tbody></table></div>
+<h3 id="s40">口径提醒</h3>
+<ul><li><strong>价格单位</strong>：欧洲 €/MWh；英国 £/MWh；澳洲 A$/MWh；美国 $/MWh；日本 日元/kWh。不要混用。</li><li><strong>时间</strong>：欧洲 CET/CEST；英国 GMT/BST；NEM 固定 AEST；ERCOT CT；PJM ET；CAISO PT；日本 JST。</li><li><strong>粒度</strong>：欧洲 15 分钟；澳洲 5 分钟；ERCOT 调度 5 分钟/结算 15 分钟；CAISO 5 分钟；日本 30 分钟。</li><li><strong>效率</strong>：RTE 分 AC-AC/DC-DC；项目用设备保证值，不用行业平均。</li><li><strong>降额</strong>：并网、温度、SOC、容量市场降额是四件事；不要只用铭牌。</li><li><strong>数据缺口</strong>：部分市场历史数据需付费/注册；本文只列公开入口。自动访问受限的站点以域名/路径标注，不保证可点击。</li></ul>
+<hr>
+<h2 id="s41">速查</h2>
+<div class="table-wrap"><table><thead><tr><th>问题</th><th>先看</th><th>关键结论</th><th>依据</th></tr></thead><tbody><tr><td>欧洲去哪里取数</td><td>§1.1</td><td>ENTSO-E Transparency + 各国 TSO/交易所</td><td>ENTSO-E</td></tr><tr><td>澳洲去哪里取数</td><td>§1.2</td><td>AEMO NEMWEB/MMS</td><td>AEMO</td></tr><tr><td>英国平衡数据</td><td>§1.1</td><td>Elexon BMRS</td><td>Elexon</td></tr><tr><td>意大利 MSD 数据</td><td>§1.1</td><td>GME</td><td>GME</td></tr><tr><td>西班牙价格</td><td>§1.1</td><td>OMIE</td><td>OMIE</td></tr><tr><td>波兰数据</td><td>§1.1</td><td>PSE</td><td>PSE</td></tr><tr><td>北欧价格</td><td>§1.1</td><td>Nord Pool</td><td>Nord Pool</td></tr><tr><td>15 分钟还是 5 分钟</td><td>§2.1</td><td>按市场；欧洲 15、澳洲/CAISO 5</td><td>本文</td></tr><tr><td>RTE 怎么进模型</td><td>§4.1</td><td>放电量 = 充电量 × RTE</td><td>本文</td></tr><tr><td>退化怎么算</td><td>§4.2</td><td>循环 + 日历 + 高频</td><td>本文</td></tr><tr><td>捕获率怎么算</td><td>§5</td><td>捕获价/均价；储能看价差捕获</td><td>本文</td></tr><tr><td>收入叠加冲突</td><td>§6</td><td>同一 MW/SOC 只能卖一次；合同回补</td><td>本文</td></tr><tr><td>回测为什么高估</td><td>§7</td><td>前视、粒度、过拟合、忽略退化</td><td>本文</td></tr></tbody></table></div>
+<hr>
+<h2 id="s42">与技能和其他笔记的分工</h2>
+<div class="table-wrap"><table><thead><tr><th>主题</th><th>本文</th><th>储能投资技能</th><th>其他笔记</th></tr></thead><tbody><tr><td>数据源/粒度</td><td>主责</td><td>概述</td><td>各市场模块（单市场数据入口）</td></tr><tr><td>收益建模方法</td><td>主责（公式/回测）</td><td>主责（投决/LCOS）</td><td>容量/辅助服务横向对照</td></tr><tr><td>RTE/退化</td><td>主责（建模口径）</td><td>主责（参数/质保）</td><td>储能技术模块</td></tr><tr><td>收入叠加</td><td>主责（冲突/回补）</td><td>概述</td><td>容量/辅助服务模块</td></tr><tr><td>调度优化</td><td>概述</td><td>概述</td><td>储能 EMS 调度模块</td></tr></tbody></table></div>
+<ul><li><strong>本文是“建模与取数手册”</strong>：遇到“去哪里取数、怎么对齐粒度、怎么算 RTE/退化/捕获率”，先看这里。</li><li><strong>遇到投决/LCOS/融资</strong>：查储能投资技能；本文只提供建模口径。</li><li><strong>遇到单市场规则</strong>：回到对应国别模块。</li><li><strong>遇到 SOC/调度算法</strong>：查储能 EMS 优化调度模块；本文不重复 MILP 细节。</li></ul>
+<hr>
+<h2 id="s43">更新记录</h2>
+<div class="table-wrap"><table><thead><tr><th>日期</th><th>内容</th></tr></thead><tbody><tr><td>2026-11-10</td><td>首版：新增储能收益建模与数据源；覆盖 ENTSO-E、EPEX、Nord Pool、Elexon BMRS、GME、OMIE、PSE、TenneT、Elia、AEMO NEMWEB、CAISO OASIS、ERCOT、PJM Data Miner、EIA、JEPX、OCCTO、EPRX；含粒度/时区、RTE/退化、捕获率、收入叠加、回测方法与四个合成算例</td></tr></tbody></table></div>
+    </article>
+
+    <section class="related" aria-label="相关模块">
+      <h2>相关模块</h2>
+      <ul>
+        <li><a href="海外并网与合规-2026-11.html">海外并网与合规手册（2026 版）：从 grid code 到电池护照</a></li>
+        <li><a href="容量机制横向对照-2026-11.html">容量机制横向对照（2026 版）：年金、拍卖、双向 CfD 与战略储备</a></li>
+        <li><a href="辅助服务与平衡市场对照-2026-11.html">辅助服务与平衡市场对照（2026 版）：从 FCR 到 FCAS，从 BM 到 EPRX</a></li>
+        <li><a href="海外储能业务-2026-11.html">海外储能业务：十市场大储与工商储（2026 版）</a></li>
+        <li><a href="澳大利亚NEM电力市场-2026-11.html">澳大利亚 NEM 电力市场（2026 版）</a></li>
+        <li><a href="德国电力市场-2026-11.html">德国电力市场（2026 版）</a></li>
+        <li><a href="英国电力市场-2026-11.html">英国电力市场（2026 版）</a></li>
+        <li><a href="意大利电力市场-2026-11.html">意大利电力市场（2026 版）</a></li>
+        <li><a href="西班牙电力市场-2026-11.html">西班牙电力市场（2026 版）</a></li>
+        <li><a href="荷兰电力市场-2026-11.html">荷兰电力市场（2026 版）</a></li>
+        <li><a href="波兰电力市场-2026-11.html">波兰电力市场（2026 版）</a></li>
+        <li><a href="比利时与北欧电力市场-2026-11.html">比利时与北欧电力市场（2026 版）</a></li>
+        <li><a href="美国电力市场-2026-11.html">美国电力市场（2026 版）：ERCOT / PJM / CAISO</a></li>
+        <li><a href="日本电力市场-2026-11.html">日本电力市场（2026 版）：现货、容量市场与 LTDA</a></li>
+        <li><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a></li>
+        <li><a href="储能投资与运营-2026-11.html">储能投资与运营</a></li>
+      </ul>
+    </section>
+
+    <nav class="pager" aria-label="上下篇">
+          <a class="prev" href="辅助服务与平衡市场对照-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">辅助服务与平衡市场对照（2026 版）：从 FCR 到 FCAS，从 BM 到 EPRX</span></a>
+          <a class="next" href="跨国PPA与绿证-2026-11.html"><span class="dir">下一篇 →</span><span class="ttl">跨国 PPA、绿证与 tolling（2026 版）：从 GO 到 merchant tail</span></a>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../储能收益建模与数据源-2026-11.md">knowledge/储能收益建模与数据源-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div><a href="../index.html">返回知识库总览 →</a></div>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="本页目录">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. 建模前先回答五个问题</a></li>
+            <li class="lv2"><a href="#s2">1. 数据源地图</a></li>
+            <li class="lv3"><a href="#s3">1.1 欧洲</a></li>
+            <li class="lv3"><a href="#s4">1.2 澳大利亚</a></li>
+            <li class="lv3"><a href="#s5">1.3 北美</a></li>
+            <li class="lv3"><a href="#s6">1.4 日本</a></li>
+            <li class="lv3"><a href="#s7">1.5 取数顺序</a></li>
+            <li class="lv2"><a href="#s8">2. 粒度与时区：回测的第一道坎</a></li>
+            <li class="lv3"><a href="#s9">2.1 主要市场的粒度</a></li>
+            <li class="lv3"><a href="#s10">2.2 时区与夏令时</a></li>
+            <li class="lv3"><a href="#s11">2.3 粒度对齐的四种做法</a></li>
+            <li class="lv2"><a href="#s12">3. 收入与成本拆解</a></li>
+            <li class="lv3"><a href="#s13">3.1 收入层</a></li>
+            <li class="lv3"><a href="#s14">3.2 成本层</a></li>
+            <li class="lv3"><a href="#s15">3.3 核心公式</a></li>
+            <li class="lv2"><a href="#s16">4. RTE、退化与降额</a></li>
+            <li class="lv3"><a href="#s17">4.1 RTE（往返效率）</a></li>
+            <li class="lv3"><a href="#s18">4.2 退化</a></li>
+            <li class="lv3"><a href="#s19">4.3 降额</a></li>
+            <li class="lv2"><a href="#s20">5. 捕获率与价差捕获</a></li>
+            <li class="lv3"><a href="#s21">5.1 捕获价与捕获率</a></li>
+            <li class="lv3"><a href="#s22">5.2 价差捕获率</a></li>
+            <li class="lv3"><a href="#s23">5.3 价格情景</a></li>
+            <li class="lv2"><a href="#s24">6. 收入叠加冲突</a></li>
+            <li class="lv3"><a href="#s25">6.1 同一 MW、同一 SOC 只能卖一次</a></li>
+            <li class="lv3"><a href="#s26">6.2 合同回补</a></li>
+            <li class="lv3"><a href="#s27">6.3 收入叠加的正确做法</a></li>
+            <li class="lv2"><a href="#s28">7. 回测方法</a></li>
+            <li class="lv3"><a href="#s29">7.1 回测的七个步骤</a></li>
+            <li class="lv3"><a href="#s30">7.2 常见偏差</a></li>
+            <li class="lv3"><a href="#s31">7.3 模型输出</a></li>
+            <li class="lv2"><a href="#s32">8. 合成算例（D 级，仅演示方法）</a></li>
+            <li class="lv3"><a href="#s33">8.1 日套利</a></li>
+            <li class="lv3"><a href="#s34">8.2 加辅助服务</a></li>
+            <li class="lv3"><a href="#s35">8.3 加容量市场</a></li>
+            <li class="lv3"><a href="#s36">8.4 LCOS 简化</a></li>
+            <li class="lv2"><a href="#s37">9. 十个坑</a></li>
+            <li class="lv2"><a href="#s38">10. 2026–2027 观察清单</a></li>
+            <li class="lv2"><a href="#s39">11. 官方来源与口径</a></li>
+            <li class="lv3"><a href="#s40">口径提醒</a></li>
+            <li class="lv2"><a href="#s41">速查</a></li>
+            <li class="lv2"><a href="#s42">与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s43">更新记录</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="28">展开 28 个小节</button>
+  </aside>
+</div>
+
+<a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+<script src="../assets/doc.js"></script>
+<script src="../assets/theme.js"></script>
+</body>
+</html>
