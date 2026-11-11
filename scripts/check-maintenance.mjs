@@ -14,7 +14,7 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { parseFrontmatter } from './credibility.mjs';
+import { buildIndex, parseFrontmatter } from './credibility.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const listPath = join(root, '更新清单.md');
@@ -123,8 +123,14 @@ const board = schedule.map((s) => {
 });
 const overdue = board.filter((b) => b.overdue);
 
+/* ---------- C 级工单与空缺格的销项节奏（来自 credibility.json 的同一事实源） ---------- */
+const cred = buildIndex(root);
+const isDue = (date) => date && toTime(today) !== null && toTime(date) !== null && daysBetween(today, date) <= 0;
+const ticketsDue = cred.gradeC.filter((t) => t.pending && isDue(t.nextReview));
+const gapsDue = cred.gaps.filter((g) => isDue(g.nextReview));
+
 if (jsonMode) {
-  console.log(JSON.stringify({ today, board, sections: sections.map((s) => ({ title: s.title, level: s.level, declared: s.declared, actual: s.rows.length, due: s.due })), missing, errors }, null, 2));
+  console.log(JSON.stringify({ today, board, sections: sections.map((s) => ({ title: s.title, level: s.level, declared: s.declared, actual: s.rows.length, due: s.due })), missing, errors, tickets: { total: cred.gradeC.length, pending: cred.summary.unverifiedGradeC, verified: cred.summary.verifiedTickets, banned: cred.summary.bannedTickets, due: ticketsDue.map((t) => ({ n: t.n, figure: t.figure, priority: t.priority, nextReview: t.nextReview })) }, gaps: { total: cred.gaps.length, due: gapsDue.map((g) => ({ priority: g.priority, gap: g.gap, target: g.target, nextReview: g.nextReview })) } }, null, 2));
 } else if (!checkMode) {
   console.log(`更新清单到期看板 · 今天 ${today} · 盘点 ${seen.size}/${allMd.length} 个知识模块`);
   console.log('─'.repeat(76));
@@ -142,6 +148,19 @@ if (jsonMode) {
   } else {
     console.log('当前无到期级别。');
   }
+  console.log(`可信度销项：${cred.gradeC.length} 项 C 级工单（已销项 ${cred.summary.verifiedTickets + cred.summary.bannedTickets}、待复核 ${cred.summary.unverifiedGradeC}）；§1.4 空缺格 ${cred.gaps.length} 项`);
+  if (ticketsDue.length || gapsDue.length) {
+    if (ticketsDue.length) {
+      console.log(`[销项] ${ticketsDue.length} 项 C 级工单到期：`);
+      for (const t of ticketsDue) console.log(`   - #${t.n} ${t.figure}（${t.priority}，下次复核 ${t.nextReview}）`);
+    }
+    if (gapsDue.length) {
+      console.log(`[补数] ${gapsDue.length} 项空缺格到期：`);
+      for (const g of gapsDue) console.log(`   - ${g.priority} ${g.gap} → ${g.target}（${g.nextReview}）`);
+    }
+  } else {
+    console.log('当前无到期的工单或空缺格。');
+  }
   if (missing.length) console.log(`[注意] ${missing.length} 个模块未登记：${missing.join('、')}`);
 }
 
@@ -154,5 +173,5 @@ if (errors.length) {
     console.log(`[结构问题] ${errors.length} 条，运行 --check 查看详情`);
   }
 } else if (checkMode) {
-  console.log(`更新清单结构校验通过：${sections.length} 个级别、${seen.size} 个模块、${schedule.length} 条节奏；今天 ${today}，${overdue.length} 个级别已到期。`);
+  console.log(`更新清单结构校验通过：${sections.length} 个级别、${seen.size} 个模块、${schedule.length} 条节奏；今天 ${today}，${overdue.length} 个级别已到期；C 级工单 ${cred.summary.unverifiedGradeC} 项待复核、空缺格 ${cred.gaps.length} 项，其中 ${ticketsDue.length + gapsDue.length} 项今日到期。`);
 }

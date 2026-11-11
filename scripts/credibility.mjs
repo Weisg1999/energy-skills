@@ -28,7 +28,11 @@ export const CONFIDENCE = ['verified', 'mixed', 'draft', 'historical'];
 export const EXAMPLE_MODES = ['synthetic', 'documented', 'none'];
 export const POLICY_STATUS = ['现行', '即将施行', '草案', '征求意见稿', '已被取代', '参考'];
 export const PRIORITIES = ['P0', 'P1', 'P2', 'P0（储能）'];
-export const TICKET_STATUS = ['待复核', '已复核', '已改口径', '口径已确认', '部分确认'];
+// 工单销项终态：已复核/已改口径/口径已确认 = 可用；已撤销/禁止引用 = 不可引用；待复核 = 未闭环。
+export const TICKET_STATUS = ['待复核', '已复核', '已改口径', '口径已确认', '已撤销', '禁止引用'];
+export const USABLE_STATUS = ['已复核', '已改口径', '口径已确认'];
+export const BANNED_STATUS = ['已撤销', '禁止引用'];
+export const TICKET_COLUMNS = 9;
 
 const SNAPSHOT = '海外市场同口径快照与投决日历-2026-11.md';
 const INDEX_EN = 'INDEX_EN-2026-11.md';
@@ -78,6 +82,8 @@ export function readGradeCLedger(root) {
   for (const line of seg.split('\n')) {
     if (!/^\|\s*\d+\s*\|/.test(line)) continue;
     const c = cells(line);
+    const conclusion = c[8] || '';
+    const nextReview = conclusion.match(/下次复核\s*(\d{4}-\d{2}-\d{2})/)?.[1] ?? null;
     rows.push({
       n: Number(c[0]),
       figure: c[1] || '',
@@ -86,10 +92,42 @@ export function readGradeCLedger(root) {
       source: c[4] || '',
       priority: c[5] || '',
       status: c[6] || '',
+      reviewedAt: c[7] || '',
+      conclusion,
+      nextReview,
+      usable: USABLE_STATUS.includes(c[6]),
+      banned: BANNED_STATUS.includes(c[6]),
+      pending: c[6] === '待复核',
       columns: c.length,
     });
   }
   return { rows, error: null };
+}
+
+/** 解析快照模块 §1.4 空缺清单（20 个「待核实」格的补数节奏）。 */
+export function readGaps(root) {
+  const path = join(root, 'knowledge', SNAPSHOT);
+  if (!existsSync(path)) return [];
+  const text = norm(readFileSync(path, 'utf8'));
+  const start = text.indexOf('### 1.4');
+  if (start === -1) return [];
+  const endMark = text.indexOf('\n### ', start + 4);
+  const seg = text.slice(start, endMark === -1 ? undefined : endMark);
+  const gaps = [];
+  for (const line of seg.split('\n')) {
+    if (!/^\|\s*P[012]\s*\|/.test(line)) continue;
+    const c = cells(line);
+    gaps.push({
+      priority: c[0] || '',
+      gap: c[1] || '',
+      markets: c[2] || '',
+      source: c[3] || '',
+      target: c[4] || '',
+      nextReview: c[5] || '',
+      columns: c.length,
+    });
+  }
+  return gaps;
 }
 
 /** 解析 INDEX_EN §4 的 Open items 编号列表。 */
@@ -120,7 +158,7 @@ export function readEvents(root) {
   const endMark = text.indexOf('\n## ', start + 4);
   const seg = text.slice(start, endMark === -1 ? undefined : endMark);
   return seg.split('\n')
-    .filter((l) => /^\|\s*20\d\d/.test(l))
+    .filter((l) => /^\|\s*(20\d\d|待公布)/.test(l))
     .map((l) => {
       const c = cells(l);
       return { date: c[0] || '', market: c[1] || '', event: c[2] || '', note: c[3] || '', grade: c[4] || '' };
@@ -174,6 +212,7 @@ export function buildIndex(root) {
   const open = readOpenItems(root);
   const events = readEvents(root);
   const policies = readPolicyStatus(root);
+  const gaps = readGaps(root);
   const modules = [];
   for (const file of readdirSync(dir).filter((f) => f.endsWith('.md')).sort()) {
     const text = norm(readFileSync(join(dir, file), 'utf8'));
@@ -207,10 +246,15 @@ export function buildIndex(root) {
       draftPolicies: policies.filter((p) => /草案|征求意见/.test(p.status)).length,
       mixedModules: modules.filter((m) => m.confidence === 'mixed').length,
       historicalModules: modules.filter((m) => m.confidence === 'historical').length,
-      unverifiedGradeC: ledger.rows.filter((r) => r.status === '待复核').length,
+      unverifiedGradeC: ledger.rows.filter((r) => r.pending).length,
+      verifiedTickets: ledger.rows.filter((r) => r.usable).length,
+      bannedTickets: ledger.rows.filter((r) => r.banned).length,
+      ticketsDueForReview: ledger.rows.filter((r) => r.pending && r.nextReview).length,
+      openGaps: gaps.length,
     },
     enums: { confidence: CONFIDENCE, examples: EXAMPLE_MODES, policyStatus: POLICY_STATUS, priority: PRIORITIES, ticketStatus: TICKET_STATUS },
     gradeC: ledger.rows,
+    gaps,
     openItems: open.items,
     events,
     policyDrafts: policies.filter((p) => /草案|征求意见/.test(p.status)),
@@ -269,7 +313,7 @@ export function checkContent(root) {
     }
   }
 
-  // C2/C3 C 级登记册：行数、列数、复核入口、优先级与状态。
+  // C2/C3 C 级登记册：行数、列数、复核入口、优先级、销项终态与下次复核日。
   const ledger = readGradeCLedger(root);
   if (ledger.error) push('knowledge/' + SNAPSHOT, 0, ledger.error);
   const rows = ledger.rows;
@@ -279,17 +323,40 @@ export function checkContent(root) {
     const at = `knowledge/${SNAPSHOT}#gradeC-${r.n}`;
     if (nums.has(r.n)) push(at, 0, `工单编号重复：${r.n}`);
     nums.add(r.n);
-    if (r.columns !== 7) push(at, 0, `工单列数 ${r.columns} != 7（数字 / 所在模块 / 为什么是 C / 复核入口 / 优先级 / 状态）`);
+    if (r.columns !== TICKET_COLUMNS) {
+      push(at, 0, `工单列数 ${r.columns} != ${TICKET_COLUMNS}（数字 / 所在模块 / 为什么是 C / 复核入口 / 优先级 / 状态 / 复核日期 / 结论·引用禁令）`);
+    }
     if (!r.figure) push(at, 0, '工单缺少数字描述');
     if (!r.source) push(at, 0, 'C 级数字缺少复核入口');
     else if (!/`[^`]+`|https?:\/\//.test(r.source)) push(at, 0, `复核入口不是可查证来源：${r.source}`);
     if (!PRIORITIES.includes(r.priority)) push(at, 0, `优先级非法：${r.priority}`);
-    if (!TICKET_STATUS.some((s) => r.status.startsWith(s) || s.startsWith(r.status))) {
-      push(at, 0, `状态非法：${r.status}`);
+    if (!TICKET_STATUS.includes(r.status)) push(at, 0, `销项状态非法：${r.status}（应为 ${TICKET_STATUS.join(' / ')}）`);
+    if (!r.conclusion) push(at, 0, '工单缺少结论 / 引用禁令');
+    if (r.pending) {
+      if (r.reviewedAt && r.reviewedAt !== '—') push(at, 0, '待复核工单不得填写复核日期');
+      if (!r.nextReview) push(at, 0, '待复核工单必须在结论里写明「下次复核 YYYY-MM-DD」');
+    } else {
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(r.reviewedAt)) push(at, 0, '已销项工单必须有复核日期 YYYY-MM-DD');
+    }
+    if (r.banned && !/禁止|不得|撤销|未发布|不得把/.test(r.conclusion)) {
+      push(at, 0, '已撤销 / 禁止引用工单必须在结论里写明引用禁令');
     }
   }
   for (let n = 1; n <= rows.length; n += 1) {
     if (!nums.has(n)) push('knowledge/' + SNAPSHOT, 0, `工单编号不连续，缺 #${n}`);
+  }
+
+  // C2b 空缺清单：每个「待核实」格都要有优先级与下次复核日，避免补数节奏悬空。
+  const gaps = readGaps(root);
+  if (!gaps.length) push('knowledge/' + SNAPSHOT, 0, '§1.4 空缺清单为空（应保留条目并顺延日期，而不是删表）');
+  for (const g of gaps) {
+    if (g.columns !== 6) push('knowledge/' + SNAPSHOT + '#gaps', 0, `空缺清单列数 ${g.columns} != 6`);
+    if (!PRIORITIES.includes(g.priority) && !['P0', 'P1', 'P2'].includes(g.priority)) {
+      push('knowledge/' + SNAPSHOT + '#gaps', 0, `空缺优先级非法：${g.priority}`);
+    }
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(g.nextReview)) {
+      push('knowledge/' + SNAPSHOT + '#gaps', 0, `空缺格「${g.gap}」缺少下次复核日期`);
+    }
   }
 
   // C4 草案不得当现行：政策状态列枚举 + 草案条目的要点不得写成已生效。
@@ -314,8 +381,11 @@ export function checkContent(root) {
 
   // C8 事件日历日期必须可解析（完整日期或年月）。
   for (const e of readEvents(root)) {
-    if (!/^20\d\d-\d{2}(-\d{2})?/.test(e.date) && !/^20\d\d/.test(e.date)) {
+    if (!/^20\d\d/.test(e.date) && !/^待公布/.test(e.date)) {
       push('knowledge/' + SNAPSHOT, 0, `事件日历日期无法解析：${e.date}`);
+    }
+    if (/^待公布/.test(e.date) && !/空缺|禁止|复核/.test(e.grade)) {
+      push('knowledge/' + SNAPSHOT, 0, `事件「${e.event}」日期待公布，级别列必须写明空缺/禁令/复核日`);
     }
   }
 

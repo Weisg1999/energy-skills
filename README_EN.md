@@ -104,7 +104,7 @@ node scripts/check-maintenance.mjs              # due-review board (non-blocking
 node scripts/check-maintenance.mjs --check      # maintenance-ledger structure check
 ```
 
-`knowledge/credibility.json` is the machine-readable register for models and search: 22 grade-C verification tickets, 37 open items, 32 calendar events, draft policy entries, and per-module `confidence` / `examples` / `historical` flags. Filter by `confidence` and exclude unverified `gradeC` figures before injecting content. The source of truth remains the structured tables and lists already present in the Markdown; no second inventory is maintained.
+`knowledge/credibility.json` is the machine-readable register for models and search: 22 grade-C verification tickets, 37 open items, 32 calendar events, draft policy entries, and per-module `confidence` / `examples` / `historical` flags. The 22 grade-C tickets carry resolution states (usable / recalibrated / withdrawn / banned / pending), review dates and next-review dates; the §1.4 gap list carries due dates too. Filter by `confidence` and by `gradeC` `usable` / `banned` before injecting content; `check-maintenance.mjs` flags tickets and gaps that come due. The source of truth remains the structured tables and lists already present in the Markdown; no second inventory is maintained.
 
 CI runs the consistency check, the maintenance-ledger check, the artifact comparison and seven Python self-tests in sequence; any failure blocks the merge. On the first day of each month `maintenance.yml` publishes the due-review board to the Actions run summary.
 

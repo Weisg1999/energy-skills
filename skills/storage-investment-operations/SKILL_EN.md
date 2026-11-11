@@ -1016,7 +1016,7 @@ Troubleshooting order: reconcile settled energy with the gateway meter, then che
 |---|---|---|---|
 | Utility-scale revenue | Capacity market + arbitrage + FCR/aFRR/mFRR + NFOŚiGW CAPEX | CRM + arbitrage + FCR/aFRR/mFRR | Arbitrage + ancillary + reserves (no capacity market) |
 | C&I revenue | Demand charges + spread + self-consumption + capacity-fee optimisation | Demand charges + time-of-use spread + self-consumption | Demand charges + time-of-use spread + self-consumption + zonal spreads |
-| Capacity mechanism | rynek mocy; 2030 delivery year PLN 465.02/kW·yr; de-rating around 13% (C) | CRM Y-4/Y-2/Y-1; Y-4 cleared 4,690 MW; new build up to 15 years | Sweden effektreserv, Finland tehoreservi; no capacity market in Norway/Denmark |
+| Capacity mechanism | rynek mocy; 2030 delivery year PLN 465.02/kW·yr; de-rating 13.39% (C, Dec-2025 main auction / 2030 delivery year) | CRM Y-4/Y-2/Y-1; Y-4 cleared 4,690 MW; new build up to 15 years | Sweden effektreserv, Finland tehoreservi; no capacity market in Norway/Denmark |
 | Settlement granularity | 15-minute MTU; 15-minute imbalance | 15-minute MTU; 15-minute imbalance | 15-minute MTU; 15-minute imbalance + mFRR EAM since 2025-03-04 |
 | Connection | PSE/OSD connection + URE licence + capacity registration | Elia connection + permitting + CRM qualification | National TSO/DSO connection + permitting + prequalification |
 | Key policy date | 2030 capacity auction ended (round 2); 2026 OZE auctions 76.1 TWh | 2025 Y-4/Y-2/Y-1 results; nuclear extension to 2035 | 2025-03-04 imbalance reform; 2025-10-01 15-minute MTU; effektreserv auction failed 2025-10-07 |
@@ -1059,7 +1059,7 @@ Troubleshooting order: reconcile settled energy with the gateway meter, then che
 3. **Balancing**: FCR is symmetric and capacity-only; aFRR/mFRR tender capacity and energy separately; minimum bid at the 1 MW level; prequalification required.
 4. **§118(6)**: 20-year grid-fee exemption for storage commissioned by 2029-08-04; AgNes plans a final determination on 2027-01-01 and capacity-based grid fees from 2029 (about €4–7/kW/year for utility-scale storage), final design pending.
 5. **§14a applies only to LV controllable loads** (>4.2 kW); module 2 gives a 60% grid-fee reduction; it is neither a utility-scale rule nor an unconditional subsidy.
-6. **StromVKG capacity market**: delivery from 2031, EU approval 2026-09-02; the two 2026 auctions are reportedly not open to battery storage, while the 2027 new-capacity tender is open to storage (≥10 hours), so do not book the revenue yet.
+6. **StromVKG capacity market**: delivery from 2031, EU approval 2026-09-02; the two 2026 4,500 rMW long-duration auctions are gated by ≥10 h sustained output and related requirements rather than an explicit battery ban (BNetzA 2026-11-03 confirms storage competed alongside power plants: 11 bids awarded ~5,160 rMW at a weighted average €155,296/rMW·yr); the 2027-05-18 new-capacity tender opens to storage of all durations. Do not book the revenue yet.
 
 ### 14A.4 Five points for the UK
 
@@ -1082,7 +1082,7 @@ Troubleshooting order: reconcile settled energy with the gateway meter, then che
 1. **Revenue = arbitrage + aFRR/mFRR + capacity market (first auction pending) + grants**: the capacity market only arrived in 2026, and auction prices/obligations are unknown; PERTE/ERDF grants are project capex support, not long-term revenue.
 2. **Fifteen minutes runs through trading and settlement**: 15-minute MTU in day-ahead/intraday since 2025-10-01; 15-minute imbalance settlement since 2024-12-01; hourly models misprice both arbitrage and deviation.
 3. **Know the price bounds**: day-ahead -€600/+€4,000 per MWh; intraday continuous ±€9,999; negative prices are common in solar-heavy hours (about 555 hours in 2025, grade C).
-4. **Capacity market design**: Orden TED/966/2026, in force 2026-09-18; peninsular system, firm power, sealed-bid pay-as-bid; new-build main auctions up to 15 years; existing generation subject to a 550 g CO2/kWh gate; first auction date to be confirmed by REE (public reports point to late 2026 to 2027, grade C).
+4. **Capacity market design**: Orden TED/966/2026, in force 2026-09-18; peninsular system, firm power, sealed-bid pay-as-bid; new-build main auctions up to 15 years; existing generation subject to a 550 g CO2/kWh gate; **no convocatoria as of 2026-11-11**; the "late 2026 to 2027" press estimate has been withdrawn (next review 2026-12-01).
 5. **Connection/grid-forming is a hard gate**: PNIEC targets 22.5 GW by 2030 (all technologies); RD 997/2025 requires grid-forming and 120%–130% voltage ride-through; RDL 7/2026 introduces flexible access and a 10% self-consumption reserve; pipeline around 24.3 GW permitted + 15.1 GW pending (grade C, January 2026), but permitting/connection conversion is the bottleneck.
 
 ### 14A.7 Five points for the Netherlands
@@ -1096,7 +1096,7 @@ Troubleshooting order: reconcile settled energy with the gateway meter, then che
 ### 14A.8 Five points for Poland
 
 1. **Revenue = capacity market + arbitrage + ancillary + grants**: the capacity market is the first driver; storage awards rose from 165 MW in 2022 to 2.5 GW in 2024, then fell to about 685 MW for the 2030 delivery year after the de-rating change (grade C). Arbitrage alone rarely carries the investment case.
-2. **Capacity revenue uses de-rated capacity**: the 2030 Polish price is PLN 465.02/kW·yr; battery de-rating is about 13% (grade C), so 100 MW nameplate counts as roughly 13 MW; the GP BESS example has a 17-year contract, but not every unit gets 17 years. Availability tests and grant deductions reduce actual revenue.
+2. **Capacity revenue uses de-rated capacity**: the 2030 Polish price is PLN 465.02/kW·yr; battery de-rating is **13.39%** (grade C, 2030 delivery-year main auction only), so 100 MW nameplate counts as roughly 13.4 MW; the 2027 T-1 top-up uses 95% and the 2029 main auction 61.3% — never mix auctions; the GP BESS example has a 17-year contract, but not every unit gets 17 years. Availability tests and grant deductions reduce actual revenue.
 3. **NFOŚiGW grants are CAPEX support**: the total budget is PLN 4.15bn (PLN 3.735bn grants + PLN 0.415bn loans) for 172 projects, about 3.9 GW/14.5 GWh, targeted for completion by end-2028; stacking with capacity revenue triggers a deduction under Article 62 of the Capacity Market Act (grades B/C). It is not annual operating revenue.
 4. **Fifteen minutes and negative prices**: 15-minute MTU in day-ahead/intraday since 2025-10-01; a −PLN 791.32/MWh price lasted about 10 hours on 2026-04-06 (grade C); hourly models misstate both arbitrage and capacity obligations.
 5. **Connection, licensing and capacity registration are hard gates**: PSE/OSD connection queue, URE koncesja, TGE/IRGiT membership, POB balancing responsibility, PSE ancillary prequalification and capacity-market qualification are separate processes; a connection is not a capacity contract.
@@ -1111,7 +1111,7 @@ Post-grant CAPEX = CAPEX − eligible cost × grant rate
 
 ### 14A.9 Five points for Belgium and the Nordics
 
-1. **Belgium relies on CRM annuities**: Y-4/Y-2/Y-1 auctions, pay-as-bid with an intermediate price cap; new build up to 15 years. The 2025 Y-4 auction cleared 4,690 MW, including 179 MW of new batteries (525 MW nameplate), at a price in the ~€27k/MW·yr range (grade C, unit needs verification); CRM pays on de-rated capacity, not nameplate.
+1. **Belgium relies on CRM annuities**: Y-4/Y-2/Y-1 auctions, pay-as-bid with an intermediate price cap; new build up to 15 years. The 2025 Y-4 auction cleared 4,690 MW, including 179 MW of new batteries (525 MW nameplate), at **€27.3k/MW·yr** (€27,300, grade A, Elia 2025-10-30); CRM pays on de-rated capacity, not nameplate.
 2. **Belgium's capacity gap is changing**: Doel 4/Tihange 3 are extended to 2035 and the phase-out law was repealed in May 2025; offshore wind targets 5.8 GW by 2030. New storage was 491 MWh in 2024, CRM has contracted about 1.6 GW of new batteries, and the 2030 storage target is about 3.6 GW (grade C). Use the latest gap, not the old "2025 nuclear exit" assumption.
 3. **The Nordics are 12 bidding zones**: NO1–NO5, SE1–SE4, DK1–DK2 and FI; projects settle at the zonal price, the system price is reference only; hydro flexibility shapes the spreads, and EPADs hedge zonal differences but are not physical contracts.
 4. **Nordic reserves are not a capacity market**: Sweden's effektreserv targets 800 MW and its 2025-10-07 auction failed because bids exceeded the SEK 120,000/MW cap; Finland has tehoreservi; Norway and Denmark have no national capacity market. Storage cannot treat reserves as a long-term annuity.

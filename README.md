@@ -104,7 +104,7 @@ node scripts/check-maintenance.mjs              # 到期看板（不阻塞）
 node scripts/check-maintenance.mjs --check      # 更新清单结构校验
 ```
 
-`knowledge/credibility.json` 是给 AI 与检索用的机器可读登记册：22 项 C 级工单、37 项未定事项、32 条事件日历、政策草案条目，以及每个模块的 `confidence` / `examples` / `historical` 声明。注入上下文前可先按 `confidence` 过滤、按 `gradeC` 排除未复核数字。事实源仍是 Markdown 正文里已有的结构化表格与列表，不另建清单。
+`knowledge/credibility.json` 是给 AI 与检索用的机器可读登记册：22 项 C 级工单、37 项未定事项、32 条事件日历、政策草案条目，以及每个模块的 `confidence` / `examples` / `historical` 声明。22 项 C 级工单带销项终态（可用 / 改口径 / 已撤销 / 禁止引用 / 待复核）、复核日期与下次复核日，§1.4 空缺格也有补数节奏。注入上下文前可先按 `confidence` 过滤、按 `gradeC` 的 `usable` / `banned` 排除不可引用数字；`check-maintenance.mjs` 按到期日提示待销项工单与空缺格。事实源仍是 Markdown 正文里已有的结构化表格与列表，不另建清单。
 
 CI 依次执行一致性校验、维护台账结构校验、生成物比对与七个 Python 自测；任一步失败即拒绝合并。每月 1 号另有 `maintenance.yml` 把到期看板写进 Actions 摘要。
 

@@ -9,7 +9,11 @@
     "draftPolicies": 3,
     "mixedModules": 45,
     "historicalModules": 15,
-    "unverifiedGradeC": 19
+    "unverifiedGradeC": 14,
+    "verifiedTickets": 6,
+    "bannedTickets": 2,
+    "ticketsDueForReview": 14,
+    "openGaps": 8
   },
   "enums": {
     "confidence": [
@@ -42,19 +46,26 @@
       "已复核",
       "已改口径",
       "口径已确认",
-      "部分确认"
+      "已撤销",
+      "禁止引用"
     ]
   },
   "gradeC": [
     {
       "n": 1,
-      "figure": "比利时 CRM 约 2.7 万 €/MW·年",
+      "figure": "比利时 CRM €27.3k/MW·年（原记「约 2.7 万」）",
       "module": "比利时/北欧 §3",
       "reason": "媒体单位有“27.3 万/2.73 万”混用；Elia 原文 403",
       "source": "`elia.be` CRM 公告、CREG",
       "priority": "P0",
-      "status": "待复核",
-      "columns": 7
+      "status": "已复核",
+      "reviewedAt": "2026-11-11",
+      "conclusion": "A 级：€27.3k/MW·年（27,300 €/MW·年），Elia 2025-10-30 新闻稿；「27.3 万」是单位错误，正确量级为 2.73 万。可用于投决，须写明 2029-30 交付年与 pay-as-bid 口径",
+      "nextReview": null,
+      "usable": true,
+      "banned": false,
+      "pending": false,
+      "columns": 9
     },
     {
       "n": 2,
@@ -63,8 +74,14 @@
       "reason": "媒体口径；规则调整中",
       "source": "`ure.gov.pl`、`pse.pl` 容量市场规则",
       "priority": "P0",
-      "status": "待复核",
-      "columns": 7
+      "status": "已改口径",
+      "reviewedAt": "2026-11-11",
+      "conclusion": "C 级：13.39%（Modo Energy / UZ Energy 等多源一致），仅适用 2025-12 主拍卖、2030 交付年新建电池；与 2027 T-1 沿用的 95%、2029 主拍卖 61.3% 并存，禁止跨拍卖混用。URE 决议原文仍缺，投决前须书面确认",
+      "nextReview": null,
+      "usable": true,
+      "banned": false,
+      "pending": false,
+      "columns": 9
     },
     {
       "n": 3,
@@ -74,7 +91,13 @@
       "source": "`terna.it` 容量市场规则",
       "priority": "P1",
       "status": "待复核",
-      "columns": 7
+      "reviewedAt": "—",
+      "conclusion": "原状态「待复核」；下次复核 2027-02-01（P1）",
+      "nextReview": "2027-02-01",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "columns": 9
     },
     {
       "n": 4,
@@ -84,7 +107,13 @@
       "source": "`acm.nl`、`netbeheernederland.nl`",
       "priority": "P1",
       "status": "待复核",
-      "columns": 7
+      "reviewedAt": "—",
+      "conclusion": "原状态「待复核」；下次复核 2027-02-01（P1）",
+      "nextReview": "2027-02-01",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "columns": 9
     },
     {
       "n": 5,
@@ -93,8 +122,14 @@
       "reason": "媒体统计；日前/实时口径未完全统一",
       "source": "`omie.es`、`ree.es`",
       "priority": "P1",
-      "status": "已改口径：2025 为 553 h（<0）+247 h（=0）（B，Ember）；2026Q1 397 h 仍为 C",
-      "columns": 7
+      "status": "已改口径",
+      "reviewedAt": "2026-11-11",
+      "conclusion": "B 级：2025 为 553 h（<0）+247 h（=0）（Ember）；2026Q1 397 h 仍为 C；下次复核 2027-02-01（P1）；下次复核 2027-02-01（P1）",
+      "nextReview": "2027-02-01",
+      "usable": true,
+      "banned": false,
+      "pending": false,
+      "columns": 9
     },
     {
       "n": 6,
@@ -104,7 +139,13 @@
       "source": "`ree.es`、MITECO",
       "priority": "P1",
       "status": "待复核",
-      "columns": 7
+      "reviewedAt": "—",
+      "conclusion": "原状态「待复核」；下次复核 2027-02-01（P1）",
+      "nextReview": "2027-02-01",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "columns": 9
     },
     {
       "n": 7,
@@ -114,7 +155,13 @@
       "source": "`ree.es`",
       "priority": "P1",
       "status": "待复核",
-      "columns": 7
+      "reviewedAt": "—",
+      "conclusion": "原状态「待复核」；下次复核 2027-02-01（P1）",
+      "nextReview": "2027-02-01",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "columns": 9
     },
     {
       "n": 8,
@@ -124,7 +171,13 @@
       "source": "`neso.energy` 队列报告",
       "priority": "P1",
       "status": "待复核",
-      "columns": 7
+      "reviewedAt": "—",
+      "conclusion": "原状态「待复核」；下次复核 2027-02-01（P1）",
+      "nextReview": "2027-02-01",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "columns": 9
     },
     {
       "n": 9,
@@ -134,7 +187,13 @@
       "source": "`ure.gov.pl`、`pse.pl`",
       "priority": "P1",
       "status": "待复核",
-      "columns": 7
+      "reviewedAt": "—",
+      "conclusion": "原状态「待复核」；下次复核 2027-02-01（P1）",
+      "nextReview": "2027-02-01",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "columns": 9
     },
     {
       "n": 10,
@@ -144,7 +203,13 @@
       "source": "`tge.pl`、`pse.pl`",
       "priority": "P1",
       "status": "待复核",
-      "columns": 7
+      "reviewedAt": "—",
+      "conclusion": "原状态「待复核」；下次复核 2027-02-01（P1）",
+      "nextReview": "2027-02-01",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "columns": 9
     },
     {
       "n": 11,
@@ -153,8 +218,14 @@
       "reason": "媒体转引；Elia 原文 403",
       "source": "`elia.be`、CREG",
       "priority": "P1",
-      "status": "待复核",
-      "columns": 7
+      "status": "已复核",
+      "reviewedAt": "2026-11-11",
+      "conclusion": "A 级：Y-4 中标 4,690 MW、新电池 179 MW（铭牌 525 MW，11 个项目）、翻新 25 MW，Elia 2025-10-30；与 #1 同一来源",
+      "nextReview": null,
+      "usable": true,
+      "banned": false,
+      "pending": false,
+      "columns": 9
     },
     {
       "n": 12,
@@ -164,7 +235,13 @@
       "source": "`occto.or.jp`、METI",
       "priority": "P1",
       "status": "待复核",
-      "columns": 7
+      "reviewedAt": "—",
+      "conclusion": "原状态「待复核」；下次复核 2027-02-01（P1）",
+      "nextReview": "2027-02-01",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "columns": 9
     },
     {
       "n": 13,
@@ -173,8 +250,14 @@
       "reason": "媒体/行业统计；系统价非分区结算价",
       "source": "`jepx.jp`",
       "priority": "P1",
-      "status": "口径已确认（B）：30 分钟简单平均，非负荷加权/分区价；仍不作横比",
-      "columns": 7
+      "status": "口径已确认",
+      "reviewedAt": "2026-11-11",
+      "conclusion": "B 级：JEPX 30 分钟简单平均，非负荷加权/分区价；仍不作横比；下次复核 2027-02-01（P1）；下次复核 2027-02-01（P1）",
+      "nextReview": "2027-02-01",
+      "usable": true,
+      "banned": false,
+      "pending": false,
+      "columns": 9
     },
     {
       "n": 14,
@@ -184,7 +267,13 @@
       "source": "`ercot.com`、PUCT",
       "priority": "P1",
       "status": "待复核",
-      "columns": 7
+      "reviewedAt": "—",
+      "conclusion": "原状态「待复核」；下次复核 2027-02-01（P1）",
+      "nextReview": "2027-02-01",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "columns": 9
     },
     {
       "n": 15,
@@ -194,7 +283,13 @@
       "source": "`ercot.com`",
       "priority": "P1",
       "status": "待复核",
-      "columns": 7
+      "reviewedAt": "—",
+      "conclusion": "原状态「待复核」；下次复核 2027-02-01（P1）",
+      "nextReview": "2027-02-01",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "columns": 9
     },
     {
       "n": 16,
@@ -204,7 +299,13 @@
       "source": "`pjm.com`",
       "priority": "P1",
       "status": "待复核",
-      "columns": 7
+      "reviewedAt": "—",
+      "conclusion": "原状态「待复核」；下次复核 2027-02-01（P1）",
+      "nextReview": "2027-02-01",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "columns": 9
     },
     {
       "n": 17,
@@ -214,17 +315,29 @@
       "source": "`caiso.com`、CEC",
       "priority": "P2",
       "status": "待复核",
-      "columns": 7
+      "reviewedAt": "—",
+      "conclusion": "原状态「待复核」；下次复核 2027-05-01（P2）",
+      "nextReview": "2027-05-01",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "columns": 9
     },
     {
       "n": 18,
-      "figure": "德国 2026 两轮容量招标“不向电池开放”",
+      "figure": "德国 2026 两轮容量招标「不向电池开放」旧表述（已撤销）",
       "module": "德国 §8",
       "reason": "报道口径；以招标文件为准",
       "source": "`bundesnetzagentur.de`、`regelleistung.net`",
       "priority": "P0（储能）",
-      "status": "待复核",
-      "columns": 7
+      "status": "已撤销",
+      "reviewedAt": "2026-11-11",
+      "conclusion": "原表述错误：BNetzA 2026-11-03 明确「电厂与储能设施共同参与竞争」。改为 ≥10 h 持续出力等准入条件（A）；首轮 2026-09-08 截标，41 标/11,958 rMW，11 标中标约 5,160 rMW，量加权均价 €155,296/rMW·年（上限 €244,000）。禁止再写「不向电池开放」",
+      "nextReview": null,
+      "usable": false,
+      "banned": true,
+      "pending": false,
+      "columns": 9
     },
     {
       "n": 19,
@@ -233,8 +346,14 @@
       "reason": "媒体口径；以 REE 公告为准",
       "source": "`ree.es`",
       "priority": "P0（储能）",
-      "status": "待复核",
-      "columns": 7
+      "status": "禁止引用",
+      "reviewedAt": "2026-11-11",
+      "conclusion": "截至 2026-11-11 REE / 能源国务秘书处未发布 convocatoria；「2026 年底至 2027 年」为媒体推测，已从正文撤销。下次复核 2026-12-01；不得把首拍容量收入写成确定现金流",
+      "nextReview": "2026-12-01",
+      "usable": false,
+      "banned": true,
+      "pending": false,
+      "columns": 9
     },
     {
       "n": 20,
@@ -243,8 +362,14 @@
       "reason": "模块未落具体日期",
       "source": "`elia.be`",
       "priority": "P0（储能）",
-      "status": "待复核",
-      "columns": 7
+      "status": "已复核",
+      "reviewedAt": "2026-11-11",
+      "conclusion": "A 级：Elia CRM Auction Calendar——2026 年三场（2030 Y-4 / 2028 Y-2 / 2027 Y-1）均 2026-09-30 17:00 截标、10-30 公布结果；2027 年场次按年度节奏约 2027-09-30，官方日历尚未列出",
+      "nextReview": null,
+      "usable": true,
+      "banned": false,
+      "pending": false,
+      "columns": 9
     },
     {
       "n": 21,
@@ -253,8 +378,14 @@
       "reason": "仅有 B 级交易商文章，未见 RTE 官方文本",
       "source": "`rte-france.com`、CRE",
       "priority": "P1",
-      "status": "待复核；投决前书面确认",
-      "columns": 7
+      "status": "待复核",
+      "reviewedAt": "—",
+      "conclusion": "仅 B 级交易商文章，未见 RTE 官方文本；投决前必须向 RTE 书面确认；下次复核 2027-02-01（P1）",
+      "nextReview": "2027-02-01",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "columns": 9
     },
     {
       "n": 22,
@@ -264,7 +395,87 @@
       "source": "`rte-france.com`、`cre.fr`",
       "priority": "P2",
       "status": "待复核",
-      "columns": 7
+      "reviewedAt": "—",
+      "conclusion": "原状态「待复核」；下次复核 2027-05-01（P2）",
+      "nextReview": "2027-05-01",
+      "usable": false,
+      "banned": false,
+      "pending": true,
+      "columns": 9
+    }
+  ],
+  "gaps": [
+    {
+      "priority": "P0",
+      "gap": "全国总装机",
+      "markets": "西班牙（REE/ESIOS 403）",
+      "source": "REE/ESIOS API、MITECO 年报",
+      "target": "§1.2 装机列",
+      "nextReview": "2026-12-01",
+      "columns": 6
+    },
+    {
+      "priority": "P0",
+      "gap": "本币日前均价",
+      "markets": "波兰（TGE WAF 未公开）、ERCOT（年度值）",
+      "source": "TGE 年报、ERCOT/Potomac",
+      "target": "§1.2 均价列",
+      "nextReview": "2026-12-01",
+      "columns": 6
+    },
+    {
+      "priority": "P0",
+      "gap": "2025 全年负价小时",
+      "markets": "澳、美（ERCOT/PJM/CAISO）、比·北欧（已有 B 级分区值，待官方复核）",
+      "source": "AEMO、ERCOT/PJM/CAISO、ENTSO-E",
+      "target": "§1.2 负价列",
+      "nextReview": "2026-12-01",
+      "columns": 6
+    },
+    {
+      "priority": "P1",
+      "gap": "光伏/风电/电池捕获率（2025）",
+      "markets": "十一市场全部（西班牙只有捕获价）",
+      "source": "交易所 + 咨询/学术口径，注明参考价",
+      "target": "§1.2 捕获率列",
+      "nextReview": "2027-02-01",
+      "columns": 6
+    },
+    {
+      "priority": "P1",
+      "gap": "并网排队规模与典型时长",
+      "markets": "澳、德、意、西、荷、波、比·北欧",
+      "source": "并网改革文件/TSO 队列报告",
+      "target": "§2 规模与时长列",
+      "nextReview": "2027-02-01",
+      "columns": 6
+    },
+    {
+      "priority": "P1",
+      "gap": "容量降额/ELCC 系数",
+      "markets": "比、西、日、意、法（复核）",
+      "source": "Elia、REE、OCCTO、Terna、RTE/CRE 规则",
+      "target": "§1.2 降额列",
+      "nextReview": "2027-02-01",
+      "columns": 6
+    },
+    {
+      "priority": "P2",
+      "gap": "储能存量与管线拆分",
+      "markets": "十一市场全部",
+      "source": "行业协会/BNEF/CEC 等，标 B/C",
+      "target": "§1.2 储能列",
+      "nextReview": "2027-05-01",
+      "columns": 6
+    },
+    {
+      "priority": "P2",
+      "gap": "北欧分区官方价格与负价",
+      "markets": "北欧 12 区（现为 B 级 Energy-Charts）",
+      "source": "Nord Pool、各国 TSO",
+      "target": "§1.2b",
+      "nextReview": "2027-05-01",
+      "columns": 6
     }
   ],
   "openItems": [
@@ -401,7 +612,7 @@
     {
       "n": 27,
       "topic": "Poland market and storage",
-      "text": "battery de-rating (13% is a grade-C figure), the 2030 vs. 2029 auction outcomes, foreign participation, NFOŚiGW delivery by end-2028 and Article 62 deductions, MARI accession, the 2026 OZE non-price criteria, negative-price hours and the coal phase-down."
+      "text": "battery de-rating (13.39% is a grade-C figure, 2030 delivery-year main auction only; do not mix with the 95% used in the 2027 T-1 top-up), the 2030 vs. 2029 auction outcomes, foreign participation, NFOŚiGW delivery by end-2028 and Article 62 deductions, MARI accession, the 2026 OZE non-price criteria, negative-price hours and the coal phase-down."
     },
     {
       "n": 28,
@@ -426,7 +637,7 @@
     {
       "n": 32,
       "topic": "Capacity mechanisms",
-      "text": "the first Spanish auction under TED/966/2026 (timing and price); the Italian MACSE second auction result (2026-11-24) and later rounds; the German StromVKG auction terms and whether batteries are admitted; the Belgian CRM price unit (the ~€27k/MW·yr figure is grade C); the Swedish effektreserv re-auction; the Australian CIS Tender 10 result and state-scheme stacking rules; PJM 2029/30 BRA and ELCC updates; Japan FY2030 CM and round-4 LTDA; all five worked examples in the capacity module are synthetic (grade D)."
+      "text": "the first Spanish auction under TED/966/2026 (no convocatoria as of 2026-11-11; timing and price); the Italian MACSE second auction result (2026-11-24) and later rounds; the German StromVKG auction terms and whether batteries are admitted; the Belgian CRM price unit (resolved 2026-11-11: €27.3k/MW·yr, grade A, Elia 2025-10-30); the Swedish effektreserv re-auction; the Australian CIS Tender 10 result and state-scheme stacking rules; PJM 2029/30 BRA and ELCC updates; Japan FY2030 CM and round-4 LTDA; all five worked examples in the capacity module are synthetic (grade D)."
     },
     {
       "n": 33,
@@ -446,7 +657,7 @@
     {
       "n": 36,
       "topic": "Eleven-market snapshot and decision calendar",
-      "text": "2025 installed capacity and annual average price are now backfilled for eleven markets, but Spain's installed capacity remains blocked (REE/ESIOS automation returns 403), Poland's and ERCOT's local-currency annual averages are still open, Australia's and the US annual negative-price hours are missing, and capture rates, interconnection durations and de-rating coefficients are incomplete; the Poland 2031 delivery-year auction, the next Belgian CRM round, the outcome of the Swedish bidding-zone review (report due 2027-01-29), the French PL-4 first round and the MHHS migration dates are not confirmed; 22 grade-C figures are listed with verification entries and must be re-checked before use."
+      "text": "2025 installed capacity and annual average price are now backfilled for eleven markets, but Spain's installed capacity remains blocked (REE/ESIOS automation returns 403), Poland's and ERCOT's local-currency annual averages are still open, Australia's and the US annual negative-price hours are missing, and capture rates, interconnection durations and de-rating coefficients are incomplete; the Poland 2031 delivery-year auction, the next Belgian CRM round, the outcome of the Swedish bidding-zone review (report due 2027-01-29), the French PL-4 first round and the MHHS migration dates are not confirmed; 22 grade-C tickets are now a resolution ledger: 8 closed on 2026-11-11 (including the Belgian CRM price upgraded to A and the incorrect German battery-ban wording withdrawn), 14 still pending with next-review dates; the remaining gaps carry explicit due dates and must not be filled with estimates."
     },
     {
       "n": 37,
@@ -491,11 +702,11 @@
       "grade": "B"
     },
     {
-      "date": "2026-12-29",
+      "date": "2026-12-29（计划）",
       "market": "德国",
-      "event": "第二轮 4.5 GW 容量招标（计划）",
-      "note": "据报道不向电池开放；储能看 2027 年招标",
-      "grade": "C；以招标文件为准"
+      "event": "第二轮 4,500 rMW 长时容量招标",
+      "note": "≥10 h 持续出力门槛（非明文排除电池）；首轮 2026-11-03 已出结果，第二轮日期以 BNetzA 公告为准",
+      "grade": "A（首轮）/ B/C（计划）"
     },
     {
       "date": "2026-12",
@@ -526,11 +737,11 @@
       "grade": "B"
     },
     {
-      "date": "2026Q4–2027",
+      "date": "待公布（截至 2026-11-11 无 convocatoria）",
       "market": "西班牙",
       "event": "容量市场首拍",
       "note": "储能容量收入从“预期”变“合同”",
-      "grade": "C；以 REE 公告为准"
+      "grade": "空缺；禁止写成确定时点，下次复核 2026-12-01"
     },
     {
       "date": "2026Q4",
@@ -547,11 +758,11 @@
       "grade": "A（进程）；细节待核实"
     },
     {
-      "date": "2026 年内",
+      "date": "2026-09-30 截标 / 2026-10-30 公布",
       "market": "比利时",
-      "event": "下一轮 CRM（Y-4 2030-31 交付年）",
-      "note": "电池中标量、15 年合同、价格单位",
-      "grade": "C/待核实；以 Elia 公告为准"
+      "event": "三场 CRM：2030 Y-4、2028 Y-2、2027 Y-1",
+      "note": "电池中标量、15 年合同、Y-4 价 €27.3k/MW·年",
+      "grade": "A，Elia CRM Auction Calendar + 2025-10-30 公告"
     },
     {
       "date": "2026 年内",
@@ -719,7 +930,7 @@
       "examples": null,
       "historical": false,
       "marks": {
-        "gradeC": 18,
+        "gradeC": 15,
         "draft": 0,
         "pending": 3,
         "example": 6
@@ -951,9 +1162,9 @@
       "examples": null,
       "historical": false,
       "marks": {
-        "gradeC": 5,
+        "gradeC": 4,
         "draft": 0,
-        "pending": 2,
+        "pending": 1,
         "example": 10
       },
       "exampleSections": [
@@ -1120,9 +1331,9 @@
       "examples": null,
       "historical": false,
       "marks": {
-        "gradeC": 20,
+        "gradeC": 17,
         "draft": 0,
-        "pending": 4,
+        "pending": 2,
         "example": 2
       },
       "exampleSections": [
@@ -1181,7 +1392,7 @@
       "examples": null,
       "historical": false,
       "marks": {
-        "gradeC": 17,
+        "gradeC": 14,
         "draft": 2,
         "pending": 11,
         "example": 13
@@ -1205,9 +1416,9 @@
       "examples": null,
       "historical": false,
       "marks": {
-        "gradeC": 90,
+        "gradeC": 85,
         "draft": 0,
-        "pending": 79,
+        "pending": 75,
         "example": 0
       },
       "exampleSections": []
@@ -1689,7 +1900,7 @@
       "examples": null,
       "historical": false,
       "marks": {
-        "gradeC": 9,
+        "gradeC": 7,
         "draft": 1,
         "pending": 1,
         "example": 2
