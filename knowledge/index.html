@@ -338,6 +338,7 @@ mark.hit{background:var(--amber-soft);color:inherit;border-radius:2px;padding:0 
 .market-flow.six{grid-template-columns:repeat(6,1fr)}
 .market-flow.eight{grid-template-columns:repeat(4,1fr)}
 .market-flow.ten{grid-template-columns:repeat(5,1fr)}
+.market-flow.eleven{grid-template-columns:repeat(6,1fr)}
 .mf-step,.af-step{position:relative;padding:11px 11px 10px;border:1px solid var(--line);border-radius:9px;background:var(--paper)}
 .mf-step:not(:last-child)::after,.af-step:not(:last-child)::after{content:"→";position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:var(--fs-xs);color:var(--line-strong);background:var(--card);z-index:2;line-height:1}
 .mf-t{display:block;font:600 var(--fs-2xs)/1.4 var(--mono);letter-spacing:.07em;color:var(--teal);margin-bottom:3px;text-transform:uppercase}
@@ -492,7 +493,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   .panel.wide{grid-column:auto}
   .price-chain{grid-template-columns:1fr;gap:7px}
   .pc-arrow{height:16px;transform:rotate(90deg)}
-  .market-flow,.assess-flow,.market-flow.six,.market-flow.eight,.market-flow.ten{grid-template-columns:1fr 1fr}
+  .market-flow,.assess-flow,.market-flow.six,.market-flow.eight,.market-flow.ten,.market-flow.eleven{grid-template-columns:1fr 1fr}
   .mf-step:not(:last-child)::after,.af-step:not(:last-child)::after{display:none}
   .market-grid{grid-template-columns:1fr}
   .method-grid{grid-template-columns:1fr}
@@ -521,7 +522,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   .hero-note{display:none}
   .sec-head{grid-template-columns:1fr;gap:6px}
   .sec-num{padding-top:0}
-  .market-flow,.assess-flow,.market-flow.six,.market-flow.eight,.market-flow.ten{grid-template-columns:1fr}
+  .market-flow,.assess-flow,.market-flow.six,.market-flow.eight,.market-flow.ten,.market-flow.eleven{grid-template-columns:1fr}
   .carbon-chain{grid-template-columns:1fr 1fr}
   .rail{grid-template-columns:1fr}
   .map-skill{grid-template-columns:1fr;gap:6px}
@@ -576,7 +577,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
       <nav class="nav" aria-label="章节导航">
       <a href="#top" class="active"><span class="n">00</span><span>总览</span><span class="count">64</span></a>
       <a href="#all"><span class="n">01</span><span>模块检索</span><span class="count">64</span></a>
-      <a href="#map"><span class="n">02</span><span>知识地图</span><span class="count">5</span></a>
+      <a href="#map"><span class="n">02</span><span>知识地图</span><span class="count">6</span></a>
       <a href="#atlas"><span class="n">03</span><span>专题图谱</span><span class="count">8</span></a>
       <a href="#foundation"><span class="n">04</span><span>通识与经济学</span><span class="count">5</span></a>
       <a href="#spot"><span class="n">05</span><span>现货与省间交易</span><span class="count">7</span></a>
@@ -1387,6 +1388,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
                   <a class="chip" href="#m-cross-ancillary">辅助服务与平衡市场</a>
                   <a class="chip" href="#m-cross-revenue">储能收益建模与数据源</a>
                   <a class="chip" href="#m-cross-ppa">跨国 PPA 与绿证</a>
+                  <a class="chip" href="#m-cross-snapshot">同口径快照与投决日历</a>
                 </div>
               </div>
             </article>
@@ -1663,15 +1665,16 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
           <figure class="panel wide">
             <div class="panel-head">
               <span class="panel-kicker">专题 08 · 海外</span>
-              <h3>澳 / 德 / 英 / 意 / 西 / 荷 / 波 / 比·北欧 / 美 / 日市场与储能设计对照</h3>
-              <p>十种处理波动的方式：区域价与 5 分钟结算、欧盟耦合与平衡市场、单一市场与容量市场、七区出清与 MACSE、伊比利亚双区与容量市场、单一报价区与拥堵接入、容量市场与储能补贴、CRM 与分区水电、ISO/RTO 三范式、30 分钟现货与 LTDA。</p>
+              <h3>澳 / 德 / 英 / 意 / 西 / 法 / 荷 / 波 / 比·北欧 / 美 / 日市场与储能设计对照</h3>
+              <p>十一种处理波动的方式：区域价与 5 分钟结算、欧盟耦合与平衡市场、单一市场与容量市场、七区出清与 MACSE、伊比利亚双区与容量市场、核电主导与 RTE 单一买方容量机制、单一报价区与拥堵接入、容量市场与储能补贴、CRM 与分区水电、ISO/RTO 三范式、30 分钟现货与 LTDA。</p>
             </div>
-            <div class="market-flow ten">
+            <div class="market-flow eleven">
               <div class="mf-step"><span class="mf-t">澳洲 · 出清</span><strong>5 分钟</strong><small>区域价 + 约束</small></div>
               <div class="mf-step"><span class="mf-t">德国 · 平衡</span><strong>FCR/aFRR/mFRR</strong><small>容量 + 能量分开</small></div>
               <div class="mf-step"><span class="mf-t">英国 · 容量</span><strong>T-4 / T-1</strong><small>£/kW·年</small></div>
               <div class="mf-step"><span class="mf-t">意大利 · 储能</span><strong>MACSE</strong><small>15 年容量溢价</small></div>
               <div class="mf-step"><span class="mf-t">西班牙 · 容量</span><strong>2026 新规</strong><small>半岛系统 · pay-as-bid</small></div>
+              <div class="mf-step"><span class="mf-t">法国 · 容量</span><strong>PL-1 / PL-4</strong><small>RTE 单一买方 · ARENH 退场</small></div>
               <div class="mf-step"><span class="mf-t">荷兰 · 接入</span><strong>无容量市场</strong><small>拥堵 / 非 firm</small></div>
               <div class="mf-step"><span class="mf-t">波兰 · 容量</span><strong>Rynek mocy</strong><small>拍卖 + OZE + 储能补贴</small></div>
               <div class="mf-step"><span class="mf-t">比·北欧 · 分区</span><strong>CRM / 12 区</strong><small>水电 + 负价</small></div>
@@ -1684,6 +1687,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
               <div class="mini"><b>英国容量价</b>T-4 2029/30 £27.10/kW·年；T-1 2026/27 £5.00/kW·年。</div>
               <div class="mini"><b>意大利 MACSE</b>首轮 10 GWh；均价 €12,959/MWh·年；上限 €37,000/MWh·年。</div>
               <div class="mini"><b>西班牙容量市场</b>Orden TED/966/2026；2026-09-18 生效；新投资最长 15 年；首拍待 REE。</div>
+              <div class="mini"><b>法国容量机制</b>PL-1 清算 €28,182.99/MW（151 天交付期）；PL-4 CoNE €60,000/MW·yr（2030-31）。</div>
               <div class="mini"><b>荷兰储能结构</b>无容量市场；能量 + FCR/aFRR/mFRR + 拥堵合同；SDE++ 不列独立电池。</div>
               <div class="mini"><b>波兰容量价</b>2030 交付年 465.02 PLN/kW·年；义务 6,887.639 MW；储能补贴 41.5 亿兹罗提。</div>
               <div class="mini"><b>比利时/北欧容量</b>CRM Y-4 4,690 MW；北欧 12 个报价区；15 分钟结算与负价并存。</div>
@@ -1703,10 +1707,10 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
         </details>
       </section>
 
-      <!-- 14 Method -->
+      <!-- 16 Method -->
       <section class="sec" id="method">
         <div class="sec-head">
-          <div class="sec-num">15 / METHOD</div>
+          <div class="sec-num">16 / METHOD</div>
           <div>
             <h2>使用与口径</h2>
             <p>这个知识库不是“事实的终点”，而是“查证的起点”。三条使用步骤、四级来源分级、四条口径纪律，决定回答能不能用。</p>

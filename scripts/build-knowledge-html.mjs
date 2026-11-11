@@ -151,7 +151,7 @@ const cutoff = manifest.map((d) => d.cutoff || '').filter((d) => /^\d{4}-\d{2}/.
 
 /* --------------------------------------------------------------- 技能清单 */
 
-const skillSection = { id: 'skill', cat: 'skill', num: '15 / SKILLS', title: '配套技能' };
+const skillSection = { id: 'skill', cat: 'skill', num: '16 / SKILLS', title: '配套技能' };
 
 if (!Array.isArray(skillDocs) || !skillDocs.length) throw new Error('knowledge.config.mjs: skillDocs 不能为空');
 if (skillDocs.length !== site.skills) throw new Error(`skillDocs 有 ${skillDocs.length} 项，与 site.skills=${site.skills} 不一致`);
@@ -638,7 +638,7 @@ ${mods.map(renderCard).join('\n')}
 }
 
 function renderIndex() {
-  const tokensCss = readFileSync(tokensPath, 'utf8').trim();
+  const tokensCss = readFileSync(tokensPath, 'utf8').replace(/\r\n?/g, '\n').trim();
   const template = readFileSync(templatePath, 'utf8')
     .replace(/\r\n?/g, '\n')
     .replace('/* @@TOKENS@@ */', tokensCss);

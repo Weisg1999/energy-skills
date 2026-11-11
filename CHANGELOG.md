@@ -2,6 +2,14 @@
 
 本文件记录 energy-skills 的版本变更，按时间倒序。当前版本 **v1.9**，数据截止 **2026-11-11**。仓库入口见 [README.md](README.md)，英文版见 [CHANGELOG_EN.md](CHANGELOG_EN.md)。
 
+### 2026-11-11（v1.9 维护：修复首页十一市场图谱与分区编号漂移）
+
+- **专题图谱 08 补法国**：面板标题、引导句、步骤条与 mini 卡由十市场扩为十一——新增「法国 · 容量 PL-1 / PL-4」步骤与「法国容量机制」mini 卡（PL-1 清算 **€28,182.99/MW**、151 天交付期；PL-4 CoNE **€60,000/MW·yr**，2030-31），数字沿用法国模块已复核口径；步骤条网格新增 `.market-flow.eleven`（桌面 6 列，≤960px 两列、≤620px 一列）。图注与事实块此前已写十一市场，本轮把其余元素对齐。
+- **知识地图计数与 X 层**：侧栏「02 知识地图」计数由 5 改为 **6**（地图已扩为六层）；第六层补「同口径快照与投决日历」chip，六个 chip 与横向专题六篇模块一一对应。
+- **分区编号去重**：首页「使用与口径」由 `15 / METHOD` 改为 `16 / METHOD`（此前与 `15 / RESEARCH` 重号，侧栏已顺延为 16）；技能阅读页当前分类编号由 `15 / SKILLS` 顺延为 `16 / SKILLS`，避免与 `15 / RESEARCH` 重号；模板注释同步。
+- **构建与巡检工具**：`build-knowledge-html.mjs` 的 `renderIndex()` 读取 `tokens.css` 时归一化 CRLF，修复 Windows（`core.autocrlf=true`、无 `.gitattributes`）下 `--check` 对 `knowledge/index.html` 的假阳性失败；`check-consistency.mjs` 遍历排除 `.workbuddy/`（本地工作记忆目录），一致性计数口径回到 **87 个 Markdown**；`.gitignore` 补 `.idea/` 与 `.workbuddy/`。
+- **校验**：重建 **64 个知识页 + 18 个技能页 + 18 个 TXT**（正文 28,769 行、2,461 章节、946 表格、267 代码图块），`--check` 与一致性检查通过（87 个 Markdown）；模块数、分区数与正文行数不变。版本仍为 **v1.9**，未提交、未推送。
+
 ### 2026-11-11（v1.9 维护：五个横向专题补齐十一市场国别覆盖）
 
 - **PPA 模块扩为十一市场**：[跨国 PPA、绿证与 tolling](knowledge/跨国PPA与绿证-2026-11.md) §4.1 改为“六种支持工具原型”，新增 **§4.1a 十一市场支持工具与储能资格**表（EEG、CfD、FER X/MACSE、TED/966、CRE、SDE++、OZE、CRM、CIS、ITC、FIT/FIP 与证书/PPA 市场特点）；新增六节：§4.7 德国 EEG 溢价、§4.8 西班牙招标/PPA/容量、§4.9 荷兰 SDE++、§4.10 比利时与北欧海风 CfD/CRM/储备、§4.11 美国 ITC、§4.12 日本 FIT/FIP/容量/LTDA/EPRX；原叠加矩阵改为 §4.13、merchant tail 改为 §4.14，速查、分工与更新记录同步。所有数字沿用对应市场模块已复核口径，不新增未核数字。

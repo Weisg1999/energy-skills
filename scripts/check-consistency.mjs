@@ -9,7 +9,7 @@ const fail = (file, line, message) => errors.push(`${relative(root, file)}:${lin
 function walk(dir) {
   const out = [];
   for (const name of readdirSync(dir)) {
-    if (name === '.git' || name === 'node_modules') continue;
+    if (name === '.git' || name === 'node_modules' || name === '.workbuddy') continue;
     const full = join(dir, name);
     if (statSync(full).isDirectory()) out.push(...walk(full));
     else if (name.endsWith('.md')) out.push(full);

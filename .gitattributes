@@ -1,0 +1,3 @@
+knowledge/index.html text eol=lf
+knowledge/html/*.html text eol=lf
+knowledge/html/download/skills/*.txt text eol=lf
