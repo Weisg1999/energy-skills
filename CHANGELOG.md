@@ -7,7 +7,7 @@
 - **新增公开访问入口**：根目录 `index.html` 作为短入口，访问 `https://weisg1999.github.io/energy-skills/` 自动跳到 `knowledge/index.html`，并保留 `?q/type/cat` 与 `#sN` 参数；2 秒 meta refresh 和手动按钮作为无脚本兜底。入口页 `noindex`，不干扰知识库正文索引。
 - **发布流水线**：新增 `.github/workflows/deploy-pages.yml`，只在 `main` 的站点文件变化或手动触发时运行。发布前依次复核生成物 `--check`、内容一致性、维护台账结构，再把 `index.html`、`knowledge/`、`skills/` 与 README/LICENSE 暂存到 `_site`；校验或暂存失败不会部署。部署使用 GitHub 官方 `configure-pages@v5`、`upload-pages-artifact@v3`、`deploy-pages@v5`，环境为 `github-pages`，权限仅 `contents:read` + `pages:write` + `id-token:write`。
 - **仓库地址进页脚**：`knowledge.config.mjs` 新增单一配置项 `site.repository`；首页与全部 **84 个生成页**（66 知识页 + 18 技能页）页脚都显示并链接 `github.com/Weisg1999/energy-skills`，英文页显示 `GitHub repository`。页脚链接在新标签打开，长地址在窄屏可换行。
-- **首次启用仍需仓库设置**：GitHub 仓库当前 `has_pages=false`，且 `configure-pages` 的自动 enablement 需要额外 PAT；因此首次上线须由仓库管理员在 **Settings → Pages → Source** 选择 **GitHub Actions**。本次不写入任何 token 或密钥。启用并推送 `main` 后，工作流会自动发布，后续同一 URL 持续更新。
+- **上线状态**：仓库起初 `has_pages=false`；管理员已在 **Settings → Pages → Source** 选择 **GitHub Actions**，随后推送 `53179d2`，`deploy-pages` 运行成功。线上根入口 `https://weisg1999.github.io/energy-skills/` 与知识库页均返回 200，全文检索和页脚仓库链接可用。`configure-pages` 的自动 enablement 仍需额外 PAT，仓库不写入 token 或密钥；后续推送 `main` 会自动更新同一 URL。
 - **校验**：本地按工作流步骤生成 14 MB `_site` 包；根入口正确跳转并保留查询参数，发布包全文检索命中 `红沿河` 4 个模块，首页/阅读页/英文页页脚仓库链接均存在，320px 无横向溢出，README 源文件可访问，浏览器无 console/page error；`build --check`、一致性（89 Markdown）、台账结构均通过。一致性遍历同步排除本地 `_site` 暂存目录。模块数与正文数字未变。
 
 ### 2026-11-11（v1.9 维护：海外市场时效台账补事件驱动切片）
