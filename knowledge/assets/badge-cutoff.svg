@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="148" height="20" viewBox="0 0 148 20" role="img" aria-label="data cutoff 2026-11-11">
+  <title>data cutoff 2026-11-11</title>
+  <defs>
+    <clipPath id="badge"><rect width="148" height="20" rx="3"/></clipPath>
+  </defs>
+  <g clip-path="url(#badge)">
+    <rect width="148" height="20" fill="#555555"/>
+    <rect x="72" width="76" height="20" fill="#5A6470"/>
+  </g>
+  <text x="36.0" y="14" fill="#fff" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" text-anchor="middle">data cutoff</text>
+  <text x="110.0" y="14" fill="#fff" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" text-anchor="middle">2026-11-11</text>
+</svg>

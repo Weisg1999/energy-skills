@@ -2,6 +2,13 @@
 
 This file records energy-skills releases in reverse chronological order. Current version **v1.9**, data cutoff **2026-11-11**. Repository entry point: [README_EN.md](README_EN.md); Chinese version: [CHANGELOG.md](CHANGELOG.md).
 
+### 2026-11-11 (v1.9 maintenance: README first-screen visual alignment)
+
+- **Badge strip restored**: following the approved visual, the `version / modules / data cutoff / license` badges are back beneath the mark and positioning line, styled after Shields flat-square.
+- **Local assets**: the badges now live in `knowledge/assets/badge-*.svg` and do not depend on shields.io or another external image service, so they render offline, behind firewalls and on mobile. Each still links to the changelog, knowledge hub, maintenance ledger and licence.
+- **Responsive**: the badges stay on one line at 1084px and wrap to a natural 3+1 layout at 390px without horizontal overflow. The rest of the README structure (contents, grouped skills, question routes, collapsible notes) is unchanged.
+- **Verification**: all 89 Markdown links and version checks, artifact comparison and the maintenance ledger continue to pass.
+
 ### 2026-11-11 (v1.9 maintenance: tighter three-column reading layout)
 
 - **Root cause**: reading text was capped at `39rem` while the main column used `1fr` and grew to about 956px at 1440px, leaving roughly 280px of dead space between the text and the right-hand table of contents.

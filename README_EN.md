@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="knowledge/assets/logo-book.svg" alt="Energy Skills book-and-bolt logo" width="88">
+  <img src="knowledge/assets/logo-book.svg" alt="Energy Skills book-and-bolt logo" width="96">
 </p>
 
 <h1 align="center">Energy Skills</h1>
@@ -10,10 +10,10 @@
 </p>
 
 <p align="center">
-  <a href="CHANGELOG_EN.md"><code>v1.9</code></a> ·
-  <a href="knowledge/index.html"><code>66&nbsp;modules</code></a> ·
-  <a href="更新清单.md"><code>cutoff&nbsp;2026-11-11</code></a> ·
-  <a href="LICENSE"><code>CC&nbsp;BY-NC&nbsp;4.0</code></a>
+  <a href="CHANGELOG_EN.md"><img alt="version v1.9" src="knowledge/assets/badge-version.svg"></a>&nbsp;
+  <a href="knowledge/index.html"><img alt="66 knowledge modules" src="knowledge/assets/badge-modules.svg"></a>&nbsp;
+  <a href="更新清单.md"><img alt="data cutoff 2026-11-11" src="knowledge/assets/badge-cutoff.svg"></a>&nbsp;
+  <a href="LICENSE"><img alt="license CC BY-NC 4.0" src="knowledge/assets/badge-license.svg"></a>
 </p>
 
 <p align="center">

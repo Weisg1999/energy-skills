@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="88" height="20" viewBox="0 0 88 20" role="img" aria-label="version v1.9">
+  <title>version v1.9</title>
+  <defs>
+    <clipPath id="badge"><rect width="88" height="20" rx="3"/></clipPath>
+  </defs>
+  <g clip-path="url(#badge)">
+    <rect width="88" height="20" fill="#555555"/>
+    <rect x="52" width="36" height="20" fill="#0E6B66"/>
+  </g>
+  <text x="26.0" y="14" fill="#fff" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" text-anchor="middle">version</text>
+  <text x="70.0" y="14" fill="#fff" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" text-anchor="middle">v1.9</text>
+</svg>
