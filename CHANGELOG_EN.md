@@ -2,6 +2,22 @@
 
 This file records energy-skills releases in reverse chronological order. Current version **v1.9**, data cutoff **2026-11-11**. Repository entry point: [README_EN.md](README_EN.md); Chinese version: [CHANGELOG.md](CHANGELOG.md).
 
+### 2026-11-11 (v1.9 maintenance: tighter three-column reading layout)
+
+- **Root cause**: reading text was capped at `39rem` while the main column used `1fr` and grew to about 956px at 1440px, leaving roughly 280px of dead space between the text and the right-hand table of contents.
+- **Layout rebuild**: the main column is now a centred `46rem` reading column; the three-column shell contracts from 1540px to 1320px, and content width and reading measure are unified. At 1440px the text now sits about 50px from each navigation column instead of 0 on the left and ~280px on the right; line width rises from about 624px to 736px.
+- **Breakpoints**: below 1240px the right TOC disappears and the content area caps at 1100px; below 900px the left sidebar becomes a drawer and the content caps at 800px. The 1024px, 768px and mobile layouts keep the reading column centred without horizontal overflow. Print keeps the 736px column inside A4.
+- **Verification**: all 84 generated pages pass at 1440px and 320px with no page-level horizontal overflow and no console/page errors; axe finds no serious/critical issues on the economics, Japan, SCADA, provincial-status and English skill pages. Content, module count and generated artifacts are unchanged.
+
+### 2026-11-11 (v1.9 maintenance: README information architecture and layout)
+
+- **New first screen**: both READMEs now use a centred mark, a one-line positioning statement, local metadata tags (version / modules / cutoff / licence) and direct reading links. External badge images were removed to avoid mobile load failures and mid-token wrapping in “CC BY-NC”.
+- **Navigation and skills**: added a contents line; the single oversized skills table became three two-column tables (“Trading and markets”, “Projects and assets”, “Dispatch and bills”). Skill names link straight to the Chinese/English handbooks, language alternates use compact `CN` / `EN` links, and the directory names remain available in a collapsed index.
+- **Knowledge entry**: replaced the 12-row wide table with a section overview plus question-led bullets; added the missing France market link and restored the note about HTML reading pages and TXT downloads.
+- **Maintenance and detail**: the directory tree and generated-artifact/diagram/search/credibility notes are now in `<details>` blocks. Maintenance commands, publishing tip, sources, calibres and roadmap remain visible. The Chinese desktop preview drops from roughly 5,280px to 4,160px in rendered height (about −21%).
+- **Fact correction**: the old “last seven ship tools” claim was inaccurate; all nine skills ship zero-dependency Python tools and self-tests.
+- **Verification**: all 89 Markdown links and version checks, artifact comparison and the maintenance ledger pass. The Chinese and English structures mirror each other and neither desktop nor 390px preview has horizontal overflow.
+
 ### 2026-11-11 (v1.9 maintenance: diagram audit and accessibility fixes)
 
 - **Data-integrity audit**: generated tree-node counts match source branch lines per page; milestone counts match source table rows per page; safety/carbon flows, state cards and semantic architecture figures retain their titles, steps and key fields. The final site contains **92 diagram components**: 18 structure trees, 26 flows, 25 blueprints, 17 milestones, one state diagram and five semantic architecture figures.

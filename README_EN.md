@@ -1,157 +1,211 @@
 <p align="center">
-  <img src="knowledge/assets/logo-book.svg" alt="Energy Skills book-and-bolt logo" width="96">
+  <img src="knowledge/assets/logo-book.svg" alt="Energy Skills book-and-bolt logo" width="88">
 </p>
 
-# Energy Skills · Power Systems, Power Markets & Carbon Markets
+<h1 align="center">Energy Skills</h1>
 
-English | [中文](README.md)
+<p align="center">
+  <strong>Power Systems · Power Markets · Carbon Markets</strong><br>
+  Nine domain skills for AI assistants · 66 knowledge modules · 12 sections
+</p>
 
-Nine domain skills for AI assistants, backed by **66 knowledge modules** (29,198 body lines across 12 sections). Each skill is a self-contained Markdown handbook that can be injected into an LLM as context: once loaded, the model answers as a senior practitioner and follows built-in discipline — figures cited with policy document numbers and dates, province confirmed before giving local rules, policy items returned with official lookup pointers, and unverified data flagged as "to be verified".
+<p align="center">
+  <a href="CHANGELOG_EN.md"><code>v1.9</code></a> ·
+  <a href="knowledge/index.html"><code>66&nbsp;modules</code></a> ·
+  <a href="更新清单.md"><code>cutoff&nbsp;2026-11-11</code></a> ·
+  <a href="LICENSE"><code>CC&nbsp;BY-NC&nbsp;4.0</code></a>
+</p>
 
-Current version **v1.9**, data cutoff **2026-11-11**. **Read online: [energy-skills knowledge hub](https://weisg1999.github.io/energy-skills/)** · [in-repo entry](knowledge/index.html) · [changelog](CHANGELOG_EN.md).
+<p align="center">
+  <a href="https://weisg1999.github.io/energy-skills/"><strong>Read online</strong></a> ·
+  <a href="knowledge/index.html">In-repo entry</a> ·
+  <a href="CHANGELOG_EN.md">Changelog</a> ·
+  <a href="README.md">中文</a>
+</p>
+
+> Every skill is a self-contained Markdown handbook that can be injected into an LLM context. Once loaded, the model answers as a senior practitioner and follows built-in discipline: figures cited with document numbers and dates, province confirmed before local rules, policy items returned with official lookup pointers, and unverified data flagged as “to be verified”.
+
+Current version **v1.9**, data cutoff **2026-11-11**, 29,198 body lines. Notes, 66 reading pages, skill pages, the full-text index and all diagrams are generated from repository content.
+
+**Contents**　[Quick start](#quick-start) · [Skills](#skills) · [Knowledge base](#knowledge-base) · [Repository layout](#repository-layout) · [Maintenance](#maintaining-the-knowledge-hub) · [Roadmap](#roadmap) · [License](#license)
+
+---
 
 ## Quick start
 
-- **Inject into any AI assistant**: paste the full text of a `SKILL.md` as system prompt or context; the Chinese versions are denser, the English versions easier for international models.
-- **Register as a skill**: place `skills/<name>/` into the skills directory of an AI coding tool that supports custom skills (e.g. Claude Code).
-- **Read directly**: open the [online knowledge hub](https://weisg1999.github.io/energy-skills/) and browse by category or search titles, tags and full text. The notes under `knowledge/` are standalone quick-reference handbooks with document numbers, figures and comparison tables. Each of the nine skills also has an HTML reading page with a one-click TXT download. The [national policy index](knowledge/政策列表-2026-11.md) links 55 national documents and the [provincial policy index](knowledge/省级政策列表-2026-11.md) links 13 provincial documents to verified official full texts.
-- **Check before committing**: run `node scripts/check-consistency.mjs`, `node scripts/check-maintenance.mjs --check` and `node scripts/build-knowledge-html.mjs --check`; run `python tools/selftest.py` once for each of the nine skills that ship tools.
+1. **Read directly**: open the [online knowledge hub](https://weisg1999.github.io/energy-skills/) and browse by category or search the full text; hits link straight to the matching section anchor.
+2. **Inject into AI**: paste `skills/<name>/SKILL.md` as the system prompt or context. The Chinese editions are denser; the English editions (`SKILL_EN.md`) are easier for international models.
+3. **Register as a skill**: place `skills/<name>/` into the skills directory of an AI coding tool that supports custom skills (e.g. Claude Code).
+4. **Check before committing**: rebuild the generated artifacts and run structure, content and maintenance checks; run each skill's `tools/selftest.py` for the nine skills.
+
+```bash
+node scripts/build-knowledge-html.mjs --check
+node scripts/check-consistency.mjs
+node scripts/check-maintenance.mjs --check
+```
 
 ## Skills
 
-| Skill | Answers | Deliverable | Entry |
-|---|---|---|---|
-| Electricity Trading Expert | spot clearing and pricing, medium/long-term and finance, ancillary services and capacity, settlement and metering, provincial practice, renewables market entry, carbon markets, overseas markets (Australia/Germany/UK/Italy/Spain/Netherlands/Poland/Belgium-Nordics/US/Japan), strategy and risk | bilingual handbook | [Chinese](skills/electricity-trading-expert/SKILL.md) · [English](skills/electricity-trading-expert/SKILL_EN.md) |
-| Virtual Power Plant Expert | VPP concepts, resource aggregation, the three development stages, market participation, business models, control and optimisation, Chinese policy and international benchmarks | bilingual handbook | [Chinese](skills/virtual-power-plant/SKILL.md) · [English](skills/virtual-power-plant/SKILL_EN.md) |
-| Spot Bidding Quant | load and price forecasting, bias correction, quantity-price curves, procurement portfolios, bid simulation, rolling backtests and T+1 attribution | bilingual handbook + zero-dependency Python tools + synthetic data | [Chinese](skills/spot-bidding-quant/SKILL.md) · [English](skills/spot-bidding-quant/SKILL_EN.md) |
-| Carbon Asset Management Expert | compliance calendar, allowance gap, CEA/CCER procurement, CCER development economics, carbon finance, CBAM, product carbon footprint, neutrality claims, DPP | bilingual handbook + zero-dependency Python tools | [Chinese](skills/carbon-asset-expert/SKILL.md) · [English](skills/carbon-asset-expert/SKILL_EN.md) |
-| Storage Investment & Operations Expert | six project forms, five revenue streams, LCOS/IRR/NPV/DSCR, degradation and augmentation, assessment deductions, business models and stress tests | bilingual handbook + zero-dependency Python tools | [Chinese](skills/storage-investment-operations/SKILL.md) · [English](skills/storage-investment-operations/SKILL_EN.md) |
-| Renewable Project Development & Grid Connection Expert | resource assessment, Doc. 136 mechanism pricing, LCOE and after-tax cash flow, grid approvals and grid-code standards, curtailment and absorption, provincial auctions | bilingual handbook + zero-dependency Python tools | [Chinese](skills/renewable-project-development/SKILL.md) · [English](skills/renewable-project-development/SKILL_EN.md) |
-| EMS Dispatch Expert | 96-interval economic dispatch, SOC and reserve, PCC and export blocking, demand charges and the charging window, degradation cost, multi-market stacking, MPC and uncertainty, capability assessment | bilingual handbook + zero-dependency Python tools | [Chinese](skills/ems-dispatch/SKILL.md) · [English](skills/ems-dispatch/SKILL_EN.md) |
-| User-Side Tariff & Bill Optimization Expert | bill line-item teardown, capacity vs contracted vs actual demand, the 105% overrun and 40% floor, optimal declared value, TOU and load shifting, power-factor assessment, government funds, retail and market-linked package comparison | bilingual handbook + zero-dependency Python tools | [Chinese](skills/tariff-bill-optimization/SKILL.md) · [English](skills/tariff-bill-optimization/SKILL_EN.md) |
-| Retail Electricity Sales & Risk Expert | full-cost package pricing, customer portfolio contribution, wholesale procurement coverage, deviation expectation and quantiles, retail-wholesale inversion stress tests, performance guarantees and credit, 5/8/10 settlement, exit and universal service | bilingual handbook + zero-dependency Python tools | [Chinese](skills/retail-electricity-risk/SKILL.md) · [English](skills/retail-electricity-risk/SKILL_EN.md) |
+All nine skills are bilingual and ship zero-dependency Python tools with self-tests. Overlaps between skills are pointers, never duplicated text.
 
-The skills divide labour explicitly: market rules and settlement in Electricity Trading Expert, aggregation and operations in Virtual Power Plant Expert, carbon compliance and finance in Carbon Asset Management Expert, bidding and risk control in Spot Bidding Quant, project decisions in the storage and renewable skills, interval-by-interval dispatch and deliverability in the EMS Dispatch Expert, bill structure and filing choices in the Tariff & Bill Optimization Expert, and retailer packaging, customer portfolios, procurement matching, deviation and guarantees in the Retail Electricity Sales & Risk Expert. Overlaps are pointers, not duplicated text.
+### Trading and markets
+
+| Skill | Core questions |
+|---|---|
+| **[Electricity Trading Expert](skills/electricity-trading-expert/SKILL_EN.md)** · [CN](skills/electricity-trading-expert/SKILL.md) | spot clearing and pricing, medium/long-term and finance, ancillary services and capacity, settlement, provincial practice, renewables market entry, carbon markets, 11 overseas markets, strategy and risk |
+| **[Spot Bidding Quant](skills/spot-bidding-quant/SKILL_EN.md)** · [CN](skills/spot-bidding-quant/SKILL.md) | load and price forecasting, bias correction, quantity-price curves, procurement portfolios, bid simulation, rolling backtests, T+1 attribution |
+| **[Virtual Power Plant Expert](skills/virtual-power-plant/SKILL_EN.md)** · [CN](skills/virtual-power-plant/SKILL.md) | resource aggregation, three development stages, market participation, business models, control and optimisation, policy and international benchmarks |
+| **[Retail Electricity Sales & Risk Expert](skills/retail-electricity-risk/SKILL_EN.md)** · [CN](skills/retail-electricity-risk/SKILL.md) | full-cost package pricing, customer portfolio, procurement coverage, deviation assessment, retail-wholesale inversion, guarantees and exit |
+
+### Projects and assets
+
+| Skill | Core questions |
+|---|---|
+| **[Storage Investment & Operations Expert](skills/storage-investment-operations/SKILL_EN.md)** · [CN](skills/storage-investment-operations/SKILL.md) | six project forms, five revenue streams, LCOS/IRR/NPV/DSCR, degradation and augmentation, assessment deductions, business models and stress tests |
+| **[Renewable Project Development & Grid Connection Expert](skills/renewable-project-development/SKILL_EN.md)** · [CN](skills/renewable-project-development/SKILL.md) | resource assessment, Doc. 136 mechanism pricing, LCOE and after-tax cash flow, grid approvals, curtailment and absorption, provincial auctions |
+| **[Carbon Asset Management Expert](skills/carbon-asset-expert/SKILL_EN.md)** · [CN](skills/carbon-asset-expert/SKILL.md) | compliance calendar, allowance gap, CEA/CCER procurement and development, carbon finance, CBAM, product carbon footprint, neutrality claims, DPP |
+
+### Dispatch and bills
+
+| Skill | Core questions |
+|---|---|
+| **[EMS Dispatch Expert](skills/ems-dispatch/SKILL_EN.md)** · [CN](skills/ems-dispatch/SKILL.md) | 96-interval economic dispatch, SOC and reserve, PCC and export blocking, demand charges, degradation cost, multi-market stacking, MPC and capability assessment |
+| **[User-Side Tariff & Bill Optimization Expert](skills/tariff-bill-optimization/SKILL_EN.md)** · [CN](skills/tariff-bill-optimization/SKILL.md) | bill line-item teardown, three basic-charge methods, the 105% overrun and 40% floor, optimal declared value, TOU shifting, power-factor assessment, retail package comparison |
+
+> **How to choose**: market rules and settlement → Electricity Trading; bidding and backtests → Spot Quant; aggregation and operations → VPP; project decisions → Storage/Renewables; interval dispatch → EMS; bills and packages → Tariff/Retail.
+
+<details>
+<summary><strong>Skill directory index</strong></summary>
+
+`electricity-trading-expert` · `spot-bidding-quant` · `virtual-power-plant` · `retail-electricity-risk` · `storage-investment-operations` · `renewable-project-development` · `carbon-asset-expert` · `ems-dispatch` · `tariff-bill-optimization`
+
+Each directory contains `SKILL.md`, `SKILL_EN.md` and `tools/`.
+</details>
 
 ## Knowledge base
 
-The 66 modules sit in 12 sections: foundations and economics, spot and inter-provincial trading, overseas markets (Australia's NEM, Germany, UK GB, Italy, Spain, France, the Netherlands, Poland, Belgium/the Nordics, the US ERCOT/PJM/CAISO and Japan), cross-cutting topics (grid connection and compliance, capacity mechanisms, ancillary and balancing markets, storage revenue modelling and data sources, cross-border PPAs/green certificates/tolling, same-caliber snapshot and decision calendar), electricity prices, renewables and grid connection, storage and EMS (including the SCADA data link), integrated energy and zero-carbon parks, carbon markets and management, VPPs, index and tools, and research records. Every Markdown file carries frontmatter (`id`, `section`, `level`, `title`, `summary`, `tags`, `cutoff`, `related`, and more); the [knowledge hub](knowledge/index.html) and its 66 knowledge pages plus 18 skill pages — cards, counts, full-text search and TXT downloads — are generated by the build script. The hub keeps six page-level navigation entries; the twelve content sections use category filters, and full-text hits link straight to the matching section anchor.
+The 66 knowledge modules sit in 12 sections. Every module carries frontmatter (`id`, `section`, `title`, `summary`, `tags`, `cutoff`, `related`, and more). Cards, counts, full-text search, reading pages and downloads in the [knowledge hub](knowledge/index.html) are generated by the build script and cover titles, tags and body text; the hub switches among 12 sections through category filters, and every skill also has an HTML reading page with a full TXT download.
 
-| Question | Start here |
-|---|---|
-| No power-sector background; build the big picture first | [101 A landscape](knowledge/电力系统通识-A-格局与主体.md), [B fundamentals](knowledge/电力系统通识-B-发输配变用.md), [C reform history](knowledge/电力系统通识-C-改革史.md), [D new actors](knowledge/电力系统通识-D-新角色与现货市场.md) |
-| Document numbers, calibres and provincial status | [index and calibres](knowledge/索引与口径-2026-11.md), [provincial market table](knowledge/省级市场状态表-2026-11.md), [English index](knowledge/INDEX_EN-2026-11.md) |
-| How spot markets clear and settle | [101 A basics and pricing](knowledge/电力现货市场101问-A-基础与价格机制.md), [B clearing, settlement and provinces](knowledge/电力现货市场101问-B-出清结算与省域实践.md), [C settlement, TTS and policy](knowledge/电力现货市场101问-C-结算TTS与政策演进.md), [practice notes](knowledge/电力现货市场实务-精读笔记.md), [power-system economics](knowledge/电力系统经济学原理-主题笔记.md), [inter-provincial and cross-regional trading](knowledge/省间与跨区交易-2026-11.md) |
-| How Australia, Germany, the UK, Italy, Spain, France, the Netherlands, Poland, Belgium/the Nordics, the US and Japan trade electricity, and how storage is invested in | [Australia's NEM](knowledge/澳大利亚NEM电力市场-2026-11.md), [Germany](knowledge/德国电力市场-2026-11.md), [UK](knowledge/英国电力市场-2026-11.md), [Italy](knowledge/意大利电力市场-2026-11.md), [Spain](knowledge/西班牙电力市场-2026-11.md), [France](knowledge/法国电力市场-2026-11.md), [Netherlands](knowledge/荷兰电力市场-2026-11.md), [Poland](knowledge/波兰电力市场-2026-11.md), [Belgium and the Nordics](knowledge/比利时与北欧电力市场-2026-11.md), [United States](knowledge/美国电力市场-2026-11.md), [Japan](knowledge/日本电力市场-2026-11.md), [Overseas storage business](knowledge/海外储能业务-2026-11.md), [skill chapter 7A](skills/electricity-trading-expert/SKILL_EN.md), [storage skill chapter 14A](skills/storage-investment-operations/SKILL_EN.md) |
-| What an electricity price is made of, and which documents govern it | [taxonomy](knowledge/中国电价制度谱系-2026-11.md), [current policy and lookup](knowledge/中国电价现行政策与查证-2026-11.md), [price history](knowledge/中国电价史-2026-11.md), [international comparison method](knowledge/国际电价比较-方法与模板-2026-11.md), [tariff and bill skill](skills/tariff-bill-optimization/SKILL_EN.md) |
-| Whether storage is worth investing in, and how it is assessed | [storage investment and operations](knowledge/储能投资与运营-2026-11.md), [technology routes, safety and grid-forming](knowledge/储能技术路线安全与构网型并网-2026-11.md), [storage EMS algorithms](knowledge/储能EMS优化调度-算法与工程-2026-11.md), [EMS skill](skills/ems-dispatch/SKILL.md) |
-| Whether a renewable project can be developed and connected | [renewable development and grid connection](knowledge/新能源项目开发与并网-2026-11.md), [grid-connection assessment and the two rules](knowledge/并网运行考核与两个细则-2026-11.md), [integrated energy and zero-carbon parks](knowledge/综合能源与零碳园区-2026-11.md) |
-| How VPPs and demand response are implemented | [VPP aggregation, dispatch and business models](knowledge/虚拟电厂聚合调度与商业模式-2026-11.md), [approaching virtual power plants](knowledge/走近虚拟电厂-主题笔记.md), [demand response, V2G and flexible resources](knowledge/需求响应、车网互动与灵活性资源-2026-11.md), [microgrid EMS algorithms](knowledge/微网EMS优化调度-算法与工程-2026-11.md), [EMS skill](skills/ems-dispatch/SKILL.md) |
-| Carbon compliance, footprints and export response | [carbon practice](knowledge/碳资产实务-2026-11.md), [China carbon trading practice](knowledge/中国碳排放权交易实务-主题笔记.md), [carbon management](knowledge/碳管理-从零通往碳中和-主题笔记.md) |
-| How bidding and risk control are engineered | [quantitative bidding and trading risk](knowledge/量化报价与交易风控-工程化-2026-11.md), [market risk, credit and settlement](knowledge/电力市场风险、信用与结算-2026-11.md) |
-| How a retailer prices, controls deviation and secures guarantees | [retail electricity sales and risk skill](skills/retail-electricity-risk/SKILL_EN.md), [market risk, credit and settlement](knowledge/电力市场风险、信用与结算-2026-11.md), [provincial market table](knowledge/省级市场状态表-2026-11.md) |
-| Test whether an answer has drifted | [golden Q&A](knowledge/黄金问答集-2026-11.md) — 28 high-frequency questions, also the regression checklist |
+**Section map**
+
+- **Foundations and markets**: power-system basics and economics, spot markets, inter-provincial trading, 11 overseas markets
+- **Topics and assets**: grid connection and compliance, capacity mechanisms, ancillary services, storage revenue, cross-border PPAs/certificates, same-caliber snapshot
+- **Industry and operations**: tariffs, renewables and grid connection, storage and EMS (including SCADA), integrated energy, carbon markets, VPPs
+- **Indexes and research**: policy sources, provincial status, glossary and calibres, golden Q&A, research records
+
+### Find an entry point by question
+
+- **Build the big picture from zero**: [101 A landscape](knowledge/电力系统通识-A-格局与主体.md) · [B fundamentals](knowledge/电力系统通识-B-发输配变用.md) · [C reform history](knowledge/电力系统通识-C-改革史.md) · [D new actors](knowledge/电力系统通识-D-新角色与现货市场.md)
+- **Document numbers, calibres and provincial status**: [national policy (55)](knowledge/政策列表-2026-11.md) · [provincial policy (13)](knowledge/省级政策列表-2026-11.md) · [index and calibres](knowledge/索引与口径-2026-11.md) · [provincial market table](knowledge/省级市场状态表-2026-11.md) · [English index](knowledge/INDEX_EN-2026-11.md)
+- **How spot markets clear and settle**: [101 A basics and pricing](knowledge/电力现货市场101问-A-基础与价格机制.md) · [B clearing, settlement and provinces](knowledge/电力现货市场101问-B-出清结算与省域实践.md) · [C settlement, TTS and policy](knowledge/电力现货市场101问-C-结算TTS与政策演进.md) · [practice notes](knowledge/电力现货市场实务-精读笔记.md) · [power-system economics](knowledge/电力系统经济学原理-主题笔记.md) · [inter-provincial trading](knowledge/省间与跨区交易-2026-11.md)
+- **How overseas markets trade and how storage is invested in**: [Australia's NEM](knowledge/澳大利亚NEM电力市场-2026-11.md) · [Germany](knowledge/德国电力市场-2026-11.md) · [UK](knowledge/英国电力市场-2026-11.md) · [Italy](knowledge/意大利电力市场-2026-11.md) · [Spain](knowledge/西班牙电力市场-2026-11.md) · [France](knowledge/法国电力市场-2026-11.md) · [Netherlands](knowledge/荷兰电力市场-2026-11.md) · [Poland](knowledge/波兰电力市场-2026-11.md) · [Belgium and the Nordics](knowledge/比利时与北欧电力市场-2026-11.md) · [United States](knowledge/美国电力市场-2026-11.md) · [Japan](knowledge/日本电力市场-2026-11.md) · [Overseas storage business](knowledge/海外储能业务-2026-11.md)
+- **How tariffs are built and where to verify them**: [taxonomy](knowledge/中国电价制度谱系-2026-11.md) · [current policy and lookup](knowledge/中国电价现行政策与查证-2026-11.md) · [price history](knowledge/中国电价史-2026-11.md) · [international comparison method](knowledge/国际电价比较-方法与模板-2026-11.md)
+- **Whether storage is worth investing in**: [storage investment and operations](knowledge/储能投资与运营-2026-11.md) · [technology routes, safety and grid-forming](knowledge/储能技术路线安全与构网型并网-2026-11.md) · [storage EMS algorithms](knowledge/储能EMS优化调度-算法与工程-2026-11.md)
+- **Whether a renewable project can be developed and connected**: [renewable development and grid connection](knowledge/新能源项目开发与并网-2026-11.md) · [grid-connection assessment](knowledge/并网运行考核与两个细则-2026-11.md) · [integrated energy and zero-carbon parks](knowledge/综合能源与零碳园区-2026-11.md)
+- **How VPPs and demand response are implemented**: [VPP aggregation, dispatch and models](knowledge/虚拟电厂聚合调度与商业模式-2026-11.md) · [approaching virtual power plants](knowledge/走近虚拟电厂-主题笔记.md) · [demand response and V2G](knowledge/需求响应、车网互动与灵活性资源-2026-11.md) · [microgrid EMS algorithms](knowledge/微网EMS优化调度-算法与工程-2026-11.md)
+- **Carbon compliance, footprints and export response**: [carbon practice](knowledge/碳资产实务-2026-11.md) · [China carbon trading practice](knowledge/中国碳排放权交易实务-主题笔记.md) · [carbon management](knowledge/碳管理-从零通往碳中和-主题笔记.md)
+- **Bidding, risk and retail operations**: [quantitative bidding and risk](knowledge/量化报价与交易风控-工程化-2026-11.md) · [market risk, credit and settlement](knowledge/电力市场风险、信用与结算-2026-11.md) · [provincial market table](knowledge/省级市场状态表-2026-11.md)
+- **Test whether an answer has drifted**: [golden Q&A](knowledge/黄金问答集-2026-11.md) — 28 high-frequency questions, also the regression checklist.
 
 Research records (electricity market, VPP, carbon market, quant vendors, carbon-management vendors) are archived in `knowledge/` by date to trace where conclusions came from; the skills and thematic notes remain the authoritative layer.
 
-## Repository structure
+## Repository layout
 
-```
+Source and generated artifacts are kept separate: `knowledge/` is the source of content; `knowledge/html/`, `search-index.js`, `credibility.json` and the hub are generated.
+
+<details>
+<summary><strong>Expand the directory tree</strong></summary>
+
+```text
 energy-skills/
-├── README.md / README_EN.md        ← entry pages (this file)
-├── CHANGELOG.md / CHANGELOG_EN.md  ← release history
-├── 更新清单.md                     ← time-sensitive module ledger, review cadence and overseas event slice
-├── index.html                       ← GitHub Pages short entry (redirects to knowledge/index.html)
-├── .nojekyll                        ← disables Jekyll processing on Pages
-├── LICENSE                         ← CC BY-NC 4.0
-├── .github/workflows/consistency.yml
-├── .github/workflows/deploy-pages.yml ← Pages deploy after checks pass
+├── README.md / README_EN.md          ← entry pages
+├── CHANGELOG.md / CHANGELOG_EN.md    ← release history
+├── 更新清单.md                       ← time-sensitivity ledger and review cadence
+├── index.html                        ← Pages short entry
+├── LICENSE                           ← CC BY-NC 4.0
+├── .github/workflows/
+│   ├── consistency.yml               ← content consistency checks
+│   └── deploy-pages.yml              ← Pages deployment
 ├── scripts/
-│   ├── check-consistency.mjs       ← structure / links / versions / CN-EN parity / content discipline
-│   ├── credibility.mjs             ← credibility register parser and content gates
-│   ├── check-maintenance.mjs       ← due-review board and maintenance-ledger checks
-│   ├── build-knowledge-html.mjs    ← hub builder (frontmatter → HTML + search index + credibility.json)
-│   ├── architecture-diagrams.mjs   ← hand-semantic specs and fingerprint checks for five core architecture diagrams
-│   └── knowledge.config.mjs        ← sections, navigation and static copy
-├── skills/                         ← nine skills, each with SKILL.md and SKILL_EN.md
-│   ├── electricity-trading-expert/     ← plus tools/ (unit conversion, capacity revenue, three-node clearing)
-│   ├── virtual-power-plant/            ← plus tools/ (aggregation, CBL, daily dispatch, NPV/IRR)
-│   ├── spot-bidding-quant/             ← plus tools/ and data/sample/
-│   ├── carbon-asset-expert/            ← plus tools/
-│   ├── storage-investment-operations/  ← plus tools/
-│   ├── renewable-project-development/  ← plus tools/
-│   ├── ems-dispatch/                  ← plus tools/ (microgrid and storage dispatch kernel)
-│   ├── tariff-bill-optimization/      ← plus tools/ (bill, demand, TOU and package calculators)
-│   └── retail-electricity-risk/       ← plus tools/ (package, portfolio, deviation and guarantee models)
+│   ├── build-knowledge-html.mjs      ← hub, reading pages, index and credibility artifacts
+│   ├── architecture-diagrams.mjs     ← semantic specs for five core architecture diagrams
+│   ├── check-consistency.mjs         ← links, versions, figures and content discipline
+│   ├── check-maintenance.mjs         ← due-review board
+│   ├── credibility.mjs               ← credibility register
+│   └── knowledge.config.mjs          ← sections, navigation and static copy
+├── skills/                           ← nine skills, each with SKILL.md, SKILL_EN.md and tools/
 └── knowledge/
-    ├── index.template.html         ← hub skeleton (hand-maintained)
-    ├── index.html                  ← generated
-    ├── credibility.json            ← generated: machine-readable credibility register
-    ├── english-digest.json          ← generated: English routing digest, key figures, open items and ticket states
-    ├── search-index.js             ← generated: lazy-loaded full-text index with section anchors
-    ├── assets/                     ← reading-page styles and scripts + marks (3 SVGs)
-    ├── html/                       ← generated: 66 knowledge pages + 18 skill pages
-    │   └── download/skills/        ← generated: 18 skill TXT files
-    └── *.md                        ← knowledge modules (source, frontmatter-driven)
+    ├── index.template.html           ← hand-maintained hub skeleton
+    ├── index.html                    ← generated: knowledge hub
+    ├── html/                         ← generated: 66 knowledge pages + 18 skill pages
+    ├── credibility.json              ← generated: credibility register
+    ├── english-digest.json           ← generated: English routing digest
+    ├── search-index.js               ← generated: full-text index
+    ├── assets/                       ← reading-page styles, scripts and marks
+    └── *.md                          ← knowledge modules (frontmatter-driven)
 ```
+
+</details>
 
 ## Maintaining the knowledge hub
 
-`knowledge/index.html`, `knowledge/credibility.json`, `knowledge/english-digest.json`, `knowledge/search-index.js` and `knowledge/html/` are generated artifacts — do not edit them by hand. When adding or changing a module:
+> [!IMPORTANT]
+> `knowledge/index.html`, `knowledge/credibility.json`, `knowledge/english-digest.json`, `knowledge/search-index.js` and `knowledge/html/` are generated artifacts. **Do not edit them by hand.** Markdown remains the source of truth.
 
-1. fill in the frontmatter of `knowledge/*.md`: `id`, `section`, `order`, `level`, `title`, `summary`, `summary_en`, `tags`, `cutoff`, `related`, `search`, `foot`; modules with worked examples also declare `examples` (`synthetic` / `documented`), and book-note modules declare `historical: true` plus `confidence`;
-2. change sections and navigation in `scripts/knowledge.config.mjs`, and the hub skeleton in `knowledge/index.template.html`;
-3. use [更新清单.md](更新清单.md) for time sensitivity: P0 monthly, P1 quarterly, P2 half-yearly and P3 yearly; the 18 overseas modules also carry an event-driven slice (§3.1) for auctions, tenders and compliance deadlines, escalated into the P0 queue by `check-maintenance.mjs`;
-4. rebuild and verify:
+1. **Fill frontmatter**: add `id`, `section`, `order`, `level`, `title`, `summary`, `summary_en`, `tags`, `cutoff`, `related`, `search` and `foot` to each `knowledge/*.md`; add `examples` for worked examples and `historical: true` plus `confidence` for historical notes.
+2. **Update navigation**: edit `scripts/knowledge.config.mjs` for sections and navigation, and `knowledge/index.template.html` for the hub skeleton.
+3. **Track time sensitivity**: use [更新清单.md](更新清单.md): P0 monthly, P1 quarterly, P2 half-yearly, P3 yearly. The 18 overseas modules also carry event-driven slices for auctions, tenders and compliance deadlines, escalated into the P0 queue.
+4. **Rebuild and verify**:
 
 ```bash
-node scripts/build-knowledge-html.mjs           # rebuild hub, reading pages, search index and credibility.json
+node scripts/build-knowledge-html.mjs           # rebuild hub, reading pages, index and credibility.json
 node scripts/build-knowledge-html.mjs --check   # verify artifacts are current
-node scripts/check-consistency.mjs              # structure + content discipline (grade-C / drafts / examples / historical)
-node scripts/check-maintenance.mjs              # due-review board (non-blocking)
+node scripts/check-consistency.mjs              # structure, links and content discipline
 node scripts/check-maintenance.mjs --check      # maintenance-ledger structure check
 ```
 
-Unlabelled fenced blocks containing tree or flow symbols are converted to HTML diagrams at build time: `├/└` hierarchies become structure cards, multi-column stages and arrow chains become process cards, and complex coordinate-dependent layouts stay in a "blueprint" panel with a grid and coloured connectors. Authors keep maintaining plain text and do not write HTML by hand. Step tables under "market entry path" and "grid connection process" headings automatically become vertical milestones, retaining owner, note, risk and two-region fields; storage-safety causal/response chains and carbon verification/CCER flows render inside their original lists, while the microgrid islanding/black-start table becomes state cards. Five further diagrams — SCADA security zones, the VPP/EMS data chain, V2G, the quantitative reference architecture and the flexibility resource map — use hand-written semantic specs; the build fails if their source anchors move.
+<details>
+<summary><strong>Generated artifacts, diagrams, search and credibility</strong></summary>
 
-`knowledge/english-digest.json` routes English-language models: English summaries for all 66 modules, the INDEX_EN key-figure table, 37 open items (16 with trigger dates) and 22 grade-C ticket states; modules with `historical: true` also render a "data is not current" banner at the top of the reading page.
+- **Body diagrams**: unlabelled `├/└` hierarchies become structure cards; multi-column stages and arrow chains become process cards; coordinate-dependent layouts remain in a blueprint panel with a grid and horizontal scrolling.
+- **Automatic milestones**: step tables under market-entry and grid-connection headings become vertical milestones retaining owner, note, risk and two-region fields. Storage-safety chains, carbon verification/CCER flows and microgrid state tables are also componentised by section.
+- **Core architecture figures**: SCADA security zones, the VPP/EMS data chain, V2G, the quantitative reference architecture and the flexibility resource map are hand-semanticised in `architecture-diagrams.mjs`; the build fails if their source anchors move.
+- **English routing**: `english-digest.json` contains English summaries for 66 modules, key figures, open items and grade-C states; `historical: true` modules show a “data is not current” banner at the top of the reading page.
+- **Full-text search**: `search-index.js` splits each note at H2/H3 and loads only when the search field is focused. It never enters a model context.
+- **Credibility layer**: `credibility.json` provides 22 grade-C tickets, 37 open items, 32 calendar events and per-module `confidence` / `examples` / `historical` flags. Filter by `confidence` and by `gradeC.usable` / `banned` before injecting content.
+- **CI**: consistency, maintenance ledger, artifact comparison and nine Python self-tests run in sequence; a monthly workflow publishes the due-review board to the Actions summary.
 
-`knowledge/search-index.js` backs the hub's full-text search. The build splits every note at its H2/H3 headings and stores the module metadata, body text and section anchors; the browser loads it only when the search field is first focused, so the initial page stays light. The index is never injected into a model context; it only serves navigation.
+</details>
 
-`knowledge/credibility.json` is the machine-readable register for models and search: 22 grade-C verification tickets, 37 open items, 32 calendar events, draft policy entries, and per-module `confidence` / `examples` / `historical` flags. The 22 grade-C tickets carry resolution states (usable / recalibrated / withdrawn / banned / pending), review dates and next-review dates; the §1.4 gap list carries due dates too. Filter by `confidence` and by `gradeC` `usable` / `banned` before injecting content; `check-maintenance.mjs` flags tickets and gaps that come due. The source of truth remains the structured tables and lists already present in the Markdown; no second inventory is maintained.
-
-CI runs the consistency check, the maintenance-ledger check, the artifact comparison and nine Python self-tests in sequence; any failure blocks the merge. A missing `summary_en`, an undefined or orphaned controlled abbreviation, or a malformed open-item due date all fail the consistency check. On the first day of each month `maintenance.yml` publishes the due-review board to the Actions run summary.
-
-Publishing is handled by `deploy-pages.yml`: it triggers only when site content changes on `main`, rechecks generated artifacts, content and the ledger, then deploys `index.html`, `knowledge/`, `skills/` and the notices to GitHub Pages. For first-time setup, choose **Settings → Pages → Build and deployment → Source → GitHub Actions**; after that, push to `main` and the public URL stays stable.
+> [!TIP]
+> For first-time Pages setup, choose **Settings → Pages → Build and deployment → Source → GitHub Actions**. After that, pushing `main` deploys automatically and the public URL stays stable.
 
 ## Sources
 
 | Type | Content |
 |---|---|
 | Spot markets | Electricity Spot Market: 101 Questions (State Grid Dispatching Control Center, China Electric Power Press, 2021); Electricity Spot Market Practice (State Grid Dispatching Control Center, China Electric Power Press, 2023) |
-| Market economics | Principles of Power System Economics (Kirschen & Strbac, Chinese edition); Principles of Economics, Micro & Macro (Mankiw) |
+| Market economics | Principles of Power System Economics (Kirschen & Strbac, Chinese edition); Principles of Economics, Micro and Macro (Mankiw) |
 | Virtual power plants | Approaching Virtual Power Plants (Wang Peng, Wang Dongrong et al., China Machine Press, 2020) |
 | Carbon | China Carbon Emission Trading Practice (Meng Zaoming, Ge Xing'an et al.); Carbon Management: From Zero to Carbon Neutrality (Wang Jun) |
-| Policy & market research | Documents from NDRC and NEA websites, provincial trading centers and energy bureaus, corporate announcements and annual reports; research cutoff 2026-11, each item annotated with source and date |
+| Policy and market research | NDRC and NEA documents, provincial trading centres and energy bureaus, corporate announcements and annual reports; research cutoff 2026-11, each item annotated with source and date |
 
 ## Notes
 
-1. **Timeliness**: policy figures are compiled as of **2026-11-11**; the September–October 2026 spot-market rules, retailer management measure, risk-control measure and credit-evaluation guideline are still drafts for comment, marked as such in the text. Always defer to the latest official documents.
+1. **Timeliness**: policy figures are compiled as of **2026-11-11**; the September–October 2026 spot-market rules, retailer management measure, risk-control measure and credit-evaluation guideline are still drafts for comment, marked as such. Always defer to the latest official documents.
 2. **Originality**: the notes under `knowledge/` are original thematic summaries, not reproductions; copyrights of the source books remain with their authors.
 3. **Not investment advice**: price judgments and estimation frameworks are for learning and research only.
-4. **Discipline**: the skills ship with a "to be verified" flagging convention and common-mistakes checklists; see Chapter 0 and the reasoning handbook in each `SKILL.md`.
+4. **Discipline**: the skills ship with a “to be verified” convention and common-mistakes checklists; read Chapter 0 and the reasoning handbook in each `SKILL.md` before use.
 
 ## Roadmap
 
-- [x] Nine skills: electricity trading, virtual power plants, spot bidding quant, carbon asset management, storage investment and operations, renewable project development and grid connection, EMS dispatch, tariff and bill optimization, retail electricity sales and risk (all bilingual; the last seven ship zero-dependency tools)
-- [x] Knowledge base: 66 modules across foundations, spot, overseas (Australia/Germany/UK/Italy/Spain/France/Netherlands/Poland/Belgium-Nordics/US/Japan, including storage business), cross-cutting topics (grid compliance, capacity mechanisms, ancillary services, storage revenue and data, PPA/certificates, same-caliber snapshot and decision calendar), prices, renewables, storage, integrated energy, carbon, VPPs, index and research records; the hub is now a generated artifact
-- [x] **EMS optimisation and dispatch**: standalone seventh skill with a 96-interval dispatch kernel, demand/capacity/regulation calculators and assertions for every worked example; the examples in both the microgrid and storage notes now match the tools
-- [x] **Tariff and bill optimization**: standalone eighth skill with bill teardown, the three basic-charge methods, closed-form optimal declaration, TOU shifting and package comparison, locking worked examples A–H
-- [x] **Retail electricity sales and risk**: standalone ninth skill with full-cost package pricing, customer portfolios, deviation expectation and quantiles, and guarantee-gap models, locking worked examples A–H
-- [ ] **2026-12 incremental review**: final spot-market rules, the national VPP management measure, the 2027 Doc. 136 auctions, and provincial capacity prices and tender results
+- [x] **Nine skills**: trading, VPP, quant, carbon, storage, renewables, EMS, tariff and retail — all bilingual, each with zero-dependency Python tools and self-tests.
+- [x] **Knowledge base**: 66 modules across 12 sections, including 11 overseas markets, cross-cutting topics, carbon, VPPs and research records; the hub is generated.
+- [x] **Reading experience**: full-text search, category filters, light/dark themes and mobile layouts; body diagrams are componentised automatically and core architecture figures semanticised.
+- [ ] **December 2026 incremental review**: final spot-market rules, the national VPP management measure, the 2027 Doc. 136 auctions, and provincial capacity prices and tender results.
 
 ## License
 
-All content in this repository (Markdown skill files, knowledge notes, research records and supporting scripts) is licensed under [CC BY-NC 4.0](LICENSE): free to copy, redistribute and adapt with attribution, **not for commercial use**. When quoting or republishing, use the attribution format suggested in `LICENSE` and keep the source link.
+All content in this repository (Markdown skills, knowledge notes, research records and supporting scripts) is licensed under [CC BY-NC 4.0](LICENSE): free to copy, redistribute and adapt with attribution, **not for commercial use**. When quoting or republishing, use the attribution format suggested in `LICENSE` and keep the source link.
 
-*Last updated 2026-11-11*
+<p align="center"><sub>Last updated 2026-11-11 · <a href="#energy-skills">Back to top</a></sub></p>
