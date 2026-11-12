@@ -892,3 +892,5 @@ print(round(a["lcoe"], 2), round(finance.npv(0.08, flows)), round(finance.irr(fl
 - 每次改版：跑 `python skills/renewable-project-development/tools/selftest.py` 与 `node scripts/check-consistency.mjs`。
 
 > **免责声明**：本技能提供测算框架与公开信息整理，不构成投资建议、电价预测或设备推荐。项目投决必须以本省最新文件、实测资源数据、正式报价与融资条件为准。
+
+- **价格驱动三链答题路由**：量（[气象与电力交易](../../knowledge/气象与电力交易-2026-11.md)）、价（[燃料与电力交易](../../knowledge/燃料与电力交易-2026-11.md)）、约束（[省间与跨区交易](../../knowledge/省间与跨区交易-2026-11.md) §5.5–§5.6）；回答「为什么这个时段电价高」前按量→价→约束→叠加排查，回归题见 [黄金问答集](../../knowledge/黄金问答集-2026-11.md) F 段 Q29–Q38。

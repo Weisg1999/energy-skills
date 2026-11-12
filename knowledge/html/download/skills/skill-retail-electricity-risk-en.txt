@@ -840,3 +840,5 @@ The user moves to universal service or agency purchasing and may choose a new re
 ### 14.3 Disclaimer
 
 This document and the tools are calculation demonstrations only and do not constitute investment advice, a quotation commitment or legal opinion. Real retail operations must use the latest provincial documents, real contracts and load data, and be reviewed by qualified professionals.
+
+- **Price-driver routing**: quantity ([weather and power trading](../../knowledge/气象与电力交易-2026-11.md)), price ([fuel and power trading](../../knowledge/燃料与电力交易-2026-11.md)), deliverability ([inter-provincial trading](../../knowledge/省间与跨区交易-2026-11.md) §5.5-5.6). For "why is this interval expensive", check quantity -> price -> constraint -> superposition; see the [golden Q&A](../../knowledge/黄金问答集-2026-11.md) section F (Q29-Q38) for regression questions.

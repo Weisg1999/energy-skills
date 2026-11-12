@@ -1284,3 +1284,5 @@ France arbitrage gross margin = (discharge price − charge price ÷ RTE) × dis
 - Semi-annual: cost ranges, equipment prices, warranty terms;
 - Annual: standards updates, operating indicators, worked-example regression;
 - Trigger-based: within one month of a major policy release (for example, provincial rules under Document 114, retail pass-through of Document 1656).
+
+- **Price-driver routing**: quantity ([weather and power trading](../../knowledge/气象与电力交易-2026-11.md)), price ([fuel and power trading](../../knowledge/燃料与电力交易-2026-11.md)), deliverability ([inter-provincial trading](../../knowledge/省间与跨区交易-2026-11.md) §5.5-5.6). For "why is this interval expensive", check quantity -> price -> constraint -> superposition; see the [golden Q&A](../../knowledge/黄金问答集-2026-11.md) section F (Q29-Q38) for regression questions.

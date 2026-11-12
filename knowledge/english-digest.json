@@ -6,7 +6,7 @@
   "summary": {
     "modules": 101,
     "withEnglishSummary": 101,
-    "keyFigures": 234,
+    "keyFigures": 242,
     "openItems": 44,
     "datedOpenItems": 23,
     "gradeCTickets": 22,
@@ -1308,7 +1308,7 @@
       "cutoff": "2026-11",
       "title": "黄金问答集与回归测试",
       "titleEn": null,
-      "summaryEn": "28 high-frequency questions with answer points and common errors.",
+      "summaryEn": "38 high-frequency questions with answer points and common errors, including a price-driver group covering weather (quantity), fuel (price) and grid constraints (deliverability).",
       "confidence": "mixed",
       "historical": false,
       "html": "html/黄金问答集-2026-11.html"
@@ -2497,6 +2497,46 @@
       "topic": "Carbon-data loans",
       "figures": "CCB Shanghai \"carbon-data loan\" 2024-04-25; Postal Savings Bank Beijing 236 firms / CNY 1.11 bn by 2026-06",
       "grade": "B/C"
+    },
+    {
+      "topic": "Temperature to load, summer 2026",
+      "figures": "Each 1 C rise in national mean temperature lifts demand by **40-50 GW**",
+      "grade": "B (NEA estimate via CCTV, 2026-07-16); national estimate, not a provincial price elasticity"
+    },
+    {
+      "topic": "Cooling load share",
+      "figures": "Near **30%** nationally, **>40%** in some provinces; Beijing **>47%** on its 2026-08 peak",
+      "grade": "B (CEC / state media)"
+    },
+    {
+      "topic": "Thermal-coal long-term contract, 2026",
+      "figures": "**675 CNY/t** base inside **570-770** band; `675 + (four-index mean - 675)/2`, slope 0.5",
+      "grade": "B/C (listed-company disclosures and trade press); NDRC original **unverified**"
+    },
+    {
+      "topic": "Contract coverage and fulfillment",
+      "figures": "Coal producers >=**75%** of own output, generators >=**80%** of demand; monthly >=80%, quarterly/annual >=90% fulfilment",
+      "grade": "C (trade press); formal document unverified"
+    },
+    {
+      "topic": "Structural load, 2026 H1",
+      "figures": "Internet data services **49.4 TWh (+44.0%)**; charging/swapping **81.0 TWh (+56.9%)**; **59.3%** of tertiary-sector growth",
+      "grade": "B (CEC); three statistical calibres are not comparable"
+    },
+    {
+      "topic": "Computing-power electricity",
+      "figures": "**170 TWh / 1.6%** of national use in 2025 (NEA); CEC index **300.9** in Aug 2026 (+22.8% YoY); 2030 forecasts **400-800 TWh**",
+      "grade": "A/B for actuals; **forecasts diverge, not facts**"
+    },
+    {
+      "topic": "Yunxiao DC transmission-right pilot",
+      "figures": "Price band **25.6-100 CNY/MW·h**; first trade **21.16 GWh** (16.07 GWh green) from **113** entities; from **2026-06-01**",
+      "grade": "A (NDRC Doc. 734 / press conference); physical right, **not an FTR**"
+    },
+    {
+      "topic": "Domestic power futures",
+      "figures": "**No listed power futures/options as of 2026-11-12**; GFEX temperature index series is an index, not a contract",
+      "grade": "A (Nov 2026 Guangzhou financial-bureau reply); policy signals reversed"
     }
   ],
   "openItems": [

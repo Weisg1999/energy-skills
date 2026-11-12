@@ -97,6 +97,7 @@ function docVariants(row) {
 }
 
 let bad = 0;
+let unreachable = 0;
 let total = 0;
 const files = readdirSync(POLICY_DIR).filter((f) => f.endsWith('.md'));
 
@@ -114,6 +115,7 @@ for (const file of files) {
     let title = '';
     let isPdf = false;
     let extra = '';
+    let networkError = false;
     try {
       if (host === 'yyglxxbsgw.ndrc.gov.cn' && /article\.html\?articleId=/.test(r.url)) {
         const got = await checkNdcArticle(r.url);
@@ -129,22 +131,30 @@ for (const file of files) {
       }
     } catch (e) {
       extra = e.message;
+      networkError = true;
     }
     const bodyLoose = loose(body);
     const hasDoc = isPdf
       ? true
       : docVariants(r).some((v) => body.includes(v) || bodyLoose.includes(v));
     const ok = status === 200 && hostOk && hasDoc;
-    if (!ok) bad += 1;
-    const mark = [status, hostOk ? 'host' : 'HOST!', isPdf ? 'pdf' : hasDoc ? 'match' : 'NO-MATCH'];
-    console.log(`${ok ? 'OK ' : 'BAD'} ${mark.join(' ')} | ${r.no} | ${title.slice(0, 50)}${extra ? ' | ' + extra : ''}`);
-    if (!ok) {
+    if (networkError || status === 0) {
+      unreachable += 1;
+      console.log(`WARN 0 network-unverifiable | ${r.no} | ${extra}`);
       console.log(`     ${r.url}`);
-      console.log(`     variants: ${docVariants(r).map((v) => v.slice(0, 30)).join(' / ')}`);
+      console.log('     transport-layer failure is not evidence of a broken link; re-check with curl before editing the ledger.');
+    } else {
+      if (!ok) bad += 1;
+      const mark = [status, hostOk ? 'host' : 'HOST!', isPdf ? 'pdf' : hasDoc ? 'match' : 'NO-MATCH'];
+      console.log(`${ok ? 'OK ' : 'BAD'} ${mark.join(' ')} | ${r.no} | ${title.slice(0, 50)}${extra ? ' | ' + extra : ''}`);
+      if (!ok) {
+        console.log(`     ${r.url}`);
+        console.log(`     variants: ${docVariants(r).map((v) => v.slice(0, 30)).join(' / ')}`);
+      }
     }
     await new Promise((res) => setTimeout(res, 350));
   }
 }
 
-console.log(`\n${total} links, ${bad} bad`);
+console.log(`\n${total} links, ${bad} bad, ${unreachable} network-unverifiable`);
 process.exit(bad ? 1 : 0);

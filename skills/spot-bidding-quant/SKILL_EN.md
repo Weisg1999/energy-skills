@@ -510,3 +510,5 @@ Public information has two sides and is incomplete with only one: **participant-
 - Quarterly: verify bid-segment counts, price caps (including secondary caps) and submission deadlines per province;
 - Each revision: run `python tools/selftest.py`; a failed assertion means the figures in the text no longer hold;
 - Watch list: the 2026 spot rules (proposed 2027-01-01), scope of quantity-only bidding for renewables, rollout of secondary caps, and the storage capacity-payment definition.
+
+- **Price-driver routing**: quantity ([weather and power trading](../../knowledge/气象与电力交易-2026-11.md)), price ([fuel and power trading](../../knowledge/燃料与电力交易-2026-11.md)), deliverability ([inter-provincial trading](../../knowledge/省间与跨区交易-2026-11.md) §5.5-5.6). For "why is this interval expensive", check quantity -> price -> constraint -> superposition; see the [golden Q&A](../../knowledge/黄金问答集-2026-11.md) section F (Q29-Q38) for regression questions.

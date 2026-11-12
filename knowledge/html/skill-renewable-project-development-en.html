@@ -85,8 +85,8 @@
       <p class="lede">Resources, LCOE, mechanism pricing and grid connection</p>
       <p class="hook">Executable workflow and tools; synced with SKILL.md.</p>
       <div class="tags"><span class="tag">skill</span><span class="tag">renewables</span><span class="tag">LCOE</span><span class="tag">grid</span></div>
-      <div class="doc-meta"><span>approx. 48.3k characters</span><span>40 min read</span><span>16 sections</span></div>
-      <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-renewable-project-development-en.txt" download="Renewable Project Development &amp; Grid Connection-SKILL.txt">Download TXT</a><span>Full skill document, about 56 KB, frontmatter included</span></p>
+      <div class="doc-meta"><span>approx. 48.7k characters</span><span>41 min read</span><span>16 sections</span></div>
+      <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-renewable-project-development-en.txt" download="Renewable Project Development &amp; Grid Connection-SKILL.txt">Download TXT</a><span>Full skill document, about 57 KB, frontmatter included</span></p>
     </header>
 
     <details class="toc-mobile">
@@ -346,6 +346,7 @@ print(round(a[&quot;lcoe&quot;], 2), round(finance.npv(0.08, flows)), round(fina
 <h3 id="s88">15.5 Maintenance cadence</h3>
 <ul><li>Monthly: provincial Document 136 auctions / implementation rules, grid and absorption notices;</li><li>Quarterly: CAPEX/OPEX ranges, mechanism-price results, curtailment and capture prices;</li><li>Annually: LCOE benchmarks, standard editions, resource-assessment methods;</li><li>Every revision: run <code>python skills/renewable-project-development/tools/selftest.py</code> and <code>node scripts/check-consistency.mjs</code>.</li></ul>
 <aside class="note"><p><strong>Disclaimer</strong>: this skill provides a calculation framework and a digest of public information; it is not investment advice, a price forecast or an equipment recommendation. Investment decisions must rely on the latest provincial documents, measured resource data, formal quotations and financing terms.</p></aside>
+<ul><li><strong>Price-driver routing</strong>: quantity (<a href="气象与电力交易-2026-11.html">weather and power trading</a>), price (<a href="燃料与电力交易-2026-11.html">fuel and power trading</a>), deliverability (<a href="省间与跨区交易-2026-11.html">inter-provincial trading</a> §5.5-5.6). For &quot;why is this interval expensive&quot;, check quantity -&gt; price -&gt; constraint -&gt; superposition; see the <a href="黄金问答集-2026-11.html">golden Q&amp;A</a> section F (Q29-Q38) for regression questions.</li></ul>
     </article>
 
 

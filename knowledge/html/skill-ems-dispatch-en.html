@@ -85,7 +85,7 @@
       <p class="lede">96-interval dispatch, SOC, demand charges and deliverability</p>
       <p class="hook">Executable workflow and tools; synced with SKILL.md.</p>
       <div class="tags"><span class="tag">skill</span><span class="tag">EMS</span><span class="tag">SOC</span><span class="tag">demand charge</span></div>
-      <div class="doc-meta"><span>approx. 36.0k characters</span><span>33 min read</span><span>15 sections</span></div>
+      <div class="doc-meta"><span>approx. 36.4k characters</span><span>33 min read</span><span>15 sections</span></div>
       <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-ems-dispatch-en.txt" download="EMS Dispatch-SKILL.txt">Download TXT</a><span>Full skill document, about 43 KB, frontmatter included</span></p>
     </header>
 
@@ -312,7 +312,7 @@ print(base[&quot;cost&quot;] - plan[&quot;cost&quot;])                  # 883.59
 <h3 id="s68">14.3 Division of labour with sister skills</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Skill</th><th>Responsible for</th><th>How this skill uses it</th></tr></thead><tbody><tr><td>Storage Investment &amp; Operations</td><td>Appraisal, revenue stacking, LCOS/IRR/DSCR</td><td>Receives equipment parameters and revenue calibres; does not re-run appraisal</td></tr><tr><td>Virtual Power Plant Expert</td><td>Aggregation, demand response, VPP eligibility</td><td>Receives aggregation capability and dispatch instructions</td></tr><tr><td>Spot-Bidding Quant Expert</td><td>Price forecasting, bid curves, backtests</td><td>Receives point forecasts and quantiles</td></tr><tr><td>Electricity Trading Expert</td><td>Rule source text, settlement items</td><td>Cites rules without re-explaining them</td></tr><tr><td>Carbon Asset Management Expert</td><td>Carbon compliance, CCER</td><td>Not involved</td></tr></tbody></table></div>
 <h3 id="s69">14.4 Maintenance cadence</h3>
-<ul><li>Quarterly: provincial capacity prices, demand rules, ancillary-service compensation;</li><li>Half-yearly: equipment efficiency and degradation parameters, storage system prices;</li><li>Annual: standards updates, example regression, tool self-test;</li><li>Trigger-based: within one month of new spot rules, capacity-price details or grid-connection standards.</li></ul>
+<ul><li>Quarterly: provincial capacity prices, demand rules, ancillary-service compensation;</li><li>Half-yearly: equipment efficiency and degradation parameters, storage system prices;</li><li>Annual: standards updates, example regression, tool self-test;</li><li>Trigger-based: within one month of new spot rules, capacity-price details or grid-connection standards.</li><li><strong>Price-driver routing</strong>: quantity (<a href="气象与电力交易-2026-11.html">weather and power trading</a>), price (<a href="燃料与电力交易-2026-11.html">fuel and power trading</a>), deliverability (<a href="省间与跨区交易-2026-11.html">inter-provincial trading</a> §5.5-5.6). For &quot;why is this interval expensive&quot;, check quantity -&gt; price -&gt; constraint -&gt; superposition; see the <a href="黄金问答集-2026-11.html">golden Q&amp;A</a> section F (Q29-Q38) for regression questions.</li></ul>
     </article>
 
 

@@ -1052,3 +1052,5 @@ Run: `python tools/selftest.py` (zero third-party dependencies, Python 3.11+).
 - Half-yearly: ISO 14068 version, product-footprint label rules and pilot catalogue, DPP delegated acts, cross-border data rules;
 - Run `python tools/selftest.py` on every release; a failed assertion means a worked example no longer holds;
 - Watch: the 2027 expansion, paid allocation, carbon futures listing, the 2028 CBAM downstream expansion, the UK CBAM, enforcement of the battery passport from 2027-02-18, and publication of the national product-footprint factor database.
+
+- **Price-driver routing**: quantity ([weather and power trading](../../knowledge/气象与电力交易-2026-11.md)), price ([fuel and power trading](../../knowledge/燃料与电力交易-2026-11.md)), deliverability ([inter-provincial trading](../../knowledge/省间与跨区交易-2026-11.md) §5.5-5.6). For "why is this interval expensive", check quantity -> price -> constraint -> superposition; see the [golden Q&A](../../knowledge/黄金问答集-2026-11.md) section F (Q29-Q38) for regression questions.

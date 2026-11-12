@@ -25,7 +25,7 @@
 
 > Every skill is a self-contained Markdown handbook that can be injected into an LLM context. Once loaded, the model answers as a senior practitioner and follows built-in discipline: figures cited with document numbers and dates, province confirmed before local rules, policy items returned with official lookup pointers, and unverified data flagged as “to be verified”.
 
-Current version **v1.9**, data cutoff **2026-11-11**, 41,620 body lines. Notes, 101 reading pages, skill pages, the full-text index and all diagrams are generated from repository content.
+Current version **v1.9**, data cutoff **2026-11-11**, 41,719 body lines. Notes, 101 reading pages, skill pages, the full-text index and all diagrams are generated from repository content.
 
 **Contents**　[Quick start](#quick-start) · [Skills](#skills) · [Knowledge base](#knowledge-base) · [Repository layout](#repository-layout) · [Maintenance](#maintaining-the-knowledge-hub) · [Roadmap](#roadmap) · [License](#license)
 
@@ -109,7 +109,7 @@ The 101 knowledge modules sit in 13 sections. Every module carries frontmatter (
 - **How VPPs and demand response are implemented**: [VPP aggregation, dispatch and models](knowledge/虚拟电厂聚合调度与商业模式-2026-11.md) · [approaching virtual power plants](knowledge/走近虚拟电厂-主题笔记.md) · [demand response and V2G](knowledge/需求响应、车网互动与灵活性资源-2026-11.md) · [microgrid EMS algorithms](knowledge/微网EMS优化调度-算法与工程-2026-11.md)
 - **Carbon compliance, footprints and export response**: [carbon practice](knowledge/碳资产实务-2026-11.md) · [China carbon trading practice](knowledge/中国碳排放权交易实务-主题笔记.md) · [carbon management](knowledge/碳管理-从零通往碳中和-主题笔记.md)
 - **Bidding, risk and retail operations**: [quantitative bidding and risk](knowledge/量化报价与交易风控-工程化-2026-11.md) · [market risk, credit and settlement](knowledge/电力市场风险、信用与结算-2026-11.md) · [provincial market table](knowledge/省级市场状态表-2026-11.md)
-- **Test whether an answer has drifted**: [golden Q&A](knowledge/黄金问答集-2026-11.md) — 28 high-frequency questions, also the regression checklist.
+- **Test whether an answer has drifted**: [golden Q&A](knowledge/黄金问答集-2026-11.md) — 38 high-frequency questions, including 10 on price drivers, also the regression checklist.
 
 Research records (electricity market, VPP, carbon market, quant vendors, carbon-management vendors) are archived in `knowledge/` by date to trace where conclusions came from; the skills and thematic notes remain the authoritative layer.
 

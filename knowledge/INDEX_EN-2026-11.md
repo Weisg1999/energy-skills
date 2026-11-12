@@ -86,7 +86,7 @@ foot: "给国际模型与英文读者"
 | `微网EMS优化调度-算法与工程-2026-11.md` | Algorithm note | Microgrid EMS day-ahead MILP: objective terms, constraints, SOC efficiency, SOS1 vs Big-M, demand-charge linearization, solver parameters and fallbacks, dual-timescale rolling, input data contract, interface boundary with storage EMS, quantified demand/degradation add-on, uncertainty roadmap, assessment loop, review checklist; source material for the planned EMS module |
 | `储能EMS优化调度-算法与工程-2026-11.md` | Algorithm note | Storage EMS MILP: multi-market stacking (energy, frequency regulation, reserve, ramping, capacity), SOC/efficiency recursion, four reserve dimensions, frequency-regulation energy neutrality and SOC recovery, two-part tariff and the 105% demand threshold, capacity-payment eligibility and duration scaling, three degradation tiers, cluster-level dispatch and SOC balancing, KPI calibers per GB/T 36549-2018, AGC/AVC, safety interlocks, input data contract, solver fallbacks, three worked examples and acceptance tests; source material for the planned EMS module |
 | `SCADA与电力监控数据链路-2026-11.md` | Practice note | SCADA as the VPP/EMS data plane: layered architecture with production-control, safe-access and management zones; point tables and the four remotes; IEC 60870-5-104, IEC 61850, Modbus, MQTT, OPC UA and CIM selection; scan rates, latency budgets, time sync and quality codes; historian, alarms and redundancy; 2024 No. 27 order security zones and MLPS; data/control contracts with EMS and settlement; P0/P1 acceptance checklists and 15 failure modes |
-| `黄金问答集-2026-11.md` | Q&A | 28 high-frequency questions with answer points and common errors; regression checklist |
+| `黄金问答集-2026-11.md` | Q&A | 38 high-frequency questions with answer points and common errors, including a price-driver group (weather / fuel / grid constraints); regression checklist |
 | `气象与电力交易-2026-11.md` | Cross-cutting note | Weather as an upstream input to power trading: four mediators (load, wind/solar output, hydro inflow, equipment availability); NWP, reanalysis and station data with resolution, lead time and spatial representativeness; four conversion chains (degree days to load, power curves, irradiance and cell temperature, lagged runoff); net load and the 96-point price shape; error attribution and the regulated 240 h / 72 h / 15 min-4 h power-forecast duties with province-specific accuracy thresholds; extreme weather and security of supply; CME HDD/CDD specs (20 index points, USD 20 per point, EUR 20 and JPY 2,500 elsewhere), basis risk and parametric payouts; five synthetic grade-D examples locked to `spot-bidding-quant/tools/weather.py` |
 | `燃料与电力交易-2026-11.md` | Cross-cutting note | Fuel as the price-side input to power trading: China 2026 thermal-coal long-term contracts (675 CNY/t base, 50/50 base-plus-floating formula, 570-770 CNY/t band, four-index monthly adjustment), dual-track contract/spot cost divergence, coal burn to fuel cost per MWh, dark/spark and clean spreads, coal-to-gas switching carbon price, inventory and contract risk, and the division of labour with weather (quantity) and grid constraints (deliverability); five synthetic grade-D examples locked to `electricity-trading-expert/tools/fuel.py` |
 | `绿证-CCER-CBAM衔接-2026-11.md` | Cross-cutting note | Where green certificates (GEC), CCER and CBAM meet: which environmental attribute can be claimed where, which combinations double-count, the CCER 5% offset cap, CBAM certificate purchase (2027-02) and first surrender (2027-09-30), and the evidence trail for Scope 2 / PCF / CBAM filings; draft rules are not current law |
@@ -406,6 +406,19 @@ foot: "给国际模型与英文读者"
 | Carbon-data loans | CCB Shanghai "carbon-data loan" 2024-04-25; Postal Savings Bank Beijing 236 firms / CNY 1.11 bn by 2026-06 | B/C |
 
 ---
+
+### Weather, fuel and grid drivers (2026-11)
+
+| Topic | Value | Grade / note |
+|---|---|---|
+| Temperature to load, summer 2026 | Each 1 C rise in national mean temperature lifts demand by **40-50 GW** | B (NEA estimate via CCTV, 2026-07-16); national estimate, not a provincial price elasticity |
+| Cooling load share | Near **30%** nationally, **>40%** in some provinces; Beijing **>47%** on its 2026-08 peak | B (CEC / state media) |
+| Thermal-coal long-term contract, 2026 | **675 CNY/t** base inside **570-770** band; `675 + (four-index mean - 675)/2`, slope 0.5 | B/C (listed-company disclosures and trade press); NDRC original **unverified** |
+| Contract coverage and fulfillment | Coal producers >=**75%** of own output, generators >=**80%** of demand; monthly >=80%, quarterly/annual >=90% fulfilment | C (trade press); formal document unverified |
+| Structural load, 2026 H1 | Internet data services **49.4 TWh (+44.0%)**; charging/swapping **81.0 TWh (+56.9%)**; **59.3%** of tertiary-sector growth | B (CEC); three statistical calibres are not comparable |
+| Computing-power electricity | **170 TWh / 1.6%** of national use in 2025 (NEA); CEC index **300.9** in Aug 2026 (+22.8% YoY); 2030 forecasts **400-800 TWh** | A/B for actuals; **forecasts diverge, not facts** |
+| Yunxiao DC transmission-right pilot | Price band **25.6-100 CNY/MW·h**; first trade **21.16 GWh** (16.07 GWh green) from **113** entities; from **2026-06-01** | A (NDRC Doc. 734 / press conference); physical right, **not an FTR** |
+| Domestic power futures | **No listed power futures/options as of 2026-11-12**; GFEX temperature index series is an index, not a contract | A (Nov 2026 Guangzhou financial-bureau reply); policy signals reversed |
 
 ## 3. Provincial quick table (condensed; full table in the Chinese status file)
 

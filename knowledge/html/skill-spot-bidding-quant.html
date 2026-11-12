@@ -85,7 +85,7 @@
       <p class="lede">预测、报价、仿真与回测</p>
       <p class="hook">可执行流程与配套工具；正文与 SKILL.md 同步。</p>
       <div class="tags"><span class="tag">技能</span><span class="tag">预测</span><span class="tag">报价</span><span class="tag">回测</span></div>
-      <div class="doc-meta"><span>约 14.8k 字</span><span>阅读约 27 分钟</span><span>16 节</span><span>数据截止 2026-11-01</span></div>
+      <div class="doc-meta"><span>约 15.0k 字</span><span>阅读约 27 分钟</span><span>16 节</span><span>数据截止 2026-11-01</span></div>
       <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-spot-bidding-quant.txt" download="现货报价量化-SKILL.txt">下载 TXT</a><span>完整技能文档，约 17 KB，含 frontmatter</span></p>
     </header>
 
@@ -311,7 +311,7 @@ forecast' = forecast + residual(weekday, slot)</code></pre>
 <h3 id="s71">15.4 与姊妹技能的分工</h3>
 <ul><li>市场规则、结算公式、限价与政策沿革 → 《电力交易专家》；</li><li>资源聚合、VPP 商业模式、控制技术 → 《虚拟电厂专家》；</li><li>本技能只负责：<strong>预测、报价计算、申报决策、回测与归因</strong>。重叠处只留指引，数字与口径以被引用方为准。</li><li>工程化落地（规则版本库、数据契约、风控限额、结算对账与 PnL 归因）→ 知识库 <a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控（工程化）</a>；本技能给方法与算例，该模块给系统架构与治理流程。</li><li>气象上游（NWP/再分析数据源、四条转换链、功率预测考核、天气风险）→ 知识库 <a href="气象与电力交易-2026-11.html">气象与电力交易</a>；本技能保留预测算法与评价指标，该模块讲气象如何变成电量与风险，配套 <code>tools/weather.py</code> 与本技能 <code>selftest.py</code> 双向锁定。</li><li>电网约束（两节点价分离、位置基差、动态 ATC）→ 知识库 <a href="省间与跨区交易-2026-11.html">省间与跨区交易</a> §5.5–§5.6；配套 <code>tools/network.py</code> 只补出清状态与可用输电能力，阻塞盈余/FTR/LMP 分解仍归 <code>electricity-trading-expert/tools/market.py</code>，断言并入本技能 <code>selftest.py</code>。</li></ul>
 <h3 id="s72">15.5 维护节奏与未定事项</h3>
-<ul><li>每季度核对：各省报价段数、限价（含二次限价）、申报时限；</li><li>每次改版跑一遍 <code>python tools/selftest.py</code>，断言失败说明正文指标已不成立；</li><li><strong>待观察</strong>：2026 现货新规定稿（拟 2027-01-01）、新能源报量不报价适用范围变化、二次限价机制推广、储能容量补偿口径。</li></ul>
+<ul><li>每季度核对：各省报价段数、限价（含二次限价）、申报时限；</li><li>每次改版跑一遍 <code>python tools/selftest.py</code>，断言失败说明正文指标已不成立；</li><li><strong>待观察</strong>：2026 现货新规定稿（拟 2027-01-01）、新能源报量不报价适用范围变化、二次限价机制推广、储能容量补偿口径。</li><li><strong>价格驱动三链答题路由</strong>：量（<a href="气象与电力交易-2026-11.html">气象与电力交易</a>）、价（<a href="燃料与电力交易-2026-11.html">燃料与电力交易</a>）、约束（<a href="省间与跨区交易-2026-11.html">省间与跨区交易</a> §5.5–§5.6）；回答「为什么这个时段电价高」前按量→价→约束→叠加排查，回归题见 <a href="黄金问答集-2026-11.html">黄金问答集</a> F 段 Q29–Q38。</li></ul>
     </article>
 
 
