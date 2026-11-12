@@ -2,6 +2,13 @@
 
 This file records energy-skills releases in reverse chronological order. Current version **v1.9**, data cutoff **2026-11-11**. Repository entry point: [README_EN.md](README_EN.md); Chinese version: [CHANGELOG.md](CHANGELOG.md).
 
+### 2026-11-12 (v1.9 maintenance: ledger and auto-trigger linkage)
+
+- **P0 review notes aligned with the deep dossiers**: the 11 P0 province review lines in `更新清单.md` were rewritten from thin-dossier keywords into the new 12-section core parameters and open items (2025 volumes/average prices, formal price caps, No. 136 auctions, capacity prices and missing official document numbers), so monthly review no longer relies on stale keywords.
+- **Provincial hard triggers joined the automatic queue**: INDEX_EN §4 was extended contiguously with provincial open items **#38-#44**; the seven with a complete date (**#38-#43**) were registered in §4.1, so `check-maintenance.mjs` now lists the Liaoning 2026-11-08 auction and the Guangdong 2026-11-09 comment close alongside the existing #32 German item under `[P0 triggered]`. Month/quarter windows and items without a fixed date stay in `更新清单.md` §3.2 as a manual checklist.
+- **Count linkage**: open items 37→44, due register 16→23, `datedOpenItems` 23 in `english-digest.json`; the credibility-layer counts in both READMEs were synchronised and the body-line count rose **40,974 → 40,988** (+14 from INDEX_EN). 99 modules / 13 sections / 122 Markdown unchanged.
+- **Verification**: build, `--check`, consistency (44 open items), maintenance ledger (23 due triggers) and `git diff --check` all pass; generated pages pass the browser regression and the INDEX_EN page passes an axe recheck.
+
 ### 2026-11-12 (v1.9 maintenance: all 33 provincial dossiers deepened)
 
 - **Scope**: using Guangdong's 12-section / 330-line benchmark, the remaining **32 provincial markets** were rebuilt as full provincial handbooks: 10 P0 (Shandong, Shanxi, Zhejiang, Gansu, Mengxi, Anhui, Fujian, Shaanxi, Hebei South, Hubei) at 360-398 lines, 8 P1 (Liaoning, Hunan, Chongqing, Sichuan, Guangxi, Yunnan, Guizhou, Hainan) at 360-375 lines and 14 P2 (Beijing, Tianjin, Hebei North, Mengdong, Jilin, Heilongjiang, Shanghai, Jiangsu, Jiangxi, Henan, Qinghai, Ningxia, Xinjiang, Tibet) at 360-392 lines. All 33 share one structure: 12 sections, ten conclusions, ten Q&As, a source ledger and a watchlist.

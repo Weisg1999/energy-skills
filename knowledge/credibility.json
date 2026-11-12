@@ -4,7 +4,7 @@
   "summary": {
     "modules": 99,
     "gradeCItems": 22,
-    "openItems": 37,
+    "openItems": 44,
     "events": 32,
     "draftPolicies": 3,
     "mixedModules": 80,
@@ -18,7 +18,7 @@
     "keyFigures": 234,
     "glossaryTerms": 75,
     "controlledAbbreviations": 50,
-    "openItemDues": 16
+    "openItemDues": 23
   },
   "enums": {
     "confidence": [
@@ -1840,6 +1840,41 @@
       "n": 37,
       "topic": "France market and storage",
       "text": "the PL-4 2030-31 first auction date and parameters, the PPI exemption applications accepted before 2026-11-23, the first actual VNU settlement in 2027, the end-2026 grid-framework reform, the battery-queue conversion rate (14 GW/180 projects vs ~30 GW access rights), the de-rating coefficients applied to batteries in PL-1/PL-4, and the 2027 CRE tender calendar; the first-auction €28,182.99/MW is a 151-day delivery-period price and must not be annualised without stating the conversion."
+    },
+    {
+      "n": 38,
+      "topic": "Provincial spot formalisation (Jiangsu, Shanghai, Jilin, Heilongjiang, Mengdong, Chongqing)",
+      "text": "Jiangsu remains in continuous settlement trial since 2025-08-29 with a formalisation assessment under way as of 2026-11-12; no provincial notice, effective date or filing number is verified, and the \"ready by end-2026\" wording is a target rather than a formalisation date. Shanghai, Jilin, Heilongjiang and Mengdong trial start dates and any later transition to formal operation are still to be confirmed against provincial notices; Chongqing has only \"normal-operation capability\" so far."
+    },
+    {
+      "n": 39,
+      "topic": "Provincial No. 136 auction results",
+      "text": "Liaoning's 2027 auction cleared on 2026-11-08 but only a State Grid New Energy Cloud published value (wind 0.30 / PV 0.20 CNY/kWh) is verified, not the provincial DRC final result and project list. Guangdong's 2026 mechanism price of 0.300 CNY/kWh across 58,962 projects closed its comment period on 2026-11-09; the final result is still pending. Published-for-comment values must not be quoted as final clearing prices. Results and 2027 batch plans in Anhui, Zhejiang, Guangxi, Fujian, Jiangxi, Henan, Ningxia, Xinjiang, Gansu, Shandong, Sichuan, Chongqing and Shaanxi are likewise unconfirmed."
+    },
+    {
+      "n": 40,
+      "topic": "Tibet medium/long-term trading rules",
+      "text": "the Tibet autonomous-region medium/long-term trading implementation rules are a 2025-11-21 consultation draft with comments due 2026-12-21; the final issued text, effective date, price-spread versus pass-through settlement and deviation clauses are not verified. Tibet is not a spot trial market and must not be described as one."
+    },
+    {
+      "n": 41,
+      "topic": "Tianjin spot timeline and auction result",
+      "text": "Tianjin has not entered continuous spot settlement; the plan to start simulated trial operation before end-2026 is a target, not a confirmed date. The 0.3196 CNY/kWh auction figure is a published value awaiting the provincial final result and project list, and the \"2026 unified auction / 2027 auction\" batch naming is not yet confirmed."
+    },
+    {
+      "n": 42,
+      "topic": "Anhui independent-storage capacity price",
+      "text": "Wan Fagai Jiage〔2026〕No. 526 sets 165 CNY/kW·yr with a 6-hour denominator (2h≈55, 4h≈110, 6h=165) from 2027-01-01; it is \"about to take effect\", not current. The final execution scope, project list, 98% assessment and interaction with spot / ancillary revenue are to be confirmed after the effective date."
+    },
+    {
+      "n": 43,
+      "topic": "Liaoning and Henan reliable-capacity compensation drafts",
+      "text": "Liaoning's 370 CNY/kW·yr and Henan's 330 CNY/kW·yr generation-side reliable-capacity compensation are 2026 consultation drafts, not in force; whether they are issued and applied from the Liaoning draft's proposed 2027-01-01 date is unverified. Henan's 188 CNY/kW·yr emergency backup coal price under Yu Fagai Jiaguan〔2026〕No. 539 is already in effect and must not be conflated with the draft."
+    },
+    {
+      "n": 44,
+      "topic": "Southern regional versus provincial spot formalisation",
+      "text": "the Southern regional market (Guangdong, Guangxi, Yunnan, Guizhou, Hainan) entered formal operation on 2026-10-24; whether Guangxi, Yunnan, Guizhou and Hainan subsequently formalise their own provincial spot markets, and on what dates, is not verified. Grade-C industry summaries of continuous settlement in Jiangxi, Henan, Qinghai, Ningxia and Xinjiang also await provincial notices; regional formality is not provincial formality."
     }
   ],
   "openItemDues": [
@@ -1969,6 +2004,62 @@
       "due": "2027-09-30",
       "trigger": "Compliance",
       "source": "`taxation-customs.ec.europa.eu`",
+      "columns": 5
+    },
+    {
+      "n": 39,
+      "item": "Liaoning 2027 No. 136 auction: provincial final result after the 2026-11-08 clearing",
+      "due": "2026-11-08",
+      "trigger": "Auction",
+      "source": "`fgw.ln.gov.cn`, `www.ln.gov.cn`",
+      "columns": 5
+    },
+    {
+      "n": 39,
+      "item": "Guangdong 2026 mechanism price: final result after the 2026-11-09 comment period",
+      "due": "2026-11-09",
+      "trigger": "Published result",
+      "source": "`drc.gd.gov.cn`, `www.ndrc.gov.cn`",
+      "columns": 5
+    },
+    {
+      "n": 38,
+      "item": "Jiangsu end-2026 formalisation readiness target and assessment conclusion",
+      "due": "2026-12-31",
+      "trigger": "Review (target)",
+      "source": "`fzggw.jiangsu.gov.cn`, `jsb.nea.gov.cn`",
+      "columns": 5
+    },
+    {
+      "n": 41,
+      "item": "Tianjin simulated spot trial target before end-2026",
+      "due": "2026-12-31",
+      "trigger": "Review (target)",
+      "source": "`fzgg.tj.gov.cn`, `www.nea.gov.cn`",
+      "columns": 5
+    },
+    {
+      "n": 40,
+      "item": "Tibet medium/long-term trading rules consultation closes",
+      "due": "2026-12-21",
+      "trigger": "Consultation",
+      "source": "`tzcjj.xizang.gov.cn`, `www.nea.gov.cn`",
+      "columns": 5
+    },
+    {
+      "n": 42,
+      "item": "Anhui Doc. 526 independent-storage capacity price takes effect",
+      "due": "2027-01-01",
+      "trigger": "Rule (effective)",
+      "source": "`fzggw.ah.gov.cn`, `hdj.nea.gov.cn`",
+      "columns": 5
+    },
+    {
+      "n": 43,
+      "item": "Liaoning / Henan reliable-capacity drafts: check issuance by the proposed effective date",
+      "due": "2027-01-01",
+      "trigger": "Review (draft)",
+      "source": "`fgw.ln.gov.cn`, `fgw.henan.gov.cn`",
       "columns": 5
     }
   ],

@@ -25,7 +25,7 @@
 
 > Every skill is a self-contained Markdown handbook that can be injected into an LLM context. Once loaded, the model answers as a senior practitioner and follows built-in discipline: figures cited with document numbers and dates, province confirmed before local rules, policy items returned with official lookup pointers, and unverified data flagged as “to be verified”.
 
-Current version **v1.9**, data cutoff **2026-11-11**, 40,974 body lines. Notes, 99 reading pages, skill pages, the full-text index and all diagrams are generated from repository content.
+Current version **v1.9**, data cutoff **2026-11-11**, 40,988 body lines. Notes, 99 reading pages, skill pages, the full-text index and all diagrams are generated from repository content.
 
 **Contents**　[Quick start](#quick-start) · [Skills](#skills) · [Knowledge base](#knowledge-base) · [Repository layout](#repository-layout) · [Maintenance](#maintaining-the-knowledge-hub) · [Roadmap](#roadmap) · [License](#license)
 
@@ -176,7 +176,7 @@ node scripts/check-maintenance.mjs --check      # maintenance-ledger structure c
 - **Core architecture figures**: SCADA security zones, the VPP/EMS data chain, V2G, the quantitative reference architecture and the flexibility resource map are hand-semanticised in `architecture-diagrams.mjs`; the build fails if their source anchors move.
 - **English routing**: `english-digest.json` contains English summaries for 99 modules, key figures, open items and grade-C states; `historical: true` modules show a “data is not current” banner at the top of the reading page.
 - **Full-text search**: `search-index.js` splits each note at H2/H3 and loads only when the search field is focused. It never enters a model context.
-- **Credibility layer**: `credibility.json` provides 22 grade-C tickets, 37 open items, 32 calendar events and per-module `confidence` / `examples` / `historical` flags. Filter by `confidence` and by `gradeC.usable` / `banned` before injecting content.
+- **Credibility layer**: `credibility.json` provides 22 grade-C tickets, 44 open items, 32 calendar events and per-module `confidence` / `examples` / `historical` flags. Filter by `confidence` and by `gradeC.usable` / `banned` before injecting content.
 - **CI**: consistency, maintenance ledger, artifact comparison and nine Python self-tests run in sequence; a monthly workflow publishes the due-review board to the Actions summary.
 
 </details>

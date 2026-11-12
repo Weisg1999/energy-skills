@@ -25,7 +25,7 @@
 
 > 每份技能都是一册可直接注入大模型上下文的 Markdown 手册。加载后，模型按该领域资深从业者的身份回答，并遵守内置纪律：数字带文号与时点、涉及省份先确认、政策内容给出查证入口、未交叉验证的数据标注“待核实”。
 
-当前版本 **v1.9**，数据截止 **2026-11-11**，正文 40,974 行。知识笔记、99 个阅读页、技能页、全文检索索引与图表均由仓库内容构建生成。
+当前版本 **v1.9**，数据截止 **2026-11-11**，正文 40,988 行。知识笔记、99 个阅读页、技能页、全文检索索引与图表均由仓库内容构建生成。
 
 **目录**　[快速开始](#快速开始) · [技能矩阵](#技能矩阵) · [知识库](#知识库) · [仓库结构](#仓库结构) · [维护](#维护知识中心) · [Roadmap](#roadmap) · [许可证](#许可证)
 
@@ -158,7 +158,7 @@ energy-skills/
 
 1. **补 frontmatter**：为 `knowledge/*.md` 填写 `id`、`section`、`order`、`level`、`title`、`summary`、`summary_en`、`tags`、`cutoff`、`related`、`search`、`foot`；算例模块补 `examples`，史料型笔记补 `historical: true` 与 `confidence`。
 2. **改导航**：分区与导航改 `scripts/knowledge.config.mjs`，首页骨架改 `knowledge/index.template.html`。
-3. **记时效**：以 [更新清单.md](更新清单.md) 为准。P0 月度、P1 季度、P2 半年、P3 年度；海外 18 个模块另有拍卖、招标、清缴等事件驱动切片，到期后并入 P0 队列。
+3. **记时效**：以 [更新清单.md](更新清单.md) 为准。P0 月度、P1 季度、P2 半年、P3 年度；海外 18 个模块另有拍卖、招标、清缴等事件驱动切片；中国 33 个省级市场的硬节点见 §3.2，其中带完整日期的已挂进 INDEX_EN §4.1 自动触发，到期后一并并入 P0 队列。
 4. **重建并校验**：
 
 ```bash
@@ -176,7 +176,7 @@ node scripts/check-maintenance.mjs --check      # 更新清单结构校验
 - **核心架构图**：SCADA 安全分区、VPP/EMS 数据链、V2G、量化交易参考架构、灵活性资源地图由 `architecture-diagrams.mjs` 人工语义化；源图关键节点变动时构建会报错。
 - **英文路由**：`english-digest.json` 包含 99 个模块的英文摘要、关键数字、未定事项与 C 级工单状态；`historical: true` 的模块会在阅读页顶部显示“数据不可作现行引用”横幅。
 - **全文检索**：`search-index.js` 按 H2/H3 切块，首次聚焦搜索框时才加载；索引只服务页面检索，不进入模型上下文。
-- **可信度层**：`credibility.json` 提供 22 项 C 级工单、37 项未定事项、32 条事件日历与逐模块 `confidence` / `examples` / `historical` 声明。注入上下文前可按 `confidence` 过滤，并按 `gradeC.usable` / `banned` 排除不可引用数字。
+- **可信度层**：`credibility.json` 提供 22 项 C 级工单、44 项未定事项、32 条事件日历与逐模块 `confidence` / `examples` / `historical` 声明。注入上下文前可按 `confidence` 过滤，并按 `gradeC.usable` / `banned` 排除不可引用数字。
 - **CI**：依次执行一致性校验、维护台账、生成物比对与九个 Python 自测；每月 1 号另把到期看板写入 Actions 摘要。
 
 </details>
