@@ -2,6 +2,22 @@
 
 This file records energy-skills releases in reverse chronological order. Current version **v1.9**, data cutoff **2026-11-11**. Repository entry point: [README_EN.md](README_EN.md); Chinese version: [CHANGELOG.md](CHANGELOG.md).
 
+### 2026-11-12 (v1.9 maintenance: Guangdong deep-dossier benchmark)
+
+- **Deep benchmark**: the Guangdong page grows from 149 to **330 lines** and is rebuilt as a 12-section provincial handbook: ten conclusions, core parameters, market boundary, 2025-26 scale and participant structure, timeline, products and process, spot design, medium/long-term settlement, tariffs and retail, renewables/nuclear/storage/VPP, participant strategies, ten Q&As, and sources/watchlist.
+- **Key correction**: the 2026 Southern regional formal plan sets Guangdong’s bid floor at **−50 CNY/MWh** and clearing band **−50 to 1,800 CNY/MWh**. The old 0–1,000 / 70–1,500 figures remain only as a historical provincial pilot reference, not the sole current parameter.
+- **New data**: 2025 traded volume 654.18 TWh, direct trading 458.63 TWh, 140,396 participants and retail average 0.3803 CNY/kWh; 2026 mechanism price 0.300 CNY/kWh across 58,962 projects and 7.934 TWh; first 2026 round 0.360 CNY/kWh across 11,588 projects; VPP thresholds 1 MW/1h for spot, 5 MW/1h for demand response, 300-second direct control and same 220 kV node.
+- **Purpose**: this is the benchmark for deepening the remaining P0/P1/P2 dossiers. No other market page is changed, and unverified data is not promoted.
+- **Verification**: 99 modules / 13 sections / 122 Markdown / **32,989 body lines**; build, consistency and maintenance ledger pass.
+
+### 2026-11-12 (v1.9 maintenance: P2 provincial status correction)
+
+- **P2 status correction**: as of 2026-11-12 Jiangsu is still in **continuous settlement trial with a formalisation assessment underway**, not formal. Shanghai has been in continuous settlement since 2025-10; Jilin, Heilongjiang, Mengdong, Jiangxi, Henan, Qinghai, Ningxia and Xinjiang are in continuous settlement; Beijing, Tianjin, Hebei North and Tibet were previously mislabelled as “trial” and are now “no continuous spot verified / simulation planned / segmented settlement / no spot operation verified” respectively.
+- **Jiangsu official timeline**: continuous settlement began 2025-08-29; Su Fagai Guifa〔2025〕No. 5 set provisional spot bid/clear caps at 1.5 CNY/kWh and a floor of 0; V2.2 rules applied from 2026-01-01; the regulator said on 2026-03-23 that one year of continuous operation would meet the basic conditions; the third-party formalisation assessment started 2026-05-09; the provincial DRC said on 2026-06-30 that readiness was targeted by end-2026; the regulator was still pressing for formalisation on 2026-08-28.
+- **Other checks**: Shaanxi (2026-09-25) and Fujian (2026-09-30) formal operation are confirmed by provincial official notices and Xinhua. An industry weekly that described Shaanxi as still in trial was stale/incorrect and was not used to change the repository.
+- **Synchronisation**: all 14 P2 dossiers, the provincial status table, the 33-row INDEX_EN quick table, P2 review focus and README/body-line count were updated to 32,807 lines; sources were added or the status explicitly marked as unverified.
+- **Verification**: build, consistency (122 Markdown files) and maintenance ledger pass; 99 knowledge pages and 18 skill pages generate normally.
+
 ### 2026-11-11 (v1.9 maintenance: third batch of 14 P2 thin provincial dossiers)
 
 - **33 market calibres completed**: added Beijing, Tianjin, Hebei North, Mengdong, Jilin, Heilongjiang, Shanghai, Jiangsu, Jiangxi, Henan, Qinghai, Ningxia, Xinjiang and Tibet as P2 thin dossiers. The provincial layer now covers 33 markets: 11 formal, 8 continuous-trial/regional and 14 thin.

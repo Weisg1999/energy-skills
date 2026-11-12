@@ -2745,7 +2745,7 @@
       "summaryEn": "English entry point: file map, key figures, a provincial quick table, open items and answering discipline.",
       "titleEn": null,
       "marks": {
-        "gradeC": 15,
+        "gradeC": 18,
         "draft": 0,
         "pending": 3,
         "example": 6
@@ -2784,12 +2784,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Shanghai remains in spot trial; a user-side VPP plan for 2025-2027 and a 1.1627 GW call in August 2025, with 136, capacity and spot caps still open.",
+      "summaryEn": "Shanghai has been in continuous settlement trial since October 2025; a user-side VPP plan covers 2025-2027 and a 1.1627 GW call occurred in August 2025, with 136, capacity and spot caps open.",
       "titleEn": null,
       "marks": {
-        "gradeC": 4,
+        "gradeC": 2,
         "draft": 0,
-        "pending": 4,
+        "pending": 2,
         "example": 0
       },
       "exampleSections": []
@@ -3015,12 +3015,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Beijing remains in spot trial with the node to be verified; 136 existing 0.3598 and 2026-27 cap 0.3598/kWh for 850 million kWh, with capacity and VPP still open.",
+      "summaryEn": "Beijing’s 2026 market plan is medium/long-term and time-of-use based; no continuous spot trial is verified. 136 existing 0.3598 and 2026-27 cap 0.3598/kWh for 850 million kWh; capacity and VPP open.",
       "titleEn": null,
       "marks": {
-        "gradeC": 6,
+        "gradeC": 4,
         "draft": 0,
-        "pending": 6,
+        "pending": 4,
         "example": 0
       },
       "exampleSections": []
@@ -3036,12 +3036,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Jilin remains in spot trial; coal capacity is 330 CNY/kW-yr in 2026 (C), with 136, VPP and spot caps still open.",
+      "summaryEn": "Jilin is in continuous settlement trial (start date TBC); coal capacity is 330 CNY/kW-yr (2026, C), with 136, VPP and spot caps open.",
       "titleEn": null,
       "marks": {
-        "gradeC": 7,
+        "gradeC": 8,
         "draft": 0,
-        "pending": 6,
+        "pending": 7,
         "example": 0
       },
       "exampleSections": []
@@ -3101,12 +3101,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Tianjin remains in spot trial; 136 2026-27 cap 0.32 for 4 billion kWh and 2027 solar auction 0.3196; coal capacity 231 CNY/kW-yr.",
+      "summaryEn": "Tianjin has not entered continuous spot settlement; its July 2026 implementation plan targets simulation by end-2026. 136 cap 0.32 for 4 billion kWh, 2027 solar auction 0.3196; coal capacity 231.",
       "titleEn": null,
       "marks": {
-        "gradeC": 3,
+        "gradeC": 1,
         "draft": 0,
-        "pending": 3,
+        "pending": 1,
         "example": 0
       },
       "exampleSections": []
@@ -3122,12 +3122,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Ningxia remains in spot trial; 136, capacity, VPP and spot caps are all open, so this is a thin dossier.",
+      "summaryEn": "Ningxia is in continuous settlement trial (start date TBC); 136, capacity, VPP and spot caps open.",
       "titleEn": null,
       "marks": {
-        "gradeC": 7,
+        "gradeC": 9,
         "draft": 0,
-        "pending": 7,
+        "pending": 8,
         "example": 0
       },
       "exampleSections": []
@@ -3252,12 +3252,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Guangdong provincial spot market (formal 2023-12-28) inside the Southern regional market (formal 2026-10-24): 136 mechanism pricing, nuclear market entry, retail competition and VPP rules.",
+      "summaryEn": "Guangdong provincial spot market (formal 2023-12-28) inside the Southern regional market (formal 2026-10-24): 2025 traded volume 654.18 TWh, 140,396 participants and retail average 0.380 CNY/kWh; 2026 mechanism price 0.300 CNY/kWh and regional Guangdong clearing band −50 to 1,800 CNY/MWh.",
       "titleEn": null,
       "marks": {
-        "gradeC": 8,
+        "gradeC": 17,
         "draft": 0,
-        "pending": 7,
+        "pending": 2,
         "example": 0
       },
       "exampleSections": []
@@ -3384,12 +3384,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Xinjiang remains in spot trial; independent storage capacity is 165 CNY/kW-yr with a 6-hour denominator (Doc. 114), with 136, VPP and spot caps open.",
+      "summaryEn": "Xinjiang is in continuous settlement trial (start date TBC); storage capacity is 165 CNY/kW-yr with a 6-hour denominator; 136, VPP and spot caps open.",
       "titleEn": null,
       "marks": {
-        "gradeC": 5,
+        "gradeC": 7,
         "draft": 0,
-        "pending": 5,
+        "pending": 6,
         "example": 0
       },
       "exampleSections": []
@@ -3498,12 +3498,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Jiangsu remains in spot trial; a VPP construction and operation plan was issued in December 2025, with 136, capacity, VPP thresholds and spot caps still open.",
+      "summaryEn": "Jiangsu entered continuous settlement trial on 2025-08-29; a third-party formalisation assessment started on 2026-05-09 and the provincial DRC targets readiness by end-2026. It is not yet formal. Spot caps are provisionally 1.5 CNY/kWh and 0.",
       "titleEn": null,
       "marks": {
-        "gradeC": 5,
+        "gradeC": 2,
         "draft": 0,
-        "pending": 5,
+        "pending": 2,
         "example": 0
       },
       "exampleSections": []
@@ -3519,12 +3519,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Jiangxi remains in spot trial; the 136 auction covers 4.08 billion kWh at 0.24–0.379 CNY/kWh (C), with a VPP registration guide dated 2026-06-03.",
+      "summaryEn": "Jiangxi is in continuous settlement trial (start date TBC); the 136 auction covers 4.08 billion kWh at 0.24-0.379 CNY/kWh (C), with a VPP registration guide dated 2026-06-03.",
       "titleEn": null,
       "marks": {
-        "gradeC": 9,
+        "gradeC": 11,
         "draft": 0,
-        "pending": 4,
+        "pending": 5,
         "example": 0
       },
       "exampleSections": []
@@ -3540,12 +3540,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Hebei North (Jibei) remains in spot trial and is a separate grid/market from Hebei South; 136, capacity and VPP remain open.",
+      "summaryEn": "No continuous spot trial is verified for Hebei North (Jibei); it uses segmented settlement and is a separate grid/market from Hebei South. 136, capacity and VPP open.",
       "titleEn": null,
       "marks": {
-        "gradeC": 6,
+        "gradeC": 3,
         "draft": 0,
-        "pending": 6,
+        "pending": 3,
         "example": 0
       },
       "exampleSections": []
@@ -3582,12 +3582,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Henan remains in spot trial; emergency backup coal capacity is 188 CNY/kW-yr from September 2026, the 330 generation-side reliable-capacity scheme is still draft, and fixed TOU is retired.",
+      "summaryEn": "Henan is in continuous settlement trial (start date TBC); emergency backup coal capacity is 188 CNY/kW-yr, the 330 reliable-capacity scheme is still draft, and fixed TOU is retired.",
       "titleEn": null,
       "marks": {
-        "gradeC": 4,
+        "gradeC": 6,
         "draft": 5,
-        "pending": 4,
+        "pending": 5,
         "example": 0
       },
       "exampleSections": []
@@ -4064,9 +4064,9 @@
       "summaryEn": "One row per province: spot / No.",
       "titleEn": null,
       "marks": {
-        "gradeC": 31,
+        "gradeC": 26,
         "draft": 10,
-        "pending": 21,
+        "pending": 15,
         "example": 0
       },
       "exampleSections": []
@@ -4328,12 +4328,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Mengdong remains in spot trial and is a separate grid/market from Mengxi; 136, capacity and VPP remain open.",
+      "summaryEn": "Mengdong is in continuous settlement trial (start date TBC) and is a separate market from Mengxi. 136, capacity and VPP open.",
       "titleEn": null,
       "marks": {
-        "gradeC": 6,
+        "gradeC": 7,
         "draft": 0,
-        "pending": 6,
+        "pending": 7,
         "example": 0
       },
       "exampleSections": []
@@ -4419,12 +4419,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Tibet remains in spot trial; 136, capacity, VPP and spot caps are all open, so this is a thin dossier.",
+      "summaryEn": "No spot operation is verified for Tibet; it uses within-region market-based trading. 136, capacity and VPP open.",
       "titleEn": null,
       "marks": {
-        "gradeC": 7,
+        "gradeC": 5,
         "draft": 0,
-        "pending": 7,
+        "pending": 5,
         "example": 0
       },
       "exampleSections": []
@@ -4851,12 +4851,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Qinghai remains in spot trial; coal capacity is 185 CNY/kW-yr in 2026 (C), with 136, VPP and spot caps still open.",
+      "summaryEn": "Qinghai is in continuous settlement trial (start date TBC); coal capacity is 185 CNY/kW-yr (2026, C), with 136, VPP and spot caps open.",
       "titleEn": null,
       "marks": {
-        "gradeC": 6,
+        "gradeC": 8,
         "draft": 0,
-        "pending": 5,
+        "pending": 6,
         "example": 0
       },
       "exampleSections": []
@@ -4893,12 +4893,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Heilongjiang remains in spot trial; coal capacity is 330 CNY/kW-yr in 2026 (C), with 136, VPP and spot caps still open.",
+      "summaryEn": "Heilongjiang is in continuous settlement trial (start date TBC); coal capacity is 330 CNY/kW-yr (2026, C), with 136, VPP and spot caps open.",
       "titleEn": null,
       "marks": {
-        "gradeC": 6,
+        "gradeC": 7,
         "draft": 0,
-        "pending": 5,
+        "pending": 6,
         "example": 0
       },
       "exampleSections": []

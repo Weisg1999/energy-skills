@@ -411,19 +411,24 @@ foot: "给国际模型与英文读者"
 
 | Province | Spot status | No. 136 (2026-27) | Coal capacity price 2026 | VPP framework |
 |---|---|---|---|---|
-| Beijing | Trial (node TBC) | Cap 0.3598/kWh, 850 million kWh | — | — |
-| Tianjin | Trial (node TBC) | Cap 0.32/kWh, 4 billion kWh | 231 | — |
+| Beijing | Not verified as continuous spot (2026 plan medium/long-term/TOU) | Cap 0.3598/kWh, 850 million kWh | — | — |
+| Tianjin | Not in continuous spot; simulation targeted by end-2026 | Cap 0.32/kWh, 4 billion kWh | 231 | — |
+| Hebei North | Not verified as continuous spot; segmented settlement (C) | — | — | — |
+| Hebei South | **Formal 2026-08-01** | — | — | — |
 | Shanxi | **Formal 2023-12-22** | — | 165 (C) | Jin Energy Regulation〔2025〕No. 4 (2025-09-18) |
 | Inner Mongolia West | **Formal 2025-02-24** | Existing 0.2829/kWh; not in mechanism | — | — |
+| Mengdong | Continuous trial | — | — | — |
+| Jilin | Continuous trial | — | 330 (C) | — |
+| Heilongjiang | Continuous trial | — | 330 (C) | — |
 | Liaoning | Continuous trial | 0.18-0.30/kWh, 5.308 billion kWh | 370 (reliable-capacity compensation, C) | Liao Dev Energy Regulation〔2026〕No. 3 (effective 2026-10-01); ≥10 MW aggregation / ≥5 MW regulation |
-| Shanghai | Trial (node TBC) | — | — | User-side VPP plan 2025-2027 (1.1 GW in 2025) |
-| Jiangsu | Trial (node TBC) | — | — | Work plan 2025-12; 5 GW by 2030 |
+| Shanghai | Continuous settlement trial from 2025-10 | — | — | User-side VPP plan 2025-2027 (1.1 GW in 2025) |
+| Jiangsu | Continuous settlement trial from 2025-08-29; formalisation assessment underway (not formal) | — | — | Work plan 2025-12; 5 GW by 2030 |
 | Zhejiang | **Formal 2025-08-07** | First 381.6/MWh; second 0.242-0.393/kWh | — | Rules 2.0 (2026-09-23), three unit types, monthly rating |
 | Anhui | **Formal 2026-09-09** | Provincial No. 136 under revision | 165, 6 h | Implementation plan effective 2026-08-01 |
 | Fujian | **Formal 2026-09-30** | 0.16-0.39/kWh, 8.36 billion kWh | — | Measures 2026-07-31; VPP in energy/spot/ancillary |
-| Jiangxi | Trial (node TBC) | 0.24-0.379/kWh, 4.08 billion kWh | — | VPP registration guide 2026-06-03 |
+| Jiangxi | Continuous trial | 0.24-0.379/kWh, 4.08 billion kWh | — | VPP registration guide 2026-06-03 |
 | Shandong | **Formal 2024-06-17** | Existing 0.3949; first auction wind 0.319/solar 0.225 | — | Lu Dev Energy〔2026〕No. 407 (effective 2026-08-01) |
-| Henan | Trial (node TBC) | — | 330 (draft) | — |
+| Henan | Continuous trial | — | 330 (draft) | — |
 | Hubei | **Formal 2025-06** | — | — | — |
 | Hunan | Continuous trial | 0.23-0.35/kWh, 2.286 billion kWh | 330 (C) | — |
 | Guangdong | **Formal 2023-12-28**; southern region 2026-10-24 | Existing 0.453; 0.20-0.40/kWh, 7.934 billion kWh | 165 | GD Trading〔2025〕No. 152 (2025-07) |
@@ -435,9 +440,10 @@ foot: "给国际模型与英文读者"
 | Yunnan | Southern region formal 2026-10-24 | — | 330 (C) | Yun Energy Regulation〔2025〕No. 198 (effective 2025-10-01); market rules still a draft |
 | Shaanxi | **Formal 2026-09-25** | — | 165, 6 h | — |
 | Gansu | **Formal 2024-09-05** | 2027 H1 solar 0.2447 / wind 0.2440 | 330 (C) | 250 MW by 2027 |
-| Qinghai | Trial (node TBC) | — | 185 (C) | — |
-| Ningxia | Trial (node TBC) | — | — | — |
-| Xinjiang | Trial (node TBC) | — | 165, 6 h | — |
+| Qinghai | Continuous trial | — | 185 (C) | — |
+| Ningxia | Continuous trial | — | — | — |
+| Xinjiang | Continuous trial | — | 165, 6 h | — |
+| Tibet | No spot operation verified; within-region market | — | — | — |
 | Southern region | **Formal 2026-10-24** | Covers Guangdong/Guangxi/Yunnan/Guizhou/Hainan; 15-min prices | — | — |
 
 - **Read the table with the caliber in mind**: "formal" means the provincial spot market, "southern region formal" does not mean each province's own market is formal; a blank means not yet verified here, not that no policy exists.

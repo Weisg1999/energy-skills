@@ -25,7 +25,7 @@
 
 > Every skill is a self-contained Markdown handbook that can be injected into an LLM context. Once loaded, the model answers as a senior practitioner and follows built-in discipline: figures cited with document numbers and dates, province confirmed before local rules, policy items returned with official lookup pointers, and unverified data flagged as “to be verified”.
 
-Current version **v1.9**, data cutoff **2026-11-11**, 32,765 body lines. Notes, 99 reading pages, skill pages, the full-text index and all diagrams are generated from repository content.
+Current version **v1.9**, data cutoff **2026-11-11**, 32,989 body lines. Notes, 99 reading pages, skill pages, the full-text index and all diagrams are generated from repository content.
 
 **Contents**　[Quick start](#quick-start) · [Skills](#skills) · [Knowledge base](#knowledge-base) · [Repository layout](#repository-layout) · [Maintenance](#maintaining-the-knowledge-hub) · [Roadmap](#roadmap) · [License](#license)
 
