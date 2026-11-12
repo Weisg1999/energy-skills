@@ -80,7 +80,7 @@
       <p class="lede">从 VPP/EMS 的数据底座出发，拆解点表与四遥、104/61850/Modbus/MQTT、边缘与云端两种部署形态、采集频率与时延、时钟同步、历史库、告警、冗余和电力监控安全防护。</p>
       <p class="hook">VPP/EMS 的数据底座</p>
       <div class="tags"><span class="tag">SCADA</span><span class="tag">点表</span><span class="tag">IEC 104</span><span class="tag">IEC 61850</span><span class="tag">MQTT</span><span class="tag">数据链路</span><span class="tag">云边协同</span></div>
-      <div class="doc-meta"><span>约 26.1k 字</span><span>阅读约 45 分钟</span><span>16 节</span><span>数据截止 2026-11-09</span></div>
+      <div class="doc-meta"><span>约 26.2k 字</span><span>阅读约 45 分钟</span><span>16 节</span><span>数据截止 2026-11-09</span></div>
     </header>
 
     <details class="toc-mobile">
@@ -509,6 +509,7 @@ SCADA 实时库 <span class="d-arrow">◀</span><span class="d-line">─</span><
 <h3 id="s67">9.3 SCADA 不是结算表</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>SCADA 遥测</th><th>结算计量</th></tr></thead><tbody><tr><td>目的</td><td>监视、控制、优化</td><td>贸易结算、考核</td></tr><tr><td>精度</td><td>满足监视/控制</td><td>按计量装置准确度等级</td></tr><tr><td>时标</td><td>设备/网关时标</td><td>计量装置时标</td></tr><tr><td>校验</td><td>一般不做贸易校验</td><td>检定、封印、比对</td></tr><tr><td>数据完整性</td><td>允许补数/压缩</td><td>需可审计、可追溯</td></tr><tr><td>用途</td><td>不能直接作为结算依据</td><td>结算依据</td></tr></tbody></table></div>
 <p><strong>结论</strong>：SCADA 的电度/功率数据可以用来做运行分析、偏差预警和对账参考，但不能替代关口表。结算必须用专用计量装置与计量主站数据；两者出现差异时，按计量口径为准，并查明 CT/PT、时标、线损、未注册负荷等原因。</p>
+<p><strong>SCADA 也不是交易系统</strong>：申报、报价与市场承诺属于交易/聚合层，SCADA 与 EMS 只负责把可调能力包络交给上层、执行分解后的指令并回传实际值。四种融合模式、容量分区与未来接口变化见<a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a> §1.7.1、§1.10。</p>
 <h3 id="s68">9.4 对账</h3>
 <ol><li><strong>对齐时标</strong>：统一 UTC/本地时区，确认计量周期（15 min/1 h）；</li><li><strong>对齐单位与变比</strong>：kW/kWh、一次/二次值、CT/PT；</li><li><strong>对齐边界</strong>：关口表位置、并网点、内部负荷；</li><li><strong>对齐口径</strong>：是否含线损、厂用电、辅助服务；</li><li><strong>设差异阈值</strong>：按电量比例/绝对量设告警；</li><li><strong>留差异说明</strong>：通信中断、补数、人工置数、计量故障都要有记录。</li></ol>
 <h3 id="s69">9.5 联调</h3>
@@ -549,7 +550,7 @@ SCADA 实时库 <span class="d-arrow">◀</span><span class="d-line">─</span><
         <a class="related-card" href="储能EMS优化调度-算法与工程-2026-11.html">
           <span class="related-type">同区延伸</span>
           <b>储能 EMS 优化调度</b>
-          <span>把储能调度建成 MILP：96 点经济调度、多市场堆叠、SOC/退化、MPC 与安全联锁。</span>
+          <span>把储能调度建成 MILP：96 点经济调度、多市场堆叠、SOC/退化、MPC 与安全联锁，并给出与交易层的四种融合模式。</span>
         </a>
         <a class="related-card" href="微网EMS优化调度-算法与工程-2026-11.html">
           <span class="related-type">同区延伸</span>

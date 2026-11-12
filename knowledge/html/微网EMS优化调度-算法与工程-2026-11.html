@@ -80,7 +80,7 @@
       <p class="lede">PCC 购售双变量、备用/孤岛/退化约束、MPC 滚动与验收测试，区分保护与优化。</p>
       <p class="hook">算法、模型与工程实践</p>
       <div class="tags"><span class="tag">PCC 双变量</span><span class="tag">孤岛</span><span class="tag">MPC</span></div>
-      <div class="doc-meta"><span>约 27.1k 字</span><span>阅读约 48 分钟</span><span>15 节</span><span>数据截止 2026-11-04</span></div>
+      <div class="doc-meta"><span>约 27.2k 字</span><span>阅读约 49 分钟</span><span>15 节</span><span>数据截止 2026-11-04</span></div>
     </header>
 
     <details class="toc-mobile">
@@ -365,6 +365,7 @@ abs(dP) = u + v</code></pre>
 <p><strong>冲突仲裁优先级要写死，不允许运行时协商</strong>：安全联锁 &gt; 并网考核 &gt; 微网内部功率平衡 &gt; 市场收益。</p>
 <p>三个反模式：两个 EMS 各自维护一套 SOC；储能 EMS 不知道孤岛状态仍在安排购售；微网 EMS 绕过站控直接写 PCS 寄存器。</p>
 <p>储能侧的建模细节（多市场堆叠、调频、容量补偿、簇级分配）见<a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度：算法、模型与工程实践</a>，两篇共用同一套 MILP 内核，不重复叙述。</p>
+<p>与交易层的融合模式（头寸自持/价格接收/指令执行/非市场目标）、容量分区与未来接口变化，见储能 EMS §1.7.1、§1.10。微网通常落在价格接收或指令执行；若同时被 VPP 调用并保留备电，按容量分区处理，不要整站切换模式。</p>
 <h3 id="s39">4.13 常见建模错误</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>错误</th><th>后果</th><th>检查方法</th></tr></thead><tbody><tr><td>净功率单变量</td><td>进/出限值无法分别表达，需量口径错</td><td>检查是否有 <code>p_imp/p_exp</code> 两个变量</td></tr><tr><td>需量按净功率</td><td>需量电费被低估或对账不符</td><td>检查 <code>max_p ≥ p_imp</code></td></tr><tr><td>SOC 索引差一位</td><td>全天计划平移 15 min</td><td>检查 <code>soc[0]</code> 与 <code>soc[T]</code> 的定义</td></tr><tr><td>漏效率/自放电</td><td>套利收益虚高</td><td>1 充 1 放守恒测试</td></tr><tr><td>充放互斥用 LP 松弛</td><td>同时充放，损耗虚假</td><td>检查是否有 SOS1/0-1</td></tr><tr><td>EV 未进入功率平衡</td><td>EV 成为&quot;死变量&quot;，计划与物理不符</td><td>检查 KCL 是否含 EV 项</td></tr><tr><td>孤岛时 PCC 不为零</td><td>孤岛计划物理不可行</td><td>检查 <code>z_island</code> 是否强制置零</td></tr><tr><td>备用只算容量不算能量</td><td>申报能力虚高，考核不合格</td><td>检查 SOC 余量与持续时间</td></tr><tr><td>日循环缺失</td><td>末端偷电，跨日不可持续</td><td>检查终端等式/价值</td></tr><tr><td>爬坡首尾不闭环</td><td>跨日功率跳变</td><td>检查 <code>t=0</code> 与 <code>t=T−1</code> 的衔接</td></tr><tr><td>柔性负荷不守恒</td><td>总用电量被悄悄削减</td><td>加总量等式约束</td></tr><tr><td>退化只按循环次数</td><td>低估高 SOC 浮充与浅充浅放</td><td>用吞吐/雨流复核</td></tr><tr><td>多储能聚合后不还原</td><td>单台越界、环流</td><td>下发前逐设备回代</td></tr><tr><td>单位混用 kW/kWh/15 min</td><td>结果差 4 倍或 100 倍</td><td>统一 <code>Δt=0.25</code>，写清单价口径</td></tr><tr><td>权重未归一化</td><td>求解器数值病态、目标被单项支配</td><td>先算各项量级再定权</td></tr></tbody></table></div>
 <hr>
@@ -534,7 +535,7 @@ s.t. 第一阶段：日前计划 x（购售、启停、备用）
         <a class="related-card" href="储能EMS优化调度-算法与工程-2026-11.html">
           <span class="related-type">同区延伸</span>
           <b>储能 EMS 优化调度</b>
-          <span>把储能调度建成 MILP：96 点经济调度、多市场堆叠、SOC/退化、MPC 与安全联锁。</span>
+          <span>把储能调度建成 MILP：96 点经济调度、多市场堆叠、SOC/退化、MPC 与安全联锁，并给出与交易层的四种融合模式。</span>
         </a>
         <a class="related-card" href="综合能源与零碳园区-2026-11.html">
           <span class="related-type">跨区对照</span>

@@ -122,10 +122,10 @@
       "file": "储能EMS优化调度-算法与工程-2026-11.md",
       "section": "storage",
       "kind": "算法底稿",
-      "cutoff": "2026-11-01",
+      "cutoff": "2026-11-12",
       "title": "储能 EMS 优化调度",
       "titleEn": null,
-      "summaryEn": "Storage EMS MILP: multi-market stacking (energy, frequency regulation, reserve, ramping, capacity), SOC/efficiency recursion, four reserve dimensions, frequency-regulation energy neutrality…",
+      "summaryEn": "Storage EMS MILP: multi-market stacking (energy, frequency regulation, reserve, ramping, capacity), SOC/efficiency recursion, four reserve dimensions, frequency-regulation energy neutrality, and four trading-integration modes…",
       "confidence": "mixed",
       "historical": false,
       "html": "html/储能EMS优化调度-算法与工程-2026-11.html"
