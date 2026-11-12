@@ -1035,3 +1035,8 @@ The 8 pilots averaged CNY 44.1/tonne in 2024 (~54% below the national market): B
 - Provincial rules update fast; this skill does not replace real-time policy search. Re-verify 2026 provincial spot formal operation, No. 136 auctions, capacity prices and VPP rules before answering;
 - Overseas markets (Chapter 7A) cover the Australian NEM, German DE-LU, UK GB, Italy, Spain, France, the Netherlands, Poland, Belgium and the Nordics, the United States (ERCOT/PJM/CAISO) and Japan, excluding the WA WEM, the Northern Territory, French overseas territories and other US ISOs/RTOs such as MISO, SPP, NYISO and ISO-NE; rules, taxes, grid connection and contracts require local official documents and professional advice;
 - 2025 trading volumes exist in several calibers ("market-traded 6.64 trillion / medium-long-term 6.3522 trillion / 4.81 trillion in some materials"); the preferred caliber is stated in the text — check old materials against it.
+
+### 15.5 Zero-dependency worked-example tools
+
+- `tools/fuel.py` (thermal-coal contract pricing, dual-track blended cost, fuel cost per MWh, dark/spark/clean spreads, coal-to-gas switching carbon price, inventory days) is locked to assertions in `tools/selftest.py` and corresponds to the knowledge base note [fuel and power trading](../../knowledge/燃料与电力交易-2026-11.md). All examples are synthetic (grade D), not investment advice.
+- `tools/market.py` owns congestion surplus, FTR payouts and LMP decomposition, mapped to [inter-provincial and cross-region trading](../../knowledge/省间与跨区交易-2026-11.md) §5.5. Two-node price separation and dynamic ATC belong to `spot-bidding-quant/tools/network.py` and are not re-implemented here; both use the same "(price difference) x constrained flow" calibre and are cross-checked.

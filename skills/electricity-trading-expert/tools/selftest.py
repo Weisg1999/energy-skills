@@ -35,6 +35,7 @@ SKILL.md）与代码一旦漂移即失败，逐条打印 ``ok  ...``，任一断
 from __future__ import annotations
 
 import capacity
+import fuel
 import market
 import units
 
@@ -391,6 +392,20 @@ def main():
         27.0,
         1e-9,
     )
+
+    print("\n== fuel cost to bid (synthetic, grade D)")
+    close("fuel long-term price 800 -> 737.5", fuel.long_term_coal_price(800.0), 737.5, 1e-9)
+    close("fuel long-term cap 770", fuel.long_term_coal_price(900.0), 770.0, 1e-9)
+    close("fuel blended price", fuel.blended_coal_price(737.5, 989.0, 0.8), 787.8, 1e-9)
+    close("fuel cost per MWh", fuel.coal_cost_per_mwh(787.8), 236.34, 1e-6)
+    close("fuel dark spread", fuel.dark_spread(400.0, 236.34, 20.0), 143.66, 1e-9)
+    close("fuel clean dark", fuel.clean_spread(143.66, 80.0, 0.95), 67.66, 1e-9)
+    close("fuel spark spread", fuel.spark_spread(400.0, 320.0, 15.0), 65.0, 1e-9)
+    close("fuel clean spark", fuel.clean_spread(65.0, 80.0, 0.40), 33.0, 1e-9)
+    close("fuel switch carbon price", fuel.switch_carbon_price(236.34, 320.0), 152.10909090909092, 1e-6)
+    close("fuel dual-track gap", fuel.dual_track_gap(989.0, 800.0), 251.5, 1e-9)
+    close("fuel inventory days", fuel.inventory_days(1500000.0, 100000.0), 15.0, 1e-9)
+    close("G congestion surplus cross-check", market.congestion_surplus(500.0, 200.0, 200.0), 60000.0, 1e-6)
 
     print(f"\nAll electricity-trading-expert self-tests passed ({_COUNT} assertions).")
 

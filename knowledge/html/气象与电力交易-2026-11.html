@@ -55,6 +55,7 @@
               <li><a href="跨国PPA与绿证-2026-11.html">跨国 PPA、绿证与 tolling（2026 版）：从 GO 到 merchant tail</a></li>
               <li><a href="海外市场同口径快照与投决日历-2026-11.html">海外市场同口径快照与投决日历（2026 版）：十一市场、七列口径、五张工单</a></li>
               <li class="on" aria-current="page"><a href="气象与电力交易-2026-11.html">气象与电力交易（2026 版）：数据源、四条转换链与天气风险</a></li>
+              <li><a href="燃料与电力交易-2026-11.html">燃料与电力交易（2026 版）：一次能源、边际成本与报价</a></li>
     </ul>
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
@@ -82,7 +83,7 @@
       <p class="lede">气象不直接定价，而是通过负荷、风光出力、来水与设备可用率四个中介进入出清；2026 年夏季全国平均气温每升 1℃ 带动负荷上涨 4,000–5,000 万 kW，空调降温负荷占比接近 30%、部分省份超 40%；功率预测已是有报送率与准确率考核的法定义务；CME 度日期货按 20 index points、US $20/点现金结算，欧洲与东京的 tick 不同。</p>
       <p class="hook">2026-11 · 四条转换链 / 天气风险 / 取数口径</p>
       <div class="tags"><span class="tag">气象</span><span class="tag">数值天气预报</span><span class="tag">负荷预测</span><span class="tag">功率预测考核</span><span class="tag">度日</span><span class="tag">集合预报</span><span class="tag">天气衍生品</span><span class="tag">基差风险</span><span class="tag">极端天气</span></div>
-      <div class="doc-meta"><span>约 12.8k 字</span><span>阅读约 21 分钟</span><span>12 节</span><span>数据截止 2026-11-12</span></div>
+      <div class="doc-meta"><span>约 13.1k 字</span><span>阅读约 22 分钟</span><span>12 节</span><span>数据截止 2026-11-12</span></div>
     </header>
 
     <details class="toc-mobile">
@@ -134,8 +135,8 @@
 <ul><li>降雨到发电有<strong>产流系数 + 汇流滞后</strong>，今天下雨不等于今天发电；融雪、上游水库调节、生态流量都会改变可用水量。</li><li><strong>丰枯分期</strong>是水电省的报价与合约底座，见 <a href="四川电力市场-2026-11.html">四川电力市场</a> 与 <a href="湖北电力市场-2026-11.html">湖北电力市场</a>；径流式&quot;不弃水&quot;约束会压缩报价空间。</li><li>来水还是<strong>合约标的</strong>：PPA 里的来水保证、最小发电量条款与不可抗力条款，本质是把水文风险在买卖双方之间分配。</li><li>本页不建水文模型；零依赖工具只提供带滞后的产流指数占位，用来强调&quot;时序错配&quot;这一件事。</li></ul>
 <hr>
 <h2 id="s13">3. 气象 → 现货价格形状</h2>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>气象情景</th><th>净负荷形状</th><th>价格结果</th><th>主体动作</th></tr></thead><tbody><tr><td>晴热、光伏午间大发、负荷尚未到峰</td><td>午间净负荷深谷</td><td>低价 / 负价、午间捕获价下降</td><td>新能源看机制电量与偏差，储能充电，售电公司避开午间高价采购</td></tr><tr><td>傍晚光伏退坡 + 晚峰负荷</td><td>陡峭爬坡</td><td>尖峰、稀缺时段</td><td>煤电/气电顶峰、储能放电、VPP 响应</td></tr><tr><td>夜间大风 + 低负荷</td><td>净负荷低位</td><td>负价、风电捕获价下降</td><td>风电看偏差考核，储能与可调负荷填谷</td></tr><tr><td>持续高温高湿</td><td>基数与夜间负荷抬高</td><td>全天价格中枢上移</td><td>售电公司补中长期、提高保证金</td></tr><tr><td>来水偏丰（水电省）</td><td>低价水电挤占火电</td><td>现货均价下移、外送增供</td><td>火电转顶峰与容量收入</td></tr><tr><td>台风 / 覆冰 / 大范围极端天气</td><td>供需双侧同时受损</td><td>尖峰与保供优先级压过价格</td><td>按保供预案，考核与免责另算</td></tr></tbody></table></div>
-<aside class="note"><p>净负荷＝负荷 − 风光出力。<strong>价格形状看的是净负荷的斜率，不是负荷的绝对值</strong>；同一条气温曲线在山东、四川、广东会给出完全不同的价格，因为电源结构与外送约束不同（见 <a href="省级市场状态表-2026-11.html">省级市场状态表</a>）。</p></aside>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>气象情景</th><th>净负荷形状</th><th>价格结果</th><th>主体动作</th></tr></thead><tbody><tr><td>晴热、光伏午间大发、负荷尚未到峰</td><td>午间净负荷深谷</td><td>低价 / 负价、午间捕获价下降</td><td>新能源看机制电量与偏差，储能充电，售电公司避开午间高价采购</td></tr><tr><td>傍晚光伏退坡 + 晚峰负荷</td><td>陡峭爬坡</td><td>尖峰、稀缺时段</td><td>煤电/气电顶峰、储能放电、VPP 响应</td></tr><tr><td>夜间大风 + 低负荷</td><td>净负荷低位</td><td>负价、风电捕获价下降</td><td>风电看偏差考核，储能与可调负荷填谷</td></tr><tr><td>持续高温高湿</td><td>基数与夜间负荷抬高</td><td>全天价格中枢上移</td><td>售电公司补中长期、提高保证金</td></tr><tr><td>来水偏丰（水电省）</td><td>低价水电挤占火电</td><td>现货均价下移、外送增供</td><td>火电转顶峰与容量收入</td></tr><tr><td>台风 / 覆冰 / 大范围极端天气</td><td>供需双侧同时受损</td><td>尖峰与保供优先级压过价格</td><td>按保供预案，考核与免责另算</td></tr><tr><td>高温抬负荷 <strong>叠加</strong> 断面受限；新能源大发 <strong>叠加</strong> 送端阻塞</td><td>净负荷与输电能力同时收紧</td><td>尖峰被放大；或送端负价与受端高价并存</td><td>价格不只看净负荷，须回到 <a href="省间与跨区交易-2026-11.html">省间与跨区交易</a> §5.5–§5.6 看约束侧</td></tr></tbody></table></div>
+<aside class="note"><p>净负荷＝负荷 − 风光出力。<strong>价格形状看的是净负荷的斜率，不是负荷的绝对值</strong>；同一条气温曲线在山东、四川、广东会给出完全不同的价格，因为电源结构与外送约束不同（见 <a href="省级市场状态表-2026-11.html">省级市场状态表</a>）。</p><p>本表只写气象侧。<strong>价格量由燃料决定</strong>（见 <a href="燃料与电力交易-2026-11.html">燃料与电力交易</a>），<strong>约束量由电网决定</strong>（见 <a href="省间与跨区交易-2026-11.html">省间与跨区交易</a> §5.5–§5.6）；三者叠加才解释尖峰与负价，不要拿单一链回答全部问题。</p></aside>
 <hr>
 <h2 id="s14">4. 误差归因、考核与偏差责任</h2>
 <p><strong>总误差要拆三层</strong>，否则&quot;气象不准&quot;会变成万能借口：</p>
@@ -222,7 +223,7 @@
 
     <nav class="pager" aria-label="上下篇">
           <a class="prev" href="海外市场同口径快照与投决日历-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">海外市场同口径快照与投决日历（2026 版）：十一市场、七列口径、五张工单</span></a>
-          <span class="spacer"></span>
+          <a class="next" href="燃料与电力交易-2026-11.html"><span class="dir">下一篇 →</span><span class="ttl">燃料与电力交易（2026 版）：一次能源、边际成本与报价</span></a>
     </nav>
 
     <footer class="doc-foot">

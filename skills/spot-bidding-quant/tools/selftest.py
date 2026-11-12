@@ -19,6 +19,7 @@ import bid
 import forecast as fc
 import simulate
 import weather as wx
+import network as nw
 from dataio import load_rows, to_days
 
 
@@ -165,6 +166,19 @@ def main() -> int:
     assert wx.basis_gap(1850.0, 1790.0) == 60.0
     assert wx.inflow_index_mm([20.0, 0.0, 35.0], 0.6, 1) == [0.0, 12.0, 0.0]
     print("hdd_payout=10000  capped=8000  basis_gap=60  lagged_runoff=[0,12,0]")
+
+    section("grid constraints and locational prices")
+    cong = nw.two_node_clearing(200.0, 1000.0, 500.0, 1000.0, 300.0, 600.0, 200.0)
+    assert cong["congested"] and cong["p_a"] == 200.0 and cong["p_b"] == 500.0
+    assert cong["flow_mw"] == 200.0 and cong["congestion_rent"] == 60000.0
+    assert cong["unbounded_price"] == 200.0, "without the limit one uniform price"
+    free = nw.two_node_clearing(200.0, 1000.0, 500.0, 1000.0, 300.0, 600.0, 700.0)
+    assert not free["congested"] and free["p_a"] == free["p_b"] == 200.0 and free["congestion_rent"] == 0.0
+    assert nw.location_basis(500.0, 200.0) == 300.0
+    atc = nw.available_transfer_capability(2000.0, 0.10, 0.05, 0.02)
+    assert abs(atc - 1675.8) < 1e-6
+    assert cong["congestion_rent"] == (500.0 - 200.0) * 200.0, "same calibre as market.py::congestion_surplus"
+    print(f"p_a={cong['p_a']:.0f}  p_b={cong['p_b']:.0f}  flow={cong['flow_mw']:.0f} MW  rent={cong['congestion_rent']:.0f}  ATC={atc:.1f} MW")
 
     section("summary")
     print("all checks passed")

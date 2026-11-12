@@ -85,8 +85,8 @@
       <p class="lede">Spot bidding, settlement, risk and market analysis</p>
       <p class="hook">Executable workflow and tools; synced with SKILL.md.</p>
       <div class="tags"><span class="tag">skill</span><span class="tag">spot</span><span class="tag">settlement</span><span class="tag">risk</span></div>
-      <div class="doc-meta"><span>approx. 127.8k characters</span><span>113 min read</span><span>17 sections</span><span>Data cutoff 2026-11-01</span></div>
-      <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-electricity-trading-expert-en.txt" download="Electricity Trading Expert-SKILL.txt">Download TXT</a><span>Full skill document, about 147 KB, frontmatter included</span></p>
+      <div class="doc-meta"><span>approx. 128.5k characters</span><span>114 min read</span><span>17 sections</span><span>Data cutoff 2026-11-01</span></div>
+      <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-electricity-trading-expert-en.txt" download="Electricity Trading Expert-SKILL.txt">Download TXT</a><span>Full skill document, about 148 KB, frontmatter included</span></p>
     </header>
 
     <details class="toc-mobile">
@@ -396,6 +396,8 @@ EPRX revenue ≈ Σ ΔkW × unit price (¥/ΔkW·30min) + dispatched energy × k
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Purpose</th><th>Tool</th><th>Address</th></tr></thead><tbody><tr><td>System clearing/planning simulation</td><td>PyPSA (~2.1k★)</td><td>github.com/pypsa/pypsa</td></tr><tr><td>Distribution power flow/VPP grid-connection checks</td><td>pandapower (~1.3k★)</td><td>github.com/e2nIEE/pandapower</td></tr><tr><td>Bidding agents/reinforcement learning</td><td>Grid2Op (~470★)</td><td>github.com/Grid2op/grid2op</td></tr><tr><td>North American ISO data scraping</td><td>gridstatus (~440★)</td><td>github.com/gridstatus/gridstatus</td></tr><tr><td>Market multi-agent simulation</td><td>PowerTAC / elecsim</td><td>github.com/PowerTAC/powertac-server</td></tr><tr><td>Carbon-aware dispatch</td><td>Carbon Aware SDK</td><td>github.com/Green-Software-Foundation/carbon-aware-sdk</td></tr><tr><td>Electricity carbon intensity data</td><td>Electricity Maps / WattTime</td><td>electricitymaps.com / watttime.org</td></tr><tr><td>China carbon data</td><td>National carbon trading platform / China Carbon Emissions Registration (中碳登) / CEADs</td><td>cets.com.cn / cnemission.com / ceads.net</td></tr></tbody></table></div>
 <h3 id="s94">15.4 Known Limitations</h3>
 <ul><li>Some scanned files carry OCR noise; occasional typos may remain (corrected by context where possible, formulas described in words);</li><li>The carbon practice book's data are from around 2016; for post-2021 national carbon market rules, Sections 10.1~10.5 (web research) prevail;</li><li>Items marked &quot;(to be verified)&quot; should prompt the user to verify when cited; the spot rules, retailer measure, risk-control measure, credit-evaluation guidelines and grid-connection provisions of September-October 2026 are <strong>drafts for comment</strong> and the final clauses may change;</li><li>Provincial rules update fast; this skill does not replace real-time policy search. Re-verify 2026 provincial spot formal operation, No. 136 auctions, capacity prices and VPP rules before answering;</li><li>Overseas markets (Chapter 7A) cover the Australian NEM, German DE-LU, UK GB, Italy, Spain, France, the Netherlands, Poland, Belgium and the Nordics, the United States (ERCOT/PJM/CAISO) and Japan, excluding the WA WEM, the Northern Territory, French overseas territories and other US ISOs/RTOs such as MISO, SPP, NYISO and ISO-NE; rules, taxes, grid connection and contracts require local official documents and professional advice;</li><li>2025 trading volumes exist in several calibers (&quot;market-traded 6.64 trillion / medium-long-term 6.3522 trillion / 4.81 trillion in some materials&quot;); the preferred caliber is stated in the text — check old materials against it.</li></ul>
+<h3 id="s95">15.5 Zero-dependency worked-example tools</h3>
+<ul><li><code>tools/fuel.py</code> (thermal-coal contract pricing, dual-track blended cost, fuel cost per MWh, dark/spark/clean spreads, coal-to-gas switching carbon price, inventory days) is locked to assertions in <code>tools/selftest.py</code> and corresponds to the knowledge base note <a href="燃料与电力交易-2026-11.html">fuel and power trading</a>. All examples are synthetic (grade D), not investment advice.</li><li><code>tools/market.py</code> owns congestion surplus, FTR payouts and LMP decomposition, mapped to <a href="省间与跨区交易-2026-11.html">inter-provincial and cross-region trading</a> §5.5. Two-node price separation and dynamic ATC belong to <code>spot-bidding-quant/tools/network.py</code> and are not re-implemented here; both use the same &quot;(price difference) x constrained flow&quot; calibre and are cross-checked.</li></ul>
     </article>
 
 
@@ -539,7 +541,8 @@ EPRX revenue ≈ Σ ΔkW × unit price (¥/ΔkW·30min) + dispatched energy × k
             <li class="lv3"><a href="#s92">15.2 Policy and Market Research (2025-2026-11)</a></li>
             <li class="lv3"><a href="#s93">15.3 Open-Source Toolbox (modeling and data)</a></li>
             <li class="lv3"><a href="#s94">15.4 Known Limitations</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="77" data-more-label="Show 77 subsections" data-less-label="Hide subsections">Show 77 subsections</button>
+            <li class="lv3"><a href="#s95">15.5 Zero-dependency worked-example tools</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="78" data-more-label="Show 78 subsections" data-less-label="Hide subsections">Show 78 subsections</button>
   </aside>
 </div>
 
