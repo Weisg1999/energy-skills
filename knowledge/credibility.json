@@ -2776,7 +2776,7 @@
     {
       "id": "m-prov-sh",
       "file": "上海电力市场-2026-11.md",
-      "title": "上海电力市场（2026 版）",
+      "title": "上海电力市场：连续结算试运行、超大城市受电与用户侧虚拟电厂（2026-11）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -2784,12 +2784,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Shanghai has been in continuous settlement trial since October 2025; a user-side VPP plan covers 2025-2027 and a 1.1627 GW call occurred in August 2025, with 136, capacity and spot caps open.",
+      "summaryEn": "Shanghai has been in continuous settlement trial since 2025-10-29 (formalisation pending) with a secondary price cap of 623.25 CNY/MWh; the user-side VPP plan (Hu Jing Xin Yun [2025] No. 407) targets 2.20 GW adjustable capacity by 2027 after a 1.1627 GW call in August 2025, while 2025 provincial generator settlement averaged 568.63 CNY/MWh.",
       "titleEn": null,
       "marks": {
-        "gradeC": 2,
-        "draft": 0,
-        "pending": 2,
+        "gradeC": 58,
+        "draft": 3,
+        "pending": 26,
         "example": 0
       },
       "exampleSections": []
@@ -2888,7 +2888,7 @@
     {
       "id": "m-prov-yn",
       "file": "云南电力市场-2026-11.md",
-      "title": "云南电力市场（2026 版）",
+      "title": "云南电力市场：区域正式叠加、高比例水电与 VPP 平台（2026 版）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -2896,12 +2896,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Yunnan is inside the formal Southern regional market (2026-10-24) with its provincial node open; VPP rules, platform integration, 330 CNY/kW-yr capacity and fixed-TOU retirement coexist.",
+      "summaryEn": "Yunnan recorded over 215 TWh of intra-provincial market trading in 2025 with a 75.28% marketisation rate, more than 100,000 registered participants and 91% clean-energy capacity; it joined the formal Southern regional market on 2026-10-24 while its provincial spot node remains unverified, and from 2026-01-01 recovers 100% of coal capacity costs at 330 CNY/kW-yr, with VPP rule No.198 and a provincial platform linked to the regional spot market since 2025-12-31.",
       "titleEn": null,
       "marks": {
-        "gradeC": 16,
-        "draft": 5,
-        "pending": 17,
+        "gradeC": 50,
+        "draft": 18,
+        "pending": 49,
         "example": 0
       },
       "exampleSections": []
@@ -3007,7 +3007,7 @@
     {
       "id": "m-prov-bj",
       "file": "北京电力市场-2026-11.md",
-      "title": "北京电力市场（2026 版）",
+      "title": "北京电力市场：受端城市的中长期/分时主导与京津唐区域现货路径（2026 版）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -3015,12 +3015,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Beijing’s 2026 market plan is medium/long-term and time-of-use based; no continuous spot trial is verified. 136 existing 0.3598 and 2026-27 cap 0.3598/kWh for 850 million kWh; capacity and VPP open.",
+      "summaryEn": "Beijing's 2026 market plan remains dominated by medium/long-term contracts and 24-period time-of-use settlement, with no verified continuous provincial spot trial; the 2026 volume is drafted at 95 TWh (35 TWh direct plus 60 TWh agent purchase) versus 91 TWh in 2025, while the No.136 existing-project mechanism price is 0.3598 CNY/kWh and the 2026-27 cap is 0.3598 CNY/kWh for 850 million kWh over 12 years.",
       "titleEn": null,
       "marks": {
-        "gradeC": 4,
-        "draft": 0,
-        "pending": 4,
+        "gradeC": 25,
+        "draft": 35,
+        "pending": 24,
         "example": 0
       },
       "exampleSections": []
@@ -3028,7 +3028,7 @@
     {
       "id": "m-prov-jl",
       "file": "吉林电力市场-2026-11.md",
-      "title": "吉林电力市场（2026 版）",
+      "title": "吉林电力市场：东北连续结算试运行、热电与风电、新能源报量报价调频（2026-11）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -3036,12 +3036,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Jilin is in continuous settlement trial (start date TBC); coal capacity is 330 CNY/kW-yr (2026, C), with 136, VPP and spot caps open.",
+      "summaryEn": "Jilin remains in continuous settlement trial (start node TBC; a 2025-09-01 launch appears in the exchange trial plan) rather than formal operation as of 2026-11-12: 2025 generation-side settlement reached 89.544 TWh at 391.671 CNY/MWh with 6,772 registered members, and the 2026 coal capacity standard is 330 CNY/kW-yr (C).",
       "titleEn": null,
       "marks": {
-        "gradeC": 8,
-        "draft": 0,
-        "pending": 7,
+        "gradeC": 41,
+        "draft": 4,
+        "pending": 36,
         "example": 0
       },
       "exampleSections": []
@@ -3049,7 +3049,7 @@
     {
       "id": "m-prov-sc",
       "file": "四川电力市场-2026-11.md",
-      "title": "四川电力市场（2026 版）",
+      "title": "四川电力市场（2026 版）：丰枯分期、水电同台与连续结算试运行",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -3057,12 +3057,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Sichuan remains in continuous-settlement trial: seasonal hydro/thermal auction design, run-of-river no-spill principle, coal capacity 231 CNY/kW-yr, with 136 still open.",
+      "summaryEn": "Sichuan spot market entered continuous-settlement trial in November 2025 without transitioning to formal operation; 2025 provincial medium/long-term volume was 215.598 TWh at 0.2418 CNY/kWh, the 109-day spot trial averaged 0.2193 CNY/kWh, 2025-2026 mechanism prices cleared at 0.393 (wind) and 0.372997 (PV) CNY/kWh, and coal capacity payment is 231 CNY/kW-yr.",
       "titleEn": null,
       "marks": {
-        "gradeC": 10,
-        "draft": 0,
-        "pending": 10,
+        "gradeC": 50,
+        "draft": 32,
+        "pending": 12,
         "example": 0
       },
       "exampleSections": []
@@ -3093,7 +3093,7 @@
     {
       "id": "m-prov-tj",
       "file": "天津电力市场-2026-11.md",
-      "title": "天津电力市场（2026 版）",
+      "title": "天津电力市场：尚未连续结算下的中长期/分时主导与京津冀协同路径（2026 版）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -3101,12 +3101,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Tianjin has not entered continuous spot settlement; its July 2026 implementation plan targets simulation by end-2026. 136 cap 0.32 for 4 billion kWh, 2027 solar auction 0.3196; coal capacity 231.",
+      "summaryEn": "Tianjin has not entered continuous spot settlement; its July 2026 implementation plan targets simulation trial by end-2026. The 2026 direct-trade volume is drafted at 37.5 TWh, annual concluded volume 30.896 TWh with 11.916 TWh green power; the No.136 cap is 0.32 CNY/kWh for 4 TWh with an auction result of 0.3196 CNY/kWh, and coal capacity price is 231 CNY/kW-year.",
       "titleEn": null,
       "marks": {
-        "gradeC": 1,
-        "draft": 0,
-        "pending": 1,
+        "gradeC": 20,
+        "draft": 3,
+        "pending": 20,
         "example": 0
       },
       "exampleSections": []
@@ -3114,7 +3114,7 @@
     {
       "id": "m-prov-nx",
       "file": "宁夏电力市场-2026-11.md",
-      "title": "宁夏电力市场（2026 版）",
+      "title": "宁夏电力市场：新能源高占比、现货连续结算试运行与机制电价（2026 版）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -3122,12 +3122,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Ningxia is in continuous settlement trial (start date TBC); 136, capacity, VPP and spot caps open.",
+      "summaryEn": "As of 2026-11-08 Ningxia's spot market is in continuous settlement trial (start date TBC; the status comes from a C-level industry compilation and is subject to the provincial notice); 2025 intraregional medium/long-term annual volume was 62.366 TWh at 0.271 CNY/kWh, renewables reached 59.6356 GW (65.44%) by May 2026, and the 2025-2026 mechanism-price auction cleared at 0.2595 CNY/kWh for 838 projects.",
       "titleEn": null,
       "marks": {
-        "gradeC": 9,
-        "draft": 0,
-        "pending": 8,
+        "gradeC": 81,
+        "draft": 21,
+        "pending": 32,
         "example": 0
       },
       "exampleSections": []
@@ -3135,7 +3135,7 @@
     {
       "id": "m-prov-ah",
       "file": "安徽电力市场-2026-11.md",
-      "title": "安徽电力市场（2026 版）",
+      "title": "安徽电力市场（2026 版）：新转正现货、独立储能容量电价与省级 VPP 运营中心",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -3143,12 +3143,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Anhui spot market (formal 2026-09-09): 136 implementation under revision, 165 CNY/kW-yr storage capacity, a fast-moving VPP framework and early retail-loss evidence.",
+      "summaryEn": "Anhui's spot market entered formal operation on 2026-09-09 (notice dated 2026-09-07, continuous settlement since 2024-12-31); document Wan Fagai Jiage [2026] No.526 sets a 165 CNY/kW-yr (tax-inclusive) capacity price for grid-side standalone storage with a 6-hour divisor from 2027-01-01, a provincial VPP operation centre was founded on 2026-09-03, and retail suppliers lost over 119 million CNY in 2026-01 (grade C).",
       "titleEn": null,
       "marks": {
-        "gradeC": 12,
+        "gradeC": 42,
         "draft": 0,
-        "pending": 11,
+        "pending": 35,
         "example": 0
       },
       "exampleSections": []
@@ -3179,7 +3179,7 @@
     {
       "id": "m-prov-sd",
       "file": "山东电力市场-2026-11.md",
-      "title": "山东电力市场（2026 版）",
+      "title": "山东电力市场（2026 版）：负电价、容量补偿与 5.9 万家主体的超大规模现货市场",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -3187,11 +3187,11 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Shandong spot market (formal 2024-06-17): negative prices, capacity compensation, five-segment TOU, 136 mechanism pricing and a 1 MW VPP threshold.",
+      "summaryEn": "Shandong's provincial spot market has been in formal operation since 2024-06-17: by end-2025 it had 59,169 registered participants, 448.5 TWh of market-based settled volume and 196.816 TWh of medium/long-term net contracts at 367.43 CNY/MWh; a revised Shandong Electricity Market Rules (Trial) took effect on 2026-01-01 with all standalone storage and pumped hydro bidding price and quantity, 2026 mechanism prices of 0.310 CNY/kWh for wind and 0.261 for solar, and VPP rules under Lu-Fagai-Nengyuan [2026] No. 407 with a 1 MW threshold.",
       "titleEn": null,
       "marks": {
-        "gradeC": 6,
-        "draft": 3,
+        "gradeC": 7,
+        "draft": 10,
         "pending": 7,
         "example": 0
       },
@@ -3200,7 +3200,7 @@
     {
       "id": "m-prov-sx",
       "file": "山西电力市场-2026-11.md",
-      "title": "山西电力市场（2026 版）",
+      "title": "山西电力市场（2026 版）：全国首个正式运行现货、5 分钟出清与外送省",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -3208,12 +3208,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Shanxi was China’s first provincial spot market to formalise (2023-12-22): circuit breaker, widened price caps, separate thermal/renewable caps, capacity price and VPP rules.",
+      "summaryEn": "Shanxi built China's first provincial spot market in formal operation on 2023-12-22, featuring all-power optimisation with renewable priority and a real-time clearing interval compressed from 15 to 5 minutes; in 2025 its intraprovincial medium/long-term volume reached 183.412 TWh (over 55% of total electricity consumption) with cumulative spot turnover of 1,620 TWh, and by end-2025 renewable and clean capacity hit 90.48 GW/55.1%, surpassing coal for the first time, while VPP aggregation under Jin-Nengyuan-Gui [2025] No. 4 ranked first nationwide.",
       "titleEn": null,
       "marks": {
-        "gradeC": 10,
-        "draft": 0,
-        "pending": 10,
+        "gradeC": 26,
+        "draft": 4,
+        "pending": 20,
         "example": 0
       },
       "exampleSections": []
@@ -3265,7 +3265,7 @@
     {
       "id": "m-prov-gx",
       "file": "广西电力市场-2026-11.md",
-      "title": "广西电力市场（2026 版）",
+      "title": "广西电力市场：南方区域正式叠加、省内节点待核与核电差价合约（2026 版）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -3273,12 +3273,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Guangxi is inside the formal Southern regional market (2026-10-24) while its provincial spot node remains open; 136, capacity, nuclear CfD and retail inversion coexist.",
+      "summaryEn": "Guangxi joined the formal Southern regional market on 2026-10-24 while its provincial spot node remains unverified: 2025 market-based trading reached 124.398 TWh (45.3% of total electricity use) with 26,300 registered participants; 2027 mechanism prices are 0.359 CNY/kWh for wind and 0.305 CNY/kWh for solar over 9.969 TWh, and nuclear power entered the market at full volume under a contract-for-difference from 2026-01.",
       "titleEn": null,
       "marks": {
-        "gradeC": 15,
-        "draft": 7,
-        "pending": 11,
+        "gradeC": 43,
+        "draft": 10,
+        "pending": 35,
         "example": 0
       },
       "exampleSections": []
@@ -3376,7 +3376,7 @@
     {
       "id": "m-prov-xj",
       "file": "新疆电力市场-2026-11.md",
-      "title": "新疆电力市场（2026 版）",
+      "title": "新疆电力市场：疆电外送、风光大基地与现货连续结算试运行（2026 版）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -3384,12 +3384,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Xinjiang is in continuous settlement trial (start date TBC); storage capacity is 165 CNY/kW-yr with a 6-hour denominator; 136, VPP and spot caps open.",
+      "summaryEn": "As of 2026-11-08 Xinjiang's spot market is in continuous settlement trial (start date TBC; the status comes from a C-level industry compilation and is subject to the provincial notice); 2025 intraregional market trading was 148.364 TWh at 223.03 CNY/MWh, outgoing power delivery was 141.299 TWh at 265.37 CNY/MWh, 18,097 entities were registered, and independent storage capacity is 165 CNY/kW-yr on a 6-hour denominator (No. 114 document).",
       "titleEn": null,
       "marks": {
-        "gradeC": 7,
+        "gradeC": 69,
         "draft": 0,
-        "pending": 6,
+        "pending": 40,
         "example": 0
       },
       "exampleSections": []
@@ -3490,7 +3490,7 @@
     {
       "id": "m-prov-js",
       "file": "江苏电力市场-2026-11.md",
-      "title": "江苏电力市场（2026 版）",
+      "title": "江苏电力市场：连续结算试运行、转正评估中、分布式光伏与海上风电第一大省（2026-11）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -3498,12 +3498,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Jiangsu entered continuous settlement trial on 2025-08-29; a third-party formalisation assessment started on 2026-05-09 and the provincial DRC targets readiness by end-2026. It is not yet formal. Spot caps are provisionally 1.5 CNY/kWh and 0.",
+      "summaryEn": "Jiangsu is NOT yet formal as of 2026-11-12: it has been in continuous settlement trial since 2025-08-29 with a 2026 formalisation assessment under way; 2025 annual traded volume was 328.22 TWh at 412.45 CNY/MWh with over 170,000 entities, and Su Fa Gai Gui Fa [2025] No. 5 sets spot caps at 1.5/0 CNY/kWh and the stock mechanism price at 0.391 CNY/kWh.",
       "titleEn": null,
       "marks": {
-        "gradeC": 2,
-        "draft": 0,
-        "pending": 2,
+        "gradeC": 39,
+        "draft": 5,
+        "pending": 28,
         "example": 0
       },
       "exampleSections": []
@@ -3511,7 +3511,7 @@
     {
       "id": "m-prov-jx",
       "file": "江西电力市场-2026-11.md",
-      "title": "江西电力市场（2026 版）",
+      "title": "江西电力市场：4.0 规则体系、连续结算试运行与 2026 机制电价竞价（2026 版）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -3519,12 +3519,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Jiangxi is in continuous settlement trial (start date TBC); the 136 auction covers 4.08 billion kWh at 0.24-0.379 CNY/kWh (C), with a VPP registration guide dated 2026-06-03.",
+      "summaryEn": "Jiangxi has been in continuous settlement trial operation since 2025-10-01 (start date pending provincial confirmation, not yet formal): October 2025 spot clearing averaged 0.37 CNY/kWh (-14.51% YoY) with a -0.1 CNY/kWh price floor; the 2026 mechanism-price auction covers 4.08 billion kWh at a 0.24-0.379 CNY/kWh band (C) with a 10-year term, alongside a VPP registration guide dated 2026-06-03.",
       "titleEn": null,
       "marks": {
-        "gradeC": 11,
+        "gradeC": 69,
         "draft": 0,
-        "pending": 5,
+        "pending": 52,
         "example": 0
       },
       "exampleSections": []
@@ -3532,7 +3532,7 @@
     {
       "id": "m-prov-hebei-north",
       "file": "河北北网电力市场-2026-11.md",
-      "title": "河北北网电力市场（2026 版）",
+      "title": "河北北网（冀北）电力市场：一省两网下的外送型电网与分时段结算（2026 版）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -3540,12 +3540,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "No continuous spot trial is verified for Hebei North (Jibei); it uses segmented settlement and is a separate grid/market from Hebei South. 136, capacity and VPP open.",
+      "summaryEn": "Hebei North (Jibei) has no verified continuous spot trial and uses segmented time-of-use settlement; its 2026 medium/long-term direct-trade volume is drafted at 87 TWh (83 TWh in 2025) with the external-generation cap tightened from 30% to 25%; 4,606 market entities were registered by end-2025, wind/solar capacity reached 83.65 GW (73.6% of total), and it is a separate grid and market from Hebei South.",
       "titleEn": null,
       "marks": {
-        "gradeC": 3,
-        "draft": 0,
-        "pending": 3,
+        "gradeC": 27,
+        "draft": 1,
+        "pending": 22,
         "example": 0
       },
       "exampleSections": []
@@ -3553,7 +3553,7 @@
     {
       "id": "m-prov-hebei",
       "file": "河北南网电力市场-2026-11.md",
-      "title": "河北南网电力市场（2026 版）",
+      "title": "河北南网电力市场：华北新转正、南网北网分列与固定分时退出（2026 版）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -3561,12 +3561,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Hebei South spot market (formal 2026-08-01): continuous settlement since 2025-03-01, retirement of fixed TOU tariffs, with 136, capacity and VPP details still open.",
+      "summaryEn": "Hebei South Grid's spot market entered formal operation on 2026-08-01 under Ji-fa-gai-yun-xing [2026] No. 719: 2025 saw 10,444 registered entities, 125.001 TWh of generation-side settlement at 419.41 CNY/MWh and user-side settlement at 400.82 CNY/MWh; the 2025-2026 incremental auction cleared at 0.3530 CNY/kWh for wind and 0.3344 CNY/kWh for solar, with independent storage capacity compensation at 100 CNY/kW-year.",
       "titleEn": null,
       "marks": {
-        "gradeC": 16,
+        "gradeC": 26,
         "draft": 0,
-        "pending": 17,
+        "pending": 23,
         "example": 0
       },
       "exampleSections": []
@@ -3574,7 +3574,7 @@
     {
       "id": "m-prov-henan",
       "file": "河南电力市场-2026-11.md",
-      "title": "河南电力市场（2026 版）",
+      "title": "河南电力市场：连续结算试运行、年报规模与两套容量口径（2026 版）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -3582,12 +3582,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Henan is in continuous settlement trial (start date TBC); emergency backup coal capacity is 188 CNY/kW-yr, the 330 reliable-capacity scheme is still draft, and fixed TOU is retired.",
+      "summaryEn": "Henan has been in continuous settlement trial operation since 2025-10-01 (start date pending provincial confirmation, not yet formal): 2025 saw 291.56 TWh of intraprovincial medium/long-term trading, a direct-trade settlement average of 401.67 CNY/MWh and over 40,000 registered participants; the emergency backup coal capacity price of 188 CNY/kW-yr (Yu Fa Gai Jia Guan [2026] No. 539, effective 2026-09) is in force, whereas the 330 CNY/kW-yr generation-side reliable capacity compensation remains an unenacted 2026-08 consultation draft.",
       "titleEn": null,
       "marks": {
-        "gradeC": 6,
-        "draft": 5,
-        "pending": 5,
+        "gradeC": 55,
+        "draft": 14,
+        "pending": 37,
         "example": 0
       },
       "exampleSections": []
@@ -3639,7 +3639,7 @@
     {
       "id": "m-prov-zj",
       "file": "浙江电力市场-2026-11.md",
-      "title": "浙江电力市场（2026 版）",
+      "title": "浙江电力市场（2026 版）：授权差价合约、现货转正与分时电价重构",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -3647,12 +3647,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Zhejiang spot market (formal 2025-08-07): government-authorised CfDs covering about 90% of energy, dual-settlement, staged user opening from 110 kV, VPP 2.0 and two 136 auction rounds.",
+      "summaryEn": "Zhejiang's provincial spot market entered formal operation on 2025-08-07 after 463 days of continuous settlement, the first in the Yangtze River Delta: 2025 provincial mid-to-long-term volume was 377.365 TWh at 390.73 CNY/MWh, the first 136 auction cleared at 381.6 CNY/MWh, and document Zhe Fagai Jiage [2026] No.112 cut the industrial peak-valley spread from about 0.83 to 0.50 CNY/kWh from 2026-07-01.",
       "titleEn": null,
       "marks": {
-        "gradeC": 8,
-        "draft": 0,
-        "pending": 7,
+        "gradeC": 33,
+        "draft": 7,
+        "pending": 13,
         "example": 0
       },
       "exampleSections": []
@@ -3660,7 +3660,7 @@
     {
       "id": "m-prov-hn",
       "file": "海南电力市场-2026-11.md",
-      "title": "海南电力市场（2026 版）",
+      "title": "海南电力市场：区域正式叠加、海岛电网与 1 MW VPP 门槛（2026 版）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -3668,12 +3668,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Hainan is inside the formal Southern regional market (2026-10-24) with its provincial node open; its VPP measure took effect on 2026-11-01 with a ≥1 MW/1 h threshold.",
+      "summaryEn": "Hainan set its 2026 market trading scale at 23.3 TWh (16.1 TWh direct trade) with new energy reaching 50.1% of installed capacity by mid-2026; it joined the formal Southern regional market on 2026-10-24 while its provincial rules still distinguish spot and non-spot modes with the conversion node unverified, the VPP measure Qiong Fagai Gui 2026 No.2 took effect on 2026-11-01 with a ≥1 MW/1 h threshold, and the first 136 auction covers 9.877 TWh.",
       "titleEn": null,
       "marks": {
-        "gradeC": 16,
+        "gradeC": 41,
         "draft": 0,
-        "pending": 17,
+        "pending": 39,
         "example": 0
       },
       "exampleSections": []
@@ -3751,7 +3751,7 @@
     {
       "id": "m-prov-hubei",
       "file": "湖北电力市场-2026-11.md",
-      "title": "湖北电力市场（2026 版）",
+      "title": "湖北电力市场：2025 转正、华中枢纽与水电丰枯定价（2026 版）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -3759,12 +3759,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Hubei spot market (formal June 2025): the Doc. 394 milestone, 165 CNY/kW-yr storage capacity under a list-based monthly assessment, fixed TOU retirement and take-or-pay settlement.",
+      "summaryEn": "Hubei's spot market entered formal operation on 2025-06-06 as the first of the second batch of pilots under Fa-gai-ban-ti-gai [2025] No. 394: 2025 wholesale settlement was 109.288 TWh at 437.448 CNY/MWh with retail at 420.944 CNY/MWh and 9,472 registered entities; hydropower supplies about 44% of generation with Three Gorges exports coexisting with import peaks, and independent storage receives list-based capacity compensation at 165 CNY/kW-year.",
       "titleEn": null,
       "marks": {
-        "gradeC": 17,
+        "gradeC": 60,
         "draft": 0,
-        "pending": 18,
+        "pending": 16,
         "example": 0
       },
       "exampleSections": []
@@ -3772,7 +3772,7 @@
     {
       "id": "m-prov-hunan",
       "file": "湖南电力市场-2026-11.md",
-      "title": "湖南电力市场（2026 版）",
+      "title": "湖南电力市场：连续结算试运行、华中大受端与丰枯电源结构（2026 版）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -3780,12 +3780,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Hunan remains in continuous-settlement trial; 136 auction 2.286 billion kWh at 0.23–0.35 CNY/kWh; coal capacity 330 CNY/kW-yr, with spot caps and VPP still open.",
+      "summaryEn": "Hunan remains in continuous-settlement trial operation and had not converted to formal provincial spot operation as of 2026-11-12: 2025 generation-side settlement was 136.797 TWh, retailers posted an aggregate profit of 190 million CNY and standalone storage settled 0.456/0.540 TWh on the up/down side; installed capacity reached 90.399 GW with new energy at 46.5% and total electricity consumption at 245.489 TWh, while the 2026 auction sets 2.286 TWh at 0.23–0.35 CNY/kWh (Document 612, result to be published separately) and coal capacity is 330 CNY/kW-yr (C grade).",
       "titleEn": null,
       "marks": {
-        "gradeC": 11,
-        "draft": 0,
-        "pending": 12,
+        "gradeC": 34,
+        "draft": 1,
+        "pending": 25,
         "example": 0
       },
       "exampleSections": []
@@ -3816,7 +3816,7 @@
     {
       "id": "m-prov-gs",
       "file": "甘肃电力市场-2026-11.md",
-      "title": "甘肃电力市场（2026 版）",
+      "title": "甘肃电力市场：高比例新能源送端省与现货正式运行（2026 版）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -3824,10 +3824,10 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Gansu spot market (formal 2024-09-05): high renewable share, 0–1,000 CNY/MWh caps, low 136 auction prices, generation-side capacity compensation and the minute-level renewable compliance mechanism.",
+      "summaryEn": "Gansu spot market (formal 2024-09-05, with a record 52 months of continuous settlement): in 2025 renewables were 65.17% of installed capacity, the marketisation ratio reached 88.25% and exports 80.89 TWh; from 2026 the spot bid band is 40-500 CNY/MWh and clearing 40-650 CNY/MWh, while the H1-2027 wind mechanism price is 0.2440 CNY/kWh.",
       "titleEn": null,
       "marks": {
-        "gradeC": 12,
+        "gradeC": 7,
         "draft": 0,
         "pending": 7,
         "example": 0
@@ -4162,7 +4162,7 @@
     {
       "id": "m-prov-fj",
       "file": "福建电力市场-2026-11.md",
-      "title": "福建电力市场（2026 版）",
+      "title": "福建电力市场：清洁能源高占比、核电基荷与 2026 现货转正（2026 版）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -4170,13 +4170,13 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Fujian spot market (formal 2026-09-30): high clean-energy share, full absorption, 15-minute rolling clearing, VPP participation in ancillary services and the 136 incremental auction.",
+      "summaryEn": "Fujian's spot market entered formal operation on 2026-09-30 under a 2026-09-21 notice: 2025 user-side market settlement reached 241.68 TWh (68.1% of provincial electricity use) across 42,842 registered entities with a generation-side direct-trade average of 0.4026 CNY/kWh; the 2026 incremental auction set a 0.16-0.39 CNY/kWh price band over 8.36 TWh of mechanism volume, with clean energy making up 67.0% of installed capacity.",
       "titleEn": null,
       "marks": {
-        "gradeC": 7,
-        "draft": 0,
-        "pending": 8,
-        "example": 0
+        "gradeC": 19,
+        "draft": 13,
+        "pending": 16,
+        "example": 1
       },
       "exampleSections": []
     },
@@ -4320,7 +4320,7 @@
     {
       "id": "m-prov-mengdong",
       "file": "蒙东电力市场-2026-11.md",
-      "title": "蒙东电力市场（2026 版）",
+      "title": "蒙东电力市场：东北区域下的连续结算试运行与外送型绿电基地（2026 版）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -4328,12 +4328,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Mengdong is in continuous settlement trial (start date TBC) and is a separate market from Mengxi. 136, capacity and VPP open.",
+      "summaryEn": "Mengdong is in continuous settlement trial (start node still to be verified), not formal operation; media report entry on 2025-10-20 under a '1+8' rule system. During the 14th Five-Year Plan its intraregional traded volume reached 143.6 TWh and cross-provincial volume 87.271 TWh, with 2025 green-power trade of 4.9 TWh; it is a separate grid and market from Mengxi.",
       "titleEn": null,
       "marks": {
-        "gradeC": 7,
-        "draft": 0,
-        "pending": 7,
+        "gradeC": 47,
+        "draft": 17,
+        "pending": 47,
         "example": 0
       },
       "exampleSections": []
@@ -4341,7 +4341,7 @@
     {
       "id": "m-prov-mx",
       "file": "蒙西电力市场-2026-11.md",
-      "title": "蒙西电力市场（2026 版）",
+      "title": "蒙西电力市场：独立电网、单轨制全电量现货与蒙东口径分列（2026 版）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -4349,12 +4349,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Mengxi spot market (formal 2025-02-24), China’s first full-volume single-track spot market: independent grid, 40–550/600 CNY/MWh caps, 136 existing price 0.2829 and newbuilds temporarily excluded.",
+      "summaryEn": "Mengxi spot market (formal 2025-02-24 via Nei Neng Yuan Dian Li Zi [2025] No.84, after 32 months of continuous settlement) is China's first full-volume single-track spot market: 2025 clearing volume 333.386 TWh, generation-side average 259.43 CNY/MWh and 3,963 participants; the 136 existing price is 0.2829 CNY/kWh while newbuilds are temporarily excluded from the mechanism.",
       "titleEn": null,
       "marks": {
-        "gradeC": 8,
-        "draft": 0,
-        "pending": 8,
+        "gradeC": 7,
+        "draft": 24,
+        "pending": 1,
         "example": 0
       },
       "exampleSections": []
@@ -4411,7 +4411,7 @@
     {
       "id": "m-prov-xz",
       "file": "西藏电力市场-2026-11.md",
-      "title": "西藏电力市场（2026 版）",
+      "title": "西藏电力市场：区内市场化交易、价差模式与水电调节（2026 版）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -4419,12 +4419,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "No spot operation is verified for Tibet; it uses within-region market-based trading. 136, capacity and VPP open.",
+      "summaryEn": "As of 2026-11-08 no spot market operation is verified for Tibet and it relies mainly on within-region market-based trading: 2025 intraregional medium/long-term annual volume was 2.0 TWh with 114 participating users, total electricity consumption was 17.583 TWh, clean energy exceeded 97.45% of generation and 6.332 TWh of clean power was exported; the No. 136 mechanism price, capacity price, VPP rules and spot caps all remain to be verified.",
       "titleEn": null,
       "marks": {
-        "gradeC": 5,
-        "draft": 0,
-        "pending": 5,
+        "gradeC": 41,
+        "draft": 55,
+        "pending": 41,
         "example": 0
       },
       "exampleSections": []
@@ -4642,7 +4642,7 @@
     {
       "id": "m-prov-gz",
       "file": "贵州电力市场-2026-11.md",
-      "title": "贵州电力市场（2026 版）",
+      "title": "贵州电力市场：区域正式叠加、136 配套修订与零售批零倒挂（2026 版）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -4650,12 +4650,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Guizhou is inside the formal Southern regional market (2026-10-24) with its provincial node open; 136 implementation is under revision, fixed TOU is retired, and retail-loss evidence exists.",
+      "summaryEn": "Guizhou settled 97.607 TWh of market trading in 2025 (60.47% of electricity sales) with 12,164 registered participants and a direct-trade average of 0.3888 CNY/kWh; it joined the formal Southern regional market on 2026-10-24 while its provincial spot market remains in continuous-settlement trial operation with the conversion node unverified, retail losses exceeded 40 million CNY in Jan-Feb 2026 with a 50% retail pass-through cap, and the 136 supporting rules were still under consultation in 2026-09.",
       "titleEn": null,
       "marks": {
-        "gradeC": 22,
-        "draft": 0,
-        "pending": 18,
+        "gradeC": 66,
+        "draft": 24,
+        "pending": 57,
         "example": 0
       },
       "exampleSections": []
@@ -4730,7 +4730,7 @@
     {
       "id": "m-prov-ln",
       "file": "辽宁电力市场-2026-11.md",
-      "title": "辽宁电力市场（2026 版）",
+      "title": "辽宁电力市场：连续结算试运行、负电价与核电机制电价分层（2026 版）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -4738,12 +4738,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Liaoning remains in continuous-settlement trial; 136 auction 5.308 billion kWh at 0.18–0.30 CNY/kWh; a 10 MW/5 MW VPP threshold, nuclear mechanism price and layered capacity rules.",
+      "summaryEn": "Liaoning has been in continuous-settlement trial operation since March 2025 and had not converted to formal provincial spot operation as of 2026-11-12: 2025 mid-to-long-term trading reached 177.202 TWh at an intra-provincial average of 386.43 CNY/MWh with 16,065 registered members; the 2026 rule sets bid and clearing bands of −0.1 to 1.1 and −0.1 to 1.5 CNY/kWh with negative prices, the 2027 auction of 5.308 TWh was published on 11-10 at 0.30 for wind and 0.20 CNY/kWh for solar, and the Hongyanhe nuclear average mechanism price is 0.3798 CNY/kWh.",
       "titleEn": null,
       "marks": {
-        "gradeC": 9,
-        "draft": 5,
-        "pending": 7,
+        "gradeC": 27,
+        "draft": 9,
+        "pending": 18,
         "example": 0
       },
       "exampleSections": []
@@ -4751,7 +4751,7 @@
     {
       "id": "m-prov-cq",
       "file": "重庆电力市场-2026-11.md",
-      "title": "重庆电力市场（2026 版）",
+      "title": "重庆电力市场（2026 版）：连续结算试运行、受端省间衔接与固定分时退出",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -4759,13 +4759,13 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Chongqing remains in continuous-settlement trial; fixed TOU tariffs have been retired, while 136, capacity, VPP and spot parameters remain largely open in this thin dossier.",
+      "summaryEn": "Chongqing spot market has been in continuous-settlement trial since 2025-11-01 and completed one full year on 2026-11-01 without transitioning to formal operation; 2025 annual medium/long-term volume was 61.307 TWh at 458.33 CNY/MWh, 2026H1 day-ahead and real-time averages were 0.3767 and 0.3887 CNY/kWh, and the 2025-2026 mechanism prices cleared at 0.3963 (PV) and 0.3961 (wind) CNY/kWh.",
       "titleEn": null,
       "marks": {
-        "gradeC": 22,
-        "draft": 0,
-        "pending": 23,
-        "example": 0
+        "gradeC": 38,
+        "draft": 10,
+        "pending": 8,
+        "example": 2
       },
       "exampleSections": []
     },
@@ -4797,7 +4797,7 @@
     {
       "id": "m-prov-sn",
       "file": "陕西电力市场-2026-11.md",
-      "title": "陕西电力市场（2026 版）",
+      "title": "陕西电力市场：2026-09-25 新转正现货、储能容量电价与固定分时退出（2026 版）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -4805,12 +4805,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Shaanxi spot market (formal 2026-09-25): coal capacity at 165 CNY/kW-yr, storage at 165/6h, retirement of fixed TOU tariffs and inter-provincial exports.",
+      "summaryEn": "Shaanxi spot market became formal on 2026-09-25 (Shaan Fa Gai Yun Xing [2026] No.1329, China's 10th): Jan-Aug 2026 bid-in clearing reached 112.164 TWh against 131 GW installed capacity; coal capacity payment 165 CNY/kW-yr and stand-alone storage 165/6h, while the 2026 mechanism price was published at 0.352 CNY/kWh for wind and 0.350 for solar.",
       "titleEn": null,
       "marks": {
-        "gradeC": 12,
+        "gradeC": 28,
         "draft": 0,
-        "pending": 13,
+        "pending": 22,
         "example": 0
       },
       "exampleSections": []
@@ -4843,7 +4843,7 @@
     {
       "id": "m-prov-qh",
       "file": "青海电力市场-2026-11.md",
-      "title": "青海电力市场（2026 版）",
+      "title": "青海电力市场：高比例清洁能源、送出省与连续结算试运行（2026 版）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -4851,12 +4851,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Qinghai is in continuous settlement trial (start date TBC); coal capacity is 185 CNY/kW-yr (2026, C), with 136, VPP and spot caps open.",
+      "summaryEn": "Qinghai has been in continuous settlement trial operation since 2025-11-01 (start date pending provincial confirmation, not yet formal): by October 2025 new-energy capacity reached 55,749.17 MW or 72.13% of provincial installed capacity, with wind, solar and hydro accounting for about 90% of generation; the 2026 generation-side reliable capacity compensation is set at a uniform 185 CNY/kW-yr (effective 2026-07-07, formerly a C-grade figure), and the first mechanism-price auction cleared both wind and solar at the 240 CNY/MWh cap.",
       "titleEn": null,
       "marks": {
-        "gradeC": 8,
+        "gradeC": 58,
         "draft": 0,
-        "pending": 6,
+        "pending": 33,
         "example": 0
       },
       "exampleSections": []
@@ -4885,7 +4885,7 @@
     {
       "id": "m-prov-hlj",
       "file": "黑龙江电力市场-2026-11.md",
-      "title": "黑龙江电力市场（2026 版）",
+      "title": "黑龙江电力市场：东北连续结算试运行、分时段交易与风电外送（2026-11）",
       "level": "core",
       "kind": "知识模块",
       "cutoff": "2026-11-08",
@@ -4893,12 +4893,12 @@
       "confidenceInferred": false,
       "examples": null,
       "historical": false,
-      "summaryEn": "Heilongjiang is in continuous settlement trial (start date TBC); coal capacity is 330 CNY/kW-yr (2026, C), with 136, VPP and spot caps open.",
+      "summaryEn": "Heilongjiang started continuous settlement trial in August 2025 (per the NEA Northeast regulator; the earlier start-node-TBC finding is retained): 2025 provincial traded volume was 60.897 TWh, direct-trade average 387.42 CNY/MWh with 3,610 registered entities, and the 2026 coal capacity standard is 330 CNY/kW-yr (C).",
       "titleEn": null,
       "marks": {
-        "gradeC": 7,
-        "draft": 0,
-        "pending": 6,
+        "gradeC": 50,
+        "draft": 18,
+        "pending": 40,
         "example": 0
       },
       "exampleSections": []
