@@ -696,7 +696,7 @@ EPRX 收入 ≈ Σ ΔkW × 单价(日元/ΔkW·30 分) + 调用电量 × kWh 单
 - 容量机制：`knowledge/容量机制横向对照-2026-11.md`（容量年金/拍卖/双向 CfD/战略储备/能量-only 五类原型；英国/意/西/法/波/比/德/北欧/荷兰/澳/美/日对照；单位换算、五个容量口径、降额、储能容量收入）。
 - 辅助服务：`knowledge/辅助服务与平衡市场对照-2026-11.md`（FCR/aFRR/mFRR、FCAS、BM、MSD/MB、EPRX；PICASSO/MARI/TERRE 接入进度与储能资格）。
 - 储能收益与数据源：`knowledge/储能收益建模与数据源-2026-11.md`（ENTSO-E、NESO、Elexon BMRS、GME、OMIE、REE、PSE、Nord Pool、北欧 TSO 等取数入口；按十一市场列国别入口与缺口；粒度/时区、RTE、退化、捕获率、降额、收入叠加、回测）。
-- PPA/绿证/tolling：`knowledge/跨国PPA与绿证-2026-11.md`（GO/REGO/REC/LGC/NFC/GEC、AIB EECS 跨境承认、十一市场支持工具与储能资格、CfD/CIS 叠加、merchant tail、tolling 条款、24/7 小时级匹配）。
+- PPA/绿证/tolling：`knowledge/跨国PPA与绿证-2026-11.md`（GO/REGO/REC/LGC/NFC/GEC、AIB EECS 跨境承认、十一市场支持工具与储能资格、CfD/CIS 叠加、merchant tail、tolling 条款、24/7 小时级匹配、合同估值与 P10/P50/P90 分布）。
 - 同口径快照与投决日历：`knowledge/海外市场同口径快照与投决日历-2026-11.md`（十一市场装机/储能/均价/负价小时/捕获率/并网排队/降额因子同表，已回填 2025 年 P0 数据，剩余空缺标“待核实”；五专题×十一市场覆盖矩阵；2026Q4–2027 事件日历、中国主体进入六道门槛、22 项 C 级数字复核工单）。
 - **用法**：先用单市场模块确认“当地规则”，再用横向专题做“跨市场比较”；横向专题不替代单市场规则、合同文本和当地法律意见。做投决前，先用同口径快照检查“这个数字能不能横着比”，再用单市场模块做项目级测算。
 
@@ -1037,7 +1037,8 @@ EPRX 收入 ≈ Σ ΔkW × 单价(日元/ΔkW·30 分) + 调用电量 × kWh 单
 
 ### 15.5 零依赖算例工具
 
-- `tools/fuel.py`（电煤长协定价、双轨混合成本、度电燃料成本、dark/spark/clean spread、煤改气转换碳价、库存天数）与 `tools/selftest.py` 断言双向锁定，对应知识库 [燃料与电力交易](../../knowledge/燃料与电力交易-2026-11.md)；算例为合成口径（D 级），不构成投决依据。
+- `tools/fuel.py`（电煤长协定价、双轨混合成本、度电燃料成本、dark/spark/clean spread、煤改气转换碳价、库存天数、气价 MMBtu/MWh 换算、LNG 吨/热值、油指数与 HH+液化费、CCGT 燃料/碳成本、容量电价折算）与 `tools/selftest.py` 断言双向锁定，对应知识库 [燃料与电力交易](../../knowledge/燃料与电力交易-2026-11.md) §3；算例为合成口径（D 级），不构成投决依据。
 - `tools/market.py` 的阻塞盈余、FTR 与 LMP 三分量分解对应 [省间与跨区交易](../../knowledge/省间与跨区交易-2026-11.md) §5.5；两节点价分离与动态 ATC 归 `spot-bidding-quant/tools/network.py`，本技能不重复实现，两者用同一「价差 × 受限潮流」口径交叉验证。
+- `tools/contracts.py`（远期曲线折现、捕获价/捕获率、floor/cap/collar/CfD/proxy/tolling payoff、merchant tail、DSCR、P10/P50/P90 与价格-捕获率相关抽样）对应 [跨国 PPA、绿证与 tolling](../../knowledge/跨国PPA与绿证-2026-11.md) §2.5、§7.6–§7.7；债务摊销、税盾与通胀指数化不在本模块，归 `storage-investment-operations/tools/finance.py`。
 
 - **价格驱动三链答题路由**：量（[气象与电力交易](../../knowledge/气象与电力交易-2026-11.md)）、价（[燃料与电力交易](../../knowledge/燃料与电力交易-2026-11.md)）、约束（[省间与跨区交易](../../knowledge/省间与跨区交易-2026-11.md) §5.5–§5.6）；回答「为什么这个时段电价高」前按量→价→约束→叠加排查，回归题见 [黄金问答集](../../knowledge/黄金问答集-2026-11.md) F 段 Q29–Q38。

@@ -531,7 +531,7 @@ after-tax cash flow = revenue − cost − income tax
 
 ### 7.6 Offshore wind and distributed PV specifics
 
-- **Offshore wind**: sea-use rights, marine EIA, military / civil aviation / maritime coordination; cable route, landing point, offshore substation; construction window constrained by wind and waves; typhoons, corrosion and high vessel costs.
+- **Offshore wind**: sea-use rights, marine EIA, military / civil aviation / maritime coordination; cable route, landing point, offshore substation; construction window constrained by wind and waves; typhoons, corrosion and high vessel costs. Revenue must separate CfD / mechanism price from market price (UK AR7 strike versus administrative strike: see note §5.5); decommissioning bonds and removal costs belong in the full-lifecycle cash flow. See note §5 for the development chain, four-country permitting and transmission models.
 - **Distributed PV**: roof ownership and load-bearing capacity, waterproofing, fire safety, host credit, load profile, reverse power flow and feeder capacity; payment-collection risk under the energy-management-contract model.
 
 ### 7.7 Connection red flags

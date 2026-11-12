@@ -20,6 +20,8 @@ jobs:
         run: node scripts/check-consistency.mjs
       - name: Check maintenance ledger structure
         run: node scripts/check-maintenance.mjs --check
+      - name: Verify the generated province matrix is up to date
+        run: node scripts/build-province-matrix.mjs --check
       - name: Verify the knowledge hub and credibility register are up to date
         run: node scripts/build-knowledge-html.mjs --check
       - name: Run the spot-bidding reference implementation self-test

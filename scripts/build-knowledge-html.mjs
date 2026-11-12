@@ -866,6 +866,8 @@ function convert(md, options = {}) {
 
     if (line.trim() === '') { i += 1; continue; }
 
+    if (/^\s*<!--.*-->\s*$/.test(line)) { i += 1; continue; }
+
     if (/^\s*([-*_])\s*\1\s*\1[\s-*_]*$/.test(line)) {
       out.push('<hr>');
       i += 1;

@@ -35,6 +35,7 @@ SKILL.md）与代码一旦漂移即失败，逐条打印 ``ok  ...``，任一断
 from __future__ import annotations
 
 import capacity
+import contracts
 import fuel
 import market
 import units
@@ -405,7 +406,158 @@ def main():
     close("fuel switch carbon price", fuel.switch_carbon_price(236.34, 320.0), 152.10909090909092, 1e-6)
     close("fuel dual-track gap", fuel.dual_track_gap(989.0, 800.0), 251.5, 1e-9)
     close("fuel inventory days", fuel.inventory_days(1500000.0, 100000.0), 15.0, 1e-9)
+
+    print("\n== gas and LNG conversion (synthetic, grade D)")
+    close("gas MMBtu->MWh factor", fuel.MMBTU_TO_MWH, 0.293071, 1e-12)
+    close("gas HH $3.37/MMBtu -> $/MWh", fuel.price_mmbtu_to_mwh(3.37), 11.4989, 1e-3)
+    close("gas TTF EUR85.83/MWh -> EUR/MMBtu", fuel.price_mwh_to_mmbtu(85.83), 25.1543, 1e-3)
+    close("gas MMBtu round-trip", fuel.mwh_to_mmbtu(fuel.mmbtu_to_mwh(3.37)), 3.37, 1e-9)
+    close("gas 1 t LNG -> MMBtu", fuel.lng_tonnes_to_mmbtu(1.0), 48.7, 1e-9)
+    close("gas 1 t LNG -> MWh", fuel.lng_tonnes_to_mwh(1.0), 14.2726, 1e-3)
+    close("gas 2.6 CNY/m3 -> CNY/GJ", fuel.gas_price_from_m3(2.6), 72.222222, 1e-6)
+    close("gas fuel 6.3 GJ/MWh", fuel.gas_fuel_cost(fuel.gas_price_from_m3(2.6), 6.3), 455.0, 1e-6)
+    close("gas CCGT 58% fuel", fuel.ccgt_fuel_cost(85.83, 0.58), 147.9828, 1e-3)
+    close("gas CCGT 60% fuel", fuel.ccgt_fuel_cost(85.83, 0.60), 143.05, 1e-3)
+    close("gas carbon 85 x 0.36", fuel.gas_carbon_cost(85.0, 0.36), 30.6, 1e-9)
+    close(
+        "gas clean spark 58%",
+        120.0 - fuel.ccgt_fuel_cost(85.83, 0.58) - fuel.gas_carbon_cost(85.0, 0.36) - 5.0,
+        -63.5828,
+        1e-3,
+    )
+    close(
+        "gas clean spark 60%",
+        120.0 - fuel.ccgt_fuel_cost(85.83, 0.60) - fuel.gas_carbon_cost(85.0, 0.36) - 5.0,
+        -58.65,
+        1e-3,
+    )
+    close("gas oil-indexed 80 x 11.5%", fuel.oil_indexed_lng_price(80.0, 0.115), 9.2, 1e-9)
+    close(
+        "gas oil-indexed in $/MWh",
+        fuel.price_mmbtu_to_mwh(fuel.oil_indexed_lng_price(80.0, 0.115)),
+        31.3917,
+        1e-3,
+    )
+    close("gas DES cost", fuel.lng_des_cost_usd_per_mmbtu(3.37), 7.37, 1e-9)
+    close(
+        "gas DES in $/MWh",
+        fuel.price_mmbtu_to_mwh(fuel.lng_des_cost_usd_per_mmbtu(3.37)),
+        25.1475,
+        1e-3,
+    )
+    close("gas JKM netback $/MMBtu", fuel.lng_netback(31.70, 7.37), 24.33, 1e-6)
+    close(
+        "gas JKM netback $/MWh",
+        fuel.price_mmbtu_to_mwh(fuel.lng_netback(31.70, 7.37)),
+        83.0174,
+        1e-3,
+    )
+    close(
+        "gas capacity 264 CNY/kW-yr -> CNY/MWh",
+        fuel.capacity_price_per_mwh(264.0, 2000.0),
+        132.0,
+        1e-9,
+    )
+    close(
+        "gas China total cost",
+        fuel.gas_fuel_cost(fuel.gas_price_from_m3(2.6), 6.3)
+        + fuel.capacity_price_per_mwh(264.0, 2000.0),
+        587.0,
+        1e-6,
+    )
+    check(
+        0.0 < fuel.capacity_price_per_mwh(264.0, 2000.0) / 587.0 < 0.25,
+        "gas capacity share below 25%",
+    )
     close("G congestion surplus cross-check", market.congestion_surplus(500.0, 200.0, 200.0), 60000.0, 1e-6)
+
+    print("\n== contract and asset valuation (synthetic, grade D)")
+    close("H annuity factor 10y 7%", contracts.annuity_factor(10, 0.07), 7.02358154, 1e-8)
+    close("H PV of 10 x 1 at 7%", contracts.pv([1.0] * 10, 0.07), 7.02358154, 1e-8)
+    close(
+        "H forward strip PV",
+        contracts.forward_strip_pv([100.0, 100.0], [1000.0, 1000.0], 0.10),
+        173553.719008,
+        1e-6,
+    )
+    project = [-100.0, 30.0, 30.0, 30.0, 30.0]
+    check(abs(contracts.npv(project, contracts.irr(project))) < 1e-6, "H IRR zeroes NPV")
+    close("H capture price", contracts.capture_price([20.0, 80.0], [100.0, 50.0]), 40.0, 1e-9)
+    close("H capture rate", contracts.capture_rate(40.0, 60.0), 0.6666666667, 1e-9)
+    close("H floor pays at 30", contracts.floor_payoff(30.0, 45.0, 40_000.0), 600_000.0, 1e-6)
+    close("H floor pays zero at 60", contracts.floor_payoff(60.0, 45.0, 40_000.0), 0.0, 1e-9)
+    close("H cap gives up at 100", contracts.cap_payoff(100.0, 90.0, 40_000.0), 400_000.0, 1e-6)
+    close("H cap gives up zero at 75", contracts.cap_payoff(75.0, 90.0, 40_000.0), 0.0, 1e-9)
+    close("H collar floor leg", contracts.collar_payoff(30.0, 45.0, 90.0, 40_000.0), 600_000.0, 1e-6)
+    close("H collar cap leg", contracts.collar_payoff(100.0, 45.0, 90.0, 40_000.0), -400_000.0, 1e-6)
+    close("H collar inside band", contracts.collar_payoff(60.0, 45.0, 90.0, 40_000.0), 0.0, 1e-9)
+    close("H CfD top-up", contracts.cfd_settlement(80.0, 60.0, 150_000.0), 3_000_000.0, 1e-6)
+    close("H CfD clawback", contracts.cfd_settlement(80.0, 90.0, 150_000.0), -1_500_000.0, 1e-6)
+    close("H proxy revenue swap", contracts.proxy_revenue_swap(5_000_000.0, 4_200_000.0), 800_000.0, 1e-6)
+    close("H tolling gross", contracts.tolling_gross_revenue(100.0, 60_000.0, 0.97), 5_820_000.0, 1e-6)
+    close(
+        "H tolling net",
+        contracts.tolling_net_revenue(100.0, 60_000.0, 0.97, 1_000_000.0, 500_000.0, 200_000.0),
+        4_120_000.0,
+        1e-6,
+    )
+    close(
+        "H tolling breakeven fee",
+        contracts.tolling_breakeven_fee(4_000_000.0, 1_000_000.0, 500_000.0, 200_000.0, 100.0, 0.97),
+        58_762.886598,
+        1e-6,
+    )
+    close(
+        "H merchant tail PV",
+        contracts.merchant_tail_pv(50.0, 70_000.0, 10, 0.07),
+        24_582_535.39,
+        0.01,
+    )
+    net_scenarios = [5.492, 5.492, 6.092, 6.692, 7.292]
+    stats = contracts.scenario_stats(net_scenarios)
+    close("H scenario mean", stats["mean"], 6.212, 1e-12)
+    close("H scenario P10", stats["p10"], 5.492, 1e-12)
+    close("H scenario P50", stats["p50"], 6.092, 1e-12)
+    close("H scenario P90", stats["p90"], 7.052, 1e-12)
+    close(
+        "H 10y PV of scenario mean",
+        stats["mean"] * contracts.annuity_factor(10, 0.07),
+        43.6305,
+        1e-4,
+    )
+    close("H DSCR at P10", contracts.dscr(5_492_000.0, 4_393_600.0), 1.25, 1e-9)
+    close(
+        "H max debt at P10",
+        contracts.max_debt_by_dscr(5_492_000.0, 1.25, 0.05, 10),
+        33_926_214.58,
+        0.1,
+    )
+    close(
+        "H max debt at P50",
+        contracts.max_debt_by_dscr(6_092_000.0, 1.25, 0.05, 10),
+        37_632_647.35,
+        0.1,
+    )
+    neg = contracts.scenario_stats(
+        contracts.simulate_correlated_revenue(
+            60.0, 15.0, 1.0, 0.1, 40_000.0, rho=-0.8, draws=20_000, seed=7
+        )
+    )
+    ind = contracts.scenario_stats(
+        contracts.simulate_correlated_revenue(
+            60.0, 15.0, 1.0, 0.1, 40_000.0, rho=0.0, draws=20_000, seed=7
+        )
+    )
+    pos = contracts.scenario_stats(
+        contracts.simulate_correlated_revenue(
+            60.0, 15.0, 1.0, 0.1, 40_000.0, rho=0.8, draws=20_000, seed=7
+        )
+    )
+    check(
+        neg["mean"] < ind["mean"] < pos["mean"],
+        "H negative price-capture correlation lowers mean revenue",
+    )
+    check(ind["p10"] < ind["p50"] < ind["p90"], "H revenue quantiles are ordered")
 
     print(f"\nAll electricity-trading-expert self-tests passed ({_COUNT} assertions).")
 

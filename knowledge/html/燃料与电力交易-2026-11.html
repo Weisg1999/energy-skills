@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>燃料与电力交易（2026 版）：一次能源、边际成本与报价 | energy-skills 知识库</title>
-<meta name="description" content="气象决定能发多少、要用多少，燃料决定发一度电要多少钱；2026 年电煤长协以 675 元/吨为基准、基准价+浮动价各占 50%，政策区间 570–770 元/吨，签约覆盖率要求发电侧不低于 80%；长协与市场煤双轨使同一现货涨幅在不同电厂产生完全不同的度电成本。本页补齐燃料成本到边际报价的转换链、点火价差与清洁价差、煤/气切换碳价、库存与合约风险。">
+<meta name="description" content="气象决定能发多少、要用多少，燃料决定发一度电要多少钱；2026 年电煤长协以 675 元/吨为基准、基准价+浮动价各占 50%，政策区间 570–770 元/吨，签约覆盖率要求发电侧不低于 80%；长协与市场煤双轨使同一现货涨幅在不同电厂产生完全不同的度电成本。本页补齐燃料成本到边际报价的转换链、点火价差与清洁价差、煤/气切换碳价、库存与合约风险，并单列天然气/LNG 的三大枢纽、单位换算、长协结构与气电两部制成本。">
 <link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
@@ -80,42 +80,43 @@
     <header class="doc-head">
       <div class="kicker">05 · CROSS<i>知识模块</i></div>
       <h1 class="doc-title">燃料与电力交易：一次能源、边际成本与报价（2026-11）</h1>
-      <p class="lede">气象决定能发多少、要用多少，燃料决定发一度电要多少钱；2026 年电煤长协以 675 元/吨为基准、基准价+浮动价各占 50%，政策区间 570–770 元/吨，签约覆盖率要求发电侧不低于 80%；长协与市场煤双轨使同一现货涨幅在不同电厂产生完全不同的度电成本。本页补齐燃料成本到边际报价的转换链、点火价差与清洁价差、煤/气切换碳价、库存与合约风险。</p>
+      <p class="lede">气象决定能发多少、要用多少，燃料决定发一度电要多少钱；2026 年电煤长协以 675 元/吨为基准、基准价+浮动价各占 50%，政策区间 570–770 元/吨，签约覆盖率要求发电侧不低于 80%；长协与市场煤双轨使同一现货涨幅在不同电厂产生完全不同的度电成本。本页补齐燃料成本到边际报价的转换链、点火价差与清洁价差、煤/气切换碳价、库存与合约风险，并单列天然气/LNG 的三大枢纽、单位换算、长协结构与气电两部制成本。</p>
       <p class="hook">2026-11 · 量由气象 / 价由燃料 / 约束由电网</p>
-      <div class="tags"><span class="tag">燃料</span><span class="tag">电煤长协</span><span class="tag">动力煤</span><span class="tag">边际成本</span><span class="tag">点火价差</span><span class="tag">清洁价差</span><span class="tag">煤电</span><span class="tag">气电</span><span class="tag">库存</span><span class="tag">双轨制</span></div>
-      <div class="doc-meta"><span>约 9.0k 字</span><span>阅读约 15 分钟</span><span>11 节</span><span>数据截止 2026-11-12</span></div>
+      <div class="tags"><span class="tag">燃料</span><span class="tag">电煤长协</span><span class="tag">动力煤</span><span class="tag">边际成本</span><span class="tag">点火价差</span><span class="tag">清洁价差</span><span class="tag">煤电</span><span class="tag">气电</span><span class="tag">天然气</span><span class="tag">LNG</span><span class="tag">TTF</span><span class="tag">JKM</span><span class="tag">Henry Hub</span><span class="tag">热耗率</span><span class="tag">库存</span><span class="tag">双轨制</span></div>
+      <div class="doc-meta"><span>约 14.0k 字</span><span>阅读约 23 分钟</span><span>12 节</span><span>数据截止 2026-11-12</span></div>
     </header>
 
     <details class="toc-mobile">
-      <summary>本页目录（11）</summary>
+      <summary>本页目录（12）</summary>
       <ol>
             <li class="lv2"><a href="#s1">0. 一页看懂：量与价是两条链</a></li>
             <li class="lv2"><a href="#s4">1. 燃料品种与价格口径</a></li>
             <li class="lv2"><a href="#s8">2. 燃料成本 → 边际报价</a></li>
-            <li class="lv2"><a href="#s12">3. 煤电、气电与切换</a></li>
-            <li class="lv2"><a href="#s13">4. 燃料—碳价—电价传导</a></li>
-            <li class="lv2"><a href="#s14">5. 合约、库存与风险</a></li>
-            <li class="lv2"><a href="#s15">6. D 级合成算例（五组，仅演示方法）</a></li>
-            <li class="lv2"><a href="#s16">7. 查证入口、观察清单与待核项</a></li>
-            <li class="lv2"><a href="#s19">速查</a></li>
-            <li class="lv2"><a href="#s20">与技能和其他笔记的分工</a></li>
-            <li class="lv2"><a href="#s21">更新记录</a></li>
+            <li class="lv2"><a href="#s12">3. 天然气与 LNG：另一个价格锚</a></li>
+            <li class="lv2"><a href="#s19">4. 煤电、气电与切换</a></li>
+            <li class="lv2"><a href="#s20">5. 燃料—碳价—电价传导</a></li>
+            <li class="lv2"><a href="#s21">6. 合约、库存与风险</a></li>
+            <li class="lv2"><a href="#s22">7. D 级合成算例（十组，仅演示方法）</a></li>
+            <li class="lv2"><a href="#s23">8. 查证入口、观察清单与待核项</a></li>
+            <li class="lv2"><a href="#s26">速查</a></li>
+            <li class="lv2"><a href="#s27">与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s28">更新记录</a></li>
       </ol>
     </details>
 
     <article class="prose">
-<aside class="note note-head"><p>数据截止：2026-11-12｜定位：横向专题（cross 第 8 篇）。气象模块补的是「量」，本页补的是「价」：气象决定能发多少、要用多少，燃料决定发一度电要多少钱；电网约束决定能不能送到，见 <a href="省间与跨区交易-2026-11.html">省间与跨区交易</a> §5.5–§5.6。</p><p>适用边界：只写<strong>燃料与一次能源如何变成报价与风险</strong>，不写煤炭/天然气市场行情预测、不做商品交易建议、不重复现货规则与结算公式。预测方法论与报价接口见 <a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a>；电价制度与文号见 <a href="中国电价现行政策与查证-2026-11.html">中国电价现行政策与查证</a>。</p><p>用途：回答&quot;煤价涨了电价会怎么动&quot;&quot;为什么同一省份两个电厂报价差很多&quot;&quot;长协覆盖率为什么重要&quot;&quot;点火价差和清洁价差怎么算&quot;&quot;燃料风险能对冲吗&quot;五类问题。</p><p>内容纪律：数字带时点 + 口径 + A/B/C/D 级别；A＝政府/监管正式文件，B＝上市公司公告、央媒与官方发布会，C＝行业媒体/研究口径，D＝本库合成算例。<strong>本页的电煤长协基准价与公式来自上市公司公告和行业媒体，未核到国家发改委定价原文，一律标 B/C 并注明待核实</strong>，不得当作已核实的官方条文。</p></aside>
+<aside class="note note-head"><p>数据截止：2026-11-12｜定位：横向专题（cross 第 8 篇）。气象模块补的是「量」，本页补的是「价」：气象决定能发多少、要用多少，燃料决定发一度电要多少钱；电网约束决定能不能送到，见 <a href="省间与跨区交易-2026-11.html">省间与跨区交易</a> §5.5–§5.6。</p><p>适用边界：只写<strong>燃料与一次能源如何变成报价与风险</strong>，不写煤炭/天然气市场行情预测、不做商品交易建议、不重复现货规则与结算公式。预测方法论与报价接口见 <a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a>；电价制度与文号见 <a href="中国电价现行政策与查证-2026-11.html">中国电价现行政策与查证</a>。</p><p>用途：回答&quot;煤价涨了电价会怎么动&quot;&quot;为什么同一省份两个电厂报价差很多&quot;&quot;长协覆盖率为什么重要&quot;&quot;点火价差和清洁价差怎么算&quot;&quot;气价（HH/TTF/JKM）怎么换算成度电成本&quot;&quot;燃料风险能对冲吗&quot;六类问题。</p><p>内容纪律：数字带时点 + 口径 + A/B/C/D 级别；A＝政府/监管正式文件，B＝上市公司公告、央媒与官方发布会，C＝行业媒体/研究口径，D＝本库合成算例。<strong>本页的电煤长协基准价与公式来自上市公司公告和行业媒体，未核到国家发改委定价原文，一律标 B/C 并注明待核实</strong>，不得当作已核实的官方条文。</p></aside>
 <hr>
 <h2 id="s1">0. 一页看懂：量与价是两条链</h2>
-<h3 id="s2">0.1 十条结论</h3>
-<ol><li><strong>两条链</strong>：气象→负荷/出力（物理量），燃料→边际成本（价格量），两者合起来才决定报价曲线；只补气象等于只补了一半。</li><li><strong>长协基准价</strong>：2026 年电煤 5500 大卡下水煤长协以 <strong>675 元/吨</strong>为基准、政策区间 <strong>570–770 元/吨</strong>（B/C，<a href="https://hxny.com/nd-134438-0-17.html" target="_blank" rel="noopener">华夏能源网</a>、<a href="https://www.sgpjbg.com/searchtag/27329659.html" target="_blank" rel="noopener">行业报告</a>；<strong>未核到发改委原文，待核实</strong>）。</li><li><strong>公式斜率 0.5</strong>：<code>当月长协价 = 675 + (现货指数均价 − 675)/2</code>。现货涨 100 元，长协只涨 50 元；跌 100 元也只跌 50 元，价差被制度性放大（C，行业口径）。</li><li><strong>四指数</strong>：5000 大卡出矿价按 CECI（中电联沿海电煤 5500 大卡综合价）、NCEI（国煤下水动力煤）、BSPI（环渤海动力煤）、CCTD 秦皇岛 5500 大卡综合价四者均值浮动，结算按实际发运热值（B，<a href="https://www.cnfin.com/announ/detail/index.html?dannoun=lcdetail&amp;id=846434108761" target="_blank" rel="noopener">新集能源投资者活动记录表</a>、<a href="https://www.cls.cn/detail/xk/b56b3519f39daea180533346ba7f4012" target="_blank" rel="noopener">财联社</a>）。</li><li><strong>覆盖率决定成本</strong>：签约要求煤企不低于自有资源量 75%、发电企业不低于签约需求量 80%；履约率月度不低于 80%、季度与全年原则上不低于 90%（C，行业报告口径，待核正式文）。某上市公司 2026 年长协签约占比约 <strong>80%</strong>（B，企业公告）。</li><li><strong>双轨价差</strong>：2026-09 CCTD 秦港 5500 大卡年度长协约 704 元/吨、现货报价 989 元/吨，价差近 280 元；10 月中旬港口 5500 大卡报 1,028 元/吨（C，行业媒体，带时点）。<strong>长协覆盖率低的电厂直接暴露在现货价下</strong>，成本结构因此分化。</li><li><strong>库存是缓冲垫</strong>：六大电厂煤炭可用天数 2026-07 初 17.2 天 → 09 月 15.2 天（历史低位），日均耗煤 93.8 万吨、同比 +10.3%；另一口径 493 家燃煤电厂库存 9,020.6 万吨、可用 24 天（C，行业报告，口径不同不可横比）。</li><li><strong>容量电价补固定成本，燃料补变动成本</strong>：1501 号文体系的煤电容量电价（如安徽 2026-01-01 起 165 元/kW·年）不能替代燃料成本；把两者混算会系统性低估边际报价（B，企业公告；制度见 <a href="中国电价史-2026-11.html">中国电价史</a>）。</li><li><strong>价差工具</strong>：dark spread＝电价−煤电燃料成本，spark spread＝电价−气电燃料成本；clean spread 再减碳价×排放因子。煤排放因子约 0.9–1.0、气约 0.36–0.40 tCO₂/MWh（C，行业资料，随机组效率变化）。</li><li><strong>碳价会改变排序</strong>：使煤与气边际成本相等的转换碳价 <code>= (气成本−煤成本)/(煤排放因子−气排放因子)</code>；碳价高于该值时气电在报价序列中前移（C，<a href="https://www.coleurope.eu/sites/default/files/research-paper/beer20.pdf" target="_blank" rel="noopener">EU ETS 研究</a>）。国内碳价对煤电边际报价的实际传导幅度<strong>待核实</strong>。</li></ol>
+<h3 id="s2">0.1 十一条结论</h3>
+<ol><li><strong>两条链</strong>：气象→负荷/出力（物理量），燃料→边际成本（价格量），两者合起来才决定报价曲线；只补气象等于只补了一半。</li><li><strong>长协基准价</strong>：2026 年电煤 5500 大卡下水煤长协以 <strong>675 元/吨</strong>为基准、政策区间 <strong>570–770 元/吨</strong>（B/C，<a href="https://hxny.com/nd-134438-0-17.html" target="_blank" rel="noopener">华夏能源网</a>、<a href="https://www.sgpjbg.com/searchtag/27329659.html" target="_blank" rel="noopener">行业报告</a>；<strong>未核到发改委原文，待核实</strong>）。</li><li><strong>公式斜率 0.5</strong>：<code>当月长协价 = 675 + (现货指数均价 − 675)/2</code>。现货涨 100 元，长协只涨 50 元；跌 100 元也只跌 50 元，价差被制度性放大（C，行业口径）。</li><li><strong>四指数</strong>：5000 大卡出矿价按 CECI（中电联沿海电煤 5500 大卡综合价）、NCEI（国煤下水动力煤）、BSPI（环渤海动力煤）、CCTD 秦皇岛 5500 大卡综合价四者均值浮动，结算按实际发运热值（B，<a href="https://www.cnfin.com/announ/detail/index.html?dannoun=lcdetail&amp;id=846434108761" target="_blank" rel="noopener">新集能源投资者活动记录表</a>、<a href="https://www.cls.cn/detail/xk/b56b3519f39daea180533346ba7f4012" target="_blank" rel="noopener">财联社</a>）。</li><li><strong>覆盖率决定成本</strong>：签约要求煤企不低于自有资源量 75%、发电企业不低于签约需求量 80%；履约率月度不低于 80%、季度与全年原则上不低于 90%（C，行业报告口径，待核正式文）。某上市公司 2026 年长协签约占比约 <strong>80%</strong>（B，企业公告）。</li><li><strong>双轨价差</strong>：2026-09 CCTD 秦港 5500 大卡年度长协约 704 元/吨、现货报价 989 元/吨，价差近 280 元；10 月中旬港口 5500 大卡报 1,028 元/吨（C，行业媒体，带时点）。<strong>长协覆盖率低的电厂直接暴露在现货价下</strong>，成本结构因此分化。</li><li><strong>库存是缓冲垫</strong>：六大电厂煤炭可用天数 2026-07 初 17.2 天 → 09 月 15.2 天（历史低位），日均耗煤 93.8 万吨、同比 +10.3%；另一口径 493 家燃煤电厂库存 9,020.6 万吨、可用 24 天（C，行业报告，口径不同不可横比）。</li><li><strong>容量电价补固定成本，燃料补变动成本</strong>：1501 号文体系的煤电容量电价（如安徽 2026-01-01 起 165 元/kW·年）不能替代燃料成本；把两者混算会系统性低估边际报价（B，企业公告；制度见 <a href="中国电价史-2026-11.html">中国电价史</a>）。</li><li><strong>价差工具</strong>：dark spread＝电价−煤电燃料成本，spark spread＝电价−气电燃料成本；clean spread 再减碳价×排放因子。煤排放因子约 0.9–1.0、气约 0.36–0.40 tCO₂/MWh（C，行业资料，随机组效率变化）。</li><li><strong>碳价会改变排序</strong>：使煤与气边际成本相等的转换碳价 <code>= (气成本−煤成本)/(煤排放因子−气排放因子)</code>；碳价高于该值时气电在报价序列中前移（C，<a href="https://www.coleurope.eu/sites/default/files/research-paper/beer20.pdf" target="_blank" rel="noopener">EU ETS 研究</a>）。国内碳价对煤电边际报价的实际传导幅度<strong>待核实</strong>。</li><li><strong>气价是第二个锚</strong>：Henry Hub 用 $/MMBtu、TTF 用 €/MWh、JKM 用 $/MMBtu，三套尺子必须先用 1 MMBtu = 0.293071 MWh 统一；再除以机组效率才是电口径成本。2026-10 TTF 月均 €85.83/MWh、2026-11-03 JKM $31.70/MMBtu、HH 2026 年均约 $3.37/MMBtu，价差是液化、运输与区域供需，不是无风险套利（B/C，见 §3）。</li></ol>
 <h3 id="s3">0.2 量与价的分工</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>环节</th><th>气象模块给什么</th><th>本页给什么</th><th>汇合在哪</th></tr></thead><tbody><tr><td>发电侧</td><td>风速、辐照、来水 → 风光水出力</td><td>煤价、气价、煤耗 → 火电边际成本</td><td>报价序列与出清价</td></tr><tr><td>用电侧</td><td>温度、湿度 → 负荷曲线</td><td>燃料价格 → 中长期/零售定价预期</td><td>净负荷与合约覆盖</td></tr><tr><td>风险侧</td><td>极端天气、预测误差</td><td>库存、履约率、双轨价差、进口与汇率</td><td>偏差考核与保供</td></tr><tr><td>约束侧</td><td>台风/覆冰导致设备降额</td><td>燃料短缺导致可用容量下降</td><td>可用性申报与市场力</td></tr></tbody></table></div>
 <aside class="note"><p>注意第 4 行：<strong>燃料不只是价格变量，也是可用性变量</strong>。缺煤、库存见底、气源被挤占时，机组的可用容量和最小运行时间都会变，这会直接改变报价可行域，和阻塞约束叠加时尤其明显（见 <a href="气象与电力交易-2026-11.html">气象与电力交易</a> §3 与 <a href="省间与跨区交易-2026-11.html">省间与跨区交易</a> §5.6）。</p></aside>
 <hr>
 <h2 id="s4">1. 燃料品种与价格口径</h2>
 <h3 id="s5">1.1 四类一次能源，先分清&quot;到厂价&quot;和&quot;指数价&quot;</h3>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>品种</th><th>常见价格口径</th><th>交易含义</th><th>级别与注意</th></tr></thead><tbody><tr><td>电煤长协</td><td>基准价 + 浮动价，5500 大卡下水煤；5000 大卡出矿按四指数月度调整</td><td>决定机组基础燃料成本，覆盖率是核心变量</td><td>B/C，公式见 §1.2；待核发改委原文</td></tr><tr><td>市场煤 / 现货</td><td>秦皇岛港、环渤海、坑口价，含运费与港杂</td><td>补缺部分，长协覆盖率越低敞口越大</td><td>C，港口价含&quot;货源稀缺溢价&quot;，不等于到厂价</td></tr><tr><td>天然气 / LNG</td><td>门站价、液化天然气到岸价、季节价差</td><td>决定气电顶峰经济性，冬季可能被民生用气挤占</td><td>C，<strong>国内气电燃料价格口径待核实</strong></td></tr><tr><td>进口与运输</td><td>进口煤价、汇率、海运费、铁路检修与港口库存</td><td>内陆电厂与沿海电厂成本分化</td><td>C，大秦线检修曾把日均运量压到约 95 万吨（行业口径）</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>品种</th><th>常见价格口径</th><th>交易含义</th><th>级别与注意</th></tr></thead><tbody><tr><td>电煤长协</td><td>基准价 + 浮动价，5500 大卡下水煤；5000 大卡出矿按四指数月度调整</td><td>决定机组基础燃料成本，覆盖率是核心变量</td><td>B/C，公式见 §1.2；待核发改委原文</td></tr><tr><td>市场煤 / 现货</td><td>秦皇岛港、环渤海、坑口价，含运费与港杂</td><td>补缺部分，长协覆盖率越低敞口越大</td><td>C，港口价含&quot;货源稀缺溢价&quot;，不等于到厂价</td></tr><tr><td>天然气 / LNG</td><td>门站价、LNG 到岸价（DES/FOB）、枢纽价（HH/TTF/JKM）、季节价差</td><td>决定气电顶峰经济性与冬季保供</td><td>C；国内气电燃料价格口径待核实；换算与长协结构见 §3</td></tr><tr><td>进口与运输</td><td>进口煤价、汇率、海运费、铁路检修与港口库存</td><td>内陆电厂与沿海电厂成本分化</td><td>C，大秦线检修曾把日均运量压到约 95 万吨（行业口径）</td></tr></tbody></table></div>
 <aside class="note"><p>引用任何煤价都要问三件事：<strong>热值（5500 / 5000 大卡）、环节（坑口 / 港口 / 到厂）、时点（指数发布日 vs 结算月）</strong>。三者混用是燃料口径最常见的错误，和气象模块里&quot;度日 vs 度时&quot;是同一类问题。</p></aside>
 <h3 id="s6">1.2 长协定价公式与 50/50 斜率</h3>
 <pre tabindex="0"><code>当月长协价 = 675 + (四大指数上月均值 − 675) / 2      （政策区间 570–770 元/吨）
@@ -128,24 +129,45 @@
 <h3 id="s9">2.1 从元/吨到元/MWh</h3>
 <pre tabindex="0"><code>度电燃料成本(元/MWh) = 煤价(元/吨) ÷ 1000 × 煤耗(kg/MWh)
                      = 煤价(元/吨) × 煤耗(g/kWh) ÷ 1000</code></pre>
-<ul><li>煤耗是机组参数，随负荷率、煤质、机组年龄变化；300 g/kWh 只是<strong>便于复算的参考值（C）</strong>，不是全国常数。</li><li>气电用热耗率（heat rate）而不是煤耗，单位换算错误是数量级错误的常见来源。</li><li>到厂价还要加运费、港杂、损耗与税；只用指数价会低估边际成本。</li></ul>
+<ul><li>煤耗是机组参数，随负荷率、煤质、机组年龄变化；300 g/kWh 只是<strong>便于复算的参考值（C）</strong>，不是全国常数。</li><li>气电用热耗率（heat rate）而不是煤耗，单位换算错误是数量级错误的常见来源；MMBtu、MWh、m³、吨的换算与热耗率口径见 §3.1、§3.4。</li><li>到厂价还要加运费、港杂、损耗与税；只用指数价会低估边际成本。</li></ul>
 <h3 id="s10">2.2 报价曲线怎么从成本长出来</h3>
 <ul><li><strong>价格接受者</strong>：报价贴近边际成本，加价只会降低中标概率。</li><li><strong>枢机机组 / 阻塞区</strong>：加价空间来自剩余需求与断面约束，不是主观愿望；燃料成本给出的是<strong>报价下限</strong>，市场力给出的是上限（见 <a href="量化报价与交易风控-工程化-2026-11.html">量化报价</a> §5.2、§9）。</li><li><strong>分段报价</strong>：按成本分段且保持单调；低段保出清、高段捕捉稀缺，启停成本与最小运行时间要摊进低段。</li><li><strong>容量电价 ≠ 燃料成本</strong>：容量电价回收固定成本，不随日内煤价变动；把 165 元/kW·年折算进每 MWh 报价是口径错误。</li><li><strong>机会成本</strong>：低价时段发电会占用高价时段的燃料与机组寿命，燃料侧还要看库存能否支撑连续运行。</li></ul>
 <h3 id="s11">2.3 点火价差家族（C，行业通用公式）</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>公式</th><th>用途</th></tr></thead><tbody><tr><td>dark spread</td><td>电价 − 煤电燃料成本/MWh − 变动运维</td><td>煤电毛边际，判断&quot;开机是否亏燃料钱&quot;</td></tr><tr><td>spark spread</td><td>电价 − 气电燃料成本/MWh − 变动运维</td><td>气电毛边际，同上</td></tr><tr><td>clean dark / spark</td><td>毛边际 − 碳价 × 排放因子(tCO₂/MWh)</td><td>有碳价市场里的真实报价排序</td></tr><tr><td>climate spread</td><td>clean dark − clean spark</td><td>正负决定煤/气谁更划算</td></tr></tbody></table></div>
 <aside class="note"><p>这些是<strong>毛边际</strong>，不含启停、空载、最小运行时间、爬坡与退化成本；<code>spread &gt; 0</code> 只是&quot;值得考虑开机&quot;，不是&quot;一定开机&quot;（C，<a href="http://concepts.learnetrm.com/spark-spread-explained.html" target="_blank" rel="noopener">LearnETRM</a>）。国内没有 EU ETS 式的统一电力碳价直接内生化到日前报价，clean spread 在中国主要作<strong>方法参照</strong>，不能写成现行结算口径。</p></aside>
 <hr>
-<h2 id="s12">3. 煤电、气电与切换</h2>
+<h2 id="s12">3. 天然气与 LNG：另一个价格锚</h2>
+<aside class="note"><p>煤给的是&quot;一个价格&quot;，气给的是&quot;另一个价格&quot;，而且这个价格有三套尺子：美国的 Henry Hub（$/MMBtu）、欧洲的 TTF（€/MWh）、东北亚的 JKM（$/MMBtu）。三套尺子不统一，气电边际成本就没法与煤电、与电价放在同一张表上。本节只做口径、结构与算例，<strong>不做气价预测</strong>。</p></aside>
+<h3 id="s13">3.1 单位换算：先把尺子统一</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>换算</th><th>关系</th><th>用途</th></tr></thead><tbody><tr><td>MMBtu ↔ MWh</td><td>1 MMBtu = 0.293071 MWh；1 MWh = 3.41214 MMBtu</td><td>枢纽气价 vs 电价</td></tr><tr><td>$/MMBtu → $/MWh</td><td>÷ 0.293071（即 ×3.41214）</td><td>HH/JKM 与电价同尺</td></tr><tr><td>€/MWh → €/MMBtu</td><td>×0.293071</td><td>TTF 与 HH/JKM 同尺</td></tr><tr><td>LNG 吨 → 能量</td><td>1 t LNG ≈ 48.7 MMBtu ≈ <strong>14.27 MWh</strong>（热值）</td><td>船货、长协</td></tr><tr><td>LNG 吨 → 气态体积</td><td>1 t ≈ 1,360–1,430 m³</td><td>接收站、管道</td></tr><tr><td>Mtpa → bcm/yr</td><td>1 Mtpa ≈ 48.7 TBtu/yr ≈ <strong>1.36–1.43 bcm/yr</strong></td><td>接收站规模</td></tr><tr><td>管道气体积 → 能量</td><td>1 m³ ≈ 36 MJ = 0.01 MWh</td><td>门站价 vs 电</td></tr></tbody></table></div>
+<ul><li><strong>纪律</strong>：MMBtu 是能量，m³ 是体积；换算依赖热值与压力，不能当常数。LNG 的 48.7 MMBtu/t 是行业近似，不同产地与气质有差异。</li><li><strong>纪律</strong>：把 $/MMBtu 乘 3.412 得到的是 $/MWh <strong>热值口径</strong>；气电还要除以效率，二者不能混。1 吨 LNG 只有约 14 MWh 热值，不是 166 MWh——这是最常见的数量级错误。</li></ul>
+<h3 id="s14">3.2 三大枢纽：价格不是同一个东西</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>枢纽</th><th>地区</th><th>计价</th><th>2026 年水平（带时点与级别）</th></tr></thead><tbody><tr><td>Henry Hub</td><td>美国</td><td>$/MMBtu</td><td>EIA STEO：2026 年均 <strong>$3.37</strong>、2027 年均 <strong>$2.88</strong>；2026-11-06 现货 <strong>$2.998</strong>（C，NYMEX 转引）</td></tr><tr><td>TTF</td><td>欧洲</td><td>€/MWh</td><td>2026-10 月均 <strong>€85.83</strong>（B）；10-28 11 月合约盘中 &gt;€100、为 2022-12 以来首次（C）；11-03 <strong>€97.01</strong>（C）</td></tr><tr><td>JKM</td><td>东北亚</td><td>$/MMBtu</td><td>2026-11-03 <strong>$31.70</strong>（C）；10-27 <strong>$32.35</strong>（C）</td></tr></tbody></table></div>
+<ul><li>HH 是&quot;美国气源价&quot;，TTF 是&quot;欧洲枢纽价&quot;，JKM 是&quot;东北亚到岸价&quot;；价差主要是液化、运输、再气化与区域供需，<strong>不是无风险套利</strong>。</li><li>2026 年特殊背景：欧盟储气 2026-10-28 为 <strong>74.96%</strong>，为 2011 年有记录以来同期最低，较上年低 8 pp、较 2021–25 均值低 14.6 pp（B，GIE 口径）；IEA《Global Gas Security Review 2026》称全球储气为十多年来最低（A）。</li><li><strong>纪律</strong>：JKM/TTF 是到岸/枢纽价，不是中国门站价，也不是中国电厂的到厂价；引用必须带&quot;枢纽 + 时点 + 单位&quot;。</li></ul>
+<h3 id="s15">3.3 LNG 长协：锁量不锁全价</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>结构</th><th>定价公式</th><th>常见条款</th><th>主要风险</th></tr></thead><tbody><tr><td>油指数</td><td>油价 × 斜率（约 Brent 的 11–14%）</td><td>15–20 年、照付不议 75–80%、DES</td><td>油价与气价脱钩时偏贵</td></tr><tr><td>Henry Hub + 液化费</td><td>HH × 115% + 固定液化费（约 $2–3/MMBtu）</td><td>15–20 年、FOB/DES、目的地灵活</td><td>HH 与欧亚价差、船运</td></tr><tr><td>现货/短期</td><td>JKM/TTF 指数</td><td>1–3 年或单船</td><td>价格波动</td></tr></tbody></table></div>
+<ul><li>长协锁的是<strong>量与公式</strong>，不是全价；运费、再气化、接收站窗口费另计。</li><li>照付不议（take-or-pay）是<strong>量风险</strong>：不提货也要付钱；目的地条款决定能否转售。</li><li>中国 2025 年 LNG 进口 <strong>68.43 Mt</strong>（−10.7%，三年低点），管道气 +7.97%；2026 H1 LNG <strong>28.35 Mt</strong>（−5.6%）、天然气总量 <strong>57.45 Mt</strong>（−3.4%）（B/C）。</li><li><strong>纪律</strong>：不要把&quot;长协量&quot;当&quot;到岸成本&quot;，也不要把 JKM 现货价当长协价。</li></ul>
+<h3 id="s16">3.4 气电边际成本：热耗率、碳与容量</h3>
+<pre tabindex="0"><code>气价(元/GJ)      = 气价(元/m³) ÷ 0.036
+燃料成本(元/MWh) = 气价(元/GJ) × 热耗率(GJ/MWh)
+度电碳成本       = 碳价(元/tCO₂) × 排放因子(tCO₂/MWh)</code></pre>
+<ul><li>CCGT 效率 55–60%（LHV）→ 热耗率约 <strong>6.0–6.5 GJ/MWh</strong>；开式循环 35–42% → 8.6–10.3 GJ/MWh（C）。</li><li>排放因子约 <strong>0.35–0.40 tCO₂/MWh</strong>（C，随机组效率变化）。</li><li><strong>纪律</strong>：效率是 LHV 还是 HHV、热耗率是 GJ/MWh 还是 Btu/kWh，必须写清；差一个口径就是 5–10% 的成本误差。</li></ul>
+<h3 id="s17">3.5 中国气电：两部制与顶峰价值</h3>
+<ul><li>2025 年底气电装机约 <strong>1.6 亿 kW</strong>，占总装机 <strong>4.2%</strong>；发电量占 <strong>3.1%</strong>；2025 年新增 <strong>19.92 GW</strong>；利用小时 <strong>2,187 h</strong>（−190 h）（B/C）。</li><li>114 号文（2026-01-30）：煤电容量电价回收固定成本比例不低于 50%，省级可建立气电容量电价（A/B）。</li><li>广东气电容量电价（2025-08-01 起，按气源与机组类型分档）：澳气合同 <strong>165</strong>、9E+ <strong>264</strong>、6F− <strong>330</strong>、首台套 <strong>396 元/kW·年</strong>（B，行业/债券报告转引）。</li><li>中国气电是&quot;容量 + 电量&quot;两部制：现货报价主要反映变动成本，容量电价补固定成本；<strong>不能直接套欧洲 merchant 气电模型</strong>。</li><li><strong>待核实</strong>：各省气电容量电价、气源合同、门站价与现货传导。</li></ul>
+<h3 id="s18">3.6 氢混烧：示范阶段</h3>
+<ul><li>氢混烧（H2 blending）在燃气轮机中的比例、成本与 NOx 影响仍在示范；绿氢成本高，混烧当前主要作用是示范与减排，不是边际定价变量（C）。</li><li><strong>纪律</strong>：不要把氢混烧写进 2026 年现货报价模型；没有公开的长期运行数据。</li></ul>
+<hr>
+<h2 id="s19">4. 煤电、气电与切换</h2>
 <ul><li><strong>转换碳价</strong>：<code>(气电燃料成本 − 煤电燃料成本) / (煤排放因子 − 气排放因子)</code>。碳价高于该值，气电在 merit order 中前移；这是欧盟&quot;煤改气&quot;的经典判据（C）。</li><li><strong>顶峰机组的价值不在年均价差</strong>：启停快、最小运行时间短的气电能在尖峰时段捕捉稀缺价，即使全年平均 spark spread 很低仍有价值；从实物期权看，灵活机组是一串点火价差期权（C）。</li><li><strong>冬季气源挤占</strong>：民生供暖优先时，气电可用容量可能下降，这属于<strong>可用性约束</strong>而非价格上涨；报价时要分开写。</li><li><strong>中国口径差异</strong>：国内气电多带容量电价/两部制电价与气源合同，燃料成本只有部分传导到现货报价；具体省级机制<strong>待核实</strong>，不要把欧洲 clean spark 的结论直接套山东或广东。</li><li>与碳市场的边界见 <a href="碳资产实务-2026-11.html">碳资产实务</a>；配额、CCER 与 CBAM 的重复计算边界见 <a href="绿证-CCER-CBAM衔接-2026-11.html">绿证-CCER-CBAM 衔接</a>。</li></ul>
 <hr>
-<h2 id="s13">4. 燃料—碳价—电价传导</h2>
+<h2 id="s20">5. 燃料—碳价—电价传导</h2>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>传导环节</th><th>海外（有碳价）</th><th>中国（当前口径）</th></tr></thead><tbody><tr><td>燃料 → 边际成本</td><td>直接进报价</td><td>直接进报价，但长协/市场煤双轨使厂间分化</td></tr><tr><td>碳价 → 边际成本</td><td>clean spread，直接改变煤/气排序</td><td>碳市场覆盖发电，但<strong>是否、按多少内生化到日前报价待核实</strong></td></tr><tr><td>电价 → 燃料需求</td><td>高价激励补库与进口</td><td>保供优先、长协履约与库存调控并行</td></tr><tr><td>政策干预</td><td>市场为主</td><td>基准价、区间、履约率、库存调度、容量电价多工具并行</td></tr></tbody></table></div>
 <aside class="note"><p>本页刻意不给出&quot;国内碳价使煤电边际成本上升 X 元/MWh&quot;这类数字：库内未核到可复核的省级传导参数，写了就是把 C 级估算升级成事实。<strong>不确定就挂账</strong>。</p></aside>
 <hr>
-<h2 id="s14">5. 合约、库存与风险</h2>
-<ul><li><strong>长协覆盖率</strong>是燃料风险的第一变量：覆盖 80% 与覆盖 50% 的两个电厂，面对同一现货涨幅，度电成本差可达数十元/MWh（见 §6 算例 2）。</li><li><strong>履约率风险</strong>：签约量 ≠ 实际兑现量。月度 80%、季度/全年 90% 的履约要求（C，待核正式文）意味着补缺口仍要买市场煤。</li><li><strong>双轨价差风险</strong>：上行期长协折价扩大，会诱发&quot;优先买现货、暂缓提长协&quot;的行为，反过来推高现货（C，行业观点）。</li><li><strong>库存与运输风险</strong>：可用天数、检修窗口、港口调入调出差、极端天气下的运输中断，属于与 <a href="气象与电力交易-2026-11.html">气象模块</a> §5 共用的保供链条。</li><li><strong>合约条款</strong>：PPA/中长期合同里的燃料价联动、煤电联动、不可抗力与&quot;燃料短缺&quot;免责定义，写法决定风险归谁；不要与偏差考核条款混为一谈，见 <a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算</a>。</li><li><strong>对冲</strong>：海外可用燃料期货、点火价差掉期与远期电力组合锁边际（C）；国内场内电力衍生品与燃料—电价联动工具<strong>待核实</strong>，不得写成可对冲。多数情形靠长协、库存与容量电价管理，而不是金融工具。</li></ul>
+<h2 id="s21">6. 合约、库存与风险</h2>
+<ul><li><strong>长协覆盖率</strong>是燃料风险的第一变量：覆盖 80% 与覆盖 50% 的两个电厂，面对同一现货涨幅，度电成本差可达数十元/MWh（见 §7 算例 2）。</li><li><strong>履约率风险</strong>：签约量 ≠ 实际兑现量。月度 80%、季度/全年 90% 的履约要求（C，待核正式文）意味着补缺口仍要买市场煤。</li><li><strong>双轨价差风险</strong>：上行期长协折价扩大，会诱发&quot;优先买现货、暂缓提长协&quot;的行为，反过来推高现货（C，行业观点）。</li><li><strong>库存与运输风险</strong>：可用天数、检修窗口、港口调入调出差、极端天气下的运输中断，属于与 <a href="气象与电力交易-2026-11.html">气象模块</a> §5 共用的保供链条。</li><li><strong>合约条款</strong>：PPA/中长期合同里的燃料价联动、煤电联动、不可抗力与&quot;燃料短缺&quot;免责定义，写法决定风险归谁；不要与偏差考核条款混为一谈，见 <a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算</a>。</li><li><strong>对冲</strong>：海外可用燃料期货、点火价差掉期与远期电力组合锁边际（C）；国内场内电力衍生品与燃料—电价联动工具<strong>待核实</strong>，不得写成可对冲。多数情形靠长协、库存与容量电价管理，而不是金融工具。</li></ul>
 <hr>
-<h2 id="s15">6. D 级合成算例（五组，仅演示方法）</h2>
+<h2 id="s22">7. D 级合成算例（十组，仅演示方法）</h2>
 <aside class="note"><p>全部为<strong>合成数据（D 级）</strong>，与真实市场无关，不构成投资建议。结果由 <code>skills/electricity-trading-expert/tools/fuel.py</code> 复算、由该技能 <code>selftest.py</code> 断言锁定；改数字必须同时改代码与本文。</p></aside>
 <p><strong>算例 1：长协定价的 0.5 斜率与区间（合成）</strong></p>
 <p>输入：四大指数均值 800 元/吨、基准 675、区间 570–770。</p>
@@ -166,23 +188,44 @@
 <p><strong>算例 5：库存天数（合成）</strong></p>
 <p>库存 150 万吨、日均耗煤 10 万吨 → <code>可用天数 = 15.0 天</code>。</p>
 <p>要点：这是最薄的一层缓冲；与气象模块的&quot;连续高温累积效应&quot;叠加时，天数会被同时从需求侧和补库侧压缩。</p>
+<p><strong>算例 6：气价单位换算（合成/时点）</strong></p>
+<p>输入：HH $3.37/MMBtu；TTF €85.83/MWh；1 t LNG。</p>
+<p><code>$3.37 ÷ 0.293071 = $11.50/MWh</code>；<code>€85.83 × 0.293071 = €25.15/MMBtu</code>；<code>1 t = 48.7 MMBtu = 48.7 × 0.293071 = 14.27 MWh</code>。</p>
+<p>要点：$/MMBtu 与 $/MWh 相差 3.412 倍；1 吨 LNG 只有约 14 MWh 热值，不是 166 MWh。</p>
+<p><strong>算例 7：CCGT 清洁价差（合成）</strong></p>
+<p>输入：电价 €120/MWh、TTF €85.83/MWh、效率 58%、碳价 €85/tCO₂、排放因子 0.36 tCO₂/MWh、VOM €5/MWh。</p>
+<p><code>燃料 = 85.83 ÷ 0.58 = 147.98 €/MWh</code>；<code>碳 = 85 × 0.36 = 30.60 €/MWh</code>；<code>clean spark = 120 − 147.98 − 30.60 − 5 = −63.58 €/MWh</code>。</p>
+<p>效率 60% 时燃料 143.05、clean spark −58.65。</p>
+<p>要点：TTF €85.83 下，€120 的电价仍覆盖不了燃料+碳+VOM；气电靠容量电价或尖峰价。</p>
+<p><strong>算例 8：LNG DES 对 JKM（合成）</strong></p>
+<p>输入：HH $3.37 + 液化 $2.50 + 运输 $1.50；JKM $31.70/MMBtu。</p>
+<p><code>DES = 7.37 $/MMBtu = 25.15 $/MWh</code>；<code>JKM = 31.70 $/MMBtu = 108.16 $/MWh</code>；价差 <strong>83.02 $/MWh</strong>。</p>
+<p>要点：这是 2026-11 极端现货情景，不是长协经济性；船货套利还要扣再气化、接收站窗口与信用成本。</p>
+<p><strong>算例 9：油指数长协（合成）</strong></p>
+<p>输入：Brent $80/bbl、斜率 11.5%。</p>
+<p><code>80 × 0.115 = 9.20 $/MMBtu = 31.39 $/MWh</code>。</p>
+<p>要点：斜率每 +1 个百分点，$80 油价下约 +$0.80/MMBtu（+$2.73/MWh）；斜率是合约参数，不是市场预测。</p>
+<p><strong>算例 10：中国气电两部制（合成）</strong></p>
+<p>输入：气价 2.6 元/m³、热耗 6.3 GJ/MWh、容量电价 264 元/kW·年、利用小时 2,000 h。</p>
+<p><code>气价 = 2.6 ÷ 0.036 = 72.22 元/GJ</code>；<code>燃料 = 72.22 × 6.3 = 455.00 元/MWh</code>；<code>容量 = 264 × 1000 ÷ 2000 = 132 元/MWh</code>；合计 <strong>约 587 元/MWh</strong>。</p>
+<p>要点：容量电价占约 22.5%，不能重复算进变动成本；利用小时越低，容量电价折算越高。</p>
 <hr>
-<h2 id="s16">7. 查证入口、观察清单与待核项</h2>
-<h3 id="s17">7.1 来源台账</h3>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>来源</th><th>用途</th><th>级别</th></tr></thead><tbody><tr><td><a href="https://www.cnfin.com/announ/detail/index.html?dannoun=lcdetail&amp;id=846434108761" target="_blank" rel="noopener">新集能源投资者活动记录表（新华财经）</a></td><td>675 元基准、四指数 5000 大卡出矿公式、80% 签约占比、安徽 165 元/kW·年</td><td>B</td></tr><tr><td><a href="https://www.cls.cn/detail/xk/b56b3519f39daea180533346ba7f4012" target="_blank" rel="noopener">财联社：2026 电煤长协定价模式</a></td><td>同一公式的交叉印证</td><td>B</td></tr><tr><td><a href="https://hxny.com/nd-134438-0-17.html" target="_blank" rel="noopener">华夏能源网：煤价飙涨与长协机制</a></td><td>675 + 浮动的 50/50 斜率、570–770 区间、四阶段价差</td><td>C</td></tr><tr><td><a href="https://www.sgpjbg.com/searchtag/27329659.html" target="_blank" rel="noopener">电煤市场价与双轨制（行业报告）</a></td><td>履约率 75%/80% 与月度 80%、季度全年 90%、库存天数、港口/坑口背离</td><td>C</td></tr><tr><td><a href="https://af.vvikipedla.com/wiki/Spark_spread" target="_blank" rel="noopener">Spark spread 词条镜像</a></td><td>clean spark / clean dark / climate spread 定义</td><td>C</td></tr><tr><td><a href="http://concepts.learnetrm.com/spark-spread-explained.html" target="_blank" rel="noopener">LearnETRM：Spark spread 解释</a></td><td>dark/spark/clean 公式、开机判据的局限</td><td>C</td></tr><tr><td><a href="https://www.coleurope.eu/sites/default/files/research-paper/beer20.pdf" target="_blank" rel="noopener">EU ETS 煤改气转换价研究</a></td><td>switch price 公式与排放因子取值；本地自动访问 403（反爬，非 404），按论文标题核对</td><td>C</td></tr><tr><td><a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a></td><td>报价可行域、枢机机组、机会成本（本页不重复）</td><td>B</td></tr><tr><td><a href="中国电价现行政策与查证-2026-11.html">中国电价现行政策与查证</a></td><td>1501 号文、容量电价与电价文件索引</td><td>B</td></tr><tr><td><a href="气象与电力交易-2026-11.html">气象与电力交易</a></td><td>物理量链条、极端天气保供与误差归因</td><td>B</td></tr><tr><td><a href="省间与跨区交易-2026-11.html">省间与跨区交易</a></td><td>阻塞、输电权与跨区落地成本（约束侧）</td><td>B</td></tr></tbody></table></div>
-<h3 id="s18">7.2 观察清单</h3>
-<ul><li>2026 年电煤长协基准价 675 元/吨、570–770 区间与四指数公式的<strong>国家发改委原文文号</strong>（当前仅 B/C 级，待核实）。</li><li>长协签约比例（煤企 75% / 发电 80%）与履约率（月度 80%、季度全年 90%）的正式文件与年度调整。</li><li>各省气电燃料价格口径、气源合同与容量电价/两部制机制（当前待核实）。</li><li>国内碳价对煤电日前报价的实际传导幅度与省级差异（待核实）。</li><li>国内是否出现燃料—电价联动的场内或 OTC 对冲工具（待核实）。</li><li>2027 年长协规则是否继续&quot;基准价 + 50% 浮动&quot;、坑口月度并轨是否扩围。</li><li>沿海与内陆电厂的到厂价差、进口煤与汇率敏感度，以及极端天气下的运输中断口径。</li></ul>
+<h2 id="s23">8. 查证入口、观察清单与待核项</h2>
+<h3 id="s24">8.1 来源台账</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>来源</th><th>用途</th><th>级别</th></tr></thead><tbody><tr><td><a href="https://www.cnfin.com/announ/detail/index.html?dannoun=lcdetail&amp;id=846434108761" target="_blank" rel="noopener">新集能源投资者活动记录表（新华财经）</a></td><td>675 元基准、四指数 5000 大卡出矿公式、80% 签约占比、安徽 165 元/kW·年</td><td>B</td></tr><tr><td><a href="https://www.cls.cn/detail/xk/b56b3519f39daea180533346ba7f4012" target="_blank" rel="noopener">财联社：2026 电煤长协定价模式</a></td><td>同一公式的交叉印证</td><td>B</td></tr><tr><td><a href="https://hxny.com/nd-134438-0-17.html" target="_blank" rel="noopener">华夏能源网：煤价飙涨与长协机制</a></td><td>675 + 浮动的 50/50 斜率、570–770 区间、四阶段价差</td><td>C</td></tr><tr><td><a href="https://www.sgpjbg.com/searchtag/27329659.html" target="_blank" rel="noopener">电煤市场价与双轨制（行业报告）</a></td><td>履约率 75%/80% 与月度 80%、季度全年 90%、库存天数、港口/坑口背离</td><td>C</td></tr><tr><td><a href="https://af.vvikipedla.com/wiki/Spark_spread" target="_blank" rel="noopener">Spark spread 词条镜像</a></td><td>clean spark / clean dark / climate spread 定义</td><td>C</td></tr><tr><td><a href="http://concepts.learnetrm.com/spark-spread-explained.html" target="_blank" rel="noopener">LearnETRM：Spark spread 解释</a></td><td>dark/spark/clean 公式、开机判据的局限</td><td>C</td></tr><tr><td><a href="https://www.coleurope.eu/sites/default/files/research-paper/beer20.pdf" target="_blank" rel="noopener">EU ETS 煤改气转换价研究</a></td><td>switch price 公式与排放因子取值；本地自动访问 403（反爬，非 404），按论文标题核对</td><td>C</td></tr><tr><td><a href="https://www.eia.gov/outlooks/steo/" target="_blank" rel="noopener">EIA STEO</a></td><td>Henry Hub 2026/2027 年均价、美国 LNG 出口预测</td><td>A</td></tr><tr><td><a href="https://www.eia.gov/dnav/ng/hist/rngwhhdD.htm" target="_blank" rel="noopener">EIA Henry Hub 日度价格</a></td><td>HH 日度现货；页面可访问，自动表格解析未成功，按页面数值核对</td><td>A</td></tr><tr><td><a href="https://www.iea.org/reports/global-gas-security-review-2026" target="_blank" rel="noopener">IEA Global Gas Security Review 2026</a></td><td>全球储气&quot;十多年来最低&quot;；WebFetch 403，curl 200，按页面文本核对</td><td>A</td></tr><tr><td><a href="https://agsi.gie.eu/" target="_blank" rel="noopener">GIE AGSI</a></td><td>欧盟储气率 74.96%（2026-10-28，B 级转引；API 需 key）</td><td>A/B</td></tr><tr><td><a href="https://climate.ec.europa.eu/areas-action/carbon-markets/eu-emissions-trading-system-eu-ets_en" target="_blank" rel="noopener">EC EU ETS</a></td><td>EUA/CBAM 价格与机制</td><td>A</td></tr><tr><td><a href="http://news.cnpc.com.cn/system/2026/11/10/030206958.shtml" target="_blank" rel="noopener">中国石油新闻：TTF 2026-10 月均</a></td><td>TTF €85.83/MWh、同比 +152%</td><td>B</td></tr><tr><td>广东气电容量电价（行业/债券报告转引）</td><td>澳气 165、9E+ 264、6F− 330、首台套 396 元/kW·年</td><td>B，无稳定公开链接，待核实</td></tr><tr><td><a href="中国电价现行政策与查证-2026-11.html">中国电价现行政策与查证</a></td><td>114 号文容量电价与气电容量电价依据</td><td>B</td></tr><tr><td><a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a></td><td>报价可行域、枢机机组、机会成本（本页不重复）</td><td>B</td></tr><tr><td><a href="中国电价现行政策与查证-2026-11.html">中国电价现行政策与查证</a></td><td>1501 号文、容量电价与电价文件索引</td><td>B</td></tr><tr><td><a href="气象与电力交易-2026-11.html">气象与电力交易</a></td><td>物理量链条、极端天气保供与误差归因</td><td>B</td></tr><tr><td><a href="省间与跨区交易-2026-11.html">省间与跨区交易</a></td><td>阻塞、输电权与跨区落地成本（约束侧）</td><td>B</td></tr></tbody></table></div>
+<h3 id="s25">8.2 观察清单</h3>
+<ul><li>2026 年电煤长协基准价 675 元/吨、570–770 区间与四指数公式的<strong>国家发改委原文文号</strong>（当前仅 B/C 级，待核实）。</li><li>长协签约比例（煤企 75% / 发电 80%）与履约率（月度 80%、季度全年 90%）的正式文件与年度调整。</li><li>各省气电燃料价格口径、气源合同与容量电价/两部制机制（当前待核实）。</li><li>国内碳价对煤电日前报价的实际传导幅度与省级差异（待核实）。</li><li>国内是否出现燃料—电价联动的场内或 OTC 对冲工具（待核实）。</li><li>2027 年长协规则是否继续&quot;基准价 + 50% 浮动&quot;、坑口月度并轨是否扩围。</li><li>沿海与内陆电厂的到厂价差、进口煤与汇率敏感度，以及极端天气下的运输中断口径。</li><li>欧盟储气率、TTF/JKM/HH 的周度时点数据与冬季气源挤占情况（本页只给 2026-10/11 快照）。</li><li>中国各省气电容量电价、气源合同、门站价与现货传导（当前仅广东有 B 级转引数字）。</li><li>2026–2027 年 LNG 长协签约、照付不议比例与目的地条款变化。</li><li>氢混烧示范项目的公开运行数据与成本（当前不足以进入报价模型）。</li></ul>
 <hr>
-<h2 id="s19">速查</h2>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>要回答的问题</th><th>先看哪一节</th></tr></thead><tbody><tr><td>长协价怎么算、为什么只涨一半</td><td>§1.2</td></tr><tr><td>为什么两个电厂成本差很多</td><td>§0.1 第 6 条、§6 算例 2</td></tr><tr><td>元/吨怎么换成元/MWh</td><td>§2.1</td></tr><tr><td>点火价差与清洁价差</td><td>§2.3、§6 算例 3</td></tr><tr><td>碳价什么时候让气电更划算</td><td>§3、§6 算例 4</td></tr><tr><td>燃料风险能不能对冲</td><td>§5</td></tr><tr><td>有没有可复算的算例</td><td>§6 与 <code>electricity-trading-expert/tools/fuel.py</code></td></tr><tr><td>阻塞与输电权</td><td><a href="省间与跨区交易-2026-11.html">省间与跨区交易</a> §5.5–§5.6</td></tr></tbody></table></div>
-<h2 id="s20">与技能和其他笔记的分工</h2>
-<ul><li><strong>不新增分区、不新增技能</strong>：燃料与气象同属上游输入变量，本页为 cross 第 8 篇；预测方法论仍归 <code>spot-bidding-quant</code>，报价可行域与风控归 <a href="量化报价与交易风控-工程化-2026-11.html">量化报价</a>。</li><li><strong>零依赖工具</strong>：<code>skills/electricity-trading-expert/tools/fuel.py</code>（长协定价、双轨混合、度电成本、点火价差、清洁价差、切换碳价、库存天数），断言并入该技能 <code>selftest.py</code>；电网约束侧的 <code>spot-bidding-quant/tools/network.py</code> 只负责价分离与动态 ATC，<strong>阻塞盈余与 FTR 仍归 <code>electricity-trading-expert/tools/market.py</code></strong>，不重复实现。CI 仍是 9 条自测。</li><li><strong>与气象模块对称</strong>：气象给量、燃料给价、电网给约束；三者叠加时才解释尖峰与负价（见 <a href="气象与电力交易-2026-11.html">气象与电力交易</a> §3 与 <a href="省间与跨区交易-2026-11.html">省间与跨区交易</a> §5.6）。</li><li><strong>省份差异只留指针</strong>：33 个省级页不硬凑燃料成本，见 <a href="省级市场状态表-2026-11.html">省级市场状态表</a>；容量电价、136 与现货限价已在各页，本页不复制。</li></ul>
-<h2 id="s21">更新记录</h2>
-<ul><li>2026-11-12：新建。补齐燃料与一次能源到边际报价的转换链、长协双轨定价、点火价差与清洁价差、煤/气切换、库存与合约风险；新增零依赖 <code>fuel.py</code> 与 5 组 D 级合成算例并双向锁定；与电网约束横向对照同批落地。</li></ul>
+<h2 id="s26">速查</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>要回答的问题</th><th>先看哪一节</th></tr></thead><tbody><tr><td>长协价怎么算、为什么只涨一半</td><td>§1.2</td></tr><tr><td>为什么两个电厂成本差很多</td><td>§0.1 第 6 条、§7 算例 2</td></tr><tr><td>元/吨怎么换成元/MWh</td><td>§2.1</td></tr><tr><td>点火价差与清洁价差</td><td>§2.3、§7 算例 3</td></tr><tr><td>碳价什么时候让气电更划算</td><td>§4、§7 算例 4</td></tr><tr><td>气价单位怎么换成电价、1 吨 LNG 是多少 MWh</td><td>§3.1、§7 算例 6</td></tr><tr><td>TTF/JKM/HH 是什么关系、气电成本怎么算</td><td>§3.2–§3.4、§7 算例 7–8</td></tr><tr><td>中国气电为什么不能套欧洲模型</td><td>§3.5、§7 算例 10</td></tr><tr><td>燃料风险能不能对冲</td><td>§6</td></tr><tr><td>有没有可复算的算例</td><td>§7 与 <code>electricity-trading-expert/tools/fuel.py</code></td></tr><tr><td>阻塞与输电权</td><td><a href="省间与跨区交易-2026-11.html">省间与跨区交易</a> §5.5–§5.6</td></tr></tbody></table></div>
+<h2 id="s27">与技能和其他笔记的分工</h2>
+<ul><li><strong>不新增分区、不新增技能</strong>：燃料与气象同属上游输入变量，本页为 cross 第 8 篇；预测方法论仍归 <code>spot-bidding-quant</code>，报价可行域与风控归 <a href="量化报价与交易风控-工程化-2026-11.html">量化报价</a>。</li><li><strong>零依赖工具</strong>：<code>skills/electricity-trading-expert/tools/fuel.py</code>（长协定价、双轨混合、度电成本、点火价差、清洁价差、切换碳价、库存天数、气价单位换算、LNG 长协、CCGT 成本、容量电价折算），断言并入该技能 <code>selftest.py</code>；电网约束侧的 <code>spot-bidding-quant/tools/network.py</code> 只负责价分离与动态 ATC，<strong>阻塞盈余与 FTR 仍归 <code>electricity-trading-expert/tools/market.py</code></strong>，不重复实现。CI 仍是 9 条自测。</li><li><strong>与气象模块对称</strong>：气象给量、燃料给价、电网给约束；三者叠加时才解释尖峰与负价（见 <a href="气象与电力交易-2026-11.html">气象与电力交易</a> §3 与 <a href="省间与跨区交易-2026-11.html">省间与跨区交易</a> §5.6）。</li><li><strong>省份差异只留指针</strong>：33 个省级页不硬凑燃料成本，见 <a href="省级市场状态表-2026-11.html">省级市场状态表</a>；容量电价、136 与现货限价已在各页，本页不复制。</li></ul>
+<h2 id="s28">更新记录</h2>
+<ul><li>2026-11-12：新建。补齐燃料与一次能源到边际报价的转换链、长协双轨定价、点火价差与清洁价差、煤/气切换、库存与合约风险；新增零依赖 <code>fuel.py</code> 与 5 组 D 级合成算例并双向锁定；与电网约束横向对照同批落地。</li><li>2026-11-12：新增 §3「天然气与 LNG」——三大枢纽（HH/TTF/JKM）的 2026 时点价格、MMBtu/MWh/m³/吨/Mtpa 换算、油指数与 HH+液化费长协、CCGT 燃料/碳/容量成本、中国气电两部制与氢混烧边界；§7 扩为十组算例，<code>fuel.py</code> 增补气价与 LNG 辅助函数，旧 §3–§7 顺延为 §4–§8。</li></ul>
     </article>
 
     <section class="related" aria-labelledby="related-title">
-      <div class="related-head"><h2 id="related-title">相关模块</h2><span>11</span></div>
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>13</span></div>
       <div class="related-grid">
         <a class="related-card" href="量化报价与交易风控-工程化-2026-11.html">
           <span class="related-type">跨区对照</span>
@@ -205,7 +248,7 @@
           <span>14 份现行文件总表、2026 年四条主线、电费计算链、两部制/力率算例与省级差异矩阵。</span>
         </a>
       </div>
-      <p class="related-rest"><b>更多关联</b><a href="中国电价史-2026-11.html">中国电价史</a><a href="碳资产实务-2026-11.html">碳资产实务 2026-11</a><a href="储能投资与运营-2026-11.html">储能投资与运营</a><a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算（2026 版）</a><a href="省级市场状态表-2026-11.html">省级电力市场状态总表</a><a href="英国电力市场-2026-11.html">英国电力市场（2026 版）</a><a href="德国电力市场-2026-11.html">德国电力市场（2026 版）</a></p>
+      <p class="related-rest"><b>更多关联</b><a href="中国电价史-2026-11.html">中国电价史</a><a href="碳资产实务-2026-11.html">碳资产实务 2026-11</a><a href="储能投资与运营-2026-11.html">储能投资与运营</a><a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算（2026 版）</a><a href="省级市场状态表-2026-11.html">省级电力市场状态总表</a><a href="英国电力市场-2026-11.html">英国电力市场（2026 版）</a><a href="德国电力市场-2026-11.html">德国电力市场（2026 版）</a><a href="美国电力市场-2026-11.html">美国电力市场（2026 版）：ERCOT / PJM / CAISO</a><a href="日本电力市场-2026-11.html">日本电力市场（2026 版）：现货、容量市场与 LTDA</a></p>
     </section>
 
 
@@ -228,7 +271,7 @@
     <div class="toc-title">本页目录</div>
     <ol>
             <li class="lv2"><a href="#s1">0. 一页看懂：量与价是两条链</a></li>
-            <li class="lv3"><a href="#s2">0.1 十条结论</a></li>
+            <li class="lv3"><a href="#s2">0.1 十一条结论</a></li>
             <li class="lv3"><a href="#s3">0.2 量与价的分工</a></li>
             <li class="lv2"><a href="#s4">1. 燃料品种与价格口径</a></li>
             <li class="lv3"><a href="#s5">1.1 四类一次能源，先分清"到厂价"和"指数价"</a></li>
@@ -238,17 +281,24 @@
             <li class="lv3"><a href="#s9">2.1 从元/吨到元/MWh</a></li>
             <li class="lv3"><a href="#s10">2.2 报价曲线怎么从成本长出来</a></li>
             <li class="lv3"><a href="#s11">2.3 点火价差家族（C，行业通用公式）</a></li>
-            <li class="lv2"><a href="#s12">3. 煤电、气电与切换</a></li>
-            <li class="lv2"><a href="#s13">4. 燃料—碳价—电价传导</a></li>
-            <li class="lv2"><a href="#s14">5. 合约、库存与风险</a></li>
-            <li class="lv2"><a href="#s15">6. D 级合成算例（五组，仅演示方法）</a></li>
-            <li class="lv2"><a href="#s16">7. 查证入口、观察清单与待核项</a></li>
-            <li class="lv3"><a href="#s17">7.1 来源台账</a></li>
-            <li class="lv3"><a href="#s18">7.2 观察清单</a></li>
-            <li class="lv2"><a href="#s19">速查</a></li>
-            <li class="lv2"><a href="#s20">与技能和其他笔记的分工</a></li>
-            <li class="lv2"><a href="#s21">更新记录</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="10" data-more-label="展开 10 个小节" data-less-label="收起小节">展开 10 个小节</button>
+            <li class="lv2"><a href="#s12">3. 天然气与 LNG：另一个价格锚</a></li>
+            <li class="lv3"><a href="#s13">3.1 单位换算：先把尺子统一</a></li>
+            <li class="lv3"><a href="#s14">3.2 三大枢纽：价格不是同一个东西</a></li>
+            <li class="lv3"><a href="#s15">3.3 LNG 长协：锁量不锁全价</a></li>
+            <li class="lv3"><a href="#s16">3.4 气电边际成本：热耗率、碳与容量</a></li>
+            <li class="lv3"><a href="#s17">3.5 中国气电：两部制与顶峰价值</a></li>
+            <li class="lv3"><a href="#s18">3.6 氢混烧：示范阶段</a></li>
+            <li class="lv2"><a href="#s19">4. 煤电、气电与切换</a></li>
+            <li class="lv2"><a href="#s20">5. 燃料—碳价—电价传导</a></li>
+            <li class="lv2"><a href="#s21">6. 合约、库存与风险</a></li>
+            <li class="lv2"><a href="#s22">7. D 级合成算例（十组，仅演示方法）</a></li>
+            <li class="lv2"><a href="#s23">8. 查证入口、观察清单与待核项</a></li>
+            <li class="lv3"><a href="#s24">8.1 来源台账</a></li>
+            <li class="lv3"><a href="#s25">8.2 观察清单</a></li>
+            <li class="lv2"><a href="#s26">速查</a></li>
+            <li class="lv2"><a href="#s27">与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s28">更新记录</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="16" data-more-label="展开 16 个小节" data-less-label="收起小节">展开 16 个小节</button>
   </aside>
 </div>
 

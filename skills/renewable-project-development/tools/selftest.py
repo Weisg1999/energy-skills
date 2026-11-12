@@ -18,6 +18,12 @@ def close(name, actual, expected, tol):
     print(f"ok  {name:<40} {actual:,.4f}")
 
 
+def check(condition, name):
+    if not condition:
+        raise AssertionError(name)
+    print(f"ok  {name}")
+
+
 def main():
     # Resource screening.
     close("wind capacity factor (2,400 h)", resource.capacity_factor(2400), 0.273973, 1e-6)
@@ -45,6 +51,56 @@ def main():
     # Example C: 200 MW offshore wind, 3,200 h, 3% curtailment.
     c = lcoe.lcoe(2_200_000_000, 60_000_000, 640_000, 25, 0.08, 0.005, 0.03)
     close("C LCOE (CNY/MWh)", c["lcoe"], 446.4286, 1e-3)
+    close(
+        "C LCOE capex +20%",
+        lcoe.lcoe(2_640_000_000, 60_000_000, 640_000, 25, 0.08, 0.005, 0.03)["lcoe"],
+        515.5818,
+        1e-3,
+    )
+    close(
+        "C LCOE generation -10%",
+        lcoe.lcoe(2_200_000_000, 60_000_000, 576_000, 25, 0.08, 0.005, 0.03)["lcoe"],
+        496.0318,
+        1e-3,
+    )
+    close(
+        "C LCOE availability 90%",
+        lcoe.lcoe(2_200_000_000, 60_000_000, 640_000 * 0.90 / 0.95, 25, 0.08, 0.005, 0.03)["lcoe"],
+        471.2302,
+        1e-3,
+    )
+    close(
+        "C LCOE opex +30%",
+        lcoe.lcoe(2_200_000_000, 78_000_000, 640_000, 25, 0.08, 0.005, 0.03)["lcoe"],
+        476.6275,
+        1e-3,
+    )
+    close(
+        "C LCOE discount 10%",
+        lcoe.lcoe(2_200_000_000, 60_000_000, 640_000, 25, 0.10, 0.005, 0.03)["lcoe"],
+        505.3657,
+        1e-3,
+    )
+    close(
+        "C LCOE life 30y",
+        lcoe.lcoe(2_200_000_000, 60_000_000, 640_000, 30, 0.08, 0.005, 0.03)["lcoe"],
+        430.5198,
+        1e-3,
+    )
+    close("C CfD top-up 1 TWh", (91.20 - 65.0) * 1.0, 26.2, 1e-9)
+    close("C CfD clawback 1 TWh", (91.20 - 110.0) * 1.0, -18.8, 1e-9)
+    close("C floating CfD top-up 0.5 TWh", (216.49 - 65.0) * 0.5, 75.745, 1e-9)
+    close("C delay one year", 640_000 * c["lcoe"] / 1.10 / 1e8, 2.5974, 1e-3)
+    check(
+        lcoe.lcoe(2_640_000_000, 60_000_000, 640_000, 25, 0.08, 0.005, 0.03)["lcoe"]
+        > c["lcoe"],
+        "C capex sensitivity raises LCOE",
+    )
+    check(
+        lcoe.lcoe(2_200_000_000, 60_000_000, 640_000, 30, 0.08, 0.005, 0.03)["lcoe"]
+        < c["lcoe"],
+        "C longer life lowers LCOE",
+    )
 
     # Doc. 136 settlement for example A at a 70% coverage ratio.
     energy = 240_000 * 0.97

@@ -12,7 +12,7 @@
 <p align="center">
   <a href="CHANGELOG_EN.md"><img alt="version v1.9" src="knowledge/assets/badge-version.svg"></a>&nbsp;
   <a href="knowledge/index.html"><img alt="101 knowledge modules" src="knowledge/assets/badge-modules.svg"></a>&nbsp;
-  <a href="更新清单.md"><img alt="data cutoff 2026-11-11" src="knowledge/assets/badge-cutoff.svg"></a>&nbsp;
+  <a href="更新清单.md"><img alt="data cutoff 2026-11-12" src="knowledge/assets/badge-cutoff.svg"></a>&nbsp;
   <a href="LICENSE"><img alt="license CC BY-NC 4.0" src="knowledge/assets/badge-license.svg"></a>
 </p>
 
@@ -25,7 +25,7 @@
 
 > Every skill is a self-contained Markdown handbook that can be injected into an LLM context. Once loaded, the model answers as a senior practitioner and follows built-in discipline: figures cited with document numbers and dates, province confirmed before local rules, policy items returned with official lookup pointers, and unverified data flagged as “to be verified”.
 
-Current version **v1.9**, data cutoff **2026-11-11**, 41,719 body lines. Notes, 101 reading pages, skill pages, the full-text index and all diagrams are generated from repository content.
+Current version **v1.9**, data cutoff **2026-11-12**, 42,246 body lines. Notes, 101 reading pages, skill pages, the full-text index and all diagrams are generated from repository content.
 
 **Contents**　[Quick start](#quick-start) · [Skills](#skills) · [Knowledge base](#knowledge-base) · [Repository layout](#repository-layout) · [Maintenance](#maintaining-the-knowledge-hub) · [Roadmap](#roadmap) · [License](#license)
 
@@ -39,6 +39,7 @@ Current version **v1.9**, data cutoff **2026-11-11**, 41,719 body lines. Notes, 
 4. **Check before committing**: rebuild the generated artifacts and run structure, content and maintenance checks; run each skill's `tools/selftest.py` for the nine skills.
 
 ```bash
+node scripts/build-province-matrix.mjs --check
 node scripts/build-knowledge-html.mjs --check
 node scripts/check-consistency.mjs
 node scripts/check-maintenance.mjs --check
@@ -52,7 +53,7 @@ All nine skills are bilingual and ship zero-dependency Python tools with self-te
 
 | Skill | Core questions |
 |---|---|
-| **[Electricity Trading Expert](skills/electricity-trading-expert/SKILL_EN.md)** · [CN](skills/electricity-trading-expert/SKILL.md) | spot clearing and pricing, medium/long-term and finance, ancillary services and capacity, settlement, provincial practice, renewables market entry, carbon markets, 11 overseas markets, strategy and risk |
+| **[Electricity Trading Expert](skills/electricity-trading-expert/SKILL_EN.md)** · [CN](skills/electricity-trading-expert/SKILL.md) | spot clearing and pricing, medium/long-term and finance, ancillary services and capacity, settlement, provincial practice, renewables market entry, fuel and gas-fired costs, carbon markets, 11 overseas markets, strategy and risk |
 | **[Spot Bidding Quant](skills/spot-bidding-quant/SKILL_EN.md)** · [CN](skills/spot-bidding-quant/SKILL.md) | load and price forecasting, bias correction, quantity-price curves, procurement portfolios, bid simulation, rolling backtests, T+1 attribution |
 | **[Virtual Power Plant Expert](skills/virtual-power-plant/SKILL_EN.md)** · [CN](skills/virtual-power-plant/SKILL.md) | resource aggregation, three development stages, market participation, business models, control and optimisation, policy and international benchmarks |
 | **[Retail Electricity Sales & Risk Expert](skills/retail-electricity-risk/SKILL_EN.md)** · [CN](skills/retail-electricity-risk/SKILL.md) | full-cost package pricing, customer portfolio, procurement coverage, deviation assessment, retail-wholesale inversion, guarantees and exit |
@@ -62,7 +63,7 @@ All nine skills are bilingual and ship zero-dependency Python tools with self-te
 | Skill | Core questions |
 |---|---|
 | **[Storage Investment & Operations Expert](skills/storage-investment-operations/SKILL_EN.md)** · [CN](skills/storage-investment-operations/SKILL.md) | six project forms, five revenue streams, LCOS/IRR/NPV/DSCR, degradation and augmentation, assessment deductions, business models and stress tests |
-| **[Renewable Project Development & Grid Connection Expert](skills/renewable-project-development/SKILL_EN.md)** · [CN](skills/renewable-project-development/SKILL.md) | resource assessment, Doc. 136 mechanism pricing, LCOE and after-tax cash flow, grid approvals, curtailment and absorption, provincial auctions |
+| **[Renewable Project Development & Grid Connection Expert](skills/renewable-project-development/SKILL_EN.md)** · [CN](skills/renewable-project-development/SKILL.md) | resource assessment, Doc. 136 mechanism pricing, LCOE and after-tax cash flow, offshore wind CfD, grid approvals, curtailment and absorption, provincial auctions |
 | **[Carbon Asset Management Expert](skills/carbon-asset-expert/SKILL_EN.md)** · [CN](skills/carbon-asset-expert/SKILL.md) | compliance calendar, allowance gap, CEA/CCER procurement and development, carbon finance, CBAM, product carbon footprint, neutrality claims, DPP |
 
 ### Dispatch and bills
@@ -133,6 +134,7 @@ energy-skills/
 ├── scripts/
 │   ├── build-knowledge-html.mjs      ← hub, reading pages, index and credibility artifacts
 │   ├── architecture-diagrams.mjs     ← semantic specs for five core architecture diagrams
+│   ├── build-province-matrix.mjs     ← generate the provincial parameter matrix
 │   ├── check-consistency.mjs         ← links, versions, figures and content discipline
 │   ├── check-maintenance.mjs         ← due-review board
 │   ├── credibility.mjs               ← credibility register
@@ -146,6 +148,7 @@ energy-skills/
     ├── english-digest.json           ← generated: English routing digest
     ├── search-index.js               ← generated: full-text index
     ├── assets/                       ← reading-page styles, scripts and marks
+    ├── data/province-params.json     ← structured source for the provincial matrix
     └── *.md                          ← knowledge modules (frontmatter-driven)
 ```
 
@@ -154,7 +157,7 @@ energy-skills/
 ## Maintaining the knowledge hub
 
 > [!IMPORTANT]
-> `knowledge/index.html`, `knowledge/credibility.json`, `knowledge/english-digest.json`, `knowledge/search-index.js` and `knowledge/html/` are generated artifacts. **Do not edit them by hand.** Markdown remains the source of truth.
+> `knowledge/index.html`, `knowledge/credibility.json`, `knowledge/english-digest.json`, `knowledge/search-index.js` and `knowledge/html/` are generated artifacts. **Do not edit them by hand.** Markdown remains the source of truth. The provincial parameter matrix inside the status table is also generated from `knowledge/data/province-params.json` by `scripts/build-province-matrix.mjs`.
 
 1. **Fill frontmatter**: add `id`, `section`, `order`, `level`, `title`, `summary`, `summary_en`, `tags`, `cutoff`, `related`, `search` and `foot` to each `knowledge/*.md`; add `examples` for worked examples and `historical: true` plus `confidence` for historical notes.
 2. **Update navigation**: edit `scripts/knowledge.config.mjs` for sections and navigation, and `knowledge/index.template.html` for the hub skeleton.
@@ -162,6 +165,8 @@ energy-skills/
 4. **Rebuild and verify**:
 
 ```bash
+node scripts/build-province-matrix.mjs           # rebuild the provincial parameter matrix
+node scripts/build-province-matrix.mjs --check   # verify the matrix is current
 node scripts/build-knowledge-html.mjs           # rebuild hub, reading pages, index and credibility.json
 node scripts/build-knowledge-html.mjs --check   # verify artifacts are current
 node scripts/check-consistency.mjs              # structure, links and content discipline
@@ -196,7 +201,7 @@ node scripts/check-maintenance.mjs --check      # maintenance-ledger structure c
 
 ## Notes
 
-1. **Timeliness**: policy figures are compiled as of **2026-11-11**; the September–October 2026 spot-market rules, retailer management measure, risk-control measure and credit-evaluation guideline are still drafts for comment, marked as such. Always defer to the latest official documents.
+1. **Timeliness**: policy figures are compiled as of **2026-11-12**; the September–October 2026 spot-market rules, retailer management measure, risk-control measure and credit-evaluation guideline are still drafts for comment, marked as such. Always defer to the latest official documents.
 2. **Originality**: the notes under `knowledge/` are original thematic summaries, not reproductions; copyrights of the source books remain with their authors.
 3. **Not investment advice**: price judgments and estimation frameworks are for learning and research only.
 4. **Discipline**: the skills ship with a “to be verified” convention and common-mistakes checklists; read Chapter 0 and the reasoning handbook in each `SKILL.md` before use.
@@ -212,4 +217,4 @@ node scripts/check-maintenance.mjs --check      # maintenance-ledger structure c
 
 All content in this repository (Markdown skills, knowledge notes, research records and supporting scripts) is licensed under [CC BY-NC 4.0](LICENSE): free to copy, redistribute and adapt with attribution, **not for commercial use**. When quoting or republishing, use the attribution format suggested in `LICENSE` and keep the source link.
 
-<p align="center"><sub>Last updated 2026-11-11 · <a href="#energy-skills">Back to top</a></sub></p>
+<p align="center"><sub>Last updated 2026-11-12 · <a href="#energy-skills">Back to top</a></sub></p>

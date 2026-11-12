@@ -35,6 +35,9 @@ jobs:
         with:
           node-version: '24'
 
+      - name: Verify the generated province matrix is current
+        run: node scripts/build-province-matrix.mjs --check
+
       - name: Verify generated knowledge hub is current
         run: node scripts/build-knowledge-html.mjs --check
 

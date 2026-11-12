@@ -3165,11 +3165,11 @@
       "confidenceInferred": true,
       "examples": null,
       "historical": false,
-      "summaryEn": "Storage revenue modelling and public data: ENTSO-E, EPEX, Nord Pool, Elexon BMRS, NESO, GME, OMIE, REE e·sios, PSE, TenneT, Elia, Svenska kraftnät/Statnett/Fingrid/Energinet, AEMO…",
+      "summaryEn": "Storage revenue modelling and public data: ENTSO-E, EPEX, Nord Pool, Elexon BMRS, NESO, GME, OMIE, REE e·sios, PSE, TenneT, Elia, Svenska kraftnät/Statnett/Fingrid/Energinet, AEMO, CAISO, ERCOT, PJM, JEPX, plus China's national and provincial sources.",
       "titleEn": null,
       "marks": {
         "gradeC": 1,
-        "draft": 0,
+        "draft": 1,
         "pending": 0,
         "example": 2
       },
@@ -3573,24 +3573,25 @@
       "title": "新能源项目开发与并网",
       "level": "core",
       "kind": "知识模块",
-      "cutoff": "2026-11-01",
+      "cutoff": "2026-11-12",
       "confidence": "mixed",
       "confidenceInferred": false,
       "examples": "synthetic",
       "historical": false,
-      "summaryEn": "Four project types and eight development stages, Doc.",
+      "summaryEn": "Mechanism pricing, provincial auctions, P50/P90, LCOE, grid codes, offshore wind and provincial profiles.",
       "titleEn": null,
       "marks": {
-        "gradeC": 5,
-        "draft": 1,
-        "pending": 4,
-        "example": 7
+        "gradeC": 11,
+        "draft": 4,
+        "pending": 9,
+        "example": 12
       },
       "exampleSections": [
         "### 3.3 两个筛查算例（D 级）",
         "### 4.2 三个算例（D 级，税前）",
         "### 4.3 敏感性（算例 A）",
-        "### 4.6 财务评价（算例 A）"
+        "### 4.6 财务评价（算例 A）",
+        "### 5.8 D 级算例：CfD 差额与延迟一年"
       ]
     },
     {
@@ -4020,16 +4021,16 @@
       "confidenceInferred": false,
       "examples": "synthetic",
       "historical": false,
-      "summaryEn": "Weather decides how much can be generated and consumed; fuel decides what one MWh costs to produce. China's 2026 thermal-coal long-term contracts use a 675 CNY/t base with a 50/50 base-plus-floating formula inside a 570-770 CNY/t band, and generators are required to contract at least 80% of demand; the dual-track market therefore produces very different per-MWh costs at different plants for the same spot move. This note covers fuel-to-marginal-bid conversion, dark/spark and clean spreads, the coal-to-gas switching carbon price, and inventory and contract risk.",
+      "summaryEn": "Weather decides how much can be generated and consumed; fuel decides what one MWh costs to produce. China's 2026 thermal-coal long-term contracts use a 675 CNY/t base with a 50/50 base-plus-floating formula inside a 570-770 CNY/t band, and generators are required to contract at least 80% of demand; the dual-track market therefore produces very different per-MWh costs at different plants for the same spot move. This note covers fuel-to-marginal-bid conversion, dark/spark and clean spreads, the coal-to-gas switching carbon price, inventory and contract risk, and a dedicated gas/LNG section on Henry Hub/TTF/JKM, unit conversion, long-term contract structures and two-part gas-fired cost.",
       "titleEn": null,
       "marks": {
-        "gradeC": 17,
+        "gradeC": 23,
         "draft": 0,
-        "pending": 11,
-        "example": 14
+        "pending": 13,
+        "example": 24
       },
       "exampleSections": [
-        "## 6. D 级合成算例（五组，仅演示方法）"
+        "## 7. D 级合成算例（十组，仅演示方法）"
       ]
     },
     {
@@ -4280,12 +4281,12 @@
       "confidenceInferred": true,
       "examples": null,
       "historical": false,
-      "summaryEn": "One row per province: spot / No.",
+      "summaryEn": "One row per province: spot status, 136 allocation, capacity payment, VPP threshold and retail risk, plus a generated rule-parameter matrix covering bid/clearing limits, settlement and market time unit.",
       "titleEn": null,
       "marks": {
-        "gradeC": 26,
-        "draft": 10,
-        "pending": 15,
+        "gradeC": 47,
+        "draft": 17,
+        "pending": 27,
         "example": 0
       },
       "exampleSections": []

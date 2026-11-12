@@ -12,7 +12,7 @@
 <p align="center">
   <a href="CHANGELOG.md"><img alt="version v1.9" src="knowledge/assets/badge-version.svg"></a>&nbsp;
   <a href="knowledge/index.html"><img alt="101 knowledge modules" src="knowledge/assets/badge-modules.svg"></a>&nbsp;
-  <a href="更新清单.md"><img alt="data cutoff 2026-11-11" src="knowledge/assets/badge-cutoff.svg"></a>&nbsp;
+  <a href="更新清单.md"><img alt="data cutoff 2026-11-12" src="knowledge/assets/badge-cutoff.svg"></a>&nbsp;
   <a href="LICENSE"><img alt="license CC BY-NC 4.0" src="knowledge/assets/badge-license.svg"></a>
 </p>
 
@@ -25,7 +25,7 @@
 
 > 每份技能都是一册可直接注入大模型上下文的 Markdown 手册。加载后，模型按该领域资深从业者的身份回答，并遵守内置纪律：数字带文号与时点、涉及省份先确认、政策内容给出查证入口、未交叉验证的数据标注“待核实”。
 
-当前版本 **v1.9**，数据截止 **2026-11-11**，正文 41,719 行。知识笔记、101 个阅读页、技能页、全文检索索引与图表均由仓库内容构建生成。
+当前版本 **v1.9**，数据截止 **2026-11-12**，正文 42,246 行。知识笔记、101 个阅读页、技能页、全文检索索引与图表均由仓库内容构建生成。
 
 **目录**　[快速开始](#快速开始) · [技能矩阵](#技能矩阵) · [知识库](#知识库) · [仓库结构](#仓库结构) · [维护](#维护知识中心) · [Roadmap](#roadmap) · [许可证](#许可证)
 
@@ -39,6 +39,7 @@
 4. **提交前自检**：重建生成物并运行结构、内容与维护台账校验；九个技能各跑一次自身的 `tools/selftest.py`。
 
 ```bash
+node scripts/build-province-matrix.mjs --check
 node scripts/build-knowledge-html.mjs --check
 node scripts/check-consistency.mjs
 node scripts/check-maintenance.mjs --check
@@ -52,7 +53,7 @@ node scripts/check-maintenance.mjs --check
 
 | 技能 | 回答的核心问题 |
 |---|---|
-| **[电力交易专家](skills/electricity-trading-expert/SKILL.md)** · [EN](skills/electricity-trading-expert/SKILL_EN.md) | 现货出清与定价、中长期与金融、辅助服务与容量、结算计量、省别实践、新能源入市、碳市场、11 个海外市场、交易策略与风控 |
+| **[电力交易专家](skills/electricity-trading-expert/SKILL.md)** · [EN](skills/electricity-trading-expert/SKILL_EN.md) | 现货出清与定价、中长期与金融、辅助服务与容量、结算计量、省别实践、新能源入市、燃料与气电成本、碳市场、11 个海外市场、交易策略与风控 |
 | **[现货报价量化专家](skills/spot-bidding-quant/SKILL.md)** · [EN](skills/spot-bidding-quant/SKILL_EN.md) | 负荷与电价预测、残差校正、量价曲线、购电组合、竞价仿真、滚动回测与 T+1 归因 |
 | **[虚拟电厂专家](skills/virtual-power-plant/SKILL.md)** · [EN](skills/virtual-power-plant/SKILL_EN.md) | 资源聚合、三阶段演进、市场参与、商业模式、控制优化、政策与国际对标 |
 | **[售电零售与风险专家](skills/retail-electricity-risk/SKILL.md)** · [EN](skills/retail-electricity-risk/SKILL_EN.md) | 套餐全成本定价、客户组合、购电覆盖、偏差考核、批零倒挂、履约保函与退出 |
@@ -62,7 +63,7 @@ node scripts/check-maintenance.mjs --check
 | 技能 | 回答的核心问题 |
 |---|---|
 | **[储能投资与运营专家](skills/storage-investment-operations/SKILL.md)** · [EN](skills/storage-investment-operations/SKILL_EN.md) | 六种项目形态、五类收益堆叠、LCOS/IRR/NPV/DSCR、退化与增容、考核扣减、商业模式与压测 |
-| **[新能源项目开发与并网专家](skills/renewable-project-development/SKILL.md)** · [EN](skills/renewable-project-development/SKILL_EN.md) | 资源评估、136 号文机制电价、LCOE 与税后现金流、并网审批、限电消纳、省别竞价 |
+| **[新能源项目开发与并网专家](skills/renewable-project-development/SKILL.md)** · [EN](skills/renewable-project-development/SKILL_EN.md) | 资源评估、136 号文机制电价、LCOE 与税后现金流、海上风电 CfD、并网审批、限电消纳、省别竞价 |
 | **[碳资产管理专家](skills/carbon-asset-expert/SKILL.md)** · [EN](skills/carbon-asset-expert/SKILL_EN.md) | 履约日历、配额盈缺、CEA/CCER 采购与开发、碳金融、CBAM、产品碳足迹、碳中和声明、DPP |
 
 ### 调度与账单
@@ -133,6 +134,7 @@ energy-skills/
 ├── scripts/
 │   ├── build-knowledge-html.mjs      ← 生成知识中心、阅读页、索引与可信度文件
 │   ├── architecture-diagrams.mjs     ← 5 张核心架构图的语义化规格
+│   ├── build-province-matrix.mjs     ← 生成省级规则参数矩阵
 │   ├── check-consistency.mjs         ← 链接、版本、数字与内容纪律
 │   ├── check-maintenance.mjs         ← 更新清单到期看板
 │   ├── credibility.mjs               ← 可信度登记册
@@ -146,6 +148,7 @@ energy-skills/
     ├── english-digest.json           ← 生成：英文路由摘要
     ├── search-index.js               ← 生成：全文检索索引
     ├── assets/                       ← 阅读页样式、脚本与标识
+    ├── data/province-params.json     ← 省级参数矩阵的结构化数据源
     └── *.md                          ← 知识模块（frontmatter 驱动）
 ```
 
@@ -154,7 +157,7 @@ energy-skills/
 ## 维护知识中心
 
 > [!IMPORTANT]
-> `knowledge/index.html`、`knowledge/credibility.json`、`knowledge/english-digest.json`、`knowledge/search-index.js` 与 `knowledge/html/` 都是生成物，**不要手改**。内容源始终是 Markdown。
+> `knowledge/index.html`、`knowledge/credibility.json`、`knowledge/english-digest.json`、`knowledge/search-index.js` 与 `knowledge/html/` 都是生成物，**不要手改**。内容源始终是 Markdown。省级状态总表里的参数矩阵也是生成物，数据源是 `knowledge/data/province-params.json`，由 `scripts/build-province-matrix.mjs` 写入。
 
 1. **补 frontmatter**：为 `knowledge/*.md` 填写 `id`、`section`、`order`、`level`、`title`、`summary`、`summary_en`、`tags`、`cutoff`、`related`、`search`、`foot`；算例模块补 `examples`，史料型笔记补 `historical: true` 与 `confidence`。
 2. **改导航**：分区与导航改 `scripts/knowledge.config.mjs`，首页骨架改 `knowledge/index.template.html`。
@@ -162,6 +165,8 @@ energy-skills/
 4. **重建并校验**：
 
 ```bash
+node scripts/build-province-matrix.mjs           # 重建省级规则参数矩阵
+node scripts/build-province-matrix.mjs --check   # 只校验矩阵是否最新
 node scripts/build-knowledge-html.mjs           # 重建首页、阅读页、索引与 credibility.json
 node scripts/build-knowledge-html.mjs --check   # 只校验生成物是否最新
 node scripts/check-consistency.mjs              # 结构、链接与内容纪律
@@ -196,7 +201,7 @@ node scripts/check-maintenance.mjs --check      # 更新清单结构校验
 
 ## 几点说明
 
-1. **时效性**：政策类数字整理至 **2026-11-11**；2026 年 9–10 月的现货新规、售电公司管理办法、风险防控办法、信用评价指引仍为征求意见稿，正文已标注状态。引用前以官方最新文件为准。
+1. **时效性**：政策类数字整理至 **2026-11-12**；2026 年 9–10 月的现货新规、售电公司管理办法、风险防控办法、信用评价指引仍为征求意见稿，正文已标注状态。引用前以官方最新文件为准。
 2. **原创性**：`knowledge/` 下的笔记是对原书内容的主题化摘要与提炼，非原文复制；书籍版权归原作者所有。
 3. **非投资建议**：文中的价格判断与测算框架仅供学习研究。
 4. **口径纪律**：技能内置“待核实”标注约定与常见误区清单；使用前建议先读 `SKILL.md` 第 0 章与推理手册章节。
@@ -212,4 +217,4 @@ node scripts/check-maintenance.mjs --check      # 更新清单结构校验
 
 本仓库内容（Markdown 技能、知识笔记、调研记录与辅助脚本）采用 [CC BY-NC 4.0](LICENSE) 授权：可署名后自由复制、分发与改编，**不得用于商业用途**。引用或再发布请按 `LICENSE` 中的建议格式署名，并保留来源链接。
 
-<p align="center"><sub>最后更新于 2026-11-11 · <a href="#energy-skills">回到顶部</a></sub></p>
+<p align="center"><sub>最后更新于 2026-11-12 · <a href="#energy-skills">回到顶部</a></sub></p>

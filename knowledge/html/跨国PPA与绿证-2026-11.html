@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>跨国 PPA、绿证与 tolling（2026 版）：从 GO 到 merchant tail | energy-skills 知识库</title>
-<meta name="description" content="把 GO/REGO/REC/LGC/GEC、AIB EECS 跨境承认、十一市场支持工具与储能资格、法国 CRE CfD、CfD 与 CIS 叠加、merchant tail、tolling 条款和 24/7 小时级匹配拉成一张合同表；附 D 级合成算例与尽调清单。">
+<meta name="description" content="把 GO/REGO/REC/LGC/GEC、AIB EECS 跨境承认、十一市场支持工具与储能资格、法国 CRE CfD、CfD 与 CIS 叠加、merchant tail、tolling 条款和 24/7 小时级匹配拉成一张合同表；新增合同估值（远期曲线、捕获率分布、floor/cap/collar payoff、P10/P50/P90 与 P90 DSCR）；附 D 级合成算例与尽调清单。">
 <link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
@@ -80,10 +80,10 @@
     <header class="doc-head">
       <div class="kicker">05 · CROSS<i>知识模块</i></div>
       <h1 class="doc-title">跨国 PPA、绿证与 tolling：从证书到现金流（2026-11）</h1>
-      <p class="lede">把 GO/REGO/REC/LGC/GEC、AIB EECS 跨境承认、十一市场支持工具与储能资格、法国 CRE CfD、CfD 与 CIS 叠加、merchant tail、tolling 条款和 24/7 小时级匹配拉成一张合同表；附 D 级合成算例与尽调清单。</p>
+      <p class="lede">把 GO/REGO/REC/LGC/GEC、AIB EECS 跨境承认、十一市场支持工具与储能资格、法国 CRE CfD、CfD 与 CIS 叠加、merchant tail、tolling 条款和 24/7 小时级匹配拉成一张合同表；新增合同估值（远期曲线、捕获率分布、floor/cap/collar payoff、P10/P50/P90 与 P90 DSCR）；附 D 级合成算例与尽调清单。</p>
       <p class="hook">2026-11 · 合同 / 证书 / 跨境承认 / 现金流</p>
-      <div class="tags"><span class="tag">PPA</span><span class="tag">绿证</span><span class="tag">GO</span><span class="tag">CfD</span><span class="tag">CRE</span><span class="tag">EEG</span><span class="tag">SDE++</span><span class="tag">ITC</span><span class="tag">tolling</span><span class="tag">merchant tail</span></div>
-      <div class="doc-meta"><span>约 19.1k 字</span><span>阅读约 31 分钟</span><span>15 节</span><span>数据截止 2026-11-11</span></div>
+      <div class="tags"><span class="tag">PPA</span><span class="tag">绿证</span><span class="tag">GO</span><span class="tag">CfD</span><span class="tag">CRE</span><span class="tag">EEG</span><span class="tag">SDE++</span><span class="tag">ITC</span><span class="tag">tolling</span><span class="tag">merchant tail</span><span class="tag">合同估值</span><span class="tag">NPV</span><span class="tag">DSCR</span><span class="tag">P10</span><span class="tag">P90</span></div>
+      <div class="doc-meta"><span>约 22.6k 字</span><span>阅读约 37 分钟</span><span>15 节</span><span>数据截止 2026-11-11</span></div>
     </header>
 
     <details class="toc-mobile">
@@ -92,18 +92,18 @@
             <li class="lv2"><a href="#s1">0. 先分清五件事</a></li>
             <li class="lv2"><a href="#s3">1. 合同族谱：从 merchant 到 tolling</a></li>
             <li class="lv2"><a href="#s8">2. PPA 定价：把“合同价”还原成“有效价”</a></li>
-            <li class="lv2"><a href="#s13">3. 绿证体系横向对照</a></li>
-            <li class="lv2"><a href="#s22">4. CfD、CIS 与收入支持：叠加规则</a></li>
-            <li class="lv2"><a href="#s38">5. Tolling：条款比价格更重要</a></li>
-            <li class="lv2"><a href="#s42">6. 24/7 小时级绿电匹配</a></li>
-            <li class="lv2"><a href="#s46">7. 合成算例（D 级，仅演示口径）</a></li>
-            <li class="lv2"><a href="#s52">8. 十四个坑</a></li>
-            <li class="lv2"><a href="#s53">9. 尽调清单</a></li>
-            <li class="lv2"><a href="#s54">10. 2026–2027 观察清单</a></li>
-            <li class="lv2"><a href="#s55">11. 官方来源与链接状态</a></li>
-            <li class="lv2"><a href="#s56">速查</a></li>
-            <li class="lv2"><a href="#s57">分工与边界</a></li>
-            <li class="lv2"><a href="#s58">更新记录</a></li>
+            <li class="lv2"><a href="#s20">3. 绿证体系横向对照</a></li>
+            <li class="lv2"><a href="#s29">4. CfD、CIS 与收入支持：叠加规则</a></li>
+            <li class="lv2"><a href="#s45">5. Tolling：条款比价格更重要</a></li>
+            <li class="lv2"><a href="#s49">6. 24/7 小时级绿电匹配</a></li>
+            <li class="lv2"><a href="#s53">7. 合成算例（D 级，仅演示口径）</a></li>
+            <li class="lv2"><a href="#s61">8. 十四个坑</a></li>
+            <li class="lv2"><a href="#s62">9. 尽调清单</a></li>
+            <li class="lv2"><a href="#s63">10. 2026–2027 观察清单</a></li>
+            <li class="lv2"><a href="#s64">11. 官方来源与链接状态</a></li>
+            <li class="lv2"><a href="#s65">速查</a></li>
+            <li class="lv2"><a href="#s66">分工与边界</a></li>
+            <li class="lv2"><a href="#s67">更新记录</a></li>
       </ol>
     </details>
 
@@ -150,102 +150,120 @@ Baseload：
 <ul><li>光伏中午出力高、价格低，捕获率通常低于 100%；风电夜间出力高，捕获率可能高于或低于 100%，取决于市场。</li><li><strong>PPA 报价要看捕获价，不是基荷均价</strong>：用基荷均价减 PPA 价算“节省”，会高估光伏项目的收益。</li><li><strong>储能可以抬高捕获率</strong>：把中午的电搬到晚高峰，但会增加 RTE 损失、退化和辅助服务机会成本。</li></ul>
 <h3 id="s12">2.4 基差与跨境</h3>
 <ul><li><strong>地理基差</strong>：同一国家内，项目所在报价区与 PPA reference price 的口径可能不同；意大利南北、北欧分区、澳洲五区都是典型。</li><li><strong>时间基差</strong>：日前、日内、实时、平衡价不同；reference price 用哪个，要在合同里定义。</li><li><strong>跨境基差</strong>：跨国 PPA 还涉及汇率、输电权、跨境容量、证书承认和双边税收；不是把两个国家的价格曲线一减就行。</li></ul>
+<h3 id="s13">2.5 合同估值：从有效价到概率分布</h3>
+<p>合同估值不是“合同价 × 电量再折现”，而是把合同拆成一组随市场状态变化的现金流，再对分布定价。四步固定下来，跨市场才可比：</p>
+<ol><li><strong>定标的</strong>：合同电量、交割点、reference price、证书归属、结算币种。</li><li><strong>定状态变量</strong>：远期曲线、捕获率、出力、负价与弃电、退化、汇率。</li><li><strong>定 payoff</strong>：固定价、floor/cap/collar、CfD、proxy revenue swap、tolling 各自不同。</li><li><strong>定输出</strong>：NPV/IRR/DSCR 与 P10/P50/P90，而不是一个单点。</li></ol>
+<h4 id="s14">2.5.1 远期曲线不是预测</h4>
+<ul><li>远期曲线是市场对未来的定价，含风险溢价、流动性溢价和对手方成本；拿它做 base case 可以，把它当“期望电价”会系统性偏离。</li><li>曲线要按交割点、时段（base/peak）、产品（日前/日内/平衡）和币种对齐；跨境合同再叠汇率远期。</li><li>曲线没有流动性的期限，用“历史现货 + 情景”补，不要拍一个均价冒充远期。</li></ul>
+<h4 id="s15">2.5.2 捕获率要当分布，不是常数</h4>
+<ul><li>捕获率随电价水平、电源结构、天气和负价小时变化；用近三年分年捕获率的离散度，比用单个均值更接近真实。</li><li>光伏的价格与捕获率通常负相关：高价时段出力低，基荷均价上涨时捕获率反而下降。独立抽样价格和捕获率，会高估收入的上行。</li><li>储能抬升捕获率的同时增加 RTE 损失、退化和辅助服务机会成本，估值时要把三者放回同一条现金流。</li></ul>
+<h4 id="s16">2.5.3 条款 payoff</h4>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>条款</th><th>卖方每 MWh 收入</th><th>期权方向</th><th>估值要点</th></tr></thead><tbody><tr><td>固定价 PPA</td><td><code>P</code></td><td>无</td><td>量风险按 pay-as-produced / baseload 分开</td></tr><tr><td>Floor</td><td><code>price + max(floor − price, 0)</code></td><td>卖方买入 put</td><td>权利金计入有效价；floor 不是免费保险</td></tr><tr><td>Cap</td><td><code>price − max(price − cap, 0)</code></td><td>卖方卖出 call</td><td>让渡上行换权利金；负价时段仍暴露</td></tr><tr><td>Collar</td><td><code>min(cap, max(floor, price))</code></td><td>买 floor + 卖 cap</td><td>净权利金可正可负；零成本 collar 仍有上限</td></tr><tr><td>CfD</td><td><code>price + (strike − reference)</code></td><td>双向差价</td><td>reference 口径决定基差，不改变电量风险</td></tr><tr><td>Proxy revenue swap</td><td><code>fixed − actual revenue</code></td><td>收入互换</td><td>资源指数与电价的相关性决定基差</td></tr><tr><td>Tolling</td><td>容量费 × 可用容量 × 可用率</td><td>买方获得调度权</td><td>卖方放弃 upside；罚则与 SOC 窗口进模型</td></tr></tbody></table></div>
+<pre tabindex="0"><code>Collar 补偿 = max(floor − price, 0) − max(price − cap, 0)
+CfD 结算   = (strike − reference) × 合约电量</code></pre>
+<ul><li><strong>权利金要摊进有效价</strong>：把 floor 当“白送的保险”，等于高估项目收入；cap 卖得太便宜，也会把 upside 白送。</li><li><strong>负价条款单独建模</strong>：floor 在负价时段最有价值，cap 在尖峰时段让渡最多；用年均价会掩盖这两个尾部。</li></ul>
+<h4 id="s17">2.5.4 Merchant tail 的风险调整</h4>
+<ul><li><strong>分段折现</strong>：PPA/CfD 期用合同现金流折现率；merchant tail 用更高折现率，或对现金流做 haircut，因为价格、捕获率、退化和政策风险都更高。</li><li><strong>债务期限通常短于资产寿命</strong>：tail 可能不被 DSCR 覆盖，再融资风险要单独列。</li><li><strong>不要用 PPA 期价格外推 tail</strong>：用保守价格曲线、捕获率分布和退化上限重新建模。</li><li><strong>三种常用做法</strong>：提高折现率、现金流 haircut、用 P10 做偿债测试；三者不要混用后又声称“已经保守”。</li></ul>
+<h4 id="s18">2.5.5 输出：分布而非单点</h4>
+<ul><li>至少给 NPV/IRR 的 P10/P50/P90；单一 base case 无法支撑投决。</li><li><strong>口径先写清</strong>：本文 P10 = 10% 分位（下行），P90 = 90% 分位（上行）；风电资源评估的 P90 是“90% 保证率”，反而是下行值，两个 P90 方向相反。</li><li>DSCR = CFADS ÷ 债务服务；贷款人通常看 P90 DSCR，阈值随市场和贷款人变化（常见 1.1–1.3，不能当统一标准）。</li><li><strong>敏感性至少覆盖</strong>：电价 ±20%、捕获率 ±10 个百分点、出力 ±10%、折现率 ±100 bp、合同期限 ±5 年、退化 ±0.5%/年。</li></ul>
+<h4 id="s19">2.5.6 工具</h4>
+<p><code>skills/electricity-trading-expert/tools/contracts.py</code> 提供远期曲线折现、捕获价/捕获率、floor/cap/collar/CfD/proxy/tolling payoff、merchant tail、DSCR 与分位数；<code>selftest.py</code> 锁定 §7.6–§7.7 的数字。全部为 D 级合成口径。</p>
 <hr>
-<h2 id="s13">3. 绿证体系横向对照</h2>
-<h3 id="s14">3.1 六套体系</h3>
+<h2 id="s20">3. 绿证体系横向对照</h2>
+<h3 id="s21">3.1 六套体系</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>体系</th><th>单位</th><th>主管/登记</th><th>年份/有效期</th><th>跨境承认</th><th>主要用途</th></tr></thead><tbody><tr><td>EU GO（AIB EECS）</td><td>1 GO = 1 MWh</td><td>各国签发机构 + AIB Hub</td><td>RED II 下自生产起 12 个月</td><td>EECS 成员间可跨境</td><td>绿电披露、自愿主张</td></tr><tr><td>UK REGO</td><td>1 REGO = 1 MWh</td><td>Ofgem</td><td>按 Ofgem 披露周期</td><td>不在 AIB/EECS 体系内</td><td>Fuel Mix Disclosure、自愿主张</td></tr><tr><td>US REC</td><td>1 REC = 1 MWh</td><td>州/区域跟踪系统</td><td>按合规年度</td><td>不适用于 EU GO</td><td>州 RPS、自愿市场</td></tr><tr><td>Australia LGC</td><td>1 LGC = 1 MWh</td><td>Clean Energy Regulator</td><td>按 RET 合规年度</td><td>不适用于 EU GO</td><td>联邦 RET 义务</td></tr><tr><td>Japan NFC</td><td>以 kWh 计价</td><td>JEPX 非化石价值交易市场</td><td>按年度/批次</td><td>不适用于 EU GO</td><td>非化石比例披露、自愿</td></tr><tr><td>China GEC</td><td>1 张 = 1 MWh</td><td>国家能源局/绿证核发机构</td><td>按核发年份</td><td>不适用于 EU GO</td><td>绿电消费、消纳责任权重</td></tr></tbody></table></div>
 <aside class="note"><p>“跨境承认”是登记与披露层面的承认，不等于物理电量跨境输送；具体以目标市场登记机构和披露规则为准。</p></aside>
-<h3 id="s15">3.2 EU GO 与 AIB EECS</h3>
+<h3 id="s22">3.2 EU GO 与 AIB EECS</h3>
 <ul><li><strong>AIB 是签发机构协会，EECS 是证书标准</strong>：EECS 规定签发、转让、注销的格式和流程；AIB Hub 负责跨境电子转让。</li><li><strong>成员规模</strong>：AIB 官网 2026-11 显示“42 members and 6 Observers from 36 countries”（B）。成员数会变化，引用时写日期。</li><li><strong>有效期</strong>：RED II 第 19 条要求 GO 自生产起 12 个月内有效；EECS 各域规则可能更细，以最新 EECS Rules 为准（A/B）。</li><li><strong>域码（domain）</strong>：EECS 用域码区分国家/载体；电力、气体、热/冷、氢等载体是否覆盖，按域码和本国登记规则。</li><li><strong>Residual mix</strong>：未追踪电量进入 residual mix；用 residual mix 做范围二核算时，不能同时再主张 GO，否则重复计算。</li><li><strong>法国 GO</strong>：属于 AIB EECS 体系；通过 EEX 拍卖，2026-06 光伏 GO 成交 <strong>2,170,833 MWh</strong>、均价 <strong>€1.77/MWh</strong>（A，EEX）；跨境承认按 AIB 规则，默认不与其他证书体系互认。</li></ul>
-<h3 id="s16">3.3 UK REGO</h3>
+<h3 id="s23">3.3 UK REGO</h3>
 <ul><li><strong>REGO 是英国独立体系</strong>：由 Ofgem 管理，用于 Fuel Mix Disclosure 和自愿绿电主张；不在 AIB/EECS 跨境体系内（B）。</li><li><strong>脱欧后的边界</strong>：EU GO 与 UK REGO 不能互换；同一 MWh 不能既用 EU GO 又用 REGO 主张。</li><li><strong>与 CfD 的关系</strong>：CfD 是价格支持，不自动转移 REGO；证书归属看合同和 Ofgem 规则。</li><li><strong>对跨境企业</strong>：在英国用 REGO，在欧盟用 GO；如果供应商给的是“欧洲绿电”，要问清证书注册地和注销证明。</li></ul>
-<h3 id="s17">3.4 US REC</h3>
+<h3 id="s24">3.4 US REC</h3>
 <ul><li><strong>REC 是州 RPS 和自愿市场的核心工具</strong>：1 REC = 1 MWh 环境属性；合规 REC 与自愿 REC 的规则不同。</li><li><strong>跟踪系统分散</strong>：PJM GATS、WREGIS、M-RETS、NEPOOL GIS 等区域系统各有规则；跨州/跨系统不能假设自动互认。</li><li><strong>与 EU GO 不互认</strong>：美国 REC 不能直接用于欧盟 GO 主张；反之亦然。</li><li><strong>对中国出口企业</strong>：美国客户要 REC，欧洲客户要 GO，中国客户要 GEC；三套账不能混。</li></ul>
-<h3 id="s18">3.5 Australia LGC</h3>
+<h3 id="s25">3.5 Australia LGC</h3>
 <ul><li><strong>LGC 是 RET 义务工具</strong>：1 LGC = 1 MWh 合格可再生电量；责任实体按 RET 比例提交 LGC 或缴费。</li><li><strong>与 CIS 分开</strong>：CIS 是收入承销，LGC 是证书义务；同一项目可以有 CIS 合同并产生 LGC，但收入叠加和回补条款要逐项看。</li><li><strong>与州 scheme 分开</strong>：NSW LTESA、VIC 招标等州级支持与 LGC 是不同机制；不要简单相加。</li></ul>
-<h3 id="s19">3.6 Japan NFC</h3>
+<h3 id="s26">3.6 Japan NFC</h3>
 <ul><li><strong>非化石证书（NFC）</strong>：JEPX 非化石价值交易市场交易，分 FIT NFC 与非 FIT NFC；以 kWh 计价。</li><li><strong>用途</strong>：零售商的非化石比例披露、企业自愿绿电主张；与 FIT/FIP 补贴的关系要看具体批次。</li><li><strong>与 EU GO 不互认</strong>：日本 NFC 不能直接用于欧盟 GO 主张。</li></ul>
-<h3 id="s20">3.7 China GEC</h3>
+<h3 id="s27">3.7 China GEC</h3>
 <ul><li><strong>1 张 = 1 MWh</strong>：2023 年起核发全覆盖；绿证用于绿电消费、消纳责任权重和客户要求。</li><li><strong>年份比价格更重要</strong>：2026-09 核发 3.26 亿张、可交易 1.97 亿张、交易 5,843 万张；2024/2025/2026 年份价格约 0.56/1.60/6.16 元/张（B，详见《碳资产实务》）。</li><li><strong>不能用于配额清缴</strong>：绿证是电力属性凭证，不是碳配额；也不能与 CCER 对同一电量重复主张。</li><li><strong>国际承认有限</strong>：欧盟电池法规碳足迹规则不认可绿证抵扣；出口企业要按目标市场规则双轨核算。</li></ul>
-<h3 id="s21">3.8 跨境承认矩阵</h3>
+<h3 id="s28">3.8 跨境承认矩阵</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>证书来源 → 目标主张</th><th>EU GO</th><th>UK REGO</th><th>US REC</th><th>Australia LGC</th><th>Japan NFC</th><th>China GEC</th></tr></thead><tbody><tr><td>欧盟范围二/GO 主张</td><td>可（EECS 内）</td><td>不可</td><td>不可</td><td>不可</td><td>不可</td><td>不可</td></tr><tr><td>英国 Fuel Mix Disclosure</td><td>不可</td><td>可</td><td>不可</td><td>不可</td><td>不可</td><td>不可</td></tr><tr><td>美国 RPS/自愿</td><td>不可</td><td>不可</td><td>可（按州/系统）</td><td>不可</td><td>不可</td><td>不可</td></tr><tr><td>澳洲 RET</td><td>不可</td><td>不可</td><td>不可</td><td>可</td><td>不可</td><td>不可</td></tr><tr><td>日本非化石披露</td><td>不可</td><td>不可</td><td>不可</td><td>不可</td><td>可</td><td>不可</td></tr><tr><td>中国绿电消费</td><td>不可</td><td>不可</td><td>不可</td><td>不可</td><td>不可</td><td>可</td></tr></tbody></table></div>
 <aside class="note"><p>这张表是“默认不互认”的保守口径；存在双边协议、互认试点或客户自行接受的情况，但必须拿到登记机构的书面确认，不能凭供应商口头承诺。</p></aside>
 <hr>
-<h2 id="s22">4. CfD、CIS 与收入支持：叠加规则</h2>
-<h3 id="s23">4.1 六种支持工具原型</h3>
+<h2 id="s29">4. CfD、CIS 与收入支持：叠加规则</h2>
+<h3 id="s30">4.1 六种支持工具原型</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>工具</th><th>买什么</th><th>结算</th><th>典型市场</th><th>储能资格</th></tr></thead><tbody><tr><td>UK CfD</td><td>低碳发电价格稳定</td><td>15 年双向差价</td><td>英国</td><td>独立储能通常不参加</td></tr><tr><td>Italy FER X</td><td>可再生发电</td><td>20 年双向 CfD</td><td>意大利</td><td>支持发电，储能另走 MACSE</td></tr><tr><td>France CR</td><td>可再生发电</td><td>20 年 CfD（complément de rémunération）</td><td>法国 CRE 招标</td><td>独立储能不直接参加</td></tr><tr><td>Poland OZE</td><td>可再生发电</td><td>15 年 CfD</td><td>波兰</td><td>发电项目；储能可配套</td></tr><tr><td>Australia CIS</td><td>收入承销</td><td>floor/cap</td><td>澳洲 NEM</td><td>储能可参与</td></tr><tr><td>Germany EEG</td><td>市场溢价</td><td>滑动溢价</td><td>德国</td><td>储能不直接拿 EEG</td></tr></tbody></table></div>
 <p>六种是“工具原型”；同一工具在不同国家的资格、期限、回补和证书归属不同。下表按十一市场拆开，先看“储能能不能直接拿”，再看合同和证书。</p>
-<h3 id="s24">4.1a 十一市场支持工具与储能资格</h3>
+<h3 id="s31">4.1a 十一市场支持工具与储能资格</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>市场</th><th>主要支持工具</th><th>储能能否直接拿</th><th>证书/登记</th><th>PPA 市场特点</th><th>级别/时点</th></tr></thead><tbody><tr><td>德国</td><td>EEG 拍卖 + 滑动市场溢价；负价时段 AW 归零</td><td>独立储能不直接拿 EEG；可配套可再生</td><td>EU GO（AIB/EECS）</td><td>工业 PPA 活跃；平衡组、计量、HKN 归属先落地</td><td>A/B</td></tr><tr><td>英国</td><td>CfD（发电，15 年双向）；LDES cap-and-floor 另线</td><td>独立储能通常不参加标准 CfD；LDES 另论</td><td>REGO</td><td>企业 PPA/sleeving 常见；BM 平衡责任</td><td>A/B</td></tr><tr><td>意大利</td><td>FER X（20 年双向 CfD，发电）；MACSE（储能容量）</td><td>FER X 不直接给独立储能；走 MACSE</td><td>EU GO</td><td>PPA 市场较薄；多数靠招标/容量</td><td>A</td></tr><tr><td>西班牙</td><td>竞争性招标/PPA + 容量市场（TED/966）；无统一储能 CfD</td><td>储能走容量 + 能量 + 辅助；不假设补贴</td><td>EU GO</td><td>PPA/tolling 用于降低 merchant 风险</td><td>A/B</td></tr><tr><td>法国</td><td>CRE 招标 20 年 CfD（发电）；PL-1/PL-4 容量；MA</td><td>独立储能不直接参加 CRE CfD；走容量 + 辅助 + 套利</td><td>EU GO（EEX 拍卖）</td><td>PPA 市场发展中；核电基荷影响形状</td><td>A</td></tr><tr><td>荷兰</td><td>SDE++（运营补贴，非 CfD）；无容量市场</td><td>2026 SDE++ 未列独立电池类别；不假设可拿</td><td>EU GO</td><td>PPA/tolling/拥堵合同并重</td><td>A/B</td></tr><tr><td>波兰</td><td>OZE 拍卖 15 年 CfD（发电）；rynek mocy 容量</td><td>储能可配套；容量市场可参与</td><td>EU GO</td><td>PPA 市场较薄；CfD 与绿证不重复</td><td>A/B</td></tr><tr><td>比利时</td><td>海上风电 CfD；CRM 容量；区域绿证</td><td>储能走 CRM + 能量 + 辅助；CfD 不直接给储能</td><td>区域 GO/绿证</td><td>PPA + EPAD 对冲分区价差</td><td>B/C</td></tr><tr><td>北欧</td><td>瑞典/挪威绿证；丹麦海上风电 CfD；芬兰拍卖/补贴</td><td>储能无专属 CfD；靠能量 + 辅助 + 储备</td><td>各国 GO（AIB）</td><td>PPA 市场成熟；分区价差与水电灵活度</td><td>B/C</td></tr><tr><td>澳大利亚</td><td>CIS 收入承销；州 scheme（NSW LTESA/VIC）；LGC</td><td>储能可参与 CIS/州招标</td><td>LGC</td><td>企业 PPA 与 tolling 活跃；5 分钟结算</td><td>A/B</td></tr><tr><td>美国</td><td>ITC/PTC（税收抵免）；州 RPS/补贴；PJM 容量/CAISO RA</td><td>储能可拿 ITC；容量/REC 视市场</td><td>REC（GATS/WREGIS 等）</td><td>PPA/tolling 成熟；节点价差、merchant 风险</td><td>A/B</td></tr><tr><td>日本</td><td>FIT/FIP（可再生）；容量市场；LTDA；SII 补贴</td><td>储能不直接拿 FIT；走容量/LTDA/EPRX</td><td>非化石证书（NFC）</td><td>PPA/tolling 发展中；30 分钟现货</td><td>A/B</td></tr></tbody></table></div>
 <aside class="note"><p>“不直接拿”不等于完全不能参与：共址、配套、聚合或地方 scheme 可能给出资格，必须逐条看规则。级别指该行关键数字/规则的可核验程度；B/C 行在签约前查原文。</p></aside>
-<h3 id="s25">4.2 英国 CfD</h3>
+<h3 id="s32">4.2 英国 CfD</h3>
 <ul><li><strong>15 年双向差价</strong>：政府与项目签合同，参考价与执行价之差结算；高于执行价返还，低于补足。</li><li><strong>分配方式</strong>：Allocation Round 竞争性分配，按技术分 Pot；预算、上限价和执行价以当年分配文件为准。</li><li><strong>储能边界</strong>：独立储能通常不参加标准 CfD；共址储能不能“搭便车”，要单独计量、单独注册 BMU；标准 CfD 下的储能通常只能存本项目自身发电（B，按合同条款）。</li><li><strong>LDES 是另一条线</strong>：长时储能走 cap and floor，不是标准 CfD；minded-to 不是最终授予。</li><li><strong>Wholesale CfD 咨询</strong>：2026-10-28 启动、2026-12-09 截止，可能改变未来支持方式（B）。</li></ul>
-<h3 id="s26">4.3 意大利 FER X</h3>
+<h3 id="s33">4.3 意大利 FER X</h3>
 <ul><li><strong>20 年双向 CfD</strong>：DM 194/2026；支持总规模 37.15 GW（至 2030 年底），光伏参考执行价 €80/MWh（A）。</li><li><strong>NZIA 条款</strong>：&gt;1 MW 光伏专项招标对供应链设限；中国组件/逆变器不是无条件可参与（B）。</li><li><strong>与 MACSE 分开</strong>：FER X 支持发电，MACSE 支持储能；同一项目组合可以同时出现，但合同和标的独立。</li></ul>
-<h3 id="s27">4.4 法国：CRE 招标与 complément de rémunération</h3>
+<h3 id="s34">4.4 法国：CRE 招标与 complément de rémunération</h3>
 <ul><li><strong>CfD 是“complément de rémunération”</strong>：CRE 招标确定 20 年合同价，项目仍在市场卖电，按合同结算差价；不是固定上网电价。</li><li><strong>CRE 约 58 个招标</strong>：覆盖地面光伏、&gt;500 kWc 光伏、100–500 kWc 光伏、陆上风电、海上风电、水电、自发自用、技术中立和 ZNI 光伏（A，CRE）。</li><li><strong>PPE2 地面光伏第 9 期</strong>：投标 5,358.66 MWc，拟授 125 个项目/931.40 MWc，加权均价同比下降 €18.15/MWh（−22.8%）（A，CRE 2026-187）。</li><li><strong>没有储能专属招标</strong>：储能收入靠容量机制 PL-1/PL-4、MA/FCR/aFRR/mFRR 和套利；需求响应招标 2023/2024 累计约 1,274 MW（A，CRE）。</li><li><strong>ARENH 不是 CfD</strong>：ARENH 于 2025-12-31 终止；VNU 是对核电超阈值收入的征缴，不是储能或可再生能源的差价合约、保底价。</li><li><strong>GO 与 CfD 分开</strong>：CfD 支持发电价格，GO 卖环境属性；受支持电量能否转让 GO 按规则，同一 MWh 不能重复主张。</li></ul>
-<h3 id="s28">4.5 波兰 OZE</h3>
+<h3 id="s35">4.5 波兰 OZE</h3>
 <ul><li><strong>15 年 CfD</strong>：中标价是执行价，项目仍要在市场卖电；市场价高于执行价时要返还差价（双向）。</li><li><strong>2026 年规模</strong>：计划采购 76.1 TWh、预算 249 亿 PLN（B/C）；2025 年光伏中标价 216.90–329.68 PLN/MWh、风电 100–320 PLN/MWh（A/B）。</li><li><strong>非价格标准</strong>：2026 年起引入供应链/可持续性/网络安全等非价格标准；设备来源可能影响资格（B/C）。</li><li><strong>与绿证不重复</strong>：同一电量不能同时拿 OZE 拍卖差价和绿证；具体以 OZE 法为准。</li></ul>
-<h3 id="s29">4.6 澳洲 CIS</h3>
+<h3 id="s36">4.6 澳洲 CIS</h3>
 <ul><li><strong>收入承销，不是容量市场</strong>：低于 floor 补差、高于 cap 分享；不买可用容量，也不规定调度。</li><li><strong>Tender 8</strong>：储能 4.2 GW/16.1 GWh，COD 2029-12-31；<strong>Tender 10</strong> 寻求 4 GW 可调度容量，2026-08-18 截标（B）。</li><li><strong>与州 scheme 叠加</strong>：CIS 与 NSW LTESA、VIC 招标可能同时存在，但资格、优先级和回补条款不同。</li></ul>
-<h3 id="s30">4.7 德国：EEG 溢价不是储能补贴</h3>
+<h3 id="s37">4.7 德国：EEG 溢价不是储能补贴</h3>
 <ul><li><strong>EEG 是滑动市场溢价</strong>：拍卖确定适用价值（AW），项目按“市场价 + 溢价”结算；市场价高于 AW 时可能回收，具体公式按 EEG（A/B）。</li><li><strong>负价规则</strong>：负价时段 AW 归零，没有“连续 4 小时/6 小时”门槛；这会直接压低配储可再生的捕获价（A）。</li><li><strong>储能边界</strong>：独立储能不直接拿 EEG；共址或配套项目要单独计量、单独注册，证书（HKN/GO）归属写进合同（B）。</li><li><strong>PPA 边界</strong>：工业 PPA 活跃，但平衡组、计量、并网和 HKN 归属要先落地；不要把 EEG 溢价与 PPA 价简单相加（B）。</li><li><strong>观察点</strong>：EEG 负价规则与 2027 年起容量机制并行，PPA 报价要把负价时段损失和容量收入分开建模（B/C）。</li></ul>
-<h3 id="s31">4.8 西班牙：招标、PPA、容量三条腿</h3>
+<h3 id="s38">4.8 西班牙：招标、PPA、容量三条腿</h3>
 <ul><li><strong>没有全国统一的储能 CfD</strong>：可再生支持是“市场化 + PPA + 容量 + 部分招标/补贴”，具体机制随年度调整（A/B）。</li><li><strong>容量市场 TED/966/2026</strong>：主拍卖新投资最长 15 年，调整拍卖 12 个月；储能可参与，资格与履约按法令/拍卖文件（A）。</li><li><strong>储能收入</strong>：能量套利 + 辅助 + 容量 + PPA/tolling；首拍时点与价格未落定，不能把预期容量收入当已签约现金流（A/B）。</li><li><strong>PPA</strong>：企业 PPA 与 tolling 用于降低 merchant 风险；对手方信用、并网/许可和分区价差要一起看（B）。</li><li><strong>观察点</strong>：容量首拍、许可转化率、负价小时与光伏捕获率（A/B）。</li></ul>
-<h3 id="s32">4.9 荷兰：SDE++ 不是电池补贴</h3>
+<h3 id="s39">4.9 荷兰：SDE++ 不是电池补贴</h3>
 <ul><li><strong>SDE++ 是运营补贴，不是 CfD</strong>：2026 年预算 €8bn，窗口 2026-10-27 至 2026-11-26（A）。</li><li><strong>没有独立电池类别</strong>：2026 年 RVO 的 SDE++ 页面未把电池储能列为独立类别；电池通常通过“可再生 + 储能”或其他机制参与，不能假设申请即覆盖电池成本（A：页面未列；资格以当年开窗文件为准）。</li><li><strong>没有容量市场</strong>：储能收益靠能量 + FCR/aFRR/mFRR + 拥堵管理合同 + PPA/tolling（A/B）。</li><li><strong>PPA 边界</strong>：长期合同更重要，但对手方信用、并网非 firm 条款和电网拥堵要一起评估（B）。</li><li><strong>观察点</strong>：SDE++ 2027 参数、优先级框架、ATR85 非 firm 合同、净计量退出（A/B）。</li></ul>
-<h3 id="s33">4.10 比利时与北欧：CfD 给海风，储能靠容量/能量/辅助</h3>
+<h3 id="s40">4.10 比利时与北欧：CfD 给海风，储能靠容量/能量/辅助</h3>
 <ul><li><strong>比利时</strong>：海上风电 CfD 是双向差价（执行价/上限以招标文件为准）；CRM 提供容量收入；区域绿证/GO 按大区规则；储能不直接拿海上风电 CfD（B/C）。</li><li><strong>比利时 PPA</strong>：分区价差可用 EPAD 对冲，但 EPAD 不能替代物理 PPA；储能 PPA/tolling 要看对手方与并网点（B）。</li><li><strong>瑞典/挪威</strong>：瑞典与挪威是绿证共同市场；瑞典 effektreserv 是短期战略储备，不是长期容量年金；挪威以水电为主（B）。</li><li><strong>丹麦</strong>：海上风电走招标/CfD；2024-12 3 GW 招标零报价，2025-11 重启 2.8 GW；2026-08 Vattenfall 中标 Nordsøen Midt 1 GW（504 DKK/MWh）与 Hesselø 800 MW（542 DKK/MWh），20 年 CfD、2032 COD；Nordsøen Syd 1 GW 投标截止 2028-10（C/B）。</li><li><strong>芬兰</strong>：拍卖/补贴 + 核电；tehoreservi 是短期储备；储能无专属 CfD（B）。</li><li><strong>共性</strong>：储能没有“可再生 CfD”可拿，收入靠能量、辅助、容量/储备和 PPA；跨境证书按 AIB 域码，不能假设自动互认（B）。</li></ul>
-<h3 id="s34">4.11 美国：ITC 是税收抵免，不是 PPA</h3>
+<h3 id="s41">4.11 美国：ITC 是税收抵免，不是 PPA</h3>
 <ul><li><strong>ITC（48E）</strong>：储能 30% 基础抵免；+10% 本土含量、+10% 能源社区；2026 现行（A/B）。</li><li><strong>FEOC</strong>：材料成本比不达标会失去 ITC，规则按项目开工时点适用；中国电芯、PCS 与系统集成要逐项核算（A/B）。</li><li><strong>没有联邦 CfD</strong>：收入支持主要是 ITC/PTC、州 RPS/补贴、PJM 容量、CAISO RA；ERCOT 是能量-only（A/B）。</li><li><strong>PPA/tolling</strong>：美国 PPA/tolling 市场成熟，但节点价差、容量性能罚则、REC 归属和对手方信用要分开建模（B）。</li><li><strong>不要混淆资本与运营</strong>：ITC 降低资本成本，不改变运营收入；tax equity、折旧与被动亏损规则要本地税务顾问（B）。</li><li><strong>观察点</strong>：FEOC 细则、301 关税、PJM BRA/ELCC、CAISO RA 小时切片（A/B）。</li></ul>
-<h3 id="s35">4.12 日本：FIT/FIP 给可再生，储能走容量/LTDA/EPRX</h3>
+<h3 id="s42">4.12 日本：FIT/FIP 给可再生，储能走容量/LTDA/EPRX</h3>
 <ul><li><strong>FIT 2026 年度</strong>：住宅光伏 24 日元/kWh（1–4 年）/8.3 日元/kWh（5–10 年）；250 kW 以上竞价 4 次/年、上限 9.6 日元/kWh（A）。</li><li><strong>FIP 是溢价机制</strong>：适合市场化销售；储能本身不直接适用 FIT，但可与可再生能源配套（A/B）。</li><li><strong>非化石证书（NFC）</strong>：FIT 券 0.4–4.0 日元/kWh（2023-08 起）；非 FIT 再エネ指定 0.6–1.3 日元/kWh（B）。</li><li><strong>储能收入</strong>：容量市场（FY2028 ¥11,134/kW、FY2029 ¥13,303/kW）、LTDA（20 年、pay-as-bid、≥6h、约 90% 还付）、EPRX；必要时签 PPA/tolling（A/B）。</li><li><strong>不要把 LTDA 当无义务年金</strong>：90% 还付与 6h 门槛会改变现金流，容量价格年际波动也大（A/B）。</li><li><strong>观察点</strong>：第 4 回 LTDA 上限价/结果、EPRX 产品迁移、SII 补贴金额（A/C）。</li></ul>
-<h3 id="s36">4.13 叠加矩阵</h3>
+<h3 id="s43">4.13 叠加矩阵</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>组合</th><th>能否共存</th><th>关键条件</th><th>常见错误</th></tr></thead><tbody><tr><td>CfD + PPA</td><td>可以</td><td>PPA 是物理/金融 offtake；CfD 按 reference price 结算</td><td>把 PPA 价当 CfD 的 reference price</td></tr><tr><td>CfD + 容量市场</td><td>可以</td><td>容量义务与 CfD 义务分开</td><td>用 CfD 电量算容量可用性</td></tr><tr><td>法国 CfD + PL-1/PL-4</td><td>可以</td><td>CfD 支持发电，容量机制买可用容量；标的、电量分开</td><td>用 CfD 电量算容量可用性</td></tr><tr><td>CIS + 州 scheme</td><td>可能</td><td>资格、优先级、回补条款</td><td>把两套支持简单相加</td></tr><tr><td>PPA + GO</td><td>可以</td><td>证书归属写进合同</td><td>以为 PPA 自动含 GO</td></tr><tr><td>容量市场 + 辅助服务</td><td>可以</td><td>同一 MW 不能同时卖能量和备用</td><td>容量预留后仍按满功率算套利</td></tr><tr><td>补贴 + 绿证</td><td>通常不可以</td><td>受支持电量能否转让环境属性按各国规则</td><td>同一 MWh 卖两次</td></tr></tbody></table></div>
 <p><strong>一句话</strong>：叠加的前提是“标的、电量、义务”三者能分开；分不开的，就是重复计算。</p>
-<h3 id="s37">4.14 Merchant tail</h3>
+<h3 id="s44">4.14 Merchant tail</h3>
 <ul><li><strong>定义</strong>：CfD/PPA 到期后，资产暴露在现货/平衡市场的那段现金流。</li><li><strong>估值</strong>：把 merchant tail 单独建模，用保守价格、捕获率和退化假设；不要用 PPA 期的价格外推。</li><li><strong>融资</strong>：债务期限通常短于资产寿命，merchant tail 可能不被债务覆盖；再融资风险要单独算。</li><li><strong>对储能</strong>：储能没有“燃料成本”，但退化、辅助服务价格和容量机制变化会让 merchant tail 的方差更大。</li></ul>
 <hr>
-<h2 id="s38">5. Tolling：条款比价格更重要</h2>
-<h3 id="s39">5.1 收入结构</h3>
+<h2 id="s45">5. Tolling：条款比价格更重要</h2>
+<h3 id="s46">5.1 收入结构</h3>
 <pre tabindex="0"><code>项目收入 = 容量费 × 可用容量 × 可用率调整
          + 变动成本 pass-through（如充电成本）
          − 性能罚则（RTE/可用率/响应）
          − 退化成本</code></pre>
 <ul><li><strong>容量费</strong>是核心：按 MW·年/月计价，和实际调度量脱钩；调度方承担价格风险。</li><li><strong>变动成本</strong>：充电成本、辅助用电、电网费由谁承担，要在合同里写清。</li><li><strong>性能罚则</strong>：RTE 低于保证值、可用率不达标、响应超时，都会触发扣款。</li><li><strong>退化</strong>：按吞吐量或容量保持率设上限；超出后谁承担更换/增容成本。</li></ul>
-<h3 id="s40">5.2 条款清单</h3>
+<h3 id="s47">5.2 条款清单</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>条款</th><th>要问什么</th><th>为什么重要</th></tr></thead><tbody><tr><td>期限</td><td>2 年还是 7 年？能否续约？</td><td>影响融资和再 contracting</td></tr><tr><td>容量费</td><td>固定还是指数化？</td><td>通胀和利率风险</td></tr><tr><td>可用率</td><td>95% 还是 98%？怎么测？</td><td>直接影响收入</td></tr><tr><td>RTE 保证</td><td>交流侧还是直流侧？</td><td>口径差 2–5 个百分点</td></tr><tr><td>退化上限</td><td>每年多少？按吞吐还是容量？</td><td>决定更换电池的时间</td></tr><tr><td>调度权</td><td>独占还是非独占？</td><td>影响能否同时卖辅助服务</td></tr><tr><td>SOC 窗口</td><td>保留多少？</td><td>影响可用能量和寿命</td></tr><tr><td>充电成本</td><td>谁承担？按什么价格？</td><td>负价时归属很关键</td></tr><tr><td>平衡责任</td><td>谁负责 BRP/BSC？</td><td>偏差成本可能很大</td></tr><tr><td>违约/终止</td><td>提前终止怎么赔？</td><td>信用风险的核心</td></tr><tr><td>信用支持</td><td>母公司担保/信用证？</td><td>对手方风险</td></tr><tr><td>法律/税务</td><td>适用法、预提税、增值税</td><td>跨境 tolling 的隐形成本</td></tr></tbody></table></div>
-<h3 id="s41">5.3 Tolling 的适用场景</h3>
+<h3 id="s48">5.3 Tolling 的适用场景</h3>
 <ul><li><strong>储能项目融资</strong>：有长期 tolling 合同，现金流更可预测，银行更愿意放款。</li><li><strong>交易商/售电公司</strong>：需要调度权来对冲零售组合或做价差交易。</li><li><strong>公用事业</strong>：用 tolling 替代自建，锁定容量但不承担建设风险。</li><li><strong>不适合</strong>：项目方想保留全部 upside、或对手方信用不足时，tolling 可能不如 merchant + PPA 组合。</li></ul>
 <hr>
-<h2 id="s42">6. 24/7 小时级绿电匹配</h2>
-<h3 id="s43">6.1 年度匹配 vs 小时级匹配</h3>
+<h2 id="s49">6. 24/7 小时级绿电匹配</h2>
+<h3 id="s50">6.1 年度匹配 vs 小时级匹配</h3>
 <pre tabindex="0"><code>年度匹配率 = 年度绿电采购量 ÷ 年度用电量
 小时级匹配率 = Σ min(每小时绿电供应, 每小时用电) ÷ Σ 每小时用电</code></pre>
 <ul><li><strong>年度匹配</strong>是主流披露口径：GHG Protocol Scope 2 的 market-based 方法允许年度匹配（A/B）。</li><li><strong>小时级匹配</strong>是自愿的更高标准：要求每小时的供需匹配，通常需要储能、灵活负荷或多技术组合。</li><li><strong>两者不能互相替代</strong>：年度 100% 不代表每小时 100%；24/7 报告要披露匹配方法、地理边界、时间戳和证书类型。</li></ul>
-<h3 id="s44">6.2 实现路径</h3>
+<h3 id="s51">6.2 实现路径</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>路径</th><th>做法</th><th>代价</th></tr></thead><tbody><tr><td>物理 PPA + 储能</td><td>光伏/风电 + 电池，把出力搬到用电时段</td><td>储能 CAPEX、RTE、退化</td></tr><tr><td>多技术组合</td><td>风电 + 光伏 + 水电/地热</td><td>资源互补，但受地域限制</td></tr><tr><td>负荷灵活性</td><td>把可移负荷挪到绿电富余时段</td><td>生产安排受限</td></tr><tr><td>小时级证书</td><td>采购带时间戳的证书</td><td>市场流动性低、溢价高</td></tr><tr><td>电网绿电产品</td><td>供应商按小时匹配</td><td>依赖供应商披露，可审计性差</td></tr></tbody></table></div>
-<h3 id="s45">6.3 证书的时间粒度</h3>
+<h3 id="s52">6.3 证书的时间粒度</h3>
 <ul><li><strong>EU GO</strong>：按生产月份/批次签发，通常到年度披露；小时级匹配需要额外的粒度证书或数据证明。</li><li><strong>US REC</strong>：按合规年度；小时级 REC 是新兴产品，规则因州/系统而异。</li><li><strong>China GEC</strong>：按核发年份；小时级匹配目前不是主流口径。</li><li><strong>结论</strong>：24/7 主张不能只靠年度证书；要拿到小时级发电/用电数据和证书注销证明，否则只是“年度绿色”。</li></ul>
 <hr>
-<h2 id="s46">7. 合成算例（D 级，仅演示口径）</h2>
+<h2 id="s53">7. 合成算例（D 级，仅演示口径）</h2>
 <aside class="note"><p>以下全部是合成假设，不代表任何真实项目、市场价格或投资建议。</p></aside>
-<h3 id="s47">7.1 GO 收入：100 GWh 项目</h3>
+<h3 id="s54">7.1 GO 收入：100 GWh 项目</h3>
 <p>假设：年发电 100 GWh；GO 全部未签长约，按现货 GO 价格卖出；参考 EEX 法国 2026-06 拍卖技术加权均价 €1.73–1.78/MWh（B）。</p>
 <pre tabindex="0"><code>GO 收入 = 100,000 MWh × €1.80/MWh = €180,000/年</code></pre>
 <ul><li>如果只卖 50 GWh 的 GO，收入约 €90,000/年。</li><li><strong>GO 收入相对 CAPEX 很小</strong>：它不能拯救项目收益，但可以作为绿电溢价的一部分。</li><li>若 GO 与 PPA 捆绑，合同价里要体现证书价值；否则等于把证书白送。</li></ul>
-<h3 id="s48">7.2 Pay-as-produced vs baseload vs merchant</h3>
+<h3 id="s55">7.2 Pay-as-produced vs baseload vs merchant</h3>
 <p>假设：预期发电 100 GWh；实际 95 GWh；PPA 价 €65/MWh；现货捕获价 €60/MWh；baseload 缺口补电价 €70/MWh。</p>
 <pre tabindex="0"><code>Pay-as-produced：95,000 × €65 = €6,175,000
 Baseload 100 GWh：100,000 × €65 − 5,000 × €70 = €6,150,000
 Merchant：95,000 × €60 = €5,700,000</code></pre>
 <ul><li>PPA 比 merchant 多约 €475k（pay-as-produced）或 €450k（baseload）。</li><li>Baseload 名义收入更高，但补电成本和形状风险要吃掉一部分；实际净收入可能低于 pay-as-produced。</li><li><strong>不要用“PPA 价 − 现货均价”直接算节省</strong>：要用项目实际捕获价和实际出力。</li></ul>
-<h3 id="s49">7.3 CfD 补足与返还</h3>
+<h3 id="s56">7.3 CfD 补足与返还</h3>
 <p>假设：合同电量 150 GWh；strike €80/MWh；市场 reference price 分别为 €60 和 €90。</p>
 <pre tabindex="0"><code>市场 €60：补足 = (80 − 60) × 150,000 = €3,000,000
 市场 €90：返还 = (90 − 80) × 150,000 = €1,500,000</code></pre>
 <ul><li>双向 CfD 封顶/兜底，但不是“固定电价”；项目仍要承担电量、曲线和基差风险。</li><li>如果 reference price 用错口径（例如用全国均价代替分区价），结算会出现意外偏差。</li></ul>
-<h3 id="s50">7.4 Merchant tail 估值</h3>
+<h3 id="s57">7.4 Merchant tail 估值</h3>
 <p>假设：20 年资产；前 10 年 PPA 70 GWh × €65/MWh = €4.55m/年；后 10 年 merchant 70 GWh × €50/MWh = €3.5m/年；折现率 7%。</p>
 <pre tabindex="0"><code>年金因子 AF(10) ≈ 7.024；AF(20) ≈ 10.594
 PPA 期 PV = 4.55 × 7.024 ≈ €31.96m
@@ -255,34 +273,49 @@ Merchant 期 PV = 3.5 × (10.594 − 7.024) ≈ €12.50m
 全 merchant 20 年 = 3.5 × 10.594 ≈ €37.08m
 全 PPA 20 年 = 4.55 × 10.594 ≈ €48.20m</code></pre>
 <ul><li>有 10 年 PPA 比全 merchant 多约 €7.37m PV；比全 PPA 少约 €3.75m PV。</li><li><strong>merchant tail 的假设最敏感</strong>：价格、捕获率、退化、辅助服务价格都会改变结论；要做情景和敏感性分析。</li></ul>
-<h3 id="s51">7.5 Tolling vs merchant</h3>
+<h3 id="s58">7.5 Tolling vs merchant</h3>
 <p>假设：100 MW 储能；tolling 容量费 €60k/MW·年 = €6.0m/年；OPEX €1.0m/年；退化成本 €0.5m/年；merchant 预期净收入 €4.0m/年。</p>
 <pre tabindex="0"><code>Tolling 净收入 = 6.0 − 1.0 − 0.5 = €4.5m/年
 Tolling 溢价 = 4.5 − 4.0 = €0.5m/年</code></pre>
 <ul><li>Tolling 用 €0.5m/年的溢价换取了 upside 和部分调度权；如果电价大涨，项目方可能后悔。</li><li>如果对手方信用不足或性能罚则苛刻，tolling 的“稳定”可能是假的。</li></ul>
+<h3 id="s59">7.6 合同组合估值：PPA + collar + merchant tail</h3>
+<p>假设：年发电 100 GWh；60 GWh 签 10 年固定价 PPA €62/MWh；剩余 40 GWh 走 merchant，买入 €45/MWh floor（权利金 €2.5/MWh），卖出 €90/MWh cap（收入 €1.8/MWh）；净权利金 €0.7/MWh × 40 GWh = €28,000/年。折现率 7%。</p>
+<p>五个等概率情景的 merchant 捕获价：€30、45、60、75、100/MWh。</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>情景</th><th style="text-align:right">merchant 捕获价</th><th style="text-align:right">PPA 收入</th><th style="text-align:right">collar 后 merchant 收入</th><th style="text-align:right">合计（扣净权利金）</th></tr></thead><tbody><tr><td>低</td><td style="text-align:right">30</td><td style="text-align:right">3.72</td><td style="text-align:right">1.80</td><td style="text-align:right">5.49</td></tr><tr><td>中低</td><td style="text-align:right">45</td><td style="text-align:right">3.72</td><td style="text-align:right">1.80</td><td style="text-align:right">5.49</td></tr><tr><td>中</td><td style="text-align:right">60</td><td style="text-align:right">3.72</td><td style="text-align:right">2.40</td><td style="text-align:right">6.09</td></tr><tr><td>中高</td><td style="text-align:right">75</td><td style="text-align:right">3.72</td><td style="text-align:right">3.00</td><td style="text-align:right">6.69</td></tr><tr><td>高</td><td style="text-align:right">100</td><td style="text-align:right">3.72</td><td style="text-align:right">3.60</td><td style="text-align:right">7.29</td></tr></tbody></table></div>
+<p>单位：€m/年。</p>
+<pre tabindex="0"><code>均值 ≈ €6.212m/年；P10 ≈ 5.492；P50 ≈ 6.092；P90 ≈ 7.052（线性插值）
+10 年 PV @7%（AF ≈ 7.024）：均值 ≈ €43.63m；P10 ≈ €38.57m；P90 ≈ €49.53m
+不买 collar：均值 ≈ €6.20m；P10 ≈ €4.92m；P90 ≈ €7.32m</code></pre>
+<ul><li>Collar 用 €28k/年的确定成本，把 P10 抬高约 €572k/年、把 P90 压低约 €268k/年，均值只多约 €12k/年；它买的是分布，不是收益。</li><li><strong>P50 反而略低</strong>（6.09 vs 6.12）：权利金是确定的，中位数情景的 cap 并未触发；这正是“保险”的定价方式。</li><li><strong>若把 P10 当偿债测试</strong>：P10 CFADS 5.492、目标 DSCR 1.25 → 最大年债务服务 4.394；5%、10 年（AF ≈ 7.722）对应债务约 €33.93m；用 P50 会高估到约 €37.63m。</li><li>以上未计运维、税、折旧和通胀指数化；真实项目要把这些放回现金流。</li></ul>
+<h3 id="s60">7.7 Tolling 保本容量费</h3>
+<p>假设：100 MW 储能；tolling 容量费 €60k/MW·年；可用率 97%；OPEX €1.0m/年；退化 €0.5m/年；性能罚则 €0.2m/年；merchant 预期净收入 €4.0m/年。</p>
+<pre tabindex="0"><code>Tolling 净收入 = 100 × 60,000 × 0.97 − 1.0 − 0.5 − 0.2 = €4.12m/年
+Tolling 溢价 = 4.12 − 4.00 = €0.12m/年
+保本容量费 = (4.00 + 1.00 + 0.50 + 0.20) ÷ (100 × 0.97) ≈ €58,763/MW·年</code></pre>
+<ul><li>容量费低于约 €58.8k/MW·年时，tolling 不如 merchant；高于它才开始补偿让渡的调度权。</li><li><strong>可用率和罚则比容量费名义值更能改变结论</strong>：可用率从 97% 降到 92%，同样 €60k 的净收入降到 €3.82m，低于 merchant。</li><li>Tolling 的“稳定”来自对手方信用和条款；对手方违约时，保本费没有意义。</li></ul>
 <hr>
-<h2 id="s52">8. 十四个坑</h2>
+<h2 id="s61">8. 十四个坑</h2>
 <ol><li><strong>把 PPA 当绿证</strong>：签了 PPA 不等于拿到环境属性；证书归属要单独写。</li><li><strong>把 GO 当碳信用</strong>：GO 不能用于碳配额清缴，也不能自动抵扣欧盟电池法规碳足迹。</li><li><strong>以为 EU GO 全球通用</strong>：UK REGO、US REC、Australia LGC、Japan NFC、China GEC 各自独立，默认不互认。</li><li><strong>忽略年份和有效期</strong>：GO 自生产起 12 个月有效；绿证价格按年份差很多，问价先问年份。</li><li><strong>把 CfD strike 当固定电价</strong>：CfD 只结算差价，电量和曲线风险仍在项目侧。</li><li><strong>同一电量叠加两套支持</strong>：CfD + 绿证、补贴 + 绿证、CIS + 州 scheme，都可能触发回补或资格冲突。</li><li><strong>用 P50 签 baseload PPA</strong>：出力不足要买电补足；P90 假设更保守。</li><li><strong>忽略形状/捕获率</strong>：用基荷均价算光伏 PPA 收益，会高估。</li><li><strong>忽略信用与终止条款</strong>：长期 PPA/tolling 的对手方信用和终止赔偿，可能比价格更重要。</li><li><strong>把 tolling 当 PPA</strong>：tolling 买的是调度权，不是电量；性能罚则和 SOC 窗口会改变收益。</li><li><strong>用年度匹配冒充 24/7</strong>：年度 100% 不等于每小时 100%；小时级主张要小时级数据。</li><li><strong>忽略负价条款</strong>：负价时段谁受益、谁承担，要在 PPA/CfD 合同里写清。</li><li><strong>把 ARENH 当法国 CfD/保底价</strong>：ARENH 已于 2025-12-31 终止；VNU 是对核电超阈值收入的征缴，不是储能或可再生能源的差价合约。</li><li><strong>以为法国有储能专属招标/补贴</strong>：没有；CRE 招标面向可再生发电，储能靠容量机制、辅助服务和套利。</li></ol>
 <hr>
-<h2 id="s53">9. 尽调清单</h2>
+<h2 id="s62">9. 尽调清单</h2>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>问题</th><th>要看什么</th><th>常见答案</th></tr></thead><tbody><tr><td>合同卖的是什么？</td><td>电量、价格差、证书、调度权</td><td>四者可能分开</td></tr><tr><td>证书归谁？</td><td>PPA 条款、登记机构规则</td><td>默认可能归卖方</td></tr><tr><td>证书能否跨境？</td><td>AIB/EECS、目标市场登记机构</td><td>默认不互认</td></tr><tr><td>reference price 是什么？</td><td>日前/日内/实时/分区/节点</td><td>口径决定基差</td></tr><tr><td>量风险谁承担？</td><td>pay-as-produced vs baseload</td><td>卖方/买方不同</td></tr><tr><td>平衡责任谁承担？</td><td>BSC/BRP/平衡组</td><td>影响有效价</td></tr><tr><td>负价怎么处理？</td><td>合同条款</td><td>可能归卖方或买方</td></tr><tr><td>支持能否叠加？</td><td>CfD/CIS/容量/绿证规则</td><td>可能回补</td></tr><tr><td>对手方信用如何？</td><td>评级、担保、终止赔偿</td><td>长期合同核心</td></tr><tr><td>退出机制？</td><td>提前终止、转让、变更控制</td><td>影响融资</td></tr><tr><td>计量与审计？</td><td>表计、数据、注销证明</td><td>证书主张基础</td></tr><tr><td>税务与汇率？</td><td>预提税、增值税、跨境支付</td><td>跨境 PPA 隐形成本</td></tr><tr><td>法国项目收入？</td><td>CRE CfD、容量 PL-1/PL-4、GO 归属</td><td>ARENH 已终止；VNU 不是项目收入</td></tr></tbody></table></div>
 <hr>
-<h2 id="s54">10. 2026–2027 观察清单</h2>
+<h2 id="s63">10. 2026–2027 观察清单</h2>
 <ol><li><strong>英国 CfD 批发咨询</strong>：2026-12-09 截止；是否改变储能/共址项目支持方式。</li><li><strong>意大利 FER X 招标</strong>：2026–2027 年光伏/风电拍卖节奏；NZIA 条款执行。</li><li><strong>法国 CRE 招标与 GO</strong>：2026Q4 招标节奏、PPE2 价格走势；GO 拍卖价格与跨境承认；ARENH 退场后 PPA 市场变化。</li><li><strong>波兰 OZE 2026 拍卖</strong>：76.1 TWh/249 亿 PLN 的实际成交；非价格标准。</li><li><strong>澳洲 CIS Tender 10</strong>：4 GW 可调度容量的结果；与州 scheme 叠加规则。</li><li><strong>EU GO 与 UK REGO</strong>：AIB 成员变化、跨境承认是否出现新安排。</li><li><strong>24/7 匹配标准</strong>：小时级证书、GHG Protocol 更新、客户要求变化。</li><li><strong>中国 GEC 国际承认</strong>：欧盟电池法规/CBAM 是否改变绿证抵扣口径。</li><li><strong>日本 NFC 市场</strong>：FIT/NON-FIT 证书供需与价格。</li><li><strong>GO 期货流动性</strong>：EEX GO Futures 的成交与交割；是否形成远期曲线。</li><li><strong>tolling 市场</strong>：储能 tolling 的期限、费用和性能条款趋势。</li></ol>
 <hr>
-<h2 id="s55">11. 官方来源与链接状态</h2>
+<h2 id="s64">11. 官方来源与链接状态</h2>
 <aside class="note"><p>链接状态按 2026-11-10 代理实测；200 才挂可点击链接，403/000 用代码文本标注。</p></aside>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>来源</th><th>用途</th><th>级别</th><th>链接/状态</th></tr></thead><tbody><tr><td>AIB · 官网</td><td>EECS、成员、GO 跨境</td><td>B</td><td><a href="https://www.aib-net.org/" target="_blank" rel="noopener">https://www.aib-net.org/</a></td></tr><tr><td>EEX · French GO auctions</td><td>法国 GO 拍卖结果与均价</td><td>B</td><td><a href="https://www.eex.com/en/markets/energy-certificates/french-auctions-power" target="_blank" rel="noopener">https://www.eex.com/en/markets/energy-certificates/french-auctions-power</a></td></tr><tr><td>CRE · 2026-187</td><td>法国 PPE2 地面光伏第 9 期结果</td><td>A</td><td><a href="https://www.cre.fr/fileadmin/Documents/Deliberations/2026/260917_2026-187_AO_PV_Sol_9eP_rapport.pdf" target="_blank" rel="noopener">https://www.cre.fr/fileadmin/Documents/Deliberations/2026/260917_2026-187_AO_PV_Sol_9eP_rapport.pdf</a></td></tr><tr><td>CRE · ARENH</td><td>法国 ARENH 终止与规则</td><td>A</td><td><a href="https://www.cre.fr/electricite/marche-de-gros-de-lelectricite/acces-regule-a-lelectricite-nucleaire-historique-arenh.html" target="_blank" rel="noopener">https://www.cre.fr/electricite/marche-de-gros-de-lelectricite/acces-regule-a-lelectricite-nucleaire-historique-arenh.html</a></td></tr><tr><td>RTE · Bilan électrique 2025</td><td>法国发电、价格、出口背景</td><td>A</td><td><a href="https://www.rte-france.com/analyses-tendances-et-prospectives/bilan-electrique" target="_blank" rel="noopener">https://www.rte-france.com/analyses-tendances-et-prospectives/bilan-electrique</a></td></tr><tr><td>Ofgem · REGO</td><td>英国 REGO 规则</td><td>A</td><td><a href="https://www.ofgem.gov.uk/environmental-and-social-schemes/renewable-energy-guarantees-origin-rego" target="_blank" rel="noopener">https://www.ofgem.gov.uk/environmental-and-social-schemes/renewable-energy-guarantees-origin-rego</a></td></tr><tr><td>Clean Energy Regulator · RET</td><td>澳洲 LGC/RET</td><td>A</td><td><a href="https://cer.gov.au/schemes/renewable-energy-target" target="_blank" rel="noopener">https://cer.gov.au/schemes/renewable-energy-target</a></td></tr><tr><td>JEPX · 官网</td><td>日本非化石证书市场</td><td>B</td><td><a href="https://www.jepx.jp/" target="_blank" rel="noopener">https://www.jepx.jp/</a></td></tr><tr><td>US EPA · Green Power</td><td>美国 REC/绿电市场</td><td>A</td><td><a href="https://www.epa.gov/greenpower" target="_blank" rel="noopener">https://www.epa.gov/greenpower</a></td></tr><tr><td>GHG Protocol · Scope 2</td><td>范围二 market-based 口径</td><td>A</td><td><a href="https://ghgprotocol.org/scope-2-guidance" target="_blank" rel="noopener">https://ghgprotocol.org/scope-2-guidance</a></td></tr><tr><td>GOV.UK · CfD/CM Scheme Update 2025</td><td>英国 CfD/CM 参数</td><td>A</td><td><a href="https://www.gov.uk/government/publications/contracts-for-difference-and-capacity-market-scheme-update-2025/contracts-for-difference-and-capacity-market-scheme-update-2025-accessible-webpage" target="_blank" rel="noopener">https://www.gov.uk/government/publications/contracts-for-difference-and-capacity-market-scheme-update-2025/contracts-for-difference-and-capacity-market-scheme-update-2025-accessible-webpage</a></td></tr><tr><td>NDRC · 2023 绿证全覆盖</td><td>中国 GEC 规则</td><td>A</td><td><a href="https://www.ndrc.gov.cn/xxgk/zcfb/tz/202308/t20230803_1359092.html" target="_blank" rel="noopener">https://www.ndrc.gov.cn/xxgk/zcfb/tz/202308/t20230803_1359092.html</a></td></tr><tr><td>NDRC · 2025 绿证市场意见</td><td>中国 GEC 市场机制</td><td>A</td><td><a href="https://www.ndrc.gov.cn/xxgk/zcfb/tz/202503/t20250318_1396627.html" target="_blank" rel="noopener">https://www.ndrc.gov.cn/xxgk/zcfb/tz/202503/t20250318_1396627.html</a></td></tr><tr><td>EUR-Lex · RED II (2018/2001)</td><td>GO 12 个月有效期</td><td>A</td><td><code>eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32018L2001</code>（自动访问返回 202）</td></tr><tr><td>GSE · FER X</td><td>意大利 FER X 规则</td><td>A</td><td><code>gse.it</code>（自动访问返回 403）</td></tr><tr><td>DCCEEW · CIS</td><td>澳洲 CIS 招标</td><td>A</td><td><code>dcceew.gov.au/energy/renewables/capacity-investment-scheme</code>（自动访问受限）</td></tr></tbody></table></div>
 <hr>
-<h2 id="s56">速查</h2>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>问题</th><th>去哪节</th><th>一句话</th></tr></thead><tbody><tr><td>PPA 和绿证什么关系</td><td>§0、§1</td><td>PPA 是合同，绿证是环境属性；可以捆绑也可以分开</td></tr><tr><td>GO 能不能跨境</td><td>§3.2、§3.8</td><td>EECS 内可跨境；UK/US/AU/JP/CN 默认不互认</td></tr><tr><td>CfD 和 PPA 能不能叠加</td><td>§4.13</td><td>可以，但标的和义务要分开</td></tr><tr><td>法国 CfD/GO 怎么用</td><td>§3.2、§4.4</td><td>CRE 20 年 CfD；GO 走 EEX/AIB EECS；ARENH 已终止</td></tr><tr><td>德国/西班牙/荷兰怎么拿支持</td><td>§4.1a、§4.7–§4.9</td><td>EEG 溢价不等于储能补贴；西班牙靠招标/容量/PPA；荷兰 SDE++ 不列独立电池</td></tr><tr><td>美国/日本储能拿什么</td><td>§4.1a、§4.11、§4.12</td><td>美国 ITC 是税收抵免；日本走容量/LTDA/EPRX，不靠 FIT</td></tr><tr><td>比利时/北欧和澳洲呢</td><td>§4.1a、§4.6、§4.10</td><td>比利时海风 CfD + CRM；北欧无储能专属 CfD；澳洲 CIS 可给储能</td></tr><tr><td>merchant tail 怎么算</td><td>§4.14、§7.4</td><td>单独建模，不用 PPA 价外推</td></tr><tr><td>tolling 和 PPA 差在哪</td><td>§1.4、§5</td><td>tolling 买调度权，PPA 买电量/价格</td></tr><tr><td>24/7 怎么证明</td><td>§6</td><td>小时级数据 + 证书注销证明，年度匹配不够</td></tr><tr><td>最常见的坑</td><td>§8</td><td>把 PPA 当绿证、把 GO 当碳信用、忽略年份</td></tr></tbody></table></div>
+<h2 id="s65">速查</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>问题</th><th>去哪节</th><th>一句话</th></tr></thead><tbody><tr><td>PPA 和绿证什么关系</td><td>§0、§1</td><td>PPA 是合同，绿证是环境属性；可以捆绑也可以分开</td></tr><tr><td>GO 能不能跨境</td><td>§3.2、§3.8</td><td>EECS 内可跨境；UK/US/AU/JP/CN 默认不互认</td></tr><tr><td>CfD 和 PPA 能不能叠加</td><td>§4.13</td><td>可以，但标的和义务要分开</td></tr><tr><td>法国 CfD/GO 怎么用</td><td>§3.2、§4.4</td><td>CRE 20 年 CfD；GO 走 EEX/AIB EECS；ARENH 已终止</td></tr><tr><td>德国/西班牙/荷兰怎么拿支持</td><td>§4.1a、§4.7–§4.9</td><td>EEG 溢价不等于储能补贴；西班牙靠招标/容量/PPA；荷兰 SDE++ 不列独立电池</td></tr><tr><td>美国/日本储能拿什么</td><td>§4.1a、§4.11、§4.12</td><td>美国 ITC 是税收抵免；日本走容量/LTDA/EPRX，不靠 FIT</td></tr><tr><td>比利时/北欧和澳洲呢</td><td>§4.1a、§4.6、§4.10</td><td>比利时海风 CfD + CRM；北欧无储能专属 CfD；澳洲 CIS 可给储能</td></tr><tr><td>merchant tail 怎么算</td><td>§4.14、§7.4</td><td>单独建模，不用 PPA 价外推</td></tr><tr><td>合同怎么估值</td><td>§2.5、§7.6</td><td>远期曲线 + 捕获率分布 + 条款 payoff，输出 P10/P50/P90 与 P90 DSCR</td></tr><tr><td>tolling 和 PPA 差在哪</td><td>§1.4、§5、§7.7</td><td>tolling 买调度权，PPA 买电量/价格；保本容量费看可用率与罚则</td></tr><tr><td>24/7 怎么证明</td><td>§6</td><td>小时级数据 + 证书注销证明，年度匹配不够</td></tr><tr><td>最常见的坑</td><td>§8</td><td>把 PPA 当绿证、把 GO 当碳信用、忽略年份</td></tr></tbody></table></div>
 <hr>
-<h2 id="s57">分工与边界</h2>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>主题</th><th>本文</th><th>相关模块/技能</th></tr></thead><tbody><tr><td>PPA/CfD/tolling 合同结构</td><td>主责（横向）</td><td>电力交易技能、新能源技能</td></tr><tr><td>绿证/碳信用边界</td><td>概述</td><td>碳资产实务、碳资产管理技能</td></tr><tr><td>容量机制</td><td>只讲叠加</td><td>容量机制横向对照</td></tr><tr><td>储能收益建模</td><td>只讲合同层</td><td>储能收益建模与数据源、储能投资技能</td></tr><tr><td>十一市场支持工具与储能资格</td><td>只列资格与工具原型（§4.1a）</td><td>对应海外市场模块</td></tr></tbody></table></div>
+<h2 id="s66">分工与边界</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>主题</th><th>本文</th><th>相关模块/技能</th></tr></thead><tbody><tr><td>PPA/CfD/tolling 合同结构</td><td>主责（横向）</td><td>电力交易技能、新能源技能</td></tr><tr><td>绿证/碳信用边界</td><td>概述</td><td>碳资产实务、碳资产管理技能</td></tr><tr><td>容量机制</td><td>只讲叠加</td><td>容量机制横向对照</td></tr><tr><td>储能收益建模</td><td>只讲合同层</td><td>储能收益建模与数据源、储能投资技能</td></tr><tr><td>合同估值与分布输出</td><td>主责（§2.5）+ <code>tools/contracts.py</code></td><td>储能投资技能（融资、税、摊销）</td></tr><tr><td>十一市场支持工具与储能资格</td><td>只列资格与工具原型（§4.1a）</td><td>对应海外市场模块</td></tr></tbody></table></div>
 <ul><li><strong>遇到具体合同</strong>：查合同文本、登记机构和当地律师；本文只提供口径和清单。</li><li><strong>遇到跨境证书主张</strong>：先问目标市场登记机构是否承认，再谈价格。</li><li><strong>遇到融资</strong>：merchant tail、tolling 条款和对手方信用要单独做敏感性分析。</li></ul>
 <hr>
-<h2 id="s58">更新记录</h2>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>日期</th><th>内容</th></tr></thead><tbody><tr><td>2026-11-11</td><td>国别扩面：§4.1 改为“六种支持工具原型”，新增 §4.1a 十一市场支持工具与储能资格表；新增 §4.7 德国、§4.8 西班牙、§4.9 荷兰、§4.10 比利时与北欧、§4.11 美国、§4.12 日本六节；原叠加矩阵改为 §4.13、merchant tail 改为 §4.14；速查与分工同步</td></tr><tr><td>2026-11-11</td><td>法国接入：§3.2 新增法国 GO/EEX；§4.1 扩为六种支持工具；新增 §4.4 法国 CRE CfD；叠加矩阵、坑（14 个）、尽调、观察清单、来源与速查同步</td></tr><tr><td>2026-11-10</td><td>首版：新增跨国 PPA、绿证与 tolling 横向模块；覆盖 GO/REGO/REC/LGC/GEC、AIB EECS、CfD/CIS 叠加、merchant tail、tolling 条款与 24/7 匹配；含五个 D 级合成算例与尽调清单</td></tr></tbody></table></div>
+<h2 id="s67">更新记录</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>日期</th><th>内容</th></tr></thead><tbody><tr><td>2026-11-12</td><td>合同估值：新增 §2.5（远期曲线、捕获率分布、条款 payoff、merchant tail 风险调整、P10/P50/P90 与 P90 DSCR 口径）与 §7.6（PPA + collar + merchant tail 五情景）、§7.7（tolling 保本容量费）；同步速查、分工、来源与 <code>tools/contracts.py</code> 自测锁定</td></tr><tr><td>2026-11-11</td><td>国别扩面：§4.1 改为“六种支持工具原型”，新增 §4.1a 十一市场支持工具与储能资格表；新增 §4.7 德国、§4.8 西班牙、§4.9 荷兰、§4.10 比利时与北欧、§4.11 美国、§4.12 日本六节；原叠加矩阵改为 §4.13、merchant tail 改为 §4.14；速查与分工同步</td></tr><tr><td>2026-11-11</td><td>法国接入：§3.2 新增法国 GO/EEX；§4.1 扩为六种支持工具；新增 §4.4 法国 CRE CfD；叠加矩阵、坑（14 个）、尽调、观察清单、来源与速查同步</td></tr><tr><td>2026-11-10</td><td>首版：新增跨国 PPA、绿证与 tolling 横向模块；覆盖 GO/REGO/REC/LGC/GEC、AIB EECS、CfD/CIS 叠加、merchant tail、tolling 条款与 24/7 匹配；含五个 D 级合成算例与尽调清单</td></tr></tbody></table></div>
     </article>
 
     <section class="related" aria-labelledby="related-title">
@@ -306,7 +339,7 @@ Tolling 溢价 = 4.5 − 4.0 = €0.5m/年</code></pre>
         <a class="related-card" href="储能收益建模与数据源-2026-11.html">
           <span class="related-type">同区延伸</span>
           <b>储能收益建模与数据源（2026 版）：从 5 分钟价格到 15 年现金流</b>
-          <span>把 ENTSO-E、EPEX、RTE、CRE、NESO、Elexon BMRS、GME、OMIE、REE、PSE、Nord Pool、CAISO、ERCOT、PJM、JEPX 的取数入口放进一张表，再按十一市场列国别入口与缺口，并讲粒度对齐、RTE/退化、捕获率、降额、收入叠加冲突与回测方法。</span>
+          <span>把 ENTSO-E、EPEX、RTE、CRE、NESO、Elexon BMRS、GME、OMIE、REE、PSE、Nord Pool、CAISO、ERCOT、PJM、JEPX 的取数入口放进一张表，再按十一市场列国别入口与缺口，并补中国全国/省级数据源（交易中心、136 竞价、容量、辅助服务、代理购电）；讲粒度对齐、RTE/退化、捕获率、降额、收入叠加冲突与回测方法。</span>
         </a>
       </div>
       <p class="related-rest"><b>更多关联</b><a href="英国电力市场-2026-11.html">英国电力市场（2026 版）</a><a href="德国电力市场-2026-11.html">德国电力市场（2026 版）</a><a href="法国电力市场-2026-11.html">法国电力市场（2026 版）：核电、ARENH 退场与容量机制</a><a href="意大利电力市场-2026-11.html">意大利电力市场（2026 版）</a><a href="西班牙电力市场-2026-11.html">西班牙电力市场（2026 版）</a><a href="荷兰电力市场-2026-11.html">荷兰电力市场（2026 版）</a><a href="波兰电力市场-2026-11.html">波兰电力市场（2026 版）</a><a href="比利时与北欧电力市场-2026-11.html">比利时与北欧电力市场（2026 版）</a><a href="澳大利亚NEM电力市场-2026-11.html">澳大利亚 NEM 电力市场（2026 版）</a><a href="美国电力市场-2026-11.html">美国电力市场（2026 版）：ERCOT / PJM / CAISO</a><a href="日本电力市场-2026-11.html">日本电力市场（2026 版）：现货、容量市场与 LTDA</a><a href="碳资产实务-2026-11.html">碳资产实务 2026-11</a><a href="新能源项目开发与并网-2026-11.html">新能源项目开发与并网</a><a href="储能投资与运营-2026-11.html">储能投资与运营</a><a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算（2026 版）</a></p>
@@ -343,53 +376,56 @@ Tolling 溢价 = 4.5 − 4.0 = €0.5m/年</code></pre>
             <li class="lv3"><a href="#s10">2.2 买方有效成本</a></li>
             <li class="lv3"><a href="#s11">2.3 捕获率与形状风险</a></li>
             <li class="lv3"><a href="#s12">2.4 基差与跨境</a></li>
-            <li class="lv2"><a href="#s13">3. 绿证体系横向对照</a></li>
-            <li class="lv3"><a href="#s14">3.1 六套体系</a></li>
-            <li class="lv3"><a href="#s15">3.2 EU GO 与 AIB EECS</a></li>
-            <li class="lv3"><a href="#s16">3.3 UK REGO</a></li>
-            <li class="lv3"><a href="#s17">3.4 US REC</a></li>
-            <li class="lv3"><a href="#s18">3.5 Australia LGC</a></li>
-            <li class="lv3"><a href="#s19">3.6 Japan NFC</a></li>
-            <li class="lv3"><a href="#s20">3.7 China GEC</a></li>
-            <li class="lv3"><a href="#s21">3.8 跨境承认矩阵</a></li>
-            <li class="lv2"><a href="#s22">4. CfD、CIS 与收入支持：叠加规则</a></li>
-            <li class="lv3"><a href="#s23">4.1 六种支持工具原型</a></li>
-            <li class="lv3"><a href="#s24">4.1a 十一市场支持工具与储能资格</a></li>
-            <li class="lv3"><a href="#s25">4.2 英国 CfD</a></li>
-            <li class="lv3"><a href="#s26">4.3 意大利 FER X</a></li>
-            <li class="lv3"><a href="#s27">4.4 法国：CRE 招标与 complément de rémunération</a></li>
-            <li class="lv3"><a href="#s28">4.5 波兰 OZE</a></li>
-            <li class="lv3"><a href="#s29">4.6 澳洲 CIS</a></li>
-            <li class="lv3"><a href="#s30">4.7 德国：EEG 溢价不是储能补贴</a></li>
-            <li class="lv3"><a href="#s31">4.8 西班牙：招标、PPA、容量三条腿</a></li>
-            <li class="lv3"><a href="#s32">4.9 荷兰：SDE++ 不是电池补贴</a></li>
-            <li class="lv3"><a href="#s33">4.10 比利时与北欧：CfD 给海风，储能靠容量/能量/辅助</a></li>
-            <li class="lv3"><a href="#s34">4.11 美国：ITC 是税收抵免，不是 PPA</a></li>
-            <li class="lv3"><a href="#s35">4.12 日本：FIT/FIP 给可再生，储能走容量/LTDA/EPRX</a></li>
-            <li class="lv3"><a href="#s36">4.13 叠加矩阵</a></li>
-            <li class="lv3"><a href="#s37">4.14 Merchant tail</a></li>
-            <li class="lv2"><a href="#s38">5. Tolling：条款比价格更重要</a></li>
-            <li class="lv3"><a href="#s39">5.1 收入结构</a></li>
-            <li class="lv3"><a href="#s40">5.2 条款清单</a></li>
-            <li class="lv3"><a href="#s41">5.3 Tolling 的适用场景</a></li>
-            <li class="lv2"><a href="#s42">6. 24/7 小时级绿电匹配</a></li>
-            <li class="lv3"><a href="#s43">6.1 年度匹配 vs 小时级匹配</a></li>
-            <li class="lv3"><a href="#s44">6.2 实现路径</a></li>
-            <li class="lv3"><a href="#s45">6.3 证书的时间粒度</a></li>
-            <li class="lv2"><a href="#s46">7. 合成算例（D 级，仅演示口径）</a></li>
-            <li class="lv3"><a href="#s47">7.1 GO 收入：100 GWh 项目</a></li>
-            <li class="lv3"><a href="#s48">7.2 Pay-as-produced vs baseload vs merchant</a></li>
-            <li class="lv3"><a href="#s49">7.3 CfD 补足与返还</a></li>
-            <li class="lv3"><a href="#s50">7.4 Merchant tail 估值</a></li>
-            <li class="lv3"><a href="#s51">7.5 Tolling vs merchant</a></li>
-            <li class="lv2"><a href="#s52">8. 十四个坑</a></li>
-            <li class="lv2"><a href="#s53">9. 尽调清单</a></li>
-            <li class="lv2"><a href="#s54">10. 2026–2027 观察清单</a></li>
-            <li class="lv2"><a href="#s55">11. 官方来源与链接状态</a></li>
-            <li class="lv2"><a href="#s56">速查</a></li>
-            <li class="lv2"><a href="#s57">分工与边界</a></li>
-            <li class="lv2"><a href="#s58">更新记录</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="43" data-more-label="展开 43 个小节" data-less-label="收起小节">展开 43 个小节</button>
+            <li class="lv3"><a href="#s13">2.5 合同估值：从有效价到概率分布</a></li>
+            <li class="lv2"><a href="#s20">3. 绿证体系横向对照</a></li>
+            <li class="lv3"><a href="#s21">3.1 六套体系</a></li>
+            <li class="lv3"><a href="#s22">3.2 EU GO 与 AIB EECS</a></li>
+            <li class="lv3"><a href="#s23">3.3 UK REGO</a></li>
+            <li class="lv3"><a href="#s24">3.4 US REC</a></li>
+            <li class="lv3"><a href="#s25">3.5 Australia LGC</a></li>
+            <li class="lv3"><a href="#s26">3.6 Japan NFC</a></li>
+            <li class="lv3"><a href="#s27">3.7 China GEC</a></li>
+            <li class="lv3"><a href="#s28">3.8 跨境承认矩阵</a></li>
+            <li class="lv2"><a href="#s29">4. CfD、CIS 与收入支持：叠加规则</a></li>
+            <li class="lv3"><a href="#s30">4.1 六种支持工具原型</a></li>
+            <li class="lv3"><a href="#s31">4.1a 十一市场支持工具与储能资格</a></li>
+            <li class="lv3"><a href="#s32">4.2 英国 CfD</a></li>
+            <li class="lv3"><a href="#s33">4.3 意大利 FER X</a></li>
+            <li class="lv3"><a href="#s34">4.4 法国：CRE 招标与 complément de rémunération</a></li>
+            <li class="lv3"><a href="#s35">4.5 波兰 OZE</a></li>
+            <li class="lv3"><a href="#s36">4.6 澳洲 CIS</a></li>
+            <li class="lv3"><a href="#s37">4.7 德国：EEG 溢价不是储能补贴</a></li>
+            <li class="lv3"><a href="#s38">4.8 西班牙：招标、PPA、容量三条腿</a></li>
+            <li class="lv3"><a href="#s39">4.9 荷兰：SDE++ 不是电池补贴</a></li>
+            <li class="lv3"><a href="#s40">4.10 比利时与北欧：CfD 给海风，储能靠容量/能量/辅助</a></li>
+            <li class="lv3"><a href="#s41">4.11 美国：ITC 是税收抵免，不是 PPA</a></li>
+            <li class="lv3"><a href="#s42">4.12 日本：FIT/FIP 给可再生，储能走容量/LTDA/EPRX</a></li>
+            <li class="lv3"><a href="#s43">4.13 叠加矩阵</a></li>
+            <li class="lv3"><a href="#s44">4.14 Merchant tail</a></li>
+            <li class="lv2"><a href="#s45">5. Tolling：条款比价格更重要</a></li>
+            <li class="lv3"><a href="#s46">5.1 收入结构</a></li>
+            <li class="lv3"><a href="#s47">5.2 条款清单</a></li>
+            <li class="lv3"><a href="#s48">5.3 Tolling 的适用场景</a></li>
+            <li class="lv2"><a href="#s49">6. 24/7 小时级绿电匹配</a></li>
+            <li class="lv3"><a href="#s50">6.1 年度匹配 vs 小时级匹配</a></li>
+            <li class="lv3"><a href="#s51">6.2 实现路径</a></li>
+            <li class="lv3"><a href="#s52">6.3 证书的时间粒度</a></li>
+            <li class="lv2"><a href="#s53">7. 合成算例（D 级，仅演示口径）</a></li>
+            <li class="lv3"><a href="#s54">7.1 GO 收入：100 GWh 项目</a></li>
+            <li class="lv3"><a href="#s55">7.2 Pay-as-produced vs baseload vs merchant</a></li>
+            <li class="lv3"><a href="#s56">7.3 CfD 补足与返还</a></li>
+            <li class="lv3"><a href="#s57">7.4 Merchant tail 估值</a></li>
+            <li class="lv3"><a href="#s58">7.5 Tolling vs merchant</a></li>
+            <li class="lv3"><a href="#s59">7.6 合同组合估值：PPA + collar + merchant tail</a></li>
+            <li class="lv3"><a href="#s60">7.7 Tolling 保本容量费</a></li>
+            <li class="lv2"><a href="#s61">8. 十四个坑</a></li>
+            <li class="lv2"><a href="#s62">9. 尽调清单</a></li>
+            <li class="lv2"><a href="#s63">10. 2026–2027 观察清单</a></li>
+            <li class="lv2"><a href="#s64">11. 官方来源与链接状态</a></li>
+            <li class="lv2"><a href="#s65">速查</a></li>
+            <li class="lv2"><a href="#s66">分工与边界</a></li>
+            <li class="lv2"><a href="#s67">更新记录</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="46" data-more-label="展开 46 个小节" data-less-label="收起小节">展开 46 个小节</button>
   </aside>
 </div>
 
