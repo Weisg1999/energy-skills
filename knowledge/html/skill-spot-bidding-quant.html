@@ -85,12 +85,12 @@
       <p class="lede">预测、报价、仿真与回测</p>
       <p class="hook">可执行流程与配套工具；正文与 SKILL.md 同步。</p>
       <div class="tags"><span class="tag">技能</span><span class="tag">预测</span><span class="tag">报价</span><span class="tag">回测</span></div>
-      <div class="doc-meta"><span>约 15.0k 字</span><span>阅读约 27 分钟</span><span>16 节</span><span>数据截止 2026-11-01</span></div>
-      <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-spot-bidding-quant.txt" download="现货报价量化-SKILL.txt">下载 TXT</a><span>完整技能文档，约 17 KB，含 frontmatter</span></p>
+      <div class="doc-meta"><span>约 21.7k 字</span><span>阅读约 39 分钟</span><span>17 节</span><span>数据截止 2026-11-12</span></div>
+      <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-spot-bidding-quant.txt" download="现货报价量化-SKILL.txt">下载 TXT</a><span>完整技能文档，约 25 KB，含 frontmatter</span></p>
     </header>
 
     <details class="toc-mobile">
-      <summary>本页目录（16）</summary>
+      <summary>本页目录（17）</summary>
       <ol>
             <li class="lv2"><a href="#s1">0. 角色定义与行为规范</a></li>
             <li class="lv2"><a href="#s5">1. 报价空间：先确认规则，再谈方法</a></li>
@@ -105,14 +105,15 @@
             <li class="lv2"><a href="#s49">10. 竞价仿真：能回答什么，不能回答什么</a></li>
             <li class="lv2"><a href="#s55">11. 回测、复盘与收益归因</a></li>
             <li class="lv2"><a href="#s60">12. 工程落地与申报</a></li>
-            <li class="lv2"><a href="#s65">13. 关键公式与代码映射</a></li>
-            <li class="lv2"><a href="#s66">14. 术语表（中英对照精选）</a></li>
-            <li class="lv2"><a href="#s67">15. 知识来源与维护</a></li>
+            <li class="lv2"><a href="#s65">13. 盘面层：从模型到交易台</a></li>
+            <li class="lv2"><a href="#s71">14. 关键公式与代码映射</a></li>
+            <li class="lv2"><a href="#s72">15. 术语表（中英对照精选）</a></li>
+            <li class="lv2"><a href="#s73">16. 知识来源与维护</a></li>
       </ol>
     </details>
 
     <article class="prose">
-<aside class="note note-head"><p>🌐 English version: <a href="skill-spot-bidding-quant-en.html">SKILL_EN.md</a> ｜ 姊妹技能：<a href="skill-electricity-trading-expert.html">电力交易专家</a>（市场规则/结算/碳市场）、<a href="skill-virtual-power-plant.html">虚拟电厂专家</a>（资源聚合/运营）。本技能只回答&quot;怎么算、怎么报、怎么验证&quot;。</p><p>版本 v1.9 · 数据截止 2026-11-01</p><p><strong>维护入口</strong>：<code>tools/selftest.py</code>（跑通即代表正文指标未过期）、<code>knowledge/调研-量化报价与厂商实践-2026-11.md</code>（厂商与专利公开信息）、<code>knowledge/省级市场状态表-2026-11.md</code>（省别参数先行确认）、<code>knowledge/量化报价与交易风控-工程化-2026-11.md</code>（工程闭环、规则版本库、风控限额、结算对账与归因）。</p><p><strong>2026-2027 未定事项</strong>：《电力现货市场基本规则（征求意见稿）》（意见截止 2026-11-18，拟 2027-01-01 施行）、各省报价段数与限价参数年度调整、二次限价机制试点、新能源报量不报价的适用范围。</p></aside>
+<aside class="note note-head"><p>🌐 English version: <a href="skill-spot-bidding-quant-en.html">SKILL_EN.md</a> ｜ 姊妹技能：<a href="skill-electricity-trading-expert.html">电力交易专家</a>（市场规则/结算/碳市场）、<a href="skill-virtual-power-plant.html">虚拟电厂专家</a>（资源聚合/运营）。本技能只回答&quot;怎么算、怎么报、怎么验证&quot;。</p><p>版本 v1.9 · 数据截止 2026-11-12</p><p><strong>维护入口</strong>：<code>tools/selftest.py</code>（跑通即代表正文指标未过期）、<code>knowledge/调研-量化报价与厂商实践-2026-11.md</code>（厂商与专利公开信息）、<code>knowledge/省级市场状态表-2026-11.md</code>（省别参数先行确认）、<code>knowledge/量化报价与交易风控-工程化-2026-11.md</code>（工程闭环、规则版本库、风控限额、结算对账与归因）。</p><p><strong>2026-2027 未定事项</strong>：《电力现货市场基本规则（征求意见稿）》（意见截止 2026-11-18，拟 2027-01-01 施行）、各省报价段数与限价参数年度调整、二次限价机制试点、新能源报量不报价的适用范围、公开数据披露时点与修订口径。</p></aside>
 <hr>
 <h2 id="s1">0. 角色定义与行为规范</h2>
 <h3 id="s2">0.1 角色画像</h3>
@@ -120,7 +121,7 @@
 <h3 id="s3">0.2 回答行为规范（必须遵守）</h3>
 <ol><li><strong>先定三件事再算</strong>：省份/市场、主体身份（发电/储能/售电/用户）、时间粒度（日前 15 分钟/实时 5 或 15 分钟）。三者不明，任何数字都是虚构。</li><li><strong>预测与决策分开报</strong>：预测精度（MAE/MAPE/方向正确率）与决策收益（元/MWh、元/日）是两套指标，不能用一个&quot;准确率提升 X%&quot;代替收益结论。</li><li><strong>回测必须给基线</strong>：任何模型效果必须与季节朴素基线对比，并说明样本区间、滚动窗口、是否样本外。没有基线的&quot;提升 30%&quot;不是结论。</li><li><strong>区分三类数字</strong>：官方规则参数（A 级，须给文号与时点）、公开数据统计（B 级）、<strong>企业宣称效果（C 级，只能作为行业参考，不能作为基准）</strong>。厂商宣传的&quot;准确率优化 30%&quot;&quot;每百 MWh 年增收 100 万元&quot;属于 C 级。</li><li><strong>收益结论必须带假设</strong>：燃料成本、循环成本、合约覆盖比例、偏差罚则系数，缺一项就注明&quot;未计入&quot;。</li><li><strong>不提供</strong>：规避监管的报价手法、经济持留/容量持留的操作方案、合谋策略。市场力相关内容只做<strong>识别与合规边界</strong>说明。</li><li><strong>样例数据纪律</strong>：本技能附带的 <code>data/sample/</code> 为合成数据，任何跑出的数字必须标注&quot;合成样例，非实盘&quot;，不得作为市场基准引用。</li></ol>
 <h3 id="s4">0.3 知识地图（问题类型 → 章节）</h3>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>你被问到</th><th>先查</th></tr></thead><tbody><tr><td>报价规则、能报几段、限价多少</td><td>第 1 章 + 确认省份</td></tr><tr><td>要哪些数据、数据从哪来</td><td>第 2 章</td></tr><tr><td>负荷/电价怎么预测、误差多少算好</td><td>第 3、4 章</td></tr><tr><td>新能源怎么申报、储能怎么套利</td><td>第 5、8 章</td></tr><tr><td>报价该不该加价、加多少</td><td>第 6 章（先判是否枢机）</td></tr><tr><td>火电多段曲线怎么排</td><td>第 7 章</td></tr><tr><td>售电怎么锁价、套餐怎么定</td><td>第 9 章</td></tr><tr><td>仿真能不能预测出清价</td><td>第 10 章</td></tr><tr><td>回测结果可信吗、怎么复盘</td><td>第 11 章</td></tr><tr><td>申报文件怎么校验、怎么防错</td><td>第 12 章</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>你被问到</th><th>先查</th></tr></thead><tbody><tr><td>报价规则、能报几段、限价多少</td><td>第 1 章 + 确认省份</td></tr><tr><td>要哪些数据、数据从哪来</td><td>第 2 章</td></tr><tr><td>负荷/电价怎么预测、误差多少算好</td><td>第 3、4 章</td></tr><tr><td>新能源怎么申报、储能怎么套利</td><td>第 5、8 章</td></tr><tr><td>报价该不该加价、加多少</td><td>第 6 章（先判是否枢机）</td></tr><tr><td>火电多段曲线怎么排</td><td>第 7 章</td></tr><tr><td>售电怎么锁价、套餐怎么定</td><td>第 9 章</td></tr><tr><td>仿真能不能预测出清价</td><td>第 10 章</td></tr><tr><td>回测结果可信吗、怎么复盘</td><td>第 11 章</td></tr><tr><td>申报文件怎么校验、怎么防错</td><td>第 12 章</td></tr><tr><td>一天怎么安排、什么时候改单</td><td>第 13.1 节</td></tr><tr><td>报价曲线在不确定性下怎么选</td><td>第 13.2 节</td></tr><tr><td>结算少了钱、差异怎么查</td><td>第 13.3 节</td></tr><tr><td>用公开数据怎么做单省单期回测</td><td>第 13.4 节</td></tr></tbody></table></div>
 <hr>
 <h2 id="s5">1. 报价空间：先确认规则，再谈方法</h2>
 <aside class="note"><p>本章数据截止：2026-11-01。段数、限价、时限逐省逐年调整，<strong>引用前必须核对省交易中心最新规则</strong>。</p></aside>
@@ -151,7 +152,7 @@
 <p>系统性偏差常来自两个方向：时段（某些点总是偏高）与星期（周一/周末模式不同）。可加的两因子校正：</p>
 <pre tabindex="0"><code>residual(weekday, slot) = (n·cell_mean + λ·slot_mean) / (n + λ)
 forecast' = forecast + residual(weekday, slot)</code></pre>
-<p><code>λ</code>（收缩系数，代码默认 3）用来防止样本稀少的格子过拟合。这一结构与公开专利中&quot;时间维度分量 + 外生变量分量&quot;的偏差校正思路一致（见第 15 章）。</p>
+<p><code>λ</code>（收缩系数，代码默认 3）用来防止样本稀少的格子过拟合。这一结构与公开专利中&quot;时间维度分量 + 外生变量分量&quot;的偏差校正思路一致（见第 16 章）。</p>
 <h3 id="s17">3.4 指标口径</h3>
 <ul><li><strong>MAE/RMSE</strong>：主指标，单位 MW；</li><li><strong>MAPE</strong>：分母设下限（如 1 MW），否则低谷时段会放大误差；</li><li><strong>bias</strong>：平均偏差，能暴露系统性高估/低估；</li><li><strong>分时段误差</strong>：尖峰时段误差比全天平均更重要，必须单列。</li></ul>
 <h3 id="s18">3.5 误差值多少钱</h3>
@@ -275,7 +276,8 @@ forecast' = forecast + residual(weekday, slot)</code></pre>
 <hr>
 <h2 id="s60">12. 工程落地与申报</h2>
 <aside class="note"><p>本章数据截止：2026-11-01。申报时限与文件格式以各省交易中心最新要求为准。</p></aside>
-<h3 id="s61">12.1 D-1 时间表（模板）</h3>
+<h3 id="s61">12.1 D-1 申报时间表（格式与操作）</h3>
+<aside class="note"><p>决策节奏、数据截止与失败模式见 13.1；这里只列申报操作。</p></aside>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>时点</th><th>动作</th><th>产出</th></tr></thead><tbody><tr><td>数据到位后</td><td>拉取价格/负荷/气象/检修，跑清洗</td><td>标准化数据集</td></tr><tr><td>预测</td><td>负荷/电价/出力预测 + 残差校正</td><td>96 点预测曲线 + 分位数</td></tr><tr><td>策略</td><td>生成报价曲线/申报量</td><td>量价对草案</td></tr><tr><td>校验</td><td>规则校验（见 12.2）</td><td>通过/拦截</td></tr><tr><td>申报</td><td>上传交易中心</td><td>申报回执</td></tr><tr><td>收盘后</td><td>记录版本、留痕</td><td>当日快照</td></tr></tbody></table></div>
 <h3 id="s62">12.2 申报校验清单（缺一不可）</h3>
 <ul><li>段数与单调性符合规则；</li><li>价格在限价区间内（含二次限价）；</li><li>各段累计量 = 可用容量 − 检修容量；</li><li>最小技术出力、爬坡约束可行；</li><li>必开必停机组标记正确；</li><li>中长期分解曲线与申报曲线不冲突；</li><li>文件格式、编码、字段顺序符合交易中心模板。</li></ul>
@@ -288,17 +290,75 @@ forecast' = forecast + residual(weekday, slot)</code></pre>
 <p>采购不解决最后一公里：<strong>申报文件校验、改单管理、T+1 归因</strong>仍要自己建，否则无法判断供应商的效果是模型带来的还是行情带来的。</p>
 <p><strong>先分清两类供应商</strong>：一类在运营侧（交易中心/电网的出清引擎与技术支持系统），一类在参与侧（报价决策与申报）。参与侧产品的规则层必须跟得上运营侧系统的改造节奏——出清算法加装是持续发生的（见 10.4），一次采购不等于长期可用。合同里要写明规则变更后的适配责任与响应时限，以及&quot;规则变了但系统没跟上&quot;时的责任划分。</p>
 <hr>
-<h2 id="s65">13. 关键公式与代码映射</h2>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>内容</th><th>公式/方法</th><th>代码</th></tr></thead><tbody><tr><td>季节朴素基线</td><td>ŷ_t = y_{t−96}</td><td><code>forecast.seasonal_naive</code></td></tr><tr><td>相似日</td><td>k 个最相似日均值（剔除 ±25% 异常日）</td><td><code>forecast.similar_day</code></td></tr><tr><td>残差校正</td><td>(n·cell + λ·slot)/(n+λ)</td><td><code>forecast.fit_residual_model</code></td></tr><tr><td>AR(p)</td><td>最小二乘 + 递推</td><td><code>forecast.ar_forecast</code></td></tr><tr><td>分位数损失</td><td>pinball loss</td><td><code>forecast.pinball</code></td></tr><tr><td>方向正确率</td><td>相邻段方向一致率（带死区）</td><td><code>forecast.direction_accuracy</code></td></tr><tr><td>误差经济价值</td><td>Σ\</td><td>e\</td></tr><tr><td>价格接受者最优</td><td>p* = c</td><td><code>bid.price_taker_optimum</code></td></tr><tr><td>枢机加价</td><td>p* = (a/b + c)/2</td><td><code>bid.pivotal_markup</code></td></tr><tr><td>申报量决策</td><td>非对称罚则期望成本最小</td><td><code>bid.declared_quantity</code></td></tr><tr><td>多段曲线</td><td>成本分段 + 单调校验</td><td><code>bid.bid_curve</code></td></tr><tr><td>储能门槛</td><td>循环成本 / 往返效率</td><td><code>bid.storage_arbitrage_threshold</code></td></tr><tr><td>合约叠加</td><td>现货 PnL + q_c(P_c − π)</td><td><code>bid.contract_adjustment</code></td></tr><tr><td>边际出清</td><td>报价排序 + 逐段满足负荷</td><td><code>simulate.clear</code></td></tr><tr><td>报价扫描</td><td>固定对手、扫描自身报价</td><td><code>simulate.bid_sweep</code></td></tr><tr><td>集中度</td><td>HHI = Σs_i² × 10000</td><td><code>simulate.hhi</code></td></tr><tr><td>滚动回测</td><td>只用 t 之前数据</td><td><code>backtest.rolling_predict</code></td></tr><tr><td>样本外残差校正</td><td>历史样本外误差拟合</td><td><code>backtest.rolling_corrected</code></td></tr></tbody></table></div>
+<h2 id="s65">13. 盘面层：从模型到交易台</h2>
+<aside class="note"><p>本章为方法章节，不引用新的政策数字。算例全部为合成数据（D 级），不是实盘，也不构成交易建议。</p></aside>
+<p>前十二章回答&quot;怎么算&quot;；这一章回答&quot;交易台怎么用&quot;。一条曲线算出来，不等于决策完成：它要在截止时点前冻结、要在情景集下比较、要在 T+1 对上结算科目。盘面层不是更复杂的模型，而是把模型放进时钟、风险偏好和结算口径里。</p>
+<h3 id="s66">13.1 交易台一日：五个时钟</h3>
+<p>同一个&quot;明天怎么报&quot;的问题，在交易台上有五个不同的时钟。把时钟混在一起，是多数&quot;模型很好、执行很乱&quot;的根源。</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>时钟</th><th>回答什么</th><th>典型时点</th><th>错过会怎样</th></tr></thead><tbody><tr><td>信息时钟</td><td>这个数什么时候可得</td><td>D-1 上午起</td><td>把 D+1 才发布的数据当成 D-1 特征</td></tr><tr><td>模型时钟</td><td>预测什么时候冻结</td><td>D-1 09:30</td><td>反复重跑，版本无法追溯</td></tr><tr><td>决策时钟</td><td>曲线什么时候定</td><td>D-1 10:30</td><td>决策拖到申报截止</td></tr><tr><td>申报时钟</td><td>最晚什么时候提交/改单</td><td>各省截止前</td><td>卡点失败，没有回退时间</td></tr><tr><td>结算时钟</td><td>什么时候能对账</td><td>D+1 起</td><td>过了复核窗口才发现差异</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>时点</th><th>动作</th><th>数据截止</th><th>必须做的判断</th><th>产出</th><th>常见失败</th></tr></thead><tbody><tr><td>D-1 08:30</td><td>数据到位</td><td>D-1 08:00</td><td>数据是否完整，是否启用降级数据源</td><td>数据快照 + 质量标记</td><td>用昨日数据硬跑，把数据缺失误判成模型误差</td></tr><tr><td>D-1 09:30</td><td>预测冻结</td><td>D-1 09:00</td><td>是否人工修正，依据是什么</td><td>96 点 P10/P50/P90 + 情景集</td><td>反复重跑，版本无法追溯</td></tr><tr><td>D-1 10:30</td><td>曲线生成</td><td>D-1 10:00</td><td>风险偏好与合约覆盖，选前沿上的哪一点</td><td>候选曲线 + 期望利润/CVaR</td><td>只交一条&quot;最优&quot;曲线，没有备选与风险说明</td></tr><tr><td>D-1 11:00</td><td>规则校验</td><td>D-1 10:30</td><td>通过还是拦截，是否人工 override</td><td>校验结果 + override 记录</td><td>绕过校验改单，申报成功但结算被考核</td></tr><tr><td>D-1 截止前 90 分钟</td><td>申报</td><td>D-1 截止前 90 分钟</td><td>提交还是改单，改单的触发条件</td><td>申报回执 + 版本快照</td><td>卡点提交，网络或格式失败没有回退时间</td></tr><tr><td>D-1 出清后</td><td>结果核对</td><td>出清公告</td><td>是否做日内调整，调整哪些时段</td><td>中标曲线 + 偏差预警</td><td>只看出清价，不看中标量与必开/补偿结果</td></tr><tr><td>D 日内</td><td>执行</td><td>实时</td><td>是否再报价，是否调整出力或 SOC</td><td>执行日志 + 指令回执</td><td>用日前曲线应对实时变化，偏差全部进结算</td></tr><tr><td>D+1 09:00</td><td>结算初核</td><td>D+1 结算数据</td><td>科目是否对上，差异是否超过阈值</td><td>结算差异桥 + 争议包</td><td>只对总额，不对科目</td></tr><tr><td>D+1 复盘</td><td>复盘</td><td>初核完成后</td><td>归因到预测/报价/执行/规则，下一日改什么</td><td>归因表 + 改单台账</td><td>把可解释的差异归因成&quot;行情不好&quot;</td></tr></tbody></table></div>
+<p>三条纪律：</p>
+<ol><li><strong>截止后到达的数据只进下一轮，不回填</strong>。回填会让回测&quot;变好&quot;，但会让实盘决策失真；公开数据回测尤其容易犯这个错（见 13.4）。</li><li><strong>任何人工 override 都要留 before/after、理由、触发条件</strong>。没有 override 记录的复盘，等于把最重要的一次判断从样本里删掉。</li><li><strong>申报回执、出清结果、结算单要能按同一 ID 对齐</strong>。对不上就是争议，不是&quot;大概&quot;；三单对齐是 13.3 的起点。</li></ol>
+<p>12.1 是申报操作模板（文件、格式、字段），本节是决策节奏（谁在什么时候基于什么数据做什么判断），两者不重复。</p>
+<h3 id="s67">13.2 不确定性下的报价曲线：先分清价格接受者与枢机</h3>
+<p>点预测只能给一条曲线，盘面要用情景集。情景可以来自残差分位数、相似日、集合预报或历史 bootstrap；每个情景至少要有&quot;价格 + 权重&quot;，并在报告里写明构造方法和随机种子（如用 bootstrap）。</p>
+<p>给定一条曲线和情景价格 <code>π_s</code>，先算每个情景的中标量，再算利润：</p>
+<pre tabindex="0"><code>Q(π) = max{ Q_i : p_i ≤ π }                  # 分段落点，pay-as-clear
+R    = Qc·Pc + (Q − Qc)·π                    # 合约 + 现货
+Π    = R − C(Q) − F                          # C(Q) 用分段成本，F 为固定成本
+E[Π] = Σ_s w_s·Π_s
+CVaR_α = 最差 α 概率质量上的加权平均</code></pre>
+<p>算例（<strong>合成，D 级</strong>）：350 MW 机组，分段成本 200/260/340 元/MWh、容量 120/120/110 MW，固定成本 20,000 元/日；情景价格 180/240/270/300/420/650 元/MWh，权重 0.10/0.15/0.10/0.30/0.20/0.15；合约价 320 元/MWh。比较三档合约覆盖：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>合约覆盖</th><th>期望利润（元/日）</th><th>CVaR₁₀%（元/日）</th><th>最差情景（元/日）</th><th>利润标准差（元/日）</th><th>平均中标（MW）</th></tr></thead><tbody><tr><td>0 MW</td><td>17,835</td><td>−20,000</td><td>−20,000</td><td>44,581</td><td>236.5</td></tr><tr><td>100 MW</td><td>14,585</td><td>−7,200</td><td>−7,200</td><td>30,450</td><td>236.5</td></tr><tr><td>200 MW</td><td>11,335</td><td>−400</td><td>−400</td><td>16,685</td><td>236.5</td></tr></tbody></table></div>
+<p>读法：现货敞口期望最高，但最差 10% 是 −2.0 万元；200 MW 合约把最差 10% 拉到 −400 元，代价是期望少 6,500 元。<strong>这不是&quot;应该签 200 MW&quot;的建议</strong>——选择取决于风险偏好、合约可得性、融资契约和考核约束。三条都在前沿上，因为没有一条同时在期望和 CVaR 上占优。</p>
+<p>同一张表还要放&quot;加价&quot;对照，防止把加价当成免费的收益：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>曲线</th><th>期望利润（元/日）</th><th>CVaR₁₀%（元/日）</th><th>平均中标（MW）</th></tr></thead><tbody><tr><td>按成本（200/260/340）</td><td>14,585</td><td>−7,200</td><td>236.5</td></tr><tr><td>全曲线上浮 5%</td><td>14,465</td><td>−7,200</td><td>224.5</td></tr><tr><td>全曲线上浮 10%</td><td>14,465</td><td>−7,200</td><td>224.5</td></tr></tbody></table></div>
+<p>在价格接受者设定下，加价只会减少中标，不会提高出清价；本例中成本曲线的期望更高、CVaR 不变，直接占优。这正是 6.1 的定理在盘面上的样子。<strong>只有当你能证明自己在部分情景下是枢机时，才需要把剩余需求情景放进前沿</strong>；此时加价可能同时改变期望和尾部，但合规边界另算（6.2、6.3），不能把&quot;枢机加价&quot;包装成通用策略。</p>
+<p>报告四要素：α（如 10%）、情景构造方法、合约与固定成本假设、情景数量。缺一项，CVaR 就只是一个好看的数字。</p>
+<p>代码：<code>desk.curve_metrics</code>（单条曲线）、<code>desk.risk_frontier</code>（非支配前沿）。</p>
+<h3 id="s68">13.3 结算争议与隐性亏损还原</h3>
+<p>盘面上有三本账，不能混：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>账本</th><th>回答什么</th><th>数据来源</th><th>常见错误</th></tr></thead><tbody><tr><td>账面 PnL</td><td>结算单上是多少</td><td>结算单、计量数据</td><td>只对总额，不对科目</td></tr><tr><td>决策 PnL</td><td>按当时信息本应多少</td><td>申报、预测、合约、规则版本</td><td>用事后价格倒推，制造&quot;本可以赚&quot;</td></tr><tr><td>差异桥</td><td>差在哪个科目、谁负责</td><td>三单对齐</td><td>把差异归到&quot;其他&quot;</td></tr></tbody></table></div>
+<p>结算收入按&quot;合约 + 日前 + 实时偏差&quot;展开：</p>
+<pre tabindex="0"><code>R = Qc·Pc + (Qda − Qc)·Pda + (Qa − Qda)·Prt</code></pre>
+<p>从计划到实际，差异可以精确拆成四个价量项，再加成本、考核、分摊：</p>
+<pre tabindex="0"><code>ΔR = ΔQda·Pda + (Qda0 − Qc)·ΔPda + (ΔQa − ΔQda)·Prt + (Qa0 − Qda0)·ΔPrt</code></pre>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>科目</th><th>类别</th><th>责任方</th><th>先问什么</th></tr></thead><tbody><tr><td>日前申报量偏差</td><td>量</td><td>交易</td><td>申报量为什么和计划不同？是预测、检修还是策略？</td></tr><tr><td>日前价格偏差</td><td>价</td><td>市场</td><td>价差是否由规则版本、限价或出清口径变化导致？</td></tr><tr><td>实时执行偏差</td><td>量</td><td>调度/运行</td><td>是爬坡、故障、限电，还是指令跟踪？</td></tr><tr><td>实时价格偏差</td><td>价</td><td>市场</td><td>实时价与计划价的差，是否可由已知事件解释？</td></tr><tr><td>变动成本</td><td>成本</td><td>财务/生产</td><td>成本口径是否与结算电量口径一致？</td></tr><tr><td>考核</td><td>考核</td><td>交易</td><td>考核项是否适用、是否已免考或已申诉？</td></tr><tr><td>分摊</td><td>分摊</td><td>财务/交易</td><td>分摊科目是否重复归集或被错误分摊？</td></tr></tbody></table></div>
+<p>算例（<strong>合成，D 级</strong>）：合约 100 MW @ 320 元/MWh，成本 220 元/MWh。计划：日前 300 MW、实发 310 MW、日前价 300、实时价 420；实际：日前 290 MW、实发 320 MW、日前价 320、实时价 480；考核 2,000 元、分摊 500 元。计划利润 28,000 元，实际利润 34,300 元，差异 +6,300 元，拆为：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>科目</th><th>金额（元）</th></tr></thead><tbody><tr><td>日前申报量偏差</td><td>−3,200</td></tr><tr><td>日前价格偏差</td><td>+4,000</td></tr><tr><td>实时执行偏差</td><td>+9,600</td></tr><tr><td>实时价格偏差</td><td>+600</td></tr><tr><td>变动成本</td><td>−2,200</td></tr><tr><td>考核</td><td>−2,000</td></tr><tr><td>分摊</td><td>−500</td></tr><tr><td><strong>合计</strong></td><td><strong>+6,300</strong></td></tr></tbody></table></div>
+<p>七个科目相加等于总差异，残差为 0（代码断言 <code>identity_gap</code>）。如果残差不为 0，先查公式口径和合约分解，不要先怀疑算术。</p>
+<p><strong>隐性亏损</strong>是账面看不到的另一本账：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>类型</th><th>定义</th><th>识别方法</th><th>是否进结算单</th></tr></thead><tbody><tr><td>机会损失</td><td>可用容量在正边际下未中标</td><td>(可用容量 − 中标量) × max(0, Pda − 成本)</td><td>不进</td></tr><tr><td>偏差成本</td><td>预测/执行误差的罚则</td><td>考核明细、偏差电量</td><td>进</td></tr><tr><td>合约敞口</td><td>合约量与实发不匹配的回补价差</td><td>(Qc − Qa) × (Pda − Pc)，正=损失</td><td>部分进</td></tr><tr><td>口径损失</td><td>时标、计量点、变比、线损、规则版本</td><td>三单对齐、CT/PT、规则版本号</td><td>可能被掩盖</td></tr></tbody></table></div>
+<p>上例中，可用容量 350 MW、日前中标 290 MW、日前价 320 元/MWh、成本 220 元/MWh，机会损失 = 60 × 100 = 6,000 元；加考核 2,000 元，决策口径的隐性成本为 8,000 元（合约敞口为 0，因为实发已超过合约量）。账面盈利 34,300 元，不代表决策没有代价。</p>
+<p>争议处理五步：</p>
+<ol><li><strong>锁科目</strong>：先定位到结算单的具体行，不要从总额开始；</li><li><strong>对齐三单</strong>：申报回执、出清结果、结算单按同一交易 ID / 时段对齐；</li><li><strong>复算</strong>：用规则版本号对应的公式重算，不用&quot;最新规则&quot;倒推历史；</li><li><strong>分桶</strong>：用差异桥把金额分到价、量、成本、考核、分摊；</li><li><strong>升级</strong>：超过重要性阈值的，按各省结算细则规定的复核窗口，向交易中心/调度/计量提出，附证据包。</li></ol>
+<p>证据包至少包括：申报回执与改单记录、出清结果、计量数据与 CT/PT 变比、合约分解曲线、规则版本号与生效日、计算底稿。<strong>先查口径，再查算术</strong>：最常见的差异源是 96 点 vs 288 点、关口表 vs 并网点、一次值 vs 二次值、线损是否含、合约分解版本、分摊科目重复。</p>
+<p>代码：<code>desk.settlement_bridge</code>（差异桥）、<code>desk.implicit_cost</code>（隐性成本）、<code>desk.dispute_packet</code>（按重要性阈值生成争议包）。工具只做盘面复核，不替代交易中心结算；争议以官方结算和省级细则为准。</p>
+<h3 id="s69">13.4 公开数据单省单期回测：可复现，但不假装是实盘</h3>
+<p>公开数据可以支撑回测，但要先把&quot;能回答什么&quot;说清楚。跨省拼接、跨规则版本拼接、把修订后数据当成当时可得，是三类最常见的伪结论。</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>层级</th><th>回答什么</th><th>需要的数据</th><th>公开数据能否支撑</th></tr></thead><tbody><tr><td>L1 机制复现</td><td>给定历史价格，某条曲线/规则是否可行</td><td>价格、规则版本</td><td>能</td></tr><tr><td>L2 决策复现</td><td>在当时可得信息下，模型能否击败基线</td><td>价格、负荷/新能源预测（按发布时点）</td><td>部分能</td></tr><tr><td>L3 收益复现</td><td>扣成本、合约、考核后的 PnL</td><td>成本、合约、结算细则</td><td>通常不能，需自有数据</td></tr></tbody></table></div>
+<p>单省单期的数据契约（最小集）：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>字段</th><th>单位/粒度</th><th>来源</th><th>可得性</th></tr></thead><tbody><tr><td>date, slot</td><td>日 × 96 点</td><td>交易中心披露</td><td>多数省可查</td></tr><tr><td>da_price, rt_price</td><td>元/MWh，96 点</td><td>交易中心/交易平台</td><td>多数省可查，部分仅会员</td></tr><tr><td>load_forecast, load_actual</td><td>MW，96 点</td><td>调度/交易中心</td><td>披露程度不一</td></tr><tr><td>wind/solar forecast, actual</td><td>MW，96 点</td><td>交易中心/调度</td><td>部分省披露</td></tr><tr><td>unit availability</td><td>MW，日</td><td>自有台账 + 检修公告</td><td>自有为主</td></tr><tr><td>contract decomposition</td><td>MW，96 点</td><td>自有合约</td><td>私有</td></tr><tr><td>rule_version</td><td>版本号 + 生效日</td><td>交易中心规则</td><td>必须冻结</td></tr></tbody></table></div>
+<p><strong>防泄露是公开数据回测的第一道门槛</strong>。历史文件里有 D 日实时价，不代表 D-1 申报时能看到；有修订后的负荷，不代表当时可得。做法是给每个字段建&quot;发布时点&quot;列：D-1 截止前不可得的字段，不能进 D 日特征，只能进复盘或下一轮训练。</p>
+<p>交付物八项（缺一项，结果不可复现）：</p>
+<ol><li>数据字典、来源 URL、抓取日期；</li><li>覆盖区间、缺失清单、剔除原因；</li><li>规则版本号与生效日；</li><li>特征可得时点表（防泄露）；</li><li>基线（季节朴素/相似日）与逐层增益；</li><li>滚动窗口、样本外区间、参数是否漂移；</li><li>逐日指标与最差 5 天，不只报平均；</li><li>代码版本与数据哈希。</li></ol>
+<p>单省单期的设计要点：选一个已正式运行的现货省份；区间内至少包含一个负价日和一个尖峰日；区间内不能跨规则版本，跨了就切段或剔除；先写假设再跑，不因结果不好换区间。结论只能写成&quot;在该省、该期、该规则版本下，方法 X 相对基线 Y 的指标是 Z&quot;，不能写成&quot;该方法在中国市场有效&quot;。</p>
+<p>代码：<code>desk.validate_public_dataset</code> 检查字段、重复点、96 点缺口和排序；样例 CSV 是合成数据，但列结构与公开数据同形，替换成自有/公开数据时不需要改代码。<strong>不要把合成样例的结果当成实盘基准。</strong></p>
+<h3 id="s70">13.5 盘面层的边界</h3>
+<ul><li>不做实盘行情接入、不做下单、不做持仓；工具只做决策支持与复盘。</li><li>不替代交易中心结算、公司风控委员会或法律意见；争议以官方口径为准。</li><li>不提供规避监管的报价手法；市场力只做识别与合规边界（6.3）。</li><li>盘面层不保证赚钱，它保证的是：你知道自己为什么赚/亏，以及下一次改什么。</li></ul>
+<p>工程化落地（规则版本库、数据契约、限额、对账与归因的系统实现）见 <a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控（工程化）</a>；本章只给交易台的决策节奏与最小工具。</p>
+<hr>
+<h2 id="s71">14. 关键公式与代码映射</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>内容</th><th>公式/方法</th><th>代码</th></tr></thead><tbody><tr><td>季节朴素基线</td><td>ŷ_t = y_{t−96}</td><td><code>forecast.seasonal_naive</code></td></tr><tr><td>相似日</td><td>k 个最相似日均值（剔除 ±25% 异常日）</td><td><code>forecast.similar_day</code></td></tr><tr><td>残差校正</td><td>(n·cell + λ·slot)/(n+λ)</td><td><code>forecast.fit_residual_model</code></td></tr><tr><td>AR(p)</td><td>最小二乘 + 递推</td><td><code>forecast.ar_forecast</code></td></tr><tr><td>分位数损失</td><td>pinball loss</td><td><code>forecast.pinball</code></td></tr><tr><td>方向正确率</td><td>相邻段方向一致率（带死区）</td><td><code>forecast.direction_accuracy</code></td></tr><tr><td>误差经济价值</td><td>Σ\</td><td>e\</td></tr><tr><td>价格接受者最优</td><td>p* = c</td><td><code>bid.price_taker_optimum</code></td></tr><tr><td>枢机加价</td><td>p* = (a/b + c)/2</td><td><code>bid.pivotal_markup</code></td></tr><tr><td>申报量决策</td><td>非对称罚则期望成本最小</td><td><code>bid.declared_quantity</code></td></tr><tr><td>多段曲线</td><td>成本分段 + 单调校验</td><td><code>bid.bid_curve</code></td></tr><tr><td>储能门槛</td><td>循环成本 / 往返效率</td><td><code>bid.storage_arbitrage_threshold</code></td></tr><tr><td>合约叠加</td><td>现货 PnL + q_c(P_c − π)</td><td><code>bid.contract_adjustment</code></td></tr><tr><td>边际出清</td><td>报价排序 + 逐段满足负荷</td><td><code>simulate.clear</code></td></tr><tr><td>报价扫描</td><td>固定对手、扫描自身报价</td><td><code>simulate.bid_sweep</code></td></tr><tr><td>集中度</td><td>HHI = Σs_i² × 10000</td><td><code>simulate.hhi</code></td></tr><tr><td>交易台时钟</td><td>9 个决策点，每个点有数据截止</td><td><code>desk.trading_day_timeline</code></td></tr><tr><td>曲线出清</td><td>Q(π) = max{Q_i : p_i ≤ π}</td><td><code>desk.curve_dispatch</code></td></tr><tr><td>情景指标</td><td>期望利润 + 加权 CVaR</td><td><code>desk.curve_metrics</code></td></tr><tr><td>风险前沿</td><td>非支配的 (E, CVaR) 候选</td><td><code>desk.risk_frontier</code></td></tr><tr><td>结算差异桥</td><td>四价量项 + 成本/考核/分摊</td><td><code>desk.settlement_bridge</code></td></tr><tr><td>隐性成本</td><td>机会损失 + 偏差 + 合约敞口</td><td><code>desk.implicit_cost</code></td></tr><tr><td>争议包</td><td>重要性阈值 + 证据清单</td><td><code>desk.dispute_packet</code></td></tr><tr><td>公开数据校验</td><td>字段/重复/96 点缺口/排序</td><td><code>desk.validate_public_dataset</code></td></tr><tr><td>滚动回测</td><td>只用 t 之前数据</td><td><code>backtest.rolling_predict</code></td></tr><tr><td>样本外残差校正</td><td>历史样本外误差拟合</td><td><code>backtest.rolling_corrected</code></td></tr></tbody></table></div>
 <p>运行方式：<code>python tools/selftest.py</code>（零第三方依赖，Python 3.11+）。</p>
 <hr>
-<h2 id="s66">14. 术语表（中英对照精选）</h2>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>中文</th><th>English</th><th>说明</th></tr></thead><tbody><tr><td>报量报价</td><td>quantity-price bidding</td><td>同时提交量与价</td></tr><tr><td>报量不报价</td><td>quantity-only bidding</td><td>只报量，价格被动接受</td></tr><tr><td>枢机机组</td><td>pivotal unit</td><td>报价可决定出清价的机组</td></tr><tr><td>剩余需求</td><td>residual demand</td><td>扣除对手供给后留给自己的需求</td></tr><tr><td>经济持留</td><td>economic withholding</td><td>无成本理由报高价，违规</td></tr><tr><td>容量持留</td><td>capacity withholding</td><td>隐藏可用容量，违规</td></tr><tr><td>基线负荷</td><td>customer baseline load (CBL)</td><td>需求响应结算基准</td></tr><tr><td>报价曲线</td><td>bid curve / supply function</td><td>分段的量价对</td></tr><tr><td>边际机组</td><td>marginal unit</td><td>决定出清价的机组</td></tr><tr><td>出清价</td><td>clearing price</td><td>统一结算价</td></tr><tr><td>分位数损失</td><td>pinball loss</td><td>概率预测的评价指标</td></tr><tr><td>方向正确率</td><td>direction accuracy</td><td>价格涨跌方向预测准确率</td></tr><tr><td>期望损失</td><td>CVaR / expected shortfall</td><td>尾部风险度量</td></tr><tr><td>滚动回测</td><td>rolling-origin backtest</td><td>逐日滚动、样本外评估</td></tr><tr><td>收益归因</td><td>PnL attribution</td><td>拆解预测/报价/执行/规则四项</td></tr><tr><td>事后复盘</td><td>post-trade review</td><td>T+1 复盘</td></tr><tr><td>循环成本</td><td>cycle cost</td><td>储能每次充放的折旧与损耗成本</td></tr><tr><td>往返效率</td><td>round-trip efficiency</td><td>充放电整体效率</td></tr></tbody></table></div>
+<h2 id="s72">15. 术语表（中英对照精选）</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>中文</th><th>English</th><th>说明</th></tr></thead><tbody><tr><td>报量报价</td><td>quantity-price bidding</td><td>同时提交量与价</td></tr><tr><td>报量不报价</td><td>quantity-only bidding</td><td>只报量，价格被动接受</td></tr><tr><td>枢机机组</td><td>pivotal unit</td><td>报价可决定出清价的机组</td></tr><tr><td>剩余需求</td><td>residual demand</td><td>扣除对手供给后留给自己的需求</td></tr><tr><td>经济持留</td><td>economic withholding</td><td>无成本理由报高价，违规</td></tr><tr><td>容量持留</td><td>capacity withholding</td><td>隐藏可用容量，违规</td></tr><tr><td>基线负荷</td><td>customer baseline load (CBL)</td><td>需求响应结算基准</td></tr><tr><td>报价曲线</td><td>bid curve / supply function</td><td>分段的量价对</td></tr><tr><td>边际机组</td><td>marginal unit</td><td>决定出清价的机组</td></tr><tr><td>出清价</td><td>clearing price</td><td>统一结算价</td></tr><tr><td>分位数损失</td><td>pinball loss</td><td>概率预测的评价指标</td></tr><tr><td>方向正确率</td><td>direction accuracy</td><td>价格涨跌方向预测准确率</td></tr><tr><td>期望损失</td><td>CVaR / expected shortfall</td><td>尾部风险度量</td></tr><tr><td>滚动回测</td><td>rolling-origin backtest</td><td>逐日滚动、样本外评估</td></tr><tr><td>收益归因</td><td>PnL attribution</td><td>拆解预测/报价/执行/规则四项</td></tr><tr><td>事后复盘</td><td>post-trade review</td><td>T+1 复盘</td></tr><tr><td>循环成本</td><td>cycle cost</td><td>储能每次充放的折旧与损耗成本</td></tr><tr><td>往返效率</td><td>round-trip efficiency</td><td>充放电整体效率</td></tr><tr><td>盘面层</td><td>desk layer</td><td>把模型接入交易台时钟、风险偏好与结算口径的那一层</td></tr><tr><td>数据截止</td><td>data cutoff</td><td>某个决策前最晚可得的数据时点；截止后数据只能进下一轮</td></tr><tr><td>风险前沿</td><td>risk frontier</td><td>期望利润与 CVaR 的非支配候选集合</td></tr><tr><td>结算差异桥</td><td>settlement variance bridge</td><td>把计划与实际利润差拆到价、量、成本、考核、分摊</td></tr><tr><td>隐性亏损</td><td>implicit loss</td><td>不进结算单的机会损失、偏差成本与合约敞口</td></tr><tr><td>公开数据回测</td><td>public-data backtest</td><td>用公开披露数据做可复现回测，须标发布时点与规则版本</td></tr></tbody></table></div>
 <hr>
-<h2 id="s67">15. 知识来源与维护</h2>
-<h3 id="s68">15.1 方法来源</h3>
+<h2 id="s73">16. 知识来源与维护</h2>
+<h3 id="s74">16.1 方法来源</h3>
 <ul><li>市场机制、结算与价格理论：《电力现货市场101问》《电力现货市场实务》《电力系统经济学原理》——书目与版本见《电力交易专家》第 15 章；</li><li>报价理论：价格接受者按边际成本报价、枢机定价、剩余需求弹性，属微观经济学与电力市场设计的标准结论；</li><li>需求响应基线清洗（剔除 ±25% 异常日）：与《虚拟电厂专家》第 8 章的 CBL 口径同源。</li></ul>
-<h3 id="s69">15.2 公开资料与厂商实践（2026-11 整理）</h3>
+<h3 id="s75">16.2 公开资料与厂商实践（2026-11 整理）</h3>
 <p>公开信息分两侧看，缺一侧就不完整：<strong>参与侧</strong>回答&quot;能买到什么&quot;，<strong>运营与规则侧</strong>回答&quot;规则以什么形式落地&quot;。</p>
 <p><strong>参与侧</strong></p>
 <ul><li>上海路明星光智能科技有限公司（Lumin AI，2025-02 成立）：公开产品线覆盖火电/新能源/储能/售电/用户/VPP，宣称&quot;气象—功率—负荷—电价—交易&quot;全链路预测，并提供申报文件导出与交易后复盘。其公开宣称的量化效果（价格预测准确率最高优化 30%、安徽价差方向正确率约 70%、2026-08 日前申报平均收益 3.61 元/MWh；储能每百 MWh 年增收超 100 万元、全生命周期收益提升 10%~15%）均为<strong>企业宣称（C 级）</strong>，未披露基线、样本区间、死区设置，不能作为基准。</li></ul>
@@ -306,12 +366,13 @@ forecast' = forecast + residual(weekday, slot)</code></pre>
 <ul><li>北京清能互联科技有限公司（2004 年成立，核心团队源自清华大学电机系）：业务以电力市场建设、调度优化与市场技术支持系统为主。公开可查事实：自 2019 年起参与南方区域电力现货市场出清算法引擎研发（B/C 级：获奖报道，素材由企业提供）；2026-05 中标南方区域现货技术支持系统&quot;出清算法相关功能加装改造&quot;标包（462 万元），2026-06 中标广州电力交易中心&quot;交易运行分析及辅助校验系统建设&quot;（B 级：南方电网供应链平台公告）。其价值不在效果数字，而在于<strong>说明规则以什么形式落地</strong>：SCUC/SCED 分层、RUC 与日前并行或串行、跨经营区出清模型、以组件化约束响应规则变化。本技能据此在 10.4 增加&quot;生产级出清引擎 vs 教学仿真&quot;的对照。</li></ul>
 <p><strong>共用资料</strong></p>
 <ul><li>公开专利（国家知识产权局，B 级）：CN121278688A《电力系统的时序数据预测偏差校正方法及系统》（时段/星期分量 + 外生变量分量的系统性偏差校正）、CN122760154A《日前电价预测方法、装置、计算机设备和可读存储介质》（编码器—解码器结构，将物理约束纳入模型）；</li><li>完整厂商调研记录：<code>knowledge/调研-量化报价与厂商实践-2026-11.md</code>。</li></ul>
-<h3 id="s70">15.3 数据说明</h3>
+<h3 id="s76">16.3 数据说明</h3>
 <p>本技能目录下的 <code>data/sample/synthetic_spot_60d.csv</code> 为<strong>合成数据</strong>（60 天 × 96 点，含日前/实时价、负荷预测与实际、风光预测与实际），由 <code>tools/gen_sample.py</code> 以固定随机种子生成。它用于验证方法与代码，不代表任何真实市场。替换为自有数据时，只需保持列名一致。</p>
-<h3 id="s71">15.4 与姊妹技能的分工</h3>
+<p>第 13 章的合约前沿、结算差异桥、隐性成本算例同样为<strong>合成情景</strong>，由 <code>tools/desk.py</code> 计算并由 <code>tools/selftest.py</code> 锁定；它们验证口径与代码，不是实盘收益，也不构成交易建议。公开数据回测的样例 CSV 只用于校验数据结构，不代表任何省份的真实价格。</p>
+<h3 id="s77">16.4 与姊妹技能的分工</h3>
 <ul><li>市场规则、结算公式、限价与政策沿革 → 《电力交易专家》；</li><li>资源聚合、VPP 商业模式、控制技术 → 《虚拟电厂专家》；</li><li>本技能只负责：<strong>预测、报价计算、申报决策、回测与归因</strong>。重叠处只留指引，数字与口径以被引用方为准。</li><li>工程化落地（规则版本库、数据契约、风控限额、结算对账与 PnL 归因）→ 知识库 <a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控（工程化）</a>；本技能给方法与算例，该模块给系统架构与治理流程。</li><li>气象上游（NWP/再分析数据源、四条转换链、功率预测考核、天气风险）→ 知识库 <a href="气象与电力交易-2026-11.html">气象与电力交易</a>；本技能保留预测算法与评价指标，该模块讲气象如何变成电量与风险，配套 <code>tools/weather.py</code> 与本技能 <code>selftest.py</code> 双向锁定。</li><li>电网约束（两节点价分离、位置基差、动态 ATC）→ 知识库 <a href="省间与跨区交易-2026-11.html">省间与跨区交易</a> §5.5–§5.6；配套 <code>tools/network.py</code> 只补出清状态与可用输电能力，阻塞盈余/FTR/LMP 分解仍归 <code>electricity-trading-expert/tools/market.py</code>，断言并入本技能 <code>selftest.py</code>。</li></ul>
-<h3 id="s72">15.5 维护节奏与未定事项</h3>
-<ul><li>每季度核对：各省报价段数、限价（含二次限价）、申报时限；</li><li>每次改版跑一遍 <code>python tools/selftest.py</code>，断言失败说明正文指标已不成立；</li><li><strong>待观察</strong>：2026 现货新规定稿（拟 2027-01-01）、新能源报量不报价适用范围变化、二次限价机制推广、储能容量补偿口径。</li><li><strong>价格驱动三链答题路由</strong>：量（<a href="气象与电力交易-2026-11.html">气象与电力交易</a>）、价（<a href="燃料与电力交易-2026-11.html">燃料与电力交易</a>）、约束（<a href="省间与跨区交易-2026-11.html">省间与跨区交易</a> §5.5–§5.6）；回答「为什么这个时段电价高」前按量→价→约束→叠加排查，回归题见 <a href="黄金问答集-2026-11.html">黄金问答集</a> F 段 Q29–Q38。</li></ul>
+<h3 id="s78">16.5 维护节奏与未定事项</h3>
+<ul><li>每季度核对：各省报价段数、限价（含二次限价）、申报时限；</li><li>每季度核对公开数据的披露字段、发布时点与修订规则（影响 13.4 的防泄露表）；</li><li>每次改版跑一遍 <code>python tools/selftest.py</code>，断言失败说明正文指标已不成立；</li><li><strong>待观察</strong>：2026 现货新规定稿（拟 2027-01-01）、新能源报量不报价适用范围变化、二次限价机制推广、储能容量补偿口径、公开数据披露延迟对单省单期回测的影响。</li><li><strong>价格驱动三链答题路由</strong>：量（<a href="气象与电力交易-2026-11.html">气象与电力交易</a>）、价（<a href="燃料与电力交易-2026-11.html">燃料与电力交易</a>）、约束（<a href="省间与跨区交易-2026-11.html">省间与跨区交易</a> §5.5–§5.6）；回答「为什么这个时段电价高」前按量→价→约束→叠加排查，回归题见 <a href="黄金问答集-2026-11.html">黄金问答集</a> F 段 Q29–Q38。</li></ul>
     </article>
 
 
@@ -416,19 +477,25 @@ forecast' = forecast + residual(weekday, slot)</code></pre>
             <li class="lv3"><a href="#s58">11.3 T+1 收益归因</a></li>
             <li class="lv3"><a href="#s59">11.4 过拟合自查</a></li>
             <li class="lv2"><a href="#s60">12. 工程落地与申报</a></li>
-            <li class="lv3"><a href="#s61">12.1 D-1 时间表（模板）</a></li>
+            <li class="lv3"><a href="#s61">12.1 D-1 申报时间表（格式与操作）</a></li>
             <li class="lv3"><a href="#s62">12.2 申报校验清单（缺一不可）</a></li>
             <li class="lv3"><a href="#s63">12.3 监控与兜底</a></li>
             <li class="lv3"><a href="#s64">12.4 自建还是采购</a></li>
-            <li class="lv2"><a href="#s65">13. 关键公式与代码映射</a></li>
-            <li class="lv2"><a href="#s66">14. 术语表（中英对照精选）</a></li>
-            <li class="lv2"><a href="#s67">15. 知识来源与维护</a></li>
-            <li class="lv3"><a href="#s68">15.1 方法来源</a></li>
-            <li class="lv3"><a href="#s69">15.2 公开资料与厂商实践（2026-11 整理）</a></li>
-            <li class="lv3"><a href="#s70">15.3 数据说明</a></li>
-            <li class="lv3"><a href="#s71">15.4 与姊妹技能的分工</a></li>
-            <li class="lv3"><a href="#s72">15.5 维护节奏与未定事项</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="56" data-more-label="展开 56 个小节" data-less-label="收起小节">展开 56 个小节</button>
+            <li class="lv2"><a href="#s65">13. 盘面层：从模型到交易台</a></li>
+            <li class="lv3"><a href="#s66">13.1 交易台一日：五个时钟</a></li>
+            <li class="lv3"><a href="#s67">13.2 不确定性下的报价曲线：先分清价格接受者与枢机</a></li>
+            <li class="lv3"><a href="#s68">13.3 结算争议与隐性亏损还原</a></li>
+            <li class="lv3"><a href="#s69">13.4 公开数据单省单期回测：可复现，但不假装是实盘</a></li>
+            <li class="lv3"><a href="#s70">13.5 盘面层的边界</a></li>
+            <li class="lv2"><a href="#s71">14. 关键公式与代码映射</a></li>
+            <li class="lv2"><a href="#s72">15. 术语表（中英对照精选）</a></li>
+            <li class="lv2"><a href="#s73">16. 知识来源与维护</a></li>
+            <li class="lv3"><a href="#s74">16.1 方法来源</a></li>
+            <li class="lv3"><a href="#s75">16.2 公开资料与厂商实践（2026-11 整理）</a></li>
+            <li class="lv3"><a href="#s76">16.3 数据说明</a></li>
+            <li class="lv3"><a href="#s77">16.4 与姊妹技能的分工</a></li>
+            <li class="lv3"><a href="#s78">16.5 维护节奏与未定事项</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="61" data-more-label="展开 61 个小节" data-less-label="收起小节">展开 61 个小节</button>
   </aside>
 </div>
 

@@ -54,7 +54,7 @@ node scripts/check-maintenance.mjs --check
 | 技能 | 回答的核心问题 |
 |---|---|
 | **[电力交易专家](skills/electricity-trading-expert/SKILL.md)** · [EN](skills/electricity-trading-expert/SKILL_EN.md) | 现货出清与定价、中长期与金融、辅助服务与容量、结算计量、省别实践、新能源入市、燃料与气电成本、碳市场、11 个海外市场、交易策略与风控 |
-| **[现货报价量化专家](skills/spot-bidding-quant/SKILL.md)** · [EN](skills/spot-bidding-quant/SKILL_EN.md) | 负荷与电价预测、残差校正、量价曲线、购电组合、竞价仿真、滚动回测与 T+1 归因 |
+| **[现货报价量化专家](skills/spot-bidding-quant/SKILL.md)** · [EN](skills/spot-bidding-quant/SKILL_EN.md) | 负荷与电价预测、残差校正、量价曲线、购电组合、竞价仿真、滚动回测与 T+1 归因；盘面层含决策时钟、情景/CVaR 前沿、结算差异桥与公开数据回测协议 |
 | **[虚拟电厂专家](skills/virtual-power-plant/SKILL.md)** · [EN](skills/virtual-power-plant/SKILL_EN.md) | 资源聚合、三阶段演进、市场参与、商业模式、控制优化、政策与国际对标 |
 | **[售电零售与风险专家](skills/retail-electricity-risk/SKILL.md)** · [EN](skills/retail-electricity-risk/SKILL_EN.md) | 套餐全成本定价、客户组合、购电覆盖、偏差考核、批零倒挂、履约保函与退出 |
 

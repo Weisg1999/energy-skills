@@ -54,7 +54,7 @@ All nine skills are bilingual and ship zero-dependency Python tools with self-te
 | Skill | Core questions |
 |---|---|
 | **[Electricity Trading Expert](skills/electricity-trading-expert/SKILL_EN.md)** · [CN](skills/electricity-trading-expert/SKILL.md) | spot clearing and pricing, medium/long-term and finance, ancillary services and capacity, settlement, provincial practice, renewables market entry, fuel and gas-fired costs, carbon markets, 11 overseas markets, strategy and risk |
-| **[Spot Bidding Quant](skills/spot-bidding-quant/SKILL_EN.md)** · [CN](skills/spot-bidding-quant/SKILL.md) | load and price forecasting, bias correction, quantity-price curves, procurement portfolios, bid simulation, rolling backtests, T+1 attribution |
+| **[Spot Bidding Quant](skills/spot-bidding-quant/SKILL_EN.md)** · [CN](skills/spot-bidding-quant/SKILL.md) | load and price forecasting, bias correction, quantity-price curves, procurement portfolios, bid simulation, rolling backtests, T+1 attribution; desk layer with the decision clock, scenario/CVaR frontier, settlement bridge and public-data backtest protocol |
 | **[Virtual Power Plant Expert](skills/virtual-power-plant/SKILL_EN.md)** · [CN](skills/virtual-power-plant/SKILL.md) | resource aggregation, three development stages, market participation, business models, control and optimisation, policy and international benchmarks |
 | **[Retail Electricity Sales & Risk Expert](skills/retail-electricity-risk/SKILL_EN.md)** · [CN](skills/retail-electricity-risk/SKILL.md) | full-cost package pricing, customer portfolio, procurement coverage, deviation assessment, retail-wholesale inversion, guarantees and exit |
 

@@ -16,6 +16,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import backtest as bt
 import bid
+import desk
 import forecast as fc
 import simulate
 import weather as wx
@@ -179,6 +180,135 @@ def main() -> int:
     assert abs(atc - 1675.8) < 1e-6
     assert cong["congestion_rent"] == (500.0 - 200.0) * 200.0, "same calibre as market.py::congestion_surplus"
     print(f"p_a={cong['p_a']:.0f}  p_b={cong['p_b']:.0f}  flow={cong['flow_mw']:.0f} MW  rent={cong['congestion_rent']:.0f}  ATC={atc:.1f} MW")
+
+    section("desk layer: clock, frontier, bridge, public-data gate")
+    timeline = desk.trading_day_timeline()
+    print(f"timeline stages={len(timeline)}  first={timeline[0]['time']}  last={timeline[-1]['time']}")
+    assert len(timeline) == 9 and all(row["cutoff"] and row["failure"] for row in timeline)
+
+    contract_curve = bid.bid_curve([200.0, 260.0, 340.0], [120.0, 120.0, 110.0])
+    scenarios = [
+        {"price": 180.0, "prob": 0.10},
+        {"price": 240.0, "prob": 0.15},
+        {"price": 270.0, "prob": 0.10},
+        {"price": 300.0, "prob": 0.30},
+        {"price": 420.0, "prob": 0.20},
+        {"price": 650.0, "prob": 0.15},
+    ]
+    candidates = [
+        {"name": "spot only", "curve": contract_curve, "contract_quantity": 0.0},
+        {"name": "100 MW contract", "curve": contract_curve, "contract_quantity": 100.0},
+        {"name": "200 MW contract", "curve": contract_curve, "contract_quantity": 200.0},
+    ]
+    metrics = {}
+    for candidate in candidates:
+        m = desk.curve_metrics(
+            candidate["curve"],
+            scenarios,
+            contract_quantity=candidate["contract_quantity"],
+            contract_price=320.0,
+            alpha=0.10,
+            fixed_cost=20000.0,
+        )
+        metrics[candidate["name"]] = m
+        print(
+            f"  {candidate['name']:<16} E={m['expected']:.0f}  CVaR={m['cvar']:.0f}  "
+            f"worst={m['worst']:.0f}  std={m['std']:.0f}  dispatch={m['mean_dispatch']:.1f}"
+        )
+    assert metrics["spot only"]["expected"] == 17835.0
+    assert metrics["100 MW contract"]["expected"] == 14585.0
+    assert metrics["200 MW contract"]["expected"] == 11335.0
+    assert [metrics[name]["cvar"] for name in ("spot only", "100 MW contract", "200 MW contract")] == [
+        -20000.0,
+        -7200.0,
+        -400.0,
+    ]
+    assert all(m["mean_dispatch"] == 236.5 for m in metrics.values())
+
+    frontier = desk.risk_frontier(
+        candidates, scenarios, contract_price=320.0, alpha=0.10, fixed_cost=20000.0
+    )
+    print(f"frontier = {[row['name'] for row in frontier]}")
+    assert len(frontier) == 3, "no contract size dominates on both mean and tail in this example"
+
+    marked = bid.bid_curve([200.0, 260.0, 340.0], [120.0, 120.0, 110.0], markup=0.05)
+    marked_m = desk.curve_metrics(
+        marked, scenarios, contract_quantity=100.0, contract_price=320.0, alpha=0.10, fixed_cost=20000.0
+    )
+    cost_m = metrics["100 MW contract"]
+    print(
+        f"cost curve E={cost_m['expected']:.0f} dispatch={cost_m['mean_dispatch']:.1f}  "
+        f"+5% E={marked_m['expected']:.0f} dispatch={marked_m['mean_dispatch']:.1f}"
+    )
+    assert cost_m["expected"] > marked_m["expected"] and cost_m["mean_dispatch"] > marked_m["mean_dispatch"]
+    assert cost_m["cvar"] == marked_m["cvar"], "markup cuts dispatch without changing the worst scenario"
+
+    plan = {"q_da": 300.0, "q_actual": 310.0, "p_da": 300.0, "p_rt": 420.0}
+    actual = {"q_da": 290.0, "q_actual": 320.0, "p_da": 320.0, "p_rt": 480.0}
+    bridge = desk.settlement_bridge(
+        plan,
+        actual,
+        cost=220.0,
+        contract_quantity=100.0,
+        contract_price=320.0,
+        penalty=2000.0,
+        allocation=500.0,
+    )
+    print(
+        f"bridge plan={bridge['plan_profit']:.0f} actual={bridge['actual_profit']:.0f} "
+        f"delta={bridge['delta']:.0f} gap={bridge['identity_gap']:.6f}"
+    )
+    assert bridge["delta"] == 6300.0 and abs(bridge["identity_gap"]) < 1e-6
+    assert [bucket["amount"] for bucket in bridge["buckets"]] == [
+        -3200.0,
+        4000.0,
+        9600.0,
+        600.0,
+        -2200.0,
+        -2000.0,
+        -500.0,
+    ]
+
+    implicit = desk.implicit_cost(
+        plan,
+        actual,
+        cost=220.0,
+        available=350.0,
+        contract_quantity=100.0,
+        contract_price=320.0,
+        penalty=2000.0,
+    )
+    print(f"implicit opportunity=6000 deviation=2000 total={implicit['total_positive']:.0f}")
+    assert implicit["total_positive"] == 8000.0
+
+    packet = desk.dispute_packet(bridge, threshold=1000.0)
+    print(f"dispute packet items={len(packet)} top={packet[0]['item']} {packet[0]['amount']:.0f}")
+    assert len(packet) == 5 and packet[0]["amount"] == 9600.0
+
+    fields = [
+        "date",
+        "slot",
+        "load_forecast_mw",
+        "load_actual_mw",
+        "da_price",
+        "rt_price",
+    ]
+    report = desk.validate_public_dataset(rows, fields)
+    print(
+        f"public-data check ok={report['ok']} rows={report['row_count']} "
+        f"days={report['date_count']} slots={len(rows) // max(1, report['date_count'])}"
+    )
+    assert report["ok"] and report["row_count"] == 5760 and report["date_count"] == 60
+    duplicated = list(rows)
+    duplicated.insert(10, dict(rows[10]))
+    assert not desk.validate_public_dataset(duplicated, fields)["ok"], "duplicate point must fail the gate"
+    holed = list(rows)
+    del holed[500]
+    assert not desk.validate_public_dataset(holed, fields)["ok"], "missing slot must fail the gate"
+    no_date = list(rows)
+    no_date[100] = {key: value for key, value in rows[100].items() if key != "date"}
+    missing_report = desk.validate_public_dataset(no_date, fields)
+    assert not missing_report["ok"] and "date" in missing_report["missing_fields"]
 
     section("summary")
     print("all checks passed")

@@ -1,16 +1,16 @@
 ---
 name: spot-bidding-quant
-description: Spot-bidding quant expert — bid-curve construction for day-ahead and real-time markets, load and price forecasting, residual bias correction, declared-quantity decisions for renewables and storage, retailer purchase portfolios, bidding simulation and market-structure screening, rolling backtests and T+1 PnL attribution. Use when answering how to bid tomorrow, how much to declare, what a forecast error is worth, or whether a backtest can be trusted. Methods and code run from tools/ in this repository; data are synthetic.
+description: Spot-bidding quant expert — bid-curve construction for day-ahead and real-time markets, load and price forecasting, residual bias correction, declared-quantity decisions for renewables and storage, retailer purchase portfolios, bidding simulation and market-structure screening, rolling backtests and T+1 PnL attribution, plus a desk layer (decision clock, scenario curves and CVaR frontier, settlement variance bridge, one-province one-period public-data backtest). Use when answering how to bid tomorrow, how much to declare, what a forecast error is worth, whether a backtest can be trusted, or how to trace a settlement shortfall. Methods and code run from tools/ in this repository; data are synthetic.
 ---
 
 # Spot-Bidding Quant Expert SKILL
 
 > 🌐 Chinese version: [SKILL.md](SKILL.md) ｜ Sister skills: [Electricity Trading Expert](../electricity-trading-expert/SKILL_EN.md) (market rules / settlement / carbon), [Virtual Power Plant Expert](../virtual-power-plant/SKILL_EN.md) (aggregation / operations). This skill answers only "how to compute, how to bid, how to validate".
 
-> Version v1.9 · data cutoff 2026-11-01
+> Version v1.9 · data cutoff 2026-11-12
 
 > **Maintenance entry points**: `tools/selftest.py` (green means the figures quoted below still hold), `knowledge/调研-量化报价与厂商实践-2026-11.md` (vendor and patent material), `knowledge/省级市场状态表-2026-11.md` (confirm the province first), `knowledge/量化报价与交易风控-工程化-2026-11.md` (engineering loop, rule-version registry, risk limits, settlement reconciliation and attribution).
-> **Open items 2026-2027**: the Spot Market Basic Rules (draft, comments close 2026-11-18, proposed effect 2027-01-01), annual adjustments to bid-segment counts and price caps, secondary price-cap pilots, and the scope of quantity-only bidding for renewables.
+> **Open items 2026-2027**: the Spot Market Basic Rules (draft, comments close 2026-11-18, proposed effect 2027-01-01), annual adjustments to bid-segment counts and price caps, secondary price-cap pilots, the scope of quantity-only bidding for renewables, and the timing and revision of public data releases.
 
 ---
 
@@ -43,6 +43,10 @@ You are a spot-bidding quantitative analyst serving generators (thermal / renewa
 | Can a simulation predict the clearing price | Ch. 10 |
 | Is the backtest credible, how to review | Ch. 11 |
 | How to validate a submission file, avoid errors | Ch. 12 |
+| How to structure one trading day, when to amend | Ch. 13.1 |
+| How to choose a bid curve under uncertainty | Ch. 13.2 |
+| How to trace a settlement shortfall | Ch. 13.3 |
+| How to run a one-province one-period public-data backtest | Ch. 13.4 |
 
 ---
 
@@ -132,7 +136,7 @@ Systematic bias usually has two dimensions: slot (some slots always run high) an
 residual(weekday, slot) = (n·cell_mean + λ·slot_mean) / (n + λ)
 forecast' = forecast + residual(weekday, slot)
 ```
-`λ` (shrinkage, default 3 in the code) prevents thin cells from overfitting. The structure matches the published patent's "time component + exogenous component" bias correction (Ch. 15).
+`λ` (shrinkage, default 3 in the code) prevents thin cells from overfitting. The structure matches the published patent's "time component + exogenous component" bias correction (Ch. 16).
 
 ### 3.4 Metric definitions
 - **MAE / RMSE**: primary, in MW;
@@ -383,7 +387,9 @@ The four should approximately sum to the total gap; a large residual means a mis
 
 > Chapter data cutoff: 2026-11-01. Deadlines and file formats follow the latest provincial trading-centre requirements.
 
-### 12.1 D-1 timeline (template)
+### 12.1 D-1 submission timetable (format and operations)
+
+> The decision cadence, data cutoffs and failure modes are in 13.1; this table covers submission operations only.
 
 | Time | Action | Output |
 |---|---|---|
@@ -423,7 +429,203 @@ Buying does not solve the last mile: **submission validation, amendment control 
 
 ---
 
-## 13. Formula-to-Code Map
+## 13. Desk Layer: From Model to Trading Desk
+
+> Method chapter; it introduces no new policy figures. All examples are synthetic (grade D), not live-market results, and not trading advice.
+
+Chapters 1-12 answer "how to compute"; this chapter answers "how the desk uses it". A curve is not a decision until it is frozen before the cutoff, compared across a scenario set, and reconciled against settlement lines at T+1. The desk layer is not a more complex model; it puts the model inside a clock, a risk appetite and a settlement definition.
+
+### 13.1 One trading day: five clocks
+
+The same "how do I bid tomorrow" question runs on five different clocks. Mixing them is the usual root cause of "the model was good, execution was a mess".
+
+| Clock | Answers | Typical time | Cost of missing it |
+|---|---|---|---|
+| Information clock | When is a number available | From D-1 morning | Using D+1 data as a D-1 feature |
+| Model clock | When does the forecast freeze | D-1 09:30 | Re-running until the version is untraceable |
+| Decision clock | When is the curve fixed | D-1 10:30 | Decision drifts into the submission deadline |
+| Submission clock | Latest submit / amend time | Provincial deadline | Last-minute failure with no fallback |
+| Settlement clock | When reconciliation starts | D+1 onwards | Differences found after the review window |
+
+| Time | Action | Data cutoff | Decision | Output | Common failure |
+|---|---|---|---|---|---|
+| D-1 08:30 | Data ready | D-1 08:00 | Is the data complete; use a fallback source? | Snapshot + quality flags | Running on yesterday's data, blaming the model |
+| D-1 09:30 | Forecast freeze | D-1 09:00 | Manual override, and on what evidence? | 96-slot P10/P50/P90 + scenarios | Re-running until the version is untraceable |
+| D-1 10:30 | Curve generation | D-1 10:00 | Risk appetite and contract coverage; which point on the frontier | Candidate curves + expected profit/CVaR | One "optimal" curve, no alternatives, no risk note |
+| D-1 11:00 | Rule validation | D-1 10:30 | Pass or block; manual override? | Validation result + override log | Bypassing validation, then losing at settlement |
+| D-1 90 min before deadline | Submission | D-1 90 min before deadline | Submit or amend; what triggers an amendment | Receipt + version snapshot | Last-minute submission, no time to recover |
+| After D-1 clearing | Result check | Clearing notice | Intraday adjustment, and in which slots | Awarded curve + deviation alert | Watching price, ignoring awarded volume and must-run/compensation |
+| D intraday | Execution | Real time | Re-offer? Adjust output or SOC? | Execution log + instruction receipts | Using the day-ahead curve against real-time change |
+| D+1 09:00 | Settlement first pass | D+1 settlement data | Do the lines reconcile; is the gap above threshold | Variance bridge + dispute packet | Checking the total, not the lines |
+| D+1 review | Post-trade review | After first pass | Attribute to forecast/bid/execution/rules; what changes tomorrow | Attribution table + amendment log | Explaining a controllable gap as "the market" |
+
+Three disciplines:
+
+1. **Data arriving after a cutoff goes to the next round, never back into this one.** Backfilling makes a backtest look better and the live decision worse; public-data backtests are especially prone to this (13.4).
+2. **Every manual override records before/after, reason and trigger.** Without it, the review deletes the most important judgement from the sample.
+3. **Receipt, clearing result and settlement statement must align on the same ID.** If they do not, it is a dispute, not an approximation; this alignment starts 13.3.
+
+Section 12.1 is the submission template (files, format, fields); this section is the decision cadence (who decides what, when, on which data). They do not duplicate each other.
+
+### 13.2 Bid curves under uncertainty: price taker first, pivotal second
+
+A point forecast gives one curve; the desk needs a scenario set. Scenarios can come from residual quantiles, similar days, ensemble forecasts or a historical bootstrap. Each scenario needs at least a price and a weight; the report states the construction method and the random seed (if bootstrapped).
+
+For a curve and scenario price `π_s`, compute dispatched MW first, then profit:
+
+```
+Q(π) = max{ Q_i : p_i ≤ π }                  # segment fill under pay-as-clear
+R    = Qc·Pc + (Q − Qc)·π                    # contract + spot
+Π    = R − C(Q) − F                          # C(Q) from segment costs, F fixed cost
+E[Π] = Σ_s w_s·Π_s
+CVaR_α = weighted average over the worst α probability mass
+```
+
+Example (**synthetic, grade D**): a 350 MW unit with segment costs 200/260/340 CNY/MWh and capacities 120/120/110 MW, fixed cost CNY 20,000/day; scenario prices 180/240/270/300/420/650 CNY/MWh with weights 0.10/0.15/0.10/0.30/0.20/0.15; contract price CNY 320/MWh. Compare three contract coverages:
+
+| Contract coverage | Expected profit (CNY/day) | CVaR₁₀% (CNY/day) | Worst scenario (CNY/day) | Profit std (CNY/day) | Mean dispatched (MW) |
+|---|---|---|---|---|---|
+| 0 MW | 17,835 | −20,000 | −20,000 | 44,581 | 236.5 |
+| 100 MW | 14,585 | −7,200 | −7,200 | 30,450 | 236.5 |
+| 200 MW | 11,335 | −400 | −400 | 16,685 | 236.5 |
+
+Reading: the spot-only position has the highest expectation but a worst-10% outcome of −CNY 20,000; 200 MW of contract lifts the worst 10% to −CNY 400 at a cost of CNY 6,500 of expected profit. **This is not a recommendation to sign 200 MW** — the choice depends on risk appetite, contract availability, financing covenants and assessment constraints. All three sit on the frontier because none dominates on both expectation and CVaR.
+
+Put the markup comparison on the same page, so markup is not mistaken for free revenue:
+
+| Curve | Expected profit (CNY/day) | CVaR₁₀% (CNY/day) | Mean dispatched (MW) |
+|---|---|---|---|
+| At cost (200/260/340) | 14,585 | −7,200 | 236.5 |
+| Whole curve +5% | 14,465 | −7,200 | 224.5 |
+| Whole curve +10% | 14,465 | −7,200 | 224.5 |
+
+For a price taker, a markup only reduces dispatch; it does not raise the clearing price. Here the cost curve has higher expectation and identical CVaR, so it dominates. This is the theorem in 6.1 seen from the desk. **Only when you can show pivotality in some scenarios should residual-demand scenarios enter the frontier**; a markup may then move both expectation and the tail, but the compliance boundary is separate (6.2, 6.3), and pivotal markup cannot be packaged as a general strategy.
+
+Four reporting elements: α (e.g. 10%), scenario construction, contract and fixed-cost assumptions, scenario count. Without them, CVaR is just a nice-looking number.
+
+Code: `desk.curve_metrics` (one curve), `desk.risk_frontier` (non-dominated set).
+
+### 13.3 Settlement disputes and implicit losses
+
+The desk keeps three ledgers, and they must not be mixed:
+
+| Ledger | Answers | Source | Common error |
+|---|---|---|---|
+| Booked PnL | What the settlement statement says | Statement, metering | Checking the total, not the lines |
+| Decision PnL | What was reasonable with the information then | Submission, forecast, contract, rule version | Back-solving with ex-post prices to claim "we could have earned" |
+| Variance bridge | Which line differs, and who owns it | Three-way alignment | Dumping the gap into "other" |
+
+Revenue is "contract + day-ahead + real-time deviation":
+
+```
+R = Qc·Pc + (Qda − Qc)·Pda + (Qa − Qda)·Prt
+```
+
+From plan to actual, the difference splits exactly into four price/quantity terms, plus cost, assessment and allocation:
+
+```
+ΔR = ΔQda·Pda + (Qda0 − Qc)·ΔPda + (ΔQa − ΔQda)·Prt + (Qa0 − Qda0)·ΔPrt
+```
+
+| Line | Category | Owner | First question |
+|---|---|---|---|
+| Day-ahead declared quantity | Quantity | Trading | Why does the declaration differ from plan: forecast, outage or strategy? |
+| Day-ahead price | Price | Market | Is the gap caused by a rule version, cap or clearing convention? |
+| Real-time execution | Quantity | Dispatch / operations | Ramp, outage, curtailment or instruction tracking? |
+| Real-time price | Price | Market | Can the real-time versus planned price gap be explained by known events? |
+| Variable cost | Cost | Finance / production | Is the cost basis consistent with the settled energy basis? |
+| Assessment | Assessment | Trading | Does the item apply; is there an exemption or appeal? |
+| Allocation | Allocation | Finance / trading | Is the item double-counted or misallocated? |
+
+Example (**synthetic, grade D**): contract 100 MW at CNY 320/MWh, cost CNY 220/MWh. Plan: day-ahead 300 MW, actual output 310 MW, day-ahead price 300, real-time price 420. Actual: day-ahead 290 MW, output 320 MW, day-ahead price 320, real-time price 480. Assessment CNY 2,000, allocation CNY 500. Planned profit CNY 28,000; actual profit CNY 34,300; difference +CNY 6,300, split as:
+
+| Line | Amount (CNY) |
+|---|---|
+| Day-ahead declared quantity | −3,200 |
+| Day-ahead price | +4,000 |
+| Real-time execution | +9,600 |
+| Real-time price | +600 |
+| Variable cost | −2,200 |
+| Assessment | −2,000 |
+| Allocation | −500 |
+| **Total** | **+6,300** |
+
+The seven lines sum to the total; the residual is zero (asserted as `identity_gap` in code). If the residual is not zero, check the formula convention and contract decomposition before suspecting arithmetic.
+
+**Implicit losses** are the other ledger, the one the statement does not show:
+
+| Type | Definition | Identification | On the statement? |
+|---|---|---|---|
+| Opportunity loss | Available capacity not dispatched at a positive margin | (Available − awarded) × max(0, Pda − cost) | No |
+| Deviation cost | Penalty for forecast/execution error | Assessment detail, deviation energy | Yes |
+| Contract exposure | Cost of covering a contract position larger than actual output | (Qc − Qa) × (Pda − Pc), positive = loss | Partly |
+| Basis loss | Time granularity, metering point, CT/PT, losses, rule version | Three-way alignment, CT/PT, rule version | May be hidden |
+
+In the example above, available capacity 350 MW, day-ahead award 290 MW, actual output 320 MW, day-ahead price 320 CNY/MWh, cost 220 CNY/MWh: opportunity loss = 60 × 100 = CNY 6,000; plus CNY 2,000 assessment, the decision-basis implicit cost is CNY 8,000 (contract exposure is zero because actual output exceeds the contract quantity). Booked profit of CNY 34,300 does not mean the decision was costless.
+
+Five dispute steps:
+
+1. **Lock the line**: start from a specific settlement line, not the total;
+2. **Align three documents**: submission receipt, clearing result and statement on the same trade ID / interval;
+3. **Recompute**: use the formula of the rule version in force, not "the latest rule" projected backwards;
+4. **Bucket**: split the amount into price, quantity, cost, assessment and allocation;
+5. **Escalate**: above materiality, follow the provincial review window and file with the exchange / dispatch / metering, with an evidence pack.
+
+The evidence pack includes: submission receipt and amendments, clearing result, metering data and CT/PT ratios, contract decomposition curve, rule version and effective date, calculation workbook. **Check the convention before checking the arithmetic**: the usual sources are 96 versus 288 points, gateway meter versus grid-connection point, primary versus secondary values, whether losses are included, the contract decomposition version, and duplicated allocation items.
+
+Code: `desk.settlement_bridge` (variance bridge), `desk.implicit_cost` (implicit cost), `desk.dispute_packet` (materiality-filtered dispute list). The tools are a desk check, not a replacement for the exchange's settlement; official statements and provincial rules prevail.
+
+### 13.4 One-province one-period public-data backtest: reproducible, not pretending to be live
+
+Public data can support a backtest, but first state what it can answer. Cross-province splicing, cross-rule-version splicing and treating revised data as available at the time are the three most common false conclusions.
+
+| Level | Answers | Required data | Can public data support it? |
+|---|---|---|---|
+| L1 Mechanism | Given historical prices, is a curve/rule feasible | Prices, rule version | Yes |
+| L2 Decision | With information available then, does the model beat the baseline | Prices, load/renewable forecasts (by release time) | Partly |
+| L3 PnL | Profit after cost, contract and assessment | Cost, contract, settlement rules | Usually no; needs private data |
+
+Minimum data contract for one province and one period:
+
+| Field | Unit / granularity | Source | Availability |
+|---|---|---|---|
+| date, slot | day × 96 points | Exchange disclosure | Most provinces |
+| da_price, rt_price | CNY/MWh, 96 points | Exchange / platform | Most provinces; some member-only |
+| load_forecast, load_actual | MW, 96 points | Dispatch / exchange | Varies |
+| wind/solar forecast, actual | MW, 96 points | Exchange / dispatch | Some provinces |
+| unit availability | MW, daily | Own log + outage notices | Mostly internal |
+| contract decomposition | MW, 96 points | Own contracts | Private |
+| rule_version | version + effective date | Exchange rules | Must be frozen |
+
+**Leakage is the first gate**. A historical file containing D-day real-time prices does not mean they were visible at the D-1 submission; revised load does not mean it was available then. Build a "release time" column for every field: anything unavailable before the D-1 cutoff cannot enter D-day features, only the review or the next training round.
+
+Eight deliverables (without them, the result is not reproducible):
+
+1. Data dictionary, source URLs, retrieval date;
+2. Coverage, missing list, exclusion reasons;
+3. Rule version and effective date;
+4. Feature-availability table (leakage control);
+5. Baseline (seasonal naive / similar day) and layer-by-layer gain;
+6. Rolling window, out-of-sample period, parameter drift;
+7. Daily metrics and worst five days, not just the mean;
+8. Code version and data hash.
+
+Design rules for one province and one period: choose a province with a formal spot market; include at least one negative-price day and one spike day; do not cross a rule version, split or exclude if you must; write the hypothesis before running and do not switch periods because the result is poor. The conclusion can only read "in this province, this period, under this rule version, method X versus baseline Y has metric Z", never "the method works in China".
+
+Code: `desk.validate_public_dataset` checks fields, duplicate points, 96-slot gaps and ordering. The sample CSV is synthetic but has the same column shape as public data; replacing it with your own or public data needs no code change. **Do not treat results from the synthetic sample as a live benchmark.**
+
+### 13.5 Boundaries of the desk layer
+
+- No live market feed, no order routing, no position keeping; the tools support decisions and review only.
+- It does not replace exchange settlement, the company risk committee or legal advice; official conventions prevail.
+- It does not provide methods for evading regulation; market power is limited to identification and compliance boundaries (6.3).
+- The desk layer does not guarantee profit. It guarantees that you know why you made or lost money, and what to change next time.
+
+For engineering delivery (rule-version registry, data contracts, limits, reconciliation and attribution systems), see [quantitative bidding and trading risk (engineering)](../../knowledge/量化报价与交易风控-工程化-2026-11.md); this chapter provides only the desk cadence and the minimum toolset.
+
+---
+
+## 14. Formula-to-Code Map
 
 | Content | Formula / method | Code |
 |---|---|---|
@@ -443,6 +645,14 @@ Buying does not solve the last mile: **submission validation, amendment control 
 | Merit-order clearing | sort offers, walk demand | `simulate.clear` |
 | Bid sweep | fixed rivals, sweep own bid | `simulate.bid_sweep` |
 | Concentration | HHI = Σs_i² × 10000 | `simulate.hhi` |
+| Desk clock | D-1 data -> decision -> submission -> T+1 | `desk.trading_day_timeline` |
+| Curve dispatch | sum of segments with bid <= π | `desk.curve_dispatch` |
+| Scenario PnL | Q_c·P_c + (Q − Q_c)·π − C(Q) − F | `desk.curve_metrics` |
+| Risk frontier | non-dominated (expected profit, CVaR) | `desk.risk_frontier` |
+| Settlement bridge | ΔQ_da·P_da + (Q_da0 − Q_c)·ΔP_da + (ΔQ_a − ΔQ_da)·P_rt + (Q_a0 − Q_da0)·ΔP_rt | `desk.settlement_bridge` |
+| Implicit loss | (available − awarded)·max(0, P_da − c) + deviation + (Q_c − Q_a)(P_da − P_c) | `desk.implicit_cost` |
+| Dispute packet | buckets above threshold + evidence list | `desk.dispute_packet` |
+| Public-data check | fields, duplicates, 96-slot gaps, ordering | `desk.validate_public_dataset` |
 | Rolling backtest | only data before t | `backtest.rolling_predict` |
 | Out-of-sample correction | fit on past out-of-sample errors | `backtest.rolling_corrected` |
 
@@ -450,7 +660,7 @@ Run: `python tools/selftest.py` (no third-party dependencies, Python 3.11+).
 
 ---
 
-## 14. Glossary (Chinese-English)
+## 15. Glossary (Chinese-English)
 
 | Chinese | English | Note |
 |---|---|---|
@@ -472,17 +682,23 @@ Run: `python tools/selftest.py` (no third-party dependencies, Python 3.11+).
 | 事后复盘 | post-trade review | T+1 review |
 | 循环成本 | cycle cost | Degradation and loss cost per storage cycle |
 | 往返效率 | round-trip efficiency | Overall charge-discharge efficiency |
+| 盘面层 | desk layer | The decision and review layer between a model and the trading desk |
+| 数据截止 | data cutoff | Latest time a field may enter the current decision round |
+| 风险前沿 | risk frontier | Non-dominated set of expected profit versus CVaR |
+| 结算差异桥 | settlement variance bridge | Exact price/quantity decomposition from plan to actual |
+| 隐性亏损 | implicit loss | Losses not on the settlement statement (opportunity, deviation, exposure, basis) |
+| 公开数据回测 | public-data backtest | Backtest built only from publicly released fields, with release timing |
 
 ---
 
-## 15. Sources and Maintenance
+## 16. Sources and Maintenance
 
-### 15.1 Method sources
+### 16.1 Method sources
 - Market mechanics, settlement and price theory: *101 Questions on China's Power Spot Market*, *Power Spot Market Practice*, *Fundamentals of Power System Economics* — editions listed in Electricity Trading Expert Ch. 15;
 - Bidding theory: marginal-cost bidding by a price taker, pivotal pricing and residual-demand elasticity are standard results in microeconomics and market design;
 - Baseline cleaning for demand response (±25% filter): same origin as the CBL definition in Virtual Power Plant Expert Ch. 8.
 
-### 15.2 Public material and vendor practice (compiled 2026-11)
+### 16.2 Public material and vendor practice (compiled 2026-11)
 Public information has two sides and is incomplete with only one: **participant-side** material answers "what can I buy", **operations-side** material answers "in what form do the rules land".
 
 **Participant side**
@@ -495,10 +711,12 @@ Public information has two sides and is incomplete with only one: **participant-
 - Published patents (CNIPA, grade B): CN121278688A "Method and system for correcting forecast bias in power-system time series" (weekday/slot components plus exogenous components), CN122760154A "Day-ahead price forecasting method, device and storage medium" (encoder-decoder with physical constraints);
 - Full vendor research note: `knowledge/调研-量化报价与厂商实践-2026-11.md`.
 
-### 15.3 Data note
+### 16.3 Data note
 `data/sample/synthetic_spot_60d.csv` is **synthetic** (60 days × 96 slots: day-ahead and real-time prices, load forecast and actual, wind and solar forecast and actual), generated by `tools/gen_sample.py` with a fixed seed. It validates methods and code and represents no real market. To use your own data, keep the column names.
 
-### 15.4 Division of labour with the sister skills
+The desk-layer examples in 13.2 and 13.3 are also **synthetic**: the scenario set, contract candidates and settlement ledger are computed by `tools/desk.py`, asserted in `selftest.py`, and are not live results or trading advice. `desk.validate_public_dataset` validates the schema only; the sample passing the check says nothing about market behaviour.
+
+### 16.4 Division of labour with the sister skills
 - Market rules, settlement formulas, price caps and policy history → Electricity Trading Expert;
 - Aggregation, VPP business models, control technology → Virtual Power Plant Expert;
 - This skill covers: **forecasting, bid calculation, submission decisions, backtesting and attribution**. Overlaps carry pointers only; figures defer to the skill that owns the topic.
@@ -506,9 +724,10 @@ Public information has two sides and is incomplete with only one: **participant-
 - Weather upstream (NWP/reanalysis sources, four conversion chains, forecasting-assessment rules, weather risk) → knowledge base [weather and power trading](../../knowledge/气象与电力交易-2026-11.md); this skill keeps the forecasting algorithms and metrics, that module covers how weather becomes energy and risk, with `tools/weather.py` locked to this skill's `selftest.py`.
 - Grid constraints (two-node price separation, location basis, dynamic ATC) → knowledge base [inter-provincial and cross-region trading](../../knowledge/省间与跨区交易-2026-11.md) §5.5-5.6; `tools/network.py` adds only the clearing state and transfer capability, while congestion surplus, FTR and LMP decomposition stay in `electricity-trading-expert/tools/market.py`. Assertions join this skill's `selftest.py`.
 
-### 15.5 Maintenance cadence and open items
+### 16.5 Maintenance cadence and open items
 - Quarterly: verify bid-segment counts, price caps (including secondary caps) and submission deadlines per province;
+- Quarterly: re-check which public-data fields are disclosed, when they are released and whether history is revised; a changed release time changes backtest conclusions;
 - Each revision: run `python tools/selftest.py`; a failed assertion means the figures in the text no longer hold;
-- Watch list: the 2026 spot rules (proposed 2027-01-01), scope of quantity-only bidding for renewables, rollout of secondary caps, and the storage capacity-payment definition.
+- Watch list: the 2026 spot rules (proposed 2027-01-01), scope of quantity-only bidding for renewables, rollout of secondary caps, the storage capacity-payment definition, and public-data disclosure timing and revision policy.
 
 - **Price-driver routing**: quantity ([weather and power trading](../../knowledge/气象与电力交易-2026-11.md)), price ([fuel and power trading](../../knowledge/燃料与电力交易-2026-11.md)), deliverability ([inter-provincial trading](../../knowledge/省间与跨区交易-2026-11.md) §5.5-5.6). For "why is this interval expensive", check quantity -> price -> constraint -> superposition; see the [golden Q&A](../../knowledge/黄金问答集-2026-11.md) section F (Q29-Q38) for regression questions.
