@@ -54,6 +54,7 @@
               <li class="on" aria-current="page"><a href="储能收益建模与数据源-2026-11.html">储能收益建模与数据源（2026 版）：从 5 分钟价格到 15 年现金流</a></li>
               <li><a href="跨国PPA与绿证-2026-11.html">跨国 PPA、绿证与 tolling（2026 版）：从 GO 到 merchant tail</a></li>
               <li><a href="海外市场同口径快照与投决日历-2026-11.html">海外市场同口径快照与投决日历（2026 版）：十一市场、七列口径、五张工单</a></li>
+              <li><a href="气象与电力交易-2026-11.html">气象与电力交易（2026 版）：数据源、四条转换链与天气风险</a></li>
     </ul>
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
@@ -81,7 +82,7 @@
       <p class="lede">把 ENTSO-E、EPEX、RTE、CRE、NESO、Elexon BMRS、GME、OMIE、REE、PSE、Nord Pool、CAISO、ERCOT、PJM、JEPX 的取数入口放进一张表，再按十一市场列国别入口与缺口，并讲粒度对齐、RTE/退化、捕获率、降额、收入叠加冲突与回测方法。</p>
       <p class="hook">2026-11 · 取数 / 粒度 / 效率 / 退化 / 回测</p>
       <div class="tags"><span class="tag">储能收益</span><span class="tag">数据源</span><span class="tag">RTE</span><span class="tag">退化</span><span class="tag">捕获率</span><span class="tag">回测</span><span class="tag">国别入口</span></div>
-      <div class="doc-meta"><span>约 13.0k 字</span><span>阅读约 21 分钟</span><span>15 节</span><span>数据截止 2026-11-11</span></div>
+      <div class="doc-meta"><span>约 13.1k 字</span><span>阅读约 21 分钟</span><span>15 节</span><span>数据截止 2026-11-11</span></div>
     </header>
 
     <details class="toc-mobile">
@@ -241,7 +242,7 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>问题</th><th>先看</th><th>关键结论</th><th>依据</th></tr></thead><tbody><tr><td>欧洲去哪里取数</td><td>§1.1</td><td>ENTSO-E Transparency + 各国 TSO/交易所</td><td>ENTSO-E</td></tr><tr><td>十一市场分别去哪查</td><td>§1.5</td><td>按国家列价格、平衡、容量、证书入口</td><td>本文</td></tr><tr><td>澳洲去哪里取数</td><td>§1.2</td><td>AEMO NEMWEB/MMS</td><td>AEMO</td></tr><tr><td>英国平衡数据</td><td>§1.1</td><td>Elexon BMRS</td><td>Elexon</td></tr><tr><td>意大利 MSD 数据</td><td>§1.1</td><td>GME</td><td>GME</td></tr><tr><td>西班牙价格</td><td>§1.1</td><td>OMIE</td><td>OMIE</td></tr><tr><td>法国价格/容量数据</td><td>§1.1</td><td>RTE + CRE；15 分钟 MTU</td><td>RTE/CRE</td></tr><tr><td>波兰数据</td><td>§1.1</td><td>PSE</td><td>PSE</td></tr><tr><td>北欧价格</td><td>§1.1</td><td>Nord Pool</td><td>Nord Pool</td></tr><tr><td>15 分钟还是 5 分钟</td><td>§2.1</td><td>按市场；欧洲 15、澳洲/CAISO 5</td><td>本文</td></tr><tr><td>RTE 怎么进模型</td><td>§4.1</td><td>放电量 = 充电量 × RTE</td><td>本文</td></tr><tr><td>退化怎么算</td><td>§4.2</td><td>循环 + 日历 + 高频</td><td>本文</td></tr><tr><td>捕获率怎么算</td><td>§5</td><td>捕获价/均价；储能看价差捕获</td><td>本文</td></tr><tr><td>收入叠加冲突</td><td>§6</td><td>同一 MW/SOC 只能卖一次；合同回补</td><td>本文</td></tr><tr><td>回测为什么高估</td><td>§7</td><td>前视、粒度、过拟合、忽略退化</td><td>本文</td></tr></tbody></table></div>
 <hr>
 <h2 id="s43">与技能和其他笔记的分工</h2>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>主题</th><th>本文</th><th>储能投资技能</th><th>其他笔记</th></tr></thead><tbody><tr><td>数据源/粒度</td><td>主责</td><td>概述</td><td>各市场模块（单市场数据入口）</td></tr><tr><td>收益建模方法</td><td>主责（公式/回测）</td><td>主责（投决/LCOS）</td><td>容量/辅助服务横向对照</td></tr><tr><td>RTE/退化</td><td>主责（建模口径）</td><td>主责（参数/质保）</td><td>储能技术模块</td></tr><tr><td>收入叠加</td><td>主责（冲突/回补）</td><td>概述</td><td>容量/辅助服务模块</td></tr><tr><td>调度优化</td><td>概述</td><td>概述</td><td>储能 EMS 调度模块</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>主题</th><th>本文</th><th>储能投资技能</th><th>其他笔记</th></tr></thead><tbody><tr><td>数据源/粒度</td><td>主责</td><td>概述</td><td>各市场模块（单市场数据入口）</td></tr><tr><td>收益建模方法</td><td>主责（公式/回测）</td><td>主责（投决/LCOS）</td><td>容量/辅助服务横向对照</td></tr><tr><td>RTE/退化</td><td>主责（建模口径）</td><td>主责（参数/质保）</td><td>储能技术模块</td></tr><tr><td>收入叠加</td><td>主责（冲突/回补）</td><td>概述</td><td>容量/辅助服务模块</td></tr><tr><td>调度优化</td><td>概述</td><td>概述</td><td>储能 EMS 调度模块</td></tr><tr><td>气象取数与站点代表性</td><td>不主责</td><td>不主责</td><td><a href="气象与电力交易-2026-11.html">气象与电力交易</a></td></tr></tbody></table></div>
 <ul><li><strong>本文是“建模与取数手册”</strong>：遇到“去哪里取数、怎么对齐粒度、怎么算 RTE/退化/捕获率”，先看这里。</li><li><strong>遇到投决/LCOS/融资</strong>：查储能投资技能；本文只提供建模口径。</li><li><strong>遇到单市场规则</strong>：回到对应国别模块。</li><li><strong>遇到 SOC/调度算法</strong>：查储能 EMS 优化调度模块；本文不重复 MILP 细节。</li></ul>
 <hr>
 <h2 id="s44">更新记录</h2>

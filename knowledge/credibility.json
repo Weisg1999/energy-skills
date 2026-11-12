@@ -2,21 +2,21 @@
   "schema": 1,
   "description": "Machine-readable credibility register. Filter modules by confidence/examples/historical before injecting into a model; gradeC and openItems carry the unverified figures and undecided items.",
   "summary": {
-    "modules": 99,
+    "modules": 100,
     "gradeCItems": 22,
     "openItems": 44,
     "events": 32,
     "draftPolicies": 3,
-    "mixedModules": 80,
+    "mixedModules": 81,
     "historicalModules": 15,
     "unverifiedGradeC": 14,
     "verifiedTickets": 6,
     "bannedTickets": 2,
     "ticketsDueForReview": 14,
     "openGaps": 8,
-    "englishSummaries": 99,
+    "englishSummaries": 100,
     "keyFigures": 234,
-    "glossaryTerms": 75,
+    "glossaryTerms": 78,
     "controlledAbbreviations": 50,
     "openItemDues": 23
   },
@@ -2514,6 +2514,24 @@
         "definition": "技术捕获价 ÷ 基荷均价（%），**不是**光伏均价、不是捕获价（€/MWh）",
         "confusion": "捕获价、PPA 价",
         "columns": 6
+      },
+      {
+        "term": "NWP",
+        "definition": "模式输出的气象场，**不是实测**；再分析（ERA5）与集合预报（EPS）另属两类数据源",
+        "confusion": "实测、再分析、ERA5T",
+        "columns": 6
+      },
+      {
+        "term": "HDD",
+        "definition": "日均温相对基准的累计偏差；CME 美国合约基准 65°F＝18℃、欧洲 HDD 用 18℃，**基准是合约项不是物理常数**",
+        "confusion": "度时、CAT、累计平均气温",
+        "columns": 6
+      },
+      {
+        "term": "CDD",
+        "definition": "日均温相对基准的累计偏差；CME 美国合约基准 65°F＝18℃、欧洲 HDD 用 18℃，**基准是合约项不是物理常数**",
+        "confusion": "度时、CAT、累计平均气温",
+        "columns": 6
       }
     ],
     "controlled": [
@@ -3545,7 +3563,7 @@
       "confidenceInferred": false,
       "examples": "none",
       "historical": false,
-      "summaryEn": "A caliber dictionary for the abbreviations used across eleven overseas markets, six cross-cutting topics and the carbon market: definitions, caliber boundaries, common confusions and the modules that own each term.",
+      "summaryEn": "A caliber dictionary for the abbreviations used across eleven overseas markets, seven cross-cutting topics and the carbon market: definitions, caliber boundaries, common confusions and the modules that own each term.",
       "titleEn": null,
       "marks": {
         "gradeC": 3,
@@ -3576,6 +3594,29 @@
       },
       "exampleSections": [
         "## 12. 算例（D 级：方法演示，不是投资建议）"
+      ]
+    },
+    {
+      "id": "m-cross-weather",
+      "file": "气象与电力交易-2026-11.md",
+      "title": "气象与电力交易（2026 版）：数据源、四条转换链与天气风险",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-12",
+      "confidence": "mixed",
+      "confidenceInferred": false,
+      "examples": "synthetic",
+      "historical": false,
+      "summaryEn": "Weather does not set prices directly: it enters clearing through four mediators — load, wind/solar output, hydro inflow and equipment availability. In summer 2026 each 1 C rise in national mean temperature lifted Chinese demand by 40-50 GW, with cooling load near 30% nationally and above 40% in some provinces; power forecasting is a regulated reporting duty with accuracy thresholds; CME degree-day futures settle in cash at 20 index points and USD 20 per point, while European and Tokyo contracts use different tick values.",
+      "titleEn": null,
+      "marks": {
+        "gradeC": 8,
+        "draft": 6,
+        "pending": 7,
+        "example": 9
+      },
+      "exampleSections": [
+        "## 7. D 级合成算例（五组，仅演示方法）"
       ]
     },
     {

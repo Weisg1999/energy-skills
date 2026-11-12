@@ -503,6 +503,7 @@ Public information has two sides and is incomplete with only one: **participant-
 - Aggregation, VPP business models, control technology → Virtual Power Plant Expert;
 - This skill covers: **forecasting, bid calculation, submission decisions, backtesting and attribution**. Overlaps carry pointers only; figures defer to the skill that owns the topic.
 - Engineering delivery (rule-version registry, data contracts, risk limits, settlement reconciliation and PnL attribution) → knowledge base [quantitative bidding and trading risk](../../knowledge/量化报价与交易风控-工程化-2026-11.md); this skill gives methods and examples, that module gives architecture and governance.
+- Weather upstream (NWP/reanalysis sources, four conversion chains, forecasting-assessment rules, weather risk) → knowledge base [weather and power trading](../../knowledge/气象与电力交易-2026-11.md); this skill keeps the forecasting algorithms and metrics, that module covers how weather becomes energy and risk, with `tools/weather.py` locked to this skill's `selftest.py`.
 
 ### 15.5 Maintenance cadence and open items
 - Quarterly: verify bid-segment counts, price caps (including secondary caps) and submission deadlines per province;

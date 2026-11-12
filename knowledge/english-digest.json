@@ -4,8 +4,8 @@
   "note": "A number needs a grade, a time point and a caliber. Filter gradeC by usable/banned before using any unverified figure. Full texts of policies are linked from the Chinese policy indexes.",
   "generatedFrom": "knowledge/*.md frontmatter (summary_en) + INDEX_EN structured tables + credibility register",
   "summary": {
-    "modules": 99,
-    "withEnglishSummary": 99,
+    "modules": 100,
+    "withEnglishSummary": 100,
     "keyFigures": 234,
     "openItems": 44,
     "datedOpenItems": 23,
@@ -437,7 +437,7 @@
       "cutoff": "2026-11-11",
       "title": "术语与口径字典",
       "titleEn": null,
-      "summaryEn": "A caliber dictionary for the abbreviations used across eleven overseas markets, six cross-cutting topics and the carbon market: definitions, caliber boundaries, common confusions and the modules that own each term.",
+      "summaryEn": "A caliber dictionary for the abbreviations used across eleven overseas markets, seven cross-cutting topics and the carbon market: definitions, caliber boundaries, common confusions and the modules that own each term.",
       "confidence": "mixed",
       "historical": false,
       "html": "html/术语与口径字典-2026-11.html"
@@ -454,6 +454,19 @@
       "confidence": "mixed",
       "historical": false,
       "html": "html/比利时与北欧电力市场-2026-11.html"
+    },
+    {
+      "id": "m-cross-weather",
+      "file": "气象与电力交易-2026-11.md",
+      "section": "cross",
+      "kind": "知识模块",
+      "cutoff": "2026-11-12",
+      "title": "气象与电力交易（2026 版）：数据源、四条转换链与天气风险",
+      "titleEn": null,
+      "summaryEn": "Weather does not set prices directly: it enters clearing through four mediators — load, wind/solar output, hydro inflow and equipment availability. In summer 2026 each 1 C rise in national mean temperature lifted Chinese demand by 40-50 GW, with cooling load near 30% nationally and above 40% in some provinces; power forecasting is a regulated reporting duty with accuracy thresholds; CME degree-day futures settle in cash at 20 index points and USD 20 per point, while European and Tokyo contracts use different tick values.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/气象与电力交易-2026-11.html"
     },
     {
       "id": "m-prov-js",

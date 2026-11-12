@@ -85,7 +85,7 @@
       <p class="lede">预测、报价、仿真与回测</p>
       <p class="hook">可执行流程与配套工具；正文与 SKILL.md 同步。</p>
       <div class="tags"><span class="tag">技能</span><span class="tag">预测</span><span class="tag">报价</span><span class="tag">回测</span></div>
-      <div class="doc-meta"><span>约 14.4k 字</span><span>阅读约 26 分钟</span><span>16 节</span><span>数据截止 2026-11-01</span></div>
+      <div class="doc-meta"><span>约 14.6k 字</span><span>阅读约 26 分钟</span><span>16 节</span><span>数据截止 2026-11-01</span></div>
       <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-spot-bidding-quant.txt" download="现货报价量化-SKILL.txt">下载 TXT</a><span>完整技能文档，约 16 KB，含 frontmatter</span></p>
     </header>
 
@@ -309,7 +309,7 @@ forecast' = forecast + residual(weekday, slot)</code></pre>
 <h3 id="s70">15.3 数据说明</h3>
 <p>本技能目录下的 <code>data/sample/synthetic_spot_60d.csv</code> 为<strong>合成数据</strong>（60 天 × 96 点，含日前/实时价、负荷预测与实际、风光预测与实际），由 <code>tools/gen_sample.py</code> 以固定随机种子生成。它用于验证方法与代码，不代表任何真实市场。替换为自有数据时，只需保持列名一致。</p>
 <h3 id="s71">15.4 与姊妹技能的分工</h3>
-<ul><li>市场规则、结算公式、限价与政策沿革 → 《电力交易专家》；</li><li>资源聚合、VPP 商业模式、控制技术 → 《虚拟电厂专家》；</li><li>本技能只负责：<strong>预测、报价计算、申报决策、回测与归因</strong>。重叠处只留指引，数字与口径以被引用方为准。</li><li>工程化落地（规则版本库、数据契约、风控限额、结算对账与 PnL 归因）→ 知识库 <a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控（工程化）</a>；本技能给方法与算例，该模块给系统架构与治理流程。</li></ul>
+<ul><li>市场规则、结算公式、限价与政策沿革 → 《电力交易专家》；</li><li>资源聚合、VPP 商业模式、控制技术 → 《虚拟电厂专家》；</li><li>本技能只负责：<strong>预测、报价计算、申报决策、回测与归因</strong>。重叠处只留指引，数字与口径以被引用方为准。</li><li>工程化落地（规则版本库、数据契约、风控限额、结算对账与 PnL 归因）→ 知识库 <a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控（工程化）</a>；本技能给方法与算例，该模块给系统架构与治理流程。</li><li>气象上游（NWP/再分析数据源、四条转换链、功率预测考核、天气风险）→ 知识库 <a href="气象与电力交易-2026-11.html">气象与电力交易</a>；本技能保留预测算法与评价指标，该模块讲气象如何变成电量与风险，配套 <code>tools/weather.py</code> 与本技能 <code>selftest.py</code> 双向锁定。</li></ul>
 <h3 id="s72">15.5 维护节奏与未定事项</h3>
 <ul><li>每季度核对：各省报价段数、限价（含二次限价）、申报时限；</li><li>每次改版跑一遍 <code>python tools/selftest.py</code>，断言失败说明正文指标已不成立；</li><li><strong>待观察</strong>：2026 现货新规定稿（拟 2027-01-01）、新能源报量不报价适用范围变化、二次限价机制推广、储能容量补偿口径。</li></ul>
     </article>

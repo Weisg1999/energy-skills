@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>气象与电力交易（2026 版）：数据源、四条转换链与天气风险 | energy-skills 知识库</title>
+<meta name="description" content="气象不直接定价，而是通过负荷、风光出力、来水与设备可用率四个中介进入出清；2026 年夏季全国平均气温每升 1℃ 带动负荷上涨 4,000–5,000 万 kW，空调降温负荷占比接近 30%、部分省份超 40%；功率预测已是有报送率与准确率考核的法定义务；CME 度日期货按 20 index points、US $20/点现金结算，欧洲与东京的 tick 不同。">
+<link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
+<script>
+(function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/knowledge.css">
+</head>
+<body data-cat="cross" id="top">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
+  <div class="crumb">
+    <span class="crumb-cat">05 · CROSS</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">气象与电力交易（2026 版）：数据源、四条转换链与天气风险</span>
+  </div>
+  <div class="topbar-act">
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换到深色模式" title="切换到深色模式">
+      <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+      <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../气象与电力交易-2026-11.md">.md 源文件<small>knowledge/气象与电力交易-2026-11.md</small></a>
+
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">05 · CROSS</div>
+    <h2 class="nav-cat"><a href="../index.html#cross">横向专题</a></h2>
+    <ul class="nav-list">
+              <li><a href="海外并网与合规-2026-11.html">海外并网与合规手册（2026 版）：从 grid code 到电池护照</a></li>
+              <li><a href="容量机制横向对照-2026-11.html">容量机制横向对照（2026 版）：年金、拍卖、双向 CfD 与战略储备</a></li>
+              <li><a href="辅助服务与平衡市场对照-2026-11.html">辅助服务与平衡市场对照（2026 版）：从 FCR 到 FCAS，从 BM 到 EPRX</a></li>
+              <li><a href="储能收益建模与数据源-2026-11.html">储能收益建模与数据源（2026 版）：从 5 分钟价格到 15 年现金流</a></li>
+              <li><a href="跨国PPA与绿证-2026-11.html">跨国 PPA、绿证与 tolling（2026 版）：从 GO 到 merchant tail</a></li>
+              <li><a href="海外市场同口径快照与投决日历-2026-11.html">海外市场同口径快照与投决日历（2026 版）：十一市场、七列口径、五张工单</a></li>
+              <li class="on" aria-current="page"><a href="气象与电力交易-2026-11.html">气象与电力交易（2026 版）：数据源、四条转换链与天气风险</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#province"><b>03</b>中国省级市场</a></li>
+              <li><a href="../index.html#intl"><b>04</b>海外市场</a></li>
+              <li><a href="../index.html#price"><b>06</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>07</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>08</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>11</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">05 · CROSS<i>知识模块</i></div>
+      <h1 class="doc-title">气象与电力交易：数据源、四条转换链与天气风险（2026-11）</h1>
+      <p class="lede">气象不直接定价，而是通过负荷、风光出力、来水与设备可用率四个中介进入出清；2026 年夏季全国平均气温每升 1℃ 带动负荷上涨 4,000–5,000 万 kW，空调降温负荷占比接近 30%、部分省份超 40%；功率预测已是有报送率与准确率考核的法定义务；CME 度日期货按 20 index points、US $20/点现金结算，欧洲与东京的 tick 不同。</p>
+      <p class="hook">2026-11 · 四条转换链 / 天气风险 / 取数口径</p>
+      <div class="tags"><span class="tag">气象</span><span class="tag">数值天气预报</span><span class="tag">负荷预测</span><span class="tag">功率预测考核</span><span class="tag">度日</span><span class="tag">集合预报</span><span class="tag">天气衍生品</span><span class="tag">基差风险</span><span class="tag">极端天气</span></div>
+      <div class="doc-meta"><span>约 12.8k 字</span><span>阅读约 21 分钟</span><span>12 节</span><span>数据截止 2026-11-12</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（12）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂：气象不直接定价，四个中介变量才定价</a></li>
+            <li class="lv2"><a href="#s4">1. 气象数据源与取数口径</a></li>
+            <li class="lv2"><a href="#s8">2. 四条转换链</a></li>
+            <li class="lv2"><a href="#s13">3. 气象 → 现货价格形状</a></li>
+            <li class="lv2"><a href="#s14">4. 误差归因、考核与偏差责任</a></li>
+            <li class="lv2"><a href="#s15">5. 极端天气与保供</a></li>
+            <li class="lv2"><a href="#s16">6. 天气风险与合约</a></li>
+            <li class="lv2"><a href="#s20">7. D 级合成算例（五组，仅演示方法）</a></li>
+            <li class="lv2"><a href="#s21">8. 查证入口、观察清单与待核项</a></li>
+            <li class="lv2"><a href="#s24">速查</a></li>
+            <li class="lv2"><a href="#s25">与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s26">更新记录</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>数据截止：2026-11-12｜定位：横向专题（cross 第 7 篇），补齐&quot;气象&quot;这一上游输入变量，不是第 14 个分区、也不是第 10 个技能。</p><p>适用边界：本页只写<strong>气象如何变成电力交易里的量与风险</strong>，不写天气预报本身、不训练数值模式、不重复预测评价指标。预测方法论、概率预测、误差指标与「预测→报价」接口见 <a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a> §4 与 <code>spot-bidding-quant</code> 技能 §3–§5；本页只加指针。</p><p>用途：回答&quot;气象数据从哪来、怎么取数&quot;&quot;温度/风速/辐照/降水各怎么变成电量&quot;&quot;为什么晴天也可能报不准&quot;&quot;偏差考核算谁的&quot;&quot;天气风险能不能对冲&quot;五类问题。</p><p>内容纪律：数字带时点 + 口径 + A/B/C/D 级别；A＝政府/监管/交易所正式文件，B＝官方媒体转述权威测算与官方数据文档，C＝行业/媒体/典型参数，D＝本库合成算例。未拿到正式全文的写「待核实」，不用邻省或全国均值填空。<strong>气候变化是长期治理议题（见 <a href="碳管理-从零通往碳中和-主题笔记.html">碳管理</a>），与本页的短中期交易气象不是同一口径，不合并。</strong></p></aside>
+<hr>
+<h2 id="s1">0. 一页看懂：气象不直接定价，四个中介变量才定价</h2>
+<h3 id="s2">0.1 十条结论</h3>
+<ol><li><strong>四个中介</strong>：气象经「负荷 / 风光出力 / 水电来水 / 设备可用率」进入出清，再形成 96 点价格；把&quot;气温高＝电价高&quot;当直接因果是错的。</li><li><strong>温度→负荷的量级</strong>：2026 年夏季全国平均气温每升高 1℃，带动用电负荷上涨 <strong>4,000 万–5,000 万 kW</strong>（B，国家能源局测算，<a href="https://news.cctv.cn/2026/07/16/ARTIGZn8jNCh8tJ6r8mAiI6V260716.shtml" target="_blank" rel="noopener">央视网 2026-07-16</a>）；这是全国测算值，不能直接套单个省份。</li><li><strong>空调负荷是主要变量</strong>：全国空调降温负荷占用电负荷比重<strong>接近 30%</strong>、部分省份<strong>超过 40%</strong>（B，中电联《中国电力行业年度发展报告 2026》，<a href="https://www.cnstock.com/commonDetail/745454" target="_blank" rel="noopener">上证报</a>）；北京 2026-08 峰值日空调降温负荷占比<strong>超 47%</strong>、最大负荷 3,026 万 kW（B，<a href="https://www.thepaper.cn/newsDetail_forward_33819834" target="_blank" rel="noopener">澎湃转新华社</a>）。</li><li><strong>湿度与累积效应</strong>：高温高湿会放大制冷需求，连续高温还有累积效应；只看干球温度、只看当日温度都会系统性低估尖峰（B/C）。</li><li><strong>云比温度更快</strong>：2026-07 江苏在光伏出力因云层移动出现<strong>超 100 万 kW</strong> 波动的时段，靠调度系统在 3 秒内生成应对策略（B，央视网，同 2）；分钟级波动不是&quot;预测误差&quot;，是气象物理本身。</li><li><strong>功率预测是法定义务</strong>：新能源场站须报送中期（次日 0 时起 <strong>240 小时</strong>）、短期（<strong>72 小时</strong>）、超短期（<strong>15 分钟–4 小时</strong>）功率预测，时间分辨率不低于 15 分钟，月度报送率要求 100%（A，<a href="https://hunb.nea.gov.cn/attfiles/d597b75a-df7b-4d30-8715-aeaf52a5c5f7.pdf" target="_blank" rel="noopener">国家能源局湖南监管办细则</a>、<a href="https://dbj.nea.gov.cn/xxgk/zcfg/202409/P020240906435880871995.pdf" target="_blank" rel="noopener">东北监管局细则</a>）。</li><li><strong>准确率阈值一省一策</strong>：湖南口径风电短期 ≥83% / 超短期 ≥87%，光伏短期 ≥85% / 超短期 ≥90%，中期第 10 日风电 ≥70% / 光伏 ≥75%，当月考核电量不超过当月上网电量 2%（A，湖南监管办）；四川口径风电超短期第 4 小时 ≥87%、光伏 ≥90%（A，<a href="https://scb.nea.gov.cn/dtyw/tzgg/202403/P020240301582216887470.pdf" target="_blank" rel="noopener">四川监管办细则</a>）。<strong>不能把一省阈值当全国规则。</strong></li><li><strong>偏差基准已变</strong>：西北 2025 补充规则把预测曲线偏差计算由「预测值与<strong>实际值</strong>」改为「预测值与<strong>可用值</strong>」，并删除出力受限时段的免考核、取消现货试点地区对新能源功率预测考核的区别对待（A，<a href="https://xbj.nea.gov.cn/dtyw/tzgg/202501/P020250102625885391109.pdf" target="_blank" rel="noopener">西北监管局补充规则</a>）。这是&quot;气象误差归因&quot;的制度前提。</li><li><strong>天气风险可对冲但不能照搬</strong>：CME 度日期货合约单位 <strong>20 index points</strong>、美国 HDD/CDD <strong>USD 20/点</strong>、基准 <strong>65°F＝18℃</strong>、现金结算；欧洲 HDD 为 <strong>EUR 20/点</strong>、东京 CAT 为 <strong>JPY 2,500/点</strong>（A/B，<a href="https://www.cmegroup.com/markets/weather/hdd/houston-hdd-nov-seasonal-strip_contract_specifications.html" target="_blank" rel="noopener">CME HDD 规格</a>、<a href="https://www.cmegroup.com/markets/weather/cdd/chicago-cdd-monthly.contractSpecs.html" target="_blank" rel="noopener">CME CDD 规格</a>）。<strong>tick 不是默认值</strong>，套错一个币种就是数量级错误。</li><li><strong>参数化赔付的固有缺陷</strong>：天气衍生品按参考站指数赔付，与对冲方实际暴露之间存在<strong>基差风险</strong>；流动性集中在少数城市与季节，多数定制需求走 OTC（B/C）。国内无对应场内工具时，主要靠 PPA 条款、出力/来水保证与保险分担。</li></ol>
+<h3 id="s3">0.2 四条转换链总表</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>气象量</th><th>转换环节</th><th>电力变量</th><th>市场落点</th><th>主要误差源</th></tr></thead><tbody><tr><td>气温、湿度、体感</td><td>度日/度时 → 温度敏感负荷</td><td>负荷曲线、尖峰时段</td><td>日前 96 点负荷、售电采购、VPP 基线</td><td>基数负荷剥离、β 漂移、累积效应</td></tr><tr><td>风速、风向、空气密度</td><td>轮毂高度外推 → 功率曲线</td><td>风电出力</td><td>申报量、偏差考核、净负荷</td><td>高度外推、尾流、结冰、切出</td></tr><tr><td>辐照、云量、组件温度</td><td>GHI→POA → 温度降额</td><td>光伏出力</td><td>午间低价/负价、捕获价</td><td>云遮挡、直散分离、积雪沙尘</td></tr><tr><td>降水、融雪、来水</td><td>产流与滞后 → 库容调度</td><td>水电出力与可发电量</td><td>丰枯分期、外送合约、现货价差</td><td>产流系数、滞后、上游调节</td></tr></tbody></table></div>
+<aside class="note"><p>表格把&quot;气象→电力&quot;拆成可核算的四段。<strong>报价模型不读原始气象</strong>，只读这四类电力变量；这正是指针应该停在的地方（见 <a href="量化报价与交易风控-工程化-2026-11.html">量化报价</a> §4.5 输入契约）。</p></aside>
+<hr>
+<h2 id="s4">1. 气象数据源与取数口径</h2>
+<h3 id="s5">1.1 四类数据源，先分清&quot;预报&quot;和&quot;实况&quot;</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>类型</th><th>代表</th><th>时效 / 分辨率</th><th>主要用途</th><th>级别与注意</th></tr></thead><tbody><tr><td>全球确定性 NWP</td><td>CMA-GFS V4.0</td><td>水平分辨率 <strong>12.5 km</strong>（A，<a href="https://www.cma.gov.cn/ztbd/2024zt/20240517/2024051706/202405/t20240524_6288309.html" target="_blank" rel="noopener">中国气象局 2024</a>）；业务产品常按 0.25° / 3 h 分发（C，学术论文口径）</td><td>中期 240 h、省间与跨区边界条件</td><td>分辨率随版本变化，引用必须写版本与年份</td></tr><tr><td>区域细网格 NWP</td><td>CMA-MESO / CMA-TYM</td><td>CMA-MESO <strong>1 km、逐小时输出、未来 72 h</strong>；CMA-TYM <strong>9 km、120 h</strong>（A/B，<a href="https://www.cma.gov.cn/2011xwzx/2011xqxkj/2011xkjdt/202608/t20260824_8000456.html" target="_blank" rel="noopener">中国气象局 2026-08-24</a>）</td><td>短期 72 h、超短期、台风与强对流</td><td>早期版本为 3 km / 3 h，旧材料不要当现行</td></tr><tr><td>集合预报 EPS</td><td>全球/对流尺度集合</td><td>成员数与业务清单<strong>待核实</strong>，本页不写具体数字</td><td>概率预测、场景集、申报分位数</td><td>成员间不独立，不能当独立抽样</td></tr><tr><td>再分析</td><td>ERA5 / ERA5-Land</td><td><strong>0.25°（约 30 km）、逐小时、1940 至今</strong>；ERA5-Land 约 0.1°（B，<a href="https://docs.metacentrum.cz/en/docs/related/collgs/era5" target="_blank" rel="noopener">Copernicus 文档镜像</a>）</td><td>回测、偏差订正、模型训练标签</td><td><strong>不是实测</strong>；近期 ERA5T 约滞后 5 天且会被最终版替换</td></tr><tr><td>实测</td><td>测风塔、辐照仪、场站 SCADA、自动站</td><td>分钟级、点位</td><td>超短期、实时校正、考核基准</td><td>站点代表性、仪器漂移、缺测</td></tr></tbody></table></div>
+<aside class="note"><p>最常见的取数错误：把 <strong>ERA5 格点当站点实测</strong>、把 <strong>ERA5T 与 ERA5 最终版混在一个回测里</strong>、把&quot;逐小时&quot;理解成逐小时都有独立观测。ERA5 的逐小时场有相当部分来自模式短时预报，相邻小时是平滑的模式结果（B/C）。</p></aside>
+<h3 id="s6">1.2 预测周期与业务节奏（A 级，监管细则口径）</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>预测周期</th><th>覆盖范围</th><th>分辨率</th><th>报送节奏</th><th>典型考核</th></tr></thead><tbody><tr><td>中期</td><td>次日 0 时起 240 小时</td><td>≥15 min</td><td>每日 08:00 / 17:00 各一次（山西征求意见口径）</td><td>第 10 日准确率风电 ≥70% / 光伏 ≥75%</td></tr><tr><td>短期 / 日前</td><td>次日 0 时起 72 小时</td><td>≥15 min</td><td>每日两次</td><td>风电 ≥83% / 光伏 ≥85%（湖南口径）</td></tr><tr><td>超短期</td><td>未来 15 分钟–4 小时</td><td>≥15 min</td><td>每 15 分钟滚动</td><td>风电 ≥87% / 光伏 ≥90%（湖南、四川口径）</td></tr><tr><td>有效数据上传率</td><td>全周期</td><td>—</td><td>连续</td><td>西北补充规则要求 &gt;95%（A）</td></tr></tbody></table></div>
+<aside class="note"><p>山西细则为<strong>征求意见稿</strong>，其中&quot;每日 08:00 / 17:00 上报&quot;与&quot;特殊灾害天气模型&quot;应标为草案，不得当全国统一现行要求（<a href="https://sxb.nea.gov.cn/UploadFiles/2022/85681658803739767_3100d30a-27ef-47a8-978c-b060234e7e12.pdf" target="_blank" rel="noopener">原文 PDF</a>）。湖南、四川、东北、西北为已印发细则，但阈值与公式各不相同，<strong>一省一策</strong>。</p></aside>
+<h3 id="s7">1.3 取数契约与空间代表性</h3>
+<ul><li><strong>预测服务输出的字段至少要有</strong>：<code>issue_time</code>、<code>valid_time</code>、<code>horizon</code>、<code>member</code>、<code>lat/lon</code>、<code>height</code>、<code>variable</code>、<code>unit</code>、<code>model_version</code>。缺 <code>model_version</code> 的回测无法复现（与 <a href="量化报价与交易风控-工程化-2026-11.html">量化报价</a> §4.5 的输入契约一致）。</li><li>格点到场站要做<strong>空间插值 + 高度订正 + 系统性偏差订正</strong>；山区、高原、沿海过渡带单点最近格点通常有系统偏差（B/C）。</li><li>风要区分 10 m 站风速与轮毂高度风速；辐照要区分水平面 GHI 与阵列面 POA；温度要区分 2 m 气温与组件温度。</li><li>历史回填要用<strong>同一版本模式的 hindcast</strong>，不能拿实时预报和再分析混着做训练标签，否则模型学到的是模式升级而不是天气。</li></ul>
+<hr>
+<h2 id="s8">2. 四条转换链</h2>
+<h3 id="s9">2.1 温度 → 负荷</h3>
+<ul><li><strong>度日定义</strong>：HDD＝Σmax(基准 − 日均温, 0)，CDD＝Σmax(日均温 − 基准, 0)；CME 美国合约基准 <strong>65°F＝18℃</strong>，欧洲 HDD 用 <strong>18℃</strong>（A/B）。基准是<strong>合约项</strong>，不是物理常数，跨市场不能混用。</li><li><strong>逐小时度时 ≠ 逐日度日</strong>：24 个小时度时之和除以 24 才可与度日同口径；直接相加会把负荷敏感度放大 24 倍。</li><li><strong>负荷拆层</strong>：<code>负荷 = 基数负荷 + β × CDD + 湿度/体感项 + 节假日与工作日项</code>。β 是拟合参数，随产业结构、空调保有率、电价与年份漂移，不能跨省套用。</li><li><strong>累积效应</strong>：连续高温会抬高夜间基线负荷（&quot;空调加班到凌晨&quot;，B，央视网 2026-07）；只用当日最高温会低估晚峰。</li><li><strong>政策侧抓手</strong>：空调温度每调高 1℃ 可降低 7%–10% 用电负荷（C，媒体口径，需以实测为准），这属于需求响应侧，见 <a href="需求响应、车网互动与灵活性资源-2026-11.html">需求响应与灵活性资源</a>。</li></ul>
+<h3 id="s10">2.2 风速 → 风电出力</h3>
+<ul><li><strong>分段功率曲线</strong>：<code>v &lt; 切入</code>＝0；<code>切入 ≤ v &lt; 额定</code>按立方近似；<code>额定 ≤ v ≤ 切出</code>＝铭牌；<code>v &gt; 切出</code>＝0（切出停机）。典型切入 3 m/s、额定 12 m/s、切出 25 m/s 为<strong>示意参数（C）</strong>，实际以机型功率曲线为准。</li><li><strong>轮毂高度外推</strong>：幂律 <code>v_hub = v_ref × (h_hub / h_ref)^α</code>，α 是地表粗糙度与稳定度的函数，不是常数；10 m 站风速直接套 100 m 轮毂会系统性偏低。</li><li><strong>空气密度订正</strong>：<code>ρ/ρ0</code> 只作用于未达额定段，且不得把出力抬到铭牌以上；高海拔、高温都会降低可用功率。</li><li><strong>非气象的&quot;类气象&quot;损失</strong>：尾流、结冰、叶片污损、切出后重启、限电与检修。考核时要用<strong>可用功率</strong>而不是实际上网功率作分母（西北补充规则已把偏差基准改为可用值，A）。</li></ul>
+<h3 id="s11">2.3 辐照 → 光伏出力</h3>
+<ul><li><strong>辐照链路</strong>：GHI → 直散分离 → 阵列面 POA → 直流出力 → 逆变器限幅 → 并网点。中间任何一段缺失都会把误差归错因。</li><li><strong>组件温度</strong>：NOCT 近似 <code>T_cell = T_amb + (NOCT − 20)/800 × G</code>；功率温度系数典型 <strong>−0.3% ~ −0.4%/℃（C，以组件 datasheet 为准）</strong>。<strong>辐照高不等于出力高</strong>：高温下的温度降额会吃掉一部分辐照收益。</li><li><strong>云遮挡</strong>：场站群尺度上云移动造成的是分钟级功率爬坡，不是&quot;预测失准&quot;；2026-07 江苏曾出现超 100 万 kW 的光伏出力波动（B）。</li><li><strong>积雪、沙尘、积雪反射、组件清洗</strong>都会改变同一辐照下的出力，属于转换模型误差而非气象输入误差。</li></ul>
+<h3 id="s12">2.4 降水与来水 → 水电</h3>
+<ul><li>降雨到发电有<strong>产流系数 + 汇流滞后</strong>，今天下雨不等于今天发电；融雪、上游水库调节、生态流量都会改变可用水量。</li><li><strong>丰枯分期</strong>是水电省的报价与合约底座，见 <a href="四川电力市场-2026-11.html">四川电力市场</a> 与 <a href="湖北电力市场-2026-11.html">湖北电力市场</a>；径流式&quot;不弃水&quot;约束会压缩报价空间。</li><li>来水还是<strong>合约标的</strong>：PPA 里的来水保证、最小发电量条款与不可抗力条款，本质是把水文风险在买卖双方之间分配。</li><li>本页不建水文模型；零依赖工具只提供带滞后的产流指数占位，用来强调&quot;时序错配&quot;这一件事。</li></ul>
+<hr>
+<h2 id="s13">3. 气象 → 现货价格形状</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>气象情景</th><th>净负荷形状</th><th>价格结果</th><th>主体动作</th></tr></thead><tbody><tr><td>晴热、光伏午间大发、负荷尚未到峰</td><td>午间净负荷深谷</td><td>低价 / 负价、午间捕获价下降</td><td>新能源看机制电量与偏差，储能充电，售电公司避开午间高价采购</td></tr><tr><td>傍晚光伏退坡 + 晚峰负荷</td><td>陡峭爬坡</td><td>尖峰、稀缺时段</td><td>煤电/气电顶峰、储能放电、VPP 响应</td></tr><tr><td>夜间大风 + 低负荷</td><td>净负荷低位</td><td>负价、风电捕获价下降</td><td>风电看偏差考核，储能与可调负荷填谷</td></tr><tr><td>持续高温高湿</td><td>基数与夜间负荷抬高</td><td>全天价格中枢上移</td><td>售电公司补中长期、提高保证金</td></tr><tr><td>来水偏丰（水电省）</td><td>低价水电挤占火电</td><td>现货均价下移、外送增供</td><td>火电转顶峰与容量收入</td></tr><tr><td>台风 / 覆冰 / 大范围极端天气</td><td>供需双侧同时受损</td><td>尖峰与保供优先级压过价格</td><td>按保供预案，考核与免责另算</td></tr></tbody></table></div>
+<aside class="note"><p>净负荷＝负荷 − 风光出力。<strong>价格形状看的是净负荷的斜率，不是负荷的绝对值</strong>；同一条气温曲线在山东、四川、广东会给出完全不同的价格，因为电源结构与外送约束不同（见 <a href="省级市场状态表-2026-11.html">省级市场状态表</a>）。</p></aside>
+<hr>
+<h2 id="s14">4. 误差归因、考核与偏差责任</h2>
+<p><strong>总误差要拆三层</strong>，否则&quot;气象不准&quot;会变成万能借口：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>误差层</th><th>可观测证据</th><th>归因方法</th><th>谁承担</th></tr></thead><tbody><tr><td>气象输入误差</td><td>NWP/集合预报 vs 再分析或实测</td><td>用实况气象重跑转换链做反事实</td><td>预报服务商 / 场站</td></tr><tr><td>转换模型误差</td><td>同一气象下不同场站偏差不同</td><td>分机型、分高度、分时段残差分解</td><td>场站预测系统</td></tr><tr><td>规则与行为误差</td><td>限电、检修、可用功率、报价行为</td><td>用可用值替代实际值、剔除受限时段</td><td>按省级细则判定</td></tr></tbody></table></div>
+<ul><li><strong>考核有两套，不能混</strong>：功率预测准确率考核（并网运行管理/&quot;两个细则&quot;）与市场偏差考核（现货结算）是不同口径、不同罚则，见 <a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算</a>。</li><li><strong>基准换了</strong>：西北 2025 补充规则明确&quot;预测曲线偏差计算由功率预测值与<strong>可用值</strong>计算&quot;，删除出力受限时段免考核，并取消现货试点地区对预测考核的区别对待（A）。</li><li><strong>特殊灾害天气</strong>：山西征求意见稿要求场站建立包含覆冰凝冻、降雪、沙尘、雷雨的<strong>特殊模型</strong>，并在灾害天气下完整报送数据（A（草案），未核到正式印发版，待核实）。</li><li><strong>免责不是自动的</strong>：不可抗力、电网原因、数据上传率未达标等免责条款逐省不同，必须查省级细则原文，不能用&quot;极端天气&quot;一笔带过。</li><li>预测评价指标（MAE/RMSE/pinball/CRPS）、概率预测与「预测→报价」接口契约，<strong>本页不重复</strong>，见 <a href="量化报价与交易风控-工程化-2026-11.html">量化报价</a> §4.3–§4.6 与 <code>spot-bidding-quant</code> 技能。</li></ul>
+<hr>
+<h2 id="s15">5. 极端天气与保供</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>事件</th><th>影响链</th><th>交易侧动作</th><th>口径与级别</th></tr></thead><tbody><tr><td>台风</td><td>风电切出、线路跳闸、沿海负荷转移</td><td>按保供预案、跨区互济、机组待命</td><td>CMA-TYM 9 km / 120 h 台风路径预报（A/B）</td></tr><tr><td>覆冰凝冻</td><td>风机结冰、线路覆冰、可用容量下降</td><td>可用功率重报、特殊模型</td><td>山西征求意见稿列为特殊灾害（A（草案））</td></tr><tr><td>沙尘、雷雨</td><td>光伏辐照骤降、组件污损</td><td>超短期重报、偏差归因</td><td>同上，待核正式文</td></tr><tr><td>高温干旱</td><td>负荷冲高 + 水电来水偏枯 + 设备降额</td><td>一省一策保供、需求响应、跨区购电</td><td>2026-07-14 全国负荷 15.51 亿 kW 创新高（B）</td></tr><tr><td>低温雨雪</td><td>采暖负荷、燃气与电采暖耦合</td><td>中长期补库、容量与保供联动</td><td>省级待核实</td></tr></tbody></table></div>
+<ul><li>2026 年迎峰度夏，国家能源局口径为&quot;<strong>一省一策</strong>&quot;，并强调煤电兜底、气电/抽蓄/储能灵活调用与 VPP 资源（B，上证报）。</li><li>跨区互济实例：2026-08 北京负荷创 3,026 万 kW 新高期间，青海（2,900 万 kWh）与黑龙江（1,800 万 kWh）&quot;风光打捆&quot;绿电<strong>合计 4,700 万 kWh</strong> 进京（B，澎湃转新华社）。这是气象冲击下的市场侧缓冲，不是气象预测。</li><li><strong>保供优先级会覆盖价格信号</strong>：极端时段的价格、考核与免责要按保供预案单独看，不能把尖峰价直接当作可套利机会。</li></ul>
+<hr>
+<h2 id="s16">6. 天气风险与合约</h2>
+<h3 id="s17">6.1 场内工具（A/B，CME 官方规格）</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>合约</th><th>合约单位</th><th>tick</th><th>基准</th><th>结算</th><th>挂牌</th></tr></thead><tbody><tr><td>美国 HDD 月度 / 季节 strip</td><td>20 index points</td><td><strong>USD 20/点</strong></td><td>65°F＝18℃</td><td>现金结算</td><td>HDD：11–3 月 + 10/4 月；季节 strip 如 11–3 月</td></tr><tr><td>美国 CDD 月度</td><td>20 index points</td><td><strong>USD 20/点</strong></td><td>65°F＝18℃</td><td>现金结算</td><td>4–10 月中的月度合约</td></tr><tr><td>欧洲 HDD</td><td>20 index points</td><td><strong>EUR 20/点</strong></td><td>18℃</td><td>现金结算</td><td>月度 / 季节</td></tr><tr><td>东京 CAT</td><td>20 index points</td><td><strong>JPY 2,500/点</strong></td><td>累计平均气温</td><td>现金结算</td><td>月度 / 季节</td></tr></tbody></table></div>
+<aside class="note"><p>交易终止在合约月后第 2 个工作日 09:00 CT；HDD 季节 strip 仅挂一个 11–3 月合约（A，CME 规格页）。<strong>tick 的单位与币种是这类工具最容易写错的地方</strong>，工具 <code>weather.py</code> 故意不给默认值。</p></aside>
+<h3 id="s18">6.2 三个结构性限制（B/C）</h3>
+<ul><li><strong>参数化赔付</strong>：按指数赔付，不要求证明实际损失，因此<strong>基差风险</strong>与生俱来——参考站与真实暴露区不一致（机场站比郊区暖 2°F 就会让对冲失准）。</li><li><strong>定价没有现货锚</strong>：天气不可交易，没有可套用的远期曲线，只能靠几十年站点历史 + 季节气候信号 + 中期预报估分布；两周之后预报技巧迅速衰减，季节合约主要按气候统计定价。</li><li><strong>流动性薄</strong>：成交集中在少数基准城市与峰季，价差宽、提前平仓难；定制风险（如某县降雨看跌）通常走 OTC，带交易对手风险。</li></ul>
+<h3 id="s19">6.3 国内可落地的替代路径（口径提示）</h3>
+<ul><li>场内度日工具在国内<strong>未核到对应品种（待核实）</strong>；本节只作方法参照，不得写成&quot;国内可对冲&quot;。</li><li>实际可用的是<strong>合约条款</strong>：PPA 的出力保证 / 最低发电量、来水保证、气象年景调整机制、偏差分担与上限、不可抗力定义、保险（营业中断/财产险）。</li><li><strong>条款要写清</strong>：参考站点或数据源、指数定义与基准温度、数据缺失与站点迁移的处理、单期与累计赔付上限、与偏差考核的抵扣关系。缺任何一项，天气条款在争议时都难以执行。</li><li>与绿证、机制电量的边界见 <a href="跨国PPA与绿证-2026-11.html">跨国 PPA 与绿证</a> 与 <a href="绿证-CCER-CBAM衔接-2026-11.html">绿证-CCER-CBAM 衔接</a>；天气条款不改变环境权益归属。</li></ul>
+<hr>
+<h2 id="s20">7. D 级合成算例（五组，仅演示方法）</h2>
+<aside class="note"><p>以下全部为<strong>合成数据（D 级）</strong>，与真实市场、真实场站无关，不构成投资建议。每组结果都由 <code>skills/spot-bidding-quant/tools/weather.py</code> 复算并由 <code>selftest.py</code> 断言锁定；改数字必须同时改代码与本文。</p></aside>
+<p><strong>算例 1：度日与温度敏感负荷（合成）</strong></p>
+<p>输入：3 天日均气温 32 / 35 / 29℃，CDD 基准 18℃；基数负荷 1,000 MW，β＝12 MW/CDD，湿度附加 30 MW。</p>
+<p><code>CDD = 14 + 17 + 11 = 42</code>；<code>HDD(5/8/3℃) = 13 + 10 + 15 = 38</code>；<code>负荷 = 1000 + 12×42 + 30 = 1,534 MW</code>。</p>
+<p>要点：基数、温度项、湿度项必须分开写，否则 β 的漂移会被藏进基数里。</p>
+<p><strong>算例 2：风功率曲线与空气密度（合成）</strong></p>
+<p>输入：100 MW 机型，切入 3 / 额定 12 / 切出 25 m/s，标准空气密度 1.225 kg/m³。</p>
+<p>8 m/s 出力 <code>= 100 × (8³−3³)/(12³−3³) = 28.5126 MW</code>；密度 1.15 时订正为 <strong>26.7670 MW</strong>；2 m/s＝0、13 m/s＝100 MW（封顶）、26 m/s＝0（切出）。10 m 处 6 m/s 按 α＝0.14 外推到 100 m 为 <strong>8.2823 m/s</strong>。</p>
+<p>要点：高度与密度订正都发生在&quot;未达额定段&quot;，且不得抬到铭牌以上。</p>
+<p><strong>算例 3：辐照、组件温度与光伏出力（合成）</strong></p>
+<p>输入：GHI 850 W/m²，气温 32℃，NOCT 45℃，P_dc 100 MW，温度系数 −0.35%/℃，参考 25℃ / 1,000 W/m²。</p>
+<p><code>T_cell = 32 + (45−20)/800 × 850 = 58.5625℃</code>；<code>P = 100 × 0.85 × (1 − 0.0035 × 33.5625) = 75.0152 MW</code>。</p>
+<p>要点：辐照 850 W/m² 但温度降额约 11.7%，<strong>&quot;大太阳＝满发&quot;是错的</strong>。</p>
+<p><strong>算例 4：集合预报分位数 → 不对称罚则下的申报量（合成）</strong></p>
+<p>输入：9 个等权场景 80/85/…/120 MW；少报罚 0.6、多报罚 0.4（元/kWh 的相对量纲）。</p>
+<p>最优分位 <code>q* = 0.6/(0.6+0.4) = 0.60</code>，<code>P60 = 104 MW</code>，申报 <strong>104 MW</strong>；平均损失 <code>5.3778</code>，而按均值 100 MW 申报为 <code>5.5556</code>。</p>
+<p>要点：<strong>申报量不是均值</strong>，罚则不对称时由分位数决定；场景必须保留相关性，不能独立抽样（详见 <a href="量化报价与交易风控-工程化-2026-11.html">量化报价</a> §4.2）。</p>
+<p><strong>算例 5：HDD 期货赔付与基差风险（合成）</strong></p>
+<p>输入：冬季累计 HDD 1,850，行权指数 1,800，tick USD 20/点，10 手。</p>
+<p>赔付 <code>= (1850−1800) × 20 × 10 = USD 10,000</code>；若设赔付上限 8,000 则实得 <strong>8,000</strong>。若对冲方实际暴露区 HDD 为 1,790，则<strong>基差 60 点</strong>——指数赚了 50 点，实际暴露却比行权指数还冷，赔付与真实损失方向可能不一致。</p>
+<p>要点：参数化工具的赔付按指数，不按损失；写条款前先确认参考站与实际暴露的一致性。</p>
+<hr>
+<h2 id="s21">8. 查证入口、观察清单与待核项</h2>
+<h3 id="s22">8.1 来源台账</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>来源</th><th>用途</th><th>级别</th></tr></thead><tbody><tr><td><a href="https://www.cma.gov.cn/ztbd/2024zt/20240517/2024051706/202405/t20240524_6288309.html" target="_blank" rel="noopener">中国气象局：CMA-GFS V4.0 12.5 km</a></td><td>全球模式分辨率与自主模式体系</td><td>A</td></tr><tr><td><a href="https://www.cma.gov.cn/2011xwzx/2011xqxkj/2011xkjdt/202608/t20260824_8000456.html" target="_blank" rel="noopener">中国气象局：CMA-MESO / CMA-TYM 2026 版本</a></td><td>1 km / 逐小时 / 72 h、台风 9 km / 120 h</td><td>A/B</td></tr><tr><td><a href="https://news.cctv.cn/2026/07/16/ARTIGZn8jNCh8tJ6r8mAiI6V260716.shtml" target="_blank" rel="noopener">央视网：高温与空调负荷（2026-07-16）</a></td><td>每升 1℃ +4,000–5,000 万 kW、空调占比 &gt;40%、江苏云遮挡波动</td><td>B</td></tr><tr><td><a href="https://www.cnstock.com/commonDetail/745454" target="_blank" rel="noopener">上证报：2026 负荷新高与空调占比</a></td><td>15.51 亿 kW、空调接近 30%、中电联年度报告</td><td>B</td></tr><tr><td><a href="https://www.thepaper.cn/newsDetail_forward_33819834" target="_blank" rel="noopener">澎湃转新华社：北京峰值与跨区互济</a></td><td>3,026 万 kW、空调 &gt;47%、4,700 万 kWh 绿电进京</td><td>B</td></tr><tr><td><a href="https://hunb.nea.gov.cn/attfiles/d597b75a-df7b-4d30-8715-aeaf52a5c5f7.pdf" target="_blank" rel="noopener">湖南监管办：功率预测考核细则 PDF</a></td><td>240 h / 72 h / 15 min–4 h、准确率阈值、考核电量公式</td><td>A</td></tr><tr><td><a href="https://scb.nea.gov.cn/dtyw/tzgg/202403/P020240301582216887470.pdf" target="_blank" rel="noopener">四川监管办：两个细则 PDF</a></td><td>超短期第 4 小时 87% / 90% 口径</td><td>A</td></tr><tr><td><a href="https://xbj.nea.gov.cn/dtyw/tzgg/202501/P020250102625885391109.pdf" target="_blank" rel="noopener">西北监管局：2025 补充规则 PDF</a></td><td>偏差改用可用值、取消现货试点区别对待、上传率 &gt;95%</td><td>A</td></tr><tr><td><a href="https://dbj.nea.gov.cn/xxgk/zcfg/202409/P020240906435880871995.pdf" target="_blank" rel="noopener">东北监管局：并网运行实施细则 PDF</a></td><td>三类预测报送率 100%、15 min 分辨率</td><td>A</td></tr><tr><td><a href="https://sxb.nea.gov.cn/UploadFiles/2022/85681658803739767_3100d30a-27ef-47a8-978c-b060234e7e12.pdf" target="_blank" rel="noopener">山西监管办：特殊灾害天气模型（征求意见稿）</a></td><td>覆冰凝冻/降雪/沙尘/雷雨特殊模型</td><td>A（草案）</td></tr><tr><td><a href="https://www.cmegroup.com/markets/weather/hdd/houston-hdd-nov-seasonal-strip_contract_specifications.html" target="_blank" rel="noopener">CME HDD 季节 strip 合约规格</a></td><td>20 index points、USD 20/点、现金结算；本地自动访问返回 000（连接层屏蔽，非 404），按 CME Rulebook 405 核对</td><td>A</td></tr><tr><td><a href="https://www.cmegroup.com/markets/weather/cdd/chicago-cdd-monthly.contractSpecs.html" target="_blank" rel="noopener">CME CDD 月度合约规格</a></td><td>月度挂牌与终止交易时点；本地自动访问返回 000（连接层屏蔽，非 404），按 CME Rulebook 403 核对</td><td>A</td></tr><tr><td><a href="https://docs.metacentrum.cz/en/docs/related/collgs/era5" target="_blank" rel="noopener">Copernicus ERA5 数据文档镜像</a></td><td>0.25° / 逐小时 / ERA5-Land 0.1°</td><td>B</td></tr><tr><td><a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a></td><td>预测评价指标、概率预测、报价接口（本页不重复）</td><td>B</td></tr><tr><td><a href="省级市场状态表-2026-11.html">省级市场状态表</a></td><td>33 省电源结构与规则差异</td><td>B</td></tr></tbody></table></div>
+<h3 id="s23">8.2 观察清单</h3>
+<ul><li>各省功率预测准确率阈值、考核公式与免责条款的现行版本（本页只核到湖南、四川、西北、东北与山西征求意见稿）。</li><li>山西&quot;特殊灾害天气模型&quot;是否正式印发、文号与施行日。</li><li>CMA 集合预报业务的成员数、产品清单与分发口径（当前待核实，本页刻意未写数字）。</li><li>国内是否出现场内天气指数工具，以及电力企业使用天气衍生品/保险的公开案例（待核实）。</li><li>2027 年丰枯分期、来水保证条款与水电省现货规则的衔接。</li><li>ERA5T 与 ERA5 最终版切换对回测结论的影响，以及场站实测数据的长期可得性。</li><li>极端天气下的偏差考核免责在各省现货细则中的写法。</li></ul>
+<hr>
+<h2 id="s24">速查</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>要回答的问题</th><th>先看哪一节</th></tr></thead><tbody><tr><td>气象数据从哪来、怎么取</td><td>§1.1–§1.3</td></tr><tr><td>气温/风速/辐照/降水怎么变成电量</td><td>§2.1–§2.4</td></tr><tr><td>为什么晴天也会报不准</td><td>§2.3、§4</td></tr><tr><td>净负荷与价格形状</td><td>§3</td></tr><tr><td>偏差算谁的、能不能免责</td><td>§4</td></tr><tr><td>台风/覆冰/高温怎么影响交易</td><td>§5</td></tr><tr><td>天气风险能不能对冲</td><td>§6</td></tr><tr><td>有没有可复算的算例</td><td>§7 与 <code>tools/weather.py</code></td></tr></tbody></table></div>
+<h2 id="s25">与技能和其他笔记的分工</h2>
+<ul><li><strong>不新增分区、不新增技能</strong>：气象是横向输入变量，不是一类市场或一类作业角色。本页放 <code>cross</code> 第 7 篇；预测方法论仍归 <code>spot-bidding-quant</code> 技能与 <a href="量化报价与交易风控-工程化-2026-11.html">量化报价</a>。</li><li><strong>零依赖工具</strong>：<code>skills/spot-bidding-quant/tools/weather.py</code> 提供度日、风功率曲线、空气密度订正、组件温度、集合分位数、不对称罚则申报量与天气指数赔付；断言并入该技能现有 <code>selftest.py</code>，CI 的 9 条自测不变。</li><li><strong>不与气候变化合并</strong>：长期气候治理、排放因子与碳价见 <a href="碳管理-从零通往碳中和-主题笔记.html">碳管理</a> 与 <a href="碳资产实务-2026-11.html">碳资产实务</a>。</li><li><strong>省级差异只留指针</strong>：丰枯、台风、覆冰、来水等省别口径见 <a href="四川电力市场-2026-11.html">四川</a>、<a href="湖北电力市场-2026-11.html">湖北</a>、<a href="海南电力市场-2026-11.html">海南</a> 与 <a href="省级市场状态表-2026-11.html">省级市场状态表</a>，本页不复制省份规则。</li></ul>
+<h2 id="s26">更新记录</h2>
+<ul><li>2026-11-12：新建。补齐气象数据源与取数口径、四条转换链、价格形状、误差归因与考核、极端天气保供、天气风险合约；新增零依赖 <code>weather.py</code> 与 5 组 D 级合成算例并与 <code>selftest.py</code> 双向锁定。</li></ul>
+    </article>
+
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>11</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="量化报价与交易风控-工程化-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>量化报价与交易风控</b>
+          <span>预测→报价→申报→结算→归因的工程闭环，含风控限额、对账与 2026 规则版本管理。</span>
+        </a>
+        <a class="related-card" href="储能收益建模与数据源-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>储能收益建模与数据源（2026 版）：从 5 分钟价格到 15 年现金流</b>
+          <span>把 ENTSO-E、EPEX、RTE、CRE、NESO、Elexon BMRS、GME、OMIE、REE、PSE、Nord Pool、CAISO、ERCOT、PJM、JEPX 的取数入口放进一张表，再按十一市场列国别入口与缺口，并讲粒度对齐、RTE/退化、捕获率、降额、收入叠加冲突与回测方法。</span>
+        </a>
+        <a class="related-card" href="新能源项目开发与并网-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>新能源项目开发与并网</b>
+          <span>136 号机制电价、省级竞价、P50/P90、LCOE、并网标准与省别画像。</span>
+        </a>
+        <a class="related-card" href="需求响应、车网互动与灵活性资源-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>需求响应、车网互动与灵活性资源</b>
+          <span>从资源盘点、基线认定到考核结算，补齐 DR 产品体系与 V2G 参与市场的空白。</span>
+        </a>
+      </div>
+      <p class="related-rest"><b>更多关联</b><a href="虚拟电厂聚合调度与商业模式-2026-11.html">虚拟电厂：聚合、调度与商业模式（2026 版）</a><a href="省级市场状态表-2026-11.html">省级电力市场状态总表</a><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a><a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算（2026 版）</a><a href="四川电力市场-2026-11.html">四川电力市场（2026 版）：丰枯分期、水电同台与连续结算试运行</a><a href="湖北电力市场-2026-11.html">湖北电力市场：2025 转正、华中枢纽与水电丰枯定价（2026 版）</a><a href="海南电力市场-2026-11.html">海南电力市场：区域正式叠加、海岛电网与 1 MW VPP 门槛（2026 版）</a></p>
+    </section>
+
+
+    <nav class="pager" aria-label="上下篇">
+          <a class="prev" href="海外市场同口径快照与投决日历-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">海外市场同口径快照与投决日历（2026 版）：十一市场、七列口径、五张工单</span></a>
+          <span class="spacer"></span>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../气象与电力交易-2026-11.md">knowledge/气象与电力交易-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="本页目录">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂：气象不直接定价，四个中介变量才定价</a></li>
+            <li class="lv3"><a href="#s2">0.1 十条结论</a></li>
+            <li class="lv3"><a href="#s3">0.2 四条转换链总表</a></li>
+            <li class="lv2"><a href="#s4">1. 气象数据源与取数口径</a></li>
+            <li class="lv3"><a href="#s5">1.1 四类数据源，先分清"预报"和"实况"</a></li>
+            <li class="lv3"><a href="#s6">1.2 预测周期与业务节奏（A 级，监管细则口径）</a></li>
+            <li class="lv3"><a href="#s7">1.3 取数契约与空间代表性</a></li>
+            <li class="lv2"><a href="#s8">2. 四条转换链</a></li>
+            <li class="lv3"><a href="#s9">2.1 温度 → 负荷</a></li>
+            <li class="lv3"><a href="#s10">2.2 风速 → 风电出力</a></li>
+            <li class="lv3"><a href="#s11">2.3 辐照 → 光伏出力</a></li>
+            <li class="lv3"><a href="#s12">2.4 降水与来水 → 水电</a></li>
+            <li class="lv2"><a href="#s13">3. 气象 → 现货价格形状</a></li>
+            <li class="lv2"><a href="#s14">4. 误差归因、考核与偏差责任</a></li>
+            <li class="lv2"><a href="#s15">5. 极端天气与保供</a></li>
+            <li class="lv2"><a href="#s16">6. 天气风险与合约</a></li>
+            <li class="lv3"><a href="#s17">6.1 场内工具（A/B，CME 官方规格）</a></li>
+            <li class="lv3"><a href="#s18">6.2 三个结构性限制（B/C）</a></li>
+            <li class="lv3"><a href="#s19">6.3 国内可落地的替代路径（口径提示）</a></li>
+            <li class="lv2"><a href="#s20">7. D 级合成算例（五组，仅演示方法）</a></li>
+            <li class="lv2"><a href="#s21">8. 查证入口、观察清单与待核项</a></li>
+            <li class="lv3"><a href="#s22">8.1 来源台账</a></li>
+            <li class="lv3"><a href="#s23">8.2 观察清单</a></li>
+            <li class="lv2"><a href="#s24">速查</a></li>
+            <li class="lv2"><a href="#s25">与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s26">更新记录</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="14" data-more-label="展开 14 个小节" data-less-label="收起小节">展开 14 个小节</button>
+  </aside>
+</div>
+
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
+<script src="../assets/doc.js"></script>
+<script src="../assets/theme.js"></script>
+</body>
+</html>
