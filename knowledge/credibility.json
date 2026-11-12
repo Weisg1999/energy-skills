@@ -3634,9 +3634,9 @@
       "summaryEn": "Weather does not set prices directly: it enters clearing through four mediators — load, wind/solar output, hydro inflow and equipment availability. In summer 2026 each 1 C rise in national mean temperature lifted Chinese demand by 40-50 GW, with cooling load near 30% nationally and above 40% in some provinces; power forecasting is a regulated reporting duty with accuracy thresholds; CME degree-day futures settle in cash at 20 index points and USD 20 per point, while European and Tokyo contracts use different tick values.",
       "titleEn": null,
       "marks": {
-        "gradeC": 8,
+        "gradeC": 7,
         "draft": 6,
-        "pending": 7,
+        "pending": 6,
         "example": 9
       },
       "exampleSections": [
@@ -4027,9 +4027,9 @@
       "summaryEn": "Institutional chain from risk to credit, guarantee, deviation, settlement and exit: internal/external risk taxonomy and major/general × emergency/non-emergency grading.",
       "titleEn": null,
       "marks": {
-        "gradeC": 5,
-        "draft": 45,
-        "pending": 4,
+        "gradeC": 8,
+        "draft": 47,
+        "pending": 6,
         "example": 5
       },
       "exampleSections": [
