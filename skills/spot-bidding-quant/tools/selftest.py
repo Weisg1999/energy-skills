@@ -8,7 +8,10 @@ Run:  python tools/selftest.py
 
 from __future__ import annotations
 
+import importlib.util
+import json
 import sys
+import tempfile
 import traceback
 from pathlib import Path
 
@@ -309,6 +312,98 @@ def main() -> int:
     no_date[100] = {key: value for key, value in rows[100].items() if key != "date"}
     missing_report = desk.validate_public_dataset(no_date, fields)
     assert not missing_report["ok"] and "date" in missing_report["missing_fields"]
+
+    section("storage bridge and instance pack")
+    plan = {
+        "price": [300.0, 200.0, 200.0],
+        "discharge_mw": [100.0, 100.0, 0.0],
+        "charge_mw": [0.0, 0.0, 100.0],
+    }
+    actual = {
+        "price": [320.0, 220.0, 220.0],
+        "discharge_mw": [92.0, 100.0, 0.0],
+        "charge_mw": [0.0, 0.0, 104.0],
+    }
+    storage = desk.storage_bridge(
+        plan,
+        actual,
+        dt_h=0.25,
+        contract_quantity_mw=40.0,
+        contract_price=265.0,
+        penalty_actual=200.0,
+        allocation_actual=10.0,
+    )
+    amounts = {row["item"]: row["amount"] for row in storage["buckets"]}
+    print(
+        f"storage bridge plan={storage['plan_profit']:.0f} actual={storage['actual_profit']:.0f} "
+        f"delta={storage['delta']:.0f} gap={storage['identity_gap']:.2e}"
+    )
+    assert storage["plan_profit"] == 8450.0
+    assert storage["actual_profit"] == 7280.0
+    assert storage["delta"] == -1170.0
+    assert abs(storage["identity_gap"]) < 1e-9
+    assert amounts == {
+        "放电量偏差": -600.0,
+        "放电价偏差": 1000.0,
+        "放电量价交叉": -40.0,
+        "充电量偏差": -200.0,
+        "充电价偏差": -500.0,
+        "充电量价交叉": -20.0,
+        "退化成本": 0.0,
+        "合约价差": -600.0,
+        "容量补偿": 0.0,
+        "考核": -200.0,
+        "分摊": -10.0,
+    }
+
+    repo_root = Path(__file__).resolve().parents[3]
+    pack_dir = (
+        repo_root / "skills" / "spot-bidding-quant" / "instances" / "shandong-storage-2026-11"
+    )
+    spec = importlib.util.spec_from_file_location("shandong_storage_instance", pack_dir / "run.py")
+    runner = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(runner)
+    instance_path = pack_dir / "instance.json"
+    config = json.loads(instance_path.read_text(encoding="utf-8"))
+    instance_report = runner.validate_instance(config)
+    print(
+        f"instance config ok={instance_report['ok']} points={instance_report['points_per_day']} "
+        f"warnings={len(instance_report['warnings'])}"
+    )
+    assert instance_report["ok"] and instance_report["points_per_day"] == 96
+    assert instance_report["mtu_min"] == 15
+
+    broken = json.loads(json.dumps(config))
+    del broken["rules"]["spot"]["grade"]
+    try:
+        runner.validate_instance(broken)
+    except runner.ConfigError:
+        pass
+    else:
+        raise AssertionError("a rule block without grade must be rejected")
+
+    with tempfile.TemporaryDirectory() as tmp:
+        result = runner.run_instance(
+            instance_path,
+            pack_dir / "data" / "d1_demo.csv",
+            pack_dir / "data" / "t1_demo.csv",
+            Path(tmp),
+        )
+        summary = result["summary"]
+        plan_summary = summary["plan"]
+        print(
+            f"instance demo cycles={plan_summary['equivalent_cycles']:.2f} "
+            f"E={plan_summary['expected_net_margin_cny']:.0f} "
+            f"CVaR10={plan_summary['cvar_10_cny']:.0f} "
+            f"bridge gap={result['bridge']['identity_gap']:.2e}"
+        )
+        assert result["report"]["ok"]
+        assert plan_summary["equivalent_cycles"] <= summary["policy"]["max_cycles_per_day"] + 1e-9
+        assert plan_summary["cvar_10_cny"] <= plan_summary["expected_net_margin_cny"] + 1e-9
+        assert abs(result["bridge"]["identity_gap"]) < 1e-6
+        assert len(result["bid"]["rows"]) > 0
+        assert (Path(tmp) / "bid_sheet.csv").exists()
+        assert (Path(tmp) / "review.md").exists()
 
     section("summary")
     print("all checks passed")

@@ -1,0 +1,143 @@
+{
+  "meta": {
+    "instance_id": "shandong-storage-2026-11",
+    "province": "山东",
+    "market": "山东省级电力市场（现货 + 中长期 + 容量补偿）",
+    "entity_type": "独立新型储能",
+    "rule_version": "《山东电力市场规则（试行）》（2026-01-01 实施）",
+    "data_cutoff": "2026-11-12",
+    "grade": "B/C",
+    "scope": "v1 仅现货电能量 + 容量补偿占位 + 可选 CfD 合约；辅助服务、中长期曲线分解、租赁收益未纳入",
+    "currency": "CNY",
+    "units": {
+      "power": "MW",
+      "energy": "MWh",
+      "price": "CNY/MWh",
+      "time": "HH:MM",
+      "slot": "0-95（15 分钟一点）"
+    },
+    "disclaimer": "本实例包是 D 级合成样板，不构成报价、投资或法律建议；实际参数以企业铭牌、合同和交易中心最新规则为准。"
+  },
+  "rules": {
+    "spot": {
+      "status": "正式运行（2024-06-17）",
+      "market_time_unit_min": 15,
+      "points_per_day": 96,
+      "declare_floor_cny_per_mwh": -80,
+      "declare_cap_cny_per_mwh": 1300,
+      "clear_floor_cny_per_mwh": -100,
+      "clear_cap_cny_per_mwh": 1500,
+      "draft_2026_08_28": {
+        "declare_floor_cny_per_mwh": -120,
+        "clear_floor_cny_per_mwh": -140,
+        "status": "征求意见稿，未生效"
+      },
+      "grade": "B/C",
+      "source": "山东省现行省级现货限价（中国能源网 2026 报道）；2026-08-28 下限草案未生效",
+      "note": "申报/结算按 96 点；实时出清为 5 分钟级，按交易中心最新规则核对"
+    },
+    "settlement": {
+      "basis": "发电侧与用电侧分账结算；容量补偿单列",
+      "grade": "B",
+      "source": "山东电力交易中心《2025 年市场总体运行情况》；鲁发改价格〔2025〕576号"
+    },
+    "capacity_compensation": {
+      "formula": "有效容量 × 补偿电价标准 × 容量供需系数",
+      "price_cny_per_kw_year": null,
+      "supply_demand_coefficient": null,
+      "status": "标准与系数待核实；未填写时实例不计容量补偿",
+      "grade": "A",
+      "source": "鲁发改价格〔2025〕576号；执行依据鲁发改价格〔2023〕1022号"
+    },
+    "storage_participation": {
+      "requirement": "独立储能、抽水蓄能全部报量报价，按报价出清充放电曲线",
+      "effective_from": "2026-01-01",
+      "grade": "A/B",
+      "source": "新版《山东电力市场规则（试行）》"
+    },
+    "negative_price": {
+      "hours_2025": ">1500",
+      "floor_share_2025": "13%",
+      "grade": "B/C",
+      "source": "山东省能源局/中国能源网"
+    },
+    "vpp_threshold": {
+      "storage_class": "≥1 MW 且持续充放电 ≥2 h",
+      "grade": "A",
+      "source": "鲁发改能源〔2026〕407号",
+      "note": "VPP 聚合门槛，不适用于独立储能本体"
+    }
+  },
+  "asset": {
+    "name": "示例独立储能电站（D 级合成，不是真实项目）",
+    "power_mw": 100,
+    "energy_mwh": 200,
+    "usable_energy_mwh": 180,
+    "rte": 0.86,
+    "soc_min": 0.05,
+    "soc_max": 0.95,
+    "soc_init": 0.5,
+    "degradation_cny_per_mwh_throughput": 18,
+    "fixed_cost_cny_per_day": 0,
+    "effective_capacity_mw": 100,
+    "solver_states": 160,
+    "grid_connection": {
+      "import_limit_mw": 100,
+      "export_limit_mw": 100
+    },
+    "grade": "D",
+    "source": "示例占位；实际项目按 PCS/BMS/变压器铭牌、实测效率与运维台账填写"
+  },
+  "policy": {
+    "profile_id": "balanced-v1",
+    "description": "中位数量、放电加价 15 元/MWh、充电压价 10 元/MWh；尖峰阈值 800 元/MWh 时放电加价 50；日循环上限 1.5；最小日价差 80 元/MWh",
+    "declared_quantity_quantile": 0.5,
+    "price_reference_quantile": 0.5,
+    "discharge_markup_cny_per_mwh": 15,
+    "charge_markup_cny_per_mwh": 10,
+    "spike_threshold_cny_per_mwh": 800,
+    "spike_markup_cny_per_mwh": 50,
+    "max_cycles_per_day": 1.5,
+    "min_daily_spread_cny_per_mwh": 80,
+    "grade": "D",
+    "note": "风格参数是交易员选择，不是事实；改 profile_id 并保留旧文件，便于比较风格差异。"
+  },
+  "contracts": [],
+  "data_contract": {
+    "d1": {
+      "file": "data/d1_demo.csv",
+      "required_fields": [
+        "date",
+        "slot",
+        "start",
+        "end",
+        "price_s1",
+        "price_s2",
+        "price_s3",
+        "price_s4",
+        "price_s5"
+      ],
+      "scenario_fields": [
+        "price_s1",
+        "price_s2",
+        "price_s3",
+        "price_s4",
+        "price_s5"
+      ],
+      "scenario_weights": [0.2, 0.2, 0.2, 0.2, 0.2],
+      "release_cutoff": "D-1 09:00",
+      "note": "5 列情景价格等权；可用 P10/P25/P50/P75/P90 或集合成员替换，但必须保持 96 点与同一交易日。"
+    },
+    "t1": {
+      "file": "data/t1_demo.csv",
+      "required_fields": [
+        "date",
+        "slot",
+        "actual_price",
+        "actual_discharge_mw",
+        "actual_charge_mw"
+      ],
+      "note": "实际结算价与计量充放电量；没有实际数据时只出申报表，不跑差异桥。"
+    }
+  }
+}

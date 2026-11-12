@@ -3,3 +3,4 @@ __pycache__/
 .idea/
 .workbuddy/
 _site/
+skills/spot-bidding-quant/instances/*/out/

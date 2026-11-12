@@ -5,7 +5,8 @@ skill's forecasts and bid curves into the artefacts a desk actually uses:
 
 * a decision clock with an explicit data cutoff for every step;
 * an expected-profit versus CVaR frontier for candidate curves;
-* an exact settlement variance bridge, plus implicit (opportunity) losses;
+* exact settlement variance bridges for a generator and for a storage asset,
+  plus implicit (opportunity) losses;
 * a schema and gap check for a one-province, one-period public-data backtest.
 
 All examples are synthetic. A public-data backtest still needs the user's own
@@ -363,6 +364,158 @@ def settlement_bridge(
     }
 
 
+def _broadcast(value, n, name):
+    if isinstance(value, (list, tuple)):
+        if len(value) != n:
+            raise ValueError(f"{name} must have {n} values")
+        return [float(v) for v in value]
+    return [float(value)] * n
+
+
+def _storage_frame(frame, name, n):
+    for key in ("price", "discharge_mw", "charge_mw"):
+        if key not in frame:
+            raise ValueError(f"{name} is missing '{key}'")
+        if len(frame[key]) != n:
+            raise ValueError(f"{name}.{key} must have {n} values")
+    price = [float(v) for v in frame["price"]]
+    discharge = [float(v) for v in frame["discharge_mw"]]
+    charge = [float(v) for v in frame["charge_mw"]]
+    if any(v < -1e-9 for v in discharge + charge):
+        raise ValueError(f"{name} quantities must be non-negative")
+    return price, [max(0.0, v) for v in discharge], [max(0.0, v) for v in charge]
+
+
+def storage_bridge(
+    plan: dict,
+    actual: dict,
+    *,
+    dt_h: float = 0.25,
+    degradation_per_mwh: float = 0.0,
+    contract_quantity_mw=0.0,
+    contract_price: float = 0.0,
+    capacity_plan: float = 0.0,
+    capacity_actual: float = 0.0,
+    penalty_plan: float = 0.0,
+    penalty_actual: float = 0.0,
+    allocation_plan: float = 0.0,
+    allocation_actual: float = 0.0,
+) -> dict:
+    """Exact plan-versus-actual bridge for a storage asset.
+
+    Both frames carry per-interval ``price``, ``discharge_mw`` and
+    ``charge_mw``. Charge and discharge are kept separate so a quantity error on
+    the charge side cannot hide inside discharge revenue. The contract is a
+    fixed-price CfD overlay on a net-discharge profile, which is algebraically
+    the same as the physical convention ``Qc*Pc + (Q-Qc)*P``.
+
+    Capacity compensation, penalties and allocations are daily scalars. Amounts
+    are exact floats; round at the display layer. The identity is checked by
+    ``identity_gap`` (sum of buckets minus profit delta).
+    """
+    if "price" not in plan or "price" not in actual:
+        raise ValueError("plan and actual must carry a 'price' series")
+    n = len(plan["price"])
+    if len(actual["price"]) != n:
+        raise ValueError("plan and actual must have the same length")
+    p_plan, dis_plan, ch_plan = _storage_frame(plan, "plan", n)
+    p_act, dis_act, ch_act = _storage_frame(actual, "actual", n)
+    qc = _broadcast(contract_quantity_mw, n, "contract_quantity_mw")
+    if float(contract_price) < 0:
+        raise ValueError("contract_price must be non-negative")
+    if any(q < -1e-9 for q in qc):
+        raise ValueError("contract quantities must be non-negative")
+    dt = float(dt_h)
+    if dt <= 0:
+        raise ValueError("dt_h must be positive")
+    deg = float(degradation_per_mwh)
+
+    def frame_values(prices, discharge, charge):
+        spot = sum((discharge[t] - charge[t]) * prices[t] * dt for t in range(n))
+        throughput = sum((discharge[t] + charge[t]) * dt for t in range(n))
+        contract = sum(
+            qc[t] * (float(contract_price) - prices[t]) * dt for t in range(n)
+        )
+        return spot, throughput, contract
+
+    plan_spot, plan_throughput, plan_contract = frame_values(
+        p_plan, dis_plan, ch_plan
+    )
+    actual_spot, actual_throughput, actual_contract = frame_values(
+        p_act, dis_act, ch_act
+    )
+    plan_deg = plan_throughput * deg
+    actual_deg = actual_throughput * deg
+    plan_profit = (
+        plan_spot
+        + plan_contract
+        - plan_deg
+        + float(capacity_plan)
+        - float(penalty_plan)
+        - float(allocation_plan)
+    )
+    actual_profit = (
+        actual_spot
+        + actual_contract
+        - actual_deg
+        + float(capacity_actual)
+        - float(penalty_actual)
+        - float(allocation_actual)
+    )
+    delta = actual_profit - plan_profit
+
+    buckets = []
+    for label, planned, executed, sign in (
+        ("放电", dis_plan, dis_act, 1.0),
+        ("充电", ch_plan, ch_act, -1.0),
+    ):
+        quantity = sign * sum(
+            p_plan[t] * (executed[t] - planned[t]) * dt for t in range(n)
+        )
+        price = sign * sum(
+            planned[t] * (p_act[t] - p_plan[t]) * dt for t in range(n)
+        )
+        cross = sign * sum(
+            (executed[t] - planned[t]) * (p_act[t] - p_plan[t]) * dt
+            for t in range(n)
+        )
+        buckets.append(
+            {"item": f"{label}量偏差", "category": "量", "owner": "交易/调度", "amount": quantity}
+        )
+        buckets.append(
+            {"item": f"{label}价偏差", "category": "价", "owner": "市场", "amount": price}
+        )
+        buckets.append(
+            {"item": f"{label}量价交叉", "category": "量价交叉", "owner": "交易", "amount": cross}
+        )
+    buckets.extend(
+        [
+            {"item": "退化成本", "category": "成本", "owner": "运行/财务", "amount": -(actual_deg - plan_deg)},
+            {"item": "合约价差", "category": "合约", "owner": "交易/财务", "amount": actual_contract - plan_contract},
+            {"item": "容量补偿", "category": "容量", "owner": "财务/交易", "amount": float(capacity_actual) - float(capacity_plan)},
+            {"item": "考核", "category": "考核", "owner": "交易", "amount": -(float(penalty_actual) - float(penalty_plan))},
+            {"item": "分摊", "category": "分摊", "owner": "财务/交易", "amount": -(float(allocation_actual) - float(allocation_plan))},
+        ]
+    )
+    total = sum(bucket["amount"] for bucket in buckets)
+    return {
+        "plan_profit": plan_profit,
+        "actual_profit": actual_profit,
+        "delta": delta,
+        "buckets": buckets,
+        "total": total,
+        "identity_gap": total - delta,
+        "plan_spot": plan_spot,
+        "actual_spot": actual_spot,
+        "plan_contract": plan_contract,
+        "actual_contract": actual_contract,
+        "plan_degradation": plan_deg,
+        "actual_degradation": actual_deg,
+        "plan_throughput_mwh": plan_throughput,
+        "actual_throughput_mwh": actual_throughput,
+    }
+
+
 def implicit_cost(
     plan: dict,
     actual: dict,
@@ -421,6 +574,21 @@ _DISPUTE_GUIDE = {
         "owner": "调度/计量",
         "question": "差异是申报量、执行量还是计量口径造成的？",
         "evidence": ["申报回执与改单记录", "出清结果", "计量数据与 CT/PT 变比"],
+    },
+    "量价交叉": {
+        "owner": "交易",
+        "question": "交叉项是否由申报量与价格同时偏离导致？先拆价、再拆量，最后看交叉。",
+        "evidence": ["申报回执", "出清结果", "结算单"],
+    },
+    "合约": {
+        "owner": "交易/财务",
+        "question": "合约曲线、参考点与结算价是否与计划版本一致？",
+        "evidence": ["合约分解曲线", "参考点选择", "合约结算单"],
+    },
+    "容量": {
+        "owner": "财务/交易",
+        "question": "有效容量、补偿标准与供需系数是否按同一版本计算？",
+        "evidence": ["容量补偿计算底稿", "有效容量认定", "补偿标准文件"],
     },
     "成本": {
         "owner": "财务/生产",

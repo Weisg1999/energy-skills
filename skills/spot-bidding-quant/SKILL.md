@@ -623,6 +623,20 @@ R = Qc·Pc + (Qda − Qc)·Pda + (Qa − Qda)·Prt
 
 工程化落地（规则版本库、数据契约、限额、对账与归因的系统实现）见 [量化报价与交易风控（工程化）](../../knowledge/量化报价与交易风控-工程化-2026-11.md)；本章只给交易台的决策节奏与最小工具。
 
+### 13.6 实例包：把方法落到一省一主体
+
+引擎层给方法与算例，实例层回答"明天报什么"。第一个纵向切片是山东独立储能（`instances/shandong-storage-2026-11/`）：
+
+- 配置入口 `instance.json`：`meta` / `rules` / `asset` / `policy` / `contracts` / `data_contract` 六块；每个规则块必须带来源级别，缺一个就拒绝运行；
+- 一条命令：`python skills/spot-bidding-quant/instances/shandong-storage-2026-11/run.py --demo`；
+- 产出：D-1 申报表、情景期望边际与 CVaR10、T+1 差异桥、复核表；
+- 资产参数与风格档分离，`policy` 的 SHA-1 指纹写入复盘表；换风格不改代码，旧档保留可比较；
+- 调度复用 `ems-dispatch/tools/dispatch.py`，本技能不维护第二个优化器；
+- v1 只覆盖现货电能量 + 容量补偿占位 + CfD 合约；辅助服务、中长期分解、租赁未纳入；
+- 演示数据为 D 级合成；容量补偿标准与供需系数待核实，空值时不估算。
+
+schema、填写流程与数据安全边界见 `instances/README.md`；山东易错点见该实例目录的 `pitfalls.md`。
+
 ---
 
 ## 14. 关键公式与代码映射
@@ -650,6 +664,8 @@ R = Qc·Pc + (Qda − Qc)·Pda + (Qa − Qda)·Prt
 | 情景指标 | 期望利润 + 加权 CVaR | `desk.curve_metrics` |
 | 风险前沿 | 非支配的 (E, CVaR) 候选 | `desk.risk_frontier` |
 | 结算差异桥 | 四价量项 + 成本/考核/分摊 | `desk.settlement_bridge` |
+| 储能差异桥 | 充放电分侧量价交叉 + 退化/合约/容量/考核/分摊 | `desk.storage_bridge` |
+| 情景分位申报 | 5 情景 DP → 分位量价 → 限价裁剪 | `instances/shandong-storage-2026-11/run.py` |
 | 隐性成本 | 机会损失 + 偏差 + 合约敞口 | `desk.implicit_cost` |
 | 争议包 | 重要性阈值 + 证据清单 | `desk.dispute_packet` |
 | 公开数据校验 | 字段/重复/96 点缺口/排序 | `desk.validate_public_dataset` |
@@ -714,7 +730,7 @@ R = Qc·Pc + (Qda − Qc)·Pda + (Qa − Qda)·Prt
 ### 16.3 数据说明
 本技能目录下的 `data/sample/synthetic_spot_60d.csv` 为**合成数据**（60 天 × 96 点，含日前/实时价、负荷预测与实际、风光预测与实际），由 `tools/gen_sample.py` 以固定随机种子生成。它用于验证方法与代码，不代表任何真实市场。替换为自有数据时，只需保持列名一致。
 
-第 13 章的合约前沿、结算差异桥、隐性成本算例同样为**合成情景**，由 `tools/desk.py` 计算并由 `tools/selftest.py` 锁定；它们验证口径与代码，不是实盘收益，也不构成交易建议。公开数据回测的样例 CSV 只用于校验数据结构，不代表任何省份的真实价格。
+第 13 章的合约前沿、结算差异桥、隐性成本算例同样为**合成情景**，由 `tools/desk.py` 计算并由 `tools/selftest.py` 锁定；它们验证口径与代码，不是实盘收益，也不构成交易建议。公开数据回测的样例 CSV 只用于校验数据结构，不代表任何省份的真实价格。实例包的 `data/d1_demo.csv` / `t1_demo.csv` 同样由 `make_demo.py` 以固定规则生成，是**D 级合成数据**，不代表任何真实电站或市场价格；真实数据只在本地使用。
 
 ### 16.4 与姊妹技能的分工
 - 市场规则、结算公式、限价与政策沿革 → 《电力交易专家》；
