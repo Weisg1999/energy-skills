@@ -15,6 +15,11 @@ by ``curves.py``, and are not a forecast for any real customer or province.
 
 from __future__ import annotations
 
+import importlib.util
+import json
+import tempfile
+from pathlib import Path
+
 import bill
 import curves
 import demand
@@ -189,6 +194,63 @@ def main():
         load, curves.tou_prices(), "peak", "valley", 0, dt_h=dt, max_power_kw=1_300
     )
     close("H zero shift saving (CNY)", zero["saving"], 0.0, 1e-9)
+
+    # I. Jiangsu C&I storage instance: declaration and storage savings stay separate.
+    pack_dir = (
+        Path(__file__).resolve().parents[1]
+        / "instances"
+        / "jiangsu-ci-storage-2026-11"
+    )
+    spec = importlib.util.spec_from_file_location("jiangsu_ci_storage_instance", pack_dir / "run.py")
+    runner = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(runner)
+    instance_path = pack_dir / "instance.json"
+    config = json.loads(instance_path.read_text(encoding="utf-8"))
+    report = runner.validate_instance(config)
+    print(f"ok  I instance config ok={report['ok']} warnings={len(report['warnings'])}")
+    check(report["ok"], "I config validates")
+    check(
+        config["data_contract"]["load"]["months"] == 12
+        and config["data_contract"]["load"]["points_per_month"] == 96,
+        "I 12x96 load grid",
+    )
+
+    broken = json.loads(json.dumps(config))
+    del broken["rules"]["basic_charge"]["grade"]
+    raises(lambda: runner.validate_instance(broken), "I rule block without grade is rejected")
+
+    bad_declared = json.loads(json.dumps(config))
+    bad_declared["asset"]["contract_demand_kw"] = bad_declared["asset"]["transformer_kva"] + 100.0
+    raises(lambda: runner.validate_instance(bad_declared), "I declaration above transformer is rejected")
+
+    with tempfile.TemporaryDirectory() as tmp:
+        result = runner.run_instance(
+            instance_path,
+            pack_dir / "data" / "load_demo.csv",
+            Path(tmp),
+        )
+        summary = result["summary"]
+        close("I baseline bill (CNY)", summary["baseline_total_cny"], 6_639_050.46, 0.05)
+        close("I declaration-only bill (CNY)", summary["optimized_total_cny"], 6_586_795.22, 0.05)
+        close("I with-storage bill (CNY)", summary["headline_total_cny"], 6_474_697.26, 0.05)
+        close("I declaration saving (CNY)", summary["declaration_saving_cny"], 52_255.24, 0.05)
+        close("I storage net saving (CNY)", summary["storage_saving_cny"], 70_072.39, 0.05)
+        close("I total saving (CNY)", summary["net_saving_cny"], 122_327.63, 0.05)
+        close("I storage capex (CNY)", summary["storage_capex_cny"], 900_000.0, 0.01)
+        close("I payback (years)", summary["payback_years"], 12.8439, 1e-3)
+        close("I discharge (MWh)", summary["discharge_mwh"], 113.9265, 1e-3)
+        close("I charge (MWh)", summary["charge_mwh"], 126.5849, 1e-3)
+        close("I average shave (kW)", summary["average_reduction_kw"], 54.725, 1e-3)
+        close("I degradation (CNY)", summary["degradation_cny"], 12_025.57, 0.05)
+        close("I fixed opex (CNY)", summary["fixed_opex_cny"], 30_000.0, 0.01)
+        check(summary["declaration_saving_cny"] + summary["storage_saving_cny"] == summary["net_saving_cny"], "I savings add up")
+        check(summary["policy_fingerprint"] == "4a210e513c99", "I policy fingerprint")
+        check(len(summary["months"]) == 12, "I twelve monthly bills")
+        check((Path(tmp) / "bill_baseline.csv").exists(), "I baseline bill file")
+        check((Path(tmp) / "bill_with_storage.csv").exists(), "I storage bill file")
+        check((Path(tmp) / "basic_charge_compare.csv").exists(), "I basic-charge comparison file")
+        check((Path(tmp) / "demand.csv").exists(), "I demand file")
+        check((Path(tmp) / "review.md").exists(), "I review file")
 
     print("\nAll tariff and bill self-tests passed.")
 

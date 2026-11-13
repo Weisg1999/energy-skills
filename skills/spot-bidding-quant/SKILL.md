@@ -272,6 +272,8 @@ profit = (p − c)(a − b·p)  →  p* = (a/b + c)/2
 ### 8.3 光储联合报价
 典型形态：午间光伏大发、价格低（甚至为负）时充电；晚峰放电。联合报价要同时满足：SOC 约束、充放电功率、并网容量、辅助服务申报占用。输出应是一条**净出力曲线 + 分时段报价**，而不是两个独立资产的报价简单相加。
 
+山东 2026-08-27 通知把配建储能与新能源场站作为**一个联合主体**注册与计量：上网电量 = 光伏 + 放电 − 充电，充电只能来自配套光伏（除电网统一调度），配储功率上限为光伏 50% / 风电 30%，出清计划边界 0~场站额定容量。可运行切片见 `instances/shandong-pv-storage-2026-11/`：5 组成对的价格/光伏情景、净头寸分位申报、弃光与充电权衡、T+1 六科目差异桥。
+
 ### 8.4 收益测算的输入契约
 任何"储能年增收 X 万元"的结论，必须列明：功率/容量、往返效率、循环成本、衰减曲线、可用率、电价样本区间、辅助服务资格与补偿标准、容量补偿口径。缺项即不可比。
 
@@ -625,21 +627,23 @@ R = Qc·Pc + (Qda − Qc)·Pda + (Qa − Qda)·Prt
 
 ### 13.6 实例包：把方法落到一省一主体
 
-引擎层给方法与算例，实例层回答"明天报什么"。现有三个纵向切片：
+引擎层给方法与算例，实例层回答"明天报什么"。现有五个纵向切片：
 
 | 实例 | 主体 | 粒度 | 本包特有建模点 |
 |---|---|---|---|
 | `instances/shandong-storage-2026-11/` | 山东独立储能 | 96 点 / 15 分钟 | 5 情景 DP 分位申报、CfD、容量补偿占位 |
+| `instances/shandong-pv-storage-2026-11/` | 山东光伏 + 配建储能联合主体 | 96 点 / 15 分钟 | 联合净出力申报、弃光/充电权衡、禁止电网充电、无容量补偿 |
+| `instances/shandong-thermal-2026-11/` | 山东煤电/热电联产 | 96 点 / 15 分钟 | 供热最小出力 must-run、增量块成本报价、调频备用扣减、T+1 六桶差异桥 |
 | `instances/gansu-wind-2027/` | 甘肃风电 | 96 点 / 15 分钟 | 风功率情景报量、机制电价双向差价、钓鱼法 D 级考核 |
 | `instances/shanxi-storage-2026-11/` | 山西独立储能 | 288 点 / 5 分钟 | 价差报价、日前 + 实时两结算、熔断窗口压力测试 |
 
-三个包共用同一套骨架：
+五个包共用同一套骨架：
 
 - 配置入口 `instance.json`：`meta` / `rules` / `asset` / `policy` / `contracts` / `data_contract` 六块；每个规则块必须带来源级别，缺一个就拒绝运行；
 - 一条命令：`python skills/spot-bidding-quant/instances/<实例>/run.py --demo`；
 - 产出：申报表、情景期望收益与 CVaR、T+1 差异桥、复核表；
 - 资产参数与风格档分离，`policy` 的 SHA-1 指纹写入复盘表；换风格不改代码，旧档保留可比较；
-- 调度复用 `ems-dispatch/tools/dispatch.py`，本技能不维护第二个优化器；
+- 调度复用 `ems-dispatch/tools/dispatch.py`，本技能不维护第二个优化器；热电包用"供热最小出力 + 增量块"的解析报价，不引入额外优化器；光储包把 `dispatch_day` 的 `load_kw` 置零、光伏曲线作为唯一电源，并网上限与禁止电网充电分别用 `pcc_export_kw` 与 `pcc_import_kw=0` 约束；
 - 只覆盖现货电能量与各自声明的附加项；辅助服务、中长期分解、租赁未纳入；
 - 演示数据为 D 级合成；未核实的容量补偿、熔断重算与机制参考价不估算。
 
@@ -674,6 +678,8 @@ schema、填写流程与数据安全边界见 `instances/README.md`；各省易�
 | 结算差异桥 | 四价量项 + 成本/考核/分摊 | `desk.settlement_bridge` |
 | 储能差异桥 | 充放电分侧量价交叉 + 退化/合约/容量/考核/分摊 | `desk.storage_bridge` |
 | 情景分位申报 | 5 情景 DP → 分位量价 → 限价裁剪 | `instances/shandong-storage-2026-11/run.py` |
+| 光储净出力申报 | `max(0, 光伏 − 充电 + 放电)`，弃光 = 净出力 − 并网上限 | `instances/shandong-pv-storage-2026-11/run.py` |
+| 热电两部制报价 | must-run = max(最小出力, 供热负荷/热电比) + 增量块按成本报价 | `instances/shandong-thermal-2026-11/run.py` |
 | 机制电价差价 | ratio × (P_mech − capture) × Q | `instances/gansu-wind-2027/run.py` |
 | 日前 + 实时两结算 | plan×DA + (actual−plan)×RT | `instances/shanxi-storage-2026-11/run.py` |
 | 熔断压力 | window net × fuse price | `instances/shanxi-storage-2026-11/run.py` |

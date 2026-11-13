@@ -156,6 +156,74 @@ def main():
         assert (Path(tmp) / "duration_ladder.csv").exists()
         assert summary["policy_fingerprint"] == "1ea292c25eed"
 
+    # Instance L: Guangdong spot + frequency pack; capacity revenue must stay excluded.
+    gd_dir = (
+        Path(__file__).resolve().parents[1]
+        / "instances"
+        / "guangdong-storage-2026-11"
+    )
+    gd_spec = importlib.util.spec_from_file_location("guangdong_storage_instance", gd_dir / "run.py")
+    gd = importlib.util.module_from_spec(gd_spec)
+    gd_spec.loader.exec_module(gd)
+    gd_instance = gd_dir / "instance.json"
+    gd_config = json.loads(gd_instance.read_text(encoding="utf-8"))
+    gd_report = gd.validate_instance(gd_config)
+    print(f"gd config ok={gd_report['ok']} warnings={len(gd_report['warnings'])}")
+    assert gd_report["ok"]
+    assert gd_report["checks"][0]["points_per_day"] == 96
+    assert gd_report["checks"][0]["mtu_min"] == 15
+    assert gd_config["rules"]["capacity"]["included"] is False
+    assert gd_config["rules"]["capacity"]["price_cny_per_kw_year"] is None
+
+    paid = json.loads(json.dumps(gd_config))
+    paid["rules"]["capacity"]["included"] = True
+    paid["rules"]["capacity"]["price_cny_per_kw_year"] = 165.0
+    try:
+        gd.validate_instance(paid)
+    except gd.ConfigError:
+        pass
+    else:
+        raise AssertionError("an unverified Guangdong storage capacity price must be rejected")
+
+    reserve = json.loads(json.dumps(gd_config))
+    reserve["policy"]["frequency_reserve_mw"] = 120.0
+    try:
+        gd.validate_instance(reserve)
+    except gd.ConfigError:
+        pass
+    else:
+        raise AssertionError("frequency reserve above rated power must be rejected")
+
+    with tempfile.TemporaryDirectory() as tmp:
+        gd_result = gd.run_instance(
+            gd_instance,
+            gd_dir / "data" / "scenarios_demo.csv",
+            gd_dir / "data" / "frequency_demo.csv",
+            gd_dir / "data" / "availability_demo.csv",
+            Path(tmp),
+        )
+        gd_summary = gd_result["summary"]
+        close("L arbitrage net (CNY)", gd_summary["arbitrage_net_cny"], 8_633_473.43, 0.05)
+        close("L frequency capacity (CNY)", gd_summary["frequency_capacity_cny"], 1_700_928.0, 0.05)
+        close("L frequency mileage (CNY)", gd_summary["frequency_mileage_cny"], 4_459_769.92, 0.05)
+        close("L frequency gross (CNY)", gd_summary["frequency_gross_cny"], 6_160_697.92, 0.05)
+        close("L stack net (CNY)", gd_summary["stack_net_cny"], 15_319_268.22, 0.05)
+        close("L operating net (CNY)", gd_summary["operating_net_cny"], 10_787_894.08, 0.05)
+        close("L NPV @8% (CNY)", gd_summary["npv_cny"], -87_661_250.56, 5.0)
+        close("L IRR", gd_summary["irr"], -0.013024, 1e-6)
+        assert gd_summary["payback_years"] is None
+        close("L LCOS (CNY/MWh)", gd_summary["lcos_cny_per_mwh"], 906.4602, 1e-2)
+        close("L capacity gap (CNY/yr)", gd_summary["capacity_gap_cny_per_year"], 13_251_196.71, 0.5)
+        close("L capacity gap (CNY/kW·yr)", gd_summary["capacity_gap_cny_per_kw_year"], 132.5120, 1e-3)
+        assert gd_summary["capacity_included"] is False
+        assert gd_summary["cvar_cny"] <= gd_summary["expected_operating_net_cny"]
+        assert summary["policy_fingerprint"] != gd_summary["policy_fingerprint"]
+        assert gd_summary["policy_fingerprint"] == "4be13b138b52"
+        assert len(gd_summary["frequency_months"]) == 12
+        assert (Path(tmp) / "frequency.csv").exists()
+        assert (Path(tmp) / "cashflow.csv").exists()
+        assert (Path(tmp) / "review.md").exists()
+
     print("\nAll storage-investment self-tests passed.")
 
 

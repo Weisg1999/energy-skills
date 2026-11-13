@@ -20,6 +20,8 @@
 instances/
 ├── README.md                       # 本文件：schema、填写流程、验收
 ├── shandong-storage-2026-11/       # 山东独立储能（96 点 / 15 分钟，现货 + 容量占位 + CfD）
+├── shandong-pv-storage-2026-11/    # 山东光储联合（96 点，净出力申报 + 弃光/充电权衡）
+├── shandong-thermal-2026-11/       # 山东煤电/热电（96 点，供热最小出力 + 增量块 + 调频备用）
 ├── gansu-wind-2027/                # 甘肃风电（96 点，现货 + 2027H1 机制电价 + 钓鱼法）
 └── shanxi-storage-2026-11/         # 山西独立储能（288 点 / 5 分钟，两结算 + 熔断压力）
 ```
@@ -29,6 +31,8 @@ instances/
 | 实例 | 主体 | 粒度 | 本包特有的建模点 |
 |---|---|---|---|
 | `shandong-storage-2026-11` | 独立新型储能 | 96 点 / 15 分钟 | 5 情景 DP 申报、CfD 覆盖、容量补偿占位（标准留空） |
+| `shandong-pv-storage-2026-11` | 光伏 + 配建储能联合主体 | 96 点 / 15 分钟 | 联合净出力申报、弃光与充电权衡、不得电网充电、无容量补偿 |
+| `shandong-thermal-2026-11` | 煤电/热电联产 | 96 点 / 15 分钟 | 供热最小出力 must-run、增量块成本报价、调频备用扣减、T+1 六桶差异桥 |
 | `gansu-wind-2027` | 集中式风电场 | 96 点 / 15 分钟 | 风功率情景报量、机制电价双向差价、钓鱼法 D 级考核 |
 | `shanxi-storage-2026-11` | 独立新型储能 | 288 点 / 5 分钟 | 价差报价、日前 + 实时两结算、熔断窗口压力测试 |
 
@@ -58,6 +62,7 @@ instances/
 | `settlement` | 结算口径 | `basis`（分账方式、容量补偿是否单列） |
 | `capacity_compensation` | 容量补偿公式 | `formula`、`price_cny_per_kw_year`、`supply_demand_coefficient`、`status` |
 | `storage_participation` | 储能参与方式 | `requirement`、`effective_from` |
+| `new_energy_participation` | 新能源与配建储能联合参与 | `joint_metering`、`clearing_plan_min_mw`、`max_colocated_storage_ratio_pv`、`charge_source`、`grid_charge_allowed`、`bid_mode_code` |
 | `negative_price` | 负价背景 | `hours_2025`、`floor_share_2025` |
 | `vpp_threshold` | VPP 门槛（如适用） | `storage_class`，并注明不适用于独立储能本体 |
 
@@ -77,6 +82,8 @@ instances/
 | `effective_capacity_mw` | MW | 容量补偿的"有效容量"，不等于铭牌 |
 | `solver_states` | — | DP 状态数，越大越精确越慢 |
 | `grid_connection.import_limit_mw` / `export_limit_mw` | MW | 关口进出口限制 |
+
+光储联合包另有 `asset.pv`（`capacity_mw`、`availability`）；`grid_connection.import_limit_mw` 在 `grid_charge_allowed=false` 时必须为 0。
 
 资产块通常是**私有数据**。入库版本用占位值并标 `grade: D`；真实参数只放本地覆盖文件，不要提交。
 
@@ -106,6 +113,8 @@ instances/
 
 `d1` 块声明 D-1 情景价格文件的字段、情景列、权重和发布截止时点；`t1` 块声明 T+1 实际价格与计量充放电量。路径相对实例目录，绝对路径用于本地私有数据。
 
+光储联合包另增 `price_scenario_fields` 与 `pv_scenario_fields` 两组列，按同一情景编号成对使用（低价情景对应高光伏），不能把价格与光伏独立抽样后随意拼配；`t1` 另需 `actual_pv_mw`、`actual_export_mw`、`actual_curtail_mw`，并满足 `光伏 − 充电 + 放电 − 上网 = 弃光`。
+
 ## 4. 输入格式
 
 ### 4.1 D-1（每时段 × 5 情景）
@@ -121,6 +130,13 @@ date,slot,start,end,price_s1,price_s2,price_s3,price_s4,price_s5
 - 价格列名与 `scenario_fields` 一致，权重之和为 1；
 - 情景可以来自分位数（P10/P25/P50/P75/P90）、集合预报成员或人工情景，但**必须是 D-1 截止前可得的**。
 
+光储联合包在同一行并列价格与光伏：
+
+```csv
+date,slot,start,end,pv_s1,pv_s2,pv_s3,pv_s4,pv_s5,price_s1,price_s2,price_s3,price_s4,price_s5
+2026-11-18,48,12:00,12:15,108.0,129.0,150.0,168.0,183.0,100.0,30.0,-40.0,-90.0,-120.0
+```
+
 ### 4.2 T+1（实际结算价与计量电量）
 
 ```csv
@@ -135,7 +151,7 @@ date,slot,actual_price,actual_discharge_mw,actual_charge_mw
 
 ## 5. 填写流程（约 30 分钟）
 
-1. **复制实例目录**：`cp -r instances/shandong-storage-2026-11 instances/<省>-<主体>-<年月>`；
+1. **复制实例目录**：`cp -r instances/shandong-storage-2026-11 instances/<省>-<主体>-<年月>`（光储联合复制 `shandong-pv-storage-2026-11`，热电复制 `shandong-thermal-2026-11`）；
 2. **改 `meta`**：实例名、省份、主体类型、规则版本、数据截止日；
 3. **核对 `rules`**：只填当前生效值，逐块写 `grade` 与 `source`；草案值放独立字段；
 4. **填 `asset`**：用铭牌与台账；`usable_energy_mwh` 按 SOC 窗口重算；
@@ -159,6 +175,12 @@ python skills/spot-bidding-quant/instances/shandong-storage-2026-11/run.py \
 
 # 山西 288 点 / 5 分钟实例
 python skills/spot-bidding-quant/instances/shanxi-storage-2026-11/run.py --demo
+
+# 山东光储联合 96 点实例
+python skills/spot-bidding-quant/instances/shandong-pv-storage-2026-11/run.py --demo
+
+# 山东煤电/热电 96 点实例
+python skills/spot-bidding-quant/instances/shandong-thermal-2026-11/run.py --demo
 ```
 
 产物（默认 `out/<run>/`）：`bid_sheet.csv`（申报表，96 点或 288 点随实例）、`summary.json`（配置、情景、评估摘要）、`bridge.json` / `bridge.csv`（T+1 差异桥）、`review.md`（复核表）。
@@ -174,7 +196,9 @@ python skills/spot-bidding-quant/instances/shanxi-storage-2026-11/run.py --demo
 - `usable_energy_mwh ≠ energy_mwh × (soc_max − soc_min)`；
 - `soc_min ≥ soc_max` 或 `soc_init` 越界；
 - 情景权重之和不为 1、情景列数与权重数不一致；
-- 合约覆盖超过 1、或合约类型不是 CfD。
+- 光储联合包额外校验：储能功率 ≤ 光伏容量 × 50%、并网出口 ≤ 出清计划上限（光伏额定容量）、`grid_charge_allowed=false` 时购电上限必须为 0、储能时长 ≥ 2 h、`bid_mode_code` 只能是 `quantity_only` / `price_quote`；
+- 合约覆盖超过 1、或合约类型不是 CfD（光储联合包 v1 不接受中长期/CfD 合约，改用中长期持仓实例包）；
+- 热电包额外校验：供热最小出力 ≤ 额定功率、调频预留 + 供热最小出力 ≤ 额定功率、辅助服务里程/价格不超上限。
 
 输入数据会拒绝：多交易日、缺时段、重复点、价格越界、充放电同时为正、电量超过功率上限。
 
@@ -200,10 +224,10 @@ python skills/spot-bidding-quant/instances/shanxi-storage-2026-11/run.py --demo
 ## 10. 新增实例
 
 1. 选一个**已正式运行、规则版本稳定**的省份与主体；
-2. 复制最接近的现有实例（现货电能量型复制山东，机制电价型复制甘肃，5 分钟型复制山西），保留 `run.py` 的校验骨架，改省份规则、资产与复核表标题；
+2. 复制最接近的现有实例（现货电能量型复制山东储能，光储联合复制山东光储，热电型复制山东煤电，机制电价型复制甘肃，5 分钟型复制山西），保留 `run.py` 的校验骨架，改省份规则、资产与复核表标题；
 3. 新建 `instance.json`，六个块齐全，规则值全部带来源级别；
 4. 在 `pitfalls.md` 写本省易错点（限价正负号、口径混用、批次混用、草案当现行）；
 5. 跑 `--check-config` 与 `--demo`，把关键输出写进实例 `README.md`；
 6. 不改知识库计数，不改 `knowledge/`；实例是技能目录内的配置层。
 
-已落地的其他主体层：售电侧见 [`skills/retail-electricity-risk/instances/`](../../retail-electricity-risk/instances/README.md)（广东 2026、江苏 2027），VPP 侧见 [`skills/virtual-power-plant/instances/`](../../virtual-power-plant/instances/README.md)（上海、浙江、江苏快响），储能投资侧见 [`skills/storage-investment-operations/instances/`](../../storage-investment-operations/instances/README.md)（安徽）。再往后才是配置向导与匿名复盘库。
+已落地的其他主体层：售电侧见 [`skills/retail-electricity-risk/instances/`](../../retail-electricity-risk/instances/README.md)（广东 2026、江苏 2027），VPP 侧见 [`skills/virtual-power-plant/instances/`](../../virtual-power-plant/instances/README.md)（上海、浙江、江苏快响），储能投资侧见 [`skills/storage-investment-operations/instances/`](../../storage-investment-operations/instances/README.md)（安徽、广东），电费侧见 [`skills/tariff-bill-optimization/instances/`](../../tariff-bill-optimization/instances/README.md)（江苏工商业）。再往后才是配置向导与匿名复盘库。

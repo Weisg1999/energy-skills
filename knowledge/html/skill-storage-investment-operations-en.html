@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>Storage Investment &amp; Operations | energy-skills Knowledge Base</title>
-<meta name="description" content="Revenue stacking, investment decisions, degradation and assessment (incl. Anhui capacity-price instance pack)">
+<meta name="description" content="Revenue stacking, investment decisions, degradation and assessment (incl. Anhui capacity-price and Guangdong spot-plus-frequency instance packs)">
 <link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
@@ -82,11 +82,11 @@
     <header class="doc-head">
       <div class="kicker">04 / SKILLS<i>Skill</i></div>
       <h1 class="doc-title">Storage Investment &amp; Operations</h1>
-      <p class="lede">Revenue stacking, investment decisions, degradation and assessment (incl. Anhui capacity-price instance pack)</p>
+      <p class="lede">Revenue stacking, investment decisions, degradation and assessment (incl. Anhui capacity-price and Guangdong spot-plus-frequency instance packs)</p>
       <p class="hook">Executable workflow and tools; synced with SKILL.md.</p>
       <div class="tags"><span class="tag">skill</span><span class="tag">storage</span><span class="tag">investment</span><span class="tag">LCOS</span></div>
-      <div class="doc-meta"><span>approx. 81.0k characters</span><span>73 min read</span><span>17 sections</span></div>
-      <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-storage-investment-operations-en.txt" download="Storage Investment &amp; Operations-SKILL.txt">Download TXT</a><span>Full skill document, about 94 KB, frontmatter included</span></p>
+      <div class="doc-meta"><span>approx. 81.5k characters</span><span>73 min read</span><span>17 sections</span></div>
+      <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-storage-investment-operations-en.txt" download="Storage Investment &amp; Operations-SKILL.txt">Download TXT</a><span>Full skill document, about 95 KB, frontmatter included</span></p>
     </header>
 
     <details class="toc-mobile">
@@ -147,6 +147,7 @@ conversion ratio = min(full-power continuous discharge duration ÷ longest annua
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Duration</th><th>Conversion ratio</th><th>Annual capacity charge</th></tr></thead><tbody><tr><td>2 h</td><td>1/3</td><td>CNY 5.5 million</td></tr><tr><td>4 h</td><td>2/3</td><td>CNY 11 million</td></tr><tr><td>6 h</td><td>1</td><td>CNY 16.5 million</td></tr></tbody></table></div>
 <aside class="note"><p>The table explains two things: why a 2 h project earns little in a 6 h-denominator province, and why &quot;longer duration&quot; is a policy incentive rather than a technical preference.</p></aside>
 <p>The full Anhui No. 526 workflow is available as a runnable instance: <a href="../../skills/storage-investment-operations/instances/anhui-storage-2027/README.md"><code>instances/anhui-storage-2027/</code></a> — two revenue legs (capacity charge and spot arbitrage), a 2/4/6 h duration ladder, 98% availability assessment, 15-year cash flow and a review table; edit only <code>instance.json</code> and the CSVs. The demo uses grade-D synthetic data and represents no real station or revenue.</p>
+<p>The spot-plus-frequency stacking template is <a href="../../skills/storage-investment-operations/instances/guangdong-storage-2026-11/README.md"><code>instances/guangdong-storage-2026-11/</code></a>: a Guangdong 100 MW / 200 MWh asset running 0.8 cycles/day and reserving 20 MW for frequency regulation; arbitrage and frequency revenue are accounted separately, then stacked with a 5% haircut. The capacity price is not yet closed for independent storage and is <strong>explicitly excluded</strong>; the pack instead reports the capacity revenue gap needed for NPV breakeven (about 132.5 CNY/kW·yr in the demo), so the 165 CNY/kW·yr coal capacity price is never misapplied to storage.</p>
 <h3 id="s12">2.2 Time-of-use reconstruction: Document 1656</h3>
 <p>The <em>Basic Rules for the Medium- and Long-Term Electricity Market</em> (NDRC Energy Regulation [2025] No. 1656, 2025-12-17, effective 2026-03-01) provide that for market participants trading directly, <strong>administrative time-of-use price levels and periods are no longer set</strong>; agency-purchase users still receive government-optimized peak-valley periods and floating ratios.</p>
 <p>This does not &quot;abolish time-of-use pricing&quot;; it <strong>moves the pricing authority from government to the market</strong>. The impact on storage investment is fundamental:</p>

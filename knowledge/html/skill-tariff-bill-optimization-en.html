@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>Tariff &amp; Bill Optimization | energy-skills Knowledge Base</title>
-<meta name="description" content="Bill line items, demand charges, TOU and package comparison">
+<meta name="description" content="Bill line items, demand charges, TOU and package comparison (incl. Jiangsu C&amp;I storage instance pack)">
 <link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
@@ -82,11 +82,11 @@
     <header class="doc-head">
       <div class="kicker">04 / SKILLS<i>Skill</i></div>
       <h1 class="doc-title">Tariff &amp; Bill Optimization</h1>
-      <p class="lede">Bill line items, demand charges, TOU and package comparison</p>
+      <p class="lede">Bill line items, demand charges, TOU and package comparison (incl. Jiangsu C&amp;I storage instance pack)</p>
       <p class="hook">Executable workflow and tools; synced with SKILL.md.</p>
       <div class="tags"><span class="tag">skill</span><span class="tag">tariff</span><span class="tag">two-part</span><span class="tag">packages</span></div>
-      <div class="doc-meta"><span>approx. 32.2k characters</span><span>29 min read</span><span>14 sections</span></div>
-      <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-tariff-bill-optimization-en.txt" download="Tariff &amp; Bill Optimization-SKILL.txt">Download TXT</a><span>Full skill document, about 38 KB, frontmatter included</span></p>
+      <div class="doc-meta"><span>approx. 33.3k characters</span><span>30 min read</span><span>14 sections</span></div>
+      <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-tariff-bill-optimization-en.txt" download="Tariff &amp; Bill Optimization-SKILL.txt">Download TXT</a><span>Full skill document, about 39 KB, frontmatter included</span></p>
     </header>
 
     <details class="toc-mobile">
@@ -101,11 +101,11 @@
             <li class="lv2"><a href="#s38">6. Power Factor and Surcharges</a></li>
             <li class="lv2"><a href="#s43">7. Retail Packages and Agency Purchasing Comparison</a></li>
             <li class="lv2"><a href="#s49">8. Worked Examples (synthetic data, grade D)</a></li>
-            <li class="lv2"><a href="#s57">9. Filing and Change Operations</a></li>
-            <li class="lv2"><a href="#s61">10. Engineering Review Checklist</a></li>
-            <li class="lv2"><a href="#s65">11. Code Map and Self-Test</a></li>
-            <li class="lv2"><a href="#s66">12. Frequently Asked Questions</a></li>
-            <li class="lv2"><a href="#s67">13. Sources and Maintenance</a></li>
+            <li class="lv2"><a href="#s58">9. Filing and Change Operations</a></li>
+            <li class="lv2"><a href="#s62">10. Engineering Review Checklist</a></li>
+            <li class="lv2"><a href="#s66">11. Code Map and Self-Test</a></li>
+            <li class="lv2"><a href="#s67">12. Frequently Asked Questions</a></li>
+            <li class="lv2"><a href="#s68">13. Sources and Maintenance</a></li>
       </ol>
     </details>
 
@@ -273,31 +273,35 @@ Above 0.9: for each 0.01 above, discount 0.15% of the energy-side subtotal, capp
 <p>Unit revenue = 1.05 − 0.30 = 0.75 CNY/kWh. If the process allows only 800 kWh, revenue halves proportionally; if the shift raises maximum demand, subtract the basic-charge increase.</p>
 <h3 id="s56">8.7 How to read</h3>
 <ul><li>Itemize the bill before optimizing: the basic charge, power factor and common items often offer more room than the energy unit price;</li><li>The basic-charge solution is the closed form &quot;declared value ÷ 1.05&quot;; the difficulty is monthly recomputation and load forecasting;</li><li>Package comparison must use the same calibre, same curve and scenarios; the baseline ranking can flip within ±20%;</li><li>Load-shifting revenue = price gap × energy, but must pass the process, power and demand gates first;</li><li>All numbers are grade-D synthetic data and cannot be used directly for real users.</li></ul>
+<h3 id="s57">8.8 Runnable instance: Jiangsu C&amp;I storage</h3>
+<p>The methods above are packaged as a runnable &quot;province + user + bill calibre&quot; instance: <a href="../../skills/tariff-bill-optimization/instances/jiangsu-ci-storage-2026-11/README.md"><code>instances/jiangsu-ci-storage-2026-11/</code></a>. Feed it a 12-month × 96-point load (<code>data/load_demo.csv</code>) plus <code>instance.json</code>, and it runs monthly bills, the three basic-charge methods, declaration recomputation and storage peak shaving in one pass:</p>
+<ul><li><strong>Declaration and storage accounted separately</strong>: first the saving from &quot;recompute the declaration only&quot;, then the net saving from &quot;storage shaving − degradation − O&amp;M&quot;; declaration optimization is never booked as storage revenue;</li><li><strong>The declaration is an ex-post upper bound</strong>: <code>D* = max(40% floor, A/1.05)</code> uses the month's actual peak; in practice it must be replaced by a load forecast;</li><li><strong>Report payback honestly</strong>: the demo uses 500 kW / 1,000 kWh and 12% shaving, yielding 70,100 CNY/year of storage net savings against 900,000 CNY capex, a simple payback of 12.84 years — the long payback is a strategy choice, not a calculation error.</li></ul>
+<p>Tariff, T&amp;D, funds and demand parameters are all grade-D placeholders; the current Jiangsu documents are not closed in this library, so the whole table must be replaced before drawing conclusions.</p>
 <hr>
-<h2 id="s57">9. Filing and Change Operations</h2>
-<h3 id="s58">9.1 Time windows</h3>
+<h2 id="s58">9. Filing and Change Operations</h2>
+<h3 id="s59">9.1 Time windows</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Matter</th><th>Typical lead time</th><th>Note</th></tr></thead><tbody><tr><td>Contracted-demand change</td><td>5 working days</td><td>Applied monthly, effective next month</td></tr><tr><td>Charging-method change</td><td>15 working days</td><td>Applied quarterly; some provinces limit the count</td></tr><tr><td>Installed-capacity increase</td><td>Per supply scheme</td><td>Involves design, construction and acceptance</td></tr><tr><td>Agency purchasing exit/entry</td><td>Per provincial rules</td><td>Must align with market contracts</td></tr></tbody></table></div>
 <p>Lead times and the number of changes follow the provincial implementation rules; the table is a common calibre, not a nationwide statutory deadline.</p>
-<h3 id="s59">9.2 Materials and calibres</h3>
+<h3 id="s60">9.2 Materials and calibres</h3>
 <ul><li>Application form, business licence, electricity account number;</li><li>Maximum demand and load curves for the last 3–12 months;</li><li>Transformer and high-voltage motor capacity list (for the 40% floor);</li><li>Supply scheme and metering points for dual feeders;</li><li>Reason and calculation sheet for the charging-method change.</li></ul>
-<h3 id="s60">9.3 Post-change review</h3>
+<h3 id="s61">9.3 Post-change review</h3>
 <ul><li>Check the declared value, charging method, overrun and power factor in the next bill;</li><li>Track actual maximum demand for three consecutive months; if close to the 105% line, raise the value early;</li><li>Lower the value when load falls, but never below the 40% floor;</li><li>Keep the receipt and bill of every filing for dispute handling.</li></ul>
 <hr>
-<h2 id="s61">10. Engineering Review Checklist</h2>
-<h3 id="s62">10.1 P0: affects correctness</h3>
+<h2 id="s62">10. Engineering Review Checklist</h2>
+<h3 id="s63">10.1 P0: affects correctness</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Check</th><th>Pass criterion</th></tr></thead><tbody><tr><td>Province and service area</td><td>Tariff, periods and power factor all from provincial documents</td></tr><tr><td>Voltage level and user category</td><td>Consistent with the bill</td></tr><tr><td>Price channel</td><td>Catalogue / agency / market never mixed</td></tr><tr><td>Billing period</td><td>Policy effective dates and price-change months handled</td></tr><tr><td>Units</td><td>kVA, kW, kWh, CNY/kWh never mixed</td></tr><tr><td>Basic-charge basis</td><td>Capacity or demand; declared value traceable</td></tr><tr><td>105% and 40% floor</td><td>Rules consistent with the province</td></tr><tr><td>TOU periods</td><td>Cover 24 h, no overlap, consistent with policy</td></tr><tr><td>Power-factor base</td><td>Consistent with the provincial assessment</td></tr><tr><td>Dual feeders</td><td>Separate or aggregated per the rules</td></tr><tr><td>Package calibre</td><td>Energy only; common items added back</td></tr><tr><td>Line-loss calibre</td><td>Already inside the T&amp;D price; not added twice</td></tr><tr><td>Tax-inclusive/exclusive</td><td>Calibre unified; tax rate and invoice type verified</td></tr></tbody></table></div>
-<h3 id="s63">10.2 P1: affects maintainability</h3>
+<h3 id="s64">10.2 P1: affects maintainability</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Check</th><th>Pass criterion</th></tr></thead><tbody><tr><td>Externalized parameters</td><td>Prices, periods and standards not hard-coded</td></tr><tr><td>Version management</td><td>Policy version and input snapshot saved per run</td></tr><tr><td>Scenario analysis</td><td>At least high / medium / low</td></tr><tr><td>Reproducible</td><td>Same inputs produce the same bill</td></tr><tr><td>Audit trail</td><td>Every number traces to a bill or document</td></tr><tr><td>Filing ledger</td><td>Declared value, effective month, receipts complete</td></tr></tbody></table></div>
-<h3 id="s64">10.3 Red lines</h3>
+<h3 id="s65">10.3 Red lines</h3>
 <ul><li>Never present a not-yet-effective or draft rule as executed;</li><li>Never substitute another province's price table;</li><li>Never hide the basic charge and assessments and report only a low energy price;</li><li>Never promise a user &quot;a certain amount of savings&quot;;</li><li>Never tamper with load and demand data.</li></ul>
 <hr>
-<h2 id="s65">11. Code Map and Self-Test</h2>
+<h2 id="s66">11. Code Map and Self-Test</h2>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>File</th><th>Purpose</th></tr></thead><tbody><tr><td><code>tools/bill.py</code></td><td>Bill items, three basic-charge methods, power-factor adjustment</td></tr><tr><td><code>tools/tariff.py</code></td><td>Period-table validation, TOU cost, load shifting</td></tr><tr><td><code>tools/demand.py</code></td><td>Optimal declared value, three-method comparison, annual optimization</td></tr><tr><td><code>tools/retail.py</code></td><td>Fixed / TOU / market-linked package comparison</td></tr><tr><td><code>tools/curves.py</code></td><td>Synthetic load, TOU prices and market curves</td></tr><tr><td><code>tools/selftest.py</code></td><td>Locks all worked examples A–H in the text</td></tr></tbody></table></div>
 <p>Run:</p>
 <pre tabindex="0"><code>python skills/tariff-bill-optimization/tools/selftest.py</code></pre>
 <p>A green self-test means the worked examples match the code; when policy parameters change, modify <code>curves.py</code> or the call parameters first, then synchronize the numbers in the text.</p>
 <hr>
-<h2 id="s66">12. Frequently Asked Questions</h2>
+<h2 id="s67">12. Frequently Asked Questions</h2>
 <p><strong>Q1: A user asks &quot;is 0.8 CNY/kWh expensive?&quot; How to answer?</strong></p>
 <p>Ask for the bill first: voltage level, two-part or single-part, basic-charge share, power factor, common items. 0.8 CNY/kWh may be energy 0.42 + common items 0.24 + basic charge 0.14; whether it is expensive depends on the structure and comparable users, not on one number.</p>
 <p><strong>Q2: Capacity charging or demand charging — which is cheaper?</strong></p>
@@ -309,12 +313,12 @@ Above 0.9: for each 0.01 above, discount 0.15% of the energy-side subtotal, capp
 <p><strong>Q5: Can storage peak-shaving reduce the basic charge?</strong></p>
 <p>Yes, but the demand cap must be written into the dispatch constraints, and the declared value and the 105% rule must be checked. Storage cannot correct demand &quot;afterwards&quot;; compute the post-clip maximum demand first, then set the declared value and installed capacity.</p>
 <hr>
-<h2 id="s67">13. Sources and Maintenance</h2>
-<h3 id="s68">13.1 Main sources</h3>
+<h2 id="s68">13. Sources and Maintenance</h2>
+<h3 id="s69">13.1 Main sources</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Type</th><th>Content</th></tr></thead><tbody><tr><td>Knowledge notes</td><td><a href="中国电价制度谱系-2026-11.html">Tariff system</a>, <a href="中国电价现行政策与查证-2026-11.html">current policy and verification</a>, <a href="中国电价史-2026-11.html">tariff history</a>, <a href="国际电价比较-方法与模板-2026-11.html">international comparison</a></td></tr><tr><td>Policy source texts</td><td>NDRC Pricing Department, provincial DRC/energy bureaus, grid agency-purchasing disclosures; document numbers and links in the policy list</td></tr><tr><td>Provincial samples</td><td><a href="省级市场状态表-2026-11.html">Provincial market status table</a>, <a href="省级政策列表-2026-11.html">provincial policy list</a> (grades B/C, to be verified)</td></tr><tr><td>Worked examples</td><td>All grade-D synthetic data generated by <code>tools/curves.py</code></td></tr></tbody></table></div>
-<h3 id="s69">13.2 Maintenance rules</h3>
+<h3 id="s70">13.2 Maintenance rules</h3>
 <ul><li>When tariff, periods, power factor or funds change, update the knowledge note first, then the <code>tools/</code> parameters and <code>selftest.py</code>, and finally the Chinese and English skill texts;</li><li>Provincial values must carry document number, effective date and source grade;</li><li>Drafts for comment must never be written as executed;</li><li>Review provincial samples and agency-purchasing prices quarterly; re-check P0 items monthly and synchronize with the knowledge hub.</li></ul>
-<h3 id="s70">13.3 Disclaimer</h3>
+<h3 id="s71">13.3 Disclaimer</h3>
 <p>This text and the tools are demonstrations only and constitute no investment advice, quotation commitment or legal opinion. Real user bill optimization must use the latest provincial documents, actual bills and load data, and be reviewed by qualified professionals.</p>
 <ul><li><strong>Price-driver routing</strong>: quantity (<a href="气象与电力交易-2026-11.html">weather and power trading</a>), price (<a href="燃料与电力交易-2026-11.html">fuel and power trading</a>), deliverability (<a href="省间与跨区交易-2026-11.html">inter-provincial trading</a> §5.5-5.6). For &quot;why is this interval expensive&quot;, check quantity -&gt; price -&gt; constraint -&gt; superposition; see the <a href="黄金问答集-2026-11.html">golden Q&amp;A</a> section F (Q29-Q38) for regression questions.</li></ul>
     </article>
@@ -417,21 +421,22 @@ Above 0.9: for each 0.01 above, discount 0.15% of the energy-side subtotal, capp
             <li class="lv3"><a href="#s54">8.5 Retail package comparison</a></li>
             <li class="lv3"><a href="#s55">8.6 Shiftable load</a></li>
             <li class="lv3"><a href="#s56">8.7 How to read</a></li>
-            <li class="lv2"><a href="#s57">9. Filing and Change Operations</a></li>
-            <li class="lv3"><a href="#s58">9.1 Time windows</a></li>
-            <li class="lv3"><a href="#s59">9.2 Materials and calibres</a></li>
-            <li class="lv3"><a href="#s60">9.3 Post-change review</a></li>
-            <li class="lv2"><a href="#s61">10. Engineering Review Checklist</a></li>
-            <li class="lv3"><a href="#s62">10.1 P0: affects correctness</a></li>
-            <li class="lv3"><a href="#s63">10.2 P1: affects maintainability</a></li>
-            <li class="lv3"><a href="#s64">10.3 Red lines</a></li>
-            <li class="lv2"><a href="#s65">11. Code Map and Self-Test</a></li>
-            <li class="lv2"><a href="#s66">12. Frequently Asked Questions</a></li>
-            <li class="lv2"><a href="#s67">13. Sources and Maintenance</a></li>
-            <li class="lv3"><a href="#s68">13.1 Main sources</a></li>
-            <li class="lv3"><a href="#s69">13.2 Maintenance rules</a></li>
-            <li class="lv3"><a href="#s70">13.3 Disclaimer</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="56" data-more-label="Show 56 subsections" data-less-label="Hide subsections">Show 56 subsections</button>
+            <li class="lv3"><a href="#s57">8.8 Runnable instance: Jiangsu C&amp;I storage</a></li>
+            <li class="lv2"><a href="#s58">9. Filing and Change Operations</a></li>
+            <li class="lv3"><a href="#s59">9.1 Time windows</a></li>
+            <li class="lv3"><a href="#s60">9.2 Materials and calibres</a></li>
+            <li class="lv3"><a href="#s61">9.3 Post-change review</a></li>
+            <li class="lv2"><a href="#s62">10. Engineering Review Checklist</a></li>
+            <li class="lv3"><a href="#s63">10.1 P0: affects correctness</a></li>
+            <li class="lv3"><a href="#s64">10.2 P1: affects maintainability</a></li>
+            <li class="lv3"><a href="#s65">10.3 Red lines</a></li>
+            <li class="lv2"><a href="#s66">11. Code Map and Self-Test</a></li>
+            <li class="lv2"><a href="#s67">12. Frequently Asked Questions</a></li>
+            <li class="lv2"><a href="#s68">13. Sources and Maintenance</a></li>
+            <li class="lv3"><a href="#s69">13.1 Main sources</a></li>
+            <li class="lv3"><a href="#s70">13.2 Maintenance rules</a></li>
+            <li class="lv3"><a href="#s71">13.3 Disclaimer</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="57" data-more-label="Show 57 subsections" data-less-label="Hide subsections">Show 57 subsections</button>
   </aside>
 </div>
 

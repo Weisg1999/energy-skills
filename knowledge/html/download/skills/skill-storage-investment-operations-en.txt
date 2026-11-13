@@ -132,6 +132,8 @@ conversion ratio = min(full-power continuous discharge duration ÷ longest annua
 
 The full Anhui No. 526 workflow is available as a runnable instance: [`instances/anhui-storage-2027/`](instances/anhui-storage-2027/README.md) — two revenue legs (capacity charge and spot arbitrage), a 2/4/6 h duration ladder, 98% availability assessment, 15-year cash flow and a review table; edit only `instance.json` and the CSVs. The demo uses grade-D synthetic data and represents no real station or revenue.
 
+The spot-plus-frequency stacking template is [`instances/guangdong-storage-2026-11/`](instances/guangdong-storage-2026-11/README.md): a Guangdong 100 MW / 200 MWh asset running 0.8 cycles/day and reserving 20 MW for frequency regulation; arbitrage and frequency revenue are accounted separately, then stacked with a 5% haircut. The capacity price is not yet closed for independent storage and is **explicitly excluded**; the pack instead reports the capacity revenue gap needed for NPV breakeven (about 132.5 CNY/kW·yr in the demo), so the 165 CNY/kW·yr coal capacity price is never misapplied to storage.
+
 ### 2.2 Time-of-use reconstruction: Document 1656
 
 The *Basic Rules for the Medium- and Long-Term Electricity Market* (NDRC Energy Regulation [2025] No. 1656, 2025-12-17, effective 2026-03-01) provide that for market participants trading directly, **administrative time-of-use price levels and periods are no longer set**; agency-purchase users still receive government-optimized peak-valley periods and floating ratios.

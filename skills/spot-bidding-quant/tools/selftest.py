@@ -607,6 +607,205 @@ def main() -> int:
         assert (Path(tmp) / "bridge.csv").exists()
         assert (Path(tmp) / "review.md").exists()
 
+    section("shandong thermal instance")
+    thermal_dir = (
+        repo_root / "skills" / "spot-bidding-quant" / "instances" / "shandong-thermal-2026-11"
+    )
+    thermal_spec = importlib.util.spec_from_file_location(
+        "shandong_thermal_instance", thermal_dir / "run.py"
+    )
+    thermal = importlib.util.module_from_spec(thermal_spec)
+    thermal_spec.loader.exec_module(thermal)
+    thermal_instance = thermal_dir / "instance.json"
+    thermal_config = json.loads(thermal_instance.read_text(encoding="utf-8"))
+    thermal_report = thermal.validate_instance(thermal_config)
+    print(
+        f"thermal config ok={thermal_report['ok']} points={thermal_report['points_per_day']} "
+        f"heat_min={thermal_report['heat_min_mw']:.2f}"
+    )
+    assert thermal_report["ok"] and thermal_report["points_per_day"] == 96, "thermal config must validate"
+    assert thermal_report["mtu_min"] == 15, "thermal pack must use 15-minute MTU"
+    assert thermal_report["bounds"] == {
+        "declare_floor": -80.0,
+        "declare_cap": 1300.0,
+        "clear_floor": -100.0,
+        "clear_cap": 1500.0,
+    }, "thermal price bounds must match Shandong current limits"
+    assert thermal_report["heat_min_mw"] == 150.0, "heat-driven minimum output must be 150 MW"
+
+    no_grade = json.loads(json.dumps(thermal_config))
+    del no_grade["rules"]["ancillary"]["grade"]
+    try:
+        thermal.validate_instance(no_grade)
+    except thermal.ConfigError:
+        pass
+    else:
+        raise AssertionError("a thermal rule block without grade must be rejected")
+
+    too_much_heat = json.loads(json.dumps(thermal_config))
+    too_much_heat["asset"]["heat_load_mw_th"] = 600.0
+    try:
+        thermal.validate_instance(too_much_heat)
+    except thermal.ConfigError:
+        pass
+    else:
+        raise AssertionError("heat-driven minimum output above rated power must be rejected")
+
+    over_cap = json.loads(json.dumps(thermal_config))
+    over_cap["policy"]["mileage_price_cny_per_kw_mile"] = 0.02
+    try:
+        thermal.validate_instance(over_cap)
+    except thermal.ConfigError:
+        pass
+    else:
+        raise AssertionError("mileage price above the provincial cap must be rejected")
+
+    with tempfile.TemporaryDirectory() as tmp:
+        thermal_result = thermal.run_instance(
+            thermal_instance,
+            thermal_dir / "data" / "d1_demo.csv",
+            thermal_dir / "data" / "t1_demo.csv",
+            Path(tmp),
+        )
+        thermal_summary = thermal_result["summary"]
+        thermal_plan = thermal_summary["plan"]
+        thermal_bridge = thermal_result["bridge"]
+        print(
+            f"thermal demo output={thermal_plan['output_mwh']:.1f} "
+            f"E={thermal_plan['expected_net_margin_cny']:.0f} "
+            f"CVaR10={thermal_plan['cvar_10_cny']:.0f} "
+            f"bridge={thermal_bridge['delta']:.0f} gap={thermal_bridge['identity_gap']:.2e}"
+        )
+        assert thermal_result["report"]["ok"]
+        assert abs(thermal_plan["output_mwh"] - 5369.328125) < 1e-6
+        assert abs(thermal_plan["must_run_average_mw"] - 150.0) < 1e-9
+        assert abs(thermal_plan["ancillary_cny"] - 6000.0) < 1e-9
+        assert thermal_plan["capacity_compensation_cny"] is None
+        assert abs(thermal_plan["net_margin_at_reference_cny"] - 296154.97) < 2.0
+        assert abs(thermal_plan["expected_net_margin_cny"] - 324691.45) < 2.0
+        assert abs(thermal_plan["cvar_10_cny"] + 96514.95) < 2.0
+        assert thermal_plan["cvar_10_cny"] <= thermal_plan["expected_net_margin_cny"]
+        assert abs(thermal_bridge["plan_profit"] - 296154.97) < 2.0
+        assert abs(thermal_bridge["actual_profit"] - 344127.0) < 2.0
+        assert abs(thermal_bridge["delta"] - 47972.0) < 2.0
+        assert len(thermal_bridge["buckets"]) == 6
+        assert abs(thermal_bridge["identity_gap"]) < 1e-6
+        assert abs(
+            thermal_bridge["delta"] - sum(item["amount"] for item in thermal_bridge["buckets"])
+        ) < 1e-6
+        assert thermal_summary["policy_fingerprint"] == "8c7f9b6f5c49"
+        assert len(thermal_result["bridge_detail"]) == 5
+        assert (Path(tmp) / "bid_sheet.csv").exists()
+        assert (Path(tmp) / "bridge.csv").exists()
+        assert (Path(tmp) / "review.md").exists()
+
+    section("shandong pv-storage instance")
+    pv_dir = (
+        repo_root / "skills" / "spot-bidding-quant" / "instances" / "shandong-pv-storage-2026-11"
+    )
+    pv_spec = importlib.util.spec_from_file_location("shandong_pv_storage_instance", pv_dir / "run.py")
+    pv = importlib.util.module_from_spec(pv_spec)
+    pv_spec.loader.exec_module(pv)
+    pv_instance = pv_dir / "instance.json"
+    pv_config = json.loads(pv_instance.read_text(encoding="utf-8"))
+    pv_report = pv.validate_instance(pv_config)
+    print(
+        f"pv+storage config ok={pv_report['ok']} points={pv_report['points_per_day']} "
+        f"export={pv_report['export_limit_mw']:.0f} MW bid_mode={pv_report['bid_mode']}"
+    )
+    assert pv_report["ok"] and pv_report["points_per_day"] == 96
+    assert pv_report["mtu_min"] == 15
+    assert pv_report["bid_mode"] == "quantity_only"
+    assert pv_report["export_limit_mw"] == 100.0
+    assert pv_report["import_limit_mw"] == 0.0
+    assert pv_report["clearing_plan_max_mw"] == 200.0
+    assert pv_report["storage_power_mw"] == 100.0
+    assert pv_report["storage_energy_mwh"] == 200.0
+
+    # Unit lock: cycles must be throughput in MWh, not a raw MW sum.
+    fake = {"schedule": {"p_charge_kw": [100_000.0] * 4, "p_discharge_kw": [100_000.0] * 4}}
+    _, _, fake_cycles, fake_scale = pv.scale_cycles(fake, 1.5, 200.0, 0.25)
+    assert abs(fake_cycles - 0.5) < 1e-9, "cycle count must multiply MW sums by dt_h"
+    assert fake_scale == 1.0
+    _, _, capped_cycles, capped_scale = pv.scale_cycles(fake, 0.25, 200.0, 0.25)
+    assert abs(capped_cycles - 0.5) < 1e-9 and abs(capped_scale - 0.5) < 1e-9
+
+    bad_cases = []
+    over_ratio = json.loads(json.dumps(pv_config))
+    over_ratio["asset"]["storage"]["power_mw"] = 120.0
+    bad_cases.append(("storage above 50% of PV", over_ratio))
+    grid_charge = json.loads(json.dumps(pv_config))
+    grid_charge["asset"]["grid_connection"]["import_limit_mw"] = 10.0
+    bad_cases.append(("grid charging with joint mode", grid_charge))
+    short_duration = json.loads(json.dumps(pv_config))
+    short_duration["asset"]["storage"]["energy_mwh"] = 100.0
+    bad_cases.append(("storage duration below 2 h", short_duration))
+    bad_mode = json.loads(json.dumps(pv_config))
+    bad_mode["rules"]["new_energy_participation"]["bid_mode_code"] = "price_taker"
+    bad_cases.append(("unknown bid mode", bad_mode))
+    over_export = json.loads(json.dumps(pv_config))
+    over_export["asset"]["grid_connection"]["export_limit_mw"] = 250.0
+    bad_cases.append(("export above clearing-plan cap", over_export))
+    for label, broken in bad_cases:
+        try:
+            pv.validate_instance(broken)
+        except pv.ConfigError:
+            pass
+        else:
+            raise AssertionError(f"pv+storage config must reject: {label}")
+
+    with tempfile.TemporaryDirectory() as tmp:
+        pv_result = pv.run_instance(
+            pv_instance,
+            pv_dir / "data" / "d1_demo.csv",
+            pv_dir / "data" / "t1_demo.csv",
+            Path(tmp),
+        )
+        pv_summary = pv_result["summary"]
+        pv_plan = pv_summary["plan"]
+        pv_bridge = pv_result["bridge"]
+        print(
+            f"pv+storage demo cycles={pv_plan['equivalent_cycles']:.4f} "
+            f"declared={pv_plan['declared_net_export_mwh']:.1f} "
+            f"E={pv_plan['expected_net_margin_cny']:.0f} "
+            f"CVaR10={pv_plan['cvar_10_cny']:.0f} "
+            f"bridge={pv_bridge['delta']:.0f} gap={pv_bridge['identity_gap']:.2e}"
+        )
+        assert pv_result["report"]["ok"]
+        assert abs(pv_plan["pv_energy_mwh"] - 720.332250) < 1e-6
+        assert abs(pv_plan["charge_mwh"] - 191.8806447200493) < 1e-6
+        assert abs(pv_plan["discharge_mwh"] - 168.85496735364345) < 1e-6
+        assert abs(pv_plan["declared_net_export_mwh"] - 652.646535) < 1e-6
+        assert abs(pv_plan["expected_net_export_mwh"] - 634.893503) < 1e-6
+        assert abs(pv_plan["expected_curtail_mwh"] - 50.887970) < 1e-6
+        assert abs(pv_plan["equivalent_cycles"] - 0.901839030184232) < 1e-9
+        assert pv_plan["equivalent_cycles"] <= pv_summary["policy"]["max_cycles_per_day"] + 1e-9
+        assert abs(pv_plan["reference_net_margin_cny"] - 131348.33390534463) < 1e-6
+        assert abs(pv_plan["expected_net_margin_cny"] - 129021.46138608284) < 1e-6
+        assert abs(pv_plan["cvar_10_cny"] - 72990.10417228189) < 1e-6
+        assert abs(pv_plan["perfect_foresight_expected_net_cny"] - 130625.66305305448) < 1e-6
+        assert abs(pv_plan["foresight_uplift_cny"] - 1604.2016669716395) < 1e-6
+        assert pv_plan["expected_curtail_mwh"] > 0.0, "export limit must bind in the sunny scenarios"
+        scenario_curtail = [item["curtail_mwh"] for item in pv_plan["scenarios"]]
+        assert scenario_curtail[0] == 0.0 and scenario_curtail[1] == 0.0
+        assert abs(scenario_curtail[2] - 3.6981) < 0.01
+        assert abs(scenario_curtail[3] - 49.0085) < 0.01
+        assert abs(scenario_curtail[4] - 91.4875) < 0.01
+        assert abs(pv_bridge["plan_profit"] - 131510.15324905852) < 1e-6
+        assert abs(pv_bridge["actual_profit"] - 130427.6081835) < 1e-6
+        assert abs(pv_bridge["delta"] + 1082.54506555853) < 1e-6
+        assert len(pv_bridge["buckets"]) == 6
+        assert abs(pv_bridge["identity_gap"]) < 1e-6
+        assert abs(
+            pv_bridge["delta"] - sum(item["amount"] for item in pv_bridge["buckets"])
+        ) < 1e-6
+        assert pv_summary["policy_fingerprint"] == "d634623504c5"
+        assert len(pv_result["bridge_detail"]) == 5
+        assert max(row["declared_net_export_mw"] for row in pv_result["bid"]["rows"]) <= 100.0 + 1e-9
+        assert (Path(tmp) / "bid_sheet.csv").exists()
+        assert (Path(tmp) / "bridge.csv").exists()
+        assert (Path(tmp) / "review.md").exists()
+
     section("summary")
     print("all checks passed")
     return 0

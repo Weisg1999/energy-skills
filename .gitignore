@@ -4,6 +4,8 @@ __pycache__/
 .workbuddy/
 _site/
 skills/spot-bidding-quant/instances/*/out/
+skills/electricity-trading-expert/instances/*/out/
 skills/retail-electricity-risk/instances/*/out/
 skills/virtual-power-plant/instances/*/out/
 skills/storage-investment-operations/instances/*/out/
+skills/tariff-bill-optimization/instances/*/out/

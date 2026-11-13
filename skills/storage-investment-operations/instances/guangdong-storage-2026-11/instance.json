@@ -1,0 +1,132 @@
+{
+  "meta": {
+    "instance_id": "guangdong-storage-2026-11",
+    "province": "广东",
+    "market": "广东省级电力市场（现货 + 调频辅助服务；容量政策未闭环）",
+    "entity_type": "电网侧独立新型储能",
+    "rule_version": "广东省级现货 2023-12-28 转正；南方区域现货 2026-10-24 转正（广东价区 −50~1,800 元/MWh）；调频参数为 D 级示例",
+    "data_cutoff": "2026-11-13",
+    "grade": "B/D",
+    "scope": "v1 覆盖现货电能量套利 + 调频容量/里程收益 + 月度可用率；容量电价/容量补偿未闭环，明确不计入；容量租赁、绿证、备用、税费优惠未纳入",
+    "currency": "CNY",
+    "units": {
+      "power": "MW",
+      "energy": "MWh",
+      "price": "CNY/MWh",
+      "frequency_capacity_price": "CNY/MW·h",
+      "frequency_mileage_price": "CNY/MW",
+      "time": "HH:MM",
+      "slot": "0-95（15 分钟一点）"
+    },
+    "disclaimer": "本实例包是 D 级合成样板，不对应任何真实电站、合同或结算数据；不构成投资、报价或法律建议。容量电价未纳入，不能把本包结果当作广东储能容量政策已落地的证据。"
+  },
+  "rules": {
+    "spot": {
+      "status": "广东省级现货正式运行（2023-12-28）；南方区域现货正式运行（2026-10-24），广东价区上下限 −50 / 1,800 元/MWh",
+      "market_time_unit_min": 15,
+      "points_per_day": 96,
+      "price_floor_cny_per_mwh": -50.0,
+      "price_cap_cny_per_mwh": 1800.0,
+      "price_limit_scope": "南方区域正式运行方案广东价区参数；未区分申报与出清限价，省内细则需复核",
+      "grade": "A/B",
+      "source": "南方电网总调〔2026〕16号《南方区域电力现货市场正式运行实施方案（2026年）》；广东省级现货 2023-12-28 转正"
+    },
+    "frequency_regulation": {
+      "market": "广东调频辅助服务市场（南方区域两个细则框架）",
+      "capacity_price_cny_per_mw_h": 10.0,
+      "mileage_price_cny_per_mw": 6.0,
+      "k_factor_min": 0.0,
+      "k_factor_max": 2.0,
+      "settlement": "日收益 = 调频容量 × 容量价格 × 24 h + 调频里程 × 里程价格 × K 值；毛收入口径",
+      "status": "D 级示例价格；广东调频容量补偿与里程价格未在本库闭环，落地必须以交易中心/两个细则原文替换",
+      "grade": "D",
+      "source": "本技能 §4.5 调频算例口径；广东省调频市场参数待核"
+    },
+    "capacity": {
+      "included": false,
+      "price_cny_per_kw_year": null,
+      "status": "独立储能容量电价/容量补偿省级文件未在本库闭环，明确不计入；煤电容量电价 165 元/kW·年（2026，B）不适用于储能",
+      "grade": "B",
+      "source": "广东煤电容量电价 165 元/kW·年（2026，B）；储能容量政策待核实"
+    },
+    "participation": {
+      "requirement": "独立储能可报量报价或报量不报价参与现货；按 15 分钟节点价结算；调度在供应紧张、调峰或断面困难时可要求报量报价",
+      "grade": "B",
+      "source": "广东 2026 年现货电能量交易实施细则；南方区域正式运行方案"
+    },
+    "settlement": {
+      "basis": "电能量按 15 分钟节点价结算；调频按容量 + 里程分账；容量收入未纳入",
+      "cycle": "以交易中心结算通知为准",
+      "grade": "B/D",
+      "source": "广东现货与辅助服务结算框架；调频参数为 D 级示例",
+      "note": "套利、调频、容量三条线必须分账；不能用调频毛收入补贴套利亏损，也不能重复计算同一 MW 的容量与里程"
+    }
+  },
+  "asset": {
+    "name": "示例电网侧独立储能 100 MW / 200 MWh（D 级合成，不是真实项目）",
+    "power_mw": 100.0,
+    "energy_mwh": 200.0,
+    "usable_energy_mwh": 180.0,
+    "rte": 0.88,
+    "soc_min": 0.05,
+    "soc_max": 0.95,
+    "soc_init": 0.5,
+    "degradation_cny_per_mwh_throughput": 18.0,
+    "fixed_opex_cny_per_year": 3200000.0,
+    "capex_cny_per_kwh": 900.0,
+    "project_years": 15,
+    "discount_rate": 0.08,
+    "tax_rate": 0.25,
+    "availability": 0.96,
+    "grade": "D",
+    "source": "示例占位；实际按铭牌、EPC 合同、运维台账与融资条件填写"
+  },
+  "policy": {
+    "profile_id": "guangdong-storage-spot-fr-v1",
+    "description": "现货日循环 0.8 次、年运行 330 天；预留 20 MW 调频容量；调频日里程按月取值；套利与调频叠加统一 5% 折减；容量收入不计入",
+    "duration_h": 2.0,
+    "cycles_per_day": 0.8,
+    "operating_days": 330,
+    "frequency_reserve_mw": 20.0,
+    "stack_haircut": 0.05,
+    "scenario_cvar_confidence": 0.8,
+    "grade": "D",
+    "note": "循环、预留与折减是投资方的选择，不是事实；改 profile_id 并保留旧文件，便于比较。"
+  },
+  "contracts": {
+    "frequency_registration": {
+      "registered": true,
+      "note": "D 级假设：按独立储能主体注册调频并通过性能测试；实际以市场准入、并网性能与两个细则为准"
+    },
+    "capacity_listing": {
+      "included": false,
+      "note": "省级容量电价/容量补偿文件未闭环，v1 不计容量收入；煤电 165 元/kW·年不得套用"
+    },
+    "lease": {
+      "included": false,
+      "note": "v1 不叠加容量租赁，避免与未来容量政策重复计算"
+    },
+    "grade": "D",
+    "source": "示例合同边界，不对应任何真实项目"
+  },
+  "data_contract": {
+    "scenarios": {
+      "file": "data/scenarios_demo.csv",
+      "required_fields": ["scenario", "charge_price", "discharge_price", "weight"],
+      "scenario_count": 5,
+      "note": "价格为元/MWh 的年度代表情景，不是某一天的实际节点价；权重合计须为 1"
+    },
+    "frequency": {
+      "file": "data/frequency_demo.csv",
+      "required_fields": ["month", "mileage_mw_per_day", "k_factor"],
+      "months": 12,
+      "note": "月度调频日里程与 K 值；D 级合成，不代表广东实际调用"
+    },
+    "availability": {
+      "file": "data/availability_demo.csv",
+      "required_fields": ["month", "availability_ratio"],
+      "months": 12,
+      "note": "月度可用率 0-1；对套利与调频同时折减，D 级合成"
+    }
+  }
+}

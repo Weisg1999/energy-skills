@@ -217,6 +217,8 @@ Market registration → market preparation → publication of trading announceme
 ### 4.4 The Core Logic of Linkage
 **The transparency and stability of the spot mechanism determine medium/long-term liquidity**: the US once hit major turbulence because its spot market was imperfect; the UK saw market liquidity decline as generation-retail integration deepened; the Nordic financial sector held no special advantage, yet its medium/long-term market stayed robust over the long run thanks to sound spot design. Implication for China: build the spot market first — only then does medium/long-term financialization have a foundation.
 
+> **Runnable slice**: `tools/hedge.py` plus `instances/shandong-thermal-hedge-2026-11/`. The module decomposes period energy into a 96-point day (annual/monthly/ten-day by 365/30/10 days), supports five curve shapes, and computes positions, hedge ratio, the carry/shape decomposition, a six-bucket P&L bridge and D-7~D-1 rolling rebalancing; the instance is a grade-D 600 MW Shandong coal unit with four contracts (7,500 MWh/day, 85.23% hedged, bridge residual around 1e-10), with all numbers locked by `tools/selftest.py`. Contract types, peak-valley windows and settlement references follow signed contracts and the official trading-centre rules.
+
 ---
 
 ## 5. Ancillary Services and Capacity Mechanisms
@@ -913,6 +915,9 @@ The 8 pilots averaged CNY 44.1/tonne in 2024 (~54% below the national market): B
 | FTR payoff | F × (π_W − π_S), can be negative | Congestion hedging (obligation type) |
 | CfD settlement | Σ[(contract price − reference price) × contracted energy] | Medium/long-term differential settlement |
 | Three-part generation revenue | Contract differential + (day-ahead cleared − medium/long-term decomposition) × day-ahead price + (actual − day-ahead) × real-time price | Centralized spot settlement |
+| Position hedge ratio | Contracted energy ÷ forecast output energy; computed both in total and per time slice | Medium/long-term position |
+| Hedge value decomposition | Q×(weighted contract price − time-average spot) + [Q×average spot − Σqₜsₜ] = carry + shape | Explaining where hedging value comes from |
+| Rolling rebalance | Target position = forecast energy × target ratio; required trade = target − current position | D-7~D-1 rebalancing |
 | Market power | (π−MC)/π = sᵢ/ε | Assessing price-raising room |
 | Equal-marginal dispatch | dCᵢ/dPᵢ = λ (λ = shadow price) | Economic dispatch |
 | Single-unit decision | Profit maximized at MC=π; full output/shutdown hinges on the no-load-inclusive threshold | Bidding and commitment |
@@ -1041,5 +1046,6 @@ The 8 pilots averaged CNY 44.1/tonne in 2024 (~54% below the national market): B
 - `tools/fuel.py` (thermal-coal contract pricing, dual-track blended cost, fuel cost per MWh, dark/spark/clean spreads, coal-to-gas switching carbon price, inventory days, gas MMBtu/MWh conversion, LNG tonnes/heat content, oil-indexed and Henry-Hub-plus-liquefaction LNG pricing, CCGT fuel/carbon cost, capacity-price levelisation) is locked to assertions in `tools/selftest.py` and corresponds to the knowledge base note [fuel and power trading](../../knowledge/燃料与电力交易-2026-11.md) §3. All examples are synthetic (grade D), not investment advice.
 - `tools/market.py` owns congestion surplus, FTR payouts and LMP decomposition, mapped to [inter-provincial and cross-region trading](../../knowledge/省间与跨区交易-2026-11.md) §5.5. Two-node price separation and dynamic ATC belong to `spot-bidding-quant/tools/network.py` and are not re-implemented here; both use the same "(price difference) x constrained flow" calibre and are cross-checked.
 - `tools/contracts.py` (forward-strip discounting, capture price/rate, floor/cap/collar/CfD/proxy/tolling payoffs, merchant tail, DSCR, P10/P50/P90 and correlated price-capture sampling) maps to [cross-border PPAs, certificates and tolling](../../knowledge/跨国PPA与绿证-2026-11.md) §2.5 and §7.6-§7.7. Debt amortisation, tax shields and indexation are out of scope and belong to `storage-investment-operations/tools/finance.py`.
+- `tools/hedge.py` (period-energy decomposition, five contract curve shapes, position and hedge ratio, carry/shape decomposition, six-bucket P&L bridge, D-7~D-1 rolling rebalancing) is locked to assertions in `tools/selftest.py`; the first instance layer is `instances/shandong-thermal-hedge-2026-11/` (600 MW Shandong coal unit, four contracts, 96 points), with the instance schema and fill-in flow in `instances/README.md`. Examples are grade-D synthetic data and not trading advice.
 
 - **Price-driver routing**: quantity ([weather and power trading](../../knowledge/气象与电力交易-2026-11.md)), price ([fuel and power trading](../../knowledge/燃料与电力交易-2026-11.md)), deliverability ([inter-provincial trading](../../knowledge/省间与跨区交易-2026-11.md) §5.5-5.6). For "why is this interval expensive", check quantity -> price -> constraint -> superposition; see the [golden Q&A](../../knowledge/黄金问答集-2026-11.md) section F (Q29-Q38) for regression questions.

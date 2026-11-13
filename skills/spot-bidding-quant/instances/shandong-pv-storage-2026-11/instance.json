@@ -1,0 +1,183 @@
+{
+  "meta": {
+    "instance_id": "shandong-pv-storage-2026-11",
+    "province": "山东",
+    "market": "山东省级电力市场（现货 + 两个细则；新能源场站与配建储能联合参与）",
+    "entity_type": "新能源场站与配建储能联合主体（集中式光伏 200 MW + 配建储能 100 MW/200 MWh）",
+    "rule_version": "《关于加快推动新能源场站配建储能高质量发展的通知》（2026-08-27，四部门印发；文号待原文核实，二手资料所称“鲁发改能源〔2026〕632号”未核实）；新版《山东电力市场规则（试行）》（2026-01-01 实施）",
+    "data_cutoff": "2026-11-13",
+    "grade": "B/C",
+    "scope": "v1 覆盖现货电能量、光储联合净出力申报、弃光与充电的权衡、T+1 差异桥；机制电价差价、两个细则考核、绿证与容量补偿未纳入",
+    "currency": "CNY",
+    "units": {
+      "power": "MW",
+      "energy": "MWh",
+      "price": "CNY/MWh",
+      "time": "HH:MM",
+      "slot": "0-95（15 分钟一点）"
+    },
+    "disclaimer": "本实例包是 D 级合成样板，不构成报价、投资或法律建议；配储比例、并网容量、充放电参数与交易口径以场站铭牌、并网协议和交易中心最新规则为准。"
+  },
+  "rules": {
+    "spot": {
+      "status": "正式运行（2024-06-17）",
+      "market_time_unit_min": 15,
+      "points_per_day": 96,
+      "declare_floor_cny_per_mwh": -80,
+      "declare_cap_cny_per_mwh": 1300,
+      "clear_floor_cny_per_mwh": -100,
+      "clear_cap_cny_per_mwh": 1500,
+      "draft_2026_08_28": {
+        "declare_floor_cny_per_mwh": -120,
+        "clear_floor_cny_per_mwh": -140,
+        "status": "征求意见稿，未生效"
+      },
+      "grade": "B/C",
+      "source": "山东省级现货现行限价（B/C）；2026-08-28 下限草案未生效",
+      "note": "申报按 96 点；实时出清为 5 分钟级，结算以交易中心正式结果为准"
+    },
+    "settlement": {
+      "basis": "联合主体按净上网电量结算：上网电量 = 光伏发电功率 + 配建储能放电功率 − 配建储能充电功率；配储充电电量不重复计入上网电量",
+      "deviation": "并网运行考核与两个细则按源储合计口径核算；本包未计考核费用",
+      "grade": "B",
+      "source": "鲁发改能源〔2026〕632号（2026-08-27，四部门通知；文号与原文待复核）"
+    },
+    "new_energy_participation": {
+      "joint_metering": true,
+      "output_definition": "光伏功率 + 储能放电功率 − 储能充电功率",
+      "clearing_plan_min_mw": 0,
+      "clearing_plan_max_ratio_of_pv_capacity": 1.0,
+      "max_colocated_storage_ratio_pv": 0.5,
+      "max_colocated_storage_ratio_wind": 0.3,
+      "charge_source": "配套光伏发电；除电网统一调度调用外，原则上不得从公共电网购电充电",
+      "grid_charge_allowed": false,
+      "intraday_curve_update": "运行日日内按小时滚动更新配建储能可靠执行计划出力曲线",
+      "bid_mode": "报量不报价（价格接受者）",
+      "bid_mode_code": "quantity_only",
+      "status": "联合参与已由 2026-08-27 通知明确；山东现货下新能源具体申报方式以交易中心最新细则为准",
+      "grade": "B/C",
+      "source": "鲁发改能源〔2026〕632号（2026-08-27，四部门通知；文号待原文核实）；2026-10-19《电力现货市场基本规则（征求意见稿）》支持新能源与场站内配储联合报价（未生效）",
+      "note": "0–200 MW 是出清计划边界（下限 0、上限为光伏本体额定容量），不是申报价格上下限；50%/30% 是配储功率上限，不是配储比例要求"
+    },
+    "storage_participation": {
+      "min_power_mw": 5,
+      "min_duration_h": 2,
+      "independent_capacity_price_applicable": false,
+      "grade": "A/B",
+      "source": "新版《山东电力市场规则（试行）》（2026-01-01）；发改价格〔2026〕114号（电网侧独立储能容量电价，不含配建储能）"
+    },
+    "capacity_compensation": {
+      "applicable_to_co_located_storage": false,
+      "price_cny_per_kw_year": null,
+      "supply_demand_coefficient": null,
+      "status": "配建储能不适用电网侧独立储能容量电价；本包不计容量补偿",
+      "grade": "A/B",
+      "source": "发改价格〔2026〕114号；山东省实施细则待核实"
+    },
+    "negative_price": {
+      "hours_2025": ">1500",
+      "floor_share_2025": "13%",
+      "grade": "B/C",
+      "source": "山东省能源局/中国能源网",
+      "note": "负价时段联合主体仍须按调度要求运行；储能可把中午富余光伏搬到晚峰，但充电只能来自配套光伏"
+    }
+  },
+  "asset": {
+    "pv": {
+      "name": "示例 200 MW 集中式光伏（D 级合成，不是真实项目）",
+      "capacity_mw": 200,
+      "availability": 1.0,
+      "grade": "D",
+      "source": "示例占位；实际按组件容量、逆变器限功率、场用电与可用率填写"
+    },
+    "storage": {
+      "name": "示例 100 MW / 200 MWh 配建储能（D 级合成，不是真实项目）",
+      "power_mw": 100,
+      "energy_mwh": 200,
+      "rte": 0.88,
+      "soc_min": 0.05,
+      "soc_max": 0.95,
+      "soc_init": 0.10,
+      "degradation_cny_per_mwh_throughput": 40.0,
+      "fixed_cost_cny_per_day": 0.0,
+      "solver_states": 120,
+      "grade": "D",
+      "source": "示例占位；实际按电芯、PCS、BMS、温控与质保条款填写"
+    },
+    "grid_connection": {
+      "import_limit_mw": 0.0,
+      "export_limit_mw": 100.0,
+      "grade": "D",
+      "source": "并网点容量示例（D 级假设：200 MW 光伏午间按 100 MW 受限出力测算，用于让弃光约束真实生效）；0 购电上限对应配建储能不得从公共电网充电；真实场站按并网点容量与调度受限曲线替换"
+    }
+  },
+  "policy": {
+    "profile_id": "shandong-pv-storage-balanced-v1",
+    "description": "参考价与参考光伏取中位；净头寸按情景中位申报；弃光惩罚 20 元/MWh；日循环上限 1.5 次；报量不报价",
+    "declared_quantity_quantile": 0.5,
+    "price_reference_quantile": 0.5,
+    "pv_reference_quantile": 0.5,
+    "discharge_markup_cny_per_mwh": 0.0,
+    "charge_markup_cny_per_mwh": 0.0,
+    "spike_threshold_cny_per_mwh": 600.0,
+    "spike_markup_cny_per_mwh": 100.0,
+    "max_cycles_per_day": 1.5,
+    "min_daily_spread_cny_per_mwh": 60.0,
+    "curtail_penalty_cny_per_mwh": 20.0,
+    "grade": "D",
+    "note": "风格是交易员选择，不是事实；改 profile_id 并保留旧文件，便于比较。弃光惩罚是绿证/消纳价值的 D 级占位，不是山东规则值。"
+  },
+  "contracts": [],
+  "data_contract": {
+    "d1": {
+      "file": "data/d1_demo.csv",
+      "required_fields": [
+        "date",
+        "slot",
+        "start",
+        "end",
+        "pv_s1",
+        "pv_s2",
+        "pv_s3",
+        "pv_s4",
+        "pv_s5",
+        "price_s1",
+        "price_s2",
+        "price_s3",
+        "price_s4",
+        "price_s5"
+      ],
+      "price_scenario_fields": [
+        "price_s1",
+        "price_s2",
+        "price_s3",
+        "price_s4",
+        "price_s5"
+      ],
+      "pv_scenario_fields": [
+        "pv_s1",
+        "pv_s2",
+        "pv_s3",
+        "pv_s4",
+        "pv_s5"
+      ],
+      "scenario_weights": [0.2, 0.2, 0.2, 0.2, 0.2],
+      "release_cutoff": "D-1 09:00",
+      "note": "价格与光伏按同一情景编号成对使用：低价情景通常对应高光伏，不能把价格和光伏独立抽样后随意配对。"
+    },
+    "t1": {
+      "file": "data/t1_demo.csv",
+      "required_fields": [
+        "date",
+        "slot",
+        "actual_price",
+        "actual_pv_mw",
+        "actual_charge_mw",
+        "actual_discharge_mw",
+        "actual_export_mw",
+        "actual_curtail_mw"
+      ],
+      "note": "实际结算价、光伏可用功率、计量充放电与上网功率、弃光功率；恒等式为 光伏 − 充电 + 放电 − 上网 = 弃光。"
+    }
+  }
+}

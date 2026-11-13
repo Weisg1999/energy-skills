@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "instance_id": "jiangsu-ci-storage-2026-11",
+    "province": "江苏",
+    "market": "江苏工商业用户侧（两部制 + 分时电价 + 用户侧储能）",
+    "entity_type": "10 kV 工商业用户（配用户侧储能）",
+    "rule_version": "国家两部制与分时框架；江苏省级电价参数待核，本包用 D 级示例参数",
+    "data_cutoff": "2026-11-13",
+    "grade": "D",
+    "scope": "v1 覆盖电能量、输配、系统运行、基金、基本电费三方式、力率与储能削峰降需量；零售套餐比价、代理购电分摊、双路进线与高可靠性供电费未纳入",
+    "currency": "CNY",
+    "units": {
+      "power": "kW",
+      "energy": "kWh",
+      "capacity": "kVA",
+      "price": "CNY/kWh；基本电费 CNY/kW·月 或 CNY/kVA·月",
+      "time": "HH:MM",
+      "slot": "0-95（15 分钟一点）"
+    },
+    "disclaimer": "本实例包是 D 级合成样板，不对应任何真实用户、账单或合同；不构成电价、投资或法律建议。省级参数必须以江苏省现行文件替换。"
+  },
+  "rules": {
+    "tariff": {
+      "periods": [
+        ["valley", 0, 8],
+        ["flat", 8, 10],
+        ["peak", 10, 12],
+        ["flat", 12, 18],
+        ["peak", 18, 19],
+        ["critical", 19, 20],
+        ["peak", 20, 21],
+        ["flat", 21, 23],
+        ["valley", 23, 24]
+      ],
+      "prices_cny_per_kwh": {
+        "valley": 0.30,
+        "flat": 0.62,
+        "peak": 1.05,
+        "critical": 1.26
+      },
+      "transmission_cny_per_kwh": 0.15,
+      "system_cny_per_kwh": 0.068,
+      "fund_cny_per_kwh": 0.02,
+      "other_cny_per_kwh": 0.0,
+      "status": "时段表与电量为 D 级合成示例，不是江苏现行分时电价；落地时整表替换",
+      "grade": "D",
+      "source": "本技能合成示例；国家 1093 号文分时框架；江苏省现行分时时段与电价未在本库闭环"
+    },
+    "basic_charge": {
+      "capacity_price_cny_per_kva_month": 32.0,
+      "demand_price_cny_per_kw_month": 40.0,
+      "threshold": 1.05,
+      "overrun_multiplier": 2.0,
+      "floor_ratio": 0.4,
+      "status": "容量/需量电价与 40% 下限为 D 级示例；江苏省级文件待核",
+      "grade": "D",
+      "source": "国家两部制框架；本技能示例参数（非江苏正式电价）"
+    },
+    "power_factor": {
+      "standard": 0.9,
+      "penalty_per_step": 0.005,
+      "reward_per_step": 0.0015,
+      "max_penalty": 0.15,
+      "max_reward": 0.075,
+      "grade": "D",
+      "source": "本技能简化两段口径，不是江苏《功率因数调整电费办法》分档表"
+    },
+    "storage_participation": {
+      "mode": "用户侧储能削峰降需量",
+      "constraint": "需量上限写入调度约束，不能事后修正；充放电按恒功率块简化，不替代 EMS 逐时段调度",
+      "settlement": "用户侧表后，按减少的需量与峰段电量折算节省",
+      "grade": "D",
+      "source": "本技能边界说明；详细 SOC 与备用约束见 ems-dispatch 技能"
+    },
+    "market_channel": {
+      "channel": "代理购电或市场化购电（本包只算到户电费结构，不依赖现货价格）",
+      "spot_status": "江苏现货 2025-08-29 起连续结算试运行（B/C）",
+      "grade": "B/C",
+      "source": "江苏现货试运行公开信息；省级市场状态表",
+      "note": "现货价格不进入本包的电费计算，避免把市场价与代理购电价混用"
+    }
+  },
+  "asset": {
+    "name": "示例 10 kV 工商业用户 + 500 kW/1,000 kWh 用户侧储能（D 级合成）",
+    "transformer_kva": 1600.0,
+    "high_voltage_motor_kva": 0.0,
+    "contract_demand_kw": 1000.0,
+    "power_factor": 0.92,
+    "storage_power_kw": 500.0,
+    "storage_energy_kwh": 1000.0,
+    "storage_usable_ratio": 0.95,
+    "storage_rte": 0.90,
+    "storage_degradation_cny_per_kwh": 0.05,
+    "storage_capex_cny_per_kwh": 900.0,
+    "storage_fixed_opex_cny_per_kw_year": 60.0,
+    "grade": "D",
+    "source": "示例占位；实际按变压器铭牌、电费单、储能 PCS/BMS 铭牌与运维台账填写"
+  },
+  "policy": {
+    "profile_id": "jiangsu-ci-storage-balanced-v1",
+    "description": "按月度最大需量的 12% 削峰；谷段充电、峰/尖段放电；日循环上限 1 次；最小峰谷价差 0.30 元/kWh；合同需量按月按 A/1.05 重算",
+    "shave_ratio": 0.12,
+    "charge_period": "valley",
+    "discharge_periods": ["peak", "critical"],
+    "max_cycles_per_day": 1.0,
+    "min_spread_cny_per_kwh": 0.30,
+    "basic_charge_mode": "contract",
+    "declaration_strategy": "monthly_optimal",
+    "grade": "D",
+    "note": "削峰比例与申报策略是用户选择，不是事实；改 profile_id 并保留旧文件，便于比较。"
+  },
+  "contracts": {
+    "retail_package": null,
+    "note": "v1 不做零售套餐比价；套餐比价用 tools/retail.py 单独跑，公共科目另行加回",
+    "grade": "D",
+    "source": "示例合同边界"
+  },
+  "data_contract": {
+    "load": {
+      "file": "data/load_demo.csv",
+      "required_fields": ["month", "slot", "load_kw"],
+      "months": 12,
+      "points_per_month": 96,
+      "note": "每月一个代表日、15 分钟一点；负荷为 kW，非负；真实数据用 --load 指向仓库外路径"
+    }
+  }
+}

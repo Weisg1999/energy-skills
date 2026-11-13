@@ -1,0 +1,144 @@
+{
+  "meta": {
+    "instance_id": "shandong-thermal-2026-11",
+    "province": "山东",
+    "market": "山东省级电力市场（现货 + 中长期 + 辅助服务 + 容量补偿）",
+    "entity_type": "燃煤热电联产机组",
+    "rule_version": "《山东电力市场规则（试行）》（2026-01-01 实施）；鲁监能市场规〔2026〕52号两个细则",
+    "data_cutoff": "2026-11-13",
+    "grade": "B/C",
+    "scope": "v1 覆盖现货电能量、供热最小出力约束、调频容量与里程收入、容量补偿占位；供热收益、燃料中长期、检修与两个细则考核未纳入",
+    "currency": "CNY",
+    "units": {
+      "power": "MW",
+      "heat": "MW_th",
+      "energy": "MWh",
+      "price": "CNY/MWh",
+      "time": "HH:MM",
+      "slot": "0-95（15 分钟一点）"
+    },
+    "disclaimer": "本实例包是 D 级合成样板，不构成报价、投资或法律建议；实际参数以机组铭牌、供热合同和交易中心最新规则为准。"
+  },
+  "rules": {
+    "spot": {
+      "status": "正式运行（2024-06-17）",
+      "market_time_unit_min": 15,
+      "points_per_day": 96,
+      "declare_floor_cny_per_mwh": -80,
+      "declare_cap_cny_per_mwh": 1300,
+      "clear_floor_cny_per_mwh": -100,
+      "clear_cap_cny_per_mwh": 1500,
+      "draft_2026_08_28": {
+        "declare_floor_cny_per_mwh": -120,
+        "clear_floor_cny_per_mwh": -140,
+        "status": "征求意见稿，未生效"
+      },
+      "grade": "B/C",
+      "source": "山东省级现货现行限价（B/C）；2026-08-28 下限草案未生效",
+      "note": "申报按 96 点；实时出清为 5 分钟级，结算以交易中心正式结果为准"
+    },
+    "settlement": {
+      "basis": "发电侧与用电侧分账结算；容量补偿单列；辅助服务按两个细则另行结算",
+      "grade": "B",
+      "source": "山东电力交易中心《2025 年市场总体运行情况》；鲁发改价格〔2025〕576号"
+    },
+    "capacity_compensation": {
+      "formula": "有效容量 × 补偿电价标准 × 容量供需系数",
+      "price_cny_per_kw_year": null,
+      "supply_demand_coefficient": null,
+      "status": "补偿电价标准与容量供需系数待核实；未填写时本实例不计容量补偿",
+      "grade": "A",
+      "source": "鲁发改价格〔2025〕576号；执行依据鲁发改价格〔2023〕1022号",
+      "note": "山东是市场化容量补偿，不是全国统一煤电容量电价，不能套 165 元/kW·年"
+    },
+    "thermal_participation": {
+      "min_technical_output_ratio": 0.35,
+      "run_cost_compensation": true,
+      "effective_from": "2026-01-01",
+      "grade": "A/B",
+      "source": "新版《山东电力市场规则（试行）》；省政府新闻办发布会（最小技术出力 50%→35%，新增深调能力 940 万 kW）",
+      "note": "运行成本补偿按新版规则执行，具体补偿口径与结算方式待省级细则核实"
+    },
+    "ancillary": {
+      "products": "调频（AGC）、爬坡",
+      "mileage_price_cap_cny_per_kw_mile": 0.015,
+      "coefficient_cap": 2.0,
+      "k_factor": 1.0,
+      "status": "52号两个细则给出调频里程价格上限与系数上限；机组侧 K 值按省级细则核定，本包取 1.0 作 D 级示例",
+      "grade": "A/B",
+      "source": "鲁监能市场规〔2026〕52号（2026-09-30 印发、10-01 施行）；2026-05-08 省级辅助服务细则调整"
+    },
+    "negative_price": {
+      "hours_2025": ">1500",
+      "floor_share_2025": "13%",
+      "grade": "B/C",
+      "source": "山东省能源局/中国能源网",
+      "note": "负价时段仍须满足供热最小出力，机组不能按价格自由停机"
+    }
+  },
+  "asset": {
+    "name": "示例 350 MW 抽凝供热机组（D 级合成，不是真实项目）",
+    "power_mw": 350,
+    "min_output_mw": 122.5,
+    "heat_load_mw_th": 240.0,
+    "heat_to_power_ratio": 1.6,
+    "ramp_mw_per_min": 3.5,
+    "variable_cost_cny_per_mwh": 260.0,
+    "fixed_cost_cny_per_day": 0.0,
+    "effective_capacity_mw": 350,
+    "grade": "D",
+    "source": "示例占位；实际按机组铭牌、供热抽汽参数、燃料成本与检修台账填写"
+  },
+  "policy": {
+    "profile_id": "shandong-thermal-balanced-v1",
+    "description": "中位数量、增量报价加价 20 元/MWh；调频备用 20 MW、日里程 20 mile/kW、里程价取上限 0.015 元/kW·mile；K 值 1.0",
+    "declared_quantity_quantile": 0.5,
+    "price_reference_quantile": 0.5,
+    "energy_markup_cny_per_mwh": 20.0,
+    "regulation_reserve_mw": 20.0,
+    "mileage_per_kw_day": 20.0,
+    "mileage_price_cny_per_kw_mile": 0.015,
+    "k_factor": 1.0,
+    "grade": "D",
+    "note": "风格与调频假设是交易员选择，不是事实；改 profile_id 并保留旧文件，便于比较。"
+  },
+  "contracts": [],
+  "data_contract": {
+    "d1": {
+      "file": "data/d1_demo.csv",
+      "required_fields": [
+        "date",
+        "slot",
+        "start",
+        "end",
+        "heat_load_mw_th",
+        "price_s1",
+        "price_s2",
+        "price_s3",
+        "price_s4",
+        "price_s5"
+      ],
+      "scenario_fields": [
+        "price_s1",
+        "price_s2",
+        "price_s3",
+        "price_s4",
+        "price_s5"
+      ],
+      "scenario_weights": [0.2, 0.2, 0.2, 0.2, 0.2],
+      "release_cutoff": "D-1 09:00",
+      "note": "供热负荷预报与 5 列情景价格；供热负荷决定最小出力，不能只用价格决定开停机。"
+    },
+    "t1": {
+      "file": "data/t1_demo.csv",
+      "required_fields": [
+        "date",
+        "slot",
+        "actual_price",
+        "actual_output_mw",
+        "actual_heat_load_mw_th"
+      ],
+      "note": "实际结算价、计量上网电力与供热负荷；没有实际数据时只出申报表。"
+    }
+  }
+}

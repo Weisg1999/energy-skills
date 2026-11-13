@@ -509,6 +509,16 @@ Unit revenue = 1.05 − 0.30 = 0.75 CNY/kWh. If the process allows only 800 kWh,
 - Load-shifting revenue = price gap × energy, but must pass the process, power and demand gates first;
 - All numbers are grade-D synthetic data and cannot be used directly for real users.
 
+### 8.8 Runnable instance: Jiangsu C&I storage
+
+The methods above are packaged as a runnable "province + user + bill calibre" instance: [`instances/jiangsu-ci-storage-2026-11/`](instances/jiangsu-ci-storage-2026-11/README.md). Feed it a 12-month × 96-point load (`data/load_demo.csv`) plus `instance.json`, and it runs monthly bills, the three basic-charge methods, declaration recomputation and storage peak shaving in one pass:
+
+- **Declaration and storage accounted separately**: first the saving from "recompute the declaration only", then the net saving from "storage shaving − degradation − O&M"; declaration optimization is never booked as storage revenue;
+- **The declaration is an ex-post upper bound**: `D* = max(40% floor, A/1.05)` uses the month's actual peak; in practice it must be replaced by a load forecast;
+- **Report payback honestly**: the demo uses 500 kW / 1,000 kWh and 12% shaving, yielding 70,100 CNY/year of storage net savings against 900,000 CNY capex, a simple payback of 12.84 years — the long payback is a strategy choice, not a calculation error.
+
+Tariff, T&D, funds and demand parameters are all grade-D placeholders; the current Jiangsu documents are not closed in this library, so the whole table must be replaced before drawing conclusions.
+
 ---
 
 ## 9. Filing and Change Operations

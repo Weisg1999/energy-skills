@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "instance_id": "shandong-thermal-hedge-2026-11",
+    "province": "山东",
+    "market": "山东省级电力市场（中长期差价合约 + 现货全电量竞价）",
+    "entity_type": "燃煤热电联产（600 MW 级，供热期）",
+    "rule_version": "《电力中长期交易基本规则》（发改能源规〔2025〕1656号）；新版《山东电力市场规则（试行）》（2026-01-01 实施）；2026-10-19《电力现货市场基本规则（征求意见稿）》未生效",
+    "data_cutoff": "2026-11-13",
+    "grade": "B/C",
+    "scope": "v1 覆盖 96 点合约曲线分解、持仓与对冲比例、5 个日前价格情景、CVaR、D-7~D-1 滚动加减仓、T+1 六桶差异桥；实时偏差两结算、两个细则考核、辅助服务、容量补偿与供热成本未纳入",
+    "currency": "CNY",
+    "units": {
+      "power": "MW",
+      "energy": "MWh",
+      "price": "CNY/MWh",
+      "time": "HH:MM",
+      "slot": "0-95（15 分钟一点）"
+    },
+    "disclaimer": "本实例包是 D 级合成样板，不构成报价、投资、法律或税务建议；合约电量、价格、曲线形状、机组出力与结算口径以已签合同、交易中心正式规则和结算单为准。"
+  },
+  "rules": {
+    "spot": {
+      "status": "正式运行（2024-06-17）",
+      "market_time_unit_min": 15,
+      "points_per_day": 96,
+      "declare_floor_cny_per_mwh": -80,
+      "declare_cap_cny_per_mwh": 1300,
+      "clear_floor_cny_per_mwh": -100,
+      "clear_cap_cny_per_mwh": 1500,
+      "draft_2026_08_28": {
+        "declare_floor_cny_per_mwh": -120,
+        "clear_floor_cny_per_mwh": -140,
+        "status": "征求意见稿，未生效"
+      },
+      "grade": "B/C",
+      "source": "山东省级现货现行限价（B/C）；2026-08-28 下限草案未生效；2026-10-19 现货基本规则征求意见稿拟 2027-01-01 施行，未生效",
+      "note": "中长期合约分解到 96 点后按日前价差价结算；实时偏差与考核不在本包范围"
+    },
+    "mid_long_term": {
+      "status": "现行规则",
+      "contract_types": [
+        "annual_base",
+        "monthly_peak",
+        "monthly_offpeak",
+        "intra_month_curve"
+      ],
+      "period_energy_decomposition": "年度电量按 1/365、月度电量按 1/30 分解到交易日，也可直接给每日电量；不得把期间电量当日电量",
+      "shape_basis": "峰谷时段是合同约定，不是省级分时电价文件；带曲线签约按合同曲线分解，未签曲线的按典型曲线或预测确定",
+      "settlement_reference": "日前出清价（本包只用日前价）",
+      "rolling_window": "D-7~D-2 可滚动调整，D-1 冻结",
+      "price_band_note": "本包只做数据合理性校验（合同价为正且不高于现货价格上限），不代表省级中长期价格区间",
+      "grade": "B/C",
+      "source": "发改能源规〔2025〕1656号《电力中长期交易基本规则》；新版《山东电力市场规则（试行）》（2026-01-01）",
+      "note": "2025 年版基本规则新增绿电 D-3、D-3 滚动撮合等连续运营品种；本包不涉及绿电合约"
+    },
+    "settlement": {
+      "basis": "差价合约：全电量参与现货，合约按（合约价 − 日前价）× 合约电量结算；发电收入 = Σ 合约电量×合约价 + Σ（实际出力 − 合约电量）× 日前价",
+      "deviation_basis": "本包不含日前与实时偏差的两结算，也不含偏差考核",
+      "grade": "B",
+      "source": "发改能源规〔2025〕1656号；山东省级现货结算细则（以交易中心正式结算单为准）"
+    },
+    "deviation": {
+      "included": false,
+      "basis": "实时偏差结算、两个细则考核、供热最小出力与辅助服务均未纳入本包",
+      "grade": "B",
+      "source": "山东电力市场规则（2026-01-01）；两个细则（并网运行考核）",
+      "note": "若要把偏差考核纳入，应另建 T+1 两结算实例，不要把日前收入当最终结算收入"
+    }
+  },
+  "asset": {
+    "name": "示例 600 MW 燃煤热电联产（D 级合成，不是真实机组）",
+    "capacity_mw": 600,
+    "min_output_mw": 180,
+    "grade": "D",
+    "source": "示例占位；实际按铭牌、供热最小出力、检修与可用率填写"
+  },
+  "book": [
+    {
+      "id": "annual-base-2026",
+      "kind": "annual_base",
+      "type": "cfd",
+      "period_start": "2026-01-01",
+      "period_end": "2026-12-31",
+      "period_days": 365,
+      "energy_mwh": 1752000,
+      "price_cny_per_mwh": 372.0,
+      "shape": {
+        "type": "base"
+      },
+      "grade": "D",
+      "source": "示例年度基荷合约（D 级合成，1,752,000 MWh ÷ 365 = 4,800 MWh/日）"
+    },
+    {
+      "id": "monthly-peak-2026-11",
+      "kind": "monthly_peak",
+      "type": "cfd",
+      "period_start": "2026-11-01",
+      "period_end": "2026-11-30",
+      "period_days": 30,
+      "energy_mwh": 54000,
+      "price_cny_per_mwh": 415.0,
+      "shape": {
+        "type": "window",
+        "windows": [
+          [8, 22]
+        ]
+      },
+      "grade": "D",
+      "source": "示例 11 月峰段合约（D 级合成，54,000 MWh ÷ 30 = 1,800 MWh/日，峰段 08:00–22:00 为合同约定）"
+    },
+    {
+      "id": "monthly-offpeak-2026-11",
+      "kind": "monthly_offpeak",
+      "type": "cfd",
+      "period_start": "2026-11-01",
+      "period_end": "2026-11-30",
+      "period_days": 30,
+      "energy_mwh": 15000,
+      "price_cny_per_mwh": 285.0,
+      "shape": {
+        "type": "complement",
+        "windows": [
+          [8, 22]
+        ]
+      },
+      "grade": "D",
+      "source": "示例 11 月谷段合约（D 级合成，15,000 MWh ÷ 30 = 500 MWh/日，08:00–22:00 之外为合同约定）"
+    },
+    {
+      "id": "intra-month-curve-2026-11b",
+      "kind": "intra_month_curve",
+      "type": "cfd",
+      "period_start": "2026-11-16",
+      "period_end": "2026-11-25",
+      "period_days": 10,
+      "energy_mwh": 4000,
+      "price_cny_per_mwh": 350.0,
+      "shape": {
+        "type": "anchors",
+        "anchors": [
+          [0, 0.6],
+          [8, 0.85],
+          [12, 1.05],
+          [17, 1.35],
+          [22, 1.0],
+          [24, 0.6]
+        ]
+      },
+      "grade": "D",
+      "source": "示例旬度带曲线合约（D 级合成，4,000 MWh ÷ 10 = 400 MWh/日；锚点曲线为合同约定）"
+    }
+  ],
+  "policy": {
+    "profile_id": "shandong-thermal-hedge-balanced-v1",
+    "description": "目标对冲比例 0.85；参考价取情景中位；D-7~D-2 按最新预测滚动加减仓，D-1 冻结；单日调仓不设硬性上限，但记录所需交易量",
+    "target_hedge_ratio": 0.85,
+    "min_hedge_ratio": 0.7,
+    "max_hedge_ratio": 1.0,
+    "price_reference_quantile": 0.5,
+    "rebalance_start_day": 7,
+    "freeze_day_offset": 1,
+    "grade": "D",
+    "note": "风格是交易员选择，不是事实；改 profile_id 并保留旧文件，便于比较。目标对冲比例不是监管要求。"
+  },
+  "data_contract": {
+    "d1": {
+      "file": "data/d1_demo.csv",
+      "required_fields": [
+        "date",
+        "slot",
+        "start",
+        "end",
+        "forecast_mw",
+        "price_s1",
+        "price_s2",
+        "price_s3",
+        "price_s4",
+        "price_s5"
+      ],
+      "forecast_field": "forecast_mw",
+      "price_scenario_fields": [
+        "price_s1",
+        "price_s2",
+        "price_s3",
+        "price_s4",
+        "price_s5"
+      ],
+      "scenario_weights": [0.2, 0.2, 0.2, 0.2, 0.2],
+      "release_cutoff": "D-1 09:00",
+      "note": "96 点日前出力预测与 5 个情景价格；情景只用于收入分布与 CVaR，不重新分解合约曲线。"
+    },
+    "t1": {
+      "file": "data/t1_demo.csv",
+      "required_fields": [
+        "date",
+        "slot",
+        "actual_mw",
+        "actual_contract_mwh",
+        "actual_da_price"
+      ],
+      "note": "实际出力、结算单上的实际合约电量（MWh/时段）与日前出清价；实际合约电量允许含 D-1 调仓，按合约簿加权价结算。"
+    },
+    "rolling": {
+      "file": "data/rolling_demo.csv",
+      "required_fields": [
+        "day_offset",
+        "forecast_output_mwh",
+        "position_before_mwh"
+      ],
+      "note": "D-7~D-1 每日预测电量与当日调仓前持仓；position_before 必须与上一日收盘持仓衔接。"
+    }
+  }
+}

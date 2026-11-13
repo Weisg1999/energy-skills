@@ -30,13 +30,22 @@ SKILL.md）与代码一旦漂移即失败，逐条打印 ``ok  ...``，任一断
 * 显式检查「151 天交付期不得年化」：法国 PL-1 清算价 €28,182.99/MW
   是交付期价，交付期 2026-11-01~2027-03-31 共 151 天；正确交付期
   收入不含 365 因子，年化等值仅作横向对比，二者必须不相等。
+* 中长期对冲：期间电量→日电量→96 点曲线、差价合约结算、carry/curve
+  分解与六桶差异桥均为纯数学关系；山东煤电实例的日电量、对冲比例、
+  情景收入、滚动调仓与差异桥数字全部锁定。
 """
 
 from __future__ import annotations
 
+import importlib.util
+import json
+import tempfile
+from pathlib import Path
+
 import capacity
 import contracts
 import fuel
+import hedge
 import market
 import units
 
@@ -558,6 +567,288 @@ def main():
         "H negative price-capture correlation lowers mean revenue",
     )
     check(ind["p10"] < ind["p50"] < ind["p90"], "H revenue quantiles are ordered")
+
+    # ---- I. 中长期合约曲线与差价合约（hedge.py，纯数学关系） ---------------
+    check(hedge.flat_shape(4) == [0.25, 0.25, 0.25, 0.25], "I flat shape is uniform")
+    check(abs(sum(hedge.flat_shape(96)) - 1.0) < 1e-12, "I flat 96 sums to 1")
+    peak_shape = hedge.window_shape(96, 15, [[8, 22]])
+    off_shape = hedge.window_shape(96, 15, [[8, 22]], complement=True)
+    close("I peak shape slot 32", peak_shape[32], 1.0 / 56.0, 1e-12)
+    close("I off-peak shape slot 0", off_shape[0], 1.0 / 40.0, 1e-12)
+    check(peak_shape[31] == 0.0 and peak_shape[88] == 0.0, "I peak window is 08:00-22:00")
+    check(off_shape[32] == 0.0 and off_shape[87] == 0.0, "I off-peak excludes the window")
+    check(abs(sum(peak_shape) - 1.0) < 1e-12, "I peak shape sums to 1")
+    check(abs(sum(off_shape) - 1.0) < 1e-12, "I off-peak shape sums to 1")
+
+    anchor = hedge.anchor_shape(96, 15, [[0, 1], [12, 2], [24, 1]])
+    close("I anchor symmetric left", anchor[0], anchor[95], 1e-15)
+    close("I anchor symmetric peak", anchor[47], anchor[48], 1e-15)
+    check(anchor[47] > anchor[0], "I anchor rises to midday")
+    check(abs(sum(anchor) - 1.0) < 1e-12, "I anchor shape sums to 1")
+
+    close(
+        "I annual 1,752,000 MWh / 365",
+        hedge.contract_daily_energy({"id": "a", "energy_mwh": 1_752_000.0, "daily_weight": 1.0 / 365.0}),
+        4800.0,
+        1e-9,
+    )
+    close(
+        "I monthly 54,000 MWh / 30",
+        hedge.contract_daily_energy({"id": "m", "energy_mwh": 54_000.0, "period_days": 30}),
+        1800.0,
+        1e-9,
+    )
+    close(
+        "I explicit daily energy wins",
+        hedge.contract_daily_energy(
+            {"id": "d", "energy_mwh": 54_000.0, "period_days": 30, "daily_energy_mwh": 123.0}
+        ),
+        123.0,
+        1e-12,
+    )
+    try:
+        hedge.contract_daily_energy({"id": "x", "energy_mwh": 100.0})
+        daily_raised = False
+    except ValueError:
+        daily_raised = True
+    check(daily_raised, "I period energy without days raises")
+    try:
+        hedge.shape_from_spec({"type": "curve", "weights": [1.0, 2.0]}, 96, 15)
+        curve_raised = False
+    except ValueError:
+        curve_raised = True
+    check(curve_raised, "I wrong-length curve raises")
+    try:
+        hedge.normalize_shape([0.0, 0.0])
+        zero_raised = False
+    except ValueError:
+        zero_raised = True
+    check(zero_raised, "I all-zero shape raises")
+
+    toy = [
+        {
+            "id": "toy",
+            "type": "cfd",
+            "daily_energy_mwh": 100.0,
+            "price_cny_per_mwh": 300.0,
+            "shape": {"type": "curve", "weights": [0.2, 0.8]},
+        }
+    ]
+    toy_book = hedge.book_position(toy, 2, 30)
+    close("I toy position slot 0", toy_book["position"][0], 20.0, 1e-12)
+    close("I toy position slot 1", toy_book["position"][1], 80.0, 1e-12)
+    close("I toy book energy", toy_book["energy_mwh"], 100.0, 1e-12)
+    check(hedge.price_curve(toy_book, 2) == [300.0, 300.0], "I toy price curve is flat")
+    toy_settle = hedge.settle_book(toy, [120.0, 80.0], [200.0, 500.0], 2, 30)
+    close("I toy contract revenue", toy_settle["contract_revenue_cny"], 30_000.0, 1e-9)
+    close("I toy spot revenue", toy_settle["spot_revenue_cny"], -12_000.0, 1e-9)
+    close("I toy total revenue", toy_settle["total_revenue_cny"], 18_000.0, 1e-9)
+    close("I toy hedge ratio", toy_settle["hedge_ratio"], 1.0, 1e-12)
+    close("I toy absolute exposure", toy_settle["absolute_exposure_mwh"], 80.0, 1e-9)
+    toy_value = hedge.hedge_value(toy, [120.0, 80.0], [200.0, 500.0], 2, 30)
+    close("I toy hedge value", toy_value["hedge_value_cny"], -14_000.0, 1e-9)
+    close("I toy carry", toy_value["carry_cny"], -5_000.0, 1e-9)
+    close("I toy curve shape", toy_value["shape_cny"], -9_000.0, 1e-9)
+    close("I toy carry + shape identity", toy_value["identity_gap"], 0.0, 1e-9)
+    toy_stats = hedge.curve_stats(toy_book["position"], [120.0, 80.0], [200.0, 500.0], 2, 30)
+    close("I toy buy back", toy_stats["buy_back_mwh"], 40.0, 1e-9)
+    close("I toy sell surplus", toy_stats["sell_surplus_mwh"], 40.0, 1e-9)
+    close("I toy mismatch", toy_stats["mismatch_mwh"], 80.0, 1e-9)
+    close("I toy peak/average", toy_stats["spot_peak_to_average"], 500.0 / 350.0, 1e-12)
+    toy_plan = {
+        "output_mw": [120.0, 80.0],
+        "position_curve": [20.0, 80.0],
+        "contract_price_curve": [300.0, 300.0],
+        "spot_prices": [200.0, 500.0],
+    }
+    toy_actual = {
+        "output_mw": [110.0, 85.0],
+        "position_curve": [22.0, 76.0],
+        "contract_price_curve": [300.0, 300.0],
+        "spot_prices": [220.0, 480.0],
+    }
+    toy_bridge = hedge.pnl_bridge(toy_plan, toy_actual, 2, 30)
+    close("I toy bridge plan", toy_bridge["plan_revenue_cny"], 18_000.0, 1e-9)
+    close("I toy bridge actual", toy_bridge["actual_revenue_cny"], 20_580.0, 1e-9)
+    close("I toy bridge delta", toy_bridge["delta_cny"], 2_580.0, 1e-9)
+    check(len(toy_bridge["buckets"]) == 6, "I toy bridge has six buckets")
+    check(abs(toy_bridge["identity_gap"]) < 1e-9, "I toy bridge identity holds")
+    toy_amounts = {item["category"]: item["amount"] for item in toy_bridge["buckets"]}
+    close("I toy contract volume", toy_amounts["contract_volume"], 280.0, 1e-9)
+    close("I toy contract shape", toy_amounts["contract_shape"], 720.0, 1e-9)
+    close("I toy output volume", toy_amounts["output_volume"], -800.0, 1e-9)
+    close("I toy output shape", toy_amounts["output_shape"], 1050.0, 1e-9)
+    close("I toy spot price", toy_amounts["spot_price"], 1600.0, 1e-9)
+    close("I toy interaction", toy_amounts["interaction"], -270.0, 1e-9)
+    close(
+        "I toy buckets sum to delta",
+        sum(toy_amounts.values()),
+        toy_bridge["delta_cny"],
+        1e-9,
+    )
+
+    trade = hedge.required_trade(10_000.0, 7_500.0, 0.85)
+    close("I required trade target", trade["target_position_mwh"], 8_500.0, 1e-9)
+    close("I required trade size", trade["required_trade_mwh"], 1_000.0, 1e-9)
+    check(trade["action"] == "加仓", "I required trade is a buy")
+    close("I current hedge ratio", trade["current_hedge_ratio"], 0.75, 1e-12)
+    rolling = hedge.rolling_plan([8000.0, 8500.0, 9000.0], 6000.0, 0.85)
+    close("I rolling day1 trade", rolling[0]["required_trade_mwh"], 800.0, 1e-9)
+    close("I rolling day2 trade", rolling[1]["required_trade_mwh"], 425.0, 1e-9)
+    close("I rolling day3 trade", rolling[2]["required_trade_mwh"], 425.0, 1e-9)
+    close("I rolling day2 ratio", rolling[1]["current_hedge_ratio"], 0.8, 1e-12)
+    close("I rolling ends at target", rolling[2]["position_after_mwh"], 7650.0, 1e-9)
+
+    # ---- J. 山东煤电中长期实例包（配置 + 演示数字全部锁定） ----------------
+    print("\n== shandong thermal hedge instance")
+    instance_dir = (
+        Path(__file__).resolve().parents[1]
+        / "instances"
+        / "shandong-thermal-hedge-2026-11"
+    )
+    spec = importlib.util.spec_from_file_location(
+        "shandong_thermal_hedge_instance", instance_dir / "run.py"
+    )
+    runner = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(runner)
+    instance_path = instance_dir / "instance.json"
+    config = json.loads(instance_path.read_text(encoding="utf-8"))
+    report = runner.validate_instance(config)
+    print(
+        f"hedge config ok={report['ok']} points={report['points_per_day']} "
+        f"book={report['book_daily_energy_mwh']:.1f} MWh price={report['book_weighted_price']:.2f}"
+    )
+    check(report["ok"] and report["points_per_day"] == 96, "J hedge config validates at 96 points")
+    close("J book daily energy", report["book_daily_energy_mwh"], 7500.0, 1e-9)
+    close("J book weighted price", report["book_weighted_price"], 375.34666666666664, 1e-9)
+    check(report["target_hedge_ratio"] == 0.85, "J target hedge ratio is 0.85")
+    check(report["mtu_min"] == 15, "J hedge pack uses 15-minute MTU")
+
+    def bad_config(mutate):
+        broken = json.loads(json.dumps(config))
+        mutate(broken)
+        try:
+            runner.validate_instance(broken)
+        except runner.ConfigError:
+            return True
+        return False
+
+    check(
+        bad_config(lambda c: c["book"][0].__setitem__("daily_energy_mwh", 1_752_000.0)),
+        "J annual energy used as daily is rejected",
+    )
+    check(
+        bad_config(lambda c: c["book"][0].__setitem__("type", "physical")),
+        "J physical contract is rejected in v1",
+    )
+    check(
+        bad_config(lambda c: c["book"][0]["shape"].__setitem__("type", "linear")),
+        "J unknown shape type is rejected",
+    )
+    check(
+        bad_config(lambda c: c["policy"].__setitem__("target_hedge_ratio", 1.5)),
+        "J target above max hedge ratio is rejected",
+    )
+    check(
+        bad_config(lambda c: c["book"][0].__setitem__("price_cny_per_mwh", 2000.0)),
+        "J contract price above spot cap is rejected",
+    )
+
+    position = runner.build_position(config, report)
+    bad_rolling = [
+        {"day_offset": -1, "forecast_output_mwh": 8000.0, "position_before_mwh": 7000.0},
+        {"day_offset": 0, "forecast_output_mwh": 9000.0, "position_before_mwh": 6000.0},
+    ]
+    try:
+        runner.build_rolling(config, report, bad_rolling, position)
+        chain_raised = False
+    except runner.ConfigError:
+        chain_raised = True
+    check(chain_raised, "J broken rolling position chain is rejected")
+
+    late_period = json.loads(json.dumps(config))
+    late_period["book"][0]["period_start"] = "2026-12-01"
+    late_period["book"][0]["period_end"] = "2026-12-31"
+    late_report = runner.validate_instance(late_period)
+    try:
+        runner.read_d1(instance_dir / "data" / "d1_demo.csv", late_period, late_report)
+        coverage_raised = False
+    except runner.ConfigError:
+        coverage_raised = True
+    check(coverage_raised, "J contract period must cover the trading day")
+
+    with tempfile.TemporaryDirectory() as tmp:
+        result = runner.run_instance(
+            instance_path,
+            instance_dir / "data" / "d1_demo.csv",
+            instance_dir / "data" / "t1_demo.csv",
+            instance_dir / "data" / "rolling_demo.csv",
+            Path(tmp),
+        )
+        plan = result["summary"]["plan"]
+        rolling_out = result["rolling"]
+        bridge = result["bridge"]
+        print(
+            f"hedge demo ratio={plan['hedge_ratio']:.4f} E={plan['expected_revenue_cny']:.0f} "
+            f"CVaR10={plan['cvar_10_cny']:.0f} delta={bridge['delta_cny']:.0f} "
+            f"gap={bridge['identity_gap']:.2e}"
+        )
+        check(result["report"]["ok"], "J hedge demo report is ok")
+        close("J forecast energy", plan["forecast_energy_mwh"], 8800.0, 1e-6)
+        close("J position energy", plan["position_energy_mwh"], 7500.0, 1e-6)
+        close("J hedge ratio", plan["hedge_ratio"], 0.8522727272727273, 1e-12)
+        close("J net exposure", plan["net_exposure_mwh"], 1300.0, 1e-6)
+        close("J sell surplus", plan["sell_surplus_mwh"], 1300.0, 1e-6)
+        close("J buy back is zero", plan["buy_back_mwh"], 0.0, 1e-9)
+        close("J reference revenue", plan["reference_revenue_cny"], 3_285_582.4470592756, 0.01)
+        close("J expected revenue", plan["expected_revenue_cny"], 3_295_135.308125722, 0.01)
+        close("J CVaR10", plan["cvar_10_cny"], 3_238_909.562358778, 0.01)
+        close("J reference hedge value", plan["reference_hedge_value_cny"], 102_568.37723157229, 0.01)
+        close("J carry", plan["carry_cny"], 145_611.17296875577, 0.01)
+        close("J curve shape", plan["shape_cny"], -43_042.795737182256, 0.01)
+        check(abs(plan["hedge_value_identity_gap"]) < 1e-6, "J carry + shape identity holds")
+        close("J required trade", plan["required_trade_mwh"], -20.0, 1e-9)
+        check(plan["required_trade_action"] == "减仓", "J required trade is a trim")
+        check(len(plan["scenarios"]) == 5, "J five price scenarios")
+        close(
+            "J worst scenario is CVaR10",
+            min(item["total_revenue_cny"] for item in plan["scenarios"]),
+            plan["cvar_10_cny"],
+            1e-6,
+        )
+        close("J rolling final target", rolling_out["final_target_position_mwh"], 7480.0, 1e-9)
+        close("J rolling lot gap", rolling_out["lot_gap_mwh"], 20.0, 1e-9)
+        close("J rolling final ratio", rolling_out["final_hedge_ratio"], 0.8522727272727273, 1e-12)
+        check(len(rolling_out["rows"]) == 5, "J five rolling days")
+        close("J rolling day -4 trade", rolling_out["rows"][0]["required_trade_mwh"], 182.5, 1e-9)
+        close("J rolling day -2 trade", rolling_out["rows"][2]["required_trade_mwh"], -187.0, 1e-9)
+        close("J bridge plan revenue", bridge["plan_revenue_cny"], 3_285_582.447059269, 0.01)
+        close("J bridge actual revenue", bridge["actual_revenue_cny"], 3_240_925.8805671693, 0.01)
+        close("J bridge delta", bridge["delta_cny"], -44_656.56649209978, 0.01)
+        check(abs(bridge["identity_gap"]) < 1e-6, "J bridge identity holds")
+        check(len(bridge["buckets"]) == 6, "J bridge has six buckets")
+        close(
+            "J bridge buckets sum to delta",
+            sum(item["amount"] for item in bridge["buckets"]),
+            bridge["delta_cny"],
+            1e-6,
+        )
+        amounts = {item["category"]: item["amount"] for item in bridge["buckets"]}
+        close("J bridge output volume", amounts["output_volume"], -54_111.239187070445, 0.01)
+        close("J bridge spot price", amounts["spot_price"], 11_681.85681309089, 0.01)
+        close("J bridge contract shape", amounts["contract_shape"], -4_030.7955588320747, 0.01)
+        close("J bridge output shape", amounts["output_shape"], 2_433.4447987185467, 0.01)
+        close("J bridge interaction", amounts["interaction"], -1_000.5611641149402, 0.01)
+        close("J bridge contract volume", amounts["contract_volume"], 370.7278061080034, 0.01)
+        check(
+            result["summary"]["policy_fingerprint"] == "f1e965abe40e",
+            "J hedge policy fingerprint is locked",
+        )
+        check(len(result["bridge_detail"]) == 5, "J bridge detail lists top five slots")
+        check((Path(tmp) / "book_sheet.csv").exists(), "J book sheet is written")
+        check((Path(tmp) / "rolling.csv").exists(), "J rolling sheet is written")
+        check((Path(tmp) / "bridge.csv").exists(), "J bridge csv is written")
+        check((Path(tmp) / "review.md").exists(), "J review is written")
 
     print(f"\nAll electricity-trading-expert self-tests passed ({_COUNT} assertions).")
 

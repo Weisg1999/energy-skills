@@ -625,21 +625,22 @@ For engineering delivery (rule-version registry, data contracts, limits, reconci
 
 ### 13.6 Instance packs: one province, one entity
 
-The engine layer gives methods and worked examples; the instance layer answers what to bid tomorrow. Three vertical slices are available:
+The engine layer gives methods and worked examples; the instance layer answers what to bid tomorrow. Four vertical slices are available:
 
 | Instance | Entity | Granularity | Pack-specific modelling |
 |---|---|---|---|
 | `instances/shandong-storage-2026-11/` | Shandong standalone storage | 96 points / 15 min | five-scenario DP quantile bid, CfD, capacity placeholder |
+| `instances/shandong-thermal-2026-11/` | Shandong coal/CHP unit | 96 points / 15 min | heat-driven must-run, incremental cost offer, AGC reserve deduction, six-bucket T+1 bridge |
 | `instances/gansu-wind-2027/` | Gansu wind farm | 96 points / 15 min | wind-scenario quantity bid, two-way mechanism spread, D-grade fishing assessment |
 | `instances/shanxi-storage-2026-11/` | Shanxi standalone storage | 288 points / 5 min | spread bid, day-ahead + real-time two-settlement, fuse-window stress test |
 
-All three share one skeleton:
+All four share one skeleton:
 
 - `instance.json` has six blocks: `meta`, `rules`, `asset`, `policy`, `contracts`, `data_contract`; every rule block must carry a source grade, or validation refuses to run;
 - one command: `python skills/spot-bidding-quant/instances/<pack>/run.py --demo`;
 - outputs: bid sheet, scenario expected revenue and CVaR, T+1 settlement bridge, review sheet;
 - asset parameters and the policy profile are separate; the SHA-1 fingerprint of `policy` is written into the review, so style changes are versioned rather than mixed into execution errors;
-- dispatch reuses `ems-dispatch/tools/dispatch.py`; this skill does not maintain a second optimiser;
+- dispatch reuses `ems-dispatch/tools/dispatch.py`; this skill does not maintain a second optimiser (the thermal pack uses an analytical must-run plus incremental-block offer, not another optimiser);
 - each pack covers spot energy plus only the extras stated in its scope; ancillary services, medium-term curve decomposition and leasing are out of scope;
 - demo data is synthetic grade D; unverified capacity payments, fuse recalculation and mechanism reference prices are not estimated.
 
@@ -674,6 +675,7 @@ See `instances/README.md` for the schema and fill-in workflow, and each pack's `
 | Settlement bridge | ΔQ_da·P_da + (Q_da0 − Q_c)·ΔP_da + (ΔQ_a − ΔQ_da)·P_rt + (Q_a0 − Q_da0)·ΔP_rt | `desk.settlement_bridge` |
 | Storage bridge | discharge/charge quantity, price and cross terms + degradation/contract/capacity/penalty/allocation | `desk.storage_bridge` |
 | Scenario-quantile bid | five DP scenarios → quantile quantities and prices → bound clipping | `instances/shandong-storage-2026-11/run.py` |
+| Thermal two-block offer | must-run = max(min output, heat load / heat-to-power ratio) + incremental block at cost | `instances/shandong-thermal-2026-11/run.py` |
 | Mechanism spread | ratio × (P_mech − capture) × Q | `instances/gansu-wind-2027/run.py` |
 | Day-ahead + real-time settlement | plan×DA + (actual−plan)×RT | `instances/shanxi-storage-2026-11/run.py` |
 | Fuse stress | window net × fuse price | `instances/shanxi-storage-2026-11/run.py` |
