@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "instance_id": "guangdong-multi-user-direct-2026-11",
+    "province": "广东",
+    "market": "绿电直连（多用户）+ 就近消纳价格机制",
+    "entity_type": "绿电直连项目公司（多用户联合体）",
+    "rule_version": "发改能源〔2025〕650号；发改能源〔2026〕688号；发改价格〔2025〕1192号；粤发改能源〔2026〕267号；粤发改价格函〔2026〕1848号",
+    "data_cutoff": "2026-11-13",
+    "grade": "B/C",
+    "scope": "广东某工业园区 100 MW 风电 + 100 MW 光伏多用户绿电直连：3 个法人用户、月度发用电匹配、60%/35%/20% 合规校核、1192 号容需量与 730 小时折算输配电费、成本堆叠、三种分摊口径、临界 LCOE 与 12 项敏感性；不含专线建设、土地、融资、税、备用电源、绿证核发细则与省级正式参数",
+    "units": {
+      "power": "MW",
+      "energy": "MWh",
+      "price": "CNY/MWh",
+      "conversion": "1 CNY/MWh = 0.001 CNY/kWh；1 MVA = 1000 kVA",
+      "capacity_charge": "CNY/kVA·月"
+    },
+    "disclaimer": "全部发用电量、用户结构、LCOE、储能成本、输配电价、系统运行费、基金、上网电价与绿证价格均为 D 级合成数据，不对应任何真实园区、用户或项目；规则文号仅用于演示计算链，不构成投资、报价或签约建议。"
+  },
+  "rules": {
+    "direct_connection": {
+      "self_use_min_ratio_generation": 0.60,
+      "self_use_min_ratio_consumption": 0.35,
+      "feed_in_max_ratio_generation": 0.20,
+      "min_users": 2,
+      "allocation_basis": "contract_share",
+      "user_scope": "多个不同法人实体；不含居民和农业用户；工业园区、零碳园区、增量配电网可整体或部分负荷参与",
+      "grade": "A/B",
+      "source": "发改能源〔2025〕650号《关于有序推动绿电直连发展有关事项的通知》（2025-05-30 公开，单用户）；发改能源〔2026〕688号《关于有序推动多用户绿电直连发展有关事项的通知》（2026-05，05-14 与 05-20 两种说法待核实，多用户）；广东粤发改能源〔2026〕267号按 B/C 处理"
+    },
+    "tariff": {
+      "capacity_price_cny_per_kva_month": 30.0,
+      "conversion_energy_price_cny_per_mwh": 100.0,
+      "conversion_hours_per_month": 730.0,
+      "provincial_average_load_rate": 0.60,
+      "access_capacity_mva": 63.0,
+      "system_operation_cny_per_mwh": 68.0,
+      "loss_cny_per_mwh": 12.0,
+      "government_fund_cny_per_mwh": 20.0,
+      "baseline_all_in_cny_per_mwh": 675.6,
+      "grade": "B/C/D",
+      "source": "发改价格〔2025〕1192号《关于完善价格机制促进新能源发电就近消纳的通知》（2025-09-12 发布，2025-10-01 实施，A）；粤发改价格函〔2026〕1848号 730 小时折算（2026-10-14，B/C，转引）；30 元/kVA·月、60% 省级平均负荷率、0.10 元/kWh 折算价、68/12/20 元/MWh 系统运行/线损/基金、675.6 元/MWh 原全口径电价均为 D 级合成算例",
+      "status": "容量电价与折算参数按知识库合成算例；实际项目须查广东现行目录、1848 号公式与省级平均负荷率"
+    },
+    "market": {
+      "feed_in_price_cny_per_mwh": 250.0,
+      "green_certificate_cny_per_mwh": 6.0,
+      "feed_in_basis": "项目级上网电量；月度上网受 20% 可用发电量上限约束；收入计入项目成本池",
+      "grade": "D",
+      "source": "上网电价与绿证价格均为 D 级合成值；直连自用电量对应绿证的核发、划转、核销细则待核实，归属必须在合同中写明"
+    },
+    "cost": {
+      "wind_mw": 100.0,
+      "wind_hours": 2400.0,
+      "pv_mw": 100.0,
+      "pv_hours": 1600.0,
+      "generation_lcoe_cny_per_mwh": 220.0,
+      "storage_power_mw": 50.0,
+      "storage_energy_mwh": 100.0,
+      "storage_annual_cost_cny": 8878000.0,
+      "line_opex_cny_per_mwh": 10.0,
+      "grade": "D",
+      "source": "风光装机与利用小时、LCOE、储能年化成本、专线运维均为 D 级合成值；储能按 700 元/Wh、15 年、8%、O&M 1% 折算，年化成本 887.8 万元"
+    }
+  },
+  "project": {
+    "name": "广东某工业园区多用户绿电直连（合成）",
+    "max_demand_mw": 50.0,
+    "cod": "2026-12-31",
+    "users": [
+      {
+        "id": "dc",
+        "name": "数据中心 A",
+        "type": "数据中心",
+        "column": "user_a_mwh",
+        "annual_consumption_mwh": 156000.0,
+        "max_demand_mw": 25.0,
+        "contract_share": 0.50
+      },
+      {
+        "id": "mfg",
+        "name": "电子制造 B",
+        "type": "电子制造",
+        "column": "user_b_mwh",
+        "annual_consumption_mwh": 84000.0,
+        "max_demand_mw": 13.0,
+        "contract_share": 0.30
+      },
+      {
+        "id": "cold",
+        "name": "冷链仓储 C",
+        "type": "冷链仓储",
+        "column": "user_c_mwh",
+        "annual_consumption_mwh": 60000.0,
+        "max_demand_mw": 12.0,
+        "contract_share": 0.20
+      }
+    ],
+    "grade": "D",
+    "source": "D 级合成园区：3 个法人用户、年用电 3.00 亿 kWh、最大负荷 50 MW；合同份额 50%/30%/20% 与用电份额 52%/28%/20% 刻意错配，用于演示多用户分摊"
+  },
+  "policy": {
+    "profile_id": "guangdong-multi-user-direct-v1",
+    "allocation_keys": [
+      "energy",
+      "capacity",
+      "contract",
+      "two_part"
+    ],
+    "primary_allocation_key": "two_part",
+    "decision_rule": "unit_cost <= baseline and self_use_ratio_generation >= 0.60 and self_use_ratio_consumption >= 0.35 and feed_in_ratio_generation <= 0.20",
+    "export_cap_basis": "monthly_generation",
+    "critical_lcoe_bounds_cny_per_mwh": [
+      50.0,
+      800.0
+    ],
+    "sensitivity_lcoe_values_cny_per_mwh": [
+      264.0,
+      300.0
+    ],
+    "grade": "D",
+    "source": "D 级投决风格：先做 60%/35%/20% 合规校核，再比全口径度电成本，最后比较电量、容量、合同份额与两部制四种分摊口径"
+  },
+  "data_contract": {
+    "profile": {
+      "path": "data/profile_demo.csv",
+      "fields": [
+        "month",
+        "generation_mwh",
+        "user_a_mwh",
+        "user_b_mwh",
+        "user_c_mwh",
+        "feed_in_price_cny_per_mwh"
+      ],
+      "frequency": "monthly, first operating year"
+    }
+  }
+}

@@ -1,0 +1,261 @@
+{
+  "meta": {
+    "instance_id": "mengxi-wind-spot-2026-11",
+    "province": "蒙西",
+    "market": "内蒙古电力多边交易市场（全电量单轨制现货 + 中长期差价合约）",
+    "entity_type": "集中式风电（2025-06-01 后并网增量项目，无机制电价）",
+    "rule_version": "蒙西现货正式运行（内能源电力字〔2025〕84号，2025-02-24）；2026 修订版规则体系为 2026-02-14 征求意见稿，未生效；现行限价以省级正式全文为准（待核）",
+    "data_cutoff": "2026-11-13",
+    "grade": "B/C",
+    "scope": "v1 覆盖 96 点日前预出清参考、实时全电量结算、负价弃风、中长期差价合约、申报偏差考核（D 级简化）、捕获价与差异桥；不覆盖 5 分钟滚动出清、136 机制电价、辅助服务、绿证、省间外送、年度签约比例考核与两个细则",
+    "currency": "CNY",
+    "units": {
+      "power": "MW",
+      "energy": "MWh",
+      "price": "CNY/MWh",
+      "mechanism_price": "CNY/MWh（0.2829 元/kWh = 282.9 元/MWh，仅存量项目）",
+      "time": "HH:MM",
+      "slot": "0-95（15 分钟一点；实时 5 分钟出清聚合为 15 分钟近似）"
+    },
+    "disclaimer": "本实例包是 D 级合成样板，不对应任何真实场站、合同或计量数据；不构成报价、投资或法律建议。"
+  },
+  "rules": {
+    "spot": {
+      "status": "正式运行（2025-02-24，内能源电力字〔2025〕84号）",
+      "market_time_unit_min": 15,
+      "points_per_day": 96,
+      "model_floor_cny_per_mwh": -60.0,
+      "model_cap_cny_per_mwh": 1600.0,
+      "observed_2025": {
+        "floor_cny_per_mwh": -48.66,
+        "cap_cny_per_mwh": 1555.85,
+        "average_cny_per_mwh": 259.43,
+        "peak_average_cny_per_mwh": 391.17,
+        "valley_average_cny_per_mwh": 110.67,
+        "max_daily_spread_cny_per_mwh": 1650.27,
+        "status": "2025 年实绩，B 级；不是限价参数"
+      },
+      "early_limit": {
+        "value": "4-10 月 40-550、其他月份 40-600 元/MWh",
+        "status": "早期/历史口径（B），不得作为 2026 现行限价",
+        "grade": "B"
+      },
+      "draft_2026": {
+        "value": "申报 -50 至 1500 元/MWh",
+        "status": "2026-02-14 征求意见稿（C），未生效，不得写入现行字段",
+        "grade": "C"
+      },
+      "current_limit_status": "省级正式全文待核；本包只用 2025 实绩区间加少量余量作为模型边界",
+      "grade": "A/B",
+      "source": "内能源电力字〔2025〕84号（2025-02-21 成文、02-24 转正式）；内蒙古电力交易中心 2025 年信息披露简报（-48.66 至 1555.85、259.43、391.17、110.67、1650.27）；2026-02-14 修订版征求意见稿（-50 至 1500，C，未生效）"
+    },
+    "settlement": {
+      "basis": "全电量单轨制：实际电量按实时价结算，中长期合约按差价结算；日前为预出清，只作调度参考，不用于结算（本包按此口径建模）",
+      "reference_point": "中长期结算参考点；正式规则以省级全文为准，本包用项目捕获价近似",
+      "granularity": "实时 5 分钟滚动出清；本包聚合为 96 点 15 分钟，不模拟 5 分钟内滚动决策",
+      "two_settlement_note": "若正式规则实际采用日前计划 + 实时偏差两结算，本包另列两结算对照，差额约等于申报电量 ×（日前价 − 实时价）×（1 − 合约比例）",
+      "grade": "A/B",
+      "source": "知识模块《蒙西电力市场-2026-11》§3-§4：全电量单轨制、日前预出清 + 实时市场、现货全电量结算、中长期差价结算；公开口径称实时为最终结算依据，正式结算条款以省级全文为准"
+    },
+    "new_energy": {
+      "incremental_after": "2025-06-01",
+      "incremental_mechanism": "暂不纳入机制电价，无保底价，全部市场化",
+      "stock_mechanism_cny_per_mwh": 282.9,
+      "stock_mechanism_note": "0.2829 元/kWh 是蒙西燃煤基准价，也是存量新能源机制电价；不适用于 2025-06-01 后增量项目",
+      "annual_signing_ratio": 0.6,
+      "annual_signing_note": "内能源电力字〔2024〕831号对新能源设年度签约下限（文件含 65%/80%/60%/90% 多档要求，具体以原文为准）；本包取 60% 作为演示，不替代正式考核",
+      "deviation_band": 0.05,
+      "deviation_note": "现货 101 问口径：蒙西偏差 ±5% 以内不考核（B）；本包只实现申报偏差考核的 D 级简化，年度签约比例考核未实现",
+      "grade": "A/B",
+      "source": "内能源电力字〔2024〕831号；知识模块《蒙西电力市场-2026-11》§5、§7.1；电力现货市场 101 问-B"
+    },
+    "negative_price": {
+      "observed_floor_cny_per_mwh": -48.66,
+      "observed_year": 2025,
+      "draft_floor_cny_per_mwh": -50.0,
+      "draft_status": "2026 征求意见稿，C，未生效",
+      "wind_curtailment": "负价弃风是运营选择，不是强制规则；弃风会同时减少电量和按实际电量计价的差价合约对冲，是否弃风要按边际损益判断",
+      "grade": "B/C",
+      "source": "内蒙古电力交易中心 2025 年信息披露（-48.66 元/MWh 实绩）；2026-02-14 修订版征求意见稿（-50 元/MWh，C）"
+    },
+    "deviation_assessment": {
+      "band": 0.05,
+      "penalty_cny_per_mwh": 30.0,
+      "basis": "available_energy",
+      "formula": "max(0, |可用电量 − 申报电量| / 申报电量 − 5%) × 申报电量 × 30 元/MWh",
+      "note": "±5% 免考核带来自现货 101 问-B；30 元/MWh 与按可用电量（弃风前）计为 D 级简化，不是正式考核公式",
+      "grade": "B/D",
+      "source": "电力现货市场 101 问-B：蒙西偏差 ±5% 以内不考核（B）；30 元/MWh 与按可用电量计为 D 级建模假设"
+    },
+    "contract": {
+      "type": "financial_cfd",
+      "contract_price_cny_per_mwh": 280.0,
+      "ratio_of_actual_generation": 0.6,
+      "reference_price_basis": "project_capture_price",
+      "settlement_formula": "ratio × actual_energy × (contract_price − capture_price)",
+      "note": "合约按实际发电量比例结算，只对冲价格不对冲电量；280 元/MWh、60% 比例与捕获价参考口径均为 D 级建模假设，不是真实合同条款",
+      "grade": "B/D",
+      "source": "年度签约下限 60% 来自内能源电力字〔2024〕831号（A，具体以原文为准）；合约价格、比例与结算公式为 D 级假设"
+    },
+    "cost": {
+      "opex_cny_per_mwh": 25.0,
+      "fixed_cost_cny_per_day": 80000.0,
+      "note": "运维 25 元/MWh、固定成本 8 万元/日为 D 级建模假设；不含折旧、财务费用、税费与弃风补偿",
+      "grade": "D",
+      "source": "D 级合成参数，不对应任何真实风电项目"
+    },
+    "capacity_compensation": {
+      "applicable_to_wind": false,
+      "status": "未核到蒙西固定容量电价；行业口径 0.28 元/kWh 放电量补贴为储能口径（C/D），不适用于风电",
+      "grade": "C/D",
+      "source": "知识模块《蒙西电力市场-2026-11》§7.3：0.28 元/kWh 为储能度电补贴行业口径，与 0.2829 元/kWh 机制电价性质不同"
+    }
+  },
+  "asset": {
+    "name": "示例 200 MW 风电场（2025-06 后并网增量，D 级合成）",
+    "type": "wind",
+    "power_mw": 200.0,
+    "grid_connection": {
+      "export_limit_mw": 200.0,
+      "import_limit_mw": 0.0
+    },
+    "opex_cny_per_mwh": 25.0,
+    "fixed_cost_cny_per_day": 80000.0,
+    "expected_annual_hours": 2800,
+    "grade": "D",
+    "source": "占位；实际项目按铭牌、功率预测系统、运维台账与并网测试报告填写"
+  },
+  "policy": {
+    "profile_id": "mengxi-wind-negative-aware-v1",
+    "description": "四种申报风格比较：P50/P35 申报、负价弃风/不弃风；按情景期望净收益选择，同时报告 CVaR 与弃风临界价",
+    "cvar_confidence": 0.8,
+    "strategies": {
+      "p50_curtail": {
+        "label": "P50 申报 + 负价弃风",
+        "declared_quantity_quantile": 0.5,
+        "bid_price_cny_per_mwh": 0.0,
+        "curtail_threshold_cny_per_mwh": 0.0,
+        "curtail_ratio": 1.0
+      },
+      "p35_curtail": {
+        "label": "P35 申报 + 负价弃风",
+        "declared_quantity_quantile": 0.35,
+        "bid_price_cny_per_mwh": 0.0,
+        "curtail_threshold_cny_per_mwh": 0.0,
+        "curtail_ratio": 1.0
+      },
+      "p50_ride": {
+        "label": "P50 申报 + 负价不停机",
+        "declared_quantity_quantile": 0.5,
+        "bid_price_cny_per_mwh": 0.0,
+        "curtail_threshold_cny_per_mwh": -60.0,
+        "curtail_ratio": 0.0
+      },
+      "p65_ride": {
+        "label": "P65 申报 + 负价不停机",
+        "declared_quantity_quantile": 0.65,
+        "bid_price_cny_per_mwh": 0.0,
+        "curtail_threshold_cny_per_mwh": -60.0,
+        "curtail_ratio": 0.0
+      }
+    },
+    "sensitivity": {
+      "price_multipliers": [
+        0.85,
+        1.15
+      ],
+      "wind_multipliers": [
+        0.9,
+        1.1
+      ],
+      "contract_ratios": [
+        0.3,
+        0.9
+      ],
+      "curtail_thresholds": [
+        -50.0,
+        50.0
+      ],
+      "combined": {
+        "price_multiplier": 0.85,
+        "wind_multiplier": 0.9,
+        "contract_ratio": 0.3,
+        "curtail_threshold_cny_per_mwh": -50.0,
+        "curtail_ratio": 1.0
+      }
+    },
+    "decision_rule": "情景期望净收益最大；同时报告 CVaR、弃风电量与弃风临界价，不能只看单日现货收入",
+    "grade": "D",
+    "note": "策略、报价、弃风阈值与敏感性均为风格选择，不是监管要求；改 profile_id 并保留旧文件，便于比较"
+  },
+  "contracts": [
+    {
+      "id": "midlong-cfd-2026",
+      "type": "financial_cfd",
+      "price_cny_per_mwh": 280.0,
+      "ratio_of_actual_generation": 0.6,
+      "reference_price_basis": "project_capture_price",
+      "grade": "B/D",
+      "source": "签约比例下限 60% 来自内能源电力字〔2024〕831号（A，具体以原文为准）；280 元/MWh、按实际电量比例与捕获价结算为 D 级假设"
+    }
+  ],
+  "data_contract": {
+    "d1": {
+      "file": "data/d1_demo.csv",
+      "required_fields": [
+        "date",
+        "slot",
+        "start",
+        "end",
+        "forecast_mw",
+        "wind_s1",
+        "wind_s2",
+        "wind_s3",
+        "wind_s4",
+        "wind_s5",
+        "price_s1",
+        "price_s2",
+        "price_s3",
+        "price_s4",
+        "price_s5",
+        "da_price"
+      ],
+      "wind_fields": [
+        "wind_s1",
+        "wind_s2",
+        "wind_s3",
+        "wind_s4",
+        "wind_s5"
+      ],
+      "price_fields": [
+        "price_s1",
+        "price_s2",
+        "price_s3",
+        "price_s4",
+        "price_s5"
+      ],
+      "scenario_weights": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "release_cutoff": "D-1 交易中心日前申报截止前（具体时点以交易中心公告为准）",
+      "note": "风功率与价格情景按同一编号配对：s1 大风低价、s5 小风高价；不得独立抽样后随意拼配。da_price 只作日前预出清参考，不用于结算"
+    },
+    "t1": {
+      "file": "data/t1_demo.csv",
+      "required_fields": [
+        "date",
+        "slot",
+        "actual_da_price",
+        "actual_rt_price",
+        "actual_available_mw",
+        "actual_output_mw",
+        "actual_curtail_mw"
+      ],
+      "note": "T+1 实际：可用出力 = 上网出力 + 弃风；三者必须逐点闭合。没有实际数据时只出申报表，不跑差异桥"
+    }
+  }
+}

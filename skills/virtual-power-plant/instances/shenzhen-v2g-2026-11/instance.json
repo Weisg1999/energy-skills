@@ -1,0 +1,234 @@
+{
+  "meta": {
+    "instance_id": "shenzhen-v2g-2026-11",
+    "province": "广东",
+    "market": "深圳虚拟电厂管理中心 + 广东电力市场（南方区域现货广东价区）+ 需求响应 + 备用容量",
+    "entity_type": "车网互动（V2G）聚合商：公共场站私家车 + 公交场站 + 物流园区",
+    "rule_version": "发改办能源〔2025〕241号首批车网互动试点（深圳在列）；广东虚拟电厂参与电能量交易/运营管理实施细则（2025-06）；南方区域正式运行方案（南方电网总调〔2026〕16号，广东价区申报下限 −50、出清 −50–1,800 元/MWh）；广东 2026 削峰需求响应年度交易申报上限 2,700 元/MWh",
+    "data_cutoff": "2026-11-14",
+    "grade": "B/C",
+    "scope": "v1 覆盖深圳 V2G 聚合的站点能力折算（车数、桩功率、同时率、可用率、SOC 窗口、配变反向限额）、峰谷套利、需求响应、备用容量三种品种在同一 MW 预算下的分配、电池退化、双向桩年化成本、车主与聚合商分成、敏感性、临界值与复核表；不含现货 96 点报价、调频里程、容量补偿、输配电费抵扣、绿证/碳、需量电费、电池质保成本、补贴与税费",
+    "currency": "CNY",
+    "units": {
+      "power": "MW",
+      "energy": "MWh",
+      "price": "CNY/MWh",
+      "reserve_price": "CNY/kW·month",
+      "time": "月 × 日峰/平/谷小时"
+    },
+    "disclaimer": "本实例包是 D 级合成样板，不对应任何真实站点、车辆、聚合商或结算单；不构成报价、投资、合同或法律建议。深圳 V2G 放电结算价、DR 补偿、备用价格、交付率与成本参数均需以正式文件、交易公告与合同为准。"
+  },
+  "rules": {
+    "v2g": {
+      "status": "试点→规模化（深圳为首批 9 个试点城市之一）",
+      "pilot_cities": 9,
+      "pilot_projects": 30,
+      "pilot_note": "发改办能源〔2025〕241号列 9 个城市、30 个项目；部分报道称 32 个项目，引用时注明“30 个（部分报道称 32 个）”",
+      "shenzhen_single_station": "光明虹桥公园单站 61 辆车、4.21 MW，接入深圳 VPP 管理中心（公开报道，B）",
+      "national_target_2030_mw": 50000,
+      "national_target_note": "2030 年 V2G 聚合可调充电 5,000 万 kW，含有序充电与双向充放电，不是反向放电功率",
+      "soc_window": "私家车 20%–80%；公交/物流 20%–90% 或 30%–90%，按车型与质保确定",
+      "metering": "充、放电独立计量；表计精度、通信中断补采与数据留存按并网/结算要求执行",
+      "grid_constraint": "配变反向容量、电压、保护、谐波是硬约束；V2G 集中放电可能造成台区反向重载或过电压",
+      "grade": "A/B",
+      "source": "发改办能源〔2025〕241号《关于公布首批车网互动规模化应用试点的通知》（A）；《新型电力系统建设“十五五”规划》2030 年 5,000 万 kW 聚合可调充电（A/B）；深圳光明虹桥公园 61 辆/4.21 MW 为公开报道（B）；SOC 窗口与并网约束为行业口径（B）"
+    },
+    "vpp": {
+      "status": "深圳虚拟电厂管理中心持续接入；广东 VPP 已进入电能量市场",
+      "access": {
+        "min_aggregate_capacity_mw": 5,
+        "min_duration_hours": 1,
+        "min_resource_mw": 0.02
+      },
+      "platform_scale": "深圳 VPP 平台接入 510 万 kW、最大可调 140 万 kW、61 家运营商、6 万+ 可调资源（公开报道，B）",
+      "market_role": "广东首批发电类 VPP 交易单元以“报量报价”参与现货（2025-12-29，5 个单元约 33 MW，公开报道，B/C）",
+      "scale_note": "510 万 kW 是接入规模，140 万 kW 是最大可调能力，二者都不是实际响应，也不是 V2G 反向放电容量",
+      "grade": "A/B",
+      "source": "广东虚拟电厂参与电能量交易实施细则、广东虚拟电厂运营管理实施细则（2025-06）；广东电力中长期市场实施细则（2026年版，2026-05-20）将 VPP 纳入经营主体；广东 VPP 聚合门槛 ≥5 MW、持续时间 ≥1 h、最小资源 0.02 MW（A/B）；深圳平台 510 万 kW/140 万 kW/61 家/6 万+ 资源为公开报道（B）"
+    },
+    "spot": {
+      "status": "广东省级现货 2023-12-28 转正；南方区域 2026-10-24 转正",
+      "declare_floor_cny_per_mwh": -50,
+      "declare_cap_cny_per_mwh": 1500,
+      "clear_floor_cny_per_mwh": -50,
+      "clear_cap_cny_per_mwh": 1800,
+      "v2g_price_basis": "反向放电按放电价格/补偿价结算；本包用月度放电价（D 级），不等于节点价，也不等于零售峰价",
+      "settlement": "广东现货 15 分钟节点价；用户侧按统一结算点小时价；V2G 聚合若参与现货，按交易单元申报与结算",
+      "grade": "A/B",
+      "source": "南方区域正式运行方案（南方电网总调〔2026〕16号）：广东价区申报下限 −50 元/MWh、出清 −50–1,800 元/MWh（A/B）；广东省级现货 2023-12-28 转正（A）；申报上限 1,500 元/MWh 为本包建模上限（D，待核）；V2G 放电价格口径见知识模块《需求响应、车网互动与灵活性资源-2026-11》§7.6（B/C）"
+    },
+    "demand_response": {
+      "status": "广东 2026 削峰需求响应年度交易 + 深圳 VPP 需求响应",
+      "price_cap_cny_per_mwh": 2700,
+      "tolerance_ratio": 0.1,
+      "penalty_multiplier": 1.2,
+      "max_event_hours": 2.0,
+      "baseline_method": "同类日历史平均法；V2G 按站点基线负荷与车辆可用状态核定",
+      "note": "2,700 元/MWh 是广东 2026 削峰年度交易申报价格上限，不是每度都按 2.7 元结算；10% 容差、1.2 倍考核与单次 2 h 为 D 级建模假设",
+      "grade": "A/B",
+      "source": "广东电力交易中心 2026 年削峰需求响应年度交易：申报价格上限 2,700 元/MWh（A/B）；《需求响应、车网互动与灵活性资源-2026-11》§5 广东口径（A/B）；容差、考核倍数与事件时长为 D 级假设"
+    },
+    "ancillary": {
+      "status": "备用容量（D 级演示品种）",
+      "product": "备用容量",
+      "reserve_price_cny_per_kw_month": 8.0,
+      "min_duration_hours": 1.0,
+      "note": "广州 VPP 备用补偿公开口径为 ≤0.01 元/kW·h（A，邻近城市参考）；折算约 7.2 元/kW·月，本包取 8 元/kW·月作为 D 级演示值；深圳本地备用价格待核",
+      "grade": "C/D",
+      "source": "《广州市虚拟电厂高质量发展实施方案》：备用 ≤0.01 元/kW·h（A，广州口径，不是深圳）；8 元/kW·月与持续时间要求为 D 级建模假设"
+    },
+    "cost": {
+      "charger_life_years": 8,
+      "charger_installation_ratio": 0.1,
+      "charger_opex_ratio": 0.02,
+      "platform_cost_cny": 120000,
+      "measurement_cost_cny": 80000,
+      "battery_degradation_cny_per_mwh": 130,
+      "round_trip_efficiency": 0.9,
+      "owner_share_arbitrage": 0.5,
+      "owner_share_dr": 0.6,
+      "owner_share_reserve": 0.3,
+      "members": 430,
+      "grade": "D",
+      "source": "双向桩 8 年折旧、安装 10%、运维 2%、平台 12 万元/年、计量核证 8 万元/年、退化 130 元/MWh、效率 90%、车主分成 50%/60%/30% 均为 D 级建模假设；桩单价见 asset.sites，实际以设备采购与合同为准"
+    }
+  },
+  "asset": {
+    "name": "示例 7.31 MW 深圳 V2G 聚合（D 级合成，不是真实聚合商）",
+    "vehicle_total": 430,
+    "operating_days_per_year": 300,
+    "sites": [
+      {
+        "id": "public-4",
+        "label": "公共场站（4 站）",
+        "vehicles": 300,
+        "battery_kwh": 60,
+        "usable_kwh": 30,
+        "charger_kw": 20,
+        "charger_type": "交流/小直流双向桩",
+        "coincidence": 0.2,
+        "availability": 0.8,
+        "soc_min": 0.2,
+        "soc_max": 0.8,
+        "transformer_mva": 4.0,
+        "reverse_limit_mw": 1.5,
+        "charger_cost_cny": 5000
+      },
+      {
+        "id": "bus-2",
+        "label": "公交场站（2 站）",
+        "vehicles": 80,
+        "battery_kwh": 350,
+        "usable_kwh": 200,
+        "charger_kw": 120,
+        "charger_type": "直流双向桩",
+        "coincidence": 0.6,
+        "availability": 0.95,
+        "soc_min": 0.3,
+        "soc_max": 0.9,
+        "transformer_mva": 8.0,
+        "reverse_limit_mw": 5.0,
+        "charger_cost_cny": 35000
+      },
+      {
+        "id": "logistics-2",
+        "label": "物流园区（2 站）",
+        "vehicles": 50,
+        "battery_kwh": 180,
+        "usable_kwh": 120,
+        "charger_kw": 60,
+        "charger_type": "直流双向桩",
+        "coincidence": 0.5,
+        "availability": 0.9,
+        "soc_min": 0.2,
+        "soc_max": 0.9,
+        "transformer_mva": 4.0,
+        "reverse_limit_mw": 2.0,
+        "charger_cost_cny": 18000
+      }
+    ],
+    "grade": "D",
+    "source": "车数、电池、桩功率、同时率、可用率、配变容量、反向限额与桩单价均为 D 级合成；实际以车辆清单、桩铭牌、并网测试与台区承载力评估为准"
+  },
+  "policy": {
+    "profile_id": "shenzhen-v2g-mw-hours-v1",
+    "description": "同一 7.31 MW 双向容量在套利、需求响应、备用之间分配；比较 VPP 净收益、车主收益与总盘，重点看“MW × 可调用小时”，而不是只看单价",
+    "default_strategy": "balanced",
+    "resource_budget_mw": 7.31,
+    "arbitrage_delivery_ratio": 0.95,
+    "strategies": {
+      "arbitrage_only": {
+        "label": "只做峰谷套利",
+        "arb_mw": 3.4,
+        "dr_mw": 0,
+        "reserve_mw": 0,
+        "delivery_ratio": 0.95
+      },
+      "dr_first": {
+        "label": "DR 优先",
+        "arb_mw": 1.5,
+        "dr_mw": 5.8,
+        "reserve_mw": 0,
+        "delivery_ratio": 0.92
+      },
+      "balanced": {
+        "label": "均衡组合",
+        "arb_mw": 3.4,
+        "dr_mw": 3.2,
+        "reserve_mw": 0.71,
+        "delivery_ratio": 0.95
+      },
+      "full_stack": {
+        "label": "全栈申报",
+        "arb_mw": 3.4,
+        "dr_mw": 2.6,
+        "reserve_mw": 1.31,
+        "delivery_ratio": 0.86
+      }
+    },
+    "decision_rule": "VPP 净收益最大；同时报告车主收益、总盘、套利有效 MW 与能量受限标记；若 VPP 最优与总盘最优不一致，按合同分成与考核条款复核",
+    "sensitivity": {
+      "v2g_price_multipliers": [0.8, 1.2],
+      "valley_price_multipliers": [0.8, 1.2],
+      "dr_price_multipliers": [0.7, 1.3],
+      "dr_hours_multipliers": [0.5, 1.5],
+      "delivery_delta": -0.1,
+      "degradation_multiplier": 1.5,
+      "charger_capex_multiplier": 1.3,
+      "operating_days": 200,
+      "owner_share_delta": 0.1,
+      "combined": {
+        "v2g_price_multiplier": 0.8,
+        "valley_price_multiplier": 1.2,
+        "dr_price_multiplier": 0.7,
+        "dr_hours_multiplier": 0.5,
+        "delivery_delta": -0.1,
+        "degradation_multiplier": 1.5,
+        "charger_capex_multiplier": 1.3,
+        "operating_days": 200
+      }
+    },
+    "grade": "D",
+    "note": "策略分配、交付比例、分成与敏感性均为风格选择，不是监管要求；改 profile_id 并保留旧文件，便于比较。"
+  },
+  "data_contract": {
+    "market": {
+      "file": "data/market_demo.csv",
+      "required_fields": [
+        "month",
+        "days",
+        "peak_hours",
+        "flat_hours",
+        "valley_hours",
+        "peak_price_cny_per_mwh",
+        "flat_price_cny_per_mwh",
+        "valley_price_cny_per_mwh",
+        "v2g_discharge_price_cny_per_mwh",
+        "dr_call_hours",
+        "dr_price_cny_per_mwh",
+        "reserve_price_cny_per_kw_month"
+      ],
+      "note": "12 个月；峰/平/谷小时为每日小时数；DR 调用小时为月度总小时；v2g_discharge_price 是反向放电结算价，不是零售峰价；reserve 为元/kW·月。"
+    }
+  }
+}

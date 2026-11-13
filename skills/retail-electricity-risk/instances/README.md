@@ -2,11 +2,11 @@
 
 > 目录定位：`skills/retail-electricity-risk/instances/` 是**售电侧的样板实例层**，不是知识模块，不改变知识库的 101 模块 / 13 分区计数。每个子目录是"一省 + 一个售电公司 + 一个规则版本"的配置包，售电公司的交易/结算人员只改 JSON 与 CSV，不改代码。
 >
-> 当前有两个纵切片：广东 2026-11（固定价 + 市场联动）与江苏 2027（批发价传导 + 一户一价封顶）。两者共用同一套目录约定，但套餐模型不同，见 §3.2。
+> 当前有三个纵切片：广东 2026-11（固定价 + 市场联动）、江苏 2027（批发价传导 + 一户一价封顶）、广东多用户绿电直连 2027（三个法人用户分摊）。三者共用同一套目录约定，但套餐/分配模型不同，见 §3.2。
 
 ## 1. 为什么要有这一层
 
-引擎层（`tools/package.py`、`portfolio.py`、`deviation.py`、`guarantee.py`）回答"套餐怎么定价、偏差怎么计量、保函怎么算"；实例层回答"**你这个省、这批客户、这套合同、这个交易风格，明天报什么价、买多少电、T+1 差在哪**"。三层分工：
+引擎层（`tools/package.py`、`portfolio.py`、`deviation.py`、`guarantee.py`）回答"套餐怎么定价、偏差怎么计量、保函怎么算"；实例层回答"**你这个省、这批客户、这套合同、这个交易风格，明天报什么价、买多少电、T+1 差在哪**"；多用户直连包再往前一步，回答"**三个法人用户怎么分电、容量费怎么摊、谁在补贴谁**"。三层分工：
 
 | 层 | 输入 | 输出 | 是否入库 |
 |---|---|---|---|
@@ -16,7 +16,7 @@
 
 售电的私有数据不是机组参数，而是**客户曲线、合同价、偏差考核条款、保函与信用**。实例层把这些挡在本地，只把结构与口径放进仓库。
 
-本目录与现货实例层（[`skills/spot-bidding-quant/instances/`](../../spot-bidding-quant/instances/README.md)）平行：那边的主体是储能/新能源，配置块用 `asset`；这边的主体是售电公司，配置块改用 `portfolio`，并多出零售套餐、偏差合同、履约保障三块。
+本目录与现货实例层（[`skills/spot-bidding-quant/instances/`](../../spot-bidding-quant/instances/README.md)）平行：那边的主体是储能/新能源，配置块用 `asset`；这边前两包的主体是售电公司，配置块用 `portfolio`，并多出零售套餐、偏差合同、履约保障三块；多用户直连包的主体是项目公司/联合体，配置块改用 `project`，并多出电量平衡、合规校核与分摊口径。
 
 ## 2. 目录结构
 
@@ -31,17 +31,25 @@ instances/
 │   ├── pitfalls.md                    # 广东售电易错点
 │   ├── data/                          # D-1 / T+1 输入（演示为合成）
 │   └── out/demo/                      # 运行产物（可删除重建）
-└── jiangsu-retail-2027/               # 江苏 2027：批发价传导 + 一户一价封顶
-    ├── instance.json
-    ├── run.py                         # 运行器（校验 → 传导/参考价 → 封顶 → 情景/压力 → 差异桥 → 复核）
+├── jiangsu-retail-2027/               # 江苏 2027：批发价传导 + 一户一价封顶
+│   ├── instance.json
+│   ├── run.py                         # 运行器（校验 → 传导/参考价 → 封顶 → 情景/压力 → 差异桥 → 复核）
+│   ├── make_demo.py
+│   ├── README.md
+│   ├── pitfalls.md
+│   ├── data/
+│   └── out/demo/
+└── guangdong-multi-user-direct-2026-11/ # 广东多用户绿电直连（2027 首年）
+    ├── instance.json                  # 唯一配置入口：rules / project / policy
+    ├── run.py                         # 校验 → 月度匹配 → 用户分配 → 合规 → 成本 → 分摊 → 敏感性
     ├── make_demo.py
     ├── README.md
     ├── pitfalls.md
-    ├── data/
+    ├── data/profile_demo.csv
     └── out/demo/
 ```
 
-## 3. `instance.json` 六个块
+## 3. `instance.json` 配置块
 
 ### 3.1 `meta`：身份与边界
 
@@ -67,6 +75,7 @@ instances/
 |---|---|---|
 | `fixed_market_linked` | 广东 2026-11 | `spot`、`retail_market`、`deviation`、`guarantee`、`settlement` |
 | `pass_through_cap` | 江苏 2027 | `spot`、`retail_market`、`price_formula`、`allocation`、`guarantee`、`settlement` |
+| `multi_user_direct` | 广东多用户直连 2027 | `direct_connection`、`tariff`、`market`、`cost` |
 
 **广东模型的五个子块**
 
@@ -94,6 +103,17 @@ instances/
 - **区域参数与省内参数分开**。广东现货写南方区域正式方案（−50–1,800 元/MWh），旧试点 0–1,000 / 70–1,500 只能放 `historical_pilot` 并标"历史口径"；江苏写省内 0–1,500 元/MWh。
 - **草案不生效**。2026-09-04 售电办法修订稿放 `draft_2026_09_04`，`effective` 必须为 `false`；写成 `true` 配置直接报错。
 - **未核实的省规则不编**。广东偏差考核只核到市场宣传口径，`grade` 写 `C`，按合同约定测算；江苏 2027 零售偏差未明确统一口径，`retail_deviation_status` 写 `C`，本包不计并在复核表打印 warning。
+
+**广东多用户直连模型的四个子块**
+
+| 子块 | 用途 | 关键字段 |
+|---|---|---|
+| `direct_connection` | 多用户直连门槛与合规 | 用户数下限、自用/可用发电量 ≥60%、自用/总用电量 ≥35%（2030 年前）、上网/可用发电量 ≤20%、文号 650/688 |
+| `tariff` | 输配电价与容需量 | 容量费、需量费、1192 号折算口径、线损、系统运行费、政府性基金 |
+| `market` | 上网与绿证 | 上网电价、绿证价格与抵减口径 |
+| `cost` | 发电与专线成本 | LCOE、储能年化、专线运维、其他固定成本 |
+
+该模型不用 `portfolio`，改用 `project`：`project.users[]` 记录每个法人用户的合同份额、用电量、负荷形状与绿电需求；`policy` 记录分摊口径（`energy` / `capacity` / `contract` / `two_part`）与敏感性。合同份额之和必须为 1，用户数不少于 2；分摊口径不同，用户单位成本与极差就不同，直接影响"谁在补贴谁"。
 
 ### 3.3 `portfolio`：客户组合（替代现货实例的 `asset`）
 
@@ -208,6 +228,8 @@ date,slot,start,end,actual_load_mw,actual_price,actual_p1,actual_p2,actual_p3
 
 ## 5. 填写流程（约 30 分钟）
 
+售电套餐型（广东 2026 / 江苏 2027）：
+
 1. **先选套餐模型**：固定价/市场联动 → 复制 `guangdong-retail-2026-11`；批发价传导 + 一户一价封顶 → 复制 `jiangsu-retail-2027`。模型不同，`rules`、`portfolio`、`contracts`、`policy` 的字段都不同，不能混拷；
 2. **改 `meta`**：实例名、省份、主体类型、规则版本、数据截止日与口径边界；
 3. **核对 `rules`**：只填当前生效值，逐块写 `grade` 与 `source`；草案与历史口径放独立字段；
@@ -217,6 +239,15 @@ date,slot,start,end,actual_load_mw,actual_price,actual_p1,actual_p2,actual_p3
 7. **替换 CSV**：按第 4 节格式导出自己的 D-1 情景与 T+1 实际；江苏模型要带三类实际分摊；
 8. **跑 `--check-config`**：来源缺失、单位错误、份额不为 1、套餐类型不符、日期关系错误会直接报错；
 9. **跑一次 `--demo`**：看定价/封顶缺口、情景 CVaR、压力测试与差异桥残差。
+
+多用户直连型（广东多用户直连 2027）：
+
+1. 复制 `guangdong-multi-user-direct-2026-11`；
+2. **改 `meta` 与 `rules`**：核对 650/688 号直连门槛、1192 号折算、广东 267/1848 号，逐块写 `grade` 与 `source`；
+3. **填 `project.users`**：每个法人用户的合同份额、年用电量、绿电需求；份额之和必须为 1，用户数 ≥2；
+4. **填 `policy`**：分摊口径先沿用 `two_part`，跑通后再比较四种口径的极差；
+5. **换 `data/profile_demo.csv`**：12 个月可用发电量、各用户用电量、上网电价；
+6. **跑 `--check-config` 与 `--demo`**：看四项合规、电量平衡、成本堆叠、四种分摊口径与临界 LCOE。
 
 ## 6. 运行与产物
 
@@ -229,9 +260,16 @@ python skills/retail-electricity-risk/instances/guangdong-retail-2026-11/run.py 
 python skills/retail-electricity-risk/instances/jiangsu-retail-2027/run.py --check-config
 python skills/retail-electricity-risk/instances/jiangsu-retail-2027/run.py --demo
 
+# 广东多用户直连：项目/用户级电量与成本
+python skills/retail-electricity-risk/instances/guangdong-multi-user-direct-2026-11/run.py --check-config
+python skills/retail-electricity-risk/instances/guangdong-multi-user-direct-2026-11/run.py --demo
+
 # 用自己的数据（路径指向仓库外）
 python skills/retail-electricity-risk/instances/<实例目录>/run.py \
   --d1 /path/to/d1.csv --t1 /path/to/t1.csv --out /path/to/out
+# 多用户直连包改用 --profile
+python skills/retail-electricity-risk/instances/guangdong-multi-user-direct-2026-11/run.py \
+  --profile /path/to/profile.csv --out /path/to/out
 ```
 
 产物（默认 `out/demo/`，按模型不同）：
@@ -247,6 +285,8 @@ python skills/retail-electricity-risk/instances/<实例目录>/run.py \
 | `bridge.json` / `bridge.csv` | T+1 差异桥：广东 9 个科目；江苏 6 个科目；残差 < 1e-6 CNY |
 | `deviation_slots.csv` / `top_slots.csv` | 偏差最大的时段：预测/实际负荷、价格与考核或参考层 |
 | `review.md` | 复核表：来源与警告、定价/封顶、情景/压力、差异桥、时段明细、读法 |
+
+多用户直连包产物：`monthly.csv`（项目级电量平衡）、`users.csv`（用户级分配与下网）、`costs.csv`（成本堆叠）、`allocation.csv`（四种分摊口径）、`sensitivity.csv`、`summary.json`、`review.md`。
 
 ## 7. 配置校验与实际拦截
 
@@ -264,9 +304,9 @@ python skills/retail-electricity-risk/instances/<实例目录>/run.py \
 - 草案保函 `effective=true`；
 - 情景列数与权重数不一致、权重和不为 1。
 
-输入数据还会拒绝：多交易日、缺时段、重复点、负荷为负、价格越界、江苏模型缺三类分摊列。
+输入数据还会拒绝：多交易日、缺时段、重复点、负荷为负、价格越界、江苏模型缺三类分摊列。多用户直连包还会拒绝：用户数 <2、合同份额之和不为 1、年用电量与用户合计不一致、政策门槛越界、分摊口径未知、月度上网超过可用发电量 20% 的上限设置。
 
-会打印但**不拦截**的警告：D 级合成数据、广东偏差规则未核实、江苏 2027 零售偏差未明确、草案未生效、2026-06-08 通知无正式文号、保函金额与 1595 号公式不一致、资金成本率高于 5%（疑似百分数误填）、江苏年度窗口/5 个工作日为公开解读口径、F 由双方约定、2027 分摊按月公布、绿电封顶口径为 D 级解释。
+会打印但**不拦截**的警告：D 级合成数据、广东偏差规则未核实、江苏 2027 零售偏差未明确、草案未生效、2026-06-08 通知无正式文号、保函金额与 1595 号公式不一致、资金成本率高于 5%（疑似百分数误填）、江苏年度窗口/5 个工作日为公开解读口径、F 由双方约定、2027 分摊按月公布、绿电封顶口径为 D 级解释；多用户直连包的 LCOE、储能成本、上网电价、绿证价格均为 D 级假设，2030 年后门槛变化未建模。
 
 ## 8. 验收标准
 
@@ -276,23 +316,23 @@ python skills/retail-electricity-risk/instances/<实例目录>/run.py \
 | 运行时间 | 5 情景 × 96 点，单机 < 1 分钟 |
 | 非法配置 | 明确报错并指出字段路径，不静默降级 |
 | 规则溯源 | 每个规则块有 `grade` + `source`，未核实项写 `status` |
-| 差异桥 | 残差 < 1e-6 CNY；广东 9 个科目、江苏 6 个科目可归因 |
+| 差异桥 | 残差 < 1e-6 CNY；广东 9 个科目、江苏 6 个科目可归因；多用户直连包不做差异桥，改为电量平衡 + 四种分摊口径对比 |
 | 数据本地 | 真实客户、合同、计量数据不上传，仓库只存结构与 D 级样例 |
 | 验收口径 | 不看样本内 PnL；看流程是否跑通、口径是否可复现、差异是否可归因 |
 
 ## 9. 数据安全边界
 
 - 仓库内的 `data/*.csv` 是 `make_demo.py` 生成的合成数据（D 级），不代表任何真实售电公司或用户；
-- 真实数据用 `--d1/--t1/--out` 指向仓库外路径，或放本地被 `.gitignore` 覆盖的目录；
-- 不要把真实客户名、合同价、偏差条款、保函与信用信息写进 `instance.json` 后提交；
+- 真实数据用 `--d1/--t1/--profile/--out` 指向仓库外路径，或放本地被 `.gitignore` 覆盖的目录；
+- 不要把真实客户名、合同价、偏差条款、保函、信用信息、直连协议与用户份额写进 `instance.json` 后提交；
 - 实例包只记录"方法与结构"，不记录"商业项目溯源"。
 
-## 10. 新增第三个实例
+## 10. 新增实例
 
-1. 选一个**已正式运行、规则版本稳定**的省份与售电主体，并先确定套餐模型：固定价/联动，还是批发价传导 + 封顶；
-2. 复制对应样板目录（广东或江苏）的 `run.py` 与 `make_demo.py`，改复核表标题与命令行描述；
-3. 新建 `instance.json`，六个块齐全，规则值全部带来源级别；套餐模型不同就不要混用字段；
-4. 在 `pitfalls.md` 写本省易错点（区域/省内混用、机制电价批次、零售均价口径、草案当现行、封顶与分摊口径）；
+1. 选一个**已正式运行、规则版本稳定**的省份与主体，并先确定模型：固定价/联动、批发价传导 + 封顶，还是多用户绿电直连；
+2. 复制对应样板目录（广东、江苏或多用户直连）的 `run.py` 与 `make_demo.py`，改复核表标题与命令行描述；
+3. 新建 `instance.json`，配置块齐全，规则值全部带来源级别；模型不同就不要混用字段；
+4. 在 `pitfalls.md` 写本省易错点（区域/省内混用、机制电价批次、零售均价口径、草案当现行、封顶与分摊口径、直连门槛、上网比例）；
 5. 跑 `--check-config` 与 `--demo`，把关键输出写进实例 `README.md`；
 6. 不改知识库计数，不改 `knowledge/`；实例是技能目录内的配置层。
 
@@ -304,4 +344,5 @@ python skills/retail-electricity-risk/instances/<实例目录>/run.py \
 - 负荷聚合实例层（邀约型 VPP）：[`skills/virtual-power-plant/instances/`](../../virtual-power-plant/instances/README.md)
 - 广东售电样板：[`guangdong-retail-2026-11/README.md`](guangdong-retail-2026-11/README.md)
 - 江苏 2027 售电样板：[`jiangsu-retail-2027/README.md`](jiangsu-retail-2027/README.md)
+- 广东多用户直连样板：[`guangdong-multi-user-direct-2026-11/README.md`](guangdong-multi-user-direct-2026-11/README.md)
 - 江苏市场档案：[`knowledge/江苏电力市场-2026-11.md`](../../../knowledge/江苏电力市场-2026-11.md)

@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "instance_id": "yunnan-wind-development-2027",
+    "province": "云南",
+    "market": "新能源机制电价（136 号文）+ 省内市场",
+    "entity_type": "风电开发企业（开发期投决）",
+    "rule_version": "发改价格〔2025〕136号；云南省 2027 年第一次机制电价竞价（2026-06-16，公示口径）",
+    "data_cutoff": "2026-11-13",
+    "grade": "B/C",
+    "scope": "100 MW 陆上风电开发期投决：P50/P90 资源、LCOE、机制电价差价结算、税后现金流、8% 门槛盈亏平衡价、资本金与 DSCR、投标区间与组合压力；不含土地与林草审批、接入工程、建设期利息、保险与运维外包细节",
+    "currency": "CNY",
+    "units": "装机 MW；电量 MWh；利用小时 h；电价 CNY/kWh；单位造价 CNY/kW；LCOE CNY/MWh",
+    "disclaimer": "全部资源、造价、市场价与绿色证书价格均为 D 级合成数据，不对应任何真实项目；机制电价批次与参数仅用于演示投决计算链，不构成投标或投资建议。"
+  },
+  "rules": {
+    "mechanism": {
+      "mechanism_price_cny_per_kwh": 0.3351,
+      "bid_cap_cny_per_kwh": 0.3358,
+      "bid_floor_cny_per_kwh": 0.18,
+      "coverage_ratio": 0.65,
+      "pool_demand_ratio": 0.50,
+      "single_project_cap": 0.65,
+      "settlement": "difference",
+      "grade": "C",
+      "source": "云南省 2027 年第一次机制电价竞价结果公示口径（2026-06-16）：风电 0.3351 元/kWh、申报上限 0.3358 元/kWh、风电规模需求比例 50%、单体上限 65%；省级正式文件全文待核实",
+      "status": "风光分类、三段报价；机制电量按差价结算，剩余电量面对省内市场"
+    },
+    "market": {
+      "market_price_cny_per_kwh": 0.25,
+      "green_certificate_cny_per_mwh": 6.0,
+      "grade": "D",
+      "source": "省内市场均价与绿证价格为 D 级合成值；捕获率由 data/resource_demo.csv 的月度捕获率加权得到",
+      "status": "市场收入按捕获价计，机制差价按市场均价计，两者不能混用"
+    },
+    "cost": {
+      "capex_cny_per_kw": 4800.0,
+      "opex_cny_per_kw_year": 175.0,
+      "curtailment_ratio": 0.05,
+      "degradation_per_year": 0.005,
+      "opex_escalation_per_year": 0.01,
+      "life_years": 20,
+      "grade": "D",
+      "source": "陆上风电单位造价、运维、限电、衰减与运维涨幅均为 D 级建模假设；须用地勘、设备询价与接入方案替换",
+      "status": "造价不含建设期利息、土地与送出工程；限电按全电量比例简化"
+    },
+    "finance": {
+      "discount_rate": 0.08,
+      "tax_rate": 0.25,
+      "depreciation_years": 20,
+      "debt_ratio": 0.70,
+      "debt_rate": 0.04,
+      "debt_years": 15,
+      "hurdle_irr": 0.08,
+      "min_dscr": 1.20,
+      "grade": "D",
+      "source": "8% 折现、25% 所得税、20 年直线折旧、70% 负债、4% 利率、15 年还本均为 D 级投决假设",
+      "status": "现金流为项目口径，未做亏损结转、税收优惠与加速折旧"
+    }
+  },
+  "project": {
+    "name": "云南某风电场（合成）",
+    "capacity_mw": 100.0,
+    "p50_hours": 2850.0,
+    "p90_cv": 0.08,
+    "cod": "2027-12-31",
+    "grade": "D",
+    "source": "D 级合成场址：100 MW、P50 2,850 h、变异系数 8%"
+  },
+  "policy": {
+    "profile_id": "yunnan-wind-bid-ceiling-v1",
+    "decision_rule": "IRR>=hurdle and NPV>=0 and DSCR>=min",
+    "bid_strategy": "bid_at_after_tax_break_even_or_better",
+    "grade": "D",
+    "source": "D 级投决风格：先算 8% 门槛的税后盈亏平衡机制价，再与竞价上限和申报区间比较"
+  },
+  "data_contract": {
+    "resource": {
+      "file": "data/resource_demo.csv",
+      "fields": ["month", "generation_mwh", "capture_rate"],
+      "frequency": "monthly, first operating year"
+    }
+  }
+}

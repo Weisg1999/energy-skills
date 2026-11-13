@@ -1,0 +1,168 @@
+{
+  "meta": {
+    "instance_id": "liaoning-vpp-2026-11",
+    "province": "辽宁",
+    "market": "辽宁省级电力市场（连续结算试运行）+ 需求响应 + 调频辅助服务",
+    "entity_type": "负荷侧虚拟电厂聚合商（12 家工业用户 + 用户侧储能）",
+    "rule_version": "辽发改能源规〔2026〕3号（2026-10-01 施行）；辽发改能源〔2026〕516号接入规范（总聚合 ≥10 MW、总调节 ≥5 MW）；辽发改能源〔2026〕528号；辽宁现货 734 号方案与试行 4.0 版（申报 −100–1,100、出清 −100–1,500 元/MWh）",
+    "data_cutoff": "2026-11-13",
+    "grade": "B/C",
+    "scope": "v1 覆盖 VPP 资源预算约束下的四种品种组合、需求响应与基线核减、报量不报价与现货价格、调频容量、储能套利、交付考核、VPP 与成员分成；不含成员全部电费、零售套餐、绿电交易、省间互济、容量补偿与两个细则考核",
+    "currency": "CNY",
+    "units": {
+      "power": "MW",
+      "energy": "MWh",
+      "price": "CNY/MWh",
+      "freq_price": "CNY/kW·month",
+      "time": "月 × 日峰/平/谷小时"
+    },
+    "disclaimer": "本实例包是 D 级合成样板，不构成聚合报价、合同、投资或法律建议；需求响应补偿、调频价格、交付比例、分成比例与平台成本均为建模假设，实际以省级正式文件、交易公告与聚合合同为准。"
+  },
+  "rules": {
+    "vpp": {
+      "status": "试行（2026-10-01 起）",
+      "access": {
+        "min_aggregate_capacity_mw": 10,
+        "min_regulation_capacity_mw": 5,
+        "build_deadline_months": 6
+      },
+      "spot_participation": "报量不报价，日前优先出清；日前仅预出清，不用于结算",
+      "registration_flow": "申请、建设、接入联调、能力认定、变更五步",
+      "grade": "A/B",
+      "source": "辽发改能源规〔2026〕3号《辽宁省虚拟电厂建设与运营管理办法（试行）》（2026-08-28 成文、09-09 发布、10-01 施行）；辽发改能源〔2026〕516号接入技术管理规范（总聚合 ≥10 MW、总调节 ≥5 MW）；528号配套"
+    },
+    "spot": {
+      "status": "连续结算试运行（2025-03 起），非省级正式运行",
+      "declare_floor_cny_per_mwh": -100,
+      "declare_cap_cny_per_mwh": 1100,
+      "clear_floor_cny_per_mwh": -100,
+      "clear_cap_cny_per_mwh": 1500,
+      "settlement": "差价结算；日前只作预出清与可靠性机组组合，不用于结算",
+      "grade": "A/B",
+      "source": "辽发改价格〔2025〕734号与辽宁现货试行 4.0 版（A）；连续结算试运行状态截至 2026-11-12 未转正式（A）；本包用月度三段价格近似，不实现 96 点节点价"
+    },
+    "demand_response": {
+      "status": "省级需求响应机制（细则待逐项核实）",
+      "price_cny_per_mwh": 4000,
+      "valley_fill_price_cny_per_mwh": 300,
+      "baseline_method": "同类型日历史平均法；本包按月度基线负荷与调用小时计",
+      "tolerance_ratio": 0.1,
+      "penalty_multiplier": 1.2,
+      "grade": "C/D",
+      "source": "需求响应框架（C）；4,000 元/MWh 削峰补偿、300 元/MWh 填谷补偿、10% 容差与 1.2 倍考核均为 D 级演示假设，不对应正式限价"
+    },
+    "ancillary": {
+      "status": "调频试运行衔接（细则待核实）",
+      "frequency_price_cny_per_kw_month": 15,
+      "frequency_capacity_ratio_of_regulation": 1.0,
+      "grade": "C/D",
+      "source": "辽宁辅助服务与现货衔接（C）；15 元/kW·月为 D 级演示假设，正式容量/里程价格待核实"
+    },
+    "cost": {
+      "platform_cost_cny": 1000000,
+      "measurement_cost_cny": 200000,
+      "storage_round_trip_efficiency": 0.88,
+      "storage_degradation_cny_per_mwh": 80,
+      "storage_duration_hours": 2,
+      "members": 12,
+      "grade": "D",
+      "source": "平台 100 万元/年、计量与基线核证 20 万元/年、储能效率 88%、退化 80 元/MWh、时长 2 h、12 家成员均为 D 级建模假设"
+    }
+  },
+  "asset": {
+    "name": "示例 42 MW 负荷侧 VPP（D 级合成，不是真实聚合商）",
+    "peak_load_mw": 42,
+    "flat_load_mw": 36,
+    "valley_load_mw": 30,
+    "tested_turndown_mw": 18,
+    "tested_ramp_up_mw": 8,
+    "storage_mw": 5,
+    "storage_mwh": 10,
+    "grade": "D",
+    "source": "聚合负荷、可调能力、储能规模均为 D 级合成；实际以接入能力认定与并网测试报告为准"
+  },
+  "policy": {
+    "profile_id": "liaoning-vpp-portfolio-v1",
+    "description": "18 MW 可下调能力是硬约束；四种策略在需求响应、调频、储能之间分配同一份 MW，比较 VPP 净收益、成员收益与总盘",
+    "default_strategy": "balanced",
+    "resource_budget_mw": 18,
+    "shares": {
+      "dr_share": 0.4,
+      "energy_share": 0.2,
+      "valley_fill_share": 0.3
+    },
+    "strategies": {
+      "dr_only": {
+        "label": "只做需求响应",
+        "dr_mw": 18,
+        "valley_fill_mw": 8,
+        "freq_mw": 0,
+        "storage_mw": 0,
+        "storage_cycles": 0,
+        "delivery_ratio": 0.92
+      },
+      "balanced": {
+        "label": "均衡组合",
+        "dr_mw": 10,
+        "valley_fill_mw": 6,
+        "freq_mw": 3,
+        "storage_mw": 5,
+        "storage_cycles": 400,
+        "delivery_ratio": 0.96
+      },
+      "full_stack": {
+        "label": "全栈申报",
+        "dr_mw": 8,
+        "valley_fill_mw": 4,
+        "freq_mw": 5,
+        "storage_mw": 5,
+        "storage_cycles": 250,
+        "delivery_ratio": 0.86
+      },
+      "conservative": {
+        "label": "保守申报",
+        "dr_mw": 9,
+        "valley_fill_mw": 4,
+        "freq_mw": 2,
+        "storage_mw": 3,
+        "storage_cycles": 250,
+        "delivery_ratio": 1.0
+      }
+    },
+    "decision_rule": "VPP 净收益最大；同时报告成员收益与总盘，若 VPP 最优与总盘最优不一致，必须按合同分成与考核条款复核",
+    "sensitivity": {
+      "dr_price_multipliers": [0.7, 1.3],
+      "peak_price_multipliers": [0.85, 1.15],
+      "baseline_haircut": 0.8,
+      "delivery_delta": -0.1,
+      "freq_price_multiplier": 0.7,
+      "storage_degradation_multiplier": 1.5,
+      "storage_spread_multiplier": 0.7,
+      "platform_cost_multiplier": 1.3,
+      "dr_share": 0.5
+    },
+    "grade": "D",
+    "note": "策略、分成、交付比例与敏感性均为风格选择，不是监管要求；改 profile_id 并保留旧文件，便于比较。"
+  },
+  "data_contract": {
+    "market": {
+      "file": "data/market_demo.csv",
+      "required_fields": [
+        "month",
+        "days",
+        "peak_hours",
+        "flat_hours",
+        "valley_hours",
+        "peak_price_cny_per_mwh",
+        "flat_price_cny_per_mwh",
+        "valley_price_cny_per_mwh",
+        "dr_call_hours",
+        "dr_price_cny_per_mwh",
+        "valley_fill_hours",
+        "valley_fill_price_cny_per_mwh",
+        "freq_price_cny_per_kw_month"
+      ],
+      "note": "12 个月；峰/平/谷小时为每日小时数，DR 调用小时与填谷小时为月度总小时；价格为月度代表价。"
+    }
+  }
+}

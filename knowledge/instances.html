@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>实例包总览 | energy-skills 知识库</title>
-<meta name="description" content="14 个一省一主体实例包：煤电、光储、独立储能、VPP、售电与工商业储能；配置改 JSON，数据换 CSV，运行 run.py。">
+<meta name="description" content="23 个一省一主体实例包：煤电、光储、独立储能、VPP、V2G、售电、绿电直连、碳履约、园区 EMS、新能源投决与省间组合；配置改 JSON，数据换 CSV，运行 run.py。">
 <link rel="icon" type="image/svg+xml" href="assets/logo-book-favicon.svg">
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
@@ -95,12 +95,15 @@
     <div class="nav-num">INSTANCE</div>
     <h2 class="nav-cat"><a href="index.html#skills">配套技能</a></h2>
     <ul class="nav-list">
-              <li><a href="#skill-electricity-trading-expert">电力交易专家<span class="nav-count">1</span></a></li>
-              <li><a href="#skill-virtual-power-plant">虚拟电厂专家<span class="nav-count">3</span></a></li>
+              <li><a href="#skill-electricity-trading-expert">电力交易专家<span class="nav-count">3</span></a></li>
+              <li><a href="#skill-virtual-power-plant">虚拟电厂专家<span class="nav-count">5</span></a></li>
+              <li><a href="#skill-carbon-asset-expert">碳资产管理专家<span class="nav-count">1</span></a></li>
               <li><a href="#skill-storage-investment-operations">储能投资与运营<span class="nav-count">2</span></a></li>
-              <li><a href="#skill-spot-bidding-quant">现货报价量化<span class="nav-count">5</span></a></li>
+              <li><a href="#skill-renewable-project-development">新能源开发与并网<span class="nav-count">1</span></a></li>
+              <li><a href="#skill-spot-bidding-quant">现货报价量化<span class="nav-count">6</span></a></li>
+              <li><a href="#skill-ems-dispatch">EMS 优化调度<span class="nav-count">1</span></a></li>
               <li><a href="#skill-tariff-bill-optimization">电价与电费优化<span class="nav-count">1</span></a></li>
-              <li><a href="#skill-retail-electricity-risk">售电零售与风险<span class="nav-count">2</span></a></li>
+              <li><a href="#skill-retail-electricity-risk">售电零售与风险<span class="nav-count">3</span></a></li>
     </ul>
     <div class="nav-others">
       <div class="nav-kicker">回到</div>
@@ -116,21 +119,24 @@
     <header class="doc-head">
       <div class="kicker">INSTANCE LAYER<i>配置层</i></div>
       <h1 class="doc-title">实例包总览</h1>
-      <p class="lede">把“一省 + 一主体 + 一套合约/账单 + 一个规则版本”做成可运行切片：选包 → 改 JSON → 换 CSV → 运行 run.py。这里汇总 14 个包，覆盖 山东、江苏、上海、浙江、安徽、广东、甘肃、山西。</p>
+      <p class="lede">把“一省 + 一主体 + 一套合约/账单 + 一个规则版本”做成可运行切片：选包 → 改 JSON → 换 CSV → 运行 run.py。这里汇总 23 个包，覆盖 甘肃、山东、江苏、辽宁、上海、广东、浙江、安徽、云南、蒙西、山西。</p>
       <p class="hook">配置层不是知识模块；所有演示数据均为 D 级合成样板，不对应任何真实主体，也不构成报价、投资或法律建议。</p>
       <div class="tags"><span class="tag">实例包</span><span class="tag">配置层</span><span class="tag">可运行</span><span class="tag">D 级合成</span></div>
-      <div class="doc-meta"><span>14 个包</span><span>6 项技能</span><span>8 个省份</span><span>数据截止 2026-11-13</span></div>
+      <div class="doc-meta"><span>23 个包</span><span>9 项技能</span><span>11 个省份</span><span>数据截止 2026-11-14</span></div>
     </header>
 
     <details class="toc-mobile">
-      <summary>本页目录（6）</summary>
+      <summary>本页目录（9）</summary>
       <ol>
-            <li class="lv2"><a href="#skill-electricity-trading-expert">电力交易专家（1）</a></li>
-            <li class="lv2"><a href="#skill-virtual-power-plant">虚拟电厂专家（3）</a></li>
+            <li class="lv2"><a href="#skill-electricity-trading-expert">电力交易专家（3）</a></li>
+            <li class="lv2"><a href="#skill-virtual-power-plant">虚拟电厂专家（5）</a></li>
+            <li class="lv2"><a href="#skill-carbon-asset-expert">碳资产管理专家（1）</a></li>
             <li class="lv2"><a href="#skill-storage-investment-operations">储能投资与运营（2）</a></li>
-            <li class="lv2"><a href="#skill-spot-bidding-quant">现货报价量化（5）</a></li>
+            <li class="lv2"><a href="#skill-renewable-project-development">新能源开发与并网（1）</a></li>
+            <li class="lv2"><a href="#skill-spot-bidding-quant">现货报价量化（6）</a></li>
+            <li class="lv2"><a href="#skill-ems-dispatch">EMS 优化调度（1）</a></li>
             <li class="lv2"><a href="#skill-tariff-bill-optimization">电价与电费优化（1）</a></li>
-            <li class="lv2"><a href="#skill-retail-electricity-risk">售电零售与风险（2）</a></li>
+            <li class="lv2"><a href="#skill-retail-electricity-risk">售电零售与风险（3）</a></li>
       </ol>
     </details>
 
@@ -139,11 +145,57 @@
         <div class="pack-group-head">
           <div>
             <h2 id="group-electricity-trading-expert">电力交易专家</h2>
-            <p>现货报价、中长期持仓、结算、风险与市场分析（含山东煤电持仓与曲线分解实例包）</p>
+            <p>现货、中长期、结算与风控（含山东持仓、甘肃煤电容量+辅助服务、甘送鲁省间实例包）</p>
           </div>
           <a class="pack-group-link" href="html/skill-electricity-trading-expert.html">技能页 →</a>
         </div>
         <div class="pack-grid">
+          <article class="pack-card" id="pack-gansu-coal-capacity-ancillary-2026-11">
+          <div class="pack-top">
+            <h3 class="pack-title">甘肃煤电容量电价与辅助服务 · 2027 样板实例</h3>
+            <div class="pack-badges">
+              <span class="pack-badge">甘肃</span>
+              <span class="pack-badge pack-badge-grade">B/C</span>
+            </div>
+          </div>
+          <p class="pack-lead">v1 覆盖年度四模式调度对比、电能量（中长期差价 + 现货）、可靠容量补偿与考核扣减、调峰/调频/备用三类辅助服务、燃料与固定成本、敏感性；不含供热、检修优化、实时偏差两结算、两个细则功率考核、税费与融资结构变化</p>
+          <dl class="pack-meta">
+            <div><dt>主体</dt><dd title="公用燃煤电厂（2×660 MW，无供热）">公用燃煤电厂（2×660 MW，无供热）</dd></div>
+            <div><dt>市场</dt><dd title="甘肃省级电力市场（中长期差价合约 + 现货全电量 + 可靠容量补偿 + 辅助服务）">甘肃省级电力市场（中长期差价合约 + 现货全电量 + 可靠容量补偿 + 辅助服务）</dd></div>
+            <div class="pack-meta-wide"><dt>规则版本</dt><dd title="甘发改价格规〔2025〕4号（可靠容量补偿，2026-01-01 起试行至 2027-12-31）；甘肃现货 V3.2（40–500 申报、40–650 出清）；发改能源规〔2025〕1656号；辅助服务限价为 D 级建模假设">甘发改价格规〔2025〕4号（可靠容量补偿，2026-01-01 起试行至 2027-12-31）；甘肃现货 V3.2（40–500 申报、40–650 出清）；发改能源规〔2025〕1656号；辅助服务限价为 D 级建模假设</dd></div>
+            <div><dt>数据截止</dt><dd>2026-11-13</dd></div>
+            <div><dt>目录</dt><dd><code>instances/gansu-coal-capacity-ancillary-2026-11/</code></dd></div>
+          </dl>
+          <div class="pack-links">
+            <a class="pack-link pack-link-primary" href="../skills/electricity-trading-expert/instances/gansu-coal-capacity-ancillary-2026-11/README.md" target="_blank" rel="noopener">说明 README ↗</a>
+            <a class="pack-link" href="../skills/electricity-trading-expert/instances/gansu-coal-capacity-ancillary-2026-11/instance.json" target="_blank" rel="noopener">instance.json ↗</a>
+            <a class="pack-link" href="../skills/electricity-trading-expert/instances/gansu-coal-capacity-ancillary-2026-11/run.py" target="_blank" rel="noopener">run.py ↗</a>
+            <a class="pack-link" href="html/skill-electricity-trading-expert.html">技能页 →</a>
+          </div>
+        </article>
+          <article class="pack-card" id="pack-gansu-wind-to-shandong-2026-11">
+          <div class="pack-top">
+            <h3 class="pack-title">甘肃风电送山东 · 省间组合实例</h3>
+            <div class="pack-badges">
+              <span class="pack-badge">甘肃</span>
+              <span class="pack-badge pack-badge-grade">B/C</span>
+            </div>
+          </div>
+          <p class="pack-lead">200 MW 甘肃风电送山东：70% 省间合同 + 余量在省间现货与甘肃本地市场之间分配；受端落地价、送出省/区域/专项工程输电价、5% 网损、绿电溢价、合同偏差与组合比较；不含省内现货分时曲线、通道 ATC 分配、输电权、不平衡资金分摊与落地省输配电价</p>
+          <dl class="pack-meta">
+            <div><dt>主体</dt><dd title="风电项目公司（外送组合）">风电项目公司（外送组合）</dd></div>
+            <div><dt>市场</dt><dd title="省间中长期 + 省间现货（甘肃送山东）">省间中长期 + 省间现货（甘肃送山东）</dd></div>
+            <div class="pack-meta-wide"><dt>规则版本</dt><dd title="发改办体改〔2026〕275号；发改能源规〔2025〕1656号；2027 年跨省跨区输电价格表（2026-10-30）">发改办体改〔2026〕275号；发改能源规〔2025〕1656号；2027 年跨省跨区输电价格表（2026-10-30）</dd></div>
+            <div><dt>数据截止</dt><dd>2026-11-13</dd></div>
+            <div><dt>目录</dt><dd><code>instances/gansu-wind-to-shandong-2026-11/</code></dd></div>
+          </dl>
+          <div class="pack-links">
+            <a class="pack-link pack-link-primary" href="../skills/electricity-trading-expert/instances/gansu-wind-to-shandong-2026-11/README.md" target="_blank" rel="noopener">说明 README ↗</a>
+            <a class="pack-link" href="../skills/electricity-trading-expert/instances/gansu-wind-to-shandong-2026-11/instance.json" target="_blank" rel="noopener">instance.json ↗</a>
+            <a class="pack-link" href="../skills/electricity-trading-expert/instances/gansu-wind-to-shandong-2026-11/run.py" target="_blank" rel="noopener">run.py ↗</a>
+            <a class="pack-link" href="html/skill-electricity-trading-expert.html">技能页 →</a>
+          </div>
+        </article>
           <article class="pack-card" id="pack-shandong-thermal-hedge-2026-11">
           <div class="pack-top">
             <h3 class="pack-title">山东煤电中长期持仓与曲线分解实例包</h3>
@@ -174,7 +226,7 @@
         <div class="pack-group-head">
           <div>
             <h2 id="group-virtual-power-plant">虚拟电厂专家</h2>
-            <p>聚合、响应、市场参与与运营（含上海、浙江、江苏 VPP 实例包）</p>
+            <p>聚合、响应与运营（含上海、浙江、江苏快响、辽宁与深圳 V2G 实例包）</p>
           </div>
           <a class="pack-group-link" href="html/skill-virtual-power-plant.html">技能页 →</a>
         </div>
@@ -202,6 +254,29 @@
             <a class="pack-link" href="html/skill-virtual-power-plant.html">技能页 →</a>
           </div>
         </article>
+          <article class="pack-card" id="pack-liaoning-vpp-2026-11">
+          <div class="pack-top">
+            <h3 class="pack-title">辽宁负荷侧虚拟电厂组合 · 2026-11 样板实例</h3>
+            <div class="pack-badges">
+              <span class="pack-badge">辽宁</span>
+              <span class="pack-badge pack-badge-grade">B/C</span>
+            </div>
+          </div>
+          <p class="pack-lead">v1 覆盖 VPP 资源预算约束下的四种品种组合、需求响应与基线核减、报量不报价与现货价格、调频容量、储能套利、交付考核、VPP 与成员分成；不含成员全部电费、零售套餐、绿电交易、省间互济、容量补偿与两个细则考核</p>
+          <dl class="pack-meta">
+            <div><dt>主体</dt><dd title="负荷侧虚拟电厂聚合商（12 家工业用户 + 用户侧储能）">负荷侧虚拟电厂聚合商（12 家工业用户 + 用户侧储能）</dd></div>
+            <div><dt>市场</dt><dd title="辽宁省级电力市场（连续结算试运行）+ 需求响应 + 调频辅助服务">辽宁省级电力市场（连续结算试运行）+ 需求响应 + 调频辅助服务</dd></div>
+            <div class="pack-meta-wide"><dt>规则版本</dt><dd title="辽发改能源规〔2026〕3号（2026-10-01 施行）；辽发改能源〔2026〕516号接入规范（总聚合 ≥10 MW、总调节 ≥5 MW）；辽发改能源〔2026〕528号；辽宁现货 734 号方案与试行 4.0 版（申报 −100–1,100、出清 −100–1,500 元/MWh）">辽发改能源规〔2026〕3号（2026-10-01 施行）；辽发改能源〔2026〕516号接入规范（总聚合 ≥10 MW、总调节 ≥5 MW）；辽发改能源〔2026〕528号；辽宁现货 734 号方案与试行 4.0 版（申报 −100–1,100、出清 −100–1,500 元/MWh）</dd></div>
+            <div><dt>数据截止</dt><dd>2026-11-13</dd></div>
+            <div><dt>目录</dt><dd><code>instances/liaoning-vpp-2026-11/</code></dd></div>
+          </dl>
+          <div class="pack-links">
+            <a class="pack-link pack-link-primary" href="../skills/virtual-power-plant/instances/liaoning-vpp-2026-11/README.md" target="_blank" rel="noopener">说明 README ↗</a>
+            <a class="pack-link" href="../skills/virtual-power-plant/instances/liaoning-vpp-2026-11/instance.json" target="_blank" rel="noopener">instance.json ↗</a>
+            <a class="pack-link" href="../skills/virtual-power-plant/instances/liaoning-vpp-2026-11/run.py" target="_blank" rel="noopener">run.py ↗</a>
+            <a class="pack-link" href="html/skill-virtual-power-plant.html">技能页 →</a>
+          </div>
+        </article>
           <article class="pack-card" id="pack-shanghai-vpp-2026-11">
           <div class="pack-top">
             <h3 class="pack-title">上海用户侧虚拟电厂 · 2026-11 样板实例</h3>
@@ -222,6 +297,29 @@
             <a class="pack-link pack-link-primary" href="../skills/virtual-power-plant/instances/shanghai-vpp-2026-11/README.md" target="_blank" rel="noopener">说明 README ↗</a>
             <a class="pack-link" href="../skills/virtual-power-plant/instances/shanghai-vpp-2026-11/instance.json" target="_blank" rel="noopener">instance.json ↗</a>
             <a class="pack-link" href="../skills/virtual-power-plant/instances/shanghai-vpp-2026-11/run.py" target="_blank" rel="noopener">run.py ↗</a>
+            <a class="pack-link" href="html/skill-virtual-power-plant.html">技能页 →</a>
+          </div>
+        </article>
+          <article class="pack-card" id="pack-shenzhen-v2g-2026-11">
+          <div class="pack-top">
+            <h3 class="pack-title">深圳 V2G 聚合 · 2026-11 样板实例</h3>
+            <div class="pack-badges">
+              <span class="pack-badge">广东</span>
+              <span class="pack-badge pack-badge-grade">B/C</span>
+            </div>
+          </div>
+          <p class="pack-lead">v1 覆盖深圳 V2G 聚合的站点能力折算（车数、桩功率、同时率、可用率、SOC 窗口、配变反向限额）、峰谷套利、需求响应、备用容量三种品种在同一 MW 预算下的分配、电池退化、双向桩年化成本、车主与聚合商分成、敏感性、临界值与复核表；不含现货 96 点报价、调频里程、容量补偿、输配电费抵扣、绿证/碳、需量电费、电池质保成本、补贴与税费</p>
+          <dl class="pack-meta">
+            <div><dt>主体</dt><dd title="车网互动（V2G）聚合商：公共场站私家车 + 公交场站 + 物流园区">车网互动（V2G）聚合商：公共场站私家车 + 公交场站 + 物流园区</dd></div>
+            <div><dt>市场</dt><dd title="深圳虚拟电厂管理中心 + 广东电力市场（南方区域现货广东价区）+ 需求响应 + 备用容量">深圳虚拟电厂管理中心 + 广东电力市场（南方区域现货广东价区）+ 需求响应 + 备用容量</dd></div>
+            <div class="pack-meta-wide"><dt>规则版本</dt><dd title="发改办能源〔2025〕241号首批车网互动试点（深圳在列）；广东虚拟电厂参与电能量交易/运营管理实施细则（2025-06）；南方区域正式运行方案（南方电网总调〔2026〕16号，广东价区申报下限 −50、出清 −50–1,800 元/MWh）；广东 2026 削峰需求响应年度交易申报上限 2,700 元/MWh">发改办能源〔2025〕241号首批车网互动试点（深圳在列）；广东虚拟电厂参与电能量交易/运营管理实施细则（2025-06）；南方区域正式运行方案（南方电网总调〔2026〕16号，广东价区申报下限 −50、出清 −50–1,800 元/MWh）；广东 2026 削峰需求响应年度交易申报上限 2,700 元/MWh</dd></div>
+            <div><dt>数据截止</dt><dd>2026-11-14</dd></div>
+            <div><dt>目录</dt><dd><code>instances/shenzhen-v2g-2026-11/</code></dd></div>
+          </dl>
+          <div class="pack-links">
+            <a class="pack-link pack-link-primary" href="../skills/virtual-power-plant/instances/shenzhen-v2g-2026-11/README.md" target="_blank" rel="noopener">说明 README ↗</a>
+            <a class="pack-link" href="../skills/virtual-power-plant/instances/shenzhen-v2g-2026-11/instance.json" target="_blank" rel="noopener">instance.json ↗</a>
+            <a class="pack-link" href="../skills/virtual-power-plant/instances/shenzhen-v2g-2026-11/run.py" target="_blank" rel="noopener">run.py ↗</a>
             <a class="pack-link" href="html/skill-virtual-power-plant.html">技能页 →</a>
           </div>
         </article>
@@ -246,6 +344,41 @@
             <a class="pack-link" href="../skills/virtual-power-plant/instances/zhejiang-vpp2-2026-11/instance.json" target="_blank" rel="noopener">instance.json ↗</a>
             <a class="pack-link" href="../skills/virtual-power-plant/instances/zhejiang-vpp2-2026-11/run.py" target="_blank" rel="noopener">run.py ↗</a>
             <a class="pack-link" href="html/skill-virtual-power-plant.html">技能页 →</a>
+          </div>
+        </article>
+        </div>
+      </section>
+
+      <section class="pack-group" id="skill-carbon-asset-expert" aria-labelledby="group-carbon-asset-expert">
+        <div class="pack-group-head">
+          <div>
+            <h2 id="group-carbon-asset-expert">碳资产管理专家</h2>
+            <p>履约、CCER、碳足迹与碳金融（含山东水泥履约实例包）</p>
+          </div>
+          <a class="pack-group-link" href="html/skill-carbon-asset-expert.html">技能页 →</a>
+        </div>
+        <div class="pack-grid">
+          <article class="pack-card" id="pack-shandong-cement-carbon-2025">
+          <div class="pack-top">
+            <h3 class="pack-title">山东水泥碳履约 · 2025 配额年度样板实例</h3>
+            <div class="pack-badges">
+              <span class="pack-badge">山东</span>
+              <span class="pack-badge pack-badge-grade">B/C</span>
+            </div>
+          </div>
+          <p class="pack-lead">2025 配额年度履约：基准线法免费分配、CCER 5% 抵销、CEA 补缺、2025 年度结转与未足额清缴罚则；不含 CBAM、集团合并履约、含碳量检测与地方试点配额</p>
+          <dl class="pack-meta">
+            <div><dt>主体</dt><dd title="水泥熟料重点排放单位">水泥熟料重点排放单位</dd></div>
+            <div><dt>市场</dt><dd title="全国碳排放权交易市场（水泥行业）">全国碳排放权交易市场（水泥行业）</dd></div>
+            <div class="pack-meta-wide"><dt>规则版本</dt><dd title="环气候〔2025〕23号；2024、2025 年度水泥行业配额分配方案（2025-11-18）；国务院令第 775 号（2026-08-08 修订）">环气候〔2025〕23号；2024、2025 年度水泥行业配额分配方案（2025-11-18）；国务院令第 775 号（2026-08-08 修订）</dd></div>
+            <div><dt>数据截止</dt><dd>2026-11-13</dd></div>
+            <div><dt>目录</dt><dd><code>instances/shandong-cement-carbon-2025/</code></dd></div>
+          </dl>
+          <div class="pack-links">
+            <a class="pack-link pack-link-primary" href="../skills/carbon-asset-expert/instances/shandong-cement-carbon-2025/README.md" target="_blank" rel="noopener">说明 README ↗</a>
+            <a class="pack-link" href="../skills/carbon-asset-expert/instances/shandong-cement-carbon-2025/instance.json" target="_blank" rel="noopener">instance.json ↗</a>
+            <a class="pack-link" href="../skills/carbon-asset-expert/instances/shandong-cement-carbon-2025/run.py" target="_blank" rel="noopener">run.py ↗</a>
+            <a class="pack-link" href="html/skill-carbon-asset-expert.html">技能页 →</a>
           </div>
         </article>
         </div>
@@ -309,11 +442,46 @@
         </div>
       </section>
 
+      <section class="pack-group" id="skill-renewable-project-development" aria-labelledby="group-renewable-project-development">
+        <div class="pack-group-head">
+          <div>
+            <h2 id="group-renewable-project-development">新能源开发与并网</h2>
+            <p>资源、LCOE、机制电价与并网（含云南风电 2027 投决实例包）</p>
+          </div>
+          <a class="pack-group-link" href="html/skill-renewable-project-development.html">技能页 →</a>
+        </div>
+        <div class="pack-grid">
+          <article class="pack-card" id="pack-yunnan-wind-development-2027">
+          <div class="pack-top">
+            <h3 class="pack-title">云南风电开发期投决 · 2027 样板实例</h3>
+            <div class="pack-badges">
+              <span class="pack-badge">云南</span>
+              <span class="pack-badge pack-badge-grade">B/C</span>
+            </div>
+          </div>
+          <p class="pack-lead">100 MW 陆上风电开发期投决：P50/P90 资源、LCOE、机制电价差价结算、税后现金流、8% 门槛盈亏平衡价、资本金与 DSCR、投标区间与组合压力；不含土地与林草审批、接入工程、建设期利息、保险与运维外包细节</p>
+          <dl class="pack-meta">
+            <div><dt>主体</dt><dd title="风电开发企业（开发期投决）">风电开发企业（开发期投决）</dd></div>
+            <div><dt>市场</dt><dd title="新能源机制电价（136 号文）+ 省内市场">新能源机制电价（136 号文）+ 省内市场</dd></div>
+            <div class="pack-meta-wide"><dt>规则版本</dt><dd title="发改价格〔2025〕136号；云南省 2027 年第一次机制电价竞价（2026-06-16，公示口径）">发改价格〔2025〕136号；云南省 2027 年第一次机制电价竞价（2026-06-16，公示口径）</dd></div>
+            <div><dt>数据截止</dt><dd>2026-11-13</dd></div>
+            <div><dt>目录</dt><dd><code>instances/yunnan-wind-development-2027/</code></dd></div>
+          </dl>
+          <div class="pack-links">
+            <a class="pack-link pack-link-primary" href="../skills/renewable-project-development/instances/yunnan-wind-development-2027/README.md" target="_blank" rel="noopener">说明 README ↗</a>
+            <a class="pack-link" href="../skills/renewable-project-development/instances/yunnan-wind-development-2027/instance.json" target="_blank" rel="noopener">instance.json ↗</a>
+            <a class="pack-link" href="../skills/renewable-project-development/instances/yunnan-wind-development-2027/run.py" target="_blank" rel="noopener">run.py ↗</a>
+            <a class="pack-link" href="html/skill-renewable-project-development.html">技能页 →</a>
+          </div>
+        </article>
+        </div>
+      </section>
+
       <section class="pack-group" id="skill-spot-bidding-quant" aria-labelledby="group-spot-bidding-quant">
         <div class="pack-group-head">
           <div>
             <h2 id="group-spot-bidding-quant">现货报价量化</h2>
-            <p>预测、报价、仿真与回测（含山东煤电、山东储能、山东光储、山西储能与甘肃新能源实例包）</p>
+            <p>预测、报价与回测（含山东煤电/储能/光储、山西储能、甘肃与蒙西新能源实例包）</p>
           </div>
           <a class="pack-group-link" href="html/skill-spot-bidding-quant.html">技能页 →</a>
         </div>
@@ -338,6 +506,29 @@
             <a class="pack-link pack-link-primary" href="../skills/spot-bidding-quant/instances/gansu-wind-2027/README.md" target="_blank" rel="noopener">说明 README ↗</a>
             <a class="pack-link" href="../skills/spot-bidding-quant/instances/gansu-wind-2027/instance.json" target="_blank" rel="noopener">instance.json ↗</a>
             <a class="pack-link" href="../skills/spot-bidding-quant/instances/gansu-wind-2027/run.py" target="_blank" rel="noopener">run.py ↗</a>
+            <a class="pack-link" href="html/skill-spot-bidding-quant.html">技能页 →</a>
+          </div>
+        </article>
+          <article class="pack-card" id="pack-mengxi-wind-spot-2026-11">
+          <div class="pack-top">
+            <h3 class="pack-title">蒙西风电现货 · 2026-11 样板实例</h3>
+            <div class="pack-badges">
+              <span class="pack-badge">蒙西</span>
+              <span class="pack-badge pack-badge-grade">B/C</span>
+            </div>
+          </div>
+          <p class="pack-lead">v1 覆盖 96 点日前预出清参考、实时全电量结算、负价弃风、中长期差价合约、申报偏差考核（D 级简化）、捕获价与差异桥；不覆盖 5 分钟滚动出清、136 机制电价、辅助服务、绿证、省间外送、年度签约比例考核与两个细则</p>
+          <dl class="pack-meta">
+            <div><dt>主体</dt><dd title="集中式风电（2025-06-01 后并网增量项目，无机制电价）">集中式风电（2025-06-01 后并网增量项目，无机制电价）</dd></div>
+            <div><dt>市场</dt><dd title="内蒙古电力多边交易市场（全电量单轨制现货 + 中长期差价合约）">内蒙古电力多边交易市场（全电量单轨制现货 + 中长期差价合约）</dd></div>
+            <div class="pack-meta-wide"><dt>规则版本</dt><dd title="蒙西现货正式运行（内能源电力字〔2025〕84号，2025-02-24）；2026 修订版规则体系为 2026-02-14 征求意见稿，未生效；现行限价以省级正式全文为准（待核）">蒙西现货正式运行（内能源电力字〔2025〕84号，2025-02-24）；2026 修订版规则体系为 2026-02-14 征求意见稿，未生效；现行限价以省级正式全文为准（待核）</dd></div>
+            <div><dt>数据截止</dt><dd>2026-11-13</dd></div>
+            <div><dt>目录</dt><dd><code>instances/mengxi-wind-spot-2026-11/</code></dd></div>
+          </dl>
+          <div class="pack-links">
+            <a class="pack-link pack-link-primary" href="../skills/spot-bidding-quant/instances/mengxi-wind-spot-2026-11/README.md" target="_blank" rel="noopener">说明 README ↗</a>
+            <a class="pack-link" href="../skills/spot-bidding-quant/instances/mengxi-wind-spot-2026-11/instance.json" target="_blank" rel="noopener">instance.json ↗</a>
+            <a class="pack-link" href="../skills/spot-bidding-quant/instances/mengxi-wind-spot-2026-11/run.py" target="_blank" rel="noopener">run.py ↗</a>
             <a class="pack-link" href="html/skill-spot-bidding-quant.html">技能页 →</a>
           </div>
         </article>
@@ -436,6 +627,41 @@
         </div>
       </section>
 
+      <section class="pack-group" id="skill-ems-dispatch" aria-labelledby="group-ems-dispatch">
+        <div class="pack-group-head">
+          <div>
+            <h2 id="group-ems-dispatch">EMS 优化调度</h2>
+            <p>96 点调度、SOC 与需量（含江苏零碳园区微网实例包）</p>
+          </div>
+          <a class="pack-group-link" href="html/skill-ems-dispatch.html">技能页 →</a>
+        </div>
+        <div class="pack-grid">
+          <article class="pack-card" id="pack-jiangsu-zero-carbon-park-ems-2026-11">
+          <div class="pack-top">
+            <h3 class="pack-title">江苏零碳园区微网 EMS · 2026-11 样板实例</h3>
+            <div class="pack-badges">
+              <span class="pack-badge">江苏</span>
+              <span class="pack-badge pack-badge-grade">B/C</span>
+            </div>
+          </div>
+          <p class="pack-lead">代表日 96 点微网调度：光伏自消纳、储能峰谷套利与需量控制、单位能耗碳排放核算、孤岛保安负荷校核；不含绿电直连合规认定、绿证与碳抵消、园区评价申报</p>
+          <dl class="pack-meta">
+            <div><dt>主体</dt><dd title="零碳园区能源运营主体">零碳园区能源运营主体</dd></div>
+            <div><dt>市场</dt><dd title="园区微网（并网不上网）">园区微网（并网不上网）</dd></div>
+            <div class="pack-meta-wide"><dt>规则版本</dt><dd title="国发〔2026〕22号；发改办环资〔2025〕1082号；发改能源〔2025〕650号（仅作园区边界参照）">国发〔2026〕22号；发改办环资〔2025〕1082号；发改能源〔2025〕650号（仅作园区边界参照）</dd></div>
+            <div><dt>数据截止</dt><dd>2026-11-13</dd></div>
+            <div><dt>目录</dt><dd><code>instances/jiangsu-zero-carbon-park-ems-2026-11/</code></dd></div>
+          </dl>
+          <div class="pack-links">
+            <a class="pack-link pack-link-primary" href="../skills/ems-dispatch/instances/jiangsu-zero-carbon-park-ems-2026-11/README.md" target="_blank" rel="noopener">说明 README ↗</a>
+            <a class="pack-link" href="../skills/ems-dispatch/instances/jiangsu-zero-carbon-park-ems-2026-11/instance.json" target="_blank" rel="noopener">instance.json ↗</a>
+            <a class="pack-link" href="../skills/ems-dispatch/instances/jiangsu-zero-carbon-park-ems-2026-11/run.py" target="_blank" rel="noopener">run.py ↗</a>
+            <a class="pack-link" href="html/skill-ems-dispatch.html">技能页 →</a>
+          </div>
+        </article>
+        </div>
+      </section>
+
       <section class="pack-group" id="skill-tariff-bill-optimization" aria-labelledby="group-tariff-bill-optimization">
         <div class="pack-group-head">
           <div>
@@ -475,11 +701,34 @@
         <div class="pack-group-head">
           <div>
             <h2 id="group-retail-electricity-risk">售电零售与风险</h2>
-            <p>套餐定价、客户组合、偏差与保函（含广东、江苏零售实例包）</p>
+            <p>套餐、客户组合、偏差与保函（含广东、江苏与多用户直连实例包）</p>
           </div>
           <a class="pack-group-link" href="html/skill-retail-electricity-risk.html">技能页 →</a>
         </div>
         <div class="pack-grid">
+          <article class="pack-card" id="pack-guangdong-multi-user-direct-2026-11">
+          <div class="pack-top">
+            <h3 class="pack-title">广东多用户绿电直连 · 2027 样板实例</h3>
+            <div class="pack-badges">
+              <span class="pack-badge">广东</span>
+              <span class="pack-badge pack-badge-grade">B/C</span>
+            </div>
+          </div>
+          <p class="pack-lead">广东某工业园区 100 MW 风电 + 100 MW 光伏多用户绿电直连：3 个法人用户、月度发用电匹配、60%/35%/20% 合规校核、1192 号容需量与 730 小时折算输配电费、成本堆叠、三种分摊口径、临界 LCOE 与 12 项敏感性；不含专线建设、土地、融资、税、备用电源、绿证核发细则与省级正式参数</p>
+          <dl class="pack-meta">
+            <div><dt>主体</dt><dd title="绿电直连项目公司（多用户联合体）">绿电直连项目公司（多用户联合体）</dd></div>
+            <div><dt>市场</dt><dd title="绿电直连（多用户）+ 就近消纳价格机制">绿电直连（多用户）+ 就近消纳价格机制</dd></div>
+            <div class="pack-meta-wide"><dt>规则版本</dt><dd title="发改能源〔2025〕650号；发改能源〔2026〕688号；发改价格〔2025〕1192号；粤发改能源〔2026〕267号；粤发改价格函〔2026〕1848号">发改能源〔2025〕650号；发改能源〔2026〕688号；发改价格〔2025〕1192号；粤发改能源〔2026〕267号；粤发改价格函〔2026〕1848号</dd></div>
+            <div><dt>数据截止</dt><dd>2026-11-13</dd></div>
+            <div><dt>目录</dt><dd><code>instances/guangdong-multi-user-direct-2026-11/</code></dd></div>
+          </dl>
+          <div class="pack-links">
+            <a class="pack-link pack-link-primary" href="../skills/retail-electricity-risk/instances/guangdong-multi-user-direct-2026-11/README.md" target="_blank" rel="noopener">说明 README ↗</a>
+            <a class="pack-link" href="../skills/retail-electricity-risk/instances/guangdong-multi-user-direct-2026-11/instance.json" target="_blank" rel="noopener">instance.json ↗</a>
+            <a class="pack-link" href="../skills/retail-electricity-risk/instances/guangdong-multi-user-direct-2026-11/run.py" target="_blank" rel="noopener">run.py ↗</a>
+            <a class="pack-link" href="html/skill-retail-electricity-risk.html">技能页 →</a>
+          </div>
+        </article>
           <article class="pack-card" id="pack-guangdong-retail-2026-11">
           <div class="pack-top">
             <h3 class="pack-title">广东售电零售 · 2026-11 样板实例</h3>
@@ -552,8 +801,11 @@
     <ul class="instance-docs">
         <li><a href="../skills/electricity-trading-expert/instances/README.md" target="_blank" rel="noopener">电力交易专家实例层 ↗</a></li>
         <li><a href="../skills/virtual-power-plant/instances/README.md" target="_blank" rel="noopener">虚拟电厂专家实例层 ↗</a></li>
+        <li><a href="../skills/carbon-asset-expert/instances/README.md" target="_blank" rel="noopener">碳资产管理专家实例层 ↗</a></li>
         <li><a href="../skills/storage-investment-operations/instances/README.md" target="_blank" rel="noopener">储能投资与运营实例层 ↗</a></li>
+        <li><a href="../skills/renewable-project-development/instances/README.md" target="_blank" rel="noopener">新能源开发与并网实例层 ↗</a></li>
         <li><a href="../skills/spot-bidding-quant/instances/README.md" target="_blank" rel="noopener">现货报价量化实例层 ↗</a></li>
+        <li><a href="../skills/ems-dispatch/instances/README.md" target="_blank" rel="noopener">EMS 优化调度实例层 ↗</a></li>
         <li><a href="../skills/tariff-bill-optimization/instances/README.md" target="_blank" rel="noopener">电价与电费优化实例层 ↗</a></li>
         <li><a href="../skills/retail-electricity-risk/instances/README.md" target="_blank" rel="noopener">售电零售与风险实例层 ↗</a></li>
     </ul>

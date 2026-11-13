@@ -1,10 +1,10 @@
 # 虚拟电厂实例包：一省一聚合商的可配置响应切片
 
-> 目录定位：`skills/virtual-power-plant/instances/` 是**邀约型 VPP 的样板实例层**，不是知识模块，不改变知识库的 101 模块 / 13 分区计数。每个子目录是"一省 + 一个聚合商 + 一个规则版本"的配置包，聚合商的交易人员只改 JSON 与 CSV，不改代码。当前三个切片：上海 407号"1+5"、浙江 VPP 2.0（公告〔2026〕第7号）、江苏负荷快速响应（苏发改规发〔2026〕1号）。
+> 目录定位：`skills/virtual-power-plant/instances/` 是**VPP 的样板实例层**，不是知识模块，不改变知识库的 101 模块 / 13 分区计数。每个子目录是"一省 + 一个聚合商 + 一个规则版本"的配置包，聚合商的交易人员只改 JSON 与 CSV，不改代码。当前五个切片分两类：**邀约/快响型**——上海 407号"1+5"、浙江 VPP 2.0（公告〔2026〕第7号）、江苏负荷快速响应（苏发改规发〔2026〕1号）；**资源分配型**——辽宁负荷侧 VPP（辽发改能源规〔2026〕3号）、深圳 V2G 聚合（广东 VPP 准入 + 2026 削峰 DR + 南方区域广东价区现货）。
 
 ## 1. 为什么要有这一层
 
-引擎层（`tools/aggregation.py`、`cbl.py`、`dispatch.py`、`finance.py`）回答"可调能力怎么折算、基线怎么算、响应怎么认定、收益怎么估"；实例层回答"**你这个省、这批资源、这套合同、这个报价风格，下一次邀约报多少、中了怎么交付、T+1 差在哪**"。三层分工：
+引擎层（`tools/aggregation.py`、`cbl.py`、`dispatch.py`、`finance.py`）回答"可调能力怎么折算、基线怎么算、响应怎么认定、收益怎么估"；实例层回答两类问题：邀约型是"**下一次邀约报多少、中了怎么交付、T+1 差在哪**"；资源分配型是"**同一份 MW 分给哪几个品种、一年能调用多少小时、分成后聚合商还剩多少**"。三层分工：
 
 | 层 | 输入 | 输出 | 是否入库 |
 |---|---|---|---|
@@ -14,7 +14,7 @@
 
 邀约型 VPP 的私有数据不是机组铭牌，而是**用户可中断能力、基线历史、响应率、分成合同、计量点位与违约条款**。实例层把这些挡在本地，只把结构与口径放进仓库。
 
-本目录与现货实例层（[`skills/spot-bidding-quant/instances/`](../../spot-bidding-quant/instances/README.md)）、售电实例层（[`skills/retail-electricity-risk/instances/`](../../retail-electricity-risk/instances/README.md)）平行：那边的主体是储能/新能源或售电公司，配置块分别用 `asset`、`portfolio`；这边的主体是**负荷聚合商**，配置块用 `resources`，并多出"响应认定、超额封顶、客户分成、未达标补偿"四块。
+本目录与现货实例层（[`skills/spot-bidding-quant/instances/`](../../spot-bidding-quant/instances/README.md)）、售电实例层（[`skills/retail-electricity-risk/instances/`](../../retail-electricity-risk/instances/README.md)）平行：那边的主体是储能/新能源或售电公司，配置块分别用 `asset`、`portfolio`；这边的主体是**负荷聚合商或 V2G 聚合商**，邀约型配置块用 `resources`，资源分配型用 `asset` + `policy`。
 
 ## 2. 目录结构
 
@@ -23,32 +23,47 @@ instances/
 ├── README.md                               # 本文件：schema、填写流程、验收
 ├── shanghai-vpp-2026-11/                   # 上海用户侧 VPP（沪经信运〔2025〕407号"1+5"）
 ├── zhejiang-vpp2-2026-11/                  # 浙江 VPP 2.0（公告〔2026〕第7号，2026-09-23）
-└── jiangsu-fast-response-2026-11/          # 江苏负荷快速响应聚合商（苏发改规发〔2026〕1号）
+├── jiangsu-fast-response-2026-11/          # 江苏负荷快速响应聚合商（苏发改规发〔2026〕1号）
+├── liaoning-vpp-2026-11/                   # 辽宁负荷侧 VPP：DR / 填谷 / 调频 / 储能（辽发改能源规〔2026〕3号）
+└── shenzhen-v2g-2026-11/                   # 深圳 V2G 聚合：套利 / DR / 备用（广东 VPP 准入）
 ```
 
-三个包目录结构相同，每个包含：
+五个包目录结构相同，每个包含：
 
 ```
     ├── instance.json                       # 唯一配置入口
-    ├── run.py                              # 运行器（校验 → 申报/结算 → T+1 复盘 → 复核）
+    ├── run.py                              # 运行器（校验 → 申报/结算 → 复盘 → 复核）
     ├── make_demo.py                        # D 级合成数据生成器
     ├── README.md                           # 本实例的命令、产物、基准数字、参数状态
     ├── pitfalls.md                         # 本省易错点
-    ├── data/                               # 历史基线/邀约/计量（演示为合成）
+    ├── data/                               # 历史基线/邀约/计量/月度价格（演示为合成）
     └── out/demo/                           # 运行产物（可删除重建）
 ```
 
-### 2.1 三个切片的分工
+### 2.1 五个切片的分工
 
 | 包 | 主体与资源 | 规则主线 | 运行链 | 结算重点 |
 |---|---|---|---|---|
 | `shanghai-vpp-2026-11/` | 用户侧聚合商，五类资源 | 407号"1+5"目标 110/160/220 万 kW；2025-08 调用 116.27 万 kW | 5 日基线 → 组合能力 → 情景申报 → T+1 认定 → 5 科目差异桥 | 响应量认定、超额封顶、客户分成、未达标让利 |
 | `zhejiang-vpp2-2026-11/` | 三类聚合单元：发电 / 储能 / 负荷 | 公告〔2026〕第7号：单元 ≥5 MW/≥1 h；正调节 800/1000/1200、负调节 300/350/380 元/MW | 门槛校验 → 逐次调用结算 → 考核封顶 → 快速型准备费 → 月度评级 | 有效响应 70%、考核不超过补偿 1.2 倍、评级 3:7、快速型无效 ≥3 次准备费归零 |
 | `jiangsu-fast-response-2026-11/` | 直控 / 自控两类资源的负荷聚合商 | 苏发改规发〔2026〕1号：直控上限 15 元/kWh、超额 150%；自控 10 元/kWh、超额 120% | 可调能力与申报 → 情景出清 → T+1 响应认定 → 11 科目差异桥 | 0.5 h 调整、120%/150% 封顶、客户分成、未达标补偿 |
+| `liaoning-vpp-2026-11/` | 12 家工业用户 + 用户侧储能；可下调 18 MW / 可上调 8 MW | 辽发改能源规〔2026〕3号：聚合 ≥10 MW、调节 ≥5 MW；DR 4,000 元/MWh（D）；现货 −100–1,100 申报 | 12 个月月度数据 → 四策略资源分配 → DR/填谷/调频/储能结算 → 分成 → 临界值 | 同一份 18 MW 不重复卖；交付率与 10% 容差；成员节电 80% 归成员 |
+| `shenzhen-v2g-2026-11/` | 430 辆车：公共场站 + 公交场站 + 物流园区；实测 7.31 MW / 13.26 MWh | 广东 VPP 准入 ≥5 MW/≥1 h/单资源 ≥0.02 MW；2026 削峰 DR 上限 2,700 元/MWh；现货 −50–1,800 元/MWh | 站点能力（车-桩 × 同时率 × 可用率、配变限额）→ 套利/DR/备用分配 → 退化与桩年化 → 车主分成 → 临界值 | 申报 MW ≠ 有效 MW；MW × 可调用小时决定收益；固定成本全由聚合商承担 |
 
-三包都用 96 点 / 15 分钟；字段名与规则块不同，runner 只校验本包声明的块（上海 `vpp_plan`/`baseline`/`event`/`settlement`，浙江 `vpp2`/`baseline`/`spot`/`settlement`，江苏 `fast_response`/`baseline`/`spot`/`settlement`）。
+上海、浙江、江苏三包用 96 点 / 15 分钟事件链，字段名与规则块各不相同（上海 `vpp_plan`/`baseline`/`event`/`settlement`，浙江 `vpp2`/`baseline`/`spot`/`settlement`，江苏 `fast_response`/`baseline`/`spot`/`settlement`）。辽宁、深圳两包改用**月度电量**口径（`data/market_demo.csv` 12 行），runner 只校验本包声明的规则块（辽宁 `vpp`/`demand_response`/`ancillary`/`storage`/`spot`/`cost`，深圳 `v2g`/`vpp`/`spot`/`demand_response`/`ancillary`/`cost`），不套用 96 点事件模型。
 
-## 3. `instance.json` 六个块
+## 3. `instance.json` 配置块
+
+3.1–3.5 描述邀约/快响型（上海、浙江、江苏）的 `resources` / `contracts` 结构；辽宁与深圳改用 `asset`（资源或站点）、`policy`（策略档）与更多规则块，字段见各自 `instance.json` 与实例 README。
+
+### 3.0 两种 schema
+
+| 类型 | 包 | 资源块 | 策略块 | 输入 | 产物主线 |
+|---|---|---|---|---|---|
+| 邀约/快响型 | 上海 / 浙江 / 江苏 | `resources.items[]` | `policy` 申报比例与报价 | 96 点历史 + 邀约 + T+1 | 申报表、情景出清、响应认定、差异桥、复核表 |
+| 资源分配型 | 辽宁 / 深圳 | `asset`（用户组合或站点车队） | `policy.strategies[]` 品种分配 | 12 个月月度价格与调用 | 站点/资源能力、四策略、月表、收入科目、敏感性、临界值、复核表 |
+
+共同点：每个规则块必须有 `grade` + `source`；`meta` 八项必填；配置错误直接报错不降级；`out/` 不入库。
 
 ### 3.1 `meta`：身份与边界
 
@@ -195,6 +210,8 @@ self,2026-07-15,19:00,19:30,9.6,8.6
 
 ## 5. 填写流程（约 30 分钟）
 
+邀约/快响型（上海、浙江、江苏）：
+
 1. **复制实例目录**：`cp -r instances/jiangsu-fast-response-2026-11 instances/<省>-<聚合商>-<年月>`；
 2. **改 `meta`**：实例名、省份、主体类型、规则版本、数据截止日与口径边界；
 3. **核对 `rules`**：只填当前生效值，逐块写 `grade` 与 `source`；基线算法未核实的，把状态写进 `baseline.status`；
@@ -205,23 +222,39 @@ self,2026-07-15,19:00,19:30,9.6,8.6
 8. **跑 `--check-config`**：来源缺失、单位错误、报价超上限、申报超能力、资源重名会直接报错；
 9. **跑一次 `--demo`**：看申报表、情景出清、T+1 响应认定与差异桥残差。
 
+资源分配型（辽宁、深圳）：
+
+1. **复制结构最接近的包**：多品种分配复制辽宁，站点/车队能力复制深圳；
+2. **改 `meta` 与 `rules`**：准入、品种价格、考核、成本逐块写 `grade` 与 `source`；D 级假设单列；
+3. **填 `asset`**：用户组合或站点清单（车辆数、电池、桩功率、同时率、可用率、配变限额）；
+4. **填 `policy.strategies[]`**：每条策略的品种 MW 分配必须 ≤ 资源预算，不得重复出售；
+5. **换 `data/market_demo.csv`**：12 个月价格、调用小时、单价；月度合计天数必须覆盖 365/366；
+6. **跑 `--check-config`**：容量预算、能量约束、单站门槛、准入门槛、来源缺失会直接报错；
+7. **跑 `--demo`**：看四策略对比、月表、收入科目、敏感性、临界值与复核表。
+
 ## 6. 运行与产物
 
 ```bash
-# 三个包各自校验与演示（<pack> = shanghai-vpp-2026-11 / zhejiang-vpp2-2026-11 / jiangsu-fast-response-2026-11）
+# 五个包各自校验与演示
 python skills/virtual-power-plant/instances/<pack>/run.py --check-config
 python skills/virtual-power-plant/instances/<pack>/run.py --demo
+# <pack> = shanghai-vpp-2026-11 / zhejiang-vpp2-2026-11 / jiangsu-fast-response-2026-11
+#        / liaoning-vpp-2026-11 / shenzhen-v2g-2026-11
 
 # 用自己的数据（以江苏包为例，路径指向仓库外）
 python skills/virtual-power-plant/instances/jiangsu-fast-response-2026-11/run.py \
   --history /path/to/history.csv --event /path/to/event.csv \
   --t1-loads /path/to/t1_loads.csv --t1-event /path/to/t1_event.csv \
   --out /path/to/out
+
+# 资源分配型（以深圳包为例）
+python skills/virtual-power-plant/instances/shenzhen-v2g-2026-11/run.py \
+  --market /path/to/market.csv --out /path/to/out
 ```
 
-`--history/--event/--t1-loads/--t1-event` 是上海与江苏包的输入；浙江包用 `--events` 与 `--response`，详见该包 README。
+`--history/--event/--t1-loads/--t1-event` 是上海与江苏包的输入；浙江包用 `--events` 与 `--response`；辽宁与深圳用 `--market`，详见各包 README。
 
-产物（默认 `out/demo/`，下表为江苏包；上海包为 `baseline.csv`/`bid.csv`/`scenarios.csv`/`t1_bridge.csv`，浙江包为 `unit_capability.csv`/`events.csv`/`rating.csv`）：
+产物（默认 `out/demo/`，下表为江苏包）：
 
 | 文件 | 内容 |
 |---|---|
@@ -232,9 +265,11 @@ python skills/virtual-power-plant/instances/jiangsu-fast-response-2026-11/run.py
 | `bridge.json` / `bridge.csv` | 差异桥：每类控制类型 5 项 × 2 类 + 总运营成本 1 项，共 11 个科目，残差 < 1e-6 CNY |
 | `review.md` | 复核表：来源与警告、申报、情景、响应认定、差异桥、合规清单 |
 
+其余包的产物：上海 `baseline.csv`/`bid.csv`/`scenarios.csv`/`t1_bridge.csv`；浙江 `unit_capability.csv`/`events.csv`/`rating.csv`；辽宁 `strategies.csv`/`monthly.csv`/`revenue.csv`/`sensitivity.csv`/`summary.json`/`review.md`；深圳 `strategies.csv`/`sites.csv`/`monthly.csv`/`revenue.csv`/`sensitivity.csv`/`summary.json`/`review.md`。
+
 ## 7. 配置校验与实际拦截
 
-`run.py` 的 `validate_instance` 会拒绝：
+邀约/快响型 `run.py` 的 `validate_instance` 会拒绝：
 
 - 缺 `meta` 必填项、缺 `rules`/`resources`/`policy`/`contracts`/`data_contract`；
 - 任一规则块缺 `grade` 或 `source`，或 `grade` 不是 A/B/C/D 组合；
@@ -250,9 +285,11 @@ python skills/virtual-power-plant/instances/jiangsu-fast-response-2026-11/run.py
 - 情景权重之和不为 1、权重数与情景数不一致；
 - T+1 事件中标量超过申报值、T+1 负荷缺事件时段。
 
+资源分配型还会拒绝：`meta` 八项缺失、规则块缺来源、准入门槛不达标、策略品种 MW 之和超过资源预算、DR/备用能量校验不通过、月度天数不等于 365/366、峰平谷小时之和不为 24、价格超出规则限价、站点 `usable_kwh` 超过 SOC 窗口允许电量、配变反向限额大于配变容量。
+
 输入数据还会拒绝：历史样本不足 3 日、同一天重复、缺时段、负荷列非数值、非储能资源出现负负荷、事件当日混入历史。
 
-会打印但**不拦截**的警告：D 级合成数据、快响基线算法待核、事件时长是 D 级假设、直控/自控是否同场出清待核、响应率门槛按 2025 细则口径、报价接近上限。
+会打印但**不拦截**的警告：D 级合成数据、快响基线算法待核、事件时长是 D 级假设、直控/自控是否同场出清待核、响应率门槛按 2025 细则口径、报价接近上限；辽宁的 DR 单价与深圳的 V2G 放电价、退化、桩成本、分成比例均为 D 级假设。
 
 ## 8. 验收标准
 
@@ -262,32 +299,35 @@ python skills/virtual-power-plant/instances/jiangsu-fast-response-2026-11/run.py
 | 运行时间 | 3 情景 × 2 控制类型，单机 < 1 分钟 |
 | 非法配置 | 明确报错并指出字段路径，不静默降级 |
 | 规则溯源 | 每个规则块有 `grade` + `source`，未核实项写 `status` |
-| 差异桥 | 残差 < 1e-6 CNY；上海 5 科目、江苏 11 科目可归因；浙江包不做差异桥，改为逐次结算与月度评级 |
+| 差异桥 | 残差 < 1e-6 CNY；上海 5 科目、江苏 11 科目可归因；浙江包不做差异桥，改为逐次结算与月度评级；辽宁、深圳不做差异桥，改为四策略对比与临界值 |
 | 响应认定 | 基线、申报、实际三层口径分列；超额封顶可复算 |
+| 能力口径 | 资源分配型必须区分申报 MW、有效 MW 与电量；同一 MW 不得跨品种重复出售 |
 | 数据本地 | 真实用户、合同、计量数据不上传，仓库只存结构与 D 级样例 |
 | 验收口径 | 不看样本内收益；看流程是否跑通、口径是否可复现、差异是否可归因 |
 
 ## 9. 数据安全边界
 
 - 仓库内的 `data/*.csv` 是 `make_demo.py` 生成的合成数据（D 级），不代表任何真实用户或聚合商；
-- 真实数据用 `--history/--event/--t1-loads/--t1-event/--out` 指向仓库外路径，或放本地被 `.gitignore` 覆盖的目录；
+- 真实数据用 `--history/--event/--t1-loads/--t1-event/--events/--response/--market/--out` 指向仓库外路径，或放本地被 `.gitignore` 覆盖的目录；
 - 不要把真实用户名称、可中断设备清单、基线曲线、分成合同、违约条款写进 `instance.json` 后提交；
 - 实例包只记录"方法与结构"，不记录"商业项目溯源"。
 
 ## 10. 新增实例
 
 1. 选一个**已正式运行、规则版本稳定**的省份与聚合主体；
-2. 复制**结构最接近**的实例目录（基线+邀约+T+1 型复制上海或江苏包，逐次调用+评级型复制浙江包），改 `run.py`、`make_demo.py` 与复核表标题；
-3. 新建 `instance.json`，六个块齐全，规则值全部带来源级别；
-4. 在 `pitfalls.md` 写本省易错点（上限单位、响应时间与事件时长、基线算法、封顶比例、重复参与、评级与准备费）；
+2. 复制**结构最接近**的实例目录（基线+邀约+T+1 型复制上海或江苏包，逐次调用+评级型复制浙江包，多品种月度分配复制辽宁包，站点/车队能力复制深圳包），改 `run.py`、`make_demo.py` 与复核表标题；
+3. 新建 `instance.json`，配置块齐全，规则值全部带来源级别；
+4. 在 `pitfalls.md` 写本省易错点（上限单位、响应时间与事件时长、基线算法、封顶比例、重复参与、评级与准备费、MW 与电量混用、配变约束）；
 5. 跑 `--check-config` 与 `--demo`，把关键输出写进实例 `README.md`；
 6. 不改知识库计数，不改 `knowledge/`；实例是技能目录内的配置层。
 
 ## 11. 相关入口
 
 - VPP 方法正文：[`../SKILL.md`](../SKILL.md) §11.2 运营实务、§12 公式速查
-- 需求响应规则与基线：[`knowledge/需求响应、车网互动与灵活性资源-2026-11.md`](../../../knowledge/需求响应、车网互动与灵活性资源-2026-11.md) §4–§6
+- 需求响应规则与基线：[`knowledge/需求响应、车网互动与灵活性资源-2026-11.md`](../../../knowledge/需求响应、车网互动与灵活性资源-2026-11.md) §4–§6、§7 V2G
 - VPP 商业模式与聚合：[`knowledge/虚拟电厂聚合调度与商业模式-2026-11.md`](../../../knowledge/虚拟电厂聚合调度与商业模式-2026-11.md)
 - 现货实例层：[`skills/spot-bidding-quant/instances/`](../../spot-bidding-quant/instances/README.md)
 - 售电实例层：[`skills/retail-electricity-risk/instances/`](../../retail-electricity-risk/instances/README.md)
 - 江苏快响样板：[`jiangsu-fast-response-2026-11/README.md`](jiangsu-fast-response-2026-11/README.md)
+- 辽宁多品种样板：[`liaoning-vpp-2026-11/README.md`](liaoning-vpp-2026-11/README.md)
+- 深圳 V2G 样板：[`shenzhen-v2g-2026-11/README.md`](shenzhen-v2g-2026-11/README.md)

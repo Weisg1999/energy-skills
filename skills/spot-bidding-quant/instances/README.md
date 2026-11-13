@@ -23,6 +23,7 @@ instances/
 ├── shandong-pv-storage-2026-11/    # 山东光储联合（96 点，净出力申报 + 弃光/充电权衡）
 ├── shandong-thermal-2026-11/       # 山东煤电/热电（96 点，供热最小出力 + 增量块 + 调频备用）
 ├── gansu-wind-2027/                # 甘肃风电（96 点，现货 + 2027H1 机制电价 + 钓鱼法）
+├── mengxi-wind-spot-2026-11/       # 蒙西风电（96 点，全电量实时结算 + 负价弃风 + CfD）
 └── shanxi-storage-2026-11/         # 山西独立储能（288 点 / 5 分钟，两结算 + 熔断压力）
 ```
 
@@ -34,6 +35,7 @@ instances/
 | `shandong-pv-storage-2026-11` | 光伏 + 配建储能联合主体 | 96 点 / 15 分钟 | 联合净出力申报、弃光与充电权衡、不得电网充电、无容量补偿 |
 | `shandong-thermal-2026-11` | 煤电/热电联产 | 96 点 / 15 分钟 | 供热最小出力 must-run、增量块成本报价、调频备用扣减、T+1 六桶差异桥 |
 | `gansu-wind-2027` | 集中式风电场 | 96 点 / 15 分钟 | 风功率情景报量、机制电价双向差价、钓鱼法 D 级考核 |
+| `mengxi-wind-spot-2026-11` | 集中式风电（增量、无机制） | 96 点 / 15 分钟 | 全电量单轨实时结算、风/价配对情景、负价弃风与 CfD、偏差考核 D 级 |
 | `shanxi-storage-2026-11` | 独立新型储能 | 288 点 / 5 分钟 | 价差报价、日前 + 实时两结算、熔断窗口压力测试 |
 
 ## 3. `instance.json` 六个块
@@ -181,6 +183,9 @@ python skills/spot-bidding-quant/instances/shandong-pv-storage-2026-11/run.py --
 
 # 山东煤电/热电 96 点实例
 python skills/spot-bidding-quant/instances/shandong-thermal-2026-11/run.py --demo
+
+# 蒙西风电 96 点实例（全电量实时结算 + 负价弃风 + CfD）
+python skills/spot-bidding-quant/instances/mengxi-wind-spot-2026-11/run.py --demo
 ```
 
 产物（默认 `out/<run>/`）：`bid_sheet.csv`（申报表，96 点或 288 点随实例）、`summary.json`（配置、情景、评估摘要）、`bridge.json` / `bridge.csv`（T+1 差异桥）、`review.md`（复核表）。

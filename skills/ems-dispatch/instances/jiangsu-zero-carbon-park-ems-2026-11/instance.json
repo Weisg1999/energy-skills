@@ -1,0 +1,81 @@
+{
+  "meta": {
+    "instance_id": "jiangsu-zero-carbon-park-ems-2026-11",
+    "province": "江苏",
+    "market": "园区微网（并网不上网）",
+    "entity_type": "零碳园区能源运营主体",
+    "rule_version": "国发〔2026〕22号；发改办环资〔2025〕1082号；发改能源〔2025〕650号（仅作园区边界参照）",
+    "data_cutoff": "2026-11-13",
+    "grade": "B/C",
+    "scope": "代表日 96 点微网调度：光伏自消纳、储能峰谷套利与需量控制、单位能耗碳排放核算、孤岛保安负荷校核；不含绿电直连合规认定、绿证与碳抵消、园区评价申报",
+    "currency": "CNY",
+    "units": "功率 kW；电量 kWh；电价 CNY/kWh；需量电费 CNY/kW·月；排放 tCO2；能耗 tce",
+    "disclaimer": "全部负荷、光伏、电价、需量与排放因子均为 D 级合成数据，不对应任何真实园区；不构成园区评价、绿电直连合规或投资建议。"
+  },
+  "rules": {
+    "tariff": {
+      "peak_cny_per_kwh": 0.95,
+      "flat_cny_per_kwh": 0.62,
+      "valley_cny_per_kwh": 0.28,
+      "demand_charge_cny_per_kw_month": 40.0,
+      "grade": "D",
+      "source": "江苏一般工商业分时电价结构的 D 级建模假设；峰谷时段、价格与需量单价以现行目录电价和园区实际结算单为准",
+      "status": "峰段 08:00-11:30、13:00-17:00、18:00-21:00；谷段 00:00-08:00、22:00-24:00；其余为平段"
+    },
+    "carbon": {
+      "grid_factor_tco2_per_mwh": 0.55,
+      "tce_per_mwh": 0.1229,
+      "grade": "C/D",
+      "source": "电网排放因子为 D 级取整假设，实际应采用现行全国或省级电力排放因子；电折标系数 0.1229 tce/MWh 为等价折标口径（B）",
+      "status": "单位能耗碳排放 = 排放量 ÷ 能源消费量（tce），不是度电碳排放（tCO2/MWh）"
+    },
+    "storage": {
+      "capacity_kwh": 4000.0,
+      "power_charge_kw": 2000.0,
+      "power_discharge_kw": 2000.0,
+      "eta_charge": 0.95,
+      "eta_discharge": 0.95,
+      "soc_min": 0.2,
+      "soc_max": 0.95,
+      "soc_init": 0.2,
+      "degradation_cny_per_kwh": 0.02,
+      "grade": "D",
+      "source": "2 MW/4 MWh 磷酸铁锂储能的 D 级参数；效率、SOC 窗口与退化成本按设备手册与质保条款替换",
+      "status": "可用电量 = 4,000 × (0.95 − 0.20) = 3,000 kWh"
+    },
+    "island": {
+      "critical_load_ratio": 0.20,
+      "reserve_ratio": 0.10,
+      "pv_availability": 0.90,
+      "day_window": [40, 56],
+      "night_window": [72, 88],
+      "grade": "D",
+      "source": "保安负荷比例、备用率与光伏可用率均为 D 级假设；真实孤岛方案需按一级负荷清单、切换时间与保护定值校核",
+      "status": "窗口为 96 点索引的半开区间：白天 10:00-14:00，夜间 18:00-22:00"
+    }
+  },
+  "assets": {
+    "pv_kwp": 6000.0,
+    "pcc_import_kw": 6000.0,
+    "pcc_export_kw": 0.0,
+    "demand_cap_candidates_kw": [6000.0, 5500.0, 5000.0, 4800.0, 4600.0, 4500.0],
+    "grade": "D",
+    "source": "6 MWp 光伏、6 MW 并网容量、并网不上网的 D 级园区配置"
+  },
+  "policy": {
+    "profile_id": "zero-carbon-park-ems-demand-cap-v1",
+    "objective": "energy_and_demand_cost",
+    "terminal": "cycle",
+    "states": 400,
+    "demand_cap_selection": "min_total_cost",
+    "grade": "D",
+    "source": "D 级调度风格：先按能量成本优化，再在候选需量上限中选总成本最低者"
+  },
+  "data_contract": {
+    "profile": {
+      "file": "data/profile_demo.csv",
+      "fields": ["interval", "time", "load_kw", "pv_kw", "buy_cny_per_kwh", "segment"],
+      "frequency": "96 points per day, 15 min"
+    }
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "meta": {
+    "instance_id": "gansu-coal-capacity-ancillary-2026-11",
+    "province": "甘肃",
+    "market": "甘肃省级电力市场（中长期差价合约 + 现货全电量 + 可靠容量补偿 + 辅助服务）",
+    "entity_type": "公用燃煤电厂（2×660 MW，无供热）",
+    "rule_version": "甘发改价格规〔2025〕4号（可靠容量补偿，2026-01-01 起试行至 2027-12-31）；甘肃现货 V3.2（40–500 申报、40–650 出清）；发改能源规〔2025〕1656号；辅助服务限价为 D 级建模假设",
+    "data_cutoff": "2026-11-13",
+    "grade": "B/C",
+    "scope": "v1 覆盖年度四模式调度对比、电能量（中长期差价 + 现货）、可靠容量补偿与考核扣减、调峰/调频/备用三类辅助服务、燃料与固定成本、敏感性；不含供热、检修优化、实时偏差两结算、两个细则功率考核、税费与融资结构变化",
+    "currency": "CNY",
+    "units": {
+      "power": "MW",
+      "energy": "MWh",
+      "price": "CNY/MWh",
+      "capacity_price": "CNY/kW·year",
+      "time": "月 × 谷/平/峰三段"
+    },
+    "disclaimer": "本实例包是 D 级合成样板，不构成报价、投资、法律或税务建议；容量补偿系数、辅助服务限价、煤价、煤耗与考核情景均为建模假设，实际以省级正式文件、交易公告和结算单为准。"
+  },
+  "rules": {
+    "capacity": {
+      "status": "试行（2026-01-01 至 2027-12-31）",
+      "price_cny_per_kw_year": 330,
+      "supply_demand_coefficient": 0.85,
+      "coefficient_cap": 1.0,
+      "scope": "公用煤电与电网侧独立新型储能，不含直流配套电源",
+      "allocation": "按月度外送电量与省内工商业用电量比例分摊",
+      "assessment": {
+        "first_miss_deduction": 0.5,
+        "second_miss_deduction": 1.0,
+        "three_month_deduction": 1.0,
+        "basis": "未按调度指令提供申报最大出力或放电时长；月内一次扣当月容量电费 50%、二次扣 100%；全年三个月扣减 100% 则扣减全年"
+      },
+      "grade": "A/B",
+      "source": "甘发改价格规〔2025〕4号《关于建立发电侧可靠容量补偿机制的通知（试行）》（2025-12-31 发布，2026-01-01 试行）；330 元/kW·年、容量供需系数、分摊与考核为文件口径；系数 0.85 为 D 级演示值"
+    },
+    "ancillary": {
+      "status": "运行（品种与限价待逐项核实）",
+      "peak_regulation": {
+        "threshold_ratio": 0.5,
+        "price_cny_per_mwh": 150,
+        "call_ratio": 0.85,
+        "basis": "出力低于 50% 额定容量的深度调峰电量，按调用比例补偿"
+      },
+      "frequency_regulation": {
+        "capacity_ratio": 0.3,
+        "price_cny_per_kw_month": 5,
+        "performance_factor": 0.9,
+        "basis": "按申报容量 30% 提供 AGC 调频容量，按性能折算"
+      },
+      "reserve": {
+        "capacity_ratio": 0.15,
+        "price_cny_per_kw_month": 8,
+        "basis": "按申报容量 15% 提供旋转备用"
+      },
+      "grade": "C/D",
+      "source": "甘肃辅助服务市场与两个细则框架（C）；调峰 150 元/MWh、调用比例 85%、调频 5 元/kW·月、备用 8 元/kW·月均为 D 级演示假设，不对应正式限价"
+    },
+    "energy": {
+      "spot_status": "正式运行（2024-09-05 起连续结算）",
+      "spot_declare_floor_cny_per_mwh": 40,
+      "spot_declare_cap_cny_per_mwh": 500,
+      "spot_clear_floor_cny_per_mwh": 40,
+      "spot_clear_cap_cny_per_mwh": 650,
+      "mid_long_term": "发改能源规〔2025〕1656号；本包用月度平曲线差价合约，不分解到 96 点",
+      "grade": "B/C",
+      "source": "甘肃现货 V3.2 限价（B/C）；发改能源规〔2025〕1656号（B）；本包不实现 24 时段分解与 D+2 滚动"
+    },
+    "cost": {
+      "coal_price_cny_per_ton": 700,
+      "coal_rate_g_per_kwh": {
+        "below_0_40": 345,
+        "0_40_to_0_55": 330,
+        "0_55_to_0_75": 315,
+        "above_0_75": 300
+      },
+      "variable_opex_cny_per_mwh": 15,
+      "fixed_opex_cny_per_kw_year": 110,
+      "annual_depreciation_cny": 264000000,
+      "annual_finance_cny": 148000000,
+      "grade": "D",
+      "source": "煤价、煤耗曲线、运维、折旧与财务费用均为 D 级建模假设；折旧按 52.8 亿元造价、20 年直线；财务费用按 70% 负债、4% 利率估算"
+    }
+  },
+  "asset": {
+    "name": "示例 2×660 MW 公用煤电（D 级合成，不是真实机组）",
+    "nameplate_capacity_mw": 1320,
+    "declared_capacity_mw": 1320,
+    "min_stable_ratio": 0.35,
+    "operating_days": 355,
+    "grade": "D",
+    "source": "示例占位；实际按铭牌、最低稳燃出力、检修计划与可用率填写"
+  },
+  "policy": {
+    "profile_id": "gansu-coal-capacity-ancillary-v1",
+    "description": "在四种调度模式中选年度全成本利润最高者；容量补偿按申报容量与供需系数计，辅助服务按调用比例计；同时报告考核扣减与组合压力",
+    "default_mode": "deep",
+    "modes": {
+      "base": {
+        "label": "基荷",
+        "valley_ratio": 0.45,
+        "flat_ratio": 0.65,
+        "peak_ratio": 0.9
+      },
+      "deep": {
+        "label": "深调顶峰",
+        "valley_ratio": 0.35,
+        "flat_ratio": 0.5,
+        "peak_ratio": 1.0
+      },
+      "peak": {
+        "label": "晚峰优先",
+        "valley_ratio": 0.4,
+        "flat_ratio": 0.55,
+        "peak_ratio": 1.0
+      },
+      "steady": {
+        "label": "平稳少调",
+        "valley_ratio": 0.5,
+        "flat_ratio": 0.7,
+        "peak_ratio": 0.8
+      }
+    },
+    "contract_price_cny_per_mwh": 300,
+    "decision_rule": "可行模式下年度全成本利润最大；容量补偿考核扣减与组合压力必须单列，不得只看基准利润",
+    "sensitivity": {
+      "coal_price_multipliers": [1.1, 0.9],
+      "spot_multipliers": [0.9, 1.1],
+      "peak_price_multiplier": 1.15,
+      "contract_prices": [260, 320],
+      "capacity_coefficients": [0.7, 1.0],
+      "declared_capacity_mw": 1200,
+      "peak_regulation_price_multiplier": 0.7,
+      "peak_regulation_call_ratio": 0.6
+    },
+    "grade": "D",
+    "note": "模式、调用比例、考核情景与敏感性均为风格选择，不是监管要求；改 profile_id 并保留旧文件，便于比较。"
+  },
+  "data_contract": {
+    "market": {
+      "file": "data/market_demo.csv",
+      "required_fields": [
+        "month",
+        "days",
+        "valley_hours",
+        "flat_hours",
+        "peak_hours",
+        "valley_price_cny_per_mwh",
+        "flat_price_cny_per_mwh",
+        "peak_price_cny_per_mwh",
+        "contract_mwh"
+      ],
+      "note": "12 个月、谷/平/峰三段；小时数为每日小时数；合同电量为月度平曲线差价合约电量。"
+    }
+  }
+}

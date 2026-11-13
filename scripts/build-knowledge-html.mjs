@@ -1114,7 +1114,7 @@ function renderInstanceEntry() {
           <span class="instance-entry-body">
             <span class="instance-entry-kicker">INSTANCE LAYER · 配置层</span>
             <b>${count} 个可运行实例包：一省一主体</b>
-            <span class="instance-entry-desc">覆盖${esc(provinces.join('、'))} ${provinces.length} 个省份、${groups.length} 项技能：煤电中长期、光储联合报价、独立储能、VPP、售电零售与工商业电费优化。选包 → 改 JSON → 换 CSV → 运行 run.py。</span>
+            <span class="instance-entry-desc">覆盖${esc(provinces.join('、'))} ${provinces.length} 个省份、${groups.length} 项技能：煤电中长期、光储联合报价、独立储能、VPP、V2G、售电零售、绿电直连、碳履约、园区 EMS、新能源投决与省间组合。选包 → 改 JSON → 换 CSV → 运行 run.py。</span>
           </span>
           <span class="instance-entry-go">查看总览 <span aria-hidden="true">→</span></span>
         </a>`;

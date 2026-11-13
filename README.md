@@ -53,24 +53,24 @@ node scripts/check-maintenance.mjs --check
 
 | 技能 | 回答的核心问题 |
 |---|---|
-| **[电力交易专家](skills/electricity-trading-expert/SKILL.md)** · [EN](skills/electricity-trading-expert/SKILL_EN.md) | 现货出清与定价、中长期与金融、辅助服务与容量、结算计量、省别实践、新能源入市、燃料与气电成本、碳市场、11 个海外市场、交易策略与风控；含山东煤电中长期持仓与曲线分解实例包（合约簿、对冲比例、carry/形状、D-7~D-1 调仓与 T+1 差异桥） |
-| **[现货报价量化专家](skills/spot-bidding-quant/SKILL.md)** · [EN](skills/spot-bidding-quant/SKILL_EN.md) | 负荷与电价预测、残差校正、量价曲线、购电组合、竞价仿真、滚动回测与 T+1 归因；盘面层含决策时钟、情景/CVaR 前沿、结算差异桥与公开数据回测协议；含山东煤电/热电、山东独立储能、山东光储联合、山西独立储能与甘肃风电五个实例包（配置、申报、两结算与差异桥） |
-| **[虚拟电厂专家](skills/virtual-power-plant/SKILL.md)** · [EN](skills/virtual-power-plant/SKILL_EN.md) | 资源聚合、三阶段演进、市场参与、商业模式、控制优化、政策与国际对标；含上海、浙江与江苏快速响应三个实例包（聚合配置、申报、情景出清与差异桥） |
-| **[售电零售与风险专家](skills/retail-electricity-risk/SKILL.md)** · [EN](skills/retail-electricity-risk/SKILL_EN.md) | 套餐全成本定价、客户组合、购电覆盖、偏差考核、批零倒挂、履约保函与退出；含广东 2026 与江苏 2027 两个售电零售实例包（一省一主体配置、D-1 定价与购电表、T+1 差异桥） |
+| **[电力交易专家](skills/electricity-trading-expert/SKILL.md)** · [EN](skills/electricity-trading-expert/SKILL_EN.md) | 现货出清与定价、中长期与金融、辅助服务与容量、结算计量、省别实践、新能源入市、燃料与气电成本、碳市场、11 个海外市场、交易策略与风控；含山东煤电中长期持仓、甘肃煤电容量电价+辅助服务与甘肃风电送山东省间组合三个实例包 |
+| **[现货报价量化专家](skills/spot-bidding-quant/SKILL.md)** · [EN](skills/spot-bidding-quant/SKILL_EN.md) | 负荷与电价预测、残差校正、量价曲线、购电组合、竞价仿真、滚动回测与 T+1 归因；盘面层含决策时钟、情景/CVaR 前沿、结算差异桥与公开数据回测协议；含山东煤电/热电、山东独立储能、山东光储联合、山西独立储能、甘肃风电与蒙西新能源现货六个实例包（配置、申报、两结算与差异桥） |
+| **[虚拟电厂专家](skills/virtual-power-plant/SKILL.md)** · [EN](skills/virtual-power-plant/SKILL_EN.md) | 资源聚合、三阶段演进、市场参与、商业模式、控制优化、政策与国际对标；含上海、浙江、江苏快速响应、辽宁资源分配与深圳 V2G 五个实例包（聚合配置、申报、情景出清与差异桥） |
+| **[售电零售与风险专家](skills/retail-electricity-risk/SKILL.md)** · [EN](skills/retail-electricity-risk/SKILL_EN.md) | 套餐全成本定价、客户组合、购电覆盖、偏差考核、批零倒挂、履约保函与退出；含广东 2026、江苏 2027 与广东多用户绿电直连三个实例包（一省一主体配置、D-1 定价与购电表、T+1 差异桥） |
 
 ### 项目与资产
 
 | 技能 | 回答的核心问题 |
 |---|---|
 | **[储能投资与运营专家](skills/storage-investment-operations/SKILL.md)** · [EN](skills/storage-investment-operations/SKILL_EN.md) | 六种项目形态、五类收益堆叠、LCOS/IRR/NPV/DSCR、退化与增容、考核扣减、商业模式与压测；含安徽容量电价与广东现货+调频两个实例包 |
-| **[新能源项目开发与并网专家](skills/renewable-project-development/SKILL.md)** · [EN](skills/renewable-project-development/SKILL_EN.md) | 资源评估、136 号文机制电价、LCOE 与税后现金流、海上风电 CfD、并网审批、限电消纳、省别竞价 |
-| **[碳资产管理专家](skills/carbon-asset-expert/SKILL.md)** · [EN](skills/carbon-asset-expert/SKILL_EN.md) | 履约日历、配额盈缺、CEA/CCER 采购与开发、碳金融、CBAM、产品碳足迹、碳中和声明、DPP |
+| **[新能源项目开发与并网专家](skills/renewable-project-development/SKILL.md)** · [EN](skills/renewable-project-development/SKILL_EN.md) | 资源评估、136 号文机制电价、LCOE 与税后现金流、海上风电 CfD、并网审批、限电消纳、省别竞价；含云南风电 2027 机制电价投决实例包（P50/P90、LCOE、差价结算、门槛盈亏平衡价与投标区间） |
+| **[碳资产管理专家](skills/carbon-asset-expert/SKILL.md)** · [EN](skills/carbon-asset-expert/SKILL_EN.md) | 履约日历、配额盈缺、CEA/CCER 采购与开发、碳金融、CBAM、产品碳足迹、碳中和声明、DPP；含山东水泥 2025 履约实例包（基准线分配、CCER 5% 抵销、CEA 补缺与结转） |
 
 ### 调度与账单
 
 | 技能 | 回答的核心问题 |
 |---|---|
-| **[EMS 优化调度专家](skills/ems-dispatch/SKILL.md)** · [EN](skills/ems-dispatch/SKILL_EN.md) | 96 点经济调度、SOC 与备用、并网点与防逆流、需量电费、退化成本、多市场叠加、MPC 与可调能力 |
+| **[EMS 优化调度专家](skills/ems-dispatch/SKILL.md)** · [EN](skills/ems-dispatch/SKILL_EN.md) | 96 点经济调度、SOC 与备用、并网点与防逆流、需量电费、退化成本、多市场叠加、MPC 与可调能力；含江苏零碳园区微网实例包（光伏自消纳、储能峰谷与需量控制、单位能耗碳排放、孤岛校核） |
 | **[电价与电费优化专家](skills/tariff-bill-optimization/SKILL.md)** · [EN](skills/tariff-bill-optimization/SKILL_EN.md) | 账单科目拆解、三种基本电费、105% 超需与 40% 下限、最优申报、分时平移、力率考核、零售套餐比价；含江苏工商业储能实例包 |
 
 > **怎么选**：市场规则与结算 → 电力交易；报价与回测 → 现货量化；聚合与运营 → 虚拟电厂；项目投决 → 储能/新能源；逐时段调度 → EMS；账单与套餐 → 电价/售电。

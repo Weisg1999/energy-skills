@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "instance_id": "shandong-cement-carbon-2025",
+    "province": "山东",
+    "market": "全国碳排放权交易市场（水泥行业）",
+    "entity_type": "水泥熟料重点排放单位",
+    "rule_version": "环气候〔2025〕23号；2024、2025 年度水泥行业配额分配方案（2025-11-18）；国务院令第 775 号（2026-08-08 修订）",
+    "data_cutoff": "2026-11-13",
+    "grade": "B/C",
+    "scope": "2025 配额年度履约：基准线法免费分配、CCER 5% 抵销、CEA 补缺、2025 年度结转与未足额清缴罚则；不含 CBAM、集团合并履约、含碳量检测与地方试点配额",
+    "currency": "CNY",
+    "units": "排放与配额 tCO2e；熟料产量 t；价格 CNY/t；基准线 tCO2/t 熟料",
+    "disclaimer": "全部产量、排放、价格与持仓均为 D 级合成数据，不对应任何真实企业；参数与文号仅用于演示履约计算链，不构成交易或合规建议。"
+  },
+  "rules": {
+    "allocation": {
+      "method": "benchmark",
+      "benchmark_tco2_per_t_clinker": 0.86,
+      "correction_factor": 1.0,
+      "surplus_cap_ratio": 0.03,
+      "enforce_surplus_cap": true,
+      "grade": "C/D",
+      "source": "分配方法（基准线法、强度修正、盈余调节）依据 2024、2025 年度全国碳排放权交易市场水泥、钢铁、电解铝行业配额总量和分配方案（2025-11-18）；基准线 0.86 tCO2/t 与 3% 盈余上限为 D 级建模假设，以正式方案与省级清缴通知为准"
+    },
+    "ccer": {
+      "cap_ratio": 0.05,
+      "cap_base": "verified_emissions",
+      "grade": "A",
+      "source": "全国碳排放权交易市场 CCER 抵销上限为应清缴配额的 5%",
+      "status": "通常按核实排放量计；具体以年度清缴通知为准"
+    },
+    "settlement": {
+      "surrender_deadline": "2026-12-31",
+      "deadline_status": "近年惯例 12 月 31 日，以 2025 年度清缴通知为准（B）",
+      "carryover_year": 2025,
+      "penalty_multiple_low": 5.0,
+      "penalty_multiple_high": 10.0,
+      "grade": "A/B",
+      "source": "《碳排放权交易管理暂行条例》（国务院令第 775 号，2026-08-08 修订）；2019-2024 年度不得结转，2025/2026 年度可结转",
+      "status": "未足额清缴按清缴时限前 1 个月市场均价 5-10 倍处罚"
+    },
+    "prices": {
+      "cea_cny_per_t": 92.3,
+      "ccer_cny_per_t": 84.1,
+      "market_average_cny_per_t": 92.3,
+      "price_month": "2026-11",
+      "grade": "D",
+      "source": "D 级合成价格：CEA 92.30、CCER 84.10 元/t（2026-11 取整快照，仅用于演示价差结构）；实际履约按成交时点价格",
+      "status": "价格随时点反转，不得用单月价差外推全年"
+    }
+  },
+  "facility": {
+    "name": "合成水泥熟料基地（1 条 5,000 t/d 线）",
+    "lines": [
+      {
+        "id": "kiln-a",
+        "name": "1# 熟料线",
+        "design_t_per_day": 5000,
+        "grade": "D",
+        "source": "D 级合成产能，不对应真实企业"
+      }
+    ]
+  },
+  "holdings": {
+    "cea_2025_t": 20000,
+    "ccer_t": 40000,
+    "grade": "D",
+    "source": "D 级合成持仓"
+  },
+  "policy": {
+    "profile_id": "carbon-compliance-ccer-first-v1",
+    "purchase_mode": "ccer_first",
+    "cea_transaction_cost_cny_per_t": 1.0,
+    "ccer_transaction_cost_cny_per_t": 2.0,
+    "purchase_timing": "min_cea_month",
+    "grade": "D",
+    "source": "D 级交易成本与采购风格假设"
+  },
+  "data_contract": {
+    "production": {
+      "file": "data/production_demo.csv",
+      "fields": ["month", "clinker_t", "note"],
+      "frequency": "monthly"
+    },
+    "verification": {
+      "file": "data/verification_demo.csv",
+      "fields": ["compliance_year", "verified_emissions_tco2", "verification_body"],
+      "frequency": "annual"
+    },
+    "prices": {
+      "file": "data/prices_demo.csv",
+      "fields": ["month", "cea_cny_per_t", "ccer_cny_per_t"],
+      "frequency": "monthly"
+    }
+  }
+}

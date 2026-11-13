@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "instance_id": "gansu-wind-to-shandong-2026-11",
+    "province": "甘肃",
+    "market": "省间中长期 + 省间现货（甘肃送山东）",
+    "entity_type": "风电项目公司（外送组合）",
+    "rule_version": "发改办体改〔2026〕275号；发改能源规〔2025〕1656号；2027 年跨省跨区输电价格表（2026-10-30）",
+    "data_cutoff": "2026-11-13",
+    "grade": "B/C",
+    "scope": "200 MW 甘肃风电送山东：70% 省间合同 + 余量在省间现货与甘肃本地市场之间分配；受端落地价、送出省/区域/专项工程输电价、5% 网损、绿电溢价、合同偏差与组合比较；不含省内现货分时曲线、通道 ATC 分配、输电权、不平衡资金分摊与落地省输配电价",
+    "currency": "CNY",
+    "units": "装机 MW；电量 MWh；电价与输电价 CNY/kWh；线损率 %；收入 CNY",
+    "disclaimer": "全部电量、合同比例、山东落地价、甘肃本地价、现货价、绿电溢价与输电价组合均为 D 级合成数据，不对应任何真实项目或通道；规则文号仅用于演示计算链，不构成交易、投标或投资建议。"
+  },
+  "rules": {
+    "interprovincial": {
+      "min_bid_mw": 1.0,
+      "bid_step_cny_per_mwh": 1.0,
+      "max_bid_multiple_of_provincial_cap": 2.0,
+      "settlement_reference": "receiving_landing",
+      "grade": "B",
+      "source": "《省间电力现货交易规则》2026-04-28 施行（发改办体改〔2026〕275号复函）：实物交易、最小申报 1 MW、报价步长 1 元/MWh、最高申报价为省内市场价上限的 2 倍；省间中长期依据发改能源规〔2025〕1656号",
+      "status": "组织时序、各省落地参数、ATC 与偏差处理以北京电力交易中心公告和送受端合同为准"
+    },
+    "delivery": {
+      "send_province_cny_per_kwh": 0.015,
+      "regional_grid_cny_per_kwh": 0.0121,
+      "dedicated_project_cny_per_kwh": 0.055,
+      "loss_rate": 0.05,
+      "grade": "C/D",
+      "source": "2027 年送出省输电价原则上不超过 3 分/kWh；西北区域电网电量电价 1.21 分/kWh；专项工程输电价区间 0.81–8.36 分/kWh、线损 1%–7%（北京电力交易中心 2026-10-30 价格表，依据发改价格〔2026〕1077号）。本实例 1.5 + 1.21 + 5.5 分与 5% 线损为 D 级合成通道，不对应陇东—山东等具体工程",
+      "status": "落地省输配电价、系统运行费与政府性基金由购电方承担，未计入卖方扣减；实际通道参数须查 2027 年价格表"
+    },
+    "market": {
+      "contract_price_cny_per_kwh": 0.33,
+      "local_price_cny_per_kwh": 0.22,
+      "green_premium_cny_per_kwh": 0.02,
+      "grade": "D",
+      "source": "山东落地合同价、甘肃本地价、绿电溢价与月度现货价均为 D 级合成值；月度现货价在 data/profile_demo.csv",
+      "status": "合同按受端落地价结算，输电价与网损由送端卖方承担；若改为送端关口价，卖方收入曲线不同"
+    }
+  },
+  "project": {
+    "name": "甘肃某 200 MW 风电场（合成）",
+    "capacity_mw": 200.0,
+    "p50_hours": 2400.0,
+    "cod": "2026-12-31",
+    "grade": "D",
+    "source": "D 级合成场址：200 MW、P50 2,400 h"
+  },
+  "policy": {
+    "profile_id": "gansu-wind-export-portfolio-v1",
+    "contract_ratio": 0.70,
+    "strategies": ["local_only", "contract_spot", "contract_local"],
+    "shortfall_reference": {
+      "contract_spot": "spot_landing",
+      "contract_local": "local_send"
+    },
+    "decision_rule": "max_net_revenue",
+    "grade": "D",
+    "source": "D 级组合风格：70% 电量签省间合同，余量在省间现货与本地市场之间比较；合同偏差分别按受端现货价或本地价结算"
+  },
+  "data_contract": {
+    "profile": {
+      "file": "data/profile_demo.csv",
+      "fields": ["month", "generation_mwh", "contract_weight", "spot_price_cny_per_kwh", "green_ratio"],
+      "frequency": "monthly, first operating year"
+    }
+  }
+}

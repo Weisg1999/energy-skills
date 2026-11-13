@@ -189,7 +189,7 @@ export function renderInstancesPage(data) {
         </div>
       </section>`).join('\n\n      ');
   const layerLinks = data.groups.map((group) => `<li><a href="../skills/${esc(group.slug)}/instances/README.md" target="_blank" rel="noopener">${esc(group.title)}实例层 ↗</a></li>`).join('\n        ');
-  const description = `${data.count} 个一省一主体实例包：煤电、光储、独立储能、VPP、售电与工商业储能；配置改 JSON，数据换 CSV，运行 run.py。`;
+  const description = `${data.count} 个一省一主体实例包：煤电、光储、独立储能、VPP、V2G、售电、绿电直连、碳履约、园区 EMS、新能源投决与省间组合；配置改 JSON，数据换 CSV，运行 run.py。`;
   return `<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -328,7 +328,7 @@ export function buildInstanceSearchRecord(data) {
   return {
     id: 'instance-packs',
     title: '实例包总览',
-    summary: `${data.count} 个一省一主体的可运行切片：煤电、光储、独立储能、VPP、售电与工商业储能。`,
+    summary: `${data.count} 个一省一主体的可运行切片：煤电、光储、独立储能、VPP、V2G、售电、绿电直连、碳履约、园区 EMS 与新能源投决。`,
     tags: ['实例包', '配置层', '可运行', ...data.groups.map((group) => group.title)],
     cat: 'instance',
     catTitle: '实例层',
