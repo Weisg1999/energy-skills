@@ -421,24 +421,32 @@ python skills/virtual-power-plant/tools/selftest.py
 
 自测通过代表正文算例与代码一致；基线、补贴或成本参数变化时，先改调用参数或 `cbl.py`，再同步正文数字。
 
-### 13.1 实例包：江苏负荷快速响应聚合商
+### 13.1 实例包：上海、浙江、江苏三个邀约型 VPP 切片
 
 引擎层回答"可调能力怎么折算、基线怎么算、响应怎么认定、收益怎么估"；实例层回答"**这个省、这批资源、这套合同、这个报价风格，下一次邀约报多少、中了怎么交付、T+1 差在哪**"。实例是配置层，不改变知识库的 101 模块 / 13 分区 / 9 技能计数。
 
-| 文件 | 作用 |
-|---|---|
-| `instances/README.md` | VPP 实例 schema：六个块（`resources` 替代 `asset`）、96 点格式、30 分钟填写流程、校验与验收 |
-| `instances/jiangsu-fast-response-2026-11/instance.json` | 江苏配置：直控/自控两类资源、15/10 元/kWh 申报上限、150%/120% 超额封顶、客户分成与未达标补偿 |
-| `instances/jiangsu-fast-response-2026-11/run.py` | 配置校验 → 可调能力与申报 → 情景出清 → T+1 响应认定 → 11 科目差异桥 → 复核表 |
-| `instances/jiangsu-fast-response-2026-11/make_demo.py` | D 级合成历史基线、邀约情景与 T+1 计量（96 点） |
-| `instances/jiangsu-fast-response-2026-11/pitfalls.md` | 江苏快响易错点与邀约前 60 秒清单 |
+三个包共用同一副骨架：`instance.json` 六块（`resources` 替代 `asset`）、`run.py`、`make_demo.py`、`pitfalls.md`、`data/`、`out/demo/`；差别在规则版本、资源口径与结算科目。
+
+| 实例包 | 规则版本 | 主体与资源 | 运行链 | 风格（指纹） |
+|---|---|---|---|---|
+| `shanghai-vpp-2026-11/` | 沪经信运〔2025〕407号"1+5" | 用户侧聚合商，五类资源 | 5 日基线 → 组合能力 → 情景申报 → T+1 认定 → 5 科目差异桥 | `shanghai-vpp-1plus5-balanced-v1`（`6ac0d5e814ad`） |
+| `zhejiang-vpp2-2026-11/` | 公告〔2026〕第7号（2026-09-23） | 三类聚合单元：发电 / 储能 / 负荷 | 门槛校验 → 逐次调用结算 → 考核封顶 → 快速型准备费 → 月度评级 | `zhejiang-vpp2-balanced-v1`（`5ceaa246ace4`） |
+| `jiangsu-fast-response-2026-11/` | 苏发改规发〔2026〕1号 | 直控 / 自控两类资源的负荷聚合商 | 可调能力与申报 → 情景出清 → T+1 响应认定 → 11 科目差异桥 | `jiangsu-fast-response-balanced-v1`（`c46bb8a332bf`） |
 
 ```bash
-python skills/virtual-power-plant/instances/jiangsu-fast-response-2026-11/run.py --check-config
-python skills/virtual-power-plant/instances/jiangsu-fast-response-2026-11/run.py --demo
+python skills/virtual-power-plant/instances/<pack>/run.py --check-config
+python skills/virtual-power-plant/instances/<pack>/run.py --demo
 ```
 
-D 级合成基准（2026-11-13）：可调能力 直控 30.66 MW / 自控 10.80 MW，申报 26.0 / 8.6 MW；计划净收益 45,881 CNY，情景期望 48,401、CVaR −2,000；T+1 实际 53,303，差异 +7,423，差异桥 11 个科目残差 < 1e-6 CNY；直控实际响应 24.20 MW，自控按 120% 封顶后计量 10.32 MW。数字只用于验证流程，不对应任何真实用户或聚合商；真实用户台账、基线历史与合同放本地。
+`<pack>` 取上表三个目录名之一；`pitfalls.md` 给出本省易错点，`instances/README.md` 给出六块 schema 与填写流程。
+
+D 级合成基准：
+
+- **上海**（2026-08-14 14:00–15:00）：理论可调 150.0 MW → 计入可用率 135.45 MW → 同时率 85% 后 115.13 MW，按 80% 申报 **92.1 MW**（占 2027 年 220 万 kW 目标的 4.19%）；参考情景中标 80.0 MW / 计划 76.0 MWh，聚合商边际 **108,714 元**，情景期望 88,057，CVaR80 0。
+- **浙江**（2026-09 月度）：10 次调用，毛利 35,382 元、考核 3,660 元、响应净额 31,722 元、快速型准备费 10,200 元、平台与计量成本 7,000 元，**当月净额 34,922 元**；评级 发电 B 87.57 / 储能 A 94.27 / 负荷 C 77.25——负荷连续三次快速型无效，响应分 67.50 且准备费归零，A/B/C 三档是演示目的。
+- **江苏**（2026-11-13）：可调能力 直控 30.66 MW / 自控 10.80 MW，申报 26.0 / 8.6 MW；计划净收益 45,881 元，情景期望 48,401、CVaR −2,000；T+1 实际 53,303，差异 +7,423，差异桥 11 个科目残差 < 1e-6 元；直控实际响应 24.20 MW，自控按 120% 封顶后计量 10.32 MW。
+
+数字只用于验证流程，不对应任何真实用户或聚合商；真实用户台账、基线历史与合同放本地。
 
 ---
 

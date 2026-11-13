@@ -423,24 +423,32 @@ python skills/virtual-power-plant/tools/selftest.py
 
 A green self-test means the text's worked examples agree with the code; when baseline, subsidy or cost parameters change, update the call parameters or `cbl.py` first and then the figures in the text.
 
-### 13.1 Instance pack: Jiangsu load fast-response aggregator
+### 13.1 Instance packs: Shanghai, Zhejiang and Jiangsu VPP slices
 
 The engine layer answers "how is adjustable capability converted, how is the baseline computed, how is response certified, how is revenue estimated". The instance layer answers "**for this province, this resource portfolio, these contracts and this bidding style, how much do I declare at the next call, how do I deliver once cleared, and where did T+1 differ**". Instances are a configuration layer and do not change the knowledge base's 101 modules / 13 sections / 9 skills count.
 
-| File | Purpose |
-|---|---|
-| `instances/README.md` | VPP instance schema: six blocks (`resources` replaces `asset`), 96-point formats, 30-minute workflow, validation and acceptance |
-| `instances/jiangsu-fast-response-2026-11/instance.json` | Jiangsu config: direct/self-controlled resources, 15/10 CNY/kWh declaration caps, 150%/120% overshoot caps, customer sharing and shortfall compensation |
-| `instances/jiangsu-fast-response-2026-11/run.py` | Config validation → capability and declaration → scenario clearing → T+1 response certification → 11-bucket bridge → review table |
-| `instances/jiangsu-fast-response-2026-11/make_demo.py` | Grade-D synthetic baseline history, call scenarios and T+1 metering (96 points) |
-| `instances/jiangsu-fast-response-2026-11/pitfalls.md` | Jiangsu fast-response pitfalls and a 60-second pre-call checklist |
+All three packs share one skeleton: six blocks in `instance.json` (`resources` replaces `asset`), `run.py`, `make_demo.py`, `pitfalls.md`, `data/` and `out/demo/`; they differ in rule version, resource scope and settlement items.
+
+| Pack | Rule version | Entity and resources | Workflow | Style (fingerprint) |
+|---|---|---|---|---|
+| `shanghai-vpp-2026-11/` | Shanghai JX〔2025〕407 "1+5" | User-side aggregator, five resource classes | 5-day baseline → portfolio capability → scenario bid → T+1 certification → 5-bucket bridge | `shanghai-vpp-1plus5-balanced-v1` (`6ac0d5e814ad`) |
+| `zhejiang-vpp2-2026-11/` | Notice〔2026〕No.7 (2026-09-23) | Three unit classes: generation / storage / load | Threshold check → per-call settlement → assessment cap → fast-type readiness fee → monthly rating | `zhejiang-vpp2-balanced-v1` (`5ceaa246ace4`) |
+| `jiangsu-fast-response-2026-11/` | Su FGR〔2026〕No.1 | Load aggregator with direct/self-controlled resources | Capability and declaration → scenario clearing → T+1 certification → 11-bucket bridge | `jiangsu-fast-response-balanced-v1` (`c46bb8a332bf`) |
 
 ```bash
-python skills/virtual-power-plant/instances/jiangsu-fast-response-2026-11/run.py --check-config
-python skills/virtual-power-plant/instances/jiangsu-fast-response-2026-11/run.py --demo
+python skills/virtual-power-plant/instances/<pack>/run.py --check-config
+python skills/virtual-power-plant/instances/<pack>/run.py --demo
 ```
 
-Grade-D synthetic baseline (2026-11-13): adjustable capability 30.66 MW direct / 10.80 MW self-controlled, declared 26.0 / 8.6 MW; plan net revenue 45,881 CNY, scenario expectation 48,401, CVaR −2,000; T+1 actual 53,303, delta +7,423, 11-bucket bridge residual < 1e-6 CNY; direct actual response 24.20 MW, self-controlled metered at the 120% cap 10.32 MW. The numbers validate the workflow only and correspond to no real user or aggregator; keep real user ledgers, baseline history and contracts local.
+`<pack>` is one of the three directory names above; each `pitfalls.md` lists province-specific traps, and `instances/README.md` documents the six-block schema and workflow.
+
+Grade-D synthetic benchmarks:
+
+- **Shanghai** (2026-08-14 14:00–15:00): theoretical 150.0 MW → 135.45 MW after availability → 115.13 MW after the 85% coincidence factor, declared **92.1 MW** at 80% (4.19% of the 2027 2.2 GW target); reference scenario cleared 80.0 MW / planned 76.0 MWh, aggregator margin **108,714 CNY**, scenario expectation 88,057, CVaR80 0.
+- **Zhejiang** (September 2026): 10 calls, gross 35,382 CNY, assessment 3,660, net response 31,722, fast-type readiness fee 10,200, platform and metering cost 7,000, **monthly net 34,922 CNY**; ratings generation B 87.57 / storage A 94.27 / load C 77.25 — the load unit failed three consecutive fast-type calls, scored 67.50 and had its readiness fee zeroed; the A/B/C spread is for demonstration.
+- **Jiangsu** (2026-11-13): adjustable capability 30.66 MW direct / 10.80 MW self-controlled, declared 26.0 / 8.6 MW; plan net revenue 45,881 CNY, scenario expectation 48,401, CVaR −2,000; T+1 actual 53,303, delta +7,423, 11-bucket bridge residual < 1e-6 CNY; direct actual response 24.20 MW, self-controlled metered at the 120% cap 10.32 MW.
+
+The numbers validate the workflow only and correspond to no real user or aggregator; keep real user ledgers, baseline history and contracts local.
 
 ---
 

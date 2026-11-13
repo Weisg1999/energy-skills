@@ -1,0 +1,11 @@
+﻿event_id,date,unit_id,product,direction,start,end,required_mw,price_cny_per_mw
+e01,2026-09-05,generation,调节型,positive,10:00,11:00,6.0,1000.0
+e02,2026-09-12,generation,局域型,positive,15:00,16:00,5.0,800.0
+e03,2026-09-20,generation,调节型,negative,02:00,03:00,1.0,300.0
+e04,2026-09-06,storage,快速型,positive,19:00,20:00,5.0,1200.0
+e05,2026-09-15,storage,快速型,positive,19:00,20:00,5.0,1200.0
+e06,2026-09-22,storage,调节型,negative,13:00,14:00,1.0,380.0
+e07,2026-09-07,load,快速型,positive,18:00,19:00,5.0,1200.0
+e08,2026-09-14,load,快速型,positive,18:00,19:00,5.0,1200.0
+e09,2026-09-21,load,快速型,positive,18:00,19:00,5.0,1200.0
+e10,2026-09-28,load,调节型,positive,10:00,11:00,5.0,1000.0

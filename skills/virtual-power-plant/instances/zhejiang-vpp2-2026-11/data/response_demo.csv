@@ -1,0 +1,11 @@
+﻿event_id,unit_id,actual_mw
+e01,generation,5.52
+e02,generation,3.75
+e03,generation,0.6
+e04,storage,4.8
+e05,storage,4.4
+e06,storage,0.9
+e07,load,2.75
+e08,load,3.0
+e09,load,3.25
+e10,load,4.5

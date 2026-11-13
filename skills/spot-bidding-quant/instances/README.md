@@ -19,15 +19,18 @@
 ```
 instances/
 ├── README.md                       # 本文件：schema、填写流程、验收
-└── shandong-storage-2026-11/       # 第一个样板：山东独立储能
-    ├── instance.json               # 唯一配置入口
-    ├── run.py                      # 运行器（配置校验 → 申报 → 差异桥 → 复盘）
-    ├── make_demo.py                # D 级合成演示数据生成器
-    ├── README.md                   # 本实例的填写表、命令、参数状态
-    ├── pitfalls.md                 # 本省易错点
-    ├── data/                       # D-1 / T+1 输入（演示为合成）
-    └── out/demo/                   # 运行产物（可删除重建）
+├── shandong-storage-2026-11/       # 山东独立储能（96 点 / 15 分钟，现货 + 容量占位 + CfD）
+├── gansu-wind-2027/                # 甘肃风电（96 点，现货 + 2027H1 机制电价 + 钓鱼法）
+└── shanxi-storage-2026-11/         # 山西独立储能（288 点 / 5 分钟，两结算 + 熔断压力）
 ```
+
+每个实例目录结构一致：`instance.json`（唯一配置入口）、`run.py`（配置校验 → 申报 → 差异桥 → 复盘）、`make_demo.py`（D 级合成数据）、`README.md`、`pitfalls.md`、`data/`、`out/demo/`。
+
+| 实例 | 主体 | 粒度 | 本包特有的建模点 |
+|---|---|---|---|
+| `shandong-storage-2026-11` | 独立新型储能 | 96 点 / 15 分钟 | 5 情景 DP 申报、CfD 覆盖、容量补偿占位（标准留空） |
+| `gansu-wind-2027` | 集中式风电场 | 96 点 / 15 分钟 | 风功率情景报量、机制电价双向差价、钓鱼法 D 级考核 |
+| `shanxi-storage-2026-11` | 独立新型储能 | 288 点 / 5 分钟 | 价差报价、日前 + 实时两结算、熔断窗口压力测试 |
 
 ## 3. `instance.json` 六个块
 
@@ -42,7 +45,7 @@ instances/
 | `data_cutoff` | 本包数据截止日 | 与 D-1 输入的发布时点一致 |
 | `grade` | 整体来源级别 | A/B/C/D；`D` 表示合成样板 |
 | `scope` | 纳入/未纳入的品种 | 写清边界，防止把占位当完整结算 |
-| `units` | 单位约定 | 功率 MW、电量 MWh、价格 CNY/MWh、时段 0–95 |
+| `units` | 单位约定 | 功率 MW、电量 MWh、价格 CNY/MWh、时段 0–95（15 分钟）或 0–287（5 分钟） |
 | `disclaimer` | 免责声明 | D 级样板必须写明不构成建议 |
 
 ### 3.2 `rules`：省级规则与来源
@@ -105,14 +108,16 @@ instances/
 
 ## 4. 输入格式
 
-### 4.1 D-1（96 点 × 5 情景）
+### 4.1 D-1（每时段 × 5 情景）
+
+山东/甘肃为 96 点，山西为 288 点；字段名与 `data_contract.d1.scenario_fields` 一致。
 
 ```csv
 date,slot,start,end,price_s1,price_s2,price_s3,price_s4,price_s5
 2026-11-18,0,00:00,00:15,283.0,300.0,330.0,360.0,390.0
 ```
 
-- 只能有一个交易日；`slot` 必须 0–95 连续无缺口；
+- 只能有一个交易日；`slot` 必须从 0 到 `points_per_day − 1` 连续无缺口；
 - 价格列名与 `scenario_fields` 一致，权重之和为 1；
 - 情景可以来自分位数（P10/P25/P50/P75/P90）、集合预报成员或人工情景，但**必须是 D-1 截止前可得的**。
 
@@ -123,7 +128,7 @@ date,slot,actual_price,actual_discharge_mw,actual_charge_mw
 2026-11-18,0,310.0,0.0,42.5
 ```
 
-- 同一交易日、96 点齐全；
+- 同一交易日、按实例的 `points_per_day` 齐全；
 - 充放电量非负，且不得超过 `power_mw`；
 - 同一时段不允许同时充放电；
 - 没有实际数据时只出申报表，不跑差异桥（`--t1` 省略）。
@@ -151,9 +156,12 @@ python skills/spot-bidding-quant/instances/shandong-storage-2026-11/run.py --dem
 # 用自己的数据
 python skills/spot-bidding-quant/instances/shandong-storage-2026-11/run.py \
   --d1 /path/to/d1.csv --t1 /path/to/t1.csv --out /path/to/out
+
+# 山西 288 点 / 5 分钟实例
+python skills/spot-bidding-quant/instances/shanxi-storage-2026-11/run.py --demo
 ```
 
-产物（默认 `out/<run>/`）：`bid_sheet.csv`（96 点申报表）、`summary.json`（配置、情景、评估摘要）、`bridge.json` / `bridge.csv`（T+1 差异桥）、`review.md`（复核表）。
+产物（默认 `out/<run>/`）：`bid_sheet.csv`（申报表，96 点或 288 点随实例）、`summary.json`（配置、情景、评估摘要）、`bridge.json` / `bridge.csv`（T+1 差异桥）、`review.md`（复核表）。
 
 ## 7. 配置校验与实际拦截
 
@@ -175,7 +183,7 @@ python skills/spot-bidding-quant/instances/shandong-storage-2026-11/run.py \
 | 项 | 标准 |
 |---|---|
 | 填写时间 | 熟悉规则的人 ~30 分钟；只需改 JSON 与 CSV |
-| 运行时间 | 5 情景 × 96 点 DP，单机 < 1 分钟 |
+| 运行时间 | 5 情景 × 96 点 DP，单机 < 1 分钟；288 点约为其 3 倍 |
 | 非法配置 | 明确报错并指出字段路径，不静默降级 |
 | 规则溯源 | 每个规则块有 `grade` + `source`，未核实项写 `status` |
 | 差异桥 | 残差 < 1e-6 CNY，科目可分 |
@@ -189,13 +197,13 @@ python skills/spot-bidding-quant/instances/shandong-storage-2026-11/run.py \
 - 不要把真实成本、合约价、计量曲线、检修计划写进 `instance.json` 后提交；
 - 实例包只记录"方法与结构"，不记录"商业项目溯源"。
 
-## 10. 新增第二个实例
+## 10. 新增实例
 
 1. 选一个**已正式运行、规则版本稳定**的省份与主体；
-2. 复制本目录的 `run.py` 与 `make_demo.py`（复核表标题与命令行描述目前按山东独立储能写死，校验与算法本身与省份无关；第二个实例复制后改标题即可）；
+2. 复制最接近的现有实例（现货电能量型复制山东，机制电价型复制甘肃，5 分钟型复制山西），保留 `run.py` 的校验骨架，改省份规则、资产与复核表标题；
 3. 新建 `instance.json`，六个块齐全，规则值全部带来源级别；
 4. 在 `pitfalls.md` 写本省易错点（限价正负号、口径混用、批次混用、草案当现行）；
 5. 跑 `--check-config` 与 `--demo`，把关键输出写进实例 `README.md`；
 6. 不改知识库计数，不改 `knowledge/`；实例是技能目录内的配置层。
 
-第二批已落地：售电侧的广东售电零售实例包见 [`skills/retail-electricity-risk/instances/`](../../retail-electricity-risk/instances/README.md)，配置块用 `portfolio` 替代 `asset`，并增加零售套餐、偏差合同与履约保障。再往后才是配置向导与匿名复盘库。
+已落地的其他主体层：售电侧见 [`skills/retail-electricity-risk/instances/`](../../retail-electricity-risk/instances/README.md)（广东 2026、江苏 2027），VPP 侧见 [`skills/virtual-power-plant/instances/`](../../virtual-power-plant/instances/README.md)（上海、浙江、江苏快响），储能投资侧见 [`skills/storage-investment-operations/instances/`](../../storage-investment-operations/instances/README.md)（安徽）。再往后才是配置向导与匿名复盘库。

@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "instance_id": "anhui-storage-2027",
+    "province": "安徽",
+    "market": "安徽省级电力市场（现货 + 独立储能容量电价）",
+    "entity_type": "电网侧独立新型储能",
+    "rule_version": "皖发改价格〔2026〕526号；安徽现货 2026-09-09 转正",
+    "data_cutoff": "2026-11-13",
+    "grade": "A/B",
+    "scope": "v1 覆盖独立储能容量电价、现货电能量与年度可用率考核；辅助服务、容量租赁、绿证与税费未纳入",
+    "currency": "CNY",
+    "units": {
+      "power": "MW",
+      "energy": "MWh",
+      "price": "CNY/MWh",
+      "capacity_price": "CNY/kW·年",
+      "time": "HH:MM",
+      "slot": "0-95（15 分钟一点）"
+    },
+    "disclaimer": "本实例包是 D 级合成样板，不对应任何真实项目、合同或计量数据；不构成投资、报价或法律建议。"
+  },
+  "rules": {
+    "spot": {
+      "status": "正式运行（2026-09-09；2026-09-07 通知，2024-12-31 起连续结算）",
+      "market_time_unit_min": 15,
+      "points_per_day": 96,
+      "declare_floor_cny_per_mwh": null,
+      "declare_cap_cny_per_mwh": null,
+      "clear_floor_cny_per_mwh": null,
+      "clear_cap_cny_per_mwh": null,
+      "limit_status": "省级现货申报/出清限价未在本库核到正式数值，运行时只校验输入价格非负或允许的负值，不套外省限价",
+      "grade": "A/B",
+      "source": "安徽现货转正通知（2026-09-07 成文、2026-09-09 生效）；华东能源监管局公开信息"
+    },
+    "capacity": {
+      "document": "皖发改价格〔2026〕526号",
+      "price_cny_per_kw_year": 165.0,
+      "denominator_hours": 6.0,
+      "duration_conversion_cny_per_kw_year": {
+        "2": 55.0,
+        "4": 110.0,
+        "6": 165.0
+      },
+      "effective_from": "2027-01-01",
+      "eligibility": "未参与配储的电网侧独立储能；以省级清单为准",
+      "assessment": {
+        "output_threshold_ratio": 0.98,
+        "strike_limit": 3,
+        "strike_window": "自然年",
+        "deduction_basis": "月度平均可用容量或出力未达计划曲线 98% 触发阶梯扣费；三次全额扣减取消资格",
+        "deduction_formula": "D 级简化：月度扣减 = 月度容量电费 × max(0, 1 − 可用率/0.98)；未在本库核到省级阶梯表，不能当作正式结算公式",
+        "grade": "A/C",
+        "source": "皖发改价格〔2026〕526号（考核原则 A/C；阶梯比例待省级原文核实）"
+      },
+      "grade": "A",
+      "source": "皖发改价格〔2026〕526号：165 元/kW·年（含税）、6 h 分母、2027-01-01 执行"
+    },
+    "participation": {
+      "requirement": "独立储能报量报价参与现货，充放电曲线按报价出清",
+      "grade": "A",
+      "source": "安徽现货配套细则；国网区域率先推动独立储能报量报价"
+    },
+    "settlement": {
+      "basis": "电能量按现货分时价格结算；容量电费单列，纳入系统运行费",
+      "cycle": "以交易中心与电网结算通知为准",
+      "grade": "A/B",
+      "source": "安徽现货结算细则；526 号容量电价条款",
+      "note": "容量电费与电能量收益分账，不能用容量电价抵扣现货购电成本"
+    }
+  },
+  "asset": {
+    "name": "示例电网侧独立储能（D 级合成，不是真实项目）",
+    "power_mw": 100.0,
+    "energy_mwh": 400.0,
+    "usable_energy_mwh": 360.0,
+    "rte": 0.88,
+    "soc_min": 0.05,
+    "soc_max": 0.95,
+    "soc_init": 0.5,
+    "degradation_cny_per_mwh_throughput": 15.0,
+    "fixed_opex_cny_per_year": 2700000.0,
+    "capex_cny_per_kwh": 450.0,
+    "project_years": 15,
+    "discount_rate": 0.08,
+    "tax_rate": 0.25,
+    "availability": 0.97,
+    "grade": "D",
+    "source": "示例占位；实际按铭牌、EPC 合同、运维台账与融资条件填写"
+  },
+  "policy": {
+    "profile_id": "anhui-capacity-balanced-v1",
+    "description": "日循环 1.0 次、年运行 330 天；充电价取情景 P20、放电价取 P80；可用率 97%；容量电价按 4h 折算 110 元/kW·年",
+    "cycles_per_day": 1.0,
+    "operating_days": 330,
+    "charge_price_quantile": 0.2,
+    "discharge_price_quantile": 0.8,
+    "duration_h": 4.0,
+    "scenario_cvar_confidence": 0.8,
+    "grade": "D",
+    "note": "风格与运行假设是投资方的选择，不是事实；改 profile_id 并保留旧文件，便于比较。"
+  },
+  "contracts": {
+    "capacity_listing": {
+      "listed": true,
+      "note": "D 级假设：项目纳入电网侧独立储能清单；实际以省级清单为准"
+    },
+    "lease": {
+      "included": false,
+      "note": "v1 不叠加容量租赁，避免与容量电价重复计算"
+    },
+    "grade": "D",
+    "source": "示例合同边界，不对应任何真实项目"
+  },
+  "data_contract": {
+    "scenarios": {
+      "file": "data/scenarios_demo.csv",
+      "required_fields": ["scenario", "charge_price", "discharge_price", "weight"],
+      "scenario_count": 5,
+      "note": "价格为元/MWh 的年度代表情景，不是某一天的实际价格；权重合计须为 1"
+    },
+    "assessment": {
+      "file": "data/assessment_demo.csv",
+      "required_fields": ["month", "availability_ratio"],
+      "note": "月度可用率 0-1；用于容量电费考核扣减，D 级合成"
+    }
+  }
+}

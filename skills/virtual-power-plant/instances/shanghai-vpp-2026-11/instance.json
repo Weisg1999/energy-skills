@@ -1,0 +1,246 @@
+{
+  "meta": {
+    "instance_id": "shanghai-vpp-2026-11",
+    "province": "上海",
+    "market": "上海市用户侧虚拟电厂（1+5 资源体系，邀约型需求响应）",
+    "entity_type": "用户侧虚拟电厂聚合商",
+    "rule_version": "沪经信运〔2025〕407号《上海市用户侧虚拟电厂建设实施方案（2025-2027年）》",
+    "data_cutoff": "2026-11-13",
+    "grade": "A/B/D",
+    "scope": "v1 覆盖五类资源的聚合能力、邀约响应申报、情景结算、T+1 响应认定与差异桥；不覆盖中长期、现货、辅助服务、容量补偿与绿证，也不含未核到的上海 VPP 结算细则",
+    "currency": "CNY",
+    "units": {
+      "power": "MW",
+      "energy": "MWh",
+      "price": "CNY/kWh",
+      "price_note": "响应激励沿用需求响应口径的元/kWh；不要与现货元/MWh 混写",
+      "load": "MW（净受电负荷；用户侧储能放电时为负）",
+      "time": "HH:MM",
+      "slot": "0-95（15 分钟一点）",
+      "conversion": "1 CNY/kWh = 1000 CNY/MWh"
+    },
+    "disclaimer": "本实例包是 D 级合成样板，不对应任何真实聚合商、用户、合同或计量数据；不构成报价、签约或投资建议。"
+  },
+  "rules": {
+    "vpp_plan": {
+      "document": "沪经信运〔2025〕407号",
+      "issued": "2025-06-19 成文，2025-06-23 发布",
+      "system": "1+5：一个虚拟电厂运管平台 + 空调负荷、充换电站、新型储能、数据中心、工业负荷五类资源",
+      "targets_10k_kw": {
+        "2025": 110.0,
+        "2026": 160.0,
+        "2027": 220.0
+      },
+      "access_targets_10k_kw": {
+        "2025": 540.0,
+        "2027": 840.0
+      },
+      "declared_targets_10k_kw": {
+        "2025": 160.0,
+        "2027": 250.0
+      },
+      "resource_targets_2027_10k_kw": {
+        "ev": {"access": 180.0, "adjustable": 50.0},
+        "building_ac": {"access": 240.0, "adjustable": 80.0},
+        "industrial": {"access": 320.0, "adjustable": 50.0},
+        "storage": {"access": 40.0, "adjustable": 25.0},
+        "data_center": {"access": 60.0, "adjustable": 15.0}
+      },
+      "call_2025_08_10k_kw": 116.27,
+      "call_2025_08_status": "2025-08 实测最大响应负荷，事件口径；不是长期可调能力",
+      "call_2026_07_10k_kw": 164.77,
+      "call_2026_07_status": "C 级行业口径，待省级原文确认",
+      "operators_2025_08": {
+        "count": 49,
+        "declared_10k_kw": 203.24,
+        "tests": 25,
+        "status": "C 级行业口径，待省级原文确认"
+      },
+      "aggregation_threshold": null,
+      "threshold_note": "407 号未设统一 MW 聚合门槛；本包不套用外省 5 MW / 1 MW 门槛",
+      "participation": "满足准入要求后可按独立主体参与中长期、现货及辅助服务市场（A）；能力测试、注册与结算细则待省级闭环",
+      "grade": "A",
+      "source": "沪经信运〔2025〕407号；上海市政府 2025-06-23 公开发布"
+    },
+    "baseline": {
+      "method": "5 日相似日平均法（D 级建模假设）",
+      "count": 5,
+      "deviation": 0.25,
+      "adjustment": 1.0,
+      "status": "上海 VPP 基线算法未在本库核到；本包沿用通用 5 日相似日法，仅用于演示，不能当作上海正式口径",
+      "grade": "D",
+      "source": "建模假设；待上海 VPP 方案配套细则核实"
+    },
+    "event": {
+      "notice": "D 级假设：日前邀约，响应窗口 1 h",
+      "duration_h": 1.0,
+      "window": "14:00-15:00",
+      "window_note": "D 级假设的夏季午后缺口时段；实际以邀约通知为准",
+      "min_response_rate": 0.5,
+      "min_response_rate_status": "D 级假设；上海 VPP 有效性认定门槛未在本库核到",
+      "overshoot_cap_ratio": 1.2,
+      "overshoot_cap_status": "D 级假设；上海超额封顶比例未在本库核到",
+      "no_double_participation": "同一时段不得重复参与其他需求响应品种（D 级合同约束）",
+      "grade": "D",
+      "source": "建模假设；邀约与认定细则待上海原文"
+    },
+    "settlement": {
+      "incentive_formula": "结算电量 × 响应激励单价；结算电量 = min(实际响应电量, 中标容量 × 时长 × 1.2)，有效性不通过则不计费（D 级假设）",
+      "assumed_bid_price_cny_per_kwh": 4.2,
+      "price_scenarios_cny_per_kwh": [3.6, 4.2, 5.0],
+      "price_status": "上海用户侧 VPP 响应补偿标准未在本库核到；4.2 元/kWh 是 D 级演示价，不得用于结算",
+      "funding": "需求响应资金渠道与分摊方式待核",
+      "cycle": "以交易中心 / 供电公司结算通知为准（未核实固定周期）",
+      "capacity_reward_included": false,
+      "grade": "D",
+      "source": "D 级演示参数；上海 VPP 结算细则待核"
+    }
+  },
+  "resources": {
+    "items": [
+      {
+        "id": "building_ac",
+        "name": "楼宇空调负荷",
+        "category": "空调负荷",
+        "max_mw": 120.0,
+        "adjustable_ratio": 0.30,
+        "availability": 0.90,
+        "usable_ratio": 1.0,
+        "customer_share": 0.60,
+        "allow_negative_load": false,
+        "load_field": "building_ac_mw",
+        "grade": "D",
+        "source": "示例占位；实际按楼宇空调装机、舒适度约束与历史响应率填写"
+      },
+      {
+        "id": "ev",
+        "name": "充换电站",
+        "category": "充换电站",
+        "max_mw": 80.0,
+        "adjustable_ratio": 0.50,
+        "availability": 0.85,
+        "usable_ratio": 1.0,
+        "customer_share": 0.65,
+        "allow_negative_load": false,
+        "load_field": "ev_mw",
+        "grade": "D",
+        "source": "示例占位；实际按充电桩功率、在线率与用户响应意愿填写"
+      },
+      {
+        "id": "storage",
+        "name": "用户侧新型储能",
+        "category": "新型储能",
+        "max_mw": 40.0,
+        "adjustable_ratio": 1.0,
+        "availability": 0.95,
+        "usable_ratio": 0.90,
+        "customer_share": 0.55,
+        "allow_negative_load": true,
+        "load_field": "storage_mw",
+        "grade": "D",
+        "source": "示例占位；实际按 PCS 铭牌、SOC 窗口与放电计划填写"
+      },
+      {
+        "id": "data_center",
+        "name": "数据中心",
+        "category": "数据中心",
+        "max_mw": 60.0,
+        "adjustable_ratio": 0.15,
+        "availability": 0.95,
+        "usable_ratio": 1.0,
+        "customer_share": 0.70,
+        "allow_negative_load": false,
+        "load_field": "data_center_mw",
+        "grade": "D",
+        "source": "示例占位；实际按 IT 负荷、备电与温控可调边界填写"
+      },
+      {
+        "id": "industrial",
+        "name": "工业可中断负荷",
+        "category": "工业负荷",
+        "max_mw": 100.0,
+        "adjustable_ratio": 0.25,
+        "availability": 0.90,
+        "usable_ratio": 1.0,
+        "customer_share": 0.70,
+        "allow_negative_load": false,
+        "load_field": "industrial_mw",
+        "grade": "D",
+        "source": "示例占位；实际按工序可中断时间、复产成本与合同条款填写"
+      }
+    ]
+  },
+  "policy": {
+    "profile_id": "shanghai-vpp-1plus5-balanced-v1",
+    "description": "按可调能力 80% 申报；响应报价 4.2 元/kWh；计划执行率 95%；同时率 85%；CVaR 置信 80%",
+    "bid_ratio": 0.8,
+    "bid_price_cny_per_kwh": 4.2,
+    "declaration_rounding_mw": 0.1,
+    "planned_delivery_ratio": 0.95,
+    "coincidence": 0.85,
+    "scenario_cvar_confidence": 0.8,
+    "review_top_resources": 3,
+    "grade": "D",
+    "note": "风格是聚合商选择，不是事实；改 profile_id 并保留旧文件，便于比较风格差异。"
+  },
+  "contracts": {
+    "shortfall": {
+      "delivery_threshold": 0.95,
+      "extra_customer_share": 0.05,
+      "basis": "合同约定，D 级假设；按资源执行率触发，额外让利给客户"
+    },
+    "opex": {
+      "variable_cny_per_mwh": 120.0,
+      "fixed_cny_per_event": 3000.0,
+      "basis": "D 级假设；覆盖值守、通信、计量核验与平台摊销"
+    },
+    "grade": "D",
+    "source": "示例合同与成本参数，不对应任何真实用户合同"
+  },
+  "data_contract": {
+    "history": {
+      "file": "data/history_demo.csv",
+      "date_field": "date",
+      "slot_field": "slot",
+      "sample_days": 6,
+      "load_fields": {
+        "building_ac": "building_ac_mw",
+        "ev": "ev_mw",
+        "storage": "storage_mw",
+        "data_center": "data_center_mw",
+        "industrial": "industrial_mw"
+      },
+      "grade": "D"
+    },
+    "event": {
+      "file": "data/event_demo.csv",
+      "scenario_field": "scenario",
+      "scenario_weights": [0.3, 0.4, 0.3],
+      "event_date_field": "event_date",
+      "start_field": "event_start",
+      "end_field": "event_end",
+      "required_mw_field": "required_mw",
+      "incentive_price_field": "incentive_price_cny_per_kwh",
+      "grade": "D"
+    },
+    "t1_loads": {
+      "file": "data/t1_loads_demo.csv",
+      "date_field": "date",
+      "slot_field": "slot",
+      "load_fields": {
+        "building_ac": "building_ac_mw",
+        "ev": "ev_mw",
+        "storage": "storage_mw",
+        "data_center": "data_center_mw",
+        "industrial": "industrial_mw"
+      },
+      "grade": "D"
+    },
+    "t1_event": {
+      "file": "data/t1_event_demo.csv",
+      "cleared_price_field": "cleared_price_cny_per_kwh",
+      "cleared_mw_field": "cleared_mw",
+      "grade": "D"
+    }
+  }
+}

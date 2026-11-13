@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>虚拟电厂专家 | energy-skills 知识库</title>
-<meta name="description" content="聚合、响应、市场参与与运营">
+<meta name="description" content="聚合、响应、市场参与与运营（含上海、浙江、江苏 VPP 实例包）">
 <link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
@@ -82,11 +82,11 @@
     <header class="doc-head">
       <div class="kicker">04 / SKILLS<i>技能</i></div>
       <h1 class="doc-title">虚拟电厂专家</h1>
-      <p class="lede">聚合、响应、市场参与与运营</p>
+      <p class="lede">聚合、响应、市场参与与运营（含上海、浙江、江苏 VPP 实例包）</p>
       <p class="hook">可执行流程与配套工具；正文与 SKILL.md 同步。</p>
       <div class="tags"><span class="tag">技能</span><span class="tag">VPP</span><span class="tag">聚合</span><span class="tag">商业模式</span></div>
-      <div class="doc-meta"><span>约 30.3k 字</span><span>阅读约 55 分钟</span><span>17 节</span><span>数据截止 2026-11-01</span></div>
-      <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-virtual-power-plant.txt" download="虚拟电厂专家-SKILL.txt">下载 TXT</a><span>完整技能文档，约 33 KB，含 frontmatter</span></p>
+      <div class="doc-meta"><span>约 30.8k 字</span><span>阅读约 55 分钟</span><span>17 节</span><span>数据截止 2026-11-01</span></div>
+      <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-virtual-power-plant.txt" download="虚拟电厂专家-SKILL.txt">下载 TXT</a><span>完整技能文档，约 34 KB，含 frontmatter</span></p>
     </header>
 
     <details class="toc-mobile">
@@ -236,12 +236,16 @@
 <p>运行：</p>
 <pre tabindex="0"><code>python skills/virtual-power-plant/tools/selftest.py</code></pre>
 <p>自测通过代表正文算例与代码一致；基线、补贴或成本参数变化时，先改调用参数或 <code>cbl.py</code>，再同步正文数字。</p>
-<h3 id="s51">13.1 实例包：江苏负荷快速响应聚合商</h3>
+<h3 id="s51">13.1 实例包：上海、浙江、江苏三个邀约型 VPP 切片</h3>
 <p>引擎层回答&quot;可调能力怎么折算、基线怎么算、响应怎么认定、收益怎么估&quot;；实例层回答&quot;<strong>这个省、这批资源、这套合同、这个报价风格，下一次邀约报多少、中了怎么交付、T+1 差在哪</strong>&quot;。实例是配置层，不改变知识库的 101 模块 / 13 分区 / 9 技能计数。</p>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>文件</th><th>作用</th></tr></thead><tbody><tr><td><code>instances/README.md</code></td><td>VPP 实例 schema：六个块（<code>resources</code> 替代 <code>asset</code>）、96 点格式、30 分钟填写流程、校验与验收</td></tr><tr><td><code>instances/jiangsu-fast-response-2026-11/instance.json</code></td><td>江苏配置：直控/自控两类资源、15/10 元/kWh 申报上限、150%/120% 超额封顶、客户分成与未达标补偿</td></tr><tr><td><code>instances/jiangsu-fast-response-2026-11/run.py</code></td><td>配置校验 → 可调能力与申报 → 情景出清 → T+1 响应认定 → 11 科目差异桥 → 复核表</td></tr><tr><td><code>instances/jiangsu-fast-response-2026-11/make_demo.py</code></td><td>D 级合成历史基线、邀约情景与 T+1 计量（96 点）</td></tr><tr><td><code>instances/jiangsu-fast-response-2026-11/pitfalls.md</code></td><td>江苏快响易错点与邀约前 60 秒清单</td></tr></tbody></table></div>
-<pre tabindex="0"><code>python skills/virtual-power-plant/instances/jiangsu-fast-response-2026-11/run.py --check-config
-python skills/virtual-power-plant/instances/jiangsu-fast-response-2026-11/run.py --demo</code></pre>
-<p>D 级合成基准（2026-11-13）：可调能力 直控 30.66 MW / 自控 10.80 MW，申报 26.0 / 8.6 MW；计划净收益 45,881 CNY，情景期望 48,401、CVaR −2,000；T+1 实际 53,303，差异 +7,423，差异桥 11 个科目残差 &lt; 1e-6 CNY；直控实际响应 24.20 MW，自控按 120% 封顶后计量 10.32 MW。数字只用于验证流程，不对应任何真实用户或聚合商；真实用户台账、基线历史与合同放本地。</p>
+<p>三个包共用同一副骨架：<code>instance.json</code> 六块（<code>resources</code> 替代 <code>asset</code>）、<code>run.py</code>、<code>make_demo.py</code>、<code>pitfalls.md</code>、<code>data/</code>、<code>out/demo/</code>；差别在规则版本、资源口径与结算科目。</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>实例包</th><th>规则版本</th><th>主体与资源</th><th>运行链</th><th>风格（指纹）</th></tr></thead><tbody><tr><td><code>shanghai-vpp-2026-11/</code></td><td>沪经信运〔2025〕407号&quot;1+5&quot;</td><td>用户侧聚合商，五类资源</td><td>5 日基线 → 组合能力 → 情景申报 → T+1 认定 → 5 科目差异桥</td><td><code>shanghai-vpp-1plus5-balanced-v1</code>（<code>6ac0d5e814ad</code>）</td></tr><tr><td><code>zhejiang-vpp2-2026-11/</code></td><td>公告〔2026〕第7号（2026-09-23）</td><td>三类聚合单元：发电 / 储能 / 负荷</td><td>门槛校验 → 逐次调用结算 → 考核封顶 → 快速型准备费 → 月度评级</td><td><code>zhejiang-vpp2-balanced-v1</code>（<code>5ceaa246ace4</code>）</td></tr><tr><td><code>jiangsu-fast-response-2026-11/</code></td><td>苏发改规发〔2026〕1号</td><td>直控 / 自控两类资源的负荷聚合商</td><td>可调能力与申报 → 情景出清 → T+1 响应认定 → 11 科目差异桥</td><td><code>jiangsu-fast-response-balanced-v1</code>（<code>c46bb8a332bf</code>）</td></tr></tbody></table></div>
+<pre tabindex="0"><code>python skills/virtual-power-plant/instances/&lt;pack&gt;/run.py --check-config
+python skills/virtual-power-plant/instances/&lt;pack&gt;/run.py --demo</code></pre>
+<p><code>&lt;pack&gt;</code> 取上表三个目录名之一；<code>pitfalls.md</code> 给出本省易错点，<code>instances/README.md</code> 给出六块 schema 与填写流程。</p>
+<p>D 级合成基准：</p>
+<ul><li><strong>上海</strong>（2026-08-14 14:00–15:00）：理论可调 150.0 MW → 计入可用率 135.45 MW → 同时率 85% 后 115.13 MW，按 80% 申报 <strong>92.1 MW</strong>（占 2027 年 220 万 kW 目标的 4.19%）；参考情景中标 80.0 MW / 计划 76.0 MWh，聚合商边际 <strong>108,714 元</strong>，情景期望 88,057，CVaR80 0。</li><li><strong>浙江</strong>（2026-09 月度）：10 次调用，毛利 35,382 元、考核 3,660 元、响应净额 31,722 元、快速型准备费 10,200 元、平台与计量成本 7,000 元，<strong>当月净额 34,922 元</strong>；评级 发电 B 87.57 / 储能 A 94.27 / 负荷 C 77.25——负荷连续三次快速型无效，响应分 67.50 且准备费归零，A/B/C 三档是演示目的。</li><li><strong>江苏</strong>（2026-11-13）：可调能力 直控 30.66 MW / 自控 10.80 MW，申报 26.0 / 8.6 MW；计划净收益 45,881 元，情景期望 48,401、CVaR −2,000；T+1 实际 53,303，差异 +7,423，差异桥 11 个科目残差 &lt; 1e-6 元；直控实际响应 24.20 MW，自控按 120% 封顶后计量 10.32 MW。</li></ul>
+<p>数字只用于验证流程，不对应任何真实用户或聚合商；真实用户台账、基线历史与合同放本地。</p>
 <hr>
 <h2 id="s52">14. 术语表（中英对照精选）</h2>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>术语</th><th>英文</th><th>一句话解释</th></tr></thead><tbody><tr><td>虚拟电厂</td><td>VPP (Virtual Power Plant)</td><td>聚合分散资源作整体参与系统运行与市场的智慧能源系统</td></tr><tr><td>需求侧管理</td><td>DSM (Demand Side Management)</td><td>把需求侧节约视为资源、最小成本综合规划</td></tr><tr><td>需求响应</td><td>DR (Demand Response)</td><td>用户按价格/激励信号自愿调整用电</td></tr><tr><td>资源聚合商</td><td>Aggregator</td><td>聚合 DER 代其参与调度与市场的核心主体</td></tr><tr><td>商业型/技术型 VPP</td><td>CVPP / TVPP</td><td>面向市场收益最大化 / 面向系统运行服务</td></tr><tr><td>削减服务提供商</td><td>CSP (Curtailment Service Provider)</td><td>PJM 体系聚合&quot;负瓦&quot;参与批发 DR 的第三方</td></tr><tr><td>负荷服务实体</td><td>LSE (Load Serving Entity)</td><td>集中负荷资源参与 DR 并保供的主体</td></tr><tr><td>计划协调机构</td><td>SC (Scheduling Coordinator)</td><td>加州体系的事前供求协调机构</td></tr><tr><td>基线负荷</td><td>CBL (Customer Baseline Load)</td><td>&quot;不响应反事实&quot;负荷，DR 结算基准</td></tr><tr><td>负瓦</td><td>Negawatt</td><td>负荷削减量当作&quot;虚拟电力&quot;交易</td></tr><tr><td>逆向潮流</td><td>Reverse Power Flow</td><td>资源向电网反向送电；VPP 可产生、DR 不可</td></tr><tr><td>正电厂/负电厂</td><td>Positive/Negative Plant</td><td>VPP 调峰供电 / 填谷消纳的双重身份</td></tr><tr><td>有序充电</td><td>Smart/Ordered Charging</td><td>近中期电动车参与调节的主要形式（区别于 V2G）</td></tr><tr><td>车网互动</td><td>V2G (Vehicle-to-Grid)</td><td>电动车反向放电参与调节</td></tr><tr><td>泛在电力物联网</td><td>UEIOT</td><td>冀北泛电平台的技术底座，万物互联+智慧聚合</td></tr><tr><td>边缘计算</td><td>Edge Computing</td><td>就地决策的分布式智能代理（VPP&quot;边-云&quot;协同）</td></tr><tr><td>智能合约</td><td>Smart Contract</td><td>条件达成自动执行的链上程序（DR 自动签约结算）</td></tr><tr><td>高可靠低时延通信</td><td>uRLLC</td><td>5G 场景之一，时延 1ms，VPP 关键使能</td></tr><tr><td>联盟链</td><td>Consortium Blockchain</td><td>多机构共管、需身份验证——VPP 场景首选链型</td></tr><tr><td>分布式一致性算法</td><td>PBFT/Paxos/Raft</td><td>VPP 区块链首选共识（安全可靠与容量优先）</td></tr><tr><td>产消者</td><td>Prosumer</td><td>既用电又供电的用户（VPP 时代的用户形态）</td></tr><tr><td>能效电厂</td><td>EEP (Energy Efficiency Plant)</td><td>把节电量视作等效电厂（与 VPP 辨析用）</td></tr></tbody></table></div>
@@ -355,7 +359,7 @@ python skills/virtual-power-plant/instances/jiangsu-fast-response-2026-11/run.py
             <li class="lv3"><a href="#s48">11.2 运营实务要点</a></li>
             <li class="lv2"><a href="#s49">12. 关键公式与数字速查</a></li>
             <li class="lv2"><a href="#s50">13. 代码映射与实例层</a></li>
-            <li class="lv3"><a href="#s51">13.1 实例包：江苏负荷快速响应聚合商</a></li>
+            <li class="lv3"><a href="#s51">13.1 实例包：上海、浙江、江苏三个邀约型 VPP 切片</a></li>
             <li class="lv2"><a href="#s52">14. 术语表（中英对照精选）</a></li>
             <li class="lv2"><a href="#s53">15. 专家问答推理手册</a></li>
             <li class="lv3"><a href="#s54">15.1 问题分型与答题路径</a></li>

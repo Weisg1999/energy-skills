@@ -625,17 +625,25 @@ For engineering delivery (rule-version registry, data contracts, limits, reconci
 
 ### 13.6 Instance packs: one province, one entity
 
-The engine layer gives methods and worked examples; the instance layer answers what to bid tomorrow. The first vertical slice is a Shandong standalone storage asset (`instances/shandong-storage-2026-11/`):
+The engine layer gives methods and worked examples; the instance layer answers what to bid tomorrow. Three vertical slices are available:
+
+| Instance | Entity | Granularity | Pack-specific modelling |
+|---|---|---|---|
+| `instances/shandong-storage-2026-11/` | Shandong standalone storage | 96 points / 15 min | five-scenario DP quantile bid, CfD, capacity placeholder |
+| `instances/gansu-wind-2027/` | Gansu wind farm | 96 points / 15 min | wind-scenario quantity bid, two-way mechanism spread, D-grade fishing assessment |
+| `instances/shanxi-storage-2026-11/` | Shanxi standalone storage | 288 points / 5 min | spread bid, day-ahead + real-time two-settlement, fuse-window stress test |
+
+All three share one skeleton:
 
 - `instance.json` has six blocks: `meta`, `rules`, `asset`, `policy`, `contracts`, `data_contract`; every rule block must carry a source grade, or validation refuses to run;
-- one command: `python skills/spot-bidding-quant/instances/shandong-storage-2026-11/run.py --demo`;
-- outputs: D-1 bid sheet, scenario expected margin and CVaR10, T+1 settlement bridge, review sheet;
+- one command: `python skills/spot-bidding-quant/instances/<pack>/run.py --demo`;
+- outputs: bid sheet, scenario expected revenue and CVaR, T+1 settlement bridge, review sheet;
 - asset parameters and the policy profile are separate; the SHA-1 fingerprint of `policy` is written into the review, so style changes are versioned rather than mixed into execution errors;
 - dispatch reuses `ems-dispatch/tools/dispatch.py`; this skill does not maintain a second optimiser;
-- v1 covers spot energy plus a capacity-compensation placeholder and a CfD overlay; ancillary services, medium-term curve decomposition and leasing are out of scope;
-- demo data is synthetic grade D; the capacity compensation standard and supply-demand coefficient are pending and are not estimated when blank.
+- each pack covers spot energy plus only the extras stated in its scope; ancillary services, medium-term curve decomposition and leasing are out of scope;
+- demo data is synthetic grade D; unverified capacity payments, fuse recalculation and mechanism reference prices are not estimated.
 
-See `instances/README.md` for the schema and fill-in workflow, and the pack's `pitfalls.md` for Shandong-specific errors.
+See `instances/README.md` for the schema and fill-in workflow, and each pack's `pitfalls.md` for province-specific errors.
 
 ---
 
@@ -666,6 +674,9 @@ See `instances/README.md` for the schema and fill-in workflow, and the pack's `p
 | Settlement bridge | ΔQ_da·P_da + (Q_da0 − Q_c)·ΔP_da + (ΔQ_a − ΔQ_da)·P_rt + (Q_a0 − Q_da0)·ΔP_rt | `desk.settlement_bridge` |
 | Storage bridge | discharge/charge quantity, price and cross terms + degradation/contract/capacity/penalty/allocation | `desk.storage_bridge` |
 | Scenario-quantile bid | five DP scenarios → quantile quantities and prices → bound clipping | `instances/shandong-storage-2026-11/run.py` |
+| Mechanism spread | ratio × (P_mech − capture) × Q | `instances/gansu-wind-2027/run.py` |
+| Day-ahead + real-time settlement | plan×DA + (actual−plan)×RT | `instances/shanxi-storage-2026-11/run.py` |
+| Fuse stress | window net × fuse price | `instances/shanxi-storage-2026-11/run.py` |
 | Implicit loss | (available − awarded)·max(0, P_da − c) + deviation + (Q_c − Q_a)(P_da − P_c) | `desk.implicit_cost` |
 | Dispute packet | buckets above threshold + evidence list | `desk.dispute_packet` |
 | Public-data check | fields, duplicates, 96-slot gaps, ordering | `desk.validate_public_dataset` |

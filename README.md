@@ -54,15 +54,15 @@ node scripts/check-maintenance.mjs --check
 | 技能 | 回答的核心问题 |
 |---|---|
 | **[电力交易专家](skills/electricity-trading-expert/SKILL.md)** · [EN](skills/electricity-trading-expert/SKILL_EN.md) | 现货出清与定价、中长期与金融、辅助服务与容量、结算计量、省别实践、新能源入市、燃料与气电成本、碳市场、11 个海外市场、交易策略与风控 |
-| **[现货报价量化专家](skills/spot-bidding-quant/SKILL.md)** · [EN](skills/spot-bidding-quant/SKILL_EN.md) | 负荷与电价预测、残差校正、量价曲线、购电组合、竞价仿真、滚动回测与 T+1 归因；盘面层含决策时钟、情景/CVaR 前沿、结算差异桥与公开数据回测协议；含山东独立储能实例包（一省一主体配置、D-1 申报表、T+1 差异桥） |
-| **[虚拟电厂专家](skills/virtual-power-plant/SKILL.md)** · [EN](skills/virtual-power-plant/SKILL_EN.md) | 资源聚合、三阶段演进、市场参与、商业模式、控制优化、政策与国际对标；含江苏负荷快速响应实例包（一省一聚合商、D-1 申报、情景出清、T+1 响应认定与差异桥） |
+| **[现货报价量化专家](skills/spot-bidding-quant/SKILL.md)** · [EN](skills/spot-bidding-quant/SKILL_EN.md) | 负荷与电价预测、残差校正、量价曲线、购电组合、竞价仿真、滚动回测与 T+1 归因；盘面层含决策时钟、情景/CVaR 前沿、结算差异桥与公开数据回测协议；含山东/山西独立储能与甘肃风电三个实例包（配置、申报、两结算与差异桥） |
+| **[虚拟电厂专家](skills/virtual-power-plant/SKILL.md)** · [EN](skills/virtual-power-plant/SKILL_EN.md) | 资源聚合、三阶段演进、市场参与、商业模式、控制优化、政策与国际对标；含上海、浙江与江苏快速响应三个实例包（聚合配置、申报、情景出清与差异桥） |
 | **[售电零售与风险专家](skills/retail-electricity-risk/SKILL.md)** · [EN](skills/retail-electricity-risk/SKILL_EN.md) | 套餐全成本定价、客户组合、购电覆盖、偏差考核、批零倒挂、履约保函与退出；含广东 2026 与江苏 2027 两个售电零售实例包（一省一主体配置、D-1 定价与购电表、T+1 差异桥） |
 
 ### 项目与资产
 
 | 技能 | 回答的核心问题 |
 |---|---|
-| **[储能投资与运营专家](skills/storage-investment-operations/SKILL.md)** · [EN](skills/storage-investment-operations/SKILL_EN.md) | 六种项目形态、五类收益堆叠、LCOS/IRR/NPV/DSCR、退化与增容、考核扣减、商业模式与压测 |
+| **[储能投资与运营专家](skills/storage-investment-operations/SKILL.md)** · [EN](skills/storage-investment-operations/SKILL_EN.md) | 六种项目形态、五类收益堆叠、LCOS/IRR/NPV/DSCR、退化与增容、考核扣减、商业模式与压测；含安徽独立储能容量电价实例包 |
 | **[新能源项目开发与并网专家](skills/renewable-project-development/SKILL.md)** · [EN](skills/renewable-project-development/SKILL_EN.md) | 资源评估、136 号文机制电价、LCOE 与税后现金流、海上风电 CfD、并网审批、限电消纳、省别竞价 |
 | **[碳资产管理专家](skills/carbon-asset-expert/SKILL.md)** · [EN](skills/carbon-asset-expert/SKILL_EN.md) | 履约日历、配额盈缺、CEA/CCER 采购与开发、碳金融、CBAM、产品碳足迹、碳中和声明、DPP |
 

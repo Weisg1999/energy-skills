@@ -1,6 +1,6 @@
 # 虚拟电厂实例包：一省一聚合商的可配置响应切片
 
-> 目录定位：`skills/virtual-power-plant/instances/` 是**邀约型 VPP 的样板实例层**，不是知识模块，不改变知识库的 101 模块 / 13 分区计数。每个子目录是"一省 + 一个聚合商 + 一个规则版本"的配置包，聚合商的交易人员只改 JSON 与 CSV，不改代码。
+> 目录定位：`skills/virtual-power-plant/instances/` 是**邀约型 VPP 的样板实例层**，不是知识模块，不改变知识库的 101 模块 / 13 分区计数。每个子目录是"一省 + 一个聚合商 + 一个规则版本"的配置包，聚合商的交易人员只改 JSON 与 CSV，不改代码。当前三个切片：上海 407号"1+5"、浙江 VPP 2.0（公告〔2026〕第7号）、江苏负荷快速响应（苏发改规发〔2026〕1号）。
 
 ## 1. 为什么要有这一层
 
@@ -21,15 +21,32 @@
 ```
 instances/
 ├── README.md                               # 本文件：schema、填写流程、验收
-└── jiangsu-fast-response-2026-11/          # 第一个样板：江苏负荷快速响应聚合商
+├── shanghai-vpp-2026-11/                   # 上海用户侧 VPP（沪经信运〔2025〕407号"1+5"）
+├── zhejiang-vpp2-2026-11/                  # 浙江 VPP 2.0（公告〔2026〕第7号，2026-09-23）
+└── jiangsu-fast-response-2026-11/          # 江苏负荷快速响应聚合商（苏发改规发〔2026〕1号）
+```
+
+三个包目录结构相同，每个包含：
+
+```
     ├── instance.json                       # 唯一配置入口
-    ├── run.py                              # 运行器（校验 → 申报 → 情景出清 → T+1 认定 → 差异桥 → 复核）
-    ├── make_demo.py                        # D 级合成历史/邀约/T+1 数据生成器
+    ├── run.py                              # 运行器（校验 → 申报/结算 → T+1 复盘 → 复核）
+    ├── make_demo.py                        # D 级合成数据生成器
     ├── README.md                           # 本实例的命令、产物、基准数字、参数状态
-    ├── pitfalls.md                         # 江苏快响易错点
-    ├── data/                               # 历史基线、邀约情景、T+1 计量（演示为合成）
+    ├── pitfalls.md                         # 本省易错点
+    ├── data/                               # 历史基线/邀约/计量（演示为合成）
     └── out/demo/                           # 运行产物（可删除重建）
 ```
+
+### 2.1 三个切片的分工
+
+| 包 | 主体与资源 | 规则主线 | 运行链 | 结算重点 |
+|---|---|---|---|---|
+| `shanghai-vpp-2026-11/` | 用户侧聚合商，五类资源 | 407号"1+5"目标 110/160/220 万 kW；2025-08 调用 116.27 万 kW | 5 日基线 → 组合能力 → 情景申报 → T+1 认定 → 5 科目差异桥 | 响应量认定、超额封顶、客户分成、未达标让利 |
+| `zhejiang-vpp2-2026-11/` | 三类聚合单元：发电 / 储能 / 负荷 | 公告〔2026〕第7号：单元 ≥5 MW/≥1 h；正调节 800/1000/1200、负调节 300/350/380 元/MW | 门槛校验 → 逐次调用结算 → 考核封顶 → 快速型准备费 → 月度评级 | 有效响应 70%、考核不超过补偿 1.2 倍、评级 3:7、快速型无效 ≥3 次准备费归零 |
+| `jiangsu-fast-response-2026-11/` | 直控 / 自控两类资源的负荷聚合商 | 苏发改规发〔2026〕1号：直控上限 15 元/kWh、超额 150%；自控 10 元/kWh、超额 120% | 可调能力与申报 → 情景出清 → T+1 响应认定 → 11 科目差异桥 | 0.5 h 调整、120%/150% 封顶、客户分成、未达标补偿 |
+
+三包都用 96 点 / 15 分钟；字段名与规则块不同，runner 只校验本包声明的块（上海 `vpp_plan`/`baseline`/`event`/`settlement`，浙江 `vpp2`/`baseline`/`spot`/`settlement`，江苏 `fast_response`/`baseline`/`spot`/`settlement`）。
 
 ## 3. `instance.json` 六个块
 
@@ -51,7 +68,7 @@ instances/
 
 ### 3.2 `rules`：省级规则与来源
 
-每个规则子块都必须带 `grade` 和 `source`，缺一个就拒绝运行。当前 runner 识别四块：
+每个规则子块都必须带 `grade` 和 `source`，缺一个就拒绝运行。各包块名不同，下表以江苏快响为例（上海、浙江的字段见各自 `instance.json` 与实例 README）：
 
 | 子块 | 用途 | 关键字段 |
 |---|---|---|
@@ -119,6 +136,8 @@ instances/
 
 ### 3.6 `data_contract`：输入契约
 
+下表是江苏/上海包的基线+邀约+T+1 形态；浙江包改用 `events`（逐次调用）与 `response`（各单元实际响应）两份输入，字段见其 `data_contract` 与实例 README。
+
 | 子块 | 文件 | 内容 |
 |---|---|---|
 | `history` | `data/history_demo.csv` | 近 5 个工作日（或 3 个非工作日）× 96 点 × 各资源负荷，用于基线 |
@@ -129,6 +148,8 @@ instances/
 路径相对实例目录；真实数据用绝对路径或仓库外目录。
 
 ## 4. 输入格式
+
+以下三小节是江苏/上海包的基线+情景+T+1 格式；浙江包的两份输入（`events` / `response`）见该包 README 第 1–2 节。
 
 ### 4.1 历史基线（6 日 × 96 点）
 
@@ -176,10 +197,10 @@ self,2026-07-15,19:00,19:30,9.6,8.6
 
 1. **复制实例目录**：`cp -r instances/jiangsu-fast-response-2026-11 instances/<省>-<聚合商>-<年月>`；
 2. **改 `meta`**：实例名、省份、主体类型、规则版本、数据截止日与口径边界；
-3. **核对 `rules`**：只填当前生效值，逐块写 `grade` 与 `source`；快响基线算法未核实的，把状态写进 `baseline.status`；
+3. **核对 `rules`**：只填当前生效值，逐块写 `grade` 与 `source`；基线算法未核实的，把状态写进 `baseline.status`；
 4. **填 `resources`**：按用户台账填额定、可调比例、可用率、分成与计量列名；同一时段已承诺其他市场的资源标 `other_market_commitment: true`，不计入能力；
 5. **填 `contracts`**：未达标补偿门槛、额外分成、可变/固定运营成本；
-6. **选 `policy`**：先沿用 `jiangsu-fast-response-balanced-v1`，跑通后再调申报比例与报价；
+6. **选 `policy`**：先沿用所复制包的 `profile_id`，跑通后再调申报比例与报价；
 7. **替换 CSV**：按第 4 节格式导出历史基线、邀约情景、T+1 实际；
 8. **跑 `--check-config`**：来源缺失、单位错误、报价超上限、申报超能力、资源重名会直接报错；
 9. **跑一次 `--demo`**：看申报表、情景出清、T+1 响应认定与差异桥残差。
@@ -187,20 +208,20 @@ self,2026-07-15,19:00,19:30,9.6,8.6
 ## 6. 运行与产物
 
 ```bash
-# 只校验配置，打印来源表与警告
-python skills/virtual-power-plant/instances/jiangsu-fast-response-2026-11/run.py --check-config
+# 三个包各自校验与演示（<pack> = shanghai-vpp-2026-11 / zhejiang-vpp2-2026-11 / jiangsu-fast-response-2026-11）
+python skills/virtual-power-plant/instances/<pack>/run.py --check-config
+python skills/virtual-power-plant/instances/<pack>/run.py --demo
 
-# 用自带 D 级合成数据跑全流程
-python skills/virtual-power-plant/instances/jiangsu-fast-response-2026-11/run.py --demo
-
-# 用自己的数据（路径指向仓库外）
+# 用自己的数据（以江苏包为例，路径指向仓库外）
 python skills/virtual-power-plant/instances/jiangsu-fast-response-2026-11/run.py \
   --history /path/to/history.csv --event /path/to/event.csv \
   --t1-loads /path/to/t1_loads.csv --t1-event /path/to/t1_event.csv \
   --out /path/to/out
 ```
 
-产物（默认 `out/demo/`）：
+`--history/--event/--t1-loads/--t1-event` 是上海与江苏包的输入；浙江包用 `--events` 与 `--response`，详见该包 README。
+
+产物（默认 `out/demo/`，下表为江苏包；上海包为 `baseline.csv`/`bid.csv`/`scenarios.csv`/`t1_bridge.csv`，浙江包为 `unit_capability.csv`/`events.csv`/`rating.csv`）：
 
 | 文件 | 内容 |
 |---|---|
@@ -241,7 +262,7 @@ python skills/virtual-power-plant/instances/jiangsu-fast-response-2026-11/run.py
 | 运行时间 | 3 情景 × 2 控制类型，单机 < 1 分钟 |
 | 非法配置 | 明确报错并指出字段路径，不静默降级 |
 | 规则溯源 | 每个规则块有 `grade` + `source`，未核实项写 `status` |
-| 差异桥 | 残差 < 1e-6 CNY，6 个科目可归因 |
+| 差异桥 | 残差 < 1e-6 CNY；上海 5 科目、江苏 11 科目可归因；浙江包不做差异桥，改为逐次结算与月度评级 |
 | 响应认定 | 基线、申报、实际三层口径分列；超额封顶可复算 |
 | 数据本地 | 真实用户、合同、计量数据不上传，仓库只存结构与 D 级样例 |
 | 验收口径 | 不看样本内收益；看流程是否跑通、口径是否可复现、差异是否可归因 |
@@ -253,12 +274,12 @@ python skills/virtual-power-plant/instances/jiangsu-fast-response-2026-11/run.py
 - 不要把真实用户名称、可中断设备清单、基线曲线、分成合同、违约条款写进 `instance.json` 后提交；
 - 实例包只记录"方法与结构"，不记录"商业项目溯源"。
 
-## 10. 新增第二个实例
+## 10. 新增实例
 
 1. 选一个**已正式运行、规则版本稳定**的省份与聚合主体；
-2. 复制本目录的 `run.py` 与 `make_demo.py`，改复核表标题与命令行描述；
+2. 复制**结构最接近**的实例目录（基线+邀约+T+1 型复制上海或江苏包，逐次调用+评级型复制浙江包），改 `run.py`、`make_demo.py` 与复核表标题；
 3. 新建 `instance.json`，六个块齐全，规则值全部带来源级别；
-4. 在 `pitfalls.md` 写本省易错点（上限单位、响应时间与事件时长、基线算法、封顶比例、重复参与）；
+4. 在 `pitfalls.md` 写本省易错点（上限单位、响应时间与事件时长、基线算法、封顶比例、重复参与、评级与准备费）；
 5. 跑 `--check-config` 与 `--demo`，把关键输出写进实例 `README.md`；
 6. 不改知识库计数，不改 `knowledge/`；实例是技能目录内的配置层。
 

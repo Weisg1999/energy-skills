@@ -457,6 +457,130 @@ def main():
         ):
             check((Path(tmp) / name).exists(), f"E writes {name}")
 
+    # L. 上海用户侧 VPP 实例（沪经信运〔2025〕407号，D 级合成）
+    shanghai_dir = Path(__file__).resolve().parents[1] / "instances" / "shanghai-vpp-2026-11"
+    spec = importlib.util.spec_from_file_location("shanghai_vpp_instance", shanghai_dir / "run.py")
+    shanghai = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(shanghai)
+    shanghai_path = shanghai_dir / "instance.json"
+    shanghai_config = json.loads(shanghai_path.read_text(encoding="utf-8"))
+    shanghai_report = shanghai.validate_instance(shanghai_config)
+    close("L event start slot", shanghai_report["predicates"]["start_slot"], 56, 0)
+    close("L event end slot", shanghai_report["predicates"]["end_slot"], 60, 0)
+    close("L bid price (CNY/kWh)", shanghai_config["policy"]["bid_price_cny_per_kwh"], 4.2, 1e-9)
+
+    bid = shanghai.build_bid(shanghai_config, shanghai_report)
+    close("L theoretical power (MW)", bid["theoretical_power_mw"], 150.0, 1e-9)
+    close("L available power (MW)", bid["available_power_mw"], 135.45, 1e-9)
+    close("L declared power (MW)", bid["declared_power_mw"], 115.1325, 1e-9)
+    close("L bid (MW)", bid["bid_mw"], 92.1, 1e-9)
+    close("L 2027 target (10k kW)", bid["target_2027_10k_kw"], 220.0, 1e-9)
+
+    broken = json.loads(json.dumps(shanghai_config))
+    broken["rules"]["vpp_plan"]["targets_10k_kw"]["2027"] = 221.0
+    raises(lambda: shanghai.validate_instance(broken), "L reject wrong 2027 target")
+
+    broken = json.loads(json.dumps(shanghai_config))
+    broken["rules"]["vpp_plan"]["aggregation_threshold"] = 5.0
+    raises(lambda: shanghai.validate_instance(broken), "L reject invented MW threshold")
+
+    broken = json.loads(json.dumps(shanghai_config))
+    broken["rules"]["settlement"]["assumed_bid_price_cny_per_kwh"] = 3.8
+    raises(lambda: shanghai.validate_instance(broken), "L reject price set outside 3.6/4.2/5.0")
+
+    with tempfile.TemporaryDirectory() as tmp:
+        result = shanghai.run_instance(
+            shanghai_path,
+            shanghai_dir / "data" / "history_demo.csv",
+            shanghai_dir / "data" / "event_demo.csv",
+            shanghai_dir / "data" / "t1_loads_demo.csv",
+            shanghai_dir / "data" / "t1_event_demo.csv",
+            Path(tmp),
+        )
+        summary = result["summary"]
+        close("L expected margin (CNY)", summary["event"]["expected_margin_cny"], 88_057.06201550388, 1e-6)
+        close("L CVaR80 (CNY)", summary["event"]["cvar_cny"], 0.0, 1e-9)
+        close("L plan margin (CNY)", summary["bridge"]["plan_margin_cny"], 108_714.10852713177, 1e-6)
+        close("L actual response (MWh)", summary["actual"]["actual_mwh"], 71.48480500000001, 1e-9)
+        close("L response rate", summary["actual"]["response_rate"], 0.9405895394736843, 1e-12)
+        check(summary["actual"]["valid"], "L 94.06% passes the D-level validity floor")
+        check(summary["actual"]["shortfall"], "L 94.06% misses the 95% contract threshold")
+        close("L customer share", summary["actual"]["customer_share"], 0.6714470284237727, 1e-12)
+        close("L actual margin (CNY)", summary["actual"]["margin_cny"], 87_065.31284224804, 1e-6)
+        close("L bridge delta (CNY)", summary["bridge"]["delta_cny"], -21_648.795684883735, 1e-6)
+        check(abs(summary["bridge"]["residual_cny"]) < 1e-6, "L bridge identity closes")
+        check(summary["policy_fingerprint"] == "6ac0d5e814ad", "L policy fingerprint is stable")
+        for name in (
+            "baseline.csv",
+            "bid.csv",
+            "scenarios.csv",
+            "t1_bridge.csv",
+            "summary.json",
+            "review.md",
+        ):
+            check((Path(tmp) / name).exists(), f"L writes {name}")
+
+    # M. 浙江 VPP 2.0 实例（公告〔2026〕第7号，D 级合成）
+    zhejiang_dir = Path(__file__).resolve().parents[1] / "instances" / "zhejiang-vpp2-2026-11"
+    spec = importlib.util.spec_from_file_location("zhejiang_vpp2_instance", zhejiang_dir / "run.py")
+    zhejiang = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(zhejiang)
+    zhejiang_path = zhejiang_dir / "instance.json"
+    zhejiang_config = json.loads(zhejiang_path.read_text(encoding="utf-8"))
+    zhejiang_report = zhejiang.validate_instance(zhejiang_config)
+    close("M generation positive (MW)", zhejiang_report["capabilities"]["generation"]["positive_mw"], 7.20, 1e-9)
+    close("M storage positive (MW)", zhejiang_report["capabilities"]["storage"]["positive_mw"], 5.70, 1e-9)
+    close("M load positive (MW)", zhejiang_report["capabilities"]["load"]["positive_mw"], 6.12, 1e-9)
+    close("M generation negative (MW)", zhejiang_report["capabilities"]["generation"]["negative_mw"], 1.44, 1e-9)
+    close("M storage negative (MW)", zhejiang_report["capabilities"]["storage"]["negative_mw"], 5.70, 1e-9)
+    close("M load negative (MW)", zhejiang_report["capabilities"]["load"]["negative_mw"], 1.80, 1e-9)
+
+    broken = json.loads(json.dumps(zhejiang_config))
+    broken["rules"]["vpp2"]["unit_types"]["load"]["min_mw"] = 4.0
+    raises(lambda: zhejiang.validate_instance(broken), "M reject sub-5 MW unit threshold")
+
+    broken = json.loads(json.dumps(zhejiang_config))
+    broken["rules"]["vpp2"]["rating"]["ability_weight"] = 0.5
+    raises(lambda: zhejiang.validate_instance(broken), "M reject rating weights other than 3:7")
+
+    broken = json.loads(json.dumps(zhejiang_config))
+    broken["rules"]["vpp2"]["compensation"]["positive_tiers_cny_per_mw"] = [700.0, 1000.0, 1200.0]
+    raises(lambda: zhejiang.validate_instance(broken), "M reject invented positive tier")
+
+    broken = json.loads(json.dumps(zhejiang_config))
+    broken["resources"]["items"][6]["customer_age_months"] = 2
+    raises(lambda: zhejiang.validate_instance(broken), "M reject load customer younger than 3 months")
+
+    with tempfile.TemporaryDirectory() as tmp:
+        result = zhejiang.run_instance(
+            zhejiang_path,
+            zhejiang_dir / "data" / "events_demo.csv",
+            zhejiang_dir / "data" / "response_demo.csv",
+            Path(tmp),
+        )
+        summary = result["summary"]["summary"]
+        ratings = {row["unit_id"]: row for row in result["summary"]["ratings"]}
+        close("M gross (CNY)", summary["gross_cny"], 35_382.0, 1e-6)
+        close("M assessment (CNY)", summary["assessment_cny"], 3_660.0, 1e-6)
+        close("M response net (CNY)", summary["response_net_cny"], 31_722.0, 1e-6)
+        close("M fast prep fee (CNY)", summary["prep_fee_cny"], 10_200.0, 1e-6)
+        close("M opex (CNY)", summary["opex_cny"], 7_000.0, 1e-6)
+        close("M net (CNY)", summary["net_cny"], 34_922.0, 1e-6)
+        close("M generation score", ratings["generation"]["total_score"], 87.575, 1e-6)
+        close("M storage score", ratings["storage"]["total_score"], 94.27272727272728, 1e-9)
+        close("M load score", ratings["load"]["total_score"], 77.25, 1e-9)
+        check(
+            (ratings["generation"]["grade"], ratings["storage"]["grade"], ratings["load"]["grade"])
+            == ("B", "A", "C"),
+            "M monthly grades are B / A / C",
+        )
+        close("M storage prep fee (CNY)", ratings["storage"]["prep_fee_cny"], 10_200.0, 1e-9)
+        close("M load prep fee zeroed (CNY)", ratings["load"]["prep_fee_cny"], 0.0, 1e-9)
+        check(ratings["load"]["fast_invalid"] == 3, "M load fast-type invalid calls reach 3")
+        check(result["summary"]["policy_fingerprint"] == "5ceaa246ace4", "M policy fingerprint is stable")
+        for name in ("unit_capability.csv", "events.csv", "rating.csv", "summary.json", "review.md"):
+            check((Path(tmp) / name).exists(), f"M writes {name}")
+
     print(f"\nAll VPP self-tests passed: {_COUNT} assertions.")
 
 

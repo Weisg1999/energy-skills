@@ -405,6 +405,208 @@ def main() -> int:
         assert (Path(tmp) / "bid_sheet.csv").exists()
         assert (Path(tmp) / "review.md").exists()
 
+    section("gansu wind instance")
+    gansu_dir = (
+        repo_root / "skills" / "spot-bidding-quant" / "instances" / "gansu-wind-2027"
+    )
+    gansu_spec = importlib.util.spec_from_file_location("gansu_wind_instance", gansu_dir / "run.py")
+    gansu = importlib.util.module_from_spec(gansu_spec)
+    gansu_spec.loader.exec_module(gansu)
+    gansu_config = json.loads((gansu_dir / "instance.json").read_text(encoding="utf-8"))
+    gansu_report = gansu.validate_instance(gansu_config)
+    print(
+        f"gansu config ok={gansu_report['ok']} points={gansu_report['points_per_day']} "
+        f"mech={gansu_report['predicates']['mechanism_price']:.1f} "
+        f"ratio={gansu_report['predicates']['mechanism_ratio']:.2f}"
+    )
+    assert gansu_report["ok"] and gansu_report["points_per_day"] == 96
+    assert gansu_report["mtu_min"] == 15
+    assert gansu_report["bounds"] == {
+        "declare_floor": 40.0,
+        "declare_cap": 500.0,
+        "clear_floor": 40.0,
+        "clear_cap": 650.0,
+    }
+    assert gansu_report["predicates"]["mechanism_price"] == 244.0
+    assert gansu_report["predicates"]["mechanism_ratio"] == 0.3
+    assert gansu_report["predicates"]["bid_price"] == 40.0
+    assert gansu_config["rules"]["capacity_compensation"]["applicable_to_wind"] is False
+
+    wrong_batch = json.loads(json.dumps(gansu_config))
+    wrong_batch["rules"]["mechanism"]["batches_cny_per_mwh"]["wind_2027h1"] = 195.4
+    try:
+        gansu.validate_instance(wrong_batch)
+    except gansu.ConfigError:
+        pass
+    else:
+        raise AssertionError("2027H1 wind mechanism price must stay 244.0 CNY/MWh")
+
+    payable = json.loads(json.dumps(gansu_config))
+    payable["rules"]["capacity_compensation"]["applicable_to_wind"] = True
+    try:
+        gansu.validate_instance(payable)
+    except gansu.ConfigError:
+        pass
+    else:
+        raise AssertionError("wind must not receive the reliable capacity payment")
+
+    with tempfile.TemporaryDirectory() as tmp:
+        result = gansu.run_instance(
+            gansu_dir / "instance.json",
+            gansu_dir / "data" / "d1_demo.csv",
+            gansu_dir / "data" / "t1_demo.csv",
+            Path(tmp),
+        )
+        summary = result["summary"]
+        plan = summary["plan"]
+        actual = summary["actual"]
+        bridge = result["bridge"]
+        print(
+            f"gansu demo declared={plan['declared_energy_mwh']:.1f} "
+            f"plan={plan['reference_net_margin_cny']:.0f} "
+            f"E={plan['expected_net_margin_cny']:.0f} "
+            f"CVaR20={plan['cvar_cny']:.0f} "
+            f"actual={actual['net_margin_cny']:.0f} "
+            f"gap={bridge['identity_gap']:.2e}"
+        )
+        assert result["report"]["ok"]
+        assert abs(plan["declared_energy_mwh"] - 2442.0) < 1.0
+        assert abs(plan["reference_net_margin_cny"] - 552046.0) < 2.0
+        assert abs(plan["expected_net_margin_cny"] - 569378.0) < 2.0
+        assert plan["cvar_cny"] <= plan["expected_net_margin_cny"] + 1e-9
+        assert abs(actual["net_margin_cny"] - 581869.0) < 2.0
+        assert abs(actual["assessment_cny"] - 349.0) < 1.0
+        assert actual["fishing"]["daily_completion_ratio"] > 1.0
+        assert actual["fishing"]["slots_below_threshold"] > 0
+        assert len(bridge["buckets"]) == 7
+        assert abs(bridge["identity_gap"]) < 1e-6
+        assert abs(
+            bridge["delta"] - sum(item["amount"] for item in bridge["buckets"])
+        ) < 1e-6
+        assert len(summary["policy_fingerprint"]) == 12
+        assert (Path(tmp) / "bid_sheet.csv").exists()
+        assert (Path(tmp) / "bridge.csv").exists()
+        assert (Path(tmp) / "review.md").exists()
+
+    section("shanxi storage instance")
+    shanxi_dir = (
+        repo_root / "skills" / "spot-bidding-quant" / "instances" / "shanxi-storage-2026-11"
+    )
+    shanxi_spec = importlib.util.spec_from_file_location(
+        "shanxi_storage_instance", shanxi_dir / "run.py"
+    )
+    shanxi = importlib.util.module_from_spec(shanxi_spec)
+    shanxi_spec.loader.exec_module(shanxi)
+    shanxi_config = json.loads((shanxi_dir / "instance.json").read_text(encoding="utf-8"))
+    shanxi_report = shanxi.validate_instance(shanxi_config)
+    print(
+        f"shanxi config ok={shanxi_report['ok']} points={shanxi_report['points_per_day']} "
+        f"mtu={shanxi_report['mtu_min']:g} fuse={shanxi_report['fuse']['duration_hours']:.1f}h"
+    )
+    assert shanxi_report["ok"] and shanxi_report["points_per_day"] == 288
+    assert shanxi_report["mtu_min"] == 5.0
+    assert shanxi_report["bounds"] == {
+        "declare_floor": 0.0,
+        "declare_cap": 1500.0,
+        "clear_floor": 0.0,
+        "clear_cap": 1500.0,
+    }
+    assert shanxi_report["fuse"]["window_start"] == "17:00"
+    assert shanxi_report["fuse"]["window_end"] == "19:00"
+    assert shanxi_report["fuse"]["duration_hours"] == 2.0
+    assert shanxi_report["fuse"]["settlement_price"] == 450.0
+    assert shanxi_config["rules"]["capacity_compensation"]["applicable_to_storage"] is False
+    assert shanxi_config["rules"]["capacity_compensation"]["price_cny_per_kw_year"] is None
+
+    fifteen_minute = json.loads(json.dumps(shanxi_config))
+    fifteen_minute["rules"]["spot"]["market_time_unit_min"] = 15
+    fifteen_minute["rules"]["spot"]["points_per_day"] = 96
+    try:
+        shanxi.validate_instance(fifteen_minute)
+    except shanxi.ConfigError:
+        pass
+    else:
+        raise AssertionError("Shanxi must reject the 15-minute / 96-point template")
+
+    paid_capacity = json.loads(json.dumps(shanxi_config))
+    paid_capacity["rules"]["capacity_compensation"]["applicable_to_storage"] = True
+    try:
+        shanxi.validate_instance(paid_capacity)
+    except shanxi.ConfigError:
+        pass
+    else:
+        raise AssertionError("independent storage must not book the coal capacity payment")
+
+    priced_capacity = json.loads(json.dumps(shanxi_config))
+    priced_capacity["rules"]["capacity_compensation"]["price_cny_per_kw_year"] = 165.0
+    try:
+        shanxi.validate_instance(priced_capacity)
+    except shanxi.ConfigError:
+        pass
+    else:
+        raise AssertionError("storage capacity price must stay null until verified")
+
+    short_fuse = json.loads(json.dumps(shanxi_config))
+    short_fuse["rules"]["fuse"]["max_duration_hours"] = 12.0
+    try:
+        shanxi.validate_instance(short_fuse)
+    except shanxi.ConfigError:
+        pass
+    else:
+        raise AssertionError("fuse duration cap must stay at 24 h")
+
+    with tempfile.TemporaryDirectory() as tmp:
+        result = shanxi.run_instance(
+            shanxi_dir / "instance.json",
+            shanxi_dir / "data" / "d1_demo.csv",
+            shanxi_dir / "data" / "t1_demo.csv",
+            Path(tmp),
+        )
+        summary = result["summary"]
+        plan = summary["plan"]
+        actual = summary["actual"]
+        bridge = result["bridge"]
+        fuse = summary["fuse_stress"]
+        print(
+            f"shanxi demo cycles={plan['cycles']:.2f} "
+            f"plan={plan['reference_net_margin_cny']:.0f} "
+            f"E={plan['expected_net_margin_cny']:.0f} "
+            f"CVaR10={plan['cvar_10_cny']:.0f} "
+            f"actual={actual['net_margin_cny']:.0f} "
+            f"fuse={fuse['delta_cny']:.0f} "
+            f"gap={bridge['identity_gap']:.2e}"
+        )
+        assert result["report"]["ok"]
+        assert plan["points_per_day"] == 288
+        assert abs(plan["reference_spread_cny_per_mwh"] - 563.89) < 0.05
+        assert abs(plan["charge_anchor_cny_per_mwh"] - 86.73) < 0.05
+        assert abs(plan["discharge_anchor_cny_per_mwh"] - 650.62) < 0.05
+        assert abs(plan["discharge_breakeven_cny_per_mwh"] - 139.78) < 0.05
+        assert abs(plan["charge_breakeven_cny_per_mwh"] - 526.05) < 0.05
+        assert plan["cycles"] <= summary["policy"]["max_cycles_per_day"] + 1e-9
+        assert plan["switches"] == 4
+        assert abs(plan["reference_net_margin_cny"] - 53314.0) < 2.0
+        assert abs(plan["expected_net_margin_cny"] - 52025.0) < 2.0
+        assert abs(plan["cvar_10_cny"] - 44933.0) < 2.0
+        assert plan["cvar_10_cny"] <= plan["expected_net_margin_cny"] + 1e-9
+        assert plan["capacity_compensation_cny"] is None
+        assert sum(1 for item in plan["scenarios"] if item["rebalanced"]) == 2
+        assert abs(actual["net_margin_cny"] - 59301.0) < 2.0
+        assert abs(actual["degradation_cny"] - 11520.0) < 1.0
+        assert abs(actual["revenue_per_discharge_mwh"] - 317.0) < 1.0
+        assert len(bridge["buckets"]) == 4
+        assert abs(bridge["identity_gap"]) < 1e-6
+        assert abs(bridge["delta"] - sum(item["amount"] for item in bridge["buckets"])) < 1e-6
+        assert abs(bridge["delta"] - 5987.0) < 2.0
+        assert len(result["bridge_detail"]) == 5
+        assert result["bridge_detail"][0]["start"] == "19:30"
+        assert abs(fuse["delta_cny"] + 32999.0) < 2.0
+        assert abs(fuse["fuse_net_margin_cny"] - 26302.0) < 2.0
+        assert len(summary["policy_fingerprint"]) == 12
+        assert (Path(tmp) / "bid_sheet.csv").exists()
+        assert (Path(tmp) / "bridge.csv").exists()
+        assert (Path(tmp) / "review.md").exists()
+
     section("summary")
     print("all checks passed")
     return 0

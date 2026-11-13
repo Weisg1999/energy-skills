@@ -1,0 +1,257 @@
+{
+  "meta": {
+    "instance_id": "zhejiang-vpp2-2026-11",
+    "province": "浙江",
+    "market": "浙江新型主体市场化响应（VPP 2.0，三类聚合单元）",
+    "entity_type": "虚拟电厂运营商（发电类 / 储能类 / 负荷类聚合单元）",
+    "rule_version": "浙江电力市场管理委员会公告〔2026〕第7号（2026-09-23）：《浙江省虚拟电厂运营管理实施细则（试行）》+《新型主体市场化响应实施细则 2.0》",
+    "data_cutoff": "2026-11-13",
+    "grade": "B/C/D",
+    "scope": "三类聚合单元的注册门槛、正/负调节响应、月度评级与快速型能力准备费；不含现货电能量、辅助服务、容量补偿、绿证与用户零售结算",
+    "currency": "CNY",
+    "units": {
+      "power": "MW",
+      "energy": "MWh",
+      "price": "CNY/MW",
+      "price_note": "VPP 2.0 响应补偿用元/MW（按次），不是现货的元/MWh；不要混写或乘 1000",
+      "load": "MW",
+      "time": "HH:MM",
+      "slot": "0-95（15 分钟一点，响应结算建模用）",
+      "spot": "浙江现货为 5 分钟出清（288 点/日），本包只作背景，不参与现货"
+    },
+    "disclaimer": "本实例包是 D 级合成样板，不对应任何真实聚合商、聚合单元、用户或结算数据；不构成报价、签约或投资建议。"
+  },
+  "rules": {
+    "vpp2": {
+      "document": "浙江电力市场管理委员会公告〔2026〕第7号",
+      "effective_from": "2026-09-23",
+      "unit_types": {
+        "generation": {
+          "name": "发电类聚合单元",
+          "min_mw": 5.0,
+          "min_duration_h": 1.0,
+          "metering": "独立上网关口表计",
+          "resources": "分布式光伏、分散式风电等"
+        },
+        "storage": {
+          "name": "储能类聚合单元",
+          "min_mw": 5.0,
+          "min_duration_h": 1.0,
+          "metering": "独立计量表计",
+          "resources": "分布式独立储能；工商储通常归负荷类"
+        },
+        "load": {
+          "name": "负荷类聚合单元",
+          "min_mw": 5.0,
+          "min_duration_h": 1.0,
+          "metering": "用户计量表为结算点",
+          "customer_age_months_min": 3,
+          "resources": "工商业可调负荷、充换电、楼宇空调"
+        }
+      },
+      "response_products": ["调节型", "快速型", "局域型"],
+      "rating": {
+        "cycle": "month",
+        "grades": ["A+", "A", "B", "C", "D"],
+        "ability_weight": 0.3,
+        "response_weight": 0.7,
+        "thresholds": {"A+": 95.0, "A": 90.0, "B": 80.0, "C": 70.0},
+        "status": "能力:响应 = 3:7 为公开口径；分数阈值、能力分与响应分算法为 D 级建模假设"
+      },
+      "compensation": {
+        "positive_tiers_cny_per_mw": [800.0, 1000.0, 1200.0],
+        "negative_tiers_cny_per_mw": [300.0, 350.0, 380.0],
+        "positive_cap_cny_per_mw": 1200.0,
+        "negative_cap_cny_per_mw": 380.0,
+        "price_basis": "元/MW·次；本包按单次事件 1 h 建模，原文计价时长口径待核",
+        "tier_basis": "按需求规模分档（800/1,000/1,200 与 300/350/380），分档边界原文未核到，本包由事件文件直接给出适用档"
+      },
+      "min_effective_response_rate": 0.70,
+      "min_effective_response_rate_status": "2.0 版由 80% 降至 70%（B/C）；本包按 70% 建模",
+      "assessment": {
+        "basis": "单次按实际差额计",
+        "daily_cap_ratio": 1.2,
+        "status": "考核系数与结算日口径为 D 级假设；「当日考核不超补偿 1.2 倍」按公开口径建模"
+      },
+      "fast_type": {
+        "capacity_preparation_fee": true,
+        "invalid_calls_zero_threshold": 3,
+        "window": "自然月",
+        "status": "快速型月内调用无效 ≥3 次能力准备费归零（B/C）"
+      },
+      "grade": "B/C",
+      "source": "浙江电力市场管理委员会公告〔2026〕第7号；本库《浙江电力市场-2026-11》§7.4"
+    },
+    "baseline": {
+      "method": "5 日相似日平均法",
+      "count": 5,
+      "deviation": 0.25,
+      "adjustment": 1.0,
+      "status": "D 级建模假设；浙江 VPP 2.0 响应基线算法未在本库核到",
+      "grade": "D",
+      "source": "建模假设；待《新型主体市场化响应实施细则 2.0》配套口径核实"
+    },
+    "spot": {
+      "included": false,
+      "status": "2025-08-07 转正式运行，5 分钟出清（288 点/日）",
+      "grade": "A",
+      "source": "浙江省发改委、省能源局、浙江能监办转正通知；本包仅作背景"
+    },
+    "settlement": {
+      "cycle": "按交易中心/省负荷管理中心结算通知",
+      "assessment_cap": "当日考核不超补偿 1.2 倍",
+      "status": "结算周期与开票流程待核",
+      "grade": "B/C",
+      "source": "公告〔2026〕第7号公开口径；结算细则待核"
+    }
+  },
+  "resources": {
+    "units": [
+      {"id": "generation", "name": "发电类聚合单元", "unit_type": "generation"},
+      {"id": "storage", "name": "储能类聚合单元", "unit_type": "storage"},
+      {"id": "load", "name": "负荷类聚合单元", "unit_type": "load"}
+    ],
+    "items": [
+      {
+        "id": "pv_roof_1",
+        "unit": "generation",
+        "name": "园区屋顶光伏 1",
+        "max_mw": 6.0,
+        "positive_ratio": 0.5,
+        "negative_ratio": 0.1,
+        "availability": 0.9,
+        "grade": "D",
+        "source": "示例占位；实际按逆变器铭牌、可限功率与历史出力填写"
+      },
+      {
+        "id": "pv_roof_2",
+        "unit": "generation",
+        "name": "园区屋顶光伏 2",
+        "max_mw": 5.0,
+        "positive_ratio": 0.5,
+        "negative_ratio": 0.1,
+        "availability": 0.9,
+        "grade": "D",
+        "source": "示例占位；实际按逆变器铭牌、可限功率与历史出力填写"
+      },
+      {
+        "id": "pv_ground",
+        "unit": "generation",
+        "name": "分布式地面光伏",
+        "max_mw": 5.0,
+        "positive_ratio": 0.5,
+        "negative_ratio": 0.1,
+        "availability": 0.9,
+        "grade": "D",
+        "source": "示例占位；实际按逆变器铭牌、可限功率与历史出力填写"
+      },
+      {
+        "id": "storage_a",
+        "unit": "storage",
+        "name": "用户侧储能 A",
+        "max_mw": 3.0,
+        "positive_ratio": 1.0,
+        "negative_ratio": 1.0,
+        "availability": 0.95,
+        "grade": "D",
+        "source": "示例占位；实际按 PCS 铭牌、SOC 窗口与可用小时数填写"
+      },
+      {
+        "id": "storage_b",
+        "unit": "storage",
+        "name": "用户侧储能 B",
+        "max_mw": 3.0,
+        "positive_ratio": 1.0,
+        "negative_ratio": 1.0,
+        "availability": 0.95,
+        "grade": "D",
+        "source": "示例占位；实际按 PCS 铭牌、SOC 窗口与可用小时数填写"
+      },
+      {
+        "id": "industrial",
+        "unit": "load",
+        "name": "工业可中断负荷",
+        "max_mw": 10.0,
+        "positive_ratio": 0.4,
+        "negative_ratio": 0.1,
+        "availability": 0.9,
+        "customer_age_months": 12,
+        "grade": "D",
+        "source": "示例占位；实际按工序可中断能力、立户时长与历史响应率填写"
+      },
+      {
+        "id": "ac",
+        "unit": "load",
+        "name": "楼宇空调",
+        "max_mw": 4.0,
+        "positive_ratio": 0.3,
+        "negative_ratio": 0.05,
+        "availability": 0.9,
+        "customer_age_months": 8,
+        "grade": "D",
+        "source": "示例占位；实际按空调装机、可调比例与舒适度约束填写"
+      },
+      {
+        "id": "ev",
+        "unit": "load",
+        "name": "充换电站",
+        "max_mw": 4.0,
+        "positive_ratio": 0.4,
+        "negative_ratio": 0.2,
+        "availability": 0.9,
+        "customer_age_months": 6,
+        "grade": "D",
+        "source": "示例占位；实际按桩群容量、在线率与 V2G 能力填写"
+      }
+    ]
+  },
+  "policy": {
+    "profile_id": "zhejiang-vpp2-balanced-v1",
+    "description": "三类聚合单元统一按可调能力 90% 申报；有效响应门槛 70%；考核系数 0.5；快速型能力准备费 2,000 元/MW·月",
+    "bid_ratio": 0.9,
+    "assessment_ratio": 0.5,
+    "fast_prep_fee_cny_per_mw_month": 2000.0,
+    "declaration_rounding_mw": 0.1,
+    "grade": "D",
+    "note": "风格是聚合商选择，不是事实；改 profile_id 并保留旧文件，便于比较风格差异。"
+  },
+  "contracts": {
+    "assessment": {
+      "ratio": 0.5,
+      "basis": "考核 = 实际差额 × 补偿价 × 系数，D 级假设；上限按「当日考核不超补偿 1.2 倍」"
+    },
+    "fast_prep_fee": {
+      "cny_per_mw_month": 2000.0,
+      "basis": "D 级假设；按快速型产品参与单元的申报能力计，月内无效调用 ≥3 次归零"
+    },
+    "opex": {
+      "platform_cny_per_month": 5000.0,
+      "metering_cny_per_event": 200.0,
+      "basis": "D 级假设；覆盖平台摊销、计量核验与值守"
+    },
+    "grade": "D",
+    "source": "示例合同与成本参数，不对应任何真实聚合商合同"
+  },
+  "data_contract": {
+    "events": {
+      "file": "data/events_demo.csv",
+      "event_id_field": "event_id",
+      "date_field": "date",
+      "unit_field": "unit_id",
+      "product_field": "product",
+      "direction_field": "direction",
+      "start_field": "start",
+      "end_field": "end",
+      "required_mw_field": "required_mw",
+      "price_field": "price_cny_per_mw",
+      "grade": "D"
+    },
+    "response": {
+      "file": "data/response_demo.csv",
+      "event_id_field": "event_id",
+      "unit_field": "unit_id",
+      "actual_mw_field": "actual_mw",
+      "grade": "D"
+    }
+  }
+}

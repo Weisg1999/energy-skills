@@ -130,6 +130,8 @@ conversion ratio = min(full-power continuous discharge duration ÷ longest annua
 
 > The table explains two things: why a 2 h project earns little in a 6 h-denominator province, and why "longer duration" is a policy incentive rather than a technical preference.
 
+The full Anhui No. 526 workflow is available as a runnable instance: [`instances/anhui-storage-2027/`](instances/anhui-storage-2027/README.md) — two revenue legs (capacity charge and spot arbitrage), a 2/4/6 h duration ladder, 98% availability assessment, 15-year cash flow and a review table; edit only `instance.json` and the CSVs. The demo uses grade-D synthetic data and represents no real station or revenue.
+
 ### 2.2 Time-of-use reconstruction: Document 1656
 
 The *Basic Rules for the Medium- and Long-Term Electricity Market* (NDRC Energy Regulation [2025] No. 1656, 2025-12-17, effective 2026-03-01) provide that for market participants trading directly, **administrative time-of-use price levels and periods are no longer set**; agency-purchase users still receive government-optimized peak-valley periods and floating ratios.

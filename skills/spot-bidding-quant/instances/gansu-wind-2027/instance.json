@@ -1,0 +1,151 @@
+{
+  "meta": {
+    "instance_id": "gansu-wind-2027",
+    "province": "甘肃",
+    "market": "甘肃省级电力市场（现货 + 中长期 + 136 机制电价差价结算）",
+    "entity_type": "集中式新能源风电（上网侧）",
+    "rule_version": "《甘肃电力现货市场规则(V3.2)》（2026-03-31）＋ 2027 上半年风电机制电价 0.2440 元/kWh",
+    "data_cutoff": "2026-11-13",
+    "grade": "B/C",
+    "scope": "v1 覆盖日前 + 实时电能量、136 机制差价（按项目捕获价近似参考价）与钓鱼法 D 级考核；中长期 24 时段曲线、省间外送、辅助服务、绿证与税费未纳入",
+    "currency": "CNY",
+    "units": {
+      "power": "MW",
+      "energy": "MWh",
+      "price": "CNY/MWh",
+      "mechanism_price": "CNY/MWh（0.2440 元/kWh = 244.0 元/MWh）",
+      "time": "HH:MM",
+      "slot": "0-95（15 分钟一点）"
+    },
+    "disclaimer": "本实例包是 D 级合成样板，不对应任何真实场站、合同或计量数据；不构成报价、投资或法律建议。"
+  },
+  "rules": {
+    "spot": {
+      "status": "正式运行（2024-09-05，全国第 4、西北第 1）",
+      "market_time_unit_min": 15,
+      "points_per_day": 96,
+      "declare_floor_cny_per_mwh": 40.0,
+      "declare_cap_cny_per_mwh": 500.0,
+      "clear_floor_cny_per_mwh": 40.0,
+      "clear_cap_cny_per_mwh": 650.0,
+      "early_band": {
+        "declare_cny_per_mwh": "0-1000",
+        "status": "旧口径（2026 年前）；不得用于 2026-01-01 之后",
+        "grade": "B"
+      },
+      "grade": "A/B",
+      "source": "甘发改价格规〔2025〕4号：2026-01-01 起申报 40-500、出清 40-650 元/MWh；《甘肃电力现货市场规则(V3.2)》（2026-03-31 印发，出清 40-650）；中国能源新闻网 2025-09-11"
+    },
+    "settlement": {
+      "basis": "日前 + 实时双结算：日前计划电量按日前节点价、实际与计划的偏差按实时节点价；中长期按约定曲线偏差结算",
+      "reference_point": "中长期未约定结算参考点时，采用日前统一结算点现货价格（V3.2）",
+      "scheduling": "24 时段中长期报量报价；2025-06 起 D+2 日滚动融合交易",
+      "grade": "B",
+      "source": "《甘肃电力现货市场规则(V3.2)》；976 号文结算时点；知识模块 §5"
+    },
+    "mechanism": {
+      "policy": "136 号文新能源上网电价市场化改革：机制电价按差价结算，不是全电量按机制价锁定",
+      "batches_cny_per_mwh": {
+        "existing_stock": 307.8,
+        "batch_2026": 195.4,
+        "wind_2027h1": 244.0,
+        "solar_2027h1": 244.7
+      },
+      "settlement_basis": "机制电量 × (机制电价 − 参考价) 差价结算；项目剩余电量仍面对现货与中长期价格",
+      "grade": "B/C",
+      "source": "2026-05 甘肃 2027 上半年机制电价竞价结果：风电 0.2440、光伏 0.2447 元/kWh；存量 0.3078；2025-10 首批 0.1954（8.3 亿 kWh、61 个项目）",
+      "note": "0.2440 是 2027H1 风电机制电价，不是现货价，也不是全国机制电价下限；三批次对应不同投产窗口，不能混用"
+    },
+    "fishing": {
+      "name": "钓鱼法（运行考核机制，不是电价机制）",
+      "mechanism": "按分钟监测新能源场站计划完成率，回收未完成计划并增配给完成较好的场站",
+      "completion_threshold_ratio": 0.95,
+      "assessment_cny_per_mwh": 30.0,
+      "assessment_formula": "D 级简化：Σ max(0, 门槛 × 计划 − 实际) × 单价 × Δt；公开口径只说明回收/增配，考核单价与回收结算方式未公开",
+      "grade": "B/D",
+      "source": "知识模块 §4.2（机制 B）；0.95 门槛与 30 元/MWh 为 D 级建模假设，不得用于结算"
+    },
+    "capacity_compensation": {
+      "applicable_to_wind": false,
+      "price_cny_per_kw_year": 330.0,
+      "eligibility": "公用煤电与电网侧独立新型储能；不含风电、光伏",
+      "status": "2026-01-01 起试行至 2027-12-31",
+      "grade": "A/B",
+      "source": "甘发改价格规〔2025〕4号：可靠容量补偿 330 元/kW·年",
+      "note": "风电场不享受该补偿；本包不计入容量收入，避免把煤电/储能政策套到新能源"
+    }
+  },
+  "asset": {
+    "name": "示例 200 MW 风电场（D 级合成，不是真实项目）",
+    "type": "wind",
+    "power_mw": 200.0,
+    "grid_connection": {
+      "export_limit_mw": 200.0,
+      "import_limit_mw": 0.0
+    },
+    "opex_cny_per_mwh": 20.0,
+    "fixed_cost_cny_per_day": 100000.0,
+    "grade": "D",
+    "source": "占位；实际项目按铭牌、功率预测系统与运维台账填写"
+  },
+  "policy": {
+    "profile_id": "gansu-wind-floor-v1",
+    "description": "申报价贴现货申报下限 40 元/MWh 保出清；申报量取 5 个风功率情景的 35% 分位（约基准预测的 95%）；CVaR 置信 80%",
+    "bid_price_cny_per_mwh": 40.0,
+    "declared_quantity_quantile": 0.35,
+    "price_reference_quantile": 0.5,
+    "cvar_confidence": 0.8,
+    "grade": "D",
+    "note": "报价贴下限是价格接受者 + 近零边际成本下的保出清选择；申报量低于中位数是对钓鱼法完成率考核的保守响应，不是收益优化"
+  },
+  "contracts": [
+    {
+      "id": "mechanism-wind-2027h1",
+      "type": "mechanism_cfd",
+      "price_cny_per_mwh": 244.0,
+      "quantity_basis": "actual_generation_ratio",
+      "ratio": 0.3,
+      "reference_price_basis": "project_capture_price",
+      "grade": "B/D",
+      "source": "2027H1 风电机制电价 0.2440 元/kWh（B/C）；30% 机制电量比例与项目捕获价参考口径为 D 级假设"
+    }
+  ],
+  "data_contract": {
+    "d1": {
+      "file": "data/d1_demo.csv",
+      "required_fields": [
+        "date",
+        "slot",
+        "start",
+        "end",
+        "forecast_mw",
+        "wind_s1",
+        "wind_s2",
+        "wind_s3",
+        "wind_s4",
+        "wind_s5",
+        "price_s1",
+        "price_s2",
+        "price_s3",
+        "price_s4",
+        "price_s5"
+      ],
+      "wind_fields": ["wind_s1", "wind_s2", "wind_s3", "wind_s4", "wind_s5"],
+      "price_fields": ["price_s1", "price_s2", "price_s3", "price_s4", "price_s5"],
+      "scenario_weights": [0.2, 0.2, 0.2, 0.2, 0.2],
+      "release_cutoff": "D-1 交易中心日前申报截止前（具体时点以交易中心公告为准）",
+      "note": "风功率 5 情景与价格 5 情景同权重；申报量只取风情景分位，情景收益只用价格情景，两套情景不交叉配对"
+    },
+    "t1": {
+      "file": "data/t1_demo.csv",
+      "required_fields": [
+        "date",
+        "slot",
+        "actual_da_price",
+        "actual_rt_price",
+        "actual_output_mw"
+      ],
+      "note": "日前价在运行日前已知，实时价与实际发电量在 T+1 已知；没有实际数据时只出申报表，不跑差异桥"
+    }
+  }
+}

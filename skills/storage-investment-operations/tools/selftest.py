@@ -6,6 +6,11 @@ The assertions encode the worked examples quoted in SKILL.md / SKILL_EN.md.
 
 from __future__ import annotations
 
+import importlib.util
+import json
+import tempfile
+from pathlib import Path
+
 import degradation
 import finance
 import stacking
@@ -98,6 +103,58 @@ def main():
     close("A equivalent cycles", degradation.equivalent_cycles(61_913.49, 200, 0.95), 325.9, 0.1)
     close("years to 80% SOH", degradation.years_to_threshold(1.0, 0.015, 0.8), 13.33, 0.01)
     close("augmentation at 80% SOH (MWh)", degradation.augmentation_energy(200, 0.8), 50.0, 1e-9)
+
+    # Instance K: Anhui standalone-storage capacity-price pack.
+    pack_dir = (
+        Path(__file__).resolve().parents[1]
+        / "instances"
+        / "anhui-storage-2027"
+    )
+    spec = importlib.util.spec_from_file_location("anhui_storage_instance", pack_dir / "run.py")
+    runner = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(runner)
+    instance_path = pack_dir / "instance.json"
+    config = json.loads(instance_path.read_text(encoding="utf-8"))
+    report = runner.validate_instance(config)
+    assert report["ok"] and report["points_per_day"] == 96 and report["mtu_min"] == 15
+    print(f"instance config ok={report['ok']} points={report['points_per_day']}")
+
+    broken = json.loads(json.dumps(config))
+    del broken["rules"]["capacity"]["grade"]
+    try:
+        runner.validate_instance(broken)
+    except runner.ConfigError:
+        pass
+    else:
+        raise AssertionError("a capacity rule block without grade must be rejected")
+
+    with tempfile.TemporaryDirectory() as tmp:
+        result = runner.run_instance(
+            instance_path,
+            pack_dir / "data" / "scenarios_demo.csv",
+            pack_dir / "data" / "assessment_demo.csv",
+            Path(tmp),
+        )
+        summary = result["summary"]
+        base = summary["base_case"]
+        close("K capacity gross (CNY)", base["capacity_gross_cny"], 11_000_000.0, 1e-6)
+        close("K assessment deduction (CNY)", base["assessment_deduction_cny"], 46_768.71, 0.05)
+        close("K capacity net (CNY)", base["capacity_net_cny"], 10_953_231.29, 0.05)
+        assert base["strikes"] == 2 and base["strike_limit"] == 3 and not base["capacity_zeroed"]
+        close("K 4h NPV @8% (CNY)", base["npv_cny"], 94_590_857.98, 5.0)
+        close("K 4h IRR", base["irr"], 0.15865, 1e-5)
+        close("K 4h payback (years)", base["payback_years"], 5.6109, 1e-3)
+        close("K 4h LCOS (CNY/MWh)", base["lcos_cny_per_mwh"], 529.0618, 1e-2)
+        ladder = {row["duration_h"]: row for row in summary["duration_ladder"]}
+        close("K 2h capacity (CNY)", ladder[2.0]["capacity_gross_cny"], 5_500_000.0, 1e-6)
+        close("K 6h capacity (CNY)", ladder[6.0]["capacity_gross_cny"], 16_500_000.0, 1e-6)
+        close("K 2h ratio", ladder[2.0]["capacity_ratio"], 1 / 3, 1e-9)
+        assert len(ladder) == 3
+        assert summary["inputs"]["assessment_months"] == 12
+        assert summary["scenario_metrics"]["cvar_cny"] <= summary["scenario_metrics"]["expected_annual_net_cny"]
+        assert (Path(tmp) / "review.md").exists()
+        assert (Path(tmp) / "duration_ladder.csv").exists()
+        assert summary["policy_fingerprint"] == "1ea292c25eed"
 
     print("\nAll storage-investment self-tests passed.")
 

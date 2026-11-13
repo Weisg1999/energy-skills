@@ -93,7 +93,8 @@ def main():
     # The raw DP arbitrages every small wiggle; a desk run respects a daily
     # cycle budget. Scaling keeps the SOC trajectory inside the same window.
     target_cycles = 1.4
-    raw_throughput = sum(actual_discharge) + sum(actual_charge)
+    dt_h = report["mtu_min"] / 60.0
+    raw_throughput = (sum(actual_discharge) + sum(actual_charge)) * dt_h
     target_throughput = target_cycles * 2.0 * float(config["asset"]["energy_mwh"])
     scale = target_throughput / raw_throughput
     actual_discharge = [value * scale for value in actual_discharge]
@@ -123,10 +124,13 @@ def main():
         writer.writerows(t1_rows)
 
     all_prices = [price for slot in range(n) for price in (float(d1_rows[slot][field]) for field in report["scenario_fields"])]
-    throughput = sum(actual_discharge) + sum(actual_charge)
+    throughput = (sum(actual_discharge) + sum(actual_charge)) * dt_h
     print(f"trading day      {TRADING_DAY}")
     print(f"scenario prices  {min(all_prices):.1f} .. {max(all_prices):.1f} CNY/MWh")
-    print(f"actual schedule  discharge {sum(actual_discharge):.1f} MWh, charge {sum(actual_charge):.1f} MWh")
+    print(
+        f"actual schedule  discharge {sum(actual_discharge) * dt_h:.1f} MWh, "
+        f"charge {sum(actual_charge) * dt_h:.1f} MWh"
+    )
     print(f"equivalent cycles {throughput / (2.0 * float(config['asset']['energy_mwh'])):.2f}")
 
 

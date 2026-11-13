@@ -1,0 +1,167 @@
+{
+  "meta": {
+    "instance_id": "shanxi-storage-2026-11",
+    "province": "山西",
+    "market": "山西省级电力市场（现货 5 分钟出清 + 中长期 + 调峰辅助服务）",
+    "entity_type": "独立新型储能",
+    "rule_version": "《山西电力现货市场实施细则（V16.0）》（2025 年底）＋ 实时出清 5 分钟（288 次/日）",
+    "data_cutoff": "2026-11-13",
+    "grade": "B/C",
+    "scope": "v1 仅省内现货电能量（日前 + 实时两结算）+ 熔断压力测试 + 容量补偿占位；调峰/辅助服务、中长期曲线、省间外送、租赁收益未纳入",
+    "currency": "CNY",
+    "units": {
+      "power": "MW",
+      "energy": "MWh",
+      "price": "CNY/MWh",
+      "time": "HH:MM",
+      "slot": "0-287（5 分钟一点）"
+    },
+    "disclaimer": "本实例包是 D 级合成样板，不构成报价、投资或法律建议；实际参数以企业铭牌、合同和交易中心最新规则为准。"
+  },
+  "rules": {
+    "spot": {
+      "status": "正式运行（2023-12-22，全国首个转正省级现货）",
+      "market_time_unit_min": 5,
+      "points_per_day": 288,
+      "declare_floor_cny_per_mwh": 0,
+      "declare_cap_cny_per_mwh": 1500,
+      "clear_floor_cny_per_mwh": 0,
+      "clear_cap_cny_per_mwh": 1500,
+      "sub_bands_cny_per_mwh": {
+        "thermal": [0, 800],
+        "renewable": [0, 740],
+        "storage": null
+      },
+      "storage_band_status": "独立储能分档边界未在 V16.0 公开全文核到；本包按总区间 0–1500 申报",
+      "grade": "B",
+      "source": "《山西电力现货市场实施细则（V16.0）》（2025 年底）；申报 0–1,500 元/MWh 为北极星转载口径",
+      "note": "0–1,500 是申报价格总区间，不等于所有机组上限；火电 0–800、新能源 0–740 为浅档案分档口径，V16.0 全文未逐项复核"
+    },
+    "settlement": {
+      "basis": "日前 + 实时两结算：日前计划电量按日前价，偏差电量按实时价；实时出清 5 分钟、288 次/日",
+      "grade": "B",
+      "source": "山西省级知识模块 §4–5；2025H1 日前 0.283、实时 0.281 元/kWh，价差 1.34 厘（省能源局 2025-09-01）"
+    },
+    "capacity_compensation": {
+      "applicable_to_storage": false,
+      "price_cny_per_kw_year": null,
+      "supply_demand_coefficient": null,
+      "reference_coal_price_cny_per_kw_year": 165.0,
+      "status": "独立储能容量电价政策待核实；煤电 165 元/kW·年仅为 C 级旁证，本包容量收入按 0 计",
+      "grade": "C",
+      "source": "浅档案/省级市场状态总表：煤电容量电价 165 元/kW·年（C 级口径）；独立储能缺省级正式文件",
+      "note": "不要把煤电容量电价套到独立储能；风、光、储均不能据此计容量收入"
+    },
+    "storage_participation": {
+      "requirement": "独立储能按报量报价参与现货；5 分钟实时出清下必须按 288 点滚动优化，不能用 96 点或日均价回测",
+      "effective_from": "2025-11（实时出清由 15 分钟压缩至 5 分钟）",
+      "grade": "B/C",
+      "source": "山西省级知识模块 §4.2、§9.1；独立储能参与条款以 V16.0 原文为准",
+      "note": "5 分钟出清把 SOC 与预测误差放大 3 倍：同样的日循环，288 点比 96 点多 2 次充放切换机会，也多 2 次误判风险"
+    },
+    "price_features": {
+      "h1_2025_cny_per_mwh": {
+        "day_ahead": 283,
+        "real_time": 281,
+        "spread": 1.34
+      },
+      "range_2026_jan_sep_cny_per_mwh": {
+        "day_ahead": [161, 450],
+        "real_time": [174, 609]
+      },
+      "shape": "两峰一谷、晚高早低",
+      "grade": "A/B",
+      "source": "省能源局 2025-09-01（2025H1 均价）；浅档案（2026 1–9 月区间）",
+      "note": "日前—实时价差 2025H1 仅 1.34 厘，储能收益主要来自日内时段结构，不是日前实时套利；2026 实时上探 609 说明 5 分钟稀缺定价更尖"
+    },
+    "fuse": {
+      "name": "熔断（市场干预，不是常态出清）",
+      "announcement_within_hours": 2,
+      "max_duration_hours": 24,
+      "first_trigger": "2021-04-15 沙尘暴，熔断 2 小时后恢复",
+      "settlement_rule": "熔断时段按规则重算，不能直接套日前价；公开材料未给出重算公式",
+      "stress_assumption": {
+        "window_start": "17:00",
+        "window_end": "19:00",
+        "settlement_price_cny_per_mwh": 450.0,
+        "status": "D 级压力测试假设，不是山西规则；只用于估计晚峰熔断的收入回撤"
+      },
+      "grade": "B/D",
+      "source": "山西省级知识模块 §4.1、§5（熔断 2 h 内公告、≤24 h，2021-04-15 实战 2 h）",
+      "note": "熔断是价格管制/市场干预，不能当作负价或尖峰价；压力测试结果不是结算依据"
+    }
+  },
+  "asset": {
+    "name": "示例独立储能电站（D 级合成，不是真实项目）",
+    "power_mw": 100,
+    "energy_mwh": 200,
+    "usable_energy_mwh": 180,
+    "rte": 0.86,
+    "soc_min": 0.05,
+    "soc_max": 0.95,
+    "soc_init": 0.5,
+    "degradation_cny_per_mwh_throughput": 18,
+    "fixed_cost_cny_per_day": 20000,
+    "effective_capacity_mw": 100,
+    "solver_states": 160,
+    "grid_connection": {
+      "import_limit_mw": 100,
+      "export_limit_mw": 100
+    },
+    "grade": "D",
+    "source": "示例占位；实际项目按 PCS/BMS/变压器铭牌、实测效率与运维台账填写"
+  },
+  "policy": {
+    "profile_id": "shanxi-spread-v1",
+    "description": "价差报价：放电报价 = 日最低充电参考价 / RTE + 退化 + 加价；充电报价 = 日最高放电参考价 × RTE − 退化 − 压价；尖峰阈值 600 元/MWh 时放电加价 60；日循环上限 1.6；最小日价差 280 元/MWh",
+    "declared_quantity_quantile": 0.5,
+    "price_reference_quantile": 0.5,
+    "discharge_markup_cny_per_mwh": 20,
+    "charge_markup_cny_per_mwh": 15,
+    "spike_threshold_cny_per_mwh": 600,
+    "spike_markup_cny_per_mwh": 60,
+    "max_cycles_per_day": 1.6,
+    "min_daily_spread_cny_per_mwh": 280,
+    "grade": "D",
+    "note": "风格参数是交易员选择，不是事实；价差报价让充放两条腿共用同一个日价差，避免低价情景只充电、高价情景只放电的假象。"
+  },
+  "contracts": [],
+  "data_contract": {
+    "d1": {
+      "file": "data/d1_demo.csv",
+      "required_fields": [
+        "date",
+        "slot",
+        "start",
+        "end",
+        "price_s1",
+        "price_s2",
+        "price_s3",
+        "price_s4",
+        "price_s5"
+      ],
+      "scenario_fields": [
+        "price_s1",
+        "price_s2",
+        "price_s3",
+        "price_s4",
+        "price_s5"
+      ],
+      "scenario_weights": [0.2, 0.2, 0.2, 0.2, 0.2],
+      "release_cutoff": "D-1 09:00",
+      "note": "5 列日前情景价格等权；288 点、5 分钟一点，必须保持同一交易日。"
+    },
+    "t1": {
+      "file": "data/t1_demo.csv",
+      "required_fields": [
+        "date",
+        "slot",
+        "da_price",
+        "rt_price",
+        "actual_discharge_mw",
+        "actual_charge_mw"
+      ],
+      "note": "日前价、实时价与计量充放电量；两结算需要同时给 da_price 与 rt_price，缺一不可。"
+    }
+  }
+}

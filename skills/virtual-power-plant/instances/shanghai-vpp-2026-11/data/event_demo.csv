@@ -1,0 +1,4 @@
+﻿scenario,event_date,event_start,event_end,required_mw,incentive_price_cny_per_kwh
+s1,2026-08-14,14:00,15:00,70.0,3.6
+s2,2026-08-14,14:00,15:00,80.0,4.2
+s3,2026-08-14,14:00,15:00,90.0,5.0
