@@ -129,7 +129,7 @@ a:hover{text-decoration:underline;text-underline-offset:3px}
 .hub-theme-toggle .ico-sun{display:none}
 :root[data-theme="dark"] .hub-theme-toggle .ico-moon{display:none}
 :root[data-theme="dark"] .hub-theme-toggle .ico-sun{display:block}
-.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;border-top:1px solid var(--line);padding-top:15px;max-width:520px}
+.hero-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;border-top:1px solid var(--line);padding-top:15px;max-width:640px}
 .stat b{display:block;font-family:var(--serif);font-size:22px;line-height:1.1;font-weight:600;letter-spacing:-.02em}
 .stat span{display:block;font-size:var(--fs-2xs);color:var(--muted);margin-top:3px;letter-spacing:.02em}
 .hero-note{font-size:var(--fs-xs);color:var(--muted);margin-top:9px;line-height:1.6}
@@ -396,6 +396,13 @@ mark.hit{background:var(--amber-soft);color:inherit;border-radius:2px;padding:0 
 .skill-card:hover{border-color:var(--teal);text-decoration:none;transform:translateY(-1px)}
 .skill-card b{display:block;font-size:var(--fs-xs);margin-bottom:1px}
 .skill-card span{display:block;font-size:var(--fs-2xs);line-height:1.5;color:var(--muted)}
+.instance-entry{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:18px;padding:16px 20px;border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:10px;background:var(--paper-2);color:inherit;text-decoration:none;transition:border-color .15s,background .15s,transform .15s}
+.instance-entry:hover{border-color:var(--teal);background:var(--card);text-decoration:none;transform:translateY(-1px)}
+.instance-entry-body{display:block;min-width:0}
+.instance-entry-kicker{display:block;font:600 var(--fs-2xs)/1.4 var(--mono);letter-spacing:.08em;color:var(--teal)}
+.instance-entry b{display:block;font-family:var(--serif);font-size:var(--fs-md);font-weight:600;letter-spacing:-.01em;margin:2px 0 3px}
+.instance-entry-desc{display:block;font-size:var(--fs-xs);line-height:1.65;color:var(--muted);max-width:76em}
+.instance-entry-go{flex:none;font-size:var(--fs-xs);font-weight:600;color:var(--teal);white-space:nowrap}
 
 footer{margin-top:46px;border-top:1px solid var(--line-strong);padding:20px 0 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:var(--fs-2xs);line-height:1.7;color:var(--muted)}
 footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
@@ -487,9 +494,11 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   .hero-search input{font-size:16px;padding-top:10px;padding-bottom:10px}
   .hero-search-go{min-height:40px;padding:0 12px}
   .hero-stats{grid-template-columns:1fr 1fr}
+  .hero-stats .stat:last-child:nth-child(odd){grid-column:1/-1}
   .hero-actions{display:flex;flex-wrap:wrap;gap:9px}
   .hero-actions .btn{justify-content:center;min-height:44px}
   .hero-note{display:none}
+  .instance-entry{flex-direction:column;align-items:flex-start;gap:8px;padding:14px 16px}
   .sec-head h2{font-size:clamp(22px,7vw,29px)}
   .sec-head{grid-template-columns:1fr;gap:6px}
   .sec-num{padding-top:0}
@@ -590,6 +599,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
           <p class="hero-search-status" id="heroSearchStatus" aria-live="polite">标题、标签与正文都可检索；按 <span class="mono">/</span> 快速聚焦。</p>
           <div class="hero-actions">
             <a class="btn btn-ghost" href="html/政策列表-2026-11.html">政策原文 <span aria-hidden="true">→</span></a>
+            {{instanceAction}}
             <a class="btn btn-ghost" href="#map">知识地图</a>
             <a class="btn btn-ghost" href="#skills">九项配套技能</a>
           </div>
@@ -1102,6 +1112,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
           <a class="skill-card" href="html/skill-tariff-bill-optimization.html"><b>电价与电费优化</b><span>账单科目、基本电费、分时与套餐比价</span></a>
           <a class="skill-card" href="html/skill-retail-electricity-risk.html"><b>售电零售与风险</b><span>套餐定价、客户组合、偏差与保函</span></a>
         </div>
+        {{instanceEntry}}
       </section>
 
       <!-- 05 Method -->
@@ -1408,7 +1419,12 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
       return;
     }
     searchResults.hidden = false;
-    if (searchResultsCount) searchResultsCount.textContent = visible.length + ' 个模块 · ' + totalHits + ' 处匹配';
+    var extraCount = visible.filter(function (item) { return item.doc.type === 'instance'; }).length;
+    var moduleCount = visible.length - extraCount;
+    var countLabel = [];
+    if (moduleCount) countLabel.push(moduleCount + ' 个模块');
+    if (extraCount) countLabel.push(extraCount + ' 个实例总览');
+    if (searchResultsCount) searchResultsCount.textContent = countLabel.join(' + ') + ' · ' + totalHits + ' 处匹配';
     visible.forEach(function (item) {
       var link = document.createElement('a');
       link.className = 'search-result';
@@ -1457,7 +1473,12 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
       if (activeCat !== 'all' && item.doc.cat !== activeCat) return false;
       return true;
     }).reduce(function (sum, item) { return sum + item.hits; }, 0);
-    heroStatus.textContent = visible + ' 个相关模块 · ' + hits + ' 处正文命中';
+    var extraHits = groups.filter(function (item) {
+      if (activeType !== 'all' && item.doc.type !== activeType) return false;
+      if (activeCat !== 'all' && item.doc.cat !== activeCat) return false;
+      return item.doc.type === 'instance';
+    }).length;
+    heroStatus.textContent = visible + ' 个模块' + (extraHits ? ' + ' + extraHits + ' 个实例总览' : '') + ' · ' + hits + ' 处正文命中';
   }
 
   function applyFilter() {

@@ -23,6 +23,7 @@ import { fileURLToPath } from 'node:url';
 import { nav, sectionTitlesEn, sections, site, skillDocs } from './knowledge.config.mjs';
 import { buildIndex, serializeIndex } from './credibility.mjs';
 import { CURATED_ARCH_IDS, renderCuratedArchitecture } from './architecture-diagrams.mjs';
+import { buildInstanceSearchRecord, discoverInstancePacks, renderInstancesPage } from './instance-packs.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const knowledgeDir = join(root, 'knowledge');
@@ -1107,6 +1108,18 @@ ${mods.map(renderCard).join('\n')}
   return blocks.join('\n\n');
 }
 
+function renderInstanceEntry() {
+  const { count, groups, provinces } = instanceData;
+  return `<a class="instance-entry" href="instances.html">
+          <span class="instance-entry-body">
+            <span class="instance-entry-kicker">INSTANCE LAYER · 配置层</span>
+            <b>${count} 个可运行实例包：一省一主体</b>
+            <span class="instance-entry-desc">覆盖${esc(provinces.join('、'))} ${provinces.length} 个省份、${groups.length} 项技能：煤电中长期、光储联合报价、独立储能、VPP、售电零售与工商业电费优化。选包 → 改 JSON → 换 CSV → 运行 run.py。</span>
+          </span>
+          <span class="instance-entry-go">查看总览 <span aria-hidden="true">→</span></span>
+        </a>`;
+}
+
 function renderIndex() {
   const tokensCss = readFileSync(tokensPath, 'utf8').replace(/\r\n?/g, '\n').trim();
   const template = readFileSync(templatePath, 'utf8')
@@ -1123,7 +1136,10 @@ function renderIndex() {
               <div class="stat"><b>${coreCount}</b><span>核心模块</span></div>
               <div class="stat"><b>${researchCount}</b><span>调研底稿</span></div>
               <div class="stat"><b>${site.skills}</b><span>配套技能</span></div>
+              <div class="stat"><b>${instanceData.count}</b><span>实例包</span></div>
             `,
+    instanceAction: `<a class="btn btn-ghost" href="instances.html">实例包 <span aria-hidden="true">→</span></a>`,
+    instanceEntry: renderInstanceEntry(),
     resultDefault: `${total} / ${total} 个模块`,
     categoryFilters: renderCategoryFilters(),
     categoryOptions: renderCategoryOptions(),
@@ -1475,7 +1491,7 @@ function htmlText(html) {
     .trim();
 }
 
-function buildSearchIndex(pageItems) {
+function buildSearchIndex(pageItems, extraRecords = []) {
   const searchText = (html) => htmlText(html)
     .replace(/[─│┌┐└┘├┤┬┴┼▲▼◀▶]/g, ' ')
     .replace(/\s+/g, ' ')
@@ -1517,6 +1533,7 @@ function buildSearchIndex(pageItems) {
     };
   });
   if (records.length !== docs.length) throw new Error(`全文索引模块数 ${records.length} 与清单 ${docs.length} 不一致`);
+  records.push(...extraRecords);
   const payload = JSON.stringify({ schema: 1, cutoff, docs: records })
     .replace(/</g, '\\u003c')
     .replace(/\u2028/g, '\\u2028')
@@ -1573,8 +1590,11 @@ const downloadFiles = skillManifest.map((doc) => ({
   content: doc.txt,
 }));
 
+const instanceData = discoverInstancePacks(root, skillDocs);
+const instancePath = join(knowledgeDir, 'instances.html');
+const instanceHtml = renderInstancesPage(instanceData);
 const indexHtml = renderIndex();
-const searchIndexJs = buildSearchIndex(pages);
+const searchIndexJs = buildSearchIndex(pages, [buildInstanceSearchRecord(instanceData)]);
 const credibilityIndex = buildIndex(root);
 const credibilityJson = serializeIndex(credibilityIndex);
 const credByFile = new Map(credibilityIndex.modules.map((m) => [m.file, m]));
@@ -1629,13 +1649,16 @@ function verifyLinks(baseDir, html, label, pending = new Set()) {
 
 const pendingPages = new Set(allPages.map((p) => join(htmlDir, p.doc.html)));
 for (const f of downloadFiles) pendingPages.add(f.path);
+pendingPages.add(instancePath);
 verifyLinks(knowledgeDir, indexHtml, 'knowledge/index.html', pendingPages);
+verifyLinks(knowledgeDir, instanceHtml, 'knowledge/instances.html', pendingPages);
 for (const { doc, html } of allPages) verifyLinks(htmlDir, html, `knowledge/html/${doc.html}`, pendingPages);
 
 if (checkMode) {
   const diffs = [];
   const same = (path, expected) => existsSync(path) && readFileSync(path, 'utf8').replace(/\r\n?/g, '\n') === expected;
   if (!same(indexPath, indexHtml)) diffs.push('knowledge/index.html 不是最新生成物');
+  if (!same(instancePath, instanceHtml)) diffs.push('knowledge/instances.html 不是最新生成物');
   if (!same(searchIndexPath, searchIndexJs)) diffs.push('knowledge/search-index.js 不是最新生成物');
   if (!same(credibilityPath, credibilityJson)) diffs.push('knowledge/credibility.json 不是最新生成物');
   if (!same(englishDigestPath, englishDigestJson)) diffs.push('knowledge/english-digest.json 不是最新生成物');
@@ -1660,7 +1683,7 @@ if (checkMode) {
     for (const d of diffs) console.error(`- ${d}`);
     process.exit(1);
   }
-  console.log(`生成物校验通过：index.html + search-index.js + credibility.json + english-digest.json + ${pages.length} 个知识页 + ${skillPages.length} 个技能页 + ${downloadFiles.length} 个下载文件均为最新（${total} 个模块 / ${fmt(totalLines)} 行）。`);
+  console.log(`生成物校验通过：index.html + instances.html + search-index.js + credibility.json + english-digest.json + ${pages.length} 个知识页 + ${skillPages.length} 个技能页 + ${downloadFiles.length} 个下载文件均为最新（${total} 个模块 / ${fmt(totalLines)} 行 / ${instanceData.count} 个实例包）。`);
   process.exit(0);
 }
 
@@ -1668,6 +1691,7 @@ for (const { doc, html } of allPages) writeFileSync(join(htmlDir, doc.html), htm
 writeFileSync(searchIndexPath, searchIndexJs, 'utf8');
 writeFileSync(credibilityPath, credibilityJson, 'utf8');
 writeFileSync(englishDigestPath, englishDigestJson, 'utf8');
+writeFileSync(instancePath, instanceHtml, 'utf8');
 mkdirSync(downloadDir, { recursive: true });
 for (const f of downloadFiles) writeFileSync(f.path, f.content, 'utf8');
 if (rewriteIndex) writeFileSync(indexPath, indexHtml, 'utf8');
@@ -1678,6 +1702,7 @@ const headings = pages.reduce((a, p) => a + p.doc.headings.length, 0);
 console.log(`已生成 ${pages.length} 个知识页 + ${skillPages.length} 个技能页 + ${downloadFiles.length} 个 TXT → knowledge/html/`);
 console.log(`模块 ${total} 个 / 正文 ${fmt(totalLines)} 行；章节 ${headings}，表格 ${tables}，代码/图块 ${codes}`);
 if (rewriteIndex) console.log('已生成 knowledge/index.html（卡片、侧栏与计数来自 frontmatter）');
-console.log(`已生成 knowledge/search-index.js（${pages.length} 个模块，全文懒加载）`);
+console.log(`已生成 knowledge/instances.html（${instanceData.count} 个实例包 / ${instanceData.groups.length} 项技能 / ${instanceData.provinces.length} 个省份）`);
+console.log(`已生成 knowledge/search-index.js（${pages.length} 个模块 + 1 个实例总览，全文懒加载）`);
 const biggest = [...allPages].map((p) => ({ html: p.doc.html, kb: Math.round(p.html.length / 1024) })).sort((a, b) => b.kb - a.kb).slice(0, 3);
 console.log(`最大页面：${biggest.map((b) => `${b.html} ${b.kb}KB`).join('，')}`);
