@@ -25,7 +25,7 @@
 
 > 每份技能都是一册可直接注入大模型上下文的 Markdown 手册。加载后，模型按该领域资深从业者的身份回答，并遵守内置纪律：数字带文号与时点、涉及省份先确认、政策内容给出查证入口、未交叉验证的数据标注“待核实”。
 
-当前版本 **v1.9**，数据截止 **2026-11-12**，正文 42,290 行。知识笔记、101 个阅读页、技能页、全文检索索引与图表均由仓库内容构建生成。
+当前版本 **v1.9**，数据截止 **2026-11-12**，正文 42,293 行。知识笔记、101 个阅读页、技能页、全文检索索引与图表均由仓库内容构建生成。
 
 **目录**　[快速开始](#快速开始) · [技能矩阵](#技能矩阵) · [知识库](#知识库) · [仓库结构](#仓库结构) · [维护](#维护知识中心) · [Roadmap](#roadmap) · [许可证](#许可证)
 
@@ -55,8 +55,8 @@ node scripts/check-maintenance.mjs --check
 |---|---|
 | **[电力交易专家](skills/electricity-trading-expert/SKILL.md)** · [EN](skills/electricity-trading-expert/SKILL_EN.md) | 现货出清与定价、中长期与金融、辅助服务与容量、结算计量、省别实践、新能源入市、燃料与气电成本、碳市场、11 个海外市场、交易策略与风控 |
 | **[现货报价量化专家](skills/spot-bidding-quant/SKILL.md)** · [EN](skills/spot-bidding-quant/SKILL_EN.md) | 负荷与电价预测、残差校正、量价曲线、购电组合、竞价仿真、滚动回测与 T+1 归因；盘面层含决策时钟、情景/CVaR 前沿、结算差异桥与公开数据回测协议；含山东独立储能实例包（一省一主体配置、D-1 申报表、T+1 差异桥） |
-| **[虚拟电厂专家](skills/virtual-power-plant/SKILL.md)** · [EN](skills/virtual-power-plant/SKILL_EN.md) | 资源聚合、三阶段演进、市场参与、商业模式、控制优化、政策与国际对标 |
-| **[售电零售与风险专家](skills/retail-electricity-risk/SKILL.md)** · [EN](skills/retail-electricity-risk/SKILL_EN.md) | 套餐全成本定价、客户组合、购电覆盖、偏差考核、批零倒挂、履约保函与退出 |
+| **[虚拟电厂专家](skills/virtual-power-plant/SKILL.md)** · [EN](skills/virtual-power-plant/SKILL_EN.md) | 资源聚合、三阶段演进、市场参与、商业模式、控制优化、政策与国际对标；含江苏负荷快速响应实例包（一省一聚合商、D-1 申报、情景出清、T+1 响应认定与差异桥） |
+| **[售电零售与风险专家](skills/retail-electricity-risk/SKILL.md)** · [EN](skills/retail-electricity-risk/SKILL_EN.md) | 套餐全成本定价、客户组合、购电覆盖、偏差考核、批零倒挂、履约保函与退出；含广东 2026 与江苏 2027 两个售电零售实例包（一省一主体配置、D-1 定价与购电表、T+1 差异桥） |
 
 ### 项目与资产
 

@@ -16,6 +16,11 @@ company or province.
 
 from __future__ import annotations
 
+import importlib.util
+import json
+import tempfile
+from pathlib import Path
+
 import curves
 import deviation
 import guarantee
@@ -148,5 +153,160 @@ close("day shape sums to one", sum(curves.day_shape("commercial")), 1.0, 1e-12)
 close("monthly energy sums to annual", sum(curves.monthly_energy(30e6)), 30e6, 1e-6)
 close("spot monthly mean equals level", sum(curves.spot_monthly(1.1)) / 12.0, 1.1, 1e-12)
 close("period count", len(curves.tou_periods()), 96, 0)
+
+# I. Guangdong retail instance pack (config, pricing, stress, D-1/T+1 bridge).
+pack_dir = (
+    Path(__file__).resolve().parents[1] / "instances" / "guangdong-retail-2026-11"
+)
+spec = importlib.util.spec_from_file_location("guangdong_retail_instance", pack_dir / "run.py")
+runner = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(runner)
+instance_path = pack_dir / "instance.json"
+config = json.loads(instance_path.read_text(encoding="utf-8"))
+report = runner.validate_instance(config)
+check(report["ok"], "I config validates")
+close("I points per day", report["points_per_day"], 96, 0)
+close("I MTU minutes", report["mtu_min"], 15, 0)
+check(report["style_fingerprint"] == "d94867ef8197", "I policy fingerprint is stable")
+
+broken = json.loads(json.dumps(config))
+del broken["rules"]["spot"]["grade"]
+raises(lambda: runner.validate_instance(broken), "I reject missing rule grade")
+
+broken = json.loads(json.dumps(config))
+broken["portfolio"]["segments"][0]["share"] = 0.60
+raises(lambda: runner.validate_instance(broken), "I reject shares that do not sum to one")
+
+broken = json.loads(json.dumps(config))
+broken["portfolio"]["segments"][0]["package_type"] = "linked"
+raises(lambda: runner.validate_instance(broken), "I reject unknown package type")
+
+broken = json.loads(json.dumps(config))
+broken["meta"]["units"]["price"] = "CNY/kWh"
+raises(lambda: runner.validate_instance(broken), "I reject a unit that breaks the price convention")
+
+with tempfile.TemporaryDirectory() as tmp:
+    result = runner.run_instance(
+        instance_path,
+        pack_dir / "data" / "d1_demo.csv",
+        pack_dir / "data" / "t1_demo.csv",
+        Path(tmp),
+    )
+    pricing = result["pricing"]
+    plan = result["summary"]["plan"]
+    bridge = result["bridge"]
+    close("I reference spot (CNY/MWh)", pricing["reference_spot_cny_per_mwh"], 375.6690343808412, 1e-6)
+    close("I weighted current price", pricing["weighted_current_price_cny_per_mwh"], 414.43283739926994, 1e-6)
+    close("I weighted full cost", pricing["weighted_recommended_price_cny_per_mwh"], 418.139939947815, 1e-6)
+    close("I weighted gap", pricing["weighted_gap_cny_per_mwh"], 3.7071025485450377, 1e-6)
+    close("I expected net margin", plan["expected_net_margin_cny"], 26063.306205362176, 1e-6)
+    close("I CVaR10", plan["cvar_10_cny"], -28353.77038104274, 1e-6)
+    close("I net spot exposure (MWh)", plan["net_exposure_mwh"], 309.60000005375, 1e-6)
+    close("I break-even spot multiplier", plan["break_even_spot_multiplier"], 1.318728134329629, 1e-9)
+    close("I plan net at reference", plan["net_margin_at_reference_cny"], 37070.3555308762, 1e-6)
+    close("I actual net", bridge["actual_net_cny"], 19898.468587679956, 1e-6)
+    close("I bridge delta", bridge["delta_cny"], -17171.886943196245, 1e-6)
+    check(abs(bridge["identity_gap"]) < 1e-6, "I bridge identity closes")
+    check(len(bridge["buckets"]) == 9, "I bridge has nine buckets")
+    close(
+        "I bridge bucket sum",
+        sum(row["amount"] for row in bridge["buckets"]),
+        bridge["delta_cny"],
+        1e-6,
+    )
+    check(len(pricing["rows"]) == 3, "I pricing sheet has three segments")
+    check(plan["cvar_10_cny"] <= plan["expected_net_margin_cny"], "I CVaR10 is below the mean")
+    check(result["summary"]["pricing"]["segments"][1]["recommended_adder_cny_per_mwh"] is not None, "I linked package has an adder")
+    for name in (
+        "pricing_sheet.csv",
+        "procurement_plan.csv",
+        "summary.json",
+        "bridge.json",
+        "bridge.csv",
+        "deviation_slots.csv",
+        "review.md",
+    ):
+        check((Path(tmp) / name).exists(), f"I writes {name}")
+
+# J. Jiangsu 2027 retail instance pack (pass-through, cap, allocation, bridge).
+pack_dir = (
+    Path(__file__).resolve().parents[1] / "instances" / "jiangsu-retail-2027"
+)
+spec = importlib.util.spec_from_file_location("jiangsu_retail_instance", pack_dir / "run.py")
+runner = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(runner)
+instance_path = pack_dir / "instance.json"
+config = json.loads(instance_path.read_text(encoding="utf-8"))
+report = runner.validate_instance(config)
+check(report["ok"], "J config validates")
+close("J points per day", report["points_per_day"], 96, 0)
+close("J MTU minutes", report["mtu_min"], 15, 0)
+check(report["style_fingerprint"] == "3cfa9f5ae1b1", "J policy fingerprint is stable")
+
+broken = json.loads(json.dumps(config))
+del broken["rules"]["price_formula"]["grade"]
+raises(lambda: runner.validate_instance(broken), "J reject missing rule grade")
+
+broken = json.loads(json.dumps(config))
+broken["portfolio"]["segments"][0]["share"] = 0.60
+raises(lambda: runner.validate_instance(broken), "J reject shares that do not sum to one")
+
+broken = json.loads(json.dumps(config))
+broken["portfolio"]["segments"][0]["package_type"] = "fixed"
+raises(lambda: runner.validate_instance(broken), "J reject a 2026 package type")
+
+broken = json.loads(json.dumps(config))
+broken["meta"]["units"]["price"] = "CNY/kWh"
+raises(lambda: runner.validate_instance(broken), "J reject a unit that breaks the price convention")
+
+broken = json.loads(json.dumps(config))
+broken["policy"]["cap_float_factor"] = 1.5
+raises(lambda: runner.validate_instance(broken), "J reject F outside [0, 1]")
+
+broken = json.loads(json.dumps(config))
+broken["contracts"]["retail_2027"]["retail_trade_date"] = "2026-12-20"
+raises(lambda: runner.validate_instance(broken), "J reject retail trade after annual wholesale")
+
+with tempfile.TemporaryDirectory() as tmp:
+    result = runner.run_instance(
+        instance_path,
+        pack_dir / "data" / "d1_demo.csv",
+        pack_dir / "data" / "t1_demo.csv",
+        Path(tmp),
+    )
+    plan = result["summary"]["plan"]
+    scenarios = result["summary"]["scenarios"]
+    bridge = result["bridge"]
+    close("J portfolio energy (MWh)", plan["energy_mwh"], 1972.6643237499993, 1e-6)
+    close("J P_MT (CNY/MWh)", plan["mt_price_cny_per_mwh"], 401.0, 1e-9)
+    close("J wholesale average", plan["wholesale_avg_cny_per_mwh"], 395.0146522921348, 1e-6)
+    close("J reference average", plan["reference_avg_cny_per_mwh"], 428.5181455117846, 1e-6)
+    close("J retail before cap", plan["retail_avg_cny_per_mwh"], 456.48365229213476, 1e-6)
+    close("J cap average", plan["cap_avg_cny_per_mwh"], 454.7378781263914, 1e-6)
+    close("J weighted clip", plan["clip_avg_cny_per_mwh"], 1.7457741657434325, 1e-6)
+    close("J capped segments", plan["capped_segments"], 4, 0)
+    close("J plan net (CNY)", plan["net_cny"], 89691.96440793341, 1e-6)
+    close("J expected net (CNY)", scenarios["expected_net_cny"], 92042.62152861648, 1e-6)
+    close("J CVaR10 (CNY)", scenarios["cvar_10_cny"], 89691.96440793341, 1e-6)
+    close("J actual net (CNY)", bridge["actual_net_cny"], 93280.2571830987, 1e-6)
+    close("J bridge delta (CNY)", bridge["delta_cny"], 3588.2927751652896, 1e-6)
+    check(abs(bridge["identity_gap"]) < 1e-6, "J bridge identity closes")
+    check(len(bridge["buckets"]) == 6, "J bridge has six buckets")
+    check(abs(bridge["cap_impact_cny"]) < 1e-6, "J cap impact is diagnostic only")
+    check(len(plan["segments"]) == 4, "J pricing sheet has four segments")
+    caps = {row["segment"]: row["cap_cny_per_mwh"] for row in plan["segments"]}
+    check(max(caps.values()) - min(caps.values()) > 1.0, "J one-household-one-price caps differ")
+    for name in (
+        "pass_through_curve.csv",
+        "pricing_sheet.csv",
+        "scenario_table.csv",
+        "stress_table.csv",
+        "summary.json",
+        "bridge.json",
+        "bridge.csv",
+        "top_slots.csv",
+        "review.md",
+    ):
+        check((Path(tmp) / name).exists(), f"J writes {name}")
 
 print("\nAll retail electricity and risk self-tests passed.")

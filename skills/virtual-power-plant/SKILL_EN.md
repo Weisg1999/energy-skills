@@ -7,7 +7,7 @@ description: Virtual power plant (VPP) expert — covers VPP concept distinction
 
 > 🌐 Chinese version: [SKILL.md](SKILL.md) | Sister skill: [Electricity Trading Expert SKILL (EN)](../electricity-trading-expert/SKILL_EN.md) — for spot-market / settlement / carbon-market mechanism details, check that skill first.
 
-> **Version**: v1.9 (updated 2026-11-08) | **Knowledge sources**: *Approaching Virtual Power Plants* (走近虚拟电厂, Wang Peng, Wang Dongrong et al., China Machine Press 2020) plus 2025-2026 public policy research (list in Chapter 15)
+> **Version**: v1.9 (updated 2026-11-08) | **Knowledge sources**: *Approaching Virtual Power Plants* (走近虚拟电厂, Wang Peng, Wang Dongrong et al., China Machine Press 2020) plus 2025-2026 public policy research (list in Chapter 16)
 > **Data cutoff**: 2026-11-01. September-October 2026 was a dense policy period: the new spot-market rules, the retailer management measure and the market risk-control measure are still **drafts for comment**. The text marks them as "draft / proposed to take effect".
 > **Positioning**: This file is a domain skill (Skill) injectable into an AI assistant. Once loaded, the AI should answer virtual power plant questions as a "senior VPP expert".
 > **Maintenance entry points**: for document numbers and calibers see `knowledge/索引与口径-2026-11.md`; for per-province VPP thresholds see `knowledge/省级市场状态表-2026-11.md`; for DR baselines, assessment/settlement and V2G market participation see `knowledge/需求响应、车网互动与灵活性资源-2026-11.md`; for revision regression tests use `knowledge/黄金问答集-2026-11.md`.
@@ -405,7 +405,46 @@ Oil crises (1970s) → IRP / least-cost planning → DSM → power market reform
 
 ---
 
-## 13. Glossary (selected, Chinese-English)
+## 13. Code Map and the Instance Layer
+
+| File | Purpose |
+|---|---|
+| `tools/aggregation.py` | Resource capability (rated × adjustable ratio × duration), aggregation and the measured-capability band |
+| `tools/cbl.py` | Similar-day baseline (latest 5 class days, ±25% symmetric screen or asymmetric 25%/200%), response rate and validity test |
+| `tools/dispatch.py` | Time-of-use arbitrage, segment energy scheduling, annualised net revenue |
+| `tools/finance.py` | Revenue breakdown, income statement, cash flows, NPV/IRR/payback and scenarios |
+| `tools/selftest.py` | Locks every worked example in Chapters A–D plus instance-layer section E |
+
+Run:
+
+```bash
+python skills/virtual-power-plant/tools/selftest.py
+```
+
+A green self-test means the text's worked examples agree with the code; when baseline, subsidy or cost parameters change, update the call parameters or `cbl.py` first and then the figures in the text.
+
+### 13.1 Instance pack: Jiangsu load fast-response aggregator
+
+The engine layer answers "how is adjustable capability converted, how is the baseline computed, how is response certified, how is revenue estimated". The instance layer answers "**for this province, this resource portfolio, these contracts and this bidding style, how much do I declare at the next call, how do I deliver once cleared, and where did T+1 differ**". Instances are a configuration layer and do not change the knowledge base's 101 modules / 13 sections / 9 skills count.
+
+| File | Purpose |
+|---|---|
+| `instances/README.md` | VPP instance schema: six blocks (`resources` replaces `asset`), 96-point formats, 30-minute workflow, validation and acceptance |
+| `instances/jiangsu-fast-response-2026-11/instance.json` | Jiangsu config: direct/self-controlled resources, 15/10 CNY/kWh declaration caps, 150%/120% overshoot caps, customer sharing and shortfall compensation |
+| `instances/jiangsu-fast-response-2026-11/run.py` | Config validation → capability and declaration → scenario clearing → T+1 response certification → 11-bucket bridge → review table |
+| `instances/jiangsu-fast-response-2026-11/make_demo.py` | Grade-D synthetic baseline history, call scenarios and T+1 metering (96 points) |
+| `instances/jiangsu-fast-response-2026-11/pitfalls.md` | Jiangsu fast-response pitfalls and a 60-second pre-call checklist |
+
+```bash
+python skills/virtual-power-plant/instances/jiangsu-fast-response-2026-11/run.py --check-config
+python skills/virtual-power-plant/instances/jiangsu-fast-response-2026-11/run.py --demo
+```
+
+Grade-D synthetic baseline (2026-11-13): adjustable capability 30.66 MW direct / 10.80 MW self-controlled, declared 26.0 / 8.6 MW; plan net revenue 45,881 CNY, scenario expectation 48,401, CVaR −2,000; T+1 actual 53,303, delta +7,423, 11-bucket bridge residual < 1e-6 CNY; direct actual response 24.20 MW, self-controlled metered at the 120% cap 10.32 MW. The numbers validate the workflow only and correspond to no real user or aggregator; keep real user ledgers, baseline history and contracts local.
+
+---
+
+## 14. Glossary (selected, Chinese-English)
 
 | Term | Chinese | One-line explanation |
 |---|---|---|
@@ -434,9 +473,9 @@ Oil crises (1970s) → IRP / least-cost planning → DSM → power market reform
 
 ---
 
-## 14. Expert Q&A Reasoning Handbook
+## 15. Expert Q&A Reasoning Handbook
 
-### 14.1 Question Typing and Answer Paths
+### 15.1 Question Typing and Answer Paths
 1. **Concept-distinction questions** ("How is a VPP different from a microgrid / retailer / DR?"): give the criteria table (1.2) → apply the three rulers of "reverse power flow / physical vs logical aggregation / market coupling" → land a one-liner.
 2. **Stage-judgment questions** ("What stage is our province / our project at?"): use the Chapter 4 criteria — is the revenue source a subsidy or market prices? Does it submit quantity-price bids into the market? Does it dispatch across space? → give the stage + the transition conditions (market construction + communication capability).
 3. **Implementation-path questions** ("Where do we start building a VPP?"): resource inventory (A-D classification) → verify provincial policies and products (the Chapter 9 table) → access and platform integration (load-management system vs dispatch automation system) → a minimal pilot loop (run CBL settlement through one product) → stack products gradually.
@@ -444,7 +483,7 @@ Oil crises (1970s) → IRP / least-cost planning → DSM → power market reform
 5. **Technology-selection questions** ("Which communication tech? Do we need blockchain?"): derive requirements backward from the market rules' response times and settlement cycles (e.g. 15-min settlement → instructions every 15 min) → communications by scenario (NB-IoT/LoRa/5G) → adopt blockchain only when all three conditions hold (multi-party trust, small high-frequency transactions, allocation sensitivity); use the 7.2 verdict for selection.
 6. **Policy-interpretation questions** ("Opportunities in Document No. 357?"): positioning (new-type entity) → targets (2027/2030) → rule essentials (no double aggregation, two system accesses) → the respective opportunities for aggregators / users / equipment vendors → remind about provincial-rule differences and verification entry points.
 
-### 14.2 Common Misconceptions (correct proactively)
+### 15.2 Common Misconceptions (correct proactively)
 1. Equating VPP with "a demand-response platform" — DR is only a subset; VPP also aggregates distributed generation and storage and can feed power reversely;
 2. Equating VPP with a microgrid — a VPP changes no physical architecture, spans space, and runs grid-connected only;
 3. Believing a market-based VPP is possible without a market — without price signals there is no market-based VPP, only solicitation-based;
@@ -462,7 +501,7 @@ Oil crises (1970s) → IRP / least-cost planning → DSM → power market reform
 15. Fabricating a document number for a "national VPP management measure" — as of 2026-11-01 the NEA has not formally issued one; only Document No. 357, Document No. 93, the national standards and the 2026 spot-rules draft exist.
 16. Treating the 2026-10-19 spot-rules draft as current rules — it is proposed to take effect 2027-01-01; in 2026 Document No. 1217 and provincial rules still govern.
 
-### 14.3 Data-Currency Discipline
+### 15.3 Data-Currency Discipline
 - The book's knowledge vintage: 2018-2020 (China Machine Press, 2020); OCR corrections were cross-checked against context; anything still doubtful is flagged in the original;
 - The web-research vintage: **2026-11-01** (Document No. 357, provincial rules, the 2026 spot-rules draft, V2G pilots, green direct connection, Order 2222 implementation, etc.); time-sensitive chapters (5, 6, 8, 9, 10) carry a "chapter data cutoff" line under the heading; unmarked chapters are principle-based and not time-sensitive;
 - Policy-status reminder: the spot rules, retailer measure, risk-control measure and credit-evaluation guidelines of September-October 2026 are drafts for comment; the national VPP management measure has not been issued; the Liaoning/Anhui thresholds and Hainan's reported 2026-11-01 effective date still need checking against the original texts;
@@ -471,13 +510,13 @@ Oil crises (1970s) → IRP / least-cost planning → DSM → power market reform
 
 ---
 
-## 15. Knowledge Sources and Maintenance
+## 16. Knowledge Sources and Maintenance
 
-### 15.1 Book Sources
+### 16.1 Book Sources
 - *Approaching Virtual Power Plants* (走近虚拟电厂), edited by Wang Peng, Wang Dongrong et al., China Machine Press 2020 — the backbone of this skill (concepts / resources / three stages / control & optimization / market entities / 5G / blockchain / afterword framework);
 - The knowledge base of the sister skill *Electricity Trading Expert* applies equally to this skill's market-mechanics parts (spot / ancillary services / settlement / carbon markets): see its Chapter 15 for the six-book list.
 
-### 15.2 Policy and Market Research (2025-2026)
+### 16.2 Policy and Market Research (2025-2026)
 - The 2025-2026-11 incremental research (2026-11-01 review; per-item URLs with verified/to-be-verified flags in the 2026-09 and 2026-10 research notes under `knowledge/`): the original text and rollout map of Document No. 357 (at least 20 provinces with dedicated policies / 15 with implementation rules), Document No. 93, the national-standard trio (GB/T 47241-2026 effective 2026-09-01), the national 470 projects / 16.85 GW official figure and the 2026-06 media 120 million kW connected-capacity figure, green direct connection (Documents 650/688; 2026-07 100 projects / 34.10 GW), zero-carbon parks (Document 910, first batch of 52), V2G pilots (Document 241), State Council General Office〔2026〕No. 4, NDRC Pricing〔2026〕No. 114, the 2026-10-19 spot-rules draft, the per-ISO Order 2222 implementation table, DOE's 80-160 GW target, ENTSO-E's doubling flexibility needs, the SA VPP handover to AGL, quantified AI-model data, etc.
 - Caliber conflicts found during the 2026-11 update (official 470/16.85 GW vs media 120 million kW/800+; Order 2222 "approved vs implemented"; the Shenzhen funding measure having expired) have been corrected in the text; where the 2026-09 notes disagree, this SKILL prevails.
 - Earlier research (2026-09-12): DR subsidy landscape, V2G pilot cities, peak-valley arbitrage market size — see the research notes under the repo's `knowledge/` directory.
@@ -489,7 +528,7 @@ Oil crises (1970s) → IRP / least-cost planning → DSM → power market reform
   - `knowledge/INDEX_EN-2026-11.md` — English index and digest: file map, key figures with grades, a condensed provincial table and the open-items list; use it when answering from an English-only context.
 - **Division of labour with the sister skill**: this skill owns resource aggregation, control technology, business models and asset-side estimates; market rules, settlement formulas, pricing mechanisms, retail and carbon markets belong to *Electricity Trading Expert*. Overlapping passages carry only a pointer, and numbers defer to the skill that owns the topic.
 
-### 15.3 Known Limitations
+### 16.3 Known Limitations
 - The book's data are as of 2018-2020; industry scale, subsidy standards and access thresholds change fast — defer to the Chapter 9 research figures and the latest official documents;
 - Where OCR damaged individual digits, "about / on the order of" or (to be verified) is used; re-verify before quoting important numbers;
 - Provincial implementation rules after Document No. 357 are still updating rapidly; the 2026 Liaoning, Fujian, Anhui and Zhejiang rules here are summarized from public reports rather than a clause-by-clause reading of the originals; the national VPP management measure has not been issued; this skill does not replace real-time policy search;

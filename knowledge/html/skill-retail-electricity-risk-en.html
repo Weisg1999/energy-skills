@@ -85,8 +85,8 @@
       <p class="lede">Package pricing, customer portfolio, deviation and guarantees</p>
       <p class="hook">Executable workflow and tools; synced with SKILL.md.</p>
       <div class="tags"><span class="tag">skill</span><span class="tag">retail</span><span class="tag">deviation</span><span class="tag">guarantee</span></div>
-      <div class="doc-meta"><span>approx. 40.9k characters</span><span>37 min read</span><span>15 sections</span></div>
-      <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-retail-electricity-risk-en.txt" download="Retail Electricity Sales &amp; Risk-SKILL.txt">Download TXT</a><span>Full skill document, about 49 KB, frontmatter included</span></p>
+      <div class="doc-meta"><span>approx. 43.9k characters</span><span>39 min read</span><span>15 sections</span></div>
+      <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-retail-electricity-risk-en.txt" download="Retail Electricity Sales &amp; Risk-SKILL.txt">Download TXT</a><span>Full skill document, about 52 KB, frontmatter included</span></p>
     </header>
 
     <details class="toc-mobile">
@@ -105,8 +105,8 @@
             <li class="lv2"><a href="#s60">10. Worked Examples (Synthetic Data, Grade D)</a></li>
             <li class="lv2"><a href="#s70">11. Compliance, Ledgers and Red Lines</a></li>
             <li class="lv2"><a href="#s76">12. Code Map and Self-Test</a></li>
-            <li class="lv2"><a href="#s77">13. Q&amp;A</a></li>
-            <li class="lv2"><a href="#s78">14. Sources and Maintenance</a></li>
+            <li class="lv2"><a href="#s78">13. Q&amp;A</a></li>
+            <li class="lv2"><a href="#s79">14. Sources and Maintenance</a></li>
       </ol>
     </details>
 
@@ -351,12 +351,22 @@ Adjustment coefficient ∈ [1, 10]</code></pre>
 <ul><li>Never write a draft as already in force;</li><li>Never substitute another province's rules;</li><li>Never quote below cost;</li><li>Never sign side agreements or pay offline rebates;</li><li>Never conceal deviation responsibility or exit clauses;</li><li>Never misappropriate deposits;</li><li>Never promise a retailer &quot;guaranteed profit&quot;;</li><li>Never alter load, deviation or settlement data.</li></ul>
 <hr>
 <h2 id="s76">12. Code Map and Self-Test</h2>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>File</th><th>Purpose</th></tr></thead><tbody><tr><td><code>tools/package.py</code></td><td>Fixed and market-linked quotations, single-customer annual result, break-even spot price</td></tr><tr><td><code>tools/portfolio.py</code></td><td>Portfolio net profit, customer contribution, spot stress, break-even multiplier</td></tr><tr><td><code>tools/deviation.py</code></td><td>Out-of-band volume, assessment cost, expectation and 95% quantile</td></tr><tr><td><code>tools/guarantee.py</code></td><td>Current and draft guarantees, funding cost, gap</td></tr><tr><td><code>tools/curves.py</code></td><td>Synthetic customer curves, spot curve and TOU prices</td></tr><tr><td><code>tools/selftest.py</code></td><td>Locks all worked examples A–H in the text</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>File</th><th>Purpose</th></tr></thead><tbody><tr><td><code>tools/package.py</code></td><td>Fixed and market-linked quotations, single-customer annual result, break-even spot price</td></tr><tr><td><code>tools/portfolio.py</code></td><td>Portfolio net profit, customer contribution, spot stress, break-even multiplier</td></tr><tr><td><code>tools/deviation.py</code></td><td>Out-of-band volume, assessment cost, expectation and 95% quantile</td></tr><tr><td><code>tools/guarantee.py</code></td><td>Current and draft guarantees, funding cost, gap</td></tr><tr><td><code>tools/curves.py</code></td><td>Synthetic customer curves, spot curve and TOU prices</td></tr><tr><td><code>tools/selftest.py</code></td><td>Locks all worked examples A–H in the text plus instance-layer I/J</td></tr></tbody></table></div>
 <p>Run:</p>
 <pre tabindex="0"><code>python skills/retail-electricity-risk/tools/selftest.py</code></pre>
 <p>A green self-test means the text and code agree; when a policy parameter changes, update <code>curves.py</code> or the call parameters first, then sync the numbers in both language versions.</p>
+<h3 id="s77">12.1 Instance packs: Guangdong 2026 and Jiangsu 2027 retail</h3>
+<p>The engine layer answers &quot;what is the method&quot;; the instance layer answers &quot;<strong>for this province, this customer portfolio, these contracts and this trading style, what price do we quote, how much do we buy, and where did T+1 differ</strong>&quot;. The instance is a configuration layer and does not change the 101 modules / 13 sections / 9 skills count.</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>File</th><th>Purpose</th></tr></thead><tbody><tr><td><code>instances/README.md</code></td><td>Retail instance schema: six blocks, two package models (<code>fixed_market_linked</code> / <code>annual_retail_pass_through</code>), D-1/T+1 formats, 30-minute workflow, validation and acceptance</td></tr><tr><td><code>instances/guangdong-retail-2026-11/instance.json</code></td><td>Guangdong config: Southern regional price zone, three customer segments, 75% medium-term cover, contract deviation terms, 1595 guarantee</td></tr><tr><td><code>instances/guangdong-retail-2026-11/run.py</code></td><td>Config validation → full-cost pricing → five scenarios/stress → 9-bucket T+1 bridge → review table</td></tr><tr><td><code>instances/guangdong-retail-2026-11/make_demo.py</code></td><td>Grade-D synthetic D-1/T+1 data (96 points × 5 scenarios)</td></tr><tr><td><code>instances/guangdong-retail-2026-11/pitfalls.md</code></td><td>Ten Guangdong retail pitfalls and a 60-second pre-quote checklist</td></tr><tr><td><code>instances/jiangsu-retail-2027/instance.json</code></td><td>Jiangsu 2027 config: wholesale price + floating price + ΣK×allocation, one-household-one-price cap (F agreed by buyer and seller), split green-power energy/environmental contracts</td></tr><tr><td><code>instances/jiangsu-retail-2027/run.py</code></td><td>Config validation → wholesale/reference price → segment pass-through and cap → four stress cases → 6-bucket T+1 bridge → review table</td></tr><tr><td><code>instances/jiangsu-retail-2027/make_demo.py</code></td><td>Grade-D synthetic D-1 load and T+1 actuals (96 points, incl. P1/P2/P3 allocations)</td></tr><tr><td><code>instances/jiangsu-retail-2027/pitfalls.md</code></td><td>Twelve Jiangsu 2027 retail pitfalls and a 60-second pre-quote checklist</td></tr></tbody></table></div>
+<pre tabindex="0"><code>python skills/retail-electricity-risk/instances/guangdong-retail-2026-11/run.py --check-config
+python skills/retail-electricity-risk/instances/guangdong-retail-2026-11/run.py --demo
+python skills/retail-electricity-risk/instances/jiangsu-retail-2027/run.py --check-config
+python skills/retail-electricity-risk/instances/jiangsu-retail-2027/run.py --demo</code></pre>
+<p>Guangdong grade-D synthetic baseline (2026-11-18): 2,880 MWh portfolio, reference spot 375.67 CNY/MWh, weighted procurement 393.92, current retail price 414.43, recommended full cost 418.14, weighted gap 3.71; plan margin 37,070 CNY, expected 26,063, CVaR10 −28,354; actual 19,898, delta −17,172, bridge residual −1.75e-10 CNY.</p>
+<p>Jiangsu 2027 grade-D synthetic baseline (2026-11-13): 1,972.7 MWh portfolio, P_MT 401.00, wholesale average 395.01, reference price 428.52, retail price 456.48, one-household-one-price cap 454.74 CNY/MWh, weighted clip 1.75, 4/4 segments capped; plan net margin 89,692 CNY, scenario expectation 92,043, CVaR10 89,692; actual 93,280, delta +3,588, bridge residual 0.00e+00. The stress table shows no clipping at spot ×0.8/×1.2/×1.5 and clipping only at ×1.0 — because the reference price rises almost 1:1 with spot while the wholesale price is only about 30% spot-linked; this is structural for full pass-through, not a model error.</p>
+<p>Both number sets validate the workflow only and correspond to no real company; keep real customer and contract data local.</p>
 <hr>
-<h2 id="s77">13. Q&amp;A</h2>
+<h2 id="s78">13. Q&amp;A</h2>
 <p><strong>Q1: A retailer says &quot;we earn only a few li per kWh&quot;. How do I judge that?</strong></p>
 <p>Is it gross spread or net profit? Deduct wholesale cost, deviation, opex, guarantee funding and bad debt. In this note the gross spread is 6.44 fen and net profit 3.14 fen; Guangdong's 2026 industry average net margin is about 0.39 fen (B/C). Quoting only the gross spread answers nothing.</p>
 <p><strong>Q2: Can a fixed-price package still be signed?</strong></p>
@@ -368,12 +378,12 @@ Adjustment coefficient ∈ [1, 10]</code></pre>
 <p><strong>Q5: If the customer leaves or the retailer exits, what happens to the user?</strong></p>
 <p>The user moves to universal service or agency purchasing and may choose a new retailer the next month; price, contract, invoice and deviation responsibility all change. Current or local universal-service prices are often 1.5× / 2× the agency purchasing price; the 2026 draft proposes settlement at the real-time spot price of the month of non-performance, and the final text is undecided.</p>
 <hr>
-<h2 id="s78">14. Sources and Maintenance</h2>
-<h3 id="s79">14.1 Main sources</h3>
+<h2 id="s79">14. Sources and Maintenance</h2>
+<h3 id="s80">14.1 Main sources</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>Type</th><th>Content</th></tr></thead><tbody><tr><td>Knowledge notes</td><td><a href="电力市场风险、信用与结算-2026-11.html">Power market risk, credit and settlement</a>, <a href="量化报价与交易风控-工程化-2026-11.html">quantitative bidding and trading risk control</a>, <a href="中国电价制度谱系-2026-11.html">tariff system note</a></td></tr><tr><td>Policy texts</td><td>NDRC, NEA, provincial DRC / energy bureaus and exchange public rules; document numbers and links in the policy lists</td></tr><tr><td>Provincial samples</td><td><a href="省级市场状态表-2026-11.html">Provincial market status</a>, <a href="省级政策列表-2026-11.html">provincial policy list</a> (grade B/C, pending verification)</td></tr><tr><td>Worked examples</td><td>All grade-D synthetic data generated by <code>tools/curves.py</code></td></tr></tbody></table></div>
-<h3 id="s80">14.2 Maintenance rules</h3>
+<h3 id="s81">14.2 Maintenance rules</h3>
 <ul><li>If any retail rule, deviation, guarantee, credit or universal-service rule changes, update the knowledge note first, then the <code>tools/</code> parameters and <code>selftest.py</code>, and finally both language versions of this skill;</li><li>Provincial values must carry document number, effective date and source grade;</li><li>Consultation drafts must not be written as already in force;</li><li>Review provincial samples and guarantee coefficients quarterly; run the P0 review monthly alongside the knowledge base.</li></ul>
-<h3 id="s81">14.3 Disclaimer</h3>
+<h3 id="s82">14.3 Disclaimer</h3>
 <p>This document and the tools are calculation demonstrations only and do not constitute investment advice, a quotation commitment or legal opinion. Real retail operations must use the latest provincial documents, real contracts and load data, and be reviewed by qualified professionals.</p>
 <ul><li><strong>Price-driver routing</strong>: quantity (<a href="气象与电力交易-2026-11.html">weather and power trading</a>), price (<a href="燃料与电力交易-2026-11.html">fuel and power trading</a>), deliverability (<a href="省间与跨区交易-2026-11.html">inter-provincial trading</a> §5.5-5.6). For &quot;why is this interval expensive&quot;, check quantity -&gt; price -&gt; constraint -&gt; superposition; see the <a href="黄金问答集-2026-11.html">golden Q&amp;A</a> section F (Q29-Q38) for regression questions.</li></ul>
     </article>
@@ -496,12 +506,13 @@ Adjustment coefficient ∈ [1, 10]</code></pre>
             <li class="lv3"><a href="#s74">11.4 P1: maintainability</a></li>
             <li class="lv3"><a href="#s75">11.5 Red lines</a></li>
             <li class="lv2"><a href="#s76">12. Code Map and Self-Test</a></li>
-            <li class="lv2"><a href="#s77">13. Q&amp;A</a></li>
-            <li class="lv2"><a href="#s78">14. Sources and Maintenance</a></li>
-            <li class="lv3"><a href="#s79">14.1 Main sources</a></li>
-            <li class="lv3"><a href="#s80">14.2 Maintenance rules</a></li>
-            <li class="lv3"><a href="#s81">14.3 Disclaimer</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="66" data-more-label="Show 66 subsections" data-less-label="Hide subsections">Show 66 subsections</button>
+            <li class="lv3"><a href="#s77">12.1 Instance packs: Guangdong 2026 and Jiangsu 2027 retail</a></li>
+            <li class="lv2"><a href="#s78">13. Q&amp;A</a></li>
+            <li class="lv2"><a href="#s79">14. Sources and Maintenance</a></li>
+            <li class="lv3"><a href="#s80">14.1 Main sources</a></li>
+            <li class="lv3"><a href="#s81">14.2 Maintenance rules</a></li>
+            <li class="lv3"><a href="#s82">14.3 Disclaimer</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="67" data-more-label="Show 67 subsections" data-less-label="Hide subsections">Show 67 subsections</button>
   </aside>
 </div>
 

@@ -44,19 +44,56 @@ def filter_by_deviation(days, deviation=0.25):
     return kept, dropped
 
 
-def customer_baseline(days, count=5, deviation=0.25, adjustment=1.0):
-    """CBL 基线负荷曲线：最近 5 个同类日 → 剔除 ±25% 异常日 → 逐点平均 × 修正系数。
+def filter_by_ratio_bounds(days, lower_ratio=0.25, upper_ratio=2.0):
+    """按「日电量 / 候选集均值」的上下界剔除异常日（江苏 5+3 基线口径）。
+
+    保留 lower_ratio × 均值 ≤ 日电量 ≤ upper_ratio × 均值 的日期；边界保留
+    （严格小于下界或严格大于上界才剔除）。江苏常用 0.25 / 2.0，即剔除低于均值
+    25% 或高于均值 200% 的日期。返回 (kept, dropped)。
+    """
+    if not days:
+        return [], []
+    mean_energy = sum(day["energy_mwh"] for day in days) / len(days)
+    kept, dropped = [], []
+    for day in days:
+        low = lower_ratio * mean_energy
+        high = upper_ratio * mean_energy
+        if mean_energy > 0 and (day["energy_mwh"] < low or day["energy_mwh"] > high):
+            dropped.append(day)
+        else:
+            kept.append(day)
+    return kept, dropped
+
+
+def customer_baseline(
+    days,
+    count=5,
+    deviation=0.25,
+    adjustment=1.0,
+    lower_ratio=None,
+    upper_ratio=None,
+):
+    """CBL 基线负荷曲线：最近 5 个同类日 → 剔除异常日 → 逐点平均 × 修正系数。
 
     days: 按时间由近到远排列的同类日列表，元素含 energy_mwh（MWh）与 curve_mw（MW 列表，
-    各日点数须一致）；count 相似日个数；deviation 剔除阈值；adjustment 修正系数。
+    各日点数须一致）；count 相似日个数；deviation 对称剔除阈值（默认 ±25%）。
+    lower_ratio / upper_ratio：非对称保留区间（相对候选集日均电量的倍数）；给任一值时
+    改用 filter_by_ratio_bounds，例如江苏快响按 0.25 / 2.0。adjustment 为修正系数。
     返回 dict：baseline_mw 基线曲线（MW 列表）、candidates 候选日数、kept 保留日数、
     dropped 剔除日数、mean_energy_mwh 候选集日均电量（MWh）、adjustment 修正系数。
     无相似日通过筛选时抛 ValueError（避免静默给出空基线）。
     """
     candidates = recent_similar_days(days, count)
-    kept, dropped = filter_by_deviation(candidates, deviation)
+    if lower_ratio is None and upper_ratio is None:
+        kept, dropped = filter_by_deviation(candidates, deviation)
+    else:
+        kept, dropped = filter_by_ratio_bounds(
+            candidates,
+            0.25 if lower_ratio is None else lower_ratio,
+            2.0 if upper_ratio is None else upper_ratio,
+        )
     if not kept:
-        raise ValueError("no similar day survives the +/-25% screen")
+        raise ValueError("no similar day survives the deviation screen")
     mean_energy = sum(day["energy_mwh"] for day in candidates) / len(candidates)
     points = len(kept[0]["curve_mw"])
     baseline_mw = [

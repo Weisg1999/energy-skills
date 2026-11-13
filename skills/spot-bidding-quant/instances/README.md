@@ -198,4 +198,4 @@ python skills/spot-bidding-quant/instances/shandong-storage-2026-11/run.py \
 5. 跑 `--check-config` 与 `--demo`，把关键输出写进实例 `README.md`；
 6. 不改知识库计数，不改 `knowledge/`；实例是技能目录内的配置层。
 
-下一批建议：广东售电（零售套餐 + 偏差考核），再往后才是配置向导与匿名复盘库。
+第二批已落地：售电侧的广东售电零售实例包见 [`skills/retail-electricity-risk/instances/`](../../retail-electricity-risk/instances/README.md)，配置块用 `portfolio` 替代 `asset`，并增加零售套餐、偏差合同与履约保障。再往后才是配置向导与匿名复盘库。

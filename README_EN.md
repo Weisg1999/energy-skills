@@ -25,7 +25,7 @@
 
 > Every skill is a self-contained Markdown handbook that can be injected into an LLM context. Once loaded, the model answers as a senior practitioner and follows built-in discipline: figures cited with document numbers and dates, province confirmed before local rules, policy items returned with official lookup pointers, and unverified data flagged as “to be verified”.
 
-Current version **v1.9**, data cutoff **2026-11-12**, 42,290 body lines. Notes, 101 reading pages, skill pages, the full-text index and all diagrams are generated from repository content.
+Current version **v1.9**, data cutoff **2026-11-12**, 42,293 body lines. Notes, 101 reading pages, skill pages, the full-text index and all diagrams are generated from repository content.
 
 **Contents**　[Quick start](#quick-start) · [Skills](#skills) · [Knowledge base](#knowledge-base) · [Repository layout](#repository-layout) · [Maintenance](#maintaining-the-knowledge-hub) · [Roadmap](#roadmap) · [License](#license)
 
@@ -55,8 +55,8 @@ All nine skills are bilingual and ship zero-dependency Python tools with self-te
 |---|---|
 | **[Electricity Trading Expert](skills/electricity-trading-expert/SKILL_EN.md)** · [CN](skills/electricity-trading-expert/SKILL.md) | spot clearing and pricing, medium/long-term and finance, ancillary services and capacity, settlement, provincial practice, renewables market entry, fuel and gas-fired costs, carbon markets, 11 overseas markets, strategy and risk |
 | **[Spot Bidding Quant](skills/spot-bidding-quant/SKILL_EN.md)** · [CN](skills/spot-bidding-quant/SKILL.md) | load and price forecasting, bias correction, quantity-price curves, procurement portfolios, bid simulation, rolling backtests, T+1 attribution; desk layer with the decision clock, scenario/CVaR frontier, settlement bridge and public-data backtest protocol; includes the Shandong standalone-storage instance pack (one province, one entity, D-1 bid sheet, T+1 variance bridge) |
-| **[Virtual Power Plant Expert](skills/virtual-power-plant/SKILL_EN.md)** · [CN](skills/virtual-power-plant/SKILL.md) | resource aggregation, three development stages, market participation, business models, control and optimisation, policy and international benchmarks |
-| **[Retail Electricity Sales & Risk Expert](skills/retail-electricity-risk/SKILL_EN.md)** · [CN](skills/retail-electricity-risk/SKILL.md) | full-cost package pricing, customer portfolio, procurement coverage, deviation assessment, retail-wholesale inversion, guarantees and exit |
+| **[Virtual Power Plant Expert](skills/virtual-power-plant/SKILL_EN.md)** · [CN](skills/virtual-power-plant/SKILL.md) | resource aggregation, three development stages, market participation, business models, control and optimisation, policy and international benchmarks; includes the Jiangsu load fast-response instance pack (one province, one aggregator, D-1 declaration, scenario clearing, T+1 response certification and variance bridge) |
+| **[Retail Electricity Sales & Risk Expert](skills/retail-electricity-risk/SKILL_EN.md)** · [CN](skills/retail-electricity-risk/SKILL.md) | full-cost package pricing, customer portfolio, procurement coverage, deviation assessment, retail-wholesale inversion, guarantees and exit; includes two retail instance packs, Guangdong 2026 and Jiangsu 2027 (one province, one retailer, D-1 pricing and procurement, T+1 variance bridge) |
 
 ### Projects and assets
 

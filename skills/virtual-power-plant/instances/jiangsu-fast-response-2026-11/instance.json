@@ -1,0 +1,242 @@
+{
+  "meta": {
+    "instance_id": "jiangsu-fast-response-2026-11",
+    "province": "江苏",
+    "market": "江苏省级电力需求响应（负荷快速响应）",
+    "entity_type": "负荷聚合商（邀约型 VPP）",
+    "rule_version": "苏发改规发〔2026〕1号（2026-06-23 生效，有效期至 2029-07-13）",
+    "data_cutoff": "2026-11-13",
+    "grade": "D",
+    "scope": "直控型/自控型快速响应邀约的申报、情景出清、T+1 响应认定与激励结算；不含现货、辅助服务、容量补偿、绿证与考核罚款（1号文未见明确罚款条款，以方案/协议为准）",
+    "currency": "CNY",
+    "units": {
+      "power": "MW",
+      "energy": "MWh",
+      "price": "CNY/kWh",
+      "price_note": "激励单价用元/kWh，与江苏快响规则原文一致；不要与现货的元/MWh 混写",
+      "load": "MW（净受电负荷；用户侧储能放电时为负）",
+      "time": "HH:MM",
+      "slot": "0-95（15 分钟一点）",
+      "conversion": "1 CNY/kWh = 1000 CNY/MWh"
+    },
+    "disclaimer": "本实例包是 D 级合成样板，不对应任何真实聚合商、用户、合同或计量数据；不构成报价、签约或投资建议。"
+  },
+  "rules": {
+    "fast_response": {
+      "document": "苏发改规发〔2026〕1号《关于开展负荷快速响应能力建设工作的通知》",
+      "effective_from": "2026-06-23",
+      "valid_until": "2029-07-13",
+      "products": {
+        "direct": {
+          "name": "直控型",
+          "bid_cap_cny_per_kwh": 15.0,
+          "overshoot_cap_ratio": 1.5
+        },
+        "self": {
+          "name": "自控型",
+          "bid_cap_cny_per_kwh": 10.0,
+          "overshoot_cap_ratio": 1.2
+        }
+      },
+      "ramp_time_h": 0.5,
+      "event_duration_h": 0.5,
+      "event_duration_status": "D 级假设：1号文明确 0.5 h 内完成功率调整；单次事件持续时长以邀约/方案为准，本包按 0.5 h 建模",
+      "clearing": "价格优先、容量优先；本包按直控/自控分别出清建模（1号文未明确两类是否同场出清，以方案原文为准）",
+      "incentive_formula": "出清价(CNY/kWh) × 实际响应负荷(kW) × 事件时长(h)；超申报值按直控 150%/自控 120% 封顶",
+      "min_response_rate": 0.8,
+      "min_response_rate_status": "按江苏 2025 需求响应细则 80% 口径；快响方案未明确，待核对",
+      "no_double_participation": "参与并中标的快速响应资源在同一时段内不得重复参与需求响应",
+      "test": {
+        "window": "17:00-22:00",
+        "window_note": "优先晚峰",
+        "min_scale_ratio": 0.2
+      },
+      "funding": "优先从尖峰电价增收资金列支",
+      "first_batch_2026": {
+        "direct_users": 27,
+        "direct_price_range_cny_per_kwh": [6.0, 15.0],
+        "direct_average_cny_per_kwh": 13.17,
+        "self_users": 314,
+        "self_price_range_cny_per_kwh": [5.0, 10.0],
+        "self_average_cny_per_kwh": 9.94,
+        "status": "首批公示结果（B/C），仅作价格参照，不是本实例报价"
+      },
+      "grade": "A",
+      "source": "苏发改规发〔2026〕1号；2026 年首批公示名单（B/C）"
+    },
+    "baseline": {
+      "method": "5+3 典型日平均法",
+      "weekday_days": 5,
+      "weekend_days": 3,
+      "sample_min": 15,
+      "lower_ratio": 0.25,
+      "upper_ratio": 2.0,
+      "adjustment": 1.0,
+      "aggregation": "先按资源算基线，再按 VPP 汇总；同一用户不得重复计算",
+      "status": "按江苏 2025 需求响应细则公开口径；1号文未明确快响基线算法，待与快响方案/协议原文核对",
+      "grade": "B/C",
+      "source": "江苏省电力需求响应实施细则（2025）公开口径；快响方案待核"
+    },
+    "spot": {
+      "included": false,
+      "status": "连续结算试运行（2025-08-29 起），转正评估中",
+      "clear_floor_cny_per_mwh": 0.0,
+      "clear_cap_cny_per_mwh": 1500.0,
+      "grade": "A/B",
+      "source": "江苏电力现货市场连续结算试运行公开信息；本包不参与现货，仅作背景"
+    },
+    "settlement": {
+      "incentive_formula": "出清价(CNY/kWh) × 实际响应负荷(kW) × 事件时长(h)；封顶后计量",
+      "funding": "优先从尖峰电价增收资金列支",
+      "cycle": "以交易中心/供电公司结算通知为准（未核实固定周期）",
+      "status": "结算周期与追退补条款待核",
+      "grade": "B/C",
+      "source": "苏发改规发〔2026〕1号；结算细则待核"
+    }
+  },
+  "resources": {
+    "items": [
+      {
+        "id": "industrial_direct",
+        "name": "直控工业可中断负荷",
+        "control_type": "direct",
+        "max_mw": 40.0,
+        "adjustable_ratio": 0.5,
+        "availability": 0.95,
+        "customer_share": 0.7,
+        "allow_negative_load": false,
+        "other_market_commitment": false,
+        "load_field": "industrial_direct_mw",
+        "grade": "D",
+        "source": "示例占位；实际按用户台账、生产线可中断能力与历史响应率填写"
+      },
+      {
+        "id": "storage_direct",
+        "name": "直控用户侧储能",
+        "control_type": "direct",
+        "max_mw": 10.0,
+        "adjustable_ratio": 1.0,
+        "availability": 0.95,
+        "customer_share": 0.65,
+        "allow_negative_load": true,
+        "other_market_commitment": false,
+        "load_field": "storage_direct_mw",
+        "grade": "D",
+        "source": "示例占位；实际按 PCS 铭牌、SOC 窗口、可用小时数与放电计划填写"
+      },
+      {
+        "id": "hvac_direct",
+        "name": "直控楼宇空调",
+        "control_type": "direct",
+        "max_mw": 8.0,
+        "adjustable_ratio": 0.3,
+        "availability": 0.9,
+        "customer_share": 0.6,
+        "allow_negative_load": false,
+        "other_market_commitment": false,
+        "load_field": "hvac_direct_mw",
+        "grade": "D",
+        "source": "示例占位；实际按空调装机、可调比例与舒适度约束填写"
+      },
+      {
+        "id": "industrial_self",
+        "name": "自控工业（钢铁/水泥）",
+        "control_type": "self",
+        "max_mw": 30.0,
+        "adjustable_ratio": 0.4,
+        "availability": 0.9,
+        "customer_share": 0.75,
+        "allow_negative_load": false,
+        "other_market_commitment": false,
+        "load_field": "industrial_self_mw",
+        "grade": "D",
+        "source": "示例占位；实际按工序可中断时间、复产成本与历史响应率填写"
+      }
+    ]
+  },
+  "policy": {
+    "profile_id": "jiangsu-fast-response-balanced-v1",
+    "description": "直控按可调能力 85%、自控按 80% 申报；报价直控 13.5、自控 9.4 元/kWh；计划执行率 95%；未达标补偿门槛 95%",
+    "bid_ratio": {
+      "direct": 0.85,
+      "self": 0.8
+    },
+    "bid_price_cny_per_kwh": {
+      "direct": 13.5,
+      "self": 9.4
+    },
+    "declaration_rounding_mw": 0.1,
+    "planned_delivery_ratio": 0.95,
+    "scenario_cvar_confidence": 0.8,
+    "review_top_resources": 4,
+    "grade": "D",
+    "note": "风格是聚合商选择，不是事实；改 profile_id 并保留旧文件，便于比较风格差异。"
+  },
+  "contracts": {
+    "shortfall": {
+      "delivery_threshold": 0.95,
+      "extra_customer_share": 0.05,
+      "basis": "合同约定，D 级假设；按控制类型执行率触发，额外让利给客户"
+    },
+    "opex": {
+      "variable_cny_per_mwh": 150.0,
+      "fixed_cny_per_event": 2000.0,
+      "basis": "D 级假设；覆盖值守、通信、计量核验与平台摊销"
+    },
+    "grade": "D",
+    "source": "示例合同与成本参数，不对应任何真实用户合同"
+  },
+  "qualification": {
+    "test_date": "2026-07-02",
+    "test_window": "19:00-19:30",
+    "test_scale_mw": 8.0,
+    "declared_at_test_mw": 26.0,
+    "result": "pass",
+    "grade": "D",
+    "source": "示例；实际以供电公司调控性能测试记录为准"
+  },
+  "data_contract": {
+    "history": {
+      "file": "data/history_demo.csv",
+      "date_field": "date",
+      "slot_field": "slot",
+      "load_fields": {
+        "industrial_direct": "industrial_direct_mw",
+        "storage_direct": "storage_direct_mw",
+        "hvac_direct": "hvac_direct_mw",
+        "industrial_self": "industrial_self_mw"
+      },
+      "grade": "D"
+    },
+    "event": {
+      "file": "data/event_demo.csv",
+      "scenario_field": "scenario",
+      "scenario_weights": [0.25, 0.5, 0.25],
+      "event_date_field": "event_date",
+      "start_field": "event_start",
+      "end_field": "event_end",
+      "required_mw_field": "required_mw",
+      "marginal_price_field": "marginal_price_cny_per_kwh",
+      "grade": "D"
+    },
+    "t1_loads": {
+      "file": "data/t1_loads_demo.csv",
+      "date_field": "date",
+      "slot_field": "slot",
+      "load_fields": {
+        "industrial_direct": "industrial_direct_mw",
+        "storage_direct": "storage_direct_mw",
+        "hvac_direct": "hvac_direct_mw",
+        "industrial_self": "industrial_self_mw"
+      },
+      "grade": "D"
+    },
+    "t1_event": {
+      "file": "data/t1_event_demo.csv",
+      "control_type_field": "control_type",
+      "cleared_price_field": "cleared_price_cny_per_kwh",
+      "awarded_mw_field": "awarded_mw",
+      "grade": "D"
+    }
+  }
+}

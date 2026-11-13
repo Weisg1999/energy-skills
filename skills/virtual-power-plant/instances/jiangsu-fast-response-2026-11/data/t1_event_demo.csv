@@ -1,0 +1,3 @@
+﻿control_type,event_date,event_start,event_end,cleared_price_cny_per_kwh,awarded_mw
+direct,2026-07-15,19:00,19:30,13.80,26.0
+self,2026-07-15,19:00,19:30,9.60,8.6

@@ -788,7 +788,7 @@ m* = 1 + 净利 / (总电量 × 现货敞口比例 × 基准现货价)
 | `tools/deviation.py` | 超带电量、考核成本、期望与 95% 分位 |
 | `tools/guarantee.py` | 现行/草案保函、资金成本、缺口 |
 | `tools/curves.py` | 合成客户曲线、现货曲线与分时价格 |
-| `tools/selftest.py` | 锁定正文 A–H 全部算例 |
+| `tools/selftest.py` | 锁定正文 A–H 全部算例与实例层 I/J |
 
 运行：
 
@@ -797,6 +797,35 @@ python skills/retail-electricity-risk/tools/selftest.py
 ```
 
 自测通过代表正文算例与代码一致；政策参数变化时，先改 `curves.py` 或调用参数，再同步正文数字。
+
+### 12.1 实例包：广东零售（2026）与江苏零售（2027）
+
+引擎层回答"方法是什么"；实例层回答"**这个省、这批客户、这套合同、这个交易风格，明天报什么价、买多少电、T+1 差在哪**"。实例是配置层，不改变知识库的 101 模块 / 13 分区 / 9 技能计数。
+
+| 文件 | 作用 |
+|---|---|
+| `instances/README.md` | 售电实例 schema：六个块、两种套餐模型（`fixed_market_linked` / `annual_retail_pass_through`）、D-1/T+1 格式、30 分钟填写流程、校验与验收 |
+| `instances/guangdong-retail-2026-11/instance.json` | 广东配置：南方区域价区、三类客户群、75% 中长期覆盖、偏差合同、1595 保函 |
+| `instances/guangdong-retail-2026-11/run.py` | 配置校验 → 套餐全成本 → 五情景/压力 → 9 科目差异桥 → 复核表 |
+| `instances/guangdong-retail-2026-11/make_demo.py` | D 级合成 D-1/T+1 数据（96 点 × 5 情景） |
+| `instances/guangdong-retail-2026-11/pitfalls.md` | 广东售电 10 条易错点与报价前 60 秒清单 |
+| `instances/jiangsu-retail-2027/instance.json` | 江苏 2027 配置：批发价 + 浮动价 + ΣK×分摊、一户一价封顶（F 由购售双方约定）、绿电能量/环境价值分签 |
+| `instances/jiangsu-retail-2027/run.py` | 配置校验 → 批发/参考价 → 分段传导与封顶 → 四压力档 → 6 科目差异桥 → 复核表 |
+| `instances/jiangsu-retail-2027/make_demo.py` | D 级合成 D-1 分时负荷与 T+1 实际（96 点，含 P1/P2/P3 分摊） |
+| `instances/jiangsu-retail-2027/pitfalls.md` | 江苏 2027 零售 12 条易错点与报价前 60 秒清单 |
+
+```bash
+python skills/retail-electricity-risk/instances/guangdong-retail-2026-11/run.py --check-config
+python skills/retail-electricity-risk/instances/guangdong-retail-2026-11/run.py --demo
+python skills/retail-electricity-risk/instances/jiangsu-retail-2027/run.py --check-config
+python skills/retail-electricity-risk/instances/jiangsu-retail-2027/run.py --demo
+```
+
+广东 D 级合成基准（2026-11-18）：组合 2,880 MWh，参考现货 375.67 CNY/MWh，加权采购 393.92，当前零售价 414.43，建议全成本 418.14，加权缺口 3.71；计划净边际 37,070 CNY，情景期望 26,063、CVaR10 −28,354；实际 19,898，差异 −17,172，差异桥残差 −1.75e-10 CNY。
+
+江苏 2027 D 级合成基准（2026-11-13）：组合 1,972.7 MWh，P_MT 401.00、批发均价 395.01、参考价 428.52、零售价 456.48、一户一价封顶 454.74 CNY/MWh，加权削顶 1.75，4/4 分段落入封顶；计划净收益 89,692 CNY，情景期望 92,043、CVaR10 89,692；实际 93,280，差异 +3,588，差异桥残差 0.00e+00。压力表显示现货 ×0.8/×1.2/×1.5 均不触发削顶，只有 ×1.0 触发——因为参考价随现货近似 1:1 上行，而批发价仅约 30% 与现货联动；这是全额传导结构的必然结果，不是模型错误。
+
+两组数字只用于验证流程，不对应任何真实公司；真实客户与合同数据放本地。
 
 ---
 

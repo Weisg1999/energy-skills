@@ -102,6 +102,7 @@ python skills/spot-bidding-quant/instances/shandong-storage-2026-11/make_demo.py
 ## 8. 相关入口
 
 - 实例层 schema 与填写流程：[`../README.md`](../README.md)
+- 售电实例层：[`../../../retail-electricity-risk/instances/README.md`](../../../retail-electricity-risk/instances/README.md)
 - 山东易错点：[`pitfalls.md`](pitfalls.md)
 - 盘面层方法：[`../../SKILL.md`](../../SKILL.md) §13
 - 山东市场规则背景：[`../../../../knowledge/山东电力市场-2026-11.md`](../../../../knowledge/山东电力市场-2026-11.md)

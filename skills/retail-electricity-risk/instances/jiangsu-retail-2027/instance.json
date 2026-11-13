@@ -1,0 +1,325 @@
+{
+  "meta": {
+    "instance_id": "jiangsu-retail-2027",
+    "province": "江苏",
+    "market": "江苏省级电力市场（2027 年零售市场）",
+    "entity_type": "售电公司",
+    "rule_version": "苏电交易〔2026〕11号《2027年江苏电力零售市场交易工作指引》（2026-10-13 印发）",
+    "data_cutoff": "2026-11-13",
+    "grade": "D",
+    "scope": "2027 年零售套餐的批发价传导、月度分摊、一户一价封顶、绿电能量/环境价值拆分；不含输配电价、政府性基金、基本电费、税费、坏账、用户流失与零售偏差考核",
+    "units": {
+      "power": "MW",
+      "energy": "MWh",
+      "price": "CNY/MWh",
+      "slot": "0-95",
+      "market_time_unit_min": 15,
+      "conversion": "1 CNY/MWh = 0.001 CNY/kWh"
+    },
+    "disclaimer": "本包为 D 级合成样板，不对应任何真实售电公司、用户、合同或计量数据；不构成报价、签约或投资建议。"
+  },
+  "rules": {
+    "spot": {
+      "price_zone": "江苏省级电网",
+      "declare_floor_cny_per_mwh": 0.0,
+      "clear_floor_cny_per_mwh": 0.0,
+      "clear_cap_cny_per_mwh": 1500.0,
+      "market_time_unit_min": 15,
+      "points_per_day": 96,
+      "settlement_basis": "用户侧统一结算点；现货连续结算试运行，15 分钟节点价",
+      "status": "连续结算试运行（2025-08-29 起），转正评估中",
+      "grade": "A/B",
+      "source": "江苏电力现货市场连续结算试运行公开信息"
+    },
+    "retail_market": {
+      "document": "苏电交易〔2026〕11号《2027年江苏电力零售市场交易工作指引》",
+      "issued": "2026-10-13",
+      "effective_from": "2027-01-01",
+      "annual_window": {
+        "start": "2026-10-16",
+        "end": "2026-12-24",
+        "status": "年度交易窗口按公开报道口径；以交易平台公告为准"
+      },
+      "retailer_requirement": "2027 年度批发交易前 5 个工作日至少完成一笔零售交易",
+      "retailer_requirement_status": "公开解读口径；工作日按自然周剔除周末计算，未计法定节假日",
+      "cancelled": [
+        "固定价格电量比例",
+        "现货市场价格联动电量比例",
+        "比例分成"
+      ],
+      "one_household_one_price": true,
+      "package_price": "P_retail = P_wholesale + P_float + Σ K_i × P_allocation,i",
+      "package_scope": "全省工商业零售用户；居民、农业执行原有目录电价",
+      "grade": "A",
+      "source": "苏电交易〔2026〕11号（2026-10-13）；江苏电力交易中心公开解读（B）"
+    },
+    "price_formula": {
+      "wholesale": "P_wholesale,t = (1−K1t−K2t) × P_MT,t + K1t × P_DA,t + K2t × P_RT,t",
+      "reference": "P_ref = Σ_t max(P_annual,t, P_monthly,t, P_intra_month,t, P_DA,t, P_RT,t) × Q_user,t / Σ_t Q_user,t",
+      "cap": "P_cap = P_ref + F × P_wholesale + P_allocation",
+      "settlement": "按月比较零售均价与封顶价；零售均价超过封顶价时按封顶价结算（一户一价）",
+      "cap_float_factor_status": "F 由购售双方约定，不是规则固定常数；本包按 policy.cap_float_factor 建模",
+      "tou_constraint": "分时套餐：峰段不低于平段加权价的 160%，谷段不高于平段加权价的 40%；平段套餐不触发",
+      "tou_constraint_status": "公开解读口径；具体时段划分以江苏分时电价文件为准",
+      "grade": "A",
+      "source": "苏电交易〔2026〕11号；Mysteel 2026-10-17 公式速查（B）"
+    },
+    "allocation": {
+      "categories": {
+        "cost_compensation": "成本补偿费用 P分摊1",
+        "imbalance": "不平衡费用 P分摊2",
+        "market_adjustment": "市场调节费用 P分摊3"
+      },
+      "monthly_reference_2026": {
+        "2026-01": {
+          "cost_compensation": 0.1,
+          "imbalance": 3.48,
+          "market_adjustment": -0.28,
+          "total": 3.3
+        },
+        "2026-02": {
+          "cost_compensation": 0.06,
+          "imbalance": 0.75,
+          "market_adjustment": -0.5,
+          "total": 0.31
+        },
+        "2026-03": {
+          "cost_compensation": 0.17,
+          "imbalance": 1.41,
+          "market_adjustment": -0.2,
+          "total": 1.38
+        },
+        "2026-04": {
+          "cost_compensation": 0.68,
+          "imbalance": 1.81,
+          "market_adjustment": -0.19,
+          "total": 2.3
+        },
+        "2026-05": {
+          "cost_compensation": 1.08,
+          "imbalance": 3.51,
+          "market_adjustment": -0.23,
+          "total": 4.36
+        },
+        "2026-06": {
+          "cost_compensation": 0.86,
+          "imbalance": 4.1,
+          "market_adjustment": -0.15,
+          "total": 4.81
+        },
+        "2026-07": {
+          "cost_compensation": 1.05,
+          "imbalance": 3.88,
+          "market_adjustment": -0.23,
+          "total": 4.7
+        },
+        "2026-08": {
+          "cost_compensation": 1.48,
+          "imbalance": 5.34,
+          "market_adjustment": -0.11,
+          "total": 6.71
+        }
+      },
+      "base_month": "2026-08",
+      "base_values": {
+        "cost_compensation": 1.48,
+        "imbalance": 5.34,
+        "market_adjustment": -0.11,
+        "total": 6.71
+      },
+      "reported_range": "约 0.32–6.71 CNY/MWh（报道口径；逐月加总因四舍五入可能略有差异）",
+      "status": "2026 年 1–8 月参考值；2027 年按月公布，实际结算以当月公布值为准",
+      "grade": "A/B",
+      "source": "苏电交易〔2026〕11号附件/公开解读；Mysteel 2026-10-17（B）"
+    },
+    "guarantee": {
+      "current": {
+        "formula": "max(过去 12 个月批发购电量×8 元/MWh, 2 个月最大购电量×50 元/MWh)",
+        "document": "发改体改规〔2021〕1595 号",
+        "effective": true
+      },
+      "draft_2026_09_04": {
+        "formula": "max(200 万元, 预计年售电量×10 元/MWh×调整系数)，系数 1-10",
+        "status": "草案，拟 2027-01-01 施行，未生效",
+        "effective": false
+      },
+      "grade": "A/B",
+      "source": "发改体改规〔2021〕1595 号（现行，A）；2026-09-04 售电公司管理办法修订征求意见稿（草案，B）"
+    },
+    "settlement": {
+      "timeline": "核对版第 5 个工作日、正式版第 8 个工作日、账单第 10 个工作日；异议 15 个工作日、确认 5 个工作日、属实的下一周期追退补",
+      "document": "发改能源规〔2025〕976 号《电力市场计量结算基本规则》",
+      "retail_basis": "零售电能量按月结算；批发市场价格、浮动价格与当月分摊分别列示；封顶价按月比较",
+      "retail_deviation_status": "2027 指引未明确零售偏差统一考核口径；本包不计偏差考核，按合同约定另行测算",
+      "grade": "A/B",
+      "source": "发改能源规〔2025〕976 号（A）；苏电交易〔2026〕11号（A）；零售偏差为未核实项"
+    }
+  },
+  "portfolio": {
+    "segments": [
+      {
+        "name": "连续生产工业",
+        "share": 0.45,
+        "tilt": 0.05,
+        "forecast_sigma_pct": 0.025,
+        "opex_cny_per_mwh": 6.0,
+        "green_power": false,
+        "package_type": "pass_through_cap"
+      },
+      {
+        "name": "商业综合体",
+        "share": 0.25,
+        "tilt": 0.35,
+        "forecast_sigma_pct": 0.05,
+        "opex_cny_per_mwh": 9.0,
+        "green_power": false,
+        "package_type": "pass_through_cap"
+      },
+      {
+        "name": "数据中心",
+        "share": 0.2,
+        "tilt": -0.6,
+        "forecast_sigma_pct": 0.015,
+        "opex_cny_per_mwh": 5.0,
+        "green_power": false,
+        "package_type": "pass_through_cap"
+      },
+      {
+        "name": "绿电需求用户",
+        "share": 0.1,
+        "tilt": -0.1,
+        "forecast_sigma_pct": 0.02,
+        "opex_cny_per_mwh": 8.0,
+        "green_power": true,
+        "package_type": "pass_through_cap"
+      }
+    ],
+    "annual_energy_mwh": 730000.0,
+    "fixed_cost_cny_per_day": 1800.0,
+    "wholesale_mix": {
+      "annual_price_cny_per_mwh": 395.0,
+      "monthly_price_cny_per_mwh": 405.0,
+      "intra_month_price_cny_per_mwh": 410.0,
+      "annual_weight": 0.5,
+      "monthly_weight": 0.3,
+      "intra_month_weight": 0.2,
+      "da_share": 0.2,
+      "rt_share": 0.1,
+      "basis": "D 级示例；实际按年度/月度/月内合约与日前/实时持仓填写；演示中日前与实时取同一情景价"
+    },
+    "green_power": {
+      "segment": "绿电需求用户",
+      "energy_premium_cny_per_mwh": 25.0,
+      "environmental_value_cny_per_mwh": 12.0,
+      "environmental_cost_cny_per_mwh": 10.0,
+      "basis": "D 级示例；绿电能量包与环境价值包分别签约、分别结算；封顶只作用于电能量传导部分"
+    },
+    "guarantee": {
+      "amount_cny": 6000000.0,
+      "annual_funding_rate": 0.01,
+      "annual_wholesale_mwh": 730000.0,
+      "peak_two_month_mwh": 125000.0,
+      "basis": "按 1595 号现行公式 max(年批发电量×8 元/MWh, 2 个月最大购电量×50 元/MWh)；费率 1% 为 D 级假设"
+    }
+  },
+  "policy": {
+    "profile_id": "jiangsu-retail-2027-balanced-v1",
+    "description": "平段套餐；浮动价 55 元/MWh；封顶系数 F=0.05；分摊系数 P1 0.8、P2 1.0、P3 0.5；参考价取 0.5 分位",
+    "pricing_mode": "flat",
+    "retail_float_cny_per_mwh": 55.0,
+    "cap_float_factor": 0.05,
+    "allocation_coefficients": {
+      "cost_compensation": 0.8,
+      "imbalance": 1.0,
+      "market_adjustment": 0.5
+    },
+    "price_reference_quantile": 0.5,
+    "stress_spot_multipliers": [
+      0.8,
+      1.0,
+      1.2,
+      1.5
+    ],
+    "stress_cap_factors": [
+      0.0,
+      0.05,
+      0.1,
+      0.2
+    ],
+    "stress_allocation_pass_through": [
+      0.0,
+      0.5,
+      1.0
+    ],
+    "review_top_slots": 5,
+    "grade": "D",
+    "note": "F、浮动价与分摊系数是购售双方约定项，不是规则固定值；改 profile_id 并保留旧文件，便于比较风格与谈判方案。",
+    "stress_floats": [
+      40.0,
+      55.0,
+      70.0
+    ]
+  },
+  "contracts": {
+    "retail_2027": {
+      "contract_id": "js-retail-2027-annual",
+      "type": "annual_retail_pass_through",
+      "signed_date": "2026-11-20",
+      "retail_trade_date": "2026-12-10",
+      "annual_wholesale_date": "2026-12-17",
+      "customers": 4,
+      "one_household_one_price": true,
+      "grade": "D",
+      "source": "示例合同；日期为演示占位，实际以交易平台公告为准"
+    },
+    "green_power": {
+      "contract_id": "js-green-2027",
+      "type": "green_power_split",
+      "energy_contract": "绿电能量包",
+      "environmental_contract": "环境价值包",
+      "signed": true,
+      "grade": "D",
+      "source": "示例合同；实际按绿电交易合同与环境价值包合同"
+    }
+  },
+  "data_contract": {
+    "d1": {
+      "path": "data/d1_demo.csv",
+      "date_field": "date",
+      "slot_field": "slot",
+      "load_field": "forecast_load_mw",
+      "scenario_fields": [
+        "price_s1",
+        "price_s2",
+        "price_s3",
+        "price_s4",
+        "price_s5"
+      ],
+      "scenario_weights": [
+        0.15,
+        0.2,
+        0.3,
+        0.2,
+        0.15
+      ],
+      "release_cutoff": "D-1 17:00（示例）",
+      "release_cutoff_status": "未核到江苏零售 D-1 截止时点，按本地流程填写",
+      "grade": "D",
+      "source": "本包输入契约；演示数据由 make_demo.py 生成"
+    },
+    "t1": {
+      "path": "data/t1_demo.csv",
+      "date_field": "date",
+      "slot_field": "slot",
+      "load_field": "actual_load_mw",
+      "price_field": "actual_price",
+      "allocation_fields": [
+        "actual_p1",
+        "actual_p2",
+        "actual_p3"
+      ],
+      "grade": "D",
+      "source": "本包输入契约；演示数据由 make_demo.py 生成"
+    }
+  }
+}

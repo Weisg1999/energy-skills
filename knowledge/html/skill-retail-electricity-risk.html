@@ -85,8 +85,8 @@
       <p class="lede">套餐定价、客户组合、偏差与保函</p>
       <p class="hook">可执行流程与配套工具；正文与 SKILL.md 同步。</p>
       <div class="tags"><span class="tag">技能</span><span class="tag">零售</span><span class="tag">偏差</span><span class="tag">保函</span></div>
-      <div class="doc-meta"><span>约 16.4k 字</span><span>阅读约 30 分钟</span><span>15 节</span><span>数据截止 2026-11-08</span></div>
-      <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-retail-electricity-risk.txt" download="售电零售与风险-SKILL.txt">下载 TXT</a><span>完整技能文档，约 19 KB，含 frontmatter</span></p>
+      <div class="doc-meta"><span>约 18.1k 字</span><span>阅读约 32 分钟</span><span>15 节</span><span>数据截止 2026-11-08</span></div>
+      <p class="doc-actions"><a class="dl-btn" href="download/skills/skill-retail-electricity-risk.txt" download="售电零售与风险-SKILL.txt">下载 TXT</a><span>完整技能文档，约 21 KB，含 frontmatter</span></p>
     </header>
 
     <details class="toc-mobile">
@@ -105,8 +105,8 @@
             <li class="lv2"><a href="#s60">10. 算例（合成数据，D 级）</a></li>
             <li class="lv2"><a href="#s70">11. 合规、台账与红线</a></li>
             <li class="lv2"><a href="#s76">12. 代码映射与自测</a></li>
-            <li class="lv2"><a href="#s77">13. 常见问答</a></li>
-            <li class="lv2"><a href="#s78">14. 来源与维护</a></li>
+            <li class="lv2"><a href="#s78">13. 常见问答</a></li>
+            <li class="lv2"><a href="#s79">14. 来源与维护</a></li>
       </ol>
     </details>
 
@@ -351,12 +351,22 @@
 <ul><li>不把草案写成已执行；</li><li>不用外省规则替代本省；</li><li>不做低于成本的报价；</li><li>不签阴阳合同、不做线下返利；</li><li>不隐瞒偏差责任与退出条款；</li><li>不挪用保证金；</li><li>不替售电公司承诺&quot;一定赚钱&quot;；</li><li>不篡改负荷、偏差与结算数据。</li></ul>
 <hr>
 <h2 id="s76">12. 代码映射与自测</h2>
-<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>文件</th><th>作用</th></tr></thead><tbody><tr><td><code>tools/package.py</code></td><td>固定价/市场联动报价、单客户年度结果、保本现货价</td></tr><tr><td><code>tools/portfolio.py</code></td><td>组合净利、客户贡献、现货压力、保本倍数</td></tr><tr><td><code>tools/deviation.py</code></td><td>超带电量、考核成本、期望与 95% 分位</td></tr><tr><td><code>tools/guarantee.py</code></td><td>现行/草案保函、资金成本、缺口</td></tr><tr><td><code>tools/curves.py</code></td><td>合成客户曲线、现货曲线与分时价格</td></tr><tr><td><code>tools/selftest.py</code></td><td>锁定正文 A–H 全部算例</td></tr></tbody></table></div>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>文件</th><th>作用</th></tr></thead><tbody><tr><td><code>tools/package.py</code></td><td>固定价/市场联动报价、单客户年度结果、保本现货价</td></tr><tr><td><code>tools/portfolio.py</code></td><td>组合净利、客户贡献、现货压力、保本倍数</td></tr><tr><td><code>tools/deviation.py</code></td><td>超带电量、考核成本、期望与 95% 分位</td></tr><tr><td><code>tools/guarantee.py</code></td><td>现行/草案保函、资金成本、缺口</td></tr><tr><td><code>tools/curves.py</code></td><td>合成客户曲线、现货曲线与分时价格</td></tr><tr><td><code>tools/selftest.py</code></td><td>锁定正文 A–H 全部算例与实例层 I/J</td></tr></tbody></table></div>
 <p>运行：</p>
 <pre tabindex="0"><code>python skills/retail-electricity-risk/tools/selftest.py</code></pre>
 <p>自测通过代表正文算例与代码一致；政策参数变化时，先改 <code>curves.py</code> 或调用参数，再同步正文数字。</p>
+<h3 id="s77">12.1 实例包：广东零售（2026）与江苏零售（2027）</h3>
+<p>引擎层回答&quot;方法是什么&quot;；实例层回答&quot;<strong>这个省、这批客户、这套合同、这个交易风格，明天报什么价、买多少电、T+1 差在哪</strong>&quot;。实例是配置层，不改变知识库的 101 模块 / 13 分区 / 9 技能计数。</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>文件</th><th>作用</th></tr></thead><tbody><tr><td><code>instances/README.md</code></td><td>售电实例 schema：六个块、两种套餐模型（<code>fixed_market_linked</code> / <code>annual_retail_pass_through</code>）、D-1/T+1 格式、30 分钟填写流程、校验与验收</td></tr><tr><td><code>instances/guangdong-retail-2026-11/instance.json</code></td><td>广东配置：南方区域价区、三类客户群、75% 中长期覆盖、偏差合同、1595 保函</td></tr><tr><td><code>instances/guangdong-retail-2026-11/run.py</code></td><td>配置校验 → 套餐全成本 → 五情景/压力 → 9 科目差异桥 → 复核表</td></tr><tr><td><code>instances/guangdong-retail-2026-11/make_demo.py</code></td><td>D 级合成 D-1/T+1 数据（96 点 × 5 情景）</td></tr><tr><td><code>instances/guangdong-retail-2026-11/pitfalls.md</code></td><td>广东售电 10 条易错点与报价前 60 秒清单</td></tr><tr><td><code>instances/jiangsu-retail-2027/instance.json</code></td><td>江苏 2027 配置：批发价 + 浮动价 + ΣK×分摊、一户一价封顶（F 由购售双方约定）、绿电能量/环境价值分签</td></tr><tr><td><code>instances/jiangsu-retail-2027/run.py</code></td><td>配置校验 → 批发/参考价 → 分段传导与封顶 → 四压力档 → 6 科目差异桥 → 复核表</td></tr><tr><td><code>instances/jiangsu-retail-2027/make_demo.py</code></td><td>D 级合成 D-1 分时负荷与 T+1 实际（96 点，含 P1/P2/P3 分摊）</td></tr><tr><td><code>instances/jiangsu-retail-2027/pitfalls.md</code></td><td>江苏 2027 零售 12 条易错点与报价前 60 秒清单</td></tr></tbody></table></div>
+<pre tabindex="0"><code>python skills/retail-electricity-risk/instances/guangdong-retail-2026-11/run.py --check-config
+python skills/retail-electricity-risk/instances/guangdong-retail-2026-11/run.py --demo
+python skills/retail-electricity-risk/instances/jiangsu-retail-2027/run.py --check-config
+python skills/retail-electricity-risk/instances/jiangsu-retail-2027/run.py --demo</code></pre>
+<p>广东 D 级合成基准（2026-11-18）：组合 2,880 MWh，参考现货 375.67 CNY/MWh，加权采购 393.92，当前零售价 414.43，建议全成本 418.14，加权缺口 3.71；计划净边际 37,070 CNY，情景期望 26,063、CVaR10 −28,354；实际 19,898，差异 −17,172，差异桥残差 −1.75e-10 CNY。</p>
+<p>江苏 2027 D 级合成基准（2026-11-13）：组合 1,972.7 MWh，P_MT 401.00、批发均价 395.01、参考价 428.52、零售价 456.48、一户一价封顶 454.74 CNY/MWh，加权削顶 1.75，4/4 分段落入封顶；计划净收益 89,692 CNY，情景期望 92,043、CVaR10 89,692；实际 93,280，差异 +3,588，差异桥残差 0.00e+00。压力表显示现货 ×0.8/×1.2/×1.5 均不触发削顶，只有 ×1.0 触发——因为参考价随现货近似 1:1 上行，而批发价仅约 30% 与现货联动；这是全额传导结构的必然结果，不是模型错误。</p>
+<p>两组数字只用于验证流程，不对应任何真实公司；真实客户与合同数据放本地。</p>
 <hr>
-<h2 id="s77">13. 常见问答</h2>
+<h2 id="s78">13. 常见问答</h2>
 <p><strong>Q1：售电公司说&quot;一度电只赚几厘&quot;，怎么判断真假？</strong></p>
 <p>几厘是毛价差还是净利？要扣批发成本、偏差、运营、担保资金成本、坏账。本文算例毛价差 6.44 分、净利 3.14 分；2026 年广东行业平均净利约 0.39 分（B/C）。只报毛价差，等于没有回答。</p>
 <p><strong>Q2：固定价套餐还能不能签？</strong></p>
@@ -368,12 +378,12 @@
 <p><strong>Q5：客户跑了/公司退出，用户怎么办？</strong></p>
 <p>用户转保底售电或代理购电，次月可选择新售电公司；价格、合同、发票、偏差责任都会变。现行/地方保底价格常见 1.5/2 倍代理购电价格，2026 草案拟按无法履约当月现货实时价格结算，正式稿未定。</p>
 <hr>
-<h2 id="s78">14. 来源与维护</h2>
-<h3 id="s79">14.1 主要来源</h3>
+<h2 id="s79">14. 来源与维护</h2>
+<h3 id="s80">14.1 主要来源</h3>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>类型</th><th>内容</th></tr></thead><tbody><tr><td>知识底稿</td><td><a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算</a>、<a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a>、<a href="中国电价制度谱系-2026-11.html">电价制度谱系</a></td></tr><tr><td>政策原文</td><td>发改委、能源局、省级发改委/能源局、交易中心公开规则；文号与链接见政策列表</td></tr><tr><td>省级样本</td><td><a href="省级市场状态表-2026-11.html">省级市场状态表</a>、<a href="省级政策列表-2026-11.html">省级政策列表</a>（B/C 级，待核实）</td></tr><tr><td>算例</td><td>全部为 D 级合成数据，由 <code>tools/curves.py</code> 生成</td></tr></tbody></table></div>
-<h3 id="s80">14.2 维护规则</h3>
+<h3 id="s81">14.2 维护规则</h3>
 <ul><li>零售规则、偏差、保函、信用、保底任一变化，先改知识底稿，再改 <code>tools/</code> 参数与 <code>selftest.py</code>，最后同步本技能中英正文；</li><li>省级数值必须带文号、生效日与来源级别；</li><li>征求意见稿不得写成已执行；</li><li>每季度复核省级样本与保函系数；每月 P0 复核与知识库同步。</li></ul>
-<h3 id="s81">14.3 免责声明</h3>
+<h3 id="s82">14.3 免责声明</h3>
 <p>本文与工具只做测算演示，不构成投资建议、报价承诺或法律意见。真实售电经营必须使用本省最新文件、真实合同与负荷数据，并由具备资质的专业人员复核。</p>
 <ul><li><strong>价格驱动三链答题路由</strong>：量（<a href="气象与电力交易-2026-11.html">气象与电力交易</a>）、价（<a href="燃料与电力交易-2026-11.html">燃料与电力交易</a>）、约束（<a href="省间与跨区交易-2026-11.html">省间与跨区交易</a> §5.5–§5.6）；回答「为什么这个时段电价高」前按量→价→约束→叠加排查，回归题见 <a href="黄金问答集-2026-11.html">黄金问答集</a> F 段 Q29–Q38。</li></ul>
     </article>
@@ -496,12 +506,13 @@
             <li class="lv3"><a href="#s74">11.4 P1：影响可维护性</a></li>
             <li class="lv3"><a href="#s75">11.5 红线</a></li>
             <li class="lv2"><a href="#s76">12. 代码映射与自测</a></li>
-            <li class="lv2"><a href="#s77">13. 常见问答</a></li>
-            <li class="lv2"><a href="#s78">14. 来源与维护</a></li>
-            <li class="lv3"><a href="#s79">14.1 主要来源</a></li>
-            <li class="lv3"><a href="#s80">14.2 维护规则</a></li>
-            <li class="lv3"><a href="#s81">14.3 免责声明</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="66" data-more-label="展开 66 个小节" data-less-label="收起小节">展开 66 个小节</button>
+            <li class="lv3"><a href="#s77">12.1 实例包：广东零售（2026）与江苏零售（2027）</a></li>
+            <li class="lv2"><a href="#s78">13. 常见问答</a></li>
+            <li class="lv2"><a href="#s79">14. 来源与维护</a></li>
+            <li class="lv3"><a href="#s80">14.1 主要来源</a></li>
+            <li class="lv3"><a href="#s81">14.2 维护规则</a></li>
+            <li class="lv3"><a href="#s82">14.3 免责声明</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="67" data-more-label="展开 67 个小节" data-less-label="收起小节">展开 67 个小节</button>
   </aside>
 </div>
 

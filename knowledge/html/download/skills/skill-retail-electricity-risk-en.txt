@@ -788,7 +788,7 @@ The 0.40 floor is a floor on the retail price; at a spot price of 0.40 the formu
 | `tools/deviation.py` | Out-of-band volume, assessment cost, expectation and 95% quantile |
 | `tools/guarantee.py` | Current and draft guarantees, funding cost, gap |
 | `tools/curves.py` | Synthetic customer curves, spot curve and TOU prices |
-| `tools/selftest.py` | Locks all worked examples A–H in the text |
+| `tools/selftest.py` | Locks all worked examples A–H in the text plus instance-layer I/J |
 
 Run:
 
@@ -797,6 +797,35 @@ python skills/retail-electricity-risk/tools/selftest.py
 ```
 
 A green self-test means the text and code agree; when a policy parameter changes, update `curves.py` or the call parameters first, then sync the numbers in both language versions.
+
+### 12.1 Instance packs: Guangdong 2026 and Jiangsu 2027 retail
+
+The engine layer answers "what is the method"; the instance layer answers "**for this province, this customer portfolio, these contracts and this trading style, what price do we quote, how much do we buy, and where did T+1 differ**". The instance is a configuration layer and does not change the 101 modules / 13 sections / 9 skills count.
+
+| File | Purpose |
+|---|---|
+| `instances/README.md` | Retail instance schema: six blocks, two package models (`fixed_market_linked` / `annual_retail_pass_through`), D-1/T+1 formats, 30-minute workflow, validation and acceptance |
+| `instances/guangdong-retail-2026-11/instance.json` | Guangdong config: Southern regional price zone, three customer segments, 75% medium-term cover, contract deviation terms, 1595 guarantee |
+| `instances/guangdong-retail-2026-11/run.py` | Config validation → full-cost pricing → five scenarios/stress → 9-bucket T+1 bridge → review table |
+| `instances/guangdong-retail-2026-11/make_demo.py` | Grade-D synthetic D-1/T+1 data (96 points × 5 scenarios) |
+| `instances/guangdong-retail-2026-11/pitfalls.md` | Ten Guangdong retail pitfalls and a 60-second pre-quote checklist |
+| `instances/jiangsu-retail-2027/instance.json` | Jiangsu 2027 config: wholesale price + floating price + ΣK×allocation, one-household-one-price cap (F agreed by buyer and seller), split green-power energy/environmental contracts |
+| `instances/jiangsu-retail-2027/run.py` | Config validation → wholesale/reference price → segment pass-through and cap → four stress cases → 6-bucket T+1 bridge → review table |
+| `instances/jiangsu-retail-2027/make_demo.py` | Grade-D synthetic D-1 load and T+1 actuals (96 points, incl. P1/P2/P3 allocations) |
+| `instances/jiangsu-retail-2027/pitfalls.md` | Twelve Jiangsu 2027 retail pitfalls and a 60-second pre-quote checklist |
+
+```bash
+python skills/retail-electricity-risk/instances/guangdong-retail-2026-11/run.py --check-config
+python skills/retail-electricity-risk/instances/guangdong-retail-2026-11/run.py --demo
+python skills/retail-electricity-risk/instances/jiangsu-retail-2027/run.py --check-config
+python skills/retail-electricity-risk/instances/jiangsu-retail-2027/run.py --demo
+```
+
+Guangdong grade-D synthetic baseline (2026-11-18): 2,880 MWh portfolio, reference spot 375.67 CNY/MWh, weighted procurement 393.92, current retail price 414.43, recommended full cost 418.14, weighted gap 3.71; plan margin 37,070 CNY, expected 26,063, CVaR10 −28,354; actual 19,898, delta −17,172, bridge residual −1.75e-10 CNY.
+
+Jiangsu 2027 grade-D synthetic baseline (2026-11-13): 1,972.7 MWh portfolio, P_MT 401.00, wholesale average 395.01, reference price 428.52, retail price 456.48, one-household-one-price cap 454.74 CNY/MWh, weighted clip 1.75, 4/4 segments capped; plan net margin 89,692 CNY, scenario expectation 92,043, CVaR10 89,692; actual 93,280, delta +3,588, bridge residual 0.00e+00. The stress table shows no clipping at spot ×0.8/×1.2/×1.5 and clipping only at ×1.0 — because the reference price rises almost 1:1 with spot while the wholesale price is only about 30% spot-linked; this is structural for full pass-through, not a model error.
+
+Both number sets validate the workflow only and correspond to no real company; keep real customer and contract data local.
 
 ---
 

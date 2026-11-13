@@ -1,0 +1,7 @@
+﻿scenario,control_type,event_date,event_start,event_end,required_mw,marginal_price_cny_per_kwh
+s1,direct,2026-07-15,19:00,19:30,20.0,13.00
+s1,self,2026-07-15,19:00,19:30,6.0,8.80
+s2,direct,2026-07-15,19:00,19:30,26.0,13.80
+s2,self,2026-07-15,19:00,19:30,9.0,9.60
+s3,direct,2026-07-15,19:00,19:30,32.0,14.80
+s3,self,2026-07-15,19:00,19:30,12.0,10.20

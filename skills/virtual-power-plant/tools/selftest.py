@@ -28,6 +28,11 @@ D 组现金流为「按正文参数重建的合成序列（D 级）」：t=0 为
 
 from __future__ import annotations
 
+import importlib.util
+import json
+import tempfile
+from pathlib import Path
+
 import aggregation
 import cbl
 import dispatch
@@ -197,6 +202,62 @@ def main():
         raised = True
     check(raised, "C 无相似日通过筛选时抛 ValueError（不静默给空基线）")
 
+    # 江苏 5+3 口径：保留 25%–200% 的非对称区间，边界保留。
+    ratio_days = [
+        {"energy_mwh": 100.0, "curve_mw": [25.0]},
+        {"energy_mwh": 100.0, "curve_mw": [25.0]},
+        {"energy_mwh": 100.0, "curve_mw": [25.0]},
+        {"energy_mwh": 100.0, "curve_mw": [25.0]},
+        {"energy_mwh": 250.0, "curve_mw": [62.5]},
+    ]
+    ratio_kept, ratio_dropped = cbl.filter_by_ratio_bounds(ratio_days, 0.25, 2.0)
+    check(
+        len(ratio_kept) == 5 and not ratio_dropped,
+        "C 250% 高于均值但低于 200% 上界的两倍口径：保留（非对称）",
+    )
+    low_ratio_days = [
+        {"energy_mwh": 100.0, "curve_mw": [25.0]},
+        {"energy_mwh": 100.0, "curve_mw": [25.0]},
+        {"energy_mwh": 100.0, "curve_mw": [25.0]},
+        {"energy_mwh": 100.0, "curve_mw": [25.0]},
+        {"energy_mwh": 40.0, "curve_mw": [10.0]},
+    ]
+    low_ratio_kept, low_ratio_dropped = cbl.filter_by_ratio_bounds(low_ratio_days, 0.25, 2.0)
+    check(
+        len(low_ratio_kept) == 5 and not low_ratio_dropped,
+        "C 40% 低于均值但高于 25% 下界口径：保留（非对称）",
+    )
+    edge_days = [
+        {"energy_mwh": 25.0, "curve_mw": [6.25]},
+        {"energy_mwh": 200.0, "curve_mw": [50.0]},
+        {"energy_mwh": 75.0, "curve_mw": [18.75]},
+        {"energy_mwh": 100.0, "curve_mw": [25.0]},
+    ]
+    edge_kept, edge_dropped = cbl.filter_by_ratio_bounds(edge_days, 0.25, 2.0)
+    check(
+        len(edge_kept) == 4 and not edge_dropped,
+        "C 恰在 25%/200% 边界的日子保留",
+    )
+    out_kept, out_dropped = cbl.filter_by_ratio_bounds(
+        [
+            {"energy_mwh": 20.0, "curve_mw": [5.0]},
+            {"energy_mwh": 280.0, "curve_mw": [70.0]},
+            {"energy_mwh": 100.0, "curve_mw": [25.0]},
+            {"energy_mwh": 100.0, "curve_mw": [25.0]},
+        ],
+        0.25,
+        2.0,
+    )
+    check(
+        len(out_dropped) == 2 and len(out_kept) == 2,
+        "C 低于 25% 或高于 200% 的日子剔除",
+    )
+    asymmetric = cbl.customer_baseline(ratio_days, lower_ratio=0.25, upper_ratio=2.0)
+    check(
+        asymmetric["kept"] == 5 and asymmetric["dropped"] == 0,
+        "C customer_baseline 支持非对称区间参数",
+    )
+
     baseline_max = max(base["baseline_mw"])
     baseline_avg = sum(base["baseline_mw"]) / 4
     rate = cbl.response_rate(baseline_avg, 12.0)
@@ -318,6 +379,83 @@ def main():
         abs(finance.npv(0.0, proj["cashflows"]) - (-1400.0 + 311.45 * 10)) < 1e-9,
         "D 零折现率 NPV = 名义现金流之和（自洽）",
     )
+
+    # ------------------------------------------------------------------ E
+    # 江苏快响实例包：配置、申报、情景、T+1 认定与差异桥。
+    def raises(callable_, name):
+        try:
+            callable_()
+        except ValueError:
+            check(True, name)
+            return
+        raise AssertionError(f"{name}: expected ValueError")
+
+    pack_dir = (
+        Path(__file__).resolve().parents[1]
+        / "instances"
+        / "jiangsu-fast-response-2026-11"
+    )
+    spec = importlib.util.spec_from_file_location("jiangsu_fast_response_instance", pack_dir / "run.py")
+    runner = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(runner)
+    instance_path = pack_dir / "instance.json"
+    config = json.loads(instance_path.read_text(encoding="utf-8"))
+    report = runner.validate_instance(config)
+    close("E points per day", report["points_per_day"], 96, 0)
+    close("E MTU minutes", report["mtu_min"], 15, 0)
+    close("E direct capability (MW)", report["capability_by_type"]["direct"], 30.66, 1e-9)
+    close("E self capability (MW)", report["capability_by_type"]["self"], 10.80, 1e-9)
+    close("E direct declared (MW)", report["declared_by_type"]["direct"], 26.0, 1e-9)
+    close("E self declared (MW)", report["declared_by_type"]["self"], 8.6, 1e-9)
+    close("E direct bid ratio", report["share_by_type"]["direct"], 0.6774624918460534, 1e-12)
+
+    broken = json.loads(json.dumps(config))
+    del broken["rules"]["fast_response"]["grade"]
+    raises(lambda: runner.validate_instance(broken), "E reject missing rule grade")
+
+    broken = json.loads(json.dumps(config))
+    broken["policy"]["bid_price_cny_per_kwh"]["direct"] = 16.0
+    raises(lambda: runner.validate_instance(broken), "E reject bid above the 15 CNY/kWh cap")
+
+    broken = json.loads(json.dumps(config))
+    broken["policy"]["bid_ratio"]["direct"] = 1.2
+    raises(lambda: runner.validate_instance(broken), "E reject bid ratio above one")
+
+    with tempfile.TemporaryDirectory() as tmp:
+        result = runner.run_instance(
+            instance_path,
+            pack_dir / "data" / "history_demo.csv",
+            pack_dir / "data" / "event_demo.csv",
+            pack_dir / "data" / "t1_loads_demo.csv",
+            pack_dir / "data" / "t1_event_demo.csv",
+            Path(tmp),
+        )
+        summary = result["summary"]
+        bridge = result["bridge"]
+        close("E expected net (CNY)", summary["expected"]["net_cny"], 48400.668623613834, 1e-6)
+        close("E expected CVaR (CNY)", summary["expected"]["cvar_cny"], -2000.0, 1e-6)
+        close("E plan net (CNY)", bridge["plan_net_cny"], 45880.63519243314, 1e-6)
+        close("E actual net (CNY)", bridge["actual_net_cny"], 53303.313111545984, 1e-6)
+        close("E bridge delta (CNY)", bridge["delta_cny"], 7422.677919112844, 1e-6)
+        check(abs(bridge["identity_gap"]) < 1e-6, "E bridge identity closes")
+        check(len(bridge["buckets"]) == 11, "E bridge has eleven buckets")
+        check(
+            all(item["kept"] == 4 and item["dropped"] == 1 for item in summary["baseline"].values()),
+            "E every baseline keeps four of five candidate days",
+        )
+        close("E direct actual shed (MW)", summary["actual"]["by_type"]["direct"]["shed_mw"], 24.20, 1e-9)
+        close("E self paid shed capped (MW)", summary["actual"]["by_type"]["self"]["paid_shed_mw"], 10.32, 1e-9)
+        for name in (
+            "bid_sheet.csv",
+            "capability.csv",
+            "scenario_table.csv",
+            "delivery_detail.csv",
+            "summary.json",
+            "bridge.json",
+            "bridge.csv",
+            "review.md",
+        ):
+            check((Path(tmp) / name).exists(), f"E writes {name}")
 
     print(f"\nAll VPP self-tests passed: {_COUNT} assertions.")
 

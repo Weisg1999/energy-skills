@@ -4,3 +4,5 @@ __pycache__/
 .workbuddy/
 _site/
 skills/spot-bidding-quant/instances/*/out/
+skills/retail-electricity-risk/instances/*/out/
+skills/virtual-power-plant/instances/*/out/
