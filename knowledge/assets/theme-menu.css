@@ -1,0 +1,33 @@
+/* 主题选择器：首页、阅读页与实例总览共用。按钮样式由各页提供，这里只管弹层。 */
+.theme-picker{position:relative;display:inline-flex;align-items:center;flex:none}
+.theme-picker-fixed{position:fixed;top:14px;right:18px;z-index:50}
+.theme-menu{
+  position:absolute;top:calc(100% + 8px);right:0;z-index:80;min-width:176px;
+  padding:6px;border:1px solid var(--line);border-radius:10px;background:var(--card);
+  box-shadow:0 18px 40px -20px rgba(0,0,0,.45);
+}
+.theme-menu[hidden]{display:none}
+.theme-menu-label{padding:5px 9px 4px;font:600 var(--fs-2xs)/1.4 var(--mono);letter-spacing:.07em;color:var(--muted)}
+.theme-option{
+  display:flex;align-items:center;gap:9px;width:100%;padding:8px 9px;
+  border:0;border-radius:7px;background:none;color:var(--ink-2);
+  font:var(--fs-xs)/1.4 var(--sans);text-align:left;cursor:pointer;
+}
+.theme-option:hover{background:var(--paper-2);color:var(--ink)}
+.theme-option[aria-pressed="true"]{background:var(--accent-soft,var(--teal-soft));color:var(--ink);font-weight:600}
+.theme-swatch{
+  width:14px;height:14px;flex:none;border-radius:50%;
+  border:1px solid var(--control-line);box-shadow:inset 0 0 0 1px rgba(255,255,255,.35);
+}
+.theme-swatch-light{background:#fff}
+.theme-swatch-cream{background:#f6eedb}
+.theme-swatch-green{background:#e6f1e0}
+.theme-swatch-dark{background:#182027}
+.theme-check{margin-left:auto;flex:none;font:700 12px/1 var(--sans);color:var(--accent,var(--teal));opacity:0}
+.theme-option[aria-pressed="true"] .theme-check{opacity:1}
+@media (max-width:960px){
+  .theme-picker-fixed{top:10px;right:14px}
+}
+@media print{
+  .theme-picker{display:none!important}
+}

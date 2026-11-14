@@ -1176,11 +1176,12 @@ const CHROME = {
     progress: '阅读进度',
     hub: '知识库',
     back: '返回知识库',
-    themeDark: '切换到深色模式',
+    themePick: '选择主题',
     more: '更多',
     source: '.md 源文件',
     method: '使用与口径',
-    langSwitch: 'English',
+    langSwitch: 'EN',
+    langSwitchTitle: '切换到英文',
     tocToggle: '目录',
     current: '当前分类',
     others: '其他分类',
@@ -1208,11 +1209,12 @@ const CHROME = {
     progress: 'Reading progress',
     hub: 'Knowledge hub',
     back: 'Back to knowledge hub',
-    themeDark: 'Switch to dark mode',
+    themePick: 'Choose theme',
     more: 'More',
     source: 'Source .md',
     method: 'Method & caliber',
     langSwitch: '中文',
+    langSwitchTitle: 'Switch to Chinese',
     tocToggle: 'Contents',
     current: 'Current section',
     others: 'Other sections',
@@ -1264,7 +1266,7 @@ function buildPage(doc) {
   const sourceHref = doc.srcHref || `../${doc.md}`;
   const sourceLabel = doc.srcHref ? doc.md : `knowledge/${doc.md}`;
   const languageLink = isSkill
-    ? `<a class="src" href="skill-${doc.slug}${lang === 'en' ? '' : '-en'}.html" hreflang="${lang === 'en' ? 'zh-CN' : 'en'}">${esc(copy.langSwitch)}</a>`
+    ? `<a class="lang-toggle" href="skill-${doc.slug}${lang === 'en' ? '' : '-en'}.html" hreflang="${lang === 'en' ? 'zh-CN' : 'en'}" lang="${lang === 'en' ? 'zh-CN' : 'en'}" aria-label="${esc(copy.langSwitchTitle)}" title="${esc(copy.langSwitchTitle)}">${esc(copy.langSwitch)}</a>`
     : '';
   const isHistorical = doc.historical === true || doc.historical === 'true';
   const historicalBanner = isHistorical
@@ -1373,10 +1375,11 @@ function buildPage(doc) {
 <meta name="description" content="${esc(doc.summary)}">
 <link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
 <script>
-(function(){try{var t=localStorage.getItem('es-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+(function(){try{var t=localStorage.getItem('es-theme');if(!/^(light|cream|green|dark)$/.test(t||'')){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/knowledge.css">
+<link rel="stylesheet" href="../assets/theme-menu.css">
 </head>
 <body data-cat="${esc(sec.cat)}" id="top">
 <a class="skip" href="#main">${esc(copy.skip)}</a>
@@ -1390,16 +1393,17 @@ function buildPage(doc) {
     <span class="crumb-sep">/</span>
     <span class="crumb-doc">${esc(doc.title)}</span>
   </div>
-  <div class="topbar-act">
-    <button class="theme-toggle" type="button" data-theme-toggle aria-label="${esc(copy.themeDark)}" title="${esc(copy.themeDark)}">
-      <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
-      <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-    </button>
+  <div class="topbar-act">${languageLink ? `
+    ${languageLink}` : ''}
+    <div class="theme-picker" data-theme-picker>
+      <button class="theme-toggle" type="button" data-theme-menu aria-label="${esc(copy.themePick)}" title="${esc(copy.themePick)}">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="5"/><circle cx="15" cy="9" r="5"/><circle cx="12" cy="15" r="5"/></svg>
+      </button>
+    </div>
     <details class="more">
       <summary class="more-btn" aria-label="${esc(copy.more)}" title="${esc(copy.more)}"><span class="more-label">${esc(copy.more)}</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
       <div class="more-menu">
         <a class="src" href="${esc(sourceHref)}">${esc(copy.source)}<small>${esc(sourceLabel)}</small></a>
-        ${languageLink}
         <a class="src" href="../index.html#method">${esc(copy.method)}</a>
       </div>
     </details>

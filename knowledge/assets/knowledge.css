@@ -33,7 +33,7 @@ body{
   line-height:1.85;
   background:
     radial-gradient(1000px 520px at 88% -10%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 62%),
-    radial-gradient(820px 480px at -6% 26%, rgba(22,35,47,.035), transparent 60%),
+    radial-gradient(820px 480px at -6% 26%, var(--wash), transparent 60%),
     var(--paper);
   -webkit-font-smoothing:antialiased;
 }
@@ -74,6 +74,14 @@ a:hover{text-decoration:underline;text-underline-offset:3px}
 .src{font:var(--fs-2xs)/1 var(--mono);color:var(--muted);padding:6px 9px;border:1px solid var(--control-line);border-radius:7px;background:var(--card)}
 .src:hover{color:var(--accent);border-color:var(--accent);text-decoration:none}
 .toc-toggle{display:none;font:600 var(--fs-xs)/1 var(--sans);color:var(--ink-2);padding:8px 11px;border:1px solid var(--control-line);border-radius:8px;background:var(--card);cursor:pointer}
+.lang-toggle{
+  display:inline-flex;align-items:center;justify-content:center;flex:none;
+  min-width:32px;height:32px;padding:0 8px;border:1px solid var(--control-line);border-radius:8px;
+  background:var(--card);color:var(--ink-2);
+  font:600 var(--fs-2xs)/1 var(--mono);letter-spacing:.04em;
+  transition:color .15s,border-color .15s,background .15s;
+}
+.lang-toggle:hover{color:var(--accent);border-color:var(--accent);text-decoration:none}
 .theme-toggle{
   display:inline-flex;align-items:center;justify-content:center;flex:none;
   width:32px;height:32px;padding:0;border:1px solid var(--control-line);border-radius:8px;
@@ -82,9 +90,6 @@ a:hover{text-decoration:underline;text-underline-offset:3px}
 }
 .theme-toggle:hover{color:var(--accent);border-color:var(--accent)}
 .theme-toggle svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.theme-toggle .ico-sun{display:none}
-:root[data-theme="dark"] .theme-toggle .ico-moon{display:none}
-:root[data-theme="dark"] .theme-toggle .ico-sun{display:block}
 
 /* 低频动作收进“更多”，顶栏只保留返回、主题、更多与目录。 */
 .more{position:relative;flex:none}
@@ -735,7 +740,7 @@ h1.doc-title{
   .pchip{min-height:40px;padding:9px 13px}
   .nav-list a,.nav-others a{display:flex;align-items:center;min-height:44px;padding:8px 10px}
   .toc-mobile a{padding:11px 8px}
-  .back,.toc-toggle,.theme-toggle,.more-btn{min-height:44px}
+  .back,.toc-toggle,.theme-toggle,.more-btn,.lang-toggle{min-height:44px}
   .more-btn{min-width:44px;height:44px;padding:0}
   .more-label{display:none}
   .back{padding:9px 12px}
@@ -751,7 +756,13 @@ h1.doc-title{
 }
 @media (min-width:901px){.scrim{display:none}}
 
-/* 深色主题：颜色令牌见 tokens.css，这里只放组件级覆盖 */
+/* 主题只覆盖颜色令牌与阴影，版式保持一致 */
+:root[data-theme="cream"]{
+  --shadow:0 1px 2px rgba(86,66,32,.06),0 14px 34px -20px rgba(86,66,32,.28);
+}
+:root[data-theme="green"]{
+  --shadow:0 1px 2px rgba(32,64,32,.06),0 14px 34px -20px rgba(32,64,32,.28);
+}
 :root[data-theme="dark"]{
   --shadow:0 1px 2px rgba(0,0,0,.35),0 14px 34px -20px rgba(0,0,0,.85);
 }
@@ -815,7 +826,7 @@ h1.doc-title{
 /* 打印 */
 @media print{
   :root[data-theme="dark"] body[data-cat]{--accent:#16232f;--accent-soft:#f0ece3}
-  .topbar,.sidebar,.toc,.toc-mobile,.related,.pager,.to-top,.progress,.scrim,.skip,.policy-bar,.policy-empty{display:none!important}
+  .topbar,.sidebar,.toc,.toc-mobile,.related,.pager,.to-top,.progress,.scrim,.skip,.policy-bar,.policy-empty,.theme-picker{display:none!important}
   .historical-banner{background:#fff;border-color:#888;color:#000}
   .historical-banner strong,.historical-banner span{color:#000}
   body{background:#fff;font-size:11.5pt}
