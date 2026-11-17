@@ -1252,13 +1252,6 @@ def main():
     )
     check(shandong_report["status"] == "warn", "M Shandong thermal is warn")
     check(shandong_report["counts"]["block"] == 0, "M Shandong thermal has no block")
-    check(
-        any(
-            check["id"] == "bid.thermal_total" and check["level"] == "pass"
-            for check in shandong_report["checks"]
-        ),
-        "M Shandong thermal bid total passes",
-    )
 
     shandong_rule = rulecheck.load_json(RULES_DIR / "shandong.json")
     shandong_storage_capacity = rulecheck.new_report(REPO_ROOT, "shandong-storage-cap", "山东", "storage")
@@ -1451,6 +1444,13 @@ def main():
                 for check in pass_report["checks"]
             ),
             "M valid bid price passes",
+        )
+        check(
+            any(
+                check["id"] == "bid.thermal_total" and check["level"] == "pass"
+                for check in pass_report["checks"]
+            ),
+            "M thermal bid total passes",
         )
 
         partial_date_rows = [dict(row) for row in pass_rows]

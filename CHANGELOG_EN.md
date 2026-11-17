@@ -2,6 +2,11 @@
 
 This file records energy-skills releases in reverse chronological order. Current version **v1.9**, data cutoff **2026-11-12**. Repository entry point: [README_EN.md](README_EN.md); Chinese version: [CHANGELOG.md](CHANGELOG.md).
 
+### 2026-11-17 (v1.9 maintenance: remove the trading self-test's dependency on local out/)
+
+- **Problem**: the Shandong thermal bid assertion in the `electricity-trading-expert` self-test read `skills/spot-bidding-quant/instances/shandong-thermal-2026-11/out/demo/bid_sheet.csv`. That directory is gitignored, so a clean CI checkout had no file, `bid.thermal_total` degraded to `skip`, and the `consistency` workflow failed. It passed locally only because the demo had been run; this was a test-environment dependency, not a rule or calculation error.
+- **Fix and verification**: the assertion now writes a valid 96-point thermal bid to a temporary directory and checks `bid.thermal_total` directly, still at 456 assertions. A clean tree restored with `git archive HEAD` passed every CI step under Python 3.12 and Node 24, including all nine skill self-tests and the four static gates.
+
 ### 2026-11-17 (v1.9 maintenance: six provincial rulepacks and pre-bid checks)
 
 - **Rulepacks**: adds six schema-v1 files under `skills/electricity-trading-expert/rules/` for Shandong, Gansu, Mengxi, Shanxi, Guangdong and Jiangsu, consolidating spot price limits, points/MTU, capacity compensation, ancillary services, retail, direct-connection and interprovincial rules that were scattered across instance configs, knowledge pages and announcements. Each block carries `status`, `effective_from/effective_to`, `grade` and `source`; drafts and historical calibers are kept separate, and unresolved items live in `open_items`.

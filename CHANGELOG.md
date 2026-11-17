@@ -2,6 +2,11 @@
 
 本文件记录 energy-skills 的版本变更，按时间倒序。当前版本 **v1.9**，数据截止 **2026-11-12**。仓库入口见 [README.md](README.md)，英文版见 [CHANGELOG_EN.md](CHANGELOG_EN.md)。
 
+### 2026-11-17（v1.9 维护：修复交易自测对本地 out 目录的依赖）
+
+- **问题**：`electricity-trading-expert` 自测中的山东煤电申报断言读取 `skills/spot-bidding-quant/instances/shandong-thermal-2026-11/out/demo/bid_sheet.csv`；该目录被 `.gitignore` 忽略，CI 干净检出没有文件，`bid.thermal_total` 退化为 `skip`，`consistency` 工作流因此失败。本地因已运行 demo 而通过，属于测试环境依赖，不是规则或算例错误。
+- **修复与验证**：该断言改为在临时目录生成 96 点有效煤电申报，直接校验 `bid.thermal_total` 为 `pass`，断言总数仍为 456。用 `git archive HEAD` 还原纯净检出，在 Python 3.12 + Node 24 下重跑全部 CI 步骤，9 个技能自测与四项静态门禁全部通过。
+
 ### 2026-11-17（v1.9 维护：六省省级规则包与申报前校验）
 
 - **规则包**：新增 `skills/electricity-trading-expert/rules/` 下山东、甘肃、蒙西、山西、广东、江苏 6 份 schema v1 规则文件，把散落在实例配置、知识页和公告中的现货限价、点数/MTU、容量补偿、辅助服务、零售、绿电直连与省间规则收口；每个规则块带 `status`、`effective_from/effective_to`、`grade` 与 `source`，草案与历史口径分列，未闭合项写入 `open_items`。
