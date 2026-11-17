@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "province": "甘肃",
+  "market": "甘肃省级电力市场（中长期 + 现货 + 可靠容量补偿 + 辅助服务）",
+  "as_of": "2026-11-17",
+  "spot": {
+    "status": "active",
+    "rule_version": "《甘肃电力现货市场规则（V3.2）》（2026-03-31）＋ 甘发改价格规〔2025〕4号",
+    "effective_from": "2026-01-01",
+    "effective_to": null,
+    "verified_on": "2026-11-17",
+    "grade": "A/B",
+    "source": "甘发改价格规〔2025〕4号：2026-01-01 起申报 40-500、出清 40-650 元/MWh；《甘肃电力现货市场规则（V3.2）》（2026-03-31 印发，出清 40-650）；中国能源新闻网 2025-09-11",
+    "market_time_unit_min": 15,
+    "points_per_day": 96,
+    "declare_floor_cny_per_mwh": 40,
+    "declare_cap_cny_per_mwh": 500,
+    "clear_floor_cny_per_mwh": 40,
+    "clear_cap_cny_per_mwh": 650,
+    "limits_enforcement": "hard",
+    "deadline": {
+      "label": "D-1 交易中心日前申报截止前",
+      "time": null,
+      "verified": false,
+      "grade": "B",
+      "source": "实例 data_contract.d1.release_cutoff；具体时点以交易中心公告为准"
+    },
+    "drafts": [],
+    "historical_limits": [
+      {
+        "id": "pre-2026",
+        "status": "historical",
+        "declare_cny_per_mwh": "0-1000",
+        "grade": "B",
+        "source": "2026 年前旧口径；不得用于 2026-01-01 之后"
+      }
+    ],
+    "notes": [
+      "申报与出清均按 96 点；40 元/MWh 是申报与出清下限，不能把 2025 年前的 0-1000 旧口径套到 2026 年。",
+      "现货全电量竞价；中长期按 1656 号规则，本规则包不实现 24 时段分解。"
+    ]
+  },
+  "capacity_compensation": {
+    "status": "active",
+    "effective_from": "2026-01-01",
+    "effective_to": "2027-12-31",
+    "price_cny_per_kw_year": 330,
+    "supply_demand_coefficient": 0.85,
+    "coefficient_cap": 1.0,
+    "eligible_types": ["coal", "grid_storage"],
+    "ineligible_types": ["wind", "pv", "colocated_storage"],
+    "assessment": {
+      "first_miss_deduction": 0.5,
+      "second_miss_deduction": 1.0,
+      "three_month_deduction": 1.0,
+      "basis": "未按调度指令提供申报最大出力或放电时长；月内一次扣当月容量电费 50%、二次扣 100%；全年三个月扣减 100% 则扣减全年"
+    },
+    "grade": "A/B/D",
+    "source": "甘发改价格规〔2025〕4号《关于建立发电侧可靠容量补偿机制的通知（试行）》（2025-12-31 发布，2026-01-01 试行）；330 元/kW·年、分摊与考核为文件口径；容量供需系数按文件公式取值，本规则包的 0.85 为 D 级演示值",
+    "note": "风电场不享受该补偿；本规则包的 0.85 是演示系数，不是正式参数。"
+  },
+  "ancillary": {
+    "status": "unverified_prices",
+    "effective_from": null,
+    "effective_to": null,
+    "peak_regulation": {
+      "threshold_ratio": 0.5,
+      "price_cny_per_mwh": 150,
+      "call_ratio": 0.85
+    },
+    "frequency_regulation": {
+      "capacity_ratio": 0.3,
+      "price_cny_per_kw_month": 5,
+      "performance_factor": 0.9
+    },
+    "reserve": {
+      "capacity_ratio": 0.15,
+      "price_cny_per_kw_month": 8
+    },
+    "grade": "C/D",
+    "source": "甘肃辅助服务市场与两个细则框架（C）；调峰 150 元/MWh、调用比例 85%、调频 5 元/kW·月、备用 8 元/kW·月均为 D 级演示假设",
+    "note": "品种与限价待逐项核实；调频与备用容量比例之和 0.45，不能把同一 MW 重复出售为多个产品。"
+  },
+  "interprovincial": {
+    "status": "active",
+    "effective_from": "2026-04-28",
+    "effective_to": null,
+    "min_bid_mw": 1.0,
+    "bid_step_cny_per_mwh": 1.0,
+    "max_bid_multiple_of_provincial_cap": 2.0,
+    "settlement_reference": "receiving_landing",
+    "grade": "B",
+    "source": "《省间电力现货交易规则》2026-04-28 施行（发改办体改〔2026〕275号复函）：实物交易、最小申报 1 MW、报价步长 1 元/MWh、最高申报价为省内市场价上限的 2 倍；省间中长期依据发改能源规〔2025〕1656号",
+    "note": "组织时序、各省落地参数、ATC 与偏差处理以北京电力交易中心公告和送受端合同为准。"
+  },
+  "open_items": [
+    "辅助服务限价、调用比例、性能折算均为 D 级建模假设，不能当作正式结算依据。",
+    "容量供需系数 0.85 为演示值；正式值按省级文件与月度公告。",
+    "D-1 具体截止时点未核到省级公告。"
+  ]
+}

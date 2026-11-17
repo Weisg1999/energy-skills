@@ -5,6 +5,7 @@ __pycache__/
 _site/
 skills/spot-bidding-quant/instances/*/out/
 skills/electricity-trading-expert/instances/*/out/
+skills/electricity-trading-expert/out/
 skills/retail-electricity-risk/instances/*/out/
 skills/virtual-power-plant/instances/*/out/
 skills/storage-investment-operations/instances/*/out/

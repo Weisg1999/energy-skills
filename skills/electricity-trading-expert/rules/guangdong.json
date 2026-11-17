@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "province": "广东",
+  "market": "广东电力市场（南方区域广东价区 + 零售 + 绿电直连）",
+  "as_of": "2026-11-17",
+  "spot": {
+    "status": "active",
+    "rule_version": "南方区域电力现货市场正式运行实施方案（2026 年）",
+    "effective_from": "2026-09-20",
+    "effective_to": null,
+    "verified_on": "2026-11-17",
+    "grade": "A/B",
+    "source": "南方电网总调〔2026〕16号《南方区域电力现货市场正式运行实施方案（2026年）》；发改体改〔2026〕715号复函",
+    "market_time_unit_min": 15,
+    "points_per_day": 96,
+    "declare_floor_cny_per_mwh": -50,
+    "declare_cap_cny_per_mwh": null,
+    "clear_floor_cny_per_mwh": -50,
+    "clear_cap_cny_per_mwh": 1800,
+    "validation_upper_cny_per_mwh": 1800,
+    "validation_upper_enforcement": "soft",
+    "limits_enforcement": "partial",
+    "limits_status": "declare_cap_unverified",
+    "limits_note": "申报下限 -50、出清上限 1800 元/MWh 已核到；申报上限未在公开材料中单独给出，规则包用 1800 作软边界并提示人工确认。",
+    "deadline": {
+      "label": null,
+      "time": null,
+      "verified": false,
+      "grade": "C",
+      "source": "公开材料未给出广东日前申报截止时点；以交易中心公告为准"
+    },
+    "drafts": [],
+    "historical_limits": [
+      {
+        "id": "pilot",
+        "status": "historical",
+        "declare_cny_per_mwh": "0-1000",
+        "clear_cny_per_mwh": "70-1500",
+        "grade": "B",
+        "source": "首批试点旧口径；2026 年不得作为现行唯一参数"
+      }
+    ],
+    "notes": [
+      "用户侧统一结算点；15 分钟节点价，小时平均用于结算。",
+      "出清上限 1800 不等于申报上限；申报曲线越界时先按软边界提示，再由交易员核对交易中心模板。"
+    ]
+  },
+  "retail": {
+    "status": "active",
+    "effective_from": "2026-01-01",
+    "effective_to": null,
+    "platform": "广东电力市场零售平台公开比价",
+    "retailers_2025": 635,
+    "retail_avg_2025_cny_per_mwh": 380.3,
+    "retail_avg_2026h1_cny_per_mwh": 407.4,
+    "margin_2026h1_cny_per_mwh": 3.9,
+    "loss_sample_2026h1": "500 家样本中 298 家亏损（行业口径，C）",
+    "deviation": {
+      "status": "unverified",
+      "band": null,
+      "grade": "C",
+      "source": "±3% 触发、±5% 按 2 倍考核仅见市场宣传材料，未核到正式文件；不得写成现行统一规则",
+      "note": "零售合同约定免考带、考核价、责任分摊、调整窗口与追退补。"
+    },
+    "guarantee": {
+      "current": {
+        "formula": "max(过去 12 个月批发购电量×8 元/MWh, 2 个月最大购电量×50 元/MWh)",
+        "document": "发改体改规〔2021〕1595 号",
+        "effective": true
+      },
+      "draft": {
+        "formula": "max(200 万元, 预计年售电量×10 元/MWh×调整系数)，系数 1-10",
+        "status": "2026-09-04 征求意见稿；拟 2027-01-01 施行，未生效",
+        "effective": false
+      },
+      "grade": "A/B",
+      "source": "发改体改规〔2021〕1595 号（现行，A）；2026-09-04 售电公司管理办法修订征求意见稿（草案，B）"
+    },
+    "settlement": {
+      "timeline": "核对版第 5 个工作日、正式版第 8 个工作日、账单第 10 个工作日；异议 15 个工作日、确认 5 个工作日、属实的下一周期追退补",
+      "document": "发改能源规〔2025〕976 号《电力市场计量结算基本规则》",
+      "grade": "A"
+    },
+    "grade": "B/C",
+    "source": "广东 2025 年市场数据（B）；2026H1 零售均价与度电收益（B/C）；2026-06-08 零售市场管理通知（B/C，未核到正式文号）"
+  },
+  "direct_connection": {
+    "status": "active",
+    "effective_from": "2026-05-01",
+    "effective_to": null,
+    "self_use_min_ratio_generation": 0.6,
+    "self_use_min_ratio_consumption": 0.35,
+    "feed_in_max_ratio_generation": 0.2,
+    "min_users": 2,
+    "user_scope": "多个不同法人实体；不含居民和农业用户；工业园区、零碳园区、增量配电网可整体或部分负荷参与",
+    "grade": "A/B",
+    "source": "发改能源〔2025〕650号（2025-05-30 公开，单用户）；发改能源〔2026〕688号（多用户，2026-05）；粤发改能源〔2026〕267号按 B/C 处理",
+    "note": "多用户直连的 60%/35%/20% 是合规校核线；688 号公开日期有 05-14 与 05-20 两种说法，待原文核实。"
+  },
+  "open_items": [
+    "广东零售偏差考核的 ±3%/±5% 仅见宣传材料，未核到正式文件。",
+    "2026-06-08 零售市场管理通知未核到正式文号。",
+    "多用户绿电直连 688 号的公开日期存在两种说法；以正式原文为准。",
+    "日前申报截止时点未核到公开材料。"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "province": "蒙西",
+  "market": "蒙西电力市场（现货 + 中长期 + 新能源机制）",
+  "as_of": "2026-11-17",
+  "spot": {
+    "status": "active",
+    "rule_version": "蒙西现货正式运行（内能源电力字〔2025〕84号，2025-02-24）；2026 修订版为 2026-02-14 征求意见稿，未生效",
+    "effective_from": "2025-02-24",
+    "effective_to": null,
+    "verified_on": "2026-11-17",
+    "grade": "A/B/C",
+    "source": "内能源电力字〔2025〕84号（2025-02-21 成文、02-24 转正式）；内蒙古电力交易中心 2025 年信息披露简报；2026-02-14 修订版征求意见稿（C，未生效）",
+    "market_time_unit_min": 15,
+    "points_per_day": 96,
+    "declare_floor_cny_per_mwh": -60,
+    "declare_cap_cny_per_mwh": 1600,
+    "clear_floor_cny_per_mwh": null,
+    "clear_cap_cny_per_mwh": null,
+    "limits_enforcement": "model",
+    "limits_status": "model_only",
+    "limits_note": "省级现行正式限价全文待核；-60 至 1600 元/MWh 只是本规则包的建模边界，不是正式申报限价。2025 年实绩为 -48.66 至 1555.85 元/MWh。",
+    "observed_2025": {
+      "floor_cny_per_mwh": -48.66,
+      "cap_cny_per_mwh": 1555.85,
+      "average_cny_per_mwh": 259.43,
+      "peak_average_cny_per_mwh": 391.17,
+      "valley_average_cny_per_mwh": 110.67,
+      "max_daily_spread_cny_per_mwh": 1650.27,
+      "grade": "B",
+      "source": "内蒙古电力交易中心 2025 年信息披露简报；是实绩，不是限价参数"
+    },
+    "deadline": {
+      "label": "D-1 交易中心日前申报截止前",
+      "time": null,
+      "verified": false,
+      "grade": "B",
+      "source": "实例 data_contract.d1.release_cutoff；具体时点以交易中心公告为准"
+    },
+    "drafts": [
+      {
+        "id": "2026-02-14",
+        "status": "draft",
+        "effective_from": null,
+        "declare_cny_per_mwh": "-50 至 1500",
+        "grade": "C",
+        "source": "2026-02-14 修订版征求意见稿；未生效，不得写入现行字段"
+      }
+    ],
+    "historical_limits": [
+      {
+        "id": "early",
+        "status": "historical",
+        "declare_cny_per_mwh": "4-10 月 40-550；其他月份 40-600",
+        "grade": "B",
+        "source": "早期/历史口径，不得作为 2026 现行限价"
+      }
+    ],
+    "notes": [
+      "省级正式全文待核；规则过期/变更时必须切换限价，不能把 2025 实绩当限价。",
+      "负价时段弃风是运营选择，不是强制规则；弃风会同时减少电量和按实际电量计价的差价合约对冲。"
+    ]
+  },
+  "deviation_assessment": {
+    "status": "active",
+    "effective_from": null,
+    "effective_to": null,
+    "band": 0.05,
+    "penalty_cny_per_mwh": 30,
+    "basis": "available_energy",
+    "formula": "max(0, |可用电量 − 申报电量| / 申报电量 − 5%) × 申报电量 × 30 元/MWh",
+    "grade": "B/D",
+    "source": "电力现货市场 101 问-B：蒙西偏差 ±5% 以内不考核（B）；30 元/MWh 与按可用电量计为 D 级建模假设",
+    "note": "不是正式考核公式；申报前只能用作风险提示。"
+  },
+  "new_energy": {
+    "status": "active",
+    "effective_from": "2025-06-01",
+    "effective_to": null,
+    "stock_mechanism_cny_per_mwh": 282.9,
+    "incremental_mechanism": "暂不纳入机制电价，无保底价，全部市场化",
+    "annual_signing_ratio": 0.6,
+    "deviation_band": 0.05,
+    "grade": "A/B",
+    "source": "内能源电力字〔2024〕831号；知识模块《蒙西电力市场-2026-11》§5、§7.1；电力现货市场 101 问-B",
+    "note": "年度签约比例文件含多档要求，本规则包取 60% 作演示，不替代正式考核。"
+  },
+  "capacity_compensation": {
+    "status": "not_applicable",
+    "effective_from": null,
+    "effective_to": null,
+    "price_cny_per_kw_year": null,
+    "eligible_types": ["coal"],
+    "ineligible_types": ["wind", "pv", "storage"],
+    "grade": "C/D",
+    "source": "未核到蒙西固定容量电价；行业口径 0.28 元/kWh 放电量补贴为储能口径（C/D），不适用于风电",
+    "note": "风电、光伏不得计容量补偿；储能度电补贴与容量电价性质不同，不能混用。"
+  },
+  "open_items": [
+    "省级现行申报/出清限价正式全文待核；当前校验使用模型边界并降级为 warn。",
+    "2026-02-14 修订稿为草案，不得作为现行参数。",
+    "储能容量补偿与 0.28 元/kWh 度电补贴的口径未核实。"
+  ]
+}

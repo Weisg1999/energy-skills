@@ -1,0 +1,122 @@
+{
+  "name": "样例交易组合（12 个实例包）",
+  "as_of": "2026-11-13",
+  "trading_day": "2026-11-18",
+  "description": "跨 6 省、3 个交易技能的 D 级样例组合清单；只读取各包 out/**/summary.json 与同目录 bridge.json，不改包、不接实盘。",
+  "boundaries": [
+    "本清单是组合配置层，不是新的实例包；不改变 23 个实例包与 9 个技能的计数。",
+    "share 是组合持有份额，只缩放金额与 CVaR，不改变分主体的资产全口径值。",
+    "不同 period 与 value_kind 不可相加；portfolio.py 会自动分组。",
+    "全部数据为 D 级合成数据，不构成交易、报价或投资建议。"
+  ],
+  "packs": [
+    {
+      "path": "skills/electricity-trading-expert/instances/shandong-thermal-hedge-2026-11",
+      "label": "山东煤电中长期对冲",
+      "province": "山东",
+      "kind": "hedge",
+      "role": "generation",
+      "period": "daily",
+      "share": 1.0
+    },
+    {
+      "path": "skills/electricity-trading-expert/instances/gansu-coal-capacity-ancillary-2026-11",
+      "label": "甘肃煤电容量+辅助服务",
+      "province": "甘肃",
+      "kind": "capacity",
+      "role": "generation",
+      "period": "annual",
+      "share": 1.0
+    },
+    {
+      "path": "skills/electricity-trading-expert/instances/gansu-wind-to-shandong-2026-11",
+      "label": "甘肃风电送山东",
+      "province": "甘肃",
+      "kind": "interprovincial",
+      "role": "generation",
+      "period": "annual",
+      "share": 1.0
+    },
+    {
+      "path": "skills/spot-bidding-quant/instances/shandong-thermal-2026-11",
+      "label": "山东煤电现货",
+      "province": "山东",
+      "kind": "spot_thermal",
+      "role": "generation",
+      "period": "daily",
+      "share": 1.0
+    },
+    {
+      "path": "skills/spot-bidding-quant/instances/shandong-storage-2026-11",
+      "label": "山东独立储能",
+      "province": "山东",
+      "kind": "spot_storage",
+      "role": "storage",
+      "period": "daily",
+      "share": 1.0
+    },
+    {
+      "path": "skills/spot-bidding-quant/instances/shandong-pv-storage-2026-11",
+      "label": "山东光储一体",
+      "province": "山东",
+      "kind": "spot_pv_storage",
+      "role": "storage",
+      "period": "daily",
+      "share": 1.0
+    },
+    {
+      "path": "skills/spot-bidding-quant/instances/gansu-wind-2027",
+      "label": "甘肃风电 2027 机制",
+      "province": "甘肃",
+      "kind": "spot_wind",
+      "role": "generation",
+      "period": "daily",
+      "share": 1.0
+    },
+    {
+      "path": "skills/spot-bidding-quant/instances/mengxi-wind-spot-2026-11",
+      "label": "蒙西风电现货",
+      "province": "蒙西",
+      "kind": "spot_wind",
+      "role": "generation",
+      "period": "daily",
+      "share": 1.0
+    },
+    {
+      "path": "skills/spot-bidding-quant/instances/shanxi-storage-2026-11",
+      "label": "山西独立储能",
+      "province": "山西",
+      "kind": "spot_storage",
+      "role": "storage",
+      "period": "daily",
+      "share": 1.0
+    },
+    {
+      "path": "skills/retail-electricity-risk/instances/guangdong-retail-2026-11",
+      "label": "广东零售组合",
+      "province": "广东",
+      "kind": "retail",
+      "role": "retail",
+      "period": "daily",
+      "share": 1.0
+    },
+    {
+      "path": "skills/retail-electricity-risk/instances/jiangsu-retail-2027",
+      "label": "江苏零售组合 2027",
+      "province": "江苏",
+      "kind": "retail",
+      "role": "retail",
+      "period": "daily",
+      "share": 1.0
+    },
+    {
+      "path": "skills/retail-electricity-risk/instances/guangdong-multi-user-direct-2026-11",
+      "label": "广东多用户绿电直连",
+      "province": "广东",
+      "kind": "direct",
+      "role": "retail",
+      "period": "annual",
+      "share": 1.0
+    }
+  ]
+}

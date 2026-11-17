@@ -266,3 +266,76 @@ python skills/electricity-trading-expert/instances/gansu-wind-to-shandong-2026-1
 4. 在 `pitfalls.md` 写本省易错点（期间电量、峰谷窗口、CfA 符号、草案当现行、容量系数、考核扣减、输电价按落地电量、网损按发电量）；
 5. 跑 `--check-config` 与 `--demo`，把关键输出写进实例 `README.md`；
 6. 不改知识库计数，不改 `knowledge/`；实例是技能目录内的配置层。
+
+## 11. 跨包总盘与月度归档（不是第 24 个包）
+
+组合层只读已有实例包的产物，不新增实例包，也不改变 **23 包 / 11 个省级地区 / 9 个技能**的计数。当前 demo 清单 `portfolio-demo-2026-11.json` 跨 6 个省级地区、3 个交易技能、12 个包，用于演示汇总口径，不代表真实持仓。
+
+### 11.1 组合清单与总盘
+
+清单字段：`path`（包目录，相对仓库根）、`label`、`province`、`kind`、`role`、`period`（`daily`/`annual`）、`share`（组合持有份额，只缩放金额与 CVaR，不改变分主体全口径值）。
+
+```bash
+# 12 包 demo（只读各包 out/**/summary.json 与同目录 bridge.json）
+python skills/electricity-trading-expert/tools/portfolio.py --demo --out /path/to/portfolio
+
+# 自己的组合清单
+python skills/electricity-trading-expert/tools/portfolio.py \
+  --manifest skills/electricity-trading-expert/instances/portfolio-demo-2026-11.json \
+  --out /path/to/portfolio --trading-day 2026-11-18
+```
+
+产物：`portfolio_summary.json`（逐包归一化记录与分组汇总）、`brief.md`（晨会一页纸）、`portfolio.csv`（表格复核）。
+
+口径规则：
+
+- 按 `horizon × value_kind` 分组；日度再按 `trading_day` 分组。**日度净收益、收入、年度利润、相对基准节省不可相加**，不同交易日也不相加；
+- CVaR 是组内各包 10% 分位的**简单加总**（含无实际值主体），假设各主体同时触及分位、未考虑相关性，不是公司级联合 CVaR；
+- 组级“实际−基准”只在同时有实际值和基准的主体间汇总，另单列“可比基准”；全口径预期/基准不能与部分实际值相减；
+- 实际值只取包内 `actual` 或差异桥 `bridge.json`；缺失写 N/A，不用 0 或模型值回填；
+- 总盘不连接实盘、不生成报价、不下单，也不替代交易中心结算。
+
+### 11.2 日度归档与月度评分卡
+
+评分卡读取归档目录，任意层级的 `summary.json` 都会被递归发现；同目录有 `bridge.json` 时一并读取。建议按交易日归档：
+
+```
+<archive>/
+└── 2026-11-18/
+    └── shandong-thermal-hedge-2026-11/
+        ├── summary.json
+        └── bridge.json          # 可选
+```
+
+```bash
+# 12 包 demo（跳过年度/月度包，只统计带交易日的日度运行）
+python skills/electricity-trading-expert/tools/review.py --demo --out /path/to/review
+
+# 月度归档
+python skills/electricity-trading-expert/tools/review.py \
+  --archive /path/to/archive --month 2026-11 --out /path/to/review-2026-11 \
+  --label "2026-11 月度复盘"
+```
+
+产物：`scorecard.md`、`kpis.csv`、`runs.csv`、`review_summary.json`。
+
+- KPI：实际值覆盖率、计划偏差 MAPE、电量偏差 MAPE、CVaR 命中率、捕获率、考核支出占实际收益、桥残差、预警密度、对冲比例偏离；每项带样本数，缺样本写 N/A；日度 CVaR 与偏差排序只汇总同时有实际值和基准的主体，与组合简报主体集合不同时不可直接对比；
+- 重复 `(实例, 交易日)` 只保留最新文件并单列，不静默求和；年度/月度包不混入日度统计；
+- 阈值是交易台管理默认值，不是监管标准；用 `--thresholds thresholds.json` 按公司风险制度覆盖；
+- 评分卡只说明执行与预测质量，不单独证明策略优劣；必须结合行情、约束与考核规则解释。
+
+### 11.3 省级规则包与申报前校验
+
+`rules/` 是跨包的规则配置层，不是第 24 个实例包；它把 6 个省级市场的现货限价、点数/MTU、容量、辅助服务、零售、绿电直连与省间规则收口为 schema v1，供 `tools/rulecheck.py` 读取。规则文件、字段约定与新增流程见 `rules/README.md`。
+
+```bash
+# 12 包 demo：只读实例配置、summary 与申报 CSV
+python skills/electricity-trading-expert/tools/rulecheck.py --demo
+
+# 单包申报前校验
+python skills/electricity-trading-expert/tools/rulecheck.py \
+  --instance skills/spot-bidding-quant/instances/shandong-thermal-2026-11 \
+  --as-of 2026-11-18 --strict
+```
+
+产物：`out/rulecheck/rulecheck.md`（总览、逐实例检查表、规则未闭合项）与 `out/rulecheck/rulecheck.json`（结构化明细）。`block` 必须修正后再报；`warn` 需人工确认（未核实、软分档、模型边界、近似 SOC、截止时点未核等）；`pass` 只表示已检查项通过，不把 B/C 规则升级为 A。工具只读，不接交易系统、不提交报价。

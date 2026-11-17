@@ -38,8 +38,11 @@ SKILL.md）与代码一旦漂移即失败，逐条打印 ``ok  ...``，任一断
 from __future__ import annotations
 
 import importlib.util
+import csv
 import json
+import os
 import tempfile
+from datetime import date
 from pathlib import Path
 
 import capacity
@@ -47,10 +50,15 @@ import contracts
 import fuel
 import hedge
 import market
+import portfolio
+import review
+import rulecheck
 import units
 
 
 _COUNT = 0
+REPO_ROOT = Path(__file__).resolve().parents[3]
+RULES_DIR = REPO_ROOT / "skills" / "electricity-trading-expert" / "rules"
 
 
 def close(name, actual, expected, tol):
@@ -849,6 +857,983 @@ def main():
         check((Path(tmp) / "rolling.csv").exists(), "J rolling sheet is written")
         check((Path(tmp) / "bridge.csv").exists(), "J bridge csv is written")
         check((Path(tmp) / "review.md").exists(), "J review is written")
+
+    # ---- K. 交易台总盘：归一化、分组与份额（portfolio.py）------------------
+    hedge_summary = {
+        "instance_id": "hedge-demo",
+        "trading_day": "2026-11-18",
+        "data_cutoff": "2026-11-13",
+        "policy": {
+            "profile_id": "hedge-profile",
+            "max_hedge_ratio": 1.0,
+            "target_hedge_ratio": 0.85,
+            "grade": "D",
+        },
+        "policy_fingerprint": "fp-hedge",
+        "plan": {
+            "forecast_energy_mwh": 1000.0,
+            "position_energy_mwh": 850.0,
+            "hedge_ratio": 0.85,
+            "expected_revenue_cny": 400000.0,
+            "reference_revenue_cny": 390000.0,
+            "cvar_10_cny": 360000.0,
+            "carry_cny": 20000.0,
+            "shape_cny": -5000.0,
+            "reference_hedge_value_cny": 15000.0,
+            "expected_hedge_value_cny": 10000.0,
+            "hedge_value_identity_gap": 0.0,
+        },
+        "actual": {
+            "revenue_cny": 395000.0,
+            "output_energy_mwh": 980.0,
+            "hedge_ratio": 0.87,
+        },
+        "warnings": ["w1", "w2"],
+        "files": {"bridge": "bridge.json"},
+    }
+    hedge_bridge = {
+        "plan_revenue_cny": 390000.0,
+        "actual_revenue_cny": 395000.0,
+        "delta_cny": 5000.0,
+        "identity_gap": 1e-10,
+        "plan_output_energy_mwh": 1000.0,
+        "actual_output_energy_mwh": 980.0,
+    }
+    hedge_record = portfolio.normalize_summary(
+        hedge_summary,
+        bridge=hedge_bridge,
+        entry={"label": "Hedge", "province": "山东", "kind": "hedge", "period": "daily"},
+    )
+    check(hedge_record["value_kind"] == "revenue", "K hedge is revenue caliber")
+    close("K hedge expected", hedge_record["expected_cny"], 400000.0, 1e-9)
+    close("K hedge reference", hedge_record["reference_cny"], 390000.0, 1e-9)
+    close("K hedge actual", hedge_record["actual_cny"], 395000.0, 1e-9)
+    close("K hedge delta", hedge_record["delta_cny"], 5000.0, 1e-9)
+    close("K hedge energy deviation", hedge_record["energy_deviation"], -0.02, 1e-12)
+    close("K hedge carry", hedge_record["carry_cny"], 20000.0, 1e-9)
+    close("K hedge shape", hedge_record["shape_cny"], -5000.0, 1e-9)
+    close("K hedge reference value", hedge_record["hedge_value_reference_cny"], 15000.0, 1e-9)
+    close("K hedge ratio deviation", hedge_record["hedge_ratio_actual"] - hedge_record["hedge_ratio_target"], 0.02, 1e-12)
+    close("K hedge limit utilisation", hedge_record["constraint"]["utilization"], 0.85, 1e-12)
+    check(hedge_record["status"] == "ok", "K hedge has actual value")
+    hedge_derived = review.derive(hedge_record)
+    close("K hedge review delta pct", hedge_derived["delta_pct"], 5000.0 / 390000.0, 1e-12)
+    close("K hedge forecast error", hedge_derived["forecast_error_pct"], -0.02, 1e-12)
+    check(hedge_derived["declaration_deviation_pct"] is None, "K hedge has no declaration deviation")
+    close("K hedge ratio review deviation", hedge_derived["hedge_ratio_deviation"], 0.02, 1e-12)
+
+    retail_summary = {
+        "instance_id": "retail-demo",
+        "trading_day": "2026-11-18",
+        "data_cutoff": "2026-11-13",
+        "policy": {"profile_id": "retail-profile", "grade": "D"},
+        "pricing": {"coverage_ratio": 0.75},
+        "plan": {
+            "energy_mwh": 1000.0,
+            "expected_net_margin_cny": 10000.0,
+            "net_margin_at_reference_cny": 12000.0,
+            "cvar_10_cny": -5000.0,
+        },
+        "warnings": ["w3"],
+        "files": {"bridge": "bridge.json"},
+    }
+    retail_bridge = {
+        "plan_net_cny": 12000.0,
+        "actual_net_cny": 11000.0,
+        "identity_gap": -2e-10,
+        "plan_energy_mwh": 1000.0,
+        "actual_energy_mwh": 1020.0,
+        "actual_deviation_cny": 100.0,
+    }
+    retail_record = portfolio.normalize_summary(
+        retail_summary,
+        bridge=retail_bridge,
+        entry={"label": "Retail", "province": "广东", "kind": "retail", "period": "daily"},
+    )
+    check(retail_record["value_kind"] == "net_margin", "K retail is net margin caliber")
+    close("K retail expected", retail_record["expected_cny"], 10000.0, 1e-9)
+    close("K retail reference", retail_record["reference_cny"], 12000.0, 1e-9)
+    close("K retail actual uses net not revenue", retail_record["actual_cny"], 11000.0, 1e-9)
+    close("K retail delta", retail_record["delta_cny"], -1000.0, 1e-9)
+    close("K retail assessment", retail_record["assessment_cny"], 100.0, 1e-9)
+    close("K retail energy deviation", retail_record["energy_deviation"], 0.02, 1e-12)
+    retail_derived = review.derive(retail_record)
+    close("K retail plan energy deviation", retail_derived["plan_energy_deviation_pct"], 0.02, 1e-12)
+    check(retail_derived["forecast_error_pct"] is None, "K retail has no forecast error label")
+    close("K retail regret", retail_derived["regret_cny"], 1000.0, 1e-9)
+
+    coal_summary = {
+        "meta": {"instance_id": "coal-demo", "province": "甘肃", "grade": "B/C"},
+        "fingerprint": "fp-coal",
+        "base": {"profit_cny": 1000000.0, "generation_mwh": 500000.0},
+        "modes": [],
+        "configured_default_profit_cny": 900000.0,
+        "warnings": [],
+    }
+    coal_record = portfolio.normalize_summary(
+        coal_summary,
+        entry={"label": "Coal", "province": "甘肃", "kind": "capacity", "period": "annual"},
+    )
+    check(coal_record["horizon"] == "annual", "K coal is annual")
+    check(coal_record["value_kind"] == "profit", "K coal is profit caliber")
+    close("K coal expected", coal_record["expected_cny"], 1000000.0, 1e-9)
+    close("K coal reference", coal_record["reference_cny"], 900000.0, 1e-9)
+    check(coal_record["actual_cny"] is None, "K coal keeps actual as N/A")
+    check(coal_record["status"] == "model_only", "K coal is model only")
+    check(review.is_annual_summary(coal_summary), "K coal is detected as annual")
+    check(not review.is_annual_summary(hedge_summary), "K hedge is detected as daily")
+
+    groups = portfolio.aggregate([hedge_record, retail_record, coal_record])
+    check(len(groups) == 3, "K three calibers stay separate")
+    daily_revenue = next(row for row in groups if row["horizon"] == "daily" and row["value_kind"] == "revenue")
+    daily_net = next(row for row in groups if row["horizon"] == "daily" and row["value_kind"] == "net_margin")
+    annual_profit = next(row for row in groups if row["horizon"] == "annual" and row["value_kind"] == "profit")
+    close("K daily revenue total", daily_revenue["expected_cny"], 400000.0, 1e-9)
+    close("K daily net total is not mixed", daily_net["expected_cny"], 10000.0, 1e-9)
+    close("K annual profit total", annual_profit["expected_cny"], 1000000.0, 1e-9)
+    weighted = portfolio.aggregate([{**hedge_record, "share": 0.5}])
+    close("K share scales expected", weighted[0]["expected_cny"], 200000.0, 1e-9)
+    close("K share scales actual", weighted[0]["actual_cny"], 197500.0, 1e-9)
+    check(portfolio.fmt_money(349.19) == "0.03 万", "K small money keeps two decimals")
+
+    missing_record = portfolio.normalize_summary(
+        {
+            "instance_id": "hedge-missing",
+            "trading_day": "2026-11-18",
+            "plan": {
+                "expected_revenue_cny": 400000.0,
+                "reference_revenue_cny": 390000.0,
+                "cvar_10_cny": 360000.0,
+            },
+        },
+        entry={"kind": "hedge", "value_kind": "revenue", "period": "daily"},
+    )
+    partial_group = portfolio.aggregate([hedge_record, missing_record])[0]
+    close("K partial group full reference", partial_group["reference_cny"], 780000.0, 1e-9)
+    close("K partial group matched reference", partial_group["matched_reference_cny"], 390000.0, 1e-9)
+    close("K partial group matched actual", partial_group["matched_actual_cny"], 395000.0, 1e-9)
+    close("K partial group delta uses matched", partial_group["delta_cny"], 5000.0, 1e-9)
+    close("K partial group actual stays partial", partial_group["actual_cny"], 395000.0, 1e-9)
+    check(partial_group["actual_packs"] == 1 and partial_group["delta_packs"] == 1, "K partial group counts matched packs")
+
+    earlier_net = portfolio.normalize_summary(
+        {
+            "instance_id": "retail-earlier",
+            "trading_day": "2026-11-17",
+            "plan": {"expected_net_margin_cny": 9000.0, "reference_net_margin_cny": 10000.0},
+        },
+        entry={"label": "Earlier", "province": "广东", "kind": "retail", "period": "daily"},
+    )
+    focus_records = [hedge_record, earlier_net]
+    focus_groups = portfolio.aggregate(focus_records)
+    focus_brief = portfolio.build_brief(focus_records, focus_groups, focus_trading_day="2026-11-18")
+    check(focus_brief.count("2026-11-17 交易净收益") == 1, "K focus-missing net day appears once")
+    check("其他交易日" not in focus_brief, "K focus-missing net day is not repeated as other")
+
+    mixed_summary = {
+        "instance_id": "mixed-demo",
+        "trading_day": "2026-11-18",
+        "plan": {
+            "expected_net_margin_cny": 10000.0,
+            "reference_net_margin_cny": 12000.0,
+            "expected_revenue_cny": 400000.0,
+            "reference_revenue_cny": 390000.0,
+            "reference_profit_cny": 800000.0,
+        },
+        "base": {"profit_cny": 1000000.0},
+        "actual": {
+            "net_margin_cny": 11000.0,
+            "revenue_cny": 395000.0,
+            "profit_cny": 900000.0,
+        },
+    }
+    mixed_net = portfolio.normalize_summary(
+        mixed_summary,
+        entry={"kind": "retail", "value_kind": "net_margin", "period": "daily"},
+    )
+    close("K mixed net expected stays net", mixed_net["expected_cny"], 10000.0, 1e-9)
+    close("K mixed net reference stays net", mixed_net["reference_cny"], 12000.0, 1e-9)
+    close("K mixed net actual stays net", mixed_net["actual_cny"], 11000.0, 1e-9)
+    mixed_revenue = portfolio.normalize_summary(
+        mixed_summary,
+        entry={"kind": "hedge", "value_kind": "revenue", "period": "daily"},
+    )
+    close("K mixed revenue expected stays revenue", mixed_revenue["expected_cny"], 400000.0, 1e-9)
+    close("K mixed revenue reference stays revenue", mixed_revenue["reference_cny"], 390000.0, 1e-9)
+    close("K mixed revenue actual stays revenue", mixed_revenue["actual_cny"], 395000.0, 1e-9)
+    mixed_profit = portfolio.normalize_summary(
+        mixed_summary,
+        entry={"kind": "capacity", "value_kind": "profit", "period": "annual"},
+    )
+    close("K mixed profit expected stays profit", mixed_profit["expected_cny"], 1000000.0, 1e-9)
+    close("K mixed profit reference stays profit", mixed_profit["reference_cny"], 800000.0, 1e-9)
+    close("K mixed profit actual stays profit", mixed_profit["actual_cny"], 900000.0, 1e-9)
+
+    no_reference = portfolio.normalize_summary(
+        {
+            "instance_id": "no-reference",
+            "trading_day": "2026-11-18",
+            "plan": {"expected_revenue_cny": 400000.0},
+            "actual": {"revenue_cny": 395000.0},
+        },
+        entry={"kind": "hedge", "value_kind": "revenue", "period": "daily"},
+    )
+    check(no_reference["delta_cny"] is None, "K delta is N/A without a reference")
+    close("K delta vs expected still populated", no_reference["delta_vs_expected_cny"], -5000.0, 1e-9)
+
+    with tempfile.TemporaryDirectory() as raw:
+        summary_pack = Path(raw) / "summary-pack"
+        demo_summary = summary_pack / "out" / "demo" / "summary.json"
+        new_summary = summary_pack / "out" / "new-run" / "summary.json"
+        demo_summary.parent.mkdir(parents=True)
+        new_summary.parent.mkdir(parents=True)
+        demo_summary.write_text("{}", encoding="utf-8")
+        new_summary.write_text("{}", encoding="utf-8")
+        os.utime(demo_summary, (1_700_000_000, 1_700_000_000))
+        os.utime(new_summary, (1_700_000_100, 1_700_000_100))
+        check(portfolio.find_summary(summary_pack, {}) == new_summary, "K portfolio picks newest summary")
+        check(rulecheck.find_summary(summary_pack) == new_summary, "K rulecheck picks newest summary")
+        check(
+            portfolio.find_summary(summary_pack, {"summary": str(demo_summary)}) == demo_summary,
+            "K explicit summary still wins",
+        )
+
+        archive = Path(raw) / "archive"
+        inside = archive / "2026-11-18" / "pack" / "summary.json"
+        inside.parent.mkdir(parents=True)
+        inside.write_text("{}", encoding="utf-8")
+        outside = Path(raw) / "2026-11-19" / "pack" / "summary.json"
+        outside.parent.mkdir(parents=True)
+        outside.write_text("{}", encoding="utf-8")
+        check(review.archive_date(inside, archive) == "2026-11-18", "K archive date reads inside root")
+        check(review.archive_date(outside, archive) == "", "K archive date ignores outside root")
+
+        orphan_archive = Path(raw) / "orphan-archive"
+        orphan_summary = orphan_archive / "pack" / "summary.json"
+        orphan_summary.parent.mkdir(parents=True)
+        orphan_summary.write_text(
+            json.dumps({"plan": {"expected_net_margin_cny": 1.0}}),
+            encoding="utf-8",
+        )
+        orphan_runs, _, _, orphan_errors = review.collect_runs(orphan_archive)
+        check(not orphan_runs, "K daily summary without trading_day is skipped")
+        check(len(orphan_errors) == 1, "K daily summary without trading_day is reported")
+
+    # ---- L. 月度评分：MAPE、CVaR 命中、桥残差与日度合计（review.py）--------
+    hedge_run_2 = review.derive(
+        portfolio.normalize_summary(
+            {
+                **hedge_summary,
+                "actual": {"revenue_cny": 380000.0, "output_energy_mwh": 990.0, "hedge_ratio": 0.86},
+            },
+            bridge={**hedge_bridge, "actual_revenue_cny": 380000.0, "actual_output_energy_mwh": 990.0, "delta_cny": -10000.0},
+            entry={"label": "Hedge", "province": "山东", "kind": "hedge", "period": "daily"},
+        )
+    )
+    instance_rows = review.instance_rows([hedge_derived, hedge_run_2], review.DEFAULT_THRESHOLDS)
+    check(len(instance_rows) == 1, "L one instance row")
+    close("L plan MAPE", instance_rows[0]["plan_mape"], (5000.0 / 390000.0 + 10000.0 / 390000.0) / 2, 1e-12)
+    close("L CVaR hit rate", instance_rows[0]["cvar_hit_rate"], 1.0, 1e-12)
+    close("L warnings mean", instance_rows[0]["warnings_mean"], 2.0, 1e-12)
+    check(instance_rows[0]["status"] == "正常", "L instance status is normal")
+
+    retail_run_2 = review.derive(
+        portfolio.normalize_summary(
+            retail_summary,
+            bridge={**retail_bridge, "actual_net_cny": 11000.0, "actual_energy_mwh": 980.0},
+            entry={"label": "Retail", "province": "广东", "kind": "retail", "period": "daily"},
+        )
+    )
+    days = review.daily_net_totals([retail_derived, retail_run_2])
+    check(len(days) == 1, "L daily totals group by day")
+    close("L daily reference total", days[0]["reference_cny"], 24000.0, 1e-9)
+    close("L daily actual total", days[0]["actual_cny"], 22000.0, 1e-9)
+    close("L daily delta total", days[0]["delta_cny"], -2000.0, 1e-9)
+
+    values = review.kpi_values([hedge_derived, retail_derived], instance_rows, [], 3)
+    close("L actual coverage", values["actual_coverage"], 1.0, 1e-12)
+    close("L plan mape mixed sample", values["plan_mape"], (5000.0 / 390000.0 + 1000.0 / 12000.0) / 2, 1e-12)
+    close("L CVaR sample count", float(values["cvar_n"]), 2.0, 1e-12)
+    close("L assessment sample count", float(values["assessment_n"]), 1.0, 1e-12)
+    close("L bridge gap max", values["bridge_gap_max"], 2e-10, 1e-15)
+    close("L warnings per run", values["warnings_per_run"], 1.5, 1e-12)
+
+    scorecard, summary = review.build_scorecard(
+        [hedge_derived, retail_derived],
+        label="合成批次",
+        month="2026-11",
+        duplicates=[],
+        annual_skipped=1,
+        errors=[],
+        thresholds=review.DEFAULT_THRESHOLDS,
+        archive_text="/tmp/archive",
+    )
+    check("月度交易质量评分卡" in scorecard, "L scorecard title")
+    check("carry+shape−参考" in scorecard, "L scorecard uses the reference hedge value")
+    check(summary["run_count"] == 2, "L scorecard run count")
+    check(len(summary["hedge_runs"]) == 1, "L scorecard lists hedge run")
+    close("L scorecard hedge reference", summary["hedge_runs"][0]["hedge_value_reference_cny"], 15000.0, 1e-9)
+    check("跳过年度/月度包 1 个" in scorecard, "L scorecard reports annual skips")
+
+    # ---- M. 省级规则包与申报前校验（rulecheck.py）--------------------------
+    check(len(rulecheck.PROVINCE_RULE_FILES) == 6, "M six provincial markets mapped")
+    for province, filename in sorted(rulecheck.PROVINCE_RULE_FILES.items()):
+        path = RULES_DIR / filename
+        check(path.is_file(), f"M rule file exists: {province}")
+        rule = rulecheck.load_json(path)
+        check(rule.get("schema_version") == 1, f"M schema v1: {province}")
+        check(rule.get("province") == province, f"M province matches: {province}")
+        check(isinstance(rule.get("spot"), dict), f"M spot block: {province}")
+        check(bool(rule["spot"].get("grade")), f"M spot grade: {province}")
+
+    expired = rulecheck.new_report(REPO_ROOT, "period-expired", "山东", "thermal")
+    ok = rulecheck.check_period(
+        expired,
+        {"effective_from": "2026-01-01", "effective_to": "2026-06-30"},
+        "测试规则",
+        date(2026, 7, 1),
+        hard=True,
+        prefix="test.expired",
+    )
+    check(not ok and expired["counts"]["block"] == 1, "M expired period blocks")
+    check("过期" in expired["checks"][-1]["message"], "M expired message says expired")
+
+    future = rulecheck.new_report(REPO_ROOT, "period-future", "山东", "thermal")
+    ok = rulecheck.check_period(
+        future,
+        {"effective_from": "2026-12-01"},
+        "测试规则",
+        date(2026, 11, 17),
+        hard=False,
+        prefix="test.future",
+    )
+    check(not ok and future["counts"]["warn"] == 1, "M unverified future period warns")
+    check("尚未生效" in future["checks"][-1]["message"], "M future message says not yet effective")
+
+    hard = {"limits_enforcement": "hard"}
+    partial = {"limits_enforcement": "partial"}
+    model = {"limits_enforcement": "model"}
+    check(rulecheck.limit_level(hard, "declare_cap_cny_per_mwh") == "block", "M hard cap blocks")
+    check(rulecheck.limit_level(partial, "declare_floor_cny_per_mwh") == "block", "M partial floor blocks")
+    check(rulecheck.limit_level(partial, "declare_cap_cny_per_mwh") == "warn", "M partial cap warns")
+    check(rulecheck.limit_level(model, "declare_cap_cny_per_mwh") == "warn", "M model cap warns")
+    check(
+        rulecheck.limit_level(hard, "declare_cap_cny_per_mwh", band=True) == "warn",
+        "M asset band always warns",
+    )
+
+    band_spot = {
+        "declare_floor_cny_per_mwh": -80,
+        "declare_cap_cny_per_mwh": 1300,
+        "limits_enforcement": "hard",
+        "asset_bands": {
+            "thermal": {
+                "declare_floor_cny_per_mwh": 0,
+                "declare_cap_cny_per_mwh": 800,
+                "enforcement": "soft",
+            }
+        },
+    }
+    band = rulecheck.price_band(band_spot, "thermal")
+    close("M thermal band floor", band["floor"], 0.0, 1e-9)
+    close("M thermal band cap", band["cap"], 800.0, 1e-9)
+    check("thermal" in band["source"], "M thermal band label")
+    check(rulecheck.bid_price(band, -1.0)[0] == "warn", "M below soft floor warns")
+    check(rulecheck.bid_price(band, 801.0)[0] == "warn", "M above soft cap warns")
+    check(rulecheck.bid_price(band, 500.0)[0] is None, "M inside band passes")
+
+    shandong_pack = REPO_ROOT / "skills" / "spot-bidding-quant" / "instances" / "shandong-thermal-2026-11"
+    shandong_report = rulecheck.evaluate(
+        shandong_pack,
+        RULES_DIR,
+        date(2026, 11, 18),
+        date(2026, 11, 17),
+        entry={"province": "山东"},
+    )
+    check(shandong_report["status"] == "warn", "M Shandong thermal is warn")
+    check(shandong_report["counts"]["block"] == 0, "M Shandong thermal has no block")
+    check(
+        any(
+            check["id"] == "bid.thermal_total" and check["level"] == "pass"
+            for check in shandong_report["checks"]
+        ),
+        "M Shandong thermal bid total passes",
+    )
+
+    shandong_rule = rulecheck.load_json(RULES_DIR / "shandong.json")
+    shandong_storage_capacity = rulecheck.new_report(REPO_ROOT, "shandong-storage-cap", "山东", "storage")
+    rulecheck.check_capacity(shandong_storage_capacity, {}, shandong_rule, {}, date(2026, 11, 18))
+    check(
+        any(
+            check["id"] == "capacity.eligibility"
+            and check["level"] == "warn"
+            and "未核实" in check["message"]
+            for check in shandong_storage_capacity["checks"]
+        ),
+        "M Shandong grid storage capacity is unverified",
+    )
+
+    mengxi_rule = rulecheck.load_json(RULES_DIR / "mengxi.json")
+    mengxi_income = rulecheck.new_report(REPO_ROOT, "mengxi-cap-income", "蒙西", "thermal")
+    rulecheck.check_capacity(
+        mengxi_income,
+        {},
+        mengxi_rule,
+        {"capacity_compensation_cny": 123.0},
+        date(2026, 11, 18),
+    )
+    check(
+        any(
+            check["id"] == "capacity.eligibility" and check["level"] == "block"
+            for check in mengxi_income["checks"]
+        ),
+        "M not_applicable capacity blocks income",
+    )
+    mengxi_clean = rulecheck.new_report(REPO_ROOT, "mengxi-cap-clean", "蒙西", "thermal")
+    rulecheck.check_capacity(mengxi_clean, {}, mengxi_rule, {}, date(2026, 11, 18))
+    check(
+        any(
+            check["id"] == "capacity.eligibility" and check["level"] == "pass"
+            for check in mengxi_clean["checks"]
+        ),
+        "M not_applicable capacity passes without income",
+    )
+
+    check(rulecheck.mentions_ratio("峰≥平×160%、谷≤平×40%", 1.6), "M TOU matches 160 percent")
+    check(rulecheck.mentions_ratio("峰≥平×160%、谷≤平×40%", 0.4), "M TOU matches 40 percent")
+    check(not rulecheck.mentions_ratio("峰≥平×1600%", 1.6), "M TOU avoids substring false match")
+
+    inter_pack = (
+        REPO_ROOT
+        / "skills"
+        / "electricity-trading-expert"
+        / "instances"
+        / "gansu-wind-to-shandong-2026-11"
+    )
+    inter_report = rulecheck.evaluate(
+        inter_pack,
+        RULES_DIR,
+        date(2026, 11, 18),
+        date(2026, 11, 17),
+        entry={"province": "甘肃"},
+    )
+    check(inter_report["status"] == "pass", "M Gansu interprovincial is pass")
+    check(
+        any(
+            check["id"] == "interprovincial.effective" and check["level"] == "pass"
+            for check in inter_report["checks"]
+        ),
+        "M interprovincial effective date passes",
+    )
+
+    shanxi_pack = REPO_ROOT / "skills" / "spot-bidding-quant" / "instances" / "shanxi-storage-2026-11"
+    shanxi_report = rulecheck.evaluate(
+        shanxi_pack,
+        RULES_DIR,
+        date(2026, 11, 19),
+        date(2026, 11, 17),
+        entry={"province": "山西"},
+    )
+    check(shanxi_report["status"] == "warn", "M Shanxi storage is warn")
+    shanxi_capacity = next(
+        check for check in shanxi_report["checks"] if check["id"] == "capacity.eligibility"
+    )
+    check(shanxi_capacity["level"] == "pass", "M grid_storage alias matches Shanxi ineligible list")
+    check(
+        any(
+            check["id"] == "spot.asset_band" and check["level"] == "warn"
+            for check in shanxi_report["checks"]
+        ),
+        "M Shanxi storage band remains a warn",
+    )
+
+    direct_pack = (
+        REPO_ROOT
+        / "skills"
+        / "retail-electricity-risk"
+        / "instances"
+        / "guangdong-multi-user-direct-2026-11"
+    )
+    direct_report = rulecheck.evaluate(
+        direct_pack,
+        RULES_DIR,
+        date(2026, 11, 18),
+        date(2026, 11, 17),
+        entry={"province": "广东"},
+    )
+    check(direct_report["status"] == "warn", "M Guangdong direct is warn")
+    check(
+        any(
+            check["id"] == "direct.effective" and check["level"] == "pass"
+            for check in direct_report["checks"]
+        ),
+        "M direct connection rule is effective",
+    )
+    check(
+        not any(check["id"] == "capacity.eligibility" for check in direct_report["checks"]),
+        "M direct pack skips capacity eligibility",
+    )
+    check(
+        any(
+            check["id"] == "rule.deadline" and check["level"] == "skip"
+            for check in direct_report["checks"]
+        ),
+        "M direct pack skips spot deadline",
+    )
+    check(
+        any(
+            check["id"] == "rule.limits_status" and check["level"] == "skip"
+            for check in direct_report["checks"]
+        ),
+        "M direct pack skips spot limit enforcement",
+    )
+
+    province_wind_pack = REPO_ROOT / "skills" / "spot-bidding-quant" / "instances" / "gansu-wind-2027"
+    province_wind_report = rulecheck.evaluate(
+        province_wind_pack,
+        RULES_DIR,
+        date(2027, 1, 15),
+        date(2026, 11, 17),
+        entry={"province": "甘肃"},
+    )
+    check(province_wind_report["status"] == "warn", "M Gansu wind 2027 is warn")
+    check(
+        not any(check["id"].startswith("bid.interprovincial") for check in province_wind_report["checks"]),
+        "M provincial bid does not use interprovincial bid rules",
+    )
+
+    with tempfile.TemporaryDirectory() as raw:
+        tmp = Path(raw)
+
+        def write_bid(path, rows):
+            with path.open("w", encoding="utf-8", newline="") as handle:
+                writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
+                writer.writeheader()
+                writer.writerows(rows)
+
+        shandong_rule = rulecheck.load_json(RULES_DIR / "shandong.json")
+        gansu_rule = rulecheck.load_json(RULES_DIR / "gansu.json")
+        thermal_instance = {
+            "meta": {"province": "山东", "entity_type": "燃煤电厂"},
+            "asset": {"type": "thermal", "capacity_mw": 350, "min_output_mw": 120},
+            "policy": {"regulation_reserve_mw": 20},
+        }
+        pass_rows = [
+            {
+                "date": "2026-11-18",
+                "slot": slot,
+                "must_run_mw": 120,
+                "quantity_mw": 200,
+                "price_cny_per_mwh": 500,
+            }
+            for slot in range(96)
+        ]
+        pass_path = tmp / "pass.csv"
+        write_bid(pass_path, pass_rows)
+        pass_report = rulecheck.new_report(tmp, "bid-pass", "山东", "thermal")
+        rulecheck.check_bid(
+            pass_report,
+            tmp,
+            pass_path,
+            thermal_instance,
+            shandong_rule,
+            shandong_rule["spot"],
+            date(2026, 11, 18),
+            explicit=True,
+        )
+        check(
+            pass_report["counts"]["block"] == 0 and pass_report["counts"]["warn"] == 0,
+            "M valid thermal bid passes",
+        )
+        check(
+            any(
+                check["id"] == "bid.price_band" and check["level"] == "pass"
+                for check in pass_report["checks"]
+            ),
+            "M valid bid price passes",
+        )
+
+        partial_date_rows = [dict(row) for row in pass_rows]
+        partial_date_rows[0]["date"] = ""
+        partial_date_path = tmp / "partial-date.csv"
+        write_bid(partial_date_path, partial_date_rows)
+        partial_date_report = rulecheck.new_report(tmp, "bid-partial-date", "山东", "thermal")
+        rulecheck.check_bid(
+            partial_date_report,
+            tmp,
+            partial_date_path,
+            thermal_instance,
+            shandong_rule,
+            shandong_rule["spot"],
+            date(2026, 11, 18),
+            explicit=True,
+        )
+        check(
+            any(
+                check["id"] == "bid.date" and check["level"] == "warn"
+                for check in partial_date_report["checks"]
+            ),
+            "M partial blank dates warn",
+        )
+
+        partial_price_rows = [dict(row) for row in pass_rows]
+        partial_price_rows[0]["price_cny_per_mwh"] = ""
+        partial_price_path = tmp / "partial-price.csv"
+        write_bid(partial_price_path, partial_price_rows)
+        partial_price_report = rulecheck.new_report(tmp, "bid-partial-price", "山东", "thermal")
+        rulecheck.check_bid(
+            partial_price_report,
+            tmp,
+            partial_price_path,
+            thermal_instance,
+            shandong_rule,
+            shandong_rule["spot"],
+            date(2026, 11, 18),
+            explicit=True,
+        )
+        check(
+            any(
+                check["id"] == "bid.price_band"
+                and check["level"] == "warn"
+                and "缺价格" in check["message"]
+                for check in partial_price_report["checks"]
+            ),
+            "M partial blank prices warn",
+        )
+
+        partial_spot = {
+            "points_per_day": 96,
+            "market_time_unit_min": 15,
+            "declare_floor_cny_per_mwh": 40,
+            "declare_cap_cny_per_mwh": 500,
+            "clear_floor_cny_per_mwh": 40,
+            "clear_cap_cny_per_mwh": 650,
+            "limits_enforcement": "partial",
+        }
+        mixed_price_rows = [
+            {**row, "price_cny_per_mwh": 500}
+            for row in pass_rows
+        ]
+        mixed_price_rows[0]["price_cny_per_mwh"] = 30
+        mixed_price_rows[1]["price_cny_per_mwh"] = 600
+        mixed_price_path = tmp / "mixed-price.csv"
+        write_bid(mixed_price_path, mixed_price_rows)
+        mixed_price_report = rulecheck.new_report(tmp, "bid-mixed-price", "山东", "thermal")
+        rulecheck.check_bid(
+            mixed_price_report,
+            tmp,
+            mixed_price_path,
+            thermal_instance,
+            shandong_rule,
+            partial_spot,
+            date(2026, 11, 18),
+            explicit=True,
+        )
+        check(
+            any(
+                check["id"] == "bid.price_band" and check["level"] == "block"
+                for check in mixed_price_report["checks"]
+            ),
+            "M price block is not overwritten by a later warn",
+        )
+
+        gansu_instance = {
+            "meta": {"province": "甘肃", "entity_type": "燃煤电厂"},
+            "asset": {"type": "thermal", "capacity_mw": 660, "min_output_mw": 300},
+            "policy": {"regulation_reserve_mw": 20},
+        }
+        bad_rows = [
+            {
+                "date": "2026-11-18",
+                "slot": slot,
+                "must_run_mw": 300,
+                "quantity_mw": 400,
+                "price_cny_per_mwh": 600,
+            }
+            for slot in range(96)
+        ]
+        bad_path = tmp / "bad.csv"
+        write_bid(bad_path, bad_rows)
+        bad_report = rulecheck.new_report(tmp, "bid-bad", "甘肃", "thermal")
+        rulecheck.check_bid(
+            bad_report,
+            tmp,
+            bad_path,
+            gansu_instance,
+            gansu_rule,
+            gansu_rule["spot"],
+            date(2026, 11, 18),
+            explicit=True,
+        )
+        check(bad_report["counts"]["block"] >= 2, "M invalid bid blocks")
+        check(
+            any(
+                check["id"] == "bid.price_band" and check["level"] == "block"
+                for check in bad_report["checks"]
+            ),
+            "M hard price cap blocks",
+        )
+        check(
+            any(
+                check["id"] == "bid.thermal_total" and check["level"] == "block"
+                for check in bad_report["checks"]
+            ),
+            "M thermal total cap blocks",
+        )
+
+        short_rows = bad_rows[:95]
+        short_path = tmp / "short.csv"
+        write_bid(short_path, short_rows)
+        short_report = rulecheck.new_report(tmp, "bid-short", "甘肃", "thermal")
+        rulecheck.check_bid(
+            short_report,
+            tmp,
+            short_path,
+            gansu_instance,
+            gansu_rule,
+            gansu_rule["spot"],
+            date(2026, 11, 18),
+            explicit=True,
+        )
+        check(
+            any(
+                check["id"] == "bid.coverage" and check["level"] == "block"
+                for check in short_report["checks"]
+            ),
+            "M missing slot blocks",
+        )
+
+        duplicate_rows = pass_rows + [dict(pass_rows[0])]
+        duplicate_path = tmp / "duplicate.csv"
+        write_bid(duplicate_path, duplicate_rows)
+        duplicate_report = rulecheck.new_report(tmp, "bid-duplicate", "山东", "thermal")
+        rulecheck.check_bid(
+            duplicate_report,
+            tmp,
+            duplicate_path,
+            thermal_instance,
+            shandong_rule,
+            shandong_rule["spot"],
+            date(2026, 11, 18),
+            explicit=True,
+        )
+        check(
+            any(
+                check["id"] == "bid.duplicates" and check["level"] == "block"
+                for check in duplicate_report["checks"]
+            ),
+            "M duplicate slot blocks",
+        )
+        check(rulecheck.finish(duplicate_report)["status"] == "block", "M finish prioritizes block")
+
+        wind_instance = {
+            "meta": {"province": "山东", "entity_type": "风电"},
+            "asset": {"type": "wind", "capacity_mw": 100, "grid_connection": {"export_limit_mw": 0}},
+        }
+        wind_zero_rows = [
+            {
+                "date": "2026-11-18",
+                "slot": slot,
+                "forecast_mw": 1,
+                "declared_mw": 1,
+                "bid_price_cny_per_mwh": 500,
+            }
+            for slot in range(96)
+        ]
+        wind_zero_path = tmp / "wind-zero.csv"
+        write_bid(wind_zero_path, wind_zero_rows)
+        wind_zero_report = rulecheck.new_report(tmp, "wind-zero", "山东", "wind")
+        rulecheck.check_bid(
+            wind_zero_report,
+            tmp,
+            wind_zero_path,
+            wind_instance,
+            shandong_rule,
+            shandong_rule["spot"],
+            date(2026, 11, 18),
+            explicit=True,
+        )
+        check(
+            any(
+                check["id"] == "bid.wind_capacity" and check["level"] == "block"
+                for check in wind_zero_report["checks"]
+            ),
+            "M explicit zero export limit is preserved",
+        )
+
+        wind_missing_rows = [
+            {
+                "date": "2026-11-18",
+                "slot": slot,
+                "declared_mw": 1,
+                "bid_price_cny_per_mwh": 500,
+            }
+            for slot in range(96)
+        ]
+        wind_missing_path = tmp / "wind-missing-forecast.csv"
+        write_bid(wind_missing_path, wind_missing_rows)
+        wind_missing_report = rulecheck.new_report(tmp, "wind-missing", "山东", "wind")
+        rulecheck.check_bid(
+            wind_missing_report,
+            tmp,
+            wind_missing_path,
+            {
+                "meta": {"province": "山东", "entity_type": "风电"},
+                "asset": {"type": "wind", "capacity_mw": 100},
+            },
+            shandong_rule,
+            shandong_rule["spot"],
+            date(2026, 11, 18),
+            explicit=True,
+        )
+        check(
+            any(
+                check["id"] == "bid.wind_forecast" and check["level"] == "skip"
+                for check in wind_missing_report["checks"]
+            ),
+            "M wind without forecast skips forecast check",
+        )
+
+        thermal_no_capacity = {
+            "meta": {"province": "山东", "entity_type": "燃煤电厂"},
+            "asset": {"type": "thermal", "min_output_mw": 120},
+            "policy": {"regulation_reserve_mw": 20},
+        }
+        no_capacity_report = rulecheck.new_report(tmp, "thermal-no-capacity", "山东", "thermal")
+        rulecheck.check_bid(
+            no_capacity_report,
+            tmp,
+            pass_path,
+            thermal_no_capacity,
+            shandong_rule,
+            shandong_rule["spot"],
+            date(2026, 11, 18),
+            explicit=True,
+        )
+        check(
+            any(
+                check["id"] == "bid.thermal_total" and check["level"] == "warn"
+                for check in no_capacity_report["checks"]
+            ),
+            "M missing thermal capacity warns",
+        )
+
+        shanxi_rule = rulecheck.load_json(RULES_DIR / "shanxi.json")
+        storage_instance = {
+            "meta": {"province": "山西", "entity_type": "独立新型储能"},
+            "asset": {
+                "type": "storage",
+                "power_mw": 50,
+                "energy_mwh": 100,
+                "soc_init": 0.5,
+                "soc_min": 0.1,
+                "soc_max": 0.9,
+            },
+        }
+        storage_rows = [
+            {
+                "date": "2026-11-19",
+                "slot": 0,
+                "side": "charge",
+                "quantity_mw": 10,
+                "price_cny_per_mwh": 100,
+            },
+            {
+                "date": "2026-11-19",
+                "slot": 1,
+                "side": "discharge",
+                "quantity_mw": "",
+                "price_cny_per_mwh": 100,
+            },
+        ]
+        storage_path = tmp / "storage-missing.csv"
+        write_bid(storage_path, storage_rows)
+        storage_report = rulecheck.new_report(tmp, "storage-missing", "山西", "storage")
+        rulecheck.check_bid(
+            storage_report,
+            tmp,
+            storage_path,
+            storage_instance,
+            shanxi_rule,
+            shanxi_rule["spot"],
+            date(2026, 11, 19),
+            explicit=True,
+        )
+        check(
+            any(
+                check["id"] == "bid.storage_power"
+                and check["level"] == "warn"
+                and "quantity_mw" in check["message"]
+                for check in storage_report["checks"]
+            ),
+            "M incomplete storage quantities warn",
+        )
+        check(
+            any(
+                check["id"] == "bid.storage_soc_rte" and check["level"] == "warn"
+                for check in storage_report["checks"]
+            ),
+            "M missing RTE warns",
+        )
+
+        bad_summary_pack = tmp / "bad-summary-pack"
+        (bad_summary_pack / "out" / "demo").mkdir(parents=True)
+        (bad_summary_pack / "out" / "demo" / "summary.json").write_text("{", encoding="utf-8")
+        (bad_summary_pack / "instance.json").write_text(
+            json.dumps(
+                {
+                    "meta": {
+                        "instance_id": "bad-summary",
+                        "province": "山东",
+                        "entity_type": "风电",
+                        "data_cutoff": "2026-11-18",
+                    },
+                    "asset": {"type": "wind", "capacity_mw": 10},
+                },
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+        bad_summary_report = rulecheck.evaluate(
+            bad_summary_pack,
+            RULES_DIR,
+            None,
+            date(2026, 11, 17),
+            entry={"province": "山东"},
+        )
+        check(
+            any(
+                check["id"] == "summary.file" and check["level"] == "warn"
+                for check in bad_summary_report["checks"]
+            ),
+            "M malformed summary warns",
+        )
+
+        retail_bid_report = rulecheck.new_report(tmp, "retail-bid", "广东", "retail")
+        rulecheck.check_bid(
+            retail_bid_report,
+            tmp,
+            pass_path,
+            {"meta": {"province": "广东", "entity_type": "售电公司"}},
+            shandong_rule,
+            shandong_rule["spot"],
+            date(2026, 11, 18),
+            explicit=True,
+        )
+        check(
+            any(
+                check["id"] == "bid.file" and check["level"] == "skip"
+                for check in retail_bid_report["checks"]
+            ),
+            "M non-spot pack ignores bid CSV",
+        )
+
+        result = rulecheck.build_result([duplicate_report], date(2026, 11, 17), "selftest")
+        check(result["summary"]["block"] == 1, "M result counts block")
+        markdown = rulecheck.build_markdown(result)
+        check("省级规则包 · 申报前校验" in markdown, "M markdown title")
+        check("不提交报价" in markdown, "M markdown keeps read-only boundary")
+        check("bid.duplicates" in markdown, "M markdown includes check ids")
 
     print(f"\nAll electricity-trading-expert self-tests passed ({_COUNT} assertions).")
 

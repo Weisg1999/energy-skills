@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "province": "山东",
+  "market": "山东省级电力市场（中长期 + 现货 + 辅助服务）",
+  "as_of": "2026-11-17",
+  "spot": {
+    "status": "active",
+    "rule_version": "新版《山东电力市场规则（试行）》（2026-01-01 实施）",
+    "effective_from": "2026-01-01",
+    "effective_to": null,
+    "verified_on": "2026-11-17",
+    "grade": "B/C",
+    "source": "新版《山东电力市场规则（试行）》（2026-01-01 实施）；现行限价为山东省级现货口径（中国能源网 2026 报道）；2026-08-28 下限草案与 2026-10-19《电力现货市场基本规则（征求意见稿）》均未生效",
+    "market_time_unit_min": 15,
+    "points_per_day": 96,
+    "declare_floor_cny_per_mwh": -80,
+    "declare_cap_cny_per_mwh": 1300,
+    "clear_floor_cny_per_mwh": -100,
+    "clear_cap_cny_per_mwh": 1500,
+    "limits_enforcement": "hard",
+    "deadline": {
+      "label": "D-1 09:00",
+      "time": "09:00",
+      "verified": false,
+      "grade": "D",
+      "source": "各现货实例 data_contract.d1.release_cutoff；未用交易中心公告核验"
+    },
+    "drafts": [
+      {
+        "id": "2026-08-28",
+        "status": "draft",
+        "effective_from": null,
+        "declare_floor_cny_per_mwh": -120,
+        "clear_floor_cny_per_mwh": -140,
+        "grade": "C",
+        "source": "2026-08-28 征求意见稿；未生效，不得写入现行申报参数"
+      }
+    ],
+    "notes": [
+      "申报按 96 点；实时出清为 5 分钟级，结算以交易中心正式结果为准。",
+      "2026-08-27 新能源配储联合参与通知的文号未核实，不能把二手资料所称文号当作正式结论。"
+    ]
+  },
+  "capacity_compensation": {
+    "status": "pending_parameters",
+    "effective_from": "2023-01-01",
+    "effective_to": null,
+    "price_cny_per_kw_year": null,
+    "supply_demand_coefficient": null,
+    "eligible_types": ["coal"],
+    "ineligible_types": ["wind", "pv", "colocated_storage"],
+    "unverified_types": ["grid_storage"],
+    "grade": "A/B",
+    "source": "鲁发改价格〔2025〕576号；执行依据鲁发改价格〔2023〕1022号；发改价格〔2026〕114号（电网侧独立储能容量电价，不含配建储能）",
+    "note": "山东是市场化容量补偿，不是全国统一煤电容量电价；补偿标准与供需系数待核实。配建储能不适用电网侧独立储能容量电价；独立储能能否计入山东市场化容量补偿尚未核到，暂列 unverified_types，不得默认计入容量收入。"
+  },
+  "ancillary": {
+    "status": "active",
+    "effective_from": "2026-10-01",
+    "effective_to": null,
+    "mileage_price_cap_cny_per_kw_mile": 0.015,
+    "coefficient_cap": 2.0,
+    "k_factor": 1.0,
+    "products": ["AGC 调频", "爬坡"],
+    "grade": "A/B",
+    "source": "鲁监能市场规〔2026〕52号（2026-09-30 印发、10-01 施行）；2026-05-08 省级辅助服务细则调整",
+    "note": "K 值按省级细则核定；本规则包的 1.0 只是演示值，不替代机组侧参数。"
+  },
+  "thermal_participation": {
+    "status": "active",
+    "effective_from": "2026-01-01",
+    "effective_to": null,
+    "min_technical_output_ratio": 0.35,
+    "run_cost_compensation": true,
+    "grade": "A/B",
+    "source": "新版《山东电力市场规则（试行）》；省政府新闻办发布会（最小技术出力 50%→35%）",
+    "note": "运行成本补偿的具体口径与结算方式待省级细则核实。"
+  },
+  "storage_participation": {
+    "status": "active",
+    "effective_from": "2026-01-01",
+    "effective_to": null,
+    "min_power_mw": 5,
+    "min_duration_h": 2,
+    "independent_capacity_price_applicable": false,
+    "grade": "A/B",
+    "source": "新版《山东电力市场规则（试行）》（2026-01-01）；发改价格〔2026〕114号",
+    "note": "独立储能、抽水蓄能全部报量报价；配建储能与新能源场站联合参与，配储功率上限为光伏 50% / 风电 30%。"
+  },
+  "colocated_storage": {
+    "status": "active",
+    "effective_from": "2026-08-27",
+    "effective_to": null,
+    "max_power_ratio_pv": 0.5,
+    "max_power_ratio_wind": 0.3,
+    "grid_charge_allowed": false,
+    "grade": "B/C",
+    "source": "《关于加快推动新能源场站配建储能高质量发展的通知》（2026-08-27，四部门印发；文号待原文核实）；新版《山东电力市场规则（试行）》（2026-01-01）",
+    "note": "配建储能原则上只用配套新能源充电；除电网统一调度调用外，不得从公共电网购电充电。"
+  },
+  "open_items": [
+    "2026-08-27 配储联合参与通知的文号未核实；申报方式以交易中心最新细则为准。",
+    "容量补偿电价标准与容量供需系数未公开核实；未填写时不得计入容量收入。",
+    "独立储能是否计入山东市场化容量补偿未核到；规则包暂列 unverified_types，不得与电网侧独立储能容量电价混用。",
+    "D-1 09:00 截止时间来自实例数据契约，未用交易中心公告核验。"
+  ]
+}

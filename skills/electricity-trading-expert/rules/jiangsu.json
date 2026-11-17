@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "province": "江苏",
+  "market": "江苏电力市场（现货连续结算试运行 + 2027 年零售套餐）",
+  "as_of": "2026-11-17",
+  "spot": {
+    "status": "active",
+    "rule_version": "江苏电力现货市场连续结算试运行方案（2025 年）",
+    "effective_from": "2025-08-29",
+    "effective_to": null,
+    "verified_on": "2026-11-17",
+    "grade": "A/B",
+    "source": "江苏电力现货市场连续结算试运行方案（2025-08-29 起）；江苏电力交易中心现货连续结算试运行通知",
+    "market_time_unit_min": 15,
+    "points_per_day": 96,
+    "declare_floor_cny_per_mwh": 0,
+    "declare_cap_cny_per_mwh": null,
+    "clear_floor_cny_per_mwh": 0,
+    "clear_cap_cny_per_mwh": 1500,
+    "validation_upper_cny_per_mwh": 1500,
+    "validation_upper_enforcement": "soft",
+    "limits_enforcement": "partial",
+    "limits_status": "declare_cap_unverified",
+    "limits_note": "申报与出清下限 0、出清上限 1500 元/MWh 已核到；申报上限未单独公开，规则包用 1500 作软边界，并提示人工确认。",
+    "deadline": {
+      "label": null,
+      "time": null,
+      "verified": false,
+      "grade": "C",
+      "source": "公开材料未给出江苏日前申报截止时点；以交易中心公告为准"
+    },
+    "drafts": [],
+    "historical_limits": [
+      {
+        "id": "trial-start",
+        "status": "historical",
+        "declare_cny_per_mwh": "0-1500",
+        "clear_cny_per_mwh": "0-1500",
+        "grade": "B",
+        "source": "连续结算试运行初期口径；上限参数未单列申报限价"
+      }
+    ],
+    "notes": [
+      "江苏现货仍处连续结算试运行，规则版本与正式运行方案可能变化；每次申报前核对交易中心最新公告。",
+      "申报上限未核到，禁止把 1500 当作可以无条件申报的上限。"
+    ]
+  },
+  "retail": {
+    "status": "active",
+    "effective_from": "2027-01-01",
+    "effective_to": null,
+    "document": "苏电交易〔2026〕11号《江苏电力零售市场套餐管理实施细则》",
+    "issued_on": "2026-10-13",
+    "grade": "A/B",
+    "source": "苏电交易〔2026〕11号（2026-10-13 印发，2027-01-01 起执行）；现行 1595 号保函规则；976 号结算规则",
+    "pricing": {
+      "mode": "一户一价",
+      "formula": "用户电能量价格 = 零售套餐电能量价格 + 批发市场分摊/返还；套餐应明确电量、价格、曲线、偏差、退市与违约条款",
+      "note": "一户一价不等于所有用户同价；同一套餐内按用户电压等级、用电曲线、签约电量确定价格。"
+    },
+    "tou_constraint": {
+      "peak_min_ratio_of_flat": 1.6,
+      "valley_max_ratio_of_flat": 0.4,
+      "basis": "峰段加权价 ≥ 平段加权价×160%；谷段加权价 ≤ 平段加权价×40%",
+      "grade": "A/B",
+      "source": "苏电交易〔2026〕11号"
+    },
+    "deviation": {
+      "status": "unverified",
+      "band": null,
+      "grade": "C",
+      "source": "江苏零售偏差考核未见统一省级文件；由套餐合同约定，不得套用外省 ±3%/±5%",
+      "note": "签约前核对套餐中的免考带、考核价、责任分摊与调整窗口。"
+    },
+    "guarantee": {
+      "current": {
+        "formula": "按发改体改规〔2021〕1595 号执行",
+        "effective": true
+      },
+      "draft": {
+        "status": "尚未核到江苏 2027 年零售保函实施细则正式稿",
+        "effective": false
+      },
+      "grade": "B"
+    },
+    "settlement": {
+      "timeline": "发改能源规〔2025〕976 号口径：核对版第 5 个工作日、正式版第 8 个工作日、账单第 10 个工作日；异议 15 个工作日",
+      "document": "发改能源规〔2025〕976 号",
+      "grade": "A"
+    }
+  },
+  "open_items": [
+    "江苏 2027 年零售套餐的一户一价、峰谷约束已核到，但套餐月度分摊参数与考核阈值仍需按交易中心模板核对。",
+    "江苏零售偏差考核无统一省级文件，不得将外省规则当作江苏规则。",
+    "日前申报截止时点未核到公开材料。",
+    "现货仍处连续结算试运行，规则版本与正式运行方案可能变化。"
+  ]
+}

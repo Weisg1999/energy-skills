@@ -2,6 +2,20 @@
 
 本文件记录 energy-skills 的版本变更，按时间倒序。当前版本 **v1.9**，数据截止 **2026-11-12**。仓库入口见 [README.md](README.md)，英文版见 [CHANGELOG_EN.md](CHANGELOG_EN.md)。
 
+### 2026-11-17（v1.9 维护：六省省级规则包与申报前校验）
+
+- **规则包**：新增 `skills/electricity-trading-expert/rules/` 下山东、甘肃、蒙西、山西、广东、江苏 6 份 schema v1 规则文件，把散落在实例配置、知识页和公告中的现货限价、点数/MTU、容量补偿、辅助服务、零售、绿电直连与省间规则收口；每个规则块带 `status`、`effective_from/effective_to`、`grade` 与 `source`，草案与历史口径分列，未闭合项写入 `open_items`。
+- **校验器**：新增 `tools/rulecheck.py`（零依赖、只读），读取实例 `instance.json`、最近一次 `out/**/summary.json` 与可选申报 CSV，检查规则时效、点数/MTU、硬/软限价、煤电最小出力、储能功率与近似 SOC、光储净上网、容量资格别名、辅助服务重叠、零售/直连/省间条款，输出 `out/rulecheck/rulecheck.md` 与 `rulecheck.json`；按 `pass/warn/block/skip` 判定，`--strict` 把 warn 也视为失败，不接交易系统、不提交报价。价格列按表头识别；部分行日期/价格为空、缺失 RTE 或 summary 损坏时降级为 warn，同一检查内 block 不会被后续 warn 覆盖。
+- **演示与测试**：12 包 demo 覆盖 6 个省级市场，当前 BLOCK 0 / WARN 11 / PASS 1；warn 均为截止时点未核、partial 限价、软分档、D 级参数或待核条款，不是静默通过。`selftest.py` 增加 M 段并扩到 456 条断言，锁定有效期/过期、hard/partial/model 级别、价格分档、覆盖/重复/日期、部分空日期或空价格降级、block 不被后续 warn 覆盖、容量别名、缺失 RTE 提示与报告生成。
+- **边界与计数**：规则包与组合清单都是配置层，不改变 23 个实例包、9 个技能、101 个知识模块的计数；规则说明见 `rules/README.md`，实例层交叉引用见 `instances/README.md` §11.3。全部为 D 级合成数据，不构成报价、交易或投资建议。
+
+### 2026-11-17（v1.9 维护：交易台总盘与月度交易质量评分卡）
+
+- **组合总盘**：新增 `skills/electricity-trading-expert/tools/portfolio.py` 与 12 包清单 `instances/portfolio-demo-2026-11.json`（跨 6 个省级地区、3 个交易技能）；只读各包 `out/**/summary.json` 与同目录 `bridge.json`，输出 `portfolio_summary.json`、`brief.md`、`portfolio.csv`。按 `horizon × value_kind × trading_day` 分组；日度净收益、收入、年度利润、相对基准节省分列，不同交易日不相加；组级“实际−基准”只在同时有实际值和基准的主体间计算并单列“可比基准”；CVaR 为组内各包 10% 分位的简单加总（含无实际值主体），注明不是联合 CVaR；缺失实际值保持 N/A。
+- **月度评分卡**：新增 `tools/review.py`，按 `<archive>/<YYYY-MM-DD>/<instance>/summary.json`（可选 `bridge.json`）递归读取归档，输出 `scorecard.md`、`kpis.csv`、`runs.csv`、`review_summary.json`。九项 KPI 均带样本数：实际值覆盖率、计划/电量 MAPE、CVaR 命中、捕获率、考核支出占比、桥残差、预警密度与对冲比例偏离；阈值可 `--thresholds` 覆盖；重复运行保留最新并单列；年度/月度包不混入日度统计。
+- **演示与口径**：12 包 demo 的焦点日 2026-11-18 有 5 个净收益主体 + 1 个收入主体；净收益全口径预期 114.4 万 / 基准 119.9 万，3 个有实际值主体（均可比）的实际 73.1 万、可比基准 77.8 万，实际−基准 −4.68 万（−6.0%），CVaR 简单加总 45.9 万；评分卡 demo 9 次日度运行（7 次有实际值）、跳过 3 个年度/月度包，实际值覆盖 77.8%，计划 MAPE 10.5%、电量 MAPE 1.5%、CVaR 命中 7/7、桥残差 2.33e-10。全部为 D 级合成数据，不构成交易建议。
+- **边界与计数**：两项工具均零依赖、只读产物、不接实盘、不报价、不下单；`portfolio-demo` 是组合配置层，不是第 24 个实例包。知识模块、分区、技能与实例包计数不变（仍 101 / 13 / 9 / 23）；`selftest.py` 当前 456 条断言，锁定归一化、份额、口径分离、MAPE、CVaR 命中与桥恒等式。
+
 ### 2026-11-14（v1.9 维护：背景主题扩到纯白 / 米白 / 浅绿 / 深色）
 
 - **四套主题**：把原来的明暗两态扩为 `light`（纯白）、`cream`（米白）、`green`（浅绿）、`dark`（深色）四套。`knowledge/assets/tokens.css` 为米白与浅绿各补一组 `--paper / --paper-2 / --card / --ink / --line / --control-line` 与十一类分类浅底色，深色令牌保持不变；新增 `--wash` 控制阅读页背景的第二层径向渐变。米白、浅绿均为浅色 `color-scheme`，打印时统一回落到纯白。
