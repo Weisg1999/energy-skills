@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/knowledge.css">
 <link rel="stylesheet" href="../assets/theme-menu.css">
+<link rel="stylesheet" href="../assets/changelog.css">
 </head>
 <body data-cat="skill" id="top">
 <a class="skip" href="#main">Skip to content</a>
@@ -378,7 +379,44 @@ python skills/virtual-power-plant/instances/&lt;pack&gt;/run.py --demo</code></p
 <nav class="page-aux" aria-label="Page utilities">
   <a class="to-top" href="#top" aria-label="Back to top">↑</a>
 </nav>
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="en" data-version="v1.9" data-cutoff="2026-11-12" data-latest="2026-11-18" data-count="89">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="View changelog (current v1.9)" title="View changelog (current v1.9)">
+    <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
+    <span class="cl-badge-ver">v1.9</span>
+    <span class="cl-badge-label">Changelog</span>
+  </button>
+  <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
+    <div class="cl-backdrop" data-changelog-close></div>
+    <div class="cl-panel" role="dialog" aria-modal="true" aria-labelledby="cl-title" aria-describedby="cl-subtitle" tabindex="-1">
+      <header class="cl-head">
+        <div class="cl-head-main">
+          <span class="cl-kicker">RELEASE NOTES</span>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">Changelog</span> <span class="cl-pill">v1.9</span></h2>
+          <p class="cl-sub" id="cl-subtitle">Current v1.9 · data cutoff 2026-11-12 · 89 entries</p>
+        </div>
+        <div class="cl-actions">
+          <div class="cl-lang" role="group" aria-label="Switch language">
+            <button type="button" data-cl-lang="zh" aria-pressed="false">中文</button>
+            <button type="button" data-cl-lang="en" aria-pressed="true">EN</button>
+          </div>
+          <button class="cl-close" type="button" data-changelog-close aria-label="Close changelog" title="Close changelog">×</button>
+        </div>
+      </header>
+      <div class="cl-body" data-changelog-body>
+        <div class="cl-skeleton" data-changelog-status role="status">
+          <span class="cl-sr">Loading changelog…</span>
+          <i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      <footer class="cl-foot">
+        <span data-changelog-meta>v1.9 · 2026-11-12 · 89 entries</span>
+        <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG_EN.md" target="_blank" rel="noopener">View full changelog on GitHub ↗</a>
+      </footer>
+    </div>
+  </div>
+</div>
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
+<script src="../assets/changelog.js"></script>
 </body>
 </html>

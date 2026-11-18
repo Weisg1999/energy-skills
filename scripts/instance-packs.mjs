@@ -173,7 +173,7 @@ const PAGE_CSS = `
 }
 `;
 
-export function renderInstancesPage(data) {
+export function renderInstancesPage(data, changelogWidget = '') {
   const sideList = data.groups.map((group) => `<li><a href="#skill-${esc(group.slug)}">${esc(group.title)}<span class="nav-count">${group.packs.length}</span></a></li>`).join('\n              ');
   const mobileToc = data.groups.map((group) => `<li class="lv2"><a href="#skill-${esc(group.slug)}">${esc(group.title)}（${group.packs.length}）</a></li>`).join('\n            ');
   const groupsHtml = data.groups.map((group) => `<section class="pack-group" id="skill-${esc(group.slug)}" aria-labelledby="group-${esc(group.slug)}">
@@ -205,6 +205,7 @@ export function renderInstancesPage(data) {
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/knowledge.css">
 <link rel="stylesheet" href="assets/theme-menu.css">
+<link rel="stylesheet" href="assets/changelog.css">
 <style>${PAGE_CSS}</style>
 </head>
 <body data-cat="skill" id="top">
@@ -305,8 +306,10 @@ export function renderInstancesPage(data) {
 <nav class="page-aux" aria-label="页面辅助">
   <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
 </nav>
+${changelogWidget}
 <script src="assets/doc.js"></script>
 <script src="assets/theme.js"></script>
+<script src="assets/changelog.js"></script>
 </body>
 </html>
 `;

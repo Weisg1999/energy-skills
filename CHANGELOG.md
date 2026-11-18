@@ -2,6 +2,14 @@
 
 本文件记录 energy-skills 的版本变更，按时间倒序。当前版本 **v1.9**，数据截止 **2026-11-12**。仓库入口见 [README.md](README.md)，英文版见 [CHANGELOG_EN.md](CHANGELOG_EN.md)。
 
+### 2026-11-18（v1.9 维护：全站版本胶囊与中英双语更新记录弹窗）
+
+- **入口**：首页、101 个知识模块页、18 个技能页与实例总览共 121 个生成页面的左下角新增固定版本胶囊，显示当前 `v1.9`；点击打开独立弹窗，不必跳到 GitHub 才能看更新记录。桌面侧栏底部预留 58–64px，≤960px 胶囊收为图标 + 版本号，减少对正文的遮挡。
+- **数据与生成物**：构建器读取仓库现有的 `CHANGELOG.md` 与 `CHANGELOG_EN.md`，解析版本、数据截止、日期、标题与条目，生成 `knowledge/assets/changelog-data.json`（中英各 89 条）；`build-knowledge-html.mjs --check` 新增该生成物校验，并要求两份 CHANGELOG 的版本、截止日期、条目数与日期顺序一致。条目内的行内代码、粗体与相对 Markdown 链接在构建时转成安全 HTML，相对链接指向 GitHub `blob/main`。
+- **弹窗与交互**：弹窗按时间倒序渲染时间线，含粘性头部、版本徽章、条目计数与 GitHub 完整记录入口；首次打开才懒加载数据，加载显示骨架，失败可重试。中/英切换即时重渲染，选择写入 `localStorage['es-changelog-lang']`；页面语言决定首次打开的默认值（英文技能页默认英文）。
+- **可达性与响应式**：使用 `role="dialog"` 与 `aria-modal`，打开后焦点进入关闭按钮，`Tab` 在弹窗内循环，`Esc`、关闭按钮与背景点击均可关闭并把焦点还给版本胶囊；打开时锁定背景滚动。四套主题共用现有令牌，1440、390、320px 与深色模式均无横向溢出。
+- **范围与计数**：只改前端与构建器，不改正文、模块、技能与实例包计数（仍 101 / 13 / 9 / 23），也不新增搜索索引记录。
+
 ### 2026-11-17（v1.9 维护：修复交易自测对本地 out 目录的依赖）
 
 - **问题**：`electricity-trading-expert` 自测中的山东煤电申报断言读取 `skills/spot-bidding-quant/instances/shandong-thermal-2026-11/out/demo/bid_sheet.csv`；该目录被 `.gitignore` 忽略，CI 干净检出没有文件，`bid.thermal_total` 退化为 `skip`，`consistency` 工作流因此失败。本地因已运行 demo 而通过，属于测试环境依赖，不是规则或算例错误。

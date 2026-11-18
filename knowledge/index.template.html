@@ -41,7 +41,7 @@ a:hover{text-decoration:underline;text-underline-offset:3px}
 
 .shell{display:grid;grid-template-columns:248px minmax(0,1fr);max-width:1500px;margin:0 auto}
 .sidebar{
-  position:sticky;top:0;height:100vh;padding:26px 18px 22px;
+  position:sticky;top:0;height:100vh;padding:26px 18px 58px;
   border-right:1px solid var(--line);display:flex;flex-direction:column;gap:18px;
 }
 .brand{display:block;color:inherit;text-decoration:none}
@@ -557,6 +557,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
 }
 </style>
 <link rel="stylesheet" href="assets/theme-menu.css">
+<link rel="stylesheet" href="assets/changelog.css">
 <!-- 生成物：改 knowledge/index.template.html 后运行 node scripts/build-knowledge-html.mjs；不要手改本文件。 -->
 </head>
 <body>
@@ -1749,6 +1750,8 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   window.setTimeout(restoreScroll, 0);
 })();
 </script>
+{{changelogWidget}}
 <script src="assets/theme.js"></script>
+<script src="assets/changelog.js"></script>
 </body>
 </html>

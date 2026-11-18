@@ -2,6 +2,14 @@
 
 This file records energy-skills releases in reverse chronological order. Current version **v1.9**, data cutoff **2026-11-12**. Repository entry point: [README_EN.md](README_EN.md); Chinese version: [CHANGELOG.md](CHANGELOG.md).
 
+### 2026-11-18 (v1.9 maintenance: site-wide version badge and bilingual changelog dialog)
+
+- **Entry point**: a fixed version badge now sits at the bottom-left of all 121 generated pages (hub, 101 knowledge-module pages, 18 skill pages and the instance overview) and shows the current `v1.9`; clicking it opens a dedicated dialog instead of sending readers to GitHub. Desktop sidebars reserve 58–64px at the bottom, and below 960px the badge collapses to an icon plus the version number to reduce obstruction.
+- **Data and artifact**: the builder reads the existing `CHANGELOG.md` and `CHANGELOG_EN.md`, parses the version, data cutoff, dates, labels and items, and writes `knowledge/assets/changelog-data.json` (89 entries per language). `build-knowledge-html.mjs --check` now covers this artifact and requires both changelogs to agree on version, cutoff, entry count and date order. Inline code, bold text and relative Markdown links become safe HTML at build time; relative links point to GitHub `blob/main`.
+- **Dialog and interaction**: entries render as a reverse-chronological timeline with a sticky header, version pill, entry count and a full-changelog link. Data is fetched lazily on first open, with a skeleton while loading and a retry action on failure. The Chinese/English toggle re-renders instantly and stores the choice in `localStorage['es-changelog-lang']`; the page language sets the initial choice (English skill pages open in English).
+- **Accessibility and responsiveness**: uses `role="dialog"` with `aria-modal`, moves focus to the close button, traps `Tab`, closes on `Esc`, the close button or the backdrop, and returns focus to the badge; background scrolling is locked while open. All four themes share the existing tokens, and 1440, 390 and 320px plus dark mode show no horizontal overflow.
+- **Scope and counts**: front-end and builder only; body text, modules, skills and instance packs are unchanged (still 101 / 13 / 9 / 23), and the search index gains no records.
+
 ### 2026-11-17 (v1.9 maintenance: remove the trading self-test's dependency on local out/)
 
 - **Problem**: the Shandong thermal bid assertion in the `electricity-trading-expert` self-test read `skills/spot-bidding-quant/instances/shandong-thermal-2026-11/out/demo/bid_sheet.csv`. That directory is gitignored, so a clean CI checkout had no file, `bid.thermal_total` degraded to `skip`, and the `consistency` workflow failed. It passed locally only because the demo had been run; this was a test-environment dependency, not a rule or calculation error.

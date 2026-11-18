@@ -24,6 +24,7 @@ import { nav, sectionTitlesEn, sections, site, skillDocs } from './knowledge.con
 import { buildIndex, serializeIndex } from './credibility.mjs';
 import { CURATED_ARCH_IDS, renderCuratedArchitecture } from './architecture-diagrams.mjs';
 import { buildInstanceSearchRecord, discoverInstancePacks, renderInstancesPage } from './instance-packs.mjs';
+import { buildChangelog, renderChangelogWidget, serializeChangelog } from './changelog.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const knowledgeDir = join(root, 'knowledge');
@@ -32,6 +33,7 @@ const indexPath = join(knowledgeDir, 'index.html');
 const credibilityPath = join(knowledgeDir, 'credibility.json');
 const englishDigestPath = join(knowledgeDir, 'english-digest.json');
 const searchIndexPath = join(knowledgeDir, 'search-index.js');
+const changelogDataPath = join(knowledgeDir, 'assets', 'changelog-data.json');
 const templatePath = join(knowledgeDir, 'index.template.html');
 const tokensPath = join(knowledgeDir, 'assets', 'tokens.css');
 const checkMode = process.argv.includes('--check');
@@ -176,6 +178,16 @@ const totalLines = manifest.reduce((sum, d) => sum + d.lines, 0);
 const coreCount = manifest.filter((d) => d.level === 'core').length;
 const researchCount = manifest.filter((d) => d.level === 'research').length;
 const cutoff = manifest.map((d) => d.cutoff || '').filter((d) => /^\d{4}-\d{2}/.test(d)).sort().at(-1) || '';
+
+const changelog = buildChangelog(root, site.repository);
+if (changelog.cutoff !== cutoff) {
+  throw new Error(`CHANGELOG 的数据截止 ${changelog.cutoff} 与模块 frontmatter 最新截止 ${cutoff} 不一致`);
+}
+const changelogJson = serializeChangelog(changelog);
+
+function changelogWidget(lang, assetPrefix) {
+  return renderChangelogWidget(changelog, { lang, assetPrefix, repository: site.repository });
+}
 
 /* --------------------------------------------------------------- 技能清单 */
 
@@ -1147,6 +1159,7 @@ function renderIndex() {
     repositoryLabel: site.repository.replace(/^https?:\/\//, ''),
     moduleSections: renderModuleSections(),
     footerLine: `数据截止 ${cutoff} · ${total} 个模块 · ${cnNum(site.skills)}项技能`,
+    changelogWidget: changelogWidget('zh', ''),
   };
   let out = template;
   for (const [key, value] of Object.entries(tokens)) {
@@ -1380,6 +1393,7 @@ function buildPage(doc) {
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/knowledge.css">
 <link rel="stylesheet" href="../assets/theme-menu.css">
+<link rel="stylesheet" href="../assets/changelog.css">
 </head>
 <body data-cat="${esc(sec.cat)}" id="top">
 <a class="skip" href="#main">${esc(copy.skip)}</a>
@@ -1476,8 +1490,10 @@ ${skillModulesBlock ? `\n${skillModulesBlock}` : ''}${pairedSkillsBlock ? `\n${p
 <nav class="page-aux" aria-label="${lang === 'en' ? 'Page utilities' : '页面辅助'}">
   <a class="to-top" href="#top" aria-label="${lang === 'en' ? 'Back to top' : '回到顶部'}">↑</a>
 </nav>
+${changelogWidget(lang === 'en' ? 'en' : 'zh', '../')}
 <script src="../assets/doc.js"></script>
 <script src="../assets/theme.js"></script>
+<script src="../assets/changelog.js"></script>
 </body>
 </html>
 `;
@@ -1596,7 +1612,7 @@ const downloadFiles = skillManifest.map((doc) => ({
 
 const instanceData = discoverInstancePacks(root, skillDocs);
 const instancePath = join(knowledgeDir, 'instances.html');
-const instanceHtml = renderInstancesPage(instanceData);
+const instanceHtml = renderInstancesPage(instanceData, changelogWidget('zh', ''));
 const indexHtml = renderIndex();
 const searchIndexJs = buildSearchIndex(pages, [buildInstanceSearchRecord(instanceData)]);
 const credibilityIndex = buildIndex(root);
@@ -1666,6 +1682,7 @@ if (checkMode) {
   if (!same(searchIndexPath, searchIndexJs)) diffs.push('knowledge/search-index.js 不是最新生成物');
   if (!same(credibilityPath, credibilityJson)) diffs.push('knowledge/credibility.json 不是最新生成物');
   if (!same(englishDigestPath, englishDigestJson)) diffs.push('knowledge/english-digest.json 不是最新生成物');
+  if (!same(changelogDataPath, changelogJson)) diffs.push('knowledge/assets/changelog-data.json 不是最新生成物');
   for (const { doc, html } of allPages) {
     if (!same(join(htmlDir, doc.html), html)) diffs.push(`knowledge/html/${doc.html} 不是最新生成物`);
   }
@@ -1687,7 +1704,7 @@ if (checkMode) {
     for (const d of diffs) console.error(`- ${d}`);
     process.exit(1);
   }
-  console.log(`生成物校验通过：index.html + instances.html + search-index.js + credibility.json + english-digest.json + ${pages.length} 个知识页 + ${skillPages.length} 个技能页 + ${downloadFiles.length} 个下载文件均为最新（${total} 个模块 / ${fmt(totalLines)} 行 / ${instanceData.count} 个实例包）。`);
+  console.log(`生成物校验通过：index.html + instances.html + search-index.js + credibility.json + english-digest.json + changelog-data.json + ${pages.length} 个知识页 + ${skillPages.length} 个技能页 + ${downloadFiles.length} 个下载文件均为最新（${total} 个模块 / ${fmt(totalLines)} 行 / ${instanceData.count} 个实例包）。`);
   process.exit(0);
 }
 
@@ -1695,6 +1712,7 @@ for (const { doc, html } of allPages) writeFileSync(join(htmlDir, doc.html), htm
 writeFileSync(searchIndexPath, searchIndexJs, 'utf8');
 writeFileSync(credibilityPath, credibilityJson, 'utf8');
 writeFileSync(englishDigestPath, englishDigestJson, 'utf8');
+writeFileSync(changelogDataPath, changelogJson, 'utf8');
 writeFileSync(instancePath, instanceHtml, 'utf8');
 mkdirSync(downloadDir, { recursive: true });
 for (const f of downloadFiles) writeFileSync(f.path, f.content, 'utf8');
@@ -1708,5 +1726,6 @@ console.log(`模块 ${total} 个 / 正文 ${fmt(totalLines)} 行；章节 ${head
 if (rewriteIndex) console.log('已生成 knowledge/index.html（卡片、侧栏与计数来自 frontmatter）');
 console.log(`已生成 knowledge/instances.html（${instanceData.count} 个实例包 / ${instanceData.groups.length} 项技能 / ${instanceData.provinces.length} 个省份）`);
 console.log(`已生成 knowledge/search-index.js（${pages.length} 个模块 + 1 个实例总览，全文懒加载）`);
+console.log(`已生成 knowledge/assets/changelog-data.json（中英 ${changelog.count} 条记录，${changelog.version} / ${changelog.cutoff}）`);
 const biggest = [...allPages].map((p) => ({ html: p.doc.html, kb: Math.round(p.html.length / 1024) })).sort((a, b) => b.kb - a.kb).slice(0, 3);
 console.log(`最大页面：${biggest.map((b) => `${b.html} ${b.kb}KB`).join('，')}`);
