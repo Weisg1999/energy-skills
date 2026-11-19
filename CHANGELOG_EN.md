@@ -1,6 +1,14 @@
 # Changelog
 
-This file records energy-skills releases in reverse chronological order. Current version **v1.9**, data cutoff **2026-11-12**. Repository entry point: [README_EN.md](README_EN.md); Chinese version: [CHANGELOG.md](CHANGELOG.md).
+This file records energy-skills releases in reverse chronological order. Current version **v2.0**, data cutoff **2026-11-19**. Repository entry point: [README_EN.md](README_EN.md); Chinese version: [CHANGELOG.md](CHANGELOG.md).
+
+### 2026-11-19 (v2.0: seven-province pricing closeout, expanded provincial policy index, 31 instance packs)
+
+- **Provincial rule closeout**: declaration/clearing/settlement figures re-baselined for Anhui, Jiangxi, Henan, Hubei, Sichuan, Shaanxi and Qinghai — Henan's 50–1,200 CNY/MWh bid range is marked grade C (2025 full-month settlement-trial plan) with the live continuous-settlement cap noted as unpublished; Hubei's "take-or-pay, deviation settlement" is anchored to the Central-China regulator's mid/long-term rules explainer (grade A) while "24-hour settlement" stays unverified; `knowledge/data/province-params.json` updated for all seven provinces with data cutoff 2026-11-19.
+- **Provincial policy index 13 → 21 entries**: adds Jiangsu 1198 (2025), Hainan Qiong-Fa-Gai-Gui〔2026〕2, the Fujian measure explainer and Henan's 539 backup-coal capacity price, plus a new "spot-market formal-operation notices" section covering Hebei South Network 719, Anhui, Shaanxi 1329 and a Fujian news page; every link curl-tested at 200, with the Guangdong anniversary page (000) and the Hubei DRC site (412) listed under "not yet linked".
+- **Instance packs 23 → 31, provinces 11 → 12**: new Zhejiang spot storage and Mengxi wind-solar-storage packs (spot-bidding-quant), Sichuan hydro, Yunnan hydro, Liaoning nuclear and a Shandong negative-price strategy replay (electricity-trading-expert), a Shanghai datacenter aggregation pack (virtual-power-plant), and the first `strategy_failure_boundary` pack — the Guangdong retail-wholesale inversion replay (retail-electricity-risk, replay-library case 7: only 5 of 216 stop-loss grid cells break even; stop-loss mitigates losses, it cannot create a safety margin).
+- **Three decision-layer modules**: Trading-desk daily SOP and exception handling (spot #8, five clocks as five daily segments plus three templates), Synthetic case replay library (cross #9, ten grade-D cases organised by timeline — decision point — mistake — fix — reusable checklist) and Contract & clauses library (cross #10, five contract families × seven-dimension matrix with walk-away lists); knowledge modules 101 → 104, with section descriptions, five skill module lists and `related` backlinks in five modules synced.
+- **Version and artifacts**: the version badge, footer capsule and bilingual changelog dialog regenerate as v2.0; README, INDEX_EN and the maintenance checklist counts and body-line totals are backfilled from build output.
 
 ### 2026-11-18 (v1.9 maintenance: site-wide version badge and bilingual changelog dialog)
 

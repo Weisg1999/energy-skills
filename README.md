@@ -6,13 +6,13 @@
 
 <p align="center">
   <strong>电力系统 · 电力市场 · 碳市场</strong><br>
-  9 份面向 AI 助手的领域技能 · 101 个知识模块 · 13 个分区
+  9 份面向 AI 助手的领域技能 · 104 个知识模块 · 13 个分区
 </p>
 
 <p align="center">
-  <a href="CHANGELOG.md"><img alt="version v1.9" src="knowledge/assets/badge-version.svg"></a>&nbsp;
-  <a href="knowledge/index.html"><img alt="101 knowledge modules" src="knowledge/assets/badge-modules.svg"></a>&nbsp;
-  <a href="更新清单.md"><img alt="data cutoff 2026-11-12" src="knowledge/assets/badge-cutoff.svg"></a>&nbsp;
+  <a href="CHANGELOG.md"><img alt="version v2.0" src="knowledge/assets/badge-version.svg"></a>&nbsp;
+  <a href="knowledge/index.html"><img alt="104 knowledge modules" src="knowledge/assets/badge-modules.svg"></a>&nbsp;
+  <a href="更新清单.md"><img alt="data cutoff 2026-11-19" src="knowledge/assets/badge-cutoff.svg"></a>&nbsp;
   <a href="LICENSE"><img alt="license CC BY-NC 4.0" src="knowledge/assets/badge-license.svg"></a>
 </p>
 
@@ -25,7 +25,7 @@
 
 > 每份技能都是一册可直接注入大模型上下文的 Markdown 手册。加载后，模型按该领域资深从业者的身份回答，并遵守内置纪律：数字带文号与时点、涉及省份先确认、政策内容给出查证入口、未交叉验证的数据标注“待核实”。
 
-当前版本 **v1.9**，数据截止 **2026-11-12**，正文 42,293 行。知识笔记、101 个阅读页、技能页、全文检索索引与图表均由仓库内容构建生成。
+当前版本 **v2.0**，数据截止 **2026-11-19**，正文 43,462 行。知识笔记、104 个阅读页、技能页、全文检索索引与图表均由仓库内容构建生成。
 
 **目录**　[快速开始](#快速开始) · [技能矩阵](#技能矩阵) · [知识库](#知识库) · [仓库结构](#仓库结构) · [维护](#维护知识中心) · [Roadmap](#roadmap) · [许可证](#许可证)
 
@@ -85,7 +85,7 @@ node scripts/check-maintenance.mjs --check
 
 ## 知识库
 
-101 个知识模块分为 13 个分区，全部带 frontmatter（`id`、`section`、`title`、`summary`、`tags`、`cutoff`、`related` 等）。[知识中心](knowledge/index.html)的卡片、计数、全文检索、阅读页与下载文件全部由构建脚本生成，覆盖标题、标签与正文；首页以分类筛选切换 13 个分区，每个技能另有 HTML 阅读页与完整 TXT 下载。
+104 个知识模块分为 13 个分区，全部带 frontmatter（`id`、`section`、`title`、`summary`、`tags`、`cutoff`、`related` 等）。[知识中心](knowledge/index.html)的卡片、计数、全文检索、阅读页与下载文件全部由构建脚本生成，覆盖标题、标签与正文；首页以分类筛选切换 13 个分区，每个技能另有 HTML 阅读页与完整 TXT 下载。
 
 **分区速览**
 
@@ -109,7 +109,7 @@ node scripts/check-maintenance.mjs --check
 - **新能源能不能开发、能不能并网**：[新能源开发与并网](knowledge/新能源项目开发与并网-2026-11.md) · [并网运行考核](knowledge/并网运行考核与两个细则-2026-11.md) · [综合能源与零碳园区](knowledge/综合能源与零碳园区-2026-11.md)
 - **VPP 与需求响应怎么落地**：[VPP 聚合、调度与商业模式](knowledge/虚拟电厂聚合调度与商业模式-2026-11.md) · [走近虚拟电厂](knowledge/走近虚拟电厂-主题笔记.md) · [需求响应与车网互动](knowledge/需求响应、车网互动与灵活性资源-2026-11.md) · [微网 EMS 算法](knowledge/微网EMS优化调度-算法与工程-2026-11.md)
 - **碳履约、碳足迹与出口应对**：[碳资产实务](knowledge/碳资产实务-2026-11.md) · [中国碳交易实务](knowledge/中国碳排放权交易实务-主题笔记.md) · [碳管理：从零通往碳中和](knowledge/碳管理-从零通往碳中和-主题笔记.md)
-- **报价、风控与售电经营**：[量化报价与交易风控](knowledge/量化报价与交易风控-工程化-2026-11.md) · [电力市场风险、信用与结算](knowledge/电力市场风险、信用与结算-2026-11.md) · [省级市场状态表](knowledge/省级市场状态表-2026-11.md)
+- **报价、风控与售电经营**：[量化报价与交易风控](knowledge/量化报价与交易风控-工程化-2026-11.md) · [电力市场风险、信用与结算](knowledge/电力市场风险、信用与结算-2026-11.md) · [省级市场状态表](knowledge/省级市场状态表-2026-11.md) · [交易台日课与异常处置 SOP](knowledge/交易台日课与异常处置-SOP-2026-11.md) · [合成案例复盘库](knowledge/合成案例复盘库-2026-11.md) · [合同与条款库](knowledge/合同与条款库-2026-11.md)
 - **检验回答是否跑偏**：[黄金问答集](knowledge/黄金问答集-2026-11.md)（38 个高频问答，含价格驱动三链 10 问，兼改版回归清单）
 
 调研底稿（电力市场、VPP、碳市场、量化厂商、碳管理厂商）按时间存档在 `knowledge/`，用于追溯结论来源；对外结论以技能正文与主题笔记为准。
@@ -143,7 +143,7 @@ energy-skills/
 └── knowledge/
     ├── index.template.html           ← 首页骨架（手写）
     ├── index.html                    ← 生成：知识中心
-    ├── html/                         ← 生成：101 个知识页 + 18 个技能页
+    ├── html/                         ← 生成：104 个知识页 + 18 个技能页
     ├── credibility.json              ← 生成：可信度登记册
     ├── english-digest.json           ← 生成：英文路由摘要
     ├── search-index.js               ← 生成：全文检索索引
@@ -179,7 +179,7 @@ node scripts/check-maintenance.mjs --check      # 更新清单结构校验
 - **正文图表**：无语言标记的 `├/└` 层级树会自动转为结构卡片，多列阶段和箭头链路转为流程卡片；依赖坐标对齐的复杂图保留为带网格和滚动容器的蓝图面板。
 - **自动里程碑**：“中国主体进入路径”和“并网流程”的步骤表会转为纵向里程碑，保留负责方、备注、风险与双地区列。储能安全因果/应急链、碳核查与 CCER 流程、微网状态表也会按章节自动组件化。
 - **核心架构图**：SCADA 安全分区、VPP/EMS 数据链、V2G、量化交易参考架构、灵活性资源地图由 `architecture-diagrams.mjs` 人工语义化；源图关键节点变动时构建会报错。
-- **英文路由**：`english-digest.json` 包含 101 个模块的英文摘要、关键数字、未定事项与 C 级工单状态；`historical: true` 的模块会在阅读页顶部显示“数据不可作现行引用”横幅。
+- **英文路由**：`english-digest.json` 包含 104 个模块的英文摘要、关键数字、未定事项与 C 级工单状态；`historical: true` 的模块会在阅读页顶部显示“数据不可作现行引用”横幅。
 - **全文检索**：`search-index.js` 按 H2/H3 切块，首次聚焦搜索框时才加载；索引只服务页面检索，不进入模型上下文。
 - **可信度层**：`credibility.json` 提供 22 项 C 级工单、44 项未定事项、32 条事件日历与逐模块 `confidence` / `examples` / `historical` 声明。注入上下文前可按 `confidence` 过滤，并按 `gradeC.usable` / `banned` 排除不可引用数字。
 - **CI**：依次执行一致性校验、维护台账、生成物比对与九个 Python 自测；每月 1 号另把到期看板写入 Actions 摘要。
@@ -201,7 +201,7 @@ node scripts/check-maintenance.mjs --check      # 更新清单结构校验
 
 ## 几点说明
 
-1. **时效性**：政策类数字整理至 **2026-11-12**；2026 年 9–10 月的现货新规、售电公司管理办法、风险防控办法、信用评价指引仍为征求意见稿，正文已标注状态。引用前以官方最新文件为准。
+1. **时效性**：政策类数字整理至 **2026-11-19**；2026 年 9–10 月的现货新规、售电公司管理办法、风险防控办法、信用评价指引仍为征求意见稿，正文已标注状态。引用前以官方最新文件为准。
 2. **原创性**：`knowledge/` 下的笔记是对原书内容的主题化摘要与提炼，非原文复制；书籍版权归原作者所有。
 3. **非投资建议**：文中的价格判断与测算框架仅供学习研究。
 4. **口径纪律**：技能内置“待核实”标注约定与常见误区清单；使用前建议先读 `SKILL.md` 第 0 章与推理手册章节。
@@ -209,7 +209,7 @@ node scripts/check-maintenance.mjs --check      # 更新清单结构校验
 ## Roadmap
 
 - [x] **九份技能**：交易、VPP、量化、碳资产、储能、新能源、EMS、电价与售电，均中英双语并附零依赖 Python 工具与自测。
-- [x] **知识库**：101 个模块、13 个分区，含 33 个省级市场、11 个海外市场、横向专题、碳市场、VPP 与调研底稿；知识中心为生成物。
+- [x] **知识库**：104 个模块、13 个分区，含 33 个省级市场、11 个海外市场、横向专题、碳市场、VPP 与调研底稿；知识中心为生成物。
 - [x] **阅读体验**：全文检索、分类筛选、深浅主题、移动端适配；正文图表自动组件化，核心架构图人工语义化。
 - [ ] **2026-12 增量复核**：现货新规定稿、国家 VPP 管理办法、2027 年 136 号文竞价、省份容量电价与招中标价。
 
@@ -217,4 +217,4 @@ node scripts/check-maintenance.mjs --check      # 更新清单结构校验
 
 本仓库内容（Markdown 技能、知识笔记、调研记录与辅助脚本）采用 [CC BY-NC 4.0](LICENSE) 授权：可署名后自由复制、分发与改编，**不得用于商业用途**。引用或再发布请按 `LICENSE` 中的建议格式署名，并保留来源链接。
 
-<p align="center"><sub>最后更新于 2026-11-12 · <a href="#energy-skills">回到顶部</a></sub></p>
+<p align="center"><sub>最后更新于 2026-11-19 · <a href="#energy-skills">回到顶部</a></sub></p>

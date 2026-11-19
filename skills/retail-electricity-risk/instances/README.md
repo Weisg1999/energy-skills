@@ -2,7 +2,7 @@
 
 > 目录定位：`skills/retail-electricity-risk/instances/` 是**售电侧的样板实例层**，不是知识模块，不改变知识库的 101 模块 / 13 分区计数。每个子目录是"一省 + 一个售电公司 + 一个规则版本"的配置包，售电公司的交易/结算人员只改 JSON 与 CSV，不改代码。
 >
-> 当前有三个纵切片：广东 2026-11（固定价 + 市场联动）、江苏 2027（批发价传导 + 一户一价封顶）、广东多用户绿电直连 2027（三个法人用户分摊）。三者共用同一套目录约定，但套餐/分配模型不同，见 §3.2。
+> 当前有四个纵切片：广东 2026-11（固定价 + 市场联动）、江苏 2027（批发价传导 + 一户一价封顶）、广东多用户绿电直连 2027（三个法人用户分摊）、广东批零倒挂复盘 2026-11（`strategy_failure_boundary` 失败重放 + 止损边界）。前两者共用同一套目录约定，但套餐/分配模型不同，见 §3.2；倒挂复盘包沿用广东模型五个规则子块，另加止损联动参数与三轨道重放，见其包内 README。
 
 ## 1. 为什么要有这一层
 
@@ -48,6 +48,8 @@ instances/
     ├── data/profile_demo.csv
     └── out/demo/
 ```
+
+> 失败复盘包 `guangdong-retail-inversion-2026-11/`（广东批零倒挂）目录结构相同：`run.py` 是三轨道月度重放（A 失败盘 / B 对照盘 / C 止损盘）→ 倒挂归因 → 止损边界扫描 → 复盘五问，产物多 `inversion_attribution.csv`、`stop_loss_scan.csv`、`scan_frontier.csv`；`instance.json` 在广东模型五子块之上加 `margin_line`、联动比例与生效月等止损参数，`package_kind: strategy_failure_boundary`。
 
 ## 3. `instance.json` 配置块
 
@@ -264,6 +266,10 @@ python skills/retail-electricity-risk/instances/jiangsu-retail-2027/run.py --dem
 python skills/retail-electricity-risk/instances/guangdong-multi-user-direct-2026-11/run.py --check-config
 python skills/retail-electricity-risk/instances/guangdong-multi-user-direct-2026-11/run.py --demo
 
+# 广东批零倒挂复盘：三轨道重放 + 止损边界扫描
+python skills/retail-electricity-risk/instances/guangdong-retail-inversion-2026-11/run.py --check-config
+python skills/retail-electricity-risk/instances/guangdong-retail-inversion-2026-11/run.py --demo
+
 # 用自己的数据（路径指向仓库外）
 python skills/retail-electricity-risk/instances/<实例目录>/run.py \
   --d1 /path/to/d1.csv --t1 /path/to/t1.csv --out /path/to/out
@@ -345,4 +351,5 @@ python skills/retail-electricity-risk/instances/guangdong-multi-user-direct-2026
 - 广东售电样板：[`guangdong-retail-2026-11/README.md`](guangdong-retail-2026-11/README.md)
 - 江苏 2027 售电样板：[`jiangsu-retail-2027/README.md`](jiangsu-retail-2027/README.md)
 - 广东多用户直连样板：[`guangdong-multi-user-direct-2026-11/README.md`](guangdong-multi-user-direct-2026-11/README.md)
+- 广东批零倒挂复盘样板：[`guangdong-retail-inversion-2026-11/README.md`](guangdong-retail-inversion-2026-11/README.md)
 - 江苏市场档案：[`knowledge/江苏电力市场-2026-11.md`](../../../knowledge/江苏电力市场-2026-11.md)

@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "instance_id": "shandong-negative-price-replay-2026-11",
+    "province": "山东",
+    "market": "山东省级电力市场（日前申报 + 日前/实时现货结算重放）",
+    "entity_type": "光伏电站/聚合商（分布式光伏聚合，新能源全量入市主体）",
+    "rule_version": "新版《山东电力市场规则（试行）》（2026-01-01 实施）；鲁发改价格〔2025〕576号；鲁发改价格〔2026〕149号（2026 机制电价）",
+    "data_cutoff": "2026-11-12",
+    "grade": "B/C",
+    "scope": "单日（2026-05-02，D 级合成负价日）三条申报策略的 24 点结算重放：电能量现货收入（负价时段为负）、机制电价差价（D 级参考价假设）、辅助服务分摊占位、容量补偿分账（D 级占位）；损失归因表、三情景比较、午间价格下限 × 压出力比例边界扫描、复盘五问；不含预测偏差、偏差考核、两个细则、辅助服务正式结算与零售侧",
+    "currency": "CNY",
+    "units": "功率与申报 MW；电量 MWh；价格 元/MWh；金额 元；时段 0-23（小时起点）",
+    "disclaimer": "本实例包是 D 级合成样板，不构成报价、投资或法律建议；电站参数、价格曲线、电量、机制电量占比与决策参数均为合成数据，容量补偿适用性与标准、机制差价参考点、辅助服务分摊口径均为待核实项；规则事实以山东省级知识模块与现行正式文件为准。"
+  },
+  "rules": {
+    "spot": {
+      "formal_operation_date": "2024-06-17",
+      "realtime_clearing_interval_min": 5,
+      "declare_floor_cny_per_mwh": -80,
+      "declare_cap_cny_per_mwh": 1300,
+      "clear_floor_cny_per_mwh": -100,
+      "clear_cap_cny_per_mwh": 1500,
+      "draft_2026_08_28": {
+        "declare_floor_cny_per_mwh": -120,
+        "clear_floor_cny_per_mwh": -140,
+        "status": "征求意见稿草案，未生效，不得当现行规则"
+      },
+      "grade": "B/C",
+      "source": "山东省级知识模块 §2：山东现货 2024-06-17 转正式运行（B）；§4.1：现行申报限价 −80~1,300 元/MWh、出清限价 −100~1,500 元/MWh（B/C）；§9.1/§11.1：5 分钟级实时出清（A/B）；§4.1：2026-08-28 下限下调 −0.12/−0.14 元/kWh 为征求意见稿草案（A 草案）",
+      "status": "限价校验按出清限价 [−100, 1,500] 元/MWh 执行；本包用 24 点小时级合成曲线近似日内形态，实际实时结算按 5 分钟级曲线，粒度差异属于本包口径边界"
+    },
+    "negative_price": {
+      "negative_hours_2025_gt": 1500,
+      "floor_share_2025_pct": 13,
+      "floor_hours_2025_approx": 1145,
+      "noon_normal_2026": true,
+      "deep_valley_window": "11:00–14:00（五段式分时深谷时段）",
+      "pv_spot_price_2025_04_approx_cny_per_kwh": 0.02,
+      "grade": "B/C",
+      "source": "山东省级知识模块 §0.1/§2/§4.3：2025 年负电价时长 >1,500 h、触及地板价占全年运行时长 13%（约 1,145 h）（B/C）；§4.2/§7.2：2026 午间光伏大发时段负价常态化、光伏「午发晚无」与午间负荷低谷叠加是负电价的结构性来源（B/C）；§4.3：2025-04 光伏现货结算均价约 0.02 元/kWh（B/C）；§6.2：深谷时段多为 11:00–14:00（A，五段式分时口径）",
+      "status": "负价时长与触地板占比是年度统计口径，不能由单日外推；本包单日价格曲线为 D 级合成情景"
+    },
+    "capacity_compensation": {
+      "formula": "容量电费 = 有效容量 × 容量补偿电价标准 × 当年容量供需系数",
+      "settlement_separation": "电能量侧负价释放消纳信号，可靠性侧市场化容量补偿回收固定成本，两者分账、不能互相替代",
+      "standard_value": "待核实（执行依据鲁发改价格〔2023〕1022号）",
+      "pv_applicability": "待核实（光伏是否纳入市场化容量补偿及有效容量口径未核到省级原文）",
+      "grade": "A",
+      "source": "山东省级知识模块 §0.1 结论 5：负电价与市场化容量补偿并存，电能量侧负价释放消纳信号、可靠性侧容量补偿回收固定成本，两者分账（A，鲁发改价格〔2025〕576号）；§0.2/§7.3：容量电费＝有效容量 × 补偿电价标准 × 当年容量供需系数（A），具体补偿标准数值待核实",
+      "status": "本包把容量补偿作为与电量无关的分账项演示：三条策略金额相同、不进入任何策略差额；若光伏实际不适用，该行清零，全部差额与边界结论不变——这正是分账结构的教学点"
+    },
+    "new_energy": {
+      "full_market_participation": true,
+      "mechanism_price_pv_2026_cny_per_kwh": 0.261,
+      "mechanism_settlement": "机制电价是差价结算，不是把全部电量按机制价锁死；机制电量之外的电量面对现货负价与捕获价",
+      "reference_point_rule": "576 号允许中长期合同自选实时/日前任一节点或统一结算点作为结算参考点；机制电量差价的参考价口径待核实",
+      "grade": "A/B",
+      "source": "山东省级知识模块 §0.1 结论 7 / §4.2：新能源全量入市，可报量报价或作为价格接受者（A/B）；§7.1：2026 机制电价光 0.261 元/kWh（A，鲁发改价格〔2026〕149号）、机制电价是差价结算（A，576号）；§5：结算参考点可自选（A）",
+      "status": "本包 D 级简化：机制电量按申报（实发）电量同比例覆盖、参考价取该时段现货出清价；真实分摊曲线与参考点口径必须先核实，「负价动作门槛」对此敏感"
+    }
+  },
+  "asset": {
+    "name": "山东某 200 MW 光伏电站/聚合组合（D 级合成，与合成案例复盘库案例 1 的 200 MW 等效容量同构）",
+    "capacity_mw": 200.0,
+    "replay_date": "2026-05-02",
+    "mechanism_quota_share": 0.10,
+    "grade": "D",
+    "source": "D 级合成场站：200 MW 等效容量、复盘日为晴天低负荷假日、机制电量占实发电量比例 10%（合成占位，真实项目按 149 号文入选机制电量核定）"
+  },
+  "strategy": {
+    "profile_id": "shandong-negative-price-replay-v1",
+    "strategy_a": {
+      "type": "full_output",
+      "description": "按 D-1 预测可用出力满发申报，负价时段无任何动作（案例 1 的错误基线）"
+    },
+    "strategy_b": {
+      "type": "curtail_negative",
+      "curtail_ratio": 0.9,
+      "trigger_price_cny_per_mwh": 0.0,
+      "description": "预测负价时段（价格低于触发线 0 元/MWh）统一压出力至 10%，其余时段满发"
+    },
+    "strategy_c": {
+      "type": "curtail_plus_storage",
+      "curtail_ratio": 0.9,
+      "trigger_price_cny_per_mwh": 0.0,
+      "storage": {
+        "power_mw": 20.0,
+        "energy_mwh": 40.0,
+        "round_trip_efficiency": 0.88,
+        "discharge_trigger_price_cny_per_mwh": 400.0,
+        "charge_source": "本场站光伏压出力电量，不从公共电网购电"
+      },
+      "description": "在 B 基础上把压出力电量优先充入小储能，出清价高于放电触发线时于晚峰放电"
+    },
+    "decision_rule": "avoid_negative_margin",
+    "grade": "D",
+    "source": "D 级决策风格：三条申报策略是同一 D-1 决策的三种姿态，用于失败复盘对照；压出力比例、触发线与储能参数均为合成占位"
+  },
+  "assumptions": {
+    "mechanism_reference": "机制差价参考价取该时段现货出清价（D 级简化）",
+    "mechanism_coverage": "机制电量按申报（实发）电量同比例覆盖，压出力同比例放弃机制差价（D 级简化，真实分摊曲线待核实）",
+    "capacity_compensation": {
+      "effective_capacity_mw": 200.0,
+      "standard_cny_per_kw_year": 50.0,
+      "supply_demand_factor": 1.0,
+      "day_allocation": "年值 ÷ 365 逐日分摊",
+      "note": "标准数值、光伏适用性与有效容量口径均待核实；仅用于演示分账结构，D 级占位"
+    },
+    "ancillary_levy_cny_per_mwh": 6.0,
+    "ancillary_levy_basis": "按上网电量计（D 级占位；真实分摊规则以两个细则与省级细则为准）",
+    "grade": "D",
+    "source": "D 级建模假设：机制覆盖比例、参考价、容量补偿占位与辅助服务分摊占位均为合成值，用于把「负价支出 vs 机制差价 vs 分摊」放进同一张账比较"
+  },
+  "scan": {
+    "window_slots": [11, 12, 13, 14],
+    "window_label": "午间负价时段（深谷窗口 11:00–14:00 + 负价尾段 14:00–15:00）",
+    "floor_prices_cny_per_mwh": [0, -10, -20, -30, -40, -50, -60, -70, -80],
+    "curtail_ratios": [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+    "grade": "D",
+    "source": "D 级扫描设定：把午间四个时段价格统一设为下限价、其余时段不变，扫下限价 × 压出力比例网格，找满发（A）与压出力（B）的盈亏平衡边界"
+  },
+  "data_contract": {
+    "price_profile": {
+      "file": "data/price_profile_demo.csv",
+      "fields": ["slot", "start", "end", "pv_available_mw", "price_s1_deep_valley", "price_s2_mild", "price_s3_no_negative"],
+      "scenario_fields": ["price_s1_deep_valley", "price_s2_mild", "price_s3_no_negative"],
+      "scenario_labels": ["S1 深谷负价日（复盘基准）", "S2 温和负价日", "S3 无负价日"],
+      "base_scenario": "price_s1_deep_valley",
+      "frequency": "hourly, 24 slots, single day"
+    },
+    "declaration_curves": {
+      "file": "data/declaration_curves_demo.csv",
+      "fields": ["slot", "start", "end", "declare_a_full_mw", "declare_b_curtail_mw"],
+      "note": "D-1 申报曲线（合成）：A 满发、B 在预测负价时段压出力；两条曲线在三个价格情景下保持不变，情景只改变实际出清价"
+    }
+  }
+}

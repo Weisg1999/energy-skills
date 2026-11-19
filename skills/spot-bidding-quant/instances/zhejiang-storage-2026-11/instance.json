@@ -1,0 +1,167 @@
+{
+  "meta": {
+    "instance_id": "zhejiang-storage-2026-11",
+    "province": "浙江",
+    "market": "浙江省级电力市场（现货 5 分钟滚动出清 + 中长期 + 政府授权差价合约 + VPP 2.0）",
+    "entity_type": "独立新型储能电站",
+    "rule_version": "浙江现货正式运行规则体系（2025-08-07 转正式运行，463 天连续结算试运行后转正，「1+7」规则体系，C 级口径）；−200–1,200 元/MWh 限价为年报/征求意见稿口径，省级正式规则现行参数待核实",
+    "data_cutoff": "2026-11-12",
+    "grade": "B/C/D",
+    "scope": "v1 仅省内现货电能量（日前 + 实时两结算）+ 午间负价压力测试；中长期曲线分解、授权差价合约头寸、零售、需求响应/AGC、容量电价未纳入",
+    "currency": "CNY",
+    "units": {
+      "power": "MW",
+      "energy": "MWh",
+      "price": "CNY/MWh",
+      "time": "HH:MM",
+      "slot": "0-287（5 分钟一点）"
+    },
+    "disclaimer": "本实例包是 D 级合成样板，不构成报价、投资或法律建议；实际参数以企业铭牌、合同、交易中心结算单与省级正式规则原文为准。"
+  },
+  "rules": {
+    "spot": {
+      "status": "正式运行（2025-08-07，463 天连续结算试运行后转正，长三角首个；A 级）",
+      "market_time_unit_min": 5,
+      "points_per_day": 288,
+      "declare_floor_cny_per_mwh": -200,
+      "declare_cap_cny_per_mwh": 1200,
+      "clear_floor_cny_per_mwh": -200,
+      "clear_cap_cny_per_mwh": 1200,
+      "sub_bands_cny_per_mwh": null,
+      "storage_band_status": "模块未给分档边界；−200–1,200 元/MWh 为现货电能量申报/出清总区间（年报/征求意见稿口径，B/C），储能分档未核到",
+      "negative_price_allowed": true,
+      "stress_assumption": {
+        "window_start": "11:00",
+        "window_end": "15:00",
+        "settlement_price_cny_per_mwh": -200.0,
+        "status": "D 级压力测试假设，不是浙江规则：模块只说新能源全量入市后「午间低价/负价风险上升」（B），未给负价时段、频次与持续时长；窗口取午间光伏大发、重算价取限价下限"
+      },
+      "grade": "B/C",
+      "source": "浙江省级知识模块 §0.2、§4.1（限价 −200–1,200 元/MWh、允许负价，年报/征求意见稿口径，B/C）；§0.1 结论 1、§2（2025-08-07 转正，A）；§4.2（5 分钟滚动出清，C）",
+      "note": "省级正式规则的现行限价参数待核实，不能把这组数当成唯一现行答案；−200–1,200 元/MWh 是「元/MWh」的现货电能量限价，不能与 VPP 2.0 需求响应的 0–1,200 元/MW 混淆（单位、市场、文件都不同）；112 号的 2.05:1.85:1:0.4:0.2 是工商业分时浮动比例，也不是现货限价"
+    },
+    "settlement": {
+      "basis": "日前 + 实时两结算：日前现货 5 分钟滚动出清、发电侧报量报价、用户侧报量不报价起步；实时与日前衔接、偏差按实时市场价格结算；结算时点按 976 号文 5/8/10 个工作日出具核对版、正式结算依据与账单（全国底座）",
+      "grade": "C",
+      "source": "浙江省级知识模块 §3（交易品种表）、§3.1（交易组织流程）、§5；§5 明示：本省偏差考核、曲线分解与授权合约的结算公式未核到省级正式全文，写「待核实」",
+      "note": "两结算公式按全国现货通行口径实现（计划按日前价、偏差按实时价）；浙江本省偏差考核与授权合约双差价的正式公式待核实，不要套邻省 ±3%/±5% 偏差口径"
+    },
+    "authorized_cfd": {
+      "name": "政府授权差价合约",
+      "coverage_share_of_energy": 0.9,
+      "settlement_type": "双差价结算：发电侧与用户侧分别对冲，剩余电量暴露于现货；是过渡缓冲，不是把现货价格固定",
+      "applicable_to_storage": null,
+      "status": "覆盖约 90% 电量、双差价结算为 B 级（本库已核实）；独立储能是否纳入授权合约覆盖，模块未写，待核实；完整双差价结算公式待省级原文核实；本包按储能无授权合约头寸、全额暴露于现货计算",
+      "grade": "B",
+      "source": "浙江省级知识模块 §0.1 结论 4、§3.1、§5、Q3（B，本库已核实）",
+      "note": "授权合约对冲的是发电侧与用户侧的中长期头寸；储能是否签授权合约未核实，不能把 90% 覆盖率套到储能头寸上；「授权合约当固定价」是模块风险清单明示的易错点"
+    },
+    "storage_participation": {
+      "requirement": "独立储能可参与现货；按 5 分钟价格建模，考虑 SOC、效率、退化与辅助服务机会成本（模块 §9.1）",
+      "vpp_route": "若通过 VPP 2.0 聚合：储能类聚合单元须具备独立计量表计、聚合总调节 ≥5 MW、持续 ≥1 h；无表计工商储只能按负荷类单元、以用户计量表为结算点（B/C）",
+      "admission_conditions": null,
+      "admission_status": "待核实：独立储能参与现货的具体准入条件（容量门槛、计量、涉网试验等）模块未逐项给出，只有「可参与现货；VPP 储能类单元须独立计量」（B/C）",
+      "effective_from": "现货 2025-08-07 转正式运行（A）；独立储能参与条款的单独生效日期未核到",
+      "grade": "B/C",
+      "source": "浙江省级知识模块 §4.2（独立储能可参与现货；VPP 储能类单元须独立计量，B/C）、§7.3、§9.1（按 5 分钟价格建模，C）",
+      "note": "外省门槛不能套浙江：山东 1 MW、辽宁 ≥10 MW、广东 220 kV 节点等均不适用；浙江 VPP 聚合门槛是 ≥5 MW/1 h（B/C）；收益应分「现货套利/需量管理/需求响应与 AGC/容量补偿」几条线，容量电价未核到前不计入"
+    },
+    "price_features": {
+      "mid_long_term_2025_cny_per_mwh": 390.73,
+      "annual_2025_cny_per_mwh": 412.39,
+      "monthly_2025_cny_per_mwh": 370.43,
+      "mechanism_price_2026_first_cny_per_mwh": 381.6,
+      "tou_spread_before_112_cny_per_kwh": 0.83,
+      "tou_spread_after_112_cny_per_kwh": 0.5,
+      "tou_structure_112": "浙发改价格〔2026〕112号自 2026-07-01 执行：取消上午 8:00–11:00 高峰改平段、晚高峰后移至 16:00–23:00、午间低谷延至 3 小时；浮动比例 尖峰:高峰:平段:低谷:深谷 = 2.05:1.85:1:0.4:0.2（A）；输配电价与政府性基金不参与浮动",
+      "shape": "午间富电、晚峰缺电：光伏装机大（2025 年底 6,429 万 kW、较 2020 年末 +324%，A），新能源 2026-01-01 全量入市后午间低价/负价风险上升（B），晚峰 16:00–23:00 为分时高峰",
+      "spot_average_price": null,
+      "spot_average_status": "待核实：模块未给浙江现货日前/实时分时均价统计（只有中长期均价 390.73 元/MWh，B 年报），不要用中长期均价或分时价差倒推现货均价",
+      "grade": "A/B/C",
+      "source": "浙江省级知识模块 §4.3（价格特征）、§6.2、§7.1（机制电价首拍 381.6 元/MWh，B）、§4.2（午间低价/负价风险，B）；中长期总均价 390.73（B，年报）、年度 412.39（A，能监办）、月度 370.43（C，年报）、112 号浮动比例（A）、峰谷价差 0.83→0.50 元/kWh（C，行业测算）",
+      "note": "机制电价 381.6 元/MWh 是新能源机制电量的差价结算价格，不是储能收益，也不能用 0.3816 元推算全部电量收入；价差降幅有两个口径（政策解读约 −28.5%、行业算术约 −40%），引用必须写明口径；112 号的征求意见（2025-10-15）、印发（2026-05-28）、执行（2026-07-01）三个日期不能互相替代"
+    },
+    "capacity_compensation": {
+      "applicable_to_storage": false,
+      "price_cny_per_kw_year": null,
+      "supply_demand_coefficient": null,
+      "status": "待核实：煤电/独立储能容量电价的省级完整文件未核到（模块 §7.3 明示写「待核实」）；不要把 136 机制电价或分时价差当容量收入；本包容量收入按 0 计",
+      "grade": "C",
+      "source": "浙江省级知识模块 §3（容量品种「待核实」）、§7.3、§9.1（容量电价省级口径未核到前不要计入）",
+      "note": "136 机制电价（2026 首拍 381.6 元/MWh）作用于新能源机制电量，与储能容量收入无关；分时价差 0.50 元/kWh 也不是容量收入"
+    }
+  },
+  "asset": {
+    "name": "示例独立新型储能电站（D 级合成，不是真实项目）",
+    "power_mw": 100,
+    "energy_mwh": 200,
+    "usable_energy_mwh": 180,
+    "rte": 0.86,
+    "soc_min": 0.05,
+    "soc_max": 0.95,
+    "soc_init": 0.5,
+    "degradation_cny_per_mwh_throughput": 18,
+    "fixed_cost_cny_per_day": 20000,
+    "effective_capacity_mw": 100,
+    "solver_states": 160,
+    "grid_connection": {
+      "import_limit_mw": 100,
+      "export_limit_mw": 100
+    },
+    "grade": "D",
+    "source": "示例占位；实际项目按 PCS/BMS/变压器铭牌、实测效率与运维台账填写"
+  },
+  "policy": {
+    "profile_id": "zhejiang-spread-v1",
+    "description": "价差报价：放电报价 = 日最低充电参考价 / RTE + 退化 + 加价；充电报价 = 日最高放电参考价 × RTE − 退化 − 压价；尖峰阈值 600 元/MWh 时放电加价 60；日循环上限 1.2（对应 112 号后「一充一放」为主、留少量第二循环余量）；最小日价差 280 元/MWh",
+    "declared_quantity_quantile": 0.5,
+    "price_reference_quantile": 0.5,
+    "discharge_markup_cny_per_mwh": 20,
+    "charge_markup_cny_per_mwh": 15,
+    "spike_threshold_cny_per_mwh": 600,
+    "spike_markup_cny_per_mwh": 60,
+    "max_cycles_per_day": 1.2,
+    "min_daily_spread_cny_per_mwh": 280,
+    "grade": "D",
+    "note": "风格参数是交易员选择，不是事实；日循环上限 1.2 对应模块口径「112 号后用户侧储能从两充两放转向一充一放」（C），现货侧留少量余量；价差报价让充放两条腿共用同一个日价差，避免低价情景只充电、高价情景只放电的假象。"
+  },
+  "contracts": [],
+  "data_contract": {
+    "d1": {
+      "file": "data/d1_demo.csv",
+      "required_fields": [
+        "date",
+        "slot",
+        "start",
+        "end",
+        "price_s1",
+        "price_s2",
+        "price_s3",
+        "price_s4",
+        "price_s5"
+      ],
+      "scenario_fields": [
+        "price_s1",
+        "price_s2",
+        "price_s3",
+        "price_s4",
+        "price_s5"
+      ],
+      "scenario_weights": [0.2, 0.2, 0.2, 0.2, 0.2],
+      "release_cutoff": "D-1 09:00",
+      "note": "5 列日前情景价格等权；288 点、5 分钟一点（模块 §4.2：5 分钟滚动出清，C 级；§9.1：按 5 分钟价格建模），必须保持同一交易日；不做 96 点降采样。"
+    },
+    "t1": {
+      "file": "data/t1_demo.csv",
+      "required_fields": [
+        "date",
+        "slot",
+        "da_price",
+        "rt_price",
+        "actual_discharge_mw",
+        "actual_charge_mw"
+      ],
+      "note": "日前价、实时价与计量充放电量；两结算需要同时给 da_price 与 rt_price，缺一不可，且必须来自同一结算版本。"
+    }
+  }
+}

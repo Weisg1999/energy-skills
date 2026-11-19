@@ -24,7 +24,9 @@ instances/
 ├── shandong-thermal-2026-11/       # 山东煤电/热电（96 点，供热最小出力 + 增量块 + 调频备用）
 ├── gansu-wind-2027/                # 甘肃风电（96 点，现货 + 2027H1 机制电价 + 钓鱼法）
 ├── mengxi-wind-spot-2026-11/       # 蒙西风电（96 点，全电量实时结算 + 负价弃风 + CfD）
-└── shanxi-storage-2026-11/         # 山西独立储能（288 点 / 5 分钟，两结算 + 熔断压力）
+├── shanxi-storage-2026-11/         # 山西独立储能（288 点 / 5 分钟，两结算 + 熔断压力）
+├── zhejiang-storage-2026-11/       # 浙江独立储能（288 点 / 5 分钟，现货转正 + 授权差价合约 + 午间负价压力）
+└── mengxi-windsolar-storage-2026-11/  # 蒙西风光储联合（288 点 / 5 分钟，联合申报 + 禁放 + 循环上限）
 ```
 
 每个实例目录结构一致：`instance.json`（唯一配置入口）、`run.py`（配置校验 → 申报 → 差异桥 → 复盘）、`make_demo.py`（D 级合成数据）、`README.md`、`pitfalls.md`、`data/`、`out/demo/`。
@@ -37,6 +39,8 @@ instances/
 | `gansu-wind-2027` | 集中式风电场 | 96 点 / 15 分钟 | 风功率情景报量、机制电价双向差价、钓鱼法 D 级考核 |
 | `mengxi-wind-spot-2026-11` | 集中式风电（增量、无机制） | 96 点 / 15 分钟 | 全电量单轨实时结算、风/价配对情景、负价弃风与 CfD、偏差考核 D 级 |
 | `shanxi-storage-2026-11` | 独立新型储能 | 288 点 / 5 分钟 | 价差报价、日前 + 实时两结算、熔断窗口压力测试 |
+| `zhejiang-storage-2026-11` | 独立新型储能 | 288 点 / 5 分钟 | 现货 2025-08-07 转正式（463 天试运行后）、授权差价合约约 90% 电量、午间负价压力测试；限价 −200–1,200 元/MWh 为年报/征求意见稿口径（B/C） |
+| `mengxi-windsolar-storage-2026-11` | 风光储联合主体 | 288 点 / 5 分钟 | 风光联合申报、午间深负价 + 禁放（富裕程度 <0 为 C 级征求意见稿的 D 级代理）、循环 1.5 次/日拉格朗日上限、联合 vs 分开加成对比、5 桶差异桥 |
 
 ## 3. `instance.json` 六个块
 
@@ -186,6 +190,9 @@ python skills/spot-bidding-quant/instances/shandong-thermal-2026-11/run.py --dem
 
 # 蒙西风电 96 点实例（全电量实时结算 + 负价弃风 + CfD）
 python skills/spot-bidding-quant/instances/mengxi-wind-spot-2026-11/run.py --demo
+
+# 蒙西风光储联合 288 点实例（联合申报 + 禁放 + 循环上限）
+python skills/spot-bidding-quant/instances/mengxi-windsolar-storage-2026-11/run.py --demo
 ```
 
 产物（默认 `out/<run>/`）：`bid_sheet.csv`（申报表，96 点或 288 点随实例）、`summary.json`（配置、情景、评估摘要）、`bridge.json` / `bridge.csv`（T+1 差异桥）、`review.md`（复核表）。

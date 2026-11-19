@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>合成案例复盘库：十个交易台决策复盘 | energy-skills 知识库</title>
+<meta name="description" content="十个 D 级合成案例复盘：负电价、尖峰缺电、偏差考核、结算争议、极端天气、政策切换、批零倒挂、储能 SOC 用尽、VPP 基线争议、对手违约；每个案例按设定—时间线—决策点—错误做法—正确做法—可复用清单组织，用于训练判断与复盘对照。">
+<link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
+<script>
+(function(){try{var t=localStorage.getItem('es-theme');if(!/^(light|cream|green|dark)$/.test(t||'')){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/knowledge.css">
+<link rel="stylesheet" href="../assets/theme-menu.css">
+<link rel="stylesheet" href="../assets/changelog.css">
+</head>
+<body data-cat="cross" id="top">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
+  <div class="crumb">
+    <span class="crumb-cat">05 · CROSS</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">合成案例复盘库：十个交易台决策复盘</span>
+  </div>
+  <div class="topbar-act">
+    <div class="theme-picker" data-theme-picker>
+      <button class="theme-toggle" type="button" data-theme-menu aria-label="选择主题" title="选择主题">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="5"/><circle cx="15" cy="9" r="5"/><circle cx="12" cy="15" r="5"/></svg>
+      </button>
+    </div>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../合成案例复盘库-2026-11.md">.md 源文件<small>knowledge/合成案例复盘库-2026-11.md</small></a>
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">05 · CROSS</div>
+    <h2 class="nav-cat"><a href="../index.html#cross">横向专题</a></h2>
+    <ul class="nav-list">
+              <li><a href="海外并网与合规-2026-11.html">海外并网与合规手册（2026 版）：从 grid code 到电池护照</a></li>
+              <li><a href="容量机制横向对照-2026-11.html">容量机制横向对照（2026 版）：年金、拍卖、双向 CfD 与战略储备</a></li>
+              <li><a href="辅助服务与平衡市场对照-2026-11.html">辅助服务与平衡市场对照（2026 版）：从 FCR 到 FCAS，从 BM 到 EPRX</a></li>
+              <li><a href="储能收益建模与数据源-2026-11.html">储能收益建模与数据源（2026 版）：从 5 分钟价格到 15 年现金流</a></li>
+              <li><a href="跨国PPA与绿证-2026-11.html">跨国 PPA、绿证与 tolling（2026 版）：从 GO 到 merchant tail</a></li>
+              <li><a href="海外市场同口径快照与投决日历-2026-11.html">海外市场同口径快照与投决日历（2026 版）：十一市场、七列口径、五张工单</a></li>
+              <li><a href="气象与电力交易-2026-11.html">气象与电力交易（2026 版）：数据源、四条转换链与天气风险</a></li>
+              <li><a href="燃料与电力交易-2026-11.html">燃料与电力交易（2026 版）：一次能源、边际成本与报价</a></li>
+              <li class="on" aria-current="page"><a href="合成案例复盘库-2026-11.html">合成案例复盘库：十个交易台决策复盘</a></li>
+              <li><a href="合同与条款库-2026-11.html">合同与条款库：五类合同的条款矩阵与谈判红线</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#province"><b>03</b>中国省级市场</a></li>
+              <li><a href="../index.html#intl"><b>04</b>海外市场</a></li>
+              <li><a href="../index.html#price"><b>06</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>07</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>08</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>11</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">05 · CROSS<i>知识模块</i></div>
+      <h1 class="doc-title">合成案例复盘库：十个交易台决策复盘（2026-11）</h1>
+      <p class="lede">十个 D 级合成案例复盘：负电价、尖峰缺电、偏差考核、结算争议、极端天气、政策切换、批零倒挂、储能 SOC 用尽、VPP 基线争议、对手违约；每个案例按设定—时间线—决策点—错误做法—正确做法—可复用清单组织，用于训练判断与复盘对照。</p>
+      <p class="hook">2026-11 · 案例与复盘</p>
+      <div class="tags"><span class="tag">案例复盘</span><span class="tag">合成算例</span><span class="tag">决策点</span><span class="tag">复盘清单</span></div>
+      <div class="doc-meta"><span>约 10.5k 字</span><span>阅读约 20 分钟</span><span>13 节</span><span>数据截止 2026-11-12</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（13）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv2"><a href="#s5">1. 案例 1：负电价日——光伏聚合商满发申报</a></li>
+            <li class="lv2"><a href="#s6">2. 案例 2：尖峰缺电日——煤电平价卖空、尖峰无货</a></li>
+            <li class="lv2"><a href="#s7">3. 案例 3：偏差考核——售电公司月度偏差超阈</a></li>
+            <li class="lv2"><a href="#s8">4. 案例 4：结算争议——只对总额、错过异议时限</a></li>
+            <li class="lv2"><a href="#s9">5. 案例 5：极端天气——台风路径突变、免考材料缺失</a></li>
+            <li class="lv2"><a href="#s10">6. 案例 6：政策切换——换版年沿用旧模板</a></li>
+            <li class="lv2"><a href="#s11">7. 案例 7：批零倒挂——零售套餐没有联动与止损</a></li>
+            <li class="lv2"><a href="#s12">8. 案例 8：储能 SOC 用尽——见价就放、尾峰无货</a></li>
+            <li class="lv2"><a href="#s13">9. 案例 9：VPP 基线争议——理论能力当申报值</a></li>
+            <li class="lv2"><a href="#s14">10. 案例 10：对手违约——集中度过高、担保不盯</a></li>
+            <li class="lv2"><a href="#s15">11. 案例库使用与维护</a></li>
+            <li class="lv2"><a href="#s16">12. 速查：十个案例 → 一张防漏表</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>数据截止：2026-11-12｜定位：知识库模块（训练素材，不构成操作建议或投资建议）</p><p>合成声明：<strong>十个案例全部为 D 级合成</strong>——市场环境、公司、人物、数字与情节均为虚构拼装，不指向任何真实主体或真实交易；机制背景取自知识库对应模块，案例内价格、电量、比例仅作教学示意，不构成任何省的规则参数。</p><p>用途：给交易台做复盘对照与新员训练：先自己回答&quot;在决策点你会怎么做&quot;，再对照错误做法与可复用清单。流程执行层见《交易台日课与异常处置 SOP》；规则与结算科目见《电力市场风险、信用与结算》。</p></aside>
+<hr>
+<h2 id="s1">0. 一页看懂</h2>
+<h3 id="s2">0.1 怎么用案例训练</h3>
+<ol><li><strong>先遮住答案</strong>：只读&quot;设定 + 时间线 + 决策点&quot;，独立写下你会怎么做；</li><li><strong>对照决策点</strong>：比较你的选择与案例主人公的选择，重点看&quot;当时有哪些信息、缺哪些信息&quot;；</li><li><strong>读错误做法</strong>：逐条问自己&quot;我们台里有没有这个动作或习惯&quot;；</li><li><strong>导出检查单</strong>：把可复用清单合并进台内日课（见《交易台日课与异常处置 SOP》），或触发线，或合同条款（见《合同与条款库》）；</li><li><strong>复盘复用</strong>：真实事件发生后，回到结构最像的案例，逐项对照差异。</li></ol>
+<p>案例训练的价值在<strong>决策点</strong>不在结局：结局由行情决定，决策点暴露的是流程与判断习惯。</p>
+<h3 id="s3">0.2 十个案例一览</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>#</th><th>主题</th><th>当事角色</th><th>核心错误</th><th>主关联模块</th></tr></thead><tbody><tr><td>1</td><td>负电价日</td><td>光伏聚合商</td><td>满发申报、无负价预案</td><td>m-quant-risk</td></tr><tr><td>2</td><td>尖峰缺电日</td><td>煤电交易员</td><td>平价卖空、无备用容量</td><td>m-quant-risk</td></tr><tr><td>3</td><td>偏差考核</td><td>售电公司</td><td>均值预测、无分时形状</td><td>m-risk-credit</td></tr><tr><td>4</td><td>结算争议</td><td>售电公司</td><td>只对总额、错过异议时限</td><td>m-risk-credit</td></tr><tr><td>5</td><td>极端天气</td><td>风电交易台</td><td>无天气情景、免考材料缺失</td><td>m-quant-risk</td></tr><tr><td>6</td><td>政策切换</td><td>交易台台长</td><td>草案当正式、无换版日历</td><td>m-quant-risk</td></tr><tr><td>7</td><td>批零倒挂</td><td>零售商</td><td>套餐无联动、无止损线</td><td>m-risk-credit</td></tr><tr><td>8</td><td>储能 SOC 用尽</td><td>独立储能</td><td>见价就放、无 SOC 保留线</td><td>m-storage-invest</td></tr><tr><td>9</td><td>VPP 基线争议</td><td>负荷聚合商</td><td>理论能力当申报值</td><td>m-vpp-core</td></tr><tr><td>10</td><td>对手违约</td><td>售电公司</td><td>对手集中、担保不盯</td><td>m-risk-credit</td></tr></tbody></table></div>
+<h3 id="s4">0.3 五条判断</h3>
+<ol><li><strong>多数事故不是算错，而是流程缺位</strong>：十个案例里没有一个是&quot;模型精度不够&quot;单因造成的，都有检查单、触发线或合同条款的缺位。</li><li><strong>决策点的信息永远不完备</strong>：训练目标是&quot;在信息不完备时做出可辩护的选择并留痕&quot;，不是&quot;事后看起来全对&quot;。</li><li><strong>损失通常可以切断在第一步</strong>：断→判→行→报的顺序（SOP §4.2）在案例 5、8、10 里反复出现——先止损路径，再分析。</li><li><strong>合同条款是事前的风控</strong>：案例 4、6、7、10 的损失大小，在签约时就已经大半确定。</li><li><strong>复盘要把差异归到环节</strong>：预测 / 报价 / 执行 / 规则 / 合同，归因不到环节的复盘等于没复盘。</li></ol>
+<hr>
+<h2 id="s5">1. 案例 1：负电价日——光伏聚合商满发申报</h2>
+<p><strong>D 级合成设定</strong>：某省级现货市场，五一假期低负荷日叠加光伏大发；一家聚合分布式光伏的运营商持有〔200〕MW 等效容量，报量不报价（价格接受者），叠加机制电价差价结算。</p>
+<p><strong>时间线</strong></p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>时间</th><th>事件</th></tr></thead><tbody><tr><td>D-2</td><td>气象预报显示假期晴天、气温偏凉，负荷预期偏低；台内无人调阅负价历史分布</td></tr><tr><td>D-1 上午</td><td>预测显示午间光伏出力高峰；按 P50 满发申报，未设负价时段动作</td></tr><tr><td>D-1 出清</td><td>午间 11:00–14:00 出清价深度为负（示意：−80 元/MWh）</td></tr><tr><td>D 日</td><td>光伏按申报满发；负价时段照常发电</td></tr><tr><td>T+1 结算</td><td>午间段电能量收益为大额负值；叠加机制差价后仍为净亏损</td></tr></tbody></table></div>
+<p><strong>决策点</strong></p>
+<ol><li>D-1 看到晴天+低负荷组合时，是否查本省负价时段历史并预判？——没有查；</li><li>是否评估&quot;负价时段减出力/停机&quot;的账（少发的机制差价损失 vs 免掉的负电价支出）？——没有算；</li><li>是否把负价时段单独设申报/执行预案并留触发线？——没有设。</li></ol>
+<p><strong>错误做法</strong></p>
+<ul><li>把&quot;报量不报价&quot;理解成&quot;什么都不用做&quot;，默认价格接受者没有盘中动作空间；</li><li>满发申报没有按价格区间分段考虑（负价时段照常满发）；</li><li>没有把&quot;负价小时数&quot;作为例行盘前简报风险源（模板 A 第 1 栏）；</li><li>事后把亏损归因于&quot;行情极端&quot;，没有归因到&quot;没有预案&quot;这一环节。</li></ul>
+<p><strong>正确做法</strong></p>
+<ul><li>盘前简报固定看负价风险：节假日 + 大发 + 低负荷三者叠加即列入今日风险源；</li><li><strong>事前算清停机账</strong>：负价时段每少发 1 MWh，省下的负价支出与损失的机制差价、辅助服务分摊比较，得到本省的&quot;负价动作门槛&quot;（D 级示例：出清价低于〔−X〕元/MWh 时减出力）；</li><li>在执行层设触发线：出清价低于门槛 → 降出力至〔Y〕%，动作写入异常处置预案；</li><li>若合同允许，优先通过调整申报曲线表达负价时段意愿，而不是事后承受。</li></ul>
+<p><strong>可复用清单</strong></p>
+<ul><li>[ ] 盘前简报含&quot;负价风险&quot;栏（节假日/大发/低负荷三信号）；</li><li>[ ] 台内存有本省负价时段历史分布与&quot;负价动作门槛&quot;测算；</li><li>[ ] 负价时段有单独预案与触发线，且演练过；</li><li>[ ] 机制差价、辅助服务分摊与负价支出进入同一张账比较；</li><li>[ ] 复盘时负价时段单独归因，不与全天混算。</li></ul>
+<p><strong>关联</strong>：《量化报价与交易风控》（价格接受者的动作空间）、《气象与电力交易》（大发与负荷的天气驱动）。</p>
+<hr>
+<h2 id="s6">2. 案例 2：尖峰缺电日——煤电平价卖空、尖峰无货</h2>
+<p><strong>D 级合成设定</strong>：某省夏季晚峰，温控负荷激增叠加两台机组非停；一台 600 MW 煤电的交易员在日前市场按均价预期卖空全部可用容量，另在日内以低价签出部分电量。</p>
+<p><strong>时间线</strong></p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>时间</th><th>事件</th></tr></thead><tbody><tr><td>D-1</td><td>日前价预期温和；交易员按均价预期申报满发并中标，另与相邻主体签日内低价合同〔100〕MWh</td></tr><tr><td>D 日白天</td><td>系统供需趋紧的信号（联络线受限、检修公告）未引起注意</td></tr><tr><td>D 日晚峰</td><td>两台机组非停 + 空调负荷新高，实时价冲顶（示意：1,200 元/MWh）</td></tr><tr><td>晚峰时段</td><td>本机组容量已被日前与日内合同占满，只能按合同价交付，无法在实时市场兑现高价</td></tr><tr><td>T+1</td><td>复盘发现：全天加权售电均价显著低于当日晚峰出清价，机会成本大额为正</td></tr></tbody></table></div>
+<p><strong>决策点</strong></p>
+<ol><li>D-1 是否为晚峰保留一定比例的&quot;自留容量&quot;（不提前卖死）？——没有留；</li><li>白天看到趋紧信号时，是否回购日内合同或调整执行？——没有动作；</li><li>检修与非停公告是否进入盘前简报的对手侧信息？——没有进入。</li></ol>
+<p><strong>错误做法</strong></p>
+<ul><li>把&quot;卖空全部容量&quot;当成稳健策略，没有区分&quot;基荷部分可锁&quot;与&quot;峰段部分应留弹性&quot;；</li><li>日内低价合同没有设价格联动或回购条款；</li><li>对手侧信息（全网检修、非停、联络线受限）不在信息面清单里；</li><li>复盘只看&quot;赚了多少&quot;，没有算&quot;当日晚峰的机会成本&quot;。</li></ul>
+<p><strong>正确做法</strong></p>
+<ul><li>申报结构按时段分层：基荷段锁价、峰段留出可调整比例（D 级示例：晚峰留〔20〕% 容量不提前锁死）；</li><li>日内合同加回购/联动条款，或在合同库中标注该条款为红线（见《合同与条款库》§2）；</li><li>信息面七类（SOP §2.1）加入&quot;对手侧检修与非停&quot;，简报会通报；</li><li>复盘表增加&quot;机会成本&quot;科目：当月各尖峰时段的机会成本与锁价收益并列展示。</li></ul>
+<p><strong>可复用清单</strong></p>
+<ul><li>[ ] 申报按峰谷分层，峰段保留可调比例；</li><li>[ ] 日内/短期合同有联动或回购条款；</li><li>[ ] 对手侧检修、非停、联络线受限进入盘前简报；</li><li>[ ] 复盘含尖峰时段机会成本科目；</li><li>[ ] 极端趋紧情景有压力测试与对应的执行预案。</li></ul>
+<p><strong>关联</strong>：《量化报价与交易风控》（合约覆盖与情景）、《省间与跨区交易》（联络线受限的跨区传导）。</p>
+<hr>
+<h2 id="s7">3. 案例 3：偏差考核——售电公司月度偏差超阈</h2>
+<p><strong>D 级合成设定</strong>：某省对零售用户组合实行偏差考核（阈值、算法按该省现行规则）；一家售电公司代理〔40〕家工商业用户，月度申报电量与实际用电偏差超出考核区间。</p>
+<p><strong>时间线</strong></p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>时间</th><th>事件</th></tr></thead><tbody><tr><td>月初</td><td>用上月各户实际用电的算术平均做本月预测，未做分时形状</td></tr><tr><td>月中</td><td>两家大户调整排产（示意：合计减〔15〕%），公司未及时调整申报</td></tr><tr><td>月下旬</td><td>发现累计偏差逼近阈值，临时在二级市场高价补量</td></tr><tr><td>月末结算</td><td>补量成本 + 偏差考核费用显著侵蚀毛利；分时形状错配另产生偏差结构问题</td></tr></tbody></table></div>
+<p><strong>决策点</strong></p>
+<ol><li>预测方法是否区分&quot;总量&quot;与&quot;分时形状&quot;、是否纳入大户排产计划？——都没有；</li><li>月中得知大户减产时，是否立即调整申报并评估补量路径？——拖延到下旬；</li><li>是否事先与大户约定&quot;排产变化提前〔N〕日通知&quot;的合同条款？——没有约定。</li></ol>
+<p><strong>错误做法</strong></p>
+<ul><li>用&quot;上月均值&quot;当预测，忽略负荷形状与用户结构变化；</li><li>大户排产信息没有纳入信息面（它比价格预测更可控）；</li><li>补量拖到下旬，被动接受高价；没有月中滚动偏差监控；</li><li>偏差考核参数（阈值、算法、方向）没有在台内口径表里登记。</li></ul>
+<p><strong>正确做法</strong></p>
+<ul><li>预测分两层：总量 + 96 点形状；大户用户单独建模并纳入其排产计划；</li><li>与大户合同约定排产变化提前通知义务与偏差责任分担（合同库 §4 红线）；</li><li>月内滚动监控&quot;累计偏差/阈值&quot;使用率，超过〔50〕% 即启动预案（补量/调申报/通知用户错峰）；</li><li>复盘时把偏差拆成&quot;预测偏差&quot;与&quot;行为偏差&quot;（用户实际用电偏离告知计划）分别归因。</li></ul>
+<p><strong>可复用清单</strong></p>
+<ul><li>[ ] 每户有总量+形状两层预测，大户含排产信息；</li><li>[ ] 大户合同含排产变化通知条款；</li><li>[ ] 月内偏差使用率有滚动监控与预案触发点；</li><li>[ ] 偏差考核参数（本省口径）在台内口径表登记并随规则更新；</li><li>[ ] 复盘区分预测偏差与行为偏差。</li></ul>
+<p><strong>关联</strong>：《电力市场风险、信用与结算》（偏差考核口径）、《售电零售与风险》技能（客户组合管理）。</p>
+<hr>
+<h2 id="s8">4. 案例 4：结算争议——只对总额、错过异议时限</h2>
+<p><strong>D 级合成设定</strong>：某售电公司月度结算单与自算结果差约 0.5%（示意：〔18〕万元）；公司按总额对账，未做科目拆解，口头向交易机构反映，未走正式异议流程。</p>
+<p><strong>时间线</strong></p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>时间</th><th>事件</th></tr></thead><tbody><tr><td>D+1</td><td>结算数据可得；财务按总额核对&quot;大概一致&quot;，未出科目级差异桥</td></tr><tr><td>D+5</td><td>结算单正式下发，财务发现总额差 0.5%，微信口头询问客户经理</td></tr><tr><td>D+15</td><td>口头答复&quot;系统口径问题&quot;；公司未立案、未提交书面异议</td></tr><tr><td>异议期届满</td><td>按《电力市场风险、信用与结算》的异议时限流程，逾期差异被视为确认</td></tr><tr><td>季度复盘</td><td>重出科目级差异桥：差异集中在偏差费用一个科目（申报量口径错位），早可立案</td></tr></tbody></table></div>
+<p><strong>决策点</strong></p>
+<ol><li>D+1 是否出科目级差异桥？——没有，只对总额；</li><li>发现差异后是否走书面异议并附证据链？——只口头沟通；</li><li>申报回执、出清结果、结算单是否按同一 ID 归档可对齐？——回执散落在邮箱。</li></ol>
+<p><strong>错误做法</strong></p>
+<ul><li>只对总额不对科目，差异被&quot;平均&quot;掩盖；</li><li>口头沟通不留痕，没有时间戳与书面记录；</li><li>不知道/不跟踪异议时限，把&quot;在问了&quot;当成&quot;已主张权利&quot;；</li><li>三单（申报回执、出清结果、结算单）没有对齐机制。</li></ul>
+<p><strong>正确做法</strong></p>
+<ul><li>结算初核固定出科目级差异桥（七科目分桶，方法见《现货报价量化专家》§13.3），任一科目超阈值当日立案；</li><li>异议一律书面提交并留存受理凭证；台账记录&quot;提交日、受理日、答复期限&quot;；</li><li>三张模板（简报/复核单/事件单）与回执按批次号当日归档对齐（SOP §3.3、§8），这是争议证据链的底座；</li><li>与交易机构的沟通双轨：技术支持渠道问原因，异议流程保权利。</li></ul>
+<p><strong>可复用清单</strong></p>
+<ul><li>[ ] 结算初核出科目级差异桥，阈值触发立案；</li><li>[ ] 异议时限在台内日历登记，逾期即失去追调权利；</li><li>[ ] 三单按批次 ID 归档对齐；</li><li>[ ] 对外沟通全部书面留痕；</li><li>[ ] 争议包结构固定：差异科目 + 证据编号 + 时间线 + 诉求。</li></ul>
+<p><strong>关联</strong>：《电力市场风险、信用与结算》（5/8/10 时限与异议流程）、《现货报价量化专家》§13.3（差异桥与争议包）。</p>
+<hr>
+<h2 id="s9">5. 案例 5：极端天气——台风路径突变、免考材料缺失</h2>
+<p><strong>D 级合成设定</strong>：沿海某省风电场（〔300〕MW），台风季一次路径突变导致出力骤降与送出线路跳闸；交易台既没有天气情景预案，也没有按规则提交免考/减考材料。</p>
+<p><strong>时间线</strong></p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>时间</th><th>事件</th></tr></thead><tbody><tr><td>D-2</td><td>台风生成，路径预测分歧大；台内按&quot;影响不大&quot;处理，未做情景集</td></tr><tr><td>D-1</td><td>预测仍按正常风资源申报</td></tr><tr><td>D 日</td><td>路径西折，出力骤降（示意：预测 P50 与实际的 MAE 达〔38〕%），送出线路跳闸停机〔6〕小时</td></tr><tr><td>D 日盘中</td><td>执行层无预案，未及时调整；通信短时中断，无降级申报通道</td></tr><tr><td>T+1</td><td>偏差与考核费用落地；免考/减考材料因未在规定渠道与时限内提交，未被采纳</td></tr></tbody></table></div>
+<p><strong>决策点</strong></p>
+<ol><li>D-2 是否启动极端天气情景集并调整申报？——按&quot;影响不大&quot;忽略；</li><li>线路跳闸后是否按涉网事件流程处置并同步留存证据？——只做了抢修，未同步交易侧；</li><li>免考申请所需的调度指令、事件记录、出力曲线证据是否事前知道清单？——不知道。</li></ol>
+<p><strong>错误做法</strong></p>
+<ul><li>天气预警没有分级响应（多大预警触发什么动作，无对照表）；</li><li>情景集只做了一个&quot;中位&quot;情景，没有下行情景；</li><li>安全处置与交易处置脱节：抢修信息没有同步给申报/考核岗位；</li><li>免考材料的证据清单与提交时限事前不清楚。</li></ul>
+<p><strong>正确做法</strong></p>
+<ul><li><strong>天气预警分级表</strong>：预警等级 → 预测修正幅度 → 申报调整 → 备用通道启用，四列写死并演练（气象驱动见《气象与电力交易》）；</li><li>情景集至少含一个下行情景（P10），申报与之对齐；</li><li>涉网事件双线同步：调度/运维线处置，交易线同步记录事件时间线并按规则提交免考材料；</li><li>事前整理免考证据清单（调度指令、故障录波、出力曲线、通信记录）与提交渠道、时限。</li></ul>
+<p><strong>可复用清单</strong></p>
+<ul><li>[ ] 天气预警分级响应表已建立并演练；</li><li>[ ] 极端天气情景集含下行情景；</li><li>[ ] 涉网事件交易线同步留痕；</li><li>[ ] 免考证据清单与提交时限在台内口径表；</li><li>[ ] 通信中断有降级申报通道。</li></ul>
+<p><strong>关联</strong>：《气象与电力交易》（极端天气保供与误差考核）、《并网运行考核与两个细则》（免考情形）。</p>
+<hr>
+<h2 id="s10">6. 案例 6：政策切换——换版年沿用旧模板</h2>
+<p><strong>D 级合成设定</strong>：某省中长期规则换版并叠加机制电价竞价切换；一家发电企业的交易台未跟踪换版节奏，沿用旧申报模板与旧参数。</p>
+<p><strong>时间线</strong></p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>时间</th><th>事件</th></tr></thead><tbody><tr><td>T-3 月</td><td>新规则发布征求意见稿；台内&quot;等正式稿再说&quot;，未启动对照</td></tr><tr><td>T-1 月</td><td>正式稿印发，设施行日；台内无人登记施行日与字段变化</td></tr><tr><td>施行日</td><td>申报模板字段变化（新增分时字段）、限价参数更新；台内沿用旧模板申报</td></tr><tr><td>施行周</td><td>两次申报因格式与参数不符被退回；一次竞价窗口因按旧时限错过</td></tr><tr><td>复盘</td><td>换版日历、参数表、模板对照三件事都没有人负责</td></tr></tbody></table></div>
+<p><strong>决策点</strong></p>
+<ol><li>征求意见稿阶段是否先做&quot;差异预对照&quot;（哪些字段/参数可能变）？——没有；</li><li>正式稿到施行日之间是否排换版日历与演练？——没有；</li><li>谁是换版负责人？——没有指定。</li></ol>
+<p><strong>错误做法</strong></p>
+<ul><li>把&quot;等正式稿&quot;理解成&quot;什么都不做&quot;，正式稿印发到施行的窗口被浪费；</li><li>规则文本没有版本管理，参数表（限价、时限、字段）没有随版本更新；</li><li>竞价窗口、退改窗口等时间锚点没有集中日历；</li><li>合同与内部制度没有&quot;政策变动&quot;应对条款（如参数更新的生效顺序）。</li></ul>
+<p><strong>正确做法</strong></p>
+<ul><li>规则版本是一等公民：文号、发布日、施行日、适用范围四要素登记；草案与正式稿分开存放（草案不得当现行）；</li><li>每次换版做三件套：参数对照表（旧→新）、申报模板 diff、时间锚点日历；</li><li>换版负责人单一指定，施行前用新模板做一次空跑演练；</li><li>对外合同中涉及规则参数的引用改为&quot;按现行规则动态引用&quot;，避免写死旧值。</li></ul>
+<p><strong>可复用清单</strong></p>
+<ul><li>[ ] 规则版本台账（文号/发布日/施行日/范围）在维护；</li><li>[ ] 换版三件套（参数对照、模板 diff、日历）成为标准动作；</li><li>[ ] 换版负责人已指定；</li><li>[ ] 施行前完成一次空跑演练；</li><li>[ ] 合同中规则参数引用方式为动态引用。</li></ul>
+<p><strong>关联</strong>：《量化报价与交易风控》（规则版本管理）、《省级政策列表》与各省模块（文号与施行日）。</p>
+<hr>
+<h2 id="s11">7. 案例 7：批零倒挂——零售套餐没有联动与止损</h2>
+<p><strong>D 级合成设定</strong>：某售电公司以&quot;一口价&quot;年度套餐签下〔2,000〕户中小用户；次年季度现货均价持续高于套餐折价，批零价差倒挂，毛利转负。</p>
+<p><strong>时间线</strong></p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>时间</th><th>事件</th></tr></thead><tbody><tr><td>签约期</td><td>一口价套餐定价参考上年均价，无现货联动条款；公司内部压力测试只做了 ±10% 价格情景</td></tr><tr><td>Q1</td><td>现货价温和上行，毛利收窄；公司按&quot;季节性波动&quot;处理</td></tr><tr><td>Q2</td><td>现货均价持续高于套餐折价，倒挂扩大；无止损线、无转售/调价机制</td></tr><tr><td>Q3</td><td>现金流承压，个别用户提出提前解约；解约条款含糊，争议成本上升</td></tr><tr><td>年末</td><td>全年毛利为负；复盘发现压力测试的下行情景方向错了（只测了价跌，没测价涨）</td></tr></tbody></table></div>
+<p><strong>决策点</strong></p>
+<ol><li>套餐定价是否含价格联动/调价机制？——没有；</li><li>是否设&quot;毛利为负即触发动作&quot;的止损线？——没有；</li><li>用户结构是否与现货价格形态匹配（高负荷用户占比过高放大倒挂）？——没有评估。</li></ol>
+<p><strong>错误做法</strong></p>
+<ul><li>压力测试只测了对己有利的方向（价跌），没测价涨；</li><li>一口价套餐把全部价格风险留在售电侧，且无任何再定价机制；</li><li>没有止损线：亏损扩大时没有&quot;停止新增签约/启动调价谈判&quot;的预设动作；</li><li>解约与转售条款含糊，用户流失时无合同抓手。</li></ul>
+<p><strong>正确做法</strong></p>
+<ul><li>套餐结构分层：部分固定价 + 部分联动（联动比例、参考价、封顶在下文合同库 §4 展开）；</li><li>压力测试双向：价涨情景（倒挂）与价跌情景（客户流失）都要做，并给出对应动作；</li><li>止损三件套：毛利警戒线、动作清单（停新签/调价谈判/对冲/回购）、触发权限；</li><li>合同预埋解约与转售条款、价格调整通知机制（合同库 §4）；</li><li>用户组合按负荷形态分层定价，高波动用户配联动套餐。</li></ul>
+<p><strong>可复用清单</strong></p>
+<ul><li>[ ] 压力测试双向（价涨/价跌）且有对应动作；</li><li>[ ] 套餐含联动或调价机制；</li><li>[ ] 止损线与动作清单事先写死；</li><li>[ ] 解约、转售、调价通知条款在签约时预埋；</li><li>[ ] 用户组合按负荷形态分层。</li></ul>
+<p><strong>关联</strong>：《电力市场风险、信用与结算》（零售风险与退出）、《售电零售与风险》技能（套餐定价）。</p>
+<hr>
+<h2 id="s12">8. 案例 8：储能 SOC 用尽——见价就放、尾峰无货</h2>
+<p><strong>D 级合成设定</strong>：独立储能电站（〔100〕MW/〔200〕MWh，可用〔180〕MWh）参与现货套利；某日午间低价充满后，全天按&quot;见价就放&quot;执行，晚峰（真实高价段）SOC 已空。</p>
+<p><strong>时间线</strong></p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>时间</th><th>事件</th></tr></thead><tbody><tr><td>午间</td><td>光伏大发低价段充满；运行策略按&quot;价差够即放&quot;无保留</td></tr><tr><td>午后</td><td>出现次高价段（示意：500 元/MWh），放掉〔60〕% 电量</td></tr><tr><td>傍晚</td><td>晚峰真实高价段到来（示意：900 元/MWh），SOC 仅剩〔18〕%</td></tr><tr><td>晚峰时段</td><td>可放电量远小于申报，偏差进实时结算；且失去调频预留</td></tr><tr><td>T+1 复盘</td><td>全天价差收益低于&quot;保留至晚峰&quot;的对照策略；退化成本未进放行门槛</td></tr></tbody></table></div>
+<p><strong>决策点</strong></p>
+<ol><li>执行策略是否设 SOC 保留线（为晚峰保留最低电量）？——没有；</li><li>放行门槛是否计入退化成本（而不是只看即时价差）？——没有；</li><li>次高价段是否评估&quot;后面的峰更高&quot;的概率（价格形状预判）？——没有。</li></ol>
+<p><strong>错误做法</strong></p>
+<ul><li>把&quot;价差够&quot;当唯一放行条件，忽略形状预判与保留策略；</li><li>退化成本不进放行门槛，导致高频次浅放循环，收益被退化吃掉；</li><li>充放计划与申报曲线脱节，偏差全部进结算；</li><li>调频预留被套利挤占，没有容量分区（可交易/预留/备用）。</li></ul>
+<p><strong>正确做法</strong></p>
+<ul><li>按 96 点价格形状做全天计划：低价段充电 + 保留线（晚峰最低 SOC）+ 高价段集中放电；</li><li>放行门槛 = 即时价差 − 退化成本 − 运维分摊；门槛不足不放（公式与参数见《储能投资与运营》）；</li><li>容量分区：套利 / 调频预留 / 备用三区，分区间的占用与释放有台账；</li><li>申报曲线与执行计划同源，执行偏离申报触发盘中预警（SOP 触发线）。</li></ul>
+<p><strong>可复用清单</strong></p>
+<ul><li>[ ] 全天按形状做计划，晚峰设 SOC 保留线；</li><li>[ ] 放行门槛含退化成本；</li><li>[ ] 容量分区（套利/调频/备用）与占用台账；</li><li>[ ] 申报与执行同源，偏离有预警；</li><li>[ ] 复盘对照&quot;保留策略&quot;的机会收益。</li></ul>
+<p><strong>关联</strong>：《储能投资与运营》（退化与门槛）、《储能 EMS 优化调度》（SOC 约束与多市场堆叠）。</p>
+<hr>
+<h2 id="s13">9. 案例 9：VPP 基线争议——理论能力当申报值</h2>
+<p><strong>D 级合成设定</strong>：负荷聚合商聚合〔30〕家工商业用户参与需求响应快速响应事件；以&quot;理论可调能力&quot;申报，事件实际响应不足，认定失败并进入争议。</p>
+<p><strong>时间线</strong></p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>时间</th><th>事件</th></tr></thead><tbody><tr><td>事前</td><td>台账可调能力 = 各户设备铭牌容量之和 ×〔1.0〕同时率，未实测、未剔除异常日基线</td></tr><tr><td>邀约</td><td>按理论能力〔12〕MW 申报（无预测试）</td></tr><tr><td>事件时段</td><td>部分用户正值生产班次无法响应；基线（5+3 日剔除规则口径）高于预期，核定响应〔6.8〕MW</td></tr><tr><td>认定</td><td>响应率低于认定门槛，激励打折并触发考核</td></tr><tr><td>争议</td><td>聚合商主张&quot;用户客观原因&quot;，但无事前排产沟通与替代资源调度记录</td></tr></tbody></table></div>
+<p><strong>决策点</strong></p>
+<ol><li>申报值是理论能力还是&quot;可验证能力&quot;（实测 × 同时率 × 可用率）？——理论值；</li><li>事件前是否做预测试（小范围真实调用）？——没有；</li><li>是否与用户约定&quot;事件时段的生产豁免与替代资源&quot;？——没有约定。</li></ol>
+<p><strong>错误做法</strong></p>
+<ul><li>铭牌容量直接当可调能力，没有同时率与可用率的实测折减；</li><li>基线算法口径（剔除规则、样本日）没有在台内落地复算，事前无法预估核定值；</li><li>申报与用户生产计划脱节，无豁免名单与替代资源池；</li><li>无预测试，第一次真实调用就是考核事件。</li></ul>
+<p><strong>正确做法</strong></p>
+<ul><li>能力分三层登记：铭牌 → 实测可调（预测试折算）→ 申报值（× 同时率 × 可用率），层级间折减留痕；</li><li>基线复算工具化：按本省基线口径事前算&quot;核定值预期&quot;，申报与预期对齐；</li><li>用户协议约定：事件时段生产豁免条件、提前告知义务、替代资源义务（合同库 §6）；</li><li>每季度至少一次预测试，测试结果更新能力台账；</li><li>争议证据包：邀约单、用户通知回执、基线复算、遥测曲线四件齐备。</li></ul>
+<p><strong>可复用清单</strong></p>
+<ul><li>[ ] 能力三层登记（铭牌/实测/申报）且折减留痕；</li><li>[ ] 基线按本省口径可复算、事前有预期值；</li><li>[ ] 用户协议含豁免与替代资源条款；</li><li>[ ] 季度预测试常态化；</li><li>[ ] 争议证据包四件套齐备。</li></ul>
+<p><strong>关联</strong>：《虚拟电厂：聚合、调度与商业模式》（CBL 与认定）、《需求响应、车网互动与灵活性资源》（基线与考核）。</p>
+<hr>
+<h2 id="s14">10. 案例 10：对手违约——集中度过高、担保不盯</h2>
+<p><strong>D 级合成设定</strong>：某售电公司〔65〕% 的批发电量从同一对手采购；该对手因经营恶化逾期未结算，随后进入退出程序，公司应收与保函处置仓促。</p>
+<p><strong>时间线</strong></p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>时间</th><th>事件</th></tr></thead><tbody><tr><td>T-6 月</td><td>行业传出该对手亏损扩大的媒体信息；公司未调其信用台账，继续扩大敞口</td></tr><tr><td>T-2 月</td><td>该对手按《电力市场风险、信用与结算》的信用与保函机制出现保函减额迹象；公司未察觉</td></tr><tr><td>T-0</td><td>对手逾期未结算；公司才发现无逐日盯市记录、保函覆盖率不足</td></tr><tr><td>T+1 月</td><td>对手进入退出程序；公司仓促主张担保，部分证据（对账单签收、催告函）缺失</td></tr><tr><td>复盘</td><td>集中度、盯市、证据链三个洞同时存在</td></tr></tbody></table></div>
+<p><strong>决策点</strong></p>
+<ol><li>负面信息出现时是否立即重估对手敞口并设上限？——没有；</li><li>是否按机制逐日盯市并核保函覆盖？——没有；</li><li>违约发生时是否按流程主张（催告、担保、抵销）并保全证据？——仓促且不全。</li></ol>
+<p><strong>错误做法</strong></p>
+<ul><li>对手集中度无上限，单一对手损失可放大到影响公司存续；</li><li>不盯信用等级与保函变化，风险信号全部错过；</li><li>对账、签收、催告等证据平时不留，主张权利时缺件；</li><li>把&quot;合作多年&quot;当信用，替代制度性监控。</li></ul>
+<p><strong>正确做法</strong></p>
+<ul><li>对手集中度限额（D 级示例：单一对手敞口 ≤〔30〕%），纳入限额台账与盘前简报；</li><li>按机制做逐日盯市与保函覆盖率核对；信用等级变化触发敞口复核；</li><li>违约流程预案：催告函模板、担保主张路径、抵销与诉讼备选、证据清单，事前备好；</li><li>台账纪律：结算对账单定期签收归档，催告一律书面。</li></ul>
+<p><strong>可复用清单</strong></p>
+<ul><li>[ ] 对手集中度限额在台账并与简报联动；</li><li>[ ] 逐日盯市 + 保函覆盖率核对常态化；</li><li>[ ] 违约预案（催告/担保/抵销/证据清单）事前备好；</li><li>[ ] 对账签收与催告书面化归档；</li><li>[ ] 信用等级与负面信息进入盘前信息面。</li></ul>
+<p><strong>关联</strong>：《电力市场风险、信用与结算》（信用评价、保函、违约退出）、《合同与条款库》（违约与担保条款红线）。</p>
+<hr>
+<h2 id="s15">11. 案例库使用与维护</h2>
+<ul><li><strong>案例库是训练素材</strong>：新员用案例做上岗前判断训练；老台员每季度抽 2 个案例做&quot;盲答&quot;对照；真实事件复盘时优先对照结构最像的案例。</li><li>案例不承载现行规则值：阈值、时限、算法一律指向对应模块（上表&quot;主关联模块&quot;），案例内数字仅示意。</li><li><strong>新增案例的标准</strong>：真实复盘中反复出现的错误模式，且现有案例未覆盖 → 按同一结构（设定/时间线/决策点/错误/正确/清单）增写并保持 D 级合成。</li><li><strong>与《交易台日课与异常处置 SOP》的接口</strong>：案例导出的检查单合并进 SOP §2/§3/§4 的对应清单；案例不直接改 SOP 正文，由 SOP 版本评审统一吸收。</li></ul>
+<h2 id="s16">12. 速查：十个案例 → 一张防漏表</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>环节</th><th>防什么</th><th>来自案例</th><th>落点</th></tr></thead><tbody><tr><td>盘前信息</td><td>负价/检修/预警/对手负面漏看</td><td>1、2、5、10</td><td>SOP §2.1 信息面七类</td></tr><tr><td>申报复核</td><td>卖空、满发、理论值申报</td><td>1、2、9</td><td>SOP §3.1 七查</td></tr><tr><td>合同</td><td>无联动、无豁免、无担保条款</td><td>3、7、9、10</td><td>《合同与条款库》</td></tr><tr><td>盘中执行</td><td>见价就放、无保留、无预案</td><td>5、8</td><td>SOP §4 触发线</td></tr><tr><td>结算</td><td>只对总额、错异议时限</td><td>4</td><td>SOP §5.2</td></tr><tr><td>对手与信用</td><td>集中度、盯市、证据链</td><td>10</td><td>限额台账 + 违约预案</td></tr><tr><td>复盘</td><td>归因不到环节</td><td>全部</td><td>SOP §5.1 五问</td></tr></tbody></table></div>
+    </article>
+
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>7</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="交易台日课与异常处置-SOP-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>交易台日课与异常处置 SOP</b>
+          <span>把交易台一日的五个时钟落成可执行流程：盘前简报、报价复核、盘中触发线、盘后复盘、交接班，配盘前简报、报价复核、异常事件三张模板与升级路径；本模块是流程与模板，规则值以链接模块与省级规则为准。</span>
+        </a>
+        <a class="related-card" href="量化报价与交易风控-工程化-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>量化报价与交易风控</b>
+          <span>预测→报价→申报→结算→归因的工程闭环，含风控限额、对账与 2026 规则版本管理。</span>
+        </a>
+        <a class="related-card" href="电力市场风险、信用与结算-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>电力市场风险、信用与结算（2026 版）</b>
+          <span>风险分类与分级、A/B/C/D 信用评价、履约保函与逐日盯市、偏差考核、5/8/10 结算时限、违约退出与保底售电。</span>
+        </a>
+        <a class="related-card" href="储能投资与运营-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>储能投资与运营</b>
+          <span>114/1656/411/1583 文号、容量电价时长折算、投决算例、收入堆叠、退化质保与敏感性。</span>
+        </a>
+      </div>
+      <p class="related-rest"><b>更多关联</b><a href="虚拟电厂聚合调度与商业模式-2026-11.html">虚拟电厂：聚合、调度与商业模式（2026 版）</a><a href="省级市场状态表-2026-11.html">省级电力市场状态总表</a><a href="黄金问答集-2026-11.html">黄金问答集与回归测试</a></p>
+    </section>
+
+<section class="related" aria-labelledby="paired-skills-title">
+      <div class="related-head"><h2 id="paired-skills-title">配套技能</h2><span>2</span></div>
+      <div class="related-grid">
+        <a class="related-card skill-pair" href="skill-electricity-trading-expert.html">
+          <span class="related-type">现货、中长期、结算与风控（含山东持仓与负价复盘、四川/云南水电、辽宁核电、甘肃煤电容量+辅助服务、甘送鲁省间实例包）</span>
+          <b>电力交易专家</b>
+          <span>技能 · 现货 · 结算 · 风控</span>
+        </a>
+        <a class="related-card skill-pair" href="skill-retail-electricity-risk.html">
+          <span class="related-type">套餐、客户组合、偏差与保函（含广东、广东批零倒挂复盘、江苏与多用户直连实例包）</span>
+          <b>售电零售与风险</b>
+          <span>技能 · 零售 · 偏差 · 保函</span>
+        </a>
+      </div>
+    </section>
+
+    <nav class="pager" aria-label="上下篇">
+          <a class="prev" href="燃料与电力交易-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">燃料与电力交易（2026 版）：一次能源、边际成本与报价</span></a>
+          <a class="next" href="合同与条款库-2026-11.html"><span class="dir">下一篇 →</span><span class="ttl">合同与条款库：五类合同的条款矩阵与谈判红线</span></a>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../合成案例复盘库-2026-11.md">knowledge/合成案例复盘库-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="本页目录">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv3"><a href="#s2">0.1 怎么用案例训练</a></li>
+            <li class="lv3"><a href="#s3">0.2 十个案例一览</a></li>
+            <li class="lv3"><a href="#s4">0.3 五条判断</a></li>
+            <li class="lv2"><a href="#s5">1. 案例 1：负电价日——光伏聚合商满发申报</a></li>
+            <li class="lv2"><a href="#s6">2. 案例 2：尖峰缺电日——煤电平价卖空、尖峰无货</a></li>
+            <li class="lv2"><a href="#s7">3. 案例 3：偏差考核——售电公司月度偏差超阈</a></li>
+            <li class="lv2"><a href="#s8">4. 案例 4：结算争议——只对总额、错过异议时限</a></li>
+            <li class="lv2"><a href="#s9">5. 案例 5：极端天气——台风路径突变、免考材料缺失</a></li>
+            <li class="lv2"><a href="#s10">6. 案例 6：政策切换——换版年沿用旧模板</a></li>
+            <li class="lv2"><a href="#s11">7. 案例 7：批零倒挂——零售套餐没有联动与止损</a></li>
+            <li class="lv2"><a href="#s12">8. 案例 8：储能 SOC 用尽——见价就放、尾峰无货</a></li>
+            <li class="lv2"><a href="#s13">9. 案例 9：VPP 基线争议——理论能力当申报值</a></li>
+            <li class="lv2"><a href="#s14">10. 案例 10：对手违约——集中度过高、担保不盯</a></li>
+            <li class="lv2"><a href="#s15">11. 案例库使用与维护</a></li>
+            <li class="lv2"><a href="#s16">12. 速查：十个案例 → 一张防漏表</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="3" data-more-label="展开 3 个小节" data-less-label="收起小节">展开 3 个小节</button>
+  </aside>
+</div>
+
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.0" data-cutoff="2026-11-19" data-latest="2026-11-19" data-count="90">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.0）" title="查看更新记录（当前 v2.0）">
+    <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
+    <span class="cl-badge-ver">v2.0</span>
+    <span class="cl-badge-label">更新记录</span>
+  </button>
+  <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
+    <div class="cl-backdrop" data-changelog-close></div>
+    <div class="cl-panel" role="dialog" aria-modal="true" aria-labelledby="cl-title" aria-describedby="cl-subtitle" tabindex="-1">
+      <header class="cl-head">
+        <div class="cl-head-main">
+          <span class="cl-kicker">RELEASE NOTES</span>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.0</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.0 · 数据截止 2026-11-19 · 90 条记录</p>
+        </div>
+        <div class="cl-actions">
+          <div class="cl-lang" role="group" aria-label="切换语言">
+            <button type="button" data-cl-lang="zh" aria-pressed="true">中文</button>
+            <button type="button" data-cl-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <button class="cl-close" type="button" data-changelog-close aria-label="关闭更新记录" title="关闭更新记录">×</button>
+        </div>
+      </header>
+      <div class="cl-body" data-changelog-body>
+        <div class="cl-skeleton" data-changelog-status role="status">
+          <span class="cl-sr">正在读取更新记录…</span>
+          <i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      <footer class="cl-foot">
+        <span data-changelog-meta>v2.0 · 2026-11-19 · 90 条记录</span>
+        <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
+      </footer>
+    </div>
+  </div>
+</div>
+<script src="../assets/doc.js"></script>
+<script src="../assets/theme.js"></script>
+<script src="../assets/changelog.js"></script>
+</body>
+</html>

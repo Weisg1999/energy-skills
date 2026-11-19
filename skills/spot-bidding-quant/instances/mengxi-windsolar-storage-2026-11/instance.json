@@ -1,0 +1,274 @@
+{
+  "meta": {
+    "instance_id": "mengxi-windsolar-storage-2026-11",
+    "province": "蒙西",
+    "market": "内蒙古电力多边交易市场（全电量单轨制现货 + 中长期差价合约）",
+    "entity_type": "风光储联合电站（风电 300 MW + 光伏 200 MW + 场内独立储能 100 MW/400 MWh，同一场站联合参与单轨制全电量现货）",
+    "rule_version": "现行正式规则：蒙西现货 2025-02-24 转正式运行（内能源电力字〔2025〕84号，全国第 5 个）、全电量单轨制、实时 5 分钟滚动出清、用户侧节点电价分区（A/B）；2026 修订版规则体系为 2026-02-14 征求意见稿（C，未生效），本包储能参与条款全部出自该征求意见稿并逐条标注“C 级征求意见稿，非正式规则”；现行申报/出清限价以省级正式全文为准（待核）",
+    "data_cutoff": "2026-11-12",
+    "grade": "A/B/C",
+    "scope": "v1 覆盖 288 点（5 分钟）风光联合报量报价、场内储能日内调度（表后净额、弃电禁放代理、循环上限 1.5、最小连续 30 分钟）、5 配对情景评估、T+1 全电量实时结算重放、联合 vs 分开收益对照、差异桥与复盘表；不覆盖调频辅助服务（仅记录 C 级口径，未建模）、中长期差价结算、机制电价差价（本包资产按 2025-06-01 后增量口径，无机制）、绿证、省间外送、容量补偿、5 分钟内滚动决策与断面约束",
+    "currency": "CNY",
+    "units": {
+      "power": "MW",
+      "energy": "MWh",
+      "price": "CNY/MWh",
+      "mechanism_price": "CNY/MWh（0.2829 元/kWh = 282.9 元/MWh，仅存量项目）",
+      "time": "HH:MM",
+      "slot": "0-287（5 分钟一点；蒙西实时 5 分钟滚动出清口径）"
+    },
+    "disclaimer": "本实例包是 D 级合成样板，不对应任何真实场站、合同或计量数据，不构成报价、投资或法律建议。"
+  },
+  "rules": {
+    "spot": {
+      "status": "正式运行（2025-02-24，内能源电力字〔2025〕84号，2022-06-01 起连续结算 32 个月后转正，全国第 5 个）",
+      "market_form": "全电量单轨制：发用双侧全电量参与、日前预出清 + 实时市场、现货全电量结算 + 中长期差价结算、中长期结算引入结算参考点（A/B）",
+      "real_time_clearing": "实时市场 5 分钟滚动出清（A/B）；本包按 288 点 / 5 分钟建模",
+      "price_mechanism": "基于用户侧节点电价的用户分区价格（A/B）；呼包断面东西部价差可达约 127 元/MWh（C）、2025 年东部均价 310.63 / 西部 276.21 元/MWh（B）；本包全场站用同一价格序列，未按分区/节点分列（D 级简化）",
+      "market_time_unit_min": 5,
+      "points_per_day": 288,
+      "day_ahead_granularity_status": "模块仅明确实时 5 分钟出清；现货日前申报的官方粒度未核到（中长期为 96 点曲线口径），本包统一按 288 点 / 5 分钟建模，待核",
+      "model_floor_cny_per_mwh": -60.0,
+      "model_cap_cny_per_mwh": 1600.0,
+      "observed_2025": {
+        "floor_cny_per_mwh": -48.66,
+        "cap_cny_per_mwh": 1555.85,
+        "average_cny_per_mwh": 259.43,
+        "peak_average_cny_per_mwh": 391.17,
+        "valley_average_cny_per_mwh": 110.67,
+        "daily_peak_valley_spread_cny_per_mwh": 630.86,
+        "daily_max_spread_cny_per_mwh": 1650.27,
+        "status": "2025 年实绩（B，内蒙古电力交易中心年报）；不是限价参数"
+      },
+      "early_limit": {
+        "value": "4-10 月 40-550、其他月份 40-600 元/MWh，下限为正、不设负价",
+        "status": "早期/历史浅档案口径（B），模块 §4.1 表列头为“申报/出清边界”（申报出清同区间口径）；不得作为 2026 现行限价",
+        "grade": "B"
+      },
+      "draft_2026": {
+        "value": "申报 -50 至 1500 元/MWh",
+        "status": "2026-02-14 修订版征求意见稿（C），未生效，不得写入现行字段",
+        "grade": "C"
+      },
+      "current_limit_status": "现行正式申报/出清限价参数省级全文未闭环（待核）；本包模型边界 -60~1600 只覆盖 2025 实绩加余量，不是现行限价",
+      "grade": "A/B",
+      "source": "内能源电力字〔2025〕84号（2025-02-24 转正，A）；蒙西省级知识模块《蒙西电力市场-2026-11》§0.1/§0.2/§2/§3/§4.1/§4.2/§4.3；内蒙古电力交易中心 2025 年信息披露简报（实绩，B）"
+    },
+    "settlement": {
+      "basis": "全电量单轨制：实际电量按实时市场（用户侧节点电价分区口径）结算，中长期合约差价结算；日前为预出清，只作调度参考，不用于结算（本包按此口径建模）",
+      "reference_point": "全国最先在中长期结算环节引入结算参考点（A/B）；正式规则以省级全文为准，本包未建模结算参考点",
+      "granularity": "实时 5 分钟滚动出清（A/B）；本包 288 点建模，不模拟 5 分钟内滚动决策、爬坡与断面",
+      "deviation_settlement": "中长期签约比例考核：未达标差额电量按同类型当年年度交易均价的 10% 支付偏差结算费用（A，内能源电力字〔2024〕831号）；本包未建模该考核",
+      "grade": "A/B",
+      "source": "蒙西省级知识模块《蒙西电力市场-2026-11》§0.1/§3.1/§4.2/§5"
+    },
+    "new_energy": {
+      "stock_mechanism_cny_per_mwh": 282.9,
+      "stock_mechanism_note": "0.2829 元/kWh 为蒙西燃煤发电基准价，亦为存量新能源机制电价（B/C，§7.1；§0.2 记 B）；本包资产为 2025-06-01 后并网增量项目，不适用，现金流中无机制差价",
+      "incremental_after": "2025-06-01",
+      "incremental_mechanism": "2025-06-01 后并网增量项目全部市场化、无保底价、暂不纳入机制（B/C）；自治区口径“市场化机制电量占比已不足 5%”（A）",
+      "priority_generation_note": "保量保价（居民农业对应优先发电与机制合约）2025 年合计 81.44 亿 kWh，按燃煤基准价收购（A/B）；与“增量暂不纳入机制”是两件事，不要互相替代",
+      "reform_document": "内发改价费字〔2025〕660号《深化蒙西电网新能源上网电价市场化改革实施方案》（C，行业报告引用，省级正式全文待核）",
+      "grade": "B/C",
+      "source": "蒙西省级知识模块《蒙西电力市场-2026-11》§0.1/§5/§6.1/§7.1"
+    },
+    "storage_participation": {
+      "status": "C 级征求意见稿，非正式规则：以下条款全部出自《内蒙古电力多边交易市场规则体系 2026 年修订版（征求意见稿）》（2026-02-14 发布，未生效，以正式发布文本为准）",
+      "discharge_ban": "弃风弃光（可再生能源富裕程度小于零）时独立储能不得放电（C，征求意见稿）",
+      "ban_proxy": "本包以“现货价 < 0”作为“可再生能源富裕程度 < 0”的 D 级代理指标（负价是新能源大发挤压价格的直观信号）；官方富裕度指标定义未核到，正式规则发布后须替换",
+      "bid_mode": "独立储能可自主选择报量报价或报量不报价；供应紧张、调峰、断面困难时调度可要求报量报价（C，征求意见稿）",
+      "soc_window": "SOC 上限 90%-100%、下限 0-10%（C，征求意见稿）；本包资产取 soc_max 0.95、soc_min 0.05（D 级，处于草案允许配置范围内）",
+      "max_cycles_per_day": 1.5,
+      "min_continuous_minutes": 30,
+      "cycles_note": "单日充放电循环上限 1.5 次、最小连续 30 分钟（C，征求意见稿）",
+      "settlement_caliber_status": "独立储能充电/放电的结算价口径（是否含输配电价、附加、基金，新型主体购电口径）未在模块核到（待核）；本包按同一现货节点价两向结算（D 级口径），并给出充电加成敏感性",
+      "grade": "C",
+      "source": "蒙西省级知识模块《蒙西电力市场-2026-11》§7.3（2026 修订版征求意见稿，C）；北极星 2026-02-25 转载（C）"
+    },
+    "frequency_regulation": {
+      "status": "C 级意见函口径，非正式规则；本包未建模调频，仅记录口径并在复盘表口径提醒中列出",
+      "mode": "独立储能可分时段参与电能量或调频，全天 6 个时段（C，华北能源监管局《蒙西电力调频辅助服务交易实施细则》意见函口径）",
+      "mileage_bid_band_cny_per_mw": [2.0, 18.0],
+      "mileage_clear_cap_cny_per_mw": 15.0,
+      "soc_band_for_regulation": [0.2, 0.8],
+      "new_entity_capacity_share_cap": 0.3,
+      "share_cap_note": "新型主体中标调频容量合计不超过需求的 30%（C）",
+      "interaction_note": "调频 SOC 20%-80% 与现货 SOC 窗口（下限 0-10%、上限 90-100%）不一致：参调时段须预留 20%-80% 带宽，电能量与调频按时段二选一（C）",
+      "grade": "C",
+      "source": "蒙西省级知识模块《蒙西电力市场-2026-11》§7.3、§7.4（调频意见函口径，C）"
+    },
+    "capacity_compensation": {
+      "applicable_to_wind_solar_storage": false,
+      "status": "未核到蒙西固定容量电价正式文件；行业口径 0.28 元/kWh 放电量补偿、周期 10 年（C/D，待省级正式文件）；本包容量/补贴收入按 0 计",
+      "note": "0.28 元/kWh（储能度电补贴行业口径）与 0.2829 元/kWh（存量机制电价/燃煤基准价）性质不同，不能混用；风、光、储均不据此计容量收入",
+      "grade": "C/D",
+      "source": "蒙西省级知识模块《蒙西电力市场-2026-11》§6.1/§7.3"
+    },
+    "deviation_assessment": {
+      "band": 0.05,
+      "penalty_cny_per_mwh": 30.0,
+      "basis": "renewable_available_energy",
+      "formula": "max(0, |风光可用电量 − 申报电量| / 申报电量 − 5%) × 申报电量 × 30 元/MWh",
+      "note": "±5% 免考核带为现货 101 问-B 蒙西口径（B）；30 元/MWh 单价与按风光可用电量（弃电前）计为 D 级简化（沿用蒙西风电包口径）；储能/新型主体偏差考核口径未核到（待核），本包储能充放电偏差不设考核、按实时价结算",
+      "grade": "B/D",
+      "source": "电力现货市场 101 问-B（蒙西偏差 ±5% 以内不考核，B）；30 元/MWh 与风光口径为 D 级建模假设"
+    },
+    "market_context": {
+      "storage_installed": "2025-12 底新型储能装机 1380 万 kW、占比 8.5%（C）；3 座大型独立储能 60 万 kW/240 万 kWh、抽蓄 5 座 620 万 kW（B）",
+      "renewable_installed": "2025-12 底新能源装机 9319 万 kW、占比 57.5%（C）；2026-04 突破 1 亿 kW、占比 57.7%（B）",
+      "participants": "2025 年底主体 3963 家，其中新型主体 31 家（含独立储能）（B）",
+      "dongx_note": "蒙东 2026 征求意见稿要求集中式新能源场站与配建储能以一体化形式、报量报价全电量参与现货，配建储能实际充放电时段免予考核（C）——该口径属蒙东规则，不适用于蒙西",
+      "grade": "B/C",
+      "source": "蒙西省级知识模块《蒙西电力市场-2026-11》§1.1/§1.2/§7.2/§7.3/§7.4"
+    }
+  },
+  "asset": {
+    "name": "示例风光储联合电站（D 级合成，不是真实项目）",
+    "wind": {
+      "capacity_mw": 300.0,
+      "expected_annual_hours": 2200,
+      "grade": "D",
+      "source": "D 级占位；实际按风机铭牌、功率预测系统与测风塔数据填写"
+    },
+    "pv": {
+      "capacity_mw": 200.0,
+      "expected_annual_hours": 1500,
+      "grade": "D",
+      "source": "D 级占位；实际按组件容量、逆变器限功率、场用电与可用率填写"
+    },
+    "storage": {
+      "name": "示例场内独立储能 100 MW / 400 MWh（4 小时，D 级合成）",
+      "power_mw": 100.0,
+      "energy_mwh": 400.0,
+      "duration_h": 4.0,
+      "rte": 0.88,
+      "soc_min": 0.05,
+      "soc_max": 0.95,
+      "soc_init": 0.2,
+      "usable_energy_mwh": 360.0,
+      "degradation_cny_per_mwh_throughput": 12.0,
+      "solver_states": 96,
+      "grade": "D",
+      "source": "D 级占位；实际按 PCS/BMS/电芯铭牌、实测效率与质保条款填写；SOC 窗口处于 2026 征求意见稿允许范围（下限 0-10%、上限 90-100%）内"
+    },
+    "opex_wind_cny_per_mwh": 22.0,
+    "opex_pv_cny_per_mwh": 14.0,
+    "fixed_cost_cny_per_day": 60000.0,
+    "grid_connection": {
+      "export_limit_mw": 280.0,
+      "import_limit_mw": 100.0,
+      "note": "出口限额为风+光+储共享的场站并网点限额（D 级设定 280 MW < 风+光装机 500 MW，让午间大发受限弃电真实生效，用于演示储能弃电回收）；进口限额按储能功率设置，仅服务表后充电的净进口。真实场站按并网协议与调度受限曲线替换",
+      "grade": "D"
+    },
+    "grade": "D",
+    "source": "全部为 D 级占位；实际项目按铭牌、功率预测系统、并网协议与运维台账填写"
+  },
+  "policy": {
+    "profile_id": "mengxi-windsolar-storage-joint-v1",
+    "description": "四策略比较：P50/P35 风光联合申报 × 禁放条款执行/对照；储能按报量报价（征求意见稿允许报量不报价，价格接受者口径下现金流一致）；循环上限 1.5（C 草案）；禁放代理=现货价<0；分开对照含充电结算加成敏感性",
+    "storage_mode": "bid_quantity_price",
+    "storage_mode_note": "2026 征求意见稿允许独立储能自主选择报量报价或报量不报价（C）；本包默认报量报价。报量不报价在价格接受者模型下现金流一致，差别在申报义务与调度要求（供应紧张/调峰/断面困难时调度可要求报量报价）",
+    "renewable_bid_price_cny_per_mwh": 0.0,
+    "renewable_bid_note": "风光联合报量报价按 0 元/MWh 申报为 D 级风格（沿用蒙西风电包），本包不模拟出清拒绝；单轨制下实际按实时价结算，负价时段申报电量按负价结算",
+    "declared_quantity_quantile": 0.5,
+    "price_reference_quantile": 0.5,
+    "discharge_ban": {
+      "enabled": true,
+      "proxy": "price_below_zero",
+      "note": "D 级代理：现货价 < 0 即视为“可再生能源富裕程度 < 0”，该时段禁止放电（计划按日前参考价判定，执行按实际价统计违规，不强改计划）"
+    },
+    "max_cycles_per_day": 1.5,
+    "min_continuous_minutes": 30,
+    "discharge_markup_cny_per_mwh": 20.0,
+    "charge_markup_cny_per_mwh": 15.0,
+    "spike_threshold_cny_per_mwh": 500.0,
+    "spike_markup_cny_per_mwh": 60.0,
+    "separate_charge_adder_cny_per_mwh": 0.0,
+    "adder_note": "分开模式下独立储能充电价 = 现货价 + 该加成；默认 0（同价口径，D 级），敏感性给 180 元/MWh（D 级占位：若分开储能充电按含输配电价与附加的用户侧口径结算）",
+    "compliant_only_selection": true,
+    "strategies": {
+      "p50_joint_ban": {
+        "label": "P50 申报 + 禁放执行（合规）",
+        "declared_quantity_quantile": 0.5,
+        "compliant": true
+      },
+      "p35_joint_ban": {
+        "label": "P35 申报 + 禁放执行（合规）",
+        "declared_quantity_quantile": 0.35,
+        "compliant": true
+      },
+      "p50_joint_free": {
+        "label": "P50 申报 + 禁放不执行（对照，违反征求意见稿口径）",
+        "declared_quantity_quantile": 0.5,
+        "compliant": false
+      },
+      "no_storage": {
+        "label": "风光联合申报、储能不参与（对照基线）",
+        "declared_quantity_quantile": 0.5,
+        "compliant": true,
+        "no_storage": true
+      }
+    },
+    "sensitivity": {
+      "price_multipliers": [0.85, 1.15],
+      "renewable_multipliers": [0.9, 1.1],
+      "cycle_cap_alternative": 2.5,
+      "separate_charge_adder_cny_per_mwh": 180.0,
+      "combined": {
+        "price_multiplier": 0.85,
+        "renewable_multiplier": 0.9
+      }
+    },
+    "decision_rule": "在合规策略中选情景期望净收益最大；同时报告 CVaR、循环次数、禁放违规时段与联合 vs 分开期望差额",
+    "grade": "D",
+    "note": "策略、报价加成与敏感性均为风格选择，不是事实；禁放条款执行与否是合规要求（C 级征求意见稿口径），不是风格。改 profile_id 并保留旧文件，便于比较"
+  },
+  "contracts": [],
+  "data_contract": {
+    "d1": {
+      "file": "data/d1_demo.csv",
+      "required_fields": [
+        "date",
+        "slot",
+        "start",
+        "end",
+        "forecast_wind_mw",
+        "forecast_pv_mw",
+        "wind_s1",
+        "wind_s2",
+        "wind_s3",
+        "wind_s4",
+        "wind_s5",
+        "pv_s1",
+        "pv_s2",
+        "pv_s3",
+        "pv_s4",
+        "pv_s5",
+        "price_s1",
+        "price_s2",
+        "price_s3",
+        "price_s4",
+        "price_s5",
+        "da_price"
+      ],
+      "wind_scenario_fields": ["wind_s1", "wind_s2", "wind_s3", "wind_s4", "wind_s5"],
+      "pv_scenario_fields": ["pv_s1", "pv_s2", "pv_s3", "pv_s4", "pv_s5"],
+      "price_scenario_fields": ["price_s1", "price_s2", "price_s3", "price_s4", "price_s5"],
+      "scenario_weights": [0.2, 0.2, 0.2, 0.2, 0.2],
+      "release_cutoff": "D-1 蒙西日前申报截止前（具体时点以交易中心公告为准）",
+      "note": "风、光、价按同一情景编号配对：s1 大发低价（含午间负价）、s5 小发高价；不得独立抽样后随意拼配。da_price 为日前预出清参考价，只作储能计划与计划对照，不用于结算。"
+    },
+    "t1": {
+      "file": "data/t1_demo.csv",
+      "required_fields": [
+        "date",
+        "slot",
+        "actual_da_price",
+        "actual_rt_price",
+        "actual_wind_mw",
+        "actual_pv_mw"
+      ],
+      "note": "T+1 实际：日前预出清价、实时价与风光实际可用出力。本包 D 级假设储能严格按日前计划执行（实际充放电=计划）；禁放条款按实际价判定违规并统计，不强改计划；风光实际与计划的偏差通过出口限额弃电、进口与实时价进入结算。"
+    }
+  }
+}

@@ -1,6 +1,6 @@
 # 虚拟电厂实例包：一省一聚合商的可配置响应切片
 
-> 目录定位：`skills/virtual-power-plant/instances/` 是**VPP 的样板实例层**，不是知识模块，不改变知识库的 101 模块 / 13 分区计数。每个子目录是"一省 + 一个聚合商 + 一个规则版本"的配置包，聚合商的交易人员只改 JSON 与 CSV，不改代码。当前五个切片分两类：**邀约/快响型**——上海 407号"1+5"、浙江 VPP 2.0（公告〔2026〕第7号）、江苏负荷快速响应（苏发改规发〔2026〕1号）；**资源分配型**——辽宁负荷侧 VPP（辽发改能源规〔2026〕3号）、深圳 V2G 聚合（广东 VPP 准入 + 2026 削峰 DR + 南方区域广东价区现货）。
+> 目录定位：`skills/virtual-power-plant/instances/` 是**VPP 的样板实例层**，不是知识模块，不改变知识库的 101 模块 / 13 分区计数。每个子目录是"一省 + 一个聚合商 + 一个规则版本"的配置包，聚合商的交易人员只改 JSON 与 CSV，不改代码。当前六个切片分两类：**邀约/快响型**——上海 407号"1+5"、浙江 VPP 2.0（公告〔2026〕第7号）、江苏负荷快速响应（苏发改规发〔2026〕1号）；**资源分配型**——辽宁负荷侧 VPP（辽发改能源规〔2026〕3号）、深圳 V2G 聚合（广东 VPP 准入 + 2026 削峰 DR + 南方区域广东价区现货）；上海 407号体系下另有独立数据中心单主体下沉切片。
 
 ## 1. 为什么要有这一层
 
@@ -25,10 +25,11 @@ instances/
 ├── zhejiang-vpp2-2026-11/                  # 浙江 VPP 2.0（公告〔2026〕第7号，2026-09-23）
 ├── jiangsu-fast-response-2026-11/          # 江苏负荷快速响应聚合商（苏发改规发〔2026〕1号）
 ├── liaoning-vpp-2026-11/                   # 辽宁负荷侧 VPP：DR / 填谷 / 调频 / 储能（辽发改能源规〔2026〕3号）
-└── shenzhen-v2g-2026-11/                   # 深圳 V2G 聚合：套利 / DR / 备用（广东 VPP 准入）
+├── shenzhen-v2g-2026-11/                   # 深圳 V2G 聚合：套利 / DR / 备用（广东 VPP 准入）
+└── shanghai-datacenter-vpp-2026-11/        # 上海独立数据中心 DR 切片（407号「1+5」单主体下沉）
 ```
 
-五个包目录结构相同，每个包含：
+六个包目录结构相同，每个包含：
 
 ```
     ├── instance.json                       # 唯一配置入口
@@ -40,7 +41,7 @@ instances/
     └── out/demo/                           # 运行产物（可删除重建）
 ```
 
-### 2.1 五个切片的分工
+### 2.1 六个切片的分工
 
 | 包 | 主体与资源 | 规则主线 | 运行链 | 结算重点 |
 |---|---|---|---|---|
@@ -49,6 +50,7 @@ instances/
 | `jiangsu-fast-response-2026-11/` | 直控 / 自控两类资源的负荷聚合商 | 苏发改规发〔2026〕1号：直控上限 15 元/kWh、超额 150%；自控 10 元/kWh、超额 120% | 可调能力与申报 → 情景出清 → T+1 响应认定 → 11 科目差异桥 | 0.5 h 调整、120%/150% 封顶、客户分成、未达标补偿 |
 | `liaoning-vpp-2026-11/` | 12 家工业用户 + 用户侧储能；可下调 18 MW / 可上调 8 MW | 辽发改能源规〔2026〕3号：聚合 ≥10 MW、调节 ≥5 MW；DR 4,000 元/MWh（D）；现货 −100–1,100 申报 | 12 个月月度数据 → 四策略资源分配 → DR/填谷/调频/储能结算 → 分成 → 临界值 | 同一份 18 MW 不重复卖；交付率与 10% 容差；成员节电 80% 归成员 |
 | `shenzhen-v2g-2026-11/` | 430 辆车：公共场站 + 公交场站 + 物流园区；实测 7.31 MW / 13.26 MWh | 广东 VPP 准入 ≥5 MW/≥1 h/单资源 ≥0.02 MW；2026 削峰 DR 上限 2,700 元/MWh；现货 −50–1,800 元/MWh | 站点能力（车-桩 × 同时率 × 可用率、配变限额）→ 套利/DR/备用分配 → 退化与桩年化 → 车主分成 → 临界值 | 申报 MW ≠ 有效 MW；MW × 可调用小时决定收益；固定成本全由聚合商承担 |
+| `shanghai-datacenter-vpp-2026-11/` | 独立数据中心单主体：IT 批处理 / 制冷 / UPS 备电 / 附属园区空调 | 沪经信运〔2025〕407号「1+5」（数据中心切片）+ 上海现货连续结算试运行口径 | 5 同类日 CBL 基线 → 邀约情景申报 → T+1 响应认定 → 差异桥 → 复核表 | 与 `shanghai-vpp` 的区别在单主体下沉；上海 VPP 结算细则与补偿单价未核到，挂待核实 |
 
 上海、浙江、江苏三包用 96 点 / 15 分钟事件链，字段名与规则块各不相同（上海 `vpp_plan`/`baseline`/`event`/`settlement`，浙江 `vpp2`/`baseline`/`spot`/`settlement`，江苏 `fast_response`/`baseline`/`spot`/`settlement`）。辽宁、深圳两包改用**月度电量**口径（`data/market_demo.csv` 12 行），runner 只校验本包声明的规则块（辽宁 `vpp`/`demand_response`/`ancillary`/`storage`/`spot`/`cost`，深圳 `v2g`/`vpp`/`spot`/`demand_response`/`ancillary`/`cost`），不套用 96 点事件模型。
 
@@ -235,11 +237,11 @@ self,2026-07-15,19:00,19:30,9.6,8.6
 ## 6. 运行与产物
 
 ```bash
-# 五个包各自校验与演示
+# 六个包各自校验与演示
 python skills/virtual-power-plant/instances/<pack>/run.py --check-config
 python skills/virtual-power-plant/instances/<pack>/run.py --demo
-# <pack> = shanghai-vpp-2026-11 / zhejiang-vpp2-2026-11 / jiangsu-fast-response-2026-11
-#        / liaoning-vpp-2026-11 / shenzhen-v2g-2026-11
+# <pack> = shanghai-vpp-2026-11 / shanghai-datacenter-vpp-2026-11 / zhejiang-vpp2-2026-11
+#        / jiangsu-fast-response-2026-11 / liaoning-vpp-2026-11 / shenzhen-v2g-2026-11
 
 # 用自己的数据（以江苏包为例，路径指向仓库外）
 python skills/virtual-power-plant/instances/jiangsu-fast-response-2026-11/run.py \

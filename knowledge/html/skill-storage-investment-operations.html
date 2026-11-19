@@ -116,7 +116,7 @@
     </details>
 
     <article class="prose">
-<aside class="note note-head"><p>🌐 English version: <a href="skill-storage-investment-operations-en.html">SKILL_EN.md</a> ｜ 姊妹技能：<a href="skill-electricity-trading-expert.html">电力交易专家</a>（市场规则/结算/容量电价原文）、<a href="skill-virtual-power-plant.html">虚拟电厂专家</a>（聚合/需求响应运营）、<a href="skill-spot-bidding-quant.html">现货报价量化专家</a>（电价预测/报价/回测）、<a href="skill-carbon-asset-expert.html">碳资产管理专家</a>（碳履约/CCER/CBAM）。本技能只回答&quot;储能项目值不值得投、收益怎么算、运营怎么考核&quot;。</p><p>版本 v1.9 · 数据截止 2026-11-01</p><p><strong>维护入口</strong>：<code>tools/selftest.py</code>（跑通即代表正文算例未过期）、<a href="储能投资与运营-2026-11.html">储能投资与运营底稿</a>（政策节点、成本区间、指标口径）、<a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a>（调度算法）、<a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a>（微网运行）、<a href="海外储能业务-2026-11.html">海外储能业务</a>（十一市场收益与投决口径）、<a href="英国电力市场-2026-11.html">英国电力市场</a>、<a href="意大利电力市场-2026-11.html">意大利电力市场</a>（BM/CM/LDES、MACSE）、<a href="美国电力市场-2026-11.html">美国电力市场</a>、<a href="日本电力市场-2026-11.html">日本电力市场</a>（ERCOT/PJM/CAISO、JEPX/容量/LTDA）。</p><p><strong>2026-2027 未定事项</strong>：114 号文省级细则覆盖面与考核扣减、1656 号文在零售侧的传导、容量电价分母时长（4/6/8/10 h）、辅助服务规则修订、消防与并网标准升级、储能系统价格走势。</p></aside>
+<aside class="note note-head"><p>🌐 English version: <a href="skill-storage-investment-operations-en.html">SKILL_EN.md</a> ｜ 姊妹技能：<a href="skill-electricity-trading-expert.html">电力交易专家</a>（市场规则/结算/容量电价原文）、<a href="skill-virtual-power-plant.html">虚拟电厂专家</a>（聚合/需求响应运营）、<a href="skill-spot-bidding-quant.html">现货报价量化专家</a>（电价预测/报价/回测）、<a href="skill-carbon-asset-expert.html">碳资产管理专家</a>（碳履约/CCER/CBAM）。本技能只回答&quot;储能项目值不值得投、收益怎么算、运营怎么考核&quot;。</p><p>版本 v2.0 · 数据截止 2026-11-01</p><p><strong>维护入口</strong>：<code>tools/selftest.py</code>（跑通即代表正文算例未过期）、<a href="储能投资与运营-2026-11.html">储能投资与运营底稿</a>（政策节点、成本区间、指标口径）、<a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a>（调度算法）、<a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a>（微网运行）、<a href="海外储能业务-2026-11.html">海外储能业务</a>（十一市场收益与投决口径）、<a href="英国电力市场-2026-11.html">英国电力市场</a>、<a href="意大利电力市场-2026-11.html">意大利电力市场</a>（BM/CM/LDES、MACSE）、<a href="美国电力市场-2026-11.html">美国电力市场</a>、<a href="日本电力市场-2026-11.html">日本电力市场</a>（ERCOT/PJM/CAISO、JEPX/容量/LTDA）。</p><p><strong>2026-2027 未定事项</strong>：114 号文省级细则覆盖面与考核扣减、1656 号文在零售侧的传导、容量电价分母时长（4/6/8/10 h）、辅助服务规则修订、消防与并网标准升级、储能系统价格走势。</p></aside>
 <hr>
 <h2 id="s1">0. 角色定义与行为规范</h2>
 <h3 id="s2">0.1 角色画像</h3>
@@ -500,7 +500,7 @@ PL-4 容量收入 = 认证容量(MW) × 降额系数 × 中标价(€/MW·yr)
 
 
 <section class="related" aria-labelledby="skill-modules-title">
-      <div class="related-head"><h2 id="skill-modules-title">适用知识模块</h2><span>3</span></div>
+      <div class="related-head"><h2 id="skill-modules-title">适用知识模块</h2><span>4</span></div>
       <div class="related-grid">
         <a class="related-card" href="储能投资与运营-2026-11.html">
           <span class="related-type">跨区对照</span>
@@ -516,6 +516,11 @@ PL-4 容量收入 = 认证容量(MW) × 降额系数 × 中标价(€/MW·yr)
           <span class="related-type">跨区对照</span>
           <b>储能 EMS 优化调度</b>
           <span>把储能调度建成 MILP：96 点经济调度、多市场堆叠、SOC/退化、MPC 与安全联锁，并给出与交易层的四种融合模式。</span>
+        </a>
+        <a class="related-card" href="合同与条款库-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>合同与条款库：五类合同的条款矩阵与谈判红线</b>
+          <span>国内中长期、绿电 PPA、零售套餐、储能容量租赁与 VPP 聚合协议五类合同，按价格、电量、偏差、结算、违约、不可抗力、绿证归属七个维度拉成条款矩阵，另附期限/披露/争议等补充维度、各类型谈判红线、常见坑与一个 D 级合成谈判算例；本模块是条款思维框架，不替代法律意见。</span>
         </a>
       </div>
 
@@ -656,10 +661,10 @@ PL-4 容量收入 = 认证容量(MW) × 降额系数 × 中标价(€/MW·yr)
 <nav class="page-aux" aria-label="页面辅助">
   <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
 </nav>
-<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v1.9" data-cutoff="2026-11-12" data-latest="2026-11-18" data-count="89">
-  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v1.9）" title="查看更新记录（当前 v1.9）">
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.0" data-cutoff="2026-11-19" data-latest="2026-11-19" data-count="90">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.0）" title="查看更新记录（当前 v2.0）">
     <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
-    <span class="cl-badge-ver">v1.9</span>
+    <span class="cl-badge-ver">v2.0</span>
     <span class="cl-badge-label">更新记录</span>
   </button>
   <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
@@ -668,8 +673,8 @@ PL-4 容量收入 = 认证容量(MW) × 降额系数 × 中标价(€/MW·yr)
       <header class="cl-head">
         <div class="cl-head-main">
           <span class="cl-kicker">RELEASE NOTES</span>
-          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v1.9</span></h2>
-          <p class="cl-sub" id="cl-subtitle">当前版本 v1.9 · 数据截止 2026-11-12 · 89 条记录</p>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.0</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.0 · 数据截止 2026-11-19 · 90 条记录</p>
         </div>
         <div class="cl-actions">
           <div class="cl-lang" role="group" aria-label="切换语言">
@@ -686,7 +691,7 @@ PL-4 容量收入 = 认证容量(MW) × 降额系数 × 中标价(€/MW·yr)
         </div>
       </div>
       <footer class="cl-foot">
-        <span data-changelog-meta>v1.9 · 2026-11-12 · 89 条记录</span>
+        <span data-changelog-meta>v2.0 · 2026-11-19 · 90 条记录</span>
         <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
       </footer>
     </div>

@@ -1,0 +1,272 @@
+{
+  "meta": {
+    "instance_id": "liaoning-nuclear-2026-11",
+    "province": "辽宁",
+    "market": "辽宁省级电力市场（连续结算试运行：中长期财务合约 + 实时现货差价结算 + 核电机制电价差价结算）",
+    "entity_type": "核电厂（基荷机组）",
+    "rule_version": "辽宁现货试行 V4.0（1+7，2026-01-01 新版限价）＋辽发改价格〔2026〕142号核电机制电价",
+    "data_cutoff": "2026-11-12",
+    "grade": "A/B（规则）/ D（数据）",
+    "scope": "v1 覆盖 24 时段机制电量认定（21h 窗口 × 80%）、142 号分组机制电价差价结算线、中长期财务合约组合、5 个实时价情景（含负价时段）、两条结算线分账对账、负电价时段敏感性与 T+1 五桶差异桥；实时偏差考核、辅助服务、容量三层口径（100/165/370）、省间与节点价细化未纳入",
+    "currency": "CNY",
+    "units": {
+      "power": "MW",
+      "energy": "MWh",
+      "price": "CNY/MWh",
+      "time": "HH:MM",
+      "slot": "0-23（60 分钟一点，24 时段）"
+    },
+    "disclaimer": "本实例包是 D 级合成样板，不构成报价、投资或法律建议；不对应红沿河核电站真实生产数据。"
+  },
+  "rules": {
+    "spot": {
+      "status": "连续结算试运行（2025-03 起，截至 2026-11-12 未转省级正式运行）",
+      "market_time_unit_min": 60,
+      "points_per_day": 24,
+      "declare_floor_cny_per_mwh": -100,
+      "declare_cap_cny_per_mwh": 1100,
+      "clear_floor_cny_per_mwh": -100,
+      "clear_cap_cny_per_mwh": 1500,
+      "day_ahead": "日前仅预出清加可靠性机组组合，暂停日前电能量结算；预出清结果不用于结算（A/B）",
+      "settlement_basis": "结算以实时市场差价结算为主，逐步按节点价结算；节点价推进节奏待核实",
+      "negative_price": "出清下限 −0.1 元/kWh（−100 CNY/MWh）为价格笼子内的合规下限；2026-01-06 风电 1,501 万 kW 创新高、当日全天出清均价首次转负（A）",
+      "granularity_note": "本包取 24 个整点时段（60 分钟）为工作粒度：中长期合约「按日均分、24 时段平均分解」是试运行规则口径；现货出清的实际时间粒度模块未载明，属 D 级简化",
+      "grade": "A/B",
+      "source": "辽宁省级知识模块 §0.1/§2/§4.1/§4.2（辽发改价格〔2025〕734号；试行 4.0 版「1+7」；省工信厅第1431463号答复）",
+      "note": "申报上限 1.1 元/kWh 与出清上限 1.5 元/kWh 不能混用；这套限价是连续结算试运行参数，不是正式运行参数"
+    },
+    "mid_long_term": {
+      "status": "运行；差价结算下中长期合约转为财务合约（A/B）",
+      "contract_types": [
+        "annual_base",
+        "monthly_peak",
+        "monthly_offpeak",
+        "intra_month_curve"
+      ],
+      "decomposition": "年度/多月/月度/月内合约按日均分、24 时段平均分解到每日相应时段（试运行规则口径）；具体分解方式以交易中心公告为准",
+      "signing_ratio": "燃煤火电与售电公司签约比例不低于 70%；新能源/核电/批发用户比例要求取消（A/B）——核电无强制签约比例，本包合约组合是 D 级交易策略",
+      "settlement_reference": "实时现货价（差价结算，全电量按现货价定价）",
+      "transfer": "2025 年发电侧合同电量转让 31 次/101.78 亿 kWh、用电侧 16 次/17.14 亿 kWh（B），是调整合约仓位的主要工具",
+      "grade": "A/B",
+      "source": "辽宁省级知识模块 §3/§5（试行 4.0 版；辽宁电力交易中心运行报告）",
+      "note": "本包合约全部是金融差价合约（CfD），不物理执行；带曲线签约按合同曲线分解"
+    },
+    "mechanism": {
+      "status": "2026-01-01 起试行 1 年（A/A/B）",
+      "document": "辽发改价格〔2026〕142号",
+      "average_price_cny_per_kwh": 0.3798,
+      "group_prices": [
+        {
+          "group_id": "units-1-4",
+          "price_cny_per_kwh": 0.3823,
+          "price_cny_per_mwh": 382.3
+        },
+        {
+          "group_id": "units-5-6",
+          "price_cny_per_kwh": 0.3749,
+          "price_cny_per_mwh": 374.9
+        }
+      ],
+      "window_hours": 21,
+      "excluded_window_hours": [
+        [2, 5]
+      ],
+      "mechanism_energy_share": 0.8,
+      "mechanism_energy_basis": "本包按「21 小时窗口电量 × 80%」实现机制电量认定；模块未载明 80% 的分母是窗口电量还是全日电量——分母口径待核实（C）",
+      "settlement": "差价结算（A）：机制差价 = 机制电量 ×（机制电价 − 现货价）",
+      "cost_allocation": "核电机制差价暂纳入系统运行费，由全体工商业用户分摊（B）",
+      "two_lines": "核电机制电量差价另按 142 号文单独做差价结算，与电能量市场差价两条线分开核对，不能混算（A）",
+      "not_136": "不能套 136 新能源机制电价：0.30/0.20 元/kWh 是 2027 增量竞价公示值（C），核电是基荷不是新能源（A）",
+      "grade": "A",
+      "source": "辽宁省级知识模块 §0.1.8/§5/§7.1/§7.2/§10 Q5（辽发改价格〔2026〕142号）",
+      "pending": [
+        "机制电量 80% 的分母口径（窗口电量 vs 全日电量）待核实",
+        "0.3798 平均值的加权口径待核实：按容量加权 (4×0.3823+2×0.3749)/6 = 0.37983，与文件载明 0.3798 有尾差",
+        "机制电量认定的结算执行细则（核减、检修期处理）待核实",
+        "2027 年试行期满是否续期或调整机制电量比例与分摊方式待核实（模块观察清单）"
+      ]
+    },
+    "settlement": {
+      "basis": "全电量按现货价定价；机制电量差价按 142 号文单独结算，中长期合约差价按财务合约结算，两条线分开记账（A）",
+      "identity": "总收入 = 机制电量 × 机制电价 + 合约电量 × 合约价 + （上网电量 − 机制电量 − 合约电量）× 现货价（恒等式，残差应为 0）",
+      "price_reference": "实时现货价（日前预出清价不用于结算，A/B）",
+      "grade": "A/B",
+      "source": "辽宁省级知识模块 §3.1.4/§4.2/§5（试行 4.0 版；辽发改价格〔2026〕142号）",
+      "note": "结算时限按 976 号文 5/8/10 个工作日时点（全国底座，本包不重复）；本包产出是口径复核，不是交易中心结算单"
+    },
+    "deviation": {
+      "included": false,
+      "basis": "实时偏差考核阈值、两个细则、辅助服务、容量三层口径（煤电 100 元/kW·年 2024（A）、165 元/kW·年 2026（C）、370 元/kW·年可靠容量补偿为征求意见稿拟 2027-01-01（A 草案））均未纳入本包；核电容量收益适用口径待核实",
+      "grade": "B",
+      "source": "辽宁省级知识模块 §7.3/§9.2",
+      "note": "三层容量口径不能相加或互相替代，370 不得写成 2026 年已执行价格；若要把偏差考核纳入，应另建实例，不要把本包收入当最终结算收入"
+    }
+  },
+  "asset": {
+    "name": "示例红沿河核电厂 1-6 号机组切片（D 级合成，不对应真实生产数据）",
+    "capacity_mw": 6000,
+    "unit_count": 6,
+    "min_output_mw": 5700,
+    "load_factor": 0.95,
+    "unit_groups": [
+      {
+        "id": "units-1-4",
+        "units": 4,
+        "capacity_mw": 4000
+      },
+      {
+        "id": "units-5-6",
+        "units": 2,
+        "capacity_mw": 2000
+      }
+    ],
+    "excluded_window_hours": [
+      [2, 5]
+    ],
+    "window_hours": 21,
+    "mechanism_energy_share": 0.8,
+    "grade": "D",
+    "source": "装机（6 × 1,000 MW）、负荷因子 0.95 与最小出力为 D 级示例占位，不对应红沿河真实铭牌；21 小时窗口与 80% 机制电量比例复用辽发改价格〔2026〕142号口径（A，见 rules.mechanism）",
+    "note": "机组组按容量比例分摊出力与机制电量（示例口径）；实际机制电量以结算单认定为准"
+  },
+  "book": [
+    {
+      "id": "annual-base-2026",
+      "kind": "annual_base",
+      "type": "cfd",
+      "period_start": "2026-01-01",
+      "period_end": "2026-12-31",
+      "period_days": 365,
+      "energy_mwh": 9855000,
+      "price_cny_per_mwh": 385.0,
+      "shape": {
+        "type": "base"
+      },
+      "grade": "D",
+      "source": "示例年度基荷财务合约（D 级合成，9,855,000 ÷ 365 = 27,000 MWh/日，24 时段平均 1,125 MWh/h）"
+    },
+    {
+      "id": "monthly-offpeak-2026-11",
+      "kind": "monthly_offpeak",
+      "type": "cfd",
+      "period_start": "2026-11-01",
+      "period_end": "2026-11-30",
+      "period_days": 30,
+      "energy_mwh": 162000,
+      "price_cny_per_mwh": 320.0,
+      "shape": {
+        "type": "window",
+        "windows": [
+          [2, 5]
+        ]
+      },
+      "grade": "D",
+      "source": "示例 11 月深夜财务合约（D 级合成，162,000 ÷ 30 = 5,400 MWh/日；02:00–05:00 为合同约定窗口，恰是机制电价不纳入时段）"
+    },
+    {
+      "id": "monthly-peak-2026-11",
+      "kind": "monthly_peak",
+      "type": "cfd",
+      "period_start": "2026-11-01",
+      "period_end": "2026-11-30",
+      "period_days": 30,
+      "energy_mwh": 75000,
+      "price_cny_per_mwh": 420.0,
+      "shape": {
+        "type": "window",
+        "windows": [
+          [18, 22]
+        ]
+      },
+      "grade": "D",
+      "source": "示例 11 月晚峰财务合约（D 级合成，75,000 ÷ 30 = 2,500 MWh/日；18:00–22:00 为合同约定窗口）"
+    },
+    {
+      "id": "intra-month-curve-2026-11b",
+      "kind": "intra_month_curve",
+      "type": "cfd",
+      "period_start": "2026-11-16",
+      "period_end": "2026-11-25",
+      "period_days": 10,
+      "energy_mwh": 13000,
+      "price_cny_per_mwh": 395.0,
+      "shape": {
+        "type": "anchors",
+        "anchors": [
+          [0, 0.8],
+          [2, 1.6],
+          [5, 0.8],
+          [12, 0.8],
+          [18, 1.3],
+          [22, 0.8],
+          [24, 0.8]
+        ]
+      },
+      "grade": "D",
+      "source": "示例旬度带曲线财务合约（D 级合成，13,000 ÷ 10 = 1,300 MWh/日；锚点曲线为合同约定，夜间略重）"
+    }
+  ],
+  "policy": {
+    "profile_id": "liaoning-nuclear-market-hedge-v1",
+    "description": "目标对冲比例 0.85——分母是市场电量（上网电量扣除机制电量），不是全上网电量；参考价取 5 情景逐时段中位；D-7~D-2 按最新预测滚动加减仓，D-1 冻结",
+    "target_hedge_ratio": 0.85,
+    "min_hedge_ratio": 0.7,
+    "max_hedge_ratio": 1.0,
+    "price_reference_quantile": 0.5,
+    "rebalance_start_day": 7,
+    "freeze_day_offset": 1,
+    "grade": "D",
+    "note": "风格是交易员选择，不是事实；改 profile_id 并保留旧文件，便于比较。用全上网电量当分母会把约 70% 的机制电量误算进对冲比例。"
+  },
+  "data_contract": {
+    "d1": {
+      "file": "data/d1_demo.csv",
+      "required_fields": [
+        "date",
+        "slot",
+        "start",
+        "end",
+        "forecast_mw",
+        "preclear_price",
+        "price_s1",
+        "price_s2",
+        "price_s3",
+        "price_s4",
+        "price_s5"
+      ],
+      "forecast_field": "forecast_mw",
+      "preclear_field": "preclear_price",
+      "price_scenario_fields": [
+        "price_s1",
+        "price_s2",
+        "price_s3",
+        "price_s4",
+        "price_s5"
+      ],
+      "scenario_weights": [0.2, 0.2, 0.2, 0.2, 0.2],
+      "release_cutoff": "D-1 09:00",
+      "note": "forecast_mw 为核电机组计划出力（基荷恒定，D 级合成）；preclear_price 为日前预出清结果，只作信号对照、不用于结算（A/B）；price_s* 为实时现货价情景（结算口径），含负价时段。"
+    },
+    "t1": {
+      "file": "data/t1_demo.csv",
+      "required_fields": [
+        "date",
+        "slot",
+        "actual_mw",
+        "actual_contract_mwh",
+        "actual_rt_price",
+        "preclear_price"
+      ],
+      "note": "实际出力、结算单上的实际合约电量（MWh/时段，按合约簿加权价结算）与实时结算价 actual_rt_price；preclear_price 仅作日前信号对照，不得用于结算。"
+    },
+    "rolling": {
+      "file": "data/rolling_demo.csv",
+      "required_fields": [
+        "day_offset",
+        "forecast_market_energy_mwh",
+        "position_before_mwh"
+      ],
+      "note": "D-7~D-1 每日市场电量预测（已扣除机制电量：21h 窗口 × 80%）与当日调仓前持仓；position_before 必须与上一日收盘持仓衔接。目标对冲比例的分母是市场电量。"
+    }
+  }
+}

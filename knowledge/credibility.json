@@ -2,19 +2,19 @@
   "schema": 1,
   "description": "Machine-readable credibility register. Filter modules by confidence/examples/historical before injecting into a model; gradeC and openItems carry the unverified figures and undecided items.",
   "summary": {
-    "modules": 101,
+    "modules": 104,
     "gradeCItems": 22,
     "openItems": 44,
     "events": 32,
     "draftPolicies": 3,
-    "mixedModules": 82,
+    "mixedModules": 84,
     "historicalModules": 15,
     "unverifiedGradeC": 14,
     "verifiedTickets": 6,
     "bannedTickets": 2,
     "ticketsDueForReview": 14,
     "openGaps": 8,
-    "englishSummaries": 101,
+    "englishSummaries": 104,
     "keyFigures": 242,
     "glossaryTerms": 82,
     "controlledAbbreviations": 50,
@@ -3080,6 +3080,27 @@
       "exampleSections": []
     },
     {
+      "id": "m-desk-sop",
+      "file": "交易台日课与异常处置-SOP-2026-11.md",
+      "title": "交易台日课与异常处置 SOP",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": "synthetic",
+      "historical": false,
+      "summaryEn": "A desk-day SOP that turns the five clocks into an executable routine: pre-open briefing, quote review, intraday trigger lines, post-close review and shift handover, with three fill-in templates (pre-open brief, quote review sheet, exception report) and an escalation path. Process and templates only; rule values live in the linked modules and provincial rules.",
+      "titleEn": null,
+      "marks": {
+        "gradeC": 0,
+        "draft": 1,
+        "pending": 0,
+        "example": 2
+      },
+      "exampleSections": []
+    },
+    {
       "id": "m-storage-ems",
       "file": "储能EMS优化调度-算法与工程-2026-11.md",
       "title": "储能 EMS 优化调度",
@@ -3199,6 +3220,50 @@
       "exampleSections": []
     },
     {
+      "id": "m-contracts-clauses",
+      "file": "合同与条款库-2026-11.md",
+      "title": "合同与条款库：五类合同的条款矩阵与谈判红线",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-12",
+      "confidence": "verified",
+      "confidenceInferred": true,
+      "examples": "synthetic",
+      "historical": false,
+      "summaryEn": "A clause library for five contract families — domestic medium/long-term trades, green-power PPAs, retail packages, storage capacity leases and VPP aggregation agreements — organised as a clause matrix across price, volume, deviation, settlement, default, force majeure and green-certificate attribution, plus supplementary dimensions (term, disclosure, dispute resolution), per-type negotiation red lines, common traps and one synthetic negotiation example. A clause-thinking framework, not legal advice.",
+      "titleEn": null,
+      "marks": {
+        "gradeC": 0,
+        "draft": 0,
+        "pending": 0,
+        "example": 2
+      },
+      "exampleSections": [
+        "## 9. D 级合成算例：储能容量租赁两种结构对比"
+      ]
+    },
+    {
+      "id": "m-cases-replay",
+      "file": "合成案例复盘库-2026-11.md",
+      "title": "合成案例复盘库：十个交易台决策复盘",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-12",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": "synthetic",
+      "historical": false,
+      "summaryEn": "Ten synthetic grade-D case replays for trading desks: negative-price day, scarcity peak, deviation penalty, settlement dispute, extreme weather, policy switch, wholesale-retail spread inversion, storage SOC exhaustion, VPP baseline dispute and counterparty default. Each case follows the same structure — synthetic setup, timeline, decision points, wrong moves, right moves, reusable checklist. All markets, actors, numbers and outcomes are fictional teaching material; mechanism background lives in the linked modules.",
+      "titleEn": null,
+      "marks": {
+        "gradeC": 0,
+        "draft": 4,
+        "pending": 0,
+        "example": 3
+      },
+      "exampleSections": []
+    },
+    {
       "id": "m-prov-jl",
       "file": "吉林电力市场-2026-11.md",
       "title": "吉林电力市场：东北连续结算试运行、热电与风电、新能源报量报价调频（2026-11）",
@@ -3233,8 +3298,8 @@
       "summaryEn": "Sichuan spot market entered continuous-settlement trial in November 2025 without transitioning to formal operation; 2025 provincial medium/long-term volume was 215.598 TWh at 0.2418 CNY/kWh, the 109-day spot trial averaged 0.2193 CNY/kWh, 2025-2026 mechanism prices cleared at 0.393 (wind) and 0.372997 (PV) CNY/kWh, and coal capacity payment is 231 CNY/kW-yr.",
       "titleEn": null,
       "marks": {
-        "gradeC": 50,
-        "draft": 32,
+        "gradeC": 49,
+        "draft": 34,
         "pending": 12,
         "example": 0
       },
@@ -3719,9 +3784,9 @@
       "summaryEn": "Jiangxi has been in continuous settlement trial operation since 2025-10-01 (start date pending provincial confirmation, not yet formal): October 2025 spot clearing averaged 0.37 CNY/kWh (-14.51% YoY) with a -0.1 CNY/kWh price floor; the 2026 mechanism-price auction covers 4.08 billion kWh at a 0.24-0.379 CNY/kWh band (C) with a 10-year term, alongside a VPP registration guide dated 2026-06-03.",
       "titleEn": null,
       "marks": {
-        "gradeC": 69,
-        "draft": 0,
-        "pending": 52,
+        "gradeC": 66,
+        "draft": 3,
+        "pending": 47,
         "example": 0
       },
       "exampleSections": []
@@ -3782,9 +3847,9 @@
       "summaryEn": "Henan has been in continuous settlement trial operation since 2025-10-01 (start date pending provincial confirmation, not yet formal): 2025 saw 291.56 TWh of intraprovincial medium/long-term trading, a direct-trade settlement average of 401.67 CNY/MWh and over 40,000 registered participants; the emergency backup coal capacity price of 188 CNY/kW-yr (Yu Fa Gai Jia Guan [2026] No. 539, effective 2026-09) is in force, whereas the 330 CNY/kW-yr generation-side reliable capacity compensation remains an unenacted 2026-08 consultation draft.",
       "titleEn": null,
       "marks": {
-        "gradeC": 55,
-        "draft": 14,
-        "pending": 37,
+        "gradeC": 51,
+        "draft": 18,
+        "pending": 31,
         "example": 0
       },
       "exampleSections": []
@@ -3959,9 +4024,9 @@
       "summaryEn": "Hubei's spot market entered formal operation on 2025-06-06 as the first of the second batch of pilots under Fa-gai-ban-ti-gai [2025] No. 394: 2025 wholesale settlement was 109.288 TWh at 437.448 CNY/MWh with retail at 420.944 CNY/MWh and 9,472 registered entities; hydropower supplies about 44% of generation with Three Gorges exports coexisting with import peaks, and independent storage receives list-based capacity compensation at 165 CNY/kW-year.",
       "titleEn": null,
       "marks": {
-        "gradeC": 60,
+        "gradeC": 61,
         "draft": 0,
-        "pending": 16,
+        "pending": 17,
         "example": 0
       },
       "exampleSections": []
@@ -4285,8 +4350,8 @@
       "titleEn": null,
       "marks": {
         "gradeC": 47,
-        "draft": 17,
-        "pending": 27,
+        "draft": 18,
+        "pending": 24,
         "example": 0
       },
       "exampleSections": []
@@ -4297,7 +4362,7 @@
       "title": "省级政策列表",
       "level": "tool",
       "kind": "索引",
-      "cutoff": "2026-11-08",
+      "cutoff": "2026-11-19",
       "confidence": "mixed",
       "confidenceInferred": true,
       "examples": null,
@@ -4305,9 +4370,9 @@
       "summaryEn": "Provincial policy index: document numbers, effective dates and official full-text links for provincial electricity-market rules.",
       "titleEn": null,
       "marks": {
-        "gradeC": 0,
+        "gradeC": 2,
         "draft": 3,
-        "pending": 3,
+        "pending": 5,
         "example": 0
       },
       "exampleSections": []
@@ -5028,9 +5093,9 @@
       "summaryEn": "Shaanxi spot market became formal on 2026-09-25 (Shaan Fa Gai Yun Xing [2026] No.1329, China's 10th): Jan-Aug 2026 bid-in clearing reached 112.164 TWh against 131 GW installed capacity; coal capacity payment 165 CNY/kW-yr and stand-alone storage 165/6h, while the 2026 mechanism price was published at 0.352 CNY/kWh for wind and 0.350 for solar.",
       "titleEn": null,
       "marks": {
-        "gradeC": 28,
-        "draft": 0,
-        "pending": 22,
+        "gradeC": 26,
+        "draft": 3,
+        "pending": 16,
         "example": 0
       },
       "exampleSections": []
@@ -5074,9 +5139,9 @@
       "summaryEn": "Qinghai has been in continuous settlement trial operation since 2025-11-01 (start date pending provincial confirmation, not yet formal): by October 2025 new-energy capacity reached 55,749.17 MW or 72.13% of provincial installed capacity, with wind, solar and hydro accounting for about 90% of generation; the 2026 generation-side reliable capacity compensation is set at a uniform 185 CNY/kW-yr (effective 2026-07-07, formerly a C-grade figure), and the first mechanism-price auction cleared both wind and solar at the 240 CNY/MWh cap.",
       "titleEn": null,
       "marks": {
-        "gradeC": 58,
+        "gradeC": 57,
         "draft": 0,
-        "pending": 33,
+        "pending": 32,
         "example": 0
       },
       "exampleSections": []

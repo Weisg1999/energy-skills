@@ -1,0 +1,144 @@
+{
+  "meta": {
+    "instance_id": "yunnan-hydro-2026-11",
+    "province": "云南",
+    "market": "南方区域现货（统一出清、15 分钟价格、一地注册全域交易）+ 云南省内中长期",
+    "entity_type": "水电企业（梯级电站运营方）",
+    "rule_version": "南方区域电力现货市场 2026-10-24 正式运行（发改办体改〔2026〕715号）；云能源规〔2025〕198号（2025-10-01 施行）；云南省煤电容量电价机制（2026-01-01 试行，330 元/kW·年，不适用水电）；昆明交易函〔2026〕71号仍为征求意见稿；省内现货限价与省级偏差考核公式待核实",
+    "data_cutoff": "2026-11-12",
+    "grade": "A/B",
+    "scope": "两库三级梯级水电（600 MW，D 级合成）：丰/枯两套 15 分钟区域价格情景（96 点）→ 省内中长期分解（年度平推 vs 丰枯曲线）→ 区域现货余量与偏差按发电加权捕获价结算（与时间均价对比展示 96 点错位）→ 绿证单独计线并与机制差价结算防重 → 调节容量市场 0 占位 → 三种组合比较与 15 个敏感性情景；不含省间外送与西电东送合约、辅助服务、煤电容量电费、零售套餐与省级偏差考核罚则（待核实）",
+    "currency": "CNY",
+    "units": "装机 MW；电量 MWh；合同价 CNY/kWh；区域现货 15 分钟价 CNY/MWh；绿证 CNY/张（1 张 = 1 MWh）；收入 CNY",
+    "disclaimer": "本实例包是 D 级合成样板，不构成报价、投资或法律建议：梯级资产、15 分钟区域价格形态、月度电量、合同比例、绿证比例与单价均为合成数据，不对应任何真实电站、流域或交易；南方区域正式运行（2026-10-24）不等于云南省内现货转正，省内限价与偏差考核待核实。"
+  },
+  "rules": {
+    "regional_spot": {
+      "formal_since": "2026-10-24",
+      "document": "发改办体改〔2026〕715号",
+      "clearing": "南方区域统一出清（粤桂云贵琼）",
+      "price_interval_minutes": 15,
+      "points_per_day": 96,
+      "registration": "一地注册全域交易",
+      "provincial_spot_formal": false,
+      "provincial_spot_price_cap_cny_per_mwh": null,
+      "provincial_spot_cap_status": "待核实：未核到云南省内现货申报/出清限价的省级正式全文，不得套广东 −50–1,800 或广西 0–1,125 元/MWh",
+      "grade": "A",
+      "source": "云南省级知识模块 §0.2/§0.3/§4.1：南方区域 2026-10-24 正式运行（发改办体改〔2026〕715号，A），统一出清、15 分钟价格、一地注册全域交易（A）；云南省内现货仍为配合区域连续结算试运行、稳定超 180 天（B），转正节点与限价待核实",
+      "status": "区域正式 ≠ 省内现货转正：省内现货转正节点与完整规则待核实；昆明交易函〔2026〕71号为 2026-07-09 征求意见稿（A 草案），不得当现行；本包丰/枯 96 点价格形态为 D 级合成，不代表区域出清真实水平"
+    },
+    "bidding": {
+      "multi_energy_same_platform": true,
+      "hydro_pricing": "按丰枯与外送机会成本报量报价",
+      "coal_pricing": "按边际成本报价，固定成本由容量电费覆盖",
+      "model_points_per_day": 96,
+      "grade": "B",
+      "source": "云南省级知识模块 §3.1/§4.2：日前申报「水火风光」多能同台竞价（A/B）、煤电按边际成本报价、水电按丰枯与外送机会成本报价（B）；日前策略按 96 点建模，丰枯时段差异远大于日均价",
+      "status": "申报时段划分与集中式新能源集中报价细节以区域与省内交易公告为准；本包丰/枯 96 点日内发电形态为 D 级合成"
+    },
+    "mid_long_term": {
+      "framework": "发改能源规〔2025〕1656号",
+      "continuous_weekday_trading": true,
+      "west_east_plan_plus_market": true,
+      "flexible_price_mechanism_encouraged": true,
+      "deviation_formula": null,
+      "deviation_formula_status": "待核实：云南省级偏差考核公式未核到正式全文，昆明交易函〔2026〕71号仍为草案；本包偏差按区域现货捕获价价差结算、未计罚则",
+      "grade": "A/B",
+      "source": "云南省级知识模块 §3/§5：中长期按 1656 框架（A/B）、省内中长期工作日连续开市并与现货全年结算试运行衔接（B）、「西电东送计划+市场」承接跨省区中长期（A/B）、灵活价格机制获鼓励（A）",
+      "status": "合约曲线分解细则与省级偏差考核公式待核实；本包年度平推与丰枯曲线两种分解均为 D 级建模选择，不代表省级分解规则"
+    },
+    "settlement": {
+      "basis": "976号文结算时序（全国底座）",
+      "checkpoint_days": "第 5/8/10 个工作日：核对版、正式结算依据、账单",
+      "objection_days": 15,
+      "coal_capacity_fee_allocation": "按外送煤电电量与省内煤电电量等比例分摊，省内部分纳入系统运行费、由全体工商业用户按月用电量分摊",
+      "coal_capacity_fee_assessment": "月内两次扣 10%、三次 50%、四次及以上 100%，自然年累计三次全额扣减取消资格",
+      "applies_to_hydro": false,
+      "grade": "A",
+      "source": "云南省级知识模块 §3.1/§5/§7.3：976 号文 5/8/10 工作日三时点与 15 个工作日异议（全国底座）；煤电容量电费按外送/省内电量等比例分摊与考核条款（A）",
+      "status": "区域结算细则与省内偏差分摊仍未闭环（状态总表第四节，待核实）；本包为水电主体，不涉及煤电容量电费分摊"
+    },
+    "coal_capacity": {
+      "price_cny_per_kw_year": 330,
+      "recovery_ratio": 1.0,
+      "effective_from": "2026-01-01",
+      "executing_years": "暂定 2026 年",
+      "applies_to_hydro": false,
+      "grade": "A",
+      "source": "云南省级知识模块 §0.1 条5/§7.3/Q4：煤电容量电价 330 元/kW·年、回收比例 100%、2026-01-01 起试行（A，省发改委政策解读）；2024–2025 年多数地区约 30%（约 100 元/kW·年，B）；云南为全国首个正式明确全额补偿的省份",
+      "status": "执行期暂定 2026 年，续期或调整待核实；本主体为水电，容量电价不适用，不得把 330 或 165 元/kW·年当水电或储能容量收入"
+    },
+    "green_cert": {
+      "aggregate_certificates_transferred": "存量常规水电绿证无偿划转累计 3.03 亿张",
+      "aggregate_energy": "折合绿电 3,000 亿 kWh",
+      "beneficiary_enterprises": "惠及 7.6 万家企业",
+      "scale_rank": "规模居全国第一",
+      "transfer_creates_producer_revenue": false,
+      "double_count_guard_with_mechanism": true,
+      "standalone_from_spot_energy": true,
+      "grade": "B",
+      "source": "云南省级知识模块 §3/§5/§7.2/§9.2：存量常规水电绿证无偿划转累计 3.03 亿张、折合绿电 3,000 亿 kWh、惠及 7.6 万家企业、规模居全国第一（B）；绿证收益与机制电量差价结算不能重复计算（B）；绿证/绿电单独锁定、不与现货电能量混算（B）",
+      "status": "无偿划转面向受惠企业，不构成发电侧销售收入；发电侧市场化绿证出售比例与单价本包按 D 级合成占位（profile 绿证比例列 + policy 绿证单价），真实口径待核实"
+    },
+    "mechanism": {
+      "hydro_mechanism_price_cny_per_kwh": null,
+      "hydro_mechanism_ratio": null,
+      "reference_pv_2026_cny_per_kwh": 0.329,
+      "reference_wind_2026_cny_per_kwh": 0.335,
+      "reference_cap_cny_per_kwh": 0.3358,
+      "reference_grade": "B/C",
+      "settlement_principle": "机制电量为差价结算、按机制价与市场均价多退少补（B/C）",
+      "grade": "C",
+      "source": "云南省级知识模块 §0.1 条6/§7.1：136 机制电价按批次覆盖光伏/风电——2026 批次光伏 0.329 / 风电 0.335 元/kWh（B/C，交易中心公示的行业媒体口径，省级正式全文待核实）；申报区间光伏 0.22–0.3358、风电 0.18–0.3358 元/kWh",
+      "status": "待核实：模块未给常规水电机制差价结算参数（机制电价批次仅覆盖光伏/风电）；本包机制差价线按 0 电量占位，policy.mechanism_ratio > 0 时绿证基数防重扣减生效"
+    },
+    "regulation_capacity": {
+      "hydro_compensation_cny_per_kw_year": null,
+      "hydro_access_threshold": null,
+      "couples_with_regional_ancillary": true,
+      "activates_storage": true,
+      "grade": "B",
+      "source": "云南省级知识模块 §3/§7.2/§7.3：创新建立调节容量市场机制（A/B）、「调节容量市场」激活储能资源（B）、水电调峰与区域辅助服务耦合；独立储能容量电价省级文件待核实",
+      "status": "待核实：模块未给水电参与调节容量市场的补偿标准、准入门槛与结算细节；本包调节容量收入按 0 占位，不得套煤电 330 元/kW·年（A）"
+    }
+  },
+  "project": {
+    "name": "云南某梯级水电（两库三级，合成）",
+    "reservoirs": 2,
+    "stations": [
+      {"id": "S1", "name": "龙头水库电站", "capacity_mw": 300, "regulation": "年调节"},
+      {"id": "S2", "name": "反调节水库电站", "capacity_mw": 200, "regulation": "日调节"},
+      {"id": "S3", "name": "下游径流电站", "capacity_mw": 100, "regulation": "径流式"}
+    ],
+    "capacity_mw": 600,
+    "p50_hours": 4000,
+    "planned_generation_mwh": 2400000,
+    "cod": "2015-06-30",
+    "grade": "D",
+    "source": "D 级合成梯级：两库三级 600 MW（300+200+100）、P50 4,000 h、计划年电量 24 亿 kWh；不对应任何真实流域、电站或主体"
+  },
+  "policy": {
+    "profile_id": "yunnan-hydro-cascade-portfolio-v1",
+    "contract_ratio": 0.75,
+    "strategies": ["all_spot", "contract_flat", "contract_seasonal"],
+    "shortfall_settlement": "regional_spot_capture",
+    "green_cert_price_cny_per_certificate": 15.0,
+    "mechanism_ratio": 0.0,
+    "regulation_capacity_placeholder_cny": 0.0,
+    "decision_rule": "max_net_revenue",
+    "grade": "D",
+    "source": "D 级组合风格：75% 电量按省内中长期锁定（年度平推 1/12 与丰枯曲线两种分解对比），余量与偏差按区域现货 15 分钟发电加权捕获价结算；绿证按 D 级单价单独计线、与机制差价结算互斥防重；调节容量 0 占位"
+  },
+  "data_contract": {
+    "profile": {
+      "file": "data/profile_demo.csv",
+      "fields": ["month", "season", "generation_mwh", "contract_weight", "seasonal_weight", "contract_price_cny_per_kwh", "green_ratio"],
+      "frequency": "monthly, one calendar year（丰季 6–10 月 / 枯季 11–5 月）"
+    },
+    "price_shapes": {
+      "file": "data/price_shapes_demo.csv",
+      "fields": ["season", "slot", "price_cny_per_mwh", "generation_share"],
+      "frequency": "per season (wet/dry) 96 × 15-min slots；generation_share 为日内发电分布（各季合计 1），用于把时间均价加权成捕获价"
+    }
+  }
+}

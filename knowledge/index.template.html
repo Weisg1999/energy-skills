@@ -135,7 +135,25 @@ a:hover{text-decoration:underline;text-underline-offset:3px}
 .sec-head{display:grid;grid-template-columns:100px 1fr;gap:16px;border-top:1px solid var(--line-strong);padding-top:18px}
 .sec-num{font:600 var(--fs-2xs)/1.5 var(--mono);color:var(--teal);letter-spacing:.08em;white-space:nowrap;padding-top:6px}
 .sec-head h2{font-family:var(--serif);font-size:clamp(25px,3vw,36px);line-height:1.25;letter-spacing:-.02em;margin:0 0 8px;font-weight:600}
-.sec-head p{margin:0;color:var(--muted);font-size:var(--fs-sm);line-height:1.75;max-width:820px}
+.sec-head p{
+  position:relative;max-width:860px;margin:10px 0 0;padding:14px 18px 14px 20px;
+  color:var(--ink-2);font-size:var(--fs-sm);line-height:1.78;text-wrap:pretty;
+  border:1px solid color-mix(in srgb,var(--teal) 14%,var(--line));border-radius:14px;
+  background-color:color-mix(in srgb,var(--card) 78%,transparent);
+  background-image:
+    radial-gradient(130% 180% at 100% 0%,color-mix(in srgb,var(--teal) 9%,transparent),transparent 58%),
+    linear-gradient(135deg,color-mix(in srgb,var(--card) 82%,transparent),color-mix(in srgb,var(--teal-soft) 46%,transparent) 62%,color-mix(in srgb,var(--blue-soft) 32%,transparent));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 18px 38px -34px rgba(22,35,47,.55);
+  -webkit-backdrop-filter:blur(12px) saturate(1.08);backdrop-filter:blur(12px) saturate(1.08);
+}
+.sec-head p::before{
+  content:"";position:absolute;left:0;top:13px;bottom:13px;width:3px;border-radius:0 4px 4px 0;
+  background:linear-gradient(180deg,var(--teal),var(--blue));opacity:.72;
+}
+:root[data-theme="dark"] .sec-head p{
+  border-color:color-mix(in srgb,var(--teal) 22%,var(--line));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 18px 38px -34px rgba(0,0,0,.85);
+}
 .sec-head .anchor-link{font:var(--fs-2xs)/1 var(--mono);color:var(--line-strong);margin-left:8px;vertical-align:middle}
 
 /* Knowledge map */
@@ -497,6 +515,7 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   .instance-entry{flex-direction:column;align-items:flex-start;gap:8px;padding:14px 16px}
   .sec-head h2{font-size:clamp(22px,7vw,29px)}
   .sec-head{grid-template-columns:1fr;gap:6px}
+  .sec-head p{padding:13px 14px 13px 16px;border-radius:12px;line-height:1.74}
   .sec-num{padding-top:0}
   .market-flow,.assess-flow,.market-flow.six,.market-flow.eight,.market-flow.ten,.market-flow.eleven{grid-template-columns:1fr}
   .carbon-chain{grid-template-columns:1fr 1fr}
@@ -552,6 +571,8 @@ footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   .shell{display:block;max-width:none}
   .main{padding:0}
   .card,.panel,.method-card{box-shadow:none;break-inside:avoid}
+  .sec-head p{max-width:none;padding:0;border:0;background:none;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+  .sec-head p::before{display:none}
   .sec{padding-top:26px}
   a{color:var(--ink);text-decoration:none}
 }

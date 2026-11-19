@@ -4,8 +4,8 @@
   "note": "A number needs a grade, a time point and a caliber. Filter gradeC by usable/banned before using any unverified figure. Full texts of policies are linked from the Chinese policy indexes.",
   "generatedFrom": "knowledge/*.md frontmatter (summary_en) + INDEX_EN structured tables + credibility register",
   "summary": {
-    "modules": 101,
-    "withEnglishSummary": 101,
+    "modules": 104,
+    "withEnglishSummary": 104,
     "keyFigures": 242,
     "openItems": 44,
     "datedOpenItems": 23,
@@ -118,6 +118,19 @@
       "html": "html/云南电力市场-2026-11.html"
     },
     {
+      "id": "m-desk-sop",
+      "file": "交易台日课与异常处置-SOP-2026-11.md",
+      "section": "spot",
+      "kind": "知识模块",
+      "cutoff": null,
+      "title": "交易台日课与异常处置 SOP",
+      "titleEn": null,
+      "summaryEn": "A desk-day SOP that turns the five clocks into an executable routine: pre-open briefing, quote review, intraday trigger lines, post-close review and shift handover, with three fill-in templates (pre-open brief, quote review sheet, exception report) and an escalation path. Process and templates only; rule values live in the linked modules and provincial rules.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/交易台日课与异常处置-SOP-2026-11.html"
+    },
+    {
       "id": "m-storage-ems",
       "file": "储能EMS优化调度-算法与工程-2026-11.md",
       "section": "storage",
@@ -181,6 +194,32 @@
       "confidence": "mixed",
       "historical": false,
       "html": "html/北京电力市场-2026-11.html"
+    },
+    {
+      "id": "m-contracts-clauses",
+      "file": "合同与条款库-2026-11.md",
+      "section": "cross",
+      "kind": "知识模块",
+      "cutoff": "2026-11-12",
+      "title": "合同与条款库：五类合同的条款矩阵与谈判红线",
+      "titleEn": null,
+      "summaryEn": "A clause library for five contract families — domestic medium/long-term trades, green-power PPAs, retail packages, storage capacity leases and VPP aggregation agreements — organised as a clause matrix across price, volume, deviation, settlement, default, force majeure and green-certificate attribution, plus supplementary dimensions (term, disclosure, dispute resolution), per-type negotiation red lines, common traps and one synthetic negotiation example. A clause-thinking framework, not legal advice.",
+      "confidence": "verified",
+      "historical": false,
+      "html": "html/合同与条款库-2026-11.html"
+    },
+    {
+      "id": "m-cases-replay",
+      "file": "合成案例复盘库-2026-11.md",
+      "section": "cross",
+      "kind": "知识模块",
+      "cutoff": "2026-11-12",
+      "title": "合成案例复盘库：十个交易台决策复盘",
+      "titleEn": null,
+      "summaryEn": "Ten synthetic grade-D case replays for trading desks: negative-price day, scarcity peak, deviation penalty, settlement dispute, extreme weather, policy switch, wholesale-retail spread inversion, storage SOC exhaustion, VPP baseline dispute and counterparty default. Each case follows the same structure — synthetic setup, timeline, decision points, wrong moves, right moves, reusable checklist. All markets, actors, numbers and outcomes are fictional teaching material; mechanism background lives in the linked modules.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/合成案例复盘库-2026-11.html"
     },
     {
       "id": "m-prov-jl",
@@ -837,7 +876,7 @@
       "file": "省级政策列表-2026-11.md",
       "section": "index",
       "kind": "索引",
-      "cutoff": "2026-11-08",
+      "cutoff": "2026-11-19",
       "title": "省级政策列表",
       "titleEn": null,
       "summaryEn": "Provincial policy index: document numbers, effective dates and official full-text links for provincial electricity-market rules.",

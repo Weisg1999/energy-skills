@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "instance_id": "sichuan-hydro-2026-11",
+    "province": "四川",
+    "market": "省内中长期（丰平枯分期）+ 省内现货（连续结算试运行，未转正式）",
+    "entity_type": "水电企业（常规直购机组）",
+    "rule_version": "四川电力市场规则体系 V4.0（行业口径）+ 川发改能源〔2025〕420号、川发改价格〔2025〕421号征求意见稿架构，均未核到省级正式印发全文",
+    "data_cutoff": "2026-11-12",
+    "grade": "B/C/D",
+    "scope": "300 MW 四川径流式水电（常规直购机组）：中长期合同按丰平枯分期比例分解、纯金融对冲（物理电量按现货价结算）；全现货 / 中长期对冲 / 中长期对冲加丰水期弃水电量消纳三种策略比较与敏感性；不含省间外送与丰枯打捆、辅助服务、煤电容量电价、零售套餐与偏差考核细则",
+    "currency": "CNY",
+    "units": "装机 MW；电量 MWh；价格 CNY/kWh（丰平枯分期限价与行业口径为 CNY/MWh，换算处单独标注）；收入 CNY",
+    "disclaimer": "本实例包是 D 级合成样板，不构成报价、投资或法律建议：装机、来水形态、电量、价格、合同比例与合同价均为合成数据，不对应任何真实水电站或交易；规则文号与行业口径仅用于演示计算链，转正前不作现行规则引用。"
+  },
+  "rules": {
+    "season_pricing": {
+      "regular_direct_ratio": {"丰": 0.4523, "平": 0.1673, "枯": 0.3804},
+      "season_months": {"丰": [6, 7, 8, 9, 10], "平": [5, 11], "枯": [1, 2, 3, 4, 12]},
+      "mid_long_term_limit_cny_per_mwh": {"丰": 211.43, "平": 333.84, "枯": 415.63},
+      "rolling_monthly_cap_cny_per_mwh": 481.44,
+      "grade": "B/C",
+      "source": "常规直购丰/平/枯电量比 45.23%/16.73%/38.04%（B，四川省级知识模块 §0.1-4/§5）；中长期丰平枯分期限价丰 211.43、平 333.84、枯 415.63、月内滚动上限 481.44 元/MWh（C 行业口径，四川省级知识模块 §4.1）；丰水期 6–10 月来水集中、枯水期 1–4 月及 12 月（C，§7.2）",
+      "status": "分期限价与月内滚动上限均为行业研究口径（C），待省级正式文件确认，转正前不作现行规则引用；丰枯分期是中长期限价与交易组织的口径，现货申报/出清限价不分水期（C/草案），不能把本表丰枯限价套到现货"
+    },
+    "spot_settlement": {
+      "mid_long_term_role": "financial_hedge",
+      "physical_settlement": "物理电量按现货价结算，中长期合同为金融对冲",
+      "day_ahead": "日前预出清不结算（C/草案）",
+      "intraday": "日内全时段滚动优化（C/草案）",
+      "realtime": "实时出清并结算（C/草案）",
+      "declare_floor_cny_per_kwh": null,
+      "declare_cap_cny_per_kwh": null,
+      "observed_2025_min_cny_per_kwh": -0.05,
+      "observed_2025_max_cny_per_kwh": 0.8,
+      "observed_2025_avg_cny_per_kwh": 0.2193,
+      "feng_realtime_avg_cny_per_mwh": 129.0,
+      "ku_realtime_avg_cny_per_mwh": 314.0,
+      "settlement_cycle": "批发市场日清月结、按日出具清分结果、自然月为结算周期（C）",
+      "grade": "B/C",
+      "source": "中长期纯金融对冲、物理电量按现货价结算（C，四川省级知识模块 §4.2）；日前预出清不结算、日内全时段滚动优化、实时出清并结算（C/草案，§3.1/§4.2）；2025 年 109 天结算试运行实测申报均价 0.0583、出清均价 0.2193、最高 0.8、最低 −0.05 元/kWh（B，§4.1/§4.3）；丰水期实时均价约 129、枯水期约 314 元/MWh（C 市场机构测算，§4.3）；日清月结（C，§5）",
+      "status": "待核实：现货申报/出清限价正式值——征求意见稿为申报/出清限价不分水期、2026 全年下限暂设 0、上限按燃煤边际成本与用户尖峰测算（C/草案，§4.1），未核到正式印发；2025 实测最低 −0.05 与行业口径 −50–800 元/MWh 是已发生事实/研究口径，不能当作限价引用"
+    },
+    "surplus_water": {
+      "volume_2025_yi_kwh": 105.72,
+      "avg_price_cny_per_kwh": 0.1477,
+      "feng_share": 0.8642,
+      "ping_share": 0.1358,
+      "retailer_share_2025": 1.0,
+      "eligibility": "丰水期富余水电；径流式\"不弃水\"是调度原则，不是价格保证（B）",
+      "grade": "B",
+      "source": "弃水电量消纳为四川独有品种：2025 成交 105.72 亿 kWh、均价 0.1477 元/kWh、丰平比 86.42%/13.58%、售电公司占比 100%（B，四川省级知识模块 §0.1-5/§5/§7.2）；2026 丰水期继续组织（B，§1.1）",
+      "status": "2026 年组织方式、限价与购售主体结构以当年交易公告为准；本包按丰水期余量可参与建模（D 级简化），丰平比 86.42%/13.58% 表明该品种几乎只在丰水期有意义"
+    }
+  },
+  "project": {
+    "name": "四川某径流式水电站（合成）",
+    "capacity_mw": 300.0,
+    "p50_hours": 4800.0,
+    "cod": "2026-12-31",
+    "runoff_type": "径流式（无调节库容，丰水期出力集中且不可库存化）",
+    "grade": "D",
+    "source": "D 级合成场址：300 MW 径流式水电、P50 4,800 h；水头、径流曲线、水位库容与梯级约束均未建模（私有数据/待核实）"
+  },
+  "policy": {
+    "profile_id": "sichuan-hydro-ffkk-hedge-v1",
+    "contract_ratio": 0.80,
+    "contract_season_basis": "rules.season_pricing.regular_direct_ratio（2025 常规直购丰/平/枯电量比，B）",
+    "contract_price_cny_per_kwh": {"丰": 0.185, "平": 0.26, "枯": 0.36},
+    "strategies": ["all_spot", "contract_cfd", "contract_cfd_surplus"],
+    "surplus_channel": "feng_only",
+    "decision_rule": "max_net_revenue",
+    "grade": "D",
+    "source": "D 级组合风格：80% 计划电量按丰平枯分期比例签常规直购合同（对标 2025 电量比 45.23/16.73/38.04，B，四川省级知识模块 §5）；合同价 丰 0.185 / 平 0.26 / 枯 0.36 元/kWh 为 D 级合成值（低于分期限价 C 口径）；中长期按合约价与现货价差价结算（C 口径的 D 级简化）；丰水期余量可走弃水电量消纳（2025 均价 0.1477 元/kWh，B），平水期余量留现货"
+  },
+  "data_contract": {
+    "profile": {
+      "file": "data/profile_demo.csv",
+      "fields": ["month", "season", "generation_mwh", "contract_weight", "spot_price_cny_per_kwh"],
+      "frequency": "monthly, 连续结算试运行后首个完整交易年"
+    }
+  }
+}

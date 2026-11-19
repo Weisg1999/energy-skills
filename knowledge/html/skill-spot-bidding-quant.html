@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>现货报价量化 | energy-skills 知识库</title>
-<meta name="description" content="预测、报价与回测（含山东煤电/储能/光储、山西储能、甘肃与蒙西新能源实例包）">
+<meta name="description" content="预测、报价与回测（含山东煤电/储能/光储、浙江现货储能、蒙西风光储、山西储能、甘肃与蒙西新能源实例包）">
 <link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(!/^(light|cream|green|dark)$/.test(t||'')){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
@@ -85,7 +85,7 @@
     <header class="doc-head">
       <div class="kicker">04 / SKILLS<i>技能</i></div>
       <h1 class="doc-title">现货报价量化</h1>
-      <p class="lede">预测、报价与回测（含山东煤电/储能/光储、山西储能、甘肃与蒙西新能源实例包）</p>
+      <p class="lede">预测、报价与回测（含山东煤电/储能/光储、浙江现货储能、蒙西风光储、山西储能、甘肃与蒙西新能源实例包）</p>
       <p class="hook">可执行流程与配套工具；正文与 SKILL.md 同步。</p>
       <div class="tags"><span class="tag">技能</span><span class="tag">预测</span><span class="tag">报价</span><span class="tag">回测</span></div>
       <div class="doc-meta"><span>约 23.6k 字</span><span>阅读约 41 分钟</span><span>17 节</span><span>数据截止 2026-11-12</span></div>
@@ -116,7 +116,7 @@
     </details>
 
     <article class="prose">
-<aside class="note note-head"><p>🌐 English version: <a href="skill-spot-bidding-quant-en.html">SKILL_EN.md</a> ｜ 姊妹技能：<a href="skill-electricity-trading-expert.html">电力交易专家</a>（市场规则/结算/碳市场）、<a href="skill-virtual-power-plant.html">虚拟电厂专家</a>（资源聚合/运营）。本技能只回答&quot;怎么算、怎么报、怎么验证&quot;。</p><p>版本 v1.9 · 数据截止 2026-11-12</p><p><strong>维护入口</strong>：<code>tools/selftest.py</code>（跑通即代表正文指标未过期）、<code>knowledge/调研-量化报价与厂商实践-2026-11.md</code>（厂商与专利公开信息）、<code>knowledge/省级市场状态表-2026-11.md</code>（省别参数先行确认）、<code>knowledge/量化报价与交易风控-工程化-2026-11.md</code>（工程闭环、规则版本库、风控限额、结算对账与归因）。</p><p><strong>2026-2027 未定事项</strong>：《电力现货市场基本规则（征求意见稿）》（意见截止 2026-11-18，拟 2027-01-01 施行）、各省报价段数与限价参数年度调整、二次限价机制试点、新能源报量不报价的适用范围、公开数据披露时点与修订口径。</p></aside>
+<aside class="note note-head"><p>🌐 English version: <a href="skill-spot-bidding-quant-en.html">SKILL_EN.md</a> ｜ 姊妹技能：<a href="skill-electricity-trading-expert.html">电力交易专家</a>（市场规则/结算/碳市场）、<a href="skill-virtual-power-plant.html">虚拟电厂专家</a>（资源聚合/运营）。本技能只回答&quot;怎么算、怎么报、怎么验证&quot;。</p><p>版本 v2.0 · 数据截止 2026-11-12</p><p><strong>维护入口</strong>：<code>tools/selftest.py</code>（跑通即代表正文指标未过期）、<code>knowledge/调研-量化报价与厂商实践-2026-11.md</code>（厂商与专利公开信息）、<code>knowledge/省级市场状态表-2026-11.md</code>（省别参数先行确认）、<code>knowledge/量化报价与交易风控-工程化-2026-11.md</code>（工程闭环、规则版本库、风控限额、结算对账与归因）。</p><p><strong>2026-2027 未定事项</strong>：《电力现货市场基本规则（征求意见稿）》（意见截止 2026-11-18，拟 2027-01-01 施行）、各省报价段数与限价参数年度调整、二次限价机制试点、新能源报量不报价的适用范围、公开数据披露时点与修订口径。</p></aside>
 <hr>
 <h2 id="s1">0. 角色定义与行为规范</h2>
 <h3 id="s2">0.1 角色画像</h3>
@@ -388,7 +388,7 @@ CVaR_α = 最差 α 概率质量上的加权平均</code></pre>
 
 
 <section class="related" aria-labelledby="skill-modules-title">
-      <div class="related-head"><h2 id="skill-modules-title">适用知识模块</h2><span>3</span></div>
+      <div class="related-head"><h2 id="skill-modules-title">适用知识模块</h2><span>4</span></div>
       <div class="related-grid">
         <a class="related-card" href="量化报价与交易风控-工程化-2026-11.html">
           <span class="related-type">跨区对照</span>
@@ -404,6 +404,11 @@ CVaR_α = 最差 α 概率质量上的加权平均</code></pre>
           <span class="related-type">跨区对照</span>
           <b>101 问 C · 结算、TTS 与政策演进</b>
           <span>第 65–101 问：省间日内、水电与调峰、安全校核、市场治理、应急熔断与免责。</span>
+        </a>
+        <a class="related-card" href="交易台日课与异常处置-SOP-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>交易台日课与异常处置 SOP</b>
+          <span>把交易台一日的五个时钟落成可执行流程：盘前简报、报价复核、盘中触发线、盘后复盘、交接班，配盘前简报、报价复核、异常事件三张模板与升级路径；本模块是流程与模板，规则值以链接模块与省级规则为准。</span>
         </a>
       </div>
 
@@ -513,10 +518,10 @@ CVaR_α = 最差 α 概率质量上的加权平均</code></pre>
 <nav class="page-aux" aria-label="页面辅助">
   <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
 </nav>
-<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v1.9" data-cutoff="2026-11-12" data-latest="2026-11-18" data-count="89">
-  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v1.9）" title="查看更新记录（当前 v1.9）">
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.0" data-cutoff="2026-11-19" data-latest="2026-11-19" data-count="90">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.0）" title="查看更新记录（当前 v2.0）">
     <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
-    <span class="cl-badge-ver">v1.9</span>
+    <span class="cl-badge-ver">v2.0</span>
     <span class="cl-badge-label">更新记录</span>
   </button>
   <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
@@ -525,8 +530,8 @@ CVaR_α = 最差 α 概率质量上的加权平均</code></pre>
       <header class="cl-head">
         <div class="cl-head-main">
           <span class="cl-kicker">RELEASE NOTES</span>
-          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v1.9</span></h2>
-          <p class="cl-sub" id="cl-subtitle">当前版本 v1.9 · 数据截止 2026-11-12 · 89 条记录</p>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.0</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.0 · 数据截止 2026-11-19 · 90 条记录</p>
         </div>
         <div class="cl-actions">
           <div class="cl-lang" role="group" aria-label="切换语言">
@@ -543,7 +548,7 @@ CVaR_α = 最差 α 概率质量上的加权平均</code></pre>
         </div>
       </div>
       <footer class="cl-foot">
-        <span data-changelog-meta>v1.9 · 2026-11-12 · 89 条记录</span>
+        <span data-changelog-meta>v2.0 · 2026-11-19 · 90 条记录</span>
         <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
       </footer>
     </div>

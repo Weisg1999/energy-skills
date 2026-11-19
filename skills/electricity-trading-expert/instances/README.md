@@ -1,6 +1,6 @@
 # 实例包：中长期持仓、煤电收益与省间组合的可配置切片
 
-> 目录定位：`skills/electricity-trading-expert/instances/` 是**实例层**，不是知识模块，不改变知识库的 101 模块 / 13 分区计数。每个子目录是"一省 + 一主体 + 一套合约/资产 + 一个规则版本"的配置包，交易员只改 JSON 与 CSV，不改代码。当前三个切片：山东煤电中长期持仓、甘肃煤电容量电价与辅助服务、甘肃风电送山东省间组合。
+> 目录定位：`skills/electricity-trading-expert/instances/` 是**实例层**，不是知识模块，不改变知识库的 101 模块 / 13 分区计数。每个子目录是"一省 + 一主体 + 一套合约/资产 + 一个规则版本"的配置包，交易员只改 JSON 与 CSV，不改代码。当前七个切片：山东煤电中长期持仓、甘肃煤电容量电价与辅助服务、甘肃风电送山东省间组合、四川水电丰平枯对冲、云南梯级水电区域组合、辽宁核电机制电价分账、山东午间负价日失败复盘。
 
 ## 1. 为什么要有这一层
 
@@ -33,18 +33,30 @@ instances/
 ├── gansu-coal-capacity-ancillary-2026-11/ # 甘肃 2×660 MW 煤电，容量+辅助服务
 │   ├── data/market_demo.csv               # 12 月三段价格与合约电量
 │   └── out/demo/
-└── gansu-wind-to-shandong-2026-11/        # 甘肃 200 MW 风电送山东
-    ├── data/profile_demo.csv              # 12 月发电量、合同权重、落地价、绿电比例
+├── gansu-wind-to-shandong-2026-11/        # 甘肃 200 MW 风电送山东
+│   ├── data/profile_demo.csv              # 12 月发电量、合同权重、落地价、绿电比例
+│   └── out/demo/
+├── sichuan-hydro-2026-11/                 # 四川 300 MW 径流式水电，丰平枯分期对冲
+│   └── out/demo/
+├── yunnan-hydro-2026-11/                  # 云南 600 MW 梯级水电，区域现货 + 多线合账
+│   └── out/demo/
+├── liaoning-nuclear-2026-11/              # 辽宁 6,000 MW 级核电，机制电价两条线分账
+│   └── out/demo/
+└── shandong-negative-price-replay-2026-11/ # 山东 200 MW 光伏，负价日策略失败复盘
     └── out/demo/
 ```
 
-### 2.1 三个切片的分工
+### 2.1 七个切片的分工
 
 | 包 | 主体 | 规则主线 | 运行链 | 结算重点 |
 |---|---|---|---|---|
 | `shandong-thermal-hedge-2026-11/` | 600 MW 煤电 | 山东现货 + 中长期分解 + CfD | D-1 分解 → 5 情景 carry/shape → D-7~D-1 滚动 → T+1 六桶桥 | 期间电量→日电量、峰谷窗口、对冲比例、桥闭合 |
 | `gansu-coal-capacity-ancillary-2026-11/` | 2×660 MW 公用煤电 | 甘发改价格规〔2025〕4号容量补偿 330 元/kW·年；现货 V3.2；1656 号中长期 | 四模式出力 → 电能量/容量/辅助服务 → 考核扣减 → 敏感性 → 临界值 | 容量供需系数、一次/二次/三个月考核、深度调峰与调频备用 |
 | `gansu-wind-to-shandong-2026-11/` | 200 MW 风电项目公司 | 发改办体改〔2026〕275号、发改能源规〔2025〕1656号、2027 跨省跨区输电价 | 月度电量 → 合同分解 → 通道扣减 → 三种组合 → 敏感性 | 输电价按落地电量、网损按发电量、绿电溢价只落合同内电量 |
+| `sichuan-hydro-2026-11/` | 300 MW 径流式水电（常规直购机组） | 规则体系 V4.0（行业口径）+ 川发改能源〔2025〕420号/价格〔2025〕421号架构，均未核到省级正式印发 | 丰平枯合同分解 → 金融差价结算 → 弃水情景 → 三策略比较 → 敏感性 | 中长期纯金融对冲、物理电量按现货价结算（C）；现货连续结算试运行未转正 |
+| `yunnan-hydro-2026-11/` | 两库三级 600 MW 梯级水电 | 南方区域现货 2026-10-24 正式运行（发改办体改〔2026〕715号）+ 云能源规〔2025〕198号 + 71 号草案 | 月度电量 → 合同分解 → 96 点捕获价结算 → 绿证/机制差价/调节容量多线 → 三组合与 15 敏感性 | 捕获价按发电加权并与时间均价对比；机制差价与绿证分开计线防重 |
+| `liaoning-nuclear-2026-11/` | 6,000 MW 级核电厂（两个机组组） | 辽宁现货试行 V4.0（1+7，2026-01-01 新版限价）+ 辽发改价格〔2026〕142号核电机制电价 | 24 时段机制电量认定 → 机制/电能量两条结算线分账 → 负价时段敏感性 → T+1 五桶差异桥 | 21h 窗口 × 80%（A）；机制线与差价线两本账，最后对账恒等式闭合 |
+| `shandong-negative-price-replay-2026-11/` | 200 MW 光伏电站/聚合商（分布式光伏聚合） | 新版山东规则（2026-01-01）+ 鲁发改价格〔2025〕576号、〔2026〕149号机制电价 | 单日三策略结算重放 → 损失归因 → 三情景 → 午间价格下限 × 压出力边界扫描 → 复盘五问 | 失败复盘包（复盘库案例 1 可运行版）：P50 满发申报撞 −80 元/MWh 地板价 |
 
 三包输入形态不同：山东用 96 点 D-1 / T+1 / 滚动；甘肃煤电与甘肃送山东用 12 个月月度表。规则块随包变化（山东 `spot`/`mid_long_term`/`settlement`/`deviation`，甘肃煤电 `capacity`/`ancillary`/`energy`/`cost`，省间 `interprovincial`/`delivery`/`market`），runner 只校验本包声明的块。
 
@@ -196,10 +208,12 @@ day_offset,forecast_output_mwh,position_before_mwh
 ## 6. 运行与产物
 
 ```bash
-# 三个包各自校验与演示
+# 七个包各自校验与演示
 python skills/electricity-trading-expert/instances/<pack>/run.py --check-config
 python skills/electricity-trading-expert/instances/<pack>/run.py --demo
-# <pack> = shandong-thermal-hedge-2026-11 / gansu-coal-capacity-ancillary-2026-11 / gansu-wind-to-shandong-2026-11
+# <pack> = shandong-thermal-hedge-2026-11 / shandong-negative-price-replay-2026-11
+#        / gansu-coal-capacity-ancillary-2026-11 / gansu-wind-to-shandong-2026-11
+#        / sichuan-hydro-2026-11 / yunnan-hydro-2026-11 / liaoning-nuclear-2026-11
 
 # 山东持仓：用自己的 D-1 / T+1 / 滚动数据
 python skills/electricity-trading-expert/instances/shandong-thermal-hedge-2026-11/run.py \
@@ -269,7 +283,7 @@ python skills/electricity-trading-expert/instances/gansu-wind-to-shandong-2026-1
 
 ## 11. 跨包总盘与月度归档（不是第 24 个包）
 
-组合层只读已有实例包的产物，不新增实例包，也不改变 **23 包 / 11 个省级地区 / 9 个技能**的计数。当前 demo 清单 `portfolio-demo-2026-11.json` 跨 6 个省级地区、3 个交易技能、12 个包，用于演示汇总口径，不代表真实持仓。
+组合层只读已有实例包的产物，不新增实例包，也不改变 **31 包 / 12 个省级地区 / 9 个技能**的计数。当前 demo 清单 `portfolio-demo-2026-11.json` 跨 6 个省级地区、3 个交易技能、12 个包，用于演示汇总口径，不代表真实持仓。
 
 ### 11.1 组合清单与总盘
 

@@ -1,0 +1,244 @@
+{
+  "meta": {
+    "instance_id": "guangdong-retail-inversion-2026-11",
+    "province": "广东",
+    "market": "广东电力市场（南方区域广东价区）",
+    "entity_type": "售电公司",
+    "rule_version": "2026-11-08 规则快照；南方区域正式方案 2026-09-20",
+    "currency": "CNY",
+    "data_cutoff": "2026-11-12",
+    "grade": "D",
+    "package_kind": "strategy_failure_boundary",
+    "case_ref": "knowledge/合成案例复盘库-2026-11.md 案例 7（批零倒挂·套餐无联动无止损）",
+    "scope": "月度电能量口径的批零倒挂复盘：固定套餐（失败盘）vs 联动套餐（对照盘）vs 止损改造（止损盘）三条损益轨道重放、客户群×月份倒挂归因、止损边界扫描（批发成本涨幅×套餐联动比例×止损线）；不含输配电价、政府性基金及附加、基本电费/需量电费、绿电溢价、容量补偿、辅助服务、坏账、用户流失、解约争议成本与税费",
+    "units": {
+      "power": "MW",
+      "energy": "MWh",
+      "price": "CNY/MWh",
+      "slot": "月度（YYYY-MM）",
+      "market_time_unit_min": 15,
+      "conversion": "1 CNY/MWh = 0.001 CNY/kWh"
+    },
+    "disclaimer": "本实例包是 D 级合成样板，不构成报价、投资或法律建议；客户组合、套餐价、批发成本与现货价格路径全部为合成数据，不对应任何真实售电公司、用户、合同或交易结果。"
+  },
+  "rules": {
+    "spot": {
+      "province_spot_formal": "2023-12-28 广东省级现货转正式运行（B）",
+      "regional_spot_formal": "2026-10-24 南方区域市场转正式运行（A）",
+      "price_zone": "南方区域广东价区",
+      "declare_floor_cny_per_mwh": -50.0,
+      "clear_floor_cny_per_mwh": -50.0,
+      "clear_cap_cny_per_mwh": 1800.0,
+      "market_time_unit_min": 15,
+      "points_per_day": 96,
+      "settlement_basis": "用户侧统一结算点、15 分钟节点价、小时平均用于结算（B）；实时与日前衔接，偏差电量按实时市场价格结算（B）",
+      "observed_range_2026": "2026 年 1–9 月日前约 425–696 厘/kWh、实时约 372–727 厘/kWh（B）；2026-04-11 实时最高 0.978 元/kWh（C），在 −50–1,800 元/MWh 内属尖峰而非接近上限",
+      "historical_pilot": {
+        "declare": "0-1000 CNY/MWh",
+        "clear": "70-1500 CNY/MWh",
+        "status": "首批试点旧口径，2026 年不得作为现行唯一参数"
+      },
+      "grade": "A/B",
+      "source": "广东省级知识模块 §0.1、§2、§4.1、§4.2、§4.3（南方电网总调〔2026〕16号；南方区域 715 号复函）"
+    },
+    "retail_market": {
+      "platform": "广东电力市场零售平台公开比价（C）",
+      "retailers_2025": 635,
+      "power_users_2025": 139128,
+      "retail_avg_2025_cny_per_mwh": 380.3,
+      "retail_avg_2026h1_cny_per_mwh": 407.4,
+      "margin_2026h1_cny_per_mwh": 3.9,
+      "loss_sample_2026h1": "500 家样本中 298 家亏损（行业口径，C）",
+      "price_linkage_notice": "2026-06-08《关于加强电力零售市场管理有关事项的通知》：零售价格反映批发成本、套餐公开、禁止低价与阴阳合同；未核到正式文号，按 B/C 处理",
+      "package_types": [
+        "fixed",
+        "tou",
+        "market_linked",
+        "floor_plus_float",
+        "service_fee"
+      ],
+      "grade": "B/C",
+      "source": "广东省级知识模块 §0.2、§1.2、§6.1、§6.2（635 家售电公司、139,128 家电力用户为 C 级行业口径；零售均价与度电收益为 B/C）"
+    },
+    "deviation": {
+      "national_framework": "发改能源规〔2025〕1656 号第七十四条：差价结算/差量结算原则（A）",
+      "guangdong_status": "±3% 触发、±5% 按 2 倍考核仅见市场宣传材料，未核到正式文件，属 C 级线索；不得写成现行统一规则",
+      "contract_basis": "零售偏差/考核由零售合同条款决定，不是统一规则（B）；现货偏差电量按实时市场价格结算（B）",
+      "spot_deviation_scale": "2025 年现货偏差电量约 462.5 亿 kWh、占用户总用电约 10.1%（C）：现货决定边际购电成本，敞口小不等于风险小",
+      "grade": "B/C",
+      "source": "广东省级知识模块 §3、§5、§6.1（1656 号文为国家框架，A）"
+    },
+    "guarantee": {
+      "current": {
+        "formula": "max(过去 12 个月批发购电量×8 元/MWh, 2 个月最大购电量×50 元/MWh)",
+        "document": "发改体改规〔2021〕1595 号",
+        "effective": true
+      },
+      "draft_2026_09_04": {
+        "formula": "max(200 万元, 预计年售电量×10 元/MWh×调整系数)，系数 1-10",
+        "status": "草案，拟 2027-01-01 施行，未生效",
+        "effective": false
+      },
+      "grade": "A/B",
+      "source": "发改体改规〔2021〕1595 号（现行，A）；2026-09-04 售电公司管理办法修订征求意见稿（草案，B）；全国性规则，广东省级知识模块未单列"
+    },
+    "settlement": {
+      "timeline": "核对版第 5 个工作日、正式版第 8 个工作日、账单第 10 个工作日；异议 15 个工作日、确认 5 个工作日、属实的下一周期追退补",
+      "document": "发改能源规〔2025〕976 号《电力市场计量结算基本规则》",
+      "grade": "A",
+      "source": "广东省级知识模块 §5；发改能源规〔2025〕976 号"
+    }
+  },
+  "portfolio": {
+    "segments": [
+      {
+        "name": "大工业（连续生产）",
+        "package_type": "fixed",
+        "share": 0.45,
+        "retail_price_cny_per_mwh": 405.0,
+        "forecast_sigma_pct": 0.03,
+        "opex_cny_per_mwh": 6.0
+      },
+      {
+        "name": "一般工商业",
+        "package_type": "fixed",
+        "share": 0.35,
+        "retail_price_cny_per_mwh": 410.0,
+        "forecast_sigma_pct": 0.05,
+        "opex_cny_per_mwh": 9.0
+      },
+      {
+        "name": "中小零售用户",
+        "package_type": "fixed",
+        "share": 0.2,
+        "retail_price_cny_per_mwh": 418.0,
+        "forecast_sigma_pct": 0.06,
+        "opex_cny_per_mwh": 12.0
+      }
+    ],
+    "annual_energy_mwh": 1200000.0,
+    "fixed_cost_cny_per_day": 1500.0,
+    "deviation_terms": {
+      "tolerance_share": 0.03,
+      "penalty_cny_per_mwh": 150.0,
+      "basis": "合同约定，D 级假设；广东现行统一考核规则未核实（C 级线索不得当省规则），实际测算按本合同字段"
+    },
+    "guarantee": {
+      "amount_cny": 11250000.0,
+      "annual_funding_rate": 0.01,
+      "annual_wholesale_mwh": 1200000.0,
+      "peak_two_month_mwh": 225000.0,
+      "basis": "按 1595 号现行公式 max(年批发电量×8 元/MWh, 2 个月最大购电量×50 元/MWh) 计算：9,600,000 与 11,250,000 取大；费率 1% 为 D 级假设"
+    }
+  },
+  "strategy": {
+    "baseline_linkage_share": 0.0,
+    "linkage": {
+      "pass_through": 0.95,
+      "adder_cny_per_mwh": 36.0,
+      "floor_cny_per_mwh": 370.0,
+      "cap_cny_per_mwh": 750.0,
+      "target_share": 0.6
+    },
+    "stop_loss": {
+      "margin_line_cny_per_mwh": 0.0,
+      "linkage_trigger_price_cny_per_mwh": 430.0,
+      "action_lag_months": 1,
+      "actions": [
+        "停止新增固定价签约",
+        "启动调价谈判",
+        "存量固定电量按比例转联动",
+        "提高中长期覆盖比例"
+      ]
+    },
+    "notes": "失败盘设定：baseline_linkage_share=0，全部固定价、无联动条款、无止损执行（对应案例 7 的核心错误）。止损动作的量化口径：触发次月（action_lag_months）起，固定电量按 linkage.target_share 转联动，联动价 = clamp(传导系数×月度加权采购成本 W + 加价, 下限, 上限)；停新签与提高覆盖为描述性动作，不改变本包电量路径。Track B/C 是对照情景（如果当年有联动/止损），不是历史事实。"
+  },
+  "policy": {
+    "profile_id": "guangdong-inversion-replay-v1",
+    "review_top_attribution": 5,
+    "scan": {
+      "spot_uplift_steps": [
+        0.0,
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5
+      ],
+      "linkage_share_steps": [
+        0.0,
+        0.2,
+        0.4,
+        0.6,
+        0.8,
+        0.95
+      ],
+      "stop_loss_line_steps": [
+        20.0,
+        10.0,
+        5.0,
+        0.0,
+        -10.0,
+        -20.0
+      ],
+      "safe_rule": "年度净边际 ≥ 0"
+    },
+    "review_boundary_note": "止损线为月度组合净边际警戒线（CNY/MWh，可为负=容忍更深亏损才动作）；联动触发价为月度加权采购成本触发线；两者任一触发即启动动作清单"
+  },
+  "contracts": [
+    {
+      "contract_id": "mt-2026-annual-base",
+      "type": "medium_term_fixed_price",
+      "coverage_ratio": 0.7,
+      "price_cny_per_mwh": 395.0,
+      "quantity_basis": "forecast_load_share",
+      "settlement": "Qc×Pc + (实际电量−Qc)×当月现货价；Qc = 覆盖比例×月度预测电量（按客户群预测份额分摊），偏差电量按实时价口径计（广东 §3，B）"
+    }
+  ],
+  "data_contract": {
+    "monthly": {
+      "path": "data/monthly_demo.csv",
+      "month_field": "month",
+      "grade": "D",
+      "source": "D 级合成月度路径；现货月均价量级参考广东 2026 年 1–9 月日前 425–696 厘/kWh 的观察区间（B）设定，不代表真实月度结算价",
+      "realized_price_field": "spot_base_cny_per_mwh",
+      "scenario_fields": [
+        "spot_s1_cny_per_mwh",
+        "spot_s2_cny_per_mwh",
+        "spot_s3_cny_per_mwh",
+        "spot_s4_cny_per_mwh"
+      ],
+      "scenario_labels": [
+        "s1 下行（当年压力测试只测的方向）",
+        "s2 中性（签约期假设）",
+        "s3 上行（未测方向）",
+        "s4 尖峰上行（未测方向，限价内）"
+      ],
+      "scenario_weights": [
+        0.15,
+        0.35,
+        0.3,
+        0.2
+      ],
+      "segments": [
+        {
+          "name": "大工业（连续生产）",
+          "forecast_field": "industrial_forecast_mwh",
+          "actual_field": "industrial_actual_mwh"
+        },
+        {
+          "name": "一般工商业",
+          "forecast_field": "commercial_forecast_mwh",
+          "actual_field": "commercial_actual_mwh"
+        },
+        {
+          "name": "中小零售用户",
+          "forecast_field": "retail_forecast_mwh",
+          "actual_field": "retail_actual_mwh"
+        }
+      ],
+      "release_cutoff": "月度结算数据按 976 号文账单时点 T+10 个工作日（示例）",
+      "release_cutoff_status": "未核到广东零售月度复盘数据的统一发布时点，按本地流程填写"
+    }
+  }
+}

@@ -1,0 +1,292 @@
+{
+  "meta": {
+    "instance_id": "shanghai-datacenter-vpp-2026-11",
+    "province": "上海",
+    "market": "上海市用户侧虚拟电厂需求响应（独立数据中心聚合资源切片）",
+    "entity_type": "独立数据中心（聚合为用户侧 VPP 资源）",
+    "rule_version": "沪经信运〔2025〕407号「1+5」体系（2025-06-23 发布）＋上海现货连续结算试运行口径",
+    "data_cutoff": "2026-11-12",
+    "grade": "A/B/C/D",
+    "scope": "覆盖：独立数据中心作为用户侧 VPP 资源参与邀约型需求响应的聚合能力折算、基线（通用 CBL）、邀约情景申报、T+1 响应认定与差异桥。不覆盖：中长期、现货电能量（仅背景，本包不参与）、辅助服务、容量补偿、绿证；不含未核到的上海 VPP 结算细则、考核罚款条款与官方补偿单价（挂待核实）",
+    "currency": "CNY",
+    "units": {
+      "power": "MW",
+      "energy": "MWh",
+      "price": "CNY/kWh",
+      "price_note": "需求响应激励沿用元/kWh 口径；上海现货限价用元/MWh（见 rules.spot 字段名后缀），两者差 1000 倍不要混写",
+      "load": "MW（净受电负荷；UPS/储能放电时为负）",
+      "time": "HH:MM",
+      "slot": "0-95（15 分钟一点）",
+      "conversion": "1 CNY/kWh = 1000 CNY/MWh"
+    },
+    "disclaimer": "本实例包是 D 级合成样板，不构成报价、投资或法律建议；不对应任何真实数据中心、聚合商、合同或计量数据。"
+  },
+  "rules": {
+    "vpp_plan": {
+      "document": "沪经信运〔2025〕407号《上海市用户侧虚拟电厂建设实施方案（2025-2027年）》",
+      "issued": "2025-06-19 成文，2025-06-23 发布",
+      "system_1plus5": "「1+5」体系 = 一个虚拟电厂运管平台 + 空调负荷、充换电站、新型储能、数据中心、工业负荷五类资源",
+      "targets_10k_kw": {
+        "2025": 110.0,
+        "2026": 160.0,
+        "2027": 220.0
+      },
+      "targets_status": "2025/2026/2027 年可调能力目标 110/160/220 万 kW（A，模块原文）",
+      "data_center_target_2027_10k_kw": {
+        "access": 60.0,
+        "adjustable": 15.0
+      },
+      "data_center_target_status": "模块 §7.4 原文：「2027 年分资源目标为充换电 180/可调 50、楼宇空调 240/80、工业负荷 320/50、用户侧储能 40/25、数据中心 60/15 万 kW」；对照充换电句式，数据中心 60 为接入、15 为可调（A）。这是全市 2027 年规划目标，不是本数据中心的可调能力，更不是现货收益",
+      "call_2025_08_10k_kw": 116.27,
+      "call_2025_08_status": "2025-08 实测最大响应负荷首次突破 100 万 kW，事件口径（B/C）；不是长期可调能力",
+      "call_2026_07_10k_kw": 164.77,
+      "call_2026_07_status": "C 级行业口径，待省级原文确认",
+      "operators_2025_08": {
+        "count": 49,
+        "declared_10k_kw": 203.24,
+        "tests": 25,
+        "status": "49 家运营商、总申报可调 203.24 万 kW、2025 年 25 次专项实测（C 级行业口径，待省级原文确认）"
+      },
+      "aggregation_threshold": null,
+      "threshold_note": "407 号未设统一 MW 聚合门槛（模块 §7.4）；本包不套用外省 5 MW / 1 MW 门槛",
+      "management_center": "上海市虚拟电厂管理中心",
+      "management_center_status": "待核实：调用组织方的职责条款未在本库两份模块正文核到（模块 search 标签含「上海市虚拟电厂管理中心」）；模块 §9.1 口径为「可调负荷（空调、充换电、数据中心、工业负荷）优先通过 VPP 参与需求响应」（模块口径引述）",
+      "participation": "满足准入要求后 VPP 可按独立主体参与中长期、现货及辅助服务市场（A）；但「方案允许」不等于「全部资源已可结算」，能力测试、注册与结算细则待省级闭环",
+      "grade": "A",
+      "source": "沪经信运〔2025〕407号；knowledge/上海电力市场-2026-11.md §0.1、§2、§7.4、§9.1、Q4"
+    },
+    "demand_response": {
+      "notice": "D 级假设：日前邀约（邀约时间、响应窗口以上海市虚拟电厂管理中心/邀约通知为准）",
+      "duration_h": 1.0,
+      "duration_status": "D 级假设：单次事件持续 1 h 仅用于跑通算例；上海单次响应时限与事件时长未在本库核到",
+      "single_response_deadline": null,
+      "single_response_deadline_status": "待核实：数据中心单次响应时限（指令后多少分钟内达到目标功率）未在本库核到",
+      "window": "14:00-15:00",
+      "window_status": "D 级假设的夏季午后缺口时段演示；实际以邀约通知为准",
+      "dispatchable_window": "13:00-16:00",
+      "dispatchable_window_status": "D 级假设：数据中心申报的可调窗口（制冷预冷 + UPS SOC 窗口 + 批次任务排程的交集演示）",
+      "min_response_rate": 0.5,
+      "min_response_rate_status": "D 级演示假设：《虚拟电厂聚合调度与商业模式》§7.2 载浙江口径「最大/平均负荷双低于基线 + 响应率 ≥50%」，上海有效性认定门槛未在本库核到",
+      "overshoot_cap_ratio": 1.2,
+      "overshoot_cap_status": "D 级假设：超过申报值部分按 1.2 倍封顶计量（借用通用口径演示），上海超额封顶规则未在本库核到",
+      "bid_cap_cny_per_kwh": null,
+      "bid_cap_status": "待核实：上海需求响应补偿单价与报价上限未在本库核到；严禁把深圳 5 元/kWh、江苏 15/10 元/kWh 或模块 §7.5 算例 2.5 元/kWh 套给上海",
+      "no_double_participation": "同一调节行为不得在现货、辅助服务、需求响应中重复取酬（模块 §5.3）；同一资源同一时段不得重复参与需求响应（D 级合同约束）",
+      "test_min_scale_ratio": 0.2,
+      "test_min_scale_status": "D 级演示假设：专项实测规模 ≥ 申报值 20%（江苏口径借用演示）；上海实测认定比例未在本库核到。上海已有 25 次专项实测的组织事实（C）",
+      "grade": "D",
+      "source": "建模假设；邀约、认定与补偿细则待上海原文。事实性内容见 rules.vpp_plan（A）与模块 §2.4、§5.3、§7.2"
+    },
+    "baseline": {
+      "method": "5 日相似日平均法（通用 CBL 口径）",
+      "count": 5,
+      "deviation": 0.25,
+      "adjustment": 1.0,
+      "sample_min": 15,
+      "aggregation": "先按资源算基线，再按 VPP 汇总；同一资源不得重复计入（模块 §7.2 基线风险：同一用户被多家聚合商代理会导致基线重复计算）",
+      "status": "待核实：上海 VPP 基线算法未在本库核到；本包按《虚拟电厂聚合调度与商业模式》§7.2 通用口径建模（最近 5 个同类日、剔除日电量偏离候选集均值约 ±25% 的异常日、乘修正系数），不能当作上海正式口径",
+      "grade": "B/D",
+      "source": "knowledge/虚拟电厂聚合调度与商业模式-2026-11.md §7.2（通用 CBL 方法）；上海口径待核"
+    },
+    "spot": {
+      "included": false,
+      "status": "上海现货连续结算试运行：2025-10-29 首个申报日、2025-10-30 首个运行日，转正待核（B/A-B，沪发改能源〔2025〕205/206号）；本包不参与现货，仅作背景",
+      "clear_floor_cny_per_mwh": 0.0,
+      "clear_cap_cny_per_mwh": 1400.0,
+      "clear_cap_status": "申报/出清限价上限 1.4 元/kWh（=1,400 元/MWh）、下限 0，2026-02 通知口径（C 级行业报告口径，待省级原文）",
+      "secondary_price_cap_cny_per_mwh": 623.25,
+      "secondary_price_cap_status": "二级价格限值 623.25 元/MWh（燃煤标杆 1.5 倍，L=1 触发等比例折价，A/B）；它是二级限价触发线，不是申报上限，与 1,400 元/MWh 分属两层",
+      "vpp_spot_access": "风光、生物质、独立储能、VPP 在现货发电侧为「适时引入」（A/B）；数据中心作为可调负荷优先通过 VPP 参与需求响应（模块口径），现货参与待准入细则",
+      "grade": "B/C",
+      "source": "knowledge/上海电力市场-2026-11.md §0.1、§4.1、§4.2、§7.4"
+    },
+    "settlement": {
+      "incentive_formula": "激励 = 结算单价(CNY/kWh) × 计量响应电量(kWh)；计量响应电量 = min(实际响应电量, 中标容量 × 事件时长 × 1.2)（封顶比例为 D 级假设），有效性认定不通过则不计费（D 级假设口径）",
+      "unit_price_cny_per_kwh": null,
+      "unit_price_status": "待核实：上海用户侧 VPP/数据中心需求响应补偿单价未在本库两份模块核到，官方单价缺位，本包只能挂 null；演示中标价与报价均为 D 级合成",
+      "assumed_demo_bid_price_cny_per_kwh": {
+        "direct": 4.2,
+        "self": 3.8
+      },
+      "assumed_demo_price_status": "D 级演示价，仅用于跑通算例，不得用于结算或报价",
+      "funding": "待核实：需求响应资金渠道与分摊方式未在本库核到",
+      "cycle": "以交易中心 / 管理中心结算通知为准（未核实固定周期）",
+      "customer_share_basis": "分成基数、考核罚款与代结算费用承担须写进合同（模块 §7.4 分成纪律）；「运营商与资源方 1:9」只是行业口语口径，不是权威标准",
+      "grade": "D",
+      "source": "D 级演示参数；上海 VPP 结算细则待核。模块 §7.5 单次调用算例（10 MW×2 h×2.5 元/kWh）为 D 级合成算例，不是上海价格"
+    }
+  },
+  "asset": {
+    "aggregation_structure": "单主体独立聚合：一座独立数据中心园区 + 附属办公园区资源共同聚合为一个用户侧 VPP 资源（D 级结构假设；407 号未设统一 MW 聚合门槛）",
+    "it_load_rated_mw": 42.0,
+    "it_load_status": "D 级合成：IT 负载额定 42 MW；在线服务任务不可断，仅批处理任务可迁移/可暂停",
+    "pue_design": 1.3,
+    "pue_annual_avg": 1.27,
+    "pue_status": "D 级合成：设计 PUE 1.30、年均 PUE 1.27；制冷负荷约等于 IT 负载 × (PUE−1) 的量级，削制冷与 IT 发热耦合，不能把制冷全额当可调",
+    "cooling_rated_mw": 10.5,
+    "ups_rated_mw": 6.0,
+    "ups_energy_note": "UPS 备电电池按 0.5 h 备电窗口建模（D 级假设）：功率能力与能量约束分开，1 h 事件内不能全程满功率放电",
+    "campus_rated_mw": 3.0,
+    "grade": "D",
+    "source": "示例占位；实际按数据中心 IT 台账、UPS 配置、制冷系统与 PUE 实测填写"
+  },
+  "resources": {
+    "items": [
+      {
+        "id": "dc_cooling",
+        "name": "数据中心制冷系统",
+        "category": "数据中心（制冷）",
+        "control_type": "direct",
+        "max_mw": 10.5,
+        "adjustable_ratio": 0.25,
+        "availability": 0.95,
+        "duration_h": 1.0,
+        "customer_share": 0.72,
+        "allow_negative_load": false,
+        "other_market_commitment": false,
+        "task_constraint": "冷冻水温度回调 + 蓄冷利用；回调幅度受 IT 进风温度上限约束，与 PUE 耦合（D 级假设）",
+        "load_field": "dc_cooling_mw",
+        "grade": "D",
+        "source": "示例占位；实际按冷机铭牌、蓄冷罐容量、温度回调边界与历史响应率填写"
+      },
+      {
+        "id": "dc_ups",
+        "name": "UPS 备电电池",
+        "category": "数据中心（备电）",
+        "control_type": "direct",
+        "max_mw": 6.0,
+        "adjustable_ratio": 0.75,
+        "availability": 0.9,
+        "duration_h": 0.5,
+        "customer_share": 0.62,
+        "allow_negative_load": true,
+        "other_market_commitment": false,
+        "task_constraint": "备电窗口 0.5 h（D 级假设）：放电量 = 功率 × 0.5 h 封顶；放电后必须留足备电 SOC，响应后恢复期不参与调用",
+        "load_field": "dc_ups_mw",
+        "grade": "D",
+        "source": "示例占位；实际按 UPS/储能电池容量、备电时长要求与 SOC 窗口填写"
+      },
+      {
+        "id": "dc_it_batch",
+        "name": "可迁移批处理算力",
+        "category": "数据中心（IT 负载）",
+        "control_type": "self",
+        "max_mw": 12.0,
+        "adjustable_ratio": 0.5,
+        "availability": 0.85,
+        "duration_h": 1.0,
+        "customer_share": 0.75,
+        "allow_negative_load": false,
+        "other_market_commitment": false,
+        "task_constraint": "仅批处理任务可迁移/可暂停（离线训练、渲染、批处理报表）；在线服务任务不可断（D 级约束）。迁移需提前排程，响应由数据中心运维自行安排（self）",
+        "load_field": "dc_it_batch_mw",
+        "grade": "D",
+        "source": "示例占位；实际按任务排程、可迁移作业占比与迁回成本填写"
+      },
+      {
+        "id": "campus_hvac",
+        "name": "附属园区办公空调",
+        "category": "数据中心（附属）",
+        "control_type": "self",
+        "max_mw": 3.0,
+        "adjustable_ratio": 0.3,
+        "availability": 0.9,
+        "duration_h": 1.0,
+        "customer_share": 0.65,
+        "allow_negative_load": false,
+        "other_market_commitment": false,
+        "task_constraint": "办公舒适度约束下的轮停/调温，由园区物业自行安排（self）；与机房制冷分表计量，不与 IT 负荷混算",
+        "load_field": "campus_hvac_mw",
+        "grade": "D",
+        "source": "示例占位；实际按空调装机、可调比例与舒适度约束填写"
+      }
+    ]
+  },
+  "policy": {
+    "profile_id": "shanghai-datacenter-dr-balanced-v1",
+    "description": "直控（制冷+UPS）按可调能力 85% 申报、报价 4.2 元/kWh；自控（批处理+园区空调）按 80% 申报、报价 3.8 元/kWh；计划执行率 95%；CVaR 置信 80%",
+    "bid_ratio": {
+      "direct": 0.85,
+      "self": 0.8
+    },
+    "bid_price_cny_per_kwh": {
+      "direct": 4.2,
+      "self": 3.8
+    },
+    "bid_price_status": "D 级演示价：上海无已核实的官方单价与报价上限（rules.demand_response.bid_cap 为 null），报价不设上限校验，只打印警告",
+    "declaration_rounding_mw": 0.1,
+    "planned_delivery_ratio": 0.95,
+    "scenario_cvar_confidence": 0.8,
+    "review_top_resources": 4,
+    "grade": "D",
+    "note": "风格是数据中心/聚合商的选择，不是事实；改 profile_id 并保留旧文件，便于比较风格差异。"
+  },
+  "contracts": {
+    "shortfall": {
+      "delivery_threshold": 0.95,
+      "extra_customer_share": 0.05,
+      "basis": "合同约定，D 级假设；按控制类型执行率触发，额外让利给客户。考核与基线风险要写进合同，不能只写分成比例（模块 §7.5）"
+    },
+    "opex": {
+      "variable_cny_per_mwh": 120.0,
+      "fixed_cny_per_event": 3000.0,
+      "basis": "D 级假设；覆盖值守、通信、计量核验、任务迁移调度与平台摊销"
+    },
+    "grade": "D",
+    "source": "示例合同与成本参数，不对应任何真实用户合同"
+  },
+  "qualification": {
+    "test_date": "2026-06-30",
+    "test_window": "14:00-15:00",
+    "test_scale_mw": 2.4,
+    "declared_at_test_mw": 6.2,
+    "test_items": "响应时间、调节精度、持续时间、通信在线率四项（模块 §2.4 能力认定口径）；上海专项实测组织方与判定标准待省级原文",
+    "result": "pass",
+    "grade": "D",
+    "source": "示例；实际以上海市虚拟电厂管理中心/供电公司调控性能测试记录为准"
+  },
+  "data_contract": {
+    "history": {
+      "file": "data/history_demo.csv",
+      "date_field": "date",
+      "slot_field": "slot",
+      "load_fields": {
+        "dc_cooling": "dc_cooling_mw",
+        "dc_ups": "dc_ups_mw",
+        "dc_it_batch": "dc_it_batch_mw",
+        "campus_hvac": "campus_hvac_mw"
+      },
+      "grade": "D"
+    },
+    "event": {
+      "file": "data/event_demo.csv",
+      "scenario_field": "scenario",
+      "scenario_weights": [0.25, 0.5, 0.25],
+      "event_date_field": "event_date",
+      "start_field": "event_start",
+      "end_field": "event_end",
+      "required_mw_field": "required_mw",
+      "marginal_price_field": "marginal_price_cny_per_kwh",
+      "grade": "D"
+    },
+    "t1_loads": {
+      "file": "data/t1_loads_demo.csv",
+      "date_field": "date",
+      "slot_field": "slot",
+      "load_fields": {
+        "dc_cooling": "dc_cooling_mw",
+        "dc_ups": "dc_ups_mw",
+        "dc_it_batch": "dc_it_batch_mw",
+        "campus_hvac": "campus_hvac_mw"
+      },
+      "grade": "D"
+    },
+    "t1_event": {
+      "file": "data/t1_event_demo.csv",
+      "control_type_field": "control_type",
+      "cleared_price_field": "cleared_price_cny_per_kwh",
+      "awarded_mw_field": "awarded_mw",
+      "grade": "D"
+    }
+  }
+}
