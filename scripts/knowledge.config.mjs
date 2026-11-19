@@ -142,7 +142,7 @@ export const skillDocs = [
     summaryEn: 'Spot, medium/long-term, settlement and risk (incl. Shandong position and negative-price replay, Sichuan/Yunnan hydro, Liaoning nuclear, Gansu coal capacity plus ancillary, and Gansu-to-Shandong interprovincial instance packs)',
     tags: ['技能', '现货', '结算', '风控'],
     tagsEn: ['skill', 'spot', 'settlement', 'risk'],
-    modules: ['m-spot-a', 'm-spot-b', 'm-spot-c', 'm-spot-interprovincial', 'm-quant-risk', 'm-risk-credit', 'm-desk-sop', 'm-cases-replay', 'm-contracts-clauses'],
+    modules: ['m-spot-a', 'm-spot-b', 'm-spot-c', 'm-spot-interprovincial', 'm-quant-risk', 'm-risk-credit', 'm-desk-sop', 'm-cases-replay', 'm-contracts-clauses', 'm-flow-node', 'm-forecast-loop', 'm-cross-flex'],
   },
   {
     slug: 'virtual-power-plant',
@@ -152,7 +152,7 @@ export const skillDocs = [
     summaryEn: 'Aggregation, response and operations (incl. Shanghai, Shanghai datacenter, Zhejiang, Jiangsu fast-response, Liaoning and Shenzhen V2G instance packs)',
     tags: ['技能', 'VPP', '聚合', '商业模式'],
     tagsEn: ['skill', 'VPP', 'aggregation', 'business model'],
-    modules: ['m-vpp-core', 'm-vpp-book', 'm-dr-v2g', 'm-contracts-clauses'],
+    modules: ['m-vpp-core', 'm-vpp-book', 'm-dr-v2g', 'm-contracts-clauses', 'm-load-physics'],
   },
   {
     slug: 'carbon-asset-expert',
@@ -172,7 +172,7 @@ export const skillDocs = [
     summaryEn: 'Revenue stacking, investment decisions, degradation and assessment (incl. Anhui capacity-price and Guangdong spot-plus-frequency instance packs)',
     tags: ['技能', '储能', '投决', 'LCOS'],
     tagsEn: ['skill', 'storage', 'investment', 'LCOS'],
-    modules: ['m-storage-invest', 'm-storage-tech', 'm-storage-ems', 'm-contracts-clauses'],
+    modules: ['m-storage-invest', 'm-storage-tech', 'm-storage-ems', 'm-contracts-clauses', 'm-cluster-ems', 'm-ems-interface', 'm-cross-flex'],
   },
   {
     slug: 'renewable-project-development',
@@ -182,7 +182,7 @@ export const skillDocs = [
     summaryEn: 'Resources, LCOE, mechanism pricing and grid connection (incl. the Yunnan 2027 wind decision instance pack)',
     tags: ['技能', '新能源', 'LCOE', '并网'],
     tagsEn: ['skill', 'renewables', 'LCOE', 'grid'],
-    modules: ['m-renewable', 'm-grid', 'm-price-policy'],
+    modules: ['m-renewable', 'm-grid', 'm-price-policy', 'm-grid-test'],
   },
   {
     slug: 'spot-bidding-quant',
@@ -192,17 +192,17 @@ export const skillDocs = [
     summaryEn: 'Forecasting, bidding and backtesting (incl. Shandong thermal/storage/PV-plus-storage, Zhejiang spot storage, Mengxi wind-solar-storage, Shanxi storage, Gansu and Inner Mongolia West renewables instance packs)',
     tags: ['技能', '预测', '报价', '回测'],
     tagsEn: ['skill', 'forecast', 'bidding', 'backtest'],
-    modules: ['m-quant-risk', 'm-spot-b', 'm-spot-c', 'm-desk-sop'],
+    modules: ['m-quant-risk', 'm-spot-b', 'm-spot-c', 'm-desk-sop', 'm-flow-node', 'm-forecast-loop'],
   },
   {
     slug: 'ems-dispatch',
     title: 'EMS 优化调度',
     titleEn: 'EMS Dispatch',
-    summary: '96 点调度、SOC 与需量（含江苏零碳园区微网实例包）',
-    summaryEn: '96-interval dispatch, SOC and demand charges (incl. the Jiangsu zero-carbon park microgrid instance pack)',
+    summary: '96 点调度、SOC 与需量（含江苏零碳园区微网、山东独立储能电站日运行+考核复盘实例包）',
+    summaryEn: '96-interval dispatch, SOC and demand charges (incl. Jiangsu zero-carbon park microgrid and Shandong storage-station daily operation plus assessment replay instance packs)',
     tags: ['技能', 'EMS', 'SOC', '需量'],
     tagsEn: ['skill', 'EMS', 'SOC', 'demand charge'],
-    modules: ['m-storage-ems', 'm-micro-ems', 'm-scada'],
+    modules: ['m-storage-ems', 'm-micro-ems', 'm-scada', 'm-cluster-ems', 'm-ems-interface', 'm-forecast-loop'],
   },
   {
     slug: 'tariff-bill-optimization',

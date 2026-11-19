@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>可调负荷的物理真值：工艺硬约束、持续时长与恢复反弹 | energy-skills 知识库</title>
+<meta name="description" content="按维度穷举可调负荷能力，温控/工艺连续/算力/充电桩/楼宇五类的物理边界，硬约束与软约束之分，恢复反弹与基线，空调与电解铝合成算例。">
+<link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
+<script>
+(function(){try{var t=localStorage.getItem('es-theme');if(!/^(light|cream|green|dark)$/.test(t||'')){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/knowledge.css">
+<link rel="stylesheet" href="../assets/theme-menu.css">
+<link rel="stylesheet" href="../assets/changelog.css">
+</head>
+<body data-cat="vpp" id="top">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
+  <div class="crumb">
+    <span class="crumb-cat">11 · VPP</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">可调负荷的物理真值：工艺硬约束、持续时长与恢复反弹</span>
+  </div>
+  <div class="topbar-act">
+    <div class="theme-picker" data-theme-picker>
+      <button class="theme-toggle" type="button" data-theme-menu aria-label="选择主题" title="选择主题">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="5"/><circle cx="15" cy="9" r="5"/><circle cx="12" cy="15" r="5"/></svg>
+      </button>
+    </div>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../可调负荷的物理真值-2026-11.md">.md 源文件<small>knowledge/可调负荷的物理真值-2026-11.md</small></a>
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">11 · VPP</div>
+    <h2 class="nav-cat"><a href="../index.html#vpp">虚拟电厂</a></h2>
+    <ul class="nav-list">
+              <li><a href="虚拟电厂聚合调度与商业模式-2026-11.html">虚拟电厂：聚合、调度与商业模式（2026 版）</a></li>
+              <li><a href="走近虚拟电厂-主题笔记.html">走近虚拟电厂</a></li>
+              <li><a href="需求响应、车网互动与灵活性资源-2026-11.html">需求响应、车网互动与灵活性资源</a></li>
+              <li class="on" aria-current="page"><a href="可调负荷的物理真值-2026-11.html">可调负荷的物理真值：工艺硬约束、持续时长与恢复反弹</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#province"><b>03</b>中国省级市场</a></li>
+              <li><a href="../index.html#intl"><b>04</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>05</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>06</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>07</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>08</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">11 · VPP<i>知识模块</i></div>
+      <h1 class="doc-title">可调负荷的物理真值：工艺硬约束、持续时长与恢复反弹（2026-11）</h1>
+      <p class="lede">按维度穷举可调负荷能力，温控/工艺连续/算力/充电桩/楼宇五类的物理边界，硬约束与软约束之分，恢复反弹与基线，空调与电解铝合成算例。</p>
+      <p class="hook">可调负荷的物理真值</p>
+      <div class="tags"><span class="tag">可调负荷</span><span class="tag">需求响应</span><span class="tag">恢复反弹</span><span class="tag">工艺约束</span></div>
+      <div class="doc-meta"><span>约 6.0k 字</span><span>阅读约 11 分钟</span><span>11 节</span><span>数据截止 2026-11-19</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（11）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv2"><a href="#s4">1. 能力维度：先穷举，再分类</a></li>
+            <li class="lv2"><a href="#s5">2. 五类负荷的物理边界</a></li>
+            <li class="lv2"><a href="#s12">3. 硬约束 vs 软约束：真值的两层边界</a></li>
+            <li class="lv2"><a href="#s16">4. 恢复反弹与基线：净效果怎么算</a></li>
+            <li class="lv2"><a href="#s20">5. 合成算例（D 级）</a></li>
+            <li class="lv2"><a href="#s23">6. 对聚合与调度的含义</a></li>
+            <li class="lv2"><a href="#s27">7. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s28">8. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s29">9. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s30">速查</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>数据截止：2026-11-19｜定位：知识库模块（虚拟电厂·需求侧物理底座）</p><p>相关技能：<a href="../../skills/virtual-power-plant/SKILL.md">虚拟电厂专家</a>（资源聚合与能力测算）、<a href="../../skills/ems-dispatch/SKILL.md">EMS 优化调度专家</a>（可调负荷建模）、<a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a>（与储能对比）</p><p>用途：回答&quot;这类负荷到底能调多少、能调多久、调完会不会反弹、哪些边界是物理不可逾越的、聚合报价该按什么上限&quot;五类问题。本文做物理与工程整理；具体项目能力以实测、工艺手册与并网/调用协议为准。</p></aside>
+<hr>
+<h2 id="s1">0. 一页看懂</h2>
+<h3 id="s2">0.1 三句话</h3>
+<ul><li><strong>可调负荷不是储能</strong>：它靠&quot;暂时少用/多用&quot;提供灵活性，多数伴随<strong>恢复反弹</strong>——调用结束后要补回欠量，净节能往往为零，价值在<strong>时移</strong>而非省电。</li><li><strong>真值由工艺硬约束圈定</strong>：电解槽不能断电、数据中心 SLA 不能破、冷库温度不能超——这些是物理/安全边界，不可协商。合同里的舒适度、生产计划是<strong>软约束</strong>，可在硬约束内调整。报价上限必须按硬约束算。</li><li><strong>能力要按维度穷举，不能拿三个例子冒充全集</strong>：可调功率、方向、持续时长、响应速度、恢复反弹、调节精度、硬/软约束、基线难度、机会成本——每一类负荷在这九个维度上取值不同，聚合前必须逐维实测。</li></ul>
+<h3 id="s3">0.2 关键数字与口径</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>概念</th><th>含义</th><th>来源与级别</th></tr></thead><tbody><tr><td>可调上限</td><td>瞬时能减/增的功率（MW）</td><td>实测/工艺，A（定义）</td></tr><tr><td>持续时长</td><td>能维持调节多久（min/h）</td><td>热容/工艺/SOC，A（定义）</td></tr><tr><td>恢复反弹</td><td>调用结束后补回欠量的反向功率</td><td>物理特性，A</td></tr><tr><td>工艺硬约束</td><td>物理/安全/质量不可逾越的边界</td><td>工艺手册，A</td></tr><tr><td>合同软约束</td><td>约定但可协商的边界</td><td>调用协议，B</td></tr><tr><td>同时率</td><td>聚合资源同时可调的比例</td><td>统计/实测，B</td></tr><tr><td>基线</td><td>未调用时的反事实负荷曲线</td><td>认定方法，B</td></tr></tbody></table></div>
+<aside class="note"><p>本文所有算例为 <strong>D 级合成数据</strong>，功率、热容、槽参数均为教学假设，不对应任何真实用户或工厂。</p></aside>
+<hr>
+<h2 id="s4">1. 能力维度：先穷举，再分类</h2>
+<p>评估任何可调负荷，先过这九个正交维度，缺一不可：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>问什么</th><th>为什么重要</th></tr></thead><tbody><tr><td>1 可调功率上限</td><td>瞬时能减/增多少 MW</td><td>决定能顶多大缺口</td></tr><tr><td>2 可调方向</td><td>只能削峰？能填谷？双向？</td><td>决定能参与哪些品种</td></tr><tr><td>3 持续时长</td><td>能维持多久</td><td>决定能否顶住整段爬坡</td></tr><tr><td>4 响应速度/爬坡</td><td>多快到位（s/min）</td><td>决定能否做秒级调频</td></tr><tr><td>5 恢复反弹</td><td>调完是否报复性补回、多大、多久</td><td>决定净削峰效果与二次冲击</td></tr><tr><td>6 调节精度/可中断性</td><td>连续可调还是只能开关</td><td>决定调节品质与考核</td></tr><tr><td>7 工艺硬约束</td><td>物理/安全/质量边界</td><td>圈定可行域上限</td></tr><tr><td>8 合同软约束</td><td>舒适度/计划/补偿约定</td><td>在可行域内收窄经济域</td></tr><tr><td>9 基线难度与机会成本</td><td>反事实好不好认、调用损失多大</td><td>决定结算与报价</td></tr></tbody></table></div>
+<aside class="note"><p><strong>方法论纪律</strong>：不要用&quot;空调、电解铝、充电桩&quot;三个示例代替全集。下面 §2 按物理特性分五大类，每类都落到这九维；遇到新负荷类型，先填九维表，再归类。</p></aside>
+<hr>
+<h2 id="s5">2. 五类负荷的物理边界</h2>
+<h3 id="s6">2.1 温控类（空调/制冷/冷库/热泵）</h3>
+<ul><li><strong>物理本质</strong>：建筑/库体热容是&quot;热储能&quot;，温度允许区间是 SOC 窗口。降载时温度缓升，相当于&quot;放热&quot;。</li><li><strong>可调上限</strong>：制冷输入功率 × 可降载比例（变频降载或轮停），受舒适度/工艺温度上限约束。</li><li><strong>持续时长</strong>：<code>热容 × 允许温升 ÷ 热负荷</code>，通常分钟到小时级；库体保温越好越长。</li><li><strong>恢复反弹</strong>：<strong>显著</strong>。调用期间欠冷量需在结束后补回，反弹功率常高于削峰功率（要快速回温），若反弹落在高峰内则削峰失败。</li><li><strong>硬约束</strong>：药品/食品冷库温度上限、工艺恒温精度；<strong>软约束</strong>：办公舒适度区间（可协商放宽 1–2℃）。</li><li><strong>适合</strong>：分钟级削峰/需求响应，不适合秒级调频（热惯性慢）。</li></ul>
+<h3 id="s7">2.2 工艺连续类（电解铝/电解槽/氯碱/水泥磨）</h3>
+<ul><li><strong>物理本质</strong>：连续电化学/热工过程，功率大但<strong>调节窗口极窄</strong>。</li><li><strong>可调上限</strong>：电解铝系列电流短期可调约 ±5%（D 级典型），长期大幅降流或断电会降槽温、损电流效率，甚至电解质凝固。</li><li><strong>持续时长</strong>：短时可维持，断电容忍通常 &lt; 2 h（D 级，按槽型与保温差异大）。</li><li><strong>恢复反弹</strong>：相对小（连续工艺），但恢复需爬坡，不能瞬时回满。</li><li><strong>硬约束</strong>：槽温/电流效率/安全（断电凝固是安全事故）；<strong>软约束</strong>：产量计划。</li><li><strong>适合</strong>：小幅分钟级调节，<strong>不能当储能用</strong>。&quot;功率大 ≠ 灵活性大&quot;的典型反例。</li></ul>
+<h3 id="s8">2.3 算力类（数据中心）</h3>
+<ul><li><strong>物理本质</strong>：IT 负荷 + 制冷负荷 + UPS/储能缓冲，三层各有边界。</li><li><strong>可调上限</strong>：实时业务受 SLA（可用性）硬约束不可中断；<strong>批处理/训练任务可时移</strong>；制冷系统有热惯性可调；UPS/储能提供秒级缓冲。</li><li><strong>持续时长</strong>：算力时移受任务队列与交付时限约束；制冷受机房温度上限约束。</li><li><strong>恢复反弹</strong>：时移任务会在后续时段补算，形成算力反弹；制冷反弹同温控类。</li><li><strong>硬约束</strong>：SLA 可用性、机房温度/湿度上限；<strong>软约束</strong>：批任务交付时间（可协商）。</li><li><strong>适合</strong>：算力时移（小时级）、制冷削峰（分钟级）、UPS 秒级支撑。</li></ul>
+<h3 id="s9">2.4 充电类（充电桩/V2G）</h3>
+<ul><li><strong>物理本质</strong>：电池 SOC + 用户停留时间 + 充电功率连续可调。</li><li><strong>可调上限</strong>：充电功率 0 到额定连续可调；聚合上限 = 桩数 × 单桩功率 × 同时率 × 可调比例。</li><li><strong>持续时长</strong>：受电池 SOC 与用户离开时间约束——用户要走时必须充满，调节窗口被压缩。</li><li><strong>恢复反弹</strong>：<strong>显著</strong>，用户最终要充回目标 SOC，削峰只是把充电时移。</li><li><strong>硬约束</strong>：电池 SOC 上下限、用户离开时间、电池循环质保（V2G 反向放电）；<strong>软约束</strong>：用户充电偏好/补偿。</li><li><strong>适合</strong>：有序充电（分钟到小时级削峰/填谷）；V2G 双向受质保与用户意愿限制，见 <a href="需求响应、车网互动与灵活性资源-2026-11.html">需求响应、车网互动与灵活性资源</a> §7。</li></ul>
+<h3 id="s10">2.5 楼宇商业与市政类（照明/电梯/给排水/水处理/供热）</h3>
+<ul><li><strong>物理本质</strong>：分散、单体小、聚合可观，受安全与服务质量约束。</li><li><strong>可调上限</strong>：照明可降照度、电梯/给排水可错峰、水处理/供热受工艺约束。</li><li><strong>持续时长</strong>：照明/电梯短时可错峰；水处理/供热受池容/热网惯性约束。</li><li><strong>恢复反弹</strong>：电梯/给排水错峰后补运行；照明反弹小。</li><li><strong>硬约束</strong>：电梯安全、供水压力/水质、供热最低温度；<strong>软约束</strong>：照度/服务时段。</li><li><strong>适合</strong>：聚合削峰（分钟级），单体价值小、靠规模。</li></ul>
+<h3 id="s11">2.6 五类九维对照（D 级定性）</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>负荷类</th><th>可调上限</th><th>持续时长</th><th>响应速度</th><th>恢复反弹</th><th>硬约束典型</th></tr></thead><tbody><tr><td>温控类</td><td>中（功率×比例）</td><td>分钟–小时</td><td>慢（热惯性）</td><td>显著</td><td>温度上限</td></tr><tr><td>工艺连续类</td><td>窄（±5%）</td><td>短（&lt;2 h 断电）</td><td>中</td><td>小</td><td>槽温/安全</td></tr><tr><td>算力类</td><td>中（时移+制冷）</td><td>小时（任务）</td><td>分层</td><td>算力时移反弹</td><td>SLA/机房温度</td></tr><tr><td>充电类</td><td>大（连续可调）</td><td>受 SOC/停留</td><td>快</td><td>显著</td><td>SOC/离开时间</td></tr><tr><td>楼宇市政类</td><td>小×聚合</td><td>短–中</td><td>中</td><td>中</td><td>安全/服务质量</td></tr></tbody></table></div>
+<hr>
+<h2 id="s12">3. 硬约束 vs 软约束：真值的两层边界</h2>
+<h3 id="s13">3.1 硬约束圈定物理可行域</h3>
+<p>物理/安全/质量边界<strong>不可协商</strong>：电解槽凝固温度、数据中心 SLA、冷库药品温度上限、电梯安全、电池 SOC 极限。违反 → 事故/产品报废/安全风险。<strong>可调能力的物理上限由硬约束决定</strong>。</p>
+<h3 id="s14">3.2 软约束收窄经济可行域</h3>
+<p>舒适度温度区间、生产计划、批任务交付时间、用户充电偏好——这些是<strong>合同约定但可协商</strong>的。违反 → 违约/补偿，不是物理不可能。软约束在硬约束可行域内进一步收窄&quot;经济上愿意调&quot;的范围。</p>
+<h3 id="s15">3.3 报价纪律</h3>
+<ul><li><strong>聚合上限按硬约束算</strong>，不能把软约束当物理极限（否则高估能力、调用时违约）；</li><li><strong>经济报价按软约束算</strong>，补偿要覆盖用户让渡的舒适度/计划损失（机会成本）；</li><li>两层边界都要在调用协议里写清，硬约束不可被补偿&quot;买断&quot;。</li></ul>
+<hr>
+<h2 id="s16">4. 恢复反弹与基线：净效果怎么算</h2>
+<h3 id="s17">4.1 反弹是时移的代价</h3>
+<p>温控、充电、算力时移类负荷，调用期间少用的电量大多要在结束后补回。因此：</p>
+<pre tabindex="0"><code>净节能 ≈ 0（多数情况）
+净削峰效果 = 削峰时段转移走的电量 - 反弹时段补回的电量（若反弹仍在高峰内则无效）</code></pre>
+<p><strong>需求响应的价值在时移，不在省电</strong>。把 DR 当节能卖是常见误区。</p>
+<h3 id="s18">4.2 反弹管理决定成败</h3>
+<ul><li>若反弹落在<strong>高峰外</strong>（如空调在深夜回温），削峰有效；</li><li>若反弹落在<strong>高峰内</strong>（调用刚结束负荷又冲回来），削峰失败甚至制造二次尖峰；</li><li>聚合调度要<strong>错峰恢复</strong>、分批回补，避免反弹叠加。见 <a href="虚拟电厂聚合调度与商业模式-2026-11.html">虚拟电厂聚合调度</a> §6。</li></ul>
+<h3 id="s19">4.3 基线认定</h3>
+<p>基线是&quot;未调用时的反事实负荷&quot;，决定结算电量。反弹使基线认定更难——调用后的负荷偏离不能简单外推。基线方法（历史平均、回归、对照组）与考核见 <a href="需求响应、车网互动与灵活性资源-2026-11.html">需求响应、车网互动与灵活性资源</a> §4。</p>
+<hr>
+<h2 id="s20">5. 合成算例（D 级）</h2>
+<h3 id="s21">5.1 算例一：空调集群削峰与恢复反弹</h3>
+<p>1,000 台商用空调机组，单台制冷输入功率 50 kW，可降载比例 30%（变频/轮停）。</p>
+<pre tabindex="0"><code>可调上限 = 1000 * 50 kW * 0.30 = 15,000 kW = 15 MW</code></pre>
+<p>调用 30 min（持续时长受热容与允许温升约束，D 级假设 30 min）：</p>
+<pre tabindex="0"><code>削峰电量 = 15 MW * 0.5 h = 7.5 MWh</code></pre>
+<p>调用结束后回补欠冷，反弹功率 18 MW（高于削峰，因需快速回温），持续 25 min：</p>
+<pre tabindex="0"><code>反弹电量 = 18 MW * (25/60) h = 7.5 MWh
+净电量 ≈ 7.5 - 7.5 = 0（时移，不省电）</code></pre>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>情形</th><th>反弹时段</th><th>净削峰效果</th></tr></thead><tbody><tr><td>反弹落在高峰外（深夜回温）</td><td>低谷</td><td>有效转移 7.5 MWh</td></tr><tr><td>反弹落在高峰内（调用刚结束）</td><td>仍高峰</td><td>无效，可能制造二次尖峰</td></tr></tbody></table></div>
+<p><strong>读图</strong>：15 MW 可调上限看着可观，但净效果完全取决于反弹时段管理。聚合 1,000 台若同时恢复，18 MW 反弹叠加会制造新尖峰——必须分批错峰恢复。</p>
+<h3 id="s22">5.2 算例二：电解铝&quot;功率大、灵活性小&quot;</h3>
+<p>电解系列 500 kA，平均槽电压 4.2 V，串联 400 台槽（D 级假设）：</p>
+<pre tabindex="0"><code>系列功率 = 500,000 A * 4.2 V * 400 = 840,000,000 W = 840 MW
+短期可调 ±5% -&gt; ±42 MW</code></pre>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>数值</th><th>含义</th></tr></thead><tbody><tr><td>负荷功率</td><td>840 MW</td><td>巨大</td></tr><tr><td>可调上限</td><td>±42 MW（5%）</td><td>极窄</td></tr><tr><td>断电容忍</td><td>&lt; 2 h（D 级）</td><td>槽温下降、电解质凝固风险</td></tr><tr><td>硬约束</td><td>槽温/电流效率/安全</td><td>不可协商</td></tr></tbody></table></div>
+<p><strong>读图</strong>：840 MW 负荷只能调 42 MW，且不能长时间断电。把电解铝当&quot;大储能&quot;聚合是危险的——它的灵活性被工艺硬约束锁死。可调负荷评估必须先看硬约束，再看功率规模。</p>
+<hr>
+<h2 id="s23">6. 对聚合与调度的含义</h2>
+<h3 id="s24">6.1 能力测算逐维实测</h3>
+<p>聚合前对每类资源填九维表（§1），用实测/工艺手册定硬约束上限，用同时率折减聚合规模。资源盘点方法见 <a href="需求响应、车网互动与灵活性资源-2026-11.html">需求响应、车网互动与灵活性资源</a> §2 与 <a href="虚拟电厂聚合调度与商业模式-2026-11.html">虚拟电厂聚合调度</a> §2。</p>
+<h3 id="s25">6.2 调度建模</h3>
+<p>可调负荷在 EMS 里建模为&quot;功率上限 + 持续时长 + 反弹约束&quot;的柔性资源，不同于储能的 SOC 递推。建模与优化见 <a href="虚拟电厂聚合调度与商业模式-2026-11.html">虚拟电厂聚合调度</a> §6 与 <a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS</a>。</p>
+<h3 id="s26">6.3 与储能对比</h3>
+<p>储能功率/能量可独立配置、反弹可控（充电即回补，可调度）；可调负荷反弹受工艺/用户约束、不可完全调度。<strong>储能是&quot;可控时移&quot;，可调负荷是&quot;受限时移&quot;</strong>——两者互补，不是替代。</p>
+<hr>
+<h2 id="s27">7. 常见错误（10 条）</h2>
+<ol><li>把可调负荷当储能，忽略恢复反弹与净节能为零。</li><li>用功率规模代替灵活性（电解铝 840 MW 只能调 42 MW）。</li><li>把合同软约束当物理硬约束，高估或低估可调上限。</li><li>用三个示例冒充负荷全集，不逐维评估新类型。</li><li>忽略反弹时段，调用刚结束负荷冲回制造二次尖峰。</li><li>聚合同时恢复，反弹叠加。</li><li>不扣同时率，把桩数×单桩功率当聚合上限。</li><li>把温控负荷拿去做秒级调频（热惯性慢，响应不够快）。</li><li>基线简单外推，忽略调用后反弹使反事实失真。</li><li>用补偿&quot;买断&quot;硬约束（安全/质量边界不可协商）。</li></ol>
+<hr>
+<h2 id="s28">8. 待核实与未定事项</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>事项</th><th>状态</th><th>查证入口</th></tr></thead><tbody><tr><td>各类负荷可调比例/持续时长实测值</td><td>逐项目差异大</td><td>实测 + 工艺手册</td></tr><tr><td>电解铝断电容忍与降流窗口</td><td>按槽型/保温差异</td><td>工艺规程 + 供电协议</td></tr><tr><td>数据中心 SLA 与算力时移可行范围</td><td>逐业务</td><td>业务 SLA + 运维</td></tr><tr><td>V2G 反向放电质保与用户意愿</td><td>演进中</td><td>车企质保 + 调用协议</td></tr><tr><td>基线认定方法与反弹处理</td><td>分省/分品种</td><td>各省需求响应实施细则</td></tr></tbody></table></div>
+<hr>
+<h2 id="s29">9. 与技能和其他笔记的分工</h2>
+<ul><li><strong>本文</strong>：可调负荷的九维能力框架 + 五类物理边界 + 硬/软约束 + 反弹，是&quot;需求侧到底能调多少&quot;的地基。</li><li><a href="需求响应、车网互动与灵活性资源-2026-11.html">需求响应、车网互动与灵活性资源</a>：DR 产品体系、基线认定、V2G、省级规则。</li><li><a href="虚拟电厂聚合调度与商业模式-2026-11.html">虚拟电厂聚合调度与商业模式</a>：资源聚合、控制架构、调度优化、分成。</li><li><a href="频率惯量与灵活性供需-2026-11.html">频率惯量与灵活性供需</a>：灵活性供需货架（本文是需求侧资源的物理细化）。</li><li><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS</a>：储能建模（与可调负荷对照）。</li><li>技能正文引用本文，不复述九维表。</li></ul>
+<h2 id="s30">速查</h2>
+<pre tabindex="0"><code>九维：功率上限/方向/持续时长/响应速度/反弹/精度/硬约束/软约束/基线机会成本
+五类：温控/工艺连续/算力/充电/楼宇市政
+硬约束圈物理可行域，软约束收经济可行域，报价上限按硬约束
+反弹：DR 是时移不是节能，净削峰看反弹时段，聚合要错峰恢复
+反例：电解铝 840 MW 只能调 ±42 MW，功率大不等于灵活性大</code></pre>
+    </article>
+
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>4</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="需求响应、车网互动与灵活性资源-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>需求响应、车网互动与灵活性资源</b>
+          <span>从资源盘点、基线认定到考核结算，补齐 DR 产品体系与 V2G 参与市场的空白。</span>
+        </a>
+        <a class="related-card" href="虚拟电厂聚合调度与商业模式-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>虚拟电厂：聚合、调度与商业模式（2026 版）</b>
+          <span>从资源盘点、准入接入、云边控制到市场参与、结算分成与项目测算，补齐 2026 年 VPP 主线。</span>
+        </a>
+        <a class="related-card" href="频率惯量与灵活性供需-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>频率、惯量与灵活性供需：从物理缓冲到分时间尺度货架</b>
+          <span>有功平衡与频率、转动惯量与 RoCoF、惯量/一次/二次/三次响应分层、新能源占比下的爬坡需求、灵活性供需货架与国内运行视角。</span>
+        </a>
+        <a class="related-card" href="储能EMS优化调度-算法与工程-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>储能 EMS 优化调度</b>
+          <span>把储能调度建成 MILP：96 点经济调度、多市场堆叠、SOC/退化、MPC 与安全联锁，并给出与交易层的四种融合模式。</span>
+        </a>
+      </div>
+
+    </section>
+
+<section class="related" aria-labelledby="paired-skills-title">
+      <div class="related-head"><h2 id="paired-skills-title">配套技能</h2><span>1</span></div>
+      <div class="related-grid">
+        <a class="related-card skill-pair" href="skill-virtual-power-plant.html">
+          <span class="related-type">聚合、响应与运营（含上海、上海数据中心、浙江、江苏快响、辽宁与深圳 V2G 实例包）</span>
+          <b>虚拟电厂专家</b>
+          <span>技能 · VPP · 聚合 · 商业模式</span>
+        </a>
+      </div>
+    </section>
+
+    <nav class="pager" aria-label="上下篇">
+          <a class="prev" href="需求响应、车网互动与灵活性资源-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">需求响应、车网互动与灵活性资源</span></a>
+          <span class="spacer"></span>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../可调负荷的物理真值-2026-11.md">knowledge/可调负荷的物理真值-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="本页目录">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv3"><a href="#s2">0.1 三句话</a></li>
+            <li class="lv3"><a href="#s3">0.2 关键数字与口径</a></li>
+            <li class="lv2"><a href="#s4">1. 能力维度：先穷举，再分类</a></li>
+            <li class="lv2"><a href="#s5">2. 五类负荷的物理边界</a></li>
+            <li class="lv3"><a href="#s6">2.1 温控类（空调/制冷/冷库/热泵）</a></li>
+            <li class="lv3"><a href="#s7">2.2 工艺连续类（电解铝/电解槽/氯碱/水泥磨）</a></li>
+            <li class="lv3"><a href="#s8">2.3 算力类（数据中心）</a></li>
+            <li class="lv3"><a href="#s9">2.4 充电类（充电桩/V2G）</a></li>
+            <li class="lv3"><a href="#s10">2.5 楼宇商业与市政类（照明/电梯/给排水/水处理/供热）</a></li>
+            <li class="lv3"><a href="#s11">2.6 五类九维对照（D 级定性）</a></li>
+            <li class="lv2"><a href="#s12">3. 硬约束 vs 软约束：真值的两层边界</a></li>
+            <li class="lv3"><a href="#s13">3.1 硬约束圈定物理可行域</a></li>
+            <li class="lv3"><a href="#s14">3.2 软约束收窄经济可行域</a></li>
+            <li class="lv3"><a href="#s15">3.3 报价纪律</a></li>
+            <li class="lv2"><a href="#s16">4. 恢复反弹与基线：净效果怎么算</a></li>
+            <li class="lv3"><a href="#s17">4.1 反弹是时移的代价</a></li>
+            <li class="lv3"><a href="#s18">4.2 反弹管理决定成败</a></li>
+            <li class="lv3"><a href="#s19">4.3 基线认定</a></li>
+            <li class="lv2"><a href="#s20">5. 合成算例（D 级）</a></li>
+            <li class="lv3"><a href="#s21">5.1 算例一：空调集群削峰与恢复反弹</a></li>
+            <li class="lv3"><a href="#s22">5.2 算例二：电解铝"功率大、灵活性小"</a></li>
+            <li class="lv2"><a href="#s23">6. 对聚合与调度的含义</a></li>
+            <li class="lv3"><a href="#s24">6.1 能力测算逐维实测</a></li>
+            <li class="lv3"><a href="#s25">6.2 调度建模</a></li>
+            <li class="lv3"><a href="#s26">6.3 与储能对比</a></li>
+            <li class="lv2"><a href="#s27">7. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s28">8. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s29">9. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s30">速查</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="19" data-more-label="展开 19 个小节" data-less-label="收起小节">展开 19 个小节</button>
+  </aside>
+</div>
+
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.0" data-cutoff="2026-11-19" data-latest="2026-11-19" data-count="92">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.0）" title="查看更新记录（当前 v2.0）">
+    <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
+    <span class="cl-badge-ver">v2.0</span>
+    <span class="cl-badge-label">更新记录</span>
+  </button>
+  <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
+    <div class="cl-backdrop" data-changelog-close></div>
+    <div class="cl-panel" role="dialog" aria-modal="true" aria-labelledby="cl-title" aria-describedby="cl-subtitle" tabindex="-1">
+      <header class="cl-head">
+        <div class="cl-head-main">
+          <span class="cl-kicker">RELEASE NOTES</span>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.0</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.0 · 数据截止 2026-11-19 · 92 条记录</p>
+        </div>
+        <div class="cl-actions">
+          <div class="cl-lang" role="group" aria-label="切换语言">
+            <button type="button" data-cl-lang="zh" aria-pressed="true">中文</button>
+            <button type="button" data-cl-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <button class="cl-close" type="button" data-changelog-close aria-label="关闭更新记录" title="关闭更新记录">×</button>
+        </div>
+      </header>
+      <div class="cl-body" data-changelog-body>
+        <div class="cl-skeleton" data-changelog-status role="status">
+          <span class="cl-sr">正在读取更新记录…</span>
+          <i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      <footer class="cl-foot">
+        <span data-changelog-meta>v2.0 · 2026-11-19 · 92 条记录</span>
+        <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
+      </footer>
+    </div>
+  </div>
+</div>
+<script src="../assets/doc.js"></script>
+<script src="../assets/theme.js"></script>
+<script src="../assets/changelog.js"></script>
+</body>
+</html>

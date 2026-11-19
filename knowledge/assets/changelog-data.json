@@ -4,11 +4,23 @@
   "version": "v2.0",
   "cutoff": "2026-11-19",
   "latest": "2026-11-19",
-  "count": 91,
+  "count": 92,
   "languages": {
     "zh": {
       "title": "更新记录",
       "entries": [
+        {
+          "date": "2026-11-19",
+          "label": "v2.0 维护：系统物理与 EMS 工程链路七模块、闭环工具与储能电站实例包",
+          "items": [
+            "<strong>系统物理直觉层（3 模块）</strong>：新增《从潮流到节点电价》（spot 第 9 篇，阻塞/断面/网损如何把同一度电在不同节点定价）、《频率、惯量与灵活性供需》（cross 第 11 篇，频率/惯量/爬坡/备用的供需货架与时间尺度）、《可调负荷的物理真值》（vpp 第 4 篇，九维能力框架 × 五类负荷物理边界、硬/软约束、恢复反弹，电解铝 840 MW 只能调 ±42 MW 的反例）。",
+            "<strong>EMS 决策链路层（2 模块 + 工具）</strong>：新增《预测误差→申报→EMS 闭环》（spot 第 10 篇，newsvendor 临界分位 q*=Cu/(Cu+Co)、免考 band、储能把偏差罚单转退化成本）与《场站群与集控 EMS 架构》（storage 第 6 篇，四层分级授权、通信拓扑与时延预算、群调群控与共享储能池）；配套 <code>skills/ems-dispatch/tools/loop.py</code>（纯标准库、确定性、无求解器：norm_ppf / newsvendor_bid / deviation_settlement / closed_loop_day），selftest J 段锁定 §3–§5 全部数字。",
+            "<strong>EMS 工程落地层（2 模块）</strong>：新增《EMS 数据接口参考架构》（storage 第 7 篇，设备/调度/市场/计量结算四类契约、同源同时标铁律、计量点映射、设计六原则与演进观察）与《并网测试与涉网验收实务清单》（renewable 第 3 篇，型式→并网验收测试体系、AGC/AVC/一次调频投运试验方法判据、故障穿越/电能质量/模型验证、把两个细则考核点倒推为试验验证项）。",
+            "<strong>实例包 31 → 32</strong>：新增 <code>skills/ems-dispatch/instances/shandong-storage-station-ems-2026-11/</code>（山东独立储能电站日运行，MW/MWh，96 点能量套利 + AGC 速率/精度与一次调频贡献比考核复盘）。代表日套利净收益 132,218.56 元、AGC 考核 0、一次调频考核电量 1.375 MWh（折电费 618.75 元）、综合净收益 131,599.81 元；峰段套利放电占用上调裕度致 19:00 事件贡献比 45% &lt; 70% 被考核，考核按逐事件而非聚合比；指纹 <code>109cd87cce2e</code>。EMS 实例层 README 改写为园区微网 + 储能电站两切片。",
+            "<strong>计数与生成物</strong>：知识模块 104 → 111、正文 43,462 → 45,353 行（+1,891）、实例包 31 → 32（省级地区仍 12）；6 个技能 modules 关联与 EMS 技能描述同步；更新清单 P1 42 → 43、P2 26 → 32，盘点 111 模块 / 111 Markdown / 111 知识页；search-index 3,685,902 → 3,808,227 字节；版本徽章 104 → 111。版本仍 v2.0，数据截止 2026-11-19。",
+            "<strong>边界</strong>：全部算例为 D 级合成数据，不对应任何真实场站、调度指令或电网事件；loop.py 与实例包是筛查/复盘工具，不接实盘、不报价、不下单、不替代结算与并网验收。"
+          ]
+        },
         {
           "date": "2026-11-19",
           "label": "v2.0 维护：README 与英文版同步实例包与决策层内容",
@@ -1123,6 +1135,18 @@
     "en": {
       "title": "Changelog",
       "entries": [
+        {
+          "date": "2026-11-19",
+          "label": "v2.0 maintenance: seven system-physics and EMS-engineering modules, the closed-loop tool and a storage-station instance pack",
+          "items": [
+            "<strong>System-physics intuition layer (3 modules)</strong>: adds From power flow to nodal prices (spot #9, how congestion / transfer limits / losses price the same MWh differently at different nodes), Frequency, inertia and flexibility supply-demand (cross #11, the supply-demand shelf and time scales of frequency / inertia / ramp / reserve) and The physical ground truth of adjustable load (vpp #4, a nine-dimension capability framework × five load families' physical boundaries, hard vs soft constraints, rebound, with the counter-example that an 840 MW aluminium smelter can only shift ±42 MW).",
+            "<strong>EMS decision-chain layer (2 modules + tool)</strong>: adds Forecast-error → declaration → EMS loop (spot #10, the newsvendor critical quantile q*=Cu/(Cu+Co), the tolerance deadband, and storage converting deviation penalties into degradation cost) and Plant-cluster and centralised-control EMS architecture (storage #6, four-layer delegated authority, communication topology and latency budget, cluster dispatch/control and shared storage pools); plus <code>skills/ems-dispatch/tools/loop.py</code> (pure standard library, deterministic, no solver: norm_ppf / newsvendor_bid / deviation_settlement / closed_loop_day), with selftest section J locking every figure in §3–§5.",
+            "<strong>EMS engineering layer (2 modules)</strong>: adds EMS data-interface reference architecture (storage #7, the four contracts for device / dispatch / market / metering-settlement, the same-source-same-timestamp rule, metering-point mapping, six design principles and an evolution watchlist) and Grid-connection testing and grid-code acceptance checklist (renewable #3, the type-test → grid-acceptance test hierarchy, AGC/AVC/primary-frequency commissioning methods and criteria, fault ride-through / power quality / model validation, reverse-mapping the two-rules assessment points into test verification items).",
+            "<strong>Instance packs 31 → 32</strong>: adds <code>skills/ems-dispatch/instances/shandong-storage-station-ems-2026-11/</code> (Shandong standalone storage-station daily operation, MW/MWh, 96-interval energy arbitrage plus AGC rate/precision and primary-frequency contribution-ratio assessment replay). Representative-day arbitrage net revenue 132,218.56 CNY, AGC assessment 0, primary-frequency assessed energy 1.375 MWh (618.75 CNY at the flat price), combined net revenue 131,599.81 CNY; peak-period arbitrage discharge consumes the upward reserve so the 19:00 event's contribution ratio 45% &lt; 70% is assessed — assessment is per-event, not on the aggregate ratio; fingerprint <code>109cd87cce2e</code>. The EMS instance-layer README is rewritten for the two slices (park microgrid + storage station).",
+            "<strong>Counts and artifacts</strong>: knowledge modules 104 → 111, body lines 43,462 → 45,353 (+1,891), instance packs 31 → 32 (provincial regions still 12); six skills' module lists and the EMS skill description synced; maintenance checklist P1 42 → 43, P2 26 → 32, inventory 111 modules / 111 Markdown / 111 reading pages; search-index 3,685,902 → 3,808,227 bytes; version badge 104 → 111. Version stays v2.0, data cutoff 2026-11-19.",
+            "<strong>Boundary</strong>: all worked examples are grade-D synthetic data, corresponding to no real plant, dispatch instruction or grid event; loop.py and the instance pack are screening / replay tools — no live trading, no bidding, no order placement, no substitute for settlement or grid acceptance."
+          ]
+        },
         {
           "date": "2026-11-19",
           "label": "v2.0 maintenance: READMEs sync instance packs and decision-layer content",

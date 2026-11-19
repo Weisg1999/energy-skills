@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>并网测试与涉网验收实务清单：AGC/AVC/一次调频投运试验与考核点闭环 | energy-skills 知识库</title>
+<meta name="description" content="从型式试验到并网验收的测试体系，AGC/AVC/一次调频投运试验方法与判据，故障穿越/电能质量/模型验证，验收清单与整改闭环，把两个细则考核点倒推为试验验证项。">
+<link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
+<script>
+(function(){try{var t=localStorage.getItem('es-theme');if(!/^(light|cream|green|dark)$/.test(t||'')){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/knowledge.css">
+<link rel="stylesheet" href="../assets/theme-menu.css">
+<link rel="stylesheet" href="../assets/changelog.css">
+</head>
+<body data-cat="renewable" id="top">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
+  <div class="crumb">
+    <span class="crumb-cat">07 · RENEWABLE</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">并网测试与涉网验收实务清单：AGC/AVC/一次调频投运试验与考核点闭环</span>
+  </div>
+  <div class="topbar-act">
+    <div class="theme-picker" data-theme-picker>
+      <button class="theme-toggle" type="button" data-theme-menu aria-label="选择主题" title="选择主题">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="5"/><circle cx="15" cy="9" r="5"/><circle cx="12" cy="15" r="5"/></svg>
+      </button>
+    </div>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../并网测试与涉网验收实务清单-2026-11.md">.md 源文件<small>knowledge/并网测试与涉网验收实务清单-2026-11.md</small></a>
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">07 · RENEWABLE</div>
+    <h2 class="nav-cat"><a href="../index.html#renewable">新能源与并网</a></h2>
+    <ul class="nav-list">
+              <li><a href="新能源项目开发与并网-2026-11.html">新能源项目开发与并网</a></li>
+              <li><a href="并网运行考核与两个细则-2026-11.html">并网运行考核与两个细则</a></li>
+              <li class="on" aria-current="page"><a href="并网测试与涉网验收实务清单-2026-11.html">并网测试与涉网验收实务清单：AGC/AVC/一次调频投运试验与考核点闭环</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#province"><b>03</b>中国省级市场</a></li>
+              <li><a href="../index.html#intl"><b>04</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>05</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>06</b>电价</a></li>
+              <li><a href="../index.html#storage"><b>08</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>11</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">07 · RENEWABLE<i>知识模块</i></div>
+      <h1 class="doc-title">并网测试与涉网验收实务清单：AGC/AVC/一次调频投运试验与考核点闭环（2026-11）</h1>
+      <p class="lede">从型式试验到并网验收的测试体系，AGC/AVC/一次调频投运试验方法与判据，故障穿越/电能质量/模型验证，验收清单与整改闭环，把两个细则考核点倒推为试验验证项。</p>
+      <p class="hook">并网测试与涉网验收</p>
+      <div class="tags"><span class="tag">并网测试</span><span class="tag">涉网验收</span><span class="tag">投运试验</span><span class="tag">AGC</span></div>
+      <div class="doc-meta"><span>约 4.9k 字</span><span>阅读约 9 分钟</span><span>14 节</span><span>数据截止 2026-11-19</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（14）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv2"><a href="#s4">1. 测试体系全景</a></li>
+            <li class="lv2"><a href="#s7">2. AGC 投运试验</a></li>
+            <li class="lv2"><a href="#s11">3. AVC 投运试验</a></li>
+            <li class="lv2"><a href="#s14">4. 一次调频投运试验</a></li>
+            <li class="lv2"><a href="#s18">5. 故障穿越与涉网保护</a></li>
+            <li class="lv2"><a href="#s21">6. 电能质量与模型验证</a></li>
+            <li class="lv2"><a href="#s24">7. 验收清单与整改闭环</a></li>
+            <li class="lv2"><a href="#s27">8. 两个细则考核点怎么过</a></li>
+            <li class="lv2"><a href="#s31">9. 合成算例（D 级）：一次调频频率阶跃试验</a></li>
+            <li class="lv2"><a href="#s36">10. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s37">11. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s38">12. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s39">速查</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>数据截止：2026-11-19｜定位：知识库模块（新能源与并网·工程验收）</p><p>相关技能：<a href="../../skills/renewable-project-development/SKILL.md">新能源开发与并网专家</a>（并网流程）、<a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a>（涉网性能）、<a href="../../skills/ems-dispatch/SKILL.md">EMS 优化调度专家</a>（调度接口）</p><p>用途：回答&quot;并网要做哪些试验、AGC/AVC/一次调频投运试验怎么做、判据是什么、两个细则考核点怎么过、验收清单怎么闭环&quot;五类问题。本文做试验方法与清单整理；具体标准号、判据阈值与考核公式以现行国标/行标、区域两个细则与并网调度协议为准。</p></aside>
+<hr>
+<h2 id="s1">0. 一页看懂</h2>
+<h3 id="s2">0.1 三句话</h3>
+<ul><li><strong>试验与考核是两面</strong>：投运试验证明涉网性能<strong>达标</strong>（一次性），两个细则考核运行期<strong>持续达标</strong>（持续性）。试验过了不代表运行不考核，运行考核点要倒推回试验验证项。</li><li><strong>测试是分阶段的体系</strong>：型式试验→出厂试验→现场调试→并网验收→投运试验→运行期考核，每阶段目的、主体、判据不同。只做单机型式试验不做场站级验收是常见漏洞。</li><li><strong>验收清单要可闭环</strong>：标准号、测试项目、测试条件（SCR/SOC/温度）、判据、第三方机构、报告版本、模型参数、保护定值、整改闭环——缺一项都可能卡在验收或留下考核隐患。</li></ul>
+<h3 id="s3">0.2 关键数字与口径</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>概念</th><th>含义</th><th>来源与级别</th></tr></thead><tbody><tr><td>AGC 标准响应时间</td><td>火电 60 s、水电 20 s</td><td>区域细则常见值，B</td></tr><tr><td>一次调频调差 R</td><td>常见 4%–5%</td><td>工程典型值，B</td></tr><tr><td>一次调频贡献门槛</td><td>如南方 70%/35% 档</td><td>区域细则，B</td></tr><tr><td>SCR</td><td>短路比，弱网/强网判据</td><td>电网参数，A</td></tr><tr><td>型式试验</td><td>第三方对设备能力的验证</td><td>并网流程，A</td></tr><tr><td>并网验收</td><td>电网公司/第三方对场站涉网性能验证</td><td>并网流程，A</td></tr></tbody></table></div>
+<aside class="note"><p>本文所有算例为 <strong>D 级合成数据</strong>，出力、频率、判据阈值均为教学假设，不对应任何真实场站或真实试验报告。</p></aside>
+<hr>
+<h2 id="s4">1. 测试体系全景</h2>
+<h3 id="s5">1.1 分阶段</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>阶段</th><th>目的</th><th>主体</th><th>关注点</th></tr></thead><tbody><tr><td>型式试验</td><td>验证设备能力</td><td>第三方</td><td>过流/惯量阶跃/频率电压阶跃/故障穿越/孤岛/黑启动/谐波/效率</td></tr><tr><td>出厂试验</td><td>与型式一致性</td><td>厂家</td><td>控制/保护/通信/绝缘/耐压/温升</td></tr><tr><td>现场调试</td><td>与电网联调</td><td>业主+调度</td><td>并网点电压/频率/有功无功/AGC/AVC/保护定值</td></tr><tr><td>并网验收</td><td>场站涉网性能</td><td>电网公司/第三方</td><td>一次调频/惯量响应/故障穿越/电能质量/防孤岛</td></tr><tr><td>投运试验</td><td>考核点达标验证</td><td>业主+调度</td><td>AGC/AVC/一次调频调节性能</td></tr><tr><td>运行期考核</td><td>持续达标</td><td>调度</td><td>两个细则月度考核</td></tr></tbody></table></div>
+<p>构网型储能的型式/并网测试细节见 <a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线安全与构网型并网</a> §5.10。</p>
+<h3 id="s6">1.2 场站级 ≠ 单机型式</h3>
+<p>单机/单 PCS 型式试验过了，不等于场站级涉网性能达标。多机并联的环流、功率分配、主从切换、振荡，以及场站级 AGC/AVC 协调，必须做场站级试验。AEMO 经验：场站级验收、模型先行、分阶段调试、弱网实测。</p>
+<hr>
+<h2 id="s7">2. AGC 投运试验</h2>
+<h3 id="s8">2.1 测试方法</h3>
+<ul><li><strong>阶跃指令</strong>：调度下发有功阶跃（升/降），记录响应时间、调节速率、调节精度；</li><li><strong>连续调节</strong>：跟踪计划曲线，记录跟踪偏差；</li><li><strong>往返试验</strong>：升→降→升，验证双向调节与死区。</li></ul>
+<h3 id="s9">2.2 判据（对应考核）</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>含义</th><th>考核对应</th></tr></thead><tbody><tr><td>响应时间</td><td>指令到开始动作</td><td>火电 60 s / 水电 20 s 标准（B）</td></tr><tr><td>调节速率</td><td>MW/min</td><td>区域细则速率门槛</td></tr><tr><td>调节精度</td><td>稳态偏差占指令比</td><td>区域细则精度门槛</td></tr></tbody></table></div>
+<p>考核公式与罚则见 <a href="并网运行考核与两个细则-2026-11.html">并网运行考核与两个细则</a> §4。试验判据须与所在区域考核口径一致，否则试验过了运行仍考核。</p>
+<h3 id="s10">2.3 试验条件</h3>
+<p>记录试验时机组工况（负荷率/煤质/水头）、AGC 投运方式、通信通道、数据采集时标。条件不同结果不可比。</p>
+<hr>
+<h2 id="s11">3. AVC 投运试验</h2>
+<h3 id="s12">3.1 测试方法</h3>
+<ul><li><strong>电压阶跃</strong>：并网点电压目标阶跃，记录无功响应与电压调节速率/精度；</li><li><strong>无功指令跟踪</strong>：跟踪调度无功曲线；</li><li><strong>闭锁逻辑</strong>：验证电压越限/保护闭锁正确动作。</li></ul>
+<h3 id="s13">3.2 判据</h3>
+<p>电压调节速率、调节精度、无功响应时间，对应 <a href="并网运行考核与两个细则-2026-11.html">并网运行考核</a> §5 AVC 考核。新能源/储能 AVC 需验证无功容量与电压支撑能力。</p>
+<hr>
+<h2 id="s14">4. 一次调频投运试验</h2>
+<h3 id="s15">4.1 测试方法</h3>
+<ul><li><strong>频率阶跃/扰动注入</strong>：模拟频率偏差（如 −0.1 Hz），记录机组有功响应；</li><li><strong>下垂特性验证</strong>：实测 ΔP-Δf 关系与调差 R 一致；</li><li><strong>动作时间</strong>：频率越限到功率响应的时间；</li><li><strong>贡献电量</strong>：动作期间实际贡献电量与理论贡献之比。</li></ul>
+<h3 id="s16">4.2 判据（对应考核）</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>含义</th><th>考核对应</th></tr></thead><tbody><tr><td>动作合格率</td><td>正确动作次数占比</td><td>区域细则合格率门槛</td></tr><tr><td>贡献电量门槛</td><td>实际/理论贡献比</td><td>如南方 70%/35% 档（B）</td></tr><tr><td>响应时间</td><td>频率越限到响应</td><td>区域细则时间门槛</td></tr><tr><td>调差 R</td><td>下垂斜率</td><td>4%–5% 典型（B）</td></tr></tbody></table></div>
+<p>考核公式见 <a href="并网运行考核与两个细则-2026-11.html">并网运行考核</a> §6。</p>
+<h3 id="s17">4.3 新能源与储能专项</h3>
+<p>新能源场站/储能一次调频需验证快速频率响应能力、变流器控制参数、SOC 裕度（储能）与可用功率。储能一次调频受 SOC 与功率限制，试验须覆盖不同 SOC 工况。新能源与储能专项考核见 <a href="并网运行考核与两个细则-2026-11.html">并网运行考核</a> §10。</p>
+<hr>
+<h2 id="s18">5. 故障穿越与涉网保护</h2>
+<h3 id="s19">5.1 故障穿越</h3>
+<ul><li><strong>低电压穿越（LVRT）</strong>：并网点电压跌落时不脱网、按要求注入无功；</li><li><strong>高电压穿越（HVRT）</strong>：电压升高时不脱网、吸收无功；</li><li><strong>频率适应性</strong>：频率偏移范围内持续运行。</li></ul>
+<h3 id="s20">5.2 防孤岛与保护定值</h3>
+<p>防孤岛保护动作时间、保护定值与电网配合校验。构网型储能的故障穿越/孤岛/黑启动测试见 <a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线</a> §5。</p>
+<hr>
+<h2 id="s21">6. 电能质量与模型验证</h2>
+<h3 id="s22">6.1 电能质量</h3>
+<p>谐波、闪变、三相不平衡、直流分量按国标限值测试。变流器型电源（新能源/储能）谐波与开关频率相关，需现场实测。</p>
+<h3 id="s23">6.2 模型验证</h3>
+<p>机电暂态/电磁暂态模型参数辨识，仿真与实测一致性校验。模型先行是场站级验收的前提——模型不准，调度仿真校核失真。弱网（低 SCR）项目尤其需要弱网实测与模型校核。</p>
+<hr>
+<h2 id="s24">7. 验收清单与整改闭环</h2>
+<h3 id="s25">7.1 验收清单（最小可用）</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项</th><th>内容</th></tr></thead><tbody><tr><td>标准号</td><td>试验依据的国标/行标/企标版本</td></tr><tr><td>测试项目</td><td>AGC/AVC/一次调频/故障穿越/电能质量/防孤岛/模型</td></tr><tr><td>测试条件</td><td>SCR、SOC、温度、负荷率、电网工况</td></tr><tr><td>判据</td><td>各指标阈值（与区域考核口径一致）</td></tr><tr><td>第三方机构</td><td>试验主体与资质</td></tr><tr><td>报告版本</td><td>报告编号/版本/日期</td></tr><tr><td>模型参数</td><td>辨识参数与仿真一致性</td></tr><tr><td>保护定值</td><td>定值单与电网配合</td></tr><tr><td>整改闭环</td><td>不合格项→整改→复测→销号</td></tr></tbody></table></div>
+<h3 id="s26">7.2 整改闭环</h3>
+<p>不合格项必须整改→复测→销号，不能&quot;带病并网&quot;。整改记录与复测报告归档，支持运行期考核争议追溯。</p>
+<hr>
+<h2 id="s27">8. 两个细则考核点怎么过</h2>
+<h3 id="s28">8.1 倒推逻辑</h3>
+<pre tabindex="0"><code>运行期考核点 -&gt; 试验验证项 -&gt; 整改达标 -&gt; 运行期监测 -&gt; 免考条款利用</code></pre>
+<p>把考核公式倒推为试验验证项：考核调节速率→试验测速率达标；考核贡献电量→试验测贡献比达标；考核响应时间→试验测时间达标。</p>
+<h3 id="s29">8.2 运行期持续达标</h3>
+<p>试验达标只是起点。运行期需监测 AGC/AVC/一次调频性能不漂移（设备老化/工况变化/参数失配），定期复测。合规运维清单见 <a href="并网运行考核与两个细则-2026-11.html">并网运行考核</a> §11。</p>
+<h3 id="s30">8.3 免考条款利用</h3>
+<p>合理利用免考核条款（调度指令异常/不可抗力/试验期等），但免考不是常态依赖。免考条款见 <a href="并网运行考核与两个细则-2026-11.html">并网运行考核</a> §8。</p>
+<hr>
+<h2 id="s31">9. 合成算例（D 级）：一次调频频率阶跃试验</h2>
+<h3 id="s32">9.1 场景</h3>
+<p>机组额定 100 MW，调差 R = 5%，频率阶跃 −0.1 Hz（50 → 49.9 Hz）。</p>
+<h3 id="s33">9.2 理论贡献</h3>
+<pre tabindex="0"><code>DeltaP = -(1/R) * (Deltaf/f0) * Pn
+       = -(1/0.05) * (-0.1/50) * 100
+       = -20 * (-0.002) * 100 = +4 MW</code></pre>
+<p>频率下降，机组应增发 4 MW 支撑频率。</p>
+<h3 id="s34">9.3 实测与判据（D 级假设）</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>理论/判据</th><th>实测</th><th>结论</th></tr></thead><tbody><tr><td>贡献功率</td><td>4 MW</td><td>3.6 MW（90%）</td><td>达 70% 门槛，合格</td></tr><tr><td>响应时间</td><td>≤ 区域门槛</td><td>15 s</td><td>合格（假设门槛内）</td></tr><tr><td>调差 R</td><td>5%</td><td>实测斜率一致</td><td>合格</td></tr></tbody></table></div>
+<h3 id="s35">9.4 读图</h3>
+<ul><li>实测贡献 3.6 MW = 理论的 90%，高于 70% 门槛 → 动作合格；</li><li>若实测仅 2 MW（50%），低于门槛 → 不合格，需整改控制参数/调差；</li><li>试验须覆盖不同工况（负荷率/SOC），单点合格不代表全工况合格。</li></ul>
+<hr>
+<h2 id="s36">10. 常见错误（10 条）</h2>
+<ol><li>只做单机型式试验，不做场站级并网验收。</li><li>试验判据与区域考核口径不一致，试验过了运行仍考核。</li><li>一次调频只测单工况，不覆盖负荷率/SOC 变化。</li><li>模型不先行，仿真校核失真。</li><li>弱网项目不做弱网实测，强网判据套弱网。</li><li>验收清单缺测试条件/报告版本/保护定值，无法追溯。</li><li>不合格项不整改复测，带病并网。</li><li>试验达标后运行期不复测，性能漂移被考核。</li><li>把免考条款当常态依赖。</li><li>保护定值不与电网配合校验，故障穿越/防孤岛误动。</li></ol>
+<hr>
+<h2 id="s37">11. 待核实与未定事项</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>事项</th><th>状态</th><th>查证入口</th></tr></thead><tbody><tr><td>各区域 AGC/AVC/一次调频试验判据阈值</td><td>分区域、会调整</td><td>区域两个细则 + 并网调度协议</td></tr><tr><td>故障穿越/电能质量现行国标版本</td><td>标准更新</td><td>国标/行标全文</td></tr><tr><td>构网型储能差异化并网指标</td><td>演进中</td><td>区域并网细则 + 调度规程</td></tr><tr><td>模型验证与参数辨识规范</td><td>分区域</td><td>调度机构模型管理要求</td></tr><tr><td>新能源/储能一次调频强制要求范围</td><td>分地区</td><td>区域并网细则</td></tr></tbody></table></div>
+<hr>
+<h2 id="s38">12. 与技能和其他笔记的分工</h2>
+<ul><li><strong>本文</strong>：试验体系 + AGC/AVC/一次调频投运试验方法判据 + 验收清单 + 考核点倒推闭环。</li><li><a href="并网运行考核与两个细则-2026-11.html">并网运行考核与两个细则</a>：考核公式、罚则、免考（本文是其试验验证侧）。</li><li><a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线安全与构网型并网</a> §5：构网型测试与并网指标。</li><li><a href="新能源项目开发与并网-2026-11.html">新能源项目开发与并网</a>：项目并网流程与可研。</li><li><a href="EMS数据接口参考架构-2026-11.html">EMS 数据接口参考架构</a>：调度接口契约（试验验证的对象）。</li><li><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a>：试验数据采集与时标。</li><li>技能正文引用本文，不复述试验判据表。</li></ul>
+<h2 id="s39">速查</h2>
+<pre tabindex="0"><code>测试体系：型式 -&gt; 出厂 -&gt; 现场调试 -&gt; 并网验收 -&gt; 投运试验 -&gt; 运行期考核
+AGC 试验：阶跃/连续/往返，测响应时间/速率/精度（火电60s 水电20s）
+一次调频：频率阶跃，DeltaP=-(1/R)*(Deltaf/f0)*Pn，测贡献比/响应/调差
+考核点倒推：考核公式 -&gt; 试验验证项 -&gt; 整改达标 -&gt; 运行监测 -&gt; 免考利用
+验收清单：标准号/项目/条件(SCR/SOC/温度)/判据/第三方/报告/模型/定值/整改闭环
+铁律：场站级≠单机型式；试验判据对齐考核口径；不合格必整改复测</code></pre>
+    </article>
+
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>5</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="并网运行考核与两个细则-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>并网运行考核与两个细则</b>
+          <span>60/61 号、AGC/AVC/一次调频公式、20 项罚则、六类免考与合成算例。</span>
+        </a>
+        <a class="related-card" href="储能技术路线安全与构网型并网-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>储能技术路线、安全与构网型并网</b>
+          <span>锂电/钠电/液流/压缩空气/飞轮对比，五层安全设防与标准，构网型控制、指标与验收。</span>
+        </a>
+        <a class="related-card" href="新能源项目开发与并网-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>新能源项目开发与并网</b>
+          <span>136 号机制电价、省级竞价、P50/P90、LCOE、并网标准、海上风电与省别画像。</span>
+        </a>
+        <a class="related-card" href="EMS数据接口参考架构-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>EMS 数据接口参考架构：设备、调度、市场与计量结算的契约</b>
+          <span>把储能 EMS 的接口观察升级为正式参考架构：四类接口契约、同源同时标铁律、计量点映射、接口设计六原则与演进观察清单，附计量偏差算例。</span>
+        </a>
+      </div>
+      <p class="related-rest"><b>更多关联</b><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a></p>
+    </section>
+
+<section class="related" aria-labelledby="paired-skills-title">
+      <div class="related-head"><h2 id="paired-skills-title">配套技能</h2><span>1</span></div>
+      <div class="related-grid">
+        <a class="related-card skill-pair" href="skill-renewable-project-development.html">
+          <span class="related-type">资源、LCOE、机制电价与并网（含云南风电 2027 投决实例包）</span>
+          <b>新能源开发与并网</b>
+          <span>技能 · 新能源 · LCOE · 并网</span>
+        </a>
+      </div>
+    </section>
+
+    <nav class="pager" aria-label="上下篇">
+          <a class="prev" href="并网运行考核与两个细则-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">并网运行考核与两个细则</span></a>
+          <span class="spacer"></span>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../并网测试与涉网验收实务清单-2026-11.md">knowledge/并网测试与涉网验收实务清单-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="本页目录">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv3"><a href="#s2">0.1 三句话</a></li>
+            <li class="lv3"><a href="#s3">0.2 关键数字与口径</a></li>
+            <li class="lv2"><a href="#s4">1. 测试体系全景</a></li>
+            <li class="lv3"><a href="#s5">1.1 分阶段</a></li>
+            <li class="lv3"><a href="#s6">1.2 场站级 ≠ 单机型式</a></li>
+            <li class="lv2"><a href="#s7">2. AGC 投运试验</a></li>
+            <li class="lv3"><a href="#s8">2.1 测试方法</a></li>
+            <li class="lv3"><a href="#s9">2.2 判据（对应考核）</a></li>
+            <li class="lv3"><a href="#s10">2.3 试验条件</a></li>
+            <li class="lv2"><a href="#s11">3. AVC 投运试验</a></li>
+            <li class="lv3"><a href="#s12">3.1 测试方法</a></li>
+            <li class="lv3"><a href="#s13">3.2 判据</a></li>
+            <li class="lv2"><a href="#s14">4. 一次调频投运试验</a></li>
+            <li class="lv3"><a href="#s15">4.1 测试方法</a></li>
+            <li class="lv3"><a href="#s16">4.2 判据（对应考核）</a></li>
+            <li class="lv3"><a href="#s17">4.3 新能源与储能专项</a></li>
+            <li class="lv2"><a href="#s18">5. 故障穿越与涉网保护</a></li>
+            <li class="lv3"><a href="#s19">5.1 故障穿越</a></li>
+            <li class="lv3"><a href="#s20">5.2 防孤岛与保护定值</a></li>
+            <li class="lv2"><a href="#s21">6. 电能质量与模型验证</a></li>
+            <li class="lv3"><a href="#s22">6.1 电能质量</a></li>
+            <li class="lv3"><a href="#s23">6.2 模型验证</a></li>
+            <li class="lv2"><a href="#s24">7. 验收清单与整改闭环</a></li>
+            <li class="lv3"><a href="#s25">7.1 验收清单（最小可用）</a></li>
+            <li class="lv3"><a href="#s26">7.2 整改闭环</a></li>
+            <li class="lv2"><a href="#s27">8. 两个细则考核点怎么过</a></li>
+            <li class="lv3"><a href="#s28">8.1 倒推逻辑</a></li>
+            <li class="lv3"><a href="#s29">8.2 运行期持续达标</a></li>
+            <li class="lv3"><a href="#s30">8.3 免考条款利用</a></li>
+            <li class="lv2"><a href="#s31">9. 合成算例（D 级）：一次调频频率阶跃试验</a></li>
+            <li class="lv3"><a href="#s32">9.1 场景</a></li>
+            <li class="lv3"><a href="#s33">9.2 理论贡献</a></li>
+            <li class="lv3"><a href="#s34">9.3 实测与判据（D 级假设）</a></li>
+            <li class="lv3"><a href="#s35">9.4 读图</a></li>
+            <li class="lv2"><a href="#s36">10. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s37">11. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s38">12. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s39">速查</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="25" data-more-label="展开 25 个小节" data-less-label="收起小节">展开 25 个小节</button>
+  </aside>
+</div>
+
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.0" data-cutoff="2026-11-19" data-latest="2026-11-19" data-count="92">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.0）" title="查看更新记录（当前 v2.0）">
+    <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
+    <span class="cl-badge-ver">v2.0</span>
+    <span class="cl-badge-label">更新记录</span>
+  </button>
+  <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
+    <div class="cl-backdrop" data-changelog-close></div>
+    <div class="cl-panel" role="dialog" aria-modal="true" aria-labelledby="cl-title" aria-describedby="cl-subtitle" tabindex="-1">
+      <header class="cl-head">
+        <div class="cl-head-main">
+          <span class="cl-kicker">RELEASE NOTES</span>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.0</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.0 · 数据截止 2026-11-19 · 92 条记录</p>
+        </div>
+        <div class="cl-actions">
+          <div class="cl-lang" role="group" aria-label="切换语言">
+            <button type="button" data-cl-lang="zh" aria-pressed="true">中文</button>
+            <button type="button" data-cl-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <button class="cl-close" type="button" data-changelog-close aria-label="关闭更新记录" title="关闭更新记录">×</button>
+        </div>
+      </header>
+      <div class="cl-body" data-changelog-body>
+        <div class="cl-skeleton" data-changelog-status role="status">
+          <span class="cl-sr">正在读取更新记录…</span>
+          <i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      <footer class="cl-foot">
+        <span data-changelog-meta>v2.0 · 2026-11-19 · 92 条记录</span>
+        <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
+      </footer>
+    </div>
+  </div>
+</div>
+<script src="../assets/doc.js"></script>
+<script src="../assets/theme.js"></script>
+<script src="../assets/changelog.js"></script>
+</body>
+</html>

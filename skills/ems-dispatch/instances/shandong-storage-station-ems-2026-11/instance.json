@@ -1,0 +1,74 @@
+{
+  "meta": {
+    "instance_id": "shandong-storage-station-ems-2026-11",
+    "province": "山东",
+    "market": "独立储能电站（现货能量 + 辅助服务考核复盘）",
+    "entity_type": "独立储能电站运营主体",
+    "rule_version": "山东电力现货市场规则；并网运行考核两个细则（仅作考核口径参照）",
+    "data_cutoff": "2026-11-19",
+    "grade": "B/C",
+    "scope": "代表日 96 点日前能量调度 + AGC 调节性能考核复盘 + 一次调频贡献考核复盘；不含实时市场出清、调频里程竞价、容量拍卖与辅助服务分成结算",
+    "currency": "CNY",
+    "units": "功率 MW；电量 MWh；电价 CNY/MWh；考核电量 MWh；频率 Hz",
+    "disclaimer": "全部价格、AGC 指令、频率偏差、储能与考核参数均为 D 级合成数据，不对应任何真实电站；考核公式为教学简化，不构成并网验收、考核申诉或投资建议。"
+  },
+  "rules": {
+    "tariff": {
+      "peak_cny_per_mwh": 900.0,
+      "flat_cny_per_mwh": 450.0,
+      "valley_cny_per_mwh": 200.0,
+      "midday_dip_cny_per_mwh": 100.0,
+      "grade": "D",
+      "source": "山东现货价格结构的 D 级建模假设；峰谷时段与价格以现行现货出清与结算口径为准",
+      "status": "谷段 00:00-07:00；午间光伏大发低价段 10:00-14:00；峰段 18:00-22:00；其余平段"
+    },
+    "storage": {
+      "capacity_mwh": 200.0,
+      "power_mw": 100.0,
+      "rte": 0.88,
+      "soc_min": 0.1,
+      "soc_max": 0.9,
+      "soc_init": 0.1,
+      "degradation_cny_per_kwh": 0.03,
+      "grade": "D",
+      "source": "100 MW/200 MWh 磷酸铁锂独立储能的 D 级参数；效率、SOC 窗口与退化成本按设备手册与质保条款替换",
+      "status": "可用电量 = 200 × (0.9 − 0.1) = 160 MWh；单向效率 = sqrt(0.88) ≈ 0.938"
+    },
+    "assessment": {
+      "agc_response_time_standard_s": 60.0,
+      "agc_rate_capability_mw_per_min": 100.0,
+      "agc_precision_error_pct": 0.02,
+      "agc_precision_threshold_pct": 0.03,
+      "agc_assessment_factor": 0.5,
+      "primary_freq_droop_r": 0.05,
+      "primary_freq_deadband_hz": 0.033,
+      "primary_freq_performance": 0.9,
+      "primary_freq_peak_available_mw": 10.0,
+      "primary_freq_contribution_threshold": 0.7,
+      "primary_freq_assessment_factor": 0.5,
+      "grade": "D",
+      "source": "AGC 与一次调频考核口径的 D 级教学简化；响应时间、速率、精度门槛、调差、死区、贡献门槛与考核系数以山东现行两个细则与并网调度协议为准",
+      "status": "AGC 考核 = 速率/精度不合格时段积分 × 系数；一次调频考核 = 逐事件贡献比低于门槛时的欠贡献电量 × 系数；峰段上调可用功率受限（D 级假设 10 MW）"
+    }
+  },
+  "assets": {
+    "pcc_mw": 100.0,
+    "grade": "D",
+    "source": "100 MW 并网容量的 D 级电站配置"
+  },
+  "policy": {
+    "profile_id": "shandong-storage-station-ems-assessment-v1",
+    "objective": "energy_revenue",
+    "terminal": "cycle",
+    "states": 400,
+    "grade": "D",
+    "source": "D 级调度风格：日前能量套利收益最大化，考核复盘独立于能量调度（容量互斥见 pitfalls）"
+  },
+  "data_contract": {
+    "profile": {
+      "file": "data/profile_demo.csv",
+      "fields": ["interval", "time", "price_cny_per_mwh", "agc_signal_mw", "freq_deviation_hz", "segment"],
+      "frequency": "96 points per day, 15 min"
+    }
+  }
+}

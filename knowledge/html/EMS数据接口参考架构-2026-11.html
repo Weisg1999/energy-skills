@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>EMS 数据接口参考架构：设备、调度、市场与计量结算的契约 | energy-skills 知识库</title>
+<meta name="description" content="把储能 EMS 的接口观察升级为正式参考架构：四类接口契约、同源同时标铁律、计量点映射、接口设计六原则与演进观察清单，附计量偏差算例。">
+<link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
+<script>
+(function(){try{var t=localStorage.getItem('es-theme');if(!/^(light|cream|green|dark)$/.test(t||'')){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/knowledge.css">
+<link rel="stylesheet" href="../assets/theme-menu.css">
+<link rel="stylesheet" href="../assets/changelog.css">
+</head>
+<body data-cat="storage" id="top">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
+  <div class="crumb">
+    <span class="crumb-cat">08 · STORAGE</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">EMS 数据接口参考架构：设备、调度、市场与计量结算的契约</span>
+  </div>
+  <div class="topbar-act">
+    <div class="theme-picker" data-theme-picker>
+      <button class="theme-toggle" type="button" data-theme-menu aria-label="选择主题" title="选择主题">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="5"/><circle cx="15" cy="9" r="5"/><circle cx="12" cy="15" r="5"/></svg>
+      </button>
+    </div>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../EMS数据接口参考架构-2026-11.md">.md 源文件<small>knowledge/EMS数据接口参考架构-2026-11.md</small></a>
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">08 · STORAGE</div>
+    <h2 class="nav-cat"><a href="../index.html#storage">储能与 EMS</a></h2>
+    <ul class="nav-list">
+              <li><a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线、安全与构网型并网</a></li>
+              <li><a href="储能投资与运营-2026-11.html">储能投资与运营</a></li>
+              <li><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a></li>
+              <li><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a></li>
+              <li><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a></li>
+              <li><a href="场站群与集控EMS架构-2026-11.html">场站群与集控 EMS 架构：分级调度、通信拓扑与群调群控</a></li>
+              <li class="on" aria-current="page"><a href="EMS数据接口参考架构-2026-11.html">EMS 数据接口参考架构：设备、调度、市场与计量结算的契约</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#province"><b>03</b>中国省级市场</a></li>
+              <li><a href="../index.html#intl"><b>04</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>05</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>06</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>07</b>新能源与并网</a></li>
+              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>11</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">08 · STORAGE<i>知识模块</i></div>
+      <h1 class="doc-title">EMS 数据接口参考架构：设备、调度、市场与计量结算的契约（2026-11）</h1>
+      <p class="lede">把储能 EMS 的接口观察升级为正式参考架构：四类接口契约、同源同时标铁律、计量点映射、接口设计六原则与演进观察清单，附计量偏差算例。</p>
+      <p class="hook">EMS 数据接口参考架构</p>
+      <div class="tags"><span class="tag">EMS接口</span><span class="tag">数据契约</span><span class="tag">计量结算</span><span class="tag">同源同时标</span></div>
+      <div class="doc-meta"><span>约 5.1k 字</span><span>阅读约 10 分钟</span><span>13 节</span><span>数据截止 2026-11-19</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（13）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv2"><a href="#s4">1. 接口全景</a></li>
+            <li class="lv2"><a href="#s8">2. 设备接口契约</a></li>
+            <li class="lv2"><a href="#s12">3. 调度接口契约</a></li>
+            <li class="lv2"><a href="#s16">4. 市场/交易接口契约</a></li>
+            <li class="lv2"><a href="#s21">5. 计量结算接口契约</a></li>
+            <li class="lv2"><a href="#s25">6. 接口设计六原则</a></li>
+            <li class="lv2"><a href="#s26">7. 接口演进观察清单</a></li>
+            <li class="lv2"><a href="#s27">8. 合成算例（D 级）：计量点映射错误的隐性亏损</a></li>
+            <li class="lv2"><a href="#s31">9. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s32">10. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s33">11. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s34">速查</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>数据截止：2026-11-19｜定位：知识库模块（储能与 EMS·接口工程）</p><p>相关技能：<a href="../../skills/ems-dispatch/SKILL.md">EMS 优化调度专家</a>（数据契约）、<a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a>（结算对账）、<a href="../../skills/virtual-power-plant/SKILL.md">虚拟电厂专家</a>（聚合接口）</p><p>用途：回答&quot;EMS 要接哪些接口、每个接口的契约字段是什么、为什么模型赚钱结算亏钱、计量点怎么映射、接口怎么随市场演进&quot;五类问题。本文把 <a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS</a> §1.10 的接口观察与 §2.6 的数据契约升级为正式参考架构；具体字段、协议与考核口径以项目设计、现行标准与省级规则为准。</p></aside>
+<hr>
+<h2 id="s1">0. 一页看懂</h2>
+<h3 id="s2">0.1 三句话</h3>
+<ul><li><strong>接口是 EMS 的契约边界</strong>：EMS 不是孤立算法，它通过四类接口（设备、调度、市场、计量结算）与外部交换数据。接口契约不清，算法再好也算错账。</li><li><strong>同源同时标是铁律</strong>：优化用的输入与结算用的数据必须同源、同时标、同计量点。否则&quot;模型里赚钱、结算时亏钱&quot;——这是 EMS 项目最常见的隐性亏损。</li><li><strong>契约要最小可用</strong>：定义了却未实现的字段必须删除，不能留作隐式约定。接口随市场演进（现货连续、联合出清、分布式入市），用观察指标触发复核，不是凭空预留。</li></ul>
+<h3 id="s3">0.2 关键数字与口径</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>概念</th><th>含义</th><th>来源与级别</th></tr></thead><tbody><tr><td>四类接口</td><td>设备 / 调度 / 市场 / 计量结算</td><td>架构归纳，A</td></tr><tr><td>同源同时标</td><td>优化输入与结算数据同源、同时标、同计量点</td><td>工程铁律，A</td></tr><tr><td>计量点映射</td><td>站用表（PCS 侧）↔ 关口表（并网点）的精度/时标/拓扑映射</td><td>结算口径，A</td></tr><tr><td>结算 MTU</td><td>最小结算时间单元，多为 15 min</td><td>各省结算细则，B</td></tr><tr><td>能力包络</td><td>上报调度的可用功率/能量/SOC 范围</td><td>调度接口，A</td></tr><tr><td>断网自治</td><td>与市场/云断开时按本地保底策略运行</td><td>工程原则，A</td></tr></tbody></table></div>
+<aside class="note"><p>本文所有算例为 <strong>D 级合成数据</strong>，电量、价格、损耗均为教学假设，不对应任何真实场站。</p></aside>
+<hr>
+<h2 id="s4">1. 接口全景</h2>
+<h3 id="s5">1.1 四类接口</h3>
+<pre tabindex="0"><code>[设备层 BMS/PCS/热管理/消防]
+        ↓ 设备接口（状态上行 / 设定值下行）
+[站控层 EMS + SCADA + 协调控制器]
+        ↓ 调度接口（AGC/AVC 令 / 执行回读 / 能力上报）
+        ↓ 市场接口（价格穿透 / 申报 / 中标 / 考核）
+[云/聚合层 多站管理 / VPP / 交易]
+        ↓ 计量结算接口（关口表 / 对账 / 结算）
+[市场层 调度机构 / 交易中心 / 辅助服务市场]</code></pre>
+<h3 id="s6">1.2 数据流闭环</h3>
+<p>市场出清/调度计划 → EMS 优化 → 功率与 SOC 计划 → 站控校验 → PCS 设定值 → 执行 → 计量遥测 → 结算考核 → 反馈修正模型。详见 <a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS</a> §2.2。</p>
+<h3 id="s7">1.3 接口与分层的关系</h3>
+<p>设备接口在设备—站控边界，调度/市场接口在站控—云—市场边界，计量结算接口贯穿全链路。场站群集控的接口是单站接口的多站扩展，见 <a href="场站群与集控EMS架构-2026-11.html">场站群与集控 EMS 架构</a>。</p>
+<hr>
+<h2 id="s8">2. 设备接口契约</h2>
+<h3 id="s9">2.1 职责边界</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>系统</th><th>向 EMS 提供</th><th>EMS 不得越权</th></tr></thead><tbody><tr><td>BMS</td><td>SOC、SOH、允许充放功率、单体电压/温度、告警等级</td><td>绕过 BMS 限值下发指令</td></tr><tr><td>PCS</td><td>实际 P/Q、可用功率、故障码、效率、故障穿越状态</td><td>下发超 PCS 能力的指令</td></tr><tr><td>热管理/消防</td><td>温度、烟感、可燃气体、阀状态</td><td>告警时继续充放</td></tr><tr><td>协调控制器</td><td>执行结果、跟踪偏差、联锁状态</td><td>跳过联锁直接控接触器</td></tr></tbody></table></div>
+<h3 id="s10">2.2 关键字段</h3>
+<ul><li><strong>状态上行</strong>：实时 SOC/SOH、温度/压差、可用功率（BMS/PCS 限功率）、告警等级、并网点 P/Q/电压/频率；</li><li><strong>设定值下行</strong>：有功/无功设定点、充放功率限值、SOC 目标；</li><li><strong>静态参数</strong>：额定功率/能量、SOC 窗口、充放效率、自放电率、爬坡率、响应时间、温度降额表、PCS 效率曲线。</li></ul>
+<p>字段单位、来源、频率与缺失后果的完整契约见 <a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS</a> §2.6。点表与协议见 <a href="SCADA与电力监控数据链路-2026-11.html">SCADA</a> §2、§3。</p>
+<h3 id="s11">2.3 限值双保险</h3>
+<p>模型内约束 + 下发前独立校验，两处都过才允许执行。EMS 出计划，PCS/协调控制器做快速跟踪——不要把秒级控制塞进优化模型。</p>
+<hr>
+<h2 id="s12">3. 调度接口契约</h2>
+<h3 id="s13">3.1 指令与回读</h3>
+<ul><li><strong>接收</strong>：AGC/AVC 指令、计划曲线、调度令（来源/权限/范围校验）；</li><li><strong>执行回读</strong>：实际跟踪结果、偏差、响应时间；</li><li><strong>能力上报</strong>：可用功率/能量包络、SOC 范围、爬坡率、可用率。</li></ul>
+<h3 id="s14">3.2 涉网性能</h3>
+<p>AGC 调节速率/精度/响应时间、一次调频动作合格率、AVC 调节性能须按两个细则考核口径上报。考核公式与免考见 <a href="并网运行考核与两个细则-2026-11.html">并网运行考核与两个细则</a>，涉网试验见 <a href="并网测试与涉网验收实务清单-2026-11.html">并网测试与涉网验收实务清单</a>。</p>
+<h3 id="s15">3.3 时延与时钟</h3>
+<p>调度接口闭环时延须满足控制周期要求，时钟统一（SOE/计量/调度时标同源）。时延与时间同步见 <a href="SCADA与电力监控数据链路-2026-11.html">SCADA</a> §4。</p>
+<hr>
+<h2 id="s16">4. 市场/交易接口契约</h2>
+<h3 id="s17">4.1 价格穿透</h3>
+<p>EMS 优化需要完整价格信号：分时/现货购售价、需量电价、调频容量/里程价/K 值、备用/爬坡价、容量补偿价与时长分母。价格口径与查证见 <a href="../../skills/tariff-bill-optimization/SKILL.md">电价</a> 与各省模块。</p>
+<h3 id="s18">4.2 申报与中标</h3>
+<ul><li><strong>申报曲线</strong>：日前/实时申报功率曲线，时域须覆盖结算 MTU；</li><li><strong>中标曲线</strong>：已中标容量与曲线，避免重复申报；</li><li><strong>能力上报</strong>：向市场申报可用能力包络。</li></ul>
+<p>申报与偏差结算的闭环见 <a href="预测误差申报与EMS闭环-2026-11.html">预测误差申报与 EMS 闭环</a>。</p>
+<h3 id="s19">4.3 结算时域覆盖</h3>
+<p>控制时域短于结算时域会&quot;局部最优、全天结算变差&quot;。预测、滚动优化与申报点数的时域必须覆盖结算 MTU（多为 15 min，部分市场更细）。</p>
+<h3 id="s20">4.4 联合出清与 SOC 机会成本</h3>
+<p>能量与辅助服务联合出清时，SOC 机会成本从&quot;事后核算&quot;变成&quot;实时定价&quot;，调频/备用/能量在同一目标里排序。接口要能接收联合出清结果并实时反映 SOC 影子价格。</p>
+<hr>
+<h2 id="s21">5. 计量结算接口契约</h2>
+<h3 id="s22">5.1 计量点是最易忽略的字段</h3>
+<p>EMS 优化用<strong>站内量测</strong>（PCS 侧站用表），结算用<strong>关口表</strong>（并网点）。两者精度、时标、拓扑不同，必须在契约里写清映射关系。</p>
+<h3 id="s23">5.2 映射三要素</h3>
+<ul><li><strong>精度</strong>：站用表与关口表精度等级差异；</li><li><strong>时标</strong>：采集/冻结时标对齐，15 min 冻结口径一致；</li><li><strong>拓扑</strong>：站用变损、线损、多计量点分摊的归属。</li></ul>
+<h3 id="s24">5.3 对账</h3>
+<p>结算电量与 EMS 计划电量逐时段对账，差异归因到计量映射/损耗/时标/考核。对账与收益归因见 <a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a> §8。</p>
+<hr>
+<h2 id="s25">6. 接口设计六原则</h2>
+<ol><li><strong>同源同时标</strong>：优化输入与结算数据同源、同时标、同计量点。</li><li><strong>优化与控制分离</strong>：EMS 出计划，PCS/协调控制器快速跟踪。</li><li><strong>限值双保险</strong>：模型约束 + 下发前独立校验。</li><li><strong>断网自治</strong>：与市场/云断开时按本地保底策略运行（安全优先、避免越限），恢复后对账。</li><li><strong>指令可追溯</strong>：每条计划/设定值/执行结果/越限告警可回放，支持事后归因。</li><li><strong>契约最小可用</strong>：定义了却未实现的字段必须删除，不留隐式约定。</li></ol>
+<p>详见 <a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS</a> §2.4 五条架构经验（本文补&quot;契约最小可用&quot;为第六条）。</p>
+<hr>
+<h2 id="s26">7. 接口演进观察清单</h2>
+<p>以下六件事会改变接口设计，均为 B/C 级判断，用观察指标触发复核（规则发布后 1 个月内更新），不是承诺。升级自 <a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS</a> §1.10。</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>变化</th><th>对接口契约的影响</th><th>观察指标</th></tr></thead><tbody><tr><td>现货连续运行与更细结算粒度</td><td>预测/优化/申报时域覆盖结算 MTU</td><td>本省现货连续运行公告、结算 MTU</td></tr><tr><td>能量与辅助服务联合出清</td><td>SOC 机会成本实时定价，多品种同目标排序</td><td>出清规则是否联合优化、实时市场上线</td></tr><tr><td>分布式/户用入市、VPP 扩大</td><td>站端退化为执行末梢，能力包络/基线/分解指令成主接口</td><td>分布式入市规则、聚合商注册结算规则</td></tr><tr><td>绿电直连/源网荷储/微网内部结算</td><td>内部结算价与外部市场价并行，按成员/合同拆分计量分摊</td><td>650/688 号后续细则、直连合同范式</td></tr><tr><td>负电价常态化与弃电成本</td><td>充电从套利变避免考核/消纳，合约分解与充电来源限制重算</td><td>本省负价小时数、现货限价与负价规则</td></tr><tr><td>容量补偿与辅助服务考核细化</td><td>可用率/K 值/恢复电量/考核周期进目标，容量资格动态约束</td><td>114 号文省级细则、辅助服务考核修订</td></tr></tbody></table></div>
+<hr>
+<h2 id="s27">8. 合成算例（D 级）：计量点映射错误的隐性亏损</h2>
+<h3 id="s28">8.1 场景</h3>
+<p>储能电站某日放电，PCS 侧站用表计放电 100 MWh，并网点关口表计 97 MWh（站用变损 + 线损约 3%，D 级假设）。结算按关口表，放电结算价 900 元/MWh。</p>
+<h3 id="s29">8.2 两种算法的收益差</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>口径</th><th>计量电量（MWh）</th><th>放电收益（元）</th></tr></thead><tbody><tr><td>EMS 按站用表（错）</td><td>100</td><td>90,000</td></tr><tr><td>结算按关口表（对）</td><td>97</td><td>87,300</td></tr><tr><td>差额</td><td>3</td><td><strong>2,700</strong></td></tr></tbody></table></div>
+<h3 id="s30">8.3 读图</h3>
+<ul><li>EMS 若按站用表算收益，每日高估 2,700 元——&quot;模型里赚钱、结算时亏钱&quot;。</li><li>根源是计量点映射缺失：站用表 ≠ 关口表，差 3% 损耗。</li><li>修正：契约里写清计量点映射，EMS 优化与收益核算统一用关口表口径（或显式扣损耗）。</li><li>若再叠加时标错位（如站用表与关口表冻结时标差 15 min），偏差还会进入考核，亏损放大。</li></ul>
+<hr>
+<h2 id="s31">9. 常见错误（10 条）</h2>
+<ol><li>优化用站用表、结算用关口表，不写计量点映射。</li><li>优化输入与结算数据不同时标，对账差归因不清。</li><li>控制时域短于结算 MTU，局部最优全天亏。</li><li>定义未实现的接口字段，留隐式约定。</li><li>EMS 绕过 BMS/PCS 限值下发指令。</li><li>把秒级控制塞进优化模型，优化与控制不分。</li><li>断网无自治策略，与市场断开即失控。</li><li>指令不可追溯，事后无法归因。</li><li>联合出清下仍事后核算 SOC 机会成本，多品种排序错。</li><li>接口凭空预留，不用观察指标触发复核。</li></ol>
+<hr>
+<h2 id="s32">10. 待核实与未定事项</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>事项</th><th>状态</th><th>查证入口</th></tr></thead><tbody><tr><td>各省结算 MTU 与冻结口径</td><td>分省、会调整</td><td>各省现货结算细则</td></tr><tr><td>关口表/站用表精度与损耗映射</td><td>逐项目</td><td>计量设计 + 供用电合同</td></tr><tr><td>联合出清与实时市场上线进度</td><td>分省演进</td><td>各省出清规则公告</td></tr><tr><td>分布式入市与聚合接口规范</td><td>演进中</td><td>分布式入市规则、聚合商注册规则</td></tr><tr><td>调度接口协议与时延指标</td><td>分区域</td><td>区域调度规程</td></tr></tbody></table></div>
+<hr>
+<h2 id="s33">11. 与技能和其他笔记的分工</h2>
+<ul><li><strong>本文</strong>：四类接口契约 + 同源同时标 + 计量点映射 + 设计六原则 + 演进观察，是 EMS 接口的正式参考架构。</li><li><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS</a>：单站算法、数学模型、§2.6 字段契约、§1.10 观察源头。</li><li><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a>：点表、协议、时延、安全防护工程细节。</li><li><a href="场站群与集控EMS架构-2026-11.html">场站群与集控 EMS 架构</a>：多站集控接口扩展。</li><li><a href="预测误差申报与EMS闭环-2026-11.html">预测误差申报与 EMS 闭环</a>：市场接口的申报—结算闭环。</li><li><a href="并网测试与涉网验收实务清单-2026-11.html">并网测试与涉网验收实务清单</a>：调度接口的涉网试验验证。</li><li>技能正文引用本文，不复述契约字段表。</li></ul>
+<h2 id="s34">速查</h2>
+<pre tabindex="0"><code>四类接口：设备 / 调度 / 市场 / 计量结算
+铁律：优化输入与结算数据同源、同时标、同计量点
+计量点：站用表(PCS侧) ≠ 关口表(并网点)，写清精度/时标/拓扑映射
+六原则：同源同时标 / 优化控制分离 / 限值双保险 / 断网自治 / 指令可追溯 / 契约最小可用
+演进：现货连续 / 联合出清 / 分布式入市 / 绿电直连 / 负价 / 容量考核，观察指标触发复核</code></pre>
+    </article>
+
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>5</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="储能EMS优化调度-算法与工程-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>储能 EMS 优化调度</b>
+          <span>把储能调度建成 MILP：96 点经济调度、多市场堆叠、SOC/退化、MPC 与安全联锁，并给出与交易层的四种融合模式。</span>
+        </a>
+        <a class="related-card" href="SCADA与电力监控数据链路-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>SCADA 与电力监控数据链路</b>
+          <span>从 VPP/EMS 的数据底座出发，拆解点表与四遥、104/61850/Modbus/MQTT、边缘与云端两种部署形态、采集频率与时延、时钟同步、历史库、告警、冗余和电力监控安全防护。</span>
+        </a>
+        <a class="related-card" href="场站群与集控EMS架构-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>场站群与集控 EMS 架构：分级调度、通信拓扑与群调群控</b>
+          <span>从单站 EMS 到场站群集控的分层架构、控制权限与时间尺度、通信拓扑与时延预算、群调群控与共享储能池、安全防护，附共享储能规模效应算例。</span>
+        </a>
+        <a class="related-card" href="微网EMS优化调度-算法与工程-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>微网 EMS 优化调度</b>
+          <span>PCC 购售双变量、备用/孤岛/退化约束、MPC 滚动与验收测试，区分保护与优化。</span>
+        </a>
+      </div>
+      <p class="related-rest"><b>更多关联</b><a href="并网测试与涉网验收实务清单-2026-11.html">并网测试与涉网验收实务清单：AGC/AVC/一次调频投运试验与考核点闭环</a></p>
+    </section>
+
+<section class="related" aria-labelledby="paired-skills-title">
+      <div class="related-head"><h2 id="paired-skills-title">配套技能</h2><span>2</span></div>
+      <div class="related-grid">
+        <a class="related-card skill-pair" href="skill-storage-investment-operations.html">
+          <span class="related-type">收益堆叠、投决、退化与考核（含安徽容量电价、广东现货+调频实例包）</span>
+          <b>储能投资与运营</b>
+          <span>技能 · 储能 · 投决 · LCOS</span>
+        </a>
+        <a class="related-card skill-pair" href="skill-ems-dispatch.html">
+          <span class="related-type">96 点调度、SOC 与需量（含江苏零碳园区微网、山东独立储能电站日运行+考核复盘实例包）</span>
+          <b>EMS 优化调度</b>
+          <span>技能 · EMS · SOC · 需量</span>
+        </a>
+      </div>
+    </section>
+
+    <nav class="pager" aria-label="上下篇">
+          <a class="prev" href="场站群与集控EMS架构-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">场站群与集控 EMS 架构：分级调度、通信拓扑与群调群控</span></a>
+          <span class="spacer"></span>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../EMS数据接口参考架构-2026-11.md">knowledge/EMS数据接口参考架构-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="本页目录">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv3"><a href="#s2">0.1 三句话</a></li>
+            <li class="lv3"><a href="#s3">0.2 关键数字与口径</a></li>
+            <li class="lv2"><a href="#s4">1. 接口全景</a></li>
+            <li class="lv3"><a href="#s5">1.1 四类接口</a></li>
+            <li class="lv3"><a href="#s6">1.2 数据流闭环</a></li>
+            <li class="lv3"><a href="#s7">1.3 接口与分层的关系</a></li>
+            <li class="lv2"><a href="#s8">2. 设备接口契约</a></li>
+            <li class="lv3"><a href="#s9">2.1 职责边界</a></li>
+            <li class="lv3"><a href="#s10">2.2 关键字段</a></li>
+            <li class="lv3"><a href="#s11">2.3 限值双保险</a></li>
+            <li class="lv2"><a href="#s12">3. 调度接口契约</a></li>
+            <li class="lv3"><a href="#s13">3.1 指令与回读</a></li>
+            <li class="lv3"><a href="#s14">3.2 涉网性能</a></li>
+            <li class="lv3"><a href="#s15">3.3 时延与时钟</a></li>
+            <li class="lv2"><a href="#s16">4. 市场/交易接口契约</a></li>
+            <li class="lv3"><a href="#s17">4.1 价格穿透</a></li>
+            <li class="lv3"><a href="#s18">4.2 申报与中标</a></li>
+            <li class="lv3"><a href="#s19">4.3 结算时域覆盖</a></li>
+            <li class="lv3"><a href="#s20">4.4 联合出清与 SOC 机会成本</a></li>
+            <li class="lv2"><a href="#s21">5. 计量结算接口契约</a></li>
+            <li class="lv3"><a href="#s22">5.1 计量点是最易忽略的字段</a></li>
+            <li class="lv3"><a href="#s23">5.2 映射三要素</a></li>
+            <li class="lv3"><a href="#s24">5.3 对账</a></li>
+            <li class="lv2"><a href="#s25">6. 接口设计六原则</a></li>
+            <li class="lv2"><a href="#s26">7. 接口演进观察清单</a></li>
+            <li class="lv2"><a href="#s27">8. 合成算例（D 级）：计量点映射错误的隐性亏损</a></li>
+            <li class="lv3"><a href="#s28">8.1 场景</a></li>
+            <li class="lv3"><a href="#s29">8.2 两种算法的收益差</a></li>
+            <li class="lv3"><a href="#s30">8.3 读图</a></li>
+            <li class="lv2"><a href="#s31">9. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s32">10. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s33">11. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s34">速查</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="21" data-more-label="展开 21 个小节" data-less-label="收起小节">展开 21 个小节</button>
+  </aside>
+</div>
+
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.0" data-cutoff="2026-11-19" data-latest="2026-11-19" data-count="92">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.0）" title="查看更新记录（当前 v2.0）">
+    <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
+    <span class="cl-badge-ver">v2.0</span>
+    <span class="cl-badge-label">更新记录</span>
+  </button>
+  <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
+    <div class="cl-backdrop" data-changelog-close></div>
+    <div class="cl-panel" role="dialog" aria-modal="true" aria-labelledby="cl-title" aria-describedby="cl-subtitle" tabindex="-1">
+      <header class="cl-head">
+        <div class="cl-head-main">
+          <span class="cl-kicker">RELEASE NOTES</span>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.0</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.0 · 数据截止 2026-11-19 · 92 条记录</p>
+        </div>
+        <div class="cl-actions">
+          <div class="cl-lang" role="group" aria-label="切换语言">
+            <button type="button" data-cl-lang="zh" aria-pressed="true">中文</button>
+            <button type="button" data-cl-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <button class="cl-close" type="button" data-changelog-close aria-label="关闭更新记录" title="关闭更新记录">×</button>
+        </div>
+      </header>
+      <div class="cl-body" data-changelog-body>
+        <div class="cl-skeleton" data-changelog-status role="status">
+          <span class="cl-sr">正在读取更新记录…</span>
+          <i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      <footer class="cl-foot">
+        <span data-changelog-meta>v2.0 · 2026-11-19 · 92 条记录</span>
+        <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
+      </footer>
+    </div>
+  </div>
+</div>
+<script src="../assets/doc.js"></script>
+<script src="../assets/theme.js"></script>
+<script src="../assets/changelog.js"></script>
+</body>
+</html>

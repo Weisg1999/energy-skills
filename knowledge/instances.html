@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>实例包总览 | energy-skills 知识库</title>
-<meta name="description" content="31 个一省一主体实例包：煤电、光储、独立储能、VPP、V2G、售电、绿电直连、碳履约、园区 EMS、新能源投决与省间组合；配置改 JSON，数据换 CSV，运行 run.py。">
+<meta name="description" content="32 个一省一主体实例包：煤电、光储、独立储能、VPP、V2G、售电、绿电直连、碳履约、园区 EMS、新能源投决与省间组合；配置改 JSON，数据换 CSV，运行 run.py。">
 <link rel="icon" type="image/svg+xml" href="assets/logo-book-favicon.svg">
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(!/^(light|cream|green|dark)$/.test(t||'')){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
@@ -104,7 +104,7 @@
               <li><a href="#skill-storage-investment-operations">储能投资与运营<span class="nav-count">2</span></a></li>
               <li><a href="#skill-renewable-project-development">新能源开发与并网<span class="nav-count">1</span></a></li>
               <li><a href="#skill-spot-bidding-quant">现货报价量化<span class="nav-count">8</span></a></li>
-              <li><a href="#skill-ems-dispatch">EMS 优化调度<span class="nav-count">1</span></a></li>
+              <li><a href="#skill-ems-dispatch">EMS 优化调度<span class="nav-count">2</span></a></li>
               <li><a href="#skill-tariff-bill-optimization">电价与电费优化<span class="nav-count">1</span></a></li>
               <li><a href="#skill-retail-electricity-risk">售电零售与风险<span class="nav-count">4</span></a></li>
     </ul>
@@ -122,10 +122,10 @@
     <header class="doc-head">
       <div class="kicker">INSTANCE LAYER<i>配置层</i></div>
       <h1 class="doc-title">实例包总览</h1>
-      <p class="lede">把“一省 + 一主体 + 一套合约/账单 + 一个规则版本”做成可运行切片：选包 → 改 JSON → 换 CSV → 运行 run.py。这里汇总 31 个包，覆盖 甘肃、辽宁、山东、四川、云南、江苏、上海、广东、浙江、安徽、蒙西、山西。</p>
+      <p class="lede">把“一省 + 一主体 + 一套合约/账单 + 一个规则版本”做成可运行切片：选包 → 改 JSON → 换 CSV → 运行 run.py。这里汇总 32 个包，覆盖 甘肃、辽宁、山东、四川、云南、江苏、上海、广东、浙江、安徽、蒙西、山西。</p>
       <p class="hook">配置层不是知识模块；所有演示数据均为 D 级合成样板，不对应任何真实主体，也不构成报价、投资或法律建议。</p>
       <div class="tags"><span class="tag">实例包</span><span class="tag">配置层</span><span class="tag">可运行</span><span class="tag">D 级合成</span></div>
-      <div class="doc-meta"><span>31 个包</span><span>9 项技能</span><span>12 个省份</span><span>数据截止 2026-11-14</span></div>
+      <div class="doc-meta"><span>32 个包</span><span>9 项技能</span><span>12 个省份</span><span>数据截止 2026-11-19</span></div>
     </header>
 
     <details class="toc-mobile">
@@ -137,7 +137,7 @@
             <li class="lv2"><a href="#skill-storage-investment-operations">储能投资与运营（2）</a></li>
             <li class="lv2"><a href="#skill-renewable-project-development">新能源开发与并网（1）</a></li>
             <li class="lv2"><a href="#skill-spot-bidding-quant">现货报价量化（8）</a></li>
-            <li class="lv2"><a href="#skill-ems-dispatch">EMS 优化调度（1）</a></li>
+            <li class="lv2"><a href="#skill-ems-dispatch">EMS 优化调度（2）</a></li>
             <li class="lv2"><a href="#skill-tariff-bill-optimization">电价与电费优化（1）</a></li>
             <li class="lv2"><a href="#skill-retail-electricity-risk">售电零售与风险（4）</a></li>
       </ol>
@@ -795,7 +795,7 @@
         <div class="pack-group-head">
           <div>
             <h2 id="group-ems-dispatch">EMS 优化调度</h2>
-            <p>96 点调度、SOC 与需量（含江苏零碳园区微网实例包）</p>
+            <p>96 点调度、SOC 与需量（含江苏零碳园区微网、山东独立储能电站日运行+考核复盘实例包）</p>
           </div>
           <a class="pack-group-link" href="html/skill-ems-dispatch.html">技能页 →</a>
         </div>
@@ -820,6 +820,29 @@
             <a class="pack-link pack-link-primary" href="../skills/ems-dispatch/instances/jiangsu-zero-carbon-park-ems-2026-11/README.md" target="_blank" rel="noopener">说明 README ↗</a>
             <a class="pack-link" href="../skills/ems-dispatch/instances/jiangsu-zero-carbon-park-ems-2026-11/instance.json" target="_blank" rel="noopener">instance.json ↗</a>
             <a class="pack-link" href="../skills/ems-dispatch/instances/jiangsu-zero-carbon-park-ems-2026-11/run.py" target="_blank" rel="noopener">run.py ↗</a>
+            <a class="pack-link" href="html/skill-ems-dispatch.html">技能页 →</a>
+          </div>
+        </article>
+          <article class="pack-card" id="pack-shandong-storage-station-ems-2026-11">
+          <div class="pack-top">
+            <h3 class="pack-title">山东独立储能电站 EMS 日运行 · 2026-11 样板实例</h3>
+            <div class="pack-badges">
+              <span class="pack-badge">山东</span>
+              <span class="pack-badge pack-badge-grade">B/C</span>
+            </div>
+          </div>
+          <p class="pack-lead">代表日 96 点日前能量调度 + AGC 调节性能考核复盘 + 一次调频贡献考核复盘；不含实时市场出清、调频里程竞价、容量拍卖与辅助服务分成结算</p>
+          <dl class="pack-meta">
+            <div><dt>主体</dt><dd title="独立储能电站运营主体">独立储能电站运营主体</dd></div>
+            <div><dt>市场</dt><dd title="独立储能电站（现货能量 + 辅助服务考核复盘）">独立储能电站（现货能量 + 辅助服务考核复盘）</dd></div>
+            <div class="pack-meta-wide"><dt>规则版本</dt><dd title="山东电力现货市场规则；并网运行考核两个细则（仅作考核口径参照）">山东电力现货市场规则；并网运行考核两个细则（仅作考核口径参照）</dd></div>
+            <div><dt>数据截止</dt><dd>2026-11-19</dd></div>
+            <div><dt>目录</dt><dd><code>instances/shandong-storage-station-ems-2026-11/</code></dd></div>
+          </dl>
+          <div class="pack-links">
+            <a class="pack-link pack-link-primary" href="../skills/ems-dispatch/instances/shandong-storage-station-ems-2026-11/README.md" target="_blank" rel="noopener">说明 README ↗</a>
+            <a class="pack-link" href="../skills/ems-dispatch/instances/shandong-storage-station-ems-2026-11/instance.json" target="_blank" rel="noopener">instance.json ↗</a>
+            <a class="pack-link" href="../skills/ems-dispatch/instances/shandong-storage-station-ems-2026-11/run.py" target="_blank" rel="noopener">run.py ↗</a>
             <a class="pack-link" href="html/skill-ems-dispatch.html">技能页 →</a>
           </div>
         </article>
@@ -1003,7 +1026,7 @@
 <nav class="page-aux" aria-label="页面辅助">
   <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
 </nav>
-<div class="cl-root" data-changelog data-src="assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.0" data-cutoff="2026-11-19" data-latest="2026-11-19" data-count="91">
+<div class="cl-root" data-changelog data-src="assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.0" data-cutoff="2026-11-19" data-latest="2026-11-19" data-count="92">
   <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.0）" title="查看更新记录（当前 v2.0）">
     <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
     <span class="cl-badge-ver">v2.0</span>
@@ -1016,7 +1039,7 @@
         <div class="cl-head-main">
           <span class="cl-kicker">RELEASE NOTES</span>
           <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.0</span></h2>
-          <p class="cl-sub" id="cl-subtitle">当前版本 v2.0 · 数据截止 2026-11-19 · 91 条记录</p>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.0 · 数据截止 2026-11-19 · 92 条记录</p>
         </div>
         <div class="cl-actions">
           <div class="cl-lang" role="group" aria-label="切换语言">
@@ -1033,7 +1056,7 @@
         </div>
       </div>
       <footer class="cl-foot">
-        <span data-changelog-meta>v2.0 · 2026-11-19 · 91 条记录</span>
+        <span data-changelog-meta>v2.0 · 2026-11-19 · 92 条记录</span>
         <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
       </footer>
     </div>
