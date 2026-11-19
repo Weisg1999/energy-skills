@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>Power Systems · Power Markets · Carbon Markets</strong><br>
-  Nine domain skills for AI assistants · 104 knowledge modules · 13 sections
+  Nine domain skills for AI assistants · 104 knowledge modules · 31 runnable instance packs · 13 sections
 </p>
 
 <p align="center">
@@ -36,7 +36,8 @@ Current version **v2.0**, data cutoff **2026-11-19**, 43,462 body lines. Notes, 
 1. **Read directly**: open the [online knowledge hub](https://weisg1999.github.io/energy-skills/) and browse by category or search the full text; hits link straight to the matching section anchor.
 2. **Inject into AI**: paste `skills/<name>/SKILL.md` as the system prompt or context. The Chinese editions are denser; the English editions (`SKILL_EN.md`) are easier for international models.
 3. **Register as a skill**: place `skills/<name>/` into the skills directory of an AI coding tool that supports custom skills (e.g. Claude Code).
-4. **Check before committing**: rebuild the generated artifacts and run structure, content and maintenance checks; run each skill's `tools/selftest.py` for the nine skills.
+4. **Run an instance pack**: pick any `skills/<name>/instances/<pack>/`, run `python run.py --check-config` then `python run.py --demo` to see configuration checks, bid sheets and variance-bridge output.
+5. **Check before committing**: rebuild the generated artifacts and run structure, content and maintenance checks; run each skill's `tools/selftest.py` for the nine skills.
 
 ```bash
 node scripts/build-province-matrix.mjs --check
@@ -47,16 +48,16 @@ node scripts/check-maintenance.mjs --check
 
 ## Skills
 
-All nine skills are bilingual and ship zero-dependency Python tools with self-tests. Overlaps between skills are pointers, never duplicated text.
+All nine skills are bilingual and ship zero-dependency Python tools, self-tests and instance packs. Overlaps between skills are pointers, never duplicated text; all 31 instance packs are summarised in the [instance-pack matrix](knowledge/instances.html).
 
 ### Trading and markets
 
 | Skill | Core questions |
 |---|---|
-| **[Electricity Trading Expert](skills/electricity-trading-expert/SKILL_EN.md)** · [CN](skills/electricity-trading-expert/SKILL.md) | spot clearing and pricing, medium/long-term and finance, ancillary services and capacity, settlement, provincial practice, renewables market entry, fuel and gas-fired costs, carbon markets, 11 overseas markets, strategy and risk; includes three instance packs for the Shandong coal medium/long-term position, Gansu coal capacity plus ancillary services, and Gansu wind delivered to Shandong |
-| **[Spot Bidding Quant](skills/spot-bidding-quant/SKILL_EN.md)** · [CN](skills/spot-bidding-quant/SKILL.md) | load and price forecasting, bias correction, quantity-price curves, procurement portfolios, bid simulation, rolling backtests, T+1 attribution; desk layer with the decision clock, scenario/CVaR frontier, settlement bridge and public-data backtest protocol; includes six instance packs for Shandong thermal, Shandong standalone storage, Shandong PV-plus-storage, Shanxi standalone storage, Gansu wind and Inner Mongolia West renewable spot (configuration, bids, two-settlement and variance bridge) |
-| **[Virtual Power Plant Expert](skills/virtual-power-plant/SKILL_EN.md)** · [CN](skills/virtual-power-plant/SKILL.md) | resource aggregation, three development stages, market participation, business models, control and optimisation, policy and international benchmarks; includes five instance packs for Shanghai, Zhejiang, Jiangsu fast response, Liaoning resource allocation and Shenzhen V2G (aggregation configuration, declaration, scenario clearing and variance bridge) |
-| **[Retail Electricity Sales & Risk Expert](skills/retail-electricity-risk/SKILL_EN.md)** · [CN](skills/retail-electricity-risk/SKILL.md) | full-cost package pricing, customer portfolio, procurement coverage, deviation assessment, retail-wholesale inversion, guarantees and exit; includes three instance packs for Guangdong 2026, Jiangsu 2027 and Guangdong multi-user direct connection (one province, one entity, D-1 pricing and procurement, T+1 variance bridge) |
+| **[Electricity Trading Expert](skills/electricity-trading-expert/SKILL_EN.md)** · [CN](skills/electricity-trading-expert/SKILL.md) | spot clearing and pricing, medium/long-term and finance, ancillary services and capacity, settlement, provincial practice, renewables market entry, fuel and gas-fired costs, carbon markets, 11 overseas markets, strategy and risk; includes seven instance packs: the Shandong coal medium/long-term position, Gansu coal capacity plus ancillary services, Gansu wind delivered to Shandong, Sichuan hydro seasonal hedging, the Yunnan cascaded-hydro regional portfolio, Liaoning nuclear mechanism-price allocation, and the Shandong midday negative-price failure replay (runnable replay of replay-library case 1) |
+| **[Spot Bidding Quant](skills/spot-bidding-quant/SKILL_EN.md)** · [CN](skills/spot-bidding-quant/SKILL.md) | load and price forecasting, bias correction, quantity-price curves, procurement portfolios, bid simulation, rolling backtests, T+1 attribution; desk layer with the decision clock, scenario/CVaR frontier, settlement bridge and public-data backtest protocol; includes eight instance packs: Shandong thermal, Shandong standalone storage, Shandong PV-plus-storage, Shanxi standalone storage, Gansu wind, Inner Mongolia West renewable spot, Zhejiang spot storage and the Inner Mongolia West wind-solar-storage joint bid (configuration, bids, two-settlement and variance bridge) |
+| **[Virtual Power Plant Expert](skills/virtual-power-plant/SKILL_EN.md)** · [CN](skills/virtual-power-plant/SKILL.md) | resource aggregation, three development stages, market participation, business models, control and optimisation, policy and international benchmarks; includes six instance packs for Shanghai, Zhejiang, Jiangsu fast response, Liaoning resource allocation, Shenzhen V2G and the Shanghai data-centre DR slice (aggregation configuration, declaration, scenario clearing and variance bridge) |
+| **[Retail Electricity Sales & Risk Expert](skills/retail-electricity-risk/SKILL_EN.md)** · [CN](skills/retail-electricity-risk/SKILL.md) | full-cost package pricing, customer portfolio, procurement coverage, deviation assessment, retail-wholesale inversion, guarantees and exit; includes four instance packs for Guangdong 2026, Jiangsu 2027, Guangdong multi-user direct connection and the Guangdong retail-wholesale inversion failure replay (one province, one entity, D-1 pricing and procurement, T+1 variance bridge) |
 
 ### Projects and assets
 
@@ -85,12 +86,12 @@ Each directory contains `SKILL.md`, `SKILL_EN.md` and `tools/`.
 
 ## Knowledge base
 
-The 104 knowledge modules sit in 13 sections. Every module carries frontmatter (`id`, `section`, `title`, `summary`, `tags`, `cutoff`, `related`, and more). Cards, counts, full-text search, reading pages and downloads in the [knowledge hub](knowledge/index.html) are generated by the build script and cover titles, tags and body text; the hub switches among 13 sections through category filters, and every skill also has an HTML reading page with a full TXT download.
+The 104 knowledge modules sit in 13 sections. Every module carries frontmatter (`id`, `section`, `title`, `summary`, `tags`, `cutoff`, `related`, and more). Cards, counts, full-text search, reading pages and downloads in the [knowledge hub](knowledge/index.html) are generated by the build script and cover titles, tags and body text; the hub switches among 13 sections through category filters, and every skill also has an HTML reading page with a full TXT download. The 31 runnable instance packs cover 12 provincial regions and are summarised on the [instance-pack matrix](knowledge/instances.html); each pack is one province + one entity + one contract/bill set + one rule version.
 
 **Section map**
 
-- **Foundations and markets**: power-system basics and economics, spot markets, inter-provincial trading, 11 overseas markets
-- **Topics and assets**: grid connection and compliance, capacity mechanisms, ancillary services, storage revenue, cross-border PPAs/certificates, same-caliber snapshot
+- **Foundations and markets**: power-system basics and economics, spot markets, quantitative bidding and risk, the desk-day SOP, inter-provincial trading, 11 overseas markets
+- **Topics and assets**: grid connection and compliance, capacity mechanisms, ancillary services, storage revenue, cross-border PPAs/certificates, same-caliber snapshot, synthetic case replays and the contract clause library
 - **Industry and operations**: tariffs, renewables and grid connection, storage and EMS (including SCADA), integrated energy, carbon markets, VPPs
 - **Indexes and research**: policy sources, provincial status, glossary and calibres, golden Q&A, research records
 - **Chinese provincial markets**: 11 P0 formal markets + 8 P1 trial/regional markets + 14 P2 thin dossiers (Beijing, Tianjin, Hebei North, Mengdong, Jilin, Heilongjiang, Shanghai, Jiangsu, Jiangxi, Henan, Qinghai, Ningxia, Xinjiang, Tibet), 33 dossiers in total
@@ -98,7 +99,7 @@ The 104 knowledge modules sit in 13 sections. Every module carries frontmatter (
 ### Find an entry point by question
 
 - **Build the big picture from zero**: [101 A landscape](knowledge/电力系统通识-A-格局与主体.md) · [B fundamentals](knowledge/电力系统通识-B-发输配变用.md) · [C reform history](knowledge/电力系统通识-C-改革史.md) · [D new actors](knowledge/电力系统通识-D-新角色与现货市场.md)
-- **Document numbers, calibres and provincial status**: [national policy (55)](knowledge/政策列表-2026-11.md) · [provincial policy (13)](knowledge/省级政策列表-2026-11.md) · [index and calibres](knowledge/索引与口径-2026-11.md) · [provincial market table](knowledge/省级市场状态表-2026-11.md) · [English index](knowledge/INDEX_EN-2026-11.md)
+- **Document numbers, calibres and provincial status**: [national policy (55)](knowledge/政策列表-2026-11.md) · [provincial policy (21)](knowledge/省级政策列表-2026-11.md) · [index and calibres](knowledge/索引与口径-2026-11.md) · [provincial market table](knowledge/省级市场状态表-2026-11.md) · [English index](knowledge/INDEX_EN-2026-11.md)
 - **Find the rules for one province**: [provincial status table](knowledge/省级市场状态表-2026-11.md) · [Guangdong](knowledge/广东电力市场-2026-11.md) · [Shandong](knowledge/山东电力市场-2026-11.md) · [Shanxi](knowledge/山西电力市场-2026-11.md) · [Zhejiang](knowledge/浙江电力市场-2026-11.md) · [Gansu](knowledge/甘肃电力市场-2026-11.md) · [Mengxi](knowledge/蒙西电力市场-2026-11.md) · [Anhui](knowledge/安徽电力市场-2026-11.md) · [Fujian](knowledge/福建电力市场-2026-11.md) · [Shaanxi](knowledge/陕西电力市场-2026-11.md) · [Hebei South](knowledge/河北南网电力市场-2026-11.md) · [Hubei](knowledge/湖北电力市场-2026-11.md) (first 11 P0; check the status table for the rest)
 - **Second batch (continuous trial / regional formal)**: [Liaoning](knowledge/辽宁电力市场-2026-11.md) · [Hunan](knowledge/湖南电力市场-2026-11.md) · [Chongqing](knowledge/重庆电力市场-2026-11.md) · [Sichuan](knowledge/四川电力市场-2026-11.md) · [Guangxi](knowledge/广西电力市场-2026-11.md) · [Yunnan](knowledge/云南电力市场-2026-11.md) · [Guizhou](knowledge/贵州电力市场-2026-11.md) · [Hainan](knowledge/海南电力市场-2026-11.md)
 - **Third batch (P2 thin dossiers)**: [Beijing](knowledge/北京电力市场-2026-11.md) · [Tianjin](knowledge/天津电力市场-2026-11.md) · [Hebei North](knowledge/河北北网电力市场-2026-11.md) · [Mengdong](knowledge/蒙东电力市场-2026-11.md) · [Jilin](knowledge/吉林电力市场-2026-11.md) · [Heilongjiang](knowledge/黑龙江电力市场-2026-11.md) · [Shanghai](knowledge/上海电力市场-2026-11.md) · [Jiangsu](knowledge/江苏电力市场-2026-11.md) · [Jiangxi](knowledge/江西电力市场-2026-11.md) · [Henan](knowledge/河南电力市场-2026-11.md) · [Qinghai](knowledge/青海电力市场-2026-11.md) · [Ningxia](knowledge/宁夏电力市场-2026-11.md) · [Xinjiang](knowledge/新疆电力市场-2026-11.md) · [Tibet](knowledge/西藏电力市场-2026-11.md)
@@ -110,6 +111,7 @@ The 104 knowledge modules sit in 13 sections. Every module carries frontmatter (
 - **How VPPs and demand response are implemented**: [VPP aggregation, dispatch and models](knowledge/虚拟电厂聚合调度与商业模式-2026-11.md) · [approaching virtual power plants](knowledge/走近虚拟电厂-主题笔记.md) · [demand response and V2G](knowledge/需求响应、车网互动与灵活性资源-2026-11.md) · [microgrid EMS algorithms](knowledge/微网EMS优化调度-算法与工程-2026-11.md)
 - **Carbon compliance, footprints and export response**: [carbon practice](knowledge/碳资产实务-2026-11.md) · [China carbon trading practice](knowledge/中国碳排放权交易实务-主题笔记.md) · [carbon management](knowledge/碳管理-从零通往碳中和-主题笔记.md)
 - **Bidding, risk and retail operations**: [quantitative bidding and risk](knowledge/量化报价与交易风控-工程化-2026-11.md) · [market risk, credit and settlement](knowledge/电力市场风险、信用与结算-2026-11.md) · [provincial market table](knowledge/省级市场状态表-2026-11.md) · [desk-day SOP and exception handling](knowledge/交易台日课与异常处置-SOP-2026-11.md) · [synthetic case replays](knowledge/合成案例复盘库-2026-11.md) · [contract clause library](knowledge/合同与条款库-2026-11.md)
+- **Start from a runnable pack**: the [instance-pack matrix](knowledge/instances.html) summarises all 31 packs — spot bids (including storage and wind-solar-storage joint bids), retail pricing, VPP aggregation, storage investment, EMS dispatch and carbon compliance, plus two failure-replay slices (Shandong midday negative price, Guangdong retail-wholesale inversion).
 - **Test whether an answer has drifted**: [golden Q&A](knowledge/黄金问答集-2026-11.md) — 38 high-frequency questions, including 10 on price drivers, also the regression checklist.
 
 Research records (electricity market, VPP, carbon market, quant vendors, carbon-management vendors) are archived in `knowledge/` by date to trace where conclusions came from; the skills and thematic notes remain the authoritative layer.
@@ -139,10 +141,11 @@ energy-skills/
 │   ├── check-maintenance.mjs         ← due-review board
 │   ├── credibility.mjs               ← credibility register
 │   └── knowledge.config.mjs          ← sections, navigation and static copy
-├── skills/                           ← nine skills, each with SKILL.md, SKILL_EN.md and tools/
+├── skills/                           ← nine skills, each with SKILL.md, SKILL_EN.md, tools/ and instances/ packs
 └── knowledge/
     ├── index.template.html           ← hand-maintained hub skeleton
     ├── index.html                    ← generated: knowledge hub
+    ├── instances.html                ← generated: instance-pack matrix (31 packs / 12 provincial regions)
     ├── html/                         ← generated: 104 knowledge pages + 18 skill pages
     ├── credibility.json              ← generated: credibility register
     ├── english-digest.json           ← generated: English routing digest
@@ -157,11 +160,11 @@ energy-skills/
 ## Maintaining the knowledge hub
 
 > [!IMPORTANT]
-> `knowledge/index.html`, `knowledge/credibility.json`, `knowledge/english-digest.json`, `knowledge/search-index.js` and `knowledge/html/` are generated artifacts. **Do not edit them by hand.** Markdown remains the source of truth. The provincial parameter matrix inside the status table is also generated from `knowledge/data/province-params.json` by `scripts/build-province-matrix.mjs`.
+> `knowledge/index.html`, `knowledge/instances.html`, `knowledge/credibility.json`, `knowledge/english-digest.json`, `knowledge/search-index.js` and `knowledge/html/` are generated artifacts. **Do not edit them by hand.** Markdown remains the source of truth. The provincial parameter matrix inside the status table is also generated from `knowledge/data/province-params.json` by `scripts/build-province-matrix.mjs`.
 
 1. **Fill frontmatter**: add `id`, `section`, `order`, `level`, `title`, `summary`, `summary_en`, `tags`, `cutoff`, `related`, `search` and `foot` to each `knowledge/*.md`; add `examples` for worked examples and `historical: true` plus `confidence` for historical notes.
 2. **Update navigation**: edit `scripts/knowledge.config.mjs` for sections and navigation, and `knowledge/index.template.html` for the hub skeleton.
-3. **Track time sensitivity**: use [更新清单.md](更新清单.md): P0 monthly, P1 quarterly, P2 half-yearly, P3 yearly. The 18 overseas modules also carry event-driven slices for auctions, tenders and compliance deadlines, escalated into the P0 queue.
+3. **Track time sensitivity**: use [更新清单.md](更新清单.md): P0 monthly, P1 quarterly, P2 half-yearly, P3 yearly. The 18 overseas modules also carry event-driven slices for auctions, tenders and compliance deadlines, escalated into the P0 queue. Hard dates for the 33 Chinese provincial markets are listed in §3.2 of the same ledger; entries with full dates are hooked into INDEX_EN §4.1 for automatic escalation into the P0 queue.
 4. **Rebuild and verify**:
 
 ```bash
@@ -208,8 +211,8 @@ node scripts/check-maintenance.mjs --check      # maintenance-ledger structure c
 
 ## Roadmap
 
-- [x] **Nine skills**: trading, VPP, quant, carbon, storage, renewables, EMS, tariff and retail — all bilingual, each with zero-dependency Python tools and self-tests.
-- [x] **Knowledge base**: 104 modules across 13 sections, including 33 Chinese provincial markets, 11 overseas markets, cross-cutting topics, carbon, VPPs and research records; the hub is generated.
+- [x] **Nine skills**: trading, VPP, quant, carbon, storage, renewables, EMS, tariff and retail — all bilingual, each with zero-dependency Python tools, self-tests and instance packs.
+- [x] **Knowledge base**: 104 modules across 13 sections, including 33 Chinese provincial markets, 11 overseas markets, cross-cutting topics, the three decision-layer modules (desk-day SOP / replay library / clause library), carbon, VPPs and research records; plus 31 instance packs (12 provincial regions). The hub and the instance-pack matrix are generated.
 - [x] **Reading experience**: full-text search, category filters, light/dark themes and mobile layouts; body diagrams are componentised automatically and core architecture figures semanticised.
 - [ ] **December 2026 incremental review**: final spot-market rules, the national VPP management measure, the 2027 Doc. 136 auctions, and provincial capacity prices and tender results.
 

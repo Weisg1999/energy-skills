@@ -2,6 +2,13 @@
 
 This file records energy-skills releases in reverse chronological order. Current version **v2.0**, data cutoff **2026-11-19**. Repository entry point: [README_EN.md](README_EN.md); Chinese version: [CHANGELOG.md](CHANGELOG.md).
 
+### 2026-11-19 (v2.0 maintenance: READMEs sync instance packs and decision-layer content)
+
+- **Skill matrix**: Electricity Trading 3 → 7 packs (adds Sichuan hydro, the Yunnan cascade, Liaoning nuclear and the Shandong negative-price replay), Spot Quant 6 → 8 (adds Zhejiang storage and the Mengxi wind-solar-storage joint bid), VPP 5 → 6 (adds the Shanghai data-centre DR slice), Retail 3 → 4 (adds the Guangdong retail-wholesale inversion replay); both READMEs updated in sync.
+- **Onboarding**: Quick start adds a "run an instance pack" step (`--check-config` → `--demo`); "find an entry point by question" adds the instance-pack matrix; the knowledge-base and skills intros now state 31 packs / 12 provincial regions with the matrix link.
+- **Figures and structure**: provincial policy list 13 → 21; the section map adds quantitative bidding/risk and the desk-day SOP under foundations, plus the replay and clause libraries under topics; the directory tree adds `instances/` and the generated `instances.html`, listed among do-not-edit artifacts; the Roadmap adds the decision-layer modules and the 31 packs.
+- **Scope**: README-only change; no body text or counts changed (still 104 modules / 13 sections / 9 skills / 31 packs); the English edition also gains the Chinese edition's sentence about provincial hard dates escalating automatically via INDEX_EN §4.1.
+
 ### 2026-11-19 (v2.0: seven-province pricing closeout, expanded provincial policy index, 31 instance packs)
 
 - **Provincial rule closeout**: declaration/clearing/settlement figures re-baselined for Anhui, Jiangxi, Henan, Hubei, Sichuan, Shaanxi and Qinghai — Henan's 50–1,200 CNY/MWh bid range is marked grade C (2025 full-month settlement-trial plan) with the live continuous-settlement cap noted as unpublished; Hubei's "take-or-pay, deviation settlement" is anchored to the Central-China regulator's mid/long-term rules explainer (grade A) while "24-hour settlement" stays unverified; `knowledge/data/province-params.json` updated for all seven provinces with data cutoff 2026-11-19.
