@@ -4,8 +4,8 @@
   "note": "A number needs a grade, a time point and a caliber. Filter gradeC by usable/banned before using any unverified figure. Full texts of policies are linked from the Chinese policy indexes.",
   "generatedFrom": "knowledge/*.md frontmatter (summary_en) + INDEX_EN structured tables + credibility register",
   "summary": {
-    "modules": 111,
-    "withEnglishSummary": 111,
+    "modules": 114,
+    "withEnglishSummary": 114,
     "keyFigures": 242,
     "openItems": 44,
     "datedOpenItems": 23,
@@ -482,6 +482,19 @@
       "html": "html/政策列表-2026-11.html"
     },
     {
+      "id": "m-ts-e",
+      "file": "故障保护与安全防御-2026-11.md",
+      "section": "foundation",
+      "kind": "主题笔记",
+      "cutoff": "2026-11-19",
+      "title": "电力系统通识 E · 故障、保护与安全防御",
+      "titleEn": null,
+      "summaryEn": "Faults, protection and defense-in-depth for non-specialists: short-circuit current, protection selectivity and coordination, inverter-based resource fault behavior, anti-islanding, the three defense lines, under-frequency load shedding and black start.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/故障保护与安全防御-2026-11.html"
+    },
+    {
       "id": "m-prov-xj",
       "file": "新疆电力市场-2026-11.md",
       "section": "province",
@@ -506,6 +519,19 @@
       "confidence": "mixed",
       "historical": false,
       "html": "html/新能源项目开发与并网-2026-11.html"
+    },
+    {
+      "id": "m-grid-quality",
+      "file": "无功电压与电能质量-2026-11.md",
+      "section": "renewable",
+      "kind": "知识模块",
+      "cutoff": "2026-11-19",
+      "title": "无功、电压与电能质量：从无功平衡到力调电费",
+      "titleEn": null,
+      "summaryEn": "Reactive power, voltage and power quality: reactive balance and voltage stability, AVC hierarchy, SVG/capacitor/converter reactive capability, power factor and tariff adjustment, and treatment of harmonics, flicker, unbalance and voltage sags.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/无功电压与电能质量-2026-11.html"
     },
     {
       "id": "m-intl-jp",
@@ -1340,6 +1366,19 @@
       "html": "html/辽宁电力市场-2026-11.html"
     },
     {
+      "id": "m-distribution",
+      "file": "配电网承载力与分布式接入-2026-11.md",
+      "section": "renewable",
+      "kind": "知识模块",
+      "cutoff": "2026-11-19",
+      "title": "配电网承载力与分布式接入：从可开放容量到绿电直连",
+      "titleEn": null,
+      "summaryEn": "Distribution hosting capacity and distributed connection: feeder and transformer constraints, hosting capacity and open capacity, reverse-flow voltage rise, protection adaptation, differences among distributed PV, storage, charging and V2G, and green direct connection.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/配电网承载力与分布式接入-2026-11.html"
+    },
+    {
       "id": "m-prov-cq",
       "file": "重庆电力市场-2026-11.md",
       "section": "province",
@@ -1438,7 +1477,7 @@
       "cutoff": "2026-11",
       "title": "黄金问答集与回归测试",
       "titleEn": null,
-      "summaryEn": "65 high-frequency questions with answer points and common errors, covering markets, renewables, carbon, retail, VPP, international tools, price drivers, system physics / EMS engineering, tariffs / investment / contracts, and data / case replay; also serves as a regression checklist.",
+      "summaryEn": "71 high-frequency questions with answer points and common errors, covering markets, renewables, carbon, retail, VPP, international tools, price drivers, system physics / EMS engineering, tariffs / investment / contracts, data / case replay, and fault protection / distribution connection; also serves as a regression checklist.",
       "confidence": "mixed",
       "historical": false,
       "html": "html/黄金问答集-2026-11.html"

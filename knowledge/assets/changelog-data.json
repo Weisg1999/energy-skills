@@ -3,12 +3,23 @@
   "generatedFrom": "CHANGELOG.md + CHANGELOG_EN.md",
   "version": "v2.0",
   "cutoff": "2026-11-19",
-  "latest": "2026-11-20",
-  "count": 93,
+  "latest": "2026-11-21",
+  "count": 94,
   "languages": {
     "zh": {
       "title": "更新记录",
       "entries": [
+        {
+          "date": "2026-11-21",
+          "label": "v2.0 维护：故障保护、电能质量与配电网三模块与问答集 71 问",
+          "items": [
+            "<strong>系统安全与配网三模块（3 模块）</strong>：新增《电力系统通识 E · 故障、保护与安全防御》（foundation 第 5 篇，短路电流与故障类型、保护四性与整定配合、新能源故障电流特殊性、防孤岛、三道防线、低频减载与黑启动；35 kV 汇集线合成算例：500 MVA 系统 / 20 MVA 主变 / Uk 10.5% / 2.15 kA，IBR 贡献 0.495 kA，孤岛灵敏度 0.99）、《无功、电压与电能质量：从无功平衡到力调电费》（renewable 第 4 篇，AVC 三层、SVG/电容器/变流器无功能力、功率因数与力调电费、谐波/闪变/不平衡/暂降治理；800 kW 园区 0.82→0.95 需 295 kvar，谐振次数 16.3）与《配电网承载力与分布式接入：从可开放容量到绿电直连》（renewable 第 5 篇，馈线/配变约束、承载力与可开放容量、反送与电压抬升、保护适配、光伏/储能/充电/V2G 差异、绿电直连；10 kV 馈线 6 MW 光伏、5 MW 反送、电压抬升 4.25%，配 2 MW 储能后 3 MW / 60% / 2.55%）。《电力系统经济学原理》由 foundation 第 5 篇顺延为第 6 篇。",
+            "<strong>问答集 65 → 71 问</strong>：新增 J 段（Q66–Q71，故障保护与配电网）——短路电流手算与新能源保护灵敏度、防孤岛与单机/多机测试差异、三道防线与低频减载/黑启动、无功不能远送与 AVC 分层、功率因数与力调电费/电容器谐振、配网承载力与可开放容量。月度抽检增加到 11 题，季度仍全量回归。",
+            "<strong>技能关联</strong>：<code>knowledge.config.mjs</code> 将三模块挂入新能源开发、电价电费优化与虚拟电厂三个技能的模块列表；未改任何 SKILL 正文。",
+            "<strong>计数与生成物</strong>：知识模块 111 → 114、正文 45,523 → 47,265 行（+1,742）、知识页 111 → 114；实例包 32、技能 9、省级地区 12 与 13 分区不变；更新清单 P2 32 → 35；search-index 3,845,132 → 3,945,481 字节；更新记录 93 → 94 条。版本仍 v2.0，数据截止仍 2026-11-19。",
+            "<strong>边界</strong>：三个模块的算例均为 D 级合成数据，不对应任何真实场站或电网事件；标准与限值以现行文本和接入方案为准，草案不作为现行口径。"
+          ]
+        },
         {
           "date": "2026-11-20",
           "label": "v2.0 维护：黄金问答集扩充至 65 问与海外快照口径修正",
@@ -1145,6 +1156,17 @@
     "en": {
       "title": "Changelog",
       "entries": [
+        {
+          "date": "2026-11-21",
+          "label": "v2.0 maintenance: fault protection, power quality and distribution modules; Q&A at 71 questions",
+          "items": [
+            "<strong>Three system-security and distribution modules</strong>: adds Power-system primer E — faults, protection and defence (foundation #5: fault types and short-circuit current, the four protection requirements and setting coordination, inverter-based-resource fault signatures, anti-islanding, the three defence lines, under-frequency load shedding and black start; a synthetic 35 kV collector-line example with a 500 MVA source, a 20 MVA transformer at Uk 10.5%, 2.15 kA, 0.495 kA IBR contribution and an islanding sensitivity of 0.99), Reactive power, voltage and power quality — from reactive balance to the power-factor tariff (renewable #4: three-tier AVC, SVG / capacitor / converter reactive capability, power factor and the adjustment tariff, harmonics / flicker / unbalance / sag and mitigation; an 800 kW park needs 295 kvar to move from 0.82 to 0.95, resonance order 16.3) and Distribution hosting capacity and distributed connection — from open capacity to green-power direct connection (renewable #5: feeder and transformer constraints, hosting and open capacity, reverse flow and voltage rise, protection adaptation, the differences between distributed PV / storage / charging / V2G, and green direct connection; a 10 kV feeder with 6 MW PV and 1 MW load has 5 MW reverse flow and 4.25% voltage rise, cut to 3 MW / 60% / 2.55% by 2 MW of storage). The electricity-economics primer moves from foundation #5 to #6.",
+            "<strong>Q&amp;A 65 → 71 questions</strong>: adds group J (Q66–Q71, fault protection and distribution) — short-circuit hand calculation and IBR protection sensitivity, anti-islanding and why a single-unit test is not a multi-unit test, the three defence lines with UFLS and black start, why reactive power cannot travel far and three-tier AVC, power factor with the adjustment tariff and capacitor resonance, and distribution hosting / open capacity. The monthly spot check rises to 11 questions; the quarterly check still runs all 71.",
+            "<strong>Skill links</strong>: <code>knowledge.config.mjs</code> adds the three modules to the renewable-development, tariff-optimisation and virtual-power-plant skill module lists; no SKILL body text changed.",
+            "<strong>Counts and artifacts</strong>: knowledge modules 111 → 114, body lines 45,523 → 47,265 (+1,742), reading pages 111 → 114; 32 instance packs, 9 skills, 12 provincial regions and 13 sections unchanged; maintenance checklist P2 32 → 35; search-index 3,845,132 → 3,945,481 bytes; changelog records 93 → 94. Version stays v2.0; data cutoff stays 2026-11-19.",
+            "<strong>Boundary</strong>: all worked examples in the three modules are grade-D synthetic data and correspond to no real plant or grid event; standards and limits follow the current texts and connection schemes, and drafts are not current rules."
+          ]
+        },
         {
           "date": "2026-11-20",
           "label": "v2.0 maintenance: golden Q&A expanded to 65 questions and an overseas-snapshot data fix",

@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>配电网承载力与分布式接入：从可开放容量到绿电直连 | energy-skills 知识库</title>
+<meta name="description" content="馈线/配变约束、承载力与可开放容量、反送电压抬升、保护适配、分布式光伏/储能/充电/V2G 差异、绿电直连。">
+<link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
+<script>
+(function(){try{var t=localStorage.getItem('es-theme');if(!/^(light|cream|green|dark)$/.test(t||'')){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/knowledge.css">
+<link rel="stylesheet" href="../assets/theme-menu.css">
+<link rel="stylesheet" href="../assets/changelog.css">
+</head>
+<body data-cat="renewable" id="top">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
+  <div class="crumb">
+    <span class="crumb-cat">07 · RENEWABLE</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">配电网承载力与分布式接入：从可开放容量到绿电直连</span>
+  </div>
+  <div class="topbar-act">
+    <div class="theme-picker" data-theme-picker>
+      <button class="theme-toggle" type="button" data-theme-menu aria-label="选择主题" title="选择主题">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="5"/><circle cx="15" cy="9" r="5"/><circle cx="12" cy="15" r="5"/></svg>
+      </button>
+    </div>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../配电网承载力与分布式接入-2026-11.md">.md 源文件<small>knowledge/配电网承载力与分布式接入-2026-11.md</small></a>
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">07 · RENEWABLE</div>
+    <h2 class="nav-cat"><a href="../index.html#renewable">新能源与并网</a></h2>
+    <ul class="nav-list">
+              <li><a href="新能源项目开发与并网-2026-11.html">新能源项目开发与并网</a></li>
+              <li><a href="并网运行考核与两个细则-2026-11.html">并网运行考核与两个细则</a></li>
+              <li><a href="并网测试与涉网验收实务清单-2026-11.html">并网测试与涉网验收实务清单：AGC/AVC/一次调频投运试验与考核点闭环</a></li>
+              <li><a href="无功电压与电能质量-2026-11.html">无功、电压与电能质量：从无功平衡到力调电费</a></li>
+              <li class="on" aria-current="page"><a href="配电网承载力与分布式接入-2026-11.html">配电网承载力与分布式接入：从可开放容量到绿电直连</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#province"><b>03</b>中国省级市场</a></li>
+              <li><a href="../index.html#intl"><b>04</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>05</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>06</b>电价</a></li>
+              <li><a href="../index.html#storage"><b>08</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>11</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">07 · RENEWABLE<i>知识模块</i></div>
+      <h1 class="doc-title">配电网承载力与分布式接入：从可开放容量到绿电直连（2026-11）</h1>
+      <p class="lede">馈线/配变约束、承载力与可开放容量、反送电压抬升、保护适配、分布式光伏/储能/充电/V2G 差异、绿电直连。</p>
+      <p class="hook">配电网承载力与分布式接入</p>
+      <div class="tags"><span class="tag">配电网承载力</span><span class="tag">可开放容量</span><span class="tag">分布式接入</span><span class="tag">绿电直连</span></div>
+      <div class="doc-meta"><span>约 10.8k 字</span><span>阅读约 20 分钟</span><span>13 节</span><span>数据截止 2026-11-19</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（13）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv2"><a href="#s4">1. 配电网的物理约束</a></li>
+            <li class="lv2"><a href="#s11">2. 承载力与可开放容量</a></li>
+            <li class="lv2"><a href="#s17">3. 分布式光伏、储能、充电与 V2G 的差异</a></li>
+            <li class="lv2"><a href="#s24">4. 反送、电压抬升与保护适配</a></li>
+            <li class="lv2"><a href="#s31">5. 承载力评估与接入流程</a></li>
+            <li class="lv2"><a href="#s38">6. 绿电直连与源网荷储</a></li>
+            <li class="lv2"><a href="#s44">7. 合成算例（D 级）：10 kV 馈线承载力</a></li>
+            <li class="lv2"><a href="#s50">8. 对投资、交易与运营的含义</a></li>
+            <li class="lv2"><a href="#s55">9. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s56">10. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s57">11. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s58">速查</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>数据截止：2026-11-19｜定位：知识库模块（新能源与并网·配电网与分布式）</p><p>相关技能：<a href="../../skills/renewable-project-development/SKILL.md">新能源项目开发与并网专家</a>（分布式项目开发与接入）、<a href="../../skills/virtual-power-plant/SKILL.md">虚拟电厂专家</a>（分布式资源聚合）、<a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a>（用户侧储能）</p><p>用途：回答&quot;配电网到底能接多少分布式电源、可开放容量怎么来的、反送为什么导致电压升高、保护为什么会误动、光伏/储能/充电/V2G 各有什么不同、绿电直连怎么落地&quot;六类问题。本文做工程与机制整理；具体接入标准、可开放容量口径与绿电直连政策以现行国家/行业标准和当地电网公司文件为准。</p></aside>
+<hr>
+<h2 id="s1">0. 一页看懂</h2>
+<h3 id="s2">0.1 三句话</h3>
+<ul><li><strong>配电网是&quot;最后一公里&quot;，瓶颈通常不在发电资源，而在馈线、配变、电压、保护</strong>：一条 10 kV 馈线、一台 400 kVA 配变，能接多少分布式电源，取决于物理约束而不是意愿。</li><li><strong>可开放容量是&quot;在不违反技术约束下还能接多少&quot;</strong>：它是动态的、分区的、有时序的，会随负荷、天气、设备检修、网络改造变化，不是一个永久额度。</li><li><strong>分布式不是&quot;越小越无害&quot;</strong>：容量小，但数量多、分散、靠近负荷，反送、电压抬升、保护误动、谐波、不平衡都会在配网放大。</li></ul>
+<h3 id="s3">0.2 关键数字与口径</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>概念</th><th>常见口径</th><th>说明</th><th>级别</th></tr></thead><tbody><tr><td>分布式接入电压等级</td><td>8 kW 以下 220 V；8–400 kW 380 V；400 kW–6 MW 10 kV；6–20 MW 35 kV</td><td>常见工程分界，具体以现行标准与接入方案为准</td><td>B</td></tr><tr><td>配变负载率</td><td>规划/运行通常控制在 80% 左右</td><td>反送时同样要校核，不能只看正向</td><td>B</td></tr><tr><td>馈线热稳定</td><td>按导线截面、环境温度、N-1 校核</td><td>不是简单按额定电流</td><td>A</td></tr><tr><td>电压偏差</td><td>20 kV 及以下三相 ±7%；220 V 单相 +7%/−10%</td><td>GB/T 12325</td><td>A</td></tr><tr><td>反送电压抬升</td><td>ΔU/U ≈ (P R + Q X)/U²</td><td>低压线路 R 大，抬升更明显</td><td>A</td></tr><tr><td>可开放容量</td><td>分台区/线路/变电站发布，口径各地不同</td><td>以电网公司最新发布为准</td><td>B</td></tr><tr><td>防孤岛</td><td>通常在 2 s 内断开，具体按标准/认证</td><td>多机并联要现场验证</td><td>B</td></tr><tr><td>绿电直连</td><td>政策推进中，物理直连+源荷匹配</td><td>以国家/省级现行文件为准</td><td>B</td></tr></tbody></table></div>
+<aside class="note"><p>口径提醒：上表是通识量级。真实项目要按接入电压等级、并网点短路容量、馈线负载、配变容量、保护配置和当地可开放容量逐项校核。</p></aside>
+<hr>
+<h2 id="s4">1. 配电网的物理约束</h2>
+<h3 id="s5">1.1 馈线：热稳定、电压降、N-1</h3>
+<p>一条 10 kV 馈线的输送能力受三类约束：</p>
+<ul><li><strong>热稳定</strong>：导线截面、环境温度、敷设方式决定长期允许电流；N-1 时另一回线要承担全部负荷；</li><li><strong>电压降</strong>：线路过长、负荷过重、功率因数低，末端电压可能低于下限；</li><li><strong>短路/稳定</strong>：故障时短路电流、保护动作、母线电压跌落。</li></ul>
+<p>分布式电源接入后，馈线可能从&quot;单向送电&quot;变成&quot;双向流动&quot;：</p>
+<ul><li>正向重载时，分布式电源可能减轻线路负载；</li><li>反向重载时，分布式电源可能造成线路/配变过载；</li><li>故障时，分布式电源的故障电流可能改变保护范围；</li><li>N-1 时，分布式电源可能支撑电压，也可能因反送导致过电压。</li></ul>
+<h3 id="s6">1.2 配变：容量、负载率、反送</h3>
+<p>配变（台区变压器）是分布式接入最常见的瓶颈：</p>
+<ul><li>正向负荷 + 分布式出力，可能超过配变容量；</li><li>午间光伏大发、负荷低，可能反向送电，配变高压侧/低压侧都可能过载；</li><li>配变分接头固定，反送时低压侧电压抬升；</li><li>三相不平衡、谐波、直流分量会影响配变寿命；</li><li>配变容量小、数量多，逐个校核工作量大。</li></ul>
+<p>工程上常用&quot;配变容量 × 负载率&quot;估算可接入容量，但这不是充分条件：还要看馈线、电压、保护、短路容量和同时率。</p>
+<h3 id="s7">1.3 母线/变电站：短路容量、主变、出线间隔</h3>
+<ul><li>变电站主变容量、母线短路容量决定分布式电源的接入上限；</li><li>出线间隔、开关柜、保护配置可能限制接入；</li><li>分布式电源集中接入可能改变母线短路电流水平；</li><li>110 kV/35 kV 侧的反送可能影响上级电网的稳定与保护。</li></ul>
+<h3 id="s8">1.4 保护与自动化</h3>
+<p>配电网保护通常按&quot;单向辐射状&quot;设计：</p>
+<ul><li>变电站出线过流保护 + 重合闸；</li><li>馈线分段开关、分支线熔断器/重合器；</li><li>配变高压侧熔断器；</li><li>故障指示器、配网自动化终端。</li></ul>
+<p>分布式电源接入后：</p>
+<ul><li>故障电流方向可能反转，过流保护失去方向性；</li><li>分布式电源的故障电流有限，可能不足以让熔断器快速熔断；</li><li>重合闸时分布式电源可能未脱网，造成非同期合闸；</li><li>防孤岛检测失败可能导致反送电；</li><li>多台分布式电源并联可能改变保护配合。</li></ul>
+<h3 id="s9">1.5 电压、无功与电能质量</h3>
+<ul><li>反送导致并网点/末端电压抬升；</li><li>分布式电源的无功控制（Volt-Var、固定功率因数）影响电压；</li><li>单相光伏、单相充电桩导致三相不平衡；</li><li>逆变器、充电桩、变频器产生谐波；</li><li>光伏/风机出力波动导致电压波动/闪变。</li></ul>
+<h3 id="s10">1.6 约束对照</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>约束</th><th>关键指标</th><th>典型瓶颈</th><th>校核方法</th></tr></thead><tbody><tr><td>馈线热稳定</td><td>电流、载流量、N-1</td><td>线路截面、环网方式</td><td>潮流 + N-1</td></tr><tr><td>配变容量</td><td>kVA、负载率</td><td>台区配变</td><td>正向/反向负载率</td></tr><tr><td>电压</td><td>偏差、抬升</td><td>低压线路、长馈线</td><td>潮流 + 电压分布</td></tr><tr><td>短路</td><td>短路电流、设备额定</td><td>母线、开关柜</td><td>短路计算</td></tr><tr><td>保护</td><td>灵敏度、选择性、方向</td><td>熔断器、重合器、过流</td><td>保护配合校核</td></tr><tr><td>电能质量</td><td>THD、不平衡、闪变、暂降</td><td>逆变器、充电桩、电弧负荷</td><td>监测 + 标准限值</td></tr><tr><td>稳定</td><td>电压/频率/功角</td><td>高比例分布式、弱电网</td><td>稳定计算（大容量接入）</td></tr></tbody></table></div>
+<hr>
+<h2 id="s11">2. 承载力与可开放容量</h2>
+<h3 id="s12">2.1 承载力的定义</h3>
+<p>配电网承载力（hosting capacity）通常指：<strong>在不违反电压、热稳定、保护、电能质量、N-1 等约束的前提下，配电网还能接纳多少分布式电源</strong>。</p>
+<ul><li><strong>静态承载力</strong>：给定负荷/出力场景，算一个最大接入容量；</li><li><strong>动态承载力</strong>：随时间、天气、负荷、网络重构变化；</li><li><strong>确定性</strong>：按最严场景校核，结果保守；</li><li><strong>概率性</strong>：按出力/负荷分布算越限概率，结果更接近实际。</li></ul>
+<p>承载力不是一个数，而是一组&quot;场景—约束—容量&quot;的组合。工程上要说清楚：在什么负荷水平、什么出力同时率、什么电压控制策略下，承载力是多少。</p>
+<h3 id="s13">2.2 计算流程</h3>
+<ol><li><strong>收集资料</strong>：馈线拓扑、导线型号、配变容量、负荷曲线、分布式电源规划、保护配置、短路容量；</li><li><strong>设定场景</strong>：最大负荷/最小负荷、光伏大发/无出力、N-1、检修方式；</li><li><strong>潮流计算</strong>：电压分布、线路/配变负载率、网损；</li><li><strong>短路计算</strong>：短路电流、设备额定、保护灵敏度；</li><li><strong>保护校核</strong>：方向、级差、熔断器配合、重合闸、防孤岛；</li><li><strong>电能质量校核</strong>：谐波、不平衡、闪变、暂降；</li><li><strong>稳定校核</strong>：大容量分布式、弱电网、故障穿越；</li><li><strong>经济性</strong>：网络改造、储能、无功补偿、弃光/弃风成本；</li><li><strong>结论</strong>：分区域、分场景给出可接入容量与限制因素。</li></ol>
+<h3 id="s14">2.3 可开放容量</h3>
+<p>&quot;可开放容量&quot;是电网公司对外发布的、某台区/线路/变电站还能接入的容量。它的口径各地不同，可能考虑：</p>
+<ul><li>配变容量与负载率；</li><li>馈线热稳定与 N-1；</li><li>电压偏差与反送限制；</li><li>保护与短路容量；</li><li>已批复未并网项目；</li><li>分布式电源的同时率/出力系数；</li><li>储能、需求响应、无功补偿的调节能力。</li></ul>
+<p>因此：</p>
+<ul><li>可开放容量是<strong>动态</strong>的，会随负荷增长、项目并网、网络改造变化；</li><li>不同地区的口径不可直接比较；</li><li>查询结果要保留发布日期、数据来源和适用条件；</li><li>项目立项前要重新查询，不能拿旧截图当依据。</li></ul>
+<h3 id="s15">2.4 为什么不是一个固定数</h3>
+<ul><li>光伏出力随天气/季节变化，午间反送最严重；</li><li>负荷随早晚/季节变化，夜间可能反送；</li><li>配变分接头、无功补偿、储能充放电会改变电压；</li><li>网络重构（联络开关）会改变潮流；</li><li>设备检修/N-1 会降低可用容量；</li><li>分布式电源的控制策略（功率因数、Volt-Var）会影响承载力。</li></ul>
+<h3 id="s16">2.5 提升承载力的手段</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>手段</th><th>作用</th><th>成本/限制</th></tr></thead><tbody><tr><td>网络改造</td><td>增大导线/配变、增加馈线、缩短供电半径</td><td>投资大、周期长</td></tr><tr><td>无功补偿/SVG</td><td>改善电压、降低网损</td><td>需协调、可能谐振</td></tr><tr><td>储能</td><td>削峰填谷、吸收反送、支撑电压</td><td>成本、寿命、安全</td></tr><tr><td>需求响应</td><td>移峰、增加本地消纳</td><td>用户配合、基线争议</td></tr><tr><td>智能逆变器</td><td>Volt-Var/Volt-Watt、无功控制</td><td>依赖通信/标准</td></tr><tr><td>网络重构</td><td>转移负荷、平衡馈线</td><td>开关操作、可靠性</td></tr><tr><td>动态增容</td><td>利用实时载流能力</td><td>监测/保护要求高</td></tr><tr><td>软开关/柔性互联</td><td>平衡馈线、控制潮流</td><td>新技术、成本</td></tr></tbody></table></div>
+<hr>
+<h2 id="s17">3. 分布式光伏、储能、充电与 V2G 的差异</h2>
+<h3 id="s18">3.1 分布式光伏</h3>
+<ul><li><strong>接入方式</strong>：全额上网、自发自用余电上网、全部自发自用；</li><li><strong>关键约束</strong>：台区反送、电压抬升、配变过载、保护误动、防孤岛；</li><li><strong>控制</strong>：逆变器无功/功率因数、Volt-Var、Volt-Watt、限功率；</li><li><strong>计量</strong>：发电量、上网电量、自用电量分开计量；</li><li><strong>政策</strong>：分类、备案、接入、消纳以现行管理办法为准。</li></ul>
+<p>分布式光伏的最大特点是<strong>出力不可控且集中在午间</strong>，与负荷曲线可能错配，导致反送。储能在光伏侧/用户侧可以吸收午间反送、提高自消纳。</p>
+<h3 id="s19">3.2 分布式储能</h3>
+<ul><li><strong>接入位置</strong>：用户侧、台区侧、馈线侧；</li><li><strong>功能</strong>：削峰填谷、需量管理、备用、无功支撑、反送控制；</li><li><strong>关键约束</strong>：配变容量、消防/安全、并网保护、计量、调度；</li><li><strong>控制</strong>：充放电策略、SOC、需量上限、防逆流；</li><li><strong>商业模式</strong>：峰谷套利、需量电费、需求响应、容量租赁、辅助服务。</li></ul>
+<p>用户侧储能可以&quot;吸收&quot;光伏反送，但也可能在谷时充电、峰时放电，改变配变负载曲线。接入前要校核配变容量、电压、保护、消防和计量。</p>
+<h3 id="s20">3.3 充电桩</h3>
+<ul><li><strong>负荷特性</strong>：单桩功率大、同时率低但随机、快充冲击、谐波、不平衡；</li><li><strong>关键约束</strong>：配变容量、馈线容量、电压波动、谐波、三相平衡；</li><li><strong>控制</strong>：有序充电、动态功率分配、负荷管理、峰谷电价；</li><li><strong>计量</strong>：充电电量、服务费、峰谷分时；</li><li><strong>政策</strong>：充电设施接入、消防、计量、补贴以地方文件为准。</li></ul>
+<p>充电桩不是&quot;按桩数 × 单桩功率&quot;配变压器，要按同时率、负荷曲线、有序充电能力校核。快充站尤其要考虑变压器短时过载、电压波动和谐波。</p>
+<h3 id="s21">3.4 V2G</h3>
+<ul><li><strong>特性</strong>：双向充放电，车辆作为移动储能；</li><li><strong>关键约束</strong>：双向计量、防孤岛、保护、通信、电池衰减、用户授权；</li><li><strong>控制</strong>：聚合商调度、SOC 管理、充放电策略、参与辅助服务；</li><li><strong>计量</strong>：正向/反向电量、分时电价、容量电费；</li><li><strong>政策</strong>：V2G 试点、电价机制、并网标准仍在演进。</li></ul>
+<p>V2G 不是&quot;把充电桩反过来&quot;，它涉及车辆、桩、聚合平台、电网、计量、结算多个环节。防孤岛、保护、双向计量和责任边界必须提前设计。</p>
+<h3 id="s22">3.5 绿电直连</h3>
+<p>绿电直连通常指新能源电源与用户（或园区）通过专用线路直接连接，减少中间环节，提高绿电消纳比例。它可能包括：</p>
+<ul><li>物理直连：专线供电，与公共电网并网或孤岛运行；</li><li>源荷匹配：按用户负荷曲线配置风光储，提高自消纳；</li><li>绿电交易：通过绿证/绿电交易实现合同层面的绿电消费；</li><li>源网荷储一体化：园区内协调电源、负荷、储能、充电。</li></ul>
+<p>绿电直连不是&quot;绕过电网&quot;那么简单，要解决：</p>
+<ul><li>供电可靠性/备用电源；</li><li>过网费/输配电价/基金附加；</li><li>计量与结算；</li><li>防孤岛与保护；</li><li>电网安全责任；</li><li>政策合规（直连范围、电压等级、准入条件）。</li></ul>
+<p>具体政策以国家与省级现行文件为准。园区层面的落地细节见<a href="综合能源与零碳园区-2026-11.html">综合能源与零碳园区</a>。</p>
+<h3 id="s23">3.6 资源对比</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>资源</th><th>功率方向</th><th>关键约束</th><th>保护问题</th><th>计量问题</th></tr></thead><tbody><tr><td>分布式光伏</td><td>单向发电</td><td>反送、电压抬升、配变过载</td><td>防孤岛、过流灵敏度、重合闸</td><td>发电/上网/自用分开</td></tr><tr><td>分布式储能</td><td>双向充放</td><td>配变容量、消防、SOC</td><td>防孤岛、双向过流、通信</td><td>充/放电量、需量</td></tr><tr><td>充电桩</td><td>单向用电（V1G）</td><td>配变容量、谐波、不平衡</td><td>过流、漏电、接地</td><td>充电量、服务费</td></tr><tr><td>V2G</td><td>双向</td><td>双向计量、电池衰减、保护</td><td>防孤岛、双向保护、通信</td><td>正/反向电量</td></tr><tr><td>绿电直连</td><td>双向/单向</td><td>专线、备用、过网费</td><td>防孤岛、解列、保护配合</td><td>关口表、绿电溯源</td></tr></tbody></table></div>
+<hr>
+<h2 id="s24">4. 反送、电压抬升与保护适配</h2>
+<h3 id="s25">4.1 反送的物理</h3>
+<p>配电网传统上是&quot;变电站 → 馈线 → 配变 → 用户&quot;的单向潮流。分布式电源接入后，午间光伏大发、负荷低，潮流可能反转：</p>
+<pre tabindex="0"><code>反送功率 = 分布式出力 − 本地负荷 − 储能充电</code></pre>
+<p>反送会导致：</p>
+<ul><li>线路/配变过载；</li><li>并网点/末端电压抬升；</li><li>网损变化（可能增加）；</li><li>保护方向/灵敏度变化；</li><li>上级电网的短路电流/稳定变化。</li></ul>
+<h3 id="s26">4.2 电压抬升的估算</h3>
+<pre tabindex="0"><code>ΔU/U ≈ (P R + Q X) / U²</code></pre>
+<p>其中 P 为反送有功（正方向取负），Q 为无功。低压线路 R 相对 X 较大，所以有功反送对电压抬升的影响更明显。</p>
+<p>一个 10 kV 馈线的例子：线路长度 5 km，R=0.17 Ω/km、X=0.35 Ω/km，末端负荷 1 MW，光伏出力 6 MW，反送 5 MW，功率因数 1。</p>
+<pre tabindex="0"><code>R_total = 0.17 × 5 = 0.85 Ω
+ΔU/U ≈ (−5 MW × 0.85 Ω) / (10 kV)²
+      = −4.25%</code></pre>
+<p>即末端电压比首端高约 4.25%。如果光伏出力 8 MW、负荷 1 MW，反送 7 MW，抬升约 5.95%，叠加首端电压偏高、配变分接头，可能超过 +7% 上限。</p>
+<h3 id="s27">4.3 电压抬升的治理</h3>
+<ul><li><strong>逆变器无功控制</strong>：Volt-Var、固定功率因数、无功吸收；</li><li><strong>储能</strong>：午间充电，吸收反送；</li><li><strong>需求响应</strong>：移峰/增加本地负荷；</li><li><strong>变压器分接头</strong>：调整电压基准，但不能天天调；</li><li><strong>网络改造</strong>：增大导线、缩短供电半径、增加馈线；</li><li><strong>限功率/弃光</strong>：最后手段，影响收益；</li><li><strong>动态运行包络</strong>：根据实时潮流给分布式电源下发功率/无功限值。</li></ul>
+<h3 id="s28">4.4 保护适配</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>问题</th><th>机理</th><th>后果</th><th>应对</th></tr></thead><tbody><tr><td>保护范围缩小</td><td>分布式故障电流有限，过流保护范围缩短</td><td>故障由上级切除，扩大停电</td><td>方向/距离/通信辅助、站域保护</td></tr><tr><td>保护误动</td><td>反送电流/电压跌落使相邻保护动作</td><td>多条线路跳闸</td><td>方向元件、延时、闭锁</td></tr><tr><td>熔断器配合失效</td><td>分布式电流不足以熔断熔丝</td><td>故障持续、设备损坏</td><td>重合器/断路器、通信保护</td></tr><tr><td>重合闸非同期</td><td>分布式未脱网，重合时非同期</td><td>冲击设备、保护误动</td><td>防孤岛、重合闸闭锁、检同期</td></tr><tr><td>防孤岛失败</td><td>多机并联检测相互影响</td><td>反送电、人身风险</td><td>多机现场验证、主动检测</td></tr><tr><td>负序/谐波</td><td>逆变器控制、单相负荷</td><td>保护误判、设备过热</td><td>负序保护、滤波、标准校核</td></tr></tbody></table></div>
+<h3 id="s29">4.5 防孤岛与计划孤岛</h3>
+<p>分布式接入必须区分：</p>
+<ul><li><strong>非计划孤岛</strong>：电网失电后分布式继续供电，必须检测并断开；</li><li><strong>计划孤岛</strong>：微网/园区有意识地孤岛运行，有控制、保护、黑启动和同期并列。</li></ul>
+<p>防孤岛检测要覆盖单机、多机、多品牌、多容量组合。计划孤岛要设计孤岛控制器、保护定值切换、负荷管理、储能支撑和同期条件。两者不能混为一谈。</p>
+<h3 id="s30">4.6 接地与过电压</h3>
+<p>分布式电源接入可能改变接地方式、故障电流和过电压水平：</p>
+<ul><li>逆变器直流侧接地/绝缘监测；</li><li>交流侧接地与剩余电流保护；</li><li>反送时中性点电位偏移；</li><li>单相接地故障时的过电压；</li><li>雷击/操作过电压保护。</li></ul>
+<p>接地设计要按设备类型、并网方式、当地规程校核，不能照搬集中式电站。</p>
+<hr>
+<h2 id="s31">5. 承载力评估与接入流程</h2>
+<h3 id="s32">5.1 前期</h3>
+<ul><li>查询可开放容量（保留发布日期和来源）；</li><li>收集电网资料（馈线拓扑、配变容量、负荷、保护、短路容量）；</li><li>明确项目类型、容量、接入方式、出力曲线；</li><li>初步判断瓶颈（配变/馈线/电压/保护）。</li></ul>
+<h3 id="s33">5.2 计算</h3>
+<ul><li>潮流：最大/最小负荷、光伏大发/无出力、N-1；</li><li>短路：最大/最小短路电流、设备额定；</li><li>保护：方向、级差、熔断器配合、重合闸、防孤岛；</li><li>电能质量：谐波、不平衡、闪变、暂降；</li><li>稳定：大容量/弱电网接入时校核；</li><li>经济性：接入工程、网络改造、储能、弃电。</li></ul>
+<h3 id="s34">5.3 评审</h3>
+<ul><li>电网公司接入系统评审；</li><li>政府备案/核准；</li><li>消纳意见；</li><li>接入方案批复；</li><li>并网调度协议。</li></ul>
+<h3 id="s35">5.4 建设</h3>
+<ul><li>并网设备（逆变器、PCS、升压变、开关柜）；</li><li>计量装置（关口表、发电表、上网表）；</li><li>通信（调度、监测）；</li><li>保护/防孤岛；</li><li>并网试验（FRT、防孤岛、电能质量、AGC/AVC）。</li></ul>
+<h3 id="s36">5.5 运行</h3>
+<ul><li>出力/负荷预测；</li><li>电压/无功控制；</li><li>反送/限功率管理；</li><li>故障/孤岛事件记录；</li><li>计量/结算；</li><li>定期复核承载力。</li></ul>
+<h3 id="s37">5.6 评估</h3>
+<ul><li>实际出力/电压/反送与预测对比；</li><li>接入后是否出现越限；</li><li>网络改造/储能/无功的效果；</li><li>更新可开放容量与接入规则。</li></ul>
+<hr>
+<h2 id="s38">6. 绿电直连与源网荷储</h2>
+<h3 id="s39">6.1 什么是绿电直连</h3>
+<p>绿电直连是新能源电源与用户通过专用线路直接连接，减少输配环节，提高绿电消费比例。它可以是物理直连，也可以是合同层面的绿电交易；两者不要混为一谈。</p>
+<h3 id="s40">6.2 落地条件</h3>
+<ul><li><strong>源荷匹配</strong>：电源出力曲线与用户负荷曲线匹配，或配置储能；</li><li><strong>供电可靠性</strong>：直连不能牺牲用户可靠性，通常需要公共电网备用；</li><li><strong>安全稳定</strong>：防孤岛、解列、保护、短路电流、接地；</li><li><strong>计量结算</strong>：关口表、绿电溯源、过网费、基金附加；</li><li><strong>政策合规</strong>：直连范围、电压等级、准入条件、备案/核准；</li><li><strong>责任边界</strong>：电网、电源、用户、聚合商的责任划分。</li></ul>
+<h3 id="s41">6.3 商业模式</h3>
+<ul><li>单用户直连：一个用户与一个新能源电站专线连接；</li><li>园区直连：园区内多个用户共享新能源；</li><li>源网荷储一体化：电源、负荷、储能、充电协同；</li><li>绿电交易+直连：合同绿电与物理直连结合；</li><li>隔墙售电：在允许范围内向相邻用户售电（政策/试点）。</li></ul>
+<h3 id="s42">6.4 风险</h3>
+<ul><li>政策变化/试点范围限制；</li><li>过网费/备用费/基金附加分摊；</li><li>用户负荷下降导致绿电消纳不足；</li><li>新能源出力波动导致可靠性问题；</li><li>防孤岛/保护/计量不到位；</li><li>电网安全责任不清。</li></ul>
+<h3 id="s43">6.5 尽调清单</h3>
+<ul><li>电源资源、出力曲线、并网条件；</li><li>用户负荷曲线、可靠性要求、电价承受力；</li><li>专线路径、电压等级、输送容量；</li><li>公共电网备用/备用费；</li><li>计量/结算/绿证；</li><li>防孤岛/保护/通信；</li><li>政策依据/备案/核准；</li><li>合同条款/责任边界/退出机制。</li></ul>
+<hr>
+<h2 id="s44">7. 合成算例（D 级）：10 kV 馈线承载力</h2>
+<aside class="note"><p>本算例为合成数据，仅用于演示&quot;热稳定—电压—保护&quot;三类约束的取舍，不对应任何真实馈线、台区或项目。</p></aside>
+<h3 id="s45">7.1 场景</h3>
+<p>一条 10 kV 架空馈线，合成参数：</p>
+<ul><li>线路长度 5 km，R=0.17 Ω/km、X=0.35 Ω/km；</li><li>馈线额定容量 8 MVA；</li><li>现有负荷 3 MW，功率因数 0.95；</li><li>计划接入分布式光伏 6 MW；</li><li>配变总容量 5 MVA；</li><li>光伏逆变器功率因数可调范围 0.95 超前–0.95 滞后；</li><li>无储能时，午间光伏大发、负荷 1 MW。</li></ul>
+<h3 id="s46">7.2 三类约束</h3>
+<p><strong>（1）热稳定</strong></p>
+<pre tabindex="0"><code>午间反送 = 6 MW − 1 MW = 5 MW
+馈线额定 8 MVA，反送负载率 = 5 / 8 = 62.5%
+配变 5 MVA，反送负载率 = 5 / 5 = 100%</code></pre>
+<p>馈线热稳定尚可，但配变已到 100%，没有裕度；若光伏 7 MW，配变反送 6 MW，过载 120%。</p>
+<p><strong>（2）电压抬升</strong></p>
+<pre tabindex="0"><code>R_total = 0.17 × 5 = 0.85 Ω
+ΔU/U ≈ (−5 MW × 0.85 Ω) / (10 kV)² = −4.25%</code></pre>
+<p>末端电压抬升 4.25%。若首端电压偏高 3%，叠加后接近 +7.25%，越限。若光伏 8 MW、负荷 1 MW，反送 7 MW，抬升 5.95%，更容易越限。</p>
+<p><strong>（3）保护</strong></p>
+<ul><li>光伏逆变器故障电流按 1.2 倍额定，6 MW 对应 0.415 kA；</li><li>馈线过流保护定值按负荷电流整定，可能对光伏反送不灵敏；</li><li>反送时方向元件可能误判；</li><li>防孤岛检测在多机并联下要现场验证；</li><li>重合闸时光伏可能未脱网，造成非同期。</li></ul>
+<h3 id="s47">7.3 承载力对比</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>约束</th><th>限值</th><th>当前 6 MW 光伏</th><th>结论</th></tr></thead><tbody><tr><td>馈线热稳定</td><td>8 MVA</td><td>反送 5 MW，62.5%</td><td>通过</td></tr><tr><td>配变容量</td><td>5 MVA</td><td>反送 5 MW，100%</td><td>临界</td></tr><tr><td>电压抬升</td><td>+7%</td><td>4.25%（首端正常）</td><td>通过但裕度小</td></tr><tr><td>保护</td><td>灵敏度/选择性</td><td>需校核</td><td>可能不通过</td></tr><tr><td>防孤岛</td><td>2 s 内断开</td><td>需多机验证</td><td>待试验</td></tr></tbody></table></div>
+<p>瓶颈是<strong>配变容量、电压裕度和保护</strong>，不是馈线热稳定。</p>
+<h3 id="s48">7.4 提升方案</h3>
+<ul><li><strong>配变增容</strong>：5 MVA → 6.3 MVA，反送负载率降到 79%；</li><li><strong>储能</strong>：午间充电 2 MW，反送降到 3 MW，配变负载率 60%，电压抬升降到 2.55%；</li><li><strong>逆变器无功</strong>：吸收无功，降低电压抬升，但会占用容量；</li><li><strong>网络改造</strong>：增大导线/缩短半径，降低 R；</li><li><strong>限功率</strong>：最后手段，影响收益；</li><li><strong>保护改造</strong>：方向/通信/防孤岛，确保反送工况可靠。</li></ul>
+<h3 id="s49">7.5 结论</h3>
+<ul><li>承载力不是&quot;配变容量&quot;一个数，要同时看馈线、电压、保护、短路、电能质量；</li><li>储能和智能逆变器可以提升承载力，但要校核 SOC、P-Q 能力、保护；</li><li>可开放容量是动态的，项目立项前要重新查询；</li><li>接入后要监测电压、反送、保护动作，不能&quot;并网即完事&quot;。</li></ul>
+<hr>
+<h2 id="s50">8. 对投资、交易与运营的含义</h2>
+<h3 id="s51">8.1 投资</h3>
+<ul><li>接入工程、网络改造、储能、无功补偿都是成本；</li><li>可开放容量不足可能导致项目延期/降容/增加投资；</li><li>反送限制/弃光影响收益；</li><li>配变/馈线增容的摊销方式要谈清楚；</li><li>绿电直连的备用费、过网费要进模型。</li></ul>
+<h3 id="s52">8.2 交易</h3>
+<ul><li>分布式资源可以通过 VPP/聚合商参与市场；</li><li>分布式光伏、储能、充电桩的计量/结算方式不同；</li><li>绿电直连/绿证/绿电交易的绿电归属要明确；</li><li>反送/限功率会影响偏差与结算；</li><li>分布式聚合的基线、计量、控制能力是交易前提。</li></ul>
+<h3 id="s53">8.3 运营</h3>
+<ul><li>监测电压、反送、负载率、谐波、不平衡；</li><li>预测光伏/负荷，优化储能充放电；</li><li>定期校核保护定值/防孤岛；</li><li>记录故障/孤岛/限功率事件；</li><li>与电网公司保持可开放容量/接入条件更新。</li></ul>
+<h3 id="s54">8.4 数据</h3>
+<ul><li>可开放容量发布数据要留日期/来源；</li><li>电网拓扑、配变容量、负荷数据可能涉及隐私/安全；</li><li>监测数据要满足计量/结算/审计要求；</li><li>不要用未授权的电网数据做公开分析。</li></ul>
+<hr>
+<h2 id="s55">9. 常见错误（10 条）</h2>
+<ol><li><strong>把可开放容量当永久额度</strong>：它会随负荷、项目并网、检修、网络改造变化，立项前要重查。</li><li><strong>只看变压器容量，不看馈线/电压</strong>：配变够，馈线可能过载；馈线够，末端电压可能越限。</li><li><strong>用铭牌容量算反送，忽略同时率</strong>：分布式光伏不会所有台区同时满发，但午间同时率可能很高，要按场景算。</li><li><strong>忽略无功/电压抬升</strong>：反送有功导致电压抬升，逆变器无功控制可以缓解，但不能无限吸收。</li><li><strong>以为分布式不需要保护</strong>：分布式同样要防孤岛、过流、接地、重合闸配合。</li><li><strong>防孤岛只测单机</strong>：多机并联、多品牌组合可能相互影响，必须现场验证。</li><li><strong>充电桩按同时满功率配变</strong>：应按同时率、负荷曲线、有序充电能力校核，否则变压器长期低载或短时过载。</li><li><strong>V2G 把双向计量当单向</strong>：正/反向电量、需量、容量电费、结算规则都不同。</li><li><strong>绿电直连只看电价，不看备用/过网费</strong>：专线、备用、基金附加、责任边界都会影响经济性。</li><li><strong>接入后不监测，承载力不更新</strong>：实际出力/负荷与预测偏差大，可开放容量会失真。</li></ol>
+<hr>
+<h2 id="s56">10. 待核实与未定事项</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>事项</th><th>状态</th><th>查证入口</th></tr></thead><tbody><tr><td>各地可开放容量口径与发布周期</td><td>分地区、动态</td><td>电网公司营业厅/网上国网/省级文件</td></tr><tr><td>分布式光伏分类、备案与接入电压等级</td><td>政策演进</td><td>国家能源局/省级能源局现行文件</td></tr><tr><td>台区反送比例/配变负载率限制</td><td>分地区</td><td>电网公司接入细则、可开放容量说明</td></tr><tr><td>分布式防孤岛/保护/重合闸要求</td><td>分标准、分地区</td><td>并网标准、调度协议、检测报告</td></tr><tr><td>充电桩/ V2G 并网与计量规则</td><td>试点/演进</td><td>地方文件、电网公司、计量规程</td></tr><tr><td>绿电直连政策、过网费与备用费</td><td>演进中</td><td>国家/省级现行文件、电网公司</td></tr><tr><td>分布式聚合参与市场的准入/计量</td><td>分省</td><td>省级市场规则、VPP 细则</td></tr><tr><td>承载力的概率化评估方法</td><td>研究/试点</td><td>电网规划部门、科研机构</td></tr></tbody></table></div>
+<hr>
+<h2 id="s57">11. 与技能和其他笔记的分工</h2>
+<ul><li><strong>本文</strong>：配电网约束 → 承载力/可开放容量 → 反送/电压/保护 → 光伏/储能/充电/V2G 差异 → 绿电直连，是&quot;分布式项目为什么接不进去&quot;的地基。</li><li><a href="新能源项目开发与并网-2026-11.html">新能源项目开发与并网</a>：项目开发、机制电价、并网流程；本文展开配电网承载力。</li><li><a href="并网运行考核与两个细则-2026-11.html">并网运行考核与两个细则</a>：并网考核、两个细则罚则。</li><li><a href="无功电压与电能质量-2026-11.html">无功、电压与电能质量</a>：电压偏差、谐波、不平衡、暂降的限值与治理。</li><li><a href="故障保护与安全防御-2026-11.html">故障、保护与安全防御</a>：保护四性、防孤岛、三道防线；本文讲配电侧适配。</li><li><a href="虚拟电厂聚合调度与商业模式-2026-11.html">虚拟电厂：聚合、调度与商业模式</a>：分布式资源聚合、市场参与。</li><li><a href="需求响应、车网互动与灵活性资源-2026-11.html">需求响应、车网互动与灵活性资源</a>：充电桩/V2G 的聚合与市场。</li><li><a href="综合能源与零碳园区-2026-11.html">综合能源与零碳园区</a>：绿电直连、源网荷储、园区规划。</li><li><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a>：园区/微网的运行控制。</li><li>技能正文引用本文，不复述承载力计算与接入流程。</li></ul>
+<h2 id="s58">速查</h2>
+<pre tabindex="0"><code>配网瓶颈：馈线热稳定、配变容量、电压、保护、短路、电能质量
+承载力：不是固定数，分场景/分区域/分时序
+可开放容量：动态发布，立项前重查，保留日期/来源
+反送：反送功率 = 分布式出力 − 本地负荷 − 储能充电
+电压抬升：ΔU/U ≈ (P R + Q X) / U²；低压 R 大，抬升更明显
+治理：逆变器无功、储能、需求响应、分接头、网络改造、限功率
+保护：方向、灵敏度、熔断器配合、重合闸、防孤岛、负序
+分布式光伏：午间反送、电压抬升、配变过载
+储能：吸收反送、削峰、需量、无功；校核 SOC/消防/保护
+充电桩：同时率、谐波、不平衡、有序充电
+V2G：双向计量、防孤岛、电池衰减、聚合调度
+绿电直连：专线、源荷匹配、备用、过网费、计量、责任边界
+口径铁律：接入容量以电网公司批复/可开放容量为准，不用铭牌拍脑袋</code></pre>
+    </article>
+
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>7</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="新能源项目开发与并网-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>新能源项目开发与并网</b>
+          <span>136 号机制电价、省级竞价、P50/P90、LCOE、并网标准、海上风电与省别画像。</span>
+        </a>
+        <a class="related-card" href="并网运行考核与两个细则-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>并网运行考核与两个细则</b>
+          <span>60/61 号、AGC/AVC/一次调频公式、20 项罚则、六类免考与合成算例。</span>
+        </a>
+        <a class="related-card" href="无功电压与电能质量-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>无功、电压与电能质量：从无功平衡到力调电费</b>
+          <span>无功平衡与电压稳定、AVC 分级、SVG/电容器/变流器无功能力、功率因数与力调电费、谐波/闪变/不平衡/暂降的治理。</span>
+        </a>
+        <a class="related-card" href="虚拟电厂聚合调度与商业模式-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>虚拟电厂：聚合、调度与商业模式（2026 版）</b>
+          <span>从资源盘点、准入接入、云边控制到市场参与、结算分成与项目测算，补齐 2026 年 VPP 主线。</span>
+        </a>
+      </div>
+      <p class="related-rest"><b>更多关联</b><a href="需求响应、车网互动与灵活性资源-2026-11.html">需求响应、车网互动与灵活性资源</a><a href="综合能源与零碳园区-2026-11.html">综合能源与零碳园区</a><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a></p>
+    </section>
+
+<section class="related" aria-labelledby="paired-skills-title">
+      <div class="related-head"><h2 id="paired-skills-title">配套技能</h2><span>2</span></div>
+      <div class="related-grid">
+        <a class="related-card skill-pair" href="skill-virtual-power-plant.html">
+          <span class="related-type">聚合、响应与运营（含上海、上海数据中心、浙江、江苏快响、辽宁与深圳 V2G 实例包）</span>
+          <b>虚拟电厂专家</b>
+          <span>技能 · VPP · 聚合 · 商业模式</span>
+        </a>
+        <a class="related-card skill-pair" href="skill-renewable-project-development.html">
+          <span class="related-type">资源、LCOE、机制电价与并网（含云南风电 2027 投决实例包）</span>
+          <b>新能源开发与并网</b>
+          <span>技能 · 新能源 · LCOE · 并网</span>
+        </a>
+      </div>
+    </section>
+
+    <nav class="pager" aria-label="上下篇">
+          <a class="prev" href="无功电压与电能质量-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">无功、电压与电能质量：从无功平衡到力调电费</span></a>
+          <span class="spacer"></span>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../配电网承载力与分布式接入-2026-11.md">knowledge/配电网承载力与分布式接入-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="本页目录">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv3"><a href="#s2">0.1 三句话</a></li>
+            <li class="lv3"><a href="#s3">0.2 关键数字与口径</a></li>
+            <li class="lv2"><a href="#s4">1. 配电网的物理约束</a></li>
+            <li class="lv3"><a href="#s5">1.1 馈线：热稳定、电压降、N-1</a></li>
+            <li class="lv3"><a href="#s6">1.2 配变：容量、负载率、反送</a></li>
+            <li class="lv3"><a href="#s7">1.3 母线/变电站：短路容量、主变、出线间隔</a></li>
+            <li class="lv3"><a href="#s8">1.4 保护与自动化</a></li>
+            <li class="lv3"><a href="#s9">1.5 电压、无功与电能质量</a></li>
+            <li class="lv3"><a href="#s10">1.6 约束对照</a></li>
+            <li class="lv2"><a href="#s11">2. 承载力与可开放容量</a></li>
+            <li class="lv3"><a href="#s12">2.1 承载力的定义</a></li>
+            <li class="lv3"><a href="#s13">2.2 计算流程</a></li>
+            <li class="lv3"><a href="#s14">2.3 可开放容量</a></li>
+            <li class="lv3"><a href="#s15">2.4 为什么不是一个固定数</a></li>
+            <li class="lv3"><a href="#s16">2.5 提升承载力的手段</a></li>
+            <li class="lv2"><a href="#s17">3. 分布式光伏、储能、充电与 V2G 的差异</a></li>
+            <li class="lv3"><a href="#s18">3.1 分布式光伏</a></li>
+            <li class="lv3"><a href="#s19">3.2 分布式储能</a></li>
+            <li class="lv3"><a href="#s20">3.3 充电桩</a></li>
+            <li class="lv3"><a href="#s21">3.4 V2G</a></li>
+            <li class="lv3"><a href="#s22">3.5 绿电直连</a></li>
+            <li class="lv3"><a href="#s23">3.6 资源对比</a></li>
+            <li class="lv2"><a href="#s24">4. 反送、电压抬升与保护适配</a></li>
+            <li class="lv3"><a href="#s25">4.1 反送的物理</a></li>
+            <li class="lv3"><a href="#s26">4.2 电压抬升的估算</a></li>
+            <li class="lv3"><a href="#s27">4.3 电压抬升的治理</a></li>
+            <li class="lv3"><a href="#s28">4.4 保护适配</a></li>
+            <li class="lv3"><a href="#s29">4.5 防孤岛与计划孤岛</a></li>
+            <li class="lv3"><a href="#s30">4.6 接地与过电压</a></li>
+            <li class="lv2"><a href="#s31">5. 承载力评估与接入流程</a></li>
+            <li class="lv3"><a href="#s32">5.1 前期</a></li>
+            <li class="lv3"><a href="#s33">5.2 计算</a></li>
+            <li class="lv3"><a href="#s34">5.3 评审</a></li>
+            <li class="lv3"><a href="#s35">5.4 建设</a></li>
+            <li class="lv3"><a href="#s36">5.5 运行</a></li>
+            <li class="lv3"><a href="#s37">5.6 评估</a></li>
+            <li class="lv2"><a href="#s38">6. 绿电直连与源网荷储</a></li>
+            <li class="lv3"><a href="#s39">6.1 什么是绿电直连</a></li>
+            <li class="lv3"><a href="#s40">6.2 落地条件</a></li>
+            <li class="lv3"><a href="#s41">6.3 商业模式</a></li>
+            <li class="lv3"><a href="#s42">6.4 风险</a></li>
+            <li class="lv3"><a href="#s43">6.5 尽调清单</a></li>
+            <li class="lv2"><a href="#s44">7. 合成算例（D 级）：10 kV 馈线承载力</a></li>
+            <li class="lv3"><a href="#s45">7.1 场景</a></li>
+            <li class="lv3"><a href="#s46">7.2 三类约束</a></li>
+            <li class="lv3"><a href="#s47">7.3 承载力对比</a></li>
+            <li class="lv3"><a href="#s48">7.4 提升方案</a></li>
+            <li class="lv3"><a href="#s49">7.5 结论</a></li>
+            <li class="lv2"><a href="#s50">8. 对投资、交易与运营的含义</a></li>
+            <li class="lv3"><a href="#s51">8.1 投资</a></li>
+            <li class="lv3"><a href="#s52">8.2 交易</a></li>
+            <li class="lv3"><a href="#s53">8.3 运营</a></li>
+            <li class="lv3"><a href="#s54">8.4 数据</a></li>
+            <li class="lv2"><a href="#s55">9. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s56">10. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s57">11. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s58">速查</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="45" data-more-label="展开 45 个小节" data-less-label="收起小节">展开 45 个小节</button>
+  </aside>
+</div>
+
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.0" data-cutoff="2026-11-19" data-latest="2026-11-21" data-count="94">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.0）" title="查看更新记录（当前 v2.0）">
+    <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
+    <span class="cl-badge-ver">v2.0</span>
+    <span class="cl-badge-label">更新记录</span>
+  </button>
+  <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
+    <div class="cl-backdrop" data-changelog-close></div>
+    <div class="cl-panel" role="dialog" aria-modal="true" aria-labelledby="cl-title" aria-describedby="cl-subtitle" tabindex="-1">
+      <header class="cl-head">
+        <div class="cl-head-main">
+          <span class="cl-kicker">RELEASE NOTES</span>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.0</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.0 · 数据截止 2026-11-19 · 94 条记录</p>
+        </div>
+        <div class="cl-actions">
+          <div class="cl-lang" role="group" aria-label="切换语言">
+            <button type="button" data-cl-lang="zh" aria-pressed="true">中文</button>
+            <button type="button" data-cl-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <button class="cl-close" type="button" data-changelog-close aria-label="关闭更新记录" title="关闭更新记录">×</button>
+        </div>
+      </header>
+      <div class="cl-body" data-changelog-body>
+        <div class="cl-skeleton" data-changelog-status role="status">
+          <span class="cl-sr">正在读取更新记录…</span>
+          <i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      <footer class="cl-foot">
+        <span data-changelog-meta>v2.0 · 2026-11-19 · 94 条记录</span>
+        <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
+      </footer>
+    </div>
+  </div>
+</div>
+<script src="../assets/doc.js"></script>
+<script src="../assets/theme.js"></script>
+<script src="../assets/changelog.js"></script>
+</body>
+</html>

@@ -2,19 +2,19 @@
   "schema": 1,
   "description": "Machine-readable credibility register. Filter modules by confidence/examples/historical before injecting into a model; gradeC and openItems carry the unverified figures and undecided items.",
   "summary": {
-    "modules": 111,
+    "modules": 114,
     "gradeCItems": 22,
     "openItems": 44,
     "events": 32,
     "draftPolicies": 3,
-    "mixedModules": 91,
+    "mixedModules": 94,
     "historicalModules": 15,
     "unverifiedGradeC": 14,
     "verifiedTickets": 6,
     "bannedTickets": 2,
     "ticketsDueForReview": 14,
     "openGaps": 8,
-    "englishSummaries": 111,
+    "englishSummaries": 114,
     "keyFigures": 242,
     "glossaryTerms": 82,
     "controlledAbbreviations": 50,
@@ -3706,6 +3706,30 @@
       "exampleSections": []
     },
     {
+      "id": "m-ts-e",
+      "file": "故障保护与安全防御-2026-11.md",
+      "title": "电力系统通识 E · 故障、保护与安全防御",
+      "level": "core",
+      "kind": "主题笔记",
+      "cutoff": "2026-11-19",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": "synthetic",
+      "historical": false,
+      "summaryEn": "Faults, protection and defense-in-depth for non-specialists: short-circuit current, protection selectivity and coordination, inverter-based resource fault behavior, anti-islanding, the three defense lines, under-frequency load shedding and black start.",
+      "titleEn": null,
+      "marks": {
+        "gradeC": 1,
+        "draft": 0,
+        "pending": 1,
+        "example": 6
+      },
+      "exampleSections": [
+        "### 5.5 算例：功率缺额与切负荷量",
+        "## 7. 合成算例（D 级）：35 kV 汇集线短路与保护配合"
+      ]
+    },
+    {
       "id": "m-prov-xj",
       "file": "新疆电力市场-2026-11.md",
       "title": "新疆电力市场：疆电外送、风光大基地与现货连续结算试运行（2026 版）",
@@ -3751,6 +3775,30 @@
         "### 4.3 敏感性（算例 A）",
         "### 4.6 财务评价（算例 A）",
         "### 5.8 D 级算例：CfD 差额与延迟一年"
+      ]
+    },
+    {
+      "id": "m-grid-quality",
+      "file": "无功电压与电能质量-2026-11.md",
+      "title": "无功、电压与电能质量：从无功平衡到力调电费",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-19",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": "synthetic",
+      "historical": false,
+      "summaryEn": "Reactive power, voltage and power quality: reactive balance and voltage stability, AVC hierarchy, SVG/capacitor/converter reactive capability, power factor and tariff adjustment, and treatment of harmonics, flicker, unbalance and voltage sags.",
+      "titleEn": null,
+      "marks": {
+        "gradeC": 1,
+        "draft": 0,
+        "pending": 1,
+        "example": 4
+      },
+      "exampleSections": [
+        "### 4.6 合成算例：工厂无功补偿",
+        "## 7. 合成算例（D 级）：10 kV 园区无功、谐波与电压"
       ]
     },
     {
@@ -5151,6 +5199,29 @@
       "exampleSections": []
     },
     {
+      "id": "m-distribution",
+      "file": "配电网承载力与分布式接入-2026-11.md",
+      "title": "配电网承载力与分布式接入：从可开放容量到绿电直连",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-19",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": "synthetic",
+      "historical": false,
+      "summaryEn": "Distribution hosting capacity and distributed connection: feeder and transformer constraints, hosting capacity and open capacity, reverse-flow voltage rise, protection adaptation, differences among distributed PV, storage, charging and V2G, and green direct connection.",
+      "titleEn": null,
+      "marks": {
+        "gradeC": 1,
+        "draft": 0,
+        "pending": 1,
+        "example": 2
+      },
+      "exampleSections": [
+        "## 7. 合成算例（D 级）：10 kV 馈线承载力"
+      ]
+    },
+    {
       "id": "m-prov-cq",
       "file": "重庆电力市场-2026-11.md",
       "title": "重庆电力市场（2026 版）：连续结算试运行、受端省间衔接与固定分时退出",
@@ -5324,13 +5395,13 @@
       "confidenceInferred": true,
       "examples": "synthetic",
       "historical": false,
-      "summaryEn": "65 high-frequency questions with answer points and common errors, covering markets, renewables, carbon, retail, VPP, international tools, price drivers, system physics / EMS engineering, tariffs / investment / contracts, and data / case replay; also serves as a regression checklist.",
+      "summaryEn": "71 high-frequency questions with answer points and common errors, covering markets, renewables, carbon, retail, VPP, international tools, price drivers, system physics / EMS engineering, tariffs / investment / contracts, data / case replay, and fault protection / distribution connection; also serves as a regression checklist.",
       "titleEn": null,
       "marks": {
         "gradeC": 7,
         "draft": 9,
         "pending": 3,
-        "example": 29
+        "example": 32
       },
       "exampleSections": [
         "### Q52 储能投决该看 IRR 还是 LCOS？一份算例怎么读？"

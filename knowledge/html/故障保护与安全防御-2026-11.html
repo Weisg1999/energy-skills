@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>电力系统通识 E · 故障、保护与安全防御 | energy-skills 知识库</title>
+<meta name="description" content="短路与故障类型、继电保护四性与整定配合、新能源故障电流的特殊性、防孤岛、三道防线、低频减载与黑启动。">
+<link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
+<script>
+(function(){try{var t=localStorage.getItem('es-theme');if(!/^(light|cream|green|dark)$/.test(t||'')){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/knowledge.css">
+<link rel="stylesheet" href="../assets/theme-menu.css">
+<link rel="stylesheet" href="../assets/changelog.css">
+</head>
+<body data-cat="foundation" id="top">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
+  <div class="crumb">
+    <span class="crumb-cat">01 · BASE</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">电力系统通识 E · 故障、保护与安全防御</span>
+  </div>
+  <div class="topbar-act">
+    <div class="theme-picker" data-theme-picker>
+      <button class="theme-toggle" type="button" data-theme-menu aria-label="选择主题" title="选择主题">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="5"/><circle cx="15" cy="9" r="5"/><circle cx="12" cy="15" r="5"/></svg>
+      </button>
+    </div>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../故障保护与安全防御-2026-11.md">.md 源文件<small>knowledge/故障保护与安全防御-2026-11.md</small></a>
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">01 · BASE</div>
+    <h2 class="nav-cat"><a href="../index.html#foundation">通识与经济学</a></h2>
+    <ul class="nav-list">
+              <li><a href="电力系统通识-A-格局与主体.html">电力系统通识 A · 格局与主体</a></li>
+              <li><a href="电力系统通识-B-发输配变用.html">电力系统通识 B · 发输配变用</a></li>
+              <li><a href="电力系统通识-C-改革史.html">电力系统通识 C · 改革史</a></li>
+              <li><a href="电力系统通识-D-新角色与现货市场.html">电力系统通识 D · 新角色与现货市场</a></li>
+              <li class="on" aria-current="page"><a href="故障保护与安全防御-2026-11.html">电力系统通识 E · 故障、保护与安全防御</a></li>
+              <li><a href="电力系统经济学原理-主题笔记.html">电力系统经济学原理</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#province"><b>03</b>中国省级市场</a></li>
+              <li><a href="../index.html#intl"><b>04</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>05</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>06</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>07</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>08</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>11</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">01 · BASE<i>主题笔记</i></div>
+      <h1 class="doc-title">电力系统通识 E · 故障、保护与安全防御：从短路电流到三道防线</h1>
+      <p class="lede">短路与故障类型、继电保护四性与整定配合、新能源故障电流的特殊性、防孤岛、三道防线、低频减载与黑启动。</p>
+      <p class="hook">故障、保护与安全防御</p>
+      <div class="tags"><span class="tag">短路电流</span><span class="tag">继电保护</span><span class="tag">三道防线</span><span class="tag">防孤岛</span></div>
+      <div class="doc-meta"><span>约 11.7k 字</span><span>阅读约 23 分钟</span><span>13 节</span><span>数据截止 2026-11-19</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（13）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv2"><a href="#s4">1. 故障从哪里来：类型、概率与后果</a></li>
+            <li class="lv2"><a href="#s9">2. 继电保护：四性与一张整定表</a></li>
+            <li class="lv2"><a href="#s15">3. 新能源与电力电子设备的故障特性</a></li>
+            <li class="lv2"><a href="#s21">4. 三道防线与安全稳定控制</a></li>
+            <li class="lv2"><a href="#s27">5. 低频减载、低压减载与解列</a></li>
+            <li class="lv2"><a href="#s33">6. 黑启动</a></li>
+            <li class="lv2"><a href="#s39">7. 合成算例（D 级）：35 kV 汇集线短路与保护配合</a></li>
+            <li class="lv2"><a href="#s44">8. 对交易、投资与运营的含义</a></li>
+            <li class="lv2"><a href="#s49">9. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s50">10. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s51">11. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s52">速查</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>数据截止：2026-11-19｜定位：知识库模块（通识·系统安全与二次系统）</p><p>相关技能：<a href="../../skills/renewable-project-development/SKILL.md">新能源项目开发与并网专家</a>（涉网试验与并网验收）、<a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a>（构网型与黑启动）、<a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a>（故障停运与价格尾部）</p><p>用途：回答&quot;短路电流怎么算、保护为什么讲四性、新能源为什么让保护变难、防孤岛到底防什么、三道防线各自管哪一段、低频减载和黑启动什么时候用&quot;六类问题。本文做工程通识整理；具体定值、试验判据与调度规程以设备说明书、并网检测报告和现行标准为准。</p></aside>
+<hr>
+<h2 id="s1">0. 一页看懂</h2>
+<h3 id="s2">0.1 三句话</h3>
+<ul><li><strong>故障是常态，不是例外</strong>：雷击、绝缘老化、外力破坏、设备缺陷、误操作都会造成短路或断线；保护的任务不是&quot;消灭故障&quot;，而是在毫秒到秒级把故障设备与健康电网隔开。</li><li><strong>保护是一套&quot;有选择的牺牲&quot;</strong>：为了保住大电网，允许切除一条线路、一台变压器甚至一片负荷；选择性、速动性、灵敏性、可靠性四性互相拉扯，整定就是找平衡。</li><li><strong>三道防线是概率分层</strong>：第一道防常见 N-1 故障，第二道防稳定破坏，第三道防大停电；越往后动作，代价越大，所以必须在前一道把大多数事件拦住。</li></ul>
+<h3 id="s3">0.2 关键数字与口径</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>概念</th><th>含义</th><th>典型值或口径</th><th>级别</th></tr></thead><tbody><tr><td>单相接地</td><td>中性点非有效接地系统最常见的故障</td><td>约占配电网故障的 60%–80%</td><td>B</td></tr><tr><td>三相短路</td><td>对称故障，短路电流最大</td><td>常作为设备选型的最严工况</td><td>A</td></tr><tr><td>保护动作时间</td><td>从故障发生到断路器跳闸</td><td>主保护几十毫秒，后备保护 0.3–1.5 s</td><td>B</td></tr><tr><td>保护灵敏系数</td><td>故障电流 ÷ 整定值</td><td>过流保护常要求 ≥1.3–1.5</td><td>B</td></tr><tr><td>时间级差</td><td>上下级保护的时间差</td><td>0.2–0.3 s，按开关与保护类型校核</td><td>B</td></tr><tr><td>防孤岛</td><td>分布式电源孤岛运行检测与断开</td><td>通常在 2 s 内动作，具体以现行标准与认证为准</td><td>B</td></tr><tr><td>三道防线</td><td>故障切除、稳定控制、紧急控制</td><td>见 GB 38755《电力系统安全稳定导则》</td><td>A</td></tr><tr><td>低频减载</td><td>按频率分轮切除负荷</td><td>常见 49.0 Hz 起分轮，每轮 5%–10% 负荷</td><td>B</td></tr></tbody></table></div>
+<aside class="note"><p>口径提醒：上表是工程通识量级，不是某一省、某一电压等级的定值单。真实定值必须由具备资质的整定计算人员按运行方式、设备参数、CT/PT 变比和现行规程计算，并经调度审核。</p></aside>
+<hr>
+<h2 id="s4">1. 故障从哪里来：类型、概率与后果</h2>
+<h3 id="s5">1.1 五类故障</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>故障类型</th><th>典型成因</th><th>故障电流特征</th><th>主要后果</th></tr></thead><tbody><tr><td>单相接地</td><td>绝缘子闪络、树障、断线搭地</td><td>非有效接地系统电流小；有效接地系统电流大</td><td>过电压、弧光、人身触电、设备绝缘损伤</td></tr><tr><td>两相短路</td><td>相间绝缘击穿、异物短接</td><td>小于三相短路，含负序</td><td>设备过热、保护负序启动</td></tr><tr><td>三相短路</td><td>金属性短接、误操作</td><td>对称且最大</td><td>电压骤降、设备冲击、系统稳定受威胁</td></tr><tr><td>断线</td><td>导线断裂、接头过热</td><td>不一定有大电流，但有不平衡</td><td>负序、零序、过电压、保护误判</td></tr><tr><td>复合故障</td><td>故障后重合于永久故障、多重雷击</td><td>随时间变化</td><td>设备连续冲击、保护配合失效</td></tr></tbody></table></div>
+<p>单相接地在 35 kV 及以下配电网占比最高，但故障电流可能只有几安到几十安，不能指望&quot;大电流&quot;去启动保护；这类系统靠零序电压、零序电流、绝缘监视和选线装置处理。110 kV 及以上系统多为有效接地，单相接地就是大电流故障，必须快速切除。</p>
+<h3 id="s6">1.2 中性点接地方式决定故障电流</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>系统</th><th>常见接地方式</th><th>单相接地电流</th><th>保护含义</th></tr></thead><tbody><tr><td>110 kV 及以上</td><td>有效接地</td><td>大，可能超过三相短路</td><td>单相跳闸、重合闸、零序保护</td></tr><tr><td>35 kV、10 kV 架空配网</td><td>不接地或经消弧线圈接地</td><td>小，容性电流为主</td><td>允许短时运行，靠选线；不能按大电流整定</td></tr><tr><td>10 kV 电缆较多的城市配网</td><td>经低电阻接地</td><td>较大但可控</td><td>零序过流可快速切除</td></tr><tr><td>低压 380/220 V</td><td>TN/TT/IT 等</td><td>视接地形式</td><td>靠断路器、熔断器、剩余电流保护</td></tr></tbody></table></div>
+<p>同样是&quot;单相接地&quot;，在 110 kV 是必须立即切除的故障，在 10 kV 架空网可能只发接地告警、允许运行 1–2 小时找故障。<strong>不看接地方式谈保护定值，是常见的跨专业误解。</strong></p>
+<h3 id="s7">1.3 短路电流怎么算（实用版）</h3>
+<p>工程上先用标幺值法估算：</p>
+<pre tabindex="0"><code>取基准容量 S_base（如 100 MVA）、基准电压 U_base（如 37 kV）
+系统阻抗 X_s* = S_base / S_k（S_k 为系统短路容量）
+变压器阻抗 X_t* = U_k% / 100 × S_base / S_N
+总阻抗 X* = X_s* + X_t* + 线路阻抗
+基准电流 I_base = S_base / (√3 × U_base)
+短路电流 I_k = I_base / X*</code></pre>
+<p>一个 35 kV 侧的例子：系统短路容量 500 MVA，主变 20 MVA、短路阻抗 10.5%，取 100 MVA 基准。</p>
+<pre tabindex="0"><code>X_s* = 100 / 500 = 0.20
+X_t* = 0.105 × 100 / 20 = 0.525
+X* = 0.20 + 0.525 = 0.725
+I_base = 100 / (√3 × 37) = 1.56 kA
+I_k = 1.56 / 0.725 = 2.15 kA</code></pre>
+<p>这个 2.15 kA 是 35 kV 母线三相短路电流的估算值。真实计算还要考虑线路阻抗、电缆电容、电动机反馈、新能源变流器限流、接地方式与运行方式。<strong>设备选型看最大短路电流，保护灵敏度看最小短路电流</strong>，两者不能混用同一个工况。</p>
+<h3 id="s8">1.4 短路电流的四个用途</h3>
+<ul><li><strong>设备选型</strong>：断路器开断能力、动稳定、热稳定、CT 动热稳定。</li><li><strong>保护整定</strong>：过流定值、灵敏度、级差配合。</li><li><strong>接地与安全</strong>：接地网跨步电压、接触电压、电缆屏蔽层。</li><li><strong>故障分析</strong>：录波、保护动作评价、事故追溯。</li></ul>
+<hr>
+<h2 id="s9">2. 继电保护：四性与一张整定表</h2>
+<h3 id="s10">2.1 四性</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>要求</th><th>含义</th><th>典型矛盾</th></tr></thead><tbody><tr><td>选择性</td><td>只切故障设备，尽量不切健康设备</td><td>与速动性矛盾：越靠近故障越要快，越上级越要等</td></tr><tr><td>速动性</td><td>尽快切除，减少设备损伤与稳定冲击</td><td>与选择性矛盾：上级等下级，可能拖慢</td></tr><tr><td>灵敏性</td><td>最小故障下也能可靠启动</td><td>与躲负荷/躲涌流矛盾：定值越高越不灵敏</td></tr><tr><td>可靠性</td><td>该动就动、不该动不动</td><td>与灵敏度、选择性都矛盾，靠冗余与校验</td></tr></tbody></table></div>
+<p>四性没有&quot;全都最优&quot;的解。整定计算是在给定运行方式、设备能力、CT/PT 精度和规程要求下，找一个可接受的点。<strong>保护定值不是越大越安全，也不是越小越灵敏。</strong></p>
+<h3 id="s11">2.2 保护家族</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>保护</th><th>保护对象</th><th>核心原理</th><th>常见问题</th></tr></thead><tbody><tr><td>过流保护</td><td>线路、变压器、母线后备</td><td>电流超过定值并延时</td><td>受运行方式影响大，灵敏度和选择性难兼顾</td></tr><tr><td>方向过流</td><td>双电源、环网线路</td><td>电流方向判别</td><td>电压回路断线可能误动，需方向元件校验</td></tr><tr><td>距离保护</td><td>110 kV 及以上线路</td><td>测量阻抗落在动作区</td><td>系统振荡、弱馈、过渡电阻、PT 断线</td></tr><tr><td>差动保护</td><td>变压器、母线、线路、发电机</td><td>比较两端/各侧电流相量</td><td>CT 饱和、变比匹配、二次回路错误、涌流</td></tr><tr><td>零序保护</td><td>接地故障</td><td>零序电流/电压</td><td>非有效接地系统电流小，选线困难</td></tr><tr><td>负序保护</td><td>不对称故障、断线</td><td>负序电流/电压</td><td>新能源负序控制会改变故障特征</td></tr><tr><td>断路器失灵</td><td>断路器拒动</td><td>电流仍存在且跳闸指令已发</td><td>失灵定值、跳闸矩阵、相邻断路器</td></tr><tr><td>重合闸</td><td>架空线路瞬时故障</td><td>跳闸后延时重合</td><td>永久故障二次冲击、与新能源 FRT 冲突</td></tr></tbody></table></div>
+<h3 id="s12">2.3 整定配合的三条硬规则</h3>
+<ol><li><strong>灵敏度按最小运行方式算</strong>：过流保护不能只用最大短路电流校核；最小运行方式、单台变压器运行、线路末端故障才是灵敏度的最严工况。</li><li><strong>级差要落在时间轴上</strong>：上下级保护之间留 0.2–0.3 s 级差，给下级断路器熄弧、CT 暂态衰减和保护返回留时间；具体级差按开关类型、保护算法和规程校核。</li><li><strong>二次回路与 CT 必须一起校</strong>：CT 变比、准确级、10% 误差曲线、暂态饱和、二次负载、直流分量都会让&quot;纸面定值&quot;失效。差动保护尤其怕 CT 饱和与二次回路多点接地。</li></ol>
+<h3 id="s13">2.4 一张整定表怎么看</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>保护对象</th><th>主保护</th><th>后备保护</th><th>定值要点</th><th>时限要点</th></tr></thead><tbody><tr><td>35 kV 汇集线</td><td>电流速断 + 过流 + 零序</td><td>主变过流</td><td>躲过最大负荷与励磁涌流；末端故障有灵敏度</td><td>速断 0 s，过流与主变差 0.3 s 级差</td></tr><tr><td>110 kV 线路</td><td>距离 + 零序 + 纵联</td><td>距离 II/III 段</td><td>按线路阻抗与助增/汲出校核</td><td>纵联瞬时，距离段按级差</td></tr><tr><td>主变</td><td>差动 + 瓦斯</td><td>过流、零序、过负荷</td><td>差动躲涌流，过流躲额定负荷</td><td>差动瞬时，过流与母线/线路配合</td></tr><tr><td>母线</td><td>母线差动</td><td>失灵保护</td><td>各支路 CT 变比匹配</td><td>差动瞬时，失灵短延时</td></tr><tr><td>储能/新能源站</td><td>站域保护 + 并网保护</td><td>线路后备</td><td>兼顾电网侧与设备侧故障</td><td>与场站控制器、FRT 配合</td></tr></tbody></table></div>
+<p>整定表不是&quot;抄一张表&quot;，而是把<strong>运行方式、设备参数、CT/PT、保护算法、通信通道、重合闸策略</strong>逐项落成可执行的定值单，并有版本号、审批人、执行日期和复核记录。</p>
+<h3 id="s14">2.5 重合闸与故障性质</h3>
+<p>架空线路的大多数故障是瞬时性的（雷击、鸟害、树枝），重合闸能显著提高供电可靠性。但重合闸也有代价：</p>
+<ul><li>永久性故障会被二次冲击，设备损伤加重；</li><li>新能源场站送出线路重合闸时，逆变器可能已经因 FRT 脱网，重合后需要重新并网；</li><li>单相重合闸需要选相元件与潜供电流抑制；</li><li>电缆线路一般不投重合闸，因为电缆故障多为永久性。</li></ul>
+<p><strong>重合闸不是&quot;免费的重试&quot;</strong>，要和 FRT、场站控制器、备自投、安稳装置一起校核。</p>
+<hr>
+<h2 id="s15">3. 新能源与电力电子设备的故障特性</h2>
+<h3 id="s16">3.1 故障电流被&quot;限流&quot;</h3>
+<p>同步机的短路电流由励磁电动势与电枢反应决定，故障初期有较大的次暂态电流，随后衰减。风电、光伏、储能经变流器并网，故障电流由控制器限制，通常只有额定电流的 1.1–1.5 倍，且随控制策略变化：</p>
+<ul><li>有的策略优先保直流母线，故障电流更小；</li><li>有的策略按要求注入无功电流，有功/无功电流分配随电压跌落变化；</li><li>负序、谐波、相位跳变都与同步机不同；</li><li>故障电流的上升速度、峰值、衰减时间由控制器和限流环节决定。</li></ul>
+<p><strong>用同步机的短路电流表去整定新能源场站的保护，是典型的&quot;旧地图找新大陆&quot;。</strong></p>
+<h3 id="s17">3.2 弱馈、频率漂移与相位跳变</h3>
+<p>新能源场站通过变流器与电网耦合，故障期间并网点电压跌落、相位跳变、频率漂移，锁相环（PLL）可能失锁或跟踪偏差。后果包括：</p>
+<ul><li>距离保护测到的阻抗不在预期位置；</li><li>方向元件因相位变化误判；</li><li>频率保护因频率测量抖动误动；</li><li>差动保护的制动量不足或误动。</li></ul>
+<p>弱电网（短路比低）下，变流器与电网的交互更强，可能出现次同步振荡、宽频振荡。保护定值要考虑<strong>电网强度</strong>，不能只看设备铭牌。</p>
+<h3 id="s18">3.3 保护&quot;看不见&quot;的三种情形</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>情形</th><th>机理</th><th>后果</th><th>应对</th></tr></thead><tbody><tr><td>灵敏度不足</td><td>变流器限流，故障电流接近负荷电流</td><td>过流保护不启动或末端故障不动作</td><td>负序/零序/电压元件、站域保护、通信辅助</td></tr><tr><td>保护范围缩小</td><td>故障电流小，过流保护范围缩短</td><td>故障由上级后备切除，扩大停电范围</td><td>距离/差动/纵联、自适应整定</td></tr><tr><td>误动/ sympathetic tripping</td><td>相邻健康线路感受到故障电流或电压跌落</td><td>多条线路同时跳闸</td><td>方向元件、通信闭锁、延时配合</td></tr><tr><td>相位选择失败</td><td>负序/零序特征与同步机不同</td><td>单相重合闸选相错误</td><td>按变流器特性重新校核选相元件</td></tr></tbody></table></div>
+<h3 id="s19">3.4 防孤岛</h3>
+<p>孤岛是分布式电源在电网失电后继续给局部负荷供电的状态。它的问题不是&quot;有电不好&quot;，而是：</p>
+<ul><li>孤岛内电压、频率不受大电网支撑，可能漂移；</li><li>电力公司检修人员可能遇到反送电；</li><li>重合闸时非同期合闸，冲击设备；</li><li>孤岛内的保护定值、接地方式可能失效；</li><li>多逆变器并联时，孤岛检测可能相互抵消或共振。</li></ul>
+<p>防孤岛检测分被动式（过/欠压、过/欠频、相位跳变、谐波）和主动式（主动频移、阻抗测量、注入扰动）。并网逆变器通常要求具备防孤岛保护，动作时间以现行并网标准与设备认证为准，工程上常见&quot;2 s 内断开&quot;的口径。<strong>单机测试通过不等于多机并联通过</strong>，多机、多品牌、多容量组合要现场验证。</p>
+<p>计划性孤岛（微网）是另一回事：它有明确的孤岛控制、黑启动、同期并列和负荷管理，不属于&quot;非计划孤岛&quot;。构网型储能、微网控制器和孤岛检测要协同设计。</p>
+<h3 id="s20">3.5 故障穿越与保护的配合</h3>
+<p>故障穿越（FRT）要求新能源在场站电压跌落时不脱网，并在故障清除后按曲线恢复。保护配置要满足：</p>
+<ul><li>保护动作不能先于 FRT 曲线要求的承受时间；</li><li>故障切除后，场站要能按斜率恢复有功；</li><li>无功电流注入要符合并网标准；</li><li>连续低电压、零电压、不对称故障都要校核；</li><li>保护定值要与场站控制器、SVG、储能 PCS 的控制策略联动。</li></ul>
+<p>FRT 曲线因标准、电压等级、设备类型而异。风机、光伏、储能的曲线不完全相同，<strong>不能用一条曲线套所有设备</strong>。工程上以并网检测报告和电网公司下发的涉网性能要求为准。</p>
+<hr>
+<h2 id="s21">4. 三道防线与安全稳定控制</h2>
+<h3 id="s22">4.1 第一道：快速切除与预防性控制</h3>
+<p>第一道防线针对<strong>单一元件故障</strong>（N-1），靠快速继电保护切除故障，靠预防性控制（发电计划、电压控制、N-1 校核、稳定限额）保证故障后系统仍能稳定运行。它是&quot;日常防线&quot;，绝大多数故障在这里被处理。</p>
+<h3 id="s23">4.2 第二道：安全稳定控制装置</h3>
+<p>第二道防线针对<strong>稳定破坏</strong>：故障切除后，系统可能仍面临功角失稳、电压崩溃、频率崩溃、热稳定越限。安全稳定控制装置（安稳装置、安控系统）按预定的控制策略采取：</p>
+<ul><li>切机、切负荷；</li><li>快关汽门、压出力；</li><li>直流功率调制；</li><li>解列；</li><li>投入制动电阻、SVC/STATCOM 等。</li></ul>
+<p>第二道防线的定值和控制策略要基于离线稳定计算和在线安全分析，按&quot;故障场景—控制措施&quot;表执行。它的动作是有代价的，不能日常随意触发。</p>
+<h3 id="s24">4.3 第三道：失步解列、频率电压紧急控制、黑启动</h3>
+<p>第三道防线针对<strong>大面积停电</strong>：</p>
+<ul><li>失步解列：把失步的系统解列为若干个同步岛，避免全局崩溃；</li><li>频率紧急控制：低频减载、高频切机；</li><li>电压紧急控制：低压减载、无功紧急投入；</li><li>黑启动：用黑启动电源逐步恢复电网。</li></ul>
+<p>第三道防线是&quot;最后手段&quot;，动作意味着已经发生了严重事件。它的有效性靠定期演练、黑启动电源维护、解列点校核和通信保障。</p>
+<h3 id="s25">4.4 三道防线的边界</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>防线</th><th>目标</th><th>典型措施</th><th>动作时间</th><th>代价</th></tr></thead><tbody><tr><td>第一道</td><td>切除故障，保持稳定</td><td>继电保护、预防性控制</td><td>毫秒到秒</td><td>切除单个元件</td></tr><tr><td>第二道</td><td>防止稳定破坏扩大</td><td>切机、切负荷、直流调制、解列</td><td>秒级</td><td>切除部分电源/负荷</td></tr><tr><td>第三道</td><td>防止大面积停电</td><td>失步解列、低频/低压减载、黑启动</td><td>秒到分钟</td><td>大面积停电、长时间恢复</td></tr></tbody></table></div>
+<p>三道防线不是&quot;三个设备清单&quot;，而是<strong>三个概率层次</strong>。第一道失效，第二道才动作；第二道失效，第三道才动作。任何一道的定值、策略、通信、电源都要独立校核，不能假设前一道一定成功。</p>
+<h3 id="s26">4.5 安全稳定导则的视角</h3>
+<p>GB 38755《电力系统安全稳定导则》把稳定问题分为功角稳定、电压稳定、频率稳定、热稳定等，并提出 N-1、N-1-1、严重故障等不同校核要求。工程上要把&quot;故障场景—稳定问题—控制措施—校验方法&quot;对应起来，不能只背条文。</p>
+<hr>
+<h2 id="s27">5. 低频减载、低压减载与解列</h2>
+<h3 id="s28">5.1 为什么切负荷是最后手段</h3>
+<p>频率或电压崩溃时，系统已经没有足够的调节能力。继续拖延会导致：</p>
+<ul><li>火电机组辅机失速、跳机；</li><li>新能源大面积脱网；</li><li>电压崩溃、设备损坏；</li><li>全网停电、黑启动时间长。</li></ul>
+<p>切负荷是&quot;用最小的代价保住最大的电网&quot;。切多少、切哪里、按什么顺序切，是稳控方案的核心。</p>
+<h3 id="s29">5.2 低频减载的分轮</h3>
+<p>低频减载按频率分轮动作，常见做法：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>轮次</th><th>频率门槛（示例）</th><th>切除负荷比例（示例）</th><th>说明</th></tr></thead><tbody><tr><td>基本轮 1</td><td>49.0 Hz</td><td>5%–10%</td><td>快速抑制频率下跌</td></tr><tr><td>基本轮 2</td><td>48.8 Hz</td><td>5%–10%</td><td>防止频率继续下降</td></tr><tr><td>基本轮 3</td><td>48.6 Hz</td><td>5%–10%</td><td>后备</td></tr><tr><td>特殊轮</td><td>49.5/49.25 Hz 等</td><td>按方案</td><td>应对大功率缺额或连锁故障</td></tr></tbody></table></div>
+<p>具体轮次、门槛、延时、切负荷量以调度下发的低频减载方案为准。工程上要注意：</p>
+<ul><li>每轮切除量不能过大，避免过切导致高频；</li><li>轮次不能过密，避免断路器连续动作；</li><li>重要用户、保安负荷、医院、数据中心要单独评估；</li><li>分布式电源、储能、VPP 的脱网/支撑行为要纳入仿真；</li><li>低频减载要与高频切机、新能源 FRT、直流调制协调。</li></ul>
+<h3 id="s30">5.3 低压减载与电压崩溃</h3>
+<p>电压崩溃的机理与频率崩溃不同：无功不足、线路充电功率、变压器分接头、电动机负载特性、新能源无功控制都会影响。低压减载按电压门槛分轮切负荷，常见于受端电网、城市电网和重负荷区域。电压稳定问题要用 Q-V 曲线、P-V 曲线、连续潮流等工具分析，不能只看电压数值。</p>
+<h3 id="s31">5.4 解列点怎么选</h3>
+<p>解列点选择要考虑：</p>
+<ul><li>解列后各岛的功率平衡（尽量少切机、少切负荷）；</li><li>同步稳定性与频率稳定性；</li><li>黑启动电源与恢复路径；</li><li>通信、调度、保护的可控性；</li><li>解列装置的动作可靠性；</li><li>与相邻电网的协调。</li></ul>
+<p>解列不是&quot;随便断开一条线&quot;，而是预先设计的系统性方案。</p>
+<h3 id="s32">5.5 算例：功率缺额与切负荷量</h3>
+<p>一个 D 级合成系统：总装机 10 GW，最大负荷 9 GW，突然失去 1.5 GW 电源，惯量常数 H=5 s。</p>
+<pre tabindex="0"><code>功率缺额标幺值 = 1.5 / 10 = 0.15
+初始 RoCoF = 0.15 × 50 / (2 × 5) = 0.75 Hz/s</code></pre>
+<p>如果一次调频和 AGC 不能在数秒内补上，频率会继续下降。假设低频减载在 49.0 Hz 切除 8% 负荷（0.72 GW），在 48.8 Hz 再切 6%（0.54 GW），合计 1.26 GW，仍需依靠发电机备用和负荷频率特性补足剩余缺额。这个算例说明：<strong>切负荷量要按功率缺额、响应速度、负荷频率特性一起算，不能拍脑袋</strong>。</p>
+<hr>
+<h2 id="s33">6. 黑启动</h2>
+<h3 id="s34">6.1 黑启动的三个条件</h3>
+<ul><li><strong>黑启动电源</strong>：不依赖外部电网就能启动的机组或储能，如水电机组、燃气机组、柴油发电机、构网型储能；</li><li><strong>启动路径</strong>：从黑启动电源到目标机组的送电通道，包含线路、变压器、开关；</li><li><strong>负荷恢复</strong>：逐步带负荷，控制电压、频率、电流，避免自励磁、过电压、涌流。</li></ul>
+<h3 id="s35">6.2 黑启动电源</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>电源</th><th>优点</th><th>限制</th></tr></thead><tbody><tr><td>水电机组</td><td>启动快、调节好、黑启动能力强</td><td>受来水、库容、季节影响</td></tr><tr><td>燃气机组</td><td>启动快、爬坡快</td><td>依赖燃料、厂用电</td></tr><tr><td>柴油发电机</td><td>独立、可靠</td><td>容量小，只适合启动小系统</td></tr><tr><td>构网型储能</td><td>响应快、可做电压/频率源</td><td>能量有限，需与其他电源配合</td></tr><tr><td>新能源+储能</td><td>可形成局部孤岛</td><td>依赖天气，需要构网型控制</td></tr></tbody></table></div>
+<h3 id="s36">6.3 黑启动流程</h3>
+<ol><li>确认黑启动电源可用，检查燃料、水、厂用电、通信；</li><li>启动黑启动电源，建立局部电压；</li><li>逐段送电，监视线路充电功率、过电压、谐振；</li><li>启动目标机组，建立局部孤岛；</li><li>逐步带负荷，控制频率、电压、电流；</li><li>多个孤岛同期并列，扩大恢复范围；</li><li>恢复主干网，逐步恢复用户负荷；</li><li>复盘，修订黑启动方案。</li></ol>
+<h3 id="s37">6.4 黑启动的常见坑</h3>
+<ul><li>线路充电功率导致过电压，尤其是长电缆、长线路；</li><li>变压器励磁涌流导致保护误动；</li><li>自励磁、铁磁谐振；</li><li>厂用电切换失败；</li><li>燃料、水、通信、交通中断；</li><li>保护定值不适合小系统运行方式；</li><li>只演&quot;成功路径&quot;，没有演&quot;启动失败、再启动&quot;。</li></ul>
+<h3 id="s38">6.5 与微网/构网型储能的衔接</h3>
+<p>微网的黑启动与主网黑启动原理相通，但规模小、电压等级低、负荷类型复杂。构网型储能可以提供电压和频率参考，是微网黑启动的重要选项。微网黑启动要特别关注：</p>
+<ul><li>储能 SOC 与持续供电时间；</li><li>负荷的启动涌流；</li><li>并离网切换的同期条件；</li><li>防孤岛与计划孤岛的区分；</li><li>保护定值在孤岛模式下的适配。</li></ul>
+<hr>
+<h2 id="s39">7. 合成算例（D 级）：35 kV 汇集线短路与保护配合</h2>
+<aside class="note"><p>本算例为合成数据，仅用于演示计算链与保护配置思路，不对应任何真实场站、真实定值或真实设备。</p></aside>
+<h3 id="s40">7.1 场景</h3>
+<p>一个 100 MW 风电基地，通过 220/35 kV 主变汇集，35 kV 侧有 4 回汇集线。取其中一回 L1：</p>
+<ul><li>线路长度 8 km，单位阻抗 r=0.13 Ω/km、x=0.40 Ω/km；</li><li>L1 接 4 台 6.25 MW 风机，总容量 25 MW，经变流器并网；</li><li>35 kV 侧额定电流：25 / (√3 × 35) = 0.412 kA；</li><li>风机变流器故障电流限值按 1.2 倍额定考虑，单回线 IBR 故障电流约 0.495 kA；</li><li>35 kV 母线系统短路容量按 800 MVA 考虑；</li><li>线路 CT 变比 600/5，保护采用电流速断 + 过流 + 零序。</li></ul>
+<h3 id="s41">7.2 计算</h3>
+<p><strong>（1）线路阻抗</strong></p>
+<pre tabindex="0"><code>R = 0.13 × 8 = 1.04 Ω
+X = 0.40 × 8 = 3.20 Ω
+Z_abs = √(1.04² + 3.20²) = 3.36 Ω</code></pre>
+<p><strong>（2）系统等值阻抗（35 kV 侧）</strong></p>
+<pre tabindex="0"><code>Z_s = U² / S_k = 35² / 800 = 1.53 Ω</code></pre>
+<p><strong>（3）线路末端三相短路（电网贡献）</strong></p>
+<pre tabindex="0"><code>Z_total = 1.53 + 1.04 + j3.20 ≈ 2.57 + j3.20 Ω
+Z_total_abs = √(2.57² + 3.20²) = 4.10 Ω
+I_k,grid = 35 / (√3 × 4.10) = 4.93 kA</code></pre>
+<p><strong>（4）叠加新能源贡献</strong></p>
+<pre tabindex="0"><code>I_k,total ≈ 4.93 + 0.495 = 5.43 kA</code></pre>
+<p><strong>（5）保护灵敏度（过流定值按 1.2 倍额定，取 0.50 kA）</strong></p>
+<pre tabindex="0"><code>K_sen,grid = 4.93 / 0.50 = 9.9
+K_sen,total = 5.43 / 0.50 = 10.9</code></pre>
+<p><strong>（6）孤岛/弱馈场景</strong></p>
+<p>如果主网侧失电，只剩风机变流器供电，线路末端故障电流约 0.495 kA：</p>
+<pre tabindex="0"><code>K_sen,island = 0.495 / 0.50 = 0.99</code></pre>
+<p>灵敏度不足 1，过流保护可能不动作。这就是&quot;新能源限流导致保护看不见故障&quot;的典型场景。</p>
+<h3 id="s42">7.3 保护配置建议</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>保护</th><th>定值示例</th><th>时限</th><th>作用</th><th>注意</th></tr></thead><tbody><tr><td>电流速断 I&gt;&gt;</td><td>3.0 kA</td><td>0 s</td><td>近端故障快速切除</td><td>躲过线路末端最大短路电流，校核最小方式</td></tr><tr><td>过流 I&gt;</td><td>0.50 kA</td><td>0.3 s</td><td>全线后备</td><td>孤岛场景灵敏度不足，需负序/电压辅助</td></tr><tr><td>零序过流</td><td>按实测电容电流 1.5–2 倍</td><td>0.5 s</td><td>单相接地</td><td>35 kV 低电流接地系统，需选线配合</td></tr><tr><td>负序过流</td><td>按躲过不平衡负荷整定</td><td>0.5 s</td><td>不对称故障</td><td>变流器负序特性与同步机不同</td></tr><tr><td>低电压闭锁/联跳</td><td>按并网标准</td><td>按方案</td><td>防止弱馈误判</td><td>与 FRT 配合，不能先于 FRT 脱网</td></tr><tr><td>通信辅助/站域保护</td><td>按方案</td><td>按方案</td><td>解决灵敏度与选择性问题</td><td>依赖通信通道可靠性</td></tr></tbody></table></div>
+<h3 id="s43">7.4 三个结论</h3>
+<ul><li><strong>不要用额定电流代替故障电流</strong>：0.412 kA 是负荷电流，0.495 kA 是变流器限流后的故障电流，两者接近，保护裕度很小。</li><li><strong>不要只按并网场景整定</strong>：孤岛/弱馈场景下，电网贡献消失，过流保护可能失效，必须配置负序、电压、站域或通信辅助保护。</li><li><strong>不要用铭牌参数代替检测报告</strong>：变流器故障电流、无功电流注入、FRT 曲线以并网检测报告和厂家实测为准。</li></ul>
+<hr>
+<h2 id="s44">8. 对交易、投资与运营的含义</h2>
+<h3 id="s45">8.1 交易：故障是价格与偏差的尾部事件</h3>
+<ul><li>机组强迫停运、线路故障、新能源脱网都会改变现货价格与偏差；</li><li>故障期间的价格尖峰、负价、阻塞可能同时出现；</li><li>交易员要关注检修计划、天气、电网风险预警，不只看历史价格；</li><li>故障后的结算差异要能追溯到调度指令、计量数据和保护动作记录。</li></ul>
+<h3 id="s46">8.2 投资：保护与安全成本要进现金流</h3>
+<ul><li>并网配套的 SVG、保护改造、通信通道、安稳装置都是投资；</li><li>构网型储能、黑启动能力可能带来额外收益，但也有额外成本；</li><li>保护定值复核、试验、备品备件是运营成本；</li><li>故障停运、考核罚款、保险免赔额要进风险模型。</li></ul>
+<h3 id="s47">8.3 运营：定值与试验是&quot;沉默资产&quot;</h3>
+<ul><li>保护定值单要有版本号、审批、执行、复核；</li><li>定期试验、CT/PT 校验、断路器特性试验不能省；</li><li>故障录波、保护动作报告、SOE 记录要保存；</li><li>每次故障后要做保护动作评价，不能只看&quot;有没有跳闸&quot;；</li><li>定值变更要同步到调度、场站、运维和仿真模型。</li></ul>
+<h3 id="s48">8.4 数据与 AI 的边界</h3>
+<p>保护是确定性安全系统，AI 可以辅助故障分析、定值校核、异常检测，但不能替代保护装置的实时判断。交易侧的 AI 可以做价格预测、风险预警，但故障期间的调度指令、保护动作、安全措施必须由人和授权系统执行。</p>
+<hr>
+<h2 id="s49">9. 常见错误（10 条）</h2>
+<ol><li><strong>用额定电流代替故障电流</strong>：新能源变流器限流后，故障电流可能只比额定电流大一点，按额定电流整定会失去灵敏度。</li><li><strong>只看三相短路，忽略单相接地</strong>：配电网大多数故障是单相接地，零序保护与选线不能缺。</li><li><strong>灵敏度按最大运行方式算</strong>：最小运行方式、线路末端、单台变压器运行才是灵敏度的最严工况。</li><li><strong>忽视 CT 饱和与暂态</strong>：差动保护、距离保护在故障暂态下可能误动或拒动，必须校核 CT 的 10% 误差曲线和二次负载。</li><li><strong>保护定值不随运行方式切换</strong>：孤岛、单主变、检修方式下的定值可能不同，定值区不切换就会出问题。</li><li><strong>防孤岛只测单机</strong>：多机并联、多品牌、多容量组合可能相互影响，必须现场验证。</li><li><strong>重合闸与 FRT 冲突</strong>：重合闸时逆变器可能已脱网，重合后需要重新并网，不能假设&quot;重合即恢复&quot;。</li><li><strong>把三道防线当设备清单</strong>：三道防线是概率分层，定值、策略、通信、电源都要独立校核。</li><li><strong>低频减载轮次过多或过少</strong>：过切导致高频，欠切导致频率崩溃，必须按功率缺额和负荷特性校核。</li><li><strong>黑启动只演成功路径</strong>：没有演练启动失败、再启动、通信中断、燃料中断，方案就不可靠。</li></ol>
+<hr>
+<h2 id="s50">10. 待核实与未定事项</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>事项</th><th>状态</th><th>查证入口</th></tr></thead><tbody><tr><td>新能源变流器故障电流限值与控制策略</td><td>因厂家、型号、版本而异</td><td>并网检测报告、厂家说明书、场站实测</td></tr><tr><td>各省/区域防孤岛动作时间与检测方法</td><td>分地区、分标准</td><td>现行并网标准、电网公司涉网要求、检测报告</td></tr><tr><td>35 kV/10 kV 配网中性点接地方式与零序定值</td><td>分地区、分变电站</td><td>供电公司整定单、配网自动化规程</td></tr><tr><td>低频减载轮次、门槛与切负荷量</td><td>分区域、分年度</td><td>调度下发的低频减载方案</td></tr><tr><td>黑启动电源清单与启动路径</td><td>分区域、分电厂</td><td>调度黑启动方案、电厂黑启动预案</td></tr><tr><td>构网型储能的黑启动能力与切换时间</td><td>厂家差异大</td><td>厂家试验报告、现场试验</td></tr><tr><td>保护定值与 FRT 的协同校核方法</td><td>标准演进中</td><td>现行并网标准、调度规程、检测报告</td></tr><tr><td>新型电力系统宽频振荡的保护应对</td><td>研究阶段</td><td>调度、科研机构、设备厂家</td></tr></tbody></table></div>
+<hr>
+<h2 id="s51">11. 与技能和其他笔记的分工</h2>
+<ul><li><strong>本文</strong>：故障类型 → 短路电流 → 保护四性与整定 → 新能源故障特性 → 三道防线 → 低频减载/黑启动，是&quot;电网为什么不会被一次故障打垮&quot;的地基。</li><li><a href="电力系统通识-B-发输配变用.html">电力系统通识 B · 发输配变用</a> §7：继电保护与调度自动化的极简入门；本文把它展开成工程链路。</li><li><a href="并网测试与涉网验收实务清单-2026-11.html">并网测试与涉网验收实务清单</a>：AGC/AVC/一次调频/FRT/电能质量的试验判据与验收清单；本文讲原理与保护配合。</li><li><a href="频率惯量与灵活性供需-2026-11.html">频率、惯量与灵活性供需</a>：频率稳定、惯量、一次/二次/三次响应的物理与市场；本文讲低频减载与三道防线。</li><li><a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线安全与构网型并网</a>：构网型控制、黑启动、FRT 的设备侧细节。</li><li><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a>：微网并离网切换、孤岛运行与负荷管理。</li><li><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a>：保护信息、SOE、故障录波的数据链路与二次安防。</li><li>技能正文引用本文，不复述短路电流公式与保护整定细节。</li></ul>
+<h2 id="s52">速查</h2>
+<pre tabindex="0"><code>故障：单相接地最常见；中性点接地方式决定故障电流大小
+短路电流：I_k = I_base / X*，设备选型看最大，保护灵敏度看最小
+保护四性：选择性、速动性、灵敏性、可靠性，互相拉扯
+整定：灵敏度按最小方式；级差 0.2-0.3 s；CT 饱和必须校
+新能源：故障电流 1.1-1.5 倍额定，限流导致保护&quot;看不见&quot;
+防孤岛：被动+主动检测；单机过不代表多机过；计划孤岛另算
+三道防线：保护切除 -&gt; 安稳控制 -&gt; 解列/减载/黑启动
+低频减载：按频率分轮，每轮 5%-10%，具体以调度方案为准
+黑启动：电源、路径、负荷三步；过电压、涌流、谐振是坑
+口径铁律：定值单不是通识表；故障电流以检测报告为准</code></pre>
+    </article>
+
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>6</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="电力系统通识-B-发输配变用.html">
+          <span class="related-type">同区延伸</span>
+          <b>电力系统通识 B · 发输配变用</b>
+          <span>功率与电量、50 Hz、发输配变用五环节、备用与稳定，建立电力系统的物理常识。</span>
+        </a>
+        <a class="related-card" href="电力系统通识-D-新角色与现货市场.html">
+          <span class="related-type">同区延伸</span>
+          <b>电力系统通识 D · 新角色与现货市场</b>
+          <span>现货、高比例风光、储能/构网型、VPP 与系统成本，用 2026 年装机与市场数据解释新角色如何改变系统运行。</span>
+        </a>
+        <a class="related-card" href="并网测试与涉网验收实务清单-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>并网测试与涉网验收实务清单：AGC/AVC/一次调频投运试验与考核点闭环</b>
+          <span>从型式试验到并网验收的测试体系，AGC/AVC/一次调频投运试验方法与判据，故障穿越/电能质量/模型验证，验收清单与整改闭环，把两个细则考核点倒推为试验验证项。</span>
+        </a>
+        <a class="related-card" href="频率惯量与灵活性供需-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>频率、惯量与灵活性供需：从物理缓冲到分时间尺度货架</b>
+          <span>有功平衡与频率、转动惯量与 RoCoF、惯量/一次/二次/三次响应分层、新能源占比下的爬坡需求、灵活性供需货架与国内运行视角。</span>
+        </a>
+      </div>
+      <p class="related-rest"><b>更多关联</b><a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线、安全与构网型并网</a><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a></p>
+    </section>
+
+
+    <nav class="pager" aria-label="上下篇">
+          <a class="prev" href="电力系统通识-D-新角色与现货市场.html"><span class="dir">← 上一篇</span><span class="ttl">电力系统通识 D · 新角色与现货市场</span></a>
+          <a class="next" href="电力系统经济学原理-主题笔记.html"><span class="dir">下一篇 →</span><span class="ttl">电力系统经济学原理</span></a>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../故障保护与安全防御-2026-11.md">knowledge/故障保护与安全防御-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="本页目录">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv3"><a href="#s2">0.1 三句话</a></li>
+            <li class="lv3"><a href="#s3">0.2 关键数字与口径</a></li>
+            <li class="lv2"><a href="#s4">1. 故障从哪里来：类型、概率与后果</a></li>
+            <li class="lv3"><a href="#s5">1.1 五类故障</a></li>
+            <li class="lv3"><a href="#s6">1.2 中性点接地方式决定故障电流</a></li>
+            <li class="lv3"><a href="#s7">1.3 短路电流怎么算（实用版）</a></li>
+            <li class="lv3"><a href="#s8">1.4 短路电流的四个用途</a></li>
+            <li class="lv2"><a href="#s9">2. 继电保护：四性与一张整定表</a></li>
+            <li class="lv3"><a href="#s10">2.1 四性</a></li>
+            <li class="lv3"><a href="#s11">2.2 保护家族</a></li>
+            <li class="lv3"><a href="#s12">2.3 整定配合的三条硬规则</a></li>
+            <li class="lv3"><a href="#s13">2.4 一张整定表怎么看</a></li>
+            <li class="lv3"><a href="#s14">2.5 重合闸与故障性质</a></li>
+            <li class="lv2"><a href="#s15">3. 新能源与电力电子设备的故障特性</a></li>
+            <li class="lv3"><a href="#s16">3.1 故障电流被"限流"</a></li>
+            <li class="lv3"><a href="#s17">3.2 弱馈、频率漂移与相位跳变</a></li>
+            <li class="lv3"><a href="#s18">3.3 保护"看不见"的三种情形</a></li>
+            <li class="lv3"><a href="#s19">3.4 防孤岛</a></li>
+            <li class="lv3"><a href="#s20">3.5 故障穿越与保护的配合</a></li>
+            <li class="lv2"><a href="#s21">4. 三道防线与安全稳定控制</a></li>
+            <li class="lv3"><a href="#s22">4.1 第一道：快速切除与预防性控制</a></li>
+            <li class="lv3"><a href="#s23">4.2 第二道：安全稳定控制装置</a></li>
+            <li class="lv3"><a href="#s24">4.3 第三道：失步解列、频率电压紧急控制、黑启动</a></li>
+            <li class="lv3"><a href="#s25">4.4 三道防线的边界</a></li>
+            <li class="lv3"><a href="#s26">4.5 安全稳定导则的视角</a></li>
+            <li class="lv2"><a href="#s27">5. 低频减载、低压减载与解列</a></li>
+            <li class="lv3"><a href="#s28">5.1 为什么切负荷是最后手段</a></li>
+            <li class="lv3"><a href="#s29">5.2 低频减载的分轮</a></li>
+            <li class="lv3"><a href="#s30">5.3 低压减载与电压崩溃</a></li>
+            <li class="lv3"><a href="#s31">5.4 解列点怎么选</a></li>
+            <li class="lv3"><a href="#s32">5.5 算例：功率缺额与切负荷量</a></li>
+            <li class="lv2"><a href="#s33">6. 黑启动</a></li>
+            <li class="lv3"><a href="#s34">6.1 黑启动的三个条件</a></li>
+            <li class="lv3"><a href="#s35">6.2 黑启动电源</a></li>
+            <li class="lv3"><a href="#s36">6.3 黑启动流程</a></li>
+            <li class="lv3"><a href="#s37">6.4 黑启动的常见坑</a></li>
+            <li class="lv3"><a href="#s38">6.5 与微网/构网型储能的衔接</a></li>
+            <li class="lv2"><a href="#s39">7. 合成算例（D 级）：35 kV 汇集线短路与保护配合</a></li>
+            <li class="lv3"><a href="#s40">7.1 场景</a></li>
+            <li class="lv3"><a href="#s41">7.2 计算</a></li>
+            <li class="lv3"><a href="#s42">7.3 保护配置建议</a></li>
+            <li class="lv3"><a href="#s43">7.4 三个结论</a></li>
+            <li class="lv2"><a href="#s44">8. 对交易、投资与运营的含义</a></li>
+            <li class="lv3"><a href="#s45">8.1 交易：故障是价格与偏差的尾部事件</a></li>
+            <li class="lv3"><a href="#s46">8.2 投资：保护与安全成本要进现金流</a></li>
+            <li class="lv3"><a href="#s47">8.3 运营：定值与试验是"沉默资产"</a></li>
+            <li class="lv3"><a href="#s48">8.4 数据与 AI 的边界</a></li>
+            <li class="lv2"><a href="#s49">9. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s50">10. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s51">11. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s52">速查</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="39" data-more-label="展开 39 个小节" data-less-label="收起小节">展开 39 个小节</button>
+  </aside>
+</div>
+
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.0" data-cutoff="2026-11-19" data-latest="2026-11-21" data-count="94">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.0）" title="查看更新记录（当前 v2.0）">
+    <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
+    <span class="cl-badge-ver">v2.0</span>
+    <span class="cl-badge-label">更新记录</span>
+  </button>
+  <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
+    <div class="cl-backdrop" data-changelog-close></div>
+    <div class="cl-panel" role="dialog" aria-modal="true" aria-labelledby="cl-title" aria-describedby="cl-subtitle" tabindex="-1">
+      <header class="cl-head">
+        <div class="cl-head-main">
+          <span class="cl-kicker">RELEASE NOTES</span>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.0</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.0 · 数据截止 2026-11-19 · 94 条记录</p>
+        </div>
+        <div class="cl-actions">
+          <div class="cl-lang" role="group" aria-label="切换语言">
+            <button type="button" data-cl-lang="zh" aria-pressed="true">中文</button>
+            <button type="button" data-cl-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <button class="cl-close" type="button" data-changelog-close aria-label="关闭更新记录" title="关闭更新记录">×</button>
+        </div>
+      </header>
+      <div class="cl-body" data-changelog-body>
+        <div class="cl-skeleton" data-changelog-status role="status">
+          <span class="cl-sr">正在读取更新记录…</span>
+          <i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      <footer class="cl-foot">
+        <span data-changelog-meta>v2.0 · 2026-11-19 · 94 条记录</span>
+        <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
+      </footer>
+    </div>
+  </div>
+</div>
+<script src="../assets/doc.js"></script>
+<script src="../assets/theme.js"></script>
+<script src="../assets/changelog.js"></script>
+</body>
+</html>

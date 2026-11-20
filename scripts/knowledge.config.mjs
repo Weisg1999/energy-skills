@@ -152,7 +152,7 @@ export const skillDocs = [
     summaryEn: 'Aggregation, response and operations (incl. Shanghai, Shanghai datacenter, Zhejiang, Jiangsu fast-response, Liaoning and Shenzhen V2G instance packs)',
     tags: ['技能', 'VPP', '聚合', '商业模式'],
     tagsEn: ['skill', 'VPP', 'aggregation', 'business model'],
-    modules: ['m-vpp-core', 'm-vpp-book', 'm-dr-v2g', 'm-contracts-clauses', 'm-load-physics'],
+    modules: ['m-vpp-core', 'm-vpp-book', 'm-dr-v2g', 'm-contracts-clauses', 'm-load-physics', 'm-distribution'],
   },
   {
     slug: 'carbon-asset-expert',
@@ -182,7 +182,7 @@ export const skillDocs = [
     summaryEn: 'Resources, LCOE, mechanism pricing and grid connection (incl. the Yunnan 2027 wind decision instance pack)',
     tags: ['技能', '新能源', 'LCOE', '并网'],
     tagsEn: ['skill', 'renewables', 'LCOE', 'grid'],
-    modules: ['m-renewable', 'm-grid', 'm-price-policy', 'm-grid-test'],
+    modules: ['m-renewable', 'm-grid', 'm-price-policy', 'm-grid-test', 'm-grid-quality', 'm-distribution'],
   },
   {
     slug: 'spot-bidding-quant',
@@ -212,7 +212,7 @@ export const skillDocs = [
     summaryEn: 'Bill line items, demand charges, TOU and package comparison (incl. Jiangsu C&I storage instance pack)',
     tags: ['技能', '电费', '两部制', '套餐'],
     tagsEn: ['skill', 'tariff', 'two-part', 'packages'],
-    modules: ['m-price-system', 'm-price-policy', 'm-price-history'],
+    modules: ['m-price-system', 'm-price-policy', 'm-price-history', 'm-grid-quality'],
   },
   {
     slug: 'retail-electricity-risk',

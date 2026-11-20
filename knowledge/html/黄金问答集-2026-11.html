@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>黄金问答集与回归测试 | energy-skills 知识库</title>
-<meta name="description" content="65 个高频问答，覆盖市场、新能源、碳、零售、VPP、国际工具、价格驱动三链、系统物理/EMS 工程、电价投资合同与数据复盘，兼回归测试。">
+<meta name="description" content="71 个高频问答，覆盖市场、新能源、碳、零售、VPP、国际工具、价格驱动三链、系统物理/EMS 工程、电价投资合同、数据复盘与故障保护/配网接入，兼回归测试。">
 <link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(!/^(light|cream|green|dark)$/.test(t||'')){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
@@ -81,14 +81,14 @@
     <header class="doc-head">
       <div class="kicker">12 · INDEX<i>问答集</i></div>
       <h1 class="doc-title">黄金问答集与回归测试（2026-11 版）</h1>
-      <p class="lede">65 个高频问答，覆盖市场、新能源、碳、零售、VPP、国际工具、价格驱动三链、系统物理/EMS 工程、电价投资合同与数据复盘，兼回归测试。</p>
+      <p class="lede">71 个高频问答，覆盖市场、新能源、碳、零售、VPP、国际工具、价格驱动三链、系统物理/EMS 工程、电价投资合同、数据复盘与故障保护/配网接入，兼回归测试。</p>
       <p class="hook">检验回答是否跑偏</p>
-      <div class="tags"><span class="tag">65 问</span><span class="tag">回归测试</span><span class="tag">口径纪律</span><span class="tag">价格驱动三链</span><span class="tag">EMS 工程</span><span class="tag">电价投资合同</span><span class="tag">数据复盘</span></div>
-      <div class="doc-meta"><span>约 25.4k 字</span><span>阅读约 46 分钟</span><span>10 节</span><span>数据截止 2026-11</span></div>
+      <div class="tags"><span class="tag">71 问</span><span class="tag">回归测试</span><span class="tag">口径纪律</span><span class="tag">价格驱动三链</span><span class="tag">EMS 工程</span><span class="tag">电价投资合同</span><span class="tag">数据复盘</span><span class="tag">故障保护</span><span class="tag">配网承载力</span></div>
+      <div class="doc-meta"><span>约 28.8k 字</span><span>阅读约 53 分钟</span><span>11 节</span><span>数据截止 2026-11</span></div>
     </header>
 
     <details class="toc-mobile">
-      <summary>本页目录（10）</summary>
+      <summary>本页目录（11）</summary>
       <ol>
             <li class="lv2"><a href="#s1">A. 电力市场机制（电力交易技能）</a></li>
             <li class="lv2"><a href="#s8">B. 新能源、碳市场与 CBAM</a></li>
@@ -99,12 +99,13 @@
             <li class="lv2"><a href="#s45">G. 系统物理与 EMS 工程链路</a></li>
             <li class="lv2"><a href="#s57">H. 电价、投资与合同</a></li>
             <li class="lv2"><a href="#s70">I. 数据与复盘</a></li>
-            <li class="lv2"><a href="#s75">回归测试用法</a></li>
+            <li class="lv2"><a href="#s75">J. 故障保护与配电网</a></li>
+            <li class="lv2"><a href="#s82">回归测试用法</a></li>
       </ol>
     </details>
 
     <article class="prose">
-<aside class="note note-head"><p>用途：每次改版后，只用两份 SKILL 的正文回答下列问题，核对&quot;关键数字/状态/口径&quot;是否一致；任何一题的事实回退，都要在对应章节修正。</p><p>使用规则：先看问题属于哪个技能，再按章节作答；答案中的数字必须带时点与来源级别；草案必须标&quot;征求意见/拟施行&quot;。</p><p>版本基线：v2.0 维护（2026-11-20，新增 G 段系统物理与 EMS 工程链路 11 问、H 段电价/投资与合同 12 问、I 段数据与复盘 4 问，共 65 问）。</p></aside>
+<aside class="note note-head"><p>用途：每次改版后，只用两份 SKILL 的正文回答下列问题，核对&quot;关键数字/状态/口径&quot;是否一致；任何一题的事实回退，都要在对应章节修正。</p><p>使用规则：先看问题属于哪个技能，再按章节作答；答案中的数字必须带时点与来源级别；草案必须标&quot;征求意见/拟施行&quot;。</p><p>版本基线：v2.0 维护（2026-11-21，新增 J 段故障保护与配电网 6 问；此前 G 段系统物理与 EMS 工程链路 11 问、H 段电价/投资与合同 12 问、I 段数据与复盘 4 问，共 71 问）。</p></aside>
 <hr>
 <h2 id="s1">A. 电力市场机制（电力交易技能）</h2>
 <h3 id="s2">Q1 全国统一电力市场的时间表是什么？</h3>
@@ -411,12 +412,45 @@
 <p><strong>常见错误</strong>：把案例当真实行情；只看结果不看决策点；复盘归因&quot;行情极端&quot;；跳过遮答案直接看答案；把案例数字当规则参数。</p>
 <p><strong>对应章节</strong>：《合成案例复盘库》§0.1–§0.2、§11–§12。</p>
 <hr>
-<h2 id="s75">回归测试用法</h2>
-<ol><li><strong>只读技能</strong>：关闭联网，只用 SKILL.md 回答；每题核对&quot;关键数字/状态/口径&quot;三要素。</li><li><strong>记录偏差</strong>：任何与上表不一致的答案，定位到章节并修正；修正后同步中英文两版。</li><li><strong>月度抽测</strong>：每月至少抽 8 题，覆盖现货、136、碳价、VPP 规模、零售风险、电价构成、储能投决、数据复盘各一题。</li><li><strong>季度全测</strong>：每季度全量跑 65 题，并更新本文件的&quot;版本基线&quot;。</li><li><strong>新增问题</strong>：遇到用户高频新问题，先补进本文件，再补进 SKILL 正文，避免&quot;只在对话里答对、技能里没有&quot;。</li></ol>
+<h2 id="s75">J. 故障保护与配电网</h2>
+<aside class="note"><p>本组检验&quot;会不会用物理约束解释保护、电压和接入容量&quot;：短路电流不是额定电流，承载力不是配变容量，防孤岛不是一句&quot;2 秒跳闸&quot;。算例均为 D 级合成，定值与限值以现行标准、检测报告和调度文件为准。</p></aside>
+<h3 id="s76">Q66 短路电流怎么手算？为什么新能源场站的保护灵敏度会不够？</h3>
+<p><strong>答案要点</strong>：先用标幺值或有名值算系统、变压器、线路阻抗，再算短路电流。例：35 kV 侧系统短路容量 500 MVA、主变 20 MVA、Uk=10.5%，取 100 MVA 基准，X*=0.20+0.525=0.725，I_base=1.56 kA，I_k=<strong>2.15 kA</strong>。保护灵敏度按<strong>最小运行方式、线路末端</strong>校核；新能源变流器故障电流只有额定电流的 <strong>1.1–1.5 倍</strong>，场上 25 MW 风机在 35 kV 侧的 IBR 故障电流约 <strong>0.495 kA</strong>，而负荷电流约 0.412 kA，两者很接近。主网消失、只剩变流器供电时，过流定值 0.50 kA 的灵敏度只有 <strong>0.99</strong>，保护可能不动作。所以新能源场站不能只配过流，要加负序、零序、低电压、站域/通信辅助保护，并用并网检测报告的实际故障电流整定。</p>
+<p><strong>关键数字</strong>：500 MVA / 20 MVA / 10.5%；2.15 kA；4.93 kA（主网贡献）；0.495 kA（IBR）；0.99（孤岛灵敏度）。</p>
+<p><strong>常见错误</strong>：用额定电流代替故障电流；只按最大运行方式算灵敏度；只看三相短路；用铭牌参数代替并网检测报告；忽略 CT 饱和与二次回路。</p>
+<p><strong>对应章节</strong>：《故障、保护与安全防御》§1.3、§2.3、§3.1、§7。</p>
+<h3 id="s77">Q67 防孤岛到底防什么？单机测试过了为什么还会出问题？</h3>
+<p><strong>答案要点</strong>：防孤岛防的是<strong>非计划孤岛</strong>：电网失电后分布式电源继续给局部负荷供电，造成反送电、人身风险、电压/频率漂移、重合闸非同期、保护定值失效。检测分被动式（过/欠压、过/欠频、相位跳变、谐波）和主动式（主动频移、阻抗测量、注入扰动），工程上常见&quot;<strong>2 s 内断开</strong>&quot;的口径，具体以现行标准和设备认证为准。单机测试通过不等于多机通过：多台、多品牌、多容量并联时，检测扰动可能相互抵消或共振；逆变器控制策略、并网点短路比、负荷类型都会影响结果。<strong>计划孤岛</strong>（微网）是另一回事，要有孤岛控制器、保护定值切换、储能支撑、同期并列和黑启动方案，不能把微网孤岛当&quot;防孤岛失败&quot;。</p>
+<p><strong>关键数字</strong>：2 s；被动式 + 主动式；多机/多品牌/多容量三组场景；计划孤岛 vs 非计划孤岛。</p>
+<p><strong>常见错误</strong>：只测单机；只测一个品牌；把计划孤岛当非计划孤岛；防孤岛与重合闸不联调；忽略多机并联的检测盲区。</p>
+<p><strong>对应章节</strong>：《故障、保护与安全防御》§3.4、§4.5；《配电网承载力与分布式接入》§4.5。</p>
+<h3 id="s78">Q68 三道防线怎么分工？低频减载和黑启动什么时候用？</h3>
+<p><strong>答案要点</strong>：第一道防<strong>单一元件故障（N-1）</strong>：快速继电保护切除故障，靠预防性控制保持稳定；第二道防<strong>稳定破坏扩大</strong>：安稳装置切机、切负荷、快关汽门、直流调制、解列；第三道防<strong>大面积停电</strong>：失步解列、低频/低压减载、黑启动。低频减载按频率分轮，常见 49.0/48.8/48.6 Hz，每轮切 5%–10% 负荷，具体以调度方案为准；切少了频率崩溃，切多了高频。黑启动看三个条件：<strong>黑启动电源、启动路径、负荷恢复</strong>；水电机组、燃气机组、柴油发电机、构网型储能都可做黑启动电源，但要防线路充电过电压、变压器涌流、自励磁/铁磁谐振、厂用电切换失败。D 级算例：10 GW 系统失去 1.5 GW、H=5 s，初始 RoCoF=<strong>0.75 Hz/s</strong>，说明功率缺额必须靠一次调频、AGC 和减载共同补。</p>
+<p><strong>关键数字</strong>：3 道防线；49.0/48.8/48.6 Hz；5%–10%/轮；0.75 Hz/s；黑启动 3 条件。</p>
+<p><strong>常见错误</strong>：把三道防线当设备清单；低频减载轮次过多/过少；黑启动只演成功路径；忽略新能源脱网与 FRT；解列点不做功率平衡校核。</p>
+<p><strong>对应章节</strong>：《故障、保护与安全防御》§4、§5、§6。</p>
+<h3 id="s79">Q69 无功为什么不能远距离送？AVC 怎么把电压管住？</h3>
+<p><strong>答案要点</strong>：线路电压降落近似 <strong>ΔU ≈ (P R + Q X)/U</strong>，高压线路 X 远大于 R，无功对电压影响大；长距离送无功会有大压降、大损耗、占用线路容量，严重时电压崩溃，所以&quot;<strong>无功分层分区、就地平衡</strong>&quot;。AVC 分三层：网调/区域管枢纽母线，省调管省级电网，站级管并网点电压/功率因数；手段包括发电机无功、调相机、SVG、电容器/电抗器、主变分接头、风机/光伏逆变器/PCS。AVC 不是&quot;电压越高越好&quot;，要设死区、动作次数限制、闭锁和优先级。新能源场站的无功能力受 <strong>P-Q 曲线、并网电压、温度、控制策略</strong>限制，不能用铭牌容量乘 0.95 估算；常见并网要求功率因数 0.95 超前–0.95 滞后可调，部分新标准/地区要求 0.9。</p>
+<p><strong>关键数字</strong>：ΔU ≈ (P R + Q X)/U；3 层 AVC；0.95 超前–0.95 滞后；电压偏差 35 kV+ ≤10%、20 kV− ±7%、220 V +7%/−10%。</p>
+<p><strong>常见错误</strong>：只调主变分接头不补无功；按铭牌估算变流器无功；过补偿导致功率因数超前；AVC 死区/动作次数不设；忽略谐波与谐振。</p>
+<p><strong>对应章节</strong>：《无功、电压与电能质量》§1.3、§2、§3；《并网测试与涉网验收实务清单》§3。</p>
+<h3 id="s80">Q70 功率因数怎么影响电费？电容器补偿为什么要先看谐波？</h3>
+<p><strong>答案要点</strong>：功率因数 cosφ=P/S，常见考核标准 <strong>0.9</strong>，低于标准加收力调电费，高于标准可能减收；电费基数（是否含基本电费/基金附加）和调整系数以当地供电营业规则与电费单为准。补偿容量 <strong>Q_c = P(tanφ1 − tanφ2)</strong>：800 kW、0.82→0.95，需 <strong>295 kvar</strong>，可选 300 kvar 分组投切。电容器便宜但不能连续调，且会与系统电感谐振：<strong>h_res = √(S_k/Q_c)</strong>；S_k=200 MVA、Q_c=0.75 Mvar 时 h_res≈<strong>16.3</strong>，离 5 次较远；若谐振点接近 5/7 次，谐波会被放大，烧电容器/熔断器。谐波严重时应改用 SVG/APF、串联电抗率合适的电容器组，或先做谐波治理。THD 限值：380 V 5%、6–10 kV 4%、35–66 kV 3%、110 kV 2%。</p>
+<p><strong>关键数字</strong>：0.9；295 kvar；16.3；5%/4%/3%/2%。</p>
+<p><strong>常见错误</strong>：只看月平均功率因数；过补偿；电容器不校谐波；力调电费基数算错；把补偿容量算对就当方案安全。</p>
+<p><strong>对应章节</strong>：《无功、电压与电能质量》§4、§5.2、§7；《中国电价现行政策与查证》§4.4。</p>
+<h3 id="s81">Q71 配电网到底能接多少分布式电源？可开放容量为什么不是固定数？</h3>
+<p><strong>答案要点</strong>：承载力要同时校核<strong>馈线热稳定、配变容量、电压、保护、短路、电能质量、N-1</strong>，不是只看配变。D 级算例：10 kV 馈线 5 km、R=0.17 Ω/km，负荷 1 MW、光伏 6 MW，午间反送 5 MW；馈线 8 MVA 负载率 62.5%，但配变 5 MVA 已 <strong>100%</strong>；电压抬升 ΔU/U≈(−5 MW×0.85 Ω)/(10 kV)²=<strong>4.25%</strong>，首端偏高时可能越限；保护还要校核方向、灵敏度、重合闸和防孤岛。加 2 MW 储能午间充电，反送降到 3 MW、配变负载率 60%、电压抬升 <strong>2.55%</strong>，承载力明显提升。可开放容量是电网公司按台区/线路/变电站动态发布的，受负荷、项目并网、检修、网络改造、同时率影响，立项前必须重查并保留发布日期/来源。常见接入电压分界：8 kW 以下 220 V、8–400 kW 380 V、400 kW–6 MW 10 kV、6–20 MW 35 kV，具体以现行标准和接入方案为准。</p>
+<p><strong>关键数字</strong>：6 MW / 5 MVA / 100% / 4.25%；2 MW 储能 → 3 MW / 60% / 2.55%；8 kW / 400 kW / 6 MW / 20 MW。</p>
+<p><strong>常见错误</strong>：把可开放容量当永久额度；只看配变不看馈线/电压/保护；用铭牌容量算反送；忽略防孤岛和重合闸；绿电直连只看电价不看备用/过网费。</p>
+<p><strong>对应章节</strong>：《配电网承载力与分布式接入》§2、§4、§7；《无功、电压与电能质量》§6.4。</p>
+<hr>
+<h2 id="s82">回归测试用法</h2>
+<ol><li><strong>只读技能</strong>：关闭联网，只用 SKILL.md 回答；每题核对&quot;关键数字/状态/口径&quot;三要素。</li><li><strong>记录偏差</strong>：任何与上表不一致的答案，定位到章节并修正；修正后同步中英文两版。</li><li><strong>月度抽测</strong>：每月至少抽 11 题，覆盖现货、136、碳价、VPP 规模、零售风险、电价构成、储能投决、数据复盘、故障保护、电能质量、配网承载力各一题。</li><li><strong>季度全测</strong>：每季度全量跑 71 题，并更新本文件的&quot;版本基线&quot;。</li><li><strong>新增问题</strong>：遇到用户高频新问题，先补进本文件，再补进 SKILL 正文，避免&quot;只在对话里答对、技能里没有&quot;。</li></ol>
     </article>
 
     <section class="related" aria-labelledby="related-title">
-      <div class="related-head"><h2 id="related-title">相关模块</h2><span>21</span></div>
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>24</span></div>
       <div class="related-grid">
         <a class="related-card" href="索引与口径-2026-11.html">
           <span class="related-type">查证入口</span>
@@ -439,7 +473,7 @@
           <span>DC 潮流直觉、节点价三分量、断面约束与阻塞租金、网损因子、国内出清与结算口径、三节点手算与选址报价含义。</span>
         </a>
       </div>
-      <p class="related-rest"><b>更多关联</b><a href="频率惯量与灵活性供需-2026-11.html">频率、惯量与灵活性供需：从物理缓冲到分时间尺度货架</a><a href="可调负荷的物理真值-2026-11.html">可调负荷的物理真值：工艺硬约束、持续时长与恢复反弹</a><a href="预测误差申报与EMS闭环-2026-11.html">预测误差→申报→EMS 闭环：newsvendor 报价与储能偏差跟踪</a><a href="场站群与集控EMS架构-2026-11.html">场站群与集控 EMS 架构：分级调度、通信拓扑与群调群控</a><a href="EMS数据接口参考架构-2026-11.html">EMS 数据接口参考架构：设备、调度、市场与计量结算的契约</a><a href="并网测试与涉网验收实务清单-2026-11.html">并网测试与涉网验收实务清单：AGC/AVC/一次调频投运试验与考核点闭环</a><a href="中国电价制度谱系-2026-11.html">中国电价制度谱系</a><a href="中国电价现行政策与查证-2026-11.html">中国电价现行政策与查证</a><a href="新能源项目开发与并网-2026-11.html">新能源项目开发与并网</a><a href="储能投资与运营-2026-11.html">储能投资与运营</a><a href="储能收益建模与数据源-2026-11.html">储能收益建模与数据源（2026 版）：从 5 分钟价格到 15 年现金流</a><a href="综合能源与零碳园区-2026-11.html">综合能源与零碳园区</a><a href="合同与条款库-2026-11.html">合同与条款库：五类合同的条款矩阵与谈判红线</a><a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算（2026 版）</a><a href="交易台日课与异常处置-SOP-2026-11.html">交易台日课与异常处置 SOP</a><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a><a href="合成案例复盘库-2026-11.html">合成案例复盘库：十个交易台决策复盘</a></p>
+      <p class="related-rest"><b>更多关联</b><a href="频率惯量与灵活性供需-2026-11.html">频率、惯量与灵活性供需：从物理缓冲到分时间尺度货架</a><a href="可调负荷的物理真值-2026-11.html">可调负荷的物理真值：工艺硬约束、持续时长与恢复反弹</a><a href="预测误差申报与EMS闭环-2026-11.html">预测误差→申报→EMS 闭环：newsvendor 报价与储能偏差跟踪</a><a href="场站群与集控EMS架构-2026-11.html">场站群与集控 EMS 架构：分级调度、通信拓扑与群调群控</a><a href="EMS数据接口参考架构-2026-11.html">EMS 数据接口参考架构：设备、调度、市场与计量结算的契约</a><a href="并网测试与涉网验收实务清单-2026-11.html">并网测试与涉网验收实务清单：AGC/AVC/一次调频投运试验与考核点闭环</a><a href="中国电价制度谱系-2026-11.html">中国电价制度谱系</a><a href="中国电价现行政策与查证-2026-11.html">中国电价现行政策与查证</a><a href="新能源项目开发与并网-2026-11.html">新能源项目开发与并网</a><a href="储能投资与运营-2026-11.html">储能投资与运营</a><a href="储能收益建模与数据源-2026-11.html">储能收益建模与数据源（2026 版）：从 5 分钟价格到 15 年现金流</a><a href="综合能源与零碳园区-2026-11.html">综合能源与零碳园区</a><a href="合同与条款库-2026-11.html">合同与条款库：五类合同的条款矩阵与谈判红线</a><a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算（2026 版）</a><a href="交易台日课与异常处置-SOP-2026-11.html">交易台日课与异常处置 SOP</a><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a><a href="合成案例复盘库-2026-11.html">合成案例复盘库：十个交易台决策复盘</a><a href="故障保护与安全防御-2026-11.html">电力系统通识 E · 故障、保护与安全防御</a><a href="无功电压与电能质量-2026-11.html">无功、电压与电能质量：从无功平衡到力调电费</a><a href="配电网承载力与分布式接入-2026-11.html">配电网承载力与分布式接入：从可开放容量到绿电直连</a></p>
     </section>
 
 
@@ -535,15 +569,22 @@
             <li class="lv3"><a href="#s72">Q63 储能技术路线怎么选？构网型贵在哪？</a></li>
             <li class="lv3"><a href="#s73">Q64 微网/储能 EMS 的模型边界在哪？为什么"备用 50 kW"可能兑现不了？</a></li>
             <li class="lv3"><a href="#s74">Q65 合成案例复盘库怎么用？为什么说多数事故是流程缺位？</a></li>
-            <li class="lv2"><a href="#s75">回归测试用法</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="65" data-more-label="展开 65 个小节" data-less-label="收起小节">展开 65 个小节</button>
+            <li class="lv2"><a href="#s75">J. 故障保护与配电网</a></li>
+            <li class="lv3"><a href="#s76">Q66 短路电流怎么手算？为什么新能源场站的保护灵敏度会不够？</a></li>
+            <li class="lv3"><a href="#s77">Q67 防孤岛到底防什么？单机测试过了为什么还会出问题？</a></li>
+            <li class="lv3"><a href="#s78">Q68 三道防线怎么分工？低频减载和黑启动什么时候用？</a></li>
+            <li class="lv3"><a href="#s79">Q69 无功为什么不能远距离送？AVC 怎么把电压管住？</a></li>
+            <li class="lv3"><a href="#s80">Q70 功率因数怎么影响电费？电容器补偿为什么要先看谐波？</a></li>
+            <li class="lv3"><a href="#s81">Q71 配电网到底能接多少分布式电源？可开放容量为什么不是固定数？</a></li>
+            <li class="lv2"><a href="#s82">回归测试用法</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="71" data-more-label="展开 71 个小节" data-less-label="收起小节">展开 71 个小节</button>
   </aside>
 </div>
 
 <nav class="page-aux" aria-label="页面辅助">
   <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
 </nav>
-<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.0" data-cutoff="2026-11-19" data-latest="2026-11-20" data-count="93">
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.0" data-cutoff="2026-11-19" data-latest="2026-11-21" data-count="94">
   <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.0）" title="查看更新记录（当前 v2.0）">
     <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
     <span class="cl-badge-ver">v2.0</span>
@@ -556,7 +597,7 @@
         <div class="cl-head-main">
           <span class="cl-kicker">RELEASE NOTES</span>
           <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.0</span></h2>
-          <p class="cl-sub" id="cl-subtitle">当前版本 v2.0 · 数据截止 2026-11-19 · 93 条记录</p>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.0 · 数据截止 2026-11-19 · 94 条记录</p>
         </div>
         <div class="cl-actions">
           <div class="cl-lang" role="group" aria-label="切换语言">
@@ -573,7 +614,7 @@
         </div>
       </div>
       <footer class="cl-foot">
-        <span data-changelog-meta>v2.0 · 2026-11-19 · 93 条记录</span>
+        <span data-changelog-meta>v2.0 · 2026-11-19 · 94 条记录</span>
         <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
       </footer>
     </div>

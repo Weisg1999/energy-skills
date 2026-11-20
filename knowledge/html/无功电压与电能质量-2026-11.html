@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>无功、电压与电能质量：从无功平衡到力调电费 | energy-skills 知识库</title>
+<meta name="description" content="无功平衡与电压稳定、AVC 分级、SVG/电容器/变流器无功能力、功率因数与力调电费、谐波/闪变/不平衡/暂降的治理。">
+<link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
+<script>
+(function(){try{var t=localStorage.getItem('es-theme');if(!/^(light|cream|green|dark)$/.test(t||'')){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/knowledge.css">
+<link rel="stylesheet" href="../assets/theme-menu.css">
+<link rel="stylesheet" href="../assets/changelog.css">
+</head>
+<body data-cat="renewable" id="top">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
+  <div class="crumb">
+    <span class="crumb-cat">07 · RENEWABLE</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">无功、电压与电能质量：从无功平衡到力调电费</span>
+  </div>
+  <div class="topbar-act">
+    <div class="theme-picker" data-theme-picker>
+      <button class="theme-toggle" type="button" data-theme-menu aria-label="选择主题" title="选择主题">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="5"/><circle cx="15" cy="9" r="5"/><circle cx="12" cy="15" r="5"/></svg>
+      </button>
+    </div>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../无功电压与电能质量-2026-11.md">.md 源文件<small>knowledge/无功电压与电能质量-2026-11.md</small></a>
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">07 · RENEWABLE</div>
+    <h2 class="nav-cat"><a href="../index.html#renewable">新能源与并网</a></h2>
+    <ul class="nav-list">
+              <li><a href="新能源项目开发与并网-2026-11.html">新能源项目开发与并网</a></li>
+              <li><a href="并网运行考核与两个细则-2026-11.html">并网运行考核与两个细则</a></li>
+              <li><a href="并网测试与涉网验收实务清单-2026-11.html">并网测试与涉网验收实务清单：AGC/AVC/一次调频投运试验与考核点闭环</a></li>
+              <li class="on" aria-current="page"><a href="无功电压与电能质量-2026-11.html">无功、电压与电能质量：从无功平衡到力调电费</a></li>
+              <li><a href="配电网承载力与分布式接入-2026-11.html">配电网承载力与分布式接入：从可开放容量到绿电直连</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#province"><b>03</b>中国省级市场</a></li>
+              <li><a href="../index.html#intl"><b>04</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>05</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>06</b>电价</a></li>
+              <li><a href="../index.html#storage"><b>08</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>11</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">07 · RENEWABLE<i>知识模块</i></div>
+      <h1 class="doc-title">无功、电压与电能质量：从无功平衡到力调电费（2026-11）</h1>
+      <p class="lede">无功平衡与电压稳定、AVC 分级、SVG/电容器/变流器无功能力、功率因数与力调电费、谐波/闪变/不平衡/暂降的治理。</p>
+      <p class="hook">无功、电压与电能质量</p>
+      <div class="tags"><span class="tag">无功平衡</span><span class="tag">AVC</span><span class="tag">功率因数</span><span class="tag">电能质量</span></div>
+      <div class="doc-meta"><span>约 11.0k 字</span><span>阅读约 21 分钟</span><span>13 节</span><span>数据截止 2026-11-19</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（13）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv2"><a href="#s4">1. 无功是什么，为什么不能远距离送</a></li>
+            <li class="lv2"><a href="#s9">2. 电压控制的三层结构</a></li>
+            <li class="lv2"><a href="#s14">3. 无功补偿设备的选型</a></li>
+            <li class="lv2"><a href="#s20">4. 功率因数与力调电费</a></li>
+            <li class="lv2"><a href="#s27">5. 电能质量五件事</a></li>
+            <li class="lv2"><a href="#s34">6. 新能源与储能的无功/电压问题</a></li>
+            <li class="lv2"><a href="#s39">7. 合成算例（D 级）：10 kV 园区无功、谐波与电压</a></li>
+            <li class="lv2"><a href="#s46">8. 电能质量治理的工程流程</a></li>
+            <li class="lv2"><a href="#s51">9. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s52">10. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s53">11. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s54">速查</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>数据截止：2026-11-19｜定位：知识库模块（新能源与并网·电压与电能质量）</p><p>相关技能：<a href="../../skills/renewable-project-development/SKILL.md">新能源项目开发与并网专家</a>（并网无功与涉网性能）、<a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a>（PCS 无功与构网型）、<a href="../../skills/tariff-bill-optimization/SKILL.md">电价与电费优化专家</a>（力率与力调电费）</p><p>用途：回答&quot;无功为什么不能远距离送、AVC 怎么分级、SVG/电容器/变流器怎么选、功率因数怎么影响电费、谐波/闪变/不平衡/暂降怎么治&quot;五类问题。本文做工程与机制整理；具体限值、考核口径与电费计算以现行国家标准、并网协议和当地供电营业规则为准。</p></aside>
+<hr>
+<h2 id="s1">0. 一页看懂</h2>
+<h3 id="s2">0.1 三句话</h3>
+<ul><li><strong>无功是电压的&quot;水位&quot;</strong>：有功决定频率，无功决定电压；无功不足电压往下掉，无功过剩电压往上抬。</li><li><strong>无功不能远距离输送</strong>：线路对无功的阻抗远大于有功，长距离送无功的损耗和压降都不可接受，所以&quot;无功分层分区、就地平衡&quot;。</li><li><strong>电能质量是电压的体检报告</strong>：电压偏差、谐波、闪变、不平衡、暂降分别描述&quot;电压偏不偏、脏不脏、抖不抖、歪不歪、短时掉不掉&quot;，治理要对症，不是一台设备包打天下。</li></ul>
+<h3 id="s3">0.2 关键数字与口径</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>常见限值或口径</th><th>标准/来源</th><th>级别</th></tr></thead><tbody><tr><td>供电电压偏差</td><td>35 kV 及以上正负偏差绝对值之和 ≤10%；20 kV 及以下三相 ±7%；220 V 单相 +7%/−10%</td><td>GB/T 12325</td><td>A</td></tr><tr><td>频率偏差</td><td>正常运行 ±0.2 Hz；小容量电网 ±0.5 Hz</td><td>GB/T 15945</td><td>A</td></tr><tr><td>电压总谐波畸变率 THD</td><td>380 V 5%；6–10 kV 4%；35–66 kV 3%；110 kV 2%</td><td>GB/T 14549</td><td>A</td></tr><tr><td>电压不平衡度</td><td>公共连接点 2%，短时 ≤4%；用户引起的一般 ≤1.3%</td><td>GB/T 15543</td><td>A</td></tr><tr><td>电压波动与闪变</td><td>按电压等级查 d、Pst、Plt 限值</td><td>GB/T 12326</td><td>A</td></tr><tr><td>功率因数</td><td>常见考核标准 0.9；具体按当地供电营业规则</td><td>供电营业规则/地方细则</td><td>B</td></tr><tr><td>新能源无功范围</td><td>常见功率因数 0.95 超前–0.95 滞后可调；部分新标准/地区要求 0.9</td><td>并网标准与调度协议</td><td>B</td></tr><tr><td>AVC 响应</td><td>站级秒级到分钟级，具体按试验判据</td><td>并网试验与调度规程</td><td>B</td></tr></tbody></table></div>
+<aside class="note"><p>口径提醒：上表是通识速查，不是并网验收判据。真实项目要按电压等级、并网点位置、设备类型和当地细则逐条核对；标准版本变化时以现行文本为准。</p></aside>
+<hr>
+<h2 id="s4">1. 无功是什么，为什么不能远距离送</h2>
+<h3 id="s5">1.1 有功、无功与视在功率</h3>
+<p>交流系统中：</p>
+<pre tabindex="0"><code>S = P + jQ
+S_abs² = P² + Q²
+功率因数 cosφ = P / |S|</code></pre>
+<ul><li><strong>有功 P</strong>：真正做功、变成热/光/机械能的功率，单位 kW/MW；</li><li><strong>无功 Q</strong>：在电源与负荷之间来回交换、建立磁场/电场的功率，单位 kvar/Mvar；</li><li><strong>视在功率 S</strong>：电流与电压的乘积，设备容量按 S 设计，单位 kVA/MVA。</li></ul>
+<p>无功不是&quot;无用的功率&quot;，它是变压器励磁、电动机建立磁场、线路充电、变流器换相所必需的。没有无功，电压建立不起来，设备也无法工作。</p>
+<h3 id="s6">1.2 无功从哪里来、到哪里去</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>无功源</th><th>特点</th><th>备注</th></tr></thead><tbody><tr><td>同步发电机</td><td>连续可调，受励磁与定子电流限制</td><td>主力无功源，兼顾惯量</td></tr><tr><td>同步调相机</td><td>大容量、连续、有惯量</td><td>造价高、维护复杂，常用于特高压/直流落点</td></tr><tr><td>SVG/STATCOM</td><td>快速、连续、无机械开关</td><td>响应毫秒到几十毫秒，适合新能源/冲击负荷</td></tr><tr><td>并联电容器</td><td>便宜、分级投切、只能发无功</td><td>与谐波可能谐振，不能连续调</td></tr><tr><td>并联电抗器</td><td>吸收无功，抑制过电压</td><td>长线路、电缆轻载时用</td></tr><tr><td>变压器分接头</td><td>改变电压，不产生无功</td><td>调压不调无功，过度使用会影响无功分布</td></tr><tr><td>新能源/储能变流器</td><td>剩余容量可发/吸无功</td><td>受 P-Q 能力、温度、电压、控制策略限制</td></tr><tr><td>电缆</td><td>充电功率大，轻载时发出无功</td><td>城市配网、海上风电常见</td></tr><tr><td>负荷</td><td>电动机、变压器、整流器吸收无功</td><td>工业负荷功率因数通常 0.8–0.9</td></tr></tbody></table></div>
+<h3 id="s7">1.3 为什么&quot;无功分层分区、就地平衡&quot;</h3>
+<p>线路上的电压降落近似为：</p>
+<pre tabindex="0"><code>ΔU ≈ (P R + Q X) / U</code></pre>
+<p>高压线路的 X 远大于 R，所以无功 Q 对电压降落的影响很大。无功在长距离线路上传输，会产生：</p>
+<ul><li>较大的电压降落；</li><li>有功损耗（I²R）增加；</li><li>线路输送能力被无功占用；</li><li>受端电压支撑不足，严重时电压崩溃。</li></ul>
+<p>因此无功补偿要&quot;分层分区、就地平衡&quot;：在哪里缺无功，就在哪里补；不要指望远方发电机通过长线路送无功。新能源场站、工业园区、数据中心、城市配网都要按并网点要求配置无功补偿。</p>
+<h3 id="s8">1.4 电压稳定与无功备用</h3>
+<p>电压稳定问题本质是&quot;负荷所需的功率超过了网络能够传输的极限&quot;。P-V 曲线或 Q-V 曲线的鼻点对应电压崩溃临界点。工程上要留无功备用：</p>
+<ul><li>发电机无功备用；</li><li>SVG/调相机动态无功备用；</li><li>电容器/电抗器分组备用；</li><li>新能源场站的无功裕度；</li><li>负荷侧的无功补偿与需求响应。</li></ul>
+<p>新能源占比高、常规机组占比低的系统，动态无功备用可能不足，需要同步调相机、构网型储能、SVG 等补充。</p>
+<hr>
+<h2 id="s9">2. 电压控制的三层结构</h2>
+<h3 id="s10">2.1 AVC 的分级</h3>
+<p>自动电压控制（AVC）通常分三层：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>层级</th><th>控制对象</th><th>时间尺度</th><th>主要手段</th></tr></thead><tbody><tr><td>网调/区域</td><td>区域电网电压、枢纽母线</td><td>分钟级</td><td>发电机无功、调相机、SVG、主变分接头</td></tr><tr><td>省调</td><td>省级电网电压、无功潮流</td><td>分钟级</td><td>电厂 AVC、变电站 AVC、电容器/电抗器</td></tr><tr><td>站级</td><td>场站/变电站并网点电压、功率因数</td><td>秒级到分钟级</td><td>风机/光伏逆变器、PCS、SVG、主变分接头</td></tr></tbody></table></div>
+<p>AVC 的目标不是&quot;电压越高越好&quot;，而是在电压允许范围内，让无功潮流合理、网损尽量小、设备动作次数尽量少。AVC 要和处理死区、动作次数限制、设备寿命、通信延迟一起设计。</p>
+<h3 id="s11">2.2 新能源场站的 AVC</h3>
+<p>风电、光伏、储能场站的 AVC 通常包括：</p>
+<ul><li>接收调度下发的电压/无功指令；</li><li>分解到各台变流器、SVG、主变分接头；</li><li>监视并网点电压、功率因数、无功功率；</li><li>故障穿越期间按并网标准注入无功电流；</li><li>故障后平滑恢复有功/无功；</li><li>与场站控制器、AGC、一次调频协调。</li></ul>
+<p>场站 AVC 的难点在于<strong>设备多、通信慢、控制目标冲突</strong>：电压指令与功率因数指令可能矛盾，SVG 与变流器可能抢无功，主变分接头动作会改变无功分布。工程上要做闭锁、优先级、死区和延时。</p>
+<h3 id="s12">2.3 AVC 与市场</h3>
+<p>无功辅助服务在部分国家有独立补偿机制，在国内多按两个细则考核/补偿，尚未形成全国统一的无功现货市场。对场站而言：</p>
+<ul><li>无功能力是并网门槛，不是&quot;可选配置&quot;；</li><li>无功考核可能影响电费/结算；</li><li>SVG 的损耗、维护、可用率要进运营成本；</li><li>无功支撑可能影响有功出力（变流器容量有限）；</li><li>构网型储能的电压支撑能力可能有额外价值。</li></ul>
+<h3 id="s13">2.4 AVC 试验</h3>
+<p>AVC 投运前要做定值、通信、闭锁、响应时间、调节精度、振荡等试验。典型试验项：</p>
+<ul><li>电压阶跃响应：上升/下降时间、超调、稳态误差；</li><li>无功阶跃响应：响应时间、调节精度；</li><li>功率因数控制模式；</li><li>主变分接头联调；</li><li>通信中断/恢复；</li><li>与 AGC、一次调频、SVG 的协调；</li><li>故障穿越期间的电压支撑。</li></ul>
+<p>具体判据以并网试验标准和调度要求为准，本文不重复试验阈值；详见<a href="并网测试与涉网验收实务清单-2026-11.html">并网测试与涉网验收实务清单</a>。</p>
+<hr>
+<h2 id="s14">3. 无功补偿设备的选型</h2>
+<h3 id="s15">3.1 并联电容器/电抗器</h3>
+<p><strong>优点</strong>：单位容量造价低、损耗小、结构简单、维护方便。</p>
+<p><strong>缺点</strong>：</p>
+<ul><li>分级投切，不能连续调节；</li><li>响应慢（秒级）；</li><li>与谐波可能发生并联/串联谐振；</li><li>过补偿会向系统倒送无功，功率因数超前；</li><li>电容器组开关频繁操作会影响寿命。</li></ul>
+<p>适用场景：负荷平稳、无功需求变化慢、谐波不严重的工业用户和配电网。</p>
+<h3 id="s16">3.2 SVG/STATCOM</h3>
+<p><strong>优点</strong>：</p>
+<ul><li>连续调节，响应快（毫秒到几十毫秒）；</li><li>可发无功也可吸无功；</li><li>可抑制闪变、支撑电压；</li><li>不依赖机械开关，寿命长。</li></ul>
+<p><strong>缺点</strong>：</p>
+<ul><li>造价高；</li><li>自身有损耗；</li><li>可能注入谐波，需要滤波/多电平设计；</li><li>容量受开关器件、散热、变压器限制。</li></ul>
+<p>适用场景：新能源场站、电弧炉/轧机等冲击负荷、数据中心、电压敏感负荷、弱电网。</p>
+<h3 id="s17">3.3 同步调相机</h3>
+<p><strong>优点</strong>：大容量、连续、有转动惯量，能同时提供无功和短路容量/惯量支撑。</p>
+<p><strong>缺点</strong>：造价高、占地大、维护复杂、启动慢。</p>
+<p>适用场景：特高压直流落点、新能源高占比受端、需要惯量与短路容量支撑的系统。</p>
+<h3 id="s18">3.4 变流器的无功能力</h3>
+<p>风电、光伏、储能变流器的无功能力受以下因素限制：</p>
+<ul><li><strong>P-Q 能力曲线</strong>：额定视在功率固定，发无功会占用有功容量；</li><li><strong>电网电压</strong>：电压过低/过高时，电流限制会改变无功输出；</li><li><strong>温度/散热</strong>：长时间满无功可能降额；</li><li><strong>控制策略</strong>：无功优先级、故障穿越策略、AVC 指令；</li><li><strong>多机并联</strong>：不同品牌/型号的无功分配可能不均。</li></ul>
+<p>工程上不能用&quot;额定容量 × 0.95&quot;粗略估算全场无功能力，要看每台设备的 P-Q 曲线、并网点电压和实际可用台数。</p>
+<h3 id="s19">3.5 选型对比</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>设备</th><th>响应速度</th><th>调节连续性</th><th>造价</th><th>主要风险</th><th>典型场景</th></tr></thead><tbody><tr><td>并联电容器</td><td>秒级</td><td>分级</td><td>低</td><td>谐振、过补偿</td><td>工业用户、配网</td></tr><tr><td>并联电抗器</td><td>秒级</td><td>分级</td><td>低</td><td>过补偿、操作过电压</td><td>长线路、电缆轻载</td></tr><tr><td>SVG/STATCOM</td><td>毫秒到几十毫秒</td><td>连续</td><td>高</td><td>损耗、谐波、散热</td><td>新能源、冲击负荷</td></tr><tr><td>同步调相机</td><td>秒级</td><td>连续</td><td>很高</td><td>维护、启动</td><td>特高压落点、弱电网</td></tr><tr><td>变流器无功</td><td>毫秒到秒级</td><td>连续（受 P-Q 限制）</td><td>中</td><td>容量挤占、控制冲突</td><td>风光储场站</td></tr><tr><td>主变分接头</td><td>十秒级</td><td>分级</td><td>低</td><td>动作次数、无功分布</td><td>变电站/场站</td></tr></tbody></table></div>
+<hr>
+<h2 id="s20">4. 功率因数与力调电费</h2>
+<h3 id="s21">4.1 功率因数的两种口径</h3>
+<ul><li><strong>位移功率因数</strong>：基波电压与基波电流相位差的余弦，传统电费考核常用；</li><li><strong>真功率因数</strong>：考虑谐波后的总有功/总视在功率，新能源、整流负荷、数据中心更适用。</li></ul>
+<p>两者的差异在谐波严重时可能很大。电费单上的&quot;功率因数&quot;以当地供电营业规则的定义为准，不能想当然。</p>
+<h3 id="s22">4.2 功率因数考核标准</h3>
+<p>国内大工业用户常见考核标准为 0.9，具体按用户容量、电压等级、行业和当地细则确定；农业用户、趸售用户等可能有不同标准。<strong>0.9 不是全国所有用户的统一门槛</strong>，要看供电营业规则和电费单。</p>
+<p>功率因数低于标准会被加收力调电费，高于标准可能减收。考核方式通常按月平均功率因数计算，但有的地区按峰/平/谷分别考核，有的地区对大工业用户按基本电费+电度电费为基数。</p>
+<h3 id="s23">4.3 力调电费的结构</h3>
+<p>力调电费（功率因数调整电费）通常按&quot;电费基数 × 调整系数&quot;计算，电费基数可能包括基本电费、电度电费（是否含基金附加、力调范围如何，以当地规则为准）。调整系数由功率因数查表得到，不同地区、不同用户类别可能不同。</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>月平均功率因数（示例）</th><th>调整方向</th><th>说明</th></tr></thead><tbody><tr><td>0.95 及以上</td><td>减收</td><td>具体减收比例查当地表</td></tr><tr><td>0.90</td><td>不增不减</td><td>常见考核基准</td></tr><tr><td>0.85</td><td>加收</td><td>低于标准，加收比例查当地表</td></tr><tr><td>0.80</td><td>加收更多</td><td>可能同时触发无功补偿要求</td></tr></tbody></table></div>
+<aside class="note"><p>上表只表示方向，不是结算表。真实力调系数以当地供电营业规则和电费单为准，不能用本文数字直接报方案。</p></aside>
+<h3 id="s24">4.4 提高功率因数的手段</h3>
+<ul><li>并联电容器组：适合负荷平稳、谐波不严重的用户；</li><li>SVG：适合冲击负荷、谐波严重、需要快速调节的用户；</li><li>同步电动机/调相机：大容量、连续调节；</li><li>更换高效电机、变频改造：减少无功需求；</li><li>负荷调度：避开高峰、平衡三相；</li><li>防止过补偿：避免轻载时向系统倒送无功。</li></ul>
+<h3 id="s25">4.5 过补偿与谐振</h3>
+<p>电容器补偿不是&quot;越多越好&quot;：</p>
+<ul><li>轻载时电容器组不切除，功率因数超前，可能被考核；</li><li>电容器与系统电感在某一频率谐振，放大谐波电流，烧电容器/熔断器；</li><li>电容器组投切产生涌流和过电压；</li><li>谐波环境下普通电容器可能过载。</li></ul>
+<p>工程上要做谐波测量、谐振校核，必要时串联电抗器（如 7% 电抗率用于抑制 5 次谐波，具体按谐波次数和电容器参数计算）。</p>
+<h3 id="s26">4.6 合成算例：工厂无功补偿</h3>
+<p>一个 D 级合成工厂：有功负荷 P=800 kW，补偿前功率因数 0.82，目标 0.95，月用电量 40 万 kWh。</p>
+<pre tabindex="0"><code>tanφ1 = √(1/0.82² - 1) = 0.698
+tanφ2 = √(1/0.95² - 1) = 0.329
+Q_c = P × (tanφ1 - tanφ2) = 800 × (0.698 - 0.329) = 295 kvar</code></pre>
+<p>选 300 kvar 电容器组（分 6 组、每组 50 kvar），按负荷投入，避免轻载过补偿。</p>
+<p>补偿后无功从约 558 kvar 降到约 263 kvar，视在功率从约 976 kVA 降到约 842 kVA，线路电流和变压器损耗下降。力调电费能从&quot;加收&quot;变为&quot;不减不增&quot;甚至&quot;减收&quot;，具体金额查当地调整表。</p>
+<p>如果该厂谐波严重（例如 5 次谐波电流超标），普通电容器可能谐振，应改用 SVG 或串联电抗率合适的电容器组，并做谐波治理。<strong>补偿容量算对了，不等于方案安全。</strong></p>
+<hr>
+<h2 id="s27">5. 电能质量五件事</h2>
+<h3 id="s28">5.1 电压偏差</h3>
+<p><strong>定义</strong>：实际电压与标称电压之差，通常用百分数表示。</p>
+<p><strong>限值</strong>：35 kV 及以上供电电压正、负偏差绝对值之和不超过 10%；20 kV 及以下三相供电电压偏差为 ±7%；220 V 单相为 +7%/−10%（GB/T 12325）。</p>
+<p><strong>成因</strong>：线路过长、变压器分接头不当、无功不足/过剩、负荷波动、新能源反送。</p>
+<p><strong>治理</strong>：AVC、无功补偿、调压变压器、线路改造、储能/需求响应。</p>
+<h3 id="s29">5.2 谐波</h3>
+<p><strong>定义</strong>：频率为基波整数倍的正弦分量。总谐波畸变率 THD 衡量波形偏离正弦的程度。</p>
+<p><strong>限值</strong>：380 V 5%、6–10 kV 4%、35–66 kV 3%、110 kV 2%（GB/T 14549，电压总谐波畸变率）。</p>
+<p><strong>成因</strong>：整流器、变频器、UPS、LED 电源、光伏逆变器、储能 PCS、EV 充电桩、电弧炉、轧机。</p>
+<p><strong>危害</strong>：变压器/电缆过热、电容器过载、保护误动、计量误差、通信干扰、电机附加损耗。</p>
+<p><strong>治理</strong>：源侧改造（多脉波整流、PFC、低谐波逆变器）、无源滤波器、有源滤波器（APF）、SVG 兼滤波、谐振校核、隔离变压器。</p>
+<h3 id="s30">5.3 电压波动与闪变</h3>
+<p><strong>定义</strong>：电压方均根值的快速变化（波动）；闪变是人眼对灯光亮度波动的感受，用 Pst（短时）、Plt（长时）衡量。</p>
+<p><strong>限值</strong>：GB/T 12326 按电压等级给出 d、Pst、Plt 限值，具体查表。</p>
+<p><strong>成因</strong>：电弧炉、轧机、焊机、起重机、风机、光伏快速爬坡、大电机启动。</p>
+<p><strong>治理</strong>：SVG/STATCOM、动态无功补偿、串联电抗器、改进工艺、错峰运行、储能平滑。</p>
+<h3 id="s31">5.4 三相不平衡</h3>
+<p><strong>定义</strong>：三相电压/电流幅值或相位不一致，用负序分量衡量。</p>
+<p><strong>限值</strong>：公共连接点电压不平衡度 2%，短时 ≤4%；用户引起的一般 ≤1.3%（GB/T 15543）。</p>
+<p><strong>成因</strong>：单相负荷（居民、商业）、单相光伏、单相 EV 充电、电气化铁路、故障断线。</p>
+<p><strong>危害</strong>：电机负序发热、变压器降容、保护误动、计量误差、通信干扰。</p>
+<p><strong>治理</strong>：三相负荷平衡、单相光伏/充电桩轮换接入、SVG/有源不平衡补偿、换相开关、储能三相独立控制。</p>
+<h3 id="s32">5.5 电压暂降与短时中断</h3>
+<p><strong>定义</strong>：电压方均根值短时下降到 10%–90% 额定值（暂降），或低于 10%（短时中断），持续半个周波到几秒。</p>
+<p><strong>限值</strong>：GB/T 30137 给出测量与统计方法；具体允许值按用户协议和敏感设备耐受能力确定，不宜简单说&quot;电网必须保证零暂降&quot;。</p>
+<p><strong>成因</strong>：短路故障、雷击、大电机启动、变压器励磁涌流、开关操作。</p>
+<p><strong>危害</strong>：半导体生产线、数据中心、精密制造、变频器、接触器、照明等敏感负荷停机/重启。</p>
+<p><strong>治理</strong>：UPS、动态电压恢复器（DVR）、飞轮/储能、变频器低电压穿越、接触器延时释放、工艺抗扰设计、与电网协商责任。</p>
+<h3 id="s33">5.6 五类指标对照</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>看什么</th><th>典型源</th><th>主要治理</th><th>常见误区</th></tr></thead><tbody><tr><td>电压偏差</td><td>稳态电压偏离</td><td>无功不足、线路长</td><td>AVC、无功补偿、调压</td><td>只调分接头，不补无功</td></tr><tr><td>谐波</td><td>波形畸变</td><td>整流、变频、逆变器</td><td>滤波、源侧改造、谐振校核</td><td>只装电容不校谐波</td></tr><tr><td>闪变</td><td>电压快速波动</td><td>电弧炉、焊机、风机</td><td>SVG、动态补偿、错峰</td><td>用静态电容治闪变</td></tr><tr><td>不平衡</td><td>负序分量</td><td>单相负荷、铁路</td><td>平衡负荷、SVG、换相</td><td>只看平均电流</td></tr><tr><td>暂降</td><td>短时电压跌落</td><td>短路、启动</td><td>UPS、DVR、储能、抗扰</td><td>把责任全推给电网</td></tr></tbody></table></div>
+<hr>
+<h2 id="s34">6. 新能源与储能的无功/电压问题</h2>
+<h3 id="s35">6.1 风电、光伏</h3>
+<ul><li>并网点功率因数/无功范围是并网门槛，常见 0.95 超前–0.95 滞后，部分新标准/地区要求 0.9；</li><li>故障穿越期间要按标准注入无功电流，支撑电压；</li><li>弱电网下变流器与电网交互，可能振荡；</li><li>场站 AVC 要协调风机/逆变器、SVG、主变分接头；</li><li>夜间/轻载时电缆充电功率大，可能需要电抗器吸收无功；</li><li>出力波动导致电压波动/闪变，需要动态无功。</li></ul>
+<h3 id="s36">6.2 储能</h3>
+<ul><li>PCS 的 P-Q 能力决定无功范围，发无功会挤占有功；</li><li>SOC 高/低时，有功能力受限，但无功能力通常仍可用（取决于控制策略）；</li><li>构网型储能可提供电压/频率支撑、虚拟惯量、黑启动；</li><li>储能参与无功辅助服务的收益机制因省而异；</li><li>电池温度、PCS 散热、可用率影响无功持续时间。</li></ul>
+<h3 id="s37">6.3 VPP 与可调负荷</h3>
+<ul><li>工业负荷的无功补偿通常由用户自己负责，VPP 聚合时要区分有功调节与无功调节；</li><li>数据中心、冷链、充电桩的功率因数与谐波特性不同；</li><li>EV 充电桩大量接入可能带来谐波、不平衡、电压波动；</li><li>VPP 参与辅助服务时，无功/电压支撑可能是单独品种，不能与有功容量简单叠加。</li></ul>
+<h3 id="s38">6.4 园区/工商业</h3>
+<p>园区常见的无功/电压问题：</p>
+<ul><li>变压器轻载时功率因数低，力调电费加收；</li><li>变频器、UPS、充电桩谐波大；</li><li>单相负荷/单相光伏导致不平衡；</li><li>光伏反送导致并网点电压升高；</li><li>电容器与谐波谐振。</li></ul>
+<p>治理顺序：先测量（谐波、不平衡、电压偏差、功率因数），再定方案（源侧改造、无源/有源滤波、SVG、电容器、储能），最后做验收（同点、同期、同工况对比）。</p>
+<hr>
+<h2 id="s39">7. 合成算例（D 级）：10 kV 园区无功、谐波与电压</h2>
+<aside class="note"><p>本算例为合成数据，仅用于演示&quot;无功补偿 + 谐波校核 + 力调电费&quot;的计算链，不对应任何真实园区、真实电费单或真实设备。</p></aside>
+<h3 id="s40">7.1 场景</h3>
+<p>一个 10 kV 工业园区，合成参数：</p>
+<ul><li>最大有功负荷 2,000 kW，月用电量 100 万 kWh；</li><li>补偿前功率因数 0.82；</li><li>谐波以 5 次为主，5 次谐波电流约 80 A；</li><li>拟装 600 kvar 并联电容器，分 6 组；</li><li>目标功率因数 0.95；</li><li>电费单有力调电费科目，具体系数按当地表。</li></ul>
+<h3 id="s41">7.2 无功补偿容量</h3>
+<pre tabindex="0"><code>tanφ1 = √(1/0.82² - 1) = 0.698
+tanφ2 = √(1/0.95² - 1) = 0.329
+Q_c = 2,000 × (0.698 - 0.329) = 738 kvar</code></pre>
+<p>理论需要约 738 kvar，选 750 kvar（6 组 × 125 kvar）或 800 kvar 分组。若只装 600 kvar，功率因数约 0.91，仍可能被加收；若装 900 kvar，轻载时可能过补偿。<strong>容量要按负荷曲线分组投切，不能只按最大负荷算一个总数。</strong></p>
+<h3 id="s42">7.3 谐波谐振校核</h3>
+<p>电容器组的容抗与系统感抗在某一频率谐振：</p>
+<pre tabindex="0"><code>h_res = √(S_k / Q_c)</code></pre>
+<p>若 10 kV 母线短路容量 S_k=200 MVA，电容器 Q_c=0.75 Mvar：</p>
+<pre tabindex="0"><code>h_res = √(200 / 0.75) = √266.7 ≈ 16.3</code></pre>
+<p>谐振次数约 16 次，离 5 次较远，5 次谐波放大风险相对小；但如果 S_k 较小或电容器分组投切，谐振点会移动。工程上要做谐波阻抗扫描，不能只算一个工况。若谐振点接近 5 次/7 次，应调整容量、分组、串联电抗率或改用 SVG/APF。</p>
+<h3 id="s43">7.4 电压抬升校核</h3>
+<p>光伏反送时，并网点电压抬升近似：</p>
+<pre tabindex="0"><code>ΔU/U ≈ (P R + Q X) / U²</code></pre>
+<p>若园区光伏反送 1 MW，10 kV 线路 R=0.2 Ω、X=0.35 Ω，功率因数 1：</p>
+<pre tabindex="0"><code>ΔU ≈ (1,000 kW × 0.2 Ω) / (10 kV)² ≈ 0.002 pu = 0.2%</code></pre>
+<p>数值不大，但低压侧线路 R 更大、反送更集中，末端电压抬升可能更明显。治理要靠逆变器无功控制（Volt-Var）、SVG、储能充电、变压器分接头和接入容量管理。</p>
+<h3 id="s44">7.5 力调电费敏感性</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>月平均功率因数</th><th>调整方向</th><th>对电费的影响</th></tr></thead><tbody><tr><td>0.82</td><td>加收</td><td>力调电费增加</td></tr><tr><td>0.90</td><td>基准</td><td>不增不减（按当地表）</td></tr><tr><td>0.95</td><td>减收</td><td>力调电费减少</td></tr></tbody></table></div>
+<p>具体金额 = 电费基数 × 当地调整系数。<strong>不要用本文的 0.82/0.90/0.95 直接套算真实电费</strong>，因为基数、系数、考核方式因地而异。</p>
+<h3 id="s45">7.6 方案建议</h3>
+<ul><li>先做 7 天以上的电能质量与负荷监测，确认无功需求、谐波次数、不平衡、电压偏差；</li><li>电容器分组按负荷曲线投切，避免轻载过补偿；</li><li>谐波严重时改用 SVG/APF 或串联电抗器，做谐振校核；</li><li>光伏并网点校核反送电压，必要时限制接入容量或配储能；</li><li>力调电费按当地电费单核算，不按通用表拍脑袋；</li><li>改造后做同点、同期、同工况的验收对比。</li></ul>
+<hr>
+<h2 id="s46">8. 电能质量治理的工程流程</h2>
+<h3 id="s47">8.1 监测</h3>
+<ul><li>用符合 IEC 61000-4-30 A 级的电能质量分析仪；</li><li>监测点选在公共连接点/并网点/敏感负荷入口；</li><li>记录电压偏差、THD、谐波电流、Pst/Plt、不平衡、暂降；</li><li>至少覆盖典型工作日、周末、极端负荷、光伏大发/夜间；</li><li>统计用 95% 概率值、最大值、事件次数，不能只看平均。</li></ul>
+<h3 id="s48">8.2 源与受害者</h3>
+<p>电能质量问题要区分&quot;源&quot;和&quot;受害者&quot;：</p>
+<ul><li>谁注入谐波/闪变/不平衡；</li><li>谁对电压暂降敏感；</li><li>谁的无功补偿导致谐振；</li><li>责任边界在公共连接点还是用户内部。</li></ul>
+<p>治理方案要同时考虑技术有效性和责任归属，不能把用户内部问题全推给电网。</p>
+<h3 id="s49">8.3 治理优先级</h3>
+<ol><li><strong>源侧减少</strong>：低谐波设备、PFC、工艺改造、平衡三相；</li><li><strong>提高免疫</strong>：UPS、DVR、变频器抗扰、接触器延时；</li><li><strong>滤波/补偿</strong>：APF、SVG、电容器+电抗器；</li><li><strong>隔离/接地</strong>：隔离变压器、屏蔽、等电位；</li><li><strong>合同/管理</strong>：接入协议、电能质量条款、责任分摊。</li></ol>
+<h3 id="s50">8.4 验收</h3>
+<ul><li>同点、同期、同工况对比；</li><li>治理前后各至少 7 天监测；</li><li>指标按国家标准/合同判据；</li><li>记录治理设备投入前后的事件；</li><li>保留原始数据，便于争议处理。</li></ul>
+<hr>
+<h2 id="s51">9. 常见错误（10 条）</h2>
+<ol><li><strong>把无功当&quot;免费&quot;</strong>：无功不足会导致电压下降、设备损坏、电费加收，无功补偿是刚性成本。</li><li><strong>电容器补偿不看谐波</strong>：电容器与系统电感谐振，可能放大谐波、烧电容器。</li><li><strong>过补偿导致功率因数超前</strong>：轻载时电容器不切除，反而被考核。</li><li><strong>只看月平均功率因数，不看峰谷</strong>：峰段/谷段无功需求不同，按月平均选容量可能不够或过补偿。</li><li><strong>用额定容量代替实际无功能力</strong>：变流器 P-Q 曲线、电压、温度、控制策略都会限制无功输出。</li><li><strong>AVC 只调主变分接头</strong>：分接头调压不调无功，过度动作会加速老化、影响无功分布。</li><li><strong>新能源无功能力按铭牌估算</strong>：不同厂家、不同并网标准、不同控制策略差异很大，要看检测报告。</li><li><strong>电压暂降全怪电网</strong>：用户内部故障、电机启动、变压器涌流也会造成暂降，责任要分。</li><li><strong>谐波治理只装滤波器不校谐振</strong>：滤波器可能与系统谐振，治理后反而更糟。</li><li><strong>力调电费按&quot;电度电费&quot;直接乘系数</strong>：基数是否含基本电费、基金附加，各地不同，必须看电费单和营业规则。</li></ol>
+<hr>
+<h2 id="s52">10. 待核实与未定事项</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>事项</th><th>状态</th><th>查证入口</th></tr></thead><tbody><tr><td>各地功率因数考核标准与力调系数表</td><td>分地区、分用户类别</td><td>供电营业规则、电费单、当地供电公司</td></tr><tr><td>新能源并网无功范围与电压控制要求</td><td>分标准、分地区</td><td>现行并网标准、并网协议、调度规程</td></tr><tr><td>AVC 响应时间/精度/试验判据</td><td>分区域、分设备</td><td>并网试验标准、调度下发文件</td></tr><tr><td>用户谐波电流允许值与责任分摊</td><td>分电压等级、分容量</td><td>GB/T 14549、供电合同、电能质量协议</td></tr><tr><td>电压暂降允许值与责任认定</td><td>合同/协议为主</td><td>GB/T 30137、用户协议、地方规则</td></tr><tr><td>无功辅助服务补偿机制</td><td>分省、演进中</td><td>各省辅助服务细则、两个细则</td></tr><tr><td>构网型储能的无功/电压支撑价值</td><td>试点</td><td>示范项目、调度/科研机构</td></tr><tr><td>新型变流器（宽频、构网）的无功能力</td><td>厂家差异大</td><td>检测报告、厂家说明书</td></tr></tbody></table></div>
+<hr>
+<h2 id="s53">11. 与技能和其他笔记的分工</h2>
+<ul><li><strong>本文</strong>：无功平衡 → 电压控制 → 补偿设备 → 功率因数/力调电费 → 五类电能质量 → 治理流程，是&quot;电压为什么稳不住、电费为什么被加收&quot;的地基。</li><li><a href="新能源项目开发与并网-2026-11.html">新能源项目开发与并网</a>：并网标准、涉网性能、项目投决；本文展开无功与电能质量。</li><li><a href="并网测试与涉网验收实务清单-2026-11.html">并网测试与涉网验收实务清单</a>：AVC/AGC/一次调频/FRT/电能质量的试验判据与验收清单。</li><li><a href="并网运行考核与两个细则-2026-11.html">并网运行考核与两个细则</a>：AVC/无功考核、两个细则罚则。</li><li><a href="中国电价现行政策与查证-2026-11.html">中国电价现行政策与查证</a>：力调电费在电价体系中的位置与查证方法。</li><li><a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线安全与构网型并网</a>：构网型储能的电压支撑与并网试验。</li><li><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a>：园区/微网的无功、电压与需量协同。</li><li><a href="配电网承载力与分布式接入-2026-11.html">配电网承载力与分布式接入</a>：分布式电源接入的电压抬升、承载力与保护适配。</li><li>技能正文引用本文，不复述限值表与补偿容量公式。</li></ul>
+<h2 id="s54">速查</h2>
+<pre tabindex="0"><code>无功：电压的&quot;水位&quot;；分层分区、就地平衡，不能远距离送
+电压降：ΔU ≈ (P R + Q X) / U；高压 X 大，Q 影响大
+AVC：网调 -&gt; 省调 -&gt; 站级；电压/无功/分接头协同
+补偿：电容器便宜分级，SVG 快速连续，调相机有惯量
+变流器无功：受 P-Q 曲线、电压、温度、控制策略限制
+功率因数：常见考核 0.9；力调电费基数与系数看当地表
+电压偏差：35 kV+ 偏差绝对值之和 ≤10%；20 kV- 三相 ±7%；220 V +7%/-10%
+谐波：THD 380 V 5%、6-10 kV 4%、35-66 kV 3%、110 kV 2%
+不平衡：公共连接点 2%，短时 4%；用户引起一般 ≤1.3%
+暂降：看敏感设备耐受与合同，不是&quot;电网必须零暂降&quot;
+口径铁律：限值是国标通识，结算/验收以现行标准、协议和电费单为准</code></pre>
+    </article>
+
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>7</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="并网运行考核与两个细则-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>并网运行考核与两个细则</b>
+          <span>60/61 号、AGC/AVC/一次调频公式、20 项罚则、六类免考与合成算例。</span>
+        </a>
+        <a class="related-card" href="新能源项目开发与并网-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>新能源项目开发与并网</b>
+          <span>136 号机制电价、省级竞价、P50/P90、LCOE、并网标准、海上风电与省别画像。</span>
+        </a>
+        <a class="related-card" href="并网测试与涉网验收实务清单-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>并网测试与涉网验收实务清单：AGC/AVC/一次调频投运试验与考核点闭环</b>
+          <span>从型式试验到并网验收的测试体系，AGC/AVC/一次调频投运试验方法与判据，故障穿越/电能质量/模型验证，验收清单与整改闭环，把两个细则考核点倒推为试验验证项。</span>
+        </a>
+        <a class="related-card" href="储能技术路线安全与构网型并网-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>储能技术路线、安全与构网型并网</b>
+          <span>锂电/钠电/液流/压缩空气/飞轮对比，五层安全设防与标准，构网型控制、指标与验收。</span>
+        </a>
+      </div>
+      <p class="related-rest"><b>更多关联</b><a href="中国电价现行政策与查证-2026-11.html">中国电价现行政策与查证</a><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a><a href="配电网承载力与分布式接入-2026-11.html">配电网承载力与分布式接入：从可开放容量到绿电直连</a></p>
+    </section>
+
+<section class="related" aria-labelledby="paired-skills-title">
+      <div class="related-head"><h2 id="paired-skills-title">配套技能</h2><span>2</span></div>
+      <div class="related-grid">
+        <a class="related-card skill-pair" href="skill-renewable-project-development.html">
+          <span class="related-type">资源、LCOE、机制电价与并网（含云南风电 2027 投决实例包）</span>
+          <b>新能源开发与并网</b>
+          <span>技能 · 新能源 · LCOE · 并网</span>
+        </a>
+        <a class="related-card skill-pair" href="skill-tariff-bill-optimization.html">
+          <span class="related-type">账单科目、基本电费、分时与套餐比价（含江苏工商业储能实例包）</span>
+          <b>电价与电费优化</b>
+          <span>技能 · 电费 · 两部制 · 套餐</span>
+        </a>
+      </div>
+    </section>
+
+    <nav class="pager" aria-label="上下篇">
+          <a class="prev" href="并网测试与涉网验收实务清单-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">并网测试与涉网验收实务清单：AGC/AVC/一次调频投运试验与考核点闭环</span></a>
+          <a class="next" href="配电网承载力与分布式接入-2026-11.html"><span class="dir">下一篇 →</span><span class="ttl">配电网承载力与分布式接入：从可开放容量到绿电直连</span></a>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../无功电压与电能质量-2026-11.md">knowledge/无功电压与电能质量-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="本页目录">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv3"><a href="#s2">0.1 三句话</a></li>
+            <li class="lv3"><a href="#s3">0.2 关键数字与口径</a></li>
+            <li class="lv2"><a href="#s4">1. 无功是什么，为什么不能远距离送</a></li>
+            <li class="lv3"><a href="#s5">1.1 有功、无功与视在功率</a></li>
+            <li class="lv3"><a href="#s6">1.2 无功从哪里来、到哪里去</a></li>
+            <li class="lv3"><a href="#s7">1.3 为什么"无功分层分区、就地平衡"</a></li>
+            <li class="lv3"><a href="#s8">1.4 电压稳定与无功备用</a></li>
+            <li class="lv2"><a href="#s9">2. 电压控制的三层结构</a></li>
+            <li class="lv3"><a href="#s10">2.1 AVC 的分级</a></li>
+            <li class="lv3"><a href="#s11">2.2 新能源场站的 AVC</a></li>
+            <li class="lv3"><a href="#s12">2.3 AVC 与市场</a></li>
+            <li class="lv3"><a href="#s13">2.4 AVC 试验</a></li>
+            <li class="lv2"><a href="#s14">3. 无功补偿设备的选型</a></li>
+            <li class="lv3"><a href="#s15">3.1 并联电容器/电抗器</a></li>
+            <li class="lv3"><a href="#s16">3.2 SVG/STATCOM</a></li>
+            <li class="lv3"><a href="#s17">3.3 同步调相机</a></li>
+            <li class="lv3"><a href="#s18">3.4 变流器的无功能力</a></li>
+            <li class="lv3"><a href="#s19">3.5 选型对比</a></li>
+            <li class="lv2"><a href="#s20">4. 功率因数与力调电费</a></li>
+            <li class="lv3"><a href="#s21">4.1 功率因数的两种口径</a></li>
+            <li class="lv3"><a href="#s22">4.2 功率因数考核标准</a></li>
+            <li class="lv3"><a href="#s23">4.3 力调电费的结构</a></li>
+            <li class="lv3"><a href="#s24">4.4 提高功率因数的手段</a></li>
+            <li class="lv3"><a href="#s25">4.5 过补偿与谐振</a></li>
+            <li class="lv3"><a href="#s26">4.6 合成算例：工厂无功补偿</a></li>
+            <li class="lv2"><a href="#s27">5. 电能质量五件事</a></li>
+            <li class="lv3"><a href="#s28">5.1 电压偏差</a></li>
+            <li class="lv3"><a href="#s29">5.2 谐波</a></li>
+            <li class="lv3"><a href="#s30">5.3 电压波动与闪变</a></li>
+            <li class="lv3"><a href="#s31">5.4 三相不平衡</a></li>
+            <li class="lv3"><a href="#s32">5.5 电压暂降与短时中断</a></li>
+            <li class="lv3"><a href="#s33">5.6 五类指标对照</a></li>
+            <li class="lv2"><a href="#s34">6. 新能源与储能的无功/电压问题</a></li>
+            <li class="lv3"><a href="#s35">6.1 风电、光伏</a></li>
+            <li class="lv3"><a href="#s36">6.2 储能</a></li>
+            <li class="lv3"><a href="#s37">6.3 VPP 与可调负荷</a></li>
+            <li class="lv3"><a href="#s38">6.4 园区/工商业</a></li>
+            <li class="lv2"><a href="#s39">7. 合成算例（D 级）：10 kV 园区无功、谐波与电压</a></li>
+            <li class="lv3"><a href="#s40">7.1 场景</a></li>
+            <li class="lv3"><a href="#s41">7.2 无功补偿容量</a></li>
+            <li class="lv3"><a href="#s42">7.3 谐波谐振校核</a></li>
+            <li class="lv3"><a href="#s43">7.4 电压抬升校核</a></li>
+            <li class="lv3"><a href="#s44">7.5 力调电费敏感性</a></li>
+            <li class="lv3"><a href="#s45">7.6 方案建议</a></li>
+            <li class="lv2"><a href="#s46">8. 电能质量治理的工程流程</a></li>
+            <li class="lv3"><a href="#s47">8.1 监测</a></li>
+            <li class="lv3"><a href="#s48">8.2 源与受害者</a></li>
+            <li class="lv3"><a href="#s49">8.3 治理优先级</a></li>
+            <li class="lv3"><a href="#s50">8.4 验收</a></li>
+            <li class="lv2"><a href="#s51">9. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s52">10. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s53">11. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s54">速查</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="41" data-more-label="展开 41 个小节" data-less-label="收起小节">展开 41 个小节</button>
+  </aside>
+</div>
+
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.0" data-cutoff="2026-11-19" data-latest="2026-11-21" data-count="94">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.0）" title="查看更新记录（当前 v2.0）">
+    <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
+    <span class="cl-badge-ver">v2.0</span>
+    <span class="cl-badge-label">更新记录</span>
+  </button>
+  <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
+    <div class="cl-backdrop" data-changelog-close></div>
+    <div class="cl-panel" role="dialog" aria-modal="true" aria-labelledby="cl-title" aria-describedby="cl-subtitle" tabindex="-1">
+      <header class="cl-head">
+        <div class="cl-head-main">
+          <span class="cl-kicker">RELEASE NOTES</span>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.0</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.0 · 数据截止 2026-11-19 · 94 条记录</p>
+        </div>
+        <div class="cl-actions">
+          <div class="cl-lang" role="group" aria-label="切换语言">
+            <button type="button" data-cl-lang="zh" aria-pressed="true">中文</button>
+            <button type="button" data-cl-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <button class="cl-close" type="button" data-changelog-close aria-label="关闭更新记录" title="关闭更新记录">×</button>
+        </div>
+      </header>
+      <div class="cl-body" data-changelog-body>
+        <div class="cl-skeleton" data-changelog-status role="status">
+          <span class="cl-sr">正在读取更新记录…</span>
+          <i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      <footer class="cl-foot">
+        <span data-changelog-meta>v2.0 · 2026-11-19 · 94 条记录</span>
+        <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
+      </footer>
+    </div>
+  </div>
+</div>
+<script src="../assets/doc.js"></script>
+<script src="../assets/theme.js"></script>
+<script src="../assets/changelog.js"></script>
+</body>
+</html>
