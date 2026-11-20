@@ -25,7 +25,7 @@
 
 > Every skill is a self-contained Markdown handbook that can be injected into an LLM context. Once loaded, the model answers as a senior practitioner and follows built-in discipline: figures cited with document numbers and dates, province confirmed before local rules, policy items returned with official lookup pointers, and unverified data flagged as “to be verified”.
 
-Current version **v2.0**, data cutoff **2026-11-19**, 45,353 body lines. Notes, 111 reading pages, skill pages, the full-text index and all diagrams are generated from repository content.
+Current version **v2.0**, data cutoff **2026-11-19**, 45,523 body lines. Notes, 111 reading pages, skill pages, the full-text index and all diagrams are generated from repository content.
 
 **Contents**　[Quick start](#quick-start) · [Skills](#skills) · [Knowledge base](#knowledge-base) · [Repository layout](#repository-layout) · [Maintenance](#maintaining-the-knowledge-hub) · [Roadmap](#roadmap) · [License](#license)
 
@@ -112,7 +112,7 @@ The 111 knowledge modules sit in 13 sections. Every module carries frontmatter (
 - **Carbon compliance, footprints and export response**: [carbon practice](knowledge/碳资产实务-2026-11.md) · [China carbon trading practice](knowledge/中国碳排放权交易实务-主题笔记.md) · [carbon management](knowledge/碳管理-从零通往碳中和-主题笔记.md)
 - **Bidding, risk and retail operations**: [quantitative bidding and risk](knowledge/量化报价与交易风控-工程化-2026-11.md) · [market risk, credit and settlement](knowledge/电力市场风险、信用与结算-2026-11.md) · [provincial market table](knowledge/省级市场状态表-2026-11.md) · [desk-day SOP and exception handling](knowledge/交易台日课与异常处置-SOP-2026-11.md) · [synthetic case replays](knowledge/合成案例复盘库-2026-11.md) · [contract clause library](knowledge/合同与条款库-2026-11.md)
 - **Start from a runnable pack**: the [instance-pack matrix](knowledge/instances.html) summarises all 32 packs — spot bids (including storage and wind-solar-storage joint bids), retail pricing, VPP aggregation, storage investment, EMS dispatch (park microgrid + storage-station daily operation) and carbon compliance, plus two failure-replay slices (Shandong midday negative price, Guangdong retail-wholesale inversion).
-- **Test whether an answer has drifted**: [golden Q&A](knowledge/黄金问答集-2026-11.md) — 38 high-frequency questions, including 10 on price drivers, also the regression checklist.
+- **Test whether an answer has drifted**: [golden Q&A](knowledge/黄金问答集-2026-11.md) — 65 high-frequency questions, including 10 on price drivers, 11 on system physics / EMS engineering, 12 on tariffs / investment / contracts and 4 on data / replay, also the regression checklist.
 
 Research records (electricity market, VPP, carbon market, quant vendors, carbon-management vendors) are archived in `knowledge/` by date to trace where conclusions came from; the skills and thematic notes remain the authoritative layer.
 

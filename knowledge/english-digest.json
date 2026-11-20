@@ -1438,7 +1438,7 @@
       "cutoff": "2026-11",
       "title": "黄金问答集与回归测试",
       "titleEn": null,
-      "summaryEn": "38 high-frequency questions with answer points and common errors, including a price-driver group covering weather (quantity), fuel (price) and grid constraints (deliverability).",
+      "summaryEn": "65 high-frequency questions with answer points and common errors, covering markets, renewables, carbon, retail, VPP, international tools, price drivers, system physics / EMS engineering, tariffs / investment / contracts, and data / case replay; also serves as a regression checklist.",
       "confidence": "mixed",
       "historical": false,
       "html": "html/黄金问答集-2026-11.html"

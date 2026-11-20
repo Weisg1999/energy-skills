@@ -3,12 +3,22 @@
   "generatedFrom": "CHANGELOG.md + CHANGELOG_EN.md",
   "version": "v2.0",
   "cutoff": "2026-11-19",
-  "latest": "2026-11-19",
-  "count": 92,
+  "latest": "2026-11-20",
+  "count": 93,
   "languages": {
     "zh": {
       "title": "更新记录",
       "entries": [
+        {
+          "date": "2026-11-20",
+          "label": "v2.0 维护：黄金问答集扩充至 65 问与海外快照口径修正",
+          "items": [
+            "<strong>问答集 38 → 65 问</strong>：G 段（Q39–Q49）随系统物理与 EMS 工程七模块补齐 11 问；H 段（Q50–Q61）电价、投资与合同 12 问——到户电价四段构成与查价四步、两部制与需量电费算例、储能投决算例（NPV 3,119.4 万元 / IRR 10.47% / LCOS 742.24 与 458.15 元/MWh / DSCR 1.53）、收入叠加&quot;同一 MW 只卖一次&quot;与欧洲合同回补（+€87,450）、新能源六口径与机制价敏感性、零碳园区绿电直连与容量折算、五类合同红线与容量租赁三档、2026 履约保障草案（预计年售电量 × 1 分/kWh × 系数 1–10、最低 200 万元）、5/8/10 结算时限、辅助服务与容量机制换算、交易台 SOP 三级触发线、11 市场海外快照口径；I 段（Q62–Q65）数据与复盘 4 问——SCADA/EMS 分工与点表 15 字段、时标与三率、储能装机与五路线 LCOS、微网/储能 EMS 硬边界与备用能量裕度、五步复盘法。算例全部 D 级合成，frontmatter 声明 <code>examples: synthetic</code>。",
+            "<strong>口径修正</strong>：海外快照 SE2 备注由&quot;12 区中均价最低&quot;改为&quot;负价最多；均价仅高于 NO4&quot;，读法由&quot;SE2 与 NO4 价差超过 5 倍&quot;改为&quot;DK2 与 NO4 约 6 倍（€83.96 vs €13.78）&quot;，避免错误事实进入 Q61。",
+            "<strong>入口与计数</strong>：README、README_EN、INDEX_EN 与索引与口径同步 65 问；按构建输出回填正文 45,523 行（111 模块 / 32 实例包 / 9 技能 / 12 省级地区不变）；更新记录 92 → 93 条。版本仍 v2.0，数据截止仍 2026-11-19（本轮无模块级数据时点变化）。",
+            "<strong>边界</strong>：问答集是回答校验与回归清单，不是报价、交易或投资建议；数字带时点与来源级别，草案标&quot;征求意见/拟施行&quot;。"
+          ]
+        },
         {
           "date": "2026-11-19",
           "label": "v2.0 维护：系统物理与 EMS 工程链路七模块、闭环工具与储能电站实例包",
@@ -1135,6 +1145,16 @@
     "en": {
       "title": "Changelog",
       "entries": [
+        {
+          "date": "2026-11-20",
+          "label": "v2.0 maintenance: golden Q&A expanded to 65 questions and an overseas-snapshot data fix",
+          "items": [
+            "<strong>Q&amp;A 38 → 65 questions</strong>: group G (Q39–Q49) adds 11 questions alongside the seven system-physics / EMS-engineering modules; group H (Q50–Q61) adds 12 on tariffs, investment and contracts — the four-part end-user tariff build-up and four-step lookup, two-part and demand-charge worked examples, a storage investment case (NPV 31.194m CNY / IRR 10.47% / LCOS 742.24 and 458.15 CNY/MWh / DSCR 1.53), revenue stacking (&quot;one MW sold once&quot;) and European contract backfill (+EUR 87,450), six renewable LCOE/mechanism-price calibres and sensitivity, zero-carbon parks and green-power direct connection, red lines for five contract families and three capacity-lease structures, the 2026 draft performance guarantee (expected annual sales × 0.01 CNY/kWh × coefficient 1–10, floor 2m CNY), the 5/8/10 working-day settlement deadlines, ancillary-service and capacity-mechanism conversions, the desk SOP's three trigger tiers, and the 11-market overseas snapshot calibres; group I (Q62–Q65) adds 4 on data and replay — SCADA/EMS roles and the 15-field point list, timestamps and the three quality rates, storage installations and five-route LCOS, microgrid/storage EMS hard boundaries and reserve-energy margin, and the five-step replay method. All worked examples are grade-D synthetic, declared as <code>examples: synthetic</code> in frontmatter.",
+            "<strong>Data fix</strong>: the overseas snapshot's SE2 note changes from &quot;lowest average price among the 12 bidding zones&quot; to &quot;most negative-price hours; average price only above NO4&quot;, and the reading from &quot;SE2–NO4 spread above 5×&quot; to &quot;DK2–NO4 spread about 6× (EUR 83.96 vs 13.78)&quot;, preventing a wrong fact from entering Q61.",
+            "<strong>Entry points and counts</strong>: README, README_EN, INDEX_EN and the index/calibre note synced to 65 questions; body lines backfilled to 45,523 from the build output (still 111 modules / 32 instance packs / 9 skills / 12 provincial regions); changelog records 92 → 93. Version remains v2.0; the data cutoff stays 2026-11-19 because no module-level data timestamp changed in this round.",
+            "<strong>Boundary</strong>: the Q&amp;A is an answer check and regression checklist, not bidding, trading or investment advice; figures carry timestamps and source grades, and drafts are marked &quot;for comment / proposed&quot;."
+          ]
+        },
         {
           "date": "2026-11-19",
           "label": "v2.0 maintenance: seven system-physics and EMS-engineering modules, the closed-loop tool and a storage-station instance pack",

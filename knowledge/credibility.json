@@ -5322,17 +5322,19 @@
       "cutoff": "2026-11",
       "confidence": "mixed",
       "confidenceInferred": true,
-      "examples": null,
+      "examples": "synthetic",
       "historical": false,
-      "summaryEn": "38 high-frequency questions with answer points and common errors, including a price-driver group covering weather (quantity), fuel (price) and grid constraints (deliverability).",
+      "summaryEn": "65 high-frequency questions with answer points and common errors, covering markets, renewables, carbon, retail, VPP, international tools, price drivers, system physics / EMS engineering, tariffs / investment / contracts, and data / case replay; also serves as a regression checklist.",
       "titleEn": null,
       "marks": {
-        "gradeC": 5,
-        "draft": 8,
+        "gradeC": 7,
+        "draft": 9,
         "pending": 3,
-        "example": 7
+        "example": 29
       },
-      "exampleSections": []
+      "exampleSections": [
+        "### Q52 储能投决该看 IRR 还是 LCOS？一份算例怎么读？"
+      ]
     },
     {
       "id": "m-prov-hlj",
