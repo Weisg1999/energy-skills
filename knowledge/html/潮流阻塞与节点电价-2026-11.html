@@ -59,7 +59,9 @@
               <li><a href="电力现货市场实务-精读笔记.html">电力现货市场实务</a></li>
               <li><a href="交易台日课与异常处置-SOP-2026-11.html">交易台日课与异常处置 SOP</a></li>
               <li class="on" aria-current="page"><a href="潮流阻塞与节点电价-2026-11.html">从潮流到节点电价：阻塞、断面与网损的价格传导</a></li>
+              <li><a href="现货出清与价格形成-2026-11.html">现货出清与价格形成：从报价到节点价</a></li>
               <li><a href="预测误差申报与EMS闭环-2026-11.html">预测误差→申报→EMS 闭环：newsvendor 报价与储能偏差跟踪</a></li>
+              <li><a href="电价归因与盘前推演-2026-11.html">电价归因与盘前推演：从负荷、新能源、检修、燃料、阻塞到价格</a></li>
     </ul>
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
@@ -87,7 +89,7 @@
       <p class="lede">DC 潮流直觉、节点价三分量、断面约束与阻塞租金、网损因子、国内出清与结算口径、三节点手算与选址报价含义。</p>
       <p class="hook">潮流、阻塞与节点价</p>
       <div class="tags"><span class="tag">节点电价</span><span class="tag">阻塞价差</span><span class="tag">断面约束</span><span class="tag">网损</span></div>
-      <div class="doc-meta"><span>约 7.0k 字</span><span>阅读约 13 分钟</span><span>13 节</span><span>数据截止 2026-11-19</span></div>
+      <div class="doc-meta"><span>约 7.2k 字</span><span>阅读约 14 分钟</span><span>13 节</span><span>数据截止 2026-11-19</span></div>
     </header>
 
     <details class="toc-mobile">
@@ -110,7 +112,7 @@
     </details>
 
     <article class="prose">
-<aside class="note note-head"><p>数据截止：2026-11-19｜定位：知识库模块（现货价格的物理底座）</p><p>相关技能：<a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a>（出清与结算）、<a href="../../skills/spot-bidding-quant/SKILL.md">现货报价量化专家</a>（节点价预测与报价）、<a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a>（选址与捕获价）</p><p>用途：回答&quot;同一省内为什么不同节点价格不同、阻塞价差从哪来、断面约束怎么影响出清、网损怎么进价格、储能/新能源该看哪个价&quot;五类问题。本文只做物理与机制整理；具体省份的出清与结算口径以现行规则和省级模块为准。</p></aside>
+<aside class="note note-head"><p>数据截止：2026-11-19｜定位：知识库模块（现货价格的物理底座）</p><p>相关技能：<a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a>（出清与结算）、<a href="../../skills/spot-bidding-quant/SKILL.md">现货报价量化专家</a>（节点价预测与报价）、<a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a>（选址与捕获价）</p><p>用途：回答&quot;同一省内为什么不同节点价格不同、阻塞价差从哪来、断面约束怎么影响出清、网损怎么进价格、储能/新能源该看哪个价&quot;五类问题。本文只做物理与机制整理；具体省份的出清与结算口径以现行规则和省级模块为准。</p><p>网络状态：节点价背后的运行方式、坏数据与 N-1/ATC，见<a href="状态估计与安全分析-2026-11.html">《状态估计与安全分析》</a>。</p></aside>
 <hr>
 <h2 id="s1">0. 一页看懂</h2>
 <h3 id="s2">0.1 三句话</h3>
@@ -224,7 +226,7 @@
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>事项</th><th>状态</th><th>查证入口</th></tr></thead><tbody><tr><td>各省结算口径（节点/统一加权/分区）及发电-用户侧是否一致</td><td>逐省不同、会调整</td><td>省级市场状态表 + 各省模块</td></tr><tr><td>国内金融输电权/输电权拍卖机制覆盖范围</td><td>试点演进中</td><td>各省交易中心规则</td></tr><tr><td>各省是否显式建模网损、网损因子发布口径</td><td>不一</td><td>各省现货规则与技术支持系统说明</td></tr><tr><td>断面限额与 N-1 校核的具体数值</td><td>不公开/动态</td><td>调度机构运行方式</td></tr><tr><td>新能源/储能特殊结算口径</td><td>分省</td><td>各省 136 号文衔接细则</td></tr></tbody></table></div>
 <hr>
 <h2 id="s41">11. 与技能和其他笔记的分工</h2>
-<ul><li><strong>本文</strong>：潮流物理 → 节点价分解 → 阻塞/网损 → 选址报价含义，是&quot;价格从哪来&quot;的地基。</li><li><a href="电力现货市场101问-A-基础与价格机制.html">101 问 A</a> / <a href="电力现货市场101问-B-出清结算与省域实践.html">B</a>：出清结算机制与省域实践细节。</li><li><a href="电力系统经济学原理-主题笔记.html">电力系统经济学原理</a>：节点定价、阻塞租金、输电权的理论推导。</li><li><a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a>：把节点价预测落成报价与回测。</li><li><a href="省级市场状态表-2026-11.html">省级市场状态表</a> 与各省模块：结算口径与限价的权威落点。</li><li>技能正文引用本文，不复述潮流公式。</li></ul>
+<ul><li><strong>本文</strong>：潮流物理 → 节点价分解 → 阻塞/网损 → 选址报价含义，是&quot;价格从哪来&quot;的地基。</li><li><a href="电力现货市场101问-A-基础与价格机制.html">101 问 A</a> / <a href="电力现货市场101问-B-出清结算与省域实践.html">B</a>：出清结算机制与省域实践细节。</li><li><a href="电力系统经济学原理-主题笔记.html">电力系统经济学原理</a>：节点定价、阻塞租金、输电权的理论推导。</li><li><a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a>：把节点价预测落成报价与回测。</li><li><a href="省级市场状态表-2026-11.html">省级市场状态表</a> 与各省模块：结算口径与限价的权威落点。</li><li><a href="现货出清与价格形成-2026-11.html">现货出清与价格形成</a>：报价曲线如何进入 SCUC/SCED、边际机组与节点价如何形成；本文负责物理推导，该模块负责出清引擎。</li><li><a href="电价归因与盘前推演-2026-11.html">电价归因与盘前推演</a>：把节点价分量用于事后归因与盘前情景；本文负责物理推导，该模块负责因子分摊与推演。</li><li>技能正文引用本文，不复述潮流公式。</li></ul>
 <h2 id="s42">速查</h2>
 <pre tabindex="0"><code>潮流分流：并联路径按总电抗反比分配
 节点价：LMP = 能量 + 阻塞 + 网损
@@ -234,7 +236,7 @@
     </article>
 
     <section class="related" aria-labelledby="related-title">
-      <div class="related-head"><h2 id="related-title">相关模块</h2><span>5</span></div>
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>8</span></div>
       <div class="related-grid">
         <a class="related-card" href="电力现货市场101问-A-基础与价格机制.html">
           <span class="related-type">同区延伸</span>
@@ -257,7 +259,7 @@
           <span>预测→报价→申报→结算→归因的工程闭环，含风控限额、对账与 2026 规则版本管理。</span>
         </a>
       </div>
-      <p class="related-rest"><b>更多关联</b><a href="电力系统通识-B-发输配变用.html">电力系统通识 B · 发输配变用</a></p>
+      <p class="related-rest"><b>更多关联</b><a href="电力系统通识-B-发输配变用.html">电力系统通识 B · 发输配变用</a><a href="现货出清与价格形成-2026-11.html">现货出清与价格形成：从报价到节点价</a><a href="电价归因与盘前推演-2026-11.html">电价归因与盘前推演：从负荷、新能源、检修、燃料、阻塞到价格</a><a href="状态估计与安全分析-2026-11.html">状态估计与安全分析：从 SCADA 量测到可信运行方式</a></p>
     </section>
 
 <section class="related" aria-labelledby="paired-skills-title">
@@ -278,7 +280,7 @@
 
     <nav class="pager" aria-label="上下篇">
           <a class="prev" href="交易台日课与异常处置-SOP-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">交易台日课与异常处置 SOP</span></a>
-          <a class="next" href="预测误差申报与EMS闭环-2026-11.html"><span class="dir">下一篇 →</span><span class="ttl">预测误差→申报→EMS 闭环：newsvendor 报价与储能偏差跟踪</span></a>
+          <a class="next" href="现货出清与价格形成-2026-11.html"><span class="dir">下一篇 →</span><span class="ttl">现货出清与价格形成：从报价到节点价</span></a>
     </nav>
 
     <footer class="doc-foot">
@@ -343,10 +345,10 @@
 <nav class="page-aux" aria-label="页面辅助">
   <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
 </nav>
-<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.0" data-cutoff="2026-11-19" data-latest="2026-11-21" data-count="94">
-  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.0）" title="查看更新记录（当前 v2.0）">
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.1" data-cutoff="2026-11-19" data-latest="2026-11-24" data-count="99">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.1）" title="查看更新记录（当前 v2.1）">
     <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
-    <span class="cl-badge-ver">v2.0</span>
+    <span class="cl-badge-ver">v2.1</span>
     <span class="cl-badge-label">更新记录</span>
   </button>
   <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
@@ -355,8 +357,8 @@
       <header class="cl-head">
         <div class="cl-head-main">
           <span class="cl-kicker">RELEASE NOTES</span>
-          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.0</span></h2>
-          <p class="cl-sub" id="cl-subtitle">当前版本 v2.0 · 数据截止 2026-11-19 · 94 条记录</p>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.1</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.1 · 数据截止 2026-11-19 · 99 条记录</p>
         </div>
         <div class="cl-actions">
           <div class="cl-lang" role="group" aria-label="切换语言">
@@ -373,7 +375,7 @@
         </div>
       </div>
       <footer class="cl-foot">
-        <span data-changelog-meta>v2.0 · 2026-11-19 · 94 条记录</span>
+        <span data-changelog-meta>v2.1 · 2026-11-19 · 99 条记录</span>
         <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
       </footer>
     </div>

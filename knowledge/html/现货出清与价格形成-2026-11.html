@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>现货出清与价格形成：从报价到节点价 | energy-skills 知识库</title>
+<meta name="description" content="报价曲线如何进入 SCUC/SCED，边际机组与节点价如何形成，最小出力、启停、备用、爬坡、负价与稀缺价如何改写价格，以及出清结果对交易的含义。">
+<link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
+<script>
+(function(){try{var t=localStorage.getItem('es-theme');if(!/^(light|cream|green|dark)$/.test(t||'')){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/knowledge.css">
+<link rel="stylesheet" href="../assets/theme-menu.css">
+<link rel="stylesheet" href="../assets/changelog.css">
+</head>
+<body data-cat="spot" id="top">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
+  <div class="crumb">
+    <span class="crumb-cat">02 · SPOT</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">现货出清与价格形成：从报价到节点价</span>
+  </div>
+  <div class="topbar-act">
+    <div class="theme-picker" data-theme-picker>
+      <button class="theme-toggle" type="button" data-theme-menu aria-label="选择主题" title="选择主题">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="5"/><circle cx="15" cy="9" r="5"/><circle cx="12" cy="15" r="5"/></svg>
+      </button>
+    </div>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../现货出清与价格形成-2026-11.md">.md 源文件<small>knowledge/现货出清与价格形成-2026-11.md</small></a>
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">02 · SPOT</div>
+    <h2 class="nav-cat"><a href="../index.html#spot">电力现货与省间交易</a></h2>
+    <ul class="nav-list">
+              <li><a href="省间与跨区交易-2026-11.html">省间与跨区交易（2026 版）</a></li>
+              <li><a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a></li>
+              <li><a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算（2026 版）</a></li>
+              <li><a href="电力现货市场101问-A-基础与价格机制.html">101 问 A · 基础与价格机制</a></li>
+              <li><a href="电力现货市场101问-B-出清结算与省域实践.html">101 问 B · 出清结算与省域实践</a></li>
+              <li><a href="电力现货市场101问-C-结算TTS与政策演进.html">101 问 C · 结算、TTS 与政策演进</a></li>
+              <li><a href="电力现货市场实务-精读笔记.html">电力现货市场实务</a></li>
+              <li><a href="交易台日课与异常处置-SOP-2026-11.html">交易台日课与异常处置 SOP</a></li>
+              <li><a href="潮流阻塞与节点电价-2026-11.html">从潮流到节点电价：阻塞、断面与网损的价格传导</a></li>
+              <li class="on" aria-current="page"><a href="现货出清与价格形成-2026-11.html">现货出清与价格形成：从报价到节点价</a></li>
+              <li><a href="预测误差申报与EMS闭环-2026-11.html">预测误差→申报→EMS 闭环：newsvendor 报价与储能偏差跟踪</a></li>
+              <li><a href="电价归因与盘前推演-2026-11.html">电价归因与盘前推演：从负荷、新能源、检修、燃料、阻塞到价格</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#province"><b>03</b>中国省级市场</a></li>
+              <li><a href="../index.html#intl"><b>04</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>05</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>06</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>07</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>08</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>11</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">02 · SPOT<i>知识模块</i></div>
+      <h1 class="doc-title">现货出清与价格形成：从报价到节点价（2026-11）</h1>
+      <p class="lede">报价曲线如何进入 SCUC/SCED，边际机组与节点价如何形成，最小出力、启停、备用、爬坡、负价与稀缺价如何改写价格，以及出清结果对交易的含义。</p>
+      <p class="hook">现货出清与价格形成</p>
+      <div class="tags"><span class="tag">现货出清</span><span class="tag">SCUC</span><span class="tag">SCED</span><span class="tag">边际机组</span><span class="tag">节点电价</span><span class="tag">报价曲线</span><span class="tag">阻塞</span><span class="tag">负价</span></div>
+      <div class="doc-meta"><span>约 17.9k 字</span><span>阅读约 33 分钟</span><span>14 节</span><span>数据截止 2026-11-19</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（14）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv2"><a href="#s4">1. 出清引擎的输入、约束与输出</a></li>
+            <li class="lv2"><a href="#s9">2. 报价曲线怎么变成供给曲线</a></li>
+            <li class="lv2"><a href="#s15">3. SCED：单时段经济调度</a></li>
+            <li class="lv2"><a href="#s22">4. SCUC：跨时段与启停</a></li>
+            <li class="lv2"><a href="#s28">5. 从系统价到节点价</a></li>
+            <li class="lv2"><a href="#s35">6. 特殊约束如何改写价格</a></li>
+            <li class="lv2"><a href="#s43">7. 负价、稀缺价与限价</a></li>
+            <li class="lv2"><a href="#s49">8. 出清结果怎么读</a></li>
+            <li class="lv2"><a href="#s55">9. 合成算例：三机组、四时段</a></li>
+            <li class="lv2"><a href="#s61">10. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s62">11. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s63">12. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s64">速查</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>数据截止：2026-11-19｜定位：知识库模块（现货市场·出清引擎与价格形成）</p><p>相关技能：<a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a>（市场规则、结算与限价）、<a href="../../skills/spot-bidding-quant/SKILL.md">现货报价量化专家</a>（报价、回测与归因）、<a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a>（储能收益与循环成本）</p><p>用途：回答&quot;报价怎么变成出清价、为什么便宜机组没开机、边际机组怎么定、节点价差从哪来、负价和稀缺价怎么读、中标为什么还可能亏钱&quot;六类问题。本文讲出清引擎与价格形成；网络推导、规则问答和结算公式分别在《从潮流到节点电价》《101 问》和《电力交易专家》里，不在此重复。</p><p>安全约束：出清所用的运行方式、N-1 限额与 ATC 如何由状态估计支撑，见<a href="状态估计与安全分析-2026-11.html">《状态估计与安全分析》</a>。</p><p>算例：三机组单时段 SCED 与四时段 SCUC，全部为 <strong>D 级合成数据</strong>，由 <a href="../../skills/spot-bidding-quant/tools/clearing.py">clearing.py</a> 复现，断言见 <a href="../../skills/spot-bidding-quant/tools/selftest.py">selftest.py</a> 的 &quot;SCUC/SCED clearing&quot; 段。</p></aside>
+<hr>
+<h2 id="s1">0. 一页看懂</h2>
+<h3 id="s2">0.1 三句话</h3>
+<ul><li><strong>出清不是&quot;把报价从低到高排个序&quot;</strong>：SCUC 先决定哪些机组开机、何时启停，SCED 再决定开机机组各发多少；报价只是输入，约束和目标函数是另一半。</li><li><strong>价格是约束的影子价格，不是成本的加总</strong>：能量平衡的影子价格给出系统价，网络约束把它拉成节点价，备用/爬坡/最小出力等约束会改写价格或制造补偿；&quot;边际机组&quot;只是最后一个被需要的增量段，不一定是报价最高的机组。</li><li><strong>出清结果要读四件事</strong>：中标量、节点价、约束是否 binding、补偿/uplift。只看价格，会把&quot;中标但亏钱&quot;误读成好结果。</li></ul>
+<h3 id="s3">0.2 关键数字与口径</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>概念</th><th>含义</th><th>来源与级别</th></tr></thead><tbody><tr><td>SCUC</td><td>安全约束机组组合：决定启停与出力计划，含最小开停机、启停成本、爬坡、网络与备用</td><td>市场出清通用定义，A</td></tr><tr><td>SCED</td><td>安全约束经济调度：给定开机状态，决定各机组出力与价格</td><td>市场出清通用定义，A</td></tr><tr><td>边际机组</td><td>最后一个被需要的增量报价段所属机组；其报价（或该段报价）决定统一价</td><td>边际定价定义，A</td></tr><tr><td>节点价 LMP</td><td>节点多供 1 MW 负荷的系统边际成本，可分解为能量 + 阻塞 + 网损</td><td>现货市场通用定义，A；推导见 <a href="潮流阻塞与节点电价-2026-11.html">从潮流到节点电价</a></td></tr><tr><td>阻塞租金</td><td>受端价与送端价之差 × 过断面潮流；是市场盈余，不是某台机组的收入</td><td>机制恒等式，A</td></tr><tr><td>uplift / 补偿</td><td>按报价结算的收入低于按规则核定的成本时，补足差额的机制</td><td>规则与机制设计，A/B；口径逐省不同</td></tr><tr><td>价格上限/下限</td><td>申报或出清的限价，随省份与年份调整</td><td>省级规则，B；引用前查最新文件</td></tr><tr><td>本文算例</td><td>三机组、四时段、单节点、纯能量</td><td><strong>D 级合成</strong>，不对应任何真实市场</td></tr></tbody></table></div>
+<aside class="note"><p><strong>口径提醒</strong>：报价段数、单调性、限价、二次限价、必开机组、补偿规则、RUC 与日前市场的先后顺序、节点价还是分区价结算，均由省份规则决定。本文只讲&quot;引擎如何把报价变成价格&quot;，不替代省级细则。</p></aside>
+<hr>
+<h2 id="s4">1. 出清引擎的输入、约束与输出</h2>
+<h3 id="s5">1.1 一台机组进入出清模型时，带的不是一条线，而是一组参数</h3>
+<p>报价曲线只是最显眼的一项。出清模型还要知道：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>输入</th><th>作用</th><th>缺了会怎样</th></tr></thead><tbody><tr><td>报价曲线</td><td>决定经济上的供给顺序</td><td>无法排序，只能用默认报价或成本代理</td></tr><tr><td>最小/最大出力</td><td>决定可行域与必发量</td><td>会算出&quot;低于最小出力&quot;的假计划</td></tr><tr><td>启停成本、空载成本</td><td>决定开机是否值得</td><td>便宜机组被频繁启停，成本被低估</td></tr><tr><td>最小开机/停机时间</td><td>决定跨时段可行性</td><td>计划看起来便宜，实际无法执行</td></tr><tr><td>爬坡/滑坡</td><td>决定相邻时段能否衔接</td><td>价格尖峰被平滑掉，或计划不可执行</td></tr><tr><td>初始状态</td><td>决定第一天是否受历史约束</td><td>冷启动/热启动成本算错</td></tr><tr><td>检修/可用容量</td><td>决定实际可申报能力</td><td>供给虚高，价格被低估</td></tr><tr><td>网络与断面</td><td>决定电能能否送到负荷</td><td>全网一个价，阻塞价差消失</td></tr><tr><td>备用需求</td><td>决定留多少空余容量</td><td>能量价偏低，稀缺时无可用备用</td></tr><tr><td>政策约束</td><td>必开、优先发电、限价、环保</td><td>结果不符合规则，无法结算</td></tr></tbody></table></div>
+<p>这张表的含义是：<strong>报价是&quot;愿意卖&quot;的曲线，参数是&quot;能不能卖、怎么卖&quot;的边界</strong>。交易员常把注意力全放在报价上，但价格异常往往来自边界参数——最小出力、必开、检修、断面限额、备用要求。</p>
+<h3 id="s6">1.2 两层决策：先组合，再调度</h3>
+<pre tabindex="0"><code>[输入] 负荷预测 + 报价曲线 + 机组参数 + 网络/备用/政策
+   ↓
+[SCUC] 机组组合：开/停、启停时刻、跨时段约束
+   ↓
+[SCED] 经济调度：开机机组各发多少、潮流、价格
+   ↓
+[输出] 中标量 + 节点价 + 潮流 + 阻塞租金 + 补偿/uplift</code></pre>
+<ul><li><strong>SCUC</strong> 是混合整数问题：开/停是 0/1 变量，目标含启动成本、空载成本、能量成本，约束含最小开停机、爬坡、备用、网络安全。</li><li><strong>SCED</strong> 在给定开机状态下是连续优化：目标通常是按报价的购电成本最小（或社会福利最大），约束含功率平衡、出力上下限、爬坡、备用、网络。</li><li><strong>日前与实时</strong>：日前通常做 SCUC + SCED，实时做更短周期的 SCED（或滚动 SCUC）；实时价格由实时平衡与约束决定，不等于日前价。两结算的细节见 <a href="电力现货市场101问-B-出清结算与省域实践.html">101 问 B</a> 与 <a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a>。</li></ul>
+<h3 id="s7">1.3 输出不止一个价格</h3>
+<p>一次出清至少产出五类结果：</p>
+<ol><li><strong>机组中标量/出力曲线</strong>：每台机组每个时段发多少；</li><li><strong>价格</strong>：系统价、分区价或节点价，以及能量/阻塞/网损分量；</li><li><strong>潮流与断面</strong>：哪些线路/断面达到限额，哪些约束 binding；</li><li><strong>盈余</strong>：阻塞租金、备用盈余、不平衡资金；</li><li><strong>补偿</strong>：必开补偿、启动补偿、空载补偿、make-whole uplift 等。</li></ol>
+<p>交易员如果只看第 2 项，就会漏掉&quot;为什么中标了却亏钱&quot;（第 5 项）和&quot;为什么价格高但自己没受益&quot;（第 1、3 项）。</p>
+<h3 id="s8">1.4 为什么不能把 SCUC 当成大号 SCED</h3>
+<p>SCED 是凸问题（在报价单调、约束线性的前提下），功率平衡约束的对偶变量可以直接解释为系统边际价。SCUC 含整数变量，整数规划没有与连续对偶一一对应的&quot;价格&quot;；同样一条功率平衡约束，在机组组合变化时可能对应不同的边际机组和补偿需求。</p>
+<p>因此，实际市场通常要在三种做法中选：</p>
+<ul><li><strong>按 SCED 边际价结算 + 对非凸成本做补偿</strong>：价格信号清晰，但需要 uplift；</li><li><strong>凸包定价/扩展 LMP</strong>：用凸包构造一个可支持的价格，减少 uplift，但计算和解释复杂；</li><li><strong>按报价结算 + 规则补偿</strong>：便于执行，但价格可能不反映真实稀缺。</li></ul>
+<p>各省选择不同，不能把一种做法当成&quot;现货市场的标准答案&quot;。这也是为什么&quot;价格&quot;和&quot;补偿&quot;要一起读。</p>
+<hr>
+<h2 id="s9">2. 报价曲线怎么变成供给曲线</h2>
+<h3 id="s10">2.1 分段报价：把&quot;愿意卖&quot;拆成台阶</h3>
+<p>最常见的报价形式是若干段&quot;价格—电量&quot;对，价格随电量单调不减：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>段</th><th style="text-align:right">价格（元/MWh）</th><th style="text-align:right">电量（MW）</th><th style="text-align:right">累计（MW）</th><th>含义</th></tr></thead><tbody><tr><td>最小出力块</td><td style="text-align:right">180</td><td style="text-align:right">100</td><td style="text-align:right">100</td><td>开机后必须发的部分</td></tr><tr><td>增量段 1</td><td style="text-align:right">240</td><td style="text-align:right">100</td><td style="text-align:right">200</td><td>第一段可调出力</td></tr><tr><td>增量段 2</td><td style="text-align:right">320</td><td style="text-align:right">100</td><td style="text-align:right">300</td><td>第二段可调出力</td></tr></tbody></table></div>
+<p>出清时，最小出力块不是&quot;可买可不买&quot;的普通段：机组一旦开机，这一块通常必须被吸收（或被必开/最小出力约束强制）。增量段才按价格排序，进入边际排序。</p>
+<h3 id="s11">2.2 块报价：全有或全无</h3>
+<p>块报价（block bid）把一段电量作为一个整体：要么全接受，要么全不接受，不能拆成部分。它适合表达&quot;这台机组要么开机带满一段，要么不干&quot;的意愿，但会带来两个后果：</p>
+<ul><li><strong>非凸性</strong>：排序后可能出现&quot;便宜的块没被接受、更贵的块被接受&quot;的组合，因为块不能拆分，需要和其他块/机组凑出可行的供需；</li><li><strong>补偿</strong>：被接受的块，其报价可能高于统一出清价；若按统一价结算，收入不足以覆盖报价，需要 make-whole。</li></ul>
+<p>这就是&quot;paradoxically rejected block&quot;（ paradoxical rejection，悖论性拒绝）的来源：不是排序错了，而是全有或全无的组合约束让&quot;按单价排序&quot;失效。是否允许块报价、允许哪些类型，逐省规则不同；交易员看到&quot;便宜块没中&quot;时，先查块报价规则，不要直接认定系统错误。</p>
+<h3 id="s12">2.3 启停成本、空载成本、最小出力：它们不在报价曲线里，但会改变排序结果</h3>
+<ul><li><strong>启动成本</strong>：锅炉点火、汽轮机暖机、辅机启动等的一次性成本；它让&quot;今天开机&quot;比&quot;今天买电&quot;更贵。</li><li><strong>空载成本</strong>：机组维持同步、不带负荷时的成本；只要开机就发生。</li><li><strong>最小出力</strong>：机组稳定燃烧/环保/供热要求决定的下限；它让系统在低负荷时段&quot;不得不发&quot;。</li></ul>
+<p>这三项不进入&quot;元/MWh&quot;的增量排序，而进入 SCUC 的目标函数和约束。所以会出现：</p>
+<ul><li>报价便宜的机组没开机：因为启动成本 + 最小开机时间 + 低负荷，算总账不划算；</li><li>报价贵的机组在开机：因为它已经在线，增量成本低，或者它是必开/供热机组；</li><li>低负荷时段价格为负：因为最小出力 + must-run 让系统供大于求。</li></ul>
+<h3 id="s13">2.4 报价不等于成本，但监管会看成本</h3>
+<p>报价是&quot;愿意卖的价格&quot;，成本是&quot;实际发生的费用&quot;。两者可以不同：</p>
+<ul><li>价格接受者（非枢机机组）在竞争性市场中，按边际成本报价是最优策略；</li><li>枢机机组有经济加价空间，但持续、无成本依据的加价属于经济持留，是监管红线；</li><li>市场监测会用成本参考价、Lerner 指数、申报充足率等识别异常，细节见 <a href="电力现货市场101问-B-出清结算与省域实践.html">101 问 B</a> 与 <a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a>。</li></ul>
+<p>因此，本模块讲&quot;报价如何进入出清&quot;，不讲&quot;如何用报价操纵市场&quot;。策略与合规边界归报价技能，规则与监管归交易技能。</p>
+<h3 id="s14">2.5 报价曲线的可用性：别把&quot;额定容量&quot;当&quot;可申报容量&quot;</h3>
+<p>申报前要确认：</p>
+<ul><li>检修、降容、辅机故障后的可用容量；</li><li>最小出力是否受供热、环保、水位、气压限制；</li><li>爬坡能力是否受辅机、燃料、控制方式限制；</li><li>是否被标记为必开、必停、调试、固定出力；</li><li>新能源的预测出力与置信水平，储能 SOC 与可用充放电功率。</li></ul>
+<p>这些参数决定&quot;报价曲线能不能兑现&quot;。报价再漂亮，若可用容量不足，出清后执行不了，偏差会进实时结算。</p>
+<hr>
+<h2 id="s15">3. SCED：单时段经济调度</h2>
+<h3 id="s16">3.1 目标与约束</h3>
+<p>在给定开机状态下，SCED 的典型目标是最小化按报价的购电成本：</p>
+<pre tabindex="0"><code>min  sum_i sum_s  p_is * q_is
+s.t. sum_i q_i = D + losses
+     pmin_i &lt;= q_i &lt;= pmax_i
+     q_i - q_i_prev &lt;= ramp_up_i
+     q_i_prev - q_i &lt;= ramp_down_i
+     network constraints
+     reserve requirement</code></pre>
+<p>其中 <code>p_is</code> 是机组 i 第 s 段的报价，<code>q_is</code> 是该段被接受的电量。若报价单调、约束线性，这是一个线性规划；功率平衡约束的对偶变量就是系统边际价（无阻塞、无网损时）。</p>
+<h3 id="s17">3.2 无阻塞时：最后一个增量段定价</h3>
+<p>把各机组的增量段按价格从低到高排列，依次满足负荷，最后一个被部分或全部接受的段的价格，就是系统边际价。注意三个细节：</p>
+<ul><li><strong>边际机组可能是&quot;部分中标&quot;</strong>：负荷落在某段中间，该段的价格定价，但只接受一部分；</li><li><strong>边际机组不一定是&quot;报价最高&quot;</strong>：如果高报价机组没开机或没被需要，它不影响价格；</li><li><strong>最小出力块可能高于边际价</strong>：它被强制吸收，但不参与定价；这时需要补偿。</li></ul>
+<h3 id="s18">3.3 有最小出力时：价格可能低于机组的&quot;第一段报价&quot;</h3>
+<p>假设系统负荷很低，所有开机机组的最小出力之和已经超过负荷。此时：</p>
+<ul><li>系统无法再下调，只能让机组在最小出力上运行，甚至过发；</li><li>价格可能跌到下限（负价），因为系统需要信号让机组停机或让用户多用电；</li><li>按统一价结算，最小出力块报价高于价格的机组收入不足，需要 uplift。</li></ul>
+<p>这不是&quot;价格算错了&quot;，而是<strong>非凸约束下统一价不能同时满足效率与成本回收</strong>的必然结果。读结果时要同时看价格和补偿。</p>
+<h3 id="s19">3.4 有网络时：SCED 的价格变成节点价</h3>
+<p>把网络约束加入 SCED，功率平衡的对偶不再是一个全网统一价，而是各节点的 LMP：</p>
+<pre tabindex="0"><code>LMP_n = energy + congestion_n + loss_n</code></pre>
+<ul><li>无阻塞、忽略网损：各节点价相同；</li><li>有阻塞：送端价低、受端价高，价差 = 阻塞约束的影子价格 × 灵敏度；</li><li>有网损：受端价通常略高，因为多供 1 MW 需要多发一点来覆盖损耗。</li></ul>
+<p>推导、三节点手算和阻塞租金见 <a href="潮流阻塞与节点电价-2026-11.html">从潮流到节点电价</a>；本模块只强调：<strong>节点价是 SCED 的对偶输出，不是报价的简单排序结果</strong>。</p>
+<h3 id="s20">3.5 备用与爬坡：它们会改变&quot;有效供给&quot;</h3>
+<p>如果能量与备用联合出清，SCED 的目标和约束会同时考虑：</p>
+<ul><li>能量中标量；</li><li>备用中标量；</li><li>机组的能量 + 备用容量不超过最大出力；</li><li>备用需求满足。</li></ul>
+<p>这会产生两个价格：能量价和备用价。备用价本质上是被备用占用的容量在能量市场上的机会成本；当系统稀缺时，备用约束 binding，能量价和备用价都可能升高。备用机会成本的算例见 <a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a> §5，代码在 <code>market.py</code> 的 <code>reserve_opportunity_cost</code>。</p>
+<p>爬坡约束则会把&quot;瞬时供给&quot;变成&quot;跨时段可交付的供给&quot;：即使总容量充足，若爬坡不够，系统也可能在负荷快速上升时出现稀缺价。单时段 SCED 看不到这一点，必须用多时段模型。</p>
+<h3 id="s21">3.6 SCED 价格的三句话</h3>
+<ul><li><strong>价格由边际约束决定，不由平均成本决定</strong>；</li><li><strong>报价曲线越陡，价格越容易被少量负荷变化推高</strong>；</li><li><strong>非凸约束下，价格之外还要看 uplift</strong>。</li></ul>
+<hr>
+<h2 id="s22">4. SCUC：跨时段与启停</h2>
+<h3 id="s23">4.1 机组组合在决定什么</h3>
+<p>SCUC 决定：</p>
+<ul><li>每个时段哪些机组开机；</li><li>何时启动、何时停机；</li><li>启动后是否满足最小开机时间，停机后是否满足最小停机时间；</li><li>相邻时段的出力是否满足爬坡；</li><li>是否满足备用、网络、供热、必开等约束。</li></ul>
+<p>目标是最小化&quot;能量成本 + 启动成本 + 空载成本 + 其他可计入成本&quot;。这是一个混合整数规划，规模大时会用分解、启发式或滚动优化。</p>
+<h3 id="s24">4.2 为什么&quot;便宜机组没开机&quot;是正常的</h3>
+<p>假设一台煤电机组报价很低，但启动一次要 6,000 元，最小开机 2 小时。负荷只高 1 小时，开机省下的能量成本可能不到 6,000 元，还要承担最小开机时间的约束。此时最优解可能是：</p>
+<ul><li>让已经在线的高报价机组多发电；</li><li>让便宜机组保持停机；</li><li>等待负荷持续升高后再启动。</li></ul>
+<p>所以，&quot;报价低&quot;只是&quot;如果开机，增量排序靠前&quot;，不等于&quot;一定开机&quot;。交易员看到自己的低价机组没中标，先查启动成本、最小开机时间、负荷持续时长和备用要求，不要只怪报价。</p>
+<h3 id="s25">4.3 跨时段约束会改变价格</h3>
+<p>SCUC 的跨时段约束会通过两种方式影响价格：</p>
+<ul><li><strong>容量可用性</strong>：机组因最小停机时间不能立即启动，或因最小开机时间不能立即停机，改变了各时段的可用供给；</li><li><strong>成本分摊</strong>：启动/空载成本进入目标函数，可能改变边际机组，进而改变价格；若价格机制不覆盖这些成本，就需要补偿。</li></ul>
+<p>因此，跨时段价格尖峰不一定是&quot;有人抬价&quot;，也可能是&quot;系统为了满足跨时段约束，必须用更贵的机组&quot;。</p>
+<h3 id="s26">4.4 RUC、日前与实时：顺序不同，价格含义不同</h3>
+<p>实际市场常见的层次：</p>
+<ul><li><strong>可靠性机组组合（RUC）</strong>：以可靠性为目标，确定需要开机的机组，可能先于或并行于日前市场；</li><li><strong>日前市场</strong>：在RUC结果或自身SCUC基础上，做经济调度与定价；</li><li><strong>实时市场</strong>：根据最新预测与系统状态，做短周期SCED/滚动SCUC，处理偏差。</li></ul>
+<p>RUC 与日前市场是&quot;并行&quot;还是&quot;串行&quot;、未中标机组是否仍被开机、按什么价格结算，直接影响&quot;日前价格&quot;和&quot;实时价格&quot;的含义。这些实现细节写在规则与技术规范书里，各省不同；拿不到系统说明时，用历史出清结果反推并标注&quot;待核实&quot;。</p>
+<h3 id="s27">4.5 非凸性下的价格：为什么需要&quot;补偿&quot;这个词</h3>
+<p>SCUC 的整数变量让&quot;功率平衡的对偶&quot;不再是一个可直接结算的价格。常见处理：</p>
+<ul><li>按 SCED 边际价结算，再对启动、空载、最小出力等未回收成本做补偿；</li><li>用凸包定价/扩展 LMP，构造一个能覆盖成本的价格；</li><li>按报价结算，再按规则处理盈余/缺口。</li></ul>
+<p>不同做法对交易员的影响不同：同样中标，按边际价 + 补偿可能比按报价结算更稳定；同样高价，凸包价格可能比边际价更平滑。读价格时一定要问：<strong>这个价格是边际价、报价，还是包含补偿的综合价？</strong></p>
+<hr>
+<h2 id="s28">5. 从系统价到节点价</h2>
+<h3 id="s29">5.1 三个分量，一句话</h3>
+<pre tabindex="0"><code>节点价 = 能量分量 + 阻塞分量 + 网损分量</code></pre>
+<ul><li><strong>能量分量</strong>：参考节点的边际能量价，反映系统整体供需；</li><li><strong>阻塞分量</strong>：线路/断面约束的影子价格 × 该节点对约束的灵敏度；</li><li><strong>网损分量</strong>：多供 1 MW 引起的边际网损变化。</li></ul>
+<p>无阻塞、忽略网损时，节点价退化为系统价。推导和手算见 <a href="潮流阻塞与节点电价-2026-11.html">从潮流到节点电价</a>。</p>
+<h3 id="s30">5.2 边际机组与节点价不是一一对应</h3>
+<p>在一个有阻塞的网络里：</p>
+<ul><li>不同节点可能有不同的边际机组；</li><li>同一台机组可能在某个节点是边际的，在另一个节点是 inframarginal 的；</li><li>受端节点价可能由&quot;本地贵机组&quot;定，送端节点价可能由&quot;外送便宜机组&quot;定。</li></ul>
+<p>所以，&quot;我们省的边际机组是谁&quot;这个问题，只有在指定节点、时段和网络状态下才有意义。全省一个边际机组，只在无阻塞或统一结算的简化模型里成立。</p>
+<h3 id="s31">5.3 阻塞租金：不是电网的&quot;利润&quot;</h3>
+<p>阻塞租金 =（受端节点价 − 送端节点价）× 过断面潮流。它来自节点价结算的会计恒等式，通常用于：</p>
+<ul><li>金融输电权（FTR）的支付来源；</li><li>按规则返还给负荷或发电侧；</li><li>冲抵不平衡资金。</li></ul>
+<p>它不是某台机组的收入，也不是电网公司的自由现金流。把阻塞租金当成&quot;自己的收益&quot;是常见误读。机制与 FTR 见 <a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a> 与 <a href="潮流阻塞与节点电价-2026-11.html">从潮流到节点电价</a> §3–§4。</p>
+<h3 id="s32">5.4 网损：边际网损不是平均网损</h3>
+<p>平均网损率是&quot;总损耗/总发电&quot;，用于统计和分摊；边际网损是&quot;多供 1 MW 负荷时，系统需要多发的量&quot;，用于定价。两者可能差很多，尤其在重载、长距离输电时。</p>
+<p>因此，节点价的网损分量不能用&quot;平均线损率 × 电价&quot;估算；它由潮流模型的边际损耗因子决定。交易员若用平均网损做报价，可能在阻塞/重载时段系统性偏差。</p>
+<h3 id="s33">5.5 统一出清、分区结算、节点结算：先确认口径</h3>
+<p>国内现货的常见组合：</p>
+<ul><li><strong>出清侧</strong>：SCED 可能按节点价出清，也可能按分区/统一价出清；</li><li><strong>结算侧</strong>：有的省按节点价结算，有的按统一加权价、分区价或差价合约结算；</li><li><strong>用户侧</strong>：可能按统一价 + 分摊，不直接看到节点价。</li></ul>
+<p>报价前必须确认：你看到的&quot;出清价&quot;是不是&quot;结算价&quot;？如果出清按节点、结算按统一，节点价差会通过盈余/分摊处理，不能直接用它算自己的收入。省级口径见 <a href="省级市场状态表-2026-11.html">省级市场状态表</a> 与 <a href="电力现货市场101问-B-出清结算与省域实践.html">101 问 B</a>。</p>
+<h3 id="s34">5.6 负价与局部阻塞可以同时出现</h3>
+<p>负价不一定是&quot;全系统供大于求&quot;，也可能是局部阻塞：</p>
+<ul><li>送端富余、外送断面受限，送端节点价被压到负；</li><li>受端缺电，受端节点价很高；</li><li>同一时刻，两个节点价格符号相反。</li></ul>
+<p>这时，&quot;负价&quot;是局部信号，不是全省平均价。用全省均价解释自己的节点收益，会错得离谱。</p>
+<hr>
+<h2 id="s35">6. 特殊约束如何改写价格</h2>
+<h3 id="s36">6.1 最小出力与必开：价格可以低于机组的报价</h3>
+<p>最小出力/必开机组的特点是&quot;不能停、不能低于某个出力&quot;。它们的最小出力块进入系统，但不参与边际定价。结果是：</p>
+<ul><li>低负荷时段，系统供大于求，价格可能为负；</li><li>必开机组的最小出力报价高于价格，收入不足，需要补偿；</li><li>若补偿规则不覆盖，机组会亏损，影响后续可用性。</li></ul>
+<p>读法：看到负价，先查是不是最小出力/必开/供热/新能源大发导致的过发；看到某台机组中标但亏损，先查它是不是必开、是否拿到补偿。</p>
+<h3 id="s37">6.2 启停与最小开停机：价格尖峰可能来自&quot;不能马上开机&quot;</h3>
+<p>当负荷快速上升，而便宜机组因最小停机时间不能立即启动，系统只能用更贵的在线机组。此时价格尖峰反映的是&quot;跨时段可行性&quot;，不是&quot;当前时段燃料成本&quot;。</p>
+<p>同理，负荷下降时，机组因最小开机时间不能立即停机，可能导致负价。价格的时间形状，往往由启停约束塑造。</p>
+<h3 id="s38">6.3 备用：机会成本会进入价格</h3>
+<p>备用要求机组留出容量，不能全部用于能量。备用的机会成本 = 被备用占用的容量在能量市场上本可以赚到的钱。系统越稀缺，机会成本越高，备用价和能量价都可能上升。</p>
+<p>如果备用与能量联合出清，备用约束 binding 时，能量价可能高于&quot;纯能量边际机组&quot;的报价；如果分开出清，备用价可能单独结算。两种机制的价格含义不同，不能直接比较。</p>
+<h3 id="s39">6.4 爬坡：有容量不等于有可交付的容量</h3>
+<p>爬坡约束把&quot;容量&quot;变成&quot;可交付的容量&quot;。当负荷快速变化或新能源出力骤降时，即使总装机充足，系统也可能因为爬坡不够而出现稀缺价。</p>
+<p>单时段模型看不到爬坡约束；用单时段价格解释日内尖峰，常常会归因错误。多时段/滚动优化才能看到&quot;爬坡稀缺&quot;。</p>
+<h3 id="s40">6.5 储能：充电和放电都可能是边际的</h3>
+<p>储能在现货中的报价/申报通常受 SOC、充放电功率、效率、循环成本、并网上限约束。出清时：</p>
+<ul><li>放电时，储能是供给方，可能成为边际机组；</li><li>充电时，储能是需求方（或负供给），可能压低价格，甚至在负价时段&quot;被付费充电&quot;；</li><li>循环成本决定套利门槛：峰谷价差不够，充放电不划算；</li><li>SOC 跨时段约束让储能的价格响应具有路径依赖。</li></ul>
+<p>储能收益与循环成本见 <a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a>；EMS 侧调度见 <a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a>。</p>
+<h3 id="s41">6.6 新能源：近零边际成本与负价</h3>
+<p>新能源的边际成本接近零，报价通常很低（或报量不报价）。高渗透率时段：</p>
+<ul><li>新能源大发，压低价格，甚至形成负价；</li><li>火电因最小出力/供热/启停约束不能快速下调，加剧过发；</li><li>网络阻塞让富余新能源送不出去，局部负价更严重；</li><li>预测误差让实时价格与日前价格偏离，偏差进实时结算。</li></ul>
+<p>&quot;负价&quot;不是新能源的错，也不是市场失灵；它是系统在灵活性不足时发出的信号。消纳、储能、需求响应和网络扩容是回应这个信号的工具。</p>
+<h3 id="s42">6.7 约束与价格症状对照</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>约束</th><th>典型价格症状</th><th>谁承担成本</th><th>常见误读</th></tr></thead><tbody><tr><td>最小出力/必开</td><td>低负荷负价、机组中标但亏损</td><td>系统补偿/机组自身</td><td>&quot;负价是数据错误&quot;</td></tr><tr><td>启停/最小开停机</td><td>尖峰/低谷时间被拉长</td><td>系统/用户</td><td>&quot;价格高就是有人抬价&quot;</td></tr><tr><td>备用</td><td>稀缺时段能量价与备用价同时上升</td><td>用户/分摊</td><td>&quot;备用价是额外收费&quot;</td></tr><tr><td>爬坡</td><td>负荷快速变化时尖峰</td><td>用户</td><td>&quot;装机够就不会缺&quot;</td></tr><tr><td>阻塞</td><td>送端低、受端高，价差扩大</td><td>负荷/盈余分摊</td><td>&quot;价差是发电侧赚了&quot;</td></tr><tr><td>网损</td><td>受端价略高，重载时更明显</td><td>用户</td><td>&quot;平均线损×电价&quot;</td></tr><tr><td>储能 SOC</td><td>充放电时段价格响应不对称</td><td>储能/套利者</td><td>&quot;储能报价没有成本&quot;</td></tr></tbody></table></div>
+<hr>
+<h2 id="s43">7. 负价、稀缺价与限价</h2>
+<h3 id="s44">7.1 负价：系统在说&quot;现在少发一点&quot;</h3>
+<p>负价出现在&quot;供大于求 + 下调困难&quot;的时段：</p>
+<ul><li>新能源大发，边际成本近零；</li><li>火电最小出力/供热/启停约束让它不能快速停机；</li><li>网络阻塞让富余电力送不出去；</li><li>需求侧灵活性不足，无法吸收过剩。</li></ul>
+<p>负价的功能是让机组愿意停机/少发，让用户愿意多用电，让储能愿意充电。它可能持续几分钟到几小时，取决于系统灵活性和规则。</p>
+<p>读法：负价不是&quot;发电厂倒贴钱做慈善&quot;，而是&quot;系统愿意付钱让你消耗/少发&quot;。如果你有储能、可调负荷或灵活机组，负价是机会；如果你有必开发电机组，负价是成本。</p>
+<h3 id="s45">7.2 稀缺价：系统在说&quot;现在多供一点&quot;</h3>
+<p>稀缺价出现在&quot;供给不足 + 备用不足&quot;的时段：</p>
+<ul><li>负荷高峰、机组非停、新能源出力低于预测；</li><li>备用约束 binding，系统愿意为少量增量容量付高价；</li><li>价格可能接近上限，甚至触发行政稀缺定价。</li></ul>
+<p>稀缺价的功能是激励机组可用、储能放电、用户削峰。它不等于&quot;市场力&quot;：真正的市场力需要看剩余需求、申报行为、成本依据和竞争结构，识别方法见 <a href="电力现货市场101问-B-出清结算与省域实践.html">101 问 B</a> 与 <a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算</a>。</p>
+<h3 id="s46">7.3 价格帽与地板价：规则参数，不是模型常数</h3>
+<p>价格上限/下限是市场规则参数，随省份、年份、甚至季节调整。常见量级：</p>
+<ul><li>上限：部分省份在 1,000–1,500 元/MWh 量级，具体以最新规则为准；</li><li>下限：常见 0 或负值，负值深度逐省不同；</li><li>二次限价：部分省份在触发条件后收紧限价，规则更复杂。</li></ul>
+<p>交易员不能把&quot;上次看到的限价&quot;写进模型当常数；每次报价前核对最新规则。限价会改变报价行为（接近上限时，机组有动机持留或报满），也会改变价格分布（截尾、尖峰），回测时必须用与样本期一致的限价。</p>
+<h3 id="s47">7.4 负价与稀缺价不是对称的</h3>
+<p>负价和稀缺价都反映供需失衡，但机制不对称：</p>
+<ul><li>负价受&quot;下调能力&quot;和&quot;最小出力&quot;约束，往往持续、局部、与新能源出力相关；</li><li>稀缺价受&quot;上调能力&quot;和&quot;备用&quot;约束，往往短暂、尖锐、与故障/高温/寒潮相关；</li><li>负价的底部是价格下限，稀缺价的顶部是价格上限/VOLL；</li><li>负价时段储能充电可以赚钱，但受 SOC/效率/并网上限限制；稀缺时段储能放电可以赚钱，但受能量/功率限制。</li></ul>
+<p>因此，不能用同一个&quot;价格预测模型&quot;同时解释负价和尖峰；特征、分布和约束都不同。</p>
+<h3 id="s48">7.5 限价与补偿要一起看</h3>
+<p>当价格触及上限，按边际价结算可能不足以覆盖机组的真实成本/机会成本；规则可能用补偿、容量机制或稀缺定价来补足。反过来，当价格触及下限，必开机组的亏损可能通过补偿/分摊处理。</p>
+<p>读&quot;价格到顶/到底&quot;时，问三个问题：有没有补偿？补偿由谁出？补偿是否进入我的结算？只看价格，会漏掉一半。</p>
+<hr>
+<h2 id="s49">8. 出清结果怎么读</h2>
+<h3 id="s50">8.1 五张表</h3>
+<p>拿到一次出清结果，至少看五张表：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>表</th><th>看什么</th><th>用来回答</th></tr></thead><tbody><tr><td>机组中标表</td><td>每台机组每时段的中标量、开机状态</td><td>我发了多少？是否被必开/压出力？</td></tr><tr><td>价格表</td><td>系统价/节点价、能量/阻塞/网损分量</td><td>价格从哪来？我在哪个节点？</td></tr><tr><td>潮流/断面表</td><td>哪些线路/断面 binding、潮流方向</td><td>阻塞是否影响我的节点价？</td></tr><tr><td>盈余表</td><td>阻塞租金、备用盈余、不平衡资金</td><td>价差的钱去哪了？</td></tr><tr><td>补偿表</td><td>启动/空载/必开/make-whole</td><td>中标为什么还亏？补偿是否到账？</td></tr></tbody></table></div>
+<h3 id="s51">8.2 单机读法：中标 ≠ 赚钱</h3>
+<p>对一台机组，按顺序算：</p>
+<pre tabindex="0"><code>电能收入 = 中标电量 × 节点价
+按报价成本 = 各中标段电量 × 该段报价
+启动/空载成本 = 按规则计入
+净收入 = 电能收入 - 按报价成本 - 启动/空载成本
+uplift = max(0, 按报价成本 + 启动/空载 - 电能收入)</code></pre>
+<p>若净收入为负但拿到 uplift，实际亏损可能被补足；若没有 uplift，亏损就是真实亏损。交易员要把&quot;能量价差收益&quot;和&quot;补偿收益&quot;分开看，不能用一个平均价掩盖。</p>
+<h3 id="s52">8.3 组合读法：捕获价与节点价不是一回事</h3>
+<p>对新能源/储能/售电组合：</p>
+<ul><li><strong>捕获价</strong> = 组合实际结算收入 / 组合上网电量，受出力曲线、节点位置、合约、偏差影响；</li><li><strong>节点价</strong> = 某个节点/时段的边际价格，不是你所有电量的成交价；</li><li><strong>全省均价</strong> = 所有节点/时段的加权平均，可能与你无关。</li></ul>
+<p>用全省均价评价自己的组合，会高估或低估收益。捕获价、节点价、合约价的关系见 <a href="储能投资与运营-2026-11.html">储能投资与运营</a>、<a href="新能源项目开发与并网-2026-11.html">新能源项目开发与并网</a> 与 <a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算</a>。</p>
+<h3 id="s53">8.4 结算读法：日前 + 实时，偏差另算</h3>
+<p>国内现货常见&quot;日前 + 实时&quot;两结算：</p>
+<ul><li>日前中标电量按日前价结算；</li><li>实时实际与日前的偏差按实时价结算；</li><li>中长期合约按差价/差价合约处理；</li><li>阻塞盈余、分摊、补偿另列。</li></ul>
+<p>所以，&quot;出清价&quot;只是结算的一个输入。结算差异桥、科目拆解与对账方法见 <a href="电力现货市场101问-B-出清结算与省域实践.html">101 问 B</a>、<a href="电力现货市场101问-C-结算TTS与政策演进.html">101 问 C</a> 与 <a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a> §8。</p>
+<h3 id="s54">8.5 复盘五问</h3>
+<ol><li><strong>价格从哪来？</strong> 能量、阻塞、网损、备用、启停，哪个分量/约束主导？</li><li><strong>我是边际的吗？</strong> 我的报价段是否决定了价格？还是被别人的报价定价？</li><li><strong>我为什么中标/没中标？</strong> 经济排序、必开、最小出力、启动成本、网络、备用，哪个原因？</li><li><strong>我赚钱了吗？</strong> 按节点价算收入，减去按报价成本、启动/空载，是否为正？有没有 uplift？</li><li><strong>如果报价移动 1 元/MWh，结果会变吗？</strong> 用报价扫描/回测验证，而不是凭感觉。</li></ol>
+<hr>
+<h2 id="s55">9. 合成算例：三机组、四时段</h2>
+<aside class="note"><p>以下全部为 <strong>D 级合成数据</strong>，每个时段按 1 h 计；若实际为 15 分钟，电量与成本需乘 0.25。算例由 <a href="../../skills/spot-bidding-quant/tools/clearing.py">clearing.py</a> 计算，运行 <code>python skills/spot-bidding-quant/tools/clearing.py --demo</code> 可复现。</p></aside>
+<h3 id="s56">9.1 机组参数</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>机组</th><th>节点</th><th style="text-align:right">最小出力</th><th style="text-align:right">最大出力</th><th style="text-align:right">最小出力报价</th><th>增量段 1</th><th>增量段 2</th><th style="text-align:right">启动成本</th><th>最小开/停</th><th>初始状态</th><th>爬坡</th></tr></thead><tbody><tr><td>coal-a</td><td>送端</td><td style="text-align:right">100</td><td style="text-align:right">300</td><td style="text-align:right">180</td><td>100 MW @ 240</td><td>100 MW @ 320</td><td style="text-align:right">0</td><td>2 / 2 h</td><td>开机 2 h</td><td>150 MW/h</td></tr><tr><td>coal-b</td><td>送端</td><td style="text-align:right">80</td><td style="text-align:right">260</td><td style="text-align:right">260</td><td>110 MW @ 340</td><td>70 MW @ 480</td><td style="text-align:right">6,000</td><td>2 / 2 h</td><td>停机 2 h</td><td>160 MW/h</td></tr><tr><td>gas-c</td><td>受端</td><td style="text-align:right">20</td><td style="text-align:right">120</td><td style="text-align:right">520</td><td>100 MW @ 650</td><td>—</td><td style="text-align:right">1,000</td><td>1 / 1 h</td><td>停机 1 h</td><td>120 MW/h</td></tr></tbody></table></div>
+<p>单位：出力 MW，报价 元/MWh，启动成本 元/次，时间 h。coal-a 初始已开机 2 h，coal-b/gas-c 初始已停机。算例为单节点能量出清；节点列只用于说明&quot;同一套机组可以挂在不同节点&quot;，不计算网络价差。</p>
+<h3 id="s57">9.2 单时段 SCED：负荷 430 MW</h3>
+<p>三台机组都在线。最小出力合计 200 MW，剩余 230 MW 按增量段排序：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th style="text-align:right">顺序</th><th>机组/段</th><th style="text-align:right">报价（元/MWh）</th><th style="text-align:right">可接受（MW）</th><th style="text-align:right">本次接受（MW）</th><th style="text-align:right">累计（MW）</th></tr></thead><tbody><tr><td style="text-align:right">1</td><td>coal-a 段 1</td><td style="text-align:right">240</td><td style="text-align:right">100</td><td style="text-align:right">100</td><td style="text-align:right">300</td></tr><tr><td style="text-align:right">2</td><td>coal-a 段 2</td><td style="text-align:right">320</td><td style="text-align:right">100</td><td style="text-align:right">100</td><td style="text-align:right">400</td></tr><tr><td style="text-align:right">3</td><td>coal-b 段 1</td><td style="text-align:right">340</td><td style="text-align:right">110</td><td style="text-align:right">30</td><td style="text-align:right">430</td></tr></tbody></table></div>
+<p>边际段是 coal-b 段 1，出清价 <strong>340 元/MWh</strong>。中标：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>机组</th><th style="text-align:right">中标（MW）</th><th style="text-align:right">按报价成本（元/h）</th><th style="text-align:right">按 340 元收入（元/h）</th><th style="text-align:right">uplift（元/h）</th></tr></thead><tbody><tr><td>coal-a</td><td style="text-align:right">300</td><td style="text-align:right">74,000</td><td style="text-align:right">102,000</td><td style="text-align:right">0</td></tr><tr><td>coal-b</td><td style="text-align:right">110</td><td style="text-align:right">31,000</td><td style="text-align:right">37,400</td><td style="text-align:right">0</td></tr><tr><td>gas-c</td><td style="text-align:right">20</td><td style="text-align:right">10,400</td><td style="text-align:right">6,800</td><td style="text-align:right"><strong>3,600</strong></td></tr><tr><td>合计</td><td style="text-align:right">430</td><td style="text-align:right">115,400</td><td style="text-align:right">146,200</td><td style="text-align:right"><strong>3,600</strong></td></tr></tbody></table></div>
+<p>关键点：gas-c 的最小出力报价 520 元/MWh 高于出清价 340 元/MWh，但它必须开机（本算例把它当作在线/必开），所以产生 3,600 元 make-whole。<strong>出清价没有错，补偿也不是亏损补贴，而是非凸约束下统一价无法覆盖成本的结果。</strong></p>
+<h3 id="s58">9.3 单时段 SCED：负荷 250 MW，价格低于两台机组的首段报价</h3>
+<p>最小出力 200 MW，剩余 50 MW 由 coal-a 段 1（240 元/MWh）承接。出清价 <strong>240 元/MWh</strong>。此时：</p>
+<ul><li>coal-b 的最小出力报价 260 &gt; 240，产生 1,600 元 uplift；</li><li>gas-c 的最小出力报价 520 &gt; 240，产生 5,600 元 uplift；</li><li>合计 uplift <strong>7,200 元</strong>。</li></ul>
+<p>这说明：<strong>边际价由最后一个增量段决定，而不是由所有在线机组的首段报价决定</strong>。低负荷时段，价格可以低于多台机组的&quot;第一段报价&quot;，因为它们的最小出力是被强制的，不是边际的。</p>
+<h3 id="s59">9.4 四时段 SCUC：负荷 260 / 600 / 520 / 300 MW</h3>
+<p>用同一组参数做四时段机组组合，考虑启动成本、最小开停机和爬坡。最优结果：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th style="text-align:right">时段</th><th style="text-align:right">负荷（MW）</th><th>开机组合</th><th>中标（MW）</th><th style="text-align:right">出清价（元/MWh）</th><th style="text-align:right">能量成本（元）</th><th style="text-align:right">启动成本（元）</th></tr></thead><tbody><tr><td style="text-align:right">1</td><td style="text-align:right">260</td><td>coal-a</td><td>a=260</td><td style="text-align:right">320</td><td style="text-align:right">61,200</td><td style="text-align:right">0</td></tr><tr><td style="text-align:right">2</td><td style="text-align:right">600</td><td>coal-a + coal-b + gas-c</td><td>a=300, b=260, c=40</td><td style="text-align:right">650</td><td style="text-align:right">189,200</td><td style="text-align:right">7,000</td></tr><tr><td style="text-align:right">3</td><td style="text-align:right">520</td><td>coal-a + coal-b</td><td>a=300, b=220</td><td style="text-align:right">480</td><td style="text-align:right">146,600</td><td style="text-align:right">0</td></tr><tr><td style="text-align:right">4</td><td style="text-align:right">300</td><td>coal-a + coal-b</td><td>a=220, b=80</td><td style="text-align:right">320</td><td style="text-align:right">69,200</td><td style="text-align:right">0</td></tr><tr><td style="text-align:right">合计</td><td style="text-align:right">—</td><td>—</td><td>—</td><td style="text-align:right">—</td><td style="text-align:right"><strong>466,200</strong></td><td style="text-align:right"><strong>7,000</strong></td></tr></tbody></table></div>
+<p>总成本 = 466,200 + 7,000 = <strong>473,200 元</strong>；按出清价计算的总收入 = 818,800 元；uplift = 0（本算例中，所有在线机组的按报价成本都被价格覆盖）。</p>
+<p>读法：</p>
+<ul><li><strong>coal-b 为什么第 1 时段不开？</strong> 第 1 时段 coal-a 单独可以覆盖 260 MW，coal-b 开机要付 6,000 元启动成本，还要满足最小开机 2 h；算总账不划算。</li><li><strong>coal-b 为什么第 2 时段开、第 3/4 时段继续开？</strong> 第 2 时段 600 MW 需要它；第 3 时段继续开可以避免停机再启动；第 4 时段继续开，虽然 coal-a 单独也能供 300 MW，但 coal-b 的最小出力 80 MW 比 coal-a 的边际段便宜，且避免违反最小停机时间/再启动成本，所以留在线上。</li><li><strong>gas-c 为什么只第 2 时段开？</strong> 第 2 时段 600 MW 需要它的 40 MW；第 3 时段 520 MW 由 coal-a + coal-b 更便宜，gas-c 停机。</li><li><strong>第 4 时段价格为什么是 320，而不是 coal-b 的 260？</strong> coal-b 的最小出力 80 MW 是强制的，边际增量来自 coal-a 段 2（320 元/MWh）；coal-b 的 260 元/MWh 首段不是边际段。这再次说明&quot;边际机组≠报价最高的机组&quot;，也说明&quot;最低报价≠定价&quot;。</li></ul>
+<h3 id="s60">9.5 算例不包含什么</h3>
+<ul><li>网络阻塞、网损、节点价差；</li><li>备用联合出清、AGC/调频；</li><li>块报价、二次限价、必开补偿的完整规则；</li><li>储能 SOC、新能源预测误差、实时市场；</li><li>省级结算口径、中长期合约、分摊。</li></ul>
+<p>这些分别由 <a href="潮流阻塞与节点电价-2026-11.html">从潮流到节点电价</a>、<a href="电力现货市场101问-B-出清结算与省域实践.html">101 问 B</a>、<a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a>、<a href="预测误差申报与EMS闭环-2026-11.html">预测误差→申报→EMS 闭环</a> 和 <a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a> 覆盖。算例的作用是校准&quot;报价→出清→价格→补偿&quot;的口径，不是预测任何真实市场价格。</p>
+<hr>
+<h2 id="s61">10. 常见错误（10 条）</h2>
+<ol><li><strong>把边际机组当成报价最高的机组</strong>：边际机组是最后一个被需要的增量段，可能报价很低；高价机组没开机就不影响价格。</li><li><strong>用平均成本/燃料成本代替报价曲线</strong>：出清用的是报价，不是会计成本；成本只用于监管参考和自营测算。</li><li><strong>只看统一价，不看节点价/结算口径</strong>：出清按节点、结算按统一，或反过来，都会让你的收益算错。</li><li><strong>把最小出力当普通报价段</strong>：最小出力是强制的，可能高于出清价；不读 uplift 就会把&quot;中标亏损&quot;当成异常。</li><li><strong>忽略启停成本和最小开停机</strong>：便宜机组没开机，往往是启动成本 + 最小开机时间 + 低负荷持续时长造成的，不是报价错了。</li><li><strong>把 SCUC 的对偶直接当价格</strong>：整数变量下没有简单的连续对偶；价格可能按 SCED 边际价 + 补偿，或凸包定价，必须先确认机制。</li><li><strong>把阻塞租金当自己的收入</strong>：阻塞租金是节点价结算的会计盈余，通常用于 FTR/返还/分摊，不是某台机组的收益。</li><li><strong>把负价当数据错误</strong>：负价是供大于求 + 下调困难的有效信号；删掉负价会系统性高估收益。</li><li><strong>把价格帽当预测上限</strong>：限价是规则参数，会改变报价行为和价格分布；回测必须用与样本期一致的限价。</li><li><strong>用单时段模型解释跨时段价格</strong>：爬坡、SOC、启停、最小开停机让价格具有路径依赖；单时段模型看不到这些约束。</li></ol>
+<hr>
+<h2 id="s62">11. 待核实与未定事项</h2>
+<ul><li><strong>2026 现货新规</strong>：2026-10-19 发布的《电力现货市场基本规则（公开征求意见稿）》反馈截止 2026-11-18，拟 2027-01-01 施行；条文由 1217 号文的 129 条压缩至 76 条。正式文本、施行日期与过渡安排待确认；2026 年仍按 1217 号文及各省细则执行。见 <a href="政策列表-2026-11.html">政策列表</a>。</li><li><strong>省级差异</strong>：报价段数、单调性、限价（含二次限价）、必开/必停、补偿规则、RUC 与日前顺序、节点/分区/统一结算、负价下限、块报价是否允许，逐省不同；引用前查省交易中心最新规则。</li><li><strong>补偿口径</strong>：make-whole 覆盖哪些成本（启动、空载、最小出力、机会成本）、由谁分摊、是否进入用户侧价格，各省规则不同；本文只讲机制，不给统一公式。</li><li><strong>数据可得性</strong>：真实报价曲线、机组成本、检修与断面限额通常不公开；公开数据多为出清价、负荷、新能源出力。用公开数据做回测时，报价曲线只能用代理/情景，结论要标注&quot;模型依赖&quot;。</li><li><strong>生产级引擎</strong>：本文沙盘是单节点、纯能量、精确枚举的小模型；生产级 SCUC/SCED 含交流潮流、N-1、备用联合优化、整数变量、大规模分解，不能把沙盘结果当市场预测。</li><li><strong>2026-12 复核</strong>：现货新规定稿、各省 2027 年报价参数、容量补偿/稀缺定价进展、负价与二次限价的实际执行情况。</li></ul>
+<hr>
+<h2 id="s63">12. 与技能和其他笔记的分工</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>问题</th><th>先看</th><th>本文不做什么</th></tr></thead><tbody><tr><td>节点价怎么从潮流算出来</td><td><a href="潮流阻塞与节点电价-2026-11.html">从潮流到节点电价</a></td><td>不重复 DC 潮流、PTDF、三节点手算</td></tr><tr><td>出清模式、结算、省域实践、政策</td><td><a href="电力现货市场101问-A-基础与价格机制.html">101 问 A</a> / <a href="电力现货市场101问-B-出清结算与省域实践.html">B</a> / <a href="电力现货市场101问-C-结算TTS与政策演进.html">C</a></td><td>不重复问答式规则整理</td></tr><tr><td>今天价格为什么变、明天情景下价格在哪</td><td><a href="电价归因与盘前推演-2026-11.html">电价归因与盘前推演</a></td><td>不重复反事实归因、Shapley 分摊与情景网格</td></tr><tr><td>明天怎么报价、报多少、怎么回测</td><td><a href="../../skills/spot-bidding-quant/SKILL.md">现货报价量化专家</a> / <a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a></td><td>不给报价策略、不做实盘下单</td></tr><tr><td>预测误差→申报→EMS 闭环</td><td><a href="预测误差申报与EMS闭环-2026-11.html">预测误差→申报→EMS 闭环</a></td><td>不重复 newsvendor 推导与储能跟踪</td></tr><tr><td>储能/EMS 逐时段调度</td><td><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a> / <a href="../../skills/ems-dispatch/SKILL.md">EMS 优化调度专家</a></td><td>不做机组/储能调度优化器</td></tr><tr><td>市场规则、限价、补偿、结算</td><td><a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a></td><td>不替代省级规则与结算系统</td></tr><tr><td>经济学原理</td><td><a href="电力系统经济学原理-主题笔记.html">电力系统经济学原理</a></td><td>不重复福利经济学与市场设计理论</td></tr><tr><td>系统物理与惯量/爬坡</td><td><a href="频率惯量与灵活性供需-2026-11.html">频率、惯量与灵活性供需</a></td><td>不重复频率/惯量/电压稳定</td></tr></tbody></table></div>
+<p>一句话：<strong>本文是&quot;报价进入出清、出清形成价格&quot;的引擎层；节点价的物理推导、报价的策略层、结算的规则层，分别归各自模块。</strong></p>
+<hr>
+<h2 id="s64">速查</h2>
+<h3 id="s65">核心公式</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>内容</th><th>公式/口径</th></tr></thead><tbody><tr><td>系统边际价（无阻塞）</td><td>最后一个被接受的增量段报价</td></tr><tr><td>节点价</td><td>LMP = 能量 + 阻塞 + 网损</td></tr><tr><td>阻塞租金</td><td>(受端价 − 送端价) × 过断面潮流</td></tr><tr><td>按报价成本</td><td>Σ 中标段电量 × 该段报价</td></tr><tr><td>电能收入</td><td>中标电量 × 节点价</td></tr><tr><td>uplift</td><td>max(0, 按报价成本 + 启动/空载 − 电能收入)</td></tr><tr><td>备用机会成本</td><td>被备用占用的容量在能量市场的机会收益</td></tr><tr><td>储能套利门槛</td><td>循环成本 / 往返效率（见 <code>bid.storage_arbitrage_threshold</code>）</td></tr><tr><td>SCUC 目标</td><td>能量成本 + 启动成本 + 空载成本（+ 其他规则成本）</td></tr><tr><td>SCED 目标</td><td>按报价购电成本最小（或社会福利最大）</td></tr></tbody></table></div>
+<h3 id="s66">10 秒判断</h3>
+<ol><li><strong>价格是统一价、分区价还是节点价？</strong> 先确认口径。</li><li><strong>哪个约束 binding？</strong> 能量、网络、备用、爬坡、最小出力，还是启停？</li><li><strong>我是边际的还是被强制的？</strong> 边际段定价；最小出力/必开不定价但可能拿补偿。</li><li><strong>我的收入覆盖成本了吗？</strong> 按节点价算收入，再看 uplift。</li><li><strong>这是日前还是实时？</strong> 两结算下，日前价不等于最终收益。</li></ol>
+<h3 id="s67">算例数字</h3>
+<ul><li>SCED 430 MW：价格 <strong>340</strong> 元/MWh；coal-a 300、coal-b 110、gas-c 20 MW；总成本 <strong>115,400</strong> 元；uplift <strong>3,600</strong> 元。</li><li>SCED 250 MW：价格 <strong>240</strong> 元/MWh；coal-a 150、coal-b 80、gas-c 20 MW；uplift <strong>7,200</strong> 元。</li><li>SCUC 260/600/520/300 MW：价格 <strong>320/650/480/320</strong> 元/MWh；能量成本 <strong>466,200</strong> 元；启动 <strong>7,000</strong> 元；总成本 <strong>473,200</strong> 元；收入 <strong>818,800</strong> 元；uplift <strong>0</strong>。</li><li><strong>复现</strong>：<code>python skills/spot-bidding-quant/tools/clearing.py --demo</code>；断言：<code>python skills/spot-bidding-quant/tools/selftest.py</code>。</li></ul>
+<h3 id="s68">三句话带走</h3>
+<ul><li><strong>报价是输入，约束是价格的一半</strong>：不看约束，只排序，会把出清讲成&quot;报价表&quot;。</li><li><strong>边际机组是最后一个增量段，不是成本最高的机组</strong>：低价段也可以定价。</li><li><strong>中标不等于赚钱</strong>：价格、补偿、结算口径要一起读。</li></ul>
+    </article>
+
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>12</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="潮流阻塞与节点电价-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>从潮流到节点电价：阻塞、断面与网损的价格传导</b>
+          <span>DC 潮流直觉、节点价三分量、断面约束与阻塞租金、网损因子、国内出清与结算口径、三节点手算与选址报价含义。</span>
+        </a>
+        <a class="related-card" href="电力现货市场101问-A-基础与价格机制.html">
+          <span class="related-type">同区延伸</span>
+          <b>101 问 A · 基础与价格机制</b>
+          <span>第 1–26 问：电力市场定义、现货体系、集中式与分散式、SMP / ZMP / LMP。</span>
+        </a>
+        <a class="related-card" href="电力现货市场101问-B-出清结算与省域实践.html">
+          <span class="related-type">同区延伸</span>
+          <b>101 问 B · 出清结算与省域实践</b>
+          <span>第 27–65 问：联合/独立出清、节点价算例、结算、市场力识别与用户侧参与。</span>
+        </a>
+        <a class="related-card" href="电力现货市场101问-C-结算TTS与政策演进.html">
+          <span class="related-type">同区延伸</span>
+          <b>101 问 C · 结算、TTS 与政策演进</b>
+          <span>第 65–101 问：省间日内、水电与调峰、安全校核、市场治理、应急熔断与免责。</span>
+        </a>
+      </div>
+      <p class="related-rest"><b>更多关联</b><a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a><a href="预测误差申报与EMS闭环-2026-11.html">预测误差→申报→EMS 闭环：newsvendor 报价与储能偏差跟踪</a><a href="电力系统经济学原理-主题笔记.html">电力系统经济学原理</a><a href="电力系统通识-B-发输配变用.html">电力系统通识 B · 发输配变用</a><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a><a href="频率惯量与灵活性供需-2026-11.html">频率、惯量与灵活性供需：从物理缓冲到分时间尺度货架</a><a href="电价归因与盘前推演-2026-11.html">电价归因与盘前推演：从负荷、新能源、检修、燃料、阻塞到价格</a><a href="状态估计与安全分析-2026-11.html">状态估计与安全分析：从 SCADA 量测到可信运行方式</a></p>
+    </section>
+
+<section class="related" aria-labelledby="paired-skills-title">
+      <div class="related-head"><h2 id="paired-skills-title">配套技能</h2><span>2</span></div>
+      <div class="related-grid">
+        <a class="related-card skill-pair" href="skill-electricity-trading-expert.html">
+          <span class="related-type">现货、中长期、结算与风控（含山东持仓与负价复盘、四川/云南水电、辽宁核电、甘肃煤电容量+辅助服务、甘送鲁省间实例包）</span>
+          <b>电力交易专家</b>
+          <span>技能 · 现货 · 结算 · 风控</span>
+        </a>
+        <a class="related-card skill-pair" href="skill-spot-bidding-quant.html">
+          <span class="related-type">预测、报价与回测（含山东煤电/储能/光储、浙江现货储能、蒙西风光储、山西储能、甘肃与蒙西新能源实例包）</span>
+          <b>现货报价量化</b>
+          <span>技能 · 预测 · 报价 · 回测</span>
+        </a>
+      </div>
+    </section>
+
+    <nav class="pager" aria-label="上下篇">
+          <a class="prev" href="潮流阻塞与节点电价-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">从潮流到节点电价：阻塞、断面与网损的价格传导</span></a>
+          <a class="next" href="预测误差申报与EMS闭环-2026-11.html"><span class="dir">下一篇 →</span><span class="ttl">预测误差→申报→EMS 闭环：newsvendor 报价与储能偏差跟踪</span></a>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../现货出清与价格形成-2026-11.md">knowledge/现货出清与价格形成-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="本页目录">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv3"><a href="#s2">0.1 三句话</a></li>
+            <li class="lv3"><a href="#s3">0.2 关键数字与口径</a></li>
+            <li class="lv2"><a href="#s4">1. 出清引擎的输入、约束与输出</a></li>
+            <li class="lv3"><a href="#s5">1.1 一台机组进入出清模型时，带的不是一条线，而是一组参数</a></li>
+            <li class="lv3"><a href="#s6">1.2 两层决策：先组合，再调度</a></li>
+            <li class="lv3"><a href="#s7">1.3 输出不止一个价格</a></li>
+            <li class="lv3"><a href="#s8">1.4 为什么不能把 SCUC 当成大号 SCED</a></li>
+            <li class="lv2"><a href="#s9">2. 报价曲线怎么变成供给曲线</a></li>
+            <li class="lv3"><a href="#s10">2.1 分段报价：把"愿意卖"拆成台阶</a></li>
+            <li class="lv3"><a href="#s11">2.2 块报价：全有或全无</a></li>
+            <li class="lv3"><a href="#s12">2.3 启停成本、空载成本、最小出力：它们不在报价曲线里，但会改变排序结果</a></li>
+            <li class="lv3"><a href="#s13">2.4 报价不等于成本，但监管会看成本</a></li>
+            <li class="lv3"><a href="#s14">2.5 报价曲线的可用性：别把"额定容量"当"可申报容量"</a></li>
+            <li class="lv2"><a href="#s15">3. SCED：单时段经济调度</a></li>
+            <li class="lv3"><a href="#s16">3.1 目标与约束</a></li>
+            <li class="lv3"><a href="#s17">3.2 无阻塞时：最后一个增量段定价</a></li>
+            <li class="lv3"><a href="#s18">3.3 有最小出力时：价格可能低于机组的"第一段报价"</a></li>
+            <li class="lv3"><a href="#s19">3.4 有网络时：SCED 的价格变成节点价</a></li>
+            <li class="lv3"><a href="#s20">3.5 备用与爬坡：它们会改变"有效供给"</a></li>
+            <li class="lv3"><a href="#s21">3.6 SCED 价格的三句话</a></li>
+            <li class="lv2"><a href="#s22">4. SCUC：跨时段与启停</a></li>
+            <li class="lv3"><a href="#s23">4.1 机组组合在决定什么</a></li>
+            <li class="lv3"><a href="#s24">4.2 为什么"便宜机组没开机"是正常的</a></li>
+            <li class="lv3"><a href="#s25">4.3 跨时段约束会改变价格</a></li>
+            <li class="lv3"><a href="#s26">4.4 RUC、日前与实时：顺序不同，价格含义不同</a></li>
+            <li class="lv3"><a href="#s27">4.5 非凸性下的价格：为什么需要"补偿"这个词</a></li>
+            <li class="lv2"><a href="#s28">5. 从系统价到节点价</a></li>
+            <li class="lv3"><a href="#s29">5.1 三个分量，一句话</a></li>
+            <li class="lv3"><a href="#s30">5.2 边际机组与节点价不是一一对应</a></li>
+            <li class="lv3"><a href="#s31">5.3 阻塞租金：不是电网的"利润"</a></li>
+            <li class="lv3"><a href="#s32">5.4 网损：边际网损不是平均网损</a></li>
+            <li class="lv3"><a href="#s33">5.5 统一出清、分区结算、节点结算：先确认口径</a></li>
+            <li class="lv3"><a href="#s34">5.6 负价与局部阻塞可以同时出现</a></li>
+            <li class="lv2"><a href="#s35">6. 特殊约束如何改写价格</a></li>
+            <li class="lv3"><a href="#s36">6.1 最小出力与必开：价格可以低于机组的报价</a></li>
+            <li class="lv3"><a href="#s37">6.2 启停与最小开停机：价格尖峰可能来自"不能马上开机"</a></li>
+            <li class="lv3"><a href="#s38">6.3 备用：机会成本会进入价格</a></li>
+            <li class="lv3"><a href="#s39">6.4 爬坡：有容量不等于有可交付的容量</a></li>
+            <li class="lv3"><a href="#s40">6.5 储能：充电和放电都可能是边际的</a></li>
+            <li class="lv3"><a href="#s41">6.6 新能源：近零边际成本与负价</a></li>
+            <li class="lv3"><a href="#s42">6.7 约束与价格症状对照</a></li>
+            <li class="lv2"><a href="#s43">7. 负价、稀缺价与限价</a></li>
+            <li class="lv3"><a href="#s44">7.1 负价：系统在说"现在少发一点"</a></li>
+            <li class="lv3"><a href="#s45">7.2 稀缺价：系统在说"现在多供一点"</a></li>
+            <li class="lv3"><a href="#s46">7.3 价格帽与地板价：规则参数，不是模型常数</a></li>
+            <li class="lv3"><a href="#s47">7.4 负价与稀缺价不是对称的</a></li>
+            <li class="lv3"><a href="#s48">7.5 限价与补偿要一起看</a></li>
+            <li class="lv2"><a href="#s49">8. 出清结果怎么读</a></li>
+            <li class="lv3"><a href="#s50">8.1 五张表</a></li>
+            <li class="lv3"><a href="#s51">8.2 单机读法：中标 ≠ 赚钱</a></li>
+            <li class="lv3"><a href="#s52">8.3 组合读法：捕获价与节点价不是一回事</a></li>
+            <li class="lv3"><a href="#s53">8.4 结算读法：日前 + 实时，偏差另算</a></li>
+            <li class="lv3"><a href="#s54">8.5 复盘五问</a></li>
+            <li class="lv2"><a href="#s55">9. 合成算例：三机组、四时段</a></li>
+            <li class="lv3"><a href="#s56">9.1 机组参数</a></li>
+            <li class="lv3"><a href="#s57">9.2 单时段 SCED：负荷 430 MW</a></li>
+            <li class="lv3"><a href="#s58">9.3 单时段 SCED：负荷 250 MW，价格低于两台机组的首段报价</a></li>
+            <li class="lv3"><a href="#s59">9.4 四时段 SCUC：负荷 260 / 600 / 520 / 300 MW</a></li>
+            <li class="lv3"><a href="#s60">9.5 算例不包含什么</a></li>
+            <li class="lv2"><a href="#s61">10. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s62">11. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s63">12. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s64">速查</a></li>
+            <li class="lv3"><a href="#s65">核心公式</a></li>
+            <li class="lv3"><a href="#s66">10 秒判断</a></li>
+            <li class="lv3"><a href="#s67">算例数字</a></li>
+            <li class="lv3"><a href="#s68">三句话带走</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="54" data-more-label="展开 54 个小节" data-less-label="收起小节">展开 54 个小节</button>
+  </aside>
+</div>
+
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.1" data-cutoff="2026-11-19" data-latest="2026-11-24" data-count="99">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.1）" title="查看更新记录（当前 v2.1）">
+    <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
+    <span class="cl-badge-ver">v2.1</span>
+    <span class="cl-badge-label">更新记录</span>
+  </button>
+  <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
+    <div class="cl-backdrop" data-changelog-close></div>
+    <div class="cl-panel" role="dialog" aria-modal="true" aria-labelledby="cl-title" aria-describedby="cl-subtitle" tabindex="-1">
+      <header class="cl-head">
+        <div class="cl-head-main">
+          <span class="cl-kicker">RELEASE NOTES</span>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.1</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.1 · 数据截止 2026-11-19 · 99 条记录</p>
+        </div>
+        <div class="cl-actions">
+          <div class="cl-lang" role="group" aria-label="切换语言">
+            <button type="button" data-cl-lang="zh" aria-pressed="true">中文</button>
+            <button type="button" data-cl-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <button class="cl-close" type="button" data-changelog-close aria-label="关闭更新记录" title="关闭更新记录">×</button>
+        </div>
+      </header>
+      <div class="cl-body" data-changelog-body>
+        <div class="cl-skeleton" data-changelog-status role="status">
+          <span class="cl-sr">正在读取更新记录…</span>
+          <i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      <footer class="cl-foot">
+        <span data-changelog-meta>v2.1 · 2026-11-19 · 99 条记录</span>
+        <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
+      </footer>
+    </div>
+  </div>
+</div>
+<script src="../assets/doc.js"></script>
+<script src="../assets/theme.js"></script>
+<script src="../assets/changelog.js"></script>
+</body>
+</html>

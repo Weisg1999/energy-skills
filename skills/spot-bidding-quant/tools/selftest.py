@@ -19,6 +19,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import backtest as bt
 import bid
+import clearing as cl
+import attribution as at
 import desk
 import forecast as fc
 import simulate
@@ -133,6 +135,104 @@ def main() -> int:
     assert all(row["dispatched_mw"] > 0 and row["sets_price"] for row in pivotal_rows), "pivotal unit prices the margin"
     assert [row["profit"] for row in pivotal_rows] == sorted(row["profit"] for row in pivotal_rows), "profit rises with the bid while pivotal"
     assert sweep[-1]["dispatched_mw"] == 0 and sweep[-1]["clearing_price"] == 420.0, "above the next rival the unit is priced out"
+
+    section("SCUC/SCED clearing")
+    units = cl.demo_units()
+    sced = cl.clear_sced(units, 430.0)
+    print(
+        f"SCED 430 MW: price={sced['price']:.0f}  "
+        f"dispatch={sced['dispatch']}  uplift={sced['total_uplift']:.0f}"
+    )
+    assert abs(sced["price"] - 340.0) < 1e-9
+    assert abs(sced["dispatch"]["coal-a"] - 300.0) < 1e-9
+    assert abs(sced["dispatch"]["coal-b"] - 110.0) < 1e-9
+    assert abs(sced["dispatch"]["gas-c"] - 20.0) < 1e-9
+    assert abs(sced["total_cost"] - 115_400.0) < 1e-6
+    assert abs(sced["total_uplift"] - 3_600.0) < 1e-6
+    assert sced["marginal_unit"] == "coal-b", "the marginal incremental segment sets the price"
+
+    tight = cl.clear_sced(units, 250.0)
+    print(
+        f"SCED 250 MW: price={tight['price']:.0f}  "
+        f"uplift={tight['total_uplift']:.0f}  dispatch={tight['dispatch']}"
+    )
+    assert abs(tight["price"] - 240.0) < 1e-9
+    assert abs(tight["dispatch"]["coal-a"] - 150.0) < 1e-9
+    assert abs(tight["total_uplift"] - 7_200.0) < 1e-6, "minimum output above the clearing price needs make-whole"
+
+    scuc = cl.clear_scuc(units, (260.0, 600.0, 520.0, 300.0))
+    print(
+        f"SCUC: total={scuc['summary']['total_cost']:.0f}  "
+        f"prices={scuc['summary']['prices']}  "
+        f"commitment={scuc['summary']['commitment']}"
+    )
+    assert abs(scuc["summary"]["total_cost"] - 473_200.0) < 1e-6
+    assert abs(scuc["summary"]["energy_cost"] - 466_200.0) < 1e-6
+    assert abs(scuc["summary"]["startup_cost"] - 7_000.0) < 1e-6
+    assert [round(p) for p in scuc["summary"]["prices"]] == [320, 650, 480, 320]
+    assert scuc["summary"]["commitment"][0]["coal-b"] is False
+    assert all(row["coal-b"] for row in scuc["summary"]["commitment"][1:])
+    assert scuc["summary"]["commitment"][1]["gas-c"] is True
+    assert scuc["summary"]["commitment"][2]["gas-c"] is False
+    assert abs(scuc["periods"][1]["dispatch"]["gas-c"] - 40.0) < 1e-9
+
+    section("price attribution and scenario sensitivity")
+    case = at.demo_case()
+    baseline = case.baseline.clear()
+    actual = case.actual.clear()
+    print(
+        f"baseline price={baseline['price']:.0f} cost={baseline['total_cost']:.0f}  "
+        f"actual price={actual['price']:.0f} cost={actual['total_cost']:.0f}"
+    )
+    assert abs(baseline["price"] - 340.0) < 1e-9
+    assert abs(baseline["total_cost"] - 125_600.0) < 1e-6
+    assert abs(actual["price"] - 600.0) < 1e-9
+    assert abs(actual["total_cost"] - 237_125.0) < 1e-6
+    assert abs(actual["total_uplift"] - 7_995.0) < 1e-6
+    assert abs(actual["dispatch"]["coal-a"] - 250.0) < 1e-9
+    assert abs(actual["dispatch"]["coal-b"] - 260.0) < 1e-9
+    assert abs(actual["dispatch"]["gas-c"] - 110.0) < 1e-9
+    assert actual["unserved_mw"] == 0.0
+
+    report = case.report()
+    shapley = report["shapley"]
+    standalone = report["standalone"]
+    contributions = shapley["contributions"]
+    expected = {
+        "load": 144.125,
+        "renewable": 92.83333333333333,
+        "outage": 20.5,
+        "fuel": 23.33333333333333,
+        "network": 10.5,
+        "behavior": 3.791666666666667,
+        "policy": -35.08333333333333,
+    }
+    for name, value in expected.items():
+        assert abs(contributions[name] - value) < 1e-6, f"unexpected Shapley value for {name}"
+    assert abs(shapley["delta"] - 260.0) < 1e-6
+    assert abs(shapley["sum"] - shapley["delta"]) < 1e-6, "Shapley values must add up exactly"
+    assert abs(standalone["outage"]) < 1e-9, "standalone outage does not move the price"
+    assert abs(standalone["behavior"]) < 1e-9, "standalone gas markup does not move the price"
+    assert abs(standalone["policy"]) < 1e-9, "standalone cap does not bind"
+
+    sequential = case.sequential(tuple(factor.name for factor in case.factors))
+    assert abs(sequential["contributions"]["load"] - 140.0) < 1e-6
+    assert abs(sequential["contributions"]["renewable"] - 170.0) < 1e-6
+    assert abs(sequential["contributions"]["outage"]) < 1e-9
+    assert abs(sequential["contributions"]["fuel"]) < 1e-9
+    assert abs(sequential["contributions"]["network"] - 15.0) < 1e-6
+    assert abs(sequential["contributions"]["behavior"] - 32.5) < 1e-6
+    assert abs(sequential["contributions"]["policy"] + 97.5) < 1e-6
+    assert abs(sequential["delta"] - 260.0) < 1e-6
+    print(
+        f"shapley price delta={shapley['delta']:.0f}  sum={shapley['sum']:.0f}  "
+        f"load={contributions['load']:.2f} renewable={contributions['renewable']:.2f} "
+        f"outage={contributions['outage']:.2f} policy={contributions['policy']:.2f}"
+    )
+
+    cost_report = case.shapley("total_cost")
+    assert abs(cost_report["delta"] - 111_525.0) < 1e-6
+    assert abs(cost_report["sum"] - cost_report["delta"]) < 1e-6
 
     section("weather-to-power conversion chain")
     assert wx.degree_days([32.0, 35.0, 29.0], kind="cdd") == 42.0, "three-day CDD"

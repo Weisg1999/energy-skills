@@ -26,7 +26,7 @@ export const sections = [
     title: '电力现货与省间交易',
     navLabel: '现货与省间交易',
     comment: '04 Spot',
-    desc: '从《电力现货市场101问》的基础、出清结算与技术支持系统，到《电力现货市场实务》的国内外实践，再到 2026 年省间与跨区交易、量化报价风控、交易台日课与异常处置 SOP、风险信用结算。{n}份笔记覆盖机制、算例、治理、日课流程与制度链路。',
+    desc: '从《电力现货市场101问》的基础、出清结算与技术支持系统，到《电力现货市场实务》的国内外实践，再到 2026 年省间与跨区交易、出清引擎与价格形成、电价归因与盘前推演、量化报价风控、交易台日课与异常处置 SOP、风险信用结算。{n}份笔记覆盖机制、算例、归因方法、治理、日课流程与制度链路。',
   },
   {
     id: 'province',
@@ -80,7 +80,7 @@ export const sections = [
     title: '储能与 EMS',
     navLabel: '储能与 EMS',
     comment: '10 Storage',
-    desc: '技术侧看路线、安全与构网；投资侧看政策、成本、时长折算与考核；调度侧看 MILP、多市场堆叠、SOC/退化与 MPC；数据侧看 SCADA 点表、通信、时延、时钟同步与安全防护。两份 EMS 笔记分别覆盖独立储能与微网。',
+    desc: '技术侧看路线、安全与构网；投资侧看政策、成本、时长折算与考核；调度侧看 MILP、多市场堆叠、SOC/退化与 MPC；控制侧看 AGC/AVC 闭环、ACE/指令分配与场站考核；网络侧看状态估计、坏数据、N-1 与 ATC；数据侧看 SCADA 点表、通信、时延、时钟同步与安全防护。两份 EMS 笔记分别覆盖独立储能与微网，另加微网运行方式、并离网切换与黑启动。',
   },
   {
     id: 'park',
@@ -142,7 +142,7 @@ export const skillDocs = [
     summaryEn: 'Spot, medium/long-term, settlement and risk (incl. Shandong position and negative-price replay, Sichuan/Yunnan hydro, Liaoning nuclear, Gansu coal capacity plus ancillary, and Gansu-to-Shandong interprovincial instance packs)',
     tags: ['技能', '现货', '结算', '风控'],
     tagsEn: ['skill', 'spot', 'settlement', 'risk'],
-    modules: ['m-spot-a', 'm-spot-b', 'm-spot-c', 'm-spot-interprovincial', 'm-quant-risk', 'm-risk-credit', 'm-desk-sop', 'm-cases-replay', 'm-contracts-clauses', 'm-flow-node', 'm-forecast-loop', 'm-cross-flex'],
+    modules: ['m-spot-a', 'm-spot-b', 'm-spot-c', 'm-spot-interprovincial', 'm-quant-risk', 'm-risk-credit', 'm-desk-sop', 'm-cases-replay', 'm-contracts-clauses', 'm-flow-node', 'm-clearing-price', 'm-price-attribution', 'm-forecast-loop', 'm-cross-flex'],
   },
   {
     slug: 'virtual-power-plant',
@@ -172,7 +172,7 @@ export const skillDocs = [
     summaryEn: 'Revenue stacking, investment decisions, degradation and assessment (incl. Anhui capacity-price and Guangdong spot-plus-frequency instance packs)',
     tags: ['技能', '储能', '投决', 'LCOS'],
     tagsEn: ['skill', 'storage', 'investment', 'LCOS'],
-    modules: ['m-storage-invest', 'm-storage-tech', 'm-storage-ems', 'm-contracts-clauses', 'm-cluster-ems', 'm-ems-interface', 'm-cross-flex'],
+    modules: ['m-storage-invest', 'm-storage-tech', 'm-storage-ems', 'm-contracts-clauses', 'm-cluster-ems', 'm-ems-interface', 'm-cross-flex', 'm-agc-avc'],
   },
   {
     slug: 'renewable-project-development',
@@ -182,7 +182,7 @@ export const skillDocs = [
     summaryEn: 'Resources, LCOE, mechanism pricing and grid connection (incl. the Yunnan 2027 wind decision instance pack)',
     tags: ['技能', '新能源', 'LCOE', '并网'],
     tagsEn: ['skill', 'renewables', 'LCOE', 'grid'],
-    modules: ['m-renewable', 'm-grid', 'm-price-policy', 'm-grid-test', 'm-grid-quality', 'm-distribution'],
+    modules: ['m-renewable', 'm-grid', 'm-price-policy', 'm-grid-test', 'm-grid-quality', 'm-distribution', 'm-agc-avc'],
   },
   {
     slug: 'spot-bidding-quant',
@@ -192,17 +192,17 @@ export const skillDocs = [
     summaryEn: 'Forecasting, bidding and backtesting (incl. Shandong thermal/storage/PV-plus-storage, Zhejiang spot storage, Mengxi wind-solar-storage, Shanxi storage, Gansu and Inner Mongolia West renewables instance packs)',
     tags: ['技能', '预测', '报价', '回测'],
     tagsEn: ['skill', 'forecast', 'bidding', 'backtest'],
-    modules: ['m-quant-risk', 'm-spot-b', 'm-spot-c', 'm-desk-sop', 'm-flow-node', 'm-forecast-loop'],
+    modules: ['m-quant-risk', 'm-spot-b', 'm-spot-c', 'm-desk-sop', 'm-flow-node', 'm-clearing-price', 'm-price-attribution', 'm-forecast-loop', 'm-state-estimation'],
   },
   {
     slug: 'ems-dispatch',
     title: 'EMS 优化调度',
     titleEn: 'EMS Dispatch',
-    summary: '96 点调度、SOC 与需量（含江苏零碳园区微网、山东独立储能电站日运行+考核复盘实例包）',
-    summaryEn: '96-interval dispatch, SOC and demand charges (incl. Jiangsu zero-carbon park microgrid and Shandong storage-station daily operation plus assessment replay instance packs)',
-    tags: ['技能', 'EMS', 'SOC', '需量'],
-    tagsEn: ['skill', 'EMS', 'SOC', 'demand charge'],
-    modules: ['m-storage-ems', 'm-micro-ems', 'm-scada', 'm-cluster-ems', 'm-ems-interface', 'm-forecast-loop'],
+    summary: '96 点调度、SOC 与需量、AGC/AVC 闭环与状态估计接口（含江苏零碳园区微网、山东独立储能电站日运行+考核复盘实例包）',
+    summaryEn: '96-interval dispatch, SOC and demand charges, AGC/AVC loops and state-estimation interfaces (incl. Jiangsu zero-carbon park microgrid and Shandong storage-station daily operation plus assessment replay instance packs)',
+    tags: ['技能', 'EMS', 'SOC', '需量', 'AGC/AVC', '状态估计'],
+    tagsEn: ['skill', 'EMS', 'SOC', 'demand charge', 'AGC/AVC', 'state estimation'],
+    modules: ['m-storage-ems', 'm-micro-ems', 'm-microgrid-ops', 'm-scada', 'm-cluster-ems', 'm-ems-interface', 'm-forecast-loop', 'm-agc-avc', 'm-state-estimation'],
   },
   {
     slug: 'tariff-bill-optimization',

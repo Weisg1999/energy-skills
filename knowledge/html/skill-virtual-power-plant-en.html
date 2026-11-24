@@ -116,7 +116,7 @@
     </details>
 
     <article class="prose">
-<aside class="note note-head"><p>🌐 Chinese version: <a href="skill-virtual-power-plant.html">SKILL.md</a> | Sister skill: <a href="skill-virtual-power-plant-en.html">Electricity Trading Expert SKILL (EN)</a> — for spot-market / settlement / carbon-market mechanism details, check that skill first.</p><p><strong>Version</strong>: v2.0 (updated 2026-11-19) | <strong>Knowledge sources</strong>: <em>Approaching Virtual Power Plants</em> (走近虚拟电厂, Wang Peng, Wang Dongrong et al., China Machine Press 2020) plus 2025-2026 public policy research (list in Chapter 16)</p><p><strong>Data cutoff</strong>: 2026-11-01. September-October 2026 was a dense policy period: the new spot-market rules, the retailer management measure and the market risk-control measure are still <strong>drafts for comment</strong>. The text marks them as &quot;draft / proposed to take effect&quot;.</p><p><strong>Positioning</strong>: This file is a domain skill (Skill) injectable into an AI assistant. Once loaded, the AI should answer virtual power plant questions as a &quot;senior VPP expert&quot;.</p><p><strong>Maintenance entry points</strong>: for document numbers and calibers see <code>knowledge/索引与口径-2026-11.md</code>; for per-province VPP thresholds see <code>knowledge/省级市场状态表-2026-11.md</code>; for DR baselines, assessment/settlement and V2G market participation see <code>knowledge/需求响应、车网互动与灵活性资源-2026-11.md</code>; for revision regression tests use <code>knowledge/黄金问答集-2026-11.md</code>.</p><p><strong>2026-2027 open items (must be flagged as &quot;undecided / draft / proposed&quot; when answering)</strong>: the national VPP management measure has not been issued; the 2026 spot rules are still a draft; the Liaoning/Anhui thresholds and Hainan's reported 2026-11-01 effective date still need checking; Shenzhen's aggregation-platform funding measure has expired and no 2026 replacement has been found; the 2027 No. 136 auctions; per-ISO Order 2222 implementation; V2G pilot review and the next policy batch.</p></aside>
+<aside class="note note-head"><p>🌐 Chinese version: <a href="skill-virtual-power-plant.html">SKILL.md</a> | Sister skill: <a href="skill-virtual-power-plant-en.html">Electricity Trading Expert SKILL (EN)</a> — for spot-market / settlement / carbon-market mechanism details, check that skill first.</p><p><strong>Version</strong>: v2.1 (updated 2026-11-24) | <strong>Knowledge sources</strong>: <em>Approaching Virtual Power Plants</em> (走近虚拟电厂, Wang Peng, Wang Dongrong et al., China Machine Press 2020) plus 2025-2026 public policy research (list in Chapter 16)</p><p><strong>Data cutoff</strong>: 2026-11-01. September-October 2026 was a dense policy period: the new spot-market rules, the retailer management measure and the market risk-control measure are still <strong>drafts for comment</strong>. The text marks them as &quot;draft / proposed to take effect&quot;.</p><p><strong>Positioning</strong>: This file is a domain skill (Skill) injectable into an AI assistant. Once loaded, the AI should answer virtual power plant questions as a &quot;senior VPP expert&quot;.</p><p><strong>Maintenance entry points</strong>: for document numbers and calibers see <code>knowledge/索引与口径-2026-11.md</code>; for per-province VPP thresholds see <code>knowledge/省级市场状态表-2026-11.md</code>; for DR baselines, assessment/settlement and V2G market participation see <code>knowledge/需求响应、车网互动与灵活性资源-2026-11.md</code>; for revision regression tests use <code>knowledge/黄金问答集-2026-11.md</code>.</p><p><strong>2026-2027 open items (must be flagged as &quot;undecided / draft / proposed&quot; when answering)</strong>: the national VPP management measure has not been issued; the 2026 spot rules are still a draft; the Liaoning/Anhui thresholds and Hainan's reported 2026-11-01 effective date still need checking; Shenzhen's aggregation-platform funding measure has expired and no 2026 replacement has been found; the 2027 No. 136 auctions; per-ISO Order 2222 implementation; V2G pilot review and the next policy batch.</p></aside>
 <hr>
 <h2 id="s1">0. Role Definition and Behavioral Rules</h2>
 <h3 id="s2">0.1 Role Profile</h3>
@@ -384,10 +384,10 @@ python skills/virtual-power-plant/instances/&lt;pack&gt;/run.py --demo</code></p
 <nav class="page-aux" aria-label="Page utilities">
   <a class="to-top" href="#top" aria-label="Back to top">↑</a>
 </nav>
-<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="en" data-version="v2.0" data-cutoff="2026-11-19" data-latest="2026-11-21" data-count="94">
-  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="View changelog (current v2.0)" title="View changelog (current v2.0)">
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="en" data-version="v2.1" data-cutoff="2026-11-19" data-latest="2026-11-24" data-count="99">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="View changelog (current v2.1)" title="View changelog (current v2.1)">
     <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
-    <span class="cl-badge-ver">v2.0</span>
+    <span class="cl-badge-ver">v2.1</span>
     <span class="cl-badge-label">Changelog</span>
   </button>
   <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
@@ -396,8 +396,8 @@ python skills/virtual-power-plant/instances/&lt;pack&gt;/run.py --demo</code></p
       <header class="cl-head">
         <div class="cl-head-main">
           <span class="cl-kicker">RELEASE NOTES</span>
-          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">Changelog</span> <span class="cl-pill">v2.0</span></h2>
-          <p class="cl-sub" id="cl-subtitle">Current v2.0 · data cutoff 2026-11-19 · 94 entries</p>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">Changelog</span> <span class="cl-pill">v2.1</span></h2>
+          <p class="cl-sub" id="cl-subtitle">Current v2.1 · data cutoff 2026-11-19 · 99 entries</p>
         </div>
         <div class="cl-actions">
           <div class="cl-lang" role="group" aria-label="Switch language">
@@ -414,7 +414,7 @@ python skills/virtual-power-plant/instances/&lt;pack&gt;/run.py --demo</code></p
         </div>
       </div>
       <footer class="cl-foot">
-        <span data-changelog-meta>v2.0 · 2026-11-19 · 94 entries</span>
+        <span data-changelog-meta>v2.1 · 2026-11-19 · 99 entries</span>
         <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG_EN.md" target="_blank" rel="noopener">View full changelog on GitHub ↗</a>
       </footer>
     </div>

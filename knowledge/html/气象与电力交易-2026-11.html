@@ -88,7 +88,7 @@
       <p class="lede">气象不直接定价，而是通过负荷、风光出力、来水与设备可用率四个中介进入出清；2026 年夏季全国平均气温每升 1℃ 带动负荷上涨 4,000–5,000 万 kW，空调降温负荷占比接近 30%、部分省份超 40%；功率预测已是有报送率与准确率考核的法定义务；CME 度日期货按 20 index points、US $20/点现金结算，欧洲与东京的 tick 不同。</p>
       <p class="hook">2026-11 · 四条转换链 / 天气风险 / 取数口径</p>
       <div class="tags"><span class="tag">气象</span><span class="tag">数值天气预报</span><span class="tag">负荷预测</span><span class="tag">功率预测考核</span><span class="tag">度日</span><span class="tag">集合预报</span><span class="tag">天气衍生品</span><span class="tag">基差风险</span><span class="tag">极端天气</span></div>
-      <div class="doc-meta"><span>约 15.6k 字</span><span>阅读约 26 分钟</span><span>12 节</span><span>数据截止 2026-11-12</span></div>
+      <div class="doc-meta"><span>约 15.7k 字</span><span>阅读约 26 分钟</span><span>12 节</span><span>数据截止 2026-11-12</span></div>
     </header>
 
     <details class="toc-mobile">
@@ -205,13 +205,13 @@
 <h2 id="s25">速查</h2>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>要回答的问题</th><th>先看哪一节</th></tr></thead><tbody><tr><td>气象数据从哪来、怎么取</td><td>§1.1–§1.3</td></tr><tr><td>气温/风速/辐照/降水怎么变成电量</td><td>§2.1–§2.4</td></tr><tr><td>为什么晴天也会报不准</td><td>§2.3、§4</td></tr><tr><td>净负荷与价格形状</td><td>§3</td></tr><tr><td>偏差算谁的、能不能免责</td><td>§4</td></tr><tr><td>台风/覆冰/高温怎么影响交易</td><td>§5</td></tr><tr><td>天气风险能不能对冲</td><td>§6</td></tr><tr><td>有没有可复算的算例</td><td>§7 与 <code>tools/weather.py</code></td></tr></tbody></table></div>
 <h2 id="s26">与技能和其他笔记的分工</h2>
-<ul><li><strong>不新增分区、不新增技能</strong>：气象是横向输入变量，不是一类市场或一类作业角色。本页放 <code>cross</code> 第 7 篇；预测方法论仍归 <code>spot-bidding-quant</code> 技能与 <a href="量化报价与交易风控-工程化-2026-11.html">量化报价</a>。</li><li><strong>零依赖工具</strong>：<code>skills/spot-bidding-quant/tools/weather.py</code> 提供度日、风功率曲线、空气密度订正、组件温度、集合分位数、不对称罚则申报量与天气指数赔付；断言并入该技能现有 <code>selftest.py</code>，CI 的 9 条自测不变。</li><li><strong>不与气候变化合并</strong>：长期气候治理、排放因子与碳价见 <a href="碳管理-从零通往碳中和-主题笔记.html">碳管理</a> 与 <a href="碳资产实务-2026-11.html">碳资产实务</a>。</li><li><strong>省级差异只留指针</strong>：丰枯、台风、覆冰、来水等省别口径见 <a href="四川电力市场-2026-11.html">四川</a>、<a href="湖北电力市场-2026-11.html">湖北</a>、<a href="海南电力市场-2026-11.html">海南</a> 与 <a href="省级市场状态表-2026-11.html">省级市场状态表</a>，本页不复制省份规则。</li></ul>
+<ul><li><strong>不新增分区、不新增技能</strong>：气象是横向输入变量，不是一类市场或一类作业角色。本页放 <code>cross</code> 第 7 篇；预测方法论仍归 <code>spot-bidding-quant</code> 技能与 <a href="量化报价与交易风控-工程化-2026-11.html">量化报价</a>。</li><li><strong>零依赖工具</strong>：<code>skills/spot-bidding-quant/tools/weather.py</code> 提供度日、风功率曲线、空气密度订正、组件温度、集合分位数、不对称罚则申报量与天气指数赔付；断言并入该技能现有 <code>selftest.py</code>，CI 的 9 条自测不变。</li><li><strong>不与气候变化合并</strong>：长期气候治理、排放因子与碳价见 <a href="碳管理-从零通往碳中和-主题笔记.html">碳管理</a> 与 <a href="碳资产实务-2026-11.html">碳资产实务</a>。</li><li><strong>价格归因的接口</strong>：气象只提供负荷/新能源的物理量；把天气异常转成价格贡献，用 <a href="电价归因与盘前推演-2026-11.html">电价归因与盘前推演</a>，本页不重复因子分解。</li><li><strong>省级差异只留指针</strong>：丰枯、台风、覆冰、来水等省别口径见 <a href="四川电力市场-2026-11.html">四川</a>、<a href="湖北电力市场-2026-11.html">湖北</a>、<a href="海南电力市场-2026-11.html">海南</a> 与 <a href="省级市场状态表-2026-11.html">省级市场状态表</a>，本页不复制省份规则。</li></ul>
 <h2 id="s27">更新记录</h2>
 <ul><li>2026-11-12：新建。补齐气象数据源与取数口径、四条转换链、价格形状、误差归因与考核、极端天气保供、天气风险合约；新增零依赖 <code>weather.py</code> 与 5 组 D 级合成算例并与 <code>selftest.py</code> 双向锁定。</li></ul>
     </article>
 
     <section class="related" aria-labelledby="related-title">
-      <div class="related-head"><h2 id="related-title">相关模块</h2><span>11</span></div>
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>12</span></div>
       <div class="related-grid">
         <a class="related-card" href="量化报价与交易风控-工程化-2026-11.html">
           <span class="related-type">跨区对照</span>
@@ -234,7 +234,7 @@
           <span>从资源盘点、基线认定到考核结算，补齐 DR 产品体系与 V2G 参与市场的空白。</span>
         </a>
       </div>
-      <p class="related-rest"><b>更多关联</b><a href="虚拟电厂聚合调度与商业模式-2026-11.html">虚拟电厂：聚合、调度与商业模式（2026 版）</a><a href="省级市场状态表-2026-11.html">省级电力市场状态总表</a><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a><a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算（2026 版）</a><a href="四川电力市场-2026-11.html">四川电力市场（2026 版）：丰枯分期、水电同台与连续结算试运行</a><a href="湖北电力市场-2026-11.html">湖北电力市场：2025 转正、华中枢纽与水电丰枯定价（2026 版）</a><a href="海南电力市场-2026-11.html">海南电力市场：区域正式叠加、海岛电网与 1 MW VPP 门槛（2026 版）</a></p>
+      <p class="related-rest"><b>更多关联</b><a href="虚拟电厂聚合调度与商业模式-2026-11.html">虚拟电厂：聚合、调度与商业模式（2026 版）</a><a href="省级市场状态表-2026-11.html">省级电力市场状态总表</a><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a><a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算（2026 版）</a><a href="四川电力市场-2026-11.html">四川电力市场（2026 版）：丰枯分期、水电同台与连续结算试运行</a><a href="湖北电力市场-2026-11.html">湖北电力市场：2025 转正、华中枢纽与水电丰枯定价（2026 版）</a><a href="海南电力市场-2026-11.html">海南电力市场：区域正式叠加、海岛电网与 1 MW VPP 门槛（2026 版）</a><a href="电价归因与盘前推演-2026-11.html">电价归因与盘前推演：从负荷、新能源、检修、燃料、阻塞到价格</a></p>
     </section>
 
 
@@ -290,10 +290,10 @@
 <nav class="page-aux" aria-label="页面辅助">
   <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
 </nav>
-<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.0" data-cutoff="2026-11-19" data-latest="2026-11-21" data-count="94">
-  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.0）" title="查看更新记录（当前 v2.0）">
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.1" data-cutoff="2026-11-19" data-latest="2026-11-24" data-count="99">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.1）" title="查看更新记录（当前 v2.1）">
     <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
-    <span class="cl-badge-ver">v2.0</span>
+    <span class="cl-badge-ver">v2.1</span>
     <span class="cl-badge-label">更新记录</span>
   </button>
   <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
@@ -302,8 +302,8 @@
       <header class="cl-head">
         <div class="cl-head-main">
           <span class="cl-kicker">RELEASE NOTES</span>
-          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.0</span></h2>
-          <p class="cl-sub" id="cl-subtitle">当前版本 v2.0 · 数据截止 2026-11-19 · 94 条记录</p>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.1</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.1 · 数据截止 2026-11-19 · 99 条记录</p>
         </div>
         <div class="cl-actions">
           <div class="cl-lang" role="group" aria-label="切换语言">
@@ -320,7 +320,7 @@
         </div>
       </div>
       <footer class="cl-foot">
-        <span data-changelog-meta>v2.0 · 2026-11-19 · 94 条记录</span>
+        <span data-changelog-meta>v2.1 · 2026-11-19 · 99 条记录</span>
         <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
       </footer>
     </div>

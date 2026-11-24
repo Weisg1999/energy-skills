@@ -88,7 +88,7 @@
       <p class="lede">气象决定能发多少、要用多少，燃料决定发一度电要多少钱；2026 年电煤长协以 675 元/吨为基准、基准价+浮动价各占 50%，政策区间 570–770 元/吨，签约覆盖率要求发电侧不低于 80%；长协与市场煤双轨使同一现货涨幅在不同电厂产生完全不同的度电成本。本页补齐燃料成本到边际报价的转换链、点火价差与清洁价差、煤/气切换碳价、库存与合约风险，并单列天然气/LNG 的三大枢纽、单位换算、长协结构与气电两部制成本。</p>
       <p class="hook">2026-11 · 量由气象 / 价由燃料 / 约束由电网</p>
       <div class="tags"><span class="tag">燃料</span><span class="tag">电煤长协</span><span class="tag">动力煤</span><span class="tag">边际成本</span><span class="tag">点火价差</span><span class="tag">清洁价差</span><span class="tag">煤电</span><span class="tag">气电</span><span class="tag">天然气</span><span class="tag">LNG</span><span class="tag">TTF</span><span class="tag">JKM</span><span class="tag">Henry Hub</span><span class="tag">热耗率</span><span class="tag">库存</span><span class="tag">双轨制</span></div>
-      <div class="doc-meta"><span>约 14.0k 字</span><span>阅读约 23 分钟</span><span>12 节</span><span>数据截止 2026-11-12</span></div>
+      <div class="doc-meta"><span>约 14.1k 字</span><span>阅读约 23 分钟</span><span>12 节</span><span>数据截止 2026-11-12</span></div>
     </header>
 
     <details class="toc-mobile">
@@ -224,13 +224,13 @@
 <h2 id="s26">速查</h2>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>要回答的问题</th><th>先看哪一节</th></tr></thead><tbody><tr><td>长协价怎么算、为什么只涨一半</td><td>§1.2</td></tr><tr><td>为什么两个电厂成本差很多</td><td>§0.1 第 6 条、§7 算例 2</td></tr><tr><td>元/吨怎么换成元/MWh</td><td>§2.1</td></tr><tr><td>点火价差与清洁价差</td><td>§2.3、§7 算例 3</td></tr><tr><td>碳价什么时候让气电更划算</td><td>§4、§7 算例 4</td></tr><tr><td>气价单位怎么换成电价、1 吨 LNG 是多少 MWh</td><td>§3.1、§7 算例 6</td></tr><tr><td>TTF/JKM/HH 是什么关系、气电成本怎么算</td><td>§3.2–§3.4、§7 算例 7–8</td></tr><tr><td>中国气电为什么不能套欧洲模型</td><td>§3.5、§7 算例 10</td></tr><tr><td>燃料风险能不能对冲</td><td>§6</td></tr><tr><td>有没有可复算的算例</td><td>§7 与 <code>electricity-trading-expert/tools/fuel.py</code></td></tr><tr><td>阻塞与输电权</td><td><a href="省间与跨区交易-2026-11.html">省间与跨区交易</a> §5.5–§5.6</td></tr></tbody></table></div>
 <h2 id="s27">与技能和其他笔记的分工</h2>
-<ul><li><strong>不新增分区、不新增技能</strong>：燃料与气象同属上游输入变量，本页为 cross 第 8 篇；预测方法论仍归 <code>spot-bidding-quant</code>，报价可行域与风控归 <a href="量化报价与交易风控-工程化-2026-11.html">量化报价</a>。</li><li><strong>零依赖工具</strong>：<code>skills/electricity-trading-expert/tools/fuel.py</code>（长协定价、双轨混合、度电成本、点火价差、清洁价差、切换碳价、库存天数、气价单位换算、LNG 长协、CCGT 成本、容量电价折算），断言并入该技能 <code>selftest.py</code>；电网约束侧的 <code>spot-bidding-quant/tools/network.py</code> 只负责价分离与动态 ATC，<strong>阻塞盈余与 FTR 仍归 <code>electricity-trading-expert/tools/market.py</code></strong>，不重复实现。CI 仍是 9 条自测。</li><li><strong>与气象模块对称</strong>：气象给量、燃料给价、电网给约束；三者叠加时才解释尖峰与负价（见 <a href="气象与电力交易-2026-11.html">气象与电力交易</a> §3 与 <a href="省间与跨区交易-2026-11.html">省间与跨区交易</a> §5.6）。</li><li><strong>省份差异只留指针</strong>：33 个省级页不硬凑燃料成本，见 <a href="省级市场状态表-2026-11.html">省级市场状态表</a>；容量电价、136 与现货限价已在各页，本页不复制。</li></ul>
+<ul><li><strong>不新增分区、不新增技能</strong>：燃料与气象同属上游输入变量，本页为 cross 第 8 篇；预测方法论仍归 <code>spot-bidding-quant</code>，报价可行域与风控归 <a href="量化报价与交易风控-工程化-2026-11.html">量化报价</a>。</li><li><strong>零依赖工具</strong>：<code>skills/electricity-trading-expert/tools/fuel.py</code>（长协定价、双轨混合、度电成本、点火价差、清洁价差、切换碳价、库存天数、气价单位换算、LNG 长协、CCGT 成本、容量电价折算），断言并入该技能 <code>selftest.py</code>；电网约束侧的 <code>spot-bidding-quant/tools/network.py</code> 只负责价分离与动态 ATC，<strong>阻塞盈余与 FTR 仍归 <code>electricity-trading-expert/tools/market.py</code></strong>，不重复实现。CI 仍是 9 条自测。</li><li><strong>与气象模块对称</strong>：气象给量、燃料给价、电网给约束；三者叠加时才解释尖峰与负价（见 <a href="气象与电力交易-2026-11.html">气象与电力交易</a> §3 与 <a href="省间与跨区交易-2026-11.html">省间与跨区交易</a> §5.6）。</li><li><strong>价格归因的接口</strong>：燃料只提供边际成本输入；把燃料变化转成价格贡献，用 <a href="电价归因与盘前推演-2026-11.html">电价归因与盘前推演</a>，本页不重复 Shapley/情景网格。</li><li><strong>省份差异只留指针</strong>：33 个省级页不硬凑燃料成本，见 <a href="省级市场状态表-2026-11.html">省级市场状态表</a>；容量电价、136 与现货限价已在各页，本页不复制。</li></ul>
 <h2 id="s28">更新记录</h2>
 <ul><li>2026-11-12：新建。补齐燃料与一次能源到边际报价的转换链、长协双轨定价、点火价差与清洁价差、煤/气切换、库存与合约风险；新增零依赖 <code>fuel.py</code> 与 5 组 D 级合成算例并双向锁定；与电网约束横向对照同批落地。</li><li>2026-11-12：新增 §3「天然气与 LNG」——三大枢纽（HH/TTF/JKM）的 2026 时点价格、MMBtu/MWh/m³/吨/Mtpa 换算、油指数与 HH+液化费长协、CCGT 燃料/碳/容量成本、中国气电两部制与氢混烧边界；§7 扩为十组算例，<code>fuel.py</code> 增补气价与 LNG 辅助函数，旧 §3–§7 顺延为 §4–§8。</li></ul>
     </article>
 
     <section class="related" aria-labelledby="related-title">
-      <div class="related-head"><h2 id="related-title">相关模块</h2><span>13</span></div>
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>14</span></div>
       <div class="related-grid">
         <a class="related-card" href="量化报价与交易风控-工程化-2026-11.html">
           <span class="related-type">跨区对照</span>
@@ -253,7 +253,7 @@
           <span>14 份现行文件总表、2026 年四条主线、电费计算链、两部制/力率算例与省级差异矩阵。</span>
         </a>
       </div>
-      <p class="related-rest"><b>更多关联</b><a href="中国电价史-2026-11.html">中国电价史</a><a href="碳资产实务-2026-11.html">碳资产实务 2026-11</a><a href="储能投资与运营-2026-11.html">储能投资与运营</a><a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算（2026 版）</a><a href="省级市场状态表-2026-11.html">省级电力市场状态总表</a><a href="英国电力市场-2026-11.html">英国电力市场（2026 版）</a><a href="德国电力市场-2026-11.html">德国电力市场（2026 版）</a><a href="美国电力市场-2026-11.html">美国电力市场（2026 版）：ERCOT / PJM / CAISO</a><a href="日本电力市场-2026-11.html">日本电力市场（2026 版）：现货、容量市场与 LTDA</a></p>
+      <p class="related-rest"><b>更多关联</b><a href="中国电价史-2026-11.html">中国电价史</a><a href="碳资产实务-2026-11.html">碳资产实务 2026-11</a><a href="储能投资与运营-2026-11.html">储能投资与运营</a><a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算（2026 版）</a><a href="省级市场状态表-2026-11.html">省级电力市场状态总表</a><a href="英国电力市场-2026-11.html">英国电力市场（2026 版）</a><a href="德国电力市场-2026-11.html">德国电力市场（2026 版）</a><a href="美国电力市场-2026-11.html">美国电力市场（2026 版）：ERCOT / PJM / CAISO</a><a href="日本电力市场-2026-11.html">日本电力市场（2026 版）：现货、容量市场与 LTDA</a><a href="电价归因与盘前推演-2026-11.html">电价归因与盘前推演：从负荷、新能源、检修、燃料、阻塞到价格</a></p>
     </section>
 
 
@@ -310,10 +310,10 @@
 <nav class="page-aux" aria-label="页面辅助">
   <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
 </nav>
-<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.0" data-cutoff="2026-11-19" data-latest="2026-11-21" data-count="94">
-  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.0）" title="查看更新记录（当前 v2.0）">
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.1" data-cutoff="2026-11-19" data-latest="2026-11-24" data-count="99">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.1）" title="查看更新记录（当前 v2.1）">
     <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
-    <span class="cl-badge-ver">v2.0</span>
+    <span class="cl-badge-ver">v2.1</span>
     <span class="cl-badge-label">更新记录</span>
   </button>
   <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
@@ -322,8 +322,8 @@
       <header class="cl-head">
         <div class="cl-head-main">
           <span class="cl-kicker">RELEASE NOTES</span>
-          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.0</span></h2>
-          <p class="cl-sub" id="cl-subtitle">当前版本 v2.0 · 数据截止 2026-11-19 · 94 条记录</p>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.1</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.1 · 数据截止 2026-11-19 · 99 条记录</p>
         </div>
         <div class="cl-actions">
           <div class="cl-lang" role="group" aria-label="切换语言">
@@ -340,7 +340,7 @@
         </div>
       </div>
       <footer class="cl-foot">
-        <span data-changelog-meta>v2.0 · 2026-11-19 · 94 条记录</span>
+        <span data-changelog-meta>v2.1 · 2026-11-19 · 99 条记录</span>
         <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
       </footer>
     </div>

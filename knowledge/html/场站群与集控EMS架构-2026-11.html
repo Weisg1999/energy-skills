@@ -54,9 +54,12 @@
               <li><a href="储能投资与运营-2026-11.html">储能投资与运营</a></li>
               <li><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a></li>
               <li><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a></li>
+              <li><a href="微网运行方式与并离网切换-2026-11.html">微网运行方式与并离网切换：从状态机到黑启动</a></li>
               <li><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a></li>
               <li class="on" aria-current="page"><a href="场站群与集控EMS架构-2026-11.html">场站群与集控 EMS 架构：分级调度、通信拓扑与群调群控</a></li>
               <li><a href="EMS数据接口参考架构-2026-11.html">EMS 数据接口参考架构：设备、调度、市场与计量结算的契约</a></li>
+              <li><a href="AGC-AVC与频率电压闭环-2026-11.html">AGC/AVC 与频率电压闭环：从 ACE 到场站考核</a></li>
+              <li><a href="状态估计与安全分析-2026-11.html">状态估计与安全分析：从 SCADA 量测到可信运行方式</a></li>
     </ul>
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
@@ -84,7 +87,7 @@
       <p class="lede">从单站 EMS 到场站群集控的分层架构、控制权限与时间尺度、通信拓扑与时延预算、群调群控与共享储能池、安全防护，附共享储能规模效应算例。</p>
       <p class="hook">场站群与集控 EMS</p>
       <div class="tags"><span class="tag">集控</span><span class="tag">场站群</span><span class="tag">分级调度</span><span class="tag">群调群控</span></div>
-      <div class="doc-meta"><span>约 5.0k 字</span><span>阅读约 9 分钟</span><span>12 节</span><span>数据截止 2026-11-19</span></div>
+      <div class="doc-meta"><span>约 5.2k 字</span><span>阅读约 10 分钟</span><span>12 节</span><span>数据截止 2026-11-19</span></div>
     </header>
 
     <details class="toc-mobile">
@@ -106,7 +109,7 @@
     </details>
 
     <article class="prose">
-<aside class="note note-head"><p>数据截止：2026-11-19｜定位：知识库模块（储能与 EMS·工程架构）</p><p>相关技能：<a href="../../skills/ems-dispatch/SKILL.md">EMS 优化调度专家</a>（调度内核）、<a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a>（共享储能投资）、<a href="../../skills/virtual-power-plant/SKILL.md">虚拟电厂专家</a>（聚合对照）</p><p>用途：回答&quot;多个场站为什么要集控、分级调度怎么分层、通信拓扑与时延怎么定、群调群控与单站放大有什么区别、共享储能省在哪、安全授权怎么做&quot;六类问题。本文做架构与工程整理；具体协议、时延指标与安全防护要求以现行标准、调度规程与项目设计为准。</p></aside>
+<aside class="note note-head"><p>数据截止：2026-11-19｜定位：知识库模块（储能与 EMS·工程架构）</p><p>相关技能：<a href="../../skills/ems-dispatch/SKILL.md">EMS 优化调度专家</a>（调度内核）、<a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a>（共享储能投资）、<a href="../../skills/virtual-power-plant/SKILL.md">虚拟电厂专家</a>（聚合对照）</p><p>用途：回答&quot;多个场站为什么要集控、分级调度怎么分层、通信拓扑与时延怎么定、群调群控与单站放大有什么区别、共享储能省在哪、安全授权怎么做&quot;六类问题。本文做架构与工程整理；具体协议、时延指标与安全防护要求以现行标准、调度规程与项目设计为准。</p><p>网络与控制延伸：集控层如何消费状态估计/N-1/ATC 结果，以及 AGC/AVC 指令如何落到场站，见<a href="状态估计与安全分析-2026-11.html">《状态估计与安全分析》</a>与<a href="AGC-AVC与频率电压闭环-2026-11.html">《AGC/AVC 与频率电压闭环》</a>。</p></aside>
 <hr>
 <h2 id="s1">0. 一页看懂</h2>
 <h3 id="s2">0.1 三句话</h3>
@@ -199,7 +202,7 @@
     </article>
 
     <section class="related" aria-labelledby="related-title">
-      <div class="related-head"><h2 id="related-title">相关模块</h2><span>5</span></div>
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>7</span></div>
       <div class="related-grid">
         <a class="related-card" href="储能EMS优化调度-算法与工程-2026-11.html">
           <span class="related-type">同区延伸</span>
@@ -222,7 +225,7 @@
           <span>从资源盘点、准入接入、云边控制到市场参与、结算分成与项目测算，补齐 2026 年 VPP 主线。</span>
         </a>
       </div>
-      <p class="related-rest"><b>更多关联</b><a href="EMS数据接口参考架构-2026-11.html">EMS 数据接口参考架构：设备、调度、市场与计量结算的契约</a></p>
+      <p class="related-rest"><b>更多关联</b><a href="EMS数据接口参考架构-2026-11.html">EMS 数据接口参考架构：设备、调度、市场与计量结算的契约</a><a href="AGC-AVC与频率电压闭环-2026-11.html">AGC/AVC 与频率电压闭环：从 ACE 到场站考核</a><a href="状态估计与安全分析-2026-11.html">状态估计与安全分析：从 SCADA 量测到可信运行方式</a></p>
     </section>
 
 <section class="related" aria-labelledby="paired-skills-title">
@@ -234,9 +237,9 @@
           <span>技能 · 储能 · 投决 · LCOS</span>
         </a>
         <a class="related-card skill-pair" href="skill-ems-dispatch.html">
-          <span class="related-type">96 点调度、SOC 与需量（含江苏零碳园区微网、山东独立储能电站日运行+考核复盘实例包）</span>
+          <span class="related-type">96 点调度、SOC 与需量、AGC/AVC 闭环与状态估计接口（含江苏零碳园区微网、山东独立储能电站日运行+考核复盘实例包）</span>
           <b>EMS 优化调度</b>
-          <span>技能 · EMS · SOC · 需量</span>
+          <span>技能 · EMS · SOC · 需量 · AGC/AVC · 状态估计</span>
         </a>
       </div>
     </section>
@@ -303,10 +306,10 @@
 <nav class="page-aux" aria-label="页面辅助">
   <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
 </nav>
-<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.0" data-cutoff="2026-11-19" data-latest="2026-11-21" data-count="94">
-  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.0）" title="查看更新记录（当前 v2.0）">
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.1" data-cutoff="2026-11-19" data-latest="2026-11-24" data-count="99">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.1）" title="查看更新记录（当前 v2.1）">
     <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
-    <span class="cl-badge-ver">v2.0</span>
+    <span class="cl-badge-ver">v2.1</span>
     <span class="cl-badge-label">更新记录</span>
   </button>
   <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
@@ -315,8 +318,8 @@
       <header class="cl-head">
         <div class="cl-head-main">
           <span class="cl-kicker">RELEASE NOTES</span>
-          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.0</span></h2>
-          <p class="cl-sub" id="cl-subtitle">当前版本 v2.0 · 数据截止 2026-11-19 · 94 条记录</p>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.1</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.1 · 数据截止 2026-11-19 · 99 条记录</p>
         </div>
         <div class="cl-actions">
           <div class="cl-lang" role="group" aria-label="切换语言">
@@ -333,7 +336,7 @@
         </div>
       </div>
       <footer class="cl-foot">
-        <span data-changelog-meta>v2.0 · 2026-11-19 · 94 条记录</span>
+        <span data-changelog-meta>v2.1 · 2026-11-19 · 99 条记录</span>
         <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
       </footer>
     </div>

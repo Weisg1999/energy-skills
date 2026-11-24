@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>状态估计与安全分析：从 SCADA 量测到可信运行方式 | energy-skills 知识库</title>
+<meta name="description" content="把 EMS 高级应用的第一块地基讲清楚：SCADA 量测如何变成可计算的网络状态，WLS 状态估计、可观测性与坏数据辨识，N-1/ATC 与安全校核，以及状态估计结果如何进入 AGC/AVC/ED；附 3 节点 D 级合成算例与 10 条常见错误。">
+<link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
+<script>
+(function(){try{var t=localStorage.getItem('es-theme');if(!/^(light|cream|green|dark)$/.test(t||'')){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/knowledge.css">
+<link rel="stylesheet" href="../assets/theme-menu.css">
+<link rel="stylesheet" href="../assets/changelog.css">
+</head>
+<body data-cat="storage" id="top">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
+  <div class="crumb">
+    <span class="crumb-cat">08 · STORAGE</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">状态估计与安全分析：从 SCADA 量测到可信运行方式</span>
+  </div>
+  <div class="topbar-act">
+    <div class="theme-picker" data-theme-picker>
+      <button class="theme-toggle" type="button" data-theme-menu aria-label="选择主题" title="选择主题">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="5"/><circle cx="15" cy="9" r="5"/><circle cx="12" cy="15" r="5"/></svg>
+      </button>
+    </div>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../状态估计与安全分析-2026-11.md">.md 源文件<small>knowledge/状态估计与安全分析-2026-11.md</small></a>
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">08 · STORAGE</div>
+    <h2 class="nav-cat"><a href="../index.html#storage">储能与 EMS</a></h2>
+    <ul class="nav-list">
+              <li><a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线、安全与构网型并网</a></li>
+              <li><a href="储能投资与运营-2026-11.html">储能投资与运营</a></li>
+              <li><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a></li>
+              <li><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a></li>
+              <li><a href="微网运行方式与并离网切换-2026-11.html">微网运行方式与并离网切换：从状态机到黑启动</a></li>
+              <li><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a></li>
+              <li><a href="场站群与集控EMS架构-2026-11.html">场站群与集控 EMS 架构：分级调度、通信拓扑与群调群控</a></li>
+              <li><a href="EMS数据接口参考架构-2026-11.html">EMS 数据接口参考架构：设备、调度、市场与计量结算的契约</a></li>
+              <li><a href="AGC-AVC与频率电压闭环-2026-11.html">AGC/AVC 与频率电压闭环：从 ACE 到场站考核</a></li>
+              <li class="on" aria-current="page"><a href="状态估计与安全分析-2026-11.html">状态估计与安全分析：从 SCADA 量测到可信运行方式</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#province"><b>03</b>中国省级市场</a></li>
+              <li><a href="../index.html#intl"><b>04</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>05</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>06</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>07</b>新能源与并网</a></li>
+              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>11</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">08 · STORAGE<i>知识模块</i></div>
+      <h1 class="doc-title">状态估计与安全分析：从 SCADA 量测到可信运行方式（2026-11）</h1>
+      <p class="lede">把 EMS 高级应用的第一块地基讲清楚：SCADA 量测如何变成可计算的网络状态，WLS 状态估计、可观测性与坏数据辨识，N-1/ATC 与安全校核，以及状态估计结果如何进入 AGC/AVC/ED；附 3 节点 D 级合成算例与 10 条常见错误。</p>
+      <p class="hook">状态估计与安全分析</p>
+      <div class="tags"><span class="tag">状态估计</span><span class="tag">WLS</span><span class="tag">坏数据辨识</span><span class="tag">可观测性</span><span class="tag">N-1</span><span class="tag">ATC</span><span class="tag">安全分析</span><span class="tag">EMS</span><span class="tag">SCADA</span><span class="tag">拓扑处理</span></div>
+      <div class="doc-meta"><span>约 14.3k 字</span><span>阅读约 26 分钟</span><span>13 节</span><span>数据截止 2026-11-19</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（13）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv2"><a href="#s6">1. 为什么 EMS 需要状态估计</a></li>
+            <li class="lv2"><a href="#s11">2. 网络模型与拓扑处理</a></li>
+            <li class="lv2"><a href="#s19">3. WLS 状态估计</a></li>
+            <li class="lv2"><a href="#s29">4. 坏数据与拓扑错误</a></li>
+            <li class="lv2"><a href="#s36">5. N-1、ATC 与安全分析</a></li>
+            <li class="lv2"><a href="#s44">6. 从状态估计到 AGC/AVC/ED</a></li>
+            <li class="lv2"><a href="#s50">7. D 级合成算例：从量测到 N-1</a></li>
+            <li class="lv2"><a href="#s58">8. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s59">9. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s60">10. 分工：和现有模块怎么配合</a></li>
+            <li class="lv2"><a href="#s61">11. 速查</a></li>
+            <li class="lv2"><a href="#s65">12. 版本与维护</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>数据截止：2026-11-19｜定位：知识库模块（储能与 EMS·网络模型与安全分析）</p><p>相关技能：<a href="../../skills/ems-dispatch/SKILL.md">储能与 EMS 调度专家</a>（EMS 应用链与场站闭环）、<a href="../../skills/spot-bidding-quant/SKILL.md">现货报价量化专家</a>（网络限额与节点价背景）</p><p>用途：回答&quot;状态估计到底估什么、SCADA 有量测为什么还要估、坏数据怎么找、N-1 和 ATC 怎么用、状态估计结果怎么进 AGC/AVC/ED&quot;五类问题。节点价推导见<a href="潮流阻塞与节点电价-2026-11.html">《从潮流到节点电价》</a>，出清见<a href="现货出清与价格形成-2026-11.html">《现货出清与价格形成》</a>，控制层见<a href="AGC-AVC与频率电压闭环-2026-11.html">《AGC/AVC 与频率电压闭环》</a>。</p><p>算例：一个 3 节点直流 D 级合成算例，由 <a href="../../skills/ems-dispatch/tools/state.py">state.py</a> 复现，断言见 <a href="../../skills/ems-dispatch/tools/selftest.py">selftest.py</a> 的 &quot;state estimation and N-1&quot; 段。</p><p>边界：本文不替代调度机构的网络模型、状态估计器、安全校核程序或市场出清系统；不提供真实电网参数、限额或运行方式；不构成调度、交易或并网建议。</p></aside>
+<hr>
+<h2 id="s1">0. 一页看懂</h2>
+<h3 id="s2">0.1 三句话</h3>
+<ul><li><strong>状态估计是 EMS 的&quot;共同运行方式&quot;</strong>：它把不同时标、不同测点、可能带坏数据的 SCADA 量测，压成一组自洽的母线电压/相角，让 AGC、AVC、ED、安全校核用同一张网、同一个断面。</li><li><strong>估计值必须带&quot;可信度&quot;</strong>：收敛不等于正确；要看可观测性、残差、拓扑状态、量测质量。坏数据不处理，会把误差抹到所有状态上。</li><li><strong>安全分析是&quot;在估计状态上做假设&quot;</strong>：N-1、ATC、安全约束调度都建立在状态估计和网络模型上；状态错了，限额和价格都会错。</li></ul>
+<h3 id="s3">0.2 关键概念</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>概念</th><th>含义</th><th>本文口径</th></tr></thead><tbody><tr><td>拓扑处理</td><td>把开关/刀闸状态变成母线模型和电气岛</td><td>状态错误比量测错误更致命</td></tr><tr><td>状态估计</td><td>由冗余量测估计网络状态（电压幅值/相角）</td><td>本文用直流 WLS 演示，交流 SE 只讲结构</td></tr><tr><td>量测冗余</td><td>量测数多于状态数，留出检验空间</td><td>冗余不足时坏数据不可辨识</td></tr><tr><td>可观测性</td><td>能否唯一确定状态</td><td>拓扑可观测 + 数值可观测，缺一不可</td></tr><tr><td>坏数据</td><td>偏离真实值且不被模型解释的量测</td><td>用残差/标准化残差检验，不能凭感觉删</td></tr><tr><td>伪量测</td><td>预测负荷、计划出力、零注入等补充信息</td><td>权重不能压过真实量测；必须标注来源</td></tr><tr><td>N-1</td><td>单一元件故障后的安全校核</td><td>只看可信故障集，不是所有组合</td></tr><tr><td>ATC</td><td>可用输电能力</td><td>随运行方式、故障、限额变化，不是固定容量</td></tr><tr><td>安全约束调度</td><td>在 N-1/限额约束下做 ED/SCED/SCUC</td><td>与状态估计、故障集、限额共同决定</td></tr><tr><td>状态估计 vs 潮流</td><td>潮流假设注入已知；状态估计从量测反推状态</td><td>两者输入输出不同，不能混用</td></tr></tbody></table></div>
+<h3 id="s4">0.3 先记住四个数</h3>
+<p>3 节点直流合成算例（基准 100 MVA）：</p>
+<ul><li><strong>7 个量测、2 个状态</strong>：冗余 5；真实相角 <code>θ2 = -0.020 rad</code>、<code>θ3 = -0.030 rad</code>。</li><li><strong>一个坏数据</strong>：线路 1-3 有功量测 <code>0.180 pu</code>，真实值 <code>0.150 pu</code>；WLS 估计变为 <code>θ2 = -0.020539</code>、<code>θ3 = -0.031470</code>，坏数据标准化残差 <strong>5.21</strong>（示例阈值 3.0）。</li><li><strong>剔除后回到真值</strong>：去掉该量测重新估计，得到 <code>θ2 = -0.020000</code>、<code>θ3 = -0.030000</code>，基准潮流 <code>0.200 / 0.150 / 0.050 pu</code>。</li><li><strong>N-1 越限</strong>：线路 1-2 停运后，线路 1-3 潮流 <strong>0.350 pu</strong>，限额 <strong>0.300 pu</strong>，越限 <strong>0.050 pu = 5 MW</strong>；在 bus3 增加 0.05 pu 本地出力/削减负荷后可回到 0.300 pu。</li></ul>
+<h3 id="s5">0.4 本文不做什么</h3>
+<ul><li>不提供真实电网的拓扑、阻抗、限额、故障集或量测配置；</li><li>不实现完整的交流状态估计、PMU 线性估计、动态状态估计或配电系统 SE；</li><li>不替代调度机构的 N-1 扫描、ATC 计算、安全校核或市场出清；</li><li>不把直流线性算例的结论直接搬到交流电网、电压稳定或暂态稳定问题；</li><li>不把状态估计结果当作保护定值、安稳策略或设备控制指令。</li></ul>
+<hr>
+<h2 id="s6">1. 为什么 EMS 需要状态估计</h2>
+<h3 id="s7">1.1 SCADA 给的是量测，不是运行方式</h3>
+<p>SCADA 能提供：</p>
+<ul><li>线路/变压器有功、无功、电流；</li><li>母线电压；</li><li>开关/刀闸位置；</li><li>机组/场站出力、负荷；</li><li>频率、保护/告警信号。</li></ul>
+<p>但这些量测通常：</p>
+<ul><li>来自不同设备、不同采样周期，时标不完全一致；</li><li>有坏点、冻结值、通信中断、质量位异常；</li><li>不是每个母线、每条线路都装表；</li><li>有量测误差，甚至存在系统性偏差；</li><li>开关状态可能和实际不符（拓扑错误）。</li></ul>
+<p>EMS 的高级应用不能直接拿一堆不同步、不完整、可能错误的量测去算潮流或安全限额；它需要一个<strong>自洽、带质量标记、可复现</strong>的运行方式。状态估计就是干这个的。</p>
+<h3 id="s8">1.2 状态估计与潮流计算的区别</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>潮流计算</th><th>状态估计</th></tr></thead><tbody><tr><td>已知</td><td>发电机出力、负荷注入、电压/相角参考</td><td>冗余量测（潮流、电压、注入、开关状态）</td></tr><tr><td>求</td><td>母线电压幅值/相角、支路潮流</td><td>母线电压幅值/相角（状态）</td></tr><tr><td>冗余</td><td>通常无冗余</td><td>有冗余，可做坏数据检验</td></tr><tr><td>误差</td><td>输入假设即&quot;真值&quot;</td><td>量测有误差，估计带不确定度</td></tr><tr><td>用途</td><td>规划、方式计算、调度预想</td><td>实时/准实时运行方式、安全分析输入</td></tr></tbody></table></div>
+<p>潮流计算回答&quot;给定注入，电网会怎样&quot;；状态估计回答&quot;根据这些量测，电网现在最可能是什么状态&quot;。</p>
+<h3 id="s9">1.3 EMS 应用链</h3>
+<pre tabindex="0"><code>SCADA/RTU/PMU
+   ↓ 量测、状态量、时标、质量位
+拓扑处理（开关/刀闸 → 母线/电气岛）
+   ↓ 网络模型
+状态估计（WLS/其他）
+   ↓ 母线电压/相角、残差、可观测性
+安全分析（N-1、电压/热稳定、ATC）
+   ↓ 限额、越限、校正措施
+ED/AGC/AVC/市场出清
+   ↓ 指令、价格、考核</code></pre>
+<p>这条链上任何一环失真，后面都会放大：</p>
+<ul><li>拓扑错 → 状态估计用错网络；</li><li>状态错 → N-1 越限判断错；</li><li>限额错 → AGC/AVC 指令越限或过度保守；</li><li>故障集错 → 市场出清的安全约束错。</li></ul>
+<h3 id="s10">1.4 状态估计的输出不只是&quot;电压&quot;</h3>
+<p>一个可用的状态估计结果至少应带：</p>
+<ul><li>收敛状态、迭代次数、目标函数值；</li><li>各母线电压幅值/相角（交流）或相角（直流）；</li><li>支路潮流/注入估计；</li><li>量测残差、标准化残差、可疑量测列表；</li><li>可观测性/不可观测区域；</li><li>拓扑岛、参考母线、孤岛处理；</li><li>数据时标、所用模型版本、质量标记。</li></ul>
+<p>只给一张电压云图，不足以支撑安全分析。</p>
+<hr>
+<h2 id="s11">2. 网络模型与拓扑处理</h2>
+<h3 id="s12">2.1 母线/支路模型</h3>
+<p>状态估计的网络模型至少包括：</p>
+<ul><li>母线（节点）编号与类型（平衡/PV/PQ）；</li><li>支路（线路/变压器）首末母线、阻抗/电纳、变比、限额；</li><li>并联补偿（电容/电抗）、负荷、发电机/场站；</li><li>开关/刀闸状态与拓扑关系；</li><li>参考母线/相角基准；</li><li>电气岛划分。</li></ul>
+<p>模型版本要和 SCADA 状态、检修票、方式单对应；拿旧模型估新方式，残差可能看起来正常，但结果是错的。</p>
+<h3 id="s13">2.2 拓扑处理</h3>
+<p>拓扑处理把&quot;开关/刀闸状态&quot;变成&quot;母线模型&quot;：</p>
+<ol><li>读取开关/刀闸位置、质量位、检修状态；</li><li>合并同一电气节点上的闭合开关；</li><li>按支路连接关系划分电气岛；</li><li>识别孤岛、悬空节点、零注入节点；</li><li>给每个电气岛指定参考母线；</li><li>把拓扑变化写入状态估计和后续应用。</li></ol>
+<p>常见拓扑错误：</p>
+<ul><li>开关状态错（该合未合、该分未分）；</li><li>检修状态未同步；</li><li>刀闸/接地刀位置混淆；</li><li>支路一端断开但模型仍闭合；</li><li>孤岛没有参考母线；</li><li>母线合并/拆分后量测映射错。</li></ul>
+<p>拓扑错误可能表现为&quot;坏数据&quot;：残差大、估计偏差，但删量测解决不了。要用开关状态一致性、多断面、计划/检修票、现场核对来定位。</p>
+<h3 id="s14">2.3 直流潮流近似</h3>
+<p>本文用直流潮流演示状态估计，因为它是线性的、可手算：</p>
+<pre tabindex="0"><code>P_ij = (θ_i - θ_j) / x_ij</code></pre>
+<p>假设：</p>
+<ul><li>支路电阻远小于电抗；</li><li>相角差小，<code>sin θ ≈ θ</code>；</li><li>电压幅值接近 1.0 pu；</li><li>忽略网损和无功。</li></ul>
+<p>它适合讲清楚&quot;量测—状态—残差&quot;的结构，但不能用于电压稳定、无功/电压、网损精确计算或交流安全校核。</p>
+<h3 id="s15">2.4 交流状态估计的额外复杂性</h3>
+<p>交流 SE 的状态是电压幅值和相角，量测方程是非线性的：</p>
+<ul><li>有功/无功潮流、电压幅值、电流幅值、注入；</li><li>需要迭代（Gauss-Newton 等）；</li><li>需要好的初值、数值稳定性和收敛判据；</li><li>无功/电压量测对电压稳定分析很重要；</li><li>变压器分接头、并联补偿、发电机无功限值会影响可观测性；</li><li>坏数据与拓扑错误更难区分。</li></ul>
+<p>本文不展开交流 SE 的迭代细节，只保留结构上的对应关系。</p>
+<h3 id="s16">2.5 参数错误</h3>
+<p>即使拓扑正确，参数错误也会让状态估计有偏：</p>
+<ul><li>线路阻抗/电纳录错；</li><li>变压器变比/分接头位置错；</li><li>线路长度/温度修正未更新；</li><li>并联补偿容量/状态错；</li><li>互感/零序参数不适用于正序计算。</li></ul>
+<p>参数错误通常表现为&quot;残差有系统性方向&quot;，不是随机坏点；换量测权重或删量测不能根治。</p>
+<h3 id="s17">2.6 可观测性</h3>
+<p>可观测性分两层：</p>
+<ul><li><strong>拓扑可观测</strong>：网络结构和量测配置能否覆盖所有状态；</li><li><strong>数值可观测</strong>：量测方程是否线性无关、数值条件是否良好。</li></ul>
+<p>常见问题：</p>
+<ul><li>某些母线没有注入/电压量测，也没有伪量测；</li><li>支路量测很多但集中在同一区域，另一区域不可观测；</li><li>孤岛没有参考母线；</li><li>量测权重极端，导致数值病态；</li><li>零注入约束没有用上（浪费了已知信息）。</li></ul>
+<p>不可观测时，状态估计器可能：</p>
+<ul><li>只估计可观测区域，其他区域保持上次值/计划值；</li><li>用伪量测补足，但结果依赖伪量测权重；</li><li>直接失败，拒绝输出。</li></ul>
+<p>工程上必须知道&quot;这次估计覆盖了哪些区域、哪些是伪量测撑起来的&quot;，不能把不可观测区域的估计当实测。</p>
+<h3 id="s18">2.7 伪量测</h3>
+<p>伪量测包括：</p>
+<ul><li>预测负荷；</li><li>发电计划/场站出力计划；</li><li>零注入约束（无负荷/无发电的母线）；</li><li>历史状态/上次估计；</li><li>调度员输入的运行方式。</li></ul>
+<p>使用原则：</p>
+<ul><li>标注来源和权重，不能与真实量测混淆；</li><li>权重不能压过真实量测，否则真实量测被&quot;淹没&quot;；</li><li>伪量测不能用来掩盖拓扑/参数错误；</li><li>关键区域应尽量有真实量测冗余。</li></ul>
+<hr>
+<h2 id="s19">3. WLS 状态估计</h2>
+<h3 id="s20">3.1 量测模型</h3>
+<pre tabindex="0"><code>z = h(x) + e</code></pre>
+<ul><li><code>z</code>：量测向量（m 维）；</li><li><code>x</code>：状态向量（n 维，直流为相角，交流为幅值/相角）；</li><li><code>h(x)</code>：量测函数；</li><li><code>e</code>：量测误差，假设零均值、协方差 <code>R</code>。</li></ul>
+<p>权重矩阵：</p>
+<pre tabindex="0"><code>W = R^(-1) = diag(1/σ_i^2)</code></pre>
+<p><code>σ_i</code> 是第 i 个量测的标准差；权重越大，越相信该量测。</p>
+<h3 id="s21">3.2 目标函数</h3>
+<pre tabindex="0"><code>J(x) = (z - h(x))^T W (z - h(x))</code></pre>
+<p>WLS 估计就是找使加权残差平方和最小的 <code>x</code>。</p>
+<p>直流线性情况下 <code>h(x) = H x</code>：</p>
+<pre tabindex="0"><code>x_hat = (H^T W H)^(-1) H^T W z</code></pre>
+<p>交流情况下用 Gauss-Newton 迭代：</p>
+<pre tabindex="0"><code>x_(k+1) = x_k + (H_k^T W H_k)^(-1) H_k^T W (z - h(x_k))</code></pre>
+<p>其中 <code>H_k</code> 是量测函数在 <code>x_k</code> 处的雅可比矩阵。</p>
+<h3 id="s22">3.3 3 节点算例的系统</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>数值</th></tr></thead><tbody><tr><td>基准容量</td><td>100 MVA</td></tr><tr><td>母线</td><td>1（平衡）、2、3</td></tr><tr><td>支路 1-2</td><td>x = 0.10 pu</td></tr><tr><td>支路 1-3</td><td>x = 0.20 pu</td></tr><tr><td>支路 2-3</td><td>x = 0.20 pu</td></tr><tr><td>真实相角</td><td>θ1 = 0，θ2 = -0.020 rad，θ3 = -0.030 rad</td></tr><tr><td>真实注入</td><td>bus1 +0.35，bus2 -0.15，bus3 -0.20 pu</td></tr><tr><td>支路限额</td><td>1-2：0.40；1-3：0.30；2-3：0.20 pu</td></tr></tbody></table></div>
+<p>真实潮流：</p>
+<pre tabindex="0"><code>P12 = (0 - (-0.020)) / 0.10 = 0.200 pu
+P13 = (0 - (-0.030)) / 0.20 = 0.150 pu
+P23 = (-0.020 - (-0.030)) / 0.20 = 0.050 pu</code></pre>
+<h3 id="s23">3.4 量测配置</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th style="text-align:right">编号</th><th>量测</th><th style="text-align:right">真实值</th><th style="text-align:right">标准差 σ</th><th>说明</th></tr></thead><tbody><tr><td style="text-align:right">1</td><td>P12</td><td style="text-align:right">0.200 pu</td><td style="text-align:right">0.005</td><td>线路有功</td></tr><tr><td style="text-align:right">2</td><td>P13</td><td style="text-align:right">0.150 pu</td><td style="text-align:right">0.005</td><td>本算例注入坏数据 0.180</td></tr><tr><td style="text-align:right">3</td><td>P23</td><td style="text-align:right">0.050 pu</td><td style="text-align:right">0.005</td><td>线路有功</td></tr><tr><td style="text-align:right">4</td><td>θ2</td><td style="text-align:right">-0.020 rad</td><td style="text-align:right">0.002</td><td>相角量测（示意 PMU）</td></tr><tr><td style="text-align:right">5</td><td>θ3</td><td style="text-align:right">-0.030 rad</td><td style="text-align:right">0.002</td><td>相角量测（示意 PMU）</td></tr><tr><td style="text-align:right">6</td><td>P2 注入</td><td style="text-align:right">-0.150 pu</td><td style="text-align:right">0.006</td><td>母线 2 注入</td></tr><tr><td style="text-align:right">7</td><td>P3 注入</td><td style="text-align:right">-0.200 pu</td><td style="text-align:right">0.006</td><td>母线 3 注入</td></tr></tbody></table></div>
+<p>7 个量测、2 个状态，冗余 5。冗余不是&quot;越多越好&quot;，而是要有独立信息；重复量测同一支路不一定提高可观测性。</p>
+<h3 id="s24">3.5 量测矩阵 H</h3>
+<p>状态 <code>x = [θ2, θ3]^T</code>，各量测函数：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>量测</th><th>表达式</th><th>H 行</th></tr></thead><tbody><tr><td>P12</td><td>-10 θ2</td><td>[-10, 0]</td></tr><tr><td>P13</td><td>-5 θ3</td><td>[0, -5]</td></tr><tr><td>P23</td><td>5 θ2 - 5 θ3</td><td>[5, -5]</td></tr><tr><td>θ2</td><td>θ2</td><td>[1, 0]</td></tr><tr><td>θ3</td><td>θ3</td><td>[0, 1]</td></tr><tr><td>P2 注入</td><td>15 θ2 - 5 θ3</td><td>[15, -5]</td></tr><tr><td>P3 注入</td><td>-5 θ2 + 10 θ3</td><td>[-5, 10]</td></tr></tbody></table></div>
+<p>注入行的推导：bus2 注入 = 流向 bus1 + 流向 bus3 = <code>-P12 + P23</code>；bus3 注入 = <code>-P13 - P23</code>。符号约定要在代码和文档中写死，否则残差会整体反号。</p>
+<h3 id="s25">3.6 WLS 结果</h3>
+<p>把坏数据 <code>z2 = 0.180</code> 代入，WLS 估计：</p>
+<pre tabindex="0"><code>θ2 = -0.020539 rad
+θ3 = -0.031470 rad
+J  = 27.18</code></pre>
+<p>估计潮流：</p>
+<pre tabindex="0"><code>P12 = 0.205391 pu
+P13 = 0.157349 pu
+P23 = 0.054654 pu</code></pre>
+<p>残差与标准化残差：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>量测</th><th style="text-align:right">残差</th><th style="text-align:right">标准化残差</th><th>读法</th></tr></thead><tbody><tr><td>P12</td><td style="text-align:right">-0.005391</td><td style="text-align:right">-1.47</td><td>正常范围</td></tr><tr><td>P13</td><td style="text-align:right">0.022651</td><td style="text-align:right"><strong>5.21</strong></td><td>超过示例阈值 3.0，可疑</td></tr><tr><td>P23</td><td style="text-align:right">-0.004654</td><td style="text-align:right">-1.03</td><td>正常范围</td></tr><tr><td>θ2</td><td style="text-align:right">0.000539</td><td style="text-align:right">0.27</td><td>正常范围</td></tr><tr><td>θ3</td><td style="text-align:right">0.001470</td><td style="text-align:right">0.76</td><td>正常范围</td></tr><tr><td>P2 注入</td><td style="text-align:right">0.000737</td><td style="text-align:right">0.18</td><td>正常范围</td></tr><tr><td>P3 注入</td><td style="text-align:right">0.012003</td><td style="text-align:right">2.86</td><td>偏高但未超阈值，需结合其它检验</td></tr></tbody></table></div>
+<p>坏数据不是&quot;残差最大就一定是坏数据&quot;：P3 注入的标准化残差 2.86 也偏高，可能是坏数据扩散/量测相关；需要看多个断面、拓扑、参数和量测独立性。</p>
+<h3 id="s26">3.7 剔除坏数据后重估</h3>
+<p>去掉 P13 量测后，用剩余 6 个量测重估：</p>
+<pre tabindex="0"><code>θ2 = -0.020000 rad
+θ3 = -0.030000 rad
+J ≈ 0</code></pre>
+<p>恢复真实潮流 <code>0.200 / 0.150 / 0.050 pu</code>。这说明：</p>
+<ul><li>本例的冗余足够识别单个坏数据；</li><li>剔除后必须重估，不能只把残差改小；</li><li>如果剔除后仍不收敛/残差大，可能是拓扑或参数错误，不是量测问题。</li></ul>
+<h3 id="s27">3.8 自由度与检验</h3>
+<ul><li>自由度 <code>df = m - n</code>；本例 7 - 2 = 5。</li><li>可以用卡方检验判断&quot;整体残差是否过大&quot;，但它不能直接告诉你哪个量测坏。</li><li>标准化残差用于逐点定位；阈值 3.0 是示例，实际按误报/漏报权衡。</li><li>多个坏数据、杠杆点、拓扑错误会让单点检验失效，需要组合检验/稳健估计。</li></ul>
+<h3 id="s28">3.9 数值问题</h3>
+<ul><li>参考母线选择影响 H 的秩；没有参考母线，相角不可唯一。</li><li>量测权重差异过大，<code>H^T W H</code> 条件数变差；要用稳定的线性求解。</li><li>状态尺度不同（相角 rad、电压 pu），要统一单位。</li><li>稀疏网络要用稀疏求解；本文 3 节点用稠密矩阵只为演示。</li></ul>
+<hr>
+<h2 id="s29">4. 坏数据与拓扑错误</h2>
+<h3 id="s30">4.1 残差从哪来</h3>
+<p>残差：</p>
+<pre tabindex="0"><code>r = z - h(x_hat)</code></pre>
+<p>残差不是误差本身：WLS 会把一部分误差吸收到状态里，残差是&quot;模型解释不了的部分&quot;。残差协方差：</p>
+<pre tabindex="0"><code>Ω = R - H (H^T W H)^(-1) H^T</code></pre>
+<p>标准化残差：</p>
+<pre tabindex="0"><code>r_i^N = r_i / sqrt(Ω_ii)</code></pre>
+<p><code>Ω_ii</code> 越小，同样的残差越显著；杠杆点（对状态影响大的量测）残差可能很小，但一旦出错影响很大。</p>
+<h3 id="s31">4.2 坏数据的四种来源</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>来源</th><th>例子</th><th>特征</th><th>处理</th></tr></thead><tbody><tr><td>量测坏点</td><td>变送器故障、通信误码</td><td>单点残差大、随机</td><td>剔除/重估/换表</td></tr><tr><td>拓扑错误</td><td>开关状态错、检修未同步</td><td>多量测残差同向、区域性问题</td><td>核对开关/方式单，修模型</td></tr><tr><td>参数错误</td><td>阻抗/变比错</td><td>系统性偏差、换断面仍存在</td><td>校参数，不能靠删量测</td></tr><tr><td>伪量测错误</td><td>预测负荷偏差大、计划出力过期</td><td>与真实量测冲突</td><td>降权/替换/标注</td></tr></tbody></table></div>
+<h3 id="s32">4.3 坏数据的掩盖与淹没</h3>
+<ul><li><strong>掩盖</strong>：两个坏数据互相抵消，残差都不大；</li><li><strong>淹没</strong>：一个坏数据把残差扩散到多个正常量测，导致误删；</li><li><strong>杠杆点</strong>：某些量测对状态影响大，残差小但估计偏差大；</li><li><strong>相关量测</strong>：同一物理量的多个测点同时错，冗余失效。</li></ul>
+<p>单点标准化残差检验不是万能的；要有多个断面、独立量测、拓扑核对和参数校验。</p>
+<h3 id="s33">4.4 拓扑错误为什么更危险</h3>
+<p>拓扑错误会改变量测函数 <code>H</code>，不是改变 <code>z</code>：</p>
+<ul><li>你以为线路在运行，实际已断开；</li><li>你以为母线分裂，实际合并；</li><li>你以为开关合上，实际检修隔离。</li></ul>
+<p>此时残差可能很大，也可能因为伪量测/低冗余而&quot;看起来正常&quot;。安全分析会基于错误拓扑算 N-1，限额和价格都不可信。</p>
+<h3 id="s34">4.5 坏数据处理流程</h3>
+<ol><li>检查数据质量位、时标、通信状态；</li><li>跑状态估计，检查收敛、目标函数、可观测性；</li><li>计算标准化残差，列可疑量测；</li><li>核对拓扑/开关/检修/方式单；</li><li>核对参数/变比/补偿状态；</li><li>剔除或降权可疑量测，重估；</li><li>若仍异常，标记该区域不可信，通知调度/现场；</li><li>记录处理过程，供复盘。</li></ol>
+<p>不能&quot;看到残差大就删&quot;，也不能&quot;删到收敛为止&quot;。</p>
+<h3 id="s35">4.6 稳健估计</h3>
+<p>稳健估计（LAV、Huber、M 估计等）可以降低坏数据影响，但：</p>
+<ul><li>不能替代拓扑/参数校验；</li><li>阈值/权重仍要调；</li><li>多个坏数据/杠杆点仍可能失效；</li><li>结果可解释性和审计要求更高。</li></ul>
+<p>对大多数 EMS 场景，&quot;好数据+冗余+检验+重估&quot;比&quot;复杂稳健算法掩盖问题&quot;更可靠。</p>
+<hr>
+<h2 id="s36">5. N-1、ATC 与安全分析</h2>
+<h3 id="s37">5.1 安全 vs 充裕</h3>
+<ul><li><strong>安全性</strong>：故障后系统能否保持运行（热稳定、电压、功角等）；</li><li><strong>充裕性</strong>：是否有足够发电/容量满足负荷（资源充足性）；</li><li><strong>N-1</strong>：单一元件（线路、变压器、发电机等）故障后的安全校核；</li><li><strong>N-1-1/ N-2</strong>：更严重/组合故障，按规则和风险选择，不是默认全做。</li></ul>
+<p>状态估计提供当前运行方式，安全分析在其上做&quot;如果某元件停运会怎样&quot;的假设。</p>
+<h3 id="s38">5.2 N-1 扫描的基本步骤</h3>
+<ol><li>取状态估计后的网络状态（拓扑、注入、电压/相角）；</li><li>选择可信故障集（线路、变压器、发电机、母线等）；</li><li>对每个故障修改网络模型（开断支路/调整注入）；</li><li>重新计算潮流（直流/交流）；</li><li>检查支路限额、母线电压、功角/稳定限制；</li><li>记录越限元件、越限量、是否孤岛/失负荷；</li><li>形成安全约束/校正措施，送入 ED/AGC/AVC/市场。</li></ol>
+<p>N-1 不是&quot;把所有线路都断一遍&quot;就完事：故障集要基于电压等级、拓扑、保护/安稳、历史故障率、规则要求筛选。</p>
+<h3 id="s39">5.3 算例：N-1 越限</h3>
+<p>基准潮流（状态估计剔除坏数据后）：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>支路</th><th style="text-align:right">基准潮流（pu）</th><th style="text-align:right">限额（pu）</th><th>基准是否越限</th></tr></thead><tbody><tr><td>1-2</td><td style="text-align:right">0.200</td><td style="text-align:right">0.400</td><td>否</td></tr><tr><td>1-3</td><td style="text-align:right">0.150</td><td style="text-align:right">0.300</td><td>否</td></tr><tr><td>2-3</td><td style="text-align:right">0.050</td><td style="text-align:right">0.200</td><td>否</td></tr></tbody></table></div>
+<p>N-1 扫描：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>停运支路</th><th>剩余支路潮流（pu）</th><th>越限</th><th>说明</th></tr></thead><tbody><tr><td>1-2</td><td>1-3：<strong>0.350</strong>；2-3：0.150</td><td>1-3 超 0.300，越限 0.050</td><td>本算例重点</td></tr><tr><td>1-3</td><td>1-2：0.350；2-3：0.200</td><td>无（2-3 正好到限）</td><td>临界</td></tr><tr><td>2-3</td><td>1-2：0.350；1-3：0.200</td><td>无</td><td>安全</td></tr></tbody></table></div>
+<p>以 100 MVA 基准，0.050 pu = <strong>5 MW</strong>。这就是&quot;基准没问题、N-1 后才越限&quot;的典型场景；调度不能只看基准潮流。</p>
+<h3 id="s40">5.4 校正措施</h3>
+<p>对停运 1-2 的越限，可选的校正：</p>
+<ul><li>在 bus3 增加 0.05 pu 本地出力（或削减 0.05 pu 负荷），把 bus3 注入从 -0.20 调到 -0.15；</li><li>调整 bus2/bus3 的发电/负荷分配，改变潮流分布；</li><li>切换拓扑（如果有备用通道）；</li><li>调用储能/需求响应，提供局部支撑；</li><li>降额/限发，牺牲部分经济性换取安全。</li></ul>
+<p>校正后（bus3 注入 -0.15）：</p>
+<pre tabindex="0"><code>1-3 潮流 = 0.300 pu（回到限额）
+2-3 支路潮流 = -0.150 pu（即 3→2 为 0.150 pu）</code></pre>
+<p>这是<strong>示例性</strong>校正，不保证实际电网有同样的灵敏度；真实校正要考虑交流潮流、电压、保护、稳定和成本。</p>
+<h3 id="s41">5.5 ATC 是什么，不是什么</h3>
+<p>ATC（Available Transfer Capability）是&quot;在现有基础上还能增加多少输电&quot;：</p>
+<pre tabindex="0"><code>ATC ≈ TTC - 现有交易 - 输电可靠性裕度 - 容量效益裕度</code></pre>
+<ul><li><code>TTC</code>：总输电能力；</li><li><code>TRM</code>：输电可靠性裕度；</li><li><code>CBM</code>：容量效益裕度；</li><li>现有交易/潮流：当前使用量。</li></ul>
+<p>ATC 不是固定容量：</p>
+<ul><li>随运行方式、故障集、限额、电压水平变化；</li><li>N-1 后 ATC 可能降为 0 或负值（需要校正）；</li><li>市场出清用的 ATC 要注明计算断面、故障集、裕度口径；</li><li>跨省/跨区交易见<a href="省间与跨区交易-2026-11.html">《省间与跨区交易》</a>。</li></ul>
+<p>本算例中，基准 1-3 的&quot;剩余容量&quot;= 0.300 - 0.150 = 0.150 pu（15 MW）；但停运 1-2 后，1-3 已越限，N-1 ATC 为 0，必须先校正。这个数字只用于演示，不是实际 ATC。</p>
+<h3 id="s42">5.6 安全约束调度</h3>
+<p>安全约束调度（SCED/SCUC）把 N-1/限额作为约束：</p>
+<ul><li>目标：最小成本/最大社会福利；</li><li>约束：功率平衡、机组/场站出力、爬坡、备用、网络限额、N-1 约束；</li><li>结果：出力计划、节点价、阻塞分量、安全校正成本。</li></ul>
+<p>状态估计/安全分析提供&quot;约束是否成立&quot;；市场出清提供&quot;经济最优&quot;。两者不能互相替代：</p>
+<ul><li>没有状态估计，安全约束可能基于错误运行方式；</li><li>没有安全校核，出清结果可能不可执行；</li><li>没有市场机制，安全校正可能没有成本信号。</li></ul>
+<p>节点价推导见<a href="潮流阻塞与节点电价-2026-11.html">《从潮流到节点电价》</a>，出清见<a href="现货出清与价格形成-2026-11.html">《现货出清与价格形成》</a>。</p>
+<h3 id="s43">5.7 电压安全与频率安全</h3>
+<ul><li><strong>电压安全</strong>：N-1 后母线电压是否越限、无功是否足够、是否电压崩溃；需要交流潮流/无功电压分析，直流 SE 不够。</li><li><strong>频率安全</strong>：N-1 后有功缺额、惯量、一次/二次调频是否够；状态估计不直接算频率，但提供初始潮流/出力。</li><li><strong>暂态/动态安全</strong>：故障后的功角/电压/频率轨迹；状态估计只提供初始状态，不能替代动态仿真。</li></ul>
+<p>安全分析不是&quot;一个 N-1 扫描解决所有问题&quot;；要按时间尺度分解。</p>
+<hr>
+<h2 id="s44">6. 从状态估计到 AGC/AVC/ED</h2>
+<h3 id="s45">6.1 时间尺度不匹配</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>应用</th><th>典型周期</th><th>对状态估计的要求</th></tr></thead><tbody><tr><td>AGC</td><td>4—16 s</td><td>不一定每次跑 SE；用最新有效状态 + 实时 ACE/限额</td></tr><tr><td>AVC</td><td>秒—分钟</td><td>需要电压/无功状态，SE 周期可能跟不上，需本地控制</td></tr><tr><td>ED</td><td>5—15 min</td><td>用最新 SE 状态做经济分配</td></tr><tr><td>安全分析</td><td>分钟—小时</td><td>用 SE 状态 + 故障集做 N-1/ATC</td></tr><tr><td>市场出清</td><td>日前/日内</td><td>用预测/计划 + 安全约束，不直接用实时 SE</td></tr></tbody></table></div>
+<p>状态估计周期通常慢于 AGC/AVC；不能假设&quot;AGC 每次指令都有新 SE&quot;。工程上要：</p>
+<ul><li>给状态打时标/质量位；</li><li>设定有效期；</li><li>SE 失败时降级/保持/告警；</li><li>关键安全限额用保守值或上次有效值，并明确风险。</li></ul>
+<h3 id="s46">6.2 各应用消费什么</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>应用</th><th>从 SE/安全分析拿什么</th><th>不能拿什么</th></tr></thead><tbody><tr><td>AGC</td><td>网络限额、可调能力、当前出力/频率</td><td>直接把 SE 相角当 ACE</td></tr><tr><td>AVC</td><td>母线电压、无功分布、电压限额</td><td>用 SE 代替本地电压闭环</td></tr><tr><td>ED</td><td>当前注入、网损、限额、阻塞</td><td>用 SE 代替经济优化</td></tr><tr><td>安全分析</td><td>状态、拓扑、故障集、限额</td><td>用 SE 代替暂态稳定</td></tr><tr><td>市场</td><td>安全约束、ATC、阻塞</td><td>用实时 SE 代替日前预测</td></tr></tbody></table></div>
+<h3 id="s47">6.3 失败模式与降级</h3>
+<p>状态估计可能：</p>
+<ul><li>不收敛（初值差、坏数据多、模型错）；</li><li>可观测性不足（量测缺失/拓扑变化）；</li><li>拓扑错误（开关状态错）；</li><li>参数错误（阻抗/变比错）；</li><li>数值病态（权重极端/参考母线问题）。</li></ul>
+<p>应有行为：</p>
+<ul><li>报警并标记状态无效；</li><li>保留上次有效状态，但设有效期；</li><li>缩小到可观测区域，明确未覆盖区域；</li><li>通知调度/现场核对；</li><li>安全分析/市场出清使用保守限额或暂停相关约束；</li><li>不能&quot;静默使用坏状态&quot;。</li></ul>
+<h3 id="s48">6.4 质量标记</h3>
+<p>一个可操作的 SE 输出至少带：</p>
+<ul><li><code>converged</code>：是否收敛；</li><li><code>observable</code>：可观测区域/不可观测区域；</li><li><code>island_count</code>：电气岛数量；</li><li><code>objective</code>：目标函数值；</li><li><code>max_normalized_residual</code>：最大标准化残差；</li><li><code>bad_data</code>：可疑量测列表；</li><li><code>topology_version</code> / <code>model_version</code>；</li><li><code>timestamp</code> / <code>valid_until</code>。</li></ul>
+<p>下游应用要根据这些标记决定&quot;用/不用/降级&quot;。</p>
+<h3 id="s49">6.5 与 AGC/AVC 的边界</h3>
+<p>状态估计/安全分析给 AGC/AVC 提供：</p>
+<ul><li>网络限额（线路/变压器/电压）；</li><li>当前运行方式；</li><li>可调能力/阻塞信息；</li><li>安全校正建议。</li></ul>
+<p>它不直接下发 AGC/AVC 指令，也不替代场站闭环。AGC/AVC 的控制链、考核与通信见<a href="AGC-AVC与频率电压闭环-2026-11.html">《AGC/AVC 与频率电压闭环》</a>。</p>
+<hr>
+<h2 id="s50">7. D 级合成算例：从量测到 N-1</h2>
+<aside class="note"><p>本节全部为合成数据，仅用于演示方法；不代表任何真实电网、量测配置或安全校核结果。</p></aside>
+<h3 id="s51">7.1 系统与量测</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>数值</th></tr></thead><tbody><tr><td>基准容量</td><td>100 MVA</td></tr><tr><td>母线</td><td>1（平衡）、2、3</td></tr><tr><td>支路</td><td>1-2（x=0.10）、1-3（x=0.20）、2-3（x=0.20）</td></tr><tr><td>限额</td><td>1-2：0.40；1-3：0.30；2-3：0.20 pu</td></tr><tr><td>真实状态</td><td>θ2=-0.020 rad，θ3=-0.030 rad</td></tr><tr><td>量测数/状态数</td><td>7 / 2</td></tr><tr><td>坏数据</td><td>P13 量测 0.180 pu（真实 0.150 pu）</td></tr></tbody></table></div>
+<h3 id="s52">7.2 量测与残差</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>量测</th><th style="text-align:right">量测值</th><th style="text-align:right">估计值</th><th style="text-align:right">残差</th><th style="text-align:right">标准化残差</th></tr></thead><tbody><tr><td>P12</td><td style="text-align:right">0.200</td><td style="text-align:right">0.205391</td><td style="text-align:right">-0.005391</td><td style="text-align:right">-1.47</td></tr><tr><td>P13</td><td style="text-align:right"><strong>0.180</strong></td><td style="text-align:right">0.157349</td><td style="text-align:right">0.022651</td><td style="text-align:right"><strong>5.21</strong></td></tr><tr><td>P23</td><td style="text-align:right">0.050</td><td style="text-align:right">0.054654</td><td style="text-align:right">-0.004654</td><td style="text-align:right">-1.03</td></tr><tr><td>θ2</td><td style="text-align:right">-0.020</td><td style="text-align:right">-0.020539</td><td style="text-align:right">0.000539</td><td style="text-align:right">0.27</td></tr><tr><td>θ3</td><td style="text-align:right">-0.030</td><td style="text-align:right">-0.031470</td><td style="text-align:right">0.001470</td><td style="text-align:right">0.76</td></tr><tr><td>P2 注入</td><td style="text-align:right">-0.150</td><td style="text-align:right">-0.150737</td><td style="text-align:right">0.000737</td><td style="text-align:right">0.18</td></tr><tr><td>P3 注入</td><td style="text-align:right">-0.200</td><td style="text-align:right">-0.212003</td><td style="text-align:right">0.012003</td><td style="text-align:right">2.86</td></tr></tbody></table></div>
+<h3 id="s53">7.3 坏数据处理</h3>
+<pre tabindex="0"><code>最大标准化残差 = 5.21（P13）&gt; 3.0（示例阈值）
+→ 标记 P13 可疑
+→ 核对拓扑/参数/时标/质量位
+→ 剔除 P13，重估
+→ θ2 = -0.020000，θ3 = -0.030000，J ≈ 0</code></pre>
+<h3 id="s54">7.4 N-1 扫描</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>停运</th><th style="text-align:right">1-2 潮流</th><th style="text-align:right">1-3 潮流</th><th style="text-align:right">2-3 潮流</th><th>越限</th></tr></thead><tbody><tr><td>无</td><td style="text-align:right">0.200</td><td style="text-align:right">0.150</td><td style="text-align:right">0.050</td><td>无</td></tr><tr><td>1-2</td><td style="text-align:right">—</td><td style="text-align:right"><strong>0.350</strong></td><td style="text-align:right">0.150</td><td>1-3 超 0.050 pu</td></tr><tr><td>1-3</td><td style="text-align:right">0.350</td><td style="text-align:right">—</td><td style="text-align:right">0.200</td><td>无（到限）</td></tr><tr><td>2-3</td><td style="text-align:right">0.350</td><td style="text-align:right">0.200</td><td style="text-align:right">—</td><td>无</td></tr></tbody></table></div>
+<h3 id="s55">7.5 校正</h3>
+<pre tabindex="0"><code>bus3 注入从 -0.20 调到 -0.15（增加 0.05 pu 本地出力/削减负荷）
+停运 1-2 后：1-3 = 0.300 pu，2-3 支路 = -0.150 pu（即 3→2 为 0.150 pu）</code></pre>
+<h3 id="s56">7.6 这个算例说明什么</h3>
+<ul><li>状态估计能把冗余量测变成自洽状态；</li><li>标准化残差能定位单个坏数据，但要结合拓扑/参数/多断面；</li><li>剔除坏数据后必须重估；</li><li>基准安全不等于 N-1 安全；</li><li>N-1 越限可以用本地校正/再调度缓解，但要付出成本；</li><li>ATC 会随故障和校正变化，不是固定值。</li></ul>
+<h3 id="s57">7.7 这个算例不说明什么</h3>
+<ul><li>不代表真实电网的阻抗、限额、量测配置；</li><li>不覆盖交流潮流、无功/电压、网损、电压稳定；</li><li>不覆盖多个坏数据、杠杆点、拓扑错误；</li><li>不覆盖保护/安稳/暂态稳定；</li><li>不给出实际 ATC、出清价格或调度指令。</li></ul>
+<hr>
+<h2 id="s58">8. 常见错误（10 条）</h2>
+<ol><li><strong>把状态估计当潮流计算</strong>：潮流假设注入已知，状态估计从冗余量测反推状态；输入输出不同，不能混用。</li><li><strong>忽略拓扑/开关状态错误</strong>：拓扑错会改变量测函数，残差可能大也可能&quot;看起来正常&quot;；先核对开关/检修/方式单。</li><li><strong>只看估计值，不看残差/可观测性</strong>：收敛不等于正确；不可观测区域的估计可能是伪量测/上次值撑起来的。</li><li><strong>用伪量测淹没真实量测</strong>：伪量测权重大于实测，会把真实量测拉偏；必须标注来源和权重。</li><li><strong>坏数据直接删除不重估</strong>：删了量测但不重算状态，后续应用仍用旧状态；必须重估并检查。</li><li><strong>用单点残差判断全部</strong>：多个坏数据会互相掩盖/淹没，杠杆点残差小但影响大；要结合多断面/拓扑/参数。</li><li><strong>把 N-1 当 N-2 或所有故障</strong>：故障集要基于规则/风险/可信故障，不是把所有组合都扫一遍。</li><li><strong>把 ATC 当固定容量</strong>：ATC 随运行方式、故障、限额、裕度变化；N-1 后可能为 0，必须重算。</li><li><strong>状态估计结果直接进 AGC/AVC 而不检查时标/质量</strong>：SE 周期慢于 AGC/AVC，过期状态会误导限额和控制。</li><li><strong>用状态估计替代保护/稳定分析</strong>：SE 是静态运行方式，不替代继电保护、暂态稳定、电压稳定/宽频振荡分析。</li></ol>
+<hr>
+<h2 id="s59">9. 待核实与未定事项</h2>
+<p>以下事项必须按项目、调度机构和现行规则核实，本文不给出确定值：</p>
+<ul><li>[ ] 实际电网的状态估计周期、量测配置、冗余度、可观测区域；</li><li>[ ] 状态估计器是交流/直流、WLS/其他、单相/三相、输电网/配电网；</li><li>[ ] 拓扑处理与开关状态核对流程、检修票/方式单同步机制；</li><li>[ ] 坏数据检验阈值、最大可疑数、重估策略；</li><li>[ ] 伪量测来源、权重、有效期；</li><li>[ ] N-1 故障集、限额（热/电压/稳定）、越限处理与校正措施；</li><li>[ ] ATC 计算方法、TRM/CBM、跨省/跨区口径；</li><li>[ ] 安全约束调度/市场出清如何使用 SE 状态与安全约束；</li><li>[ ] SE 失败/不可观测时的降级策略与保守限额；</li><li>[ ] 配电网状态估计、PMU 线性估计、动态状态估计的适用边界。</li></ul>
+<hr>
+<h2 id="s60">10. 分工：和现有模块怎么配合</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>问题</th><th>先看</th><th>本文负责</th><th>不负责</th></tr></thead><tbody><tr><td>SCADA 量测怎么来</td><td><a href="SCADA与电力监控数据链路-2026-11.html">《SCADA 与电力监控数据链路》</a></td><td>量测如何进入 SE</td><td>四遥、规约、历史库</td></tr><tr><td>EMS 数据接口怎么定义</td><td><a href="EMS数据接口参考架构-2026-11.html">《EMS 数据接口参考架构》</a></td><td>SE 输入/输出字段需求</td><td>接口协议栈、点表实现</td></tr><tr><td>场站群/集控怎么架构</td><td><a href="场站群与集控EMS架构-2026-11.html">《场站群与集控 EMS 架构》</a></td><td>SE 在集控中的位置</td><td>平台架构、云边协同</td></tr><tr><td>节点价怎么推</td><td><a href="潮流阻塞与节点电价-2026-11.html">《从潮流到节点电价》</a></td><td>SE 提供状态/限额</td><td>LMP 分解、阻塞/网损分量</td></tr><tr><td>现货怎么出清</td><td><a href="现货出清与价格形成-2026-11.html">《现货出清与价格形成》</a></td><td>安全约束如何进入出清</td><td>SCED/SCUC 算法、报价</td></tr><tr><td>省间/跨区 ATC</td><td><a href="省间与跨区交易-2026-11.html">《省间与跨区交易》</a></td><td>N-1/ATC 的方法背景</td><td>跨省规则、交易路径</td></tr><tr><td>AGC/AVC 怎么闭环</td><td><a href="AGC-AVC与频率电压闭环-2026-11.html">《AGC/AVC 与频率电压闭环》</a></td><td>SE 给控制层提供限额</td><td>ACE、指令分配、场站考核</td></tr><tr><td>并网测试测什么</td><td><a href="并网测试与涉网验收实务清单-2026-11.html">《并网测试与涉网验收实务清单》</a></td><td>SE 不替代并网测试</td><td>型式试验、涉网试验</td></tr><tr><td>故障/保护/安全防御</td><td><a href="故障保护与安全防御-2026-11.html">《电力系统通识 E · 故障、保护与安全防御》</a></td><td>N-1 与保护的区别</td><td>保护整定、安稳策略</td></tr><tr><td>储能 EMS 怎么优化</td><td><a href="储能EMS优化调度-算法与工程-2026-11.html">《储能 EMS 优化调度》</a></td><td>SE 提供运行方式</td><td>日前/日内优化</td></tr><tr><td>并网考核/两个细则</td><td><a href="并网运行考核与两个细则-2026-11.html">《并网运行考核与两个细则》</a></td><td>SE 支撑限额/考核数据</td><td>省级考核条款</td></tr></tbody></table></div>
+<hr>
+<h2 id="s61">11. 速查</h2>
+<h3 id="s62">11.1 五个公式</h3>
+<pre tabindex="0"><code>P_ij = (θ_i - θ_j) / x_ij
+
+x_hat = (H^T W H)^(-1) H^T W z
+
+r = z - H x_hat
+
+Ω = R - H (H^T W H)^(-1) H^T
+r_i^N = r_i / sqrt(Ω_ii)
+
+ATC ≈ TTC - 现有交易 - TRM - CBM</code></pre>
+<h3 id="s63">11.2 五个必问</h3>
+<ol><li>这次状态估计覆盖哪些区域，哪些是伪量测撑起来的？</li><li>拓扑/开关/检修状态核对过吗，模型版本是哪一版？</li><li>最大标准化残差是多少，可疑量测剔除后重估了吗？</li><li>N-1 故障集和限额是最新的吗，基准安全是否等于 N-1 安全？</li><li>下游 AGC/AVC/ED/市场用的是哪一时刻、哪个质量位的状态？</li></ol>
+<h3 id="s64">11.3 工具</h3>
+<pre tabindex="0"><code># 在 skills/ems-dispatch/tools 下
+python state.py                  # 打印 3 节点 WLS 与 N-1 算例
+python state.py --json           # JSON 输出
+python selftest.py               # 断言本文数字</code></pre>
+<p><code>state.py</code> 只做 3 节点直流潮流、WLS、标准化残差和 N-1 扫描的确定性演示，不是生产级状态估计器或安全校核程序。</p>
+<hr>
+<h2 id="s65">12. 版本与维护</h2>
+<ul><li>本模块为 v2.0 维护批次新增，数据截止 2026-11-19；所有网络参数、量测与限额均为 D 级合成数据。</li><li>修改 frontmatter <code>cutoff</code> 时，必须同步 <code>更新清单.md</code> 对应行。</li><li>若状态估计/安全分析规则或调度规程更新，优先复核 §5、§9 和算例限额，并同步 <code>state.py</code> 示例参数与 <code>selftest.py</code> 断言。</li><li><strong>相关工具</strong>：<code>skills/ems-dispatch/tools/state.py</code>；相关自测：<code>skills/ems-dispatch/tools/selftest.py</code>。</li><li>方法术语参考电力系统状态估计/安全分析的通用教材与调度规程；本文不复制任何未公开模型或参数。</li></ul>
+    </article>
+
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>11</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="SCADA与电力监控数据链路-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>SCADA 与电力监控数据链路</b>
+          <span>从 VPP/EMS 的数据底座出发，拆解点表与四遥、104/61850/Modbus/MQTT、边缘与云端两种部署形态、采集频率与时延、时钟同步、历史库、告警、冗余和电力监控安全防护。</span>
+        </a>
+        <a class="related-card" href="EMS数据接口参考架构-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>EMS 数据接口参考架构：设备、调度、市场与计量结算的契约</b>
+          <span>把储能 EMS 的接口观察升级为正式参考架构：四类接口契约、同源同时标铁律、计量点映射、接口设计六原则与演进观察清单，附计量偏差算例。</span>
+        </a>
+        <a class="related-card" href="场站群与集控EMS架构-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>场站群与集控 EMS 架构：分级调度、通信拓扑与群调群控</b>
+          <span>从单站 EMS 到场站群集控的分层架构、控制权限与时间尺度、通信拓扑与时延预算、群调群控与共享储能池、安全防护，附共享储能规模效应算例。</span>
+        </a>
+        <a class="related-card" href="潮流阻塞与节点电价-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>从潮流到节点电价：阻塞、断面与网损的价格传导</b>
+          <span>DC 潮流直觉、节点价三分量、断面约束与阻塞租金、网损因子、国内出清与结算口径、三节点手算与选址报价含义。</span>
+        </a>
+      </div>
+      <p class="related-rest"><b>更多关联</b><a href="现货出清与价格形成-2026-11.html">现货出清与价格形成：从报价到节点价</a><a href="省间与跨区交易-2026-11.html">省间与跨区交易（2026 版）</a><a href="AGC-AVC与频率电压闭环-2026-11.html">AGC/AVC 与频率电压闭环：从 ACE 到场站考核</a><a href="并网测试与涉网验收实务清单-2026-11.html">并网测试与涉网验收实务清单：AGC/AVC/一次调频投运试验与考核点闭环</a><a href="故障保护与安全防御-2026-11.html">电力系统通识 E · 故障、保护与安全防御</a><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a><a href="并网运行考核与两个细则-2026-11.html">并网运行考核与两个细则</a></p>
+    </section>
+
+<section class="related" aria-labelledby="paired-skills-title">
+      <div class="related-head"><h2 id="paired-skills-title">配套技能</h2><span>2</span></div>
+      <div class="related-grid">
+        <a class="related-card skill-pair" href="skill-spot-bidding-quant.html">
+          <span class="related-type">预测、报价与回测（含山东煤电/储能/光储、浙江现货储能、蒙西风光储、山西储能、甘肃与蒙西新能源实例包）</span>
+          <b>现货报价量化</b>
+          <span>技能 · 预测 · 报价 · 回测</span>
+        </a>
+        <a class="related-card skill-pair" href="skill-ems-dispatch.html">
+          <span class="related-type">96 点调度、SOC 与需量、AGC/AVC 闭环与状态估计接口（含江苏零碳园区微网、山东独立储能电站日运行+考核复盘实例包）</span>
+          <b>EMS 优化调度</b>
+          <span>技能 · EMS · SOC · 需量 · AGC/AVC · 状态估计</span>
+        </a>
+      </div>
+    </section>
+
+    <nav class="pager" aria-label="上下篇">
+          <a class="prev" href="AGC-AVC与频率电压闭环-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">AGC/AVC 与频率电压闭环：从 ACE 到场站考核</span></a>
+          <span class="spacer"></span>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../状态估计与安全分析-2026-11.md">knowledge/状态估计与安全分析-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="本页目录">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv3"><a href="#s2">0.1 三句话</a></li>
+            <li class="lv3"><a href="#s3">0.2 关键概念</a></li>
+            <li class="lv3"><a href="#s4">0.3 先记住四个数</a></li>
+            <li class="lv3"><a href="#s5">0.4 本文不做什么</a></li>
+            <li class="lv2"><a href="#s6">1. 为什么 EMS 需要状态估计</a></li>
+            <li class="lv3"><a href="#s7">1.1 SCADA 给的是量测，不是运行方式</a></li>
+            <li class="lv3"><a href="#s8">1.2 状态估计与潮流计算的区别</a></li>
+            <li class="lv3"><a href="#s9">1.3 EMS 应用链</a></li>
+            <li class="lv3"><a href="#s10">1.4 状态估计的输出不只是"电压"</a></li>
+            <li class="lv2"><a href="#s11">2. 网络模型与拓扑处理</a></li>
+            <li class="lv3"><a href="#s12">2.1 母线/支路模型</a></li>
+            <li class="lv3"><a href="#s13">2.2 拓扑处理</a></li>
+            <li class="lv3"><a href="#s14">2.3 直流潮流近似</a></li>
+            <li class="lv3"><a href="#s15">2.4 交流状态估计的额外复杂性</a></li>
+            <li class="lv3"><a href="#s16">2.5 参数错误</a></li>
+            <li class="lv3"><a href="#s17">2.6 可观测性</a></li>
+            <li class="lv3"><a href="#s18">2.7 伪量测</a></li>
+            <li class="lv2"><a href="#s19">3. WLS 状态估计</a></li>
+            <li class="lv3"><a href="#s20">3.1 量测模型</a></li>
+            <li class="lv3"><a href="#s21">3.2 目标函数</a></li>
+            <li class="lv3"><a href="#s22">3.3 3 节点算例的系统</a></li>
+            <li class="lv3"><a href="#s23">3.4 量测配置</a></li>
+            <li class="lv3"><a href="#s24">3.5 量测矩阵 H</a></li>
+            <li class="lv3"><a href="#s25">3.6 WLS 结果</a></li>
+            <li class="lv3"><a href="#s26">3.7 剔除坏数据后重估</a></li>
+            <li class="lv3"><a href="#s27">3.8 自由度与检验</a></li>
+            <li class="lv3"><a href="#s28">3.9 数值问题</a></li>
+            <li class="lv2"><a href="#s29">4. 坏数据与拓扑错误</a></li>
+            <li class="lv3"><a href="#s30">4.1 残差从哪来</a></li>
+            <li class="lv3"><a href="#s31">4.2 坏数据的四种来源</a></li>
+            <li class="lv3"><a href="#s32">4.3 坏数据的掩盖与淹没</a></li>
+            <li class="lv3"><a href="#s33">4.4 拓扑错误为什么更危险</a></li>
+            <li class="lv3"><a href="#s34">4.5 坏数据处理流程</a></li>
+            <li class="lv3"><a href="#s35">4.6 稳健估计</a></li>
+            <li class="lv2"><a href="#s36">5. N-1、ATC 与安全分析</a></li>
+            <li class="lv3"><a href="#s37">5.1 安全 vs 充裕</a></li>
+            <li class="lv3"><a href="#s38">5.2 N-1 扫描的基本步骤</a></li>
+            <li class="lv3"><a href="#s39">5.3 算例：N-1 越限</a></li>
+            <li class="lv3"><a href="#s40">5.4 校正措施</a></li>
+            <li class="lv3"><a href="#s41">5.5 ATC 是什么，不是什么</a></li>
+            <li class="lv3"><a href="#s42">5.6 安全约束调度</a></li>
+            <li class="lv3"><a href="#s43">5.7 电压安全与频率安全</a></li>
+            <li class="lv2"><a href="#s44">6. 从状态估计到 AGC/AVC/ED</a></li>
+            <li class="lv3"><a href="#s45">6.1 时间尺度不匹配</a></li>
+            <li class="lv3"><a href="#s46">6.2 各应用消费什么</a></li>
+            <li class="lv3"><a href="#s47">6.3 失败模式与降级</a></li>
+            <li class="lv3"><a href="#s48">6.4 质量标记</a></li>
+            <li class="lv3"><a href="#s49">6.5 与 AGC/AVC 的边界</a></li>
+            <li class="lv2"><a href="#s50">7. D 级合成算例：从量测到 N-1</a></li>
+            <li class="lv3"><a href="#s51">7.1 系统与量测</a></li>
+            <li class="lv3"><a href="#s52">7.2 量测与残差</a></li>
+            <li class="lv3"><a href="#s53">7.3 坏数据处理</a></li>
+            <li class="lv3"><a href="#s54">7.4 N-1 扫描</a></li>
+            <li class="lv3"><a href="#s55">7.5 校正</a></li>
+            <li class="lv3"><a href="#s56">7.6 这个算例说明什么</a></li>
+            <li class="lv3"><a href="#s57">7.7 这个算例不说明什么</a></li>
+            <li class="lv2"><a href="#s58">8. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s59">9. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s60">10. 分工：和现有模块怎么配合</a></li>
+            <li class="lv2"><a href="#s61">11. 速查</a></li>
+            <li class="lv3"><a href="#s62">11.1 五个公式</a></li>
+            <li class="lv3"><a href="#s63">11.2 五个必问</a></li>
+            <li class="lv3"><a href="#s64">11.3 工具</a></li>
+            <li class="lv2"><a href="#s65">12. 版本与维护</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="52" data-more-label="展开 52 个小节" data-less-label="收起小节">展开 52 个小节</button>
+  </aside>
+</div>
+
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.1" data-cutoff="2026-11-19" data-latest="2026-11-24" data-count="99">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.1）" title="查看更新记录（当前 v2.1）">
+    <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
+    <span class="cl-badge-ver">v2.1</span>
+    <span class="cl-badge-label">更新记录</span>
+  </button>
+  <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
+    <div class="cl-backdrop" data-changelog-close></div>
+    <div class="cl-panel" role="dialog" aria-modal="true" aria-labelledby="cl-title" aria-describedby="cl-subtitle" tabindex="-1">
+      <header class="cl-head">
+        <div class="cl-head-main">
+          <span class="cl-kicker">RELEASE NOTES</span>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.1</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.1 · 数据截止 2026-11-19 · 99 条记录</p>
+        </div>
+        <div class="cl-actions">
+          <div class="cl-lang" role="group" aria-label="切换语言">
+            <button type="button" data-cl-lang="zh" aria-pressed="true">中文</button>
+            <button type="button" data-cl-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <button class="cl-close" type="button" data-changelog-close aria-label="关闭更新记录" title="关闭更新记录">×</button>
+        </div>
+      </header>
+      <div class="cl-body" data-changelog-body>
+        <div class="cl-skeleton" data-changelog-status role="status">
+          <span class="cl-sr">正在读取更新记录…</span>
+          <i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      <footer class="cl-foot">
+        <span data-changelog-meta>v2.1 · 2026-11-19 · 99 条记录</span>
+        <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
+      </footer>
+    </div>
+  </div>
+</div>
+<script src="../assets/doc.js"></script>
+<script src="../assets/theme.js"></script>
+<script src="../assets/changelog.js"></script>
+</body>
+</html>

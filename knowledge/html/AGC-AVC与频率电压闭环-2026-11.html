@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>AGC/AVC 与频率电压闭环：从 ACE 到场站考核 | energy-skills 知识库</title>
+<meta name="description" content="把 AGC/AVC 从调度主站到场站执行端拆开：一次/二次/三次调频与 ACE、CPS、AGC 指令分配、AVC 三层与场站无功分配、响应/爬坡/精度考核、通信时延与安全联锁；给出可复现的 D 级合成算例与 10 条常见误判。">
+<link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
+<script>
+(function(){try{var t=localStorage.getItem('es-theme');if(!/^(light|cream|green|dark)$/.test(t||'')){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/knowledge.css">
+<link rel="stylesheet" href="../assets/theme-menu.css">
+<link rel="stylesheet" href="../assets/changelog.css">
+</head>
+<body data-cat="storage" id="top">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
+  <div class="crumb">
+    <span class="crumb-cat">08 · STORAGE</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">AGC/AVC 与频率电压闭环：从 ACE 到场站考核</span>
+  </div>
+  <div class="topbar-act">
+    <div class="theme-picker" data-theme-picker>
+      <button class="theme-toggle" type="button" data-theme-menu aria-label="选择主题" title="选择主题">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="5"/><circle cx="15" cy="9" r="5"/><circle cx="12" cy="15" r="5"/></svg>
+      </button>
+    </div>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../AGC-AVC与频率电压闭环-2026-11.md">.md 源文件<small>knowledge/AGC-AVC与频率电压闭环-2026-11.md</small></a>
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">08 · STORAGE</div>
+    <h2 class="nav-cat"><a href="../index.html#storage">储能与 EMS</a></h2>
+    <ul class="nav-list">
+              <li><a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线、安全与构网型并网</a></li>
+              <li><a href="储能投资与运营-2026-11.html">储能投资与运营</a></li>
+              <li><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a></li>
+              <li><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a></li>
+              <li><a href="微网运行方式与并离网切换-2026-11.html">微网运行方式与并离网切换：从状态机到黑启动</a></li>
+              <li><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a></li>
+              <li><a href="场站群与集控EMS架构-2026-11.html">场站群与集控 EMS 架构：分级调度、通信拓扑与群调群控</a></li>
+              <li><a href="EMS数据接口参考架构-2026-11.html">EMS 数据接口参考架构：设备、调度、市场与计量结算的契约</a></li>
+              <li class="on" aria-current="page"><a href="AGC-AVC与频率电压闭环-2026-11.html">AGC/AVC 与频率电压闭环：从 ACE 到场站考核</a></li>
+              <li><a href="状态估计与安全分析-2026-11.html">状态估计与安全分析：从 SCADA 量测到可信运行方式</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#province"><b>03</b>中国省级市场</a></li>
+              <li><a href="../index.html#intl"><b>04</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>05</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>06</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>07</b>新能源与并网</a></li>
+              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>11</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">08 · STORAGE<i>知识模块</i></div>
+      <h1 class="doc-title">AGC/AVC 与频率电压闭环：从 ACE 到场站考核（2026-11）</h1>
+      <p class="lede">把 AGC/AVC 从调度主站到场站执行端拆开：一次/二次/三次调频与 ACE、CPS、AGC 指令分配、AVC 三层与场站无功分配、响应/爬坡/精度考核、通信时延与安全联锁；给出可复现的 D 级合成算例与 10 条常见误判。</p>
+      <p class="hook">AGC/AVC 与频率电压闭环</p>
+      <div class="tags"><span class="tag">AGC</span><span class="tag">AVC</span><span class="tag">ACE</span><span class="tag">CPS</span><span class="tag">二次调频</span><span class="tag">一次调频</span><span class="tag">无功电压</span><span class="tag">场站考核</span><span class="tag">储能调频</span><span class="tag">EMS</span></div>
+      <div class="doc-meta"><span>约 14.4k 字</span><span>阅读约 26 分钟</span><span>13 节</span><span>数据截止 2026-11-19</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（13）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv2"><a href="#s6">1. 控制链与职责边界</a></li>
+            <li class="lv2"><a href="#s12">2. ACE、CPS 与二次调频</a></li>
+            <li class="lv2"><a href="#s19">3. AGC 指令分配</a></li>
+            <li class="lv2"><a href="#s26">4. AVC 三层与场站闭环</a></li>
+            <li class="lv2"><a href="#s34">5. 性能考核与市场衔接</a></li>
+            <li class="lv2"><a href="#s40">6. 数据、通信与时延</a></li>
+            <li class="lv2"><a href="#s45">7. D 级合成算例：从 ACE 到 AVC</a></li>
+            <li class="lv2"><a href="#s54">8. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s55">9. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s56">10. 分工：和现有模块怎么配合</a></li>
+            <li class="lv2"><a href="#s57">11. 速查</a></li>
+            <li class="lv2"><a href="#s61">12. 版本与维护</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>数据截止：2026-11-19｜定位：知识库模块（储能与 EMS·控制层执行与考核）</p><p>相关技能：<a href="../../skills/ems-dispatch/SKILL.md">储能与 EMS 调度专家</a>（控制工具与场站闭环）、<a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a>（辅助服务与考核规则）</p><p>用途：回答&quot;ACE 到底是什么、AGC 指令怎么分、储能和煤电谁该多出力、AVC 三层怎么落、考核为什么精度够却拿不到钱、通信断了怎么办&quot;六类问题。频率/惯量的物理背景见<a href="频率惯量与灵活性供需-2026-11.html">《频率、惯量与灵活性供需》</a>，无功与电能质量见<a href="无功电压与电能质量-2026-11.html">《无功、电压与电能质量》</a>，考核规则见<a href="并网运行考核与两个细则-2026-11.html">《并网运行考核与两个细则》</a>。</p><p>算例：一个 D 级合成控制区，由 <a href="../../skills/ems-dispatch/tools/control.py">control.py</a> 复现，断言见 <a href="../../skills/ems-dispatch/tools/selftest.py">selftest.py</a> 的 &quot;AGC/AVC closed loop&quot; 段。</p><p>边界：本文与工具不替代调度规程、并网标准、辅助服务市场规则或场站定值单；所有数字仅用于演示方法，不构成实际调度指令、报价建议或考核结论。</p></aside>
+<hr>
+<h2 id="s1">0. 一页看懂</h2>
+<h3 id="s2">0.1 三句话</h3>
+<ul><li><strong>AGC 管有功与频率，AVC 管无功与电压</strong>：一个把 ACE 拉回零，一个把母线电压/无功拉回目标；两者都是&quot;测量—比较—指令—执行—反馈&quot;的闭环，不是下发一条曲线就结束。</li><li><strong>主站算目标，场站管可交付</strong>：主站给的是区域级 ACE 或电压目标，场站要在 PCS/逆变器/锅炉/水机的真实约束内跟踪；考核看的是&quot;到得快、到得准、稳得住、不越限&quot;。</li><li><strong>容量不是能量，响应快不等于能持续</strong>：储能 30 MW 调频容量能不能交付，要看 SOC、PCS 容量、通信、温控和考核时段；铭牌功率只是入口。</li></ul>
+<h3 id="s3">0.2 关键概念</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>概念</th><th>含义</th><th>本文口径</th></tr></thead><tbody><tr><td>一次调频</td><td>机组/变流器就地按频差和下垂率自动响应</td><td>秒级、分散、无主站指令；死区与调差率决定实际出力</td></tr><tr><td>二次调频（AGC）</td><td>调度主站按 ACE 生成指令，闭环调节发电/储能出力</td><td>秒到分钟级；目标是 ACE 归零，不是简单补缺口</td></tr><tr><td>三次调频/经济调度</td><td>分钟到小时级，按成本与安全约束重新分配出力</td><td>与 AGC 时间尺度不同；市场出清与 ED 不等同于 AGC</td></tr><tr><td>ACE</td><td>区域控制误差，联络线偏差与频率偏差的加权组合</td><td>符号约定必须写明；本文取&quot;正值=区域缺出力&quot;</td></tr><tr><td>CPS1/CPS2</td><td>北美互联电网的控制性能标准</td><td>是统计控制标准，不等于中国省级&quot;两个细则&quot;考核公式</td></tr><tr><td>AGC 指令</td><td>主站下发的升/降功率或目标功率</td><td>受调节范围、爬坡率、死区、方向、模式约束</td></tr><tr><td>AVC</td><td>自动电压控制，分省/区域、场站、设备三层</td><td>目标可能是电压、无功或功率因数，模式不能混用</td></tr><tr><td>场站 AGC/AVC 子站</td><td>场站侧接收主站指令并分解到设备的控制单元</td><td>不是简单转发；要处理本地约束、联锁与反馈</td></tr><tr><td>K 值</td><td>调频/调节性能的综合指标</td><td>各省公式与权重不同；本文只拆分量，不合成统一 K 值</td></tr><tr><td>两个细则</td><td>并网运行与辅助服务管理考核规则</td><td>省级版本差异大；必须按现行版本核对</td></tr></tbody></table></div>
+<h3 id="s4">0.3 先记住四个数</h3>
+<p>合成算例的控制区：计划送出 <strong>100 MW</strong>，实际送出 <strong>80 MW</strong>，频率 <strong>49.95 Hz</strong>，频率偏差系数 <strong>400 MW/Hz</strong>。</p>
+<ul><li><strong>ACE = 40 MW</strong>：其中联络线偏差贡献 20 MW，频率偏差贡献 20 MW。ACE 归零不等于&quot;只补 20 MW&quot;。</li><li><strong>AGC 分配 30 MW + 10 MW</strong>：两台机组按&quot;可调容量 × 参与因子&quot;分配，5 分钟可交付；煤机 30 MW 正好用满 5 分钟爬坡，储能 10 MW 只用 1 分钟。</li><li><strong>AVC 需要 60 Mvar</strong>：母线从 0.99 pu 抬到 1.02 pu，灵敏度 0.0005 pu/Mvar；光伏 30 Mvar、SVG 30 Mvar、储能 0 Mvar。</li><li><strong>性能分项不能互相替代</strong>：煤机精度 95.0%、爬坡比 0.95（略低于要求）、响应 12 s 合格；储能精度 98.0%、爬坡比 1.0、响应 3 s。精度合格不等于速率合格，考核要分开看。</li></ul>
+<h3 id="s5">0.4 本文不做什么</h3>
+<ul><li>不给出真实调度指令、AGC/AVC 定值、场站参数或考核金额；</li><li>不声称存在全国统一的 K 值公式、AVC 电压目标或响应时间门槛；</li><li>不替代继电保护、安稳装置、一次调频、构网型控制或宽频振荡分析；</li><li>不把并网状态下的 AGC/AVC 直接套到孤岛微网的二次控制；</li><li>不把辅助服务中标容量当成实际可交付能力。</li></ul>
+<hr>
+<h2 id="s6">1. 控制链与职责边界</h2>
+<h3 id="s7">1.1 四个时间尺度</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>时间尺度</th><th>主要动作</th><th>谁来做</th><th>本文关注点</th></tr></thead><tbody><tr><td>毫秒—秒</td><td>保护、故障穿越、变流器内环</td><td>设备</td><td>只作为约束，不展开</td></tr><tr><td>秒—30 秒</td><td>一次调频、惯量/快速频率响应</td><td>调速器、变流器</td><td>与 AGC 的衔接、死区与调差率</td></tr><tr><td>秒—分钟</td><td>二次调频 AGC</td><td>调度主站 + 场站</td><td>ACE、指令分配、执行反馈</td></tr><tr><td>分钟—小时</td><td>三次调频、经济调度、市场出清</td><td>调度/交易</td><td>与 AGC 的边界、安全约束</td></tr></tbody></table></div>
+<p>一次调频是&quot;就地自动&quot;，二次调频是&quot;主站闭环&quot;，三次调频是&quot;经济再分配&quot;。三者可以同时在动作，不能用一个时间尺度解释全部现象。</p>
+<h3 id="s8">1.2 主站、场站、设备各管什么</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>层级</th><th>输入</th><th>决策</th><th>输出</th><th>典型失败</th></tr></thead><tbody><tr><td>调度主站</td><td>联络线功率、频率、机组/场站可调能力、网络限额</td><td>ACE 计算、AGC 分配、AVC 电压/无功目标</td><td>指令、目标值、考核口径</td><td>模型/限额过期、通信中断、分配越限</td></tr><tr><td>场站 AGC/AVC 子站</td><td>主站指令、本地量测、设备状态</td><td>指令分解、死区、模式切换、联锁</td><td>设备功率/无功指令、反馈</td><td>本地约束没建模、反馈造假、模式冲突</td></tr><tr><td>设备</td><td>子站指令、直流电压、温度、SOC</td><td>内环控制、限流、保护</td><td>实际功率/无功、故障信号</td><td>变流器限流、温控降额、保护跳闸</td></tr></tbody></table></div>
+<h3 id="s9">1.3 闭环的四个环节</h3>
+<ol><li><strong>测量</strong>：频率、联络线功率、母线电压、场站有功/无功、设备状态。</li><li><strong>比较</strong>：ACE 或电压误差，和死区、目标值、考核门槛比较。</li><li><strong>指令</strong>：主站分配到场站，场站再分配到设备；每一步都要检查范围和爬坡。</li><li><strong>执行与反馈</strong>：设备实际出力、SOC、温度、限流标志回传；没有可靠反馈就是开环。</li></ol>
+<p>很多&quot;AGC 不动作&quot;不是算法问题，而是量测坏点、通信中断、模式在本地、死区过大、指令被联锁屏蔽或反馈被冻结。</p>
+<h3 id="s10">1.4 场站 EMS 在控制链中的位置</h3>
+<p>场站 EMS 不是 AGC/AVC 的替代品，而是&quot;翻译层 + 约束层&quot;：</p>
+<ul><li>把主站的有功/无功指令翻译成 PCS、逆变器、SVG、SVG 的无功分配；</li><li>检查 SOC、PCS 容量、并网点限额、变压器容量、防逆流、温度与检修状态；</li><li>在 AGC 与 AVC 同时下发时处理有功/无功的耦合（变流器容量圆）；</li><li>把实际执行值、可用能力、闭锁原因回传主站；</li><li>记录指令、反馈、时标与操作员动作，供考核复盘。</li></ul>
+<p>场站群/集控架构见<a href="场站群与集控EMS架构-2026-11.html">《场站群与集控 EMS 架构》</a>，数据接口见<a href="EMS数据接口参考架构-2026-11.html">《EMS 数据接口参考架构》</a>。</p>
+<h3 id="s11">1.5 与保护、安稳的边界</h3>
+<p>AGC/AVC 是<strong>正常运行时的调节</strong>，不能覆盖保护与安全自动装置：</p>
+<ul><li>低电压/高电压穿越、过频/低频保护、防孤岛、过流/过温保护优先；</li><li>AGC/AVC 指令不能把设备推到保护定值之外；</li><li>安稳装置切机/切负荷时，AGC 要能识别并退出，不能和安稳动作&quot;对着干&quot;；</li><li>故障期间的无功支撑由穿越策略和硬件决定，不由 AVC 的慢速目标决定。</li></ul>
+<hr>
+<h2 id="s12">2. ACE、CPS 与二次调频</h2>
+<h3 id="s13">2.1 ACE 的符号约定</h3>
+<p>本文采用&quot;正值表示区域缺出力&quot;的约定：</p>
+<pre tabindex="0"><code>ACE = (P_sched - P_actual) + B × (f_n - f)</code></pre>
+<p>其中：</p>
+<ul><li><code>P_sched</code>：计划净送出功率（MW，送出为正）；</li><li><code>P_actual</code>：实际净送出功率（MW）；</li><li><code>B</code>：频率偏差系数（MW/Hz），正值；</li><li><code>f_n</code>：额定频率（50 Hz）；</li><li><code>f</code>：实际频率（Hz）。</li></ul>
+<p>不同教材/系统可能把联络线功率或频率偏差取反，<strong>符号约定必须和 AGC 主站一致</strong>；否则会出现&quot;越调越远&quot;。</p>
+<h3 id="s14">2.2 算例：ACE 40 MW 从哪来</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项</th><th>数值</th><th>说明</th></tr></thead><tbody><tr><td>计划送出</td><td>100 MW</td><td>正方向为送出</td></tr><tr><td>实际送出</td><td>80 MW</td><td>少送 20 MW，区域缺出力</td></tr><tr><td>频率</td><td>49.95 Hz</td><td>比额定低 0.05 Hz</td></tr><tr><td>频率偏差系数</td><td>400 MW/Hz</td><td>合成假设</td></tr><tr><td>联络线偏差项</td><td>100 − 80 = <strong>+20 MW</strong></td><td>实际送出少于计划</td></tr><tr><td>频率偏差项</td><td>400 × 0.05 = <strong>+20 MW</strong></td><td>频率低，需要多发</td></tr><tr><td>ACE</td><td>20 + 20 = <strong>+40 MW</strong></td><td>正值=缺出力</td></tr></tbody></table></div>
+<p>注意：物理上区域只缺 20 MW，但 ACE 还要把频率拉回额定，所以 AGC 的目标是让 <strong>ACE 归零</strong>，不是&quot;只补 20 MW&quot;。频率偏差系数的作用是把频率质量纳入区域控制，不是重复计算能量。</p>
+<h3 id="s15">2.3 CPS1/CPS2 是什么，不是什么</h3>
+<ul><li><strong>CPS1</strong>：把 1 分钟 ACE 与频率偏差联系起来，考核区域对互联电网频率的贡献；是一个统计控制目标，不是瞬时硬限。</li><li><strong>CPS2</strong>：约束 10 分钟平均 ACE 的绝对值，防止长时间单向偏差。</li><li><strong>不是中国省级考核公式</strong>：中国&quot;两个细则&quot;及各省辅助服务规则有自己的可用率、调节速率、调节精度、响应时间、K 值等口径；CPS 可以作为理解互联电网控制的框架，但不能直接拿来算结算。</li><li><strong>不是单一机组的 K 值</strong>：CPS 是区域级统计指标；机组/场站考核是另一套。</li></ul>
+<h3 id="s16">2.4 AGC 的指令周期与模式</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>要素</th><th>常见做法</th><th>工程含义</th></tr></thead><tbody><tr><td>指令周期</td><td>4 s、8 s、16 s 等</td><td>周期越短，对通信和量测要求越高；不是越短越好</td></tr><tr><td>指令形式</td><td>升/降脉冲、目标功率、调节量</td><td>形式不同，场站侧积分/限幅逻辑不同</td></tr><tr><td>调节方向</td><td>升、降、保持</td><td>方向受限时，ACE 可能长期不归零</td></tr><tr><td>死区</td><td>主站/场站各设一层</td><td>死区过大省动作，但会拖慢恢复</td></tr><tr><td>控制模式</td><td>自动、手动、本地、试验</td><td>模式切换必须无扰，否则功率跳变</td></tr><tr><td>闭锁</td><td>检修、保护、通信、SOC 极值</td><td>闭锁原因要回传，否则主站误判可用能力</td></tr></tbody></table></div>
+<h3 id="s17">2.5 一次调频与 AGC 的衔接</h3>
+<p>一次调频是就地快速响应，AGC 是主站慢速恢复。两者叠加时要注意：</p>
+<ul><li>一次调频动作后，频率恢复，AGC 的 ACE 可能先变大再变小；</li><li>一次调频的调差率、死区、限幅与 AGC 的调节范围要匹配；</li><li>储能一次调频若没有能量管理，可能在几分钟内耗尽 SOC；</li><li>考核上，一次调频和二次调频通常是两个产品/两个指标，不能互相抵免。</li></ul>
+<p>一个 D 级下垂示例：储能预留 20 MW 一次调频容量，调差率 2%，死区 ±0.03 Hz，频差 0.10 Hz。</p>
+<pre tabindex="0"><code>有效频差 = 0.10 - 0.03 = 0.07 Hz
+满调差对应频差 = 2% × 50 = 1.0 Hz
+一次调频出力 = 20 × 0.07 / 1.0 = 1.4 MW</code></pre>
+<p>20 MW 的&quot;一次调频容量&quot;在 0.10 Hz 频差下只出 1.4 MW；这不是容量造假，而是下垂特性与死区的结果。要看产品定义的是&quot;容量&quot;还是&quot;特定频差下的响应&quot;。</p>
+<h3 id="s18">2.6 频率质量与考核背景</h3>
+<p>并网标准、调度规程和省级两个细则对频率偏差、一次调频死区、响应时间、调差率有不同规定。本文不给出统一限值；工程上至少要先确认：</p>
+<ul><li>频率正常带与异常带是多少；</li><li>一次调频死区、调差率、响应滞后时间、稳定时间；</li><li>AGC 的调节速率、响应时间、调节精度、可用率；</li><li>考核是日、月还是年度，样本如何统计；</li><li>储能/新能源是否被要求具备一次调频/惯量支撑。</li></ul>
+<hr>
+<h2 id="s19">3. AGC 指令分配</h2>
+<h3 id="s20">3.1 分配问题的输入</h3>
+<p>AGC 主站分配给场内多台机组/储能时，至少需要：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>输入</th><th>作用</th><th>常见错误</th></tr></thead><tbody><tr><td>ACE/总调节量</td><td>要消纳的目标</td><td>把 ACE 直接当每台机组的增量</td></tr><tr><td>调节范围</td><td>当前可升/可降容量</td><td>用铭牌容量代替当前可用容量</td></tr><tr><td>爬坡率</td><td>单位时间可变化量</td><td>忽略爬坡，只看容量</td></tr><tr><td>参与因子</td><td>分配权重</td><td>参与因子不随状态更新</td></tr><tr><td>SOC/能量</td><td>储能可持续时间</td><td>只看功率，不看能量</td></tr><tr><td>最小/最大出力</td><td>煤机稳燃、储能 SOC 边界</td><td>把最小出力当 0</td></tr><tr><td>效率/损耗</td><td>充放电/厂用电</td><td>忽略效率导致能量不够</td></tr><tr><td>网络限额</td><td>送出/受入限制</td><td>分配结果超过并网点限额</td></tr><tr><td>模式/闭锁</td><td>检修、试验、保护</td><td>把闭锁机组算进可用容量</td></tr></tbody></table></div>
+<h3 id="s21">3.2 一个可解释的分配步骤</h3>
+<ol><li><strong>算可用调节能力</strong>：<code>cap_i = min(调节范围_i, 爬坡_i × 考核时段_i)</code>，用于封顶。</li><li><strong>算权重</strong>：<code>w_i = 调节范围_i × 参与因子_i</code>；没有参与因子时可用调节范围比例。</li><li><strong>按权重分配</strong>：<code>ΔP_i = ΔP_total × w_i / Σw</code>。</li><li><strong>检查上限</strong>：若某台超过 <code>cap_i</code>，固定在该上限，剩余量在未饱和机组中再分配。</li><li><strong>检查能量</strong>：储能 <code>ΔP_i × 持续时间</code> 是否超过可用能量/SOC 窗口。</li><li><strong>检查网络与并网点</strong>：场站总出力、馈线/主变/送出线限额。</li><li><strong>回传可交付能力</strong>：不是&quot;已分配&quot;就等于&quot;已交付&quot;。</li></ol>
+<p>这是一个&quot;按能力加权的注水&quot;方法，适合解释；实际调度可能用更复杂的优化/安全约束，本文不声称这是唯一算法。</p>
+<h3 id="s22">3.3 煤电、储能、新能源的差异</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>资源</th><th>响应速度</th><th>持续能力</th><th>主要约束</th><th>考核风险</th></tr></thead><tbody><tr><td>煤电</td><td>较慢，受锅炉/磨煤机/汽压限制</td><td>强，可长时间</td><td>最小出力、稳燃、爬坡、厂用电</td><td>响应慢、爬坡不足、精度受工况影响</td></tr><tr><td>储能</td><td>快，毫秒—秒级</td><td>受 SOC/能量限制</td><td>PCS 容量、SOC、温控、退化</td><td>能量耗尽、SOC 越限、容量衰减</td></tr><tr><td>风电</td><td>向下快，向上受弃风/备用限制</td><td>受风况限制</td><td>逆变器余量、停机、结冰</td><td>上调能力虚报、噪声/尾流</td></tr><tr><td>光伏</td><td>向下快，向上受辐照/余量限制</td><td>白天有限</td><td>逆变器余量、限发、温度</td><td>夜间无上调、云遮、限发</td></tr><tr><td>水电</td><td>快</td><td>受水量/库容/生态限制</td><td>水头、振动区、生态流量</td><td>振动区、水量不足</td></tr></tbody></table></div>
+<p>储能不是&quot;无限快、无限准&quot;：PCS 有交流侧容量，电池有 SOC 和温度，辅助电源/冷却也会限制；连续调频时还要考虑能量中性（充放电量平衡）。</p>
+<h3 id="s23">3.4 算例：40 MW 怎么分</h3>
+<p>合成控制区两台调节资源：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>资源</th><th style="text-align:right">调节范围（MW）</th><th style="text-align:right">爬坡（MW/min）</th><th style="text-align:right">参与因子</th><th style="text-align:right">5 分钟可交付（MW）</th><th style="text-align:right">权重</th></tr></thead><tbody><tr><td>煤机 A</td><td style="text-align:right">40</td><td style="text-align:right">6</td><td style="text-align:right">0.6</td><td style="text-align:right">min(40, 30)=30</td><td style="text-align:right">24</td></tr><tr><td>储能 B</td><td style="text-align:right">20</td><td style="text-align:right">10</td><td style="text-align:right">0.4</td><td style="text-align:right">min(20, 50)=20</td><td style="text-align:right">8</td></tr><tr><td>合计</td><td style="text-align:right">60</td><td style="text-align:right">—</td><td style="text-align:right">—</td><td style="text-align:right">50</td><td style="text-align:right">32</td></tr></tbody></table></div>
+<p>按权重分配 40 MW：</p>
+<pre tabindex="0"><code>煤机 A = 40 × 24/32 = 30 MW
+储能 B = 40 × 8/32  = 10 MW</code></pre>
+<p>检查 5 分钟爬坡：煤机 30 MW / 6 MW/min = 5.0 min，刚好；储能 10 MW / 10 MW/min = 1.0 min。分配可行，但煤机没有余量，若 ACE 继续增大，只能靠储能或重新分配。</p>
+<p>若 ACE 是 55 MW，按权重会得到 41.25/13.75 MW；煤机超过 30 MW 上限，注水后变为 30/20 MW，总交付 50 MW，仍有 5 MW 无法在 5 分钟内交付。这时主站应看到&quot;可交付能力不足&quot;，而不是继续下发不可执行的指令。</p>
+<h3 id="s24">3.5 中标容量不等于可交付</h3>
+<p>辅助服务市场里中标的是容量/里程/性能，实际交付要看：</p>
+<ul><li>考核时段的持续能量：30 MW × 15 min = 7.5 MWh，SOC 窗口是否够；</li><li>充放电效率与能量中性：连续调频不能只放不充；</li><li>PCS 交流侧容量与无功占用：有功/无功不能同时吃满；</li><li>通信与指令周期：指令到了但设备没收到，等于没交付；</li><li>场站/馈线/主变限额：内部能力够，送出受限也不行；</li><li>保护/联锁/温度：降额或闭锁会削减可用容量。</li></ul>
+<h3 id="s25">3.6 反饱和、无扰切换与手动优先</h3>
+<ul><li><strong>积分饱和</strong>：指令长时间顶在上限，积分项累积，反向时反应迟钝；要有 anti-windup。</li><li><strong>无扰切换</strong>：自动/手动/本地模式切换时，指令初值跟踪实际出力，避免跳变。</li><li><strong>手动优先</strong>：操作员手动干预应能覆盖 AGC，但必须有记录和明确恢复条件。</li><li><strong>闭锁复位</strong>：保护/通信/SOC 闭锁解除后，不能立即满功率冲击，要按爬坡和限幅恢复。</li></ul>
+<hr>
+<h2 id="s26">4. AVC 三层与场站闭环</h2>
+<h3 id="s27">4.1 三层控制</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>层级</th><th>目标</th><th>时间尺度</th><th>输出</th><th>关键约束</th></tr></thead><tbody><tr><td>省/区域 AVC</td><td>中枢点电压、区域无功平衡、网损</td><td>分钟级</td><td>场站/电厂电压或无功目标</td><td>电网安全限额、无功源可用性</td></tr><tr><td>场站 AVC</td><td>并网点电压/无功/功率因数</td><td>秒—分钟</td><td>逆变器、SVG、PCS、电容器/电抗器指令</td><td>设备容量、P-Q 曲线、变压器分接头</td></tr><tr><td>设备级</td><td>跟踪无功/电压指令</td><td>毫秒—秒</td><td>变流器触发/占空比</td><td>电流限幅、直流电压、温度、保护</td></tr></tbody></table></div>
+<p>三层不是三个独立系统；上层目标要能被下层可交付能力校验，下层反馈要能被上层看到。</p>
+<h3 id="s28">4.2 场站 AVC 的输入与输出</h3>
+<p>输入：</p>
+<ul><li>并网点电压目标/死区、无功目标、功率因数目标；</li><li>并网点/主变/馈线限额；</li><li>光伏逆变器、SVG、储能 PCS 的无功能力与当前出力；</li><li>变压器分接头位置、电容器/电抗器状态；</li><li>设备温度、故障、检修、通信状态；</li><li>有功出力（因为 P-Q 容量圆会限制无功）。</li></ul>
+<p>输出：</p>
+<ul><li>各设备的无功指令或电压目标；</li><li>投切电容器/电抗器指令（如有）；</li><li>分接头调节请求（如有）；</li><li>可用无功能力、闭锁原因、执行反馈。</li></ul>
+<h3 id="s29">4.3 无功分配的顺序</h3>
+<p>一个常见的工程顺序（不是唯一）：</p>
+<ol><li><strong>先用连续可调、响应快的资源</strong>：光伏逆变器、储能 PCS、SVG；</li><li><strong>再用离散/慢速资源</strong>：电容器、电抗器、变压器分接头；</li><li><strong>优先用&quot;免费&quot;的无功</strong>：逆变器在不削减有功时的无功余量；</li><li><strong>避免频繁动作</strong>：死区、最小动作间隔、动作次数限制；</li><li><strong>检查 P-Q 耦合</strong>：有功接近满发时，无功能力下降；</li><li><strong>检查电压灵敏度</strong>：不同母线/方式下，无功对目标电压的效果不同。</li></ol>
+<h3 id="s30">4.4 无功能力不是固定值</h3>
+<ul><li>逆变器：无功能力随有功出力、直流电压、电网电压、温度变化；厂家提供的 P-Q 曲线是边界，不是任意点都可长期运行。</li><li>SVG：连续容量与短时过载不同；低电压时无功电流受限流约束。</li><li>储能 PCS：有功/无功共用交流侧容量；调频占用有功时，无功能力下降。</li><li>变压器：分接头调节会改变无功分布，但动作慢、次数有限，不能当快速连续资源。</li><li>电缆/线路：充电功率随电压变化，重载时无功损耗增加。</li></ul>
+<h3 id="s31">4.5 AVC 与功率因数模式</h3>
+<p>功率因数是本地量，电压是系统量。两者同时控制会打架：</p>
+<ul><li>功率因数模式在并网点电压变化时可能大量发/吸无功，反过来影响电压；</li><li>电压模式在重载/轻载时可能把无功推到极限，功率因数越界；</li><li>模式切换要有死区、延时和无扰逻辑，否则会来回振荡；</li><li>并网标准/调度规程对并网点功率因数、电压范围、无功响应有要求，必须先确认。</li></ul>
+<h3 id="s32">4.6 算例：60 Mvar 怎么分</h3>
+<p>合成场站：并网点电压 0.99 pu，目标 1.02 pu，电压-无功灵敏度 0.0005 pu/Mvar。</p>
+<pre tabindex="0"><code>所需无功 = (1.02 - 0.99) / 0.0005 = 60 Mvar</code></pre>
+<p>可用资源：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>资源</th><th style="text-align:right">可用无功（Mvar）</th><th style="text-align:right">优先级</th><th style="text-align:right">分配（Mvar）</th><th>说明</th></tr></thead><tbody><tr><td>光伏逆变器</td><td style="text-align:right">30</td><td style="text-align:right">1</td><td style="text-align:right">30</td><td>先用免费余量</td></tr><tr><td>SVG</td><td style="text-align:right">40</td><td style="text-align:right">2</td><td style="text-align:right">30</td><td>补足剩余</td></tr><tr><td>储能 PCS</td><td style="text-align:right">20</td><td style="text-align:right">3</td><td style="text-align:right">0</td><td>保留给有功/备用</td></tr><tr><td>合计</td><td style="text-align:right">90</td><td style="text-align:right">—</td><td style="text-align:right">60</td><td>电压回到 1.02 pu</td></tr></tbody></table></div>
+<p>注意：这是线性化灵敏度，实际电压变化会改变灵敏度；分配后要复算潮流/电压，不能只按一次线性关系下结论。若光伏有功满发、无功余量不足，或 SVG 已到限，60 Mvar 可能不可交付。</p>
+<h3 id="s33">4.7 AVC 的考核维度</h3>
+<p>各省规则不同，但通常看：</p>
+<ul><li>电压合格率/中枢点电压偏差；</li><li>无功响应时间、调节精度、可用率；</li><li>并网点功率因数；</li><li>AVC 投运率/闭锁时间；</li><li>是否因 AVC 导致无功越限、变压器过载或保护动作。</li></ul>
+<p>不要用&quot;电压看起来合格&quot;替代考核数据；考核用的是指定测点、指定采样周期和指定统计口径。</p>
+<hr>
+<h2 id="s34">5. 性能考核与市场衔接</h2>
+<h3 id="s35">5.1 四个基本维度</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>定义</th><th>数据来源</th><th>常见误判</th></tr></thead><tbody><tr><td>响应时间</td><td>从指令下发到出力开始变化/达到某比例</td><td>指令时标、出力采样</td><td>只看通信时延，不看设备启动</td></tr><tr><td>调节速率</td><td>单位时间实际出力变化</td><td>出力曲线</td><td>用铭牌爬坡代替实际爬坡</td></tr><tr><td>调节精度</td><td>实际值与目标值的偏差</td><td>目标、实际、稳态窗口</td><td>用瞬时值代替稳态值</td></tr><tr><td>稳定性</td><td>超调、振荡、稳定时间</td><td>高频采样</td><td>只看最终值，不看过程</td></tr><tr><td>可用率</td><td>可参与考核的时间比例</td><td>状态/闭锁记录</td><td>把检修/通信中断算作可用</td></tr></tbody></table></div>
+<h3 id="s36">5.2 K 值为什么不能全国一个公式</h3>
+<p>K 值通常由响应时间、调节速率、调节精度等分项加权（有的还含可用率/方向），但：</p>
+<ul><li>各省&quot;两个细则&quot;版本不同，权重和门槛不同；</li><li>调频市场与固定考核可能并存，结算口径不同；</li><li>直调/非直调、火电/储能/新能源的考核条款不同；</li><li>样本统计周期、指令类型、死区处理不同。</li></ul>
+<p>所以本文只演示分项，不合成&quot;标准 K 值&quot;。工程上必须拿现行省级规则逐项对照。</p>
+<h3 id="s37">5.3 算例：两台资源的性能分项</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>资源</th><th style="text-align:right">目标（MW）</th><th style="text-align:right">实际（MW）</th><th style="text-align:right">响应（s）</th><th style="text-align:right">实际爬坡（MW/min）</th><th style="text-align:right">要求爬坡（MW/min）</th><th style="text-align:right">精度</th><th style="text-align:right">爬坡比</th><th>响应判断</th></tr></thead><tbody><tr><td>煤机 A</td><td style="text-align:right">30</td><td style="text-align:right">28.5</td><td style="text-align:right">12</td><td style="text-align:right">5.7</td><td style="text-align:right">6</td><td style="text-align:right">95.0%</td><td style="text-align:right">0.95</td><td>合格（≤15 s）</td></tr><tr><td>储能 B</td><td style="text-align:right">10</td><td style="text-align:right">10.2</td><td style="text-align:right">3</td><td style="text-align:right">10.0</td><td style="text-align:right">10</td><td style="text-align:right">98.0%</td><td style="text-align:right">1.00</td><td>合格（≤15 s）</td></tr></tbody></table></div>
+<p>读法：</p>
+<ul><li>煤机精度 95.0%，刚好达到&quot;实际≥95%目标&quot;的示例门槛，但爬坡比 0.95，略低于要求的 1.0；如果规则按速率分项扣分，它不能因为精度合格就免扣。</li><li>储能响应 3 s、爬坡比 1.0、精度 98.0%，分项都合格；但若考核时段延长，SOC 可能成为新约束。</li><li>响应时间 15 s 是本文示例门槛，不是全国统一值；实际按规则。</li></ul>
+<h3 id="s38">5.4 辅助服务市场与&quot;两个细则&quot;的关系</h3>
+<ul><li><strong>两个细则</strong>：并网运行管理 + 辅助服务管理，偏考核/补偿，省级版本差异大。</li><li><strong>辅助服务市场</strong>：调频、备用、无功等品种可能竞价/出清，按容量、里程、性能结算。</li><li><strong>可能并存</strong>：同一资源既受并网考核，又参与市场；要避免重复计算或漏算。</li><li><strong>AGC/AVC 是执行层</strong>：市场决定&quot;卖什么、卖多少&quot;，AGC/AVC 决定&quot;能不能按质按量交付&quot;；两者不能混为一谈。</li></ul>
+<h3 id="s39">5.5 考核数据的最小闭环</h3>
+<p>要复盘一次考核，至少需要：</p>
+<ul><li>主站指令（时标、目标、方向、模式）；</li><li>场站收到/转发的指令（时标、值）；</li><li>设备实际出力/无功（采样周期、测点）；</li><li>SOC、温度、限流/闭锁、通信状态；</li><li>并网点/主变/馈线限额与越限记录；</li><li>考核规则版本、统计窗口、样本剔除规则。</li></ul>
+<p>没有这些，只能讲&quot;感觉响应慢&quot;，不能定位是通信、设备、策略还是规则口径。</p>
+<hr>
+<h2 id="s40">6. 数据、通信与时延</h2>
+<h3 id="s41">6.1 控制链的时延预算</h3>
+<pre tabindex="0"><code>主站计算 → 主站下发 → 通信网络 → 场站子站 → 设备 → 出力变化 → 量测回传</code></pre>
+<p>每一段都有时延。合成示例（仅演示量级，不是现场保证）：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>环节</th><th style="text-align:right">示例时延</th><th>影响因素</th></tr></thead><tbody><tr><td>主站计算/排队</td><td style="text-align:right">0.1—1 s</td><td>计算周期、指令队列</td></tr><tr><td>主站到场站通信</td><td style="text-align:right">0.5—3 s</td><td>光纤/无线、协议、路由、加密</td></tr><tr><td>场站子站处理</td><td style="text-align:right">0.1—0.5 s</td><td>分解算法、点表、闭锁检查</td></tr><tr><td>设备响应</td><td style="text-align:right">0.1—2 s</td><td>PCS/逆变器/锅炉/水机</td></tr><tr><td>量测回传</td><td style="text-align:right">0.5—3 s</td><td>RTU/网关、采样周期、拥塞</td></tr></tbody></table></div>
+<p>总时延必须和 AGC 指令周期、考核响应时间匹配；如果通信占了大头，再快的设备也拿不到好分数。</p>
+<h3 id="s42">6.2 时标与对时</h3>
+<ul><li>指令、反馈、量测必须用同一时间基准；GPS/北斗、NTP/PTP 的偏差会直接污染响应时间统计。</li><li>时标错位可能把&quot;上一指令的响应&quot;算到&quot;下一指令&quot;头上，造成精度/速率误判。</li><li>采集周期与考核窗口要匹配；1 s、5 s、1 min 采样得到的结果不同。</li></ul>
+<h3 id="s43">6.3 数据质量与失效行为</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>异常</th><th>表现</th><th>应有行为</th></tr></thead><tbody><tr><td>坏点/冻结值</td><td>数值不变、质量位坏</td><td>标记无效，不用作反馈/考核</td></tr><tr><td>通信中断</td><td>指令无响应、反馈超时</td><td>按预定义策略退出/保持/归零，并告警</td></tr><tr><td>指令丢失</td><td>主站有记录、场站无记录</td><td>重传/确认机制；不能默认已执行</td></tr><tr><td>反馈造假/回填</td><td>实际未执行但反馈达标</td><td>用独立量测校验，审计日志</td></tr><tr><td>时钟漂移</td><td>响应时间忽大忽小</td><td>对时告警，重新同步</td></tr></tbody></table></div>
+<p>通信中断后的策略必须事先定义：保持最后指令、按斜率归零、转本地模式、还是闭锁；不同选择对频率/电压安全的影响不同，不能现场临时决定。</p>
+<h3 id="s44">6.4 网络安全</h3>
+<p>AGC/AVC 属于生产控制区，不能直接暴露在互联网；要遵循电力监控系统安全防护规定，做到：</p>
+<ul><li>分区隔离、纵向加密/认证；</li><li>最小权限、操作审计；</li><li>指令白名单/范围校验；</li><li>异常指令限幅/拒绝；</li><li>不把测试/远方调试通道当生产通道。</li></ul>
+<p>SCADA 数据链路与安全防护见<a href="SCADA与电力监控数据链路-2026-11.html">《SCADA 与电力监控数据链路》</a>。</p>
+<hr>
+<h2 id="s45">7. D 级合成算例：从 ACE 到 AVC</h2>
+<aside class="note"><p>本节全部为合成数据，仅用于演示方法；不代表任何真实控制区、场站或考核结果。</p></aside>
+<h3 id="s46">7.1 算例假设</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>参数</th><th style="text-align:right">数值</th></tr></thead><tbody><tr><td>额定频率</td><td style="text-align:right">50 Hz</td></tr><tr><td>计划净送出</td><td style="text-align:right">100 MW</td></tr><tr><td>实际净送出</td><td style="text-align:right">80 MW</td></tr><tr><td>实际频率</td><td style="text-align:right">49.95 Hz</td></tr><tr><td>频率偏差系数</td><td style="text-align:right">400 MW/Hz</td></tr><tr><td>AGC 总调节量</td><td style="text-align:right">ACE = 40 MW</td></tr><tr><td>考核时段</td><td style="text-align:right">5 min</td></tr><tr><td>并网点电压</td><td style="text-align:right">0.99 pu</td></tr><tr><td>电压目标</td><td style="text-align:right">1.02 pu</td></tr><tr><td>电压-无功灵敏度</td><td style="text-align:right">0.0005 pu/Mvar</td></tr><tr><td>系统基准</td><td style="text-align:right">100 MVA（仅用于 pu/MW 换算）</td></tr></tbody></table></div>
+<h3 id="s47">7.2 ACE</h3>
+<pre tabindex="0"><code>ACE = (100 - 80) + 400 × (50 - 49.95)
+    = 20 + 20
+    = 40 MW</code></pre>
+<h3 id="s48">7.3 AGC 分配</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>资源</th><th style="text-align:right">调节范围</th><th style="text-align:right">爬坡</th><th style="text-align:right">参与因子</th><th style="text-align:right">权重</th><th style="text-align:right">分配</th><th style="text-align:right">5 分钟爬坡需求</th><th>可交付</th></tr></thead><tbody><tr><td>煤机 A</td><td style="text-align:right">40 MW</td><td style="text-align:right">6 MW/min</td><td style="text-align:right">0.6</td><td style="text-align:right">24</td><td style="text-align:right">30 MW</td><td style="text-align:right">5.0 min</td><td>刚好</td></tr><tr><td>储能 B</td><td style="text-align:right">20 MW</td><td style="text-align:right">10 MW/min</td><td style="text-align:right">0.4</td><td style="text-align:right">8</td><td style="text-align:right">10 MW</td><td style="text-align:right">1.0 min</td><td>是</td></tr><tr><td>合计</td><td style="text-align:right">60 MW</td><td style="text-align:right">—</td><td style="text-align:right">—</td><td style="text-align:right">32</td><td style="text-align:right">40 MW</td><td style="text-align:right">—</td><td>是</td></tr></tbody></table></div>
+<h3 id="s49">7.4 性能分项</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>资源</th><th style="text-align:right">目标</th><th style="text-align:right">实际</th><th style="text-align:right">精度</th><th style="text-align:right">爬坡比</th><th style="text-align:right">响应</th><th>结论</th></tr></thead><tbody><tr><td>煤机 A</td><td style="text-align:right">30 MW</td><td style="text-align:right">28.5 MW</td><td style="text-align:right">95.0%</td><td style="text-align:right">0.95</td><td style="text-align:right">12 s</td><td>精度合格，速率略低</td></tr><tr><td>储能 B</td><td style="text-align:right">10 MW</td><td style="text-align:right">10.2 MW</td><td style="text-align:right">98.0%</td><td style="text-align:right">1.00</td><td style="text-align:right">3 s</td><td>分项合格</td></tr></tbody></table></div>
+<h3 id="s50">7.5 AVC 分配</h3>
+<pre tabindex="0"><code>所需无功 = (1.02 - 0.99) / 0.0005 = 60 Mvar</code></pre>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>资源</th><th style="text-align:right">可用</th><th style="text-align:right">分配</th><th style="text-align:right">剩余可用</th></tr></thead><tbody><tr><td>光伏逆变器</td><td style="text-align:right">30 Mvar</td><td style="text-align:right">30 Mvar</td><td style="text-align:right">0</td></tr><tr><td>SVG</td><td style="text-align:right">40 Mvar</td><td style="text-align:right">30 Mvar</td><td style="text-align:right">10 Mvar</td></tr><tr><td>储能 PCS</td><td style="text-align:right">20 Mvar</td><td style="text-align:right">0 Mvar</td><td style="text-align:right">20 Mvar</td></tr><tr><td>合计</td><td style="text-align:right">90 Mvar</td><td style="text-align:right">60 Mvar</td><td style="text-align:right">30 Mvar</td></tr></tbody></table></div>
+<h3 id="s51">7.6 一次调频（旁证）</h3>
+<pre tabindex="0"><code>储能一次调频容量 20 MW，调差率 2%，死区 ±0.03 Hz，频差 0.10 Hz
+出力 = 20 × (0.10 - 0.03) / (0.02 × 50) = 1.4 MW</code></pre>
+<h3 id="s52">7.7 这个算例说明什么</h3>
+<ul><li>ACE 的 40 MW 包含联络线偏差和频率偏差，不能只补 20 MW；</li><li>AGC 分配要同时看容量、爬坡、参与因子和考核时段；</li><li>精度、速率、响应是分项，不能用一个&quot;合格&quot;覆盖全部；</li><li>AVC 分配要先看无功能力与优先级，再用灵敏度估算目标；</li><li>一次调频容量与特定频差下的实际出力不是一回事。</li></ul>
+<h3 id="s53">7.8 这个算例不说明什么</h3>
+<ul><li>不代表真实煤机/储能/光伏的响应参数；</li><li>不覆盖锅炉/水机/逆变器的非线性、死区、振动区；</li><li>不覆盖网络阻塞、电压稳定、保护动作；</li><li>不给出 K 值或考核金额；</li><li>不证明&quot;先光伏、再 SVG、后储能&quot;是唯一分配顺序。</li></ul>
+<hr>
+<h2 id="s54">8. 常见错误（10 条）</h2>
+<ol><li><strong>把 ACE 当缺口功率</strong>：ACE 含频率偏差项；ACE=40 MW 不代表只缺 40 MW 能量，更不代表只补 20 MW。</li><li><strong>把 AGC 容量当能量</strong>：30 MW 调频容量持续 15 min 需要 7.5 MWh（未计效率），SOC 不够就不可交付。</li><li><strong>只看响应时间，不看爬坡和精度</strong>：响应 3 s 但爬坡不足，或精度 95% 但速率 0.95，都可能被分项扣分。</li><li><strong>用铭牌功率算调节能力</strong>：PCS/逆变器有无功占用、温度降额、SOC 边界、并网点限额，铭牌不是可用。</li><li><strong>把一次调频和 AGC 混为一谈</strong>：一次调频就地、秒级、按 droop；AGC 主站、闭环、按 ACE；考核产品也可能不同。</li><li><strong>把 AVC 当&quot;堆无功设备&quot;</strong>：不看电压灵敏度、P-Q 耦合、动作次数和模式冲突，设备越多越容易振荡。</li><li><strong>功率因数模式与电压模式同时抢控制</strong>：没有死区/延时/无扰切换，会出现无功来回打、电压越调越差。</li><li><strong>忽略通信时延与反馈</strong>：主站以为指令已执行，实际场站没收到/被闭锁；考核时才发现响应时间对不上。</li><li><strong>用外省 K 值公式套本省</strong>：权重、门槛、样本周期、考核品种都可能不同；跨省比较要先对齐口径。</li><li><strong>让 AGC/AVC 越过保护与安全联锁</strong>：调节指令不能覆盖低穿/高穿、过频/低频、防孤岛、过流/过温保护；安稳动作时 AGC 要能退出。</li></ol>
+<hr>
+<h2 id="s55">9. 待核实与未定事项</h2>
+<p>以下事项必须按项目所在地、调度机构和现行规则核实，本文不给出确定值：</p>
+<ul><li>[ ] 本省/区域 AGC 考核的响应时间、调节速率、调节精度、可用率、K 值公式与权重；</li><li>[ ] 本省/区域 AVC 的电压目标、中枢点、无功/功率因数要求、考核统计口径；</li><li>[ ] 一次调频的死区、调差率、响应滞后、稳定时间、限幅；</li><li>[ ] 储能参与 AGC/一次调频的准入、容量折算、能量中性、SOC 管理要求；</li><li>[ ] 新能源场站 AGC/AVC 的通信协议、指令周期、遥调点表、异常处理；</li><li>[ ] 场站/集控 AGC/AVC 子站的本地约束模型与闭锁逻辑；</li><li>[ ] 考核数据的采样周期、时标要求、坏点剔除与补数规则；</li><li>[ ] 辅助服务市场与两个细则并存时的结算/考核关系；</li><li>[ ] 孤岛/离网模式下二次控制与并网 AGC/AVC 的切换条件；</li><li>[ ] 构网型储能/新能源参与频率电压支撑时，与跟网型 AGC/AVC 的协调方式。</li></ul>
+<hr>
+<h2 id="s56">10. 分工：和现有模块怎么配合</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>问题</th><th>先看</th><th>本文负责</th><th>不负责</th></tr></thead><tbody><tr><td>频率为什么跌、惯量够不够</td><td><a href="频率惯量与灵活性供需-2026-11.html">《频率、惯量与灵活性供需》</a></td><td>AGC/一次调频如何响应</td><td>惯量常数、系统频率稳定计算</td></tr><tr><td>无功补偿设备怎么选、电能质量怎么算</td><td><a href="无功电压与电能质量-2026-11.html">《无功、电压与电能质量》</a></td><td>AVC 如何闭环分配</td><td>设备选型、谐波/闪变详细计算</td></tr><tr><td>并网测试要测什么</td><td><a href="并网测试与涉网验收实务清单-2026-11.html">《并网测试与涉网验收实务清单》</a></td><td>AGC/AVC 运行期表现</td><td>型式试验、涉网试验项目清单</td></tr><tr><td>两个细则怎么考核</td><td><a href="并网运行考核与两个细则-2026-11.html">《并网运行考核与两个细则》</a></td><td>性能分项如何产生</td><td>省级条款原文、结算金额</td></tr><tr><td>储能 EMS 怎么优化</td><td><a href="储能EMS优化调度-算法与工程-2026-11.html">《储能 EMS 优化调度》</a></td><td>AGC/AVC 实时执行与约束</td><td>日前/日内 MILP 优化</td></tr><tr><td>微网并离网怎么切换</td><td><a href="微网运行方式与并离网切换-2026-11.html">《微网运行方式与并离网切换》</a></td><td>并网 AGC/AVC 边界</td><td>孤岛二次控制、黑启动</td></tr><tr><td>集控/场站群怎么接</td><td><a href="场站群与集控EMS架构-2026-11.html">《场站群与集控 EMS 架构》</a></td><td>指令分解与反馈</td><td>集控平台架构、云边协同</td></tr><tr><td>数据接口怎么定义</td><td><a href="EMS数据接口参考架构-2026-11.html">《EMS 数据接口参考架构》</a></td><td>指令/反馈字段需求</td><td>接口协议栈、点表实现</td></tr><tr><td>SCADA 数据怎么来</td><td><a href="SCADA与电力监控数据链路-2026-11.html">《SCADA 与电力监控数据链路》</a></td><td>控制闭环对量测的要求</td><td>四遥、通信规约、历史库</td></tr><tr><td>现货价格怎么形成</td><td><a href="现货出清与价格形成-2026-11.html">《现货出清与价格形成》</a></td><td>辅助服务执行层</td><td>电能/辅助服务出清算法</td></tr><tr><td>预测误差怎么进 EMS</td><td><a href="预测误差申报与EMS闭环-2026-11.html">《预测误差→申报→EMS 闭环》</a></td><td>AGC 执行偏差</td><td>预测模型、申报策略</td></tr><tr><td>储能技术路线/构网型</td><td><a href="储能技术路线安全与构网型并网-2026-11.html">《储能技术路线、安全与构网型并网》</a></td><td>跟网型 AGC/AVC 控制</td><td>构网型控制、宽频振荡</td></tr><tr><td>状态估计/安全分析</td><td><a href="状态估计与安全分析-2026-11.html">《状态估计与安全分析》</a></td><td>AGC/AVC 使用安全限额</td><td>WLS、坏数据、N-1</td></tr></tbody></table></div>
+<hr>
+<h2 id="s57">11. 速查</h2>
+<h3 id="s58">11.1 五个公式</h3>
+<pre tabindex="0"><code>ACE = (P_sched - P_actual) + B × (f_n - f)
+
+cap_i = min(调节范围_i, 爬坡_i × 考核时段_i)
+w_i = 调节范围_i × 参与因子_i
+ΔP_i = ΔP_total × w_i / Σw
+
+ΔQ = (V_target - V_0) / 灵敏度
+
+一次调频出力 = 容量 × max(0, |Δf| - 死区) / (调差率 × f_n)</code></pre>
+<h3 id="s59">11.2 五个必问</h3>
+<ol><li>这个&quot;容量&quot;是功率、能量，还是特定频差下的响应？</li><li>考核时段多长，SOC/能量够不够？</li><li>响应时间、爬坡、精度、稳定性分别怎么算？</li><li>AGC/AVC 指令的时标、周期、通信链路和失效策略是什么？</li><li>本省现行两个细则/辅助服务规则是哪一版，和本文示例差在哪？</li></ol>
+<h3 id="s60">11.3 工具</h3>
+<pre tabindex="0"><code># 在 skills/ems-dispatch/tools 下
+python control.py                 # 打印 D 级算例
+python control.py --json          # JSON 输出
+python selftest.py                # 断言本文数字</code></pre>
+<p><code>control.py</code> 只做 ACE、AGC 分配、性能分项、AVC 分配和一次调频下垂的确定性计算，不做真实调度、报价或考核结算。</p>
+<hr>
+<h2 id="s61">12. 版本与维护</h2>
+<ul><li>本模块为 v2.0 维护批次新增，数据截止 2026-11-19；所有规则值均为示例，不替代现行省级文件。</li><li>修改 frontmatter <code>cutoff</code> 时，必须同步 <code>更新清单.md</code> 对应行。</li><li>若省级 AGC/AVC 规则更新，优先复核 §5、§9 和算例门槛，并同步 <code>control.py</code> 的示例参数与 <code>selftest.py</code> 断言。</li><li><strong>相关工具</strong>：<code>skills/ems-dispatch/tools/control.py</code>；相关自测：<code>skills/ems-dispatch/tools/selftest.py</code>。</li></ul>
+    </article>
+
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>13</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="频率惯量与灵活性供需-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>频率、惯量与灵活性供需：从物理缓冲到分时间尺度货架</b>
+          <span>有功平衡与频率、转动惯量与 RoCoF、惯量/一次/二次/三次响应分层、新能源占比下的爬坡需求、灵活性供需货架与国内运行视角。</span>
+        </a>
+        <a class="related-card" href="无功电压与电能质量-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>无功、电压与电能质量：从无功平衡到力调电费</b>
+          <span>无功平衡与电压稳定、AVC 分级、SVG/电容器/变流器无功能力、功率因数与力调电费、谐波/闪变/不平衡/暂降的治理。</span>
+        </a>
+        <a class="related-card" href="并网测试与涉网验收实务清单-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>并网测试与涉网验收实务清单：AGC/AVC/一次调频投运试验与考核点闭环</b>
+          <span>从型式试验到并网验收的测试体系，AGC/AVC/一次调频投运试验方法与判据，故障穿越/电能质量/模型验证，验收清单与整改闭环，把两个细则考核点倒推为试验验证项。</span>
+        </a>
+        <a class="related-card" href="并网运行考核与两个细则-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>并网运行考核与两个细则</b>
+          <span>60/61 号、AGC/AVC/一次调频公式、20 项罚则、六类免考与合成算例。</span>
+        </a>
+      </div>
+      <p class="related-rest"><b>更多关联</b><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a><a href="微网运行方式与并离网切换-2026-11.html">微网运行方式与并离网切换：从状态机到黑启动</a><a href="场站群与集控EMS架构-2026-11.html">场站群与集控 EMS 架构：分级调度、通信拓扑与群调群控</a><a href="EMS数据接口参考架构-2026-11.html">EMS 数据接口参考架构：设备、调度、市场与计量结算的契约</a><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a><a href="现货出清与价格形成-2026-11.html">现货出清与价格形成：从报价到节点价</a><a href="预测误差申报与EMS闭环-2026-11.html">预测误差→申报→EMS 闭环：newsvendor 报价与储能偏差跟踪</a><a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线、安全与构网型并网</a><a href="状态估计与安全分析-2026-11.html">状态估计与安全分析：从 SCADA 量测到可信运行方式</a></p>
+    </section>
+
+<section class="related" aria-labelledby="paired-skills-title">
+      <div class="related-head"><h2 id="paired-skills-title">配套技能</h2><span>3</span></div>
+      <div class="related-grid">
+        <a class="related-card skill-pair" href="skill-storage-investment-operations.html">
+          <span class="related-type">收益堆叠、投决、退化与考核（含安徽容量电价、广东现货+调频实例包）</span>
+          <b>储能投资与运营</b>
+          <span>技能 · 储能 · 投决 · LCOS</span>
+        </a>
+        <a class="related-card skill-pair" href="skill-renewable-project-development.html">
+          <span class="related-type">资源、LCOE、机制电价与并网（含云南风电 2027 投决实例包）</span>
+          <b>新能源开发与并网</b>
+          <span>技能 · 新能源 · LCOE · 并网</span>
+        </a>
+        <a class="related-card skill-pair" href="skill-ems-dispatch.html">
+          <span class="related-type">96 点调度、SOC 与需量、AGC/AVC 闭环与状态估计接口（含江苏零碳园区微网、山东独立储能电站日运行+考核复盘实例包）</span>
+          <b>EMS 优化调度</b>
+          <span>技能 · EMS · SOC · 需量 · AGC/AVC · 状态估计</span>
+        </a>
+      </div>
+    </section>
+
+    <nav class="pager" aria-label="上下篇">
+          <a class="prev" href="EMS数据接口参考架构-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">EMS 数据接口参考架构：设备、调度、市场与计量结算的契约</span></a>
+          <a class="next" href="状态估计与安全分析-2026-11.html"><span class="dir">下一篇 →</span><span class="ttl">状态估计与安全分析：从 SCADA 量测到可信运行方式</span></a>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../AGC-AVC与频率电压闭环-2026-11.md">knowledge/AGC-AVC与频率电压闭环-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="本页目录">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv3"><a href="#s2">0.1 三句话</a></li>
+            <li class="lv3"><a href="#s3">0.2 关键概念</a></li>
+            <li class="lv3"><a href="#s4">0.3 先记住四个数</a></li>
+            <li class="lv3"><a href="#s5">0.4 本文不做什么</a></li>
+            <li class="lv2"><a href="#s6">1. 控制链与职责边界</a></li>
+            <li class="lv3"><a href="#s7">1.1 四个时间尺度</a></li>
+            <li class="lv3"><a href="#s8">1.2 主站、场站、设备各管什么</a></li>
+            <li class="lv3"><a href="#s9">1.3 闭环的四个环节</a></li>
+            <li class="lv3"><a href="#s10">1.4 场站 EMS 在控制链中的位置</a></li>
+            <li class="lv3"><a href="#s11">1.5 与保护、安稳的边界</a></li>
+            <li class="lv2"><a href="#s12">2. ACE、CPS 与二次调频</a></li>
+            <li class="lv3"><a href="#s13">2.1 ACE 的符号约定</a></li>
+            <li class="lv3"><a href="#s14">2.2 算例：ACE 40 MW 从哪来</a></li>
+            <li class="lv3"><a href="#s15">2.3 CPS1/CPS2 是什么，不是什么</a></li>
+            <li class="lv3"><a href="#s16">2.4 AGC 的指令周期与模式</a></li>
+            <li class="lv3"><a href="#s17">2.5 一次调频与 AGC 的衔接</a></li>
+            <li class="lv3"><a href="#s18">2.6 频率质量与考核背景</a></li>
+            <li class="lv2"><a href="#s19">3. AGC 指令分配</a></li>
+            <li class="lv3"><a href="#s20">3.1 分配问题的输入</a></li>
+            <li class="lv3"><a href="#s21">3.2 一个可解释的分配步骤</a></li>
+            <li class="lv3"><a href="#s22">3.3 煤电、储能、新能源的差异</a></li>
+            <li class="lv3"><a href="#s23">3.4 算例：40 MW 怎么分</a></li>
+            <li class="lv3"><a href="#s24">3.5 中标容量不等于可交付</a></li>
+            <li class="lv3"><a href="#s25">3.6 反饱和、无扰切换与手动优先</a></li>
+            <li class="lv2"><a href="#s26">4. AVC 三层与场站闭环</a></li>
+            <li class="lv3"><a href="#s27">4.1 三层控制</a></li>
+            <li class="lv3"><a href="#s28">4.2 场站 AVC 的输入与输出</a></li>
+            <li class="lv3"><a href="#s29">4.3 无功分配的顺序</a></li>
+            <li class="lv3"><a href="#s30">4.4 无功能力不是固定值</a></li>
+            <li class="lv3"><a href="#s31">4.5 AVC 与功率因数模式</a></li>
+            <li class="lv3"><a href="#s32">4.6 算例：60 Mvar 怎么分</a></li>
+            <li class="lv3"><a href="#s33">4.7 AVC 的考核维度</a></li>
+            <li class="lv2"><a href="#s34">5. 性能考核与市场衔接</a></li>
+            <li class="lv3"><a href="#s35">5.1 四个基本维度</a></li>
+            <li class="lv3"><a href="#s36">5.2 K 值为什么不能全国一个公式</a></li>
+            <li class="lv3"><a href="#s37">5.3 算例：两台资源的性能分项</a></li>
+            <li class="lv3"><a href="#s38">5.4 辅助服务市场与"两个细则"的关系</a></li>
+            <li class="lv3"><a href="#s39">5.5 考核数据的最小闭环</a></li>
+            <li class="lv2"><a href="#s40">6. 数据、通信与时延</a></li>
+            <li class="lv3"><a href="#s41">6.1 控制链的时延预算</a></li>
+            <li class="lv3"><a href="#s42">6.2 时标与对时</a></li>
+            <li class="lv3"><a href="#s43">6.3 数据质量与失效行为</a></li>
+            <li class="lv3"><a href="#s44">6.4 网络安全</a></li>
+            <li class="lv2"><a href="#s45">7. D 级合成算例：从 ACE 到 AVC</a></li>
+            <li class="lv3"><a href="#s46">7.1 算例假设</a></li>
+            <li class="lv3"><a href="#s47">7.2 ACE</a></li>
+            <li class="lv3"><a href="#s48">7.3 AGC 分配</a></li>
+            <li class="lv3"><a href="#s49">7.4 性能分项</a></li>
+            <li class="lv3"><a href="#s50">7.5 AVC 分配</a></li>
+            <li class="lv3"><a href="#s51">7.6 一次调频（旁证）</a></li>
+            <li class="lv3"><a href="#s52">7.7 这个算例说明什么</a></li>
+            <li class="lv3"><a href="#s53">7.8 这个算例不说明什么</a></li>
+            <li class="lv2"><a href="#s54">8. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s55">9. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s56">10. 分工：和现有模块怎么配合</a></li>
+            <li class="lv2"><a href="#s57">11. 速查</a></li>
+            <li class="lv3"><a href="#s58">11.1 五个公式</a></li>
+            <li class="lv3"><a href="#s59">11.2 五个必问</a></li>
+            <li class="lv3"><a href="#s60">11.3 工具</a></li>
+            <li class="lv2"><a href="#s61">12. 版本与维护</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="48" data-more-label="展开 48 个小节" data-less-label="收起小节">展开 48 个小节</button>
+  </aside>
+</div>
+
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.1" data-cutoff="2026-11-19" data-latest="2026-11-24" data-count="99">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.1）" title="查看更新记录（当前 v2.1）">
+    <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
+    <span class="cl-badge-ver">v2.1</span>
+    <span class="cl-badge-label">更新记录</span>
+  </button>
+  <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
+    <div class="cl-backdrop" data-changelog-close></div>
+    <div class="cl-panel" role="dialog" aria-modal="true" aria-labelledby="cl-title" aria-describedby="cl-subtitle" tabindex="-1">
+      <header class="cl-head">
+        <div class="cl-head-main">
+          <span class="cl-kicker">RELEASE NOTES</span>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.1</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.1 · 数据截止 2026-11-19 · 99 条记录</p>
+        </div>
+        <div class="cl-actions">
+          <div class="cl-lang" role="group" aria-label="切换语言">
+            <button type="button" data-cl-lang="zh" aria-pressed="true">中文</button>
+            <button type="button" data-cl-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <button class="cl-close" type="button" data-changelog-close aria-label="关闭更新记录" title="关闭更新记录">×</button>
+        </div>
+      </header>
+      <div class="cl-body" data-changelog-body>
+        <div class="cl-skeleton" data-changelog-status role="status">
+          <span class="cl-sr">正在读取更新记录…</span>
+          <i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      <footer class="cl-foot">
+        <span data-changelog-meta>v2.1 · 2026-11-19 · 99 条记录</span>
+        <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
+      </footer>
+    </div>
+  </div>
+</div>
+<script src="../assets/doc.js"></script>
+<script src="../assets/theme.js"></script>
+<script src="../assets/changelog.js"></script>
+</body>
+</html>

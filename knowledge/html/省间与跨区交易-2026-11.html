@@ -59,7 +59,9 @@
               <li><a href="电力现货市场实务-精读笔记.html">电力现货市场实务</a></li>
               <li><a href="交易台日课与异常处置-SOP-2026-11.html">交易台日课与异常处置 SOP</a></li>
               <li><a href="潮流阻塞与节点电价-2026-11.html">从潮流到节点电价：阻塞、断面与网损的价格传导</a></li>
+              <li><a href="现货出清与价格形成-2026-11.html">现货出清与价格形成：从报价到节点价</a></li>
               <li><a href="预测误差申报与EMS闭环-2026-11.html">预测误差→申报→EMS 闭环：newsvendor 报价与储能偏差跟踪</a></li>
+              <li><a href="电价归因与盘前推演-2026-11.html">电价归因与盘前推演：从负荷、新能源、检修、燃料、阻塞到价格</a></li>
     </ul>
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
@@ -87,7 +89,7 @@
       <p class="lede">四层市场、省间中长期与现货、南方与长三角区域市场、跨经营区与输电权，附落地成本算例。</p>
       <p class="hook">2026-11 · 规则与价格总表</p>
       <div class="tags"><span class="tag">13,037 亿kWh</span><span class="tag">落地成本</span><span class="tag">输电权</span></div>
-      <div class="doc-meta"><span>约 25.8k 字</span><span>阅读约 48 分钟</span><span>14 节</span><span>数据截止 2026-11-01</span></div>
+      <div class="doc-meta"><span>约 25.9k 字</span><span>阅读约 49 分钟</span><span>14 节</span><span>数据截止 2026-11-01</span></div>
     </header>
 
     <details class="toc-mobile">
@@ -111,7 +113,7 @@
     </details>
 
     <article class="prose">
-<aside class="note note-head"><p>数据截止：2026-11-01｜定位：知识库模块（暂不单独拆技能）</p><p>相关技能：<a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a>（省内现货与中长期报价、结算）、<a href="../../skills/renewable-project-development/SKILL.md">新能源项目开发与并网专家</a>（外送通道、并网与机制电价）、<a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a>（跨省套利、容量补偿与考核）、<a href="../../skills/virtual-power-plant/SKILL.md">虚拟电厂专家</a>（聚合主体跨省参与）、<a href="../../skills/spot-bidding-quant/SKILL.md">现货报价量化专家</a>（价差预测与报价）</p><p>用途：回答&quot;电怎么从送端卖到受端、省间中长期和现货怎么组织、区域市场怎么衔接、输电费和网损怎么算、输电权怎么买&quot;五类问题。本文只做规则、价格与口径整理；具体交易以交易中心公告、调度机构出清结果和合同为准。</p></aside>
+<aside class="note note-head"><p>数据截止：2026-11-01｜定位：知识库模块（暂不单独拆技能）</p><p>相关技能：<a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a>（省内现货与中长期报价、结算）、<a href="../../skills/renewable-project-development/SKILL.md">新能源项目开发与并网专家</a>（外送通道、并网与机制电价）、<a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a>（跨省套利、容量补偿与考核）、<a href="../../skills/virtual-power-plant/SKILL.md">虚拟电厂专家</a>（聚合主体跨省参与）、<a href="../../skills/spot-bidding-quant/SKILL.md">现货报价量化专家</a>（价差预测与报价）</p><p>用途：回答&quot;电怎么从送端卖到受端、省间中长期和现货怎么组织、区域市场怎么衔接、输电费和网损怎么算、输电权怎么买&quot;五类问题。本文只做规则、价格与口径整理；具体交易以交易中心公告、调度机构出清结果和合同为准。</p><p>通道能力：跨区 ATC 与 N-1 校核的方法背景，见<a href="状态估计与安全分析-2026-11.html">《状态估计与安全分析》</a>。</p></aside>
 <hr>
 <h2 id="s1">0. 一页看懂</h2>
 <h3 id="s2">0.1 市场分层（四层）</h3>
@@ -401,7 +403,7 @@ D 日       省间日内（按小时滚动）<span class="d-arrow">→</span> �
     </article>
 
     <section class="related" aria-labelledby="related-title">
-      <div class="related-head"><h2 id="related-title">相关模块</h2><span>3</span></div>
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>4</span></div>
       <div class="related-grid">
         <a class="related-card" href="电力现货市场101问-A-基础与价格机制.html">
           <span class="related-type">同区延伸</span>
@@ -417,6 +419,11 @@ D 日       省间日内（按小时滚动）<span class="d-arrow">→</span> �
           <span class="related-type">查证入口</span>
           <b>省级电力市场状态总表</b>
           <span>33 个省级市场 + 南方区域，一行看清现货状态、136、容量电价、VPP 与零售风险；附申报/出清限价、结算与门槛的横向参数矩阵。</span>
+        </a>
+        <a class="related-card" href="状态估计与安全分析-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>状态估计与安全分析：从 SCADA 量测到可信运行方式</b>
+          <span>把 EMS 高级应用的第一块地基讲清楚：SCADA 量测如何变成可计算的网络状态，WLS 状态估计、可观测性与坏数据辨识，N-1/ATC 与安全校核，以及状态估计结果如何进入 AGC/AVC/ED；附 3 节点 D 级合成算例与 10 条常见错误。</span>
         </a>
       </div>
 
@@ -520,10 +527,10 @@ D 日       省间日内（按小时滚动）<span class="d-arrow">→</span> �
 <nav class="page-aux" aria-label="页面辅助">
   <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
 </nav>
-<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.0" data-cutoff="2026-11-19" data-latest="2026-11-21" data-count="94">
-  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.0）" title="查看更新记录（当前 v2.0）">
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.1" data-cutoff="2026-11-19" data-latest="2026-11-24" data-count="99">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.1）" title="查看更新记录（当前 v2.1）">
     <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
-    <span class="cl-badge-ver">v2.0</span>
+    <span class="cl-badge-ver">v2.1</span>
     <span class="cl-badge-label">更新记录</span>
   </button>
   <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
@@ -532,8 +539,8 @@ D 日       省间日内（按小时滚动）<span class="d-arrow">→</span> �
       <header class="cl-head">
         <div class="cl-head-main">
           <span class="cl-kicker">RELEASE NOTES</span>
-          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.0</span></h2>
-          <p class="cl-sub" id="cl-subtitle">当前版本 v2.0 · 数据截止 2026-11-19 · 94 条记录</p>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.1</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.1 · 数据截止 2026-11-19 · 99 条记录</p>
         </div>
         <div class="cl-actions">
           <div class="cl-lang" role="group" aria-label="切换语言">
@@ -550,7 +557,7 @@ D 日       省间日内（按小时滚动）<span class="d-arrow">→</span> �
         </div>
       </div>
       <footer class="cl-foot">
-        <span data-changelog-meta>v2.0 · 2026-11-19 · 94 条记录</span>
+        <span data-changelog-meta>v2.1 · 2026-11-19 · 99 条记录</span>
         <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
       </footer>
     </div>

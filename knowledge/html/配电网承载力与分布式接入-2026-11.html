@@ -82,7 +82,7 @@
       <p class="lede">馈线/配变约束、承载力与可开放容量、反送电压抬升、保护适配、分布式光伏/储能/充电/V2G 差异、绿电直连。</p>
       <p class="hook">配电网承载力与分布式接入</p>
       <div class="tags"><span class="tag">配电网承载力</span><span class="tag">可开放容量</span><span class="tag">分布式接入</span><span class="tag">绿电直连</span></div>
-      <div class="doc-meta"><span>约 10.8k 字</span><span>阅读约 20 分钟</span><span>13 节</span><span>数据截止 2026-11-19</span></div>
+      <div class="doc-meta"><span>约 10.9k 字</span><span>阅读约 21 分钟</span><span>13 节</span><span>数据截止 2026-11-19</span></div>
     </header>
 
     <details class="toc-mobile">
@@ -197,6 +197,7 @@
 <p>分布式接入必须区分：</p>
 <ul><li><strong>非计划孤岛</strong>：电网失电后分布式继续供电，必须检测并断开；</li><li><strong>计划孤岛</strong>：微网/园区有意识地孤岛运行，有控制、保护、黑启动和同期并列。</li></ul>
 <p>防孤岛检测要覆盖单机、多机、多品牌、多容量组合。计划孤岛要设计孤岛控制器、保护定值切换、负荷管理、储能支撑和同期条件。两者不能混为一谈。</p>
+<p>计划孤岛的许可、功率/能量校验、切换时序、同期重连与黑启动，见<a href="微网运行方式与并离网切换-2026-11.html">微网运行方式与并离网切换</a>；本文只讲配电侧的接入与保护适配。</p>
 <h3 id="s30">4.6 接地与过电压</h3>
 <p>分布式电源接入可能改变接地方式、故障电流和过电压水平：</p>
 <ul><li>逆变器直流侧接地/绝缘监测；</li><li>交流侧接地与剩余电流保护；</li><li>反送时中性点电位偏移；</li><li>单相接地故障时的过电压；</li><li>雷击/操作过电压保护。</li></ul>
@@ -288,7 +289,7 @@ V2G：双向计量、防孤岛、电池衰减、聚合调度
     </article>
 
     <section class="related" aria-labelledby="related-title">
-      <div class="related-head"><h2 id="related-title">相关模块</h2><span>7</span></div>
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>8</span></div>
       <div class="related-grid">
         <a class="related-card" href="新能源项目开发与并网-2026-11.html">
           <span class="related-type">同区延伸</span>
@@ -311,7 +312,7 @@ V2G：双向计量、防孤岛、电池衰减、聚合调度
           <span>从资源盘点、准入接入、云边控制到市场参与、结算分成与项目测算，补齐 2026 年 VPP 主线。</span>
         </a>
       </div>
-      <p class="related-rest"><b>更多关联</b><a href="需求响应、车网互动与灵活性资源-2026-11.html">需求响应、车网互动与灵活性资源</a><a href="综合能源与零碳园区-2026-11.html">综合能源与零碳园区</a><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a></p>
+      <p class="related-rest"><b>更多关联</b><a href="需求响应、车网互动与灵活性资源-2026-11.html">需求响应、车网互动与灵活性资源</a><a href="综合能源与零碳园区-2026-11.html">综合能源与零碳园区</a><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a><a href="微网运行方式与并离网切换-2026-11.html">微网运行方式与并离网切换：从状态机到黑启动</a></p>
     </section>
 
 <section class="related" aria-labelledby="paired-skills-title">
@@ -413,10 +414,10 @@ V2G：双向计量、防孤岛、电池衰减、聚合调度
 <nav class="page-aux" aria-label="页面辅助">
   <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
 </nav>
-<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.0" data-cutoff="2026-11-19" data-latest="2026-11-21" data-count="94">
-  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.0）" title="查看更新记录（当前 v2.0）">
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.1" data-cutoff="2026-11-19" data-latest="2026-11-24" data-count="99">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.1）" title="查看更新记录（当前 v2.1）">
     <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
-    <span class="cl-badge-ver">v2.0</span>
+    <span class="cl-badge-ver">v2.1</span>
     <span class="cl-badge-label">更新记录</span>
   </button>
   <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
@@ -425,8 +426,8 @@ V2G：双向计量、防孤岛、电池衰减、聚合调度
       <header class="cl-head">
         <div class="cl-head-main">
           <span class="cl-kicker">RELEASE NOTES</span>
-          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.0</span></h2>
-          <p class="cl-sub" id="cl-subtitle">当前版本 v2.0 · 数据截止 2026-11-19 · 94 条记录</p>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.1</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.1 · 数据截止 2026-11-19 · 99 条记录</p>
         </div>
         <div class="cl-actions">
           <div class="cl-lang" role="group" aria-label="切换语言">
@@ -443,7 +444,7 @@ V2G：双向计量、防孤岛、电池衰减、聚合调度
         </div>
       </div>
       <footer class="cl-foot">
-        <span data-changelog-meta>v2.0 · 2026-11-19 · 94 条记录</span>
+        <span data-changelog-meta>v2.1 · 2026-11-19 · 99 条记录</span>
         <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
       </footer>
     </div>

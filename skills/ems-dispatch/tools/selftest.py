@@ -17,11 +17,13 @@ from __future__ import annotations
 
 import math
 
+import control
 import curves
 import dispatch
 import loop
 import market
 import microgrid
+import state
 import storage
 
 
@@ -505,6 +507,93 @@ def main():
         degradation_per_kwh=0.03, dt_h=1.0, states=200,
     )
     close("J loop determinism (CNY)", again_loop["net"], with_st["net"], 1e-9)
+
+    # K. AGC/AVC closed loop (control.py).
+    ace = control.ace_mw(100.0, 80.0, 49.95, 400.0)
+    close("K ACE (MW)", ace, 40.0, 1e-9)
+    units = [
+        control.AgcUnit("coal-A", 40.0, 6.0, 0.6, 5.0),
+        control.AgcUnit("storage-B", 20.0, 10.0, 0.4, 5.0),
+    ]
+    agc = control.agc_allocate(ace, units)
+    agc_rows = {row["name"]: row for row in agc["allocations"]}
+    close("K AGC coal allocation (MW)", agc_rows["coal-A"]["mw"], 30.0, 1e-9)
+    close("K AGC storage allocation (MW)", agc_rows["storage-B"]["mw"], 10.0, 1e-9)
+    close("K AGC unmet (MW)", agc["unmet_mw"], 0.0, 1e-9)
+    check(agc["feasible"], "K AGC allocation feasible")
+
+    perf_a = control.agc_performance(30.0, 28.5, 12.0, 5.7, 6.0)
+    close("K coal accuracy", perf_a["accuracy"], 0.95, 1e-9)
+    close("K coal ramp ratio", perf_a["ramp_ratio"], 0.95, 1e-9)
+    check(perf_a["response_ok"], "K coal response pass")
+    check(perf_a["delivery_ok"], "K coal delivery pass")
+    perf_b = control.agc_performance(10.0, 10.2, 3.0, 10.0, 10.0)
+    close("K storage accuracy", perf_b["accuracy"], 0.98, 1e-9)
+    close("K storage ramp ratio", perf_b["ramp_ratio"], 1.0, 1e-9)
+    check(perf_b["response_ok"], "K storage response pass")
+
+    avc = control.avc_allocate(
+        60.0,
+        [
+            control.AvcResource("pv", 30.0, priority=1),
+            control.AvcResource("svg", 40.0, priority=2),
+            control.AvcResource("storage", 20.0, priority=3),
+        ],
+    )
+    avc_rows = {row["name"]: row for row in avc["allocations"]}
+    close("K AVC PV (Mvar)", avc_rows["pv"]["mvar"], 30.0, 1e-9)
+    close("K AVC SVG (Mvar)", avc_rows["svg"]["mvar"], 30.0, 1e-9)
+    close("K AVC storage (Mvar)", avc_rows["storage"]["mvar"], 0.0, 1e-9)
+    close("K AVC unmet (Mvar)", avc["unmet_mvar"], 0.0, 1e-9)
+    close(
+        "K primary-frequency response (MW)",
+        control.droop_response(20.0, 2.0, -0.10, 0.03),
+        1.4,
+        1e-9,
+    )
+
+    # L. State estimation and N-1 (state.py).
+    data = state.demo()
+    estimate = data["estimate"]
+    close("L WLS theta2 (rad)", estimate["x_hat"][0], -0.020539, 1e-6)
+    close("L WLS theta3 (rad)", estimate["x_hat"][1], -0.031470, 1e-6)
+    close("L WLS objective", estimate["objective"], 27.1809, 1e-3)
+    close(
+        "L P13 normalized residual",
+        data["suspect"]["normalized_residual"],
+        5.2135,
+        1e-3,
+    )
+    check(data["suspect"]["name"] == "P13", "L P13 is the suspect")
+    check(data["suspect"]["detected_at_3_sigma"], "L bad data detected at 3 sigma")
+
+    clean = data["clean_estimate"]
+    close("L clean theta2 (rad)", clean["x_hat"][0], -0.020, 1e-9)
+    close("L clean theta3 (rad)", clean["x_hat"][1], -0.030, 1e-9)
+    check(clean["objective"] < 1e-20, "L clean objective is zero")
+    close("L base 1-2 flow", data["base"]["flows"]["1-2"], 0.200, 1e-9)
+    close("L base 1-3 flow", data["base"]["flows"]["1-3"], 0.150, 1e-9)
+    close("L base 2-3 flow", data["base"]["flows"]["2-3"], 0.050, 1e-9)
+
+    n1_rows = {row["outage"]: row for row in data["n1"]["contingencies"]}
+    check(not n1_rows["1-2"]["islanded"], "L outage 1-2 remains connected")
+    check(len(n1_rows["1-2"]["overloads"]) == 1, "L outage 1-2 has one overload")
+    close(
+        "L outage 1-2 overloaded flow",
+        n1_rows["1-2"]["overloads"][0]["flow_pu"],
+        0.350,
+        1e-9,
+    )
+    close(
+        "L outage 1-2 excess (pu)",
+        n1_rows["1-2"]["overloads"][0]["excess_pu"],
+        0.050,
+        1e-9,
+    )
+    check(n1_rows["1-3"]["overloads"] == [], "L outage 1-3 secure")
+    check(n1_rows["2-3"]["overloads"] == [], "L outage 2-3 secure")
+    close("L remedial 1-3 flow", data["remedial"]["flows"]["1-3"], 0.300, 1e-9)
+    close("L remedial 2-3 flow", data["remedial"]["flows"]["2-3"], -0.150, 1e-9)
 
     print("\nAll EMS dispatch self-tests passed.")
 

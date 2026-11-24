@@ -54,9 +54,12 @@
               <li><a href="储能投资与运营-2026-11.html">储能投资与运营</a></li>
               <li class="on" aria-current="page"><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a></li>
               <li><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a></li>
+              <li><a href="微网运行方式与并离网切换-2026-11.html">微网运行方式与并离网切换：从状态机到黑启动</a></li>
               <li><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a></li>
               <li><a href="场站群与集控EMS架构-2026-11.html">场站群与集控 EMS 架构：分级调度、通信拓扑与群调群控</a></li>
               <li><a href="EMS数据接口参考架构-2026-11.html">EMS 数据接口参考架构：设备、调度、市场与计量结算的契约</a></li>
+              <li><a href="AGC-AVC与频率电压闭环-2026-11.html">AGC/AVC 与频率电压闭环：从 ACE 到场站考核</a></li>
+              <li><a href="状态估计与安全分析-2026-11.html">状态估计与安全分析：从 SCADA 量测到可信运行方式</a></li>
     </ul>
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
@@ -84,7 +87,7 @@
       <p class="lede">把储能调度建成 MILP：96 点经济调度、多市场堆叠、SOC/退化、MPC 与安全联锁，并给出与交易层的四种融合模式。</p>
       <p class="hook">算法、模型与工程实践</p>
       <div class="tags"><span class="tag">MILP</span><span class="tag">96 点</span><span class="tag">四条硬边界</span><span class="tag">融合模式</span></div>
-      <div class="doc-meta"><span>约 29.2k 字</span><span>阅读约 53 分钟</span><span>15 节</span><span>数据截止 2026-11-12</span></div>
+      <div class="doc-meta"><span>约 29.4k 字</span><span>阅读约 54 分钟</span><span>15 节</span><span>数据截止 2026-11-12</span></div>
     </header>
 
     <details class="toc-mobile">
@@ -109,7 +112,7 @@
     </details>
 
     <article class="prose">
-<aside class="note note-head"><p>用途：作为储能 EMS 模块的算法与工程参考，后续可拆为技能章节与测算工具。</p><p>说明：本文只基于公开标准、公开政策、公开市场规则与通用运筹方法整理；参数为示例量级，不对应任何具体企业、项目或站点。</p><p>数据截止：2026-11-12。标准与政策按发布/实施时点标注，引用条款以正式文本为准。</p><p>引用纪律：市场规则随省份与年份变化，落地前须查当期规则；文中算例为合成数据（D 级），不构成收益承诺。</p><p>数据链路：点表、四遥、104/61850/Modbus/MQTT、时延与对时、安全边界见<a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a>。</p></aside>
+<aside class="note note-head"><p>用途：作为储能 EMS 模块的算法与工程参考，后续可拆为技能章节与测算工具。</p><p>说明：本文只基于公开标准、公开政策、公开市场规则与通用运筹方法整理；参数为示例量级，不对应任何具体企业、项目或站点。</p><p>数据截止：2026-11-12。标准与政策按发布/实施时点标注，引用条款以正式文本为准。</p><p>引用纪律：市场规则随省份与年份变化，落地前须查当期规则；文中算例为合成数据（D 级），不构成收益承诺。</p><p>数据链路：点表、四遥、104/61850/Modbus/MQTT、时延与对时、安全边界见<a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a>。</p><p>控制层衔接：ACE/AGC 指令分配、AVC 无功分配与场站考核见<a href="AGC-AVC与频率电压闭环-2026-11.html">《AGC/AVC 与频率电压闭环》</a>；状态估计与 N-1/ATC 的输入边界见<a href="状态估计与安全分析-2026-11.html">《状态估计与安全分析》</a>。</p></aside>
 <hr>
 <h2 id="s1">0. 一页速查</h2>
 <h3 id="s2">0.1 储能控制链分层</h3>
@@ -548,7 +551,7 @@ s.t. x_{k+1} = f(x_k, u_k)
 <h3 id="s97">11.2 需要补充的材料</h3>
 <ul><li>省级辅助服务市场规则（调频、备用、爬坡的申报、出清、考核）；</li><li>省级容量电价细则（清单、时长分母、可用率门槛）；</li><li>并网调度协议（AGC/AVC 接口、点表、通信规约）；</li><li>设备参数（PCS 效率曲线、BMS 限功率表、温度降额表）；</li><li>退化与质保条款（循环次数、吞吐量、SOH 保证）；</li><li>真实或合成的 96 点电价、负荷、新能源出力曲线；</li><li>消防与安全联锁逻辑（厂家文件 + 验收报告）。</li></ul>
 <h3 id="s98">11.3 与现有技能的分工</h3>
-<ul><li>市场规则、结算、电价机制 → 《电力交易专家》；</li><li>资源聚合、VPP 运营、需求响应 → 《虚拟电厂专家》；</li><li>电价/负荷预测、报价与回测 → 《现货报价量化专家》；</li><li>碳核算与绿证 → 《碳资产管理专家》；</li><li>本模块只负责 <strong>储能 EMS 的建模、求解、滚动与工程落地</strong>，市场参数引用上述技能。</li></ul>
+<ul><li>市场规则、结算、电价机制 → 《电力交易专家》；</li><li>资源聚合、VPP 运营、需求响应 → 《虚拟电厂专家》；</li><li>电价/负荷预测、报价与回测 → 《现货报价量化专家》；</li><li>现货出清、边际价与 uplift 的形成 → <a href="现货出清与价格形成-2026-11.html">现货出清与价格形成</a>；</li><li>碳核算与绿证 → 《碳资产管理专家》；</li><li>本模块只负责 <strong>储能 EMS 的建模、求解、滚动与工程落地</strong>，市场参数引用上述技能。</li></ul>
 <h3 id="s99">11.4 待核实</h3>
 <ul><li>省级调频/备用/爬坡的申报与考核细则，按当期规则核实；</li><li>容量补偿的省级分母时长与可用率门槛，按当期文件核实；</li><li>GB/T 51048-2025、GB/T 46957-2025、GB/T 46261-2025 等新标准的实施时点与适用范围，以正式文本为准；</li><li>构网型（GB/T 47968-2026）对 EMS 的具体要求，待标准正文与项目实践；</li><li>设备效率、降额、退化参数，以厂家文件与现场实测为准；</li><li>功率因数调整电费（力调电费）的考核标准与调整系数，按当地电价文件核实；</li><li>两部制基本电价的省级执行差异（核定值下限、多进线累加、按实际最大需量计费的适用范围）；</li><li>DL/T 2246、DL/T 2247、DL/T 2919 系列的适用范围与最新版本，以正式文本为准；</li><li>GB/T 36549-2018 各指标的定义与统计方法，以标准正文为准；</li><li>本文算例为合成数据，不能作为项目收益承诺。</li></ul>
 <h3 id="s100">11.5 后续 SKILL 章节草案</h3>
@@ -569,7 +572,7 @@ s.t. x_{k+1} = f(x_k, u_k)
     </article>
 
     <section class="related" aria-labelledby="related-title">
-      <div class="related-head"><h2 id="related-title">相关模块</h2><span>4</span></div>
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>7</span></div>
       <div class="related-grid">
         <a class="related-card" href="储能投资与运营-2026-11.html">
           <span class="related-type">同区延伸</span>
@@ -592,7 +595,7 @@ s.t. x_{k+1} = f(x_k, u_k)
           <span>从 VPP/EMS 的数据底座出发，拆解点表与四遥、104/61850/Modbus/MQTT、边缘与云端两种部署形态、采集频率与时延、时钟同步、历史库、告警、冗余和电力监控安全防护。</span>
         </a>
       </div>
-
+      <p class="related-rest"><b>更多关联</b><a href="现货出清与价格形成-2026-11.html">现货出清与价格形成：从报价到节点价</a><a href="AGC-AVC与频率电压闭环-2026-11.html">AGC/AVC 与频率电压闭环：从 ACE 到场站考核</a><a href="状态估计与安全分析-2026-11.html">状态估计与安全分析：从 SCADA 量测到可信运行方式</a></p>
     </section>
 
 <section class="related" aria-labelledby="paired-skills-title">
@@ -604,9 +607,9 @@ s.t. x_{k+1} = f(x_k, u_k)
           <span>技能 · 储能 · 投决 · LCOS</span>
         </a>
         <a class="related-card skill-pair" href="skill-ems-dispatch.html">
-          <span class="related-type">96 点调度、SOC 与需量（含江苏零碳园区微网、山东独立储能电站日运行+考核复盘实例包）</span>
+          <span class="related-type">96 点调度、SOC 与需量、AGC/AVC 闭环与状态估计接口（含江苏零碳园区微网、山东独立储能电站日运行+考核复盘实例包）</span>
           <b>EMS 优化调度</b>
-          <span>技能 · EMS · SOC · 需量</span>
+          <span>技能 · EMS · SOC · 需量 · AGC/AVC · 状态估计</span>
         </a>
       </div>
     </section>
@@ -739,10 +742,10 @@ s.t. x_{k+1} = f(x_k, u_k)
 <nav class="page-aux" aria-label="页面辅助">
   <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
 </nav>
-<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.0" data-cutoff="2026-11-19" data-latest="2026-11-21" data-count="94">
-  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.0）" title="查看更新记录（当前 v2.0）">
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.1" data-cutoff="2026-11-19" data-latest="2026-11-24" data-count="99">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.1）" title="查看更新记录（当前 v2.1）">
     <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
-    <span class="cl-badge-ver">v2.0</span>
+    <span class="cl-badge-ver">v2.1</span>
     <span class="cl-badge-label">更新记录</span>
   </button>
   <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
@@ -751,8 +754,8 @@ s.t. x_{k+1} = f(x_k, u_k)
       <header class="cl-head">
         <div class="cl-head-main">
           <span class="cl-kicker">RELEASE NOTES</span>
-          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.0</span></h2>
-          <p class="cl-sub" id="cl-subtitle">当前版本 v2.0 · 数据截止 2026-11-19 · 94 条记录</p>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.1</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.1 · 数据截止 2026-11-19 · 99 条记录</p>
         </div>
         <div class="cl-actions">
           <div class="cl-lang" role="group" aria-label="切换语言">
@@ -769,7 +772,7 @@ s.t. x_{k+1} = f(x_k, u_k)
         </div>
       </div>
       <footer class="cl-foot">
-        <span data-changelog-meta>v2.0 · 2026-11-19 · 94 条记录</span>
+        <span data-changelog-meta>v2.1 · 2026-11-19 · 99 条记录</span>
         <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
       </footer>
     </div>

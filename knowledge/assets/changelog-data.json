@@ -1,14 +1,71 @@
 {
   "schema": 1,
   "generatedFrom": "CHANGELOG.md + CHANGELOG_EN.md",
-  "version": "v2.0",
+  "version": "v2.1",
   "cutoff": "2026-11-19",
-  "latest": "2026-11-21",
-  "count": 94,
+  "latest": "2026-11-24",
+  "count": 99,
   "languages": {
     "zh": {
       "title": "更新记录",
       "entries": [
+        {
+          "date": "2026-11-24",
+          "label": "v2.1 发布：微网运行、现货出清、电价归因、AGC/AVC 与状态估计五模块，问答集 79 问",
+          "items": [
+            "<strong>发布范围</strong>：将 2026-11-23 至 11-24 的四批维护合并为 v2.1——新增《微网运行方式与并离网切换》（storage 第 5 篇）、《现货出清与价格形成：从报价到节点价》（spot 第 10 篇）、《电价归因与盘前推演》（spot 第 12 篇）、《AGC/AVC 与频率电压闭环》（storage 第 9 篇）与《状态估计与安全分析》（storage 第 10 篇）；知识模块 114 → 119、正文 47,265 → 51,129 行（+3,864）、问答集 71 → 79 问、更新清单 P2 35 → 40。",
+            "<strong>工具与门禁</strong>：新增 <code>clearing.py</code>、<code>attribution.py</code>、<code>control.py</code>、<code>state.py</code> 四个零依赖确定性沙盘，selftest 同步覆盖；构建、<code>--check</code>、省矩阵、一致性、维护检查、<code>git diff --check</code> 与两份 Python 自测全部通过。",
+            "<strong>版本与计数</strong>：全站版本 v2.0 → v2.1（18 个 SKILL、中英 README/CHANGELOG、一致性断言、版本徽章与更新记录弹窗）；实例包 32、技能 9、省级地区 12 与 13 分区不变；search-index 3,945,481 → 4,185,794 字节；更新记录 94 → 99 条；数据截止仍 2026-11-19，全部算例 D 级合成。",
+            "<strong>分项细节</strong>：以下四条保留各批原始维护记录。"
+          ]
+        },
+        {
+          "date": "2026-11-24",
+          "label": "v2.0 维护：AGC/AVC 与状态估计两模块、控制/安全工具与问答集 79 问",
+          "items": [
+            "<strong>控制层模块（1 模块）</strong>：新增《AGC/AVC 与频率电压闭环：从 ACE 到场站考核》（storage 第 9 篇，0–12 节加速查）——一次/二次/三次调频边界、ACE 符号约定与 CPS、AGC 指令分配的调节范围/参与因子/爬坡约束、AVC 三层与场站无功分配、响应/速率/精度/稳定性/可用率考核、通信时延与安全联锁、10 条常见误判。D 级合成算例：ACE = 40 MW（联络线 20 + 频率 20）；40 MW 分为煤机 30 MW + 储能 10 MW（权重 24:8）；AVC 需 60 Mvar（光伏 30 / SVG 30 / 储能 0，0.99→1.02 pu、0.0005 pu/Mvar）；一次调频 20 MW、2% 调差率、±0.03 Hz 死区、0.10 Hz 频差 → 1.4 MW；煤机精度 95.0%、爬坡比 0.95、响应 12 s，储能 98.0%、1.00、3 s。",
+            "<strong>网络分析模块（1 模块）</strong>：新增《状态估计与安全分析：从 SCADA 量测到可信运行方式》（storage 第 10 篇，0–12 节加速查）——拓扑处理与网络模型、可观测性与伪量测、DC WLS 与标准化残差、坏数据/拓扑/参数错误、N-1 扫描与 ATC、安全约束调度、状态估计到 AGC/AVC/ED 的接口边界、10 条常见错误。D 级 3 节点算例：7 个量测 / 2 个状态；坏数据 P13 0.180 vs 真实 0.150 pu，WLS 估计 θ2=−0.020539、θ3=−0.031470 rad、J=27.18，标准化残差 5.21；剔除后回到 θ2=−0.020000、θ3=−0.030000；N-1 停运 1-2 后 1-3 为 0.350 pu，超限额 0.300 达 0.050 pu = 5 MW；bus3 增加 0.05 pu 本地出力后回到 0.300 pu。",
+            "<strong>可运行工具</strong>：新增 <code>skills/ems-dispatch/tools/control.py</code>（ACE、AGC 分配、性能分项、AVC 分配、一次调频下垂，纯标准库、确定性、<code>--json</code>）与 <code>state.py</code>（3 节点 DC 潮流、WLS、残差协方差与标准化残差、N-1 扫描，纯标准库、确定性、<code>--json</code>）；<code>selftest.py</code> 新增 K 段（AGC/AVC 闭环）与 L 段（状态估计与 N-1），锁定上述全部数字。",
+            "<strong>问答集 77 → 79 问</strong>：新增 N 段（Q78–Q79，AGC/AVC 与状态估计）——ACE 怎么算、AGC 怎么分、AVC 无功怎么给、为什么精度合格仍被考核；状态估计估什么、坏数据怎么定位与重估、N-1/ATC 怎么读。月度抽测 14 → 15 题，季度全测 79 题。",
+            "<strong>技能与互链</strong>：<code>knowledge.config.mjs</code> 将两模块挂入 <code>ems-dispatch</code>，AGC/AVC 另挂入 <code>storage-investment-operations</code> 与 <code>renewable-project-development</code>，状态估计另挂入 <code>spot-bidding-quant</code>；中英 EMS SKILL 增补问题映射、工具表、公式映射、断言覆盖与边界说明；频率惯量、无功电压、并网测试、两个细则、储能 EMS、微网运行、集控 EMS、EMS 接口、SCADA、潮流阻塞、现货出清、省间交易十二篇补 related 与正文指针；索引与口径新增“控制与安全分析答题路由”，INDEX_EN 补两模块条目、Q&amp;A 79 与未定事项 #47/#48。",
+            "<strong>计数与生成物</strong>：知识模块 117 → 119、知识页 117 → 119、正文 49,588 → 51,129 行（+1,541）、更新清单 P2 38 → 40；实例包 32、技能 9、省级地区 12 与 13 分区不变；search-index 4,105,924 → 4,185,794 字节；更新记录 97 → 98 条。版本仍 v2.0，数据截止仍 2026-11-19；全部算例 D 级合成。"
+          ]
+        },
+        {
+          "date": "2026-11-24",
+          "label": "v2.0 维护：电价归因与盘前推演模块、七因子 Shapley 沙盘与问答集 77 问",
+          "items": [
+            "<strong>归因模块（1 模块）</strong>：新增《电价归因与盘前推演：从负荷、新能源、检修、燃料、阻塞到价格》（spot 第 12 篇，0–12 节加速查）——相关性不是归因、六类基本因子与政策叠加项、因子口径与数据时标、单因子/顺序/精确 Shapley 三种方法及选择边界、盘前情景网格、阻塞与网损楔子、报价行为与限价归因、价格说明五步模板、10 条常见错误与待核实清单。D 级合成算例：价格 340 → 600 元/MWh（+260），Shapley 负荷 +144.12、新能源 +92.83、检修 +20.50、燃料 +23.33、阻塞 +10.50、行为 +3.79、价格帽 −35.08；单因子合计 +329、交互 −69；总成本 +111,525 元，成本口径下阻塞与价格帽贡献为 0；盘前网格显示价格台阶，价格帽 600 只截断 620/0 与 620/30 两个单元。",
+            "<strong>可运行工具</strong>：新增 <code>skills/spot-bidding-quant/tools/attribution.py</code>（纯标准库、确定性；七因子反事实、全子集精确 Shapley、单因子与顺序归因、价格/总成本双指标、<code>--json</code>），<code>selftest.py</code> 新增“price attribution and scenario sensitivity”段锁定上述全部数字。",
+            "<strong>问答集 75 → 77 问</strong>：新增 M 段（Q76–Q77，电价归因与盘前推演）——为什么相关性不是归因、单因子/顺序/Shapley 怎么选与必须披露的口径；盘前情景网格怎么搭、价格台阶与限价截断怎么读、概率与贡献为什么不能混。月度抽测 13 → 14 题，季度全测 77 题。",
+            "<strong>技能与互链</strong>：<code>knowledge.config.mjs</code> 将新模块挂入 <code>electricity-trading-expert</code> 与 <code>spot-bidding-quant</code>；现货出清、潮流阻塞、量化报价、预测误差闭环、交易台 SOP、气象、燃料、复盘库、经济学原理九篇补 <code>related</code> 与正文分工指针；中英 SKILL 补归因/情景公式映射、<code>attribution.py</code> 维护入口与 PnL 归因 vs 电价归因的边界，索引与口径新增路由，README 中英补入口与计数。",
+            "<strong>计数与生成物</strong>：知识模块 116 → 117、正文 48,743 → 49,588 行（+845）、知识页 116 → 117；实例包 32、技能 9、省级地区 12 与 13 分区不变；更新清单 P2 37 → 38；search-index 4,049,604 → 4,105,924 字节；更新记录 96 → 97 条。版本仍 v2.0，数据截止仍 2026-11-19。",
+            "<strong>边界</strong>：沙盘为单节点、仅能量、网络为外生价格楔子，净负荷无法区分等量负荷与新能源变化；Shapley 是分摊而非因果识别，结果依赖基线、因子集与顺序披露；全部算例为 D 级合成，不用于报价、结算或调度决策。"
+          ]
+        },
+        {
+          "date": "2026-11-23",
+          "label": "v2.0 维护：现货出清与价格形成模块、SCED/SCUC 沙盘与问答集 75 问",
+          "items": [
+            "<strong>出清引擎模块（1 模块）</strong>：新增《现货出清与价格形成：从报价到节点价》（spot 第 10 篇，0–12 节加速查）——报价曲线如何变成供给曲线（最小出力块 + 增量段、块报价与悖论拒单）、SCED 的目标与约束及边际段定价、SCUC 的启停/最小开停机/爬坡与跨时段价格影响、系统价到节点价的能量/阻塞/网损三分量、最小出力与必开、备用与爬坡、储能与新能源如何改写价格、负价与稀缺价、价格帽与补偿、出清结果的五张表读法与五问复核。合成算例：430 MW 出清价 340 元/MWh、coal-b 最小出力段造成 3,600 元 uplift；250 MW 出清价 240 元/MWh、总 uplift 7,200 元；SCUC 260/600/520/300 MW 四时段价格 320/650/480/320 元/MWh，总成本 473,200 元（能量 466,200 + 启动 7,000）。",
+            "<strong>可运行沙盘</strong>：新增 <code>skills/spot-bidding-quant/tools/clearing.py</code>（纯标准库、确定性、精确枚举；<code>clear_sced</code> 逐段堆叠定价并计算逐机 uplift，<code>clear_scuc</code> 枚举启停状态并校验最小开停机、初始状态与爬坡），<code>selftest.py</code> 新增“SCUC/SCED clearing”段锁定上述全部数字。",
+            "<strong>问答集 73 → 75 问</strong>：新增 L 段（Q74–Q75，现货出清与价格形成）——报价曲线怎么变成价格、边际机组为何不是最高报价、最小出力为何产生 uplift；便宜机组为何停机和被调度机组为何可能亏损、SCUC 与 SCED 的价格差异。",
+            "<strong>技能与互链</strong>：<code>knowledge.config.mjs</code> 将新模块挂入 <code>electricity-trading-expert</code> 与 <code>spot-bidding-quant</code>（未挂 <code>ems-dispatch</code>）；潮流阻塞、101 问 A/B、量化报价、储能 EMS、频率惯量、预测误差闭环六篇补 <code>related</code> 与正文分工指针；中英 SKILL 补公式映射、维护条目与分工说明，索引与口径新增路由，README 中英补入口与计数。",
+            "<strong>计数与生成物</strong>：知识模块 115 → 116、正文 48,036 → 48,743 行（+707）、知识页 115 → 116；实例包 32、技能 9、省级地区 12 与 13 分区不变；更新清单 P2 36 → 37；search-index 4,000,306 → 4,049,604 字节；更新记录 95 → 96 条。版本仍 v2.0，数据截止仍 2026-11-19。",
+            "<strong>边界</strong>：沙盘是单节点、仅能量、小系统精确枚举的教学工具，不含网络/网损/备用联合优化/块报价/生产级 SCUC；全部算例为 D 级合成，不对应任何真实市场出清结果，不用于报价、结算或调度决策。"
+          ]
+        },
+        {
+          "date": "2026-11-23",
+          "label": "v2.0 维护：微网运行方式与并离网切换模块与问答集 73 问",
+          "items": [
+            "<strong>微网运行模块（1 模块）</strong>：新增《微网运行方式与并离网切换：从状态机到黑启动》（storage 第 5 篇，0–11 节加速查）——并网/孤岛六种状态与 IEEE 2030.7 状态机（SS1/SS2、T1–T4）、PCC 最大受电/送出硬边界、计划孤岛的三前提（许可、参考源、切换方案）与功率/能量校验、非计划孤岛的检测/保护/保负荷动作链、同期重连的 ΔU/Δf/Δφ 条件、黑启动的电源/路径/负荷三条件，以及孤岛后故障电流下降导致的保护定值组切换和接地方式变化；标准坐标含 GB/T 33589-2026、GB/T 42731-2023 与 GB/T 47968-2026。合成 10 kV 园区算例：并网短路电流 11.55 kA 降至孤岛 0.693 kA，过流定值 0.438 kA 对应灵敏度 1.58；1.5 MW 关键负荷 4 h 需 6.52 MWh、可用 7.36 MWh、SOC 需求 70.9%；黑启动 1 MVA 配变 6 倍涌流 6 MVA 超过 BESS 4.8 MVA；同期示例 ΔU ≤5%、Δf ≤0.2 Hz、Δφ ≤5°。",
+            "<strong>问答集 71 → 73 问</strong>：新增 K 段（Q72–Q73，微网运行与并离网切换）——计划孤岛怎么切、为什么“储能够大”不等于能孤岛；非计划孤岛、重连和黑启动各自的关键动作。月度抽检保持 12 题，季度全量回归改为 73 题。",
+            "<strong>技能与互链</strong>：<code>knowledge.config.mjs</code> 将新模块挂入 <code>ems-dispatch</code> 的模块列表；微网 EMS、故障保护与配电网三篇补 <code>related</code> 回链与正文分工指针，索引与口径新增一段路由，避免重复写切换方案。",
+            "<strong>计数与生成物</strong>：知识模块 114 → 115、正文 47,265 → 48,036 行（+771）、知识页 114 → 115；实例包 32、技能 9、省级地区 12 与 13 分区不变；更新清单 P2 35 → 36；search-index 3,945,481 → 4,000,306 字节；更新记录 94 → 95 条。版本仍 v2.0，数据截止仍 2026-11-19。",
+            "<strong>边界</strong>：算例与定值均为 D 级合成演示，不对应任何真实微网、园区或电网事件；切换时序、保护定值、接地方式与同期判据必须以接入方案、设备说明书和现场试验为准，不构成运行操作票或并网验收结论。"
+          ]
+        },
         {
           "date": "2026-11-21",
           "label": "v2.0 维护：故障保护、电能质量与配电网三模块与问答集 71 问",
@@ -1156,6 +1213,63 @@
     "en": {
       "title": "Changelog",
       "entries": [
+        {
+          "date": "2026-11-24",
+          "label": "v2.1 release: microgrid operation, spot clearing, price attribution, AGC/AVC and state estimation; Q&A at 79 questions",
+          "items": [
+            "<strong>Release scope</strong>: four maintenance batches dated 2026-11-23 to 11-24 are consolidated into v2.1 — *Microgrid operating modes and islanding/reconnection* (storage #5), *Spot clearing and price formation* (spot #10), *Price attribution and pre-market scenarios* (spot #12), *AGC/AVC and the frequency-voltage loop* (storage #9) and *State estimation and security analysis* (storage #10); knowledge modules 114 → 119, body 47,265 → 51,129 lines (+3,864), Q&amp;A 71 → 79, maintenance checklist P2 35 → 40.",
+            "<strong>Tools and gates</strong>: four zero-dependency deterministic sandboxes — <code>clearing.py</code>, <code>attribution.py</code>, <code>control.py</code> and <code>state.py</code> — with selftest coverage; build, <code>--check</code>, province matrix, consistency, maintenance, <code>git diff --check</code> and both Python selftests pass.",
+            "<strong>Version and counts</strong>: site version v2.0 → v2.1 (18 SKILLs, bilingual READMEs/CHANGELOGs, consistency assertion, version badge and changelog dialog); 32 instance packs, 9 skills, 12 provincial regions and 13 sections unchanged; search-index 3,945,481 → 4,185,794 bytes; changelog records 94 → 99; data cutoff remains 2026-11-19; all examples are synthetic grade D.",
+            "<strong>Details below</strong>: the following four entries retain the original batch records."
+          ]
+        },
+        {
+          "date": "2026-11-24",
+          "label": "v2.0 maintenance: AGC/AVC and state-estimation pair, control/security tools and Q&A at 79 questions",
+          "items": [
+            "<strong>Control-layer module (1)</strong>: adds *AGC/AVC and the Frequency-Voltage Loop: From ACE to Plant Assessment* (storage #9, 0–12 plus quick reference) — primary/secondary/tertiary frequency-control boundaries, ACE sign convention and CPS, AGC allocation under regulation range / participation factor / ramp, three-level AVC and plant reactive allocation, response/ramp/accuracy/stability/availability assessment, latency and safety interlocks, and ten common misreadings. Synthetic grade-D case: ACE = 40 MW (20 tie-line + 20 frequency); 40 MW split into 30 MW coal and 10 MW storage (weights 24:8); AVC needs 60 Mvar (PV 30 / SVG 30 / storage 0 at 0.99→1.02 pu, 0.0005 pu/Mvar); primary frequency 20 MW, 2% droop, ±0.03 Hz deadband, 0.10 Hz deviation → 1.4 MW; coal accuracy 95.0%, ramp ratio 0.95, response 12 s; storage 98.0%, 1.00, 3 s.",
+            "<strong>Network-analysis module (1)</strong>: adds *State Estimation and Security Analysis: From SCADA Measurements to a Trusted Operating State* (storage #10, 0–12 plus quick reference) — topology processing and network model, observability and pseudo-measurements, DC WLS and normalized residuals, bad-data/topology/parameter errors, N-1 scanning and ATC, security-constrained dispatch, the SE→AGC/AVC/ED interface and ten common errors. Synthetic 3-bus case: 7 measurements / 2 states; bad P13 0.180 vs true 0.150 pu; WLS θ2=−0.020539, θ3=−0.031470 rad, J=27.18, normalized residual 5.21; after removal θ2=−0.020000, θ3=−0.030000; N-1 outage of 1-2 leaves 1-3 at 0.350 pu against a 0.300 limit, 0.050 pu = 5 MW; a 0.05 pu local injection at bus3 restores 0.300 pu.",
+            "<strong>Runnable tools</strong>: adds <code>skills/ems-dispatch/tools/control.py</code> (ACE, AGC allocation, performance components, AVC allocation, droop response; standard library only, deterministic, <code>--json</code>) and <code>state.py</code> (3-bus DC flow, WLS, residual covariance and normalized residuals, N-1 scan; standard library only, deterministic, <code>--json</code>); <code>selftest.py</code> adds sections K (AGC/AVC closed loop) and L (state estimation and N-1) locking every figure above.",
+            "<strong>Q&amp;A 77 → 79</strong>: adds group N (Q78–Q79, AGC/AVC and state estimation) — how ACE is calculated, how AGC allocates, how AVC allocates reactive power, why passing accuracy can still be penalised; what state estimation estimates, how bad data is located and re-estimated, and how to read N-1/ATC. Monthly spot check 14 → 15; quarterly full run 79.",
+            "<strong>Skills and cross-links</strong>: <code>knowledge.config.mjs</code> links both modules into <code>ems-dispatch</code>, AGC/AVC also into <code>storage-investment-operations</code> and <code>renewable-project-development</code>, state estimation also into <code>spot-bidding-quant</code>; the Chinese and English EMS skills gain question maps, tool rows, formula maps, assertion coverage and boundary notes; twelve existing modules gain related IDs and visible pointers (frequency/inertia, reactive/voltage, grid testing, two rules, storage EMS, microgrid operations, cluster EMS, EMS interfaces, SCADA, flow/LMP, spot clearing, inter-provincial trading); the index gains a control/security answering route, and INDEX_EN adds both module entries, 79 Q&amp;A and open items #47/#48.",
+            "<strong>Counts and generated artefacts</strong>: knowledge modules 117 → 119, knowledge pages 117 → 119, body 49,588 → 51,129 lines (+1,541), update-checklist P2 38 → 40; instance packs 32, skills 9, provincial regions 12 and sections 13 unchanged; search-index 4,105,924 → 4,185,794 bytes; changelog records 97 → 98. Version remains v2.0, data cutoff remains 2026-11-19; all examples are synthetic grade D."
+          ]
+        },
+        {
+          "date": "2026-11-24",
+          "label": "v2.0 maintenance: price attribution and pre-market scenario module, seven-factor Shapley sandbox and Q&A at 77 questions",
+          "items": [
+            "<strong>Attribution module (1 module)</strong>: adds Price attribution and pre-market what-if — from load, renewables, outages, fuel and congestion to price (spot #12, sections 0–12 plus a quick reference) — why correlation is not attribution, six basic factors plus a policy overlay, factor calibres and data timestamps, single-factor / sequential / exact Shapley methods and when each applies, the pre-market scenario grid, congestion and loss wedges, bidding-behaviour and price-cap attribution, a five-step price-explanation template, 10 common misreads and an open-items list. Synthetic grade-D case: price 340 → 600 CNY/MWh (+260); Shapley load +144.12, renewables +92.83, outage +20.50, fuel +23.33, congestion +10.50, behaviour +3.79 and price cap −35.08; standalone factors sum to +329 with −69 of interaction; total cost +111,525 CNY, with congestion and the cap contributing zero on the cost metric; the pre-market grid shows price steps, and a 600 cap truncates only the 620/0 and 620/30 cells.",
+            "<strong>Runnable tool</strong>: adds <code>skills/spot-bidding-quant/tools/attribution.py</code> (pure standard library, deterministic; seven-factor counterfactuals, exact Shapley over all subsets, standalone and sequential attribution, price / total-cost metrics, <code>--json</code>), with a new “price attribution and scenario sensitivity” section in <code>selftest.py</code> locking every figure above.",
+            "<strong>Q&amp;A 75 → 77 questions</strong>: adds group M (Q76–Q77, price attribution and pre-market scenarios) — why correlation is not attribution, how to choose among standalone, sequential and Shapley, and what must be disclosed; how to build a pre-market scenario grid, read price steps and cap truncation, and why probability and contribution must not be mixed. The monthly spot check rises from 13 to 14 questions; the quarterly full regression to 77.",
+            "<strong>Skills and cross-links</strong>: <code>knowledge.config.mjs</code> adds the module to <code>electricity-trading-expert</code> and <code>spot-bidding-quant</code>; the spot-clearing, power-flow, quantitative-bidding, forecast-loop, desk-SOP, weather, fuel, replay-library and economics-primer modules gain <code>related</code> links and body-text division notes; the Chinese and English SKILL files gain attribution/scenario formula-map rows, the <code>attribution.py</code> maintenance entry and the PnL-vs-price attribution boundary, the index/calibre note gains a routing entry, and both READMEs gain the entry point and updated counts.",
+            "<strong>Counts and artifacts</strong>: knowledge modules 116 → 117, body lines 48,743 → 49,588 (+845), reading pages 116 → 117; 32 instance packs, 9 skills, 12 provincial regions and 13 sections unchanged; maintenance checklist P2 37 → 38; search-index 4,049,604 → 4,105,924 bytes; changelog records 96 → 97. Version stays v2.0; data cutoff stays 2026-11-19.",
+            "<strong>Boundary</strong>: the sandbox is single-node, energy-only, and treats the network as an exogenous price wedge; net load cannot separate equal load and renewable changes; Shapley is an allocation, not causal identification, and results depend on the disclosed baseline, factor set and ordering; all examples are grade-D synthetic and are not for bidding, settlement or dispatch decisions."
+          ]
+        },
+        {
+          "date": "2026-11-23",
+          "label": "v2.0 maintenance: spot clearing and price formation module, SCED/SCUC sandbox and Q&A at 75 questions",
+          "items": [
+            "<strong>Clearing-engine module (1 module)</strong>: adds Spot clearing and price formation — from bids to nodal prices (spot #10, sections 0–12 plus a quick reference) — how bid curves become supply curves (minimum-output block plus incremental segments, block bids and paradoxical rejection), the SCED objective and constraints with marginal-segment pricing, SCUC commitment / min up-down / ramping and cross-period price effects, the energy / congestion / loss decomposition from system price to nodal price, minimum output and must-run, reserves and ramping, how storage and renewables reshape prices, negative prices and scarcity pricing, price caps and compensation, and how to read clearing results through five tables and five review questions. Synthetic examples: at 430 MW the price is 340 CNY/MWh and coal-b's minimum-output block creates 3,600 CNY of uplift; at 250 MW the price is 240 CNY/MWh with 7,200 CNY total uplift; the SCUC case at 260/600/520/300 MW gives prices 320/650/480/320 CNY/MWh and total cost 473,200 CNY (energy 466,200 + startup 7,000).",
+            "<strong>Runnable sandbox</strong>: adds <code>skills/spot-bidding-quant/tools/clearing.py</code> (pure standard library, deterministic, exact enumeration; <code>clear_sced</code> stacks segments to price and computes per-unit uplift, <code>clear_scuc</code> enumerates commitment states and checks min up/down, the initial state and ramping), with a new “SCUC/SCED clearing” section in <code>selftest.py</code> locking every figure above.",
+            "<strong>Q&amp;A 73 → 75 questions</strong>: adds group L (Q74–Q75, spot clearing and price formation) — how a bid curve becomes a price, why the marginal unit is not the highest bidder, and why minimum output creates uplift; why a cheap unit stays off and why a cleared unit can lose money, and how SCUC and SCED prices differ.",
+            "<strong>Skills and cross-links</strong>: <code>knowledge.config.mjs</code> adds the module to <code>electricity-trading-expert</code> and <code>spot-bidding-quant</code> (not <code>ems-dispatch</code>); the power-flow, 101 A/B, quantitative-bidding, storage-EMS, frequency-inertia and forecast-loop modules gain <code>related</code> links and division notes; the Chinese and English SKILL files gain formula-map rows, maintenance entries and division notes, the index/calibre note gains a routing entry, and both READMEs gain the entry point and updated counts.",
+            "<strong>Counts and artifacts</strong>: knowledge modules 115 → 116, body lines 48,036 → 48,743 (+707), reading pages 115 → 116; 32 instance packs, 9 skills, 12 provincial regions and 13 sections unchanged; maintenance checklist P2 36 → 37; search-index 4,000,306 → 4,049,604 bytes; changelog records 95 → 96. Version stays v2.0; data cutoff stays 2026-11-19.",
+            "<strong>Boundary</strong>: the sandbox is a teaching tool — single node, energy-only, exact enumeration for small systems — without networks, losses, co-optimised reserves, block bids or production SCUC; all examples are grade-D synthetic, corresponding to no real market clearing result, and are not for bidding, settlement or dispatch decisions."
+          ]
+        },
+        {
+          "date": "2026-11-23",
+          "label": "v2.0 maintenance: microgrid operating-mode module; Q&A at 73 questions",
+          "items": [
+            "<strong>Microgrid operations module (1 module)</strong>: adds Microgrid operating modes and grid-connected/islanded transitions — from state machine to black start (storage #5, sections 0–11 plus a quick reference) — six operating states and the IEEE 2030.7 state machine (SS1/SS2, T1–T4), the PCC import/export hard limit, the three preconditions for planned islanding (permission, reference source, switching plan) with power and energy checks, the detect/protect/keep-load chain for unplanned islanding, the ΔU/Δf/Δφ conditions for synchronised reconnection, the source/path/load conditions for black start, and the protection-setting-group and grounding-mode changes caused by the drop in fault current after islanding; standards include GB/T 33589-2026, GB/T 42731-2023 and GB/T 47968-2026. Synthetic 10 kV park case: grid-connected short-circuit current falls from 11.55 kA to 0.693 kA when islanded, with a 0.438 kA overcurrent setting giving sensitivity 1.58; a 1.5 MW critical load for 4 h needs 6.52 MWh against 7.36 MWh usable and 70.9% SOC; a black start's 1 MVA transformer at 6× inrush needs 6 MVA versus the BESS's 4.8 MVA; the synchronisation example uses ΔU ≤5%, Δf ≤0.2 Hz and Δφ ≤5°.",
+            "<strong>Q&amp;A 71 → 73 questions</strong>: adds group K (Q72–Q73, microgrid operation and islanding transitions) — how to execute a planned island and why &quot;a big battery&quot; is not the same as &quot;can island&quot;; the key actions for unplanned islanding, reconnection and black start. The monthly spot check stays at 12 questions; the quarterly full regression rises to 73.",
+            "<strong>Skills and cross-links</strong>: <code>knowledge.config.mjs</code> adds the module to the <code>ems-dispatch</code> module list; the microgrid EMS, fault-protection and distribution modules gain <code>related</code> backlinks and body-text routing notes, and the index/calibre note adds a routing entry so the switching plan is not duplicated.",
+            "<strong>Counts and artifacts</strong>: knowledge modules 114 → 115, body lines 47,265 → 48,036 (+771), reading pages 114 → 115; 32 instance packs, 9 skills, 12 provincial regions and 13 sections unchanged; maintenance checklist P2 35 → 36; search-index 3,945,481 → 4,000,306 bytes; changelog records 94 → 95. Version stays v2.0; data cutoff stays 2026-11-19.",
+            "<strong>Boundary</strong>: all examples and settings are grade-D synthetic demonstrations corresponding to no real microgrid, park or grid event; switching sequences, protection settings, grounding modes and synchronisation criteria must follow the actual connection scheme, equipment manuals and field tests, and are not an operating ticket or a grid-acceptance conclusion."
+          ]
+        },
         {
           "date": "2026-11-21",
           "label": "v2.0 maintenance: fault protection, power quality and distribution modules; Q&A at 71 questions",

@@ -163,12 +163,13 @@
 <ul><li><strong>输电价值=两端价差</strong>：例A端20、B端45→价值25美元/MWh，线路分摊成本低于25才值得建；若本地容量不足，短期价值由支付意愿决定，但抬价会吸引本地发电投资、垄断难长久。</li><li><strong>两节点模型</strong>：输电需求RT(F)=28−0.03F（孤立价差28），反解F=933.3−33.3πT；收入R(F)为二次函数、约466MW处最大。供应：年化成本=c·l·T、小时长期边际成本=c·l/8760（例35×1000/8760≈4.00美元/MWh）。最优容量800MW=供需相等=min(建造成本+约束成本)（限800时约束成本267美元/h=35450−35183）；最优处短期价差=长期边际成本。</li><li>负荷分段（峰3889h/谷4871h、c=140→16美元/MWh）：最优400MW；高峰剩余400×36=14400美元/h×3889≈5600万/年=年化变动成本140×1000×400。规律：最优处阻塞剩余恰回收变动成本、永远收不回固定成本；欠投资→剩余&gt;成本（700MW：价差7、4292万&gt;2450万）、过投资→不足（900MW：价差1、788万&lt;3150万）。</li><li><strong>固定成本</strong>：不影响最优容量但阻塞收入收不回；Hogan持留方案（800报650→价差8.5、年剩余4839.9万≥总成本4800万）。三节点投资例（KVL影响）：全网阻塞总收入=总投资（约21360美元/h）但线级不匹配（A-C线收入8344&lt;成本9887；未阻塞线也有价差收入）→网状电网中FTR发售基础在物理上不唯一。附录佐证：习题8-8最优750MW时年阻塞收入与年化建造成本同为约7875万。</li></ul>
 <h3 id="s31">SCOPF与参考网络</h3>
 <ul><li><strong>参考网络</strong>：拓扑同现状、每线容量取全系统最优的假想网，用于绩效评价、识别新增投资与搁浅资产（Boiteux 1949起）。</li><li><strong>SCOPF</strong>：min年发电+输电成本，DC-OPF、N-1全事故状态、负荷分段、计及停运；PTDF只依赖拓扑与电抗；约束生成算法迭代至无过载；节点价=系统能量乘子−Σ(阻塞乘子×PTDF)。IEEE 24节点：多数线路潮流&lt;最优容量50%——安全所需容量远大于纯输电需要，忽视N-1的输电定价必失真。</li></ul>
+<aside class="note"><p>价格归因与盘前情景的工程化方法见 <a href="电价归因与盘前推演-2026-11.html">电价归因与盘前推演</a>；本页只提供经济学原理。</p></aside>
 <h2 id="s32">速查：关键公式与数字</h2>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>条目</th><th>公式/数值</th><th>含义</th></tr></thead><tbody><tr><td>市场力</td><td>(π−MC)/π=s_i/ε</td><td>弹性低+集中度高→提价空间大</td></tr><tr><td>等边际调度</td><td>dC_i/dP_i=λ</td><td>λ=电能影子价格；算例λ=10.67美元/MWh</td></tr><tr><td>单机最优</td><td>MC=π；价12→257.7MW</td><td>≥13.26满发、≤11.18停机（美元/MWh）</td></tr><tr><td>结算规则</td><td>统一按SMP</td><td>PAB诱发抬价与低成本机组落选</td></tr><tr><td>备用定价</td><td>备用价=电能价差，如28−17=11</td><td>重调度机会成本；单独报价时电能价22=20−5+7</td></tr><tr><td>安全调度成本</td><td>2835.00−2647.50=187.50美元/h</td><td>三节点消除F12越限的代价</td></tr><tr><td>LMP</td><td>π2=1.5×10.00−0.5×7.50=11.25</td><td>m条阻塞约束→m+1台边际机组</td></tr><tr><td>阻塞剩余</td><td>(35−19)×400=6400美元/h</td><td>用户支出−发电收入，FTR资金来源</td></tr><tr><td>FTR</td><td>收入=F×(πW−πS)，可为负</td><td>义务属性；例100MW对冲后净支800=8×100</td></tr><tr><td>FGR</td><td>收入=关口权×μ，如40×6.25=250</td><td>期权属性，μ≥0</td></tr><tr><td>网损</td><td>受端边际成本=c(1+2DK)</td><td>价差随潮流线性增；输电损1-3%、配电4-9%</td></tr><tr><td>投资判据</td><td>燃煤IRR=13.58%、IIRR=12.56%&gt;MARR 12%</td><td>预测电价&gt;LRMC；互斥方案用增量IRR</td></tr><tr><td>尖峰机组报价</td><td>年运行5h须&gt;1000美元/MWh</td><td>全成本报价才能回收固定成本（均值37.70）</td></tr><tr><td>容量因子</td><td>CE=VOLL×LOLP，电价上限=VOLL</td><td>E&amp;W机制，NETA后废除</td></tr><tr><td>VOLL</td><td>≈2768镑/MWh（E&amp;W）</td><td>失负荷价值远高于市场电价</td></tr><tr><td>可靠性合同</td><td>s≈1.25×峰机组变动成本；返还(π−s)×q</td><td>长期期权+罚金，市场干预最小</td></tr><tr><td>输电最优容量</td><td>28−0.03F=4.00→800MW</td><td>阻塞剩余=年化变动投资成本</td></tr><tr><td>效率与分摊</td><td>抽蓄效率75%；34%负荷→93%AGC需求</td><td>套利硬门槛；辅助服务按责任分摊</td></tr></tbody></table></div>
     </article>
 
     <section class="related" aria-labelledby="related-title">
-      <div class="related-head"><h2 id="related-title">相关模块</h2><span>3</span></div>
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>4</span></div>
       <div class="related-grid">
         <a class="related-card" href="电力现货市场101问-A-基础与价格机制.html">
           <span class="related-type">跨区对照</span>
@@ -184,6 +185,11 @@
           <span class="related-type">同区延伸</span>
           <b>电力系统通识 A · 格局与主体</b>
           <span>两网加蒙西、五大四小、设备与二次系统、交易调度监管分工，以及 2026 年装机与市场主体快照。</span>
+        </a>
+        <a class="related-card" href="电价归因与盘前推演-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>电价归因与盘前推演：从负荷、新能源、检修、燃料、阻塞到价格</b>
+          <span>把价格变化拆成可核对的因子：负荷、新能源、检修、燃料、阻塞、报价行为与政策；区分盘前单因子敏感性与事后 Shapley 归因，给出数据口径、常见误判与可复现的合成算例。</span>
         </a>
       </div>
 
@@ -247,10 +253,10 @@
 <nav class="page-aux" aria-label="页面辅助">
   <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
 </nav>
-<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.0" data-cutoff="2026-11-19" data-latest="2026-11-21" data-count="94">
-  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.0）" title="查看更新记录（当前 v2.0）">
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.1" data-cutoff="2026-11-19" data-latest="2026-11-24" data-count="99">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.1）" title="查看更新记录（当前 v2.1）">
     <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
-    <span class="cl-badge-ver">v2.0</span>
+    <span class="cl-badge-ver">v2.1</span>
     <span class="cl-badge-label">更新记录</span>
   </button>
   <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
@@ -259,8 +265,8 @@
       <header class="cl-head">
         <div class="cl-head-main">
           <span class="cl-kicker">RELEASE NOTES</span>
-          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.0</span></h2>
-          <p class="cl-sub" id="cl-subtitle">当前版本 v2.0 · 数据截止 2026-11-19 · 94 条记录</p>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.1</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.1 · 数据截止 2026-11-19 · 99 条记录</p>
         </div>
         <div class="cl-actions">
           <div class="cl-lang" role="group" aria-label="切换语言">
@@ -277,7 +283,7 @@
         </div>
       </div>
       <footer class="cl-foot">
-        <span data-changelog-meta>v2.0 · 2026-11-19 · 94 条记录</span>
+        <span data-changelog-meta>v2.1 · 2026-11-19 · 99 条记录</span>
         <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
       </footer>
     </div>

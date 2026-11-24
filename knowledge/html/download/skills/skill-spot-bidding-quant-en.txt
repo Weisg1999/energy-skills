@@ -1,15 +1,15 @@
 ---
 name: spot-bidding-quant
-description: Spot-bidding quant expert — bid-curve construction for day-ahead and real-time markets, load and price forecasting, residual bias correction, declared-quantity decisions for renewables and storage, retailer purchase portfolios, bidding simulation and market-structure screening, rolling backtests and T+1 PnL attribution, plus a desk layer (decision clock, scenario curves and CVaR frontier, settlement variance bridge, one-province one-period public-data backtest). Use when answering how to bid tomorrow, how much to declare, what a forecast error is worth, whether a backtest can be trusted, or how to trace a settlement shortfall. Methods and code run from tools/ in this repository; data are synthetic.
+description: Spot-bidding quant expert — bid-curve construction for day-ahead and real-time markets, load and price forecasting, residual bias correction, declared-quantity decisions for renewables and storage, retailer purchase portfolios, bidding simulation and market-structure screening, rolling backtests, T+1 PnL attribution and price-factor attribution/pre-market scenarios, plus a desk layer (decision clock, scenario curves and CVaR frontier, settlement variance bridge, one-province one-period public-data backtest). Use when answering how to bid tomorrow, how much to declare, what a forecast error is worth, whether a backtest can be trusted, or how to trace a settlement shortfall. Methods and code run from tools/ in this repository; data are synthetic.
 ---
 
 # Spot-Bidding Quant Expert SKILL
 
 > 🌐 Chinese version: [SKILL.md](SKILL.md) ｜ Sister skills: [Electricity Trading Expert](../electricity-trading-expert/SKILL_EN.md) (market rules / settlement / carbon), [Virtual Power Plant Expert](../virtual-power-plant/SKILL_EN.md) (aggregation / operations). This skill answers only "how to compute, how to bid, how to validate".
 
-> Version v2.0 · data cutoff 2026-11-12
+> Version v2.1 · data cutoff 2026-11-19
 
-> **Maintenance entry points**: `tools/selftest.py` (green means the figures quoted below still hold), `knowledge/调研-量化报价与厂商实践-2026-11.md` (vendor and patent material), `knowledge/省级市场状态表-2026-11.md` (confirm the province first), `knowledge/量化报价与交易风控-工程化-2026-11.md` (engineering loop, rule-version registry, risk limits, settlement reconciliation and attribution).
+> **Maintenance entry points**: `tools/selftest.py` (green means the figures quoted below still hold), `tools/clearing.py` (SCED/SCUC clearing sandbox, asserted in selftest), `tools/attribution.py` (price-factor attribution and pre-market scenarios, asserted in selftest), `knowledge/调研-量化报价与厂商实践-2026-11.md` (vendor and patent material), `knowledge/省级市场状态表-2026-11.md` (confirm the province first), `knowledge/量化报价与交易风控-工程化-2026-11.md` (engineering loop, rule-version registry, risk limits, settlement reconciliation and attribution).
 > **Open items 2026-2027**: the Spot Market Basic Rules (draft, comments close 2026-11-18, proposed effect 2027-01-01), annual adjustments to bid-segment counts and price caps, secondary price-cap pilots, the scope of quantity-only bidding for renewables, and the timing and revision of public data releases.
 
 ---
@@ -376,6 +376,8 @@ Compare actual revenue with the revenue of a "perfect-execution-on-forecast" cou
 
 The four should approximately sum to the total gap; a large residual means a missing variable. This table is the fixed input to the weekly bidding review.
 
+**Keep PnL attribution separate from price attribution**: this section splits "why my revenue differs from perfect execution" into forecast/bid/execution/rules; price attribution splits "why the market price moved" into load/renewables/outages/fuel/congestion/behaviour/policy. They may reference each other but must not share a table. For price-factor definitions, Shapley values and scenario grids, see [price attribution and pre-market scenarios](../../knowledge/电价归因与盘前推演-2026-11.md).
+
 ### 11.4 Overfitting checklist
 - Are parameters stable across rolling windows (does the optimum drift);
 - Do features survive out of sample (a "weather feature" that only works in one month);
@@ -666,6 +668,10 @@ See `instances/README.md` for the schema and fill-in workflow, and each pack's `
 | Storage threshold | cycle cost / round-trip efficiency | `bid.storage_arbitrage_threshold` |
 | Contract overlay | spot PnL + q_c(P_c − π) | `bid.contract_adjustment` |
 | Merit-order clearing | sort offers, walk demand | `simulate.clear` |
+| SCED marginal-segment clearing | minimum-output block + incremental stack + uplift | `clearing.clear_sced` |
+| SCUC exact enumeration | commitment/min up-down/ramp + per-period SCED | `clearing.clear_scuc` |
+| Price-factor attribution | seven-factor counterfactuals + exact all-subset Shapley (additive, order-independent) | `attribution.shapley` |
+| Pre-market scenario ladder | open factors one by one, record price, marginal unit and cap binding | `attribution.sequential` |
 | Bid sweep | fixed rivals, sweep own bid | `simulate.bid_sweep` |
 | Concentration | HHI = Σs_i² × 10000 | `simulate.hhi` |
 | Desk clock | D-1 data -> decision -> submission -> T+1 | `desk.trading_day_timeline` |
@@ -752,6 +758,8 @@ The desk-layer examples in 13.2 and 13.3 are also **synthetic**: the scenario se
 - Engineering delivery (rule-version registry, data contracts, risk limits, settlement reconciliation and PnL attribution) → knowledge base [quantitative bidding and trading risk](../../knowledge/量化报价与交易风控-工程化-2026-11.md); this skill gives methods and examples, that module gives architecture and governance.
 - Weather upstream (NWP/reanalysis sources, four conversion chains, forecasting-assessment rules, weather risk) → knowledge base [weather and power trading](../../knowledge/气象与电力交易-2026-11.md); this skill keeps the forecasting algorithms and metrics, that module covers how weather becomes energy and risk, with `tools/weather.py` locked to this skill's `selftest.py`.
 - Grid constraints (two-node price separation, location basis, dynamic ATC) → knowledge base [inter-provincial and cross-region trading](../../knowledge/省间与跨区交易-2026-11.md) §5.5-5.6; `tools/network.py` adds only the clearing state and transfer capability, while congestion surplus, FTR and LMP decomposition stay in `electricity-trading-expert/tools/market.py`. Assertions join this skill's `selftest.py`.
+- Clearing engine (bid curves into SCUC/SCED, marginal-segment pricing, uplift from minimum output and commitment) → knowledge base [spot clearing and price formation](../../knowledge/现货出清与价格形成-2026-11.md); `tools/clearing.py` is a single-node teaching sandbox, not a production SCUC/SCED engine.
+- Price-factor attribution and pre-market scenarios (counterfactual split across load/renewables/outages/fuel/congestion/behaviour/policy, Shapley and scenario grid) → knowledge base [price attribution and pre-market scenarios](../../knowledge/电价归因与盘前推演-2026-11.md); `tools/attribution.py` reuses `clearing.clear_sced` and performs model-internal decomposition only, not causal identification.
 
 ### 16.5 Maintenance cadence and open items
 - Quarterly: verify bid-segment counts, price caps (including secondary caps) and submission deadlines per province;

@@ -1,13 +1,13 @@
 ---
 name: ems-dispatch
-description: Microgrid and storage EMS dispatch expert — turns "how should the battery charge and discharge tomorrow" into a deliverable 96-interval plan covering SOC and reserve, point-of-connection limits, demand charges, degradation cost, multi-market products, MPC rolling and uncertainty. Answers whether a plan is deliverable, why the battery moves the way it does, whether reserve is sufficient and whether charging will raise demand. Includes a zero-dependency Python reference implementation.
+description: Microgrid and storage EMS dispatch expert — turns "how should the battery charge and discharge tomorrow" into a deliverable 96-interval plan covering SOC and reserve, point-of-connection limits, demand charges, degradation cost, multi-market products, MPC rolling and uncertainty; also explains the interface boundaries of AGC/AVC plant closed loops and state estimation/security analysis. Answers whether a plan is deliverable, why the battery moves the way it does, whether reserve is sufficient, whether charging will raise demand and what the control and network layers require. Includes a zero-dependency Python reference implementation.
 ---
 
 # Microgrid & Storage EMS Dispatch Expert SKILL
 
 > 🌐 Chinese version: [SKILL.md](SKILL.md) ｜ Sister skills: [Storage Investment & Operations](../storage-investment-operations/SKILL_EN.md) (appraisal / revenue stacking / LCOS), [Virtual Power Plant Expert](../virtual-power-plant/SKILL_EN.md) (aggregation / demand response), [Spot-Bidding Quant Expert](../spot-bidding-quant/SKILL_EN.md) (price forecasting / bidding), [Electricity Trading Expert](../electricity-trading-expert/SKILL_EN.md) (rules / settlement). This skill answers only "given prices, load, equipment and rules, how should tomorrow's power and SOC plan be arranged, and can it be delivered".
 
-> Version v2.0 · data cutoff 2026-11-01
+> Version v2.1 · data cutoff 2026-11-19
 
 > **Maintenance entry points**: `tools/selftest.py` (green means the worked examples still hold), [storage EMS note](../../knowledge/储能EMS优化调度-算法与工程-2026-11.md) (model, constraints, capacity price and frequency-regulation details), [microgrid EMS note](../../knowledge/微网EMS优化调度-算法与工程-2026-11.md) (PCC, islanding, MPC and capability assessment).
 > **Open items 2026-2027**: provincial rules and assessment deductions under Document 114, the denominator duration for the capacity price (4/6/8/10 h), the shape of time-of-use prices under continuous spot operation, revision of ancillary-service products and compensation, and upgrades to grid-forming and grid-connection standards.
@@ -41,6 +41,8 @@ You are the dispatch algorithm lead for storage and microgrid EMS, serving plant
 | Will charging raise the demand charge | Sec. 7.2 |
 | How much capacity price can be earned, how is duration converted | Sec. 4.3 |
 | Does frequency regulation or reserve crowd out arbitrage | Ch. 5 |
+| How are AGC/AVC commands allocated, what does plant assessment measure | [AGC/AVC and frequency-voltage closed loop](../../knowledge/AGC-AVC与频率电压闭环-2026-11.md) |
+| How do state estimation, N-1 and ATC relate to EMS limits | [State estimation and security analysis](../../knowledge/状态估计与安全分析-2026-11.md) |
 | What if forecasts are wrong, should we roll | Ch. 6 |
 | How does degradation enter the model, how many tiers | Sec. 7.1 |
 | How are available power, energy and duration computed | Sec. 4.5 |
@@ -75,6 +77,7 @@ The "future SKILL chapter draft" reserved in §11.5 of the notes was designed as
 | Source text for spot/medium-term/ancillary rules, settlement items | Electricity Trading Expert |
 | Carbon compliance, CCER, CBAM | Carbon Asset Management Expert |
 | **Given prices and equipment, how to schedule 96 intervals of power and SOC, and whether it is deliverable** | **This skill** |
+| AGC/AVC command decomposition, plant assessment, state estimation/N-1/ATC network models | Knowledge notes "AGC/AVC and frequency-voltage closed loop" and "State estimation and security analysis"; this skill covers plans and deliverability, not control-centre or production-grade network algorithms |
 
 **Interface contract**: this skill receives price forecasts (point forecasts plus quantiles) from the bidding skill and equipment parameters plus revenue calibres from the investment skill, and exports bid-cap curves and planned energy to the trading skill. Field list in §3.1.
 
@@ -83,6 +86,7 @@ The "future SKILL chapter draft" reserved in §11.5 of the notes was designed as
 | Applicable | Not applicable |
 |---|---|
 | Day-ahead/intraday economic dispatch of grid-side independent storage | Full-network security-constrained dispatch (AC/DC power flow) |
+| Plant-level AGC/AVC command decomposition and state-estimation interfaces | Control-centre AGC/AVC algorithms and production-grade state estimation/security assessment |
 | Peak-valley arbitrage and demand-charge management for behind-the-meter storage | Millisecond protection settings and electromagnetic transients |
 | Curtailment absorption and plan tracking for renewable co-located storage | Cell chemistry selection and thermal-runaway propagation |
 | Microgrid grid-connected/islanded switching, island energy checks | Fire-system design and suppression effectiveness |
@@ -293,6 +297,8 @@ Every product carries an opportunity cost: 10 MW of regulation occupies power an
 - Frequency regulation is a bidirectional, zero-mean service, but real deployment has random deviation; reserve recovery energy so the unit returns to its baseline band by the end of the assessment period;
 - The K factor converts mileage into effective regulation; a falling K directly cuts revenue, so never use the rated K for long-term projections;
 - Capacity and mileage are priced in different units (CNY/MW·h versus CNY/MW); an order-of-magnitude conversion error is common.
+- **ACE is not a unit-level command**: it only states how much regulation the area still needs; how AGC allocates by capacity/ramp/participation factor, how the three AVC levels work and what plant assessment measures are in [AGC/AVC and frequency-voltage closed loop](../../knowledge/AGC-AVC与频率电压闭环-2026-11.md). This skill only covers regulation capacity, energy margin and deliverability in the plan.
+- **Network limits are not guesses**: state estimation, bad data, N-1 and ATC are explained in [State estimation and security analysis](../../knowledge/状态估计与安全分析-2026-11.md); this skill does not implement production-grade SE/security assessment and only uses its conclusions with a conservative margin.
 
 ### 5.4 No double selling
 
@@ -404,9 +410,11 @@ For 100 MW / 200 MWh, SOC 10%–90%, RTE 88%: usable DC 160 MWh, AC discharge 15
 | `tools/microgrid.py` | Microgrid wrapper: PV, PCC, baseline, island energy checks |
 | `tools/market.py` | Capacity payment, regulation capacity + mileage, demand bill |
 | `tools/curves.py` | Synthetic curves: station 24-point, microgrid 96-point, behind-the-meter 96-point |
+| `tools/control.py` | ACE, AGC allocation, performance components, AVC allocation, primary-frequency droop |
+| `tools/state.py` | 3-bus DC power flow, WLS, normalized residuals, N-1 scan |
 | `tools/selftest.py` | Assertions that lock every worked example in the text |
 
-The kernel runs forward dynamic programming on an SOC grid, excludes simultaneous charge/discharge by construction, splits import/export on the sign of net load, and curtails PV beyond the export limit. It is a **screening tool**, not a settlement system.
+The kernel runs forward dynamic programming on an SOC grid, excludes simultaneous charge/discharge by construction, splits import/export on the sign of net load, and curtails PV beyond the export limit. `control.py` and `state.py` are interface-level demos for the two knowledge notes, not control-centre AGC/AVC or production-grade state estimation/security assessment.
 
 ### 8.2 Storage station: 100 MW / 200 MWh
 
@@ -578,6 +586,9 @@ Plan shape: valley charge 00:00–02:00 (about 426 kW), midday discharge 10:00�
 | Demand bill and saving | `market.demand_bill()` / `demand_saving()` |
 | Microgrid dispatch and baseline | `microgrid.microgrid_day()` / `baseline_day()` |
 | Island energy check | `microgrid.island_energy_need()` / `island_feasible()` |
+| ACE / AGC allocation / performance components | `control.ace_mw()` / `agc_allocate()` / `agc_performance()` |
+| AVC reactive allocation / primary-frequency droop | `control.avc_allocate()` / `droop_response()` |
+| DC power flow / WLS / bad data / N-1 | `state.dc_power_flow()` / `wls_estimate()` / `n1_scan()` |
 | Synthetic curves | `curves.storage_day_prices()` / `microgrid_day()` / `user_day()` |
 
 ```python
@@ -643,7 +654,9 @@ python skills/ems-dispatch/tools/selftest.py
   - Microgrid: baseline 7,408.72, optimized 6,525.12, peak 838.50 kW, throughput 3,086.56 kWh, 1.5433 cycles, saving 883.59 (11.93%);
   - Sensitivities: degradation 6,617.72, storage +20% 6,350.61, 900 kW cap 6,519.97, reserve energy 6,663.52;
   - Demand: 35,082.99 → 32,000.00 CNY/month, saving 3,082.99, full charge 36,800, charging cap 440 kW;
-  - Islanding: 100 kWh need feasible with 10% reserve, and an energy shortfall is flagged correctly.
+  - Islanding: 100 kWh need feasible with 10% reserve, and an energy shortfall is flagged correctly;
+  - AGC/AVC: ACE 40 MW, coal/storage 30/10 MW, accuracy 0.95/0.98, ramp ratio 0.95/1.00, AVC 30/30/0 Mvar, primary-frequency response 1.4 MW;
+  - State estimation/N-1: theta2=-0.020539, theta3=-0.031470, P13 normalized residual 5.21, post-N-1 flow on line 1-3 0.35 versus limit 0.30, overload 0.05 pu.
 
 > The tool is a **screening tool**, not a settlement system: it does not handle provincial assessment rules, taxes, complex financing, network security constraints or real-time tracking. Live operation must be recomputed with provincial rules, measured curves and equipment parameters.
 
@@ -688,7 +701,9 @@ Yes, roll — but get three things right first: forecast horizon = control horiz
 
 - [Storage EMS note](../../knowledge/储能EMS优化调度-算法与工程-2026-11.md): full model, 18 constraints, capacity payment, regulation, degradation and multi-station aggregation;
 - [Microgrid EMS note](../../knowledge/微网EMS优化调度-算法与工程-2026-11.md): PCC, islanding, MPC, capability and standards;
-- `tools/`: zero-dependency reference implementation and example assertions.
+- [AGC/AVC and frequency-voltage closed loop](../../knowledge/AGC-AVC与频率电压闭环-2026-11.md): ACE, AGC allocation, three-level AVC, plant assessment;
+- [State estimation and security analysis](../../knowledge/状态估计与安全分析-2026-11.md): WLS, bad data, observability, N-1/ATC;
+- `tools/`: zero-dependency reference implementation and example assertions (including `control.py` and `state.py`).
 
 ### 14.3 Division of labour with sister skills
 
@@ -699,12 +714,13 @@ Yes, roll — but get three things right first: forecast horizon = control horiz
 | Spot-Bidding Quant Expert | Price forecasting, bid curves, backtests | Receives point forecasts and quantiles |
 | Electricity Trading Expert | Rule source text, settlement items | Cites rules without re-explaining them |
 | Carbon Asset Management Expert | Carbon compliance, CCER | Not involved |
+| Control centre / network analysis | AGC/AVC closed loop, state estimation, N-1/ATC | Cites the notes' limit and observability conclusions; does not implement production-grade algorithms |
 
 ### 14.4 Maintenance cadence
 
 - Quarterly: provincial capacity prices, demand rules, ancillary-service compensation;
 - Half-yearly: equipment efficiency and degradation parameters, storage system prices;
 - Annual: standards updates, example regression, tool self-test;
-- Trigger-based: within one month of new spot rules, capacity-price details or grid-connection standards.
+- Trigger-based: within one month of new spot rules, capacity-price details, grid-connection standards, AGC/AVC assessment rules or state estimation/security-assessment procedures.
 
 - **Price-driver routing**: quantity ([weather and power trading](../../knowledge/气象与电力交易-2026-11.md)), price ([fuel and power trading](../../knowledge/燃料与电力交易-2026-11.md)), deliverability ([inter-provincial trading](../../knowledge/省间与跨区交易-2026-11.md) §5.5-5.6). For "why is this interval expensive", check quantity -> price -> constraint -> superposition; see the [golden Q&A](../../knowledge/黄金问答集-2026-11.md) section F (Q29-Q38) for regression questions.

@@ -6,12 +6,12 @@
 
 <p align="center">
   <strong>电力系统 · 电力市场 · 碳市场</strong><br>
-  9 份面向 AI 助手的领域技能 · 114 个知识模块 · 32 个可运行实例包 · 13 个分区
+  9 份面向 AI 助手的领域技能 · 119 个知识模块 · 32 个可运行实例包 · 13 个分区
 </p>
 
 <p align="center">
-  <a href="CHANGELOG.md"><img alt="version v2.0" src="knowledge/assets/badge-version.svg"></a>&nbsp;
-  <a href="knowledge/index.html"><img alt="114 knowledge modules" src="knowledge/assets/badge-modules.svg"></a>&nbsp;
+  <a href="CHANGELOG.md"><img alt="version v2.1" src="knowledge/assets/badge-version.svg"></a>&nbsp;
+  <a href="knowledge/index.html"><img alt="119 knowledge modules" src="knowledge/assets/badge-modules.svg"></a>&nbsp;
   <a href="更新清单.md"><img alt="data cutoff 2026-11-19" src="knowledge/assets/badge-cutoff.svg"></a>&nbsp;
   <a href="LICENSE"><img alt="license CC BY-NC 4.0" src="knowledge/assets/badge-license.svg"></a>
 </p>
@@ -25,7 +25,7 @@
 
 > 每份技能都是一册可直接注入大模型上下文的 Markdown 手册。加载后，模型按该领域资深从业者的身份回答，并遵守内置纪律：数字带文号与时点、涉及省份先确认、政策内容给出查证入口、未交叉验证的数据标注“待核实”。
 
-当前版本 **v2.0**，数据截止 **2026-11-19**，正文 47,265 行。知识笔记、114 个阅读页、技能页、全文检索索引与图表均由仓库内容构建生成。
+当前版本 **v2.1**，数据截止 **2026-11-19**，正文 51,129 行。知识笔记、119 个阅读页、技能页、全文检索索引与图表均由仓库内容构建生成。
 
 **目录**　[快速开始](#快速开始) · [技能矩阵](#技能矩阵) · [知识库](#知识库) · [仓库结构](#仓库结构) · [维护](#维护知识中心) · [Roadmap](#roadmap) · [许可证](#许可证)
 
@@ -55,7 +55,7 @@ node scripts/check-maintenance.mjs --check
 | 技能 | 回答的核心问题 |
 |---|---|
 | **[电力交易专家](skills/electricity-trading-expert/SKILL.md)** · [EN](skills/electricity-trading-expert/SKILL_EN.md) | 现货出清与定价、中长期与金融、辅助服务与容量、结算计量、省别实践、新能源入市、燃料与气电成本、碳市场、11 个海外市场、交易策略与风控；含七个实例包：山东煤电中长期持仓、甘肃煤电容量电价+辅助服务、甘肃风电送山东省间、四川水电丰平枯对冲、云南梯级水电区域组合、辽宁核电机制电价分账与山东午间负价日失败复盘（复盘库案例 1 可运行版） |
-| **[现货报价量化专家](skills/spot-bidding-quant/SKILL.md)** · [EN](skills/spot-bidding-quant/SKILL_EN.md) | 负荷与电价预测、残差校正、量价曲线、购电组合、竞价仿真、滚动回测与 T+1 归因；盘面层含决策时钟、情景/CVaR 前沿、结算差异桥与公开数据回测协议；含八个实例包：山东煤电/热电、山东独立储能、山东光储联合、山西独立储能、甘肃风电、蒙西新能源现货、浙江现货储能与蒙西风光储联合（配置、申报、两结算与差异桥） |
+| **[现货报价量化专家](skills/spot-bidding-quant/SKILL.md)** · [EN](skills/spot-bidding-quant/SKILL_EN.md) | 负荷与电价预测、残差校正、量价曲线、购电组合、竞价仿真、滚动回测与 T+1 归因；盘面层含决策时钟、情景/CVaR 前沿、结算差异桥与公开数据回测协议；配套零依赖 SCED/SCUC 出清沙盘与电价因子归因/盘前情景工具；含八个实例包：山东煤电/热电、山东独立储能、山东光储联合、山西独立储能、甘肃风电、蒙西新能源现货、浙江现货储能与蒙西风光储联合（配置、申报、两结算与差异桥） |
 | **[虚拟电厂专家](skills/virtual-power-plant/SKILL.md)** · [EN](skills/virtual-power-plant/SKILL_EN.md) | 资源聚合、三阶段演进、市场参与、商业模式、控制优化、政策与国际对标；含上海、浙江、江苏快速响应、辽宁资源分配、深圳 V2G 与上海数据中心 DR 六个实例包（聚合配置、申报、情景出清与差异桥） |
 | **[售电零售与风险专家](skills/retail-electricity-risk/SKILL.md)** · [EN](skills/retail-electricity-risk/SKILL_EN.md) | 套餐全成本定价、客户组合、购电覆盖、偏差考核、批零倒挂、履约保函与退出；含广东 2026、江苏 2027、广东多用户绿电直连与广东批零倒挂失败复盘四个实例包（一省一主体配置、D-1 定价与购电表、T+1 差异桥） |
 
@@ -71,7 +71,7 @@ node scripts/check-maintenance.mjs --check
 
 | 技能 | 回答的核心问题 |
 |---|---|
-| **[EMS 优化调度专家](skills/ems-dispatch/SKILL.md)** · [EN](skills/ems-dispatch/SKILL_EN.md) | 96 点经济调度、SOC 与备用、并网点与防逆流、需量电费、退化成本、多市场叠加、MPC 与可调能力、预测误差→申报→EMS 闭环；含江苏零碳园区微网实例包（光伏自消纳、储能峰谷与需量控制、单位能耗碳排放、孤岛校核）与山东独立储能电站日运行实例包（96 点能量套利、AGC 与一次调频考核复盘） |
+| **[EMS 优化调度专家](skills/ems-dispatch/SKILL.md)** · [EN](skills/ems-dispatch/SKILL_EN.md) | 96 点经济调度、SOC 与备用、并网点与防逆流、需量电费、退化成本、多市场叠加、MPC 与可调能力、预测误差→申报→EMS 闭环、AGC/AVC 场站闭环、状态估计/N-1/ATC 安全分析接口；含江苏零碳园区微网实例包（光伏自消纳、储能峰谷与需量控制、单位能耗碳排放、孤岛校核）与山东独立储能电站日运行实例包（96 点能量套利、AGC 与一次调频考核复盘） |
 | **[电价与电费优化专家](skills/tariff-bill-optimization/SKILL.md)** · [EN](skills/tariff-bill-optimization/SKILL_EN.md) | 账单科目拆解、三种基本电费、105% 超需与 40% 下限、最优申报、分时平移、力率考核、零售套餐比价；含江苏工商业储能实例包 |
 
 > **怎么选**：市场规则与结算 → 电力交易；报价与回测 → 现货量化；聚合与运营 → 虚拟电厂；项目投决 → 储能/新能源；逐时段调度 → EMS；账单与套餐 → 电价/售电。
@@ -86,7 +86,7 @@ node scripts/check-maintenance.mjs --check
 
 ## 知识库
 
-114 个知识模块分为 13 个分区，全部带 frontmatter（`id`、`section`、`title`、`summary`、`tags`、`cutoff`、`related` 等）。[知识中心](knowledge/index.html)的卡片、计数、全文检索、阅读页与下载文件全部由构建脚本生成，覆盖标题、标签与正文；首页以分类筛选切换 13 个分区，每个技能另有 HTML 阅读页与完整 TXT 下载。32 个可运行实例包覆盖 12 个省级地区，统一在[实例包矩阵页](knowledge/instances.html)汇总，每个包都是“一省 + 一主体 + 一套合约/账单 + 一个规则版本”的可运行切片。
+119 个知识模块分为 13 个分区，全部带 frontmatter（`id`、`section`、`title`、`summary`、`tags`、`cutoff`、`related` 等）。[知识中心](knowledge/index.html)的卡片、计数、全文检索、阅读页与下载文件全部由构建脚本生成，覆盖标题、标签与正文；首页以分类筛选切换 13 个分区，每个技能另有 HTML 阅读页与完整 TXT 下载。32 个可运行实例包覆盖 12 个省级地区，统一在[实例包矩阵页](knowledge/instances.html)汇总，每个包都是“一省 + 一主体 + 一套合约/账单 + 一个规则版本”的可运行切片。
 
 **分区速览**
 
@@ -103,16 +103,16 @@ node scripts/check-maintenance.mjs --check
 - **看某个省的市场规则**：[省级市场状态总表](knowledge/省级市场状态表-2026-11.md) · [广东](knowledge/广东电力市场-2026-11.md) · [山东](knowledge/山东电力市场-2026-11.md) · [山西](knowledge/山西电力市场-2026-11.md) · [浙江](knowledge/浙江电力市场-2026-11.md) · [甘肃](knowledge/甘肃电力市场-2026-11.md) · [蒙西](knowledge/蒙西电力市场-2026-11.md) · [安徽](knowledge/安徽电力市场-2026-11.md) · [福建](knowledge/福建电力市场-2026-11.md) · [陕西](knowledge/陕西电力市场-2026-11.md) · [河北南网](knowledge/河北南网电力市场-2026-11.md) · [湖北](knowledge/湖北电力市场-2026-11.md)（首批 11 个 P0；其余省份先在状态总表查状态）
 - **第二批（连续结算/区域正式）**：[辽宁](knowledge/辽宁电力市场-2026-11.md) · [湖南](knowledge/湖南电力市场-2026-11.md) · [重庆](knowledge/重庆电力市场-2026-11.md) · [四川](knowledge/四川电力市场-2026-11.md) · [广西](knowledge/广西电力市场-2026-11.md) · [云南](knowledge/云南电力市场-2026-11.md) · [贵州](knowledge/贵州电力市场-2026-11.md) · [海南](knowledge/海南电力市场-2026-11.md)
 - **第三批（P2 薄档案）**：[北京](knowledge/北京电力市场-2026-11.md) · [天津](knowledge/天津电力市场-2026-11.md) · [河北北网](knowledge/河北北网电力市场-2026-11.md) · [蒙东](knowledge/蒙东电力市场-2026-11.md) · [吉林](knowledge/吉林电力市场-2026-11.md) · [黑龙江](knowledge/黑龙江电力市场-2026-11.md) · [上海](knowledge/上海电力市场-2026-11.md) · [江苏](knowledge/江苏电力市场-2026-11.md) · [江西](knowledge/江西电力市场-2026-11.md) · [河南](knowledge/河南电力市场-2026-11.md) · [青海](knowledge/青海电力市场-2026-11.md) · [宁夏](knowledge/宁夏电力市场-2026-11.md) · [新疆](knowledge/新疆电力市场-2026-11.md) · [西藏](knowledge/西藏电力市场-2026-11.md)
-- **现货怎么出清、怎么结算**：[101 问 A 基础与价格](knowledge/电力现货市场101问-A-基础与价格机制.md) · [B 出清结算与省域实践](knowledge/电力现货市场101问-B-出清结算与省域实践.md) · [C 结算 TTS 与政策](knowledge/电力现货市场101问-C-结算TTS与政策演进.md) · [实务精读](knowledge/电力现货市场实务-精读笔记.md) · [经济学原理](knowledge/电力系统经济学原理-主题笔记.md) · [省间与跨区交易](knowledge/省间与跨区交易-2026-11.md) · [从潮流到节点电价](knowledge/潮流阻塞与节点电价-2026-11.md) · [预测误差→申报→EMS 闭环](knowledge/预测误差申报与EMS闭环-2026-11.md)
+- **现货怎么出清、怎么结算**：[101 问 A 基础与价格](knowledge/电力现货市场101问-A-基础与价格机制.md) · [B 出清结算与省域实践](knowledge/电力现货市场101问-B-出清结算与省域实践.md) · [C 结算 TTS 与政策](knowledge/电力现货市场101问-C-结算TTS与政策演进.md) · [实务精读](knowledge/电力现货市场实务-精读笔记.md) · [经济学原理](knowledge/电力系统经济学原理-主题笔记.md) · [从报价到节点价](knowledge/现货出清与价格形成-2026-11.md) · [从潮流到节点电价](knowledge/潮流阻塞与节点电价-2026-11.md) · [状态估计与安全分析](knowledge/状态估计与安全分析-2026-11.md) · [电价归因与盘前推演](knowledge/电价归因与盘前推演-2026-11.md) · [预测误差→申报→EMS 闭环](knowledge/预测误差申报与EMS闭环-2026-11.md) · [省间与跨区交易](knowledge/省间与跨区交易-2026-11.md)
 - **海外市场怎么交易、储能怎么投**：[澳大利亚 NEM](knowledge/澳大利亚NEM电力市场-2026-11.md) · [德国](knowledge/德国电力市场-2026-11.md) · [英国](knowledge/英国电力市场-2026-11.md) · [意大利](knowledge/意大利电力市场-2026-11.md) · [西班牙](knowledge/西班牙电力市场-2026-11.md) · [法国](knowledge/法国电力市场-2026-11.md) · [荷兰](knowledge/荷兰电力市场-2026-11.md) · [波兰](knowledge/波兰电力市场-2026-11.md) · [比利时与北欧](knowledge/比利时与北欧电力市场-2026-11.md) · [美国](knowledge/美国电力市场-2026-11.md) · [日本](knowledge/日本电力市场-2026-11.md) · [海外储能业务](knowledge/海外储能业务-2026-11.md)
 - **电价怎么构成、文件怎么查**：[制度谱系](knowledge/中国电价制度谱系-2026-11.md) · [现行政策与查证](knowledge/中国电价现行政策与查证-2026-11.md) · [电价史](knowledge/中国电价史-2026-11.md) · [国际比较方法](knowledge/国际电价比较-方法与模板-2026-11.md)
-- **储能值不值得投、怎么考核**：[储能投资与运营](knowledge/储能投资与运营-2026-11.md) · [技术路线安全与构网型并网](knowledge/储能技术路线安全与构网型并网-2026-11.md) · [储能 EMS 算法](knowledge/储能EMS优化调度-算法与工程-2026-11.md) · [场站群与集控 EMS 架构](knowledge/场站群与集控EMS架构-2026-11.md) · [EMS 数据接口参考架构](knowledge/EMS数据接口参考架构-2026-11.md)
-- **新能源能不能开发、能不能并网**：[新能源开发与并网](knowledge/新能源项目开发与并网-2026-11.md) · [无功、电压与电能质量](knowledge/无功电压与电能质量-2026-11.md) · [配电网承载力与分布式接入](knowledge/配电网承载力与分布式接入-2026-11.md) · [并网运行考核](knowledge/并网运行考核与两个细则-2026-11.md) · [并网测试与涉网验收实务清单](knowledge/并网测试与涉网验收实务清单-2026-11.md) · [综合能源与零碳园区](knowledge/综合能源与零碳园区-2026-11.md)
-- **VPP 与需求响应怎么落地**：[VPP 聚合、调度与商业模式](knowledge/虚拟电厂聚合调度与商业模式-2026-11.md) · [走近虚拟电厂](knowledge/走近虚拟电厂-主题笔记.md) · [需求响应与车网互动](knowledge/需求响应、车网互动与灵活性资源-2026-11.md) · [可调负荷的物理真值](knowledge/可调负荷的物理真值-2026-11.md) · [微网 EMS 算法](knowledge/微网EMS优化调度-算法与工程-2026-11.md)
+- **储能值不值得投、怎么考核**：[储能投资与运营](knowledge/储能投资与运营-2026-11.md) · [技术路线安全与构网型并网](knowledge/储能技术路线安全与构网型并网-2026-11.md) · [储能 EMS 算法](knowledge/储能EMS优化调度-算法与工程-2026-11.md) · [场站群与集控 EMS 架构](knowledge/场站群与集控EMS架构-2026-11.md) · [EMS 数据接口参考架构](knowledge/EMS数据接口参考架构-2026-11.md) · [AGC/AVC 与频率电压闭环](knowledge/AGC-AVC与频率电压闭环-2026-11.md) · [状态估计与安全分析](knowledge/状态估计与安全分析-2026-11.md)
+- **新能源能不能开发、能不能并网**：[新能源开发与并网](knowledge/新能源项目开发与并网-2026-11.md) · [无功、电压与电能质量](knowledge/无功电压与电能质量-2026-11.md) · [配电网承载力与分布式接入](knowledge/配电网承载力与分布式接入-2026-11.md) · [并网运行考核](knowledge/并网运行考核与两个细则-2026-11.md) · [并网测试与涉网验收实务清单](knowledge/并网测试与涉网验收实务清单-2026-11.md) · [AGC/AVC 与频率电压闭环](knowledge/AGC-AVC与频率电压闭环-2026-11.md) · [综合能源与零碳园区](knowledge/综合能源与零碳园区-2026-11.md)
+- **VPP 与需求响应怎么落地**：[VPP 聚合、调度与商业模式](knowledge/虚拟电厂聚合调度与商业模式-2026-11.md) · [走近虚拟电厂](knowledge/走近虚拟电厂-主题笔记.md) · [需求响应与车网互动](knowledge/需求响应、车网互动与灵活性资源-2026-11.md) · [可调负荷的物理真值](knowledge/可调负荷的物理真值-2026-11.md) · [微网 EMS 算法](knowledge/微网EMS优化调度-算法与工程-2026-11.md) · [微网运行与并离网切换](knowledge/微网运行方式与并离网切换-2026-11.md)
 - **碳履约、碳足迹与出口应对**：[碳资产实务](knowledge/碳资产实务-2026-11.md) · [中国碳交易实务](knowledge/中国碳排放权交易实务-主题笔记.md) · [碳管理：从零通往碳中和](knowledge/碳管理-从零通往碳中和-主题笔记.md)
 - **报价、风控与售电经营**：[量化报价与交易风控](knowledge/量化报价与交易风控-工程化-2026-11.md) · [电力市场风险、信用与结算](knowledge/电力市场风险、信用与结算-2026-11.md) · [省级市场状态表](knowledge/省级市场状态表-2026-11.md) · [交易台日课与异常处置 SOP](knowledge/交易台日课与异常处置-SOP-2026-11.md) · [合成案例复盘库](knowledge/合成案例复盘库-2026-11.md) · [合同与条款库](knowledge/合同与条款库-2026-11.md)
 - **拿实例包上手**：[实例包矩阵](knowledge/instances.html)汇总 32 个包——现货申报（含储能与风光储联合）、售电定价、VPP 聚合、储能投决、EMS 调度（园区微网 + 储能电站日运行）、碳履约，以及两个失败复盘切片（山东午间负价、广东批零倒挂）。
-- **检验回答是否跑偏**：[黄金问答集](knowledge/黄金问答集-2026-11.md)（71 个高频问答，含价格驱动三链 10 问、系统物理/EMS 工程 11 问、电价投资合同 12 问、数据复盘 4 问与故障保护/配电网 6 问，兼改版回归清单）
+- **检验回答是否跑偏**：[黄金问答集](knowledge/黄金问答集-2026-11.md)（79 个高频问答，含价格驱动三链 10 问、系统物理/EMS 工程 11 问、电价投资合同 12 问、数据复盘 4 问、故障保护/配电网 6 问、微网运行切换 2 问、现货出清 2 问、电价归因/盘前推演 2 问与 AGC/AVC、状态估计 2 问，兼改版回归清单）
 
 调研底稿（电力市场、VPP、碳市场、量化厂商、碳管理厂商）按时间存档在 `knowledge/`，用于追溯结论来源；对外结论以技能正文与主题笔记为准。
 
@@ -146,7 +146,7 @@ energy-skills/
     ├── index.template.html           ← 首页骨架（手写）
     ├── index.html                    ← 生成：知识中心
     ├── instances.html                ← 生成：实例包矩阵（32 包 / 12 个省级地区）
-    ├── html/                         ← 生成：114 个知识页 + 18 个技能页
+    ├── html/                         ← 生成：119 个知识页 + 18 个技能页
     ├── credibility.json              ← 生成：可信度登记册
     ├── english-digest.json           ← 生成：英文路由摘要
     ├── search-index.js               ← 生成：全文检索索引
@@ -182,9 +182,9 @@ node scripts/check-maintenance.mjs --check      # 更新清单结构校验
 - **正文图表**：无语言标记的 `├/└` 层级树会自动转为结构卡片，多列阶段和箭头链路转为流程卡片；依赖坐标对齐的复杂图保留为带网格和滚动容器的蓝图面板。
 - **自动里程碑**：“中国主体进入路径”和“并网流程”的步骤表会转为纵向里程碑，保留负责方、备注、风险与双地区列。储能安全因果/应急链、碳核查与 CCER 流程、微网状态表也会按章节自动组件化。
 - **核心架构图**：SCADA 安全分区、VPP/EMS 数据链、V2G、量化交易参考架构、灵活性资源地图由 `architecture-diagrams.mjs` 人工语义化；源图关键节点变动时构建会报错。
-- **英文路由**：`english-digest.json` 包含 114 个模块的英文摘要、关键数字、未定事项与 C 级工单状态；`historical: true` 的模块会在阅读页顶部显示“数据不可作现行引用”横幅。
+- **英文路由**：`english-digest.json` 包含 119 个模块的英文摘要、关键数字、未定事项与 C 级工单状态；`historical: true` 的模块会在阅读页顶部显示“数据不可作现行引用”横幅。
 - **全文检索**：`search-index.js` 按 H2/H3 切块，首次聚焦搜索框时才加载；索引只服务页面检索，不进入模型上下文。
-- **可信度层**：`credibility.json` 提供 22 项 C 级工单、44 项未定事项、32 条事件日历与逐模块 `confidence` / `examples` / `historical` 声明。注入上下文前可按 `confidence` 过滤，并按 `gradeC.usable` / `banned` 排除不可引用数字。
+- **可信度层**：`credibility.json` 提供 22 项 C 级工单、48 项未定事项、32 条事件日历与逐模块 `confidence` / `examples` / `historical` 声明。注入上下文前可按 `confidence` 过滤，并按 `gradeC.usable` / `banned` 排除不可引用数字。
 - **CI**：依次执行一致性校验、维护台账、生成物比对与九个 Python 自测；每月 1 号另把到期看板写入 Actions 摘要。
 
 </details>
@@ -212,7 +212,7 @@ node scripts/check-maintenance.mjs --check      # 更新清单结构校验
 ## Roadmap
 
 - [x] **九份技能**：交易、VPP、量化、碳资产、储能、新能源、EMS、电价与售电，均中英双语并附零依赖 Python 工具、自测与实例包。
-- [x] **知识库**：114 个模块、13 个分区，含 33 个省级市场、11 个海外市场、横向专题、决策层三模块（日课 SOP / 复盘库 / 条款库）、系统物理与 EMS 工程链路七模块、故障保护/电能质量/配电网三模块、碳市场、VPP 与调研底稿；另有 32 个实例包（12 个省级地区）；知识中心与实例包矩阵均为生成物。
+- [x] **知识库**：119 个模块、13 个分区，含 33 个省级市场、11 个海外市场、横向专题、决策层三模块（日课 SOP / 复盘库 / 条款库）、系统物理与 EMS 工程链路七模块、故障保护/电能质量/配电网/微网运行四模块、现货出清与电价归因两模块、AGC/AVC 与状态估计两模块、碳市场、VPP 与调研底稿；另有 32 个实例包（12 个省级地区）；知识中心与实例包矩阵均为生成物。
 - [x] **阅读体验**：全文检索、分类筛选、深浅主题、移动端适配；正文图表自动组件化，核心架构图人工语义化。
 - [ ] **2026-12 增量复核**：现货新规定稿、国家 VPP 管理办法、2027 年 136 号文竞价、省份容量电价与招中标价。
 

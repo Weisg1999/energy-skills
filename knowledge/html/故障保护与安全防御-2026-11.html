@@ -83,7 +83,7 @@
       <p class="lede">短路与故障类型、继电保护四性与整定配合、新能源故障电流的特殊性、防孤岛、三道防线、低频减载与黑启动。</p>
       <p class="hook">故障、保护与安全防御</p>
       <div class="tags"><span class="tag">短路电流</span><span class="tag">继电保护</span><span class="tag">三道防线</span><span class="tag">防孤岛</span></div>
-      <div class="doc-meta"><span>约 11.7k 字</span><span>阅读约 23 分钟</span><span>13 节</span><span>数据截止 2026-11-19</span></div>
+      <div class="doc-meta"><span>约 11.8k 字</span><span>阅读约 23 分钟</span><span>13 节</span><span>数据截止 2026-11-19</span></div>
     </header>
 
     <details class="toc-mobile">
@@ -228,6 +228,7 @@ I_k = 1.56 / 0.725 = 2.15 kA</code></pre>
 <h3 id="s38">6.5 与微网/构网型储能的衔接</h3>
 <p>微网的黑启动与主网黑启动原理相通，但规模小、电压等级低、负荷类型复杂。构网型储能可以提供电压和频率参考，是微网黑启动的重要选项。微网黑启动要特别关注：</p>
 <ul><li>储能 SOC 与持续供电时间；</li><li>负荷的启动涌流；</li><li>并离网切换的同期条件；</li><li>防孤岛与计划孤岛的区分；</li><li>保护定值在孤岛模式下的适配。</li></ul>
+<p>微网侧的状态机、计划/非计划切换时序、同期并列、黑启动顺序与接地方式变化，见<a href="微网运行方式与并离网切换-2026-11.html">微网运行方式与并离网切换</a>；本文保留保护原理与定值校核。</p>
 <hr>
 <h2 id="s39">7. 合成算例（D 级）：35 kV 汇集线短路与保护配合</h2>
 <aside class="note"><p>本算例为合成数据，仅用于演示计算链与保护配置思路，不对应任何真实场站、真实定值或真实设备。</p></aside>
@@ -291,7 +292,7 @@ K_sen,total = 5.43 / 0.50 = 10.9</code></pre>
     </article>
 
     <section class="related" aria-labelledby="related-title">
-      <div class="related-head"><h2 id="related-title">相关模块</h2><span>6</span></div>
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>7</span></div>
       <div class="related-grid">
         <a class="related-card" href="电力系统通识-B-发输配变用.html">
           <span class="related-type">同区延伸</span>
@@ -314,7 +315,7 @@ K_sen,total = 5.43 / 0.50 = 10.9</code></pre>
           <span>有功平衡与频率、转动惯量与 RoCoF、惯量/一次/二次/三次响应分层、新能源占比下的爬坡需求、灵活性供需货架与国内运行视角。</span>
         </a>
       </div>
-      <p class="related-rest"><b>更多关联</b><a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线、安全与构网型并网</a><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a></p>
+      <p class="related-rest"><b>更多关联</b><a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线、安全与构网型并网</a><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a><a href="微网运行方式与并离网切换-2026-11.html">微网运行方式与并离网切换：从状态机到黑启动</a></p>
     </section>
 
 
@@ -395,10 +396,10 @@ K_sen,total = 5.43 / 0.50 = 10.9</code></pre>
 <nav class="page-aux" aria-label="页面辅助">
   <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
 </nav>
-<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.0" data-cutoff="2026-11-19" data-latest="2026-11-21" data-count="94">
-  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.0）" title="查看更新记录（当前 v2.0）">
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.1" data-cutoff="2026-11-19" data-latest="2026-11-24" data-count="99">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.1）" title="查看更新记录（当前 v2.1）">
     <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
-    <span class="cl-badge-ver">v2.0</span>
+    <span class="cl-badge-ver">v2.1</span>
     <span class="cl-badge-label">更新记录</span>
   </button>
   <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
@@ -407,8 +408,8 @@ K_sen,total = 5.43 / 0.50 = 10.9</code></pre>
       <header class="cl-head">
         <div class="cl-head-main">
           <span class="cl-kicker">RELEASE NOTES</span>
-          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.0</span></h2>
-          <p class="cl-sub" id="cl-subtitle">当前版本 v2.0 · 数据截止 2026-11-19 · 94 条记录</p>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.1</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.1 · 数据截止 2026-11-19 · 99 条记录</p>
         </div>
         <div class="cl-actions">
           <div class="cl-lang" role="group" aria-label="切换语言">
@@ -425,7 +426,7 @@ K_sen,total = 5.43 / 0.50 = 10.9</code></pre>
         </div>
       </div>
       <footer class="cl-foot">
-        <span data-changelog-meta>v2.0 · 2026-11-19 · 94 条记录</span>
+        <span data-changelog-meta>v2.1 · 2026-11-19 · 99 条记录</span>
         <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
       </footer>
     </div>
