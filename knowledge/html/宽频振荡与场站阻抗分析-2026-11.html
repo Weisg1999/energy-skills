@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>宽频振荡与场站阻抗分析：从阻抗扫描到参数整定 | energy-skills 知识库</title>
+<meta name="description" content="把新能源场站与电网之间的宽频振荡讲成一条工程链：次/超同步与宽频的区分，正序阻抗与 Nyquist/负电阻判据，场站阻抗建模与扫描，PLL/电流环/虚拟阻抗/构网型的整定权衡，以及现场诊断与并网验收；附 35 kV 合成场站 D 级算例与 10 条常见错误。">
+<link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
+<script>
+(function(){try{var t=localStorage.getItem('es-theme');if(!/^(light|cream|green|dark)$/.test(t||'')){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/knowledge.css">
+<link rel="stylesheet" href="../assets/theme-menu.css">
+<link rel="stylesheet" href="../assets/changelog.css">
+</head>
+<body data-cat="renewable" id="top">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
+  <div class="crumb">
+    <span class="crumb-cat">07 · RENEWABLE</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">宽频振荡与场站阻抗分析：从阻抗扫描到参数整定</span>
+  </div>
+  <div class="topbar-act">
+    <div class="theme-picker" data-theme-picker>
+      <button class="theme-toggle" type="button" data-theme-menu aria-label="选择主题" title="选择主题">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="5"/><circle cx="15" cy="9" r="5"/><circle cx="12" cy="15" r="5"/></svg>
+      </button>
+    </div>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../宽频振荡与场站阻抗分析-2026-11.md">.md 源文件<small>knowledge/宽频振荡与场站阻抗分析-2026-11.md</small></a>
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">07 · RENEWABLE</div>
+    <h2 class="nav-cat"><a href="../index.html#renewable">新能源与并网</a></h2>
+    <ul class="nav-list">
+              <li><a href="新能源项目开发与并网-2026-11.html">新能源项目开发与并网</a></li>
+              <li><a href="并网运行考核与两个细则-2026-11.html">并网运行考核与两个细则</a></li>
+              <li><a href="并网测试与涉网验收实务清单-2026-11.html">并网测试与涉网验收实务清单：AGC/AVC/一次调频投运试验与考核点闭环</a></li>
+              <li><a href="无功电压与电能质量-2026-11.html">无功、电压与电能质量：从无功平衡到力调电费</a></li>
+              <li><a href="配电网承载力与分布式接入-2026-11.html">配电网承载力与分布式接入：从可开放容量到绿电直连</a></li>
+              <li class="on" aria-current="page"><a href="宽频振荡与场站阻抗分析-2026-11.html">宽频振荡与场站阻抗分析：从阻抗扫描到参数整定</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#province"><b>03</b>中国省级市场</a></li>
+              <li><a href="../index.html#intl"><b>04</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>05</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>06</b>电价</a></li>
+              <li><a href="../index.html#storage"><b>08</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>11</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">07 · RENEWABLE<i>知识模块</i></div>
+      <h1 class="doc-title">宽频振荡与场站阻抗分析：从阻抗扫描到参数整定（2026-11）</h1>
+      <p class="lede">把新能源场站与电网之间的宽频振荡讲成一条工程链：次/超同步与宽频的区分，正序阻抗与 Nyquist/负电阻判据，场站阻抗建模与扫描，PLL/电流环/虚拟阻抗/构网型的整定权衡，以及现场诊断与并网验收；附 35 kV 合成场站 D 级算例与 10 条常见错误。</p>
+      <p class="hook">宽频振荡与场站阻抗分析</p>
+      <div class="tags"><span class="tag">宽频振荡</span><span class="tag">次同步振荡</span><span class="tag">阻抗扫描</span><span class="tag">负阻尼</span><span class="tag">PLL</span><span class="tag">虚拟阻抗</span><span class="tag">构网型</span><span class="tag">并网</span></div>
+      <div class="doc-meta"><span>约 13.4k 字</span><span>阅读约 24 分钟</span><span>14 节</span><span>数据截止 2026-11-19</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（14）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv2"><a href="#s6">1. 宽频振荡是什么</a></li>
+            <li class="lv2"><a href="#s12">2. 阻抗分析基础</a></li>
+            <li class="lv2"><a href="#s19">3. 场站阻抗建模</a></li>
+            <li class="lv2"><a href="#s25">4. 扫描、判据与现场测量</a></li>
+            <li class="lv2"><a href="#s32">5. 参数整定</a></li>
+            <li class="lv2"><a href="#s39">6. D 级合成算例：35 kV 场站的阻抗扫描与整定</a></li>
+            <li class="lv2"><a href="#s47">7. 现场诊断与应急处置</a></li>
+            <li class="lv2"><a href="#s52">8. 对交易、投资与运营的含义</a></li>
+            <li class="lv2"><a href="#s57">9. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s58">10. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s59">11. 分工：和现有模块怎么配合</a></li>
+            <li class="lv2"><a href="#s60">12. 速查</a></li>
+            <li class="lv2"><a href="#s64">13. 版本与维护</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>数据截止：2026-11-19｜定位：知识库模块（新能源与并网·场站动态交互）</p><p>相关技能：<a href="../../skills/renewable-project-development/SKILL.md">新能源项目开发与并网专家</a>（并网研究与验收）、<a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a>（构网型与储能交互）、<a href="../../skills/ems-dispatch/SKILL.md">EMS 优化调度专家</a>（场站控制与数据链路）</p><p>用途：回答&quot;宽频振荡到底是什么、阻抗扫描在扫什么、负电阻为什么危险、PLL 和虚拟阻抗怎么权衡、现场振荡怎么查、并网前要交哪些分析&quot;六类问题。本文做工程通识与算例演示；具体模型、参数、判据和验收要求以厂家资料、并网检测报告、现行标准和调度要求为准。</p><p>算例：一个 35 kV 合成场站的正序阻抗扫描与整定算例，由 <a href="../../skills/ems-dispatch/tools/oscillation.py">oscillation.py</a> 复现，断言见 <a href="../../skills/ems-dispatch/tools/selftest.py">selftest.py</a> 的 &quot;wideband impedance scan and tuning&quot; 段。</p><p>边界：本文不提供真实场站、风机/光伏/储能变流器的控制参数或阻抗数据；不替代电磁暂态仿真、阻抗扫描试验、并网检测或调度机构的振荡分析；不构成并网、设备选型、交易或投资建议。</p></aside>
+<hr>
+<h2 id="s1">0. 一页看懂</h2>
+<h3 id="s2">0.1 三句话</h3>
+<ul><li><strong>宽频振荡不是&quot;某一个谐波&quot;</strong>：它是电力电子设备与电网在几 Hz 到数千 Hz 范围内的动态交互，频率会随运行方式、控制参数和电网强度漂移。</li><li><strong>阻抗分析把&quot;控制系统会不会把扰动越放越大&quot;变成&quot;看阻抗的实部和虚部&quot;</strong>：实部为负表示有能量注入，虚部过零表示谐振；负电阻频带是风险地图，不是判决书。</li><li><strong>整定是权衡，不是找唯一最优</strong>：PLL 带宽、电流环、虚拟阻抗、滤波器和构网型控制各有代价；必须多工况扫描、电磁暂态验证、现场实测，再形成可运维的定值。</li></ul>
+<h3 id="s3">0.2 关键概念</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>概念</th><th>含义</th><th>本文口径</th></tr></thead><tbody><tr><td>次同步振荡</td><td>振荡频率低于同步频率</td><td>相对工频而言，不限于某一频段</td></tr><tr><td>超同步振荡</td><td>振荡频率高于同步频率</td><td>常与滤波器、控制、网络谐振相关</td></tr><tr><td>宽频振荡</td><td>几 Hz 到数千 Hz 的振荡总称</td><td>工程口径，不同标准/文献边界不同</td></tr><tr><td>SSR</td><td>次同步谐振</td><td>串补电网与汽轮机轴系的 torsional 交互</td></tr><tr><td>SSTI</td><td>次同步 torsional 相互作用</td><td>HVDC/FACTS 控制与轴系模态耦合</td></tr><tr><td>SSCI</td><td>次同步控制相互作用</td><td>变流器控制与串补/弱网交互，无轴系参与</td></tr><tr><td>阻抗扫描</td><td>在频域逐点测/算阻抗</td><td>本文用正序、小信号、单频点</td></tr><tr><td>负电阻</td><td>阻抗实部为负的频段</td><td>表示设备向振荡注入能量</td></tr><tr><td>谐振</td><td>阻抗虚部过零/阻抗最小</td><td>串联谐振看 X=0，并联谐振看 \</td></tr><tr><td>短路比</td><td>电网短路容量 ÷ 场站额定容量</td><td>弱网的一个指标，不是唯一指标</td></tr><tr><td>PLL</td><td>锁相环</td><td>跟网型变流器与电网同步的核心环节</td></tr><tr><td>虚拟阻抗</td><td>控制中人为加入的阻抗</td><td>可增阻尼，但带来压降/损耗/动态代价</td></tr><tr><td>构网型</td><td>以电压源方式运行的变流器</td><td>可提供惯量/电压支撑，但受限流与能量约束</td></tr></tbody></table></div>
+<h3 id="s4">0.3 先记住四个数</h3>
+<p>35 kV 合成场站算例（100 MVA 基准）：</p>
+<ul><li><strong>电网串联谐振 180 Hz；叠加变流器电感后，总阻抗谐振 160.997 Hz</strong>。</li><li><strong>谐振点总电阻 −0.02998 pu，阻尼比 −0.00931，负电阻频带 98.8—221.2 Hz</strong>：典型&quot;有谐振、又有负阻尼&quot;的风险组合。</li><li><strong>把总电阻抬到 +0.03 pu 需要约 0.05998 pu 的虚拟电阻</strong>；示例选择 PLL 带宽 30 Hz + 虚拟电阻 0.04 pu。</li><li><strong>整定后谐振点总电阻 +0.03003 pu，阻尼比 +0.00933，负电阻频带消失</strong>；但这是单工况、单正序、理想限幅的合成结果。</li></ul>
+<aside class="note"><p>口径提醒：上述数值是教学模型的确定性输出，不是任何真实风机、光伏、储能或电网的阻抗。真实阻抗随频率、功率、电压、控制版本和电网拓扑变化，必须实测/仿真。</p></aside>
+<h3 id="s5">0.4 本文不做什么</h3>
+<ul><li>不提供真实场站的集电网络、变压器、串补、风机/光伏/储能控制参数；</li><li>不实现完整的三相电磁暂态、谐波线性化、频率耦合或多机阻抗聚合；</li><li>不替代并网检测、阻抗扫描试验、振荡源定位或调度机构的稳定分析；</li><li>不把单正序阻抗判据当作所有振荡问题的充分条件；</li><li>不给出&quot;某型号变流器一定能/不能并网&quot;的结论。</li></ul>
+<hr>
+<h2 id="s6">1. 宽频振荡是什么</h2>
+<h3 id="s7">1.1 频率坐标</h3>
+<p>以 50 Hz 为同步频率，工程上常把振荡分成：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>名称</th><th>相对工频</th><th>典型关注频段</th><th>常见来源</th></tr></thead><tbody><tr><td>次同步振荡</td><td>低于 50 Hz</td><td>几 Hz—50 Hz</td><td>串补、轴系、风机控制、弱网</td></tr><tr><td>超同步振荡</td><td>高于 50 Hz</td><td>50 Hz—数百 Hz</td><td>滤波器、电流环、网络谐振</td></tr><tr><td>高频振荡</td><td>数百 Hz—数千 Hz</td><td>数百 Hz—数千 Hz</td><td>开关频率、滤波器、MMC 控制</td></tr><tr><td>宽频振荡</td><td>覆盖多个频段</td><td>几 Hz—数千 Hz</td><td>多设备、多控制环节交互</td></tr></tbody></table></div>
+<p>这些边界不是标准定义，不同文献、标准和厂家可能不同。<strong>关键不是背频段，而是知道&quot;哪个频段、哪个设备、哪种机理&quot;。</strong></p>
+<h3 id="s8">1.2 三种容易混淆的&quot;次同步&quot;</h3>
+<ul><li><strong>SSR（次同步谐振）</strong>：串联补偿线路的 LC 谐振与汽轮机轴系扭振耦合。振荡频率由串补度和轴系模态决定，可能损坏轴系。</li><li><strong>SSTI（次同步 torsional 相互作用）</strong>：HVDC、FACTS 或调速/励磁控制与轴系扭振耦合。控制器可能给扭振模态注入负阻尼。</li><li><strong>SSCI（次同步控制相互作用）</strong>：风电场/光伏/储能变流器控制与串补或弱网交互。没有汽轮机轴系参与，振荡频率由控制与网络共同决定，频率容易漂移。</li></ul>
+<p>三者的共同点是&quot;次同步&quot;，但机理、模型、抑制措施不同。<strong>把 SSCI 当 SSR 去加阻波器，或把 SSR 当 SSCI 去调 PLL，都是常见误判。</strong></p>
+<h3 id="s9">1.3 为什么会发生</h3>
+<p>宽频振荡需要两个条件同时满足：</p>
+<ol><li><strong>有谐振/低阻尼路径</strong>：网络电感与电容（串补、电缆、滤波器）形成谐振，或控制系统本身在某个频段呈现负阻尼；</li><li><strong>有能量注入/扰动源</strong>：故障、开关操作、功率指令变化、风速波动、电网电压畸变，或控制器的自激。</li></ol>
+<p>只有谐振没有负阻尼，扰动会衰减；只有负阻尼没有谐振，振荡可能表现为控制模态；两者叠加，才容易出现持续/发散振荡。</p>
+<h3 id="s10">1.4 新能源为什么更容易遇到</h3>
+<ul><li>变流器是快速控制器，响应时间从毫秒到几十毫秒，控制带宽与次/超同步频段重叠；</li><li>PLL、电流环、直流母线、外环、滤波器多时间尺度耦合；</li><li>故障期间限流/模式切换，使阻抗随电压、电流变化；</li><li>弱电网短路比低，电网阻抗大，设备与电网的交互更强；</li><li>多机并联、多品牌、多控制版本，聚合阻抗难以用单机代表；</li><li>串补、电缆、柔性直流、SVG 等引入新的谐振路径；</li><li>振荡频率会漂移，保护/监测难以按固定频率设置。</li></ul>
+<h3 id="s11">1.5 与暂态稳定的区别</h3>
+<p><a href="动态安全评估与紧急控制-2026-11.html">《动态安全评估与紧急控制》</a>讲的是大扰动后的首摆/多摆稳定；宽频振荡更多是小干扰/控制交互问题：</p>
+<ul><li>暂态稳定：大扰动、非线性、看 CCT/能量裕度；</li><li>小干扰振荡：小扰动、线性化、看阻尼/特征值/阻抗；</li><li>宽频振荡：可能由小扰动激发，也可能由控制自激，频段更宽；</li><li>两者会互相影响：故障期间的限流/模式切换可能激发振荡，振荡又可能影响故障后恢复。</li></ul>
+<hr>
+<h2 id="s12">2. 阻抗分析基础</h2>
+<h3 id="s13">2.1 小信号线性化</h3>
+<p>阻抗分析把系统在运行点附近线性化：</p>
+<pre tabindex="0"><code>Δv = Z(jω) Δi</code></pre>
+<p><code>Z(jω)</code> 是频域阻抗，实部为电阻，虚部为电抗。它假设：</p>
+<ul><li>系统在运行点附近近似线性；</li><li>三相平衡、正序为主；</li><li>扰动足够小，不触发限幅/保护/模式切换；</li><li>频率耦合可以忽略或另行处理。</li></ul>
+<p>这些假设在真实变流器上经常不成立，所以阻抗判据是&quot;风险筛查 + 机理理解&quot;，不是万能判决。</p>
+<h3 id="s14">2.2 源—荷互联与回比</h3>
+<p>把电网等效为 <code>Zg</code>，场站等效为 <code>Zc</code>，公共连接点串联：</p>
+<pre tabindex="0"><code>Z_total = Zg + Zc</code></pre>
+<p>也可以用回比：</p>
+<pre tabindex="0"><code>L(jω) = Zg(jω) / Zc(jω)</code></pre>
+<p>按 Nyquist 判据，<code>1 + L(jω)</code> 的轨迹是否包围临界点决定闭环稳定性。<strong>符号约定、电流方向、阻抗/导纳定义必须先写死</strong>，否则结论会反号。工程报告里常见&quot;用导纳比还是阻抗比&quot;&quot;源和荷谁在分子&quot;的混乱。</p>
+<h3 id="s15">2.3 谐振与阻尼</h3>
+<p>串联谐振：</p>
+<pre tabindex="0"><code>X_total(ω) = 0</code></pre>
+<p>并联谐振：</p>
+<pre tabindex="0"><code>abs(Z_total(ω)) 最大</code></pre>
+<p>在谐振点附近，阻尼比可用：</p>
+<pre tabindex="0"><code>ζ ≈ R_total / (ω dX_total/dω) = R_total / (f dX_total/df)</code></pre>
+<ul><li><code>R_total &gt; 0</code>：正阻尼，扰动衰减；</li><li><code>R_total &lt; 0</code>：负阻尼，扰动可能增长；</li><li><code>R_total = 0</code>：临界，需看非线性/限幅/高次项。</li></ul>
+<h3 id="s16">2.4 负电阻频带</h3>
+<p>负电阻频带是 <code>R_total(f) &lt; 0</code> 的频率区间。它告诉你有风险，但不告诉你一定会振荡：</p>
+<ul><li>需要足够大的负阻尼（不只是&quot;小于零&quot;）；</li><li>需要激励/扰动；</li><li>需要谐振/相位条件；</li><li>限幅、饱和、保护可能把发散变成极限环；</li><li>多机系统可能在不同频段相互抵消或放大。</li></ul>
+<p><strong>&quot;扫描到负电阻&quot;是红灯，&quot;负电阻带宽很宽、幅值很大、又正好覆盖谐振&quot;才是高风险。</strong></p>
+<h3 id="s17">2.5 无源性与 Nyquist</h3>
+<ul><li><strong>无源性</strong>：<code>Re{Z(jω)} ≥ 0</code> 对所有频率成立，是并网稳定的充分条件（对无源电网），但很保守；</li><li><strong>Nyquist</strong>：对线性时不变系统，回比轨迹不包围临界点是充要条件；</li><li><strong>阻抗和差</strong>：<code>Zg + Zc</code> 的零点/右半平面极点分析，适合串联互联；</li><li><strong>增益/相位裕度</strong>：可给出相对稳定裕度，但要对多频段分别看。</li></ul>
+<p>工程上常把三者组合：先用无源性/负电阻扫出风险频段，再用 Nyquist 看临界点，再用时域/EMT 验证。</p>
+<h3 id="s18">2.6 短路比不是全部</h3>
+<p>短路比：</p>
+<pre tabindex="0"><code>SCR = S_short / S_rated</code></pre>
+<p>低 SCR 表示电网弱、阻抗大，变流器与电网交互强。但：</p>
+<ul><li>同样的 SCR，X/R 不同，阻抗频率特性不同；</li><li>多机并联时，单机看到的等效 SCR 可能更低；</li><li>串补/电缆会改变谐振频率；</li><li>控制参数（PLL、电流环）可能比 SCR 更关键。</li></ul>
+<p><strong>SCR 是入口指标，不是稳定判据。</strong></p>
+<hr>
+<h2 id="s19">3. 场站阻抗建模</h2>
+<h3 id="s20">3.1 电网侧阻抗</h3>
+<p>至少包括：</p>
+<ul><li>输电线路/电缆的 R、L、C，频率相关；</li><li>主变/场站变的漏抗、励磁、分接头；</li><li>串联补偿电容（如果有）；</li><li>并联电容/电抗、SVG/STATCOM；</li><li>负荷（静态 ZIP + 电动机）；</li><li>其他新能源场站、HVDC/FACTS；</li><li>接地方式与序网络。</li></ul>
+<p>电网侧阻抗应随拓扑/检修/开机方式变化，不能只用一个&quot;典型值&quot;。</p>
+<h3 id="s21">3.2 变流器阻抗</h3>
+<p>跟网型变流器的正序阻抗通常由以下环节共同决定：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>环节</th><th>对阻抗的影响</th><th>常见问题</th></tr></thead><tbody><tr><td>PLL</td><td>在次/超同步段引入负电阻/相位偏移</td><td>带宽过高或过低都可能失稳</td></tr><tr><td>电流环</td><td>决定中高频段阻抗</td><td>带宽与采样/开关频率冲突</td></tr><tr><td>直流母线</td><td>引入低频动态</td><td>直流电容/电压环耦合</td></tr><tr><td>外环（功率/电压）</td><td>低频段阻抗</td><td>与电网频率/电压控制交互</td></tr><tr><td>滤波器（L/LC/LCL）</td><td>高频谐振/衰减</td><td>谐振峰、相位滞后</td></tr><tr><td>前馈/解耦</td><td>改变阻抗相位</td><td>电压前馈不完整</td></tr><tr><td>限幅/饱和</td><td>非线性</td><td>故障/大扰动下阻抗变化</td></tr><tr><td>频率耦合</td><td>正/负序、谐波耦合</td><td>单正序模型不够</td></tr></tbody></table></div>
+<h3 id="s22">3.3 多机聚合</h3>
+<p>场站内多台变流器经集电线路并联，阻抗不是简单相加：</p>
+<ul><li>各机运行点不同（风速/光照/荷电状态）；</li><li>集电线路/箱变引入阻抗与谐振；</li><li>不同厂家/型号/控制版本可能相互激发；</li><li>单机等值可能低估或高估负阻尼；</li><li>多机并联可能改变谐振频率和阻尼。</li></ul>
+<p>工程上要做&quot;单机—集电—场站—电网&quot;的分层扫描，并用 EMT 验证聚合等值。</p>
+<h3 id="s23">3.4 频率耦合</h3>
+<p>三相变流器在不对称/谐波扰动下会产生正序、负序、零序耦合，单一正序阻抗可能不够：</p>
+<ul><li>负序控制、锁相环、直流母线波动会引入耦合；</li><li>谐波线性化可得到多输入多输出阻抗矩阵；</li><li>序阻抗扫描要区分正序/负序注入；</li><li>不对称故障、单相重合闸、不平衡负荷会激发耦合。</li></ul>
+<p>本文的演示只用单正序、单频点，属于最小教学模型。</p>
+<h3 id="s24">3.5 模型来源与校验</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>来源</th><th>用途</th><th>风险</th></tr></thead><tbody><tr><td>厂家 EMT 模型</td><td>控制/限流/保护细节</td><td>黑箱、版本不一致、参数保密</td></tr><tr><td>厂家阻抗模型/扫描数据</td><td>频域分析</td><td>运行点/工况覆盖不足</td></tr><tr><td>并网检测报告</td><td>FRT、AGC/AVC、一次调频</td><td>不含全部振荡工况</td></tr><tr><td>现场阻抗测量</td><td>校验模型</td><td>测试条件、注入幅值、安全风险</td></tr><tr><td>PMU/录波</td><td>事后校验</td><td>采样率/时同步/安装位置</td></tr></tbody></table></div>
+<p>模型校验的核心是<strong>同一运行点、同一控制版本、同一拓扑</strong>下对比幅值/相位/谐振点，不是只看&quot;趋势像&quot;。</p>
+<hr>
+<h2 id="s25">4. 扫描、判据与现场测量</h2>
+<h3 id="s26">4.1 扫描怎么做</h3>
+<ol><li>确定频率范围：至少覆盖次同步、超同步和关注的开关/滤波频段；工程上常见几 Hz—数千 Hz。</li><li>确定频率分辨率：窄带谐振需要更细步长，可对数扫描 + 局部加密。</li><li>确定运行点：功率、无功、电压、SCR、开机台数、集电线路方式。</li><li>对每个频点注入小扰动，测电压/电流响应，算阻抗幅值/相位。</li><li>改变运行点重复，形成&quot;工况—阻抗&quot;矩阵。</li><li>用 Nyquist/负电阻/阻尼指标判稳，再用 EMT 时域验证。</li></ol>
+<h3 id="s27">4.2 扫描的四种&quot;坑&quot;</h3>
+<ul><li><strong>只扫一个工况</strong>：轻载/满载、容性/感性无功、单机/多机，阻抗可能完全不同；</li><li><strong>分辨率太粗</strong>：漏掉窄带谐振峰；</li><li><strong>注入幅值太大</strong>：触发限幅/非线性，测到的不是小信号阻抗；</li><li><strong>忽略频率耦合</strong>：单正序扫描看不到负序/谐波耦合。</li></ul>
+<h3 id="s28">4.3 判据怎么读</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>读法</th><th>局限</th></tr></thead><tbody><tr><td>负电阻频带</td><td>越宽、越深、越靠近谐振，风险越高</td><td>不证明一定振荡</td></tr><tr><td>谐振频率</td><td>X=0 或 \</td><td>Z\</td></tr><tr><td>阻尼比</td><td>负值/接近零表示低阻尼</td><td>依赖线性化与谐振识别</td></tr><tr><td>Nyquist 距离</td><td>轨迹离临界点多远</td><td>需要正确回比与模型</td></tr><tr><td>相位裕度</td><td>关键频段的相位余量</td><td>多频段需分别看</td></tr><tr><td>时域仿真</td><td>是否出现持续/发散振荡</td><td>依赖模型/扰动/时长</td></tr></tbody></table></div>
+<h3 id="s29">4.4 现场测量</h3>
+<ul><li><strong>阻抗分析仪/注入法</strong>：在并网点注入电压/电流扰动，测宽频阻抗；要注意安全、幅值、频率范围和对电网的影响。</li><li><strong>宽频监测</strong>：PMU/宽频录波/专用监测装置，采样率和抗混叠要覆盖关注频段。</li><li><strong>开关操作/扰动试验</strong>：用小扰动（无功阶跃、功率阶跃）观察阻尼，但要做好安全预案。</li><li><strong>数据同步</strong>：多测点时标误差会严重影响相位/阻抗计算。</li></ul>
+<h3 id="s30">4.5 标准与并网要求</h3>
+<ul><li><strong>GB/T 19963.1-2021《风电场接入电力系统技术规定 第 1 部分：陆上风电》</strong>对风电场的次/超同步振荡专题研究、监测和抑制提出要求；具体条款以标准原文和并网协议为准。</li><li><strong>GB/T 19963.2-2024《风电场接入电力系统技术规定 第 2 部分：海上风电》</strong>增加了海上风电场的宽频振荡分析与防控要求（以正式文本为准）；海上风电经柔直送出时，控制交互更复杂。</li><li><strong>GB/T 47968-2026《构网型变流器通用技术规范》</strong>为构网型设备提供通用技术框架；构网型不是&quot;消除振荡&quot;的万能药，仍需阻抗/时域校核。</li><li>并网检测报告、厂家模型和调度要求是项目层面的最终依据；标准只给原则，不给某个场站的具体定值。</li></ul>
+<h3 id="s31">4.6 扫描结果怎么进并网报告</h3>
+<p>一份可复核的阻抗分析至少包含：</p>
+<ul><li>模型来源、版本、参数、校验数据；</li><li>电网拓扑/运行方式/短路比/串补/电缆；</li><li>场站单机/集电/聚合模型；</li><li>扫描范围、分辨率、注入幅值、正/负序；</li><li>阻抗曲线、谐振点、负电阻频带、Nyquist 图；</li><li>多工况敏感性；</li><li>抑制措施与整定依据；</li><li>EMT 时域验证；</li><li>现场测试/监测计划；</li><li>结论的边界与未定项。</li></ul>
+<p>只有一张&quot;阻抗曲线&quot;不够。</p>
+<hr>
+<h2 id="s32">5. 参数整定</h2>
+<h3 id="s33">5.1 整定对象</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>对象</th><th>作用</th><th>主要代价</th></tr></thead><tbody><tr><td>PLL 带宽</td><td>决定与电网同步速度/相位特性</td><td>太快/太慢都可能失稳</td></tr><tr><td>电流环带宽</td><td>决定中高频阻抗</td><td>受采样/开关频率限制</td></tr><tr><td>直流电压环</td><td>低频动态/能量平衡</td><td>与电网频率/功率耦合</td></tr><tr><td>虚拟阻抗（R/X）</td><td>增加阻尼/改变谐振</td><td>压降、损耗、动态响应</td></tr><tr><td>有源阻尼</td><td>针对特定频段</td><td>依赖模型/参数，可能漂移</td></tr><tr><td>滤波器/陷波器</td><td>抑制特定谐振</td><td>相位滞后、参数漂移</td></tr><tr><td>构网型/下垂控制</td><td>提供电压源/惯量</td><td>限流、能量、故障电流</td></tr><tr><td>附加阻尼控制（POD）</td><td>针对机电/次同步模态</td><td>需要测量/通信，可能误动</td></tr></tbody></table></div>
+<h3 id="s34">5.2 PLL 带宽的两难</h3>
+<ul><li>带宽高：同步快、动态好，但在弱网/次同步段可能引入负电阻；</li><li>带宽低：相位更稳，但响应慢，弱网下可能失去同步/低频振荡；</li><li>没有&quot;通用最佳值&quot;：取决于 SCR、X/R、功率、电流环、外环和电网谐振；</li><li>厂家默认值不一定适合你的场站，必须做多工况扫描。</li></ul>
+<h3 id="s35">5.3 虚拟阻抗的代价</h3>
+<p>虚拟电阻 <code>Rv</code> 可以抬高总电阻、增加阻尼，但：</p>
+<ul><li>会产生额外压降/损耗（如果实现为实际阻抗）；</li><li>影响电压调节和无功分配；</li><li>可能降低动态响应/故障穿越能力；</li><li>在控制中实现的虚拟阻抗可能改变 X 而不只是 R；</li><li>过大的 <code>Rv</code> 可能让变流器在弱网下不稳定或限流。</li></ul>
+<p><strong>虚拟阻抗是&quot;用稳态/动态性能换阻尼&quot;，不是免费的。</strong></p>
+<h3 id="s36">5.4 整定流程</h3>
+<pre tabindex="0"><code>建模/校验
+  → 多工况阻抗扫描
+  → 识别谐振点、负电阻频带、敏感参数
+  → 单参数灵敏度（PLL/电流环/虚拟阻抗/滤波器）
+  → 约束下的折中（动态响应、FRT、损耗、限流）
+  → EMT 时域验证（小扰动/大扰动/故障）
+  → 现场小扰动试验/监测
+  → 形成定值与运维边界</code></pre>
+<h3 id="s37">5.5 约束与目标</h3>
+<p>整定不是&quot;把阻尼调到最大&quot;，而是在约束下找可行点：</p>
+<ul><li>稳定：关键工况下阻尼/裕度为正；</li><li>动态：PLL/电流环响应满足并网/控制要求；</li><li>故障穿越：限流/无功支撑/恢复斜率合格；</li><li>稳态：电压/无功/损耗在允许范围；</li><li>鲁棒：参数漂移、出力变化、电网拓扑变化下仍稳定；</li><li>可运维：定值可理解、可复核、可复现。</li></ul>
+<h3 id="s38">5.6 构网型能做什么、不能做什么</h3>
+<p>构网型变流器以电压源方式运行，可提供：</p>
+<ul><li>电压/频率参考；</li><li>惯量/阻尼（控制模拟）；</li><li>弱网支撑；</li><li>黑启动/孤岛能力。</li></ul>
+<p>但它不能：</p>
+<ul><li>消除所有谐振（控制交互仍存在）；</li><li>无限提供故障电流（受限于功率器件/限流）；</li><li>替代电网规划/同步机；</li><li>保证多机/多品牌并联稳定（需整体研究）。</li></ul>
+<p>构网型与跟网型的对比见<a href="储能技术路线安全与构网型并网-2026-11.html">《储能技术路线安全与构网型并网》</a>。</p>
+<hr>
+<h2 id="s39">6. D 级合成算例：35 kV 场站的阻抗扫描与整定</h2>
+<aside class="note"><p>本算例为合成数据，仅用于演示方法；不对应任何真实场站、设备或电网。</p></aside>
+<h3 id="s40">6.1 模型</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>数值</th></tr></thead><tbody><tr><td>基准容量</td><td>100 MVA</td></tr><tr><td>电压等级</td><td>35 kV</td></tr><tr><td>电网电阻 Rg</td><td>0.02 pu</td></tr><tr><td>电网工频电抗 Xg50</td><td>0.40 pu</td></tr><tr><td>电网等效串联容抗 Xc50</td><td>5.184 pu</td></tr><tr><td>变流器工频电抗 Xc50</td><td>0.10 pu</td></tr><tr><td>变流器负电阻幅值</td><td>0.05 pu</td></tr><tr><td>负电阻中心频率</td><td>160 Hz</td></tr><tr><td>负电阻带宽</td><td>50 Hz</td></tr><tr><td>虚拟电阻</td><td>0（基准）</td></tr></tbody></table></div>
+<p>频率模型：</p>
+<pre tabindex="0"><code>Xg(f) = 0.40 × (f/50) − 5.184 × (50/f)
+Xc(f) = 0.10 × (f/50)
+Rc(f) = −0.05 / (1 + ((f − 160)/50)²) + Rv
+Z(f) = (Rg + Rc) + j(Xg + Xc)</code></pre>
+<h3 id="s41">6.2 基准扫描</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>量</th><th style="text-align:right">数值</th></tr></thead><tbody><tr><td>电网单独串联谐振</td><td style="text-align:right">180.0 Hz</td></tr><tr><td>总阻抗谐振（X=0）</td><td style="text-align:right">160.997 Hz</td></tr><tr><td>谐振点电网电阻</td><td style="text-align:right">+0.02000 pu</td></tr><tr><td>谐振点变流器电阻</td><td style="text-align:right">−0.04998 pu</td></tr><tr><td>谐振点总电阻</td><td style="text-align:right"><strong>−0.02998 pu</strong></td></tr><tr><td>谐振点阻尼比</td><td style="text-align:right"><strong>−0.00931</strong></td></tr><tr><td>负电阻频带</td><td style="text-align:right"><strong>98.8—221.2 Hz</strong></td></tr></tbody></table></div>
+<p>读法：</p>
+<ul><li>电网本身的谐振在 180 Hz，变流器电感把总谐振拉到 161 Hz；</li><li>谐振点总电阻为负，说明变流器在这个频段向振荡注入能量；</li><li>负电阻频带覆盖 99—221 Hz，宽约 122 Hz，属于需要重点关注的组合；</li><li>但这只是小信号、单正序、单工况结果，不能直接说&quot;一定会振荡&quot;。</li></ul>
+<h3 id="s42">6.3 需要多少虚拟电阻</h3>
+<p>目标：把谐振点总电阻抬到 +0.03 pu（示例阻尼门槛，不是标准值）。</p>
+<pre tabindex="0"><code>Rv_required = R_target − (Rg + Rc)
+            = 0.03 − (0.02 − 0.04998)
+            = 0.05998 pu</code></pre>
+<p>约 0.06 pu。注意：虚拟电阻抬高 R，不改变 X，所以谐振频率仍约 161 Hz。</p>
+<h3 id="s43">6.4 PLL 带宽扫描</h3>
+<p>示例假设：负电阻幅值与 PLL 带宽近似线性（<code>r_neg = 0.05 × bw / 50</code>），仅用于演示整定权衡，<strong>不代表任何厂家模型</strong>。</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th style="text-align:right">PLL 带宽（Hz）</th><th style="text-align:right">负电阻幅值（pu）</th><th style="text-align:right">达到 +0.03 pu 所需 Rv（pu）</th></tr></thead><tbody><tr><td style="text-align:right">10</td><td style="text-align:right">0.010</td><td style="text-align:right">0.020</td></tr><tr><td style="text-align:right">20</td><td style="text-align:right">0.020</td><td style="text-align:right">0.030</td></tr><tr><td style="text-align:right">30</td><td style="text-align:right">0.030</td><td style="text-align:right">0.040</td></tr><tr><td style="text-align:right">40</td><td style="text-align:right">0.040</td><td style="text-align:right">0.050</td></tr><tr><td style="text-align:right">50</td><td style="text-align:right">0.050</td><td style="text-align:right">0.060</td></tr><tr><td style="text-align:right">60</td><td style="text-align:right">0.060</td><td style="text-align:right">0.070</td></tr><tr><td style="text-align:right">80</td><td style="text-align:right">0.080</td><td style="text-align:right">0.090</td></tr></tbody></table></div>
+<p>约束：</p>
+<ul><li>PLL 带宽不低于 30 Hz（示例工程下限，保证弱网同步/动态响应；不是标准值）；</li><li>虚拟电阻不超过 0.06 pu（示例设备/损耗约束）；</li><li>目标总电阻 ≥ 0.03 pu。</li></ul>
+<p>可行解：<strong>30 Hz + 0.04 pu</strong>。更窄的 10/20 Hz 虽然所需 Rv 更小，但低于动态下限；更宽的 40 Hz 及以上需要 0.05 pu 以上虚拟电阻，超过示例约束。</p>
+<h3 id="s44">6.5 整定后</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>量</th><th style="text-align:right">基准</th><th style="text-align:right">整定后</th></tr></thead><tbody><tr><td>PLL 带宽</td><td style="text-align:right">50 Hz</td><td style="text-align:right">30 Hz</td></tr><tr><td>负电阻幅值</td><td style="text-align:right">0.05 pu</td><td style="text-align:right">0.03 pu</td></tr><tr><td>虚拟电阻</td><td style="text-align:right">0</td><td style="text-align:right">0.04 pu</td></tr><tr><td>谐振点总电阻</td><td style="text-align:right">−0.02998 pu</td><td style="text-align:right"><strong>+0.03003 pu</strong></td></tr><tr><td>阻尼比</td><td style="text-align:right">−0.00931</td><td style="text-align:right"><strong>+0.00933</strong></td></tr><tr><td>负电阻频带</td><td style="text-align:right">98.8—221.2 Hz</td><td style="text-align:right"><strong>无</strong></td></tr></tbody></table></div>
+<h3 id="s45">6.6 这个算例说明什么</h3>
+<ul><li>谐振频率由网络和变流器电抗共同决定，不只是电网自己的 180 Hz；</li><li>负电阻频带比单个谐振点更能描述风险范围；</li><li>虚拟电阻可以抬阻尼，但需要付出稳态/动态代价；</li><li>PLL 带宽与负电阻幅值的权衡需要多工况校核；</li><li>整定后还要用 EMT 验证小扰动、大扰动和故障穿越，不能只看频域曲线。</li></ul>
+<h3 id="s46">6.7 这个算例不说明什么</h3>
+<ul><li>不代表真实变流器的 PLL/电流环/外环/限幅/频率耦合；</li><li>不覆盖多机并联、集电线路、不同厂家、不同控制版本；</li><li>不覆盖不对称故障、负序、谐波耦合；</li><li>不给出真实场站的定值、阻尼门槛或并网结论；</li><li>不能用&quot;负电阻频带消失&quot;替代现场试验和长期监测。</li></ul>
+<hr>
+<h2 id="s47">7. 现场诊断与应急处置</h2>
+<h3 id="s48">7.1 先确认&quot;是不是宽频振荡&quot;</h3>
+<p>现象可能包括：</p>
+<ul><li>功率/电压/电流持续振荡，频率不是工频；</li><li>振荡频率漂移，或出现多个峰；</li><li>变流器/风机/光伏逆变器反复告警/脱网；</li><li>场站/电网保护动作，但故障录波没有常规短路；</li><li>汽轮机/轴系扭振报警（如果是 SSR/SSTI）；</li><li>相邻场站/线路同时出现振荡。</li></ul>
+<h3 id="s49">7.2 诊断步骤</h3>
+<ol><li><strong>保录波</strong>：高采样率录波、PMU、变流器日志、SCADA、开关变位、保护动作。</li><li><strong>定频率/模态</strong>：FFT/时频分析，区分工频、次同步、超同步、高频、多模态。</li><li><strong>定范围</strong>：是个别变流器、整个场站、集电线路、送出线路还是电网侧。</li><li><strong>定机理</strong>：强制振荡（谐振/扰动）还是自激（负阻尼）？是否与串补/电缆/柔直/弱网相关？</li><li><strong>查变化</strong>：最近是否改控制软件、滤波器、PLL 参数、开机台数、无功策略、电网拓扑？</li><li><strong>做扫描/仿真</strong>：用现场工况复现，比较阻抗/谐振/阻尼。</li><li><strong>定措施</strong>：调整控制/虚拟阻抗/滤波器/运行方式，必要时限功率/解列。</li><li><strong>复盘</strong>：更新模型、定值、监测和运维规程。</li></ol>
+<h3 id="s50">7.3 应急处置的优先级</h3>
+<ul><li><strong>先保安全</strong>：防止设备损坏、越级跳闸、大面积脱网；</li><li><strong>再保证据</strong>：不要一上来就切机/清日志；</li><li><strong>小步调整</strong>：降低出力、调整无功/电压、改变控制模式、投退滤波/阻尼；</li><li><strong>必要时解列/切机</strong>：作为最后手段，按调度规程执行；</li><li><strong>不要盲目重合闸</strong>：振荡期间重合可能加剧冲击；</li><li><strong>记录操作</strong>：时间、指令、响应、保护动作，供复盘。</li></ul>
+<h3 id="s51">7.4 振荡源定位</h3>
+<p>常用方法：</p>
+<ul><li>比较各测点振荡相位/能量流方向；</li><li>逐台/逐组投退，观察阻尼变化（要安全）；</li><li>阻抗扫描 + 模型复现；</li><li>能量/耗散分析；</li><li>机器学习/模式识别（辅助，不替代机理）。</li></ul>
+<p><strong>&quot;振荡最大的地方&quot;不一定是&quot;源&quot;</strong>：可能是谐振点/薄弱环节，源可能在别处。</p>
+<hr>
+<h2 id="s52">8. 对交易、投资与运营的含义</h2>
+<h3 id="s53">8.1 并网与投决</h3>
+<ul><li>宽频振荡分析是并网研究的一部分，不是&quot;额外可选&quot;；</li><li>弱网、串补、柔直、多机汇集的项目要更早做阻抗/EMT 研究；</li><li>厂家模型/控制版本/参数保密会影响尽调，要在合同中约定交付与校验；</li><li>抑制措施（虚拟阻抗、滤波器、构网型、附加阻尼）有投资和运行成本；</li><li>并网延迟、限功率、弃风弃光、考核罚款要进投决模型。</li></ul>
+<h3 id="s54">8.2 设备与合同</h3>
+<ul><li>采购技术协议应包含：阻抗/振荡研究责任、模型交付、现场测试、性能保证、软件升级后的复核；</li><li>不能只看&quot;单机认证&quot;，要看&quot;场站+电网&quot;系统级研究；</li><li>多品牌/多版本混装要明确接口与责任；</li><li>备品备件、控制板卡、软件版本管理要可追溯；</li><li>保险/免责条款要覆盖振荡导致的停机/损坏。</li></ul>
+<h3 id="s55">8.3 运营与市场</h3>
+<ul><li>振荡可能导致出力受限、AGC/AVC 考核、两个细则罚款；</li><li>阻尼/惯量/电压支撑可能成为辅助服务，但规则因省而异，不能假设有收益；</li><li>储能/构网型可以提升稳定性，但也可能引入新的交互，必须做系统研究；</li><li>振荡事件后的停运、检修、发电损失要进风险模型；</li><li>交易员要关注调度发布的振荡/限发/检修信息，价格尾部可能与此相关。</li></ul>
+<h3 id="s56">8.4 数据与 AI 的边界</h3>
+<p>AI 可以做振荡检测、模态识别、源定位、参数辨识，但：</p>
+<ul><li>训练数据要覆盖真实振荡形态，不能只用仿真；</li><li>采样率/时标/安装位置决定可观测性；</li><li>保护/紧急控制不能由 AI 实时替代；</li><li>模型可解释性和审计要求高；</li><li>&quot;检测到振荡&quot;不等于&quot;知道原因&quot;，仍需机理分析。</li></ul>
+<hr>
+<h2 id="s57">9. 常见错误（10 条）</h2>
+<ol><li><strong>把宽频振荡当单一谐波</strong>：频率会漂移、多模态，固定滤波器可能失效。</li><li><strong>只扫一个工况</strong>：轻载/满载、容性/感性、单机/多机阻抗差异很大。</li><li><strong>用单机模型代表场站</strong>：集电线路、多机、多品牌、控制版本会改变谐振/阻尼。</li><li><strong>只看 R&lt;0，不看幅值/带宽/谐振</strong>：负电阻很浅、很窄，风险可能有限；很深、很宽又覆盖谐振才危险。</li><li><strong>把阻抗判据当万能</strong>：线性化、正序、小信号假设在限幅/故障/不对称下不成立。</li><li><strong>忽略频率耦合/负序</strong>：单正序扫描可能漏掉负序/谐波交互。</li><li><strong>只调 PLL，不看电流环/外环/滤波器</strong>：阻抗是多环节共同结果。</li><li><strong>用现场试错代替建模</strong>：盲目改参数可能掩盖问题、触发新振荡。</li><li><strong>忽略限幅/饱和/FRT</strong>：大扰动下阻抗与 Small-signal 不同，故障穿越可能激发振荡。</li><li><strong>一上来就切机/清数据</strong>：丢失证据，可能误判源，甚至扩大事故。</li></ol>
+<hr>
+<h2 id="s58">10. 待核实与未定事项</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>事项</th><th>状态</th><th>查证入口</th></tr></thead><tbody><tr><td>场站/电网的实际阻抗与短路比</td><td>分项目、分方式</td><td>电网公司资料、短路计算、现场测量</td></tr><tr><td>变流器 PLL/电流环/外环/滤波器参数</td><td>厂家保密/分版本</td><td>厂家模型、技术协议、并网检测报告</td></tr><tr><td>多机/多品牌聚合阻抗</td><td>分场站</td><td>场站建模、EMT 仿真、现场扫描</td></tr><tr><td>串补/电缆/柔直的谐振特性</td><td>分工程</td><td>电网资料、阻抗扫描、EMT</td></tr><tr><td>宽频振荡的标准判据/门槛</td><td>标准演进中</td><td>GB/T 19963.1、GB/T 19963.2、并网协议</td></tr><tr><td>现场阻抗测量方法与安全边界</td><td>分设备/分工程</td><td>测试方案、厂家/检测机构</td></tr><tr><td>抑制措施（虚拟阻抗/滤波器/GFM）的效果</td><td>厂家差异大</td><td>EMT、现场试验、运行数据</td></tr><tr><td>振荡事件的源定位与责任划分</td><td>分事件</td><td>录波/PMU、调度报告、第三方分析</td></tr><tr><td>辅助服务/阻尼服务的市场规则</td><td>分省、分阶段</td><td>省级辅助服务规则、调度文件</td></tr><tr><td>软件升级后的阻抗复测要求</td><td>分厂家/分合同</td><td>技术协议、并网协议、运维规程</td></tr></tbody></table></div>
+<hr>
+<h2 id="s59">11. 分工：和现有模块怎么配合</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>问题</th><th>先看</th><th>本文负责</th><th>不负责</th></tr></thead><tbody><tr><td>储能/构网型技术</td><td><a href="储能技术路线安全与构网型并网-2026-11.html">《储能技术路线安全与构网型并网》</a></td><td>变流器阻抗/振荡交互</td><td>设备选型、电池安全</td></tr><tr><td>并网测试与验收</td><td><a href="并网测试与涉网验收实务清单-2026-11.html">《并网测试与涉网验收实务清单》</a></td><td>阻抗扫描/振荡研究的要求</td><td>试验项目、验收判据</td></tr><tr><td>并网运行考核</td><td><a href="并网运行考核与两个细则-2026-11.html">《并网运行考核与两个细则》</a></td><td>振荡导致的限发/考核</td><td>省级考核条款</td></tr><tr><td>新能源项目开发</td><td><a href="新能源项目开发与并网-2026-11.html">《新能源项目开发与并网》</a></td><td>并网阶段的振荡风险</td><td>资源、LCOE、机制电价</td></tr><tr><td>无功电压与电能质量</td><td><a href="无功电压与电能质量-2026-11.html">《无功电压与电能质量》</a></td><td>宽频/谐波/谐振的区分</td><td>谐波治理、电压偏差</td></tr><tr><td>配电网承载力</td><td><a href="配电网承载力与分布式接入-2026-11.html">《配电网承载力与分布式接入》</a></td><td>分布式多机振荡风险</td><td>承载力评估、接入方案</td></tr><tr><td>状态估计</td><td><a href="状态估计与安全分析-2026-11.html">《状态估计与安全分析》</a></td><td>运行方式/拓扑对阻抗的影响</td><td>状态估计器、N-1</td></tr><tr><td>动态安全</td><td><a href="动态安全评估与紧急控制-2026-11.html">《动态安全评估与紧急控制》</a></td><td>小干扰/控制振荡</td><td>暂态稳定、紧急控制</td></tr><tr><td>AGC/AVC</td><td><a href="AGC-AVC与频率电压闭环-2026-11.html">《AGC/AVC 与频率电压闭环》</a></td><td>控制环交互</td><td>ACE、指令分配、考核</td></tr><tr><td>SCADA/数据链路</td><td><a href="SCADA与电力监控数据链路-2026-11.html">《SCADA 与电力监控数据链路》</a></td><td>宽频监测数据要求</td><td>四遥、规约、历史库</td></tr><tr><td>EMS 数据接口</td><td><a href="EMS数据接口参考架构-2026-11.html">《EMS 数据接口参考架构》</a></td><td>阻抗/振荡数据接入</td><td>接口协议、点表</td></tr></tbody></table></div>
+<hr>
+<h2 id="s60">12. 速查</h2>
+<h3 id="s61">12.1 六个公式</h3>
+<pre tabindex="0"><code>Z_total(f) = Zg(f) + Zc(f) = R_total(f) + jX_total(f)
+
+串联谐振：X_total(f) = 0
+
+ζ ≈ R_total / (ω dX_total/dω) = R_total / (f dX_total/df)
+
+负电阻频带：R_total(f) &lt; 0
+
+SCR = S_short / S_rated
+
+回比：L(jω) = Zg(jω) / Zc(jω)，Nyquist 看 1 + L 是否包围临界点</code></pre>
+<h3 id="s62">12.2 五个必问</h3>
+<ol><li>这次扫描覆盖了哪些工况、哪些频段、正序还是负序，分辨率够不够？</li><li>谐振点是网络谐振还是控制谐振，负电阻频带有多宽、多深？</li><li>模型/参数/控制版本与现场一致吗，用什么数据校验过？</li><li>整定改变了哪些阻抗环节，代价是什么，EMT/现场验证了吗？</li><li>现场振荡的源在哪，是强制振荡还是负阻尼自激，应急措施会不会掩盖证据？</li></ol>
+<h3 id="s63">12.3 工具</h3>
+<pre tabindex="0"><code># 在 skills/ems-dispatch/tools 下
+python oscillation.py                 # 打印阻抗扫描、负电阻频带与整定
+python oscillation.py --json          # JSON 输出
+python selftest.py                    # 断言本文数字</code></pre>
+<p><code>oscillation.py</code> 只做单正序、小信号、两段式阻抗模型的确定性演示，不是生产级阻抗扫描/稳定性分析程序。</p>
+<hr>
+<h2 id="s64">13. 版本与维护</h2>
+<ul><li>本模块为 v2.2 维护批次新增，数据截止 2026-11-19；所有阻抗、参数与结果均为 D 级合成数据。</li><li>修改 frontmatter <code>cutoff</code> 时，必须同步 <code>更新清单.md</code> 对应行。</li><li>若 GB/T 19963 系列、构网型标准或并网导则更新，优先复核 §4、§5 和算例参数，并同步 <code>oscillation.py</code> 与 <code>selftest.py</code> 断言。</li><li><strong>相关工具</strong>：<code>skills/ems-dispatch/tools/oscillation.py</code>；相关自测：<code>skills/ems-dispatch/tools/selftest.py</code>。</li><li>方法术语参考电力系统次同步/宽频振荡与阻抗分析的通用教材、GB/T 19963 系列和构网型变流器标准；本文不复制任何厂家控制参数或未公开模型。</li></ul>
+    </article>
+
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>11</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="储能技术路线安全与构网型并网-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>储能技术路线、安全与构网型并网</b>
+          <span>锂电/钠电/液流/压缩空气/飞轮对比，五层安全设防与标准，构网型控制、指标与验收。</span>
+        </a>
+        <a class="related-card" href="并网测试与涉网验收实务清单-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>并网测试与涉网验收实务清单：AGC/AVC/一次调频投运试验与考核点闭环</b>
+          <span>从型式试验到并网验收的测试体系，AGC/AVC/一次调频投运试验方法与判据，故障穿越/电能质量/模型验证，验收清单与整改闭环，把两个细则考核点倒推为试验验证项。</span>
+        </a>
+        <a class="related-card" href="并网运行考核与两个细则-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>并网运行考核与两个细则</b>
+          <span>60/61 号、AGC/AVC/一次调频公式、20 项罚则、六类免考与合成算例。</span>
+        </a>
+        <a class="related-card" href="新能源项目开发与并网-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>新能源项目开发与并网</b>
+          <span>136 号机制电价、省级竞价、P50/P90、LCOE、并网标准、海上风电与省别画像。</span>
+        </a>
+      </div>
+      <p class="related-rest"><b>更多关联</b><a href="无功电压与电能质量-2026-11.html">无功、电压与电能质量：从无功平衡到力调电费</a><a href="配电网承载力与分布式接入-2026-11.html">配电网承载力与分布式接入：从可开放容量到绿电直连</a><a href="状态估计与安全分析-2026-11.html">状态估计与安全分析：从 SCADA 量测到可信运行方式</a><a href="动态安全评估与紧急控制-2026-11.html">动态安全评估与紧急控制：从静态 N-1 到暂态稳定</a><a href="AGC-AVC与频率电压闭环-2026-11.html">AGC/AVC 与频率电压闭环：从 ACE 到场站考核</a><a href="EMS数据接口参考架构-2026-11.html">EMS 数据接口参考架构：设备、调度、市场与计量结算的契约</a><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a></p>
+    </section>
+
+<section class="related" aria-labelledby="paired-skills-title">
+      <div class="related-head"><h2 id="paired-skills-title">配套技能</h2><span>2</span></div>
+      <div class="related-grid">
+        <a class="related-card skill-pair" href="skill-renewable-project-development.html">
+          <span class="related-type">资源、LCOE、机制电价与并网（含云南风电 2027 投决实例包）</span>
+          <b>新能源开发与并网</b>
+          <span>技能 · 新能源 · LCOE · 并网</span>
+        </a>
+        <a class="related-card skill-pair" href="skill-ems-dispatch.html">
+          <span class="related-type">96 点调度、SOC 与需量、AGC/AVC 闭环、状态估计、暂态稳定与宽频振荡接口（含江苏零碳园区微网、山东独立储能电站日运行+考核复盘实例包）</span>
+          <b>EMS 优化调度</b>
+          <span>技能 · EMS · SOC · 需量 · AGC/AVC · 状态估计 · 暂态稳定 · 宽频振荡</span>
+        </a>
+      </div>
+    </section>
+
+    <nav class="pager" aria-label="上下篇">
+          <a class="prev" href="配电网承载力与分布式接入-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">配电网承载力与分布式接入：从可开放容量到绿电直连</span></a>
+          <span class="spacer"></span>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../宽频振荡与场站阻抗分析-2026-11.md">knowledge/宽频振荡与场站阻抗分析-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="本页目录">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv3"><a href="#s2">0.1 三句话</a></li>
+            <li class="lv3"><a href="#s3">0.2 关键概念</a></li>
+            <li class="lv3"><a href="#s4">0.3 先记住四个数</a></li>
+            <li class="lv3"><a href="#s5">0.4 本文不做什么</a></li>
+            <li class="lv2"><a href="#s6">1. 宽频振荡是什么</a></li>
+            <li class="lv3"><a href="#s7">1.1 频率坐标</a></li>
+            <li class="lv3"><a href="#s8">1.2 三种容易混淆的"次同步"</a></li>
+            <li class="lv3"><a href="#s9">1.3 为什么会发生</a></li>
+            <li class="lv3"><a href="#s10">1.4 新能源为什么更容易遇到</a></li>
+            <li class="lv3"><a href="#s11">1.5 与暂态稳定的区别</a></li>
+            <li class="lv2"><a href="#s12">2. 阻抗分析基础</a></li>
+            <li class="lv3"><a href="#s13">2.1 小信号线性化</a></li>
+            <li class="lv3"><a href="#s14">2.2 源—荷互联与回比</a></li>
+            <li class="lv3"><a href="#s15">2.3 谐振与阻尼</a></li>
+            <li class="lv3"><a href="#s16">2.4 负电阻频带</a></li>
+            <li class="lv3"><a href="#s17">2.5 无源性与 Nyquist</a></li>
+            <li class="lv3"><a href="#s18">2.6 短路比不是全部</a></li>
+            <li class="lv2"><a href="#s19">3. 场站阻抗建模</a></li>
+            <li class="lv3"><a href="#s20">3.1 电网侧阻抗</a></li>
+            <li class="lv3"><a href="#s21">3.2 变流器阻抗</a></li>
+            <li class="lv3"><a href="#s22">3.3 多机聚合</a></li>
+            <li class="lv3"><a href="#s23">3.4 频率耦合</a></li>
+            <li class="lv3"><a href="#s24">3.5 模型来源与校验</a></li>
+            <li class="lv2"><a href="#s25">4. 扫描、判据与现场测量</a></li>
+            <li class="lv3"><a href="#s26">4.1 扫描怎么做</a></li>
+            <li class="lv3"><a href="#s27">4.2 扫描的四种"坑"</a></li>
+            <li class="lv3"><a href="#s28">4.3 判据怎么读</a></li>
+            <li class="lv3"><a href="#s29">4.4 现场测量</a></li>
+            <li class="lv3"><a href="#s30">4.5 标准与并网要求</a></li>
+            <li class="lv3"><a href="#s31">4.6 扫描结果怎么进并网报告</a></li>
+            <li class="lv2"><a href="#s32">5. 参数整定</a></li>
+            <li class="lv3"><a href="#s33">5.1 整定对象</a></li>
+            <li class="lv3"><a href="#s34">5.2 PLL 带宽的两难</a></li>
+            <li class="lv3"><a href="#s35">5.3 虚拟阻抗的代价</a></li>
+            <li class="lv3"><a href="#s36">5.4 整定流程</a></li>
+            <li class="lv3"><a href="#s37">5.5 约束与目标</a></li>
+            <li class="lv3"><a href="#s38">5.6 构网型能做什么、不能做什么</a></li>
+            <li class="lv2"><a href="#s39">6. D 级合成算例：35 kV 场站的阻抗扫描与整定</a></li>
+            <li class="lv3"><a href="#s40">6.1 模型</a></li>
+            <li class="lv3"><a href="#s41">6.2 基准扫描</a></li>
+            <li class="lv3"><a href="#s42">6.3 需要多少虚拟电阻</a></li>
+            <li class="lv3"><a href="#s43">6.4 PLL 带宽扫描</a></li>
+            <li class="lv3"><a href="#s44">6.5 整定后</a></li>
+            <li class="lv3"><a href="#s45">6.6 这个算例说明什么</a></li>
+            <li class="lv3"><a href="#s46">6.7 这个算例不说明什么</a></li>
+            <li class="lv2"><a href="#s47">7. 现场诊断与应急处置</a></li>
+            <li class="lv3"><a href="#s48">7.1 先确认"是不是宽频振荡"</a></li>
+            <li class="lv3"><a href="#s49">7.2 诊断步骤</a></li>
+            <li class="lv3"><a href="#s50">7.3 应急处置的优先级</a></li>
+            <li class="lv3"><a href="#s51">7.4 振荡源定位</a></li>
+            <li class="lv2"><a href="#s52">8. 对交易、投资与运营的含义</a></li>
+            <li class="lv3"><a href="#s53">8.1 并网与投决</a></li>
+            <li class="lv3"><a href="#s54">8.2 设备与合同</a></li>
+            <li class="lv3"><a href="#s55">8.3 运营与市场</a></li>
+            <li class="lv3"><a href="#s56">8.4 数据与 AI 的边界</a></li>
+            <li class="lv2"><a href="#s57">9. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s58">10. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s59">11. 分工：和现有模块怎么配合</a></li>
+            <li class="lv2"><a href="#s60">12. 速查</a></li>
+            <li class="lv3"><a href="#s61">12.1 六个公式</a></li>
+            <li class="lv3"><a href="#s62">12.2 五个必问</a></li>
+            <li class="lv3"><a href="#s63">12.3 工具</a></li>
+            <li class="lv2"><a href="#s64">13. 版本与维护</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="50" data-more-label="展开 50 个小节" data-less-label="收起小节">展开 50 个小节</button>
+  </aside>
+</div>
+
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.2" data-cutoff="2026-11-19" data-latest="2026-11-25" data-count="100">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.2）" title="查看更新记录（当前 v2.2）">
+    <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
+    <span class="cl-badge-ver">v2.2</span>
+    <span class="cl-badge-label">更新记录</span>
+  </button>
+  <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
+    <div class="cl-backdrop" data-changelog-close></div>
+    <div class="cl-panel" role="dialog" aria-modal="true" aria-labelledby="cl-title" aria-describedby="cl-subtitle" tabindex="-1">
+      <header class="cl-head">
+        <div class="cl-head-main">
+          <span class="cl-kicker">RELEASE NOTES</span>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.2</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.2 · 数据截止 2026-11-19 · 100 条记录</p>
+        </div>
+        <div class="cl-actions">
+          <div class="cl-lang" role="group" aria-label="切换语言">
+            <button type="button" data-cl-lang="zh" aria-pressed="true">中文</button>
+            <button type="button" data-cl-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <button class="cl-close" type="button" data-changelog-close aria-label="关闭更新记录" title="关闭更新记录">×</button>
+        </div>
+      </header>
+      <div class="cl-body" data-changelog-body>
+        <div class="cl-skeleton" data-changelog-status role="status">
+          <span class="cl-sr">正在读取更新记录…</span>
+          <i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      <footer class="cl-foot">
+        <span data-changelog-meta>v2.2 · 2026-11-19 · 100 条记录</span>
+        <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
+      </footer>
+    </div>
+  </div>
+</div>
+<script src="../assets/doc.js"></script>
+<script src="../assets/theme.js"></script>
+<script src="../assets/changelog.js"></script>
+</body>
+</html>

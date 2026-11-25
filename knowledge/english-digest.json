@@ -4,10 +4,10 @@
   "note": "A number needs a grade, a time point and a caliber. Filter gradeC by usable/banned before using any unverified figure. Full texts of policies are linked from the Chinese policy indexes.",
   "generatedFrom": "knowledge/*.md frontmatter (summary_en) + INDEX_EN structured tables + credibility register",
   "summary": {
-    "modules": 119,
-    "withEnglishSummary": 119,
+    "modules": 121,
+    "withEnglishSummary": 121,
     "keyFigures": 242,
-    "openItems": 48,
+    "openItems": 50,
     "datedOpenItems": 23,
     "gradeCTickets": 22,
     "pendingGradeC": 14
@@ -209,6 +209,19 @@
       "html": "html/储能收益建模与数据源-2026-11.html"
     },
     {
+      "id": "m-dynamic-security",
+      "file": "动态安全评估与紧急控制-2026-11.md",
+      "section": "storage",
+      "kind": "知识模块",
+      "cutoff": "2026-11-19",
+      "title": "动态安全评估与紧急控制：从静态 N-1 到暂态稳定",
+      "titleEn": null,
+      "summaryEn": "The layer after static N-1: rotor-angle, voltage and frequency stability; equal-area criterion and critical clearing time; time-domain simulation and online DSA; generation rejection, load shedding, HVDC modulation and islanding; how inverter-based resources change the criteria; with an SMIB synthetic example and ten common errors.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/动态安全评估与紧急控制-2026-11.html"
+    },
+    {
       "id": "m-prov-bj",
       "file": "北京电力市场-2026-11.md",
       "section": "province",
@@ -363,6 +376,19 @@
       "confidence": "mixed",
       "historical": false,
       "html": "html/容量机制横向对照-2026-11.html"
+    },
+    {
+      "id": "m-oscillation-impedance",
+      "file": "宽频振荡与场站阻抗分析-2026-11.md",
+      "section": "renewable",
+      "kind": "知识模块",
+      "cutoff": "2026-11-19",
+      "title": "宽频振荡与场站阻抗分析：从阻抗扫描到参数整定",
+      "titleEn": null,
+      "summaryEn": "A practical chain for wideband oscillation between renewable plants and the grid: sub/super-synchronous and wideband terms, positive-sequence impedance and Nyquist/negative-resistance criteria, plant impedance modeling and scanning, PLL/current-loop/virtual-impedance/GFM tuning trade-offs, field diagnosis and grid-connection acceptance; with a 35 kV synthetic plant example and ten common errors.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/宽频振荡与场站阻抗分析-2026-11.html"
     },
     {
       "id": "m-prov-sd",
@@ -1542,7 +1568,7 @@
       "cutoff": "2026-11",
       "title": "黄金问答集与回归测试",
       "titleEn": null,
-      "summaryEn": "79 high-frequency questions with answer points and common errors, covering markets, renewables, carbon, retail, VPP, international tools, price drivers, system physics / EMS engineering, tariffs / investment / contracts, data / case replay, fault protection / distribution connection, microgrid operating-mode transitions, spot clearing / price formation, price attribution / pre-market scenarios, and AGC/AVC plus state estimation / security analysis; also serves as a regression checklist.",
+      "summaryEn": "81 high-frequency questions with answer points and common errors, covering markets, renewables, carbon, retail, VPP, international tools, price drivers, system physics / EMS engineering, tariffs / investment / contracts, data / case replay, fault protection / distribution connection, microgrid operating-mode transitions, spot clearing / price formation, price attribution / pre-market scenarios, AGC/AVC, state estimation / security analysis, transient stability / emergency control, and wideband oscillation / impedance tuning; also serves as a regression checklist.",
       "confidence": "mixed",
       "historical": false,
       "html": "html/黄金问答集-2026-11.html"
@@ -3013,6 +3039,16 @@
       "n": 48,
       "topic": "State estimation and security analysis",
       "text": "the actual SE cycle, measurement redundancy, observable islands and pseudo-measurement weights in each dispatch centre; bad-data thresholds and re-estimation policy; topology/model-version synchronisation with switching and maintenance orders; the N-1 contingency set, thermal/voltage/stability limits, ATC and TRM/CBM calibres; how SE quality flags feed AGC/AVC/ED and market clearing; and the boundary between transmission SE, distribution SE, PMU linear SE and dynamic SE. The module's 3-bus DC case and N-1 scan are synthetic demonstrations, not a production estimator or security-assessment result."
+    },
+    {
+      "n": 49,
+      "topic": "Dynamic security assessment and emergency control",
+      "text": "the actual transient-stability criterion, contingency set, fault-clearing times and model-validation requirements used by each dispatch centre; how much detail of IBR fault-current limiting, negative-sequence and GFM behaviour is required in planning and operational models; the approved UFLS/UVLS stages, RoCoF limits and generation-rejection schemes in each provincial grid; how DSA results feed preventive control, ancillary procurement and market constraints; and the boundary between planning studies, online DSA and special-protection settings. The module's SMIB equal-area and RK4 cases are synthetic demonstrations; its CCT and RoCoF numbers are not operating limits for any grid."
+    },
+    {
+      "n": 50,
+      "topic": "Wideband oscillation and plant impedance",
+      "text": "how GB/T 19963.2-2024's wideband-oscillation clauses are implemented in provincial grid-connection review and testing (cite the formal text); the required impedance-scan range, granularity, operating points and acceptance criteria; how frequency coupling, negative-sequence and multi-converter interactions are modelled; the division of responsibility between grid, plant and converter vendor when measured impedance shows negative damping; and how virtual-resistance, PLL-bandwidth and damping-control settings are validated without degrading weak-grid synchronisation or current limiting. The module's two-block positive-sequence model and its `r_neg ∝ bandwidth` assumption are synthetic teaching devices, not vendor models or field-scan results."
     }
   ],
   "datedOpenItems": [

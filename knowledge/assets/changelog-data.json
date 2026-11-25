@@ -1,14 +1,27 @@
 {
   "schema": 1,
   "generatedFrom": "CHANGELOG.md + CHANGELOG_EN.md",
-  "version": "v2.1",
+  "version": "v2.2",
   "cutoff": "2026-11-19",
-  "latest": "2026-11-24",
-  "count": 99,
+  "latest": "2026-11-25",
+  "count": 100,
   "languages": {
     "zh": {
       "title": "更新记录",
       "entries": [
+        {
+          "date": "2026-11-25",
+          "label": "v2.2 发布：动态安全与宽频振荡两模块、动态/阻抗工具与问答集 81 问",
+          "items": [
+            "<strong>发布范围与版本</strong>：将本批维护发布为 v2.2；全站版本 v2.1 → v2.2（18 个 SKILL、中英 README/CHANGELOG、一致性断言、版本徽章与更新记录弹窗）；构建、<code>--check</code>、省矩阵、一致性、维护检查、<code>git diff --check</code> 与两份 Python 自测全部通过。",
+            "<strong>动态安全模块（1 模块）</strong>：新增《动态安全评估与紧急控制：从静态 N-1 到暂态稳定》（storage 第 11 篇，0–13 节加速查）——静态 N-1 与动态安全的边界、功角/电压/频率三类稳定、等面积定则与 CCT、RK4 时域仿真与在线 DSA、预防/紧急/第三道防线、切机/快关汽门/制动电阻/直流调制/解列、UFLS/UVLS、新能源故障电流受限与构网型、模型验证与稳定裕度、10 条常见错误。D 级 SMIB 算例：δ0 11.537°、δc 84.550°、δmax 156.422°，等面积与仿真 CCT 同为 0.3677 s；0.30 s 稳定（最大功角 94.77°）、0.45 s 约 0.529 s 失稳；理想化切机 CCT 0.5084 s、0.45 s 最大功角 111.66°；1000 MW 缺额 / 100 GW / H=4 s 的 RoCoF 为 −0.0625 Hz/s。",
+            "<strong>宽频振荡模块（1 模块）</strong>：新增《宽频振荡与场站阻抗分析：从阻抗扫描到参数整定》（renewable 第 6 篇，0–13 节加速查）——次/超同步与宽频 5–3000 Hz 口径、SSR/SSTI/SSCI、正序阻抗与 Nyquist/负电阻判据、场站阻抗建模与扫描、PLL/电流环/虚拟阻抗/构网型整定、现场诊断与并网验收、10 条常见错误。D 级 35 kV/100 MVA 算例：电网串联谐振 180.0 Hz、总谐振 160.997 Hz、R −0.02998 pu、ζ −0.00931、负阻尼带 98.8–221.2 Hz；所需虚拟电阻 0.05998 pu；示例整定为 30 Hz + 0.04 pu，整定后 R +0.03003 pu、ζ +0.00933、负带消失。",
+            "<strong>可运行工具</strong>：新增 <code>skills/ems-dispatch/tools/dynamics.py</code>（等面积 CCT、RK4 时域、切机 CCT、RoCoF、惯量扫描）与 <code>oscillation.py</code>（正序阻抗扫描、谐振点、负阻尼频带、阻尼比、虚拟电阻整定、PLL 带宽扫描），纯标准库、确定性、<code>--json</code>；<code>selftest.py</code> 新增 M 段（暂态稳定/惯量）与 N 段（阻抗扫描/整定），锁定上述全部数字。",
+            "<strong>问答集 79 → 81 问</strong>：新增 O 段（Q80–Q81，暂态稳定与宽频振荡）——N-1 之外为什么还要动态安全、CCT/切机/RoCoF 怎么用于紧急控制；场站为什么振荡、阻抗扫描怎么定责、虚拟电阻与 PLL 带宽怎么整定。月度抽测 15 → 16 题，季度全测 81 题。",
+            "<strong>技能与互链</strong>：<code>knowledge.config.mjs</code> 将两模块挂入 <code>ems-dispatch</code>，动态安全另挂 <code>storage-investment-operations</code>，宽频振荡另挂 <code>renewable-project-development</code>；中英 EMS SKILL 增补问题映射、工具表、公式映射、断言覆盖、维护件与保护/稳定控制、场站/变流器控制分工；状态估计、AGC/AVC、频率惯量、并网测试、储能技术、微网运行、现货出清、潮流阻塞、新能源、配电网、无功电压、EMS 接口、SCADA、并网考核十四篇补 related；索引与口径新增暂态稳定与阻抗路由，INDEX_EN 补两模块条目、Q&amp;A 81 与未定事项 #49/#50；README 中英、徽章与更新清单同步。",
+            "<strong>计数与生成物</strong>：知识模块 119 → 121、知识页 119 → 121、正文 51,129 → 52,584 行（+1,455）、更新清单 P2 40 → 42；实例包 32、技能 9、省级地区 12 与 13 分区不变；search-index 4,185,794 → 4,267,468 字节。版本 v2.2，数据截止仍 2026-11-19；全部算例 D 级合成。"
+          ]
+        },
         {
           "date": "2026-11-24",
           "label": "v2.1 发布：微网运行、现货出清、电价归因、AGC/AVC 与状态估计五模块，问答集 79 问",
@@ -1213,6 +1226,19 @@
     "en": {
       "title": "Changelog",
       "entries": [
+        {
+          "date": "2026-11-25",
+          "label": "v2.2 release: dynamic security and wideband oscillation pair, dynamics/impedance tools and Q&A at 81 questions",
+          "items": [
+            "<strong>Release scope and version</strong>: publishes this maintenance batch as v2.2; site version v2.1 → v2.2 (18 SKILLs, bilingual READMEs/CHANGELOGs, consistency assertion, version badge and changelog dialog); build, <code>--check</code>, province matrix, consistency, maintenance, <code>git diff --check</code> and both Python selftests pass.",
+            "<strong>Dynamic-security module (1)</strong>: adds *Dynamic Security Assessment and Emergency Control: From Static N-1 to Transient Stability* (storage #11, sections 0–13 plus quick reference) — the boundary between static N-1 and dynamic security, rotor-angle/voltage/frequency stability, equal-area criterion and CCT, RK4 time-domain simulation and online DSA, preventive/emergency/third defence lines, generation rejection, fast valving, braking resistor, HVDC modulation and islanding, UFLS/UVLS, IBR fault-current limits and grid-forming, model validation and stability margin, and ten common errors. Synthetic SMIB case: delta0 11.537°, deltac 84.550°, deltamax 156.422°, equal-area and simulated CCT both 0.3677 s; stable at 0.30 s (maximum angle 94.77°), unstable at 0.45 s after about 0.529 s; idealised generation rejection extends CCT to 0.5084 s with a 111.66° maximum angle at 0.45 s; RoCoF for 1000 MW loss / 100 GW / H=4 s is -0.0625 Hz/s.",
+            "<strong>Wideband-oscillation module (1)</strong>: adds *Wideband Oscillation and Plant Impedance Analysis: From Impedance Scanning to Parameter Tuning* (renewable #6, sections 0–13 plus quick reference) — sub/super-synchronous versus 5–3000 Hz wideband calibres, SSR/SSTI/SSCI, positive-sequence impedance and Nyquist/negative-resistance criteria, plant impedance modelling and scanning, PLL/current-loop/virtual-impedance/GFM tuning, field diagnosis and grid-connection acceptance, and ten common errors. Synthetic 35 kV / 100 MVA case: grid series resonance 180.0 Hz, total resonance 160.997 Hz, R -0.02998 pu, zeta -0.00931, negative-damping band 98.8–221.2 Hz; required virtual resistance 0.05998 pu; the example tunes to 30 Hz + 0.04 pu, giving R +0.03003 pu, zeta +0.00933 and no negative band.",
+            "<strong>Runnable tools</strong>: adds <code>skills/ems-dispatch/tools/dynamics.py</code> (equal-area CCT, RK4 time domain, rejection CCT, RoCoF, inertia sweep) and <code>oscillation.py</code> (positive-sequence impedance scan, resonances, negative-damping bands, damping ratio, virtual-resistance tuning, PLL-bandwidth sweep), standard library only, deterministic, <code>--json</code>; <code>selftest.py</code> adds section M (transient stability/inertia) and N (impedance scan/tuning) locking every figure above.",
+            "<strong>Q&amp;A 79 → 81</strong>: adds group O (Q80–Q81, transient stability and wideband oscillation) — why dynamic security is needed beyond N-1 and how CCT/rejection/RoCoF support emergency control; why a plant oscillates, how an impedance scan allocates responsibility, and how to tune virtual resistance and PLL bandwidth. Monthly spot check 15 → 16; quarterly full run 81.",
+            "<strong>Skills and cross-links</strong>: <code>knowledge.config.mjs</code> links both modules into <code>ems-dispatch</code>, dynamic security also into <code>storage-investment-operations</code>, wideband oscillation also into <code>renewable-project-development</code>; the Chinese and English EMS skills gain question maps, tool rows, formula maps, assertion coverage, maintenance entries and protection/stability-control plus plant/converter-control division rows; fourteen existing modules (state estimation, AGC/AVC, frequency/inertia, grid testing, storage technology, microgrid operation, spot clearing, flow/LMP, renewables, distribution, reactive/voltage, EMS interfaces, SCADA, grid assessment) gain reverse <code>related</code> links; the index gains transient-stability and impedance routes, INDEX_EN adds both module entries, 81 Q&amp;A and open items #49/#50; both READMEs, the module badge and the maintenance checklist are synchronised.",
+            "<strong>Counts and generated artefacts</strong>: knowledge modules 119 → 121, reading pages 119 → 121, body 51,129 → 52,584 lines (+1,455), checklist P2 40 → 42; 32 instance packs, 9 skills, 12 provincial regions and 13 sections unchanged; search-index 4,185,794 → 4,267,468 bytes. Version v2.2, data cutoff remains 2026-11-19; all examples are synthetic grade D."
+          ]
+        },
         {
           "date": "2026-11-24",
           "label": "v2.1 release: microgrid operation, spot clearing, price attribution, AGC/AVC and state estimation; Q&A at 79 questions",

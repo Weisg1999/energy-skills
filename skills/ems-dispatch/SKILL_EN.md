@@ -7,9 +7,9 @@ description: Microgrid and storage EMS dispatch expert — turns "how should the
 
 > 🌐 Chinese version: [SKILL.md](SKILL.md) ｜ Sister skills: [Storage Investment & Operations](../storage-investment-operations/SKILL_EN.md) (appraisal / revenue stacking / LCOS), [Virtual Power Plant Expert](../virtual-power-plant/SKILL_EN.md) (aggregation / demand response), [Spot-Bidding Quant Expert](../spot-bidding-quant/SKILL_EN.md) (price forecasting / bidding), [Electricity Trading Expert](../electricity-trading-expert/SKILL_EN.md) (rules / settlement). This skill answers only "given prices, load, equipment and rules, how should tomorrow's power and SOC plan be arranged, and can it be delivered".
 
-> Version v2.1 · data cutoff 2026-11-19
+> Version v2.2 · data cutoff 2026-11-19
 
-> **Maintenance entry points**: `tools/selftest.py` (green means the worked examples still hold), [storage EMS note](../../knowledge/储能EMS优化调度-算法与工程-2026-11.md) (model, constraints, capacity price and frequency-regulation details), [microgrid EMS note](../../knowledge/微网EMS优化调度-算法与工程-2026-11.md) (PCC, islanding, MPC and capability assessment).
+> **Maintenance entry points**: `tools/selftest.py` (green means the worked examples still hold), [storage EMS note](../../knowledge/储能EMS优化调度-算法与工程-2026-11.md) (model, constraints, capacity price and frequency-regulation details), [microgrid EMS note](../../knowledge/微网EMS优化调度-算法与工程-2026-11.md) (PCC, islanding, MPC and capability assessment), [dynamic security note](../../knowledge/动态安全评估与紧急控制-2026-11.md) (transient stability, emergency control and three defence lines), [wideband oscillation note](../../knowledge/宽频振荡与场站阻抗分析-2026-11.md) (impedance scanning and tuning).
 > **Open items 2026-2027**: provincial rules and assessment deductions under Document 114, the denominator duration for the capacity price (4/6/8/10 h), the shape of time-of-use prices under continuous spot operation, revision of ancillary-service products and compensation, and upgrades to grid-forming and grid-connection standards.
 
 ---
@@ -43,6 +43,9 @@ You are the dispatch algorithm lead for storage and microgrid EMS, serving plant
 | Does frequency regulation or reserve crowd out arbitrage | Ch. 5 |
 | How are AGC/AVC commands allocated, what does plant assessment measure | [AGC/AVC and frequency-voltage closed loop](../../knowledge/AGC-AVC与频率电压闭环-2026-11.md) |
 | How do state estimation, N-1 and ATC relate to EMS limits | [State estimation and security analysis](../../knowledge/状态估计与安全分析-2026-11.md) |
+| Can generators stay in synchronism after fault clearing, what is the CCT | [Dynamic security assessment and emergency control](../../knowledge/动态安全评估与紧急控制-2026-11.md) |
+| How much generation or load must be shed, will RoCoF exceed limits | [Dynamic security assessment and emergency control](../../knowledge/动态安全评估与紧急控制-2026-11.md) |
+| Why does the plant oscillate, how does an impedance scan allocate responsibility | [Wideband oscillation and plant impedance analysis](../../knowledge/宽频振荡与场站阻抗分析-2026-11.md) |
 | What if forecasts are wrong, should we roll | Ch. 6 |
 | How does degradation enter the model, how many tiers | Sec. 7.1 |
 | How are available power, energy and duration computed | Sec. 4.5 |
@@ -77,7 +80,7 @@ The "future SKILL chapter draft" reserved in §11.5 of the notes was designed as
 | Source text for spot/medium-term/ancillary rules, settlement items | Electricity Trading Expert |
 | Carbon compliance, CCER, CBAM | Carbon Asset Management Expert |
 | **Given prices and equipment, how to schedule 96 intervals of power and SOC, and whether it is deliverable** | **This skill** |
-| AGC/AVC command decomposition, plant assessment, state estimation/N-1/ATC network models | Knowledge notes "AGC/AVC and frequency-voltage closed loop" and "State estimation and security analysis"; this skill covers plans and deliverability, not control-centre or production-grade network algorithms |
+| AGC/AVC command decomposition, plant assessment, state estimation/N-1/ATC network models, transient stability and wideband oscillation | Knowledge notes "AGC/AVC and frequency-voltage closed loop", "State estimation and security analysis", "Dynamic security assessment and emergency control" and "Wideband oscillation and plant impedance analysis"; this skill covers plans and deliverability, not control-centre algorithms, production-grade network analysis, electromechanical transient simulation or impedance scanning |
 
 **Interface contract**: this skill receives price forecasts (point forecasts plus quantiles) from the bidding skill and equipment parameters plus revenue calibres from the investment skill, and exports bid-cap curves and planned energy to the trading skill. Field list in §3.1.
 
@@ -412,9 +415,11 @@ For 100 MW / 200 MWh, SOC 10%–90%, RTE 88%: usable DC 160 MWh, AC discharge 15
 | `tools/curves.py` | Synthetic curves: station 24-point, microgrid 96-point, behind-the-meter 96-point |
 | `tools/control.py` | ACE, AGC allocation, performance components, AVC allocation, primary-frequency droop |
 | `tools/state.py` | 3-bus DC power flow, WLS, normalized residuals, N-1 scan |
+| `tools/dynamics.py` | Single-machine infinite-bus equal-area CCT, RK4 time-domain simulation, generation-rejection CCT, RoCoF and inertia sweep |
+| `tools/oscillation.py` | Positive-sequence impedance scan, resonances, negative-damping bands, virtual-resistance tuning and PLL-bandwidth sweep |
 | `tools/selftest.py` | Assertions that lock every worked example in the text |
 
-The kernel runs forward dynamic programming on an SOC grid, excludes simultaneous charge/discharge by construction, splits import/export on the sign of net load, and curtails PV beyond the export limit. `control.py` and `state.py` are interface-level demos for the two knowledge notes, not control-centre AGC/AVC or production-grade state estimation/security assessment.
+The kernel runs forward dynamic programming on an SOC grid, excludes simultaneous charge/discharge by construction, splits import/export on the sign of net load, and curtails PV beyond the export limit. `control.py`, `state.py`, `dynamics.py` and `oscillation.py` are interface-level demos for four knowledge notes, not control-centre AGC/AVC, production-grade state estimation/security assessment, electromechanical transient simulation or electromagnetic impedance scanning.
 
 ### 8.2 Storage station: 100 MW / 200 MWh
 
@@ -589,6 +594,10 @@ Plan shape: valley charge 00:00–02:00 (about 426 kW), midday discharge 10:00�
 | ACE / AGC allocation / performance components | `control.ace_mw()` / `agc_allocate()` / `agc_performance()` |
 | AVC reactive allocation / primary-frequency droop | `control.avc_allocate()` / `droop_response()` |
 | DC power flow / WLS / bad data / N-1 | `state.dc_power_flow()` / `wls_estimate()` / `n1_scan()` |
+| Equal-area CCT / RK4 time domain / rejection CCT | `dynamics.equal_area()` / `simulate()` / `cct_by_simulation()` |
+| RoCoF / inertia sweep | `dynamics.rocof()` / `inertia_sweep()` |
+| Impedance scan / resonances / negative-damping bands | `oscillation.scan()` / `find_resonances()` / `negative_bands()` |
+| Damping ratio / virtual-resistance tuning / PLL sweep | `oscillation.damping_ratio()` / `tune_virtual_resistance()` / `pll_sweep()` |
 | Synthetic curves | `curves.storage_day_prices()` / `microgrid_day()` / `user_day()` |
 
 ```python
@@ -656,7 +665,9 @@ python skills/ems-dispatch/tools/selftest.py
   - Demand: 35,082.99 → 32,000.00 CNY/month, saving 3,082.99, full charge 36,800, charging cap 440 kW;
   - Islanding: 100 kWh need feasible with 10% reserve, and an energy shortfall is flagged correctly;
   - AGC/AVC: ACE 40 MW, coal/storage 30/10 MW, accuracy 0.95/0.98, ramp ratio 0.95/1.00, AVC 30/30/0 Mvar, primary-frequency response 1.4 MW;
-  - State estimation/N-1: theta2=-0.020539, theta3=-0.031470, P13 normalized residual 5.21, post-N-1 flow on line 1-3 0.35 versus limit 0.30, overload 0.05 pu.
+  - State estimation/N-1: theta2=-0.020539, theta3=-0.031470, P13 normalized residual 5.21, post-N-1 flow on line 1-3 0.35 versus limit 0.30, overload 0.05 pu;
+  - Transient stability: delta0=11.536959 deg, deltac=84.550291 deg, deltamax=156.421822 deg, equal-area and RK4 CCT both 0.367709 s, maximum angle 94.769205 deg at 0.30 s, generation-rejection CCT 0.508379 s (stable at 0.45 s, maximum angle 111.656 deg), RoCoF -0.0625 Hz/s;
+  - Impedance scan: grid resonance 180 Hz, total resonance 160.996895 Hz, R=-0.029980 pu, zeta=-0.009311, negative-damping band 98.76275-221.23725 Hz, required virtual resistance 0.059980 pu; after tuning 30 Hz + 0.04 pu, R=0.030033 pu, zeta=0.009327, no negative band.
 
 > The tool is a **screening tool**, not a settlement system: it does not handle provincial assessment rules, taxes, complex financing, network security constraints or real-time tracking. Live operation must be recomputed with provincial rules, measured curves and equipment parameters.
 
@@ -693,7 +704,7 @@ Yes, roll — but get three things right first: forecast horizon = control horiz
 ### 14.1 Methods and standards
 
 - Policy: NDRC price〔2026〕No. 114 (capacity-price framework), NDRC energy regulation〔2025〕No. 1656 (renewables entering the market), NDRC energy regulation〔2025〕No. 411 (spot market);
-- Standards: GB/T 36547-2024, GB/T 36549-2018, GB/T 36558-2023, GB/T 42288-2022, GB/T 51048-2025, IEEE 2030.7 (microgrid controller functions);
+- Standards: GB/T 36547-2024, GB/T 36549-2018, GB/T 36558-2023, GB/T 42288-2022, GB/T 51048-2025, GB 38755-2019, GB/T 40581-2021, GB/T 40587-2021, IEEE 2030.7 (microgrid controller functions);
 - Methods: mixed-integer linear programming, dynamic programming, model predictive control, two-stage stochastic programming with CVaR, robust optimization;
 - Industry data: exchange disclosures, public tender and award notices (grade B).
 
@@ -703,7 +714,9 @@ Yes, roll — but get three things right first: forecast horizon = control horiz
 - [Microgrid EMS note](../../knowledge/微网EMS优化调度-算法与工程-2026-11.md): PCC, islanding, MPC, capability and standards;
 - [AGC/AVC and frequency-voltage closed loop](../../knowledge/AGC-AVC与频率电压闭环-2026-11.md): ACE, AGC allocation, three-level AVC, plant assessment;
 - [State estimation and security analysis](../../knowledge/状态估计与安全分析-2026-11.md): WLS, bad data, observability, N-1/ATC;
-- `tools/`: zero-dependency reference implementation and example assertions (including `control.py` and `state.py`).
+- [Dynamic security assessment and emergency control](../../knowledge/动态安全评估与紧急控制-2026-11.md): rotor-angle transient stability, equal-area/CCT, voltage and frequency stability, three defence lines, generation and load shedding;
+- [Wideband oscillation and plant impedance analysis](../../knowledge/宽频振荡与场站阻抗分析-2026-11.md): impedance scanning, resonance and negative damping, virtual-resistance and PLL-bandwidth tuning;
+- `tools/`: zero-dependency reference implementation and example assertions (including `control.py`, `state.py`, `dynamics.py` and `oscillation.py`).
 
 ### 14.3 Division of labour with sister skills
 
@@ -715,6 +728,8 @@ Yes, roll — but get three things right first: forecast horizon = control horiz
 | Electricity Trading Expert | Rule source text, settlement items | Cites rules without re-explaining them |
 | Carbon Asset Management Expert | Carbon compliance, CCER | Not involved |
 | Control centre / network analysis | AGC/AVC closed loop, state estimation, N-1/ATC | Cites the notes' limit and observability conclusions; does not implement production-grade algorithms |
+| Protection and stability control | Relay settings, special-protection schemes, generation/load-shedding execution | Cites stability criteria and defence-line configuration; does not set relay parameters |
+| Plant / converter control | PLL, virtual impedance, damping control, measured impedance scans | Cites resonance and negative-damping conclusions; does not replace device-level controller design or field scans |
 
 ### 14.4 Maintenance cadence
 

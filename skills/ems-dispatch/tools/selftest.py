@@ -20,9 +20,11 @@ import math
 import control
 import curves
 import dispatch
+import dynamics
 import loop
 import market
 import microgrid
+import oscillation
 import state
 import storage
 
@@ -594,6 +596,65 @@ def main():
     check(n1_rows["2-3"]["overloads"] == [], "L outage 2-3 secure")
     close("L remedial 1-3 flow", data["remedial"]["flows"]["1-3"], 0.300, 1e-9)
     close("L remedial 2-3 flow", data["remedial"]["flows"]["2-3"], -0.150, 1e-9)
+
+    # M. Transient stability and inertia (dynamics.py).
+    dyn = dynamics.demo()
+    area = dyn["equal_area"]
+    close("M rotor angle at t=0 (deg)", area["delta0_deg"], 11.536959, 1e-6)
+    close("M equal-area clearing angle (deg)", area["delta_c_deg"], 84.550291, 1e-6)
+    close("M unstable equilibrium angle (deg)", area["delta_max_deg"], 156.421822, 1e-6)
+    close("M equal-area CCT (s)", area["cct_s"], 0.367709, 1e-6)
+    close("M simulated CCT (s)", dyn["simulation"]["cct_s"], 0.367709, 1e-6)
+    check(dyn["simulation"]["clear_030"]["stable"], "M 0.30 s clearing is stable")
+    close(
+        "M 0.30 s peak angle (deg)",
+        dyn["simulation"]["clear_030"]["delta_max_deg"],
+        94.769205,
+        1e-3,
+    )
+    check(not dyn["simulation"]["clear_045"]["stable"], "M 0.45 s clearing is unstable")
+    rejection = dyn["generation_rejection"]
+    close("M rejection CCT (s)", rejection["equal_area"]["cct_s"], 0.508379, 1e-6)
+    check(rejection["run_045"]["stable"], "M idealized rejection stabilizes 0.45 s")
+    close(
+        "M RoCoF 1000 MW / 100 GW / H=4 (Hz/s)",
+        dyn["rocof"]["reference_hz_s"],
+        -0.0625,
+        1e-12,
+    )
+    sweep_m = {row["h_s"]: row["rocof_hz_s"] for row in dyn["rocof"]["sweep"]}
+    close("M RoCoF at H=2 (Hz/s)", sweep_m[2.0], -0.125, 1e-12)
+    close("M RoCoF at H=6 (Hz/s)", sweep_m[6.0], -1.0 / 24.0, 1e-12)
+
+    # N. Wideband impedance scan and tuning (oscillation.py).
+    osc = oscillation.demo()
+    close(
+        "N resonance frequency (Hz)",
+        osc["resonances_hz"][0],
+        160.996895,
+        1e-3,
+    )
+    close("N base total resistance (pu)", osc["base"]["r_pu"], -0.029980, 1e-6)
+    close("N base damping ratio", osc["base"]["zeta"], -0.009311, 1e-6)
+    band = osc["base_negative_bands"][0]
+    close("N negative band start (Hz)", band["start_hz"], 98.762750, 1e-3)
+    close("N negative band end (Hz)", band["end_hz"], 221.237249, 1e-3)
+    close(
+        "N required virtual resistance (pu)",
+        osc["base_required_virtual_r_pu"],
+        0.059980,
+        1e-6,
+    )
+    close(
+        "N chosen PLL bandwidth (Hz)",
+        osc["tuning"]["chosen_bandwidth_hz"],
+        30.0,
+        1e-12,
+    )
+    close("N chosen virtual resistance (pu)", osc["tuning"]["virtual_r_pu"], 0.04, 1e-12)
+    close("N tuned total resistance (pu)", osc["tuned"]["r_pu"], 0.030033, 1e-6)
+    close("N tuned damping ratio", osc["tuned"]["zeta"], 0.009327, 1e-6)
+    check(not osc["tuned_negative_bands"], "N tuned case has no negative band")
 
     print("\nAll EMS dispatch self-tests passed.")
 

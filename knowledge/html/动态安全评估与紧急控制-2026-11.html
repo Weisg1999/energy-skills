@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>动态安全评估与紧急控制：从静态 N-1 到暂态稳定 | energy-skills 知识库</title>
+<meta name="description" content="把静态 N-1 之后的第二层问题讲清楚：功角、电压、频率三类稳定，等面积定则与临界切除时间，时域仿真与在线 DSA，切机/切负荷/直流调制/解列等紧急控制，以及新能源变流器带来的判据变化；附 SMIB D 级合成算例与 10 条常见错误。">
+<link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
+<script>
+(function(){try{var t=localStorage.getItem('es-theme');if(!/^(light|cream|green|dark)$/.test(t||'')){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/knowledge.css">
+<link rel="stylesheet" href="../assets/theme-menu.css">
+<link rel="stylesheet" href="../assets/changelog.css">
+</head>
+<body data-cat="storage" id="top">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
+  <div class="crumb">
+    <span class="crumb-cat">08 · STORAGE</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">动态安全评估与紧急控制：从静态 N-1 到暂态稳定</span>
+  </div>
+  <div class="topbar-act">
+    <div class="theme-picker" data-theme-picker>
+      <button class="theme-toggle" type="button" data-theme-menu aria-label="选择主题" title="选择主题">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="5"/><circle cx="15" cy="9" r="5"/><circle cx="12" cy="15" r="5"/></svg>
+      </button>
+    </div>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../动态安全评估与紧急控制-2026-11.md">.md 源文件<small>knowledge/动态安全评估与紧急控制-2026-11.md</small></a>
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">08 · STORAGE</div>
+    <h2 class="nav-cat"><a href="../index.html#storage">储能与 EMS</a></h2>
+    <ul class="nav-list">
+              <li><a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线、安全与构网型并网</a></li>
+              <li><a href="储能投资与运营-2026-11.html">储能投资与运营</a></li>
+              <li><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a></li>
+              <li><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a></li>
+              <li><a href="微网运行方式与并离网切换-2026-11.html">微网运行方式与并离网切换：从状态机到黑启动</a></li>
+              <li><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a></li>
+              <li><a href="场站群与集控EMS架构-2026-11.html">场站群与集控 EMS 架构：分级调度、通信拓扑与群调群控</a></li>
+              <li><a href="EMS数据接口参考架构-2026-11.html">EMS 数据接口参考架构：设备、调度、市场与计量结算的契约</a></li>
+              <li><a href="AGC-AVC与频率电压闭环-2026-11.html">AGC/AVC 与频率电压闭环：从 ACE 到场站考核</a></li>
+              <li><a href="状态估计与安全分析-2026-11.html">状态估计与安全分析：从 SCADA 量测到可信运行方式</a></li>
+              <li class="on" aria-current="page"><a href="动态安全评估与紧急控制-2026-11.html">动态安全评估与紧急控制：从静态 N-1 到暂态稳定</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#province"><b>03</b>中国省级市场</a></li>
+              <li><a href="../index.html#intl"><b>04</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>05</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>06</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>07</b>新能源与并网</a></li>
+              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>11</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">08 · STORAGE<i>知识模块</i></div>
+      <h1 class="doc-title">动态安全评估与紧急控制：从静态 N-1 到暂态稳定（2026-11）</h1>
+      <p class="lede">把静态 N-1 之后的第二层问题讲清楚：功角、电压、频率三类稳定，等面积定则与临界切除时间，时域仿真与在线 DSA，切机/切负荷/直流调制/解列等紧急控制，以及新能源变流器带来的判据变化；附 SMIB D 级合成算例与 10 条常见错误。</p>
+      <p class="hook">动态安全评估与紧急控制</p>
+      <div class="tags"><span class="tag">暂态稳定</span><span class="tag">临界切除时间</span><span class="tag">动态安全评估</span><span class="tag">紧急控制</span><span class="tag">低频减载</span><span class="tag">切机</span><span class="tag">等面积定则</span><span class="tag">RoCoF</span><span class="tag">DSA</span><span class="tag">三道防线</span></div>
+      <div class="doc-meta"><span>约 14.6k 字</span><span>阅读约 27 分钟</span><span>14 节</span><span>数据截止 2026-11-19</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（14）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv2"><a href="#s6">1. 从静态 N-1 到动态安全</a></li>
+            <li class="lv2"><a href="#s11">2. 稳定分类与判据</a></li>
+            <li class="lv2"><a href="#s16">3. 暂态功角稳定：等面积与 CCT</a></li>
+            <li class="lv2"><a href="#s23">4. 时域仿真与在线 DSA</a></li>
+            <li class="lv2"><a href="#s30">5. 电压稳定与频率稳定</a></li>
+            <li class="lv2"><a href="#s36">6. 紧急控制与三道防线</a></li>
+            <li class="lv2"><a href="#s43">7. D 级合成算例：SMIB 的 CCT、切机与 RoCoF</a></li>
+            <li class="lv2"><a href="#s51">8. 对交易、投资与运营的含义</a></li>
+            <li class="lv2"><a href="#s56">9. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s57">10. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s58">11. 分工：和现有模块怎么配合</a></li>
+            <li class="lv2"><a href="#s59">12. 速查</a></li>
+            <li class="lv2"><a href="#s63">13. 版本与维护</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>数据截止：2026-11-19｜定位：知识库模块（储能与 EMS·动态安全与稳定控制）</p><p>相关技能：<a href="../../skills/ems-dispatch/SKILL.md">EMS 优化调度专家</a>（EMS 高级应用与场站闭环）、<a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a>（构网型与辅助服务）、<a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a>（限额、阻塞与价格尾部）</p><p>用途：回答&quot;静态 N-1 过了为什么还会失稳、CCT 怎么算、DSA 到底算什么、紧急控制切什么、新能源让稳定问题变在哪、交易和投资为什么要关心动态安全&quot;六类问题。本文做工程通识与算例演示；具体稳定判据、故障集、控制策略和定值以现行标准、调度规程和计算报告为准。</p><p>算例：一个单机无穷大（SMIB）D 级合成算例，由 <a href="../../skills/ems-dispatch/tools/dynamics.py">dynamics.py</a> 复现，断言见 <a href="../../skills/ems-dispatch/tools/selftest.py">selftest.py</a> 的 &quot;transient stability and inertia&quot; 段。</p><p>边界：本文不提供真实电网模型、参数、故障集或稳控策略；不替代调度机构的动态安全分析、稳定计算和紧急控制决策；不构成调度、并网、交易或投资建议。</p></aside>
+<hr>
+<h2 id="s1">0. 一页看懂</h2>
+<h3 id="s2">0.1 三句话</h3>
+<ul><li><strong>静态 N-1 只回答&quot;断一条后潮流行不行&quot;，动态安全还要回答&quot;断开的过程中系统会不会失步、电压会不会崩、频率会不会掉穿&quot;</strong>。前者是代数问题，后者是微分—代数问题。</li><li><strong>稳定不是&quot;有没有解&quot;，而是&quot;故障切除后能不能回到可接受的运行点&quot;</strong>：功角要看摇摆曲线，电压要看无功支撑，频率要看功率缺额与惯量；三者时间尺度不同，判据也不同。</li><li><strong>紧急控制是&quot;用确定的代价换不确定的崩溃&quot;</strong>：切机、切负荷、直流调制、解列都必须提前设计、定期演练，不能等失稳了再临时决定。</li></ul>
+<h3 id="s3">0.2 关键概念</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>概念</th><th>含义</th><th>本文口径</th></tr></thead><tbody><tr><td>静态安全</td><td>N-1 后潮流、电压、限额是否越限</td><td>状态估计/安全分析模块负责</td></tr><tr><td>动态安全</td><td>故障及切除后的暂态过程是否稳定</td><td>本文重点，需时域或能量方法</td></tr><tr><td>功角稳定</td><td>同步机之间能否保持同步</td><td>分暂态（大扰动）与小干扰</td></tr><tr><td>电压稳定</td><td>负荷节点电压能否维持</td><td>分短期与长期，需无功/负荷动态</td></tr><tr><td>频率稳定</td><td>有功缺额后频率能否恢复</td><td>看 RoCoF、最低点、恢复时间</td></tr><tr><td>临界切除时间</td><td>故障后不失稳的最长切除时间</td><td>CCT，本文用等面积与仿真互校</td></tr><tr><td>稳定裕度</td><td>当前方式离失稳还有多远</td><td>时间、能量、阻尼、功率多口径</td></tr><tr><td>预防控制</td><td>故障前就把方式调到安全区</td><td>发电计划、限额、N-1 校核</td></tr><tr><td>紧急控制</td><td>故障后按策略切机/切负荷/解列</td><td>安稳装置、UFLS/UVLS、RAS</td></tr><tr><td>在线 DSA</td><td>用实时方式做动态安全评估</td><td>依赖状态估计、模型与故障集</td></tr></tbody></table></div>
+<h3 id="s4">0.3 先记住四个数</h3>
+<p>SMIB 合成算例（100 MVA 基准，H=5 s，f0=50 Hz）：</p>
+<ul><li><strong>初始功角 11.54°，切除角 84.55°，不稳定平衡角 156.42°</strong>；等面积 CCT <strong>0.3677 s</strong>，时域仿真 CCT 同为 <strong>0.3677 s</strong>。</li><li><strong>0.30 s 切除稳定</strong>，最大功角 94.77°；<strong>0.45 s 切除失稳</strong>，约 0.529 s 越过不稳定平衡点。</li><li><strong>理想化切机</strong>把机械功率从 0.6 pu 降到 0.4 pu，CCT 延长到 <strong>0.5084 s</strong>，0.45 s 切除变为稳定。</li><li><strong>RoCoF</strong>：1000 MW 缺额、100 GW 系统、H=4 s，初始频率变化率 <strong>−0.0625 Hz/s</strong>；H 降到 2 s 时变为 <strong>−0.125 Hz/s</strong>。</li></ul>
+<aside class="note"><p>口径提醒：CCT 和 RoCoF 都是合成算例的确定性结果，不是任何真实电网的稳定极限。真实 CCT 取决于故障类型、保护动作、模型参数、运行方式和稳定判据。</p></aside>
+<h3 id="s5">0.4 本文不做什么</h3>
+<ul><li>不提供真实机组的 d/q 轴参数、励磁/调速模型、负荷模型或变流器控制参数；</li><li>不实现完整的多机暂态稳定、小干扰特征值、电压稳定连续潮流或电磁暂态仿真；</li><li>不替代调度机构的动态安全分析、安稳策略设计、定值整定或黑启动方案；</li><li>不把 SMIB 的等面积结论直接套到多机、直流送出、弱电网或构网型变流器场景；</li><li>不把&quot;某次仿真通过&quot;当作并网合规或投资安全的充分条件。</li></ul>
+<hr>
+<h2 id="s6">1. 从静态 N-1 到动态安全</h2>
+<h3 id="s7">1.1 静态 N-1 的边界</h3>
+<p>状态估计与安全分析回答的是：给定一个运行方式，断开一条线路/一台变压器后，剩余网络还有没有解、支路是否越限、电压是否在范围内、ATC 还剩多少。它是<strong>代数校核</strong>，把故障当成&quot;断线后的新稳态&quot;。</p>
+<p>但真实故障有一个过程：</p>
+<ol><li>故障发生，电压跌落，故障电流注入；</li><li>保护动作，断路器熄弧，故障支路断开；</li><li>发电机转子因功率不平衡开始加速/减速；</li><li>励磁、调速、变流器控制、负荷、HVDC/FACTS 共同响应；</li><li>系统要么回到同步运行，要么失步、电压崩溃、频率崩溃。</li></ol>
+<p>静态 N-1 只看第 3 步之后的一个平衡点，不看第 1—4 步的轨迹，也不保证这个平衡点能被到达。<strong>&quot;有解&quot;不等于&quot;可达&quot;，&quot;不越限&quot;不等于&quot;不失稳&quot;。</strong></p>
+<h3 id="s8">1.2 时间尺度</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>现象</th><th>典型时间尺度</th><th>主要状态</th><th>常用工具</th></tr></thead><tbody><tr><td>电磁暂态/操作过电压</td><td>微秒—毫秒</td><td>电流、磁链、行波</td><td>EMT 仿真</td></tr><tr><td>继电保护与断路器</td><td>毫秒—几十毫秒</td><td>开关状态、保护逻辑</td><td>保护仿真、录波</td></tr><tr><td>暂态功角稳定</td><td>0.1—10 s</td><td>转子角、转速</td><td>机电暂态仿真、能量函数</td></tr><tr><td>小干扰振荡</td><td>0.1—10 Hz</td><td>功角/控制模态</td><td>特征值、阻抗/频率扫描</td></tr><tr><td>短期电压稳定</td><td>0.1—10 s</td><td>感应电动机、HVDC、IBR</td><td>机电—电压混合仿真</td></tr><tr><td>长期电压稳定</td><td>数十秒—数分钟</td><td>变压器分接头、AGC、负荷恢复</td><td>中长期仿真、连续潮流</td></tr><tr><td>频率稳定</td><td>数秒—数分钟</td><td>频率、惯量、调频</td><td>频率仿真、RoCoF 估算</td></tr><tr><td>热稳定</td><td>数分钟—数小时</td><td>设备温度、载流</td><td>热平衡计算</td></tr></tbody></table></div>
+<p>同一场故障可能同时触发多个问题：短路期间电压跌落导致新能源脱网，新能源脱网造成频率缺额，频率下降又触发低频减载。<strong>动态安全分析必须能跨时间尺度串联事件，而不是每个问题单独看。</strong></p>
+<h3 id="s9">1.3 动态安全评估的输出</h3>
+<p>一次可用的 DSA 至少应回答：</p>
+<ul><li>在哪些故障、哪些运行方式下不稳定？</li><li>不稳定形态是什么：功角失步、电压崩溃、频率崩溃、控制器振荡？</li><li>稳定裕度多大：CCT、能量裕度、阻尼比、最低电压、频率最低点？</li><li>哪些元件/场站是关键：临界机组、关键断面、薄弱母线？</li><li>需要什么预防/紧急控制：限额、切机、切负荷、解列、直流调制？</li><li>结论对模型、参数、故障清除时间有多敏感？</li></ul>
+<p>只给一句&quot;通过/不通过&quot;，不足以支撑运行或投资决策。</p>
+<h3 id="s10">1.4 规划态、运行态与在线 DSA</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>场景</th><th>数据基础</th><th>时间预算</th><th>输出用途</th></tr></thead><tbody><tr><td>规划态</td><td>规划网架、典型方式、设计参数</td><td>天—周</td><td>网架加强、设备选型、稳定极限</td></tr><tr><td>日前/方式安排</td><td>预测负荷、检修计划、开机方式</td><td>小时</td><td>稳定限额、预防控制、开机约束</td></tr><tr><td>在线 DSA</td><td>状态估计断面、实时拓扑、模型库</td><td>分钟级</td><td>预警、辅助决策、紧急控制预置</td></tr><tr><td>事后复盘</td><td>录波、PMU、SOE、保护动作</td><td>小时—天</td><td>模型校正、策略改进、责任分析</td></tr></tbody></table></div>
+<p>在线 DSA 的最大瓶颈通常不是算法，而是<strong>模型和数据的可信度</strong>：状态估计错了、模型参数过期、故障集漏了，算得再快也没用。状态估计模块见<a href="状态估计与安全分析-2026-11.html">《状态估计与安全分析》</a>。</p>
+<hr>
+<h2 id="s11">2. 稳定分类与判据</h2>
+<h3 id="s12">2.1 四类稳定</h3>
+<p>GB 38755《电力系统安全稳定导则》把稳定问题分为功角稳定、电压稳定、频率稳定三类；工程上还会单独校核设备热稳定。工程上常把功角稳定再分为暂态（大扰动）和小干扰（动态）稳定。</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>类型</th><th>扰动性质</th><th>核心问题</th><th>典型判据</th></tr></thead><tbody><tr><td>暂态功角稳定</td><td>大扰动（短路、断线、切机）</td><td>第一摇摆能否保持同步</td><td>摇摆曲线、CCT、能量裕度</td></tr><tr><td>小干扰功角稳定</td><td>小扰动</td><td>振荡模态是否衰减</td><td>阻尼比、特征值、阻抗判据</td></tr><tr><td>电压稳定</td><td>大/小扰动、负荷增长</td><td>电压能否维持</td><td>P-V/Q-V 裕度、最低电压与持续时间</td></tr><tr><td>频率稳定</td><td>大功率缺额/过剩</td><td>频率能否恢复到允许范围</td><td>RoCoF、最低/最高频率、恢复时间</td></tr><tr><td>热稳定</td><td>过载</td><td>设备是否超温</td><td>载流/温度限值、持续时间</td></tr></tbody></table></div>
+<h3 id="s13">2.2 稳定判据不是一条线</h3>
+<p>&quot;稳定/不稳定&quot;在工程上是带时间和幅值容差的概念：</p>
+<ul><li><strong>功角</strong>：通常要求故障后转子角不超过某个阈值、振荡在若干秒内衰减、机组间最大角差可控；具体阈值按导则和调度规程。</li><li><strong>电压</strong>：不只看最低电压，还看低于某电压的持续时间、恢复速度、是否引发电动机堵转或新能源脱网。</li><li><strong>频率</strong>：不只看最低频率，还看 RoCoF、低于 47 Hz 的持续时间、恢复时间、是否触发连锁脱网。</li><li><strong>小干扰</strong>：阻尼比要留裕度，不能&quot;刚好大于零&quot;；弱电网下阻尼随运行点变化。</li></ul>
+<h3 id="s14">2.3 稳定裕度的四种口径</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>口径</th><th>定义</th><th>优点</th><th>局限</th></tr></thead><tbody><tr><td>时间裕度</td><td>CCT − 实际切除时间</td><td>直观，便于保护配合</td><td>只适用于暂态首摆</td></tr><tr><td>能量裕度</td><td>临界能量 − 故障清除时能量</td><td>可量化，适合灵敏度</td><td>依赖模型与能量函数构造</td></tr><tr><td>阻尼裕度</td><td>模态阻尼比 − 门槛</td><td>适合小干扰</td><td>非线性大扰动下不充分</td></tr><tr><td>功率/限额裕度</td><td>稳定极限 − 当前传输功率</td><td>便于运行和交易</td><td>需要大量离线计算</td></tr></tbody></table></div>
+<p><strong>不同口径不能混用</strong>：CCT 裕度大不代表阻尼好，阻尼好不代表电压稳，电压稳不代表频率稳。</p>
+<h3 id="s15">2.4 与三道防线的关系</h3>
+<p><a href="故障保护与安全防御-2026-11.html">《电力系统通识 E》</a>讲过三道防线：</p>
+<ul><li>第一道：快速切除故障，保持稳定；</li><li>第二道：稳定破坏时切机、切负荷、直流调制、解列；</li><li>第三道：失步解列、低频/低压减载、黑启动。</li></ul>
+<p>DSA 的作用是<strong>判断第一道够不够、第二道什么时候动、第三道是否兜得住</strong>。它不是第四道防线，而是三道防线的&quot;体检和预演&quot;。</p>
+<hr>
+<h2 id="s16">3. 暂态功角稳定：等面积与 CCT</h2>
+<h3 id="s17">3.1 单机无穷大模型</h3>
+<p>把一台同步机经电抗接到无穷大母线，忽略电阻、阻尼和调压器动态：</p>
+<pre tabindex="0"><code>M d²δ/dt² = Pm − Pe
+Pe = (E' U / X) sinδ
+M = 2H / ωs，ωs = 2π f0</code></pre>
+<ul><li><code>δ</code>：转子功角；</li><li><code>M</code>：惯性时间常数（s²/rad）；</li><li><code>H</code>：惯性常数（s）；</li><li><code>Pm</code>：机械功率；</li><li><code>Pe</code>：电磁功率；</li><li><code>E'</code>：机内电势；</li><li><code>U</code>：无穷大母线电压；</li><li><code>X</code>：机端到无穷大的等值电抗。</li></ul>
+<p>这个模型不能描述多机、励磁、调速、阻尼和变流器，但它能把&quot;加速面积 = 减速面积&quot;讲清楚。</p>
+<h3 id="s18">3.2 等面积定则</h3>
+<p>故障期间，电磁功率下降（严重时接近零），机械功率大于电磁功率，转子加速，形成<strong>加速面积</strong>：</p>
+<pre tabindex="0"><code>A_acc = ∫(Pm − Pe_fault) dδ</code></pre>
+<p>故障切除后，电磁功率恢复，若转子角超过新的平衡点，电磁功率大于机械功率，形成<strong>减速面积</strong>：</p>
+<pre tabindex="0"><code>A_dec = ∫(Pe_post − Pm) dδ</code></pre>
+<p>稳定的临界条件是加速面积等于减速面积；此时对应的切除角 <code>δc</code> 给出临界切除时间：</p>
+<pre tabindex="0"><code>t_cct = sqrt( 2 M (δc − δ0) / (Pm − Pe_fault) )</code></pre>
+<h3 id="s19">3.3 算例：0.3677 s 从哪来</h3>
+<p>合成参数：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>参数</th><th>数值</th></tr></thead><tbody><tr><td>H</td><td>5 s</td></tr><tr><td>f0</td><td>50 Hz</td></tr><tr><td>Pm（故障前/故障中/故障后）</td><td>0.6 / 0.6 / 0.6 pu</td></tr><tr><td>E'</td><td>1.2 pu</td></tr><tr><td>U</td><td>1.0 pu</td></tr><tr><td>X（故障前/故障后）</td><td>0.4 / 0.8 pu</td></tr><tr><td>故障期间电磁功率</td><td>0 pu</td></tr><tr><td>阻尼</td><td>0</td></tr></tbody></table></div>
+<p>计算链：</p>
+<pre tabindex="0"><code>ωs = 2π × 50 = 314.159 rad/s
+M = 2 × 5 / 314.159 = 0.031831 s²
+Pmax_pre = 1.2 × 1.0 / 0.4 = 3.0 pu
+δ0 = asin(0.6 / 3.0) = 11.537°
+Pmax_post = 1.2 × 1.0 / 0.8 = 1.5 pu
+δsep = asin(0.6 / 1.5) = 23.578°
+δmax = 180° − 23.578° = 156.422°
+解等面积方程：δc = 84.550°
+t_cct = sqrt(2 × 0.031831 × (1.4757 − 0.2014) / 0.6) = 0.3677 s</code></pre>
+<p>时域仿真用 RK4（步长 1 ms）得到同一个 CCT；0.30 s 切除时最大功角 94.77°，0.45 s 切除时在约 0.529 s 越过不稳定平衡点。<strong>等面积给解析上界，时域仿真验证轨迹和后续摇摆</strong>，两者应互相校核，而不是只信一个。</p>
+<h3 id="s20">3.4 多机系统为什么不能直接套</h3>
+<p>多机系统里：</p>
+<ul><li>每台机的等值电抗和机内电势随网络拓扑、出力、励磁变化；</li><li>故障期间多台机同时加速，但加速程度不同；</li><li>关键机组/临界割集决定系统失稳模式，不是&quot;每台机各自算 CCT&quot;；</li><li>励磁、调速、PSS、负荷、HVDC/FACTS 都会改变轨迹；</li><li>失稳可能是多摆、模式切换或控制器引发，不是单摆。</li></ul>
+<p>工程上用<strong>时域仿真 + 能量函数/EEAC + 特征值/阻抗分析</strong>组合，不用单机公式硬套。</p>
+<h3 id="s21">3.5 故障切除时间不是常数</h3>
+<p>实际切除时间由保护动作、断路器熄弧、失灵保护、通信和开关性能决定：</p>
+<ul><li>近端故障电流大，保护可能更快，但 CT 饱和、暂态分量会影响；</li><li>断路器开断需要几个周波，故障电流过零熄弧；</li><li>断路器失灵时由失灵保护切除相邻开关，时间更长；</li><li>单相重合闸有去游离时间，重合于永久故障会二次冲击；</li><li>新能源场站的 FRT 要求可能与重合闸冲突。</li></ul>
+<p><strong>CCT 必须和&quot;实际可能的最长切除时间&quot;比，而不是和铭牌上的保护动作时间比。</strong> 保护与重合闸的基本原理见<a href="故障保护与安全防御-2026-11.html">《电力系统通识 E》</a>。</p>
+<h3 id="s22">3.6 新能源让暂态稳定变在哪</h3>
+<p>同步机的短路电流由励磁电动势和电枢反应决定，故障初期有很大的次暂态电流，天然提供同步力矩。变流器并网的新能源：</p>
+<ul><li>故障电流被控制器限流，通常只有额定电流的 1.1—1.5 倍；</li><li>没有物理转子，不提供传统惯量；</li><li>锁相环（PLL）与电网耦合，弱网下可能失锁或振荡；</li><li>控制模式在故障期间切换（限流、无功优先、负序抑制），动态特性随策略变化；</li><li>构网型（GFM）变流器可以模拟电压源和惯量，但受能量、限流和过流能力约束。</li></ul>
+<p>因此，&quot;新能源渗透率高的系统暂态稳定更好/更差&quot;不能一概而论：<strong>同步机被替换会减少惯量和短路容量，但构网型控制、快速无功支撑和可控切机也可能改善特定场景的稳定性</strong>。必须做场景化仿真。</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>特性</th><th>同步机</th><th>跟网型变流器</th><th>构网型变流器</th></tr></thead><tbody><tr><td>故障电流</td><td>大，次暂态可达数倍额定</td><td>限流，约 1.1—1.5 倍额定</td><td>限流，但可提供电压源行为</td></tr><tr><td>惯量</td><td>物理惯量</td><td>无，依赖控制</td><td>可模拟惯量</td></tr><tr><td>同步机制</td><td>转子摇摆</td><td>PLL/控制同步</td><td>功率同步/虚拟同步</td></tr><tr><td>失稳形态</td><td>功角失步</td><td>PLL 失锁、控制振荡、脱网</td><td>限流饱和、能量耗尽、模式切换</td></tr><tr><td>等面积适用性</td><td>单机近似可用</td><td>不直接适用</td><td>不直接适用</td></tr></tbody></table></div>
+<hr>
+<h2 id="s23">4. 时域仿真与在线 DSA</h2>
+<h3 id="s24">4.1 时域仿真做什么</h3>
+<p>时域仿真把&quot;故障发生—保护动作—网络变化—控制响应&quot;按时间积分，输出：</p>
+<ul><li>发电机功角、转速、电磁功率、机端电压；</li><li>母线电压、支路潮流；</li><li>励磁、调速、PSS、HVDC/FACTS、IBR 控制状态；</li><li>保护/安稳动作、开关变位；</li><li>频率、RoCoF、最低电压。</li></ul>
+<p>它是动态安全的&quot;金标准&quot;，但前提是模型、参数、事件序列正确。</p>
+<h3 id="s25">4.2 模型清单</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>元件</th><th>至少需要的模型</th><th>常见问题</th></tr></thead><tbody><tr><td>同步机</td><td>d/q 轴暂态/次暂态、励磁、调速、PSS</td><td>参数过期、饱和/限幅缺失</td></tr><tr><td>新能源场站</td><td>变流器控制、FRT、限流、保护、场站控制器</td><td>厂家模型黑箱、版本不一致</td></tr><tr><td>负荷</td><td>静态 ZIP + 感应电动机比例</td><td>负荷构成不清，动态比例拍脑袋</td></tr><tr><td>HVDC/FACTS</td><td>换流器控制、闭锁、调制</td><td>控制模式和保护逻辑漏项</td></tr><tr><td>变压器</td><td>分接头、饱和、接线</td><td>分接头位置与运行方式不符</td></tr><tr><td>线路</td><td>序参数、互感、串联补偿</td><td>零序参数、弧光电阻忽略</td></tr><tr><td>保护/安稳</td><td>动作逻辑、延时、失灵</td><td>只做&quot;理想切除&quot;，不做拒动/误动</td></tr></tbody></table></div>
+<h3 id="s26">4.3 故障集与场景</h3>
+<p>可信故障集通常包括：</p>
+<ul><li>三相短路、单相接地、相间故障；</li><li>线路单相/三相跳闸，单相重合闸；</li><li>变压器故障、母线故障；</li><li>发电机/场站全停、直流单极/双极闭锁；</li><li>关键断面 N-1、N-1-1；</li><li>新能源大规模脱网、SVG 退出；</li><li>保护拒动、断路器失灵、安稳拒动。</li></ul>
+<p>故障集不是越多越好，要按电压等级、拓扑、历史故障率、保护配置和规则要求筛选，并记录<strong>为什么选/为什么不选</strong>。</p>
+<h3 id="s27">4.4 在线 DSA 的工程链</h3>
+<pre tabindex="0"><code>状态估计断面
+   ↓ 拓扑、注入、电压
+模型库/参数库
+   ↓ 发电机、负荷、IBR、直流
+故障集/预想方式
+   ↓ N-1、N-1-1、极端场景
+时域仿真/能量函数/特征值
+   ↓ 稳定裕度、越限、关键元件
+预警/辅助决策
+   ↓ 限额、预防控制、紧急控制预置
+调度员/安稳装置</code></pre>
+<p>时间预算通常只有几分钟，所以在线 DSA 会做：</p>
+<ul><li>故障筛选（用指标先排除明显安全/明显失稳的场景）；</li><li>并行计算；</li><li>降阶/同调等值；</li><li>机器学习代理模型（只做筛选，不做最终判据）；</li><li>只对关键场景做全时域仿真。</li></ul>
+<h3 id="s28">4.5 模型校验</h3>
+<p>模型错了，DSA 只是&quot;精确地算错&quot;。校验数据来源：</p>
+<ul><li>PMU/故障录波：功角、频率、电压、电流；</li><li>SCADA：出力、电压、开关状态；</li><li>保护/安稳动作报告；</li><li>并网检测报告：FRT、AGC/AVC、一次调频、阻抗扫描；</li><li>厂家型式试验：变流器限流、过流能力、控制响应。</li></ul>
+<p>校验不是&quot;调参数让曲线好看&quot;，而是核对<strong>模型结构、参数来源、初始化、事件序列和限幅/保护逻辑</strong>。并网测试清单见<a href="并网测试与涉网验收实务清单-2026-11.html">《并网测试与涉网验收实务清单》</a>。</p>
+<h3 id="s29">4.6 数值问题</h3>
+<ul><li>积分步长：机电暂态常用毫秒级，开关事件附近要减小步长；</li><li>初始化：潮流解与动态模型初始状态必须一致；</li><li>事件处理：保护/开关动作要精确插值，不能&quot;跨步&quot;；</li><li>刚性：励磁、直流、变流器控制时间常数差异大，需隐式/变步长算法；</li><li>限幅与饱和：励磁、调速、变流器电流限幅必须建模；</li><li>数值振荡：网络切换可能产生非物理尖峰，需 snubber 或插值；</li><li>收敛失败：不是&quot;稳定&quot;，要标记为无效计算。</li></ul>
+<hr>
+<h2 id="s30">5. 电压稳定与频率稳定</h2>
+<h3 id="s31">5.1 电压稳定不是&quot;电压低一点&quot;</h3>
+<p>电压稳定问题分：</p>
+<ul><li><strong>短期电压稳定</strong>：感应电动机堵转、HVDC 换相失败、新能源低电压脱网，时间 0.1—10 s；</li><li><strong>长期电压稳定</strong>：负荷恢复、变压器分接头动作、AGC 响应、无功限值，时间数十秒到数分钟；</li><li><strong>静态电压稳定</strong>：P-V/Q-V 曲线鼻点、无功裕度，给运行限额提供参考。</li></ul>
+<p>常见误区：</p>
+<ul><li>只看当前电压值，不看负荷增长方向和裕度；</li><li>忽略电动机负荷的动态，把负荷当恒阻抗；</li><li>忽略变压器分接头的负调压效应；</li><li>忽略新能源在低电压下的电流限幅和无功能力；</li><li>把无功补偿当成&quot;越多越好&quot;，不看动态响应和过电压。</li></ul>
+<h3 id="s32">5.2 P-V/Q-V 与连续潮流</h3>
+<p>P-V 曲线描述传输功率与电压的关系，鼻点对应静态电压稳定极限；Q-V 曲线描述无功注入与电压的关系。连续潮流可以跟踪鼻点和裕度，但它假设准稳态，不替代动态仿真。</p>
+<p>工程上要给出：</p>
+<ul><li>当前方式的无功裕度；</li><li>关键母线/断面的电压稳定极限；</li><li>N-1 后的裕度变化；</li><li>低压减载/无功紧急投入的门槛和顺序。</li></ul>
+<h3 id="s33">5.3 频率稳定的三个指标</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>含义</th><th>主要影响因素</th></tr></thead><tbody><tr><td>RoCoF</td><td>初始频率变化率</td><td>功率缺额、惯量、系统规模</td></tr><tr><td>频率最低点</td><td>扰动后频率跌到多低</td><td>一次调频、负荷频率特性、UFLS</td></tr><tr><td>恢复时间</td><td>频率回到允许范围多快</td><td>二次调频、备用、机组爬坡</td></tr></tbody></table></div>
+<p>RoCoF 的简化估算：</p>
+<pre tabindex="0"><code>RoCoF ≈ − f0 × ΔP / (2 H S_base)</code></pre>
+<p>它只描述<strong>初始斜率</strong>，不代表最低点。惯量低、缺额大时 RoCoF 大，但如果有快速一次调频和足够备用，最低点仍可能可控；反之，RoCoF 不大但调频慢，也可能跌穿。</p>
+<h3 id="s34">5.4 低频减载与高频切机</h3>
+<p>低频减载（UFLS）按频率分轮切负荷，目标是把频率拉回允许范围，同时避免过切导致高频。高频切机在功率过剩时切除机组。两者都要与：</p>
+<ul><li>机组低频/高频保护；</li><li>新能源 FRT 与频率保护；</li><li>HVDC 频率限制控制；</li><li>解列装置；</li><li>储能/需求响应的快速响应；</li></ul>
+<p>协调。GB/T 40596《电力系统自动低频减负荷技术规定》和 GB/T 40588《电力系统自动低压减负荷技术规定》给出了配置与整定的基本原则；具体轮次、门槛、延时和切负荷量以调度方案为准。低频减载的基本逻辑见<a href="故障保护与安全防御-2026-11.html">《电力系统通识 E》</a>，惯量与灵活性市场见<a href="频率惯量与灵活性供需-2026-11.html">《频率、惯量与灵活性供需》</a>。</p>
+<h3 id="s35">5.5 电压/频率/功角的耦合</h3>
+<p>三者不是独立的：</p>
+<ul><li>电压跌落会导致新能源脱网，造成功率和频率缺额；</li><li>频率下降会导致火电辅机失速、出力下降，进一步恶化电压；</li><li>无功不足会导致电压崩溃，线路损耗增加，加剧有功缺额；</li><li>切机可能提升频率，但减少无功支撑，恶化电压；</li><li>切负荷可能保频率，但突然甩负荷会引发过电压。</li></ul>
+<p><strong>紧急控制必须做联合仿真</strong>，不能&quot;频率问题只切负荷、电压问题只投电容&quot;。</p>
+<hr>
+<h2 id="s36">6. 紧急控制与三道防线</h2>
+<h3 id="s37">6.1 紧急控制的工具箱</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>措施</th><th>作用</th><th>代价</th><th>典型场景</th></tr></thead><tbody><tr><td>切机</td><td>减少过剩有功，抑制加速</td><td>损失发电、可能影响电压</td><td>送端过剩、高频、暂态加速</td></tr><tr><td>快关汽门</td><td>快速降低机械功率</td><td>锅炉/汽机应力、恢复慢</td><td>火电近端故障</td></tr><tr><td>制动电阻</td><td>消耗过剩有功，抑制加速</td><td>设备投资、热容量</td><td>水电/大机组暂态稳定</td></tr><tr><td>直流功率调制</td><td>快速调节直流功率</td><td>依赖直流通道、通信</td><td>交直流混联、区域振荡</td></tr><tr><td>切负荷</td><td>减少缺额，保频率/电压</td><td>用户停电、经济代价</td><td>受端缺额、低频/低压</td></tr><tr><td>解列</td><td>把失步系统分成同步岛</td><td>供电中断、频率/电压再平衡</td><td>失步、连锁故障</td></tr><tr><td>无功紧急投入</td><td>支撑电压</td><td>设备容量、过电压</td><td>电压跌落、HVDC 换相失败</td></tr><tr><td>新能源快速降功率</td><td>减少过剩/支撑频率</td><td>弃风弃光、考核</td><td>高频、过载、稳定极限</td></tr></tbody></table></div>
+<h3 id="s38">6.2 事件驱动与响应驱动</h3>
+<ul><li><strong>事件驱动</strong>：检测到故障/开关变位/直流闭锁，按预置策略动作；速度快，但依赖故障识别和通信。</li><li><strong>响应驱动</strong>：检测到频率、电压、功角、功率越限，按反馈量动作；适应性好，但响应慢、定值难调。</li><li><strong>混合</strong>：事件前馈 + 响应反馈，工程上最常见。</li></ul>
+<p>安稳装置（稳控系统）通常由主站、子站、执行站组成，按&quot;故障场景—控制措施&quot;表动作。GB/T 40587《电力系统安全稳定控制系统技术规范》规定了系统（装置）的一般要求、功能配置、技术要求和二次回路/网络安全要求；GB/T 26399《电力系统安全稳定控制技术导则》给出策略设计原则。</p>
+<h3 id="s39">6.3 策略表不是&quot;if 故障 then 切机&quot;</h3>
+<p>一张可执行的策略表至少包含：</p>
+<ul><li>故障类型、故障元件、故障位置、故障切除时间；</li><li>运行方式/断面潮流范围；</li><li>动作判据（电气量、开关量、时间窗）；</li><li>控制对象、控制量、动作顺序、延时；</li><li>拒动/误动/通信中断的兜底；</li><li>与保护、重合闸、FRT、AGC/AVC、UFLS/UVLS 的配合；</li><li>定值版本、审批、执行日期、复核记录。</li></ul>
+<h3 id="s40">6.4 紧急控制的代价与风险</h3>
+<ul><li>切机/切负荷过多会造成频率/电压过调，甚至引发新的稳定问题；</li><li>解列后各岛功率不平衡，可能频率崩溃；</li><li>直流调制受限于换流站能力和通信延时；</li><li>新能源快速降功率会造成弃电和考核；</li><li>安稳装置本身可能拒动/误动，需要独立校核和定期试验；</li><li>策略表基于离线计算，运行方式变化后可能失效。</li></ul>
+<p><strong>紧急控制不是&quot;多切一点更安全&quot;</strong>：过切同样会失稳，只是换了一种形态。</p>
+<h3 id="s41">6.5 与保护、重合闸、FRT 的配合</h3>
+<ul><li>保护要先于紧急控制动作，但紧急控制不能等保护&quot;确认很久&quot;；</li><li>重合闸于永久故障会二次冲击，安稳策略要识别；</li><li>新能源 FRT 要求不脱网，但紧急控制可能要求其降功率/脱网，两者要分场景；</li><li>低频减载与新能源频率保护可能同时动作，需避免重复切除；</li><li>解列点要与保护定值、安稳策略、黑启动路径一致。</li></ul>
+<h3 id="s42">6.6 演练与维护</h3>
+<ul><li>定期做稳控装置整组传动试验；</li><li>核对定值与运行方式；</li><li>检查通信通道、电源、GPS/北斗对时；</li><li>演练&quot;装置拒动、通信中断、策略表过期&quot;；</li><li>故障后复盘保护/安稳动作，更新模型和策略；</li><li>保留录波、SOE、动作报告，支撑责任分析和模型校正。</li></ul>
+<hr>
+<h2 id="s43">7. D 级合成算例：SMIB 的 CCT、切机与 RoCoF</h2>
+<aside class="note"><p>本算例为合成数据，仅用于演示计算链与判据，不对应任何真实机组、电网或故障。</p></aside>
+<h3 id="s44">7.1 场景</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>数值</th></tr></thead><tbody><tr><td>基准容量</td><td>100 MVA</td></tr><tr><td>惯性常数 H</td><td>5 s</td></tr><tr><td>额定频率</td><td>50 Hz</td></tr><tr><td>故障前机械功率</td><td>0.6 pu</td></tr><tr><td>故障中机械功率</td><td>0.6 pu</td></tr><tr><td>故障后机械功率</td><td>0.6 pu</td></tr><tr><td>机内电势 E'</td><td>1.2 pu</td></tr><tr><td>无穷大母线电压 U</td><td>1.0 pu</td></tr><tr><td>故障前电抗</td><td>0.4 pu</td></tr><tr><td>故障后电抗</td><td>0.8 pu</td></tr><tr><td>故障期间电磁功率</td><td>0 pu</td></tr><tr><td>阻尼</td><td>0</td></tr></tbody></table></div>
+<h3 id="s45">7.2 等面积结果</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>量</th><th style="text-align:right">数值</th></tr></thead><tbody><tr><td>初始功角 δ0</td><td style="text-align:right">11.537°</td></tr><tr><td>切除角 δc</td><td style="text-align:right">84.550°</td></tr><tr><td>不稳定平衡角 δmax</td><td style="text-align:right">156.422°</td></tr><tr><td>加速面积</td><td style="text-align:right">0.7646 pu·rad</td></tr><tr><td>减速面积</td><td style="text-align:right">0.7646 pu·rad</td></tr><tr><td>等面积 CCT</td><td style="text-align:right">0.3677 s</td></tr><tr><td>仿真 CCT</td><td style="text-align:right">0.3677 s</td></tr></tbody></table></div>
+<h3 id="s46">7.3 两种切除时间</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th style="text-align:right">切除时间</th><th>结果</th><th style="text-align:right">最大功角</th><th>说明</th></tr></thead><tbody><tr><td style="text-align:right">0.30 s</td><td>稳定</td><td style="text-align:right">94.77°</td><td>有裕度，振荡逐步衰减（无阻尼时等幅）</td></tr><tr><td style="text-align:right">0.45 s</td><td>失稳</td><td style="text-align:right">越过 156.42°</td><td>约 0.529 s 失去同步</td></tr></tbody></table></div>
+<h3 id="s47">7.4 理想化切机</h3>
+<p>把故障中和故障后的机械功率都降到 0.4 pu（假设切机瞬时完成、无延时、无功率冲击）：</p>
+<pre tabindex="0"><code>δsep = asin(0.4 / 1.5) = 15.466°
+δmax = 180° − 15.466° = 164.534°
+δc = 104.579°
+t_cct = 0.5084 s</code></pre>
+<p>0.45 s 切除此时变为稳定，最大功角 111.66°。这说明切机可以扩大稳定边界，但<strong>这是理想化上界</strong>：真实切机有延时、通信、机组选择、功率冲击和频率/电压副作用，不能直接把这个 0.5084 s 当运行定值。</p>
+<h3 id="s48">7.5 RoCoF</h3>
+<pre tabindex="0"><code>ΔP = 1000 MW
+S_base = 100000 MVA
+H = 4 s
+f0 = 50 Hz
+RoCoF = −50 × 1000 / (2 × 4 × 100000) = −0.0625 Hz/s</code></pre>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th style="text-align:right">H（s）</th><th style="text-align:right">RoCoF（Hz/s）</th></tr></thead><tbody><tr><td style="text-align:right">2</td><td style="text-align:right">−0.1250</td></tr><tr><td style="text-align:right">4</td><td style="text-align:right">−0.0625</td></tr><tr><td style="text-align:right">6</td><td style="text-align:right">−0.0417</td></tr></tbody></table></div>
+<p>这个数只说明初始斜率：同样 1000 MW 缺额，H 减半，RoCoF 翻倍。真实频率最低点还要看一次调频、负荷频率特性、UFLS 和机组/新能源的响应。</p>
+<h3 id="s49">7.6 这个算例说明什么</h3>
+<ul><li>等面积和时域仿真可以互相校核；</li><li>CCT 对切除时间非常敏感，0.30 s 与 0.45 s 是两个世界；</li><li>切机可以扩展 CCT，但代价和副作用必须建模；</li><li>RoCoF 与惯量成反比，但不等同于频率最低点；</li><li>稳定裕度要用&quot;实际切除时间/实际缺额&quot;去比，不是拿铭牌值。</li></ul>
+<h3 id="s50">7.7 这个算例不说明什么</h3>
+<ul><li>不代表多机系统、励磁/调速、负荷动态或 HVDC/FACTS 的影响；</li><li>不覆盖新能源变流器的限流、PLL、FRT 和构网型控制；</li><li>不给出真实 CCT、切机量、低频减载定值或稳控策略；</li><li>不覆盖电压稳定、频率最低点、小干扰振荡或电磁暂态；</li><li>不能用于并网合规、设备选型或投资决策。</li></ul>
+<hr>
+<h2 id="s51">8. 对交易、投资与运营的含义</h2>
+<h3 id="s52">8.1 交易：动态限额会变成价格和偏差</h3>
+<ul><li>稳定限额降低时，断面阻塞加剧，节点价差扩大；</li><li>新能源大发、惯量低时，动态安全约束可能比静态 N-1 更紧；</li><li>故障/脱网会造成价格尖峰、负价和偏差考核；</li><li>交易员要关注调度发布的稳定限额、检修、开机方式和天气，不只看历史价格；</li><li>故障后的结算差异要能追溯到调度指令、计量、保护/安稳动作记录。</li></ul>
+<h3 id="s53">8.2 投资：稳定支撑有价值，但不是免费</h3>
+<ul><li>构网型储能、同步调相机、SVG、快速切机可以提升稳定极限，但增加投资和运行成本；</li><li>储能提供惯量/一次调频/电压支撑的收益取决于市场规则和并网要求；</li><li>新能源配储是否能替代同步机，要做场景化稳定计算，不能只看容量比例；</li><li>并网测试、模型校验、稳控改造、通信通道都是投决成本；</li><li>稳定约束可能导致弃风弃光、可用率下降和考核罚款，要进现金流和风险模型。</li></ul>
+<h3 id="s54">8.3 运营：模型、定值和演练是&quot;沉默资产&quot;</h3>
+<ul><li>模型参数要跟设备改造、控制软件升级同步；</li><li>稳控定值要有版本、审批、执行、复核；</li><li>定期做整组传动和通信测试；</li><li>录波、PMU、SOE 要保存并用于复盘；</li><li>每次故障后评价保护/安稳动作，不只看&quot;有没有跳闸&quot;；</li><li>运行方式变化后，策略表和限额要重新校核。</li></ul>
+<h3 id="s55">8.4 数据与 AI 的边界</h3>
+<p>AI 可以做故障筛选、稳定裕度预测、模型参数辨识、异常检测，但：</p>
+<ul><li>训练数据必须覆盖真实故障形态，不能只用仿真数据；</li><li>代理模型只能做筛选，最终判据要由仿真/规程确认；</li><li>保护和安全稳定控制是确定性安全系统，不能由 AI 实时替代；</li><li>模型可解释性和审计要求高，不能&quot;黑箱说稳定&quot;。</li></ul>
+<hr>
+<h2 id="s56">9. 常见错误（10 条）</h2>
+<ol><li><strong>把静态 N-1 当动态安全</strong>：N-1 只检查故障后的平衡点，不检查能否到达、过程是否失稳。</li><li><strong>用铭牌切除时间算 CCT</strong>：实际切除时间包含保护、断路器、失灵、通信延时，必须用可能的最长切除时间校核。</li><li><strong>只看首摆，不看多摆</strong>：有些系统首摆稳定，后续振荡或控制器交互才失稳。</li><li><strong>把单机等面积套多机</strong>：多机需要关键机组/割集、时域仿真或能量函数，不能每台机各算各的。</li><li><strong>忽略负荷动态</strong>：感应电动机、温控负荷、LTC 会显著改变电压和功角轨迹。</li><li><strong>新能源只用恒功率源模型</strong>：限流、PLL、FRT、负序控制、模式切换都会影响稳定，必须用厂家/检测模型。</li><li><strong>只看 RoCoF，不看频率最低点</strong>：RoCoF 是初始斜率，最低点取决于调频、备用、负荷特性和 UFLS。</li><li><strong>紧急控制&quot;多切一点更安全&quot;</strong>：过切会导致高频、过电压、解列后功率不平衡，同样会失稳。</li><li><strong>策略表不随运行方式更新</strong>：检修、开机方式、新能源出力变化后，离线策略可能失效。</li><li><strong>只演成功路径</strong>：不演练装置拒动、通信中断、保护误动、重合于永久故障，方案就不可靠。</li></ol>
+<hr>
+<h2 id="s57">10. 待核实与未定事项</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>事项</th><th>状态</th><th>查证入口</th></tr></thead><tbody><tr><td>具体稳定判据、故障集、N-1/N-1-1 要求</td><td>分电压等级、分区域</td><td>GB 38755、GB/T 40581、调度规程</td></tr><tr><td>实际保护/断路器/失灵保护切除时间</td><td>分设备、分变电站</td><td>保护定值单、断路器试验报告、录波</td></tr><tr><td>发电机/励磁/调速/PSS 模型与参数</td><td>分机组、分版本</td><td>厂家参数、实测建模、调度模型库</td></tr><tr><td>新能源场站变流器控制与 FRT 模型</td><td>分厂家、分型号、分软件版本</td><td>并网检测报告、厂家模型、现场实测</td></tr><tr><td>负荷构成与动态比例</td><td>分地区、分季节</td><td>负荷建模、实测、调度规程</td></tr><tr><td>低频/低压减载轮次、门槛、切负荷量</td><td>分区域、分年度</td><td>调度下发的 UFLS/UVLS 方案、GB/T 40596、GB/T 40588</td></tr><tr><td>稳控系统策略表、定值、通信和试验周期</td><td>分区域、分工程</td><td>GB/T 40587、GB/T 26399、稳控规程</td></tr><tr><td>在线 DSA 的故障集、计算周期和判据</td><td>分调度机构</td><td>调度自动化/DSA 系统说明</td></tr><tr><td>构网型储能的惯量/过流/黑启动能力</td><td>厂家差异大</td><td>厂家试验报告、GB/T 47968、现场试验</td></tr><tr><td>稳定约束对现货/省间交易的具体影响</td><td>分市场、分时段</td><td>市场规则、调度限额、出清结果</td></tr></tbody></table></div>
+<hr>
+<h2 id="s58">11. 分工：和现有模块怎么配合</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>问题</th><th>先看</th><th>本文负责</th><th>不负责</th></tr></thead><tbody><tr><td>SCADA 量测/状态估计</td><td><a href="状态估计与安全分析-2026-11.html">《状态估计与安全分析》</a></td><td>用状态断面做 DSA</td><td>状态估计器实现、坏数据处理</td></tr><tr><td>故障类型、保护四性、三道防线</td><td><a href="故障保护与安全防御-2026-11.html">《电力系统通识 E》</a></td><td>故障切除后的稳定与紧急控制</td><td>保护整定、重合闸定值</td></tr><tr><td>AGC/AVC 闭环</td><td><a href="AGC-AVC与频率电压闭环-2026-11.html">《AGC/AVC 与频率电压闭环》</a></td><td>频率/电压稳定的物理与紧急控制</td><td>ACE、指令分配、场站考核</td></tr><tr><td>并网测试与 FRT</td><td><a href="并网测试与涉网验收实务清单-2026-11.html">《并网测试与涉网验收实务清单》</a></td><td>模型校验与稳定判据</td><td>试验项目、验收判据</td></tr><tr><td>构网型/储能技术</td><td><a href="储能技术路线安全与构网型并网-2026-11.html">《储能技术路线安全与构网型并网》</a></td><td>构网型对稳定的贡献与边界</td><td>设备选型、控制实现</td></tr><tr><td>宽频振荡</td><td><a href="宽频振荡与场站阻抗分析-2026-11.html">《宽频振荡与场站阻抗分析》</a></td><td>大扰动暂态稳定</td><td>小干扰阻抗/振荡分析</td></tr><tr><td>频率、惯量与灵活性</td><td><a href="频率惯量与灵活性供需-2026-11.html">《频率、惯量与灵活性供需》</a></td><td>频率稳定的物理与紧急控制</td><td>惯量市场、辅助服务采购</td></tr><tr><td>微网/计划孤岛</td><td><a href="微网运行方式与并离网切换-2026-11.html">《微网运行方式与并离网切换》</a></td><td>主网动态安全</td><td>微网状态机、并离网切换</td></tr><tr><td>现货出清与节点价</td><td><a href="现货出清与价格形成-2026-11.html">《现货出清与价格形成》</a></td><td>稳定限额如何进入出清</td><td>SCED/SCUC 算法、报价</td></tr><tr><td>潮流与节点电价</td><td><a href="潮流阻塞与节点电价-2026-11.html">《从潮流到节点电价》</a></td><td>动态约束与静态约束的区别</td><td>LMP 分解、阻塞/网损</td></tr><tr><td>安稳装置/标准</td><td>本文</td><td>策略设计与配合</td><td>装置研发、定值整定</td></tr></tbody></table></div>
+<hr>
+<h2 id="s59">12. 速查</h2>
+<h3 id="s60">12.1 六个公式</h3>
+<pre tabindex="0"><code>M = 2H / ωs
+M d²δ/dt² = Pm − Pe
+Pe = (E' U / X) sinδ
+等面积：A_acc = A_dec
+t_cct = sqrt( 2 M (δc − δ0) / (Pm − Pe_fault) )
+RoCoF ≈ − f0 ΔP / (2 H S_base)</code></pre>
+<h3 id="s61">12.2 五个必问</h3>
+<ol><li>这次 DSA 用的是哪个断面、哪版模型、哪些故障，故障集为什么这么选？</li><li>实际可能的最长切除时间是多少，CCT 裕度还剩多少？</li><li>失稳形态是功角、电压、频率还是控制器振荡，判据和门槛是什么？</li><li>紧急控制切什么、切多少、什么时候切，过切/拒动/通信中断怎么办？</li><li>结论对模型参数、新能源出力、开机方式和负荷构成有多敏感？</li></ol>
+<h3 id="s62">12.3 工具</h3>
+<pre tabindex="0"><code># 在 skills/ems-dispatch/tools 下
+python dynamics.py                 # 打印 SMIB 等面积、仿真、切机与 RoCoF
+python dynamics.py --json          # JSON 输出
+python selftest.py                 # 断言本文数字</code></pre>
+<p><code>dynamics.py</code> 只做 SMIB 等面积、RK4 时域仿真、理想化切机和 RoCoF 的确定性演示，不是生产级动态安全分析程序。</p>
+<hr>
+<h2 id="s63">13. 版本与维护</h2>
+<ul><li>本模块为 v2.2 维护批次新增，数据截止 2026-11-19；所有参数、故障和结果均为 D 级合成数据。</li><li>修改 frontmatter <code>cutoff</code> 时，必须同步 <code>更新清单.md</code> 对应行。</li><li>若稳定导则、计算规范或稳控标准更新，优先复核 §2、§4、§6 和算例参数，并同步 <code>dynamics.py</code> 与 <code>selftest.py</code> 断言。</li><li><strong>相关工具</strong>：<code>skills/ems-dispatch/tools/dynamics.py</code>；相关自测：<code>skills/ems-dispatch/tools/selftest.py</code>。</li><li>方法术语参考电力系统稳定分析的通用教材、GB 38755、GB/T 40581 与 GB/T 40587；本文不复制任何未公开模型、参数或策略表。</li></ul>
+    </article>
+
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>10</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="状态估计与安全分析-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>状态估计与安全分析：从 SCADA 量测到可信运行方式</b>
+          <span>把 EMS 高级应用的第一块地基讲清楚：SCADA 量测如何变成可计算的网络状态，WLS 状态估计、可观测性与坏数据辨识，N-1/ATC 与安全校核，以及状态估计结果如何进入 AGC/AVC/ED；附 3 节点 D 级合成算例与 10 条常见错误。</span>
+        </a>
+        <a class="related-card" href="故障保护与安全防御-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>电力系统通识 E · 故障、保护与安全防御</b>
+          <span>短路与故障类型、继电保护四性与整定配合、新能源故障电流的特殊性、防孤岛、三道防线、低频减载与黑启动。</span>
+        </a>
+        <a class="related-card" href="AGC-AVC与频率电压闭环-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>AGC/AVC 与频率电压闭环：从 ACE 到场站考核</b>
+          <span>把 AGC/AVC 从调度主站到场站执行端拆开：一次/二次/三次调频与 ACE、CPS、AGC 指令分配、AVC 三层与场站无功分配、响应/爬坡/精度考核、通信时延与安全联锁；给出可复现的 D 级合成算例与 10 条常见误判。</span>
+        </a>
+        <a class="related-card" href="并网测试与涉网验收实务清单-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>并网测试与涉网验收实务清单：AGC/AVC/一次调频投运试验与考核点闭环</b>
+          <span>从型式试验到并网验收的测试体系，AGC/AVC/一次调频投运试验方法与判据，故障穿越/电能质量/模型验证，验收清单与整改闭环，把两个细则考核点倒推为试验验证项。</span>
+        </a>
+      </div>
+      <p class="related-rest"><b>更多关联</b><a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线、安全与构网型并网</a><a href="宽频振荡与场站阻抗分析-2026-11.html">宽频振荡与场站阻抗分析：从阻抗扫描到参数整定</a><a href="频率惯量与灵活性供需-2026-11.html">频率、惯量与灵活性供需：从物理缓冲到分时间尺度货架</a><a href="现货出清与价格形成-2026-11.html">现货出清与价格形成：从报价到节点价</a><a href="微网运行方式与并离网切换-2026-11.html">微网运行方式与并离网切换：从状态机到黑启动</a><a href="潮流阻塞与节点电价-2026-11.html">从潮流到节点电价：阻塞、断面与网损的价格传导</a></p>
+    </section>
+
+<section class="related" aria-labelledby="paired-skills-title">
+      <div class="related-head"><h2 id="paired-skills-title">配套技能</h2><span>2</span></div>
+      <div class="related-grid">
+        <a class="related-card skill-pair" href="skill-storage-investment-operations.html">
+          <span class="related-type">收益堆叠、投决、退化与考核（含安徽容量电价、广东现货+调频实例包）</span>
+          <b>储能投资与运营</b>
+          <span>技能 · 储能 · 投决 · LCOS</span>
+        </a>
+        <a class="related-card skill-pair" href="skill-ems-dispatch.html">
+          <span class="related-type">96 点调度、SOC 与需量、AGC/AVC 闭环、状态估计、暂态稳定与宽频振荡接口（含江苏零碳园区微网、山东独立储能电站日运行+考核复盘实例包）</span>
+          <b>EMS 优化调度</b>
+          <span>技能 · EMS · SOC · 需量 · AGC/AVC · 状态估计 · 暂态稳定 · 宽频振荡</span>
+        </a>
+      </div>
+    </section>
+
+    <nav class="pager" aria-label="上下篇">
+          <a class="prev" href="状态估计与安全分析-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">状态估计与安全分析：从 SCADA 量测到可信运行方式</span></a>
+          <span class="spacer"></span>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../动态安全评估与紧急控制-2026-11.md">knowledge/动态安全评估与紧急控制-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="本页目录">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv3"><a href="#s2">0.1 三句话</a></li>
+            <li class="lv3"><a href="#s3">0.2 关键概念</a></li>
+            <li class="lv3"><a href="#s4">0.3 先记住四个数</a></li>
+            <li class="lv3"><a href="#s5">0.4 本文不做什么</a></li>
+            <li class="lv2"><a href="#s6">1. 从静态 N-1 到动态安全</a></li>
+            <li class="lv3"><a href="#s7">1.1 静态 N-1 的边界</a></li>
+            <li class="lv3"><a href="#s8">1.2 时间尺度</a></li>
+            <li class="lv3"><a href="#s9">1.3 动态安全评估的输出</a></li>
+            <li class="lv3"><a href="#s10">1.4 规划态、运行态与在线 DSA</a></li>
+            <li class="lv2"><a href="#s11">2. 稳定分类与判据</a></li>
+            <li class="lv3"><a href="#s12">2.1 四类稳定</a></li>
+            <li class="lv3"><a href="#s13">2.2 稳定判据不是一条线</a></li>
+            <li class="lv3"><a href="#s14">2.3 稳定裕度的四种口径</a></li>
+            <li class="lv3"><a href="#s15">2.4 与三道防线的关系</a></li>
+            <li class="lv2"><a href="#s16">3. 暂态功角稳定：等面积与 CCT</a></li>
+            <li class="lv3"><a href="#s17">3.1 单机无穷大模型</a></li>
+            <li class="lv3"><a href="#s18">3.2 等面积定则</a></li>
+            <li class="lv3"><a href="#s19">3.3 算例：0.3677 s 从哪来</a></li>
+            <li class="lv3"><a href="#s20">3.4 多机系统为什么不能直接套</a></li>
+            <li class="lv3"><a href="#s21">3.5 故障切除时间不是常数</a></li>
+            <li class="lv3"><a href="#s22">3.6 新能源让暂态稳定变在哪</a></li>
+            <li class="lv2"><a href="#s23">4. 时域仿真与在线 DSA</a></li>
+            <li class="lv3"><a href="#s24">4.1 时域仿真做什么</a></li>
+            <li class="lv3"><a href="#s25">4.2 模型清单</a></li>
+            <li class="lv3"><a href="#s26">4.3 故障集与场景</a></li>
+            <li class="lv3"><a href="#s27">4.4 在线 DSA 的工程链</a></li>
+            <li class="lv3"><a href="#s28">4.5 模型校验</a></li>
+            <li class="lv3"><a href="#s29">4.6 数值问题</a></li>
+            <li class="lv2"><a href="#s30">5. 电压稳定与频率稳定</a></li>
+            <li class="lv3"><a href="#s31">5.1 电压稳定不是"电压低一点"</a></li>
+            <li class="lv3"><a href="#s32">5.2 P-V/Q-V 与连续潮流</a></li>
+            <li class="lv3"><a href="#s33">5.3 频率稳定的三个指标</a></li>
+            <li class="lv3"><a href="#s34">5.4 低频减载与高频切机</a></li>
+            <li class="lv3"><a href="#s35">5.5 电压/频率/功角的耦合</a></li>
+            <li class="lv2"><a href="#s36">6. 紧急控制与三道防线</a></li>
+            <li class="lv3"><a href="#s37">6.1 紧急控制的工具箱</a></li>
+            <li class="lv3"><a href="#s38">6.2 事件驱动与响应驱动</a></li>
+            <li class="lv3"><a href="#s39">6.3 策略表不是"if 故障 then 切机"</a></li>
+            <li class="lv3"><a href="#s40">6.4 紧急控制的代价与风险</a></li>
+            <li class="lv3"><a href="#s41">6.5 与保护、重合闸、FRT 的配合</a></li>
+            <li class="lv3"><a href="#s42">6.6 演练与维护</a></li>
+            <li class="lv2"><a href="#s43">7. D 级合成算例：SMIB 的 CCT、切机与 RoCoF</a></li>
+            <li class="lv3"><a href="#s44">7.1 场景</a></li>
+            <li class="lv3"><a href="#s45">7.2 等面积结果</a></li>
+            <li class="lv3"><a href="#s46">7.3 两种切除时间</a></li>
+            <li class="lv3"><a href="#s47">7.4 理想化切机</a></li>
+            <li class="lv3"><a href="#s48">7.5 RoCoF</a></li>
+            <li class="lv3"><a href="#s49">7.6 这个算例说明什么</a></li>
+            <li class="lv3"><a href="#s50">7.7 这个算例不说明什么</a></li>
+            <li class="lv2"><a href="#s51">8. 对交易、投资与运营的含义</a></li>
+            <li class="lv3"><a href="#s52">8.1 交易：动态限额会变成价格和偏差</a></li>
+            <li class="lv3"><a href="#s53">8.2 投资：稳定支撑有价值，但不是免费</a></li>
+            <li class="lv3"><a href="#s54">8.3 运营：模型、定值和演练是"沉默资产"</a></li>
+            <li class="lv3"><a href="#s55">8.4 数据与 AI 的边界</a></li>
+            <li class="lv2"><a href="#s56">9. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s57">10. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s58">11. 分工：和现有模块怎么配合</a></li>
+            <li class="lv2"><a href="#s59">12. 速查</a></li>
+            <li class="lv3"><a href="#s60">12.1 六个公式</a></li>
+            <li class="lv3"><a href="#s61">12.2 五个必问</a></li>
+            <li class="lv3"><a href="#s62">12.3 工具</a></li>
+            <li class="lv2"><a href="#s63">13. 版本与维护</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="49" data-more-label="展开 49 个小节" data-less-label="收起小节">展开 49 个小节</button>
+  </aside>
+</div>
+
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.2" data-cutoff="2026-11-19" data-latest="2026-11-25" data-count="100">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.2）" title="查看更新记录（当前 v2.2）">
+    <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
+    <span class="cl-badge-ver">v2.2</span>
+    <span class="cl-badge-label">更新记录</span>
+  </button>
+  <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
+    <div class="cl-backdrop" data-changelog-close></div>
+    <div class="cl-panel" role="dialog" aria-modal="true" aria-labelledby="cl-title" aria-describedby="cl-subtitle" tabindex="-1">
+      <header class="cl-head">
+        <div class="cl-head-main">
+          <span class="cl-kicker">RELEASE NOTES</span>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.2</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.2 · 数据截止 2026-11-19 · 100 条记录</p>
+        </div>
+        <div class="cl-actions">
+          <div class="cl-lang" role="group" aria-label="切换语言">
+            <button type="button" data-cl-lang="zh" aria-pressed="true">中文</button>
+            <button type="button" data-cl-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <button class="cl-close" type="button" data-changelog-close aria-label="关闭更新记录" title="关闭更新记录">×</button>
+        </div>
+      </header>
+      <div class="cl-body" data-changelog-body>
+        <div class="cl-skeleton" data-changelog-status role="status">
+          <span class="cl-sr">正在读取更新记录…</span>
+          <i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      <footer class="cl-foot">
+        <span data-changelog-meta>v2.2 · 2026-11-19 · 100 条记录</span>
+        <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
+      </footer>
+    </div>
+  </div>
+</div>
+<script src="../assets/doc.js"></script>
+<script src="../assets/theme.js"></script>
+<script src="../assets/changelog.js"></script>
+</body>
+</html>

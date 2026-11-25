@@ -7,7 +7,7 @@ description: User-side tariff and bill optimization expert — turns an industri
 
 > 🌐 Chinese version: [SKILL.md](SKILL.md) ｜ Sister skills: [Electricity Trading Expert](../electricity-trading-expert/SKILL_EN.md) (market rules / settlement), [EMS Dispatch Expert](../ems-dispatch/SKILL_EN.md) (interval-by-interval charging), [Storage Investment & Operations Expert](../storage-investment-operations/SKILL_EN.md) (project decisions), [Virtual Power Plant Expert](../virtual-power-plant/SKILL_EN.md) (aggregation / demand response). This skill answers only "which price to choose, how much to declare, and whether the bill is right"; it does not schedule charge/discharge curves.
 
-> Version v2.1 · data cutoff 2026-11-08
+> Version v2.2 · data cutoff 2026-11-08
 
 > **Maintenance entry points**: `tools/selftest.py` (green means the worked examples still hold), [tariff system note](../../knowledge/中国电价制度谱系-2026-11.md) (segments, nine prices, two-part tariff and TOU), [current policy and verification](../../knowledge/中国电价现行政策与查证-2026-11.md) (four-step verification and bill template), [tariff history](../../knowledge/中国电价史-2026-11.md) (three turning points since 2021), [international comparison](../../knowledge/国际电价比较-方法与模板-2026-11.md) (calibre template).
 > **Open items 2026-2027**: the pace at which fixed TOU schedules exit for direct-market users after Document 1656, the pass-through rules for provincial agency purchasing and retail packages, provincial revisions to power-factor and demand charging, and the allocation calibre for system operation fees.

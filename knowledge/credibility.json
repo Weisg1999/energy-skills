@@ -2,19 +2,19 @@
   "schema": 1,
   "description": "Machine-readable credibility register. Filter modules by confidence/examples/historical before injecting into a model; gradeC and openItems carry the unverified figures and undecided items.",
   "summary": {
-    "modules": 119,
+    "modules": 121,
     "gradeCItems": 22,
-    "openItems": 48,
+    "openItems": 50,
     "events": 32,
     "draftPolicies": 3,
-    "mixedModules": 99,
+    "mixedModules": 101,
     "historicalModules": 15,
     "unverifiedGradeC": 14,
     "verifiedTickets": 6,
     "bannedTickets": 2,
     "ticketsDueForReview": 14,
     "openGaps": 8,
-    "englishSummaries": 119,
+    "englishSummaries": 121,
     "keyFigures": 242,
     "glossaryTerms": 82,
     "controlledAbbreviations": 50,
@@ -1935,6 +1935,16 @@
       "n": 48,
       "topic": "State estimation and security analysis",
       "text": "the actual SE cycle, measurement redundancy, observable islands and pseudo-measurement weights in each dispatch centre; bad-data thresholds and re-estimation policy; topology/model-version synchronisation with switching and maintenance orders; the N-1 contingency set, thermal/voltage/stability limits, ATC and TRM/CBM calibres; how SE quality flags feed AGC/AVC/ED and market clearing; and the boundary between transmission SE, distribution SE, PMU linear SE and dynamic SE. The module's 3-bus DC case and N-1 scan are synthetic demonstrations, not a production estimator or security-assessment result."
+    },
+    {
+      "n": 49,
+      "topic": "Dynamic security assessment and emergency control",
+      "text": "the actual transient-stability criterion, contingency set, fault-clearing times and model-validation requirements used by each dispatch centre; how much detail of IBR fault-current limiting, negative-sequence and GFM behaviour is required in planning and operational models; the approved UFLS/UVLS stages, RoCoF limits and generation-rejection schemes in each provincial grid; how DSA results feed preventive control, ancillary procurement and market constraints; and the boundary between planning studies, online DSA and special-protection settings. The module's SMIB equal-area and RK4 cases are synthetic demonstrations; its CCT and RoCoF numbers are not operating limits for any grid."
+    },
+    {
+      "n": 50,
+      "topic": "Wideband oscillation and plant impedance",
+      "text": "how GB/T 19963.2-2024's wideband-oscillation clauses are implemented in provincial grid-connection review and testing (cite the formal text); the required impedance-scan range, granularity, operating points and acceptance criteria; how frequency coupling, negative-sequence and multi-converter interactions are modelled; the division of responsibility between grid, plant and converter vendor when measured impedance shows negative damping; and how virtual-resistance, PLL-bandwidth and damping-control settings are validated without degrading weak-grid synchronisation or current limiting. The module's two-block positive-sequence model and its `r_neg ∝ bandwidth` assumption are synthetic teaching devices, not vendor models or field-scan results."
     }
   ],
   "openItemDues": [
@@ -3272,6 +3282,32 @@
       ]
     },
     {
+      "id": "m-dynamic-security",
+      "file": "动态安全评估与紧急控制-2026-11.md",
+      "title": "动态安全评估与紧急控制：从静态 N-1 到暂态稳定",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-19",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": "synthetic",
+      "historical": false,
+      "summaryEn": "The layer after static N-1: rotor-angle, voltage and frequency stability; equal-area criterion and critical clearing time; time-domain simulation and online DSA; generation rejection, load shedding, HVDC modulation and islanding; how inverter-based resources change the criteria; with an SMIB synthetic example and ten common errors.",
+      "titleEn": null,
+      "marks": {
+        "gradeC": 1,
+        "draft": 0,
+        "pending": 1,
+        "example": 10
+      },
+      "exampleSections": [
+        "### 3.3 算例：0.3677 s 从哪来",
+        "## 7. D 级合成算例：SMIB 的 CCT、切机与 RoCoF",
+        "### 7.6 这个算例说明什么",
+        "### 7.7 这个算例不说明什么"
+      ]
+    },
+    {
       "id": "m-prov-bj",
       "file": "北京电力市场-2026-11.md",
       "title": "北京电力市场：受端城市的中长期/分时主导与京津唐区域现货路径（2026 版）",
@@ -3533,6 +3569,31 @@
       },
       "exampleSections": [
         "### 6.2 七个合成算例（D 级，仅演示量级）"
+      ]
+    },
+    {
+      "id": "m-oscillation-impedance",
+      "file": "宽频振荡与场站阻抗分析-2026-11.md",
+      "title": "宽频振荡与场站阻抗分析：从阻抗扫描到参数整定",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-19",
+      "confidence": "mixed",
+      "confidenceInferred": true,
+      "examples": "synthetic",
+      "historical": false,
+      "summaryEn": "A practical chain for wideband oscillation between renewable plants and the grid: sub/super-synchronous and wideband terms, positive-sequence impedance and Nyquist/negative-resistance criteria, plant impedance modeling and scanning, PLL/current-loop/virtual-impedance/GFM tuning trade-offs, field diagnosis and grid-connection acceptance; with a 35 kV synthetic plant example and ten common errors.",
+      "titleEn": null,
+      "marks": {
+        "gradeC": 1,
+        "draft": 0,
+        "pending": 2,
+        "example": 14
+      },
+      "exampleSections": [
+        "## 6. D 级合成算例：35 kV 场站的阻抗扫描与整定",
+        "### 6.6 这个算例说明什么",
+        "### 6.7 这个算例不说明什么"
       ]
     },
     {
@@ -5546,13 +5607,13 @@
       "confidenceInferred": true,
       "examples": "synthetic",
       "historical": false,
-      "summaryEn": "79 high-frequency questions with answer points and common errors, covering markets, renewables, carbon, retail, VPP, international tools, price drivers, system physics / EMS engineering, tariffs / investment / contracts, data / case replay, fault protection / distribution connection, microgrid operating-mode transitions, spot clearing / price formation, price attribution / pre-market scenarios, and AGC/AVC plus state estimation / security analysis; also serves as a regression checklist.",
+      "summaryEn": "81 high-frequency questions with answer points and common errors, covering markets, renewables, carbon, retail, VPP, international tools, price drivers, system physics / EMS engineering, tariffs / investment / contracts, data / case replay, fault protection / distribution connection, microgrid operating-mode transitions, spot clearing / price formation, price attribution / pre-market scenarios, AGC/AVC, state estimation / security analysis, transient stability / emergency control, and wideband oscillation / impedance tuning; also serves as a regression checklist.",
       "titleEn": null,
       "marks": {
         "gradeC": 7,
         "draft": 9,
         "pending": 3,
-        "example": 44
+        "example": 47
       },
       "exampleSections": [
         "### Q52 储能投决该看 IRR 还是 LCOS？一份算例怎么读？"
