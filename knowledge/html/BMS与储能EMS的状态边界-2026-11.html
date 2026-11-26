@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>BMS 与储能 EMS 的状态边界：SOC/SOH/SOP、均衡与安全联锁 | energy-skills 知识库</title>
+<meta name="description" content="把 BMS 与 EMS 的分工讲成一条状态链：SOC 的安时积分/OCV 校正/漂移，SOH 的循环与日历衰减，SOP 的功率/能量/温度降额，被动/主动均衡的时间代价，以及电芯—模组—簇—舱—PCS—EMS 的联锁层级；附 100 MW/200 MWh 合成算例与 10 条常见错误。">
+<link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
+<script>
+(function(){try{var t=localStorage.getItem('es-theme');if(!/^(light|cream|green|dark)$/.test(t||'')){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/knowledge.css">
+<link rel="stylesheet" href="../assets/theme-menu.css">
+<link rel="stylesheet" href="../assets/changelog.css">
+</head>
+<body data-cat="storage" id="top">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
+  <div class="crumb">
+    <span class="crumb-cat">08 · STORAGE</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">BMS 与储能 EMS 的状态边界：SOC/SOH/SOP、均衡与安全联锁</span>
+  </div>
+  <div class="topbar-act">
+    <div class="theme-picker" data-theme-picker>
+      <button class="theme-toggle" type="button" data-theme-menu aria-label="选择主题" title="选择主题">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="5"/><circle cx="15" cy="9" r="5"/><circle cx="12" cy="15" r="5"/></svg>
+      </button>
+    </div>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../BMS与储能EMS的状态边界-2026-11.md">.md 源文件<small>knowledge/BMS与储能EMS的状态边界-2026-11.md</small></a>
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">08 · STORAGE</div>
+    <h2 class="nav-cat"><a href="../index.html#storage">储能与 EMS</a></h2>
+    <ul class="nav-list">
+              <li><a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线、安全与构网型并网</a></li>
+              <li><a href="储能投资与运营-2026-11.html">储能投资与运营</a></li>
+              <li><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a></li>
+              <li><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a></li>
+              <li><a href="微网运行方式与并离网切换-2026-11.html">微网运行方式与并离网切换：从状态机到黑启动</a></li>
+              <li><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a></li>
+              <li><a href="场站群与集控EMS架构-2026-11.html">场站群与集控 EMS 架构：分级调度、通信拓扑与群调群控</a></li>
+              <li><a href="EMS数据接口参考架构-2026-11.html">EMS 数据接口参考架构：设备、调度、市场与计量结算的契约</a></li>
+              <li><a href="AGC-AVC与频率电压闭环-2026-11.html">AGC/AVC 与频率电压闭环：从 ACE 到场站考核</a></li>
+              <li><a href="状态估计与安全分析-2026-11.html">状态估计与安全分析：从 SCADA 量测到可信运行方式</a></li>
+              <li><a href="动态安全评估与紧急控制-2026-11.html">动态安全评估与紧急控制：从静态 N-1 到暂态稳定</a></li>
+              <li><a href="微电网与储能电站保护整定-2026-11.html">微电网与储能电站保护整定：从 IBR 故障电流到并离网定值切换</a></li>
+              <li class="on" aria-current="page"><a href="BMS与储能EMS的状态边界-2026-11.html">BMS 与储能 EMS 的状态边界：SOC/SOH/SOP、均衡与安全联锁</a></li>
+              <li><a href="电网侧储能选址定容与可靠性韧性价值-2026-11.html">电网侧储能选址定容与可靠性/韧性价值</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#province"><b>03</b>中国省级市场</a></li>
+              <li><a href="../index.html#intl"><b>04</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>05</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>06</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>07</b>新能源与并网</a></li>
+              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>11</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">08 · STORAGE<i>知识模块</i></div>
+      <h1 class="doc-title">BMS 与储能 EMS 的状态边界：SOC/SOH/SOP、均衡与安全联锁（2026-11）</h1>
+      <p class="lede">把 BMS 与 EMS 的分工讲成一条状态链：SOC 的安时积分/OCV 校正/漂移，SOH 的循环与日历衰减，SOP 的功率/能量/温度降额，被动/主动均衡的时间代价，以及电芯—模组—簇—舱—PCS—EMS 的联锁层级；附 100 MW/200 MWh 合成算例与 10 条常见错误。</p>
+      <p class="hook">BMS 与储能 EMS 的状态边界</p>
+      <div class="tags"><span class="tag">BMS</span><span class="tag">储能EMS</span><span class="tag">SOC</span><span class="tag">SOH</span><span class="tag">SOP</span><span class="tag">均衡</span><span class="tag">安全联锁</span><span class="tag">电池管理</span><span class="tag">状态估计</span><span class="tag">储能安全</span></div>
+      <div class="doc-meta"><span>约 12.2k 字</span><span>阅读约 21 分钟</span><span>17 节</span><span>数据截止 2026-11-19</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（17）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv2"><a href="#s6">1. 为什么 BMS 与 EMS 的边界是核心</a></li>
+            <li class="lv2"><a href="#s10">2. SOC：算出来，还要校正</a></li>
+            <li class="lv2"><a href="#s15">3. SOH：容量、电阻与寿命</a></li>
+            <li class="lv2"><a href="#s19">4. SOP：功率不是额定值</a></li>
+            <li class="lv2"><a href="#s23">5. 均衡：慢功夫</a></li>
+            <li class="lv2"><a href="#s27">6. 安全联锁：分层、分级、可复位</a></li>
+            <li class="lv2"><a href="#s31">7. 状态机与故障分级</a></li>
+            <li class="lv2"><a href="#s35">8. D 级合成算例：100 MW/200 MWh 的状态边界</a></li>
+            <li class="lv2"><a href="#s43">9. 数据与通信</a></li>
+            <li class="lv2"><a href="#s47">10. 标准与安全</a></li>
+            <li class="lv2"><a href="#s48">11. 对投资、运营与交易的含义</a></li>
+            <li class="lv2"><a href="#s53">12. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s54">13. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s55">14. 分工：和现有模块怎么配合</a></li>
+            <li class="lv2"><a href="#s56">15. 速查</a></li>
+            <li class="lv2"><a href="#s60">16. 版本与维护</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>数据截止：2026-11-19｜定位：知识库模块（储能与 EMS·电池状态与安全边界）</p><p>相关技能：<a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a>（储能电站运维与收益）、<a href="../../skills/ems-dispatch/SKILL.md">EMS 优化调度专家</a>（SOC/SOP 约束与调度）、<a href="../../skills/renewable-project-development/SKILL.md">新能源项目开发与并网专家</a>（储能并网与验收）</p><p>用途：回答&quot;BMS 管什么、EMS 管什么、SOC 为什么会漂、SOH 怎么算、SOP 为什么会被温度/能量卡住、均衡要多久、联锁分几层、故障怎么分级&quot;七类问题。本文做工程通识与算例演示；具体阈值、算法、通信协议和联锁逻辑以厂家资料、BMS/EMS 技术协议、消防设计和现行标准为准。</p><p>算例：一个 100 MW/200 MWh 合成储能电站的 SOC/SOH/SOP/均衡算例，由 <a href="../../skills/ems-dispatch/tools/bms.py">bms.py</a> 复现，断言见 <a href="../../skills/ems-dispatch/tools/selftest.py">selftest.py</a> 的 &quot;BMS/EMS state boundaries&quot; 段。</p><p>边界：本文不提供真实电芯、模组、BMS、PCS 或储能电站的参数与阈值；不替代 BMS 算法设计、电池安全评估、消防设计、并网检测或运行规程；不构成设备选型、投资或安全认证建议。</p></aside>
+<hr>
+<h2 id="s1">0. 一页看懂</h2>
+<h3 id="s2">0.1 三句话</h3>
+<ul><li><strong>BMS 管&quot;电芯能不能干&quot;，EMS 管&quot;整站怎么干&quot;</strong>：BMS 给出 SOC/SOH/SOP、温度、电压、绝缘、故障等级；EMS 在这些边界内做功率分配、能量管理、市场申报和运行方式切换。</li><li><strong>SOC 不是&quot;读出来的&quot;，是&quot;算出来并校正的&quot;</strong>：安时积分会漂，OCV 校正有平台区，EKF/UKF 依赖模型；没有校正的 SOC 在长期运行后可能偏差很大。</li><li><strong>SOP 不是额定功率</strong>：它同时受 SOC、温度、电压、电流、能量预算和 PCS 能力约束；EMS 如果把 SOP 当常数，调度计划会在高温/低 SOC 时不可执行。</li></ul>
+<h3 id="s3">0.2 关键概念</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>概念</th><th>含义</th><th>本文口径</th></tr></thead><tbody><tr><td>SOC</td><td>荷电状态，剩余电量占比</td><td>0—100%，本文用百分数</td></tr><tr><td>SOH</td><td>健康状态，当前可用能力相对初始值</td><td>容量/电阻/功率多口径，本文用容量</td></tr><tr><td>SOP</td><td>功率状态，当前可充/可放功率</td><td>受 SOC、温度、电压、能量、PCS 限制</td></tr><tr><td>安时积分</td><td>按电流对时间积分估算 SOC</td><td>会受采样误差、倍率、温度影响</td></tr><tr><td>OCV</td><td>开路电压</td><td>与 SOC 有非线性关系，平台区不敏感</td></tr><tr><td>EKF</td><td>扩展卡尔曼滤波</td><td>用电池模型+量测修正 SOC</td></tr><tr><td>均衡</td><td>减少电芯间 SOC/电压差异</td><td>被动耗能、主动转移</td></tr><tr><td>联锁</td><td>故障时强制停机/断开/闭锁</td><td>分电芯、模组、簇、舱、PCS、EMS</td></tr><tr><td>状态机</td><td>定义正常/降额/限功率/停机/隔离</td><td>要可观测、可复位、可追溯</td></tr><tr><td>热失控</td><td>电池内部放热失控的链式反应</td><td>安全设计的核心场景</td></tr></tbody></table></div>
+<h3 id="s4">0.3 先记住四个数</h3>
+<p>100 MW/200 MWh、280 Ah 电芯的合成算例：</p>
+<ul><li><strong>SOC 安时积分从 50% 放电 100 A、1 h 后降到 14.286%</strong>；同一时刻 OCV 3.225 V 对应 15.0%，校正量约 <strong>+0.714 个百分点</strong>。</li><li><strong>600 次循环、2 年后 SOH 95.1%</strong>：循环衰减 0.9 个百分点、日历衰减 4.0 个百分点，剩余容量 266.28 Ah。</li><li><strong>SOP 在 40% SOC、25 ℃ 为 100 MW；45 ℃ 降到 70 MW（35 ℃ 起每升高 1 ℃ 降额 3%）；15% SOC、25 ℃ 只有 20 MW</strong>：温度与能量都可能成为瓶颈。</li><li><strong>单簇 16 串电芯最大压差 40 mV、被动均衡 100 mA，均衡时间约 280 h</strong>：被动均衡很慢，不能指望它解决严重不一致。</li></ul>
+<aside class="note"><p>口径提醒：上述数字是教学模型的确定性输出，不是任何真实电芯、BMS 或储能电站的参数。真实 SOC/SOH/SOP 随电芯化学体系、温度、倍率、老化、BMS 算法和运行历史变化，必须以厂家数据和现场标定为准。</p></aside>
+<h3 id="s5">0.4 本文不做什么</h3>
+<ul><li>不提供真实电芯型号、容量、内阻、OCV 曲线、BMS 阈值或联锁逻辑；</li><li>不实现完整的电化学模型、EKF/UKF、热模型、热失控传播或消防仿真；</li><li>不替代 BMS 算法设计、电池安全评估、消防设计、并网检测或运行规程；</li><li>不把某个 SOC 算法的误差当作所有 BMS 的误差；</li><li>不给出&quot;某型号电池一定能/不能满足某场景&quot;的结论。</li></ul>
+<hr>
+<h2 id="s6">1. 为什么 BMS 与 EMS 的边界是核心</h2>
+<h3 id="s7">1.1 两个系统，两个时间尺度</h3>
+<p>BMS 的时间尺度是毫秒—秒：</p>
+<ul><li>采集电芯电压、温度、电流；</li><li>估算 SOC/SOH/SOP；</li><li>判断过压/欠压/过温/温差/绝缘/接触器/通信故障；</li><li>驱动均衡；</li><li>执行保护联锁。</li></ul>
+<p>EMS 的时间尺度是秒—分钟—小时—天：</p>
+<ul><li>功率分配与能量管理；</li><li>SOC 计划与备用；</li><li>市场申报与调度指令跟踪；</li><li>运行方式切换；</li><li>故障分级与告警。</li></ul>
+<p>如果边界不清，会出现：</p>
+<ul><li>EMS 以为 SOC 还有 30%，BMS 实际只有 10%，调度指令无法执行；</li><li>EMS 按额定功率申报，BMS 因高温/低 SOC 限功率，考核罚款；</li><li>BMS 因单体过压跳闸，EMS 不知道原因，反复重启；</li><li>BMS 的故障等级与 EMS 的状态机不一致，出现&quot;一个说正常、一个说停机&quot;。</li></ul>
+<h3 id="s8">1.2 BMS 给什么，EMS 用什么</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>BMS 输出</th><th>EMS 用途</th><th>常见问题</th></tr></thead><tbody><tr><td>SOC</td><td>能量计划、备用、申报</td><td>漂移、平台区、校正策略</td></tr><tr><td>SOH</td><td>容量申报、检修、寿命评估</td><td>口径不一（容量/电阻/功率）</td></tr><tr><td>SOP</td><td>功率上限、调频/调峰能力</td><td>温度/能量/电压限制未透传</td></tr><tr><td>单体电压/温度</td><td>一致性、热管理、故障定位</td><td>采样精度、通信延迟</td></tr><tr><td>绝缘电阻</td><td>安全联锁</td><td>阈值、湿度、老化</td></tr><tr><td>接触器/预充状态</td><td>启停逻辑</td><td>粘连、拒动</td></tr><tr><td>故障等级</td><td>状态机、告警、停机</td><td>等级定义不一致</td></tr><tr><td>均衡状态</td><td>运维、SOC 校正</td><td>均衡电流小、时间长</td></tr></tbody></table></div>
+<p>EMS 不应&quot;绕过 BMS&quot;直接控制接触器/电芯；BMS 也不应&quot;绕过 EMS&quot;做全站功率分配。两者通过明确的接口和状态机协作。</p>
+<h3 id="s9">1.3 边界写进合同</h3>
+<p>BMS/EMS 的技术协议至少要写：</p>
+<ul><li>SOC/SOH/SOP 的定义、精度、更新周期、校正条件；</li><li>故障等级、阈值、复位条件、联锁动作；</li><li>通信协议、点表、超时、重连、数据质量；</li><li>均衡策略、均衡电流、启停条件；</li><li>与 PCS/消防/空调/门禁的联锁；</li><li>责任边界：谁负责 SOC 精度、谁负责功率可达性、谁负责安全停机；</li><li>软件版本升级后的复核与验收。</li></ul>
+<p><strong>边界不清的典型后果是：出问题时 BMS 厂家说&quot;EMS 指令不对&quot;，EMS 厂家说&quot;BMS 数据不准&quot;，业主找不到责任方。</strong></p>
+<hr>
+<h2 id="s10">2. SOC：算出来，还要校正</h2>
+<h3 id="s11">2.1 安时积分</h3>
+<pre tabindex="0"><code>SOC(t) = SOC(0) − (1 / C_N) ∫ η I(t) dt × 100%</code></pre>
+<ul><li><code>C_N</code>：额定容量（Ah）；</li><li><code>I</code>：电流（放电为正）；</li><li><code>η</code>：库仑效率；</li><li><code>SOC(0)</code>：初始 SOC。</li></ul>
+<p>算例：280 Ah 电芯，初始 50%，放电 100 A、1 h：</p>
+<pre tabindex="0"><code>SOC = 50 − 100 × 1 / 280 × 100 = 14.286%</code></pre>
+<p>安时积分的问题：</p>
+<ul><li>电流采样误差会累积；</li><li>倍率、温度、老化改变可用容量；</li><li>充放电效率不是常数；</li><li>初始 SOC 可能不准；</li><li>长期运行没有校正会漂移。</li></ul>
+<h3 id="s12">2.2 OCV 校正</h3>
+<p>OCV 与 SOC 有非线性关系。算例 OCV 表：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th style="text-align:right">SOC（%）</th><th style="text-align:right">OCV（V）</th></tr></thead><tbody><tr><td style="text-align:right">0</td><td style="text-align:right">2.80</td></tr><tr><td style="text-align:right">10</td><td style="text-align:right">3.20</td></tr><tr><td style="text-align:right">20</td><td style="text-align:right">3.25</td></tr><tr><td style="text-align:right">30</td><td style="text-align:right">3.28</td></tr><tr><td style="text-align:right">40</td><td style="text-align:right">3.30</td></tr><tr><td style="text-align:right">50</td><td style="text-align:right">3.31</td></tr><tr><td style="text-align:right">60</td><td style="text-align:right">3.32</td></tr><tr><td style="text-align:right">70</td><td style="text-align:right">3.33</td></tr><tr><td style="text-align:right">80</td><td style="text-align:right">3.34</td></tr><tr><td style="text-align:right">90</td><td style="text-align:right">3.40</td></tr><tr><td style="text-align:right">100</td><td style="text-align:right">3.65</td></tr></tbody></table></div>
+<p>3.225 V 落在 10%—20% 之间：</p>
+<pre tabindex="0"><code>SOC_ocv = 10 + (3.225 − 3.20) / (3.25 − 3.20) × 10 = 15.0%</code></pre>
+<p>与安时积分 14.286% 相差 0.714 个百分点。OCV 校正的难点：</p>
+<ul><li>需要静置/低倍率，动态下 OCV 不可直接测；</li><li>磷酸铁锂在 20%—80% 平台区电压变化很小，OCV 对 SOC 不敏感；</li><li>温度、 hysteresis、老化会改变 OCV 曲线；</li><li>校正太频繁可能引入噪声，校正太少会漂移。</li></ul>
+<h3 id="s13">2.3 模型法</h3>
+<p>工程上常用：</p>
+<ul><li>EKF/UKF：用等效电路模型（OCV、R0、RC）和量测更新 SOC；</li><li>滑模观测器；</li><li>数据驱动/机器学习（辅助，不替代安全逻辑）；</li><li>多方法融合：安时积分 + OCV 校正 + 模型法 + 满充/满放标定。</li></ul>
+<p>无论哪种方法，都要回答：</p>
+<ul><li>精度是多少，在什么工况下？</li><li>校正条件是什么，多久一次？</li><li>平台区/低温/大倍率下误差多大？</li><li>SOC 误差如何影响 SOP、备用、申报？</li><li>有没有冗余/交叉校验？</li></ul>
+<h3 id="s14">2.4 SOC 误差的业务后果</h3>
+<ul><li>申报容量偏大 → 实际可用能量不足 → 偏差考核/违约；</li><li>备用 SOC 留得过低 → 紧急支撑时没电；</li><li>SOC 显示过高 → 过充风险；</li><li>SOC 显示过低 → 过放风险/寿命下降；</li><li>多簇 SOC 不一致 → 环流、出力不均、寿命差异。</li></ul>
+<p><strong>SOC 不是&quot;显示值&quot;，是资产可用性和安全边界的输入。</strong></p>
+<hr>
+<h2 id="s15">3. SOH：容量、电阻与寿命</h2>
+<h3 id="s16">3.1 三种口径</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>口径</th><th>定义</th><th>用途</th><th>局限</th></tr></thead><tbody><tr><td>容量 SOH</td><td>当前可用容量 ÷ 初始容量</td><td>能量申报、寿命评估</td><td>受温度/倍率/截止电压影响</td></tr><tr><td>电阻 SOH</td><td>当前内阻 ÷ 初始内阻</td><td>功率能力、热评估</td><td>受温度/SOC/频率影响</td></tr><tr><td>功率 SOH</td><td>当前 SOP ÷ 初始 SOP</td><td>调频/调峰能力</td><td>受工况影响大</td></tr></tbody></table></div>
+<p>本文算例用容量 SOH：</p>
+<pre tabindex="0"><code>SOH = 100% − 循环衰减 − 日历衰减</code></pre>
+<h3 id="s17">3.2 循环与日历</h3>
+<p>算例假设：</p>
+<ul><li>循环衰减 1.5 个百分点/1000 次；</li><li>日历衰减 2.0 个百分点/年；</li><li>600 次循环、2 年。</li></ul>
+<pre tabindex="0"><code>循环衰减 = 1.5 × 600 / 1000 = 0.9 个百分点
+日历衰减 = 2.0 × 2 = 4.0 个百分点
+SOH = 100 − 0.9 − 4.0 = 95.1%
+剩余容量 = 280 × 0.951 = 266.28 Ah</code></pre>
+<p>真实衰减不是线性：</p>
+<ul><li>前几百次循环可能较快，之后趋缓；</li><li>高温、满充搁置、深放电、大倍率会加速；</li><li>日历衰减与温度/ SOC 强相关；</li><li>不同电芯化学体系差异很大；</li><li>衰减到 80% 通常被视为寿命终点，但项目可按保修/安全/经济性定义。</li></ul>
+<h3 id="s18">3.3 SOH 的业务用途</h3>
+<ul><li><strong>可用容量申报</strong>：SOH 95.1% 意味着容量修正后的能量约 190.2 MWh；按 10%—90% SOC 窗口，全窗口可用能量约 152.2 MWh，若从 50% SOC 起放电则当前可放约 76.1 MWh（再扣 RTE 和辅助用电）；</li><li>检修计划：SOH 下降快时提前排查；</li><li>保修索赔：循环/日历/温度/倍率记录；</li><li>二手/梯次利用：SOH 与安全状态；</li><li>投资模型：容量衰减导致收益下降、增容/更换成本。</li></ul>
+<p>SOH 不能只看一个数：要区分<strong>可恢复容量损失</strong>（均衡/标定后恢复）和<strong>不可恢复衰减</strong>（材料/SEI/锂库存损失）。</p>
+<hr>
+<h2 id="s19">4. SOP：功率不是额定值</h2>
+<h3 id="s20">4.1 SOP 的约束</h3>
+<pre tabindex="0"><code>SOP = min(
+  功率上限（PCS/变压器/线路）,
+  能量上限（可用能量 ÷ 持续时间）,
+  温度降额后的功率,
+  电压/电流限制,
+  SOC 窗口限制
+)</code></pre>
+<p>算例：100 MW/200 MWh，SOC 下限 10%，持续 0.5 h，最大 0.5C，35 ℃ 起每升高 1 ℃ 降额 3%（45 ℃ 时温度系数 0.70）。</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>场景</th><th style="text-align:right">能量裕度（MWh）</th><th style="text-align:right">能量限功率（MW）</th><th style="text-align:right">温度系数</th><th style="text-align:right">温度限功率（MW）</th><th style="text-align:right">SOP（MW）</th></tr></thead><tbody><tr><td>40% SOC，25 ℃</td><td style="text-align:right">60</td><td style="text-align:right">120</td><td style="text-align:right">1.00</td><td style="text-align:right">100</td><td style="text-align:right">100</td></tr><tr><td>40% SOC，45 ℃</td><td style="text-align:right">60</td><td style="text-align:right">120</td><td style="text-align:right">0.70</td><td style="text-align:right">70</td><td style="text-align:right">70</td></tr><tr><td>15% SOC，25 ℃</td><td style="text-align:right">10</td><td style="text-align:right">20</td><td style="text-align:right">1.00</td><td style="text-align:right">100</td><td style="text-align:right">20</td></tr></tbody></table></div>
+<p>读法：</p>
+<ul><li>40% SOC、25 ℃：PCS/额定功率是瓶颈，SOP=100 MW；</li><li>40% SOC、45 ℃：温度降额到 70 MW；</li><li>15% SOC、25 ℃：能量只够 20 MW 持续 0.5 h，SOP=20 MW。</li></ul>
+<h3 id="s21">4.2 为什么 EMS 不能把 SOP 当常数</h3>
+<ul><li>高温时段光伏/负荷/市场机会可能同时出现，但 SOP 已降额；</li><li>低 SOC 时能量比功率更紧，调频/备用能力下降；</li><li>低温充电可能受限（析锂风险），SOP 充电方向另算；</li><li>电压接近上限/下限时，功率可能被提前限制；</li><li>多簇并联时，SOP 不是单簇 SOP 简单相加（不一致、环流、通信）。</li></ul>
+<p>EMS 的调度模型要把 SOP 作为<strong>时变约束</strong>，并在申报/备用/AGC 中预留裕度。</p>
+<h3 id="s22">4.3 SOP 与备用</h3>
+<p>如果 EMS 承诺 20 MW 备用，但当时 SOP 只有 15 MW，备用是&quot;纸面备用&quot;。工程上要：</p>
+<ul><li>备用容量 ≤ SOP − 当前出力；</li><li>备用持续时间 ≤ 可用能量 ÷ 备用功率；</li><li>温度/ SOC 变化时滚动校核；</li><li>多簇/多站聚合时考虑相关性；</li><li>备用与能量市场/辅助服务申报协调。</li></ul>
+<hr>
+<h2 id="s23">5. 均衡：慢功夫</h2>
+<h3 id="s24">5.1 被动均衡</h3>
+<p>被动均衡用电阻消耗高电压电芯的能量：</p>
+<ul><li>成本低、电路简单；</li><li>均衡电流小（几十—几百 mA）；</li><li>能量以热的形式耗散；</li><li>均衡时间长。</li></ul>
+<p>算例：取一个 16 串电池簇做教学简化（实际电站簇串数更高，但单电芯均衡时间与串数无关；每个单体配一个均衡电阻，按最高单体计算），最大压差 40 mV，280 Ah，均衡电流 100 mA，假设 0.25%/mV：</p>
+<pre tabindex="0"><code>ΔSOC = 40 mV × 0.25%/mV = 10%
+多余能量 = 10% × 280 Ah × 3.2 V = 89.6 Wh
+均衡功率 = 0.1 A × 3.2 V = 0.32 W
+均衡时间 = 89.6 / 0.32 = 280 h</code></pre>
+<p>约 11.7 天。这还没有考虑：</p>
+<ul><li>均衡只在特定条件（静置/充电末段）启动；</li><li>均衡电流随电压/温度变化；</li><li>电芯自放电/不一致继续产生；</li><li>BMS 采样误差。</li></ul>
+<p><strong>被动均衡适合&quot;小偏差、长期维护&quot;，不适合&quot;严重不一致、临时抱佛脚&quot;。</strong></p>
+<h3 id="s25">5.2 主动均衡</h3>
+<p>主动均衡把能量从高 SOC 电芯转移到低 SOC 电芯：</p>
+<ul><li>效率更高、发热少；</li><li>电路复杂、成本高；</li><li>均衡电流可以更大；</li><li>仍需考虑安全/隔离/故障。</li></ul>
+<p>主动均衡不是&quot;万能&quot;：电芯容量/内阻差异是物理问题，均衡只能缓解 SOC 不一致，不能修复已损坏的电芯。</p>
+<h3 id="s26">5.3 什么时候均衡</h3>
+<ul><li>充电末段/静置时；</li><li>压差超过阈值；</li><li>维护/检修时；</li><li>发现某簇/某模组持续偏低；</li><li>不是&quot;一有压差就全力均衡&quot;。</li></ul>
+<p>均衡策略要与 SOC 校正、热管理、充放电计划配合。严重不一致要先查原因（连接电阻、采样、内阻、微短路），不是盲目均衡。</p>
+<hr>
+<h2 id="s27">6. 安全联锁：分层、分级、可复位</h2>
+<h3 id="s28">6.1 联锁层级</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>层级</th><th>典型判据</th><th>动作</th><th>复位</th></tr></thead><tbody><tr><td>电芯</td><td>过压/欠压/过温/低温/内短路</td><td>停止充/放、告警</td><td>人工/自动（按等级）</td></tr><tr><td>模组</td><td>电压/温度/采样异常</td><td>限功率/隔离模组</td><td>人工检查</td></tr><tr><td>电池簇</td><td>簇过流/绝缘/接触器/熔断器</td><td>断开簇、告警</td><td>人工</td></tr><tr><td>电池舱</td><td>气体/烟雾/温升/消防</td><td>停机、排风、灭火、切断</td><td>消防/人工</td></tr><tr><td>PCS</td><td>过流/过压/欠压/过温/通信</td><td>封锁脉冲/跳闸</td><td>人工/自动</td></tr><tr><td>升压变/开关柜</td><td>过流/零序/温度/压力</td><td>跳闸</td><td>人工</td></tr><tr><td>EMS</td><td>全站故障/通信/消防</td><td>停机/隔离/告警</td><td>人工</td></tr></tbody></table></div>
+<h3 id="s29">6.2 联锁原则</h3>
+<ul><li><strong>故障安全</strong>：失电/通信中断/传感器故障时，进入安全状态；</li><li><strong>分层独立</strong>：BMS 的安全联锁不能只依赖 EMS；</li><li><strong>硬线优先</strong>：紧急停机、消防、门禁等关键联锁应有硬线/独立回路；</li><li><strong>闭锁与复位</strong>：故障要锁存，复位要人工确认/检查；</li><li><strong>可追溯</strong>：记录故障时间、判据、动作、复位人；</li><li><strong>防误</strong>：检修/调试要有挂牌/隔离/防误逻辑。</li></ul>
+<h3 id="s30">6.3 典型联锁场景</h3>
+<ul><li>电芯过压 → BMS 请求 PCS 降功率/停机；</li><li>簇绝缘低 → 断开簇接触器，禁止合闸；</li><li>舱内可燃气体/烟雾 → 停机、切断、排风、消防；</li><li>冷却失效/温度高 → 降额/停机；</li><li>PCS 故障 → 断开交流/直流开关；</li><li>消防喷放 → 切断非消防电源，防止复燃/触电；</li><li>门禁/检修 → 禁止远程操作。</li></ul>
+<p>联锁逻辑要与保护整定、消防设计、PCS 控制、EMS 状态机一致。保护整定见<a href="微电网与储能电站保护整定-2026-11.html">《微电网与储能电站保护整定》</a>。</p>
+<hr>
+<h2 id="s31">7. 状态机与故障分级</h2>
+<h3 id="s32">7.1 状态</h3>
+<p>一个可运维的状态机至少包括：</p>
+<pre tabindex="0"><code>停机（Stop）
+  → 预充/自检（Precharge）
+  → 待机（Standby）
+  → 充电/放电（Charge/Discharge）
+  → 降额（Derated）
+  → 限功率（Limited）
+  → 故障停机（Trip）
+  → 隔离（Isolated）</code></pre>
+<p>状态转换要有：</p>
+<ul><li>进入条件；</li><li>动作（接触器/PCS/告警）；</li><li>退出条件；</li><li>复位权限；</li><li>记录/上报。</li></ul>
+<h3 id="s33">7.2 故障分级</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>等级</th><th>含义</th><th>典型动作</th><th>EMS 处理</th></tr></thead><tbody><tr><td>1 级（告警）</td><td>轻微异常，不影响运行</td><td>记录/提示</td><td>继续运行，关注</td></tr><tr><td>2 级（降额）</td><td>需要限制功率/温度</td><td>降额/限功率</td><td>调整计划/申报</td></tr><tr><td>3 级（停机）</td><td>需要停机检查</td><td>停机/断开</td><td>退出市场/备用</td></tr><tr><td>4 级（安全）</td><td>热失控/消防/绝缘严重</td><td>紧急停机/隔离/消防</td><td>全站安全、告警</td></tr></tbody></table></div>
+<p>故障分级要与 BMS、PCS、EMS、消防的等级定义对齐；不能出现&quot;BMS 4 级、EMS 只当告警&quot;。</p>
+<h3 id="s34">7.3 状态机的可观测性</h3>
+<ul><li>每个状态要有明确的遥测/遥信；</li><li>状态转换要有 SOE/日志；</li><li>EMS 要能看到 BMS 的故障码/等级；</li><li>远方/就地控制要有优先级；</li><li>通信中断要有明确的安全默认状态；</li><li>复位不能&quot;一键掩盖&quot;故障。</li></ul>
+<hr>
+<h2 id="s35">8. D 级合成算例：100 MW/200 MWh 的状态边界</h2>
+<aside class="note"><p>本算例为合成数据，仅用于演示 SOC/SOH/SOP/均衡的计算链；不对应任何真实电芯、BMS 或储能电站。</p></aside>
+<h3 id="s36">8.1 参数</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th style="text-align:right">数值</th></tr></thead><tbody><tr><td>额定功率</td><td style="text-align:right">100 MW</td></tr><tr><td>额定能量</td><td style="text-align:right">200 MWh</td></tr><tr><td>电芯容量</td><td style="text-align:right">280 Ah</td></tr><tr><td>电芯标称电压</td><td style="text-align:right">3.2 V</td></tr><tr><td>SOC 下限/上限</td><td style="text-align:right">10% / 90%</td></tr><tr><td>初始 SOC</td><td style="text-align:right">50%</td></tr><tr><td>放电电流</td><td style="text-align:right">100 A</td></tr><tr><td>放电时间</td><td style="text-align:right">1 h</td></tr><tr><td>循环</td><td style="text-align:right">600 次</td></tr><tr><td>运行年数</td><td style="text-align:right">2 年</td></tr><tr><td>循环衰减</td><td style="text-align:right">1.5 个百分点/1000 次</td></tr><tr><td>日历衰减</td><td style="text-align:right">2.0 个百分点/年</td></tr></tbody></table></div>
+<h3 id="s37">8.2 SOC</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>方法</th><th style="text-align:right">结果</th></tr></thead><tbody><tr><td>安时积分</td><td style="text-align:right">14.286%</td></tr><tr><td>OCV（3.225 V）</td><td style="text-align:right">15.0%</td></tr><tr><td>校正量</td><td style="text-align:right">+0.714 个百分点</td></tr></tbody></table></div>
+<h3 id="s38">8.3 SOH</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th style="text-align:right">数值</th></tr></thead><tbody><tr><td>循环衰减</td><td style="text-align:right">0.9 个百分点</td></tr><tr><td>日历衰减</td><td style="text-align:right">4.0 个百分点</td></tr><tr><td>SOH</td><td style="text-align:right">95.1%</td></tr><tr><td>剩余容量</td><td style="text-align:right">266.28 Ah</td></tr></tbody></table></div>
+<h3 id="s39">8.4 SOP</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>场景</th><th style="text-align:right">SOP（MW）</th><th>瓶颈</th></tr></thead><tbody><tr><td>40% SOC，25 ℃</td><td style="text-align:right">100</td><td>额定功率</td></tr><tr><td>40% SOC，45 ℃</td><td style="text-align:right">70</td><td>温度降额</td></tr><tr><td>15% SOC，25 ℃</td><td style="text-align:right">20</td><td>能量裕度</td></tr></tbody></table></div>
+<h3 id="s40">8.5 均衡</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th style="text-align:right">数值</th></tr></thead><tbody><tr><td>最大压差（单簇 16 串）</td><td style="text-align:right">40 mV</td></tr><tr><td>估算 SOC 差</td><td style="text-align:right">10%</td></tr><tr><td>多余能量</td><td style="text-align:right">89.6 Wh</td></tr><tr><td>均衡功率</td><td style="text-align:right">0.32 W</td></tr><tr><td>均衡时间</td><td style="text-align:right">280 h</td></tr></tbody></table></div>
+<h3 id="s41">8.6 这个算例说明什么</h3>
+<ul><li>安时积分与 OCV 校正可以差 0.7 个百分点，长期不校正会更大；</li><li>SOH 95.1% 不是&quot;还能跑 95.1% 的功率&quot;，容量/功率/电阻要分开看；</li><li>SOP 在不同温度/SOC 下差 5 倍，EMS 不能当常数；</li><li>被动均衡 280 h，说明它只能解决小偏差；</li><li>状态边界要把 SOC/SOH/SOP/温度/故障等级一起传给 EMS。</li></ul>
+<h3 id="s42">8.7 这个算例不说明什么</h3>
+<ul><li>不代表真实电芯的 OCV 曲线、衰减率、内阻、热特性；</li><li>不覆盖 EKF/UKF、热模型、热失控传播、消防；</li><li>不覆盖多簇并联、环流、不一致、采样误差；</li><li>不给出真实 BMS 阈值、联锁逻辑或设备选型结论；</li><li>不能替代 BMS 算法验证、安全评估和现场标定。</li></ul>
+<hr>
+<h2 id="s43">9. 数据与通信</h2>
+<h3 id="s44">9.1 数据点</h3>
+<p>BMS 至少要给 EMS：</p>
+<ul><li>簇/模组/电芯电压（最大/最小/平均）；</li><li>温度（最大/最小/平均/温差）；</li><li>电流、SOC、SOH、SOP（充/放）；</li><li>绝缘电阻；</li><li>接触器/预充/熔断器状态；</li><li>故障码/等级；</li><li>均衡状态；</li><li>累计充放电量/循环次数；</li><li>通信状态/时间戳。</li></ul>
+<h3 id="s45">9.2 通信</h3>
+<ul><li>CAN/RS485/Modbus/TCP 等协议各有实时性/可靠性差异；</li><li>采样周期、上传周期、超时、重连要定义；</li><li>数据质量位（有效/无效/旧数据）要传；</li><li>多簇/多舱聚合要有统一时标；</li><li>与 PCS/EMS/消防/云平台的接口要隔离/冗余；</li><li>网络安全：访问控制、加密/认证、日志、补丁。</li></ul>
+<p>SCADA/数据链路见<a href="SCADA与电力监控数据链路-2026-11.html">《SCADA 与电力监控数据链路》</a>，EMS 接口见<a href="EMS数据接口参考架构-2026-11.html">《EMS 数据接口参考架构》</a>。</p>
+<h3 id="s46">9.3 数据质量</h3>
+<ul><li>SOC/SOH/SOP 是&quot;估算值&quot;，不是&quot;测量值&quot;；</li><li>要带置信度/质量位；</li><li>通信中断时 EMS 要用保守值/退出市场；</li><li>多源数据冲突时要有仲裁；</li><li>历史数据要能追溯算法版本/标定记录。</li></ul>
+<hr>
+<h2 id="s47">10. 标准与安全</h2>
+<ul><li><strong>GB/T 34131-2023《电力储能用电池管理系统》</strong>对 BMS 的功能、性能、通信、安全提出要求；版本以现行有效文本为准。</li><li><strong>GB/T 36276-2023《电力储能用锂离子电池》</strong>覆盖电池性能与安全测试；具体测试项目以标准原文为准。</li><li><strong>GB/T 36558-2023《电力系统电化学储能系统通用技术条件》</strong>给出储能系统通用技术要求。</li><li><strong>GB/T 42288-2022《电化学储能电站安全规程》</strong>涉及电站安全运行；具体条款以正式文本为准。</li><li><strong>GB 44240-2024《电能存储系统用锂蓄电池和电池组安全要求》</strong>是电池安全的重要强制性标准，2025-08-01 实施；具体条款以正式文本为准。</li><li><strong>GB/T 51048-2025《电化学储能电站设计标准》</strong>涉及布置、消防、电气、通风设计；2026-04-01 实施，替代 GB 51048-2014。</li><li><strong>GB/T 34120-2023《电化学储能系统储能变流器技术要求》</strong>涉及 PCS 与 BMS 的接口/保护。</li><li><strong>GB/T 40090-2021《储能电站运行维护规程》</strong>涉及运维、巡检、故障处理。</li><li>IEC 62619、IEC 62933-5-2、UL 9540A 等国际标准/测试方法可作为参考，但适用性要按项目所在市场和并网要求判断。</li></ul>
+<p>标准不能替代厂家的电芯/BMS 数据和安全评估；热失控、消防、气体检测等要以实际测试和设计为准。</p>
+<hr>
+<h2 id="s48">11. 对投资、运营与交易的含义</h2>
+<h3 id="s49">11.1 投资</h3>
+<ul><li>SOC/SOH/SOP 的精度和衰减假设直接影响可用能量、收益和更换成本；</li><li>BMS 的均衡能力、采样精度、故障分级影响运维成本；</li><li>消防/联锁/通信/备件是隐性投资；</li><li>保修条款要覆盖容量衰减、循环次数、温度/倍率条件；</li><li>不同厂家 BMS 的 SOC 算法/接口差异会影响 EMS 集成。</li></ul>
+<h3 id="s50">11.2 运营</h3>
+<ul><li>每日核对 SOC 与电量、SOC 与 OCV/标定；</li><li>定期检查压差、温差、绝缘、接触器；</li><li>高温/低温季节调整 SOP 和运行策略；</li><li>均衡不能替代检修，严重不一致要查原因；</li><li>故障分级/复位要有规程；</li><li>软件升级后要复核 SOC/SOP 和联锁。</li></ul>
+<h3 id="s51">11.3 交易与市场</h3>
+<ul><li>申报可用容量要用 SOH/SOP 修正后的值；</li><li>备用/调频要预留 SOC 和温度裕度；</li><li>高温/低 SOC 时不能按额定功率承诺；</li><li>故障停机要退出市场/备用，避免考核；</li><li>储能参与辅助服务时，BMS 限功率可能导致履约失败；</li><li>交易员要关注电站的 SOC/SOH/SOP 状态和检修计划。</li></ul>
+<h3 id="s52">11.4 数据与 AI 的边界</h3>
+<p>AI 可以做 SOC/SOH 估计、异常检测、寿命预测，但：</p>
+<ul><li>训练数据要覆盖真实工况/老化/故障；</li><li>安全联锁不能由 AI 实时替代；</li><li>模型要有可解释性和审计；</li><li>预测结果要带置信度；</li><li>&quot;AI 说电池健康&quot;不能替代 BMS 保护和安全评估。</li></ul>
+<hr>
+<h2 id="s53">12. 常见错误（10 条）</h2>
+<ol><li><strong>把 SOC 当测量值</strong>：SOC 是估算值，不校正会漂移。</li><li><strong>用额定功率当 SOP</strong>：温度、SOC、能量、电压都会限制功率。</li><li><strong>SOH 只看容量</strong>：功率能力/内阻/安全状态可能先恶化。</li><li><strong>忽略 SOC 平台区</strong>：磷酸铁锂 20%—80% 的 OCV 对 SOC 不敏感，校正困难。</li><li><strong>被动均衡当万能</strong>：均衡电流小、时间长，严重不一致要先查原因。</li><li><strong>联锁只靠软件</strong>：通信中断/EMS 故障时，关键联锁要有硬线/独立回路。</li><li><strong>故障等级不统一</strong>：BMS 4 级、EMS 只当告警，导致误判。</li><li><strong>通信中断用最后值</strong>：旧数据可能让 EMS 继续调度，必须用保守值/退出。</li><li><strong>软件升级不复核</strong>：BMS/EMS 升级后 SOC/SOP/联锁可能变化。</li><li><strong>把 BMS 当&quot;黑箱&quot;</strong>：不读故障码/单体数据，无法定位不一致/热问题。</li></ol>
+<hr>
+<h2 id="s54">13. 待核实与未定事项</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>事项</th><th>状态</th><th>查证入口</th></tr></thead><tbody><tr><td>电芯 OCV/内阻/衰减曲线</td><td>分厂家、分型号、分温度</td><td>厂家数据、测试报告、现场标定</td></tr><tr><td>BMS SOC/SOH/SOP 算法与精度</td><td>分厂家、分版本</td><td>BMS 技术协议、测试报告、现场比对</td></tr><tr><td>BMS 故障阈值/等级/复位逻辑</td><td>分厂家、分项目</td><td>BMS 手册、联锁逻辑图、FAT/SAT</td></tr><tr><td>均衡策略/电流/启停条件</td><td>分厂家、分版本</td><td>BMS 手册、运行记录</td></tr><tr><td>PCS 与 BMS 的接口/限流/保护</td><td>分厂家、分型号</td><td>PCS 手册、技术协议、并网检测</td></tr><tr><td>消防/气体/排风/门禁联锁</td><td>分项目、分设计</td><td>消防设计、联锁逻辑图、验收报告</td></tr><tr><td>通信协议/点表/时标/质量位</td><td>分项目</td><td>EMS/BMS 接口文档、SCADA 点表</td></tr><tr><td>容量衰减保修条款</td><td>分合同</td><td>技术协议、保修条款、运行数据</td></tr><tr><td>标准版本/实施日期</td><td>持续更新</td><td>国家标准全文公开系统、行业标准</td></tr><tr><td>热失控/消防测试方法</td><td>分标准/分市场</td><td>UL 9540A、IEC、GB 标准、第三方报告</td></tr></tbody></table></div>
+<hr>
+<h2 id="s55">14. 分工：和现有模块怎么配合</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>问题</th><th>先看</th><th>本文负责</th><th>不负责</th></tr></thead><tbody><tr><td>储能技术路线/安全</td><td><a href="储能技术路线安全与构网型并网-2026-11.html">《储能技术路线安全与构网型并网》</a></td><td>BMS 状态边界与联锁</td><td>电芯选型、热失控机理</td></tr><tr><td>储能 EMS</td><td><a href="储能EMS优化调度-算法与工程-2026-11.html">《储能 EMS 优化调度》</a></td><td>SOC/SOH/SOP 如何进 EMS</td><td>优化算法、市场策略</td></tr><tr><td>储能投资</td><td><a href="储能投资与运营-2026-11.html">《储能投资与运营》</a></td><td>衰减/可用容量对收益的影响</td><td>LCOE、投资测算</td></tr><tr><td>保护整定</td><td><a href="微电网与储能电站保护整定-2026-11.html">《微电网与储能电站保护整定》</a></td><td>BMS/PCS/保护联锁</td><td>保护定值、CT/PT</td></tr><tr><td>储能选址定容</td><td><a href="电网侧储能选址定容与可靠性韧性价值-2026-11.html">《电网侧储能选址定容与可靠性韧性价值》</a></td><td>容量/功率边界</td><td>选址、经济性</td></tr><tr><td>SCADA</td><td><a href="SCADA与电力监控数据链路-2026-11.html">《SCADA 与电力监控数据链路》</a></td><td>BMS 数据点/质量位</td><td>四遥、规约、历史库</td></tr><tr><td>EMS 接口</td><td><a href="EMS数据接口参考架构-2026-11.html">《EMS 数据接口参考架构》</a></td><td>BMS-EMS 接口语义</td><td>协议实现、点表</td></tr><tr><td>微网 EMS</td><td><a href="微网EMS优化调度-算法与工程-2026-11.html">《微网 EMS 优化调度》</a></td><td>微网内 BMS 边界</td><td>模式切换、经济调度</td></tr><tr><td>并网测试</td><td><a href="并网测试与涉网验收实务清单-2026-11.html">《并网测试与涉网验收实务清单》</a></td><td>BMS/PCS 联调</td><td>试验项目、验收判据</td></tr><tr><td>动态安全</td><td><a href="动态安全评估与紧急控制-2026-11.html">《动态安全评估与紧急控制》</a></td><td>储能支撑的边界</td><td>暂态稳定、紧急控制</td></tr></tbody></table></div>
+<hr>
+<h2 id="s56">15. 速查</h2>
+<h3 id="s57">15.1 六个公式</h3>
+<pre tabindex="0"><code>SOC(t) = SOC(0) − (1 / C_N) ∫ η I dt × 100%
+SOC_ocv = 插值(OCV 表)
+SOH = 100% − 循环衰减 − 日历衰减
+SOP = min(功率上限, 可用能量 / 持续时间, 温度降额, 电压/电流限制)
+均衡时间 = 多余能量 / 均衡功率
+可用能量 = 额定能量 × SOH × (SOC − SOC_min) / 100</code></pre>
+<h3 id="s58">15.2 五个必问</h3>
+<ol><li>SOC 用什么算法，精度多少，多久校正一次，平台区怎么办？</li><li>SOH 是容量、电阻还是功率口径，衰减假设是什么？</li><li>SOP 是否随温度/SOC/能量实时更新，EMS 是否把它当约束？</li><li>均衡电流多大，严重不一致要多久，是否先查原因？</li><li>联锁分几层，通信中断/失电时是否安全，复位权限是谁？</li></ol>
+<h3 id="s59">15.3 工具</h3>
+<pre tabindex="0"><code># 在 skills/ems-dispatch/tools 下
+python bms.py                 # 打印 SOC/SOH/SOP/均衡
+python bms.py --json          # JSON 输出
+python selftest.py            # 断言本文数字</code></pre>
+<p><code>bms.py</code> 只做安时积分、线性插值、线性衰减和简化 SOP/均衡的确定性演示，不是生产级 BMS 算法。</p>
+<hr>
+<h2 id="s60">16. 版本与维护</h2>
+<ul><li>本模块为 v2.3 维护批次新增，数据截止 2026-11-19；所有参数、衰减和结果均为 D 级合成数据。</li><li>修改 frontmatter <code>cutoff</code> 时，必须同步 <code>更新清单.md</code> 对应行。</li><li>若 GB/T 34131、GB/T 36276、GB 44240、GB/T 42288 或 BMS/PCS 接口标准更新，优先复核 §2—§8 和算例参数，并同步 <code>bms.py</code> 与 <code>selftest.py</code> 断言。</li><li><strong>相关工具</strong>：<code>skills/ems-dispatch/tools/bms.py</code>；相关自测：<code>skills/ems-dispatch/tools/selftest.py</code>。</li><li>方法术语参考电池管理、储能系统与电池安全的通用教材和标准；本文不复制任何厂家 OCV 曲线、BMS 阈值或未公开模型。</li></ul>
+    </article>
+
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>10</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="储能技术路线安全与构网型并网-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>储能技术路线、安全与构网型并网</b>
+          <span>锂电/钠电/液流/压缩空气/飞轮对比，五层安全设防与标准，构网型控制、指标与验收。</span>
+        </a>
+        <a class="related-card" href="储能EMS优化调度-算法与工程-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>储能 EMS 优化调度</b>
+          <span>把储能调度建成 MILP：96 点经济调度、多市场堆叠、SOC/退化、MPC 与安全联锁，并给出与交易层的四种融合模式。</span>
+        </a>
+        <a class="related-card" href="储能投资与运营-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>储能投资与运营</b>
+          <span>114/1656/411/1583 文号、容量电价时长折算、投决算例、收入堆叠、退化质保与敏感性。</span>
+        </a>
+        <a class="related-card" href="微电网与储能电站保护整定-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>微电网与储能电站保护整定：从 IBR 故障电流到并离网定值切换</b>
+          <span>把微网与储能电站的保护整定讲成一条工程链：跟网/构网变流器的故障电流差异，序网络与接地方式，过流/零序/差动/防孤岛配置，并网组与孤网组的定值切换，CTI 配合、灵敏度与现场校验；附 10 kV 合成微网 D 级算例与 10 条常见错误。</span>
+        </a>
+      </div>
+      <p class="related-rest"><b>更多关联</b><a href="电网侧储能选址定容与可靠性韧性价值-2026-11.html">电网侧储能选址定容与可靠性/韧性价值</a><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a><a href="动态安全评估与紧急控制-2026-11.html">动态安全评估与紧急控制：从静态 N-1 到暂态稳定</a><a href="EMS数据接口参考架构-2026-11.html">EMS 数据接口参考架构：设备、调度、市场与计量结算的契约</a><a href="微网运行方式与并离网切换-2026-11.html">微网运行方式与并离网切换：从状态机到黑启动</a><a href="并网测试与涉网验收实务清单-2026-11.html">并网测试与涉网验收实务清单：AGC/AVC/一次调频投运试验与考核点闭环</a></p>
+    </section>
+
+<section class="related" aria-labelledby="paired-skills-title">
+      <div class="related-head"><h2 id="paired-skills-title">配套技能</h2><span>2</span></div>
+      <div class="related-grid">
+        <a class="related-card skill-pair" href="skill-storage-investment-operations.html">
+          <span class="related-type">收益堆叠、投决、退化与考核（含安徽容量电价、广东现货+调频实例包），并接入选址定容、保护整定、BMS 状态边界与资源充裕性</span>
+          <b>储能投资与运营</b>
+          <span>技能 · 储能 · 投决 · LCOS · 选址</span>
+        </a>
+        <a class="related-card skill-pair" href="skill-ems-dispatch.html">
+          <span class="related-type">96 点调度、SOC 与需量、AGC/AVC 闭环、状态估计、暂态稳定、宽频振荡、保护整定、BMS 边界与运行调度（含江苏零碳园区微网、山东独立储能电站日运行+考核复盘实例包）</span>
+          <b>EMS 优化调度</b>
+          <span>技能 · EMS · SOC · 需量 · AGC/AVC · 状态估计 · 暂态稳定 · 宽频振荡 · 保护整定 · BMS</span>
+        </a>
+      </div>
+    </section>
+
+    <nav class="pager" aria-label="上下篇">
+          <a class="prev" href="微电网与储能电站保护整定-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">微电网与储能电站保护整定：从 IBR 故障电流到并离网定值切换</span></a>
+          <a class="next" href="电网侧储能选址定容与可靠性韧性价值-2026-11.html"><span class="dir">下一篇 →</span><span class="ttl">电网侧储能选址定容与可靠性/韧性价值</span></a>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../BMS与储能EMS的状态边界-2026-11.md">knowledge/BMS与储能EMS的状态边界-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="本页目录">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv3"><a href="#s2">0.1 三句话</a></li>
+            <li class="lv3"><a href="#s3">0.2 关键概念</a></li>
+            <li class="lv3"><a href="#s4">0.3 先记住四个数</a></li>
+            <li class="lv3"><a href="#s5">0.4 本文不做什么</a></li>
+            <li class="lv2"><a href="#s6">1. 为什么 BMS 与 EMS 的边界是核心</a></li>
+            <li class="lv3"><a href="#s7">1.1 两个系统，两个时间尺度</a></li>
+            <li class="lv3"><a href="#s8">1.2 BMS 给什么，EMS 用什么</a></li>
+            <li class="lv3"><a href="#s9">1.3 边界写进合同</a></li>
+            <li class="lv2"><a href="#s10">2. SOC：算出来，还要校正</a></li>
+            <li class="lv3"><a href="#s11">2.1 安时积分</a></li>
+            <li class="lv3"><a href="#s12">2.2 OCV 校正</a></li>
+            <li class="lv3"><a href="#s13">2.3 模型法</a></li>
+            <li class="lv3"><a href="#s14">2.4 SOC 误差的业务后果</a></li>
+            <li class="lv2"><a href="#s15">3. SOH：容量、电阻与寿命</a></li>
+            <li class="lv3"><a href="#s16">3.1 三种口径</a></li>
+            <li class="lv3"><a href="#s17">3.2 循环与日历</a></li>
+            <li class="lv3"><a href="#s18">3.3 SOH 的业务用途</a></li>
+            <li class="lv2"><a href="#s19">4. SOP：功率不是额定值</a></li>
+            <li class="lv3"><a href="#s20">4.1 SOP 的约束</a></li>
+            <li class="lv3"><a href="#s21">4.2 为什么 EMS 不能把 SOP 当常数</a></li>
+            <li class="lv3"><a href="#s22">4.3 SOP 与备用</a></li>
+            <li class="lv2"><a href="#s23">5. 均衡：慢功夫</a></li>
+            <li class="lv3"><a href="#s24">5.1 被动均衡</a></li>
+            <li class="lv3"><a href="#s25">5.2 主动均衡</a></li>
+            <li class="lv3"><a href="#s26">5.3 什么时候均衡</a></li>
+            <li class="lv2"><a href="#s27">6. 安全联锁：分层、分级、可复位</a></li>
+            <li class="lv3"><a href="#s28">6.1 联锁层级</a></li>
+            <li class="lv3"><a href="#s29">6.2 联锁原则</a></li>
+            <li class="lv3"><a href="#s30">6.3 典型联锁场景</a></li>
+            <li class="lv2"><a href="#s31">7. 状态机与故障分级</a></li>
+            <li class="lv3"><a href="#s32">7.1 状态</a></li>
+            <li class="lv3"><a href="#s33">7.2 故障分级</a></li>
+            <li class="lv3"><a href="#s34">7.3 状态机的可观测性</a></li>
+            <li class="lv2"><a href="#s35">8. D 级合成算例：100 MW/200 MWh 的状态边界</a></li>
+            <li class="lv3"><a href="#s36">8.1 参数</a></li>
+            <li class="lv3"><a href="#s37">8.2 SOC</a></li>
+            <li class="lv3"><a href="#s38">8.3 SOH</a></li>
+            <li class="lv3"><a href="#s39">8.4 SOP</a></li>
+            <li class="lv3"><a href="#s40">8.5 均衡</a></li>
+            <li class="lv3"><a href="#s41">8.6 这个算例说明什么</a></li>
+            <li class="lv3"><a href="#s42">8.7 这个算例不说明什么</a></li>
+            <li class="lv2"><a href="#s43">9. 数据与通信</a></li>
+            <li class="lv3"><a href="#s44">9.1 数据点</a></li>
+            <li class="lv3"><a href="#s45">9.2 通信</a></li>
+            <li class="lv3"><a href="#s46">9.3 数据质量</a></li>
+            <li class="lv2"><a href="#s47">10. 标准与安全</a></li>
+            <li class="lv2"><a href="#s48">11. 对投资、运营与交易的含义</a></li>
+            <li class="lv3"><a href="#s49">11.1 投资</a></li>
+            <li class="lv3"><a href="#s50">11.2 运营</a></li>
+            <li class="lv3"><a href="#s51">11.3 交易与市场</a></li>
+            <li class="lv3"><a href="#s52">11.4 数据与 AI 的边界</a></li>
+            <li class="lv2"><a href="#s53">12. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s54">13. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s55">14. 分工：和现有模块怎么配合</a></li>
+            <li class="lv2"><a href="#s56">15. 速查</a></li>
+            <li class="lv3"><a href="#s57">15.1 六个公式</a></li>
+            <li class="lv3"><a href="#s58">15.2 五个必问</a></li>
+            <li class="lv3"><a href="#s59">15.3 工具</a></li>
+            <li class="lv2"><a href="#s60">16. 版本与维护</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="43" data-more-label="展开 43 个小节" data-less-label="收起小节">展开 43 个小节</button>
+  </aside>
+</div>
+
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.3" data-cutoff="2026-11-19" data-latest="2026-11-27" data-count="101">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.3）" title="查看更新记录（当前 v2.3）">
+    <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
+    <span class="cl-badge-ver">v2.3</span>
+    <span class="cl-badge-label">更新记录</span>
+  </button>
+  <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
+    <div class="cl-backdrop" data-changelog-close></div>
+    <div class="cl-panel" role="dialog" aria-modal="true" aria-labelledby="cl-title" aria-describedby="cl-subtitle" tabindex="-1">
+      <header class="cl-head">
+        <div class="cl-head-main">
+          <span class="cl-kicker">RELEASE NOTES</span>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.3</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.3 · 数据截止 2026-11-19 · 101 条记录</p>
+        </div>
+        <div class="cl-actions">
+          <div class="cl-lang" role="group" aria-label="切换语言">
+            <button type="button" data-cl-lang="zh" aria-pressed="true">中文</button>
+            <button type="button" data-cl-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <button class="cl-close" type="button" data-changelog-close aria-label="关闭更新记录" title="关闭更新记录">×</button>
+        </div>
+      </header>
+      <div class="cl-body" data-changelog-body>
+        <div class="cl-skeleton" data-changelog-status role="status">
+          <span class="cl-sr">正在读取更新记录…</span>
+          <i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      <footer class="cl-foot">
+        <span data-changelog-meta>v2.3 · 2026-11-19 · 101 条记录</span>
+        <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
+      </footer>
+    </div>
+  </div>
+</div>
+<script src="../assets/doc.js"></script>
+<script src="../assets/theme.js"></script>
+<script src="../assets/changelog.js"></script>
+</body>
+</html>

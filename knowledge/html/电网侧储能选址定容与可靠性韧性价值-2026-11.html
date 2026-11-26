@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>电网侧储能选址定容与可靠性/韧性价值 | energy-skills 知识库</title>
+<meta name="description" content="把电网侧储能的选址定容讲成一条价值链：EENS/LOLE 与 VoLL 怎么算，容量/能量/持续时间怎么配，阻塞、可靠性与韧性价值怎么区分和避免重复计算，CRF/NPV/BCR 怎么做，以及三节点合成算例中“同样储能、放错母线 BCR 减半”的演示；附 10 条常见错误。">
+<link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
+<script>
+(function(){try{var t=localStorage.getItem('es-theme');if(!/^(light|cream|green|dark)$/.test(t||'')){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/knowledge.css">
+<link rel="stylesheet" href="../assets/theme-menu.css">
+<link rel="stylesheet" href="../assets/changelog.css">
+</head>
+<body data-cat="storage" id="top">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
+  <div class="crumb">
+    <span class="crumb-cat">08 · STORAGE</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">电网侧储能选址定容与可靠性/韧性价值</span>
+  </div>
+  <div class="topbar-act">
+    <div class="theme-picker" data-theme-picker>
+      <button class="theme-toggle" type="button" data-theme-menu aria-label="选择主题" title="选择主题">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="5"/><circle cx="15" cy="9" r="5"/><circle cx="12" cy="15" r="5"/></svg>
+      </button>
+    </div>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../电网侧储能选址定容与可靠性韧性价值-2026-11.md">.md 源文件<small>knowledge/电网侧储能选址定容与可靠性韧性价值-2026-11.md</small></a>
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">08 · STORAGE</div>
+    <h2 class="nav-cat"><a href="../index.html#storage">储能与 EMS</a></h2>
+    <ul class="nav-list">
+              <li><a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线、安全与构网型并网</a></li>
+              <li><a href="储能投资与运营-2026-11.html">储能投资与运营</a></li>
+              <li><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS 优化调度</a></li>
+              <li><a href="微网EMS优化调度-算法与工程-2026-11.html">微网 EMS 优化调度</a></li>
+              <li><a href="微网运行方式与并离网切换-2026-11.html">微网运行方式与并离网切换：从状态机到黑启动</a></li>
+              <li><a href="SCADA与电力监控数据链路-2026-11.html">SCADA 与电力监控数据链路</a></li>
+              <li><a href="场站群与集控EMS架构-2026-11.html">场站群与集控 EMS 架构：分级调度、通信拓扑与群调群控</a></li>
+              <li><a href="EMS数据接口参考架构-2026-11.html">EMS 数据接口参考架构：设备、调度、市场与计量结算的契约</a></li>
+              <li><a href="AGC-AVC与频率电压闭环-2026-11.html">AGC/AVC 与频率电压闭环：从 ACE 到场站考核</a></li>
+              <li><a href="状态估计与安全分析-2026-11.html">状态估计与安全分析：从 SCADA 量测到可信运行方式</a></li>
+              <li><a href="动态安全评估与紧急控制-2026-11.html">动态安全评估与紧急控制：从静态 N-1 到暂态稳定</a></li>
+              <li><a href="微电网与储能电站保护整定-2026-11.html">微电网与储能电站保护整定：从 IBR 故障电流到并离网定值切换</a></li>
+              <li><a href="BMS与储能EMS的状态边界-2026-11.html">BMS 与储能 EMS 的状态边界：SOC/SOH/SOP、均衡与安全联锁</a></li>
+              <li class="on" aria-current="page"><a href="电网侧储能选址定容与可靠性韧性价值-2026-11.html">电网侧储能选址定容与可靠性/韧性价值</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#province"><b>03</b>中国省级市场</a></li>
+              <li><a href="../index.html#intl"><b>04</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>05</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>06</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>07</b>新能源与并网</a></li>
+              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>11</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">08 · STORAGE<i>知识模块</i></div>
+      <h1 class="doc-title">电网侧储能选址定容与可靠性/韧性价值（2026-11）</h1>
+      <p class="lede">把电网侧储能的选址定容讲成一条价值链：EENS/LOLE 与 VoLL 怎么算，容量/能量/持续时间怎么配，阻塞、可靠性与韧性价值怎么区分和避免重复计算，CRF/NPV/BCR 怎么做，以及三节点合成算例中“同样储能、放错母线 BCR 减半”的演示；附 10 条常见错误。</p>
+      <p class="hook">电网侧储能选址定容与可靠性/韧性价值</p>
+      <div class="tags"><span class="tag">储能选址</span><span class="tag">储能定容</span><span class="tag">可靠性</span><span class="tag">韧性</span><span class="tag">EENS</span><span class="tag">LOLE</span><span class="tag">VoLL</span><span class="tag">容量信用</span><span class="tag">NPV</span><span class="tag">BCR</span><span class="tag">电网侧储能</span></div>
+      <div class="doc-meta"><span>约 10.5k 字</span><span>阅读约 19 分钟</span><span>15 节</span><span>数据截止 2026-11-19</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（15）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv2"><a href="#s6">1. 问题定义：为什么"位置"和"容量"要一起定</a></li>
+            <li class="lv2"><a href="#s10">2. 价值构成</a></li>
+            <li class="lv2"><a href="#s14">3. 可靠性指标：EENS、LOLE 与 VoLL</a></li>
+            <li class="lv2"><a href="#s19">4. 选址：先筛后算</a></li>
+            <li class="lv2"><a href="#s23">5. 定容：功率、能量、持续时间</a></li>
+            <li class="lv2"><a href="#s28">6. 经济性：CRF、NPV 与 BCR</a></li>
+            <li class="lv2"><a href="#s34">7. D 级合成算例：三节点网络的选址定容</a></li>
+            <li class="lv2"><a href="#s42">8. 韧性价值：别把可靠性算两遍</a></li>
+            <li class="lv2"><a href="#s46">9. 对投资、运营与交易的含义</a></li>
+            <li class="lv2"><a href="#s51">10. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s52">11. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s53">12. 分工：和现有模块怎么配合</a></li>
+            <li class="lv2"><a href="#s54">13. 速查</a></li>
+            <li class="lv2"><a href="#s58">14. 版本与维护</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>数据截止：2026-11-19｜定位：知识库模块（储能与 EMS·电网侧储能规划）</p><p>相关技能：<a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a>（投决与收益）、<a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a>（现货/容量/辅助服务）、<a href="../../skills/renewable-project-development/SKILL.md">新能源项目开发与并网专家</a>（并网与选址）</p><p>用途：回答&quot;储能该放在哪、放多大、能值多少钱、可靠性和韧性怎么算、NPV/BCR 怎么做、为什么同样容量放错位置就不赚钱&quot;六类问题。本文做工程通识与算例演示；具体选址、定容、收益和投资决策以电网规划、市场规则、项目资料和财务模型为准。</p><p>算例：一个三节点合成网络的 EENS、可靠性与选址经济性算例，由 <a href="../../skills/ems-dispatch/tools/siting.py">siting.py</a> 复现，断言见 <a href="../../skills/ems-dispatch/tools/selftest.py">selftest.py</a> 的 &quot;Storage siting/sizing&quot; 段。</p><p>边界：本文不提供真实电网拓扑、负荷、故障率、VoLL、储能报价或项目收益；不替代电网规划、可靠性评估、投资决策或并网审批；不构成选址、定容、交易或投资建议。</p></aside>
+<hr>
+<h2 id="s1">0. 一页看懂</h2>
+<h3 id="s2">0.1 三句话</h3>
+<ul><li><strong>电网侧储能的价值不是&quot;存电&quot;两个字，而是&quot;在正确的位置、正确的时间提供正确的服务&quot;</strong>：同一套储能放在不同母线，缓解阻塞、支撑电压、减少失负荷的能力完全不同。</li><li><strong>可靠性价值看 EENS/LOLE，韧性价值看极端事件下的关键负荷支撑</strong>：两者都重要，但口径、事件集和避免重复计算要写清楚。</li><li><strong>定容不是&quot;越大越好&quot;</strong>：功率、能量、持续时间、循环寿命、并网容量、土地/消防、市场规则共同决定可行域；经济性要用 NPV/BCR，而不是只算一度电的价差。</li></ul>
+<h3 id="s3">0.2 关键概念</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>概念</th><th>含义</th><th>本文口径</th></tr></thead><tbody><tr><td>EENS</td><td>期望缺供电量</td><td>MWh/年，按概率加权</td></tr><tr><td>LOLE</td><td>失负荷期望时间</td><td>h/年，按概率加权</td></tr><tr><td>VoLL</td><td>失负荷价值</td><td>元/kWh，用于把可靠性货币化</td></tr><tr><td>容量信用</td><td>资源在高峰时段的可信容量</td><td>占铭牌容量的比例</td></tr><tr><td>ELCC</td><td>有效载荷能力</td><td>维持同一可靠性水平可增加的负荷</td></tr><tr><td>阻塞价值</td><td>缓解线路/断面阻塞的收益</td><td>与位置强相关</td></tr><tr><td>韧性</td><td>极端事件下的供电/恢复能力</td><td>高影响、低概率、长持续时间</td></tr><tr><td>CRF</td><td>资本回收系数</td><td>把 capex 折成年金</td></tr><tr><td>NPV</td><td>净现值</td><td>全生命周期现金流折现</td></tr><tr><td>BCR</td><td>收益成本比</td><td>PV 收益 ÷ PV 成本</td></tr></tbody></table></div>
+<h3 id="s4">0.3 先记住四个数</h3>
+<p>三节点合成算例：</p>
+<ul><li><strong>无储能时，线路故障导致 40 MW 失负荷 4 h/年，EENS 160 MWh/年</strong>；按 VoLL 30 元/kWh，可靠性损失价值 <strong>480 万元/年</strong>。</li><li><strong>40 MW/80 MWh 放在受端母线 3，EENS 降到 80 MWh/年，可靠性价值 240 万元/年，NPV 约 165 万元，BCR 1.034</strong>。</li><li><strong>80 MW/160 MWh 放在母线 3，EENS 降到 0，可靠性价值 480 万元/年，NPV 约 329 万元，BCR 1.034</strong>。</li><li><strong>同样 80 MW/160 MWh 放在母线 2，线路 2-3 的 40 MW 限额仍在，EENS 仍是 160 MWh/年，NPV 约 −5277 万元，BCR 0.450</strong>。</li></ul>
+<aside class="note"><p>口径提醒：上述数字是教学模型的确定性输出，EENS 按储能额定能量全额可用计算，未计 SOC 窗口、RTE、辅助用电与 O&amp;M，Capex 0.60 元/Wh 也是教学假设，capex 翻倍时 BCR 约减半；不是任何真实电网、储能项目或投资结论。真实 EENS/VoLL/容量信用/收益随拓扑、负荷、故障率、市场规则和储能成本变化，必须用项目数据重算。</p></aside>
+<h3 id="s5">0.4 本文不做什么</h3>
+<ul><li>不提供真实电网的拓扑、负荷、故障率、保护/开关配置或储能报价；</li><li>不实现完整的概率可靠性评估、生产模拟、最优潮流或储能寿命模型；</li><li>不替代电网规划、可靠性评估、投资决策、并网审批或市场申报；</li><li>不把三节点算例的 BCR 当作任何项目的收益保证；</li><li>不给出&quot;某地一定要建/不能建储能&quot;的结论。</li></ul>
+<hr>
+<h2 id="s6">1. 问题定义：为什么&quot;位置&quot;和&quot;容量&quot;要一起定</h2>
+<h3 id="s7">1.1 储能的价值是位置相关的</h3>
+<p>储能的物理位置决定了它能：</p>
+<ul><li>缓解哪条线路/断面的阻塞；</li><li>支撑哪个母线/负荷的电压；</li><li>替代哪台变压器/线路的扩容；</li><li>在故障/检修时给哪些负荷供电；</li><li>参与哪个市场的节点价差/辅助服务；</li><li>减少哪段网络的网损。</li></ul>
+<p>同样的 100 MW/200 MWh，放在负荷中心、输电断面、新能源汇集点、变电站母线，价值可能差几倍。<strong>先选位置，再定容量，还是联合优化，取决于问题规模和数据；但不能只算&quot;系统总容量&quot;。</strong></p>
+<h3 id="s8">1.2 三个层次</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>层次</th><th>问题</th><th>主要方法</th><th>输出</th></tr></thead><tbody><tr><td>系统层</td><td>需要多少储能/灵活性</td><td>生产模拟、容量充裕性</td><td>总需求、容量信用</td></tr><tr><td>区域/电网层</td><td>放在哪个变电站/断面</td><td>最优潮流、阻塞/可靠性分析</td><td>候选站点、排序</td></tr><tr><td>项目层</td><td>具体项目多大、怎么赚钱</td><td>财务模型、市场模拟</td><td>功率/能量、NPV/BCR</td></tr></tbody></table></div>
+<p>三个层次不能互相替代：系统层说&quot;需要 5 GW&quot;，不代表每个变电站都该建 100 MW；项目层说&quot;这个站 BCR 高&quot;，不代表系统总容量足够。</p>
+<h3 id="s9">1.3 可靠性 vs 韧性</h3>
+<ul><li><strong>可靠性</strong>：正常运行/计划检修/常见故障下，系统维持供电的能力；用 LOLE/EENS 等概率指标。</li><li><strong>韧性</strong>：极端事件（台风、洪水、地震、极端高温/低温、长时停电）下的抵御、吸收、恢复能力；看关键负荷、恢复时间、移动电源、黑启动。</li><li><strong>可靠性价值</strong>通常按 VoLL × 减少的 EENS 估算；<strong>韧性价值</strong>更复杂，可能要按关键负荷、停电持续时间、社会成本、恢复速度来估算。</li></ul>
+<p>两者可能重叠：一个长时停电事件既影响可靠性也影响韧性。<strong>不能把同一份停电损失同时算进可靠性和韧性收益。</strong></p>
+<hr>
+<h2 id="s10">2. 价值构成</h2>
+<h3 id="s11">2.1 价值清单</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>价值</th><th>来源</th><th>计量</th><th>位置相关性</th></tr></thead><tbody><tr><td>现货套利</td><td>低买高卖</td><td>价差 × 吞吐量 × 效率</td><td>中（节点价差）</td></tr><tr><td>容量/充裕性</td><td>容量市场/容量补偿</td><td>容量 × 价格</td><td>低—中</td></tr><tr><td>辅助服务</td><td>调频/备用/调压/黑启动</td><td>里程/容量/调用</td><td>中—高</td></tr><tr><td>阻塞缓解</td><td>减少断面阻塞</td><td>阻塞价差 × 缓解量</td><td>高</td></tr><tr><td>可靠性</td><td>减少 EENS/LOLE</td><td>VoLL × EENS 减少</td><td>高</td></tr><tr><td>韧性</td><td>极端事件关键负荷</td><td>避免的停电损失</td><td>高</td></tr><tr><td>电压支撑</td><td>无功/电压</td><td>避免的电压越限/脱网</td><td>高</td></tr><tr><td>延缓扩容</td><td>替代线路/变压器投资</td><td>避免的 T&amp;D capex</td><td>高</td></tr><tr><td>网损改善</td><td>改变潮流</td><td>网损成本变化</td><td>高</td></tr><tr><td>新能源消纳</td><td>减少弃风弃光</td><td>弃电减少 × 价值</td><td>高</td></tr></tbody></table></div>
+<h3 id="s12">2.2 收益叠加的陷阱</h3>
+<ul><li><strong>同一度电不能同时卖两次</strong>：现货套利、辅助服务、容量、阻塞缓解可能共享同一容量/能量，要按可用性和调用冲突建模；</li><li><strong>容量电价/容量补偿与现货收益可能相关</strong>：市场规则不同，不能简单相加；</li><li><strong>可靠性价值是&quot;避免的损失&quot;，不是&quot;收到的现金&quot;</strong>：除非有明确的可靠性采购/容量机制，否则它是社会价值，不是项目收入；</li><li><strong>韧性价值更难货币化</strong>：不能把 VoLL 直接套到所有极端事件；</li><li><strong>补贴/政策收益有期限/条件</strong>：不能假设永久。</li></ul>
+<h3 id="s13">2.3 收入 vs 价值</h3>
+<p>投资决策看的是<strong>项目现金流</strong>，不是全社会价值。可靠性/韧性价值要转化为：</p>
+<ul><li>容量市场/容量补偿收入；</li><li>可靠性采购/备用采购；</li><li>电网替代方案（非 wires alternative）合同；</li><li>政府/用户付费；</li><li>避免的停电罚款/考核。</li></ul>
+<p>如果这些机制不存在，可靠性价值再高也不一定进项目收入。<strong>做投决时要把&quot;社会价值&quot;和&quot;可捕获收入&quot;分开。</strong></p>
+<hr>
+<h2 id="s14">3. 可靠性指标：EENS、LOLE 与 VoLL</h2>
+<h3 id="s15">3.1 定义</h3>
+<pre tabindex="0"><code>LOLE = Σ p_i × T_i        （失负荷期望时间，h/年）
+EENS = Σ p_i × U_i × T_i  （期望缺供电量，MWh/年）</code></pre>
+<ul><li><code>p_i</code>：第 i 个故障/状态的概率；</li><li><code>T_i</code>：该状态下失负荷持续时间；</li><li><code>U_i</code>：该状态下的失负荷功率。</li></ul>
+<h3 id="s16">3.2 简单算例</h3>
+<p>三节点网络：</p>
+<ul><li>母线 1 是电源，母线 2 负荷 60 MW，母线 3 负荷 80 MW；</li><li>线路 2-3 限额 40 MW；</li><li>线路 1-3 故障，持续 4 h/年；</li><li>无储能时，母线 3 只能从线路 2-3 得到 40 MW，缺 40 MW。</li></ul>
+<pre tabindex="0"><code>EENS = 40 MW × 4 h = 160 MWh/年</code></pre>
+<p>按 VoLL 30 元/kWh：</p>
+<pre tabindex="0"><code>可靠性损失 = 160 MWh × 1000 × 30 / 1,000,000 = 480 万元/年</code></pre>
+<h3 id="s17">3.3 VoLL 的口径</h3>
+<p>VoLL 是最敏感的假设之一：</p>
+<ul><li>居民/商业/工业负荷的 VoLL 不同；</li><li>停电持续时间、频率、提前通知、季节/时段影响；</li><li>直接损失 vs 社会损失；</li><li>不同国家/地区/研究差异很大；</li><li>不能用一个小样本调查代表全部负荷。</li></ul>
+<p>本文用 30 元/kWh 作为示例，不是标准值。实际要用当地/行业/项目数据，并做敏感性分析。</p>
+<h3 id="s18">3.4 容量信用</h3>
+<p>储能/新能源在可靠性评估中不能按铭牌容量算：</p>
+<ul><li>储能受能量/持续时间/SOC/温度限制；</li><li>新能源受天气/出力相关性影响；</li><li>容量信用可以用 ELCC、有效容量、峰值时段可用率等方法；</li><li>同一资源在不同位置/不同电网的容量信用不同。</li></ul>
+<p><strong>容量信用不是&quot;额定功率 × 一个固定系数&quot;</strong>，要看事件集和可靠性目标。</p>
+<hr>
+<h2 id="s19">4. 选址：先筛后算</h2>
+<h3 id="s20">4.1 选址因素</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>因素</th><th>问什么</th><th>数据</th></tr></thead><tbody><tr><td>电网需求</td><td>哪里阻塞/电压弱/可靠性低</td><td>潮流、N-1、EENS、电压分析</td></tr><tr><td>短路容量</td><td>接入点短路容量/强度</td><td>短路计算、电网资料</td></tr><tr><td>并网条件</td><td>间隔/线路/变压器是否有空位</td><td>电网公司、接入方案</td></tr><tr><td>土地/消防</td><td>是否有足够场地/安全距离</td><td>规划、消防、环保</td></tr><tr><td>交通/施工</td><td>设备运输/吊装/施工条件</td><td>现场踏勘</td></tr><tr><td>市场位置</td><td>节点价差/辅助服务需求</td><td>市场数据、调度</td></tr><tr><td>负荷/电源</td><td>附近负荷/新能源出力</td><td>规划、预测</td></tr><tr><td>环境/社会</td><td>噪声、景观、居民</td><td>环评、公众接受</td></tr></tbody></table></div>
+<h3 id="s21">4.2 筛选方法</h3>
+<ol><li>用潮流/阻塞分析找&quot;价值高&quot;的节点；</li><li>用 N-1/可靠性分析找&quot;失负荷风险高&quot;的母线；</li><li>用短路/电压分析筛掉&quot;接不了/撑不住&quot;的站点；</li><li>用土地/消防/交通筛掉&quot;建不了&quot;的站点；</li><li>对候选站点做容量/经济性优化；</li><li>对优选站点做并网/市场/合同尽调。</li></ol>
+<h3 id="s22">4.3 位置错误的典型</h3>
+<ul><li>储能放在电源侧，但瓶颈在负荷侧线路：缓解不了阻塞；</li><li>储能放在线路 2-3 的上游，线路限额仍在：不能给下游负荷供电；</li><li>储能放在短路容量很低的弱节点：电压/稳定性问题；</li><li>储能放在没有间隔/土地的站：无法接入；</li><li>储能放在节点价差小的区域：套利收益低；</li><li>储能放在新能源汇集点但送出受限：充电/放电都受限。</li></ul>
+<p><strong>&quot;系统需要储能&quot;不等于&quot;这个站需要储能&quot;。</strong></p>
+<hr>
+<h2 id="s23">5. 定容：功率、能量、持续时间</h2>
+<h3 id="s24">5.1 三个维度</h3>
+<ul><li><strong>功率（MW）</strong>：能提供多大瞬时支撑/充放功率；</li><li><strong>能量（MWh）</strong>：能持续多久；</li><li><strong>持续时间（h）</strong>：能量 ÷ 功率；</li><li><strong>循环/寿命</strong>：每天/每年循环次数，容量衰减；</li><li><strong>SOC 窗口</strong>：可用能量不是 100% 的额定能量；</li><li><strong>备用/裕度</strong>：不能把全部能量/功率卖完。</li></ul>
+<h3 id="s25">5.2 定容约束</h3>
+<pre tabindex="0"><code>功率 ≤ PCS/变压器/线路/并网容量
+能量 ≤ 可用面积/消防/土地/预算
+持续时间 = 能量 / 功率
+可用能量 = 额定能量 × SOH × (SOC_max − SOC_min)
+循环次数 ≤ 寿命/保修</code></pre>
+<p>还要考虑：</p>
+<ul><li>充放电效率/RTE；</li><li>辅助用电/空调/消防；</li><li>备用容量；</li><li>市场申报/调用冲突；</li><li>多站聚合的相关性。</li></ul>
+<h3 id="s26">5.3 持续时间的选择</h3>
+<ul><li>2 h 系统适合短时调频/备用/价差；</li><li>4 h 系统适合日内套利/容量/阻塞；</li><li>长时储能（8 h+）适合长时可靠性/韧性/新能源消纳；</li><li>持续时间越长，单位能量成本越低，但单位功率成本/占地可能更高；</li><li>不能只看&quot;4 小时是主流&quot;就套所有场景。</li></ul>
+<h3 id="s27">5.4 定容与可靠性</h3>
+<p>储能对可靠性的贡献受<strong>能量持续时间</strong>限制：</p>
+<ul><li>40 MW/80 MWh 在 4 h 事件中只能平均 20 MW；</li><li>80 MW/160 MWh 才能平均 40 MW；</li><li>如果事件持续 8 h，能量需求翻倍；</li><li>如果事件概率低但持续时间长，可靠性价值可能被高估。</li></ul>
+<p><strong>可靠性评估要按事件持续时间分布，不是只看峰值功率。</strong></p>
+<hr>
+<h2 id="s28">6. 经济性：CRF、NPV 与 BCR</h2>
+<h3 id="s29">6.1 资本回收系数</h3>
+<pre tabindex="0"><code>CRF = r / (1 − (1 + r)^(−n))</code></pre>
+<p><code>r</code> 折现率，<code>n</code> 年限。算例 <code>r=8%</code>、<code>n=15</code>：</p>
+<pre tabindex="0"><code>CRF = 0.08 / (1 − 1.08^(−15)) = 0.11683</code></pre>
+<h3 id="s30">6.2 NPV 与 BCR</h3>
+<pre tabindex="0"><code>NPV = −Capex + Σ (Benefit_t − Cost_t) / (1 + r)^t
+BCR = PV(Benefit) / PV(Cost)</code></pre>
+<p>算例用等年金简化：</p>
+<pre tabindex="0"><code>NPV = −Capex + 年净收益 × 年金因子
+年金因子 = (1 − (1 + r)^(−n)) / r = 8.55948</code></pre>
+<h3 id="s31">6.3 成本项</h3>
+<ul><li>储能系统（电芯/PCS/BMS/EMS/温控/消防）；</li><li>升压变/开关柜/集电线路；</li><li>土建/土地/施工；</li><li>并网/接入/送出；</li><li>运维/备件/保险；</li><li>充电电费/辅助用电；</li><li>衰减/更换；</li><li>拆除/回收；</li><li>融资成本/税。</li></ul>
+<p>本文算例只计 capex 的 CRF，未计 O&amp;M/土地/并网/充电成本；实际项目要全口径。</p>
+<h3 id="s32">6.4 收益项</h3>
+<ul><li>现货/中长期价差；</li><li>容量/容量补偿；</li><li>辅助服务；</li><li>阻塞/可靠性/韧性合同；</li><li>延缓扩容；</li><li>降低网损；</li><li>政策/补贴。</li></ul>
+<h3 id="s33">6.5 敏感性</h3>
+<p>必须做：</p>
+<ul><li>capex ±30%；</li><li>价差/循环次数 ±30%；</li><li>VoLL/可靠性价值 ±50%；</li><li>折现率/寿命；</li><li>市场规则变化；</li><li>设备衰减/可用率。</li></ul>
+<p><strong>只给一个 BCR 数字不够，要给区间和关键变量。</strong></p>
+<hr>
+<h2 id="s34">7. D 级合成算例：三节点网络的选址定容</h2>
+<aside class="note"><p>本算例为合成数据，仅用于演示 EENS、可靠性价值与选址经济性的计算链；不对应任何真实电网、储能项目或投资标的。</p></aside>
+<h3 id="s35">7.1 网络</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th style="text-align:right">数值</th></tr></thead><tbody><tr><td>母线 1</td><td style="text-align:right">电源</td></tr><tr><td>母线 2 负荷</td><td style="text-align:right">60 MW</td></tr><tr><td>母线 3 负荷</td><td style="text-align:right">80 MW</td></tr><tr><td>线路 2-3 限额</td><td style="text-align:right">40 MW</td></tr><tr><td>线路 1-3 故障持续时间</td><td style="text-align:right">4 h/年</td></tr><tr><td>VoLL</td><td style="text-align:right">30 元/kWh</td></tr><tr><td>Capex</td><td style="text-align:right">0.60 元/Wh（教学假设，不代表当前市场价格）</td></tr><tr><td>折现率</td><td style="text-align:right">8%</td></tr><tr><td>年限</td><td style="text-align:right">15 年</td></tr><tr><td>CRF</td><td style="text-align:right">0.11683</td></tr><tr><td>年金因子</td><td style="text-align:right">8.55948</td></tr></tbody></table></div>
+<h3 id="s36">7.2 EENS</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>场景</th><th style="text-align:right">母线 3 可用功率</th><th style="text-align:right">失负荷功率</th><th style="text-align:right">EENS</th></tr></thead><tbody><tr><td>无储能</td><td style="text-align:right">40 MW</td><td style="text-align:right">40 MW</td><td style="text-align:right">160 MWh/年</td></tr><tr><td>40 MW/80 MWh @母线 3</td><td style="text-align:right">40 + 20 = 60 MW</td><td style="text-align:right">20 MW</td><td style="text-align:right">80 MWh/年</td></tr><tr><td>80 MW/160 MWh @母线 3</td><td style="text-align:right">40 + 40 = 80 MW</td><td style="text-align:right">0</td><td style="text-align:right">0</td></tr><tr><td>80 MW/160 MWh @母线 2</td><td style="text-align:right">40 MW</td><td style="text-align:right">40 MW</td><td style="text-align:right">160 MWh/年</td></tr></tbody></table></div>
+<h3 id="s37">7.3 可靠性价值</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>场景</th><th style="text-align:right">EENS 减少</th><th style="text-align:right">可靠性价值</th></tr></thead><tbody><tr><td>40 MW/80 MWh @母线 3</td><td style="text-align:right">80 MWh/年</td><td style="text-align:right">240 万元/年</td></tr><tr><td>80 MW/160 MWh @母线 3</td><td style="text-align:right">160 MWh/年</td><td style="text-align:right">480 万元/年</td></tr><tr><td>80 MW/160 MWh @母线 2</td><td style="text-align:right">0</td><td style="text-align:right">0</td></tr></tbody></table></div>
+<h3 id="s38">7.4 经济性</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>场景</th><th style="text-align:right">Capex</th><th style="text-align:right">年成本</th><th style="text-align:right">年收益</th><th style="text-align:right">NPV</th><th style="text-align:right">BCR</th></tr></thead><tbody><tr><td>40 MW/80 MWh @母线 3</td><td style="text-align:right">4,800 万元</td><td style="text-align:right">560.8 万元</td><td style="text-align:right">580 万元</td><td style="text-align:right">164.5 万元</td><td style="text-align:right">1.034</td></tr><tr><td>80 MW/160 MWh @母线 3</td><td style="text-align:right">9,600 万元</td><td style="text-align:right">1,121.6 万元</td><td style="text-align:right">1,160 万元</td><td style="text-align:right">329.0 万元</td><td style="text-align:right">1.034</td></tr><tr><td>80 MW/160 MWh @母线 2</td><td style="text-align:right">9,600 万元</td><td style="text-align:right">1,121.6 万元</td><td style="text-align:right">505 万元</td><td style="text-align:right">−5,277.5 万元</td><td style="text-align:right">0.450</td></tr></tbody></table></div>
+<p>年收益构成：</p>
+<ul><li><strong>40 MW/80 MWh @母线 3</strong>：可靠性 240 万 + 阻塞 100 万 + 套利 240 万 = 580 万元；</li><li><strong>80 MW/160 MWh @母线 3</strong>：可靠性 480 万 + 阻塞 200 万 + 套利 480 万 = 1,160 万元；</li><li>80 MW/160 MWh @母线 2：可靠性 0 + 阻塞 25 万 + 套利 480 万 = 505 万元。</li></ul>
+<h3 id="s39">7.5 读法</h3>
+<ul><li>母线 3 是受端，储能能直接支撑失负荷，可靠性价值高；</li><li>母线 2 在上游，线路 2-3 的 40 MW 限额仍在，储能再大也不能把电送到母线 3；</li><li>40 MW/80 MWh 只能平均 20 MW，因为 4 h 事件需要 80 MWh；</li><li>两个母线 3 方案的 BCR 相同，是因为收益/成本近似线性；规模选择要看 NPV、土地/并网/风险；</li><li>母线 2 方案 BCR 0.450，说明&quot;位置错了，容量再大也救不回来&quot;。</li></ul>
+<h3 id="s40">7.6 这个算例说明什么</h3>
+<ul><li>选址定容要联合看，不能只算系统总容量；</li><li>可靠性价值取决于失负荷位置、事件持续时间和储能能量；</li><li>阻塞/可靠性/套利收益可能叠加，但要避免重复计算；</li><li>NPV/BCR 对位置非常敏感；</li><li>简化模型只能做筛选，实项目要做潮流/可靠性/市场/财务联合分析。</li></ul>
+<h3 id="s41">7.7 这个算例不说明什么</h3>
+<ul><li>不代表真实电网的拓扑、负荷、故障率、保护/开关行为；</li><li>不覆盖交流潮流、电压稳定、短路、N-1、新能源出力相关性；</li><li>不覆盖市场规则、容量机制、辅助服务、合同结构；</li><li>不给出真实 VoLL、capex、收益或投资结论；</li><li>不能替代电网规划、可靠性评估和财务尽调。</li></ul>
+<hr>
+<h2 id="s42">8. 韧性价值：别把可靠性算两遍</h2>
+<h3 id="s43">8.1 韧性的四个阶段</h3>
+<ul><li><strong>抵御（resist）</strong>：极端事件前/中维持关键负荷；</li><li><strong>吸收（absorb）</strong>：事件中限制影响范围；</li><li><strong>恢复（recover）</strong>：事件后快速恢复；</li><li><strong>适应（adapt）</strong>：长期提升韧性。</li></ul>
+<p>储能可以在：</p>
+<ul><li>孤岛/微网中支撑关键负荷；</li><li>黑启动提供电源；</li><li>缓解极端高温/低温下的尖峰；</li><li>替代/延缓线路扩容；</li><li>与移动电源/柴油机/需求响应协同。</li></ul>
+<h3 id="s44">8.2 韧性评估</h3>
+<ul><li>事件集：台风、洪水、地震、极端温度、网络攻击、长时停电；</li><li>关键负荷：医院、供水、通信、交通、数据中心；</li><li>指标：关键负荷失供时间、恢复时间、恢复比例、社会成本；</li><li>不确定性：事件频率/强度/持续时间；</li><li>避免与可靠性重复计算。</li></ul>
+<h3 id="s45">8.3 韧性收益的捕获</h3>
+<ul><li>政府/用户付费的韧性服务；</li><li>微网/孤岛供电合同；</li><li>黑启动/备用采购；</li><li>避免的停电罚款/保险；</li><li>品牌/社会责任（难以货币化）。</li></ul>
+<p>如果没有付费机制，韧性价值可能只是&quot;社会价值&quot;，不进项目现金流。</p>
+<hr>
+<h2 id="s46">9. 对投资、运营与交易的含义</h2>
+<h3 id="s47">9.1 投资</h3>
+<ul><li>选址先于定容：位置错了，容量再大也无效；</li><li>可靠性/韧性价值要区分&quot;社会价值&quot;和&quot;可捕获收入&quot;；</li><li>收益叠加要避免重复计算；</li><li>capex/opex/并网/土地/消防/衰减要全口径；</li><li>市场规则/容量机制/辅助服务价格变化要进敏感性；</li><li>并网/短路/保护/振荡风险要早评估。</li></ul>
+<h3 id="s48">9.2 运营</h3>
+<ul><li>储能运行要兼顾市场收益和可靠性/韧性义务；</li><li>SOC 管理要留备用/黑启动裕度；</li><li>高温/低温/衰减会降低可用容量；</li><li>多站聚合要避免同时充放/同时故障；</li><li>运维/备件/消防/通信要可追溯；</li><li>参与辅助服务时要注意调用冲突/考核。</li></ul>
+<h3 id="s49">9.3 交易</h3>
+<ul><li>节点价差/阻塞/容量/辅助服务收益要分市场、分时段建模；</li><li>不能把可靠性价值直接当现货收益；</li><li>储能充放电要避免在负价/尖峰时反向操作；</li><li>熟悉市场规则中的储能定义/申报/结算；</li><li>关注调度发布的检修/阻塞/限发信息。</li></ul>
+<h3 id="s50">9.4 数据与 AI 的边界</h3>
+<p>AI 可以做选址筛选、负荷/价格预测、可靠性近似、储能优化，但：</p>
+<ul><li>训练数据要覆盖真实拓扑/故障/市场；</li><li>可靠性/韧性评估不能用&quot;预测&quot;替代物理计算；</li><li>投资决策要可解释/可审计；</li><li>模型更新要跟电网/市场变化；</li><li>&quot;AI 推荐站址&quot;不能替代现场踏勘/并网审批。</li></ul>
+<hr>
+<h2 id="s51">10. 常见错误（10 条）</h2>
+<ol><li><strong>只算系统总容量，不算位置</strong>：系统需要 5 GW，不代表每个站都该建。</li><li><strong>把储能放在瓶颈上游</strong>：线路限额仍在，下游负荷还是缺电。</li><li><strong>只看功率，不看能量/持续时间</strong>：4 h 事件里 40 MW/80 MWh 只能平均 20 MW。</li><li><strong>把额定容量当可用容量</strong>：SOC 窗口、SOH、温度、备用都会打折。</li><li><strong>可靠性/韧性重复计算</strong>：同一份停电损失不能算两次。</li><li><strong>把社会价值当项目收入</strong>：没有付费机制，可靠性价值不进现金流。</li><li><strong>收益简单相加</strong>：现货/容量/辅助服务/阻塞可能共享同一容量。</li><li><strong>忽略并网/短路/保护</strong>：弱电网/短路容量不足会限制储能接入。</li><li><strong>只给一个 BCR</strong>：没有敏感性/区间，决策不可靠。</li><li><strong>不做现场踏勘/尽调</strong>：土地、消防、交通、居民、并网间隔可能否决项目。</li></ol>
+<hr>
+<h2 id="s52">11. 待核实与未定事项</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>事项</th><th>状态</th><th>查证入口</th></tr></thead><tbody><tr><td>电网拓扑/负荷/故障率</td><td>分区域、分年度</td><td>电网规划、调度、可靠性报告</td></tr><tr><td>EENS/LOLE 口径与事件集</td><td>分机构/分研究</td><td>可靠性评估报告、规划导则</td></tr><tr><td>VoLL</td><td>分地区/分负荷/分研究</td><td>需求侧调查、规划报告、学术研究</td></tr><tr><td>储能容量信用/ELCC</td><td>分资源/分位置</td><td>容量充裕性研究、调度/规划机构</td></tr><tr><td>节点价差/阻塞/辅助服务收益</td><td>分市场、分时段</td><td>现货/辅助服务历史数据、规则</td></tr><tr><td>Capex/opex/并网/土地/消防成本</td><td>分项目、分地区</td><td>厂家报价、工程概算、电网接入方案</td></tr><tr><td>储能寿命/衰减/保修</td><td>分厂家、分合同</td><td>技术协议、保修条款、运行数据</td></tr><tr><td>可靠性/韧性采购机制</td><td>分省、分阶段</td><td>容量市场/补偿规则、政府文件</td></tr><tr><td>并网/短路/保护/振荡约束</td><td>分站点</td><td>电网公司、短路计算、并网研究</td></tr><tr><td>项目审批/土地/环保/消防</td><td>分项目</td><td>国土、环保、消防、住建部门</td></tr></tbody></table></div>
+<hr>
+<h2 id="s53">12. 分工：和现有模块怎么配合</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>问题</th><th>先看</th><th>本文负责</th><th>不负责</th></tr></thead><tbody><tr><td>储能投资/收益</td><td><a href="储能投资与运营-2026-11.html">《储能投资与运营》</a></td><td>选址/定容/可靠性价值</td><td>LCOE、融资、合同</td></tr><tr><td>储能技术/构网型</td><td><a href="储能技术路线安全与构网型并网-2026-11.html">《储能技术路线安全与构网型并网》</a></td><td>功率/能量/位置匹配</td><td>设备选型、电池安全</td></tr><tr><td>储能 EMS</td><td><a href="储能EMS优化调度-算法与工程-2026-11.html">《储能 EMS 优化调度》</a></td><td>选址对运行的影响</td><td>优化算法、SOC 管理</td></tr><tr><td>BMS 状态边界</td><td><a href="BMS与储能EMS的状态边界-2026-11.html">《BMS 与储能 EMS 的状态边界》</a></td><td>可用容量/功率边界</td><td>SOC/SOH/SOP 算法</td></tr><tr><td>保护整定</td><td><a href="微电网与储能电站保护整定-2026-11.html">《微电网与储能电站保护整定》</a></td><td>选址对短路/保护的影响</td><td>保护定值、CT/PT</td></tr><tr><td>配电网承载力</td><td><a href="配电网承载力与分布式接入-2026-11.html">《配电网承载力与分布式接入》</a></td><td>分布式储能选址</td><td>承载力评估、接入方案</td></tr><tr><td>潮流/节点价</td><td><a href="潮流阻塞与节点电价-2026-11.html">《从潮流到节点电价》</a></td><td>阻塞/节点价差价值</td><td>LMP 分解、阻塞/网损</td></tr><tr><td>容量机制</td><td><a href="容量机制横向对照-2026-11.html">《容量机制横向对照》</a></td><td>容量信用/可靠性价值</td><td>容量市场规则、拍卖</td></tr><tr><td>动态安全</td><td><a href="动态安全评估与紧急控制-2026-11.html">《动态安全评估与紧急控制》</a></td><td>储能支撑的稳定边界</td><td>暂态稳定、紧急控制</td></tr><tr><td>宽频振荡</td><td><a href="宽频振荡与场站阻抗分析-2026-11.html">《宽频振荡与场站阻抗分析》</a></td><td>储能接入的振荡风险</td><td>阻抗扫描、振荡源定位</td></tr><tr><td>现货出清</td><td><a href="现货出清与价格形成-2026-11.html">《现货出清与价格形成》</a></td><td>储能收益的市场来源</td><td>SCED/SCUC、报价</td></tr></tbody></table></div>
+<hr>
+<h2 id="s54">13. 速查</h2>
+<h3 id="s55">13.1 六个公式</h3>
+<pre tabindex="0"><code>EENS = Σ p_i × U_i × T_i
+LOLE = Σ p_i × T_i
+可靠性价值 = ΔEENS × 1000 × VoLL / 1,000,000
+CRF = r / (1 − (1 + r)^(−n))
+NPV = −Capex + 年净收益 × 年金因子
+BCR = PV(Benefit) / PV(Cost)</code></pre>
+<h3 id="s56">13.2 五个必问</h3>
+<ol><li>这个站解决的是哪个瓶颈/哪类失负荷，位置对不对？</li><li>功率/能量/持续时间够不够覆盖事件持续时间？</li><li>可靠性/韧性价值是否有付费机制，是否重复计算？</li><li>收益叠加是否共享同一容量/能量，是否冲突？</li><li>NPV/BCR 对 capex、价差、VoLL、市场规则有多敏感？</li></ol>
+<h3 id="s57">13.3 工具</h3>
+<pre tabindex="0"><code># 在 skills/ems-dispatch/tools 下
+python siting.py                 # 打印 EENS、可靠性价值与 NPV/BCR
+python siting.py --json          # JSON 输出
+python selftest.py               # 断言本文数字</code></pre>
+<p><code>siting.py</code> 只做三节点、单故障、线性收益的确定性演示，不是生产级选址/可靠性/投资模型。</p>
+<hr>
+<h2 id="s58">14. 版本与维护</h2>
+<ul><li>本模块为 v2.3 维护批次新增，数据截止 2026-11-19；所有拓扑、负荷、成本与结果均为 D 级合成数据。</li><li>修改 frontmatter <code>cutoff</code> 时，必须同步 <code>更新清单.md</code> 对应行。</li><li>若容量机制、可靠性评估导则、VoLL 研究或储能成本发生重大变化，优先复核 §3、§6、§7 和算例参数，并同步 <code>siting.py</code> 与 <code>selftest.py</code> 断言。</li><li><strong>相关工具</strong>：<code>skills/ems-dispatch/tools/siting.py</code>；相关自测：<code>skills/ems-dispatch/tools/selftest.py</code>。</li><li>方法术语参考电力系统可靠性、储能规划与投资评估的通用教材和标准；本文不复制任何真实项目数据、报价或合同。</li></ul>
+    </article>
+
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>11</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="储能投资与运营-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>储能投资与运营</b>
+          <span>114/1656/411/1583 文号、容量电价时长折算、投决算例、收入堆叠、退化质保与敏感性。</span>
+        </a>
+        <a class="related-card" href="储能技术路线安全与构网型并网-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>储能技术路线、安全与构网型并网</b>
+          <span>锂电/钠电/液流/压缩空气/飞轮对比，五层安全设防与标准，构网型控制、指标与验收。</span>
+        </a>
+        <a class="related-card" href="储能EMS优化调度-算法与工程-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>储能 EMS 优化调度</b>
+          <span>把储能调度建成 MILP：96 点经济调度、多市场堆叠、SOC/退化、MPC 与安全联锁，并给出与交易层的四种融合模式。</span>
+        </a>
+        <a class="related-card" href="配电网承载力与分布式接入-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>配电网承载力与分布式接入：从可开放容量到绿电直连</b>
+          <span>馈线/配变约束、承载力与可开放容量、反送电压抬升、保护适配、分布式光伏/储能/充电/V2G 差异、绿电直连。</span>
+        </a>
+      </div>
+      <p class="related-rest"><b>更多关联</b><a href="并网运行考核与两个细则-2026-11.html">并网运行考核与两个细则</a><a href="潮流阻塞与节点电价-2026-11.html">从潮流到节点电价：阻塞、断面与网损的价格传导</a><a href="容量机制横向对照-2026-11.html">容量机制横向对照（2026 版）：年金、拍卖、双向 CfD 与战略储备</a><a href="动态安全评估与紧急控制-2026-11.html">动态安全评估与紧急控制：从静态 N-1 到暂态稳定</a><a href="微电网与储能电站保护整定-2026-11.html">微电网与储能电站保护整定：从 IBR 故障电流到并离网定值切换</a><a href="BMS与储能EMS的状态边界-2026-11.html">BMS 与储能 EMS 的状态边界：SOC/SOH/SOP、均衡与安全联锁</a><a href="宽频振荡与场站阻抗分析-2026-11.html">宽频振荡与场站阻抗分析：从阻抗扫描到参数整定</a></p>
+    </section>
+
+<section class="related" aria-labelledby="paired-skills-title">
+      <div class="related-head"><h2 id="paired-skills-title">配套技能</h2><span>1</span></div>
+      <div class="related-grid">
+        <a class="related-card skill-pair" href="skill-storage-investment-operations.html">
+          <span class="related-type">收益堆叠、投决、退化与考核（含安徽容量电价、广东现货+调频实例包），并接入选址定容、保护整定、BMS 状态边界与资源充裕性</span>
+          <b>储能投资与运营</b>
+          <span>技能 · 储能 · 投决 · LCOS · 选址</span>
+        </a>
+      </div>
+    </section>
+
+    <nav class="pager" aria-label="上下篇">
+          <a class="prev" href="BMS与储能EMS的状态边界-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">BMS 与储能 EMS 的状态边界：SOC/SOH/SOP、均衡与安全联锁</span></a>
+          <span class="spacer"></span>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../电网侧储能选址定容与可靠性韧性价值-2026-11.md">knowledge/电网侧储能选址定容与可靠性韧性价值-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="本页目录">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv3"><a href="#s2">0.1 三句话</a></li>
+            <li class="lv3"><a href="#s3">0.2 关键概念</a></li>
+            <li class="lv3"><a href="#s4">0.3 先记住四个数</a></li>
+            <li class="lv3"><a href="#s5">0.4 本文不做什么</a></li>
+            <li class="lv2"><a href="#s6">1. 问题定义：为什么"位置"和"容量"要一起定</a></li>
+            <li class="lv3"><a href="#s7">1.1 储能的价值是位置相关的</a></li>
+            <li class="lv3"><a href="#s8">1.2 三个层次</a></li>
+            <li class="lv3"><a href="#s9">1.3 可靠性 vs 韧性</a></li>
+            <li class="lv2"><a href="#s10">2. 价值构成</a></li>
+            <li class="lv3"><a href="#s11">2.1 价值清单</a></li>
+            <li class="lv3"><a href="#s12">2.2 收益叠加的陷阱</a></li>
+            <li class="lv3"><a href="#s13">2.3 收入 vs 价值</a></li>
+            <li class="lv2"><a href="#s14">3. 可靠性指标：EENS、LOLE 与 VoLL</a></li>
+            <li class="lv3"><a href="#s15">3.1 定义</a></li>
+            <li class="lv3"><a href="#s16">3.2 简单算例</a></li>
+            <li class="lv3"><a href="#s17">3.3 VoLL 的口径</a></li>
+            <li class="lv3"><a href="#s18">3.4 容量信用</a></li>
+            <li class="lv2"><a href="#s19">4. 选址：先筛后算</a></li>
+            <li class="lv3"><a href="#s20">4.1 选址因素</a></li>
+            <li class="lv3"><a href="#s21">4.2 筛选方法</a></li>
+            <li class="lv3"><a href="#s22">4.3 位置错误的典型</a></li>
+            <li class="lv2"><a href="#s23">5. 定容：功率、能量、持续时间</a></li>
+            <li class="lv3"><a href="#s24">5.1 三个维度</a></li>
+            <li class="lv3"><a href="#s25">5.2 定容约束</a></li>
+            <li class="lv3"><a href="#s26">5.3 持续时间的选择</a></li>
+            <li class="lv3"><a href="#s27">5.4 定容与可靠性</a></li>
+            <li class="lv2"><a href="#s28">6. 经济性：CRF、NPV 与 BCR</a></li>
+            <li class="lv3"><a href="#s29">6.1 资本回收系数</a></li>
+            <li class="lv3"><a href="#s30">6.2 NPV 与 BCR</a></li>
+            <li class="lv3"><a href="#s31">6.3 成本项</a></li>
+            <li class="lv3"><a href="#s32">6.4 收益项</a></li>
+            <li class="lv3"><a href="#s33">6.5 敏感性</a></li>
+            <li class="lv2"><a href="#s34">7. D 级合成算例：三节点网络的选址定容</a></li>
+            <li class="lv3"><a href="#s35">7.1 网络</a></li>
+            <li class="lv3"><a href="#s36">7.2 EENS</a></li>
+            <li class="lv3"><a href="#s37">7.3 可靠性价值</a></li>
+            <li class="lv3"><a href="#s38">7.4 经济性</a></li>
+            <li class="lv3"><a href="#s39">7.5 读法</a></li>
+            <li class="lv3"><a href="#s40">7.6 这个算例说明什么</a></li>
+            <li class="lv3"><a href="#s41">7.7 这个算例不说明什么</a></li>
+            <li class="lv2"><a href="#s42">8. 韧性价值：别把可靠性算两遍</a></li>
+            <li class="lv3"><a href="#s43">8.1 韧性的四个阶段</a></li>
+            <li class="lv3"><a href="#s44">8.2 韧性评估</a></li>
+            <li class="lv3"><a href="#s45">8.3 韧性收益的捕获</a></li>
+            <li class="lv2"><a href="#s46">9. 对投资、运营与交易的含义</a></li>
+            <li class="lv3"><a href="#s47">9.1 投资</a></li>
+            <li class="lv3"><a href="#s48">9.2 运营</a></li>
+            <li class="lv3"><a href="#s49">9.3 交易</a></li>
+            <li class="lv3"><a href="#s50">9.4 数据与 AI 的边界</a></li>
+            <li class="lv2"><a href="#s51">10. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s52">11. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s53">12. 分工：和现有模块怎么配合</a></li>
+            <li class="lv2"><a href="#s54">13. 速查</a></li>
+            <li class="lv3"><a href="#s55">13.1 六个公式</a></li>
+            <li class="lv3"><a href="#s56">13.2 五个必问</a></li>
+            <li class="lv3"><a href="#s57">13.3 工具</a></li>
+            <li class="lv2"><a href="#s58">14. 版本与维护</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="43" data-more-label="展开 43 个小节" data-less-label="收起小节">展开 43 个小节</button>
+  </aside>
+</div>
+
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.3" data-cutoff="2026-11-19" data-latest="2026-11-27" data-count="101">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.3）" title="查看更新记录（当前 v2.3）">
+    <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
+    <span class="cl-badge-ver">v2.3</span>
+    <span class="cl-badge-label">更新记录</span>
+  </button>
+  <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
+    <div class="cl-backdrop" data-changelog-close></div>
+    <div class="cl-panel" role="dialog" aria-modal="true" aria-labelledby="cl-title" aria-describedby="cl-subtitle" tabindex="-1">
+      <header class="cl-head">
+        <div class="cl-head-main">
+          <span class="cl-kicker">RELEASE NOTES</span>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.3</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.3 · 数据截止 2026-11-19 · 101 条记录</p>
+        </div>
+        <div class="cl-actions">
+          <div class="cl-lang" role="group" aria-label="切换语言">
+            <button type="button" data-cl-lang="zh" aria-pressed="true">中文</button>
+            <button type="button" data-cl-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <button class="cl-close" type="button" data-changelog-close aria-label="关闭更新记录" title="关闭更新记录">×</button>
+        </div>
+      </header>
+      <div class="cl-body" data-changelog-body>
+        <div class="cl-skeleton" data-changelog-status role="status">
+          <span class="cl-sr">正在读取更新记录…</span>
+          <i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      <footer class="cl-foot">
+        <span data-changelog-meta>v2.3 · 2026-11-19 · 101 条记录</span>
+        <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
+      </footer>
+    </div>
+  </div>
+</div>
+<script src="../assets/doc.js"></script>
+<script src="../assets/theme.js"></script>
+<script src="../assets/changelog.js"></script>
+</body>
+</html>

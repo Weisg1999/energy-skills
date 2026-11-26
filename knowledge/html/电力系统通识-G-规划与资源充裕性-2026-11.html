@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>电力系统通识 G · 规划与资源充裕性：从负荷预测到电源电网组合 | energy-skills 知识库</title>
+<meta name="description" content="把电力系统规划讲成一条决策链：负荷预测与场景，负荷持续曲线与电量平衡，LOLE/EENS 与容量信用/ELCC，电源组合与电网规划，投资成本/燃料/可靠性/韧性的多目标权衡，以及为什么“装机容量够”不等于“资源充裕”；附两组合 D 级算例与 10 条常见错误。">
+<link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
+<script>
+(function(){try{var t=localStorage.getItem('es-theme');if(!/^(light|cream|green|dark)$/.test(t||'')){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/knowledge.css">
+<link rel="stylesheet" href="../assets/theme-menu.css">
+<link rel="stylesheet" href="../assets/changelog.css">
+</head>
+<body data-cat="foundation" id="top">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
+  <div class="crumb">
+    <span class="crumb-cat">01 · BASE</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">电力系统通识 G · 规划与资源充裕性：从负荷预测到电源电网组合</span>
+  </div>
+  <div class="topbar-act">
+    <div class="theme-picker" data-theme-picker>
+      <button class="theme-toggle" type="button" data-theme-menu aria-label="选择主题" title="选择主题">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="5"/><circle cx="15" cy="9" r="5"/><circle cx="12" cy="15" r="5"/></svg>
+      </button>
+    </div>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../电力系统通识-G-规划与资源充裕性-2026-11.md">.md 源文件<small>knowledge/电力系统通识-G-规划与资源充裕性-2026-11.md</small></a>
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">01 · BASE</div>
+    <h2 class="nav-cat"><a href="../index.html#foundation">通识与经济学</a></h2>
+    <ul class="nav-list">
+              <li><a href="电力系统通识-A-格局与主体.html">电力系统通识 A · 格局与主体</a></li>
+              <li><a href="电力系统通识-B-发输配变用.html">电力系统通识 B · 发输配变用</a></li>
+              <li><a href="电力系统通识-C-改革史.html">电力系统通识 C · 改革史</a></li>
+              <li><a href="电力系统通识-D-新角色与现货市场.html">电力系统通识 D · 新角色与现货市场</a></li>
+              <li><a href="故障保护与安全防御-2026-11.html">电力系统通识 E · 故障、保护与安全防御</a></li>
+              <li><a href="电力系统经济学原理-主题笔记.html">电力系统经济学原理</a></li>
+              <li><a href="电力系统通识-F-运行与调度-2026-11.html">电力系统通识 F · 运行与调度：从日计划到实时平衡</a></li>
+              <li class="on" aria-current="page"><a href="电力系统通识-G-规划与资源充裕性-2026-11.html">电力系统通识 G · 规划与资源充裕性：从负荷预测到电源电网组合</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#province"><b>03</b>中国省级市场</a></li>
+              <li><a href="../index.html#intl"><b>04</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>05</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>06</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>07</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>08</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>11</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">01 · BASE<i>知识模块</i></div>
+      <h1 class="doc-title">电力系统通识 G · 规划与资源充裕性：从负荷预测到电源电网组合（2026-11）</h1>
+      <p class="lede">把电力系统规划讲成一条决策链：负荷预测与场景，负荷持续曲线与电量平衡，LOLE/EENS 与容量信用/ELCC，电源组合与电网规划，投资成本/燃料/可靠性/韧性的多目标权衡，以及为什么“装机容量够”不等于“资源充裕”；附两组合 D 级算例与 10 条常见错误。</p>
+      <p class="hook">电力系统通识 G · 规划与资源充裕性</p>
+      <div class="tags"><span class="tag">电力规划</span><span class="tag">资源充裕性</span><span class="tag">负荷预测</span><span class="tag">LOLE</span><span class="tag">EENS</span><span class="tag">容量信用</span><span class="tag">ELCC</span><span class="tag">电源组合</span><span class="tag">电网规划</span><span class="tag">韧性</span></div>
+      <div class="doc-meta"><span>约 9.6k 字</span><span>阅读约 16 分钟</span><span>15 节</span><span>数据截止 2026-11-19</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（15）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv2"><a href="#s6">1. 规划问题：在不确定性下做选择</a></li>
+            <li class="lv2"><a href="#s10">2. 负荷预测：规划的地基</a></li>
+            <li class="lv2"><a href="#s15">3. 资源充裕性：装机够为什么还缺电</a></li>
+            <li class="lv2"><a href="#s20">4. 电源组合：不是"越多越好"</a></li>
+            <li class="lv2"><a href="#s25">5. 电网规划：有电送不出也是缺电</a></li>
+            <li class="lv2"><a href="#s30">6. 规划方法：从筛选到优化</a></li>
+            <li class="lv2"><a href="#s36">7. D 级合成算例：两组合的资源充裕性</a></li>
+            <li class="lv2"><a href="#s43">8. 新型电力系统的规划挑战</a></li>
+            <li class="lv2"><a href="#s48">9. 对投资、交易与运营的含义</a></li>
+            <li class="lv2"><a href="#s53">10. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s54">11. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s55">12. 分工：和现有模块怎么配合</a></li>
+            <li class="lv2"><a href="#s56">13. 速查</a></li>
+            <li class="lv2"><a href="#s60">14. 版本与维护</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>数据截止：2026-11-19｜定位：知识库模块（电力系统通识·规划与资源充裕性）</p><p>相关技能：<a href="../../skills/renewable-project-development/SKILL.md">新能源项目开发与并网专家</a>（资源/选址/并网）、<a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营专家</a>（储能规划与收益）、<a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a>（价格/容量机制）</p><p>用途：回答&quot;规划到底规划什么、负荷怎么预测、装机够为什么还缺电、LOLE/EENS 怎么算、容量信用/ELCC 是什么、电源和电网怎么组合、投资怎么比&quot;七类问题。本文做工程通识与算例演示；具体规划方案、参数、标准和审批以规划报告、政府文件和项目资料为准。</p><p>算例：一个两组合、三负荷块、八状态的资源充裕性算例，由 <a href="../../skills/ems-dispatch/tools/planning.py">planning.py</a> 复现，断言见 <a href="../../skills/ems-dispatch/tools/selftest.py">selftest.py</a> 的 &quot;Resource adequacy&quot; 段。</p><p>边界：本文不提供真实负荷、电源、电网、成本或规划方案；不替代电力规划、可靠性评估、投资决策或政府审批；不构成电源/电网/储能投资建议。</p></aside>
+<hr>
+<h2 id="s1">0. 一页看懂</h2>
+<h3 id="s2">0.1 三句话</h3>
+<ul><li><strong>规划不是&quot;预测一个数、配够装机&quot;，而是&quot;在不确定性下做一组可执行的决策&quot;</strong>：负荷、新能源、燃料、政策、技术成本都会变，规划要给场景、裕度、选项和触发条件。</li><li><strong>&quot;装机容量够&quot;不等于&quot;资源充裕&quot;</strong>：机组会故障/检修，新能源看天，储能受能量限制；要看 LOLE/EENS 和容量信用，而不是只看铭牌。</li><li><strong>电源和电网要一起规划</strong>：有电送不出、有负荷受不到，都是规划失败；电源选址、电网加强、储能布局、需求响应要联合优化。</li></ul>
+<h3 id="s3">0.2 关键概念</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>概念</th><th>含义</th><th>本文口径</th></tr></thead><tbody><tr><td>负荷预测</td><td>对未来负荷的估计</td><td>分年度/季节/时段/区域</td></tr><tr><td>负荷持续曲线</td><td>负荷按持续时间排序</td><td>用于电量/容量平衡</td></tr><tr><td>峰值负荷</td><td>最大负荷</td><td>决定容量需求</td></tr><tr><td>电量</td><td>全年用电量</td><td>决定燃料/排放/成本</td></tr><tr><td>LOLE</td><td>失负荷期望时间</td><td>h/年</td></tr><tr><td>EENS</td><td>期望缺供电量</td><td>MWh/年</td></tr><tr><td>容量信用</td><td>资源可信容量占比</td><td>风电/光伏/储能低于铭牌</td></tr><tr><td>ELCC</td><td>有效载荷能力</td><td>维持可靠性目标可增加的负荷</td></tr><tr><td>备用率</td><td>可用容量/峰值负荷 − 1</td><td>粗略指标，不是充裕性判据</td></tr><tr><td>电源组合</td><td>不同类型/位置/成本的电源搭配</td><td>兼顾电量/容量/灵活性</td></tr><tr><td>电网规划</td><td>输电/配电/接入的扩展</td><td>与电源/负荷协同</td></tr><tr><td>韧性</td><td>极端事件下的供电/恢复</td><td>与可靠性区分</td></tr></tbody></table></div>
+<h3 id="s4">0.3 先记住四个数</h3>
+<p>三负荷块、两组合的合成算例：</p>
+<ul><li><strong>负荷块：1000 MW × 100 h、800 MW × 3000 h、500 MW × 5660 h</strong>，峰值 1000 MW。</li><li><strong>组合 A（煤电 600 + 气电 300 + 风光储）可信容量 1150 MW，但 LOLE 203.344 h/年、EENS 53,892 MWh/年</strong>，远高于示例目标 2.4 h/年。</li><li><strong>组合 B（煤电 600 + 气电 3×300 + 风光储）可信容量 1750 MW，LOLE 1.560 h/年、EENS 332.29 MWh/年</strong>，满足目标。</li><li><strong>组合 A 的备用率 15%，组合 B 75%</strong>；备用率看起来都不低，但 A 的 LOLE 仍然很差，说明备用率不能替代概率充裕性评估。</li></ul>
+<aside class="note"><p>口径提醒：上述数字是教学模型的确定性输出，不是任何真实系统或规划方案。真实 LOLE/EENS 取决于负荷、机组、新能源、储能、网络、故障率和事件集。</p></aside>
+<h3 id="s5">0.4 本文不做什么</h3>
+<ul><li>不提供真实负荷、电源、电网、成本、燃料或政策数据；</li><li>不实现完整的生产模拟、随机规划、最优潮流或可靠性评估；</li><li>不替代电力规划、可靠性评估、投资决策、政府审批或并网研究；</li><li>不把两组合算例的结论套到实际省份/区域；</li><li>不给出&quot;某地该建多少煤电/气电/风光储&quot;的结论。</li></ul>
+<hr>
+<h2 id="s6">1. 规划问题：在不确定性下做选择</h2>
+<h3 id="s7">1.1 规划的目标</h3>
+<p>电力规划通常要同时满足：</p>
+<ul><li><strong>供电可靠性</strong>：LOLE/EENS/停电时间；</li><li><strong>经济性</strong>：投资/燃料/运维/排放/土地；</li><li><strong>环境/碳</strong>：碳排放/污染物/生态；</li><li><strong>韧性</strong>：极端事件/关键负荷；</li><li><strong>灵活性</strong>：爬坡/备用/调峰；</li><li><strong>可实施性</strong>：土地/并网/审批/供应链；</li><li><strong>公平/可负担</strong>：电价/区域发展/就业。</li></ul>
+<p>这些目标会冲突：更可靠通常更贵，更多新能源通常更低碳但需要灵活性，更大电网可能更安全但投资/审批更难。</p>
+<h3 id="s8">1.2 规划的时间/空间尺度</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>尺度</th><th>问题</th><th>典型方法</th></tr></thead><tbody><tr><td>多年/长期</td><td>电源/电网扩展、碳目标</td><td>容量扩展、场景优化</td></tr><tr><td>年度</td><td>检修/燃料/电量平衡</td><td>生产模拟、电量平衡</td></tr><tr><td>季节/月度</td><td>来水/风光/负荷</td><td>随机/场景</td></tr><tr><td>日前/实时</td><td>运行</td><td>调度/市场</td></tr><tr><td>区域/省级</td><td>电源/电网/互济</td><td>区域规划、潮流/稳定</td></tr><tr><td>配电网/园区</td><td>分布式/储能/微网</td><td>承载力、优化</td></tr></tbody></table></div>
+<p>规划不是&quot;一次算完&quot;，而是&quot;滚动修编&quot;：五年规划、年度评估、项目核准、后评价。</p>
+<h3 id="s9">1.3 规划的输出</h3>
+<ul><li>电源类型/容量/位置/投产时间；</li><li>电网线路/变电站/接入；</li><li>储能/需求响应/灵活性；</li><li>投资/成本/电价/补贴；</li><li>可靠性/排放/韧性指标；</li><li>场景/敏感性/触发条件；</li><li>政策/市场/审批建议。</li></ul>
+<hr>
+<h2 id="s10">2. 负荷预测：规划的地基</h2>
+<h3 id="s11">2.1 预测什么</h3>
+<ul><li>最大负荷（MW）；</li><li>用电量（MWh）；</li><li>负荷曲线（8760 h/典型日）；</li><li>分区域/分电压/分行业；</li><li>峰值出现时间/持续时间；</li><li>负荷增长/分布；</li><li>极端天气/事件。</li></ul>
+<h3 id="s12">2.2 方法</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>方法</th><th>适用</th><th>优点</th><th>局限</th></tr></thead><tbody><tr><td>趋势外推</td><td>短期/平稳</td><td>简单</td><td>忽略结构变化</td></tr><tr><td>回归/计量经济</td><td>中长期</td><td>可解释</td><td>数据/因果</td></tr><tr><td>人均/产值/饱和</td><td>区域</td><td>宏观</td><td>粗</td></tr><tr><td>负荷密度/空间</td><td>配网</td><td>选址</td><td>数据</td></tr><tr><td>场景/概率</td><td>不确定性</td><td>覆盖</td><td>主观</td></tr><tr><td>机器学习</td><td>大数据</td><td>精度</td><td>黑箱/过拟合</td></tr></tbody></table></div>
+<h3 id="s13">2.3 影响负荷的结构因素</h3>
+<ul><li>经济增长/产业结构；</li><li>人口/城镇化；</li><li>电气化（供暖/交通/工业）；</li><li>数据中心/算力；</li><li>电动汽车；</li><li>储能/分布式；</li><li>能效/需求响应；</li><li>气候/极端天气；</li><li>电价/政策。</li></ul>
+<p><strong>负荷预测不是&quot;历史趋势延长线&quot;</strong>：数据中心、电动车、电供暖、绿氢等可能改变增长曲线。</p>
+<h3 id="s14">2.4 预测误差</h3>
+<ul><li>长期预测误差可能很大；</li><li>峰值/电量误差不同；</li><li>区域/省级/全国误差不同；</li><li>极端天气/政策/技术冲击；</li><li>要用场景/区间/敏感性，不要只给一个数。</li></ul>
+<hr>
+<h2 id="s15">3. 资源充裕性：装机够为什么还缺电</h2>
+<h3 id="s16">3.1 负荷持续曲线</h3>
+<p>把 8760 h 负荷从高到低排序，得到负荷持续曲线。算例简化为三块：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th style="text-align:right">负荷（MW）</th><th style="text-align:right">持续时间（h）</th><th style="text-align:right">电量（MWh）</th></tr></thead><tbody><tr><td style="text-align:right">1000</td><td style="text-align:right">100</td><td style="text-align:right">100,000</td></tr><tr><td style="text-align:right">800</td><td style="text-align:right">3000</td><td style="text-align:right">2,400,000</td></tr><tr><td style="text-align:right">500</td><td style="text-align:right">5660</td><td style="text-align:right">2,830,000</td></tr><tr><td style="text-align:right">合计</td><td style="text-align:right">8760</td><td style="text-align:right">5,330,000</td></tr></tbody></table></div>
+<p>峰值 1000 MW，电量 5,330 GWh。</p>
+<h3 id="s17">3.2 LOLE 与 EENS</h3>
+<pre tabindex="0"><code>LOLE = Σ p_i × T_i
+EENS = Σ p_i × U_i × T_i</code></pre>
+<ul><li>先枚举机组/资源状态（可用/故障）；</li><li>算每个状态的可用容量；</li><li>对每个负荷块，算失负荷功率/时间；</li><li>按概率加权。</li></ul>
+<p>算例组合 A：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>状态</th><th style="text-align:right">可用容量（MW）</th><th style="text-align:right">概率</th><th style="text-align:right">失负荷时间（h）</th><th style="text-align:right">失负荷电量（MWh）</th></tr></thead><tbody><tr><td>煤+气</td><td style="text-align:right">1150</td><td style="text-align:right">0.9024</td><td style="text-align:right">0</td><td style="text-align:right">0</td></tr><tr><td>仅煤</td><td style="text-align:right">850</td><td style="text-align:right">0.0376</td><td style="text-align:right">100</td><td style="text-align:right">15,000</td></tr><tr><td>仅气</td><td style="text-align:right">550</td><td style="text-align:right">0.0576</td><td style="text-align:right">3100</td><td style="text-align:right">795,000</td></tr><tr><td>无</td><td style="text-align:right">250</td><td style="text-align:right">0.0024</td><td style="text-align:right">8760</td><td style="text-align:right">3,140,000</td></tr></tbody></table></div>
+<p>加权：</p>
+<pre tabindex="0"><code>LOLE = 0.0376×100 + 0.0576×3100 + 0.0024×8760 = 203.344 h/年
+EENS = 0.0376×15,000 + 0.0576×795,000 + 0.0024×3,140,000 = 53,892 MWh/年</code></pre>
+<h3 id="s18">3.3 容量信用</h3>
+<p>风电/光伏/储能不能按铭牌算：</p>
+<ul><li>风电容量信用取决于出力与负荷的相关性；</li><li>光伏容量信用取决于晚峰/储能配置；</li><li>储能容量信用取决于持续时间/能量/ SOC；</li><li>容量信用可用 ELCC/有效容量/峰值时段可用率；</li><li>同一资源在不同系统/位置/年份不同。</li></ul>
+<p>算例假设：</p>
+<ul><li>风电 300 MW × 20% = 60 MW；</li><li>光伏 300 MW × 10% = 30 MW；</li><li>储能 200 MW × 80% = 160 MW；</li><li>风光储合计 250 MW 可信容量。</li></ul>
+<p>这些系数只是示例，不是标准值。</p>
+<h3 id="s19">3.4 备用率不是充裕性</h3>
+<p>备用率：</p>
+<pre tabindex="0"><code>备用率 = 可用容量 / 峰值负荷 − 1</code></pre>
+<p>组合 A：1150/1000 − 1 = 15%；组合 B：1750/1000 − 1 = 75%。</p>
+<p>但 A 的 LOLE 203 h/年，B 只有 1.56 h/年。为什么？</p>
+<ul><li>备用率只看&quot;总容量&quot;，不看故障概率/负荷持续时间；</li><li>机组故障/检修/新能源低出力可能同时发生；</li><li>负荷持续时间/形状影响 EENS；</li><li>网络/备用/爬坡可能限制可用容量；</li><li>备用率不能反映尾部风险。</li></ul>
+<p><strong>备用率是入口指标，不是充裕性判据。</strong></p>
+<hr>
+<h2 id="s20">4. 电源组合：不是&quot;越多越好&quot;</h2>
+<h3 id="s21">4.1 电源属性</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>电源</th><th>电量成本</th><th>容量信用</th><th>灵活性</th><th>碳</th><th>建设周期</th><th>关键约束</th></tr></thead><tbody><tr><td>煤电</td><td>低—中</td><td>高</td><td>中</td><td>高</td><td>长</td><td>碳/环保/煤价</td></tr><tr><td>气电</td><td>中—高</td><td>高</td><td>高</td><td>中</td><td>短—中</td><td>气价/供应</td></tr><tr><td>核电</td><td>低</td><td>高</td><td>低</td><td>低</td><td>长</td><td>安全/选址/乏燃料</td></tr><tr><td>水电</td><td>低</td><td>中—高</td><td>高</td><td>低</td><td>长</td><td>来水/生态/移民</td></tr><tr><td>风电</td><td>零边际</td><td>低—中</td><td>低</td><td>低</td><td>中</td><td>风光资源/并网/消纳</td></tr><tr><td>光伏</td><td>零边际</td><td>低</td><td>低</td><td>低</td><td>短</td><td>土地/屋顶/消纳</td></tr><tr><td>储能</td><td>中</td><td>中—高</td><td>高</td><td>低</td><td>短</td><td>成本/寿命/安全</td></tr><tr><td>需求响应</td><td>低</td><td>中</td><td>高</td><td>低</td><td>短</td><td>用户意愿/可监测</td></tr><tr><td>生物质/地热</td><td>中</td><td>中—高</td><td>中</td><td>低</td><td>中</td><td>资源/成本</td></tr></tbody></table></div>
+<h3 id="s22">4.2 组合的逻辑</h3>
+<ul><li>电量由低成本/低碳资源承担；</li><li>容量由可信容量高的资源保证；</li><li>灵活性由气电/水电/储能/需求响应提供；</li><li>新能源需要备用/储能/电网/需求响应；</li><li>核电适合基荷，但灵活性差；</li><li>煤电逐步转向调节/备用，利用率下降；</li><li>储能/需求响应可以替代部分峰值机组；</li><li>电网互济可以降低本地容量需求。</li></ul>
+<h3 id="s23">4.3 不要&quot;单一化&quot;</h3>
+<ul><li>100% 单一电源风险高（燃料/来水/风光/故障）；</li><li>多电源组合可以提高韧性/降低相关性；</li><li>但组合太复杂会增加调度/市场/接口成本；</li><li>要按场景/风险/成本优化，不是按口号。</li></ul>
+<h3 id="s24">4.4 容量机制</h3>
+<p>容量机制用于保证充裕性：</p>
+<ul><li>容量市场/容量补偿/战略备用；</li><li>可靠性选项/容量拍卖；</li><li>稀缺定价；</li><li>容量信用/ELCC 用于定容/结算；</li><li>机制设计影响投资/退役/价格。</li></ul>
+<p>容量机制横向对照见<a href="容量机制横向对照-2026-11.html">《容量机制横向对照》</a>。</p>
+<hr>
+<h2 id="s25">5. 电网规划：有电送不出也是缺电</h2>
+<h3 id="s26">5.1 输电规划</h3>
+<ul><li>潮流/限额/阻塞；</li><li>N-1/N-1-1；</li><li>稳定/短路/振荡；</li><li>电源/负荷分布；</li><li>省间/区域互济；</li><li>走廊/土地/审批；</li><li>韧性/极端事件。</li></ul>
+<h3 id="s27">5.2 配电网规划</h3>
+<ul><li>负荷增长/分布式；</li><li>承载力/电压/短路；</li><li>储能/微网/充电桩；</li><li>可靠性/韧性；</li><li>投资/电价；</li><li>分布式接入。</li></ul>
+<p>配电网承载力见<a href="配电网承载力与分布式接入-2026-11.html">《配电网承载力与分布式接入》</a>。</p>
+<h3 id="s28">5.3 电源-电网协同</h3>
+<ul><li>电源选址要考虑送出/并网；</li><li>电网规划要考虑电源/负荷增长；</li><li>储能可以延缓电网扩容；</li><li>需求响应可以降低峰值/阻塞；</li><li>省间互济可以降低本地装机；</li><li>但不能假设&quot;电网无限&quot;。</li></ul>
+<h3 id="s29">5.4 韧性规划</h3>
+<ul><li>极端天气/洪水/地震/山火；</li><li>关键负荷/生命线；</li><li>移动电源/微网/黑启动；</li><li>线路走廊/地下化/加固；</li><li>恢复时间/备件；</li><li>与可靠性区分，避免重复计算。</li></ul>
+<hr>
+<h2 id="s30">6. 规划方法：从筛选到优化</h2>
+<h3 id="s31">6.1 筛选曲线</h3>
+<p>用不同电源的固定成本/变动成本画筛选曲线，初步判断哪种电源适合基荷/腰荷/峰荷。筛选曲线忽略可靠性/网络/灵活性，只做初步筛选。</p>
+<h3 id="s32">6.2 容量扩展优化</h3>
+<pre tabindex="0"><code>min Σ (投资 + 燃料 + 运维 + 排放 + 可靠性)
+s.t. 电量平衡、容量充裕、网络、排放、资源、政策</code></pre>
+<ul><li>线性/混合整数/随机优化；</li><li>场景/蒙特卡洛；</li><li>生产模拟校核；</li><li>网络/稳定校核；</li><li>敏感性/鲁棒性。</li></ul>
+<h3 id="s33">6.3 生产模拟</h3>
+<p>用 8760 h/典型日模拟机组调度、燃料、排放、成本、可靠性。生产模拟要考虑：</p>
+<ul><li>机组最小/最大/爬坡/启停；</li><li>新能源/储能/水电；</li><li>检修/故障；</li><li>网络/限额；</li><li>市场/调度规则。</li></ul>
+<h3 id="s34">6.4 可靠性评估</h3>
+<ul><li>解析法/蒙特卡洛；</li><li>状态枚举/抽样；</li><li>LOLE/EENS；</li><li>容量信用/ELCC；</li><li>网络/稳定/韧性。</li></ul>
+<h3 id="s35">6.5 多目标/不确定性</h3>
+<ul><li>场景分析；</li><li>敏感性；</li><li>鲁棒优化；</li><li>实物期权；</li><li>触发条件/自适应规划；</li><li>利益相关方/审批。</li></ul>
+<p><strong>规划不是&quot;算一个最优解&quot;，而是&quot;给决策者一组可选方案+代价+风险+触发条件&quot;。</strong></p>
+<hr>
+<h2 id="s36">7. D 级合成算例：两组合的资源充裕性</h2>
+<aside class="note"><p>本算例为合成数据，仅用于演示 LOLE/EENS、容量信用与组合比较；不对应任何真实系统、省份或规划方案。</p></aside>
+<h3 id="s37">7.1 负荷</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th style="text-align:right">负荷（MW）</th><th style="text-align:right">持续时间（h）</th></tr></thead><tbody><tr><td style="text-align:right">1000</td><td style="text-align:right">100</td></tr><tr><td style="text-align:right">800</td><td style="text-align:right">3000</td></tr><tr><td style="text-align:right">500</td><td style="text-align:right">5660</td></tr></tbody></table></div>
+<p>峰值 1000 MW，全年 8760 h；示例可靠性目标假设 LOLE ≤ 2.4 h/年（教学设定，不是任何地区标准）。</p>
+<h3 id="s38">7.2 组合</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>资源</th><th style="text-align:right">组合 A</th><th style="text-align:right">组合 B</th></tr></thead><tbody><tr><td>煤电</td><td style="text-align:right">600 MW，EFOR 6%</td><td style="text-align:right">600 MW，EFOR 6%</td></tr><tr><td>气电</td><td style="text-align:right">300 MW，EFOR 4%</td><td style="text-align:right">3×300 MW，EFOR 4%</td></tr><tr><td>风电</td><td style="text-align:right">300 MW，信用 20%</td><td style="text-align:right">300 MW，信用 20%</td></tr><tr><td>光伏</td><td style="text-align:right">300 MW，信用 10%</td><td style="text-align:right">300 MW，信用 10%</td></tr><tr><td>储能</td><td style="text-align:right">200 MW，信用 80%</td><td style="text-align:right">200 MW，信用 80%</td></tr><tr><td>可信容量</td><td style="text-align:right">1150 MW</td><td style="text-align:right">1750 MW</td></tr><tr><td>备用率</td><td style="text-align:right">15%</td><td style="text-align:right">75%</td></tr></tbody></table></div>
+<h3 id="s39">7.3 结果</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th style="text-align:right">组合 A</th><th style="text-align:right">组合 B</th></tr></thead><tbody><tr><td>可信容量（MW）</td><td style="text-align:right">1150</td><td style="text-align:right">1750</td></tr><tr><td>LOLE（h/年）</td><td style="text-align:right">203.344</td><td style="text-align:right">1.560</td></tr><tr><td>EENS（MWh/年）</td><td style="text-align:right">53,892</td><td style="text-align:right">332.29</td></tr><tr><td>是否满足示例目标 2.4 h/年</td><td style="text-align:right">否</td><td style="text-align:right">是</td></tr></tbody></table></div>
+<p>组合 B 的状态概率（节选）：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>状态</th><th style="text-align:right">可用容量（MW）</th><th style="text-align:right">概率</th><th style="text-align:right">失负荷时间（h）</th></tr></thead><tbody><tr><td>煤+3 气</td><td style="text-align:right">1750</td><td style="text-align:right">0.83165</td><td style="text-align:right">0</td></tr><tr><td>煤+2 气</td><td style="text-align:right">1450</td><td style="text-align:right">0.10396</td><td style="text-align:right">0</td></tr><tr><td>煤+1 气</td><td style="text-align:right">1150</td><td style="text-align:right">0.00433</td><td style="text-align:right">0</td></tr><tr><td>煤+0 气</td><td style="text-align:right">850</td><td style="text-align:right">0.00006</td><td style="text-align:right">100</td></tr><tr><td>无煤+3 气</td><td style="text-align:right">1150</td><td style="text-align:right">0.05308</td><td style="text-align:right">0</td></tr><tr><td>无煤+2 气</td><td style="text-align:right">850</td><td style="text-align:right">0.00664</td><td style="text-align:right">100</td></tr><tr><td>无煤+1 气</td><td style="text-align:right">550</td><td style="text-align:right">0.00028</td><td style="text-align:right">3100</td></tr><tr><td>无煤+0 气</td><td style="text-align:right">250</td><td style="text-align:right">0.00000384</td><td style="text-align:right">8760</td></tr></tbody></table></div>
+<h3 id="s40">7.4 读法</h3>
+<ul><li>组合 A 的可信容量 1150 MW 看起来比峰值 1000 MW 高 15%，但气电单机故障概率不低，故障时只剩 550 MW，造成大量失负荷；</li><li>组合 B 增加两台气电，可信容量 1750 MW，LOLE 降到 1.56 h/年；</li><li>储能 160 MW 可信容量有帮助，但不能替代可调度容量；</li><li>备用率 15% 的 A 不可靠，75% 的 B 可靠；备用率不能单独用；</li><li>组合 B 的成本更高（多两台气电），规划要在可靠性与成本间权衡。</li></ul>
+<h3 id="s41">7.5 这个算例说明什么</h3>
+<ul><li>装机/可信容量够，不等于 LOLE 达标；</li><li>机组故障概率/负荷持续时间决定 EENS；</li><li>容量信用让风光储可比，但不能把低信用资源当高信用；</li><li>备用率只是粗略指标；</li><li>规划要给&quot;可靠性—成本&quot;曲线，而不是一个点。</li></ul>
+<h3 id="s42">7.6 这个算例不说明什么</h3>
+<ul><li>不代表真实机组/新能源/储能/负荷的参数；</li><li>不覆盖网络/输电/配电网/燃料/排放/政策；</li><li>不覆盖多区域/省间/来水/极端天气；</li><li>不给出真实 LOLE/EENS 目标或最优组合；</li><li>不能替代规划报告、可靠性评估和审批。</li></ul>
+<hr>
+<h2 id="s43">8. 新型电力系统的规划挑战</h2>
+<h3 id="s44">8.1 高新能源</h3>
+<ul><li>出力不确定性/低容量信用；</li><li>低惯量/弱支撑；</li><li>反送/阻塞/消纳；</li><li>极端天气/相关性；</li><li>需要储能/需求响应/电网/互济。</li></ul>
+<h3 id="s45">8.2 高电气化</h3>
+<ul><li>电动车/供暖/数据中心/绿氢；</li><li>峰值/电量增长；</li><li>配电网承载力；</li><li>负荷灵活性；</li><li>电价/需求响应。</li></ul>
+<h3 id="s46">8.3 市场化</h3>
+<ul><li>价格信号/投资激励；</li><li>容量机制/稀缺定价；</li><li>辅助服务/灵活性；</li><li>中长期/现货/省间；</li><li>政策/补贴/碳价。</li></ul>
+<h3 id="s47">8.4 韧性/安全</h3>
+<ul><li>极端事件/网络攻击；</li><li>关键负荷/生命线；</li><li>黑启动/微网；</li><li>供应链/设备；</li><li>规划要包含韧性投资。</li></ul>
+<hr>
+<h2 id="s48">9. 对投资、交易与运营的含义</h2>
+<h3 id="s49">9.1 投资</h3>
+<ul><li>项目要看系统需求/容量信用/可靠性价值；</li><li>选址/并网/电网约束决定可实施性；</li><li>燃料/碳/市场/政策影响收益；</li><li>建设周期/供应链/审批风险；</li><li>规划变化可能导致项目搁置/延后；</li><li>不要只看&quot;装机缺口&quot;。</li></ul>
+<h3 id="s50">9.2 交易</h3>
+<ul><li>容量机制/稀缺定价/辅助服务影响收益；</li><li>现货价格/阻塞/省间价差；</li><li>燃料/碳成本；</li><li>规划/检修/新投产影响供需；</li><li>交易员要关注规划/政策/项目投产。</li></ul>
+<h3 id="s51">9.3 运营</h3>
+<ul><li>机组/储能/新能源要按规划/市场/调度运行；</li><li>可靠性/备用/灵活性义务；</li><li>设备老化/退役/延寿；</li><li>数据/模型/规划滚动；</li><li>极端事件/韧性演练。</li></ul>
+<h3 id="s52">9.4 数据与 AI 的边界</h3>
+<p>AI 可以做负荷/新能源预测、规划筛选、可靠性近似、场景生成，但：</p>
+<ul><li>规划是长期/多目标/不确定性决策，不能由 AI 单独拍板；</li><li>训练数据要覆盖真实系统/政策/极端事件；</li><li>模型要可解释/可审计；</li><li>预测要带不确定性；</li><li>&quot;AI 推荐组合&quot;不能替代规划报告/审批。</li></ul>
+<hr>
+<h2 id="s53">10. 常见错误（10 条）</h2>
+<ol><li><strong>装机容量当资源充裕</strong>：机组会故障/检修，新能源看天，储能受能量限制。</li><li><strong>备用率当可靠性判据</strong>：备用率 15% 也可能 LOLE 很差。</li><li><strong>负荷预测只外推历史</strong>：数据中心/电动车/电气化会改变曲线。</li><li><strong>新能源按铭牌算容量</strong>：容量信用可能只有 10%—30%。</li><li><strong>储能只看功率不看能量</strong>：持续时间/ SOC 决定可靠性贡献。</li><li><strong>电源/电网分开规划</strong>：有电送不出、有负荷受不到。</li><li><strong>只算投资，不算燃料/碳/运维/可靠性</strong>：全生命周期成本失真。</li><li><strong>只给一个最优解</strong>：没有场景/敏感性/触发条件，规划不可执行。</li><li><strong>忽略极端事件/韧性</strong>：可靠性达标不代表台风/洪水下能撑住。</li><li><strong>规划不滚动</strong>：负荷/技术/政策变化后不修编，项目/电网脱节。</li></ol>
+<hr>
+<h2 id="s54">11. 待核实与未定事项</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>事项</th><th>状态</th><th>查证入口</th></tr></thead><tbody><tr><td>负荷预测/峰值/电量</td><td>分区域、分年度</td><td>政府/电网规划、统计年鉴、专题研究</td></tr><tr><td>机组 EFOR/检修/容量信用</td><td>分类型、分区域</td><td>可靠性报告、调度/规划资料</td></tr><tr><td>新能源容量信用/ELCC</td><td>分资源、分位置、分年份</td><td>容量充裕性研究、规划报告</td></tr><tr><td>储能容量信用/持续时间</td><td>分项目、分场景</td><td>规划/可靠性研究、示范项目</td></tr><tr><td>LOLE/EENS 目标</td><td>分区域/分政策</td><td>规划导则、政府文件、可靠性标准</td></tr><tr><td>电源/电网投资成本</td><td>分类型、分地区、分年份</td><td>工程造价、厂家报价、规划报告</td></tr><tr><td>燃料/碳/运维成本</td><td>分市场、分年份</td><td>价格预测、碳市场、规划报告</td></tr><tr><td>电网拓扑/限额/稳定</td><td>分区域、分方式</td><td>电网规划、潮流/稳定计算</td></tr><tr><td>容量机制/市场规则</td><td>分省、分阶段</td><td>市场规则、政府文件</td></tr><tr><td>极端事件/韧性标准</td><td>分区域/分行业</td><td>政府/行业标准、风险评估</td></tr></tbody></table></div>
+<hr>
+<h2 id="s55">12. 分工：和现有模块怎么配合</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>问题</th><th>先看</th><th>本文负责</th><th>不负责</th></tr></thead><tbody><tr><td>运行与调度</td><td><a href="电力系统通识-F-运行与调度-2026-11.html">《电力系统通识 F》</a></td><td>规划与运行的衔接</td><td>日计划、AGC、实时平衡</td></tr><tr><td>故障/保护/安全</td><td><a href="故障保护与安全防御-2026-11.html">《故障、保护与安全防御》</a></td><td>规划中的安全约束</td><td>保护整定、三道防线</td></tr><tr><td>新能源开发</td><td><a href="新能源项目开发与并网-2026-11.html">《新能源项目开发与并网》</a></td><td>新能源容量信用/消纳</td><td>资源、LCOE、机制电价</td></tr><tr><td>储能投资</td><td><a href="储能投资与运营-2026-11.html">《储能投资与运营》</a></td><td>储能规划价值</td><td>项目收益、合同</td></tr><tr><td>储能选址定容</td><td><a href="电网侧储能选址定容与可靠性韧性价值-2026-11.html">《电网侧储能选址定容与可靠性韧性价值》</a></td><td>选址/定容/可靠性</td><td>具体项目财务模型</td></tr><tr><td>容量机制</td><td><a href="容量机制横向对照-2026-11.html">《容量机制横向对照》</a></td><td>容量信用/充裕性</td><td>容量市场规则、拍卖</td></tr><tr><td>潮流/节点价</td><td><a href="潮流阻塞与节点电价-2026-11.html">《从潮流到节点电价》</a></td><td>电网规划/阻塞</td><td>LMP 分解、网损</td></tr><tr><td>动态安全</td><td><a href="动态安全评估与紧急控制-2026-11.html">《动态安全评估与紧急控制》</a></td><td>规划中的稳定约束</td><td>暂态稳定、紧急控制</td></tr><tr><td>配电网承载力</td><td><a href="配电网承载力与分布式接入-2026-11.html">《配电网承载力与分布式接入》</a></td><td>配网规划/分布式</td><td>承载力评估、接入方案</td></tr><tr><td>现货出清</td><td><a href="现货出清与价格形成-2026-11.html">《现货出清与价格形成》</a></td><td>市场价格信号</td><td>SCED/SCUC、报价</td></tr></tbody></table></div>
+<hr>
+<h2 id="s56">13. 速查</h2>
+<h3 id="s57">13.1 六个公式</h3>
+<pre tabindex="0"><code>备用率 = 可用容量 / 峰值负荷 − 1
+LOLE = Σ p_i × T_i
+EENS = Σ p_i × U_i × T_i
+可信容量 = Σ 铭牌容量 × 容量信用
+ELCC = 维持可靠性目标可增加的负荷
+NPV = Σ (收益 − 成本) / (1 + r)^t</code></pre>
+<h3 id="s58">13.2 五个必问</h3>
+<ol><li>负荷预测是峰值/电量/曲线，场景/不确定性怎么给？</li><li>资源充裕性用 LOLE/EENS 还是备用率，目标是多少？</li><li>新能源/储能的容量信用怎么来，位置/年份/相关性考虑了吗？</li><li>电源和电网一起规划了吗，有电送不出/有负荷受不到吗？</li><li>成本是全生命周期吗，燃料/碳/可靠性/韧性/审批都算了吗？</li></ol>
+<h3 id="s59">13.3 工具</h3>
+<pre tabindex="0"><code># 在 skills/ems-dispatch/tools 下
+python planning.py                 # 打印两组合的 LOLE/EENS
+python planning.py --json          # JSON 输出
+python selftest.py                 # 断言本文数字</code></pre>
+<p><code>planning.py</code> 只做三负荷块、独立机组状态、线性容量信用的确定性演示，不是生产级规划/可靠性程序。</p>
+<hr>
+<h2 id="s60">14. 版本与维护</h2>
+<ul><li>本模块为 v2.3 维护批次新增，数据截止 2026-11-19；所有负荷、资源、成本与结果均为 D 级合成数据。</li><li>修改 frontmatter <code>cutoff</code> 时，必须同步 <code>更新清单.md</code> 对应行。</li><li>若规划导则、可靠性标准、容量机制或负荷/新能源预测方法更新，优先复核 §3、§6、§7 和算例参数，并同步 <code>planning.py</code> 与 <code>selftest.py</code> 断言。</li><li><strong>相关工具</strong>：<code>skills/ems-dispatch/tools/planning.py</code>；相关自测：<code>skills/ems-dispatch/tools/selftest.py</code>。</li><li>方法术语参考电力系统规划、可靠性与资源充裕性的通用教材和标准；本文不复制任何真实规划方案、成本或政策数据。</li></ul>
+    </article>
+
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>11</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="电力系统通识-F-运行与调度-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>电力系统通识 F · 运行与调度：从日计划到实时平衡</b>
+          <span>把电力系统运行讲成一条时间链：负荷预测、检修、机组组合、现货出清、安全校核、实时调度、AGC、备用与结算；说明日前/日内/实时/AGC 各管什么、SCUC/SCED 怎么分工、为什么计划总在变、新能源和储能把哪些环节变难；附三机组 D 级算例与 10 条常见错误。</span>
+        </a>
+        <a class="related-card" href="故障保护与安全防御-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>电力系统通识 E · 故障、保护与安全防御</b>
+          <span>短路与故障类型、继电保护四性与整定配合、新能源故障电流的特殊性、防孤岛、三道防线、低频减载与黑启动。</span>
+        </a>
+        <a class="related-card" href="新能源项目开发与并网-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>新能源项目开发与并网</b>
+          <span>136 号机制电价、省级竞价、P50/P90、LCOE、并网标准、海上风电与省别画像。</span>
+        </a>
+        <a class="related-card" href="并网运行考核与两个细则-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>并网运行考核与两个细则</b>
+          <span>60/61 号、AGC/AVC/一次调频公式、20 项罚则、六类免考与合成算例。</span>
+        </a>
+      </div>
+      <p class="related-rest"><b>更多关联</b><a href="储能投资与运营-2026-11.html">储能投资与运营</a><a href="容量机制横向对照-2026-11.html">容量机制横向对照（2026 版）：年金、拍卖、双向 CfD 与战略储备</a><a href="潮流阻塞与节点电价-2026-11.html">从潮流到节点电价：阻塞、断面与网损的价格传导</a><a href="动态安全评估与紧急控制-2026-11.html">动态安全评估与紧急控制：从静态 N-1 到暂态稳定</a><a href="配电网承载力与分布式接入-2026-11.html">配电网承载力与分布式接入：从可开放容量到绿电直连</a><a href="电网侧储能选址定容与可靠性韧性价值-2026-11.html">电网侧储能选址定容与可靠性/韧性价值</a><a href="现货出清与价格形成-2026-11.html">现货出清与价格形成：从报价到节点价</a></p>
+    </section>
+
+<section class="related" aria-labelledby="paired-skills-title">
+      <div class="related-head"><h2 id="paired-skills-title">配套技能</h2><span>2</span></div>
+      <div class="related-grid">
+        <a class="related-card skill-pair" href="skill-electricity-trading-expert.html">
+          <span class="related-type">现货、中长期、结算与风控（含山东持仓与负价复盘、四川/云南水电、辽宁核电、甘肃煤电容量+辅助服务、甘送鲁省间实例包），并接入运行调度与规划充裕性</span>
+          <b>电力交易专家</b>
+          <span>技能 · 现货 · 结算 · 风控</span>
+        </a>
+        <a class="related-card skill-pair" href="skill-storage-investment-operations.html">
+          <span class="related-type">收益堆叠、投决、退化与考核（含安徽容量电价、广东现货+调频实例包），并接入选址定容、保护整定、BMS 状态边界与资源充裕性</span>
+          <b>储能投资与运营</b>
+          <span>技能 · 储能 · 投决 · LCOS · 选址</span>
+        </a>
+      </div>
+    </section>
+
+    <nav class="pager" aria-label="上下篇">
+          <a class="prev" href="电力系统通识-F-运行与调度-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">电力系统通识 F · 运行与调度：从日计划到实时平衡</span></a>
+          <span class="spacer"></span>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../电力系统通识-G-规划与资源充裕性-2026-11.md">knowledge/电力系统通识-G-规划与资源充裕性-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="本页目录">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv3"><a href="#s2">0.1 三句话</a></li>
+            <li class="lv3"><a href="#s3">0.2 关键概念</a></li>
+            <li class="lv3"><a href="#s4">0.3 先记住四个数</a></li>
+            <li class="lv3"><a href="#s5">0.4 本文不做什么</a></li>
+            <li class="lv2"><a href="#s6">1. 规划问题：在不确定性下做选择</a></li>
+            <li class="lv3"><a href="#s7">1.1 规划的目标</a></li>
+            <li class="lv3"><a href="#s8">1.2 规划的时间/空间尺度</a></li>
+            <li class="lv3"><a href="#s9">1.3 规划的输出</a></li>
+            <li class="lv2"><a href="#s10">2. 负荷预测：规划的地基</a></li>
+            <li class="lv3"><a href="#s11">2.1 预测什么</a></li>
+            <li class="lv3"><a href="#s12">2.2 方法</a></li>
+            <li class="lv3"><a href="#s13">2.3 影响负荷的结构因素</a></li>
+            <li class="lv3"><a href="#s14">2.4 预测误差</a></li>
+            <li class="lv2"><a href="#s15">3. 资源充裕性：装机够为什么还缺电</a></li>
+            <li class="lv3"><a href="#s16">3.1 负荷持续曲线</a></li>
+            <li class="lv3"><a href="#s17">3.2 LOLE 与 EENS</a></li>
+            <li class="lv3"><a href="#s18">3.3 容量信用</a></li>
+            <li class="lv3"><a href="#s19">3.4 备用率不是充裕性</a></li>
+            <li class="lv2"><a href="#s20">4. 电源组合：不是"越多越好"</a></li>
+            <li class="lv3"><a href="#s21">4.1 电源属性</a></li>
+            <li class="lv3"><a href="#s22">4.2 组合的逻辑</a></li>
+            <li class="lv3"><a href="#s23">4.3 不要"单一化"</a></li>
+            <li class="lv3"><a href="#s24">4.4 容量机制</a></li>
+            <li class="lv2"><a href="#s25">5. 电网规划：有电送不出也是缺电</a></li>
+            <li class="lv3"><a href="#s26">5.1 输电规划</a></li>
+            <li class="lv3"><a href="#s27">5.2 配电网规划</a></li>
+            <li class="lv3"><a href="#s28">5.3 电源-电网协同</a></li>
+            <li class="lv3"><a href="#s29">5.4 韧性规划</a></li>
+            <li class="lv2"><a href="#s30">6. 规划方法：从筛选到优化</a></li>
+            <li class="lv3"><a href="#s31">6.1 筛选曲线</a></li>
+            <li class="lv3"><a href="#s32">6.2 容量扩展优化</a></li>
+            <li class="lv3"><a href="#s33">6.3 生产模拟</a></li>
+            <li class="lv3"><a href="#s34">6.4 可靠性评估</a></li>
+            <li class="lv3"><a href="#s35">6.5 多目标/不确定性</a></li>
+            <li class="lv2"><a href="#s36">7. D 级合成算例：两组合的资源充裕性</a></li>
+            <li class="lv3"><a href="#s37">7.1 负荷</a></li>
+            <li class="lv3"><a href="#s38">7.2 组合</a></li>
+            <li class="lv3"><a href="#s39">7.3 结果</a></li>
+            <li class="lv3"><a href="#s40">7.4 读法</a></li>
+            <li class="lv3"><a href="#s41">7.5 这个算例说明什么</a></li>
+            <li class="lv3"><a href="#s42">7.6 这个算例不说明什么</a></li>
+            <li class="lv2"><a href="#s43">8. 新型电力系统的规划挑战</a></li>
+            <li class="lv3"><a href="#s44">8.1 高新能源</a></li>
+            <li class="lv3"><a href="#s45">8.2 高电气化</a></li>
+            <li class="lv3"><a href="#s46">8.3 市场化</a></li>
+            <li class="lv3"><a href="#s47">8.4 韧性/安全</a></li>
+            <li class="lv2"><a href="#s48">9. 对投资、交易与运营的含义</a></li>
+            <li class="lv3"><a href="#s49">9.1 投资</a></li>
+            <li class="lv3"><a href="#s50">9.2 交易</a></li>
+            <li class="lv3"><a href="#s51">9.3 运营</a></li>
+            <li class="lv3"><a href="#s52">9.4 数据与 AI 的边界</a></li>
+            <li class="lv2"><a href="#s53">10. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s54">11. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s55">12. 分工：和现有模块怎么配合</a></li>
+            <li class="lv2"><a href="#s56">13. 速查</a></li>
+            <li class="lv3"><a href="#s57">13.1 六个公式</a></li>
+            <li class="lv3"><a href="#s58">13.2 五个必问</a></li>
+            <li class="lv3"><a href="#s59">13.3 工具</a></li>
+            <li class="lv2"><a href="#s60">14. 版本与维护</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="45" data-more-label="展开 45 个小节" data-less-label="收起小节">展开 45 个小节</button>
+  </aside>
+</div>
+
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.3" data-cutoff="2026-11-19" data-latest="2026-11-27" data-count="101">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.3）" title="查看更新记录（当前 v2.3）">
+    <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
+    <span class="cl-badge-ver">v2.3</span>
+    <span class="cl-badge-label">更新记录</span>
+  </button>
+  <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
+    <div class="cl-backdrop" data-changelog-close></div>
+    <div class="cl-panel" role="dialog" aria-modal="true" aria-labelledby="cl-title" aria-describedby="cl-subtitle" tabindex="-1">
+      <header class="cl-head">
+        <div class="cl-head-main">
+          <span class="cl-kicker">RELEASE NOTES</span>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.3</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.3 · 数据截止 2026-11-19 · 101 条记录</p>
+        </div>
+        <div class="cl-actions">
+          <div class="cl-lang" role="group" aria-label="切换语言">
+            <button type="button" data-cl-lang="zh" aria-pressed="true">中文</button>
+            <button type="button" data-cl-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <button class="cl-close" type="button" data-changelog-close aria-label="关闭更新记录" title="关闭更新记录">×</button>
+        </div>
+      </header>
+      <div class="cl-body" data-changelog-body>
+        <div class="cl-skeleton" data-changelog-status role="status">
+          <span class="cl-sr">正在读取更新记录…</span>
+          <i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      <footer class="cl-foot">
+        <span data-changelog-meta>v2.3 · 2026-11-19 · 101 条记录</span>
+        <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
+      </footer>
+    </div>
+  </div>
+</div>
+<script src="../assets/doc.js"></script>
+<script src="../assets/theme.js"></script>
+<script src="../assets/changelog.js"></script>
+</body>
+</html>

@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>电力系统通识 F · 运行与调度：从日计划到实时平衡 | energy-skills 知识库</title>
+<meta name="description" content="把电力系统运行讲成一条时间链：负荷预测、检修、机组组合、现货出清、安全校核、实时调度、AGC、备用与结算；说明日前/日内/实时/AGC 各管什么、SCUC/SCED 怎么分工、为什么计划总在变、新能源和储能把哪些环节变难；附三机组 D 级算例与 10 条常见错误。">
+<link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
+<script>
+(function(){try{var t=localStorage.getItem('es-theme');if(!/^(light|cream|green|dark)$/.test(t||'')){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/knowledge.css">
+<link rel="stylesheet" href="../assets/theme-menu.css">
+<link rel="stylesheet" href="../assets/changelog.css">
+</head>
+<body data-cat="foundation" id="top">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
+  <div class="crumb">
+    <span class="crumb-cat">01 · BASE</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">电力系统通识 F · 运行与调度：从日计划到实时平衡</span>
+  </div>
+  <div class="topbar-act">
+    <div class="theme-picker" data-theme-picker>
+      <button class="theme-toggle" type="button" data-theme-menu aria-label="选择主题" title="选择主题">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="5"/><circle cx="15" cy="9" r="5"/><circle cx="12" cy="15" r="5"/></svg>
+      </button>
+    </div>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../电力系统通识-F-运行与调度-2026-11.md">.md 源文件<small>knowledge/电力系统通识-F-运行与调度-2026-11.md</small></a>
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">01 · BASE</div>
+    <h2 class="nav-cat"><a href="../index.html#foundation">通识与经济学</a></h2>
+    <ul class="nav-list">
+              <li><a href="电力系统通识-A-格局与主体.html">电力系统通识 A · 格局与主体</a></li>
+              <li><a href="电力系统通识-B-发输配变用.html">电力系统通识 B · 发输配变用</a></li>
+              <li><a href="电力系统通识-C-改革史.html">电力系统通识 C · 改革史</a></li>
+              <li><a href="电力系统通识-D-新角色与现货市场.html">电力系统通识 D · 新角色与现货市场</a></li>
+              <li><a href="故障保护与安全防御-2026-11.html">电力系统通识 E · 故障、保护与安全防御</a></li>
+              <li><a href="电力系统经济学原理-主题笔记.html">电力系统经济学原理</a></li>
+              <li class="on" aria-current="page"><a href="电力系统通识-F-运行与调度-2026-11.html">电力系统通识 F · 运行与调度：从日计划到实时平衡</a></li>
+              <li><a href="电力系统通识-G-规划与资源充裕性-2026-11.html">电力系统通识 G · 规划与资源充裕性：从负荷预测到电源电网组合</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#province"><b>03</b>中国省级市场</a></li>
+              <li><a href="../index.html#intl"><b>04</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>05</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>06</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>07</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>08</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>11</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">01 · BASE<i>知识模块</i></div>
+      <h1 class="doc-title">电力系统通识 F · 运行与调度：从日计划到实时平衡（2026-11）</h1>
+      <p class="lede">把电力系统运行讲成一条时间链：负荷预测、检修、机组组合、现货出清、安全校核、实时调度、AGC、备用与结算；说明日前/日内/实时/AGC 各管什么、SCUC/SCED 怎么分工、为什么计划总在变、新能源和储能把哪些环节变难；附三机组 D 级算例与 10 条常见错误。</p>
+      <p class="hook">电力系统通识 F · 运行与调度</p>
+      <div class="tags"><span class="tag">运行与调度</span><span class="tag">日计划</span><span class="tag">机组组合</span><span class="tag">现货出清</span><span class="tag">实时平衡</span><span class="tag">AGC</span><span class="tag">备用</span><span class="tag">安全校核</span><span class="tag">SCUC</span><span class="tag">SCED</span><span class="tag">调度</span></div>
+      <div class="doc-meta"><span>约 10.1k 字</span><span>阅读约 18 分钟</span><span>15 节</span><span>数据截止 2026-11-19</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（15）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv2"><a href="#s6">1. 运行与调度的全景</a></li>
+            <li class="lv2"><a href="#s10">2. 日计划：明天怎么开</a></li>
+            <li class="lv2"><a href="#s16">3. 现货出清：价格怎么形成</a></li>
+            <li class="lv2"><a href="#s22">4. 实时平衡：现在差多少</a></li>
+            <li class="lv2"><a href="#s28">5. 安全校核：计划能不能执行</a></li>
+            <li class="lv2"><a href="#s33">6. 机构与职责</a></li>
+            <li class="lv2"><a href="#s38">7. D 级合成算例：三机组的日计划与实时平衡</a></li>
+            <li class="lv2"><a href="#s46">8. 新能源与储能把什么变难</a></li>
+            <li class="lv2"><a href="#s50">9. 对交易、投资与运营的含义</a></li>
+            <li class="lv2"><a href="#s55">10. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s56">11. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s57">12. 分工：和现有模块怎么配合</a></li>
+            <li class="lv2"><a href="#s58">13. 速查</a></li>
+            <li class="lv2"><a href="#s62">14. 版本与维护</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>数据截止：2026-11-19｜定位：知识库模块（电力系统通识·运行与调度）</p><p>相关技能：<a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a>（现货/中长期/偏差）、<a href="../../skills/ems-dispatch/SKILL.md">EMS 优化调度专家</a>（场站/微网闭环）、<a href="../../skills/virtual-power-plant/SKILL.md">虚拟电厂专家</a>（聚合与申报）</p><p>用途：回答&quot;日计划到底计划什么、现货出清和调度是什么关系、为什么计划总在变、AGC 和备用怎么分工、安全校核卡在哪、新能源/储能把哪些环节变难&quot;六类问题。本文做工程通识与算例演示；具体规则、参数、流程和定值以调度规程、市场规则和项目资料为准。</p><p>算例：一个三机组系统的日计划、实时再调度、AGC 与事故备用算例，由 <a href="../../skills/ems-dispatch/tools/operations.py">operations.py</a> 复现，断言见 <a href="../../skills/ems-dispatch/tools/selftest.py">selftest.py</a> 的 &quot;Operations&quot; 段。</p><p>边界：本文不提供真实电网模型、负荷、报价、机组参数或调度指令；不替代调度机构的安全校核、现货出清、实时调度或结算；不构成交易、调度或投资建议。</p></aside>
+<hr>
+<h2 id="s1">0. 一页看懂</h2>
+<h3 id="s2">0.1 三句话</h3>
+<ul><li><strong>运行与调度是一条时间链，不是一张计划表</strong>：年前/月度做电量与检修，日前做机组组合与现货出清，日内滚动修正，实时平衡偏差，AGC 秒级跟踪，最后按规则结算。</li><li><strong>日计划解决&quot;明天大概怎么开&quot;，实时平衡解决&quot;现在差多少&quot;</strong>：前者是优化问题（SCUC/SCED），后者是控制+再调度问题；两者用的模型、时间尺度和目标不同。</li><li><strong>计划一定会变，关键是&quot;变得可控&quot;</strong>：负荷/新能源/机组/线路/市场都会变；备用、爬坡、滚动、再调度、AGC 和考核机制就是为变化准备的。</li></ul>
+<h3 id="s3">0.2 关键概念</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>概念</th><th>含义</th><th>本文口径</th></tr></thead><tbody><tr><td>日计划</td><td>日前安排的机组/联络线/检修/备用</td><td>通常 24 h、15 min/1 h 颗粒</td></tr><tr><td>机组组合（UC）</td><td>决定机组开/停与出力区间</td><td>混合整数优化</td></tr><tr><td>经济调度（ED）</td><td>给定开机方式下的出力分配</td><td>连续优化</td></tr><tr><td>SCUC</td><td>安全约束机组组合</td><td>UC + 网络/备用/爬坡约束</td></tr><tr><td>SCED</td><td>安全约束经济调度</td><td>ED + 网络/备用约束</td></tr><tr><td>现货出清</td><td>按报价/成本形成价格与计划</td><td>日前/实时，规则各异</td></tr><tr><td>安全校核</td><td>检查潮流/电压/稳定/限额</td><td>N-1、断面、稳定</td></tr><tr><td>实时调度</td><td>日内/实时的再调度</td><td>滚动、超短期预测</td></tr><tr><td>AGC</td><td>自动发电控制</td><td>秒级跟踪 ACE/频率</td></tr><tr><td>ACE</td><td>区域控制误差</td><td>频率/联络线偏差</td></tr><tr><td>备用</td><td>可调用的裕度</td><td>旋转/非旋转/调频</td></tr><tr><td>爬坡</td><td>功率变化速率</td><td>MW/min（算例按单时段折算）</td></tr><tr><td>结算</td><td>按规则算钱</td><td>日前/实时/偏差/考核</td></tr></tbody></table></div>
+<h3 id="s4">0.3 先记住四个数</h3>
+<p>三机组合成算例（煤电 300 MW、气电 200 MW、储能 100 MW/200 MWh）：</p>
+<ul><li><strong>日前净负荷 300 MW：煤电 250 MW、气电 50 MW，成本 97,500 元，火电旋转备用 200 MW</strong>。</li><li><strong>实时净负荷 360 MW：煤电 300 MW、气电 60 MW，成本 117,000 元，火电旋转备用 140 MW，偏差成本 19,500 元</strong>。</li><li><strong>AGC 指令 20 MW：煤电已到上限，全部由气电承担，气电升到 80 MW</strong>。</li><li><strong>气电故障时：煤电 300 MW + 储能 60 MW 可保住 360 MW 负荷，但事故后可调用上调能力只剩 40 MW，距 80 MW 要求缺 40 MW</strong>。</li></ul>
+<aside class="note"><p>口径提醒：上述数字是合成算例的确定性结果，不是任何真实系统的调度结果。真实调度要考虑网络、备用、爬坡、市场规则、机组状态和新能源出力。</p></aside>
+<h3 id="s5">0.4 本文不做什么</h3>
+<ul><li>不提供真实电网的拓扑、负荷、报价、机组参数、检修计划或调度指令；</li><li>不实现完整的 SCUC/SCED、交流潮流、N-1、稳定校核或市场出清；</li><li>不替代调度机构的运行计划、安全校核、实时调度、AGC 或结算；</li><li>不把三机组算例的结论套到多区域、直流、新能源高渗透系统；</li><li>不给出&quot;某机组/储能一定能/不能中标&quot;的结论。</li></ul>
+<hr>
+<h2 id="s6">1. 运行与调度的全景</h2>
+<h3 id="s7">1.1 时间轴</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>时间尺度</th><th>主要工作</th><th>输入</th><th>输出</th></tr></thead><tbody><tr><td>年/多年</td><td>电源/电网规划、检修计划、燃料/来水</td><td>负荷预测、规划、政策</td><td>装机、检修、合同</td></tr><tr><td>月度</td><td>电量平衡、检修、中长期分解</td><td>负荷/新能源预测、机组状态</td><td>月度计划、检修单</td></tr><tr><td>日前</td><td>机组组合、现货出清、备用、联络线</td><td>负荷/新能源预测、报价、检修</td><td>日前计划、价格</td></tr><tr><td>日内</td><td>滚动修正、超短期预测、再调度</td><td>最新预测、机组/线路状态</td><td>滚动计划</td></tr><tr><td>实时</td><td>偏差平衡、安全校核、再调度</td><td>实时量测、ACE、故障</td><td>实时指令</td></tr><tr><td>秒级</td><td>AGC、一次调频、稳定控制</td><td>频率/联络线/机组</td><td>功率指令</td></tr><tr><td>事后</td><td>结算、考核、复盘</td><td>计量、计划、指令</td><td>电费、考核、分析</td></tr></tbody></table></div>
+<h3 id="s8">1.2 三道&quot;计划&quot;</h3>
+<ul><li><strong>发电计划</strong>：机组开停、出力、备用、爬坡；</li><li><strong>检修计划</strong>：设备停运/复役，影响拓扑和限额；</li><li><strong>交易计划</strong>：中长期/现货/省间/绿电的曲线分解。</li></ul>
+<p>三者要协调：检修会改变限额，交易会改变出力，出力会影响安全校核。<strong>&quot;计划&quot;不是一张表，而是一组相互约束的曲线/状态。</strong></p>
+<h3 id="s9">1.3 运行与调度的区别</h3>
+<ul><li><strong>运行</strong>偏&quot;状态&quot;：频率、电压、潮流、备用、稳定；</li><li><strong>调度</strong>偏&quot;决策&quot;：开哪台、发多少、留多少备用、怎么切换；</li><li><strong>市场</strong>偏&quot;价格/结算&quot;：谁中标、什么价、怎么偏差考核。</li></ul>
+<p>三者是一个整体：没有安全校核的市场出清不可执行，没有市场价格信号的调度不可持续。</p>
+<hr>
+<h2 id="s10">2. 日计划：明天怎么开</h2>
+<h3 id="s11">2.1 输入</h3>
+<ul><li>负荷预测（96 点/288 点，分区域/母线）；</li><li>新能源出力预测（风电/光伏，概率/场景）；</li><li>机组状态（检修、故障、最小/最大出力、爬坡、启停成本）；</li><li>来水/燃料/供热；</li><li>联络线/省间交易；</li><li>备用要求；</li><li>网络拓扑/检修/限额；</li><li>市场报价/中长期合约。</li></ul>
+<h3 id="s12">2.2 机组组合</h3>
+<p>机组组合决定：</p>
+<ul><li>哪些机组开/停；</li><li>每台机的开停时间；</li><li>出力范围；</li><li>备用分配；</li><li>启停成本/空载成本；</li><li>最小开机/停机时间；</li><li>爬坡/滑坡；</li><li>供热/强迫出力；</li><li>新能源/储能/需求响应。</li></ul>
+<p>机组组合是<strong>混合整数优化</strong>：开/停是 0/1 变量，出力是连续变量。大规模系统求解难，工程上会用：</p>
+<ul><li>分支定界/割平面；</li><li>拉格朗日松弛；</li><li>启发式/优先顺序；</li><li>分解/聚合；</li><li>机器学习辅助筛选（不替代最终校核）。</li></ul>
+<h3 id="s13">2.3 经济调度</h3>
+<p>给定开机方式，经济调度按边际成本/报价分配出力：</p>
+<pre tabindex="0"><code>min Σ C_i(P_i)
+s.t. Σ P_i = Load
+     P_min,i ≤ P_i ≤ P_max,i
+     ramp constraints
+     reserve constraints</code></pre>
+<p>不考虑网络时是&quot; merit order&quot;；考虑网络时是 SCED，要加潮流/限额/断面约束。</p>
+<h3 id="s14">2.4 安全校核</h3>
+<p>日计划要过：</p>
+<ul><li>潮流/电压/支路限额；</li><li>N-1/N-1-1；</li><li>断面/稳定限额；</li><li>短路/保护；</li><li>备用/爬坡；</li><li>检修/拓扑；</li><li>新能源/储能/直流。</li></ul>
+<p>校核不通过要调整：</p>
+<ul><li>再调度；</li><li>启停机组；</li><li>调整备用；</li><li>调整检修；</li><li>调整交易曲线；</li><li>限发/弃电。</li></ul>
+<h3 id="s15">2.5 日计划的输出</h3>
+<ul><li>机组开停/出力曲线；</li><li>备用/爬坡；</li><li>联络线/省间计划；</li><li>检修安排；</li><li>新能源/储能计划；</li><li>安全校核结果；</li><li>日前价格；</li><li>风险提示。</li></ul>
+<hr>
+<h2 id="s16">3. 现货出清：价格怎么形成</h2>
+<h3 id="s17">3.1 日前 vs 实时</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>日前</th><th>实时</th></tr></thead><tbody><tr><td>时间</td><td>提前一天</td><td>运行前/实时</td></tr><tr><td>输入</td><td>预测、报价、检修</td><td>最新预测、实测量测</td></tr><tr><td>目标</td><td>机组组合+经济调度</td><td>偏差平衡/再调度</td></tr><tr><td>价格</td><td>日前价格</td><td>实时价格</td></tr><tr><td>结算</td><td>按日前计划/价格</td><td>按偏差/实时价格</td></tr></tbody></table></div>
+<p>具体规则因省/区域/市场而异，不能一概而论。</p>
+<h3 id="s18">3.2 SCUC/SCED</h3>
+<ul><li><strong>SCUC</strong>：安全约束机组组合，决定开停+出力+备用；</li><li><strong>SCED</strong>：安全约束经济调度，给定开停，决定出力+价格；</li><li>日前通常 SCUC，实时通常 SCED/再调度；</li><li>网络约束用直流潮流/灵敏度/交流潮流；</li><li>价格用边际机组/拉格朗日乘子/LMP；</li><li>阻塞时不同节点价格不同；</li><li>启停/空载/爬坡成本可能通过 uplift 回收。</li></ul>
+<h3 id="s19">3.3 LMP 与阻塞</h3>
+<p>节点电价：</p>
+<pre tabindex="0"><code>LMP = 能量分量 + 阻塞分量 + 网损分量</code></pre>
+<ul><li>无阻塞时，各节点 LMP 接近；</li><li>阻塞时，受端价格高、送端价格低；</li><li>网损分量反映边际网损；</li><li>不同市场对 LMP 分解/披露不同。</li></ul>
+<p>潮流/节点价细节见<a href="潮流阻塞与节点电价-2026-11.html">《从潮流到节点电价》</a>，出清算法见<a href="现货出清与价格形成-2026-11.html">《现货出清与价格形成》</a>。</p>
+<h3 id="s20">3.4 报价与成本</h3>
+<ul><li>市场按报价出清，不是按实际成本；</li><li>机组可能报&quot;三段式&quot;/启停/空载/爬坡；</li><li>储能报充/放电/容量；</li><li>新能源报零价/负价/差价合约；</li><li>报价策略影响中标/价格/风险；</li><li>市场力/容量稀缺时价格可能飙升。</li></ul>
+<h3 id="s21">3.5 出清结果的可执行性</h3>
+<p>出清结果要能执行：</p>
+<ul><li>机组实际出力/爬坡/备用是否满足；</li><li>网络/电压/稳定是否安全；</li><li>新能源/储能 SOC/限功率是否可行；</li><li>联络线/省间是否协调；</li><li>检修/故障是否改变拓扑；</li><li>市场规则是否允许。</li></ul>
+<p><strong>&quot;出清通过&quot;不等于&quot;物理可执行&quot;</strong>，还要安全校核和实时平衡。</p>
+<hr>
+<h2 id="s22">4. 实时平衡：现在差多少</h2>
+<h3 id="s23">4.1 实时调度的输入</h3>
+<ul><li>超短期负荷/新能源预测（分钟级）；</li><li>实测量测（SCADA/PMU）；</li><li>机组实际出力/状态；</li><li>线路/变压器/断面；</li><li>备用/爬坡；</li><li>ACE/频率；</li><li>市场偏差/指令。</li></ul>
+<h3 id="s24">4.2 再调度</h3>
+<p>实时净负荷与日前计划不一致时：</p>
+<ul><li>调整在线机组出力；</li><li>启停快速机组；</li><li>调用储能；</li><li>调整联络线/省间；</li><li>需求响应；</li><li>限发/弃电；</li><li>必要时切负荷/紧急控制。</li></ul>
+<p>再调度要考虑：</p>
+<ul><li>爬坡/最小/最大；</li><li>备用；</li><li>网络/安全；</li><li>市场/合同；</li><li>成本/价格；</li><li>环保/供热。</li></ul>
+<h3 id="s25">4.3 AGC</h3>
+<p>AGC 负责秒级—分钟级跟踪：</p>
+<pre tabindex="0"><code>ACE = ΔP_tie + B × Δf</code></pre>
+<ul><li><code>ΔP_tie</code>：联络线功率偏差；</li><li><code>B</code>：频率偏差系数；</li><li><code>Δf</code>：频率偏差；</li><li>AGC 把 ACE 分配到调频机组/储能；</li><li>要考虑机组爬坡/死区/延时/容量；</li><li>与一次调频/二次调频/三次调频协调。</li></ul>
+<p>AGC/AVC 细节见<a href="AGC-AVC与频率电压闭环-2026-11.html">《AGC/AVC 与频率电压闭环》</a>。</p>
+<h3 id="s26">4.4 备用与爬坡</h3>
+<p>备用分类：</p>
+<ul><li>一次调频（秒级，自动）；</li><li>二次调频/AGC（秒—分钟）；</li><li>旋转备用（在线，可快速增加出力）；</li><li>非旋转备用（可快速启动）；</li><li>替代备用/三次备用（分钟—小时）。</li></ul>
+<p>备用要满足：</p>
+<ul><li>容量；</li><li>爬坡；</li><li>持续时间/能量；</li><li>位置/网络；</li><li>与市场/考核规则一致。</li></ul>
+<h3 id="s27">4.5 偏差与考核</h3>
+<ul><li>日前/实时偏差按规则结算；</li><li>新能源/储能/售电公司有偏差考核；</li><li>两个细则/辅助服务考核；</li><li>偏差过大可能罚款/限制交易；</li><li>预测/申报/EMS 闭环很重要。</li></ul>
+<p>预测误差与 EMS 闭环见<a href="预测误差申报与EMS闭环-2026-11.html">《预测误差申报与 EMS 闭环》</a>。</p>
+<hr>
+<h2 id="s28">5. 安全校核：计划能不能执行</h2>
+<h3 id="s29">5.1 静态校核</h3>
+<ul><li>潮流/电压/支路限额；</li><li>N-1/N-1-1；</li><li>断面/稳定限额；</li><li>短路/保护；</li><li>变压器/线路/母线；</li><li>检修/拓扑。</li></ul>
+<h3 id="s30">5.2 动态校核</h3>
+<ul><li>暂态稳定；</li><li>小干扰/宽频振荡；</li><li>电压稳定；</li><li>频率稳定；</li><li>新能源/储能/直流故障穿越；</li><li>紧急控制/安稳策略。</li></ul>
+<p>动态安全见<a href="动态安全评估与紧急控制-2026-11.html">《动态安全评估与紧急控制》</a>，宽频振荡见<a href="宽频振荡与场站阻抗分析-2026-11.html">《宽频振荡与场站阻抗分析》</a>。</p>
+<h3 id="s31">5.3 校核不通过怎么办</h3>
+<ul><li>再调度；</li><li>启停机组；</li><li>调整备用；</li><li>调整检修；</li><li>调整交易曲线；</li><li>限发/弃电；</li><li>加装/调整稳定控制；</li><li>最后才考虑切负荷/解列。</li></ul>
+<h3 id="s32">5.4 校核的&quot;模型/数据&quot;问题</h3>
+<ul><li>状态估计断面不准；</li><li>模型参数过期；</li><li>故障集不全；</li><li>新能源/储能模型不准；</li><li>拓扑/检修未更新；</li><li>量测/通信延迟。</li></ul>
+<p><strong>在线安全分析的最大瓶颈通常不是算法，而是模型和数据。</strong> 状态估计见<a href="状态估计与安全分析-2026-11.html">《状态估计与安全分析》</a>。</p>
+<hr>
+<h2 id="s33">6. 机构与职责</h2>
+<h3 id="s34">6.1 调度机构</h3>
+<ul><li>国调/网调/省调/地调/县调；</li><li>负责电网运行、安全校核、实时调度、AGC、稳定控制；</li><li>与市场运营机构协调；</li><li>发布调度指令/限额/检修/信息。</li></ul>
+<h3 id="s35">6.2 市场运营机构</h3>
+<ul><li>现货/中长期/辅助服务出清；</li><li>结算；</li><li>信息披露；</li><li>市场监控；</li><li>与调度协调安全校核。</li></ul>
+<h3 id="s36">6.3 市场主体</h3>
+<ul><li>发电企业：报价、检修、运行、考核；</li><li>售电公司：申报、偏差、结算；</li><li>储能/虚拟电厂：申报、调用、SOC 管理；</li><li>用户：需求响应、负荷管理；</li><li>电网企业：输配电、接入、运行。</li></ul>
+<h3 id="s37">6.4 信息流</h3>
+<pre tabindex="0"><code>负荷/新能源预测
+  → 调度/市场
+  → 机组组合/现货出清
+  → 安全校核
+  → 调度指令
+  → 机组/储能/负荷
+  → 实时量测
+  → AGC/再调度
+  → 结算/考核</code></pre>
+<p>信息流要有时标、质量位、版本、权限和审计。数据链路见<a href="SCADA与电力监控数据链路-2026-11.html">《SCADA 与电力监控数据链路》</a>，接口见<a href="EMS数据接口参考架构-2026-11.html">《EMS 数据接口参考架构》</a>。</p>
+<hr>
+<h2 id="s38">7. D 级合成算例：三机组的日计划与实时平衡</h2>
+<aside class="note"><p>本算例为合成数据，仅用于演示日计划、实时再调度、AGC 与事故备用的计算链；不对应任何真实系统、机组或市场。</p></aside>
+<h3 id="s39">7.1 系统</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>机组</th><th style="text-align:right">最小出力</th><th style="text-align:right">最大出力</th><th style="text-align:right">成本（元/MWh）</th><th style="text-align:right">爬坡（MW/时段）</th></tr></thead><tbody><tr><td>煤电</td><td style="text-align:right">150</td><td style="text-align:right">300</td><td style="text-align:right">300</td><td style="text-align:right">60</td></tr><tr><td>气电</td><td style="text-align:right">50</td><td style="text-align:right">200</td><td style="text-align:right">450</td><td style="text-align:right">100</td></tr><tr><td>储能</td><td style="text-align:right">-100（充）</td><td style="text-align:right">100（放）</td><td style="text-align:right">0</td><td style="text-align:right">100</td></tr></tbody></table></div>
+<p>储能：100 MW/200 MWh，初始 SOC 50%，最小 SOC 10%；煤电、气电均假设在线，气电最小出力 50 MW 为硬约束，本算例不做开停机优化；正常态备用只计火电旋转备用，事故后计入储能剩余功率；另设事故后备用要求 80 MW（教学假设，约实时负荷 360 MW 的 22%）。</p>
+<h3 id="s40">7.2 日前</h3>
+<p>净负荷 300 MW：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>机组</th><th style="text-align:right">出力（MW）</th></tr></thead><tbody><tr><td>煤电</td><td style="text-align:right">250</td></tr><tr><td>气电</td><td style="text-align:right">50</td></tr><tr><td>储能</td><td style="text-align:right">0</td></tr><tr><td>合计</td><td style="text-align:right">300</td></tr></tbody></table></div>
+<p>成本：</p>
+<pre tabindex="0"><code>250 × 300 + 50 × 450 = 97,500 元</code></pre>
+<p>火电旋转备用（不含储能）：</p>
+<pre tabindex="0"><code>(300 − 250) + (200 − 50) = 200 MW</code></pre>
+<h3 id="s41">7.3 实时</h3>
+<p>净负荷 360 MW（+60 MW）：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>机组</th><th style="text-align:right">日前（MW）</th><th style="text-align:right">实时（MW）</th><th style="text-align:right">变化（MW）</th></tr></thead><tbody><tr><td>煤电</td><td style="text-align:right">250</td><td style="text-align:right">300</td><td style="text-align:right">+50</td></tr><tr><td>气电</td><td style="text-align:right">50</td><td style="text-align:right">60</td><td style="text-align:right">+10</td></tr><tr><td>储能</td><td style="text-align:right">0</td><td style="text-align:right">0</td><td style="text-align:right">0</td></tr><tr><td>合计</td><td style="text-align:right">300</td><td style="text-align:right">360</td><td style="text-align:right">+60</td></tr></tbody></table></div>
+<p>成本：</p>
+<pre tabindex="0"><code>300 × 300 + 60 × 450 = 117,000 元</code></pre>
+<p>偏差成本：</p>
+<pre tabindex="0"><code>117,000 − 97,500 = 19,500 元</code></pre>
+<p>火电旋转备用（不含储能）：</p>
+<pre tabindex="0"><code>(300 − 300) + (200 − 60) = 140 MW</code></pre>
+<p>爬坡校验（单时段）：煤电 +50 ≤ 60，气电 +10 ≤ 100，满足；真实调度按 MW/min 与时段长度折算。</p>
+<h3 id="s42">7.4 AGC</h3>
+<p>AGC 指令 20 MW，按煤电 60%/气电 40% 分配：</p>
+<ul><li>原始分配：煤电 12 MW、气电 8 MW；</li><li>煤电已到 300 MW 上限，无法增加；</li><li>12 MW 转给气电；</li><li>最终：煤电 0 MW、气电 20 MW；</li><li>气电从 60 MW 升到 80 MW；</li><li>未满足 0 MW。</li></ul>
+<p>这说明：<strong>AGC 分配不能只看权重，还要看机组上限/爬坡/死区。</strong></p>
+<h3 id="s43">7.5 事故备用</h3>
+<p>气电故障，净负荷仍 360 MW：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>资源</th><th style="text-align:right">出力（MW）</th></tr></thead><tbody><tr><td>煤电</td><td style="text-align:right">300</td></tr><tr><td>气电</td><td style="text-align:right">0</td></tr><tr><td>储能</td><td style="text-align:right">60</td></tr><tr><td>合计</td><td style="text-align:right">360</td></tr></tbody></table></div>
+<p>储能 60 MW 持续 1 h，消耗 60 MWh；初始 100 MWh，剩余 40 MWh，SOC 20%，高于 10% 下限。</p>
+<p>事故后可调用上调能力（火电剩余 + 储能剩余功率）：</p>
+<pre tabindex="0"><code>煤电 (300 − 300) + 储能 (100 − 60) = 40 MW</code></pre>
+<p>事故后备用要求 80 MW（教学假设，功率口径；未规定持续时间），缺 40 MW。储能剩余 40 MWh，若按 40 MW 调用只能持续 1 h；更长的事故需要更多能量或负荷控制。这说明：<strong>&quot;负荷保住了&quot;不等于&quot;备用够了&quot;</strong>；事故后系统仍可能因备用不足而无法应对下一故障。</p>
+<h3 id="s44">7.6 这个算例说明什么</h3>
+<ul><li>日计划是&quot;预测+优化&quot;，实时是&quot;偏差+再调度&quot;；</li><li>煤电先到上限，AGC 只能转给气电；</li><li>储能可以保供电，但能量/备用会被消耗；</li><li>备用要按&quot;事故后&quot;状态校核，不是只看正常状态；</li><li>计划/实时/AGC/备用是一个连续链，不能分开看。</li></ul>
+<h3 id="s45">7.7 这个算例不说明什么</h3>
+<ul><li>不代表真实机组/储能/网络的参数和约束；</li><li>不覆盖网络阻塞、电压、稳定、新能源预测误差；</li><li>不覆盖市场报价、出清、结算、考核；</li><li>不覆盖多区域/直流/省间；</li><li>不能用于实际调度、交易或投资决策。</li></ul>
+<hr>
+<h2 id="s46">8. 新能源与储能把什么变难</h2>
+<h3 id="s47">8.1 新能源</h3>
+<ul><li>出力预测误差大，日前/实时偏差；</li><li>低惯量/弱支撑，频率/电压稳定问题；</li><li>出力相关性/极端天气；</li><li>反送/阻塞/弃电；</li><li>容量信用低，可靠性贡献有限；</li><li>并网/振荡/保护问题。</li></ul>
+<h3 id="s48">8.2 储能</h3>
+<ul><li>能量/功率/SOC 约束；</li><li>充放电效率/衰减；</li><li>市场申报/调用冲突；</li><li>备用/能量/套利不能同时卖；</li><li>高温/低温降额；</li><li>并网/保护/消防。</li></ul>
+<h3 id="s49">8.3 运行上的应对</h3>
+<ul><li>滚动预测/场景；</li><li>备用/爬坡/灵活性；</li><li>储能/需求响应/可调负荷；</li><li>省间/区域互济；</li><li>动态安全/振荡监测；</li><li>市场机制（容量/辅助服务/稀缺定价）；</li><li>调度自动化/EMS/AGC 升级。</li></ul>
+<hr>
+<h2 id="s50">9. 对交易、投资与运营的含义</h2>
+<h3 id="s51">9.1 交易</h3>
+<ul><li>日前/实时价差、偏差考核、阻塞；</li><li>报价策略要结合机组/储能约束；</li><li>新能源/储能预测误差影响偏差成本；</li><li>检修/故障/天气会改变价格；</li><li>交易员要关注调度/市场信息。</li></ul>
+<h3 id="s52">9.2 投资</h3>
+<ul><li>机组/储能/新能源的选址/定容要结合运行；</li><li>备用/辅助服务/容量机制影响收益；</li><li>调度/市场规则变化影响项目现金流；</li><li>并网/安全校核/振荡风险要早评估；</li><li>运行灵活性/爬坡/最小出力影响经济性。</li></ul>
+<h3 id="s53">9.3 运营</h3>
+<ul><li>机组/储能/新能源要按调度指令运行；</li><li>备用/AGC/一次调频要可靠；</li><li>检修/故障/通信/对时要管理；</li><li>数据/模型/定值要更新；</li><li>偏差/考核要复盘；</li><li>与调度/市场/用户的信息流要畅通。</li></ul>
+<h3 id="s54">9.4 数据与 AI 的边界</h3>
+<p>AI 可以做负荷/新能源预测、报价辅助、调度辅助、异常检测，但：</p>
+<ul><li>调度/安全控制是确定性系统，不能由 AI 实时替代；</li><li>训练数据要覆盖真实运行/故障/市场；</li><li>模型要可解释/可审计；</li><li>预测要带置信度/场景；</li><li>&quot;AI 说可行&quot;不能替代安全校核。</li></ul>
+<hr>
+<h2 id="s55">10. 常见错误（10 条）</h2>
+<ol><li><strong>把日计划当&quot;最终计划&quot;</strong>：日前只是起点，日内/实时还会变。</li><li><strong>把现货出清当&quot;物理调度&quot;</strong>：出清结果还要安全校核/再调度。</li><li><strong>只看成本，不看网络/备用/爬坡</strong>：经济调度可行，安全校核可能不过。</li><li><strong>AGC 只按权重分配</strong>：机组上限/爬坡/死区会让权重失效。</li><li><strong>备用只看正常状态</strong>：事故后备用可能不够。</li><li><strong>储能只看功率，不看能量/SOC</strong>：保供电后可能没电/没备用。</li><li><strong>新能源只用日前预测</strong>：日内/实时偏差需要滚动修正。</li><li><strong>忽略检修/故障对拓扑的影响</strong>：限额/潮流/稳定会变。</li><li><strong>计划/市场/调度信息不一致</strong>：结算/考核/执行对不上。</li><li><strong>不做复盘</strong>：偏差/考核/故障原因不分析，下一次还犯。</li></ol>
+<hr>
+<h2 id="s56">11. 待核实与未定事项</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>事项</th><th>状态</th><th>查证入口</th></tr></thead><tbody><tr><td>负荷/新能源预测精度</td><td>分区域、分季节</td><td>调度/市场预测报告、历史数据</td></tr><tr><td>机组组合/现货出清规则</td><td>分省/分区域</td><td>市场规则、调度规程</td></tr><tr><td>备用/爬坡/灵活性要求</td><td>分区域、分时段</td><td>调度规程、辅助服务规则</td></tr><tr><td>安全校核故障集/限额</td><td>分电压等级/分区域</td><td>调度/规划报告、稳定导则</td></tr><tr><td>AGC 参数/分配/考核</td><td>分调度机构</td><td>AGC 规程、两个细则</td></tr><tr><td>检修/故障/拓扑信息</td><td>分项目/分日</td><td>调度计划、检修单、SCADA</td></tr><tr><td>新能源/储能并网/预测/考核</td><td>分省/分项目</td><td>并网协议、市场规则、检测报告</td></tr><tr><td>现货/中长期/省间结算</td><td>分市场</td><td>市场规则、结算单</td></tr><tr><td>调度机构/市场运营职责</td><td>分区域</td><td>调度/市场文件</td></tr><tr><td>数据/模型/通信时标</td><td>分系统</td><td>SCADA/EMS/调度自动化资料</td></tr></tbody></table></div>
+<hr>
+<h2 id="s57">12. 分工：和现有模块怎么配合</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>问题</th><th>先看</th><th>本文负责</th><th>不负责</th></tr></thead><tbody><tr><td>电力系统通识 E</td><td><a href="故障保护与安全防御-2026-11.html">《故障、保护与安全防御》</a></td><td>运行/调度全景</td><td>保护四性、三道防线</td></tr><tr><td>发输配变用</td><td><a href="电力系统通识-B-发输配变用.html">《电力系统通识 B》</a></td><td>运行中的设备/网络</td><td>设备原理、参数</td></tr><tr><td>新能源开发</td><td><a href="新能源项目开发与并网-2026-11.html">《新能源项目开发与并网》</a></td><td>新能源运行/预测/消纳</td><td>资源、LCOE、机制电价</td></tr><tr><td>储能 EMS</td><td><a href="储能EMS优化调度-算法与工程-2026-11.html">《储能 EMS 优化调度》</a></td><td>储能在调度中的角色</td><td>场站算法、SOC 管理</td></tr><tr><td>AGC/AVC</td><td><a href="AGC-AVC与频率电压闭环-2026-11.html">《AGC/AVC 与频率电压闭环》</a></td><td>实时平衡中的 AGC</td><td>控制参数、场站考核</td></tr><tr><td>状态估计</td><td><a href="状态估计与安全分析-2026-11.html">《状态估计与安全分析》</a></td><td>安全校核的数据基础</td><td>状态估计器、坏数据</td></tr><tr><td>动态安全</td><td><a href="动态安全评估与紧急控制-2026-11.html">《动态安全评估与紧急控制》</a></td><td>运行中的稳定约束</td><td>暂态稳定、紧急控制</td></tr><tr><td>现货出清</td><td><a href="现货出清与价格形成-2026-11.html">《现货出清与价格形成》</a></td><td>日计划/实时与市场衔接</td><td>SCUC/SCED 算法、报价</td></tr><tr><td>潮流/节点价</td><td><a href="潮流阻塞与节点电价-2026-11.html">《从潮流到节点电价》</a></td><td>阻塞/限额对运行的影响</td><td>LMP 分解、网损</td></tr><tr><td>EMS 接口</td><td><a href="EMS数据接口参考架构-2026-11.html">《EMS 数据接口参考架构》</a></td><td>调度/场站数据流</td><td>协议、点表</td></tr><tr><td>预测闭环</td><td><a href="预测误差申报与EMS闭环-2026-11.html">《预测误差申报与 EMS 闭环》</a></td><td>预测在运行中的位置</td><td>预测算法、申报策略</td></tr><tr><td>频率/惯量</td><td><a href="频率惯量与灵活性供需-2026-11.html">《频率、惯量与灵活性供需》</a></td><td>实时平衡的物理</td><td>惯量市场、辅助服务采购</td></tr></tbody></table></div>
+<hr>
+<h2 id="s58">13. 速查</h2>
+<h3 id="s59">13.1 六个公式</h3>
+<pre tabindex="0"><code>机组组合：min Σ C_i(P_i, u_i) + 启停成本
+功率平衡：Σ P_i = Load
+备用：Σ (P_max,i − P_i) ≥ R
+爬坡：−Ramp_i ≤ P_i(t) − P_i(t−1) ≤ Ramp_i
+ACE = ΔP_tie + B × Δf
+LMP = 能量 + 阻塞 + 网损</code></pre>
+<h3 id="s60">13.2 五个必问</h3>
+<ol><li>这是日计划、日内滚动还是实时指令，时间尺度/目标是什么？</li><li>出清结果过安全校核了吗，网络/备用/爬坡/稳定都考虑了吗？</li><li>备用是正常状态还是事故后状态，能量/爬坡/位置够吗？</li><li>AGC 分配是否受机组上限/爬坡/死区限制，储能 SOC 够吗？</li><li>偏差/考核/结算规则是什么，预测/申报/EMS 闭环是否一致？</li></ol>
+<h3 id="s61">13.3 工具</h3>
+<pre tabindex="0"><code># 在 skills/ems-dispatch/tools 下
+python operations.py                 # 打印日计划、实时、AGC 与事故备用
+python operations.py --json          # JSON 输出
+python selftest.py                   # 断言本文数字</code></pre>
+<p><code>operations.py</code> 只做三机组、单时段、线性成本的确定性演示，不是生产级调度/出清程序。</p>
+<hr>
+<h2 id="s62">14. 版本与维护</h2>
+<ul><li>本模块为 v2.3 维护批次新增，数据截止 2026-11-19；所有负荷、机组、成本与结果均为 D 级合成数据。</li><li>修改 frontmatter <code>cutoff</code> 时，必须同步 <code>更新清单.md</code> 对应行。</li><li>若调度规程、现货/辅助服务规则、备用/AGC 要求或安全校核导则更新，优先复核 §2—§5 和算例参数，并同步 <code>operations.py</code> 与 <code>selftest.py</code> 断言。</li><li><strong>相关工具</strong>：<code>skills/ems-dispatch/tools/operations.py</code>；相关自测：<code>skills/ems-dispatch/tools/selftest.py</code>。</li><li>方法术语参考电力系统运行、调度自动化与电力市场的通用教材和标准；本文不复制任何真实调度指令、报价或市场数据。</li></ul>
+    </article>
+
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>11</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="故障保护与安全防御-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>电力系统通识 E · 故障、保护与安全防御</b>
+          <span>短路与故障类型、继电保护四性与整定配合、新能源故障电流的特殊性、防孤岛、三道防线、低频减载与黑启动。</span>
+        </a>
+        <a class="related-card" href="并网运行考核与两个细则-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>并网运行考核与两个细则</b>
+          <span>60/61 号、AGC/AVC/一次调频公式、20 项罚则、六类免考与合成算例。</span>
+        </a>
+        <a class="related-card" href="新能源项目开发与并网-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>新能源项目开发与并网</b>
+          <span>136 号机制电价、省级竞价、P50/P90、LCOE、并网标准、海上风电与省别画像。</span>
+        </a>
+        <a class="related-card" href="储能EMS优化调度-算法与工程-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>储能 EMS 优化调度</b>
+          <span>把储能调度建成 MILP：96 点经济调度、多市场堆叠、SOC/退化、MPC 与安全联锁，并给出与交易层的四种融合模式。</span>
+        </a>
+      </div>
+      <p class="related-rest"><b>更多关联</b><a href="AGC-AVC与频率电压闭环-2026-11.html">AGC/AVC 与频率电压闭环：从 ACE 到场站考核</a><a href="状态估计与安全分析-2026-11.html">状态估计与安全分析：从 SCADA 量测到可信运行方式</a><a href="动态安全评估与紧急控制-2026-11.html">动态安全评估与紧急控制：从静态 N-1 到暂态稳定</a><a href="现货出清与价格形成-2026-11.html">现货出清与价格形成：从报价到节点价</a><a href="潮流阻塞与节点电价-2026-11.html">从潮流到节点电价：阻塞、断面与网损的价格传导</a><a href="EMS数据接口参考架构-2026-11.html">EMS 数据接口参考架构：设备、调度、市场与计量结算的契约</a><a href="预测误差申报与EMS闭环-2026-11.html">预测误差→申报→EMS 闭环：newsvendor 报价与储能偏差跟踪</a></p>
+    </section>
+
+<section class="related" aria-labelledby="paired-skills-title">
+      <div class="related-head"><h2 id="paired-skills-title">配套技能</h2><span>2</span></div>
+      <div class="related-grid">
+        <a class="related-card skill-pair" href="skill-electricity-trading-expert.html">
+          <span class="related-type">现货、中长期、结算与风控（含山东持仓与负价复盘、四川/云南水电、辽宁核电、甘肃煤电容量+辅助服务、甘送鲁省间实例包），并接入运行调度与规划充裕性</span>
+          <b>电力交易专家</b>
+          <span>技能 · 现货 · 结算 · 风控</span>
+        </a>
+        <a class="related-card skill-pair" href="skill-ems-dispatch.html">
+          <span class="related-type">96 点调度、SOC 与需量、AGC/AVC 闭环、状态估计、暂态稳定、宽频振荡、保护整定、BMS 边界与运行调度（含江苏零碳园区微网、山东独立储能电站日运行+考核复盘实例包）</span>
+          <b>EMS 优化调度</b>
+          <span>技能 · EMS · SOC · 需量 · AGC/AVC · 状态估计 · 暂态稳定 · 宽频振荡 · 保护整定 · BMS</span>
+        </a>
+      </div>
+    </section>
+
+    <nav class="pager" aria-label="上下篇">
+          <a class="prev" href="电力系统经济学原理-主题笔记.html"><span class="dir">← 上一篇</span><span class="ttl">电力系统经济学原理</span></a>
+          <a class="next" href="电力系统通识-G-规划与资源充裕性-2026-11.html"><span class="dir">下一篇 →</span><span class="ttl">电力系统通识 G · 规划与资源充裕性：从负荷预测到电源电网组合</span></a>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../电力系统通识-F-运行与调度-2026-11.md">knowledge/电力系统通识-F-运行与调度-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="本页目录">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv3"><a href="#s2">0.1 三句话</a></li>
+            <li class="lv3"><a href="#s3">0.2 关键概念</a></li>
+            <li class="lv3"><a href="#s4">0.3 先记住四个数</a></li>
+            <li class="lv3"><a href="#s5">0.4 本文不做什么</a></li>
+            <li class="lv2"><a href="#s6">1. 运行与调度的全景</a></li>
+            <li class="lv3"><a href="#s7">1.1 时间轴</a></li>
+            <li class="lv3"><a href="#s8">1.2 三道"计划"</a></li>
+            <li class="lv3"><a href="#s9">1.3 运行与调度的区别</a></li>
+            <li class="lv2"><a href="#s10">2. 日计划：明天怎么开</a></li>
+            <li class="lv3"><a href="#s11">2.1 输入</a></li>
+            <li class="lv3"><a href="#s12">2.2 机组组合</a></li>
+            <li class="lv3"><a href="#s13">2.3 经济调度</a></li>
+            <li class="lv3"><a href="#s14">2.4 安全校核</a></li>
+            <li class="lv3"><a href="#s15">2.5 日计划的输出</a></li>
+            <li class="lv2"><a href="#s16">3. 现货出清：价格怎么形成</a></li>
+            <li class="lv3"><a href="#s17">3.1 日前 vs 实时</a></li>
+            <li class="lv3"><a href="#s18">3.2 SCUC/SCED</a></li>
+            <li class="lv3"><a href="#s19">3.3 LMP 与阻塞</a></li>
+            <li class="lv3"><a href="#s20">3.4 报价与成本</a></li>
+            <li class="lv3"><a href="#s21">3.5 出清结果的可执行性</a></li>
+            <li class="lv2"><a href="#s22">4. 实时平衡：现在差多少</a></li>
+            <li class="lv3"><a href="#s23">4.1 实时调度的输入</a></li>
+            <li class="lv3"><a href="#s24">4.2 再调度</a></li>
+            <li class="lv3"><a href="#s25">4.3 AGC</a></li>
+            <li class="lv3"><a href="#s26">4.4 备用与爬坡</a></li>
+            <li class="lv3"><a href="#s27">4.5 偏差与考核</a></li>
+            <li class="lv2"><a href="#s28">5. 安全校核：计划能不能执行</a></li>
+            <li class="lv3"><a href="#s29">5.1 静态校核</a></li>
+            <li class="lv3"><a href="#s30">5.2 动态校核</a></li>
+            <li class="lv3"><a href="#s31">5.3 校核不通过怎么办</a></li>
+            <li class="lv3"><a href="#s32">5.4 校核的"模型/数据"问题</a></li>
+            <li class="lv2"><a href="#s33">6. 机构与职责</a></li>
+            <li class="lv3"><a href="#s34">6.1 调度机构</a></li>
+            <li class="lv3"><a href="#s35">6.2 市场运营机构</a></li>
+            <li class="lv3"><a href="#s36">6.3 市场主体</a></li>
+            <li class="lv3"><a href="#s37">6.4 信息流</a></li>
+            <li class="lv2"><a href="#s38">7. D 级合成算例：三机组的日计划与实时平衡</a></li>
+            <li class="lv3"><a href="#s39">7.1 系统</a></li>
+            <li class="lv3"><a href="#s40">7.2 日前</a></li>
+            <li class="lv3"><a href="#s41">7.3 实时</a></li>
+            <li class="lv3"><a href="#s42">7.4 AGC</a></li>
+            <li class="lv3"><a href="#s43">7.5 事故备用</a></li>
+            <li class="lv3"><a href="#s44">7.6 这个算例说明什么</a></li>
+            <li class="lv3"><a href="#s45">7.7 这个算例不说明什么</a></li>
+            <li class="lv2"><a href="#s46">8. 新能源与储能把什么变难</a></li>
+            <li class="lv3"><a href="#s47">8.1 新能源</a></li>
+            <li class="lv3"><a href="#s48">8.2 储能</a></li>
+            <li class="lv3"><a href="#s49">8.3 运行上的应对</a></li>
+            <li class="lv2"><a href="#s50">9. 对交易、投资与运营的含义</a></li>
+            <li class="lv3"><a href="#s51">9.1 交易</a></li>
+            <li class="lv3"><a href="#s52">9.2 投资</a></li>
+            <li class="lv3"><a href="#s53">9.3 运营</a></li>
+            <li class="lv3"><a href="#s54">9.4 数据与 AI 的边界</a></li>
+            <li class="lv2"><a href="#s55">10. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s56">11. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s57">12. 分工：和现有模块怎么配合</a></li>
+            <li class="lv2"><a href="#s58">13. 速查</a></li>
+            <li class="lv3"><a href="#s59">13.1 六个公式</a></li>
+            <li class="lv3"><a href="#s60">13.2 五个必问</a></li>
+            <li class="lv3"><a href="#s61">13.3 工具</a></li>
+            <li class="lv2"><a href="#s62">14. 版本与维护</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="47" data-more-label="展开 47 个小节" data-less-label="收起小节">展开 47 个小节</button>
+  </aside>
+</div>
+
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.3" data-cutoff="2026-11-19" data-latest="2026-11-27" data-count="101">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.3）" title="查看更新记录（当前 v2.3）">
+    <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
+    <span class="cl-badge-ver">v2.3</span>
+    <span class="cl-badge-label">更新记录</span>
+  </button>
+  <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
+    <div class="cl-backdrop" data-changelog-close></div>
+    <div class="cl-panel" role="dialog" aria-modal="true" aria-labelledby="cl-title" aria-describedby="cl-subtitle" tabindex="-1">
+      <header class="cl-head">
+        <div class="cl-head-main">
+          <span class="cl-kicker">RELEASE NOTES</span>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.3</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.3 · 数据截止 2026-11-19 · 101 条记录</p>
+        </div>
+        <div class="cl-actions">
+          <div class="cl-lang" role="group" aria-label="切换语言">
+            <button type="button" data-cl-lang="zh" aria-pressed="true">中文</button>
+            <button type="button" data-cl-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <button class="cl-close" type="button" data-changelog-close aria-label="关闭更新记录" title="关闭更新记录">×</button>
+        </div>
+      </header>
+      <div class="cl-body" data-changelog-body>
+        <div class="cl-skeleton" data-changelog-status role="status">
+          <span class="cl-sr">正在读取更新记录…</span>
+          <i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      <footer class="cl-foot">
+        <span data-changelog-meta>v2.3 · 2026-11-19 · 101 条记录</span>
+        <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
+      </footer>
+    </div>
+  </div>
+</div>
+<script src="../assets/doc.js"></script>
+<script src="../assets/theme.js"></script>
+<script src="../assets/changelog.js"></script>
+</body>
+</html>

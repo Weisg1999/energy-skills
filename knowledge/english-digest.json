@@ -4,10 +4,10 @@
   "note": "A number needs a grade, a time point and a caliber. Filter gradeC by usable/banned before using any unverified figure. Full texts of policies are linked from the Chinese policy indexes.",
   "generatedFrom": "knowledge/*.md frontmatter (summary_en) + INDEX_EN structured tables + credibility register",
   "summary": {
-    "modules": 121,
-    "withEnglishSummary": 121,
+    "modules": 126,
+    "withEnglishSummary": 126,
     "keyFigures": 242,
-    "openItems": 50,
+    "openItems": 55,
     "datedOpenItems": 23,
     "gradeCTickets": 22,
     "pendingGradeC": 14
@@ -25,6 +25,19 @@
       "confidence": "mixed",
       "historical": false,
       "html": "html/AGC-AVC与频率电压闭环-2026-11.html"
+    },
+    {
+      "id": "m-bms-ems",
+      "file": "BMS与储能EMS的状态边界-2026-11.md",
+      "section": "storage",
+      "kind": "知识模块",
+      "cutoff": "2026-11-19",
+      "title": "BMS 与储能 EMS 的状态边界：SOC/SOH/SOP、均衡与安全联锁",
+      "titleEn": null,
+      "summaryEn": "A state-chain view of the BMS/EMS boundary: coulomb-counted SOC, OCV correction and drift; cycle/calendar SOH fade; power/energy/temperature-limited SOP; passive/active balancing time; and cell-module-rack-container-PCS-EMS interlock layers; with a 100 MW/200 MWh synthetic example and ten common errors.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/BMS与储能EMS的状态边界-2026-11.html"
     },
     {
       "id": "m-ems-interface",
@@ -467,6 +480,19 @@
       "confidence": "mixed",
       "historical": false,
       "html": "html/广西电力市场-2026-11.html"
+    },
+    {
+      "id": "m-protection-setting",
+      "file": "微电网与储能电站保护整定-2026-11.md",
+      "section": "storage",
+      "kind": "知识模块",
+      "cutoff": "2026-11-19",
+      "title": "微电网与储能电站保护整定：从 IBR 故障电流到并离网定值切换",
+      "titleEn": null,
+      "summaryEn": "A practical chain for microgrid and BESS protection: grid-following vs grid-forming fault-current behavior, sequence networks and grounding, overcurrent/zero-sequence/differential/anti-islanding schemes, grid-tied and islanded setting groups, CTI coordination, sensitivity and field verification; with a 10 kV synthetic microgrid example and ten common errors.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/微电网与储能电站保护整定-2026-11.html"
     },
     {
       "id": "m-micro-ems",
@@ -1041,6 +1067,45 @@
       "html": "html/电力系统通识-D-新角色与现货市场.html"
     },
     {
+      "id": "m-ts-f",
+      "file": "电力系统通识-F-运行与调度-2026-11.md",
+      "section": "foundation",
+      "kind": "知识模块",
+      "cutoff": "2026-11-19",
+      "title": "电力系统通识 F · 运行与调度：从日计划到实时平衡",
+      "titleEn": null,
+      "summaryEn": "Power-system operations as a time chain: load forecasting, maintenance, unit commitment, spot clearing, security checking, real-time dispatch, AGC, reserves and settlement; what day-ahead/intraday/real-time/AGC each own, how SCUC and SCED divide work, why plans keep changing, and where renewables and storage make it harder; with a three-unit synthetic example and ten common errors.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/电力系统通识-F-运行与调度-2026-11.html"
+    },
+    {
+      "id": "m-ts-g",
+      "file": "电力系统通识-G-规划与资源充裕性-2026-11.md",
+      "section": "foundation",
+      "kind": "知识模块",
+      "cutoff": "2026-11-19",
+      "title": "电力系统通识 G · 规划与资源充裕性：从负荷预测到电源电网组合",
+      "titleEn": null,
+      "summaryEn": "Power-system planning as a decision chain: load forecasting and scenarios, load-duration curves and energy balance, LOLE/EENS and capacity credit/ELCC, generation and grid portfolios, and the multi-objective trade-off among cost, fuel, reliability and resilience; why installed capacity is not resource adequacy; with a two-portfolio synthetic example and ten common errors.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/电力系统通识-G-规划与资源充裕性-2026-11.html"
+    },
+    {
+      "id": "m-storage-siting",
+      "file": "电网侧储能选址定容与可靠性韧性价值-2026-11.md",
+      "section": "storage",
+      "kind": "知识模块",
+      "cutoff": "2026-11-19",
+      "title": "电网侧储能选址定容与可靠性/韧性价值",
+      "titleEn": null,
+      "summaryEn": "A value-chain view of grid-side storage siting and sizing: EENS/LOLE and VoLL, power/energy/duration, congestion vs reliability vs resilience value and double counting, CRF/NPV/BCR, and a three-bus synthetic case where the same storage at the wrong bus halves the BCR; with ten common errors.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/电网侧储能选址定容与可靠性韧性价值-2026-11.html"
+    },
+    {
       "id": "m-province",
       "file": "省级市场状态表-2026-11.md",
       "section": "index",
@@ -1568,7 +1633,7 @@
       "cutoff": "2026-11",
       "title": "黄金问答集与回归测试",
       "titleEn": null,
-      "summaryEn": "81 high-frequency questions with answer points and common errors, covering markets, renewables, carbon, retail, VPP, international tools, price drivers, system physics / EMS engineering, tariffs / investment / contracts, data / case replay, fault protection / distribution connection, microgrid operating-mode transitions, spot clearing / price formation, price attribution / pre-market scenarios, AGC/AVC, state estimation / security analysis, transient stability / emergency control, and wideband oscillation / impedance tuning; also serves as a regression checklist.",
+      "summaryEn": "86 high-frequency questions with answer points and common errors, covering markets, renewables, carbon, retail, VPP, international tools, price drivers, system physics / EMS engineering, tariffs / investment / contracts, data / case replay, fault protection / distribution connection, microgrid operating-mode transitions, spot clearing / price formation, price attribution / pre-market scenarios, AGC/AVC, state estimation / security analysis, transient stability / emergency control, wideband oscillation / impedance tuning, protection setting, BMS state boundaries, storage siting and sizing, system operations and resource adequacy; also serves as a regression checklist.",
       "confidence": "mixed",
       "historical": false,
       "html": "html/黄金问答集-2026-11.html"
@@ -3049,6 +3114,31 @@
       "n": 50,
       "topic": "Wideband oscillation and plant impedance",
       "text": "how GB/T 19963.2-2024's wideband-oscillation clauses are implemented in provincial grid-connection review and testing (cite the formal text); the required impedance-scan range, granularity, operating points and acceptance criteria; how frequency coupling, negative-sequence and multi-converter interactions are modelled; the division of responsibility between grid, plant and converter vendor when measured impedance shows negative damping; and how virtual-resistance, PLL-bandwidth and damping-control settings are validated without degrading weak-grid synchronisation or current limiting. The module's two-block positive-sequence model and its `r_neg ∝ bandwidth` assumption are synthetic teaching devices, not vendor models or field-scan results."
+    },
+    {
+      "n": 51,
+      "topic": "Microgrid and storage-station protection setting",
+      "text": "whether provincial grid-connection review requires separate grid-connected and islanded setting groups, the mandatory CTI margin, how zero-sequence settings are fixed under different grounding modes, how protection settings switch with PCC state and what happens when the switch fails, and how protection, BMS and PCS interlocks divide responsibility. The module's 10 kV case and its CTI values are synthetic teaching numbers, not approved settings for any project."
+    },
+    {
+      "n": 52,
+      "topic": "BMS/EMS state boundary",
+      "text": "actual OCV tables, SOP derating matrices, SOC-error requirements, SOH definitions, balancing thresholds, interlock reset authority and data-point contracts vary by cell vendor, PCS vendor and EPC contract; there is no public unified requirement for SOC error or SOP reporting. The module's 100 MW/200 MWh case is synthetic and cannot substitute for factory test data, BMS algorithm validation or site calibration."
+    },
+    {
+      "n": 53,
+      "topic": "Grid-side storage siting and sizing",
+      "text": "actual VoLL, EENS/LOLE targets, capacity credit, network transfer limits and market rules are system- and province-specific; resilience value must not double-count reliability value. The three-bus case is a synthetic screening demonstration, not an investment conclusion, and its NPV/BCR figures must not be quoted as project returns."
+    },
+    {
+      "n": 54,
+      "topic": "Operations from day-ahead to real time",
+      "text": "the actual SCUC/SCED sequence, reserve products and requirements, AGC allocation rules, ramp/deadband treatment and post-contingency reserve criteria are market- and system-specific; the three-unit case is synthetic and does not represent any dispatch centre's processes or settlement."
+    },
+    {
+      "n": 55,
+      "topic": "Planning and resource adequacy",
+      "text": "LOLE/EENS targets, EFOR data, capacity-credit methods, load forecasts and inter-zonal transfer assumptions are system-specific and revised periodically. The two-portfolio case is a synthetic demonstration; its 203.344 h/yr and 1.560 h/yr results are not planning results for any province or country."
     }
   ],
   "datedOpenItems": [

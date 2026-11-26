@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import math
 
+import bms
 import control
 import curves
 import dispatch
@@ -24,7 +25,11 @@ import dynamics
 import loop
 import market
 import microgrid
+import operations
 import oscillation
+import planning
+import protection
+import siting
 import state
 import storage
 
@@ -655,6 +660,88 @@ def main():
     close("N tuned total resistance (pu)", osc["tuned"]["r_pu"], 0.030033, 1e-6)
     close("N tuned damping ratio", osc["tuned"]["zeta"], 0.009327, 1e-6)
     check(not osc["tuned_negative_bands"], "N tuned case has no negative band")
+
+    # O. Microgrid/storage protection coordination (protection.py).
+    prot = protection.demo()
+    close("O grid near fault current (kA)", prot["grid_near"]["i_ka"], 10.973782, 1e-6)
+    close("O grid far fault current (kA)", prot["grid_far"]["i_ka"], 9.083405, 1e-6)
+    close("O islanded near fault current (kA)", prot["islanded"]["near_ka"], 0.729285, 1e-6)
+    close("O islanded far fault current (kA)", prot["islanded"]["far_ka"], 0.656356, 1e-6)
+    close("O R1 grid far sensitivity", prot["sensitivity"]["r1_grid_far"], 12.443021, 1e-6)
+    close("O R1 islanded far sensitivity", prot["sensitivity"]["r1_island_far"], 2.187854, 1e-6)
+    close("O R1 grid near sensitivity", prot["sensitivity"]["r1_grid_near"], 15.032578, 1e-6)
+    close("O R1 islanded near sensitivity", prot["sensitivity"]["r1_island_near"], 2.430949, 1e-6)
+    close("O R1 near-fault time (s)", prot["times_s"]["r1_near"], 0.251345, 1e-6)
+    close("O R2 near-fault time (s)", prot["times_s"]["r2_near"], 0.570539, 1e-6)
+    close("O minimum coordination margin (s)", prot["coordination"]["min_margin_s"], 0.319194, 1e-6)
+    close("O far-fault coordination margin (s)", prot["coordination"]["margin_far_s"], 0.349898, 1e-6)
+    check(prot["coordination"]["pass"], "O coordination meets 0.30 s CTI")
+    close("O island load current (kA)", prot["island_load"]["current_ka"], 0.243095, 1e-6)
+    close("O island R1 pickup (kA)", prot["island_load"]["r1_pickup_ka"], 0.30, 1e-12)
+    close("O ground-fault sensitivity", prot["grounding"]["sensitivity"], 10.0, 1e-12)
+
+    # P. BMS/EMS state boundaries (bms.py).
+    battery = bms.demo()
+    close("P coulomb SOC (%)", battery["soc"]["coulomb_pct"], 14.285714, 1e-6)
+    close("P OCV SOC (%)", battery["soc"]["ocv_pct"], 15.0, 1e-12)
+    close("P OCV correction (pp)", battery["soc"]["ocv_correction_pct"], 0.714286, 1e-6)
+    close("P SOH (%)", battery["soh"]["pct"], 95.1, 1e-12)
+    close("P capacity-corrected energy (MWh)", battery["energy"]["capacity_corrected_mwh"], 190.2, 1e-9)
+    close("P usable window energy (MWh)", battery["energy"]["usable_window_mwh"], 152.16, 1e-9)
+    close("P discharge from 50% SOC (MWh)", battery["energy"]["discharge_from_50pct_mwh"], 76.08, 1e-9)
+    close("P remaining capacity (Ah)", battery["soh"]["remaining_capacity_ah"], 266.28, 1e-9)
+    close("P SOP at 25 C (MW)", battery["sop"]["healthy_25c"]["sop_mw"], 100.0, 1e-12)
+    close("P SOP at 45 C (MW)", battery["sop"]["hot_45c"]["sop_mw"], 70.0, 1e-12)
+    close("P SOP at 15% SOC (MW)", battery["sop"]["low_soc_15pct"]["sop_mw"], 20.0, 1e-12)
+    close("P passive balancing time (h)", battery["balance"]["balance_time_h"], 280.0, 1e-9)
+
+    # Q. Storage siting/sizing (siting.py).
+    site = siting.demo()
+    close("Q base EENS (MWh/y)", site["base"]["base_eens_mwh"], 160.0, 1e-12)
+    rows_q = {row["name"]: row for row in site["cases"]}
+    close("Q 40/80 bus3 EENS (MWh/y)", rows_q["40MW-80MWh-bus3"]["eens_mwh"], 80.0, 1e-12)
+    close("Q 40/80 bus3 reliability value (m)", rows_q["40MW-80MWh-bus3"]["reliability_value_m"], 2.4, 1e-12)
+    close("Q 40/80 bus3 NPV (m)", rows_q["40MW-80MWh-bus3"]["npv_m"], 1.644976, 1e-6)
+    close("Q 40/80 bus3 BCR", rows_q["40MW-80MWh-bus3"]["bcr"], 1.034270, 1e-6)
+    close("Q 80/160 bus3 EENS (MWh/y)", rows_q["80MW-160MWh-bus3"]["eens_mwh"], 0.0, 1e-12)
+    close("Q 80/160 bus3 NPV (m)", rows_q["80MW-160MWh-bus3"]["npv_m"], 3.289953, 1e-6)
+    close("Q 80/160 bus2 EENS (MWh/y)", rows_q["80MW-160MWh-bus2"]["eens_mwh"], 160.0, 1e-12)
+    close("Q 80/160 bus2 NPV (m)", rows_q["80MW-160MWh-bus2"]["npv_m"], -52.774633, 1e-6)
+    close("Q 80/160 bus2 BCR", rows_q["80MW-160MWh-bus2"]["bcr"], 0.450264, 1e-6)
+
+    # R. Operations: merit order, reserve, AGC, contingency (operations.py).
+    ops = operations.demo()
+    close("R day-ahead coal (MW)", ops["day_ahead"]["dispatch"]["coal"], 250.0, 1e-12)
+    close("R day-ahead gas (MW)", ops["day_ahead"]["dispatch"]["gas"], 50.0, 1e-12)
+    close("R day-ahead cost (CNY)", ops["day_ahead"]["cost_cny"], 97500.0, 1e-9)
+    close("R day-ahead reserve (MW)", ops["day_ahead"]["reserve_mw"], 200.0, 1e-12)
+    close("R real-time coal (MW)", ops["real_time"]["dispatch"]["coal"], 300.0, 1e-12)
+    close("R real-time gas (MW)", ops["real_time"]["dispatch"]["gas"], 60.0, 1e-12)
+    close("R real-time cost (CNY)", ops["real_time"]["cost_cny"], 117000.0, 1e-9)
+    close("R real-time reserve (MW)", ops["real_time"]["reserve_mw"], 140.0, 1e-12)
+    check(ops["real_time"]["ramp_ok"], "R real-time redispatch respects ramps")
+    close("R imbalance cost (CNY)", ops["real_time"]["imbalance_cost_cny"], 19500.0, 1e-9)
+    close("R AGC coal (MW)", ops["agc"]["allocation"]["coal"], 0.0, 1e-12)
+    close("R AGC gas (MW)", ops["agc"]["allocation"]["gas"], 20.0, 1e-12)
+    close("R AGC unmet (MW)", ops["agc"]["allocation"]["unmet_mw"], 0.0, 1e-12)
+    close("R contingency reserve (MW)", ops["contingency"]["reserve_mw"], 40.0, 1e-12)
+    close("R contingency requirement (MW)", ops["contingency"]["reserve_requirement_mw"], 80.0, 1e-12)
+    close("R contingency shortfall (MW)", ops["contingency"]["reserve_shortfall_mw"], 40.0, 1e-12)
+    close("R storage remaining (MWh)", ops["contingency"]["storage_remaining_mwh"], 40.0, 1e-12)
+    close("R reserve duration at remaining power (h)", ops["contingency"]["reserve_duration_h_at_remaining_power"], 1.0, 1e-12)
+    check(ops["ramp_unit"] == "MW per dispatch interval", "R ramp unit is per interval")
+
+    # S. Resource adequacy and portfolio comparison (planning.py).
+    plan = planning.demo()
+    close("S portfolio A firm capacity (MW)", plan["portfolios"]["A"]["firm_capacity_mw"], 1150.0, 1e-12)
+    close("S portfolio A LOLE (h/y)", plan["portfolios"]["A"]["lole_h_per_year"], 203.344, 1e-9)
+    close("S portfolio A EENS (MWh/y)", plan["portfolios"]["A"]["eens_mwh_per_year"], 53892.0, 1e-9)
+    close("S portfolio B firm capacity (MW)", plan["portfolios"]["B"]["firm_capacity_mw"], 1750.0, 1e-12)
+    close("S portfolio B LOLE (h/y)", plan["portfolios"]["B"]["lole_h_per_year"], 1.5602944, 1e-9)
+    close("S portfolio B EENS (MWh/y)", plan["portfolios"]["B"]["eens_mwh_per_year"], 332.2944, 1e-9)
+    close("S LOLE target (h/y)", plan["lole_target_h_per_year"], 2.4, 1e-12)
+    check(not plan["portfolios"]["A"]["meets_lole_target"], "S portfolio A misses 2.4 h/y")
+    check(plan["portfolios"]["B"]["meets_lole_target"], "S portfolio B meets 2.4 h/y")
 
     print("\nAll EMS dispatch self-tests passed.")
 
