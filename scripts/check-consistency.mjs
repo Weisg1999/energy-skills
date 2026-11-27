@@ -86,7 +86,7 @@ const versioned = [
 ];
 for (const file of versioned) {
   const text = read(file);
-  if (!/v2\.3/.test(text)) fail(file, 1, 'missing current version marker v2.3');
+  if (!/v2\.4/.test(text)) fail(file, 1, 'missing current version marker v2.4');
   if (/v1\.1\s*[（(]\s*(updated|更新)/i.test(text)) {
     fail(file, 1, 'stale version header v1.1');
   }

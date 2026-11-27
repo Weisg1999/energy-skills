@@ -26,7 +26,7 @@ export const sections = [
     title: '电力现货与省间交易',
     navLabel: '现货与省间交易',
     comment: '04 Spot',
-    desc: '从《电力现货市场101问》的基础、出清结算与技术支持系统，到《电力现货市场实务》的国内外实践，再到 2026 年省间与跨区交易、出清引擎与价格形成、电价归因与盘前推演、量化报价风控、交易台日课与异常处置 SOP、风险信用结算。{n}份笔记覆盖机制、算例、归因方法、治理、日课流程与制度链路。',
+    desc: '从《电力现货市场101问》的基础、出清结算与技术支持系统，到《电力现货市场实务》的国内外实践，再到 2026 年省间与跨区交易、出清引擎与价格形成、电价归因与盘前推演、量化报价风控、交易台日课与异常处置 SOP、风险信用结算，以及中长期合同结构与签约考核、月度监测与复盘、售电与批发用户购电组合。{n}份笔记覆盖机制、算例、归因方法、治理、日课流程、合同结构、月度口径与购电决策。',
   },
   {
     id: 'province',
@@ -142,7 +142,7 @@ export const skillDocs = [
     summaryEn: 'Spot, medium/long-term, settlement and risk (incl. Shandong position and negative-price replay, Sichuan/Yunnan hydro, Liaoning nuclear, Gansu coal capacity plus ancillary, and Gansu-to-Shandong interprovincial instance packs), plus operations and resource adequacy',
     tags: ['技能', '现货', '结算', '风控'],
     tagsEn: ['skill', 'spot', 'settlement', 'risk'],
-    modules: ['m-spot-a', 'm-spot-b', 'm-spot-c', 'm-spot-interprovincial', 'm-quant-risk', 'm-risk-credit', 'm-desk-sop', 'm-cases-replay', 'm-contracts-clauses', 'm-flow-node', 'm-clearing-price', 'm-price-attribution', 'm-forecast-loop', 'm-cross-flex', 'm-ts-f', 'm-ts-g'],
+    modules: ['m-spot-a', 'm-spot-b', 'm-spot-c', 'm-spot-interprovincial', 'm-quant-risk', 'm-risk-credit', 'm-desk-sop', 'm-cases-replay', 'm-contracts-clauses', 'm-flow-node', 'm-clearing-price', 'm-price-attribution', 'm-forecast-loop', 'm-cross-flex', 'm-mlt-structure', 'm-monthly-review', 'm-retail-procurement', 'm-ts-f', 'm-ts-g'],
   },
   {
     slug: 'virtual-power-plant',
@@ -192,7 +192,7 @@ export const skillDocs = [
     summaryEn: 'Forecasting, bidding and backtesting (incl. Shandong thermal/storage/PV-plus-storage, Zhejiang spot storage, Mengxi wind-solar-storage, Shanxi storage, Gansu and Inner Mongolia West renewables instance packs)',
     tags: ['技能', '预测', '报价', '回测'],
     tagsEn: ['skill', 'forecast', 'bidding', 'backtest'],
-    modules: ['m-quant-risk', 'm-spot-b', 'm-spot-c', 'm-desk-sop', 'm-flow-node', 'm-clearing-price', 'm-price-attribution', 'm-forecast-loop', 'm-state-estimation'],
+    modules: ['m-quant-risk', 'm-spot-b', 'm-spot-c', 'm-desk-sop', 'm-flow-node', 'm-clearing-price', 'm-price-attribution', 'm-forecast-loop', 'm-mlt-structure', 'm-monthly-review', 'm-state-estimation'],
   },
   {
     slug: 'ems-dispatch',
@@ -222,7 +222,7 @@ export const skillDocs = [
     summaryEn: 'Packages, customer portfolio, deviation and guarantees (incl. Guangdong, Guangdong retail-wholesale inversion replay, Jiangsu and multi-user direct-connection instance packs)',
     tags: ['技能', '零售', '偏差', '保函'],
     tagsEn: ['skill', 'retail', 'deviation', 'guarantee'],
-    modules: ['m-risk-credit', 'm-province', 'm-vpp-core', 'm-contracts-clauses', 'm-cases-replay'],
+    modules: ['m-risk-credit', 'm-province', 'm-vpp-core', 'm-contracts-clauses', 'm-cases-replay', 'm-mlt-structure', 'm-retail-procurement'],
   },
 ].map((item, i) => ({ ...item, order: i + 1 }));
 

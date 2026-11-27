@@ -4,8 +4,8 @@
   "note": "A number needs a grade, a time point and a caliber. Filter gradeC by usable/banned before using any unverified figure. Full texts of policies are linked from the Chinese policy indexes.",
   "generatedFrom": "knowledge/*.md frontmatter (summary_en) + INDEX_EN structured tables + credibility register",
   "summary": {
-    "modules": 126,
-    "withEnglishSummary": 126,
+    "modules": 129,
+    "withEnglishSummary": 129,
     "keyFigures": 242,
     "openItems": 55,
     "datedOpenItems": 23,
@@ -142,6 +142,19 @@
       "confidence": "historical",
       "historical": true,
       "html": "html/中国碳排放权交易实务-主题笔记.html"
+    },
+    {
+      "id": "m-mlt-structure",
+      "file": "中长期合同结构与签约考核-2026-11.md",
+      "section": "spot",
+      "kind": "知识模块",
+      "cutoff": "2026-11-19",
+      "title": "中长期合同结构与签约考核：从年度到月内",
+      "titleEn": null,
+      "summaryEn": "Annual, monthly, intra-month and multi-day windows are different contracts, not one product. This note turns 2026 provincial rules into an executable structure: window sequencing, bilateral caps, signing-ratio assessment, price limits and liquidity jointly determine coverage and basis. It covers four assessment families, coverage versus effective coverage, basis and curve matching, 2027 rule changes and D-grade synthetic examples.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/中长期合同结构与签约考核-2026-11.html"
     },
     {
       "id": "m-prov-yn",
@@ -298,6 +311,19 @@
       "confidence": "mixed",
       "historical": false,
       "html": "html/吉林电力市场-2026-11.html"
+    },
+    {
+      "id": "m-retail-procurement",
+      "file": "售电与批发用户购电组合-2026-11.md",
+      "section": "spot",
+      "kind": "知识模块",
+      "cutoff": "2026-11-19",
+      "title": "售电与批发用户的购电组合：零售联动、转批发与代理交易",
+      "titleEn": null,
+      "summaryEn": "Under the 2027 retail design, retail energy price becomes a linked price plus a floating price: the linked price follows real-time prices by the customer's own curve, plus a daily allocation of retailers' medium/long-term CFD costs, with peak/valley guidance. Wholesale users face a 60% annual floor, an 80–120% monthly band and 1.1x recovery. This note compares retail, wholesale and agency procurement, derives the switching threshold and gives a D-grade synthetic example.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/售电与批发用户购电组合-2026-11.html"
     },
     {
       "id": "m-prov-sc",
@@ -935,6 +961,19 @@
       "confidence": "mixed",
       "historical": false,
       "html": "html/电价归因与盘前推演-2026-11.html"
+    },
+    {
+      "id": "m-monthly-review",
+      "file": "电力市场月度监测与复盘-2026-11.md",
+      "section": "spot",
+      "kind": "知识模块",
+      "cutoff": "2026-11-19",
+      "title": "电力市场月度监测与复盘：从燃料、来水到捕获率",
+      "titleEn": null,
+      "summaryEn": "A monthly market review is not a price chart. It answers, with fixed calibres: how much cost moved, how much supply was lost, where the price rose, whether contracts or spot won, and what renewables and storage actually captured. This note provides four layers of questions, 12 indicators, 10 tables, anomaly-day classification, capture-price/mechanism-price/storage-revenue definitions and a D-grade synthetic monthly report.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/电力市场月度监测与复盘-2026-11.html"
     },
     {
       "id": "m-risk-credit",

@@ -1,14 +1,26 @@
 {
   "schema": 1,
   "generatedFrom": "CHANGELOG.md + CHANGELOG_EN.md",
-  "version": "v2.3",
+  "version": "v2.4",
   "cutoff": "2026-11-19",
   "latest": "2026-11-27",
-  "count": 101,
+  "count": 102,
   "languages": {
     "zh": {
       "title": "更新记录",
       "entries": [
+        {
+          "date": "2026-11-27",
+          "label": "v2.4 发布：电力交易三模块——合同结构、月度复盘与售电购电组合",
+          "items": [
+            "<strong>范围与发布</strong>：本批新增 3 个知识模块，知识模块 126 → 129，问答保持 86 问、开放事项 55 项；发布为 v2.4，全站版本 v2.3 → v2.4（18 个 SKILL、中英 README/CHANGELOG、一致性断言、版本徽章与更新记录弹窗）；构建、<code>--check</code>、省矩阵、一致性、维护检查、<code>git diff --check</code> 与九个 Python 自测全部通过；数据截止仍为 2026-11-19，全部算例 D 级合成。",
+            "<strong>中长期合同结构与签约考核（spot 第 13 篇）</strong>：新增《中长期合同结构与签约考核：从年度到月内》——年度/月度/月内/多日四个窗口、绿电/双边/集中竞价/代购挂牌的签约顺序、燃煤年度 70%（可放宽至 60%）、用户侧 45%–80%、月度及以上 80% 等比例口径及其分母；双边的主体/总量/集中交易最低比例/方式限制；固定费率、价差回收、通报/保函、不考核四类考核；覆盖率、有效覆盖率、价值加权覆盖率与基差风险；2027 年江西、陕西、北京等规则变化。D 级 1,000 GWh 算例：70/20/10 与 60/30/10 在月度价 360/400/440 元/MWh 下成本 392/400/408 与 390/402/414 百万元，盈亏平衡 380 元/MWh；1.5 倍价差回收下少签 100 GWh 净亏 2 百万元。",
+            "<strong>电力市场月度监测与复盘（spot 第 14 篇）</strong>：新增《电力市场月度监测与复盘：从燃料、来水到捕获率》——四层问题、12 个指标、口径卡与数据分级；燃料/边际成本、供需/来水/风光/检修、现货均价/分位/异常日、中长期与现货、分来源结算、捕获价/捕获率/机制电价、储能套利/调频/容量/兑现率、省间/绿证/代理购电、政策清单。D 级 30 天算例：正常日简单均价 304.2、含 3 个异常日月均价 309.2、负荷加权 340.9 元/MWh；同一光伏四个捕获率 49.3%/48.5%/44.9%/44.0%；储能净价差 325.3 元/MWh，60% 兑现率下套利 1,424.8 万元/年，加容量收益 2,424.8 万元/年。",
+            "<strong>售电与批发用户购电组合（spot 第 15 篇）</strong>：新增《售电与批发用户购电组合：零售联动、转批发与代理交易》——三种身份与成本拆解、2027 四川方案（征求意见稿）的“联动价 + 浮动价”与 1.6/0.4 分时引导、批发年度 60%/月度 80%–120%/现货敞口 20% 约束、六项转批发决策式与阈值、代理对标/分成/分担/上限/利益冲突。D 级 100 GWh 算例：浮动价 2/5/10 元/MWh 时转批发节省 −5/−2/+3 元/MWh，阈值 7 元/MWh；加入偏差 5 元/MWh 后无交易能力时净节省 −3 元/MWh；超额签约 1.6 GWh 按 50 元/MWh×1.1 回收 8.8 万元。",
+            "<strong>计数与生成物</strong>：知识模块/阅读页/中文 Markdown 同步为 129 与 128+1，正文 55,950 → 57,741 行（+1,791）；search-index 4,426,880 → 4,527,472 字节，更新记录 101 → 102 条；配置、索引、英文索引、徽章与 README 中英同步，并补“按问题找入口”三模块路由；重建首页、检索索引、可信度、英文摘要与更新记录生成物，跑构建 <code>--check</code>、省矩阵、一致性、维护检查、<code>git diff --check</code> 与九个 Python 自测。",
+            "<strong>复核与版权</strong>：统一 P3 联动价口径（<code>P_linked</code> 为引导后价，<code>G_TOU</code> 只用于零售/批发对比，不重复计入账单）；修正 P3 超额回收单位（1,600 MWh×50 元/MWh×1.1=8.8 万元）；P2 区分正常日/含异常日均价并补全四个捕获率分母。三篇均为原创改写，只引用公开政策文号与机制，不复制博文原文；全部算例 D 级合成，不含真实合同价、结算电量、场站出力、渠道合同或商业项目溯源。"
+          ]
+        },
         {
           "date": "2026-11-27",
           "label": "v2.3 发布：保护/BMS/选址与通识 F/G 五模块、五套工具与问答集 86 问",
@@ -1241,6 +1253,18 @@
     "en": {
       "title": "Changelog",
       "entries": [
+        {
+          "date": "2026-11-27",
+          "label": "v2.4 release: three electricity-trading modules — contract structure, monthly review and retail procurement",
+          "items": [
+            "<strong>Scope and release</strong>: adds three knowledge modules, modules 126 → 129; Q&amp;A stays at 86 and open items at 55. Published as v2.4; the site version moves v2.3 → v2.4 (18 SKILLs, bilingual READMEs/CHANGELOGs, consistency assertion, version badge and changelog dialog); build, <code>--check</code>, province matrix, consistency, maintenance, <code>git diff --check</code> and nine Python self-tests pass; the data cutoff remains 2026-11-19 and all examples are synthetic grade D.",
+            "<strong>Medium/long-term contract structure and signing assessment (spot #13)</strong>: adds *Medium/Long-Term Contract Structure and Signing Assessment: From Annual to Intra-Month* — annual, monthly, intra-month and multi-day windows; sequencing of green power, bilateral, centralised auction and agency listing; signing ratios of 70% for coal (relaxable to 60%), 45–80% for users and 80% for monthly-and-longer contracts, together with their denominators; bilateral limits on counterparties, volume, minimum centralised-trading share and method; four assessment families (fixed fee, spread clawback, notification/guarantee, no annual assessment); coverage, effective coverage, value-weighted coverage and basis risk; 2027 rule changes in Jiangxi, Shaanxi and Beijing. Grade-D 1,000 GWh case: 70/20/10 vs. 60/30/10 cost CNY 392/400/408m vs. 390/402/414m at monthly prices of 360/400/440 CNY/MWh; break-even 380 CNY/MWh; under a 1.5x spread clawback, signing 100 GWh less loses CNY 2m.",
+            "<strong>Monthly market monitoring and review (spot #14)</strong>: adds *Monthly Market Monitoring and Review: From Fuel and Inflows to Capture Rates* — four layers of questions, 12 indicators, a calibre card and data tiers; fuel/marginal cost, supply/demand/inflows/wind-solar/maintenance, spot averages/percentiles/anomaly days, contracts versus spot, settlement by source, capture price/rate/mechanism price, storage arbitrage/frequency/capacity/delivery, interprovincial/green certificates/agency procurement and a policy list. Grade-D 30-day case: normal-day simple average 304.2, month average with three anomaly days 309.2, load-weighted 340.9 CNY/MWh; four PV capture rates 49.3%/48.5%/44.9%/44.0%; storage net spread 325.3 CNY/MWh, arbitrage CNY 14.248m/yr at 60% delivery, CNY 24.248m/yr including capacity.",
+            "<strong>Retail and wholesale-user procurement portfolios (spot #15)</strong>: adds *Retail and Wholesale-User Procurement Portfolios: Linked Retail, Switching to Wholesale and Agency Trading* — three identities and cost decomposition; the 2027 Sichuan draft's linked price plus floating price and 1.6/0.4 time-of-use guidance; wholesale annual 60%, monthly 80–120% and 20% spot-exposure constraints; the six-term switching formula and threshold; agency benchmarking, sharing, cost-sharing, caps and conflicts of interest. Grade-D 100 GWh case: at floating prices of 2/5/10 CNY/MWh, switching saves −5/−2/+3 CNY/MWh, with a threshold of 7 CNY/MWh; with a 5 CNY/MWh bias and no trading capability the net saving is −3 CNY/MWh; 1.6 GWh of over-contract is recovered at 50 CNY/MWh × 1.1 = CNY 88,000.",
+            "<strong>Counts and generated artifacts</strong>: modules/reading pages/Chinese Markdown become 129 and 128+1; body 55,950 → 57,741 lines (+1,791); search-index 4,426,880 → 4,527,472 bytes and changelog records 101 → 102; config, indexes, English index, badge and bilingual READMEs are synchronised, with a three-module route added under “Find an entry point by question”; the hub, search index, credibility, English digest and changelog data are rebuilt, followed by build <code>--check</code>, province matrix, consistency, maintenance, <code>git diff --check</code> and nine Python self-tests.",
+            "<strong>Review and copyright</strong>: aligns the P3 linked-price calibre (<code>P_linked</code> is the post-guidance price; <code>G_TOU</code> is used only for retail-versus-wholesale comparison and is not double-counted); fixes the P3 over-contract recovery unit (1,600 MWh × 50 CNY/MWh × 1.1 = CNY 88,000); P2 separates normal-day and anomaly-inclusive averages and completes the denominators for all four capture rates. All three notes are original rewrites that cite public policy numbers and mechanisms without copying source articles; all examples are synthetic grade D and contain no real contract prices, settled volumes, plant output, channel contracts or commercial-project provenance."
+          ]
+        },
         {
           "date": "2026-11-27",
           "label": "v2.3 release: protection/BMS/siting and foundations F/G, five tools and Q&A at 86 questions",

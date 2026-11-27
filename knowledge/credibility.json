@@ -2,19 +2,19 @@
   "schema": 1,
   "description": "Machine-readable credibility register. Filter modules by confidence/examples/historical before injecting into a model; gradeC and openItems carry the unverified figures and undecided items.",
   "summary": {
-    "modules": 126,
+    "modules": 129,
     "gradeCItems": 22,
     "openItems": 55,
     "events": 32,
     "draftPolicies": 3,
-    "mixedModules": 106,
+    "mixedModules": 109,
     "historicalModules": 15,
     "unverifiedGradeC": 14,
     "verifiedTickets": 6,
     "bannedTickets": 2,
     "ticketsDueForReview": 14,
     "openGaps": 8,
-    "englishSummaries": 126,
+    "englishSummaries": 129,
     "keyFigures": 242,
     "glossaryTerms": 82,
     "controlledAbbreviations": 50,
@@ -3192,6 +3192,31 @@
       "exampleSections": []
     },
     {
+      "id": "m-mlt-structure",
+      "file": "中长期合同结构与签约考核-2026-11.md",
+      "title": "中长期合同结构与签约考核：从年度到月内",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-19",
+      "confidence": "mixed",
+      "confidenceInferred": false,
+      "examples": "synthetic",
+      "historical": false,
+      "summaryEn": "Annual, monthly, intra-month and multi-day windows are different contracts, not one product. This note turns 2026 provincial rules into an executable structure: window sequencing, bilateral caps, signing-ratio assessment, price limits and liquidity jointly determine coverage and basis. It covers four assessment families, coverage versus effective coverage, basis and curve matching, 2027 rule changes and D-grade synthetic examples.",
+      "titleEn": null,
+      "marks": {
+        "gradeC": 6,
+        "draft": 6,
+        "pending": 0,
+        "example": 6
+      },
+      "exampleSections": [
+        "## 6. D 级合成算例：少签与考核",
+        "### 6.1 算例设定",
+        "### 6.4 这个算例的边界"
+      ]
+    },
+    {
       "id": "m-prov-yn",
       "file": "云南电力市场-2026-11.md",
       "title": "云南电力市场：区域正式叠加、高比例水电与 VPP 平台（2026 版）",
@@ -3467,6 +3492,30 @@
         "example": 0
       },
       "exampleSections": []
+    },
+    {
+      "id": "m-retail-procurement",
+      "file": "售电与批发用户购电组合-2026-11.md",
+      "title": "售电与批发用户的购电组合：零售联动、转批发与代理交易",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-19",
+      "confidence": "mixed",
+      "confidenceInferred": false,
+      "examples": "synthetic",
+      "historical": false,
+      "summaryEn": "Under the 2027 retail design, retail energy price becomes a linked price plus a floating price: the linked price follows real-time prices by the customer's own curve, plus a daily allocation of retailers' medium/long-term CFD costs, with peak/valley guidance. Wholesale users face a 60% annual floor, an 80–120% monthly band and 1.1x recovery. This note compares retail, wholesale and agency procurement, derives the switching threshold and gives a D-grade synthetic example.",
+      "titleEn": null,
+      "marks": {
+        "gradeC": 1,
+        "draft": 6,
+        "pending": 0,
+        "example": 11
+      },
+      "exampleSections": [
+        "## 6. D 级合成算例：100 GWh 平稳负荷怎么选",
+        "### 6.5 代理方案算例"
+      ]
     },
     {
       "id": "m-prov-sc",
@@ -4569,6 +4618,29 @@
         "## 5. D 级合成算例",
         "### 9.2 一段式示例（合成数字）",
         "### 算例数字"
+      ]
+    },
+    {
+      "id": "m-monthly-review",
+      "file": "电力市场月度监测与复盘-2026-11.md",
+      "title": "电力市场月度监测与复盘：从燃料、来水到捕获率",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-19",
+      "confidence": "mixed",
+      "confidenceInferred": false,
+      "examples": "synthetic",
+      "historical": false,
+      "summaryEn": "A monthly market review is not a price chart. It answers, with fixed calibres: how much cost moved, how much supply was lost, where the price rose, whether contracts or spot won, and what renewables and storage actually captured. This note provides four layers of questions, 12 indicators, 10 tables, anomaly-day classification, capture-price/mechanism-price/storage-revenue definitions and a D-grade synthetic monthly report.",
+      "titleEn": null,
+      "marks": {
+        "gradeC": 4,
+        "draft": 2,
+        "pending": 0,
+        "example": 12
+      },
+      "exampleSections": [
+        "### 11.4 储能算例"
       ]
     },
     {
