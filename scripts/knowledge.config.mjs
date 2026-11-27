@@ -6,7 +6,7 @@
 export const site = {
   skills: 9,
   repository: 'https://github.com/Weisg1999/energy-skills',
-  coverage: '电力系统通识、电力现货与省间交易、中国 33 个省级市场档案、海外十一市场（澳/德/英/意/西/法/荷/波/比·北欧/美/日）、横向专题（并网合规、容量机制、辅助服务、储能收益与数据源、PPA/绿证、同口径快照与投决日历、气象与电力交易、燃料与电力交易）、电价、新能源与并网、储能、EMS 与 SCADA 数据链路、零碳园区、碳市场与绿证/CCER/CBAM 衔接、虚拟电厂、需求响应与市场风险信用结算、术语与口径字典',
+  coverage: '电力系统通识、电力现货与省间交易、中国 33 个省级市场档案、海外十一市场（澳/德/英/意/西/法/荷/波/比·北欧/美/日）、横向专题（并网合规、容量机制、辅助服务、储能收益与数据源、PPA/绿证、同口径快照与投决日历、气象与电力交易、燃料与电力交易）、电价、新能源与并网、储能、EMS 与 SCADA 数据链路、零碳园区、碳市场与绿证/CCER/CBAM 衔接、虚拟电厂、需求响应、市场风险信用结算与场站交易托管代理、术语与口径字典',
 };
 
 export const sections = [
@@ -26,7 +26,7 @@ export const sections = [
     title: '电力现货与省间交易',
     navLabel: '现货与省间交易',
     comment: '04 Spot',
-    desc: '从《电力现货市场101问》的基础、出清结算与技术支持系统，到《电力现货市场实务》的国内外实践，再到 2026 年省间与跨区交易、出清引擎与价格形成、电价归因与盘前推演、量化报价风控、交易台日课与异常处置 SOP、风险信用结算，以及中长期合同结构与签约考核、月度监测与复盘、售电与批发用户购电组合。{n}份笔记覆盖机制、算例、归因方法、治理、日课流程、合同结构、月度口径与购电决策。',
+    desc: '从《电力现货市场101问》的基础、出清结算与技术支持系统，到《电力现货市场实务》的国内外实践，再到 2026 年省间与跨区交易、出清引擎与价格形成、电价归因与盘前推演、量化报价风控、交易台日课与异常处置 SOP、风险信用结算，以及中长期合同结构与签约考核、月度监测与复盘、售电与批发用户购电组合、场站交易托管与代理。{n}份笔记覆盖机制、算例、归因方法、治理、日课流程、合同结构、月度口径、购电决策与托管治理。',
   },
   {
     id: 'province',
@@ -142,7 +142,7 @@ export const skillDocs = [
     summaryEn: 'Spot, medium/long-term, settlement and risk (incl. Shandong position and negative-price replay, Sichuan/Yunnan hydro, Liaoning nuclear, Gansu coal capacity plus ancillary, and Gansu-to-Shandong interprovincial instance packs), plus operations and resource adequacy',
     tags: ['技能', '现货', '结算', '风控'],
     tagsEn: ['skill', 'spot', 'settlement', 'risk'],
-    modules: ['m-spot-a', 'm-spot-b', 'm-spot-c', 'm-spot-interprovincial', 'm-quant-risk', 'm-risk-credit', 'm-desk-sop', 'm-cases-replay', 'm-contracts-clauses', 'm-flow-node', 'm-clearing-price', 'm-price-attribution', 'm-forecast-loop', 'm-cross-flex', 'm-mlt-structure', 'm-monthly-review', 'm-retail-procurement', 'm-ts-f', 'm-ts-g'],
+    modules: ['m-spot-a', 'm-spot-b', 'm-spot-c', 'm-spot-interprovincial', 'm-quant-risk', 'm-risk-credit', 'm-desk-sop', 'm-cases-replay', 'm-contracts-clauses', 'm-flow-node', 'm-clearing-price', 'm-price-attribution', 'm-forecast-loop', 'm-cross-flex', 'm-mlt-structure', 'm-monthly-review', 'm-retail-procurement', 'm-asset-agency', 'm-ts-f', 'm-ts-g'],
   },
   {
     slug: 'virtual-power-plant',
@@ -172,7 +172,7 @@ export const skillDocs = [
     summaryEn: 'Revenue stacking, investment decisions, degradation and assessment (incl. Anhui capacity-price and Guangdong spot-plus-frequency instance packs), plus siting, protection setting, BMS state boundaries and resource adequacy',
     tags: ['技能', '储能', '投决', 'LCOS', '选址'],
     tagsEn: ['skill', 'storage', 'investment', 'LCOS', 'siting'],
-    modules: ['m-storage-invest', 'm-storage-tech', 'm-storage-ems', 'm-contracts-clauses', 'm-cluster-ems', 'm-ems-interface', 'm-cross-flex', 'm-agc-avc', 'm-dynamic-security', 'm-protection-setting', 'm-bms-ems', 'm-storage-siting', 'm-ts-g'],
+    modules: ['m-storage-invest', 'm-storage-tech', 'm-storage-ems', 'm-contracts-clauses', 'm-cluster-ems', 'm-ems-interface', 'm-cross-flex', 'm-agc-avc', 'm-dynamic-security', 'm-protection-setting', 'm-bms-ems', 'm-storage-siting', 'm-ts-g', 'm-asset-agency'],
   },
   {
     slug: 'renewable-project-development',
@@ -182,7 +182,7 @@ export const skillDocs = [
     summaryEn: 'Resources, LCOE, mechanism pricing and grid connection (incl. the Yunnan 2027 wind decision instance pack), plus protection setting',
     tags: ['技能', '新能源', 'LCOE', '并网'],
     tagsEn: ['skill', 'renewables', 'LCOE', 'grid'],
-    modules: ['m-renewable', 'm-grid', 'm-price-policy', 'm-grid-test', 'm-grid-quality', 'm-distribution', 'm-agc-avc', 'm-oscillation-impedance', 'm-protection-setting'],
+    modules: ['m-renewable', 'm-grid', 'm-price-policy', 'm-grid-test', 'm-grid-quality', 'm-distribution', 'm-agc-avc', 'm-oscillation-impedance', 'm-protection-setting', 'm-asset-agency'],
   },
   {
     slug: 'spot-bidding-quant',
@@ -192,7 +192,7 @@ export const skillDocs = [
     summaryEn: 'Forecasting, bidding and backtesting (incl. Shandong thermal/storage/PV-plus-storage, Zhejiang spot storage, Mengxi wind-solar-storage, Shanxi storage, Gansu and Inner Mongolia West renewables instance packs)',
     tags: ['技能', '预测', '报价', '回测'],
     tagsEn: ['skill', 'forecast', 'bidding', 'backtest'],
-    modules: ['m-quant-risk', 'm-spot-b', 'm-spot-c', 'm-desk-sop', 'm-flow-node', 'm-clearing-price', 'm-price-attribution', 'm-forecast-loop', 'm-mlt-structure', 'm-monthly-review', 'm-state-estimation'],
+    modules: ['m-quant-risk', 'm-spot-b', 'm-spot-c', 'm-desk-sop', 'm-flow-node', 'm-clearing-price', 'm-price-attribution', 'm-forecast-loop', 'm-mlt-structure', 'm-monthly-review', 'm-asset-agency', 'm-state-estimation'],
   },
   {
     slug: 'ems-dispatch',

@@ -4,8 +4,8 @@
   "note": "A number needs a grade, a time point and a caliber. Filter gradeC by usable/banned before using any unverified figure. Full texts of policies are linked from the Chinese policy indexes.",
   "generatedFrom": "knowledge/*.md frontmatter (summary_en) + INDEX_EN structured tables + credibility register",
   "summary": {
-    "modules": 129,
-    "withEnglishSummary": 129,
+    "modules": 130,
+    "withEnglishSummary": 130,
     "keyFigures": 242,
     "openItems": 55,
     "datedOpenItems": 23,
@@ -350,6 +350,19 @@
       "confidence": "mixed",
       "historical": false,
       "html": "html/国际电价比较-方法与模板-2026-11.html"
+    },
+    {
+      "id": "m-asset-agency",
+      "file": "场站交易托管与代理-2026-11.md",
+      "section": "spot",
+      "kind": "知识模块",
+      "cutoff": "2026-11-27",
+      "title": "场站交易托管与代理：授权边界、基准设计与绩效归因",
+      "titleEn": null,
+      "summaryEn": "Delegating a generation asset's trading to an outside team is not just a revenue-share ratio. Authorization scope, benchmark definition, sharing direction, attribution method and exit arrangements must all be explicit; otherwise agency becomes a bet. This note sets out three custody levels, six authorization dimensions, four benchmark families, five sharing structures, six attribution buckets and a D-grade synthetic case, with a separate valuation of the share-the-upside, no-downside payoff.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/场站交易托管与代理-2026-11.html"
     },
     {
       "id": "m-cluster-ems",

@@ -116,7 +116,7 @@
     </details>
 
     <article class="prose">
-<aside class="note note-head"><p>🌐 English version: <a href="skill-spot-bidding-quant-en.html">SKILL_EN.md</a> ｜ 姊妹技能：<a href="skill-electricity-trading-expert.html">电力交易专家</a>（市场规则/结算/碳市场）、<a href="skill-virtual-power-plant.html">虚拟电厂专家</a>（资源聚合/运营）。本技能只回答&quot;怎么算、怎么报、怎么验证&quot;。</p><p>版本 v2.4 · 数据截止 2026-11-19</p><p><strong>维护入口</strong>：<code>tools/selftest.py</code>（跑通即代表正文指标未过期）、<code>tools/clearing.py</code>（SCED/SCUC 出清沙盘，断言并入 selftest）、<code>tools/attribution.py</code>（电价因子归因与盘前情景，断言并入 selftest）、<code>knowledge/调研-量化报价与厂商实践-2026-11.md</code>（厂商与专利公开信息）、<code>knowledge/省级市场状态表-2026-11.md</code>（省别参数先行确认）、<code>knowledge/量化报价与交易风控-工程化-2026-11.md</code>（工程闭环、规则版本库、风控限额、结算对账与归因）。</p><p><strong>2026-2027 未定事项</strong>：《电力现货市场基本规则（征求意见稿）》（意见截止 2026-11-18，拟 2027-01-01 施行）、各省报价段数与限价参数年度调整、二次限价机制试点、新能源报量不报价的适用范围、公开数据披露时点与修订口径。</p></aside>
+<aside class="note note-head"><p>🌐 English version: <a href="skill-spot-bidding-quant-en.html">SKILL_EN.md</a> ｜ 姊妹技能：<a href="skill-electricity-trading-expert.html">电力交易专家</a>（市场规则/结算/碳市场）、<a href="skill-virtual-power-plant.html">虚拟电厂专家</a>（资源聚合/运营）。本技能只回答&quot;怎么算、怎么报、怎么验证&quot;。</p><p>版本 v2.5 · 数据截止 2026-11-19</p><p><strong>维护入口</strong>：<code>tools/selftest.py</code>（跑通即代表正文指标未过期）、<code>tools/clearing.py</code>（SCED/SCUC 出清沙盘，断言并入 selftest）、<code>tools/attribution.py</code>（电价因子归因与盘前情景，断言并入 selftest）、<code>knowledge/调研-量化报价与厂商实践-2026-11.md</code>（厂商与专利公开信息）、<code>knowledge/省级市场状态表-2026-11.md</code>（省别参数先行确认）、<code>knowledge/量化报价与交易风控-工程化-2026-11.md</code>（工程闭环、规则版本库、风控限额、结算对账与归因）。</p><p><strong>2026-2027 未定事项</strong>：《电力现货市场基本规则（征求意见稿）》（意见截止 2026-11-18，拟 2027-01-01 施行）、各省报价段数与限价参数年度调整、二次限价机制试点、新能源报量不报价的适用范围、公开数据披露时点与修订口径。</p></aside>
 <hr>
 <h2 id="s1">0. 角色定义与行为规范</h2>
 <h3 id="s2">0.1 角色画像</h3>
@@ -389,7 +389,7 @@ CVaR_α = 最差 α 概率质量上的加权平均</code></pre>
 
 
 <section class="related" aria-labelledby="skill-modules-title">
-      <div class="related-head"><h2 id="skill-modules-title">适用知识模块</h2><span>11</span></div>
+      <div class="related-head"><h2 id="skill-modules-title">适用知识模块</h2><span>12</span></div>
       <div class="related-grid">
         <a class="related-card" href="量化报价与交易风控-工程化-2026-11.html">
           <span class="related-type">跨区对照</span>
@@ -412,7 +412,7 @@ CVaR_α = 最差 α 概率质量上的加权平均</code></pre>
           <span>把交易台一日的五个时钟落成可执行流程：盘前简报、报价复核、盘中触发线、盘后复盘、交接班，配盘前简报、报价复核、异常事件三张模板与升级路径；本模块是流程与模板，规则值以链接模块与省级规则为准。</span>
         </a>
       </div>
-      <p class="related-rest"><b>更多关联</b><a href="潮流阻塞与节点电价-2026-11.html">从潮流到节点电价：阻塞、断面与网损的价格传导</a><a href="现货出清与价格形成-2026-11.html">现货出清与价格形成：从报价到节点价</a><a href="电价归因与盘前推演-2026-11.html">电价归因与盘前推演：从负荷、新能源、检修、燃料、阻塞到价格</a><a href="预测误差申报与EMS闭环-2026-11.html">预测误差→申报→EMS 闭环：newsvendor 报价与储能偏差跟踪</a><a href="中长期合同结构与签约考核-2026-11.html">中长期合同结构与签约考核：从年度到月内</a><a href="电力市场月度监测与复盘-2026-11.html">电力市场月度监测与复盘：从燃料、来水到捕获率</a><a href="状态估计与安全分析-2026-11.html">状态估计与安全分析：从 SCADA 量测到可信运行方式</a></p>
+      <p class="related-rest"><b>更多关联</b><a href="潮流阻塞与节点电价-2026-11.html">从潮流到节点电价：阻塞、断面与网损的价格传导</a><a href="现货出清与价格形成-2026-11.html">现货出清与价格形成：从报价到节点价</a><a href="电价归因与盘前推演-2026-11.html">电价归因与盘前推演：从负荷、新能源、检修、燃料、阻塞到价格</a><a href="预测误差申报与EMS闭环-2026-11.html">预测误差→申报→EMS 闭环：newsvendor 报价与储能偏差跟踪</a><a href="中长期合同结构与签约考核-2026-11.html">中长期合同结构与签约考核：从年度到月内</a><a href="电力市场月度监测与复盘-2026-11.html">电力市场月度监测与复盘：从燃料、来水到捕获率</a><a href="场站交易托管与代理-2026-11.html">场站交易托管与代理：授权边界、基准设计与绩效归因</a><a href="状态估计与安全分析-2026-11.html">状态估计与安全分析：从 SCADA 量测到可信运行方式</a></p>
     </section>
 
     <nav class="pager" aria-label="上下篇">
@@ -519,10 +519,10 @@ CVaR_α = 最差 α 概率质量上的加权平均</code></pre>
 <nav class="page-aux" aria-label="页面辅助">
   <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
 </nav>
-<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.4" data-cutoff="2026-11-19" data-latest="2026-11-27" data-count="102">
-  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.4）" title="查看更新记录（当前 v2.4）">
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.5" data-cutoff="2026-11-27" data-latest="2026-11-27" data-count="103">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.5）" title="查看更新记录（当前 v2.5）">
     <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
-    <span class="cl-badge-ver">v2.4</span>
+    <span class="cl-badge-ver">v2.5</span>
     <span class="cl-badge-label">更新记录</span>
   </button>
   <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
@@ -531,8 +531,8 @@ CVaR_α = 最差 α 概率质量上的加权平均</code></pre>
       <header class="cl-head">
         <div class="cl-head-main">
           <span class="cl-kicker">RELEASE NOTES</span>
-          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.4</span></h2>
-          <p class="cl-sub" id="cl-subtitle">当前版本 v2.4 · 数据截止 2026-11-19 · 102 条记录</p>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.5</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.5 · 数据截止 2026-11-27 · 103 条记录</p>
         </div>
         <div class="cl-actions">
           <div class="cl-lang" role="group" aria-label="切换语言">
@@ -549,7 +549,7 @@ CVaR_α = 最差 α 概率质量上的加权平均</code></pre>
         </div>
       </div>
       <footer class="cl-foot">
-        <span data-changelog-meta>v2.4 · 2026-11-19 · 102 条记录</span>
+        <span data-changelog-meta>v2.5 · 2026-11-27 · 103 条记录</span>
         <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
       </footer>
     </div>

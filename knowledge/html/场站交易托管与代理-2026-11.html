@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>场站交易托管与代理：授权边界、基准设计与绩效归因 | energy-skills 知识库</title>
+<meta name="description" content="发电侧把交易权交给外部团队，不是签一个分成比例就完了：授权范围、基准口径、分成方向、归因方法和退出安排，任何一项含糊都会把“代理”变成“代赌”。本页给出三层托管、六类授权、四类基准、五种分成、六项归因与一份 D 级合成算例，并单列“分润不保赔”的期权价值。">
+<link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
+<script>
+(function(){try{var t=localStorage.getItem('es-theme');if(!/^(light|cream|green|dark)$/.test(t||'')){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/knowledge.css">
+<link rel="stylesheet" href="../assets/theme-menu.css">
+<link rel="stylesheet" href="../assets/changelog.css">
+</head>
+<body data-cat="spot" id="top">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
+  <div class="crumb">
+    <span class="crumb-cat">02 · SPOT</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">场站交易托管与代理：授权边界、基准设计与绩效归因</span>
+  </div>
+  <div class="topbar-act">
+    <div class="theme-picker" data-theme-picker>
+      <button class="theme-toggle" type="button" data-theme-menu aria-label="选择主题" title="选择主题">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="5"/><circle cx="15" cy="9" r="5"/><circle cx="12" cy="15" r="5"/></svg>
+      </button>
+    </div>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../场站交易托管与代理-2026-11.md">.md 源文件<small>knowledge/场站交易托管与代理-2026-11.md</small></a>
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">02 · SPOT</div>
+    <h2 class="nav-cat"><a href="../index.html#spot">电力现货与省间交易</a></h2>
+    <ul class="nav-list">
+              <li><a href="省间与跨区交易-2026-11.html">省间与跨区交易（2026 版）</a></li>
+              <li><a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a></li>
+              <li><a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算（2026 版）</a></li>
+              <li><a href="电力现货市场101问-A-基础与价格机制.html">101 问 A · 基础与价格机制</a></li>
+              <li><a href="电力现货市场101问-B-出清结算与省域实践.html">101 问 B · 出清结算与省域实践</a></li>
+              <li><a href="电力现货市场101问-C-结算TTS与政策演进.html">101 问 C · 结算、TTS 与政策演进</a></li>
+              <li><a href="电力现货市场实务-精读笔记.html">电力现货市场实务</a></li>
+              <li><a href="交易台日课与异常处置-SOP-2026-11.html">交易台日课与异常处置 SOP</a></li>
+              <li><a href="潮流阻塞与节点电价-2026-11.html">从潮流到节点电价：阻塞、断面与网损的价格传导</a></li>
+              <li><a href="现货出清与价格形成-2026-11.html">现货出清与价格形成：从报价到节点价</a></li>
+              <li><a href="预测误差申报与EMS闭环-2026-11.html">预测误差→申报→EMS 闭环：newsvendor 报价与储能偏差跟踪</a></li>
+              <li><a href="电价归因与盘前推演-2026-11.html">电价归因与盘前推演：从负荷、新能源、检修、燃料、阻塞到价格</a></li>
+              <li><a href="中长期合同结构与签约考核-2026-11.html">中长期合同结构与签约考核：从年度到月内</a></li>
+              <li><a href="电力市场月度监测与复盘-2026-11.html">电力市场月度监测与复盘：从燃料、来水到捕获率</a></li>
+              <li><a href="售电与批发用户购电组合-2026-11.html">售电与批发用户的购电组合：零售联动、转批发与代理交易</a></li>
+              <li class="on" aria-current="page"><a href="场站交易托管与代理-2026-11.html">场站交易托管与代理：授权边界、基准设计与绩效归因</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#province"><b>03</b>中国省级市场</a></li>
+              <li><a href="../index.html#intl"><b>04</b>海外市场</a></li>
+              <li><a href="../index.html#cross"><b>05</b>横向专题</a></li>
+              <li><a href="../index.html#price"><b>06</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>07</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>08</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>11</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">02 · SPOT<i>知识模块</i></div>
+      <h1 class="doc-title">场站交易托管与代理：授权边界、基准设计与绩效归因（2026-11）</h1>
+      <p class="lede">发电侧把交易权交给外部团队，不是签一个分成比例就完了：授权范围、基准口径、分成方向、归因方法和退出安排，任何一项含糊都会把“代理”变成“代赌”。本页给出三层托管、六类授权、四类基准、五种分成、六项归因与一份 D 级合成算例，并单列“分润不保赔”的期权价值。</p>
+      <p class="hook">2026-11 · 先定授权，再定基准，最后谈分成</p>
+      <div class="tags"><span class="tag">场站</span><span class="tag">交易托管</span><span class="tag">代理交易</span><span class="tag">授权矩阵</span><span class="tag">基准价</span><span class="tag">分成</span><span class="tag">分润不保赔</span><span class="tag">绩效归因</span><span class="tag">捕获价</span><span class="tag">限电</span><span class="tag">可用率</span><span class="tag">利益冲突</span><span class="tag">审计</span><span class="tag">退出</span></div>
+      <div class="doc-meta"><span>约 17.9k 字</span><span>阅读约 32 分钟</span><span>13 节</span><span>数据截止 2026-11-27</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（13）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv2"><a href="#s6">1. 边界与角色：谁在替谁做哪个决定</a></li>
+            <li class="lv2"><a href="#s12">2. 基准设计：跟谁比，比什么，怎么复算</a></li>
+            <li class="lv2"><a href="#s18">3. 分成结构：五种方案与“分润不保赔”的真相</a></li>
+            <li class="lv2"><a href="#s24">4. 绩效归因：把“运气”和“能力”分开</a></li>
+            <li class="lv2"><a href="#s33">5. 利益冲突与治理</a></li>
+            <li class="lv2"><a href="#s37">6. 合同条款清单</a></li>
+            <li class="lv2"><a href="#s40">7. D 级合成算例：100 MW 风电场的“价格赢了，电量输了”</a></li>
+            <li class="lv2"><a href="#s48">8. 常见错误</a></li>
+            <li class="lv2"><a href="#s49">9. 速查</a></li>
+            <li class="lv2"><a href="#s55">10. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s56">11. 资料来源与口径</a></li>
+            <li class="lv2"><a href="#s57">12. 更新记录</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>数据截止：2026-11-27｜定位：知识库模块（电力交易·发电侧交易托管与代理）</p><p>相关技能：<a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a>（市场规则、合同与结算）、<a href="../../skills/spot-bidding-quant/SKILL.md">现货报价量化</a>（预测、报价与回测）、<a href="../../skills/renewable-project-development/SKILL.md">新能源开发与并网</a>（资源、限电与并网）、<a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营</a>（储能收益与调用）</p><p>用途：回答“托管到底授什么权”“基准跟谁比”“分成怎么设才不被套利”“价格跑赢但电量输了怎么算”“分润不保赔是不是风险共担”“怎么审计和退出”六类问题。</p><p>算例：一份 <strong>D 级合成算例</strong>——100 MW 风电场，基准可发电量 300 GWh、基准价 380 元/MWh，实际结算 285 GWh、捕获价 400 元/MWh；所有数字仅用于演示口径，不对应任何真实场站、主体、省份或合同。</p><p>边界：本文讲发电侧交易托管/代理的授权、基准、分成与归因方法，不推荐任何代理机构或软件，不替代合同审查、法律意见、交易决策或结算复核；具体规则以各省交易方案、交易中心细则、并网调度协议和合同为准。</p></aside>
+<hr>
+<h2 id="s1">0. 一页看懂</h2>
+<h3 id="s2">0.1 三句话</h3>
+<ul><li><strong>托管不是“把场站交出去”，而是把一组决策权切出来授权</strong>：市场、品种、时限、额度、价格带、否决权，任何一项没写，代理方就可能在你不知道的地方替你承担风险。</li><li><strong>基准决定分成方向</strong>：市场均价、同类捕获价、理论可发电量、预测修正基准，四种基准奖励的能力不同；基准定错，越努力越容易拿到“假超额”。</li><li><strong>归因决定谁拿走什么</strong>：价格、电量、预测、限电、可用率、执行滑点必须分开；价格跑赢不等于资产方赚钱，电量输了也不一定是交易员的错。</li></ul>
+<h3 id="s3">0.2 三层托管</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>层级</th><th>代理方做什么</th><th>资产方保留什么</th><th>适合谁</th><th>主要风险</th></tr></thead><tbody><tr><td>代报量报价</td><td>按资产方指令在交易平台申报、确认回执、异常上报；不决定量价</td><td>策略、报价、仓位、合同签署</td><td>有交易团队但缺操作人手；多场站集中申报</td><td>操作差错、延误、回执遗漏</td></tr><tr><td>代运营</td><td>在授权矩阵内决定报价、曲线、合约与调仓</td><td>授权边界、价格带、仓位上限、否决权、审计权</td><td>无专职交易团队的中小型场站</td><td>策略风险、越权、基准争议</td></tr><tr><td>全托管</td><td>策略、执行、结算核对、偏差分析、报告全包</td><td>数据所有权、审计权、终止权、关键人条款</td><td>小业主、集团统管、跨省多场站</td><td>利益冲突、信息不对称、退出困难</td></tr></tbody></table></div>
+<p>托管层级越高，重点越不是“服务项目更多”，而是“代理方手里的决策权更多”。决策权越多，越需要限额、日志、否决权和退出条款；只写服务清单、不写决策边界的合同，本质上是把场站交给一个没有刹车的司机。</p>
+<h3 id="s4">0.3 六个决策</h3>
+<ol><li><strong>授哪些市场与品种</strong>：省内中长期、省间中长期、省内现货、省间现货、绿电、辅助服务、容量、需求响应，逐项勾选。</li><li><strong>授多大额度</strong>：单笔最大电量、单日最大交易量、最大净持仓、最大敞口比例、最大回撤。</li><li><strong>用什么基准</strong>：市场均价、同类捕获价、理论可发电量、预测修正基准，选一个主基准并写清调整项。</li><li><strong>分成向上还是双向</strong>：只分超额、保底加分成、双向分成/分担、超额累进，分别对应不同的期权价值。</li><li><strong>哪些收益和成本进分成基数</strong>：服务费、偏差考核、限电补偿、辅助服务、绿证、容量、税费，必须逐项列明。</li><li><strong>怎么审计、怎么退出</strong>：数据访问、订单日志、第三方复算、未平仓合约、合同转让、最终结算。</li></ol>
+<h3 id="s5">0.4 本文不做什么</h3>
+<ul><li>不推荐任何代理机构、交易软件或分成比例；</li><li>不发布任何真实合同价、分成比例、场站出力、结算电量、限电数据；</li><li>不把公开访谈中的单一案例当成行业标准；</li><li>不替代合同审查、法律意见、交易决策或结算复核。</li></ul>
+<hr>
+<h2 id="s6">1. 边界与角色：谁在替谁做哪个决定</h2>
+<h3 id="s7">1.1 买侧代理与卖侧代理不是一回事</h3>
+<p>“代理交易”在电力市场里至少有两个方向：用户侧代理买电，发电侧代理卖电。两者都叫代理，但基准、风险来源和归因方法完全不同。</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>用户侧代理（买电）</th><th>发电侧代理（卖电）</th></tr></thead><tbody><tr><td>目标</td><td>降低购电成本</td><td>提高售电收益</td></tr><tr><td>基准</td><td>留在零售的价格、目录电价或对标价</td><td>市场均价、同类捕获价、理论可发电量</td></tr><tr><td>主要不确定性</td><td>用电量、零售套餐、偏差考核</td><td>出力、限电、可用率、预测考核、价格</td></tr><tr><td>分成基数</td><td>节省的电费</td><td>增加的售电收入或净收益</td></tr><tr><td>典型冲突</td><td>对标价、客户分配、交易仓位</td><td>多客户分配、自营、关联交易、限电归属</td></tr><tr><td>本文分工</td><td>见<a href="售电与批发用户购电组合-2026-11.html">售电与批发用户购电组合</a> §5</td><td>本文展开</td></tr></tbody></table></div>
+<p>买侧代理的“量”主要由用户负荷决定，卖侧代理的“量”由天气、设备、调度和限电共同决定。把买侧合同模板直接套到卖侧，最常见的后果是：代理方拿走了价格跑赢的奖金，资产方独自承担了限电和可用率造成的电量损失。</p>
+<h3 id="s8">1.2 四类主体与责任边界</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>主体</th><th>主要职责</th><th>不承担什么</th></tr></thead><tbody><tr><td>资产方（业主/项目公司）</td><td>资产可用率、检修计划、出力数据、授权边界、最终决策</td><td>不把市场规则解释权交给代理方</td></tr><tr><td>代理方（交易服务商/售电公司/集团交易中心）</td><td>预测、报价、申报、合约、调仓、结算核对、报告</td><td>不承担资产本体故障和电网限电，除非合同明确约定</td></tr><tr><td>电网/调度/交易中心</td><td>调度、出清、结算、信息披露、规则执行</td><td>不是代理合同的当事方，不替双方解释合同</td></tr><tr><td>独立核验方（第三方审计/集团审计/监管）</td><td>核基准、核结算、核归因、核授权合规</td><td>不参与日常交易决策</td></tr></tbody></table></div>
+<p>用 RACI 把责任写清楚，比在合同里写“双方应勤勉尽责”有用得多。R 是执行，A 是最终负责，C 是被咨询，I 是被通知。</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>事项</th><th>资产方</th><th>代理方</th><th>调度/交易中心</th><th>独立核验</th></tr></thead><tbody><tr><td>出力预测</td><td>A/R（自测时）</td><td>R（受托时）</td><td>I</td><td>C</td></tr><tr><td>检修与可用率</td><td>A/R</td><td>I</td><td>C</td><td>I</td></tr><tr><td>申报与报价</td><td>A（定边界）</td><td>R（在授权内）</td><td>C</td><td>I</td></tr><tr><td>合同签署</td><td>A（授权）</td><td>R（在授权内）</td><td>I</td><td>I</td></tr><tr><td>结算核对</td><td>A</td><td>R</td><td>C</td><td>C</td></tr><tr><td>限电记录</td><td>A</td><td>C</td><td>R</td><td>C</td></tr><tr><td>绩效归因</td><td>A</td><td>R</td><td>I</td><td>C</td></tr><tr><td>审计</td><td>A</td><td>C</td><td>I</td><td>R</td></tr></tbody></table></div>
+<h3 id="s9">1.3 三层托管：从“手”到“脑”再到“脑+手+账”</h3>
+<p><strong>代报量报价</strong>：代理方是“手”，不是“脑”。资产方给出申报单，代理方按时提交、确认回执、异常上报。这个层级不产生策略收益，KPI 应该是及时率、差错率、回执完整率和异常上报时长，而不是捕获价。把代报量报价按分成计价，等于让代理方为资产方的策略背锅或抢功。</p>
+<p><strong>代运营</strong>：代理方是“脑+手”，在授权矩阵内决定报价、曲线、合约和调仓。资产方保留价格带、仓位上限、单日最大交易量、紧急撤销权和否决权。这个层级的 KPI 可以包括捕获价、偏差合格率、仓位合规率和归因报告及时率，但必须同时看电量和限电。</p>
+<p><strong>全托管</strong>：代理方是“脑+手+账”，还负责结算核对、偏差分析、月度报告和规则跟踪。资产方保留数据所有权、审计权、终止权和关键人条款。全托管的 KPI 应该是净收益、风险调整收益、审计发现闭环率和交接完整率；只看收益率，会鼓励代理方加杠杆、赌方向。</p>
+<h3 id="s10">1.4 授权矩阵：六类授权，未写即不授</h3>
+<p>授权矩阵应该作为合同附件，逐项勾选，而不是在正文写一句“全权代理”。“全权”是合同里最危险的三个字：它把解释权交给了事后争议。</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>授权维度</th><th>要写清</th><th>典型边界</th><th>越权后果</th></tr></thead><tbody><tr><td>市场范围</td><td>省内中长期、省间中长期、省内现货、省间现货、绿电、辅助服务、容量、需求响应</td><td>未列明的市场一律不授</td><td>越权交易可撤销，损失由代理方承担</td></tr><tr><td>品种范围</td><td>电能量、绿证、辅助服务、容量补偿、差价合约</td><td>是否允许金融性合约、是否允许跨品种对冲</td><td>超品种交易触发终止或罚则</td></tr><tr><td>时间范围</td><td>年度、月度、月内、日前、实时；是否允许跨月/跨年持仓</td><td>只允许在指定窗口内交易</td><td>超期持仓强制平仓</td></tr><tr><td>数量边界</td><td>单笔最大电量、单日最大交易量、最大净持仓、最大敞口比例</td><td>例如单日不超过月均电量的 20%</td><td>超量部分不计分成，损失自担</td></tr><tr><td>价格边界</td><td>最低卖出价、最高买入价、价格带、止损线</td><td>超出价格带必须书面确认</td><td>越价成交可拒绝结算确认</td></tr><tr><td>决策权</td><td>报价提交、合同签署、价格确认、紧急撤销、数据访问、结算确认</td><td>区分“建议权”和“决定权”</td><td>无权签署的合同对资产方不生效</td></tr></tbody></table></div>
+<p>三条硬规则：</p>
+<ol><li><strong>未列明即不授</strong>：不要用“包括但不限于”扩大授权，市场规则变化快，兜底条款会把新市场自动送进代理方权限。</li><li><strong>超限即报告</strong>：正常情况先报告后交易；紧急情况可先交易后补报告，但必须设单笔上限和补报时限。</li><li><strong>授权版本化</strong>：口头指令无效，至少要有书面指令或录音加书面确认；授权变更写生效时间，不追溯。</li></ol>
+<h3 id="s11">1.5 代运营的“否决权”怎么用</h3>
+<p>资产方保留否决权，不等于每笔交易都否决。否决权应该只用于三类情形：</p>
+<ul><li><strong>超出授权矩阵</strong>：市场、品种、额度、价格带任一越界；</li><li><strong>异常集中</strong>：单日交易量、单客户对手方、单笔合约超过阈值；</li><li><strong>利益冲突</strong>：代理方自营、关联方对手方、多客户分配明显不公。</li></ul>
+<p>否决权要有响应时限。资产方在约定时限内不回复，视为同意还是视为否决，必须提前写清；否则代理方可以用“你不回复”来倒逼交易。</p>
+<hr>
+<h2 id="s12">2. 基准设计：跟谁比，比什么，怎么复算</h2>
+<h3 id="s13">2.1 基准是第一条款</h3>
+<p>分成公式通常写成：</p>
+<p>$$</p>
+<p>\text{代理方分成} = s \times \max(0,\ R_{\text{actual}} - R_{\text{benchmark}}) + F</p>
+<p>$$</p>
+<p>其中 $s$ 是分成比例，$F$ 是服务费。这个公式里，$s$ 和 $F$ 是谈判焦点，但真正决定分成方向的是 $R_{\text{benchmark}}$。基准定高，代理方永远拿不到分成；基准定低，资产方白送钱。</p>
+<p>基准不是预测，而是<strong>反事实</strong>：它代表“没有这个代理方时，资产方本来可以拿到的收益”。所以基准必须满足四个条件：</p>
+<ol><li><strong>可核对</strong>：资产方能拿交易中心结算单、调度数据和公开统计复算；</li><li><strong>同口径</strong>：市场范围、结算电量、价格口径、费用扣减一致；</li><li><strong>随市场浮动</strong>：基准跟着市场涨跌，双方都不承担价格水平风险；</li><li><strong>不可单方操纵</strong>：基准数据不来自代理方自己的组合、预测或关联方。</li></ol>
+<h3 id="s14">2.2 四类基准</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>基准</th><th>定义</th><th>奖励什么</th><th>隐藏什么</th><th>数据来源</th><th>操纵风险</th><th>适用</th></tr></thead><tbody><tr><td>市场均价</td><td>同省、同时段、同市场的电量加权均价</td><td>择时、曲线、市场选择</td><td>资源质量、限电、可用率</td><td>交易中心月报/日报</td><td>代理方可靠加风险跑赢</td><td>价格型授权，配合电量中性化</td></tr><tr><td>同类捕获价</td><td>同省、同资源、同容量段、同时段、同市场范围的加权捕获价</td><td>相对交易能力</td><td>个体资源差异、样本选择</td><td>交易中心/行业统计</td><td>代理方可选择弱 peer</td><td>有足够同类样本的成熟市场</td></tr><tr><td>理论可发电量</td><td>独立资源数据或 P50 出力 × 基准价</td><td>价格与执行</td><td>预测误差、限电</td><td>气象/资源评估/独立预测</td><td>理论值可争议</td><td>新场站、同类样本少</td></tr><tr><td>预测修正基准</td><td>日前预测/申报曲线 × 基准价</td><td>相对预测的交易能力</td><td>预测质量（若代理方控制预测）</td><td>独立预测/实际出力</td><td>代理方可操纵预测</td><td>预测责任与交易责任分离</td></tr></tbody></table></div>
+<p>没有一种基准能同时奖励价格能力和电量能力。必须选一个主基准，其他维度用调整项或除外项处理。比如：用同类捕获价做主基准，把限电和可用率列为除外项；或者用理论可发电量做主基准，把预测误差单列为偏差成本。</p>
+<h3 id="s15">2.3 基准口径的八个字段</h3>
+<p>一个完整的基准定义，至少写清八个字段：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>字段</th><th>要写清</th><th>例子</th></tr></thead><tbody><tr><td>地理范围</td><td>省、区域、节点、分区</td><td>同省，不含跨省落地</td></tr><tr><td>资源类型</td><td>风、光、储、水、火、混合</td><td>陆上风电，不含海上</td></tr><tr><td>容量段</td><td>装机区间或分位</td><td>50–150 MW</td></tr><tr><td>时间粒度</td><td>15 分钟、1 小时、日、月</td><td>按月结算，按 15 分钟归因</td></tr><tr><td>市场范围</td><td>省内、省间、绿电、辅助服务</td><td>省内电能量，不含绿电溢价</td></tr><tr><td>结算口径</td><td>上网电量、结算电量、含补贴、含考核</td><td>结算电量，含偏差考核</td></tr><tr><td>价格口径</td><td>捕获价、均价、节点价、落地价</td><td>场站侧捕获价，不含输配</td></tr><tr><td>数据版本</td><td>发布时间、修订版本</td><td>交易中心月报 V2，保留修订记录</td></tr></tbody></table></div>
+<p>口径不同，基准可以差出几十元/MWh。先把八个字段写全，再谈比例；否则“市场均价”四个字可以解释出四种结果。</p>
+<h3 id="s16">2.4 基准的“三不”原则</h3>
+<ul><li><strong>不用代理方自己的组合做基准</strong>：代理方同时服务多个客户时，自己的组合可以是最优的，也可以是最差的，资产方无法判断。</li><li><strong>不用代理方单方提供的预测做基准</strong>：如果代理方既负责预测又负责交易，预测越低，基准越低，超额越容易；必须有独立预测或事后实际校验。</li><li><strong>不在事后改基准</strong>：不能因为某个月没跑赢，就换 peer、换期间、换价格口径。基准公式和样本范围应该事前预登记。</li></ul>
+<h3 id="s17">2.5 基准争议怎么解决</h3>
+<p>合同里应写明：</p>
+<ul><li>基准公式、计算示例、数据源、更新频率；</li><li>数据修订的处理方式（保留版本，不追溯调整已结算分成，重大错误除外）；</li><li>争议由独立第三方按同一数据复算，复算费用由败诉方或双方分担；</li><li>欺诈、重大过失不受“基准不可追溯调整”的保护。</li></ul>
+<hr>
+<h2 id="s18">3. 分成结构：五种方案与“分润不保赔”的真相</h2>
+<h3 id="s19">3.1 五种分成</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>类型</th><th>代理方收入</th><th>资产方风险</th><th>激励</th><th>适用</th><th>注意</th></tr></thead><tbody><tr><td>固定服务费</td><td>元/MWh 或万元/月</td><td>承担全部价格风险</td><td>代理方无动力压价/提价</td><td>代报量报价、低复杂度</td><td>服务费与工作量匹配</td></tr><tr><td>保底+分成</td><td>保底收益 + 超额分成</td><td>下行有底，上行让渡</td><td>代理方有动力做超额</td><td>风险厌恶业主</td><td>保底方信用/保证金</td></tr><tr><td>基准+分成</td><td>服务费 + 超额分成</td><td>保留基准内收益</td><td>代理方有动力跑赢基准</td><td>有可验证基准的场站</td><td>基准与上限</td></tr><tr><td>基准+双向</td><td>服务费 + 超额分成/不足分担</td><td>双方共担</td><td>长期合作、风险共担</td><td>成熟场站、长期合同</td><td>上下限、亏损结转</td></tr><tr><td>超额累进</td><td>服务费 + 分档递增分成</td><td>上行让渡更多</td><td>激励强</td><td>高技能、高波动</td><td>仓位/止损/分成上限</td></tr></tbody></table></div>
+<h3 id="s20">3.2 “分润不保赔”的真相</h3>
+<p>公开访谈中有一类常见做法：代理方代理发电厂参与交易，高于市场均价的部分按比例分成，低于市场均价不补偿。这种“分润不保赔”听起来像风险共担，数学上却是一个<strong>单边看涨期权</strong>：</p>
+<p>$$</p>
+<p>\text{代理方收益} = s \times \max(0,\ R - R_b) + F</p>
+<p>$$</p>
+<p>$$</p>
+<p>\text{资产方收益} = R - s \times \max(0,\ R - R_b) - F</p>
+<p>$$</p>
+<p>代理方获得上行敞口，不承担下行；资产方卖出看涨期权，保留基准内收益，同时承担全部下行。这个期权是有价格的，价格就是资产方让出的那部分上行。</p>
+<p>如果代理方没有真实技能，只靠市场波动，这个结构仍然对代理方有利：只要收益围绕基准对称波动，$\max(0,\ R - R_b)$ 的期望大于零，代理方的期望分成大于零，资产方的期望净收益小于零（扣除服务费前）。所以“分润不保赔”不是风险共担，而是风险转移；资产方不能用“反正基准是市场均价，我不亏”来说服自己。</p>
+<p>资产方给这个期权定价的工具包括：</p>
+<ul><li><strong>提高基准</strong>：用同类前 25% 分位、P75 或更高的门槛，让跑赢基准需要真实技能；</li><li><strong>设置分成上限</strong>：单年分成封顶，防止极端价格下让渡过大；</li><li><strong>设置最低性能门槛</strong>：低于门槛不分成的反向结构，或要求代理方共担下行；</li><li><strong>要求代理方共投/保证金</strong>：让代理方用自己的钱承担一部分下行；</li><li><strong>改为双向分成</strong>：超出分成、不足分担，设上下限；</li><li><strong>缩短结算周期</strong>：月度预结、年度清算，保留 clawback；</li><li><strong>设置高水位线</strong>：只有累计净收益超过历史高点才分成。</li></ul>
+<p>代理方的合理辩护是：基准是市场均价，资产方本来也只能拿到均价；代理方提供了预测、执行、规模效应和规则跟踪。这个辩护成立的前提是：基准确实独立、代理方确实有可验证的技能、资产方确实没有为期权支付过高价格。三者缺一，“分润不保赔”就变成了资产方补贴代理方的波动率。</p>
+<h3 id="s21">3.3 分成基数：毛收益还是净收益</h3>
+<p>分成基数必须写清，否则“超额”可以被算大或算小。建议把电能量和其他收益分开：</p>
+<p>$$</p>
+<p>\text{分成基数} = R_{\text{energy,net}} - R_{\text{energy,benchmark}}</p>
+<p>$$</p>
+<p>$$</p>
+<p>R_{\text{energy,net}} = R_{\text{energy}} + R_{\text{curtail,comp}} - C_{\text{deviation}} - C_{\text{trade}} - C_{\text{data}}</p>
+<p>$$</p>
+<p>其中：</p>
+<ul><li>$R_{\text{energy}}$：电能量结算收入；</li><li>$R_{\text{curtail,comp}}$：限电补偿（如有）；</li><li>$C_{\text{deviation}}$：偏差考核成本；</li><li>$C_{\text{trade}}$：交易手续费、通道费；</li><li>$C_{\text{data}}$：数据服务费（如单列）。</li></ul>
+<p>辅助服务、绿证、容量补偿、需求响应收益，建议单独核算、单独基准、单独分成，不要混入电能量基数。用电能量基准去分成辅助服务收益，等于用跑步成绩给游泳比赛发奖金。</p>
+<p>服务费是否进入分成基数，只能选一种：要么服务费单列、不进入基数；要么服务费进入基数、不再另收。两种都做，就是重复收费。</p>
+<p>还要写清四个机制：</p>
+<ul><li><strong>亏损结转</strong>：当期不足结转下期，避免“赚了分成、亏了不担”；</li><li><strong>高水位线</strong>：只有累计净收益超过历史高点才分成；</li><li><strong>分成上限</strong>：单年或单项目封顶；</li><li><strong>clawback</strong>：事后发现数据错误、越权交易或重大过失，已付分成可追回。</li></ul>
+<h3 id="s22">3.4 服务费与分成的组合</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>组合</th><th>代理方现金流</th><th>资产方风险</th><th>适用</th></tr></thead><tbody><tr><td>固定费+低分成</td><td>稳定</td><td>较高</td><td>代报量报价、低复杂度</td></tr><tr><td>低固定费+高分成</td><td>依赖业绩</td><td>较高</td><td>有技能、强激励</td></tr><tr><td>纯分成</td><td>波动大</td><td>中高</td><td>代理方挑客户/挑月份时需审计</td></tr><tr><td>保底+分成</td><td>有底、有上限</td><td>中</td><td>风险厌恶业主，保底方需信用</td></tr></tbody></table></div>
+<h3 id="s23">3.5 分成条款清单</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>条款</th><th>必须写清</th></tr></thead><tbody><tr><td>基准</td><td>定义、数据源、公式、计算示例、更新频率、争议解决</td></tr><tr><td>实际收益</td><td>含哪些收入、扣哪些成本、结算单口径</td></tr><tr><td>分成比例</td><td>固定比例、分档比例、累进门槛</td></tr><tr><td>上下限</td><td>分成上限、分担下限、单年封顶</td></tr><tr><td>基数</td><td>电能量净收益，是否含服务费/辅助服务/绿证/容量</td></tr><tr><td>亏损结转</td><td>结转期限、清零条件、终止时的处理</td></tr><tr><td>高水位</td><td>历史高点定义、累计口径</td></tr><tr><td>结算</td><td>月度预结、年度清算、支付时点、发票与税</td></tr><tr><td>clawback</td><td>触发条件、追回范围、时效</td></tr><tr><td>争议</td><td>复算机构、费用分担、诉讼/仲裁</td></tr></tbody></table></div>
+<hr>
+<h2 id="s24">4. 绩效归因：把“运气”和“能力”分开</h2>
+<h3 id="s25">4.1 收益桥</h3>
+<p>先把口径统一。电能量收益可以写成：</p>
+<p>$$</p>
+<p>R_{\text{energy}} = \sum_t Q_t \times P_t</p>
+<p>$$</p>
+<p>基准收益写成：</p>
+<p>$$</p>
+<p>R_b = Q_b \times P_b</p>
+<p>$$</p>
+<p>总差异：</p>
+<p>$$</p>
+<p>\Delta R = R_{\text{energy}} - R_b</p>
+<p>$$</p>
+<p>如果还有其他收益（辅助服务、绿证、容量、限电补偿），先单独列示，再进入总桥。不要把所有收益混成一个“综合收益”再分解，否则无法判断代理方到底在哪一项上有能力。</p>
+<h3 id="s26">4.2 价格效应与电量效应</h3>
+<p>对价格和电量两个因素，推荐用对称分解（Shapley 二因素）：</p>
+<p>$$</p>
+<p>\Delta R = \Delta P \times \frac{Q_b + Q_a}{2} + \Delta Q \times \frac{P_b + P_a}{2}</p>
+<p>$$</p>
+<p>其中 $\Delta P = P_a - P_b$，$\Delta Q = Q_a - Q_b$。两项之和严格等于总差异，交互项被平均分配，不依赖“先算价还是先算量”的顺序。</p>
+<p>如果合同约定顺序法（先价后量或先量后价），必须写明顺序；否则默认用对称分解。顺序法不是错，但会让同样的业绩在不同合同下算出不同分成，容易引发争议。</p>
+<p>一个重要的直觉：<strong>价格效应为正、电量效应为负，净差异可以为零</strong>。只看价格效应，会高估代理方的贡献；只看净差异，会把限电和可用率的责任也算到代理方头上。两者都要看，还要继续拆。</p>
+<h3 id="s27">4.3 电量效应怎么拆</h3>
+<p>把实际结算电量拆成：</p>
+<p>$$</p>
+<p>Q_a = Q_{\text{available}} - Q_{\text{curtailed}} + \Delta Q_{\text{settlement}}</p>
+<p>$$</p>
+<p>其中：</p>
+<ul><li>$Q_{\text{available}}$：可用发电量（设备可用、资源可用，未扣限电）；</li><li>$Q_{\text{curtailed}}$：限电电量；</li><li>$\Delta Q_{\text{settlement}}$：结算调整（计量、规则、追补等）。</li></ul>
+<p>电量差异：</p>
+<p>$$</p>
+<p>\Delta Q = (Q_{\text{available}} - Q_b) - Q_{\text{curtailed}} + \Delta Q_{\text{settlement}}</p>
+<p>$$</p>
+<p>对应三项：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>公式</th><th>通常谁负责</th></tr></thead><tbody><tr><td>资源/可用率效应</td><td>$(Q_{\text{available}} - Q_b) \times P_{\text{avg}}$</td><td>资产方（设备、资源）</td></tr><tr><td>限电效应</td><td>$-Q_{\text{curtailed}} \times P_{\text{avg}} + R_{\text{curtail,comp}}$</td><td>电网/调度，按规则补偿</td></tr><tr><td>结算调整</td><td>$\Delta Q_{\text{settlement}} \times P_{\text{avg}}$</td><td>按规则/计量责任</td></tr></tbody></table></div>
+<p>其中 $P_{\text{avg}} = (P_b + P_a) / 2$。</p>
+<p>限电和可用率通常不是代理方能控制的。如果合同让代理方承担这部分，代理方会要求更高的分成、更低的基准或直接拒绝全托管；如果合同完全不提，资产方可能在限电年份发现“价格跑赢、收益下降”，却还要支付分成。</p>
+<h3 id="s28">4.4 预测效应：不是电量效应，而是偏差成本</h3>
+<p>预测误差不改变实际发电量，但会改变申报曲线、合约覆盖和偏差考核。把预测误差塞进电量效应，会重复计算；把它塞进价格效应，会高估代理方的交易能力。</p>
+<p>预测效应建议单独列成成本项：</p>
+<p>$$</p>
+<p>C_{\text{deviation}} = \sum_t \left| Q_{\text{schedule},t} - Q_{\text{actual},t} \right| \times p_{\text{dev},t}</p>
+<p>$$</p>
+<p>其中 $p_{\text{dev},t}$ 是规则规定的偏差价格或考核单价。具体公式各省不同，以交易中心细则为准。</p>
+<p>还要看合约覆盖的机会成本：</p>
+<ul><li>预测偏低、合约签少：高价时段敞口，少赚；</li><li>预测偏高、合约签多：低价时段超额，可能被回收或考核；</li><li>预测曲线形状错：即使总量对，分时也会错。</li></ul>
+<p>预测质量指标不能只看月度平均误差，至少要看：</p>
+<ul><li>MAE/RMSE；</li><li>预测合格率（按规则门槛）；</li><li>极端天气命中率；</li><li>日前/实时偏差分布；</li><li>偏差考核金额占收入比例。</li></ul>
+<p>如果代理方负责预测，预测误差应进入代理方 KPI 和分成基数；如果资产方负责预测，预测误差应从代理方分成中剔除，否则代理方会为资产方的预测背锅。</p>
+<h3 id="s29">4.5 执行滑点</h3>
+<p>执行滑点衡量“该执行的没执行好”：</p>
+<p>$$</p>
+<p>S = \sum_t \left( P_{\text{fill},t} - P_{\text{target},t} \right) \times Q_{\text{fill},t}</p>
+<p>$$</p>
+<p>$P_{\text{target},t}$ 可以是策略目标价、申报价或基准价，取决于合同定义。滑点可能来自：</p>
+<ul><li><strong>市场滑点</strong>：流动性不足、价格快速变化、规则限制；</li><li><strong>执行滑点</strong>：下单延误、申报错误、网络故障、人为操作。</li></ul>
+<p>两者要分开。没有订单级数据，就无法区分“市场没给机会”和“代理方没执行”。所以合同应要求代理方保留订单、回执、时间戳和修改记录，并允许资产方审计。</p>
+<h3 id="s30">4.6 范围效应</h3>
+<p>辅助服务、绿证、容量补偿、需求响应、跨省交易，都是电能量之外的范围。范围效应单独列示：</p>
+<ul><li>哪些市场被授权？</li><li>每个市场的基准是什么？</li><li>收益和成本怎么分？</li><li>代理方是否具备相应资格/通道？</li><li>规则变化时怎么调整？</li></ul>
+<p>不要用一个电能量基准去分成所有收益。辅助服务的风险、绿证的价格、容量的政策属性，和电能量完全不同；混在一起，既算不清，也容易出合规问题。</p>
+<h3 id="s31">4.7 归因报告的最小字段</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>字段</th><th>定义</th><th>数据源</th><th>责任人</th></tr></thead><tbody><tr><td>期间</td><td>结算月/日，含时区</td><td>交易中心结算单</td><td>代理方</td></tr><tr><td>场站</td><td>项目、装机、资源类型</td><td>并网协议/登记信息</td><td>资产方</td></tr><tr><td>基准</td><td>公式、样本、版本</td><td>交易中心/独立数据</td><td>双方确认</td></tr><tr><td>实际</td><td>电量、价格、收入</td><td>结算单</td><td>代理方</td></tr><tr><td>价格效应</td><td>对称分解</td><td>归因计算</td><td>代理方</td></tr><tr><td>电量效应</td><td>可用、限电、结算调整</td><td>运行/调度数据</td><td>资产方/调度</td></tr><tr><td>预测效应</td><td>偏差考核、覆盖机会成本</td><td>申报/结算数据</td><td>预测责任方</td></tr><tr><td>执行滑点</td><td>成交价与目标价差</td><td>订单/回执</td><td>代理方</td></tr><tr><td>范围效应</td><td>辅助/绿证/容量/需求响应</td><td>分市场结算单</td><td>代理方</td></tr><tr><td>服务费</td><td>固定/变动、含税</td><td>合同/发票</td><td>代理方</td></tr><tr><td>分成</td><td>基数、比例、上下限</td><td>合同/计算表</td><td>双方确认</td></tr><tr><td>净收益</td><td>实际减服务费减分成</td><td>财务核算</td><td>资产方</td></tr></tbody></table></div>
+<p>每个字段都要有数据版本和修订记录。归因报告不是财务部月底编的故事，而是合同执行的一部分；没有数据源的归因，只是另一种营销材料。</p>
+<h3 id="s32">4.8 归因治理</h3>
+<ul><li><strong>事前预登记</strong>：公式、样本、口径、权重在合同或附件中写清；</li><li><strong>事后同公式复算</strong>：不得因为结果不利就换公式；</li><li><strong>数据版本留痕</strong>：交易中心修订、调度追补、计量更正都要记录；</li><li><strong>第三方审计</strong>：年度或触发式审计，费用按合同分担；</li><li><strong>争议解决</strong>：专家复算优先于诉讼，除非涉及欺诈/重大过失；</li><li><strong>不得事后挑选</strong>：不能挑一个好看的期间、peer 或基准来证明能力。</li></ul>
+<hr>
+<h2 id="s33">5. 利益冲突与治理</h2>
+<h3 id="s34">5.1 六类冲突</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>冲突</th><th>表现</th><th>后果</th><th>治理</th></tr></thead><tbody><tr><td>多客户分配</td><td>稀缺合约、通道、低价单优先给谁</td><td>客户间交叉补贴</td><td>按比例/时间/风险预算分配，禁止优先自营/关联</td></tr><tr><td>自营交易</td><td>代理方用自己的仓位与客户对赌或抢跑</td><td>客户成为对手方</td><td>信息隔离、订单优先级、禁止抢跑</td></tr><tr><td>关联交易</td><td>关联售电/发电/储能是交易对手</td><td>利益输送</td><td>披露、独立基准、回避</td></tr><tr><td>基准操纵</td><td>代理方定义基准或预测</td><td>虚增超额</td><td>独立数据、第三方复算</td></tr><tr><td>客户冲突</td><td>大客户优先、新客户补贴</td><td>老客户承担成本</td><td>SLA、披露、分池核算</td></tr><tr><td>数据冲突</td><td>用 A 客户数据服务 B 客户</td><td>泄露、套利</td><td>保密、聚合、脱敏、访问日志</td></tr></tbody></table></div>
+<h3 id="s35">5.2 治理工具</h3>
+<ul><li><strong>信息隔离墙</strong>：自营、代理、研究、风控之间的信息隔离；</li><li><strong>员工行为准则</strong>：禁止抢跑、老鼠仓、内幕信息交易；</li><li><strong>交易日志</strong>：订单、修改、撤销、成交、回执全留痕；</li><li><strong>订单优先级</strong>：客户订单与自营订单的先后规则；</li><li><strong>客户资产隔离</strong>：客户仓位、保证金、结算分账管理；</li><li><strong>关联交易披露</strong>：关联方名单、交易对手、定价依据；</li><li><strong>合规官/独立董事</strong>：对重大冲突有一票审查权；</li><li><strong>年度审计</strong>：覆盖授权、基准、分成、关联交易；</li><li><strong>举报渠道</strong>：员工和客户可匿名举报。</li></ul>
+<h3 id="s36">5.3 合同中的治理条款</h3>
+<ul><li><strong>数据所有权归资产方</strong>：代理方仅有授权范围内的使用权；终止时归还或删除；</li><li><strong>审计权</strong>：提前通知、频率、范围、费用；异常交易可即时审计；</li><li><strong>关键人条款</strong>：核心交易员离职/变更的通知和交接；</li><li><strong>责任限制</strong>：故意、重大过失、欺诈不受责任上限保护；</li><li><strong>合规承诺</strong>：市场规则、反商业贿赂、内幕信息、数据安全；</li><li><strong>分包/转委托</strong>：是否允许，需资产方书面同意；</li><li><strong>客户名单/竞业</strong>：终止后的客户接触限制，不能妨碍资产方转回自营。</li></ul>
+<p>审计权不是“有权看报表”，而是“有权看订单、日志、原始数据和计算过程”。只给汇总报表的代理方，等于只让你看答案，不让你看解题步骤。</p>
+<hr>
+<h2 id="s37">6. 合同条款清单</h2>
+<h3 id="s38">6.1 十二类条款</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>条款</th><th>必须写清</th><th>常见漏洞</th></tr></thead><tbody><tr><td>授权范围</td><td>市场、品种、时间、额度、价格带、决策权</td><td>“全权代理”没有边界</td></tr><tr><td>基准</td><td>定义、数据源、公式、示例、更新、争议</td><td>“市场均价”没有口径</td></tr><tr><td>实际收益</td><td>结算单、费用、补贴、辅助、绿证、偏差、限电、税</td><td>毛净混用</td></tr><tr><td>分成</td><td>基数、比例、分档、上下限、结转、高水位、结算、clawback</td><td>按价格效应分成，忽略电量</td></tr><tr><td>服务费</td><td>固定/变动、最低、支付时点、是否进基数</td><td>服务费+分成重复收费</td></tr><tr><td>预测与偏差</td><td>谁预测、精度目标、考核归属、不可抗力</td><td>代理方既控预测又控基准</td></tr><tr><td>限电与可用率</td><td>谁承担、补偿、数据源、除外项</td><td>代理方为电网限电背锅</td></tr><tr><td>规则变更</td><td>谁承担、是否重开、基准调整</td><td>规则变了合同不调整</td></tr><tr><td>数据与审计</td><td>访问、频率、范围、留存、保密</td><td>只给报表不给原始数据</td></tr><tr><td>终止与交接</td><td>通知期、未平仓、合同转让、最终结算、竞业</td><td>终止后仓位无人接</td></tr><tr><td>责任与保险</td><td>上限、故意/重大过失、保险</td><td>全部责任都被上限封死</td></tr><tr><td>争议解决</td><td>法律、管辖、专家复算、费用</td><td>没有专家裁定条款</td></tr></tbody></table></div>
+<h3 id="s39">6.2 三条“必须写”的条款</h3>
+<ol><li><strong>授权矩阵作为附件，逐项勾选</strong>：不要用正文一句话代替。</li><li><strong>基准计算示例，用历史数据跑一遍</strong>：签约前用过去 12 个月的数据复算，看看代理方能拿多少、资产方能留多少。</li><li><strong>退出时的未平仓合约和结算处理</strong>：终止不是“说走就走”，要写清仓位平掉、合约转让、保证金退还、最终结算和客户交接。</li></ol>
+<hr>
+<h2 id="s40">7. D 级合成算例：100 MW 风电场的“价格赢了，电量输了”</h2>
+<h3 id="s41">7.1 设定</h3>
+<p>某合成风电场，装机 100 MW，年为基准可发电量 300 GWh（P50 口径），基准价 380 元/MWh，基准收益 11,400 万元。实际结算电量 285 GWh，其中限电 10 GWh、可用率/资源偏差 5 GWh；实际捕获价 400 元/MWh，实际电能量收益 11,400 万元。服务费 2 元/MWh，按基准电量 300 GWh 计，共 60 万元；分成比例 30%。</p>
+<p>所有数字均为 <strong>D 级合成算例</strong>，仅用于演示口径，不对应任何真实场站、主体、省份或合同。</p>
+<h3 id="s42">7.2 价格与电量效应</h3>
+<p>价格差 $\Delta P = 20$ 元/MWh，电量差 $\Delta Q = -15$ GWh，平均价格 390 元/MWh，平均电量 292.5 GWh。</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>计算</th><th>金额（万元）</th></tr></thead><tbody><tr><td>基准收益</td><td>300 GWh × 380 元/MWh</td><td>11,400</td></tr><tr><td>价格效应</td><td>20 × 292.5 GWh</td><td>+585</td></tr><tr><td>限电效应</td><td>−10 GWh × 390 元/MWh</td><td>−390</td></tr><tr><td>可用率/资源效应</td><td>−5 GWh × 390 元/MWh</td><td>−195</td></tr><tr><td>净差异</td><td>+585 − 390 − 195</td><td>0</td></tr><tr><td>实际收益</td><td>285 GWh × 400 元/MWh</td><td>11,400</td></tr></tbody></table></div>
+<p>价格效应 585 万元，正好被限电 390 万元和可用率/资源 195 万元吃掉。资产方的实际收益和基准一样，但代理方在“价格效应”口径下看起来立了大功。</p>
+<h3 id="s43">7.3 三种分成口径</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>口径</th><th>代理方分成（万元）</th><th>服务费（万元）</th><th>资产方净得（万元）</th><th>相对基准（万元）</th></tr></thead><tbody><tr><td>按价格效应 × 30%</td><td>175.5</td><td>60</td><td>11,164.5</td><td>−235.5</td></tr><tr><td>按净差异 × 30%</td><td>0</td><td>60</td><td>11,340</td><td>−60</td></tr><tr><td>按净差异双向 30%，下限 100</td><td>0</td><td>60</td><td>11,340</td><td>−60</td></tr></tbody></table></div>
+<ul><li><strong>口径 A（价格效应）</strong>：代理方拿 175.5 万元分成加 60 万元服务费，合计 235.5 万元；资产方实际收益 11,400 万元，扣完后只剩 11,164.5 万元，比基准少 235.5 万元。价格跑赢的奖金，由限电和可用率的损失买单。</li><li><strong>口径 B（净差异）</strong>：净差异为零，代理方只拿 60 万元服务费；资产方净得 11,340 万元，比基准少 60 万元。这个口径至少不奖励“零净贡献”。</li><li><strong>口径 C（双向分成）</strong>：净差异为零时，代理方只拿服务费；如果净差异为 −585 万元，代理方按 30% 分担 175.5 万元，但合同下限 100 万元，实际承担 100 万元，资产方净得 11,400 − 585 + 100 − 60 = 10,855 万元，仍比基准少 545 万元。下行分担有上限，资产方不能指望代理方兜底。</li></ul>
+<p>结论：<strong>分成基数选“价格效应”还是“净差异”，决定了谁为电量风险买单。</strong> 如果资产方想让代理方专注价格能力，可以选价格效应，但必须同时把限电和可用率列为除外项，或者用一个电量中性化的基准；否则代理方会拿“价格 alpha”掩盖“电量 beta”。</p>
+<h3 id="s44">7.4 好年景：价格和电量都改善</h3>
+<p>假设实际结算 295 GWh，捕获价 410 元/MWh，限电和可用率损失合计 5 GWh。价格差 30 元/MWh，电量差 −5 GWh，平均价格 395 元/MWh，平均电量 297.5 GWh。</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>计算</th><th>金额（万元）</th></tr></thead><tbody><tr><td>基准收益</td><td>300 GWh × 380 元/MWh</td><td>11,400</td></tr><tr><td>价格效应</td><td>30 × 297.5 GWh</td><td>+892.5</td></tr><tr><td>电量效应</td><td>−5 GWh × 395 元/MWh</td><td>−197.5</td></tr><tr><td>净差异</td><td>+892.5 − 197.5</td><td>+695</td></tr><tr><td>实际收益</td><td>295 GWh × 410 元/MWh</td><td>12,095</td></tr></tbody></table></div>
+<p>按净差异 30% 分成：代理方分成 208.5 万元，服务费 60 万元，合计 268.5 万元；资产方净得 12,095 − 208.5 − 60 = 11,826.5 万元，比基准多 426.5 万元。代理方拿走了净增的 30%，资产方留下 70% 再扣服务费。这个结果看起来合理，但前提是基准和归因都经得起复算。</p>
+<h3 id="s45">7.5 “分润不保赔”的期望值</h3>
+<p>为了单独看分成方向，假设电量等于基准 300 GWh，价格相对基准上下各 20 元/MWh，两种情形等概率：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>情形</th><th>实际价</th><th>实际收益（万元）</th><th>相对基准（万元）</th><th>代理方分成 30%（万元）</th></tr></thead><tbody><tr><td>价格 +20</td><td>400</td><td>12,000</td><td>+600</td><td>180</td></tr><tr><td>价格 −20</td><td>360</td><td>10,800</td><td>−600</td><td>0</td></tr><tr><td>期望</td><td>—</td><td>11,400</td><td>0</td><td>90</td></tr></tbody></table></div>
+<p>代理方期望分成 90 万元，加服务费 60 万元，合计 150 万元；资产方期望净得 11,400 − 90 − 60 = 11,250 万元，比基准少 150 万元。注意：这里代理方没有任何技能，只是市场波动，仍然拿到了正期望；资产方支付的不是“技能溢价”，而是“波动率溢价”。</p>
+<p>如果代理方真有技能，分布会偏向正超额，期权价值可能被技能覆盖。但资产方要先看到可验证的技能证据（历史捕获价、回测、归因、样本外表现），再决定是否卖这个期权。没有证据的“分润不保赔”，本质上是资产方补贴代理方的波动率。</p>
+<h3 id="s46">7.6 归因报告示例</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>行</th><th>金额（万元）</th><th>说明</th></tr></thead><tbody><tr><td>基准收益</td><td>11,400</td><td>300 GWh × 380 元/MWh</td></tr><tr><td>价格效应</td><td>+585</td><td>20 × 292.5 GWh</td></tr><tr><td>限电效应</td><td>−390</td><td>10 GWh × 390 元/MWh</td></tr><tr><td>可用率/资源效应</td><td>−195</td><td>5 GWh × 390 元/MWh</td></tr><tr><td>预测效应</td><td>0</td><td>本例简化，实际必须单列</td></tr><tr><td>执行滑点</td><td>0</td><td>本例简化，实际必须单列</td></tr><tr><td>净差异</td><td>0</td><td></td></tr><tr><td>服务费</td><td>−60</td><td>2 元/MWh × 300 GWh</td></tr><tr><td>分成</td><td>0</td><td>按净差异 30%</td></tr><tr><td>资产方净得</td><td>11,340</td><td>相对基准 −60</td></tr></tbody></table></div>
+<p>这张表比一个“捕获价 400 元/MWh”更有用：它告诉资产方，价格跑赢的 585 万元被限电和可用率吃掉了；代理方的价格能力是真的，但资产方的净收益没有增加。下一步要谈的不是分成比例，而是限电归属、可用率考核和基准调整。</p>
+<h3 id="s47">7.7 算例结论</h3>
+<ul><li><strong>价格跑赢不等于资产方赚钱</strong>：价格效应和电量效应必须同时看；</li><li><strong>分成必须按净收益或电量中性化</strong>：按价格效应分成，会把电量风险转成代理方奖金；</li><li><strong>限电和可用率归属要写清</strong>：不写清，代理方会被要求为不可控因素买单，或者资产方白付奖金；</li><li><strong>“分润不保赔”是期权，不是免费午餐</strong>：资产方要用基准、上限、双向分成、共投来定价这个期权；</li><li><strong>归因报告要能复算</strong>：没有数据源和公式的归因，只是另一种营销材料。</li></ul>
+<hr>
+<h2 id="s48">8. 常见错误</h2>
+<ol><li><strong>把托管当外包，不设授权矩阵</strong>：只写服务清单，不写决策边界。</li><li><strong>用代理方自己的组合或预测做基准</strong>：既当运动员又当裁判。</li><li><strong>只看捕获价，不看结算电量、限电、可用率</strong>：价格跑赢，收益下降。</li><li><strong>把限电损失算成交易亏损</strong>：代理方为电网调度背锅。</li><li><strong>把预测误差算成价格效应</strong>：高估代理方的交易能力。</li><li><strong>分成基数含服务费、补贴、辅助服务</strong>：重复计算，激励扭曲。</li><li><strong>把“分润不保赔”当风险共担</strong>：实际上是资产方卖出看涨期权。</li><li><strong>没有分成上限、止损、仓位限制</strong>：极端价格下让渡过大。</li><li><strong>没有数据访问、审计、退出条款</strong>：终止时仓位无人接，争议无证据。</li><li><strong>用单一案例或单一省份规则套全国</strong>：市场规则、限电补偿、辅助服务口径差异极大。</li></ol>
+<hr>
+<h2 id="s49">9. 速查</h2>
+<h3 id="s50">9.1 授权矩阵一页表</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>最低要写</th><th>建议默认</th></tr></thead><tbody><tr><td>市场</td><td>省内/省间/绿电/辅助/容量</td><td>未列明即不授</td></tr><tr><td>品种</td><td>电能量/绿证/辅助/容量/差价合约</td><td>不允许金融性合约 unless 明确</td></tr><tr><td>时间</td><td>年度/月度/月内/日前/实时</td><td>不允许跨年持仓</td></tr><tr><td>数量</td><td>单笔/单日/净持仓/敞口</td><td>单日不超过月均 20%</td></tr><tr><td>价格</td><td>最低卖出/最高买入/止损</td><td>超出价格带需书面确认</td></tr><tr><td>决策</td><td>申报/签署/撤销/数据/结算</td><td>区分建议权与决定权</td></tr></tbody></table></div>
+<h3 id="s51">9.2 基准选择一页表</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>你想要的</th><th>选什么基准</th><th>必须配套</th></tr></thead><tbody><tr><td>奖励择时和曲线</td><td>市场均价</td><td>电量中性化、限电除外</td></tr><tr><td>奖励相对交易能力</td><td>同类捕获价</td><td>足够 peer、样本透明</td></tr><tr><td>新场站、缺 peer</td><td>理论可发电量</td><td>独立资源数据、限电除外</td></tr><tr><td>预测与交易分离</td><td>预测修正基准</td><td>独立预测、预测质量 KPI</td></tr></tbody></table></div>
+<h3 id="s52">9.3 分成方案一页表</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>方案</th><th>代理方 upside</th><th>代理方 downside</th><th>资产方注意</th></tr></thead><tbody><tr><td>固定服务费</td><td>无</td><td>无</td><td>代理方无动力</td></tr><tr><td>保底+分成</td><td>有</td><td>无</td><td>保底方信用</td></tr><tr><td>基准+分成</td><td>有</td><td>无</td><td>期权价值</td></tr><tr><td>基准+双向</td><td>有</td><td>有</td><td>上下限、结转</td></tr><tr><td>超额累进</td><td>强</td><td>无/弱</td><td>仓位、止损、上限</td></tr></tbody></table></div>
+<h3 id="s53">9.4 归因公式一页表</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>项目</th><th>公式</th></tr></thead><tbody><tr><td>总差异</td><td>$\Delta R = R_a - R_b$</td></tr><tr><td>价格效应</td><td>$\Delta P \times (Q_b + Q_a)/2$</td></tr><tr><td>电量效应</td><td>$\Delta Q \times (P_b + P_a)/2$</td></tr><tr><td>限电效应</td><td>$-Q_{\text{curtailed}} \times P_{\text{avg}} + R_{\text{curtail,comp}}$</td></tr><tr><td>可用率效应</td><td>$(Q_{\text{available}} - Q_b) \times P_{\text{avg}}$</td></tr><tr><td>预测效应</td><td>偏差考核 + 覆盖机会成本</td></tr><tr><td>执行滑点</td><td>$(P_{\text{fill}} - P_{\text{target}}) \times Q_{\text{fill}}$</td></tr></tbody></table></div>
+<h3 id="s54">9.5 尽调十问</h3>
+<ol><li>你在同类场站、同类市场的历史捕获价和捕获率是多少？样本多大？</li><li>你的基准数据来自哪里？能否用交易中心数据复算？</li><li>你同时服务多少客户？稀缺合约和低价单怎么分配？</li><li>你有没有自营或关联交易？信息隔离怎么做？</li><li>你的预测团队、数据源是谁？预测合格率多少？</li><li>过去 12 个月的最大回撤、最大偏差是多少？</li><li>你的交易员人均管理多少场站？关键人是谁？</li><li>你的系统能否导出订单级日志和归因报告？</li><li>规则变化时，合同怎么调整？谁承担成本？</li><li>终止时，未平仓合约、保证金和结算怎么交接？</li></ol>
+<hr>
+<h2 id="s55">10. 与技能和其他笔记的分工</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>入口</th><th>负责什么</th><th>本文怎么用</th></tr></thead><tbody><tr><td><a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a></td><td>市场规则、合同、结算、风险</td><td>查规则和结算口径</td></tr><tr><td><a href="../../skills/spot-bidding-quant/SKILL.md">现货报价量化</a></td><td>预测、报价、回测、归因</td><td>查预测和报价方法</td></tr><tr><td><a href="../../skills/retail-electricity-risk/SKILL.md">售电零售与风险</a></td><td>用户侧代理、零售套餐、偏差</td><td>对照买侧代理</td></tr><tr><td><a href="../../skills/renewable-project-development/SKILL.md">新能源开发与并网</a></td><td>资源评估、LCOE、并网、限电</td><td>查资源与限电口径</td></tr><tr><td><a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营</a></td><td>储能收益、LCOS、调用</td><td>查储能托管收益</td></tr><tr><td><a href="合同与条款库-2026-11.html">合同与条款库</a></td><td>条款文本与谈判红线</td><td>查具体条款</td></tr><tr><td><a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算</a></td><td>信用、保证金、结算</td><td>查信用与结算风险</td></tr><tr><td><a href="电力市场月度监测与复盘-2026-11.html">电力市场月度监测与复盘</a></td><td>月度指标、捕获率、复盘</td><td>查月度口径</td></tr><tr><td>本文</td><td>发电侧托管/代理的授权、基准、分成、归因、治理</td><td>先定授权，再定基准，最后谈分成</td></tr></tbody></table></div>
+<hr>
+<h2 id="s56">11. 资料来源与口径</h2>
+<ul><li>腾讯新闻《电力交易人，跟着政策跑》，2026-01-06，<a href="https://new.qq.com/rain/a/20260106A07EIE00" target="_blank" rel="noopener">公开报道</a>。C 级公开报道/访谈；提到发电厂授权代理交易、双方分润，以及“分润不保赔”的做法。仅作为市场实践背景，不作为规则依据；不引用其商业数据。</li><li>国能日新（301162）投资者关系活动记录表，2026-02-03，<a href="https://data.eastmoney.com/jgdy/dyxx/301162,2026-02-10.html" target="_blank" rel="noopener">东方财富转载页</a>。B 级公司披露；提到为新能源场站、独立储能电站提供电力交易托管运营服务。仅作为业态存在证据，不引用其商业条款。</li><li>国家能源局《电力并网运行管理规定》（国能发监管规〔2021〕60号，2021-12-21）及 2026-09-30 征求意见稿。A 级政策/草案；功率预测报送、并网运行考核等要求。2026 年征求意见稿尚未生效，引用时标“草案”；具体条款以国家能源局官网原文为准。</li><li>国家发展改革委、国家能源局《关于深化新能源上网电价市场化改革 促进新能源高质量发展的通知》（发改价格〔2025〕136号）及各省实施方案。A 级政策；新能源入市、机制电价。具体省份以正式文件为准。</li><li>交易中心结算单、并网调度协议、场站运行数据：项目级 A 级数据；本页不引用任何真实项目数据。</li><li>本页所有价格、电量、限电、可用率、分成、服务费均为 <strong>D 级合成算例</strong>，不对应任何真实场站、主体、省份或合同。</li></ul>
+<aside class="note"><p>版权与引用：本页为原创改写，只使用公开事实、机制类型与自行计算的合成算例；不复制来源的图表、表格或长段文字。公开报道/访谈为 C 级，正式决策前与交易中心、主管部门原文及本项目合同交叉核验。</p></aside>
+<hr>
+<h2 id="s57">12. 更新记录</h2>
+<ul><li><strong>2026-11-27</strong>：初版。建立三层托管、六类授权、四类基准、五种分成、六项归因与 D 级合成算例；新增“分润不保赔”的期权价值分析。</li><li><strong>待核实</strong>：发电侧代理交易的监管定位与准入要求；代理方代签合同的法律授权边界（委托代理/居间/行纪）；各省限电补偿与可用率考核差异；辅助服务/绿证/容量收益能否纳入代理分成；“分润不保赔”合同的司法实践；代理方多客户分配的监管要求。</li><li><strong>下一版优先补</strong>：一份可复用的授权矩阵附件、一份基准计算示例、一份归因报告模板；选择 1–2 个省份的正式规则做口径对照，但不引入真实项目数据。</li></ul>
+    </article>
+
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>12</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="售电与批发用户购电组合-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>售电与批发用户的购电组合：零售联动、转批发与代理交易</b>
+          <span>四川 2027 年方案（征求意见稿）把零售从“固定价差”转向“联动价 + 浮动价”后，曲线价值、分时引导和另担费用开始进入零售账单；批发用户则受年度 60%、月度 80%–120% 与 1.1 倍回收约束。本页给出三类主体的成本拆解、转批发阈值、代理分成与对标口径，并用一份 D 级合成算例说明“什么时候该转、什么时候留”。</span>
+        </a>
+        <a class="related-card" href="中长期合同结构与签约考核-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>中长期合同结构与签约考核：从年度到月内</b>
+          <span>年度、月度、月内与多日窗口不是同一张合同：签约顺序、双边限制、比例考核、价格上下限与流动性共同决定覆盖率与基差。本页把 2026 年各省规则拉成可执行的结构图，给出四类考核的算账方法、覆盖率与有效覆盖率、基差与曲线匹配、2027 年规则变化与 D 级合成算例。</span>
+        </a>
+        <a class="related-card" href="电力市场月度监测与复盘-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>电力市场月度监测与复盘：从燃料、来水到捕获率</b>
+          <span>月度复盘不是把价格贴成一张图，而是用固定口径回答：成本变了多少、供给少了多少、价格涨在哪、合同和现货谁占优、新能源和储能实际拿到多少。本页给出四层问题、12 个指标、10 张表、异常日归类、捕获率/机制电价/储能收益口径与一份 D 级合成月报。</span>
+        </a>
+        <a class="related-card" href="电力市场风险、信用与结算-2026-11.html">
+          <span class="related-type">同区延伸</span>
+          <b>电力市场风险、信用与结算（2026 版）</b>
+          <span>风险分类与分级、A/B/C/D 信用评价、履约保函与逐日盯市、偏差考核、5/8/10 结算时限、违约退出与保底售电。</span>
+        </a>
+      </div>
+      <p class="related-rest"><b>更多关联</b><a href="合同与条款库-2026-11.html">合同与条款库：五类合同的条款矩阵与谈判红线</a><a href="电价归因与盘前推演-2026-11.html">电价归因与盘前推演：从负荷、新能源、检修、燃料、阻塞到价格</a><a href="预测误差申报与EMS闭环-2026-11.html">预测误差→申报→EMS 闭环：newsvendor 报价与储能偏差跟踪</a><a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a><a href="新能源项目开发与并网-2026-11.html">新能源项目开发与并网</a><a href="储能投资与运营-2026-11.html">储能投资与运营</a><a href="合成案例复盘库-2026-11.html">合成案例复盘库：十个交易台决策复盘</a><a href="交易台日课与异常处置-SOP-2026-11.html">交易台日课与异常处置 SOP</a></p>
+    </section>
+
+<section class="related" aria-labelledby="paired-skills-title">
+      <div class="related-head"><h2 id="paired-skills-title">配套技能</h2><span>4</span></div>
+      <div class="related-grid">
+        <a class="related-card skill-pair" href="skill-electricity-trading-expert.html">
+          <span class="related-type">现货、中长期、结算与风控（含山东持仓与负价复盘、四川/云南水电、辽宁核电、甘肃煤电容量+辅助服务、甘送鲁省间实例包），并接入运行调度与规划充裕性</span>
+          <b>电力交易专家</b>
+          <span>技能 · 现货 · 结算 · 风控</span>
+        </a>
+        <a class="related-card skill-pair" href="skill-storage-investment-operations.html">
+          <span class="related-type">收益堆叠、投决、退化与考核（含安徽容量电价、广东现货+调频实例包），并接入选址定容、保护整定、BMS 状态边界与资源充裕性</span>
+          <b>储能投资与运营</b>
+          <span>技能 · 储能 · 投决 · LCOS · 选址</span>
+        </a>
+        <a class="related-card skill-pair" href="skill-renewable-project-development.html">
+          <span class="related-type">资源、LCOE、机制电价与并网（含云南风电 2027 投决实例包），并接入保护整定</span>
+          <b>新能源开发与并网</b>
+          <span>技能 · 新能源 · LCOE · 并网</span>
+        </a>
+        <a class="related-card skill-pair" href="skill-spot-bidding-quant.html">
+          <span class="related-type">预测、报价与回测（含山东煤电/储能/光储、浙江现货储能、蒙西风光储、山西储能、甘肃与蒙西新能源实例包）</span>
+          <b>现货报价量化</b>
+          <span>技能 · 预测 · 报价 · 回测</span>
+        </a>
+      </div>
+    </section>
+
+    <nav class="pager" aria-label="上下篇">
+          <a class="prev" href="售电与批发用户购电组合-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">售电与批发用户的购电组合：零售联动、转批发与代理交易</span></a>
+          <span class="spacer"></span>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../场站交易托管与代理-2026-11.md">knowledge/场站交易托管与代理-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="本页目录">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv3"><a href="#s2">0.1 三句话</a></li>
+            <li class="lv3"><a href="#s3">0.2 三层托管</a></li>
+            <li class="lv3"><a href="#s4">0.3 六个决策</a></li>
+            <li class="lv3"><a href="#s5">0.4 本文不做什么</a></li>
+            <li class="lv2"><a href="#s6">1. 边界与角色：谁在替谁做哪个决定</a></li>
+            <li class="lv3"><a href="#s7">1.1 买侧代理与卖侧代理不是一回事</a></li>
+            <li class="lv3"><a href="#s8">1.2 四类主体与责任边界</a></li>
+            <li class="lv3"><a href="#s9">1.3 三层托管：从“手”到“脑”再到“脑+手+账”</a></li>
+            <li class="lv3"><a href="#s10">1.4 授权矩阵：六类授权，未写即不授</a></li>
+            <li class="lv3"><a href="#s11">1.5 代运营的“否决权”怎么用</a></li>
+            <li class="lv2"><a href="#s12">2. 基准设计：跟谁比，比什么，怎么复算</a></li>
+            <li class="lv3"><a href="#s13">2.1 基准是第一条款</a></li>
+            <li class="lv3"><a href="#s14">2.2 四类基准</a></li>
+            <li class="lv3"><a href="#s15">2.3 基准口径的八个字段</a></li>
+            <li class="lv3"><a href="#s16">2.4 基准的“三不”原则</a></li>
+            <li class="lv3"><a href="#s17">2.5 基准争议怎么解决</a></li>
+            <li class="lv2"><a href="#s18">3. 分成结构：五种方案与“分润不保赔”的真相</a></li>
+            <li class="lv3"><a href="#s19">3.1 五种分成</a></li>
+            <li class="lv3"><a href="#s20">3.2 “分润不保赔”的真相</a></li>
+            <li class="lv3"><a href="#s21">3.3 分成基数：毛收益还是净收益</a></li>
+            <li class="lv3"><a href="#s22">3.4 服务费与分成的组合</a></li>
+            <li class="lv3"><a href="#s23">3.5 分成条款清单</a></li>
+            <li class="lv2"><a href="#s24">4. 绩效归因：把“运气”和“能力”分开</a></li>
+            <li class="lv3"><a href="#s25">4.1 收益桥</a></li>
+            <li class="lv3"><a href="#s26">4.2 价格效应与电量效应</a></li>
+            <li class="lv3"><a href="#s27">4.3 电量效应怎么拆</a></li>
+            <li class="lv3"><a href="#s28">4.4 预测效应：不是电量效应，而是偏差成本</a></li>
+            <li class="lv3"><a href="#s29">4.5 执行滑点</a></li>
+            <li class="lv3"><a href="#s30">4.6 范围效应</a></li>
+            <li class="lv3"><a href="#s31">4.7 归因报告的最小字段</a></li>
+            <li class="lv3"><a href="#s32">4.8 归因治理</a></li>
+            <li class="lv2"><a href="#s33">5. 利益冲突与治理</a></li>
+            <li class="lv3"><a href="#s34">5.1 六类冲突</a></li>
+            <li class="lv3"><a href="#s35">5.2 治理工具</a></li>
+            <li class="lv3"><a href="#s36">5.3 合同中的治理条款</a></li>
+            <li class="lv2"><a href="#s37">6. 合同条款清单</a></li>
+            <li class="lv3"><a href="#s38">6.1 十二类条款</a></li>
+            <li class="lv3"><a href="#s39">6.2 三条“必须写”的条款</a></li>
+            <li class="lv2"><a href="#s40">7. D 级合成算例：100 MW 风电场的“价格赢了，电量输了”</a></li>
+            <li class="lv3"><a href="#s41">7.1 设定</a></li>
+            <li class="lv3"><a href="#s42">7.2 价格与电量效应</a></li>
+            <li class="lv3"><a href="#s43">7.3 三种分成口径</a></li>
+            <li class="lv3"><a href="#s44">7.4 好年景：价格和电量都改善</a></li>
+            <li class="lv3"><a href="#s45">7.5 “分润不保赔”的期望值</a></li>
+            <li class="lv3"><a href="#s46">7.6 归因报告示例</a></li>
+            <li class="lv3"><a href="#s47">7.7 算例结论</a></li>
+            <li class="lv2"><a href="#s48">8. 常见错误</a></li>
+            <li class="lv2"><a href="#s49">9. 速查</a></li>
+            <li class="lv3"><a href="#s50">9.1 授权矩阵一页表</a></li>
+            <li class="lv3"><a href="#s51">9.2 基准选择一页表</a></li>
+            <li class="lv3"><a href="#s52">9.3 分成方案一页表</a></li>
+            <li class="lv3"><a href="#s53">9.4 归因公式一页表</a></li>
+            <li class="lv3"><a href="#s54">9.5 尽调十问</a></li>
+            <li class="lv2"><a href="#s55">10. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s56">11. 资料来源与口径</a></li>
+            <li class="lv2"><a href="#s57">12. 更新记录</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="44" data-more-label="展开 44 个小节" data-less-label="收起小节">展开 44 个小节</button>
+  </aside>
+</div>
+
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.5" data-cutoff="2026-11-27" data-latest="2026-11-27" data-count="103">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.5）" title="查看更新记录（当前 v2.5）">
+    <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
+    <span class="cl-badge-ver">v2.5</span>
+    <span class="cl-badge-label">更新记录</span>
+  </button>
+  <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
+    <div class="cl-backdrop" data-changelog-close></div>
+    <div class="cl-panel" role="dialog" aria-modal="true" aria-labelledby="cl-title" aria-describedby="cl-subtitle" tabindex="-1">
+      <header class="cl-head">
+        <div class="cl-head-main">
+          <span class="cl-kicker">RELEASE NOTES</span>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.5</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.5 · 数据截止 2026-11-27 · 103 条记录</p>
+        </div>
+        <div class="cl-actions">
+          <div class="cl-lang" role="group" aria-label="切换语言">
+            <button type="button" data-cl-lang="zh" aria-pressed="true">中文</button>
+            <button type="button" data-cl-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <button class="cl-close" type="button" data-changelog-close aria-label="关闭更新记录" title="关闭更新记录">×</button>
+        </div>
+      </header>
+      <div class="cl-body" data-changelog-body>
+        <div class="cl-skeleton" data-changelog-status role="status">
+          <span class="cl-sr">正在读取更新记录…</span>
+          <i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      <footer class="cl-foot">
+        <span data-changelog-meta>v2.5 · 2026-11-27 · 103 条记录</span>
+        <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
+      </footer>
+    </div>
+  </div>
+</div>
+<script src="../assets/doc.js"></script>
+<script src="../assets/theme.js"></script>
+<script src="../assets/changelog.js"></script>
+</body>
+</html>

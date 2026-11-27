@@ -115,7 +115,7 @@
     </details>
 
     <article class="prose">
-<aside class="note note-head"><p>🌐 English version: <a href="skill-renewable-project-development-en.html">SKILL_EN.md</a> ｜ 姊妹技能：<a href="skill-electricity-trading-expert.html">电力交易专家</a>（市场规则/结算/机制电价原文）、<a href="skill-spot-bidding-quant.html">现货报价量化专家</a>（电价预测/报价/回测）、<a href="skill-storage-investment-operations.html">储能投资与运营专家</a>（配储经济性）、<a href="skill-virtual-power-plant.html">虚拟电厂专家</a>（聚合/需求响应）、<a href="skill-carbon-asset-expert.html">碳资产管理专家</a>（碳履约/CCER/CBAM）。本技能只回答&quot;项目侧能不能开发、能不能并网、能不能过投决&quot;。</p><p>版本 v2.4 · 数据截止 2026-11-01</p><p><strong>维护入口</strong>：<code>tools/selftest.py</code>（跑通即代表正文算例未过期）、<a href="新能源项目开发与并网-2026-11.html">新能源项目开发与并网底稿</a>（136 竞价、LCOE 口径、并网标准、待核实清单）、<a href="中国电价现行政策与查证-2026-11.html">中国电价现行政策与查证</a>（文号与用户侧查证）、<a href="省级市场状态表-2026-11.html">省级市场状态表</a>（省别规则）。</p><p><strong>2026-2027 未定事项</strong>：136 号文省级实施方案与机制电量比例、增量项目竞价上下限与执行期限、绿证收益是否计入机制电量、2027 年现货新规对捕获价的影响、各省消纳空间与并网标准修订、海上风电与分布式光伏的省级细则。</p></aside>
+<aside class="note note-head"><p>🌐 English version: <a href="skill-renewable-project-development-en.html">SKILL_EN.md</a> ｜ 姊妹技能：<a href="skill-electricity-trading-expert.html">电力交易专家</a>（市场规则/结算/机制电价原文）、<a href="skill-spot-bidding-quant.html">现货报价量化专家</a>（电价预测/报价/回测）、<a href="skill-storage-investment-operations.html">储能投资与运营专家</a>（配储经济性）、<a href="skill-virtual-power-plant.html">虚拟电厂专家</a>（聚合/需求响应）、<a href="skill-carbon-asset-expert.html">碳资产管理专家</a>（碳履约/CCER/CBAM）。本技能只回答&quot;项目侧能不能开发、能不能并网、能不能过投决&quot;。</p><p>版本 v2.5 · 数据截止 2026-11-01</p><p><strong>维护入口</strong>：<code>tools/selftest.py</code>（跑通即代表正文算例未过期）、<a href="新能源项目开发与并网-2026-11.html">新能源项目开发与并网底稿</a>（136 竞价、LCOE 口径、并网标准、待核实清单）、<a href="中国电价现行政策与查证-2026-11.html">中国电价现行政策与查证</a>（文号与用户侧查证）、<a href="省级市场状态表-2026-11.html">省级市场状态表</a>（省别规则）。</p><p><strong>2026-2027 未定事项</strong>：136 号文省级实施方案与机制电量比例、增量项目竞价上下限与执行期限、绿证收益是否计入机制电量、2027 年现货新规对捕获价的影响、各省消纳空间与并网标准修订、海上风电与分布式光伏的省级细则。</p></aside>
 <hr>
 <h2 id="s1">0. 角色定义与行为规范</h2>
 <h3 id="s2">0.1 角色画像</h3>
@@ -355,7 +355,7 @@ print(round(a[&quot;lcoe&quot;], 2), round(finance.npv(0.08, flows)), round(fina
 
 
 <section class="related" aria-labelledby="skill-modules-title">
-      <div class="related-head"><h2 id="skill-modules-title">适用知识模块</h2><span>9</span></div>
+      <div class="related-head"><h2 id="skill-modules-title">适用知识模块</h2><span>10</span></div>
       <div class="related-grid">
         <a class="related-card" href="新能源项目开发与并网-2026-11.html">
           <span class="related-type">跨区对照</span>
@@ -378,7 +378,7 @@ print(round(a[&quot;lcoe&quot;], 2), round(finance.npv(0.08, flows)), round(fina
           <span>从型式试验到并网验收的测试体系，AGC/AVC/一次调频投运试验方法与判据，故障穿越/电能质量/模型验证，验收清单与整改闭环，把两个细则考核点倒推为试验验证项。</span>
         </a>
       </div>
-      <p class="related-rest"><b>更多关联</b><a href="无功电压与电能质量-2026-11.html">无功、电压与电能质量：从无功平衡到力调电费</a><a href="配电网承载力与分布式接入-2026-11.html">配电网承载力与分布式接入：从可开放容量到绿电直连</a><a href="AGC-AVC与频率电压闭环-2026-11.html">AGC/AVC 与频率电压闭环：从 ACE 到场站考核</a><a href="宽频振荡与场站阻抗分析-2026-11.html">宽频振荡与场站阻抗分析：从阻抗扫描到参数整定</a><a href="微电网与储能电站保护整定-2026-11.html">微电网与储能电站保护整定：从 IBR 故障电流到并离网定值切换</a></p>
+      <p class="related-rest"><b>更多关联</b><a href="无功电压与电能质量-2026-11.html">无功、电压与电能质量：从无功平衡到力调电费</a><a href="配电网承载力与分布式接入-2026-11.html">配电网承载力与分布式接入：从可开放容量到绿电直连</a><a href="AGC-AVC与频率电压闭环-2026-11.html">AGC/AVC 与频率电压闭环：从 ACE 到场站考核</a><a href="宽频振荡与场站阻抗分析-2026-11.html">宽频振荡与场站阻抗分析：从阻抗扫描到参数整定</a><a href="微电网与储能电站保护整定-2026-11.html">微电网与储能电站保护整定：从 IBR 故障电流到并离网定值切换</a><a href="场站交易托管与代理-2026-11.html">场站交易托管与代理：授权边界、基准设计与绩效归因</a></p>
     </section>
 
     <nav class="pager" aria-label="上下篇">
@@ -494,10 +494,10 @@ print(round(a[&quot;lcoe&quot;], 2), round(finance.npv(0.08, flows)), round(fina
 <nav class="page-aux" aria-label="页面辅助">
   <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
 </nav>
-<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.4" data-cutoff="2026-11-19" data-latest="2026-11-27" data-count="102">
-  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.4）" title="查看更新记录（当前 v2.4）">
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.5" data-cutoff="2026-11-27" data-latest="2026-11-27" data-count="103">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.5）" title="查看更新记录（当前 v2.5）">
     <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
-    <span class="cl-badge-ver">v2.4</span>
+    <span class="cl-badge-ver">v2.5</span>
     <span class="cl-badge-label">更新记录</span>
   </button>
   <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
@@ -506,8 +506,8 @@ print(round(a[&quot;lcoe&quot;], 2), round(finance.npv(0.08, flows)), round(fina
       <header class="cl-head">
         <div class="cl-head-main">
           <span class="cl-kicker">RELEASE NOTES</span>
-          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.4</span></h2>
-          <p class="cl-sub" id="cl-subtitle">当前版本 v2.4 · 数据截止 2026-11-19 · 102 条记录</p>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.5</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.5 · 数据截止 2026-11-27 · 103 条记录</p>
         </div>
         <div class="cl-actions">
           <div class="cl-lang" role="group" aria-label="切换语言">
@@ -524,7 +524,7 @@ print(round(a[&quot;lcoe&quot;], 2), round(finance.npv(0.08, flows)), round(fina
         </div>
       </div>
       <footer class="cl-foot">
-        <span data-changelog-meta>v2.4 · 2026-11-19 · 102 条记录</span>
+        <span data-changelog-meta>v2.5 · 2026-11-27 · 103 条记录</span>
         <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
       </footer>
     </div>

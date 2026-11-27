@@ -2,19 +2,19 @@
   "schema": 1,
   "description": "Machine-readable credibility register. Filter modules by confidence/examples/historical before injecting into a model; gradeC and openItems carry the unverified figures and undecided items.",
   "summary": {
-    "modules": 129,
+    "modules": 130,
     "gradeCItems": 22,
     "openItems": 55,
     "events": 32,
     "draftPolicies": 3,
-    "mixedModules": 109,
+    "mixedModules": 110,
     "historicalModules": 15,
     "unverifiedGradeC": 14,
     "verifiedTickets": 6,
     "bannedTickets": 2,
     "ticketsDueForReview": 14,
     "openGaps": 8,
-    "englishSummaries": 129,
+    "englishSummaries": 130,
     "keyFigures": 242,
     "glossaryTerms": 82,
     "controlledAbbreviations": 50,
@@ -3559,6 +3559,31 @@
       },
       "exampleSections": [
         "## 5. 合成算例：名义排名与 PPP 排名可能翻转（D 级）"
+      ]
+    },
+    {
+      "id": "m-asset-agency",
+      "file": "场站交易托管与代理-2026-11.md",
+      "title": "场站交易托管与代理：授权边界、基准设计与绩效归因",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-27",
+      "confidence": "mixed",
+      "confidenceInferred": false,
+      "examples": "synthetic",
+      "historical": false,
+      "summaryEn": "Delegating a generation asset's trading to an outside team is not just a revenue-share ratio. Authorization scope, benchmark definition, sharing direction, attribution method and exit arrangements must all be explicit; otherwise agency becomes a bet. This note sets out three custody levels, six authorization dimensions, four benchmark families, five sharing structures, six attribution buckets and a D-grade synthetic case, with a separate valuation of the share-the-upside, no-downside payoff.",
+      "titleEn": null,
+      "marks": {
+        "gradeC": 3,
+        "draft": 1,
+        "pending": 1,
+        "example": 13
+      },
+      "exampleSections": [
+        "## 7. D 级合成算例：100 MW 风电场的“价格赢了，电量输了”",
+        "### 7.6 归因报告示例",
+        "### 7.7 算例结论"
       ]
     },
     {

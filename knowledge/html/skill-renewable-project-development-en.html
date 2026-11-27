@@ -115,7 +115,7 @@
     </details>
 
     <article class="prose">
-<aside class="note note-head"><p>🌐 Chinese version: <a href="skill-renewable-project-development.html">SKILL.md</a> ｜ Sister skills: <a href="skill-renewable-project-development-en.html">Electricity Trading Expert</a> (market rules / settlement / mechanism-price source text), <a href="skill-renewable-project-development-en.html">Spot-Bidding Quant Expert</a> (price forecasting / bidding / backtests), <a href="skill-renewable-project-development-en.html">Storage Investment &amp; Operations Expert</a> (co-located storage economics), <a href="skill-renewable-project-development-en.html">Virtual Power Plant Expert</a> (aggregation / demand response), <a href="skill-renewable-project-development-en.html">Carbon Asset Management Expert</a> (carbon compliance / CCER / CBAM). This skill answers only &quot;can the project be developed, can it connect, can it pass investment committee&quot;.</p><p>Version v2.4 · data cutoff 2026-11-01</p><p><strong>Maintenance entry points</strong>: <code>tools/selftest.py</code> (green means the worked examples still hold), <a href="新能源项目开发与并网-2026-11.html">renewable project development note</a> (136 auctions, LCOE calibres, grid standards, open items), <a href="中国电价现行政策与查证-2026-11.html">China electricity-price policy</a> (document numbers and retail-side checks), <a href="省级市场状态表-2026-11.html">provincial market status</a> (provincial rules).</p><p><strong>Open items 2026-2027</strong>: provincial implementation plans and mechanism-energy ratios under Document 136; auction floors, caps and contract terms for incremental projects; whether green-certificate revenue overlaps with mechanism energy; the effect of the 2027 spot-market rules on capture prices; provincial absorption headroom and grid-standard revisions; offshore-wind and distributed-PV provincial rules.</p></aside>
+<aside class="note note-head"><p>🌐 Chinese version: <a href="skill-renewable-project-development.html">SKILL.md</a> ｜ Sister skills: <a href="skill-renewable-project-development-en.html">Electricity Trading Expert</a> (market rules / settlement / mechanism-price source text), <a href="skill-renewable-project-development-en.html">Spot-Bidding Quant Expert</a> (price forecasting / bidding / backtests), <a href="skill-renewable-project-development-en.html">Storage Investment &amp; Operations Expert</a> (co-located storage economics), <a href="skill-renewable-project-development-en.html">Virtual Power Plant Expert</a> (aggregation / demand response), <a href="skill-renewable-project-development-en.html">Carbon Asset Management Expert</a> (carbon compliance / CCER / CBAM). This skill answers only &quot;can the project be developed, can it connect, can it pass investment committee&quot;.</p><p>Version v2.5 · data cutoff 2026-11-01</p><p><strong>Maintenance entry points</strong>: <code>tools/selftest.py</code> (green means the worked examples still hold), <a href="新能源项目开发与并网-2026-11.html">renewable project development note</a> (136 auctions, LCOE calibres, grid standards, open items), <a href="中国电价现行政策与查证-2026-11.html">China electricity-price policy</a> (document numbers and retail-side checks), <a href="省级市场状态表-2026-11.html">provincial market status</a> (provincial rules).</p><p><strong>Open items 2026-2027</strong>: provincial implementation plans and mechanism-energy ratios under Document 136; auction floors, caps and contract terms for incremental projects; whether green-certificate revenue overlaps with mechanism energy; the effect of the 2027 spot-market rules on capture prices; provincial absorption headroom and grid-standard revisions; offshore-wind and distributed-PV provincial rules.</p></aside>
 <hr>
 <h2 id="s1">0. Role and Conduct</h2>
 <h3 id="s2">0.1 Role</h3>
@@ -355,7 +355,7 @@ print(round(a[&quot;lcoe&quot;], 2), round(finance.npv(0.08, flows)), round(fina
 
 
 <section class="related" aria-labelledby="skill-modules-title">
-      <div class="related-head"><h2 id="skill-modules-title">Applicable knowledge modules</h2><span>9</span></div>
+      <div class="related-head"><h2 id="skill-modules-title">Applicable knowledge modules</h2><span>10</span></div>
       <div class="related-grid">
         <a class="related-card" href="新能源项目开发与并网-2026-11.html">
           <span class="related-type">Cross-section</span>
@@ -378,7 +378,7 @@ print(round(a[&quot;lcoe&quot;], 2), round(finance.npv(0.08, flows)), round(fina
           <span>Grid-connection testing and grid-code acceptance practice: the test hierarchy from type test to grid acceptance, AGC/AVC/primary-frequency commissioning test methods and criteria, fault ride-through/power quality/model validation, the acceptance checklist and rectification loop, reverse-mapping the two-rules assessment points into test verification items.</span>
         </a>
       </div>
-      <p class="related-rest"><b>More links</b><a href="无功电压与电能质量-2026-11.html">无功、电压与电能质量：从无功平衡到力调电费</a><a href="配电网承载力与分布式接入-2026-11.html">配电网承载力与分布式接入：从可开放容量到绿电直连</a><a href="AGC-AVC与频率电压闭环-2026-11.html">AGC/AVC 与频率电压闭环：从 ACE 到场站考核</a><a href="宽频振荡与场站阻抗分析-2026-11.html">宽频振荡与场站阻抗分析：从阻抗扫描到参数整定</a><a href="微电网与储能电站保护整定-2026-11.html">微电网与储能电站保护整定：从 IBR 故障电流到并离网定值切换</a></p>
+      <p class="related-rest"><b>More links</b><a href="无功电压与电能质量-2026-11.html">无功、电压与电能质量：从无功平衡到力调电费</a><a href="配电网承载力与分布式接入-2026-11.html">配电网承载力与分布式接入：从可开放容量到绿电直连</a><a href="AGC-AVC与频率电压闭环-2026-11.html">AGC/AVC 与频率电压闭环：从 ACE 到场站考核</a><a href="宽频振荡与场站阻抗分析-2026-11.html">宽频振荡与场站阻抗分析：从阻抗扫描到参数整定</a><a href="微电网与储能电站保护整定-2026-11.html">微电网与储能电站保护整定：从 IBR 故障电流到并离网定值切换</a><a href="场站交易托管与代理-2026-11.html">场站交易托管与代理：授权边界、基准设计与绩效归因</a></p>
     </section>
 
     <nav class="pager" aria-label="Previous and next">
@@ -494,10 +494,10 @@ print(round(a[&quot;lcoe&quot;], 2), round(finance.npv(0.08, flows)), round(fina
 <nav class="page-aux" aria-label="Page utilities">
   <a class="to-top" href="#top" aria-label="Back to top">↑</a>
 </nav>
-<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="en" data-version="v2.4" data-cutoff="2026-11-19" data-latest="2026-11-27" data-count="102">
-  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="View changelog (current v2.4)" title="View changelog (current v2.4)">
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="en" data-version="v2.5" data-cutoff="2026-11-27" data-latest="2026-11-27" data-count="103">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="View changelog (current v2.5)" title="View changelog (current v2.5)">
     <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
-    <span class="cl-badge-ver">v2.4</span>
+    <span class="cl-badge-ver">v2.5</span>
     <span class="cl-badge-label">Changelog</span>
   </button>
   <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
@@ -506,8 +506,8 @@ print(round(a[&quot;lcoe&quot;], 2), round(finance.npv(0.08, flows)), round(fina
       <header class="cl-head">
         <div class="cl-head-main">
           <span class="cl-kicker">RELEASE NOTES</span>
-          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">Changelog</span> <span class="cl-pill">v2.4</span></h2>
-          <p class="cl-sub" id="cl-subtitle">Current v2.4 · data cutoff 2026-11-19 · 102 entries</p>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">Changelog</span> <span class="cl-pill">v2.5</span></h2>
+          <p class="cl-sub" id="cl-subtitle">Current v2.5 · data cutoff 2026-11-27 · 103 entries</p>
         </div>
         <div class="cl-actions">
           <div class="cl-lang" role="group" aria-label="Switch language">
@@ -524,7 +524,7 @@ print(round(a[&quot;lcoe&quot;], 2), round(finance.npv(0.08, flows)), round(fina
         </div>
       </div>
       <footer class="cl-foot">
-        <span data-changelog-meta>v2.4 · 2026-11-19 · 102 entries</span>
+        <span data-changelog-meta>v2.5 · 2026-11-27 · 103 entries</span>
         <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG_EN.md" target="_blank" rel="noopener">View full changelog on GitHub ↗</a>
       </footer>
     </div>
