@@ -4,8 +4,8 @@
   "note": "A number needs a grade, a time point and a caliber. Filter gradeC by usable/banned before using any unverified figure. Full texts of policies are linked from the Chinese policy indexes.",
   "generatedFrom": "knowledge/*.md frontmatter (summary_en) + INDEX_EN structured tables + credibility register",
   "summary": {
-    "modules": 130,
-    "withEnglishSummary": 130,
+    "modules": 133,
+    "withEnglishSummary": 133,
     "keyFigures": 242,
     "openItems": 55,
     "datedOpenItems": 23,
@@ -469,6 +469,19 @@
       "html": "html/山西电力市场-2026-11.html"
     },
     {
+      "id": "m-market-power",
+      "file": "市场力监测与交易合规-2026-11.md",
+      "section": "spot",
+      "kind": "知识模块",
+      "cutoff": "2026-11-27",
+      "title": "市场力监测与交易合规：从 HHI 到行为筛查",
+      "titleEn": null,
+      "summaryEn": "A high price is not proof of market power, and market power does not always show up as a high price. This note separates monitoring into three layers: structure (HHI, RSI, pivotal-supplier test), conduct (economic and physical withholding, bid-cost markup) and impact (competitive benchmark, consumer harm). It then maps them to China's Anti-Monopoly Law, power regulation and a three-lines-of-defence trading compliance programme, with a grade-D five-player synthetic case.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/市场力监测与交易合规-2026-11.html"
+    },
+    {
       "id": "m-grid-test",
       "file": "并网测试与涉网验收实务清单-2026-11.md",
       "section": "renewable",
@@ -701,6 +714,19 @@
       "confidence": "mixed",
       "historical": false,
       "html": "html/气象与电力交易-2026-11.html"
+    },
+    {
+      "id": "m-hydro-storage",
+      "file": "水电与抽水蓄能-2026-11.md",
+      "section": "renewable",
+      "kind": "知识模块",
+      "cutoff": "2026-11-27",
+      "title": "水电与抽水蓄能：来水、库容与市场价值",
+      "titleEn": null,
+      "summaryEn": "Low marginal cost is not low opportunity cost for hydro: whether to release a cubic metre now or later depends on reservoir storage, inflows, head and future prices. This note links runoff, storage, head, water rate, spillage, water value and pumped-storage arbitrage into one decision framework, with two grade-D synthetic cases and a separate treatment of two-part tariffs and spot arbitrage boundaries.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/水电与抽水蓄能-2026-11.html"
     },
     {
       "id": "m-prov-js",
@@ -1156,6 +1182,19 @@
       "confidence": "mixed",
       "historical": false,
       "html": "html/电网侧储能选址定容与可靠性韧性价值-2026-11.html"
+    },
+    {
+      "id": "m-hvdc",
+      "file": "直流输电与柔性直流-2026-11.md",
+      "section": "cross",
+      "kind": "知识模块",
+      "cutoff": "2026-11-27",
+      "title": "直流输电与柔性直流：LCC、VSC 与故障边界",
+      "titleEn": null,
+      "summaryEn": "HVDC is not a line but a tightly coupled system of converters, control/protection and AC grids. This module works through five layers: LCC commutation physics and commutation failure; VSC/MMC submodules and DC faults; DC protection and black start; SCR/ESCR and wideband oscillation; and how transfer capability, availability, losses and ancillary services enter trading and investment. Includes two grade-D synthetic cases (LCC and VSC) and a failure-to-market-consequence map.",
+      "confidence": "mixed",
+      "historical": false,
+      "html": "html/直流输电与柔性直流-2026-11.html"
     },
     {
       "id": "m-province",
@@ -1656,10 +1695,10 @@
       "file": "预测误差申报与EMS闭环-2026-11.md",
       "section": "spot",
       "kind": "知识模块",
-      "cutoff": "2026-11-19",
+      "cutoff": "2026-11-27",
       "title": "预测误差→申报→EMS 闭环：newsvendor 报价与储能偏差跟踪",
       "titleEn": null,
-      "summaryEn": "Closing the forecast-error -> bid -> EMS loop: newsvendor optimal-quantile bidding, the tolerance deadband, and storage that converts deviation penalties into degradation cost, with a reproducible loop.py worked example.",
+      "summaryEn": "Closing the forecast-error -> bid -> EMS loop: newsvendor optimal-quantile bidding, the tolerance deadband, storage that converts deviation penalties into degradation cost, plus forecast-service procurement (SLA, weather/time-stratified scoring, shadow runs, switching and data ownership), with a reproducible loop.py worked example.",
       "confidence": "mixed",
       "historical": false,
       "html": "html/预测误差申报与EMS闭环-2026-11.html"

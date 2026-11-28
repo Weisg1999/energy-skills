@@ -1,7 +1,7 @@
 ---
 id: m-spot-c
 section: spot
-order: 6
+order: 3
 level: core
 kind: "教材笔记"
 title: "101 问 C · 结算、TTS 与政策演进"

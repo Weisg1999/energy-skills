@@ -4,11 +4,26 @@
   "version": "v2.6",
   "cutoff": "2026-11-27",
   "latest": "2026-11-28",
-  "count": 104,
+  "count": 105,
   "languages": {
     "zh": {
       "title": "更新记录",
       "entries": [
+        {
+          "date": "2026-11-28",
+          "label": "增补：水电抽蓄、市场力合规、直流柔直三模块与预测服务采购，133 模块，随 v2.6 发布",
+          "items": [
+            "<strong>范围与状态</strong>：本批新增 3 个知识模块并在预测模块增补 1 节，知识模块 130 → 133；问答保持 86 问、开放事项 55 项；版本仍为 v2.6（本批随 v2.6 发布，不另增版本号），数据截止仍为 2026-11-27；全部算例 D 级合成。",
+            "<strong>水电与抽水蓄能（renewable 第 7 篇）</strong>：新增《水电与抽水蓄能：来水、库容与市场价值》——水从流域到水轮机再到市场的物理链；来水/径流/入库与可发电量；库容、蓄满率与蓄能（水量×水头×效率）；弃水与机会成本；水值作为影子价格、期末蓄水与跨期决策；梯级耦合与水头效应；水电竞价与中长期合同；抽蓄两部制电价、效率与套利边界；市场规则与考核；10 条常见错误。D 级 300 MW/150 m 算例：水耗率 2.718 m³/kWh，25 亿 m³ 入库对应理论 919.8 GWh、实际 900 GWh；5 亿 m³ 库容对应 183.9 GWh；抽蓄 300 MW/1,800 MWh、η 0.75，抽水 150/发电 450 元/MWh 时每循环 33.75 万元、300 循环 1.0125 亿元，抽水价升至 300 元/MWh 时每循环降至 6.75 万元。",
+            "<strong>市场力监测与交易合规（spot 第 17 篇）</strong>：新增《市场力监测与交易合规：从 HHI 到行为筛查》——市场力来源与三类市场界定；结构筛查（HHI、RSI、关键供应商）；行为筛查（经济/物理/容量/出力四类持留、报价加成与 Lerner 指数）；影响评估（竞争基准、消费者损害、稀缺租金与市场力租金之分）；中国法律与规则框架；交易台三道防线与合规台账；五主体 D 级案例：HHI 2,250、RSI 0.78，报价 600 对边际成本 300、出清 580，加成 100%、Lerner 48.3%，消费者损害 19.8 万元/小时、4 小时 79.2 万元；10 条常见错误。",
+            "<strong>直流输电与柔性直流（cross 第 12 篇）</strong>：新增《直流输电与柔性直流：LCC、VSC 与故障边界》——为什么用直流；LCC 十二脉动换相物理（Ud0≈1.35U_LL、Ud=Ud0cosα−(3/π)XcId）、熄弧角与换相失败、VDCOL 与无功消耗；VSC/MMC 半桥/全桥拓扑、子模块均压与环流抑制、P/Q 控制、黑启动与直流故障清除、DCCB；SCR/ESCR、多馈入交互与宽频振荡；规划、运行与市场；标准、设计与尽调；12 条常见错误。D 级 LCC ±800 kV/8,000 MW/2,000 km 算例：线路损耗 200 MW、换流损耗 112 MW、合计 312 MW（3.9%），年损耗 12.48 亿 kWh、3.744 亿元；VSC ±500 kV/2,000 MW/100 km 算例：线路 4.8 MW、换流 40 MW、合计 44.8 MW（2.24%），年 1.792 亿 kWh、5,376 万元；另给 8,000 MW 闭锁 2 小时的 1,600 万 kWh 替代成本 480 万元。",
+            "<strong>功率预测服务采购（预测模块新增 §7）</strong>：在《预测误差→申报→EMS 闭环》中增补“功率预测服务采购与供应商考核”——自建/采购/混合三种模式与服务边界；nRMSE/MAE/MBE、合格率、Pinball/CRPS/PICP 等 SLA 指标；分天气、分时段评分；阶梯奖惩与付款；影子运行与双轨切换；数据归属、知识产权与合同条款；六类踩坑；100 MW 风电 D 级采购算例：三家报价 750/645/620 万元，C 加 50 万元集成后首年 670 万元，B 的概率预测价值 ≥25 万元时与 C 持平；模块 cutoff 由 2026-11-19 更新为 2026-11-27。",
+            "<strong>计数与生成物</strong>：知识模块/阅读页/中文 Markdown 同步为 133；正文 58,448 → 60,128 行（+1,680，其中预测模块约 +180）；search-index 4,573,684 → 4,665,469 字节；更新记录 104 → 105 条；<code>更新清单.md</code> P2 45 → 48，并补批次台账与检索体积注记；<code>knowledge.config.mjs</code> 将三模块挂入电力交易、现货报价量化、新能源开发与并网、储能投资与运营四技能，spot/cross/renewable 分区 desc 与 <code>site.coverage</code> 同步；README 中英计数、路由行与模块徽章 130 → 133 同步；INDEX_EN 补 4 行文件地图，索引与口径新增第九节路由。",
+            "<strong>首页排序</strong>：按“先总后分、先教材后实务、先方法后案例，同层按流程或时间”重排 foundation、spot、cross、storage、index、research 六区共 50 个模块的 <code>order</code>，仅改 frontmatter、不动正文与计数；foundation 恢复 A–G 连续、经济学移至末位；spot 由 101/实务进入出清/潮流/归因，再到预测/量化、省间/合同/购电/托管、日课/复盘、风险/市场力；cross 按制度与资产→上游输入→系统物理→工具；storage 按技术/BMS→投资/选址→EMS→控制→安全→SCADA/集控/接口；index 修复重复 <code>order</code> 并统一为政策→省级政策→状态→口径→术语→问答→英文；research 改为最新在前。",
+            "<strong>校验</strong>：构建、<code>--check</code>、省矩阵、一致性、维护检查、<code>git diff --check</code> 与九个 Python 自测全部通过；构建输出 133 个知识页、5,352 个章节、1,781 张表格、465 个代码/图块。",
+            "<strong>版权与口径</strong>：三篇均为原创改写，只使用公开事实、机制类型与自行计算的合成算例；不复制来源图表、表格或长段文字；无真实合同价、结算电量、场站出力、煤价、渠道合同或商业项目溯源。"
+          ]
+        },
         {
           "date": "2026-11-28",
           "label": "v2.6：技能分区统一命名为 Skills，130 模块",
@@ -1274,6 +1289,21 @@
     "en": {
       "title": "Changelog",
       "entries": [
+        {
+          "date": "2026-11-28",
+          "label": "addition: hydro, market-power compliance, HVDC/flexible DC and forecast-service procurement, 133 modules, released with v2.6",
+          "items": [
+            "<strong>Scope and status</strong>: this batch adds three knowledge modules and one new section in the forecast module, moving the knowledge base from 130 to 133 modules; Q&amp;A stays at 86 items and open items at 55. The version remains v2.6 (released with v2.6, without a version bump) and the data cutoff remains 2026-11-27; all examples are synthetic grade D.",
+            "<strong>Hydro and pumped storage (renewable #7)</strong>: new note covering the physical chain from catchment to turbine to market; inflow/runoff and available generation; reservoir volume, storage coefficient and stored energy; spillage and opportunity cost; water value as a shadow price and end-of-period storage; cascade coupling and head effects; hydro bidding and medium/long-term contracts; pumped-storage two-part tariffs, round-trip efficiency and arbitrage bounds; market rules and assessment; ten common errors. A 300 MW/150 m grade-D case gives a water rate of 2.718 m3/kWh, 919.8 GWh theoretical and 900 GWh actual from 2.5 bn m3 of inflow, and 183.9 GWh from 0.5 bn m3 of storage; a 300 MW/1,800 MWh pumped-storage case (eta 0.75, pump 150 / generate 450 CNY/MWh) earns CNY 337.5k per cycle and CNY 101.25m over 300 cycles, falling to CNY 67.5k per cycle when pumping costs 300 CNY/MWh.",
+            "<strong>Market-power monitoring and trading compliance (spot #17)</strong>: new note covering sources of market power and three market definitions; structural screening (HHI, RSI, pivotal supplier); conduct screening (economic/physical/capacity/output withholding, bid-cost markup and Lerner index); impact assessment (competitive benchmark, consumer harm, scarcity rent versus market-power rent); China's legal and regulatory framework; a three-lines-of-defence compliance system for the trading desk; a five-player grade-D case (HHI 2,250, RSI 0.78, bid 600 against marginal cost 300, clearing 580, markup 100%, Lerner 48.3%, consumer harm CNY 198k per hour and CNY 792k over 4 hours); ten common errors.",
+            "<strong>HVDC and flexible DC (cross #12)</strong>: new note covering why DC; LCC 12-pulse commutation (Ud0 ~ 1.35 U_LL, Ud = Ud0 cos alpha - (3/pi) Xc Id), extinction angle and commutation failure, VDCOL and reactive consumption; VSC/MMC half- and full-bridge topologies, submodule balancing and circulating-current suppression, P/Q control, black start and DC fault clearing with DCCBs; SCR/ESCR, multi-infeed interaction and wideband oscillation; planning, operations and markets; standards, design and due diligence; twelve common errors. A grade-D LCC +/-800 kV/8,000 MW/2,000 km case loses 200 MW on the line and 112 MW in converters (312 MW, 3.9%; 1.248 TWh and CNY 374.4m per year); a VSC +/-500 kV/2,000 MW/100 km case loses 4.8 MW on the line and 40 MW in converters (44.8 MW, 2.24%; 179.2 GWh and CNY 53.76m per year); an 8,000 MW two-hour block is priced at 16 GWh and CNY 4.8m of replacement cost.",
+            "<strong>Forecast-service procurement (new section 7 in the forecast module)</strong>: the forecast-error → declaration → EMS note now covers self-build/buy/hybrid models and service boundaries; SLA metrics (nRMSE/MAE/MBE, qualification rate, Pinball/CRPS/PICP); weather- and time-stratified scoring; tiered rewards and penalties; shadow/dual-run and switching; data ownership, IP and contract clauses; six pitfalls; a 100 MW wind grade-D procurement case (quotes 750/645/620; C plus 50 integration = 670 in year one; B ties when its probabilistic value is at least 25); the module cutoff moves from 2026-11-19 to 2026-11-27.",
+            "<strong>Counts and generated artifacts</strong>: 133 knowledge modules, 133 reading pages and 133 Chinese Markdown files; body lines 58,448 → 60,128 (+1,680, about +180 in the forecast module); search index 4,573,684 → 4,665,469 bytes; changelog records 104 → 105; the maintenance ledger moves P2 from 45 to 48 and records the batch and the new index size; <code>knowledge.config.mjs</code> maps the three modules into four skills (trading, spot quant, renewables, storage investment), updates the spot/cross/renewable section descriptions and <code>site.coverage</code>; READMEs, routes and the module badge move 130 → 133; INDEX_EN gains four file-map rows and the index handbook gains a ninth routing section.",
+            "<strong>Homepage ordering</strong>: reorders <code>order</code> for 50 modules across foundation, spot, cross, storage, index and research under one principle — overview before detail, textbooks before practice, methods before cases, and process or time within a layer; frontmatter only, with no body or count changes. Foundation restores the A–G sequence and moves economics to the end; spot runs from the 101 series and practice notes into clearing/flow/attribution, then forecast/quant, interprovincial/contracts/procurement/agency, desk routine/review, and risk/market power; cross runs from institutions and assets to upstream inputs, system physics and tools; storage runs from technology/BMS to investment/siting, EMS, control, security, and SCADA/cluster/interface; index removes duplicate <code>order</code> values and runs policy → provincial policy → status → calibres → glossary → Q&amp;A → English; research is newest first.",
+            "<strong>Checks</strong>: build, <code>--check</code>, province matrix, consistency, maintenance, <code>git diff --check</code> and nine Python self-tests pass; the build reports 133 pages, 5,352 sections, 1,781 tables and 465 code/diagram blocks.",
+            "<strong>Copyright and calibres</strong>: all three notes are original rewrites using public facts, mechanism types and self-computed synthetic examples; no source charts, tables or long passages are copied; no real contract prices, settlement volumes, plant output, coal prices, channel contracts or commercial project provenance."
+          ]
+        },
         {
           "date": "2026-11-28",
           "label": "v2.6: the skills section is renamed to Skills, 130 modules",

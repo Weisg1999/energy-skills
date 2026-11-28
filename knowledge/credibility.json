@@ -2,19 +2,19 @@
   "schema": 1,
   "description": "Machine-readable credibility register. Filter modules by confidence/examples/historical before injecting into a model; gradeC and openItems carry the unverified figures and undecided items.",
   "summary": {
-    "modules": 130,
+    "modules": 133,
     "gradeCItems": 22,
     "openItems": 55,
     "events": 32,
     "draftPolicies": 3,
-    "mixedModules": 110,
+    "mixedModules": 113,
     "historicalModules": 15,
     "unverifiedGradeC": 14,
     "verifiedTickets": 6,
     "bannedTickets": 2,
     "ticketsDueForReview": 14,
     "openGaps": 8,
-    "englishSummaries": 130,
+    "englishSummaries": 133,
     "keyFigures": 242,
     "glossaryTerms": 82,
     "controlledAbbreviations": 50,
@@ -3763,6 +3763,30 @@
       "exampleSections": []
     },
     {
+      "id": "m-market-power",
+      "file": "市场力监测与交易合规-2026-11.md",
+      "title": "市场力监测与交易合规：从 HHI 到行为筛查",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-27",
+      "confidence": "mixed",
+      "confidenceInferred": false,
+      "examples": "synthetic",
+      "historical": false,
+      "summaryEn": "A high price is not proof of market power, and market power does not always show up as a high price. This note separates monitoring into three layers: structure (HHI, RSI, pivotal-supplier test), conduct (economic and physical withholding, bid-cost markup) and impact (competitive benchmark, consumer harm). It then maps them to China's Anti-Monopoly Law, power regulation and a three-lines-of-defence trading compliance programme, with a grade-D five-player synthetic case.",
+      "titleEn": null,
+      "marks": {
+        "gradeC": 3,
+        "draft": 3,
+        "pending": 1,
+        "example": 7
+      },
+      "exampleSections": [
+        "### 2.3 D 级结构算例",
+        "### 3.4 D 级行为算例"
+      ]
+    },
+    {
       "id": "m-grid-test",
       "file": "并网测试与涉网验收实务清单-2026-11.md",
       "title": "并网测试与涉网验收实务清单：AGC/AVC/一次调频投运试验与考核点闭环",
@@ -4173,6 +4197,30 @@
       },
       "exampleSections": [
         "## 7. D 级合成算例（五组，仅演示方法）"
+      ]
+    },
+    {
+      "id": "m-hydro-storage",
+      "file": "水电与抽水蓄能-2026-11.md",
+      "title": "水电与抽水蓄能：来水、库容与市场价值",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-27",
+      "confidence": "mixed",
+      "confidenceInferred": false,
+      "examples": "synthetic",
+      "historical": false,
+      "summaryEn": "Low marginal cost is not low opportunity cost for hydro: whether to release a cubic metre now or later depends on reservoir storage, inflows, head and future prices. This note links runoff, storage, head, water rate, spillage, water value and pumped-storage arbitrage into one decision framework, with two grade-D synthetic cases and a separate treatment of two-part tariffs and spot arbitrage boundaries.",
+      "titleEn": null,
+      "marks": {
+        "gradeC": 1,
+        "draft": 1,
+        "pending": 1,
+        "example": 8
+      },
+      "exampleSections": [
+        "### 2.5 D 级算例：一座 300 MW 水库电站",
+        "### 5.7 D 级算例：300 MW/1,800 MWh 抽蓄"
       ]
     },
     {
@@ -4958,6 +5006,31 @@
         "## 7. D 级合成算例：三节点网络的选址定容",
         "### 7.6 这个算例说明什么",
         "### 7.7 这个算例不说明什么"
+      ]
+    },
+    {
+      "id": "m-hvdc",
+      "file": "直流输电与柔性直流-2026-11.md",
+      "title": "直流输电与柔性直流：LCC、VSC 与故障边界",
+      "level": "core",
+      "kind": "知识模块",
+      "cutoff": "2026-11-27",
+      "confidence": "mixed",
+      "confidenceInferred": false,
+      "examples": "synthetic",
+      "historical": false,
+      "summaryEn": "HVDC is not a line but a tightly coupled system of converters, control/protection and AC grids. This module works through five layers: LCC commutation physics and commutation failure; VSC/MMC submodules and DC faults; DC protection and black start; SCR/ESCR and wideband oscillation; and how transfer capability, availability, losses and ancillary services enter trading and investment. Includes two grade-D synthetic cases (LCC and VSC) and a failure-to-market-consequence map.",
+      "titleEn": null,
+      "marks": {
+        "gradeC": 1,
+        "draft": 0,
+        "pending": 1,
+        "example": 8
+      },
+      "exampleSections": [
+        "### 6.8 D 级算例：±800 kV/8,000 MW LCC",
+        "### 6.9 D 级算例：±500 kV/2,000 MW VSC",
+        "### 6.10 D 级算例：一次换相失败/停运的市场成本"
       ]
     },
     {
@@ -5800,23 +5873,24 @@
       "title": "预测误差→申报→EMS 闭环：newsvendor 报价与储能偏差跟踪",
       "level": "core",
       "kind": "知识模块",
-      "cutoff": "2026-11-19",
+      "cutoff": "2026-11-27",
       "confidence": "mixed",
       "confidenceInferred": true,
       "examples": null,
       "historical": false,
-      "summaryEn": "Closing the forecast-error -> bid -> EMS loop: newsvendor optimal-quantile bidding, the tolerance deadband, and storage that converts deviation penalties into degradation cost, with a reproducible loop.py worked example.",
+      "summaryEn": "Closing the forecast-error -> bid -> EMS loop: newsvendor optimal-quantile bidding, the tolerance deadband, storage that converts deviation penalties into degradation cost, plus forecast-service procurement (SLA, weather/time-stratified scoring, shadow runs, switching and data ownership), with a reproducible loop.py worked example.",
       "titleEn": null,
       "marks": {
         "gradeC": 3,
         "draft": 0,
         "pending": 3,
-        "example": 7
+        "example": 9
       },
       "exampleSections": [
         "### 3.3 算例（D 级）",
         "### 4.2 算例（D 级，单时段）",
-        "### 5.2 算例（D 级，24 小时）"
+        "### 5.2 算例（D 级，24 小时）",
+        "### 7.8 D 级采购算例：100 MW 风电场"
       ]
     },
     {

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>预测误差→申报→EMS 闭环：newsvendor 报价与储能偏差跟踪 | energy-skills 知识库</title>
-<meta name="description" content="把预测分布、日前申报、储能调度与偏差结算缝成闭环；newsvendor 最优分位数报价、免考 band、储能把偏差罚单转退化成本，附 loop.py 可复现算例。">
+<meta name="description" content="把预测分布、日前申报、储能调度与偏差结算缝成闭环；newsvendor 最优分位数报价、免考 band、储能把偏差罚单转退化成本；并补功率预测服务采购：SLA、分天气/分时段考核、影子运行、切换与数据归属，附 loop.py 可复现算例。">
 <link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
 <script>
 (function(){try{var t=localStorage.getItem('es-theme');if(!/^(light|cream|green|dark)$/.test(t||'')){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
@@ -50,22 +50,23 @@
     <div class="nav-num">02 · SPOT</div>
     <h2 class="nav-cat"><a href="../index.html#spot">电力现货与省间交易</a></h2>
     <ul class="nav-list">
-              <li><a href="省间与跨区交易-2026-11.html">省间与跨区交易（2026 版）</a></li>
-              <li><a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a></li>
-              <li><a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算（2026 版）</a></li>
               <li><a href="电力现货市场101问-A-基础与价格机制.html">101 问 A · 基础与价格机制</a></li>
               <li><a href="电力现货市场101问-B-出清结算与省域实践.html">101 问 B · 出清结算与省域实践</a></li>
               <li><a href="电力现货市场101问-C-结算TTS与政策演进.html">101 问 C · 结算、TTS 与政策演进</a></li>
               <li><a href="电力现货市场实务-精读笔记.html">电力现货市场实务</a></li>
-              <li><a href="交易台日课与异常处置-SOP-2026-11.html">交易台日课与异常处置 SOP</a></li>
-              <li><a href="潮流阻塞与节点电价-2026-11.html">从潮流到节点电价：阻塞、断面与网损的价格传导</a></li>
               <li><a href="现货出清与价格形成-2026-11.html">现货出清与价格形成：从报价到节点价</a></li>
-              <li class="on" aria-current="page"><a href="预测误差申报与EMS闭环-2026-11.html">预测误差→申报→EMS 闭环：newsvendor 报价与储能偏差跟踪</a></li>
+              <li><a href="潮流阻塞与节点电价-2026-11.html">从潮流到节点电价：阻塞、断面与网损的价格传导</a></li>
               <li><a href="电价归因与盘前推演-2026-11.html">电价归因与盘前推演：从负荷、新能源、检修、燃料、阻塞到价格</a></li>
+              <li class="on" aria-current="page"><a href="预测误差申报与EMS闭环-2026-11.html">预测误差→申报→EMS 闭环：newsvendor 报价与储能偏差跟踪</a></li>
+              <li><a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a></li>
+              <li><a href="省间与跨区交易-2026-11.html">省间与跨区交易（2026 版）</a></li>
               <li><a href="中长期合同结构与签约考核-2026-11.html">中长期合同结构与签约考核：从年度到月内</a></li>
-              <li><a href="电力市场月度监测与复盘-2026-11.html">电力市场月度监测与复盘：从燃料、来水到捕获率</a></li>
               <li><a href="售电与批发用户购电组合-2026-11.html">售电与批发用户的购电组合：零售联动、转批发与代理交易</a></li>
               <li><a href="场站交易托管与代理-2026-11.html">场站交易托管与代理：授权边界、基准设计与绩效归因</a></li>
+              <li><a href="交易台日课与异常处置-SOP-2026-11.html">交易台日课与异常处置 SOP</a></li>
+              <li><a href="电力市场月度监测与复盘-2026-11.html">电力市场月度监测与复盘：从燃料、来水到捕获率</a></li>
+              <li><a href="电力市场风险、信用与结算-2026-11.html">电力市场风险、信用与结算（2026 版）</a></li>
+              <li><a href="市场力监测与交易合规-2026-11.html">市场力监测与交易合规：从 HHI 到行为筛查</a></li>
     </ul>
     <div class="nav-others">
       <div class="nav-kicker">其他分类</div>
@@ -90,14 +91,14 @@
     <header class="doc-head">
       <div class="kicker">02 · SPOT<i>知识模块</i></div>
       <h1 class="doc-title">预测误差→申报→EMS 闭环：newsvendor 报价与储能偏差跟踪（2026-11）</h1>
-      <p class="lede">把预测分布、日前申报、储能调度与偏差结算缝成闭环；newsvendor 最优分位数报价、免考 band、储能把偏差罚单转退化成本，附 loop.py 可复现算例。</p>
+      <p class="lede">把预测分布、日前申报、储能调度与偏差结算缝成闭环；newsvendor 最优分位数报价、免考 band、储能把偏差罚单转退化成本；并补功率预测服务采购：SLA、分天气/分时段考核、影子运行、切换与数据归属，附 loop.py 可复现算例。</p>
       <p class="hook">预测误差→申报→EMS 闭环</p>
-      <div class="tags"><span class="tag">预测误差</span><span class="tag">申报</span><span class="tag">偏差结算</span><span class="tag">闭环</span></div>
-      <div class="doc-meta"><span>约 6.2k 字</span><span>阅读约 10 分钟</span><span>12 节</span><span>数据截止 2026-11-19</span></div>
+      <div class="tags"><span class="tag">预测误差</span><span class="tag">申报</span><span class="tag">偏差结算</span><span class="tag">闭环</span><span class="tag">预测服务采购</span><span class="tag">SLA</span><span class="tag">供应商考核</span><span class="tag">nRMSE</span><span class="tag">CRPS</span><span class="tag">影子运行</span></div>
+      <div class="doc-meta"><span>约 9.5k 字</span><span>阅读约 16 分钟</span><span>13 节</span><span>数据截止 2026-11-27</span></div>
     </header>
 
     <details class="toc-mobile">
-      <summary>本页目录（12）</summary>
+      <summary>本页目录（13）</summary>
       <ol>
             <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
             <li class="lv2"><a href="#s4">1. 链路全景：五步成环</a></li>
@@ -106,16 +107,17 @@
             <li class="lv2"><a href="#s14">4. 偏差结算：日前 + 实时</a></li>
             <li class="lv2"><a href="#s17">5. 储能闭环：把罚单变成退化成本</a></li>
             <li class="lv2"><a href="#s21">6. 闭环反馈与交易台日课</a></li>
-            <li class="lv2"><a href="#s25">7. 工具与复现</a></li>
-            <li class="lv2"><a href="#s26">8. 常见错误（10 条）</a></li>
-            <li class="lv2"><a href="#s27">9. 待核实与未定事项</a></li>
-            <li class="lv2"><a href="#s28">10. 与技能和其他笔记的分工</a></li>
-            <li class="lv2"><a href="#s29">速查</a></li>
+            <li class="lv2"><a href="#s25">7. 功率预测服务采购与供应商考核</a></li>
+            <li class="lv2"><a href="#s36">8. 工具与复现</a></li>
+            <li class="lv2"><a href="#s37">9. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s38">10. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s39">11. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s40">速查</a></li>
       </ol>
     </details>
 
     <article class="prose">
-<aside class="note note-head"><p>数据截止：2026-11-19｜定位：知识库模块（现货决策链路）</p><p>相关技能：<a href="../../skills/spot-bidding-quant/SKILL.md">现货报价量化专家</a>（预测与报价）、<a href="../../skills/ems-dispatch/SKILL.md">EMS 优化调度专家</a>（储能跟踪）、<a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a>（结算对账）</p><p>用途：回答&quot;预测有误差该报多少、为什么不该报 P50、偏差怎么罚、储能怎么把罚单变成成本、闭环怎么反馈&quot;五类问题。本文做决策链路与算例整理；具体偏差考核口径、免考 band 与实时价格机制以各省现行规则为准。</p></aside>
+<aside class="note note-head"><p>数据截止：2026-11-27｜定位：知识库模块（现货决策链路）</p><p>相关技能：<a href="../../skills/spot-bidding-quant/SKILL.md">现货报价量化专家</a>（预测与报价）、<a href="../../skills/ems-dispatch/SKILL.md">EMS 优化调度专家</a>（储能跟踪）、<a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a>（结算对账）</p><p>用途：回答&quot;预测有误差该报多少、为什么不该报 P50、偏差怎么罚、储能怎么把罚单变成成本、闭环怎么反馈&quot;五类问题。本文做决策链路与算例整理；具体偏差考核口径、免考 band 与实时价格机制以各省现行规则为准。</p></aside>
 <hr>
 <h2 id="s1">0. 一页看懂</h2>
 <h3 id="s2">0.1 三句话</h3>
@@ -143,7 +145,7 @@
 <h3 id="s7">2.2 误差来源</h3>
 <ul><li><strong>气象误差</strong>：辐照/风速预报偏差，新能源出力误差的主因；</li><li><strong>模型误差</strong>：功率曲线/光电转换模型失配；</li><li><strong>状态误差</strong>：检修、限电、设备可用率变化；</li><li><strong>时段相关性</strong>：误差不是独立同分布，午间光伏误差与傍晚风电误差结构不同。</li></ul>
 <h3 id="s8">2.3 分布假设</h3>
-<p>本文算例用正态 <code>N(P50, σ)</code> 近似。真实误差常有偏、厚尾、时段异方差，工程上应用经验分位数或分时段分布替代正态（§9 待核实）。正态只是演示 newsvendor 机制的最简假设。</p>
+<p>本文算例用正态 <code>N(P50, σ)</code> 近似。真实误差常有偏、厚尾、时段异方差，工程上应用经验分位数或分时段分布替代正态（§10 待核实）。正态只是演示 newsvendor 机制的最简假设。</p>
 <hr>
 <h2 id="s9">3. 申报：newsvendor 最优分位数</h2>
 <h3 id="s10">3.1 代价结构</h3>
@@ -161,7 +163,7 @@ bid = F_R^{-1}(q*) = P50 + z(q*) * sigma   （正态假设）</code></pre>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>情形</th><th>实时买价</th><th>实时卖价</th><th>Cu</th><th>Co</th><th>q*</th><th>z(q*)</th><th>申报（MW）</th></tr></thead><tbody><tr><td>对称</td><td>480</td><td>320</td><td>80</td><td>80</td><td>0.500</td><td>0.000</td><td><strong>100.00</strong></td></tr><tr><td>买回重罚</td><td>600</td><td>320</td><td>80</td><td>200</td><td>0.286</td><td>−0.566</td><td><strong>95.47</strong></td></tr></tbody></table></div>
 <p><strong>读图</strong>：买回溢价从 1.2× 提到 1.5× 日前价，最优申报从 100 降到 95.47 MW——少报 4.5 MW 规避高价买回风险。<strong>报 P50 在不对称罚价下不是最优</strong>。</p>
 <h3 id="s13">3.4 免考 band 的修正</h3>
-<p>多数省份设偏差免考 band（如 ±3%）：band 内偏差按日前价结算（不罚），band 外才进实时。这会把 newsvendor 的代价结构改成&quot;band 截断&quot;，最优申报需数值求解而非解析分位。本文 <a href="../../skills/ems-dispatch/tools/loop.py">loop.py</a> 的 <code>deviation_settlement</code> 支持 band 参数演示其效果；日级 DP 闭环用线性实时价（无 band）近似。具体 band 与考核口径分省（§9 待核实）。</p>
+<p>多数省份设偏差免考 band（如 ±3%）：band 内偏差按日前价结算（不罚），band 外才进实时。这会把 newsvendor 的代价结构改成&quot;band 截断&quot;，最优申报需数值求解而非解析分位。本文 <a href="../../skills/ems-dispatch/tools/loop.py">loop.py</a> 的 <code>deviation_settlement</code> 支持 band 参数演示其效果；日级 DP 闭环用线性实时价（无 band）近似。具体 band 与考核口径分省（§10 待核实）。</p>
 <hr>
 <h2 id="s14">4. 偏差结算：日前 + 实时</h2>
 <h3 id="s15">4.1 结算结构</h3>
@@ -196,22 +198,65 @@ band 外 surplus：按 P_rt_sell 卖出</code></pre>
 <h3 id="s24">6.3 防泄露</h3>
 <p>反馈只能用<strong>已结算</strong>信息更新次日假设，不能用当日实时信息倒灌当日申报（前视偏差）。数据契约与防泄露见 <a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a> §3。</p>
 <hr>
-<h2 id="s25">7. 工具与复现</h2>
+<h2 id="s25">7. 功率预测服务采购与供应商考核</h2>
+<aside class="note"><p>本节回答：预测是自己做还是买？买点预测还是概率预测？SLA 怎么写？供应商说 95% 准确率能不能信？怎么切换而不被锁定？</p></aside>
+<h3 id="s26">7.1 自建、采购还是混合</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>模式</th><th>适合谁</th><th>优点</th><th>风险</th></tr></thead><tbody><tr><td>自建</td><td>大型发电集团、场站群、有数据/算法团队</td><td>数据可控、可定制、边际成本低</td><td>固定成本高、人才难留、模型迭代慢</td></tr><tr><td>采购</td><td>中小场站、售电公司、快速上线</td><td>上线快、专业分工、按服务付费</td><td>黑箱、锁定、数据归属不清、SLA 难验证</td></tr><tr><td>混合</td><td>大多数规模型主体</td><td>内部基准 + 多家外部供应商，可对比</td><td>管理复杂、接口多、需要评估能力</td></tr></tbody></table></div>
+<p><strong>推荐</strong>：保留一个内部基准模型（哪怕很简单），用它校验外部供应商；不要只买一家、只信一家。</p>
+<h3 id="s27">7.2 买什么：服务边界</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>类型</th><th>时间尺度/形式</th><th>主要用途</th><th>验收重点</th></tr></thead><tbody><tr><td>超短期预测</td><td>0–4 h，15 min 粒度</td><td>日内调度、偏差跟踪、EMS 闭环</td><td>及时率、爬坡事件、最新实测输入</td></tr><tr><td>短期预测</td><td>24–72 h，小时粒度</td><td>日前申报、机组组合</td><td>nRMSE、分时段偏差、极端天气</td></tr><tr><td>中长期预测</td><td>7–30 天，日/周粒度</td><td>检修、合约、燃料/来水</td><td>趋势、情景、不确定性</td></tr><tr><td>概率预测</td><td>P10/P50/P90 或分位数</td><td>newsvendor 申报、风险决策</td><td>Pinball/CRPS、覆盖率、锐度</td></tr><tr><td>集合/情景</td><td>多成员情景</td><td>极端天气、尾部分析</td><td>情景代表性、尾部捕获</td></tr><tr><td>区域/场站群</td><td>区域聚合/单场</td><td>组合优化、阻塞分析</td><td>相关性、聚合误差</td></tr></tbody></table></div>
+<p><strong>只买点预测通常不够</strong>：本文 §3 的 newsvendor 申报需要 σ 或分位数；没有概率信息，只能拍一个误差假设，SLA 也无法与申报绩效对齐。</p>
+<h3 id="s28">7.3 SLA 指标：别只看“准确率”</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>指标</th><th>定义</th><th>适用</th><th>常见坑</th></tr></thead><tbody><tr><td>nRMSE</td><td>RMSE / 装机容量（或额定出力）</td><td>连续误差、横向比较</td><td>口径不统一；低谷时段误差被稀释</td></tr><tr><td>MAE</td><td>平均绝对误差</td><td>直观、鲁棒</td><td>不惩罚大误差</td></tr><tr><td>MBE</td><td>平均偏差（预测−实际）</td><td>检查系统性高估/低估</td><td>正负抵消，看起来很好</td></tr><tr><td>合格率</td><td>误差在 band 内的时段占比</td><td>考核、结算</td><td>band 宽窄不同，不可直接比</td></tr><tr><td>Pinball loss</td><td>分位数预测的损失</td><td>概率预测</td><td>需要多分位一起看</td></tr><tr><td>CRPS</td><td>连续排序概率得分</td><td>概率预测总体评分</td><td>计算复杂，需统一实现</td></tr><tr><td>PICP</td><td>预测区间覆盖率</td><td>P10–P90 是否真的覆盖 80%</td><td>区间越宽越容易覆盖，需看锐度</td></tr><tr><td>事件捕获率</td><td>爬坡/极端天气事件被提前预警的比例</td><td>风险管理</td><td>样本少，统计不稳</td></tr><tr><td>及时率</td><td>按规定时间交付的比例</td><td>运行可用性</td><td>迟到 5 分钟可能等于没交</td></tr><tr><td>完整率</td><td>缺测/缺时段比例</td><td>数据质量</td><td>插值掩盖问题</td></tr><tr><td>可用率</td><td>API/平台可用时间</td><td>服务连续性</td><td>可用但数据错，也算不可用</td></tr></tbody></table></div>
+<p><strong>建议</strong>：至少同时考核 nRMSE、MBE、合格率、及时率、完整率；概率预测加 Pinball/CRPS/PICP；极端天气单独考核。</p>
+<h3 id="s29">7.4 分天气、分时段考核</h3>
+<p>平均 nRMSE 会被“好天气”拉低。必须分层：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>分层</th><th>示例</th><th>为什么</th></tr></thead><tbody><tr><td>天气</td><td>晴、多云、阴、雨、雪、雾霾、大风、台风、寒潮</td><td>误差分布完全不同</td></tr><tr><td>时段</td><td>0–4 h、4–24 h、24–72 h</td><td>超短期与日前误差机制不同</td></tr><tr><td>季节</td><td>春、夏、秋、冬</td><td>光伏/风电/负荷季节性</td></tr><tr><td>事件</td><td>爬坡、切出、限电、极端天气</td><td>真正的风险在尾部</td></tr></tbody></table></div>
+<p>考核表要写清：每层样本数、权重、最低样本门槛；样本太少的层不参与奖惩，避免“偶然一次好”拿奖金。</p>
+<h3 id="s30">7.5 奖惩与付款</h3>
+<p>常见结构：</p>
+<pre tabindex="0"><code>服务费 = 基础费 × 80% + 绩效费 × 20%
+绩效费 = 基础费 × 20% × 得分系数
+得分系数 = f(nRMSE、合格率、及时率、完整率、事件捕获)</code></pre>
+<ul><li><strong>罚则</strong>：未达 SLA 按服务费比例扣减（如每差 1 个百分点扣 1%，上限 20%）；连续不达标可终止。</li><li><strong>奖励</strong>：超过基准按比例奖励（如每优 1 个百分点奖 0.5%，上限 10%），但要有上限，避免供应商只追求容易的指标。</li><li><strong>付款节奏</strong>：月结/季结，保留 10%–20% 尾款，年度考核后支付。</li><li><strong>口径冻结</strong>：考核口径、样本、权重在合同里写死；不能供应商说“这个月天气特殊”就改口径。</li></ul>
+<h3 id="s31">7.6 影子运行与切换</h3>
+<p>不要直接替换现有供应商。先并行：</p>
+<ol><li><strong>影子期</strong>：3–6 个月，新旧供应商同时出预测，旧系统继续用于实际申报；</li><li><strong>同一数据</strong>：同一时间戳、同一实测、同一场站；禁止新供应商使用未来数据；</li><li><strong>冻结测试集</strong>：留出未参与调参的时段，防止过拟合；</li><li><strong>月度记分卡</strong>：按 §7.4 分层比较；</li><li><strong>切换条件</strong>：连续 2 个月 nRMSE 改善 ≥1 个百分点、及时率/完整率达标、无重大事故；</li><li><strong>回滚方案</strong>：保留旧接口和数据，切换后 1 个月可回滚；</li><li><strong>数据迁移</strong>：历史预测、实测、模型版本可导出，不因切换丢失。</li></ol>
+<h3 id="s32">7.7 合同条款清单</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>条款</th><th>要写什么</th><th>不写的后果</th></tr></thead><tbody><tr><td>数据归属</td><td>原始数据归业主；供应商仅可为服务目的使用</td><td>供应商拿数据训练别家模型</td></tr><tr><td>模型知识产权</td><td>既有模型归供应商；定制模型/参数归属</td><td>切换时带不走模型</td></tr><tr><td>SLA</td><td>指标、口径、样本、权重、考核周期</td><td>事后扯皮</td></tr><tr><td>交付</td><td>格式、API、延迟、冗余、备份</td><td>关键时刻接口挂</td></tr><tr><td>责任</td><td>直接损失/间接损失、赔偿上限</td><td>预测错导致巨亏，赔不起</td></tr><tr><td>终止</td><td>通知期、过渡协助、数据删除</td><td>被锁定、无法切换</td></tr><tr><td>审计</td><td>日志、模型文档、可复现性</td><td>无法验证准确率真假</td></tr><tr><td>网络安全</td><td>数据加密、访问控制、等保</td><td>场站数据泄露</td></tr><tr><td>分包</td><td>是否允许、分包商名单</td><td>数据二次外流</td></tr><tr><td>排他</td><td>避免独家；保留多供应商</td><td>议价能力丧失</td></tr></tbody></table></div>
+<h3 id="s33">7.8 D 级采购算例：100 MW 风电场</h3>
+<p>设定：100 MW 风电，年发电量 250 GWh；三家供应商报价与 nRMSE：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>供应商</th><th>年服务费（万元）</th><th>nRMSE</th><th>误差成本假设（万元/年）</th><th>总成本（万元/年）</th><th>备注</th></tr></thead><tbody><tr><td>A</td><td>30</td><td>12%</td><td>720</td><td>750</td><td>便宜，精度一般</td></tr><tr><td>B</td><td>45</td><td>10%</td><td>600</td><td>645</td><td>提供 P10/P50/P90</td></tr><tr><td>C</td><td>80</td><td>9%</td><td>540</td><td>620</td><td>仅点预测，切换集成费 50 万元</td></tr></tbody></table></div>
+<p>假设：<strong>nRMSE 每降 1 个百分点，年偏差/实时成本节省 60 万元</strong>（D 级假设，真实项目要用自己的结算数据回算）。</p>
+<ul><li>首年：B = 645 万元；C = 620 + 50 = 670 万元；<strong>B 更优</strong>；</li><li>长期：C = 620 万元，比 B 低 25 万元/年；若 C 的概率预测能力补齐，或集成费摊薄，C 可能更优；</li><li>若 B 的概率预测对 newsvendor 申报的增量价值 ≥25 万元/年，B 与 C 打平；超过则 B 更优。</li></ul>
+<p><strong>结论不是“选 C”或“选 B”</strong>，而是：先把“误差成本”算清楚，再把概率预测的价值算进去，最后看切换成本。只比服务费，会把最贵的方案当成最便宜的。</p>
+<h3 id="s34">7.9 采购六个坑</h3>
+<ol><li><strong>只比价格，不比精度/及时率</strong>：便宜但经常迟到，等于没有。</li><li><strong>用供应商自己的回测数据验收</strong>：要让供应商在冻结测试集上复现。</li><li><strong>只看平均 nRMSE</strong>：极端天气/爬坡事件被平均掉。</li><li><strong>只买点预测</strong>：newsvendor 申报没有分布，SLA 与绩效脱节。</li><li><strong>数据归属/退出条款缺失</strong>：换供应商时带不走数据，被锁定。</li><li><strong>没有影子运行/回滚</strong>：直接切换，出问题无法退回。</li></ol>
+<h3 id="s35">7.10 与闭环的接口</h3>
+<pre tabindex="0"><code>供应商预测（P50、σ/分位数）
+   → 本文 §3 newsvendor 申报
+   → §5 储能跟踪
+   → §4 偏差结算
+   → 供应商记分卡（nRMSE、合格率、事件捕获）
+   → 下一轮采购/奖惩</code></pre>
+<p>SLA 最好与<strong>偏差成本</strong>挂钩，而不是只与 nRMSE 挂钩：同样 1 个百分点的误差，在高价峰段和低价谷段的代价不同。若做不到逐时段计价，至少分峰谷/天气层加权。</p>
+<hr>
+<h2 id="s36">8. 工具与复现</h2>
 <p><a href="../../skills/ems-dispatch/tools/loop.py">loop.py</a> 四个函数（纯标准库、确定性、无求解器）：</p>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>函数</th><th>作用</th></tr></thead><tbody><tr><td><code>norm_ppf(p)</code></td><td>标准正态逆累积分布（Acklam 近似，误差 &lt; 1.15e-9）</td></tr><tr><td><code>newsvendor_bid(p50, sigma, da, rt_buy, rt_sell)</code></td><td>临界分位申报，返回 Cu/Co/q*/z/bid</td></tr><tr><td><code>deviation_settlement(bid, realized, da, rt_buy, rt_sell, tolerance_ratio)</code></td><td>单时段日前+实时结算，支持免考 band</td></tr><tr><td><code>closed_loop_day(...)</code></td><td>日级闭环：申报→储能 dispatch 跟踪→结算，返回净收益/残差/吞吐</td></tr></tbody></table></div>
 <p>复现命令（仓库根目录）：</p>
 <pre tabindex="0"><code>PYTHONIOENCODING=utf-8 python skills/ems-dispatch/tools/selftest.py</code></pre>
 <p>J 段断言锁定本文 §3–§5 的全部数字。工具是筛查模型，不是结算引擎或报价顾问；真实场站须用实测出力、误差与省级结算规则替换。</p>
 <hr>
-<h2 id="s26">8. 常见错误（10 条）</h2>
+<h2 id="s37">9. 常见错误（10 条）</h2>
 <ol><li>报 P50 当最优，忽略罚价不对称下最优分位偏离 P50。</li><li>用点预测不用分布，无法算 newsvendor 分位。</li><li>Cu/Co 定义反了（Cu 是报低代价，Co 是报高代价）。</li><li>忽略免考 band，高估偏差罚金。</li><li>把储能闭环价值与纯套利收益简单叠加（容量互斥）。</li><li>只算避免的罚金，不减放弃的 surplus 收入与退化成本。</li><li>用当日实时信息倒灌当日申报（前视偏差）。</li><li>用正态假设套厚尾/有偏的真实误差，分位失真。</li><li>闭环不反馈，误差分布与罚价假设永远停在初始值。</li><li>把筛查工具当结算引擎，不替换省级实时价与考核口径。</li></ol>
 <hr>
-<h2 id="s27">9. 待核实与未定事项</h2>
+<h2 id="s38">10. 待核实与未定事项</h2>
 <div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>事项</th><th>状态</th><th>查证入口</th></tr></thead><tbody><tr><td>各省偏差免考 band 与考核公式</td><td>分省、会调整</td><td>各省现货结算细则</td></tr><tr><td>实时买回/卖价形成机制（是否 1.2×/1.5× 日前）</td><td>分省</td><td>各省实时市场规则</td></tr><tr><td>新能源/储能偏差考核特殊口径</td><td>分省</td><td>各省 136 衔接细则</td></tr><tr><td>真实误差分布（偏度/厚尾/时段异方差）</td><td>逐场站</td><td>实测出力 + 气象预报回算</td></tr><tr><td>储能参与偏差跟踪的资格与分成</td><td>分省</td><td>各省辅助服务/结算规则</td></tr></tbody></table></div>
 <hr>
-<h2 id="s28">10. 与技能和其他笔记的分工</h2>
+<h2 id="s39">11. 与技能和其他笔记的分工</h2>
 <ul><li><strong>本文</strong>：预测分布→newsvendor 申报→储能跟踪→偏差结算→反馈的闭环链路与算例。</li><li><a href="量化报价与交易风控-工程化-2026-11.html">量化报价与交易风控</a>：预测分布化、报价组合、回测、风控、结算归因的工程细节。</li><li><a href="储能EMS优化调度-算法与工程-2026-11.html">储能 EMS</a>：储能调度算法与多市场堆叠。</li><li><a href="潮流阻塞与节点电价-2026-11.html">潮流阻塞与节点电价</a>：申报用的节点价/结算口径从哪来。</li><li><a href="现货出清与价格形成-2026-11.html">现货出清与价格形成</a>：申报曲线进入 SCUC/SCED 后如何定价，以及最小出力/启停造成的 uplift。</li><li><a href="电价归因与盘前推演-2026-11.html">电价归因与盘前推演</a>：预测偏差实现为价格变化后，如何做因子分摊与盘前情景；本文负责误差→申报闭环。</li><li><a href="交易台日课与异常处置-SOP-2026-11.html">交易台日课与异常处置 SOP</a>：闭环的日课流程载体。</li><li>技能正文引用本文与 loop.py，不复述 newsvendor 推导。</li></ul>
-<h2 id="s29">速查</h2>
+<h2 id="s40">速查</h2>
 <pre tabindex="0"><code>闭环五步：预测分布 -&gt; newsvendor 申报 -&gt; 储能跟踪 -&gt; 偏差结算 -&gt; 反馈
 Cu = 日前 - 实时卖；Co = 实时买 - 日前；q* = Cu/(Cu+Co)
 最优申报 = P50 + z(q*)*sigma，不对称罚价下偏离 P50
@@ -221,7 +266,7 @@ Cu = 日前 - 实时卖；Co = 实时买 - 日前；q* = Cu/(Cu+Co)
     </article>
 
     <section class="related" aria-labelledby="related-title">
-      <div class="related-head"><h2 id="related-title">相关模块</h2><span>8</span></div>
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>10</span></div>
       <div class="related-grid">
         <a class="related-card" href="量化报价与交易风控-工程化-2026-11.html">
           <span class="related-type">同区延伸</span>
@@ -244,19 +289,19 @@ Cu = 日前 - 实时卖；Co = 实时买 - 日前；q* = Cu/(Cu+Co)
           <span>DC 潮流直觉、节点价三分量、断面约束与阻塞租金、网损因子、国内出清与结算口径、三节点手算与选址报价含义。</span>
         </a>
       </div>
-      <p class="related-rest"><b>更多关联</b><a href="现货出清与价格形成-2026-11.html">现货出清与价格形成：从报价到节点价</a><a href="交易台日课与异常处置-SOP-2026-11.html">交易台日课与异常处置 SOP</a><a href="电价归因与盘前推演-2026-11.html">电价归因与盘前推演：从负荷、新能源、检修、燃料、阻塞到价格</a><a href="电力系统通识-F-运行与调度-2026-11.html">电力系统通识 F · 运行与调度：从日计划到实时平衡</a></p>
+      <p class="related-rest"><b>更多关联</b><a href="现货出清与价格形成-2026-11.html">现货出清与价格形成：从报价到节点价</a><a href="交易台日课与异常处置-SOP-2026-11.html">交易台日课与异常处置 SOP</a><a href="电价归因与盘前推演-2026-11.html">电价归因与盘前推演：从负荷、新能源、检修、燃料、阻塞到价格</a><a href="电力系统通识-F-运行与调度-2026-11.html">电力系统通识 F · 运行与调度：从日计划到实时平衡</a><a href="场站交易托管与代理-2026-11.html">场站交易托管与代理：授权边界、基准设计与绩效归因</a><a href="新能源项目开发与并网-2026-11.html">新能源项目开发与并网</a></p>
     </section>
 
 <section class="related" aria-labelledby="paired-skills-title">
       <div class="related-head"><h2 id="paired-skills-title">Skills</h2><span>3</span></div>
       <div class="related-grid">
         <a class="related-card skill-pair" href="skill-electricity-trading-expert.html">
-          <span class="related-type">现货、中长期、结算与风控（含山东持仓与负价复盘、四川/云南水电、辽宁核电、甘肃煤电容量+辅助服务、甘送鲁省间实例包），并接入运行调度与规划充裕性</span>
+          <span class="related-type">现货、中长期、结算与风控（含山东持仓与负价复盘、四川/云南水电、辽宁核电、甘肃煤电容量+辅助服务、甘送鲁省间实例包），并接入运行调度、规划充裕性、市场力合规与直流输电</span>
           <b>电力交易专家</b>
           <span>技能 · 现货 · 结算 · 风控</span>
         </a>
         <a class="related-card skill-pair" href="skill-spot-bidding-quant.html">
-          <span class="related-type">预测、报价与回测（含山东煤电/储能/光储、浙江现货储能、蒙西风光储、山西储能、甘肃与蒙西新能源实例包）</span>
+          <span class="related-type">预测、报价与回测（含山东煤电/储能/光储、浙江现货储能、蒙西风光储、山西储能、甘肃与蒙西新能源实例包），并接入市场力合规与预测服务采购</span>
           <b>现货报价量化</b>
           <span>技能 · 预测 · 报价 · 回测</span>
         </a>
@@ -269,8 +314,8 @@ Cu = 日前 - 实时卖；Co = 实时买 - 日前；q* = Cu/(Cu+Co)
     </section>
 
     <nav class="pager" aria-label="上下篇">
-          <a class="prev" href="现货出清与价格形成-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">现货出清与价格形成：从报价到节点价</span></a>
-          <a class="next" href="电价归因与盘前推演-2026-11.html"><span class="dir">下一篇 →</span><span class="ttl">电价归因与盘前推演：从负荷、新能源、检修、燃料、阻塞到价格</span></a>
+          <a class="prev" href="电价归因与盘前推演-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">电价归因与盘前推演：从负荷、新能源、检修、燃料、阻塞到价格</span></a>
+          <a class="next" href="量化报价与交易风控-工程化-2026-11.html"><span class="dir">下一篇 →</span><span class="ttl">量化报价与交易风控</span></a>
     </nav>
 
     <footer class="doc-foot">
@@ -310,19 +355,30 @@ Cu = 日前 - 实时卖；Co = 实时买 - 日前；q* = Cu/(Cu+Co)
             <li class="lv3"><a href="#s22">6.1 反馈写什么</a></li>
             <li class="lv3"><a href="#s23">6.2 与日课衔接</a></li>
             <li class="lv3"><a href="#s24">6.3 防泄露</a></li>
-            <li class="lv2"><a href="#s25">7. 工具与复现</a></li>
-            <li class="lv2"><a href="#s26">8. 常见错误（10 条）</a></li>
-            <li class="lv2"><a href="#s27">9. 待核实与未定事项</a></li>
-            <li class="lv2"><a href="#s28">10. 与技能和其他笔记的分工</a></li>
-            <li class="lv2"><a href="#s29">速查</a></li>
-    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="17" data-more-label="展开 17 个小节" data-less-label="收起小节">展开 17 个小节</button>
+            <li class="lv2"><a href="#s25">7. 功率预测服务采购与供应商考核</a></li>
+            <li class="lv3"><a href="#s26">7.1 自建、采购还是混合</a></li>
+            <li class="lv3"><a href="#s27">7.2 买什么：服务边界</a></li>
+            <li class="lv3"><a href="#s28">7.3 SLA 指标：别只看“准确率”</a></li>
+            <li class="lv3"><a href="#s29">7.4 分天气、分时段考核</a></li>
+            <li class="lv3"><a href="#s30">7.5 奖惩与付款</a></li>
+            <li class="lv3"><a href="#s31">7.6 影子运行与切换</a></li>
+            <li class="lv3"><a href="#s32">7.7 合同条款清单</a></li>
+            <li class="lv3"><a href="#s33">7.8 D 级采购算例：100 MW 风电场</a></li>
+            <li class="lv3"><a href="#s34">7.9 采购六个坑</a></li>
+            <li class="lv3"><a href="#s35">7.10 与闭环的接口</a></li>
+            <li class="lv2"><a href="#s36">8. 工具与复现</a></li>
+            <li class="lv2"><a href="#s37">9. 常见错误（10 条）</a></li>
+            <li class="lv2"><a href="#s38">10. 待核实与未定事项</a></li>
+            <li class="lv2"><a href="#s39">11. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s40">速查</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="27" data-more-label="展开 27 个小节" data-less-label="收起小节">展开 27 个小节</button>
   </aside>
 </div>
 
 <nav class="page-aux" aria-label="页面辅助">
   <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
 </nav>
-<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.6" data-cutoff="2026-11-27" data-latest="2026-11-28" data-count="104">
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.6" data-cutoff="2026-11-27" data-latest="2026-11-28" data-count="105">
   <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.6）" title="查看更新记录（当前 v2.6）">
     <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
     <span class="cl-badge-ver">v2.6</span>
@@ -335,7 +391,7 @@ Cu = 日前 - 实时卖；Co = 实时买 - 日前；q* = Cu/(Cu+Co)
         <div class="cl-head-main">
           <span class="cl-kicker">RELEASE NOTES</span>
           <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.6</span></h2>
-          <p class="cl-sub" id="cl-subtitle">当前版本 v2.6 · 数据截止 2026-11-27 · 104 条记录</p>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.6 · 数据截止 2026-11-27 · 105 条记录</p>
         </div>
         <div class="cl-actions">
           <div class="cl-lang" role="group" aria-label="切换语言">
@@ -352,7 +408,7 @@ Cu = 日前 - 实时卖；Co = 实时买 - 日前；q* = Cu/(Cu+Co)
         </div>
       </div>
       <footer class="cl-foot">
-        <span data-changelog-meta>v2.6 · 2026-11-27 · 104 条记录</span>
+        <span data-changelog-meta>v2.6 · 2026-11-27 · 105 条记录</span>
         <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
       </footer>
     </div>

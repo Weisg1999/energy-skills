@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>直流输电与柔性直流：LCC、VSC 与故障边界 | energy-skills 知识库</title>
+<meta name="description" content="直流不是一条线，而是一套换流器、控制保护与交流系统强耦合的电力电子系统。本页按五层展开：LCC 的换相物理与换相失败、VSC/MMC 的子模块与直流故障、直流保护与黑启动、SCR/ESCR 与宽频振荡、以及输电能力/可用率/损耗/辅助服务如何进入交易与投资。含 LCC 与 VSC 两份 D 级合成算例和一张故障—市场后果对照表。">
+<link rel="icon" type="image/svg+xml" href="../assets/logo-book-favicon.svg">
+<script>
+(function(){try{var t=localStorage.getItem('es-theme');if(!/^(light|cream|green|dark)$/.test(t||'')){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/knowledge.css">
+<link rel="stylesheet" href="../assets/theme-menu.css">
+<link rel="stylesheet" href="../assets/changelog.css">
+</head>
+<body data-cat="cross" id="top">
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="scrim"></div>
+
+<header class="topbar">
+  <a class="back" href="../index.html" data-home-link aria-label="返回知识库"><span aria-hidden="true">←</span><span class="back-label">知识库</span></a>
+  <div class="crumb">
+    <span class="crumb-cat">05 · CROSS</span>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-doc">直流输电与柔性直流：LCC、VSC 与故障边界</span>
+  </div>
+  <div class="topbar-act">
+    <div class="theme-picker" data-theme-picker>
+      <button class="theme-toggle" type="button" data-theme-menu aria-label="选择主题" title="选择主题">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="5"/><circle cx="15" cy="9" r="5"/><circle cx="12" cy="15" r="5"/></svg>
+      </button>
+    </div>
+    <details class="more">
+      <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
+      <div class="more-menu">
+        <a class="src" href="../直流输电与柔性直流-2026-11.md">.md 源文件<small>knowledge/直流输电与柔性直流-2026-11.md</small></a>
+        <a class="src" href="../index.html#method">使用与口径</a>
+      </div>
+    </details>
+    <button class="toc-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="nav">目录</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="nav">
+    <div class="nav-kicker">当前分类</div>
+    <div class="nav-num">05 · CROSS</div>
+    <h2 class="nav-cat"><a href="../index.html#cross">横向专题</a></h2>
+    <ul class="nav-list">
+              <li><a href="海外并网与合规-2026-11.html">海外并网与合规手册（2026 版）：从 grid code 到电池护照</a></li>
+              <li><a href="容量机制横向对照-2026-11.html">容量机制横向对照（2026 版）：年金、拍卖、双向 CfD 与战略储备</a></li>
+              <li><a href="辅助服务与平衡市场对照-2026-11.html">辅助服务与平衡市场对照（2026 版）：从 FCR 到 FCAS，从 BM 到 EPRX</a></li>
+              <li><a href="储能收益建模与数据源-2026-11.html">储能收益建模与数据源（2026 版）：从 5 分钟价格到 15 年现金流</a></li>
+              <li><a href="跨国PPA与绿证-2026-11.html">跨国 PPA、绿证与 tolling（2026 版）：从 GO 到 merchant tail</a></li>
+              <li><a href="海外市场同口径快照与投决日历-2026-11.html">海外市场同口径快照与投决日历（2026 版）：十一市场、七列口径、五张工单</a></li>
+              <li><a href="气象与电力交易-2026-11.html">气象与电力交易（2026 版）：数据源、四条转换链与天气风险</a></li>
+              <li><a href="燃料与电力交易-2026-11.html">燃料与电力交易（2026 版）：一次能源、边际成本与报价</a></li>
+              <li><a href="频率惯量与灵活性供需-2026-11.html">频率、惯量与灵活性供需：从物理缓冲到分时间尺度货架</a></li>
+              <li class="on" aria-current="page"><a href="直流输电与柔性直流-2026-11.html">直流输电与柔性直流：LCC、VSC 与故障边界</a></li>
+              <li><a href="合成案例复盘库-2026-11.html">合成案例复盘库：十个交易台决策复盘</a></li>
+              <li><a href="合同与条款库-2026-11.html">合同与条款库：五类合同的条款矩阵与谈判红线</a></li>
+    </ul>
+    <div class="nav-others">
+      <div class="nav-kicker">其他分类</div>
+      <ul>
+              <li><a href="../index.html#foundation"><b>01</b>通识与经济学</a></li>
+              <li><a href="../index.html#spot"><b>02</b>电力现货与省间交易</a></li>
+              <li><a href="../index.html#province"><b>03</b>中国省级市场</a></li>
+              <li><a href="../index.html#intl"><b>04</b>海外市场</a></li>
+              <li><a href="../index.html#price"><b>06</b>电价</a></li>
+              <li><a href="../index.html#renewable"><b>07</b>新能源与并网</a></li>
+              <li><a href="../index.html#storage"><b>08</b>储能与 EMS</a></li>
+              <li><a href="../index.html#park"><b>09</b>综合能源与零碳园区</a></li>
+              <li><a href="../index.html#carbon"><b>10</b>碳市场与碳管理</a></li>
+              <li><a href="../index.html#vpp"><b>11</b>虚拟电厂</a></li>
+              <li><a href="../index.html#index"><b>12</b>索引、查证与工具</a></li>
+              <li><a href="../index.html#research"><b>13</b>调研底稿</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="doc-head">
+      <div class="kicker">05 · CROSS<i>知识模块</i></div>
+      <h1 class="doc-title">直流输电与柔性直流：LCC、VSC 与故障边界（2026-11）</h1>
+      <p class="lede">直流不是一条线，而是一套换流器、控制保护与交流系统强耦合的电力电子系统。本页按五层展开：LCC 的换相物理与换相失败、VSC/MMC 的子模块与直流故障、直流保护与黑启动、SCR/ESCR 与宽频振荡、以及输电能力/可用率/损耗/辅助服务如何进入交易与投资。含 LCC 与 VSC 两份 D 级合成算例和一张故障—市场后果对照表。</p>
+      <p class="hook">2026-11 · 直流的关键不是额定功率，而是故障边界与可用率</p>
+      <div class="tags"><span class="tag">直流输电</span><span class="tag">HVDC</span><span class="tag">LCC</span><span class="tag">VSC</span><span class="tag">MMC</span><span class="tag">换流器</span><span class="tag">换相失败</span><span class="tag">熄弧角</span><span class="tag">触发角</span><span class="tag">重叠角</span><span class="tag">VDCOL</span><span class="tag">子模块</span><span class="tag">半桥</span><span class="tag">全桥</span><span class="tag">直流断路器</span><span class="tag">DCCB</span><span class="tag">黑启动</span><span class="tag">SCR</span><span class="tag">ESCR</span><span class="tag">弱电网</span><span class="tag">宽频振荡</span><span class="tag">多馈入</span><span class="tag">输电能力</span><span class="tag">可用率</span><span class="tag">损耗</span><span class="tag">辅助服务</span></div>
+      <div class="doc-meta"><span>约 12.7k 字</span><span>阅读约 23 分钟</span><span>13 节</span><span>数据截止 2026-11-27</span></div>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>本页目录（13）</summary>
+      <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv2"><a href="#s5">1. 为什么用直流</a></li>
+            <li class="lv2"><a href="#s9">2. LCC-HVDC：换相物理</a></li>
+            <li class="lv2"><a href="#s17">3. VSC-HVDC 与 MMC：自换相</a></li>
+            <li class="lv2"><a href="#s25">4. 故障、保护与恢复</a></li>
+            <li class="lv2"><a href="#s32">5. AC/DC 交互：强弱、振荡与多馈入</a></li>
+            <li class="lv2"><a href="#s39">6. 规划、运行与市场</a></li>
+            <li class="lv2"><a href="#s50">7. 标准、设计与尽调</a></li>
+            <li class="lv2"><a href="#s55">8. 常见错误（12 条）</a></li>
+            <li class="lv2"><a href="#s56">9. 速查</a></li>
+            <li class="lv2"><a href="#s60">10. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s61">11. 资料来源与口径</a></li>
+            <li class="lv2"><a href="#s62">12. 更新记录</a></li>
+      </ol>
+    </details>
+
+    <article class="prose">
+<aside class="note note-head"><p>数据截止：2026-11-27｜定位：知识库模块（跨区输电·直流与柔性直流）</p><p>相关技能：<a href="../../skills/electricity-trading-expert/SKILL.md">电力交易专家</a>（跨区与输电权）、<a href="../../skills/renewable-project-development/SKILL.md">新能源项目开发与并网</a>（海上风电与并网）、<a href="../../skills/storage-investment-operations/SKILL.md">储能投资与运营</a>（构网型与辅助服务）</p><p>用途：回答“LCC 和 VSC 怎么选”“换相失败是什么、为什么会连锁”“柔直能不能黑启动”“弱电网为什么难接”“直流故障怎么清”“直流停运对交易有什么影响”六类问题。</p><p>算例：两份 <strong>D 级合成算例</strong>——±800 kV/8,000 MW LCC 与 ±500 kV/2,000 MW VSC；所有数字仅用于演示口径，不对应任何真实工程、厂商、省份或合同。</p><p>边界：本文讲直流输电的物理、控制、保护与市场接口，不替代成套设计、绝缘配合、保护定值、并网协议和调度规程；具体工程以设计文件、型式试验、现场调试和调度协议为准。</p></aside>
+<hr>
+<h2 id="s1">0. 一页看懂</h2>
+<h3 id="s2">0.1 三句话</h3>
+<ul><li><strong>直流不是一条线，是一套系统</strong>：换流器、换流变、阀厅、滤波器、控制保护、接地极、交流系统，任何一环出问题都可能闭锁。</li><li><strong>LCC 和 VSC 是两种物理</strong>：LCC 靠电网电压换相，强依赖交流系统，换相失败是固有风险；VSC 自换相，能独立控制有功/无功、可黑启动，但直流故障清除更难、成本更高。</li><li><strong>直流的关键指标不是额定功率</strong>：可用率、强迫停运率、换相失败/闭锁次数、损耗、故障清除时间、电压/频率支撑能力，才决定它在市场上的真实价值。</li></ul>
+<h3 id="s3">0.2 一张对比表</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>维度</th><th>LCC-HVDC</th><th>VSC-HVDC（以 MMC 为主）</th></tr></thead><tbody><tr><td>换相方式</td><td>电网换相（晶闸管）</td><td>自换相（IGBT）</td></tr><tr><td>典型容量</td><td>数千 MW 级，单回可到 8–12 GW</td><td>数百到数千 MW 级</td></tr><tr><td>直流电压</td><td>±500 kV、±800 kV、±1,100 kV</td><td>±320 kV、±500 kV、±800 kV</td></tr><tr><td>有功/无功</td><td>有功可控，无功消耗大</td><td>P/Q 独立可控，可四象限运行</td></tr><tr><td>弱电网适应性</td><td>差，需较强交流系统</td><td>较好，可接入弱电网/孤岛</td></tr><tr><td>换相失败</td><td>有，逆变侧常见</td><td>无换相失败概念</td></tr><tr><td>黑启动</td><td>不能单独黑启动</td><td>可以黑启动</td></tr><tr><td>直流故障清除</td><td>靠交流侧/直流侧开关，换流器不能自清</td><td>半桥不能自清；全桥/DCCB 可清</td></tr><tr><td>损耗</td><td>换流站约 0.7%–0.8%/端</td><td>换流站约 1%/端，全桥更高</td></tr><tr><td>占地/成本</td><td>滤波器、换流变大，但阀器件成熟</td><td>阀厅/子模块、直流保护，近端成本高</td></tr><tr><td>适用场景</td><td>远距离大容量、海底电缆、异步联网</td><td>海上风电、弱电网、多端、城市馈入、黑启动</td></tr></tbody></table></div>
+<h3 id="s4">0.3 本文不做什么</h3>
+<ul><li>不推荐具体厂商、阀型、子模块数量或控制参数；不同工程差异很大。</li><li>不给出真实工程的地理位置、输送容量、利用小时、电价或合同。</li><li>不替代成套设计、绝缘配合、保护定值、RTDS 试验和现场调试。</li></ul>
+<hr>
+<h2 id="s5">1. 为什么用直流</h2>
+<h3 id="s6">1.1 六个技术场景</h3>
+<ol><li><strong>远距离大容量</strong>：架空线路直流没有交流充电电流，走廊更窄，适合大容量点对点。</li><li><strong>海底电缆</strong>：交流电缆充电电流随距离增加，超过一定长度输送能力急剧下降；直流电缆没有这个问题。</li><li><strong>异步联网</strong>：两个电网频率/相位不同步，交流互联会失步，直流可以“背靠背”解耦。</li><li><strong>城市馈入</strong>：大城市短路容量不足、走廊紧张，直流可以地下/电缆馈入，不增加交流短路电流。</li><li><strong>海上风电</strong>：远海风电用交流电缆损耗大，VSC 直流汇集送出更经济。</li><li><strong>多端/直流电网</strong>：多个换流站接入同一 DC 母线，实现多电源、多负荷的功率调配。</li></ol>
+<h3 id="s7">1.2 交流 vs 直流：边界在哪</h3>
+<p>没有“直流一定更优”的定律。经济边界取决于：</p>
+<ul><li>距离：架空线路通常数百公里以上直流才有优势；电缆通常几十公里以上。</li><li>容量：容量越大，换流站单位成本越低。</li><li>走廊：直流走廊窄，征地/海缆成本低。</li><li>损耗：直流线路损耗低，但换流站损耗高；距离短时换流站损耗占比大。</li><li>可靠性：直流单极/双极、换流器冗余、可用率。</li><li>系统需求：是否需要异步互联、黑启动、无功支撑、故障隔离。</li></ul>
+<p><strong>工程经验</strong>：远距离大容量架空输电，LCC 更成熟；海上风电、弱电网、多端、黑启动，VSC 更合适。具体边界要做全生命周期经济性比较，不能只看线路造价。</p>
+<h3 id="s8">1.3 什么时候不该用直流</h3>
+<ul><li>距离短、容量小，换流站成本收不回来；</li><li>利用率低，换流站固定损耗和折旧压垮经济性；</li><li>交流系统太弱，LCC 无法稳定换相；</li><li>没有直流故障清除方案，多端可靠性不达标；</li><li>缺乏运维能力、备品备件和故障抢修体系；</li><li>只为“技术先进”而建，没有系统需求。</li></ul>
+<hr>
+<h2 id="s9">2. LCC-HVDC：换相物理</h2>
+<h3 id="s10">2.1 拓扑</h3>
+<p>一个 12 脉波 LCC 换流站包括：</p>
+<ul><li><strong>换流变压器</strong>：为两个 6 脉波桥提供相位差 30° 的阀侧电压；</li><li><strong>晶闸管阀</strong>：12 脉波，每桥 6 臂，每臂多个晶闸管串联；</li><li><strong>平波电抗器</strong>：抑制直流电流纹波和故障电流上升率；</li><li><strong>交流滤波器/电容器</strong>：滤除特征谐波，并提供部分无功；</li><li><strong>直流滤波器</strong>：滤除直流侧谐波；</li><li><strong>接地极/接地系统</strong>：为单极运行和故障电流提供回路；</li><li><strong>控制保护系统</strong>：触发、测量、保护、通信。</li></ul>
+<p>12 脉波的好处：交流侧 5、7 次谐波基本抵消，特征谐波变为 11、13、23、25 次；直流侧纹波也降低。</p>
+<h3 id="s11">2.2 换相过程：α、μ、γ</h3>
+<ul><li><strong>触发角 α</strong>：晶闸管开始导通的电角度，整流侧通常 10°–20°；</li><li><strong>换相重叠角 μ</strong>：两相之间电流从一相转移到另一相所需角度，由交流侧电抗和直流电流决定；</li><li><strong>熄弧角 γ</strong>：逆变侧晶闸管电流过零后，到承受反向电压结束的角度；γ 太小会换相失败；</li><li><strong>超前角 β</strong>：逆变侧触发超前角，β = 180° − α（符号随定义），γ ≈ β − μ。</li></ul>
+<p>换相失败的物理：逆变侧电流还没完全转移到下一相，上一相晶闸管就失去反向电压而重新导通，导致直流侧短路/电流激增。<strong>γ 越小、交流电压越低、直流电流越大，越容易换相失败。</strong></p>
+<h3 id="s12">2.3 电压与电流方程</h3>
+<p>单个 6 脉波桥的理想空载直流电压：</p>
+<pre tabindex="0"><code>Ud0 = (3√2 / π) × U_LL ≈ 1.35 × U_LL</code></pre>
+<p>其中 U_LL 为阀侧线电压有效值。12 脉波由两个 6 脉波桥串联，直流电压翻倍。</p>
+<p>考虑换相重叠后的直流电压：</p>
+<pre tabindex="0"><code>Ud = Ud0 × cosα − (3/π) × Xc × Id</code></pre>
+<p>其中 Xc 为每相换相电抗，Id 为直流电流。逆变侧用熄弧角 γ 表示时，形式类似，符号随电流正方向定义：</p>
+<pre tabindex="0"><code>Ud_inv = Ud0 × cosγ − (3/π) × Xc × Id</code></pre>
+<p>直流电流由两端电压差和直流电阻决定：</p>
+<pre tabindex="0"><code>Id = (Ud_rect − Ud_inv) / R_d</code></pre>
+<p><strong>关键直觉</strong>：α 增大 → 整流电压下降；γ 增大 → 逆变电压下降/裕度增大；Id 增大 → 换相压降增大。控制就是在这几个量之间找平衡。</p>
+<h3 id="s13">2.4 控制体系</h3>
+<p>LCC 的经典控制：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>控制</th><th>作用</th><th>典型设置</th></tr></thead><tbody><tr><td>整流侧定电流</td><td>维持直流电流/功率</td><td>电流指令由调度/功率控制给出</td></tr><tr><td>逆变侧定熄弧角</td><td>保证换相裕度</td><td>γ 通常 15°–18°</td></tr><tr><td>定功率</td><td>按计划输送</td><td>功率指令 + 电流限制</td></tr><tr><td>VDCOL</td><td>低压限流</td><td>直流电压低时自动降电流，帮助恢复</td></tr><tr><td>分接头控制</td><td>维持触发角/熄弧角在范围</td><td>换流变有载调压</td></tr><tr><td>电流裕度</td><td>两端电流指令差</td><td>通常 10%–15%</td></tr></tbody></table></div>
+<p><strong>VDCOL（Voltage Dependent Current Order Limiter）</strong>是直流恢复的核心：交流故障导致直流电压下降时，VDCOL 主动降低电流指令，减少无功消耗和无功冲击，等电压恢复后再逐步升流。没有 VDCOL，故障后容易反复换相失败。</p>
+<h3 id="s14">2.5 无功与损耗</h3>
+<p>LCC 换流器本身消耗无功，额定工况下约为有功的 <strong>50%–60%</strong>；交流滤波器和电容器可以提供一部分，剩余由交流系统提供。因此：</p>
+<ul><li>受端换流站需要无功支撑（滤波器、调相机、STATCOM）；</li><li>弱电网下无功不足会压低电压，诱发换相失败；</li><li>直流功率突变会带来无功冲击，影响附近负荷。</li></ul>
+<p>损耗构成：</p>
+<ul><li>换流阀通态/开关损耗；</li><li>换流变损耗；</li><li>平波电抗器、滤波器损耗；</li><li>直流线路 I²R 损耗；</li><li>接地极/辅助系统损耗。</li></ul>
+<p>换流站损耗通常约 <strong>0.7%–0.8%/端</strong>，两端合计 1.4%–1.6%；长线路另算。</p>
+<h3 id="s15">2.6 换相失败：原因、过程、后果</h3>
+<p><strong>原因</strong>：</p>
+<ul><li>受端交流电压跌落（最常见）；</li><li>交流系统相位跳变；</li><li>频率偏差；</li><li>直流电流过大；</li><li>触发脉冲丢失/错误；</li><li>多馈入直流之间的相互作用。</li></ul>
+<p><strong>过程</strong>：</p>
+<ol><li>逆变侧 γ 减小到临界值以下；</li><li>上一相晶闸管未能恢复阻断，直流侧出现短暂短路；</li><li>直流电流激增、直流电压下降；</li><li>控制系统降电流/移相，保护动作；</li><li>电压恢复后重启，可能再次失败，形成连续换相失败。</li></ol>
+<p><strong>后果</strong>：</p>
+<ul><li>直流功率瞬时大幅下降，送/受端出现功率缺额；</li><li>受端无功需求激增，电压进一步跌落；</li><li>送端机组甩负荷/超速，受端频率下降；</li><li>保护闭锁，损失全部输送功率；</li><li>多回直流同时换相失败可能引发连锁故障。</li></ul>
+<p><strong>抑制措施</strong>：</p>
+<ul><li>增强交流系统（同步调相机、STATCOM、SVC）；</li><li>优化 VDCOL 和恢复策略；</li><li>增加 γ 裕度（牺牲一点损耗）；</li><li>采用换相失败预测（CFPREV）提前移相；</li><li>多馈入直流协调控制；</li><li>受端电网加强、避免多回直流落点过近。</li></ul>
+<h3 id="s16">2.7 LCC 的优缺点</h3>
+<p><strong>优点</strong>：技术成熟、容量大、电压高、损耗相对低、单位造价低、可靠性经过长期验证。</p>
+<p><strong>缺点</strong>：需要较强交流系统；消耗大量无功；换相失败固有；不能黑启动；直流故障清除依赖交流侧/直流开关；多端困难。</p>
+<hr>
+<h2 id="s17">3. VSC-HVDC 与 MMC：自换相</h2>
+<h3 id="s18">3.1 拓扑</h3>
+<p>VSC 用可关断器件（IGBT）组成电压源换流器。现代高压大容量 VSC 基本采用<strong>模块化多电平换流器（MMC）</strong>：</p>
+<ul><li>每相上下两个桥臂；</li><li>每个桥臂由 N 个子模块（SM）串联；</li><li>子模块典型为半桥（两个 IGBT + 电容）或全桥（四个 IGBT + 电容）；</li><li>桥臂电抗器抑制环流和故障电流上升率；</li><li>直流母线正负极。</li></ul>
+<p>MMC 的输出电压通过“投入/切除”子模块逼近正弦波，开关频率低、损耗小、谐波少。</p>
+<h3 id="s19">3.2 子模块与均压</h3>
+<ul><li><strong>半桥子模块</strong>：可输出 0 或 +Uc，不能输出负电压；直流故障时反并联二极管提供通路，换流器不能自清故障。</li><li><strong>全桥子模块</strong>：可输出 0、+Uc、−Uc，能阻断直流故障电流，但器件更多、损耗更高、成本更高。</li><li><strong>钳位双子模块</strong>：折中方案，兼顾故障阻断与损耗。</li></ul>
+<p>子模块电容电压必须均衡：通过排序算法选择投入哪些子模块，让电容电压高的先放电、低的先充电。均压不好会导致个别子模块过压、器件损坏。</p>
+<h3 id="s20">3.3 调制与控制</h3>
+<p>MMC 常用调制：</p>
+<ul><li>最近电平逼近（NLM）：低开关频率，适合高压大容量；</li><li>载波移相 PWM：谐波性能好，开关频率高；</li><li>混合调制。</li></ul>
+<p>控制层次：</p>
+<ol><li><strong>阀级控制</strong>：子模块均压、环流抑制、调制；</li><li><strong>换流器级控制</strong>：内环电流控制（dq 解耦）、外环功率/电压控制；</li><li><strong>系统级控制</strong>：有功/频率、无功/电压、直流电压、黑启动、多端协调。</li></ol>
+<p>VSC 可以：</p>
+<ul><li>独立控制有功和无功（四象限运行）；</li><li>向弱电网/无源网络供电；</li><li>作为 STATCOM 提供无功；</li><li>黑启动；</li><li>参与频率/惯量支撑（grid-forming）。</li></ul>
+<h3 id="s21">3.4 直流故障：半桥的软肋</h3>
+<p>半桥 MMC 的致命问题：<strong>直流侧故障时，交流侧通过子模块反并联二极管向故障点馈入电流，IGBT 关断也挡不住</strong>。</p>
+<p>处理方案：</p>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>方案</th><th>原理</th><th>优点</th><th>缺点</th></tr></thead><tbody><tr><td>交流断路器</td><td>跳开交流侧，切断馈入</td><td>简单、便宜</td><td>慢（数十 ms），全站停运</td></tr><tr><td>全桥子模块</td><td>子模块输出负电压，阻断故障电流</td><td>可自清，恢复快</td><td>器件多、损耗高、成本高</td></tr><tr><td>直流断路器（DCCB）</td><td>高速机械/混合开关切断直流电流</td><td>选择性好，适合多端</td><td>成本高、技术复杂</td></tr><tr><td>限流电抗器</td><td>限制故障电流上升率</td><td>配合保护</td><td>不能单独清除故障</td></tr></tbody></table></div>
+<p>DCCB 的难点：直流没有自然过零点，电弧难熄；需要强迫电流过零并吸收线路电感能量。混合式 DCCB 通常数毫秒级动作，但造价高。</p>
+<h3 id="s22">3.5 损耗</h3>
+<p>MMC 换流站损耗通常约 <strong>1%/端</strong>，全桥更高（约 1.2%–1.5%/端）；两端合计 2%–3%。海上平台还要考虑换流站体积、重量和冷却。</p>
+<h3 id="s23">3.6 VSC 的优缺点</h3>
+<p><strong>优点</strong>：弱电网/孤岛适应性强；P/Q 独立；可黑启动；无换相失败；多端/直流电网友好；模块化、扩展性好。</p>
+<p><strong>缺点</strong>：单位容量成本高；损耗略高；半桥直流故障不能自清；阀厅/子模块数量大；控制复杂；宽频振荡风险。</p>
+<h3 id="s24">3.7 LCC vs VSC：怎么选</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>需求</th><th>优先 LCC</th><th>优先 VSC</th></tr></thead><tbody><tr><td>远距离大容量架空</td><td>是</td><td>容量/成本允许时也可</td></tr><tr><td>海底电缆长距离</td><td>是（大容量）</td><td>是（海上风电/多端）</td></tr><tr><td>弱电网/孤岛</td><td>否</td><td>是</td></tr><tr><td>黑启动</td><td>否</td><td>是</td></tr><tr><td>多端/直流电网</td><td>困难</td><td>是</td></tr><tr><td>成本敏感、超大容量</td><td>是</td><td>否</td></tr><tr><td>城市馈入、短路电流受限</td><td>可</td><td>是</td></tr><tr><td>需要独立无功支撑</td><td>需额外设备</td><td>是</td></tr></tbody></table></div>
+<hr>
+<h2 id="s25">4. 故障、保护与恢复</h2>
+<h3 id="s26">4.1 交流侧故障</h3>
+<ul><li>电压跌落 → LCC 换相失败/VSC 电流限幅；</li><li>相位跳变 → LCC 换相失败；</li><li>频率偏差 → 控制失稳；</li><li>不对称故障 → 负序分量，VSC 需负序抑制。</li></ul>
+<p>保护：交流母线保护、换流变保护、阀保护、滤波器保护、过电压/欠电压保护。</p>
+<h3 id="s27">4.2 直流侧故障</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>故障</th><th>LCC</th><th>VSC（半桥）</th><th>VSC（全桥/DCCB）</th></tr></thead><tbody><tr><td>极对极短路</td><td>直流电流激增，逆变侧换相失败，保护闭锁</td><td>交流侧馈入，故障电流持续，需跳交流</td><td>子模块阻断/DCCB 清除</td></tr><tr><td>极对地故障</td><td>接地极电流，保护检测</td><td>直流母线电压失衡</td><td>同上</td></tr><tr><td>直流线路断线</td><td>电流中断，功率丢失</td><td>电流中断</td><td>同上</td></tr></tbody></table></div>
+<p>LCC 直流故障清除：保护移相/闭锁，直流电流过零，线路去离子（数百 ms），再重启。失败则隔离线路。</p>
+<p>VSC 半桥故障清除：跳交流断路器（数十 ms），全站停运；或 DCCB 选择性隔离故障线路，健全部分继续运行。</p>
+<h3 id="s28">4.3 直流保护</h3>
+<ul><li><strong>行波保护</strong>：故障初始行波，速度快，适合长线路；</li><li><strong>直流差动保护</strong>：选择性好，需通信；</li><li><strong>过流/欠压保护</strong>：后备；</li><li><strong>di/dt 保护</strong>：故障电流上升率；</li><li><strong>接地极电流保护</strong>：单极/双极不平衡。</li></ul>
+<p>保护要求：速度快（ms 级）、选择性好、可靠不误动。直流保护误动会导致整回停运，损失巨大。</p>
+<h3 id="s29">4.4 换流器内部故障</h3>
+<ul><li>阀晶闸管/IGBT 损坏；</li><li>子模块电容故障；</li><li>换流变匝间/套管故障；</li><li>冷却系统故障；</li><li>控制/测量/通信故障。</li></ul>
+<p>冗余设计：阀冗余、子模块冗余、控制双套、通信双通道、辅助电源冗余。冗余不足会导致单点故障停运。</p>
+<h3 id="s30">4.5 黑启动与恢复</h3>
+<ul><li><strong>VSC</strong>：可以给无源网络建立电压/频率，启动局部负荷，逐步扩大孤网；黑启动需要能量来源（储能、柴油机、小水电）和严密的序贯控制。</li><li><strong>LCC</strong>：需要交流电压才能换相，不能单独黑启动；可配合同步调相机/发电机。</li><li><strong>恢复顺序</strong>：先建立孤网电压，再启动机组/负荷，再并网；避免过电压、过电流、频率崩溃。</li><li><strong>黑启动试验</strong>：必须实际演练，不能只看设计文件。</li></ul>
+<h3 id="s31">4.6 故障记录与复盘</h3>
+<p>至少记录：故障录波（COMTRADE）、保护动作序列、控制量（α/γ/Id/Ud）、阀电流、子模块电压、交流电压/频率、通信状态。复盘要回答：故障起点、保护是否正确、控制是否配合、恢复是否最优、是否需要改造。</p>
+<hr>
+<h2 id="s32">5. AC/DC 交互：强弱、振荡与多馈入</h2>
+<h3 id="s33">5.1 SCR 与 ESCR</h3>
+<p>短路比：</p>
+<pre tabindex="0"><code>SCR = S_ac / P_dc
+ESCR = (S_ac − Q_filter) / P_dc</code></pre>
+<p>其中 S_ac 为交流母线短路容量，P_dc 为直流额定功率，Q_filter 为滤波器/电容器无功。ESCR 扣除滤波器无功，更接近真实支撑能力。</p>
+<p>工程经验：</p>
+<ul><li>LCC 通常需要较高 ESCR（约 2.5–3 以上，随控制/支撑设备变化）；</li><li>VSC 可接入较低 ESCR（约 1.5 或更低，取决于控制策略）；</li><li>ESCR 过低 → 电压不稳、换相失败、宽频振荡、谐波放大。</li></ul>
+<p><strong>SCR 不是唯一指标</strong>：还要看电网强度、阻抗特性、惯量、无功设备、故障水平、邻近直流。</p>
+<h3 id="s34">5.2 弱电网问题</h3>
+<ul><li>电压支撑不足，LCC 换相失败风险高；</li><li>VSC 锁相环（PLL）与弱电网耦合，可能失稳；</li><li>谐波谐振/放大；</li><li>次同步/超同步振荡；</li><li>故障后恢复慢。</li></ul>
+<p>解决：同步调相机、STATCOM、SVC、构网型控制、增加短路容量、优化控制参数。</p>
+<h3 id="s35">5.3 多馈入直流</h3>
+<p>多回直流落点靠近，会通过交流系统相互作用：</p>
+<ul><li>一回换相失败导致母线电压跌落，诱发另一回换相失败；</li><li>多馈入短路比（MISCR）低时，交互作用强；</li><li>需要协调控制、先后恢复、无功支撑。</li></ul>
+<p>监测指标：多馈入交互作用因子、MISCR、同时换相失败概率。</p>
+<h3 id="s36">5.4 海上风电</h3>
+<ul><li>远海风电常用 VSC-HVDC 送出；</li><li>海上平台空间/重量受限，MMC 阀厅和冷却系统要紧凑；</li><li>多端直流可汇集多个风电场；</li><li>黑启动可为海上平台/孤岛供电；</li><li>直流故障清除方案影响可用率和投资。</li></ul>
+<h3 id="s37">5.5 宽频振荡</h3>
+<p>VSC 控制与电网阻抗在宽频段（数 Hz 到数千 Hz）可能形成负阻尼，引发振荡：</p>
+<ul><li>次同步振荡（SSO）；</li><li>高频谐振；</li><li>控制器相互作用。</li></ul>
+<p>分析和抑制见 <a href="宽频振荡与场站阻抗分析-2026-11.html">宽频振荡与场站阻抗分析</a>。直流工程要做的不是“保证不振荡”，而是“识别风险、设计阻尼、验证鲁棒性”。</p>
+<h3 id="s38">5.6 构网型与跟网型</h3>
+<ul><li><strong>跟网型（grid-following）</strong>：锁相环跟踪电网电压，依赖强电网；弱电网易失稳。</li><li><strong>构网型（grid-forming）</strong>：自主建立电压/频率，提供惯量和阻尼；适合弱电网、孤岛、黑启动。</li><li>构网型 VSC 与同步机、其他 VSC 之间也可能交互，需要协调。</li></ul>
+<hr>
+<h2 id="s39">6. 规划、运行与市场</h2>
+<h3 id="s40">6.1 输电能力</h3>
+<p>直流输电能力不只额定功率：</p>
+<ul><li><strong>连续额定</strong>：长期运行容量；</li><li><strong>短时过负荷</strong>：按设计（如 1.1–1.2 pu，持续数十分钟）；</li><li><strong>N-1</strong>：单极/单换流器/单线路故障后的剩余能力；</li><li><strong>可用率</strong>：受强迫停运、计划检修、降额影响；</li><li><strong>系统支撑</strong>：弱电网下可能降额运行。</li></ul>
+<p>交易上要把“额定容量”和“可用容量”分开：额定 8,000 MW 不等于每天可用 8,000 MW。</p>
+<h3 id="s41">6.2 停运与降额</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>事件</th><th>影响</th><th>市场后果</th></tr></thead><tbody><tr><td>单极故障</td><td>双极变单极，损失一半</td><td>送端富余、受端缺电、价差扩大</td></tr><tr><td>换流器故障</td><td>功率下降/闭锁</td><td>临时稀缺、备用调用</td></tr><tr><td>直流线路故障</td><td>整回停运</td><td>大功率丢失、频率/电压冲击</td></tr><tr><td>计划检修</td><td>容量下降</td><td>可提前安排，影响中长期</td></tr><tr><td>降额运行</td><td>容量受限</td><td>阻塞、价差、考核</td></tr></tbody></table></div>
+<h3 id="s42">6.3 阻塞与输电权</h3>
+<p>直流联络线是省间/跨区交易的物理边界。阻塞时：</p>
+<ul><li>送受端价差扩大；</li><li>输电权/路径容量价值上升；</li><li>中长期合同需约定调度优先级、替代路径、偏差结算；</li><li>故障停运时，合同双方可能面临巨大偏差。</li></ul>
+<p>具体规则见 <a href="省间与跨区交易-2026-11.html">省间与跨区交易</a>。</p>
+<h3 id="s43">6.4 辅助服务</h3>
+<p>直流可以提供/需要：</p>
+<ul><li>频率支撑（VSC 构网型、LCC 功率调制）；</li><li>无功/电压支撑（VSC、LCC 滤波器/调相机）；</li><li>黑启动（VSC）；</li><li>惯量支撑（VSC 构网型）；</li><li>故障穿越/恢复。</li></ul>
+<p>辅助服务的采购和补偿，按各省/区域规则；跨省直流的能力如何在送受端分摊，是市场设计问题。</p>
+<h3 id="s44">6.5 损耗与过网费</h3>
+<p>损耗包括换流站损耗和线路损耗。谁承担？</p>
+<ul><li>送端/受端按合同分摊；</li><li>计入输电价/过网费；</li><li>纳入损耗率考核；</li><li>影响交易价差和项目收益。</li></ul>
+<p>直流损耗不是“线损”一个词能概括：换流站是固定+可变损耗，轻载时占比更高。</p>
+<h3 id="s45">6.6 投资经济性</h3>
+<p>直流项目收益来源：</p>
+<ul><li>容量电价/输电费；</li><li>送受端价差；</li><li>辅助服务；</li><li>可靠性/系统支撑价值；</li><li>避免交流新建/征地/海缆的成本。</li></ul>
+<p>关键变量：利用率、可用率、损耗、造价、融资成本、汇率、运维、故障停运损失、终端价值。<strong>高利用率不等于高收益</strong>：如果价差小、损耗大、辅助服务不补偿，可能越送越亏。</p>
+<h3 id="s46">6.7 市场设计</h3>
+<ul><li><strong>点对点</strong>：最成熟，容量/电量按合同；</li><li><strong>背靠背</strong>：异步联网，交换功率；</li><li><strong>多端</strong>：多个换流站，需协调调度和故障隔离；</li><li><strong>直流电网</strong>：未来形态，保护、控制、市场规则都更复杂。</li></ul>
+<p>中国跨省直流多数是点对点/双极，输电计划与省间市场衔接；具体规则以国家/区域/省级文件为准。</p>
+<h3 id="s47">6.8 D 级算例：±800 kV/8,000 MW LCC</h3>
+<p>设定：额定 ±800 kV、8,000 MW，线路 2,000 km，直流电阻 8 Ω，年利用 4,000 h，电价 300 元/MWh。</p>
+<ul><li>额定电流 Id = 8,000 MW / 800 kV = <strong>10 kA</strong>（双极 ±800 kV，极间电压 1,600 kV？需注意：±800 kV 指正负极对地，极间 1,600 kV；若 P=8,000 MW，Id = 8,000/1,600 = <strong>5 kA</strong>）。正确：双极 ±800 kV，极间电压 1,600 kV，Id = 5 kA。</li><li>线路损耗 = I²R = 5,000² × 8 = <strong>200 MW</strong>，占 2.5%；</li><li>换流站损耗 = 8,000 × 2 × 0.7% = <strong>112 MW</strong>，占 1.4%；</li><li>总损耗 312 MW，占 <strong>3.9%</strong>；</li><li>年损耗电量 = 312 MW × 4,000 h = <strong>1.248 TWh</strong>；按 300 元/MWh 计，年损耗成本 <strong>3.744 亿元</strong>；</li><li>若可用率 97%，年不可用 263 h，损失电量 8,000 × 263 = <strong>2.104 TWh</strong>；按 200 元/MWh 替代成本计，约 <strong>4.208 亿元</strong>。</li></ul>
+<p>这个算例说明：<strong>损耗和可用率对经济性的影响，可能和价差同一量级。</strong></p>
+<h3 id="s48">6.9 D 级算例：±500 kV/2,000 MW VSC</h3>
+<p>设定：额定 ±500 kV、2,000 MW，直流电缆 100 km，电阻 1.2 Ω，年利用 4,000 h。</p>
+<ul><li>极间电压 1,000 kV，Id = <strong>2 kA</strong>；</li><li>线路损耗 = 2,000² × 1.2 = <strong>4.8 MW</strong>，占 0.24%；</li><li>换流站损耗 = 2,000 × 2 × 1.0% = <strong>40 MW</strong>，占 2.0%；</li><li>总损耗 44.8 MW，占 <strong>2.24%</strong>；</li><li>年损耗电量 = 44.8 × 4,000 = <strong>179.2 GWh</strong>；按 300 元/MWh 计，约 <strong>5,376 万元</strong>。</li></ul>
+<p>对比 LCC：VSC 线路损耗低（电缆短、电阻小），但换流站损耗占比高；距离越长，LCC 的线路损耗优势越明显。</p>
+<h3 id="s49">6.10 D 级算例：一次换相失败/停运的市场成本</h3>
+<p>设定：一回 8,000 MW 直流因换相失败闭锁 2 h，受端替代电源成本 300 元/MWh。</p>
+<ul><li>损失电量 = 8,000 × 2 = <strong>16 GWh</strong>；</li><li>替代成本 = 16,000 MWh × 300 = <strong>480 万元</strong>；</li><li>若同时引发受端电价上涨、备用调用、用户停电，成本更高；</li><li>若一年发生 5 次，直接替代成本约 <strong>2,400 万元</strong>，尚未计设备损坏和信誉损失。</li></ul>
+<hr>
+<h2 id="s50">7. 标准、设计与尽调</h2>
+<h3 id="s51">7.1 标准清单</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>标准</th><th>内容</th><th>用途</th></tr></thead><tbody><tr><td>IEC 60919</td><td>LCC HVDC 系统性能</td><td>系统设计、性能保证</td></tr><tr><td>IEC 61803</td><td>换流站损耗测定</td><td>损耗保证值、验收</td></tr><tr><td>IEC 62501</td><td>VSC 阀电气试验</td><td>阀型式试验/出厂试验</td></tr><tr><td>IEC 62747</td><td>VSC HVDC 术语</td><td>技术文件、合同</td></tr><tr><td>GB/T 51381</td><td>±800 kV 直流输电系统设计规范</td><td>中国工程设计</td></tr><tr><td>GB/T 50789</td><td>±800 kV 直流换流站设计规范</td><td>换流站设计</td></tr><tr><td>DL/T 5426</td><td>±800 kV 高压直流输电系统成套设计规程</td><td>成套设计</td></tr></tbody></table></div>
+<p>标准号和名称供检索，<strong>版本以现行有效版本为准</strong>；不同电压等级/工程还有专用技术规范。</p>
+<h3 id="s52">7.2 设计审查清单</h3>
+<ul><li>系统研究：潮流、稳定、短路、过电压、谐波、可靠性；</li><li>换流器拓扑与额定：LCC/VSC、12 脉波/MMC、子模块数量、冗余；</li><li>换流变：容量、阻抗、分接头、相位；</li><li>无功/滤波：容量、谐振、投切；</li><li>绝缘配合：避雷器、爬距、海拔、污秽；</li><li>接地极/接地系统：土壤、电流、腐蚀、跨步电压；</li><li>直流故障清除：DCCB/全桥/交流断路器；</li><li>控制保护：VDCOL、CFPREV、多端协调、通信；</li><li>黑启动：电源、序贯、试验；</li><li>可用率/损耗保证：考核方法、罚则；</li><li>备品备件、运维、培训；</li><li>网络安全：SCADA/控制通信隔离。</li></ul>
+<h3 id="s53">7.3 试验与调试</h3>
+<ul><li>阀型式试验：绝缘、通流、短路、热循环；</li><li>换流器出厂试验：子模块、阀段、控制保护；</li><li>直流线路试验：耐压、参数、故障定位；</li><li>站系统试验：充电、换相、功率、无功、滤波器投切；</li><li>系统试验：单极/双极、功率阶跃、故障穿越、换相失败、黑启动；</li><li>RTDS/动模：控制保护闭环验证。</li></ul>
+<p><strong>没有经过故障穿越和换相失败试验的直流工程，不能只看额定功率签字。</strong></p>
+<h3 id="s54">7.4 尽调十二问</h3>
+<ol><li>技术路线为什么选 LCC/VSC？有没有做全生命周期比较？</li><li>额定容量、连续/短时过负荷、N-1 能力？</li><li>换流站损耗保证值、线路损耗、损耗分摊？</li><li>可用率/强迫停运率保证值、考核与罚则？</li><li>换相失败风险、CFPREV/VDCOL 策略、受端支撑？</li><li>弱电网/多馈入/宽频振荡研究做了吗？</li><li>直流故障清除方案？DCCB/全桥/交流断路器？</li><li>黑启动能力、试验记录？</li><li>控制保护冗余、通信双通道、网络安全？</li><li>接地极/接地系统、腐蚀、跨步电压？</li><li>运维团队、备品备件、故障抢修？</li><li>电价/输电费/辅助服务/合同期限，能否覆盖固定成本？</li></ol>
+<hr>
+<h2 id="s55">8. 常见错误（12 条）</h2>
+<ol><li><strong>把直流当“一条线”</strong>：忽略换流站、控制保护、交流支撑。</li><li><strong>只看额定功率，不看可用率</strong>：额定 8 GW 不等于每天 8 GW。</li><li><strong>忽略换相失败</strong>：LCC 的固有风险，弱电网更严重。</li><li><strong>认为 VSC 什么都能接</strong>：太弱的电网仍会失稳。</li><li><strong>忽略直流故障清除</strong>：半桥 MMC 不能自清，方案没定就签字。</li><li><strong>把换流站损耗当固定值</strong>：轻载/无功/滤波器投切都会变。</li><li><strong>忽略无功支撑</strong>：LCC 消耗大量无功，弱电网会电压崩溃。</li><li><strong>忽略多馈入交互</strong>：一回失败可能拖垮另一回。</li><li><strong>忽视宽频振荡</strong>：VSC 与电网阻抗可能负阻尼。</li><li><strong>黑启动只写在文件里</strong>：没有试验和演练，等于没有。</li><li><strong>用额定容量算输电收益</strong>：未扣可用率、损耗、停运。</li><li><strong>忽略标准版本</strong>：引用过期标准，验收口径对不上。</li></ol>
+<hr>
+<h2 id="s56">9. 速查</h2>
+<h3 id="s57">9.1 公式</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>口径</th><th>公式</th><th>备注</th></tr></thead><tbody><tr><td>6 脉波理想直流电压</td><td>Ud0 = 1.35 U_LL</td><td>12 脉波串联翻倍</td></tr><tr><td>换相压降</td><td>Ud = Ud0 cosα − (3/π) Xc Id</td><td>逆变侧用 γ 表示，符号随定义</td></tr><tr><td>直流电流</td><td>Id = (Ud_rect − Ud_inv)/R_d</td><td>双极按极间电压</td></tr><tr><td>短路比</td><td>SCR = S_ac/P_dc</td><td>ESCR 扣除滤波器无功</td></tr><tr><td>线路损耗</td><td>P_loss = I²R</td><td>双极按极间电流</td></tr><tr><td>换流站损耗</td><td>P_conv = P_dc × 损耗率</td><td>两端分别计算</td></tr><tr><td>年损耗成本</td><td>损耗功率 × 利用小时 × 电价</td><td>可用率另算</td></tr></tbody></table></div>
+<h3 id="s58">9.2 故障—后果对照</h3>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>故障</th><th>直接后果</th><th>市场后果</th><th>关键措施</th></tr></thead><tbody><tr><td>LCC 换相失败</td><td>功率跌落/闭锁</td><td>受端缺电、价差扩大</td><td>CFPREV、VDCOL、调相机</td></tr><tr><td>LCC 直流线路故障</td><td>整回停运</td><td>大功率丢失</td><td>保护、去离子、重启</td></tr><tr><td>VSC 半桥直流故障</td><td>交流馈入、全站停运</td><td>长时间停运</td><td>交流断路器/DCCB/全桥</td></tr><tr><td>换流变故障</td><td>单极/双极停运</td><td>容量下降</td><td>备用相、保护</td></tr><tr><td>冷却系统故障</td><td>降额/闭锁</td><td>可用率下降</td><td>冗余冷却、监测</td></tr><tr><td>控制/通信故障</td><td>误动/拒动</td><td>非计划停运</td><td>双套、双通道</td></tr></tbody></table></div>
+<h3 id="s59">9.3 尽调十问（快速版）</h3>
+<ol><li>LCC 还是 VSC？为什么？</li><li>额定/连续/短时/N-1 容量？</li><li>可用率、强迫停运率、损耗保证？</li><li>换相失败风险与抑制？</li><li>弱电网/多馈入/振荡研究？</li><li>直流故障清除方案？</li><li>黑启动能力与试验？</li><li>无功/滤波/接地极？</li><li>控制保护冗余与网络安全？</li><li>收益能否覆盖固定成本？</li></ol>
+<hr>
+<h2 id="s60">10. 与技能和其他笔记的分工</h2>
+<div class="table-wrap" tabindex="0" role="group" aria-label="可横向滚动的表格"><table><thead><tr><th>问题</th><th>去哪里</th></tr></thead><tbody><tr><td>省间/跨区交易、输电权、阻塞</td><td><a href="省间与跨区交易-2026-11.html">省间与跨区交易</a></td></tr><tr><td>宽频振荡、阻抗分析</td><td><a href="宽频振荡与场站阻抗分析-2026-11.html">宽频振荡与场站阻抗分析</a></td></tr><tr><td>故障、保护、安全防御</td><td><a href="故障保护与安全防御-2026-11.html">故障保护与安全防御</a></td></tr><tr><td>新能源并网、海上风电</td><td><a href="新能源项目开发与并网-2026-11.html">新能源项目开发与并网</a></td></tr><tr><td>并网测试、涉网验收</td><td><a href="并网测试与涉网验收实务清单-2026-11.html">并网测试与涉网验收实务清单</a></td></tr><tr><td>频率、惯量、灵活性</td><td><a href="频率惯量与灵活性供需-2026-11.html">频率惯量与灵活性供需</a></td></tr><tr><td>无功、电压、电能质量</td><td><a href="无功电压与电能质量-2026-11.html">无功电压与电能质量</a></td></tr><tr><td>构网型储能</td><td><a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线、安全与构网型并网</a></td></tr><tr><td>电力系统通识 B（发输配变用）</td><td><a href="电力系统通识-B-发输配变用.html">电力系统通识 B</a></td></tr><tr><td>电力系统通识 F（运行与调度）</td><td><a href="电力系统通识-F-运行与调度-2026-11.html">电力系统通识 F</a></td></tr></tbody></table></div>
+<hr>
+<h2 id="s61">11. 资料来源与口径</h2>
+<ul><li>IEC 60919（LCC HVDC 系统性能）、IEC 61803（换流站损耗测定）、IEC 62501（VSC 阀试验）、IEC 62747（VSC 术语）。A 级国际标准；版本以现行有效版本为准。</li><li>GB/T 51381（±800 kV 直流输电系统设计规范）、GB/T 50789（±800 kV 直流换流站设计规范）、DL/T 5426（±800 kV 高压直流输电系统成套设计规程）。A 级中国标准；版本以现行有效版本为准。</li><li>CIGRE 技术手册（HVDC、MMC、直流保护、多馈入直流）。B 级技术参考；具体结论以工程研究和标准为准。</li><li>国家能源局、国家发展改革委关于跨省跨区输电、直流工程核准/运行的文件。A 级政策；具体工程以核准文件和调度协议为准。</li><li>本页所有电压、容量、电阻、损耗、利用小时、电价、停运时长、成本均为 <strong>D 级合成算例</strong>，不对应任何真实工程、厂商、省份或合同。</li></ul>
+<hr>
+<h2 id="s62">12. 更新记录</h2>
+<ul><li><strong>2026-11-27</strong>：初版。按“换流器物理—控制保护—AC/DC 交互—市场”五层建立 LCC/VSC 对照；加入换相失败、MMC 直流故障、DCCB、黑启动、SCR/ESCR、多馈入、宽频振荡、可用率/损耗/辅助服务；两份 D 级算例。</li><li><strong>待核实</strong>：LCC/VSC 损耗率的工程分布；不同电压等级的标准适用版本；多馈入短路比的具体计算方法；各省跨区直流输电权/辅助服务分摊规则。</li><li><strong>下一版优先补</strong>：一份“换相失败—保护动作—功率恢复”的时序示例；一份“直流停运对送受端现货价格”的 D 级复盘；一张 LCC/VSC 全生命周期成本对比表。</li></ul>
+    </article>
+
+    <section class="related" aria-labelledby="related-title">
+      <div class="related-head"><h2 id="related-title">相关模块</h2><span>10</span></div>
+      <div class="related-grid">
+        <a class="related-card" href="省间与跨区交易-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>省间与跨区交易（2026 版）</b>
+          <span>四层市场、省间中长期与现货、南方与长三角区域市场、跨经营区与输电权，附落地成本算例。</span>
+        </a>
+        <a class="related-card" href="宽频振荡与场站阻抗分析-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>宽频振荡与场站阻抗分析：从阻抗扫描到参数整定</b>
+          <span>把新能源场站与电网之间的宽频振荡讲成一条工程链：次/超同步与宽频的区分，正序阻抗与 Nyquist/负电阻判据，场站阻抗建模与扫描，PLL/电流环/虚拟阻抗/构网型的整定权衡，以及现场诊断与并网验收；附 35 kV 合成场站 D 级算例与 10 条常见错误。</span>
+        </a>
+        <a class="related-card" href="故障保护与安全防御-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>电力系统通识 E · 故障、保护与安全防御</b>
+          <span>短路与故障类型、继电保护四性与整定配合、新能源故障电流的特殊性、防孤岛、三道防线、低频减载与黑启动。</span>
+        </a>
+        <a class="related-card" href="新能源项目开发与并网-2026-11.html">
+          <span class="related-type">跨区对照</span>
+          <b>新能源项目开发与并网</b>
+          <span>136 号机制电价、省级竞价、P50/P90、LCOE、并网标准、海上风电与省别画像。</span>
+        </a>
+      </div>
+      <p class="related-rest"><b>更多关联</b><a href="并网测试与涉网验收实务清单-2026-11.html">并网测试与涉网验收实务清单：AGC/AVC/一次调频投运试验与考核点闭环</a><a href="频率惯量与灵活性供需-2026-11.html">频率、惯量与灵活性供需：从物理缓冲到分时间尺度货架</a><a href="无功电压与电能质量-2026-11.html">无功、电压与电能质量：从无功平衡到力调电费</a><a href="储能技术路线安全与构网型并网-2026-11.html">储能技术路线、安全与构网型并网</a><a href="电力系统通识-B-发输配变用.html">电力系统通识 B · 发输配变用</a><a href="电力系统通识-F-运行与调度-2026-11.html">电力系统通识 F · 运行与调度：从日计划到实时平衡</a></p>
+    </section>
+
+<section class="related" aria-labelledby="paired-skills-title">
+      <div class="related-head"><h2 id="paired-skills-title">Skills</h2><span>2</span></div>
+      <div class="related-grid">
+        <a class="related-card skill-pair" href="skill-electricity-trading-expert.html">
+          <span class="related-type">现货、中长期、结算与风控（含山东持仓与负价复盘、四川/云南水电、辽宁核电、甘肃煤电容量+辅助服务、甘送鲁省间实例包），并接入运行调度、规划充裕性、市场力合规与直流输电</span>
+          <b>电力交易专家</b>
+          <span>技能 · 现货 · 结算 · 风控</span>
+        </a>
+        <a class="related-card skill-pair" href="skill-renewable-project-development.html">
+          <span class="related-type">资源、LCOE、机制电价与并网（含云南风电 2027 投决实例包），并接入保护整定、水电与抽蓄、直流送出</span>
+          <b>新能源开发与并网</b>
+          <span>技能 · 新能源 · LCOE · 并网</span>
+        </a>
+      </div>
+    </section>
+
+    <nav class="pager" aria-label="上下篇">
+          <a class="prev" href="频率惯量与灵活性供需-2026-11.html"><span class="dir">← 上一篇</span><span class="ttl">频率、惯量与灵活性供需：从物理缓冲到分时间尺度货架</span></a>
+          <a class="next" href="合成案例复盘库-2026-11.html"><span class="dir">下一篇 →</span><span class="ttl">合成案例复盘库：十个交易台决策复盘</span></a>
+    </nav>
+
+    <footer class="doc-foot">
+      <div class="lic">本页由 <a href="../直流输电与柔性直流-2026-11.md">knowledge/直流输电与柔性直流-2026-11.md</a> 构建，内容与源文件同步；若两者不一致，以 .md 为准。除另有说明外，算例均为合成数据。</div>
+      <div class="doc-foot-links">
+        <a href="https://github.com/Weisg1999/energy-skills" target="_blank" rel="noopener">GitHub 仓库：github.com/Weisg1999/energy-skills ↗</a>
+        <span aria-hidden="true"> · </span>
+        <a href="../index.html" data-home-link>返回知识库总览 →</a>
+      </div>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="本页目录">
+    <div class="toc-title">本页目录</div>
+    <ol>
+            <li class="lv2"><a href="#s1">0. 一页看懂</a></li>
+            <li class="lv3"><a href="#s2">0.1 三句话</a></li>
+            <li class="lv3"><a href="#s3">0.2 一张对比表</a></li>
+            <li class="lv3"><a href="#s4">0.3 本文不做什么</a></li>
+            <li class="lv2"><a href="#s5">1. 为什么用直流</a></li>
+            <li class="lv3"><a href="#s6">1.1 六个技术场景</a></li>
+            <li class="lv3"><a href="#s7">1.2 交流 vs 直流：边界在哪</a></li>
+            <li class="lv3"><a href="#s8">1.3 什么时候不该用直流</a></li>
+            <li class="lv2"><a href="#s9">2. LCC-HVDC：换相物理</a></li>
+            <li class="lv3"><a href="#s10">2.1 拓扑</a></li>
+            <li class="lv3"><a href="#s11">2.2 换相过程：α、μ、γ</a></li>
+            <li class="lv3"><a href="#s12">2.3 电压与电流方程</a></li>
+            <li class="lv3"><a href="#s13">2.4 控制体系</a></li>
+            <li class="lv3"><a href="#s14">2.5 无功与损耗</a></li>
+            <li class="lv3"><a href="#s15">2.6 换相失败：原因、过程、后果</a></li>
+            <li class="lv3"><a href="#s16">2.7 LCC 的优缺点</a></li>
+            <li class="lv2"><a href="#s17">3. VSC-HVDC 与 MMC：自换相</a></li>
+            <li class="lv3"><a href="#s18">3.1 拓扑</a></li>
+            <li class="lv3"><a href="#s19">3.2 子模块与均压</a></li>
+            <li class="lv3"><a href="#s20">3.3 调制与控制</a></li>
+            <li class="lv3"><a href="#s21">3.4 直流故障：半桥的软肋</a></li>
+            <li class="lv3"><a href="#s22">3.5 损耗</a></li>
+            <li class="lv3"><a href="#s23">3.6 VSC 的优缺点</a></li>
+            <li class="lv3"><a href="#s24">3.7 LCC vs VSC：怎么选</a></li>
+            <li class="lv2"><a href="#s25">4. 故障、保护与恢复</a></li>
+            <li class="lv3"><a href="#s26">4.1 交流侧故障</a></li>
+            <li class="lv3"><a href="#s27">4.2 直流侧故障</a></li>
+            <li class="lv3"><a href="#s28">4.3 直流保护</a></li>
+            <li class="lv3"><a href="#s29">4.4 换流器内部故障</a></li>
+            <li class="lv3"><a href="#s30">4.5 黑启动与恢复</a></li>
+            <li class="lv3"><a href="#s31">4.6 故障记录与复盘</a></li>
+            <li class="lv2"><a href="#s32">5. AC/DC 交互：强弱、振荡与多馈入</a></li>
+            <li class="lv3"><a href="#s33">5.1 SCR 与 ESCR</a></li>
+            <li class="lv3"><a href="#s34">5.2 弱电网问题</a></li>
+            <li class="lv3"><a href="#s35">5.3 多馈入直流</a></li>
+            <li class="lv3"><a href="#s36">5.4 海上风电</a></li>
+            <li class="lv3"><a href="#s37">5.5 宽频振荡</a></li>
+            <li class="lv3"><a href="#s38">5.6 构网型与跟网型</a></li>
+            <li class="lv2"><a href="#s39">6. 规划、运行与市场</a></li>
+            <li class="lv3"><a href="#s40">6.1 输电能力</a></li>
+            <li class="lv3"><a href="#s41">6.2 停运与降额</a></li>
+            <li class="lv3"><a href="#s42">6.3 阻塞与输电权</a></li>
+            <li class="lv3"><a href="#s43">6.4 辅助服务</a></li>
+            <li class="lv3"><a href="#s44">6.5 损耗与过网费</a></li>
+            <li class="lv3"><a href="#s45">6.6 投资经济性</a></li>
+            <li class="lv3"><a href="#s46">6.7 市场设计</a></li>
+            <li class="lv3"><a href="#s47">6.8 D 级算例：±800 kV/8,000 MW LCC</a></li>
+            <li class="lv3"><a href="#s48">6.9 D 级算例：±500 kV/2,000 MW VSC</a></li>
+            <li class="lv3"><a href="#s49">6.10 D 级算例：一次换相失败/停运的市场成本</a></li>
+            <li class="lv2"><a href="#s50">7. 标准、设计与尽调</a></li>
+            <li class="lv3"><a href="#s51">7.1 标准清单</a></li>
+            <li class="lv3"><a href="#s52">7.2 设计审查清单</a></li>
+            <li class="lv3"><a href="#s53">7.3 试验与调试</a></li>
+            <li class="lv3"><a href="#s54">7.4 尽调十二问</a></li>
+            <li class="lv2"><a href="#s55">8. 常见错误（12 条）</a></li>
+            <li class="lv2"><a href="#s56">9. 速查</a></li>
+            <li class="lv3"><a href="#s57">9.1 公式</a></li>
+            <li class="lv3"><a href="#s58">9.2 故障—后果对照</a></li>
+            <li class="lv3"><a href="#s59">9.3 尽调十问（快速版）</a></li>
+            <li class="lv2"><a href="#s60">10. 与技能和其他笔记的分工</a></li>
+            <li class="lv2"><a href="#s61">11. 资料来源与口径</a></li>
+            <li class="lv2"><a href="#s62">12. 更新记录</a></li>
+    </ol><button class="toc-more" type="button" aria-expanded="false" data-count="49" data-more-label="展开 49 个小节" data-less-label="收起小节">展开 49 个小节</button>
+  </aside>
+</div>
+
+<nav class="page-aux" aria-label="页面辅助">
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</nav>
+<div class="cl-root" data-changelog data-src="../assets/changelog-data.json" data-repo="https://github.com/Weisg1999/energy-skills" data-page-lang="zh" data-version="v2.6" data-cutoff="2026-11-27" data-latest="2026-11-28" data-count="105">
+  <button class="cl-badge" type="button" data-changelog-open aria-haspopup="dialog" aria-controls="cl-dialog" aria-expanded="false" aria-label="查看更新记录（当前 v2.6）" title="查看更新记录（当前 v2.6）">
+    <span class="cl-badge-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
+    <span class="cl-badge-ver">v2.6</span>
+    <span class="cl-badge-label">更新记录</span>
+  </button>
+  <div class="cl-dialog" id="cl-dialog" data-changelog-dialog hidden>
+    <div class="cl-backdrop" data-changelog-close></div>
+    <div class="cl-panel" role="dialog" aria-modal="true" aria-labelledby="cl-title" aria-describedby="cl-subtitle" tabindex="-1">
+      <header class="cl-head">
+        <div class="cl-head-main">
+          <span class="cl-kicker">RELEASE NOTES</span>
+          <h2 class="cl-title" id="cl-title"><span class="cl-title-text">更新记录</span> <span class="cl-pill">v2.6</span></h2>
+          <p class="cl-sub" id="cl-subtitle">当前版本 v2.6 · 数据截止 2026-11-27 · 105 条记录</p>
+        </div>
+        <div class="cl-actions">
+          <div class="cl-lang" role="group" aria-label="切换语言">
+            <button type="button" data-cl-lang="zh" aria-pressed="true">中文</button>
+            <button type="button" data-cl-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <button class="cl-close" type="button" data-changelog-close aria-label="关闭更新记录" title="关闭更新记录">×</button>
+        </div>
+      </header>
+      <div class="cl-body" data-changelog-body>
+        <div class="cl-skeleton" data-changelog-status role="status">
+          <span class="cl-sr">正在读取更新记录…</span>
+          <i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      <footer class="cl-foot">
+        <span data-changelog-meta>v2.6 · 2026-11-27 · 105 条记录</span>
+        <a data-changelog-full href="https://github.com/Weisg1999/energy-skills/blob/main/CHANGELOG.md" target="_blank" rel="noopener">在 GitHub 查看完整更新记录 ↗</a>
+      </footer>
+    </div>
+  </div>
+</div>
+<script src="../assets/doc.js"></script>
+<script src="../assets/theme.js"></script>
+<script src="../assets/changelog.js"></script>
+</body>
+</html>
