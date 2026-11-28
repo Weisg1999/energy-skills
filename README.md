@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="CHANGELOG.md"><img alt="version v2.5" src="knowledge/assets/badge-version.svg"></a>&nbsp;
+  <a href="CHANGELOG.md"><img alt="version v2.6" src="knowledge/assets/badge-version.svg"></a>&nbsp;
   <a href="knowledge/index.html"><img alt="130 knowledge modules" src="knowledge/assets/badge-modules.svg"></a>&nbsp;
   <a href="更新清单.md"><img alt="data cutoff 2026-11-27" src="knowledge/assets/badge-cutoff.svg"></a>&nbsp;
   <a href="LICENSE"><img alt="license CC BY-NC 4.0" src="knowledge/assets/badge-license.svg"></a>
@@ -25,7 +25,7 @@
 
 > 每份技能都是一册可直接注入大模型上下文的 Markdown 手册。加载后，模型按该领域资深从业者的身份回答，并遵守内置纪律：数字带文号与时点、涉及省份先确认、政策内容给出查证入口、未交叉验证的数据标注“待核实”。
 
-当前版本 **v2.5**，数据截止 **2026-11-27**，正文 58,448 行。知识笔记、130 个阅读页、技能页、全文检索索引与图表均由仓库内容构建生成。
+当前版本 **v2.6**，数据截止 **2026-11-27**，正文 58,448 行。知识笔记、130 个阅读页、技能页、全文检索索引与图表均由仓库内容构建生成。
 
 **目录**　[快速开始](#快速开始) · [技能矩阵](#技能矩阵) · [知识库](#知识库) · [仓库结构](#仓库结构) · [维护](#维护知识中心) · [Roadmap](#roadmap) · [许可证](#许可证)
 

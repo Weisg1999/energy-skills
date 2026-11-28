@@ -251,6 +251,6 @@ export const nav = [
   { href: '#all', n: '01', label: '模块检索', count: 'total' },
   { href: '#map', n: '02', label: '知识地图', count: 6 },
   { href: '#atlas', n: '03', label: '专题图谱', count: 8 },
-  { href: '#skills', n: '04', label: '配套技能', count: 'skills' },
+  { href: '#skills', n: '04', label: 'Skills', count: 'skills' },
   { href: '#method', n: '05', label: '使用与口径' },
 ];

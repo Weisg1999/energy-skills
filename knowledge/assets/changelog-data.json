@@ -1,14 +1,24 @@
 {
   "schema": 1,
   "generatedFrom": "CHANGELOG.md + CHANGELOG_EN.md",
-  "version": "v2.5",
+  "version": "v2.6",
   "cutoff": "2026-11-27",
-  "latest": "2026-11-27",
-  "count": 103,
+  "latest": "2026-11-28",
+  "count": 104,
   "languages": {
     "zh": {
       "title": "更新记录",
       "entries": [
+        {
+          "date": "2026-11-28",
+          "label": "v2.6：技能分区统一命名为 Skills，130 模块",
+          "items": [
+            "<strong>范围与发布</strong>：仅界面命名修订，不新增或改写知识模块；发布为 v2.6，全站版本 v2.5 → v2.6（18 个 SKILL、中英 README/CHANGELOG、一致性断言、版本徽章与更新记录弹窗）；数据截止仍为 2026-11-27，全部算例仍为 D 级合成。",
+            "<strong>命名</strong>：侧栏、首页按钮、统计卡、分区标题、实例包页与模块页“关联技能”标题由“配套技能”统一改为 <strong>Skills</strong>；9 个技能卡片的中文名称保持不变，技能目录、slug、TXT 下载与技能包格式不受影响。",
+            "<strong>计数与生成物</strong>：知识模块 130、问答 86、开放事项 55、正文 58,448 行与 search-index 4,573,684 字节均不变；重建首页、实例页、61 个含关联技能的模块页、18 个技能页与 18 个 TXT；更新记录 103 → 104 条。",
+            "<strong>校验</strong>：构建、<code>--check</code>、省矩阵、一致性、维护检查、<code>git diff --check</code> 与九个 Python 自测全部通过。"
+          ]
+        },
         {
           "date": "2026-11-27",
           "label": "v2.5 发布：场站交易托管与代理，130 模块",
@@ -1264,6 +1274,16 @@
     "en": {
       "title": "Changelog",
       "entries": [
+        {
+          "date": "2026-11-28",
+          "label": "v2.6: the skills section is renamed to Skills, 130 modules",
+          "items": [
+            "<strong>Scope and release</strong>: a naming-only UI revision; no knowledge module is added or rewritten. Published as v2.6; the site version moves v2.5 → v2.6 (18 SKILLs, bilingual READMEs/CHANGELOGs, consistency assertion, version badge and changelog dialog). The data cutoff stays 2026-11-27 and all examples remain synthetic grade D.",
+            "<strong>Naming</strong>: the sidebar, home-page button, stat card, section heading, instance-pack page and the “related skills” heading on module pages now read <strong>Skills</strong> instead of the Chinese label; the nine skill cards keep their Chinese names, and skill folders, slugs, TXT downloads and the skill-package format are unchanged.",
+            "<strong>Counts and generated artifacts</strong>: 130 modules, 86 Q&amp;A items, 55 open items, 58,448 body lines and a 4,573,684-byte search index all stay unchanged; the home page, instance page, 61 module pages with related skills, 18 skill pages and 18 TXT files are rebuilt; changelog records 103 → 104.",
+            "<strong>Checks</strong>: build, <code>--check</code>, province matrix, consistency, maintenance, <code>git diff --check</code> and nine Python self-tests pass."
+          ]
+        },
         {
           "date": "2026-11-27",
           "label": "v2.5 release: asset trading custody and agency, 130 modules",

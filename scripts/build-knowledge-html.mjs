@@ -191,7 +191,7 @@ function changelogWidget(lang, assetPrefix) {
 
 /* --------------------------------------------------------------- 技能清单 */
 
-const skillSection = { id: 'skill', cat: 'skill', num: '04 / SKILLS', title: '配套技能' };
+const skillSection = { id: 'skill', cat: 'skill', num: '04 / SKILLS', title: 'Skills' };
 
 if (!Array.isArray(skillDocs) || !skillDocs.length) throw new Error('knowledge.config.mjs: skillDocs 不能为空');
 if (skillDocs.length !== site.skills) throw new Error(`skillDocs 有 ${skillDocs.length} 项，与 site.skills=${site.skills} 不一致`);
@@ -1147,7 +1147,7 @@ function renderIndex() {
               <div class="stat"><b>${total}</b><span>知识模块</span></div>
               <div class="stat"><b>${coreCount}</b><span>核心模块</span></div>
               <div class="stat"><b>${researchCount}</b><span>调研底稿</span></div>
-              <div class="stat"><b>${site.skills}</b><span>配套技能</span></div>
+              <div class="stat"><b>${site.skills}</b><span>Skills</span></div>
               <div class="stat"><b>${instanceData.count}</b><span>实例包</span></div>
             `,
     instanceAction: `<a class="btn btn-ghost" href="instances.html">实例包 <span aria-hidden="true">→</span></a>`,
@@ -1207,7 +1207,7 @@ const CHROME = {
     relationCross: '跨区对照',
     relationIndex: '查证入口',
     moreRelated: '更多关联',
-    pairedSkills: '配套技能',
+    pairedSkills: 'Skills',
     skillModules: '适用知识模块',
     prev: '← 上一篇',
     next: '下一篇 →',
@@ -1273,7 +1273,7 @@ function buildPage(doc) {
   const lang = doc.lang || (/^INDEX_EN/i.test(doc.md) ? 'en' : 'zh-CN');
   const copy = copyFor(lang);
   const secTitle = isSkill
-    ? (lang === 'en' ? 'Paired skills' : '配套技能')
+    ? (lang === 'en' ? 'Paired skills' : 'Skills')
     : (lang === 'en' ? sectionTitlesEn[sec.id] || sec.title : sec.title);
   const policyBar = doc.layout === 'policy' && doc.policy?.count ? renderPolicyBar(doc.policy) : '';
   const sourceHref = doc.srcHref || `../${doc.md}`;

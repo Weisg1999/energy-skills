@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="CHANGELOG_EN.md"><img alt="version v2.5" src="knowledge/assets/badge-version.svg"></a>&nbsp;
+  <a href="CHANGELOG_EN.md"><img alt="version v2.6" src="knowledge/assets/badge-version.svg"></a>&nbsp;
   <a href="knowledge/index.html"><img alt="130 knowledge modules" src="knowledge/assets/badge-modules.svg"></a>&nbsp;
   <a href="更新清单.md"><img alt="data cutoff 2026-11-27" src="knowledge/assets/badge-cutoff.svg"></a>&nbsp;
   <a href="LICENSE"><img alt="license CC BY-NC 4.0" src="knowledge/assets/badge-license.svg"></a>
@@ -25,7 +25,7 @@
 
 > Every skill is a self-contained Markdown handbook that can be injected into an LLM context. Once loaded, the model answers as a senior practitioner and follows built-in discipline: figures cited with document numbers and dates, province confirmed before local rules, policy items returned with official lookup pointers, and unverified data flagged as “to be verified”.
 
-Current version **v2.5**, data cutoff **2026-11-27**, 58,448 body lines. Notes, 130 reading pages, skill pages, the full-text index and all diagrams are generated from repository content.
+Current version **v2.6**, data cutoff **2026-11-27**, 58,448 body lines. Notes, 130 reading pages, skill pages, the full-text index and all diagrams are generated from repository content.
 
 **Contents**　[Quick start](#quick-start) · [Skills](#skills) · [Knowledge base](#knowledge-base) · [Repository layout](#repository-layout) · [Maintenance](#maintaining-the-knowledge-hub) · [Roadmap](#roadmap) · [License](#license)
 

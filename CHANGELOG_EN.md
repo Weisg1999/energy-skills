@@ -1,6 +1,13 @@
 # Changelog
 
-This file records energy-skills releases in reverse chronological order. Current version **v2.5**, data cutoff **2026-11-27**. Repository entry point: [README_EN.md](README_EN.md); Chinese version: [CHANGELOG.md](CHANGELOG.md).
+This file records energy-skills releases in reverse chronological order. Current version **v2.6**, data cutoff **2026-11-27**. Repository entry point: [README_EN.md](README_EN.md); Chinese version: [CHANGELOG.md](CHANGELOG.md).
+
+### 2026-11-28 (v2.6: the skills section is renamed to Skills, 130 modules)
+
+- **Scope and release**: a naming-only UI revision; no knowledge module is added or rewritten. Published as v2.6; the site version moves v2.5 → v2.6 (18 SKILLs, bilingual READMEs/CHANGELOGs, consistency assertion, version badge and changelog dialog). The data cutoff stays 2026-11-27 and all examples remain synthetic grade D.
+- **Naming**: the sidebar, home-page button, stat card, section heading, instance-pack page and the “related skills” heading on module pages now read **Skills** instead of the Chinese label; the nine skill cards keep their Chinese names, and skill folders, slugs, TXT downloads and the skill-package format are unchanged.
+- **Counts and generated artifacts**: 130 modules, 86 Q&A items, 55 open items, 58,448 body lines and a 4,573,684-byte search index all stay unchanged; the home page, instance page, 61 module pages with related skills, 18 skill pages and 18 TXT files are rebuilt; changelog records 103 → 104.
+- **Checks**: build, `--check`, province matrix, consistency, maintenance, `git diff --check` and nine Python self-tests pass.
 
 ### 2026-11-27 (v2.5 release: asset trading custody and agency, 130 modules)
 

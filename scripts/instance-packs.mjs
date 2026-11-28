@@ -230,7 +230,7 @@ export function renderInstancesPage(data, changelogWidget = '') {
       <summary class="more-btn" aria-label="更多" title="更多"><span class="more-label">更多</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></summary>
       <div class="more-menu">
         <a class="src" href="../README.md" target="_blank" rel="noopener">仓库说明<small>README.md</small></a>
-        <a class="src" href="index.html#skills">配套技能</a>
+        <a class="src" href="index.html#skills">Skills</a>
         <a class="src" href="index.html#method">使用与口径</a>
       </div>
     </details>
@@ -242,14 +242,14 @@ export function renderInstancesPage(data, changelogWidget = '') {
   <aside class="sidebar" id="nav">
     <div class="nav-kicker">实例层</div>
     <div class="nav-num">INSTANCE</div>
-    <h2 class="nav-cat"><a href="index.html#skills">配套技能</a></h2>
+    <h2 class="nav-cat"><a href="index.html#skills">Skills</a></h2>
     <ul class="nav-list">
               ${sideList}
     </ul>
     <div class="nav-others">
       <div class="nav-kicker">回到</div>
       <ul>
-        <li><a href="index.html#skills"><b>04</b>配套技能</a></li>
+        <li><a href="index.html#skills"><b>04</b>Skills</a></li>
         <li><a href="index.html#map"><b>01</b>知识地图</a></li>
         <li><a href="index.html#method"><b>05</b>使用与口径</a></li>
       </ul>
